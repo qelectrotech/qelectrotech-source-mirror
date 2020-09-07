@@ -107,7 +107,8 @@ class ElementsPanelWidget : public QWidget {
 	@brief ElementsPanelWidget::elementsPanel
 	@return The elements panel embedded within this widget.
 */
-inline ElementsPanel &ElementsPanelWidget::elementsPanel() const {
+inline ElementsPanel &ElementsPanelWidget::elementsPanel() const
+{
 	return(*elements_panel);
 }
 

@@ -62,7 +62,11 @@ class QetShapeItem : public QetGraphicsItem
 
 		enum { Type = UserType + 1008 };
 
-		QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = nullptr);
+		QetShapeItem(
+				QPointF,
+				QPointF = QPointF(0,0),
+				ShapeType = Line,
+				QGraphicsItem *parent = nullptr);
 		~QetShapeItem() override;
 
 		//Enable the use of qgraphicsitem_cast to safely cast a
@@ -106,13 +110,21 @@ class QetShapeItem : public QetGraphicsItem
 		QPainterPath shape()  const override;
 
 	protected:
-		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-		void hoverEnterEvent   (QGraphicsSceneHoverEvent *event) override;
-		void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event) override;
-		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
-		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
-		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
-		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
+		void paint(
+				QPainter *painter,
+				const QStyleOptionGraphicsItem *option,
+				QWidget *widget) override;
+		void hoverEnterEvent (QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent (QGraphicsSceneHoverEvent *event) override;
+		void mousePressEvent (QGraphicsSceneMouseEvent *event) override;
+		QVariant itemChange(
+				GraphicsItemChange change,
+				const QVariant &value) override;
+		bool sceneEventFilter(
+				QGraphicsItem *watched,
+				QEvent *event) override;
+		void contextMenuEvent(
+				QGraphicsSceneContextMenuEvent *event) override;
 
 	private:
 		void switchResizeMode();
@@ -129,24 +141,24 @@ class QetShapeItem : public QetGraphicsItem
 	private:
 		ShapeType	 m_shapeType;
 		QPen		 m_pen;
-		QBrush       m_brush;
+		QBrush		 m_brush;
 		QPointF		 m_P1,
-					 m_P2,
-					 m_old_P1,
-					 m_old_P2,
-					 m_context_menu_pos;
+				 m_P2,
+				 m_old_P1,
+				 m_old_P2,
+				 m_context_menu_pos;
 		QPolygonF	 m_polygon, m_old_polygon;
 		bool		 m_hovered;
-		int			 m_vector_index;
-		bool m_closed = false,
-			 m_modifie_radius_equaly = false;
-		int m_resize_mode = 1;
+		int		 m_vector_index;
+		bool		 m_closed = false,
+				 m_modifie_radius_equaly = false;
+		int		 m_resize_mode = 1;
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
-		QAction *m_insert_point,
-				*m_remove_point;
-		qreal m_xRadius = 0,
-			  m_yRadius = 0,
-			  m_old_xRadius,
-			  m_old_yRadius;
+		QAction		 *m_insert_point,
+				 *m_remove_point;
+		qreal		 m_xRadius = 0,
+				 m_yRadius = 0,
+				 m_old_xRadius,
+				 m_old_yRadius;
 };
 #endif // QETSHAPEITEM_H

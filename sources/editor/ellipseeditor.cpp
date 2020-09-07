@@ -67,7 +67,8 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 }
 
 /// Destructeur
-EllipseEditor::~EllipseEditor() {
+EllipseEditor::~EllipseEditor()
+{
 }
 
 void EllipseEditor::setUpChangeConnections()
@@ -126,11 +127,13 @@ bool EllipseEditor::setParts(QList <CustomElementPart *> parts)
 /**
 	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
 */
-CustomElementPart *EllipseEditor::currentPart() const {
+CustomElementPart *EllipseEditor::currentPart() const
+{
 	return(part);
 }
 
-QList<CustomElementPart*> EllipseEditor::currentParts() const {
+QList<CustomElementPart*> EllipseEditor::currentParts() const
+{
     return style_->currentParts();
 }
 

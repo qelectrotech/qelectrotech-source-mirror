@@ -124,14 +124,16 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 /**
 	Destructeur
 */
-ElementsPanelWidget::~ElementsPanelWidget() {
+ElementsPanelWidget::~ElementsPanelWidget()
+{
 }
 
 /**
 	Require the desktop environment to open the directory containing the file
 	represented by the selected item, if any.
 */
-void ElementsPanelWidget::openDirectoryForSelectedItem() {
+void ElementsPanelWidget::openDirectoryForSelectedItem()
+{
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString dir_path = elements_panel -> dirPathForItem(qtwi);
 		if (!dir_path.isEmpty()) {
@@ -144,7 +146,8 @@ void ElementsPanelWidget::openDirectoryForSelectedItem() {
 	Copy the full path to the file represented by the selected item to the
 	clipboard.
 */
-void ElementsPanelWidget::copyPathForSelectedItem() {
+void ElementsPanelWidget::copyPathForSelectedItem()
+{
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString file_path = elements_panel -> filePathForItem(qtwi);
 		file_path = QDir::toNativeSeparators(file_path);
@@ -157,7 +160,8 @@ void ElementsPanelWidget::copyPathForSelectedItem() {
 /**
 	Recharge le panel d'elements
 */
-void ElementsPanelWidget::reloadAndFilter() {
+void ElementsPanelWidget::reloadAndFilter()
+{
 	// recharge tous les elements
 	elements_panel -> reload();
 	// reapplique le filtre
@@ -169,7 +173,8 @@ void ElementsPanelWidget::reloadAndFilter() {
 /**
 	* Emit the requestForProject signal with te selected project
 */
-void ElementsPanelWidget::activateProject() {
+void ElementsPanelWidget::activateProject()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForProject(selected_project));
 	}
@@ -178,7 +183,8 @@ void ElementsPanelWidget::activateProject() {
 /**
 	Emet le signal requestForProjectClosing avec le projet selectionne
 */
-void ElementsPanelWidget::closeProject() {
+void ElementsPanelWidget::closeProject()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForProjectClosing(selected_project));
 	}
@@ -187,7 +193,8 @@ void ElementsPanelWidget::closeProject() {
 /**
 	Emet le signal requestForProjectPropertiesEdition avec le projet selectionne
 */
-void ElementsPanelWidget::editProjectProperties() {
+void ElementsPanelWidget::editProjectProperties()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForProjectPropertiesEdition(selected_project));
 	}
@@ -196,7 +203,8 @@ void ElementsPanelWidget::editProjectProperties() {
 /**
 	Emet le signal requestForDiagramPropertiesEdition avec le schema selectionne
 */
-void ElementsPanelWidget::editDiagramProperties() {
+void ElementsPanelWidget::editDiagramProperties()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramPropertiesEdition(selected_diagram));
 	}
@@ -205,7 +213,8 @@ void ElementsPanelWidget::editDiagramProperties() {
 /**
 	Emet le signal requestForNewDiagram avec le projet selectionne
 */
-void ElementsPanelWidget::newDiagram() {
+void ElementsPanelWidget::newDiagram()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForNewDiagram(selected_project));
 	}
@@ -214,7 +223,8 @@ void ElementsPanelWidget::newDiagram() {
 /**
 	Emet le signal requestForDiagramDeletion avec le schema selectionne
 */
-void ElementsPanelWidget::deleteDiagram() {
+void ElementsPanelWidget::deleteDiagram()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramDeletion(selected_diagram));
 	}
@@ -223,7 +233,8 @@ void ElementsPanelWidget::deleteDiagram() {
 /**
 	Emet le signal requestForDiagramMoveUpTop avec le schema selectionne
 +*/
-void ElementsPanelWidget::moveDiagramUpTop() {
+void ElementsPanelWidget::moveDiagramUpTop()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUpTop(selected_diagram));
 	}
@@ -234,7 +245,8 @@ void ElementsPanelWidget::moveDiagramUpTop() {
 /**
 	Emet le signal requestForDiagramMoveUp avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramUp() {
+void ElementsPanelWidget::moveDiagramUp()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUp(selected_diagram));
 	}
@@ -243,7 +255,8 @@ void ElementsPanelWidget::moveDiagramUp() {
 /**
 	Emet le signal requestForDiagramMoveDown avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramDown() {
+void ElementsPanelWidget::moveDiagramDown()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveDown(selected_diagram));
 	}
@@ -252,7 +265,8 @@ void ElementsPanelWidget::moveDiagramDown() {
 /**
 	Emet le signal requestForDiagramMoveUpx10 avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramUpx10() {
+void ElementsPanelWidget::moveDiagramUpx10()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUpx10(selected_diagram));
 	}
@@ -261,7 +275,8 @@ void ElementsPanelWidget::moveDiagramUpx10() {
 /**
 	Emet le signal requestForDiagramMoveDownx10 avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramDownx10() {
+void ElementsPanelWidget::moveDiagramDownx10()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveDownx10(selected_diagram));
 	}
@@ -271,7 +286,8 @@ void ElementsPanelWidget::moveDiagramDownx10() {
 /**
 	Opens a template editor to create a new title block template.
 */
-void ElementsPanelWidget::addTitleBlockTemplate() {
+void ElementsPanelWidget::addTitleBlockTemplate()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (!current_item) return;
 	
@@ -285,7 +301,8 @@ void ElementsPanelWidget::addTitleBlockTemplate() {
 /**
 	Opens an editor to edit the currently selected title block template, if any.
 */
-void ElementsPanelWidget::editTitleBlockTemplate() {
+void ElementsPanelWidget::editTitleBlockTemplate()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (current_item && current_item -> type() == QET::TitleBlockTemplate) {
 		QETApp::instance() -> openTitleBlockTemplate(
@@ -297,7 +314,8 @@ void ElementsPanelWidget::editTitleBlockTemplate() {
 /**
 	Delete the currently selected title block template, if any.
 */
-void ElementsPanelWidget::removeTitleBlockTemplate() {
+void ElementsPanelWidget::removeTitleBlockTemplate()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (current_item && current_item -> type() == QET::TitleBlockTemplate) {
 		TitleBlockTemplateDeleter(
@@ -310,7 +328,8 @@ void ElementsPanelWidget::removeTitleBlockTemplate() {
 /**
 	Met a jour les boutons afin d'assurer la coherence de l'interface
 */
-void ElementsPanelWidget::updateButtons() {
+void ElementsPanelWidget::updateButtons()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	int current_type = elements_panel -> currentItemType();
 	

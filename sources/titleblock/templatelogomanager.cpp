@@ -37,14 +37,16 @@ TitleBlockTemplateLogoManager::TitleBlockTemplateLogoManager(TitleBlockTemplate 
 /**
 	Destructor
 */
-TitleBlockTemplateLogoManager::~TitleBlockTemplateLogoManager() {
+TitleBlockTemplateLogoManager::~TitleBlockTemplateLogoManager()
+{
 }
 
 /**
 	@return the name of the currently selected logo, or a null QString if none
 	is selected.
 */
-QString TitleBlockTemplateLogoManager::currentLogo() const {
+QString TitleBlockTemplateLogoManager::currentLogo() const
+{
 	if (!managed_template_) return QString();
 	
 	QListWidgetItem *current_item = logos_view_ -> currentItem();
@@ -57,21 +59,24 @@ QString TitleBlockTemplateLogoManager::currentLogo() const {
 	@return Whether this logo manager should allow logo edition
 	(renaming, addition, deletion).
 */
-bool TitleBlockTemplateLogoManager::isReadOnly() const {
+bool TitleBlockTemplateLogoManager::isReadOnly() const
+{
 	return(read_only_);
 }
 
 /**
 	Emit the logosChanged() signal.
 */
-void TitleBlockTemplateLogoManager::emitLogosChangedSignal() {
+void TitleBlockTemplateLogoManager::emitLogosChangedSignal()
+{
 	emit(logosChanged(const_cast<const TitleBlockTemplate *>(managed_template_)));
 }
 
 /**
 	Initialize widgets composing the Logo manager
 */
-void TitleBlockTemplateLogoManager::initWidgets() {
+void TitleBlockTemplateLogoManager::initWidgets()
+{
 	open_dialog_dir_.setPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
 	
 	setWindowTitle(tr("Gestionnaire de logos"));
@@ -133,7 +138,8 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 /**
 	Update the logos display.
 */
-void TitleBlockTemplateLogoManager::fillView() {
+void TitleBlockTemplateLogoManager::fillView()
+{
 	if (!managed_template_) return;
 	logos_view_ -> clear();
 	
@@ -167,7 +173,8 @@ void TitleBlockTemplateLogoManager::fillView() {
 	@return the icon size to display the logos embedded within the managed
 	template.
 */
-QSize TitleBlockTemplateLogoManager::iconsize() const {
+QSize TitleBlockTemplateLogoManager::iconsize() const
+{
 	return(QSize(80, 80));
 }
 
@@ -261,7 +268,8 @@ void TitleBlockTemplateLogoManager::updateLogoInformations(QListWidgetItem *curr
 	Ask the user for a filepath, and add it as a new logo in the managed
 	template.
 */
-void TitleBlockTemplateLogoManager::addLogo() {
+void TitleBlockTemplateLogoManager::addLogo()
+{
 	if (!managed_template_) return;
 	
 	QString filepath = QFileDialog::getOpenFileName(
@@ -293,7 +301,8 @@ void TitleBlockTemplateLogoManager::addLogo() {
 /**
 	Export the currently selected logo
 */
-void TitleBlockTemplateLogoManager::exportLogo() {
+void TitleBlockTemplateLogoManager::exportLogo()
+{
 	QString current_logo = currentLogo();
 	if (current_logo.isNull()) return;
 	
@@ -316,7 +325,8 @@ void TitleBlockTemplateLogoManager::exportLogo() {
 /**
 	Delete the currently selected logo.
 */
-void TitleBlockTemplateLogoManager::removeLogo() {
+void TitleBlockTemplateLogoManager::removeLogo()
+{
 	QString current_logo = currentLogo();
 	if (current_logo.isNull()) return;
 	
@@ -329,7 +339,8 @@ void TitleBlockTemplateLogoManager::removeLogo() {
 /**
 	Rename currently selected logo.
 */
-void TitleBlockTemplateLogoManager::renameLogo() {
+void TitleBlockTemplateLogoManager::renameLogo()
+{
 	QString current_logo = currentLogo();
 	if (current_logo.isNull()) return;
 	

@@ -75,7 +75,8 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 }
 
 /// Destructeur
-ArcEditor::~ArcEditor() {}
+ArcEditor::~ArcEditor()
+{}
 
 void ArcEditor::setUpChangeConnections()
 {
@@ -140,11 +141,13 @@ bool ArcEditor::setParts(QList <CustomElementPart *> parts)
 	@brief ArcEditor::currentPart
 	@return the curent edited part, or 0 if there is no edited part
 */
-CustomElementPart *ArcEditor::currentPart() const {
+CustomElementPart *ArcEditor::currentPart() const
+{
 	return(part);
 }
 
-QList<CustomElementPart*> ArcEditor::currentParts() const {
+QList<CustomElementPart*> ArcEditor::currentParts() const
+{
 	return style_->currentParts();
 }
 

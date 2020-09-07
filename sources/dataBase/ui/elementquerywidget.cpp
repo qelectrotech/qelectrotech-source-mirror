@@ -98,7 +98,8 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 /**
 	@brief ElementQueryWidget::~ElementQueryWidget
 */
-ElementQueryWidget::~ElementQueryWidget() {
+ElementQueryWidget::~ElementQueryWidget()
+{
 	delete ui;
 }
 
@@ -413,7 +414,8 @@ void ElementQueryWidget::setCount(QString text, bool set)
 /**
 	@brief ElementQueryWidget::updateQueryLine
 */
-void ElementQueryWidget::updateQueryLine() {
+void ElementQueryWidget::updateQueryLine()
+{
 	ui->m_sql_query->setText(queryStr());
 }
 
@@ -464,7 +466,8 @@ void ElementQueryWidget::setUpItems()
 	@param key
 	@return the filter associated to key
 */
-QPair<int, QString> ElementQueryWidget::FilterFor(const QString &key) const {
+QPair<int, QString> ElementQueryWidget::FilterFor(const QString &key) const
+{
 	return m_filter.value(key, qMakePair(0, QString()));
 }
 

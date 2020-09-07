@@ -43,21 +43,24 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 	Destructeur
 	@todo determiner s'il faut detruire ou non le menu
 */
-RecentFiles::~RecentFiles() {
+RecentFiles::~RecentFiles()
+{
 	delete menu_;
 }
 
 /**
 	@return le nombre de fichiers a retenir
 */
-int RecentFiles::size() const {
+int RecentFiles::size() const
+{
 	return(size_);
 }
 
 /**
 	@return un menu listant les derniers fichiers ouverts
 */
-QMenu *RecentFiles::menu() const {
+QMenu *RecentFiles::menu() const
+{
 	return(menu_);
 }
 
@@ -65,7 +68,8 @@ QMenu *RecentFiles::menu() const {
 	@return l'icone affichee a cote de chaque fichier, ou une QIcon nulle si
 	aucune icone n'est utilisee.
 */
-QIcon RecentFiles::iconForFiles() const {
+QIcon RecentFiles::iconForFiles() const
+{
 	return(files_icon_);
 }
 
@@ -82,7 +86,8 @@ void RecentFiles::setIconForFiles(const QIcon &icon) {
 /**
 	Oublie les fichiers recents
 */
-void RecentFiles::clear() {
+void RecentFiles::clear()
+{
 	list_.clear();
 	buildMenu();
 }
@@ -90,7 +95,8 @@ void RecentFiles::clear() {
 /**
 	Sauvegarde les fichiers recents dans la configuration
 */
-void RecentFiles::save() {
+void RecentFiles::save()
+{
 	saveFilesToSettings();
 }
 
@@ -164,7 +170,8 @@ void RecentFiles::saveFilesToSettings()
 /**
 	Construit le menu
 */
-void RecentFiles::buildMenu() {
+void RecentFiles::buildMenu()
+{
 	// reinitialise le menu
 	if (!menu_) {
 		menu_ = new QMenu;

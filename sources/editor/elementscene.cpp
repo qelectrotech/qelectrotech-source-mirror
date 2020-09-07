@@ -347,7 +347,8 @@ void ElementScene::setBehavior(ElementScene::Behavior b) {
 	m_behavior = b;
 }
 
-ElementScene::Behavior ElementScene::behavior() const {
+ElementScene::Behavior ElementScene::behavior() const
+{
 	return m_behavior;
 }
 
@@ -356,7 +357,8 @@ ElementScene::Behavior ElementScene::behavior() const {
 	@return the horizontal size of the grid
 	\~French la taille horizontale de la grille
 */
-int ElementScene::xGrid() const {
+int ElementScene::xGrid() const
+{
 	return(m_x_grid);
 }
 
@@ -365,7 +367,8 @@ int ElementScene::xGrid() const {
 	@return vertical grid size
 	\~French la taille verticale de la grille
 */
-int ElementScene::yGrid() const {
+int ElementScene::yGrid() const
+{
 	return(m_y_grid);
 }
 
@@ -580,7 +583,8 @@ QRectF ElementScene::elementSceneGeometricRect() const{
 	\~French true si l'element comporte au moins une borne,
 	false s'il n'en a aucune.
 */
-bool ElementScene::containsTerminals() const {
+bool ElementScene::containsTerminals() const
+{
 	foreach(QGraphicsItem *qgi,items()) {
 		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
 			return(true);
@@ -594,7 +598,8 @@ bool ElementScene::containsTerminals() const {
 	@return the undo stack of this element editor
 	\~French la pile d'annulations de cet editeur d'element
 */
-QUndoStack &ElementScene::undoStack() {
+QUndoStack &ElementScene::undoStack()
+{
 	return(m_undo_stack);
 }
 
@@ -603,7 +608,8 @@ QUndoStack &ElementScene::undoStack() {
 	@return the QGraphicsItem manager of this item editor
 	\~French le gestionnaire de QGraphicsItem de cet editeur d'element
 */
-QGIManager &ElementScene::qgiManager() {
+QGIManager &ElementScene::qgiManager()
+{
 	return(m_qgi_manager);
 }
 
@@ -612,7 +618,8 @@ QGIManager &ElementScene::qgiManager() {
 	@return true if the clipboard appears to contain an element
 	\~French true si le presse-papier semble contenir un element
 */
-bool ElementScene::clipboardMayContainElement() {
+bool ElementScene::clipboardMayContainElement()
+{
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
 	bool may_be_element = clipboard_text.startsWith("<definition")
 			&& clipboard_text.endsWith("</definition>");
@@ -639,7 +646,8 @@ bool ElementScene::wasCopiedFromThisElement(const QString &clipboard_content) {
 	\~French Gere le fait de couper la selection
 	= l'exporter en XML dans le presse-papier puis la supprimer.
 */
-void ElementScene::cut() {
+void ElementScene::cut()
+{
 	copy();
 	QList<QGraphicsItem *> cut_content = selectedItems();
 	clearSelection();
@@ -653,7 +661,8 @@ void ElementScene::cut() {
 	\~French Gere le fait de copier la selection
 	= l'exporter en XML dans lepresse-papier.
 */
-void ElementScene::copy() {
+void ElementScene::copy()
+{
 	// accede au presse-papier
 	QClipboard *clipboard = QApplication::clipboard();
 	
@@ -674,7 +683,8 @@ void ElementScene::copy() {
 	@brief ElementScene::editor
 	@return
 */
-QETElementEditor* ElementScene::editor() const {
+QETElementEditor* ElementScene::editor() const
+{
 	return m_element_editor;
 }
 
@@ -727,7 +737,8 @@ void ElementScene::slot_select(const ElementContent &content)
 	@brief ElementScene::slot_selectAll
 	Select all items
 */
-void ElementScene::slot_selectAll() {
+void ElementScene::slot_selectAll()
+{
 	slot_select(items());
 }
 
@@ -735,7 +746,8 @@ void ElementScene::slot_selectAll() {
 	@brief ElementScene::slot_deselectAll
 	deselect all item
 */
-void ElementScene::slot_deselectAll() {
+void ElementScene::slot_deselectAll()
+{
 	slot_select(ElementContent());
 }
 
@@ -744,7 +756,8 @@ void ElementScene::slot_deselectAll() {
 	Inverse Selection
 	\~French Inverse la selection
 */
-void ElementScene::slot_invertSelection() {
+void ElementScene::slot_invertSelection()
+{
 	blockSignals(true);
 	foreach(QGraphicsItem *qgi,
 			items()) qgi -> setSelected(!qgi -> isSelected());
@@ -757,7 +770,8 @@ void ElementScene::slot_invertSelection() {
 	Delete selected items
 	\~French Supprime les elements selectionnes
 */
-void ElementScene::slot_delete() {
+void ElementScene::slot_delete()
+{
 	// check that there is something selected
 	// verifie qu'il y a qqc de selectionne
 	QList<QGraphicsItem *> selected_items = selectedItems();
@@ -781,7 +795,8 @@ void ElementScene::slot_delete() {
 	de cet element. Concretement, ce champ libre est destine a accueillir
 	des informations sur l'auteur de l'element, sa licence, etc.
 */
-void ElementScene::slot_editAuthorInformations() {
+void ElementScene::slot_editAuthorInformations()
+{
 	bool is_read_only = m_element_editor && m_element_editor -> isReadOnly();
 	
 	// create a dialogue
@@ -886,7 +901,8 @@ void ElementScene::slot_editNames()
 	@brief ElementScene::primitives
 	@return the list of primitives currently present on the scene.
 */
-QList<CustomElementPart *> ElementScene::primitives() const {
+QList<CustomElementPart *> ElementScene::primitives() const
+{
 	QList<CustomElementPart *> primitives_list;
 	foreach (QGraphicsItem *item, items()) {
 		if (CustomElementPart *primitive = dynamic_cast<CustomElementPart *>(item)) {
@@ -902,7 +918,8 @@ QList<CustomElementPart *> ElementScene::primitives() const {
 	@return the parts of the element ordered by increasing zValue
 	\~French les parties de l'element ordonnes par zValue croissante
 */
-QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
+QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const
+{
 	// handle dummy request, i.e. when neither Selected nor NonSelected are set
 	if (!(options & ElementScene::Selected)
 			&&
@@ -968,7 +985,8 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 	@return the selected graphic parts
 	\~French les parties graphiques selectionnees
 */
-ElementContent ElementScene::selectedContent() const {
+ElementContent ElementScene::selectedContent() const
+{
 	ElementContent content;
 	foreach(QGraphicsItem *qgi, zItems()) {
 		if (qgi -> isSelected()) content << qgi;
@@ -1031,7 +1049,8 @@ void ElementScene::reset()
 	exprime dans les coordonnes de la scene
 */
 QRectF ElementScene::elementContentBoundingRect(
-		const ElementContent &content) const {
+		const ElementContent &content) const
+{
 	QRectF bounding_rect;
 	foreach(QGraphicsItem *qgi, content) {
 		// skip non-primitives QGraphicsItems (paste area, selection decorator)
@@ -1234,7 +1253,8 @@ void ElementScene::addPrimitive(QGraphicsItem *primitive) {
 	Initializes the paste area
 	\~French Initialise la zone de collage
 */
-void ElementScene::initPasteArea() {
+void ElementScene::initPasteArea()
+{
 	m_paste_area = new QGraphicsRectItem();
 	m_paste_area -> setZValue(1000000);
 	
@@ -1282,7 +1302,8 @@ bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
 	try to center better is possible the element to the scene
 	(the calcul isn't optimal but work good)
 */
-void ElementScene::centerElementToOrigine() {
+void ElementScene::centerElementToOrigine()
+{
 	QRectF size= elementSceneGeometricRect();
 	int center_x = qRound(size.center().x());
 	int center_y = qRound(size.center().y());

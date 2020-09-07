@@ -79,14 +79,15 @@ class Conductor : public QGraphicsObject
 		ConductorTextItem *textItem() const;
 		void updatePath(const QRectF & = QRectF());
 
-			//This method do nothing, it's only made to be used with Q_PROPERTY
-			//It's used to anim the path when is change
+		//This method do nothing, it's only made to be used with Q_PROPERTY
+		//It's used to anim the path when is change
 		void updatePathAnimate(const int = 1) {updatePath();}
 		int fakePath() {return 1;}
 
-		void paint(QPainter *,
-			   const QStyleOptionGraphicsItem *,
-			   QWidget *) override;
+		void paint(
+				QPainter *,
+				const QStyleOptionGraphicsItem *,
+				QWidget *) override;
 		QRectF boundingRect() const override;
 		QPainterPath shape() const override;
 		virtual QPainterPath nearShape() const;
@@ -100,9 +101,10 @@ class Conductor : public QGraphicsObject
 	public:
 		static bool valideXml (QDomElement &);
 		bool fromXml (QDomElement &);
-		QDomElement toXml (QDomDocument &,
-				   QHash<Terminal *,
-				   int> &) const;
+		QDomElement toXml (
+				QDomDocument &,
+				QHash<Terminal *,
+				int> &) const;
 	private:
 		bool pathFromXml(const QDomElement &);
 
@@ -110,8 +112,9 @@ class Conductor : public QGraphicsObject
 		QVector <QPointF> handlerPoints() const;
 		const QList<ConductorSegment *> segmentsList() const;
 
-		void setPropertyToPotential(const ConductorProperties &property,
-					    bool only_text = false);
+		void setPropertyToPotential(
+				const ConductorProperties &property,
+				bool only_text = false);
 		void setProperties(const ConductorProperties &property);
 		ConductorProperties properties() const;
 
@@ -128,12 +131,15 @@ class Conductor : public QGraphicsObject
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 
-		autonum::sequentialNumbers sequenceNum () const {return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceNum()      {return m_autoNum_seq;}
+		autonum::sequentialNumbers sequenceNum () const
+		{return m_autoNum_seq;}
+		autonum::sequentialNumbers& rSequenceNum()
+		{return m_autoNum_seq;}
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
 
 	private:
-		void setUpConnectionForFormula(QString old_formula, QString new_formula);
+		void setUpConnectionForFormula(
+				QString old_formula, QString new_formula);
 		autonum::sequentialNumbers m_autoNum_seq;
 
 	public:
@@ -143,20 +149,30 @@ class Conductor : public QGraphicsObject
 		void displayedTextChanged();
 	
 	protected:
-		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(
+				QGraphicsSceneMouseEvent *event) override;
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
-		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(
+				QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
-		QVariant itemChange(GraphicsItemChange, const QVariant &) override;
-		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		QVariant itemChange(
+				GraphicsItemChange, const QVariant &) override;
+		bool sceneEventFilter(
+				QGraphicsItem *watched, QEvent *event) override;
 
 	private:
 		void adjusteHandlerPos();
 		
-		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMousePressEvent(
+				QetGraphicsHandlerItem *qghi,
+				QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent(
+				QetGraphicsHandlerItem *qghi,
+				QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent(
+				QetGraphicsHandlerItem *qghi,
+				QGraphicsSceneMouseEvent *event);
 		void addHandler();
 		void removeHandler();
 		

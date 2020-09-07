@@ -166,21 +166,24 @@ inline void QETElementEditor::setNames(const NamesList &nameslist) {
 /**
 	@return the location of the currently edited element
 */
-inline ElementsLocation QETElementEditor::location() const {
+inline ElementsLocation QETElementEditor::location() const
+{
 	return(location_);
 }
 
 /**
 	@return the filename of the currently edited element
 */
-inline QString QETElementEditor::fileName() const {
+inline QString QETElementEditor::fileName() const
+{
 	return(filename_);
 }
 
 /**
 	@return the editing scene
 */
-inline ElementScene *QETElementEditor::elementScene() const {
+inline ElementScene *QETElementEditor::elementScene() const
+{
 	return(m_elmt_scene);
 }
 

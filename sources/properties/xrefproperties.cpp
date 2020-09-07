@@ -42,7 +42,8 @@ XRefProperties::XRefProperties()
 	@param prefix: prefix before properties name
 */
 void XRefProperties::toSettings(QSettings &settings,
-				const QString prefix) const {
+				const QString prefix) const
+{
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
@@ -96,7 +97,8 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	@param xml_document : QDomElement to use for saving
 	@return QDomElement
 */
-QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
+QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
+{
 
 	QDomElement xml_element = xml_document.createElement("xref");
 	xml_element.setAttribute("type", m_key);
@@ -191,7 +193,8 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 			m_xref_pos == xrp.m_xref_pos );
 }
 
-bool XRefProperties::operator !=(const XRefProperties &xrp) const {
+bool XRefProperties::operator !=(const XRefProperties &xrp) const
+{
 	return (! (*this == xrp));
 }
 

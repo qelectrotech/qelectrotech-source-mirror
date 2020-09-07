@@ -192,7 +192,8 @@ inline void ElementScene::setNames(const NamesList &nameslist) {
 	@brief ElementScene::names
 	@return the list of names of the currently edited element
 */
-inline NamesList ElementScene::names() const {
+inline NamesList ElementScene::names() const
+{
 	return(m_names_list);
 }
 
@@ -200,7 +201,8 @@ inline NamesList ElementScene::names() const {
 	@brief ElementScene::informations
 	@return extra informations of the currently edited element
 */
-inline QString ElementScene::informations() const {
+inline QString ElementScene::informations() const
+{
 	return(m_informations);
 }
 

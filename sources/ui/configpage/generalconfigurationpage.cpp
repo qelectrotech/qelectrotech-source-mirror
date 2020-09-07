@@ -234,7 +234,8 @@ void GeneralConfigurationPage::applyConf()
 	@brief GeneralConfigurationPage::title
 	@return The title of this page
 */
-QString GeneralConfigurationPage::title() const {
+QString GeneralConfigurationPage::title() const
+{
 	return(tr("Général", "configuration page title"));
 }
 
@@ -242,7 +243,8 @@ QString GeneralConfigurationPage::title() const {
 	@brief GeneralConfigurationPage::icon
 	@return The icon of this page
 */
-QIcon GeneralConfigurationPage::icon() const {
+QIcon GeneralConfigurationPage::icon() const
+{
 	return(QET::Icons::Settings);
 }
 
@@ -252,33 +254,33 @@ QIcon GeneralConfigurationPage::icon() const {
 */
 void GeneralConfigurationPage::fillLang()
 {
-	ui->m_lang_cb->addItem(QET::Icons::translation,  tr("Système"), "system");
+	ui->m_lang_cb->addItem(QET::Icons::translation,	tr("Système"), "system");
 	ui->m_lang_cb->insertSeparator(1);
 
 		// all lang available on lang directory
-	ui->m_lang_cb->addItem(QET::Icons::ar,           tr("Arabe"), "ar");
-	ui->m_lang_cb->addItem(QET::Icons::br,           tr("Brézilien"), "pt_br");
-	ui->m_lang_cb->addItem(QET::Icons::catalonia,    tr("Catalan"), "ca");
-	ui->m_lang_cb->addItem(QET::Icons::cs,           tr("Tchèque"), "cs");
-	ui->m_lang_cb->addItem(QET::Icons::de,           tr("Allemand"), "de");
-	ui->m_lang_cb->addItem(QET::Icons::da,           tr("Danois"), "da");
-	ui->m_lang_cb->addItem(QET::Icons::gr,           tr("Grec"), "el");
-	ui->m_lang_cb->addItem(QET::Icons::en,           tr("Anglais"), "en");
-	ui->m_lang_cb->addItem(QET::Icons::es,           tr("Espagnol"), "es");
-	ui->m_lang_cb->addItem(QET::Icons::fr,           tr("Français"), "fr");
-	ui->m_lang_cb->addItem(QET::Icons::hr,           tr("Croate"), "hr");
-	ui->m_lang_cb->addItem(QET::Icons::it,           tr("Italien"), "it");
-	ui->m_lang_cb->addItem(QET::Icons::jp,           tr("Japonais"), "ja");
-	ui->m_lang_cb->addItem(QET::Icons::pl,           tr("Polonais"), "pl");
-	ui->m_lang_cb->addItem(QET::Icons::pt,           tr("Portugais"), "pt");
-	ui->m_lang_cb->addItem(QET::Icons::ro,           tr("Roumains"), "ro");
-	ui->m_lang_cb->addItem(QET::Icons::ru,           tr("Russe"), "ru");
-	ui->m_lang_cb->addItem(QET::Icons::sl,           tr("Slovène"), "sl");
-	ui->m_lang_cb->addItem(QET::Icons::nl,           tr("Pays-Bas"), "nl");
-	ui->m_lang_cb->addItem(QET::Icons::no,           tr("Norvege"), "nb");
-	ui->m_lang_cb->addItem(QET::Icons::be,           tr("Belgique-Flemish"), "be");
-	ui->m_lang_cb->addItem(QET::Icons::tr,           tr("Turc"), "tr");
-	ui->m_lang_cb->addItem(QET::Icons::hu,           tr("Hongrois"), "hu");
+	ui->m_lang_cb->addItem(QET::Icons::ar,		tr("Arabe"), "ar");
+	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brézilien"), "pt_br");
+	ui->m_lang_cb->addItem(QET::Icons::catalonia,	tr("Catalan"), "ca");
+	ui->m_lang_cb->addItem(QET::Icons::cs,		tr("Tchèque"), "cs");
+	ui->m_lang_cb->addItem(QET::Icons::de,		tr("Allemand"), "de");
+	ui->m_lang_cb->addItem(QET::Icons::da,		tr("Danois"), "da");
+	ui->m_lang_cb->addItem(QET::Icons::gr,		tr("Grec"), "el");
+	ui->m_lang_cb->addItem(QET::Icons::en,		tr("Anglais"), "en");
+	ui->m_lang_cb->addItem(QET::Icons::es,		tr("Espagnol"), "es");
+	ui->m_lang_cb->addItem(QET::Icons::fr,		tr("Français"), "fr");
+	ui->m_lang_cb->addItem(QET::Icons::hr,		tr("Croate"), "hr");
+	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italien"), "it");
+	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japonais"), "ja");
+	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polonais"), "pl");
+	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portugais"), "pt");
+	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Roumains"), "ro");
+	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russe"), "ru");
+	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovène"), "sl");
+	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Pays-Bas"), "nl");
+	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norvege"), "nb");
+	ui->m_lang_cb->addItem(QET::Icons::be,		tr("Belgique-Flemish"), "be");
+	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turc"), "tr");
+	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hongrois"), "hu");
 
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system

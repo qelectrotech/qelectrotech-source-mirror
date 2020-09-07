@@ -49,11 +49,13 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	document() -> setDefaultTextOption(option);
 }
 
-QString PartDynamicTextField::name() const {
+QString PartDynamicTextField::name() const
+{
 	return tr("Champ de texte dynamique", "element part name");
 }
 
-QString PartDynamicTextField::xmlName() const {
+QString PartDynamicTextField::xmlName() const
+{
 	return QString("dynamic_text");
 }
 
@@ -90,7 +92,8 @@ void PartDynamicTextField::handleUserTransformation(
 	@param dom_doc
 	@return
 */
-const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const {
+const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
+{
 	QDomElement root_element = dom_doc.createElement(xmlName());
 
 	root_element.setAttribute("x", QString::number(pos().x()));
@@ -260,7 +263,8 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 	@brief PartDynamicTextField::textFrom
 	@return what the final text is created from.
 */
-DynamicElementTextItem::TextFrom PartDynamicTextField::textFrom() const {
+DynamicElementTextItem::TextFrom PartDynamicTextField::textFrom() const
+{
 	return m_text_from;
 }
 
@@ -291,7 +295,8 @@ void PartDynamicTextField::setTextFrom(DynamicElementTextItem::TextFrom text_fro
 	@brief PartDynamicTextField::text
 	@return the text of this text
 */
-QString PartDynamicTextField::text() const {
+QString PartDynamicTextField::text() const
+{
 	return m_text;
 }
 
@@ -337,7 +342,8 @@ void PartDynamicTextField::setCompositeText(const QString &text) {
 	@brief PartDynamicTextField::compositeText
 	@return the composite text of this text
 */
-QString PartDynamicTextField::compositeText() const {
+QString PartDynamicTextField::compositeText() const
+{
 	return m_composite_text;
 }
 
@@ -354,7 +360,8 @@ void PartDynamicTextField::setColor(const QColor& color) {
 	@brief PartDynamicTextField::color
 	@return The color of this text
 */
-QColor PartDynamicTextField::color() const {
+QColor PartDynamicTextField::color() const
+{
 	return defaultTextColor();
 }
 
@@ -364,7 +371,8 @@ void PartDynamicTextField::setFrame(bool frame) {
 	emit frameChanged(m_frame);
 }
 
-bool PartDynamicTextField::frame() const {
+bool PartDynamicTextField::frame() const
+{
 	return m_frame;
 }
 
@@ -403,7 +411,8 @@ void PartDynamicTextField::setAlignment(Qt::Alignment alignment) {
 	emit alignmentChanged(m_alignment);
 }
 
-Qt::Alignment PartDynamicTextField::alignment() const {
+Qt::Alignment PartDynamicTextField::alignment() const
+{
 	return m_alignment;
 }
 
@@ -532,7 +541,8 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
 	Used to up to date this text field,
 	when the element information (see elementScene) changed
 */
-void PartDynamicTextField::elementInfoChanged() {
+void PartDynamicTextField::elementInfoChanged()
+{
 	if(!elementScene())
 		return;
 
@@ -543,11 +553,13 @@ void PartDynamicTextField::elementInfoChanged() {
 			m_composite_text, elementScene() -> elementInformation()));
 }
 
-void PartDynamicTextField::prepareAlignment() {
+void PartDynamicTextField::prepareAlignment()
+{
 	m_alignment_rect = boundingRect();
 }
 
-void PartDynamicTextField::finishAlignment() {
+void PartDynamicTextField::finishAlignment()
+{
 	if(m_block_alignment)
 		return;
 

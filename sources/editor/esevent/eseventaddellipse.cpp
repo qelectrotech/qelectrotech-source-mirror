@@ -34,7 +34,8 @@ ESEventAddEllipse::ESEventAddEllipse(ElementScene *scene) :
 /**
 	@brief ESEventAddEllipse::~ESEventAddEllipse
 */
-ESEventAddEllipse::~ESEventAddEllipse() {
+ESEventAddEllipse::~ESEventAddEllipse()
+{
 	if (m_running || m_abort){
 		delete m_ellipse;
 	}

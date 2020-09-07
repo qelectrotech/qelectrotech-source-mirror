@@ -31,13 +31,15 @@ GridLayoutAnimation::GridLayoutAnimation(QGraphicsGridLayout *grid, QObject *par
 /**
 	Destructor
 */
-GridLayoutAnimation::~GridLayoutAnimation() {
+GridLayoutAnimation::~GridLayoutAnimation()
+{
 }
 
 /**
 	@return the animated grid
 */
-QGraphicsGridLayout *GridLayoutAnimation::grid() {
+QGraphicsGridLayout *GridLayoutAnimation::grid()
+{
 	return(grid_);
 }
 
@@ -51,7 +53,8 @@ void GridLayoutAnimation::setGrid(QGraphicsGridLayout *grid) {
 /**
 	@return the index of the row/column to be animated
 */
-int GridLayoutAnimation::index() const {
+int GridLayoutAnimation::index() const
+{
 	return(index_);
 }
 
@@ -65,7 +68,8 @@ void GridLayoutAnimation::setIndex(int index) {
 /**
 	@return true if this object acts on a row, false if it acts on a column.
 */
-bool GridLayoutAnimation::actsOnRows() const {
+bool GridLayoutAnimation::actsOnRows() const
+{
 	return(row_);
 }
 

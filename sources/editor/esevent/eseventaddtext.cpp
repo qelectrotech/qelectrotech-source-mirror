@@ -37,7 +37,8 @@ ESEventAddText::ESEventAddText(ElementScene *scene) :
 /**
 	@brief ESEventAddText::~ESEventAddText
 */
-ESEventAddText::~ESEventAddText() {
+ESEventAddText::~ESEventAddText()
+{
 		delete m_text;
 }
 

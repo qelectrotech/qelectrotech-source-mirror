@@ -15,7 +15,8 @@ TerminalData::TerminalData(QGraphicsObject *parent):
 	init();
 }
 
-void TerminalData::init() {
+void TerminalData::init()
+{
 }
 
 TerminalData::~TerminalData()

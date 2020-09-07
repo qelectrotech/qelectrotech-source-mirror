@@ -121,7 +121,8 @@ QETProject::~QETProject()
 	@brief QETProject::dataBase
 	@return The data base of this project
 */
-projectDataBase *QETProject::dataBase() {
+projectDataBase *QETProject::dataBase()
+{
 	return &m_data_base;
 }
 
@@ -129,7 +130,8 @@ projectDataBase *QETProject::dataBase() {
 	@brief QETProject::uuid
 	@return the uuid of this project
 */
-QUuid QETProject::uuid() const {
+QUuid QETProject::uuid() const
+{
 	return m_uuid;
 }
 
@@ -207,14 +209,16 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	@return l'etat du projet
 	@see ProjectState
 */
-QETProject::ProjectState QETProject::state() const {
+QETProject::ProjectState QETProject::state() const
+{
 	return(m_state);
 }
 
 /**
 	@return la liste des schemas de ce projet
 */
-QList<Diagram *> QETProject::diagrams() const {
+QList<Diagram *> QETProject::diagrams() const
+{
 	return(m_diagrams_list);
 }
 
@@ -224,7 +228,8 @@ QList<Diagram *> QETProject::diagrams() const {
 	or -1 if it is not part of this project.
 	Note: this returns 0 for the first diagram, not 1
 */
-int QETProject::folioIndex(const Diagram *diagram) const {
+int QETProject::folioIndex(const Diagram *diagram) const
+{
 	// QList::indexOf returns -1 if no item matched.
 	return(m_diagrams_list.indexOf(const_cast<Diagram *>(diagram)));
 }
@@ -233,21 +238,24 @@ int QETProject::folioIndex(const Diagram *diagram) const {
 	@brief QETProject::embeddedCollection
 	@return The embedded collection
 */
-XmlElementCollection *QETProject::embeddedElementCollection() const {
+XmlElementCollection *QETProject::embeddedElementCollection() const
+{
 	return m_elements_collection;
 }
 
 /**
 	@return the title block templates collection enbeedded within this project
 */
-TitleBlockTemplatesProjectCollection *QETProject::embeddedTitleBlockTemplatesCollection() {
+TitleBlockTemplatesProjectCollection *QETProject::embeddedTitleBlockTemplatesCollection()
+{
 	return(&m_titleblocks_collection);
 }
 
 /**
 	@return le chemin du fichier dans lequel ce projet est enregistre
 */
-QString QETProject::filePath() {
+QString QETProject::filePath()
+{
 	return(m_file_path);
 }
 
@@ -295,7 +303,8 @@ void QETProject::setFilePath(const QString &filepath)
 	enregistre ; dans le cas contraire, cette methode retourne l'emplacement
 	du bureau de l'utilisateur.
 */
-QString QETProject::currentDir() const {
+QString QETProject::currentDir() const
+{
 	QString current_directory;
 	if (m_file_path.isEmpty()) {
 		current_directory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
@@ -314,7 +323,8 @@ QString QETProject::currentDir() const {
 	De plus, si le projet est en lecture seule, le tag "[lecture seule]" est
 	ajoute.
 */
-QString QETProject::pathNameTitle() const {
+QString QETProject::pathNameTitle() const
+{
 	QString final_title;
 	
 	if (!project_title_.isEmpty()) {
@@ -363,7 +373,8 @@ QString QETProject::pathNameTitle() const {
 /**
 	@return le titre du projet
 */
-QString QETProject::title() const {
+QString QETProject::title() const
+{
 	return(project_title_);
 }
 
@@ -372,7 +383,8 @@ QString QETProject::title() const {
 	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
 	depuis un fichier, cette methode retourne -1.
 */
-qreal QETProject::declaredQElectroTechVersion() {
+qreal QETProject::declaredQElectroTechVersion()
+{
 	return(m_project_qet_version);
 }
 
@@ -396,7 +408,8 @@ void QETProject::setTitle(const QString &title) {
 	@return les dimensions par defaut utilisees lors de la creation d'un
 	nouveau schema dans ce projet.
 */
-BorderProperties QETProject::defaultBorderProperties() const {
+BorderProperties QETProject::defaultBorderProperties() const
+{
 	return(default_border_properties_);
 }
 
@@ -413,7 +426,8 @@ void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 	@return le cartouche par defaut utilise lors de la creation d'un
 	nouveau schema dans ce projet.
 */
-TitleBlockProperties QETProject::defaultTitleBlockProperties() const {
+TitleBlockProperties QETProject::defaultTitleBlockProperties() const
+{
 	return(default_titleblock_properties_);
 }
 
@@ -451,7 +465,8 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 	@return le type de conducteur par defaut utilise lors de la creation d'un
 	nouveau schema dans ce projet.
 */
-ConductorProperties QETProject::defaultConductorProperties() const {
+ConductorProperties QETProject::defaultConductorProperties() const
+{
 	return(default_conductor_properties_);
 }
 
@@ -463,7 +478,8 @@ void QETProject::setDefaultConductorProperties(const ConductorProperties &conduc
 	default_conductor_properties_ = conductor;
 }
 
-QString QETProject::defaultReportProperties() const {
+QString QETProject::defaultReportProperties() const
+{
 	return m_default_report_properties;
 }
 
@@ -490,7 +506,8 @@ void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash)
 	@brief QETProject::conductorAutoNum
 	@return All value of conductor autonum stored in project
 */
-QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const {
+QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const
+{
 	return m_conductor_autonum;
 }
 
@@ -498,7 +515,8 @@ QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const {
 	@brief QETProject::elementAutoNum
 	@return All value of element autonum stored in project
 */
-QHash <QString, NumerotationContext> QETProject::elementAutoNum() const {
+QHash <QString, NumerotationContext> QETProject::elementAutoNum() const
+{
 	return m_element_autonum;
 }
 
@@ -520,7 +538,8 @@ QString QETProject::elementAutoNumFormula (const QString& key) const
 	@brief QETProject::elementAutoNumCurrentFormula
 	@return current formula being used by project
 */
-QString QETProject::elementAutoNumCurrentFormula() const {
+QString QETProject::elementAutoNumCurrentFormula() const
+{
 	return elementAutoNumFormula(m_current_element_autonum);
 }
 
@@ -528,7 +547,8 @@ QString QETProject::elementAutoNumCurrentFormula() const {
 	@brief QETProject::elementCurrentAutoNum
 	@return current element autonum title
 */
-QString QETProject::elementCurrentAutoNum () const {
+QString QETProject::elementCurrentAutoNum () const
+{
 	return m_current_element_autonum;
 }
 
@@ -557,7 +577,8 @@ QString QETProject::conductorAutoNumFormula (const QString& key) const
 	@brief QETProject::conductorCurrentAutoNum
 	@return current conductor autonum title
 */
-QString QETProject::conductorCurrentAutoNum () const {
+QString QETProject::conductorCurrentAutoNum () const
+{
 	return m_current_conductor_autonum;
 }
 
@@ -573,7 +594,8 @@ void QETProject::setCurrentConductorAutoNum(QString autoNum) {
 	@brief QETProject::folioAutoNum
 	@return All value of folio autonum stored in project
 */
-QHash <QString, NumerotationContext> QETProject::folioAutoNum() const {
+QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
+{
 	return  m_folio_autonum;
 }
 
@@ -647,7 +669,8 @@ void QETProject::removeFolioAutoNum(const QString& key) {
 	If key is not found, return an empty numerotation context
 	@param key
 */
-NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
+NumerotationContext QETProject::conductorAutoNum (const QString &key) const
+{
 	if (m_conductor_autonum.contains(key)) return m_conductor_autonum[key];
 	else return NumerotationContext();
 }
@@ -669,7 +692,8 @@ NumerotationContext QETProject::elementAutoNum (const QString &key) {
 	If key is not found, return an empty numerotation context
 	@param key
 */
-NumerotationContext QETProject::folioAutoNum (const QString &key) const {
+NumerotationContext QETProject::folioAutoNum (const QString &key) const
+{
 	if (m_folio_autonum.contains(key)) return m_folio_autonum[key];
 	else return NumerotationContext();
 }
@@ -704,7 +728,8 @@ void QETProject::freezeNewConductorLabel(bool freeze, int from, int to) {
 	@brief QETProject::isFreezeNewConductors
 	@return freeze new conductors Project Wide status
 */
-bool QETProject::isFreezeNewConductors() {
+bool QETProject::isFreezeNewConductors()
+{
 	return m_freeze_new_conductors;
 }
 
@@ -746,7 +771,8 @@ void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
 	@brief QETProject::freezeNewElements
 	@return freeze new elements Project Wide status
 */
-bool QETProject::isFreezeNewElements() {
+bool QETProject::isFreezeNewElements()
+{
 	return m_freeze_new_elements;
 }
 
@@ -785,7 +811,8 @@ void QETProject::setAutoConductor(bool ac)
 	emit Signal to add new Diagram with autonum
 	properties
 */
-void QETProject::autoFolioNumberingNewFolios(){
+void QETProject::autoFolioNumberingNewFolios()
+{
 	emit addAutoNumDiagram();
 }
 
@@ -821,7 +848,8 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 	@brief QETProject::toXml
 	@return un document XML representant le projet
 */
-QDomDocument QETProject::toXml() {
+QDomDocument QETProject::toXml()
+{
 	// racine du projet
 	QDomDocument xml_doc;
 	QDomElement project_root = xml_doc.createElement("project");
@@ -877,7 +905,8 @@ QDomDocument QETProject::toXml() {
 /**
 	Ferme le projet
 */
-bool QETProject::close() {
+bool QETProject::close()
+{
 	return(true);
 }
 
@@ -921,7 +950,8 @@ QETResult QETProject::write()
 	@brief QETProject::isReadOnly
 	@return true si le projet est en mode readonly, false sinon
 */
-bool QETProject::isReadOnly() const {
+bool QETProject::isReadOnly() const
+{
 	return(m_read_only && read_only_file_path_ == m_file_path);
 }
 
@@ -947,7 +977,8 @@ void QETProject::setReadOnly(bool read_only)
 	  - soit avec uniquement des schemas consideres comme vides
 	  - soit avec un titre de projet
 */
-bool QETProject::isEmpty() const {
+bool QETProject::isEmpty() const
+{
 	// si le projet a un titre, on considere qu'il n'est pas vide
 	if (!project_title_.isEmpty()) return(false);
 	
@@ -1614,7 +1645,8 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	@return La liste des noms a utiliser pour la categorie dediee aux elements
 	integres automatiquement dans le projet.
 */
-NamesList QETProject::namesListForIntegrationCategory() {
+NamesList QETProject::namesListForIntegrationCategory()
+{
 	NamesList names;
 
 	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440, 0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020, 0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B };
@@ -1657,7 +1689,8 @@ void QETProject::writeBackup()
 	@return true if project options (title, project-wide properties, settings
 	for new diagrams, diagrams order...) were modified, false otherwise.
 */
-bool QETProject::projectOptionsWereModified() {
+bool QETProject::projectOptionsWereModified()
+{
 	// unlike similar methods, this method does not compare the content against
 	// expected values; instead, we just check whether we have been set as modified.
 	return(m_modified);
@@ -1666,7 +1699,8 @@ bool QETProject::projectOptionsWereModified() {
 /**
 	@return the project-wide properties made available to child diagrams.
 */
-DiagramContext QETProject::projectProperties() {
+DiagramContext QETProject::projectProperties()
+{
 	return(m_project_properties);
 }
 
@@ -1687,7 +1721,8 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 	collection embarquee ne doivent avoir ete modifies.
 	@see diagramsWereModified(), embeddedCollectionWasModified()
 */
-bool QETProject::projectWasModified() {
+bool QETProject::projectWasModified()
+{
 
 	if ( projectOptionsWereModified()    ||
 		 !m_undo_stack -> isClean()       ||

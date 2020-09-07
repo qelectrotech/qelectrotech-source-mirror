@@ -60,7 +60,8 @@ void DiagramTextItem::build()
 	@brief DiagramTextItem::diagram
 	@return The diagram of this item or 0 if this text isn't in a diagram
 */
-Diagram *DiagramTextItem::diagram() const {
+Diagram *DiagramTextItem::diagram() const
+{
 	return(qobject_cast<Diagram *>(scene()));
 }
 
@@ -70,7 +71,8 @@ Diagram *DiagramTextItem::diagram() const {
 	This is used to be inherited by child class
 	@return
 */
-QDomElement DiagramTextItem::toXml(QDomDocument &) const {
+QDomElement DiagramTextItem::toXml(QDomDocument &) const
+{
 	return QDomElement();
 }
 
@@ -80,7 +82,8 @@ QDomElement DiagramTextItem::toXml(QDomDocument &) const {
 	@param movement Vecteur exprime en coordonnees locales
 	@return le meme vecteur, exprime en coordonnees de la scene
 */
-QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const
+{
 	// on definit deux points en coordonnees locales
 	QPointF local_origin(0.0, 0.0);
 	QPointF local_movement_point(movement);
@@ -99,7 +102,8 @@ QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
 	@param movement Vecteur exprime en coordonnees de la scene
 	@return le meme vecteur, exprime en coordonnees locales
 */
-QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const
+{
 	// on definit deux points sur la scene
 	QPointF scene_origin(0.0, 0.0);
 	QPointF scene_movement_point(movement);
@@ -118,7 +122,8 @@ QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const {
 	@param movement Vecteur exprime en coordonnees locales
 	@return le meme vecteur, exprime en coordonnees du parent
 */
-QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const
+{
 	// on definit deux points en coordonnees locales
 	QPointF local_origin(0.0, 0.0);
 	QPointF local_movement_point(movement);
@@ -137,7 +142,8 @@ QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
 	@param movement Vecteur exprime en coordonnees du parent
 	@return le meme vecteur, exprime en coordonnees locales
 */
-QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const
+{
 	// on definit deux points sur le parent
 	QPointF parent_origin(0.0, 0.0);
 	QPointF parent_movement_point(movement);
@@ -170,7 +176,8 @@ void DiagramTextItem::setColor(const QColor& color)
 	emit colorChanged(color);
 }
 
-QColor DiagramTextItem::color() const {
+QColor DiagramTextItem::color() const
+{
 	return defaultTextColor();
 }
 
@@ -221,7 +228,8 @@ void DiagramTextItem::setPlainText(const QString &text)
 	m_is_html = false;
 }
 
-bool DiagramTextItem::isHtml() const {
+bool DiagramTextItem::isHtml() const
+{
 	return m_is_html;
 }
 

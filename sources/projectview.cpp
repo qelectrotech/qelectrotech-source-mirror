@@ -54,7 +54,8 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	Destructeur
 	Supprime les DiagramView embarquees
 */
-ProjectView::~ProjectView() {
+ProjectView::~ProjectView()
+{
 	for (auto dv_ : m_diagram_ids.values())
 		dv_->deleteLater();
 }
@@ -62,7 +63,8 @@ ProjectView::~ProjectView() {
 /**
 	@return le projet actuellement visualise par le ProjectView
 */
-QETProject *ProjectView::project() {
+QETProject *ProjectView::project()
+{
 	return(m_project);
 }
 
@@ -94,7 +96,8 @@ void ProjectView::setProject(QETProject *project)
 /**
 	@return la liste des schemas ouverts dans le projet
 */
-QList<DiagramView *> ProjectView::diagram_views() const {
+QList<DiagramView *> ProjectView::diagram_views() const
+{
 	return(m_diagram_view_list);
 }
 
@@ -102,7 +105,8 @@ QList<DiagramView *> ProjectView::diagram_views() const {
 	@brief ProjectView::currentDiagram
 	@return The current active diagram view or nullptr if there isn't diagramView in this project view.
 */
-DiagramView *ProjectView::currentDiagram() const {
+DiagramView *ProjectView::currentDiagram() const
+{
 	int current_tab_index = m_tab -> currentIndex();
 	if (current_tab_index == -1)
 		return nullptr;
@@ -126,7 +130,8 @@ void ProjectView::closeEvent(QCloseEvent *qce) {
 /**
 	@brief change current diagramview to next folio
 */
-void ProjectView::changeTabDown(){
+void ProjectView::changeTabDown()
+{
 	DiagramView *nextDiagramView = this->nextDiagram();
 	if (nextDiagramView!=nullptr){
 		rebuildDiagramsMap();
@@ -137,7 +142,8 @@ void ProjectView::changeTabDown(){
 /**
 	@return next folio of current diagramview
 */
-DiagramView *ProjectView::nextDiagram() {
+DiagramView *ProjectView::nextDiagram()
+{
 	int current_tab_index = m_tab -> currentIndex();
 	int next_tab_index = current_tab_index + 1;	//get next tab index
 	if (next_tab_index<m_diagram_ids.count()) //if next tab index >= greatest tab the last tab is activated so no need to change tab.
@@ -149,7 +155,8 @@ DiagramView *ProjectView::nextDiagram() {
 /**
 	@brief change current diagramview to previous tab
 */
-void ProjectView::changeTabUp(){
+void ProjectView::changeTabUp()
+{
 	DiagramView *previousDiagramView = this->previousDiagram();
 	if (previousDiagramView!=nullptr){
 		rebuildDiagramsMap();
@@ -160,7 +167,8 @@ void ProjectView::changeTabUp(){
 /**
 	@return previous folio of current diagramview
 */
-DiagramView *ProjectView::previousDiagram() {
+DiagramView *ProjectView::previousDiagram()
+{
 	int current_tab_index = m_tab -> currentIndex();
 	int previous_tab_index = current_tab_index - 1;	//get previous tab index
 	if (previous_tab_index>=0) //if previous tab index = 0 then the first tab is activated so no need to change tab.
@@ -172,7 +180,8 @@ DiagramView *ProjectView::previousDiagram() {
 /**
 	@brief change current diagramview to last tab
 */
-void ProjectView::changeLastTab(){
+void ProjectView::changeLastTab()
+{
 	DiagramView *lastDiagramView = this->lastDiagram();
 	m_tab->setCurrentWidget(lastDiagramView);
 }
@@ -180,14 +189,16 @@ void ProjectView::changeLastTab(){
 /**
 	@return last folio of current project
 */
-DiagramView *ProjectView::lastDiagram(){
+DiagramView *ProjectView::lastDiagram()
+{
 	return(m_diagram_ids.last());
 }
 
 /**
 	@brief change current diagramview to first tab
 */
-void ProjectView::changeFirstTab(){
+void ProjectView::changeFirstTab()
+{
 	DiagramView *firstDiagramView = this->firstDiagram();
 	m_tab->setCurrentWidget(firstDiagramView);
 }
@@ -195,7 +206,8 @@ void ProjectView::changeFirstTab(){
 /**
 	@return first folio of current project
 */
-DiagramView *ProjectView::firstDiagram(){
+DiagramView *ProjectView::firstDiagram()
+{
 	return(m_diagram_ids.first());
 }
 
@@ -208,7 +220,8 @@ DiagramView *ProjectView::firstDiagram(){
 	@see tryClosingElementEditors()
 	@see tryClosingDiagrams()
 */
-bool ProjectView::tryClosing() {
+bool ProjectView::tryClosing()
+{
 	if (!m_project) return(true);
 
 	// First step: require external editors closing -- users may either cancel
@@ -257,7 +270,8 @@ bool ProjectView::tryClosing() {
 	d'un editeur d'element.
 	@return true si tous les editeurs d'element ont pu etre fermes, false sinon
 */
-bool ProjectView::tryClosingElementEditors() {
+bool ProjectView::tryClosingElementEditors()
+{
 	if (!m_project) return(true);
 	/*
 		La QETApp permet d'acceder rapidement aux editeurs d'element
@@ -281,7 +295,8 @@ bool ProjectView::tryClosingElementEditors() {
 	a dialog ask if user want to save the modification.
 	@return the answer of dialog or discard if no change.
 */
-int ProjectView::tryClosingDiagrams() {
+int ProjectView::tryClosingDiagrams()
+{
 	if (!m_project) return(QMessageBox::Discard);
 
 	if (!project()->projectOptionsWereModified() &&
@@ -339,7 +354,8 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	@return the QETResult object to be returned when it appears this project
 	view is not associated to any project.
 */
-QETResult ProjectView::noProjectResult() const {
+QETResult ProjectView::noProjectResult() const
+{
 	QETResult no_project(tr("aucun projet affiché", "error message"), false);
 	return(no_project);
 }
@@ -421,7 +437,8 @@ void ProjectView::showDiagram(Diagram *diagram) {
 	Enable the user to edit properties of the current project through a
 	configuration dialog.
 */
-void ProjectView::editProjectProperties() {
+void ProjectView::editProjectProperties()
+{
 	if (!m_project) return;
 	ProjectPropertiesDialog dialog(m_project, parentWidget());
 	dialog.exec();
@@ -430,7 +447,8 @@ void ProjectView::editProjectProperties() {
 /**
 	Edite les proprietes du schema courant
 */
-void ProjectView::editCurrentDiagramProperties() {
+void ProjectView::editCurrentDiagramProperties()
+{
 	editDiagramProperties(currentDiagram());
 }
 
@@ -561,7 +579,8 @@ void ProjectView::moveDiagramDownx10(Diagram *diagram) {
 	Ce slot demarre un dialogue permettant a l'utilisateur de parametrer et de
 	lancer l'impression de toute ou partie du projet.
 */
-void ProjectView::printProject() {
+void ProjectView::printProject()
+{
 	if (!m_project) return;
 
 	// transforme le titre du projet en nom utilisable pour le document
@@ -591,7 +610,8 @@ void ProjectView::printProject() {
 /**
 	Exporte le schema.
 */
-void ProjectView::exportProject() {
+void ProjectView::exportProject()
+{
 	if (!m_project) return;
 
 	ExportDialog ed(m_project, parentWidget());
@@ -607,7 +627,8 @@ void ProjectView::exportProject() {
 	@see setFilePath()
 	@return a QETResult object reflecting the situation
 */
-QETResult ProjectView::save() {
+QETResult ProjectView::save()
+{
 	return(doSave());
 }
 
@@ -658,7 +679,8 @@ QETResult ProjectView::doSave()
 	@return an integer value above zero if elements and/or categories were
 	cleaned.
 */
-int ProjectView::cleanProject() {
+int ProjectView::cleanProject()
+{
 	if (!m_project) return(0);
 
 	// s'assure que le schema n'est pas en lecture seule
@@ -733,7 +755,8 @@ void ProjectView::initActions()
 /**
 	Initialize child widgets for this widget.
 */
-void ProjectView::initWidgets() {
+void ProjectView::initWidgets()
+{
 	setObjectName("ProjectView");
 	setWindowIcon(QET::Icons::ProjectFileGP);
 
@@ -790,7 +813,8 @@ void ProjectView::initWidgets() {
 /**
 	Initialize layout for this widget.
 */
-void ProjectView::initLayout() {
+void ProjectView::initLayout()
+{
 	QVBoxLayout *fallback_widget_layout_ = new QVBoxLayout(fallback_widget_);
 	fallback_widget_layout_ -> addWidget(fallback_label_);
 
@@ -849,7 +873,8 @@ void ProjectView::loadDiagrams()
 	@brief ProjectView::updateWindowTitle
 	Update the project view title
 */
-void ProjectView::updateWindowTitle() {
+void ProjectView::updateWindowTitle()
+{
 	QString title;
 	if (m_project) {
 		title = m_project -> pathNameTitle();
@@ -863,7 +888,8 @@ void ProjectView::updateWindowTitle() {
 	Effectue les actions necessaires lorsque le projet visualise entre ou sort
 	du mode lecture seule.
 */
-void ProjectView::adjustReadOnlyState() {
+void ProjectView::adjustReadOnlyState()
+{
 	bool editable = !(m_project -> isReadOnly());
 
 	// prevent users from moving existing diagrams
@@ -984,7 +1010,8 @@ DiagramView *ProjectView::findDiagram(Diagram *diagram) {
 /**
 	Reconstruit la map associant les index des onglets avec les DiagramView
 */
-void ProjectView::rebuildDiagramsMap() {
+void ProjectView::rebuildDiagramsMap()
+{
 	// vide la map
 	m_diagram_ids.clear();
 

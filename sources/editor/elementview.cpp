@@ -41,18 +41,21 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 }
 
 /// Destructeur
-ElementView::~ElementView() {
+ElementView::~ElementView()
+{
 }
 
 /// @return l'ElementScene visualisee par cette ElementView
-ElementScene *ElementView::scene() const {
+ElementScene *ElementView::scene() const
+{
 	return(m_scene);
 }
 
 /**
 	@return le rectangle de l'element visualise par cet ElementView
 */
-QRectF ElementView::viewedSceneRect() const {
+QRectF ElementView::viewedSceneRect() const
+{
 	// recupere la taille du widget viewport
 	QSize viewport_size = viewport() -> size();
 	
@@ -79,7 +82,8 @@ void ElementView::setScene(ElementScene *s) {
 /**
 	Set the Diagram in visualisation mode
 */
-void ElementView::setVisualisationMode() {
+void ElementView::setVisualisationMode()
+{
 	setDragMode(ScrollHandDrag);
 	setInteractive(false);
 	emit(modeChanged());
@@ -88,7 +92,8 @@ void ElementView::setVisualisationMode() {
 /**
 	Set the Diagram in Selection mode
 */
-void ElementView::setSelectionMode() {
+void ElementView::setSelectionMode()
+{
 	setDragMode(RubberBandDrag);
 	setInteractive(true);
 	emit(modeChanged());
@@ -97,7 +102,8 @@ void ElementView::setSelectionMode() {
 /**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
-void ElementView::zoomIn() {
+void ElementView::zoomIn()
+{
 	adjustSceneRect();
 	scale(4.0/3.0, 4.0/3.0);
 }
@@ -105,7 +111,8 @@ void ElementView::zoomIn() {
 /**
 	Retrecit le schema (-25% = inverse des +33 % de zoomPlus())
 */
-void ElementView::zoomOut() {
+void ElementView::zoomOut()
+{
 	adjustSceneRect();
 	scale(0.75, 0.75);
 }
@@ -113,14 +120,16 @@ void ElementView::zoomOut() {
 /**
 	Agrandit le schema avec le trackpad
 */
-void ElementView::zoomInSlowly() {
+void ElementView::zoomInSlowly()
+{
 	scale(1.02, 1.02);
 }
 
 /**
 	Retrecit le schema avec le trackpad
 */
-void ElementView::zoomOutSlowly() {
+void ElementView::zoomOutSlowly()
+{
 	scale(0.98, 0.98);
 }
 
@@ -129,7 +138,8 @@ void ElementView::zoomOutSlowly() {
 	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
 	le zoom est reinitialise
 */
-void ElementView::zoomFit() {
+void ElementView::zoomFit()
+{
 	resetSceneRect();
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 }
@@ -137,7 +147,8 @@ void ElementView::zoomFit() {
 /**
 	Reinitialise le zoom
 */
-void ElementView::zoomReset() {
+void ElementView::zoomReset()
+{
 	resetSceneRect();
 	resetTransform();
 	scale(4.0, 4.0);
@@ -148,7 +159,8 @@ void ElementView::zoomReset() {
 	Adjust the scenRect, so that he include all primitives of element
 	plus the viewport of the scene with a margin of 1/3 of herself
 */
-void ElementView::adjustSceneRect() {
+void ElementView::adjustSceneRect()
+{
 	QRectF esgr = m_scene -> elementSceneGeometricRect();
 	QRectF vpbr = mapToScene(this -> viewport()->rect()).boundingRect();
 	QRectF new_scene_rect = vpbr.adjusted(-vpbr.width()/3, -vpbr.height()/3, vpbr.width()/3, vpbr.height()/3);
@@ -160,7 +172,8 @@ void ElementView::adjustSceneRect() {
 	reset le sceneRect (zone du schéma visualisée par l'ElementView) afin que
 	celui-ci inclut uniquement les primitives de l'élément dessiné.
 */
-void ElementView::resetSceneRect() {
+void ElementView::resetSceneRect()
+{
 	setSceneRect(m_scene -> elementSceneGeometricRect());
 }
 
@@ -168,7 +181,8 @@ void ElementView::resetSceneRect() {
 	Gere le fait de couper la selection = l'exporter en XML dans le
 	presse-papier puis la supprimer.
 */
-void ElementView::cut() {
+void ElementView::cut()
+{
 	// delegue cette action a la scene
 	m_scene -> cut();
 	offset_paste_count_ = -1;
@@ -178,7 +192,8 @@ void ElementView::cut() {
 	Gere le fait de copier la selection = l'exporter en XML dans le
 	presse-papier.
 */
-void ElementView::copy() {
+void ElementView::copy()
+{
 	// delegue cette action a la scene
 	m_scene -> copy();
 	offset_paste_count_ = 0;
@@ -194,7 +209,8 @@ void ElementView::copy() {
 	collage devra s'effectuer.
 	@see pasteAreaDefined(const QRectF &)
 */
-void ElementView::paste() {
+void ElementView::paste()
+{
 	QString clipboard_text = QApplication::clipboard() -> text();
 	if (clipboard_text.isEmpty()) return;
 	
@@ -218,7 +234,8 @@ void ElementView::paste() {
 	Colle le contenu du presse-papier en demandant systematiquement a
 	l'utilisateur de choisir une zone de collage
 */
-void ElementView::pasteInArea() {
+void ElementView::pasteInArea()
+{
 	QString clipboard_text = QApplication::clipboard() -> text();
 	if (clipboard_text.isEmpty()) return;
 	

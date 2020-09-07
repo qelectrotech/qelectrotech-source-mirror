@@ -149,7 +149,8 @@ void NumPartEditorW::setVisibleItems()
 	@brief NumPartEditorW::toNumContext
 	@return the display to NumerotationContext
 */
-NumerotationContext NumPartEditorW::toNumContext() {
+NumerotationContext NumPartEditorW::toNumContext()
+{
 	NumerotationContext nc;
 	QString type_str;
 	switch (type_) {
@@ -214,7 +215,8 @@ NumerotationContext NumPartEditorW::toNumContext() {
 	@brief NumPartEditorW::isValid
 	@return true if value field isn't empty or if type is folio
 */
-bool NumPartEditorW::isValid() {
+bool NumPartEditorW::isValid()
+{
 	if (type_ == folio
 			|| type_ == idfolio
 			|| type_ == elementline
@@ -266,7 +268,8 @@ void NumPartEditorW::on_type_cb_activated(int) {
 	@brief NumPartEditorW::on_value_field_textChanged
 	emit changed when value_field text changed
 */
-void NumPartEditorW::on_value_field_textEdited() {
+void NumPartEditorW::on_value_field_textEdited()
+{
 	emit changed();
 }
 

@@ -371,7 +371,8 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e,
 }
 
 /// @return le texte de la licence de QElectroTech (GNU/GPL)
-QString QET::license() {
+QString QET::license()
+{
 	// Recuperation du texte de la GNU/GPL dans un fichier integre a l'application
 	QFile *file_license = new QFile(":/LICENSE");
 	QString txt_license;
@@ -399,7 +400,8 @@ QString QET::license() {
 	@return la liste des caracteres interdits dans les noms de fichiers sous
 	Windows
 */
-QList<QChar> QET::forbiddenCharacters() {
+QList<QChar> QET::forbiddenCharacters()
+{
 	return(QList<QChar>() << '\\' << '/' << ':' << '*' << '?' << '"'
 	       << '<' << '>' << '|');
 }

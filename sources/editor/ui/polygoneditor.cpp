@@ -48,7 +48,8 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor,
 /**
 	@brief PolygonEditor::~PolygonEditor
 */
-PolygonEditor::~PolygonEditor() {
+PolygonEditor::~PolygonEditor()
+{
 	delete ui;
 }
 
@@ -115,11 +116,13 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 	@brief PolygonEditor::currentPart
 	@return the curent edited part
 */
-CustomElementPart *PolygonEditor::currentPart() const {
+CustomElementPart *PolygonEditor::currentPart() const
+{
 	return m_part;
 }
 
-QList<CustomElementPart*> PolygonEditor::currentParts() const {
+QList<CustomElementPart*> PolygonEditor::currentParts() const
+{
 	return m_style->currentParts();
 }
 

@@ -33,13 +33,15 @@ TitleBlockTemplatesCollection::TitleBlockTemplatesCollection(QObject *parent) :
 /**
 	Destructor
 */
-TitleBlockTemplatesCollection::~TitleBlockTemplatesCollection() {
+TitleBlockTemplatesCollection::~TitleBlockTemplatesCollection()
+{
 }
 
 /**
 	@return the title of this collection
 */
-QString TitleBlockTemplatesCollection::title() const {
+QString TitleBlockTemplatesCollection::title() const
+{
 	return(title_);
 }
 
@@ -55,7 +57,8 @@ void TitleBlockTemplatesCollection::setTitle(const QString &title) {
 	@return the protocol used by this collection ; examples: commontbt,
 	customtbt, embedtbt, ...
 */
-QString TitleBlockTemplatesCollection::protocol() const {
+QString TitleBlockTemplatesCollection::protocol() const
+{
 	return(protocol_);
 }
 
@@ -71,7 +74,8 @@ void TitleBlockTemplatesCollection::setProtocol(const QString &protocol) {
 	@brief TitleBlockTemplatesCollection::collection
 	@return the collection where is stored this collection.
 */
-QET::QetCollection TitleBlockTemplatesCollection::collection() const {
+QET::QetCollection TitleBlockTemplatesCollection::collection() const
+{
 	return m_collection;
 }
 
@@ -88,7 +92,8 @@ void TitleBlockTemplatesCollection::setCollection(QET::QetCollection c) {
 	@return the project this collection is affiliated to, or 0 if this
 	collection is not related to any project.
 */
-QETProject *TitleBlockTemplatesCollection::parentProject() {
+QETProject *TitleBlockTemplatesCollection::parentProject()
+{
 	return(nullptr);
 }
 
@@ -97,7 +102,8 @@ QETProject *TitleBlockTemplatesCollection::parentProject() {
 	objects.
 	@see templates()
 */
-QList<TitleBlockTemplateLocation> TitleBlockTemplatesCollection::templatesLocations() {
+QList<TitleBlockTemplateLocation> TitleBlockTemplatesCollection::templatesLocations()
+{
 	QList<TitleBlockTemplateLocation> locations;
 	foreach (QString template_name, templates()) {
 		locations << location(template_name);
@@ -120,13 +126,15 @@ TitleBlockTemplatesProjectCollection::TitleBlockTemplatesProjectCollection(QETPr
 /**
 	Destructor
 */
-TitleBlockTemplatesProjectCollection::~TitleBlockTemplatesProjectCollection() {
+TitleBlockTemplatesProjectCollection::~TitleBlockTemplatesProjectCollection()
+{
 }
 
 /**
 	@return a human readable title for this collection
 */
-QString TitleBlockTemplatesProjectCollection::title() const {
+QString TitleBlockTemplatesProjectCollection::title() const
+{
 	if (!title_.isEmpty()) return(title_);
 	
 	// if the title attribute is empty, we generate a suitable one using the
@@ -158,7 +166,8 @@ QString TitleBlockTemplatesProjectCollection::title() const {
 /**
 	@return the protocol used to mention this collection
 */
-QString TitleBlockTemplatesProjectCollection::protocol() const {
+QString TitleBlockTemplatesProjectCollection::protocol() const
+{
 	if (project_) {
 		int project_id = QETApp::projectId(project_);
 		if (project_id != -1) {
@@ -172,14 +181,16 @@ QString TitleBlockTemplatesProjectCollection::protocol() const {
 /**
 	@return the parent project of this project collection
 */
-QETProject *TitleBlockTemplatesProjectCollection::parentProject() {
+QETProject *TitleBlockTemplatesProjectCollection::parentProject()
+{
 	return(project_);
 }
 
 /**
 	@return the list of title block templates embedded within the project.
 */
-QStringList TitleBlockTemplatesProjectCollection::templates() {
+QStringList TitleBlockTemplatesProjectCollection::templates()
+{
 	return(titleblock_templates_xml_.keys());
 }
 
@@ -292,7 +303,8 @@ TitleBlockTemplateLocation TitleBlockTemplatesProjectCollection::location(const 
 	@return always false since a project collection is not stored on any
 	filesystem.
 */
-bool TitleBlockTemplatesProjectCollection::hasFilePath() {
+bool TitleBlockTemplatesProjectCollection::hasFilePath()
+{
 	return(false);
 }
 
@@ -300,7 +312,8 @@ bool TitleBlockTemplatesProjectCollection::hasFilePath() {
 	@return always an empty string since a project collection is not stored on
 	any filesystem.
 */
-QString TitleBlockTemplatesProjectCollection::filePath() {
+QString TitleBlockTemplatesProjectCollection::filePath()
+{
 	return(QString());
 }
 
@@ -309,7 +322,8 @@ QString TitleBlockTemplatesProjectCollection::filePath() {
 	itself is read only, or a specific template name.
 	@return true if the specified template is read only, false otherwise
 */
-bool TitleBlockTemplatesProjectCollection::isReadOnly(const QString &template_name) const {
+bool TitleBlockTemplatesProjectCollection::isReadOnly(const QString &template_name) const
+{
 	Q_UNUSED(template_name)
 	if (project_) {
 		return(project_ -> isReadOnly());
@@ -338,7 +352,8 @@ void TitleBlockTemplatesProjectCollection::fromXml(const QDomElement &xml_elemen
 /**
 	Delete all title block templates not used within the parent project
 */
-void TitleBlockTemplatesProjectCollection::deleteUnusedTitleBlocKTemplates() {
+void TitleBlockTemplatesProjectCollection::deleteUnusedTitleBlocKTemplates()
+{
 	if (!project_) return;
 	
 	foreach (QString template_name, templates()) {
@@ -371,13 +386,15 @@ TitleBlockTemplatesFilesCollection::TitleBlockTemplatesFilesCollection(const QSt
 /**
 	Destructor
 */
-TitleBlockTemplatesFilesCollection::~TitleBlockTemplatesFilesCollection() {
+TitleBlockTemplatesFilesCollection::~TitleBlockTemplatesFilesCollection()
+{
 }
 
 /**
 	@return the canonical path of the directory hosting this collection.
 */
-QString TitleBlockTemplatesFilesCollection::path(const QString &template_name) const {
+QString TitleBlockTemplatesFilesCollection::path(const QString &template_name) const
+{
 	if (template_name.isEmpty()) {
 		return(dir_.canonicalPath());
 	} else {
@@ -388,7 +405,8 @@ QString TitleBlockTemplatesFilesCollection::path(const QString &template_name) c
 /**
 	@return the list of templates contained in this collection
 */
-QStringList TitleBlockTemplatesFilesCollection::templates() {
+QStringList TitleBlockTemplatesFilesCollection::templates()
+{
 	QStringList templates_names;
 	QRegExp replace_regexp(QString("%1$").arg(TITLEBLOCKS_FILE_EXTENSION));
 	foreach(QString name, dir_.entryList()) {
@@ -492,14 +510,16 @@ TitleBlockTemplateLocation TitleBlockTemplatesFilesCollection::location(const QS
 	@return always true since a files collection is always stored on a
 	filesystem.
 */
-bool TitleBlockTemplatesFilesCollection::hasFilePath() {
+bool TitleBlockTemplatesFilesCollection::hasFilePath()
+{
 	return(true);
 }
 
 /**
 	@return The filesystem path where this files collection is actually stored.
 */
-QString TitleBlockTemplatesFilesCollection::filePath() {
+QString TitleBlockTemplatesFilesCollection::filePath()
+{
 	return(dir_.canonicalPath());
 }
 
@@ -508,7 +528,8 @@ QString TitleBlockTemplatesFilesCollection::filePath() {
 	itself is read only, or a specific template name.
 	@return true if the specified template is read only, false otherwise
 */
-bool TitleBlockTemplatesFilesCollection::isReadOnly(const QString &template_name) const {
+bool TitleBlockTemplatesFilesCollection::isReadOnly(const QString &template_name) const
+{
 	if (template_name.isEmpty()) {
 		QFileInfo info(dir_.canonicalPath());
 		return(!info.isWritable());

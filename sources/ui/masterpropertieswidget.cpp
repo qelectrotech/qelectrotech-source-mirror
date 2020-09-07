@@ -169,7 +169,8 @@ void MasterPropertiesWidget::setElement(Element *element)
 	Return true if link change, else false
 	@note is void no Return ???
 */
-void MasterPropertiesWidget::apply() {
+void MasterPropertiesWidget::apply()
+{
 	if (QUndoCommand *undo = associatedUndo())
 		m_element -> diagram() -> undoStack().push(undo);
 }
@@ -409,7 +410,8 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	@brief MasterPropertiesWidget::showedElementWasDeleted
 	Set to nullptr the current showed element when he was deleted
 */
-void MasterPropertiesWidget::showedElementWasDeleted() {
+void MasterPropertiesWidget::showedElementWasDeleted()
+{
 	m_showed_element = nullptr;
 }
 

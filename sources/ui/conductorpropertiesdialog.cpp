@@ -29,8 +29,8 @@
 	@param conductor : conductor to edit propertie
 	@param parent : parent widget
 */
-ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor,
-						     QWidget *parent) :
+ConductorPropertiesDialog::ConductorPropertiesDialog(
+		Conductor *conductor, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ConductorPropertiesDialog)
 {
@@ -92,7 +92,8 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 	@brief ConductorPropertiesDialog::properties
 	@return the edited properties
 */
-ConductorProperties ConductorPropertiesDialog::properties() const {
+ConductorProperties ConductorPropertiesDialog::properties() const
+{
 	return m_cpw -> properties();
 }
 
@@ -102,6 +103,7 @@ ConductorProperties ConductorPropertiesDialog::properties() const {
 	true -> must apply the propertie to all conductor at the same potential
 	false -> must apply properties only for the edited conductor
 */
-bool ConductorPropertiesDialog::applyAll() const {
+bool ConductorPropertiesDialog::applyAll() const
+{
 	return ui -> m_apply_all_cb -> isChecked();
 }

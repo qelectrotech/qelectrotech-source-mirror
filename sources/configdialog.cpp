@@ -92,13 +92,15 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 }
 
 /// Destructeur
-ConfigDialog::~ConfigDialog() {
+ConfigDialog::~ConfigDialog()
+{
 }
 
 /**
 	Construit la liste des pages sur la gauche
 */
-void ConfigDialog::buildPagesList() {
+void ConfigDialog::buildPagesList()
+{
 	pages_list -> clear();
 	foreach(ConfigPage *page, pages) {
 		addPageToList(page);
@@ -119,7 +121,8 @@ void ConfigDialog::addPageToList(ConfigPage *page) {
 /**
 	Applique la configuration de toutes les pages
 */
-void ConfigDialog::applyConf() {
+void ConfigDialog::applyConf()
+{
 	foreach(ConfigPage *page, pages) {
 		page -> applyConf();
 	}

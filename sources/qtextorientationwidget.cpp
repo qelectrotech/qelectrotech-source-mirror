@@ -52,7 +52,8 @@ QTextOrientationWidget::QTextOrientationWidget(QWidget *parent) :
 /**
 	Destructeur
 */
-QTextOrientationWidget::~QTextOrientationWidget() {
+QTextOrientationWidget::~QTextOrientationWidget()
+{
 }
 
 /**
@@ -70,7 +71,8 @@ void QTextOrientationWidget::setOrientation(const double &angle) {
 	0 degre correspond a un texte horizontal, de gauche a droite
 	90 degres correspondent a un texte vertical de haut en bas
 */
-double QTextOrientationWidget::orientation() const {
+double QTextOrientationWidget::orientation() const
+{
 	return(current_orientation_);
 }
 
@@ -90,7 +92,8 @@ void QTextOrientationWidget::setFont(const QFont &font) {
 /**
 	@return la police utilisee pour le texte affiche
 */
-QFont QTextOrientationWidget::font() const {
+QFont QTextOrientationWidget::font() const
+{
 	return(text_font_);
 }
 
@@ -104,7 +107,8 @@ void QTextOrientationWidget::setDisplayText(bool display_text) {
 /**
 	@return la police utilisee pour le texte affiche
 */
-bool QTextOrientationWidget::textDisplayed() const {
+bool QTextOrientationWidget::textDisplayed() const
+{
 	return(display_text_);
 }
 
@@ -137,14 +141,16 @@ void QTextOrientationWidget::setUsableTexts(const QStringList &texts_list) {
 /**
 	@return la liste des chaines dont le widget dispose pour afficher un texte
 */
-QStringList QTextOrientationWidget::usableTexts() const {
+QStringList QTextOrientationWidget::usableTexts() const
+{
 	return(text_size_hash_.keys());
 }
 
 /**
 	@return true si le widget est en mode "lecture seule", false sinon
 */
-bool QTextOrientationWidget::isReadOnly() const {
+bool QTextOrientationWidget::isReadOnly() const
+{
 	return(read_only_);
 }
 
@@ -158,7 +164,8 @@ void QTextOrientationWidget::setReadOnly(bool ro) {
 /**
 	@return la taille recommandee pour ce widget
 */
-QSize QTextOrientationWidget::sizeHint() const {
+QSize QTextOrientationWidget::sizeHint() const
+{
 	return(QSize(50, 50));
 }
 
@@ -167,7 +174,8 @@ QSize QTextOrientationWidget::sizeHint() const {
 	@return la hauteur preferee pour une largeur donnee
 	Pour ce widget : retourne la largeur fournie afin de maintenir le widget carre
 */
-int QTextOrientationWidget::heightForWidth(int w) const {
+int QTextOrientationWidget::heightForWidth(int w) const
+{
 	return(w);
 }
 
@@ -306,7 +314,8 @@ QString QTextOrientationWidget::getMostUsableStringForRadius(const qreal &radius
 	S'assure que le hash associant les textes utilisables a leur taille soit
 	correctement rempli.
 */
-void QTextOrientationWidget::generateTextSizeHash() {
+void QTextOrientationWidget::generateTextSizeHash()
+{
 	QFontMetrics font_metrics(text_font_);
 	foreach(QString text, text_size_hash_.keys()) {
 		if (text_size_hash_[text] == -1) {

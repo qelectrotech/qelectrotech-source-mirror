@@ -154,7 +154,8 @@ void ShapeGraphicsItemPropertiesWidget::apply()
 	@brief ShapeGraphicsItemPropertiesWidget::reset
 	Reset the change
 */
-void ShapeGraphicsItemPropertiesWidget::reset() {
+void ShapeGraphicsItemPropertiesWidget::reset()
+{
 	updateUi();
 }
 

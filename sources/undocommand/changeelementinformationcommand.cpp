@@ -55,7 +55,8 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 /**
 	@brief ChangeElementInformationCommand::undo
 */
-void ChangeElementInformationCommand::undo() {
+void ChangeElementInformationCommand::undo()
+{
 	m_element -> setElementInformations(m_old_info);
 	updateProjectDB();
 }
@@ -63,7 +64,8 @@ void ChangeElementInformationCommand::undo() {
 /**
 	@brief ChangeElementInformationCommand::redo
 */
-void ChangeElementInformationCommand::redo() {
+void ChangeElementInformationCommand::redo()
+{
 	m_element -> setElementInformations(m_new_info);
 	updateProjectDB();
 }

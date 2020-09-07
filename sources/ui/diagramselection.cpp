@@ -33,14 +33,16 @@ diagramselection::diagramselection(QETProject *prj, QWidget *parent) :
 	load_TableDiagram();
 }
 
-diagramselection::~diagramselection() {
+diagramselection::~diagramselection()
+{
 	delete ui;
 }
 
 /**
 	@brief load all Diagrams of project in table
 */
-void diagramselection::load_TableDiagram() {
+void diagramselection::load_TableDiagram()
+{
 	// Clear all items
 	ui -> tableDiagram -> clear();
 	for (int i=ui -> tableDiagram -> rowCount()-1; i >= 0; --i) {
@@ -84,7 +86,8 @@ void diagramselection::load_TableDiagram() {
 	@brief get list of Diagrams is selected
 	@return this list of Diagrams
 */
-QList<Diagram *> diagramselection::list_of_DiagramSelected() {
+QList<Diagram *> diagramselection::list_of_DiagramSelected()
+{
 	QList<Diagram *> listDiag;
 	for(int i=0; i<ui -> tableDiagram -> rowCount();i++){
 		if(ui -> tableDiagram -> item(i, 0)->checkState()){

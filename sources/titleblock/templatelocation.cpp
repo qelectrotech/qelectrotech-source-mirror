@@ -38,7 +38,8 @@ TitleBlockTemplateLocation::TitleBlockTemplateLocation(
 /**
 	Destructor
 */
-TitleBlockTemplateLocation::~TitleBlockTemplateLocation() {
+TitleBlockTemplateLocation::~TitleBlockTemplateLocation()
+{
 }
 
 /**
@@ -54,7 +55,8 @@ TitleBlockTemplateLocation TitleBlockTemplateLocation::locationFromString(
 /**
 	@return the parent collection of the template, or 0 if none was defined
 */
-TitleBlockTemplatesCollection *TitleBlockTemplateLocation::parentCollection() const {
+TitleBlockTemplatesCollection *TitleBlockTemplateLocation::parentCollection() const
+{
 	return(collection_);
 }
 
@@ -70,7 +72,8 @@ void TitleBlockTemplateLocation::setParentCollection(
 /**
 	@return the name of this template within its parent project or collection.
 */
-QString TitleBlockTemplateLocation::name() const {
+QString TitleBlockTemplateLocation::name() const
+{
 	return(name_);
 }
 
@@ -84,7 +87,8 @@ void TitleBlockTemplateLocation::setName(const QString &name) {
 /**
 	@return true if this location is null, false otherwise
 */
-bool TitleBlockTemplateLocation::isValid() const {
+bool TitleBlockTemplateLocation::isValid() const
+{
 	return(!name_.isEmpty());
 }
 
@@ -105,7 +109,8 @@ void TitleBlockTemplateLocation::fromString(const QString &loc_str) {
 /**
 	@return A string representation of the location
 */
-QString TitleBlockTemplateLocation::toString() const {
+QString TitleBlockTemplateLocation::toString() const
+{
 	return(protocol() + QString("://") + name_);
 }
 
@@ -113,7 +118,8 @@ QString TitleBlockTemplateLocation::toString() const {
 	This is a convenience method equivalent to
 	parentCollection() -> parentProject().
 */
-QETProject *TitleBlockTemplateLocation::parentProject() const {
+QETProject *TitleBlockTemplateLocation::parentProject() const
+{
 	if (collection_) {
 		return(collection_ -> parentProject());
 	}
@@ -124,7 +130,8 @@ QETProject *TitleBlockTemplateLocation::parentProject() const {
 	This is a convenience method equivalent to
 	parentCollection() -> protocol().
 */
-QString TitleBlockTemplateLocation::protocol() const {
+QString TitleBlockTemplateLocation::protocol() const
+{
 	if (collection_) {
 		return(collection_ -> protocol());
 	}
@@ -135,7 +142,8 @@ QString TitleBlockTemplateLocation::protocol() const {
 	This is a convenience method equivalent to
 	parentCollection() -> getTemplateXmlDescription
 */
-QDomElement TitleBlockTemplateLocation::getTemplateXmlDescription() const {
+QDomElement TitleBlockTemplateLocation::getTemplateXmlDescription() const
+{
 	if (!collection_ || name_.isEmpty()) return(QDomElement());
 	return(collection_ -> getTemplateXmlDescription(name_));
 }
@@ -144,7 +152,8 @@ QDomElement TitleBlockTemplateLocation::getTemplateXmlDescription() const {
 	This is a convenience method equivalent to
 	parentCollection() -> getTemplate(...).
 */
-TitleBlockTemplate *TitleBlockTemplateLocation::getTemplate() const {
+TitleBlockTemplate *TitleBlockTemplateLocation::getTemplate() const
+{
 	if (!collection_ || name_.isEmpty()) return(nullptr);
 	return(collection_ -> getTemplate(name_));
 }
@@ -153,7 +162,8 @@ TitleBlockTemplate *TitleBlockTemplateLocation::getTemplate() const {
 	This is a convenience method equivalent to
 	parentCollection() -> isReadOnly(name())
 */
-bool TitleBlockTemplateLocation::isReadOnly() const {
+bool TitleBlockTemplateLocation::isReadOnly() const
+{
 	if (!collection_) return(false);
 	return(collection_ -> isReadOnly(name_));
 }
@@ -163,7 +173,8 @@ bool TitleBlockTemplateLocation::isReadOnly() const {
 	@return true if locations are equal, false otherwise
 */
 bool TitleBlockTemplateLocation::operator==(
-		const TitleBlockTemplateLocation &location) const {
+		const TitleBlockTemplateLocation &location) const
+{
 	return(location.collection_ == collection_ && location.name_ == name_);
 }
 

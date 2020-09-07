@@ -59,7 +59,8 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor,
 /**
 	@brief TerminalEditor::init
 */
-void TerminalEditor::init() {
+void TerminalEditor::init()
+{
 	qle_x = new QDoubleSpinBox();
 	qle_y = new QDoubleSpinBox();
 
@@ -98,7 +99,8 @@ void TerminalEditor::init() {
 	@brief TerminalEditor::~TerminalEditor
 	Destructeur
 */
-TerminalEditor::~TerminalEditor() {
+TerminalEditor::~TerminalEditor()
+{
 }
 
 /**
@@ -161,11 +163,13 @@ bool TerminalEditor::setParts(QList<CustomElementPart *> parts) {
 /**
 	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
 */
-CustomElementPart *TerminalEditor::currentPart() const {
+CustomElementPart *TerminalEditor::currentPart() const
+{
 	return(m_part);
 }
 
-QList<CustomElementPart*> TerminalEditor::currentParts() const {
+QList<CustomElementPart*> TerminalEditor::currentParts() const
+{
 	QList<CustomElementPart*> parts;
 	for (auto term: m_terminals) {
 		parts.append(static_cast<CustomElementPart*>(term));
@@ -174,7 +178,8 @@ QList<CustomElementPart*> TerminalEditor::currentParts() const {
 }
 
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalO() {
+void TerminalEditor::updateTerminalO()
+{
 	if (m_locked) return;
 	m_locked = true;
 	QVariant var(orientation -> itemData(orientation -> currentIndex()));
@@ -194,7 +199,8 @@ void TerminalEditor::updateTerminalO() {
 /**
 	@brief TerminalEditor::updateXPos
 */
-void TerminalEditor::updateXPos() {
+void TerminalEditor::updateXPos()
+{
 	if (m_locked) return;
 	m_locked = true;
 	QPointF new_pos(qle_x->value(), 0);
@@ -215,7 +221,8 @@ void TerminalEditor::updateXPos() {
 /**
 	@brief TerminalEditor::updateYPos
 */
-void TerminalEditor::updateYPos() {
+void TerminalEditor::updateYPos()
+{
 	if (m_locked) return;
 	m_locked = true;
 	QPointF new_pos(0, qle_y->value()); // change only y value
@@ -237,7 +244,8 @@ void TerminalEditor::updateYPos() {
 /**
 	Met a jour le formulaire d'edition
 */
-void TerminalEditor::updateForm() {
+void TerminalEditor::updateForm()
+{
 	if (!m_part) return;
 	activeConnections(false);
 	qle_x -> setValue(m_part->property("x").toReal());

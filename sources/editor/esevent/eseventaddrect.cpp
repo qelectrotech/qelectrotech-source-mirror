@@ -34,7 +34,8 @@ ESEventAddRect::ESEventAddRect(ElementScene *scene) :
 /**
 	@brief ESEventAddRect::~ESEventAddRect
 */
-ESEventAddRect::~ESEventAddRect() {
+ESEventAddRect::~ESEventAddRect()
+{
 	if (m_running || m_abort)
 		delete m_rect;
 }

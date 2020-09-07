@@ -103,7 +103,8 @@ bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor,
 	@brief PropertiesEditorDockWidget::editors
 	@return all editor used in this dock
 */
-QList<PropertiesEditorWidget *> PropertiesEditorDockWidget::editors() const {
+QList<PropertiesEditorWidget *> PropertiesEditorDockWidget::editors() const
+{
 	return m_editor_list;
 }
 

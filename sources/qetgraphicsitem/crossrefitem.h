@@ -50,10 +50,10 @@ class CrossRefItem : public QGraphicsObject
 		//Methods
 	public:
 		explicit CrossRefItem(Element *elmt);
-		explicit CrossRefItem(Element *elmt,
-				      DynamicElementTextItem *text);
-		explicit CrossRefItem(Element *elmt,
-				      ElementTextItemGroup *group);
+		explicit CrossRefItem(
+			Element *elmt, DynamicElementTextItem *text);
+		explicit CrossRefItem(
+			Element *elmt, ElementTextItemGroup *group);
 		~CrossRefItem() override;
 	private:
 		void init();

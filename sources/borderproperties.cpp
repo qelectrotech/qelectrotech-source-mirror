@@ -48,7 +48,8 @@ BorderProperties::BorderProperties() :
 	@brief BorderProperties::~BorderProperties
 	destructor
 */
-BorderProperties::~BorderProperties() {
+BorderProperties::~BorderProperties()
+{
 }
 
 /**
@@ -95,7 +96,8 @@ bool BorderProperties::operator!=(const BorderProperties &bp) {
 	XML element to which attributes will be added
 	\~French Element XML auquel seront ajoutes des attributs
 */
-void BorderProperties::toXml(QDomElement &e) const {
+void BorderProperties::toXml(QDomElement &e) const
+{
 	e.setAttribute("cols",        columns_count);
 	e.setAttribute("colsize",     QString("%1").arg(columns_width));
 	e.setAttribute("rows",        rows_count);
@@ -134,7 +136,8 @@ void BorderProperties::fromXml(QDomElement &e) {
 	prefix to be added before the names of the parameters
 	\~French prefixe a ajouter devant les noms des parametres
 */
-void BorderProperties::toSettings(QSettings &settings, const QString &prefix) const {
+void BorderProperties::toSettings(QSettings &settings, const QString &prefix) const
+{
 	settings.setValue(prefix + "cols",        columns_count);
 	settings.setValue(prefix + "colsize",     columns_width);
 	settings.setValue(prefix + "displaycols", display_columns);

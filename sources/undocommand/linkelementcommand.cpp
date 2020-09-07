@@ -163,7 +163,8 @@ void LinkElementCommand::unlink(QList<Element *> element_list)
 	@brief LinkElementCommand::unlinkAll
 	Unlink all element of the edited element
 */
-void LinkElementCommand::unlinkAll() {
+void LinkElementCommand::unlinkAll()
+{
 	m_linked_after.clear();
 }
 
@@ -230,11 +231,11 @@ void LinkElementCommand::redo()
 	@param element_list
 	@param already_link
 */
-void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list,
-				      bool already_link)
+void LinkElementCommand::setUpNewLink(
+	const QList<Element *> &element_list, bool already_link)
 {
-		//m_element is a master we can connect several element to it
-		//if m_element isn't master (may be a report or slave) we can connect only one element
+	//m_element is a master we can connect several element to it
+	//if m_element isn't master (may be a report or slave) we can connect only one element
 	if (m_element->linkType() == Element::Master || element_list.size() == 1)
 	{
 		foreach(Element *elmt, element_list)

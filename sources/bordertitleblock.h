@@ -79,14 +79,16 @@ class BorderTitleBlock : public QObject
 			@return the diagram width,
 			i.e. the width of the border without title block
 		*/
-		qreal diagramWidth() const {
+		qreal diagramWidth() const
+{
 			return(columnsTotalWidth() + rowsHeaderWidth()); }
 		/**
 			@brief diagramHeight
 			@return the diagram height,
 			i.e. the height of the border without title block
 		*/
-		qreal diagramHeight() const {
+		qreal diagramHeight() const
+{
 			return(rowsTotalHeight() + columnsHeaderHeight()); }
 
 		QRectF titleBlockRect () const;

@@ -37,7 +37,8 @@ QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
 	@brief QetGraphicsHandlerItem::boundingRect
 	@return 
 */
-QRectF QetGraphicsHandlerItem::boundingRect() const {
+QRectF QetGraphicsHandlerItem::boundingRect() const
+{
 	return m_br;
 }
 

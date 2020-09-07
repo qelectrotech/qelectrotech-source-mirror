@@ -31,7 +31,8 @@ SingleLineProperties::SingleLineProperties() :
 }
 
 /// Destructeur
-SingleLineProperties::~SingleLineProperties() {
+SingleLineProperties::~SingleLineProperties()
+{
 }
 
 /**
@@ -43,7 +44,8 @@ void SingleLineProperties::setPhasesCount(int n) {
 }
 
 /// @return le nombre de phases (0, 1, 2, ou 3)
-unsigned short int SingleLineProperties::phasesCount() {
+unsigned short int SingleLineProperties::phasesCount()
+{
 	return(phases);
 }
 
@@ -52,7 +54,8 @@ unsigned short int SingleLineProperties::phasesCount() {
 	(Protective Earth Neutral) representation and if it features the ground and
 	the neutral.
 */
-bool SingleLineProperties::isPen() const {
+bool SingleLineProperties::isPen() const
+{
 	return(hasNeutral && hasGround && is_pen);
 }
 
@@ -211,7 +214,8 @@ void SingleLineProperties::drawPen(QPainter *painter,
 	ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
-void SingleLineProperties::toXml(QDomElement &e) const {
+void SingleLineProperties::toXml(QDomElement &e) const
+{
 	e.setAttribute("ground",  hasGround  ? "true" : "false");
 	e.setAttribute("neutral", hasNeutral ? "true" : "false");
 	e.setAttribute("phase",   phases);
@@ -251,7 +255,8 @@ ConductorProperties::ConductorProperties() :
 /**
 	Destructeur
 */
-ConductorProperties::~ConductorProperties() {
+ConductorProperties::~ConductorProperties()
+{
 }
 
 
@@ -802,7 +807,8 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	Exporte le style du conducteur sous forme d'une chaine de caracteres
 	@return une chaine de caracteres decrivant le style du conducteur
 */
-QString ConductorProperties::writeStyle() const {
+QString ConductorProperties::writeStyle() const
+{
 	if (style == Qt::DashLine) {
 		return("line-style: dashed;");
 	} else if (style == Qt::DashDotLine) {
@@ -816,7 +822,8 @@ QString ConductorProperties::writeStyle() const {
 	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
 	@return true si les deux ensembles de proprietes sont identiques, false sinon
 */
-int SingleLineProperties::operator==(const SingleLineProperties &other) const {
+int SingleLineProperties::operator==(const SingleLineProperties &other) const
+{
 	return(
 		other.hasGround == hasGround &&\
 		other.hasNeutral == hasNeutral &&\
@@ -829,7 +836,8 @@ int SingleLineProperties::operator==(const SingleLineProperties &other) const {
 	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
 	@return true si les deux ensembles de proprietes sont differents, false sinon
 */
-int SingleLineProperties::operator!=(const SingleLineProperties &other) const {
+int SingleLineProperties::operator!=(const SingleLineProperties &other) const
+{
 	return(!(other == (*this)));
 }
 
@@ -838,7 +846,8 @@ int SingleLineProperties::operator!=(const SingleLineProperties &other) const {
 	@param prefix prefix a ajouter devant les noms des parametres
 */
 void SingleLineProperties::toSettings(QSettings &settings,
-				      const QString &prefix) const {
+				      const QString &prefix) const
+{
 	settings.setValue(prefix + "hasGround",  hasGround);
 	settings.setValue(prefix + "hasNeutral", hasNeutral);
 	settings.setValue(prefix + "phases",     phases);

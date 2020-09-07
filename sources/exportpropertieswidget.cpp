@@ -45,14 +45,16 @@ ExportPropertiesWidget::ExportPropertiesWidget(const ExportProperties &export_pr
 	@brief ExportPropertiesWidget::~ExportPropertiesWidget
 	Destructeur
 */
-ExportPropertiesWidget::~ExportPropertiesWidget() {
+ExportPropertiesWidget::~ExportPropertiesWidget()
+{
 }
 
 /**
 	@brief ExportPropertiesWidget::exportProperties
 	@return les parametres d'export definis via le widget
 */
-ExportProperties ExportPropertiesWidget::exportProperties() const {
+ExportProperties ExportPropertiesWidget::exportProperties() const
+{
 	ExportProperties export_properties;
 	
 	export_properties.destination_directory   = QDir(dirpath -> text());
@@ -120,7 +122,8 @@ void ExportPropertiesWidget::setPrintingMode(bool mode) {
 	Slot asking the user to choose a folder
 	/ Slot demandant a l'utilisateur de choisir un dossier
 */
-void ExportPropertiesWidget::slot_chooseADirectory() {
+void ExportPropertiesWidget::slot_chooseADirectory()
+{
 	QString user_dir = QFileDialog::getExistingDirectory(
 		this,
 		tr("Exporter dans le dossier", "dialog title"),
@@ -136,7 +139,8 @@ void ExportPropertiesWidget::slot_chooseADirectory() {
 	Generated the ExportPropertiesWidget ui
 	/ Cette methode construit le widget en lui-meme
 */
-void ExportPropertiesWidget::build() {
+void ExportPropertiesWidget::build()
+{
 	// le dialogue est un empilement vertical d'elements
 	QVBoxLayout *vboxLayout = new QVBoxLayout();
 	vboxLayout -> setContentsMargins(0, 0, 0, 0);

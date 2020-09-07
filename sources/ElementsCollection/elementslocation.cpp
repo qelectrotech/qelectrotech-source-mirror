@@ -53,7 +53,8 @@ ElementsLocation::ElementsLocation(const QString &path, QETProject *project) :
 	@brief ElementsLocation::~ElementsLocation
 	Destructeur
 */
-ElementsLocation::~ElementsLocation() {
+ElementsLocation::~ElementsLocation()
+{
 }
 
 /**
@@ -110,7 +111,8 @@ ElementsLocation &ElementsLocation::operator=(const ElementsLocation &other) {
 	\~French true si other et cet ElementsLocation sont identiques,
 	false sinon
 */
-bool ElementsLocation::operator==(const ElementsLocation &other) const {
+bool ElementsLocation::operator==(const ElementsLocation &other) const
+{
 	return(
 		m_collection_path == other.m_collection_path &&\
 		m_project == other.m_project
@@ -124,7 +126,8 @@ bool ElementsLocation::operator==(const ElementsLocation &other) const {
 	@return true si other et cet ElementsLocation sont differents,
 	false sinon
 */
-bool ElementsLocation::operator!=(const ElementsLocation &other) const {
+bool ElementsLocation::operator!=(const ElementsLocation &other) const
+{
 	return(
 		m_collection_path != other.m_collection_path ||\
 		m_project != other.m_project
@@ -139,7 +142,8 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const {
 	For exemple if this location represent an element they return myElement.
 	@see fileName()
 */
-QString ElementsLocation::baseName() const {
+QString ElementsLocation::baseName() const
+{
 	QRegExp regexp("^.*([^/]+)\\.elmt$");
 	if (regexp.exactMatch(m_collection_path)) {
 		return(regexp.capturedTexts().at(1));
@@ -203,7 +207,8 @@ QString ElementsLocation::fileSystemPath() const
 	@return The path of this location.
 	@deprecated use instead collectionPath(true)
 */
-QString ElementsLocation::path() const {
+QString ElementsLocation::path() const
+{
 	return(m_collection_path);
 }
 
@@ -343,7 +348,8 @@ bool ElementsLocation::addToPath(const QString &string)
 	@return the location of the parent category, or a copy of this location
 	when it represents a root category.
 */
-ElementsLocation ElementsLocation::parent() const {
+ElementsLocation ElementsLocation::parent() const
+{
 	ElementsLocation copy(*this);
 	QRegExp re1("^([a-z]+://)(.*)/*$");
 	if (re1.exactMatch(m_collection_path)) {
@@ -362,7 +368,8 @@ ElementsLocation ElementsLocation::parent() const {
 	\~French
 	le projet de cet emplacement ou 0 si celui-ci n'est pas lie a un projet.
 */
-QETProject *ElementsLocation::project() const {
+QETProject *ElementsLocation::project() const
+{
 	return(m_project);
 }
 
@@ -384,7 +391,8 @@ void ElementsLocation::setProject(QETProject *project) {
 	\~French
 	true si l'emplacement semble utilisable (chemin virtuel non vide).
 */
-bool ElementsLocation::isNull() const {
+bool ElementsLocation::isNull() const
+{
 	return(m_collection_path.isEmpty());
 }
 
@@ -393,7 +401,8 @@ bool ElementsLocation::isNull() const {
 	@return A character string representing the location
 	\~French Une chaine de caracteres representant l'emplacement
 */
-QString ElementsLocation::toString() const {
+QString ElementsLocation::toString() const
+{
 	QString result;
 	if (m_project) {
 		int project_id = QETApp::projectId(m_project);
@@ -409,7 +418,8 @@ QString ElementsLocation::toString() const {
 	@brief ElementsLocation::isElement
 	@return true if this location represent an element
 */
-bool ElementsLocation::isElement() const {
+bool ElementsLocation::isElement() const
+{
 	return m_collection_path.endsWith(".elmt");
 }
 
@@ -417,7 +427,8 @@ bool ElementsLocation::isElement() const {
 	@brief ElementsLocation::isDirectory
 	@return true if this location represent a directory
 */
-bool ElementsLocation::isDirectory() const {
+bool ElementsLocation::isDirectory() const
+{
 	return (!isElement() && !m_collection_path.isEmpty());
 }
 

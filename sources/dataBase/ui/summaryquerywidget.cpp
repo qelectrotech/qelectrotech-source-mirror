@@ -153,7 +153,8 @@ void SummaryQueryWidget::fillSavedQuery()
 /**
 	@brief SummaryQueryWidget::updateQueryLine
 */
-void SummaryQueryWidget::updateQueryLine() {
+void SummaryQueryWidget::updateQueryLine()
+{
 	ui->m_user_query_le->setText(queryStr());
 }
 

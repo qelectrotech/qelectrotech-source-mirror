@@ -34,8 +34,9 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	
 	// constructor, destructor
 	public:
-		TitleBlockTemplateCellWidget(TitleBlockTemplate * = nullptr,
-					     QWidget * = nullptr);
+		TitleBlockTemplateCellWidget(
+				TitleBlockTemplate * = nullptr,
+				QWidget * = nullptr);
 		~TitleBlockTemplateCellWidget() override;
 	private:
 		TitleBlockTemplateCellWidget(

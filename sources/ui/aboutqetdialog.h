@@ -47,10 +47,11 @@ class AboutQETDialog : public QDialog
 		void setLibraries();
 		void setLicence();
 		void setLoginfo();
-		void addAuthor(QLabel *label,
-			       const QString &name,
-			       const QString &email,
-			       const QString &work);
+		void addAuthor(
+				QLabel *label,
+				const QString &name,
+				const QString &email,
+				const QString &work);
 		void addLibrary(QLabel *label,
 				const QString &name,
 				const QString &link);

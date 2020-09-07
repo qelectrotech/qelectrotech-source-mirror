@@ -71,7 +71,8 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	@brief BorderTitleBlock::~BorderTitleBlock
 	\~French Destructeur - ne fait rien
 */
-BorderTitleBlock::~BorderTitleBlock() {
+BorderTitleBlock::~BorderTitleBlock()
+{
 }
 
 /**
@@ -96,7 +97,8 @@ QRectF BorderTitleBlock::titleBlockRect() const
 	@brief BorderTitleBlock::titleblockInformation
 	@return
 */
-DiagramContext BorderTitleBlock::titleblockInformation() const {
+DiagramContext BorderTitleBlock::titleblockInformation() const
+{
 	return m_titleblock_template_renderer->context();
 }
 
@@ -131,7 +133,8 @@ QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 	It's like unite outsideBorderRect and titleBlockRect.
 	The rect is in scene coordinate
 */
-QRectF BorderTitleBlock::borderAndTitleBlockRect() const {
+QRectF BorderTitleBlock::borderAndTitleBlockRect() const
+{
 	return diagram_rect_ | titleBlockRect();
 }
 
@@ -276,7 +279,8 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 	@return the properties of the titleblock
 	\~French les proprietes du cartouches
 */
-TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
+TitleBlockProperties BorderTitleBlock::exportTitleBlock()
+{
 	TitleBlockProperties ip;
 	
 	ip.author = author();
@@ -330,7 +334,8 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	@return border properties
 	\~French les proprietes de la bordure
 */
-BorderProperties BorderTitleBlock::exportBorder() {
+BorderProperties BorderTitleBlock::exportBorder()
+{
 	BorderProperties bp;
 	bp.columns_count = columnsCount();
 	bp.columns_width = columnsWidth();
@@ -364,7 +369,8 @@ void BorderTitleBlock::importBorder(const BorderProperties &bp) {
 	@return the titleblock template used to render the titleblock
 	@see TitleBlockTemplateRenderer::titleBlockTemplate()
 */
-const TitleBlockTemplate *BorderTitleBlock::titleBlockTemplate() {
+const TitleBlockTemplate *BorderTitleBlock::titleBlockTemplate()
+{
 	return(m_titleblock_template_renderer -> titleBlockTemplate());
 }
 
@@ -384,7 +390,8 @@ void BorderTitleBlock::setTitleBlockTemplate(
 	@brief BorderTitleBlock::titleBlockTemplateName
 	@return The name of the template used to render the titleblock.
 */
-QString BorderTitleBlock::titleBlockTemplateName() const {
+QString BorderTitleBlock::titleBlockTemplateName() const
+{
 	QString tbt_name = m_titleblock_template_renderer -> titleBlockTemplate() -> name();
 	return((tbt_name == "default") ? "" : tbt_name);
 }

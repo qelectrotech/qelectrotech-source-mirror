@@ -42,7 +42,8 @@ TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *paren
 /**
 	@brief TextEditor::~TextEditor
 */
-TextEditor::~TextEditor() {
+TextEditor::~TextEditor()
+{
 	delete ui;
 }
 
@@ -79,14 +80,16 @@ void TextEditor::setUpChangeConnection(QPointer<PartText> part) {
 	m_change_connection << connect(part, &PartText::colorChanged,     this, &TextEditor::updateForm);
 }
 
-void TextEditor::disconnectChangeConnection() {
+void TextEditor::disconnectChangeConnection()
+{
 	for (QMetaObject::Connection c : m_change_connection) {
 		disconnect(c);
 	}
 	m_change_connection.clear();
 }
 
-void TextEditor::disconnectEditConnection() {
+void TextEditor::disconnectEditConnection()
+{
 	for (QMetaObject::Connection c : m_edit_connection) {
 	disconnect(c);
 	}
@@ -150,11 +153,13 @@ bool TextEditor::setParts(QList <CustomElementPart *> parts) {
 	@brief TextEditor::currentPart
 	@return The current part
 */
-CustomElementPart *TextEditor::currentPart() const {
+CustomElementPart *TextEditor::currentPart() const
+{
 	return m_text;
 }
 
-QList<CustomElementPart*> TextEditor::currentParts() const {
+QList<CustomElementPart*> TextEditor::currentParts() const
+{
 	QList<CustomElementPart*> parts;
 	for (auto part: m_parts) {
 		parts.append(static_cast<CustomElementPart*>(part));
@@ -167,7 +172,8 @@ QList<CustomElementPart*> TextEditor::currentParts() const {
 	Setup the connection between the widgets of this editor and the undo command
 	use to apply the change to the edited text.
 */
-void TextEditor::setUpEditConnection() {
+void TextEditor::setUpEditConnection()
+{
 	disconnectEditConnection();
 
 	m_edit_connection << connect(ui -> m_line_edit, &QLineEdit::editingFinished, [this]() {
@@ -236,7 +242,8 @@ void TextEditor::setUpEditConnection() {
 /**
 	@brief TextEditor::on_m_font_pb_clicked
 */
-void TextEditor::on_m_font_pb_clicked() {
+void TextEditor::on_m_font_pb_clicked()
+{
 	bool ok;
 	QFont font_ = QFontDialog::getFont(&ok, m_text -> font(), this);
 

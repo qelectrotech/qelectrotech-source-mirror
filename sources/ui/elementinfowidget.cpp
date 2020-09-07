@@ -254,7 +254,8 @@ DiagramContext ElementInfoWidget::currentInfo() const
 	Slot activated when this widget is show.
 	Set the focus to the first line edit provided by this widget
 */
-void ElementInfoWidget::firstActivated() {
+void ElementInfoWidget::firstActivated()
+{
 	m_eipw_list.first() -> setFocusTolineEdit();
 }
 

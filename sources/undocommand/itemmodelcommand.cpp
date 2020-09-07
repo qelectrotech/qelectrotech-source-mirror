@@ -50,7 +50,8 @@ void ModelIndexCommand::setData(const QVariant &value, int role)
 	@brief ModelIndexCommand::redo
 	Reimplemented from QUndoCommand
 */
-void ModelIndexCommand::redo() {
+void ModelIndexCommand::redo()
+{
 	if (m_model && m_index.isValid()) {
 		m_model->setData(m_index, m_new_value, m_role);
 	}
@@ -60,7 +61,8 @@ void ModelIndexCommand::redo() {
 	@brief ModelIndexCommand::undo
 	Reimplemented from QUndoCommand
 */
-void ModelIndexCommand::undo() {
+void ModelIndexCommand::undo()
+{
 	if (m_model && m_index.isValid()) {
 		m_model->setData(m_index, m_old_value, m_role);
 	}

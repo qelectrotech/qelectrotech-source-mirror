@@ -49,7 +49,8 @@ DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *paren
 	@brief DiagramImageItem::~DiagramImageItem
 	Destructor
 */
-DiagramImageItem::~DiagramImageItem() {
+DiagramImageItem::~DiagramImageItem()
+{
 }
 
 /**
@@ -106,7 +107,8 @@ void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
 	if no pixmap are set, return a default QRectF
 	@return a QRectF represent the bounding rectangle
 */
-QRectF DiagramImageItem::boundingRect() const {
+QRectF DiagramImageItem::boundingRect() const
+{
 	if (!pixmap_.isNull()) {
 		return (QRectF(pixmap_.rect()));
 	} else {
@@ -119,7 +121,8 @@ QRectF DiagramImageItem::boundingRect() const {
 	@brief DiagramImageItem::name
 	@return the generic name of this item (picture)
 */
-QString DiagramImageItem::name() const {
+QString DiagramImageItem::name() const
+{
 	return tr("une image");
 }
 
@@ -163,7 +166,8 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	@param document Le document XML a utiliser
 	@return L'element XML representant l'image
 */
-QDomElement DiagramImageItem::toXml(QDomDocument &document) const {
+QDomElement DiagramImageItem::toXml(QDomDocument &document) const
+{
 	QDomElement result = document.createElement("image");
 	//write some attribute
 	result.setAttribute("x", QString::number(pos().x()));

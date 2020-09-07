@@ -89,7 +89,8 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 }
 
 /// Destructeur
-LineEditor::~LineEditor() {
+LineEditor::~LineEditor()
+{
 }
 
 void LineEditor::setUpChangeConnections()
@@ -155,11 +156,13 @@ bool LineEditor::setParts(QList <CustomElementPart *> parts)
 /**
 	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
 */
-CustomElementPart *LineEditor::currentPart() const {
+CustomElementPart *LineEditor::currentPart() const
+{
 	return(part);
 }
 
-QList<CustomElementPart*> LineEditor::currentParts() const {
+QList<CustomElementPart*> LineEditor::currentParts() const
+{
     return style_->currentParts();
 }
 
@@ -167,7 +170,8 @@ QList<CustomElementPart*> LineEditor::currentParts() const {
 	@brief LineEditor::editedP1
 	@return The edited P1 in item coordinate
 */
-QPointF LineEditor::editedP1() const {
+QPointF LineEditor::editedP1() const
+{
 	return part -> mapFromScene(x1->value(), y1->value());
 }
 
@@ -175,7 +179,8 @@ QPointF LineEditor::editedP1() const {
 	@brief LineEditor::editedP2
 	@return The edited P2 in item coordinate
 */
-QPointF LineEditor::editedP2() const {
+QPointF LineEditor::editedP2() const
+{
 	return part -> mapFromScene(x2->value(), y2->value());
 }
 

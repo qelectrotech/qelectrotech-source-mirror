@@ -36,13 +36,15 @@ DiagramPosition::DiagramPosition(const QString &letter, unsigned int number) {
 /**
 	Destructeur
 */
-DiagramPosition::~DiagramPosition() {
+DiagramPosition::~DiagramPosition()
+{
 }
 
 /**
 	@return les coordonnees stockees dans cet objet, ou un QPointF nul sinon.
 */
-QPointF DiagramPosition::position() const {
+QPointF DiagramPosition::position() const
+{
 	return(position_);
 }
 
@@ -56,7 +58,8 @@ void DiagramPosition::setPosition(const QPointF &position) {
 /**
 	@return une representation textuelle de la position
 */
-QString DiagramPosition::toString() {
+QString DiagramPosition::toString()
+{
 	if (isOutOfBounds()) {
 		return("-");
 	}
@@ -72,6 +75,7 @@ QString DiagramPosition::toString() {
 /**
 	@return true si l'element est en dehors des bords du schema
 */
-bool DiagramPosition::isOutOfBounds() const {
+bool DiagramPosition::isOutOfBounds() const
+{
 	return(letter_.isEmpty() || !number_);
 }

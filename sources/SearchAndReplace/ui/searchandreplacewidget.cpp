@@ -70,7 +70,8 @@ SearchAndReplaceWidget::SearchAndReplaceWidget(QWidget *parent) :
 	@brief SearchAndReplaceWidget::~SearchAndReplaceWidget
 	Destructor
 */
-SearchAndReplaceWidget::~SearchAndReplaceWidget() {
+SearchAndReplaceWidget::~SearchAndReplaceWidget()
+{
 	delete ui;
 }
 

@@ -48,7 +48,8 @@ DiagramPrintDialog::DiagramPrintDialog(QETProject *project, QWidget *parent) :
 /**
 	Destructeur
 */
-DiagramPrintDialog::~DiagramPrintDialog() {
+DiagramPrintDialog::~DiagramPrintDialog()
+{
 	delete dialog_;
 	delete printer_;
 	Diagram::background_color = backup_diagram_background_color;
@@ -64,7 +65,8 @@ void DiagramPrintDialog::setFileName(const QString &name) {
 /**
 	@return le nom du PDF
 */
-QString DiagramPrintDialog::fileName() const {
+QString DiagramPrintDialog::fileName() const
+{
 	return(file_name_);
 }
 
@@ -78,7 +80,8 @@ void DiagramPrintDialog::setDocName(const QString &name) {
 /**
 	@return le nom du document
 */
-QString DiagramPrintDialog::docName() const {
+QString DiagramPrintDialog::docName() const
+{
 	return(doc_name_);
 }
 
@@ -89,7 +92,8 @@ QString DiagramPrintDialog::docName() const {
 	@return the rectangle to be printed
 */
 QRect DiagramPrintDialog::diagramRect(Diagram *diagram,
-				      const ExportProperties &options) const {
+				      const ExportProperties &options) const
+{
 	if (!diagram) return(QRect());
 	
 	QRectF diagram_rect = diagram -> border_and_titleblock.borderAndTitleBlockRect();
@@ -107,7 +111,8 @@ QRect DiagramPrintDialog::diagramRect(Diagram *diagram,
 /**
 	Execute le dialogue d'impression
 */
-void DiagramPrintDialog::exec() {
+void DiagramPrintDialog::exec()
+{
 	
 	// prise en compte du nom du document
 	if (!doc_name_.isEmpty()) printer_ -> setDocName(doc_name_);
@@ -172,7 +177,8 @@ void DiagramPrintDialog::exec() {
 	@return Le nombre de pages necessaires pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
-int DiagramPrintDialog::pagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const {
+int DiagramPrintDialog::pagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const
+{
 	return(horizontalPagesCount(diagram, options, fullpage) * verticalPagesCount(diagram, options, fullpage));
 }
 
@@ -183,7 +189,8 @@ int DiagramPrintDialog::pagesCount(Diagram *diagram, const ExportProperties &opt
 	@return La largeur du "poster" en nombre de pages pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
-int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const {
+int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const
+{
 	// note : pageRect et Paper Rect tiennent compte de l'orientation du papier
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
 	QRect diagram_rect = diagramRect(diagram, options);
@@ -199,7 +206,8 @@ int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, const ExportPrope
 	@return La largeur du "poster" en nombre de pages pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
-int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const {
+int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const
+{
 	// note : pageRect et Paper Rect tiennent compte de l'orientation du papier
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
 	QRect diagram_rect = diagramRect(diagram, options);
@@ -212,7 +220,8 @@ int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportPropert
 	Construit un dialogue non standard pour demander a l'utilisateur quelle type
 	d'impression il souhaite effectuer : PDF, PS ou imprimante physique
 */
-void DiagramPrintDialog::buildPrintTypeDialog() {
+void DiagramPrintDialog::buildPrintTypeDialog()
+{
 	// initialisation des widgets
 	dialog_           = new QDialog(parentWidget());
 #ifdef Q_OS_MACOS
@@ -273,7 +282,8 @@ void DiagramPrintDialog::buildPrintTypeDialog() {
 /**
 	Assure la coherence du dialogue permettant le choix du type d'impression
 */
-void DiagramPrintDialog::updatePrintTypeDialog() {
+void DiagramPrintDialog::updatePrintTypeDialog()
+{
 	// imprime-t-on vers un fichier ?
 	bool file_print = !(printer_choice_ -> isChecked());
 	
@@ -301,7 +311,8 @@ void DiagramPrintDialog::updatePrintTypeDialog() {
 	Verifie l'etat du dialogue permettant le choix du type d'impression lorsque
 	l'utilisateur le valide.
 */
-void DiagramPrintDialog::acceptPrintTypeDialog() {
+void DiagramPrintDialog::acceptPrintTypeDialog()
+{
 	bool file_print = !(printer_choice_ -> isChecked());
 	if (file_print) {
 		// un fichier doit avoir ete entre
@@ -322,7 +333,8 @@ void DiagramPrintDialog::acceptPrintTypeDialog() {
 /**
 	Permet a l'utilisateur de choisir un fichier 
 */
-void DiagramPrintDialog::browseFilePrintTypeDialog() {
+void DiagramPrintDialog::browseFilePrintTypeDialog()
+{
 	QString extension;
 	QString filter;
 	if (printer_choice_ -> isChecked()) return;

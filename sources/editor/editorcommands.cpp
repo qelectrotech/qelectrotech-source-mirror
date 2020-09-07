@@ -56,13 +56,15 @@ ElementEditionCommand::ElementEditionCommand(const QString &text,
 /**
 	Destructor
 */
-ElementEditionCommand::~ElementEditionCommand() {
+ElementEditionCommand::~ElementEditionCommand()
+{
 }
 
 /**
 	@return the element editor/scene the command should take place on
 */
-ElementScene *ElementEditionCommand::elementScene() const {
+ElementScene *ElementEditionCommand::elementScene() const
+{
 	return(m_scene);
 }
 
@@ -76,7 +78,8 @@ void ElementEditionCommand::setElementScene(ElementScene *scene) {
 /**
 	@return the view the effect of the command should be rendered on
 */
-ElementView *ElementEditionCommand::elementView() const {
+ElementView *ElementEditionCommand::elementView() const
+{
 	return(m_view);
 }
 
@@ -108,14 +111,16 @@ DeletePartsCommand::DeletePartsCommand(
 }
 
 /// Destructeur : detruit egalement les parties supprimees
-DeletePartsCommand::~DeletePartsCommand() {
+DeletePartsCommand::~DeletePartsCommand()
+{
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		m_scene -> qgiManager().release(qgi);
 	}
 }
 
 /// Restaure les parties supprimees
-void DeletePartsCommand::undo() {
+void DeletePartsCommand::undo()
+{
 	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		m_scene -> addItem(qgi);
@@ -124,7 +129,8 @@ void DeletePartsCommand::undo() {
 }
 
 /// Supprime les parties
-void DeletePartsCommand::redo() {
+void DeletePartsCommand::redo()
+{
 	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		m_scene -> removeItem(qgi);
@@ -150,7 +156,8 @@ CutPartsCommand::CutPartsCommand(
 }
 
 /// Destructeur
-CutPartsCommand::~CutPartsCommand() {
+CutPartsCommand::~CutPartsCommand()
+{
 }
 
 /*** MovePartsCommand ***/
@@ -175,16 +182,19 @@ MovePartsCommand::MovePartsCommand(
 }
 
 /// Destructeur
-MovePartsCommand::~MovePartsCommand() {
+MovePartsCommand::~MovePartsCommand()
+{
 }
 
 /// Annule le deplacement
-void MovePartsCommand::undo() {
+void MovePartsCommand::undo()
+{
 	foreach(QGraphicsItem *qgi, moved_parts) qgi -> moveBy(-movement.x(), -movement.y());
 }
 
 /// Refait le deplacement
-void MovePartsCommand::redo() {
+void MovePartsCommand::redo()
+{
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
 		first_redo = false;
@@ -215,17 +225,20 @@ AddPartCommand::AddPartCommand(
 }
 
 /// Destructeur
-AddPartCommand::~AddPartCommand() {
+AddPartCommand::~AddPartCommand()
+{
 	m_scene -> qgiManager().release(part);
 }
 
 /// Annule l'ajout
-void AddPartCommand::undo() {
+void AddPartCommand::undo()
+{
 	m_scene -> removeItem(part);
 }
 
 /// Refait l'ajout
-void AddPartCommand::redo() {
+void AddPartCommand::redo()
+{
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
 		if (!part -> zValue()) {
@@ -262,16 +275,19 @@ ChangeNamesCommand::ChangeNamesCommand(
 }
 
 /// Destructeur
-ChangeNamesCommand::~ChangeNamesCommand() {
+ChangeNamesCommand::~ChangeNamesCommand()
+{
 }
 
 /// Annule le changement
-void ChangeNamesCommand::undo() {
+void ChangeNamesCommand::undo()
+{
 	m_scene -> setNames(names_before);
 }
 
 /// Refait le changement
-void ChangeNamesCommand::redo() {
+void ChangeNamesCommand::redo()
+{
 	m_scene -> setNames(names_after);
 }
 
@@ -312,16 +328,19 @@ ChangeZValueCommand::ChangeZValueCommand(
 }
 
 /// Destructeur
-ChangeZValueCommand::~ChangeZValueCommand() {
+ChangeZValueCommand::~ChangeZValueCommand()
+{
 }
 
 /// Annule les changements de zValue
-void ChangeZValueCommand::undo() {
+void ChangeZValueCommand::undo()
+{
 	foreach(QGraphicsItem *qgi, undo_hash.keys()) qgi -> setZValue(undo_hash[qgi]);
 }
 
 /// Refait les changements de zValue
-void ChangeZValueCommand::redo() {
+void ChangeZValueCommand::redo()
+{
 	foreach(QGraphicsItem *qgi, redo_hash.keys()) qgi -> setZValue(redo_hash[qgi]);
 }
 
@@ -423,16 +442,19 @@ ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const Q
 }
 
 /// Destructeur
-ChangeInformationsCommand::~ChangeInformationsCommand() {
+ChangeInformationsCommand::~ChangeInformationsCommand()
+{
 }
 
 /// Annule le changement d'autorisation pour les connexions internes
-void ChangeInformationsCommand::undo() {
+void ChangeInformationsCommand::undo()
+{
 	m_scene -> setInformations(old_informations_);
 }
 
 /// Refait le changement d'autorisation pour les connexions internes
-void ChangeInformationsCommand::redo() {
+void ChangeInformationsCommand::redo()
+{
 	m_scene -> setInformations(new_informations_);
 }
 
@@ -449,20 +471,23 @@ ScalePartsCommand::ScalePartsCommand(ElementScene *scene, QUndoCommand * parent)
 /**
 	Destructor
 */
-ScalePartsCommand::~ScalePartsCommand() {
+ScalePartsCommand::~ScalePartsCommand()
+{
 }
 
 /**
 	Undo the scaling operation
 */
-void ScalePartsCommand::undo() {
+void ScalePartsCommand::undo()
+{
 	scale(new_rect_, original_rect_);
 }
 
 /**
 	Redo the scaling operation
 */
-void ScalePartsCommand::redo() {
+void ScalePartsCommand::redo()
+{
 	if (first_redo) {
 		first_redo = false;
 		return;
@@ -473,7 +498,8 @@ void ScalePartsCommand::redo() {
 /**
 	@return the element editor/scene the command should take place on
 */
-ElementScene *ScalePartsCommand::elementScene() const {
+ElementScene *ScalePartsCommand::elementScene() const
+{
 	return(m_scene);
 }
 
@@ -488,7 +514,8 @@ void ScalePartsCommand::setScaledPrimitives(const QList<CustomElementPart *> &pr
 /**
 	@return the list of primitives to be scaled by this command
 */
-QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const {
+QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const
+{
 	return(scaled_primitives_);
 }
 
@@ -511,7 +538,8 @@ void ScalePartsCommand::setTransformation(const QRectF &original_rect,
 	are the bounding rectangles for all scaled primitives respectively before
 	and after the operation.
 */
-QPair<QRectF, QRectF> ScalePartsCommand::transformation() {
+QPair<QRectF, QRectF> ScalePartsCommand::transformation()
+{
 	return(QPair<QRectF, QRectF>(original_rect_, new_rect_));
 }
 
@@ -532,7 +560,8 @@ void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
 /**
 	Generate the text describing what this command does exactly.
 */
-void ScalePartsCommand::adjustText() {
+void ScalePartsCommand::adjustText()
+{
 	if (scaled_primitives_.count() == 1) {
 		setText(QObject::tr("redimensionnement %1", "undo caption -- %1 is the resized primitive type name").arg(scaled_primitives_.first() -> name()));
 	} else {
@@ -562,7 +591,8 @@ ChangePropertiesCommand::ChangePropertiesCommand(
 	setText(QObject::tr("Modifier les propriétés"));
 }
 
-ChangePropertiesCommand::~ChangePropertiesCommand() {}
+ChangePropertiesCommand::~ChangePropertiesCommand()
+{}
 
 void ChangePropertiesCommand::undo()
 {

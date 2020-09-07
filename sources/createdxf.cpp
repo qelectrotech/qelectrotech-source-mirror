@@ -39,7 +39,7 @@ Createdxf::~Createdxf()
 }
 
 /* Header section of every DXF file.*/
-void  Createdxf::dxfBegin (const QString& fileName)
+void Createdxf::dxfBegin (const QString& fileName)
 {
 
 	// Creation of an output stream object in text mode.
@@ -75,7 +75,7 @@ void  Createdxf::dxfBegin (const QString& fileName)
 			To_Dxf << 30            << "\r\n";
 			To_Dxf << "0.0"         << "\r\n";
 			To_Dxf << 9             << "\r\n";
-			
+
 			To_Dxf << "$EXTMIN"     << "\r\n";
 			To_Dxf << 10            << "\r\n";
 			To_Dxf << "0.0"         << "\r\n";
@@ -87,7 +87,7 @@ void  Createdxf::dxfBegin (const QString& fileName)
 			To_Dxf << "4000.0"      << "\r\n";
 			To_Dxf << 20            << "\r\n";
 			To_Dxf << "4000.0"      << "\r\n";
-			
+
 			To_Dxf << 9             << "\r\n";
 			To_Dxf << "$LIMMIN"     << "\r\n";
 			To_Dxf << 10            << "\r\n";
@@ -109,7 +109,7 @@ void  Createdxf::dxfBegin (const QString& fileName)
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "TABLE"       << "\r\n";
 			To_Dxf << 2             << "\r\n";
-			
+
 			To_Dxf << "VPORT"       << "\r\n";
 			To_Dxf << 70            << "\r\n";
 			To_Dxf << 1             << "\r\n";
@@ -190,7 +190,7 @@ void  Createdxf::dxfBegin (const QString& fileName)
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "TABLE"       << "\r\n";
 			To_Dxf << 2             << "\r\n";
-			
+
 			To_Dxf << "LTYPE"       << "\r\n";
 			To_Dxf << 70            << "\r\n";
 			To_Dxf << 1             << "\r\n";
@@ -209,7 +209,7 @@ void  Createdxf::dxfBegin (const QString& fileName)
 			To_Dxf << 40            << "\r\n";
 			To_Dxf << 0.00          << "\r\n";
 			To_Dxf << 0             << "\r\n";
-			
+
 			To_Dxf << "ENDTAB"      << "\r\n";
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "ENDSEC"      << "\r\n";
@@ -228,8 +228,12 @@ void  Createdxf::dxfBegin (const QString& fileName)
 	}
 }
 
-/* End Section of every DXF File*/
-void  Createdxf::dxfEnd (const QString& fileName)
+/**
+	@brief Createdxf::dxfEnd
+	End Section of every DXF File
+	@param fileName
+*/
+void Createdxf::dxfEnd(const QString& fileName)
 {
 	// Creation of an output stream object in text mode.
 	if (!fileName.isEmpty()) {
@@ -251,9 +255,21 @@ void  Createdxf::dxfEnd (const QString& fileName)
 	}
 }
 
-
-/* draw circle in dxf format*/
-void Createdxf::drawCircle (const QString& fileName, double radius, double x, double y, int colour)
+/**
+	@brief Createdxf::drawCircle
+	draw circle in dxf format
+	@param fileName
+	@param radius
+	@param x
+	@param y
+	@param colour
+*/
+void Createdxf::drawCircle(
+		const QString& fileName,
+		double radius,
+		double x,
+		double y,
+		int colour)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -285,9 +301,23 @@ void Createdxf::drawCircle (const QString& fileName, double radius, double x, do
 	}
 }
 
-
-/* draw line in DXF Format*/
-void Createdxf::drawLine (const QString &fileName, double x1, double y1, double x2, double y2,const int &colour)
+/**
+	@brief Createdxf::drawLine
+	draw line in DXF Format
+	@param fileName
+	@param x1
+	@param y1
+	@param x2
+	@param y2
+	@param colour
+*/
+void Createdxf::drawLine (
+		const QString &fileName,
+		double x1,
+		double y1,
+		double x2,
+		double y2,
+		const int &colour)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -323,7 +353,8 @@ void Createdxf::drawLine (const QString &fileName, double x1, double y1, double 
 	}
 }
 
-long Createdxf::RGBcodeTable[255]{
+long Createdxf::RGBcodeTable[255]
+{
 	0x000000,    0xff0000,    0xffff00,    0x00ff00,    0x00ffff,
 	0x0000ff,    0xff00ff,    0xffffff,    0x414141,    0x808080,
 	0xff0000,    0xffaaaa,    0xbd0000,    0xbd7e7e,    0x810000,
@@ -415,7 +446,11 @@ int Createdxf::getcolorCode (const long red, const long green, const long blue)
 	@param line
 	@param colorcode
 */
-void Createdxf::drawLine(const QString &filepath, const QLineF &line, const int &colorcode) {
+void Createdxf::drawLine(
+		const QString &filepath,
+		const QLineF &line,
+		const int &colorcode)
+{
 	drawLine(filepath, line.p1().x() * xScale,
 			 sheetHeight - (line.p1().y() * yScale),
 			 line.p2().x() * xScale,
@@ -423,7 +458,19 @@ void Createdxf::drawLine(const QString &filepath, const QLineF &line, const int 
 			 colorcode);
 }
 
-void Createdxf::drawArcEllipse(const QString &file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle, qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle, const int &colorcode) {
+void Createdxf::drawArcEllipse(
+		const QString &file_path,
+		qreal x,
+		qreal y,
+		qreal w,
+		qreal h,
+		qreal startAngle,
+		qreal spanAngle,
+		qreal hotspot_x,
+		qreal hotspot_y,
+		qreal rotation_angle,
+		const int &colorcode)
+{
 	// vector of parts of arc (stored as a pair of startAngle and spanAngle) for each quadrant.
 	QVector< QPair<qreal,qreal> > arc_parts_vector;
 	
@@ -534,7 +581,12 @@ void Createdxf::drawArcEllipse(const QString &file_path, qreal x, qreal y, qreal
 			arc_endAngle = temp;
 		}
 		
-		QPointF transformed_point = ExportDialog::rotation_transformed(center_x, center_y, hotspot_x, hotspot_y, rotation_angle);
+		QPointF transformed_point = ExportDialog::rotation_transformed(
+					center_x,
+					center_y,
+					hotspot_x,
+					hotspot_y,
+					rotation_angle);
 		center_x = transformed_point.x();
 		center_y = transformed_point.y();
 		arc_endAngle *= 180/3.142;
@@ -542,7 +594,14 @@ void Createdxf::drawArcEllipse(const QString &file_path, qreal x, qreal y, qreal
 		arc_endAngle -= rotation_angle;
 		arc_startAngle -= rotation_angle;
 		
-		drawArc(file_path, center_x, center_y, radius, arc_startAngle, arc_endAngle, colorcode);
+		drawArc(
+					file_path,
+					center_x,
+					center_y,
+					radius,
+					arc_startAngle,
+					arc_endAngle,
+					colorcode);
 	}
 }
 
@@ -553,16 +612,37 @@ void Createdxf::drawArcEllipse(const QString &file_path, qreal x, qreal y, qreal
 	@param rect
 	@param colorcode
 */
-void Createdxf::drawEllipse(const QString &filepath, const QRectF &rect, const int &colorcode) {
-	drawArcEllipse(filepath, rect.topLeft().x() * xScale,
-				   sheetHeight - (rect.topLeft().y() * yScale),
-				   rect.width() * xScale,
-				   rect.height() * yScale,
-				   0, 360, 0, 0, 0, colorcode);
+void Createdxf::drawEllipse(
+		const QString &filepath,
+		const QRectF &rect,
+		const int &colorcode)
+{
+	drawArcEllipse(
+				filepath,
+				rect.topLeft().x() * xScale,
+				sheetHeight - (rect.topLeft().y() * yScale),
+				rect.width() * xScale,
+				rect.height() * yScale,
+				0, 360, 0, 0, 0, colorcode);
 }
 
-/* draw rectangle in dxf format */
-void Createdxf::drawRectangle (const QString &fileName, double x1, double y1, double width, double height, const int &colour)
+/**
+	@brief Createdxf::drawRectangle
+	draw rectangle in dxf format
+	@param fileName
+	@param x1
+	@param y1
+	@param width
+	@param height
+	@param colour
+*/
+void Createdxf::drawRectangle (
+		const QString &fileName,
+		double x1,
+		double y1,
+		double width,
+		double height,
+		const int &colour)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -654,40 +734,47 @@ void Createdxf::drawRectangle (const QString &fileName, double x1, double y1, do
 
 /**
 	@brief Createdxf::drawRectangle
-    Convenience function for draw rectangle
+	Convenience function for draw rectangle
 	@param filepath
 	@param rect
 	@param colorcode
 */
-void Createdxf::drawRectangle(const QString &filepath,
-			      const QRectF &rect,
-			      const int &colorcode) {
-	drawRectangle(filepath, rect.bottomLeft().x() * xScale,
-				  sheetHeight - (rect.bottomLeft().y() * yScale),
-				  rect.width() * xScale,
-				  rect.height() * yScale,
-				  colorcode);
+void Createdxf::drawRectangle(
+		const QString &filepath,
+		const QRectF &rect,
+		const int &colorcode) {
+	drawRectangle(
+				filepath,
+				rect.bottomLeft().x() * xScale,
+				sheetHeight - (rect.bottomLeft().y() * yScale),
+				rect.width() * xScale,
+				rect.height() * yScale,
+				colorcode);
 }
 
 /**
-    @brief Createdxf::drawPolygon
-    Convenience function for draw polygon
-    @param filepath
-    @param poly
-    @param colorcode
+	@brief Createdxf::drawPolygon
+	Convenience function for draw polygon
+	@param filepath
+	@param poly
+	@param colorcode
 */
-void Createdxf::drawPolygon(const QString &filepath,
-                  const QPolygonF &poly,
-                  const int &colorcode) {
-    int lc = 0;
-    QPointF plast;
-    foreach(QPointF p, poly) {
-        if(lc++) {
-            QLineF ql(plast,p);
-            drawLine(filepath,ql,colorcode);
-        }
-        plast = p;
-    }
+void Createdxf::drawPolygon(
+		const QString &filepath,
+		const QPolygonF &poly,
+		const int &colorcode)
+{
+	int lc = 0;
+	QPointF plast;
+	foreach(QPointF p, poly)
+	{
+		if(lc++)
+		{
+			QLineF ql(plast,p);
+			drawLine(filepath,ql,colorcode);
+		}
+		plast = p;
+	}
 }
 /**
 	@brief Createdxf::drawArc
@@ -700,13 +787,14 @@ void Createdxf::drawPolygon(const QString &filepath,
 	@param endAngle
 	@param color
 */
-void Createdxf::drawArc(const QString& fileName,
-			double x,
-			double y,
-			double rad,
-			double startAngle,
-			double endAngle,
-			int color)
+void Createdxf::drawArc(
+		const QString& fileName,
+		double x,
+		double y,
+		double rad,
+		double startAngle,
+		double endAngle,
+		int color)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -753,13 +841,14 @@ void Createdxf::drawArc(const QString& fileName,
 	@param rotation
 	@param colour
 */
-void Createdxf::drawText(const QString& fileName,
-			 const QString& text,
-			 double x,
-			 double y,
-			 double height,
-			 double rotation,
-			 int colour)
+void Createdxf::drawText(
+		const QString& fileName,
+		const QString& text,
+		double x,
+		double y,
+		double height,
+		double rotation,
+		int colour)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -844,17 +933,17 @@ void Createdxf::drawTextAligned(
 			To_Dxf << 50        << "\r\n";
 			To_Dxf << rotation  << "\r\n";    // Text Rotation
 #if 0
-            // If "Fit to width", then check if width of text < width specified then change it "center align or left align"
+			// If "Fit to width", then check if width of text < width specified then change it "center align or left align"
 			if (hAlign == 5) {
 				int xDiff = xAlign - x;
-                int len = text.length();
-                int t = xDiff/height;
+				int len = text.length();
+				int t = xDiff/height;
 				if (text.length() < xDiff/height && !leftAlign) {
 					hAlign = 1;
-                    xAlign = x+ (xAlign / 2);
+					xAlign = x+ (xAlign / 2);
 				} else if (text.length() < xDiff/height && leftAlign) {
-                    hAlign = 0;
-                    xAlign = x;
+					hAlign = 0;
+					xAlign = x;
 //					file.close();
 //					return;
 				}

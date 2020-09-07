@@ -28,9 +28,10 @@
 	@param qgi : parent QGraphicItem
 	@param state : int used to know if the creation of element have error
 */
-MasterElement::MasterElement(const ElementsLocation &location,
-			     QGraphicsItem *qgi,
-			     int *state) :
+MasterElement::MasterElement(
+		const ElementsLocation &location,
+		QGraphicsItem *qgi,
+		int *state) :
 	Element(location, qgi, state, Element::Master)
 {}
 
@@ -38,7 +39,8 @@ MasterElement::MasterElement(const ElementsLocation &location,
 	@brief MasterElement::~MasterElement
 	default destructor
 */
-MasterElement::~MasterElement() {
+MasterElement::~MasterElement()
+{
 	unlinkAllElements();
 }
 

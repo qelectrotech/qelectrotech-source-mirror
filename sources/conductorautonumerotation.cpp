@@ -53,7 +53,8 @@ ConductorAutoNumerotation::ConductorAutoNumerotation(
 	@brief ConductorAutoNumerotation::numerate
 	execute the automatic numerotation
 */
-void ConductorAutoNumerotation::numerate() {
+void ConductorAutoNumerotation::numerate()
+{
 	if (!m_conductor) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
 	else if (m_conductor -> properties().type == ConductorProperties::Multi)

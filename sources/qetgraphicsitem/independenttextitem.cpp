@@ -46,7 +46,8 @@ IndependentTextItem::IndependentTextItem(const QString &text) :
 {}
 
 /// Destructeur
-IndependentTextItem::~IndependentTextItem() {
+IndependentTextItem::~IndependentTextItem()
+{
 }
 
 /**

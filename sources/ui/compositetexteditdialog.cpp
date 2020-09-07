@@ -30,7 +30,8 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) 
 	setUpComboBox();
 }
 
-CompositeTextEditDialog::~CompositeTextEditDialog() {
+CompositeTextEditDialog::~CompositeTextEditDialog()
+{
 	delete ui;
 }
 
@@ -38,7 +39,8 @@ CompositeTextEditDialog::~CompositeTextEditDialog() {
 	@brief CompositeTextEditDialog::plainText
 	@return The edited text
 */
-QString CompositeTextEditDialog::plainText() const {
+QString CompositeTextEditDialog::plainText() const
+{
 	return ui->m_plain_text_edit->toPlainText();
 }
 

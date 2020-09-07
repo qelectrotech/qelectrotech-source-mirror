@@ -72,7 +72,8 @@ QList <Element *> ElementProvider::freeElement(const int filter) const{
 	@param uuid_list list of uuid must be found
 	@return all elements with uuid corresponding to uuid in uuid_list
 */
-QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
+QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const
+{
 	QList <Element *> found_element;
 
 	foreach (Diagram *d, m_diagram_list) {
@@ -93,7 +94,8 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
 	the filter for search element
 	(You can find all filter with the define in Element.h)
 */
-QList <Element *> ElementProvider::find(const int filter) const {
+QList <Element *> ElementProvider::find(const int filter) const
+{
 	QList <Element *> elmt_;
 
 	//serch in all diagram

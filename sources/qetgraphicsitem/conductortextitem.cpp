@@ -38,8 +38,8 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	@param text Le texte affiche par le champ de texte
 	@param parent_conductor  Conducteur auquel ce texte est rattache
 */
-ConductorTextItem::ConductorTextItem(const QString &text,
-				     Conductor *parent_conductor) :
+ConductorTextItem::ConductorTextItem(
+		const QString &text, Conductor *parent_conductor) :
 	DiagramTextItem(text, parent_conductor),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
@@ -49,14 +49,16 @@ ConductorTextItem::ConductorTextItem(const QString &text,
 /**
 	Destructeur
 */
-ConductorTextItem::~ConductorTextItem() {
+ConductorTextItem::~ConductorTextItem()
+{
 }
 
 /**
 	@return le conducteur parent de ce champ de texte, ou 0 si celui-ci n'en a
 	pas
 */
-Conductor *ConductorTextItem::parentConductor() const {
+Conductor *ConductorTextItem::parentConductor() const
+{
 	return(parent_conductor_);
 }
 
@@ -81,7 +83,8 @@ void ConductorTextItem::fromXml(const QDomElement &e) {
 	@return true si ce champ de texte a ete explictement deplace par
 	l'utilisateur, false sinon
 */
-bool ConductorTextItem::wasMovedByUser() const {
+bool ConductorTextItem::wasMovedByUser() const
+{
 	return(moved_by_user_);
 }
 
@@ -89,7 +92,8 @@ bool ConductorTextItem::wasMovedByUser() const {
 	@brief ConductorTextItem::wasRotateByUser
 	@return true if text was explicit moved by user else false
 */
-bool ConductorTextItem::wasRotateByUser() const {
+bool ConductorTextItem::wasRotateByUser() const
+{
 	return(rotate_by_user_);
 }
 
@@ -120,7 +124,7 @@ void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 	rotate_by_user_ = rotate_by_user;
 	if (!rotate_by_user && parent_conductor_) {
 		parent_conductor_ -> calculateTextItemPosition();
-    }
+	}
 }
 
 /**
@@ -154,8 +158,8 @@ void ConductorTextItem::setPos(const QPointF &pos)
 */
 void ConductorTextItem::setPos(qreal x, qreal y)
 {
-    QPointF p(x,y);
-    setPos(p);
+	QPointF p(x,y);
+	setPos(p);
 }
 
 /**

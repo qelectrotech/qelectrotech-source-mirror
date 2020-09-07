@@ -35,7 +35,8 @@ QETRegExpValidator::QETRegExpValidator(const QRegExp &regexp, QObject *parent) :
 /**
 	Destructeur
 */
-QETRegExpValidator::~QETRegExpValidator() {
+QETRegExpValidator::~QETRegExpValidator()
+{
 }
 
 /**
@@ -43,7 +44,8 @@ QETRegExpValidator::~QETRegExpValidator() {
 	@see validationFailed()
 	Emet le signal validationFailed si la validation echoue
 */
-QValidator::State QETRegExpValidator::validate(QString &input, int &pos) const {
+QValidator::State QETRegExpValidator::validate(QString &input, int &pos) const
+{
 	QValidator::State result = QRegExpValidator::validate(input, pos);
 	if (result == QValidator::Invalid) emit(validationFailed());
 	return(result);

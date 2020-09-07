@@ -51,7 +51,8 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 /**
 	Destructeur
 */
-NewElementWizard::~NewElementWizard() {
+NewElementWizard::~NewElementWizard()
+{
 }
 
 /**
@@ -99,7 +100,8 @@ QWizardPage *NewElementWizard::buildStep1()
 	@brief NewElementWizard::buildStep2
 	@return
 */
-QWizardPage *NewElementWizard::buildStep2() {
+QWizardPage *NewElementWizard::buildStep2()
+{
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
 	page -> setTitle(tr("Étape 2/3 : Nom du fichier", "wizard page title"));
@@ -123,7 +125,8 @@ QWizardPage *NewElementWizard::buildStep2() {
 	@brief NewElementWizard::buildStep3
 	@return
 */
-QWizardPage *NewElementWizard::buildStep3() {
+QWizardPage *NewElementWizard::buildStep3()
+{
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
 	page -> setTitle(tr("Étape 3/3 : Noms de l'élément", "wizard page title"));
@@ -202,7 +205,8 @@ bool NewElementWizard::validStep1()
 	Valid the step 2
 	@return true if step is valid
 */
-bool NewElementWizard::validStep2() {
+bool NewElementWizard::validStep2()
+{
 	QString file_name = m_qle_filename -> text();
 
 	if (file_name.isEmpty()) {
@@ -233,7 +237,8 @@ bool NewElementWizard::validStep2() {
 	@brief NewElementWizard::createNewElement
 	Lauch an element editor for create the new element
 */
-void NewElementWizard::createNewElement() {
+void NewElementWizard::createNewElement()
+{
 	QETElementEditor *edit_new_element = new QETElementEditor(parentWidget());
 	edit_new_element -> setNames(m_names_list -> names());
 

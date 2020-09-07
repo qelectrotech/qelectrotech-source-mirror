@@ -48,7 +48,8 @@ ElementPrimitiveDecorator::~ElementPrimitiveDecorator()
 	@return the internal bouding rect, i.e. the smallest rectangle containing
 	the bounding rectangle of every selected item.
 */
-QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
+QRectF ElementPrimitiveDecorator::internalBoundingRect() const
+{
 	if (!decorated_items_.count() || !scene()) return(QRectF());
 
 	//if @decorated_items_ contain one item and if this item is a vertical or horizontal partline, apply a specific methode
@@ -139,14 +140,16 @@ void ElementPrimitiveDecorator::setItems(const QList<QGraphicsItem *> &items)
 /**
 	@return the list of items this decorator is supposed to manipulate
 */
-QList<CustomElementPart *> ElementPrimitiveDecorator::items() const {
+QList<CustomElementPart *> ElementPrimitiveDecorator::items() const
+{
 	return(decorated_items_);
 }
 
 /**
 	@return the list of items this decorator is supposed to manipulate
 */
-QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const {
+QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const
+{
 	QList<QGraphicsItem *> list;
 	foreach (CustomElementPart *part_item, decorated_items_) {
 		if (QGraphicsItem *item = dynamic_cast<QGraphicsItem *>(part_item)) {
@@ -337,7 +340,8 @@ void ElementPrimitiveDecorator::init()
 /**
 	Save the original bounding rectangle.
 */
-void ElementPrimitiveDecorator::saveOriginalBoundingRect() {
+void ElementPrimitiveDecorator::saveOriginalBoundingRect()
+{
 	original_bounding_rect_ = internalBoundingRect();
 }
 
@@ -345,7 +349,8 @@ void ElementPrimitiveDecorator::saveOriginalBoundingRect() {
 	Adjust the effective bounding rect. This method should be called after the
 	modified_bouding_rect_ attribute was modified.
 */
-void ElementPrimitiveDecorator::adjustEffectiveBoundingRect() {
+void ElementPrimitiveDecorator::adjustEffectiveBoundingRect()
+{
 	prepareGeometryChange();
 	effective_bounding_rect_ = modified_bounding_rect_ | effective_bounding_rect_;
 	update();
@@ -355,7 +360,8 @@ void ElementPrimitiveDecorator::adjustEffectiveBoundingRect() {
 /**
 	Start a movement (i.e. either a move or scaling operation)
 */
-void ElementPrimitiveDecorator::startMovement() {
+void ElementPrimitiveDecorator::startMovement()
+{
 	adjust();
 	
 	foreach(CustomElementPart *item, decorated_items_) {
@@ -409,7 +415,8 @@ void ElementPrimitiveDecorator::applyMovementToRect(int movement_type, const QPo
 	}
 }
 
-CustomElementPart *ElementPrimitiveDecorator::singleItem() const {
+CustomElementPart *ElementPrimitiveDecorator::singleItem() const
+{
 	if (decorated_items_.count() == 1) {
 		return(decorated_items_.first());
 	}
@@ -450,7 +457,8 @@ void ElementPrimitiveDecorator::scaleItems(const QRectF &original_rect, const QR
 /**
 	@return the bounding rectangle of \a item, in scene coordinates
 */
-QRectF ElementPrimitiveDecorator::getSceneBoundingRect(QGraphicsItem *item) const {
+QRectF ElementPrimitiveDecorator::getSceneBoundingRect(QGraphicsItem *item) const
+{
 	if (!item) return(QRectF());
 	return(item -> mapRectToScene(item -> boundingRect()));
 }
@@ -655,7 +663,8 @@ QPointF ElementPrimitiveDecorator::deltaForRoundScaling(const QRectF &original, 
 	Round the coordinates of \a point so it is snapped to the grid defined by the
 	grid_step_x_ and grid_step_y_ attributes.
 */
-QPointF ElementPrimitiveDecorator::snapConstPointToGrid(const QPointF &point) const {
+QPointF ElementPrimitiveDecorator::snapConstPointToGrid(const QPointF &point) const
+{
 	return(
 		QPointF(
 			qRound(point.x() / grid_step_x_) * grid_step_x_,
@@ -668,7 +677,8 @@ QPointF ElementPrimitiveDecorator::snapConstPointToGrid(const QPointF &point) co
 	Round the coordinates of \a point so it is snapped to the grid defined by the
 	grid_step_x_ and grid_step_y_ attributes.
 */
-void ElementPrimitiveDecorator::snapPointToGrid(QPointF &point) const {
+void ElementPrimitiveDecorator::snapPointToGrid(QPointF &point) const
+{
 	point.rx() = qRound(point.x() / grid_step_x_) * grid_step_x_;
 	point.ry() = qRound(point.y() / grid_step_y_) * grid_step_y_;
 }

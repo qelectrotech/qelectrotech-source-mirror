@@ -219,7 +219,8 @@ QPushButton *ConductorPropertiesWidget::editAutonumPushButton() const
 /**
 	@brief ConductorPropertiesWidget::initWidget
 */
-void ConductorPropertiesWidget::initWidget() {
+void ConductorPropertiesWidget::initWidget()
+{
 	m_verti_select = QETApp::createTextOrientationSpinBoxWidget();
 	ui -> m_text_angle_gl -> addWidget(m_verti_select, 2, 0, Qt::AlignHCenter);
 	m_horiz_select = QETApp::createTextOrientationSpinBoxWidget();
@@ -308,6 +309,7 @@ void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 	to centralize signal from various widget to edit single ligne properties,
 	for update the preview
 */
-void ConductorPropertiesWidget::on_m_update_preview_pb_clicked() {
+void ConductorPropertiesWidget::on_m_update_preview_pb_clicked()
+{
 	updatePreview();
 }

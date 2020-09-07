@@ -64,7 +64,8 @@ PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c,
 	@brief PasteDiagramCommand::~PasteDiagramCommand
 	Destructor
 */
-PasteDiagramCommand::~PasteDiagramCommand() {
+PasteDiagramCommand::~PasteDiagramCommand()
+{
 	diagram -> qgiManager().release(content.items(filter));
 }
 
@@ -162,7 +163,8 @@ CutDiagramCommand::CutDiagramCommand(
 	@brief CutDiagramCommand::~CutDiagramCommand
 	Destructeur
 */
-CutDiagramCommand::~CutDiagramCommand() {
+CutDiagramCommand::~CutDiagramCommand()
+{
 }
 
 /**
@@ -210,14 +212,16 @@ MoveElementsCommand::MoveElementsCommand(
 	@brief MoveElementsCommand::~MoveElementsCommand
 	Destructor
 */
-MoveElementsCommand::~MoveElementsCommand() {
+MoveElementsCommand::~MoveElementsCommand()
+{
 	delete m_anim_group;
 }
 
 /**
 	@brief MoveElementsCommand::undo
 */
-void MoveElementsCommand::undo() {
+void MoveElementsCommand::undo()
+{
 	diagram -> showMe();
 	m_anim_group->setDirection(QAnimationGroup::Forward);
 	m_anim_group->start();
@@ -227,7 +231,8 @@ void MoveElementsCommand::undo() {
 /**
 	@brief MoveElementsCommand::redo
 */
-void MoveElementsCommand::redo() {
+void MoveElementsCommand::redo()
+{
 	diagram -> showMe();
 	if (first_redo) {
 		first_redo = false;
@@ -329,14 +334,16 @@ MoveConductorsTextsCommand::MoveConductorsTextsCommand(
 	@brief MoveConductorsTextsCommand::~MoveConductorsTextsCommand
 	Destructeur
 */
-MoveConductorsTextsCommand::~MoveConductorsTextsCommand() {
+MoveConductorsTextsCommand::~MoveConductorsTextsCommand()
+{
 }
 
 /**
 	@brief MoveConductorsTextsCommand::undo
 	annule le deplacement
 */
-void MoveConductorsTextsCommand::undo() {
+void MoveConductorsTextsCommand::undo()
+{
 	diagram -> showMe();
 	foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
 		QPointF movement = texts_to_move_[cti].first;
@@ -353,7 +360,8 @@ void MoveConductorsTextsCommand::undo() {
 	@brief MoveConductorsTextsCommand::redo
 	refait le deplacement
 */
-void MoveConductorsTextsCommand::redo() {
+void MoveConductorsTextsCommand::redo()
+{
 	diagram -> showMe();
 	if (first_redo) {
 		first_redo = false;
@@ -397,7 +405,8 @@ void MoveConductorsTextsCommand::addTextMovement(ConductorTextItem *text_item,
 	@brief MoveConductorsTextsCommand::regenerateTextLabel
 	Genere la description de l'objet d'annulation
 */
-void MoveConductorsTextsCommand::regenerateTextLabel() {
+void MoveConductorsTextsCommand::regenerateTextLabel()
+{
 	QString moved_content_sentence = QET::ElementsAndConductorsSentence(0, 0, texts_to_move_.count());
 	
 	setText(
@@ -437,14 +446,16 @@ ChangeDiagramTextCommand::ChangeDiagramTextCommand(
 	@brief ChangeDiagramTextCommand::~ChangeDiagramTextCommand
 	destructeur
 */
-ChangeDiagramTextCommand::~ChangeDiagramTextCommand() {
+ChangeDiagramTextCommand::~ChangeDiagramTextCommand()
+{
 }
 
 /**
 	@brief ChangeDiagramTextCommand::undo
 	annule la modification de texte
 */
-void ChangeDiagramTextCommand::undo() {
+void ChangeDiagramTextCommand::undo()
+{
 	diagram -> showMe();
 	text_item -> setHtml(text_before);
 }
@@ -488,14 +499,16 @@ ChangeConductorCommand::ChangeConductorCommand(
 	@brief ChangeConductorCommand::~ChangeConductorCommand
 	Destructeur
 */
-ChangeConductorCommand::~ChangeConductorCommand() {
+ChangeConductorCommand::~ChangeConductorCommand()
+{
 }
 
 /**
 	@brief ChangeConductorCommand::undo
 	Annule la modification du conducteur
 */
-void ChangeConductorCommand::undo() {
+void ChangeConductorCommand::undo()
+{
 	diagram -> showMe();
 	conductor -> setProfile(old_profile, path_type);
 	conductor -> textItem() -> setPos(text_pos_before_mov_);
@@ -505,7 +518,8 @@ void ChangeConductorCommand::undo() {
 	@brief ChangeConductorCommand::redo
 	Refait la modification du conducteur
 */
-void ChangeConductorCommand::redo() {
+void ChangeConductorCommand::redo()
+{
 	diagram -> showMe();
 	if (first_redo) {
 		first_redo = false;
@@ -551,13 +565,15 @@ ResetConductorCommand::ResetConductorCommand(
 /**
 	@brief ResetConductorCommand::~ResetConductorCommand
 */
-ResetConductorCommand::~ResetConductorCommand() {
+ResetConductorCommand::~ResetConductorCommand()
+{
 }
 
 /**
 	@brief ResetConductorCommand::undo
 */
-void ResetConductorCommand::undo() {
+void ResetConductorCommand::undo()
+{
 	diagram -> showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
 		c -> setProfiles(conductors_profiles[c]);
@@ -567,7 +583,8 @@ void ResetConductorCommand::undo() {
 /**
 	@brief ResetConductorCommand::redo
 */
-void ResetConductorCommand::redo() {
+void ResetConductorCommand::redo()
+{
 	diagram -> showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
 		c -> textItem() -> forceMovedByUser  (false);
@@ -601,14 +618,16 @@ ChangeBorderCommand::ChangeBorderCommand(Diagram *dia,
 	@brief ChangeBorderCommand::~ChangeBorderCommand
 	Destructeur
 */
-ChangeBorderCommand::~ChangeBorderCommand() {
+ChangeBorderCommand::~ChangeBorderCommand()
+{
 }
 
 /**
 	@brief ChangeBorderCommand::undo
 	Annule les changements apportes au schema
 */
-void ChangeBorderCommand::undo() {
+void ChangeBorderCommand::undo()
+{
 	diagram -> showMe();
 	diagram -> border_and_titleblock.importBorder(old_properties);
 }
@@ -617,7 +636,8 @@ void ChangeBorderCommand::undo() {
 	@brief ChangeBorderCommand::redo
 	Refait les changements apportes au schema
 */
-void ChangeBorderCommand::redo() {
+void ChangeBorderCommand::redo()
+{
 	diagram -> showMe();
 	diagram -> border_and_titleblock.importBorder(new_properties);
 }

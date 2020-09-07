@@ -157,7 +157,8 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 	@brief AutoNumberingDockWidget::setContext
 	Add all itens to comboboxes
 */
-void AutoNumberingDockWidget::setContext() {
+void AutoNumberingDockWidget::setContext()
+{
 
 	this->clear();
 
@@ -204,7 +205,8 @@ void AutoNumberingDockWidget::setConductorActive(DiagramView* dv) {
 	@brief AutoNumberingDockWidget::setActive
 	Set current used autonumberings
 */
-void AutoNumberingDockWidget::setActive() {
+void AutoNumberingDockWidget::setActive()
+{
 
 	if (m_project_view!=nullptr) {
 			//Conductor
@@ -233,7 +235,8 @@ void AutoNumberingDockWidget::setActive() {
 	@brief AutoNumberingDockWidget::conductorAutoNumChanged
 	Add new or remove conductor auto num from combobox
 */
-void AutoNumberingDockWidget::conductorAutoNumChanged() {
+void AutoNumberingDockWidget::conductorAutoNumChanged()
+{
 	ui->m_conductor_cb->clear();
 
 	//Conductor Combobox
@@ -263,7 +266,8 @@ void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
 	@brief AutoNumberingDockWidget::elementAutoNumChanged
 	Add new or remove element auto num from combobox
 */
-void AutoNumberingDockWidget::elementAutoNumChanged() {
+void AutoNumberingDockWidget::elementAutoNumChanged()
+{
 
 	ui->m_element_cb->clear();
 
@@ -290,7 +294,8 @@ void AutoNumberingDockWidget::on_m_element_cb_activated(int)
 	@brief AutoNumberingDockWidget::folioAutoNumChanged
 	Add new or remove folio auto num from combobox
 */
-void AutoNumberingDockWidget::folioAutoNumChanged() {
+void AutoNumberingDockWidget::folioAutoNumChanged()
+{
 
 	ui->m_folio_cb->clear();
 

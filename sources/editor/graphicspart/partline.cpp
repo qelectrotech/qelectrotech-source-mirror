@@ -346,7 +346,8 @@ void PartLine::removeHandler()
 	@brief PartLine::sceneP1
 	@return the point p1 in scene coordinate
 */
-QPointF PartLine::sceneP1() const {
+QPointF PartLine::sceneP1() const
+{
 	return(mapToScene(m_line.p1()));
 }
 
@@ -354,7 +355,8 @@ QPointF PartLine::sceneP1() const {
 	@brief PartLine::sceneP2
 	@return the point p2 in scen coordinate
 */
-QPointF PartLine::sceneP2() const {
+QPointF PartLine::sceneP2() const
+{
 	return(mapToScene(m_line.p2()));
 }
 
@@ -473,7 +475,8 @@ QRectF PartLine::firstEndCircleRect() const
 	@brief PartLine::secondEndCircleRect
 	@return the rectangle bordering the entirety of the second extremity
 */
-QRectF PartLine::secondEndCircleRect() const {
+QRectF PartLine::secondEndCircleRect() const
+{
 	QList<QPointF> interesting_points = fourEndPoints(m_line.p2(),
 													  m_line.p1(),
 													  second_length);
@@ -543,7 +546,8 @@ QRectF PartLine::boundingRect() const
 	@return true if this part is irrelevant and does not deserve to be Retained / registered.
 	A line is relevant when is two point is different
 */
-bool PartLine::isUseless() const {
+bool PartLine::isUseless() const
+{
 	return(m_line.p1() == m_line.p2());
 }
 
@@ -554,7 +558,8 @@ bool PartLine::isUseless() const {
 	to imply any margin, and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF PartLine::sceneGeometricRect() const {
+QRectF PartLine::sceneGeometricRect() const
+{
 	return(QRectF(sceneP1(), sceneP2()));
 }
 
@@ -617,7 +622,8 @@ QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &
 	return(QList<QPointF>() << o << a << b << c);
 }
 
-QLineF PartLine::line() const {
+QLineF PartLine::line() const
+{
 	return m_line;
 }
 

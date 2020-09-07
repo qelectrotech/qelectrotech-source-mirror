@@ -37,7 +37,8 @@ ESEventAddDynamicTextField::ESEventAddDynamicTextField(ElementScene *scene) :
 /**
 	@brief ESEventAddDynamicTextField::~ESEventAddDynamicTextField
 */
-ESEventAddDynamicTextField::~ESEventAddDynamicTextField() {
+ESEventAddDynamicTextField::~ESEventAddDynamicTextField()
+{
 	delete m_text;
 }
 

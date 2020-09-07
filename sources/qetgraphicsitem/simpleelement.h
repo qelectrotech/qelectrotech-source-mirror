@@ -31,9 +31,10 @@ class SimpleElement : public Element {
 	Q_OBJECT
 
 	public  :
-		explicit SimpleElement(const ElementsLocation &,
-				       QGraphicsItem * = nullptr,
-				       int * = nullptr);
+		explicit SimpleElement(
+			const ElementsLocation &,
+			QGraphicsItem * = nullptr,
+			int * = nullptr);
 		~SimpleElement() override;
 
 		void initLink(QETProject *project) override;
