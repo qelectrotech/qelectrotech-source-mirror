@@ -51,17 +51,22 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 		QAbstractItemModel *model() const;
 
 		virtual QRectF boundingRect() const override;
-		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		virtual void paint(
+				QPainter *painter,
+				const QStyleOptionGraphicsItem *option,
+				QWidget *widget) override;
 		QRect rect() const;
 		void resizeSection(int logicalIndex, int size);
 		int sectionSize(int logical_index) const;
-		QVector<int> minimumSectionWidth()  const {return m_sections_minimum_width;}
-		int minimumWidth() const {return m_minimum_width;}
+		QVector<int> minimumSectionWidth()  const
+		{return m_sections_minimum_width;}
+		int minimumWidth() const
+		{return m_minimum_width;}
 
 		QDomElement toXml (QDomDocument &document) const;
 		void fromXml(const QDomElement &element);
 		static QString xmlTagName() {return QString("graphics_header");}
-        virtual bool toDXF (const QString &filepath);
+		virtual bool toDXF (const QString &filepath);
 
 	signals:
 		void sectionResized(int logicalIndex, int size);
@@ -70,19 +75,25 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 	private:
 		void setUpMinimumSectionsSize();
 		void setUpBoundingRect();
-		void headerDataChanged(Qt::Orientations orientation, int first, int last);
+		void headerDataChanged(
+				Qt::Orientations orientation,
+				int first,
+				int last);
 		void adjustSize();
 		void modelReseted();
 
-	private:
+		QRect m_current_rect;
 		QRectF m_bounding_rect;
 		QAbstractItemModel *m_model = nullptr;
-		QVector<int> m_sections_minimum_width,
-					 m_current_sections_width;
-		int m_section_height=1,
-			m_minimum_section_height=1;
-		int m_minimum_width=1;
-		QRect m_current_rect;
+
+		QVector<int>
+		m_sections_minimum_width,
+		m_current_sections_width;
+
+		int
+		m_section_height=1,
+		m_minimum_section_height=1,
+		m_minimum_width=1;
 };
 
 #endif // QETGRAPHICSHEADERITEM_H

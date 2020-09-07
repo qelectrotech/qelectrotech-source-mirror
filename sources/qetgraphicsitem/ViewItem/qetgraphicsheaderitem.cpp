@@ -31,7 +31,7 @@ static int no_model_width = 40;
 	@param parent
 */
 QetGraphicsHeaderItem::QetGraphicsHeaderItem(QGraphicsItem *parent) :
-    QGraphicsObject(parent)
+	QGraphicsObject(parent)
 {}
 
 /**
@@ -44,17 +44,23 @@ QetGraphicsHeaderItem::QetGraphicsHeaderItem(QGraphicsItem *parent) :
 void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 {
 	if (m_model) {
-		disconnect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
-		disconnect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsHeaderItem::modelReseted);
-		disconnect(m_model, &QAbstractItemModel::columnsInserted, this, &QetGraphicsHeaderItem::modelReseted);
+		disconnect(m_model, &QAbstractItemModel::headerDataChanged,
+			   this, &QetGraphicsHeaderItem::headerDataChanged);
+		disconnect(m_model, &QAbstractItemModel::modelReset,
+			   this, &QetGraphicsHeaderItem::modelReseted);
+		disconnect(m_model, &QAbstractItemModel::columnsInserted,
+			   this, &QetGraphicsHeaderItem::modelReseted);
 	}
 
-    m_model = model;
+	m_model = model;
 	if (m_model)
 	{
-		connect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
-		connect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsHeaderItem::modelReseted);
-		connect(m_model, &QAbstractItemModel::columnsInserted, this, &QetGraphicsHeaderItem::modelReseted);
+		connect(m_model, &QAbstractItemModel::headerDataChanged,
+			this, &QetGraphicsHeaderItem::headerDataChanged);
+		connect(m_model, &QAbstractItemModel::modelReset, this,
+			&QetGraphicsHeaderItem::modelReseted);
+		connect(m_model, &QAbstractItemModel::columnsInserted,
+			this, &QetGraphicsHeaderItem::modelReseted);
 		setUpMinimumSectionsSize();
 		m_current_sections_width.clear();
 		m_current_sections_width.resize(m_sections_minimum_width.size());
@@ -69,7 +75,8 @@ void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 	@brief QetGraphicsHeaderItem::model
 	@return the model that this item is presenting
 */
-QAbstractItemModel *QetGraphicsHeaderItem::model() const {
+QAbstractItemModel *QetGraphicsHeaderItem::model() const
+{
 	return m_model;
 }
 
@@ -78,7 +85,8 @@ QAbstractItemModel *QetGraphicsHeaderItem::model() const {
 	Reimplemented from QGraphicsObject::boundingRect() const;
 	@return
 */
-QRectF QetGraphicsHeaderItem::boundingRect() const {
+QRectF QetGraphicsHeaderItem::boundingRect() const
+{
 	return m_bounding_rect;
 }
 
@@ -89,7 +97,10 @@ QRectF QetGraphicsHeaderItem::boundingRect() const {
 	@param option
 	@param widget
 */
-void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void QetGraphicsHeaderItem::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *option,
+		QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
@@ -113,9 +124,13 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 		painter->restore();
 		return;
 	}
-	painter->setFont(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
+	painter->setFont(
+				m_model->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::FontRole).value<QFont>());
 
-		//Draw vertical lines
+	//Draw vertical lines
 	auto offset= 0;
 	for(auto size : m_current_sections_width)
 	{
@@ -125,15 +140,33 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 		offset += size;
 	}
 
-		//Write text of each cell
-	auto margins_ = QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+	//Write text of each cell
+	auto margins_ = QETUtils::marginsFromString(
+				m_model->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::UserRole+1).toString());
 	QPointF top_left(margins_.left(), margins_.top());
 	for (auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
-		QSize size(m_current_sections_width.at(i) - margins_.left() - margins_.right(), m_section_height - margins_.top() - margins_.bottom());
-		painter->drawText(QRectF(top_left, size),
-						  m_model->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt(),
-						  m_model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString());
+		QSize size(
+					m_current_sections_width.at(i)
+					- margins_.left()
+					- margins_.right(),
+
+					m_section_height
+					- margins_.top()
+					- margins_.bottom());
+		painter->drawText(
+					QRectF(top_left, size),
+					m_model->headerData(
+						0,
+						Qt::Horizontal,
+						Qt::TextAlignmentRole).toInt(),
+					m_model->headerData(
+						i,
+						Qt::Horizontal,
+						Qt::DisplayRole).toString());
 
 		top_left.setX(top_left.x() + m_current_sections_width.at(i));
 	}
@@ -141,54 +174,71 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 	painter->restore();
 }
 /**
-    @brief QetGraphicsHeaderItem::toDXF
-    Draw this table to the dxf document
-    @param filepath file path of the the dxf document
-    @return true if draw success
+	@brief QetGraphicsHeaderItem::toDXF
+	Draw this table to the dxf document
+	@param filepath file path of the the dxf document
+	@return true if draw success
 */
 bool QetGraphicsHeaderItem::toDXF(const QString &filepath)
 {
-    QRectF rect = m_current_rect;
-    QPolygonF poly(rect);
-    Createdxf::drawPolygon(filepath,mapToScene(poly),0);
+	QRectF rect = m_current_rect;
+	QPolygonF poly(rect);
+	Createdxf::drawPolygon(filepath,mapToScene(poly),0);
 
-        //Draw vertical lines
-    auto offset= 0;
-    for(auto size : m_current_sections_width)
-    {
-        QPointF p1(offset+size, m_current_rect.top());
-        QPointF p2(offset+size, m_current_rect.bottom());
-        Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
-        offset += size;
-    }
+	//Draw vertical lines
+	auto offset= 0;
+	for(auto size : m_current_sections_width)
+	{
+		QPointF p1(offset+size, m_current_rect.top());
+		QPointF p2(offset+size, m_current_rect.bottom());
+		Createdxf::drawLine(
+					filepath,
+					QLineF(
+						mapToScene(p1),
+						mapToScene(p2)),
+					0);
+		offset += size;
+	}
 
-        //Write text of each cell
-    auto margins_ = QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
-    QPointF top_left(margins_.left(), margins_.top());
-    for (auto i= 0 ; i<m_model->columnCount() ; ++i)
-    {
-        QSize size(m_current_sections_width.at(i) - margins_.left() - margins_.right(), m_section_height - margins_.top() - margins_.bottom());
+	//Write text of each cell
+	auto margins_ = QETUtils::marginsFromString(
+				m_model->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::UserRole+1).toString());
+	QPointF top_left(margins_.left(), margins_.top());
+	for (auto i= 0 ; i<m_model->columnCount() ; ++i)
+	{
+		QSize size(m_current_sections_width.at(i) - margins_.left() - margins_.right(),
+			   m_section_height - margins_.top() - margins_.bottom());
 
-        QPointF qm = mapToScene(top_left);
-        qreal h = size.height();//  * Createdxf::yScale;
-        qreal x = qm.x() * Createdxf::xScale;
-        qreal y = Createdxf::sheetHeight -  ((qm.y() + h/2) * Createdxf::yScale);
-        qreal h1 = h * 0.5 * Createdxf::yScale;
+		QPointF qm = mapToScene(top_left);
+		qreal h = size.height();//  * Createdxf::yScale;
+		qreal x = qm.x() * Createdxf::xScale;
+		qreal y = Createdxf::sheetHeight -  ((qm.y() + h/2) * Createdxf::yScale);
+		qreal h1 = h * 0.5 * Createdxf::yScale;
 
-        int valign = 2;
+		int valign = 2;
 
-        Createdxf::drawTextAligned(filepath,m_model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString(),x,y,h1,0,0,0,valign,x,0,0);
+		Createdxf::drawTextAligned(
+					filepath,
+					m_model->headerData(
+						i,
+						Qt::Horizontal,
+						Qt::DisplayRole).toString(),
+					x,y,h1,0,0,0,valign,x,0,0);
 
-        top_left.setX(top_left.x() + m_current_sections_width.at(i));
-    }
-    return true;
+		top_left.setX(top_left.x() + m_current_sections_width.at(i));
+	}
+	return true;
 }
 
 /**
 	@brief QetGraphicsHeaderItem::rect
 	@return the current rect of the item aka the size of rectangle painted.
 */
-QRect QetGraphicsHeaderItem::rect() const {
+QRect QetGraphicsHeaderItem::rect() const
+{
 	return m_current_rect;
 }
 
@@ -223,7 +273,11 @@ void QetGraphicsHeaderItem::resizeSection(int logicalIndex, int size)
 	{
 		prepareGeometryChange();
 		m_current_sections_width.replace(logicalIndex, size);
-		m_current_rect.setWidth(std::accumulate(m_current_sections_width.begin(), m_current_sections_width.end(), 0));
+		m_current_rect.setWidth(
+					std::accumulate(
+						m_current_sections_width.begin(),
+						m_current_sections_width.end(),
+						0));
 		setUpBoundingRect();
 		update();
 		emit sectionResized(logicalIndex, size);
@@ -254,7 +308,14 @@ QDomElement QetGraphicsHeaderItem::toXml(QDomDocument &document) const
 {
 	auto dom_element = document.createElement(xmlTagName());
 	if (m_model) {
-		dom_element.appendChild(QETXML::marginsToXml(document, QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString())));
+		dom_element.appendChild(
+					QETXML::marginsToXml(
+						document,
+						QETUtils::marginsFromString(
+							m_model->headerData(
+								0,
+								Qt::Horizontal,
+								Qt::UserRole+1).toString())));
 	}
 
 	return dom_element;
@@ -271,8 +332,16 @@ void QetGraphicsHeaderItem::fromXml(const QDomElement &element)
 		return;
 	}
 
-	auto margins_ = QETUtils::marginsToString(QETXML::marginsFromXml(element.firstChildElement("margins")));
-	m_model->setHeaderData(0, Qt::Horizontal, QETUtils::marginsToString(QETXML::marginsFromXml(element.firstChildElement("margins"))), Qt::UserRole+1);
+	auto margins_ = QETUtils::marginsToString(
+				QETXML::marginsFromXml(
+					element.firstChildElement("margins")));
+	m_model->setHeaderData(
+				0,
+				Qt::Horizontal,
+				QETUtils::marginsToString(
+					QETXML::marginsFromXml(
+						element.firstChildElement("margins"))),
+				Qt::UserRole+1);
 }
 
 /**
@@ -291,10 +360,19 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 		return;
 	}
 
-	QFontMetrics metrics(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
-	auto margins_ = QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+	QFontMetrics metrics(
+				m_model->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::FontRole).value<QFont>());
+	auto margins_ = QETUtils::marginsFromString(
+				m_model->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::UserRole+1).toString());
 		//Set the height of row;
-	m_minimum_section_height = metrics.boundingRect("HEIGHT TEST").height() + margins_.top() + margins_.bottom();
+	m_minimum_section_height = metrics.boundingRect("HEIGHT TEST").height()
+			+ margins_.top() + margins_.bottom();
 
 	m_sections_minimum_width.clear();
 	m_sections_minimum_width.resize(m_model->columnCount());
@@ -302,17 +380,25 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 	for (auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
 		auto str = m_model->headerData(i, Qt::Horizontal).toString();
-		m_sections_minimum_width.replace(i, metrics.boundingRect(str).width() + margins_.left() + margins_.right());
+		m_sections_minimum_width.replace(
+					i,
+					metrics.boundingRect(str).width()
+					+ margins_.left()
+					+ margins_.right());
 	}
 
-	m_minimum_width = std::accumulate(m_sections_minimum_width.begin(), m_sections_minimum_width.end(), 0);
+	m_minimum_width = std::accumulate(
+				m_sections_minimum_width.begin(),
+				m_sections_minimum_width.end(),
+				0);
 }
 
 /**
 	@brief QetGraphicsHeaderItem::setUpBoundingRect
 	Setup the bounding rect of the item
 */
-void QetGraphicsHeaderItem::setUpBoundingRect() {
+void QetGraphicsHeaderItem::setUpBoundingRect()
+{
 	m_bounding_rect = m_current_rect.adjusted(-10, -10, 10, 10);
 }
 
@@ -323,7 +409,8 @@ void QetGraphicsHeaderItem::setUpBoundingRect() {
 	@param first
 	@param last
 */
-void QetGraphicsHeaderItem::headerDataChanged(Qt::Orientations orientation, int first, int last)
+void QetGraphicsHeaderItem::headerDataChanged(
+		Qt::Orientations orientation, int first, int last)
 {
 	Q_UNUSED(orientation)
 	Q_UNUSED(first)

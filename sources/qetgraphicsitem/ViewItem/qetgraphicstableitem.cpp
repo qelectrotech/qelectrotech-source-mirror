@@ -40,24 +40,29 @@ static int no_model_width = 40;
 	@param table : table to adjust
 	@param margins : margins between table and folio.
 */
-void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table,
-					      QMargins margins)
+void QetGraphicsTableItem::adjustTableToFolio(
+		QetGraphicsTableItem *table,
+		QMargins margins)
 {
 	if (!table->diagram()) {
 		return;
 	}
 
 	auto drawable_rect = table->diagram()->border_and_titleblock.insideBorderRect();
-	table->setPos(drawable_rect.topLeft().x() + margins.left(), drawable_rect.topLeft().y() + margins.top() + table->headerItem()->rect().height());
+	table->setPos(
+				drawable_rect.topLeft().x() + margins.left(),
+				drawable_rect.topLeft().y()
+				+ margins.top()
+				+ table->headerItem()->rect().height());
 
 	auto size_ = table->size();
 	size_.setWidth(int(drawable_rect.width() - (margins.left() + margins.right())));
-		//Size must be a multiple of 10, because the table adjust itself by step of 10.
+	//Size must be a multiple of 10, because the table adjust itself by step of 10.
 	while (size_.width()%10) {
 		--size_.rwidth();    }
 	table->setSize(size_);
 
-		//Calcul the maximum row to display to fit the nomenclature into diagram
+	//Calcul the maximum row to display to fit the nomenclature into diagram
 	auto available_height = drawable_rect.height() - table->pos().y();
 	auto min_row_height = table->minimumRowHeigth();
 	table->setDisplayNRow(int(floor(available_height/min_row_height))); //Convert a double to int, but max_row_to_display is already rounded an integer so we assume everything is ok
@@ -130,16 +135,21 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	setAcceptHoverEvents(true);
 	setUpHandler();
 
-		//A litle bounding rect before model is set,
-		//then user can already grab this item, even if model is not already set
+	//A litle bounding rect before model is set,
+	//then user can already grab this item, even if model is not already set
 	m_bounding_rect.setRect(m_br_margin/-2, m_br_margin/-2, 50, 50);
 
-	connect(this, &QetGraphicsTableItem::xChanged, this, &QetGraphicsTableItem::adjustHandlerPos);
-	connect(this, &QetGraphicsTableItem::yChanged, this, &QetGraphicsTableItem::adjustHandlerPos);
+	connect(this, &QetGraphicsTableItem::xChanged,
+		this, &QetGraphicsTableItem::adjustHandlerPos);
+	connect(this, &QetGraphicsTableItem::yChanged,
+		this, &QetGraphicsTableItem::adjustHandlerPos);
 
 	m_header_item = new QetGraphicsHeaderItem(this);
-	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized);
-	connect(m_header_item, &QetGraphicsHeaderItem::heightResized, this, [this]() {
+	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized,
+		this, &QetGraphicsTableItem::headerSectionResized);
+	connect(m_header_item, &QetGraphicsHeaderItem::heightResized,
+		this, [this]()
+	{
 		m_header_item->setPos(0, 0-m_header_item->rect().height());
 	});
 		//Init the size of table without a model
@@ -160,8 +170,10 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 {
 	if (m_model)
 	{
-		disconnect(m_model, &QAbstractItemModel::dataChanged, this, &QetGraphicsTableItem::dataChanged);
-		disconnect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsTableItem::modelReseted);
+		disconnect(m_model, &QAbstractItemModel::dataChanged,
+			   this, &QetGraphicsTableItem::dataChanged);
+		disconnect(m_model, &QAbstractItemModel::modelReset,
+			   this, &QetGraphicsTableItem::modelReseted);
 	}
 	m_model = model;
 	m_header_item->setModel(model);
@@ -172,8 +184,10 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 	m_header_item->setPos(0, -m_header_item->rect().height());
 	if (m_model)
 	{
-		connect(m_model, &QAbstractItemModel::dataChanged, this, &QetGraphicsTableItem::dataChanged);
-		connect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsTableItem::modelReseted);
+		connect(m_model, &QAbstractItemModel::dataChanged,
+			this, &QetGraphicsTableItem::dataChanged);
+		connect(m_model, &QAbstractItemModel::modelReset,
+			this, &QetGraphicsTableItem::modelReseted);
 	}
 
 	if (m_next_table) {
@@ -185,7 +199,8 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 	@brief QetGraphicsTableItem::model
 	@return The model that this item is presenting
 */
-QAbstractItemModel *QetGraphicsTableItem::model() const {
+QAbstractItemModel *QetGraphicsTableItem::model() const
+{
 	return m_model;
 }
 
@@ -194,7 +209,8 @@ QAbstractItemModel *QetGraphicsTableItem::model() const {
 	Reimplemented from QGraphicsObject
 	@return
 */
-QRectF QetGraphicsTableItem::boundingRect() const {
+QRectF QetGraphicsTableItem::boundingRect() const
+{
 	return m_bounding_rect;
 }
 
@@ -205,7 +221,10 @@ QRectF QetGraphicsTableItem::boundingRect() const {
 	@param option
 	@param widget
 */
-void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void QetGraphicsTableItem::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *option,
+		QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
@@ -236,7 +255,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 	}
 	painter->setFont(m_model->data(m_model->index(0,0), Qt::FontRole).value<QFont>());
 
-		//Draw vertical lines
+	//Draw vertical lines
 	auto offset= 0;
 	for(auto i=0 ; i<m_model->columnCount() ; ++i)
 	{
@@ -246,7 +265,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		offset += m_header_item->sectionSize(i);
 	}
 
-		//Calcule the number of rows to display.
+	//Calcule the number of rows to display.
 	auto row_count = m_model->rowCount();
 
 	if (m_previous_table) //Remove the number of row already displayed by previous tables
@@ -255,7 +274,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 	if (m_number_of_displayed_row > 0) //User override the number of row to display
 		row_count = std::min(row_count, m_number_of_displayed_row);
 
-		//Draw horizontal lines
+	//Draw horizontal lines
 	auto cell_height =  static_cast<double>(m_current_size.height())/static_cast<double>(row_count);
 	for(auto i= 1 ; i-1<row_count ; ++i)
 	{
@@ -264,7 +283,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		painter->drawLine(p1, p2);
 	}
 
-		//Write text of each cell
+	//Write text of each cell
 	for (auto i=0 ; i<row_count ; ++i)
 	{
 		auto margin_ = QETUtils::marginsFromString(m_model->index(0,0).data(Qt::UserRole+1).toString());
@@ -272,16 +291,23 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 
 		for(auto j= 0 ; j<m_model->columnCount() ; ++j)
 		{
-				//In first iteration the top left X is margin left, in all other iteration the top left X is stored in m_column_size
+			//In first iteration the top left X is margin left,
+			// in all other iteration the top left X is stored in m_column_size
 			if (j>0) {
 				top_left.setX(top_left.x() + m_header_item->sectionSize(j-1));
 			}
 			QSize size(m_header_item->sectionSize(j) - margin_.left() - margin_.right(),
 					   static_cast<int>(cell_height) - margin_.top() - margin_.bottom());
 			auto index_row = m_previous_table ? i + m_previous_table->displayNRowOffset() : i;
-			painter->drawText(QRectF(top_left, size),
-							  m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt() | Qt::AlignVCenter,
-							  m_model->index(index_row, j).data().toString());
+			painter->drawText(
+						QRectF(top_left, size),
+						m_model->data(
+							m_model->index(0,0),
+							Qt::TextAlignmentRole
+							).toInt()
+						| Qt::AlignVCenter,
+						m_model->index(index_row, j)
+						.data().toString());
 		}
 	}
 
@@ -296,7 +322,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 void QetGraphicsTableItem::setSize(const QSize &size)
 {
 	auto new_size = size;
-	if (new_size.width() < minimumSize().width())  {
+	if (new_size.width() < minimumSize().width()) {
 		new_size.setWidth(minimumSize().width());
 	}
 	if (new_size.height() < minimumSize().height()) {
@@ -325,7 +351,8 @@ QSize QetGraphicsTableItem::size() const
 /**
 	@brief QetGraphicsTableItem::minimumSize
 	@return the minimum size the table can be
-	The returned size take care of the table's minimum width, but also the header item's minimum width
+	The returned size take care of the table's minimum width,
+	but also the header item's minimum width
 */
 QSize QetGraphicsTableItem::minimumSize() const
 {
@@ -342,9 +369,14 @@ QSize QetGraphicsTableItem::minimumSize() const
 		row_count = std::min(row_count, m_number_of_displayed_row);
 
 
-		//m_minimum_column_width already take in count the minimum size of header
-	QSize size_(std::accumulate(m_minimum_column_width.begin(), m_minimum_column_width.end(), 0), m_minimum_row_height*row_count);
-		//make sure that the width is a multiple of 10
+	//m_minimum_column_width already take in count the minimum size of header
+	QSize size_(
+				std::accumulate(
+					m_minimum_column_width.begin(),
+					m_minimum_column_width.end(),
+					0),
+				m_minimum_row_height*row_count);
+	//make sure that the width is a multiple of 10
 	while (size_.width()%10) {
 		size_.rwidth()++;
 	}
@@ -356,7 +388,8 @@ QSize QetGraphicsTableItem::minimumSize() const
 	Limit the number of row to display
 	@param number : set to 0 or less to disabled the limit of row to display
 */
-void QetGraphicsTableItem::setDisplayNRow(const int &number) {
+void QetGraphicsTableItem::setDisplayNRow(const int &number)
+{
 	m_number_of_displayed_row = number;
 	setToMinimumHeight();
 	if (m_next_table)
@@ -368,7 +401,8 @@ void QetGraphicsTableItem::setDisplayNRow(const int &number) {
 	@return the number of row displayed.
 	A value of 0 or less mean there is no limit
 */
-int QetGraphicsTableItem::displayNRow() const {
+int QetGraphicsTableItem::displayNRow() const
+{
 	return m_number_of_displayed_row;
 }
 
@@ -439,11 +473,13 @@ void QetGraphicsTableItem::setNextTable(QetGraphicsTableItem *table)
 
 }
 
-void QetGraphicsTableItem::setTableName(const QString &name) {
+void QetGraphicsTableItem::setTableName(const QString &name)
+{
 	m_name = name;
 }
 
-QString QetGraphicsTableItem::tableName() const {
+QString QetGraphicsTableItem::tableName() const
+{
 	return m_name;
 }
 
@@ -461,11 +497,13 @@ int QetGraphicsTableItem::displayNRowOffset() const
 	return offset_;
 }
 
-QetGraphicsTableItem *QetGraphicsTableItem::previousTable() const {
+QetGraphicsTableItem *QetGraphicsTableItem::previousTable() const
+{
 	return m_previous_table;
 }
 
-QetGraphicsTableItem *QetGraphicsTableItem::nextTable() const {
+QetGraphicsTableItem *QetGraphicsTableItem::nextTable() const
+{
 	return m_next_table;
 }
 
@@ -498,7 +536,8 @@ void QetGraphicsTableItem::initLink()
 	@brief QetGraphicsTableItem::minimumRowHeigth
 	@return the minimum height of a row
 */
-int QetGraphicsTableItem::minimumRowHeigth() const {
+int QetGraphicsTableItem::minimumRowHeigth() const
+{
 	return m_minimum_row_height;
 }
 
@@ -554,103 +593,139 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 		return;
 	}
 
-	this->setPos(dom_element.attribute("x", QString::number(10)).toDouble(),
-				 dom_element.attribute("y", QString::number(10)).toDouble());
-		//Size is not set now because will change during the whole process of opening a project from the xml
-	m_pending_size = QSize(dom_element.attribute("width",  QString::number(no_model_width)).toInt(),
-						   dom_element.attribute("height", QString::number(no_model_height)).toInt());
+	this->setPos(
+				dom_element.attribute(
+					"x",
+					QString::number(10)).toDouble(),
+				dom_element.attribute(
+					"y",
+					QString::number(10)).toDouble());
+	//Size is not set now because will change during the whole process of opening a project from the xml
+	m_pending_size = QSize(
+				dom_element.attribute(
+					"width",
+					QString::number(no_model_width)).toInt(),
+				dom_element.attribute(
+					"height",
+					QString::number(no_model_height)).toInt());
 
-	m_uuid = QUuid(dom_element.attribute("uuid", QUuid::createUuid().toString()));
+	m_uuid = QUuid(
+				dom_element.attribute(
+					"uuid",
+					QUuid::createUuid().toString()));
 	m_name = dom_element.attribute("name");
-	m_number_of_displayed_row = dom_element.attribute("display_n_row", QString::number(0)).toInt();
+	m_number_of_displayed_row = dom_element.attribute(
+				"display_n_row",
+				QString::number(0)).toInt();
 
 	auto vector_ = QETXML::directChild(dom_element, "previous_table");
 	if (vector_.size()) { //Table have a previous table
-		m_pending_previous_table_uuid = QUuid(vector_.first().attribute("uuid"));
+		m_pending_previous_table_uuid = QUuid(
+					vector_.first().attribute("uuid"));
 	}
 	else if (this->diagram()) //The table haven't got a previous table, so there should be a model save to xml
 	{
-			//Get table
-		auto model_ = new ProjectDBModel(this->diagram()->project(), this->diagram()->project());
-		model_->fromXml(dom_element.firstChildElement("model").firstChildElement(ProjectDBModel::xmlTagName()));
+		//Get table
+		auto model_ = new ProjectDBModel(
+					this->diagram()->project(),
+					this->diagram()->project());
+		model_->fromXml(
+					dom_element
+					.firstChildElement("model")
+					.firstChildElement(
+						ProjectDBModel::xmlTagName()));
 		this->setModel(model_);
 	}
 
-		//Restore the header from xml
-	m_header_item->fromXml(dom_element.firstChildElement(QetGraphicsHeaderItem::xmlTagName()));
+	//Restore the header from xml
+	m_header_item->fromXml(
+				dom_element.firstChildElement(
+					QetGraphicsHeaderItem::xmlTagName()));
 }
 
 /**
-    @brief QetGraphicsTableItem::toDXF
-    Draw this table to the dxf document
-    @param filepath file path of the the dxf document
-    @return true if draw success
+	@brief QetGraphicsTableItem::toDXF
+	Draw this table to the dxf document
+	@param filepath file path of the the dxf document
+	@return true if draw success
 */
 bool QetGraphicsTableItem::toDXF(const QString &filepath)
 {
-    // Header
-    m_header_item->toDXF(filepath);
+	// Header
+	m_header_item->toDXF(filepath);
 
-    //QRectF rect = boundingRect();
-    QRectF rect(0,0, m_header_item->rect().width(), m_current_size.height());
-    QPolygonF poly(rect);
-    Createdxf::drawPolygon(filepath,mapToScene(poly),0);
+	//QRectF rect = boundingRect();
+	QRectF rect(0,0, m_header_item->rect().width(), m_current_size.height());
+	QPolygonF poly(rect);
+	Createdxf::drawPolygon(filepath,mapToScene(poly),0);
 
-    //Draw vertical lines
-    auto offset= 0;
-    for(auto i=0 ; i<m_model->columnCount() ; ++i)
-    {
-        QPointF p1(offset+m_header_item->sectionSize(i), 0);
-        QPointF p2(offset+m_header_item->sectionSize(i), m_current_size.height());
-        Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
-        offset += m_header_item->sectionSize(i);
-    }
-    //Calculate the number of rows to display.
-    auto row_count = m_model->rowCount();
+	//Draw vertical lines
+	auto offset= 0;
+	for(auto i=0 ; i<m_model->columnCount() ; ++i)
+	{
+		QPointF p1(offset+m_header_item->sectionSize(i), 0);
+		QPointF p2(
+					offset+m_header_item->sectionSize(i),
+					m_current_size.height());
+		Createdxf::drawLine(
+					filepath,
+					QLineF(mapToScene(p1),mapToScene(p2)),
+					0);
+		offset += m_header_item->sectionSize(i);
+	}
+	//Calculate the number of rows to display.
+	auto row_count = m_model->rowCount();
 
-    if (m_previous_table) //Remove the number of row already displayed by previous tables
-        row_count -= m_previous_table->displayNRowOffset();
+	if (m_previous_table) //Remove the number of row already displayed by previous tables
+		row_count -= m_previous_table->displayNRowOffset();
 
-    if (m_number_of_displayed_row > 0) //User override the number of row to display
-        row_count = std::min(row_count, m_number_of_displayed_row);
+	if (m_number_of_displayed_row > 0) //User override the number of row to display
+		row_count = std::min(row_count, m_number_of_displayed_row);
 
-        //Draw horizontal lines
-    auto cell_height =  static_cast<double>(m_current_size.height())/static_cast<double>(row_count);
-    for(auto i= 1 ; i-1<row_count ; ++i)
-    {
-        QPointF p1(m_header_item->rect().left(), cell_height*i);
-        QPointF p2(m_header_item->rect().right(), cell_height*i);
-        Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
-    }
+		//Draw horizontal lines
+	auto cell_height =  static_cast<double>(m_current_size.height())/static_cast<double>(row_count);
+	for(auto i= 1 ; i-1<row_count ; ++i)
+	{
+		QPointF p1(m_header_item->rect().left(), cell_height*i);
+		QPointF p2(m_header_item->rect().right(), cell_height*i);
+		Createdxf::drawLine(
+					filepath,
+					QLineF(mapToScene(p1),mapToScene(p2))
+					,0);
+	}
 
-    //Write text of each cell
-    for (auto i=0 ; i<row_count ; ++i)
-    {
-        auto margin_ = QETUtils::marginsFromString(m_model->index(0,0).data(Qt::UserRole+1).toString());
-        QPointF top_left(margin_.left(), i==0? margin_.top() : cell_height*i + margin_.top());
+	//Write text of each cell
+	for (auto i=0 ; i<row_count ; ++i)
+	{
+		auto margin_ = QETUtils::marginsFromString(m_model->index(0,0).data(Qt::UserRole+1).toString());
+		QPointF top_left(margin_.left(), i==0? margin_.top() : cell_height*i + margin_.top());
 
-        for(auto j= 0 ; j<m_model->columnCount() ; ++j)
-        {
-            //In first iteration the top left X is margin left, in all other iteration the top left X is stored in m_column_size
-            if (j>0) {
-                top_left.setX(top_left.x() + m_header_item->sectionSize(j-1));
-            }
-            QSize size(m_header_item->sectionSize(j) - margin_.left() - margin_.right(),
-                       static_cast<int>(cell_height) - margin_.top() - margin_.bottom());
-            auto index_row = m_previous_table ? i + m_previous_table->displayNRowOffset() : i;
+		for(auto j= 0 ; j<m_model->columnCount() ; ++j)
+		{
+			//In first iteration the top left X is margin left,
+			// in all other iteration the top left X is stored in m_column_size
+			if (j>0) {
+				top_left.setX(top_left.x() + m_header_item->sectionSize(j-1));
+			}
+			QSize size(m_header_item->sectionSize(j) - margin_.left() - margin_.right(),
+				   static_cast<int>(cell_height) - margin_.top() - margin_.bottom());
+			auto index_row = m_previous_table ? i + m_previous_table->displayNRowOffset() : i;
 
-            QPointF qm = mapToScene(top_left);
-            qreal h = size.height();//  * Createdxf::yScale;
-            qreal x = qm.x() * Createdxf::xScale;
-            qreal y = Createdxf::sheetHeight -  ((qm.y() + h/2) * Createdxf::yScale);
-            qreal h1 = h * 0.5 * Createdxf::yScale;
+			QPointF qm = mapToScene(top_left);
+			qreal h = size.height();//  * Createdxf::yScale;
+			qreal x = qm.x() * Createdxf::xScale;
+			qreal y = Createdxf::sheetHeight -  ((qm.y() + h/2) * Createdxf::yScale);
+			qreal h1 = h * 0.5 * Createdxf::yScale;
 
-            int valign = 2;
+			int valign = 2;
 
-            Createdxf::drawTextAligned(filepath,m_model->index(index_row, j).data().toString(),x,y,h1,0,0,0,valign,x,0,0);
-        }
-    }
-    return true;
+			Createdxf::drawTextAligned(
+						filepath,
+						m_model->index(index_row, j).data().toString(),
+						x,y,h1,0,0,0,valign,x,0,0);
+		}
+	}
+	return true;
 }
 
 /**
@@ -719,7 +794,8 @@ bool QetGraphicsTableItem::sceneEventFilter(QGraphicsItem *watched, QEvent *even
 	@param value
 	@return
 */
-QVariant QetGraphicsTableItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+QVariant QetGraphicsTableItem::itemChange(
+		QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 		//item was removed from scene, we remove the handler
 	if (change == ItemSceneHasChanged) {
@@ -731,7 +807,8 @@ QVariant QetGraphicsTableItem::itemChange(QGraphicsItem::GraphicsItemChange chan
 	return QetGraphicsItem::itemChange(change, value);
 }
 
-void QetGraphicsTableItem::modelReseted() {
+void QetGraphicsTableItem::modelReseted()
+{
 	dataChanged(m_model->index(0,0), m_model->index(0,0), QVector<int>());
 	setToMinimumHeight();
 
@@ -768,7 +845,11 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 		{
 			auto index = m_model->index(row, col);
 			auto width = metrics.boundingRect(index.data().toString()).width();
-			m_minimum_column_width.replace(col, std::max(m_minimum_column_width.at(col), width + margin_.left() + margin_.right()));
+			m_minimum_column_width.replace(
+						col,
+						std::max(
+							m_minimum_column_width.at(col),
+							width + margin_.left() + margin_.right()));
 		}
 	}
 }
@@ -779,15 +860,24 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 void QetGraphicsTableItem::setUpBoundingRect()
 {
 	QSize header_size = m_header_item->rect().size();
-	QRect rect(0, -header_size.height(), header_size.width(), m_current_size.height() + header_size.height());
-	m_bounding_rect = rect.adjusted(-m_br_margin, -m_br_margin, m_br_margin, m_br_margin);
+	QRect rect(
+				0,
+				-header_size.height(),
+				header_size.width(),
+				m_current_size.height() + header_size.height());
+	m_bounding_rect = rect.adjusted(
+				-m_br_margin,
+				-m_br_margin,
+				m_br_margin,
+				m_br_margin);
 }
 
 /**
 	@brief QetGraphicsTableItem::adjustHandlerPos
 	Adjust the pos of the handler item
 */
-void QetGraphicsTableItem::adjustHandlerPos() {
+void QetGraphicsTableItem::adjustHandlerPos()
+{
 	m_handler_item.setPos(mapToScene(QRect(QPoint(0,0), size()).bottomRight()));
 }
 
@@ -800,23 +890,30 @@ void QetGraphicsTableItem::setUpHandler()
 	m_handler_item.setZValue(this->zValue() + 1);
 }
 
-void QetGraphicsTableItem::handlerMousePressEvent(QGraphicsSceneMouseEvent *event)
+void QetGraphicsTableItem::handlerMousePressEvent(
+		QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event)
 	diagram()->clearSelection();
 	this->setSelected(true);
 	m_old_size = size();
-		//User start to resize the table, disconnect the signal to avoid double paint.
-	disconnect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized);
+	//User start to resize the table, disconnect the signal to avoid double paint.
+	disconnect(
+				m_header_item,
+				&QetGraphicsHeaderItem::sectionResized,
+				this,
+				&QetGraphicsTableItem::headerSectionResized);
 }
 
-void QetGraphicsTableItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void QetGraphicsTableItem::handlerMouseMoveEvent(
+		QGraphicsSceneMouseEvent *event)
 {
 	auto new_handler_pos = Diagram::snapToGrid(event->scenePos());
 	QSize size_ = QRectF(QPointF(0,0), mapFromScene(new_handler_pos)).size().toSize();
 
-	QPoint new_pos(std::max(minimumSize().width(), size_.width()),
-				   std::max(minimumSize().height(), size_.height()));
+	QPoint new_pos(
+				std::max(minimumSize().width(), size_.width()),
+				std::max(minimumSize().height(), size_.height()));
 	m_handler_item.setPos(mapToScene(new_pos));
 
 	QSize new_size(new_pos.x(), new_pos.y());
@@ -825,7 +922,8 @@ void QetGraphicsTableItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event
 	}
 }
 
-void QetGraphicsTableItem::handlerMouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void QetGraphicsTableItem::handlerMouseReleaseEvent(
+		QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event)
 	if (diagram())
@@ -836,12 +934,17 @@ void QetGraphicsTableItem::handlerMouseReleaseEvent(QGraphicsSceneMouseEvent *ev
 		diagram()->undoStack().push(undo);
 	}
 		//User finish to resize the table, we can reconnect now
-	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized);
+	connect(
+				m_header_item,
+				&QetGraphicsHeaderItem::sectionResized,
+				this,
+				&QetGraphicsTableItem::headerSectionResized);
 }
 
 /**
 	@brief QetGraphicsTableItem::adjustColumnsWidth
-	Adjust the size of each column according to the current table width by setting the sectionSize of the header item
+	Adjust the size of each column according to the current table width
+	by setting the sectionSize of the header item
 */
 void QetGraphicsTableItem::adjustColumnsWidth()
 {
@@ -857,38 +960,59 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 	auto a = m_current_size.width() - minimumSize().width();
 	auto b = a/std::max(1,m_model->columnCount()); //avoid divide by 0
 
-	disconnect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized); //Avoid to resize
+	//Avoid to resize
+	disconnect(
+				m_header_item,
+				&QetGraphicsHeaderItem::sectionResized,
+				this,
+				&QetGraphicsTableItem::headerSectionResized);
 
 	int sum_=0;
 	for(auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
 		auto at_a = std::min(m_minimum_column_width.size()-1, i);               //In case of the I is higher than m_minimum_column_width or
 		auto at_b = std::min(m_header_item->minimumSectionWidth().size()-1, i); //m_header_item->minimumSectionWidth().size()
-		m_header_item->resizeSection(i, std::max(m_minimum_column_width.at(at_a),
-												 m_header_item->minimumSectionWidth().at(at_b))+b);
+		m_header_item->resizeSection(
+					i,
+					std::max(
+						m_minimum_column_width.at(at_a),
+						m_header_item->minimumSectionWidth().at(at_b))+b);
 		sum_+= m_header_item->sectionSize(i);
 	}
 
 
-		//The sum of the header sections width can be less than width of @m_current_size we adjust it in order to have the same width
+	//The sum of the header sections width can be less than width of
+	// @m_current_size we adjust it in order to have the same width
 	if (m_model->columnCount() > 0 &&
 		sum_ < m_current_size.width())
 	{
-			//add the quotient of the division to each columns
+		//add the quotient of the division to each columns
 		auto result = (m_current_size.width()-sum_)/m_model->columnCount();
 		for(auto i= 0 ; i<m_model->columnCount() ; ++i) {
-			m_header_item->resizeSection(i, m_header_item->sectionSize(i) + result);
+			m_header_item->resizeSection(
+						i,
+						m_header_item->sectionSize(i) + result);
 		}
 
 			//add the rest of the division to the last column
 		auto last_section = m_model->columnCount()-1;
-		m_header_item->resizeSection(last_section, m_header_item->sectionSize(last_section) + ((m_current_size.width()-sum_)%m_model->columnCount()));
+		m_header_item->resizeSection(
+					last_section,
+					m_header_item->sectionSize(last_section)
+					+ ((m_current_size.width()-sum_)%m_model->columnCount()));
 	}
-	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized);
+	connect(
+				m_header_item,
+				&QetGraphicsHeaderItem::sectionResized,
+				this,
+				&QetGraphicsTableItem::headerSectionResized);
 	update();
 }
 
-void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
+void QetGraphicsTableItem::dataChanged(
+		const QModelIndex &topLeft,
+		const QModelIndex &bottomRight,
+		const QVector<int> &roles)
 {
 	Q_UNUSED(topLeft)
 	Q_UNUSED(bottomRight)
@@ -947,7 +1071,8 @@ void QetGraphicsTableItem::adjustSize()
 	}
 }
 
-void QetGraphicsTableItem::previousTableDisplayRowChanged() {
+void QetGraphicsTableItem::previousTableDisplayRowChanged()
+{
 	setToMinimumHeight();
 	if (m_next_table) {
 		m_next_table->previousTableDisplayRowChanged();
