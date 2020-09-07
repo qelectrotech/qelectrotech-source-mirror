@@ -20,6 +20,8 @@
 
 #include "elementitemeditor.h"
 
+#include <QLineEdit>
+
 class PartTerminal;
 class QDoubleSpinBox;
 class QComboBox;
@@ -35,9 +37,10 @@ class TerminalEditor : public ElementItemEditor {
 
 	// Constructors, destructor
 	public:
-		TerminalEditor(QETElementEditor *,
-			       QList<PartTerminal *>& terms,
-			       QWidget * = nullptr);
+		TerminalEditor(
+				QETElementEditor *,
+				QList<PartTerminal *>& terms,
+				QWidget * = nullptr);
 		TerminalEditor(QETElementEditor *, QWidget * = nullptr);
 		~TerminalEditor() override;
 	private:
@@ -50,6 +53,7 @@ class TerminalEditor : public ElementItemEditor {
 		PartTerminal *m_part{nullptr};
 		QDoubleSpinBox *qle_x, *qle_y;
 		QComboBox *orientation;
+		QLineEdit *name;
 		bool m_locked{false};
 
 	// methods
@@ -63,6 +67,7 @@ class TerminalEditor : public ElementItemEditor {
 		void updateTerminalO();
 		void updateXPos();
 		void updateYPos();
+		void updateName();
 		void updateForm() override;
 
 	private:
