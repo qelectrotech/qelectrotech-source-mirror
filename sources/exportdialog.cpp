@@ -445,9 +445,7 @@ void ExportDialog::generateDxf(Diagram *diagram,
     QList <QetGraphicsTableItem *> list_tables;
 
 	// Determine les elements a "XMLiser"
-    int itm = 0;
 	foreach(QGraphicsItem *qgi, diagram -> items()) {
-        qDebug() << "Item " << itm++ << qgi->type();
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {

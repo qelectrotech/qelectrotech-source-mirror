@@ -603,7 +603,6 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
         QPointF p1(offset+m_header_item->sectionSize(i), 0);
         QPointF p2(offset+m_header_item->sectionSize(i), m_current_size.height());
         Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
-//        painter->drawLine(p1, p2);
         offset += m_header_item->sectionSize(i);
     }
     //Calculate the number of rows to display.
@@ -622,7 +621,6 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
         QPointF p1(m_header_item->rect().left(), cell_height*i);
         QPointF p2(m_header_item->rect().right(), cell_height*i);
         Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
-        //painter->drawLine(p1, p2);
     }
 
     //Write text of each cell
