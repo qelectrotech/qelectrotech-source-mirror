@@ -61,6 +61,7 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 		QDomElement toXml (QDomDocument &document) const;
 		void fromXml(const QDomElement &element);
 		static QString xmlTagName() {return QString("graphics_header");}
+        virtual bool toDXF (const QString &filepath);
 
 	signals:
 		void sectionResized(int logicalIndex, int size);

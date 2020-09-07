@@ -1543,7 +1543,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	for(DiagramTextItem *dti : texts)
 	{
 		if(dti->type() == ConductorTextItem::Type)
-			selected_conductor_texts++;
+    selected_conductor_texts++;
 	}
 	int selected_dynamic_elmt_text = 0;
 	for(DiagramTextItem *dti : texts)

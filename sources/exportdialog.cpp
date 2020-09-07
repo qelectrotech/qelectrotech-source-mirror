@@ -31,6 +31,7 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "elementpicturefactory.h"
 #include "element.h"
 #include "dynamicelementtextitem.h"
@@ -441,9 +442,12 @@ void ExportDialog::generateDxf(Diagram *diagram,
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
 	QList <QetShapeItem *> list_shapes;
+    QList <QetGraphicsTableItem *> list_tables;
 
 	// Determine les elements a "XMLiser"
+    int itm = 0;
 	foreach(QGraphicsItem *qgi, diagram -> items()) {
+        qDebug() << "Item " << itm++ << qgi->type();
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
@@ -456,10 +460,17 @@ void ExportDialog::generateDxf(Diagram *diagram,
 			list_shapes << dii;
 		} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
 			list_texts << deti;
-		}
+        } else if (QetGraphicsTableItem *gti = qgraphicsitem_cast<QetGraphicsTableItem *>(qgi)) {
+            list_tables << gti;
+        }
 	}
 
 	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path, qsi->pen());
+
+    // Draw tables
+    foreach (QetGraphicsTableItem *gti, list_tables) {
+        gti->toDXF(file_path);
+    }
 
 	//Draw elements
 	foreach(Element *elmt, list_elements)

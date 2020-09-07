@@ -71,6 +71,10 @@ class Createdxf
 					  const QRectF &rect,
 					  const int &colorcode);
 
+        static void drawPolygon(const QString &filepath,
+                          const QPolygonF &poly,
+                          const int &colorcode);
+
 		static void drawLine(const QString &filapath,
 				     double,
 				     double,

@@ -19,6 +19,7 @@
 #include "qabstractitemmodel.h"
 #include "qetxml.h"
 #include "qetutils.h"
+#include "createdxf.h"
 
 #include <QFontMetrics>
 #include <QPainter>
@@ -138,6 +139,49 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 	}
 
 	painter->restore();
+}
+/**
+    @brief QetGraphicsHeaderItem::toDXF
+    Draw this table to the dxf document
+    @param filepath file path of the the dxf document
+    @return true if draw success
+*/
+bool QetGraphicsHeaderItem::toDXF(const QString &filepath)
+{
+    QRectF rect = m_current_rect;
+    QPolygonF poly(rect);
+    Createdxf::drawPolygon(filepath,mapToScene(poly),0);
+
+        //Draw vertical lines
+    auto offset= 0;
+    for(auto size : m_current_sections_width)
+    {
+        QPointF p1(offset+size, m_current_rect.top());
+        QPointF p2(offset+size, m_current_rect.bottom());
+        Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
+        offset += size;
+    }
+
+        //Write text of each cell
+    auto margins_ = QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+    QPointF top_left(margins_.left(), margins_.top());
+    for (auto i= 0 ; i<m_model->columnCount() ; ++i)
+    {
+        QSize size(m_current_sections_width.at(i) - margins_.left() - margins_.right(), m_section_height - margins_.top() - margins_.bottom());
+
+        QPointF qm = mapToScene(top_left);
+        qreal h = size.height();//  * Createdxf::yScale;
+        qreal x = qm.x() * Createdxf::xScale;
+        qreal y = Createdxf::sheetHeight -  ((qm.y() + h/2) * Createdxf::yScale);
+        qreal h1 = h * 0.5 * Createdxf::yScale;
+
+        int valign = 2;
+
+        Createdxf::drawTextAligned(filepath,m_model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString(),x,y,h1,0,0,0,valign,x,0,0);
+
+        top_left.setX(top_left.x() + m_current_sections_width.at(i));
+    }
+    return true;
 }
 
 /**

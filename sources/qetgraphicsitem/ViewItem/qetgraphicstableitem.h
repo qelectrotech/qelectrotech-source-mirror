@@ -83,6 +83,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(const QDomElement &dom_element);
 		static QString xmlTagName() {return QString("graphics_table");}
+        virtual bool toDXF (const QString &filepath);
 
 	protected:
 		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;

@@ -23,6 +23,7 @@
 #include "elementprovider.h"
 #include "qetutils.h"
 #include "projectdbmodel.h"
+#include "createdxf.h"
 
 #include <QAbstractItemModel>
 #include <QFontMetrics>
@@ -577,6 +578,81 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 
 		//Restore the header from xml
 	m_header_item->fromXml(dom_element.firstChildElement(QetGraphicsHeaderItem::xmlTagName()));
+}
+
+/**
+    @brief QetGraphicsTableItem::toDXF
+    Draw this table to the dxf document
+    @param filepath file path of the the dxf document
+    @return true if draw success
+*/
+bool QetGraphicsTableItem::toDXF(const QString &filepath)
+{
+    // Header
+    m_header_item->toDXF(filepath);
+
+    //QRectF rect = boundingRect();
+    QRectF rect(0,0, m_header_item->rect().width(), m_current_size.height());
+    QPolygonF poly(rect);
+    Createdxf::drawPolygon(filepath,mapToScene(poly),0);
+
+    //Draw vertical lines
+    auto offset= 0;
+    for(auto i=0 ; i<m_model->columnCount() ; ++i)
+    {
+        QPointF p1(offset+m_header_item->sectionSize(i), 0);
+        QPointF p2(offset+m_header_item->sectionSize(i), m_current_size.height());
+        Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
+//        painter->drawLine(p1, p2);
+        offset += m_header_item->sectionSize(i);
+    }
+    //Calculate the number of rows to display.
+    auto row_count = m_model->rowCount();
+
+    if (m_previous_table) //Remove the number of row already displayed by previous tables
+        row_count -= m_previous_table->displayNRowOffset();
+
+    if (m_number_of_displayed_row > 0) //User override the number of row to display
+        row_count = std::min(row_count, m_number_of_displayed_row);
+
+        //Draw horizontal lines
+    auto cell_height =  static_cast<double>(m_current_size.height())/static_cast<double>(row_count);
+    for(auto i= 1 ; i-1<row_count ; ++i)
+    {
+        QPointF p1(m_header_item->rect().left(), cell_height*i);
+        QPointF p2(m_header_item->rect().right(), cell_height*i);
+        Createdxf::drawLine(filepath,QLineF(mapToScene(p1),mapToScene(p2)),0);
+        //painter->drawLine(p1, p2);
+    }
+
+    //Write text of each cell
+    for (auto i=0 ; i<row_count ; ++i)
+    {
+        auto margin_ = QETUtils::marginsFromString(m_model->index(0,0).data(Qt::UserRole+1).toString());
+        QPointF top_left(margin_.left(), i==0? margin_.top() : cell_height*i + margin_.top());
+
+        for(auto j= 0 ; j<m_model->columnCount() ; ++j)
+        {
+            //In first iteration the top left X is margin left, in all other iteration the top left X is stored in m_column_size
+            if (j>0) {
+                top_left.setX(top_left.x() + m_header_item->sectionSize(j-1));
+            }
+            QSize size(m_header_item->sectionSize(j) - margin_.left() - margin_.right(),
+                       static_cast<int>(cell_height) - margin_.top() - margin_.bottom());
+            auto index_row = m_previous_table ? i + m_previous_table->displayNRowOffset() : i;
+
+            QPointF qm = mapToScene(top_left);
+            qreal h = size.height();//  * Createdxf::yScale;
+            qreal x = qm.x() * Createdxf::xScale;
+            qreal y = Createdxf::sheetHeight -  ((qm.y() + h/2) * Createdxf::yScale);
+            qreal h1 = h * 0.5 * Createdxf::yScale;
+
+            int valign = 2;
+
+            Createdxf::drawTextAligned(filepath,m_model->index(index_row, j).data().toString(),x,y,h1,0,0,0,valign,x,0,0);
+        }
+    }
+    return true;
 }
 
 /**

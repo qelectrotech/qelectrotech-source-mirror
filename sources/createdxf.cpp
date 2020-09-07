@@ -654,7 +654,7 @@ void Createdxf::drawRectangle (const QString &fileName, double x1, double y1, do
 
 /**
 	@brief Createdxf::drawRectangle
-	Conveniance function for draw rectangle
+    Convenience function for draw rectangle
 	@param filepath
 	@param rect
 	@param colorcode
@@ -669,6 +669,26 @@ void Createdxf::drawRectangle(const QString &filepath,
 				  colorcode);
 }
 
+/**
+    @brief Createdxf::drawPolygon
+    Convenience function for draw polygon
+    @param filepath
+    @param poly
+    @param colorcode
+*/
+void Createdxf::drawPolygon(const QString &filepath,
+                  const QPolygonF &poly,
+                  const int &colorcode) {
+    int lc = 0;
+    QPointF plast;
+    foreach(QPointF p, poly) {
+        if(lc++) {
+            QLineF ql(plast,p);
+            drawLine(filepath,ql,colorcode);
+        }
+        plast = p;
+    }
+}
 /**
 	@brief Createdxf::drawArc
 	draw arc in dx format
