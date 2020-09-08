@@ -22,9 +22,6 @@
 #include "machine_info.h"
 #include <QStyleFactory>
 
-#include <QtCore>
-#include <QtWidgets>
-
 /**
 	@brief myMessageOutput
 	for debugging
@@ -207,32 +204,6 @@ int main(int argc, char **argv)
 		delete my_ma;
 	}
 
-	if(! QET::FileFormatStable){
-		QMessageBox::StandardButton btn = QMessageBox::critical(
-			nullptr,
-			QCoreApplication::translate(
-				"main",
-				"Unstable file format!"),
-			QCoreApplication::translate(
-				"main",
-				"<p><b>ATTENTION: This application version is UNSTABLE!</b></p>"
-
-				"<p>Everything you do with this application can break your "
-				"workspace, libraries or projects! Saved files will not be "
-				"readable with stable releases of QElectroTech. It's highly "
-				"recommended to create a backup before proceeding. If you are "
-				"unsure, please download an official stable release instead.</p>"
-
-//				"<p>For details, please take a look at QElectroTech's "
-//				"<a href=\"%1\">versioning concept</a>.</p>"
-
-				"<p>Are you really sure to continue with the risk of breaking your "
-				"files?!</p>","this text is not finished yet, expect changes!")
-					.arg("doc_release_workflow"),
-					QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
-		if (!(btn == QMessageBox::Yes))
-			return 1;
-	}
 	return app.exec();
 }
 

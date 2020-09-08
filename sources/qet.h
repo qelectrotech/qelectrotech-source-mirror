@@ -28,19 +28,10 @@ class QActionGroup;
 	anywhere else within the QElectroTech application.
 */
 namespace QET {
-	/// Read the release workflow documentation
-	/// before making changes here!!!
-
 	/// QElectroTech version (as string, used to mark projects and elements XML documents)
 	const QString version = "0.80";
 	/// QElectroTech displayed version
 	const QString displayedVersion = "0.80-DEV";
-	/**
-		@brief FileFormatStable
-		- On all non-release branches: false
-		- On release branches: true
-	*/
-	const bool FileFormatStable = false;
 	QString license();
 	
 		//Describe the current state of a graphic item
