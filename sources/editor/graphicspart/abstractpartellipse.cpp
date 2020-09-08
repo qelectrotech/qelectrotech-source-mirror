@@ -87,7 +87,8 @@ QRectF AbstractPartEllipse::boundingRect() const
 	and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF AbstractPartEllipse::sceneGeometricRect() const {
+QRectF AbstractPartEllipse::sceneGeometricRect() const
+{
 	return(mapToScene(rect()).boundingRect());
 }
 
@@ -95,7 +96,8 @@ QRectF AbstractPartEllipse::sceneGeometricRect() const {
 	@brief AbstractPartEllipse::sceneTopLeft
 	@return return the top left of rectangle, in scene coordinate
 */
-QPointF AbstractPartEllipse::sceneTopLeft() const {
+QPointF AbstractPartEllipse::sceneTopLeft() const
+{
 	return(mapToScene(rect().topLeft()));
 }
 
@@ -103,7 +105,8 @@ QPointF AbstractPartEllipse::sceneTopLeft() const {
 	@brief AbstractPartEllipse::rect
 	Returns the item's ellipse geometry as a QRectF.
 */
-QRectF AbstractPartEllipse::rect() const {
+QRectF AbstractPartEllipse::rect() const
+{
 	return m_rect;
 }
 
@@ -131,7 +134,8 @@ void AbstractPartEllipse::setRect(const QRectF &rect)
 	and does not deserve to be Retained / registered.
 	An ellipse is relevant when is rect is not null.
 */
-bool AbstractPartEllipse::isUseless() const {
+bool AbstractPartEllipse::isUseless() const
+{
 	return(rect().isNull());
 }
 

@@ -36,7 +36,8 @@ MarginsEditDialog::~MarginsEditDialog()
 	delete ui;
 }
 
-QMargins MarginsEditDialog::margins() const {
+QMargins MarginsEditDialog::margins() const
+{
 	return QMargins(ui->m_left_sb->value(),
 			ui->m_top_sb->value(),
 			ui->m_right_sb->value(),
@@ -51,9 +52,8 @@ QMargins MarginsEditDialog::margins() const {
 	@return The a margins with the edited value if dialog is accepted
 	or a default constructed QMargins() if dialog is rejected
 */
-QMargins MarginsEditDialog::getMargins(QMargins margins,
-				       bool *accepted,
-				       QWidget *parent)
+QMargins MarginsEditDialog::getMargins(
+		QMargins margins, bool *accepted, QWidget *parent)
 {
 	QScopedPointer<MarginsEditDialog> d(
 				new MarginsEditDialog(margins, parent));

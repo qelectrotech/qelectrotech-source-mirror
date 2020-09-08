@@ -43,7 +43,8 @@ DynamicTextFieldEditor::DynamicTextFieldEditor(
 	fillInfoComboBox();
 }
 
-DynamicTextFieldEditor::~DynamicTextFieldEditor() {
+DynamicTextFieldEditor::~DynamicTextFieldEditor()
+{
 	delete ui;
 	if(!m_connection_list.isEmpty()) {
 		for(const QMetaObject::Connection& con : m_connection_list) {
@@ -108,11 +109,13 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 	@return The current edited part, note they can return nullptr if
 	there is not a currently edited part.
 */
-CustomElementPart *DynamicTextFieldEditor::currentPart() const {
+CustomElementPart *DynamicTextFieldEditor::currentPart() const
+{
 	return m_text_field.data();
 }
 
-QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const {
+QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const
+{
 	QList<CustomElementPart*> parts;
 	for (auto part: m_parts) {
 		parts.append(static_cast<CustomElementPart*>(part));
@@ -120,7 +123,8 @@ QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const {
 	return parts;
 }
 
-void DynamicTextFieldEditor::updateForm() {
+void DynamicTextFieldEditor::updateForm()
+{
 	if(m_text_field) {
 		ui -> m_x_sb -> setValue(m_text_field.data() -> x());
 		ui -> m_y_sb -> setValue(m_text_field.data() ->y ());
@@ -152,7 +156,8 @@ void DynamicTextFieldEditor::updateForm() {
 	}
 }
 
-void DynamicTextFieldEditor::setUpConnections() {
+void DynamicTextFieldEditor::setUpConnections()
+{
 	assert(m_connection_list.isEmpty());
 	//Setup the connection
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,
@@ -177,7 +182,8 @@ void DynamicTextFieldEditor::setUpConnections() {
 		[this](){this -> updateForm();});
 }
 
-void DynamicTextFieldEditor::disconnectConnections() {
+void DynamicTextFieldEditor::disconnectConnections()
+{
 	//Remove previous connection
 	if(!m_connection_list.isEmpty())
 		for(const QMetaObject::Connection& con : m_connection_list) {
@@ -190,7 +196,8 @@ void DynamicTextFieldEditor::disconnectConnections() {
 	@brief DynamicTextFieldEditor::fillInfoComboBox
 	Fill the combo box "element information"
 */
-void DynamicTextFieldEditor::fillInfoComboBox() {
+void DynamicTextFieldEditor::fillInfoComboBox()
+{
 	ui -> m_elmt_info_cb -> clear();
 
 	QStringList strl;
@@ -212,7 +219,8 @@ void DynamicTextFieldEditor::fillInfoComboBox() {
 		ui -> m_elmt_info_cb -> addItem(key, info_map.value(key));
 }
 
-void DynamicTextFieldEditor::on_m_x_sb_editingFinished() {
+void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
+{
 	double value = ui -> m_x_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "x", m_parts[i] -> x(), value);
@@ -222,7 +230,8 @@ void DynamicTextFieldEditor::on_m_x_sb_editingFinished() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_y_sb_editingFinished() {
+void DynamicTextFieldEditor::on_m_y_sb_editingFinished()
+{
 	double value = ui -> m_y_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "y", m_parts[i] -> y(), value);
@@ -232,7 +241,8 @@ void DynamicTextFieldEditor::on_m_y_sb_editingFinished() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_rotation_sb_editingFinished() {
+void DynamicTextFieldEditor::on_m_rotation_sb_editingFinished()
+{
 	int value = ui -> m_rotation_sb -> value();
 	for (int i = 0; i < m_parts.length(); i++) {
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "rotation", m_parts[i] -> rotation(), value);
@@ -242,7 +252,8 @@ void DynamicTextFieldEditor::on_m_rotation_sb_editingFinished() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_user_text_le_editingFinished() {
+void DynamicTextFieldEditor::on_m_user_text_le_editingFinished()
+{
 	QString text = ui -> m_user_text_le -> text();
 	for (int i = 0; i < m_parts.length(); i++) {
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "text", m_parts[i] -> text(), text);
@@ -251,7 +262,8 @@ void DynamicTextFieldEditor::on_m_user_text_le_editingFinished() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_size_sb_editingFinished() {
+void DynamicTextFieldEditor::on_m_size_sb_editingFinished()
+{
 	QFont font_ = m_text_field -> font();
 	font_.setPointSize(ui -> m_size_sb -> value());
 	for (int i = 0; i < m_parts.length(); i++) {
@@ -261,7 +273,8 @@ void DynamicTextFieldEditor::on_m_size_sb_editingFinished() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_frame_cb_clicked() {
+void DynamicTextFieldEditor::on_m_frame_cb_clicked()
+{
 	bool frame = ui -> m_frame_cb -> isChecked();
 
 	for (int i = 0; i < m_parts.length(); i++) {
@@ -273,7 +286,8 @@ void DynamicTextFieldEditor::on_m_frame_cb_clicked() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_width_sb_editingFinished() {
+void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
+{
 	qreal width = (qreal)ui -> m_width_sb -> value();
 
 	for (int i = 0; i < m_parts.length(); i++) {
@@ -335,7 +349,8 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_composite_text_pb_clicked() {
+void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
+{
 	CompositeTextEditDialog ctd(m_text_field.data() -> compositeText(), this);
 	if(ctd.exec()) {
 		QString ct = ctd.plainText();
@@ -349,7 +364,8 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_alignment_pb_clicked() {
+void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
+{
 	AlignmentTextDialog atd(m_text_field.data() -> alignment(), this);
 	atd.exec();
 
@@ -364,7 +380,8 @@ void DynamicTextFieldEditor::on_m_alignment_pb_clicked() {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_font_pb_clicked() {
+void DynamicTextFieldEditor::on_m_font_pb_clicked()
+{
 	bool ok;
 	QFont font_ = QFontDialog::getFont(&ok, m_text_field -> font(), this);
 	if (ok && font_ != this -> font()) {

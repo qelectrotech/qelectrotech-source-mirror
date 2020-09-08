@@ -37,7 +37,8 @@ ESEventAddTerminal::ESEventAddTerminal(ElementScene *scene) :
 /**
 	@brief ESEventAddTerminal::~ESEventAddTerminal
 */
-ESEventAddTerminal::~ESEventAddTerminal() {
+ESEventAddTerminal::~ESEventAddTerminal()
+{
 	delete m_terminal;
 }
 

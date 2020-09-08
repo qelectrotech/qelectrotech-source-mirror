@@ -35,12 +35,14 @@ class ElementInfoPartWidget : public QWidget
 
 	//METHODS
 	public:
-		explicit ElementInfoPartWidget(QString key,
-					       const QString& translated_key,
-					       QWidget *parent = nullptr);
+		explicit ElementInfoPartWidget(
+			QString key,
+			const QString& translated_key,
+			QWidget *parent = nullptr);
 		~ElementInfoPartWidget() override;
 
-		QString key () const {return key_;}
+		QString key () const
+{return key_;}
 		QString text () const;
 		void setText (const QString &);
 		void setPlaceHolderText (const QString &text);

@@ -31,9 +31,12 @@ class CrossRefItem;
 class MasterElement : public Element
 {
 	Q_OBJECT
-	
+
 	public:
-		explicit MasterElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit MasterElement(
+			const ElementsLocation &,
+			QGraphicsItem * = nullptr,
+			int * = nullptr);
 		~MasterElement() override;
 
 		void linkToElement     (Element *elmt) override;
@@ -43,7 +46,9 @@ class MasterElement : public Element
 		QRectF XrefBoundingRect() const;
 		
 	protected:
-		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		QVariant itemChange(
+				GraphicsItemChange change,
+				const QVariant &value) override;
 
 	private:
 		void xrefPropertiesChanged();

@@ -43,7 +43,8 @@ ElementsMover::ElementsMover() :
 /**
 	@brief ElementsMover::~ElementsMover Destructor
 */
-ElementsMover::~ElementsMover() {
+ElementsMover::~ElementsMover()
+{
 }
 
 /**
@@ -51,7 +52,8 @@ ElementsMover::~ElementsMover() {
 	@return True if this element mover is ready to be used.
 	A element mover is ready when the previous managed movement is finish.
 */
-bool ElementsMover::isReady() const {
+bool ElementsMover::isReady() const
+{
 	return(!movement_running_);
 }
 

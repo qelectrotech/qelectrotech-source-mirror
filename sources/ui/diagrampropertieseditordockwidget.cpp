@@ -44,15 +44,19 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 
 	if (m_diagram)
 	{
-		disconnect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
-		disconnect(m_diagram, SIGNAL(destroyed()),        this, SLOT(diagramWasDeleted()));
+		disconnect(m_diagram, SIGNAL(selectionChanged()),
+			   this, SLOT(selectionChanged()));
+		disconnect(m_diagram, SIGNAL(destroyed()),
+			   this, SLOT(diagramWasDeleted()));
 	}
 
 	if (diagram)
 	{
 		m_diagram = diagram;
-		connect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()), Qt::QueuedConnection);
-		connect(m_diagram, SIGNAL(destroyed()),        this, SLOT(diagramWasDeleted()));
+		connect(m_diagram, SIGNAL(selectionChanged()),
+			this, SLOT(selectionChanged()), Qt::QueuedConnection);
+		connect(m_diagram, SIGNAL(destroyed()),
+			this, SLOT(diagramWasDeleted()));
 		selectionChanged();
 	}
 	else
@@ -74,7 +78,10 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		return;
 	}
 
-	auto editor_ = PropertiesEditorFactory::propertiesEditor(m_diagram->selectedItems(), editors().count()? editors().first() : nullptr, this);
+	auto editor_ = PropertiesEditorFactory::propertiesEditor(
+				m_diagram->selectedItems(),
+				editors().count() ? editors().first() : nullptr,
+				this);
 	if (!editor_) {
 		clear();
 		return;

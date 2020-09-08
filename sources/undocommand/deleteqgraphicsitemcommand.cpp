@@ -109,7 +109,8 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
 }
 
-DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand() {
+DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand()
+{
 	m_diagram->qgiManager().release(m_removed_contents.items(DiagramContent::All));
 }
 

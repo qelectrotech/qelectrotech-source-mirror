@@ -95,7 +95,8 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	@param xml_document : Xml document to use for create the xml element.
 	@return : an xml element that describe this arc
 */
-const QDomElement PartArc::toXml(QDomDocument &xml_document) const {
+const QDomElement PartArc::toXml(QDomDocument &xml_document) const
+{
 	QDomElement xml_element = xml_document.createElement("arc");
 	QPointF top_left(sceneTopLeft());
 	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));

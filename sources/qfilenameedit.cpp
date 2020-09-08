@@ -44,27 +44,31 @@ QFileNameEdit::QFileNameEdit(const QString &contents, QWidget *parent) : QLineEd
 /**
 	Destructeur
 */
-QFileNameEdit::~QFileNameEdit() {
+QFileNameEdit::~QFileNameEdit()
+{
 }
 
 /**
 	@return true si le champ de texte est vide, false sinon
 */
-bool QFileNameEdit::isEmpty() {
+bool QFileNameEdit::isEmpty()
+{
 	return(text().isEmpty());
 }
 
 /**
 	@return true si le champ de texte n'est pas vide et est valide
 */
-bool QFileNameEdit::isValid() {
+bool QFileNameEdit::isValid()
+{
 	return(regexp_.exactMatch(text()));
 }
 
 /**
 	Construit l'objet
 */
-void QFileNameEdit::init() {
+void QFileNameEdit::init()
+{
 	regexp_ = QRegExp("^[0-9a-z_\\-\\.]+$", Qt::CaseSensitive);
 	validator_ = new QETRegExpValidator(regexp_, this);
 	setValidator(validator_);
@@ -83,7 +87,8 @@ void QFileNameEdit::init() {
 /**
 	Affiche l'info-bulle informant l'utilisateur des caracteres autorises.
 */
-void QFileNameEdit::displayToolTip() {
+void QFileNameEdit::displayToolTip()
+{
 	QToolTip::showText(
 		mapToGlobal(QPoint(x() + width(), 0)),
 		tooltip_text_,
@@ -95,6 +100,7 @@ void QFileNameEdit::displayToolTip() {
 /**
 	Gere le fait que la validation du champ de texte ait echoue.
 */
-void QFileNameEdit::validationFailed() {
+void QFileNameEdit::validationFailed()
+{
 	displayToolTip();
 }

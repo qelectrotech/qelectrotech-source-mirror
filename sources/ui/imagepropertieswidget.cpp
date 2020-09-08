@@ -41,7 +41,8 @@ ImagePropertiesWidget::ImagePropertiesWidget(DiagramImageItem *image, QWidget *p
 	@brief ImagePropertiesWidget::~ImagePropertiesWidget
 	Destructor
 */
-ImagePropertiesWidget::~ImagePropertiesWidget() {
+ImagePropertiesWidget::~ImagePropertiesWidget()
+{
 	delete ui;
 }
 
@@ -168,6 +169,7 @@ void ImagePropertiesWidget::on_m_scale_slider_valueChanged(int value)
 	@brief ImagePropertiesWidget::on_m_lock_pos_cb_clicked
 	Set movable or not the image according to corresponding check box
 */
-void ImagePropertiesWidget::on_m_lock_pos_cb_clicked() {
+void ImagePropertiesWidget::on_m_lock_pos_cb_clicked()
+{
 	m_image->setMovable(!ui->m_lock_pos_cb->isChecked());
 }

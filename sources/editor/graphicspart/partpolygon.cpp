@@ -150,7 +150,8 @@ bool PartPolygon::isUseless() const
 	to imply any margin, and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF PartPolygon::sceneGeometricRect() const {
+QRectF PartPolygon::sceneGeometricRect() const
+{
 	return(mapToScene(m_polygon.boundingRect()).boundingRect());
 }
 
@@ -185,7 +186,8 @@ void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect,
 	single primitive is being scaled.
 	@return : This reimplementation systematically returns QET::RoundScaleRatios.
 */
-QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
+QET::ScalingMethod PartPolygon::preferredScalingMethod() const
+{
 	return(QET::RoundScaleRatios);
 }
 
@@ -193,7 +195,8 @@ QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
 	@brief PartPolygon::polygon
 	@return the item's polygon, or an empty polygon if no polygon has been set.
 */
-QPolygonF PartPolygon::polygon() const {
+QPolygonF PartPolygon::polygon() const
+{
 	return m_polygon;
 }
 

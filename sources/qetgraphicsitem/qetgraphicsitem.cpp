@@ -67,7 +67,8 @@ void QetGraphicsItem::setPos(qreal x, qreal y) {
 	@brief QetGraphicsItem::state
 	@return the current state of this item 
 */
-QET::GraphicsItemState QetGraphicsItem::state() const {
+QET::GraphicsItemState QetGraphicsItem::state() const
+{
 	return m_state;
 }
 

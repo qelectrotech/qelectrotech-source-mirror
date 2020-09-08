@@ -32,7 +32,11 @@
 	@param widget  Widget parent
 	@param f       Flags passes au constructeur de QDialog puis QWidget
 */
-QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *printer, QWidget *widget, Qt::WindowFlags f) :
+QETPrintPreviewDialog::QETPrintPreviewDialog(
+		QETProject *project,
+		QPrinter *printer,
+		QWidget *widget,
+		Qt::WindowFlags f) :
 	QDialog(widget, f),
 	project_(project),
 	printer_(printer)
@@ -40,9 +44,12 @@ QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *prin
 	setWindowTitle(tr("QElectroTech : Aperçu avant impression"));
 	build();
 	
-	connect(preview_,       SIGNAL(paintRequested(QPrinter *)), this,     SLOT(requestPaint(QPrinter *)));
-	connect(diagrams_list_, SIGNAL(selectionChanged()),         preview_, SLOT(updatePreview()));
-	connect(diagrams_list_, SIGNAL(selectionChanged()),         this,     SLOT(checkDiagramsCount()));
+	connect(preview_,       SIGNAL(paintRequested(QPrinter *)),
+		this,     SLOT(requestPaint(QPrinter *)));
+	connect(diagrams_list_, SIGNAL(selectionChanged()),
+		preview_, SLOT(updatePreview()));
+	connect(diagrams_list_, SIGNAL(selectionChanged()),
+		this,     SLOT(checkDiagramsCount()));
 	
 	setWindowState(windowState() |  Qt::WindowMaximized);
 }
@@ -50,41 +57,47 @@ QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *prin
 /**
 	Destructeur
 */
-QETPrintPreviewDialog::~QETPrintPreviewDialog() {
+QETPrintPreviewDialog::~QETPrintPreviewDialog()
+{
 }
 
 /**
 	@return le widget permettant de choisir les schemas a imprimer.
 */
-DiagramsChooser *QETPrintPreviewDialog::diagramsChooser() {
+DiagramsChooser *QETPrintPreviewDialog::diagramsChooser()
+{
 	return(diagrams_list_);
 }
 
 /**
 	@return true si l'option "Adapter le schema a la page" est activee
 */
-bool QETPrintPreviewDialog::fitDiagramsToPages() const {
+bool QETPrintPreviewDialog::fitDiagramsToPages() const
+{
 	return(fit_diagram_to_page_ -> isChecked());
 }
 
 /**
 	@return les options de rendu definies par l'utilisateur
 */
-ExportProperties QETPrintPreviewDialog::exportProperties() const {
+ExportProperties QETPrintPreviewDialog::exportProperties() const
+{
 	return(render_properties_ -> exportProperties());
 }
 
 /**
 	Passe a la premiere page
 */
-void QETPrintPreviewDialog::firstPage() {
+void QETPrintPreviewDialog::firstPage()
+{
 	preview_ -> setCurrentPage(1);
 }
 
 /**
 	Passe a la page precedente
 */
-void QETPrintPreviewDialog::previousPage() {
+void QETPrintPreviewDialog::previousPage()
+{
 	int preview_previous_page = preview_ -> currentPage() - 1;
 	preview_ -> setCurrentPage(qMax(preview_previous_page, 0));
 }
@@ -92,22 +105,26 @@ void QETPrintPreviewDialog::previousPage() {
 /**
 	Passe a la page suivante
 */
-void QETPrintPreviewDialog::nextPage() {
+void QETPrintPreviewDialog::nextPage()
+{
 	int preview_next_page = preview_ -> currentPage() + 1;
-	preview_ -> setCurrentPage(qMin(preview_next_page, preview_ -> pageCount()));
+	preview_ -> setCurrentPage(qMin(preview_next_page,
+					preview_ -> pageCount()));
 }
 
 /**
 	Passe a la derniere page
 */
-void QETPrintPreviewDialog::lastPage() {
+void QETPrintPreviewDialog::lastPage()
+{
 	preview_ -> setCurrentPage(preview_ -> pageCount());
 }
 
 /**
 	Copnfigure la mise en page
 */
-void QETPrintPreviewDialog::pageSetup() {
+void QETPrintPreviewDialog::pageSetup()
+{
 	QPageSetupDialog page_setup_dialog(printer_, this);
 	if (page_setup_dialog.exec() == QDialog::Accepted) {
 		preview_ -> updatePreview();
@@ -127,7 +144,8 @@ void QETPrintPreviewDialog::useFullPage(bool full_page) {
 
 /**
 	Fait tenir ou non chaque schema sur une page
-	@param fit_diagram true pour adapter chaque schema sur une page, false sinon
+	@param fit_diagram true pour adapter chaque schema sur une page,
+	false sinon
 */
 void QETPrintPreviewDialog::fitDiagramToPage(bool fit_diagram) {
 	Q_UNUSED(fit_diagram);
@@ -138,7 +156,8 @@ void QETPrintPreviewDialog::fitDiagramToPage(bool fit_diagram) {
 /**
 	Effectue l'action "zoom avant" sur l'apercu avant impression
 */
-void QETPrintPreviewDialog::zoomIn() {
+void QETPrintPreviewDialog::zoomIn()
+{
 	preview_ -> zoomIn(4.0/3.0);
 	updateZoomList();
 }
@@ -146,7 +165,8 @@ void QETPrintPreviewDialog::zoomIn() {
 /**
 	Effectue l'action "zoom arriere" sur l'apercu avant impression
 */
-void QETPrintPreviewDialog::zoomOut() {
+void QETPrintPreviewDialog::zoomOut()
+{
 	preview_ -> zoomOut(4.0/3.0);
 	updateZoomList();
 }
@@ -154,21 +174,24 @@ void QETPrintPreviewDialog::zoomOut() {
 /**
 	Selectionne tous les schemas
 */
-void QETPrintPreviewDialog::selectAllDiagrams() {
+void QETPrintPreviewDialog::selectAllDiagrams()
+{
 	diagrams_list_ -> setSelectedAllDiagrams(true);
 }
 
 /**
 	Deselectionne tous les schemas
 */
-void QETPrintPreviewDialog::selectNoDiagram() {
+void QETPrintPreviewDialog::selectNoDiagram()
+{
 	diagrams_list_ -> setSelectedAllDiagrams(false);
 }
 
 /**
 	Met en place le dialogue
 */
-void QETPrintPreviewDialog::build() {
+void QETPrintPreviewDialog::build()
+{
 	preview_ = new QPrintPreviewWidget(printer_);
 	diagrams_label_       = new QLabel(tr("Folios à imprimer :"));
 	diagrams_list_        = new DiagramsChooser(project_);
@@ -345,7 +368,8 @@ void QETPrintPreviewDialog::requestPaint(QPrinter *printer) {
 	Ce slot prive verifie que le nombre de schemas a imprimer est bien superieur
 	a 0 et active ou desactive le bouton "Imprimer" en consequence.
 */
-void QETPrintPreviewDialog::checkDiagramsCount() {
+void QETPrintPreviewDialog::checkDiagramsCount()
+{
 	int diagrams_count = diagrams_list_ -> selectedDiagrams().count();
 	
 	// desactive le premier bouton de la liste (= le bouton "Imprimer")
@@ -389,7 +413,8 @@ void QETPrintPreviewDialog::setPrintOptionsVisible(bool display) {
 /**
 	Met a jour la liste des zooms disponibles
 */
-void QETPrintPreviewDialog::updateZoomList() {
+void QETPrintPreviewDialog::updateZoomList()
+{
 	// recupere le zooom courant
 	qreal current_zoom = preview_ -> zoomFactor();
 	bool current_zoom_is_not_null = bool(int(current_zoom * 100.0));
@@ -419,7 +444,8 @@ void QETPrintPreviewDialog::updateZoomList() {
 /**
 	Change le zoom de l'apercu en fonctiopn du contenu du zoom selectionne
 */
-void QETPrintPreviewDialog::updatePreviewZoom() {
+void QETPrintPreviewDialog::updatePreviewZoom()
+{
 	preview_ -> setZoomFactor(
 		zoom_box_ -> itemData(zoom_box_ -> currentIndex()).toDouble()
 	);

@@ -103,7 +103,8 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 /**
 	@brief NewDiagramPage::~NewDiagramPage
 */
-NewDiagramPage::~NewDiagramPage() {
+NewDiagramPage::~NewDiagramPage()
+{
 	disconnect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
 }
 
@@ -113,7 +114,8 @@ NewDiagramPage::~NewDiagramPage() {
 	If there is a project, save in the project,
 	else save to the default conf of QElectroTech
 */
-void NewDiagramPage::applyConf() {
+void NewDiagramPage::applyConf()
+{
 	if (m_project) { //If project we save to the project
 		if (m_project -> isReadOnly()) return;
 		bool modified_project = false;
@@ -182,7 +184,8 @@ void NewDiagramPage::applyConf() {
 	@brief NewDiagramPage::icon
 	@return  icon of this page
 */
-QIcon NewDiagramPage::icon() const {
+QIcon NewDiagramPage::icon() const
+{
 	if (m_project) return(QET::Icons::NewDiagram);
 	return(QET::Icons::Projects);
 }
@@ -191,7 +194,8 @@ QIcon NewDiagramPage::icon() const {
 	@brief NewDiagramPage::title
 	@return title of this page
 */
-QString NewDiagramPage::title() const {
+QString NewDiagramPage::title() const
+{
 	if (m_project) return(tr("Nouveau folio", "configuration page title"));
 	return(tr("Nouveau projet", "configuration page title"));
 }
@@ -200,7 +204,8 @@ QString NewDiagramPage::title() const {
 	@brief NewDiagramPage::changeToAutoFolioTab
 	Set the current tab to Autonum
 */
-void NewDiagramPage::changeToAutoFolioTab(){
+void NewDiagramPage::changeToAutoFolioTab()
+{
 	if (m_project){
 		ppd_->setCurrentPage(ProjectPropertiesDialog::Autonum);
 		ppd_->changeToFolio();
@@ -222,7 +227,8 @@ void NewDiagramPage::setFolioAutonum(QString autoNum){
 	@brief NewDiagramPage::saveCurrentTbp
 	Save current TBP to retrieve after auto folio	num
 */
-void NewDiagramPage::saveCurrentTbp(){
+void NewDiagramPage::saveCurrentTbp()
+{
 	savedTbp = ipw->properties();
 }
 
@@ -230,7 +236,8 @@ void NewDiagramPage::saveCurrentTbp(){
 	@brief NewDiagramPage::loadSavedTbp
 	Retrieve saved auto folio num
 */
-void NewDiagramPage::loadSavedTbp(){
+void NewDiagramPage::loadSavedTbp()
+{
 	ipw->setProperties(savedTbp);
 	applyConf();
 }
@@ -260,7 +267,8 @@ ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 }
 
 /// Destructeur
-ExportConfigPage::~ExportConfigPage() {
+ExportConfigPage::~ExportConfigPage()
+{
 }
 
 /**
@@ -273,12 +281,14 @@ void ExportConfigPage::applyConf()
 }
 
 /// @return l'icone de cette page
-QIcon ExportConfigPage::icon() const {
+QIcon ExportConfigPage::icon() const
+{
 	return(QET::Icons::DocumentExport);
 }
 
 /// @return le titre de cette page
-QString ExportConfigPage::title() const {
+QString ExportConfigPage::title() const
+{
 	return(tr("Export", "configuration page title"));
 }
 
@@ -308,7 +318,8 @@ PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
 }
 
 /// Destructeur
-PrintConfigPage::~PrintConfigPage() {
+PrintConfigPage::~PrintConfigPage()
+{
 }
 
 /**
@@ -329,12 +340,14 @@ void PrintConfigPage::applyConf()
 }
 
 /// @return l'icone de cette page
-QIcon PrintConfigPage::icon() const {
+QIcon PrintConfigPage::icon() const
+{
 	return(QET::Icons::Printer);
 }
 
 /// @return le titre de cette page
-QString PrintConfigPage::title() const {
+QString PrintConfigPage::title() const
+{
 	return(tr("Impression", "configuration page title"));
 }
 

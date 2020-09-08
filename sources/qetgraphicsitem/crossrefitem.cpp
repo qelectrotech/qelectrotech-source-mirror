@@ -65,7 +65,8 @@ CrossRefItem::CrossRefItem(Element *elmt, ElementTextItemGroup *group) :
 	@brief CrossRefItem::~CrossRefItem
 	Default destructor
 */
-CrossRefItem::~CrossRefItem() {}
+CrossRefItem::~CrossRefItem()
+{}
 
 /**
 	@brief CrossRefItem::init
@@ -107,16 +108,25 @@ void CrossRefItem::setUpConnection()
 		set=true;
 	else if(m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group) //Snap to bottom of element and parent is the element itself
 	{
-		m_update_connection << connect(m_element, SIGNAL(yChanged()),        this, SLOT(autoPos()));
-		m_update_connection << connect(m_element, SIGNAL(rotationChanged()), this, SLOT(autoPos()));
+		m_update_connection << connect(m_element, SIGNAL(yChanged()),
+					       this, SLOT(autoPos()));
+		m_update_connection << connect(m_element, SIGNAL(rotationChanged()),
+					       this, SLOT(autoPos()));
 		set=true;
 	}
 
 	if(set)
 	{
-		m_update_connection << connect(project, &QETProject::projectDiagramsOrderChanged, this, &CrossRefItem::updateLabel);
-		m_update_connection << connect(project, &QETProject::diagramRemoved,              this, &CrossRefItem::updateLabel);
-		m_update_connection << connect(m_element, &Element::linkedElementChanged, this, &CrossRefItem::linkedChanged);
+		m_update_connection
+				<< connect(project,
+					       &QETProject::projectDiagramsOrderChanged,
+					       this, &CrossRefItem::updateLabel);
+		m_update_connection << connect(project,
+					       &QETProject::diagramRemoved,
+					       this, &CrossRefItem::updateLabel);
+		m_update_connection << connect(m_element,
+					       &Element::linkedElementChanged,
+					       this, &CrossRefItem::linkedChanged);
 		linkedChanged();
 		updateLabel();
 	}
@@ -126,7 +136,8 @@ void CrossRefItem::setUpConnection()
 	@brief CrossRefItem::boundingRect
 	@return the bounding rect of this item
 */
-QRectF CrossRefItem::boundingRect() const {
+QRectF CrossRefItem::boundingRect() const
+{
 	return m_bounding_rect;
 }
 
@@ -146,8 +157,8 @@ QPainterPath CrossRefItem::shape() const{
 	if add_prefix is true,
 	prefix (for power and delay contact) is added to the poistion text.
 */
-QString CrossRefItem::elementPositionText(const Element *elmt,
-					  const bool &add_prefix) const
+QString CrossRefItem::elementPositionText(
+		const Element *elmt, const bool &add_prefix) const
 {
 	XRefProperties xrp =
 			m_element->diagram()->project()->defaultXRefProperties(
@@ -232,7 +243,8 @@ void CrossRefItem::updateLabel()
 	@brief CrossRefItem::autoPos
 	Calculate and set position automaticaly.
 */
-void CrossRefItem::autoPos() {
+void CrossRefItem::autoPos()
+{
 	//We calcul the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
 		centerToBottomDiagram(this,
@@ -285,9 +297,11 @@ bool CrossRefItem::sceneEvent(QEvent *event)
 	@param option
 	@param widget
 */
-void CrossRefItem::paint(QPainter *painter,
-			 const QStyleOptionGraphicsItem *option,
-			 QWidget *widget) {
+void CrossRefItem::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *option,
+		QWidget *widget)
+{
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
 	m_drawing.play(painter);
@@ -406,9 +420,9 @@ void CrossRefItem::linkedChanged()
 {
 	for(const QMetaObject::Connection& c : m_slave_connection)
 		disconnect(c);
-	
+
 	m_slave_connection.clear();
-	
+
 	if(!isVisible())
 		return;
 	
@@ -423,7 +437,7 @@ void CrossRefItem::linkedChanged()
 					      this,
 					      &CrossRefItem::updateLabel);
 	}
-	
+
 	updateLabel();
 }
 
@@ -431,7 +445,8 @@ void CrossRefItem::linkedChanged()
 	@brief CrossRefItem::buildHeaderContact
 	Draw the QPicture of m_hdr_no_ctc and m_hdr_nc_ctc
 */
-void CrossRefItem::buildHeaderContact() {
+void CrossRefItem::buildHeaderContact()
+{
 	if (!m_hdr_no_ctc.isNull() && !m_hdr_nc_ctc.isNull()) return;
 
 	//init the painter
@@ -483,7 +498,7 @@ void CrossRefItem::buildHeaderContact() {
 */
 void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 {
-		//No need to calcul if nothing is linked
+	//No need to calcul if nothing is linked
 	if (m_element->isFree()) return;
 
 	QStringList no_str, nc_str;
@@ -495,14 +510,13 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 		nc_str.append(elementPositionText(elmt, true));
 	}
 
-
-		//There is no string to display, we return now
+	//There is no string to display, we return now
 	if (no_str.isEmpty() && nc_str.isEmpty()) return;
 
-		//this is the default size of cross ref item
+	//this is the default size of cross ref item
 	QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
 
-		//Bounding rect of the NO text
+	//Bounding rect of the NO text
 	QRectF no_bounding;
 	for (auto str : no_str)
 	{
@@ -510,13 +524,13 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 		no_bounding = no_bounding.united(bounding);
 		no_bounding.setHeight(no_bounding.height() + bounding.height());
 	}
-		//Adjust according to the NO
+	//Adjust according to the NO
 	if (no_bounding.height() > default_bounding.height() - header)
 		default_bounding.setHeight(no_bounding.height() + header); //adjust the height
 	if (no_bounding.width() > default_bounding.width()/2)
-		default_bounding.setWidth(no_bounding.width()*2);			//adjust the width
+		default_bounding.setWidth(no_bounding.width()*2);//adjust the width
 
-		//Bounding rect of the NC text
+	//Bounding rect of the NC text
 	QRectF nc_bounding;
 	for (auto str : nc_str)
 	{
@@ -524,13 +538,13 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 		nc_bounding = nc_bounding.united(bounding);
 		nc_bounding.setHeight(nc_bounding.height() + bounding.height());
 	}
-		//Adjust according to the NC
+	//Adjust according to the NC
 	if (nc_bounding.height() > default_bounding.height() - header)
 		default_bounding.setHeight(nc_bounding.height() + header); //adjust the heigth
 	if (nc_bounding.width() > default_bounding.width()/2)
-		default_bounding.setWidth(nc_bounding.width()*2);			//adjust the width
+		default_bounding.setWidth(nc_bounding.width()*2);//adjust the width
 
-		//Minor adjustement for better visual
+	//Minor adjustement for better visual
 	default_bounding.adjust(0, 0, 4, 0);
 	m_shape_path.addRect(default_bounding);
 	prepareGeometryChange();
@@ -544,26 +558,26 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 */
 void CrossRefItem::drawAsCross(QPainter &painter)
 {
-		//calcul the size of the cross
+	//calcul the size of the cross
 	setUpCrossBoundingRect(painter);
 	m_hovered_contacts_map.clear();
 
-		//Bounding rect is empty that mean there's no contact to draw
+	//Bounding rect is empty that mean there's no contact to draw
 	if (boundingRect().isEmpty()) return;
 
-		//draw the cross
+	//draw the cross
 	QRectF br = boundingRect();
 	painter.drawLine(br.width()/2, 0, br.width()/2, br.height());	//vertical line
 	painter.drawLine(0, header, br.width(), header);	//horizontal line
 
-		//Add the symbolic contacts
+	//Add the symbolic contacts
 	buildHeaderContact();
 	QPointF p((m_bounding_rect.width()/4) - (m_hdr_no_ctc.width()/2), 0);
 	painter.drawPicture (p, m_hdr_no_ctc);
 	p.setX((m_bounding_rect.width() * 3/4) - (m_hdr_nc_ctc.width()/2));
 	painter.drawPicture (p, m_hdr_nc_ctc);
 
-		//and fill it
+	//and fill it
 	fillCrossRef(painter);
 }
 

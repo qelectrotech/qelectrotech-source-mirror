@@ -29,27 +29,31 @@
 	@param model
 	@param parent
 */
-ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(ProjectDBModel *model, QWidget *parent) :
+ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(
+		ProjectDBModel *model,
+		QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::ProjectDBModelPropertiesWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	setModel(model);
 }
 
 /**
 	@brief projectDBModelPropertiesWidget::~projectDBModelPropertiesWidget
 */
-ProjectDBModelPropertiesWidget::~ProjectDBModelPropertiesWidget() {
-    delete ui;
+ProjectDBModelPropertiesWidget::~ProjectDBModelPropertiesWidget()
+{
+	delete ui;
 }
 
 /**
 	@brief projectDBModelPropertiesWidget::setModel
 	@param model
 */
-void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model) {
-    m_model = model;
+void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model)
+{
+	m_model = model;
 	ui->m_edit_query_pb->setEnabled(m_model);
 	ui->m_refresh_pb->setEnabled(m_model);
 }
@@ -93,7 +97,8 @@ void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 	}
 }
 
-void ProjectDBModelPropertiesWidget::on_m_refresh_pb_clicked() {
+void ProjectDBModelPropertiesWidget::on_m_refresh_pb_clicked()
+{
 	if (m_model && m_model->project()) {
 		m_model->project()->dataBase()->updateDB();
 	}

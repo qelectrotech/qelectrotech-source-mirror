@@ -319,7 +319,8 @@ void ReplaceConductorDialog::on_m_neutral_cb_toggled(bool checked)
 	}
 }
 
-void ReplaceConductorDialog::on_m_update_preview_pb_clicked() {
+void ReplaceConductorDialog::on_m_update_preview_pb_clicked()
+{
 	updatePreview();
 }
 

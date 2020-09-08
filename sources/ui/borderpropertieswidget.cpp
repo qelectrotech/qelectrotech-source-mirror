@@ -47,7 +47,8 @@ BorderPropertiesWidget::~BorderPropertiesWidget()
 	Set the current properties to edit
 	@param bp properties to edit
 */
-void BorderPropertiesWidget::setProperties(const BorderProperties &bp) {
+void BorderPropertiesWidget::setProperties(const BorderProperties &bp)
+{
 	m_properties = bp;
 	ui -> m_colums_count_sp    ->setValue   (m_properties.columns_count);
 	ui -> m_columns_width_sp   ->setValue   (m_properties.columns_width);
@@ -61,7 +62,8 @@ void BorderPropertiesWidget::setProperties(const BorderProperties &bp) {
 	@brief BorderPropertiesWidget::properties
 	@return the edited border properties
 */
-const BorderProperties &BorderPropertiesWidget::properties () {
+const BorderProperties &BorderPropertiesWidget::properties ()
+{
 	m_properties.columns_count   = ui -> m_colums_count_sp    -> value();
 	m_properties.columns_width   = ui -> m_columns_width_sp   -> value();
 	m_properties.display_columns = ui -> m_display_columns_cb -> isChecked();
@@ -76,6 +78,7 @@ const BorderProperties &BorderPropertiesWidget::properties () {
 	Enable or disable this widget
 	@param ro true-disable / false-enable
 */
-void BorderPropertiesWidget::setReadOnly(const bool &ro) {
+void BorderPropertiesWidget::setReadOnly(const bool &ro)
+{
 	ui->border_gb->setDisabled(ro);
 }

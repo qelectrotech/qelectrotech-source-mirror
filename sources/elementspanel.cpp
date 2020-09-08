@@ -74,7 +74,8 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 /**
 	Destructeur
 */
-ElementsPanel::~ElementsPanel() {
+ElementsPanel::~ElementsPanel()
+{
 }
 
 /**
@@ -111,7 +112,8 @@ void ElementsPanel::startTitleBlockTemplateDrag(const TitleBlockTemplateLocation
 /**
 	Ensure the filter is applied again after the panel content has changed.
 */
-void ElementsPanel::panelContentChange() {
+void ElementsPanel::panelContentChange()
+{
 	if (!filter_.isEmpty()) {
 		filter(filter_);
 	}
@@ -373,7 +375,8 @@ void ElementsPanel::projectWasClosed(QETProject *project) {
 /**
 	Build filter list for multiple filter
 */
-void ElementsPanel::buildFilterList() {
+void ElementsPanel::buildFilterList()
+{
 	if (filter_.isEmpty()) return;
 	filter_list_ = filter_.split( '+' );
 	/*

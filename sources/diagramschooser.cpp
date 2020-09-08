@@ -47,20 +47,23 @@ DiagramsChooser::DiagramsChooser(QETProject *project, QWidget *parent) :
 /**
 	Destructeur
 */
-DiagramsChooser::~DiagramsChooser() {
+DiagramsChooser::~DiagramsChooser()
+{
 }
 
 /**
 	@return le projet dont ce widget affiche les schemas
 */
-QETProject *DiagramsChooser::project() const {
+QETProject *DiagramsChooser::project() const
+{
 	return(project_);
 }
 
 /**
 	@return la liste des schemas selectionnes
 */
-QList<Diagram *> DiagramsChooser::selectedDiagrams() const {
+QList<Diagram *> DiagramsChooser::selectedDiagrams() const
+{
 	QList<Diagram *> selected_diagrams;
 	foreach(Diagram *diagram, project_ -> diagrams()) {
 		QCheckBox *check_box = diagrams_[diagram];
@@ -74,7 +77,8 @@ QList<Diagram *> DiagramsChooser::selectedDiagrams() const {
 /**
 	@return la liste des schemas qui ne sont pas selectionnes
 */
-QList<Diagram *> DiagramsChooser::nonSelectedDiagrams() const {
+QList<Diagram *> DiagramsChooser::nonSelectedDiagrams() const
+{
 	QList<Diagram *> selected_diagrams;
 	foreach(Diagram *diagram, diagrams_.keys()) {
 		if (!(diagrams_[diagram] -> isChecked())) {
@@ -87,7 +91,8 @@ QList<Diagram *> DiagramsChooser::nonSelectedDiagrams() const {
 /**
 	@param diagram Un schema cense etre present dans ce widget
 */
-bool DiagramsChooser::diagramIsSelected(Diagram *const diagram) const {
+bool DiagramsChooser::diagramIsSelected(Diagram *const diagram) const
+{
 	QCheckBox *checkbox = diagrams_.value(diagram);
 	if (!checkbox) return(false);
 	return(checkbox -> isChecked());
@@ -146,7 +151,8 @@ void DiagramsChooser::setSelectedAllDiagrams(bool select) {
 /**
 	Met a jour la liste des schemas du projet
 */
-void DiagramsChooser::updateList() {
+void DiagramsChooser::updateList()
+{
 	if (!project_) return;
 	
 	// retient la liste des schemas deja selectionnes
@@ -176,7 +182,8 @@ void DiagramsChooser::updateList() {
 /**
 	Met en place la disposition du widget
 */
-void DiagramsChooser::buildLayout() {
+void DiagramsChooser::buildLayout()
+{
 	if (vlayout0_) return;
 	vlayout0_ = new QVBoxLayout();
 	widget0_  = new QWidget();

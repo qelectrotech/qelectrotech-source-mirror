@@ -42,7 +42,8 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 /**
 	@brief RectangleEditor::~RectangleEditor
 */
-RectangleEditor::~RectangleEditor() {
+RectangleEditor::~RectangleEditor()
+{
 	delete ui;
 }
 
@@ -112,11 +113,13 @@ bool RectangleEditor::setParts(QList <CustomElementPart *> parts)
 	@brief RectangleEditor::currentPart
 	@return 
 */
-CustomElementPart *RectangleEditor::currentPart() const {
+CustomElementPart *RectangleEditor::currentPart() const
+{
 	return m_part;
 }
 
-QList<CustomElementPart*> RectangleEditor::currentParts() const {
+QList<CustomElementPart*> RectangleEditor::currentParts() const
+{
 	return m_style->currentParts();
 }
 
@@ -124,7 +127,8 @@ QList<CustomElementPart*> RectangleEditor::currentParts() const {
 	@brief RectangleEditor::topLeft
 	@return The edited topLeft already mapped to part coordinate
 */
-QPointF RectangleEditor::editedTopLeft() const {
+QPointF RectangleEditor::editedTopLeft() const
+{
 	return m_part->mapFromScene(ui->m_x_sb->value(), ui->m_y_sb->value());
 }
 

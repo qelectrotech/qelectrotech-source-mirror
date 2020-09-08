@@ -38,7 +38,8 @@ ESEventAddLine::ESEventAddLine(ElementScene *scene) :
 	@brief ESEventAddLine::~ESEventAddLine
 	destructor
 */
-ESEventAddLine::~ESEventAddLine() {
+ESEventAddLine::~ESEventAddLine()
+{
 	if (m_running || m_abort)
 		delete m_line;
 }

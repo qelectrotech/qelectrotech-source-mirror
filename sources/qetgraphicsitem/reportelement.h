@@ -30,14 +30,18 @@ class ReportElement : public Element
 	Q_OBJECT
 
 	public :
-		explicit ReportElement(const ElementsLocation &,const QString& link_type, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit ReportElement(
+			const ElementsLocation &,
+			const QString& link_type,
+			QGraphicsItem * = nullptr,
+			int * = nullptr);
 		~ReportElement() override;
 		void linkToElement(Element *) override;
 		void unlinkAllElements() override;
 		void unlinkElement(Element *elmt) override;
 		
 	private:
-		int              m_inverse_report;
+		int m_inverse_report;
 };
 
 #endif // REPORTELEMENT_H

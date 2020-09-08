@@ -25,14 +25,16 @@
 /**
 	@brief ElementTextsMover::ElementTextsMover
 */
-ElementTextsMover::ElementTextsMover() {}
+ElementTextsMover::ElementTextsMover()
+{}
 
 /**
 	@brief ElementTextsMover::isReady
 	@return true if this ElementTextsMover is ready to process a new movement.
 	False if this ElementTextsMover is actually process a movement
 */
-bool ElementTextsMover::isReady() const {
+bool ElementTextsMover::isReady() const
+{
 	return(!m_movement_running);
 }
 

@@ -18,14 +18,16 @@ TitleBlockTemplateRenderer::TitleBlockTemplateRenderer(QObject *parent) :
 	@brief TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer
 	Destructor
 */
-TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer() {
+TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer()
+{
 }
 
 /**
 	@brief TitleBlockTemplateRenderer::titleBlockTemplate
 	@return the titleblock template used for the rendering
 */
-const TitleBlockTemplate *TitleBlockTemplateRenderer::titleBlockTemplate() const {
+const TitleBlockTemplate *TitleBlockTemplateRenderer::titleBlockTemplate() const
+{
 	return(m_titleblock_template);
 }
 
@@ -54,7 +56,8 @@ void TitleBlockTemplateRenderer::setContext(const DiagramContext &context) {
 	@brief TitleBlockTemplateRenderer::context
 	@return the current diagram context use when render the titleblock
 */
-DiagramContext TitleBlockTemplateRenderer::context() const {
+DiagramContext TitleBlockTemplateRenderer::context() const
+{
 	return  m_context;
 }
 
@@ -65,7 +68,8 @@ DiagramContext TitleBlockTemplateRenderer::context() const {
 	set for this renderer.
 	@see TitleBlockTemplate::height()
 */
-int TitleBlockTemplateRenderer::height() const {
+int TitleBlockTemplateRenderer::height() const
+{
 	if (!m_titleblock_template) return(-1);
 	return(m_titleblock_template -> height());
 }
@@ -137,7 +141,8 @@ void TitleBlockTemplateRenderer::renderToQPicture(int titleblock_width) {
 	Invalidates the previous rendering of the template
 	by resetting the internal QPicture.
 */
-void TitleBlockTemplateRenderer::invalidateRenderedTemplate() {
+void TitleBlockTemplateRenderer::invalidateRenderedTemplate()
+{
 	m_rendered_template = QPicture();
 }
 
@@ -155,7 +160,8 @@ void TitleBlockTemplateRenderer::setUseCache(bool use_cache) {
 	@return true if this renderer uses its QPicture-based cache,
 	false otherwise.
 */
-bool TitleBlockTemplateRenderer::useCache() const {
+bool TitleBlockTemplateRenderer::useCache() const
+{
 	return(m_use_cache);
 }
 

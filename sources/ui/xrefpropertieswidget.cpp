@@ -69,7 +69,8 @@ void XRefPropertiesWidget::setProperties(const QHash <QString,
 	@brief XRefPropertiesWidget::properties
 	@return the properties edited by this widget
 */
-QHash <QString, XRefProperties> XRefPropertiesWidget::properties(){
+QHash <QString, XRefProperties> XRefPropertiesWidget::properties()
+{
 	saveProperties(ui->m_type_cb->currentIndex());
 	return m_properties;
 }
@@ -150,7 +151,8 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	@brief XRefPropertiesWidget::updateDisplay
 	Update display with the curent displayed type.
 */
-void XRefPropertiesWidget::updateDisplay() {
+void XRefPropertiesWidget::updateDisplay()
+{
 	QString type = ui->m_type_cb->itemData(ui->m_type_cb->currentIndex()).toString();
 	XRefProperties xrp = m_properties[type];
 
@@ -197,7 +199,8 @@ void XRefPropertiesWidget::updateDisplay() {
 	manage the save of the current properties,
 	when the combo box of type change.
 */
-void XRefPropertiesWidget::typeChanged() {
+void XRefPropertiesWidget::typeChanged()
+{
 	//save the properties of the previous xref type
 	saveProperties(m_previous_type_index);
 	//update display with the current xref type

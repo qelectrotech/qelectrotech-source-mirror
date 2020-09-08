@@ -215,11 +215,13 @@ void ProjectDBModel::setQuery(const QString &query)
 	@brief ProjectDBModel::queryString
 	@return the current query used by this model
 */
-QString ProjectDBModel::queryString() const {
+QString ProjectDBModel::queryString() const
+{
 	return m_query;
 }
 
-QETProject *ProjectDBModel::project() const {
+QETProject *ProjectDBModel::project() const
+{
 	return m_project.data();
 }
 

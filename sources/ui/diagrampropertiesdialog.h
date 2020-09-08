@@ -40,7 +40,7 @@ class DiagramPropertiesDialog : public QDialog {
 		void editAutoFolioNum ();
 
 	private:
-		Diagram               *m_diagram;
+		Diagram *m_diagram;
 		ConductorPropertiesWidget *m_cpw;
 };
 

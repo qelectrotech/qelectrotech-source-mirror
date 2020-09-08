@@ -32,7 +32,8 @@ SplittedHelperCell::SplittedHelperCell(QGraphicsItem *parent) :
 /**
 	Destructor
 */
-SplittedHelperCell::~SplittedHelperCell() {
+SplittedHelperCell::~SplittedHelperCell()
+{
 }
 
 /**

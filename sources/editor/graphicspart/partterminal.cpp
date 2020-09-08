@@ -36,7 +36,8 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
 }
 
 /// Destructeur
-PartTerminal::~PartTerminal() {
+PartTerminal::~PartTerminal()
+{
 }
 
 /**
@@ -54,7 +55,8 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant la borne
 */
-const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
+const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const
+{
 	return d -> toXml(xml_document);
 }
 
@@ -97,7 +99,8 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 	@brief PartTerminal::shape
 	@return the shape of this item
 */
-QPainterPath PartTerminal::shape() const {
+QPainterPath PartTerminal::shape() const
+{
 	QPainterPath shape;
 	shape.lineTo(d -> second_point);
 
@@ -111,7 +114,8 @@ QPainterPath PartTerminal::shape() const {
 	@brief PartTerminal::boundingRect
 	@return the bounding rect of this item
 */
-QRectF PartTerminal::boundingRect() const {
+QRectF PartTerminal::boundingRect() const
+{
 	QRectF br(QPointF(0, 0), d -> second_point);
 	br = br.normalized();
 
@@ -141,7 +145,8 @@ void PartTerminal::setName(QString& name) {
 	emit nameChanged();
 }
 
-void PartTerminal::setNewUuid() {
+void PartTerminal::setNewUuid()
+{
 	d -> m_uuid = QUuid::createUuid();
 }
 
@@ -149,7 +154,8 @@ void PartTerminal::setNewUuid() {
 	Met a jour la position du second point en fonction de la position et de
 	l'orientation de la borne.
 */
-void PartTerminal::updateSecondPoint() {
+void PartTerminal::updateSecondPoint()
+{
 	qreal ts = 4.0; // terminal size
 	switch(d -> m_orientation) {
 		case Qet::North: d -> second_point = QPointF(0.0,  ts); break;
@@ -165,7 +171,8 @@ void PartTerminal::updateSecondPoint() {
 	Une borne est toujours pertinente ; cette fonction renvoie donc
 	toujours false
 */
-bool PartTerminal::isUseless() const {
+bool PartTerminal::isUseless() const
+{
 	return(false);
 }
 
@@ -175,7 +182,8 @@ bool PartTerminal::isUseless() const {
 	to imply any margin, and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF PartTerminal::sceneGeometricRect() const {
+QRectF PartTerminal::sceneGeometricRect() const
+{
 	return(sceneBoundingRect());
 }
 

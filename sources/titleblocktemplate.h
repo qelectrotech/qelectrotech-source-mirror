@@ -85,14 +85,15 @@ class TitleBlockTemplate : public QObject {
 	QList<TitleBlockCell *> createColumn();
 	
 	TitleBlockCell *cell(int, int) const;
-	QSet<TitleBlockCell *> spannedCells(const TitleBlockCell *,
-					    bool = false) const;
+	QSet<TitleBlockCell *> spannedCells(
+			const TitleBlockCell *, bool = false) const;
 	QHash<TitleBlockCell *, QPair<int, int> > getAllSpans() const;
 	void setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &);
-	bool addLogo(const QString &,
-		     QByteArray *,
-		     const QString & = "svg",
-		     const QString & = "xml");
+	bool addLogo(
+			const QString &,
+			QByteArray *,
+			const QString & = "svg",
+			const QString & = "xml");
 	bool addLogoFromFile(const QString &, const QString & = QString());
 	bool saveLogoToFile(const QString &, const QString &);
 	bool removeLogo(const QString &);
@@ -104,11 +105,12 @@ class TitleBlockTemplate : public QObject {
 	QPixmap bitmapLogo(const QString &) const;
 	
 	void render(QPainter &, const DiagramContext &, int) const;
-	void renderDxf(QRectF &,
-		       const DiagramContext &,
-		       int,
-		       QString &,
-		       int) const;
+	void renderDxf(
+			QRectF &,
+			const DiagramContext &,
+			int,
+			QString &,
+			int) const;
 	void renderCell(QPainter &,
 			const TitleBlockCell &,
 			const DiagramContext &,
@@ -144,22 +146,26 @@ class TitleBlockTemplate : public QObject {
 	void flushCells();
 	void initCells();
 	int lengthRange(int, int, const QList<int> &) const;
-	QString finalTextForCell(const TitleBlockCell &,
-				 const DiagramContext &) const;
-	QString interpreteVariables(const QString &,
-				    const DiagramContext &) const;
-	void renderTextCell(QPainter &,
-			    const QString &,
-			    const TitleBlockCell &,
-			    const QRectF &) const;
-	void renderTextCellDxf(QString &,
-			       const QString &,
-			       const TitleBlockCell &,
-			       qreal,
-			       qreal,
-			       qreal,
-			       qreal,
-			       int) const;
+	QString finalTextForCell(
+			const TitleBlockCell &,
+			const DiagramContext &) const;
+	QString interpreteVariables(
+			const QString &,
+			const DiagramContext &) const;
+	void renderTextCell(
+			QPainter &,
+			const QString &,
+			const TitleBlockCell &,
+			const QRectF &) const;
+	void renderTextCellDxf(
+			QString &,
+			const QString &,
+			const TitleBlockCell &,
+			qreal,
+			qreal,
+			qreal,
+			qreal,
+			int) const;
 	
 	// attributes
 	private:

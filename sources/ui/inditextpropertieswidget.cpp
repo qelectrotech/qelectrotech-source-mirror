@@ -57,7 +57,8 @@ IndiTextPropertiesWidget::IndiTextPropertiesWidget(
 /**
 	@brief IndiTextPropertiesWidget::~IndiTextPropertiesWidget
 */
-IndiTextPropertiesWidget::~IndiTextPropertiesWidget() {
+IndiTextPropertiesWidget::~IndiTextPropertiesWidget()
+{
 	delete  ui;
 }
 
@@ -421,7 +422,8 @@ void IndiTextPropertiesWidget::updateUi()
 /**
 	@brief IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked
 */
-void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked() {
+void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked()
+{
 	if (m_text) {
 		m_text->edit();
 	}

@@ -79,16 +79,25 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 		updateAlignment();
 		
 		DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
-		connect(deti, &DynamicElementTextItem::fontChanged,      this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::plainTextChanged,     this, &ElementTextItemGroup::updateAlignment);
-		connect(deti, &DynamicElementTextItem::textWidthChanged,     this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::fontChanged,
+			this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::textChanged,
+			this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::textFromChanged,
+			this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::infoNameChanged,
+			this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::compositeTextChanged,
+			this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::plainTextChanged,
+			this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::textWidthChanged,
+			this, &ElementTextItemGroup::updateAlignment);
 		
-		connect(deti, &DynamicElementTextItem::textFromChanged, this, &ElementTextItemGroup::updateXref);
-		connect(deti, &DynamicElementTextItem::infoNameChanged, this, &ElementTextItemGroup::updateXref);
+		connect(deti, &DynamicElementTextItem::textFromChanged,
+			this, &ElementTextItemGroup::updateXref);
+		connect(deti, &DynamicElementTextItem::infoNameChanged,
+			this, &ElementTextItemGroup::updateXref);
 		
 		updateXref();
 	}
@@ -101,8 +110,11 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 {
 	QGraphicsItemGroup::removeFromGroup(item);
-		//the item transformation is not reseted, we must to do it, because for exemple if the group rotation is 45°
-		//When item is removed from group, visually the item is unchanged (so 45°) but if we call item->rotation() the returned value is 0.
+	//the item transformation is not reseted, we must to do it,
+	// because for exemple if the group rotation is 45°
+	//When item is removed from group,
+	// visually the item is unchanged (so 45°)
+	// but if we call item->rotation() the returned value is 0.
 	item->resetTransform();
 	item->setRotation(this->rotation());
 	item->setFlag(QGraphicsItem::ItemIsSelectable, true);
@@ -110,16 +122,25 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 	
 	if(DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
 	{
-		disconnect(deti, &DynamicElementTextItem::fontChanged,      this, &ElementTextItemGroup::updateAlignment);
-		disconnect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
-		disconnect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
-		disconnect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
-		disconnect(deti, &DynamicElementTextItem::compositeTextChanged, this, &ElementTextItemGroup::updateAlignment);
-		disconnect(deti, &DynamicElementTextItem::plainTextChanged,     this, &ElementTextItemGroup::updateAlignment);
-		disconnect(deti, &DynamicElementTextItem::textWidthChanged,     this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::fontChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::textChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::textFromChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::infoNameChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::compositeTextChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::plainTextChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::textWidthChanged,
+			   this, &ElementTextItemGroup::updateAlignment);
 		
-		disconnect(deti, &DynamicElementTextItem::textFromChanged, this, &ElementTextItemGroup::updateXref);
-		disconnect(deti, &DynamicElementTextItem::infoNameChanged, this, &ElementTextItemGroup::updateXref);
+		disconnect(deti, &DynamicElementTextItem::textFromChanged,
+			   this, &ElementTextItemGroup::updateXref);
+		disconnect(deti, &DynamicElementTextItem::infoNameChanged,
+			   this, &ElementTextItemGroup::updateXref);
 		
 		updateXref();
 	}
@@ -285,13 +306,28 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 		connect(m_parent_element, &Element::rotationChanged, this, &ElementTextItemGroup::autoPos);
 		if(m_parent_element->linkType() == Element::Master)
 		{
-				//We use timer to let the time of the parent element xref to be updated, befor update the position of this group
-				//because the position of this group is related to the size of the parent element Xref
-			m_linked_changed_timer = connect(m_parent_element, &Element::linkedElementChanged,
-											 [this]() {QTimer::singleShot(200, this, &ElementTextItemGroup::autoPos);});
+			//We use timer to let the time of the parent element
+			// xref to be updated,
+			// befor update the position of this group
+			//because the position of this group is related
+			// to the size of the parent element Xref
+			m_linked_changed_timer = connect(
+						m_parent_element,
+						&Element::linkedElementChanged,
+						[this]()
+			{QTimer::singleShot(200,
+					    this,
+					    &ElementTextItemGroup::autoPos);}
+			);
 			if(m_parent_element->diagram())
-				m_XrefChanged_timer = connect(m_parent_element->diagram()->project(), &QETProject::XRefPropertiesChanged,
-											  [this]()	{QTimer::singleShot(200, this, &ElementTextItemGroup::autoPos);});
+				m_XrefChanged_timer = connect(
+							m_parent_element->diagram()->project(),
+							&QETProject::XRefPropertiesChanged,
+							[this]()
+				{QTimer::singleShot(200,
+						    this,
+						    &ElementTextItemGroup::autoPos);}
+				);
 		}
 		autoPos();
 	}
@@ -299,8 +335,10 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 	{
 		setFlag(QGraphicsItem::ItemIsSelectable, true);
 		setFlag(QGraphicsItem::ItemIsMovable, true);
-		disconnect(m_parent_element, &Element::yChanged, this, &ElementTextItemGroup::autoPos);
-		disconnect(m_parent_element, &Element::rotationChanged, this, &ElementTextItemGroup::autoPos);
+		disconnect(m_parent_element, &Element::yChanged,
+			   this, &ElementTextItemGroup::autoPos);
+		disconnect(m_parent_element, &Element::rotationChanged,
+			   this, &ElementTextItemGroup::autoPos);
 		if(m_parent_element->linkType() == Element::Master)
 		{
 			disconnect(m_linked_changed_timer);
@@ -319,7 +357,8 @@ void ElementTextItemGroup::setFrame(const bool frame)
 	emit frameChanged(m_frame);
 }
 
-bool ElementTextItemGroup::frame() const {
+bool ElementTextItemGroup::frame() const
+{
 	return m_frame;
 }
 
@@ -383,7 +422,8 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 	dom_element.setAttribute("vertical_adjustment", m_vertical_adjustment);
 	dom_element.setAttribute("frame", m_frame? "true" : "false");
 	
-	dom_element.setAttribute("hold_to_bottom_page", m_hold_to_bottom_of_page == true ? "true" : "false");
+	dom_element.setAttribute("hold_to_bottom_page",
+				 m_hold_to_bottom_of_page == true ? "true" : "false");
 	
 	QDomElement dom_texts = dom_document.createElement("texts");
 	for(DynamicElementTextItem *deti : texts())
@@ -411,8 +451,17 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	
 	setName(dom_element.attribute("name", "no name"));
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	setAlignment(Qt::Alignment(me.keyToValue(dom_element.attribute("alignment").toStdString().data())));
-	
+	setAlignment(
+				Qt::Alignment(
+					me.keyToValue(
+						dom_element.attribute(
+							"alignment")
+						.toStdString()
+						.data()
+						)
+					)
+				);
+
 	setPos(dom_element.attribute("x", QString::number(0)).toDouble(),
 		   dom_element.attribute("y", QString::number(0)).toDouble());
 	
@@ -448,7 +497,10 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	@param option
 	@param widget
 */
-void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void ElementTextItemGroup::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *option,
+		QWidget *widget)
 {
 	Q_UNUSED(option);
 	Q_UNUSED(widget);
@@ -460,7 +512,8 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		t.setStyle(Qt::DashDotLine);
 		t.setCosmetic(true);
 		painter->setPen(t);
-		painter->drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+		painter->drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1),
+					 10, 10);
 		
 		painter->restore();
 	}
@@ -502,15 +555,16 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 */
 QRectF ElementTextItemGroup::boundingRect() const
 {
-		//If we refer to the Qt doc, the bounding rect of a QGraphicsItemGroup,
-		//is the bounding of all childrens in the group
-		//When add an item in the group, the bounding rect is good, but
-		//if we move an item already in the group, the bounding rect of the group stay unchanged.
-		//We reimplement this function to avoid this behavior.
+	//If we refer to the Qt doc, the bounding rect of a QGraphicsItemGroup,
+	//is the bounding of all childrens in the group
+	//When add an item in the group, the bounding rect is good, but
+	//if we move an item already in the group, the bounding rect of the group stay unchanged.
+	//We reimplement this function to avoid this behavior.
 	QRectF rect;
 	for(QGraphicsItem *qgi : texts())
 	{		
-		QRectF r(qgi->pos(), QSize(qgi->boundingRect().width(), qgi->boundingRect().height()));
+		QRectF r(qgi->pos(), QSize(qgi->boundingRect().width(),
+					   qgi->boundingRect().height()));
 		rect = rect.united(r);
 	}
 	return rect;
@@ -567,7 +621,8 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
 		if(diagram() && m_first_move)
-			diagram()->elementTextsMover().beginMovement(diagram(), this);
+			diagram()->elementTextsMover().beginMovement(diagram(),
+								     this);
 		
 		if(m_first_move)
 		{
@@ -611,7 +666,8 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		QGraphicsItemGroup::mouseReleaseEvent(event);
 }
 
-void ElementTextItemGroup::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+void ElementTextItemGroup::mouseDoubleClickEvent(
+		QGraphicsSceneMouseEvent *event)
 {
 	if(m_slave_Xref_item)
 	{

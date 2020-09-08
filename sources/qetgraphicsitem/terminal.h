@@ -159,7 +159,8 @@ class Terminal : public QGraphicsObject
 	@brief Terminal::conductorsCount
 	@return the number of conductors attached to the terminal.
 */
-inline int Terminal::conductorsCount() const {
+inline int Terminal::conductorsCount() const
+{
 	return(conductors_.size());
 }
 
@@ -167,7 +168,8 @@ inline int Terminal::conductorsCount() const {
 	@brief Terminal::number
 	@return the number of terminal.
 */
-inline QString Terminal::number() const {
+inline QString Terminal::number() const
+{
 	return(number_terminal_);
 }
 
@@ -175,7 +177,8 @@ inline QString Terminal::number() const {
 	@brief Terminal::name
 	@return the name of terminal.
 */
-inline QString Terminal::name() const {
+inline QString Terminal::name() const
+{
 	return(name_terminal_);
 }
 

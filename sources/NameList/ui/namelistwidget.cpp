@@ -122,7 +122,8 @@ void NameListWidget::setReadOnly(bool ro)
 	@return true if empty.
 	An empty dialog, is a dialog without any edited lang.
 */
-bool NameListWidget::isEmpty() const {
+bool NameListWidget::isEmpty() const
+{
 	return names().isEmpty();
 }
 

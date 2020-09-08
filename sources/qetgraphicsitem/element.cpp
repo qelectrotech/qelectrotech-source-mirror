@@ -38,9 +38,10 @@ class ElementXmlRetroCompatibility
 {
 	friend class Element;
 
-	static void loadSequential(const QDomElement &dom_element,
-				   const QString& seq,
-				   QStringList* list)
+	static void loadSequential(
+			const QDomElement &dom_element,
+			const QString& seq,
+			QStringList* list)
 	{
 		int i = 0;
 		while (!dom_element.attribute(seq +
@@ -53,8 +54,8 @@ class ElementXmlRetroCompatibility
 		}
 	}
 
-	static void loadSequential(const QDomElement &dom_element,
-				   Element *element)
+	static void loadSequential(
+			const QDomElement &dom_element, Element *element)
 	{
 		autonum::sequentialNumbers sn;
 
@@ -76,10 +77,11 @@ class ElementXmlRetroCompatibility
 	@param state : state of the instanciation
 	@param link_type
 */
-Element::Element(const ElementsLocation &location,
-		 QGraphicsItem *parent,
-		 int *state,
-		 kind link_type) :
+Element::Element(
+		const ElementsLocation &location,
+		QGraphicsItem *parent,
+		int *state,
+		kind link_type) :
 	QetGraphicsItem(parent),
 	m_link_type (link_type),
 	m_location (location)
@@ -111,7 +113,8 @@ Element::Element(const ElementsLocation &location,
 		 | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 	
-	connect(this, &Element::rotationChanged, [this]() {
+	connect(this, &Element::rotationChanged, [this]()
+{
 		for(QGraphicsItem *qgi : childItems())
 		{
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
@@ -133,7 +136,8 @@ Element::~Element()
 	@brief Element::terminals
 	@return the list of terminals of this element.
 */
-QList<Terminal *> Element::terminals() const {
+QList<Terminal *> Element::terminals() const
+{
 	return m_terminals;
 }
 
@@ -175,7 +179,8 @@ void Element::editProperty()
 /**
 	@param hl true pour mettre l'element en evidence, false sinon
 */
-void Element::setHighlighted(bool hl) {
+void Element::setHighlighted(bool hl)
+{
 	m_must_highlight = hl;
 	update();
 }
@@ -196,9 +201,10 @@ void Element::displayHelpLine(bool b)
 	@param painter
 	@param options
 */
-void Element::paint(QPainter *painter,
-		    const QStyleOptionGraphicsItem *options,
-		    QWidget *)
+void Element::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options,
+		QWidget *)
 {
 	if (m_must_highlight) {
 		drawHighlight(painter, options);
@@ -219,7 +225,8 @@ void Element::paint(QPainter *painter,
 /**
 	@return Le rectangle delimitant le contour de l'element
 */
-QRectF Element::boundingRect() const {
+QRectF Element::boundingRect() const
+{
 	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
 		      dimensions));
 }
@@ -244,7 +251,8 @@ void Element::setSize(int wid, int hei)
 /**
 	@return la taille de l'element sur le schema
 */
-QSize Element::size() const {
+QSize Element::size() const
+{
 	return(dimensions);
 }
 
@@ -253,7 +261,8 @@ QSize Element::size() const {
 	Necessite que la taille ait deja ete definie
 	@param hs Coordonnees du hotspot
 */
-QPoint Element::setHotspot(QPoint hs) {
+QPoint Element::setHotspot(QPoint hs)
+{
 	// la taille doit avoir ete definie
 	prepareGeometryChange();
 	if (dimensions.isNull()) hotspot_coord = QPoint(0, 0);
@@ -269,7 +278,8 @@ QPoint Element::setHotspot(QPoint hs) {
 /**
 	@return Le hotspot courant de l'element
 */
-QPoint Element::hotspot() const {
+QPoint Element::hotspot() const
+{
 	return(hotspot_coord);
 }
 
@@ -277,7 +287,8 @@ QPoint Element::hotspot() const {
 	@brief Element::pixmap
 	@return the pixmap of this element
 */
-QPixmap Element::pixmap() {
+QPixmap Element::pixmap()
+{
 	return ElementPictureFactory::instance()->pixmap(m_location);
 }
 
@@ -288,8 +299,10 @@ QPixmap Element::pixmap() {
 	@param painter Le QPainter a utiliser pour dessiner les axes
 	@param options Les options de style a prendre en compte
 */
-void Element::drawAxes(QPainter *painter,
-		       const QStyleOptionGraphicsItem *options) {
+void Element::drawAxes(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options)
+{
 	Q_UNUSED(options);
 	painter -> setPen(Qt::blue);
 	painter -> drawLine(0, 0, 10, 0);
@@ -308,8 +321,10 @@ void Element::drawAxes(QPainter *painter,
 	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
 */
-void Element::drawSelection(QPainter *painter,
-			    const QStyleOptionGraphicsItem *options) {
+void Element::drawSelection(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options)
+{
 	Q_UNUSED(options);
 	painter -> save();
 	// Annulation des renderhints
@@ -334,8 +349,10 @@ void Element::drawSelection(QPainter *painter,
 	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
 */
-void Element::drawHighlight(QPainter *painter,
-			    const QStyleOptionGraphicsItem *options) {
+void Element::drawHighlight(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options)
+{
 	Q_UNUSED(options);
 	painter -> save();
 	
@@ -618,14 +635,13 @@ DynamicElementTextItem *Element::parseDynamicText(
 */
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
+	TerminalData* data = new TerminalData();
+	if (!data->fromXml(dom_element)) {
+		delete data;
+		return nullptr;
+	}
 
-    TerminalData* data = new TerminalData();
-    if (!data->fromXml(dom_element)) {
-        delete data;
-        return nullptr;
-    }
-	
-    Terminal *new_terminal = new Terminal(data, this);
+	Terminal *new_terminal = new Terminal(data, this);
 	m_terminals << new_terminal;
 	
 		//Sort from top to bottom and left to rigth
@@ -681,10 +697,11 @@ bool Element::valideXml(QDomElement &e) {
 	@param handle_inputs_rotation : apply the rotation of this element to his child text
 	@return
 */
-bool Element::fromXml(QDomElement &e,
-		      QHash<int,
-		      Terminal *> &table_id_adr,
-		      bool handle_inputs_rotation)
+bool Element::fromXml(
+		QDomElement &e,
+		QHash<int,
+		Terminal *> &table_id_adr,
+		bool handle_inputs_rotation)
 {
 	m_state = QET::GILoadingFromXml;
 	/*
@@ -792,7 +809,7 @@ bool Element::fromXml(QDomElement &e,
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		delete deti;
 	m_dynamic_text_list.clear();
-    
+
 		//************************//
 		//***Dynamic texts item***//
 		//************************//
@@ -800,12 +817,11 @@ bool Element::fromXml(QDomElement &e,
 		     e,
 		     "dynamic_texts",
 		     DynamicElementTextItem::xmlTagName()))
-    {
-        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
-        addDynamicTextItem(deti);
-        deti->fromXml(qde);
-    }
-	
+	{
+		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+		addDynamicTextItem(deti);
+		deti->fromXml(qde);
+	}
 
 		//************************//
 		//***Element texts item***//
@@ -822,9 +838,11 @@ bool Element::fromXml(QDomElement &e,
 	{
 		for(const QDomElement& dom_input : dom_inputs)
 		{
-				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
-				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element
-				//that mean this is the good text
+			//we use the same method used in ElementTextItem::fromXml
+			//to compar and know if the input dom element is for one of the text stored.
+			//The comparaison is made from the text position :
+			//if the position of the text is the same as the position stored in 'input' dom element
+			//that mean this is the good text
 			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()),
 					  m_converted_text_from_xml_description.value(deti).x()) &&
 				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()),
@@ -851,9 +869,13 @@ bool Element::fromXml(QDomElement &e,
 				if(dom_input.hasAttribute("usery"))
 					xml_pos.setY(dom_input.attribute("usery", "0").toDouble());
 				
-					//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
-					//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
-					//We need to use a QTransform to find the pos of this text from the saved pos of text item
+				//the origin transformation point of PartDynamicTextField
+				//is the top left corner, no matter the font size
+				//The origin transformation point of PartTextField
+				//is the middle of left edge, and so by definition,
+				//change with the size of the font
+				//We need to use a QTransform to find the pos of
+				//this text from the saved pos of text item
 				
 				deti->setPos(xml_pos);
 				deti->setRotation(rotation);
@@ -869,9 +891,11 @@ bool Element::fromXml(QDomElement &e,
 				transform.translate(xml_pos.x(), xml_pos.y());
 				deti->setPos(transform.map(pos));
 				
-					//dom_input and deti matched we remove the dom_input from inputs list,
-					//to avoid unnecessary checking made below
-					//we also move deti from the m_converted_text_from_xml_description to m_dynamic_text_list
+				//dom_input and deti matched we remove
+				//the dom_input from inputs list,
+				//to avoid unnecessary checking made below
+				//we also move deti from the
+				//m_converted_text_from_xml_description to m_dynamic_text_list
 				inputs.removeAll(dom_input);
 				m_dynamic_text_list.append(deti);
 				m_converted_text_from_xml_description.remove(deti);
@@ -880,14 +904,14 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 	
-		//###Firts case : if this is the first time the user open the project since text item are converted to dynamic text,
-		//in the previous opening of the project, every texts field present in the element description was created.
-		//At save time, the values of each of them was save in the 'input' dom element.
-		//The loop upper is made for the first case, to import the values in 'input' to the new converted dynamic texts field.
-		//###Second case : this is not the first time the user open the project since text item are converted to dynamic text.
-		//That mean, in a previous opening of the project, the text item was already converted and save as a dynamic text field.
-		//So there isn't 'input' dom element in the project, and every dynamic text item present in m_converted_text_from_xml_description
-		//need to be deleted (because already exist in m_dynamic_text_list, from a previous save)
+	//###Firts case : if this is the first time the user open the project since text item are converted to dynamic text,
+	//in the previous opening of the project, every texts field present in the element description was created.
+	//At save time, the values of each of them was save in the 'input' dom element.
+	//The loop upper is made for the first case, to import the values in 'input' to the new converted dynamic texts field.
+	//###Second case : this is not the first time the user open the project since text item are converted to dynamic text.
+	//That mean, in a previous opening of the project, the text item was already converted and save as a dynamic text field.
+	//So there isn't 'input' dom element in the project, and every dynamic text item present in m_converted_text_from_xml_description
+	//need to be deleted (because already exist in m_dynamic_text_list, from a previous save)
 	for (DynamicElementTextItem *deti : m_converted_text_from_xml_description.keys())
 		delete deti;
 	m_converted_text_from_xml_description.clear();
@@ -1127,9 +1151,10 @@ bool Element::fromXml(QDomElement &e,
 	\~ @return The XML element representing this electrical element
 	\~French L'element XML representant cet element electrique
 */
-QDomElement Element::toXml(QDomDocument &document,
-			   QHash<Terminal *,
-			   int> &table_adr_id) const
+QDomElement Element::toXml(
+		QDomDocument &document,
+		QHash<Terminal *,
+		int> &table_adr_id) const
 {
 	QDomElement element = document.createElement("element");
 	
@@ -1199,7 +1224,7 @@ QDomElement Element::toXml(QDomDocument &document,
 		element.appendChild(links_uuids);
 	}
 
-        //save information of this element
+	//save information of this element
 	if (! m_element_informations.keys().isEmpty()) {
 		QDomElement infos =
 				document.createElement("elementInformations");
@@ -1207,7 +1232,7 @@ QDomElement Element::toXml(QDomDocument &document,
 		element.appendChild(infos);
 	}
 
-        //Dynamic texts
+	//Dynamic texts
 	QDomElement dyn_text = document.createElement("dynamic_texts");
 	for (DynamicElementTextItem *deti : m_dynamic_text_list)
 		dyn_text.appendChild(deti->toXml(document));
@@ -1313,7 +1338,8 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 	Texts in text-groups belonging to this element are not returned by this function.
 	@see ElementTextItemGroup::texts
 */
-QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
+QList<DynamicElementTextItem *> Element::dynamicTextItems() const
+{
 	return m_dynamic_text_list;
 }
 
@@ -1514,7 +1540,7 @@ void Element::initLink(QETProject *prj)
 	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
 		elmt->linkToElement(this);
 	}
-    tmp_uuids_link.clear();
+	tmp_uuids_link.clear();
 }
 
 QString Element::linkTypeToString() const
@@ -1546,9 +1572,9 @@ QString Element::linkTypeToString() const
 */
 void Element::setElementInformations(DiagramContext dc)
 {
-    if (m_element_informations == dc) {
-        return;
-    }
+	if (m_element_informations == dc) {
+		return;
+	}
 
 	DiagramContext old_info = m_element_informations;
 	m_element_informations = dc;
@@ -1563,7 +1589,8 @@ void Element::setElementInformations(DiagramContext dc)
 	returns a response when a comparison is found.
 	@return true if elmt1 is at lower position than elmt 2, else false
 */
-bool comparPos(const Element *elmt1, const Element *elmt2) {
+bool comparPos(const Element *elmt1, const Element *elmt2)
+{
 	//Compare folio first
 	if (elmt1->diagram()->folioIndex() != elmt2->diagram()->folioIndex())
 		return elmt1->diagram()->folioIndex()
@@ -1616,7 +1643,8 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	Also highlight linked elements
 	@param e QGraphicsSceneHoverEvent
 */
-void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
+void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
+{
     Q_UNUSED(e)
 
 	foreach (Element *elmt, linkedElements())
@@ -1633,7 +1661,8 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	Also un-highlight linked elements
 	@param e QGraphicsSceneHoverEvent
 */
-void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
+{
     Q_UNUSED(e)
 
 	foreach (Element *elmt, linkedElements())
@@ -1696,7 +1725,8 @@ void Element::setUpFormula(bool code_letter)
 	@brief Element::getPrefix
 	get Element Prefix
 */
-QString Element::getPrefix() const{
+QString Element::getPrefix() const
+{
 	return m_prefix;
 }
 
@@ -1704,7 +1734,8 @@ QString Element::getPrefix() const{
 	@brief Element::setPrefix
 	set Element Prefix
 */
-void Element::setPrefix(QString prefix) {
+void Element::setPrefix(QString prefix)
+{
 	m_prefix = std::move(prefix);
 }
 
@@ -1721,7 +1752,8 @@ void Element::freezeLabel(bool freeze)
 	@brief Element::freezeNewAddedElement
 	Freeze this label if needed
 */
-void Element::freezeNewAddedElement() {
+void Element::freezeNewAddedElement()
+{
 	if (this->diagram()->freezeNewElements()
 			|| this->diagram()->project()->isFreezeNewElements()) {
 		freezeLabel(true);
@@ -1753,10 +1785,12 @@ QString Element::actualLabel()
 	@brief Element::name
 	@return the human name of this element
 */
-QString Element::name() const {
+QString Element::name() const
+{
 	return m_names.name(m_location.baseName());
 }
 
-ElementsLocation Element::location() const {
+ElementsLocation Element::location() const
+{
 	return m_location;
 }

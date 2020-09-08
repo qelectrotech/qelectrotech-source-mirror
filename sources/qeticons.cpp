@@ -369,7 +369,8 @@ namespace QET {
 /**
 	Initialise les icones de l'application QElectroTech
 */
-void QET::Icons::initIcons() {
+void QET::Icons::initIcons()
+{
 	// we may need to mirror some icons for right-to-left languages
 	bool rtl = QApplication::isRightToLeft();
 	QTransform reverse = QTransform().scale(-1, 1);

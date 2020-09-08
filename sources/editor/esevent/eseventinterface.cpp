@@ -99,11 +99,13 @@ bool ESEventInterface::KeyReleaseEvent(QKeyEvent *event) {
 	return false;
 }
 
-bool ESEventInterface::isRunning() const {
+bool ESEventInterface::isRunning() const
+{
 	return m_running;
 }
 
-bool ESEventInterface::isFinish() const {
+bool ESEventInterface::isFinish() const
+{
 	return !m_running;
 }
 

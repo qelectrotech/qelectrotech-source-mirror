@@ -107,7 +107,8 @@ XmlElementCollection::XmlElementCollection(const QDomElement &dom_element,
 	of the dom element is : collection
 	@return The root QDomElement of the collection
 */
-QDomElement XmlElementCollection::root() const {
+QDomElement XmlElementCollection::root() const
+{
 	return m_dom_document.documentElement();
 }
 
@@ -116,7 +117,8 @@ QDomElement XmlElementCollection::root() const {
 	@return The QDomElement import (the begining of a xml collection) or
 	a null QDomElement if doesn't exist.
 */
-QDomElement XmlElementCollection::importCategory() const {
+QDomElement XmlElementCollection::importCategory() const
+{
 	return root().firstChildElement("category");
 }
 

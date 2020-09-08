@@ -19,7 +19,8 @@
 #include "qetelementeditor.h"
 
 /// @return le QETElementEditor auquel cet editeur appartient
-QETElementEditor *CustomElementPart::elementEditor() const {
+QETElementEditor *CustomElementPart::elementEditor() const
+{
 	return(element_editor);
 }
 
@@ -27,24 +28,28 @@ QETElementEditor *CustomElementPart::elementEditor() const {
 	Appelle le slot updateCurrentPartEditor de l'editeur
 	@see QETElementEditor::updateCurrentPartEditor()
 */
-void CustomElementPart::updateCurrentPartEditor() const {
+void CustomElementPart::updateCurrentPartEditor() const
+{
 	if (element_editor) {
 		element_editor -> updateCurrentPartEditor();
 	}
 }
 
 /// @return l'ElementScene contenant les parties editees par cet editeur
-ElementScene *CustomElementPart::elementScene() const {
+ElementScene *CustomElementPart::elementScene() const
+{
 	return(element_editor -> elementScene());
 }
 
 /// @return la QUndoStack a utiliser pour les annulations
-QUndoStack &CustomElementPart::undoStack() const {
+QUndoStack &CustomElementPart::undoStack() const
+{
 	return(elementScene() -> undoStack());
 }
 
 /// @return this primitive as a QGraphicsItem
-QGraphicsItem *CustomElementPart::toItem() {
+QGraphicsItem *CustomElementPart::toItem()
+{
 	return(dynamic_cast<QGraphicsItem *>(this));
 }
 
@@ -55,7 +60,8 @@ QGraphicsItem *CustomElementPart::toItem() {
 	The default implementation systematically returns
 	QET::SnapScalingPointToGrid
 */
-QET::ScalingMethod CustomElementPart::preferredScalingMethod() const {
+QET::ScalingMethod CustomElementPart::preferredScalingMethod() const
+{
 	return(QET::SnapScalingPointToGrid);
 }
 

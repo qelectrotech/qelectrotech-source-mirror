@@ -51,13 +51,14 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 /**
 	Destructor
 */
-QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor() {
-}
+QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor()
+{}
 
 /**
 	@return the location of the currently edited template
 */
-TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
+TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const
+{
 	return(location_);
 }
 
@@ -65,7 +66,8 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
 	@return true if the provided filepath matches the currently edited template.
 	@param filepath path of a title block template on the filesystem
 */
-bool QETTitleBlockTemplateEditor::isEditing(const QString &filepath) {
+bool QETTitleBlockTemplateEditor::isEditing(const QString &filepath)
+{
 	QString current_filepath;
 	if (opened_from_file_) {
 		current_filepath = filepath_;
@@ -87,7 +89,8 @@ bool QETTitleBlockTemplateEditor::isEditing(const QString &filepath) {
 	new template name as soon as the window appears in order to duplicate
 	the edited one.
 */
-void QETTitleBlockTemplateEditor::setOpenForDuplication(bool duplicate) {
+void QETTitleBlockTemplateEditor::setOpenForDuplication(bool duplicate)
+{
 	duplicate_ = duplicate;
 }
 
@@ -95,7 +98,8 @@ void QETTitleBlockTemplateEditor::setOpenForDuplication(bool duplicate) {
 	@return true if this editor will prompt the user for a new template
 	name as soon as the window appears in order to duplicate the edited one.
 */
-bool QETTitleBlockTemplateEditor::openForDuplication() const {
+bool QETTitleBlockTemplateEditor::openForDuplication() const
+{
 	return(duplicate_);
 }
 
@@ -104,7 +108,8 @@ bool QETTitleBlockTemplateEditor::openForDuplication() const {
 	closed if it has not been modified. If the template has been modified, this
 	method asks the user what he wants to do.
 */
-bool QETTitleBlockTemplateEditor::canClose() {
+bool QETTitleBlockTemplateEditor::canClose()
+{
 	if (undo_stack_ -> isClean()) return(true);
 	// ask the user whether he wants to save the current template
 	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
@@ -131,7 +136,8 @@ bool QETTitleBlockTemplateEditor::canClose() {
 /**
 	@param event Object describing the received event.
 */
-void QETTitleBlockTemplateEditor::firstActivation(QEvent *event) {
+void QETTitleBlockTemplateEditor::firstActivation(QEvent *event)
+{
 	Q_UNUSED(event)
 	if (duplicate_ && !opened_from_file_ && location_.parentCollection()) {
 		// this editor is supposed to duplicate its current location
@@ -143,7 +149,8 @@ void QETTitleBlockTemplateEditor::firstActivation(QEvent *event) {
 	Handle the closing of the main window
 	@param qce The QCloseEvent event
 */
-void QETTitleBlockTemplateEditor::closeEvent(QCloseEvent *qce) {
+void QETTitleBlockTemplateEditor::closeEvent(QCloseEvent *qce)
+{
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
@@ -155,13 +162,15 @@ void QETTitleBlockTemplateEditor::closeEvent(QCloseEvent *qce) {
 	Ask the user for a new template name in order to duplicate the currently
 	edited template.
 */
-void QETTitleBlockTemplateEditor::duplicateCurrentLocation() {
+void QETTitleBlockTemplateEditor::duplicateCurrentLocation()
+{
 	// this method does not work for templates edited from the filesystem
 	if (opened_from_file_) return;
 	
 	QString proposed_name;
 	if (location_.name().isEmpty()) {
-		proposed_name = tr("nouveau_modele", "template name suggestion when duplicating the default one");
+		proposed_name = tr("nouveau_modele",
+				   "template name suggestion when duplicating the default one");
 	} else {
 		proposed_name = QString("%1_copy").arg(location_.name());
 	}
@@ -170,13 +179,16 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation() {
 	QString new_template_name = QInputDialog::getText(
 		this,
 		tr("Dupliquer un modèle de cartouche", "input dialog title"),
-		tr("Pour dupliquer ce modèle, entrez le nom voulu pour sa copie", "input dialog text"),
+		tr("Pour dupliquer ce modèle, entrez le nom voulu pour sa copie",
+		   "input dialog text"),
 		QLineEdit::Normal,
 		proposed_name,
 		&accepted
 	);
 	if (accepted) {
-		TitleBlockTemplateLocation new_template_location(new_template_name, location_.parentCollection());
+		TitleBlockTemplateLocation new_template_location(
+					new_template_name,
+					location_.parentCollection());
 		saveAs(new_template_location);
 	}
 }
@@ -184,7 +196,9 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation() {
 /**
 	@param location Location of the tile block template to be edited.
 */
-bool QETTitleBlockTemplateEditor::edit(const TitleBlockTemplateLocation &location) {
+bool QETTitleBlockTemplateEditor::edit(
+		const TitleBlockTemplateLocation &location)
+{
 	// the template name may be empty to create a new one
 	const TitleBlockTemplate *tb_template_orig;
 	if (location.name().isEmpty()) {
@@ -212,7 +226,8 @@ bool QETTitleBlockTemplateEditor::edit(const TitleBlockTemplateLocation &locatio
 	@param template_name Name of the template to edit within its parent project.
 	@return true if this editor was able to edit the given template, false otherwise
 */
-bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &template_name)
+bool QETTitleBlockTemplateEditor::edit(
+		QETProject *project, const QString &template_name)
 {
 		// we require a project we will rattach templates to
 	if (!project) return(false);
@@ -246,7 +261,8 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 	@param file_path Path of the template file to edit.
 	@return false if a problem occurred while opening the template, true otherwise.
 */
-bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
+bool QETTitleBlockTemplateEditor::edit(const QString &file_path)
+{
 	// get title block template object from the file, edit it
 	TitleBlockTemplate *tbt = new TitleBlockTemplate();
 	bool loading = tbt -> loadFromXmlFile(file_path);
@@ -272,7 +288,8 @@ bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
 	@param tbt Title block template to be edited
 	@return false if a problem occurred while opening the template, true otherwise.
 */
-bool QETTitleBlockTemplateEditor::editCopyOf(const TitleBlockTemplate *tbt) {
+bool QETTitleBlockTemplateEditor::editCopyOf(const TitleBlockTemplate *tbt)
+{
 	if (!tbt) return(false);
 	return(edit(tbt -> clone()));
 }
@@ -281,7 +298,8 @@ bool QETTitleBlockTemplateEditor::editCopyOf(const TitleBlockTemplate *tbt) {
 	@param tbt Title block template to be directly edited
 	@return false if a problem occurred while opening the template, true otherwise.
 */
-bool QETTitleBlockTemplateEditor::edit(TitleBlockTemplate *tbt) {
+bool QETTitleBlockTemplateEditor::edit(TitleBlockTemplate *tbt)
+{
 	if (!tbt) return(false);
 	tb_template_ = tbt;
 	template_edition_area_view_ -> setTitleBlockTemplate(tb_template_);
@@ -294,7 +312,8 @@ bool QETTitleBlockTemplateEditor::edit(TitleBlockTemplate *tbt) {
 	Launches the logo manager widget, which allows the user to manage the
 	logos embedded within the edited template.
 */
-void QETTitleBlockTemplateEditor::editLogos() {
+void QETTitleBlockTemplateEditor::editLogos()
+{
 	if (tb_template_) {
 		if (!logo_manager_) {
 			initLogoManager();
@@ -321,7 +340,8 @@ void QETTitleBlockTemplateEditor::editLogos() {
 /**
 	Launch a new title block template editor.
 */
-void QETTitleBlockTemplateEditor::newTemplate() {
+void QETTitleBlockTemplateEditor::newTemplate()
+{
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(TitleBlockTemplateLocation());
 	qet_template_editor -> show();
@@ -330,7 +350,8 @@ void QETTitleBlockTemplateEditor::newTemplate() {
 /**
 	Initialize the various actions.
 */
-void QETTitleBlockTemplateEditor::initActions() {
+void QETTitleBlockTemplateEditor::initActions()
+{
 	new_            = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau",                     "menu entry"), this);
 	open_           = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir",                      "menu entry"), this);
 	open_from_file_ = new QAction(QET::Icons::DocumentOpen,         tr("Ouvrir depuis un fichier",     "menu entry"), this);
@@ -402,10 +423,11 @@ void QETTitleBlockTemplateEditor::initActions() {
 /**
 	Initialize the various menus.
 */
-void QETTitleBlockTemplateEditor::initMenus() {
-	file_menu_    = new QMenu(tr("&Fichier",        "menu title"), this);
-	edit_menu_    = new QMenu(tr("&Édition",     "menu title"), this);
-	display_menu_ = new QMenu(tr("Afficha&ge",      "menu title"), this);
+void QETTitleBlockTemplateEditor::initMenus()
+{
+	file_menu_    = new QMenu(tr("&Fichier", "menu title"), this);
+	edit_menu_    = new QMenu(tr("&Édition", "menu title"), this);
+	display_menu_ = new QMenu(tr("Afficha&ge", "menu title"), this);
 	
 	file_menu_    -> addAction(new_);
 	file_menu_    -> addAction(open_);
@@ -443,7 +465,8 @@ void QETTitleBlockTemplateEditor::initMenus() {
 /**
 	Initalize toolbars.
 */
-void QETTitleBlockTemplateEditor::initToolbars() {
+void QETTitleBlockTemplateEditor::initToolbars()
+{
 	QToolBar *main_toolbar = new QToolBar(tr("Outils", "toolbar title"), this);
 	main_toolbar -> setObjectName("tbt_main_toolbar");
 	main_toolbar -> addAction(new_);
@@ -516,7 +539,8 @@ void QETTitleBlockTemplateEditor::initWidgets()
 		this,
 		SLOT(selectedCellsChanged(QList<TitleBlockCell *>))
 	);
-	connect(template_cell_editor_widget_, SIGNAL(logoEditionRequested()), this, SLOT(editLogos()));
+	connect(template_cell_editor_widget_, SIGNAL(logoEditionRequested()),
+		this, SLOT(editLogos()));
 	connect(
 		template_cell_editor_widget_,
 		SIGNAL(cellModified(ModifyTitleBlockCellCommand *)),
@@ -535,14 +559,17 @@ void QETTitleBlockTemplateEditor::initWidgets()
 		this,
 		SLOT(savePreviewWidthToApplicationSettings(int, int))
 	);
-	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(updateEditorTitle()));
-	connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(updateActions()));
+	connect(undo_stack_, SIGNAL(cleanChanged(bool)),
+		this, SLOT(updateEditorTitle()));
+	connect(QApplication::clipboard(), SIGNAL(dataChanged()),
+		this, SLOT(updateActions()));
 }
 
 /**
 	Initialize the logo manager
 */
-void QETTitleBlockTemplateEditor::initLogoManager() {
+void QETTitleBlockTemplateEditor::initLogoManager()
+{
 	logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_, this);
 	logo_manager_ -> setReadOnly(read_only_);
 	connect(
@@ -557,7 +584,8 @@ void QETTitleBlockTemplateEditor::initLogoManager() {
 	@return a string describing what is being edited, along with [Changed] or
 	[Read only] tags. Useful to compose the window title.
 */
-QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
+QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const
+{
 	QString titleblock_title;
 	if (opened_from_file_) {
 		titleblock_title = filepath_;
@@ -617,7 +645,9 @@ void QETTitleBlockTemplateEditor::writeSettings()
 	Update various things when user changes the selected cells.
 	@param selected_cells List of selected cells.
 */
-void QETTitleBlockTemplateEditor::selectedCellsChanged(const QList<TitleBlockCell *>& selected_cells) {
+void QETTitleBlockTemplateEditor::selectedCellsChanged(
+		const QList<TitleBlockCell *>& selected_cells)
+{
 	if (selected_cells.count() == 1) {
 		template_cell_editor_widget_ -> edit(selected_cells.at(0));
 		template_cell_editor_widget_ -> setVisible(true);
@@ -631,7 +661,9 @@ void QETTitleBlockTemplateEditor::selectedCellsChanged(const QList<TitleBlockCel
 	Configure an undo Command before adding it to the undo stack.
 	@param command to be added to the undo stack
 */
-void QETTitleBlockTemplateEditor::pushCellUndoCommand(ModifyTitleBlockCellCommand *command) {
+void QETTitleBlockTemplateEditor::pushCellUndoCommand(
+		ModifyTitleBlockCellCommand *command)
+{
 	command -> setView(template_edition_area_view_);
 	pushUndoCommand(command);
 }
@@ -640,7 +672,9 @@ void QETTitleBlockTemplateEditor::pushCellUndoCommand(ModifyTitleBlockCellComman
 	Add an undo Command to the undo stack.
 	@param command QUndoCommand to be added to the undo stack
 */
-void QETTitleBlockTemplateEditor::pushGridUndoCommand(TitleBlockTemplateCommand *command) {
+void QETTitleBlockTemplateEditor::pushGridUndoCommand(
+		TitleBlockTemplateCommand *command)
+{
 	pushUndoCommand(command);
 }
 
@@ -655,7 +689,8 @@ void QETTitleBlockTemplateEditor::pushUndoCommand(QUndoCommand *command) {
 /**
 	Set the title of this editor.
 */
-void QETTitleBlockTemplateEditor::updateEditorTitle() {
+void QETTitleBlockTemplateEditor::updateEditorTitle()
+{
 	// base title
 	QString min_title(
 		tr(
@@ -686,7 +721,8 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 	Ensure the user interface remains consistent by enabling or disabling
 	adequate actions.
 */
-void QETTitleBlockTemplateEditor::updateActions() {
+void QETTitleBlockTemplateEditor::updateActions()
+{
 	save_ -> setEnabled(!read_only_);
 	
 	bool can_merge = true;
@@ -748,7 +784,8 @@ bool QETTitleBlockTemplateEditor::saveAs(const QString &filepath) {
 	Ask the user to choose a title block template from the known collections
 	then open it for edition.
 */
-void QETTitleBlockTemplateEditor::open() {
+void QETTitleBlockTemplateEditor::open()
+{
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
 		tr("Ouvrir un modèle", "File > open dialog window title"),
 		true
@@ -762,9 +799,12 @@ void QETTitleBlockTemplateEditor::open() {
 	Ask the user to choose a file supposed to contain a title block template,
 	then open it for edition.
 */
-void QETTitleBlockTemplateEditor::openFromFile() {
+void QETTitleBlockTemplateEditor::openFromFile()
+{
 	// directory to show
-	QString initial_dir = filepath_.isEmpty() ? QETApp::customTitleBlockTemplatesDir() : QDir(filepath_).absolutePath();
+	QString initial_dir = filepath_.isEmpty()
+			? QETApp::customTitleBlockTemplatesDir()
+			: QDir(filepath_).absolutePath();
 	
 	// ask the user to choose a filepath
 	QString user_filepath = QFileDialog::getOpenFileName(
@@ -775,7 +815,8 @@ void QETTitleBlockTemplateEditor::openFromFile() {
 			"Modèles de cartouches QElectroTech (*%1);;"
 			"Fichiers XML (*.xml);;"
 			"Tous les fichiers (*)",
-			"filetypes allowed when opening a title block template file - %1 is the .titleblock extension"
+			"filetypes allowed when opening a title block template file"
+			" - %1 is the .titleblock extension"
 		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
 	);
 	
@@ -786,7 +827,8 @@ void QETTitleBlockTemplateEditor::openFromFile() {
 /**
 	Save the currently edited title block template back to its parent project.
 */
-bool QETTitleBlockTemplateEditor::save() {
+bool QETTitleBlockTemplateEditor::save()
+{
 	if (opened_from_file_) {
 		if (!filepath_.isEmpty()) {
 			QFileInfo file_path_info(filepath_);
@@ -808,7 +850,8 @@ bool QETTitleBlockTemplateEditor::save() {
 /**
 	Ask the user where he wishes to save the currently edited template.
 */
-bool QETTitleBlockTemplateEditor::saveAs() {
+bool QETTitleBlockTemplateEditor::saveAs()
+{
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
 		tr("Enregistrer le modèle sous", "dialog window title"),
 		false
@@ -822,9 +865,12 @@ bool QETTitleBlockTemplateEditor::saveAs() {
 /**
 	Ask the user where on the filesystem he wishes to save the currently edited template.
 */
-bool QETTitleBlockTemplateEditor::saveAsFile() {
+bool QETTitleBlockTemplateEditor::saveAsFile()
+{
 	// directory to show
-	QString initial_dir = filepath_.isEmpty() ? QETApp::customTitleBlockTemplatesDir() : QDir(filepath_).absolutePath();
+	QString initial_dir = filepath_.isEmpty()
+			? QETApp::customTitleBlockTemplatesDir()
+			: QDir(filepath_).absolutePath();
 	
 	// ask the user to choose a target file
 	QString filepath = QFileDialog::getSaveFileName(
@@ -875,14 +921,17 @@ void QETTitleBlockTemplateEditor::setReadOnly(bool read_only) {
 	@return The location chosen by the user, or an empty
 	TitleBlockTemplateLocation if the user cancelled the dialog
 */
-TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser(const QString &title, bool existing_only) {
+TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser(
+		const QString &title, bool existing_only)
+{
 	TitleBlockTemplateLocationChooser *widget;
 	if (existing_only) {
 		widget = new TitleBlockTemplateLocationChooser(location());
 	} else {
 		widget = new TitleBlockTemplateLocationSaver(location());
 	}
-	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *buttons = new QDialogButtonBox(
+				QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	QVBoxLayout *dialog_layout = new QVBoxLayout();
 	dialog_layout -> addWidget(widget);
@@ -904,7 +953,8 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 /**
 	Close the current editor.
 */
-void QETTitleBlockTemplateEditor::quit() {
+void QETTitleBlockTemplateEditor::quit()
+{
 	close();
 }
 
@@ -914,7 +964,8 @@ void QETTitleBlockTemplateEditor::quit() {
 	@param former_preview_width : former_preview_width Unused, former preview width
 	@param new_preview_width : new_preview_width New preview width
 */
-void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int former_preview_width, int new_preview_width)
+void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(
+		int former_preview_width, int new_preview_width)
 {
 	Q_UNUSED(former_preview_width)
 	QSettings settings;
@@ -924,7 +975,8 @@ void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int form
 /**
 	Edit extra information attached to the template.
 */
-void QETTitleBlockTemplateEditor::editTemplateInformation() {
+void QETTitleBlockTemplateEditor::editTemplateInformation()
+{
 	if (!tb_template_) return;
 	
 	QDialog dialog_author(this);
@@ -950,16 +1002,25 @@ void QETTitleBlockTemplateEditor::editTemplateInformation() {
 	dialog_layout -> addWidget(text_field);
 	
 	// add two buttons to the dialog
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(read_only_ ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(
+				read_only_
+				? QDialogButtonBox::Ok
+				: QDialogButtonBox::Ok
+				  | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_author, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_author, SLOT(reject()));
+	connect(dialog_buttons, SIGNAL(accepted()),
+		&dialog_author, SLOT(accept()));
+	connect(dialog_buttons, SIGNAL(rejected()),
+		&dialog_author, SLOT(reject()));
 	
 	// run the dialog
 	if (dialog_author.exec() == QDialog::Accepted && !read_only_) {
 		QString new_info = text_field -> toPlainText().remove(QChar(13)); // CR-less text
 		if (new_info != tb_template_ -> information()) {
-			pushUndoCommand(new ChangeTemplateInformationsCommand(tb_template_, tb_template_ -> information(), new_info));
+			pushUndoCommand(new ChangeTemplateInformationsCommand(
+						tb_template_,
+						tb_template_ -> information(),
+						new_info));
 		}
 	}
 }

@@ -207,7 +207,8 @@ void ElementPropertiesWidget::apply()
 	@brief ElementPropertiesWidget::reset
 	Reset the edited properties
 */
-void ElementPropertiesWidget::reset() {
+void ElementPropertiesWidget::reset()
+{
 	foreach (PropertiesEditorWidget *pew, m_list_editor) pew->reset();
 }
 

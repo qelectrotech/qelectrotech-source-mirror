@@ -94,8 +94,8 @@ QPen QETXML::penFromXml(const QDomElement &element)
 	@return A QDomElement with the attribute stored.
 	The tagName of QDomeElement is "brush".
 */
-QDomElement QETXML::brushToXml(QDomDocument &parent_document,
-			       const QBrush& brush)
+QDomElement QETXML::brushToXml(
+		QDomDocument &parent_document, const QBrush& brush)
 {
 	QDomElement element = parent_document.createElement("brush");
 
@@ -172,9 +172,8 @@ QBrush QETXML::brushFromXml(const QDomElement &element)
 	ready to be inserted into a XmlElementCollection.
 	If the QDomElement can't be created, return a null QDomElement.
 */
-QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document,
-						    const QDir &dir,
-						    const QString& rename)
+QDomElement QETXML::fileSystemDirToXmlCollectionDir(
+		QDomDocument &document, const QDir &dir, const QString& rename)
 {
 	if (!dir.exists()) return QDomElement();
 
@@ -218,9 +217,7 @@ QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document,
 	If the QDomElement can't be created, return a null QDomElement
 */
 QDomElement QETXML::fileSystemElementToXmlCollectionElement(
-		QDomDocument &document,
-		QFile &file,
-		const QString& rename)
+		QDomDocument &document, QFile &file, const QString& rename)
 {
 	if (file.exists() && file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
@@ -254,9 +251,10 @@ QDomElement QETXML::fileSystemElementToXmlCollectionElement(
 	explaining what happened when this function returns false.
 	@return false if an error occurred, true otherwise
 */
-bool QETXML::writeXmlFile(const QDomDocument &xml_document,
-			  const QString &file_path,
-			  QString *error_message)
+bool QETXML::writeXmlFile(
+		const QDomDocument &xml_document,
+		const QString &file_path,
+		QString *error_message)
 {
 	QFile file(file_path);
 
@@ -293,9 +291,10 @@ bool QETXML::writeXmlFile(const QDomDocument &xml_document,
 	@param value
 	@return a QDomElement, created from document
 */
-QDomElement QETXML::textToDomElement(QDomDocument &document,
-				     const QString& tag_name,
-				     const QString& value)
+QDomElement QETXML::textToDomElement(
+		QDomDocument &document,
+		const QString& tag_name,
+		const QString& value)
 {
 	QDomElement element = document.createElement(tag_name);
 	QDomText text = document.createTextNode(value);
@@ -310,8 +309,8 @@ QDomElement QETXML::textToDomElement(QDomDocument &document,
 	@param tag_name
 	@return All direct child of element  with the tag name tag_name
 */
-QVector<QDomElement> QETXML::directChild(const QDomElement &element,
-					 const QString &tag_name)
+QVector<QDomElement> QETXML::directChild(
+		const QDomElement &element, const QString &tag_name)
 {
 	QVector<QDomElement> return_list;
 	for (
@@ -338,9 +337,10 @@ QVector<QDomElement> QETXML::directChild(const QDomElement &element,
 	nested in the parent dom elements tagged parent_tag_name,
 	themselves children of the dom element element.
 */
-QVector<QDomElement> QETXML::subChild(const QDomElement &element,
-				      const QString parent_tag_name,
-				      const QString &children_tag_name)
+QVector<QDomElement> QETXML::subChild(
+		const QDomElement &element,
+		const QString parent_tag_name,
+		const QString &children_tag_name)
 {
 	QVector<QDomElement> return_list;
 
@@ -498,8 +498,8 @@ QDomElement QETXML::modelHeaderDataToXml(
 	@param element
 	@param model
 */
-void QETXML::modelHeaderDataFromXml(const QDomElement &element,
-				    QAbstractItemModel *model)
+void QETXML::modelHeaderDataFromXml(
+		const QDomElement &element, QAbstractItemModel *model)
 {
 	if (element.tagName() != "header_data")
 		return;

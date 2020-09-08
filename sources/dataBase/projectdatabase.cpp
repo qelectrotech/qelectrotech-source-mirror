@@ -49,7 +49,8 @@ projectDataBase::projectDataBase(QETProject *project, const QString &connection_
 	@brief projectDataBase::~projectDataBase
 	Destructor
 */
-projectDataBase::~projectDataBase() {
+projectDataBase::~projectDataBase()
+{
 	m_data_base.close();
 }
 
@@ -71,7 +72,8 @@ void projectDataBase::updateDB()
 	@brief projectDataBase::project
 	@return the project of this  database
 */
-QETProject *projectDataBase::project() const {
+QETProject *projectDataBase::project() const
+{
 	return m_project;
 }
 

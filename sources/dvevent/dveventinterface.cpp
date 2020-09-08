@@ -28,7 +28,8 @@ DVEventInterface::DVEventInterface(DiagramView *dv) :
 {
 }
 
-DVEventInterface::~DVEventInterface() {
+DVEventInterface::~DVEventInterface()
+{
 }
 
 bool DVEventInterface::mouseDoubleClickEvent(QMouseEvent *event) {
@@ -80,10 +81,12 @@ bool DVEventInterface::KeyReleaseEvent(QKeyEvent *event) {
 	return false;
 }
 
-bool DVEventInterface::isRunning() const {
+bool DVEventInterface::isRunning() const
+{
 	return m_running;
 }
 
-bool DVEventInterface::isFinish() const {
+bool DVEventInterface::isFinish() const
+{
 	return !m_running;
 }

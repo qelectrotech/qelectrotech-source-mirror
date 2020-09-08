@@ -69,6 +69,7 @@ void ImportElementTextPatternDialog::setComboBoxItems(const QStringList &items) 
 	ui->m_combo_box->addItems(items);
 }
 
-QString ImportElementTextPatternDialog::textValue() const {
+QString ImportElementTextPatternDialog::textValue() const
+{
 	return ui->m_combo_box->currentText();
 }

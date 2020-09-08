@@ -46,8 +46,7 @@ class ChangeElementInformationCommand : public QUndoCommand
 
 	private:
 		Element       *m_element;
-		DiagramContext m_old_info,
-					   m_new_info;
+		DiagramContext m_old_info, m_new_info;
 };
 
 #endif // CHANGEELEMENTINFORMATIONCOMMAND_H

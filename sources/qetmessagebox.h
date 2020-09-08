@@ -27,10 +27,30 @@ namespace QET {
 		Qt:Sheet flag, thus enabling a better MacOS integration.
 	*/
 	namespace QetMessageBox {
-		QMessageBox::StandardButton critical   (QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);
-		QMessageBox::StandardButton information(QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);
-		QMessageBox::StandardButton question   (QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);
-		QMessageBox::StandardButton warning    (QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);
+		QMessageBox::StandardButton critical (
+				QWidget *,
+				const QString &,
+				const QString &,
+				QMessageBox::StandardButtons = QMessageBox::Ok,
+				QMessageBox::StandardButton = QMessageBox::NoButton);
+		QMessageBox::StandardButton information(
+				QWidget *,
+				const QString &,
+				const QString &,
+				QMessageBox::StandardButtons = QMessageBox::Ok,
+				QMessageBox::StandardButton = QMessageBox::NoButton);
+		QMessageBox::StandardButton question (
+				QWidget *,
+				const QString &,
+				const QString &,
+				QMessageBox::StandardButtons = QMessageBox::Ok,
+				QMessageBox::StandardButton = QMessageBox::NoButton);
+		QMessageBox::StandardButton warning (
+				QWidget *,
+				const QString &,
+				const QString &,
+				QMessageBox::StandardButtons = QMessageBox::Ok,
+				QMessageBox::StandardButton = QMessageBox::NoButton);
 	};
 };
 #endif

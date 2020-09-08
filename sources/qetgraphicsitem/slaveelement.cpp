@@ -40,7 +40,8 @@ SlaveElement::SlaveElement(const ElementsLocation &location,
 	@brief SlaveElement::~SlaveElement
 	default destructor
 */
-SlaveElement::~SlaveElement() {
+SlaveElement::~SlaveElement()
+{
 	unlinkAllElements();
 }
 

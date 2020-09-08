@@ -104,7 +104,8 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 /**
 	Destructor
 */
-ElementsCollectionCache::~ElementsCollectionCache() {
+ElementsCollectionCache::~ElementsCollectionCache()
+{
 	delete select_name_;
 	delete select_pixmap_;
 	delete insert_name_;
@@ -123,7 +124,8 @@ void ElementsCollectionCache::setLocale(const QString &locale) {
 /**
 	@return The locale to be used when dealing with names.
 */
-QString ElementsCollectionCache::locale() const {
+QString ElementsCollectionCache::locale() const
+{
 	return(locale_);
 }
 
@@ -145,7 +147,8 @@ bool ElementsCollectionCache::setPixmapStorageFormat(const QString &format) {
 	@return the pixmap storage format. Default is "PNG"
 	@see setPixmapStorageFormat()
 */
-QString ElementsCollectionCache::pixmapStorageFormat() const {
+QString ElementsCollectionCache::pixmapStorageFormat() const
+{
 	return(pixmap_storage_format_);
 }
 
@@ -190,14 +193,16 @@ bool ElementsCollectionCache::fetchElement(ElementsLocation &location)
 /**
 	@return The last name fetched through fetchElement().
 */
-QString ElementsCollectionCache::name() const {
+QString ElementsCollectionCache::name() const
+{
 	return(current_name_);
 }
 
 /**
 	@return The last pixmap fetched through fetchElement().
 */
-QPixmap ElementsCollectionCache::pixmap() const {
+QPixmap ElementsCollectionCache::pixmap() const
+{
 	return(current_pixmap_);
 }
 

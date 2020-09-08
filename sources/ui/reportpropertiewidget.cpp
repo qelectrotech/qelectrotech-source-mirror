@@ -39,6 +39,7 @@ void ReportPropertieWidget::setReportProperties(const QString& label) {
 	ui->line_edit->setText(label);
 }
 
-QString ReportPropertieWidget::ReportProperties() const {
+QString ReportPropertieWidget::ReportProperties() const
+{
 	return ui->line_edit->text();
 }

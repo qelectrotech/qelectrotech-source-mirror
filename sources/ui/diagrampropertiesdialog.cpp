@@ -147,7 +147,8 @@ void DiagramPropertiesDialog::editAutonum()
 	@brief DiagramPropertiesDialog::editAutonum
 	Open folio autonum editor
 */
-void DiagramPropertiesDialog::editAutoFolioNum () {
+void DiagramPropertiesDialog::editAutoFolioNum ()
+{
 	ProjectPropertiesDialog ppd (m_diagram->project(), this);
 	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
 	ppd.changeToFolio();

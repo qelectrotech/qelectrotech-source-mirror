@@ -32,7 +32,7 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	ProjectAutoNumConfigPage *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
 	m_properties_dialog = new ConfigDialog (parent);
 	m_properties_dialog -> setWindowTitle(QObject::tr("Propriétés du projet", "window title"));
-	m_properties_dialog -> addPage(new ProjectMainConfigPage       (project));
+	m_properties_dialog -> addPage(new ProjectMainConfigPage(project));
 	m_properties_dialog -> addPage(newDiagramPage);
 	m_properties_dialog -> addPage(projectAutoNumConfigPage);
 	connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
@@ -44,7 +44,8 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 /**
 	@brief ProjectPropertiesDialog::~ProjectPropertiesDialog
 */
-ProjectPropertiesDialog::~ProjectPropertiesDialog () {
+ProjectPropertiesDialog::~ProjectPropertiesDialog ()
+{
 	delete m_properties_dialog;
 }
 
@@ -52,7 +53,8 @@ ProjectPropertiesDialog::~ProjectPropertiesDialog () {
 	@brief ProjectPropertiesDialog::exec
 	execute this dialog.
 */
-void ProjectPropertiesDialog::exec() {
+void ProjectPropertiesDialog::exec()
+{
 	m_properties_dialog->setWindowModality(Qt::WindowModal);
 	m_properties_dialog -> exec();
 }
@@ -70,7 +72,8 @@ void ProjectPropertiesDialog::setCurrentPage(ProjectPropertiesDialog::Page p) {
 	@brief ProjectPropertiesDialog::changeToFolio
 	Change the current displayed tab to folio tab.
 */
-void ProjectPropertiesDialog::changeToFolio() {
+void ProjectPropertiesDialog::changeToFolio()
+{
 	ProjectAutoNumConfigPage *autoNumPage =
 			static_cast <ProjectAutoNumConfigPage*>(
 				m_properties_dialog->pages.at(2));

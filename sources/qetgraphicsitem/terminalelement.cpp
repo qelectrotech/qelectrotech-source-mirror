@@ -29,7 +29,8 @@ TerminalElement::TerminalElement(const ElementsLocation &location,
 	Element(location, qgi, state, Element::Terminale)
 {}
 
-TerminalElement::~TerminalElement() {}
+TerminalElement::~TerminalElement()
+{}
 
 /**
 	@brief TerminalElement::initLink

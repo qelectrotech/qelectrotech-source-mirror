@@ -34,7 +34,8 @@ PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 /**
 	@brief PartRectangle::~PartRectangle
 */
-PartRectangle::~PartRectangle() {
+PartRectangle::~PartRectangle()
+{
 	removeHandler();
 }
 
@@ -126,7 +127,8 @@ void PartRectangle::fromXml(const QDomElement &qde)
 	@brief PartRectangle::rect
 	@return : Returns the item's rectangle.
 */
-QRectF PartRectangle::rect() const {
+QRectF PartRectangle::rect() const
+{
 	return m_rect;
 }
 
@@ -167,7 +169,8 @@ void PartRectangle::setYRadius(qreal Y)
 	to imply any margin, and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF PartRectangle::sceneGeometricRect() const {
+QRectF PartRectangle::sceneGeometricRect() const
+{
 	return(mapToScene(rect()).boundingRect());
 }
 
@@ -175,7 +178,8 @@ QRectF PartRectangle::sceneGeometricRect() const {
 	@brief PartRectangle::sceneTopLeft
 	@return the top left of rectangle, in scene coordinate
 */
-QPointF PartRectangle::sceneTopLeft() const {
+QPointF PartRectangle::sceneTopLeft() const
+{
 	return(mapToScene(rect().topLeft()));
 }
 
@@ -228,7 +232,8 @@ QRectF PartRectangle::boundingRect() const
 	@return true if this part is irrelevant and does not deserve to be Retained / registered.
 	An rectangle is relevant when he's not null.
 */
-bool PartRectangle::isUseless() const {
+bool PartRectangle::isUseless() const
+{
 	return(rect().isNull());
 }
 

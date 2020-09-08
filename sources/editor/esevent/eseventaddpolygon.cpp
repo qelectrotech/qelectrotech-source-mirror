@@ -34,7 +34,8 @@ ESEventAddPolygon::ESEventAddPolygon(ElementScene *scene) :
 /**
 	@brief ESEventAddPolygon::~ESEventAddPolygon
 */
-ESEventAddPolygon::~ESEventAddPolygon() {
+ESEventAddPolygon::~ESEventAddPolygon()
+{
 	if (m_running || m_abort)
 		delete m_polygon;
 }

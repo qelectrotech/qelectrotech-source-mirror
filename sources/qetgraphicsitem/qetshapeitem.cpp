@@ -203,7 +203,8 @@ void QetShapeItem::setYRadius(qreal Y)
 	@brief QetShapeItem::pointCount
 	@return the number of point in the polygon
 */
-int QetShapeItem::pointsCount() const {
+int QetShapeItem::pointsCount() const
+{
 	return m_polygon.size();
 }
 
@@ -246,7 +247,8 @@ void QetShapeItem::removePoints(int number)
 	@brief QetShapeItem::boundingRect
 	@return the bounding rect of this item
 */
-QRectF QetShapeItem::boundingRect() const {
+QRectF QetShapeItem::boundingRect() const
+{
 	return shape().boundingRect().adjusted(-6, -6, 6, 6);
 }
 
@@ -265,9 +267,10 @@ QPainterPath QetShapeItem::shape() const
 			path.lineTo(m_P2);
 			break;
 		case Rectangle: 
-			path.addRoundedRect(QRectF(m_P1, m_P2),
-					    m_xRadius,
-					    m_yRadius);
+			path.addRoundedRect(
+						QRectF(m_P1, m_P2),
+						m_xRadius,
+						m_yRadius);
 			break;
 		case Ellipse:
 			path.addEllipse(QRectF(m_P1, m_P2));
@@ -319,19 +322,19 @@ void QetShapeItem::paint(
 		painter -> drawPath (shape());
 		painter -> restore  ();
 	}
-	
-    switch (m_shapeType)
-    {
-        case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
+
+	switch (m_shapeType)
+	{
+	case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
 	case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2),
 						 m_xRadius,
 						 m_yRadius); break;
-        case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
+	case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
 	case Polygon:   m_closed ? painter->drawPolygon(m_polygon)
 				 : painter->drawPolyline(m_polygon); break;
-    }
-    
-    painter->restore();
+	}
+
+	painter->restore();
 }
 
 /**
@@ -1005,7 +1008,8 @@ void QetShapeItem::editProperty()
 	@brief QetShapeItem::name
 	@return the name of the curent shape.
 */
-QString QetShapeItem::name() const {
+QString QetShapeItem::name() const
+{
 	switch (m_shapeType) {
 		case Line:	    return tr("une ligne");
 		case Rectangle:	return tr("un rectangle");

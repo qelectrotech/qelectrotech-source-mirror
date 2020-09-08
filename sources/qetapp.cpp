@@ -261,7 +261,8 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 	Minimizes all application windows in the systray
 	\~French Reduit toutes les fenetres de l'application dans le systray
 */
-void QETApp::reduceEveryEditor() {
+void QETApp::reduceEveryEditor()
+{
 	reduceDiagramEditors();
 	reduceElementEditors();
 	reduceTitleBlockTemplateEditors();
@@ -273,7 +274,8 @@ void QETApp::reduceEveryEditor() {
 	Restores all application windows in the systray
 	\~French Restaure toutes les fenetres de l'application dans le systray
 */
-void QETApp::restoreEveryEditor() {
+void QETApp::restoreEveryEditor()
+{
 	restoreDiagramEditors();
 	restoreElementEditors();
 	restoreTitleBlockTemplateEditors();
@@ -285,7 +287,8 @@ void QETApp::restoreEveryEditor() {
 	Minimize all schema editors in the systray
 	\~French Reduit tous les editeurs de schemas dans le systray
 */
-void QETApp::reduceDiagramEditors() {
+void QETApp::reduceDiagramEditors()
+{
 	setMainWindowsVisible<QETDiagramEditor>(false);
 }
 
@@ -294,7 +297,8 @@ void QETApp::reduceDiagramEditors() {
 	Restore all schema editors in the systray
 	\~French Restaure tous les editeurs de schemas dans le systray
 */
-void QETApp::restoreDiagramEditors() {
+void QETApp::restoreDiagramEditors()
+{
 	setMainWindowsVisible<QETDiagramEditor>(true);
 }
 
@@ -304,7 +308,8 @@ void QETApp::restoreDiagramEditors() {
 	Minimize all element editors in systray
 	\~French Reduit tous les editeurs d'element dans le systray
 */
-void QETApp::reduceElementEditors() {
+void QETApp::reduceElementEditors()
+{
 	setMainWindowsVisible<QETElementEditor>(false);
 }
 
@@ -313,7 +318,8 @@ void QETApp::reduceElementEditors() {
 	Restore all element editors in the systray
 	\~French Restaure tous les editeurs d'element dans le systray
 */
-void QETApp::restoreElementEditors() {
+void QETApp::restoreElementEditors()
+{
 	setMainWindowsVisible<QETElementEditor>(true);
 }
 
@@ -321,7 +327,8 @@ void QETApp::restoreElementEditors() {
 	@brief QETApp::reduceTitleBlockTemplateEditors
 	Reduce all known template editors
 */
-void QETApp::reduceTitleBlockTemplateEditors() {
+void QETApp::reduceTitleBlockTemplateEditors()
+{
 	setMainWindowsVisible<QETTitleBlockTemplateEditor>(false);
 }
 
@@ -329,7 +336,8 @@ void QETApp::reduceTitleBlockTemplateEditors() {
 	@brief QETApp::restoreTitleBlockTemplateEditors
 	Restore all known template editors
 */
-void QETApp::restoreTitleBlockTemplateEditors() {
+void QETApp::restoreTitleBlockTemplateEditors()
+{
 	setMainWindowsVisible<QETTitleBlockTemplateEditor>(true);
 }
 
@@ -338,7 +346,8 @@ void QETApp::restoreTitleBlockTemplateEditors() {
 	launches a new schema editor
 	\~French lance un nouvel editeur de schemas
 */
-void QETApp::newDiagramEditor() {
+void QETApp::newDiagramEditor()
+{
 	new QETDiagramEditor();
 }
 
@@ -347,7 +356,8 @@ void QETApp::newDiagramEditor() {
 	launches a new element editor
 	\~French lance un nouvel editeur d'element
 */
-void QETApp::newElementEditor() {
+void QETApp::newElementEditor()
+{
 	new QETElementEditor();
 }
 
@@ -355,7 +365,8 @@ void QETApp::newElementEditor() {
 	@brief QETApp::collectionCache
 	@return the collection cache provided by the application itself.
 */
-ElementsCollectionCache *QETApp::collectionCache() {
+ElementsCollectionCache *QETApp::collectionCache()
+{
 	return(collections_cache_);
 }
 
@@ -510,7 +521,8 @@ QString QETApp::diagramTranslatedInfoKey(const QString &key)
 	@return the common title block templates collection,
 	i.e. the one provided by QElecrotTech
 */
-TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection() {
+TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection()
+{
 	if (!m_common_tbt_collection) {
 		m_common_tbt_collection =
 				new TitleBlockTemplatesFilesCollection(
@@ -530,7 +542,8 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 	@return the custom title block templates collection,
 	i.e. the one managed by the end user
 */
-TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection() {
+TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection()
+{
 	if (!m_custom_tbt_collection) {
 		m_custom_tbt_collection =
 				new TitleBlockTemplatesFilesCollection(
@@ -549,7 +562,8 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 	@return the list of all available title block tempaltes collections,
 	beginning with the common and custom ones, plus the projects-embedded ones.
 */
-QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections() {
+QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections()
+{
 	QList<TitleBlockTemplatesCollection *> collections_list;
 
 	collections_list << commonTitleBlockTemplatesCollection();
@@ -718,7 +732,8 @@ void QETApp::resetUserElementsDir()
 	@return the path of the directory containing the common title block
 	templates collection.
 */
-QString QETApp::commonTitleBlockTemplatesDir() {
+QString QETApp::commonTitleBlockTemplatesDir()
+{
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
 	if (common_tbt_dir_ != QString()) return(common_tbt_dir_);
 #endif
@@ -747,7 +762,8 @@ QString QETApp::commonTitleBlockTemplatesDir() {
 	@return the path of the directory containing the custom title block
 	templates collection.
 */
-QString QETApp::customTitleBlockTemplatesDir() {
+QString QETApp::customTitleBlockTemplatesDir()
+{
 		if (m_user_custom_tbt_dir.isEmpty())
 	{
 			QSettings settings;
@@ -794,7 +810,8 @@ QString QETApp::customTitleBlockTemplatesDir() {
 	\~ @return The path of the QElectroTech configuration folder
 	\~French Le chemin du dossier de configuration de QElectroTech
 */
-QString QETApp::configDir() {
+QString QETApp::configDir()
+{
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (config_dir != QString()) return(config_dir);
 #endif
@@ -888,7 +905,8 @@ QString QETApp::symbolicPath(const QString &real_path) {
 	@return the list of file extensions QElectroTech is able to open and
 	supposed to handle. Note they are provided with no leading point.
 */
-QStringList QETApp::handledFileExtensions() {
+QStringList QETApp::handledFileExtensions()
+{
 	static QStringList ext;
 	if (!ext.count()) {
 		ext << "qet";
@@ -1036,7 +1054,8 @@ void QETApp::overrideLangDir(const QString &new_ld) {
 	@return The path of the folder containing the language files
 	\~French Le chemin du dossier contenant les fichiers de langue
 */
-QString QETApp::languagesPath() {
+QString QETApp::languagesPath()
+{
 	if (!lang_dir.isEmpty()) {
 		return(lang_dir);
 	} else {
@@ -1076,7 +1095,8 @@ QString QETApp::languagesPath() {
 	\~French true si l'utilisateur a accepte toutes les fermetures,
 	false sinon
 */
-bool QETApp::closeEveryEditor() {
+bool QETApp::closeEveryEditor()
+{
 	// make sure all windows are visible before leaving
 	// s'assure que toutes les fenetres soient visibles avant de quitter
 	restoreEveryEditor();
@@ -1203,7 +1223,8 @@ QFont QETApp::indiTextsItemFont(qreal size)
 	@return schema editors
 	\~French les editeurs de schemas
 */
-QList<QETDiagramEditor *> QETApp::diagramEditors() {
+QList<QETDiagramEditor *> QETApp::diagramEditors()
+{
 	return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
 }
 
@@ -1212,7 +1233,8 @@ QList<QETDiagramEditor *> QETApp::diagramEditors() {
 	@return element editors
 	\~French les editeurs d'elements
 */
-QList<QETElementEditor *> QETApp::elementEditors() {
+QList<QETElementEditor *> QETApp::elementEditors()
+{
 	return(QETApp::instance() -> detectWindows<QETElementEditor>());
 }
 
@@ -1220,7 +1242,8 @@ QList<QETElementEditor *> QETApp::elementEditors() {
 	@brief QETApp::titleBlockTemplateEditors
 	@return the title block template editors
 */
-QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors() {
+QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors()
+{
 	return(QETApp::instance() -> detectWindows<QETTitleBlockTemplateEditor>());
 }
 
@@ -1261,7 +1284,8 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(
 	\~ @return
 	\~ @see QTextOrientationSpinBoxWidget
 */
-QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
+QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget()
+{
 	QTextOrientationSpinBoxWidget *widget = new QTextOrientationSpinBoxWidget();
 	widget -> orientationWidget() -> setFont(QETApp::diagramTextsFont());
 	widget -> orientationWidget() -> setUsableTexts(QList<QString>()
@@ -1283,7 +1307,8 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
 	@brief QETApp::defaultTitleBlockTemplate
 	@return the default titleblock template for diagrams
 */
-TitleBlockTemplate *QETApp::defaultTitleBlockTemplate() {
+TitleBlockTemplate *QETApp::defaultTitleBlockTemplate()
+{
 	if (!QETApp::default_titleblock_template_) {
 		TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(QETApp::instance());
 		if (titleblock_template -> loadFromXmlFile(":/titleblocks/default.titleblock")) {
@@ -1349,7 +1374,8 @@ void QETApp::receiveMessage(int instanceId, QByteArray message)
 	@param T a class inheriting QMainWindow
 	@return the list of windows of type T
 */
-template <class T> QList<T *> QETApp::detectWindows() const {
+template <class T> QList<T *> QETApp::detectWindows() const
+{
 	QList<T *> windows;
 	foreach(QWidget *widget, qApp->topLevelWidgets()) {
 		if (!widget -> isWindow()) continue;
@@ -1375,7 +1401,8 @@ template <class T> void QETApp::setMainWindowsVisible(bool visible) {
 	@return The list of recent files for projects
 	\~French La liste des fichiers recents pour les projets
 */
-RecentFiles *QETApp::projectsRecentFiles() {
+RecentFiles *QETApp::projectsRecentFiles()
+{
 	return(m_projects_recent_files);
 }
 
@@ -1384,7 +1411,8 @@ RecentFiles *QETApp::projectsRecentFiles() {
 	@return The list of recent files for the elements
 	\~French La liste des fichiers recents pour les elements
 */
-RecentFiles *QETApp::elementsRecentFiles() {
+RecentFiles *QETApp::elementsRecentFiles()
+{
 	return(m_elements_recent_files);
 }
 
@@ -1464,7 +1492,8 @@ void QETApp::useSystemPalette(bool use) {
 	\~French Demande la fermeture de toutes les fenetres ;
 	si l'utilisateur les accepte, l'application quitte
 */
-void QETApp::quitQET() {
+void QETApp::quitQET()
+{
 #pragma message("@TODO Segmentation fault when closing program before loading elements is finished")
 	if (closeEveryEditor()) {
 		qApp->quit();
@@ -1478,7 +1507,8 @@ void QETApp::quitQET() {
 	\~French Verifie s'il reste des fenetres (cachees ou non)
 	et quitte s'il n'en reste plus.
 */
-void QETApp::checkRemainingWindows() {
+void QETApp::checkRemainingWindows()
+{
 	/* little hack:
 	 *  the slot remembers after 500 ms of waiting in order to compensate
 	 *  for the fact that some windows can still appear alive when they
@@ -1733,7 +1763,8 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 	en lancant un dialogue approprie.
 	\~ @see ConfigDialog
 */
-void QETApp::configureQET() {
+void QETApp::configureQET()
+{
 	// determine the parent widget to use for the dialog
 	// determine le widget parent a utiliser pour le dialogue
 	QWidget *parent_widget = qApp->activeWindow();
@@ -1783,7 +1814,8 @@ void QETApp::aboutQET()
 	\~French les barres d'outils et dock flottants de la fenetre
 */
 QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
-		QMainWindow *window) const {
+		QMainWindow *window) const
+{
 	QList<QWidget *> widgets;
 	foreach(QWidget *qw, qApp->topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
@@ -1822,7 +1854,8 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 	S'ils existent, ils sont juste memorises dans l'attribut arguments_files_.
 	Sinon, ils sont memorises dans l'attribut arguments_options_.
 */
-void QETApp::parseArguments() {
+void QETApp::parseArguments()
+{
 	// get the arguments
 	// recupere les arguments
 	QList<QString> arguments_list(qApp->arguments());
@@ -1877,7 +1910,8 @@ void QETApp::parseArguments() {
 	\~French Initialise le splash screen si et seulement si l'execution est
 	interactive. Autrement, l'attribut splash_screen_ vaut 0.
 */
-void QETApp::initSplashScreen() {
+void QETApp::initSplashScreen()
+{
 	if (non_interactive_execution_) return;
 	m_splash_screen = new QSplashScreen(QPixmap(":/ico/splash.png"));
 	m_splash_screen -> show();
@@ -1909,7 +1943,8 @@ void QETApp::setSplashScreenStep(const QString &message) {
 	Determine and apply the language to use for the application
 	\~French Determine et applique le langage a utiliser pour l'application
 */
-void QETApp::initLanguage() {
+void QETApp::initLanguage()
+{
 	setLanguage(langFromSetting());
 }
 
@@ -1917,7 +1952,8 @@ void QETApp::initLanguage() {
 	@brief QETApp::initStyle
 	Setup the gui style
 */
-void QETApp::initStyle() {
+void QETApp::initStyle()
+{
 	initial_palette_ = qApp->palette();
 
 	//Apply or not the system style
@@ -1939,7 +1975,8 @@ void QETApp::initStyle() {
 	  - le dossier de la collection perso
 	  - the directory for custom title blocks
 */
-void QETApp::initConfiguration() {
+void QETApp::initConfiguration()
+{
 	// create configuration files if necessary
 	// cree les dossiers de configuration si necessaire
 	QDir config_dir(QETApp::configDir());
@@ -1974,7 +2011,8 @@ void QETApp::initConfiguration() {
 	Build the icon in the systray and its menu
 	\~French Construit l'icone dans le systray et son menu
 */
-void QETApp::initSystemTray() {
+void QETApp::initSystemTray()
+{
 	setSplashScreenStep(tr("Chargement... icône du systray",
 			       "splash screen caption"));
 	// initialization of the icon menus in the systray
@@ -2093,7 +2131,8 @@ QETProject *QETApp::projectFromString(const QString &url) {
 	builds the icon menu in the systray
 	\~French construit le menu de l'icone dans le systray
 */
-void QETApp::buildSystemTrayMenu() {
+void QETApp::buildSystemTrayMenu()
+{
 	menu_systray -> clear();
 
 	// get editors
@@ -2295,7 +2334,8 @@ bool QETApp::eventFiltrer(QObject *object, QEvent *e) {
 	Display help and usage on standard output
 	\~French Affiche l'aide et l'usage sur la sortie standard
 */
-void QETApp::printHelp() {
+void QETApp::printHelp()
+{
 	QString help(
 		tr("Usage : ")
 		+ QFileInfo(qApp->applicationFilePath()).fileName()
@@ -2324,7 +2364,8 @@ void QETApp::printHelp() {
 	Print version to standard output
 	\~French Affiche la version sur la sortie standard
 */
-void QETApp::printVersion() {
+void QETApp::printVersion()
+{
 	std::cout << qPrintable(QET::displayedVersion) << std::endl;
 }
 
@@ -2333,7 +2374,8 @@ void QETApp::printVersion() {
 	Display license on standard output
 	\~French Affiche la licence sur la sortie standard
 */
-void QETApp::printLicense() {
+void QETApp::printLicense()
+{
 	std::cout << qPrintable(QET::license()) << std::endl;
 }
 
@@ -2342,7 +2384,8 @@ void QETApp::printLicense() {
 	@return the list of projects with their associated ids
 	\~French la liste des projets avec leurs ids associes
 */
-QMap<uint, QETProject *> QETApp::registeredProjects() {
+QMap<uint, QETProject *> QETApp::registeredProjects()
+{
 	return(registered_projects_);
 }
 

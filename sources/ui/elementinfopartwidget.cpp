@@ -30,9 +30,10 @@ typedef SearchAndReplaceWorker sarw;
 	@param translated_key the string key translated
 	@param parent parent widget
 */
-ElementInfoPartWidget::ElementInfoPartWidget(QString key,
-					     const QString& translated_key,
-					     QWidget *parent):
+ElementInfoPartWidget::ElementInfoPartWidget(
+		QString key,
+		const QString& translated_key,
+		QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::ElementInfoPartWidget),
 	key_(std::move(key))

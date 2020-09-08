@@ -29,7 +29,8 @@ DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
 	m_diagram -> clearSelection();
 }
 
-DiagramEventInterface::~DiagramEventInterface() {};
+DiagramEventInterface::~DiagramEventInterface()
+{};
 
 void DiagramEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
@@ -71,7 +72,8 @@ void DiagramEventInterface::keyReleaseEvent(QKeyEvent *event){
 	Q_UNUSED (event);
 }
 
-bool DiagramEventInterface::isRunning() const {
+bool DiagramEventInterface::isRunning() const
+{
 	return m_running;
 }
 

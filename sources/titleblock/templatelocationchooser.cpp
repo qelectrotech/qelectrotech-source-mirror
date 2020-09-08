@@ -39,27 +39,31 @@ TitleBlockTemplateLocationChooser::TitleBlockTemplateLocationChooser(
 /**
 	Destructor
 */
-TitleBlockTemplateLocationChooser::~TitleBlockTemplateLocationChooser() {
+TitleBlockTemplateLocationChooser::~TitleBlockTemplateLocationChooser()
+{
 }
 
 /**
 	@return the current location
 */
-TitleBlockTemplateLocation TitleBlockTemplateLocationChooser::location() const {
+TitleBlockTemplateLocation TitleBlockTemplateLocationChooser::location() const
+{
 	return(TitleBlockTemplateLocation(name(), collection()));
 }
 
 /**
 	@return the currently selected collection
 */
-TitleBlockTemplatesCollection *TitleBlockTemplateLocationChooser::collection() const {
+TitleBlockTemplatesCollection *TitleBlockTemplateLocationChooser::collection() const
+{
 	return(collections_index_[collections_ -> currentIndex()]);
 }
 
 /**
 	@return the currently selected/entered name
 */
-QString TitleBlockTemplateLocationChooser::name() const {
+QString TitleBlockTemplateLocationChooser::name() const
+{
 	int template_index = templates_ -> currentIndex();
 	return(template_index != -1 ? templates_ -> currentText() : QString());
 }
@@ -87,7 +91,8 @@ void TitleBlockTemplateLocationChooser::setLocation(
 	Initialize this widget.
 	@param location Initial location displayed by the widget
 */
-void TitleBlockTemplateLocationChooser::init() {
+void TitleBlockTemplateLocationChooser::init()
+{
 	collections_ = new QComboBox();
 	templates_ = new QComboBox();
 	
@@ -96,10 +101,12 @@ void TitleBlockTemplateLocationChooser::init() {
 		this, SLOT(updateTemplates()));
 	
 	form_layout_ = new QFormLayout();
-	form_layout_ -> addRow(tr("Collection parente","used in save as form"),
-			       collections_);
-	form_layout_ -> addRow(tr("Modèle existant","used in save as form"),
-			       templates_);
+	form_layout_ -> addRow(
+				tr("Collection parente","used in save as form"),
+				collections_);
+	form_layout_ -> addRow(
+				tr("Modèle existant","used in save as form"),
+				templates_);
 	setLayout(form_layout_);
 }
 
@@ -111,7 +118,8 @@ void TitleBlockTemplateLocationChooser::init() {
 	or the index of \a coll
 */
 int TitleBlockTemplateLocationChooser::indexForCollection(
-		TitleBlockTemplatesCollection *coll) const {
+		TitleBlockTemplatesCollection *coll) const
+{
 	QList<int> indexes = collections_index_.keys(coll);
 	if (indexes.count()) return(indexes.first());
 	return(-1);
@@ -120,7 +128,8 @@ int TitleBlockTemplateLocationChooser::indexForCollection(
 /**
 	Update the collections list
 */
-void TitleBlockTemplateLocationChooser::updateCollections() {
+void TitleBlockTemplateLocationChooser::updateCollections()
+{
 	collections_ -> clear();
 	collections_index_.clear();
 	
@@ -138,7 +147,8 @@ void TitleBlockTemplateLocationChooser::updateCollections() {
 /**
 	Update the templates list according to the selected collection.
 */
-void TitleBlockTemplateLocationChooser::updateTemplates() {
+void TitleBlockTemplateLocationChooser::updateTemplates()
+{
 	TitleBlockTemplatesCollection *current_collection = collection();
 	if (!current_collection) return;
 	

@@ -32,7 +32,8 @@
 /**
 	@brief DiagramContent::DiagramContent
 */
-DiagramContent::DiagramContent() {}
+DiagramContent::DiagramContent()
+{}
 
 /**
 	@brief DiagramContent::DiagramContent

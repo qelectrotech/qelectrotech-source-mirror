@@ -38,7 +38,8 @@ DialogWaiting::DialogWaiting(QWidget *parent) :
 /**
 	@brief DialogWaiting::~DialogWaiting
 */
-DialogWaiting::~DialogWaiting() {
+DialogWaiting::~DialogWaiting()
+{
 	delete ui;
 }
 
@@ -54,7 +55,8 @@ void DialogWaiting::setProgressBar(int val){
 /**
 	@brief DialogWaiting::setProgressReset, clear progressBar and reset
 */
-void DialogWaiting::setProgressReset(){
+void DialogWaiting::setProgressReset()
+{
 	ui->progressBar->reset();
 }
 

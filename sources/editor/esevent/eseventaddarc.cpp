@@ -35,7 +35,8 @@ ESEventAddArc::ESEventAddArc(ElementScene *scene) :
 /**
 	@brief ESEventAddArc::~ESEventAddArc
 */
-ESEventAddArc::~ESEventAddArc() {
+ESEventAddArc::~ESEventAddArc()
+{
 	if (m_running || m_abort)
 		delete m_arc;
 }

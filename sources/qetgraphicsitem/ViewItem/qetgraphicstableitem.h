@@ -47,11 +47,13 @@ class QetGraphicsTableItem : public QetGraphicsItem
 	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
 	public :
-		static void adjustTableToFolio(QetGraphicsTableItem *table, QMargins margins = QMargins(20,20,20,0));
-		static void checkInsufficientRowsCount(QetGraphicsTableItem *first_table);
+		static void adjustTableToFolio(
+				QetGraphicsTableItem *table,
+				QMargins margins = QMargins(20,20,20,0));
+		static void checkInsufficientRowsCount(
+				QetGraphicsTableItem *first_table);
 
-    public:
-        QetGraphicsTableItem(QGraphicsItem *parent= nullptr);
+		QetGraphicsTableItem(QGraphicsItem *parent= nullptr);
 		virtual ~QetGraphicsTableItem() override;
 
 		enum { Type = UserType + 1300 };
@@ -61,8 +63,12 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QAbstractItemModel *model() const;
 
 		virtual QRectF boundingRect() const override;
-		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-		QetGraphicsHeaderItem *headerItem() const {return m_header_item;}
+		virtual void paint(
+				QPainter *painter,
+				const QStyleOptionGraphicsItem *option,
+				QWidget *widget) override;
+		QetGraphicsHeaderItem *headerItem() const
+		{return m_header_item;}
 		void setSize(const QSize &size);
 		QSize size() const;
 		QSize minimumSize() const;
@@ -83,16 +89,22 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(const QDomElement &dom_element);
 		static QString xmlTagName() {return QString("graphics_table");}
-        virtual bool toDXF (const QString &filepath);
+		virtual bool toDXF (const QString &filepath);
 
 	protected:
-		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
-		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
-		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
-		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		virtual void hoverEnterEvent(
+				QGraphicsSceneHoverEvent *event) override;
+		virtual void hoverLeaveEvent(
+				QGraphicsSceneHoverEvent *event) override;
+		virtual bool sceneEventFilter(
+				QGraphicsItem *watched,
+				QEvent *event) override;
+		virtual QVariant itemChange(
+				GraphicsItemChange change,
+				const QVariant &value) override;
 
-    private:
-        void modelReseted();
+	private:
+		void modelReseted();
 		void setUpColumnAndRowMinimumSize();
 		void setUpBoundingRect();
 		void adjustHandlerPos();
@@ -101,33 +113,40 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void handlerMouseMoveEvent    (QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 		void adjustColumnsWidth();
-		void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
+		void dataChanged(
+				const QModelIndex &topLeft,
+				const QModelIndex &bottomRight,
+				const QVector<int> &roles);
 		void headerSectionResized();
 		void adjustSize();
 		void previousTableDisplayRowChanged();
 
-    private:
-        QAbstractItemModel *m_model= nullptr;
+		QAbstractItemModel *m_model= nullptr;
 
 		QVector<int> m_minimum_column_width;
-		int m_minimum_row_height;
-		int m_number_of_displayed_row = 0;
-		QSize m_current_size,
-			  m_old_size,
-			  m_pending_size;
+		int
+		m_minimum_row_height,
+		m_number_of_displayed_row = 0,
+		m_br_margin = 10;
 
-		int m_br_margin= 10;
+		QSize
+		m_current_size,
+		m_old_size,
+		m_pending_size;
+
 		QRectF m_bounding_rect;
 
 		QetGraphicsHandlerItem m_handler_item;
 		QetGraphicsHeaderItem *m_header_item = nullptr;
 
-		QetGraphicsTableItem *m_previous_table = nullptr,
-							 *m_next_table = nullptr;
+		QetGraphicsTableItem
+		*m_previous_table = nullptr,
+		*m_next_table = nullptr;
 
 		QString m_name;
-		QUuid m_uuid = QUuid::createUuid(),
-			  m_pending_previous_table_uuid;
+		QUuid
+		m_uuid = QUuid::createUuid(),
+		m_pending_previous_table_uuid;
 };
 
 #endif // QetGraphicsTableItem_H

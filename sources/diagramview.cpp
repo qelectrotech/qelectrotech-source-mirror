@@ -113,27 +113,31 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 /**
 	Destructeur
 */
-DiagramView::~DiagramView() {
+DiagramView::~DiagramView()
+{
 }
 
 /**
 	Selectionne tous les objets du schema
 */
-void DiagramView::selectAll() {
+void DiagramView::selectAll()
+{
 	m_diagram -> selectAll();
 }
 
 /**
 	Deslectionne tous les objets selectionnes
 */
-void DiagramView::selectNothing() {
+void DiagramView::selectNothing()
+{
 	m_diagram -> deselectAll();
 }
 
 /**
 	Inverse l'etat de selection de tous les objets du schema
 */
-void DiagramView::selectInvert() {
+void DiagramView::selectInvert()
+{
 	m_diagram -> invertSelection();
 }
 
@@ -267,7 +271,8 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 /**
 	Set the Diagram in visualisation mode
 */
-void DiagramView::setVisualisationMode() {
+void DiagramView::setVisualisationMode()
+{
 	setDragMode(ScrollHandDrag);
 	applyReadOnly();
 	setInteractive(false);
@@ -277,7 +282,8 @@ void DiagramView::setVisualisationMode() {
 /**
 	Set the Diagram in Selection mode
 */
-void DiagramView::setSelectionMode() {
+void DiagramView::setSelectionMode()
+{
 	setDragMode(RubberBandDrag);
 	setInteractive(true);
 	applyReadOnly();
@@ -315,7 +321,8 @@ void DiagramView::zoom(const qreal zoom_factor)
 	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
 	le zoom est reinitialise
 */
-void DiagramView::zoomFit() {
+void DiagramView::zoomFit()
+{
 	adjustSceneRect();
 	fitInView(m_diagram->sceneRect(), Qt::KeepAspectRatio);
 	adjustGridToZoom();
@@ -324,7 +331,8 @@ void DiagramView::zoomFit() {
 /**
 	Adjust zoom to fit all elements in the view, regardless of diagram borders.
 */
-void DiagramView::zoomContent() {
+void DiagramView::zoomContent()
+{
 	fitInView(m_diagram -> itemsBoundingRect(), Qt::KeepAspectRatio);
 	adjustGridToZoom();
 }
@@ -332,7 +340,8 @@ void DiagramView::zoomContent() {
 /**
 	Reinitialise le zoom
 */
-void DiagramView::zoomReset() {
+void DiagramView::zoomReset()
+{
 	resetTransform();
 	adjustGridToZoom();
 }
@@ -340,7 +349,8 @@ void DiagramView::zoomReset() {
 /**
 	Copie les elements selectionnes du schema dans le presse-papier puis les supprime
 */
-void DiagramView::cut() {
+void DiagramView::cut()
+{
 	copy();
 	DiagramContent cut_content(m_diagram);
 	m_diagram -> clearSelection();
@@ -350,7 +360,8 @@ void DiagramView::cut() {
 /**
 	Copie les elements selectionnes du schema dans le presse-papier
 */
-void DiagramView::copy() {
+void DiagramView::copy()
+{
 	QClipboard *presse_papier = QApplication::clipboard();
 	QString contenu_presse_papier = m_diagram -> toXml(false).toString(4);
 	if (presse_papier -> supportsSelection()) presse_papier -> setText(contenu_presse_papier, QClipboard::Selection);
@@ -387,7 +398,8 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 /**
 	Colle le contenu du presse-papier sur le schema a la position de la souris
 */
-void DiagramView::pasteHere() {
+void DiagramView::pasteHere()
+{
 	paste(mapToScene(m_paste_here_pos));
 }
 
@@ -811,7 +823,8 @@ void DiagramView::scrollOnMovement(QKeyEvent *e)
 	la mention "Schema sans titre" est utilisee
 	@see Diagram::title()
 */
-QString DiagramView::title() const {
+QString DiagramView::title() const
+{
 	QString view_title;
 	QString diagram_title(m_diagram -> title());
 	if (diagram_title.isEmpty()) {
@@ -826,7 +839,8 @@ QString DiagramView::title() const {
 	@brief DiagramView::editDiagramProperties
 	Edit the properties of the viewed digram
 */
-void DiagramView::editDiagramProperties() {
+void DiagramView::editDiagramProperties()
+{
 	DiagramPropertiesDialog::diagramPropertiesDialog(m_diagram, diagramEditor());
 }
 
@@ -854,14 +868,16 @@ void DiagramView::adjustSceneRect()
 /**
 	Met a jour le titre du widget
 */
-void DiagramView::updateWindowTitle() {
+void DiagramView::updateWindowTitle()
+{
 	emit(titleChanged(this, title()));
 }
 
 /**
 	Enables or disables the drawing grid according to the amount of pixels display
 */
-void DiagramView::adjustGridToZoom() {
+void DiagramView::adjustGridToZoom()
+{
 	QRectF viewed_scene = viewedSceneRect();
 	if (diagramEditor()->drawGrid())
 		m_diagram->setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
@@ -872,7 +888,8 @@ void DiagramView::adjustGridToZoom() {
 /**
 	@return le rectangle du schema (classe Diagram) visualise par ce DiagramView
 */
-QRectF DiagramView::viewedSceneRect() const {
+QRectF DiagramView::viewedSceneRect() const
+{
 	// recupere la taille du widget viewport
 	QSize viewport_size = viewport() -> size();
 
@@ -893,7 +910,8 @@ QRectF DiagramView::viewedSceneRect() const {
 	parent project before being applied to the current diagram, or false if it
 	can be directly applied
 */
-bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &tbt_loc) const {
+bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &tbt_loc) const
+{
 	// unlike elements, the integration of title block templates is mandatory, so we simply check whether the parent project of the template is also the parent project of the diagram
 	QETProject *tbt_parent_project = tbt_loc.parentProject();
 	if (!tbt_parent_project) return(true);
@@ -905,7 +923,8 @@ bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocati
 	Fait en sorte que le schema ne soit editable que s'il n'est pas en lecture
 	seule
 */
-void DiagramView::applyReadOnly() {
+void DiagramView::applyReadOnly()
+{
 	if (!m_diagram) return;
 
 	bool is_writable = !m_diagram -> isReadOnly();
@@ -970,7 +989,8 @@ void DiagramView::editConductorColor(Conductor *edited_conductor)
 /**
 	Reinitialise le profil des conducteurs selectionnes
 */
-void DiagramView::resetConductors() {
+void DiagramView::resetConductors()
+{
 	if (m_diagram -> isReadOnly()) return;
 	// recupere les conducteurs selectionnes
 	QSet<Conductor *> selected_conductors = m_diagram -> selectedConductors();
@@ -1103,7 +1123,8 @@ bool DiagramView::isCtrlShifting(QInputEvent *e) {
 /**
 	@return true if there is a selected item and that item has the focus.
 */
-bool DiagramView::selectedItemHasFocus() {
+bool DiagramView::selectedItemHasFocus()
+{
 	return(
 		m_diagram -> hasFocus() &&
 		m_diagram -> focusItem() &&
@@ -1115,7 +1136,8 @@ bool DiagramView::selectedItemHasFocus() {
 	@brief DiagramView::editSelection
 	Edit the selected item if he can be edited and if only  one item is selected
 */
-void DiagramView::editSelection() {
+void DiagramView::editSelection()
+{
 	if (m_diagram -> isReadOnly() || m_diagram -> selectedItems().size() != 1 ) return;
 
 	QGraphicsItem *item = m_diagram->selectedItems().first();
@@ -1225,7 +1247,8 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 /**
 	@return l'editeur de schemas parent ou 0
 */
-QETDiagramEditor *DiagramView::diagramEditor() const {
+QETDiagramEditor *DiagramView::diagramEditor() const
+{
 	// remonte la hierarchie des widgets
 	QWidget *w = const_cast<DiagramView *>(this);
 	while (w -> parentWidget() && !w -> isWindow()) {

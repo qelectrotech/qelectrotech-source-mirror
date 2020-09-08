@@ -44,7 +44,8 @@ ExportProperties::ExportProperties() :
 /**
 	Destructeur
 */
-ExportProperties::~ExportProperties() {
+ExportProperties::~ExportProperties()
+{
 }
 
 /**
@@ -53,7 +54,8 @@ ExportProperties::~ExportProperties() {
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ExportProperties::toSettings(QSettings &settings,
-				  const QString &prefix) const {
+				  const QString &prefix) const
+{
 	settings.setValue(prefix + "path",
 			  QDir::toNativeSeparators(
 				  destination_directory.absolutePath()));

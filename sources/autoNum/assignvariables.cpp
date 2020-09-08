@@ -44,7 +44,8 @@ namespace autonum
 		hundred_folio = other.hundred_folio;
 	}
 
-	sequentialNumbers::~sequentialNumbers() {}
+	sequentialNumbers::~sequentialNumbers()
+{}
 
 	sequentialNumbers &sequentialNumbers::operator=(
 			const sequentialNumbers &other)

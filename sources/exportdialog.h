@@ -29,21 +29,19 @@ class ExportPropertiesWidget;
 */
 class ExportDialog : public QDialog {
 	Q_OBJECT
-	
-	// constructors, destructor
+
 	public:
+	// constructors, destructor
 	ExportDialog(QETProject *, QWidget * = nullptr);
 	~ExportDialog() override;
-	
-	private:
-	ExportDialog(const ExportDialog &);
-	
+
 	// methods
-	public:
 	int diagramsToExportCount() const;
 	static QPointF rotation_transformed(qreal, qreal, qreal, qreal, qreal);
-	
+
 	private:
+	ExportDialog(const ExportDialog &);
+
 	class ExportDiagramLine {
 		public:
 		ExportDiagramLine(Diagram *, QSize);
@@ -85,7 +83,6 @@ class ExportDialog : public QDialog {
 	QETProject *project_;
 	
 	// methods
-	private:
 	QWidget *initDiagramsListPart();
 	void saveReloadDiagramParameters(Diagram *, bool = true);
 	void generateSvg(Diagram *, int, int, bool, QIODevice &);

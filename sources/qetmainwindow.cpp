@@ -45,13 +45,15 @@ QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 /**
 	Destructor
 */
-QETMainWindow::~QETMainWindow() {
+QETMainWindow::~QETMainWindow()
+{
 }
 
 /**
 	Initialize common actions.
 */
-void QETMainWindow::initCommonActions() {
+void QETMainWindow::initCommonActions()
+{
 	QETApp *qet_app = QETApp::instance();
 	
 	configure_action_ = new QAction(QET::Icons::Configure, tr("&Configurer QElectroTech"), this);
@@ -89,7 +91,7 @@ void QETMainWindow::initCommonActions() {
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
-	manual_online_            -> setShortcut(Qt::Key_F1);
+	manual_online_ -> setShortcut(Qt::Key_F1);
 	
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
@@ -131,7 +133,8 @@ void QETMainWindow::initCommonActions() {
 /**
 	Initialize common menus.
 */
-void QETMainWindow::initCommonMenus() {
+void QETMainWindow::initCommonMenus()
+{
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"));
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
@@ -191,7 +194,8 @@ QAction *QETMainWindow::actionForMenu(QMenu *menu) {
 /**
 	Toggle the window from/to full screen.
 */
-void QETMainWindow::toggleFullScreen() {
+void QETMainWindow::toggleFullScreen()
+{
 	setWindowState(windowState() ^ Qt::WindowFullScreen);
 }
 
@@ -199,7 +203,8 @@ void QETMainWindow::toggleFullScreen() {
 	Update the look of the full screen action according to the current state of
 	the window.
 */
-void QETMainWindow::updateFullScreenAction() {
+void QETMainWindow::updateFullScreenAction()
+{
 	if (windowState() & Qt::WindowFullScreen) {
 		fullscreen_action_ -> setText(tr("Sortir du &mode plein écran"));
 		fullscreen_action_ -> setIcon(QET::Icons::FullScreenExit);
@@ -216,7 +221,8 @@ void QETMainWindow::updateFullScreenAction() {
 	Check whether a sub menu dedicated to docks and toolbars can be inserted on
 	top of the settings menu.
 */
-void QETMainWindow::checkToolbarsmenu() {
+void QETMainWindow::checkToolbarsmenu()
+{
 	if (display_toolbars_) return;
 	display_toolbars_ = createPopupMenu();
 	if (display_toolbars_) {

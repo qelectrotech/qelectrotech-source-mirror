@@ -410,7 +410,8 @@ inline QGIManager &Diagram::qgiManager() {
 	@brief Diagram::drawTerminals
 	@return true if terminals are rendered, false otherwise
 */
-inline bool Diagram::drawTerminals() const {
+inline bool Diagram::drawTerminals() const
+{
 	return(draw_terminals_);
 }
 
@@ -418,7 +419,8 @@ inline bool Diagram::drawTerminals() const {
 	@brief Diagram::drawColoredConductors
 	@return true if conductors colors are rendered, false otherwise.
 */
-inline bool Diagram::drawColoredConductors() const {
+inline bool Diagram::drawColoredConductors() const
+{
 	return(draw_colored_conductors_);
 }
 

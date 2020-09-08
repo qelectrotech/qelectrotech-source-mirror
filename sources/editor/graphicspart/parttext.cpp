@@ -58,7 +58,8 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 }
 
 /// Destructeur
-PartText::~PartText() {
+PartText::~PartText()
+{
 }
 
 /**
@@ -95,7 +96,8 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-const QDomElement PartText::toXml(QDomDocument &xml_document) const {
+const QDomElement PartText::toXml(QDomDocument &xml_document) const
+{
 	QDomElement xml_element = xml_document.createElement(xmlName());
 
 	xml_element.setAttribute("x", QString::number(pos().x()));
@@ -111,7 +113,8 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 /**
 	@return Les coordonnees du point situe en bas a gauche du texte.
 */
-QPointF PartText::margin() const {
+QPointF PartText::margin() const
+{
 	QFont used_font = font();
 	QFontMetrics qfm(used_font);
 	qreal document_margin = document() -> documentMargin();
@@ -191,7 +194,8 @@ QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) 
 /**
 	@return le rectangle delimitant cette partie.
 */
-QRectF PartText::boundingRect() const {
+QRectF PartText::boundingRect() const
+{
 	QRectF r = QGraphicsTextItem::boundingRect();
 	r.adjust(0.0, -1.1, 0.0, 0.0);
 	return(r);
@@ -202,7 +206,8 @@ QRectF PartText::boundingRect() const {
 	conservee / enregistree.
 	Un texte statique n'est pas pertinent lorsque son texte est vide.
 */
-bool PartText::isUseless() const {
+bool PartText::isUseless() const
+{
 	return(toPlainText().isEmpty());
 }
 
@@ -212,7 +217,8 @@ bool PartText::isUseless() const {
 	to imply any margin, and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF PartText::sceneGeometricRect() const {
+QRectF PartText::sceneGeometricRect() const
+{
 	return(sceneBoundingRect());
 }
 
@@ -327,7 +333,8 @@ void PartText::setEditable(bool editable) {
 /**
 	Start text edition by storing the former value of the text.
 */
-void PartText::startEdition() {
+void PartText::startEdition()
+{
 	// !previous_text.isNull() means the text is being edited
 	previous_text = toPlainText();
 }
@@ -336,7 +343,8 @@ void PartText::startEdition() {
 	End text edition, potentially generating a ChangePartCommand if the text
 	has changed.
 */
-void PartText::endEdition() {
+void PartText::endEdition()
+{
 	if (!previous_text.isNull()) {
 			// the text was being edited
 		QString new_text = toPlainText();

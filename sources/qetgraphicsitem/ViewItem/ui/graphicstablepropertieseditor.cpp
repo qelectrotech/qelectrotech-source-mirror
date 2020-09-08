@@ -34,11 +34,13 @@
 	@param table
 	@param parent
 */
-GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(QetGraphicsTableItem *table, QWidget *parent) :
+GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(
+		QetGraphicsTableItem *table,
+		QWidget *parent) :
 	PropertiesEditorWidget(parent),
-    ui(new Ui::GraphicsTablePropertiesEditor)
+	ui(new Ui::GraphicsTablePropertiesEditor)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	m_header_button_group = new QButtonGroup(this);
 	m_header_button_group->addButton(ui->m_header_align_left_rb,   Qt::AlignLeft);
 	m_header_button_group->addButton(ui->m_header_align_center_rb, Qt::AlignHCenter);
@@ -59,7 +61,8 @@ GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(QetGraphicsTableIte
 /**
 	@brief GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor
 */
-GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor() {
+GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor()
+{
 	delete ui;
 }
 
@@ -84,8 +87,14 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 
 	m_table_item = table;
 	m_connect_list.clear();
-	m_connect_list << connect(m_table_item.data(), &QetGraphicsTableItem::xChanged, this, &GraphicsTablePropertiesEditor::updateUi);
-	m_connect_list << connect(m_table_item.data(), &QetGraphicsTableItem::yChanged, this, &GraphicsTablePropertiesEditor::updateUi);
+	m_connect_list << connect(m_table_item.data(),
+				  &QetGraphicsTableItem::xChanged,
+				  this,
+				  &GraphicsTablePropertiesEditor::updateUi);
+	m_connect_list << connect(m_table_item.data(),
+				  &QetGraphicsTableItem::yChanged,
+				  this,
+				  &GraphicsTablePropertiesEditor::updateUi);
 
 
 	if (auto editor = PropertiesEditorFactory::propertiesEditor(table->model(), this))
@@ -121,63 +130,103 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 	if (m_live_edit)
 	{
 		if (!qFuzzyCompare(ui->m_x_pos->value(), m_table_item->pos().x())) {
-			auto undo = new QPropertyUndoCommand(m_table_item.data(), "x", m_table_item->pos().x(), ui->m_x_pos->value());
+			auto undo = new QPropertyUndoCommand(
+						m_table_item.data(),
+						"x",
+						m_table_item->pos().x(),
+						ui->m_x_pos->value());
 			undo->setAnimated(true, false);
 			undo->setText(tr("Déplacer un tableau"));
 			return undo;
 		}
 
 		if (!qFuzzyCompare(ui->m_y_pos->value(), m_table_item->pos().y())) {
-			auto undo = new QPropertyUndoCommand(m_table_item.data(), "y", m_table_item->pos().y(), ui->m_y_pos->value());
+			auto undo = new QPropertyUndoCommand(
+						m_table_item.data(),
+						"y",
+						m_table_item->pos().y(),
+						ui->m_y_pos->value());
 			undo->setAnimated(true, false);
 			undo->setText(tr("Déplacer un tableau"));
 			return undo;
 		}
 
 		if (ui->m_display_n_row_sb->value() != m_table_item->displayNRow()) {
-			auto undo = new QPropertyUndoCommand(m_table_item.data(), "displayNRow", m_table_item->displayNRow(), ui->m_display_n_row_sb->value());
+			auto undo = new QPropertyUndoCommand(
+						m_table_item.data(),
+						"displayNRow",
+						m_table_item->displayNRow(),
+						ui->m_display_n_row_sb->value());
 			undo->setText(tr("Modifier le nombre de ligne affiché par un tableau"));
 			return undo;
 		}
 
-		QMargins edited_header_margins(ui->m_header_left_margin->value(),
-							   ui->m_header_top_margin->value(),
-							   ui->m_header_right_margin->value(),
-							   ui->m_header_bottom_margin->value());
-		auto model_header_margins = QETUtils::marginsFromString(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+		QMargins edited_header_margins(
+					ui->m_header_left_margin->value(),
+					ui->m_header_top_margin->value(),
+					ui->m_header_right_margin->value(),
+					ui->m_header_bottom_margin->value());
+		auto model_header_margins = QETUtils::marginsFromString(
+					m_table_item->model()->headerData(
+						0,
+						Qt::Horizontal,
+						Qt::UserRole+1).toString());
 		if (edited_header_margins != model_header_margins)
 		{
 			auto undo = new ModelHeaderDataCommand(m_table_item->model());
-			undo->setData(0, Qt::Horizontal, QETUtils::marginsToString(edited_header_margins), Qt::UserRole+1);
+			undo->setData(
+						0,
+						Qt::Horizontal,
+						QETUtils::marginsToString(edited_header_margins),
+						Qt::UserRole+1);
 			undo->setText(tr("Modifier les marges d'une en tête de tableau"));
 			return undo;
 		}
 
-		QMargins edited_table_margins(ui->m_table_left_margin->value(),
-							   ui->m_table_top_margin->value(),
-							   ui->m_table_right_margin->value(),
-							   ui->m_table_bottom_margin->value());
-		auto model_margins = QETUtils::marginsFromString(m_table_item->model()->index(0,0).data(Qt::UserRole+1).toString());
+		QMargins edited_table_margins(
+					ui->m_table_left_margin->value(),
+					ui->m_table_top_margin->value(),
+					ui->m_table_right_margin->value(),
+					ui->m_table_bottom_margin->value());
+		auto model_margins = QETUtils::marginsFromString(
+					m_table_item->model()->index(0,0).data(Qt::UserRole+1).toString());
 		if (edited_table_margins != model_margins)
 		{
-			auto undo = new ModelIndexCommand(m_table_item->model(), m_table_item->model()->index(0,0));
-			undo->setData(QETUtils::marginsToString(edited_table_margins), Qt::UserRole+1);
+			auto undo = new ModelIndexCommand(
+						m_table_item->model(),
+						m_table_item->model()->index(0,0));
+			undo->setData(
+						QETUtils::marginsToString(edited_table_margins),
+						Qt::UserRole+1);
 			undo->setText(tr("Modifier les marges d'un tableau"));
 			return undo;
 		}
 
-		if (m_header_button_group->checkedId() != m_table_item->model()->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt())
+		if (m_header_button_group->checkedId()
+				!= m_table_item->model()->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::TextAlignmentRole).toInt())
 		{
 			auto undo = new ModelHeaderDataCommand(m_table_item->model());
-			undo->setData(0, Qt::Horizontal, m_header_button_group->checkedId(), Qt::TextAlignmentRole);
+			undo->setData(
+						0,
+						Qt::Horizontal,
+						m_header_button_group->checkedId(),
+						Qt::TextAlignmentRole);
 			undo->setText(tr("Modifier l'alignement d'une en tête de tableau"));
 			return undo;
 		}
 
-		if (m_table_button_group->checkedId() != m_table_item->model()->index(0,0).data(Qt::TextAlignmentRole).toInt())
+		if (m_table_button_group->checkedId()
+				!= m_table_item->model()->index(0,0).data(Qt::TextAlignmentRole).toInt())
 		{
-			auto undo = new ModelIndexCommand(m_table_item->model(), m_table_item->model()->index(0,0));
-			undo->setData(m_table_button_group->checkedId(), Qt::TextAlignmentRole);
+			auto undo = new ModelIndexCommand(
+						m_table_item->model(),
+						m_table_item->model()->index(0,0));
+			undo->setData(
+						m_table_button_group->checkedId(),
+						Qt::TextAlignmentRole);
 			undo->setText(tr("Modifier l'alignement des textes d'un tableau"));
 			return undo;
 		}
@@ -205,13 +254,21 @@ void GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked()
 	if (m_table_item && m_table_item->model())
 	{
 		bool ok;
-		auto font = QFontDialog::getFont(&ok,
-										 m_table_item->model()->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>(),
-										 this);
+		auto font = QFontDialog::getFont(
+					&ok,
+					m_table_item->model()->headerData(
+						0,
+						Qt::Horizontal,
+						Qt::FontRole).value<QFont>(),
+					this);
 		if (ok && m_table_item->model())
 		{
 			auto undo = new ModelHeaderDataCommand(m_table_item->model());
-			undo->setData(0, Qt::Horizontal, QVariant::fromValue(font), Qt::FontRole);
+			undo->setData(
+						0,
+						Qt::Horizontal,
+						QVariant::fromValue(font),
+						Qt::FontRole);
 			undo->setText(tr("Modifier la police d'une en tête de tableau"));
 			m_table_item->diagram()->undoStack().push(undo);
 		}
@@ -227,12 +284,15 @@ void GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked()
 	{
 		bool ok;
 		auto index = m_table_item->model()->index(0,0);
-		auto old_font = m_table_item->model()->data(index, Qt::FontRole).value<QFont>();
+		auto old_font = m_table_item->model()->data(
+					index,
+					Qt::FontRole).value<QFont>();
 		auto new_font = QFontDialog::getFont(&ok, old_font, this);
 
 		if (ok && m_table_item->diagram())
 		{
-			auto undo = new ModelIndexCommand(m_table_item->model(), index);
+			auto undo = new ModelIndexCommand(
+						m_table_item->model(), index);
 			undo->setData(QVariant::fromValue(new_font), Qt::FontRole);
 			undo->setText(tr("Changer la police d'un tableau"));
 			m_table_item->diagram()->undoStack().push(undo);
@@ -268,8 +328,12 @@ void GraphicsTablePropertiesEditor::updateUi()
 	if (auto item_ = m_table_item->previousTable()) //Add the current previous table
 	{
 		m_other_table_vector.append(item_);
-		ui->m_previous_table_cb->addItem(item_->tableName(), m_other_table_vector.indexOf(item_));
-		ui->m_previous_table_cb->setCurrentIndex(ui->m_previous_table_cb->findData(m_other_table_vector.indexOf(item_)));
+		ui->m_previous_table_cb->addItem(
+					item_->tableName(),
+					m_other_table_vector.indexOf(item_));
+		ui->m_previous_table_cb->setCurrentIndex(
+					ui->m_previous_table_cb->findData(
+						m_other_table_vector.indexOf(item_)));
 	}
 
 	ElementProvider ep(m_table_item->diagram()->project());
@@ -279,19 +343,27 @@ void GraphicsTablePropertiesEditor::updateUi()
 			item_->nextTable() == nullptr)
 		{
 			m_other_table_vector.append(item_);
-			ui->m_previous_table_cb->addItem(item_->tableName(), m_other_table_vector.indexOf(item_));
+			ui->m_previous_table_cb->addItem(
+						item_->tableName(),
+						m_other_table_vector.indexOf(item_));
 		}
 	}
 
 	updateInfoLabel();
 
-	auto margin = QETUtils::marginsFromString(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+	auto margin = QETUtils::marginsFromString(
+				m_table_item->model()->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::UserRole+1).toString());
 	ui->m_header_top_margin   ->setValue(margin.top());
 	ui->m_header_left_margin  ->setValue(margin.left());
 	ui->m_header_right_margin ->setValue(margin.right());
 	ui->m_header_bottom_margin->setValue(margin.bottom());
 
-	margin = QETUtils::marginsFromString(m_table_item->model()->index(0,0).data(Qt::UserRole+1).toString());
+	margin = QETUtils::marginsFromString(
+				m_table_item->model()->index(0,0).data(
+					Qt::UserRole+1).toString());
 	ui->m_table_top_margin   ->setValue(margin.top());
 	ui->m_table_left_margin  ->setValue(margin.left());
 	ui->m_table_right_margin ->setValue(margin.right());
@@ -302,9 +374,16 @@ void GraphicsTablePropertiesEditor::updateUi()
 		return;
 	}
 
-	if (auto button = m_header_button_group->button(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt()))
+	if (auto button = m_header_button_group->button(
+				m_table_item->model()->headerData(
+					0,
+					Qt::Horizontal,
+					Qt::TextAlignmentRole).toInt()))
 		button->setChecked(true);
-	if (auto button = m_table_button_group->button(m_table_item->model()->data(m_table_item->model()->index(0,0), Qt::TextAlignmentRole).toInt()))
+	if (auto button = m_table_button_group->button(
+				m_table_item->model()->data(
+					m_table_item->model()->index(0,0),
+					Qt::TextAlignmentRole).toInt()))
 		button->setChecked(true);
 
 	setUpEditConnection();
@@ -378,7 +457,8 @@ void GraphicsTablePropertiesEditor::setUpEditConnection()
 	}
 }
 
-void GraphicsTablePropertiesEditor::on_m_table_name_le_textEdited(const QString &arg1) {
+void GraphicsTablePropertiesEditor::on_m_table_name_le_textEdited(const QString &arg1)
+{
 	m_table_item->setTableName(arg1);
 }
 
@@ -387,7 +467,9 @@ void GraphicsTablePropertiesEditor::on_m_previous_table_cb_activated(int index)
 	if (index == 0) {
 		m_table_item->setPreviousTable();
 	} else {
-		m_table_item->setPreviousTable(m_other_table_vector.at(ui->m_previous_table_cb->currentData().toInt()));
+		m_table_item->setPreviousTable(
+					m_other_table_vector.at(
+						ui->m_previous_table_cb->currentData().toInt()));
 	}
 }
 
@@ -424,7 +506,10 @@ void GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked()
 */
 void GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_clicked()
 {
-	if (m_table_item.isNull() || !m_table_item->diagram() || (!m_table_item->nextTable() && !m_table_item->previousTable())) {
+	if (m_table_item.isNull()
+			|| !m_table_item->diagram()
+			|| (!m_table_item->nextTable()
+			    && !m_table_item->previousTable())) {
 		return;
 	}
 	auto first_table = m_table_item;

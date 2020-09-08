@@ -38,7 +38,8 @@ ChangeTitleBlockCommand::ChangeTitleBlockCommand(
 	new_titleblock(new_ip)
 {}
 
-ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {}
+ChangeTitleBlockCommand::~ChangeTitleBlockCommand()
+{}
 
 void ChangeTitleBlockCommand::undo()
 {

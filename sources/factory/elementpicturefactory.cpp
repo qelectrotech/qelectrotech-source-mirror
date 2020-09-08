@@ -126,7 +126,8 @@ ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
 	return m_primitives_H.value(location.uuid());
 }
 
-ElementPictureFactory::~ElementPictureFactory() {
+ElementPictureFactory::~ElementPictureFactory()
+{
 	for (primitives p : m_primitives_H.values()) {
 		qDeleteAll(p.m_texts);
 	}

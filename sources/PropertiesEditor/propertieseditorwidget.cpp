@@ -41,7 +41,8 @@ QUndoCommand *PropertiesEditorWidget::associatedUndo() const{
 	@brief PropertiesEditorWidget::title
 	@return the title of this editor
 */
-QString PropertiesEditorWidget::title() const {
+QString PropertiesEditorWidget::title() const
+{
 	return QString();
 }
 
@@ -68,6 +69,7 @@ bool PropertiesEditorWidget::setLiveEdit(bool live_edit) {
 	@return true if this editor is in live edit mode
 	else return fasle.
 */
-bool PropertiesEditorWidget::isLiveEdit() const {
+bool PropertiesEditorWidget::isLiveEdit() const
+{
 	return m_live_edit;
 }

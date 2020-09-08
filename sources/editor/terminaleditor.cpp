@@ -47,9 +47,10 @@ TerminalEditor::TerminalEditor(QETElementEditor* editor, QWidget* parent):
 	@param parent :
 	QWidget parent de ce widget
 */
-TerminalEditor::TerminalEditor(QETElementEditor *editor,
-			       QList<PartTerminal *> &terms,
-			       QWidget *parent) :
+TerminalEditor::TerminalEditor(
+		QETElementEditor *editor,
+		QList<PartTerminal *> &terms,
+		QWidget *parent) :
 	ElementItemEditor(editor, parent),
 	m_terminals(terms),
 	m_part(terms.first()) {
@@ -59,9 +60,11 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor,
 /**
 	@brief TerminalEditor::init
 */
-void TerminalEditor::init() {
+void TerminalEditor::init()
+{
 	qle_x = new QDoubleSpinBox();
 	qle_y = new QDoubleSpinBox();
+	name = new QLineEdit();
 
 	qle_x -> setRange(-5000, 5000);
 	qle_y -> setRange(-5000, 5000);
@@ -87,6 +90,11 @@ void TerminalEditor::init() {
 	ori -> addWidget(orientation                     );
 	main_layout -> addLayout(ori);
 
+	QHBoxLayout *lay_name = new QHBoxLayout();
+	lay_name -> addWidget(new QLabel(tr("Name : ")));
+	lay_name -> addWidget(name);
+	main_layout -> addLayout(lay_name);
+
 	main_layout -> addStretch();
 	setLayout(main_layout);
 
@@ -98,7 +106,8 @@ void TerminalEditor::init() {
 	@brief TerminalEditor::~TerminalEditor
 	Destructeur
 */
-TerminalEditor::~TerminalEditor() {
+TerminalEditor::~TerminalEditor()
+{
 }
 
 /**
@@ -161,11 +170,13 @@ bool TerminalEditor::setParts(QList<CustomElementPart *> parts) {
 /**
 	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
 */
-CustomElementPart *TerminalEditor::currentPart() const {
+CustomElementPart *TerminalEditor::currentPart() const
+{
 	return(m_part);
 }
 
-QList<CustomElementPart*> TerminalEditor::currentParts() const {
+QList<CustomElementPart*> TerminalEditor::currentParts() const
+{
 	QList<CustomElementPart*> parts;
 	for (auto term: m_terminals) {
 		parts.append(static_cast<CustomElementPart*>(term));
@@ -174,7 +185,8 @@ QList<CustomElementPart*> TerminalEditor::currentParts() const {
 }
 
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalO() {
+void TerminalEditor::updateTerminalO()
+{
 	if (m_locked) return;
 	m_locked = true;
 	QVariant var(orientation -> itemData(orientation -> currentIndex()));
@@ -194,7 +206,8 @@ void TerminalEditor::updateTerminalO() {
 /**
 	@brief TerminalEditor::updateXPos
 */
-void TerminalEditor::updateXPos() {
+void TerminalEditor::updateXPos()
+{
 	if (m_locked) return;
 	m_locked = true;
 	QPointF new_pos(qle_x->value(), 0);
@@ -215,7 +228,8 @@ void TerminalEditor::updateXPos() {
 /**
 	@brief TerminalEditor::updateYPos
 */
-void TerminalEditor::updateYPos() {
+void TerminalEditor::updateYPos()
+{
 	if (m_locked) return;
 	m_locked = true;
 	QPointF new_pos(0, qle_y->value()); // change only y value
@@ -232,17 +246,46 @@ void TerminalEditor::updateYPos() {
 	}
 	m_locked=false;
 }
+
+/**
+	@brief TerminalEditor::updateName
+	SLOT set name to Terminal
+*/
+void TerminalEditor::updateName() {
+	if (m_locked) return;
+	m_locked = true;
+	QVariant var(name->text());
+
+	for (int i=0; i < m_terminals.length(); i++) {
+		PartTerminal* term = m_terminals[i];
+		if (var != term->property("name"))
+		{
+			QPropertyUndoCommand *undo;
+			undo = new QPropertyUndoCommand(term,
+							"name",
+							term->property("name"),
+							var);
+			undo->setText(tr("Modify name of the terminal"));
+			undoStack().push(undo);
+		}
+	}
+	m_locked=false;
+
+}
+
 /// update Number and name, create cancel object
 
 /**
 	Met a jour le formulaire d'edition
 */
-void TerminalEditor::updateForm() {
+void TerminalEditor::updateForm()
+{
 	if (!m_part) return;
 	activeConnections(false);
 	qle_x -> setValue(m_part->property("x").toReal());
 	qle_y -> setValue(m_part->property("y").toReal());
 	orientation -> setCurrentIndex(orientation->findData(m_part->property("orientation")));
+	name -> setText(m_part->name());
 	activeConnections(true);
 }
 
@@ -252,13 +295,26 @@ void TerminalEditor::updateForm() {
 */
 void TerminalEditor::activeConnections(bool active) {
 	if (active) {
-		connect(qle_x,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateXPos);
-		connect(qle_y,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateYPos);
-		connect(orientation, QOverload<int>::of(&QComboBox::activated), this, &TerminalEditor::updateTerminalO);
+		connect(qle_x,
+			&QDoubleSpinBox::editingFinished,
+			this, &TerminalEditor::updateXPos);
+		connect(qle_y,
+			&QDoubleSpinBox::editingFinished,
+			this, &TerminalEditor::updateYPos);
+		connect(orientation,
+			QOverload<int>::of(&QComboBox::activated),
+			this, &TerminalEditor::updateTerminalO);
+		connect(name, &QLineEdit::editingFinished,
+			this, &TerminalEditor::updateName);
 	}
 	else {
-		disconnect(qle_x,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateXPos);
-		disconnect(qle_y,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateYPos);
-		disconnect(orientation, QOverload<int>::of(&QComboBox::activated), this, &TerminalEditor::updateTerminalO);
+		disconnect(qle_x, &QDoubleSpinBox::editingFinished,
+			   this, &TerminalEditor::updateXPos);
+		disconnect(qle_y, &QDoubleSpinBox::editingFinished,
+			   this, &TerminalEditor::updateYPos);
+		disconnect(orientation, QOverload<int>::of(&QComboBox::activated),
+			   this, &TerminalEditor::updateTerminalO);
+		disconnect(name, &QLineEdit::editingFinished,
+			   this, &TerminalEditor::updateName);
 	}
 }

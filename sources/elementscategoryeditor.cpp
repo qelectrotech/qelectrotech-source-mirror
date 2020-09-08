@@ -87,7 +87,8 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &location,
 	@brief ElementsCategoryEditor::~ElementsCategoryEditor
 	Destructor
 */
-ElementsCategoryEditor::~ElementsCategoryEditor() {
+ElementsCategoryEditor::~ElementsCategoryEditor()
+{
 }
 
 /**

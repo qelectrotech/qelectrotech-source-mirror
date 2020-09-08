@@ -147,7 +147,8 @@ Conductor::~Conductor()
 	@return true if conductor is valid else false;
 	A non valid conductor, is a conductor without two terminal
 */
-bool Conductor::isValid() const {
+bool Conductor::isValid() const
+{
 	return m_valid;
 }
 
@@ -288,7 +289,8 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 	const qreal &offset,
 	const QList<ConductorSegmentProfile *> &segments_list,
 	const qreal &precision
-) const {
+) const
+{
 	// construit le QHash qui sera retourne
 	QHash<ConductorSegmentProfile *, qreal> segments_hash;
 	foreach(ConductorSegmentProfile *csp, segments_list) {
@@ -556,14 +558,16 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 }
 
 /// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant
-Diagram *Conductor::diagram() const {
+Diagram *Conductor::diagram() const
+{
 	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**4
 	@return le champ de texte associe a ce conducteur
 */
-ConductorTextItem *Conductor::textItem() const {
+ConductorTextItem *Conductor::textItem() const
+{
 	return(m_text_item);
 }
 
@@ -913,7 +917,8 @@ QPainterPath Conductor::nearShape() const
 	@param type Type de Segments
 	@return Le nombre de segments composant le conducteur.
 */
-uint Conductor::segmentsCount(QET::ConductorSegmentType type) const {
+uint Conductor::segmentsCount(QET::ConductorSegmentType type) const
+{
 	QList<ConductorSegment *> segments_list = segmentsList();
 	if (type == QET::Both) return(segments_list.count());
 	uint nb_seg = 0;
@@ -927,7 +932,8 @@ uint Conductor::segmentsCount(QET::ConductorSegmentType type) const {
 	Genere une liste de points a partir des segments de ce conducteur
 	@return La liste de points representant ce conducteur
 */
-QList<QPointF> Conductor::segmentsToPoints() const {
+QList<QPointF> Conductor::segmentsToPoints() const
+{
 	// liste qui sera retournee
 	QList<QPointF> points_list;
 	
@@ -1168,7 +1174,8 @@ QVector<QPointF> Conductor::handlerPoints() const
 }
 
 /// @return les segments de ce conducteur
-const QList<ConductorSegment *> Conductor::segmentsList() const {
+const QList<ConductorSegment *> Conductor::segmentsList() const
+{
 	if (segments == nullptr) return(QList<ConductorSegment *>());
 	
 	QList<ConductorSegment *> segments_vector;
@@ -1193,7 +1200,8 @@ qreal Conductor::length() const{
 /**
 	@return Le segment qui contient le point au milieu du conducteur
 */
-ConductorSegment *Conductor::middleSegment() {
+ConductorSegment *Conductor::middleSegment()
+{
 	if (segments == nullptr) return(nullptr);
 	
 	qreal half_length = length() / 2.0;
@@ -1440,7 +1448,8 @@ void Conductor::setProfile(const ConductorProfile &cp, Qt::Corner path_type) {
 }
 
 /// @return le profil de ce conducteur
-ConductorProfile Conductor::profile(Qt::Corner path_type) const {
+ConductorProfile Conductor::profile(Qt::Corner path_type) const
+{
 	return(conductor_profiles[path_type]);
 }
 
@@ -1586,7 +1595,8 @@ ConductorProperties Conductor::properties() const
 /**
 	@return true si le conducteur est mis en evidence
 */
-Conductor::Highlight Conductor::highlight() const {
+Conductor::Highlight Conductor::highlight() const
+{
 	return(must_highlight_);
 }
 
@@ -1700,7 +1710,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 	@brief Conductor::diagramEditor
 	@return The parent diagram editor or nullptr;
 */
-QETDiagramEditor* Conductor::diagramEditor() const {
+QETDiagramEditor* Conductor::diagramEditor() const
+{
 	if (!diagram())                     return nullptr;
 	if (diagram() -> views().isEmpty()) return nullptr;
 
@@ -1714,7 +1725,8 @@ QETDiagramEditor* Conductor::diagramEditor() const {
 /**
 	@brief Conductor::editProperty
 */
-void Conductor::editProperty() {
+void Conductor::editProperty()
+{
 	ConductorPropertiesDialog::PropertiesDialog(this, diagramEditor());
 }
 
@@ -1770,7 +1782,8 @@ bool isContained(const QPointF &a, const QPointF &b, const QPointF &c) {
 /**
 	@return la liste des positions des jonctions avec d'autres conducteurs
 */
-QList<QPointF> Conductor::junctions() const {
+QList<QPointF> Conductor::junctions() const
+{
 	QList<QPointF> junctions_list;
 	
 	// pour qu'il y ait des jonctions, il doit y avoir d'autres conducteurs et des bifurcations
@@ -1840,7 +1853,8 @@ QList<QPointF> Conductor::junctions() const {
 	(en coordonnees locales) de la bifurcation tandis que le Corner indique le
 	type de bifurcation.
 */
-QList<ConductorBend> Conductor::bends() const {
+QList<ConductorBend> Conductor::bends() const
+{
 	QList<ConductorBend> points;
 	if (!segments) return(points);
 	
@@ -1908,12 +1922,14 @@ Qt::Corner Conductor::movementType(const QPointF &start, const QPointF &end) {
 }
 
 /// @return le type de trajet actuel de ce conducteur
-Qt::Corner Conductor::currentPathType() const {
+Qt::Corner Conductor::currentPathType() const
+{
 	return(movementType(terminal1 -> dockConductor(), terminal2 -> dockConductor()));
 }
 
 /// @return les profils de ce conducteur
-ConductorProfilesGroup Conductor::profiles() const {
+ConductorProfilesGroup Conductor::profiles() const
+{
 	return(conductor_profiles);
 }
 
@@ -1936,7 +1952,8 @@ void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 }
 
 /// Supprime les segments
-void Conductor::deleteSegments() {
+void Conductor::deleteSegments()
+{
 	if (segments != nullptr) {
 		while (segments -> hasNextSegment()) delete segments -> nextSegment();
 		delete segments;

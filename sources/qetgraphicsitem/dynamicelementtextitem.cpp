@@ -224,7 +224,8 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	Note that the text can return a parent element,
 	even if the text belong to a group of this same element.
 */
-Element *DynamicElementTextItem::parentElement() const {
+Element *DynamicElementTextItem::parentElement() const
+{
 	return m_parent_element;
 }
 
@@ -312,7 +313,8 @@ void DynamicElementTextItem::refreshLabelConnection()
 	@brief DynamicElementTextItem::textFrom
 	@return what the final text is created from.
 */
-DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const {
+DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const
+{
 	return m_text_from;
 }
 
@@ -375,7 +377,8 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 	@brief DynamicElementTextItem::text
 	@return the text of this text
 */
-QString DynamicElementTextItem::text() const {
+QString DynamicElementTextItem::text() const
+{
 	return m_text;
 }
 
@@ -442,7 +445,8 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	@brief DynamicElementTextItem::infoName
 	@return the info name of this text
 */
-QString DynamicElementTextItem::infoName() const {
+QString DynamicElementTextItem::infoName() const
+{
 	return m_info_name;
 }
 

@@ -92,9 +92,10 @@ namespace qdesigner_internal {
 	}
 
 	// Richtext simplification filter helpers: Filter attributes of elements
-	static inline void filterAttributes(const QStringRef &name,
-										QXmlStreamAttributes *atts,
-										bool *paragraphAlignmentFound)
+	static inline void filterAttributes(
+			const QStringRef &name,
+			QXmlStreamAttributes *atts,
+			bool *paragraphAlignmentFound)
 	{
 		typedef QXmlStreamAttributes::iterator AttributeIt;
 
@@ -172,7 +173,7 @@ namespace qdesigner_internal {
 		}
 		// Check for plain text (no spans, just <html><head><body><p>)
 		if (isPlainTextPtr)
-			*isPlainTextPtr = !paragraphAlignmentFound && elementCount == 4u; //
+			*isPlainTextPtr = !paragraphAlignmentFound && elementCount == 4u;
 		return out;
 	}
 
@@ -813,7 +814,8 @@ RichTextEditorDialog::~RichTextEditorDialog()
 /**
 	@brief RichTextEditorDialog::on_buttonBox_accepted
 */
-void RichTextEditorDialog::on_buttonBox_accepted() {
+void RichTextEditorDialog::on_buttonBox_accepted()
+{
 	emit applyEditText( text(Qt::RichText) );
 	this->close();
 }

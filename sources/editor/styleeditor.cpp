@@ -403,31 +403,37 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 }
 
 /// Destructeur
-StyleEditor::~StyleEditor() {
+StyleEditor::~StyleEditor()
+{
 }
 
 /// Update antialiasing with undo command
-void StyleEditor::updatePartAntialiasing() {
+void StyleEditor::updatePartAntialiasing()
+{
 	makeUndo(tr("style antialiasing"), "antialias", antialiasing -> isChecked());
 }
 
 /// Update color with undo command
-void StyleEditor::updatePartColor() {
+void StyleEditor::updatePartColor()
+{
 	makeUndo(tr("style couleur"),"color", outline_color->itemData(outline_color -> currentIndex()));
 }
 
 /// Update style with undo command
-void StyleEditor::updatePartLineStyle() {
+void StyleEditor::updatePartLineStyle()
+{
 	makeUndo(tr("style ligne"), "line_style", line_style->itemData(line_style -> currentIndex()));
 }
 
 /// Update weight with undo command
-void StyleEditor::updatePartLineWeight() {
+void StyleEditor::updatePartLineWeight()
+{
 	makeUndo(tr("style epaisseur"), "line_weight", size_weight->itemData(size_weight -> currentIndex()));
 }
 
 /// Update color filling with undo command
-void StyleEditor::updatePartFilling() {
+void StyleEditor::updatePartFilling()
+{
 	makeUndo(tr("style remplissage"), "filling", filling_color->itemData(filling_color -> currentIndex()));
 }
 
@@ -536,11 +542,13 @@ bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 /**
 	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
 */
-CustomElementPart *StyleEditor::currentPart() const {
+CustomElementPart *StyleEditor::currentPart() const
+{
 	return(part);
 }
 
-QList<CustomElementPart*> StyleEditor::currentParts() const {
+QList<CustomElementPart*> StyleEditor::currentParts() const
+{
 	return m_cep_list;
 }
 

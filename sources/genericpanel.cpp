@@ -39,13 +39,15 @@ GenericPanel::GenericPanel(QWidget *parent) :
 /**
 	Destructor
 */
-GenericPanel::~GenericPanel() {
+GenericPanel::~GenericPanel()
+{
 }
 
 /**
 	@return the type of the current item
 */
-int GenericPanel::currentItemType() {
+int GenericPanel::currentItemType()
+{
 	QTreeWidgetItem *current_qtwi = currentItem();
 	if (!current_qtwi) return(0);
 	return(current_qtwi -> type());
@@ -56,7 +58,8 @@ int GenericPanel::currentItemType() {
 	@param item
 	@return nullptr
 */
-QETProject *GenericPanel::projectForItem(QTreeWidgetItem *item) const {
+QETProject *GenericPanel::projectForItem(QTreeWidgetItem *item) const
+{
 	if (item && item -> type() == QET::Project) {
 		return(valueForItem<QETProject *>(item));
 	}
@@ -69,7 +72,8 @@ QETProject *GenericPanel::projectForItem(QTreeWidgetItem *item) const {
 	@param item
 	@return nullptr
 */
-Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const {
+Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const
+{
 	if (item && item -> type() == QET::Diagram) {
 		return(valueForItem<Diagram *>(item));
 	}
@@ -82,7 +86,8 @@ Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const {
 	@return TitleBlockTemplateLocation()
 */
 TitleBlockTemplateLocation GenericPanel::templateLocationForItem(
-		QTreeWidgetItem *item) const {
+		QTreeWidgetItem *item) const
+{
 	if (item && item -> type() & QET::TitleBlockTemplatesCollectionItem) {
 		return(valueForItem<TitleBlockTemplateLocation>(item));
 	}
@@ -93,7 +98,8 @@ TitleBlockTemplateLocation GenericPanel::templateLocationForItem(
 	@brief GenericPanel::selectedProject
 	@return projectForItem(currentItem())
 */
-QETProject *GenericPanel::selectedProject() const {
+QETProject *GenericPanel::selectedProject() const
+{
 	return(projectForItem(currentItem()));
 }
 
@@ -101,7 +107,8 @@ QETProject *GenericPanel::selectedProject() const {
 	@brief GenericPanel::selectedDiagram
 	@return diagramForItem(currentItem())
 */
-Diagram *GenericPanel::selectedDiagram() const {
+Diagram *GenericPanel::selectedDiagram() const
+{
 	return(diagramForItem(currentItem()));
 }
 
@@ -109,7 +116,8 @@ Diagram *GenericPanel::selectedDiagram() const {
 	@brief GenericPanel::selectedTemplateLocation
 	@return templateLocationForItem(currentItem())
 */
-TitleBlockTemplateLocation GenericPanel::selectedTemplateLocation() const {
+TitleBlockTemplateLocation GenericPanel::selectedTemplateLocation() const
+{
 	return(templateLocationForItem(currentItem()));
 }
 
@@ -931,7 +939,8 @@ void GenericPanel::reparent(QTreeWidgetItem *item, QTreeWidgetItem *parent) {
 QList<QTreeWidgetItem *> GenericPanel::childItems(
 		QTreeWidgetItem *item,
 		QET::ItemType type,
-		bool recursive) const {
+		bool recursive) const
+{
 	QList<QTreeWidgetItem *> items;
 	if (!item) return(items);
 	for (int i = 0 ; i < item -> childCount() ; ++ i) {
@@ -976,7 +985,8 @@ void GenericPanel::removeObsoleteItems(
 	@return the value stored in \a item
 */
 template<typename T>
-T GenericPanel::valueForItem(QTreeWidgetItem *item) const {
+T GenericPanel::valueForItem(QTreeWidgetItem *item) const
+{
 	return item -> data(0, GenericPanel::Item).value<T>();
 }
 template TitleBlockTemplateLocation
@@ -1027,6 +1037,7 @@ bool GenericPanel::event(QEvent *event) {
 	@brief GenericPanel::emitFirstActivated
 	Emit the signal firstActivated().
 */
-void GenericPanel::emitFirstActivated() {
+void GenericPanel::emitFirstActivated()
+{
 	emit(firstActivated());
 }

@@ -23,7 +23,8 @@
 /**
 	Constructor
 */
-NumerotationContext::NumerotationContext(){
+NumerotationContext::NumerotationContext()
+{
 }
 
 /**
@@ -36,7 +37,8 @@ NumerotationContext::NumerotationContext(QDomElement &e) {
 /**
 	@brief NumerotationContext::clear, clear the content
 */
-void NumerotationContext::clear () {
+void NumerotationContext::clear ()
+{
 	content_.clear();
 }
 
@@ -75,7 +77,8 @@ bool NumerotationContext::addValue(const QString &type,
 	@param i
 	@return the string at position i
 */
-QString NumerotationContext::operator [] (const int &i) const {
+QString NumerotationContext::operator [] (const int &i) const
+{
 	return (content_.at(i));
 }
 
@@ -90,7 +93,8 @@ void NumerotationContext::operator << (const NumerotationContext &other) {
 	@brief NumerotationContext::size
 	@return size of context
 */
-int NumerotationContext::size() const {
+int NumerotationContext::size() const
+{
 	return (content_.size());
 }
 
@@ -98,7 +102,8 @@ int NumerotationContext::size() const {
 	@brief NumerotationContext::isEmpty
 	@return true if numerotation contet is empty
 */
-bool NumerotationContext::isEmpty() const {
+bool NumerotationContext::isEmpty() const
+{
 	if (content_.size() > 0) return false;
 	return true;
 }
@@ -107,7 +112,8 @@ bool NumerotationContext::isEmpty() const {
 	@param i
 	@return the content at position i 1:type 2:value 3:increase
 */
-QStringList NumerotationContext::itemAt(const int i) const {
+QStringList NumerotationContext::itemAt(const int i) const
+{
 	return (content_.at(i).split("|"));
 }
 
@@ -115,7 +121,8 @@ QStringList NumerotationContext::itemAt(const int i) const {
 	@brief validRegExpNum
 	@return all type use to numerotation
 */
-QString NumerotationContext::validRegExpNum () const {
+QString NumerotationContext::validRegExpNum () const
+{
 	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio|string|idfolio|folio|plant|locmach|elementline|elementcolumn|elementprefix");
 }
 
@@ -123,7 +130,8 @@ QString NumerotationContext::validRegExpNum () const {
 	@brief NumerotationContext::validRegExpNumber
 	@return all type represents a number
 */
-QString NumerotationContext::validRegExpNumber() const {
+QString NumerotationContext::validRegExpNumber() const
+{
 	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio");
 }
 
@@ -131,7 +139,8 @@ QString NumerotationContext::validRegExpNumber() const {
 	@brief NumerotationContext::keyIsAcceptable
 	@return true if type is acceptable
 */
-bool NumerotationContext::keyIsAcceptable(const QString &type) const {
+bool NumerotationContext::keyIsAcceptable(const QString &type) const
+{
 	return (type.contains(QRegExp(validRegExpNum())));
 }
 
@@ -139,7 +148,8 @@ bool NumerotationContext::keyIsAcceptable(const QString &type) const {
 	@brief NumerotationContext::keyIsNumber
 	@return true if type represent a number
 */
-bool NumerotationContext::keyIsNumber(const QString &type) const {
+bool NumerotationContext::keyIsNumber(const QString &type) const
+{
 	return (type.contains(QRegExp(validRegExpNumber())));
 }
 
