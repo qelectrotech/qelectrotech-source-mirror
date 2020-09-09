@@ -101,7 +101,8 @@ class Createdxf
 				double,double,
 				double,
 				double,
-				int);
+                int,
+                double xScale=1.0);
 		static void drawTextAligned(
 				const QString& fileName,
 				const QString& text,

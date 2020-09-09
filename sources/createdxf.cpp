@@ -831,6 +831,64 @@ void Createdxf::drawArc(
 }
 
 /**
+    @brief Createdxf::drawText
+    draw simple text in dxf format without any alignment specified
+    @param fileName
+    @param text
+    @param x
+    @param y
+    @param height
+    @param rotation
+    @param colour
+    @param xScale=1
+*/
+void Createdxf::drawText(
+        const QString& fileName,
+        const QString& text,
+        double x,
+        double y,
+        double height,
+        double rotation,
+        int colour,
+        double xScale)
+{
+    if (!fileName.isEmpty()) {
+        QFile file(fileName);
+        if (!file.open(QFile::Append)) {
+            // error message
+            QMessageBox errorFileOpen;
+            errorFileOpen.setText("Error: File "+fileName+" was not written correctly.");
+            errorFileOpen.setInformativeText("Close all Files and Re-Run");
+            errorFileOpen.exec();
+        } else {
+            QTextStream To_Dxf(&file);
+            // Draw the circle
+            To_Dxf << 0         << "\r\n";
+            To_Dxf << "TEXT"    << "\r\n";
+            To_Dxf << 8         << "\r\n";
+            To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+            To_Dxf << 62        << "\r\n";
+            To_Dxf << colour    << "\r\n";    // Colour Code
+            To_Dxf << 10        << "\r\n";    // XYZ
+            To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
+            To_Dxf << 20        << "\r\n";
+            To_Dxf << y         << "\r\n";    // Y in UCS (User Coordinate System)coordinates
+            To_Dxf << 30        << "\r\n";
+            To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
+            To_Dxf << 40        << "\r\n";
+            To_Dxf << height    << "\r\n";    // Text Height
+            To_Dxf << 41        << "\r\n";
+            To_Dxf << xScale    << "\r\n";    // X Scale
+            To_Dxf << 1         << "\r\n";
+            To_Dxf << text      << "\r\n";    // Text Value
+            To_Dxf << 50        << "\r\n";
+            To_Dxf << rotation  << "\r\n";    // Text Rotation
+            file.close();
+        }
+    }
+}
+#if 0
+/**
 	@brief Createdxf::drawText
 	draw simple text in dxf format without any alignment specified
 	@param fileName
@@ -883,6 +941,7 @@ void Createdxf::drawText(
 		}
 	}
 }
+#endif
 
 /* draw aligned text in DXF Format */
 // leftAlign flag added. If the alignment requested is 'fit to width' and the text length is very small,
