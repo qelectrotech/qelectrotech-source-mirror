@@ -206,7 +206,7 @@ int main(int argc, char **argv)
 		my_ma->send_info_to_debug();
 		delete my_ma;
 	}
-
+#if 0 // So Annoying! (Perhaps make it once only, or once a day/week?
 	if(! QET::FileFormatStable){
 		QMessageBox::StandardButton btn = QMessageBox::critical(
 			nullptr,
@@ -233,6 +233,7 @@ int main(int argc, char **argv)
 		if (!(btn == QMessageBox::Yes))
 			return 1;
 	}
+#endif
 	return app.exec();
 }
 
