@@ -127,8 +127,10 @@ class Terminal : public QGraphicsObject
 
 		/// Parent electrical element
 		Element *parent_element_{nullptr};
+    public:
 		/// docking point for parent element
 		QPointF dock_elmt_;
+    private:
 		/// List of conductors attached to the terminal
 		QList<Conductor *> conductors_;
 		/**

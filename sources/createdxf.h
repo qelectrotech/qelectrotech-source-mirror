@@ -123,6 +123,8 @@ class Createdxf
 				const long green,
 				const long blue);
 		static long RGBcodeTable[];
+        static int dxfColor(QColor color);
+        static int dxfColor(QPen pen);
 
 		static const double sheetWidth;
 		static const double sheetHeight;

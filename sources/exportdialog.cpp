@@ -35,6 +35,7 @@
 #include "elementpicturefactory.h"
 #include "element.h"
 #include "dynamicelementtextitem.h"
+#include "terminal.h"
 
 #include <QGraphicsSimpleTextItem>
 
@@ -465,6 +466,7 @@ void ExportDialog::generateDxf(
 	//QList<QRectF *> list_ellipses;
 	QList <QetShapeItem *> list_shapes;
     QList <QetGraphicsTableItem *> list_tables;
+//    QList <Terminal *> list_terminals;
 
 	// Determine les elements a "XMLiser"
 	foreach(QGraphicsItem *qgi, diagram -> items()) {
@@ -485,6 +487,7 @@ void ExportDialog::generateDxf(
         }
 	}
 
+    // Draw shapes
 	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path, qsi->pen());
 
     // Draw tables
@@ -619,6 +622,19 @@ void ExportDialog::generateDxf(
 			qreal spanAngle = arc .at(5);
 			Createdxf::drawArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle, 0);
 		}
+        if (epw -> exportProperties().draw_terminals) {
+            // Draw terminals
+            QList<Terminal *> list_terminals = elmt->terminals();
+            QColor col("red");
+            foreach(Terminal *tp, list_terminals) {
+                qreal x = (elem_pos_x + tp->dock_elmt_.x()) * Createdxf::xScale;
+                qreal y = Createdxf::sheetHeight - (elem_pos_y + tp->dock_elmt_.y()) * Createdxf::yScale;
+                QPointF transformed_point = rotation_transformed(x, y, hotspot_x, hotspot_y, rotation_angle);
+                x = transformed_point.x();
+                y = transformed_point.y();
+                Createdxf::drawCircle(file_path, 3.0* Createdxf::xScale, x, y, Createdxf::dxfColor(col));
+            }
+        }
 	}
 
 	//Draw conductors

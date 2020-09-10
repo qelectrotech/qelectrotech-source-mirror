@@ -438,6 +438,12 @@ int Createdxf::getcolorCode (const long red, const long green, const long blue)
 	}
 	return minndx;
 }
+int Createdxf::dxfColor(QColor color) {
+    return Createdxf::getcolorCode(color.red(), color.green(), color.blue());
+}
+int Createdxf::dxfColor(QPen pen) {
+    return Createdxf::dxfColor(pen.color());
+}
 
 /**
 	@brief Createdxf::drawLine
