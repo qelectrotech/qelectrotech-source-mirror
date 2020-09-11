@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44">
     <uuid uuid="{28335716-8c67-4aa5-9dd0-ca2267b830eb}"/>
     <names>
         <name lang="it">Trasmettitore IR</name>

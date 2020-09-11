@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{1a0bf9ff-6b62-486c-8862-c3e7a36dedc2}"/>
     <names>
         <name lang="en">Filter contamination indicator</name>

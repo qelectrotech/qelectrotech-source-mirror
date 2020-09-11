@@ -1,4 +1,4 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="23" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="23" height="30" link_type="simple" type="element" ic="true">
 <uuid uuid="{0F4E6D48-FF25-456F-826A-F7E22D51F7B3}"/><names>
         <name lang="es">Presostato Alta</name>
     </names>

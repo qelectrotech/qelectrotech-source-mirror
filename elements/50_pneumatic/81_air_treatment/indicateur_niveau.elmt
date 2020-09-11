@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="70" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{99b2449c-d763-412d-9a13-cccc36823cf0}"/>
     <names>
         <name lang="en">Liquid Level Indicator</name>

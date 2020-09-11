@@ -1,4 +1,4 @@
-<definition width="120" height="460" link_type="simple" hotspot_y="234" hotspot_x="57" version="0.5" type="element" orientation="dyyy">
+<definition width="120" height="460" link_type="simple" hotspot_y="234" hotspot_x="57" version="0.5" type="element">
     <uuid uuid="{1119ab68-c231-4408-a816-ce582079f22c}"/>
     <names>
         <name lang="cs">Tsx psy 2600</name>

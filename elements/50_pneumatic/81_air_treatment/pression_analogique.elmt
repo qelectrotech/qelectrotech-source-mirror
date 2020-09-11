@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="60" hotspot_x="16" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+<definition height="40" version="0.5" width="60" hotspot_x="16" type="element" link_type="simple" hotspot_y="30">
     <uuid uuid="{1f58f1a8-3b6b-4985-9d83-b5b26dacce8f}"/>
     <names>
         <name lang="en">Analog Pressure</name>

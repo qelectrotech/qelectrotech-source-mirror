@@ -1,4 +1,4 @@
-<definition hotspot_y="2" type="element" width="20" height="20" link_type="simple" version="0.51" hotspot_x="2" orientation="dyyy">
+<definition hotspot_y="2" type="element" width="20" height="20" link_type="simple" version="0.51" hotspot_x="2">
     <uuid uuid="{d8628b8a-0b45-4d30-b605-7d52c3b7111e}"/>
     <names>
         <name lang="fr">Bloc différentiel</name>

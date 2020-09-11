@@ -1,4 +1,4 @@
-<definition hotspot_x="114" version="0.70" type="element" width="230" link_type="master" height="390" hotspot_y="215" orientation="dyyy">
+<definition hotspot_x="114" version="0.70" type="element" width="230" link_type="master" height="390" hotspot_y="215">
     <uuid uuid="{1df14bff-5cce-40b9-98ae-dad01b43b452}"/>
     <names>
         <name lang="en">EL2904 safety output</name>

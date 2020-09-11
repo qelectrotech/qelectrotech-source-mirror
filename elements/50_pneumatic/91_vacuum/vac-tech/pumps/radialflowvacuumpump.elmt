@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{fd16ac03-ea0e-4b26-bc6b-ff15e9c0211f}"/>
     <names>
         <name lang="en">Radial flow vacuum pump</name>

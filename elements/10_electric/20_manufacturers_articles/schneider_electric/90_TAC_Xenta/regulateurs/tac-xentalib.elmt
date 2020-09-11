@@ -1,4 +1,4 @@
-<definition width="750" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+<definition width="750" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element">
     <uuid uuid="{411dad86-605d-4230-b77f-80251853f40b}"/>
     <names>
         <name lang="cs">TAC Xenta lib</name>

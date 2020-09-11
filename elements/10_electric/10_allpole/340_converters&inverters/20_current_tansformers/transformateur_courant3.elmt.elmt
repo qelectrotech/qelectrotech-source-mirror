@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="9" hotspot_y="45" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="9" hotspot_y="45" height="70" type="element" ic="true">
 <uuid uuid="{2520DD97-A81C-44F2-8C2F-38D558E4873F}"/><names>
         <name lang="en">Current transformer, two cores with a secondary winding on each core</name>
         <name lang="de">Stromwandler 2 Kerne</name>

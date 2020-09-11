@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="100" hotspot_x="9" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="100" hotspot_x="9" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{3961f415-857e-46f9-b62d-68729301e51d}"/>
     <names>
         <name lang="en">Distributor 4 / 2 control, controlled by push button</name>

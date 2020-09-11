@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" width="50" hotspot_x="7" height="30" version="0.80" hotspot_y="14" orientation="dyyy">
+<definition type="element" link_type="simple" width="50" hotspot_x="7" height="30" version="0.80" hotspot_y="14">
     <uuid uuid="{fa3d37d0-a379-4639-807b-dfa4230ac435}"/>
     <names>
         <name lang="es">ACS vivienda</name>

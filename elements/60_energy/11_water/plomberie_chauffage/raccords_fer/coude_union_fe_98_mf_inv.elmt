@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="35" version="0.51" hotspot_y="42" type="element" width="70" height="60" orientation="dyyy">
+<definition link_type="simple" hotspot_x="35" version="0.51" hotspot_y="42" type="element" width="70" height="60">
     <uuid uuid="{bd515463-66a5-4f4d-b3db-297e49a70bb0}"/>
     <names>
         <name lang="fr">Coude union n° 98 MF</name>

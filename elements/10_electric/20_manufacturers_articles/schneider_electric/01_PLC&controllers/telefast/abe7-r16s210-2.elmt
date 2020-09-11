@@ -1,4 +1,4 @@
-<definition width="800" height="100" link_type="simple" hotspot_y="39" hotspot_x="4" version="0.5" type="element" orientation="dyyy">
+<definition width="800" height="100" link_type="simple" hotspot_y="39" hotspot_x="4" version="0.5" type="element">
     <uuid uuid="{b2ee3a2b-c41d-4eb4-94f8-88b1a96fbdaf}"/>
     <names>
         <name lang="cs">ABE7-R16S210-2</name>

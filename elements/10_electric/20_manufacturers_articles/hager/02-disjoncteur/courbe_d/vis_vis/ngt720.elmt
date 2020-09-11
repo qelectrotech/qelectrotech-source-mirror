@@ -1,4 +1,4 @@
-<definition hotspot_y="40" link_type="master" width="50" height="70" type="element" version="0.80" hotspot_x="18" orientation="dyyy">
+<definition hotspot_y="40" link_type="master" width="50" height="70" type="element" version="0.80" hotspot_x="18">
     <uuid uuid="{116b7277-f5c2-4f9b-9622-f8062c4101a4}"/>
     <names>
         <name lang="fr">NGT720  20A</name>

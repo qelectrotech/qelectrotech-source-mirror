@@ -1,4 +1,4 @@
-<definition height="90" hotspot_y="46" link_type="simple" hotspot_x="305" version="0.70" width="610" type="element" orientation="dyyy">
+<definition height="90" hotspot_y="46" link_type="simple" hotspot_x="305" version="0.70" width="610" type="element">
     <uuid uuid="{712daf58-4e97-4423-81b8-298959d18053}"/>
     <names>
         <name lang="fr">1734-IR2</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="184" type="element" width="130" height="190" link_type="simple" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="184" type="element" width="130" height="190" link_type="simple" version="0.51" hotspot_x="5">
     <uuid uuid="{4ba46ee2-f66a-4759-a020-e4743396236c}"/>
     <names>
         <name lang="fr">Terre générale</name>

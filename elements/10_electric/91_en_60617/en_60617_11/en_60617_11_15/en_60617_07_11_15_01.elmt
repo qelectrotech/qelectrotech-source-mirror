@@ -1,4 +1,4 @@
-<definition link_type="simple" height="30" hotspot_x="56" version="0.80" hotspot_y="25" type="element" width="60" orientation="dyyy">
+<definition link_type="simple" height="30" hotspot_x="56" version="0.80" hotspot_y="25" type="element" width="60">
     <uuid uuid="{2dfac5a4-3698-4622-b9ac-9c8d15a0d88b}"/>
     <names>
         <name lang="be">Aansluitpunt voor een verlichtingstoestel</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="36" link_type="simple" height="80" type="element" width="100" version="0.80" hotspot_y="55" orientation="dyyy">
+<definition hotspot_x="36" link_type="simple" height="80" type="element" width="100" version="0.80" hotspot_y="55">
     <uuid uuid="{baf2df44-6d28-4ff3-8893-c3acc532b464}"/>
     <names>
         <name lang="ru">Однофазный эл. мотор</name>

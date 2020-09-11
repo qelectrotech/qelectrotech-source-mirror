@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{7ab0efe6-c79d-4d2d-9e4f-d798d077291d}"/>
     <names>
         <name lang="en">Double acting actuator with unilateral inhibition constant values</name>

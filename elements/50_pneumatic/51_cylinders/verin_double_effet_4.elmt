@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{6f3c5a39-c1ad-4763-95b9-bc8b2c05a8f8}"/>
     <names>
         <name lang="en">Double acting actuator with brake with two settings</name>

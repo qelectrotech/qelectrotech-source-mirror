@@ -1,4 +1,4 @@
-<definition height="50" link_type="simple" type="element" version="0.5" hotspot_y="21" width="70" hotspot_x="35" orientation="dyyy">
+<definition height="50" link_type="simple" type="element" version="0.5" hotspot_y="21" width="70" hotspot_x="35">
     <uuid uuid="{5cf67584-c570-4818-a16a-ed8b7acc6834}"/>
     <names>
         <name lang="it">Sensore (lumin., IR), 1 can</name>

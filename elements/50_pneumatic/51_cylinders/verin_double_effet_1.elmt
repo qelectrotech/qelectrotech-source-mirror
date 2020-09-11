@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="90" hotspot_x="35" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="90" hotspot_x="35" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{145475d2-bae9-4450-b9dc-98605e5335b1}"/>
     <names>
         <name lang="en">Double acting actuator stem on both sides</name>

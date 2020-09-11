@@ -1,4 +1,4 @@
-<definition width="90" height="60" link_type="master" version="0.80" hotspot_x="56" hotspot_y="31" type="element" orientation="dyyy">
+<definition width="90" height="60" link_type="master" version="0.80" hotspot_x="56" hotspot_y="31" type="element">
     <uuid uuid="{ae618b57-4640-4e9a-9791-643a00675f1a}"/>
     <names>
         <name lang="fr">FAZ-C4/1 (278553)

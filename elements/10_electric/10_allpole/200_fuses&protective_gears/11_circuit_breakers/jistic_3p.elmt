@@ -1,4 +1,4 @@
-<definition version="0.70" height="60" type="element" width="60" hotspot_x="30" link_type="master" hotspot_y="34" orientation="dyyy">
+<definition version="0.70" height="60" type="element" width="60" hotspot_x="30" link_type="master" hotspot_y="34">
     <uuid uuid="{458bcb69-d51d-4add-ab45-1830d8f42c0f}"/>
     <names>
         <name lang="cs">Trojpólový jistič</name>

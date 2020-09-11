@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="15" type="element" width="30" height="30" orientation="dyyy">
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="15" type="element" width="30" height="30">
     <uuid uuid="{b8a9f1fb-6a6b-4baa-afa0-b7726ae11bfc}"/>
     <names>
         <name lang="fr">Manchon n° 271 droite-gauche</name>

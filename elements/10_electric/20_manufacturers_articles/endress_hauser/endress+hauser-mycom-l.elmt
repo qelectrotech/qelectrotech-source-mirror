@@ -1,4 +1,4 @@
-<definition width="270" height="120" hotspot_y="49" version="0.80" link_type="simple" type="element" hotspot_x="135" orientation="dyyy">
+<definition width="270" height="120" hotspot_y="49" version="0.80" link_type="simple" type="element" hotspot_x="135">
     <uuid uuid="{43eab931-d645-407b-8e62-ee57e66012cb}"/>
     <names>
         <name lang="it">Endress+Hauser Mycom L</name>

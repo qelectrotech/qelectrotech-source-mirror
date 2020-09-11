@@ -1,4 +1,4 @@
-<definition hotspot_x="45" link_type="simple" height="100" type="element" width="90" version="0.80" hotspot_y="49" orientation="dyyy">
+<definition hotspot_x="45" link_type="simple" height="100" type="element" width="90" version="0.80" hotspot_y="49">
     <uuid uuid="{a9abc5f7-020e-4b5e-b4e8-c0d39290d384}"/>
     <names>
         <name lang="cs">Převodník RS485 na I2C</name>

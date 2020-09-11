@@ -1,4 +1,4 @@
-<definition height="70" link_type="simple" type="element" version="0.5" hotspot_y="56" width="110" hotspot_x="60" orientation="dyyy">
+<definition height="70" link_type="simple" type="element" version="0.5" hotspot_y="56" width="110" hotspot_x="60">
     <uuid uuid="{9b594c90-6b7a-421b-8ba8-ffbff306f462}"/>
     <names>
         <name lang="it">Regolatore 400w knx</name>

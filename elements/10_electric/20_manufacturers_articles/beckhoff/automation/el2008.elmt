@@ -1,4 +1,4 @@
-<definition hotspot_x="65" version="0.70" type="element" width="130" link_type="master" height="390" hotspot_y="195" orientation="dyyy">
+<definition hotspot_x="65" version="0.70" type="element" width="130" link_type="master" height="390" hotspot_y="195">
     <uuid uuid="{06ad4a67-e6e2-4281-bf8c-e586c0d14f7e}"/>
     <names>
         <name lang="en">EL2008 DO8</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="23" link_type="simple" height="50" width="20" type="element" version="0.80" hotspot_x="8" orientation="dyyy">
+<definition hotspot_y="23" link_type="simple" height="50" width="20" type="element" version="0.80" hotspot_x="8">
     <uuid uuid="{e9d0cd25-ae06-4b94-9b5f-d07f48618650}"/>
     <names>
         <name lang="fr">Sonde de température</name>

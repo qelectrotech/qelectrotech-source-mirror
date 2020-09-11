@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element">
 <uuid uuid="{3A60F1C3-303B-46F1-A5A9-B2BDD41DEFB5}"/><names>
         <name lang="en">Contact NC pneumatically or hydraulically controlled</name>
         <name lang="es">Contacto NC neumáticamente o hidraulicamente controlado</name>

@@ -1,4 +1,4 @@
-<definition height="80" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+<definition height="80" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="30">
     <uuid uuid="{6b944278-3868-45e9-b0ad-f13b12c96658}"/>
     <names>
         <name lang="en">Flowmeter</name>

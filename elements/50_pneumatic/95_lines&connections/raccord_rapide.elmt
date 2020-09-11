@@ -1,4 +1,4 @@
-<definition height="20" version="0.5" width="60" hotspot_x="24" type="element" link_type="simple" hotspot_y="10" orientation="dyyy">
+<definition height="20" version="0.5" width="60" hotspot_x="24" type="element" link_type="simple" hotspot_y="10">
     <uuid uuid="{ce7de192-ca63-4ee6-8554-cd404fb02ac1}"/>
     <names>
         <name lang="en">Quick Connect</name>

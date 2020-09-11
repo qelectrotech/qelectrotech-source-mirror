@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{85aefbc0-d4f6-4ffd-b3fe-ca00c42f446b}"/>
     <names>
         <name lang="fr">Sèche-Linge</name>

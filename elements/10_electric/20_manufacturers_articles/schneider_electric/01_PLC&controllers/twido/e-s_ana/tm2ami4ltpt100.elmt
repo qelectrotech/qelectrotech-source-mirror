@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" hotspot_x="55" width="890" hotspot_y="37" type="element" height="70" orientation="dyyy">
+<definition version="0.5" link_type="simple" hotspot_x="55" width="890" hotspot_y="37" type="element" height="70">
     <uuid uuid="{4fccc4af-d33d-42b7-adf7-0f73d2087c21}"/>
     <names>
         <name lang="el">TM2 AMI 4LT PT100 (είσοδοι ana)</name>

@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="45" hotspot_y="30" height="40" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="45" hotspot_y="30" height="40" type="element">
 <uuid uuid="{B340C6C6-7924-4CB0-9CB0-D76E821903D0}"/><names>
         <name lang="en">Electronic switching device with NO/NC contact </name>
         <name lang="es">Dispositivo de conmutado electrónico con contacto NA/NC</name>

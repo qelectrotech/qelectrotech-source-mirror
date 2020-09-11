@@ -1,4 +1,4 @@
-<definition width="100" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+<definition width="100" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element">
     <uuid uuid="{67d49695-8bd1-4120-b29f-5f8dca7ac13e}"/>
     <names>
         <name lang="cs">Měnič ARO1</name>

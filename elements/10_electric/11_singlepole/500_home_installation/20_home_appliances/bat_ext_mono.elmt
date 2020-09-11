@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{45003f26-0922-4d81-bb04-99c2f2fc2c0e}"/>
     <names>
         <name lang="fr">Bât Ext mono</name>

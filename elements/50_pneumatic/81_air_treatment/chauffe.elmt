@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{fc320f71-4ce7-4c12-aa23-6e1ec68b5e55}"/>
     <names>
         <name lang="en">Heater</name>

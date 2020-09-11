@@ -1,4 +1,4 @@
-<definition width="50" type="element" hotspot_x="19" link_type="master" hotspot_y="40" height="70" version="0.80" orientation="dyyy">
+<definition width="50" type="element" hotspot_x="19" link_type="master" hotspot_y="40" height="70" version="0.80">
     <uuid uuid="{2ea92354-4c59-4dae-81a8-40fef49be55e}"/>
     <names>
         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>

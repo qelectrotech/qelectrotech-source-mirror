@@ -1,4 +1,4 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="5" height="10" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="5" height="10" type="element" ic="true">
 <uuid uuid="{E2C6D39D-A744-471B-9F08-509EF0A8862A}"/><names>
         <name lang="es">Gas entrada</name>
     </names>

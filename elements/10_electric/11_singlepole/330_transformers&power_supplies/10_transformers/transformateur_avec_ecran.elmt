@@ -1,4 +1,4 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="30" height="60" type="element" ic="true">
 <uuid uuid="{4EAB420E-05E1-44C2-9E9A-7587C7C6BBCD}"/><names>
         <name lang="ar">مُحوّل بشاشة</name>
         <name lang="de">Transformator einphasig mit zwei Wicklungen und Schirm</name>

@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="40" hotspot_x="16" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="40" hotspot_x="16" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{c5e88bc4-ecae-448b-a141-84deaab82115}"/>
     <names>
         <name lang="en">Valve-controlled spring return</name>

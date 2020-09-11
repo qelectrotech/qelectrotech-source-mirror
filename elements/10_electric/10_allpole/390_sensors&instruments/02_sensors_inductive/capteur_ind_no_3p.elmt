@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element">
 <uuid uuid="{21E2E671-0755-4361-8416-FA94CEE561A3}"/><names>
         <name lang="ar">حسّاس حثّي 3 NO</name>
         <name lang="el">Επαγωγικός αισθητήρας, 3 ακροδέκτες, ανοικτή επαφή</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="50" hotspot_x="10" version="0.51" link_type="simple" height="50" hotspot_y="9" orientation="dyyy">
+<definition type="element" width="50" hotspot_x="10" version="0.51" link_type="simple" height="50" hotspot_y="9">
     <uuid uuid="{541339e5-4f29-473e-804e-9ffb501bacb4}"/>
     <names>
         <name lang="fr">Coude Cu n° 1</name>

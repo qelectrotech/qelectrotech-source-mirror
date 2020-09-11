@@ -716,7 +716,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="radiateur.elmt">
-                        <definition height="40" width="70" version="0.3" type="element" orientation="dyyy" hotspot_x="35" hotspot_y="20">
+                        <definition height="40" width="70" version="0.3" type="element" hotspot_x="35" hotspot_y="20">
                             <names>
                                 <name lang="ar">مشعاع</name>
                                 <name lang="en">Radiator</name>
@@ -972,7 +972,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Světla</name>
                     </names>
                     <element name="lampe1.elmt">
-                        <definition height="50" width="50" version="0.3" type="element" orientation="dnny" hotspot_x="20" hotspot_y="25">
+                        <definition height="50" width="50" version="0.3" type="element" hotspot_x="20" hotspot_y="25">
                             <names>
                                 <name lang="ar">مصباح</name>
                                 <name lang="de">Leuchte</name>
@@ -998,7 +998,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="voyant_flash.elmt">
-                        <definition height="60" width="40" version="0.3" type="element" orientation="dnny" hotspot_x="20" hotspot_y="30">
+                        <definition height="60" width="40" version="0.3" type="element" hotspot_x="20" hotspot_y="30">
                             <names>
                                 <name lang="ar">مُؤشّر وميضي</name>
                                 <name lang="en">Flashing light</name>
@@ -1037,7 +1037,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Různé</name>
                     </names>
                     <element name="pc_mono_armoire.elmt">
-                        <definition height="40" width="30" version="0.3" type="element" orientation="dyyy" hotspot_x="15" hotspot_y="20">
+                        <definition height="40" width="30" version="0.3" type="element" hotspot_x="15" hotspot_y="20">
                             <names>
                                 <name lang="ar">مقبس أحادي الوجه لخزانة</name>
                                 <name lang="en">socket Monopolaire cabinet</name>
@@ -1118,7 +1118,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Rozdílové spínače</name>
                     </names>
                     <element name="int_diff1.elmt">
-                        <definition height="50" width="50" version="0.3" type="element" orientation="dnny" hotspot_x="10" hotspot_y="25">
+                        <definition height="50" width="50" version="0.3" type="element" hotspot_x="10" hotspot_y="25">
                             <names>
                                 <name lang="ar">مفتاح تفاضلي</name>
                                 <name lang="de">Differenz Schalter</name>
@@ -1163,7 +1163,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Rozdílové jističe</name>
                     </names>
                     <element name="disjoncteur_differentiel_magnetothermique.elmt">
-                        <definition height="70" width="50" version="0.3" type="element" orientation="dnny" hotspot_x="10" hotspot_y="25">
+                        <definition height="70" width="50" version="0.3" type="element" hotspot_x="10" hotspot_y="25">
                             <names>
                                 <name lang="ar">قاطع تفاضلي مغناطيسي - حراري</name>
                                 <name lang="en">Magneto-thermal differential switch</name>
@@ -1209,7 +1209,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Jističe</name>
                     </names>
                     <element name="disjonct-m.elmt">
-                        <definition height="60" width="30" version="0.3" type="element" orientation="dnny" hotspot_x="0" hotspot_y="25">
+                        <definition height="60" width="30" version="0.3" type="element" hotspot_x="0" hotspot_y="25">
                             <names>
                                 <name lang="ar">قاطع أحدي القطب</name>
                                 <name lang="en">Circuit-breaker</name>
@@ -1268,7 +1268,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Spínače</name>
                     </names>
                     <element name="interrupteur.elmt">
-                        <definition height="40" width="20" version="0.3" type="element" orientation="dnny" hotspot_x="10" hotspot_y="20">
+                        <definition height="40" width="20" version="0.3" type="element" hotspot_x="10" hotspot_y="20">
                             <names>
                                 <name lang="ar">مفتاح</name>
                                 <name lang="de">Schalter</name>
@@ -1322,7 +1322,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="cs">Obvykle otevřené</name>
                         </names>
                         <element name="com_puiss1.elmt">
-                            <definition height="40" width="20" ic="true" version="0.3" type="element" orientation="dnny" hotspot_x="10" hotspot_y="20">
+                            <definition height="40" width="20" ic="true" version="0.3" type="element" hotspot_x="10" hotspot_y="20">
                                 <names>
                                     <name lang="ar">مُلامس قدرة - كونتكتور (NO)</name>
                                     <name lang="de">Leistungs Kontakt</name>

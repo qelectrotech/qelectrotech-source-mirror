@@ -1,4 +1,4 @@
-<definition width="50" version="0.4" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true">
 <uuid uuid="{FB9E90EF-C51D-41E0-A529-AC7F245B6FC7}"/><names>
         <name lang="it">Autotrasformatore monofase(forma 2)</name>
         <name lang="fr">Autotransformateur monophasé</name>

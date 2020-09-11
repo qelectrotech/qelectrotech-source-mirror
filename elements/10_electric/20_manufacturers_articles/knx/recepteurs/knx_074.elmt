@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="100" hotspot_x="28" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="100" hotspot_x="28">
     <uuid uuid="{69be8da8-4ba5-4ac0-8424-b4d6303cd7a0}"/>
     <names>
         <name lang="it">Uscita digitale + Ric. IR/Decoder</name>

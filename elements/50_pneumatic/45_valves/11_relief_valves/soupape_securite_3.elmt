@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="60" hotspot_x="8" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="70" version="0.5" width="60" hotspot_x="8" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{5a1baca9-64f7-4457-8c1a-8f1b189660e4}"/>
     <names>
         <name lang="en">Pressure regulator valve </name>

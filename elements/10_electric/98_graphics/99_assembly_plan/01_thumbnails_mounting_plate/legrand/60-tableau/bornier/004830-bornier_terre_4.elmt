@@ -1,4 +1,4 @@
-<definition link_type="terminal" hotspot_x="6" hotspot_y="3" type="element" height="70" version="0.80" width="40" orientation="dyyy">
+<definition link_type="terminal" hotspot_x="6" hotspot_y="3" type="element" height="70" version="0.80" width="40">
     <uuid uuid="{e5048eab-0ebd-4cea-b51e-ba494d2cb458}"/>
     <names>
         <name lang="fr">004830  - Bornier phase 4 x 1,5-16mm²</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{10925a2b-b675-4c15-949a-c2ab033700f3}"/>
     <names>
         <name lang="fr">Cadre vide tétra</name>

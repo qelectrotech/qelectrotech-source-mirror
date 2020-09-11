@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="60" hotspot_x="8" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="70" version="0.5" width="60" hotspot_x="8" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{d1695b17-819f-42e0-9840-dee813aa0659}"/>
     <names>
         <name lang="en">Pressure regulator adjustable spring</name>

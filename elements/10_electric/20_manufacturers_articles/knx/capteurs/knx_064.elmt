@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44">
     <uuid uuid="{e1f39d32-2014-4612-bf46-49d763ba07ee}"/>
     <names>
         <name lang="it">Modulo contatto + pulsante</name>

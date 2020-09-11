@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" width="50" hotspot_x="10" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="30" version="0.5" width="50" hotspot_x="10" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{e70d0373-1d06-4478-9aa7-4eccbf8f7b2e}"/>
     <names>
         <name lang="en">Air drain</name>

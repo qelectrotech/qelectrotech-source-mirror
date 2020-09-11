@@ -1,4 +1,4 @@
-<definition version="0.70" height="30" type="element" width="140" hotspot_x="66" link_type="simple" hotspot_y="14" orientation="dyyy">
+<definition version="0.70" height="30" type="element" width="140" hotspot_x="66" link_type="simple" hotspot_y="14">
     <uuid uuid="{2ce35704-86b4-4002-a3cb-bed1b0c22249}"/>
     <names>
         <name lang="cs">C16 7p fem</name>

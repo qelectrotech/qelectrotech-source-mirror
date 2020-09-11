@@ -1,4 +1,4 @@
-<definition version="0.70" width="70" type="element" height="250" hotspot_x="45" hotspot_y="125" link_type="simple" orientation="dyyy">
+<definition version="0.70" width="70" type="element" height="250" hotspot_x="45" hotspot_y="125" link_type="simple">
     <uuid uuid="{e35b4a41-7174-42ee-8c86-9d3423b69be0}"/>
     <names>
         <name lang="en">BMXAMI0800</name>

@@ -1,4 +1,4 @@
-<definition height="90" version="0.5" width="70" hotspot_x="5" type="element" link_type="simple" hotspot_y="44" orientation="dyyy">
+<definition height="90" version="0.5" width="70" hotspot_x="5" type="element" link_type="simple" hotspot_y="44">
     <uuid uuid="{18c5fa15-97ea-4597-a244-1692fcdf8cb8}"/>
     <names>
         <name lang="en">Two-way flow controller with temperature compensation, with a variable output flow rate</name>

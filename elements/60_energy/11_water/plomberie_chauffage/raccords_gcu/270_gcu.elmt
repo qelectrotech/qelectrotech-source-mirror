@@ -1,4 +1,4 @@
-<definition hotspot_y="15" hotspot_x="16" type="element" width="30" link_type="simple" height="30" version="0.51" orientation="dyyy">
+<definition hotspot_y="15" hotspot_x="16" type="element" width="30" link_type="simple" height="30" version="0.51">
     <uuid uuid="{03e98229-f67c-44a2-8108-78223cf16919}"/>
     <names>
         <name lang="fr">Manchon 270 GCU</name>

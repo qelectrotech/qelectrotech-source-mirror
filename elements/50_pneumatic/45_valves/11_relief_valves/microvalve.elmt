@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="80" hotspot_x="11" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="70" version="0.5" width="80" hotspot_x="11" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{d9dbe1b0-642f-44cb-a151-fb0298a353bd}"/>
     <names>
         <name lang="en">Microvalve mechanically</name>

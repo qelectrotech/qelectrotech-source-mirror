@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="50" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="70" version="0.5" width="50" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{588165c9-233d-4062-97d1-6b241f02348c}"/>
     <names>
         <name lang="en">Adjustable throttle valve</name>

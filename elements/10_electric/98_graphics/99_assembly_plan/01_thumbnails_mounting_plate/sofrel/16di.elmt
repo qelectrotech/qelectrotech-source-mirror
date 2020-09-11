@@ -1,4 +1,4 @@
-<definition height="290" link_type="slave" type="element" hotspot_y="143" version="0.80" width="50" hotspot_x="26" orientation="dyyy">
+<definition height="290" link_type="slave" type="element" hotspot_y="143" version="0.80" width="50" hotspot_x="26">
     <uuid uuid="{c35b024d-9568-41ce-99ff-19fdc0eb7e9b}"/>
     <names>
         <name lang="fr">16DI</name>

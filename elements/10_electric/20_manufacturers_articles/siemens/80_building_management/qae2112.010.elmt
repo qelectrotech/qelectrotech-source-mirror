@@ -1,4 +1,4 @@
-<definition width="40" height="30" link_type="simple" version="0.80" hotspot_x="14" hotspot_y="5" type="element" orientation="dyyy">
+<definition width="40" height="30" link_type="simple" version="0.80" hotspot_x="14" hotspot_y="5" type="element">
     <uuid uuid="{44f1d28e-6827-46ce-b69f-a2564b56b2be}"/>
     <names>
         <name lang="de">QAE2112.010 PT1000</name>

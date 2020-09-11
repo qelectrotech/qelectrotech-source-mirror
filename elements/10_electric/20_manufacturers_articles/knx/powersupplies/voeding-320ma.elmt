@@ -1,4 +1,4 @@
-<definition hotspot_y="45" type="element" height="90" version="0.80" width="100" hotspot_x="49" link_type="master" orientation="dyyy">
+<definition hotspot_y="45" type="element" height="90" version="0.80" width="100" hotspot_x="49" link_type="master">
     <uuid uuid="{a7d840cd-9288-4d44-9451-0e65b79abf97}"/>
     <names>
         <name lang="en">KNX power supplies 320mA</name>

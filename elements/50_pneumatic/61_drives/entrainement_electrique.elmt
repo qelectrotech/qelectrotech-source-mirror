@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="25" orientation="dyyy">
+<definition height="40" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="25">
     <uuid uuid="{81a932be-1940-40bc-b0ee-691a1530c54b}"/>
     <names>
         <name lang="en">Electrical drive</name>

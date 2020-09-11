@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{813a31b1-e44c-4c6d-aa4f-2e94f5cc8010}"/>
     <names>
         <name lang="it">Ingresso analogico, 2 can</name>

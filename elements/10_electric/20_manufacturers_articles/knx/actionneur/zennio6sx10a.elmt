@@ -1,4 +1,4 @@
-<definition height="70" link_type="simple" type="element" version="0.5" hotspot_y="42" width="180" hotspot_x="20" orientation="dyyy">
+<definition height="70" link_type="simple" type="element" version="0.5" hotspot_y="42" width="180" hotspot_x="20">
     <uuid uuid="{a4bc3e5a-6b20-464c-b24e-43bc1761a6fe}"/>
     <names>
         <name lang="it">Attuatore zennio 6sx10a</name>

@@ -1,4 +1,4 @@
-<definition width="100" version="0.4" hotspot_x="40" hotspot_y="40" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="100" version="0.4" hotspot_x="40" hotspot_y="40" height="70" link_type="simple" type="element" ic="true">
 <uuid uuid="{0B3C566A-0A18-47B1-9BBF-0A9FF016CB96}"/><names>
         <name lang="es">Ud. Condensadora scroll</name>
         <name lang="ca">Ud.condesnadora scroll</name>

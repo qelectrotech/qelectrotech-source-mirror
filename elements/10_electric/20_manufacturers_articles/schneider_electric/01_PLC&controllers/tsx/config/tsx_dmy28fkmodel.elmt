@@ -1,4 +1,4 @@
-<definition width="120" height="460" link_type="simple" hotspot_y="457" hotspot_x="4" version="0.5" type="element" orientation="dyyy">
+<definition width="120" height="460" link_type="simple" hotspot_y="457" hotspot_x="4" version="0.5" type="element">
     <uuid uuid="{da1bf969-6f2d-44b1-b5f6-fabc63c2e000}"/>
     <names>
         <name lang="cs">tsx_dmy28fkmodel</name>

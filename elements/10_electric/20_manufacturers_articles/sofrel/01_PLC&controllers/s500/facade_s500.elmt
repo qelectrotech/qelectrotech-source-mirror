@@ -1,4 +1,4 @@
-<definition width="1160" height="400" link_type="simple" version="0.80" hotspot_x="7" hotspot_y="17" type="element" orientation="dyyy">
+<definition width="1160" height="400" link_type="simple" version="0.80" hotspot_x="7" hotspot_y="17" type="element">
     <uuid uuid="{e87bc30d-b1d3-47c6-8408-be75bdac3771}"/>
     <names>
         <name lang="nl">Voorzijde S550 </name>

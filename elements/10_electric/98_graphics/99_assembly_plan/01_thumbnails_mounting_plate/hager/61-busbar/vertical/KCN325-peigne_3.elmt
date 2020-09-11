@@ -1,4 +1,4 @@
-<definition hotspot_y="65" link_type="simple" width="50" height="640" type="element" version="0.80" hotspot_x="7" orientation="dyyy">
+<definition hotspot_y="65" link_type="simple" width="50" height="640" type="element" version="0.80" hotspot_x="7">
     <uuid uuid="{fb326e0a-5aac-4cf0-a5df-dd5e15e0445d}"/>
     <names>
         <name lang="fr">KCN325 - Peigne P+N- 3 rangées</name>

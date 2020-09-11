@@ -1,4 +1,4 @@
-<definition height="80" hotspot_x="115" version="0.70" width="230" hotspot_y="45" link_type="simple" type="element" orientation="dyyy">
+<definition height="80" hotspot_x="115" version="0.70" width="230" hotspot_y="45" link_type="simple" type="element">
     <uuid uuid="{cf14cc07-b065-4d03-a08e-db6dde2ec7e9}"/>
     <names>
         <name lang="en">Proportional directional valve with OBE</name>

@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="master" hotspot_x="27" height="60" width="60" type="element" hotspot_y="30" orientation="dyyy">
+<definition version="0.80" link_type="master" hotspot_x="27" height="60" width="60" type="element" hotspot_y="30">
     <uuid uuid="{42b36170-a263-4f48-b764-d680df0d4853}"/>
     <names>
         <name lang="it">3 Contatti NA di potenza</name>

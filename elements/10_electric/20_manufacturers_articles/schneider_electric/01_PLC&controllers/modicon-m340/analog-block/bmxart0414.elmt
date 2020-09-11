@@ -1,4 +1,4 @@
-<definition version="0.70" width="70" type="element" height="250" hotspot_x="25" hotspot_y="125" link_type="simple" orientation="dyyy">
+<definition version="0.70" width="70" type="element" height="250" hotspot_x="25" hotspot_y="125" link_type="simple">
     <uuid uuid="{b86fe0d3-72ff-41b2-adf3-c54929e56ea3}"/>
     <names>
         <name lang="en">BMXART0414</name>

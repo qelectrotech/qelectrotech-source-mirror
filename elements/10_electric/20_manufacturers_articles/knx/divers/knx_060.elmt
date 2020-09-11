@@ -1,4 +1,4 @@
-<definition height="50" link_type="simple" type="element" version="0.5" hotspot_y="21" width="50" hotspot_x="14" orientation="dyyy">
+<definition height="50" link_type="simple" type="element" version="0.5" hotspot_y="21" width="50" hotspot_x="14">
     <uuid uuid="{7f26ecb5-3013-4c6b-af82-a0ee9beb0d1b}"/>
     <names>
         <name lang="it">Sistema di blocco</name>

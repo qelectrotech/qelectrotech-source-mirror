@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{b0f3a4bd-e8d5-4f53-a7cf-95be61f12702}"/>
     <names>
         <name lang="fr">Filtration</name>

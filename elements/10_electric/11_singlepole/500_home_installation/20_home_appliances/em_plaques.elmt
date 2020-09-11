@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{aeb1a712-0e27-4f4f-813c-62837ea06ade}"/>
     <names>
         <name lang="fr">Plaque de cuisson</name>

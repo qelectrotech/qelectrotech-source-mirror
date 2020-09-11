@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="38" orientation="dyyy">
+<definition height="60" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="38">
     <uuid uuid="{5dc90539-7cef-40a4-a151-93b31d250825}"/>
     <names>
         <name lang="en">Selector circuit</name>

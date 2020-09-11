@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{dd764891-fc6e-47e2-8a4d-3958ef7c4a17}"/>
     <names>
         <name lang="it">Sensore anemometro</name>

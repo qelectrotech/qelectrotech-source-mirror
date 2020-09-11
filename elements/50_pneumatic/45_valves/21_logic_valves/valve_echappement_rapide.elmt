@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="90" hotspot_x="43" type="element" link_type="simple" hotspot_y="22" orientation="dyyy">
+<definition height="50" version="0.5" width="90" hotspot_x="43" type="element" link_type="simple" hotspot_y="22">
     <uuid uuid="{66516ba2-d780-4a94-9496-59678d92eb12}"/>
     <names>
         <name lang="en">OR gate</name>

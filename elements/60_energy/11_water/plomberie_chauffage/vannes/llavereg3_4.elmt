@@ -1,4 +1,4 @@
-<definition hotspot_y="43" link_type="simple" height="60" width="50" type="element" version="0.80" hotspot_x="38" orientation="dyyy">
+<definition hotspot_y="43" link_type="simple" height="60" width="50" type="element" version="0.80" hotspot_x="38">
     <uuid uuid="{d765534f-ab49-4dd6-ba24-67aa40433614}"/>
     <names>
         <name lang="fr">Vanne 3/4" F-F</name>

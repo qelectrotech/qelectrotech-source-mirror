@@ -1,4 +1,4 @@
-<definition height="90" version="0.5" width="70" hotspot_x="5" type="element" link_type="simple" hotspot_y="44" orientation="dyyy">
+<definition height="90" version="0.5" width="70" hotspot_x="5" type="element" link_type="simple" hotspot_y="44">
     <uuid uuid="{7d428576-9618-4082-8ae7-4771fcae7f1e}"/>
     <names>
         <name lang="en">Two-way flow controller, with a variable output flow rate</name>

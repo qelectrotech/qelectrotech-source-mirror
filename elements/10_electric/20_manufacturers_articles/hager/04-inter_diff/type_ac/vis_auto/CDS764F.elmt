@@ -1,4 +1,4 @@
-<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46" orientation="dyyy">
+<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46">
     <uuid uuid="{df02f4d8-3181-48c1-9f11-af25267792e7}"/>
     <names>
         <name lang="fr">CDC764F-Interrupteur différentiel 2P 63A 30mA type AC à bornes décalées SanVis</name>

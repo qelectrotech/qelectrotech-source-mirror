@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="120" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="120" hotspot_x="10" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{de368771-c926-4b9d-bba1-07105523279b}"/>
     <names>
         <name lang="en">Valve 4 / 3 control, closed in mid-position</name>

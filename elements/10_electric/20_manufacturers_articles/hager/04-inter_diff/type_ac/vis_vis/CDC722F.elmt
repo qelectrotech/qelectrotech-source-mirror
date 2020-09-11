@@ -1,4 +1,4 @@
-<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46" orientation="dyyy">
+<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46">
     <uuid uuid="{5ff1c811-8052-4d3c-a17c-bb2af8f0eb3d}"/>
     <names>
         <name lang="fr">CDC722F-Interrupteur différentiel 2P 25A 30mA type AC</name>

@@ -1,4 +1,4 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="50" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="15" hotspot_y="50" height="70" link_type="simple" type="element" ic="true">
 <uuid uuid="{7A2B8567-7C97-41B3-AB26-929DCBDB3890}"/><names>
         <name lang="es">Resistencia de depósito</name>
         <name lang="en">Resistance tank</name>

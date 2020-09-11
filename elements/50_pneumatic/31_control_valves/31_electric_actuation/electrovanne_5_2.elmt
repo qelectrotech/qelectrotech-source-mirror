@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="110" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="110" hotspot_x="10" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{db3f5ddb-99b6-41d9-acce-e9442a265545}"/>
     <names>
         <name lang="en">Valve 5 / 2, driven by the pressure in both directions</name>

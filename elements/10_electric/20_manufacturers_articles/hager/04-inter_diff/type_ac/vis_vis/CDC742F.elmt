@@ -1,4 +1,4 @@
-<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46" orientation="dyyy">
+<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46">
     <uuid uuid="{30e8cd0e-7bc5-4d51-8282-4e2e87c0a8c7}"/>
     <names>
         <name lang="fr">CDC742F-Interrupteur différentiel 2P 40A 30mA type AC</name>

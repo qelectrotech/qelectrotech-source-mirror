@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="simple" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="simple" version="0.51" hotspot_x="5">
     <uuid uuid="{74fafb19-b1ea-431c-a73b-5f6c69fe5cf5}"/>
     <names>
         <name lang="fr">Four</name>

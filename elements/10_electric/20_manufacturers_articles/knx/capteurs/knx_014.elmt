@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{8fd0d80e-4732-4488-bdc9-4c7290156b01}"/>
     <names>
         <name lang="it">Sensore di luminosità</name>

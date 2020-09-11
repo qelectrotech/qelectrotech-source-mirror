@@ -1,4 +1,4 @@
-<definition width="100" height="60" link_type="simple" hotspot_y="55" hotspot_x="3" version="0.5" type="element" orientation="dyyy">
+<definition width="100" height="60" link_type="simple" hotspot_y="55" hotspot_x="3" version="0.5" type="element">
     <uuid uuid="{dadabfb4-ce0c-4fdd-ab69-0f9c20410fd2}"/>
     <names>
         <name lang="cs">LC2K</name>

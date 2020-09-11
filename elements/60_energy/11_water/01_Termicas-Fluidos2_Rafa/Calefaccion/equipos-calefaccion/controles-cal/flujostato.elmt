@@ -1,4 +1,4 @@
-<definition width="30" version="0.4" hotspot_x="13" hotspot_y="14" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="13" hotspot_y="14" height="40" link_type="simple" type="element" ic="true">
 <uuid uuid="{642FE0E6-CD87-4715-AB7C-58B27B9AE03B}"/><names>
         <name lang="es">Flujostato</name>
         <name lang="en">Flow switch</name>

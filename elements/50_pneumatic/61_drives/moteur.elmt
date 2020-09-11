@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{d4e07aeb-d0c8-418d-87cf-fe528a371d87}"/>
     <names>
         <name lang="en">Motor with one direction of

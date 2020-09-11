@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="12" width="40" type="element" height="70" hotspot_x="10" version="0.80" orientation="dyyy">
+<definition link_type="simple" hotspot_y="12" width="40" type="element" height="70" hotspot_x="10" version="0.80">
     <uuid uuid="{9e1df6d1-306f-49f5-bf9a-6466a40a2136}"/>
     <names>
         <name lang="nl">Watt uur meter</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" height="30" version="0.80" width="50" hotspot_x="24" link_type="simple" orientation="dyyy">
+<definition hotspot_y="15" type="element" height="30" version="0.80" width="50" hotspot_x="24" link_type="simple">
     <uuid uuid="{eeac60fe-46cd-4dbd-906d-318c0263ed92}"/>
     <names>
         <name lang="es">Flexible2</name>

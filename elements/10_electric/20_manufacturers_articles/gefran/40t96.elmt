@@ -1,4 +1,4 @@
-<definition type="element" width="290" height="110" hotspot_y="34" version="0.51" hotspot_x="15" link_type="simple" orientation="dyyy">
+<definition type="element" width="290" height="110" hotspot_y="34" version="0.51" hotspot_x="15" link_type="simple">
     <uuid uuid="{405edd67-9980-481f-b785-c54eebc2239d}"/>
     <names>
         <name lang="en">GEFRAN 40T 96</name>

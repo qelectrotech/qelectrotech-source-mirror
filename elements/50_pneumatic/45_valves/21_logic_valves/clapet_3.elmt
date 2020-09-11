@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="40" hotspot_x="17" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="50" version="0.5" width="40" hotspot_x="17" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{a1fefedb-7432-4125-8d57-a4a3bc1c3cea}"/>
     <names>
         <name lang="en">Non-return valve</name>

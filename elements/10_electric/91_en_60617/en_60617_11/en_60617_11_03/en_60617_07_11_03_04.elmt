@@ -1,4 +1,4 @@
-<definition link_type="simple" height="40" hotspot_x="144" version="0.80" hotspot_y="34" type="element" width="150" orientation="dyyy">
+<definition link_type="simple" height="40" hotspot_x="144" version="0.80" hotspot_y="34" type="element" width="150">
     <uuid uuid="{64f28af5-53e6-473f-9886-6177e07d33b4}"/>
     <names>
         <name lang="be">Elektrische leiding in een buis</name>

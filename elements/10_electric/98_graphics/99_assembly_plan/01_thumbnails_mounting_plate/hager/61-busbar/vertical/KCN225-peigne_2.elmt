@@ -1,4 +1,4 @@
-<definition hotspot_y="65" link_type="simple" width="50" height="360" type="element" version="0.80" hotspot_x="7" orientation="dyyy">
+<definition hotspot_y="65" link_type="simple" width="50" height="360" type="element" version="0.80" hotspot_x="7">
     <uuid uuid="{077c07f7-c5e8-4a3c-8335-f59d3de44af7}"/>
     <names>
         <name lang="fr">KCN225 - Peigne P+N  - 2 rangées</name>

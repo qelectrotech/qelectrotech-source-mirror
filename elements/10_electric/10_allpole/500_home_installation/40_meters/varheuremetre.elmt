@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="29" width="40" type="element" height="50" hotspot_x="20" version="0.80" orientation="dyyy">
+<definition link_type="simple" hotspot_y="29" width="40" type="element" height="50" hotspot_x="20" version="0.80">
     <uuid uuid="{9f7f0eef-5d63-4903-bee8-49c2d6578216}"/>
     <names>
         <name lang="nl">VAr energie meter</name>

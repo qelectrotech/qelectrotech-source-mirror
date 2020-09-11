@@ -909,7 +909,7 @@
             <category name="gce">
                 <names/>
                 <element name="gce_ipx-800-v4.elmt">
-                    <definition hotspot_x="282" link_type="simple" hotspot_y="114" version="0.5" height="210" orientation="dyyy" type="element" width="560">
+                    <definition hotspot_x="282" link_type="simple" hotspot_y="114" version="0.5" height="210" type="element" width="560">
                         <uuid uuid="{9312cfaa-b8e4-4530-959f-876293a5c483}"/>
                         <names>
                             <name lang="cs">IPX800 V4</name>
@@ -1235,7 +1235,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="gce_x-8r.elmt">
-                    <definition hotspot_x="287" link_type="simple" hotspot_y="74" version="0.5" height="210" orientation="dyyy" type="element" width="560">
+                    <definition hotspot_x="287" link_type="simple" hotspot_y="74" version="0.5" height="210" type="element" width="560">
                         <uuid uuid="{61157e72-331f-48d2-b51f-c4616ea4be07}"/>
                         <names>
                             <name lang="cs">X-8R</name>
@@ -1592,7 +1592,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="power-suply_12v.elmt">
-                    <definition hotspot_x="104" link_type="simple" hotspot_y="106" version="0.5" height="200" orientation="dyyy" type="element" width="210">
+                    <definition hotspot_x="104" link_type="simple" hotspot_y="106" version="0.5" height="200" type="element" width="210">
                         <uuid uuid="{f26d7001-0b94-4337-ac08-cee1ca33de25}"/>
                         <names>
                             <name lang="cs">12V-Power-Suply</name>
@@ -1713,7 +1713,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="fr">Commutateurs sélecteurs</name>
                             </names>
                             <element name="inter_2.elmt">
-                                <definition hotspot_x="5" hotspot_y="35" version="0.3" height="50" orientation="dyyy" type="element" width="50">
+                                <definition hotspot_x="5" hotspot_y="35" version="0.3" height="50" type="element" width="50">
                                     <uuid uuid="{DB438035-65C4-4C55-854C-3A5E635C8476}"/>
                                     <names>
                                         <name lang="ar">مفتاح بوضعين</name>
@@ -1762,7 +1762,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="fr">Signalements optiques</name>
                             </names>
                             <element name="lampe2.elmt">
-                                <definition hotspot_x="15" link_type="simple" hotspot_y="29" version="0.5" height="60" orientation="dyyy" type="element" width="30">
+                                <definition hotspot_x="15" link_type="simple" hotspot_y="29" version="0.5" height="60" type="element" width="30">
                                     <uuid uuid="{c8f5ab5f-4534-4307-90b4-c6601cc77abb}"/>
                                     <names>
                                         <name lang="fr">Lampe</name>
@@ -1809,7 +1809,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="cs">Tlačítka</name>
                             </names>
                             <element name="poussoir.elmt">
-                                <definition hotspot_x="14" link_type="master" hotspot_y="29" version="0.5" height="60" orientation="dyyy" type="element" width="20">
+                                <definition hotspot_x="14" link_type="master" hotspot_y="29" version="0.5" height="60" type="element" width="20">
                                     <uuid uuid="{B7E19699-CDD6-471B-B99D-8F31818E7C9A}"/>
                                     <names>
                                         <name lang="ar">زرّ ضاغط</name>
@@ -1868,7 +1868,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="fr">Eclairages</name>
                             </names>
                             <element name="lamp.elmt">
-                                <definition hotspot_x="14" link_type="simple" hotspot_y="33" version="0.4" height="60" orientation="dyyy" type="element" width="30">
+                                <definition hotspot_x="14" link_type="simple" hotspot_y="33" version="0.4" height="60" type="element" width="30">
                                     <uuid uuid="{4DB2D527-6F9E-405D-B48E-46604AF24840}"/>
                                     <names>
                                         <name lang="de">Lampe</name>
@@ -1911,7 +1911,7 @@ License: Creative Commons Attribution 3.0 base License</informations>
                             <name lang="fr">Sources réseau</name>
                         </names>
                         <element name="src_1pn.elmt">
-                            <definition hotspot_x="15" link_type="simple" hotspot_y="20" version="0.5" height="40" orientation="dyyy" type="element" width="30">
+                            <definition hotspot_x="15" link_type="simple" hotspot_y="20" version="0.5" height="40" type="element" width="30">
                                 <uuid uuid="{457a0c01-871c-40fd-83d7-14033333fb95}"/>
                                 <names>
                                     <name lang="pt">Fonte unipolar + neutro</name>
@@ -1970,7 +1970,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="nl">Aardlekschakelaar + automaat</name>
                             </names>
                             <element name="ddr2.elmt">
-                                <definition hotspot_x="22" link_type="master" hotspot_y="25" version="0.3" height="50" orientation="dyyy" type="element" width="90" ic="true">
+                                <definition hotspot_x="22" link_type="master" hotspot_y="25" version="0.3" height="50" type="element" width="90" ic="true">
                                     <uuid uuid="{5A16103B-1AFD-4B0E-B161-EC820E27C05E}"/>
                                     <names>
                                         <name lang="ar">قاطع تفاضلي</name>
@@ -2025,7 +2025,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="nl">Lastscheiders</name>
                             </names>
                             <element name="disjonct-m_1fn.elmt">
-                                <definition hotspot_x="20" link_type="master" hotspot_y="34" version="0.4" height="60" orientation="dyyy" type="element" width="40">
+                                <definition hotspot_x="20" link_type="master" hotspot_y="34" version="0.4" height="60" type="element" width="40">
                                     <uuid uuid="{913D46E0-6E35-4878-9B5D-5CFBF47C819F}"/>
                                     <names>
                                         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
@@ -2112,7 +2112,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="fr">Architecture</name>
                             </names>
                             <element name="interrupteur.elmt">
-                                <definition hotspot_x="8" link_type="simple" hotspot_y="15" version="0.5" height="30" orientation="dyyy" type="element" width="20">
+                                <definition hotspot_x="8" link_type="simple" hotspot_y="15" version="0.5" height="30" type="element" width="20">
                                     <uuid uuid="{df5f5a4a-4a6f-49fc-9bd9-c91f22eb7113}"/>
                                     <names>
                                         <name lang="fr">Interrupteur,</name>
@@ -2135,7 +2135,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="lampe.elmt">
-                                <definition hotspot_x="15" link_type="simple" hotspot_y="26" version="0.5" height="30" orientation="dyyy" type="element" width="30">
+                                <definition hotspot_x="15" link_type="simple" hotspot_y="26" version="0.5" height="30" type="element" width="30">
                                     <uuid uuid="{8F6E31C3-6278-47A5-B494-C153B29775D0}"/>
                                     <names>
                                         <name lang="pt">Lâmpada</name>
@@ -2236,7 +2236,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="en">Circuit-breakers</name>
                                 </names>
                                 <element name="disjonct-m_1fn.elmt">
-                                    <definition hotspot_x="20" link_type="master" hotspot_y="34" version="0.4" height="60" orientation="dyyy" type="element" width="40">
+                                    <definition hotspot_x="20" link_type="master" hotspot_y="34" version="0.4" height="60" type="element" width="40">
                                         <uuid uuid="{913D46E0-6E35-4878-9B5D-5CFBF47C819F}"/>
                                         <names>
                                             <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>

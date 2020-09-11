@@ -1,4 +1,4 @@
-<definition height="30" link_type="master" type="element" version="0.5" hotspot_y="24" width="120" hotspot_x="6" orientation="dyyy">
+<definition height="30" link_type="master" type="element" version="0.5" hotspot_y="24" width="120" hotspot_x="6">
     <uuid uuid="{a5640741-dbdc-4f12-a7b0-d441c153629b}"/>
     <names>
         <name lang="it">Indirizzo fisico KNX</name>

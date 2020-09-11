@@ -1,4 +1,4 @@
-<definition width="260" height="120" hotspot_x="24" version="0.80" type="element" hotspot_y="30" link_type="simple" orientation="dyyy">
+<definition width="260" height="120" hotspot_x="24" version="0.80" type="element" hotspot_y="30" link_type="simple">
     <uuid uuid="{c405593c-7760-40de-b15d-a16766bd6307}"/>
     <names>
         <name lang="en">LCD 2X16</name>

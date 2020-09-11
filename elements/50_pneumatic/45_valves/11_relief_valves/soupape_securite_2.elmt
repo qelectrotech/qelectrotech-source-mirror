@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="60" hotspot_x="8" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="70" version="0.5" width="60" hotspot_x="8" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{759584d0-184e-4dd6-8d11-454d49c64d1c}"/>
     <names>
         <name lang="en">Pressure relief valve adjustable spring</name>

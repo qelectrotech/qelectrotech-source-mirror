@@ -1,4 +1,4 @@
-<definition width="160" height="260" hotspot_y="197" version="0.80" link_type="simple" type="element" hotspot_x="135" orientation="dyyy">
+<definition width="160" height="260" hotspot_y="197" version="0.80" link_type="simple" type="element" hotspot_x="135">
     <uuid uuid="{3bb47693-c7de-4470-8400-6b5cdcb3b466}"/>
     <names>
         <name lang="it">IM361 RECEIVE 6ES7 361-3CA01-0AA0</name>

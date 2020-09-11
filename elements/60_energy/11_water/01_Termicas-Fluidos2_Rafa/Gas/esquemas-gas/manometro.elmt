@@ -1,4 +1,4 @@
-<definition hotspot_y="21" type="element" height="30" version="0.80" width="20" hotspot_x="10" link_type="simple" orientation="dyyy">
+<definition hotspot_y="21" type="element" height="30" version="0.80" width="20" hotspot_x="10" link_type="simple">
     <uuid uuid="{8daf5311-59c7-48d2-a6ba-be7818bd0b0f}"/>
     <names>
         <name lang="es">Manómetro</name>

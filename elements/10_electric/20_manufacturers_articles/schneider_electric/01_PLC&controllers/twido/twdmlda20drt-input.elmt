@@ -1,4 +1,4 @@
-<definition width="860" height="70" link_type="simple" hotspot_y="35" hotspot_x="55" version="0.5" type="element" orientation="dyyy">
+<definition width="860" height="70" link_type="simple" hotspot_y="35" hotspot_x="55" version="0.5" type="element">
     <uuid uuid="{bdea8af8-7193-4314-936d-1a4c42f933da}"/>
     <names>
         <name lang="cs">TWDLMDA20DRT (vstupy)</name>

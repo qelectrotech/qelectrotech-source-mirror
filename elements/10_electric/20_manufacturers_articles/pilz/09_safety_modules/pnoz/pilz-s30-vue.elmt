@@ -1,4 +1,4 @@
-<definition width="120" type="element" hotspot_x="53" link_type="simple" hotspot_y="122" version="0.70" height="250" orientation="dyyy">
+<definition width="120" type="element" hotspot_x="53" link_type="simple" hotspot_y="122" version="0.70" height="250">
     <uuid uuid="{898663a3-67d7-430f-adea-c01fafea20bf}"/>
     <names>
         <name lang="en">Pilz S30 - Layout</name>

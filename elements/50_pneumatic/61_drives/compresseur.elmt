@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="36" orientation="dyyy">
+<definition height="50" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="36">
     <uuid uuid="{4e947b7c-059c-4d31-adc8-1a279320b67e}"/>
     <names>
         <name lang="en">Compressor</name>

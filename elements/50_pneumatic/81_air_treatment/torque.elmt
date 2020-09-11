@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{b76f6fd6-7633-4a2b-8f92-24a75d320556}"/>
     <names>
         <name lang="en">Torque meter</name>

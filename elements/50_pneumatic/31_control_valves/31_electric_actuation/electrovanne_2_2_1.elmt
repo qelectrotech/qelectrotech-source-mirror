@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="100" hotspot_x="17" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="100" hotspot_x="17" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{d81e2f67-6ebe-4890-a839-c54d4cf62add}"/>
     <names>
         <name lang="en">valve 2 / 2, with lever</name>

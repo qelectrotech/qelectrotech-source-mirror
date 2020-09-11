@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="11" version="0.51" hotspot_y="10" type="element" width="30" height="20" orientation="dyyy">
+<definition link_type="simple" hotspot_x="11" version="0.51" hotspot_y="10" type="element" width="30" height="20">
     <uuid uuid="{6c424774-aec0-436f-8206-03397f896abd}"/>
     <names>
         <name lang="fr">Réduction Cuivre DF</name>

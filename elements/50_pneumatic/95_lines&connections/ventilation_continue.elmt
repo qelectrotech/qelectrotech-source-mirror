@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="50" hotspot_x="10" type="element" link_type="simple" hotspot_y="32" orientation="dyyy">
+<definition height="40" version="0.5" width="50" hotspot_x="10" type="element" link_type="simple" hotspot_y="32">
     <uuid uuid="{13e82f27-1949-47bb-b499-019c3bbe5455}"/>
     <names>
         <name lang="en">Continuous vent</name>

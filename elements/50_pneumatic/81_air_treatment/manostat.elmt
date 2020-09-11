@@ -1,4 +1,4 @@
-<definition width="140" version="0.3" hotspot_x="100" hotspot_y="50" height="70" type="element" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="100" hotspot_y="50" height="70" type="element">
 <uuid uuid="{9C7A0785-2575-490E-B882-FE98319DADF1}"/><names>
         <name lang="en">Pressure Switches</name>
         <name lang="fr">Manostats</name>

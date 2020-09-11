@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{28a2cb83-122f-47ca-8549-e2d0b7e3da34}"/>
     <names>
         <name lang="it">Uscita analogica, 1 can</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="24" hotspot_y="32" width="30" type="element" version="0.5" height="40" link_type="simple" orientation="dyyy">
+<definition hotspot_x="24" hotspot_y="32" width="30" type="element" version="0.5" height="40" link_type="simple">
 <uuid uuid="{003BD923-800A-473C-9A20-96804DBAED39}"/><names>
         <name lang="ca">Clau 4V fancoil</name>
         <name lang="es">Llave 4V fancoil</name>

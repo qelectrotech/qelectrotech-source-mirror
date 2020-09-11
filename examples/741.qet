@@ -693,7 +693,7 @@
                     <name lang="pl"> Złącza i zaciski</name>
                 </names>
                 <element name="zacisk.elmt">
-                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="pl">Zacisk</name>
                         </names>
@@ -713,7 +713,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="pl">Oznaczenia</name>
                 </names>
                 <element name="tekst_08.elmt">
-                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element">
                         <names>
                             <name lang="pl">Tekst 08</name>
                         </names>
@@ -724,7 +724,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="tekst_10.elmt">
-                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element">
                         <names>
                             <name lang="pl">Tekst 10</name>
                         </names>
@@ -746,7 +746,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="cs">Svorky</name>
                 </names>
                 <element name="terminal.elmt">
-                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="ru">Клеммник</name>
                             <name lang="pt">Terminal de fim</name>

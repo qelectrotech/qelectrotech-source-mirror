@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="13" hotspot_y="33" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="13" hotspot_y="33" height="60" type="element" ic="true">
 <uuid uuid="{9DD3491E-E06F-41C3-BF0C-4F99FD3D0CBF}"/><names>
         <name lang="en">Current transformer, pulse transformer</name>
         <name lang="de">Stromwandler, Impulswandler</name>

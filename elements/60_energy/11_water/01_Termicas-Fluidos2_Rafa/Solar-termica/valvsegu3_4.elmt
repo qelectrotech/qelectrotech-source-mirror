@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="18" hotspot_y="41" height="60" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="18" hotspot_y="41" height="60" type="element" ic="true">
 <uuid uuid="{0FB0006B-F4B8-4108-BE34-AB1B9F6A51E7}"/><names>
         <name lang="es">Valvula de seguridad 3/4H</name>
         <name lang="en">Segurity valve 3/4H</name>

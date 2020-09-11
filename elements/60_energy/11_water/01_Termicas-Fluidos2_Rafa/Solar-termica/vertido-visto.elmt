@@ -1,4 +1,4 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="22" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="30" version="0.4" hotspot_x="14" hotspot_y="22" height="40" type="element" ic="true">
 <uuid uuid="{1FFCC872-D589-4026-A635-3B25A457AF4E}"/><names>
         <name lang="ar">مجرى صرف</name>
         <name lang="en">Sewer drain</name>

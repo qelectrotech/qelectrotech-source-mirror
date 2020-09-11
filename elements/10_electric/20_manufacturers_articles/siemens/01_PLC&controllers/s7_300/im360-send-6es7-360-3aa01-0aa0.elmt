@@ -1,4 +1,4 @@
-<definition width="90" height="260" hotspot_y="196" version="0.80" link_type="simple" type="element" hotspot_x="65" orientation="dyyy">
+<definition width="90" height="260" hotspot_y="196" version="0.80" link_type="simple" type="element" hotspot_x="65">
     <uuid uuid="{637ddd9b-9c1a-4b5d-8f71-a5ffefb7db1d}"/>
     <names>
         <name lang="it">IM360 SEND 6ES7 360-3AA01-0AA0</name>

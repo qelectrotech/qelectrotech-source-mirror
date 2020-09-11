@@ -1,4 +1,4 @@
-<definition hotspot_y="14" link_type="simple" height="20" width="30" type="element" version="0.80" hotspot_x="14" orientation="dyyy">
+<definition hotspot_y="14" link_type="simple" height="20" width="30" type="element" version="0.80" hotspot_x="14">
     <uuid uuid="{f167c82e-714b-494e-9df0-56a1bc3e43d6}"/>
     <names>
         <name lang="fr">Té-dérivation</name>

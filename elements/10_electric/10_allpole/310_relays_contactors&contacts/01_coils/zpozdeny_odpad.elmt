@@ -1,4 +1,4 @@
-<definition version="0.70" height="50" type="element" width="30" hotspot_x="12" link_type="slave" hotspot_y="24" orientation="dyyy">
+<definition version="0.70" height="50" type="element" width="30" hotspot_x="12" link_type="slave" hotspot_y="24">
     <uuid uuid="{90fe1aa6-d017-4064-8ce7-242a4b7b416a}"/>
     <names>
         <name lang="cs">Zpožděný odpad </name>

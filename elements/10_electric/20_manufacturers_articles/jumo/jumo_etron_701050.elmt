@@ -1,4 +1,4 @@
-<definition height="100" link_type="simple" type="element" version="0.5" hotspot_y="44" width="140" hotspot_x="75" orientation="dyyy">
+<definition height="100" link_type="simple" type="element" version="0.5" hotspot_y="44" width="140" hotspot_x="75">
     <uuid uuid="{7c66d124-e7bb-45d7-ac0f-b5b3f2651f31}"/>
     <names>
         <name lang="it">JUMO eTRON 701050 Termostato digitale</name>

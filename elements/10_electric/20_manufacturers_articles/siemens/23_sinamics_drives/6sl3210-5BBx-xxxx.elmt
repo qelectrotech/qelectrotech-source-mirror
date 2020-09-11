@@ -1,4 +1,4 @@
-<definition type="element" width="400" link_type="simple" hotspot_y="34" version="0.60" height="100" hotspot_x="15" orientation="dyyy">
+<definition type="element" width="400" link_type="simple" hotspot_y="34" version="0.60" height="100" hotspot_x="15">
     <uuid uuid="{a4dfed83-67f1-4dcb-9578-5e7a688a7eaf}"/>
     <names>
         <name lang="en">SINAMICS V20 6SL3210 1x230AC</name>

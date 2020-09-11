@@ -1,4 +1,4 @@
-<definition width="900" height="100" link_type="simple" hotspot_y="45" hotspot_x="15" version="0.5" type="element" orientation="dyyy">
+<definition width="900" height="100" link_type="simple" hotspot_y="45" hotspot_x="15" version="0.5" type="element">
     <uuid uuid="{ba245049-dac3-46f9-bc4f-dd66eb0d1874}"/>
     <names>
         <name lang="cs">TSX DSY 64T2K (spojka B)</name>

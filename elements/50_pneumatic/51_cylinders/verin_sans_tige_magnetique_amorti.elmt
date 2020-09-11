@@ -1,4 +1,4 @@
-<definition width="80" version="0.3" hotspot_x="10" hotspot_y="50" height="70" type="element" orientation="dyyy">
+<definition width="80" version="0.3" hotspot_x="10" hotspot_y="50" height="70" type="element">
 <uuid uuid="{C116BBEA-54AE-47A1-A693-CB82C3196F1F}"/><names>
         <name lang="en">Rodless cylinders</name>
         <name lang="fr">Vérins sans tige</name>

@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="120" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="120" hotspot_x="10" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{d0634434-928c-4abb-af65-4185f8d5874e}"/>
     <names>
         <name lang="en">Servo-valve, double solenoid</name>

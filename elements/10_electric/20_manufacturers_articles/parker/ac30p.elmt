@@ -1,4 +1,4 @@
-<definition height="160" hotspot_x="414" version="0.5" link_type="simple" type="element" hotspot_y="78" width="840" orientation="dyyy">
+<definition height="160" hotspot_x="414" version="0.5" link_type="simple" type="element" hotspot_y="78" width="840">
     <uuid uuid="{da91291c-6e76-4d31-b698-ab6edd140826}"/>
     <names>
         <name lang="en">Parker AC30P</name>

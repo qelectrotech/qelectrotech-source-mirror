@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="12" hotspot_y="43" height="70" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="12" hotspot_y="43" height="70" type="element" ic="true">
 <uuid uuid="{08C67B9E-272C-4B89-9D2E-A35689FEE263}"/><names>
         <name lang="en">Transformer or current pulse, with two secondary windings on the same core</name>
         <name lang="de">Strom-/Impulswandler mit 2 sekundären Wicklungen</name>

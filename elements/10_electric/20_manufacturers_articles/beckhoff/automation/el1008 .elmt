@@ -1,4 +1,4 @@
-<definition hotspot_x="65" version="0.70" type="element" width="130" link_type="master" height="390" hotspot_y="195" orientation="dyyy">
+<definition hotspot_x="65" version="0.70" type="element" width="130" link_type="master" height="390" hotspot_y="195">
     <uuid uuid="{88034be7-ddd5-4c31-b120-1ae0b774a7fc}"/>
     <names>
         <name lang="en">EL1008 DI8</name>

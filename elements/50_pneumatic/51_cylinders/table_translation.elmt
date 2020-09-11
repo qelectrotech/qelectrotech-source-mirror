@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="80" hotspot_x="19" type="element" link_type="simple" hotspot_y="32" orientation="dyyy">
+<definition height="50" version="0.5" width="80" hotspot_x="19" type="element" link_type="simple" hotspot_y="32">
     <uuid uuid="{ec0197d9-c2b1-403c-a7e7-a661827a2644}"/>
     <names>
         <name lang="en">Translation table double acting pneumatic</name>

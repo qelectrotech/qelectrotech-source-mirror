@@ -1,4 +1,4 @@
-<definition width="190" height="110" link_type="simple" hotspot_y="39" hotspot_x="65" version="0.5" type="element" orientation="dyyy">
+<definition width="190" height="110" link_type="simple" hotspot_y="39" hotspot_x="65" version="0.5" type="element">
     <uuid uuid="{d83c2912-074d-4eb8-bd0d-1c5ad2346955}"/>
     <names>
         <name lang="cs">XPS-DMB</name>

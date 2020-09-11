@@ -1,4 +1,4 @@
-<definition version="0.70" height="50" type="element" width="30" hotspot_x="22" link_type="simple" hotspot_y="25" orientation="dyyy">
+<definition version="0.70" height="50" type="element" width="30" hotspot_x="22" link_type="simple" hotspot_y="25">
     <uuid uuid="{9a1d4a4a-3715-4424-9b87-cb14c0e1cf65}"/>
     <names>
         <name lang="cs">Spínací tlačítko</name>

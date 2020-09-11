@@ -1,4 +1,4 @@
-<definition width="290" height="100" link_type="simple" hotspot_y="39" hotspot_x="65" version="0.5" type="element" orientation="dyyy">
+<definition width="290" height="100" link_type="simple" hotspot_y="39" hotspot_x="65" version="0.5" type="element">
     <uuid uuid="{522bee4c-1261-43a6-a3ab-8c30c0579288}"/>
     <names>
         <name lang="cs">XCS-E7511</name>

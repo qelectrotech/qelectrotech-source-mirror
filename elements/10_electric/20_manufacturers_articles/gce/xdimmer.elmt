@@ -1,4 +1,4 @@
-<definition width="370" version="0.4" hotspot_x="184" hotspot_y="105" height="210" type="element" ic="true" orientation="dyyy">
+<definition width="370" version="0.4" hotspot_x="184" hotspot_y="105" height="210" type="element" ic="true">
     <names>
         <name lang="be">X-dimmer</name>
         <name lang="el">X-dimmer</name>

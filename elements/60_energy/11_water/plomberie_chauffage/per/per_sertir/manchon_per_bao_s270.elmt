@@ -1,4 +1,4 @@
-<definition link_type="terminal" height="20" version="0.51" width="60" hotspot_x="31" type="element" hotspot_y="10" orientation="dyyy">
+<definition link_type="terminal" height="20" version="0.51" width="60" hotspot_x="31" type="element" hotspot_y="10">
     <uuid uuid="{84dafa76-f185-433c-a78d-ffbeab0e753a}"/>
     <names>
         <name lang="fr">Manchon PER à sertir</name>

@@ -1,4 +1,4 @@
-<definition width="190" height="400" hotspot_x="23" version="0.80" type="element" hotspot_y="34" link_type="simple" orientation="dyyy">
+<definition width="190" height="400" hotspot_x="23" version="0.80" type="element" hotspot_y="34" link_type="simple">
     <uuid uuid="{7ef599d4-76d5-4a71-855e-c68b27695281}"/>
     <names>
         <name lang="en">Arduino Mega 2560</name>

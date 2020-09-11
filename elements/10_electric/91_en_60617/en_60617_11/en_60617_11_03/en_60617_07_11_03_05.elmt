@@ -1,4 +1,4 @@
-<definition link_type="simple" height="40" hotspot_x="144" version="0.80" hotspot_y="34" type="element" width="150" orientation="dyyy">
+<definition link_type="simple" height="40" hotspot_x="144" version="0.80" hotspot_y="34" type="element" width="150">
     <uuid uuid="{82ab10b2-2dae-4d59-8a7e-077fbcef448e}"/>
     <names>
         <name lang="be">een bundel van x buizen</name>

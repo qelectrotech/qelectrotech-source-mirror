@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="28" width="40" type="element" height="50" hotspot_x="20" version="0.80" orientation="dyyy">
+<definition link_type="simple" hotspot_y="28" width="40" type="element" height="50" hotspot_x="20" version="0.80">
     <uuid uuid="{26790347-a782-4e88-b60b-c0a80a1c9563}"/>
     <names>
         <name lang="nl">Ampere uur meter</name>

@@ -389,7 +389,7 @@
                     <name lang="fr">Arduino</name>
                 </names>
                 <element name="arduino_geiger.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="30" hotspot_y="35" height="350" width="220" version="0.3">
+                    <definition type="element" hotspot_x="30" hotspot_y="35" height="350" width="220" version="0.3">
                         <names>
                             <name lang="fr">Geiger Libelium</name>
                         </names>
@@ -582,7 +582,7 @@
                     </definition>
                 </element>
                 <element name="resistance_variable.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="15" hotspot_y="25" height="60" width="60" version="0.3">
+                    <definition type="element" hotspot_x="15" hotspot_y="25" height="60" width="60" version="0.3">
                         <names>
                             <name lang="fr">Potar</name>
                         </names>
@@ -613,7 +613,7 @@
                     </definition>
                 </element>
                 <element name="lcd_2x16.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="25" hotspot_y="30" height="120" width="260" version="0.3">
+                    <definition type="element" hotspot_x="25" hotspot_y="30" height="120" width="260" version="0.3">
                         <names>
                             <name lang="fr">Afficheur LCD 2X16</name>
                         </names>
@@ -670,7 +670,7 @@
                     </definition>
                 </element>
                 <element name="liaison5v.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="15" hotspot_y="30" height="30" width="60" version="0.3">
+                    <definition type="element" hotspot_x="15" hotspot_y="30" height="30" width="60" version="0.3">
                         <names>
                             <name lang="fr">Liaisons 5volt</name>
                         </names>
@@ -688,7 +688,7 @@
                     </definition>
                 </element>
                 <element name="arduino_uno.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="30" hotspot_y="35" height="270" width="200" version="0.3">
+                    <definition type="element" hotspot_x="30" hotspot_y="35" height="270" width="200" version="0.3">
                         <names>
                             <name lang="fr">Arduino Uno</name>
                         </names>
@@ -900,7 +900,7 @@
                     </definition>
                 </element>
                 <element name="tube_geiger_j305b.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="15" hotspot_y="15" height="50" width="370" version="0.3">
+                    <definition type="element" hotspot_x="15" hotspot_y="15" height="50" width="370" version="0.3">
                         <names>
                             <name lang="fr">Geiger Tube J305β </name>
                         </names>
@@ -932,7 +932,7 @@
                     </definition>
                 </element>
                 <element name="resistance2.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="15" hotspot_y="35" height="70" width="30" version="0.3">
+                    <definition type="element" hotspot_x="15" hotspot_y="35" height="70" width="30" version="0.3">
                         <names>
                             <name lang="fr">Resistance 1w</name>
                         </names>
@@ -964,7 +964,7 @@
                     </definition>
                 </element>
                 <element name="cable_ide.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="25" hotspot_y="35" height="300" width="190" version="0.3">
+                    <definition type="element" hotspot_x="25" hotspot_y="35" height="300" width="190" version="0.3">
                         <names>
                             <name lang="fr">cable plat LCD Arduino</name>
                         </names>
@@ -1152,7 +1152,7 @@
                     </definition>
                 </element>
                 <element name="lcd_4x16.elmt">
-                    <definition type="element" orientation="dyyy" hotspot_x="15" hotspot_y="35" height="150" width="240" version="0.3">
+                    <definition type="element" hotspot_x="15" hotspot_y="35" height="150" width="240" version="0.3">
                         <names>
                             <name lang="fr">Afficheur LCD 4X16</name>
                         </names>

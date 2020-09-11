@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="90" hotspot_x="11" type="element" link_type="simple" hotspot_y="38" orientation="dyyy">
+<definition height="60" version="0.5" width="90" hotspot_x="11" type="element" link_type="simple" hotspot_y="38">
     <uuid uuid="{b55d17f9-ba45-4c52-9147-1e4e9dadfb3f}"/>
     <names>
         <name lang="en">Rapid purge</name>

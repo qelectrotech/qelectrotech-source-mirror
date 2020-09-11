@@ -1,4 +1,4 @@
-<definition height="300" link_type="simple" type="element" version="0.5" hotspot_y="145" width="160" hotspot_x="84" orientation="dyyy">
+<definition height="300" link_type="simple" type="element" version="0.5" hotspot_y="145" width="160" hotspot_x="84">
     <uuid uuid="{851ce121-54d2-43a3-aaef-ef2cd2d40f18}"/>
     <names>
         <name lang="it">JUMO cTRON 702071 Regolatore di temperatura</name>

@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="130" hotspot_x="13" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="130" hotspot_x="13" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{0b00ac6f-8f59-4ffa-a120-396ba3268104}"/>
     <names>
         <name lang="en">Pneumatic actuator</name>

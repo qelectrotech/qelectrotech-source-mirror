@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element">
 <uuid uuid="{10A0778E-D668-4A78-B045-009DEF5D5AEC}"/><names>
         <name lang="el">Ανοικτή επαφή μετρητή</name>
         <name lang="en">Normally open counter</name>

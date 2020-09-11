@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element">
 <uuid uuid="{8A209167-E3A8-437E-883F-20E8A3C49F33}"/><names>
         <name lang="en"> Contact NO pneumatically or hydraulically controlled</name>
         <name lang="es">Contacto NA neumaticamente o hidraulicamente controlado</name>

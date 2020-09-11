@@ -1,4 +1,4 @@
-<definition hotspot_y="96" type="element" height="210" version="0.80" width="530" hotspot_x="265" link_type="simple" orientation="dyyy">
+<definition hotspot_y="96" type="element" height="210" version="0.80" width="530" hotspot_x="265" link_type="simple">
     <uuid uuid="{fd01c8ef-2583-4e4f-ae9d-62da3d66a10f}"/>
     <names>
         <name lang="en">OMRON CJ1W-ID232</name>

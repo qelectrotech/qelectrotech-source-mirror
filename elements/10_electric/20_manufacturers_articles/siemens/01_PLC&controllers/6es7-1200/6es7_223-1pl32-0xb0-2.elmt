@@ -1,4 +1,4 @@
-<definition version="0.70" width="780" hotspot_y="39" hotspot_x="20" height="110" type="element" link_type="simple" orientation="dyyy">
+<definition version="0.70" width="780" hotspot_y="39" hotspot_x="20" height="110" type="element" link_type="simple">
     <uuid uuid="{480bc04d-ffb6-4be4-b8e9-75593ad951ee}"/>
     <names>
         <name lang="en">6ES7 223-1PL32-0XB0 (part 2/4)</name>

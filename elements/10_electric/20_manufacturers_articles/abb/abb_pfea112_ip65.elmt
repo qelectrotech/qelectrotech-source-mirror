@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="68" height="240" width="280" type="element" hotspot_y="133" orientation="dyyy">
+<definition version="0.80" link_type="simple" hotspot_x="68" height="240" width="280" type="element" hotspot_y="133">
     <uuid uuid="{c43f3082-ba42-4122-a552-1fa39f8a8079}"/>
     <names>
         <name lang="fr">ABB PFEA111/112</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="36" type="element" width="20" height="120" link_type="master" version="0.51" hotspot_x="12" orientation="dyyy">
+<definition hotspot_y="36" type="element" width="20" height="120" link_type="master" version="0.51" hotspot_x="12">
     <uuid uuid="{575ee43f-d891-46b5-9b07-fbf1f31f099d}"/>
     <names>
         <name lang="fr">Disjoncteur unipolaire</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{96e4d84a-977b-4ccf-92fb-14251b010e7b}"/>
     <names>
         <name lang="en">Getter pump</name>

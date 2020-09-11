@@ -2113,7 +2113,7 @@ PC meuble-rideau</text>
                 <name lang="fr">K éléments</name>
             </names>
             <element name="text_8.elmt">
-                <definition orientation="dyyy" hotspot_x="10" hotspot_y="10" width="20" height="20" type="element" version="0.3">
+                <definition hotspot_x="10" hotspot_y="10" width="20" height="20" type="element" version="0.3">
                     <names>
                         <name lang="de">T06 Textfeld</name>
                         <name lang="en">T06 text area</name>
@@ -2128,7 +2128,7 @@ PC meuble-rideau</text>
                 </definition>
             </element>
             <element name="int_diff1.elmt">
-                <definition orientation="dnny" hotspot_x="10" hotspot_y="25" width="60" height="50" type="element" version="0.22">
+                <definition hotspot_x="10" hotspot_y="25" width="60" height="50" type="element" version="0.22">
                     <names>
                         <name lang="de">Differenz Schalter</name>
                         <name lang="ru">УЗО</name>
@@ -2159,7 +2159,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </definition>
             </element>
             <element name="dijo_s.elmt">
-                <definition orientation="dnny" hotspot_x="10" hotspot_y="25" width="70" height="60" type="element" version="0.22">
+                <definition hotspot_x="10" hotspot_y="25" width="70" height="60" type="element" version="0.22">
                     <names>
                         <name lang="de">Differenz Lastschalter S</name>
                         <name lang="ru">Дифавтомат S</name>
@@ -2192,7 +2192,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </definition>
             </element>
             <element name="dijo.elmt">
-                <definition orientation="dnny" hotspot_x="10" hotspot_y="25" width="40" height="50" type="element" version="0.3">
+                <definition hotspot_x="10" hotspot_y="25" width="40" height="50" type="element" version="0.3">
                     <names>
                         <name lang="de">Lastschalter</name>
                         <name lang="ru">Выключатель</name>
@@ -2221,7 +2221,7 @@ K approché les textes (24/1/2012)</informations>
                 </definition>
             </element>
             <element name="text_7.elmt">
-                <definition orientation="dyyy" hotspot_x="10" hotspot_y="10" width="20" height="20" type="element" version="0.3">
+                <definition hotspot_x="10" hotspot_y="10" width="20" height="20" type="element" version="0.3">
                     <names>
                         <name lang="de">T07 Textfeld</name>
                         <name lang="en">T07 text area</name>
@@ -2236,7 +2236,7 @@ K approché les textes (24/1/2012)</informations>
                 </definition>
             </element>
             <element name="transfo.elmt">
-                <definition orientation="dnny" hotspot_x="4" hotspot_y="30" width="50" ic="true" height="60" type="element" version="0.3">
+                <definition hotspot_x="4" hotspot_y="30" width="50" ic="true" height="60" type="element" version="0.3">
                     <names>
                         <name lang="de">Trafo Einfach</name>
                         <name lang="ru">Однолинейный трансформатор</name>
@@ -2307,7 +2307,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="en">Meters</name>
                         </names>
                         <element name="compteur_220v_monophase.elmt">
-                            <definition orientation="dyyy" hotspot_x="20" hotspot_y="35" width="40" height="60" type="element" version="0.3">
+                            <definition hotspot_x="20" hotspot_y="35" width="40" height="60" type="element" version="0.3">
                                 <names>
                                     <name lang="en">220V single phase meter</name>
                                     <name lang="fr">Compteur 220V monophase</name>
@@ -2555,7 +2555,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="en">Architectural</name>
                         </names>
                         <element name="lampe.elmt">
-                            <definition orientation="dnny" hotspot_x="20" hotspot_y="25" width="40" height="30" type="element" version="0.22">
+                            <definition hotspot_x="20" hotspot_y="25" width="40" height="30" type="element" version="0.22">
                                 <names>
                                     <name lang="ru">Лампа</name>
                                     <name lang="pt">Lâmpada</name>
@@ -2577,7 +2577,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </element>
                     </category>
                     <element name="interphone.elmt">
-                        <definition orientation="dyyy" hotspot_x="15" hotspot_y="30" width="50" height="40" type="element" version="0.3">
+                        <definition hotspot_x="15" hotspot_y="30" width="50" height="40" type="element" version="0.3">
                             <names>
                                 <name lang="en">Audio intercommunication equipment</name>
                                 <name lang="it">Interfono, citofono
@@ -2623,7 +2623,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="ru">Выключатели</name>
                         </names>
                         <element name="disjoncteur1.elmt">
-                            <definition orientation="dnny" hotspot_x="10" hotspot_y="25" width="40" height="50" type="element" version="0.22">
+                            <definition hotspot_x="10" hotspot_y="25" width="40" height="50" type="element" version="0.22">
                                 <names>
                                     <name lang="de">Lastschalter</name>
                                     <name lang="ru">Выключатель</name>
@@ -2677,7 +2677,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="ru">Лампы</name>
                         </names>
                         <element name="lampe1.elmt">
-                            <definition orientation="dnny" hotspot_x="20" hotspot_y="25" width="50" height="50" type="element" version="0.3">
+                            <definition hotspot_x="20" hotspot_y="25" width="50" height="50" type="element" version="0.3">
                                 <names>
                                     <name lang="de">Leuchte</name>
                                     <name lang="ru">Лампа</name>
@@ -2715,7 +2715,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="ru">Безопасность</name>
                         </names>
                         <element name="terre.elmt">
-                            <definition orientation="dnny" hotspot_x="10" hotspot_y="15" width="20" height="30" type="element" version="0.2">
+                            <definition hotspot_x="10" hotspot_y="15" width="20" height="30" type="element" version="0.2">
                                 <names>
                                     <name lang="de">Erde</name>
                                     <name lang="ru">Земля</name>
@@ -2802,7 +2802,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="ru">Тексты</name>
                         </names>
                         <element name="text_8.elmt">
-                            <definition orientation="dyyy" hotspot_x="10" hotspot_y="10" width="20" height="20" type="element" version="0.3">
+                            <definition hotspot_x="10" hotspot_y="10" width="20" height="20" type="element" version="0.3">
                                 <names>
                                     <name lang="de">T08 Textfeld</name>
                                     <name lang="en">T08 text area</name>
@@ -2838,7 +2838,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="ru">Лампы</name>
                     </names>
                     <element name="lampe1.elmt">
-                        <definition orientation="dnny" hotspot_x="20" hotspot_y="25" width="40" height="40" type="element" version="0.22">
+                        <definition hotspot_x="20" hotspot_y="25" width="40" height="40" type="element" version="0.22">
                             <names>
                                 <name lang="ru">Лампа</name>
                                 <name lang="pt">Lâmpada</name>
@@ -2901,7 +2901,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="ru">Разное</name>
                     </names>
                     <element name="telerupteur.elmt">
-                        <definition orientation="dnny" hotspot_x="10" hotspot_y="25" width="50" height="50" type="element" version="0.3">
+                        <definition hotspot_x="10" hotspot_y="25" width="50" height="50" type="element" version="0.3">
                             <names>
                                 <name lang="en">Teleruptor</name>
                                 <name lang="fr">Télérupteur bipolaire</name>
@@ -2965,7 +2965,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="ru">соеденителей</name>
                 </names>
                 <element name="borne_finale.elmt">
-                    <definition orientation="dyyy" hotspot_x="10" hotspot_y="20" width="30" ic="true" height="40" type="element" version="0.1">
+                    <definition hotspot_x="10" hotspot_y="20" width="30" ic="true" height="40" type="element" version="0.1">
                         <names>
                             <name lang="de">Endklemme</name>
                             <name lang="ru">Клеммник</name>
@@ -2989,7 +2989,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="borne_continuite.elmt">
-                    <definition orientation="dyyy" hotspot_x="10" hotspot_y="20" width="30" ic="true" height="40" type="element" version="0.1">
+                    <definition hotspot_x="10" hotspot_y="20" width="30" ic="true" height="40" type="element" version="0.1">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>

@@ -1,4 +1,4 @@
-<definition width="210" height="230" hotspot_y="175" version="0.80" link_type="simple" type="element" hotspot_x="41" orientation="dyyy">
+<definition width="210" height="230" hotspot_y="175" version="0.80" link_type="simple" type="element" hotspot_x="41">
     <uuid uuid="{6f0519ea-d651-4745-a3e0-7e6a673ac1bb}"/>
     <names>
         <name lang="fr">Sonde Pression CERAPHANT PTP33B</name>

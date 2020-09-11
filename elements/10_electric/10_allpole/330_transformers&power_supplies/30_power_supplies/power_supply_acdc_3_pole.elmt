@@ -1,4 +1,4 @@
-<definition height="80" version="0.5" link_type="simple" type="element" hotspot_x="50" hotspot_y="39" width="100" orientation="dyyy">
+<definition height="80" version="0.5" link_type="simple" type="element" hotspot_x="50" hotspot_y="39" width="100">
 <uuid uuid="{2E658A0D-14DF-4277-B23D-07E049AE0750}"/><names>
         <name lang="de">Netzteil AC/DC 3-polig</name>
         <name lang="fr">Alimentation AC/DC tripolaire</name>

@@ -594,7 +594,7 @@
                         <name lang="es">Puertas lógicas</name>
                     </names>
                     <element name="non.elmt">
-                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
                             <names>
                                 <name lang="ru">НЕ</name>
                                 <name lang="en">NOT</name>
@@ -616,7 +616,7 @@
                         </definition>
                     </element>
                     <element name="ou.elmt">
-                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
                             <names>
                                 <name lang="ru">ИЛИ</name>
                                 <name lang="en">OR</name>
@@ -640,7 +640,7 @@
                         </definition>
                     </element>
                     <element name="entree.elmt">
-                        <definition width="80" version="0.2" hotspot_x="30" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                        <definition width="80" version="0.2" hotspot_x="30" hotspot_y="50" height="110" type="element" ic="true">
                             <names>
                                 <name lang="ru">Вход</name>
                                 <name lang="en">Input</name>
@@ -658,7 +658,7 @@
                         </definition>
                     </element>
                     <element name="et.elmt">
-                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
                             <names>
                                 <name lang="ru">И</name>
                                 <name lang="en">AND</name>
@@ -682,7 +682,7 @@
                         </definition>
                     </element>
                     <element name="sortie.elmt">
-                        <definition width="80" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                        <definition width="80" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
                             <names>
                                 <name lang="ru">Выход</name>
                                 <name lang="en">Output</name>
@@ -710,7 +710,7 @@
                         <name lang="fr">Macro étape</name>
                     </names>
                     <element name="etape_entree.elmt">
-                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy">
+                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element">
                             <names>
                                 <name lang="en">Imput step</name>
                                 <name lang="fr">Etape d'entrée</name>
@@ -728,7 +728,7 @@
                         </definition>
                     </element>
                     <element name="etape_sortie.elmt">
-                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
                             <names>
                                 <name lang="en">Output step</name>
                                 <name lang="fr">Etape sortie</name>
@@ -742,7 +742,7 @@
                         </definition>
                     </element>
                     <element name="etape.elmt">
-                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy">
+                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element">
                             <names>
                                 <name lang="en">Macro step</name>
                                 <name lang="fr">Macro étape</name>
@@ -764,7 +764,7 @@
                     </element>
                 </category>
                 <element name="transition.elmt">
-                    <definition width="60" version="0.2" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                    <definition width="60" version="0.2" hotspot_x="15" hotspot_y="15" height="30" type="element">
                         <names>
                             <name lang="en">transition</name>
                             <name lang="fr">transition</name>
@@ -779,7 +779,7 @@
                     </definition>
                 </element>
                 <element name="etape_initiale.elmt">
-                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
                         <names>
                             <name lang="en">Initial step</name>
                             <name lang="fr">Etape initiale</name>
@@ -794,7 +794,7 @@
                     </definition>
                 </element>
                 <element name="etape.elmt">
-                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
                         <names>
                             <name lang="en">Step</name>
                             <name lang="fr">Etape</name>
@@ -810,7 +810,7 @@
                     </definition>
                 </element>
                 <element name="et.elmt">
-                    <definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                    <definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element">
                         <names>
                             <name lang="en">And</name>
                             <name lang="fr">Et</name>
@@ -863,7 +863,7 @@
                     </element>
                 </category>
                 <element name="saut.elmt">
-                    <definition width="70" version="0.2" hotspot_x="25" hotspot_y="25" height="100" type="element" orientation="dyyy">
+                    <definition width="70" version="0.2" hotspot_x="25" hotspot_y="25" height="100" type="element">
                         <names>
                             <name lang="en">jump</name>
                             <name lang="fr">saut</name>
@@ -880,7 +880,7 @@
                     </definition>
                 </element>
                 <element name="etape.elmt">
-                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
                         <names>
                             <name lang="en">Step</name>
                             <name lang="fr">Etape</name>

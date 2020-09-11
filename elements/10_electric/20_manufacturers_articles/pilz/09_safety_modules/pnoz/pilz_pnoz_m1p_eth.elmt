@@ -1,4 +1,4 @@
-<definition width="290" height="130" hotspot_x="140" version="0.80" type="element" hotspot_y="59" link_type="simple" orientation="dyyy">
+<definition width="290" height="130" hotspot_x="140" version="0.80" type="element" hotspot_y="59" link_type="simple">
     <uuid uuid="{77ce512f-6c09-48ce-9f27-7fd0c20c8fd8}"/>
     <names>
         <name lang="en">PNOZ m1p ETH</name>

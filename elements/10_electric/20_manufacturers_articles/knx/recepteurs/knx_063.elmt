@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="28" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="28">
     <uuid uuid="{8ea1c298-0e33-4b33-840c-936b61d93db7}"/>
     <names>
         <name lang="it">Ric. IR/Decoder + pulsante 4 can</name>

@@ -1,4 +1,4 @@
-<definition version="0.70" height="70" type="element" width="170" hotspot_x="55" hotspot_y="47" link_type="master" orientation="dyyy">
+<definition version="0.70" height="70" type="element" width="170" hotspot_x="55" hotspot_y="47" link_type="master">
     <uuid uuid="{01b4a251-cb18-4892-a7a6-0961aa13dabd}"/>
     <names>
         <name lang="it">Freno elettromagnetico</name>

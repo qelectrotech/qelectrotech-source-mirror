@@ -1,4 +1,4 @@
-<definition height="200" link_type="simple" type="element" version="0.5" hotspot_y="35" width="90" hotspot_x="24" orientation="dyyy">
+<definition height="200" link_type="simple" type="element" version="0.5" hotspot_y="35" width="90" hotspot_x="24">
     <uuid uuid="{a5c41109-f3bc-42bb-91a0-57addfb6791c}"/>
     <names>
         <name lang="it">SL-V16H (R)</name>

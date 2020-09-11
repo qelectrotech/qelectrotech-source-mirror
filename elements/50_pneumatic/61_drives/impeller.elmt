@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="60" hotspot_x="31" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+<definition height="60" version="0.5" width="60" hotspot_x="31" type="element" link_type="simple" hotspot_y="30">
     <uuid uuid="{26bce1e5-03ed-4c27-bd15-ca429e8b102a}"/>
     <names>
         <name lang="en">Impeller</name>

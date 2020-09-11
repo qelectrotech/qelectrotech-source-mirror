@@ -1,4 +1,4 @@
-<definition height="130" version="0.5" width="370" hotspot_x="14" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="130" version="0.5" width="370" hotspot_x="14" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{c7c24a81-5401-49fb-a877-96a8f26cf2db}"/>
     <names>
         <name lang="en">LFR-KG / LFRS-KG</name>

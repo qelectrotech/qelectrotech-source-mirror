@@ -22196,7 +22196,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
     <collection>
         <category name="import">
             <element name="TBXVA(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="340" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="340" height="270" hotspot_y="24">
                     <uuid uuid="{be800d10-59be-46db-b998-031273e1acba}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXVA(1)</name>
@@ -22367,7 +22367,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBX2(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="480" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="480" height="270" hotspot_y="24">
                     <uuid uuid="{7f19a6b5-a58c-4eeb-a03a-810de1d5b8b6}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBX2(1)</name>
@@ -22594,7 +22594,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV7(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{80b858c7-f222-4e89-85bb-a14ffb7f14be}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV7(1)</name>
@@ -22692,7 +22692,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV1(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{d4299635-2314-4294-8b15-549d5fea3fa0}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV1(1)</name>
@@ -22790,7 +22790,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV4(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{e87f903d-5df5-41ea-ab75-c3bf9a0b4a8f}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV4(1)</name>
@@ -22888,7 +22888,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV5(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{6017ef24-f4f3-4029-ac44-d16337875b08}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV5(1)</name>
@@ -22986,7 +22986,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV3(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{e9a10cff-fbb1-495c-b598-6ed156d358fd}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV3(1)</name>
@@ -23084,7 +23084,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV6(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{41914319-de18-4d37-9938-8f83192592b3}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV6(1)</name>
@@ -23182,7 +23182,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </definition>
             </element>
             <element name="TBXV2(1).elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="270" hotspot_y="24">
                     <uuid uuid="{23fd23f3-26d5-4ed5-804b-2e8d9a77c4f9}"/>
                     <names>
                         <name lang="pt">Bloco terminal TBXV2(1)</name>
@@ -23337,7 +23337,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                             <name lang="el">Παροχές δικτύου</name>
                         </names>
                         <element name="src_tnc_tns.elmt">
-                            <definition hotspot_x="34" type="element" version="0.5" link_type="simple" width="70" height="100" hotspot_y="40" orientation="dyyy">
+                            <definition hotspot_x="34" type="element" version="0.5" link_type="simple" width="70" height="100" hotspot_y="40">
                                 <uuid uuid="{4b9794cf-e7c0-4f59-aa0a-bb1fce4dfe48}"/>
                                 <names>
                                     <name lang="es">Punto de distribución TN-C > TN-S</name>
@@ -23387,7 +23387,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             </definition>
                         </element>
                         <element name="terre.elmt">
-                            <definition hotspot_x="10" type="element" version="0.5" link_type="simple" width="20" height="30" hotspot_y="19" orientation="dyyy">
+                            <definition hotspot_x="10" type="element" version="0.5" link_type="simple" width="20" height="30" hotspot_y="19">
                                 <uuid uuid="{93eafb79-a84a-45e3-b43b-327d0944591b}"/>
                                 <names>
                                     <name lang="pt">Terra</name>
@@ -23445,7 +23445,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="el">Αποζεύκτες</name>
                             </names>
                             <element name="itcv.elmt">
-                                <definition hotspot_x="38" type="element" version="0.4" width="90" height="50" ic="true" hotspot_y="25" orientation="dyyy">
+                                <definition hotspot_x="38" type="element" version="0.4" width="90" height="50" ic="true" hotspot_y="25">
                                     <uuid uuid="{82342316-D969-41F7-9889-96F4FE149273}"/>
                                     <names>
                                         <name lang="en">itcv</name>
@@ -23506,7 +23506,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="cs">Rozdílové jističe</name>
                             </names>
                             <element name="int_diff5.elmt">
-                                <definition hotspot_x="56" type="element" version="0.51" link_type="simple" width="70" height="110" hotspot_y="50" orientation="dyyy">
+                                <definition hotspot_x="56" type="element" version="0.51" link_type="simple" width="70" height="110" hotspot_y="50">
                                     <uuid uuid="{68830151-5901-40f6-b94d-dc68b85165a2}"/>
                                     <names>
                                         <name lang="fr">Disjoncteur differentiel 1P+N</name>
@@ -23553,7 +23553,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="int_diff6.elmt">
-                                <definition hotspot_x="56" type="element" version="0.51" link_type="simple" width="110" height="110" hotspot_y="50" orientation="dyyy">
+                                <definition hotspot_x="56" type="element" version="0.51" link_type="simple" width="110" height="110" hotspot_y="50">
                                     <uuid uuid="{3fa48846-98c0-43e1-8a96-330d4dc11ceb}"/>
                                     <names>
                                         <name lang="cs">Magnetotepelný jistič GV</name>
@@ -23641,7 +23641,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="cs">Magnetotepelný jistič GV</name>
                             </names>
                             <element name="dis_mag_term_2f-2.elmt">
-                                <definition hotspot_x="56" type="element" version="0.51" link_type="simple" width="70" height="100" hotspot_y="52" orientation="dyyy">
+                                <definition hotspot_x="56" type="element" version="0.51" link_type="simple" width="70" height="100" hotspot_y="52">
                                     <uuid uuid="{ec5fa3cd-6769-4a35-aaa9-6bc5ba4fc779}"/>
                                     <names>
                                         <name lang="fr">Disjoncteur Magnéto-thermique GV 2P</name>
@@ -23687,7 +23687,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="dis_mag_term_3f-2.elmt">
-                                <definition hotspot_x="68" type="element" version="0.3" link_type="master" width="140" height="100" ic="true" hotspot_y="50" orientation="dyyy">
+                                <definition hotspot_x="68" type="element" version="0.3" link_type="master" width="140" height="100" ic="true" hotspot_y="50">
                                     <uuid uuid="{0F250E8A-9E75-4407-BE40-6D06D925D75F}"/>
                                     <names>
                                         <name lang="ar">قاطع مغناطيسي-حراري </name>
@@ -23775,7 +23775,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="ru">Выключатели-предохранители</name>
                             </names>
                             <element name="sectionneur_fusible_bi.elmt">
-                                <definition hotspot_x="22" type="element" version="0.4" link_type="master" width="40" height="50" hotspot_y="24" orientation="dyyy">
+                                <definition hotspot_x="22" type="element" version="0.4" link_type="master" width="40" height="50" hotspot_y="24">
                                     <uuid uuid="{B07B5DA8-E3EC-45DC-9CB4-1B4317BB57CD}"/>
                                     <names>
                                         <name lang="ar">مفتاح عزل ثلاثي بمصهرات</name>
@@ -23830,7 +23830,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="es">Terminales</name>
                         </names>
                         <element name="borne_continuite.elmt">
-                            <definition hotspot_x="4" type="element" version="0.70" link_type="terminal" width="10" height="30" hotspot_y="14" orientation="dyyy">
+                            <definition hotspot_x="4" type="element" version="0.70" link_type="terminal" width="10" height="30" hotspot_y="14">
                                 <uuid uuid="{625f3d2e-291a-4f63-9e0f-28b3e9457606}"/>
                                 <names>
                                     <name lang="en">Terminal block</name>
@@ -23871,7 +23871,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="de">Klemmenanschlusspläne</name>
                             </names>
                             <element name="90-20-0002.elmt">
-                                <definition hotspot_x="15" type="element" version="0.5" link_type="simple" width="30" height="80" hotspot_y="13" orientation="dyyy">
+                                <definition hotspot_x="15" type="element" version="0.5" link_type="simple" width="30" height="80" hotspot_y="13">
                                     <uuid uuid="{e396fc1b-28d7-4978-879a-9b666a2648d3}"/>
                                     <names>
                                         <name lang="fr">Appareil (connexion en bas)</name>
@@ -23891,7 +23891,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="90-30-0001.elmt">
-                                <definition hotspot_x="4" type="element" version="0.5" link_type="simple" width="10" height="70" hotspot_y="34" orientation="dyyy">
+                                <definition hotspot_x="4" type="element" version="0.5" link_type="simple" width="10" height="70" hotspot_y="34">
                                     <uuid uuid="{2ac227dc-33a0-49f5-b8a0-b834d9386b60}"/>
                                     <names>
                                         <name lang="de">Kabel Bezeichnungsschild</name>
@@ -23912,7 +23912,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="90-21-0001.elmt">
-                                <definition hotspot_x="15" type="element" version="0.51" link_type="simple" width="30" height="80" hotspot_y="13" orientation="dyyy">
+                                <definition hotspot_x="15" type="element" version="0.51" link_type="simple" width="30" height="80" hotspot_y="13">
                                     <uuid uuid="{dfdbecfd-e99b-4f8f-ae0d-038e657bae8d}"/>
                                     <names>
                                         <name lang="fr">Appareil (connexion en haut)</name>
@@ -23960,7 +23960,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="nl">Lampen</name>
                             </names>
                             <element name="cabinet_blast_lamp.elmt">
-                                <definition hotspot_x="5" type="element" version="0.5" link_type="simple" width="40" height="80" hotspot_y="34" orientation="dyyy">
+                                <definition hotspot_x="5" type="element" version="0.5" link_type="simple" width="40" height="80" hotspot_y="34">
                                     <uuid uuid="{1cb3184a-7fc1-4f6e-8658-82ca424ff447}"/>
                                     <names>
                                         <name lang="en">Cabiner balast lamp</name>
@@ -24018,7 +24018,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="en">Socket outlets</name>
                             </names>
                             <element name="pc_mono_armoire.elmt">
-                                <definition hotspot_x="15" type="element" version="0.5" link_type="simple" width="30" height="50" hotspot_y="24" orientation="dyyy">
+                                <definition hotspot_x="15" type="element" version="0.5" link_type="simple" width="30" height="50" hotspot_y="24">
                                     <uuid uuid="{b048336c-afa9-4ee0-b3ea-c8f5509e4e79}"/>
                                     <names>
                                         <name lang="nl">Contact 1AC + aarde</name>
@@ -24078,7 +24078,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="it">Selettori</name>
                             </names>
                             <element name="commut_2_position_fixe.elmt">
-                                <definition hotspot_x="34" type="element" version="0.5" link_type="master" width="40" height="60" hotspot_y="29" orientation="dyyy">
+                                <definition hotspot_x="34" type="element" version="0.5" link_type="master" width="40" height="60" hotspot_y="29">
                                     <uuid uuid="{BC0EAD20-CA99-481A-A18B-9301F7CEE90E}"/>
                                     <names>
                                         <name lang="fr">Commutateur a 2 positions à clé</name>
@@ -24113,7 +24113,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="commutateur-a-3-positions-.elmt">
-                                <definition hotspot_x="34" type="element" version="0.4" width="90" height="60" ic="true" hotspot_y="32" orientation="dyyy">
+                                <definition hotspot_x="34" type="element" version="0.4" width="90" height="60" ic="true" hotspot_y="32">
                                     <uuid uuid="{D83085F6-61BC-42CF-A342-35171CA2E14B}"/>
                                     <names>
                                         <name lang="en">3 position  switch</name>
@@ -24171,7 +24171,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="pl">Przyciski</name>
                             </names>
                             <element name="arret-urgence_no.elmt">
-                                <definition hotspot_x="22" type="element" version="0.5" link_type="master" width="30" height="50" hotspot_y="24" orientation="dyyy">
+                                <definition hotspot_x="22" type="element" version="0.5" link_type="master" width="30" height="50" hotspot_y="24">
                                     <uuid uuid="{4F4B0EDC-6505-4AE7-A39C-41FBC8336D9C}"/>
                                     <names>
                                         <name lang="it">Arresto d'emergenza</name>
@@ -24205,7 +24205,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="arret_urgence_tourner_deverouiller.elmt">
-                                <definition hotspot_x="28" type="element" version="0.70" link_type="master" width="130" height="50" hotspot_y="24" orientation="dyyy">
+                                <definition hotspot_x="28" type="element" version="0.70" link_type="master" width="130" height="50" hotspot_y="24">
                                     <uuid uuid="{a89c13c0-31a7-4dc5-82ad-aad60c8f4e27}"/>
                                     <names>
                                         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
@@ -24250,7 +24250,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="contact_012.elmt">
-                                <definition hotspot_x="15" type="element" version="0.5" link_type="master" width="30" height="50" hotspot_y="24" orientation="dyyy">
+                                <definition hotspot_x="15" type="element" version="0.5" link_type="master" width="30" height="50" hotspot_y="24">
                                     <uuid uuid="{B6E70CCC-A69E-4FA9-8BC5-125633D74CDB}"/>
                                     <names>
                                         <name lang="de">Drucktaster Schliesser beleuchtet</name>
@@ -24297,7 +24297,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="it">Segnalazione ottica</name>
                             </names>
                             <element name="lampe2.elmt">
-                                <definition hotspot_x="15" type="element" version="0.5" link_type="simple" width="30" height="60" hotspot_y="29" orientation="dyyy">
+                                <definition hotspot_x="15" type="element" version="0.5" link_type="simple" width="30" height="60" hotspot_y="29">
                                     <uuid uuid="{c8f5ab5f-4534-4307-90b4-c6601cc77abb}"/>
                                     <names>
                                         <name lang="fr">Lampe</name>
@@ -24342,7 +24342,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="el">Διεπαφές ανθρώπου/μηχανής</name>
                             </names>
                             <element name="ecran_ihm_tactile_1.elmt">
-                                <definition hotspot_x="125" type="element" version="0.5" link_type="simple" width="250" height="250" hotspot_y="123" orientation="dyyy">
+                                <definition hotspot_x="125" type="element" version="0.5" link_type="simple" width="250" height="250" hotspot_y="123">
                                     <uuid uuid="{6bf14a17-bc23-4b53-84d4-be4d8fc20178}"/>
                                     <names>
                                         <name lang="fr">HMI TACTILE 1</name>
@@ -24394,7 +24394,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="ru">Точки разрыва</name>
                         </names>
                         <element name="01coming_arrow.elmt">
-                            <definition hotspot_x="49" type="element" version="0.3" link_type="previous_report" width="70" height="30" ic="true" hotspot_y="15" orientation="dyyy">
+                            <definition hotspot_x="49" type="element" version="0.3" link_type="previous_report" width="70" height="30" ic="true" hotspot_y="15">
                                 <uuid uuid="{F549BEFB-F0CF-44ED-A948-F6F796BFB421}"/>
                                 <names>
                                     <name lang="ru">Предыдущая страница</name>
@@ -24420,7 +24420,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             </definition>
                         </element>
                         <element name="02going_arrow.elmt">
-                            <definition hotspot_x="18" type="element" version="0.3" link_type="next_report" width="40" height="30" ic="true" hotspot_y="15" orientation="dyyy">
+                            <definition hotspot_x="18" type="element" version="0.3" link_type="next_report" width="40" height="30" ic="true" hotspot_y="15">
                                 <uuid uuid="{717352A1-F3C7-49C7-9A06-51620AB5CA00}"/>
                                 <names>
                                     <name lang="ru">Следующая страница</name>
@@ -24473,7 +24473,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="pl">Zasilacze</name>
                             </names>
                             <element name="alim.elmt">
-                                <definition hotspot_x="35" type="element" version="0.5" link_type="simple" width="70" height="60" hotspot_y="49" orientation="dyyy">
+                                <definition hotspot_x="35" type="element" version="0.5" link_type="simple" width="70" height="60" hotspot_y="49">
                                     <uuid uuid="{05425599-4c1d-41c0-9e88-04aee219a025}"/>
                                     <names>
                                         <name lang="de">Netzteil AC/DC</name>
@@ -24529,7 +24529,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="ar">مُحوّلات</name>
                             </names>
                             <element name="transformator_ekr_2.elmt">
-                                <definition hotspot_x="18" type="element" version="0.3" width="50" height="50" hotspot_y="25" orientation="dyyy">
+                                <definition hotspot_x="18" type="element" version="0.3" width="50" height="50" hotspot_y="25">
                                     <uuid uuid="{5F169AA6-5D2B-47BF-8890-2F7B5D70E3AB}"/>
                                     <names>
                                         <name lang="fr">Transformateur monophasé à deux enroulements avec écran</name>
@@ -24611,7 +24611,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="ar">قدرة</name>
                                 </names>
                                 <element name="com_puiss4.elmt">
-                                    <definition hotspot_x="29" type="element" version="0.3" link_type="slave" width="90" height="60" ic="true" hotspot_y="30" orientation="dyyy">
+                                    <definition hotspot_x="29" type="element" version="0.3" link_type="slave" width="90" height="60" ic="true" hotspot_y="30">
                                         <uuid uuid="{D2D50279-CEA7-4307-A6FB-9AABEE1BB319}"/>
                                         <names>
                                             <name lang="ar">مُلامس قدرة- كونتكتور (NO)</name>
@@ -24715,7 +24715,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="comm_courant_continue.elmt">
-                                <definition hotspot_x="30" type="element" version="0.5" link_type="master" width="50" height="50" hotspot_y="24" orientation="dyyy">
+                                <definition hotspot_x="30" type="element" version="0.5" link_type="master" width="50" height="50" hotspot_y="24">
                                     <uuid uuid="{972B52CC-468F-407B-9CA5-921E4AC26896}"/>
                                     <names>
                                         <name lang="be">Relais AC (wisselspanning)</name>
@@ -24780,7 +24780,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="fr">Fins de course</name>
                             </names>
                             <element name="fin_course_nc.elmt">
-                                <definition hotspot_x="9" type="element" version="0.4" link_type="simple" width="20" height="50" ic="true" hotspot_y="25" orientation="dyyy">
+                                <definition hotspot_x="9" type="element" version="0.4" link_type="simple" width="20" height="50" ic="true" hotspot_y="25">
                                     <uuid uuid="{4F06EDB7-C47D-48F5-B5CD-C0A5701664F0}"/>
                                     <names>
                                         <name lang="ar">مفتاح نهاية مشوار (NC)</name>
@@ -24847,7 +24847,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="pl">Moduły bezpieczeństwa</name>
                                 </names>
                                 <element name="xps_af.elmt">
-                                    <definition hotspot_x="65" type="element" version="0.5" link_type="simple" width="350" height="130" hotspot_y="34" orientation="dyyy">
+                                    <definition hotspot_x="65" type="element" version="0.5" link_type="simple" width="350" height="130" hotspot_y="34">
                                         <uuid uuid="{a3fa55be-ffaa-40a4-bf21-8cb8f560592f}"/>
                                         <names>
                                             <name lang="cs">XPS-AF</name>
@@ -24990,7 +24990,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </names>
                                 <category name="tor">
                                     <element name="tm3dm24r_layout.elmt">
-                                        <definition hotspot_x="7" type="element" version="0.5" link_type="simple" width="110" height="240" hotspot_y="8" orientation="dyyy">
+                                        <definition hotspot_x="7" type="element" version="0.5" link_type="simple" width="110" height="240" hotspot_y="8">
                                             <uuid uuid="{06e85c4a-c339-4156-9335-64986ad39878}"/>
                                             <names>
                                                 <name lang="en">tor in/out TM3DM24R: layout</name>
@@ -25436,7 +25436,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="fr">Carte TM3DM24R</name>
                                 </names>
                                 <element name="tm3dm24R_in1.elmt">
-                                    <definition hotspot_x="5" type="element" version="0.60" link_type="simple" width="920" height="90" hotspot_y="6" orientation="dyyy">
+                                    <definition hotspot_x="5" type="element" version="0.60" link_type="simple" width="920" height="90" hotspot_y="6">
                                         <uuid uuid="{b4f041ab-37e6-4265-b4e3-d64e73f33d05}"/>
                                         <names>
                                             <name lang="fr">Cartes entrées TM3DM24R Schneider 1/2: détails</name>
@@ -25500,7 +25500,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="tm3dm24r_in_2.elmt">
-                                    <definition hotspot_x="492" type="element" version="0.60" link_type="simple" width="960" height="90" hotspot_y="46" orientation="dyyy">
+                                    <definition hotspot_x="492" type="element" version="0.60" link_type="simple" width="960" height="90" hotspot_y="46">
                                         <uuid uuid="{a6e7c89a-11fd-49a1-bc97-e0f9068e9908}"/>
                                         <names>
                                             <name lang="fr">Cartes entrées TM3DM24R Schneider 2/2</name>
@@ -25570,7 +25570,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="tm3dm24r_out04-07-17.elmt">
-                                    <definition hotspot_x="495" type="element" version="0.60" link_type="simple" width="970" height="90" hotspot_y="44" orientation="dyyy">
+                                    <definition hotspot_x="495" type="element" version="0.60" link_type="simple" width="970" height="90" hotspot_y="44">
                                         <uuid uuid="{901d7d7d-d906-4758-997d-84e2976a7c7e}"/>
                                         <names>
                                             <name lang="fr">Cartes sorties TM3DM24R Schneider</name>
@@ -25655,7 +25655,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="en">Magelis</name>
                                 </names>
                                 <element name="hmistu855.elmt">
-                                    <definition hotspot_x="99" type="element" version="0.5" link_type="simple" width="200" height="180" hotspot_y="81" orientation="dyyy">
+                                    <definition hotspot_x="99" type="element" version="0.5" link_type="simple" width="200" height="180" hotspot_y="81">
                                         <uuid uuid="{78B4397B-43EC-4795-BBF7-242CBBF25EC0}"/>
                                         <names>
                                             <name lang="en">Schneider Touch Screen HMISTU855</name>
@@ -25780,7 +25780,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="pl">Odłączniki bezpiecznikowe</name>
                             </names>
                             <element name="sec_fus1.elmt">
-                                <definition hotspot_x="12" type="element" version="0.4" link_type="master" width="20" height="60" hotspot_y="29" orientation="dyyy">
+                                <definition hotspot_x="12" type="element" version="0.4" link_type="master" width="20" height="60" hotspot_y="29">
                                     <uuid uuid="{89D4ADF3-2AE3-4C05-828F-3F49C347A3DE}"/>
                                     <names>
                                         <name lang="ar">مفتاح عزل بمصهر</name>
@@ -25862,7 +25862,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="en">Size 4x4</name>
                                 </names>
                                 <element name="voyant.elmt">
-                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="50" hotspot_y="25" orientation="dyyy">
+                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="50" hotspot_y="25">
                                         <uuid uuid="{c221dbd4-8298-474d-99c7-ae13796e50fc}"/>
                                         <names>
                                             <name lang="el">Λάμπα</name>
@@ -25886,7 +25886,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="bouton_poussoir_lumineux.elmt">
-                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="50" hotspot_y="25" orientation="dyyy">
+                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="50" hotspot_y="25">
                                         <uuid uuid="{3b10b14d-2363-4ead-8b08-4862dc940ebd}"/>
                                         <names>
                                             <name lang="el">Μπουτόν φωτειζόμενο</name>
@@ -25911,7 +25911,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="porte_etiquette_vide.elmt">
-                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="60" hotspot_y="54" orientation="dyyy">
+                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="60" hotspot_y="54">
                                         <uuid uuid="{367b676c-1276-4711-81d4-2c41711b9562}"/>
                                         <names>
                                             <name lang="el">Ετικέτα πόρτας, κενή</name>
@@ -25936,7 +25936,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="bouton_tournant_centre.elmt">
-                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="50" hotspot_y="25" orientation="dyyy">
+                                    <definition hotspot_x="25" type="element" version="0.5" link_type="simple" width="50" height="50" hotspot_y="25">
                                         <uuid uuid="{db64a40b-c7cc-4b16-9062-e98b50240ab5}"/>
                                         <names>
                                             <name lang="el">Περιστροφικός διακόπτης, κέντρο</name>
@@ -25974,7 +25974,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="en">Forms and tabs</name>
                         </names>
                         <element name="pagegarde.elmt">
-                            <definition hotspot_x="4" type="element" version="0.5" link_type="simple" width="430" height="260" hotspot_y="25" orientation="dyyy">
+                            <definition hotspot_x="4" type="element" version="0.5" link_type="simple" width="430" height="260" hotspot_y="25">
                                 <uuid uuid="{f61e2cac-0224-45db-a679-bba501d63eb5}"/>
                                 <names>
                                     <name lang="es">Cuadro de titulo de la pagina principal</name>
@@ -26171,7 +26171,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="el">Αναφορές σελίδας</name>
                             </names>
                             <element name="02next_folio.elmt">
-                                <definition hotspot_x="18" type="element" version="0.3" link_type="next_report" width="40" height="30" ic="true" hotspot_y="15" orientation="dyyy">
+                                <definition hotspot_x="18" type="element" version="0.3" link_type="next_report" width="40" height="30" ic="true" hotspot_y="15">
                                     <uuid uuid="{717352A1-F3C7-49C7-9A06-51620AB5CA00}"/>
                                     <names>
                                         <name lang="ru">Следующая страница</name>
@@ -26201,7 +26201,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </category>
             </category>
             <element name="tm221me.elmt">
-                <definition hotspot_x="4" type="element" version="0.70" link_type="simple" width="160" height="260" hotspot_y="2" orientation="dyyy">
+                <definition hotspot_x="4" type="element" version="0.70" link_type="simple" width="160" height="260" hotspot_y="2">
                     <uuid uuid="{b9521672-88ff-49c8-a68b-619fc65f8e3f}"/>
                     <names>
                         <name lang="fr">Contrôleur M251 schneider</name>
@@ -27099,7 +27099,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="en">Auxiliary Contacts</name>
                 </names>
                 <element name="aux_no_ref_simple.elmt">
-                    <definition hotspot_x="11" type="element" version="0.70" link_type="slave" width="20" height="50" hotspot_y="24" orientation="dyyy">
+                    <definition hotspot_x="11" type="element" version="0.70" link_type="slave" width="20" height="50" hotspot_y="24">
                         <uuid uuid="{c1abc8f2-7755-4e4a-aebf-82097e69d96e}"/>
                         <names>
                             <name lang="ar">مُلامس بسيط (NO)</name>
@@ -27141,7 +27141,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="simple_nc_ref.elmt">
-                    <definition hotspot_x="8" type="element" version="0.70" link_type="slave" width="20" height="50" hotspot_y="24" orientation="dyyy">
+                    <definition hotspot_x="8" type="element" version="0.70" link_type="slave" width="20" height="50" hotspot_y="24">
                         <uuid uuid="{015859d8-a194-4e79-941d-dcbd0ab4130c}"/>
                         <names>
                             <name lang="cs">Jednoduché spojení (NC)</name>
@@ -27184,7 +27184,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="simple_no_ref.elmt">
-                    <definition hotspot_x="11" type="element" version="0.70" link_type="slave" width="20" height="50" hotspot_y="24" orientation="dyyy">
+                    <definition hotspot_x="11" type="element" version="0.70" link_type="slave" width="20" height="50" hotspot_y="24">
                         <uuid uuid="{3428ddd2-2d84-47f8-8cd4-01f17040b95f}"/>
                         <names>
                             <name lang="en">Simple Contact (NO)</name>
@@ -27231,7 +27231,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="en">TEMP: Terminal Blocks</name>
                 </names>
                 <element name="lal_ps_x_tb_X0_1-5.elmt">
-                    <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="160" height="170" hotspot_y="24" orientation="dyyy">
+                    <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="160" height="170" hotspot_y="24">
                         <uuid uuid="{02077de7-6711-4193-afd5-50b7911b983a}"/>
                         <names>
                             <name lang="en">X0 Power</name>
@@ -27327,7 +27327,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="en">Schneider</name>
                 </names>
                 <element name="tm221me16r_input.elmt">
-                    <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="920" height="90" hotspot_y="6" orientation="dyyy">
+                    <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="920" height="90" hotspot_y="6">
                         <uuid uuid="{a6464754-4340-48cc-951d-a337feaef49d}"/>
                         <names>
                             <name lang="fr">Cartes entrées TM221ME16R Schneider</name>
@@ -27395,7 +27395,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="tm221me16r_output.elmt">
-                    <definition hotspot_x="495" type="element" version="0.70" link_type="simple" width="970" height="90" hotspot_y="44" orientation="dyyy">
+                    <definition hotspot_x="495" type="element" version="0.70" link_type="simple" width="970" height="90" hotspot_y="44">
                         <uuid uuid="{635278fe-2124-4899-a8e8-a47164ff8a8d}"/>
                         <names>
                             <name lang="fr">Cartes sorties TM221ME16R Schneider</name>
@@ -27479,7 +27479,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="analog_input_tm3ai8.elmt">
-                    <definition hotspot_x="6" type="element" version="0.70" link_type="simple" width="70" height="240" hotspot_y="8" orientation="dyyy">
+                    <definition hotspot_x="6" type="element" version="0.70" link_type="simple" width="70" height="240" hotspot_y="8">
                         <uuid uuid="{7e056d28-71de-4521-a4a3-503c47505229}"/>
                         <names>
                             <name lang="en">ana input TM3AI8: layout</name>
@@ -27692,7 +27692,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="ana_input_tm3ai8-2.elmt">
-                    <definition hotspot_x="495" type="element" version="0.70" link_type="simple" width="910" height="90" hotspot_y="46" orientation="dyyy">
+                    <definition hotspot_x="495" type="element" version="0.70" link_type="simple" width="910" height="90" hotspot_y="46">
                         <uuid uuid="{cbe40409-07e4-4d17-995b-5b27ac4385a6}"/>
                         <names>
                             <name lang="en">Analog inputs TM3AI8-2 Schneider</name>
@@ -27772,7 +27772,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="ana_input_tm3ai8-1.elmt">
-                    <definition hotspot_x="495" type="element" version="0.70" link_type="simple" width="910" height="90" hotspot_y="46" orientation="dyyy">
+                    <definition hotspot_x="495" type="element" version="0.70" link_type="simple" width="910" height="90" hotspot_y="46">
                         <uuid uuid="{088fcee7-e947-46b3-81e2-1a4ac7e283eb}"/>
                         <names>
                             <name lang="en">Analog inputs TM3AI8-1 Schneider</name>
@@ -27857,7 +27857,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </element>
             </category>
             <element name="emg_stop_pb.elmt">
-                <definition hotspot_x="74" type="element" version="0.70" link_type="simple" width="150" height="150" hotspot_y="76" orientation="dyyy">
+                <definition hotspot_x="74" type="element" version="0.70" link_type="simple" width="150" height="150" hotspot_y="76">
                     <uuid uuid="{bacdd078-8445-48d6-890d-06d2c9dd98b9}"/>
                     <names>
                         <name lang="ar">توقيف طوارئ - دوران للإطلاق</name>
@@ -27906,7 +27906,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </definition>
             </element>
             <element name="bernard_control_at.elmt">
-                <definition hotspot_x="15" type="element" version="0.70" link_type="simple" width="980" height="160" hotspot_y="34" orientation="dyyy">
+                <definition hotspot_x="15" type="element" version="0.70" link_type="simple" width="980" height="160" hotspot_y="34">
                     <uuid uuid="{0354ea57-c834-4f57-9c2f-9e547ac9c247}"/>
                     <names>
                         <name lang="en">AT</name>
@@ -28052,7 +28052,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </definition>
             </element>
             <element name="screen_big.elmt">
-                <definition hotspot_x="41" type="element" version="0.70" link_type="simple" width="90" height="20" hotspot_y="10" orientation="dyyy">
+                <definition hotspot_x="41" type="element" version="0.70" link_type="simple" width="90" height="20" hotspot_y="10">
                     <uuid uuid="{74eb70d9-1427-48f0-b140-1443bb340ff4}"/>
                     <names>
                         <name lang="fr">Ecran</name>
@@ -28085,7 +28085,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="en">Data Network</name>
                 </names>
                 <element name="4_port_switch.elmt">
-                    <definition hotspot_x="44" type="element" version="0.70" link_type="simple" width="280" height="70" hotspot_y="46" orientation="dyyy">
+                    <definition hotspot_x="44" type="element" version="0.70" link_type="simple" width="280" height="70" hotspot_y="46">
                         <uuid uuid="{b2ffe01e-cb49-412c-8dde-bf9c80982a37}"/>
                         <names>
                             <name lang="fr">RJ45 4x switch</name>
@@ -28170,7 +28170,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </element>
             </category>
             <element name="network_settings.elmt">
-                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="130" hotspot_y="25" orientation="dyyy">
+                <definition hotspot_x="5" type="element" version="0.70" link_type="simple" width="220" height="130" hotspot_y="25">
                     <uuid uuid="{59e48672-680d-4c3b-96e7-b4194aea259e}"/>
                     <names>
                         <name lang="de">IP Einstellungen</name>

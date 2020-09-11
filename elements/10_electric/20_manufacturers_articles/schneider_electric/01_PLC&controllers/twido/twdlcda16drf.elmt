@@ -1,4 +1,4 @@
-<definition width="570" height="160" link_type="simple" hotspot_y="25" hotspot_x="25" version="0.5" type="element" orientation="dyyy">
+<definition width="570" height="160" link_type="simple" hotspot_y="25" hotspot_x="25" version="0.5" type="element">
     <uuid uuid="{6aa9a71c-b5c4-42e0-8b16-eec5fdd107d8}"/>
     <names>
         <name lang="cs">TWDLCDA16DRF</name>

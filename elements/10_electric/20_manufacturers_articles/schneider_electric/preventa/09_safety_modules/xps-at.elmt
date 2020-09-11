@@ -1,4 +1,4 @@
-<definition width="370" height="110" link_type="simple" hotspot_y="39" hotspot_x="65" version="0.5" type="element" orientation="dyyy">
+<definition width="370" height="110" link_type="simple" hotspot_y="39" hotspot_x="65" version="0.5" type="element">
     <uuid uuid="{e97a152d-aa2b-4156-9e6e-74d0e260cbcf}"/>
     <names>
         <name lang="cs">XPS-AT</name>

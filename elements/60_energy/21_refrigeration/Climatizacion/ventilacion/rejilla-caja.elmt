@@ -1,4 +1,4 @@
-<definition hotspot_y="32" link_type="simple" height="50" width="50" type="element" version="0.80" hotspot_x="35" orientation="dyyy">
+<definition hotspot_y="32" link_type="simple" height="50" width="50" type="element" version="0.80" hotspot_x="35">
     <uuid uuid="{db56c7c2-ae1c-49ca-9219-230e18e32fe0}"/>
     <names>
         <name lang="fr">Grille</name>

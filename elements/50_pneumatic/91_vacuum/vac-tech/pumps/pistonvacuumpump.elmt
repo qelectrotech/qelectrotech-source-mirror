@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{29bb5f7a-43bd-4e7b-8da0-5fbe44cec583}"/>
     <names>
         <name lang="en">Piston vacuum pump</name>

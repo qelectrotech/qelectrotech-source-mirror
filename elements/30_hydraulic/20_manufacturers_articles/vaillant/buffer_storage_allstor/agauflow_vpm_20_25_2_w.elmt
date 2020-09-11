@@ -1,4 +1,4 @@
-<definition hotspot_y="78" type="element" height="120" version="0.80" width="80" hotspot_x="6" link_type="simple" orientation="dyyy">
+<definition hotspot_y="78" type="element" height="120" version="0.80" width="80" hotspot_x="6" link_type="simple">
     <uuid uuid="{eabf7359-fb6f-436d-b1b7-2f452632a3ea}"/>
     <names>
         <name lang="nl">drinkwaterstation agauFLOW exclusiv VPM 20/25/2 W</name>

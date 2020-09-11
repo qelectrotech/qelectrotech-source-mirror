@@ -1,4 +1,4 @@
-<definition width="160" height="150" hotspot_y="75" version="0.80" link_type="simple" type="element" hotspot_x="65" orientation="dyyy">
+<definition width="160" height="150" hotspot_y="75" version="0.80" link_type="simple" type="element" hotspot_x="65">
     <uuid uuid="{91309001-1611-411d-abdc-7b359393fe20}"/>
     <names>
         <name lang="fr">Endress&amp;HAUSER Sonde Pression DeltaPilot S</name>

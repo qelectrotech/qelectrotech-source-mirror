@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" link_type="master">
+<definition width="40" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" link_type="master">
 <uuid uuid="{33C68F1B-D5F7-4698-8C45-1A64DB77676E}"/><names>
         <name lang="ar">مرحل حراري</name>
         <name lang="de">Überstromrelais 1P</name>

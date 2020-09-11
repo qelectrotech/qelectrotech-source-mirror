@@ -1,4 +1,4 @@
-<definition hotspot_y="33" width="90" type="element" hotspot_x="44" height="60" version="0.70" link_type="simple" orientation="dyyy">
+<definition hotspot_y="33" width="90" type="element" hotspot_x="44" height="60" version="0.70" link_type="simple">
     <uuid uuid="{4112c2f9-0664-499f-b4a9-b8293ef6b75d}"/>
     <names>
         <name lang="hu">NON logikai szelep</name>

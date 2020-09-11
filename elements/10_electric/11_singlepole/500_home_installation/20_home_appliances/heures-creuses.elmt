@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="simple" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="simple" version="0.51" hotspot_x="5">
     <uuid uuid="{5c922f83-7c04-4aa2-8bdc-57026309a6bd}"/>
     <names>
         <name lang="fr">Heures Creuses</name>

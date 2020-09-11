@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_x="64" hotspot_y="37" height="80" width="120" version="0.70" orientation="dyyy">
+<definition link_type="simple" type="element" hotspot_x="64" hotspot_y="37" height="80" width="120" version="0.70">
     <uuid uuid="{adb3e278-5c82-455c-9e35-5be13cfe6b2b}"/>
     <names>
         <name lang="de">Vaillant VRC430</name>

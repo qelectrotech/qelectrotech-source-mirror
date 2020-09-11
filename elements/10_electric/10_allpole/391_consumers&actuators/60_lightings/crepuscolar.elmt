@@ -1,4 +1,4 @@
-<definition width="60" height="60" hotspot_x="22" version="0.80" type="element" hotspot_y="35" link_type="simple" orientation="dyyy">
+<definition width="60" height="60" hotspot_x="22" version="0.80" type="element" hotspot_y="35" link_type="simple">
     <uuid uuid="{e7c496ba-a62b-4f5c-b6c3-86db410bf776}"/>
     <names>
         <name lang="fr">Relais crépusculaire</name>

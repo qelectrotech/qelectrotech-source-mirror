@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" height="100" width="170" type="element" hotspot_y="8" orientation="dyyy">
+<definition version="0.80" link_type="simple" hotspot_x="5" height="100" width="170" type="element" hotspot_y="8">
     <uuid uuid="{43094561-b92e-4ec2-9ced-ae71947f209c}"/>
     <names>
         <name lang="fr">ABB_Positionneur-Pneumatique_TZIDC</name>

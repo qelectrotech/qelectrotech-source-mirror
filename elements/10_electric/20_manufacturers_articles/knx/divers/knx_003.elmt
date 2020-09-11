@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="40" hotspot_x="14" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="40" hotspot_x="14">
     <uuid uuid="{8cf9d0a5-6343-4ab6-85d2-a1172c196959}"/>
     <names>
         <name lang="it">Alimentatore</name>

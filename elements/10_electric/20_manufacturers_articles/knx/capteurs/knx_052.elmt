@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{0df0d0ff-0eea-49e9-ad54-7c5cd00de02d}"/>
     <names>
         <name lang="it">Temporizzatore, 2 can</name>

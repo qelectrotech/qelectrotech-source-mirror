@@ -3511,7 +3511,7 @@ CUISINE</text>
                             <name lang="pl">Odsyłacze</name>
                         </names>
                         <element name="01coming_arrow.elmt">
-                            <definition height="30" version="0.3" ic="true" hotspot_x="49" width="70" hotspot_y="15" link_type="previous_report" orientation="dyyy" type="element">
+                            <definition height="30" version="0.3" ic="true" hotspot_x="49" width="70" hotspot_y="15" link_type="previous_report" type="element">
                                 <uuid uuid="{F549BEFB-F0CF-44ED-A948-F6F796BFB421}"/>
                                 <names>
                                     <name lang="ru">Предыдущая страница</name>
@@ -3537,7 +3537,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             </definition>
                         </element>
                         <element name="02going_arrow.elmt">
-                            <definition height="30" version="0.3" ic="true" hotspot_x="18" width="40" hotspot_y="15" link_type="next_report" orientation="dyyy" type="element">
+                            <definition height="30" version="0.3" ic="true" hotspot_x="18" width="40" hotspot_y="15" link_type="next_report" type="element">
                                 <uuid uuid="{717352A1-F3C7-49C7-9A06-51620AB5CA00}"/>
                                 <names>
                                     <name lang="ru">Следующая страница</name>
@@ -3608,7 +3608,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="it">Elettrodomestici</name>
                             </names>
                             <element name="plaque_cuisson.elmt">
-                                <definition height="50" version="0.5" hotspot_x="15" width="30" hotspot_y="21" link_type="simple" orientation="dyyy" type="element">
+                                <definition height="50" version="0.5" hotspot_x="15" width="30" hotspot_y="21" link_type="simple" type="element">
                                     <uuid uuid="{8a85a876-2de4-4742-a2e2-3b5692a8a884}"/>
                                     <names>
                                         <name lang="ru">Эл. плита</name>
@@ -3654,7 +3654,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="fr">Architecture</name>
                             </names>
                             <element name="pc.elmt">
-                                <definition height="50" version="0.5" hotspot_x="15" width="30" hotspot_y="30" link_type="simple" orientation="dyyy" type="element">
+                                <definition height="50" version="0.5" hotspot_x="15" width="30" hotspot_y="30" link_type="simple" type="element">
                                     <uuid uuid="{88583090-190d-4c45-975c-97f89386c179}"/>
                                     <names>
                                         <name lang="ru">Розетка</name>
@@ -3684,7 +3684,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="lampe.elmt">
-                                <definition height="30" version="0.5" hotspot_x="15" width="30" hotspot_y="26" link_type="simple" orientation="dyyy" type="element">
+                                <definition height="30" version="0.5" hotspot_x="15" width="30" hotspot_y="26" link_type="simple" type="element">
                                     <uuid uuid="{8F6E31C3-6278-47A5-B494-C153B29775D0}"/>
                                     <names>
                                         <name lang="pt">Lâmpada</name>
@@ -3712,7 +3712,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="camera.elmt">
-                                <definition height="30" version="0.51" hotspot_x="36" width="80" hotspot_y="14" link_type="simple" orientation="dyyy" type="element">
+                                <definition height="30" version="0.51" hotspot_x="36" width="80" hotspot_y="14" link_type="simple" type="element">
                                     <uuid uuid="{4fa0d72e-fad4-4ef3-bb66-9d196954b64f}"/>
                                     <names>
                                         <name lang="pl">Kamera</name>
@@ -3784,7 +3784,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                             <name lang="fr">Drivia 13</name>
                                         </names>
                                         <element name="drivia_13_coffret_3_rangees.elmt">
-                                            <definition height="1130" version="0.80" hotspot_x="4" width="570" hotspot_y="3" link_type="simple" orientation="dyyy" type="element">
+                                            <definition height="1130" version="0.80" hotspot_x="4" width="570" hotspot_y="3" link_type="simple" type="element">
                                                 <uuid uuid="{b4a10451-8b8c-4ea4-abda-aab029392ffd}"/>
                                                 <names>
                                                     <name lang="fr">401213 - Coffret Drivia 13 - 3 rangées</name>
@@ -3930,7 +3930,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                             <name lang="fr">Drivia 13</name>
                                         </names>
                                         <element name="401213-drivia_13_coffret_3_rangees.elmt">
-                                            <definition height="1130" version="0.80" hotspot_x="4" width="570" hotspot_y="3" link_type="simple" orientation="dyyy" type="element">
+                                            <definition height="1130" version="0.80" hotspot_x="4" width="570" hotspot_y="3" link_type="simple" type="element">
                                                 <uuid uuid="{b4a10451-8b8c-4ea4-abda-aab029392ffd}"/>
                                                 <names>
                                                     <name lang="fr">401213 - Coffret Drivia 13 - 3 rangées</name>
@@ -4074,7 +4074,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="de">Hager</name>
                                 </names>
                                 <element name="hag_adc837f.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="90" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="90" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{e29ff148-7c88-4cd6-b5ae-90c8cd9e9e4e}"/>
                                         <names>
                                             <name lang="fr">ADC 832F</name>
@@ -4192,7 +4192,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="hag_mfs720.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{5c1e25ec-7465-4d3a-a408-b9bbe7559c83}"/>
                                         <names>
                                             <name lang="fr">MFS720</name>
@@ -4300,7 +4300,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="hag_mfs716.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{034a29d6-bc93-43e5-b868-d32960029e92}"/>
                                         <names>
                                             <name lang="fr">MFS716</name>
@@ -4408,7 +4408,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="hag_mfs732.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{1bb929e0-b789-4b44-afff-2393d0b47a55}"/>
                                         <names>
                                             <name lang="fr">MFS732</name>
@@ -4516,7 +4516,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="hag_mfs710.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{e55dd7ff-c0dd-44f3-9bbf-bb8b42644593}"/>
                                         <names>
                                             <name lang="fr">MFS710</name>
@@ -4624,7 +4624,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="hag_mfs702.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{e008ef0a-9814-4315-b4c7-978532969ad3}"/>
                                         <names>
                                             <name lang="fr">MFS702</name>
@@ -4732,7 +4732,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     </definition>
                                 </element>
                                 <element name="hag_mfs706.elmt">
-                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" orientation="dyyy" type="element">
+                                    <definition height="210" version="0.80" hotspot_x="5" width="50" hotspot_y="4" link_type="slave" type="element">
                                         <uuid uuid="{4062b1d1-b7f6-4d97-85a9-f1a01ea60510}"/>
                                         <names>
                                             <name lang="fr">MFS706</name>
@@ -4849,7 +4849,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="fr">Perso</name>
                 </names>
                 <element name="interrupteur_differentiel.elmt">
-                    <definition height="80" version="0.70" hotspot_x="27" width="50" hotspot_y="34" link_type="master" orientation="dyyy" type="element">
+                    <definition height="80" version="0.70" hotspot_x="27" width="50" hotspot_y="34" link_type="master" type="element">
                         <uuid uuid="{daaec1a5-d463-4bb3-9a92-e26a13f5a0ec}"/>
                         <names>
                             <name lang="ar">مفتاح تفاضلي</name>
@@ -4922,7 +4922,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="fr">Racourcie</name>
                 </names>
                 <element name="disjonct-m_1fn.elmt">
-                    <definition height="60" version="0.70" hotspot_x="20" width="40" hotspot_y="34" link_type="master" orientation="dyyy" type="element">
+                    <definition height="60" version="0.70" hotspot_x="20" width="40" hotspot_y="34" link_type="master" type="element">
                         <uuid uuid="{66648082-bce3-4d87-9de4-723bf8c9694f}"/>
                         <names>
                             <name lang="nl">Lastscheider 1P+N</name>
@@ -4986,7 +4986,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="02going_arrow.elmt">
-                    <definition height="30" version="0.3" ic="true" hotspot_x="18" width="40" hotspot_y="15" link_type="next_report" orientation="dyyy" type="element">
+                    <definition height="30" version="0.3" ic="true" hotspot_x="18" width="40" hotspot_y="15" link_type="next_report" type="element">
                         <uuid uuid="{717352A1-F3C7-49C7-9A06-51620AB5CA00}"/>
                         <names>
                             <name lang="ru">Следующая страница</name>
@@ -5069,7 +5069,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                         <name lang="fr">Echangeurs</name>
                                     </names>
                                     <element name="ventilador-axial.elmt">
-                                        <definition height="40" version="0.5" hotspot_x="15" width="30" hotspot_y="17" link_type="simple" orientation="dyyy" type="element">
+                                        <definition height="40" version="0.5" hotspot_x="15" width="30" hotspot_y="17" link_type="simple" type="element">
                                             <uuid uuid="{9E1B2B69-73A8-467E-9D54-8BD460D8BD09}"/>
                                             <names>
                                                 <name lang="ca">Ventilador axial</name>
@@ -5106,7 +5106,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                     <name lang="en">Health equipment</name>
                                 </names>
                                 <element name="lavavajillas.elmt">
-                                    <definition height="40" version="0.4" ic="true" hotspot_x="19" width="40" hotspot_y="16" link_type="simple" orientation="dyyy" type="element">
+                                    <definition height="40" version="0.4" ic="true" hotspot_x="19" width="40" hotspot_y="16" link_type="simple" type="element">
                                         <uuid uuid="{3EEEE2D9-5944-4B93-AA61-A76A53B4EAAD}"/>
                                         <names>
                                             <name lang="es">Lavavajillas</name>
@@ -5137,7 +5137,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
                                     </definition>
                                 </element>
                                 <element name="lavadora.elmt">
-                                    <definition height="50" version="0.4" ic="true" hotspot_x="15" width="40" hotspot_y="28" link_type="simple" orientation="dyyy" type="element">
+                                    <definition height="50" version="0.4" ic="true" hotspot_x="15" width="40" hotspot_y="28" link_type="simple" type="element">
                                         <uuid uuid="{68675A4B-D9C4-48F9-94E7-BF08B958C392}"/>
                                         <names>
                                             <name lang="es">Lavadora</name>
@@ -5197,7 +5197,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
                                         <name lang="en">Boilers</name>
                                     </names>
                                     <element name="caldera-mural.elmt">
-                                        <definition height="90" version="0.5" hotspot_x="27" width="50" hotspot_y="54" link_type="simple" orientation="dyyy" type="element">
+                                        <definition height="90" version="0.5" hotspot_x="27" width="50" hotspot_y="54" link_type="simple" type="element">
                                             <uuid uuid="{F25405AE-002C-4D3B-9A3D-81F56F98BE40}"/>
                                             <names>
                                                 <name lang="es">Caldera de muro ACS</name>
@@ -5254,7 +5254,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
                 </category>
             </category>
             <element name="volet-roulant.elmt">
-                <definition height="70" version="0.70" hotspot_x="37" width="70" hotspot_y="26" link_type="master" orientation="dyyy" type="element">
+                <definition height="70" version="0.70" hotspot_x="37" width="70" hotspot_y="26" link_type="master" type="element">
                     <uuid uuid="{583e0910-e69d-4897-a3c6-81082b21059d}"/>
                     <names>
                         <name lang="fr">Volet Roulant</name>

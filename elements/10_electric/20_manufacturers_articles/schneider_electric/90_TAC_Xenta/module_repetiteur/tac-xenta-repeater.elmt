@@ -1,4 +1,4 @@
-<definition width="450" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+<definition width="450" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element">
     <uuid uuid="{8e854345-7eea-4c03-9c57-f3eb8987a360}"/>
     <names>
         <name lang="cs">TAC Xenta Repeater</name>

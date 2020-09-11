@@ -1,4 +1,4 @@
-<definition link_type="master" hotspot_y="23" width="100" type="element" height="50" hotspot_x="61" version="0.80" orientation="dyyy">
+<definition link_type="master" hotspot_y="23" width="100" type="element" height="50" hotspot_x="61" version="0.80">
     <uuid uuid="{e8593377-18bd-441c-bca4-69c6ccf2aaae}"/>
     <names>
         <name lang="en">Four pole switch disconnector</name>

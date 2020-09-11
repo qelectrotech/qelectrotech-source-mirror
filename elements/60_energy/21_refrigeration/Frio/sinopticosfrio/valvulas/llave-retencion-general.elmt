@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true">
 <uuid uuid="{05CCFA48-0CB6-4DA3-831A-B45AA78729D0}"/><names>
         <name lang="es">Llave de retencion general</name>
     </names>

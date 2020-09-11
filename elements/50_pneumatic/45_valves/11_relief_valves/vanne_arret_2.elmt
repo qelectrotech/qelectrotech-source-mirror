@@ -1,4 +1,4 @@
-<definition height="20" version="0.5" width="50" hotspot_x="24" type="element" link_type="simple" hotspot_y="0" orientation="dyyy">
+<definition height="20" version="0.5" width="50" hotspot_x="24" type="element" link_type="simple" hotspot_y="0">
     <uuid uuid="{1b5416e8-c2e6-4b94-b623-f8d9bf6bfd38}"/>
     <names>
         <name lang="en">Gate valve shut-off</name>

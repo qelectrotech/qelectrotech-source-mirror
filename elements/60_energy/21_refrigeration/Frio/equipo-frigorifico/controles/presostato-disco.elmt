@@ -1,4 +1,4 @@
-<definition width="50" version="0.4" hotspot_x="22" hotspot_y="30" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="22" hotspot_y="30" height="60" link_type="simple" type="element" ic="true">
 <uuid uuid="{A6472D1F-D8F0-4CBC-9EA0-147EDD570867}"/><names>
         <name lang="es">Presostato mini</name>
         <name lang="ca">Prtesostat min</name>
