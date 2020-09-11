@@ -657,7 +657,7 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
 	//QRectF rect = boundingRect();
 	QRectF rect(0,0, m_header_item->rect().width(), m_current_size.height());
 	QPolygonF poly(rect);
-	Createdxf::drawPolygon(filepath,mapToScene(poly),0);
+    Createdxf::drawPolygon(filepath,mapToScene(poly),0);
 
 	//Draw vertical lines
 	auto offset= 0;

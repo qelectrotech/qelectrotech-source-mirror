@@ -117,6 +117,11 @@ class Createdxf
 				double xScale,
 				int colour);
 
+        static void drawPolyline(
+                const QString &filepath,
+                const QPolygonF &poly,
+                const int &colorcode,
+                bool preScaled = false);
 
 		static int getcolorCode (
 				const long red,

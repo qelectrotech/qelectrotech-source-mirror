@@ -639,9 +639,17 @@ void ExportDialog::generateDxf(
 
 	//Draw conductors
     foreach(Conductor *cond, list_conductors) {
+        QPolygonF poly;
+        bool firstseg = true;
         foreach(ConductorSegment *segment, cond -> segmentsList()) {
-            Createdxf::drawLine(file_path,QLineF(cond->pos()+segment->firstPoint(),cond->pos()+segment->secondPoint()),0);
+            //Createdxf::drawLine(file_path,QLineF(cond->pos()+segment->firstPoint(),cond->pos()+segment->secondPoint()),0);
+            if(firstseg){
+                poly << cond->pos()+segment->firstPoint();
+                firstseg = false;
+            }
+            poly << cond->pos()+segment->secondPoint();
 		}
+        Createdxf::drawPolyline(file_path,poly,0);
 		//Draw conductor text item
 		ConductorTextItem *textItem = cond -> textItem();
 		if (textItem) {

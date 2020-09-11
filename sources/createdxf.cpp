@@ -650,92 +650,18 @@ void Createdxf::drawRectangle (
 		double height,
 		const int &colour)
 {
-	if (!fileName.isEmpty()) {
-		QFile file(fileName);
-		if (!file.open(QFile::Append)) {
-			// error message
-			QMessageBox errorFileOpen;
-			errorFileOpen.setText("Error: File "+fileName+" was not written correctly.");
-			errorFileOpen.setInformativeText("Close all Files and Re-Run");
-			errorFileOpen.exec();
-		} else {
-			QTextStream To_Dxf(&file);
-			// Draw the Rectangle
-			To_Dxf << 0         << "\r\n";
-			To_Dxf << "LINE"    << "\r\n";
-			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
-			To_Dxf << 10        << "\r\n";
-			To_Dxf << x1        << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 20        << "\r\n";
-			To_Dxf << y1        << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 30        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 11        << "\r\n";
-			To_Dxf << x1+width  << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 21        << "\r\n";
-			To_Dxf << y1        << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 31        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 0         << "\r\n";
-			To_Dxf << "LINE"    << "\r\n";
-			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
-			To_Dxf << 10        << "\r\n";
-			To_Dxf << x1        << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 20        << "\r\n";
-			To_Dxf << y1        << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 30        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 11        << "\r\n";
-			To_Dxf << x1        << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 21        << "\r\n";
-			To_Dxf << y1+height << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 31        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 0         << "\r\n";
-			To_Dxf << "LINE"    << "\r\n";
-			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
-			To_Dxf << 10        << "\r\n";
-			To_Dxf << x1+width  << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 20        << "\r\n";
-			To_Dxf << y1        << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 30        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 11        << "\r\n";
-			To_Dxf << x1+width  << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 21        << "\r\n";
-			To_Dxf << y1+height << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 31        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 0         << "\r\n";
-			To_Dxf << "LINE"    << "\r\n";
-			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
-			To_Dxf << 10        << "\r\n";
-			To_Dxf << x1        << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 20        << "\r\n";
-			To_Dxf << y1+height << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 30        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 11        << "\r\n";
-			To_Dxf << x1+width  << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 21        << "\r\n";
-			To_Dxf << y1+height << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 31        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			file.close();
-		}
-	}
+    QRectF rect(x1,y1,width,height);
+    QPolygonF poly(rect);
+    drawPolyline(fileName,poly,colour,true);
+}
+
+static QRectF scaleRect(QRectF rect)
+{
+    QRectF ro(rect.bottomLeft().x() * Createdxf::xScale,
+                Createdxf::sheetHeight - (rect.bottomLeft().y() * Createdxf::yScale),
+                rect.width() * Createdxf::xScale,
+                rect.height() * Createdxf::yScale);
+    return ro;
 }
 
 /**
@@ -749,13 +675,8 @@ void Createdxf::drawRectangle(
 		const QString &filepath,
 		const QRectF &rect,
 		const int &colorcode) {
-	drawRectangle(
-				filepath,
-				rect.bottomLeft().x() * xScale,
-				sheetHeight - (rect.bottomLeft().y() * yScale),
-				rect.width() * xScale,
-				rect.height() * yScale,
-				colorcode);
+    QPolygonF poly(scaleRect(rect));
+    drawPolyline(filepath,poly,colorcode);
 }
 
 /**
@@ -770,17 +691,7 @@ void Createdxf::drawPolygon(
 		const QPolygonF &poly,
 		const int &colorcode)
 {
-	int lc = 0;
-	QPointF plast;
-	foreach(QPointF p, poly)
-	{
-		if(lc++)
-		{
-			QLineF ql(plast,p);
-			drawLine(filepath,ql,colorcode);
-		}
-		plast = p;
-	}
+    drawPolyline(filepath,poly,colorcode);
 }
 /**
 	@brief Createdxf::drawArc
@@ -893,61 +804,6 @@ void Createdxf::drawText(
         }
     }
 }
-#if 0
-/**
-	@brief Createdxf::drawText
-	draw simple text in dxf format without any alignment specified
-	@param fileName
-	@param text
-	@param x
-	@param y
-	@param height
-	@param rotation
-	@param colour
-*/
-void Createdxf::drawText(
-		const QString& fileName,
-		const QString& text,
-		double x,
-		double y,
-		double height,
-		double rotation,
-		int colour)
-{
-	if (!fileName.isEmpty()) {
-		QFile file(fileName);
-		if (!file.open(QFile::Append)) {
-			// error message
-			QMessageBox errorFileOpen;
-			errorFileOpen.setText("Error: File "+fileName+" was not written correctly.");
-			errorFileOpen.setInformativeText("Close all Files and Re-Run");
-			errorFileOpen.exec();
-		} else {
-			QTextStream To_Dxf(&file);
-			// Draw the circle
-			To_Dxf << 0         << "\r\n";
-			To_Dxf << "TEXT"    << "\r\n";
-			To_Dxf << 8         << "\r\n";
-			To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-			To_Dxf << 62        << "\r\n";
-			To_Dxf << colour    << "\r\n";    // Colour Code
-			To_Dxf << 10        << "\r\n";    // XYZ
-			To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
-			To_Dxf << 20        << "\r\n";
-			To_Dxf << y         << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-			To_Dxf << 30        << "\r\n";
-			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-			To_Dxf << 40        << "\r\n";
-			To_Dxf << height    << "\r\n";    // Text Height
-			To_Dxf << 1         << "\r\n";
-			To_Dxf << text      << "\r\n";    // Text Value
-			To_Dxf << 50        << "\r\n";
-			To_Dxf << rotation  << "\r\n";    // Text Rotation
-			file.close();
-		}
-	}
-}
-#endif
 
 /* draw aligned text in DXF Format */
 // leftAlign flag added. If the alignment requested is 'fit to width' and the text length is very small,
@@ -1032,4 +888,76 @@ void Createdxf::drawTextAligned(
 			file.close();
 		}
 	}
+}
+/**
+    @brief Createdxf::drawPolyline
+    Convenience function for draw polyline
+    @param filepath
+    @param poly
+    @param colorcode
+*/
+void Createdxf::drawPolyline(const QString &filepath,
+        const QPolygonF &poly,
+        const int &colorcode, bool preScaled)
+{
+    qreal x,y;
+    if (!filepath.isEmpty()) {
+        QFile file(filepath);
+        if (!file.open(QFile::Append)) {
+            // error message
+            QMessageBox errorFileOpen;
+            errorFileOpen.setText("Error: File "+filepath+" was not written correctly.");
+            errorFileOpen.setInformativeText("Close all Files and Re-Run");
+            errorFileOpen.exec();
+        } else {
+            QTextStream To_Dxf(&file);
+            // Draw the Line
+            To_Dxf << 0         << "\r\n";
+            To_Dxf << "POLYLINE"    << "\r\n";
+            To_Dxf << 8         << "\r\n";
+            To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+            To_Dxf << 62        << "\r\n";
+            To_Dxf << colorcode    << "\r\n";    // Colour Code
+            To_Dxf << 66        << "\r\n";
+            To_Dxf << 1         << "\r\n";
+            To_Dxf << 70        << "\r\n";
+            To_Dxf << 8         << "\r\n";
+            To_Dxf << 10        << "\r\n";
+            To_Dxf << 0         << "\r\n";
+            To_Dxf << 20         << "\r\n";
+            To_Dxf << 0         << "\r\n";
+            To_Dxf << 30        << "\r\n";
+            To_Dxf << 0        << "\r\n";
+            foreach(QPointF p, poly)
+            {
+                if(preScaled) {
+                    x = p.x();
+                    y = p.y();
+                } else {
+                    x = p.x() * xScale;
+                    y = sheetHeight - (p.y() * yScale);
+                }
+
+                To_Dxf << 0         << "\r\n";
+                To_Dxf << "VERTEX"  << "\r\n";
+                To_Dxf << 8         << "\r\n";
+                To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+                To_Dxf << 70        << "\r\n";
+                To_Dxf << 32        << "\r\n";
+                To_Dxf << 10        << "\r\n";
+                To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
+                To_Dxf << 20        << "\r\n";
+                To_Dxf << y         << "\r\n";    // Y in UCS (User Coordinate System)coordinates
+                To_Dxf << 30        << "\r\n";
+                To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
+            }
+
+            To_Dxf << 0         << "\r\n";
+            To_Dxf << "SEQEND"  << "\r\n";
+            To_Dxf << 8         << "\r\n";
+            To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+
+            file.close();
+        }
+    }
 }
