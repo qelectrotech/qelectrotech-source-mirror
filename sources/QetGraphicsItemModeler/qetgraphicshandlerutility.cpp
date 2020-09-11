@@ -87,7 +87,6 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect,
 	path.arcTo(rect, start_angle, span_angle);
 	vector.append(path.currentPosition());
 	return vector;
-
 }
 
 /**
@@ -185,6 +184,52 @@ QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(
 
 	rect.moveCenter(center);
 	return rect;
+}
+
+/**
+ * @brief QetGraphicsHandlerUtility::rectForArc
+ * @param rect : the rect where the arc is defined
+ * @param start_angle : start angle in degree
+ * @param span_angle : span angle in degree
+ * @return Return the rect that bound the arc.
+ */
+QRectF QetGraphicsHandlerUtility::rectForArc(const QRectF &rect, qreal start_angle, qreal span_angle)
+{
+	auto point = pointsForArc (rect, start_angle, span_angle);
+	auto end_angle =start_angle + span_angle;
+	auto normalized_end_angle = end_angle;
+	if (normalized_end_angle > 360)
+		normalized_end_angle -= 360;
+
+	QPointF top_left;
+	if ((start_angle <= 180 && normalized_end_angle >= 180) ||
+		(end_angle > 360 && normalized_end_angle >= 180)) {
+		top_left.setX(rect.left());
+	} else {
+		top_left.setX(std::min(point[0].x(), point[1].x()));
+	}
+	if ((start_angle <= 90 && end_angle >= 90) ||
+		(start_angle > 90 && end_angle > 360 && normalized_end_angle >= 90)) {
+		top_left.setY(rect.top());
+	} else {
+		top_left.setY(std::min(point[0].y(), point[1].y()));
+	}
+
+
+	QPointF bottom_right;
+	if (end_angle >= 360) {
+		bottom_right.setX(rect.right());
+	} else {
+		bottom_right.setX(std::max(point[0].x(), point[1].x()));
+	}
+	if ((start_angle <= 270 && end_angle >= 270) ||
+		(end_angle > 360 && normalized_end_angle >= 270)) {
+		bottom_right.setY(rect.bottom());
+	} else {
+		bottom_right.setY(std::max(point[0].y(), point[1].y()));
+	}
+
+	return QRectF(top_left, bottom_right);
 }
 
 /**

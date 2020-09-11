@@ -54,7 +54,7 @@ PartArc::~PartArc()
 */
 void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
-	Q_UNUSED(widget);
+	Q_UNUSED(widget)
 
 	applyStylesToQPainter(*painter);
 
@@ -80,7 +80,7 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		painter -> setPen(t);
 	}
 	
-	painter -> drawArc(m_rect, m_start_angle, m_span_angle);
+	painter->drawArc(m_rect, m_start_angle, m_span_angle);
 
 	if (m_hovered)
 		drawShadowShape(painter);
@@ -153,6 +153,20 @@ QPainterPath PartArc::shadowShape() const
 	pps.setWidth(penWeight());
 
 	return (pps.createStroke(shape));
+}
+
+/**
+ * @brief PartArc::sceneGeometricRect
+ * @return the minimum,
+ * margin-less rectangle this part can fit into in scene coordinates.
+ * It is different from boundingRect() because it is not supposed
+ * to imply any margin,
+ * and it is different from shape because it is a regular
+ * rectangle, not a complex shape.
+ */
+QRectF PartArc::sceneGeometricRect() const
+{
+	return mapToScene(QetGraphicsHandlerUtility::rectForArc(m_rect, m_start_angle/16, m_span_angle/16)).boundingRect();
 }
 
 /**
@@ -314,14 +328,14 @@ void PartArc::adjusteHandlerPos()
 */
 void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
 	
 	if (m_resize_mode == 3) //Resize angle
 	{
 		if (m_vector_index == 0)
 		{
-			m_span_point = QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle /16, m_span_angle /16).at(1);
+			m_span_point = QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle/16, m_span_angle/16).at(1);
 
 			m_undo_command = new QPropertyUndoCommand(this, "startAngle", QVariant(m_start_angle));
 			m_undo_command->setText(tr("Modifier un arc"));
@@ -353,7 +367,7 @@ void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 */
 void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
+	Q_UNUSED(qghi)
 	
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
@@ -387,8 +401,8 @@ void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScene
 */
 void PartArc::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
 	
 	if (m_resize_mode == 3)
 	{

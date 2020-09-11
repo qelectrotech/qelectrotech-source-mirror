@@ -59,6 +59,7 @@ class PartArc : public AbstractPartEllipse
 		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
 		void setStartAngle(const int &start_angle) override {AbstractPartEllipse::setStartAngle(start_angle); adjusteHandlerPos();}
 		void setSpanAngle(const int &span_angle) override {AbstractPartEllipse::setSpanAngle(span_angle); adjusteHandlerPos();}
+		QRectF sceneGeometricRect() const override;
 
 	protected:
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
