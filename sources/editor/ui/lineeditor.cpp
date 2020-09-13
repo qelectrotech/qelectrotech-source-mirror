@@ -151,8 +151,8 @@ void LineEditor::updateForm()
 	ui->m_y1_sb->setValue(line.y1());
 	ui->m_x2_sb->setValue(line.x2());
 	ui->m_y2_sb->setValue(line.y2());
-	//ui->m_end1_cb
-	//ui->m_end_2_cb
+	ui->m_end1_cb->setCurrentIndex(ui->m_end1_cb->findData(m_part->firstEndType()));
+	ui->m_end2_cb->setCurrentIndex(ui->m_end2_cb->findData(m_part->secondEndType()));
 	ui->m_lenght1_sb->setValue(m_part->firstEndLength());
 	ui->m_lenght2_sb->setValue(m_part->secondEndLength());
 
@@ -168,7 +168,7 @@ void LineEditor::setUpChangeConnections()
 	m_change_connections << connect(m_part, &PartLine::xChanged,               this, &LineEditor::updateForm);
 	m_change_connections << connect(m_part, &PartLine::yChanged,               this, &LineEditor::updateForm);
 	m_change_connections << connect(m_part, &PartLine::lineChanged,            this, &LineEditor::updateForm);
-	m_change_connections << connect(m_part, &PartLine::firstEndLengthChanged,  this, &LineEditor::updateForm);
+	m_change_connections << connect(m_part, &PartLine::firstEndTypeChanged,  this, &LineEditor::updateForm);
 	m_change_connections << connect(m_part, &PartLine::firstEndLengthChanged,  this, &LineEditor::updateForm);
 	m_change_connections << connect(m_part, &PartLine::secondEndTypeChanged,   this, &LineEditor::updateForm);
 	m_change_connections << connect(m_part, &PartLine::secondEndLengthChanged, this, &LineEditor::updateForm);
