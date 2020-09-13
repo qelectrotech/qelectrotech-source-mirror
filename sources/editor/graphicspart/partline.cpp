@@ -72,7 +72,7 @@ uint PartLine::requiredLengthForEndType(const Qet::EndType &end_type)
 */
 void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
-	Q_UNUSED(widget);
+	Q_UNUSED(widget)
 	if (isUseless()) return;
 
 	painter->save();
@@ -246,8 +246,8 @@ void PartLine::adjusteHandlerPos()
 */
 void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
 	
 	m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
 	m_undo_command->setText(tr("Modifier une ligne"));
@@ -262,7 +262,7 @@ void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 */
 void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
+	Q_UNUSED(qghi)
 	
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
@@ -274,6 +274,8 @@ void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 		m_line.setP1(new_pos);
 	else
 		m_line.setP2(new_pos);
+
+	emit lineChanged();
 	
 	adjusteHandlerPos();
 }
@@ -285,8 +287,8 @@ void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 */
 void PartLine::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
 	
 	m_undo_command->setNewValue(QVariant(m_line));
 	elementScene()->undoStack().push(m_undo_command);

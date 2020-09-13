@@ -36,7 +36,7 @@ class ElementItemEditor : public QWidget
 		// constructors, destructor
 	public:
 		ElementItemEditor(QETElementEditor *, QWidget * = nullptr);
-		~ElementItemEditor() override {};
+		~ElementItemEditor() override {}
 	private:
 		ElementItemEditor(const ElementItemEditor &);
 	
