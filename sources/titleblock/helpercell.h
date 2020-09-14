@@ -37,11 +37,11 @@ class HelperCell : public QGraphicsObject, public QGraphicsLayoutItem {
 	
 	// attributes
 	public:
-	QColor background_color;     ///< Background color when rendering this cell
-	QColor foreground_color;     ///< Text color when rendering this cell
+    QColor background_color{Qt::white};     ///< Background color when rendering this cell
+    QColor foreground_color{Qt::black};     ///< Text color when rendering this cell
 	QString label;               ///< Label displayed in this cell
-	Qt::Orientation orientation; ///< Orientation of this cell
-	int index;                   ///< Index of this cell
+    Qt::Orientation orientation{Qt::Horizontal}; ///< Orientation of this cell
+    int index{-1};                   ///< Index of this cell
 	
 	// methods
 	public:

@@ -41,7 +41,6 @@ DiagramPrintDialog::DiagramPrintDialog(QETProject *project, QWidget *parent) :
 	
 	// orientation paysage par defaut
 	printer_ -> setOrientation(QPrinter::Landscape);
-	backup_diagram_background_color = Diagram::background_color;
 	Diagram::background_color = Qt::white;
 }
 

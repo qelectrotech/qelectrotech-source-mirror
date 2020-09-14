@@ -96,7 +96,7 @@ class Diagram : public QGraphicsScene
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
-		static QColor background_color;
+        static QColor background_color; // default value set in cpp file
 		/// Hash containing max values for folio sequential autonums in this diagram
 		QHash <QString, QStringList> m_elmt_unitfolio_max;
 		QHash <QString, QStringList> m_elmt_tenfolio_max;

@@ -160,12 +160,12 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
         return false;
 	}
 
-    double x, y, z, rot;
+    double x=0, y=0, z=0, rot=0;
 
-    if (propertyDouble(dom_elmt, "x", &x, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(dom_elmt, "y", &y, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(dom_elmt, "z", &z, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(dom_elmt, "rotation", &rot, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(dom_elmt, "x", &x) == PropertyFlags::NoValidConversion ||
+        propertyDouble(dom_elmt, "y", &y) == PropertyFlags::NoValidConversion ||
+        propertyDouble(dom_elmt, "z", &z) == PropertyFlags::NoValidConversion ||
+        propertyDouble(dom_elmt, "rotation", &rot) == PropertyFlags::NoValidConversion)
         return false;
 	
     QGraphicsTextItem::setPos(x, y);
@@ -182,12 +182,12 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 		setFont(QETApp::dynamicTextsItemFont(9));
 	}
 
-    propertyUuid(dom_elmt, "uuid", &m_uuid, QUuid::createUuid());
+    propertyUuid(dom_elmt, "uuid", &m_uuid);
     bool frame;
     propertyBool(dom_elmt, "frame", &frame);
 
     double text_width;
-    propertyDouble(dom_elmt, "text_width", &text_width, -1);
+    propertyDouble(dom_elmt, "text_width", &text_width, true, -1);
     setTextWidth(text_width);
 	
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
@@ -226,6 +226,8 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_color = dom_elmt.firstChildElement("color");
 	if(!dom_color.isNull())
 		setColor(QColor(dom_color.text()));
+
+    return true;
 }
 
 bool PartDynamicTextField::valideXml(QDomElement& dom_elmt) {

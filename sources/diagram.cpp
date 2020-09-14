@@ -924,9 +924,11 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
 	@return true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
-	const QDomElement& root = document;
+    const QDomElement& root = document;
 	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
+
+    qDebug() << "Diagram::fromXml; Diagram: " << root.attribute("title");
 	
 	// Read attributes of this diagram
 	if (consider_informations) {

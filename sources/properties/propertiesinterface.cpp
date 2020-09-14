@@ -17,6 +17,8 @@
 */
 #include "propertiesinterface.h"
 
+#include <QDebug>
+
 /*!
  * Available property types
  */
@@ -39,6 +41,14 @@ bool PropertiesInterface::valideXml(QDomElement& element) {
 }
 
 QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const QString value) const {
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", stringS);
+    p.setAttribute("value", value);
+    return p;
+}
+
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const char* value) const {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", stringS);
@@ -112,14 +122,18 @@ bool PropertiesInterface::attribute(const QDomElement& e, const QString& attribu
     if (p.isNull()) {
         // check if legacy property is available,
         // where the property is inside the element as attribute
-        if (!e.hasAttribute(attribute_name))
+        if (!e.hasAttribute(attribute_name)) {
+            qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "Property " << attribute_name << "is not available";
             return false;
+        }
 
         *attr = e.attribute(attribute_name);
 
     } else {
-        if (p.attribute("type") != type)
+        if (p.attribute("type") != type) {
+            qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ", Property: " << attribute_name << "(" << p.attribute("type") << ") has not type: " << type;
             return false;
+        }
 
         *attr = p.attribute("value");
 
@@ -136,20 +150,23 @@ bool PropertiesInterface::attribute(const QDomElement& e, const QString& attribu
  * \return True if reading an integer was successful, else False. If the attribute was not found,
  *          \p entier is not valid and the return value is False
  */
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyInteger(const QDomElement &e, const QString& attribute_name, int* entier, int defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyInteger(const QDomElement &e, const QString& attribute_name, int* entier, bool setDefaultValue, int defaultValue) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, integerS, &attr)) {
-        *entier = defaultValue;
+        if (entier && setDefaultValue)
+            *entier = defaultValue;
         return PropertyFlags::NotFound;
     }
 
     // verifie la validite de l'attribut
     bool ok;
     int tmp = attr.toInt(&ok);
-    if (!ok)
+    if (!ok) {
+        qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << integerS << ". value: " << attr;
         return PropertyFlags::NoValidConversion;
+    }
 
     if (entier != nullptr)
         *entier = tmp;
@@ -157,20 +174,23 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyInteger(const QD
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDomElement &e, const QString& attribute_name, double* reel, double defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDomElement &e, const QString& attribute_name, double* reel, bool setDefaultValue, double defaultValue) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, doubleS, &attr)) {
-        *reel = defaultValue;
+        if (reel && setDefaultValue)
+            *reel = defaultValue;
         return PropertyFlags::NotFound;
     }
 
     // verifie la validite de l'attribut
     bool ok;
     double tmp = attr.toDouble(&ok);
-    if (!ok)
+    if (!ok) {
+        qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << doubleS << ". value: " << attr;
         return PropertyFlags::NoValidConversion;
+    }
 
     if (reel != nullptr)
         *reel = tmp;
@@ -178,20 +198,29 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDo
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean, bool defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean, bool setDefaultValue, bool defaultValue) {
 
     QString attr;
 
-    if (!attribute(e, attribute_name, integerS, &attr)) {
-        *boolean = defaultValue;
+    if (!attribute(e, attribute_name, boolS, &attr)) {
+        if (boolean && setDefaultValue)
+            *boolean = defaultValue;
         return PropertyFlags::NotFound;
     }
 
     // verifie la validite de l'attribut
     bool ok;
     bool tmp = attr.toInt(&ok);
-    if (!ok)
-        return PropertyFlags::NoValidConversion;
+    if (!ok) {
+        if (attr == "true")
+            tmp = true;
+        else if (attr == "false")
+            tmp = false;
+        else {
+            qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << integerS << ". value: " << attr;
+            return PropertyFlags::NoValidConversion;
+        }
+    }
 
     if (boolean != nullptr)
         *boolean = tmp;
@@ -199,19 +228,22 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomE
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color, QColor defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color, bool setDefaultValue, QColor defaultValue) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, colorS, &attr)) {
-        *color = defaultValue;
+        if (color && setDefaultValue)
+            *color = defaultValue;
         return PropertyFlags::NotFound;
     }
 
     // verifie la validite de l'attribut
     QColor tmp = QColor(attr);
-    if (!tmp.isValid())
+    if (!tmp.isValid()) {
+        qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << colorS << ". value: " << attr;
         return PropertyFlags::NoValidConversion;
+    }
 
     if (color != nullptr)
         *color = tmp;
@@ -219,13 +251,20 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDom
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid, QUuid defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid, bool setDefaultValue, QUuid defaultValue) {
     QString attr;
 
     if (!attribute(e, attribute_name, uuidS, &attr)) {
-        *uuid = defaultValue;
+        if (uuid && setDefaultValue)
+            *uuid = defaultValue;
         return PropertyFlags::NotFound;
     }
+
+    if (QUuid(attr).isNull()){
+        qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << uuidS << ". value: " << attr;
+        return PropertyFlags::NoValidConversion;
+    }
+
 
     if (uuid != nullptr)
         *uuid = QUuid(attr);
@@ -233,11 +272,12 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomE
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyString(const QDomElement& e, const QString& attribute_name, QString* string, QString defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyString(const QDomElement& e, const QString& attribute_name, QString* string, bool setDefaultValue, QString defaultValue) {
 
     QString attr;
     if (!attribute(e, attribute_name, stringS, &attr)) {
-        *string = defaultValue;
+        if (string && setDefaultValue)
+            *string = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -263,6 +303,8 @@ bool PropertiesInterface::validXmlProperty(const QDomElement& e) {
 
     if (!e.hasAttribute("value"))
         return false;
+
+    return true;
 }
 
 /**
@@ -275,10 +317,12 @@ bool PropertiesInterface::validXmlProperty(const QDomElement& e) {
 */
 Qet::Orientation PropertiesInterface::orientationFromString(const QString &s) {
     QChar c = s[0];
-    if (c == 'e') return(Qet::East);
-    else if (c == 's') return(Qet::South);
-    else if (c == 'w') return (Qet::West);
-    else return(Qet::North);
+    // in some cases/ old projects? (affuteuse_250h.qet) numbers instead of characters are
+    // used for the orientation
+    if (c == 'e' || c == '1') return(Qet::East);
+    else if (c == 's' || c == '2') return(Qet::South);
+    else if (c == 'w' || c == '3') return (Qet::West);
+    else return(Qet::North); // c == '0'
 }
 
 /**

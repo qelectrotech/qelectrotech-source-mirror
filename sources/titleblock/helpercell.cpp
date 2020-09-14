@@ -23,12 +23,7 @@
 */
 HelperCell::HelperCell(QGraphicsItem *parent) :
 	QGraphicsObject(parent),
-	QGraphicsLayoutItem(),
-	background_color(Qt::white),
-	foreground_color(Qt::black),
-	label(),
-	orientation(Qt::Horizontal),
-	index(-1)
+    QGraphicsLayoutItem()
 {
 	setGraphicsItem(this);
 	setFlag(QGraphicsItem::ItemIsSelectable, false);

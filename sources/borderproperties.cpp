@@ -32,15 +32,7 @@
 	- 17 colonnes affichees de 60.0 px de large pour 20.0px de haut
 	- 8    lignes affichees de 80.0 px de haut pour 20.0px de large
 */
-BorderProperties::BorderProperties() :
-	columns_count(17),
-	columns_width(60.0),
-	columns_header_height(20.0),
-	display_columns(true),
-	rows_count(8),
-	rows_height(80.0),
-	rows_header_width(20.0),
-	display_rows(true)
+BorderProperties::BorderProperties()
 {
 }
 
@@ -103,11 +95,12 @@ QDomElement BorderProperties::toXml(QDomDocument &dom_doc) const {
     e.appendChild(createXmlProperty(dom_doc, "rows", rows_count));
     e.appendChild(createXmlProperty(dom_doc, "rowsize", rows_height));
     e.appendChild(createXmlProperty(dom_doc, "displayrows", display_rows));
+    e.appendChild(createXmlProperty(dom_doc, "displaycols", display_columns));
 
     return e;
 }
 
-/**
+/**RETURNS True
 	@brief BorderProperties::fromXml
 	- Import dimensions from XML attributes of element e
 	- Importe les dimensions a partir des attributs XML de l'element e
@@ -137,6 +130,7 @@ bool BorderProperties::valideXml(QDomElement& e) {
         propertyBool(e, "displaycols") == PropertyFlags::Success ||
         propertyBool(e, "displayrows") == PropertyFlags::Success)
         return true;
+    return false;
 }
 
 /**

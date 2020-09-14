@@ -23,11 +23,7 @@
 	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
 	vides (date vide + useDate a UseDateValue).
 */
-TitleBlockProperties::TitleBlockProperties() :
-	date(),
-	useDate(UseDateValue),
-	display_at(Qt::BottomEdge),
-	collection (QET::QetCollection::Common)
+TitleBlockProperties::TitleBlockProperties()
 {
 }
 
@@ -87,7 +83,8 @@ QDomElement TitleBlockProperties::toXml(QDomDocument &xml_document) const {
     e.appendChild(createXmlProperty(xml_document, "folio", folio));
     e.appendChild(createXmlProperty(xml_document, "auto_page_num", auto_page_num));
     e.appendChild(createXmlProperty(xml_document, "date", exportDate()));
-    e.appendChild(createXmlProperty(xml_document, "displayAt", display_at == Qt::BottomEdge? "bottom" : "right"));
+    QString disp_at = display_at == Qt::BottomEdge? "bottom" : "right";
+    e.appendChild(createXmlProperty(xml_document, "displayAt", disp_at));
 
 	if (!template_name.isEmpty())
 	{
@@ -104,7 +101,7 @@ QDomElement TitleBlockProperties::toXml(QDomDocument &xml_document) const {
     return e;
 }
 
-/**
+/** RETURNS True
 	Importe le cartouche a partir des attributs XML de l'element e
 	@param e Element XML dont les attributs seront lus
 */
@@ -141,6 +138,7 @@ bool TitleBlockProperties::fromXml(const QDomElement &e) {
 	foreach (QDomElement e, QET::findInDomElement(e, "properties")) {
 		context.fromXml(e);
 	}
+    return true;
 }
 
 /**

@@ -150,7 +150,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		QMetaObject::Connection m_report_formula_con;
 		QList<QMetaObject::Connection> m_formula_connection,
 									   m_update_slave_Xref_connection;
-		QColor m_user_color;
+        QColor m_user_color{QColor()};
 		bool m_frame = false,
 			 m_first_scene_change = true;
 		CrossRefItem *m_Xref_item = nullptr;

@@ -109,9 +109,10 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 
 		static const qreal terminalSize;
 		static const qreal Z;
-		// Various static colors used for hover effects
+        // Various static colors used for hover effects.
+        // The assignement is in the cpp file
 		/// default color
-		static QColor neutralColor;
+        static QColor neutralColor;
 		/// color for legal actions
 		static QColor allowedColor;
 		/// color for allowed but fuzzy or not recommended  actions
@@ -140,11 +141,11 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		*/
 		QRectF *br_{nullptr};
 		/// Last terminal seen through an attached conductor
-		Terminal *previous_terminal_;
+        Terminal *previous_terminal_{nullptr};
 		/// Whether the mouse pointer is hovering the terminal
-		bool hovered_;
+        bool hovered_{false};
 		/// Color used for the hover effect
-		QColor hovered_color_;
+        QColor hovered_color_{Terminal::hovered_color_};
 		/// Number of Terminal
 		QString number_terminal_;
 		/// Name of Terminal

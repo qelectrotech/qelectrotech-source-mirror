@@ -117,7 +117,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 				m_info_name,
 				m_composite_text;
 		DynamicElementTextItem::TextFrom m_text_from = DynamicElementTextItem::UserText;
-		QUuid m_uuid;
+        QUuid m_uuid{QUuid::createUuid()};
 		bool m_frame = false,
 			 m_first_add = true,
 			 m_block_alignment = false;

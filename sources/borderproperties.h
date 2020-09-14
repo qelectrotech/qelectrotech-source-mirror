@@ -46,14 +46,14 @@ class BorderProperties : public PropertiesInterface {
 		static BorderProperties defaultProperties();
 	
 		// attributes
-		int columns_count;            ///< Columns count
-		qreal columns_width;          ///< Columns width
-		qreal columns_header_height;  ///< Column headers height
-		bool display_columns;         ///< Whether to display column headers
+        int columns_count{17};            ///< Columns count
+        qreal columns_width{60.0};          ///< Columns width
+        qreal columns_header_height{20.0};  ///< Column headers height
+        bool display_columns{true};         ///< Whether to display column headers
 	
-		int rows_count;               ///< Rows count
-		qreal rows_height;            ///< Rows height
-		qreal rows_header_width;      ///< Row headers width
-		bool display_rows;            ///< Whether to display row headers
+        int rows_count{8};               ///< Rows count
+        qreal rows_height{80.0};            ///< Rows height
+        qreal rows_header_width{20.0};      ///< Row headers width
+        bool display_rows{true};            ///< Whether to display row headers
 };
 #endif

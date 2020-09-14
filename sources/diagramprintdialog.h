@@ -88,6 +88,6 @@ class DiagramPrintDialog : public QWidget
 	QLineEdit *filepath_field_;
 	QPushButton *browse_button_;
 	QDialogButtonBox *buttons_;
-	QColor backup_diagram_background_color;
+    QColor backup_diagram_background_color{Diagram::background_color};
 };
 #endif

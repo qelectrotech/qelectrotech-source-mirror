@@ -65,6 +65,7 @@ class ElementXmlRetroCompatibility
 
 /**
  * @brief Element::Element
+ * New element from xml
  * @param location, location of this element
  * @param parent, parent graphics item
  * @param state, state of the instanciation
@@ -83,6 +84,7 @@ Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *s
 		}
 	}
 	int elmt_state;
+    qDebug() << "\tCollection Path: " << location.collectionPath();
 	buildFromXml(location.xml(), &elmt_state);
 	if (state) {
 		*state = elmt_state;
@@ -438,12 +440,16 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 				QDomElement qde = n.toElement();
 				if (qde.isNull())
 					continue;
+
+                qDebug() << "\t\tElement.cpp:buildFromXml;parseElement: " << qde.tagName();
 				
 				if (parseElement(qde)) {
+                    qDebug() << "\t\t\tParsing Element success";
 					++ parsed_elements_count;
 				}
 				else
 				{
+                    qDebug() << "\t\t\tParsing Element no success";
 					if (state)
 						*state = 7;
 					m_state = QET::GIOK;
@@ -467,13 +473,11 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		m_state = QET::GIOK;
 		return(false);
 	}
-	else
-	{
-		if (state)
-			*state = 0;
-		m_state = QET::GIOK;
-		return(true);
-	}
+
+    if (state)
+        *state = 0;
+    m_state = QET::GIOK;
+    return(true);
 }
 
 /**
@@ -570,11 +574,11 @@ DynamicElementTextItem *Element::parseDynamicText(const QDomElement &dom_element
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
 
-    TerminalData* data = new TerminalData();
-    if (!data->fromXml(dom_element)) {
-        delete data;
+    if (!TerminalData::valideXml(dom_element))
         return nullptr;
-    }
+
+    TerminalData* data = new TerminalData();
+    data->fromXml(dom_element);
 	
     Terminal *new_terminal = new Terminal(data, this);
 	m_terminals << new_terminal;
@@ -643,17 +647,20 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	
 	QHash<int, Terminal *> priv_id_adr;
 	int terminals_non_trouvees = 0;
-	foreach(QGraphicsItem *qgi, childItems()) {
+    // The added childs from the collection now must match with the terminals from the diagram. Iterate through
+    // all Terminals in the collection and in the diagram to link them together
+    foreach(QGraphicsItem *qgi, childItems()) { // Where the Terminals are added as childs?
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
 			foreach(QDomElement qde, liste_terminals) {
 				if (p -> fromXml(qde)) {
+                    qDebug() << "Matching Terminal found.";
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;
 					// We used to break here, because we did not expect
 					// several terminals to share the same position.
 					// Of course, it finally happened.
-				}
+                }
 			}
 			if (!terminal_trouvee) ++ terminals_non_trouvees;
 		}
@@ -661,6 +668,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	
 	if (terminals_non_trouvees > 0)
 	{
+        qDebug() << "element.cpp: Element::fromXML; Elements not found: " << terminals_non_trouvees;
 		m_state = QET::GIOK;
 		return(false);
 	} 

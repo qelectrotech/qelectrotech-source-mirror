@@ -116,14 +116,14 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
     return xml_element;
 }
 
-/**
+/** RETURNS True
  * @brief XRefProperties::fromXml
  * Load from xml
  * @param xml_element: QDomElement to use for load
  */
 bool XRefProperties::fromXml(const QDomElement &xml_element) {
 
-    if (!propertyBool(xml_element, "showpowerctc", &m_show_power_ctc))
+    if (propertyBool(xml_element, "showpowerctc", &m_show_power_ctc))
         return false;
 
     QString display;

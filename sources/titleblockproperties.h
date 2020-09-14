@@ -63,11 +63,11 @@ class TitleBlockProperties: public PropertiesInterface {
 	QString version;          ///< Version (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)
 	QString auto_page_num;
-	DateManagement useDate;   ///< Wheter to use the date attribute
+    DateManagement useDate{UseDateValue};   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
-	Qt::Edge display_at;       ///< Edge to display the titleblock
-	QET::QetCollection collection; ///<Specify the location of the title block
+    Qt::Edge display_at{Qt::Edge::BottomEdge};       ///< Edge to display the titleblock
+    QET::QetCollection collection{QET::QetCollection::Common}; ///<Specify the location of the title block
 
 	private:
 	QString exportDate() const;

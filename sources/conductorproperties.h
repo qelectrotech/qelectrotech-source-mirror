@@ -45,17 +45,17 @@ class SingleLineProperties: public PropertiesInterface {
     void fromSettings(const QSettings &, const QString & = QString()) override;  
 	
 	/// Whether the singleline conductor should display the ground symbol
-	bool hasGround;
+    bool hasGround{true};
 	/// Whether the singleline conductor should display the neutral symbol
-	bool hasNeutral;
+    bool hasNeutral{true};
 	/// Protective Earth Neutral: visually merge neutral and ground
-	bool is_pen;
+    bool is_pen{false};
 	
 	int operator==(const SingleLineProperties &) const;
 	int operator!=(const SingleLineProperties &) const;
 	
 	private:
-	unsigned short int phases;
+    unsigned short int phases{1};
 	void drawGround (QPainter *, QET::ConductorSegmentType, QPointF, qreal);
 	void drawNeutral(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
 	void drawPen(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
@@ -80,11 +80,12 @@ class ConductorProperties: public PropertiesInterface
 
 
 			//Attributes
-		ConductorType type;
+        ConductorType type{ConductorType::Single};
 		
-		QColor		color,
-				m_color_2,
-				text_color;
+        // TODO: set default values!
+        QColor		color{QColor(Qt::black)},
+                m_color_2{QColor(Qt::black)},
+                text_color{QColor(Qt::black)};
 		
 		QString text,
 				m_function,
@@ -93,21 +94,21 @@ class ConductorProperties: public PropertiesInterface
 				m_wire_section,
 				m_formula;
 		
-		int text_size,
+        int text_size{9},
 			m_dash_size = 1;
 		
-		double  cond_size,
+            double  cond_size{1},
 				verti_rotate_text,
 				horiz_rotate_text;
 		
-		bool	m_show_text,
-				m_one_text_per_folio,
+        bool	m_show_text{true},
+                m_one_text_per_folio{true},
 				m_bicolor = false;
 		
 		Qt::Alignment m_horizontal_alignment = Qt::AlignBottom,
 					  m_vertical_alignment = Qt::AlignRight;
 		
-		Qt::PenStyle style;
+        Qt::PenStyle style{Qt::PenStyle::SolidLine};
 		
 		SingleLineProperties singleLineProperties;
 	

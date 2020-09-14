@@ -35,7 +35,7 @@ public:
     QDomElement toXml(QDomDocument &xml_element) const override;
     bool fromXml(const QDomElement &xml_element) override;
 
-    static bool valideXml(QDomElement  &xml_element);
+    static bool valideXml(const QDomElement &xml_element);
 
     // must be public, because this class is a private member of PartTerminal/Terminal and they must
     // access this data
@@ -44,12 +44,12 @@ public:
      * \brief m_orientation
      * Orientation of the terminal
      */
-    Qet::Orientation m_orientation;
+    Qet::Orientation m_orientation{Qet::Orientation::North};
     /*!
      * \brief second_point
      * Position of the second point of the terminal in scene coordinates
      */
-    QPointF second_point;
+    QPointF second_point{0,0};
     /*!
      * \brief m_uuid
      * Uuid of the terminal.
@@ -60,7 +60,7 @@ public:
      * uuid, the conductor after updating the part is anymore valid. So if in the loaded document a uuid exists,
      * use this one and don't create a new one.
      */
-    QUuid m_uuid;
+    QUuid m_uuid; // default is an invalid uuid.
     /*!
      * \brief m_name
      * Name of the element. It can be used to create wiring harness tables
@@ -73,7 +73,7 @@ public:
      * Important: this variable is only updated during read from xml and not during mouse move!
      * It is used to store the initial position so that PartTerminal and Terminal have access to it.
      */
-    QPointF m_pos;
+    QPointF m_pos{0,0};
 private:
     QGraphicsObject* q{nullptr};
 };

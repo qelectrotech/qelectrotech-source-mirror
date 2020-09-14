@@ -46,6 +46,7 @@ class PropertiesInterface
      * Use this functions to add properties to the xml document
      */
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QString value) const;
+    QDomElement createXmlProperty(QDomDocument &doc, const QString& name, const char* value) const;
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const int value) const;
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const double value) const;
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const bool value) const;
@@ -62,12 +63,15 @@ class PropertiesInterface
         // = 4
     };
 
-    static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr, int defaultValue = std::numeric_limits<int>::quiet_NaN());
-    static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr, double defaultValue = std::numeric_limits<double>::quiet_NaN());
-    static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr, QString defaultValue = QString());
-    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr, bool defaultValue = false);
-    static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr, QUuid defaultValue = QUuid());
-    static PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr, QColor defaultValue = QColor());
+    /*!
+     * Try not using the default Value feature. It is better to initialize the class members in the class definition!
+     */
+    static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr, bool setDefaultValue = false, int defaultValue = std::numeric_limits<int>::quiet_NaN());
+    static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr, bool setDefaultValue = false, double defaultValue = std::numeric_limits<double>::quiet_NaN());
+    static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr, bool setDefaultValue = false, QString defaultValue = QString());
+    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr, bool setDefaultValue = false, bool defaultValue = false);
+    static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr, bool setDefaultValue = false, QUuid defaultValue = QUuid());
+    static PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr, bool setDefaultValue = false, QColor defaultValue = QColor());
 
 
     static bool validXmlProperty(const QDomElement& e);

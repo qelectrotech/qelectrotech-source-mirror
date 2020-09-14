@@ -41,8 +41,6 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 */
 void Terminal::init(QString number, QString name, bool hiddenName) {
-
-	hovered_color_  = Terminal::neutralColor;
 	
 	// calcul de la position du point d'amarrage a l'element
 	dock_elmt_ = d->m_pos;
@@ -62,11 +60,9 @@ void Terminal::init(QString number, QString name, bool hiddenName) {
 	
 	// QRectF null
 	br_ = new QRectF();
-	previous_terminal_ = nullptr;
 	// divers
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	hovered_ = false;
 	setToolTip(QObject::tr("Borne", "tooltip"));
 	setZValue(Z);
 }
@@ -753,7 +749,7 @@ bool Terminal::valideXml(QDomElement &terminal) {
         return false;
 
     QString o;
-    if (!propertyString(terminal, "orientation", &o))
+    if (propertyString(terminal, "orientation", &o))
         return false;
 
     Qet::Orientation terminal_or = orientationFromString(o);
@@ -767,7 +763,7 @@ bool Terminal::valideXml(QDomElement &terminal) {
     return true;
 }
 
-/**
+/** RETURNS True
 	@brief Terminal::fromXml
 	Permet de savoir si un element XML represente cette borne. Attention,
 	l'element XML n'est pas verifie
@@ -795,11 +791,12 @@ bool Terminal::fromXml(const QDomElement &terminal) {
     if (propertyString(terminal, "orientation", &o))
         return false;
 
-    return (
-        qFuzzyCompare(x, dock_elmt_.x()) &&
-        qFuzzyCompare(y, dock_elmt_.y()) &&
-        (orientationFromString(o) == d->m_orientation)
-	);
+    if (!qFuzzyCompare(x, dock_elmt_.x()) ||
+        !qFuzzyCompare(y, dock_elmt_.y()) ||
+        orientationFromString(o) != d->m_orientation)
+        return false;
+
+    return true;
 }
 
 /**

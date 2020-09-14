@@ -22,11 +22,7 @@
 /**
 	Constructeur par defaut
 */
-SingleLineProperties::SingleLineProperties() :
-	hasGround(true),
-	hasNeutral(true),
-	is_pen(false),
-	phases(1)
+SingleLineProperties::SingleLineProperties()
 {
 }
 
@@ -282,9 +278,7 @@ QDomElement ConductorProperties::toXml(QDomDocument& doc) const
     QDomElement e = doc.createElement("defaultconductor");
 
     e.appendChild(createXmlProperty(doc, "type", typeToString(type)));
-
-	if (color != QColor(Qt::black))
-        e.appendChild(createXmlProperty(doc, "color", color));
+    e.appendChild(createXmlProperty(doc, "color", color));
 
     e.appendChild(createXmlProperty(doc, "bicolor", m_bicolor));
     e.appendChild(createXmlProperty(doc, "color2", m_color_2));
@@ -294,7 +288,7 @@ QDomElement ConductorProperties::toXml(QDomDocument& doc) const
         e.appendChild(singleLineProperties.toXml(doc));
 
     e.appendChild(createXmlProperty(doc, "num", text));
-    e.appendChild(createXmlProperty(doc, "text_color", text_color.name()));
+    e.appendChild(createXmlProperty(doc, "text_color", text_color));
     e.appendChild(createXmlProperty(doc, "formula", m_formula));
     e.appendChild(createXmlProperty(doc, "function", m_function));
     e.appendChild(createXmlProperty(doc, "tension_protocol", m_tension_protocol));
@@ -319,7 +313,7 @@ QDomElement ConductorProperties::toXml(QDomDocument& doc) const
 }
 
 
-/**
+/** RETURNS True
  * @brief ConductorProperties::fromXml
  * Import conductor propertie, from the attribute of the xml element 'e'
  * @param e the xml document
@@ -328,9 +322,9 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 {
 		// get conductor color
     propertyColor(e, "color", &color);
-    propertyBool(e, "bicolor", &m_bicolor, false);
+    propertyBool(e, "bicolor", &m_bicolor);
     propertyColor(e, "color2", &m_color_2);
-    propertyInteger(e, "dash-size", &m_dash_size, 1);
+    propertyInteger(e, "dash-size", &m_dash_size);
 	
 		// read style of conductor
 	readStyle(e.attribute("style"));
@@ -356,10 +350,10 @@ bool ConductorProperties::fromXml(const QDomElement &e)
     propertyString(e, "tension_protocol", &m_tension_protocol);
     propertyString(e, "conductor_color", &m_wire_color);
     propertyString(e, "conductor_section", &m_wire_section);
-    propertyInteger(e, "numsize", &text_size, 9);
-    propertyDouble(e, "condsize", &cond_size, 1);
-    propertyBool(e, "displaytext", &m_show_text, true);
-    propertyBool(e, "onetextperfolio", &m_one_text_per_folio, 0);
+    propertyInteger(e, "numsize", &text_size);
+    propertyDouble(e, "condsize", &cond_size);
+    propertyBool(e, "displaytext", &m_show_text);
+    propertyBool(e, "onetextperfolio", &m_one_text_per_folio);
     propertyDouble(e, "vertirotatetext", &verti_rotate_text);
     propertyDouble(e, "horizrotatetext", &horiz_rotate_text);
 	
@@ -376,6 +370,8 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 		//@TODO remove this code for qet 0.6 or later
 
     if (type_t == "simple") m_show_text = false;
+
+    return true;
 }
 
 bool ConductorProperties::valideXml(QDomElement& e) {

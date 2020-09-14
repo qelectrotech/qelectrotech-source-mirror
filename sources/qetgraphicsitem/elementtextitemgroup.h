@@ -108,7 +108,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup // TODO:
 			 m_hold_to_bottom_of_page = false,
 			 m_block_alignment_update = false,
 			 m_frame = false;
-		QPointF m_initial_position;
+        QPointF m_initial_position{QPointF(0,0)};
 		int m_vertical_adjustment = 0;
 		CrossRefItem *m_Xref_item = nullptr;
 		Element *m_parent_element = nullptr;

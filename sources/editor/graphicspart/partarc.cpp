@@ -139,6 +139,8 @@ bool PartArc::fromXml(const QDomElement &qde) {
     if (propertyDouble(qde, "angle", &m_span_angle) == PropertyFlags::NoValidConversion)
         return false;
     m_span_angle *= 16;
+
+    return true;
 }
 
 bool PartArc::valideXml(QDomElement& element) {

@@ -49,6 +49,7 @@ IndependentTextItem::IndependentTextItem(const QString &text) :
 IndependentTextItem::~IndependentTextItem() {
 }
 
+// TODO: inherit from PropertiesInterface
 /**
 	Permet de lire le texte a mettre dans le champ a partir d'un element XML.
 	Cette methode se base sur la position du champ pour assigner ou non la

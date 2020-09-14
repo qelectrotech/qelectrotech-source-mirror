@@ -76,14 +76,7 @@ class ConductorXmlRetroCompatibility
  */
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
-	terminal2(p2),
-	m_mouse_over(false),
-	m_text_item(nullptr),
-	segments(nullptr),
-	m_moving_segment(false),
-	modified_path(false),
-	has_to_save_profile(false),
-	must_highlight_(Conductor::None)
+    terminal2(p2)
 {
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
@@ -574,13 +567,13 @@ ConductorTextItem *Conductor::textItem() const {
 */
 bool Conductor::valideXml(QDomElement &e){
 
-    // TODO: seems to short! (see fromXML)
-    if (propertyDouble(e, "x") ||
-        propertyDouble(e, "y"))
-        return false;
+//    // TODO: seems to short! (see fromXML)
+//    if (propertyDouble(e, "x") ||
+//        propertyDouble(e, "y"))
+//        return false;
 
-    if (propertyBool(e, "freezeLabel"))
-        return false;
+//    if (propertyBool(e, "freezeLabel"))
+//        return false;
 
     return true;
 }
@@ -956,8 +949,11 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 bool Conductor::fromXml(const QDomElement &dom_element)
 {
     // TODO: seems to short!
-	setPos(dom_element.attribute("x", nullptr).toDouble(),
-		   dom_element.attribute("y", nullptr).toDouble());
+    double x, y;
+    propertyDouble(dom_element, "x", &x);
+    propertyDouble(dom_element, "y", &y);
+
+    setPos(x, y);
 
 	bool return_ = pathFromXml(dom_element);
 
@@ -971,8 +967,7 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	m_freeze_label = dom_element.attribute("freezeLabel") == "true"? true : false;
-
+    propertyBool(dom_element, "freezeLabel", &m_freeze_label, false);
 	setProperties(pr);
 
 	return return_;
