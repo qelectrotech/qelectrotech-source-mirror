@@ -675,7 +675,8 @@ void Createdxf::drawRectangle(
 		const QString &filepath,
 		const QRectF &rect,
 		const int &colorcode) {
-    QPolygonF poly(scaleRect(rect));
+    //QPolygonF poly(scaleRect(rect));
+    QPolygonF poly(rect);
     drawPolyline(filepath,poly,colorcode);
 }
 
