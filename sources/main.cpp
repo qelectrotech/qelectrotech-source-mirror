@@ -203,7 +203,6 @@ int main(int argc, char **argv)
 		my_ma->send_info_to_debug();
 		delete my_ma;
 	}
-
 	return app.exec();
 }
 
