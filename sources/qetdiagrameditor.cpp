@@ -782,8 +782,10 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
+#if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
+#endif
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));

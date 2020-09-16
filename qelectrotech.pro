@@ -212,6 +212,7 @@ TARGET = qelectrotech
 
 # Ajustement des bibliotheques utilisees lors de l'edition des liens
 unix:QMAKE_LIBS_THREAD -= -lpthread
+unix|win32: LIBS += -lsqlite3
 
 # Enable C++11
 QMAKE_CXXFLAGS += -std=c++11

@@ -1,4 +1,4 @@
-/*
+﻿/*
 		Copyright 2006-2020 QElectroTech Team
 		This file is part of QElectroTech.
 
@@ -27,6 +27,7 @@
 class Element;
 class QETProject;
 class Diagram;
+class sqlite3;
 
 /**
 	@brief The projectDataBase class
@@ -41,12 +42,6 @@ class projectDataBase : public QObject
 
 	public:
 		projectDataBase(QETProject *project, QObject *parent = nullptr);
-	private:
-		projectDataBase(QETProject *project,
-				const QString &connection_name,
-				const QString &path,
-				QObject *parent = nullptr);
-	public:
 		virtual ~projectDataBase() override;
 
 		void updateDB();
@@ -62,8 +57,7 @@ class projectDataBase : public QObject
 		void dataBaseUpdated();
 
 	private:
-		bool createDataBase(const QString &connection_name= QString(),
-				    const QString &name = QString());
+		bool createDataBase();
 		void createElementNomenclatureView();
 		void createSummaryView();
 		void populateDiagramTable();
@@ -86,6 +80,7 @@ class projectDataBase : public QObject
 				  m_insert_diagram_info_query;
 
 	public:
+		static sqlite3 *sqliteHandle(QSqlDatabase *db);
 		static void exportDb(projectDataBase *db,
 				     QWidget *parent = nullptr,
 				     const QString &caption = QString(),
