@@ -443,18 +443,10 @@ void ExportDialog::generateDxf(
 
 	//Add project elements (lines, rectangles, circles, texts) to dxf file
 	if (epw -> exportProperties().draw_border) {
-		double bx0 = Diagram::margin * Createdxf::xScale;
-		double by0 = Diagram::margin * Createdxf::yScale;
-		Createdxf::drawRectangle(
-					file_path,
-					bx0,
-					-by0,
-					double(width)*Createdxf::xScale,
-					double(height)*Createdxf::yScale,
-					0);
+        QRectF rect(Diagram::margin,Diagram::margin,width,height);
+        Createdxf::drawRectangle(file_path,rect,0);
 	}
-	diagram -> border_and_titleblock.drawDxf(file_path,
-						 0);
+	diagram -> border_and_titleblock.drawDxf(file_path, 0);
 
 	// Build the lists of elements.
 	QList<Element *> list_elements;
@@ -542,71 +534,32 @@ void ExportDialog::generateDxf(
 
 		for (QLineF line : primitives.m_lines)
 		{
-			qreal x1 = (elem_pos_x + line.p1().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + line.p1().y()) * Createdxf::yScale;
-			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
-			x1 = transformed_point.x();
-			y1 = transformed_point.y();
-			qreal x2 = (elem_pos_x + line.p2().x()) * Createdxf::xScale;
-			qreal y2 = Createdxf::sheetHeight - (elem_pos_y + line.p2().y()) * Createdxf::yScale;
-			transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
-			x2 = transformed_point.x();
-			y2 = transformed_point.y();
-			Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
+            QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+            QLineF l = t.map(line);
+            Createdxf::drawLine(file_path, l, 0);
 		}
 
 		for (QRectF rect : primitives.m_rectangles)
 		{
-			qreal x1 = (elem_pos_x + rect.bottomLeft().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + rect.bottomLeft().y()) * Createdxf::yScale;
-			qreal w = rect.width() * Createdxf::xScale;
-			qreal h = rect.height() * Createdxf::yScale;
-			// opposite corner
-			qreal x2 = x1 + w;
-			qreal y2 = y1 + h;
-			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
-			x1 = transformed_point.x();
-			y1 = transformed_point.y();
-			transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
-			x2 = transformed_point.x();
-			y2 = transformed_point.y();
-			qreal bottom_left_x = (x1 < x2) ? x1 : x2;
-			qreal bottom_left_y = (y1 < y2) ? y1 : y2;
-			w = (x1 < x2) ? x2-x1 : x1-x2;
-			h = (y1 < y2) ? y2-y1 : y1-y2;
-			Createdxf::drawRectangle(file_path, bottom_left_x, bottom_left_y, w, h, 0);
+            QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+            QRectF r = t.mapRect(rect);
+            Createdxf::drawRectangle(file_path,r,0);
 		}
 
 		for (QRectF circle_rect : primitives.m_circles)
 		{
-			qreal x1 = (elem_pos_x + circle_rect.center().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + circle_rect.center().y()) * Createdxf::yScale;
-			qreal r = circle_rect.width() * Createdxf::xScale / 2;
-			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
-			x1 = transformed_point.x();
-			y1 = transformed_point.y();
-			Createdxf::drawCircle(file_path, r, x1, y1, 0);
+            QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+            QPointF c = t.map(QPointF(circle_rect.center().x(),circle_rect.center().y()));
+            Createdxf::drawCircle(file_path,c,circle_rect.width()/2,0);
 		}
 
 		for (QVector<QPointF> polygon : primitives.m_polygons)
 		{
 			if (polygon.size() == 0)
 				continue;
-			qreal x1 = (elem_pos_x + polygon.at(0).x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + polygon.at(0).y()) * Createdxf::yScale;
-			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
-			x1 = transformed_point.x();
-			y1 = transformed_point.y();
-			for (int i = 1; i < polygon.size(); ++i ) {
-				qreal x2 = (elem_pos_x + polygon.at(i).x()) * Createdxf::xScale;
-				qreal y2 = Createdxf::sheetHeight - (elem_pos_y + polygon.at(i).y()) * Createdxf::yScale;
-				QPointF transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
-				x2 = transformed_point.x();
-				y2 = transformed_point.y();
-				Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
-				x1 = x2;
-				y1 = y2;
-			}
+            QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
+            QPolygonF poly = t.map(polygon);
+            Createdxf::drawPolygon(file_path,poly,0);
 		}
 
 		// Draw arcs and ellipses
@@ -626,13 +579,10 @@ void ExportDialog::generateDxf(
             // Draw terminals
             QList<Terminal *> list_terminals = elmt->terminals();
             QColor col("red");
+            QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
             foreach(Terminal *tp, list_terminals) {
-                qreal x = (elem_pos_x + tp->dock_elmt_.x()) * Createdxf::xScale;
-                qreal y = Createdxf::sheetHeight - (elem_pos_y + tp->dock_elmt_.y()) * Createdxf::yScale;
-                QPointF transformed_point = rotation_transformed(x, y, hotspot_x, hotspot_y, rotation_angle);
-                x = transformed_point.x();
-                y = transformed_point.y();
-                Createdxf::drawCircle(file_path, 3.0* Createdxf::xScale, x, y, Createdxf::dxfColor(col));
+                QPointF c = t.map(QPointF(tp->dock_elmt_.x(),tp->dock_elmt_.y()));
+                Createdxf::drawCircle(file_path,c,3.0,Createdxf::dxfColor(col));
             }
         }
 	}

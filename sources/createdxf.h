@@ -39,6 +39,13 @@ class Createdxf
 				double,
 				double,
 				int);
+
+        static void drawCircle(
+                const QString& ,
+                QPointF,
+                double,
+                int );
+
 		static void drawArc(
 				const QString&,
 				double x,

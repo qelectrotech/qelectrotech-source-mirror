@@ -256,6 +256,26 @@ void Createdxf::dxfEnd(const QString& fileName)
 }
 
 /**
+    @brief Createdxf::drawCircle
+    draw circle in qt format
+    @param fileName
+    @param center
+    @param radius
+    @param colour
+*/
+void Createdxf::drawCircle(
+        const QString& fileName,
+        QPointF centre,
+        double radius,
+        int colour)
+{
+    qreal x = centre.x() * xScale;
+    qreal y = sheetHeight - centre.y() * yScale;
+    qreal r = radius * xScale;
+    drawCircle(fileName,r,x,y,colour);
+}
+
+/**
 	@brief Createdxf::drawCircle
 	draw circle in dxf format
 	@param fileName
@@ -447,7 +467,7 @@ int Createdxf::dxfColor(QPen pen) {
 
 /**
 	@brief Createdxf::drawLine
-	Conveniance function to draw line
+    Convenience function to draw line
 	@param filepath
 	@param line
 	@param colorcode
