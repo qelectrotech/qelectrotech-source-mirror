@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -49,18 +49,19 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	// at first, the internal titleblock template renderer uses the default titleblock template
 	m_titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
 	m_titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
-	
+
 	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
-	if (!QRegExp("4\\.[0-7]\\.").exactMatch(qVersion())) {
-		m_titleblock_template_renderer -> setUseCache(false);
-	}
-	
+#if QT_VERSION < QT_VERSION_CHECK(4, 8, 0)	// ### Qt 6: remove
+#else
+	m_titleblock_template_renderer -> setUseCache(false);
+#endif
+
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
-	
+
 	// contenu par defaut du cartouche
 	importTitleBlock(TitleBlockProperties());
-	
+
 	display_titleblock_ = true;
 	display_border_ = true;
 	setFolioData(1, 1);
@@ -227,11 +228,11 @@ void BorderTitleBlock::borderToXml(QDomElement &xml_elmt) {
 	xml_elmt.setAttribute("cols",        columnsCount());
 	xml_elmt.setAttribute("colsize",     QString("%1").arg(columnsWidth()));
 	xml_elmt.setAttribute("displaycols", columnsAreDisplayed() ? "true" : "false");
-	
+
 	xml_elmt.setAttribute("rows",        rowsCount());
 	xml_elmt.setAttribute("rowsize",     QString("%1").arg(rowsHeight()));
 	xml_elmt.setAttribute("displayrows", rowsAreDisplayed() ? "true" : "false");
-	
+
 	// attribut datant de la version 0.1 - laisse pour retrocompatibilite
 	xml_elmt.setAttribute("height", QString("%1").arg(diagramHeight()));
 }
@@ -246,18 +247,18 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 	// columns count
 	int cols_count = xml_elmt.attribute("cols").toInt(&ok);
 	if (ok) setColumnsCount(cols_count);
-	
+
 	// columns width
 	double cols_width = xml_elmt.attribute("colsize").toDouble(&ok);
 	if (ok) setColumnsWidth(cols_width);
-	
+
 	// backward compatibility:
 	//	diagrams saved with 0.1 version have a "height" attribute
 	if (xml_elmt.hasAttribute("rows") && xml_elmt.hasAttribute("rowsize")) {
 		// rows counts
 		int rows_count = xml_elmt.attribute("rows").toInt(&ok);
 		if (ok) setRowsCount(rows_count);
-		
+
 		// taille des lignes
 		double rows_size = xml_elmt.attribute("rowsize").toDouble(&ok);
 		if (ok) setRowsHeight(rows_size);
@@ -266,7 +267,7 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 		double height = xml_elmt.attribute("height").toDouble(&ok);
 		if (ok) setDiagramHeight(height);
 	}
-	
+
 	// rows and columns display
 	displayColumns(xml_elmt.attribute("displaycols") != "false");
 	displayRows(xml_elmt.attribute("displayrows") != "false");
@@ -282,7 +283,7 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 TitleBlockProperties BorderTitleBlock::exportTitleBlock()
 {
 	TitleBlockProperties ip;
-	
+
 	ip.author = author();
 	ip.date = date();
 	ip.title = title();
@@ -297,7 +298,7 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock()
 	ip.auto_page_num = autoPageNum();
 	ip.context = additional_fields_;
 	ip.collection = QET::QetCollection::Embedded;
-	
+
 	return(ip);
 }
 
@@ -322,7 +323,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 		emit(displayChanged());
 	}
 	additional_fields_ = ip.context;
-	
+
 	emit(needFolioData()); // Note: we expect additional data to be provided
 	// through setFolioData(),
 	// which in turn calls updateDiagramContextForTitleBlock().
@@ -422,7 +423,7 @@ void BorderTitleBlock::titleBlockTemplateRemoved(
 		const QString &removed_template_name,
 		const TitleBlockTemplate *new_template) {
 	if (titleBlockTemplateName() != removed_template_name) return;
-	
+
 	if (new_template) {
 		setTitleBlockTemplate(new_template);
 	} else {
@@ -516,14 +517,14 @@ void BorderTitleBlock::draw(QPainter *painter)
 	pen.setCosmetic(true);
 	painter -> setPen(pen);
 	painter -> setBrush(Qt::NoBrush);
-	
+
 	QSettings settings;
-	
+
 	//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
-	
+
 	painter -> setFont(QETApp::diagramTextsFont());
-	
+
 	//Draw the empty case at the top left of diagram when there is header
 	if (display_border_ && (display_columns_ || display_rows_))
 	{
@@ -535,7 +536,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 		);
 		painter -> drawRect(first_rectangle);
 	}
-	
+
 		//Draw the nums of columns
 	if (display_border_ && display_columns_) {
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
@@ -561,7 +562,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			}
 		}
 	}
-	
+
 		//Draw the nums of rows
 	if (display_border_ && display_rows_) {
 		QString row_string("A");
@@ -584,7 +585,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			row_string = incrementLetters(row_string);
 		}
 	}
-	
+
 		// render the titleblock, using the TitleBlockTemplate object
 	if (display_titleblock_) {
 		QRectF tbt_rect = titleBlockRectForQPainter();
@@ -607,7 +608,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> translate(-tbt_rect.topLeft());
 		}
 	}
-	
+
 	painter -> restore();
 }
 
@@ -646,18 +647,18 @@ void BorderTitleBlock::drawDxf(
 	}
 
 	QSettings settings;
-	
+
 	// draw the numbering of the columns
 	// dessine la numerotation des colonnes
 	if (display_border_ &&
 		display_columns_) {
-        int offset = settings.value("border-columns_0", true).toBool() ? -1 : 0;
+	int offset = settings.value("border-columns_0", true).toBool() ? -1 : 0;
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
-            double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
+	    double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
 					(rows_header_width_ + ((i - 1) *
 					 columns_width_));
 			double yCoord = Createdxf::sheetHeight
-                    - diagram_rect_.topLeft().y()*Createdxf::yScale
+		    - diagram_rect_.topLeft().y()*Createdxf::yScale
 					- columns_header_height_;
 			double recWidth = columns_width_;
 			double recHeight = columns_header_height_;
@@ -665,18 +666,18 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-                           QString::number(i + offset),
-                           xCoord+recWidth/4,
-                           yCoord + recHeight*0.5,
+			   QString::number(i + offset),
+			   xCoord+recWidth/4,
+			   yCoord + recHeight*0.5,
 						   recHeight*0.7,
 						   0,
 						   0,
 						   1,
 						   2,
-                           xCoord+recWidth/2,
-                           1,
+			   xCoord+recWidth/2,
+			   1,
 			   color);
-        }
+	}
 	}
 
 	// draw line numbering
@@ -686,8 +687,8 @@ void BorderTitleBlock::drawDxf(
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
-            double yCoord = Createdxf::sheetHeight
-                    - diagram_rect_.topLeft().y()
+	    double yCoord = Createdxf::sheetHeight
+		    - diagram_rect_.topLeft().y()
 					*Createdxf::yScale
 					- (
 						columns_header_height_
@@ -700,15 +701,15 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
 						   row_string,
-                           xCoord+recWidth*0.1,
-                           yCoord + recHeight*0.4,
+			   xCoord+recWidth*0.1,
+			   yCoord + recHeight*0.4,
 						   recWidth*0.7,
 						   0,
 						   0,
 						   1,
 						   2,
 						   xCoord+recWidth/2,
-                           1,
+			   1,
 			   color);
 			row_string = incrementLetters(row_string);
 		}
@@ -869,11 +870,11 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 	QPointF relative_pos = pos - insideBorderRect().topLeft();
 	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
-	
+
 	QString letter = "A";
 	for (int i = 1 ; i < column_number ; ++ i)
 		letter = incrementLetters(letter);
-	
+
 	return(DiagramPosition(letter, row_number));
 }
 
@@ -931,7 +932,7 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	foreach (QString key, additional_fields_.keys()) {
 		context.addValue(key, additional_fields_[key]);
 	}
-	
+
 	// ... overridden by the historical and/or dynamically generated fields
 	context.addValue("author",      btb_author_);
 	context.addValue("date",        btb_date_.toString(
@@ -948,7 +949,7 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	context.addValue("auto_page_num", btb_auto_page_num_);
 	context.addValue("previous-folio-num", m_previous_folio_num);
 	context.addValue("next-folio-num", m_next_folio_num);
-	
+
 	m_titleblock_template_renderer -> setContext(context);
 }
 
@@ -1000,12 +1001,12 @@ void BorderTitleBlock::setFolioData(
 		const QString& autonum,
 		const DiagramContext &project_properties) {
 	if (index < 1 || total < 1 || index > total) return;
-	
+
 	// memorize information
 	// memorise les informations
 	folio_index_ = index;
 	folio_total_ = total;
-	
+
 	// regenerate the content of the folio field
 	// regenere le contenu du champ folio
 	btb_final_folio_ = btb_folio_;
