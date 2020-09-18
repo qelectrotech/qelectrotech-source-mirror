@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -24,6 +24,7 @@
 #include <QFileInfo>
 #include <QSaveFile>
 #include <QTextStream>
+#include <QRegularExpression>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -169,10 +170,10 @@ bool QET::orthogonalProjection(const QPointF &point,
 	// recupere le vecteur normal de `line'
 	QLineF line_normal_vector(line.normalVector());
 	QPointF normal_vector(line_normal_vector.dx(), line_normal_vector.dy());
-	
+
 	// cree une droite perpendiculaire a `line' passant par `point'
 	QLineF perpendicular_line(point, point + normal_vector);
-	
+
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
 
@@ -184,15 +185,15 @@ bool QET::orthogonalProjection(const QPointF &point,
 			intersects
 #endif
 			(perpendicular_line, &intersection_point);
-	
+
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
-	
+
 	// fournit le point d'intersection a l'appelant si necessaire
 	if (intersection) {
 		*intersection = intersection_point;
 	}
-	
+
 	// determine si le point d'intersection appartient au segment de droite
 	if (QET::lineContainsPoint(line, intersection_point)) {
 		return(true);
@@ -272,7 +273,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count,
 			elements_count
 		);
 	}
-	
+
 	if (conductors_count) {
 		if (!text.isEmpty()) text += ", ";
 		text += QObject::tr(
@@ -281,7 +282,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count,
 			conductors_count
 		);
 	}
-	
+
 	if (texts_count) {
 		if (!text.isEmpty()) text += ", ";
 		text += QObject::tr(
@@ -308,7 +309,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count,
 			shapes_count
 		);
 	}
-	
+
 	if (element_text_count) {
 		if (!text.isEmpty()) text += ", ";
 		text += QObject::tr(
@@ -324,7 +325,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count,
 					"part of a sentence listing the content of diagram",
 					tables_count);
 	}
-	
+
 	return(text);
 }
 
@@ -354,7 +355,7 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e,
 					 const QString &parent,
 					 const QString &children) {
 	QList<QDomElement> return_list;
-	
+
 	// parcours des elements parents
 	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
 		// on s'interesse a l'element XML "parent"
@@ -417,15 +418,15 @@ QList<QChar> QET::forbiddenCharacters()
 */
 QString QET::stringToFileName(const QString &name) {
 	QString file_name(name.toLower());
-	
+
 	// remplace les caracteres interdits par des tirets
 	foreach(QChar c, QET::forbiddenCharacters()) {
 		file_name.replace(c, '-');
 	}
-	
+
 	// remplace les espaces par des underscores
 	file_name.replace(' ', '_');
-	
+
 	return(file_name);
 }
 
@@ -455,12 +456,12 @@ QString QET::unescapeSpaces(const QString &string) {
 */
 QString QET::joinWithSpaces(const QStringList &string_list) {
 	QString returned_string;
-	
+
 	for (int i = 0 ; i < string_list.count() ; ++ i) {
 		returned_string += QET::escapeSpaces(string_list.at(i));
 		if (i != string_list.count() - 1) returned_string += " ";
 	}
-	
+
 	return(returned_string);
 }
 
@@ -475,7 +476,7 @@ QStringList QET::splitWithSpaces(const QString &string) {
 	// = avec un nombre nul ou pair de backslashes devant
 
 #pragma message("@TODO remove code for QT 5.14 or later")
-	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "),
+	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 						   QString
 #else
@@ -570,13 +571,13 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 
 	QString second_canonical_path = QFileInfo(second).canonicalFilePath();
 	if (second_canonical_path.isEmpty()) return(false);
-	
+
 #ifdef Q_OS_WIN
 	// sous Windows, on ramene les chemins en minuscules
 	first_canonical_path  = first_canonical_path.toLower();
 	second_canonical_path = second_canonical_path.toLower();
 #endif
-	
+
 	return(first_canonical_path == second_canonical_path);
 }
 
@@ -592,7 +593,7 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message)
 {
 	QSaveFile file(filepath);
-	
+
 	// Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
 	bool file_opening = file.open(QIODevice::WriteOnly);
 	if (!file_opening)
@@ -605,7 +606,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 		}
 		return(false);
 	}
-	
+
 	QTextStream out(&file);
 	out.setCodec("UTF-8");
 	out.setGenerateByteOrderMark(false);
@@ -617,10 +618,10 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 							 "Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
 							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
 		}
-		
+
 		return false;
 	}
-	
+
 	return(true);
 }
 
@@ -687,7 +688,7 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 {
 	QActionGroup *action_group = new QActionGroup(parent);
 
-	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);	
+	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);
 	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
 	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
 	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
@@ -696,17 +697,17 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	edit_raise   ->setStatusTip(QObject::tr("Rapproche la ou les sélections"));
 	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
 	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
-	
+
 	edit_raise   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Up")));
 	edit_lower   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Down")));
 	edit_backward->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+End")));
 	edit_forward ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Home")));
-	
+
 	edit_forward ->setData(QET::BringForward);
 	edit_raise   ->setData(QET::Raise);
 	edit_lower   ->setData(QET::Lower);
 	edit_backward->setData(QET::SendBackward);
-	
+
 	return action_group;
 }
 
