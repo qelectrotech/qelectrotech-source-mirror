@@ -33,14 +33,14 @@
 #include "projectview.h"
 #include "elementpicturefactory.h"
 #include "aboutqetdialog.h"
+#include "factory/elementfactory.h"
 
 #include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
 #include <QProcessEnvironment>
-#include "factory/elementfactory.h"
-
+#include <QRegularExpression>
 #include <KAutoSaveFile>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
@@ -97,7 +97,7 @@ QETApp::QETApp() :
 		   "splash screen caption"));
 	if (!collections_cache_) {
 	QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
-	
+
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
 		collections_cache_->setLocale(langFromSetting());
 	}
@@ -113,12 +113,12 @@ QETApp::QETApp() :
 				       "splash screen caption"));
 		openFiles(qet_arguments_);
 	}
-	
+
 	buildSystemTrayMenu();
 	if (m_splash_screen) {
 		m_splash_screen -> hide();
 	}
-	
+
 	checkBackupFiles();
 }
 
@@ -129,17 +129,17 @@ QETApp::~QETApp()
 {
 	m_elements_recent_files->save();
 	m_projects_recent_files->save();
-	
+
 	delete m_splash_screen;
 	delete m_elements_recent_files;
 	delete m_projects_recent_files;
 	delete m_qsti;
-	
+
 	if (m_custom_tbt_collection)
 		delete m_custom_tbt_collection;
 	if (m_common_tbt_collection)
 		delete m_common_tbt_collection;
-	
+
 	ElementFactory::dropInstance();
 	ElementPictureFactory::dropInstance();
 }
@@ -409,12 +409,12 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "label") return tr("Label");
 	else if (info == "plant") return tr("Installation");
 	else if (info == "location") return tr("Localisation");
-	
+
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "function") return tr("Fonction");
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
-	
+
 	else if (info == "description") return tr("Description textuelle");
 	else if (info == "designation") return tr("Numéro d'article");
 	else if (info == "manufacturer") return tr("Fabricant");
@@ -455,7 +455,7 @@ QStringList QETApp::conductorInfoKeys()
 	keys.append("tension/protocol");
 	keys.append("conductor_color");
 	keys.append("conductor_section");
-	
+
 	return keys;
 }
 
@@ -492,7 +492,7 @@ QStringList QETApp::diagramInfoKeys()
 	list.append("indexrev");
 	list.append("date");
 	list.append("display_folio");
-	
+
 	return list;
 }
 
@@ -625,7 +625,7 @@ QString QETApp::commonElementsDir()
 	else if (m_user_common_elements_dir != "default") {
 		return m_user_common_elements_dir;
 	}
-	
+
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	if (common_elements_dir != QString()) return(common_elements_dir);
 #endif
@@ -687,7 +687,7 @@ QString QETApp::customElementsDir()
 	else if (m_user_custom_elements_dir != "default") {
 		return m_user_custom_elements_dir;
 	}
-	
+
 	return(configDir() + "elements/");
 }
 
@@ -786,7 +786,7 @@ QString QETApp::customTitleBlockTemplatesDir()
 	else if (m_user_custom_tbt_dir != "default") {
 		return m_user_custom_tbt_dir;
 	}
-	
+
 	return(configDir() + "titleblocks/");
 }
 
@@ -911,7 +911,7 @@ QStringList QETApp::handledFileExtensions()
 	if (!ext.count()) {
 		ext << "qet";
 		ext << "elmt";
-		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegExp("^\\."));
+		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegularExpression("^\\."));
 	}
 	return(ext);
 }
@@ -1159,7 +1159,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 							   ).toDouble();
 	QString diagram_texts_item_style  = settings.value("diagramitemstyle",
 							   "normal").toString();
-	
+
 	if (size != -1.0) {
 		diagram_texts_item_size = size;
 	}
@@ -1359,9 +1359,9 @@ QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
 void QETApp::receiveMessage(int instanceId, QByteArray message)
 {
 	Q_UNUSED(instanceId);
-	
+
 	QString str(message);
-	
+
 	if (str.startsWith("launched-with-args: "))
 	{
 		QString my_message(str.mid(20));
@@ -2102,10 +2102,10 @@ template <class T> void QETApp::addWindowsListToMenu(
 	or -1 if none could be found.
 */
 int QETApp::projectIdFromString(const QString &url) {
-	QRegExp embedded("^project([0-9]+)\\+embed.*$", Qt::CaseInsensitive);
-	if (embedded.exactMatch(url)) {
+	QRegularExpression embedded("^project([0-9]+)\\+embed.*$", QRegularExpression::CaseInsensitiveOption);
+	if (embedded==QRegularExpression(url)) {
 		bool conv_ok = false;
-		int project_id = embedded.capturedTexts().at(1).toInt(&conv_ok);
+		int project_id = embedded.namedCaptureGroups().at(1).toInt(&conv_ok);
 		if (conv_ok) {
 			return(project_id);
 		}
@@ -2191,7 +2191,7 @@ void QETApp::buildSystemTrayMenu()
 void QETApp::checkBackupFiles()
 {
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
-	
+
 	//Remove from the list @stale_files, the stales file of opened project
 	const QList<KAutoSaveFile *> sf = stale_files;
 	for (KAutoSaveFile *kasf : sf)
@@ -2227,10 +2227,10 @@ void QETApp::checkBackupFiles()
     for(const KAutoSaveFile *kasf : stale_files)
     {
 #ifdef Q_OS_WIN
-        //Remove the first character '/' before the name of the drive
-        text.append("<br>" + kasf->managedFile().path().remove(0,1));
+	//Remove the first character '/' before the name of the drive
+	text.append("<br>" + kasf->managedFile().path().remove(0,1));
 #else
-        text.append("<br>" + kasf->managedFile().path());
+	text.append("<br>" + kasf->managedFile().path());
 #endif
 	}
 
@@ -2319,12 +2319,12 @@ void QETApp::fetchWindowStats(
 bool QETApp::eventFiltrer(QObject *object, QEvent *e) {
     // gere l'ouverture de fichiers (sous MacOs)
     if (e -> type() == QEvent::FileOpen) {
-        // nom du fichier a ouvrir
-        QString filename = static_cast<QFileOpenEvent *>(e) -> file();
-        openFiles(QStringList() << filename);
-        return(true);
+	// nom du fichier a ouvrir
+	QString filename = static_cast<QFileOpenEvent *>(e) -> file();
+	openFiles(QStringList() << filename);
+	return(true);
     } else {
-        return QObject::eventFilter(object, e);
+	return QObject::eventFilter(object, e);
     }
 }
 #endif
