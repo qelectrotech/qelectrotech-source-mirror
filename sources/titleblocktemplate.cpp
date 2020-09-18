@@ -388,7 +388,9 @@ bool TitleBlockTemplate::loadGrid(const QDomElement &xml_element) {
 void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	rows_heights_.clear();
 	// parse the rows attribute: we expect a serie of absolute heights
-	QRegExp row_size_format("^([0-9]+)(?:px)?$", Qt::CaseInsensitive);
+	QRegularExpression row_size_format
+			("^([0-9]+)(?:px)?$",
+			 QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
@@ -400,10 +402,11 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 			rows_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
 	foreach (QString rows_description, rows_descriptions) {
-		if (row_size_format.exactMatch(rows_description)) {
+		QRegularExpressionMatch match;
+		match = row_size_format.match(rows_description);
+		if (match.hasMatch()) {
 			int row_size =
-				row_size_format.capturedTexts().at(1).toInt(
-						&conv_ok);
+				match.captured(1).toInt(&conv_ok);
 			if (conv_ok)
 				rows_heights_ << row_size;
 		}
@@ -422,8 +425,12 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	columns_width_.clear();
 	// parse the cols attribute: we expect a serie of absolute or relative widths
-	QRegExp abs_col_size_format("^([0-9]+)(?:px)?$", Qt::CaseInsensitive);
-	QRegExp rel_col_size_format("^([rt])([0-9]+)%$", Qt::CaseInsensitive);
+	QRegularExpression abs_col_size_format,rel_col_size_format;
+	abs_col_size_format.setPattern("^([0-9]+)(?:px)?$");
+	abs_col_size_format.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+	//QRegExp rel_col_size_format("^([rt])([0-9]+)%$", Qt::CaseInsensitive);
+	rel_col_size_format.setPattern("^([rt])([0-9]+)%$");
+	rel_col_size_format.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
@@ -435,18 +442,18 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 			cols_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
 	foreach (QString cols_description, cols_descriptions) {
-		if (abs_col_size_format.exactMatch(cols_description)) {
-			int col_size = abs_col_size_format.capturedTexts().at(1).toInt(&conv_ok);
+		QRegularExpressionMatch match_abc,match_rel;
+		match_abc = abs_col_size_format.match(cols_description);
+		match_rel = rel_col_size_format.match(cols_description);
+		if (match_abc.hasMatch()) {
+			int col_size = match_abc.captured(1).toInt(&conv_ok);
 			if (conv_ok)
 				columns_width_ << TitleBlockDimension(
 							  col_size,
 							  QET::Absolute);
-		} else if (rel_col_size_format.exactMatch(cols_description)) {
-			int col_size =
-				rel_col_size_format.capturedTexts().at(2).toInt(
-						&conv_ok);
-			QET::TitleBlockColumnLength col_type =
-					rel_col_size_format.capturedTexts().at(1)
+		} else if (match_rel.hasMatch()) {
+			int col_size = match_rel.captured(2).toInt(&conv_ok);
+			QET::TitleBlockColumnLength col_type = match_rel.captured(1)
 					== "t"
 					? QET::RelativeToTotalLength
 					: QET::RelativeToRemainingLength;
