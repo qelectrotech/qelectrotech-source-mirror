@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -144,9 +144,9 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const
 */
 QString ElementsLocation::baseName() const
 {
-	QRegExp regexp("^.*([^/]+)\\.elmt$");
-	if (regexp.exactMatch(m_collection_path)) {
-		return(regexp.capturedTexts().at(1));
+	QRegularExpression regexp("^.*([^/]+)\\.elmt$");
+	if (regexp==QRegularExpression(m_collection_path)) {
+		return(regexp.namedCaptureGroups().at(1));
 	}
 	return(QString());
 }
@@ -241,17 +241,19 @@ void ElementsLocation::setPath(const QString &path)
 	//The path start with project, we get the project and the path from the string
 	else if (tmp_path.startsWith("project"))
 	{
-		QRegExp rx("^project([0-9]+)\\+(embed:\\/\\/.*)$", Qt::CaseInsensitive);
-		if (rx.exactMatch(tmp_path))
+		QRegularExpression rx
+				("^project([0-9]+)\\+(embed:\\/\\/.*)$",
+				 QRegularExpression::CaseInsensitiveOption);
+		if (rx==QRegularExpression(tmp_path))
 		{
 			bool conv_ok;
-			uint project_id = rx.capturedTexts().at(1).toUInt(&conv_ok);
+			uint project_id = rx.namedCaptureGroups().at(1).toUInt(&conv_ok);
 			if (conv_ok)
 			{
 				QETProject *project = QETApp::project(project_id);
 				if (project)
 				{
-					m_collection_path = rx.capturedTexts().at(2);
+					m_collection_path = rx.namedCaptureGroups().at(2);
 					m_project = project;
 				}
 			}
@@ -351,11 +353,11 @@ bool ElementsLocation::addToPath(const QString &string)
 ElementsLocation ElementsLocation::parent() const
 {
 	ElementsLocation copy(*this);
-	QRegExp re1("^([a-z]+://)(.*)/*$");
-	if (re1.exactMatch(m_collection_path)) {
-		QString path_proto = re1.capturedTexts().at(1);
-		QString path_path = re1.capturedTexts().at(2);
-		QString parent_path = path_path.remove(QRegExp("/*[^/]+$"));
+	QRegularExpression re1("^([a-z]+://)(.*)/*$");
+	if (re1==QRegularExpression(m_collection_path)) {
+		QString path_proto = re1.namedCaptureGroups().at(1);
+		QString path_path = re1.namedCaptureGroups().at(2);
+		QString parent_path = path_path.remove(QRegularExpression("/*[^/]+$"));
 		copy.setPath(path_proto + parent_path);
 	}
 	return(copy);
@@ -718,14 +720,14 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 		else
 		{
 			QString path_ = collectionPath(false);
-			QRegExp rx ("^(.*)/(.*\\.elmt)$");
+			QRegularExpression rx ("^(.*)/(.*\\.elmt)$");
 
-			if (rx.exactMatch(path_)) {
+			if (rx==QRegularExpression(path_)) {
 				return project()
 						->embeddedElementCollection()
 						->addElementDefinition(
-							rx.cap(1),
-							rx.cap(2),
+							rx.namedCaptureGroups().at(1),
+							rx.namedCaptureGroups().at(2),
 							xml_document
 							.documentElement());
 			}
