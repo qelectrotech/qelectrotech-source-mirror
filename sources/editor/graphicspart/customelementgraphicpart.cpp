@@ -1,23 +1,25 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "customelementgraphicpart.h"
 #include "elementscene.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include <QRegularExpression>
 
 /**
 	@brief CustomElementGraphicPart::CustomElementGraphicPart
@@ -162,13 +164,13 @@ void CustomElementGraphicPart::setAntialiased(const bool b)
 void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 {
 	QString css_like_styles;
-	
+
 	css_like_styles += "line-style:";
 	if      (_linestyle == DashedStyle)     css_like_styles += "dashed";
 	else if (_linestyle == DottedStyle)     css_like_styles += "dotted";
 	else if (_linestyle == DashdottedStyle) css_like_styles += "dashdotted";
 	else if (_linestyle == NormalStyle)     css_like_styles += "normal";
-	
+
 	css_like_styles += ";line-weight:";
 	if      (_lineweight == NoneWeight)   css_like_styles += "none";
 	else if (_lineweight == ThinWeight)   css_like_styles += "thin";
@@ -508,7 +510,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
 	resetStyles();
-	
+
 		//Get the list of pair style/value
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = qde.attribute("style").split(";", QString::SkipEmptyParts);
@@ -516,14 +518,14 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 #pragma message("@TODO remove code for QT 5.14 or later")
 	QStringList styles = qde.attribute("style").split(";", Qt::SkipEmptyParts);
 #endif
-	
+
 		//Check each pair of style
-	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
+	QRegularExpression rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
 	foreach (QString style, styles)
 	{
-		if (!rx.exactMatch(style)) continue;
-		QString style_name = rx.cap(1);
-		QString style_value = rx.cap(2);
+		if (rx!=QRegularExpression(style)) continue;
+		QString style_name = rx.namedCaptureGroups().at(1);
+		QString style_value = rx.namedCaptureGroups().at(2);
 		if (style_name == "line-style")
 		{
 			if      (style_value == "dashed")     _linestyle = DashedStyle;
@@ -887,13 +889,13 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 		//Get the pen and brush
 	QPen pen = painter.pen();
 	QBrush brush = painter.brush();
-	
+
 		//Apply pen style
 	if      (_linestyle == DashedStyle)     pen.setStyle(Qt::DashLine);
 	else if (_linestyle == DashdottedStyle) pen.setStyle(Qt::DashDotLine);
 	else if (_linestyle == DottedStyle)     pen.setStyle(Qt::DotLine);
 	else if (_linestyle == NormalStyle)     pen.setStyle(Qt::SolidLine);
-	
+
 		//Apply pen width
 	if      (_lineweight == NoneWeight)   pen.setColor(QColor(0, 0, 0, 0));
 	else if (_lineweight == ThinWeight)   pen.setWidth(0);
@@ -1064,7 +1066,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 		else if (_filling == HTMLGrayDarkSlateGrayFilling)  brush.setColor(QColor(47, 79, 79));
 		else if (_filling == HTMLGrayBlackFilling)  brush.setColor(QColor(0, 0, 0));
 	}
-	
+
 		//Apply pen color
 	if      (_color == WhiteColor) pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
 	else if (_color == BlackColor) pen.setColor(QColor(  0,   0,   0, pen.color().alpha()));
@@ -1220,12 +1222,12 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == HTMLGrayDarkSlateGrayColor)  pen.setColor(QColor(47, 79, 79));
 	else if (_color == HTMLGrayBlackColor)  pen.setColor(QColor(0, 0, 0));
 	else if (_color == NoneColor)  pen.setBrush(Qt::transparent);
-	
+
 		//Apply antialiasing
 	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);
 	painter.setRenderHint(QPainter::TextAntialiasing,      _antialiased);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform, _antialiased);
-	
+
 	painter.setPen(pen);
 	painter.setBrush(brush);
 }
