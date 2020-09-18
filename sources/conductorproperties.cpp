@@ -1,24 +1,24 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorproperties.h"
 #include <QPainter>
 #include <QMetaEnum>
-
+#include <QRegularExpression>
 /**
 	Constructeur par defaut
 */
@@ -70,7 +70,7 @@ void SingleLineProperties::draw(QPainter *painter,
 				const QRectF &rect) {
 	// s'il n'y a rien a dessiner, on retourne immediatement
 	if (!hasNeutral && !hasGround && !phases) return;
-	
+
 	// prepare le QPainter
 	painter -> save();
 	QPen pen(painter -> pen());
@@ -80,12 +80,12 @@ void SingleLineProperties::draw(QPainter *painter,
 	pen.setWidthF(1);
 	painter -> setPen(pen);
 	painter -> setRenderHint(QPainter::Antialiasing, true);
-	
+
 	uint symbols_count = (hasNeutral ? 1 : 0) + (hasGround ? 1 : 0) - (isPen() ? 1 : 0) + phases;
 	qreal interleave_base = (direction == QET::Horizontal ? rect.width() : rect.height());
 	qreal interleave = interleave_base / (symbols_count + 1);;
 	qreal symbol_width = interleave_base / 12;
-	
+
 	for (uint i = 1 ; i <= symbols_count ; ++ i) {
 		// dessine le tronc du symbole
 		QPointF symbol_p1, symbol_p2;
@@ -97,7 +97,7 @@ void SingleLineProperties::draw(QPainter *painter,
 			symbol_p1 = QPointF(rect.x() + rect.width() * 0.25, rect.y() + (i * interleave) + symbol_width);
 		}
 		painter -> drawLine(QLineF(symbol_p1, symbol_p2));
-		
+
 		// dessine le reste des symboles terre et neutre
 		if (isPen()) {
 			if (i == 1) {
@@ -126,13 +126,13 @@ void SingleLineProperties::drawGround(QPainter *painter,
 				      QPointF center,
 				      qreal size) {
 	painter -> save();
-	
+
 	// prepare le QPainter
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QPen pen2(painter -> pen());
 	pen2.setCapStyle(Qt::SquareCap);
 	painter -> setPen(pen2);
-	
+
 	// dessine le segment representant la terre
 	qreal half_size = size / 2.0;
 	QPointF offset_point(
@@ -145,7 +145,7 @@ void SingleLineProperties::drawGround(QPainter *painter,
 			center - offset_point
 		)
 	);
-	
+
 	painter -> restore();
 }
 
@@ -161,11 +161,11 @@ void SingleLineProperties::drawNeutral(
 		qreal size)
 {
 	painter -> save();
-	
+
 	// prepare le QPainter
 	if (painter -> brush() == Qt::NoBrush) painter -> setBrush(Qt::black);
 	painter -> setPen(Qt::NoPen);
-	
+
 	// desine le cercle representant le neutre
 	painter -> drawEllipse(
 		QRectF(
@@ -173,7 +173,7 @@ void SingleLineProperties::drawNeutral(
 			QSizeF(size, size)
 		)
 	);
-	
+
 	painter -> restore();
 }
 
@@ -192,7 +192,7 @@ void SingleLineProperties::drawPen(QPainter *painter,
 				   QPointF center,
 				   qreal size) {
 	painter -> save();
-	
+
 	//painter -> setBrush(Qt::white);
 	// desine le cercle representant le neutre
 	//painter -> drawEllipse(
@@ -202,7 +202,7 @@ void SingleLineProperties::drawPen(QPainter *painter,
 	//	)
 	//);
 	drawNeutral(painter, center, size * 1.5);
-	
+
 	int offset = (size * 1.5 / 2.0);
 	QPointF pos = center + (direction == QET::Horizontal ? QPointF(0.0, -offset - 0.5) : QPointF(offset + 0.5, 0.0));
 	drawGround(painter, direction, pos, 2.0 * size);
@@ -271,11 +271,11 @@ void ConductorProperties::toXml(QDomElement &e) const
 
 	if (color != QColor(Qt::black))
 		e.setAttribute("color", color.name());
-	
+
 	e.setAttribute("bicolor", m_bicolor? "true" : "false");
 	e.setAttribute("color2", m_color_2.name());
 	e.setAttribute("dash-size", QString::number(m_dash_size));
-	
+
 	if (type == Single)
 		singleLineProperties.toXml(e);
 
@@ -292,11 +292,11 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("onetextperfolio", m_one_text_per_folio);
 	e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
 	e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
-	
+
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
 	e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
-	
+
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty())
 		e.setAttribute("style", conductor_style);
@@ -316,15 +316,15 @@ void ConductorProperties::fromXml(QDomElement &e)
 
 	QString bicolor_str = e.attribute("bicolor", "false");
 	m_bicolor = bicolor_str == "true"? true : false;
-	
+
 	QColor xml_color_2 = QColor(e.attribute("color2"));
 	m_color_2 = xml_color_2.isValid()? xml_color_2 : QColor(Qt::black);
-	
+
 	m_dash_size = e.attribute("dash-size", QString::number(1)).toInt();
-	
+
 		// read style of conductor
 	readStyle(e.attribute("style"));
-	
+
 	if (e.attribute("type") == typeToString(Single))
 	{
 			// get specific properties for single conductor
@@ -349,7 +349,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
 	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
 	horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
-	
+
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(
 				me.keyToValue(
@@ -396,7 +396,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
-	
+
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	settings.setValue(prefix + "horizontal-alignment", me.valueToKey(m_horizontal_alignment));
 	settings.setValue(prefix + "vertical-alignment", me.valueToKey(m_vertical_alignment));
@@ -412,13 +412,13 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 {
 	QColor settings_color = QColor(settings.value(prefix + "color").toString());
 	color = (settings_color.isValid()? settings_color : QColor(Qt::black));
-	
+
 	QColor settings_color_2 = QColor(settings.value(prefix + "color2").toString());
 	m_color_2 = (settings_color_2.isValid()? settings_color_2 : QColor(Qt::black));
-	
+
 	m_bicolor   = settings.value(prefix + "bicolor", false).toBool();
 	m_dash_size = settings.value(prefix + "dash-size", 1).toInt();
-	
+
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	type = (setting_type == typeToString(Single)? Single : Multi);
 
@@ -438,11 +438,11 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
 	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
-	
+
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
 	m_vertical_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "vertical-alignment", "AlignRight").toString().toStdString().data()));
-	
+
 	readStyle(settings.value(prefix + "style").toString());
 }
 
@@ -468,7 +468,7 @@ QString ConductorProperties::typeToString(ConductorType t)
 void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> list)
 {
 	const QList<ConductorProperties> clist = std::move(list);
-	
+
 	if (clist.isEmpty())
 		return;
 
@@ -505,7 +505,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	int i_value;
 	double d_value;
 	Qt::Alignment align_value;
-	
+
 		//Color
 	c_value = clist.first().color;
 	for(ConductorProperties cp : clist)
@@ -516,7 +516,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		color = c_value;
 	equal = true;
-	
+
 		//bicolor
 	b_value = clist.first().m_bicolor;
 	for(ConductorProperties cp : clist)
@@ -527,7 +527,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		m_bicolor = b_value;
 	equal = true;
-	
+
 		//second color
 	c_value = clist.first().m_color_2;
 	for(ConductorProperties cp : clist)
@@ -538,7 +538,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		m_color_2 = c_value;
 	equal = true;
-	
+
 		//Dash size
 	i_value = clist.first().m_dash_size;
 	for(ConductorProperties cp : clist)
@@ -693,7 +693,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		horiz_rotate_text = d_value;
 	equal = true;
-	
+
 		//Text alignment for horizontal conducor
 	align_value = clist.first().m_horizontal_alignment;
 	for(ConductorProperties cp : clist)
@@ -704,7 +704,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		m_horizontal_alignment = align_value;
 	equal = true;
-	
+
 		//Text alignment for vertical conducor
 	align_value = clist.first().m_vertical_alignment;
 	for(ConductorProperties cp : clist)
@@ -778,9 +778,9 @@ bool ConductorProperties::operator!=(const ConductorProperties &other) const{
 */
 void ConductorProperties::readStyle(const QString &style_string) {
 	style = Qt::SolidLine; // style par defaut
-	
+
 	if (style_string.isEmpty()) return;
-	
+
 	// recupere la liste des couples style / valeur
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
@@ -788,12 +788,13 @@ void ConductorProperties::readStyle(const QString &style_string) {
 #pragma message("@TODO remove code QString::SkipEmptyParts for QT 5.14 or later")
 	QStringList styles = style_string.split(";", Qt::SkipEmptyParts);
 #endif
-	
-	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
+
+	QRegularExpression Rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
 	foreach (QString style_str, styles) {
-		if (rx.exactMatch(style_str)) {
-			QString style_name = rx.cap(1);
-			QString style_value = rx.cap(2);
+		if (Rx==QRegularExpression(style_str)) {
+
+			QString style_name = Rx.namedCaptureGroups().at(1);
+			QString style_value = Rx.namedCaptureGroups().at(2);
 			if (style_name == "line-style") {
 				if (style_value == "dashed") style = Qt::DashLine;
 				else if (style_value == "dashdotted") style = Qt::DashDotLine;
