@@ -408,54 +408,6 @@ QPainterPath PartLine::shadowShape() const
 }
 
 /**
-	@brief PartLine::fourShapePoints
-	@return a list with the two points that delimite the line
-	+ the four points surrounding these two points
-*/
-QList<QPointF> PartLine::fourShapePoints() const
-{
-	const qreal marge = 2.0;
-
-	QPointF a = m_line.p1();
-	QPointF b = m_line.p2();
-	
-	QList<QPointF> result;
-	
-		//Special case, the line is defined by one point
-	if (a == b)
-	{
-		result << QPointF(a.x() - marge, a.y() - marge);
-		result << QPointF(a.x() - marge, a.y() + marge);
-		result << QPointF(a.x() + marge, a.y() + marge);
-		result << QPointF(a.x() + marge, a.y() - marge);
-	}
-	else
-	{
-			//We calcule the vector AB : (xb-xa, yb-ya)
-		QPointF v_ab = b - a;
-		
-			//And the distance AB: root of the coordinates of the vector squared
-		qreal ab = sqrt(pow(v_ab.x(), 2) + pow(v_ab.y(), 2));
-		
-			//Next, we define the vector u(a, b) wich is equal to the vector AB divided
-			//by is length and multiplied by the length of marge.
-		QPointF u = v_ab / ab * marge;
-		
-			//We define the vector v(-b, a) wich is perpendicular to AB
-		QPointF v(-u.y(), u.x());
-		QPointF m = -u + v; // we have vector M = -u + v
-		QPointF n = -u - v; // and vector N=-u-v
-		QPointF h =  a + m; // H = A + M
-		QPointF k =  a + n; // K = A + N
-		QPointF i =  b - n; // I = B - N
-		QPointF j =  b - m; // J = B - M
-		
-		result << h << i << j << k;
-	}
-	return(result);
-}
-
-/**
 	@brief PartLine::firstEndCircleRect
 	@return the rectangle bordering the entirety of the first extremity
 */
@@ -489,35 +441,6 @@ QRectF PartLine::secondEndCircleRect() const
 	);
 	
 	return(end_rect);
-}
-
-/**
-	@brief PartLine::debugPaint
-	Display several composante of the drawing
-	-the bounding rect
-	-special points at each extremity
-	-the quadrature of the circle at each extremity, even if itself is an other type
-	@param painter
-*/
-void PartLine::debugPaint(QPainter *painter)
-{
-	painter -> save();
-	painter -> setPen(Qt::gray);
-	painter -> drawRect(boundingRect());
-	
-	painter -> setPen(Qt::green);
-	painter -> drawRect(firstEndCircleRect());
-	painter -> drawRect(secondEndCircleRect());
-	
-	painter -> setPen(Qt::red);
-
-	foreach(QPointF pointy, fourEndPoints(m_line.p1(), m_line.p2(), first_length))
-		painter -> drawEllipse(pointy, 0.1, 0.1);
-
-	foreach(QPointF pointy, fourEndPoints(m_line.p2(), m_line.p1(), second_length))
-		painter -> drawEllipse(pointy, 0.1, 0.1);
-	
-	painter -> restore();
 }
 
 /**
