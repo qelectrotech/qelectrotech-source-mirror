@@ -15,12 +15,14 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "xrefpropertieswidget.h"
 
 #include <utility>
+#include <QHash>
+#include <QMetaEnum>
+
+#include "xrefpropertieswidget.h"
 #include "ui_xrefpropertieswidget.h"
 #include "qdebug.h"
-#include <QMetaEnum>
 
 /**
 	@brief XRefPropertiesWidget::XRefPropertiesWidget

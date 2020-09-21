@@ -15,6 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QTimer>
+#include <QStandardPaths>
+#include <utility>
+#include <QtConcurrent>
+#include <QHash>
+
 #include "qetproject.h"
 #include "diagram.h"
 #include "qetapp.h"
@@ -29,11 +36,6 @@
 #include "importelementdialog.h"
 #include "numerotationcontextcommands.h"
 #include "assignvariables.h"
-
-#include <QTimer>
-#include <QStandardPaths>
-#include <utility>
-#include <QtConcurrent>
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 

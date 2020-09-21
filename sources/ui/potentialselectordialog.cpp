@@ -15,11 +15,14 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QRadioButton>
+#include <QHash>
+
 #include "potentialselectordialog.h"
 #include "ui_potentialselectordialog.h"
 #include "conductor.h"
 #include "terminal.h"
-#include <QRadioButton>
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagram.h"
 #include "element.h"
@@ -191,14 +194,14 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 	} else if (list.size() == 1) {
 		return list.first();
 	}
-	
+
 	QDialog dialog(widget);
 	QVBoxLayout layout(widget);
 	dialog.setLayout(&layout);
 	QLabel label(tr("Veuillez choisir un potentiel électrique de la liste \n"
 					"à utiliser pour le nouveau potentiel"));
 	layout.addWidget(&label);
-	
+
 	QHash <QRadioButton *, ConductorProperties> H;
 	for (ConductorProperties cp : list)
 	{
@@ -213,7 +216,7 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 			text.append(tr("\nCouleur du conducteur : %1").arg(cp.m_wire_color));
 		if(!cp.m_wire_section.isEmpty())
 			text.append(tr("\nSection du conducteur : %1").arg(cp.m_wire_section));
-		
+
 		QRadioButton *b = new QRadioButton(text, &dialog);
 		layout.addWidget(b);
 		H.insert(b, cp);
@@ -221,14 +224,14 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 	QDialogButtonBox *button_box = new QDialogButtonBox(QDialogButtonBox::Ok, &dialog);
 	layout.addWidget(button_box);
 	connect(button_box, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
-	
+
 	dialog.exec();
 	for (QRadioButton *b : H.keys()) {
 		if(b->isChecked()) {
 			return H.value(b);
 		}
 	}
-	
+
 	return ConductorProperties();
 }
 
@@ -290,7 +293,7 @@ void PotentialSelectorDialog::buildWidget()
 	QString text1(tr("%n conducteurs composent le potentiel suivant :",
 			 "",
 			 m_potential_selector->m_conductor_number_1));
-	
+
 	ConductorProperties cp1;
 	if(!m_potential_selector->m_properties_list_1.isEmpty())
 		cp1 = m_potential_selector->m_properties_list_1.first();;
@@ -308,14 +311,14 @@ void PotentialSelectorDialog::buildWidget()
 	if(!cp1.m_wire_section.isEmpty())
 		text1.append(tr("\nSection du conducteur : %1")
 			     .arg(cp1.m_wire_section));
-			
+
 	QString text2(tr("%n conducteurs composent le potentiel suivant :",
 			 "",
 			 m_potential_selector->m_conductor_number_2));
 	ConductorProperties cp2;
 	if(!m_potential_selector->m_properties_list_2.isEmpty())
 		cp2 = m_potential_selector->m_properties_list_2.first();
-	
+
 	if(!cp2.text.isEmpty())
 		text2.append(tr("\nNuméro : %1").arg(cp2.text));
 	if(!cp2.m_function.isEmpty())
@@ -329,7 +332,7 @@ void PotentialSelectorDialog::buildWidget()
 	if(!cp2.m_wire_section.isEmpty())
 		text2.append(tr("\nSection du conducteur : %1")
 			     .arg(cp2.m_wire_section));
-			
+
 	QRadioButton *rb1 = new QRadioButton(text1, this);
 	QRadioButton *rb2 = new QRadioButton(text2, this);
 
@@ -429,7 +432,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 							 new_value,
 							 undo);
 			}
-			
+
 			//Check if formula of the new potential
 			// have incompatible variable with folio report
 			QRegularExpression rx ("%sequf_|%seqtf_|%seqhf_|%id|%F|%M|%LM");
@@ -445,7 +448,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 						      << "%F"
 						      << "%M"
 						      << "%LM";
-					
+
 					QString text(tr("La formule du nouveau potentiel contient des variables incompatibles avec les reports de folio.\n"
 									"Veuillez saisir une formule compatible pour ce potentiel.\n"
 									"Les variables suivantes sont incompatibles :\n"
@@ -455,7 +458,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 					fag.setText(text);
 					fag.setFormula(cp.m_formula);
 					fag.exec();
-					
+
 					QString new_formula = fag.formula();
 					QSet <Conductor *> c_list = m_report->conductors().first()->relatedPotentialConductors();
 					c_list.insert(m_report->conductors().first());
@@ -471,7 +474,7 @@ void PotentialSelectorDialog::on_buttonBox_accepted()
 									 new_value,
 									 undo);
 					}
-					
+
 					break;
 				}
 			}

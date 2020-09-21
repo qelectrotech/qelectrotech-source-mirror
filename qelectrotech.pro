@@ -76,6 +76,7 @@ include(sources/QWidgetAnimation/QWidgetAnimation.pri)
 DEFINES += QAPPLICATION_CLASS=QApplication
 DEFINES += QT_MESSAGELOGCONTEXT
 DEFINES += GIT_COMMIT_SHA="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" rev-parse --verify HEAD)\\\""
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
 
 TEMPLATE = app
 DEPENDPATH += .

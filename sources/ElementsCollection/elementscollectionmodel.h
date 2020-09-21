@@ -19,6 +19,7 @@
 #define ELEMENTSCOLLECTIONMODEL2_H
 
 #include <QStandardItemModel>
+#include <QHash>
 #include "elementslocation.h"
 
 class XmlProjectElementCollectionItem;

@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
+
 #include "abstractelementpropertieseditorwidget.h"
 
 class Element;

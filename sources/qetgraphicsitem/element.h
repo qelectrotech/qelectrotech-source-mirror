@@ -1,22 +1,26 @@
 ﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef ELEMENT_H
 #define ELEMENT_H
+
+#include <algorithm>
+#include <QPicture>
+#include <QHash>
 
 #include "qet.h"
 #include "qetgraphicsitem.h"
@@ -24,9 +28,6 @@
 #include "assignvariables.h"
 #include "elementslocation.h"
 #include "nameslist.h"
-
-#include <algorithm>
-#include <QPicture>
 
 class QETProject;
 class Terminal;
@@ -40,7 +41,7 @@ class ElementTextItemGroup;
 class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
-	
+
 	Q_OBJECT
 	public:
 			/**
@@ -64,7 +65,7 @@ class Element : public QetGraphicsItem
 		~Element() override;
 	private:
 		Element(const Element &);
-	
+
 		// attributes
 	public:
 			/**
@@ -74,7 +75,7 @@ class Element : public QetGraphicsItem
 			*/
 		enum { Type = UserType + 1000 };
 		int type() const override { return Type; }
-		
+
 	signals:
 		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
 		void elementInfoChange(
@@ -91,12 +92,12 @@ class Element : public QetGraphicsItem
 				DynamicElementTextItem *text,
 				ElementTextItemGroup *group);
 
-		
+
 	public:
 		QList<Terminal *> terminals() const;
 		QList<Conductor *> conductors() const;
 		QList<QPair<Terminal *,Terminal *>> AlignedFreeTerminals() const;
-		
+
 			//METHODS related to information
 		DiagramContext elementInformations()const
 		{return m_element_informations;}
@@ -118,7 +119,7 @@ class Element : public QetGraphicsItem
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
 		QString actualLabel();
-		
+
 		QString name() const override;
 		ElementsLocation location() const;
 		virtual void setHighlighted(bool);
@@ -140,7 +141,7 @@ class Element : public QetGraphicsItem
 				int> &) const;
 		QUuid uuid() const;
 		int orientation() const;
-		
+
 			//METHODS related to texts
 		void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
 		void removeDynamicTextItem(DynamicElementTextItem *deti);
@@ -156,7 +157,7 @@ class Element : public QetGraphicsItem
 		bool removeTextFromGroup(
 				DynamicElementTextItem *text,
 				ElementTextItemGroup *group);
-		
+
 			//METHODS related to linked element
 		bool isFree() const;
 		virtual void linkToElement(Element *) {}
@@ -171,7 +172,7 @@ class Element : public QetGraphicsItem
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 		void setSize(int, int);
-	
+
 	private:
 		void drawSelection(
 				QPainter *,
@@ -212,25 +213,25 @@ class Element : public QetGraphicsItem
 		// to be use in the function element::fromXml
 		QHash <DynamicElementTextItem *, QPointF>
 		m_converted_text_from_xml_description;
-		
+
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
 		QList <QUuid>     tmp_uuids_link;
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;
-		
+
 			//ATTRIBUTES related to informations
 		DiagramContext m_element_informations, m_kind_informations;
 		autonum::sequentialNumbers m_autoNum_seq;
 		bool m_freeze_label = false;
 		QString m_F_str;
-		
+
 		ElementsLocation m_location;
 		NamesList m_names;
 		QList <Terminal *> m_terminals;
 		const QPicture m_picture;
 		const QPicture m_low_zoom_picture;
-		
+
 	private:
 		bool m_must_highlight = false;
 		QSize   dimensions;

@@ -20,6 +20,7 @@
 
 #include <QSet>
 #include <QPointF>
+#include <QHash>
 
 class QGraphicsItem;
 class DiagramTextItem;
@@ -37,16 +38,16 @@ class ElementTextsMover
 		ElementTextsMover();
 	private:
 		ElementTextsMover(const ElementTextsMover &);
-	
+
 	public:
 		bool isReady() const;
 		int  beginMovement(Diagram *diagram, QGraphicsItem *driver_item = nullptr);
 		void continueMovement(QGraphicsSceneMouseEvent *event);
 		void endMovement();
-		
+
 	private:
 		QString undoText() const;
-	
+
 	private:
 		bool m_movement_running = false;
 		Diagram *m_diagram = nullptr;

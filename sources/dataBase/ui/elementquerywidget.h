@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QButtonGroup>
+#include <QHash>
 
 class QListWidgetItem;
 
