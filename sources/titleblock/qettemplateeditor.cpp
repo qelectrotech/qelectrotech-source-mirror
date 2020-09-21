@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -40,7 +40,7 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 {
 	setWindowIcon(QET::Icons::QETLogo);
 	setAttribute(Qt::WA_DeleteOnClose);
-	
+
 	initWidgets();
 	initActions();
 	initMenus();
@@ -74,7 +74,7 @@ bool QETTitleBlockTemplateEditor::isEditing(const QString &filepath)
 	} else {
 		current_filepath = QETApp::realPath(location_.toString());
 	}
-	
+
 	return(
 		QET::compareCanonicalFilePaths(
 			current_filepath,
@@ -166,7 +166,7 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation()
 {
 	// this method does not work for templates edited from the filesystem
 	if (opened_from_file_) return;
-	
+
 	QString proposed_name;
 	if (location_.name().isEmpty()) {
 		proposed_name = tr("nouveau_modele",
@@ -174,7 +174,7 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation()
 	} else {
 		proposed_name = QString("%1_copy").arg(location_.name());
 	}
-	
+
 	bool accepted = false;
 	QString new_template_name = QInputDialog::getText(
 		this,
@@ -212,7 +212,7 @@ bool QETTitleBlockTemplateEditor::edit(
 		/// TODO The TBT does not exist, manage error
 		return(false);
 	}
-	
+
 	opened_from_file_ = false;
 	location_ = location;
 	setReadOnly(location.isReadOnly());
@@ -231,7 +231,7 @@ bool QETTitleBlockTemplateEditor::edit(
 {
 		// we require a project we will rattach templates to
 	if (!project) return(false);
-	
+
 		// the template name may be empty to create a new one
 	const TitleBlockTemplate *tb_template_orig;
 	if (template_name.isEmpty())
@@ -244,12 +244,12 @@ bool QETTitleBlockTemplateEditor::edit(
 	{
 		tb_template_orig = project->embeddedTitleBlockTemplatesCollection()->getTemplate(template_name);
 	}
-	
+
 	if (!tb_template_orig) {
 		/// TODO The TBT does not exist, manage error
 		return(false);
 	}
-	
+
 	opened_from_file_ = false;
 	location_.setParentCollection(project -> embeddedTitleBlockTemplatesCollection());
 	location_.setName(template_name);
@@ -270,13 +270,13 @@ bool QETTitleBlockTemplateEditor::edit(const QString &file_path)
 		/// TODO the file opening failed, warn the user?
 		return(false);
 	}
-	
+
 	bool editing = edit(tbt);
 	if (!editing) {
 		/// TODO the file editing failed, warn the user?
 		return(false);
 	}
-	
+
 	QFileInfo file_path_info(file_path);
 	filepath_ = file_path;
 	opened_from_file_ = true;
@@ -318,20 +318,20 @@ void QETTitleBlockTemplateEditor::editLogos()
 		if (!logo_manager_) {
 			initLogoManager();
 		}
-		
+
 		logo_manager_ -> layout() -> setContentsMargins(0, 0, 0, 0);
 		QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
-		
+
 		QVBoxLayout *vlayout0 = new QVBoxLayout();
 		vlayout0 -> addWidget(logo_manager_);
 		vlayout0 -> addWidget(buttons);
-		
+
 		QDialog d(this);
 		d.setWindowTitle(logo_manager_ -> windowTitle());
 		d.setLayout(vlayout0);
 		connect(buttons, SIGNAL(rejected()), &d, SLOT(reject()));
 		d.exec();
-		
+
 		// prevent the logo manager from being deleted along with the dialog
 		logo_manager_ -> setParent(this);
 	}
@@ -374,10 +374,10 @@ void QETTitleBlockTemplateEditor::initActions()
 	add_col_        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une &colonne",    "menu entry"), this);
 	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Fusionner les cellules",      "menu entry"), this);
 	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&Séparer les cellules",     "menu entry"), this);
-	
+
 	undo_ -> setIcon(QET::Icons::EditUndo);
 	redo_ -> setIcon(QET::Icons::EditRedo);
-	
+
 	new_              -> setShortcut(QKeySequence::New);
 	open_             -> setShortcut(QKeySequence::Open);
 	open_from_file_   -> setShortcut(tr("Ctrl+Shift+O", "shortcut to open a template from a file"));
@@ -397,7 +397,7 @@ void QETTitleBlockTemplateEditor::initActions()
 	zoom_out_         -> setShortcut(QKeySequence::ZoomOut);
 	zoom_fit_         -> setShortcut(QKeySequence(tr("Ctrl+9", "shortcut to enable fit zoom")));
 	zoom_reset_       -> setShortcut(QKeySequence(tr("Ctrl+0", "shortcut to reset zoom")));
-	
+
 	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
 	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));
 	connect(open_from_file_,  SIGNAL(triggered()), this,     SLOT(openFromFile()));
@@ -428,7 +428,7 @@ void QETTitleBlockTemplateEditor::initMenus()
 	file_menu_    = new QMenu(tr("&Fichier", "menu title"), this);
 	edit_menu_    = new QMenu(tr("&Édition", "menu title"), this);
 	display_menu_ = new QMenu(tr("Afficha&ge", "menu title"), this);
-	
+
 	file_menu_    -> addAction(new_);
 	file_menu_    -> addAction(open_);
 	file_menu_    -> addAction(open_from_file_);
@@ -437,7 +437,7 @@ void QETTitleBlockTemplateEditor::initMenus()
 	file_menu_    -> addAction(save_as_file_);
 	file_menu_    -> addSeparator();
 	file_menu_    -> addAction(quit_);
-	
+
 	edit_menu_   -> addAction(undo_);
 	edit_menu_   -> addAction(redo_);
 	edit_menu_   -> addSeparator();
@@ -456,7 +456,7 @@ void QETTitleBlockTemplateEditor::initMenus()
 	display_menu_ -> addAction(zoom_out_);
 	display_menu_ -> addAction(zoom_fit_);
 	display_menu_ -> addAction(zoom_reset_);
-	
+
 	insertMenu(settings_menu_, file_menu_);
 	insertMenu(settings_menu_, edit_menu_);
 	insertMenu(settings_menu_, display_menu_);
@@ -474,7 +474,7 @@ void QETTitleBlockTemplateEditor::initToolbars()
 	main_toolbar -> addAction(save_);
 	main_toolbar -> addAction(save_as_);
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
-	
+
 	QToolBar *edit_toolbar = new QToolBar(tr("Édition", "toolbar title"), this);
 	edit_toolbar -> setObjectName("tbt_edit_toolbar");
 	edit_toolbar -> addAction(undo_);
@@ -483,7 +483,7 @@ void QETTitleBlockTemplateEditor::initToolbars()
 	edit_toolbar -> addAction(merge_cells_);
 	edit_toolbar -> addAction(split_cell_);
 	addToolBar(Qt::TopToolBarArea, edit_toolbar);
-	
+
 	QToolBar *display_toolbar = new QToolBar(tr("Affichage", "toolbar title"), this);
 	display_toolbar -> setObjectName("tbt_display_toolbar");
 	display_toolbar -> addAction(zoom_in_);
@@ -499,19 +499,22 @@ void QETTitleBlockTemplateEditor::initToolbars()
 void QETTitleBlockTemplateEditor::initWidgets()
 {
 	QSettings settings;
-	
+
 	// undo list on the right
 	undo_stack_ = new QUndoStack(this);
 	undo_view_ = new QUndoView(undo_stack_);
 	undo_view_ -> setEmptyLabel(tr("Aucune modification", "label displayed in the undo list when empty"));
-	
+
 	undo_dock_widget_ = new QDockWidget(tr("Annulations", "dock title"));
 	undo_dock_widget_ -> setObjectName("tbt_undo_dock");
-	undo_dock_widget_ -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	undo_dock_widget_ -> setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
 	undo_dock_widget_ -> setWidget(undo_view_);
 	undo_dock_widget_ -> setMinimumWidth(290);
 	addDockWidget(Qt::RightDockWidgetArea, undo_dock_widget_);
-	
+
 	// WYSIWYG editor as central widget
 	template_edition_area_scene_ = new QGraphicsScene(this);
 	template_edition_area_view_  = new TitleBlockTemplateView(template_edition_area_scene_);
@@ -521,18 +524,21 @@ void QETTitleBlockTemplateEditor::initWidgets()
 		template_edition_area_view_ -> setPreviewWidth(conf_preview_width);
 	}
 	setCentralWidget(template_edition_area_view_);
-	
+
 	// cell edition widget at the bottom
 	template_cell_editor_widget_ = new TitleBlockTemplateCellWidget(tb_template_);
 	template_cell_editor_dock_widget_ = new QDockWidget(tr("Propriétés de la cellule", "dock title"), this);
 	template_cell_editor_dock_widget_ -> setObjectName("tbt_celleditor_dock");
-	template_cell_editor_dock_widget_ -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	template_cell_editor_dock_widget_ -> setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
 	template_cell_editor_dock_widget_ -> setWidget(template_cell_editor_widget_);
 	template_cell_editor_dock_widget_ -> setMinimumWidth(180);
 	template_cell_editor_dock_widget_ -> setMinimumHeight(250);
 	addDockWidget(Qt::BottomDockWidgetArea, template_cell_editor_dock_widget_);
 	template_cell_editor_widget_ -> setVisible(false);
-	
+
 	connect(
 		template_edition_area_view_,
 		SIGNAL(selectedCellsChanged(QList<TitleBlockCell *>)),
@@ -592,7 +598,7 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const
 	} else {
 		titleblock_title = location_.name();
 	}
-	
+
 	// if a (file)name has been added, also add a "[Changed]" tag if needed
 	if (!titleblock_title.isEmpty()) {
 		QString tag;
@@ -609,7 +615,7 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const
 			)
 		).arg(titleblock_title).arg(tag);
 	}
-	
+
 	return(titleblock_title);
 }
 
@@ -620,11 +626,11 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const
 void QETTitleBlockTemplateEditor::readSettings()
 {
 	QSettings settings;
-	
+
 	// window size and position
 	QVariant geometry = settings.value("titleblocktemplateeditor/geometry");
 	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
-	
+
 	// window state (toolbars, docks...)
 	QVariant state = settings.value("titleblocktemplateeditor/state");
 	if (state.isValid()) restoreState(state.toByteArray());
@@ -698,10 +704,10 @@ void QETTitleBlockTemplateEditor::updateEditorTitle()
 			"titleblock template editor: base window title"
 		)
 	);
-	
+
 	// get the currently edited template (file)name
 	QString titleblock_title = currentlyEditedTitle();
-	
+
 	// generate the final window title
 	QString title;
 	if (titleblock_title.isEmpty()) {
@@ -724,7 +730,7 @@ void QETTitleBlockTemplateEditor::updateEditorTitle()
 void QETTitleBlockTemplateEditor::updateActions()
 {
 	save_ -> setEnabled(!read_only_);
-	
+
 	bool can_merge = true;
 	bool can_split = true;
 	int count = 0;
@@ -748,15 +754,15 @@ void QETTitleBlockTemplateEditor::updateActions()
 bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &location) {
 	TitleBlockTemplatesCollection *collection = location.parentCollection();
 	if (!collection) return(false);
-	
+
 	QDomDocument doc;
 	QDomElement elmt = doc.createElement("root");
 	tb_template_ -> saveToXmlElement(elmt);
 	elmt.setAttribute("name", location.name());
 	doc.appendChild(elmt);
-	
+
 	collection -> setTemplateXmlDescription(location.name(), elmt);
-	
+
 	opened_from_file_ = false;
 	location_ = location;
 	undo_stack_ -> setClean();
@@ -772,7 +778,7 @@ bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 bool QETTitleBlockTemplateEditor::saveAs(const QString &filepath) {
 	bool saving = tb_template_ -> saveToXmlFile(filepath);
 	if (!saving) return(false);
-	
+
 	opened_from_file_ = true;
 	filepath_ = filepath;
 	undo_stack_ -> setClean();
@@ -805,7 +811,7 @@ void QETTitleBlockTemplateEditor::openFromFile()
 	QString initial_dir = filepath_.isEmpty()
 			? QETApp::customTitleBlockTemplatesDir()
 			: QDir(filepath_).absolutePath();
-	
+
 	// ask the user to choose a filepath
 	QString user_filepath = QFileDialog::getOpenFileName(
 		this,
@@ -819,8 +825,8 @@ void QETTitleBlockTemplateEditor::openFromFile()
 			" - %1 is the .titleblock extension"
 		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
 	);
-	
-	
+
+
 	if (!user_filepath.isEmpty()) QETApp::instance() -> openTitleBlockTemplate(user_filepath);
 }
 
@@ -871,7 +877,7 @@ bool QETTitleBlockTemplateEditor::saveAsFile()
 	QString initial_dir = filepath_.isEmpty()
 			? QETApp::customTitleBlockTemplatesDir()
 			: QDir(filepath_).absolutePath();
-	
+
 	// ask the user to choose a target file
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
@@ -882,16 +888,16 @@ bool QETTitleBlockTemplateEditor::saveAsFile()
 			"filetypes allowed when saving a title block template file - %1 is the .titleblock extension"
 		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
 	);
-	
+
 	// if no name was entered, return false
 	if (filepath.isEmpty()) return(false);
-	
+
 	// if the name does not end with ".titleblock", add it
 	if (!filepath.endsWith(".titleblock", Qt::CaseInsensitive)) filepath += ".titleblock";
-	
+
 	// attempts to save the file
 	bool saving = saveAs(filepath);
-	
+
 	// retourne un booleen representatif de la reussite de l'enregistrement
 	return(saving);
 }
@@ -932,18 +938,18 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 	}
 	QDialogButtonBox *buttons = new QDialogButtonBox(
 				QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	
+
 	QVBoxLayout *dialog_layout = new QVBoxLayout();
 	dialog_layout -> addWidget(widget);
 	dialog_layout -> addWidget(buttons);
-	
+
 	QDialog dialog;
 	dialog.setWindowTitle(title);
 	dialog.setLayout(dialog_layout);
-	
+
 	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
-	
+
 	if (dialog.exec() == QDialog::Accepted) {
 		return(widget -> location());
 	}
@@ -978,7 +984,7 @@ void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(
 void QETTitleBlockTemplateEditor::editTemplateInformation()
 {
 	if (!tb_template_) return;
-	
+
 	QDialog dialog_author(this);
 	dialog_author.setModal(true);
 #ifdef Q_OS_MACOS
@@ -987,20 +993,20 @@ void QETTitleBlockTemplateEditor::editTemplateInformation()
 	dialog_author.setMinimumSize(400, 260);
 	dialog_author.setWindowTitle(tr("Éditer les informations complémentaires", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
-	
+
 	// explanation label
 	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile."));
 	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	information_label -> setWordWrap(true);
 	dialog_layout -> addWidget(information_label);
-	
+
 	// add a QTextEdit to the dialog
 	QTextEdit *text_field = new QTextEdit();
 	text_field -> setAcceptRichText(false);
 	text_field -> setPlainText(tb_template_ -> information());
 	text_field -> setReadOnly(read_only_);
 	dialog_layout -> addWidget(text_field);
-	
+
 	// add two buttons to the dialog
 	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(
 				read_only_
@@ -1012,7 +1018,7 @@ void QETTitleBlockTemplateEditor::editTemplateInformation()
 		&dialog_author, SLOT(accept()));
 	connect(dialog_buttons, SIGNAL(rejected()),
 		&dialog_author, SLOT(reject()));
-	
+
 	// run the dialog
 	if (dialog_author.exec() == QDialog::Accepted && !read_only_) {
 		QString new_info = text_field -> toPlainText().remove(QChar(13)); // CR-less text
