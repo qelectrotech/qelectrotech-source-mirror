@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -48,7 +48,7 @@
 ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	// initalise le panel d'elements
 	elements_panel = new ElementsPanel(this);
-	
+
 	// initialise les actions
 	open_directory           = new QAction(QET::Icons::FolderOpen,             tr("Ouvrir le dossier correspondant"),     this);
 	copy_path                = new QAction(QET::Icons::IC_CopyFile,            tr("Copier le chemin"),                    this);
@@ -67,13 +67,13 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
 
- 
+
 	prj_del_diagram -> setShortcut(QKeySequence(Qt::Key_Delete));
 	prj_move_diagram_up -> setShortcut(QKeySequence(Qt::Key_F3));
 	prj_move_diagram_down -> setShortcut(QKeySequence(Qt::Key_F4));
 	prj_move_diagram_top -> setShortcut(QKeySequence(Qt::Key_F5));
-	
-	
+
+
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	filter_textfield = new QLineEdit(this);
 	filter_textfield -> setClearButtonEnabled(true);
@@ -81,7 +81,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 
 
 	context_menu = new QMenu(this);
-	
+
 	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
 	connect(copy_path,             SIGNAL(triggered()), this,           SLOT(copyPathForSelectedItem()));
 	connect(prj_activate,          SIGNAL(triggered()), this,           SLOT(activateProject()));
@@ -98,9 +98,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
 	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
 	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
-	
+
 	connect(filter_textfield,      SIGNAL(textChanged(const QString &)), this,             SLOT(filterEdited(const QString &)));
-	
+
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
 	connect(elements_panel,        SIGNAL(requestForDiagram(Diagram*)),                              this, SIGNAL(requestForDiagram(Diagram*)));
@@ -110,10 +110,10 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 		QETApp::instance(),
 		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
 	);
-	
+
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
-	vlayout -> setMargin(0);
+	vlayout -> setContentsMargins(0,0,0,0);
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(filter_textfield);
 	vlayout -> addWidget(elements_panel);
@@ -290,7 +290,7 @@ void ElementsPanelWidget::addTitleBlockTemplate()
 {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (!current_item) return;
-	
+
 	if (current_item -> type() == QET::TitleBlockTemplatesCollection) {
 		QETApp::instance() -> openTitleBlockTemplate(
 			elements_panel -> templateLocationForItem(current_item)
@@ -332,18 +332,18 @@ void ElementsPanelWidget::updateButtons()
 {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	int current_type = elements_panel -> currentItemType();
-	
+
 	if (current_type == QET::Project) {
 		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
 		prj_add_diagram -> setEnabled(is_writable);
 	} else if (current_type == QET::Diagram) {
 		Diagram    *selected_diagram         = elements_panel -> selectedDiagram();
 		QETProject *selected_diagram_project = selected_diagram -> project();
-		
+
 		bool is_writable           = !(selected_diagram_project -> isReadOnly());
 		int project_diagrams_count = selected_diagram_project -> diagrams().count();
 		int diagram_position       = selected_diagram_project -> diagrams().indexOf(selected_diagram);
-		
+
 		prj_del_diagram       -> setEnabled(is_writable);
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
@@ -373,17 +373,17 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	// recupere l'item concerne par l'evenement ainsi que son chemin
 	QTreeWidgetItem *item = elements_panel -> itemAt(pos);
 	if (!item) return;
-	
+
 	updateButtons();
 	context_menu -> clear();
-	
+
 	QString dir_path = elements_panel -> dirPathForItem(item);
 	if (!dir_path.isEmpty()) {
 		context_menu -> addAction(open_directory);
 		context_menu -> addAction(copy_path);
 		context_menu -> addSeparator();
 	}
-	
+
 	switch(item -> type()) {
 		case QET::Project:
 			context_menu -> addAction(prj_activate);
@@ -408,7 +408,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			context_menu -> addAction(tbt_remove);
 			break;
 	}
-	
+
 	// affiche le menu
 	if (!context_menu -> isEmpty()) {
 		context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos + QPoint(2, 2))));
