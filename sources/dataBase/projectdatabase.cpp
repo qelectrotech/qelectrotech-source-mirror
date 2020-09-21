@@ -24,6 +24,7 @@
 #include "diagramposition.h"
 
 #include <QSqlError>
+#include <QLocale>
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
 #include <QSqlDriver>
@@ -161,7 +162,11 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	for (auto key : QETApp::diagramInfoKeys())
 	{
 		if (key == "date") {
-			m_insert_diagram_info_query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+			m_insert_diagram_info_query.bindValue(
+				":date",
+				QLocale::system().toString(
+					infos.value("date").toDate(),
+					QLocale::ShortFormat));
 		} else {
 			auto value = infos.value(key);
 			auto bind = key.prepend(":");
@@ -419,7 +424,11 @@ void projectDataBase::populateDiagramInfoTable()
 		for (auto key : QETApp::diagramInfoKeys())
 		{
 			if (key == "date") {
-				m_insert_diagram_info_query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+				m_insert_diagram_info_query.bindValue(
+					":date",
+					QLocale::system().toString(
+						infos.value("date").toDate(),
+						QLocale::ShortFormat));
 			} else {
 				auto value = infos.value(key);
 				auto bind = key.prepend(":");

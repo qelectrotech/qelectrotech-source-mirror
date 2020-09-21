@@ -17,6 +17,8 @@
 */
 #include <QPainter>
 #include <utility>
+#include <QLocale>
+
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
 #include "bordertitleblock.h"
@@ -934,9 +936,12 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	}
 
 	// ... overridden by the historical and/or dynamically generated fields
+	QLocale var;
+	var.dateFormat(QLocale::ShortFormat);
 	context.addValue("author",      btb_author_);
-	context.addValue("date",        btb_date_.toString(
-				 Qt::SystemLocaleShortDate));
+	context.addValue(
+		"date",
+		QLocale::system().toString(btb_date_, QLocale::ShortFormat));
 	context.addValue("title",       btb_title_);
 	context.addValue("filename",    btb_filename_);
 	context.addValue("plant",     btb_plant_);

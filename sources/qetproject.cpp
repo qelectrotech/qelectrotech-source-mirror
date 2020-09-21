@@ -1,17 +1,17 @@
 ﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -279,7 +279,7 @@ void QETProject::setFilePath(const QString &filepath)
 	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
 
 	m_file_path = filepath;
-	
+
 	QFileInfo fi(m_file_path);
 	if (fi.isWritable()) {
 		setReadOnly(false);
@@ -290,9 +290,9 @@ void QETProject::setFilePath(const QString &filepath)
 	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
-	
-	
-	
+
+
+
 	emit(projectFilePathChanged(this, m_file_path));
 	emit(projectInformationsChanged(this));
 	updateDiagramsFolioData();
@@ -315,7 +315,7 @@ QString QETProject::currentDir() const
 }
 
 /**
-	
+
 	@return une chaine de caractere du type "Projet titre du projet".
 	Si le projet n'a pas de titre, le nom du fichier est utilise.
 	Si le projet n'est pas associe a un fichier, cette methode retourne "Projet
@@ -326,7 +326,7 @@ QString QETProject::currentDir() const
 QString QETProject::pathNameTitle() const
 {
 	QString final_title;
-	
+
 	if (!project_title_.isEmpty()) {
 		final_title = QString(
 			tr(
@@ -349,7 +349,7 @@ QString QETProject::pathNameTitle() const
 			)
 		);
 	}
-	
+
 	if (isReadOnly()) {
 		final_title = QString(
 			tr(
@@ -366,7 +366,7 @@ QString QETProject::pathNameTitle() const
 			)
 		).arg(final_title);
 	}
-	
+
 	return(final_title);
 }
 
@@ -394,10 +394,10 @@ qreal QETProject::declaredQElectroTechVersion()
 void QETProject::setTitle(const QString &title) {
 	// ne fait rien si le projet est en lecture seule
 	if (isReadOnly()) return;
-	
+
 	// ne fait rien si le titre du projet n'est pas change par l'appel de cette methode
 	if (project_title_ == title) return;
-	
+
 	project_title_ = title;
 	emit(projectTitleChanged(this, project_title_));
 	emit(projectInformationsChanged(this));
@@ -487,7 +487,7 @@ void QETProject::setDefaultReportProperties(const QString &properties)
 {
 	QString old = m_default_report_properties;
 	m_default_report_properties = properties;
-	
+
 	emit reportPropertiesChanged(old, properties);
 }
 
@@ -856,7 +856,7 @@ QDomDocument QETProject::toXml()
 	project_root.setAttribute("version", QET::version);
 	project_root.setAttribute("title", project_title_);
 	xml_doc.appendChild(project_root);
-	
+
 	// titleblock templates, if any
 	if (m_titleblocks_collection.templates().count()) {
 		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
@@ -866,19 +866,19 @@ QDomDocument QETProject::toXml()
 		}
 		project_root.appendChild(titleblocktemplates_elmt);
 	}
-	
+
 	// project-wide properties
 	QDomElement project_properties = xml_doc.createElement("properties");
 	writeProjectPropertiesXml(project_properties);
 	project_root.appendChild(project_properties);
-	
+
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
 	writeDefaultPropertiesXml(new_diagrams_properties);
 	project_root.appendChild(new_diagrams_properties);
-	
+
 	// schemas
-	
+
 	qDebug() << "Export XML de" << m_diagrams_list.count() << "schemas";
 	int order_num = 1;
 	const QList<Diagram *> diagrams_list = m_diagrams_list;
@@ -895,10 +895,10 @@ QDomDocument QETProject::toXml()
 		QDomNode appended_diagram = project_root.appendChild(xml_node);
 		appended_diagram.toElement().setAttribute("order", order_num ++);
 	}
-	
+
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
-	
+
 	return(xml_doc);
 }
 
@@ -932,16 +932,20 @@ QETResult QETProject::write()
 	QString error_message;
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
 		return(error_message);
-	
+
 	//title block variables should be updated after file save dialog is confirmed, before file is saved.
-	m_project_properties.addValue("saveddate", QDate::currentDate().toString(Qt::SystemLocaleShortDate));
+	m_project_properties.addValue(
+				"saveddate",
+				QDate::currentDate().toString(
+					QLocale::system().toString(
+						QLocale::ShortFormat)));
 	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
- 	
- 	emit(projectInformationsChanged(this));
- 	updateDiagramsFolioData();
- 	
+
+	emit(projectInformationsChanged(this));
+	updateDiagramsFolioData();
+
 	setModified(false);
 	return(QETResult());
 }
@@ -981,15 +985,15 @@ bool QETProject::isEmpty() const
 {
 	// si le projet a un titre, on considere qu'il n'est pas vide
 	if (!project_title_.isEmpty()) return(false);
-	
+
 	//@TODO check if the embedded element collection is empty
-	
+
 	// compte le nombre de schemas non vides
 	int pertinent_diagrams = 0;
 	foreach(Diagram *diagram, m_diagrams_list) {
 		if (!diagram -> isEmpty()) ++ pertinent_diagrams;
 	}
-	
+
 	return(pertinent_diagrams > 0);
 }
 
@@ -1089,13 +1093,13 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	Integrate a title block template into this project.
 	@param src_tbt The location of the title block template
 	to be integrated into this project
-	@param handler 
+	@param handler
 	@return the name of the template after integration,
 	or an empty QString if a problem occurred.
 */
 QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation &src_tbt, MoveTitleBlockTemplatesHandler *handler) {
 	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &m_titleblocks_collection);
-	
+
 	// check whether a TBT having the same name already exists within this project
 	QString target_name = dst_tbt.name();
 	while (m_titleblocks_collection.templates().contains(target_name))
@@ -1113,7 +1117,7 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 			return(target_name);
 		}
 	}
-	
+
 	if (!m_titleblocks_collection.setTemplateXmlDescription(target_name, src_tbt.getTemplateXmlDescription()))
 	{
 		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'intégration du modèle.", "error message"));
@@ -1164,7 +1168,7 @@ QList<ElementsLocation> QETProject::unusedElements() const
 bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
 	// a diagram can only use a title block template embedded wihtin its parent project
 	if (location.parentProject() != this) return(false);
-	
+
 	foreach (Diagram *diagram, diagrams()) {
 		if (diagram -> usesTitleBlockTemplate(location.name())) {
 			return(true);
@@ -1184,9 +1188,9 @@ Diagram *QETProject::addNewDiagram(int pos)
 	if (isReadOnly()) {
 		return(nullptr);
 	}
-	
+
 	Diagram *diagram = new Diagram(this);
-	
+
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
@@ -1214,7 +1218,7 @@ void QETProject::removeDiagram(Diagram *diagram)
 		emit(diagramRemoved(this, diagram));
 		diagram->deleteLater();
 	}
-	
+
 	updateDiagramsFolioData();
 }
 
@@ -1228,10 +1232,10 @@ void QETProject::removeDiagram(Diagram *diagram)
 */
 void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	if (old_index < 0 || new_index < 0) return;
-	
+
 	int diagram_max_index = m_diagrams_list.size() - 1;
 	if (old_index > diagram_max_index || new_index > diagram_max_index) return;
-	
+
 	m_diagrams_list.move(old_index, new_index);
 	updateDiagramsFolioData();
 	setModified(true);
@@ -1258,7 +1262,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 {
 	QDomElement root_elmt = xml_project.documentElement();
 	m_state = ProjectParsingRunning;
-	
+
 	//The roots of the xml document must be a "project" element
 	if (root_elmt.tagName() == "project")
 	{
@@ -1282,7 +1286,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   "message box content"),
 							  QMessageBox::Open | QMessageBox::Cancel
 							  );
-				
+
 				if (ret == QMessageBox::Cancel)
 				{
 					m_state = FileOpenDiscard;
@@ -1296,7 +1300,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	{
 		m_state = ProjectParsingFailed;
 	}
-	
+
 	m_data_base.blockSignals(true);
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
@@ -1310,7 +1314,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readDiagramsXml(xml_project);
 	m_data_base.blockSignals(false);
 	m_data_base.updateDB();
-	
+
 	m_state = Ok;
 }
 
@@ -1336,18 +1340,18 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 					  "Création des folios"
 					  "</p>"));
 	}
-	
+
 	//Search the diagrams in the project
 	QDomNodeList diagram_nodes = xml_project.elementsByTagName("diagram");
-	
+
 	if(dlgWaiting)
 		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
-	
+
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
 		if(dlgWaiting)
 			dlgWaiting->setProgressBar(i+1);
-		
+
 		if (diagram_nodes.at(i).isElement())
 		{
 			QDomElement diagram_xml_element = diagram_nodes
@@ -1543,17 +1547,17 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 {
 	QDomDocument xml_document = xml_element.ownerDocument();
-	
+
 	// export size of border
 	QDomElement border_elmt = xml_document.createElement("border");
 	default_border_properties_.toXml(border_elmt);
 	xml_element.appendChild(border_elmt);
-	
+
 	// export content of titleblock
 	QDomElement titleblock_elmt = xml_document.createElement("inset");
 	default_titleblock_properties_.toXml(titleblock_elmt);
 	xml_element.appendChild(titleblock_elmt);
-	
+
 	// exporte default conductor
 	QDomElement conductor_elmt = xml_document.createElement("conductors");
 	default_conductor_properties_.toXml(conductor_elmt);
@@ -1728,7 +1732,7 @@ bool QETProject::projectWasModified()
 		 !m_undo_stack -> isClean()       ||
 		 m_titleblocks_collection.templates().count() )
 		return(true);
-	
+
 	else
 		return(false);
 }
@@ -1740,19 +1744,19 @@ bool QETProject::projectWasModified()
 void QETProject::updateDiagramsFolioData()
 {
 	int total_folio = m_diagrams_list.count();
-	
+
 	DiagramContext project_wide_properties = m_project_properties;
 	project_wide_properties.addValue("projecttitle", title());
 	project_wide_properties.addValue("projectpath", filePath());
 	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());
-	
+
 	for (int i = 0 ; i < total_folio ; ++ i)
 	{
 		QString autopagenum = m_diagrams_list[i]->border_and_titleblock.autoPageNum();
 		NumerotationContext nC = folioAutoNum(autopagenum);
 		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
-		
-		if ((m_diagrams_list[i]->border_and_titleblock.folio().contains("%autonum")) && 
+
+		if ((m_diagrams_list[i]->border_and_titleblock.folio().contains("%autonum")) &&
 			(!autopagenum.isNull()))
 		{
 			m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
@@ -1761,12 +1765,12 @@ void QETProject::updateDiagramsFolioData()
 		else {
 			m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nullptr, project_wide_properties);
 		}
-		
+
 		if (i > 0)
 		{
 			m_diagrams_list.at(i)->border_and_titleblock.setPreviousFolioNum(m_diagrams_list.at(i-1)->border_and_titleblock.finalfolio());
 			m_diagrams_list.at(i-1)->border_and_titleblock.setNextFolioNum(m_diagrams_list.at(i)->border_and_titleblock.finalfolio());
-			
+
 			if (i == total_folio-1) {
 				m_diagrams_list.at(i)->border_and_titleblock.setNextFolioNum(QString());
 			}
@@ -1775,7 +1779,7 @@ void QETProject::updateDiagramsFolioData()
 			m_diagrams_list.at(i)->border_and_titleblock.setPreviousFolioNum(QString());
 		}
 	}
-	
+
 	for (Diagram *d : m_diagrams_list) {
 		d->update();
 	}
@@ -1788,7 +1792,7 @@ void QETProject::updateDiagramsFolioData()
 */
 void QETProject::updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
 	Q_UNUSED(collection)
-	
+
 	foreach (Diagram *diagram, m_diagrams_list) {
 		diagram -> titleBlockTemplateChanged(template_name);
 	}
@@ -1801,7 +1805,7 @@ void QETProject::updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 */
 void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
 	Q_UNUSED(collection)
-	
+
 	// warn diagrams that the given template is about to be removed
 	foreach (Diagram *diagram, m_diagrams_list) {
 		diagram -> titleBlockTemplateRemoved(template_name);
