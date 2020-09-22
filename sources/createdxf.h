@@ -39,6 +39,13 @@ class Createdxf
 				double,
 				double,
 				int);
+
+        static void drawCircle(
+                const QString& ,
+                QPointF,
+                double,
+                int );
+
 		static void drawArc(
 				const QString&,
 				double x,
@@ -61,6 +68,15 @@ class Createdxf
 				qreal hotspot_y,
 				qreal rotation_angle,
 				const int &colorcode);
+
+        static void drawArcEllipse(
+                const QString &file_path,
+                QRectF rect,
+                qreal startAngle,
+                qreal spanAngle,
+                QPointF hotspot,
+                qreal rotation_angle,
+                const int &colorcode);
 
 		static void drawEllipse (const QString &filepath,
 					 const QRectF &rect,
@@ -101,6 +117,14 @@ class Createdxf
 				double,double,
 				double,
 				double,
+                int,
+                double xScale=1.0);
+        static void drawText(
+                const QString&,
+                const QString&,
+                QPointF,
+                double,
+                double,
                 int,
                 double xScale=1.0);
 		static void drawTextAligned(
