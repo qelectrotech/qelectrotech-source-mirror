@@ -33,7 +33,6 @@ Createdxf::Createdxf()
 {
 }
 
-
 Createdxf::~Createdxf()
 {
 }
@@ -256,26 +255,6 @@ void Createdxf::dxfEnd(const QString& fileName)
 }
 
 /**
-    @brief Createdxf::drawCircle
-    draw circle in qt format
-    @param fileName
-    @param center
-    @param radius
-    @param colour
-*/
-void Createdxf::drawCircle(
-        const QString& fileName,
-        QPointF centre,
-        double radius,
-        int colour)
-{
-    qreal x = centre.x() * xScale;
-    qreal y = sheetHeight - centre.y() * yScale;
-    qreal r = radius * xScale;
-    drawCircle(fileName,r,x,y,colour);
-}
-
-/**
 	@brief Createdxf::drawCircle
 	draw circle in dxf format
 	@param fileName
@@ -465,25 +444,6 @@ int Createdxf::dxfColor(QPen pen) {
     return Createdxf::dxfColor(pen.color());
 }
 
-/**
-	@brief Createdxf::drawLine
-    Convenience function to draw line
-	@param filepath
-	@param line
-	@param colorcode
-*/
-void Createdxf::drawLine(
-		const QString &filepath,
-		const QLineF &line,
-		const int &colorcode)
-{
-	drawLine(filepath, line.p1().x() * xScale,
-			 sheetHeight - (line.p1().y() * yScale),
-			 line.p2().x() * xScale,
-			 sheetHeight - (line.p2().y() * yScale),
-			 colorcode);
-}
-
 void Createdxf::drawArcEllipse(
 		const QString &file_path,
 		qreal x,
@@ -631,26 +591,7 @@ void Createdxf::drawArcEllipse(
 	}
 }
 
-/**
-	@brief Createdxf::drawEllipse
-	Conveniance function for draw ellipse
-	@param filepath
-	@param rect
-	@param colorcode
-*/
-void Createdxf::drawEllipse(
-		const QString &filepath,
-		const QRectF &rect,
-		const int &colorcode)
-{
-	drawArcEllipse(
-				filepath,
-				rect.topLeft().x() * xScale,
-				sheetHeight - (rect.topLeft().y() * yScale),
-				rect.width() * xScale,
-				rect.height() * yScale,
-				0, 360, 0, 0, 0, colorcode);
-}
+
 
 /**
 	@brief Createdxf::drawRectangle
@@ -675,45 +616,11 @@ void Createdxf::drawRectangle (
     drawPolyline(fileName,poly,colour,true);
 }
 
-static QRectF scaleRect(QRectF rect)
-{
-    QRectF ro(rect.bottomLeft().x() * Createdxf::xScale,
-                Createdxf::sheetHeight - (rect.bottomLeft().y() * Createdxf::yScale),
-                rect.width() * Createdxf::xScale,
-                rect.height() * Createdxf::yScale);
-    return ro;
-}
 
-/**
-	@brief Createdxf::drawRectangle
-	Convenience function for draw rectangle
-	@param filepath
-	@param rect
-	@param colorcode
-*/
-void Createdxf::drawRectangle(
-		const QString &filepath,
-		const QRectF &rect,
-		const int &colorcode) {
-    //QPolygonF poly(scaleRect(rect));
-    QPolygonF poly(rect);
-    drawPolyline(filepath,poly,colorcode);
-}
 
-/**
-	@brief Createdxf::drawPolygon
-	Convenience function for draw polygon
-	@param filepath
-	@param poly
-	@param colorcode
-*/
-void Createdxf::drawPolygon(
-		const QString &filepath,
-		const QPolygonF &poly,
-		const int &colorcode)
-{
-    drawPolyline(filepath,poly,colorcode);
-}
+
+
+
 /**
 	@brief Createdxf::drawArc
 	draw arc in dx format
@@ -788,7 +695,7 @@ void Createdxf::drawText(
         double height,
         double rotation,
         int colour,
-        double xScale)
+        double xScaleW)
 {
     if (!fileName.isEmpty()) {
         QFile file(fileName);
@@ -800,7 +707,7 @@ void Createdxf::drawText(
             errorFileOpen.exec();
         } else {
             QTextStream To_Dxf(&file);
-            // Draw the circle
+            // Draw the text
             To_Dxf << 0         << "\r\n";
             To_Dxf << "TEXT"    << "\r\n";
             To_Dxf << 8         << "\r\n";
@@ -816,7 +723,7 @@ void Createdxf::drawText(
             To_Dxf << 40        << "\r\n";
             To_Dxf << height    << "\r\n";    // Text Height
             To_Dxf << 41        << "\r\n";
-            To_Dxf << xScale    << "\r\n";    // X Scale
+            To_Dxf << xScaleW    << "\r\n";    // X Scale
             To_Dxf << 1         << "\r\n";
             To_Dxf << text      << "\r\n";    // Text Value
             To_Dxf << 50        << "\r\n";
@@ -840,7 +747,7 @@ void Createdxf::drawTextAligned(
 		int hAlign,
 		int vAlign,
 		double xAlign,
-		double xScale,
+        double xScaleW,
 		int colour)
 {
 	if (!fileName.isEmpty()) {
@@ -869,7 +776,7 @@ void Createdxf::drawTextAligned(
 			To_Dxf << 40        << "\r\n";
 			To_Dxf << height    << "\r\n";    // Text Height
 			To_Dxf << 41        << "\r\n";
-			To_Dxf << xScale    << "\r\n";    // X Scale
+            To_Dxf << xScaleW    << "\r\n";    // X Scale
 			To_Dxf << 1         << "\r\n";
 			To_Dxf << text      << "\r\n";    // Text Value
 			To_Dxf << 50        << "\r\n";
@@ -981,4 +888,155 @@ void Createdxf::drawPolyline(const QString &filepath,
             file.close();
         }
     }
+}
+
+/* ================================================
+ * Majority of calls above here are must be passed
+ * parameters pre=scaled to DXF units
+ * Calls below use Qt scaling, and re-scale them to DXF
+ * ================================================
+ */
+/**
+    @brief Createdxf::drawCircle
+    draw circle in qt format
+    @param fileName
+    @param center
+    @param radius
+    @param colour
+*/
+void Createdxf::drawCircle(
+        const QString& fileName,
+        QPointF centre,
+        double radius,
+        int colour)
+{
+    qreal x = centre.x() * xScale;
+    qreal y = sheetHeight - centre.y() * yScale;
+    qreal r = radius * xScale;
+    drawCircle(fileName,r,x,y,colour);
+}
+
+/**
+    @brief Createdxf::drawLine
+    Convenience function to draw line
+    @param filepath
+    @param line
+    @param colorcode
+*/
+void Createdxf::drawLine(
+        const QString &filepath,
+        const QLineF &line,
+        const int &colorcode)
+{
+    drawLine(filepath, line.p1().x() * xScale,
+             sheetHeight - (line.p1().y() * yScale),
+             line.p2().x() * xScale,
+             sheetHeight - (line.p2().y() * yScale),
+             colorcode);
+}
+
+/**
+    @brief Createdxf::drawEllipse
+    Conveniance function for draw ellipse
+    @param filepath
+    @param rect
+    @param colorcode
+*/
+void Createdxf::drawEllipse(
+        const QString &filepath,
+        const QRectF &rect,
+        const int &colorcode)
+{
+    drawArcEllipse(
+                filepath,
+                rect.topLeft().x() * xScale,
+                sheetHeight - (rect.topLeft().y() * yScale),
+                rect.width() * xScale,
+                rect.height() * yScale,
+                0, 360, 0, 0, 0, colorcode);
+}
+
+/**
+    @brief Createdxf::drawRectangle
+    Convenience function for draw rectangle
+    @param filepath
+    @param rect
+    @param colorcode
+*/
+void Createdxf::drawRectangle(
+        const QString &filepath,
+        const QRectF &rect,
+        const int &colorcode) {
+    //QPolygonF poly(scaleRect(rect));
+    QPolygonF poly(rect);
+    drawPolyline(filepath,poly,colorcode);
+}
+
+/**
+    @brief Createdxf::drawPolygon
+    Convenience function for draw polygon
+    @param filepath
+    @param poly
+    @param colorcode
+*/
+void Createdxf::drawPolygon(
+        const QString &filepath,
+        const QPolygonF &poly,
+        const int &colorcode)
+{
+    drawPolyline(filepath,poly,colorcode);
+}
+
+/**
+    @brief Createdxf::drawText
+    draw simple text in dxf format without any alignment specified
+    @param fileName
+    @param text
+    @param point
+    @param height
+    @param rotation
+    @param colour
+    @param xScaleW=1
+*/
+void Createdxf::drawText(
+        const QString& fileName,
+        const QString& text,
+        QPointF point,
+        double height,
+        double rotation,
+        int colour,
+        double xScaleW)
+{
+    qreal x = point.x() * xScale;
+    qreal y = sheetHeight - (point.y() * yScale);
+    drawText(fileName,text,x,y,height * yScale,rotation,colour,xScaleW);
+}
+void Createdxf::drawArcEllipse(
+        const QString &file_path,
+        QRectF rect,
+        qreal startAngle,
+        qreal spanAngle,
+        QPointF hotspot,
+        qreal rotation_angle,
+        const int &colorcode)
+{
+    qreal x = rect.x() * xScale;
+    qreal y = sheetHeight - rect.y() * yScale;
+    qreal w = rect.width() * xScale;
+    qreal h = rect.height() * yScale;
+    qreal hotspot_x = hotspot.x() * xScale;
+    qreal hotspot_y = sheetHeight - hotspot.y() * yScale;
+    drawArcEllipse(file_path,x,y,w,h,startAngle,spanAngle,hotspot_x,hotspot_y,rotation_angle,colorcode);
+}
+
+/*
+ * Utility functions
+ */
+static QRectF scaleRect(QRectF rect)
+{
+    QRectF ro(rect.bottomLeft().x() * Createdxf::xScale,
+                Createdxf::sheetHeight - (rect.bottomLeft().y() * Createdxf::yScale),
+                rect.width() * Createdxf::xScale,
+                rect.height() * Createdxf::yScale);
+    return ro;
 }

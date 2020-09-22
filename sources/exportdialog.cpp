@@ -495,9 +495,6 @@ void ExportDialog::generateDxf(
 		qreal elem_pos_x = elmt -> pos().x();
 		qreal elem_pos_y = elmt -> pos().y();// - (diagram -> margin / 2);
 
-		qreal hotspot_x = (elem_pos_x) * Createdxf::xScale;
-		qreal hotspot_y = Createdxf::sheetHeight - (elem_pos_y) * Createdxf::yScale;
-
 		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
 
 		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
@@ -506,29 +503,26 @@ void ExportDialog::generateDxf(
             if (fontSize < 0)
                 fontSize = text->font().pixelSize();
 
-            fontSize *= Createdxf::yScale;
             qreal x = elem_pos_x + text->pos().x();
             qreal y = elem_pos_y + text->pos().y();
-            x *= Createdxf::xScale;
-            y = Createdxf::sheetHeight - (y * Createdxf::yScale);
 
             qreal angle = text -> rotation() + rotation_angle;
             qreal angler = angle * M_PI/180;
             int xdir = -sin(angler);
             int ydir = -cos(angler);
 
-            QPointF transformed_point = rotation_transformed(x, y, hotspot_x, hotspot_y, rotation_angle);
+            QPointF transformed_point = rotation_transformed(x, y, elem_pos_x, elem_pos_y, -rotation_angle);
             x = transformed_point.x() - ydir * fontSize * 0.5;
-            y = transformed_point.y() + xdir * fontSize * 0.5;
+            y = transformed_point.y() - xdir * fontSize * 0.5;
             QStringList lines = text->text().split('\n');
             qreal offset = fontSize * 1.6;
             for (QString line : lines)
             {
                 if (line.size() > 0 && line != "_" ) {
-                    Createdxf::drawText(file_path, line, x, y, fontSize, 360 - angle, 0, 0.72);
+                    Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360 - angle, 0, 0.72);
                 }
                 x += offset * xdir;
-                y += offset * ydir;
+                y -= offset * ydir;
             }
 		}
 
@@ -565,15 +559,17 @@ void ExportDialog::generateDxf(
 		// Draw arcs and ellipses
 		for (QVector<qreal> arc : primitives.m_arcs)
 		{
-			if (arc.size() == 0)
-				continue;
-			qreal x = (elem_pos_x + arc.at(0)) * Createdxf::xScale;
-			qreal y = Createdxf::sheetHeight - (elem_pos_y + arc.at(1)) * Createdxf::yScale;
-			qreal w = arc.at(2) * Createdxf::xScale;
-			qreal h = arc.at(3) * Createdxf::yScale;
-			qreal startAngle = arc.at(4);
-			qreal spanAngle = arc .at(5);
-			Createdxf::drawArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle, 0);
+            if (arc.size() == 0)
+                continue;
+            qreal x = (elem_pos_x + arc.at(0));
+            qreal y = (elem_pos_y + arc.at(1));
+            qreal w = arc.at(2);
+            qreal h = arc.at(3);
+            qreal startAngle = arc.at(4);
+            qreal spanAngle = arc .at(5);
+            QRectF r(x,y,w,h);
+            QPointF hotspot(elem_pos_x,elem_pos_y);
+            Createdxf::drawArcEllipse(file_path, r, startAngle, spanAngle, hotspot, rotation_angle, 0);
 		}
         if (epw -> exportProperties().draw_terminals) {
             // Draw terminals
@@ -602,31 +598,32 @@ void ExportDialog::generateDxf(
         Createdxf::drawPolyline(file_path,poly,0);
 		//Draw conductor text item
 		ConductorTextItem *textItem = cond -> textItem();
-		if (textItem) {
-			qreal fontSize = textItem -> font().pointSizeF();
-			if (fontSize < 0)
-				fontSize = textItem -> font().pixelSize();
-            fontSize *= Createdxf::yScale;
+
+        if (textItem) {
+            qreal fontSize = textItem -> font().pointSizeF();
+            if (fontSize < 0)
+                fontSize = textItem -> font().pixelSize();
             qreal angle = textItem -> rotation();
             qreal angler = angle * M_PI/180;
             int xdir = -sin(angler);
             int ydir = -cos(angler);
 
-            qreal x = (cond->pos().x() + textItem -> pos().x()) * Createdxf::xScale
+            qreal x = (cond->pos().x() + textItem -> pos().x())
                     + xdir * fontSize * 1.8
                     - ydir * fontSize;
-            qreal y = Createdxf::sheetHeight - ((cond->pos().y() + textItem -> pos().y()) * Createdxf::yScale)
-                    + ydir * fontSize * 1.8
-                    + xdir * fontSize * 0.9;
+            qreal y = (cond->pos().y() + textItem -> pos().y())
+                    - ydir * fontSize * 1.8
+                    - xdir * fontSize * 0.9;
             QStringList lines = textItem->toPlainText().split('\n');
             qreal offset = fontSize * 1.6;
             foreach (QString line, lines) {
                 if (line.size() > 0 && line != "_" )
-                    Createdxf::drawText(file_path, line, x, y, fontSize, 360-angle, 0, 0.72 );
+                    Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, 0, 0.72 );
                 x += offset * xdir;
-                y += offset * ydir;
+                y -= offset * ydir;
             }
-		}
+        }
+
         // Draw the junctions
         QList<QPointF> junctions_list = cond->junctions();
         if (!junctions_list.isEmpty()) {
@@ -637,30 +634,38 @@ void ExportDialog::generateDxf(
 	}
 
 	//Draw text items
-	foreach(DiagramTextItem *dti, list_texts) {
-		qreal fontSize = dti -> font().pointSizeF();
-		if (fontSize < 0)
-			fontSize = dti -> font().pixelSize();
-        fontSize *= Createdxf::yScale;
+    foreach(DiagramTextItem *dti, list_texts) {
+        qreal fontSize = dti -> font().pointSizeF();
+        if (fontSize < 0)
+            fontSize = dti -> font().pixelSize();
+
         qreal angle = dti -> rotation();
+
+        QGraphicsItem *parent = dti->parentItem();
+        while (parent) {
+            angle += parent->rotation();
+            parent = parent->parentItem();
+        }
+
         qreal angler = angle * M_PI/180;
         int xdir = -sin(angler);
         int ydir = -cos(angler);
-        qreal x = (dti->scenePos().x()) * Createdxf::xScale
+        qreal x = (dti->scenePos().x())
                 + xdir * fontSize * 1.8
                 - ydir * fontSize;
-        qreal y = Createdxf::sheetHeight - (dti->scenePos().y() * Createdxf::yScale)
-                + ydir * fontSize * 1.8
-                + xdir * fontSize * 0.9;
-		QStringList lines = dti -> toPlainText().split('\n');
+        qreal y = dti->scenePos().y()
+                - ydir * fontSize * 1.8
+                - xdir * fontSize * 0.9;
+        QStringList lines = dti -> toPlainText().split('\n');
         qreal offset = fontSize * 1.6;
         foreach (QString line, lines) {
             if (line.size() > 0 && line != "_" )
-                Createdxf::drawText(file_path, line, x, y, fontSize, 360-angle, 0, 0.72 );
+                Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, 0, 0.72 );
             x += offset * xdir;
-            y += offset * ydir;
+            y -= offset * ydir;
         }
-	}
+    }
+
 	Createdxf::dxfEnd(file_path);
 
     saveReloadDiagramParameters(diagram, false);
