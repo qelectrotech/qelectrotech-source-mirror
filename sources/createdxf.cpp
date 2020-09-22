@@ -986,12 +986,10 @@ void Createdxf::drawPolygon(
         const QPolygonF &poly,
         const int &colorcode)
 {
-    qDebug() << "PolygonIsClosed: " << poly.isClosed();
     QPolygonF pg = poly;
     if(!poly.isClosed()) {
-        pg << poly.at(0);
+        pg << poly.at(0); // Close it
     }
-    qDebug() << "PolygonIsClosed: " << poly.isClosed();
     drawPolyline(filepath,pg,colorcode);
 }
 
