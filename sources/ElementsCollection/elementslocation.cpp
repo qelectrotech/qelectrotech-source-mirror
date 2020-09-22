@@ -144,9 +144,9 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const
 */
 QString ElementsLocation::baseName() const
 {
-	QRegularExpression regexp("^.*([^/]+)\\.elmt$");
-	if (regexp==QRegularExpression(m_collection_path)) {
-		return(regexp.namedCaptureGroups().at(1));
+	QRegExp regexp("^.*([^/]+)\\.elmt$");
+	if (regexp.exactMatch(m_collection_path)) {
+		return(regexp.capturedTexts().at(1));
 	}
 	return(QString());
 }
@@ -241,19 +241,17 @@ void ElementsLocation::setPath(const QString &path)
 	//The path start with project, we get the project and the path from the string
 	else if (tmp_path.startsWith("project"))
 	{
-		QRegularExpression rx
-				("^project([0-9]+)\\+(embed:\\/\\/.*)$",
-				 QRegularExpression::CaseInsensitiveOption);
-		if (rx==QRegularExpression(tmp_path))
+		QRegExp rx("^project([0-9]+)\\+(embed:\\/\\/.*)$", Qt::CaseInsensitive);
+		if (rx.exactMatch(tmp_path))
 		{
 			bool conv_ok;
-			uint project_id = rx.namedCaptureGroups().at(1).toUInt(&conv_ok);
+			uint project_id = rx.capturedTexts().at(1).toUInt(&conv_ok);
 			if (conv_ok)
 			{
 				QETProject *project = QETApp::project(project_id);
 				if (project)
 				{
-					m_collection_path = rx.namedCaptureGroups().at(2);
+					m_collection_path = rx.capturedTexts().at(2);
 					m_project = project;
 				}
 			}
@@ -353,11 +351,11 @@ bool ElementsLocation::addToPath(const QString &string)
 ElementsLocation ElementsLocation::parent() const
 {
 	ElementsLocation copy(*this);
-	QRegularExpression re1("^([a-z]+://)(.*)/*$");
-	if (re1==QRegularExpression(m_collection_path)) {
-		QString path_proto = re1.namedCaptureGroups().at(1);
-		QString path_path = re1.namedCaptureGroups().at(2);
-		QString parent_path = path_path.remove(QRegularExpression("/*[^/]+$"));
+	QRegExp re1("^([a-z]+://)(.*)/*$");
+	if (re1.exactMatch(m_collection_path)) {
+		QString path_proto = re1.capturedTexts().at(1);
+		QString path_path = re1.capturedTexts().at(2);
+		QString parent_path = path_path.remove(QRegExp("/*[^/]+$"));
 		copy.setPath(path_proto + parent_path);
 	}
 	return(copy);
@@ -720,14 +718,14 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 		else
 		{
 			QString path_ = collectionPath(false);
-			QRegularExpression rx ("^(.*)/(.*\\.elmt)$");
+			QRegExp rx ("^(.*)/(.*\\.elmt)$");
 
-			if (rx==QRegularExpression(path_)) {
+			if (rx.exactMatch(path_)) {
 				return project()
 						->embeddedElementCollection()
 						->addElementDefinition(
-							rx.namedCaptureGroups().at(1),
-							rx.namedCaptureGroups().at(2),
+							rx.cap(1),
+							rx.cap(2),
 							xml_document
 							.documentElement());
 			}
