@@ -660,7 +660,7 @@ void ExportDialog::generateDxf(
         qreal offset = fontSize * 1.6;
         foreach (QString line, lines) {
             if (line.size() > 0 && line != "_" )
-                Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, 0, 0.72 );
+                Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, Createdxf::dxfColor(dti->color()), 0.72 );
             x += offset * xdir;
             y -= offset * ydir;
         }

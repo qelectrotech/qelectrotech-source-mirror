@@ -437,9 +437,11 @@ int Createdxf::getcolorCode (const long red, const long green, const long blue)
 	}
 	return minndx;
 }
+
 int Createdxf::dxfColor(QColor color) {
     return Createdxf::getcolorCode(color.red(), color.green(), color.blue());
 }
+
 int Createdxf::dxfColor(QPen pen) {
     return Createdxf::dxfColor(pen.color());
 }
@@ -984,7 +986,13 @@ void Createdxf::drawPolygon(
         const QPolygonF &poly,
         const int &colorcode)
 {
-    drawPolyline(filepath,poly,colorcode);
+    qDebug() << "PolygonIsClosed: " << poly.isClosed();
+    QPolygonF pg = poly;
+    if(!poly.isClosed()) {
+        pg << poly.at(0);
+    }
+    qDebug() << "PolygonIsClosed: " << poly.isClosed();
+    drawPolyline(filepath,pg,colorcode);
 }
 
 /**
