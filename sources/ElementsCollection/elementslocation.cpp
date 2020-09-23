@@ -253,7 +253,8 @@ void ElementsLocation::setPath(const QString &path)
 		QRegularExpressionMatch match = re.match(tmp_path);
 		if (!match.hasMatch())
 		{
-			qDebug()<<"no Match => return";
+			qDebug()<<"no Match => return"
+			       <<tmp_path;
 			return;
 		}
 		bool conv_ok;

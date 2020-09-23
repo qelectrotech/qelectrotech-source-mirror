@@ -97,15 +97,29 @@ bool TitleBlockTemplateLocation::isValid() const
 /**
 	@param loc_str String describing the location of a title block template.
 */
-void TitleBlockTemplateLocation::fromString(const QString &loc_str) {
+void TitleBlockTemplateLocation::fromString(const QString &loc_str)
+{
 	collection_ = QETApp::titleBlockTemplatesCollection(QUrl(loc_str).scheme());
 
-	QRegularExpression name_from_url("^[^:]*:\\/\\/(.*)$");
-	if (name_from_url==QRegularExpression(loc_str)) {
-		name_ = name_from_url.namedCaptureGroups().at(1);
-	} else {
-		name_ = QString();
+	QRegularExpression name_from_url("//*(?<name>.*)");
+	if (!name_from_url.isValid())
+	{
+		qWarning() <<"this is an error in the code"
+			  << name_from_url.errorString()
+			  << name_from_url.patternErrorOffset();
+		return;
 	}
+
+	QRegularExpressionMatch match = name_from_url.match(loc_str);
+	if (!match.hasMatch())
+	{
+		qDebug()<<"no Match => return"
+			<<loc_str;
+		name_ = QString();
+		return;
+	}
+
+	name_ = match.captured("name");
 }
 
 /**
