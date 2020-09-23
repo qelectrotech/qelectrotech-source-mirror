@@ -2102,13 +2102,27 @@ template <class T> void QETApp::addWindowsListToMenu(
 	or -1 if none could be found.
 */
 int QETApp::projectIdFromString(const QString &url) {
-	QRegularExpression embedded("^project([0-9]+)\\+embed.*$", QRegularExpression::CaseInsensitiveOption);
-	if (embedded==QRegularExpression(url)) {
-		bool conv_ok = false;
-		int project_id = embedded.namedCaptureGroups().at(1).toInt(&conv_ok);
-		if (conv_ok) {
-			return(project_id);
-		}
+	QRegularExpression embedded(
+				"^project(?<project_id>[0-9]+)\\+embed.*$",
+				QRegularExpression::CaseInsensitiveOption);
+	if (!embedded.isValid())
+	{
+		qWarning() <<"this is an error in the code"
+			  << embedded.errorString()
+			  << embedded.patternErrorOffset();
+		return(-1);
+	}
+	QRegularExpressionMatch match = embedded.match(url);
+	if (!match.hasMatch())
+	{
+		qDebug()<<"no Match => return"
+		       <<url;
+		return(-1);
+	}
+	bool conv_ok = false;
+	int project_id = match.captured("project_id").toUInt(&conv_ok);
+	if (conv_ok) {
+		return(project_id);
 	}
 	return(-1);
 }

@@ -569,11 +569,23 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 #pragma message("@TODO remove code for QT 5.14 or later")
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
 #endif
-	QRegularExpression rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
+	QRegularExpression rx("^(?<name>[a-z-]+): (?<value>[a-z-]+)$");
+	if (!rx.isValid())
+	{
+		qWarning() <<"this is an error in the code"
+			  << rx.errorString()
+			  << rx.patternErrorOffset();
+		return;
+	}
 	for (QString style : styles) {
-		if (rx==QRegularExpression(style)) {
-			QString style_name = rx.namedCaptureGroups().at(1);
-			QString style_value = rx.namedCaptureGroups().at(2);
+		QRegularExpressionMatch match = rx.match(style);
+		if (!match.hasMatch())
+		{
+			qDebug()<<"no Match"
+			       <<style;
+		}else {
+			QString style_name = match.captured("name");
+			QString style_value = match.captured("value");
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
 				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);

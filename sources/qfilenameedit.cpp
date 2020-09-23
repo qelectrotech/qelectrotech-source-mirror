@@ -20,6 +20,7 @@
 #include <QKeyEvent>
 #include <QRegularExpression>
 #include <QToolTip>
+#include <QtDebug>
 
 /**
 	Constructeur
@@ -36,7 +37,7 @@ QFileNameEdit::QFileNameEdit(QWidget *parent) : QLineEdit(parent) {
 */
 QFileNameEdit::QFileNameEdit(const QString &contents, QWidget *parent) : QLineEdit(parent) {
 	init();
-	if (!contents.isEmpty() && regexp_==QRegularExpression(contents)) {
+	if (!contents.isEmpty() && regexp_.match(contents).hasMatch()) {
 		setText(contents);
 	}
 }
@@ -61,7 +62,7 @@ bool QFileNameEdit::isEmpty()
 */
 bool QFileNameEdit::isValid()
 {
-	return(regexp_==QRegularExpression(text()));
+	return(regexp_.match(text()).hasMatch());
 }
 
 /**
