@@ -569,7 +569,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 #pragma message("@TODO remove code for QT 5.14 or later")
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
 #endif
-	QRegularExpression rx("^(?<name>[a-z-]+): (?<value>[a-z-]+)$");
+	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-z-]+)$");
 	if (!rx.isValid())
 	{
 		qWarning() <<"this is an error in the code"
