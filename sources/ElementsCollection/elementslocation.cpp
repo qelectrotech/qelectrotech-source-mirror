@@ -241,20 +241,36 @@ void ElementsLocation::setPath(const QString &path)
 	//The path start with project, we get the project and the path from the string
 	else if (tmp_path.startsWith("project"))
 	{
-		QRegExp rx("^project([0-9]+)\\+(embed:\\/\\/.*)$", Qt::CaseInsensitive);
-		if (rx.exactMatch(tmp_path))
+		QRegularExpression re
+			("^project(?<project_id>[0-9])\\+(?<collection_path>embed://*.*)$");
+		if (!re.isValid())
 		{
-			bool conv_ok;
-			uint project_id = rx.capturedTexts().at(1).toUInt(&conv_ok);
-			if (conv_ok)
-			{
-				QETProject *project = QETApp::project(project_id);
-				if (project)
-				{
-					m_collection_path = rx.capturedTexts().at(2);
-					m_project = project;
-				}
-			}
+			qWarning() <<"this is an error in the code"
+				  << re.errorString()
+				  << re.patternErrorOffset();
+			return;
+		}
+		QRegularExpressionMatch match = re.match(tmp_path);
+		if (!match.hasMatch())
+		{
+			qDebug()<<"no Match => return";
+			return;
+		}
+		bool conv_ok;
+		uint project_id = match.captured("project_id").toUInt(&conv_ok);
+		if (!conv_ok)
+		{
+			qWarning()<<"toUint failed"
+				 <<match.captured("project_id")
+				 <<re
+				 <<tmp_path;
+			return;
+		}
+		QETProject *project = QETApp::project(project_id);
+		if (project)
+		{
+			m_collection_path = match.captured("collection_path");
+			m_project = project;
 		}
 	}
 
