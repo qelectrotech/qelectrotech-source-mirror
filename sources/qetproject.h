@@ -1,22 +1,25 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef QET_PROJECT_H
 #define QET_PROJECT_H
+
+#include <KAutoSaveFile>
+#include <QHash>
 
 #include "nameslist.h"
 #include "elementslocation.h"
@@ -27,8 +30,6 @@
 #include "properties/xrefproperties.h"
 #include "projectdatabase.h"
 #include "reportproperties.h"
-
-#include <KAutoSaveFile>
 
 class Diagram;
 class ElementsLocation;
@@ -62,7 +63,7 @@ class QETProject : public QObject
 		};
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
-	
+
 		// constructors, destructor
 	public:
 		QETProject (QObject *parent = nullptr);
@@ -72,7 +73,7 @@ class QETProject : public QObject
 
 	private:
 		QETProject(const QETProject &);
-	
+
 		// methods
 	public:
 		projectDataBase *dataBase();
@@ -166,13 +167,13 @@ class QETProject : public QObject
 		DiagramContext projectProperties();
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
-	
+
 	public slots:
 		Diagram *addNewDiagram(int pos = -1);
 		void removeDiagram(Diagram *);
 		void diagramOrderChanged(int, int);
 		void setModified(bool);
-	
+
 	signals:
 		void projectFilePathChanged(QETProject *, const QString &);
 		void projectTitleChanged(QETProject *, const QString &);
@@ -195,14 +196,14 @@ class QETProject : public QObject
 		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
-	
+
 	private slots:
 		void updateDiagramsFolioData();
 		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void usedTitleBlockTemplateChanged(const QString &);
 		void undoStackChanged (bool a) {if (!a) setModified(true);}
-	
+
 	private:
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
@@ -217,7 +218,7 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
-	
+
 	// attributes
 	private:
 			/// File path this project is saved to

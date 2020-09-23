@@ -20,6 +20,7 @@
 
 #include <QUndoCommand>
 #include <QPointer>
+#include <QHash>
 
 class ConductorTextItem;
 class Diagram;
@@ -34,14 +35,14 @@ class RotateTextsCommand : public QUndoCommand
 {
 	public:
 		RotateTextsCommand(Diagram *diagram, QUndoCommand *parent=nullptr);
-		
+
 		void undo() override;
 		void redo() override;
-		
+
 	private:
 		void openDialog();
 		void setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end);
-		
+
 	private:
 		QPointer<Diagram> m_diagram;
 		QHash<ConductorTextItem *, bool> m_cond_texts;

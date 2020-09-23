@@ -20,7 +20,6 @@
 
 #include <QRectF>
 #include <QLineF>
-#include <QColor>
 #include <QPolygonF>
 
 class QPainter;

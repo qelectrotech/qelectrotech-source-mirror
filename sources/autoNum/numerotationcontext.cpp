@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "numerotationcontext.h"
+#include "qet.h"
 
 #include <utility>
-#include "qet.h"
+#include <QRegularExpression>
 
 /**
 	Constructor
@@ -141,7 +142,7 @@ QString NumerotationContext::validRegExpNumber() const
 */
 bool NumerotationContext::keyIsAcceptable(const QString &type) const
 {
-	return (type.contains(QRegExp(validRegExpNum())));
+	return (type.contains(QRegularExpression(validRegExpNum())));
 }
 
 /**
@@ -150,7 +151,7 @@ bool NumerotationContext::keyIsAcceptable(const QString &type) const
 */
 bool NumerotationContext::keyIsNumber(const QString &type) const
 {
-	return (type.contains(QRegExp(validRegExpNumber())));
+	return (type.contains(QRegularExpression(validRegExpNumber())));
 }
 
 /**

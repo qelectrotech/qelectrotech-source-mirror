@@ -15,6 +15,9 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QHash>
+
 #include "shapegraphicsitempropertieswidget.h"
 #include "ui_shapegraphicsitempropertieswidget.h"
 #include "qetshapeitem.h"

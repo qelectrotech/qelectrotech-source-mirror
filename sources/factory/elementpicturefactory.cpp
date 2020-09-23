@@ -28,6 +28,7 @@
 #include <iostream>
 #include <QAbstractTextDocumentLayout>
 #include <QGraphicsSimpleTextItem>
+#include <QRegularExpression>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
@@ -44,14 +45,14 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 	if(!location.exist()) {
 		return;
 	}
-	
+
 	QUuid uuid = location.uuid();
 	if(Q_UNLIKELY(uuid.isNull()))
 	{
 		build(location, &picture, &low_picture);
 		return;
 	}
-	
+
 	if(m_pictures_H.keys().contains(uuid))
 	{
 		picture = m_pictures_H.value(uuid);
@@ -76,11 +77,11 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 {
 	QUuid uuid = location.uuid();
-	
+
 	if (m_pixmap_H.contains(uuid)) {
 		return m_pixmap_H.value(uuid);
 	}
-	
+
 	if(build(location))
 	{
 		auto doc = location.pugiXml();
@@ -95,19 +96,19 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 
 		QPixmap pix(w, h);
 		pix.fill(QColor(255, 255, 255, 0));
-		
+
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
-		
+
 		if (!uuid.isNull()) {
 			m_pixmap_H.insert(uuid, pix);
 		}
 		return pix;
 	}
-	
+
 	return QPixmap();
 }
 
@@ -122,7 +123,7 @@ ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
 {
 	if(!m_primitives_H.contains(location.uuid()))
 		build(location);
-	
+
 	return m_primitives_H.value(location.uuid());
 }
 
@@ -143,14 +144,14 @@ ElementPictureFactory::~ElementPictureFactory()
 	this function draw on it and don't store it.
 	if null, this function create a QPicture for normal and low zoom,
 	draw on it and store it in m_pictures_H and m_low_pictures_H
-	@return 
+	@return
 */
 bool ElementPictureFactory::build(const ElementsLocation &location,
 				  QPicture *picture,
 				  QPicture *low_picture)
 {
 	QDomElement dom = location.xml();
-	
+
 		//Check if the curent version can read the xml description
 	if (dom.hasAttribute("version"))
 	{
@@ -165,7 +166,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 			) << std::endl;
 		}
 	}
-	
+
 		//This attributes must be present and valid
 	int w, h, hot_x, hot_y;
 	if (!QET::attributeIsAnInteger(dom, QString("width"), &w) ||\
@@ -175,7 +176,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	{
 		return(false);
 	}
-	
+
 	QPainter painter;
 	QPicture pic;
 	primitives primitives_;
@@ -188,8 +189,8 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	painter.setRenderHint(QPainter::Antialiasing,         true);
 	painter.setRenderHint(QPainter::TextAntialiasing,     true);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
-	
-	
+
+
 	QPainter low_painter;
 	QPicture low_pic;
 	if (low_picture) {
@@ -201,12 +202,12 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	low_painter.setRenderHint(QPainter::Antialiasing,         true);
 	low_painter.setRenderHint(QPainter::TextAntialiasing,     true);
 	low_painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
-	
+
 	QPen tmp;
 	tmp.setWidthF(1.0); //Vaudoo line to take into account the setCosmetic - don't remove
 	tmp.setCosmetic(true);
 	low_painter.setPen(tmp);
-	
+
 		//scroll of the Children of the Definition: Parts of the Drawing
 	for (QDomNode node = dom.firstChild() ; !node.isNull() ; node = node.nextSibling())
 	{
@@ -214,9 +215,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		if (elmts.isNull()) {
 			continue;
 		}
-		
+
 		if (elmts.tagName() == "description")
-		{	
+		{
 				//Manage the graphic description = part of drawing
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
 			{
@@ -230,7 +231,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 			}
 		}
 	}
-	
+
 		//End of the drawing
 	painter.end();
 	low_painter.end();
@@ -458,7 +459,7 @@ void ElementPictureFactory::parsePolygon(const QDomElement &dom, QPainter &paint
 	if (i < 3) {
 		return;
 	}
-	
+
 	QVector<QPointF> points; // empty vector created instead of default initialized vector with i-1 elements.
 	for (int j = 1 ; j < i ; ++ j) {
 		points.insert(
@@ -568,11 +569,11 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 #pragma message("@TODO remove code for QT 5.14 or later")
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
 #endif
-	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
+	QRegularExpression rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
 	for (QString style : styles) {
-		if (rx.exactMatch(style)) {
-			QString style_name = rx.cap(1);
-			QString style_value = rx.cap(2);
+		if (rx==QRegularExpression(style)) {
+			QString style_name = rx.namedCaptureGroups().at(1);
+			QString style_value = rx.namedCaptureGroups().at(2);
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
 				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);

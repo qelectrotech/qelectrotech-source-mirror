@@ -15,9 +15,11 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QMetaEnum>
+#include <QHash>
+
 #include "xrefproperties.h"
 #include "qetapp.h"
-#include <QMetaEnum>
 
 /**
 	@brief XRefProperties::XRefProperties
@@ -56,7 +58,7 @@ void XRefProperties::toSettings(QSettings &settings,
 	QString slave_label = m_slave_label;
 	settings.setValue(prefix + "slave_label", slave_label);
 
- 
+
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	settings.setValue(prefix + "xrefpos",  var.valueToKey(m_xref_pos));
 
@@ -110,7 +112,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("snapto", snap);
 
 	QString xrefpos;
-	
+
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
 

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -200,7 +200,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	line_style -> addItem(tr("Pointillé", "element part line style"), CustomElementGraphicPart::DottedStyle);
 	line_style -> addItem(tr("Traits et points", "element part line style"), CustomElementGraphicPart::DashdottedStyle);
 	//normal_style -> setChecked(true);
-	
+
 	// epaisseur
 	size_weight = new QComboBox(this);
 	size_weight -> addItem(tr("Nulle", "element part weight"),  CustomElementGraphicPart::NoneWeight);
@@ -374,16 +374,16 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
-	
+
 	updateForm();
-	
+
 	auto main_layout = new QVBoxLayout();
-	main_layout -> setMargin(0);
-	
+	main_layout -> setContentsMargins(0,0,0,0);
+
 	main_layout -> addWidget(new QLabel("<u>" + tr("Apparence :") + "</u> "));
 
-	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
-	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	auto grid_layout = new QGridLayout(this);
 	grid_layout->addWidget(new QLabel(tr("Contour :")), 0,0, Qt::AlignRight);
 	grid_layout->addWidget(outline_color, 0, 1);

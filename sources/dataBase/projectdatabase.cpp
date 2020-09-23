@@ -24,6 +24,7 @@
 #include "diagramposition.h"
 
 #include <QSqlError>
+#include <QLocale>
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
 #include <QSqlDriver>
@@ -161,7 +162,11 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	for (auto key : QETApp::diagramInfoKeys())
 	{
 		if (key == "date") {
-			m_insert_diagram_info_query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+			m_insert_diagram_info_query.bindValue(
+				":date",
+				QLocale::system().toString(
+					infos.value("date").toDate(),
+					QLocale::ShortFormat));
 		} else {
 			auto value = infos.value(key);
 			auto bind = key.prepend(":");
@@ -419,7 +424,11 @@ void projectDataBase::populateDiagramInfoTable()
 		for (auto key : QETApp::diagramInfoKeys())
 		{
 			if (key == "date") {
-				m_insert_diagram_info_query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+				m_insert_diagram_info_query.bindValue(
+					":date",
+					QLocale::system().toString(
+						infos.value("date").toDate(),
+						QLocale::ShortFormat));
 			} else {
 				auto value = infos.value(key);
 				auto bind = key.prepend(":");
@@ -521,7 +530,7 @@ sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 {
 	//sqlite 3 lib isn't availlable for the moment on macosx
 	//need some help to add sqlite3 lib on macosx compilation
-#if Q_OS_MACOS
+#ifdef Q_OS_MACOS
 	return nullptr;
 #else
 	sqlite3 *handle = nullptr;
@@ -553,7 +562,9 @@ void projectDataBase::exportDb(projectDataBase *db,
 	if (caption_.isEmpty()) {
 		caption_ = tr("Exporter la base de données interne du projet");
 	}
-
+#ifdef Q_OS_MACOS
+	return;
+#else
 	auto dir_ = dir;
 	if(dir_.isEmpty()) {
 		dir_ = db->project()->filePath();
@@ -593,4 +604,5 @@ void projectDataBase::exportDb(projectDataBase *db,
 		file_db.close();
 	}
 	QSqlDatabase::removeDatabase(connection_name);
+#endif
 }

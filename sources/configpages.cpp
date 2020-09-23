@@ -1,20 +1,26 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QFontDialog>
+#include <QFont>
+#include <QSizePolicy>
+#include <utility>
+
 #include "configpages.h"
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
@@ -27,10 +33,7 @@
 #include "qetproject.h"
 #include "reportproperties.h"
 #include "qetapp.h"
-#include <QFontDialog>
-#include <QFont>
-#include <QSizePolicy>
-#include <utility>
+#include "nameslist.h"
 
 /**
 	@brief NewDiagramPage::NewDiagramPage
@@ -249,13 +252,13 @@ void NewDiagramPage::loadSavedTbp()
 ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 	// epw contient les options d'export
 	epw = new ExportPropertiesWidget(ExportProperties::defaultExportProperties());
-	
+
 	// layout vertical contenant le titre, une ligne horizontale et epw
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	
+
 	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);
-	
+
 	QFrame *horiz_line = new QFrame();
 	horiz_line -> setFrameShape(QFrame::HLine);
 	vlayout1 -> addWidget(horiz_line);
@@ -300,13 +303,13 @@ PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
 	// epw contient les options d'export
 	epw = new ExportPropertiesWidget(ExportProperties::defaultPrintProperties());
 	epw -> setPrintingMode(true);
-	
+
 	// layout vertical contenant le titre, une ligne horizontale et epw
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	
+
 	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);
-	
+
 	QFrame *horiz_line = new QFrame();
 	horiz_line -> setFrameShape(QFrame::HLine);
 	vlayout1 -> addWidget(horiz_line);
@@ -329,10 +332,10 @@ PrintConfigPage::~PrintConfigPage()
 void PrintConfigPage::applyConf()
 {
 	QString prefix = "print/default";
-	
+
 	QSettings settings;
 	epw -> exportProperties().toSettings(settings, prefix);
-	
+
 	// annule l'enregistrement de certaines proprietes non pertinentes
 	settings.remove(prefix + "path");
 	settings.remove(prefix + "format");

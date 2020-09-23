@@ -77,26 +77,21 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		PropertiesEditorWidget *editor,
 		QWidget *parent)
 {
-	int count_ = items.size();
+	const int count_ = items.size();
+	if (count_ == 0) {
+		return nullptr;
+	}
+	QGraphicsItem *item = items.first();
+	const int type_ = item->type();
 
 		//The editor widget can only edit one item
 		//or several items of the same type
-	if (count_ != 1)
-	{
-		if (count_ == 0) {
+	for (auto qgi : items) {
+		if (qgi->type() != type_) {
 			return nullptr;
-		}
-
-		int type_ = items.first()->type();
-		for (QGraphicsItem *qgi : items) {
-			if (qgi->type() != type_) {
-				return nullptr;
-			}
 		}
 	}
 
-	QGraphicsItem *item = items.first();
-	const int type_ = item->type();
 	QString class_name;
 	if (editor) {
 		class_name = editor->metaObject()->className();

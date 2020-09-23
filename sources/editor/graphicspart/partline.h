@@ -110,10 +110,8 @@ class PartLine : public CustomElementGraphicPart
 		void removeHandler();
 		
 		QPainterPath path() const;
-		QList<QPointF> fourShapePoints() const;
 		QRectF firstEndCircleRect() const;
 		QRectF secondEndCircleRect() const;
-		void debugPaint(QPainter *);
 
 		/*****************/
 		Qet::EndType first_end;

@@ -19,6 +19,8 @@
 #define XREFPROPERTIESWIDGET_H
 
 #include <QWidget>
+#include <QHash>
+
 #include "properties/xrefproperties.h"
 
 namespace Ui {

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -83,7 +83,7 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 		// la fenetre est maximisee par defaut
 		setMinimumSize(QSize(500, 350));
 		setWindowState(Qt::WindowMaximized);
-	
+
 		// lecture des parametres
 		readSettings();
 		slot_updateMenus();
@@ -165,7 +165,7 @@ void QETElementEditor::setupActions()
 	open_dxf -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on Windows\n"
-					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n" 
+					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n"
 					   ));
 #elif defined(Q_OS_MAC)
 	open_dxf -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
@@ -188,7 +188,7 @@ void QETElementEditor::setupActions()
 					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
 					 "make it executable : chmod +x ./DXFtoQET\n"
 					 ">> Install on Windows\n"
-					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n" 
+					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n"
 					 "\n"
 					 ">> Install on macOSX\n"
 					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
@@ -491,7 +491,7 @@ void QETElementEditor::slot_updateMenus()
 	// actions dependant du contenu du presse-papiers
 	paste           -> setEnabled(clipboard_elmt);
 	paste_in_area   -> setEnabled(clipboard_elmt);
-	
+
 	// actions dependant de l'etat de la pile d'annulation
 	save            -> setEnabled(!read_only && !m_elmt_scene -> undoStack().isClean());
 	undo            -> setEnabled(!read_only && m_elmt_scene -> undoStack().canUndo());
@@ -534,7 +534,7 @@ void QETElementEditor::setupInterface()
 // m_tools_dock_scroll_area = new QScrollArea();
 // m_tools_dock_scroll_area -> setFrameStyle(QFrame::NoFrame);
 // m_tools_dock_scroll_area -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
-	
+
 		// Pile de widgets pour accueillir les deux widgets precedents
 	m_tools_dock_stack = new QStackedWidget();
 	m_tools_dock_stack -> insertWidget(0, m_default_informations);
@@ -555,7 +555,10 @@ void QETElementEditor::setupInterface()
 	m_tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
 	m_tools_dock -> setObjectName("informations");
 	m_tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	m_tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	m_tools_dock -> setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
 	//m_tools_dock -> setMinimumWidth(380);
 	addDockWidget(Qt::RightDockWidgetArea, m_tools_dock);
 	m_tools_dock -> setWidget(m_tools_dock_stack);
@@ -564,7 +567,10 @@ void QETElementEditor::setupInterface()
 	m_undo_dock = new QDockWidget(tr("Annulations", "dock title"), this);
 	m_undo_dock -> setObjectName("undo");
 	m_undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	m_undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	m_undo_dock -> setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
 	m_undo_dock -> setMinimumWidth(290);
 	addDockWidget(Qt::RightDockWidgetArea, m_undo_dock);
 	QUndoView* undo_view = new QUndoView(&(m_elmt_scene -> undoStack()), this);
@@ -582,7 +588,10 @@ void QETElementEditor::setupInterface()
 	m_parts_dock = new QDockWidget(tr("Parties", "dock title"), this);
 	m_parts_dock -> setObjectName("parts_list");
 	m_parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-	m_parts_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	m_parts_dock -> setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
 	m_parts_dock -> setMinimumWidth(290);
 	tabifyDockWidget(m_undo_dock, m_parts_dock);
 	m_parts_dock -> setWidget(m_parts_list);
@@ -1126,10 +1135,10 @@ void QETElementEditor::slot_openFile()
 {
 	// repertoire a afficher initialement dans le dialogue
 	QString open_dir = filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath();
-	
+
 	// demande un nom de fichier a ouvrir a l'utilisateur
 	QString user_filename = QETElementEditor::getOpenElementFileName(this, open_dir);
-	
+
 	// ouvre l'element
 	openElement(user_filename);
 }
@@ -1445,7 +1454,7 @@ void QETElementEditor::slot_createPartsList()
 	m_parts_list -> blockSignals(true);
 	m_parts_list -> clear();
 	QList<QGraphicsItem *> qgis = m_elmt_scene -> zItems();
-	
+
 	// on ne construit plus la liste a partir de 200 primitives
 	// c'est ingerable : la maj de la liste prend trop de temps et le resultat
 	// est inexploitable

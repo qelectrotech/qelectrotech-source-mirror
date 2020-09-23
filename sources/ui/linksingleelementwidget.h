@@ -18,6 +18,8 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
+#include <QHash>
+
 #include "element.h"
 #include "abstractelementpropertieseditorwidget.h"
 
@@ -73,30 +75,30 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void hideButtons();
 		void showButtons();
 		void headerCustomContextMenuRequested(const QPoint &pos);
-		
+
 		void on_m_unlink_pb_clicked();
 		void on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column);
 		void on_m_tree_widget_customContextMenuRequested(const QPoint &pos);
 		void on_m_show_linked_pb_clicked();
 		void on_m_show_this_pb_clicked();
-		
+
 		void on_m_search_field_textEdited(const QString &arg1);
-		
+
 	private:
 	Ui::LinkSingleElementWidget *ui;
 
 	bool m_unlink = false;
 	Element::kind m_filter;
-	
+
 	QHash <QTreeWidgetItem*, Element*> m_qtwi_elmt_hash;
 	QHash <QTreeWidgetItem*, QStringList> m_qtwi_strl_hash;
-	
+
 	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr,
 					*m_pending_qtwi = nullptr;
-	
+
 	Element *m_showed_element = nullptr,
 			*m_element_to_link = nullptr;
-	
+
 	QMenu *m_context_menu;
 	QAction *m_link_action,
 			*m_show_qtwi,

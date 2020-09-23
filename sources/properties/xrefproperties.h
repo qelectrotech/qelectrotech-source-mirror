@@ -18,8 +18,10 @@
 #ifndef XREFPROPERTIES_H
 #define XREFPROPERTIES_H
 
-#include "propertiesinterface.h"
 #include <QStringList>
+#include <QHash>
+
+#include "propertiesinterface.h"
 
 /**
 	@brief The XRefProperties class

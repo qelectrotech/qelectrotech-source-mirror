@@ -1,22 +1,24 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramcontextwidget.h"
 #include "ui_diagramcontextwidget.h"
+
+#include <QRegularExpression>
 
 DiagramContextWidget::DiagramContextWidget(QWidget *parent) :
 	QWidget(parent),
@@ -38,7 +40,7 @@ DiagramContextWidget::~DiagramContextWidget()
 DiagramContext DiagramContextWidget::context() const
 {
 	DiagramContext context;
-	
+
 	for (int i = 0 ; i < ui->m_table-> rowCount() ; ++ i)
 	{
 		QTableWidgetItem *qtwi_name  = ui->m_table-> item(i, 0);
@@ -46,16 +48,16 @@ DiagramContext DiagramContextWidget::context() const
 		if (!qtwi_name || !qtwi_value) {
 			continue;
 		}
-		
+
 		QString key = qtwi_name -> text();
 		if (key.isEmpty()) {
 			continue;
 		}
-		
+
 		QString value = qtwi_value -> text();
 		context.addValue(key, value);
 	}
-	
+
 	return(context);
 }
 
@@ -67,7 +69,7 @@ DiagramContext DiagramContextWidget::context() const
 void DiagramContextWidget::setContext (const DiagramContext &context)
 {
 	clear();
-	
+
 	int i = 0;
 	for (QString key : context.keys(DiagramContext::Alphabetical))
 	{
@@ -75,7 +77,7 @@ void DiagramContextWidget::setContext (const DiagramContext &context)
 		ui->m_table->setItem(i, 1, new QTableWidgetItem(context[key].toString()));
 		++ i;
 	}
-	
+
 	checkTableRows();
 }
 
@@ -93,7 +95,7 @@ int DiagramContextWidget::nameLessRowsCount() const
 			++ name_less_rows_count;
 		}
 	}
-	
+
 	return(name_less_rows_count);
 }
 
@@ -107,7 +109,7 @@ void DiagramContextWidget::clear()
 	for (int i = 1 ; i < ui->m_table->rowCount() ; ++ i) {
 		ui->m_table->removeRow(i);
 	}
-	
+
 	refreshFormatLabel();
 }
 
@@ -118,10 +120,10 @@ void DiagramContextWidget::clear()
 */
 int DiagramContextWidget::highlightNonAcceptableKeys()
 {
-	static QRegExp re(DiagramContext::validKeyRegExp());
-	
+	static QRegularExpression re(DiagramContext::validKeyRegExp());
+
 	QBrush fg_brush = ui->m_table->palette().brush(QPalette::WindowText);
-	
+
 	int invalid_keys = 0;
 	for (int i = 0 ; i < ui->m_table->rowCount() ; ++ i)
 	{
@@ -129,11 +131,11 @@ int DiagramContextWidget::highlightNonAcceptableKeys()
 		if (!qtwi_name) {
 			continue;
 		}
-		
+
 		bool highlight = false;
 		if (!qtwi_name -> text().isEmpty())
 		{
-			if (!re.exactMatch(qtwi_name -> text()))
+			if (re!=QRegularExpression(qtwi_name -> text()))
 			{
 				highlight = true;
 				++ invalid_keys;
@@ -141,7 +143,7 @@ int DiagramContextWidget::highlightNonAcceptableKeys()
 		}
 		qtwi_name -> setForeground(highlight ? Qt::red : fg_brush);
 	}
-	
+
 	return(invalid_keys);
 }
 
@@ -156,7 +158,7 @@ void DiagramContextWidget::refreshFormatLabel()
 		"Les noms ne peuvent contenir que des lettres minuscules, des "
 		"chiffres et des tirets."
 	);
-	
+
 	if (highlightNonAcceptableKeys()) {
 		format_text = QString("<span style=\"color: red;\">%1</span>").arg(format_text);
 	}

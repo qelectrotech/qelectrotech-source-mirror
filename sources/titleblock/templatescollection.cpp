@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -19,6 +19,8 @@
 #include "titleblocktemplate.h"
 #include "qetapp.h"
 #include "qetproject.h"
+
+#include <QRegularExpression>
 
 /**
 	Constructor
@@ -136,7 +138,7 @@ TitleBlockTemplatesProjectCollection::~TitleBlockTemplatesProjectCollection()
 QString TitleBlockTemplatesProjectCollection::title() const
 {
 	if (!title_.isEmpty()) return(title_);
-	
+
 	// if the title attribute is empty, we generate a suitable one using the
 	// parent project
 	QString final_title;
@@ -204,12 +206,12 @@ TitleBlockTemplate *TitleBlockTemplatesProjectCollection::getTemplate(const QStr
 	if (titleblock_templates_.contains(template_name)) {
 		return(titleblock_templates_[template_name]);
 	}
-	
+
 	// No? Do we even know of it?
 	if (!titleblock_templates_xml_.contains(template_name)) {
 		return(nullptr);
 	}
-	
+
 	// Ok, we have its XML description, we have to generate a TitleBlockTemplate object
 	TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(this);
 	if (titleblock_template -> loadFromXmlElement(titleblock_templates_xml_[template_name])) {
@@ -248,16 +250,16 @@ bool TitleBlockTemplatesProjectCollection::setTemplateXmlDescription(const QStri
 	if (xml_elmt.tagName() != "titleblocktemplate") {
 		return(false);
 	}
-	
+
 	// we *require* a project (at least for the moment...)
 	if (!project_) return(false);
-	
+
 	// we import the provided XML element in the project document
 	QDomElement import = xml_document_.importNode(xml_elmt, true).toElement();
-	
+
 	// ensure the name stored in the XML description remains consistent with the provided template name
 	import.setAttribute("name", template_name);
-	
+
 	// we either replace the previous description
 	if (titleblock_templates_xml_.contains(template_name)) {
 		QDomElement old_description = titleblock_templates_xml_[template_name];
@@ -266,12 +268,12 @@ bool TitleBlockTemplatesProjectCollection::setTemplateXmlDescription(const QStri
 		}
 	}
 	titleblock_templates_xml_.insert(template_name, import);
-	
+
 	if (titleblock_templates_.contains(template_name)) {
 		titleblock_templates_[template_name] -> loadFromXmlElement(titleblock_templates_xml_[template_name]);
 	}
 	emit(changed(this, template_name));
-	
+
 	return(true);
 }
 
@@ -282,11 +284,11 @@ bool TitleBlockTemplatesProjectCollection::setTemplateXmlDescription(const QStri
 */
 void TitleBlockTemplatesProjectCollection::removeTemplate(const QString &template_name) {
 	emit(aboutToRemove(this, template_name));
-	
+
 	// remove the template itself
 	titleblock_templates_xml_.remove(template_name);
 	titleblock_templates_.remove(template_name);
-	
+
 	// warn the rest of the world that the list of templates embedded within this project has changed
 	emit(changed(this, template_name));
 }
@@ -339,10 +341,10 @@ void TitleBlockTemplatesProjectCollection::fromXml(const QDomElement &xml_elemen
 		// each titleblock template must have a name
 		if (!e.hasAttribute("name")) continue;
 		QString titleblock_template_name = e.attribute("name");
-		
+
 		// if several templates have the same name, we keep the first one encountered
 		if (titleblock_templates_xml_.contains(titleblock_template_name)) continue;
-		
+
 		// we simply store the XML element describing the titleblock template,
 		// without any further analysis for the moment
 		titleblock_templates_xml_.insert(titleblock_template_name, e);
@@ -355,7 +357,7 @@ void TitleBlockTemplatesProjectCollection::fromXml(const QDomElement &xml_elemen
 void TitleBlockTemplatesProjectCollection::deleteUnusedTitleBlocKTemplates()
 {
 	if (!project_) return;
-	
+
 	foreach (QString template_name, templates()) {
 		if (!project_ -> usesTitleBlockTemplate(location(template_name))) {
 			removeTemplate(template_name);
@@ -408,7 +410,7 @@ QString TitleBlockTemplatesFilesCollection::path(const QString &template_name) c
 QStringList TitleBlockTemplatesFilesCollection::templates()
 {
 	QStringList templates_names;
-	QRegExp replace_regexp(QString("%1$").arg(TITLEBLOCKS_FILE_EXTENSION));
+	QRegularExpression replace_regexp(QString("%1$").arg(TITLEBLOCKS_FILE_EXTENSION));
 	foreach(QString name, dir_.entryList()) {
 		templates_names << name.replace(replace_regexp, "");
 	}
@@ -421,10 +423,10 @@ QStringList TitleBlockTemplatesFilesCollection::templates()
 */
 TitleBlockTemplate *TitleBlockTemplatesFilesCollection::getTemplate(const QString &template_name) {
 	if (!templates().contains(template_name)) return(nullptr);
-	
+
 	TitleBlockTemplate *tbtemplate = new TitleBlockTemplate();
 	QString tbt_file_path = path(template_name);
-	
+
 	bool loading = tbtemplate -> loadFromXmlFile(tbt_file_path);
 	if (!loading) {
 		delete tbtemplate;
@@ -439,17 +441,17 @@ TitleBlockTemplate *TitleBlockTemplatesFilesCollection::getTemplate(const QStrin
 */
 QDomElement TitleBlockTemplatesFilesCollection::getTemplateXmlDescription(const QString &template_name) {
 	QString xml_file_path = path(template_name);
-	
+
 	QFileInfo xml_file_info(xml_file_path);
 	if (!xml_file_info.exists() || !xml_file_info.isReadable()) {
 		return(QDomElement());
 	}
-	
+
 	QFile xml_file(xml_file_path);
 	if (!xml_file.open(QIODevice::ReadOnly)) {
 		return(QDomElement());
 	}
-	
+
 	QDomDocument *xml_document = new QDomDocument();
 	bool xml_parsing = xml_document -> setContent(&xml_file);
 	if (!xml_parsing) {
@@ -466,16 +468,16 @@ QDomElement TitleBlockTemplatesFilesCollection::getTemplateXmlDescription(const 
 */
 bool TitleBlockTemplatesFilesCollection::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_element) {
 	if (template_name.isEmpty()) return(false);
-	
+
 	// prevent the watcher from emitting signals while we open and write to file
 	blockSignals(true);
-	
+
 	QDomDocument doc;
 	doc.appendChild(doc.importNode(xml_element, true));
-	
+
 	bool writing = QET::writeXmlFile(doc, path(template_name));
 	if (!writing) return(false);
-	
+
 	// emit a single signal for the change
 	blockSignals(false);
 	emit(changed(this, template_name));
@@ -489,9 +491,9 @@ void TitleBlockTemplatesFilesCollection::removeTemplate(const QString &template_
 	emit(aboutToRemove(this, template_name));
 	// prevent the watcher from emitting signals while we open and write to file
 	blockSignals(true);
-	
+
 	dir_.remove(toFileName(template_name));
-	
+
 	// emit a single signal for the removal
 	blockSignals(false);
 	emit(changed(this, template_name));
@@ -500,7 +502,7 @@ void TitleBlockTemplatesFilesCollection::removeTemplate(const QString &template_
 /**
 	@param template_name Name of a template supposed to be contained within
 	this collection.
-	@return 
+	@return
 */
 TitleBlockTemplateLocation TitleBlockTemplatesFilesCollection::location(const QString &template_name) {
 	return(TitleBlockTemplateLocation(template_name, this));
@@ -544,7 +546,7 @@ bool TitleBlockTemplatesFilesCollection::isReadOnly(const QString &template_name
 	@return the template name for \a file_name
 */
 QString TitleBlockTemplatesFilesCollection::toTemplateName(const QString &file_name) {
-	static QRegExp replace_regexp(QString("%1$").arg(TITLEBLOCKS_FILE_EXTENSION));
+	static QRegularExpression replace_regexp(QString("%1$").arg(TITLEBLOCKS_FILE_EXTENSION));
 	QString template_name(file_name);
 	return(template_name.replace(replace_regexp, ""));
 }

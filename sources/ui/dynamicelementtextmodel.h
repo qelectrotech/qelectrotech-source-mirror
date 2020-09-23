@@ -19,6 +19,8 @@
 #define DYNAMICELEMENTTEXTMODEL_H
 
 #include <QStandardItemModel>
+#include <QHash>
+
 #include <qstyleditemdelegate.h>
 #include "dynamicelementtextitem.h"
 
@@ -35,7 +37,7 @@ class Element;
 class DynamicElementTextModel : public QStandardItemModel
 {
 	Q_OBJECT
-	
+
 	public:
 	enum ValueType {
 		textFrom =1,
@@ -58,10 +60,10 @@ class DynamicElementTextModel : public QStandardItemModel
 		grpHoldBottom,
 		grpFrame
 	};
-	
+
 	DynamicElementTextModel(Element *element, QObject *parent = nullptr);
 	~DynamicElementTextModel() override;
-	
+
 	bool indexIsInGroup(const QModelIndex &index) const;
 	DynamicElementTextItem *textFromIndex(const QModelIndex &index) const;
 	DynamicElementTextItem *textFromItem(QStandardItem *item) const;
@@ -72,13 +74,13 @@ class DynamicElementTextModel : public QStandardItemModel
 	QUndoCommand *undoForEditedGroup(
 			ElementTextItemGroup *group,
 			QUndoCommand *parent_undo = nullptr) const;
-	
+
 	ElementTextItemGroup *groupFromIndex(const QModelIndex &index) const;
 	ElementTextItemGroup *groupFromItem(QStandardItem *item) const;
 	QModelIndex indexFromGroup(ElementTextItemGroup *group) const;
 	bool indexIsText(const QModelIndex &index) const;
 	bool indexIsGroup(const QModelIndex &index) const;
-	
+
 	bool canDropMimeData(
 			const QMimeData *data,
 			Qt::DropAction action,
@@ -93,10 +95,10 @@ class DynamicElementTextModel : public QStandardItemModel
 			const QModelIndex &parent) override;
 	QMimeData *mimeData(const QModelIndexList &indexes) const override;
 	QStringList mimeTypes() const override;
-	
+
 	signals:
 	void dataChanged();
-	
+
 	private:
 	QList<QStandardItem *> itemsForText(DynamicElementTextItem *deti);
 	void addText(DynamicElementTextItem *deti);
@@ -119,7 +121,7 @@ class DynamicElementTextModel : public QStandardItemModel
 				DynamicElementTextModel::ValueType type);
 	void updateDataFromGroup(ElementTextItemGroup *group,
 				 DynamicElementTextModel::ValueType type);
-	
+
 	private:
 	QPointer<Element> m_element;
 	QHash <DynamicElementTextItem *, QStandardItem *> m_texts_list;
@@ -134,10 +136,10 @@ class DynamicElementTextModel : public QStandardItemModel
 class DynamicTextItemDelegate : public QStyledItemDelegate
 {
 	Q_OBJECT
-	
+
 	public:
 	DynamicTextItemDelegate(QObject *parent = Q_NULLPTR);
-	
+
 	QWidget *createEditor(
 			QWidget *parent,
 			const QStyleOptionViewItem &option,
@@ -146,10 +148,10 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
 			QWidget *editor,
 			QAbstractItemModel *model,
 			const QModelIndex &index) const override;
-	
+
 	protected:
 	bool eventFilter(QObject *object, QEvent *event) override;
-	
+
 	private:
 	QStringList availableInfo(DynamicElementTextItem *deti) const;
 };
