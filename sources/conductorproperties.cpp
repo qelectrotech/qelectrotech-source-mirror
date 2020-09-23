@@ -19,6 +19,7 @@
 #include <QPainter>
 #include <QMetaEnum>
 #include <QRegularExpression>
+#include <QtDebug>
 /**
 	Constructeur par defaut
 */
@@ -789,16 +790,32 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	QStringList styles = style_string.split(";", Qt::SkipEmptyParts);
 #endif
 
-	QRegularExpression Rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
-	foreach (QString style_str, styles) {
-		if (Rx==QRegularExpression(style_str)) {
-
-			QString style_name = Rx.namedCaptureGroups().at(1);
-			QString style_value = Rx.namedCaptureGroups().at(2);
+	QRegularExpression Rx("^(?<name>[a-z-]+): (?<value>[a-z-]+)$");
+	if (!Rx.isValid())
+	{
+		qWarning() <<"this is an error in the code"
+			  << Rx.errorString()
+			  << Rx.patternErrorOffset();
+		return;
+	}
+	foreach (QString style_str, styles)
+	{
+		QRegularExpressionMatch match = Rx.match(style_str);
+		if (!match.hasMatch())
+		{
+			qDebug()<<"no Match"
+			       <<style_str;
+		} else {
+			QString style_name = match.captured("name");
+			QString style_value = match.captured("value");
 			if (style_name == "line-style") {
 				if (style_value == "dashed") style = Qt::DashLine;
 				else if (style_value == "dashdotted") style = Qt::DashDotLine;
 				else if (style_value == "normal") style = Qt::SolidLine;
+				else {
+					qWarning()<<"style_value not known"
+						 <<style_value;
+				}
 			}
 		}
 	}
