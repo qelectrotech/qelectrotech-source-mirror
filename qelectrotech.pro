@@ -4,51 +4,51 @@
 
 # Chemins utilises pour la compilation et l'installation de QET
 unix {
-	# Chemins UNIX
-	COMPIL_PREFIX              = '/usr/local/'
-	INSTALL_PREFIX             = '/usr/local/'
-	QET_BINARY_PATH            = 'bin/'
-	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
-	QET_COMMON_TBT_PATH        = 'share/qelectrotech/titleblocks/'
-	QET_LANG_PATH              = 'share/qelectrotech/lang/'
-	QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
-	QET_LICENSE_PATH           = 'doc/qelectrotech/'
-	QET_MIME_XML_PATH          = '../share/mime/application/'
-	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
-	QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
-	QET_DESKTOP_PATH           = 'share/applications/'
-	QET_ICONS_PATH             = 'share/icons/hicolor/'
-	QET_MAN_PATH               = 'man/'
-	QET_APPDATA_PATH           = 'share/appdata'
+        # Chemins UNIX
+        COMPIL_PREFIX              = '/usr/local/'
+        INSTALL_PREFIX             = '/usr/local/'
+        QET_BINARY_PATH            = 'bin/'
+        QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
+        QET_COMMON_TBT_PATH        = 'share/qelectrotech/titleblocks/'
+        QET_LANG_PATH              = 'share/qelectrotech/lang/'
+        QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
+        QET_LICENSE_PATH           = 'doc/qelectrotech/'
+        QET_MIME_XML_PATH          = '../share/mime/application/'
+        QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
+        QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
+        QET_DESKTOP_PATH           = 'share/applications/'
+        QET_ICONS_PATH             = 'share/icons/hicolor/'
+        QET_MAN_PATH               = 'man/'
+        QET_APPDATA_PATH           = 'share/appdata'
 }
 win32 {
-	# Chemins Windows
-	COMPIL_PREFIX              = './'
-	INSTALL_PREFIX             = './'
-	QET_BINARY_PATH            = './'
-	QET_COMMON_COLLECTION_PATH = 'elements/'
-	QET_COMMON_TBT_PATH        = 'titleblocks/'
-	QET_LANG_PATH              = 'lang/'
-	QET_LICENSE_PATH           = './'
-	# Liste des ressources Windows
+        # Chemins Windows
+        COMPIL_PREFIX              = './'
+        INSTALL_PREFIX             = './'
+        QET_BINARY_PATH            = './'
+        QET_COMMON_COLLECTION_PATH = 'elements/'
+        QET_COMMON_TBT_PATH        = 'titleblocks/'
+        QET_LANG_PATH              = 'lang/'
+        QET_LICENSE_PATH           = './'
+        # Liste des ressources Windows
     #RC_FILE = qelectrotech.rc
 }
 macx {
-	# Chemins MacOS X
-	COMPIL_PREFIX              = './'
-	INSTALL_PREFIX             = '/usr/local/'
-	QET_BINARY_PATH            = 'bin/'
-	QET_COMMON_COLLECTION_PATH = '../Resources/elements/'
-	QET_COMMON_TBT_PATH        = '../Resources/titleblocks/'
-	QET_LANG_PATH              = '../Resources/lang/'
-	QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
-	QET_LICENSE_PATH           = 'doc/qelectrotech/'
-	QET_MIME_XML_PATH          = '../share/mime/application/'
-	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
-	QET_DESKTOP_PATH           = 'share/applications/'
-	QET_ICONS_PATH             = 'share/icons/hicolor/'
-	QET_MAN_PATH               = 'man/'
-	ICON                       = 'ico/mac_icon/qelectrotech.icns'
+        # Chemins MacOS X
+        COMPIL_PREFIX              = './'
+        INSTALL_PREFIX             = '/usr/local/'
+        QET_BINARY_PATH            = 'bin/'
+        QET_COMMON_COLLECTION_PATH = '../Resources/elements/'
+        QET_COMMON_TBT_PATH        = '../Resources/titleblocks/'
+        QET_LANG_PATH              = '../Resources/lang/'
+        QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
+        QET_LICENSE_PATH           = 'doc/qelectrotech/'
+        QET_MIME_XML_PATH          = '../share/mime/application/'
+        QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
+        QET_DESKTOP_PATH           = 'share/applications/'
+        QET_ICONS_PATH             = 'share/icons/hicolor/'
+        QET_MAN_PATH               = 'man/'
+        ICON                       = 'ico/mac_icon/qelectrotech.icns'
 
 }
 
@@ -76,7 +76,14 @@ include(sources/QWidgetAnimation/QWidgetAnimation.pri)
 DEFINES += QAPPLICATION_CLASS=QApplication
 DEFINES += QT_MESSAGELOGCONTEXT
 DEFINES += GIT_COMMIT_SHA="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" rev-parse --verify HEAD)\\\""
-DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
+
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000 # disables all the APIs deprecated before Qt 6.0.0
+
+# You can make your code warn on compile time for the TODO's
+# In order to do so, uncomment the following line.
+#DEFINES += TODO_LIST
 
 TEMPLATE = app
 DEPENDPATH += .
@@ -176,7 +183,7 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/dataBase/*.cpp) \
            $$files(sources/dataBase/ui/*.cpp) \
            $$files(sources/factory/ui/*.cpp)
-    
+
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
 
@@ -268,28 +275,28 @@ man.extra          = sh man/compress_man_pages.sh
 INSTALLS += target elements tbt lang copyright
 # Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
 unix {
-	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata
+        INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata
 }
 
 # Options de compilation communes a Unix et MacOS X
 unix {
-	# Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
-	DEFINES += QET_LANG_PATH=$$join(COMPIL_PREFIX,,,$${QET_LANG_PATH})
-	
-	# Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
-	DEFINES += QET_COMMON_COLLECTION_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
-	
-	DEFINES += QET_COMMON_TBT_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_TBT_PATH})
+        # Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
+        DEFINES += QET_LANG_PATH=$$join(COMPIL_PREFIX,,,$${QET_LANG_PATH})
+
+        # Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
+        DEFINES += QET_COMMON_COLLECTION_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
+
+        DEFINES += QET_COMMON_TBT_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_TBT_PATH})
 }
 
 # Options de compilation specifiques a MacOS X
 macx {
-	# les chemins definis precedemment sont relatifs au dossier contenant le binaire executable
-	DEFINES += QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
-	DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+        # les chemins definis precedemment sont relatifs au dossier contenant le binaire executable
+        DEFINES += QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
+        DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
 }
 
 # Compilers-specific options
 unix {
-	QMAKE_COPY_DIR = 'cp -f -r --preserve=timestamps'
+        QMAKE_COPY_DIR = 'cp -f -r --preserve=timestamps'
 }

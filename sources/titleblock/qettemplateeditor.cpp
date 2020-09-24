@@ -210,6 +210,9 @@ bool QETTitleBlockTemplateEditor::edit(
 	}
 	if (!tb_template_orig) {
 		/// TODO The TBT does not exist, manage error
+#if TODO_LIST
+#pragma message("@TODO The TBT does not exist, manage error")
+#endif
 		return(false);
 	}
 
@@ -247,6 +250,9 @@ bool QETTitleBlockTemplateEditor::edit(
 
 	if (!tb_template_orig) {
 		/// TODO The TBT does not exist, manage error
+#if TODO_LIST
+#pragma message("@TODO The TBT does not exist, manage error")
+#endif
 		return(false);
 	}
 
@@ -267,12 +273,18 @@ bool QETTitleBlockTemplateEditor::edit(const QString &file_path)
 	TitleBlockTemplate *tbt = new TitleBlockTemplate();
 	bool loading = tbt -> loadFromXmlFile(file_path);
 	if (!loading) {
+#if TODO_LIST
+#pragma message("@TODO the file opening failed, warn the user?")
+#endif
 		/// TODO the file opening failed, warn the user?
 		return(false);
 	}
 
 	bool editing = edit(tbt);
 	if (!editing) {
+#if TODO_LIST
+#pragma message("@TODO the file editing failed, warn the user?")
+#endif
 		/// TODO the file editing failed, warn the user?
 		return(false);
 	}

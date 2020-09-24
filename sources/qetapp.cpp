@@ -1494,7 +1494,9 @@ void QETApp::useSystemPalette(bool use) {
 */
 void QETApp::quitQET()
 {
+#if TODO_LIST
 #pragma message("@TODO Segmentation fault when closing program before loading elements is finished")
+#endif
 	if (closeEveryEditor()) {
 		qApp->quit();
 	}

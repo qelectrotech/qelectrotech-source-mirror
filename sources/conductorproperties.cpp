@@ -368,7 +368,9 @@ void ConductorProperties::fromXml(QDomElement &e)
 	//Keep retrocompatible with version older than 0,4
 	//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
 	//@TODO remove this code for qet 0.6 or later
+#if TODO_LIST
 #pragma message("@TODO remove this code for qet 0.6 or later")
+#endif
 	if (e.attribute("type") == "simple") m_show_text = false;
 }
 
@@ -786,7 +788,9 @@ void ConductorProperties::readStyle(const QString &style_string) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code QString::SkipEmptyParts for QT 5.14 or later")
+#endif
 	QStringList styles = style_string.split(";", Qt::SkipEmptyParts);
 #endif
 

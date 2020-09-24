@@ -397,7 +397,9 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	QStringList rows_descriptions =
 			rows_string.split(QChar(';'), QString::SkipEmptyParts);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 	QStringList rows_descriptions =
 			rows_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
@@ -437,7 +439,9 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	QStringList cols_descriptions =
 			cols_string.split(QChar(';'), QString::SkipEmptyParts);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 	QStringList cols_descriptions =
 			cols_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
@@ -1378,7 +1382,9 @@ bool TitleBlockTemplate::removeLogo(const QString &logo_name) {
 	if (!data_logos_.contains(logo_name)) {
 		return(false);
 	}
+#if TODO_LIST
 #pragma message("@TODO check existing cells using this logo.")
+#endif
 	/// TODO check existing cells using this logo.
 	if (vector_logos_.contains(logo_name)) {
 		delete vector_logos_.take(logo_name);
@@ -1404,7 +1410,9 @@ bool TitleBlockTemplate::renameLogo(const QString &logo_name,
 			|| data_logos_.contains(new_name)) {
 		return(false);
 	}
-
+#if TODO_LIST
+#pragma message("@TODO check existing cells using this logo.")
+#endif
 	/// TODO check existing cells using this logo.
 	if (vector_logos_.contains(logo_name)) {
 		vector_logos_.insert(new_name, vector_logos_.take(logo_name));
@@ -1755,7 +1763,9 @@ QStringList TitleBlockTemplate::listOfVariables()
 					|| cells_[i][j] -> cell_type
 					== TitleBlockCell::EmptyCell)
 				continue;
+#if TODO_LIST
 #pragma message("@TODO not works on all cases...")
+#endif
 			// TODO: not works on all cases...
 			list << cells_[i][j] -> value.name().replace("%","");
 		}

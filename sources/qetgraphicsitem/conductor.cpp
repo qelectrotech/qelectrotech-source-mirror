@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -94,7 +94,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	bool ajout_p2 = terminal2 -> addConductor(this);
 		//m_valid become false if the conductor can't be added to terminal (conductor already exist)
 	m_valid = (!ajout_p1 || !ajout_p2) ? false : true;
-	
+
 		//Default attribut for paint a conductor
 	if (!pen_and_brush_initialized)
 	{
@@ -107,7 +107,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		conductor_brush.setStyle(Qt::NoBrush);
 		pen_and_brush_initialized = true;
 	}
-	
+
 		//By default, the 4 profils are nuls -> we must to use priv_calculeConductor
 	conductor_profiles.insert(Qt::TopLeftCorner,     ConductorProfile());
 	conductor_profiles.insert(Qt::TopRightCorner,    ConductorProfile());
@@ -118,7 +118,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsScenePositionChanges);
 	setAcceptHoverEvents(true);
-	
+
 		// Add the text field
 	m_text_item = new ConductorTextItem(m_properties.text, this);
 	connect(m_text_item, &ConductorTextItem::textEdited, this, &Conductor::displayedTextChanged);
@@ -178,10 +178,10 @@ void Conductor::updatePath(const QRectF &rect) {
 void Conductor::segmentsToPath()
 {
 	QPainterPath path;
-	
+
 	if (segments == nullptr)
 		setPath(path);
-	
+
 		//Start the path
 	path.moveTo(segments -> firstPoint());
 		//Each segments
@@ -192,9 +192,9 @@ void Conductor::segmentsToPath()
 	}
 		//Finish the path
 	path.lineTo(segment -> secondPoint());
-	
+
 	setPath(path);
-	
+
 		//If conductor is selected and he's not being modified
 		//we update the position of the handlers
 	if (isSelected() && !m_moving_segment)
@@ -219,34 +219,34 @@ void Conductor::segmentsToPath()
 void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, const QPointF &p2, Qet::Orientation o2) {
 	Q_UNUSED(o1);
 	Q_UNUSED(o2);
-	
+
 	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
-	
+
 	Q_ASSERT_X(conductor_profile.segmentsCount(QET::Both) > 1, "Conductor::priv_modifieConductor", "pas de points a modifier");
 	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
-	
+
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);
 	QPointF new_p2 = mapFromScene(p2);
 	QRectF new_rect = QRectF(new_p1, new_p2);
-	
+
 	// recupere la largeur et la hauteur du profil
 	qreal profile_width  = conductor_profile.width();
 	qreal profile_height = conductor_profile.height();
-	
+
 	// calcule les differences verticales et horizontales a appliquer
 	qreal h_diff = (qAbs(new_rect.width())  - qAbs(profile_width) ) * getSign(profile_width);
 	qreal v_diff = (qAbs(new_rect.height()) - qAbs(profile_height)) * getSign(profile_height);
-	
+
 	// applique les differences aux segments
 	QMultiHash<ConductorSegmentProfile *, qreal> segments_lengths;
 	segments_lengths.unite(shareOffsetBetweenSegments(h_diff, conductor_profile.horizontalSegments()));
 	segments_lengths.unite(shareOffsetBetweenSegments(v_diff, conductor_profile.verticalSegments()));
-	
+
 	// en deduit egalement les coefficients d'inversion (-1 pour une inversion, +1 pour conserver le meme sens)
 	int horiz_coeff = getCoeff(new_rect.width(),  profile_width);
 	int verti_coeff = getCoeff(new_rect.height(), profile_height);
-	
+
 	// genere les nouveaux points
 	QList<QPointF> points;
 	points << new_p1;
@@ -254,14 +254,14 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 	for (int i = 0 ; i < limit ; ++ i) {
 		// dernier point
 		QPointF previous_point = points.last();
-		
+
 		// profil de segment de conducteur en cours
 		ConductorSegmentProfile *csp = conductor_profile.segments.at(i);
-		
+
 		// coefficient et offset a utiliser pour ce point
 		qreal coeff = csp -> isHorizontal ? horiz_coeff : verti_coeff;
 		qreal offset_applied = segments_lengths.value(csp);
-		
+
 		// applique l'offset et le coeff au point
 		if (csp -> isHorizontal) {
 			points << QPointF (
@@ -296,15 +296,15 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 	foreach(ConductorSegmentProfile *csp, segments_list) {
 		segments_hash.insert(csp, csp -> length);
 	}
-	
+
 	// memorise le signe de la longueur de chaque segement
 	QHash<ConductorSegmentProfile *, int> segments_signs;
 	foreach(ConductorSegmentProfile *csp, segments_hash.keys()) {
 		segments_signs.insert(csp, getSign(csp -> length));
 	}
-	
+
 	//qDebug() << "repartition d'un offset de" << offset << "px sur" << segments_list.count() << "segments";
-	
+
 	// repartit l'offset sur les segments
 	qreal remaining_offset = offset;
 	while (remaining_offset > precision || remaining_offset < -precision) {
@@ -321,10 +321,10 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 			// applique l'offset au segment
 			//qreal segment_old_length = segments_hash[csp];
 			segments_hash[csp] += local_offset;
-			
+
 			// (la longueur du segment change de signe) <=> (le segment n'a pu absorbe tout l'offset)
 			if (segments_signs[csp] != getSign(segments_hash[csp])) {
-				
+
 				// on remet le trop-plein dans la reserve d'offset
 				remaining_offset += qAbs(segments_hash[csp]) * getSign(local_offset);
 				//qDebug() << "    trop-plein de" << qAbs(segments_hash[csp]) * getSign(local_offset) << "remaining_offset =" << remaining_offset;
@@ -334,7 +334,7 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 			}
 		}
 	}
-	
+
 	return(segments_hash);
 }
 
@@ -348,18 +348,18 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, const QPointF &p2, Qet::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
 	Qet::Orientation ori_depart, ori_arrivee;
-	
+
 	// s'assure qu'il n'y a ni points
 	QList<QPointF> points;
-	
+
 	// mappe les points par rapport a la scene
 	sp1 = mapFromScene(p1);
 	sp2 = mapFromScene(p2);
-	
+
 	// prolonge les bornes
 	newp1 = extendTerminal(sp1, o1);
 	newp2 = extendTerminal(sp2, o2);
-	
+
 	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite (apres prolongation)
 	if (newp1.x() <= newp2.x()) {
 		depart      = newp1;
@@ -376,13 +376,13 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 		ori_depart  = o2;
 		ori_arrivee = o1;
 	}
-	
+
 	// debut du trajet
 	points << depart0;
-	
+
 	// prolongement de la borne de depart
 	points << depart;
-	
+
 	// commence le vrai trajet
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
@@ -423,20 +423,20 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 			points << QPointF(arrivee.x(), depart.y()); // cas "1"
 		}
 	}
-	
+
 	// fin du vrai trajet
 	points << arrivee;
-	
+
 	// prolongement de la borne d'arrivee
 	points << arrivee0;
-	
+
 	// inverse eventuellement l'ordre des points afin que le trajet soit exprime de la borne 1 vers la borne 2
 	if (newp1.x() > newp2.x()) {
 		QList<QPointF> points2;
 		for (int i = points.size() - 1 ; i >= 0 ; -- i) points2 << points.at(i);
 		points = points2;
 	}
-	
+
 	pointsToSegments(points);
 	segmentsToPath();
 }
@@ -472,14 +472,14 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 	Dessine le conducteur sans antialiasing.
 	@param qp Le QPainter a utiliser pour dessiner le conducteur
 	@param options Les options de style pour le conducteur
-	@param qw Le QWidget sur lequel on dessine 
+	@param qw Le QWidget sur lequel on dessine
 */
 void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
 	Q_UNUSED(qw);
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
-	
+
 		// Set the color of conductor
 	QColor final_conductor_color(m_properties.color);
 	if (must_highlight_ == Normal) {
@@ -495,26 +495,26 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 			}
 		}
 	}
-	
+
 		//Draw the conductor bigger when is hovered
 	conductor_pen.setWidthF(m_mouse_over? (m_properties.cond_size) +4 : (m_properties.cond_size));
 
 		//Set the QPen and QBrush to the QPainter
 	qp -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
-	
+
 		//Set the conductor style
 	final_conductor_pen.setColor(final_conductor_color);
 	final_conductor_pen.setStyle(m_properties.style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
-	
+
 		//Use a cosmetique line, below a certain zoom
 	if (options && options -> levelOfDetail < 1.0) {
 		final_conductor_pen.setCosmetic(true);
 	}
-	
+
 	qp -> setPen(final_conductor_pen);
-	
+
 		//Draw the conductor
 	qp -> drawPath(path());
 		//Draw the second color
@@ -530,7 +530,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		qp->drawPath(path());
 		qp->restore();
 	}
-	
+
 	if (m_properties.type == ConductorProperties::Single) {
 		qp -> setBrush(final_conductor_color);
 		m_properties.singleLineProperties.draw(
@@ -540,7 +540,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		);
 		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
-	
+
 		//Draw the junctions
 	QList<QPointF> junctions_list = junctions();
 	if (!junctions_list.isEmpty()) {
@@ -579,11 +579,11 @@ ConductorTextItem *Conductor::textItem() const
 bool Conductor::valideXml(QDomElement &e){
 	// verifie le nom du tag
 	if (e.tagName() != "conductor") return(false);
-	
+
 	// verifie la presence des attributs minimaux
 	if (!e.hasAttribute("terminal1")) return(false);
 	if (!e.hasAttribute("terminal2")) return(false);
-	
+
 	bool conv_ok;
 	// parse l'abscisse
 	if (e.hasAttribute("element1")) {
@@ -595,7 +595,7 @@ bool Conductor::valideXml(QDomElement &e){
 		e.attribute("terminal1").toInt(&conv_ok);
 		if (!conv_ok) return(false);
 	}
-	
+
 	// parse l'ordonnee
 	if (e.hasAttribute("element2")) {
 		if (QUuid(e.attribute("element2")).isNull())
@@ -627,7 +627,7 @@ void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	QGraphicsObject::mousePressEvent(event);
-	
+
 	if (event->modifiers() & Qt::ControlModifier)
 		setSelected(!isSelected());
 }
@@ -668,7 +668,7 @@ void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 	@brief Conductor::itemChange
 	@param change
 	@param value
-	@return 
+	@return
 */
 QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 {
@@ -689,7 +689,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 	else if (change == QGraphicsItem::ItemSceneHasChanged)
 	{
 		calculateTextItemPosition();
-		
+
 		if(!scene())
 			removeHandler();
 		else if (scene() && isSelected())
@@ -701,7 +701,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 	else if (change == QGraphicsItem::ItemPositionHasChanged && isSelected()) {
 		adjusteHandlerPos();
 	}
-	
+
 	return(QGraphicsObject::itemChange(change, value));
 }
 
@@ -709,7 +709,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 	@brief Conductor::sceneEventFilter
 	@param watched
 	@param event
-	@return 
+	@return
 */
 bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
@@ -717,7 +717,7 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -746,7 +746,7 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -758,7 +758,7 @@ void Conductor::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
 		return;
-	
+
 	if (m_handler_vector.size() == handlerPoints().size())
 	{
 		QVector <QPointF> points_vector = mapToScene(handlerPoints());
@@ -775,7 +775,7 @@ void Conductor::adjusteHandlerPos()
 void Conductor::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event);
-	
+
 		//we get the segment corresponding to the handler
 	if (m_vector_index > -1)
 	{
@@ -783,7 +783,7 @@ void Conductor::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSc
 		m_moving_segment = true;
 		m_moved_segment = segmentsList().at(m_vector_index+1);
 		before_mov_text_pos_ = m_text_item -> pos();
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 			if(handler != qghi)
 				handler->hide();
@@ -801,14 +801,14 @@ void Conductor::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 	{
 			//Snap the mouse pos to grid
 		QPointF pos_ = Diagram::snapToGrid(mapFromScene(event->scenePos()));
-		
+
 			//Position of the last point
 		QPointF p = m_moved_segment -> middle();
-		
+
 			//Calcul the movement
 		m_moved_segment -> moveX(pos_.x() - p.x());
 		m_moved_segment -> moveY(pos_.y() - p.y());
-		
+
 			//Apply the movement
 		modified_path = true;
 		has_to_save_profile = true;
@@ -827,9 +827,9 @@ void Conductor::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphics
 {
 	Q_UNUSED(event);
 	Q_UNUSED(qghi);
-	
+
 	m_vector_index = -1;
-	
+
 	m_moving_segment = false;
 	if (has_to_save_profile)
 	{
@@ -849,9 +849,9 @@ void Conductor::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphics
 void Conductor::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
-	{		
+	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(handlerPoints()));
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			handler->setColor(Qt::blue);
@@ -897,7 +897,7 @@ QPainterPath Conductor::shape() const
 	pps.setJoinStyle(conductor_pen.joinStyle());
 
 	QPainterPath shape_(pps.createStroke(path()));
-	
+
 	return shape_;
 }
 
@@ -936,23 +936,23 @@ QList<QPointF> Conductor::segmentsToPoints() const
 {
 	// liste qui sera retournee
 	QList<QPointF> points_list;
-	
+
 	// on retourne la liste tout de suite s'il n'y a pas de segments
 	if (segments == nullptr) return(points_list);
-	
+
 	// recupere le premier point
 	points_list << segments -> firstPoint();
-	
+
 	// parcourt les segments pour recuperer les autres points
 	ConductorSegment *segment = segments;
 	while(segment -> hasNextSegment()) {
 		points_list << segment -> secondPoint();
 		segment = segment -> nextSegment();
 	}
-	
+
 	// recupere le dernier point
 	points_list << segment -> secondPoint();
-	
+
 	//retourne la liste
 	return(points_list);
 }
@@ -964,7 +964,7 @@ QList<QPointF> Conductor::segmentsToPoints() const
 void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 	// supprime les segments actuels
 	deleteSegments();
-	
+
 	// cree les segments a partir de la liste de points
 	ConductorSegment *last_segment = nullptr;
 	for (int i = 0 ; i < points_list.size() - 1 ; ++ i) {
@@ -1039,7 +1039,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
 	}
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
-	
+
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
 	if (modified_path)
@@ -1057,7 +1057,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 
 	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
 	dom_element.appendChild(dom_seq);
-	
+
 		// Export the properties and text
 	m_properties. toXml(dom_element);
 	if(m_text_item->wasMovedByUser())
@@ -1177,10 +1177,10 @@ QVector<QPointF> Conductor::handlerPoints() const
 const QList<ConductorSegment *> Conductor::segmentsList() const
 {
 	if (segments == nullptr) return(QList<ConductorSegment *>());
-	
+
 	QList<ConductorSegment *> segments_vector;
 	ConductorSegment *segment = segments;
-	
+
 	while (segment -> hasNextSegment()) {
 		segments_vector << segment;
 		segment = segment -> nextSegment();
@@ -1203,12 +1203,12 @@ qreal Conductor::length() const{
 ConductorSegment *Conductor::middleSegment()
 {
 	if (segments == nullptr) return(nullptr);
-	
+
 	qreal half_length = length() / 2.0;
-	
+
 	ConductorSegment *s = segments;
 	qreal l = 0;
-	
+
 	while (s -> hasNextSegment()) {
 		l += qAbs(s -> length());
 		if (l >= half_length) break;
@@ -1344,7 +1344,7 @@ void Conductor::calculateTextItemPosition()
 			rotation == Qt::Vertical ? m_text_item -> setRotation(m_properties.verti_rotate_text):
 									   m_text_item -> setRotation(m_properties.horiz_rotate_text);
 		}
-		
+
 			//Adjust the position of text if his rotation
 			//is 0° or 270°, to be exactly centered to the conductor
 		if (m_text_item -> rotation() == 0)
@@ -1359,9 +1359,9 @@ void Conductor::calculateTextItemPosition()
 			if(m_properties.m_vertical_alignment == Qt::AlignLeft)
 				text_pos.rx() -= m_text_item->boundingRect().height();
 		}
-		
+
 		m_text_item -> setPos(text_pos);
-		
+
 			//Ensure text item don't collide with this conductor
 		while (m_text_item->collidesWithItem(this))
 		{
@@ -1491,7 +1491,7 @@ void Conductor::setPath(const QPainterPath &path)
 {
 	if(path == m_path)
 		return;
-	
+
 	prepareGeometryChange();
 	m_path = path;
 	update();
@@ -1694,7 +1694,9 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 			other_conductors += other_conductors_list_t.toSet();
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());
 #endif
 		}
@@ -1750,17 +1752,17 @@ void Conductor::setUpConnectionForFormula(QString old_formula, QString new_formu
 			//we must to replace %F by the real text, to check if the real text contain the variable %id
 		if (old_formula.contains("%F"))
 			old_formula.replace("%F", diagram()->border_and_titleblock.folio());
-		
+
 		if (old_formula.contains("%id"))
 			disconnect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
-		
+
 			//Label is frozen, so we don't update it.
 		if (m_freeze_label == true)
 			return;
-		
+
 		if (new_formula.contains("%F"))
 			new_formula.replace("%F", diagram()->border_and_titleblock.folio());
-		
+
 		if (new_formula.contains("%id"))
 			connect(diagram()->project(), &QETProject::projectDiagramsOrderChanged, this, &Conductor::refreshText);
 	}
@@ -1785,18 +1787,18 @@ bool isContained(const QPointF &a, const QPointF &b, const QPointF &c) {
 QList<QPointF> Conductor::junctions() const
 {
 	QList<QPointF> junctions_list;
-	
+
 	// pour qu'il y ait des jonctions, il doit y avoir d'autres conducteurs et des bifurcations
 	QList<Conductor *> other_conductors = relatedConductors(this);
 	QList<ConductorBend> bends_list = bends();
 	if (other_conductors.isEmpty() || bends_list.isEmpty()) {
 		return(junctions_list);
 	}
-	
+
 	QList<QPointF> points = segmentsToPoints();
 	for (int i = 1 ; i < (points.size() -1) ; ++ i) {
 		QPointF point = points.at(i);
-		
+
 		// determine si le point est une bifurcation ou non
 		bool is_bend = false;
 		Qt::Corner current_bend_type = Qt::TopLeftCorner;
@@ -1811,7 +1813,7 @@ QList<QPointF> Conductor::junctions() const
 		}
 		// si le point n'est pas une bifurcation, il ne peut etre une jonction (enfin pas au niveau de ce conducteur)
 		if (!is_bend) continue;
-		
+
 		bool is_junction = false;
 		QPointF scene_point = mapToScene(point);
 		foreach(Conductor *c, other_conductors)
@@ -1857,7 +1859,7 @@ QList<ConductorBend> Conductor::bends() const
 {
 	QList<ConductorBend> points;
 	if (!segments) return(points);
-	
+
 	// recupere la liste des segments de taille non nulle
 	QList<ConductorSegment *> visible_segments;
 	ConductorSegment *segment = segments;
@@ -1866,7 +1868,7 @@ QList<ConductorBend> Conductor::bends() const
 		segment = segment -> nextSegment();
 	}
 	if (!segment  -> isPoint()) visible_segments << segment;
-	
+
 	ConductorSegment *next_segment;
 	for (int i = 0 ; i < visible_segments.count() -1 ; ++ i) {
 		segment = visible_segments[i];
@@ -1877,7 +1879,7 @@ QList<ConductorBend> Conductor::bends() const
 				Qt::Corner bend_type;
 				qreal sl = segment -> length();
 				qreal nsl = next_segment -> length();
-				
+
 				if (segment -> isHorizontal()) {
 					if (sl < 0 && nsl < 0) {
 						bend_type = Qt::BottomLeftCorner;
@@ -1974,14 +1976,14 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	QList<QPointF> points;
 	foreach(QPolygonF polygon, polygons) {
 		if (polygon.count() <= 1) continue;
-		
+
 		// on recense les lignes et les points
 		for (int i = 1 ; i < polygon.count() ; ++ i) {
 			lines << QLineF(polygon.at(i - 1), polygon.at(i));
 			points << polygon.at(i -1);
 		}
 	}
-	
+
 	// on fait des projetes orthogonaux du point sur les differents segments du
 	// polygone, en les triant par longueur croissante
 	QMap<qreal, QPointF> intersections;
@@ -2007,7 +2009,7 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 				}
 			}
 			// on connait desormais le coin le plus proche du texte
-		
+
 		// aucun projete orthogonal n'a donne quoi que ce soit, on met le texte sur un des coins du polygone
 		return(points.at(point_index));
 	}

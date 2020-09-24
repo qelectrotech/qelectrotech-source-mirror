@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -41,14 +41,14 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	angle       = new QSpinBox();
 	start_angle -> setRange(-360, 360);
 	angle       -> setRange(-360, 360);
-	
+
 	x->setRange(-5000, 5000);
 	y->setRange(-5000, 5000);
 	h->setRange(-5000, 5000);
 	v->setRange(-5000, 5000);
-	
+
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
-	
+
 	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Centre : ")),            0, 0);
 	grid -> addWidget(new QLabel("x"),                        1, 0, Qt::AlignRight);
@@ -64,13 +64,13 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	grid -> addWidget(start_angle,                            5, 1);
 	grid -> addWidget(new QLabel(tr("Angle :")),              6, 0);
 	grid -> addWidget(angle,                                  6, 1);
-	
+
 	v_layout -> addWidget(style_);
 	v_layout -> addLayout(grid);
 	v_layout->addStretch();
-	
+
 	updateForm();
-	
+
 	activeConnections(true);
 }
 
@@ -83,6 +83,9 @@ void ArcEditor::setUpChangeConnections()
     m_change_connections << connect(part, &PartArc::rectChanged, this, &ArcEditor::updateForm);
     m_change_connections << connect(part, &PartArc::spanAngleChanged, this, &ArcEditor::updateForm);
     m_change_connections << connect(part, &PartArc::startAngleChanged, this, &ArcEditor::updateForm);
+#if TODO_LIST
+#pragma message("@TODO implement position changes!")
+#endif
     // TODO: implement position changes!
     //m_change_connections << connect(part, &PartArc::)
 }
@@ -90,7 +93,7 @@ void ArcEditor::setUpChangeConnections()
 void ArcEditor::disconnectChangeConnections()
 {
     for (QMetaObject::Connection c : m_change_connections) {
-        disconnect(c);
+	disconnect(c);
     }
     m_change_connections.clear();
 }

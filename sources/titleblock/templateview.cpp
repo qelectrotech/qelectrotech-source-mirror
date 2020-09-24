@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -148,7 +148,7 @@ QList<TitleBlockCell *> TitleBlockTemplateView::cut()
 {
 	if (!tbtemplate_) return(QList<TitleBlockCell *>());
 	QList<TitleBlockCell *> copied_cells = copy();
-	
+
 	if (!copied_cells.isEmpty()) {
 		CutTemplateCellsCommand *cut_command = new CutTemplateCellsCommand(tbtemplate_);
 		cut_command -> setCutCells(copied_cells);
@@ -165,7 +165,7 @@ QList<TitleBlockCell *> TitleBlockTemplateView::copy()
 {
 	if (!tbtemplate_) return(QList<TitleBlockCell *>());
 	QList<TitleBlockCell *> copied_cells = selectedCells();
-	
+
 	QDomDocument xml_export;
 	QDomElement tbtpartial = xml_export.createElement("titleblocktemplate-partial");
 	xml_export.appendChild(tbtpartial);
@@ -176,10 +176,10 @@ QList<TitleBlockCell *> TitleBlockTemplateView::copy()
 		tbtpartial.setAttribute("row_span", cell -> row_span);
 		tbtpartial.setAttribute("col_span", cell -> col_span);
 	}
-	
+
 	QClipboard *clipboard = QApplication::clipboard();
 	clipboard -> setText(xml_export.toString());
-	
+
 	return(copied_cells);
 }
 
@@ -199,20 +199,20 @@ bool TitleBlockTemplateView::mayPaste()
 QList<TitleBlockCell> TitleBlockTemplateView::pastedCells()
 {
 	QList<TitleBlockCell> pasted_cells;
-	
+
 	// retrieve the clipboard content and parse it as XML
 	QClipboard *clipboard = QApplication::clipboard();
 	QDomDocument xml_import;
-	
+
 	if (!xml_import.setContent(clipboard -> text().trimmed())) {
 		return(pasted_cells);
 	}
-	
+
 	// ensure the XML document describes cells that can be pasted
 	if (xml_import.documentElement().tagName() != "titleblocktemplate-partial") {
 		return(pasted_cells);
 	}
-	
+
 	// load pasted cells
 	QDomElement paste_root = xml_import.documentElement();
 	for (QDomElement e = paste_root.firstChildElement() ; !e.isNull() ; e = e.nextSiblingElement()) {
@@ -228,12 +228,12 @@ QList<TitleBlockCell> TitleBlockTemplateView::pastedCells()
 			}
 			cell.num_row = row_num;
 			cell.num_col = col_num;
-			
+
 			// parse the rowspan and colspan attributes
 			if (QET::attributeIsAnInteger(e, "rowspan", &row_span) && row_span > 0) {
 				cell.row_span = row_span;
 			}
-			
+
 			if (QET::attributeIsAnInteger(e, "colspan", &col_span) && col_span > 0) {
 				cell.col_span = col_span;
 			}
@@ -251,23 +251,23 @@ void TitleBlockTemplateView::paste()
 	if (!tbtemplate_) return;
 	QList<TitleBlockCell> pasted_cells = pastedCells();
 	if (!pasted_cells.count()) return;
-	
+
 	// the top left cell among the selected ones will be used to position the pasted cells
 	TitleBlockTemplateVisualCell *selected_cell = selectedCellsSet().topLeftCell();
 	if (!selected_cell) return;
 	TitleBlockCell *erased_cell = selected_cell -> cell();
 	if (!erased_cell) return;
-	
+
 	// change num_row and num_col attributes of pasted cells so they get positionned relatively to selected_cell
 	normalizeCells(pasted_cells, erased_cell -> num_row, erased_cell -> num_col);
-	
+
 	PasteTemplateCellsCommand *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
 	foreach (TitleBlockCell cell, pasted_cells) {
 		TitleBlockCell *erased_cell = tbtemplate_ -> cell(cell.num_row, cell.num_col);
 		if (!erased_cell) continue;
 		paste_command -> addCell(erased_cell, *erased_cell, cell);
 	}
-	
+
 	requestGridModification(paste_command);
 }
 
@@ -345,7 +345,7 @@ void TitleBlockTemplateView::addRowAfter()
 void TitleBlockTemplateView::editColumn(HelperCell *cell) {
 	int index = cell ? cell -> index : lastContextMenuCellIndex();
 	if (index == -1) return;
-	
+
 	TitleBlockDimension dimension_before = tbtemplate_ -> columnDimension(index);
 	TitleBlockDimensionWidget dialog(true, this);
 	dialog.setReadOnly(read_only_);
@@ -371,7 +371,7 @@ void TitleBlockTemplateView::editColumn(HelperCell *cell) {
 void TitleBlockTemplateView::editRow(HelperCell *cell) {
 	int index = cell ? cell -> index : lastContextMenuCellIndex();
 	if (index == -1) return;
-	
+
 	TitleBlockDimension dimension_before = TitleBlockDimension(tbtemplate_ -> rowDimension(index));
 	TitleBlockDimensionWidget dialog(false, this);
 	dialog.setReadOnly(read_only_);
@@ -416,7 +416,7 @@ void TitleBlockTemplateView::mergeSelectedCells()
 {
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
-	
+
 	MergeCellsCommand *merge_command = new MergeCellsCommand(selected_cells, tbtemplate_);
 	if (merge_command -> isValid()) requestGridModification(merge_command);
 }
@@ -428,7 +428,7 @@ void TitleBlockTemplateView::splitSelectedCell()
 {
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
-	
+
 	SplitCellsCommand *split_command = new SplitCellsCommand(selected_cells, tbtemplate_);
 	if (split_command -> isValid()) requestGridModification(split_command);
 }
@@ -439,6 +439,9 @@ void TitleBlockTemplateView::splitSelectedCell()
 */
 void TitleBlockTemplateView::drawBackground(QPainter *painter, const QRectF &rect) {
 	QGraphicsView::drawBackground(painter, rect);
+#if TODO_LIST
+#pragma message("@TODO shouldn't we draw a large uniform rect?")
+#endif
 	if (!tbtemplate_) return; // TODO shouldn't we draw a large uniform rect?
 }
 
@@ -483,16 +486,16 @@ void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge,
 						  bool *can_split,
 						  int *count) {
 	if (!can_merge && !can_split) return;
-	
+
 	if (!tbtemplate_) {
 		if (can_merge) *can_merge = false;
 		if (can_split) *can_split = false;
 		return;
 	}
-	
+
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
-	
+
 	if (can_merge) {
 		*can_merge = MergeCellsCommand::canMerge(selected_cells, tbtemplate_);
 	}
@@ -518,11 +521,11 @@ QSizeF TitleBlockTemplateView::templateSize() const
 qreal TitleBlockTemplateView::templateWidth() const
 {
 	if (!tbtemplate_) return(0);
-	
+
 	qreal width = DEFAULT_ROWS_HELPER_CELLS_WIDTH;
 	// the rendered width may exceed the initially planned preview width
 	width += qMax<int>(preview_width_, tbtemplate_ -> width(preview_width_));
-	
+
 	return(width);
 }
 
@@ -532,11 +535,11 @@ qreal TitleBlockTemplateView::templateWidth() const
 qreal TitleBlockTemplateView::templateHeight() const
 {
 	if (!tbtemplate_) return(0);
-	
+
 	qreal height = DEFAULT_PREVIEW_HELPER_CELL_HEIGHT;
 	height += DEFAULT_COLS_HELPER_CELLS_HEIGHT;
 	height += tbtemplate_ -> height();
-	
+
 	return(height);
 }
 
@@ -579,7 +582,7 @@ void TitleBlockTemplateView::init()
 	delete_column_        = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Supprimer cette colonne",                  "context menu"), this);
 	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Supprimer cette ligne",                    "context menu"), this);
 	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aperçu",     "context menu"), this);
-	
+
 	connect(add_column_before_,    SIGNAL(triggered()), this, SLOT(addColumnBefore()));
 	connect(add_row_before_,       SIGNAL(triggered()), this, SLOT(addRowBefore()));
 	connect(add_column_after_,     SIGNAL(triggered()), this, SLOT(addColumnAfter()));
@@ -589,10 +592,10 @@ void TitleBlockTemplateView::init()
 	connect(delete_column_,        SIGNAL(triggered()), this, SLOT(deleteColumn()));
 	connect(delete_row_,           SIGNAL(triggered()), this, SLOT(deleteRow()));
 	connect(change_preview_width_, SIGNAL(triggered()), this, SLOT(changePreviewWidth()));
-	
+
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setBackgroundBrush(QBrush(QColor(248, 255, 160)));
-	
+
 	connect(scene(), SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
 }
 
@@ -605,7 +608,7 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 	// the first column is dedicated to helper cells showing the rows height
 	tbgrid_ -> setColumnFixedWidth(0, DEFAULT_ROWS_HELPER_CELLS_WIDTH);
 	tbgrid_ -> setColumnSpacing(0, 0);
-	
+
 	// we apply the other columns width based on the title block template data
 	QList<int> widths = tbtemplate_ -> columnsWidth(preview_width_);
 	int total_applied_width = 0;
@@ -629,12 +632,12 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 	}
 	if (!animate) updateColumnsHelperCells();
 	++ apply_columns_widths_count_;
-	
+
 	// we systematically parameter some cells
 	total_width_helper_cell_ -> split_size = 0;
 	tbgrid_ -> addItem(total_width_helper_cell_, 0, COL_OFFSET, 1, widths.count());
 	removeItem(extra_cells_width_helper_cell_);
-	
+
 	if (total_applied_width < preview_width_) {
 		// preview_width is greater than the sum of cells widths
 		// we add an extra column with a helper cell
@@ -657,7 +660,7 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 		).arg(total_applied_width - preview_width_);
 		total_width_helper_cell_ -> split_size = total_applied_width - preview_width_;
 	}
-	
+
 	updateDisplayedMinMaxWidth();
 }
 
@@ -673,7 +676,7 @@ void TitleBlockTemplateView::applyRowsHeights(bool animate) {
 	// the second row is dedicated to helper cells showing the columns width
 	tbgrid_ -> setRowFixedHeight(1, DEFAULT_COLS_HELPER_CELLS_HEIGHT);
 	tbgrid_ -> setRowSpacing(1, 0);
-	
+
 	QList<int> heights = tbtemplate_ -> rowsHeights();
 	for (int i = 0 ; i < heights.count() ; ++ i) {
 		tbgrid_ -> setRowSpacing(ROW_OFFSET + i, 0);
@@ -690,7 +693,7 @@ void TitleBlockTemplateView::applyRowsHeights(bool animate) {
 			connect(animation, SIGNAL(finished()), this, SLOT(updateRowsHelperCells()));
 			animation -> start(QAbstractAnimation::DeleteWhenStopped);
 		}
-		
+
 	}
 	if (!animate) updateRowsHelperCells();
 	++ apply_rows_heights_count_;
@@ -736,7 +739,7 @@ void TitleBlockTemplateView::addCells()
 {
 	int col_count = tbtemplate_ -> columnsCount();
 	int row_count = tbtemplate_ -> rowsCount();
-	
+
 	// we add a big cell to show the total width
 	total_width_helper_cell_ = new SplittedHelperCell();
 	total_width_helper_cell_ -> setType(QET::Absolute);
@@ -748,12 +751,12 @@ void TitleBlockTemplateView::addCells()
 	connect(total_width_helper_cell_, SIGNAL(doubleClicked(HelperCell*)),
 		this, SLOT(changePreviewWidth()));
 	tbgrid_ -> addItem(total_width_helper_cell_, 0, COL_OFFSET, 1, col_count);
-	
+
 	// we also initialize an extra helper cells that shows the preview width is
 	// too long for the current cells widths
 	extra_cells_width_helper_cell_ = new HelperCell();
 	extra_cells_width_helper_cell_ -> background_color = QColor(Qt::red);
-	
+
 	// we add one cell per column to show their respective width
 	for (int i = 0 ; i < col_count ; ++ i) {
 		TitleBlockDimension current_col_dim = tbtemplate_ -> columnDimension(i);
@@ -769,7 +772,7 @@ void TitleBlockTemplateView::addCells()
 			this, SLOT(editColumn(HelperCell *)));
 		tbgrid_ -> addItem(current_col_cell, 1, COL_OFFSET + i, 1, 1);
 	}
-	
+
 	// we add one cell per row to show their respective height
 	QList<int> heights = tbtemplate_ -> rowsHeights();
 	for (int i = 0 ; i < row_count ; ++ i) {
@@ -785,7 +788,7 @@ void TitleBlockTemplateView::addCells()
 			this, SLOT(editRow(HelperCell *)));
 		tbgrid_ -> addItem(current_row_cell, ROW_OFFSET + i, 0, 1, 1);
 	}
-	
+
 	// eventually we add the cells composing the titleblock template
 	for (int i = 0 ; i < col_count ; ++ i) {
 		for (int j = 0 ; j < row_count ; ++ j) {
@@ -793,7 +796,7 @@ void TitleBlockTemplateView::addCells()
 			if (cell -> spanner_cell) continue;
 			TitleBlockTemplateVisualCell *cell_item = new TitleBlockTemplateVisualCell();
 			cell_item -> setTemplateCell(tbtemplate_, cell);
-			
+
 			int row_span = 0, col_span = 0;
 			if (cell -> span_state != TitleBlockCell::Disabled) {
 				row_span = cell -> applied_row_span;
@@ -812,7 +815,7 @@ void TitleBlockTemplateView::refresh()
 	int col_count = tbtemplate_ -> columnsCount();
 	int row_count = tbtemplate_ -> rowsCount();
 	if (row_count < 1 || col_count < 1) return;
-	
+
 	for (int i = 0 ; i < col_count ; ++ i) {
 		for (int j = 0 ; j < row_count ; ++ j) {
 			if (QGraphicsLayoutItem *item = tbgrid_ -> itemAt(ROW_OFFSET + j, COL_OFFSET + i)) {
@@ -846,7 +849,7 @@ void TitleBlockTemplateView::fillWithEmptyCells()
 	int col_count = tbtemplate_ -> columnsCount();
 	int row_count = tbtemplate_ -> rowsCount();
 	if (row_count < 1 || col_count < 1) return;
-	
+
 	for (int i = 0 ; i < col_count ; ++ i) {
 		for (int j = 0 ; j < row_count ; ++ j) {
 			if (tbgrid_ -> itemAt(ROW_OFFSET + j, COL_OFFSET + i)) continue;
@@ -861,7 +864,7 @@ void TitleBlockTemplateView::fillWithEmptyCells()
 }
 
 /**
-	@param event Object describing the received event 
+	@param event Object describing the received event
 */
 bool TitleBlockTemplateView::event(QEvent *event) {
 	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
@@ -885,7 +888,7 @@ void TitleBlockTemplateView::normalizeCells(
 		int y) const
 {
 	if (!cells.count()) return;
-	
+
 	int min_row = cells.at(0).num_row;
 	int min_col = cells.at(0).num_col;
 	for (int i = 1 ; i < cells.count() ; ++ i) {
@@ -901,7 +904,7 @@ void TitleBlockTemplateView::normalizeCells(
 /**
 	Load the \a tbt title block template.
 	If a different template was previously loaded, it is deleted.
-	
+
 */
 void TitleBlockTemplateView::loadTemplate(TitleBlockTemplate *tbt) {
 	if (tbgrid_) {
@@ -913,9 +916,9 @@ void TitleBlockTemplateView::loadTemplate(TitleBlockTemplate *tbt) {
 	if (tbtemplate_ && tbtemplate_ != tbt) {
 		delete tbtemplate_;
 	}
-	
+
 	tbtemplate_ = tbt;
-	
+
 	// initialize a grid layout with no margin
 	tbgrid_ = new QGraphicsGridLayout();
 	tbgrid_ -> setContentsMargins(0, 0, 0, 0);
@@ -926,7 +929,7 @@ void TitleBlockTemplateView::loadTemplate(TitleBlockTemplate *tbt) {
 	// apply rows and columns dimensions
 	applyColumnsWidths(false);
 	applyRowsHeights(false);
-	
+
 	// assign the layout to a basic QGraphicsWidget
 	form_ = new QGraphicsWidget();
 	// enforce the layout direction to avoid reversing the template rendering
@@ -959,6 +962,9 @@ QList<QAction *> TitleBlockTemplateView::columnsActions() const
 */
 void TitleBlockTemplateView::updateLayout()
 {
+#if TODO_LIST
+#pragma message("@TODO we should try to update the grid instead of deleting-and-reloading it")
+#endif
 	// TODO we should try to update the grid instead of deleting-and-reloading it
 	loadTemplate(tbtemplate_);
 }
@@ -990,7 +996,7 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 	if (!tbtemplate_) return;
 	int min_width = tbtemplate_ -> minimumWidth();
 	int max_width = tbtemplate_ -> maximumWidth();
-	
+
 	QString min_max_width_sentence;
 	if (max_width != -1) {
 		min_max_width_sentence = QString(
@@ -1007,23 +1013,23 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 			)
 		).arg(min_width);
 	}
-	
+
 	// the tooltip may also display the split label for readability purpose
 	if (total_width_helper_cell_ -> split_size) {
 		min_max_width_sentence += "---\n";
 		min_max_width_sentence += total_width_helper_cell_ -> split_label;
 	}
-	
+
 	total_width_helper_cell_ -> setToolTip(makePrettyToolTip(min_max_width_sentence));
 }
 
 /**
 	@param read_only whether this view should be read only.
-	
+
 */
 void TitleBlockTemplateView::setReadOnly(bool read_only) {
 	if (read_only_ == read_only) return;
-	
+
 	read_only_ = read_only;
 	add_column_before_ -> setEnabled(!read_only_);
 	add_row_before_    -> setEnabled(!read_only_);
@@ -1142,11 +1148,11 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems
 */
 QString TitleBlockTemplateView::makePrettyToolTip(const QString &string) {
 	QString css_style = QString("white-space: pre;");
-	
+
 	QString final_tooltip_content = QString(
 		"<div style=\"%1\">%2</div>"
 	).arg(css_style).arg(string);
-	
+
 	return(final_tooltip_content);
 }
 
@@ -1164,11 +1170,11 @@ void TitleBlockTemplateView::updateLastContextMenuCell(HelperCell *last_context_
 void TitleBlockTemplateView::adjustSceneRect()
 {
 	QRectF old_scene_rect = scene() -> sceneRect();
-	
+
 	// rectangle including everything on the scene
 	QRectF bounding_rect(QPointF(0, 0), templateSize());
 	scene() -> setSceneRect(bounding_rect);
-	
+
 	// met a jour la scene
 	scene() -> update(old_scene_rect.united(bounding_rect));
 }

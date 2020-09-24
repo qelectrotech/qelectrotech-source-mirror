@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -131,7 +131,7 @@ Diagram::~Diagram()
 
 	if (m_event_interface)
 	delete m_event_interface;
-	
+
 	// list removable items
 	QList<QGraphicsItem *> deletable_items;
 	for(QGraphicsItem *qgi : items())
@@ -157,20 +157,20 @@ Diagram::~Diagram()
 */
 void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> save();
-	
+
 	// disable all antialiasing, except for text
 	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	
+
 	// draw a white background
 	// dessine un fond blanc
 	p -> setPen(Qt::NoPen);
 	//set brush color to present background color.
 	p -> setBrush(Diagram::background_color);
 	p -> drawRect(r);
-	
+
 	if (draw_grid_) {
 			/* Draw the point of the grid
 			 * if background color is black,
@@ -201,12 +201,12 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		qreal limite_x = rect.x() + rect.width();
 		qreal limite_y = rect.y() + rect.height();
-		
+
 		int g_x = (int)ceil(rect.x());
 		while (g_x % xGrid) ++ g_x;
 		int g_y = (int)ceil(rect.y());
 		while (g_y % yGrid) ++ g_y;
-		
+
 		QPolygon points;
 		for (int gx = g_x ; gx < limite_x ; gx += xGrid) {
 			for (int gy = g_y ; gy < limite_y ; gy += yGrid) {
@@ -215,7 +215,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		}
 		p -> drawPoints(points);
 	}
-	
+
 	if (use_border_) border_and_titleblock.draw(p);
 	p -> restore();
 }
@@ -228,7 +228,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->mouseDoubleClickEvent(event);
 		if (event->isAccepted()) {
@@ -247,7 +247,7 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->mousePressEvent(event);
 		if (event->isAccepted()) {
@@ -266,7 +266,7 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->mouseMoveEvent(event);
 		if (event->isAccepted()) {
@@ -285,7 +285,7 @@ void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->mouseReleaseEvent(event);
 		if (event->isAccepted()) {
@@ -304,7 +304,7 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
 	event->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->wheelEvent(event);
 		if (event->isAccepted()) {
@@ -333,14 +333,14 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 	int yKeyGridFine = settings.value("diagrameditor/key_fine_Ygrid",
 					  Diagram::yKeyGridFine).toInt();
 	event->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->keyPressEvent(event);
 		if (event->isAccepted()) {
 			return;
 		}
 	}
-	
+
 	if (isReadOnly()) return;
 
 	QPointF movement;
@@ -354,7 +354,9 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 		return;
 	}
 
+#if TODO_LIST
 #pragma message("@TODO move code to new function")
+#endif
 	//Move item with the keyboard arrow
 	if(event->modifiers() == Qt::NoModifier)
 	{
@@ -479,14 +481,14 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 void Diagram::keyReleaseEvent(QKeyEvent *e)
 {
 	e->setAccepted(false);
-	
+
 	if (m_event_interface) {
 		m_event_interface->keyReleaseEvent(e);
 		if (e->isAccepted()) {
 			return;
 		}
 	}
-	
+
 	bool transmit_event = true;
 	if (!isReadOnly()) {
 		/* detects the release of a direction key
@@ -537,7 +539,7 @@ void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 		event_interface -> init();
 	}
 	m_event_interface = event_interface;
-	
+
 	connect(m_event_interface, &DiagramEventInterface::finish, [this]()
 	{
 		delete this->m_event_interface;
@@ -601,7 +603,7 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 					+ 2.0 * margin
 		);
 	}
-	
+
 	/* if the dimensions are not specified,
 	 *  the image is exported at 1: 1 scale
 	 * si les dimensions ne sont pas precisees,
@@ -609,23 +611,23 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	 */
 	QSize image_size = (width == -1 && height == -1)
 			? source_area.size().toSize() : QSize(width, height);
-	
+
 	// prepare the rendering
 	// prepare le rendu
 	QPainter p;
 	if (!p.begin(&pix)) return(false);
-	
+
 	// anti-aliasis rendering
 	// rendu antialiase
 	p.setRenderHint(QPainter::Antialiasing, true);
 	p.setRenderHint(QPainter::TextAntialiasing, true);
 	p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-	
+
 	// deselect all elements
 	// deselectionne tous les elements
 	QList<QGraphicsItem *> selected_elmts = selectedItems();
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
-	
+
 	// renders itself
 	// effectue le rendu lui-meme
 	render(&p,
@@ -633,11 +635,11 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	       source_area,
 	       aspectRatioMode);
 	p.end();
-	
+
 	// restore selected items
 	// restaure les elements selectionnes
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
-	
+
 	return(true);
 }
 
@@ -664,10 +666,10 @@ QSize Diagram::imageSize() const
 		image_height = border_and_titleblock
 				.borderAndTitleBlockRect().height();
 	}
-	
+
 	image_width  += 2.0 * margin;
 	image_height += 2.0 * margin;
-	
+
 	// returns the size of the source area
 	// renvoie la taille de la zone source
 	return(QSizeF(image_width, image_height).toSize());
@@ -726,20 +728,20 @@ QList < QSet <Conductor *> > Diagram::potentials()
 QDomDocument Diagram::toXml(bool whole_content) {
 	// document
 	QDomDocument document;
-	
+
 	// XML tree root
 	// racine de l'arbre XML
 	auto dom_root = document.createElement("diagram");
-	
+
 	// add the application version number
 	dom_root.setAttribute("version", QET::version);
-	
+
 	// schema properties
 	// proprietes du schema
 	if (whole_content) {
 		border_and_titleblock.titleBlockToXml(dom_root);
 		border_and_titleblock.borderToXml(dom_root);
-		
+
 		// Default conductor properties
 		QDomElement default_conductor =
 				document.createElement("defaultconductor");
@@ -854,10 +856,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		dom_root.setAttribute("projectId", QETApp::projectId(m_project));
 	}
 	document.appendChild(dom_root);
-	
+
 	if (items().isEmpty())
 		return(document);
-	
+
 	QVector<Element *> list_elements;
 	QVector<Conductor *> list_conductors;
 	QVector<DiagramTextItem *> list_texts;
@@ -915,11 +917,11 @@ QDomDocument Diagram::toXml(bool whole_content) {
 			}
 		}
 	}
-	
+
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
-	
+
 	if (!list_elements.isEmpty()) {
 		auto dom_elements = document.createElement("elements");
 		for (auto elmt : list_elements) {
@@ -928,7 +930,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 		dom_root.appendChild(dom_elements);
 	}
-	
+
 	if (!list_conductors.isEmpty()) {
 		auto dom_conductors = document.createElement("conductors");
 		for (auto cond : list_conductors) {
@@ -937,7 +939,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 		dom_root.appendChild(dom_conductors);
 	}
-	
+
 	if (!list_texts.isEmpty()) {
 		auto dom_texts = document.createElement("inputs");
 		for (auto dti : list_texts) {
@@ -1082,7 +1084,7 @@ bool Diagram::initFromXml(QDomElement &document,
 				position,
 				consider_informations,
 				content_ptr);
-	
+
 	return(from_xml);
 }
 
@@ -1189,7 +1191,7 @@ bool Diagram::fromXml(QDomElement &document,
 	const QDomElement& root = document;
 	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
-	
+
 	// Read attributes of this diagram
 	if (consider_informations) {
 		// Version of diagram
@@ -1198,11 +1200,11 @@ bool Diagram::fromXml(QDomElement &document,
 		if (conv_ok) {
 			diagram_qet_version_ = version_value;
 		}
-		
+
 		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
-		
+
 		// Find the element "defaultconductor".
 		// If found, load default conductor properties.
 		QDomElement default_conductor_elmt =
@@ -1259,7 +1261,7 @@ bool Diagram::fromXml(QDomElement &document,
 	if (root.firstChild().isNull()) {
 		return(true);
 	}
-	
+
 	/* Backward compatibility: prior to version 0.3, we need to compensate,
 	 *  at diagram-opening time, the rotation of the element for each of its
 	 *  textfields having the "FollowParentRotation" option disabled.
@@ -1312,7 +1314,7 @@ bool Diagram::fromXml(QDomElement &document,
 		 QET::findInDomElement(root, "elements", "element"))
 	{
 		if (!Element::valideXml(element_xml)) continue;
-		
+
 		// cree un element dont le type correspond a l'id type
 		QString type_id = element_xml.attribute("type");
 		ElementsLocation element_location;
@@ -1322,7 +1324,7 @@ bool Diagram::fromXml(QDomElement &document,
 		else {
 			element_location = ElementsLocation(type_id);
 		}
-		
+
 		int state = 0;
 		Element *nvel_elmt =
 				ElementFactory::Instance() -> createElement(
@@ -1338,7 +1340,7 @@ bool Diagram::fromXml(QDomElement &document,
 			delete nvel_elmt;
 			continue;
 		}
-		
+
 		addItem(nvel_elmt);
 		//Loading fail, remove item from the diagram
 		if (!nvel_elmt->fromXml(element_xml,
@@ -1353,7 +1355,7 @@ bool Diagram::fromXml(QDomElement &document,
 			added_elements << nvel_elmt;
 		}
 	}
-	
+
 		// Load text
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root,
@@ -1455,7 +1457,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto qgi : added_items)
 			qgi->setPos(qgi->pos() += pos_);
 	}
-	
+
 		//Filling of falculatory lists
 	if (content_ptr) {
 		content_ptr -> m_elements           = added_elements;
@@ -1465,7 +1467,9 @@ bool Diagram::fromXml(QDomElement &document,
 		content_ptr -> m_images			    = added_images.toSet();
 		content_ptr -> m_shapes			    = added_shapes.toSet();
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
 					added_texts.begin(),
 					added_texts.end());
@@ -1627,7 +1631,7 @@ void Diagram::titleChanged(const QString &title) {
 void Diagram::titleBlockTemplateChanged(const QString &template_name) {
 	if (border_and_titleblock.titleBlockTemplateName() != template_name)
 		return;
-	
+
 	border_and_titleblock.titleBlockTemplateChanged(template_name);
 	update();
 }
@@ -1644,7 +1648,7 @@ void Diagram::titleBlockTemplateChanged(const QString &template_name) {
 void Diagram::titleBlockTemplateRemoved(const QString &template_name,
 					const QString &new_template)
 {
-	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;	
+	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;
 	const TitleBlockTemplate *final_template =
 			m_project->embeddedTitleBlockTemplatesCollection()
 			->getTemplate(new_template);
@@ -1661,14 +1665,14 @@ void Diagram::titleBlockTemplateRemoved(const QString &template_name,
 void Diagram::setTitleBlockTemplate(const QString &template_name)
 {
 	if (!m_project) return;
-	
+
 	QString current_name = border_and_titleblock.titleBlockTemplateName();
 	const TitleBlockTemplate *titleblock_template =
 			m_project->embeddedTitleBlockTemplatesCollection()
 			->getTemplate(template_name);
 	border_and_titleblock.titleBlockTemplateRemoved(current_name,
 							titleblock_template);
-	
+
 	if (template_name != current_name)
 		emit(usedTitleBlockTemplateChanged(template_name));
 }
@@ -1681,7 +1685,7 @@ void Diagram::setTitleBlockTemplate(const QString &template_name)
 void Diagram::selectAll()
 {
 	if (items().isEmpty()) return;
-	
+
 	blockSignals(true);
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
 	blockSignals(false);
@@ -1696,7 +1700,7 @@ void Diagram::selectAll()
 void Diagram::deselectAll()
 {
 	if (items().isEmpty()) return;
-	
+
 	clearSelection();
 }
 
@@ -1708,7 +1712,7 @@ void Diagram::deselectAll()
 void Diagram::invertSelection()
 {
 	if (items().isEmpty()) return;
-	
+
 	blockSignals(true);
 	foreach (QGraphicsItem *item,
 		 items()) item -> setSelected(!item -> isSelected());
@@ -1800,7 +1804,7 @@ void Diagram::changeZValue(QET::DepthOption option)
 	QList<QGraphicsObject *> list;
 	for(QGraphicsItem *item : l)
 		list << item->toGraphicsObject();
-	
+
 	qreal maxz=0,
 		  minz=0;
 	for(QGraphicsItem *item : this->items())
@@ -1809,9 +1813,9 @@ void Diagram::changeZValue(QET::DepthOption option)
 		if(z >= Terminal::Z-2)
 			continue;
 		maxz = std::max(maxz,z);
-		minz = std::min(minz,z);	
+		minz = std::min(minz,z);
 	}
-	
+
 	if(option == QET::Raise)
 	{
 		for(QGraphicsObject *qgo : list)
@@ -1850,7 +1854,7 @@ void Diagram::changeZValue(QET::DepthOption option)
 							 minz-1,
 							 undo);
 	}
-	
+
 	if(undo->childCount())
 		this->undoStack().push(undo);
 	else
@@ -2213,7 +2217,7 @@ ExportProperties Diagram::applyProperties(
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area = useBorder() ? QET::BorderArea
 						   : QET::ElementsArea;
-	
+
 	// apply the new rendering options
 	// applique les nouvelles options de rendu
 	setUseBorder             (new_properties.exported_area == QET::BorderArea);
@@ -2222,7 +2226,7 @@ ExportProperties Diagram::applyProperties(
 	setDisplayGrid           (new_properties.draw_grid);
 	border_and_titleblock.displayBorder(new_properties.draw_border);
 	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
-	
+
 	// return old rendering options
 	// retourne les anciennes options de rendu
 	return(old_properties);
@@ -2242,10 +2246,10 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 	// delegue le calcul au BorderTitleBlock
 	DiagramPosition diagram_position =
 			border_and_titleblock.convertPosition(pos);
-	
+
 	// embarque la position cartesienne
 	diagram_position.setPosition(pos);
-	
+
 	return(diagram_position);
 }
 
@@ -2426,11 +2430,11 @@ bool Diagram::canRotateSelection() const
 			qgi->type() == Element::Type ||
 			qgi->type() == DynamicElementTextItem::Type)
 			return true;
-		
+
 		if(qgi->type() == QGraphicsItemGroup::Type)
 			if(dynamic_cast<ElementTextItemGroup *>(qgi))
 				return true;
 	}
-	
+
 	return false;
 }

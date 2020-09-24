@@ -448,7 +448,9 @@ void GraphicsTablePropertiesEditor::setUpEditConnection()
 		m_edit_connection << connect(m_table_button_group,       QOverload<int>::of(&QButtonGroup::buttonClicked), this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(m_header_button_group,      QOverload<int>::of(&QButtonGroup::buttonClicked), this, &GraphicsTablePropertiesEditor::apply);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.15 or later")
+#endif
 		m_edit_connection << connect(m_table_button_group,       QOverload<int>::of(&QButtonGroup::idClicked), this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(m_header_button_group,      QOverload<int>::of(&QButtonGroup::idClicked), this, &GraphicsTablePropertiesEditor::apply);
 #endif

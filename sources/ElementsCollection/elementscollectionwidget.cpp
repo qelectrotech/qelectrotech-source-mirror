@@ -55,7 +55,7 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	//**********
 	//Register meta type has recommended by the message.
 	qRegisterMetaType<QVector<int>>();
-	
+
 	setUpWidget();
 	setUpAction();
 	setUpConnection();
@@ -125,7 +125,7 @@ void ElementsCollectionWidget::setCurrentLocation(
 {
 	if (!location.exist())
 		return;
-	
+
 	if (m_model)
 		m_tree_view->setCurrentIndex(
 					m_model->indexFromLocation(location));
@@ -330,14 +330,14 @@ void ElementsCollectionWidget::openDir()
 	if (!eci) return;
 
 	if (eci->type() == FileElementCollectionItem::Type)
-	
+
 #ifdef Q_OS_LINUX
 		QDesktopServices::openUrl(static_cast<FileElementCollectionItem*>(eci)->dirPath());
 #else
 		QDesktopServices::openUrl(QUrl("file:///" + static_cast<FileElementCollectionItem*>(eci)->dirPath()));
 #endif
 	else if (eci->type() == XmlProjectElementCollectionItem::Type)
-	
+
 #ifdef Q_OS_LINUX
 		QDesktopServices::openUrl(static_cast<XmlProjectElementCollectionItem*>(eci)->project()->currentDir());
 #else
@@ -407,7 +407,7 @@ void ElementsCollectionWidget::deleteElement()
 				   "message box title"),
 				tr("La suppression de l'élément a échoué.",
 				   "message box content"));
-		}	
+		}
 	}
 }
 
@@ -744,7 +744,9 @@ void ElementsCollectionWidget::search()
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList text_list = text.split("+", QString::SkipEmptyParts);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 	QStringList text_list = text.split("+", Qt::SkipEmptyParts);
 #endif
 	QModelIndexList match_index;

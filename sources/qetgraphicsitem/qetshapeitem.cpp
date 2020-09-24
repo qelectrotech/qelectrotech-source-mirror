@@ -52,7 +52,7 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 		for(QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setZValue(this->zValue()+1);
 	});
-	
+
 	m_insert_point = new QAction(tr("Ajouter un point"), this);
 	m_insert_point->setIcon(QET::Icons::Add);
 	connect(m_insert_point, &QAction::triggered, this, &QetShapeItem::insertPoint);
@@ -266,7 +266,7 @@ QPainterPath QetShapeItem::shape() const
 			path.moveTo(m_P1);
 			path.lineTo(m_P2);
 			break;
-		case Rectangle: 
+		case Rectangle:
 			path.addRoundedRect(
 						QRectF(m_P1, m_P2),
 						m_xRadius,
@@ -363,7 +363,7 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->ignore();
 	QetGraphicsItem::mousePressEvent(event);
-	
+
 	if (event->button() == Qt::LeftButton) {
 		switchResizeMode();
 		event->accept();
@@ -374,7 +374,7 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	@brief QetShapeItem::itemChange
 	@param change
 	@param value
-	@return 
+	@return
 */
 QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change,
 				  const QVariant &value)
@@ -405,7 +405,7 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change,
 			setSelected(false);
 		}
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
@@ -413,7 +413,7 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change,
 	@brief QetShapeItem::sceneEventFilter
 	@param watched
 	@param event
-	@return 
+	@return
 */
 bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
@@ -421,7 +421,7 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -445,7 +445,7 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -456,13 +456,13 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
 	m_context_menu_pos = event->pos();
-	
+
 	if (m_shapeType == QetShapeItem::Polygon)
 	{
 		if (diagram()->selectedItems().isEmpty()) {
 			this->setSelected(true);
 		}
-		
+
 		if (isSelected() && scene()->selectedItems().size() == 1)
 		{
 			if (diagram())
@@ -477,12 +477,12 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 							continue;
 					}
 				}
-				
+
 				if (d_view)
 				{
 					QScopedPointer<QMenu> menu(new QMenu());
 					menu.data()->addAction(m_insert_point);
-					
+
 					if (m_handler_vector.count() > 2)
 					{
 						for (QetGraphicsHandlerItem *qghi : m_handler_vector)
@@ -494,7 +494,7 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 							}
 						}
 					}
-					
+
 					menu.data()->addSeparator();
 					menu.data()->addActions(d_view->contextMenuActions());
 					menu.data()->exec(event->screenPos());
@@ -504,7 +504,7 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 			}
 		}
 	}
-	
+
 	QetGraphicsItem::contextMenuEvent(event);
 }
 
@@ -557,7 +557,7 @@ void QetShapeItem::switchResizeMode()
 			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 				qghi->setColor(Qt::blue);
 			}
-			
+
 		}
 	}
 }
@@ -587,11 +587,11 @@ void QetShapeItem::addHandler()
 				points_vector = m_polygon;
 				break;
 		}
-		
+
 		if(!points_vector.isEmpty() && scene())
 		{
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
-			
+
 			for(QetGraphicsHandlerItem *handler : m_handler_vector)
 			{
 				handler->setZValue(this->zValue()+1);
@@ -612,7 +612,7 @@ void QetShapeItem::adjusteHandlerPos()
 	if (m_handler_vector.isEmpty()) {
 		return;
 	}
-	
+
 	QVector <QPointF> points_vector;
 	switch (m_shapeType)
 	{
@@ -638,7 +638,7 @@ void QetShapeItem::adjusteHandlerPos()
 			break;
 		}
 	}
-	
+
 	if (m_handler_vector.size() == points_vector.size())
 	{
 		points_vector = mapToScene(points_vector);
@@ -658,7 +658,7 @@ void QetShapeItem::insertPoint()
 	if (m_shapeType == QetShapeItem::Polygon)
 	{
 		QPolygonF new_polygon = QetGraphicsHandlerUtility::polygonForInsertPoint(this->polygon(), m_closed, Diagram::snapToGrid(m_context_menu_pos));
-		
+
 		if(new_polygon != m_polygon)
 		{
 				//Wrap the undo for avoid to merge the undo commands when user add several points.
@@ -674,11 +674,11 @@ void QetShapeItem::removePoint()
 	if (m_shapeType != QetShapeItem::Polygon) {
 		return;
 	}
-	
+
 	if (m_handler_vector.size() == 2) {
 		return;
 	}
-	
+
 	QPointF point = mapToScene(m_context_menu_pos);
 	int index = -1;
 	for (int i=0 ; i<m_handler_vector.size() ; i++)
@@ -694,7 +694,7 @@ void QetShapeItem::removePoint()
 	{
 		QPolygonF polygon = this->polygon();
 		polygon.removeAt(index);
-		
+
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
 		QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
 		new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
@@ -788,7 +788,7 @@ void QetShapeItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void QetShapeItem::handlerMouseReleaseEvent()
 {
 	m_modifie_radius_equaly = false;
-	
+
 	if (diagram())
 	{
 		QPropertyUndoCommand *undo = nullptr;
@@ -826,7 +826,7 @@ void QetShapeItem::handlerMouseReleaseEvent()
 		}
 		else if (m_shapeType == Polygon && (m_polygon != m_old_polygon))
 			undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
-		
+
 		if(undo)
 		{
 			undo->setText(tr("Modifier %1").arg(name()));
@@ -851,6 +851,9 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	m_brush = QETXML::brushFromXml(e.firstChildElement("brush"));
 
 	QString type = e.attribute("type");
+#if TODO_LIST
+#pragma message("@TODO Compatibility for version older than N°4075, shape type was stored with an int")
+#endif
 		//@TODO Compatibility for version older than N°4075, shape type was stored with an int
 	if (type.size() == 1)
 	{
@@ -875,7 +878,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		m_P1.setY(e.attribute("y1", nullptr).toDouble());
 		m_P2.setX(e.attribute("x2", nullptr).toDouble());
 		m_P2.setY(e.attribute("y2", nullptr).toDouble());
-		
+
 		if (m_shapeType == Rectangle)
 		{
 			setXRadius(e.attribute("rx", "0").toDouble());
@@ -916,7 +919,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		result.setAttribute("y1", QString::number(mapToScene(m_P1).y()));
 		result.setAttribute("x2", QString::number(mapToScene(m_P2).x()));
 		result.setAttribute("y2", QString::number(mapToScene(m_P2).y()));
-		
+
 		if (m_shapeType == Rectangle)
 		{
 			QRectF rect(m_P1, m_P2);
@@ -929,7 +932,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 			if (y > rect.height()/2) {
 				y = rect.height()/2;
 			}
-			
+
 			result.setAttribute("rx", QString::number(m_xRadius));
 			result.setAttribute("ry", QString::number(m_yRadius));
 		}
@@ -965,28 +968,28 @@ bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)
 	switch (m_shapeType)
 	{
 		case Line:
-            Createdxf::drawLine(filepath,
-                        QLineF( mapToScene(m_P1),
-                                mapToScene(m_P2)),
-                                Createdxf::dxfColor(pen));
-            return true;
+	    Createdxf::drawLine(filepath,
+			QLineF( mapToScene(m_P1),
+				mapToScene(m_P2)),
+				Createdxf::dxfColor(pen));
+	    return true;
 		case Rectangle:
-            Createdxf::drawRectangle(filepath,
-                         QRectF(mapToScene(m_P1),
-                                mapToScene(m_P2)).normalized(),
-                                Createdxf::dxfColor(pen));
-            return true;
+	    Createdxf::drawRectangle(filepath,
+			 QRectF(mapToScene(m_P1),
+				mapToScene(m_P2)).normalized(),
+				Createdxf::dxfColor(pen));
+	    return true;
 		case Ellipse:
-            Createdxf::drawEllipse(filepath,
-                         QRectF(mapToScene(m_P1),
-                                mapToScene(m_P2)).normalized(),
-                                Createdxf::dxfColor(pen));
-            return true;
-        case Polygon:
-            Createdxf::drawPolygon(filepath,m_polygon,Createdxf::dxfColor(pen));
-            return true;
-        default:
-            return false;
+	    Createdxf::drawEllipse(filepath,
+			 QRectF(mapToScene(m_P1),
+				mapToScene(m_P2)).normalized(),
+				Createdxf::dxfColor(pen));
+	    return true;
+	case Polygon:
+	    Createdxf::drawPolygon(filepath,m_polygon,Createdxf::dxfColor(pen));
+	    return true;
+	default:
+	    return false;
 	}
 }
 

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -34,7 +34,7 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 {
 	mapper_ = new QSignalMapper(this);
 	connect(mapper_, SIGNAL(mapped(const QString &)), this, SLOT(handleMenuRequest(const QString &)));
-	
+
 	extractFilesFromSettings();
 	buildMenu();
 }
@@ -45,6 +45,9 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 */
 RecentFiles::~RecentFiles()
 {
+#if TODO_LIST
+#pragma message("@TODO determiner s'il faut detruire ou non le menu")
+#endif
 	delete menu_;
 }
 
@@ -124,7 +127,7 @@ void RecentFiles::extractFilesFromSettings()
 {
 		//Forget the list of recent files
 	list_.clear();
-	
+
 		//Get the last opened file from the settings
 	QSettings settings;
 	for (int i = size_ ; i >= 1  ; -- i)
@@ -141,14 +144,14 @@ void RecentFiles::extractFilesFromSettings()
 void RecentFiles::insertFile(const QString &filepath) {
 	// s'assure que le chemin soit exprime avec des separateurs conformes au systeme
 	QString filepath_ns = QDir::toNativeSeparators(filepath);
-	
+
 	// evite d'inserer un chemin de fichier vide ou en double
 	if (filepath_ns.isEmpty()) return;
 	list_.removeAll(filepath_ns);
-	
+
 	// insere le chemin de fichier
 	list_.push_front(filepath_ns);
-	
+
 	// s'assure que l'on ne retient pas plus de fichiers que necessaire
 	while (list_.count() > size_) list_.removeLast();
 }
@@ -178,7 +181,7 @@ void RecentFiles::buildMenu()
 	} else {
 		menu_ -> clear();
 	}
-	
+
 	// remplit le menu
 	foreach (QString filepath, list_) {
 		// creee une nouvelle action pour le fichier
@@ -187,7 +190,7 @@ void RecentFiles::buildMenu()
 			action -> setIcon(files_icon_);
 		}
 		menu_ -> addAction(action);
-		
+
 		// lie l'action et le mapper
 		mapper_ -> setMapping(action, filepath);
 		connect(action, SIGNAL(triggered()), mapper_, SLOT(map()));

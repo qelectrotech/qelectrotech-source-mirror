@@ -146,6 +146,9 @@ void DiagramPrintDialog::exec()
 #if defined Q_OS_LINUX
 	//Due to some bug with xfwm, we display this dialog has a windows on linux os (X11)
 	//@TODO see if we must this line with graphic server wayland
+#if TODO_LIST
+#pragma message("@TODO see if we must this line with graphic server wayland")
+#endif
 	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget(), Qt::Window);
 #else
 	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget());
@@ -326,6 +329,9 @@ void DiagramPrintDialog::acceptPrintTypeDialog()
 			);
 		} else dialog_ -> accept();
 	} else {
+#if TODO_LIST
+#pragma message("@TODO une imprimante doit avoir ete selectionnee")
+#endif
 		// une imprimante doit avoir ete selectionnee
 		/// @todo
 		dialog_ -> accept();

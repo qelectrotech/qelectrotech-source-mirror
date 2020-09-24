@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -51,9 +51,14 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		cache_db_.exec("PRAGMA locking_mode = EXCLUSIVE");
 		cache_db_.exec("PRAGMA synchronous = OFF");
 
+#if TODO_LIST
+#pragma message("@TODO This code remove old table with mtime for create table with uuid, created at version 0,5")
+#endif
 		//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
 		//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
+#if TODO_LIST
 #pragma message("@TODO remove this code for qet 0.6 or later")
+#endif
 		QSqlQuery table_name(cache_db_);
 		if (table_name.exec("PRAGMA table_info(names)"))
 		{
@@ -71,7 +76,9 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 			else
 				table_name.finish();
 		}
-
+#if TODO_LIST
+#pragma message("@TODO the tables could already exist, handle that case.")
+#endif
 			//@TODO the tables could already exist, handle that case.
 		cache_db_.exec("CREATE TABLE names"
 					   "("

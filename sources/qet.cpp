@@ -176,8 +176,9 @@ bool QET::orthogonalProjection(const QPointF &point,
 
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 	QLineF::IntersectType it = line.
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
 			intersect // ### Qt 6: remove
@@ -416,7 +417,11 @@ QList<QChar> QET::forbiddenCharacters()
 	@param name Chaine de caractere a transformer en nom de fichier potable
 	@todo virer les caracteres accentues ?
 */
-QString QET::stringToFileName(const QString &name) {
+QString QET::stringToFileName(const QString &name)
+{
+#if TODO_LIST
+#pragma message("@TODO virer les caracteres accentues ?")
+#endif
 	QString file_name(name.toLower());
 
 	// remplace les caracteres interdits par des tirets
@@ -474,8 +479,9 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 QStringList QET::splitWithSpaces(const QString &string) {
 	// les chaines sont separees par des espaces non echappes
 	// = avec un nombre nul ou pair de backslashes devant
-
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
+#endif
 	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 						   QString

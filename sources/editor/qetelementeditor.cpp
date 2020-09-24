@@ -672,6 +672,9 @@ void QETElementEditor::slot_updateInformations()
 			//We add the editor widget
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
 
+#if TODO_LIST
+#pragma message("@TODO Check if it takes longer than setting the parts again to the editor.")
+#endif
 			// TODO: Check if it takes longer than setting the parts again to the editor.
 			bool equal = true;
 			QList<CustomElementPart*> parts = editor -> currentParts();
@@ -710,6 +713,9 @@ void QETElementEditor::slot_updateInformations()
 			return;
 		}
 		else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
+#if TODO_LIST
+#pragma message("@TODO maybe allowing multipart edit when number of points is the same?")
+#endif
 			// multi edit for polygons makes no sense
 			// TODO: maybe allowing multipart edit when number of points is the same?
 			//We add the editor widget

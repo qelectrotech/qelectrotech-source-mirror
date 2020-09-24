@@ -988,6 +988,9 @@ bool QETProject::isEmpty() const
 	// si le projet a un titre, on considere qu'il n'est pas vide
 	if (!project_title_.isEmpty()) return(false);
 
+#if TODO_LIST
+#pragma message("@TODO check if the embedded element collection is empty")
+#endif
 	//@TODO check if the embedded element collection is empty
 
 	// compte le nombre de schemas non vides
@@ -1273,7 +1276,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		{
 			bool conv_ok;
 			m_project_qet_version = root_elmt.attribute("version").toDouble(&conv_ok);
+#if TODO_LIST
 #pragma message("@TODO use of version convert")
+#endif
 			if (conv_ok && QET::version.toDouble() < m_project_qet_version)
 			{
 				int ret = QET::QetMessageBox::warning(
@@ -1328,7 +1333,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 */
 void QETProject::readDiagramsXml(QDomDocument &xml_project)
 {
+#if TODO_LIST
 #pragma message("@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting")
+#endif
 	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
 	//show DialogWaiting
 	DialogWaiting *dlgWaiting = nullptr;

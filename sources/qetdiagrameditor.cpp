@@ -1999,6 +1999,9 @@ void QETDiagramEditor::activateDiagram(Diagram *diagram)
 			project_view -> showDiagram(diagram);
 		}
 	} else {
+#if TODO_LIST
+#pragma message("@TODO gerer ce cas")
+#endif
 		/// @todo gerer ce cas
 	}
 }

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -174,6 +174,9 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 		setFont(font_);
 	}
 	else {
+#if TODO_LIST
+#pragma message("@TODO remove in futur")
+#endif
 		//Keep compatibility TODO remove in futur
 		setFont(QETApp::dynamicTextsItemFont(9));
 	}
@@ -393,7 +396,7 @@ void PartDynamicTextField::setPlainText(const QString &text) {
 
 	prepareAlignment();
 	QGraphicsTextItem::setPlainText(text);
-	
+
 		//User define a text width
 	if(m_text_width > 0) {
 		if(document() -> size().width() > m_text_width) {
@@ -477,8 +480,8 @@ void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 QVariant PartDynamicTextField::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
 		updateCurrentPartEditor();
-		if(change == QGraphicsItem::ItemSceneHasChanged && 
-			m_first_add && 
+		if(change == QGraphicsItem::ItemSceneHasChanged &&
+			m_first_add &&
 			elementScene() != nullptr)
 		{
 				connect(elementScene(),	&ElementScene::elementInfoChanged,
@@ -499,7 +502,7 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		painter -> save();
 		painter -> setFont(this -> font());
 
-			//Adjust the thickness according to the font size, 
+			//Adjust the thickness according to the font size,
 		qreal w=0.3;
 		if(this -> font().pointSize() >= 5) {
 			w = this -> font().pointSizeF()*0.1;
@@ -590,6 +593,6 @@ void PartDynamicTextField::finishAlignment()
 	QPointF p = transform.map(QPointF(x,y));
 	QPointF pa = transform.map(QPointF(xa,ya));
 	QPointF diff = pa-p;
-	
+
 	setPos(this -> pos() - diff);
 }

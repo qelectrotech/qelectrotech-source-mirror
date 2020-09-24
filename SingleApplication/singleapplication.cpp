@@ -27,7 +27,9 @@
 #include <QtCore/QSharedMemory>
 #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)	// ### Qt 6: remove
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.10 or later")
+#endif
 #include <QRandomGenerator>
 #endif
 #include "singleapplication.h"
@@ -44,21 +46,21 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 	: app_t( argc, argv ), d_ptr( new SingleApplicationPrivate( this ) )
 {
 	Q_D(SingleApplication);
-	
+
 #if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
 	// On Android and iOS since the library is not supported fallback to
 	// standard QApplication behaviour by simply returning at this point.
 	qWarning() << "SingleApplication is not supported on Android and iOS systems.";
 	return;
 #endif
-	
+
 	// Store the current mode of the program
 	d->options = options;
-	
+
 	// Generating an application ID used for identifying the shared memory
 	// block and QLocalServer
 	d->genBlockServerName();
-	
+
 #ifdef Q_OS_UNIX
 	// By explicitly attaching it and then deleting it we make sure that the
 	// memory is deleted even after the process has crashed on Unix.
@@ -68,7 +70,7 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 #endif
 	// Guarantee thread safe behaviour with a shared memory block.
 	d->memory = new QSharedMemory( d->blockServerName );
-	
+
 	// Create a shared memory block
 	if( d->memory->create( sizeof( InstancesInfo ) ) ) {
 		// Initialize the shared memory block
@@ -84,41 +86,43 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 			::exit( EXIT_FAILURE );
 		}
 	}
-	
+
 	InstancesInfo* inst = static_cast<InstancesInfo*>( d->memory->data() );
 	QElapsedTimer time;
 	time.start();
-	
+
 	// Make sure the shared memory block is initialised and in consistent state
 	while( true ) {
 		d->memory->lock();
-		
+
 		if( d->blockChecksum() == inst->checksum ) break;
-		
+
 		if( time.elapsed() > 5000 ) {
 			qWarning() << "SingleApplication: Shared memory block has been in an inconsistent state from more than 5s. Assuming primary instance failure.";
 			d->initializeMemoryBlock();
 		}
-		
+
 		d->memory->unlock();
-		
+
 		// Random sleep here limits the probability of a collision between two racing apps
 #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)	// ### Qt 6: remove
 		qsrand( QDateTime::currentMSecsSinceEpoch() % std::numeric_limits<uint>::max() );
 		QThread::sleep( 8 + static_cast <unsigned long>( static_cast <float>( qrand() ) / RAND_MAX * 10 ) );
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.10 or later")
+#endif
 		quint32 value = QRandomGenerator::global()->generate();
 		QThread::sleep( 8 + static_cast <unsigned long>( static_cast <float>( value ) / RAND_MAX * 10 ) );
 #endif
 	}
-	
+
 	if( inst->primary == false) {
 		d->startPrimary();
 		d->memory->unlock();
 		return;
 	}
-	
+
 	// Check if another instance can be started
 	if( allowSecondary ) {
 		inst->secondary += 1;
@@ -131,13 +135,13 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 		d->memory->unlock();
 		return;
 	}
-	
+
 	d->memory->unlock();
-	
+
 	d->connectToPrimary( timeout, SingleApplicationPrivate::NewInstance );
-	
+
 	delete d;
-	
+
 	::exit( EXIT_SUCCESS );
 }
 
@@ -177,13 +181,13 @@ qint64 SingleApplication::primaryPid()
 bool SingleApplication::sendMessage( QByteArray message, int timeout )
 {
 	Q_D(SingleApplication);
-	
+
 	// Nobody to connect to
 	if( isPrimary() ) return false;
-	
+
 	// Make sure the socket is connected
 	d->connectToPrimary( timeout,  SingleApplicationPrivate::Reconnect );
-	
+
 	d->socket->write( message );
 	bool dataWritten = d->socket->waitForBytesWritten( timeout );
 	d->socket->flush();

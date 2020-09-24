@@ -522,10 +522,10 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 }
 
 /**
- * @brief projectDataBase::sqliteHandle
- * @param db
- * @return the sqlite3 handler class used internally by @db
- */
+	@brief projectDataBase::sqliteHandle
+	@param db
+	@return the sqlite3 handler class used internally by db
+*/
 sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 {
 	//sqlite 3 lib isn't availlable for the moment on macosx
@@ -547,7 +547,7 @@ sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 
 /**
  * @brief projectDataBase::exportDb
- * Export the @db, to a file.
+ * Export the db, to a file.
  * @param db : database to export
  * @param parent : parent widget of a QDialog used in this function
  * @param caption : Title of the QDialog used in this function

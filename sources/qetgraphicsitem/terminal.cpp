@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -155,6 +155,9 @@ Terminal::Terminal(TerminalData* data, Element* e) :
 	d(data),
 	parent_element_(e)
 {
+#if TODO_LIST
+#pragma message("@TODO what is when multiple parents exist. So the other relation is lost.")
+#endif
 	// TODO: what is when multiple parents exist. So the other relation is lost.
 	d->setParent(this);
 	init("_", "_", false);
@@ -232,7 +235,7 @@ bool Terminal::addConductor(Conductor *conductor)
 	//Get the other terminal where the conductor must be linked
 	Terminal *other_terminal = (conductor -> terminal1 == this)
 			? conductor->terminal2 : conductor->terminal1;
-	
+
 	//Check if this terminal isn't already linked with other_terminal
 	foreach (Conductor* cond, conductors_)
 		if (cond -> terminal1 == other_terminal || cond -> terminal2 == other_terminal)
@@ -556,7 +559,7 @@ void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e)
 */
 void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 {
-	// pendant la pose d'un conducteur, on adopte un autre curseur 
+	// pendant la pose d'un conducteur, on adopte un autre curseur
 	//setCursor(Qt::CrossCursor);
 
 	// d'un mouvement a l'autre, il faut retirer l'effet hover de la borne precedente
@@ -571,10 +574,10 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	if (!diag) return;
 	// si la scene est un Diagram, on actualise le poseur de conducteur
 	diag -> setConductorStop(e -> scenePos());
-	
+
 	// on recupere la liste des qgi sous le pointeur
 	QList<QGraphicsItem *> qgis = diag -> items(e -> scenePos());
-	
+
 	/* le qgi le plus haut
 	   = le poseur de conductor
 	   = le premier element de la liste
@@ -582,17 +585,17 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	   = on prend le deuxieme element de la liste
 	*/
 	Q_ASSERT_X(!(qgis.isEmpty()), "Terminal::mouseMoveEvent", "La liste d'items ne devrait pas etre vide");
-	
+
 	// s'il n'y rien d'autre que le poseur de conducteur dans la liste, on arrete la
 	if (qgis.size() <= 1) return;
-	
+
 	// sinon on prend le deuxieme element de la liste et on verifie s'il s'agit d'une borne
 	QGraphicsItem *qgi = qgis.at(1);
 	// si le qgi est une borne...
 	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 	if (!other_terminal) return;
 	previous_terminal_ = other_terminal;
-	
+
 	// s'il s'agit d'une borne, on lui applique l'effet hover approprie
 	if (!canBeLinkedTo(other_terminal)) {
 		other_terminal -> hovered_color_ = forbiddenColor;
@@ -698,7 +701,7 @@ void Terminal::updateConductor()
 */
 bool Terminal::isLinkedTo(Terminal *other_terminal) {
 	if (other_terminal == this) return(false);
-	
+
 	bool already_linked = false;
 	foreach (Conductor *c, conductors_) {
 		if (c -> terminal1 == other_terminal || c -> terminal2 == other_terminal) {
@@ -768,25 +771,25 @@ bool Terminal::valideXml(QDomElement &terminal)
 {
 	// verifie le nom du tag
 	if (terminal.tagName() != "terminal") return(false);
-	
+
 	// verifie la presence des attributs minimaux
 	if (!terminal.hasAttribute("x")) return(false);
 	if (!terminal.hasAttribute("y")) return(false);
 	if (!terminal.hasAttribute("orientation")) return(false);
-	
+
 	bool conv_ok;
 	// parse l'abscisse
 	terminal.attribute("x").toDouble(&conv_ok);
 	if (!conv_ok) return(false);
-	
+
 	// parse l'ordonnee
 	terminal.attribute("y").toDouble(&conv_ok);
 	if (!conv_ok) return(false);
-	
+
 	// parse l'id
 	terminal.attribute("id").toInt(&conv_ok);
 	if (!conv_ok) return(false);
-	
+
 	// parse l'orientation
 	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok) return(false);
@@ -794,7 +797,7 @@ bool Terminal::valideXml(QDomElement &terminal)
 			&& terminal_or != Qet::South
 			&& terminal_or != Qet::East
 			&& terminal_or != Qet::West) return(false);
-	
+
 	// a ce stade, la borne est syntaxiquement correcte
 	return(true);
 }

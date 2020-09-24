@@ -46,7 +46,9 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.15 or later")
+#endif
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
 #endif
 	{
@@ -306,7 +308,7 @@ QString ElementQueryWidget::queryStr() const
 			case 0: //No filter
 				break;
 			case 1: //Not empty
-				filter_ += QString(" AND ") += key += " IS NOT NULL"; 
+				filter_ += QString(" AND ") += key += " IS NOT NULL";
 				break;
 			case 2: //empty
 				filter_ += QString(" AND ") += key += " IS NULL";

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -37,7 +37,7 @@ ElementsMover::ElementsMover() :
 	m_movement_driver(nullptr),
 	m_moved_content()
 {
-	
+
 }
 
 /**
@@ -68,17 +68,17 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
 		// They must be no movement in progress
 	if (movement_running_) return(-1);
-	
+
 		// Be sure we have diagram to work
 	if (!diagram) return(-1);
 	diagram_ = diagram;
-	
+
 		// Take count of driver item
 	m_movement_driver = driver_item;
-	
+
 		// At the beginning of movement, move is NULL
 	current_movement_ = QPointF(0.0, 0.0);
-	
+
 	m_moved_content = DiagramContent(diagram);
 	m_moved_content.removeNonMovableItems();
 
@@ -98,11 +98,11 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	}
 
 	if (!m_moved_content.count()) return(-1);
-	
+
 	/* At this point, we've got all info to manage movement.
 	 * There is now a move in progress */
 	movement_running_ = true;
-	
+
 	return(m_moved_content.count());
 }
 
@@ -125,10 +125,13 @@ void ElementsMover::continueMovement(const QPointF &movement)
 			continue;
 		qgi -> setPos(qgi->pos() + movement);
 	}
-	
+
 	// Move some conductors
 	for (Conductor *c : m_moved_content.m_conductors_to_update)
 	{
+#if TODO_LIST
+#pragma message("@TODO fix this problem correctly, probably we must to see conductor class.")
+#endif
 			//Due to a weird behavior, we must to ensure that the position of the conductor is to (0,0).
 			//If not, in some unknown case the function QGraphicsScene::itemsBoundingRect() return a rectangle
 			//that take in acount the pos() of the conductor, even if the bounding rect returned by the conductor is not in the pos().
@@ -218,7 +221,7 @@ void ElementsMover::endMovement()
 		diagram_ -> undoStack().push(undo_object);
 	else
 		delete undo_object;
-	
+
 		// There is no movement in progress now
 	movement_running_ = false;
 	m_moved_content.clear();

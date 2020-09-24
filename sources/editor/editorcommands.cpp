@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -307,10 +307,10 @@ ChangeZValueCommand::ChangeZValueCommand(
 {
 	// retrieve all primitives but terminals
 	QList<QGraphicsItem *> items_list = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
-	
+
 	// prend un snapshot des zValues
 	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
-	
+
 	// choisit le nom en fonction du traitement
 	if (m_option == QET::BringForward) {
 		setText(QObject::tr("amener au premier plan", "undo caption"));
@@ -368,14 +368,16 @@ void ChangeZValueCommand::applyBringForward(const QList<QGraphicsItem *> &items_
 */
 void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 	QList<QGraphicsItem *> my_items_list = items_list;
-	
+
 	for (int i = my_items_list.count() - 2 ; i >= 0 ; -- i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i +1] -> isSelected()) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
 				my_items_list.swap(i, i + 1);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.13 or later")
+#endif
 				my_items_list.swapItemsAt(i, i + 1);
 #endif
 			}
@@ -391,20 +393,22 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 */
 void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 	QList<QGraphicsItem *> my_items_list = items_list;
-	
+
 	for (int i = 1 ; i < my_items_list.count() ; ++ i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i - 1] -> isSelected()) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
 				my_items_list.swap(i, i - 1);
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.13 or later")
+#endif
 				my_items_list.swapItemsAt(i, i - 1);
 #endif
 			}
 		}
 	}
-	
+
 	int z = 1;
 	foreach(QGraphicsItem *qgi, my_items_list) redo_hash.insert(qgi, z ++);
 }
@@ -550,7 +554,7 @@ void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
 	if (!scaled_primitives_.count()) return;
 	if (before == after) return;
 	if (!before.width() || !before.height()) return; // cowardly flee division by zero FIXME?
-	
+
 	foreach (CustomElementPart *part_item, scaled_primitives_) {
 		part_item -> startUserTransformation(before);
 		part_item -> handleUserTransformation(before, after);

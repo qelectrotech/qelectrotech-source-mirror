@@ -1,19 +1,19 @@
 ﻿/*
-        Copyright 2006-2020 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "lineeditor.h"
 #include "ui_lineeditor.h"
@@ -25,28 +25,68 @@
 #include "qeticons.h"
 
 /**
- * @brief LineEditor::LineEditor
- * @param editor : Element editor who belong this editor
- * @param part : part line to edit
- * @param parent : parent widget
- */
-LineEditor::LineEditor(QETElementEditor *editor, PartLine *part, QWidget *parent) :
-	ElementItemEditor(editor, parent),
-    ui(new Ui::LineEditor)
+	@brief LineEditor::LineEditor
+	@param editor : Element editor who belong this editor
+	@param part : part line to edit
+	@param parent : parent widget
+*/
+LineEditor::LineEditor(
+		QETElementEditor *editor, PartLine *part, QWidget *parent) :
+	ElementItemEditor(editor, parent),ui(new Ui::LineEditor)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
-	ui->m_end1_cb->addItem(QET::Icons::EndLineNone,     tr("Normale",             "type of the 1st end of a line"), Qet::None    );
-	ui->m_end1_cb->addItem(QET::Icons::EndLineSimple,   tr("Flèche simple",       "type of the 1st end of a line"), Qet::Simple  );
-	ui->m_end1_cb->addItem(QET::Icons::EndLineTriangle, tr("Flèche triangulaire", "type of the 1st end of a line"), Qet::Triangle);
-	ui->m_end1_cb->addItem(QET::Icons::EndLineCircle,   tr("Cercle",              "type of the 1st end of a line"), Qet::Circle  );
-	ui->m_end1_cb->addItem(QET::Icons::EndLineDiamond,  tr("Carré",               "type of the 1st end of a line"), Qet::Diamond );
+	ui->m_end1_cb->addItem(
+				QET::Icons::EndLineNone,
+				tr("Normale",
+				   "type of the 1st end of a line"),
+				Qet::None    );
+	ui->m_end1_cb->addItem(
+				QET::Icons::EndLineSimple,
+				tr("Flèche simple",
+				   "type of the 1st end of a line"),
+				Qet::Simple  );
+	ui->m_end1_cb->addItem(
+				QET::Icons::EndLineTriangle,
+				tr("Flèche triangulaire",
+				   "type of the 1st end of a line"),
+				Qet::Triangle);
+	ui->m_end1_cb->addItem(
+				QET::Icons::EndLineCircle,
+				tr("Cercle",
+				   "type of the 1st end of a line"),
+				Qet::Circle  );
+	ui->m_end1_cb->addItem(
+				QET::Icons::EndLineDiamond,
+				tr("Carré",
+				   "type of the 1st end of a line"),
+				Qet::Diamond );
 
-	ui->m_end2_cb->addItem(QET::Icons::EndLineNone,     tr("Normale",             "type of the 1st end of a line"), Qet::None    );
-	ui->m_end2_cb->addItem(QET::Icons::EndLineSimple,   tr("Flèche simple",       "type of the 1st end of a line"), Qet::Simple  );
-	ui->m_end2_cb->addItem(QET::Icons::EndLineTriangle, tr("Flèche triangulaire", "type of the 1st end of a line"), Qet::Triangle);
-	ui->m_end2_cb->addItem(QET::Icons::EndLineCircle,   tr("Cercle",              "type of the 1st end of a line"), Qet::Circle  );
-	ui->m_end2_cb->addItem(QET::Icons::EndLineDiamond,  tr("Carré",               "type of the 1st end of a line"), Qet::Diamond );
+	ui->m_end2_cb->addItem(
+				QET::Icons::EndLineNone,
+				tr("Normale",
+				   "type of the 1st end of a line"),
+				Qet::None    );
+	ui->m_end2_cb->addItem(
+				QET::Icons::EndLineSimple,
+				tr("Flèche simple",
+				   "type of the 1st end of a line"),
+				Qet::Simple  );
+	ui->m_end2_cb->addItem(
+				QET::Icons::EndLineTriangle,
+				tr("Flèche triangulaire",
+				   "type of the 1st end of a line"),
+				Qet::Triangle);
+	ui->m_end2_cb->addItem(
+				QET::Icons::EndLineCircle,
+				tr("Cercle",
+				   "type of the 1st end of a line"),
+				Qet::Circle  );
+	ui->m_end2_cb->addItem(
+				QET::Icons::EndLineDiamond,
+				tr("Carré",
+				   "type of the 1st end of a line"),
+				Qet::Diamond );
 
 	m_style = new StyleEditor(editor);
 	ui->m_main_layout->insertWidget(0, m_style);
@@ -56,18 +96,19 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *part, QWidget *parent
 }
 
 /**
- * @brief LineEditor::~LineEditor
- */
-LineEditor::~LineEditor() {
-    delete ui;
+	@brief LineEditor::~LineEditor
+*/
+LineEditor::~LineEditor()
+{
+	delete ui;
 }
 
 /**
- * @brief LineEditor::setPart
- * Reimplemented from @ElementItemEditor
- * @param part : part line to edit
- * @return : true if the given part can be edited
- */
+	@brief LineEditor::setPart
+	Reimplemented from ElementItemEditor
+	@param part : part line to edit
+	@return : true if the given part can be edited
+*/
 bool LineEditor::setPart(CustomElementPart *part)
 {
 	if (m_part == part) {
@@ -100,7 +141,7 @@ bool LineEditor::setPart(CustomElementPart *part)
 
 /**
  * @brief LineEditor::setParts
- * Reimplemented from @ElementItemEditor
+ * Reimplemented from ElementItemEditor
  * @param parts : parts to edit
  * @return true if the parts can be edited
  */
@@ -134,9 +175,9 @@ QList<CustomElementPart *> LineEditor::currentParts() const {
 }
 
 /**
- * @brief LineEditor::updateForm
- * Reimplemented from @ElementItemEditor
- */
+	@brief LineEditor::updateForm
+	Reimplemented from ElementItemEditor
+*/
 void LineEditor::updateForm()
 {
 	if (!m_part) {

@@ -48,7 +48,7 @@ bool ConductorNumExport::toCsv()
 	//    if(!name.endsWith(".csv")) {
 	//        name += ".csv";
 	//    }
-	
+
 	QString filename = QFileDialog::getSaveFileName(m_parent_widget, QObject::tr("Enregister sous... "), name, QObject::tr("Fichiers csv (*.csv)"));
 	QFile file(filename);
 	if(!filename.isEmpty())
@@ -70,7 +70,9 @@ bool ConductorNumExport::toCsv()
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 			stream << wiresNum() << endl;
 #else
+#if TODO_LIST
 #pragma message("@TODO remove code for QT 5.15 or later")
+#endif
 			stream << wiresNum() << &Qt::endl(stream);
 #endif
 		}
@@ -81,7 +83,7 @@ bool ConductorNumExport::toCsv()
 	else {
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -92,7 +94,7 @@ bool ConductorNumExport::toCsv()
 QString ConductorNumExport::wiresNum() const
 {
 	QString csv;
-	
+
 	QStringList list = m_hash.keys();
 	list.sort();
 	for (QString key : list)
@@ -101,7 +103,7 @@ QString ConductorNumExport::wiresNum() const
 			csv.append(key + "\n");
 		}
 	}
-	
+
 	return csv;
 }
 
@@ -122,7 +124,7 @@ void ConductorNumExport::fillHash()
 			if (num.isEmpty() || num.contains(rx)) {
 				continue;
 			}
-			
+
 			//We must to define if the connected terminal is a folio report, if it is the case
 			//we don't add the num to the hash because the terminal doesn't represent a real terminal.
 			if(!(c->terminal1->parentElement()->linkType() & Element::AllReport))

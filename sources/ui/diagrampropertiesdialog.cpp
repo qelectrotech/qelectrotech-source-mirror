@@ -67,23 +67,23 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		//Conductor widget
 	m_cpw = new ConductorPropertiesWidget(conductors, this);
 	m_cpw -> setReadOnly(diagram_is_read_only);
-	
+
 	QComboBox *autonum_combobox = m_cpw->autonumComboBox();
 	autonum_combobox->addItems(diagram->project()->conductorAutoNum().keys());
 	autonum_combobox->setCurrentIndex(autonum_combobox->findText(diagram->conductorsAutonumName()));
-	
+
 	connect(m_cpw->editAutonumPushButton(), &QPushButton::clicked, this, &DiagramPropertiesDialog::editAutonum);
 
 		// Buttons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&boutons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(&boutons, SIGNAL(rejected()), this, SLOT(reject()));
-	
+
 	QGridLayout *glayout = new QGridLayout;
 	glayout->addWidget(border_infos,0,0);
 	glayout->addWidget(titleblock_infos, 1, 0);
 	glayout->addWidget(m_cpw, 0, 1, 0, 1);
-	
+
 	QVBoxLayout vlayout(this);
 	vlayout.addLayout(glayout);
 	vlayout.addWidget(&boutons);
@@ -107,6 +107,9 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 		// Conducteur have change
 		if (new_conductors != conductors) {
+#if TODO_LIST
+#pragma message("@TODO implement an undo command to allow the user to undo/redo this action")
+#endif
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			diagram -> defaultConductorProperties = new_conductors;
 		}
