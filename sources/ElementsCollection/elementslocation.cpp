@@ -245,7 +245,7 @@ void ElementsLocation::setPath(const QString &path)
 			("^project(?<project_id>[0-9])\\+(?<collection_path>embed://*.*)$");
 		if (!re.isValid())
 		{
-			qWarning() <<"this is an error in the code"
+			qWarning() <<QObject::tr("this is an error in the code")
 				  << re.errorString()
 				  << re.patternErrorOffset();
 			return;

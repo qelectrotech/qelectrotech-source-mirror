@@ -104,7 +104,7 @@ void TitleBlockTemplateLocation::fromString(const QString &loc_str)
 	QRegularExpression name_from_url("//*(?<name>.*)");
 	if (!name_from_url.isValid())
 	{
-		qWarning() <<"this is an error in the code"
+		qWarning() <<QObject::tr("this is an error in the code")
 			  << name_from_url.errorString()
 			  << name_from_url.patternErrorOffset();
 		return;

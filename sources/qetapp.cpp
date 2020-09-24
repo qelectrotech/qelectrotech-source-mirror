@@ -2109,7 +2109,7 @@ int QETApp::projectIdFromString(const QString &url) {
 				QRegularExpression::CaseInsensitiveOption);
 	if (!embedded.isValid())
 	{
-		qWarning() <<"this is an error in the code"
+		qWarning() <<QObject::tr("this is an error in the code")
 			  << embedded.errorString()
 			  << embedded.patternErrorOffset();
 		return(-1);

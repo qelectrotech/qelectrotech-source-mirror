@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -61,7 +61,7 @@ SearchAndReplaceWidget::SearchAndReplaceWidget(QWidget *parent) :
 
 	setHideAdvanced(true);
 	setUpTreeItems();
-	
+
 	connect(ui->m_search_le, &QLineEdit::textEdited,
 		this, &SearchAndReplaceWidget::search);
 }
@@ -99,7 +99,7 @@ bool SearchAndReplaceWidget::event(QEvent *event)
 		fillItemsList();
 		m_root_qtwi->setExpanded(true);
 	}
-	
+
 	return QWidget::event(event);
 }
 
@@ -112,25 +112,25 @@ void SearchAndReplaceWidget::clear()
 {
 	disconnect(ui->m_tree_widget, &QTreeWidget::itemChanged,
 		   this, &SearchAndReplaceWidget::itemChanged);
-	
+
 	qDeleteAll(m_diagram_hash.keys());
 	m_diagram_hash.clear();
-	
+
 	qDeleteAll(m_element_hash.keys());
 	m_element_hash.clear();
-	
+
 	qDeleteAll(m_text_hash.keys());
 	m_text_hash.clear();
-	
+
 	qDeleteAll(m_conductor_hash.keys());
 	m_conductor_hash.clear();
-	
+
 	for (QTreeWidgetItem *qtwi : m_category_qtwi)
 		qtwi->setHidden(false);
-	
+
 	ui->m_tree_widget->collapseAll();
 	ui->m_tree_widget->clearSelection();
-	
+
 	ui->m_search_le->clear();
 	ui->m_replace_le->clear();
 	updateNextPreviousButtons();
@@ -157,62 +157,62 @@ void SearchAndReplaceWidget::setUpTreeItems()
 	m_root_qtwi->setText(0, tr("Correspondance :"));
 	m_root_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_root_qtwi);
-	
+
 	m_folio_qtwi = new QTreeWidgetItem(m_root_qtwi);
 	m_folio_qtwi->setIcon(0, QET::Icons::Diagram);
 	m_folio_qtwi->setText(0, tr("Folios"));
 	m_folio_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_folio_qtwi);
-	
+
 	m_indi_text_qtwi = new QTreeWidgetItem(m_root_qtwi);
 	m_indi_text_qtwi->setIcon(0, QET::Icons::PartText);
 	m_indi_text_qtwi->setText(0, tr("Champs texte"));
 	m_indi_text_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_indi_text_qtwi);
-	
+
 	m_elements_qtwi = new QTreeWidgetItem(m_root_qtwi);
 	m_elements_qtwi->setIcon(0, QET::Icons::Element);
 	m_elements_qtwi->setText(0, tr("Eléments"));
 	m_elements_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_elements_qtwi);
-	
+
 	m_simple_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_simple_elmt_qtwi->setText(0, tr("Eléments simple"));
 	m_simple_elmt_qtwi->setIcon(0, QET::Icons::Element);
 	m_simple_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_simple_elmt_qtwi);
-	
+
 	m_master_elmt_qtwi= new QTreeWidgetItem(m_elements_qtwi);
 	m_master_elmt_qtwi->setText(0, tr("Eléments maître"));
 	m_master_elmt_qtwi->setIcon(0, QET::Icons::ElementMaster);
 	m_master_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_master_elmt_qtwi);
-	
+
 	m_slave_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_slave_elmt_qtwi->setText(0, tr("Eléments esclave"));
 	m_slave_elmt_qtwi->setIcon(0, QET::Icons::ElementSlave);
 	m_slave_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_slave_elmt_qtwi);
-	
+
 	m_report_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_report_elmt_qtwi->setText(0, tr("Eléments report de folio"));
 	m_report_elmt_qtwi->setIcon(0, QET::Icons::FolioXrefComing);
 	m_report_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_report_elmt_qtwi);
-	
+
 	m_terminal_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_terminal_elmt_qtwi->setText(0, tr("Eléments bornier"));
 	m_terminal_elmt_qtwi->setIcon(0, QET::Icons::ElementTerminal);
 	m_terminal_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_terminal_elmt_qtwi);
 	m_category_qtwi.append(m_qtwi_elmts);
-	
+
 	m_conductor_qtwi = new QTreeWidgetItem(m_root_qtwi);
 	m_conductor_qtwi->setIcon(0, QET::Icons::Conductor);
 	m_conductor_qtwi->setText(0, tr("Conducteurs"));
 	m_conductor_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_conductor_qtwi);
-	
+
 	updateNextPreviousButtons();
 }
 
@@ -235,10 +235,10 @@ void SearchAndReplaceWidget::fillItemsList()
 {
 	disconnect(ui->m_tree_widget, &QTreeWidget::itemChanged,
 		   this, &SearchAndReplaceWidget::itemChanged);
-	
+
 	qDeleteAll(m_element_hash.keys());
 	m_element_hash.clear();
-	
+
 	QETProject *project_ = m_editor->currentProject();
 	if (!project_)
 	{
@@ -249,21 +249,21 @@ void SearchAndReplaceWidget::fillItemsList()
 	connect(project_, &QETProject::destroyed, this,
 		&SearchAndReplaceWidget::on_m_reload_pb_clicked);
 
-	
+
 	DiagramContent dc;
 	for (Diagram *diagram : project_->diagrams())
 	{
 		QString str;
-		
+
 		QSettings settings;
 		if (settings.value("genericpanel/folio", true).toBool()) {
 			str = diagram->border_and_titleblock.finalfolio();
 		} else {
 			str = QString::number(diagram->folioIndex());
 		}
-		
+
 		str.append(" " + diagram->title());
-		
+
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_folio_qtwi);
 		qtwi->setText(0, str);
 		qtwi->setData(0, Qt::UserRole, searchTerms(diagram));
@@ -271,10 +271,10 @@ void SearchAndReplaceWidget::fillItemsList()
 		m_diagram_hash.insert(qtwi, QPointer<Diagram>(diagram));
 		dc += DiagramContent(diagram, false);
 	}
-	
+
 	for (Element *elmt : dc.m_elements)
 		addElement(elmt);
-	
+
 	//Sort child of each "element type" tree item.
 	//we hide, "element type" tree item, if they do not have children
 	for(QTreeWidgetItem *qtwi : m_qtwi_elmts)
@@ -282,7 +282,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		qtwi->sortChildren(0, Qt::AscendingOrder);
 		qtwi->setHidden(qtwi->childCount() ? false : true);
 	}
-	
+
 	for (IndependentTextItem *iti : dc.m_text_fields)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_indi_text_qtwi);
@@ -302,7 +302,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		m_conductor_hash.insert(qtwi, QPointer<Conductor>(c));
 	}
 	m_conductor_qtwi->sortChildren(0, Qt::AscendingOrder);
-	
+
 	updateNextPreviousButtons();
 	connect(ui->m_tree_widget, &QTreeWidget::itemChanged,
 		this, &SearchAndReplaceWidget::itemChanged);
@@ -340,7 +340,7 @@ void SearchAndReplaceWidget::addElement(Element *element)
 	}
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem(parent);
 	m_element_hash.insert(qtwi, QPointer<Element>(element));
-	
+
 	QString str;
 	str += element->elementInformations().value("label").toString();
 	if(!str.isEmpty())
@@ -365,12 +365,12 @@ void SearchAndReplaceWidget::search()
 		for (QTreeWidgetItemIterator it(m_root_qtwi) ; *it ; ++it) {
 			(*it)->setHidden(false);
 		}
-		
+
 		for (QTreeWidgetItem *item : m_category_qtwi) {
 			item->setExpanded(false);
 		}
 		m_root_qtwi->setExpanded(true);
-		
+
 		ui->m_tree_widget->setCurrentItem(m_root_qtwi);
 		ui->m_search_le->setPalette(QPalette());
 	}
@@ -379,9 +379,9 @@ void SearchAndReplaceWidget::search()
 		for (QTreeWidgetItemIterator it(m_root_qtwi) ; *it ; ++it) {
 			(*it)->setHidden(true);
 		}
-		
+
 		bool match = false;
-		
+
 			//Extended search,
 			//on each string stored in column 0 with role : UserRole
 		QList<QTreeWidgetItem *> qtwi_list;
@@ -393,7 +393,7 @@ void SearchAndReplaceWidget::search()
 		{
 			QStringList list = qtwi->data(0, Qt::UserRole)
 					.toStringList();
-			
+
 			if(ui->m_mode_cb->currentIndex() == 0)
 			{
 					//Contain string
@@ -407,6 +407,13 @@ void SearchAndReplaceWidget::search()
 			{
 					//entire word
 				QRegularExpression rx("\\b" + str + "\\b");
+				if (!rx.isValid())
+					{
+					qWarning() <<QObject::tr("this is an error in the code")
+						  << rx.errorString()
+						  << rx.patternErrorOffset();
+					return;
+				}
 				if (!ui->m_case_sensitive_cb->isChecked()) {
 					rx.setPatternOptions(
 					QRegularExpression::CaseInsensitiveOption);
@@ -420,13 +427,13 @@ void SearchAndReplaceWidget::search()
 				setVisibleAllParents(qtwi);
 			}
 		}
-		
+
 		QPalette background = ui->m_search_le->palette();
 		background.setColor(QPalette::Base, match
 				    ? QColor("#E0FFF0")
 				    : QColor("#FFE0EF"));
 		ui->m_search_le->setPalette(background);
-		
+
 			//Go to the first occurence
 		ui->m_tree_widget->setCurrentItem(m_root_qtwi);
 		on_m_next_pb_clicked();
@@ -467,11 +474,11 @@ QTreeWidgetItem *SearchAndReplaceWidget::nextItem(
 	if (!item) {
 		qtwi = ui->m_tree_widget->currentItem();
 	}
-	
+
 	if (!qtwi) {
 		qtwi = m_root_qtwi;
 	}
-	
+
 	QTreeWidgetItemIterator it(qtwi, flags);
 
 	++it;
@@ -500,13 +507,13 @@ QTreeWidgetItem *SearchAndReplaceWidget::previousItem(
 	if (!item) {
 		qtwi = ui->m_tree_widget->currentItem();
 	}
-	
+
 	if (!qtwi) {
 		qtwi = m_root_qtwi;
 	}
-	
+
 	QTreeWidgetItemIterator it(qtwi, flags);
-	
+
 	--it;
 	QTreeWidgetItem *previous_ = *it;
 	if (previous_) {
@@ -531,7 +538,7 @@ void SearchAndReplaceWidget::updateNextPreviousButtons()
 		ui->m_previous_pb->setDisabled(true);
 		return;
 	}
-	
+
 	QTreeWidgetItem *next_ = item_;
 	do
 	{
@@ -547,7 +554,7 @@ void SearchAndReplaceWidget::updateNextPreviousButtons()
 				 break;
 		}
 	} while (m_category_qtwi.contains(next_));
-	
+
 	QTreeWidgetItem *previous_ = item_;
 	do
 	{
@@ -577,10 +584,10 @@ void SearchAndReplaceWidget::itemChanged(QTreeWidgetItem *item, int column)
 {
 	Q_UNUSED(column);
 	ui->m_tree_widget->blockSignals(true);
-	
+
 	setChildCheckState(item, item->checkState(0));
 	updateParentCheckState(item);
-	
+
 	ui->m_tree_widget->blockSignals(false);
 }
 
@@ -613,14 +620,14 @@ void SearchAndReplaceWidget::updateParentCheckState(QTreeWidgetItem *item,
 						    bool all_parents)
 {
 	QTreeWidgetItem *parent = item->parent();
-	
+
 	if (!parent) {
 		parent = item;
 	}
-	
+
 	int check=0,
 		partially=0;
-			
+
 	for (int i=0 ; i<parent->childCount() ; ++i)
 	{
 		switch (parent->child(i)->checkState(0)) {
@@ -644,7 +651,7 @@ void SearchAndReplaceWidget::updateParentCheckState(QTreeWidgetItem *item,
 	else {
 		parent->setCheckState(0, Qt::Unchecked);
 	}
-	
+
 	if (all_parents && item->parent()) {
 		updateParentCheckState(parent, all_parents);
 	}
@@ -659,7 +666,7 @@ void SearchAndReplaceWidget::activateNextChecked()
 		//Next button is disabled, so there is not a next item.
 	if (!ui->m_next_pb->isEnabled())
 		return;
-	
+
 	do {
 		on_m_next_pb_clicked();
 	} while ((ui->m_tree_widget->currentItem()->checkState(0)
@@ -674,7 +681,7 @@ void SearchAndReplaceWidget::activateNextChecked()
 QList<Diagram *> SearchAndReplaceWidget::selectedDiagram() const
 {
 	QList <Diagram *> diagram_list;
-	
+
 	for (QTreeWidgetItem *qtwi : m_diagram_hash.keys())
 	{
 		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
@@ -685,7 +692,7 @@ QList<Diagram *> SearchAndReplaceWidget::selectedDiagram() const
 			}
 		}
 	}
-	
+
 	return diagram_list;
 }
 
@@ -696,7 +703,7 @@ QList<Diagram *> SearchAndReplaceWidget::selectedDiagram() const
 QList<Element *> SearchAndReplaceWidget::selectedElement() const
 {
 	QList <Element *> element_list;
-	
+
 	for (QTreeWidgetItem *qtwi : m_element_hash.keys())
 	{
 		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
@@ -707,7 +714,7 @@ QList<Element *> SearchAndReplaceWidget::selectedElement() const
 			}
 		}
 	}
-	
+
 	return element_list;
 }
 
@@ -718,7 +725,7 @@ QList<Element *> SearchAndReplaceWidget::selectedElement() const
 QList<Conductor *> SearchAndReplaceWidget::selectedConductor() const
 {
 	QList <Conductor *> conductor_list;
-	
+
 	for (QTreeWidgetItem *qtwi : m_conductor_hash.keys())
 	{
 		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
@@ -729,7 +736,7 @@ QList<Conductor *> SearchAndReplaceWidget::selectedConductor() const
 			}
 		}
 	}
-	
+
 	return conductor_list;
 }
 
@@ -741,7 +748,7 @@ QList<Conductor *> SearchAndReplaceWidget::selectedConductor() const
 QList<IndependentTextItem *> SearchAndReplaceWidget::selectedText() const
 {
 	QList <IndependentTextItem *> text_list;
-	
+
 	for(QTreeWidgetItem *qtwi : m_text_hash.keys())
 	{
 		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
@@ -753,7 +760,7 @@ QList<IndependentTextItem *> SearchAndReplaceWidget::selectedText() const
 			}
 		}
 	}
-	
+
 	return text_list;
 }
 
@@ -778,7 +785,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram)
 	for (QString key : prop.context.keys()) {
 		list.append(prop.context.value(key).toString());
 	}
-	
+
 	return list;
 }
 
@@ -798,7 +805,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 			list.append(str);
 		}
 	}
-	
+
 	for (DynamicElementTextItem *deti : element->dynamicTextItems())
 	{
 		if (deti->textFrom()
@@ -811,7 +818,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 	for (ElementTextItemGroup *group : element->textGroups())
 	{
 		list.append(group->name());
-		
+
 		for (DynamicElementTextItem *deti : group->texts()) {
 			if (deti->textFrom()
 					== DynamicElementTextItem::UserText
@@ -821,7 +828,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 			}
 		}
 	}
-	
+
 	return list;
 }
 
@@ -834,13 +841,13 @@ QStringList SearchAndReplaceWidget::searchTerms(Conductor *conductor)
 {
 	QStringList list;
 	ConductorProperties properties = conductor->properties();
-	
+
 	list.append(properties.text);
 	list.append(properties.m_function);
 	list.append(properties.m_tension_protocol);
 	list.append(properties.m_wire_color);
 	list.append(properties.m_wire_section);
-	
+
 	return list;
 }
 
@@ -867,7 +874,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_itemDoubleClicked(
 		int column)
 {
 	Q_UNUSED(column)
-	
+
 	if (m_diagram_hash.keys().contains(item))
 	{
 		QPointer<Diagram> diagram = m_diagram_hash.value(item);
@@ -911,7 +918,7 @@ void SearchAndReplaceWidget::on_m_reload_pb_clicked()
 		m_last_selected.data()->setSelected(false);
 		m_last_selected.clear();
 	}
-	
+
 	ui->m_search_le->setFocus();
 	fillItemsList();
 	m_root_qtwi->setExpanded(true);
@@ -922,14 +929,14 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 		QTreeWidgetItem *previous)
 {
 	Q_UNUSED(previous);
-	
+
 	if(m_highlighted_element) {
 		m_highlighted_element.data()->setHighlighted(false);
 	}
 	if (m_last_selected) {
 		m_last_selected.data()->setSelected(false);
 	}
-	
+
 	if (m_element_hash.keys().contains(current))
 	{
 		QPointer<Element> elmt = m_element_hash.value(current);
@@ -942,7 +949,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 	else if (m_text_hash.keys().contains(current))
 	{
 		QPointer<IndependentTextItem> text = m_text_hash.value(current);
-		if (text) 
+		if (text)
 		{
 			text.data()->setSelected(true);
 			m_last_selected = text;
@@ -957,12 +964,12 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 			m_last_selected = cond;
 		}
 	}
-	
+
 	updateNextPreviousButtons();
 	if (!current) {
 		return;
 	}
-	
+
 	if (current->checkState(0) == Qt::Checked
 			&& !m_category_qtwi.contains(current)) {
 		ui->m_replace_pb->setEnabled(true);
@@ -974,7 +981,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 void SearchAndReplaceWidget::on_m_next_pb_clicked()
 {
 	QTreeWidgetItem *item = nullptr;
-	
+
 	do
 	{
 		item = nextItem(nullptr, QTreeWidgetItemIterator::NotHidden);
@@ -984,16 +991,16 @@ void SearchAndReplaceWidget::on_m_next_pb_clicked()
 			return;
 		}
 	} while (m_category_qtwi.contains(item));
-	
+
 	ui->m_tree_widget->setCurrentItem(item);
 	ui->m_tree_widget->scrollToItem(item);
 	on_m_tree_widget_itemDoubleClicked(item, 0);
 }
 
 void SearchAndReplaceWidget::on_m_previous_pb_clicked()
-{	
+{
 	QTreeWidgetItem *item = nullptr;
-	
+
 	do
 	{
 		item = previousItem(nullptr,
@@ -1014,7 +1021,7 @@ void SearchAndReplaceWidget::on_m_previous_pb_clicked()
 			return;
 		}
 	} while (m_category_qtwi.contains(item));
-	
+
 	ui->m_tree_widget->setCurrentItem(item);
 	ui->m_tree_widget->scrollToItem(item);
 	on_m_tree_widget_itemDoubleClicked(item, 0);
@@ -1024,7 +1031,7 @@ void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 {
 	ReplaceFolioDialog *dialog = new ReplaceFolioDialog(this);
 	dialog->setTitleBlockProperties(m_worker.m_titleblock_properties);
-	
+
 	int result = dialog->exec();
 	if (result == QDialogButtonBox::AcceptRole)
 	{
@@ -1053,7 +1060,7 @@ void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 */
 void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 {
-	QTreeWidgetItem *qtwi = ui->m_tree_widget->currentItem();	
+	QTreeWidgetItem *qtwi = ui->m_tree_widget->currentItem();
 	if(!qtwi) {
 		return;
 	}
@@ -1085,7 +1092,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			if (t) {
 				m_worker.replaceIndiText(t.data());
 			}
-			
+
 		}
 		else if (ui->m_conductor_pb->text().endsWith(tr(" [édité]")) &&
 				 m_conductor_hash.keys().contains(qtwi))
@@ -1095,7 +1102,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 				m_worker.replaceConductor(c.data());
 			}
 		}
-		
+
 			//Replace advanced
 		if (ui->m_advanced_replace_pb->text().endsWith(tr(" [édité]")))
 		{
@@ -1103,7 +1110,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			QList <Element *>el;
 			QList <IndependentTextItem *>tl;
 			QList <Conductor *>cl;
-			
+
 			if (m_diagram_hash.keys().contains(qtwi))
 			{
 				QPointer<Diagram> d =
@@ -1136,11 +1143,11 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 					cl.append(c.data());
 				}
 			}
-			
+
 			m_worker.replaceAdvanced(dl, el, tl, cl);
 		}
 	}
-	
+
 	activateNextChecked();
 	ui->m_replace_pb->setEnabled(ui->m_next_pb->isEnabled());
 }
@@ -1170,8 +1177,8 @@ void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 					 selectedElement(),
 					 selectedText(),
 					 selectedConductor());
-	}	
-	
+	}
+
 		//Change was made, we reload the panel
 		//and search again to keep up to date the tree widget
 		//and the match item of search
@@ -1186,7 +1193,7 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 	ReplaceElementDialog *dialog = new ReplaceElementDialog(
 				m_worker.m_element_context,
 				this);
-	
+
 	int result = dialog->exec();
 	if (result == QDialogButtonBox::AcceptRole)
 	{
@@ -1215,7 +1222,7 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 */
 void SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged(int index)
 {
-	Q_UNUSED(index);	
+	Q_UNUSED(index);
 	search();
 }
 
@@ -1240,7 +1247,7 @@ void SearchAndReplaceWidget::on_m_conductor_pb_clicked()
 				m_worker.m_conductor_properties,
 				this);
 	int result = dialog->exec();
-	
+
 	if (result == QDialogButtonBox::AcceptRole)
 	{
 		QString text = ui->m_conductor_pb->text();
@@ -1272,7 +1279,7 @@ void SearchAndReplaceWidget::on_m_advanced_replace_pb_clicked()
 				m_worker.m_advanced_struct,
 				this);
 	int result = dialog->exec();
-	
+
 	if (result == QDialogButtonBox::AcceptRole)
 	{
 		QString text = ui->m_advanced_replace_pb->text();

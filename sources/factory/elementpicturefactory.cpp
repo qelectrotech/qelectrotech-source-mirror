@@ -574,7 +574,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-z-]+)$");
 	if (!rx.isValid())
 	{
-		qWarning() <<"this is an error in the code"
+		qWarning() <<QObject::tr("this is an error in the code")
 			  << rx.errorString()
 			  << rx.patternErrorOffset();
 		return;
