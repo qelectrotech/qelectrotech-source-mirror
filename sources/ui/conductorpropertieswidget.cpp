@@ -73,7 +73,7 @@ void ConductorPropertiesWidget::setProperties(
 {
 	if (m_properties == properties)
 		return;
-	
+
 	m_properties = properties;
 
 	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
@@ -84,6 +84,8 @@ void ConductorPropertiesWidget::setProperties(
 	ui->m_formula_le            -> setText    (m_properties.m_formula);
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
+	ui->m_cable_le              -> setText    (m_properties.m_cable);
+	ui->m_bus_le                -> setText    (m_properties.m_bus);
 	ui->m_tension_protocol_le   -> setText    (m_properties.m_tension_protocol);
 	ui->m_wire_color_le         -> setText    (m_properties.m_wire_color);
 	ui->m_wire_section_le       -> setText    (m_properties.m_wire_section);
@@ -128,6 +130,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.text                    = ui -> m_text_le -> text();
 	properties_.text_color              = ui -> m_text_color_kpb->color();
 	properties_.m_function              = ui -> m_function_le->text();
+	properties_.m_cable                 = ui -> m_cable_le->text();
+	properties_.m_bus                   = ui -> m_bus_le->text();
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
 	properties_.m_wire_color            = ui -> m_wire_color_le->text();
 	properties_.m_wire_section          = ui -> m_wire_section_le->text();
@@ -237,6 +241,12 @@ void ConductorPropertiesWidget::initWidget()
 	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(text.isEmpty());});
 	ui->m_multiwires_gb->setChecked(true);
 	ui->m_singlewire_gb->setChecked(true);
+#if TODO_LIST
+#pragma message("@TODO Add Kabel and Bus to qet")
+#else
+	ui->m_cable_le->setDisabled(true);
+	ui->m_bus_le->setDisabled(true);
+#endif
 }
 
 /**
@@ -262,7 +272,7 @@ void ConductorPropertiesWidget::setConductorType(ConductorProperties::ConductorT
 	@brief ConductorPropertiesWidget::updatePreview
 	Update the preview for single lien
 	@param b true: update from the value displayed by this widget
-	         false: update from the properties given at the constructor of this widget
+		 false: update from the properties given at the constructor of this widget
 */
 void ConductorPropertiesWidget::updatePreview(bool b) {
 	const QRect pixmap_rect(0, 0, 96, 96);

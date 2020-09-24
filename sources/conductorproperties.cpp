@@ -283,6 +283,8 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("num", text);
 	e.setAttribute("text_color", text_color.name());
 	e.setAttribute("formula", m_formula);
+	e.setAttribute("cable", m_cable);
+	e.setAttribute("bus", m_bus);
 	e.setAttribute("function", m_function);
 	e.setAttribute("tension_protocol", m_tension_protocol);
 	e.setAttribute("conductor_color", m_wire_color);
@@ -340,6 +342,8 @@ void ConductorProperties::fromXml(QDomElement &e)
 	QColor xml_text_color= QColor(e.attribute("text_color"));
 	text_color = (xml_text_color.isValid()? xml_text_color : QColor(Qt::black));
 	m_formula            = e.attribute("formula");
+	m_cable              = e.attribute("cable");
+	m_bus                = e.attribute("bus");
 	m_function           = e.attribute("function");
 	m_tension_protocol   = e.attribute("tension_protocol");
 	m_wire_color         = e.attribute("conductor_color");
@@ -389,6 +393,8 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "text", text);
 	settings.setValue(prefix + "text_color", text_color.name());
 	settings.setValue(prefix + "formula", m_formula);
+	settings.setValue(prefix + "cable", m_cable);
+	settings.setValue(prefix + "bus", m_bus);
 	settings.setValue(prefix + "function", m_function);
 	settings.setValue(prefix + "tension_protocol", m_tension_protocol);
 	settings.setValue(prefix + "conductor_color", m_wire_color);
@@ -431,6 +437,8 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	QColor settings_text_color = QColor(settings.value(prefix + "text_color").toString());
 	text_color = (settings_text_color.isValid()? settings_text_color : QColor(Qt::black));
 	m_formula            = settings.value(prefix + "formula", "").toString();
+	m_cable              = settings.value(prefix + "cable", "").toString();
+	m_bus                = settings.value(prefix + "bus", "").toString();
 	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
 	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
@@ -485,6 +493,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		text                 = cp.text;
 		text_color           = cp.text_color;
 		m_formula            = cp.m_formula;
+		m_cable              = cp.m_cable;
+		m_bus                = cp.m_bus;
 		m_function           = cp.m_function;
 		m_tension_protocol   = cp.m_tension_protocol;
 		m_wire_color         = cp.m_wire_color;
@@ -586,7 +596,29 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_formula = s_value;
 	equal = true;
 
-		//function
+	//cable
+	s_value = clist.first().m_cable;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_cable != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_cable = s_value;
+	equal = true;
+
+	//bus
+	s_value = clist.first().m_bus;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_bus != s_value)
+			equal = false;
+	}
+	if (equal)
+		m_bus = s_value;
+	equal = true;
+
+	//function
 	s_value = clist.first().m_function;
 	for(ConductorProperties cp : clist)
 	{
@@ -751,6 +783,8 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.text == text &&\
 		other.text_color == text_color &&\
 		other.m_formula == m_formula &&\
+		other.m_cable == m_cable &&\
+		other.m_bus == m_bus &&\
 		other.m_function == m_function &&\
 		other.m_tension_protocol == m_tension_protocol &&\
 		other.m_wire_color == m_wire_color && \
@@ -797,7 +831,7 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	QRegularExpression Rx("^(?<name>[a-z-]+): (?<value>[a-z-]+)$");
 	if (!Rx.isValid())
 	{
-		qWarning() <<"this is an error in the code"
+		qWarning() <<QObject::tr("this is an error in the code")
 			  << Rx.errorString()
 			  << Rx.patternErrorOffset();
 		return;
