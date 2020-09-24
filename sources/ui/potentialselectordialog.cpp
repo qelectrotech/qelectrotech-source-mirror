@@ -336,6 +336,19 @@ void PotentialSelectorDialog::buildWidget()
 	QRadioButton *rb1 = new QRadioButton(text1, this);
 	QRadioButton *rb2 = new QRadioButton(text2, this);
 
+	QRadioButton *rbk = new QRadioButton(
+				tr("Add to Kabel: %1")
+				.arg("wouldn't this be nice?"), this);
+	QRadioButton *rbb = new QRadioButton(
+				tr("Add to Bus: %1")
+				.arg("wouldn't this be nice?"), this);
+
+#if TODO_LIST
+#pragma message("@TODO Add Kabel and Bus to qet")
+#else
+	rbk->setDisabled(true);
+	rbb->setDisabled(true);
+#endif
 	connect(rb1, &QRadioButton::toggled, [this](bool t)
 	{
 		if(t)
@@ -380,6 +393,9 @@ void PotentialSelectorDialog::buildWidget()
 		ui->verticalLayout->insertWidget(2, rb1);
 		rb2->setChecked(true);
 	}
+
+	ui->verticalLayout->insertWidget(3, rbk);
+	ui->verticalLayout->insertWidget(4, rbb);
 }
 
 /**
