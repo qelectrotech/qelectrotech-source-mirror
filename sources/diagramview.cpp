@@ -83,16 +83,16 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	updateWindowTitle();
 	m_diagram->loadElmtFolioSeq();
 	m_diagram->loadCndFolioSeq();
-	
+
 	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
 	connect(m_paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
-	
+
 	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Collage multiple"), this);
 	connect(m_multi_paste, &QAction::triggered, [this]() {
 		MultiPasteDialog d(this->m_diagram, this);
 		d.exec();
 	});
-	
+
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
 	{
@@ -410,7 +410,7 @@ void DiagramView::pasteHere()
 void DiagramView::mousePressEvent(QMouseEvent *e)
 {
 	e->ignore();
-	
+
 	if (m_fresh_focus_in)
 	{
 		switchToVisualisationModeIfNeeded(e);
@@ -427,7 +427,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 		e->accept();
 		return;
 	}
-	
+
 		//There is a good luck that user want to do a free selection
 		//In this case we temporally disable the dragmode because if the QGraphicsScene don't accept the event,
 		//and the drag mode is set to rubberbanddrag, the QGraphicsView start rubber band drag, and accept the event.
@@ -441,11 +441,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	} else {
 		QGraphicsView::mousePressEvent(e);
 	}
-			
+
 	if (e->isAccepted()) {
 		return;
 	}
-	
+
 	if (e->button() == Qt::LeftButton &&
 			 e->modifiers() == Qt::CTRL)
 	{
@@ -454,10 +454,10 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 		e->accept();
 		return;
 	}
-	
+
 	if (!e->isAccepted()) {
 		QGraphicsView::mousePressEvent(e);
-	}	
+	}
 }
 
 /**
@@ -466,6 +466,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 */
 void DiagramView::mouseMoveEvent(QMouseEvent *e)
 {
+	setToolTip(tr("(Dev) X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
 		//Drag the view
@@ -491,7 +492,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 				update();
 			}
 		}
-		
+
 			//Stop polygon rubberbanding if user has let go of all buttons (even
 			//if we didn't get the release events)
 		if (!e->buttons()) {
@@ -501,7 +502,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 		}
 		m_free_rubberband.append(mapToScene(e->pos()));
 		emit freeRubberBandChanged(m_free_rubberband);
-		
+
 		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate)
 		{
 			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
@@ -511,7 +512,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 				update();
 			}
 		}
-		
+
 			//Set the new selection area
 		QPainterPath selection_area;
 		selection_area.addPolygon(m_free_rubberband);
@@ -549,7 +550,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 				update();
 			}
 		}
-		
+
 		if (m_free_rubberband.count() > 3)
 		{
 				//Popup a menu with an action to create conductors between
@@ -565,7 +566,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 			menu->addAction(act);
 			menu->popup(e->globalPos());
 		}
-		
+
 		m_free_rubberbanding = false;
 		m_free_rubberband = QPolygon();
 		emit freeRubberBandChanged(m_free_rubberband);
@@ -662,7 +663,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 {
 	if (m_event_interface && m_event_interface->keyPressEvent(e))
 		return;
-	
+
 	ProjectView *current_project = this->diagramEditor()->currentProjectView();
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
@@ -734,7 +735,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 		}
 			break;
 	}
-	
+
 	switchToVisualisationModeIfNeeded(e);
 	QGraphicsView::keyPressEvent(e);
 }
@@ -765,7 +766,7 @@ void DiagramView::scrollOnMovement(QKeyEvent *e)
 					continue;
 				if(qgi->parentItem() && qgi->parentItem()->isSelected())
 					continue;
-				
+
 				qreal x = qgi->pos().x();
 				qreal y = qgi->pos().y();
 				qreal bottom = viewed_scene.bottom();
@@ -776,12 +777,12 @@ void DiagramView::scrollOnMovement(QKeyEvent *e)
 				qreal elmt_bottom = y + qgi->boundingRect().bottom();
 				qreal elmt_right = x + qgi->boundingRect().right();
 				qreal elmt_left = x + qgi->boundingRect().left();
-				
+
 				bool elmt_right_of_left_margin = elmt_left>=left;
 				bool elmt_left_of_right_margin = elmt_right<=right;
 				bool elmt_below_top_margin     = elmt_top>=top;
 				bool elmt_above_bottom_margin  = elmt_bottom<=bottom;
-				
+
 				if (!(elmt_right_of_left_margin && elmt_left_of_right_margin) ||
 					!(elmt_below_top_margin    && elmt_above_bottom_margin )  )
 				{
@@ -852,7 +853,7 @@ void DiagramView::adjustSceneRect()
 {
 	QRectF scene_rect = m_diagram->sceneRect();
 	scene_rect.adjust(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
-	
+
 	QSettings settings;
 	if (settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool())
 	{
@@ -1057,7 +1058,7 @@ bool DiagramView::event(QEvent *e) {
 void DiagramView::paintEvent(QPaintEvent *event)
 {
 	QGraphicsView::paintEvent(event);
-	
+
 	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
 	{
 		QPainter painter(viewport());
@@ -1195,7 +1196,7 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << m_separators.at(2);
 			list << qde->m_depth_action_group->actions();
 		}
-		
+
 			//Remove from the context menu the actions which are disabled.
 		const QList<QAction *> actions = list;
 		for(QAction *action : actions)
@@ -1205,7 +1206,7 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			}
 		}
 	}
-	
+
 	return list;
 }
 
@@ -1218,16 +1219,16 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	QGraphicsView::contextMenuEvent(e);
 	if(e->isAccepted())
 		return;
-	
+
 	if (QGraphicsItem *qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
 	{
 		if (!qgi -> isSelected()) {
 			m_diagram->clearSelection();
 		}
-		
+
 		qgi->setSelected(true);
 	}
-	
+
 	if (m_diagram->selectedItems().isEmpty())
 	{
 		m_paste_here_pos = e->pos();
