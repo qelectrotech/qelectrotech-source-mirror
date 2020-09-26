@@ -5,20 +5,20 @@
 # Chemins utilises pour la compilation et l'installation de QET
 unix {
         # Chemins UNIX
-        COMPIL_PREFIX              = '/usr/local/'
-        INSTALL_PREFIX             = '/usr/local/'
+        COMPIL_PREFIX              = '/app/'
+        INSTALL_PREFIX             = '/app/'
         QET_BINARY_PATH            = 'bin/'
         QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
         QET_COMMON_TBT_PATH        = 'share/qelectrotech/titleblocks/'
         QET_LANG_PATH              = 'share/qelectrotech/lang/'
         QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
-        QET_LICENSE_PATH           = 'doc/qelectrotech/'
-        QET_MIME_XML_PATH          = '../share/mime/application/'
-        QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
-        QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
+        QET_LICENSE_PATH           = 'share/doc/qelectrotech/'
+        QET_MIME_XML_PATH          = 'share/mime/application/'
+        QET_MIME_DESKTOP_PATH      = 'share/mimelnk/application/'
+        QET_MIME_PACKAGE_PATH      = 'share/mime/packages/'
         QET_DESKTOP_PATH           = 'share/applications/'
         QET_ICONS_PATH             = 'share/icons/hicolor/'
-        QET_MAN_PATH               = 'man/'
+        QET_MAN_PATH               = 'share/man/'
         QET_APPDATA_PATH           = 'share/appdata'
 }
 win32 {
