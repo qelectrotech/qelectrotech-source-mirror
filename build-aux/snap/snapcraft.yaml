@@ -92,7 +92,7 @@ parts:
     plugin: nil
     source: .
     stage-packages: [ git, sqlite3 ]
-     build-packages:
+    build-packages:
       - git
       - libsqlite3-dev
     override-pull: |
