@@ -1102,11 +1102,21 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 
 		// le segment doit avoir une longueur
         qreal segment_length;
-        if (propertyDouble(e, "length", & segment_length))
+        if (propertyDouble(current_segment, "length", & segment_length))
             continue;
 
-        bool isHorizontal;
-        propertyBool(e, "orientation", &isHorizontal);
+        bool isHorizontal = false;
+        if (propertyBool(current_segment, "orientation", &isHorizontal) == PropertyFlags::NoValidConversion) {
+            // legacy
+            QString orientation;
+            if (propertyString(current_segment, "orientation", &orientation) == PropertyFlags::Success) {
+                if (orientation == "horizontal")
+                    isHorizontal = true;
+            } else {
+                qDebug() << "PathFromXML failed";
+                return false;
+            }
+        }
 
         if (isHorizontal) {
 			segments_x << segment_length;
