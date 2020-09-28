@@ -625,7 +625,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// proprietes du schema
 	if (whole_content) {
         // TODO: compare with old version
-        border_and_titleblock.titleBlockToXml(document);
+        border_and_titleblock.titleBlockToXml(dom_root);
 		border_and_titleblock.borderToXml(dom_root);
 		
 		// Default conductor properties
@@ -940,7 +940,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		// Load border and titleblock
-		border_and_titleblock.titleBlockFromXml(root);
+        border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
 		
 		// Find the element "defaultconductor".

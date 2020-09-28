@@ -41,7 +41,8 @@ class TitleBlockProperties: public PropertiesInterface {
 	bool operator==(const TitleBlockProperties &);
 	bool operator!=(const TitleBlockProperties &);
 	
-    QDomElement toXml(QDomDocument &xml_document) const override;
+    QDomElement toXml(QDomDocument &e) const override;
+    void toXml(QDomElement &e) const;
     bool fromXml(const QDomElement &) override;
     void toSettings(QSettings &, const QString & = QString()) const override;
     void fromSettings(const QSettings &, const QString & = QString()) override;

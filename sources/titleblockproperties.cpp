@@ -69,36 +69,35 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
-QDomElement TitleBlockProperties::toXml(QDomDocument &xml_document) const {
+void TitleBlockProperties::toXml(QDomElement &e) const {
 
-    QDomElement e = xml_document.createElement("inset");
+    e.setAttribute("author",   author);
+    e.setAttribute("title",    title);
+    e.setAttribute("filename", filename);
+    e.setAttribute("plant", plant);
+    e.setAttribute("locmach", locmach);
+    e.setAttribute("indexrev",indexrev);
+    e.setAttribute("version", version);
+    e.setAttribute("folio",    folio);
+    e.setAttribute("auto_page_num", auto_page_num);
+    e.setAttribute("date",     exportDate());
+    e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
+    if (!template_name.isEmpty())
+    {
+        e.setAttribute("titleblocktemplate", template_name);
+        e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
+    }
 
-    e.appendChild(createXmlProperty(xml_document, "author", author));
-    e.appendChild(createXmlProperty(xml_document, "title", title));
-    e.appendChild(createXmlProperty(xml_document, "filename", filename));
-    e.appendChild(createXmlProperty(xml_document, "plant", plant));
-    e.appendChild(createXmlProperty(xml_document, "locmach", locmach));
-    e.appendChild(createXmlProperty(xml_document, "indexrev", indexrev));
-    e.appendChild(createXmlProperty(xml_document, "version", version));
-    e.appendChild(createXmlProperty(xml_document, "folio", folio));
-    e.appendChild(createXmlProperty(xml_document, "auto_page_num", auto_page_num));
-    e.appendChild(createXmlProperty(xml_document, "date", exportDate()));
-    QString disp_at = display_at == Qt::BottomEdge? "bottom" : "right";
-    e.appendChild(createXmlProperty(xml_document, "displayAt", disp_at));
+    if (context.keys().count()) {
+        QDomElement properties = e.ownerDocument().createElement("properties");
+        context.toXml(properties);
+        e.appendChild(properties);
+    }
+}
 
-	if (!template_name.isEmpty())
-	{
-        e.appendChild(createXmlProperty(xml_document, "titleblocktemplate", template_name));
-        e.appendChild(createXmlProperty(xml_document, "titleblocktemplateCollection", QET::qetCollectionToString(collection)));
-	}
-	
-	if (context.keys().count()) {
-		QDomElement properties = e.ownerDocument().createElement("properties");
-		context.toXml(properties);
-		e.appendChild(properties);
-	}
-
-    return e;
+QDomElement TitleBlockProperties::toXml(QDomDocument &d) const {
+    qDebug() << "NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    return QDomElement();
 }
 
 /** RETURNS True

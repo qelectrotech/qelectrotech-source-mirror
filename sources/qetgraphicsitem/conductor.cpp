@@ -999,7 +999,7 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
         foreach(ConductorSegment *segment, segmentsList())
         {
             current_segment = doc.createElement("segment");
-            current_segment.appendChild(createXmlProperty(doc, "orientation", segment->isHorizontal()));
+            current_segment.appendChild(createXmlProperty(doc, "orientation", segment->isHorizontal() ? "horizontal": "vertical"));
             current_segment.appendChild(createXmlProperty(doc, "length", segment -> length()));
             dom_element.appendChild(current_segment);
         }
