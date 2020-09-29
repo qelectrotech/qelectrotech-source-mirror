@@ -19,7 +19,6 @@
 #include "qetproject.h"
 #include "diagramview.h"
 #include "diagram.h"
-#include "diagramprintdialog.h"
 #include "exportdialog.h"
 #include "qetapp.h"
 #include "qetelementeditor.h"
@@ -522,7 +521,7 @@ void ProjectView::moveDiagramUpTop(DiagramView *diagram_view)
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, (diagram_views().size(), 0));
+	m_tab->tabBar()->moveTab(diagram_view_position, diagram_views().size());
 }
 
 /*
@@ -573,38 +572,6 @@ void ProjectView::moveDiagramDownx10(DiagramView *diagram_view) {
 */
 void ProjectView::moveDiagramDownx10(Diagram *diagram) {
 	moveDiagramDownx10(findDiagram(diagram));
-}
-
-/**
-	Ce slot demarre un dialogue permettant a l'utilisateur de parametrer et de
-	lancer l'impression de toute ou partie du projet.
-*/
-void ProjectView::printProject()
-{
-	if (!m_project) return;
-
-	// transforme le titre du projet en nom utilisable pour le document
-	QString doc_name;
-	if (!(m_project -> title().isEmpty())) {
-		doc_name = m_project -> title();
-	} else if (!m_project -> filePath().isEmpty()) {
-		doc_name = QFileInfo(m_project -> filePath()).baseName();
-	}
-	doc_name = QET::stringToFileName(doc_name);
-	if (doc_name.isEmpty()) {
-		doc_name = tr("projet", "string used to generate a filename");
-	}
-
-	// recupere le dossier contenant le fichier courant
-	QString dir_path = m_project -> currentDir();
-
-	// determine un chemin pour le pdf / ps
-	QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + doc_name));
-
-	DiagramPrintDialog print_dialog(m_project, this);
-	print_dialog.setDocName(doc_name);
-	print_dialog.setFileName(file_name);
-	print_dialog.exec();
 }
 
 /**

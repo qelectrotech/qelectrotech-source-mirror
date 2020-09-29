@@ -39,6 +39,7 @@
 #include "bomexportdialog.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "qetgraphicstablefactory.h"
+#include "projectprintwindow.h"
 
 #include <KAutoSaveFile>
 
@@ -269,9 +270,9 @@ void QETDiagramEditor::setUpActions()
 	m_print->setShortcut(QKeySequence(QKeySequence::Print));
 	m_print->setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
 	connect(m_print, &QAction::triggered, [this]() {
-		ProjectView *current_project = currentProjectView();
-		if (current_project) {
-			current_project -> printProject();
+		auto project = currentProject();
+		if (project) {
+			ProjectPrintWindow::launchDialog(project, this);
 		}
 	});
 
