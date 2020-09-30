@@ -265,7 +265,7 @@ void TerminalEditor::updateName() {
 							"name",
 							term->property("name"),
 							var);
-			undo->setText(tr("Modify name of the terminal"));
+			undo->setText(tr("Modifier le nom du terminal"));
 			undoStack().push(undo);
 		}
 	}

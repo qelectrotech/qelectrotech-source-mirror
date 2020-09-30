@@ -337,10 +337,10 @@ void PotentialSelectorDialog::buildWidget()
 	QRadioButton *rb2 = new QRadioButton(text2, this);
 
 	QRadioButton *rbk = new QRadioButton(
-				tr("Add to Kabel: %1")
+				tr("Ajouter au câble :% 1")
 				.arg("wouldn't this be nice?"), this);
 	QRadioButton *rbb = new QRadioButton(
-				tr("Add to Bus: %1")
+				tr("Ajouter au bus: %1")
 				.arg("wouldn't this be nice?"), this);
 
 #if TODO_LIST

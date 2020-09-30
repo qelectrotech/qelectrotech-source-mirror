@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>956</width>
-    <height>506</height>
+    <height>543</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -57,8 +57,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>932</width>
-             <height>60</height>
+             <width>936</width>
+             <height>66</height>
             </rect>
            </property>
           </widget>
@@ -74,7 +74,7 @@
         <item>
          <widget class="QPushButton" name="m_uncheck_all">
           <property name="text">
-           <string>Tout décoher</string>
+           <string>Tout décocher</string>
           </property>
          </widget>
         </item>
@@ -312,7 +312,7 @@
      <normaloff>:/ico/22x22/single_page.png</normaloff>:/ico/22x22/single_page.png</iconset>
    </property>
    <property name="text">
-    <string>Affichier une seul page</string>
+    <string>Afficher une seul page</string>
    </property>
   </action>
   <action name="m_display_two_page_action">
