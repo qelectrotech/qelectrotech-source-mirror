@@ -312,7 +312,7 @@
      <normaloff>:/ico/22x22/single_page.png</normaloff>:/ico/22x22/single_page.png</iconset>
    </property>
    <property name="text">
-    <string>Afficher une seul page</string>
+    <string>Afficher une seule page</string>
    </property>
   </action>
   <action name="m_display_two_page_action">
