@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>956</width>
-    <height>543</height>
+    <height>554</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -57,8 +57,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>936</width>
-             <height>66</height>
+             <width>932</width>
+             <height>75</height>
             </rect>
            </property>
           </widget>
@@ -76,6 +76,48 @@
           <property name="text">
            <string>Tout décocher</string>
           </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>9</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="m_date_from_cb">
+             <item>
+              <property name="text">
+               <string>À partir de la date du :</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>À la date du  :</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateEdit" name="m_date_cb">
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>

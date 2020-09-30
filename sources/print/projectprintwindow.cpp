@@ -120,6 +120,10 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 	ui->m_draw_terminal_cb->setChecked(exp.draw_terminals);
 	ui->m_keep_conductor_color_cb->setChecked(exp.draw_colored_conductors);
 
+	ui->m_date_cb->blockSignals(true);
+	ui->m_date_cb->setDate(QDate::currentDate());
+	ui->m_date_cb->blockSignals(false);
+
 	m_backup_diagram_background_color = Diagram::background_color;
 	Diagram::background_color = Qt::white;
 }
@@ -577,4 +581,29 @@ void ProjectPrintWindow::print()
 	m_preview->print();
 	savePageSetupForCurrentPrinter();
 	this->close();
+}
+
+void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
+{
+	on_m_uncheck_all_clicked();
+
+	auto index = ui->m_date_from_cb->currentIndex();
+	// 0 = from the date
+	// 1 = at the date
+
+	for (auto diagram : m_diagram_list_hash.keys())
+	{
+		auto diagram_date = diagram->border_and_titleblock.date();
+		if ( (index == 0 && diagram_date >= date) ||
+			 (index == 1 && diagram_date == date) )
+			m_diagram_list_hash.value(diagram)->setChecked(true);
+	}
+
+	m_preview->updatePreview();
+}
+
+void ProjectPrintWindow::on_m_date_from_cb_currentIndexChanged(int index)
+{
+	Q_UNUSED(index)
+	on_m_date_cb_userDateChanged(ui->m_date_cb->date());
 }
