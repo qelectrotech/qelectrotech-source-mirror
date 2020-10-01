@@ -443,7 +443,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 
                 qDebug() << "\t\tElement.cpp:buildFromXml;parseElement: " << qde.tagName();
 				
-				if (parseElement(qde)) {
+                if (parseElement(qde)) { // TODO: why lines are not parsed here?
                     qDebug() << "\t\t\tParsing Element success";
 					++ parsed_elements_count;
 				}
