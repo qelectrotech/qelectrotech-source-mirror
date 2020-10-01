@@ -85,7 +85,7 @@ Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *s
 	}
 	int elmt_state;
     qDebug() << "\tCollection Path: " << location.collectionPath();
-	buildFromXml(location.xml(), &elmt_state);
+    buildFromXml(location.xml(), &elmt_state); // build from the collection definition
 	if (state) {
 		*state = elmt_state;
 	}
@@ -338,7 +338,7 @@ void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *o
 
 /**
  * @brief Element::buildFromXml
- * Build this element from an xml description
+ * Build this element from an xml description (from the collection)
  * @param xml_def_elmt
  * @param state
  * Optional pointer which define the status of build
@@ -638,7 +638,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
 	*/
-	QList<QDomElement> liste_terminals;
+    QList<QDomElement> liste_terminals; // terminals in the element in the diagram
 	foreach(QDomElement qde, QET::findInDomElement(e, "terminals", "terminal")) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
@@ -647,7 +647,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	int terminals_non_trouvees = 0;
     // The added childs from the collection now must match with the terminals from the diagram. Iterate through
     // all Terminals in the collection and in the diagram to link them together
-    foreach(QGraphicsItem *qgi, childItems()) { // Where the Terminals are added as childs?
+    for(QGraphicsItem *qgi: childItems()) { // TODO: Where the Terminals are added as childs?
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
 			foreach(QDomElement qde, liste_terminals) {

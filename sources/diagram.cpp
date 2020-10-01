@@ -1009,10 +1009,10 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			}
 		}
 	}
-		//Load all elements from the XML
+        //Load all elements from the collection in the XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
-	foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element"))
+    foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element")) // read all elements from the diagram
 	{
 		if (!Element::valideXml(element_xml)) continue;
 		
@@ -1027,7 +1027,8 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		int state = 0;
-        Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, nullptr, &state); // read element definition!
+        // Create element from the collection
+        Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, nullptr, &state); // read element definition from the collection!
 		if (state)
 		{
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
@@ -1038,7 +1039,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		
 		addItem(nvel_elmt);
 			//Loading fail, remove item from the diagram
-		if (!nvel_elmt->fromXml(element_xml, table_adr_id, handle_inputs_rotation))
+        if (!nvel_elmt->fromXml(element_xml, table_adr_id, handle_inputs_rotation)) // load element definition from the diagram
 		{
 			removeItem(nvel_elmt);
 			delete nvel_elmt;
