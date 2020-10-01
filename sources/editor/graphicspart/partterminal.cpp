@@ -28,6 +28,7 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
     CustomElementGraphicPart(editor, parent)
 {
     d = new TerminalData(this);
+    d->m_name = tr("terminal");
     d->m_orientation = Qet::North;
     d->m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
 	updateSecondPoint();

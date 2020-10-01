@@ -212,9 +212,9 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomE
     bool ok;
     bool tmp = attr.toInt(&ok);
     if (!ok) {
-        if (attr == "true")
+        if (attr == "true" || attr == "1")
             tmp = true;
-        else if (attr == "false")
+        else if (attr == "false" || attr == "0")
             tmp = false;
         else {
             qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << integerS << ". value: " << attr;

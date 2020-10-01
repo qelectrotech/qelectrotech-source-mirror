@@ -54,7 +54,7 @@ void Terminal::init(QString number, QString name, bool hiddenName) {
 	// Number of terminal
 	number_terminal_ = std::move(number);
 	// Name of terminal
-	name_terminal_ = std::move(name);
+    d->m_name = std::move(name);
 	name_terminal_hidden = hiddenName;
 	// par defaut : pas de conducteur
 	
@@ -193,8 +193,16 @@ void Terminal::setNumber(QString number) {
 	@param name
 */
 void Terminal::setName(QString name, bool hiddenName) {
-	name_terminal_ = std::move(name);
+    d->m_name = std::move(name);
 	name_terminal_hidden = hiddenName;
+}
+
+/**
+    @brief Terminal::name
+    @return the name of terminal.
+*/
+inline QString Terminal::name() const {
+    return(d->m_name);
 }
 
 /**
@@ -715,12 +723,16 @@ QList<Conductor *> Terminal::conductors() const {
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
 
-    qdo.appendChild(createXmlProperty(doc, "x", dock_elmt_.x()));
-    qdo.appendChild(createXmlProperty(doc, "y", dock_elmt_.y()));
-    qdo.appendChild(createXmlProperty(doc, "orientation", orientationToString(d->m_orientation)));
     qdo.appendChild(createXmlProperty(doc, "number", number_terminal_));
-    qdo.appendChild(createXmlProperty(doc, "name", name_terminal_));
     qdo.appendChild(createXmlProperty(doc, "nameHidden", name_terminal_hidden));
+
+    // store terminal data too!
+
+    // Do not store terminal data in its own child
+    QDomElement terminalDataElement = d->toXml(doc);
+    for (int i=0; i < terminalDataElement.childNodes().length(); i++) {
+        qdo.appendChild(terminalDataElement.childNodes().at(i));
+    }
 
 	return(qdo);
 }
@@ -731,32 +743,17 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
-bool Terminal::valideXml(QDomElement &terminal) {
+bool Terminal::valideXml(const QDomElement &terminal) {
 	if (terminal.tagName() != "terminal") return(false);
 
-    if (propertyString(terminal, "number"))
-        return false;
+// affuteuse_250h.qet contains in line 8398 terminals which do not have this
+//    if (propertyString(terminal, "number"))
+//        return false;
+// affuteuse_250h.qet contains in line 8398 terminals which do not have this
+//    if (propertyBool(terminal, "nameHidden"))
+//        return false;
 
-    if (propertyString(terminal, "name"))
-        return false;
-
-    if (propertyBool(terminal, "nameHidden"))
-        return false;
-
-    if (propertyDouble(terminal, "x"))
-        return false;
-    if (propertyDouble(terminal, "y"))
-        return false;
-
-    QString o;
-    if (propertyString(terminal, "orientation", &o))
-        return false;
-
-    Qet::Orientation terminal_or = orientationFromString(o);
-    if (terminal_or != Qet::North
-            && terminal_or != Qet::South
-            && terminal_or != Qet::East
-            && terminal_or != Qet::West)
+    if (!TerminalData::valideXml(terminal))
         return false;
 	
     // a ce stade, la borne est syntaxiquement correcte
@@ -772,30 +769,15 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	(memes coordonnes, meme orientation), false sinon
 */
 bool Terminal::fromXml(const QDomElement &terminal) {
-    if (propertyString(terminal, "number", &number_terminal_))
+    propertyString(terminal, "number", &number_terminal_);
+
+    propertyBool(terminal, "nameHidden", &name_terminal_hidden);
+
+    if(!d->fromXml(terminal))
         return false;
 
-    if (propertyString(terminal, "name", &name_terminal_))
-        return false;
 
-    if (propertyBool(terminal, "nameHidden", &name_terminal_hidden))
-        return false;
-
-    double x, y;
-    if (propertyDouble(terminal, "x", &x))
-        return false;
-    if (propertyDouble(terminal, "y", &y))
-        return false;
-
-    QString o;
-    if (propertyString(terminal, "orientation", &o))
-        return false;
-
-    if (!qFuzzyCompare(x, dock_elmt_.x()) ||
-        !qFuzzyCompare(y, dock_elmt_.y()) ||
-        orientationFromString(o) != d->m_orientation)
-        return false;
-
+    init(number_terminal_, d->m_name, name_terminal_hidden); // initialize dock_elmt_. This must be done after Terminal data is initialized
     return true;
 }
 

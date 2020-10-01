@@ -574,13 +574,11 @@ DynamicElementTextItem *Element::parseDynamicText(const QDomElement &dom_element
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
 
-    if (!TerminalData::valideXml(dom_element))
+    if (!Terminal::valideXml(dom_element))
         return nullptr;
-
-    TerminalData* data = new TerminalData();
-    data->fromXml(dom_element);
 	
-    Terminal *new_terminal = new Terminal(data, this);
+    Terminal *new_terminal = new Terminal(0, 0, Qet::Orientation::North, this);
+    new_terminal->fromXml(dom_element);
 	m_terminals << new_terminal;
 	
 		//Sort from top to bottom and left to rigth
@@ -653,7 +651,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
 			foreach(QDomElement qde, liste_terminals) {
-				if (p -> fromXml(qde)) {
+                if (p -> fromXml(qde)) { // TODO: is there validXML enough? Because the Terminal was already read in the ElementCreation function
                     qDebug() << "Matching Terminal found.";
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;

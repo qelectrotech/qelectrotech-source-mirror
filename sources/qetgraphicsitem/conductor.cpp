@@ -1106,16 +1106,13 @@ bool Conductor::pathFromXml(const QDomElement &e) {
             continue;
 
         bool isHorizontal = false;
-        if (propertyBool(current_segment, "orientation", &isHorizontal) == PropertyFlags::NoValidConversion) {
-            // legacy
-            QString orientation;
-            if (propertyString(current_segment, "orientation", &orientation) == PropertyFlags::Success) {
-                if (orientation == "horizontal")
-                    isHorizontal = true;
-            } else {
-                qDebug() << "PathFromXML failed";
-                return false;
-            }
+        QString orientation;
+        if (propertyString(current_segment, "orientation", &orientation) == PropertyFlags::Success) {
+            if (orientation == "horizontal")
+                isHorizontal = true;
+        } else {
+            qDebug() << "PathFromXML failed";
+            return false;
         }
 
         if (isHorizontal) {

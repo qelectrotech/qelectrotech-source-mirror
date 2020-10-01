@@ -90,7 +90,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		bool canBeLinkedTo(Terminal *);
 	
 		// methods related to XML import/export
-        static bool valideXml(QDomElement  &);
+        static bool valideXml(const QDomElement  &);
         bool fromXml (const QDomElement &) override;
         QDomElement toXml (QDomDocument &) const override;
 	
@@ -148,9 +148,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
         QColor hovered_color_{Terminal::hovered_color_};
 		/// Number of Terminal
 		QString number_terminal_;
-		/// Name of Terminal
-		QString name_terminal_;
-		bool name_terminal_hidden;
+        bool name_terminal_hidden{true};
 	
 	private:
 		void init(QString number, QString name, bool hiddenName);
@@ -172,14 +170,6 @@ inline int Terminal::conductorsCount() const {
 */
 inline QString Terminal::number() const {
 	return(number_terminal_);
-}
-
-/**
-	@brief Terminal::name
-	@return the name of terminal.
-*/
-inline QString Terminal::name() const {
-	return(name_terminal_);
 }
 
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,

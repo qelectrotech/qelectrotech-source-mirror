@@ -41,7 +41,7 @@ void TerminalData::fromSettings(const QSettings& settings, const QString&)
 
 QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 {
-    QDomElement xml_element = xml_document.createElement("terminal");
+    QDomElement xml_element = xml_document.createElement("terminaldata");
 
     xml_element.appendChild(createXmlProperty(xml_document, "x", q->scenePos().x()));
     xml_element.appendChild(createXmlProperty(xml_document, "y", q->scenePos().y()));
@@ -64,7 +64,7 @@ bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 
     m_pos = QPointF(term_x, term_y);
 
-    //emit posFromXML(QPointF(term_x, term_y));
+//    emit posFromXML(QPointF(term_x, term_y));
 
     QUuid uuid;
     // update part and add uuid, which is used in the new version to connect terminals together

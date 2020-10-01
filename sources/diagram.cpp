@@ -907,6 +907,7 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
 		} else
 			return table_adr_id.value(id_p1);
 	}
+    qDebug() << "Diagram::findTerminal(): No terminal found.";
 	return nullptr;
 }
 
@@ -1026,7 +1027,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		int state = 0;
-		Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, nullptr, &state);
+        Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, nullptr, &state); // read element definition!
 		if (state)
 		{
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
@@ -1085,7 +1086,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
 		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
 
-		if (p1 && p2 && p1 != p2)
+        if (p1 && p2 && p1 != p2) // why the condition for unequal is required?
 		{
 			Conductor *c = new Conductor(p1, p2);
 			if (c->isValid())
@@ -1096,7 +1097,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			}
 			else
 				delete c;
-		}
+        } else {
+            qDebug() << "Diagramm::fromXML(): No matching terminals found.";
+        }
 	}
 
 		//Load tables
