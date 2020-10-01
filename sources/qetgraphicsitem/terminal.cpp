@@ -811,6 +811,14 @@ QUuid Terminal::uuid() const {
 	return d->m_uuid;
 }
 
+QPointF Terminal::dockPos() {
+    return dock_elmt_;
+}
+
+QPointF Terminal::originPos() {
+    return d->m_pos;
+}
+
 /**
 	@brief Conductor::relatedPotentialTerminal
 	Return terminal at the same potential from the same

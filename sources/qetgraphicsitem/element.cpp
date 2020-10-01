@@ -650,8 +650,14 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
     for(QGraphicsItem *qgi: childItems()) { // TODO: Where the Terminals are added as childs?
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
-			foreach(QDomElement qde, liste_terminals) {
-                if (p -> fromXml(qde)) { // TODO: is there validXML enough? Because the Terminal was already read in the ElementCreation function
+            for(QDomElement qde: liste_terminals) {
+                Terminal diagramTerminal(0,0, Qet::Orientation::East);
+                diagramTerminal.fromXml(qde);
+                QPointF dockPos1 = diagramTerminal.originPos(); // position here is directly the dock_elmt_ position (stored in the diagram)
+                QPointF dockPos2 = p->dockPos();
+                if (qFuzzyCompare(dockPos1.x(), dockPos2.x()) &&
+                    qFuzzyCompare(dockPos1.y(), dockPos2.y()) &&
+                    p->orientation() == diagramTerminal.orientation()) { // check if the part in the collection is the same as in the diagram stored
                     qDebug() << "Matching Terminal found.";
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;

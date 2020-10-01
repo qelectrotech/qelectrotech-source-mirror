@@ -77,6 +77,8 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;
 		QUuid uuid                    () const;
+        QPointF dockPos();
+        QPointF originPos();
 	
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;
