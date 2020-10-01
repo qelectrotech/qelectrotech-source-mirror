@@ -651,6 +651,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
             for(QDomElement qde: liste_terminals) {
+                // The position in the collection element definition is the origin position (originPos).
+                // The position in the diagram element definition  is the position where the conductor is connected (dock position)
+                // Therefore a simple operator overloading is not possible.
                 Terminal diagramTerminal(0,0, Qet::Orientation::East);
                 diagramTerminal.fromXml(qde);
                 QPointF dockPos1 = diagramTerminal.originPos(); // position here is directly the dock_elmt_ position (stored in the diagram)
