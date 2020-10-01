@@ -148,17 +148,17 @@ void ProjectPrintWindow::requestPaint()
 		#ifdef Q_OS_WIN
 			#ifdef QT_DEBUG
 			qDebug() << "--";
-			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << printer->resolution();
+			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
 			qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
 			#endif
 
 			QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
 			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
-			printer->setResolution(dotsPerInch);
+			m_printer->setResolution(dotsPerInch);
 
 			#ifdef QT_DEBUG
 				qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
-				qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << printer->resolution();
+				qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << m_printer->resolution();
 			qDebug() << "--";
 			#endif
 		#endif
