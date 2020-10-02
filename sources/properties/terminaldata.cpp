@@ -45,7 +45,6 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 
     xml_element.appendChild(createXmlProperty(xml_document, "x", q->scenePos().x()));
     xml_element.appendChild(createXmlProperty(xml_document, "y", q->scenePos().y()));
-    xml_element.appendChild(createXmlProperty(xml_document, "uuid", m_uuid));
     xml_element.appendChild(createXmlProperty(xml_document, "name", m_name));
     xml_element.appendChild(createXmlProperty(xml_document, "orientation", orientationToString(m_orientation)));
 
@@ -66,12 +65,8 @@ bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 
 //    emit posFromXML(QPointF(term_x, term_y));
 
-    QUuid uuid;
-    // update part and add uuid, which is used in the new version to connect terminals together
-    // if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
-    // to identify terminals
-    if (propertyUuid(xml_element, "uuid", &uuid) == PropertyFlags::Success)
-        m_uuid = QUuid(uuid);
+    // do not write uuid from this class, because only PartTerminal::fromXml need
+    // to write it to xml file. Terminal::fromXml does not need.
 
 
     //if (propertyString(xml_element, "name", &m_name))

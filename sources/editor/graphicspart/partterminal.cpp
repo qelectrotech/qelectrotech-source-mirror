@@ -44,6 +44,14 @@ PartTerminal::~PartTerminal() {
 	@param xml_elmt Element XML a lire
 */
 bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
+
+    QUuid uuid;
+    // update part and add uuid, which is used in the new version to connect terminals together
+    // if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
+    // to identify terminals
+    if (propertyUuid(xml_elmt, "uuid", &uuid) == PropertyFlags::Success)
+        d->m_uuid = QUuid(uuid);
+
     if (!d->fromXml(xml_elmt))
         return false;
 
@@ -59,7 +67,18 @@ bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@return un element XML decrivant la borne
 */
 QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
-    return d->toXml(xml_document);
+
+    QDomElement qdo = xml_document.createElement("terminal");
+
+    qdo.appendChild(createXmlProperty(xml_document, "uuid", d->m_uuid));
+
+    // Do not store terminal data in its own child
+    QDomElement terminalDataElement = d->toXml(xml_document);
+    for (int i=0; i < terminalDataElement.childNodes().length(); i++) {
+        qdo.appendChild(terminalDataElement.childNodes().at(i));
+    }
+
+    return qdo;
 }
 
 bool PartTerminal::valideXml(QDomElement& element) {
