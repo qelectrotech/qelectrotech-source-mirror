@@ -982,11 +982,29 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
     dom_element.appendChild(createXmlProperty(doc, "y", pos().y()));
 
     // Terminal is uniquely identified by the uuid of the terminal and the element
-    dom_element.appendChild(createXmlProperty(doc, "element1", terminal1->parentElement()->uuid()));
-    dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal1->uuid()));
+    QUuid terminal = terminal1->uuid();
+    QUuid terminalParent = terminal1->parentElement()->uuid();
+    if (terminalParent.isNull() || terminal.isNull()) {
+        // legacy when the terminal does not have a valid uuid
+        // do not store element1 information, because this is used to determine in the fromXml
+        // process that legacy file format
+        dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal1->ID()));
+    } else {
+        dom_element.appendChild(createXmlProperty(doc, "element1", terminalParent));
+        dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal));
+    }
 
-    dom_element.appendChild(createXmlProperty(doc, "element2", terminal2->parentElement()->uuid()));
-    dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->uuid()));
+    terminal = terminal2->uuid();
+    terminalParent = terminal2->parentElement()->uuid();
+    if (terminalParent.isNull() || terminal.isNull()) {
+        // legacy when the terminal does not have a valid uuid
+        // do not store element1 information, because this is used to determine in the fromXml
+        // process that legacy file format
+        dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->ID()));
+    } else {
+        dom_element.appendChild(createXmlProperty(doc, "element2", terminal2->parentElement()->uuid()));
+        dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->uuid()));
+    }
 
     dom_element.appendChild(createXmlProperty(doc, "freezeLabel", m_freeze_label));
 

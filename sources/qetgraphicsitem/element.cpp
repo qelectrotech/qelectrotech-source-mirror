@@ -662,6 +662,11 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
                     qFuzzyCompare(dockPos1.y(), dockPos2.y()) &&
                     p->orientation() == diagramTerminal.orientation()) { // check if the part in the collection is the same as in the diagram stored
                     qDebug() << "Matching Terminal found.";
+                    // store id for legacy purpose, because when opening a old project in the collection the terminal does not have an uuid. Therefore the id must be used
+                    if (p->uuid().isNull()) {
+                        p->setID(qde.attribute("id").toInt());
+                    }
+
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;
 					// We used to break here, because we did not expect

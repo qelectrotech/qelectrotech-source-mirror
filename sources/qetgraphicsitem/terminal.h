@@ -77,6 +77,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;
 		QUuid uuid                    () const;
+        int ID() const;
         QPointF dockPos();
         QPointF originPos();
 	
@@ -90,6 +91,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		void updateConductor();
 		bool isLinkedTo(Terminal *);
 		bool canBeLinkedTo(Terminal *);
+        void setID(int id);
 	
 		// methods related to XML import/export
         static bool valideXml(const QDomElement  &);
@@ -151,6 +153,9 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		/// Number of Terminal
 		QString number_terminal_;
         bool name_terminal_hidden{true};
+
+        /// legacy id used by the conductor to find the terminal. From 0.8x on the uuid is used instead.
+        int m_id{-1};
 	
 	private:
 		void init(QString number, QString name, bool hiddenName);

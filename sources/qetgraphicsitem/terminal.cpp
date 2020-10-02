@@ -706,6 +706,10 @@ bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 	return true;
 }
 
+void Terminal::setID(int id) {
+    m_id = id;
+}
+
 /**
 	@brief Terminal::conductors
 	@return La liste des conducteurs lies a cette borne
@@ -809,6 +813,10 @@ Element *Terminal::parentElement() const {
 
 QUuid Terminal::uuid() const {
 	return d->m_uuid;
+}
+
+int Terminal::ID() const {
+    return m_id;
 }
 
 QPointF Terminal::dockPos() {
