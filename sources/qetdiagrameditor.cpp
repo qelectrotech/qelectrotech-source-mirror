@@ -1757,8 +1757,6 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	//Manage request for edit or find element and titleblock
 	connect (project_view, &ProjectView::findElementRequired,
 		 this, &QETDiagramEditor::findElementInPanel);
-	connect (project_view, &ProjectView::editElementRequired,
-		 this, &QETDiagramEditor::editElementInEditor);
 
 	// display error messages sent by the project view
 	connect(project_view, SIGNAL(errorEncountered(QString)),
@@ -2261,27 +2259,6 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location)
 }
 
 /**
-	Lance l'editeur d'element pour l'element filename
-	@param location Emplacement de l'element a editer
-*/
-void QETDiagramEditor::editElementInEditor(const ElementsLocation &location)
-{
-	QETApp::instance() -> openElementLocations(QList<ElementsLocation>()
-						   << location);
-}
-
-/**
-	Launch an element editor to edit the selected element in the current
-	diagram view.
-*/
-void QETDiagramEditor::editSelectedElementInEditor()
-{
-	if (Element *selected_element = currentElement()) {
-		editElementInEditor(selected_element -> location());
-	}
-}
-
-/**
 	Show the error message contained in \a result.
 */
 void QETDiagramEditor::showError(const QETResult &result)
@@ -2306,7 +2283,7 @@ void QETDiagramEditor::showError(const QString &error)
 */
 void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 {
-	Q_UNUSED(subWindows);
+	Q_UNUSED(subWindows)
 
 	slot_updateActions();
 	slot_updateWindowsMenu();

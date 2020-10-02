@@ -888,7 +888,6 @@ void ProjectView::diagramAdded(Diagram *diagram)
 	connect(dv, &DiagramView::showDiagram,         this, QOverload<Diagram*>::of(&ProjectView::showDiagram));
 	connect(dv, &DiagramView::titleChanged,        this, &ProjectView::updateTabTitle);
 	connect(dv, &DiagramView::findElementRequired, this, &ProjectView::findElementRequired);
-	connect(dv, &DiagramView::editElementRequired, this, &ProjectView::editElementRequired);
 	connect(&dv->diagram()->border_and_titleblock , &BorderTitleBlock::titleBlockFolioChanged, [this, dv]() {this->updateTabTitle(dv);});
 
 		// signal diagram view was added

@@ -134,8 +134,6 @@ class QETDiagramEditor : public QETMainWindow
 		void reloadOldElementPanel();
 		void diagramWasAdded(DiagramView *);
 		void findElementInPanel(const ElementsLocation &);
-		void editElementInEditor(const ElementsLocation &);
-		void editSelectedElementInEditor();
 		void showError(const QETResult &);
 		void showError(const QString &);
 		void subWindowActivated(QMdiSubWindow *subWindows);

@@ -26,6 +26,7 @@
 #include "dynamicelementtextitemeditor.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "qetapp.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
@@ -245,7 +246,7 @@ void ElementPropertiesWidget::editElement()
 	if (m_element && m_diagram)
 	{
 		m_diagram->findElementRequired(m_element.data()->location());
-		m_diagram->editElementRequired(m_element.data()->location());
+		QETApp::instance()->openElementLocations(QList<ElementsLocation>() << m_element.data()->location());
 		emit findEditClicked();
 	}
 }

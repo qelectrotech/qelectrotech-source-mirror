@@ -282,9 +282,6 @@ class Diagram : public QGraphicsScene
 		/// from the diagram within elements collection
 		void findElementRequired(const ElementsLocation &);
 
-		/// Signal emitted when users wish to edit an element from the diagram
-		void editElementRequired(const ElementsLocation &);
-
 		void diagramActivated();
 };
 Q_DECLARE_METATYPE(Diagram *)

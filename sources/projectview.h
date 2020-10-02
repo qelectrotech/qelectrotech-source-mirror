@@ -135,7 +135,6 @@ class ProjectView : public QWidget
 		void errorEncountered(const QString &);
 			// relayed signals
 		void findElementRequired(const ElementsLocation &);
-		void editElementRequired(const ElementsLocation &);
 
 	private:
 		void initActions();
