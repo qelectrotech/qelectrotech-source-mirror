@@ -95,7 +95,48 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 
 	QShortcut *edit_conductor_color_shortcut = new QShortcut(QKeySequence(Qt::Key_F2), this);
-	connect(edit_conductor_color_shortcut, SIGNAL(activated()), this, SLOT(editSelectedConductorColor()));
+	connect(edit_conductor_color_shortcut, &QShortcut::activated, [this]()
+	{
+		if (m_diagram->isReadOnly()) {
+			return;
+		}
+
+		DiagramContent dc(m_diagram);
+		auto cond_list = dc.conductors(DiagramContent::AnyConductor);
+		if (cond_list.size() != 1) {
+			return;
+		}
+		auto edited_conductor = cond_list.first();
+
+			// store the initial properties of the provided conductor
+		ConductorProperties initial_properties = edited_conductor->properties();
+
+			// prepare a color dialog showing the initial conductor color
+		QColorDialog *color_dialog = new QColorDialog(this);
+		color_dialog->setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
+#ifdef Q_OS_MACOS
+		color_dialog -> setWindowFlags(Qt::Sheet);
+#endif
+		color_dialog->setCurrentColor(initial_properties.color);
+
+			// asks the user what color he wishes to apply
+		if (color_dialog->exec() == QDialog::Accepted)
+		{
+			QColor new_color = color_dialog -> selectedColor();
+			if (new_color != initial_properties.color)
+			{
+					// the user chose a different color
+				QVariant old_value, new_value;
+				old_value.setValue(initial_properties);
+				initial_properties.color = new_color;
+				new_value.setValue(initial_properties);
+
+				QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
+				undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+				m_diagram->undoStack().push(undo);
+			}
+		}
+	});
 }
 
 /**
@@ -894,60 +935,6 @@ void DiagramView::applyReadOnly()
 	bool is_writable = !m_diagram -> isReadOnly();
 	setInteractive(is_writable);
 	setAcceptDrops(is_writable);
-}
-
-/**
-	@brief DiagramView::editSelectedConductorColor
-	Edit the color of the selected conductor; does nothing if multiple conductors are selected
-*/
-void DiagramView::editSelectedConductorColor()
-{
-		//retrieve selected content
-	DiagramContent selection(m_diagram);
-
-		// we'll focus on the selected conductor (we do not handle multiple conductors edition)
-	QList<Conductor *> selected_conductors = selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly);
-	if (selected_conductors.count() == 1) {
-		editConductorColor(selected_conductors.at(0));
-	}
-}
-
-/**
-	Edit the color of the given conductor
-	@param edited_conductor Conductor we want to change the color
-*/
-void DiagramView::editConductorColor(Conductor *edited_conductor)
-{
-	if (m_diagram -> isReadOnly() || !edited_conductor) return;
-
-		// store the initial properties of the provided conductor
-	ConductorProperties initial_properties = edited_conductor -> properties();
-
-		// prepare a color dialog showing the initial conductor color
-	QColorDialog *color_dialog = new QColorDialog(this);
-	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
-#ifdef Q_OS_MACOS
-	color_dialog -> setWindowFlags(Qt::Sheet);
-#endif
-	color_dialog -> setCurrentColor(initial_properties.color);
-
-		// asks the user what color he wishes to apply
-	if (color_dialog -> exec() == QDialog::Accepted)
-	{
-		QColor new_color = color_dialog -> selectedColor();
-		if (new_color != initial_properties.color)
-		{
-				// the user chose a different color
-			QVariant old_value, new_value;
-			old_value.setValue(initial_properties);
-			initial_properties.color = new_color;
-			new_value.setValue(initial_properties);
-
-			QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
-			undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
-			diagram() -> undoStack().push(undo);
-		}
-	}
 }
 
 /**
