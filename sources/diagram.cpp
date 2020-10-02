@@ -878,8 +878,8 @@ Terminal* findTerminal(int conductor_index, QDomElement& conductor, QHash<int, T
 	QString element_index = "element" + QString::number(conductor_index);
 	QString terminal_index = "terminal" + QString::number(conductor_index);
 
-    if (conductor.hasAttribute(element_index)) {
-        QUuid element_uuid = QUuid(conductor.attribute(element_index));
+    QUuid element_uuid;
+    if (PropertiesInterface::propertyUuid(conductor, element_index, &element_uuid) == PropertiesInterface::PropertyFlags::Success) {
 		// element1 did not exist in the conductor part of the xml until prior 0.7
 		// It is used as an indicator that uuid's are used to identify terminals
 		bool element_found = false;
@@ -887,7 +887,8 @@ Terminal* findTerminal(int conductor_index, QDomElement& conductor, QHash<int, T
 			if (element->uuid() != element_uuid)
 				continue;
 			element_found = true;
-            QUuid terminal_uuid = QUuid(conductor.attribute(terminal_index));
+            QUuid terminal_uuid;
+            PropertiesInterface::propertyUuid(conductor, terminal_index, &terminal_uuid);
 			for (auto terminal: element->terminals()) {
 				if (terminal->uuid() != terminal_uuid)
 					continue;
@@ -901,7 +902,10 @@ Terminal* findTerminal(int conductor_index, QDomElement& conductor, QHash<int, T
 			qDebug() << "Diagram::fromXml() : " <<  element_index << ": " << element_uuid << "not found";
 	} else {
 		// Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
-        int id_p1 = conductor.attribute(terminal_index).toInt();
+        int id_p1 = -1;
+        if (PropertiesInterface::propertyInteger(conductor, terminal_index, &id_p1) != PropertiesInterface::PropertyFlags::Success) {
+            qDebug() << "diagramm.cpp:findTerminal(): Reading Id was not successfull";
+        }
 		if (!table_adr_id.contains(id_p1)) {
 			qDebug() << "Diagram::fromXml() : terminal id " << id_p1 << " not found";
 		} else
@@ -1078,14 +1082,14 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 		// Load conductor
 	QList<Conductor *> added_conductors;
-	foreach (QDomElement f, QET::findInDomElement(root, "conductors", "conductor"))
+    foreach (QDomElement conductorElement, QET::findInDomElement(root, "conductors", "conductor"))
 	{
-		if (!Conductor::valideXml(f)) continue;
+        if (!Conductor::valideXml(conductorElement)) continue;
 
 			//Check if terminal that conductor must be linked is know
 
-		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
-		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
+        Terminal* p1 = findTerminal(1, conductorElement, table_adr_id, added_elements);
+        Terminal* p2 = findTerminal(2, conductorElement, table_adr_id, added_elements);
 
         if (p1 && p2 && p1 != p2) // why the condition for unequal is required?
 		{
@@ -1093,7 +1097,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			if (c->isValid())
 			{
 				addItem(c);
-				c -> fromXml(f);
+                c -> fromXml(conductorElement);
 				added_conductors << c;
 			}
 			else
