@@ -61,6 +61,9 @@ DEFINES += QET_ALLOW_OVERRIDE_CTBTD_OPTION
 # Commenter la ligne ci-dessous pour desactiver l'option --config-dir
 DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
+#comment the line below to disable the project database export
+DEFINES += QET_EXPORT_PROJECT_DB
+
 # warn on *any* usage of deprecated APIs
 #DEFINES += QT_DEPRECATED_WARNINGS
 

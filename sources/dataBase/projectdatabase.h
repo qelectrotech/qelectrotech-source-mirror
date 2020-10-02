@@ -79,12 +79,14 @@ class projectDataBase : public QObject
 				  m_remove_diagram_query,
 				  m_insert_diagram_info_query;
 
+#ifdef QET_EXPORT_PROJECT_DB
 	public:
 		static sqlite3 *sqliteHandle(QSqlDatabase *db);
 		static void exportDb(projectDataBase *db,
 				     QWidget *parent = nullptr,
 				     const QString &caption = QString(),
 				     const QString &dir = QString());
+#endif
 };
 
 #endif // PROJECTDATABASE_H

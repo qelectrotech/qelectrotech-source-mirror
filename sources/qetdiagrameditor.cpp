@@ -437,10 +437,12 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
+#ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
 	connect(m_export_project_db, &QAction::triggered, [this]() {
 		projectDataBase::exportDb(this->currentProject()->dataBase(), this);
 	});
+#endif
 
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -793,7 +795,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
-#if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
+#ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
 #endif

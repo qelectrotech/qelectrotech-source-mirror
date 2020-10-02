@@ -521,6 +521,7 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	return hash;
 }
 
+#ifdef QET_EXPORT_PROJECT_DB
 /**
 	@brief projectDataBase::sqliteHandle
 	@param db
@@ -528,11 +529,6 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 */
 sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 {
-	//sqlite 3 lib isn't availlable for the moment on macosx
-	//need some help to add sqlite3 lib on macosx compilation
-#ifdef Q_OS_MACOS
-	return nullptr;
-#else
 	sqlite3 *handle = nullptr;
 
 	QVariant v = db->driver()->handle();
@@ -541,7 +537,6 @@ sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 	}
 
 	return handle;
-#endif
 }
 
 
@@ -562,9 +557,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	if (caption_.isEmpty()) {
 		caption_ = tr("Exporter la base de données interne du projet");
 	}
-#ifdef Q_OS_MACOS
-	return;
-#else
+
 	auto dir_ = dir;
 	if(dir_.isEmpty()) {
 		dir_ = db->project()->filePath();
@@ -604,5 +597,5 @@ void projectDataBase::exportDb(projectDataBase *db,
 		file_db.close();
 	}
 	QSqlDatabase::removeDatabase(connection_name);
-#endif
 }
+#endif
