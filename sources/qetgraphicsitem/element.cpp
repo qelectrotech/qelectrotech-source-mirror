@@ -694,14 +694,12 @@ bool Element::valideXml(QDomElement &e) {
 	@param e : the dom element where the parameter is stored
 	@param table_id_adr : Reference to the mapping table between IDs of the XML file
 	and the addresses in memory. If the import succeeds, it must be add the right couples (id, address).
-	@param handle_inputs_rotation : apply the rotation of this element to his child text
 	@return
 */
 bool Element::fromXml(
 		QDomElement &e,
 		QHash<int,
-		Terminal *> &table_id_adr,
-		bool handle_inputs_rotation)
+		Terminal *> &table_id_adr)
 {
 	m_state = QET::GILoadingFromXml;
 	/*
@@ -797,12 +795,10 @@ bool Element::fromXml(
 	// orientation
 	bool conv_ok;
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
-	if (handle_inputs_rotation) {
-		setRotation(rotation() + (90*read_ori));
-	} else {
-		setRotation(90*read_ori);
+	if (!conv_ok || read_ori < 0 || read_ori > 3) {
+		read_ori = 0;
 	}
+	setRotation(90*read_ori);
 
 		//Befor load the dynamic text field,
 		//we remove the dynamic text field created from the description of this element, to avoid doublons.

@@ -64,7 +64,6 @@ QColor		Diagram::background_color = Qt::white;
 Diagram::Diagram(QETProject *project) :
 	QGraphicsScene           (project),
 	m_project                 (project),
-	diagram_qet_version_     (-1),
 	draw_grid_               (true),
 	use_border_              (true),
 	draw_terminals_          (true),
@@ -733,9 +732,6 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// racine de l'arbre XML
 	auto dom_root = document.createElement("diagram");
 
-	// add the application version number
-	dom_root.setAttribute("version", QET::version);
-
 	// schema properties
 	// proprietes du schema
 	if (whole_content) {
@@ -1192,15 +1188,9 @@ bool Diagram::fromXml(QDomElement &document,
 	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
 
-	// Read attributes of this diagram
-	if (consider_informations) {
-		// Version of diagram
-		bool conv_ok;
-		qreal version_value = root.attribute("version").toDouble(&conv_ok);
-		if (conv_ok) {
-			diagram_qet_version_ = version_value;
-		}
-
+		// Read attributes of this diagram
+	if (consider_informations)
+	{
 		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
@@ -1261,19 +1251,6 @@ bool Diagram::fromXml(QDomElement &document,
 	if (root.firstChild().isNull()) {
 		return(true);
 	}
-
-	/* Backward compatibility: prior to version 0.3, we need to compensate,
-	 *  at diagram-opening time, the rotation of the element for each of its
-	 *  textfields having the "FollowParentRotation" option disabled.
-	 *  After 0.3, elements textfields get userx,
-	 *  usery and userrotation attributes that explicitly specify
-	 *  their position and orientation.
-	 */
-	qreal project_qet_version = declaredQElectroTechVersion(true);
-	bool handle_inputs_rotation = (
-		project_qet_version != -1 && project_qet_version < 0.3 &&
-		m_project -> state() == QETProject::ProjectParsingRunning
-	);
 
 		//If paste from another project
 	if (root.hasAttribute("projectId")) {
@@ -1343,9 +1320,7 @@ bool Diagram::fromXml(QDomElement &document,
 
 		addItem(nvel_elmt);
 		//Loading fail, remove item from the diagram
-		if (!nvel_elmt->fromXml(element_xml,
-					table_adr_id,
-					handle_inputs_rotation))
+		if (!nvel_elmt->fromXml(element_xml, table_adr_id))
 		{
 			removeItem(nvel_elmt);
 			delete nvel_elmt;
@@ -2361,25 +2336,6 @@ int Diagram::folioIndex() const
 {
 	if (!m_project) return(-1);
 	return(m_project -> folioIndex(this));
-}
-
-/**
-	@brief Diagram::declaredQElectroTechVersion
-	@param fallback_to_project :
-	When a diagram does not have a declared version,
-	this method will use the one declared by its parent project only if
-	fallback_to_project is true.
-	@return the declared QElectroTech version of this diagram
-*/
-qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const
-{
-	if (diagram_qet_version_ != -1) {
-		return diagram_qet_version_;
-	}
-	if (fallback_to_project && m_project) {
-		return(m_project -> declaredQElectroTechVersion());
-	}
-	return(-1);
 }
 
 /**

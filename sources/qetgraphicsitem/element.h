@@ -133,8 +133,7 @@ class Element : public QetGraphicsItem
 		virtual bool fromXml(
 				QDomElement &,
 				QHash<int,
-				Terminal *> &,
-				bool = false);
+				Terminal *> &);
 		virtual QDomElement toXml(
 				QDomDocument &,
 				QHash<Terminal *,

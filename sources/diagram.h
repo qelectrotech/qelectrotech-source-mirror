@@ -157,7 +157,6 @@ class Diagram : public QGraphicsScene
 		// methods related to parent project
 		QETProject *project() const;
 		int         folioIndex() const;
-		qreal       declaredQElectroTechVersion(bool = true) const;
 		void        showMe() {emit showDiagram(this);}
 		bool        isReadOnly() const;
 	
