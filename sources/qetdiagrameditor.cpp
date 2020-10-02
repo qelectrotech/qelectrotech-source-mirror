@@ -1338,17 +1338,21 @@ void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 */
 void QETDiagramEditor::selectGroupTriggered(QAction *action)
 {
-	QString value = action->data().toString();
-	DiagramView *dv = currentDiagramView();
+	if (!currentDiagramView() || !currentDiagramView()->diagram())
+		return;
 
-	if (!dv || value.isEmpty()) return;
+	auto value = action->data().toString();
+	if (value.isEmpty())
+		return;
+
+	auto diagram = currentDiagramView()->diagram();
 
 	if (value == "select_all")
-		dv->selectAll();
+		diagram->selectAll();
 	else if (value == "deselect")
-		dv->selectNothing();
+		diagram->deselectAll();
 	else if (value == "invert_selection")
-		dv->selectInvert();
+		diagram->invertSelection();
 }
 
 /**

@@ -16,32 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
-#include "diagram.h"
-#include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
-#include "diagramposition.h"
-#include "conductorpropertieswidget.h"
+
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "templatelocation.h"
-#include "qetproject.h"
+#include "qetgraphicsitem/conductor.h"
+
 #include "projectview.h"
 #include "integrationmovetemplateshandler.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
-#include "qetmessagebox.h"
-#include <QGraphicsObject>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsSceneMouseEvent>
-#include "factory/elementfactory.h"
 #include "diagrampropertiesdialog.h"
 #include "dveventinterface.h"
 #include "diagrameventaddelement.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetshapeitem.h"
-#include "undocommand/deleteqgraphicsitemcommand.h"
-#include "dynamicelementtextitem.h"
 #include "multipastedialog.h"
 #include "changetitleblockcommand.h"
 #include "conductorcreator.h"
@@ -114,32 +102,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	Destructeur
 */
 DiagramView::~DiagramView()
-{
-}
-
-/**
-	Selectionne tous les objets du schema
-*/
-void DiagramView::selectAll()
-{
-	m_diagram -> selectAll();
-}
-
-/**
-	Deslectionne tous les objets selectionnes
-*/
-void DiagramView::selectNothing()
-{
-	m_diagram -> deselectAll();
-}
-
-/**
-	Inverse l'etat de selection de tous les objets du schema
-*/
-void DiagramView::selectInvert()
-{
-	m_diagram -> invertSelection();
-}
+{}
 
 /**
 	Accepte ou refuse le drag'n drop en fonction du type de donnees entrant

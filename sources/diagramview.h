@@ -117,9 +117,6 @@ class DiagramView : public QGraphicsView
 		void freeRubberBandChanged(QPolygonF polygon);
 	
 	public slots:
-		void selectNothing();
-		void selectAll();
-		void selectInvert();
 		void setVisualisationMode();
 		void setSelectionMode();
 		void zoom(const qreal zoom_factor);
