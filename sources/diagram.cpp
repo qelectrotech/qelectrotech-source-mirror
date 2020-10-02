@@ -872,14 +872,14 @@ bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider
  * \param added_elements Elements found in the xml file
  * \return
  */
-Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal *>& table_adr_id, QList<Element *>& added_elements) {
+Terminal* findTerminal(int conductor_index, QDomElement& conductor, QHash<int, Terminal *>& table_adr_id, QList<Element *>& added_elements) {
 	assert(conductor_index == 1 || conductor_index == 2);
 
 	QString element_index = "element" + QString::number(conductor_index);
 	QString terminal_index = "terminal" + QString::number(conductor_index);
 
-	if (f.hasAttribute(element_index)) {
-		QUuid element_uuid = QUuid(f.attribute(element_index));
+    if (conductor.hasAttribute(element_index)) {
+        QUuid element_uuid = QUuid(conductor.attribute(element_index));
 		// element1 did not exist in the conductor part of the xml until prior 0.7
 		// It is used as an indicator that uuid's are used to identify terminals
 		bool element_found = false;
@@ -887,7 +887,7 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
 			if (element->uuid() != element_uuid)
 				continue;
 			element_found = true;
-			QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
+            QUuid terminal_uuid = QUuid(conductor.attribute(terminal_index));
 			for (auto terminal: element->terminals()) {
 				if (terminal->uuid() != terminal_uuid)
 					continue;
@@ -901,7 +901,7 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
 			qDebug() << "Diagram::fromXml() : " <<  element_index << ": " << element_uuid << "not found";
 	} else {
 		// Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
-		int id_p1 = f.attribute(terminal_index).toInt();
+        int id_p1 = conductor.attribute(terminal_index).toInt();
 		if (!table_adr_id.contains(id_p1)) {
 			qDebug() << "Diagram::fromXml() : terminal id " << id_p1 << " not found";
 		} else
