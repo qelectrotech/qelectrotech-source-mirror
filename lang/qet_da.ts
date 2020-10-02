@@ -927,12 +927,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>bus</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
@@ -1127,7 +1127,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/diagramview.cpp" line="469"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(Test) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="558"/>
@@ -3867,43 +3867,43 @@ Brug avanceret redigering til dette.</translation>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
         <source>Fin 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Slut 1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
         <source>Fin 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Slut 2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Længde:</translation>
+        <translation>Længde:</translation>
     </message>
 </context>
 <context>
@@ -4734,12 +4734,12 @@ Leder sektion: %1</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj til kabel: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>Ajouter au bus: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj til bus: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="415"/>
@@ -4888,169 +4888,169 @@ Følgende variabler er ikke kompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoved vindue</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Ark til udskrift:</translation>
+        <translation>Ark til udskrift:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Vælg alle</translation>
+        <translation>Vælg alle</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Vælg ingen</translation>
+        <translation>Vælg ingen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="88"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendering indstillinger</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="94"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Tegn ramme</translation>
+        <translation>Tegn ramme</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="101"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Tegn titelblok</translation>
+        <translation>Tegn titelblok</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Behold leder farver</translation>
+        <translation>Behold leder farver</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="115"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Tegn klemmer</translation>
+        <translation>Tegn klemmer</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="125"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Udskrivningsindstillinger</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="131"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Tilpas ark til side</translation>
+        <translation>Tilpas ark til side</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="141"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Brug hele siden</translation>
+        <translation>Brug hele siden</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="148"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvis indstilling er markeret, forstørres eller formindskes ark for at fylde hele den udskrivbare side på én side. &quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvis indstilling er markeret, ignoreres arkets margener, og hele overfladen vil blive brugt til udskrivning. Dette understøttes muligvis ikke af printeren.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>værktøjsbjælke</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Tilpas bredde</translation>
+        <translation>Tilpas bredde</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="234"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Tilpas side</translation>
+        <translation>Tilpas side</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="243"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Formindsk</translation>
+        <translation>Formindsk</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="252"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Forstør</translation>
+        <translation>Forstør</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="261"/>
         <source>Paysage</source>
-        <translation type="unfinished">Landskab</translation>
+        <translation>Landskab</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="270"/>
         <source>Portrait</source>
-        <translation type="unfinished">Portræt</translation>
+        <translation>Portræt</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="279"/>
         <source>Première page</source>
-        <translation type="unfinished">Forside</translation>
+        <translation>Forside</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="288"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Foregående side</translation>
+        <translation>Foregående side</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="297"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Næste side</translation>
+        <translation>Næste side</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="306"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Seneste side</translation>
+        <translation>Seneste side</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="315"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Vis 1 side</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="324"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Vis 2 sider</translation>
+        <translation>Vis 2 sider</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="333"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Vis eksempel for alle sider</translation>
+        <translation>Vis eksempel for alle sider</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="342"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>udseende</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="57"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Udskriftsindstillinger</translation>
+        <translation>Udskriftsindstillinger</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="84"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">projekt</translation>
+        <translation>projekt</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="113"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Udskriv</translation>
+        <translation>Udskriv</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="345"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Ikke navngivet ark</translation>
+        <translation>Ikke navngivet ark</translation>
     </message>
 </context>
 <context>
@@ -8687,7 +8687,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/qetapp.cpp" line="2112"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
-        <translation type="unfinished"></translation>
+        <translation>der er en fejl i koden</translation>
     </message>
 </context>
 <context>
@@ -11902,7 +11902,7 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="94"/>
         <source>Name : </source>
-        <translation type="unfinished"></translation>
+        <translation>Navn: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="199"/>
@@ -11918,7 +11918,7 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="268"/>
         <source>Modifier le nom du terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre klemrække navn</translation>
     </message>
 </context>
 <context>
