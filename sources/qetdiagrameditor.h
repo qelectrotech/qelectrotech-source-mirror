@@ -114,7 +114,6 @@ class QETDiagramEditor : public QETMainWindow
 		void setTabbedMode();
 		void readSettings();
 		void writeSettings();
-		void activateDiagram(Diagram *);
 		void activateProject(QETProject *);
 		void activateProject(ProjectView *);
 		void activateWidget(QWidget *);

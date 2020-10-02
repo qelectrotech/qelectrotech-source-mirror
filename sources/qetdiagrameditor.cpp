@@ -163,8 +163,6 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, SIGNAL(requestForNewDiagram               (QETProject *)), this, SLOT(addDiagramToProject(QETProject *)));
-
-	connect(pa, SIGNAL(requestForDiagram                  (Diagram *)), this, SLOT(activateDiagram(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramDeletion          (Diagram *)), this, SLOT(removeDiagram(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramMoveUp            (Diagram *)), this, SLOT(moveDiagramUp(Diagram *)));
@@ -1988,25 +1986,6 @@ void QETDiagramEditor::writeSettings()
 	QSettings settings;
 	settings.setValue("diagrameditor/geometry", saveGeometry());
 	settings.setValue("diagrameditor/state", saveState());
-}
-
-/**
-	Active le schema passe en parametre
-	@param diagram Schema a activer
-*/
-void QETDiagramEditor::activateDiagram(Diagram *diagram)
-{
-	if (QETProject *project = diagram -> project()) {
-		if (ProjectView *project_view = findProject(project)) {
-			activateWidget(project_view);
-			project_view -> showDiagram(diagram);
-		}
-	} else {
-#if TODO_LIST
-#pragma message("@TODO gerer ce cas")
-#endif
-		/// @todo gerer ce cas
-	}
 }
 
 /**

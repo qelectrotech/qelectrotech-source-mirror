@@ -61,7 +61,6 @@ class ElementsPanelWidget : public QWidget {
 	inline ElementsPanel &elementsPanel() const;
 	
 	signals:
-	void requestForDiagram(Diagram *);
 	void requestForProject(QETProject *);
 	void requestForNewDiagram(QETProject *);
 	void requestForProjectClosing(QETProject *);

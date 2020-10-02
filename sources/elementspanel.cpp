@@ -262,7 +262,7 @@ void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 		emit(requestForProject(project));
 	} else if (qtwi_type == QET::Diagram) {
 		Diagram *diagram = valueForItem<Diagram *>(qtwi);
-		emit(requestForDiagram(diagram));
+		diagram->showMe();
 	} else if (qtwi_type == QET::TitleBlockTemplate) {
 		TitleBlockTemplateLocation tbt = valueForItem<TitleBlockTemplateLocation>(qtwi);
 		emit(requestForTitleBlockTemplate(tbt));

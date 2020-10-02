@@ -52,7 +52,6 @@ class ElementsPanel : public GenericPanel {
 	
 	signals:
 	void requestForProject(QETProject *);
-	void requestForDiagram(Diagram *);
 	void requestForTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	
 	public slots:
