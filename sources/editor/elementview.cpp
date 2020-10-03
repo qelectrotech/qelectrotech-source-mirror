@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -58,14 +58,14 @@ QRectF ElementView::viewedSceneRect() const
 {
 	// recupere la taille du widget viewport
 	QSize viewport_size = viewport() -> size();
-	
+
 	// recupere la transformation viewport -> scene
 	QTransform view_to_scene   = viewportTransform().inverted();
-	
+
 	// mappe le coin superieur gauche et le coin inferieur droit de la viewport sur la scene
 	QPointF scene_left_top     = view_to_scene.map(QPointF(0.0, 0.0));
 	QPointF scene_right_bottom = view_to_scene.map(QPointF(viewport_size.width(), viewport_size.height()));
-	
+
 	// en deduit le rectangle visualise par la scene
 	return(QRectF(scene_left_top, scene_right_bottom));
 }
@@ -213,10 +213,10 @@ void ElementView::paste()
 {
 	QString clipboard_text = QApplication::clipboard() -> text();
 	if (clipboard_text.isEmpty()) return;
-	
+
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
-	
+
 	if (m_scene -> wasCopiedFromThisElement(clipboard_text)) {
 		// copier/coller avec decalage
 		pasteWithOffset(document_xml);
@@ -224,7 +224,7 @@ void ElementView::paste()
 		// copier/coller par choix de la zone de collage
 		QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(document_xml);
 		if (pasted_content_bounding_rect.isEmpty()) return;
-		
+
 		to_paste_in_area_ = clipboard_text;
 		getPasteArea(pasted_content_bounding_rect);
 	}
@@ -238,13 +238,13 @@ void ElementView::pasteInArea()
 {
 	QString clipboard_text = QApplication::clipboard() -> text();
 	if (clipboard_text.isEmpty()) return;
-	
+
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
-	
+
 	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(document_xml);
 	if (pasted_content_bounding_rect.isEmpty()) return;
-	
+
 	// copier/coller par choix de la zone de collage
 	to_paste_in_area_ = clipboard_text;
 	getPasteArea(pasted_content_bounding_rect);
@@ -260,10 +260,10 @@ void ElementView::pasteInArea()
 ElementContent ElementView::paste(const QPointF &position) {
 	QString clipboard_text = QApplication::clipboard() -> text();
 	if (clipboard_text.isEmpty()) return(ElementContent());
-	
+
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return(ElementContent());
-	
+
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	return(paste(document_xml, position));
 }
@@ -274,7 +274,7 @@ ElementContent ElementView::paste(const QPointF &position) {
 void ElementView::getPasteArea(const QRectF &to_paste) {
 	// on copie le rectangle fourni - on s'interesse a ses dimensions, pas a sa position
 	QRectF used_rect(to_paste);
-	
+
 	// on lui attribue pour centre l'origine du repere
 	if (underMouse()) {
 		used_rect.moveCenter(mapToScene(mapFromGlobal(QCursor::pos())));
@@ -290,7 +290,7 @@ void ElementView::getPasteArea(const QRectF &to_paste) {
 */
 ElementContent ElementView::pasteAreaDefined(const QRectF &target_rect) {
 	if (to_paste_in_area_.isEmpty()) return(ElementContent());
-	
+
 	QDomDocument xml_document;
 	if (!xml_document.setContent(to_paste_in_area_)) {
 		to_paste_in_area_.clear();
@@ -309,7 +309,7 @@ ElementContent ElementView::paste(const QDomDocument &xml_document, const QPoint
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	ElementContent content_pasted;
 	m_scene -> fromXml(xml_document, pos, false, &content_pasted);
-	
+
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();
@@ -326,11 +326,11 @@ ElementContent ElementView::paste(const QDomDocument &xml_document, const QPoint
 ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	ElementContent content_pasted;
-	
+
 	// rectangle source
 	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(xml_document);
 	if (pasted_content_bounding_rect.isEmpty()) return(content_pasted);
-	
+
 	// copier/coller avec decalage
 	QRectF final_pasted_content_bounding_rect;
 	++ offset_paste_count_;
@@ -346,7 +346,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 		} else {
 			pasted_content_bounding_rect.moveTopLeft(start_top_left_corner_);
 		}
-		
+
 		// on applique le decalage qui convient
 		final_pasted_content_bounding_rect = applyMovement(
 			pasted_content_bounding_rect,
@@ -356,7 +356,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	QPointF old_start_top_left_corner = start_top_left_corner_;
 	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
 	m_scene -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
-	
+
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();
@@ -373,7 +373,14 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	@param e QMouseEvent decrivant l'evenement souris
 */
 void ElementView::mousePressEvent(QMouseEvent *e) {
-	if (e->buttons() == Qt::MidButton)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		setCursor( (Qt::ClosedHandCursor));
 		reference_view_ = e->pos();
@@ -387,7 +394,14 @@ void ElementView::mousePressEvent(QMouseEvent *e) {
 	Manage the event move mouse
 */
 void ElementView::mouseMoveEvent(QMouseEvent *e) {
-	if (e->buttons() == Qt::MidButton)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		QScrollBar *h = horizontalScrollBar();
 		QScrollBar *v = verticalScrollBar();
@@ -405,7 +419,15 @@ void ElementView::mouseMoveEvent(QMouseEvent *e) {
 	Manage event release click mouse
 */
 void ElementView::mouseReleaseEvent(QMouseEvent *e) {
-	if (e -> button() == Qt::MidButton) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
+	{
 		setCursor(Qt::ArrowCursor);
 		adjustSceneRect();
 		return;
@@ -484,20 +506,20 @@ bool ElementView::gestureEvent(QGestureEvent *event){
 */
 void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	p -> save();
-	
+
 	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	
+
 	// dessine un fond blanc
 	p -> setPen(Qt::NoPen);
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
-		
+
 	// determine le zoom en cours
 	qreal zoom_factor = transform().m11();
-	
+
 	// choisit la granularite de la grille en fonction du zoom en cours
 	int drawn_x_grid = 1;//scene_ -> xGrid();
 	int drawn_y_grid = 1;//scene_ -> yGrid();
@@ -516,13 +538,13 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	} else if (zoom_factor < 10.0) { //< grid 2*2
 		drawn_x_grid *= 2;
 		drawn_y_grid *= 2;
-		draw_cross = true;	
+		draw_cross = true;
 	} else { //< grid 1*1
 		draw_cross = true;
 	}
 
 	m_scene->setGrid(drawn_x_grid, drawn_y_grid);
-	
+
 	if (draw_grid) {
 		// draw the dot of the grid
 		QPen pen(Qt::black);
@@ -531,12 +553,12 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		p -> setBrush(Qt::NoBrush);
 		qreal limite_x = r.x() + r.width();
 		qreal limite_y = r.y() + r.height();
-		
+
 		int g_x = (int)ceil(r.x());
 		while (g_x % drawn_x_grid) ++ g_x;
 		int g_y = (int)ceil(r.y());
 		while (g_y % drawn_y_grid) ++ g_y;
-		
+
 		for (int gx = g_x ; gx < limite_x ; gx += drawn_x_grid) {
 			for (int gy = g_y ; gy < limite_y ; gy += drawn_y_grid) {
 				if (draw_cross) {

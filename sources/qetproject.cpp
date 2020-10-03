@@ -16,11 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QTimer>
-#include <QStandardPaths>
-#include <utility>
-#include <QtConcurrent>
-#include <QHash>
 
 #include "qetproject.h"
 #include "diagram.h"
@@ -36,6 +31,13 @@
 #include "importelementdialog.h"
 #include "numerotationcontextcommands.h"
 #include "assignvariables.h"
+
+#include <QTimer>
+#include <QStandardPaths>
+#include <utility>
+#include <QtConcurrent>
+#include <QHash>
+#include <QtDebug>
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
@@ -178,7 +180,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	bool opened_here = file->isOpen() ? false : true;
 	if (!file->isOpen()
 			&& !file->open(QIODevice::ReadOnly
-				       | QIODevice::Text)) {
+					   | QIODevice::Text)) {
 		return FileOpenFailed;
 	}
 	QFileInfo fi(*file);
@@ -887,7 +889,7 @@ QDomDocument QETProject::toXml()
 	for(Diagram *diagram : diagrams_list)
 	{
 		qDebug() << QString("exporting diagram \"%1\""
-				    ).arg(diagram -> title())
+					).arg(diagram -> title())
 			 << "["
 			 << diagram
 			 << "]";
@@ -1080,7 +1082,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	//Element doesn't exist in the collection, we just import it
 	else {
 		ElementsLocation loc(m_elements_collection->addElement(
-					     location), this);
+						 location), this);
 
 		if (!loc.exist()) {
 			qDebug() << "failed to import location. "
@@ -1370,8 +1372,8 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 
 			int diagram_order = -1;
 			if (!QET::attributeIsAnInteger(diagram_xml_element,
-						       "order",
-						       &diagram_order))
+							   "order",
+							   &diagram_order))
 				diagram_order = 500000;
 
 			addDiagram(diagram, diagram_order-1);
@@ -1691,11 +1693,16 @@ NamesList QETProject::namesListForIntegrationCategory()
 */
 void QETProject::writeBackup()
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	QDomDocument xml_project(toXml());
-	QtConcurrent::run(QET::writeToFile,
-					  xml_project,
-					  &m_backup_file,
-					  nullptr);
+	QtConcurrent::run(
+				QET::writeToFile,xml_project,&m_backup_file,nullptr);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	qDebug()<<"Help code for QT 6 or later";
+#endif
 }
 
 /**

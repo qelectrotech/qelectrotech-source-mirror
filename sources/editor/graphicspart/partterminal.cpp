@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -62,37 +62,52 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const
 
 /**
 	Dessine la borne
-	@param p QPainter a utiliser pour rendre le dessin
+	@param painter QPainter a utiliser pour rendre le dessin
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+void PartTerminal::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options,
+		QWidget *widget)
+{
 	Q_UNUSED(widget);
-	p -> save();
+	painter -> save();
 
 	// annulation des renderhints
-	p -> setRenderHint(QPainter::Antialiasing,          false);
-	p -> setRenderHint(QPainter::TextAntialiasing,      false);
-	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
+	painter -> setRenderHint(QPainter::Antialiasing,          false);
+	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
+	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	QPen t;
 	t.setWidthF(1.0);
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
-	
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(
+				options
+				&& options->levelOfDetailFromTransform(
+					painter->worldTransform())
+				< 1.0);
+#endif
 	// dessin de la borne en rouge
 	t.setColor(isSelected() ? Terminal::neutralColor : Qt::red);
-	p -> setPen(t);
-	p -> drawLine(QPointF(0.0, 0.0), d -> second_point);
+	painter -> setPen(t);
+	painter -> drawLine(QPointF(0.0, 0.0), d -> second_point);
 
 	// dessin du point d'amarrage au conducteur en bleu
 	t.setColor(isSelected() ? Qt::red : Terminal::neutralColor);
-	p -> setPen(t);
-	p -> setBrush(Terminal::neutralColor);
-	p -> drawPoint(QPointF(0.0, 0.0));
-	p -> restore();
+	painter -> setPen(t);
+	painter -> setBrush(Terminal::neutralColor);
+	painter -> drawPoint(QPointF(0.0, 0.0));
+	painter -> restore();
 
 	if (m_hovered)
-		drawShadowShape(p);
+		drawShadowShape(painter);
 }
 
 /**

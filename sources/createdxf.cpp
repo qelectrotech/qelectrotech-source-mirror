@@ -439,11 +439,11 @@ int Createdxf::getcolorCode (const long red, const long green, const long blue)
 }
 
 int Createdxf::dxfColor(QColor color) {
-    return Createdxf::getcolorCode(color.red(), color.green(), color.blue());
+	return Createdxf::getcolorCode(color.red(), color.green(), color.blue());
 }
 
 int Createdxf::dxfColor(QPen pen) {
-    return Createdxf::dxfColor(pen.color());
+	return Createdxf::dxfColor(pen.color());
 }
 
 void Createdxf::drawArcEllipse(
@@ -613,9 +613,9 @@ void Createdxf::drawRectangle (
 		double height,
 		const int &colour)
 {
-    QRectF rect(x1,y1,width,height);
-    QPolygonF poly(rect);
-    drawPolyline(fileName,poly,colour,true);
+	QRectF rect(x1,y1,width,height);
+	QPolygonF poly(rect);
+	drawPolyline(fileName,poly,colour,true);
 }
 
 
@@ -678,16 +678,16 @@ void Createdxf::drawArc(
 }
 
 /**
-    @brief Createdxf::drawText
-    draw simple text in dxf format without any alignment specified
-    @param fileName
-    @param text
-    @param x
-    @param y
-    @param height
-    @param rotation
-    @param colour
-    @param xScaleW = 1
+	@brief Createdxf::drawText
+	draw simple text in dxf format without any alignment specified
+	@param fileName
+	@param text
+	@param x
+	@param y
+	@param height
+	@param rotation
+	@param colour
+	@param xScaleW = 1
 */
 void Createdxf::drawText(
 	const QString& fileName,
@@ -699,40 +699,40 @@ void Createdxf::drawText(
 	int colour,
 	double xScaleW)
 {
-    if (!fileName.isEmpty()) {
+	if (!fileName.isEmpty()) {
 	QFile file(fileName);
 	if (!file.open(QFile::Append)) {
-	    // error message
-	    QMessageBox errorFileOpen;
-	    errorFileOpen.setText("Error: File "+fileName+" was not written correctly.");
-	    errorFileOpen.setInformativeText("Close all Files and Re-Run");
-	    errorFileOpen.exec();
+		// error message
+		QMessageBox errorFileOpen;
+		errorFileOpen.setText("Error: File "+fileName+" was not written correctly.");
+		errorFileOpen.setInformativeText("Close all Files and Re-Run");
+		errorFileOpen.exec();
 	} else {
-	    QTextStream To_Dxf(&file);
-	    // Draw the text
-	    To_Dxf << 0         << "\r\n";
-	    To_Dxf << "TEXT"    << "\r\n";
-	    To_Dxf << 8         << "\r\n";
-	    To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-	    To_Dxf << 62        << "\r\n";
-	    To_Dxf << colour    << "\r\n";    // Colour Code
-	    To_Dxf << 10        << "\r\n";    // XYZ
-	    To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
-	    To_Dxf << 20        << "\r\n";
-	    To_Dxf << y         << "\r\n";    // Y in UCS (User Coordinate System)coordinates
-	    To_Dxf << 30        << "\r\n";
-	    To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-	    To_Dxf << 40        << "\r\n";
-	    To_Dxf << height    << "\r\n";    // Text Height
-	    To_Dxf << 41        << "\r\n";
-	    To_Dxf << xScaleW    << "\r\n";    // X Scale
-	    To_Dxf << 1         << "\r\n";
-	    To_Dxf << text      << "\r\n";    // Text Value
-	    To_Dxf << 50        << "\r\n";
-	    To_Dxf << rotation  << "\r\n";    // Text Rotation
-	    file.close();
+		QTextStream To_Dxf(&file);
+		// Draw the text
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "TEXT"    << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << 62        << "\r\n";
+		To_Dxf << colour    << "\r\n";    // Colour Code
+		To_Dxf << 10        << "\r\n";    // XYZ
+		To_Dxf << x         << "\r\n";    // X in UCS (User Coordinate System)coordinates
+		To_Dxf << 20        << "\r\n";
+		To_Dxf << y         << "\r\n";    // Y in UCS (User Coordinate System)coordinates
+		To_Dxf << 30        << "\r\n";
+		To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
+		To_Dxf << 40        << "\r\n";
+		To_Dxf << height    << "\r\n";    // Text Height
+		To_Dxf << 41        << "\r\n";
+		To_Dxf << xScaleW    << "\r\n";    // X Scale
+		To_Dxf << 1         << "\r\n";
+		To_Dxf << text      << "\r\n";    // Text Value
+		To_Dxf << 50        << "\r\n";
+		To_Dxf << rotation  << "\r\n";    // Text Rotation
+		file.close();
 	}
-    }
+	}
 }
 
 /* draw aligned text in DXF Format */
@@ -778,7 +778,7 @@ void Createdxf::drawTextAligned(
 			To_Dxf << 40        << "\r\n";
 			To_Dxf << height    << "\r\n";    // Text Height
 			To_Dxf << 41        << "\r\n";
-	    To_Dxf << xScaleW    << "\r\n";    // X Scale
+		To_Dxf << xScaleW    << "\r\n";    // X Scale
 			To_Dxf << 1         << "\r\n";
 			To_Dxf << text      << "\r\n";    // Text Value
 			To_Dxf << 50        << "\r\n";
@@ -832,42 +832,42 @@ void Createdxf::drawPolyline(const QString &filepath,
 	const QPolygonF &poly,
 	const int &colorcode, bool preScaled)
 {
-    qreal x,y;
-    if (!filepath.isEmpty()) {
+	qreal x,y;
+	if (!filepath.isEmpty()) {
 	QFile file(filepath);
 	if (!file.open(QFile::Append)) {
-	    // error message
-	    QMessageBox errorFileOpen;
-	    errorFileOpen.setText("Error: File "+filepath+" was not written correctly.");
-	    errorFileOpen.setInformativeText("Close all Files and Re-Run");
-	    errorFileOpen.exec();
+		// error message
+		QMessageBox errorFileOpen;
+		errorFileOpen.setText("Error: File "+filepath+" was not written correctly.");
+		errorFileOpen.setInformativeText("Close all Files and Re-Run");
+		errorFileOpen.exec();
 	} else {
-	    QTextStream To_Dxf(&file);
-	    // Draw the Line
-	    To_Dxf << 0         << "\r\n";
-	    To_Dxf << "POLYLINE"    << "\r\n";
-	    To_Dxf << 8         << "\r\n";
-	    To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
-	    To_Dxf << 62        << "\r\n";
-	    To_Dxf << colorcode    << "\r\n";    // Colour Code
-	    To_Dxf << 66        << "\r\n";
-	    To_Dxf << 1         << "\r\n";
-	    To_Dxf << 70        << "\r\n";
-	    To_Dxf << 8         << "\r\n";
-	    To_Dxf << 10        << "\r\n";
-	    To_Dxf << 0         << "\r\n";
-	    To_Dxf << 20         << "\r\n";
-	    To_Dxf << 0         << "\r\n";
-	    To_Dxf << 30        << "\r\n";
-	    To_Dxf << 0        << "\r\n";
-	    foreach(QPointF p, poly)
-	    {
+		QTextStream To_Dxf(&file);
+		// Draw the Line
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "POLYLINE"    << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << 62        << "\r\n";
+		To_Dxf << colorcode    << "\r\n";    // Colour Code
+		To_Dxf << 66        << "\r\n";
+		To_Dxf << 1         << "\r\n";
+		To_Dxf << 70        << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << 10        << "\r\n";
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << 20         << "\r\n";
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << 30        << "\r\n";
+		To_Dxf << 0        << "\r\n";
+		foreach(QPointF p, poly)
+		{
 		if(preScaled) {
-		    x = p.x();
-		    y = p.y();
+			x = p.x();
+			y = p.y();
 		} else {
-		    x = p.x() * xScale;
-		    y = sheetHeight - (p.y() * yScale);
+			x = p.x() * xScale;
+			y = sheetHeight - (p.y() * yScale);
 		}
 
 		To_Dxf << 0         << "\r\n";
@@ -882,16 +882,16 @@ void Createdxf::drawPolyline(const QString &filepath,
 		To_Dxf << y         << "\r\n";    // Y in UCS (User Coordinate System)coordinates
 		To_Dxf << 30        << "\r\n";
 		To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
-	    }
+		}
 
-	    To_Dxf << 0         << "\r\n";
-	    To_Dxf << "SEQEND"  << "\r\n";
-	    To_Dxf << 8         << "\r\n";
-	    To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
+		To_Dxf << 0         << "\r\n";
+		To_Dxf << "SEQEND"  << "\r\n";
+		To_Dxf << 8         << "\r\n";
+		To_Dxf << 0         << "\r\n";    // Layer number (default layer in autocad)
 
-	    file.close();
+		file.close();
 	}
-    }
+	}
 }
 
 /* ================================================
@@ -951,7 +951,7 @@ void Createdxf::drawEllipse(
 	const QRectF &rect,
 	const int &colorcode)
 {
-    drawArcEllipse(
+	drawArcEllipse(
 		filepath,
 		rect.topLeft().x() * xScale,
 		sheetHeight - (rect.topLeft().y() * yScale),
@@ -961,38 +961,38 @@ void Createdxf::drawEllipse(
 }
 
 /**
-    @brief Createdxf::drawRectangle
-    Convenience function for draw rectangle
-    @param filepath
-    @param rect
-    @param colorcode
+	@brief Createdxf::drawRectangle
+	Convenience function for draw rectangle
+	@param filepath
+	@param rect
+	@param colorcode
 */
 void Createdxf::drawRectangle(
 	const QString &filepath,
 	const QRectF &rect,
 	const int &colorcode) {
-    //QPolygonF poly(scaleRect(rect));
-    QPolygonF poly(rect);
-    drawPolyline(filepath,poly,colorcode);
+	//QPolygonF poly(scaleRect(rect));
+	QPolygonF poly(rect);
+	drawPolyline(filepath,poly,colorcode);
 }
 
 /**
-    @brief Createdxf::drawPolygon
-    Convenience function for draw polygon
-    @param filepath
-    @param poly
-    @param colorcode
+	@brief Createdxf::drawPolygon
+	Convenience function for draw polygon
+	@param filepath
+	@param poly
+	@param colorcode
 */
 void Createdxf::drawPolygon(
 	const QString &filepath,
 	const QPolygonF &poly,
 	const int &colorcode)
 {
-    QPolygonF pg = poly;
-    if(!poly.isClosed()) {
+	QPolygonF pg = poly;
+	if(!poly.isClosed()) {
 	pg << poly.at(0); // Close it
-    }
-    drawPolyline(filepath,pg,colorcode);
+	}
+	drawPolyline(filepath,pg,colorcode);
 }
 
 /**
@@ -1015,9 +1015,9 @@ void Createdxf::drawText(
 	int colour,
 	double xScaleW)
 {
-    qreal x = point.x() * xScale;
-    qreal y = sheetHeight - (point.y() * yScale);
-    drawText(fileName,text,x,y,height * yScale,rotation,colour,xScaleW);
+	qreal x = point.x() * xScale;
+	qreal y = sheetHeight - (point.y() * yScale);
+	drawText(fileName,text,x,y,height * yScale,rotation,colour,xScaleW);
 }
 void Createdxf::drawArcEllipse(
 	const QString &file_path,
@@ -1028,23 +1028,23 @@ void Createdxf::drawArcEllipse(
 	qreal rotation_angle,
 	const int &colorcode)
 {
-    qreal x = rect.x() * xScale;
-    qreal y = sheetHeight - rect.y() * yScale;
-    qreal w = rect.width() * xScale;
-    qreal h = rect.height() * yScale;
-    qreal hotspot_x = hotspot.x() * xScale;
-    qreal hotspot_y = sheetHeight - hotspot.y() * yScale;
-    drawArcEllipse(file_path,x,y,w,h,startAngle,spanAngle,hotspot_x,hotspot_y,rotation_angle,colorcode);
+	qreal x = rect.x() * xScale;
+	qreal y = sheetHeight - rect.y() * yScale;
+	qreal w = rect.width() * xScale;
+	qreal h = rect.height() * yScale;
+	qreal hotspot_x = hotspot.x() * xScale;
+	qreal hotspot_y = sheetHeight - hotspot.y() * yScale;
+	drawArcEllipse(file_path,x,y,w,h,startAngle,spanAngle,hotspot_x,hotspot_y,rotation_angle,colorcode);
 }
 
 /*
  * Utility functions
  */
-static QRectF scaleRect(QRectF rect)
-{
-    QRectF ro(rect.bottomLeft().x() * Createdxf::xScale,
-		Createdxf::sheetHeight - (rect.bottomLeft().y() * Createdxf::yScale),
-		rect.width() * Createdxf::xScale,
-		rect.height() * Createdxf::yScale);
-    return ro;
-}
+//static QRectF scaleRect(QRectF rect)
+//{
+//    QRectF ro(rect.bottomLeft().x() * Createdxf::xScale,
+//		Createdxf::sheetHeight - (rect.bottomLeft().y() * Createdxf::yScale),
+//		rect.width() * Createdxf::xScale,
+//		rect.height() * Createdxf::yScale);
+//    return ro;
+//}

@@ -75,6 +75,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QDialogButtonBox>
+#include <QActionGroup>
 
 QT_BEGIN_NAMESPACE
 
@@ -86,14 +87,14 @@ QT_BEGIN_NAMESPACE
 
 namespace qdesigner_internal {
 	// Richtext simplification filter helpers: Elements to be discarded
-	static inline bool filterElement(const QStringRef &name)
+	static inline bool filterElement(const QStringView &name)
 	{
 		return name != QLatin1String("meta") && name != QLatin1String("style");
 	}
 
 	// Richtext simplification filter helpers: Filter attributes of elements
 	static inline void filterAttributes(
-			const QStringRef &name,
+			const QStringView &name,
 			QXmlStreamAttributes *atts,
 			bool *paragraphAlignmentFound)
 	{
@@ -122,8 +123,8 @@ namespace qdesigner_internal {
 		}
 	}
 
-	// Richtext simplification filter helpers: Check for blank QStringRef.
-	static inline bool isWhiteSpace(const QStringRef &in)
+	// Richtext simplification filter helpers: Check for blank QStringView.
+	static inline bool isWhiteSpace(const QStringView &in)
 	{
 		const int count = in.size();
 		for (int i = 0; i < count; i++)
@@ -150,7 +151,7 @@ namespace qdesigner_internal {
 			case QXmlStreamReader::StartElement:
 				elementCount++;
 				if (filterElement(reader.name())) {
-					const QStringRef name = reader.name();
+					const QStringView name = reader.name();
 					QXmlStreamAttributes attributes = reader.attributes();
 					filterAttributes(name, &attributes, &paragraphAlignmentFound);
 					writer.writeStartElement(name.toString());

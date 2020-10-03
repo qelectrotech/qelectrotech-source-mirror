@@ -56,7 +56,7 @@ TitleBlockCell *TitleBlockTemplate::createCell(
 		const TitleBlockCell *existing_cell) {
 	TitleBlockCell *new_cell =
 			existing_cell ? new TitleBlockCell(*existing_cell)
-				      : new TitleBlockCell();
+					  : new TitleBlockCell();
 	registered_cells_ << new_cell;
 	return(new_cell);
 }
@@ -260,8 +260,8 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const
 */
 void TitleBlockTemplate::loadInformation(const QDomElement &xml_element) {
 	for (QDomNode n = xml_element.firstChild() ;
-	     !n.isNull() ;
-	     n = n.nextSibling()) {
+		 !n.isNull() ;
+		 n = n.nextSibling()) {
 		if (n.isElement() && n.toElement().tagName() == "information") {
 			setInformation(n.toElement().text());
 		}
@@ -291,12 +291,12 @@ bool TitleBlockTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
 
 	// we look for //logos/logo elements
 	for (QDomNode n = xml_element.firstChild() ;
-	     !n.isNull() ;
-	     n = n.nextSibling()) {
+		 !n.isNull() ;
+		 n = n.nextSibling()) {
 		if (n.isElement() && n.toElement().tagName() == "logos") {
 			for (QDomNode p = n.firstChild() ;
-			     !p.isNull() ;
-			     p = p.nextSibling()) {
+				 !p.isNull() ;
+				 p = p.nextSibling()) {
 				if (p.isElement()  && p.toElement().tagName()
 						== "logo") {
 					loadLogo(p.toElement());
@@ -357,8 +357,8 @@ bool TitleBlockTemplate::loadGrid(const QDomElement &xml_element) {
 	// we parse the first available "grid" XML element
 	QDomElement grid_element;
 	for (QDomNode n = xml_element.firstChild() ;
-	     !n.isNull() ;
-	     n = n.nextSibling()) {
+		 !n.isNull() ;
+		 n = n.nextSibling()) {
 		if (n.isElement() && n.toElement().tagName() == "grid") {
 			grid_element = n.toElement();
 			break;
@@ -430,10 +430,10 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	QRegularExpression abs_col_size_format,rel_col_size_format;
 	abs_col_size_format.setPattern("^([0-9]+)(?:px)?$");
 	abs_col_size_format.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
-	//QRegExp rel_col_size_format("^([rt])([0-9]+)%$", Qt::CaseInsensitive);
 	rel_col_size_format.setPattern("^([rt])([0-9]+)%$");
 	rel_col_size_format.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
+	qDebug() <<"is QRegularExpression ok?";
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList cols_descriptions =
@@ -471,7 +471,7 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	foreach (TitleBlockColDimension icd, columns_width_) {
 		qDebug() << Q_FUNC_INFO
 			 << QString("%1 [%2]").arg(icd.value).arg(
-				    QET::titleBlockColumnLengthToString(icd.type));
+					QET::titleBlockColumnLengthToString(icd.type));
 	}
 #endif
 }
@@ -487,8 +487,8 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 	// we are interested by the "logo" and "field" elements
 	QDomElement grid_element;
 	for (QDomNode n = xml_element.firstChild() ;
-	     !n.isNull() ;
-	     n = n.nextSibling()) {
+		 !n.isNull() ;
+		 n = n.nextSibling()) {
 		if (!n.isElement()) continue;
 		QDomElement cell_element = n.toElement();
 		if (cell_element.tagName() == "field"
@@ -648,9 +648,9 @@ void TitleBlockTemplate::saveCell(TitleBlockCell *cell,
 	cell_elmt.setAttribute("row", cell -> num_row);
 	cell_elmt.setAttribute("col", cell -> num_col);
 	if (cell -> row_span) cell_elmt.setAttribute("rowspan",
-						     cell -> row_span);
+							 cell -> row_span);
 	if (cell -> col_span) cell_elmt.setAttribute("colspan",
-						     cell -> col_span);
+							 cell -> col_span);
 
 	// save other information
 	cell -> saveContentToXml(cell_elmt);
@@ -1134,8 +1134,8 @@ void TitleBlockTemplate::addColumn(int i) {
 	@return true
 */
 bool TitleBlockTemplate::insertColumn(const TitleBlockDimension &dimension,
-				      const QList<TitleBlockCell *> &column,
-				      int i) {
+					  const QList<TitleBlockCell *> &column,
+					  int i) {
 	int index = (i == -1) ? columns_width_.count() : i;
 	cells_.insert(index, column);
 	columns_width_.insert(index, dimension);
@@ -1213,11 +1213,11 @@ QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(
 	if (!final_row_span && !final_col_span) return(set);
 
 	for (int i = given_cell -> num_col ;
-	     i <= given_cell -> num_col + final_col_span ;
-	     ++ i) {
+		 i <= given_cell -> num_col + final_col_span ;
+		 ++ i) {
 		for (int j = given_cell -> num_row ;
-		     j <= given_cell -> num_row + final_row_span ;
-		     ++ j) {
+			 j <= given_cell -> num_row + final_row_span ;
+			 ++ j) {
 			if (i == given_cell -> num_col && j
 					== given_cell -> num_row)
 				continue;
@@ -1257,7 +1257,7 @@ QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans(
 	@param spans :
 */
 void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *,
-				     QPair<int, int> > &spans) {
+					 QPair<int, int> > &spans) {
 	foreach (TitleBlockCell *cell, spans.keys()) {
 		cell -> row_span = spans[cell].first;
 		cell -> col_span = spans[cell].second;
@@ -1344,9 +1344,9 @@ bool TitleBlockTemplate::addLogoFromFile(const QString &filepath,
 
 	// we then try to add it as a bitmap image
 	return addLogo(filename,
-		       &file_content,
-		       filepath_info.suffix(),
-		       "base64");
+			   &file_content,
+			   filepath_info.suffix(),
+			   "base64");
 }
 
 /**
@@ -1405,7 +1405,7 @@ bool TitleBlockTemplate::removeLogo(const QString &logo_name) {
 	@return
 */
 bool TitleBlockTemplate::renameLogo(const QString &logo_name,
-				    const QString &new_name) {
+					const QString &new_name) {
 	if (!data_logos_.contains(logo_name)
 			|| data_logos_.contains(new_name)) {
 		return(false);
@@ -1531,8 +1531,8 @@ void TitleBlockTemplate::render(QPainter &painter,
 			// calculate the border rect of the current cell
 			int x = lengthRange(0, cells_[i][j] -> num_col, widths);
 			int y = lengthRange(0,
-					    cells_[i][j] -> num_row,
-					    rows_heights_);
+						cells_[i][j] -> num_row,
+						rows_heights_);
 
 			int row_span = 0, col_span = 0;
 			if (cells_[i][j] -> span_state
@@ -1541,11 +1541,11 @@ void TitleBlockTemplate::render(QPainter &painter,
 				col_span = cells_[i][j] -> applied_col_span;
 			}
 			int w = lengthRange(cells_[i][j] -> num_col,
-					    cells_[i][j] -> num_col + 1 + col_span,
-					    widths);
+						cells_[i][j] -> num_col + 1 + col_span,
+						widths);
 			int h = lengthRange(cells_[i][j] -> num_row,
-					    cells_[i][j] -> num_row + 1 + row_span,
-					    rows_heights_);
+						cells_[i][j] -> num_row + 1 + row_span,
+						rows_heights_);
 			QRect cell_rect(x, y, w, h);
 
 			renderCell(painter, *cells_[i][j],
@@ -1576,7 +1576,7 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 	QList<int> widths = columnsWidth(titleblock_width);
 
 	// draw the titleblock border
-    double xCoord    = title_block_rect.topLeft().x()*Createdxf::xScale;
+	double xCoord    = title_block_rect.topLeft().x()*Createdxf::xScale;
 	double yCoord    =
 		Createdxf::sheetHeight
 			- title_block_rect.bottomLeft().y()
@@ -1600,9 +1600,9 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 
 			// calculate the border rect of the current cell
 			double x = lengthRange(0, cells_[i][j] -> num_col,
-					       widths);
+						   widths);
 			double y = lengthRange(0, cells_[i][j] -> num_row,
-					       rows_heights_);
+						   rows_heights_);
 
 			int row_span = 0, col_span = 0;
 			if (cells_[i][j] -> span_state
@@ -1611,11 +1611,11 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 				col_span = cells_[i][j] -> applied_col_span;
 			}
 			double w = lengthRange(cells_[i][j] -> num_col,
-					       cells_[i][j] -> num_col + 1 + col_span,
-					       widths);
+						   cells_[i][j] -> num_col + 1 + col_span,
+						   widths);
 			double h = lengthRange(cells_[i][j] -> num_row,
-					       cells_[i][j] -> num_row + 1 + row_span,
-					       rows_heights_);
+						   cells_[i][j] -> num_row + 1 + row_span,
+						   rows_heights_);
 
 			x = xCoord + x*Createdxf::xScale;
 			h *= Createdxf::yScale;
@@ -1655,9 +1655,9 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 	Rectangle the cell must be rendered into.
 */
 void TitleBlockTemplate::renderCell(QPainter &painter,
-				    const TitleBlockCell &cell,
-				    const DiagramContext &diagram_context,
-				    const QRect &cell_rect) const
+					const TitleBlockCell &cell,
+					const DiagramContext &diagram_context,
+					const QRect &cell_rect) const
 {
 	// draw the border rect of the current cell
 	QPen pen(QBrush(), 0.0, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
@@ -1819,7 +1819,7 @@ void TitleBlockTemplate::renderTextCell(QPainter &painter,
 			QRectF new_world_cell_rect(cell_rect);
 			new_world_cell_rect.moveTo(0, 0.0);
 			new_world_cell_rect.setWidth(new_world_cell_rect.width()
-						     / ratio);
+							 / ratio);
 			painter.drawText(new_world_cell_rect,
 					 cell.alignment,
 					 text);
@@ -2014,11 +2014,11 @@ bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell) {
 
 	// ensure cells that will be spanned are either empty or free
 	for (int i = cell -> num_col ;
-	     i <= cell -> num_col + cell -> applied_col_span ;
-	     ++ i) {
+		 i <= cell -> num_col + cell -> applied_col_span ;
+		 ++ i) {
 		for (int j = cell -> num_row ;
-		     j <= cell -> num_row + cell -> applied_row_span ;
-		     ++ j) {
+			 j <= cell -> num_row + cell -> applied_row_span ;
+			 ++ j) {
 			if (i == cell -> num_col && j == cell -> num_row)
 				continue;
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
@@ -2031,8 +2031,8 @@ bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell) {
 						current_cell -> spanner_cell
 						&& current_cell -> spanner_cell
 						!= cell
-					    )
-			    ) {
+						)
+				) {
 				cell -> span_state = TitleBlockCell::Disabled;
 				return(true);
 			}
@@ -2058,11 +2058,11 @@ void TitleBlockTemplate::applyCellSpan(TitleBlockCell *cell)
 
 	// goes through every spanned cell
 	for (int i = cell -> num_col ;
-	     i <= cell -> num_col + cell -> applied_col_span ;
-	     ++ i) {
+		 i <= cell -> num_col + cell -> applied_col_span ;
+		 ++ i) {
 		for (int j = cell -> num_row ;
-		     j <= cell -> num_row + cell -> applied_row_span ;
-		     ++ j) {
+			 j <= cell -> num_row + cell -> applied_row_span ;
+			 ++ j) {
 			// avoid the spanning cell itself
 			if (i == cell -> num_col && j == cell -> num_row)
 				continue;

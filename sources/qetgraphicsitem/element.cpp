@@ -33,6 +33,7 @@
 #include "elementtextitemgroup.h"
 #include "elementpicturefactory.h"
 #include "iostream"
+#include <QDomElement>
 
 class ElementXmlRetroCompatibility
 {
@@ -45,11 +46,11 @@ class ElementXmlRetroCompatibility
 	{
 		int i = 0;
 		while (!dom_element.attribute(seq +
-					      QString::number(i+1)).isEmpty())
+						  QString::number(i+1)).isEmpty())
 		{
 				list->append(dom_element.attribute(
-						     seq +
-						     QString::number(i+1)));
+							 seq +
+							 QString::number(i+1)));
 				i++;
 		}
 	}
@@ -210,7 +211,15 @@ void Element::paint(
 		drawHighlight(painter, options);
 	}
 
-	if (options && options -> levelOfDetail < 1.0) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (options && options -> levelOfDetail < 1.0)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
+#endif
+	{
 		painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
 		painter->drawPicture(0, 0, m_picture);
@@ -228,7 +237,7 @@ void Element::paint(
 QRectF Element::boundingRect() const
 {
 	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
-		      dimensions));
+			  dimensions));
 }
 
 /**
@@ -357,7 +366,7 @@ void Element::drawHighlight(
 	painter -> save();
 
 	qreal gradient_radius = qMin(boundingRect().width(),
-				     boundingRect().height()) / 2.0;
+					 boundingRect().height()) / 2.0;
 	QRadialGradient gradient(
 		boundingRect().center(),
 		gradient_radius,
@@ -457,8 +466,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		//scroll of the Children of the Definition: Parts of the Drawing
 	int parsed_elements_count = 0;
 	for (QDomNode node = xml_def_elmt.firstChild() ;
-	     !node.isNull() ;
-	     node = node.nextSibling())
+		 !node.isNull() ;
+		 node = node.nextSibling())
 	{
 		QDomElement elmts = node.toElement();
 		if (elmts.isNull())
@@ -471,8 +480,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 			QList <QDomElement> input_field;
 			bool have_label = false;
 			for (QDomElement input_node = node.firstChildElement("input") ;
-			     !input_node.isNull() ;
-			     input_node = input_node.nextSiblingElement("input"))
+				 !input_node.isNull() ;
+				 input_node = input_node.nextSiblingElement("input"))
 			{
 				if (!input_node.isNull())
 				{
@@ -488,8 +497,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 
 				//Parse the definition
 			for (QDomNode n = node.firstChild() ;
-			     !n.isNull() ;
-			     n = n.nextSibling())
+				 !n.isNull() ;
+				 n = n.nextSibling())
 			{
 				QDomElement qde = n.toElement();
 				if (qde.isNull())
@@ -588,7 +597,7 @@ bool Element::parseInput(const QDomElement &dom_element)
 		QTransform transform;
 			//First make the rotation
 		transform.rotate(dom_element.attribute("rotation",
-						       "0").toDouble());
+							   "0").toDouble());
 		QPointF pos = transform.map(
 					QPointF(0,
 						-deti->boundingRect().height()/2));
@@ -753,17 +762,23 @@ bool Element::fromXml(
 		// copie des associations id / adr
 		foreach(int id_trouve, priv_id_adr.keys()) {
 			table_id_adr.insert(id_trouve,
-					    priv_id_adr.value(id_trouve));
+						priv_id_adr.value(id_trouve));
 		}
 	}
 
 	//load uuid of connected elements
 	QList <QDomElement> uuid_list = QET::findInDomElement(e,
-							      "links_uuids",
-							      "link_uuid");
+								  "links_uuids",
+								  "link_uuid");
 	foreach (QDomElement qdo, uuid_list)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 		tmp_uuids_link << qdo.attribute("uuid");
-
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+		qDebug()<<"Help code for QT 6 or later";
+#endif
 	//uuid of this element
 	m_uuid= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
@@ -810,9 +825,9 @@ bool Element::fromXml(
 		//***Dynamic texts item***//
 		//************************//
 	for (const QDomElement& qde : QET::findInDomElement(
-		     e,
-		     "dynamic_texts",
-		     DynamicElementTextItem::xmlTagName()))
+			 e,
+			 "dynamic_texts",
+			 DynamicElementTextItem::xmlTagName()))
 	{
 		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
 		addDynamicTextItem(deti);
@@ -842,7 +857,7 @@ bool Element::fromXml(
 			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()),
 					  m_converted_text_from_xml_description.value(deti).x()) &&
 				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()),
-					      m_converted_text_from_xml_description.value(deti).y()))
+						  m_converted_text_from_xml_description.value(deti).y()))
 			{
 					//Once again this 'if', is only for retrocompatibility with old old old project
 					//when element text with tagg "label" is not null, but the element information "label" is.
@@ -913,9 +928,9 @@ bool Element::fromXml(
 	m_converted_text_from_xml_description.clear();
 
 	for (QDomElement qde : QET::findInDomElement(
-		     e,
-		     "texts_groups",
-		     ElementTextItemGroup::xmlTaggName()))
+			 e,
+			 "texts_groups",
+			 ElementTextItemGroup::xmlTaggName()))
 	{
 		ElementTextItemGroup *group =
 				addTextGroup("loaded_from_xml_group");
@@ -991,11 +1006,11 @@ bool Element::fromXml(
 		{
 			if(!label.isEmpty() && la &&
 			   ((!comment.isEmpty() && c)
-			    || (!location.isEmpty() && lo)))
+				|| (!location.isEmpty() && lo)))
 			{
 				//#2 in the converted list one text must have text from = element info and info name = label
 				for(DynamicElementTextItem *deti
-				    : successfully_converted)
+					: successfully_converted)
 				{
 					if(deti->textFrom()== DynamicElementTextItem::ElementInfo
 							&& deti->infoName() == "label")
@@ -1058,10 +1073,10 @@ bool Element::fromXml(
 						addTextToGroup(deti, group);
 						if(comment_text)
 							addTextToGroup(comment_text,
-								       group);
+									   group);
 						if(location_text)
 							addTextToGroup(location_text,
-								       group);
+									   group);
 						group->setAlignment(Qt::AlignVCenter);
 						group->setVerticalAdjustment(-4);
 						group->setRotation(rotation);
@@ -1354,7 +1369,7 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 	if(m_texts_group.isEmpty())
 	{
 		ElementTextItemGroup *group = new ElementTextItemGroup(name,
-								       this);
+									   this);
 		m_texts_group << group;
 		emit textsGroupAdded(group);
 		return group;
@@ -1454,7 +1469,7 @@ QList<ElementTextItemGroup *> Element::textGroups() const
 	@return : true if the text was succesfully added to the group.
 */
 bool Element::addTextToGroup(DynamicElementTextItem *text,
-			     ElementTextItemGroup *group)
+				 ElementTextItemGroup *group)
 {
 	if(!m_dynamic_text_list.contains(text))
 		return false;
@@ -1643,7 +1658,7 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 */
 void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
 {
-    Q_UNUSED(e)
+	Q_UNUSED(e)
 
 	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(true);
@@ -1661,7 +1676,7 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
 */
 void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 {
-    Q_UNUSED(e)
+	Q_UNUSED(e)
 
 	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(false);
@@ -1703,10 +1718,10 @@ void Element::setUpFormula(bool code_letter)
 
 		m_autoNum_seq.clear();
 		autonum::setSequential(formula,
-				       m_autoNum_seq,
-				       nc,
-				       diagram(),
-				       element_currentAutoNum);
+					   m_autoNum_seq,
+					   nc,
+					   diagram(),
+					   element_currentAutoNum);
 		diagram()->project()->addElementAutoNum(element_currentAutoNum,
 							ncc.next());
 

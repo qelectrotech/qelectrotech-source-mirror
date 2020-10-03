@@ -144,11 +144,23 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const
 */
 QString ElementsLocation::baseName() const
 {
-	QRegExp regexp("^.*([^/]+)\\.elmt$");
-	if (regexp.exactMatch(m_collection_path)) {
-		return(regexp.capturedTexts().at(1));
+	QRegularExpression regexp("^.*(?<name>[^/]+)\\.elmt$");
+	if (!regexp.isValid())
+	{
+		qWarning() <<"this is an error in the code"
+			  << regexp.errorString()
+			  << regexp.patternErrorOffset();
+		return QString();
 	}
-	return(QString());
+
+	QRegularExpressionMatch match = regexp.match(m_collection_path);
+	if (!match.hasMatch())
+	{
+		qDebug()<<"no Match => return"
+			<<m_collection_path;
+		return QString();
+	}
+	return match.captured("name");
 }
 
 /**
@@ -183,9 +195,9 @@ QString ElementsLocation::projectCollectionPath() const
 		return QString();
 	else
 		return QString("project"
-			       + QString::number(QETApp::projectId(m_project))
-			       + "+"
-			       + collectionPath());
+				   + QString::number(QETApp::projectId(m_project))
+				   + "+"
+				   + collectionPath());
 }
 
 /**
@@ -254,7 +266,7 @@ void ElementsLocation::setPath(const QString &path)
 		if (!match.hasMatch())
 		{
 			qDebug()<<"no Match => return"
-			       <<tmp_path;
+				   <<tmp_path;
 			return;
 		}
 		bool conv_ok;
@@ -344,7 +356,7 @@ bool ElementsLocation::addToPath(const QString &string)
 	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive))
 	{
 		qDebug() << "ElementsLocation::addToPath :"
-			    " Can't add string to the path of an element";
+				" Can't add string to the path of an element";
 		return(false);
 	}
 
@@ -368,12 +380,22 @@ bool ElementsLocation::addToPath(const QString &string)
 ElementsLocation ElementsLocation::parent() const
 {
 	ElementsLocation copy(*this);
-	QRegExp re1("^([a-z]+://)(.*)/*$");
-	if (re1.exactMatch(m_collection_path)) {
-		QString path_proto = re1.capturedTexts().at(1);
-		QString path_path = re1.capturedTexts().at(2);
-		QString parent_path = path_path.remove(QRegExp("/*[^/]+$"));
-		copy.setPath(path_proto + parent_path);
+	QRegularExpression re ("^(?<path_proto>[a-z]+://.*)/.*$");
+	if (!re.isValid())
+	{
+		qWarning()
+			<<QObject::tr("this is an error in the code")
+			<< re.errorString()
+			<< re.patternErrorOffset();
+	}
+	QRegularExpressionMatch match = re.match(m_collection_path);
+	if (!match.hasMatch())
+	{
+		qDebug()
+			<<"no Match => return"
+			<<m_collection_path;
+	}else {
+		copy.setPath(match.captured("path_proto"));
 	}
 	return(copy);
 }
@@ -700,7 +722,7 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 	if (xml_document.documentElement().tagName() != "definition")
 	{
 		qDebug() << "ElementsLocation::setXml :"
-			    " tag name of document element isn't 'definition'";
+				" tag name of document element isn't 'definition'";
 		return false;
 	}
 
@@ -734,6 +756,7 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 		//Element doesn't exist, we create the element
 		else
 		{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 			QString path_ = collectionPath(false);
 			QRegExp rx ("^(.*)/(.*\\.elmt)$");
 
@@ -748,9 +771,14 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 			}
 			else {
 				qDebug() << "ElementsLocation::setXml :"
-					    " rx don't match";
+						" rx don't match";
 			}
-
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+		qDebug()<<"Help code for QT 6 or later";
+#endif
 		}
 	}
 
@@ -863,7 +891,7 @@ QDebug operator<< (QDebug debug, const ElementsLocation &location)
 	QString msg;
 	msg += "ElementsLocation(";
 	msg += (location.isProject()? location.projectCollectionPath()
-				    : location.collectionPath(true));
+					: location.collectionPath(true));
 	msg += location.exist()? ", true" : ", false";
 	msg +=")";
 

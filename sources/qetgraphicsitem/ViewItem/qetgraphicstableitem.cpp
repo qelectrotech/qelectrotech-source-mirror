@@ -436,7 +436,7 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 		setModel(m_previous_table->m_model);
 	}
 	else //Copie the model of old previous table
-	{		
+	{
 		setModel(new ProjectDBModel(*static_cast<ProjectDBModel *>(old_previous_table->model())));
 	}
 
@@ -657,7 +657,7 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
 	//QRectF rect = boundingRect();
 	QRectF rect(0,0, m_header_item->rect().width(), m_current_size.height());
 	QPolygonF poly(rect);
-    Createdxf::drawPolygon(filepath,mapToScene(poly),0);
+	Createdxf::drawPolygon(filepath,mapToScene(poly),0);
 
 	//Draw vertical lines
 	auto offset= 0;
@@ -970,6 +970,7 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 	int sum_=0;
 	for(auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 		auto at_a = std::min(m_minimum_column_width.size()-1, i);               //In case of the I is higher than m_minimum_column_width or
 		auto at_b = std::min(m_header_item->minimumSectionWidth().size()-1, i); //m_header_item->minimumSectionWidth().size()
 		m_header_item->resizeSection(
@@ -978,6 +979,12 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 						m_minimum_column_width.at(at_a),
 						m_header_item->minimumSectionWidth().at(at_b))+b);
 		sum_+= m_header_item->sectionSize(i);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+		qDebug()<<"Help code for QT 6 or later";
+#endif
 	}
 
 

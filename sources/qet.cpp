@@ -25,6 +25,7 @@
 #include <QSaveFile>
 #include <QTextStream>
 #include <QRegularExpression>
+#include <QActionGroup>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -164,9 +165,9 @@ bool QET::lineContainsPoint(const QLineF &line, const QPointF &point) {
 	@return true si le projete orthogonal du point sur la droite appartient au
 	segment de droite.
 */
-bool QET::orthogonalProjection(const QPointF &point,
-			       const QLineF &line,
-			       QPointF *intersection) {
+bool QET::orthogonalProjection(
+		const QPointF &point,const QLineF &line,QPointF *intersection)
+{
 	// recupere le vecteur normal de `line'
 	QLineF line_normal_vector(line.normalVector());
 	QPointF normal_vector(line_normal_vector.dx(), line_normal_vector.dy());
@@ -210,9 +211,9 @@ bool QET::orthogonalProjection(const QPointF &point,
 	@param entier Pointeur facultatif vers un entier
 	@return true si l'attribut est bien un entier, false sinon
 */
-bool QET::attributeIsAnInteger(const QDomElement &e,
-			       const QString& nom_attribut,
-			       int *entier) {
+bool QET::attributeIsAnInteger(
+		const QDomElement &e,const QString& nom_attribut,int *entier)
+{
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -231,9 +232,9 @@ bool QET::attributeIsAnInteger(const QDomElement &e,
 	@param reel Pointeur facultatif vers un double
 	@return true si l'attribut est bien un reel, false sinon
 */
-bool QET::attributeIsAReal(const QDomElement &e,
-			   const QString& nom_attribut,
-			   qreal *reel) {
+bool QET::attributeIsAReal(
+		const QDomElement &e,const QString& nom_attribut,qreal *reel)
+{
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -258,13 +259,14 @@ bool QET::attributeIsAReal(const QDomElement &e,
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
-QString QET::ElementsAndConductorsSentence(int elements_count,
-					   int conductors_count,
-					   int texts_count,
-					   int images_count,
-					   int shapes_count,
-					   int element_text_count,
-					   int tables_count)
+QString QET::ElementsAndConductorsSentence(
+		int elements_count,
+		int conductors_count,
+		int texts_count,
+		int images_count,
+		int shapes_count,
+		int element_text_count,
+		int tables_count)
 {
 	QString text;
 	if (elements_count) {
@@ -333,9 +335,14 @@ QString QET::ElementsAndConductorsSentence(int elements_count,
 /**
 	@return the list of \a tag_name elements directly under the \a e XML element.
 */
-QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &tag_name) {
+QList<QDomElement> QET::findInDomElement(
+		const QDomElement &e, const QString &tag_name)
+{
 	QList<QDomElement> return_list;
-	for (QDomNode node = e.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+	for (QDomNode node = e.firstChild() ;
+		 !node.isNull() ;
+		 node = node.nextSibling())
+	{
 		if (!node.isElement()) continue;
 		QDomElement element = node.toElement();
 		if (element.isNull() || element.tagName() != tag_name) continue;
@@ -352,18 +359,24 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &ta
 	@param children tag XML a rechercher
 	@return La liste des elements XML children
 */
-QList<QDomElement> QET::findInDomElement(const QDomElement &e,
-					 const QString &parent,
-					 const QString &children) {
+QList<QDomElement> QET::findInDomElement(
+		const QDomElement &e,const QString &parent,const QString &children)
+{
 	QList<QDomElement> return_list;
 
 	// parcours des elements parents
-	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
+	for (QDomNode enfant = e.firstChild() ;
+		 !enfant.isNull() ;
+		 enfant = enfant.nextSibling())
+	{
 		// on s'interesse a l'element XML "parent"
 		QDomElement parents = enfant.toElement();
 		if (parents.isNull() || parents.tagName() != parent) continue;
 		// parcours des enfants de l'element XML "parent"
-		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling()) {
+		for (QDomNode node_children = parents.firstChild() ;
+			 !node_children.isNull() ;
+			 node_children = node_children.nextSibling())
+		{
 			// on s'interesse a l'element XML "children"
 			QDomElement n_children = node_children.toElement();
 			if (!n_children.isNull() && n_children.tagName() == children) return_list.append(n_children);
@@ -404,8 +417,8 @@ QString QET::license()
 */
 QList<QChar> QET::forbiddenCharacters()
 {
-	return(QList<QChar>() << '\\' << '/' << ':' << '*' << '?' << '"'
-	       << '<' << '>' << '|');
+	return(QList<QChar>()
+		   << '\\' << '/' << ':' << '*' << '?' << '"'<< '<' << '>' << '|');
 }
 
 /**
@@ -614,7 +627,14 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	}
 
 	QTextStream out(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	out.setCodec("UTF-8");
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	out.setEncoding(QStringConverter::Utf8);
+#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if  (!file.commit())
@@ -741,7 +761,14 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 
 	QTextStream out(file);
 	out.seek(0);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	out.setCodec("UTF-8");
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	out.setEncoding(QStringConverter::Utf8);
+#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if (opened_here) {

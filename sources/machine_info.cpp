@@ -46,9 +46,9 @@ void Machine_info::send_info_to_debug()
 {
 	qInfo()<<"debugging enabled:"
 		<< QLibraryInfo::isDebugBuild();
-
 	qInfo()<< "Qt library version:"
 		<< QLibraryInfo::version();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	qInfo()<< "Qt library location default prefix:"
 		<< QLibraryInfo::location(QLibraryInfo::PrefixPath);
 	qInfo()<< "Qt library location documentation:"
@@ -80,6 +80,43 @@ void Machine_info::send_info_to_debug()
 #ifndef Q_OS_WIN
 	qInfo()<< "Qt library location Qt settings:"
 		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
+#endif
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	qInfo()<< "Qt library path default prefix:"
+		<< QLibraryInfo::path(QLibraryInfo::PrefixPath);
+	qInfo()<< "Qt library path documentation:"
+		<< QLibraryInfo::path(QLibraryInfo::DocumentationPath);
+	qInfo()<< "Qt library path headers:"
+		<< QLibraryInfo::path(QLibraryInfo::HeadersPath);
+	qInfo()<< "Qt library path libraries:"
+		<< QLibraryInfo::path(QLibraryInfo::LibrariesPath);
+	qInfo()<< "Qt library path executables:"
+		<< QLibraryInfo::path(QLibraryInfo::LibraryExecutablesPath);
+	qInfo()<< "Qt library path Qt binaries:"
+		<< QLibraryInfo::path(QLibraryInfo::BinariesPath);
+	qInfo()<< "Qt library path Qt plugins:"
+		<< QLibraryInfo::path(QLibraryInfo::PluginsPath);
+//	qInfo()<< "Qt library path installed QML extensions:"
+//		<< QLibraryInfo::path(QLibraryInfo::ImportsPath);
+	qInfo()<< "Qt library path installed QML extensions:"
+		<< QLibraryInfo::path(QLibraryInfo::Qml2ImportsPath);
+	qInfo()<< "Qt library path dependent Qt data:"
+		<< QLibraryInfo::path(QLibraryInfo::ArchDataPath);
+	qInfo()<< "Qt library path independent Qt data:"
+		<< QLibraryInfo::path(QLibraryInfo::DataPath);
+	qInfo()<< "Qt library path translation:"
+		<< QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+	qInfo()<< "Qt library path examples:"
+		<< QLibraryInfo::path(QLibraryInfo::ExamplesPath);
+	qInfo()<< "Qt library path Qt testcases:"
+		<< QLibraryInfo::path(QLibraryInfo::TestsPath);
+#ifndef Q_OS_WIN
+	qInfo()<< "Qt library path Qt settings:"
+		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
+#endif
 #endif
 	qInfo()<< "GitRevision " + QString(GIT_COMMIT_SHA);
 	qInfo()<< "QElectroTech V " + QET::displayedVersion;
@@ -224,17 +261,17 @@ void Machine_info::init_get_cpu_info_winnt()
 
 	QProcess wingpuraminfo;
 	wingpuraminfo.start("wmic",
-			    QStringList()
-			    << "PATH"
-			    << "Win32_videocontroller"
-			    << "get"
-			    << "AdapterRAM ");
+				QStringList()
+				<< "PATH"
+				<< "Win32_videocontroller"
+				<< "get"
+				<< "AdapterRAM ");
 	wingpuraminfo.waitForFinished();
 	QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
 	pc.gpu.RAM=QString("RAM Total : %1 B").arg(
 	WinGPURAMOutput.toLocal8Bit().constData());
 	wingpuraminfo.close();
-	
+
 #ifdef Q_OS_WIN
 	MEMORYSTATUSEX memory_status;
 	ZeroMemory(&memory_status, sizeof(MEMORYSTATUSEX));
@@ -266,7 +303,7 @@ void Machine_info::init_get_cpu_info_macos()
 	macoscpuinfo.waitForFinished();
 	QString macosOutput = macoscpuinfo.readAllStandardOutput();
 	pc.cpu.info=QString(macosOutput.toLocal8Bit().constData());
-	
+
 	QProcess macosraminfo;
 	macosraminfo.start("bash",
 			   QStringList()

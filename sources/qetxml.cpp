@@ -274,7 +274,14 @@ bool QETXML::writeXmlFile(
 	}
 
 	QTextStream out(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	out.setCodec("UTF-8");
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	out.setEncoding(QStringConverter::Utf8);
+#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_document.toString(4);
 	file.close();
@@ -314,9 +321,9 @@ QVector<QDomElement> QETXML::directChild(
 {
 	QVector<QDomElement> return_list;
 	for (
-	     QDomNode node = element.firstChild() ;
-	     !node.isNull() ;
-	     node = node.nextSibling())
+		 QDomNode node = element.firstChild() ;
+		 !node.isNull() ;
+		 node = node.nextSibling())
 	{
 		if (!node.isElement()) continue;
 		QDomElement element = node.toElement();
@@ -345,18 +352,18 @@ QVector<QDomElement> QETXML::subChild(
 	QVector<QDomElement> return_list;
 
 	for (
-	     QDomNode child = element.firstChild() ;
-	     !child.isNull() ;
-	     child = child.nextSibling())
+		 QDomNode child = element.firstChild() ;
+		 !child.isNull() ;
+		 child = child.nextSibling())
 	{
 		QDomElement parents = child.toElement();
 		if (parents.isNull() || parents.tagName() != parent_tag_name)
 			continue;
 
 		for (
-		     QDomNode node_children = parents.firstChild() ;
-		     !node_children.isNull() ;
-		     node_children = node_children.nextSibling())
+			 QDomNode node_children = parents.firstChild() ;
+			 !node_children.isNull() ;
+			 node_children = node_children.nextSibling())
 		{
 			QDomElement n_children = node_children.toElement();
 			if (!n_children.isNull() && n_children.tagName() == children_tag_name)

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -30,8 +30,8 @@
 	@param msg : Message
 */
 void myMessageOutput(QtMsgType type,
-		     const QMessageLogContext &context,
-		     const QString &msg)
+			 const QMessageLogContext &context,
+			 const QString &msg)
 {
 
 	QString txt=QTime::currentTime().toString("hh:mm:ss.zzz");
@@ -110,8 +110,8 @@ void myMessageOutput(QtMsgType type,
 		txt+=")\n";
 	}
 	QFile outFile(QETApp::configDir()
-		      +QDate::currentDate().toString("yyyyMMdd")
-		      +".log");
+			  +QDate::currentDate().toString("yyyyMMdd")
+			  +".log");
 	if(outFile.open(QIODevice::WriteOnly | QIODevice::Append))
 	{
 		QTextStream ts(&outFile);
@@ -166,7 +166,13 @@ int main(int argc, char **argv)
 	QCoreApplication::setApplicationName("QElectroTech");
 	//Creation and execution of the application
 	//HighDPI
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+#endif
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file

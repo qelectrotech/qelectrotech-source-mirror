@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -55,8 +55,15 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	applyStylesToQPainter(*painter);
 
 	QPen t = painter -> pen();
-	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+#endif
 	if (isSelected())
 		t.setColor(Qt::red);
 
@@ -159,7 +166,7 @@ void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && event->buttonDownPos(Qt::LeftButton) == event->pos())
 		switchResizeMode();
-	
+
 	CustomElementGraphicPart::mouseReleaseEvent(event);
 }
 
@@ -177,8 +184,8 @@ QVariant PartEllipse::itemChange(QGraphicsItem::GraphicsItemChange change, const
 		{
 				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
 				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartEllipse::sceneSelectionChanged); 
-			
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartEllipse::sceneSelectionChanged);
+
 			if (scene()->selectedItems().size() == 1)
 				addHandler();
 		}
@@ -196,10 +203,10 @@ QVariant PartEllipse::itemChange(QGraphicsItem::GraphicsItemChange change, const
 	{
 		if(scene())
 			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartEllipse::sceneSelectionChanged);
-		
+
 		setSelected(false); //This item is removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
@@ -215,7 +222,7 @@ bool PartEllipse::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -239,7 +246,7 @@ bool PartEllipse::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -266,9 +273,9 @@ void PartEllipse::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
 		return;
-	
+
 	QVector <QPointF> points_vector = QetGraphicsHandlerUtility::pointsForRect(m_rect);
-	
+
 	if (m_handler_vector.size() == points_vector.size())
 	{
 		points_vector = mapToScene(points_vector);
@@ -290,7 +297,7 @@ void PartEllipse::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphics
 	m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
 	m_undo_command->setText(tr("Modifier un rectangle"));
 	m_undo_command->enableAnimation();
-	return;	
+	return;
 }
 
 /**
@@ -301,17 +308,17 @@ void PartEllipse::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphics
 void PartEllipse::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
-	
+
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = elementScene()->snapToGrid(event->scenePos());
 	new_pos = mapFromScene(new_pos);
-	
+
 	if (m_resize_mode == 1)
 		setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(m_rect, new_pos, m_vector_index));
 	else
 		setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(m_rect, new_pos, m_vector_index));
-	
+
 	adjusteHandlerPos();
 }
 
@@ -324,7 +331,7 @@ void PartEllipse::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphi
 {
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
-	
+
 	m_undo_command->setNewValue(QVariant(m_rect));
 	elementScene()->undoStack().push(m_undo_command);
 	m_undo_command = nullptr;
@@ -350,15 +357,15 @@ void PartEllipse::sceneSelectionChanged()
 void PartEllipse::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
-	{		
+	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			QColor color = Qt::blue;
 			if (m_resize_mode == 2)
 				color = Qt::darkGreen;
-			
+
 			handler->setColor(color);
 			scene()->addItem(handler);
 			handler->installSceneEventFilter(this);

@@ -34,6 +34,8 @@
 #include "changetitleblockcommand.h"
 #include "conductorcreator.h"
 
+#include <QDropEvent>
+
 /**
 	Constructeur
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
@@ -200,7 +202,19 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 		return;
 	}
 
-	diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), mapToScene(event->pos())));
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	diagram()->setEventInterface(
+				new DiagramEventAddElement(
+					location, diagram(), mapToScene(event->pos())));
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	diagram()->setEventInterface(
+				new DiagramEventAddElement(
+					location, diagram(), event->position()));
+#endif
+
 		//Set focus to the view to get event
 	this->setFocus();
 }
@@ -268,7 +282,19 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 		iti -> setHtml (e -> mimeData() -> text());
 	}
 
-	m_diagram -> undoStack().push(new AddItemCommand<IndependentTextItem *>(iti, m_diagram, mapToScene(e->pos())));
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+
+	m_diagram -> undoStack().push(
+				new AddItemCommand<IndependentTextItem *>(
+					iti, m_diagram, mapToScene(e->pos())));
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	m_diagram -> undoStack().push(
+				new AddItemCommand<IndependentTextItem *>(
+					iti, m_diagram, e->position()));
+#endif
 }
 
 /**
@@ -423,7 +449,14 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 		//Start drag view when hold the middle button
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		m_drag_last_pos = e->pos();
 		viewport()->setCursor(Qt::ClosedHandCursor);
@@ -473,7 +506,14 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
 		//Drag the view
-	if (e->buttons() == Qt::MidButton)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		QScrollBar *h = horizontalScrollBar();
 		QScrollBar *v = verticalScrollBar();
@@ -534,7 +574,14 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//Stop drag view
-	if (e -> button() == Qt::MidButton)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		viewport()->setCursor(Qt::ArrowCursor);
 	}
@@ -567,7 +614,15 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 			});
 			QMenu *menu = new QMenu(this);
 			menu->addAction(act);
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 			menu->popup(e->globalPos());
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+			menu->popup(e->pos());
+#endif
 		}
 
 		m_free_rubberbanding = false;
