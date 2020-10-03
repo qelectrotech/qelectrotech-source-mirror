@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -49,9 +49,9 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 	{
 		if (m_removed_contents.m_elements.contains(deti->parentElement()))
 			m_removed_contents.m_element_texts.remove(deti);
-			
+
 	}
-	
+
 		//When remove a deti we must to know his parent item, for re-add deti as child of the parent
 		//when undo this command
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
@@ -61,7 +61,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 		else
 			m_elmt_text_hash.insert(deti, deti->parentElement());
 	}
-	
+
 	//If parent element of ElementTextItemGroup is also in m_removed_content,
 	//we remove it, because when the element will be removed from the scene every child's will also be removed.
 	const QSet<ElementTextItemGroup *> group_set = m_removed_contents.m_texts_groups;
@@ -70,12 +70,12 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 		if(m_removed_contents.m_elements.contains(group->parentElement()))
 			m_removed_contents.m_texts_groups.remove(group);
 	}
-	
+
 		//The deletion of the groups is not managed by this undo, but by a RemoveTextsGroupCommand
 	for(ElementTextItemGroup *group : m_removed_contents.m_texts_groups) {
 		new RemoveTextsGroupCommand(group->parentElement(), group, this);
 	}
-	
+
 	m_removed_contents.m_texts_groups.clear();
 	setPotentialsOfRemovedElements();
 
@@ -98,7 +98,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 			m_table_scene_hash.insert(current_table, current_table->scene());
 		}
 	}
-	
+
 	setText(QString(QObject::tr(
 				"supprimer %1",
 				"undo caption - %1 is a sentence listing the removed content"))
@@ -133,17 +133,17 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 		if (terminals_list.isEmpty()) {
 			continue;
 		}
-		
+
 		for (Terminal *t : terminals_list)
 		{
 				//All new created conductors will be docked to hub_terminal
 			Terminal *hub_terminal = nullptr;
 			QList<Terminal *> terminals_to_connect_list;
-			
+
 			for (Conductor *c : t->conductors())
 			{
 				Terminal *other_terminal = c->terminal1 == t ? c->terminal2 : c->terminal1;
-				
+
 				if (m_removed_contents.items(DiagramContent::Elements).contains(other_terminal->parentElement()))
 				{
 					other_terminal = terminalInSamePotential(other_terminal, c);
@@ -151,7 +151,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 						continue;
 					}
 				}
-				
+
 				terminals_to_connect_list.append(other_terminal);
 				if (hub_terminal == nullptr) {
 					hub_terminal = other_terminal;
@@ -166,12 +166,12 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 					}
 				}
 			}
-			
+
 			terminals_to_connect_list.removeAll(hub_terminal);
 			if (hub_terminal == nullptr || terminals_to_connect_list.isEmpty()) {
 				continue;
 			}
-			
+
 			ConductorProperties properties = hub_terminal->conductors().first()->properties();
 			for (Terminal *t : terminals_to_connect_list)
 			{
@@ -188,10 +188,17 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 						continue;
 					}
 				}
-				
+
 				if (exist_ == false)
 				{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 					m_connected_terminals.append(qMakePair<Terminal *, Terminal *>(hub_terminal, t));
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+					qDebug()<<"Help code for QT 6 or later";
+#endif
 					Conductor *new_cond = new Conductor(hub_terminal, t);
 					new_cond->setProperties(properties);
 					new AddItemCommand<Conductor*>(new_cond, t->diagram(), QPointF(), this);
@@ -210,7 +217,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 	Return nullptr if a terminal can't be found.
 	@param terminal - terminal from search
 	@param conductor_to_exclude - a conductor to exlcude from search.
-	@return 
+	@return
 */
 Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(
 		Terminal *terminal,
@@ -234,7 +241,7 @@ Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(
 			return  terminal_to_return;
 		}
 	}
-	
+
 	return nullptr;
 }
 
@@ -253,7 +260,7 @@ void DeleteQGraphicsItemCommand::undo()
 	for(Element *e : m_removed_contents.m_elements)
 		for(Element *elmt : m_link_hash[e])
 				e->linkToElement(elmt);
-	
+
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(m_elmt_text_hash.keys().contains(deti))
@@ -272,7 +279,7 @@ void DeleteQGraphicsItemCommand::undo()
 			m_table_scene_hash.value(table)->addItem(table);
 		}
 	}
-	
+
 	QUndoCommand::undo();
 }
 
@@ -298,14 +305,14 @@ void DeleteQGraphicsItemCommand::redo()
 				conductor_list.first() -> calculateTextItemPosition();
 		}
 	}
-	
+
 	for(Element *e : m_removed_contents.m_elements)
 	{
 			//Get linked element, for relink it at undo
 		if (!e->linkedElements().isEmpty())
 			m_link_hash.insert(e, e->linkedElements());
 	}
-	
+
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(deti->parentGroup() && deti->parentGroup()->parentElement())
@@ -321,9 +328,9 @@ void DeleteQGraphicsItemCommand::redo()
 			m_table_scene_hash.value(table)->removeItem(table);
 		}
 	}
-	
+
 	for(QGraphicsItem *item : m_removed_contents.items())
 		m_diagram->removeItem(item);
-	
+
 	QUndoCommand::redo();
 }
