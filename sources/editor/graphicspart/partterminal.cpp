@@ -75,7 +75,7 @@ QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
     // Do not store terminal data in its own child
     QDomElement terminalDataElement = d->toXml(xml_document);
     for (int i=0; i < terminalDataElement.childNodes().length(); i++) {
-        qdo.appendChild(terminalDataElement.childNodes().at(i));
+        qdo.appendChild(terminalDataElement.childNodes().at(i).cloneNode()); // cloneNode() is important, otherwise no deep clone is made
     }
 
     return qdo;
