@@ -77,6 +77,10 @@ void Machine_info::send_info_to_debug()
 		<< QLibraryInfo::location(QLibraryInfo::ExamplesPath);
 	qInfo()<< "Qt library location Qt testcases:"
 		<< QLibraryInfo::location(QLibraryInfo::TestsPath);
+#ifndef Q_OS_WIN
+	qInfo()<< "Qt library location Qt settings:"
+		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
+#endif
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
@@ -109,10 +113,10 @@ void Machine_info::send_info_to_debug()
 		<< QLibraryInfo::path(QLibraryInfo::ExamplesPath);
 	qInfo()<< "Qt library path Qt testcases:"
 		<< QLibraryInfo::path(QLibraryInfo::TestsPath);
-#endif
 #ifndef Q_OS_WIN
-	qInfo()<< "Qt library location Qt settings:"
-		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
+	qInfo()<< "Qt library path Qt settings:"
+		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
+#endif
 #endif
 	qInfo()<< "GitRevision " + QString(GIT_COMMIT_SHA);
 	qInfo()<< "QElectroTech V " + QET::displayedVersion;
