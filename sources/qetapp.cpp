@@ -105,12 +105,12 @@ QETApp::QETApp() :
 	if (qet_arguments_.files().isEmpty())
 	{
 		setSplashScreenStep(tr("Chargement... Éditeur de schéma",
-				       "splash screen caption"));
+					   "splash screen caption"));
 		new QETDiagramEditor();
 	} else
 	{
 		setSplashScreenStep(tr("Chargement... Ouverture des fichiers",
-				       "splash screen caption"));
+					   "splash screen caption"));
 		openFiles(qet_arguments_);
 	}
 
@@ -556,7 +556,7 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 				new TitleBlockTemplatesFilesCollection(
 					QETApp::customTitleBlockTemplatesDir());
 		m_custom_tbt_collection -> setTitle(tr("Cartouches utilisateur",
-						       "title of the user's \
+							   "title of the user's \
 					title block templates collection"));
 		m_custom_tbt_collection -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
 		m_custom_tbt_collection -> setCollection(QET::QetCollection::Custom);
@@ -658,7 +658,7 @@ QString QETApp::commonElementsDir()
 		 *  relatif au dossier contenant le binaire executable
 		 */
 		return(QCoreApplication::applicationDirPath()
-		       + "/" + QUOTE(QET_COMMON_COLLECTION_PATH));
+			   + "/" + QUOTE(QET_COMMON_COLLECTION_PATH));
 	#endif
 #endif
 }
@@ -759,7 +759,7 @@ QString QETApp::commonTitleBlockTemplatesDir()
 		 * to the directory that contains the executable binary
 		 */
 		return(QCoreApplication::applicationDirPath()
-		       + "/" + QUOTE(QET_COMMON_TBT_PATH));
+			   + "/" + QUOTE(QET_COMMON_TBT_PATH));
 	#endif
 #endif
 }
@@ -867,7 +867,7 @@ QString QETApp::realPath(const QString &sym_path) {
 		directory = customTitleBlockTemplatesDir();
 	} else return(QString());
 	return(directory
-	       + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
+		   + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
 }
 
 
@@ -1088,7 +1088,7 @@ QString QETApp::languagesPath()
 		 *  au dossier contenant le binaire executable
 		 */
 		return(QCoreApplication::applicationDirPath()
-		       + "/" + QUOTE(QET_LANG_PATH));
+			   + "/" + QUOTE(QET_LANG_PATH));
 	#endif
 #endif
 	}
@@ -1133,9 +1133,9 @@ QFont QETApp::diagramTextsFont(qreal size)
 
 	//Font to use
 	QString diagram_texts_family = settings.value("diagramfont",
-						      "Sans Serif").toString();
+							  "Sans Serif").toString();
 	qreal diagram_texts_size     = settings.value("diagramsize",
-						      9.0).toDouble();
+							  9.0).toDouble();
 
 	if (size != -1.0) {
 		diagram_texts_size = size;
@@ -1162,8 +1162,9 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 							   "Sans Serif").toString();
 	qreal diagram_texts_item_size     = settings.value("diagramitemsize",
 							   9.0).toDouble();
-	qreal diagram_texts_item_weight   = settings.value("diagramitemweight"
-							   ).toDouble();
+	auto diagram_texts_item_weight =
+			static_cast<QFont::Weight>(
+				settings.value("diagramitemweight").toInt());
 	QString diagram_texts_item_style  = settings.value("diagramitemstyle",
 							   "normal").toString();
 
@@ -1297,15 +1298,15 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget()
 	widget -> orientationWidget() -> setFont(QETApp::diagramTextsFont());
 	widget -> orientationWidget() -> setUsableTexts(QList<QString>()
 		<< QETApp::tr("Q",
-			      "Single-letter example text - translate length, not meaning")
+				  "Single-letter example text - translate length, not meaning")
 		<< QETApp::tr("QET",
-			      "Small example text - translate length, not meaning")
+				  "Small example text - translate length, not meaning")
 		<< QETApp::tr("Schema",
-			      "Normal example text - translate length, not meaning")
+				  "Normal example text - translate length, not meaning")
 		<< QETApp::tr("Electrique",
-			      "Normal example text - translate length, not meaning")
+				  "Normal example text - translate length, not meaning")
 		<< QETApp::tr("QElectroTech",
-			      "Long example text - translate length, not meaning")
+				  "Long example text - translate length, not meaning")
 	);
 	return(widget);
 }
@@ -1706,7 +1707,7 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 	@see QETTitleBlockTemplateEditor::setOpenForDuplication()
 */
 void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
-				    bool duplicate) {
+					bool duplicate) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
@@ -1829,7 +1830,7 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 	foreach(QWidget *qw, qApp->topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
 		if (qobject_cast<QToolBar *>(qw)
-		    || qobject_cast<QDockWidget *>(qw)) {
+			|| qobject_cast<QDockWidget *>(qw)) {
 			if (qw -> parent() == window) widgets << qw;
 		}
 	}
@@ -1942,7 +1943,7 @@ void QETApp::setSplashScreenStep(const QString &message) {
 	if (!m_splash_screen) return;
 	if (!message.isEmpty()) {
 		m_splash_screen -> showMessage(message,
-					       Qt::AlignBottom | Qt::AlignLeft);
+						   Qt::AlignBottom | Qt::AlignLeft);
 	}
 	qApp->processEvents();
 }
@@ -2023,7 +2024,7 @@ void QETApp::initConfiguration()
 void QETApp::initSystemTray()
 {
 	setSplashScreenStep(tr("Chargement... icône du systray",
-			       "splash screen caption"));
+				   "splash screen caption"));
 	// initialization of the icon menus in the systray
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
@@ -2125,7 +2126,7 @@ int QETApp::projectIdFromString(const QString &url) {
 	if (!match.hasMatch())
 	{
 		qDebug()<<"no Match => return"
-		       <<url;
+			   <<url;
 		return(-1);
 	}
 	bool conv_ok = false;
@@ -2247,8 +2248,8 @@ void QETApp::checkBackupFiles()
 		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
 					   "Voulez-vous les ouvrir ?</b><br>"));
 	}
-    for(const KAutoSaveFile *kasf : stale_files)
-    {
+	for(const KAutoSaveFile *kasf : stale_files)
+	{
 #ifdef Q_OS_WIN
 	//Remove the first character '/' before the name of the drive
 	text.append("<br>" + kasf->managedFile().path().remove(0,1));
@@ -2336,19 +2337,19 @@ void QETApp::fetchWindowStats(
 
 #ifdef Q_OS_DARWIN
 /**
-    Gere les evenements, en particulier l'evenement FileOpen sous MacOs.
-    @param e Evenement a gerer
+	Gere les evenements, en particulier l'evenement FileOpen sous MacOs.
+	@param e Evenement a gerer
 */
 bool QETApp::eventFiltrer(QObject *object, QEvent *e) {
-    // gere l'ouverture de fichiers (sous MacOs)
-    if (e -> type() == QEvent::FileOpen) {
+	// gere l'ouverture de fichiers (sous MacOs)
+	if (e -> type() == QEvent::FileOpen) {
 	// nom du fichier a ouvrir
 	QString filename = static_cast<QFileOpenEvent *>(e) -> file();
 	openFiles(QStringList() << filename);
 	return(true);
-    } else {
+	} else {
 	return QObject::eventFilter(object, e);
-    }
+	}
 }
 #endif
 
