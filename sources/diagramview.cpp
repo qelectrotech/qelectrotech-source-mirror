@@ -423,7 +423,14 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 		//Start drag view when hold the middle button
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		m_drag_last_pos = e->pos();
 		viewport()->setCursor(Qt::ClosedHandCursor);
@@ -473,7 +480,14 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
 		//Drag the view
-	if (e->buttons() == Qt::MidButton)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		QScrollBar *h = horizontalScrollBar();
 		QScrollBar *v = verticalScrollBar();
@@ -534,7 +548,14 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//Stop drag view
-	if (e -> button() == Qt::MidButton)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (e->button() == Qt::MidButton)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (e->button() == Qt::MiddleButton)
+#endif
 	{
 		viewport()->setCursor(Qt::ArrowCursor);
 	}
