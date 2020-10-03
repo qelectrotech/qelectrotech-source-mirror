@@ -285,6 +285,10 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 
 	//All elements stored in to_unlink is unwanted we unlink it from m_element
 	if (!to_unlink.isEmpty())
+	{
 		foreach(Element *elmt, to_unlink)
+		{
 			m_element->unlinkElement(elmt);
+		}
+	}
 }
