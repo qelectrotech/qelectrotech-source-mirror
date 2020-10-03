@@ -25,6 +25,7 @@
 #include <QSaveFile>
 #include <QTextStream>
 #include <QRegularExpression>
+#include <QActionGroup>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
