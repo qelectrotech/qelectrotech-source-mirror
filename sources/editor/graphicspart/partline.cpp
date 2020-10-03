@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -42,7 +42,7 @@ PartLine::~PartLine()
 {
 	if(m_undo_command)
 		delete m_undo_command;
-	
+
 	removeHandler();
 }
 
@@ -79,12 +79,19 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	t.setJoinStyle(Qt::MiterJoin);
-	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+#endif
 	if (isSelected()) t.setColor(Qt::red);
 
 	painter -> setPen(t);
-	
+
 	if (first_end || second_end)
 		painter -> drawPath(path());
 	else
@@ -106,7 +113,7 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
 {
 	QPointF p1(sceneP1());
 	QPointF p2(sceneP2());
-	
+
 	QDomElement xml_element = xml_document.createElement("line");
 	xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
 	xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
@@ -116,7 +123,7 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("length1", QString("%1").arg(first_length));
 	xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
 	xml_element.setAttribute("length2", QString("%1").arg(second_length));
-	
+
 	stylesToXml(xml_element);
 	return(xml_element);
 }
@@ -153,8 +160,8 @@ QVariant PartLine::itemChange(QGraphicsItem::GraphicsItemChange change, const QV
 		{
 				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
 				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartLine::sceneSelectionChanged); 
-			
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartLine::sceneSelectionChanged);
+
 			if (scene()->selectedItems().size() == 1)
 				addHandler();
 		}
@@ -172,10 +179,10 @@ QVariant PartLine::itemChange(QGraphicsItem::GraphicsItemChange change, const QV
 	{
 		if(scene())
 			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartLine::sceneSelectionChanged);
-		
+
 		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
@@ -191,7 +198,7 @@ bool PartLine::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -215,7 +222,7 @@ bool PartLine::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -227,10 +234,10 @@ void PartLine::adjusteHandlerPos()
 {
 	if(m_handler_vector.isEmpty())
 		return;
-	
+
 	QVector<QPointF> points_vector;
 	points_vector << m_line.p1() << m_line.p2();
-	
+
 	if (m_handler_vector.size() == points_vector.size())
 	{
 		points_vector = mapToScene(points_vector);
@@ -248,7 +255,7 @@ void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 {
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
-	
+
 	m_undo_command = new QPropertyUndoCommand(this, "line", QVariant(m_line));
 	m_undo_command->setText(tr("Modifier une ligne"));
 	m_undo_command->enableAnimation();
@@ -263,12 +270,12 @@ void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
-	
+
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = elementScene()->snapToGrid(event->scenePos());
 	new_pos = mapFromScene(new_pos);
-	
+
 	prepareGeometryChange();
 	if (m_vector_index == 0)
 		m_line.setP1(new_pos);
@@ -276,7 +283,7 @@ void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 		m_line.setP2(new_pos);
 
 	emit lineChanged();
-	
+
 	adjusteHandlerPos();
 }
 
@@ -289,7 +296,7 @@ void PartLine::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsS
 {
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
-	
+
 	m_undo_command->setNewValue(QVariant(m_line));
 	elementScene()->undoStack().push(m_undo_command);
 	m_undo_command = nullptr;
@@ -318,9 +325,9 @@ void PartLine::addHandler()
 	{
 		QVector<QPointF> points_vector;
 		points_vector << m_line.p1() << m_line.p2();
-		
+
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			handler->setColor(Qt::blue);
@@ -416,12 +423,12 @@ QRectF PartLine::firstEndCircleRect() const
 	QList<QPointF> interesting_points = fourEndPoints(m_line.p1(),
 													  m_line.p2(),
 													  first_length);
-	
+
 	QRectF end_rect(
 		interesting_points[0] - QPointF(first_length, first_length),
 		QSizeF(2.0 * first_length, 2.0 * first_length)
 	);
-	
+
 	return(end_rect);
 }
 
@@ -434,12 +441,12 @@ QRectF PartLine::secondEndCircleRect() const
 	QList<QPointF> interesting_points = fourEndPoints(m_line.p2(),
 													  m_line.p1(),
 													  second_length);
-	
+
 	QRectF end_rect(
 		interesting_points[0] - QPointF(second_length, second_length),
 		QSizeF(2.0 * second_length, 2.0 * second_length)
 	);
-	
+
 	return(end_rect);
 }
 
@@ -448,7 +455,7 @@ QRectF PartLine::secondEndCircleRect() const
 	@return the bounding rect of this part
 */
 QRectF PartLine::boundingRect() const
-{	
+{
 	QRectF bound;
 	if (first_end || second_end)
 		bound = path().boundingRect();
@@ -537,13 +544,13 @@ QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &
 		//Unitary vector and perpendicular vector
 	QPointF u(line_vector / line_length * length);
 	QPointF v(-u.y(), u.x());
-	
+
 		// points O, A, B, C
 	QPointF o(end_point - u);
 	QPointF a(o - u);
 	QPointF b(o + v);
 	QPointF c(o - v);
-	
+
 	return(QList<QPointF>() << o << a << b << c);
 }
 

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -61,9 +61,16 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		//Always remove the brush
 	painter -> setBrush(Qt::NoBrush);
 	QPen t = painter -> pen();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+#endif
 	painter -> setPen(t);
-	
+
 	if (isSelected())
 	{
 		painter->save();
@@ -79,7 +86,7 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		t.setColor(Qt::red);
 		painter -> setPen(t);
 	}
-	
+
 	painter->drawArc(m_rect, m_start_angle, m_span_angle);
 
 	if (m_hovered)
@@ -196,8 +203,8 @@ QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVa
 		{
 				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
 				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged); 
-			
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
+
 			if (scene()->selectedItems().size() == 1)
 				addHandler();
 		}
@@ -215,10 +222,10 @@ QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVa
 	{
 		if(scene())
 			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
-		
+
 		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
@@ -234,7 +241,7 @@ bool PartArc::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -258,7 +265,7 @@ bool PartArc::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -266,7 +273,7 @@ bool PartArc::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	@brief PartArc::switchResizeMode
 */
 void PartArc::switchResizeMode()
-{	
+{
 	if (m_resize_mode == 1)
 	{
 		m_resize_mode = 2;
@@ -274,24 +281,24 @@ void PartArc::switchResizeMode()
 			qghi->setColor(Qt::darkGreen);
 	}
 	else if (m_resize_mode == 2)
-	{		
+	{
 		m_resize_mode = 3;
-			
+
 			//From rect mode to angle mode, then numbers of handlers change
 		removeHandler();
 		addHandler();
-		
+
 		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setColor(Qt::magenta);
 	}
 	else
-	{		
+	{
 		m_resize_mode = 1;
-		
+
 			//From angle mode to rect mode, then numbers of handlers change
 		removeHandler();
 		addHandler();
-		
+
 		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setColor(Qt::blue);
 	}
@@ -304,21 +311,21 @@ void PartArc::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
 		return;
-	
+
 	QVector <QPointF> points_vector;
-	
+
 	if(m_resize_mode == 3)
 		points_vector = QetGraphicsHandlerUtility::pointsForArc(m_rect, m_start_angle/16, m_span_angle/16);
 	else
 		points_vector = QetGraphicsHandlerUtility::pointsForRect(m_rect);
-		
-	
+
+
 	if (m_handler_vector.size() == points_vector.size())
 	{
 		points_vector = mapToScene(points_vector);
 		for (int i = 0 ; i < points_vector.size() ; ++i)
 			m_handler_vector.at(i)->setPos(points_vector.at(i));
-	}	
+	}
 }
 
 /**
@@ -330,7 +337,7 @@ void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 {
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
-	
+
 	if (m_resize_mode == 3) //Resize angle
 	{
 		if (m_vector_index == 0)
@@ -368,12 +375,12 @@ void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
-	
+
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = elementScene()->snapToGrid(event->scenePos());
 	new_pos = mapFromScene(new_pos);
-	
+
 	if (m_resize_mode == 1)
 		setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(m_rect, new_pos, m_vector_index));
 	else if (m_resize_mode == 2)
@@ -403,7 +410,7 @@ void PartArc::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSc
 {
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
-	
+
 	if (m_resize_mode == 3)
 	{
 		if (m_vector_index == 0)
@@ -461,7 +468,7 @@ void PartArc::addHandler()
 		}
 		else
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			QColor color = Qt::blue;
@@ -469,7 +476,7 @@ void PartArc::addHandler()
 				color = Qt::darkGreen;
 			else if (m_resize_mode == 3)
 				color = Qt::magenta;
-			
+
 			handler->setColor(color);
 			scene()->addItem(handler);
 			handler->installSceneEventFilter(this);

@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -66,7 +66,14 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	applyStylesToQPainter(*painter);
 
 	QPen t = painter -> pen();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+#endif
 	if (isSelected()) t.setColor(Qt::red);
 	painter -> setPen(t);
 
@@ -95,7 +102,7 @@ void PartPolygon::fromXml(const QDomElement &qde)
 
 		else break;
 	}
-	
+
 	QPolygonF temp_polygon;
 	for (int j = 1 ; j < i ; ++ j)
 	{
@@ -103,7 +110,7 @@ void PartPolygon::fromXml(const QDomElement &qde)
 								qde.attribute(QString("y%1").arg(j)).toDouble());
 	}
 	m_polygon = temp_polygon;
-	
+
 	m_closed = qde.attribute("closed") != "false";
 }
 
@@ -290,7 +297,7 @@ void PartPolygon::resetAllHandlerColor()
 	@brief PartPolygon::itemChange
 	@param change
 	@param value
-	@return 
+	@return
 */
 QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
@@ -300,8 +307,8 @@ QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const
 		{
 				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
 				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged); 
-			
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged);
+
 			if (scene()->selectedItems().size() == 1)
 				addHandler();
 		}
@@ -319,10 +326,10 @@ QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const
 	{
 		if(scene())
 			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged);
-		
+
 		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
@@ -330,7 +337,7 @@ QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const
 	@brief PartPolygon::sceneEventFilter
 	@param watched
 	@param event
-	@return 
+	@return
 */
 bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
@@ -338,7 +345,7 @@ bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -362,7 +369,7 @@ bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -397,7 +404,7 @@ void PartPolygon::adjusteHandlerPos()
 {
 	if(m_handler_vector.isEmpty())
 		return;
-	
+
 	if (m_handler_vector.size() == m_polygon.size())
 	{
 		QVector <QPointF> points_vector = mapToScene(m_polygon);
@@ -421,7 +428,7 @@ void PartPolygon::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphics
 {
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
-	
+
 	m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
 	m_undo_command->setText(tr("Modifier un polygone"));
 }
@@ -434,12 +441,12 @@ void PartPolygon::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphics
 void PartPolygon::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
-	
+
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = elementScene()->snapToGrid(event->scenePos());
 	new_pos = mapFromScene(new_pos);
-	
+
 	prepareGeometryChange();
 	m_polygon.replace(m_vector_index, new_pos);
 	adjusteHandlerPos();
@@ -455,7 +462,7 @@ void PartPolygon::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphi
 {
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
-	
+
 	m_undo_command->setNewValue(QVariant(m_polygon));
 	elementScene()->undoStack().push(m_undo_command);
 	m_undo_command = nullptr;
@@ -481,9 +488,9 @@ void PartPolygon::sceneSelectionChanged()
 void PartPolygon::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
-	{		
+	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(m_polygon));
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			handler->setColor(Qt::blue);
@@ -514,7 +521,7 @@ void PartPolygon::removeHandler()
 void PartPolygon::insertPoint()
 {
 	QPolygonF new_polygon = QetGraphicsHandlerUtility::polygonForInsertPoint(m_polygon, m_closed, elementScene()->snapToGrid(m_context_menu_pos));
-	
+
 	if(new_polygon != m_polygon)
 	{
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
@@ -532,7 +539,7 @@ void PartPolygon::removePoint()
 {
 	if (m_handler_vector.size() == 2)
 		return;
-	
+
 	QPointF point = mapToScene(m_context_menu_pos);
 	int index = -1;
 	for (int i=0 ; i<m_handler_vector.size() ; i++)
@@ -549,13 +556,13 @@ void PartPolygon::removePoint()
 		QPolygonF polygon = this->polygon();
 		qDebug() << index;
 		polygon.removeAt(index);
-		
+
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
 		QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
 		new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
 		elementScene()->undoStack().push(undo);
 	}
-	
+
 }
 
 /**

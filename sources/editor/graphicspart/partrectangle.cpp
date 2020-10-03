@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -51,17 +51,23 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 	Q_UNUSED(widget);
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
-
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+#endif
 	if (isSelected())
 		t.setColor(Qt::red);
 
 	t.setJoinStyle(Qt::MiterJoin);
-	
+
 		//Force the pen to width 0 if one of dimension is null
 	if (!rect().width() || !rect().height())
 		t.setWidth(0);
-	
+
 	painter->setPen(t);
 	painter->drawRoundedRect(m_rect, m_xRadius, m_yRadius);
 
@@ -86,7 +92,7 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
 	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
 	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
-	
+
 	QRectF rect = m_rect.normalized();
 	qreal x = m_xRadius;
 	if (x > rect.width()/2) {
@@ -96,10 +102,10 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	if (y > rect.height()/2) {
 		y = rect.height()/2;
 	}
-	
+
 	xml_element.setAttribute("rx", QString::number(m_xRadius));
 	xml_element.setAttribute("ry", QString::number(m_yRadius));
-	
+
 	stylesToXml(xml_element);
 	return(xml_element);
 }
@@ -272,7 +278,7 @@ void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && event->buttonDownPos(Qt::LeftButton) == event->pos())
 		switchResizeMode();
-	
+
 	CustomElementGraphicPart::mouseReleaseEvent(event);
 }
 
@@ -280,7 +286,7 @@ void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	@brief PartRectangle::itemChange
 	@param change
 	@param value
-	@return 
+	@return
 */
 QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
@@ -290,8 +296,8 @@ QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, con
 		{
 				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
 				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartRectangle::sceneSelectionChanged); 
-			
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartRectangle::sceneSelectionChanged);
+
 			if (scene()->selectedItems().size() == 1)
 				addHandler();
 		}
@@ -309,10 +315,10 @@ QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, con
 	{
 		if(scene())
 			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartRectangle::sceneSelectionChanged);
-		
+
 		setSelected(false); //This item is removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
@@ -320,7 +326,7 @@ QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, con
 	@brief PartRectangle::sceneEventFilter
 	@param watched
 	@param event
-	@return 
+	@return
 */
 bool PartRectangle::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
@@ -328,7 +334,7 @@ bool PartRectangle::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -352,7 +358,7 @@ bool PartRectangle::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -397,16 +403,16 @@ void PartRectangle::adjusteHandlerPos()
 	if (m_handler_vector.isEmpty()) {
 		return;
 	}
-	
+
 	QVector <QPointF> points_vector;
-	
+
 	if(m_resize_mode != 3) {
 		points_vector = QetGraphicsHandlerUtility::pointsForRect(m_rect);
 	}
 	else {
 		points_vector = QetGraphicsHandlerUtility::pointForRadiusRect(m_rect, m_xRadius, m_yRadius);
 	}
-	
+
 	if (m_handler_vector.size() == points_vector.size())
 	{
 		points_vector = mapToScene(points_vector);
@@ -430,7 +436,7 @@ void PartRectangle::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphi
 {
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
-	
+
 	m_old_rect = m_rect;
 	m_old_xRadius = m_xRadius;
 	m_old_yRadius = m_yRadius;
@@ -447,12 +453,12 @@ void PartRectangle::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphi
 void PartRectangle::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
-	
+
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = elementScene()->snapToGrid(event->scenePos());
 	new_pos = mapFromScene(new_pos);
-	
+
 	if (m_resize_mode == 1)
 		setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(m_rect, new_pos, m_vector_index));
 	else if (m_resize_mode == 2)
@@ -471,7 +477,7 @@ void PartRectangle::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphic
 			setYRadius(radius);
 		}
 	}
-	
+
 	adjusteHandlerPos();
 }
 
@@ -479,9 +485,9 @@ void PartRectangle::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGrap
 {
 	Q_UNUSED(qghi)
 	Q_UNUSED(event)
-	
+
 	m_modifie_radius_equaly = false;
-	
+
 	QUndoCommand *undo = new QUndoCommand("Modifier un rectangle");
 	if (m_old_rect != m_rect) {
 		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "rect", QVariant(m_old_rect.normalized()), QVariant(m_rect.normalized()), undo);
@@ -495,7 +501,7 @@ void PartRectangle::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGrap
 		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "yRadius", QVariant(m_old_yRadius), QVariant(m_yRadius), undo);
 		u->setAnimated();
 	}
-	
+
 	elementScene()->undoStack().push(undo);
 	m_vector_index = -1;
 }
@@ -519,21 +525,21 @@ void PartRectangle::sceneSelectionChanged()
 void PartRectangle::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
-	{	
+	{
 		if (m_resize_mode != 3) {
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
 		}
 		else {
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointForRadiusRect(m_rect, m_xRadius, m_yRadius)));
 		}
-		
+
 		for (QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			QColor color;
 			if(m_resize_mode == 1)       {color = Qt::blue;}
 			else if (m_resize_mode == 2) {color = Qt::darkGreen;}
 			else                         {color = Qt::magenta;}
-			
+
 			handler->setColor(color);
 			scene()->addItem(handler);
 			handler->installSceneEventFilter(this);

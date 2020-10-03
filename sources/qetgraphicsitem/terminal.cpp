@@ -262,23 +262,30 @@ void Terminal::removeConductor(Conductor *conductor)
 /**
 	@brief Terminal::paint
 	Fonction de dessin des bornes
-	@param p Le QPainter a utiliser
+	@param painter Le QPainter a utiliser
 	@param options Les options de dessin
 */
 void Terminal::paint(
-		QPainter *p,
+		QPainter *painter,
 		const QStyleOptionGraphicsItem *options,
 		QWidget *)
 {
 	// en dessous d'un certain zoom, les bornes ne sont plus dessinees
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	if (options && options -> levelOfDetail < 0.5) return;
-
-	p -> save();
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
+		return;
+#endif
+	painter -> save();
 
 	//annulation des renderhints
-	p -> setRenderHint(QPainter::Antialiasing,          false);
-	p -> setRenderHint(QPainter::TextAntialiasing,      false);
-	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
+	painter -> setRenderHint(QPainter::Antialiasing,          false);
+	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
+	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	// on travaille avec les coordonnees de l'element parent
 	QPointF c = mapFromParent(d->m_pos);
@@ -287,23 +294,31 @@ void Terminal::paint(
 	QPen t;
 	t.setWidthF(1.0);
 
-	if (options && options -> levelOfDetail < 1.0) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (options && options -> levelOfDetail < 1.0)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
+#endif
+	{
 		t.setCosmetic(true);
 	}
 
 	// dessin de la borne en rouge
 	t.setColor(Qt::red);
-	p -> setPen(t);
-	p -> drawLine(c, e);
+	painter -> setPen(t);
+	painter -> drawLine(c, e);
 
 	// dessin du point d'amarrage au conducteur en bleu
 	t.setColor(hovered_color_);
-	p -> setPen(t);
-	p -> setBrush(hovered_color_);
+	painter -> setPen(t);
+	painter -> setBrush(hovered_color_);
 	if (hovered_) {
-		p -> setRenderHint(QPainter::Antialiasing, true);
-		p -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
-	} else p -> drawPoint(c);
+		painter -> setRenderHint(QPainter::Antialiasing, true);
+		painter -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
+	} else painter -> drawPoint(c);
 
 	//Draw help line if needed,
 	if (diagram() && m_draw_help_line)
@@ -365,7 +380,7 @@ void Terminal::paint(
 		m_help_line_a -> setLine(line);
 	}
 
-	p -> restore();
+	painter -> restore();
 }
 
 /**
