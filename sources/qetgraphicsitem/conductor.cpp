@@ -470,15 +470,15 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation term
 
 /**
 	Dessine le conducteur sans antialiasing.
-	@param qp Le QPainter a utiliser pour dessiner le conducteur
+	@param painter Le QPainter a utiliser pour dessiner le conducteur
 	@param options Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine
 */
-void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw)
+void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *qw)
 {
 	Q_UNUSED(qw);
-	qp -> save();
-	qp -> setRenderHint(QPainter::Antialiasing, false);
+	painter -> save();
+	painter -> setRenderHint(QPainter::Antialiasing, false);
 
 		// Set the color of conductor
 	QColor final_conductor_color(m_properties.color);
@@ -500,7 +500,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	conductor_pen.setWidthF(m_mouse_over? (m_properties.cond_size) +4 : (m_properties.cond_size));
 
 		//Set the QPen and QBrush to the QPainter
-	qp -> setBrush(conductor_brush);
+	painter -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
 
 		//Set the conductor style
@@ -509,14 +509,22 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetique line, below a certain zoom
-	if (options && options -> levelOfDetail < 1.0) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (options && options -> levelOfDetail < 1.0)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
+#endif
+	{
 		final_conductor_pen.setCosmetic(true);
 	}
 
-	qp -> setPen(final_conductor_pen);
+	painter -> setPen(final_conductor_pen);
 
 		//Draw the conductor
-	qp -> drawPath(path());
+	painter -> drawPath(path());
 		//Draw the second color
 	if(m_properties.m_bicolor)
 	{
@@ -525,20 +533,20 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		QVector<qreal> dash_pattern;
 		dash_pattern << m_properties.m_dash_size-2 << m_properties.m_dash_size;
 		final_conductor_pen.setDashPattern(dash_pattern);
-		qp->save();
-		qp->setPen(final_conductor_pen);
-		qp->drawPath(path());
-		qp->restore();
+		painter->save();
+		painter->setPen(final_conductor_pen);
+		painter->drawPath(path());
+		painter->restore();
 	}
 
 	if (m_properties.type == ConductorProperties::Single) {
-		qp -> setBrush(final_conductor_color);
+		painter -> setBrush(final_conductor_color);
 		m_properties.singleLineProperties.draw(
-			qp,
+			painter,
 			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
 			QRectF(middleSegment() -> middle() - QPointF(12.0, 12.0), QSizeF(24.0, 24.0))
 		);
-		if (isSelected()) qp -> setBrush(Qt::NoBrush);
+		if (isSelected()) painter -> setBrush(Qt::NoBrush);
 	}
 
 		//Draw the junctions
@@ -546,15 +554,15 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	if (!junctions_list.isEmpty()) {
 		final_conductor_pen.setStyle(Qt::SolidLine);
 		QBrush junction_brush(final_conductor_color, Qt::SolidPattern);
-		qp -> setPen(final_conductor_pen);
-		qp -> setBrush(junction_brush);
-		qp -> setRenderHint(QPainter::Antialiasing, true);
+		painter -> setPen(final_conductor_pen);
+		painter -> setBrush(junction_brush);
+		painter -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {
-			qp -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
+			painter -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
 		}
 	}
 
-	qp -> restore();
+	painter -> restore();
 }
 
 /// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant
@@ -1014,8 +1022,8 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	@return Un element XML representant le conducteur
 */
 QDomElement Conductor::toXml(QDomDocument &dom_document,
-			     QHash<Terminal *,
-			     int> &table_adr_id) const
+				 QHash<Terminal *,
+				 int> &table_adr_id) const
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 
@@ -1514,7 +1522,7 @@ QPainterPath Conductor::path() const
 	the other values of property stay unmodified
 */
 void Conductor::setPropertyToPotential(const ConductorProperties &property,
-				       bool only_text)
+					   bool only_text)
 {
 	setProperties(property);
 	QSet <Conductor *> potential_list = relatedPotentialConductors();
