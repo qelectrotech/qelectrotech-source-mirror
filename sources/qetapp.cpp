@@ -167,7 +167,14 @@ void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
 
 	// load Qt library translations
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	QString qt_l10n_path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
+#endif
 	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
 		qtTranslator.load("qt_" + desired_language, languages_path);
 	}
