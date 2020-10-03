@@ -72,7 +72,8 @@ echo "Run GIT:"
 # Fait une mise à jour
 git pull
 #git checkout foliolist_position
-
+#disable project database export
+sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro 
 # recupere le numero de la nouvelle revision
 
 GITCOMMIT=$(git rev-parse --short HEAD)
