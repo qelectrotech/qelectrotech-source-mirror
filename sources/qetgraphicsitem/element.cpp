@@ -577,7 +577,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
     if (!Terminal::valideXml(dom_element))
         return nullptr;
 	
-    Terminal *new_terminal = new Terminal(0, 0, Qet::Orientation::North, this);
+    Terminal *new_terminal = new Terminal(0, 0, Qet::Orientation::North, this); // does not matter which values are typed in here, because they get overwritten by the fromXML() function
     new_terminal->fromXml(dom_element);
 	m_terminals << new_terminal;
 	
