@@ -733,7 +733,11 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
     // store terminal data too!
 
     // Do not store terminal data in its own child
+    // Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
+    QPointF tempPos = d->m_pos;
+    d->m_pos = dock_elmt_;
     QDomElement terminalDataElement = d->toXml(doc);
+    d->m_pos = tempPos;
 
     int childsCount = terminalDataElement.childNodes().count();
     for (int i=0; i < childsCount; i++) {

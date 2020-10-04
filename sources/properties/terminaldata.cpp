@@ -43,13 +43,18 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 {
     QDomElement xml_element = xml_document.createElement("terminaldata");
 
-    xml_element.appendChild(createXmlProperty(xml_document, "x", q->scenePos().x()));
-    xml_element.appendChild(createXmlProperty(xml_document, "y", q->scenePos().y()));
+
+    // m_pos cannot be stored, because in the partterminal it will not be updated.
+    // In PartTerminal m_pos is the position of the dock, in Terminal m_pos is the second side of the terminal
+    // This is hold for legacy compability reason
+    xml_element.appendChild(createXmlProperty(xml_document, "x", m_pos.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y", m_pos.y()));
     xml_element.appendChild(createXmlProperty(xml_document, "name", m_name));
     xml_element.appendChild(createXmlProperty(xml_document, "orientation", orientationToString(m_orientation)));
 
     return(xml_element);
 }
+
 bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 {
     // lit la position de la borne
