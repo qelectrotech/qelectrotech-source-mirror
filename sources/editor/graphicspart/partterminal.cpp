@@ -72,6 +72,8 @@ QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 
     qdo.appendChild(createXmlProperty(xml_document, "uuid", d->m_uuid));
 
+    d->m_pos = pos();
+
     // Do not store terminal data in its own child
     QDomElement terminalDataElement = d->toXml(xml_document);
     for (int i=0; i < terminalDataElement.childNodes().length(); i++) {
