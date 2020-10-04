@@ -507,7 +507,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 
 		//Drag the view
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	if (e->button() == Qt::MidButton)
+	if (e->buttons() == Qt::MidButton)
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
