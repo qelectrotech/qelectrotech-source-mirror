@@ -77,6 +77,12 @@
 #include <QDialogButtonBox>
 #include <QActionGroup>
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
+#include <QStringView>
+#else
+#define QStringView QStringRef
+#endif
+
 QT_BEGIN_NAMESPACE
 
 //static const char RichTextDialogGroupC[] = "RichTextDialog";
