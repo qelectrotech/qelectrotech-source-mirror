@@ -30,7 +30,7 @@ QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
 QColor Terminal::warningColor      = QColor("#ff8000");
 QColor Terminal::forbiddenColor    = QColor(Qt::red);
-const qreal Terminal::terminalSize = 4.0;
+const qreal Terminal::terminalSize = 4.0; // TODO: store terminalSize in terminaldata, because in PartTerminal there is the same parameter. So only one is needed
 const qreal Terminal::Z = 1000;
 
 /**
