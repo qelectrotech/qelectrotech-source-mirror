@@ -76,15 +76,15 @@ class XRefProperties : public PropertiesInterface
     void setKey(QString& key) {m_key = key;}
 
 	private:
-	bool m_show_power_ctc;
-	DisplayHas m_display;
-	SnapTo m_snap_to;
-	Qt::AlignmentFlag m_xref_pos;
+    bool m_show_power_ctc{true};
+    DisplayHas m_display{Cross};
+    SnapTo m_snap_to{Bottom};
+    Qt::AlignmentFlag m_xref_pos{Qt::AlignBottom};
 	QHash <QString, QString> m_prefix;
-	QStringList m_prefix_keys;
-	QString m_master_label;
-	QString m_slave_label;
-	int     m_offset;
+    QStringList m_prefix_keys{"power","delay","switch"};
+    QString m_master_label{"%f-%l%c"};
+    QString m_slave_label{"(%f-%l%c)"};
+    int     m_offset{0};
     QString m_key;
 };
 

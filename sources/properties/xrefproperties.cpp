@@ -25,14 +25,6 @@
  */
 XRefProperties::XRefProperties()
 {
-	m_show_power_ctc = true;
-	m_display = Cross;
-	m_snap_to = Bottom;
-	m_prefix_keys << "power" << "delay" << "switch";
-	m_master_label = "%f-%l%c";
-	m_slave_label = "(%f-%l%c)";
-	m_offset = 0;
-	m_xref_pos = Qt::AlignBottom;
 }
 
 /**
@@ -127,28 +119,29 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
         return false;
 
     QString display;
-    propertyString(xml_element, "displayhas", &display, true, "cross");
-	display == "cross"? m_display = Cross : m_display = Contacts;
+    if (propertyString(xml_element, "displayhas", &display) != PropertyFlags::NotFound) {
+        display == "cross"? m_display = Cross : m_display = Contacts;
+    }
 
 
     QString snap;
-    propertyString(xml_element, "snapto", &snap, true, "label");
-	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+    if (propertyString(xml_element, "snapto", &snap)  != PropertyFlags::NotFound) {
+        snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+    }
 
     QString xrefpos;
-    if (propertyString(xml_element, "xrefpos", &xrefpos, true, "Left") == PropertyFlags::NotFound) {
+    if (propertyString(xml_element, "xrefpos", &xrefpos) != PropertyFlags::NotFound) {
         QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
         m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xrefpos.toStdString().data()));
-    } else
-        m_xref_pos = Qt::AlignBottom;
+    }
     // TODO: why it compiles without this true??
-    propertyInteger(xml_element, "offset", &m_offset, true, 0);
-    propertyString(xml_element, "master_label", &m_master_label, true, "%f-%l%c");
-    propertyString(xml_element, "slave_label", &m_slave_label, true, "(%f-%l%c)");
+    propertyInteger(xml_element, "offset", &m_offset);
+    propertyString(xml_element, "master_label", &m_master_label);
+    propertyString(xml_element, "slave_label", &m_slave_label);
     QString value;
 	foreach (QString key, m_prefix_keys) {
-        propertyString(xml_element, key + "prefix", &value);
-        m_prefix.insert(key, value);
+        if (!propertyString(xml_element, key + "prefix", &value));
+            m_prefix.insert(key, value);
 	}
     return true;
 }
