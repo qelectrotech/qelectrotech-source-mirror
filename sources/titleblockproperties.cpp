@@ -122,8 +122,8 @@ bool TitleBlockProperties::fromXml(const QDomElement &e) {
     setDateFromString(date);
 
     QString display_at_temp;
-    propertyString(e, "displayAt", &display_at_temp);
-    display_at = (display_at_temp == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
+    if (propertyString(e, "displayAt", &display_at_temp) == PropertyFlags::Success)
+        display_at = (display_at_temp == "bottom" ? Qt::BottomEdge : Qt::RightEdge); // otherwise it gets default in header file
 
     // reads the template used to render the title block
     if (propertyString(e, "titleblocktemplate", &template_name)) {
