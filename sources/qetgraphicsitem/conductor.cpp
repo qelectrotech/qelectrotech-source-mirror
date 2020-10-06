@@ -1027,7 +1027,12 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
     dom_element.appendChild(dom_seq);
 
         // Export the properties and text
-    dom_element.appendChild(m_properties.toXml(doc));
+    QDomElement conductorProperties = m_properties.toXml(doc);
+    for (int i=0; i < conductorProperties.childNodes().count(); i++) {
+        QDomNode node = conductorProperties.childNodes().at(i).cloneNode(); // cloneNode() is important!
+        dom_element.appendChild(node);
+    }
+
     if(m_text_item->wasMovedByUser())
     {
         dom_element.appendChild(createXmlProperty(doc, "userx", m_text_item->pos().x()));

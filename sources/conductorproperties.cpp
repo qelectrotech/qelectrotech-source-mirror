@@ -360,6 +360,7 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 
     QString alinment_temp;
+    lksjdflj
     propertyString(e, "horizontal-alignment", &alinment_temp, "AlignBottom");
     m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
     propertyString(e, "vertical-alignment", &alinment_temp, "AlignRight");
