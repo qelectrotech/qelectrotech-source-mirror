@@ -127,24 +127,24 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
         return false;
 
     QString display;
-    propertyString(xml_element, "displayhas", &display, "cross");
+    propertyString(xml_element, "displayhas", &display, true, "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
 
 
     QString snap;
-    propertyString(xml_element, "snapto", &snap, "label");
+    propertyString(xml_element, "snapto", &snap, true, "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 
     QString xrefpos;
-    if (propertyString(xml_element, "xrefpos", &xrefpos, "Left") == PropertyFlags::NotFound) {
+    if (propertyString(xml_element, "xrefpos", &xrefpos, true, "Left") == PropertyFlags::NotFound) {
         QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
         m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xrefpos.toStdString().data()));
     } else
         m_xref_pos = Qt::AlignBottom;
-
-    propertyInteger(xml_element, "offset", &m_offset, 0);
-    propertyString(xml_element, "master_label", &m_master_label, "%f-%l%c");
-    propertyString(xml_element, "slave_label", &m_slave_label, "(%f-%l%c)");
+    // TODO: why it compiles without this true??
+    propertyInteger(xml_element, "offset", &m_offset, true, 0);
+    propertyString(xml_element, "master_label", &m_master_label, true, "%f-%l%c");
+    propertyString(xml_element, "slave_label", &m_slave_label, true, "(%f-%l%c)");
     QString value;
 	foreach (QString key, m_prefix_keys) {
         propertyString(xml_element, key + "prefix", &value);
