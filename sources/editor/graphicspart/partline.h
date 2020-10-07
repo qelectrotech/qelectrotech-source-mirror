@@ -118,10 +118,10 @@ class PartLine : public CustomElementGraphicPart
 
 		/*****************/
 		Qet::EndType first_end;
-		qreal        first_length;
+        qreal        first_length{1.5};
 
 		Qet::EndType second_end;
-		qreal        second_length;
+        qreal        second_length{1.5};
 		QList<QPointF> saved_points_;
 		QLineF m_line;
 		int m_vector_index = -1;

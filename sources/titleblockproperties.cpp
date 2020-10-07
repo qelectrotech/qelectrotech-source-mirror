@@ -96,6 +96,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 }
 
 QDomElement TitleBlockProperties::toXml(QDomDocument &d) const {
+    Q_UNUSED(d)
     qDebug() << "NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     return QDomElement();
 }
@@ -126,10 +127,10 @@ bool TitleBlockProperties::fromXml(const QDomElement &e) {
         display_at = (display_at_temp == "bottom" ? Qt::BottomEdge : Qt::RightEdge); // otherwise it gets default in header file
 
     // reads the template used to render the title block
-    if (propertyString(e, "titleblocktemplate", &template_name)) {
+    if (propertyString(e, "titleblocktemplate", &template_name) == PropertyFlags::Success) {
         QString tbc;
-        propertyString(e, "titleblocktemplateCollection", &tbc);
-        collection = QET::qetCollectionFromString(tbc);
+        if (propertyString(e, "titleblocktemplateCollection", &tbc) == PropertyFlags::Success)
+            collection = QET::qetCollectionFromString(tbc);
 	}
 	
 	// reads the additional fields used to fill the title block

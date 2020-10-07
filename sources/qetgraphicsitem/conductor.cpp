@@ -949,10 +949,9 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 bool Conductor::fromXml(const QDomElement &dom_element)
 {
     // TODO: seems to short!
-    double x, y;
+    double x=0, y=0;
     propertyDouble(dom_element, "x", &x);
     propertyDouble(dom_element, "y", &y);
-
     setPos(x, y);
 
 	bool return_ = pathFromXml(dom_element);

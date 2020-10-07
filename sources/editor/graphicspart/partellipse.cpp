@@ -112,19 +112,19 @@ bool PartEllipse::fromXml(const QDomElement &qde)
 
 	if (qde.tagName() == "ellipse")
 	{
-        if (propertyDouble(qde, "width", &width, 0) == PropertyFlags::NoValidConversion ||
-            propertyDouble(qde, "height", &height, 0) == PropertyFlags::NoValidConversion)
+        if (propertyDouble(qde, "width", &width, true, 0) == PropertyFlags::NoValidConversion ||
+            propertyDouble(qde, "height", &height, true, 0) == PropertyFlags::NoValidConversion)
             return false;
 	}
     else {
-        if (propertyDouble(qde, "diameter", &width, 0) == PropertyFlags::NoValidConversion)
+        if (propertyDouble(qde, "diameter", &width, true, 0) == PropertyFlags::NoValidConversion)
             return false;
         height = width;
     }
 
 
-    if (propertyDouble(qde, "x", &x, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "y", &y, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(qde, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "y", &y, true, 0) == PropertyFlags::NoValidConversion)
         return false;
 
     m_rect = QRectF(mapFromScene(x, y), QSizeF(width, height));

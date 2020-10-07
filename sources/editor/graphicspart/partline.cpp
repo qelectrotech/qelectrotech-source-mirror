@@ -151,9 +151,6 @@ bool PartLine::fromXml(const QDomElement &qde) {
 
     first_end = Qet::endTypeFromString(s);
 
-    first_length = 1.5;
-    second_length = 1.5;
-
     if (propertyDouble(qde, "length1", &first_length) == PropertyFlags::NoValidConversion ||
         propertyDouble(qde, "length2", &second_length) == PropertyFlags::NoValidConversion)
         return false;

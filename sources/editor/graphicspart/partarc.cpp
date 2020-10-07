@@ -122,10 +122,10 @@ bool PartArc::fromXml(const QDomElement &qde) {
     stylesFromXml(qde);
 
     double x, y, w, h;
-    if (propertyDouble(qde, "x", &x, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "y", &y, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "width", &w, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "height", &h, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(qde, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "y", &y, true, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "width", &w, true, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "height", &h, true, 0) == PropertyFlags::NoValidConversion)
         return false;
 
     m_rect = QRectF(mapFromScene(x, y), QSizeF(w, h) );

@@ -56,7 +56,7 @@ class PropertiesInterface
     static QDomElement property(const QDomElement& e, const QString& name);
     static bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
 
-    typedef enum PropertyFlags {
+    enum PropertyFlags {
         Success = 0,
         NotFound = 1,
         NoValidConversion = 2,

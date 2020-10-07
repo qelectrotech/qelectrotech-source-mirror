@@ -327,19 +327,28 @@ bool ConductorProperties::fromXml(const QDomElement &e)
     propertyInteger(e, "dash-size", &m_dash_size);
 	
 		// read style of conductor
-	readStyle(e.attribute("style"));
+    QString style_string;
+    propertyString(e, "style", &style_string);
+    readStyle(style_string);
 
     QString type_t;
-    propertyString(e, "type", &type_t);
-	
-    if (type_t == typeToString(Single))
-	{
-			// get specific properties for single conductor
-		singleLineProperties.fromXml(e);
-		type = Single;
-	}
-	else
-		type = Multi;
+    if (propertyString(e, "type", &type_t) == PropertyFlags::Success) {
+        if (type_t == typeToString(Single))
+        {
+                // get specific properties for single conductor
+            singleLineProperties.fromXml(e);
+            type = Single;
+        }
+        else if (type_t == typeToString(Multi))
+            type = Multi;
+        else {
+            //Keep retrocompatible with version older than 0,4
+            //If the propertie @type is simple (removed since QET 0,4), we set text no visible.
+            //@TODO remove this code for qet 0.6 or later
+
+            if (type_t == "simple") m_show_text = false;
+        }
+    }
 
     propertyString(e, "num", &text);
 
@@ -360,17 +369,10 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 
     QString alinment_temp;
-    lksjdflj
-    propertyString(e, "horizontal-alignment", &alinment_temp, "AlignBottom");
-    m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
-    propertyString(e, "vertical-alignment", &alinment_temp, "AlignRight");
-    m_vertical_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
-
-		//Keep retrocompatible with version older than 0,4
-		//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
-		//@TODO remove this code for qet 0.6 or later
-
-    if (type_t == "simple") m_show_text = false;
+    if (propertyString(e, "horizontal-alignment", &alinment_temp, "AlignBottom") == PropertyFlags::Success)
+        m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
+    if (propertyString(e, "vertical-alignment", &alinment_temp, "AlignRight") == PropertyFlags::Success)
+        m_vertical_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
 
     return true;
 }

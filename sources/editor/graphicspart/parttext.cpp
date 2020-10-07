@@ -78,22 +78,22 @@ bool PartText::fromXml(const QDomElement &xml_element)
         return false;
     }
 	
-    QString color;
+    QColor color;
     QString text;
-    propertyString(xml_element, "color", &color, "#000000");
-    setDefaultTextColor(QColor(color));
+    propertyColor(xml_element, "color", &color);
+    setDefaultTextColor(color);
 
 
     propertyString(xml_element, "text", &text);
     setPlainText(text);
 
     double x, y, rot;
-    if (propertyDouble(xml_element, "x", &x, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(xml_element, "y", &y, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(xml_element, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(xml_element, "y", &y, true, 0) == PropertyFlags::NoValidConversion)
         return false;
     setPos(x, y);
 
-    if (propertyDouble(xml_element, "rotation", &rot, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(xml_element, "rotation", &rot, true, 0) == PropertyFlags::NoValidConversion)
         return false;
     setRotation(rot);
 
