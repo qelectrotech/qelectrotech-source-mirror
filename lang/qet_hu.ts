@@ -867,12 +867,12 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>kábel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>sín</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
@@ -1136,7 +1136,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/diagramview.cpp" line="469"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(Dev) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="558"/>
@@ -3873,43 +3873,43 @@ Ehhez speciális szerkesztőt kell használni.</translation>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
         <source>Fin 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vég 1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
         <source>Fin 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vég 2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Hosszúság :</translation>
+        <translation>Hosszúság :</translation>
     </message>
 </context>
 <context>
@@ -4738,12 +4738,12 @@ Vezető színe : %1</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kábel hozzáadása: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>Ajouter au bus: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sín hozzáadása: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="415"/>
@@ -4892,169 +4892,169 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Fő ablak</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Tervlapokat nyomtatni :</translation>
+        <translation>Tervlapokat nyomtatni :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Összes kipipálása</translation>
+        <translation>Összes kipipálása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Kipipálás visszavonása</translation>
+        <translation>Kipipálás visszavonása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="88"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Megjelenítés lehetőségei</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="94"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Keret rajzolása</translation>
+        <translation>Keret rajzolása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="101"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Tervjel rajzolása</translation>
+        <translation>Tervjel rajzolása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Vezetékek színének megtartása</translation>
+        <translation>Vezetékek színének megtartása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="115"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Sorkapcsok rajzolása</translation>
+        <translation>Sorkapcsok rajzolása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="125"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyomtatási lehetőségek</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="131"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">A tervlap igazítása a lap méretéhez</translation>
+        <translation>A tervlap igazítása a lap méretéhez</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="141"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Az egész oldal használata</translation>
+        <translation>Az egész oldal használata</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="148"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha ez az opció ki van választva, a tervlap nagyíított vagy zsugorított lesz, hogy az egész nyomtatható felületet kitöltse egyetlen egy lapon.&quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha ez az opció ki van választva, akkor a lap margója figyelmen kívül lesz hagyva és az egész nyotatható felület lesz használva. Ezt nem támogatja minden nyomtató.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Eszköztár</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Igazítás a szélességhez</translation>
+        <translation>Igazítás a szélességhez</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="234"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Igazítás a lap méretéhez</translation>
+        <translation>Igazítás a lap méretéhez</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="243"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Kicsinyítés</translation>
+        <translation>Kicsinyítés</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="252"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Nagyítás</translation>
+        <translation>Nagyítás</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="261"/>
         <source>Paysage</source>
-        <translation type="unfinished">Fekvő helyzetben</translation>
+        <translation>Fekvő helyzetben</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="270"/>
         <source>Portrait</source>
-        <translation type="unfinished">Álló helyzetben</translation>
+        <translation>Álló helyzetben</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="279"/>
         <source>Première page</source>
-        <translation type="unfinished">Első lap</translation>
+        <translation>Első lap</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="288"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Előző lap</translation>
+        <translation>Előző lap</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="297"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Következő lap</translation>
+        <translation>Következő lap</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="306"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Utolsó lap</translation>
+        <translation>Utolsó lap</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="315"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy lap mutatása</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="324"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Szemközti oldalak megjelenítése</translation>
+        <translation>Szemközti oldalak megjelenítése</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="333"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Az összes oldal megjelenítése</translation>
+        <translation>Az összes oldal megjelenítése</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="342"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Oldal elrendezés</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="57"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Nyomtatási lehetőségek</translation>
+        <translation>Nyomtatási lehetőségek</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="84"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">Projekt</translation>
+        <translation>projekt</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="113"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Nyomtatás</translation>
+        <translation>Nyomtatás</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="345"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Cím nélküli tervlap</translation>
+        <translation>Cím nélküli tervlap</translation>
     </message>
 </context>
 <context>
@@ -8673,7 +8673,7 @@ Cserélni akarod?</translation>
         <location filename="../sources/qetapp.cpp" line="2112"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
-        <translation type="unfinished"></translation>
+        <translation>ez egy hiba a programkódban</translation>
     </message>
 </context>
 <context>
@@ -11883,7 +11883,7 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="94"/>
         <source>Name : </source>
-        <translation type="unfinished"></translation>
+        <translation>Név : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="199"/>
@@ -11899,7 +11899,7 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="268"/>
         <source>Modifier le nom du terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatlakozó név változtatása</translation>
     </message>
 </context>
 <context>

@@ -927,12 +927,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>Bus</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
@@ -1127,7 +1127,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="469"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(Dev) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="558"/>
@@ -3863,43 +3863,43 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijninstellingen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
         <source>Fin 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Einde 1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
         <source>Fin 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Einde 2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Grootte :</translation>
+        <translation>Lengte :</translation>
     </message>
 </context>
 <context>
@@ -4730,12 +4730,12 @@ Doorsnede van geleider : %1</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Toevoegen aan kabel: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>Ajouter au bus: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Toevoegen aan bus: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="415"/>
@@ -4884,169 +4884,169 @@ De volgende variabelen zijn compatibel :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Afdrukinstellingen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Af te drukken bladen :</translation>
+        <translation>Af te drukken bladen :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Selecteer alles</translation>
+        <translation>Selecteer alles</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Deselecteer alles</translation>
+        <translation>Deselecteer alles</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="88"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Afdrukweergave</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="94"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Teken het kader</translation>
+        <translation>Teken het kader</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="101"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Teken het titelblok</translation>
+        <translation>Teken het titelblok</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Teken gekleurde geleiders</translation>
+        <translation>Teken gekleurde geleiders</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="115"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Teken de terminals</translation>
+        <translation>Teken de terminals</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="125"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Afdrukopties</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="131"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Pas het blad aan op de pagina</translation>
+        <translation>Pas het blad aan op de pagina</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="141"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Gebruik het gehele blad</translation>
+        <translation>Gebruik het gehele blad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="148"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Als deze optie is aangevinkt, wordt het blad vergroot of verkleind om het volledige afdrukbare gebied van slechts één pagina te vullen. &quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als deze optie is aangevinkt, worden de marges van het vel genegeerd en wordt het volledige oppervlak gebruikt voor afdrukken. Dit wordt mogelijk niet ondersteund door uw printer.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">In breedte passend</translation>
+        <translation>In breedte passend</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="234"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Blad passend</translation>
+        <translation>Blad passend</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="243"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Zoom uit</translation>
+        <translation>Zoom uit</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="252"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Zoom in</translation>
+        <translation>Zoom in</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="261"/>
         <source>Paysage</source>
-        <translation type="unfinished">Landschap</translation>
+        <translation>Landschap</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="270"/>
         <source>Portrait</source>
-        <translation type="unfinished">Portret</translation>
+        <translation>Portret</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="279"/>
         <source>Première page</source>
-        <translation type="unfinished">Eerste blad</translation>
+        <translation>Eerste blad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="288"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Vorig blad</translation>
+        <translation>Vorig blad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="297"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Volgend blad</translation>
+        <translation>Volgend blad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="306"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Laatste blad</translation>
+        <translation>Laatste blad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="315"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon één blad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="324"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Toon twee bladen</translation>
+        <translation>Toon twee bladen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="333"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Toon een overzicht van alle bladen</translation>
+        <translation>Toon een overzicht van alle bladen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="342"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Indeling</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="57"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Afdrukopties</translation>
+        <translation>Afdrukopties</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="84"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">Project</translation>
+        <translation>Project</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="113"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Afdrukken</translation>
+        <translation>Afdrukken</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="345"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Naamloos blad</translation>
+        <translation>Naamloos blad</translation>
     </message>
 </context>
 <context>
@@ -8679,7 +8679,7 @@ Wilt u deze vervangen ?</translation>
         <location filename="../sources/qetapp.cpp" line="2112"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
-        <translation type="unfinished"></translation>
+        <translation>dit is een fout in de code</translation>
     </message>
 </context>
 <context>
@@ -11889,7 +11889,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="94"/>
         <source>Name : </source>
-        <translation type="unfinished"></translation>
+        <translation>Naam : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="199"/>
@@ -11905,7 +11905,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="268"/>
         <source>Modifier le nom du terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van de terminal wijzigen</translation>
     </message>
 </context>
 <context>
