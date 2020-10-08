@@ -750,12 +750,11 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	}
 	
 		// table de correspondance entre les adresses des bornes et leurs ids
-	QHash<Terminal *, int> table_adr_id;
 	
 	if (!list_elements.isEmpty()) {
 		auto dom_elements = document.createElement("elements");
 		for (auto elmt : list_elements) {
-			dom_elements.appendChild(elmt->toXml(document, table_adr_id));
+            dom_elements.appendChild(elmt->toXml(document));
 		}
 		dom_root.appendChild(dom_elements);
 	}
@@ -763,7 +762,6 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	if (!list_conductors.isEmpty()) {
 		auto dom_conductors = document.createElement("conductors");
 		for (auto cond : list_conductors) {
-            //dom_conductors.appendChild(cond->toXml(document, table_adr_id));
             dom_conductors.appendChild(cond->toXml(document));
 		}
 		dom_root.appendChild(dom_conductors);

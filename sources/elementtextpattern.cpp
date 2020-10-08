@@ -108,8 +108,7 @@ QDomDocument ExportElementTextPattern::xmlConf() const
 	root.setAttribute("name", m_name);
 	doc.appendChild(root);
 	
-	QHash<Terminal *, int> H;
-	QDomElement elmt = m_element->toXml(doc, H);
+    QDomElement elmt = m_element->toXml(doc);
 	QDomElement texts = elmt.firstChildElement("dynamic_texts");
 	QDomElement groups = elmt.firstChildElement("texts_groups");
 	

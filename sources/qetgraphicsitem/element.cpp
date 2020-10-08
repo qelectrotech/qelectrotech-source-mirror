@@ -1023,7 +1023,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	methode
 	@return L'element XML representant cet element electrique
 */
-QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table_adr_id) const
+QDomElement Element::toXml(QDomDocument &document) const
 {
 	QDomElement element = document.createElement("element");
 	
@@ -1050,25 +1050,16 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("z", QString::number(this->zValue()));
 	element.setAttribute("orientation", QString::number(orientation()));
 	
-	/* recupere le premier id a utiliser pour les bornes de cet element */
-	int id_terminal = 0;
-	if (!table_adr_id.isEmpty()) {
-		// trouve le plus grand id
-		int max_id_t = -1;
-		foreach (int id_t, table_adr_id.values()) {
-			if (id_t > max_id_t) max_id_t = id_t;
-		}
-		id_terminal = max_id_t + 1;
-	}
-	
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement("terminals");
 	// pour chaque enfant de l'element
 	foreach(Terminal *t, terminals()) {
 		// alors on enregistre la borne
 		QDomElement terminal = t -> toXml(document);
-        terminal.setAttribute("id", id_terminal); // for backward compatibility
-		table_adr_id.insert(t, id_terminal ++);
+        if (t->ID() > 0) {
+            // for backward compatibility
+            terminal.setAttribute("id", t->ID()); // for backward compatibility
+        }
 		xml_terminals.appendChild(terminal);
 	}
 	element.appendChild(xml_terminals);

@@ -113,7 +113,7 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
         void editProperty() override;
         static bool valideXml(QDomElement &);
         virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
-        virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
+        virtual QDomElement toXml(QDomDocument &) const;
         QUuid uuid() const;
         int orientation() const;
 		
