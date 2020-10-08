@@ -590,7 +590,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 			return (a->dockConductor().y() < b->dockConductor().y());
 	});
 	
-	return(new_terminal);
+    return(new_terminal); // TODO: makes not sense
 }
 
 /**
