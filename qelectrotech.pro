@@ -220,14 +220,14 @@ UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 
 # Configuration de la compilation
-CONFIG += c++17 debug_and_release warn_on
+CONFIG += c++17 debug_and_release warn_on link_pkgconfig
 
 # Nom du binaire genere par la compilation
 TARGET = qelectrotech
 
 # Ajustement des bibliotheques utilisees lors de l'edition des liens
 unix:QMAKE_LIBS_THREAD -= -lpthread
-unix|win32: LIBS += -lsqlite3
+unix|win32: PKGCONFIG += sqlite3
 
 # Enable C++17
 QMAKE_CXXFLAGS += -std=c++17
