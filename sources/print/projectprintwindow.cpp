@@ -60,8 +60,10 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QWidget *parent)
 	qDebug()<<"Help code for QT 6 or later";
 #endif
 	printer_->setDocName(doc_name);
-	printer_->setOutputFileName(file_name);
 	printer_->setCreator(QString("QElectroTech %1").arg(QET::displayedVersion));
+#ifdef Q_OS_LINUX
+	printer_->setOutputFileName(file_name);
+#endif
 
 	QPrintDialog print_dialog(printer_, parent);
 #ifdef Q_OS_MACOS
