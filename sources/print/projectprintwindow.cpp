@@ -410,6 +410,7 @@ void ProjectPrintWindow::setUpDiagramList()
 		connect(checkbox, &QCheckBox::clicked, m_preview, &QPrintPreviewWidget::updatePreview);
 		m_diagram_list_hash.insert(diagram, checkbox);
 	}
+	layout->addStretch();
 }
 
 QString ProjectPrintWindow::settingsSectionName(const QPrinter *printer)
@@ -653,17 +654,20 @@ void ProjectPrintWindow::print()
 
 void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
 {
-	on_m_uncheck_all_clicked();
-
 	auto index = ui->m_date_from_cb->currentIndex();
-	// 0 = from the date
-	// 1 = at the date
+	// 0 = all date
+	// 1 = from the date
+	// 2 = at the date
+
+	if (index) { on_m_uncheck_all_clicked();  }
+	else       { on_m_check_all_pb_clicked(); }
+
 
 	for (auto diagram : m_diagram_list_hash.keys())
 	{
 		auto diagram_date = diagram->border_and_titleblock.date();
-		if ( (index == 0 && diagram_date >= date) ||
-			 (index == 1 && diagram_date == date) )
+		if ( (index == 1 && diagram_date >= date) ||
+			 (index == 2 && diagram_date == date) )
 			m_diagram_list_hash.value(diagram)->setChecked(true);
 	}
 
@@ -673,5 +677,13 @@ void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
 void ProjectPrintWindow::on_m_date_from_cb_currentIndexChanged(int index)
 {
 	Q_UNUSED(index)
+
+	ui->m_date_cb->setEnabled(index);
+	ui->m_apply_date_pb->setEnabled(index);
+	on_m_date_cb_userDateChanged(ui->m_date_cb->date());
+
+}
+
+void ProjectPrintWindow::on_m_apply_date_pb_clicked() {
 	on_m_date_cb_userDateChanged(ui->m_date_cb->date());
 }

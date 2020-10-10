@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>956</width>
-    <height>554</height>
+    <height>537</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -58,7 +58,7 @@
              <x>0</x>
              <y>0</y>
              <width>932</width>
-             <height>75</height>
+             <height>58</height>
             </rect>
            </property>
           </widget>
@@ -80,7 +80,7 @@
         </item>
         <item>
          <widget class="QWidget" name="widget" native="true">
-          <layout class="QHBoxLayout" name="horizontalLayout">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
            <property name="spacing">
             <number>9</number>
            </property>
@@ -100,6 +100,11 @@
             <widget class="QComboBox" name="m_date_from_cb">
              <item>
               <property name="text">
+               <string>Toutes les dates</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>À partir de la date du :</string>
               </property>
              </item>
@@ -112,7 +117,27 @@
            </item>
            <item>
             <widget class="QDateEdit" name="m_date_cb">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="m_apply_date_pb">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../qelectrotech.qrc">
+               <normaloff>:/ico/16x16/dialog-ok.png</normaloff>:/ico/16x16/dialog-ok.png</iconset>
+             </property>
+             <property name="flat">
               <bool>true</bool>
              </property>
             </widget>

@@ -72,12 +72,11 @@ class ProjectPrintWindow : public QMainWindow
 		void on_m_check_all_pb_clicked();
 		void on_m_uncheck_all_clicked();
 		void print();
-
 		void on_m_date_cb_userDateChanged(const QDate &date);
-
 		void on_m_date_from_cb_currentIndexChanged(int index);
+		void on_m_apply_date_pb_clicked();
 
-		private:
+	private:
 		void requestPaint();
 		void printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer);
 		QRect diagramRect(Diagram *diagram, const ExportProperties &option) const;
