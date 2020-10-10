@@ -1425,7 +1425,11 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		{
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
-			m_default_xref_properties.insert(elmt.attribute("type"), xrp);
+            QString type;
+            if (PropertiesInterface::propertyString(elmt, "type", &type) == PropertiesInterface::PropertyFlags::Success)
+                m_default_xref_properties.insert(type, xrp);
+            else
+                qDebug() << "xref Property was not added to m_default_xref_properties.";
 		}
 	}
 	if (!conds_autonums.isNull())
