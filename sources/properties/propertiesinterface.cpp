@@ -40,7 +40,7 @@ bool PropertiesInterface::valideXml(QDomElement& element) {
     return false;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const QString value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const QString value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", stringS);
@@ -48,7 +48,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QStr
     return p;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const char* value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const char* value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", stringS);
@@ -56,7 +56,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QStr
     return p;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const int value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const int value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", integerS);
@@ -64,7 +64,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     return p;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const double value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const double value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", doubleS);
@@ -72,7 +72,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     return p;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const bool value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const bool value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", boolS);
@@ -80,7 +80,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     return p;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", uuidS);
@@ -88,7 +88,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     return p;
 }
 
-QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const QColor value) const {
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const QColor value) {
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", colorS);

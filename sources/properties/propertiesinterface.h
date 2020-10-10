@@ -45,13 +45,13 @@ class PropertiesInterface
     /*!
      * Use this functions to add properties to the xml document
      */
-    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QString value) const;
-    QDomElement createXmlProperty(QDomDocument &doc, const QString& name, const char* value) const;
-    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const int value) const;
-    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const double value) const;
-    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const bool value) const;
-    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value) const;
-    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QColor value) const;
+    static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QString value);
+    static QDomElement createXmlProperty(QDomDocument &doc, const QString& name, const char* value);
+    static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const int value);
+    static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const double value);
+    static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const bool value);
+    static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value);
+    static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QColor value);
 
     static QDomElement property(const QDomElement& e, const QString& name);
     static bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
