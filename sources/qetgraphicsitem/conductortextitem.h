@@ -42,6 +42,7 @@ class ConductorTextItem : public DiagramTextItem
         enum { Type = UserType + 1006 };
         Conductor *parentConductor() const;
         void fromXml(const QDomElement &) override;
+        void toXml(QDomDocument& doc, QDomElement& e);
         int type() const override { return Type; }
         virtual bool wasMovedByUser() const;
         virtual bool wasRotateByUser() const;
@@ -61,8 +62,8 @@ class ConductorTextItem : public DiagramTextItem
         // attributes
 	private:
         Conductor *parent_conductor_;
-        bool moved_by_user_;
-        bool rotate_by_user_;
+        bool moved_by_user_{false};
+        bool rotate_by_user_{false};
         QPointF before_mov_pos_;
 };
 #endif

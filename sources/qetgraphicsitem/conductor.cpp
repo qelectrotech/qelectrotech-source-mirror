@@ -1032,13 +1032,7 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
         dom_element.appendChild(node);
     }
 
-    if(m_text_item->wasMovedByUser())
-    {
-        dom_element.appendChild(createXmlProperty(doc, "userx", m_text_item->pos().x()));
-        dom_element.appendChild(createXmlProperty(doc, "usery", m_text_item->pos().y()));
-    }
-    if(m_text_item->wasRotateByUser())
-        dom_element.appendChild(createXmlProperty(doc, "rotation", m_text_item->rotation()));
+    m_text_item->toXml(doc, dom_element);
 
     return(dom_element);
 }
