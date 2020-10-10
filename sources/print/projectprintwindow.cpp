@@ -39,17 +39,11 @@
  * @brief ProjectPrintWindow::ProjectPrintWindow
  * Use this static function to properly lauch the print dialog.
  * @param project : project to print
+ * @param format : native format to print in physical printer, or pdf format to export in pdf
  * @param parent : parent widget
  */
-void ProjectPrintWindow::launchDialog(QETProject *project, QWidget *parent)
+void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputFormat format, QWidget *parent)
 {
-	auto dir_path = project->currentDir();
-	auto doc_name = ProjectPrintWindow::docName(project);
-	QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + doc_name));
-	if (!file_name.endsWith(".pdf")) {
-		file_name.append(".pdf");
-	}
-
 	auto printer_ = new QPrinter();
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	printer_->setOrientation(QPrinter::Landscape);
@@ -59,39 +53,45 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QWidget *parent)
 #endif
 	qDebug()<<"Help code for QT 6 or later";
 #endif
-	printer_->setDocName(doc_name);
-	printer_->setCreator(QString("QElectroTech %1").arg(QET::displayedVersion));
-#ifdef Q_OS_LINUX
-	printer_->setOutputFileName(file_name);
-#endif
 
-	QPrintDialog print_dialog(printer_, parent);
+	if (format == QPrinter::NativeFormat) //To physical printer
+	{
+		QPrintDialog print_dialog(printer_, parent);
 #ifdef Q_OS_MACOS
-print_dialog.setWindowFlags(Qt::Sheet);
+		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
-	print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
+		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile | QAbstractPrintDialog::PrintShowPageSize);
+		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-	qDebug()<<"Help code for QT 6 or later";
+		qDebug()<<"Help code for QT 6 or later";
 #endif
-	if (print_dialog.exec() == QDialog::Rejected) {
-		delete  printer_;
-		return;
+		if (print_dialog.exec() == QDialog::Rejected) {
+			delete  printer_;
+			return;
+		}
+	}
+	else //To pdf file
+	{
+		auto dir_path = project->currentDir();
+		auto doc_name = ProjectPrintWindow::docName(project);
+		QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + doc_name));
+		if (!file_name.endsWith(".pdf")) {
+			file_name.append(".pdf");
+		}
+		printer_->setDocName(doc_name);
+		printer_->setCreator(QString("QElectroTech %1").arg(QET::displayedVersion));
+		printer_->setOutputFileName(file_name);
+		printer_->setOutputFormat(QPrinter::PdfFormat);
 	}
 
 	auto w = new ProjectPrintWindow(project, printer_, parent);
 	w->showMaximized();
 }
 
-/**
- * @brief ProjectPrintWindow::docName
- * @param project
- * @return the doc name to use for project
- */
 QString ProjectPrintWindow::docName(QETProject *project)
 {
 	QString doc_name;
@@ -132,9 +132,18 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 
 	setUpDiagramList();
 
-	auto print_button = new QPushButton(QET::Icons::DocumentPrint, tr("Imprimer"));
-	ui->m_button_box->addButton(print_button, QDialogButtonBox::ActionRole);
-	connect(print_button, &QPushButton::clicked, this, &ProjectPrintWindow::print);
+	if (m_printer->outputFormat() == QPrinter::NativeFormat) //Print to physical printer
+	{
+		auto print_button = new QPushButton(QET::Icons::DocumentPrint, tr("Imprimer"));
+		ui->m_button_box->addButton(print_button, QDialogButtonBox::ActionRole);
+		connect(print_button, &QPushButton::clicked, this, &ProjectPrintWindow::print);
+	}
+	else	//export to pdf
+	{
+		auto pdf_button = new QPushButton(QET::Icons::PDF, tr("Exporter en pdf"));
+		ui->m_button_box->addButton(pdf_button, QDialogButtonBox::ActionRole);
+		connect(pdf_button, &QPushButton::clicked, this, &ProjectPrintWindow::exportToPDF);
+	}
 
 	auto exp = ExportProperties::defaultPrintProperties();
 	ui->m_draw_border_cb->setChecked(exp.draw_border);
@@ -548,10 +557,13 @@ QList<Diagram *> ProjectPrintWindow::selectedDiagram() const
 
 void ProjectPrintWindow::exportToPDF()
 {
-	auto file_name = QFileDialog::getSaveFileName(this);
+	auto file_name = QFileDialog::getSaveFileName(this, tr("Exporter sous : "), m_printer->outputFileName(), tr("Fichier (*.pdf"));
+	if (file_name.isEmpty()) {
+		return;
+	}
 	m_printer->setOutputFileName(file_name);
 	m_printer->setOutputFormat(QPrinter::PdfFormat);
-	m_preview->print();
+	print();
 }
 
 void ProjectPrintWindow::on_m_draw_border_cb_clicked()          { m_preview->updatePreview(); }
@@ -655,9 +667,9 @@ void ProjectPrintWindow::print()
 void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
 {
 	auto index = ui->m_date_from_cb->currentIndex();
-	// 0 = all date
-	// 1 = from the date
-	// 2 = at the date
+		// 0 = all date
+		// 1 = from the date
+		// 2 = at the date
 
 	if (index) { on_m_uncheck_all_clicked();  }
 	else       { on_m_check_all_pb_clicked(); }

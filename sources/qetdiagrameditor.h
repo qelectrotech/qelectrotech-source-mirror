@@ -166,7 +166,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_windowed_view_mode,		///< Display projects as windows
 		*m_mode_selection,		///< Set edition mode
 		*m_mode_visualise,		///< Set visualisation mode
-		*m_export_diagram,		///< Export diagrams of the current project as imagess
+		*m_export_to_images,		///< Export diagrams of the current project as imagess
+		*m_export_to_pdf = nullptr, ///< Export project to pdf.
 		*m_print,			///< Print diagrams of the current project
 		*m_quit_editor,			///< Quit the diagram editor
 		*undo,				///< Cancel the latest action

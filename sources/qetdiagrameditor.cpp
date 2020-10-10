@@ -253,10 +253,10 @@ void QETDiagramEditor::setUpAutonumberingWidget()
 void QETDiagramEditor::setUpActions()
 {
 		//Export to another file type (jpeg, dxf etc...)
-	m_export_diagram = new QAction(QET::Icons::DocumentExport,  tr("E&xporter"), this);
-	m_export_diagram->setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
-	m_export_diagram->setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
-	connect(m_export_diagram, &QAction::triggered, [this]() {
+	m_export_to_images = new QAction(QET::Icons::DocumentExport,  tr("E&xporter"), this);
+	m_export_to_images->setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
+	m_export_to_images->setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
+	connect(m_export_to_images, &QAction::triggered, [this]() {
 		ProjectView *current_project = currentProjectView();
 		if (current_project) {
 			current_project -> exportProject();
@@ -270,7 +270,17 @@ void QETDiagramEditor::setUpActions()
 	connect(m_print, &QAction::triggered, [this]() {
 		auto project = currentProject();
 		if (project) {
-			ProjectPrintWindow::launchDialog(project, this);
+			ProjectPrintWindow::launchDialog(project, QPrinter::NativeFormat ,this);
+		}
+	});
+
+		//export to pdf
+	m_export_to_pdf = new QAction(QET::Icons::PDF, tr("Exporter en pdf"), this);
+	m_export_to_pdf->setStatusTip(tr("Exporte un ou plusieurs folios du projet courant", "status bar tip"));
+	connect(m_export_to_pdf, &QAction::triggered, [this] () {
+		auto project = currentProject();
+		if (project) {
+			ProjectPrintWindow::launchDialog(project, QPrinter::PdfFormat, this);
 		}
 	});
 
@@ -691,6 +701,7 @@ void QETDiagramEditor::setUpToolBar()
 
 	main_tool_bar -> addActions(m_file_actions_group.actions());
 	main_tool_bar -> addAction(m_print);
+	main_tool_bar -> addAction(m_export_to_pdf);
 	main_tool_bar -> addSeparator();
 	main_tool_bar -> addAction(undo);
 	main_tool_bar -> addAction(redo);
@@ -757,8 +768,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_fichier -> addActions(m_file_actions_group.actions());
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
-	menu_fichier -> addAction(m_export_diagram);
-	//menu_fichier -> addSeparator();
+	menu_fichier -> addAction(m_export_to_images);
+	menu_fichier -> addAction(m_export_to_pdf);
 	menu_fichier -> addAction(m_print);
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(m_quit_editor);
@@ -1484,27 +1495,28 @@ void QETDiagramEditor::slot_updateActions()
 	bool opened_diagram = dv;
 	bool editable_project = (pv && !pv -> project() -> isReadOnly());
 
-	m_close_file       -> setEnabled(opened_project);
-	m_save_file        -> setEnabled(opened_project);
-	m_save_file_as     -> setEnabled(opened_project);
-	m_project_edit_properties->setEnabled(opened_project);
+	m_close_file->                  setEnabled(opened_project);
+	m_save_file->                   setEnabled(opened_project);
+	m_save_file_as->                setEnabled(opened_project);
+	m_project_edit_properties->     setEnabled(opened_project);
 	m_project_export_conductor_num->setEnabled(opened_project);
 	//prj_terminalBloc -> setEnabled(opened_project);
-	m_rotate_texts -> setEnabled(editable_project);
-	m_project_add_diagram  -> setEnabled(editable_project);
-	m_remove_diagram_from_project  -> setEnabled(editable_project);
-	m_clean_project        -> setEnabled(editable_project);
-	m_add_nomenclature->setEnabled(editable_project);
-	m_add_summary->setEnabled(editable_project);
-	m_csv_export -> setEnabled(editable_project);
-	m_export_diagram   -> setEnabled(opened_diagram);
-	m_print            -> setEnabled(opened_diagram);
-	m_edit_diagram_properties    -> setEnabled(opened_diagram);
-	m_zoom_actions_group.      setEnabled(opened_diagram);
-	m_select_actions_group.    setEnabled(opened_diagram);
-	m_add_item_actions_group.  setEnabled(editable_project);
-	m_row_column_actions_group.setEnabled(editable_project);
-	m_grey_background->setEnabled(opened_diagram);
+	m_rotate_texts->                setEnabled(editable_project);
+	m_project_add_diagram->         setEnabled(editable_project);
+	m_remove_diagram_from_project-> setEnabled(editable_project);
+	m_clean_project->               setEnabled(editable_project);
+	m_add_nomenclature->            setEnabled(editable_project);
+	m_add_summary->                 setEnabled(editable_project);
+	m_csv_export->                  setEnabled(editable_project);
+	m_export_to_images->            setEnabled(opened_diagram);
+	m_print->                       setEnabled(opened_diagram);
+	m_export_to_pdf->               setEnabled(opened_diagram);
+	m_edit_diagram_properties->     setEnabled(opened_diagram);
+	m_zoom_actions_group.           setEnabled(opened_diagram);
+	m_select_actions_group.         setEnabled(opened_diagram);
+	m_add_item_actions_group.       setEnabled(editable_project);
+	m_row_column_actions_group.     setEnabled(editable_project);
+	m_grey_background->             setEnabled(opened_diagram);
 
 
 	slot_updateUndoStack();

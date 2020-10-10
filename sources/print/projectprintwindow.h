@@ -21,6 +21,7 @@
 #include <QMainWindow>
 
 #include "exportproperties.h"
+#include <QPrinter>
 
 namespace Ui {
 class ProjectPrintWindow;
@@ -42,7 +43,7 @@ class ProjectPrintWindow : public QMainWindow
     Q_OBJECT
 
 	public:
-		static void launchDialog(QETProject *project, QWidget *parent = nullptr);
+		static void launchDialog(QETProject *project, QPrinter::OutputFormat format = QPrinter::NativeFormat, QWidget *parent = nullptr);
 		static QString docName(QETProject *project);
 
 		explicit ProjectPrintWindow(QETProject *project, QPrinter *printer, QWidget *parent = nullptr);
