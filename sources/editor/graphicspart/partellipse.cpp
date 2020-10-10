@@ -108,23 +108,23 @@ QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 bool PartEllipse::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-    double x, y, width, height;
+    double x=0, y=0, width=0, height=0;
 
 	if (qde.tagName() == "ellipse")
 	{
-        if (propertyDouble(qde, "width", &width, true, 0) == PropertyFlags::NoValidConversion ||
-            propertyDouble(qde, "height", &height, true, 0) == PropertyFlags::NoValidConversion)
+        if (propertyDouble(qde, "width", &width) == PropertyFlags::NoValidConversion ||
+            propertyDouble(qde, "height", &height) == PropertyFlags::NoValidConversion)
             return false;
 	}
     else {
-        if (propertyDouble(qde, "diameter", &width, true, 0) == PropertyFlags::NoValidConversion)
+        if (propertyDouble(qde, "diameter", &width) == PropertyFlags::NoValidConversion)
             return false;
         height = width;
     }
 
 
-    if (propertyDouble(qde, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "y", &y, true, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion)
         return false;
 
     m_rect = QRectF(mapFromScene(x, y), QSizeF(width, height));

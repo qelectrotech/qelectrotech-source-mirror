@@ -116,23 +116,23 @@ bool PartRectangle::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
 
-    double x, y, w, h, rx, ry;
-    if (propertyDouble(qde, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "y", &y, true, 0) == PropertyFlags::NoValidConversion)
+    double x=0, y=0, w=0, h=0, rx=0, ry=0;
+    if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion)
         return false;
 
     setPos(mapFromScene(x, y));
 
-    if (propertyDouble(qde, "width", &w, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "width", &h, true, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(qde, "width", &w) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "width", &h) == PropertyFlags::NoValidConversion)
         return false;
 
     QRectF rect(QPointF(x,y), QSizeF(w, h));
 
 	setRect(rect.normalized());
 
-    if (propertyDouble(qde, "rx", &rx, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "ry", &ry, true, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(qde, "rx", &rx) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "ry", &ry) == PropertyFlags::NoValidConversion)
         return false;
 
     setXRadius(rx);

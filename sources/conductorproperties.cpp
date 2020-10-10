@@ -369,9 +369,9 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 
     QString alinment_temp;
-    if (propertyString(e, "horizontal-alignment", &alinment_temp, "AlignBottom") == PropertyFlags::Success)
+    if (propertyString(e, "horizontal-alignment", &alinment_temp) == PropertyFlags::Success)
         m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
-    if (propertyString(e, "vertical-alignment", &alinment_temp, "AlignRight") == PropertyFlags::Success)
+    if (propertyString(e, "vertical-alignment", &alinment_temp) == PropertyFlags::Success)
         m_vertical_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
 
     return true;

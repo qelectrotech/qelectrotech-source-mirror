@@ -66,12 +66,12 @@ class PropertiesInterface
     /*!
      * Try not using the default Value feature. It is better to initialize the class members in the class definition!
      */
-    static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr, bool setDefaultValue = false, int defaultValue = std::numeric_limits<int>::quiet_NaN());
-    static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr, bool setDefaultValue = false, double defaultValue = std::numeric_limits<double>::quiet_NaN());
-    static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr, bool setDefaultValue = false, QString defaultValue = QString());
-    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr, bool setDefaultValue = false, bool defaultValue = false);
-    static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr, bool setDefaultValue = false, QUuid defaultValue = QUuid());
-    static PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr, bool setDefaultValue = false, QColor defaultValue = QColor());
+    static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr);
+    static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr);
+    static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr);
+    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr);
+    static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr);
+    static PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr);
 
 
     static bool validXmlProperty(const QDomElement& e);

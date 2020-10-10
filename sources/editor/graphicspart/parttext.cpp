@@ -87,13 +87,13 @@ bool PartText::fromXml(const QDomElement &xml_element)
     propertyString(xml_element, "text", &text);
     setPlainText(text);
 
-    double x, y, rot;
-    if (propertyDouble(xml_element, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(xml_element, "y", &y, true, 0) == PropertyFlags::NoValidConversion)
+    double x=0, y=0, rot=0;
+    if (propertyDouble(xml_element, "x", &x) == PropertyFlags::NoValidConversion ||
+        propertyDouble(xml_element, "y", &y) == PropertyFlags::NoValidConversion)
         return false;
     setPos(x, y);
 
-    if (propertyDouble(xml_element, "rotation", &rot, true, 0) == PropertyFlags::NoValidConversion)
+    if (propertyDouble(xml_element, "rotation", &rot) == PropertyFlags::NoValidConversion)
         return false;
     setRotation(rot);
 

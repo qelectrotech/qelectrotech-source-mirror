@@ -121,11 +121,11 @@ QDomElement PartArc::toXml(QDomDocument &xml_document) const {
 bool PartArc::fromXml(const QDomElement &qde) {
     stylesFromXml(qde);
 
-    double x, y, w, h;
-    if (propertyDouble(qde, "x", &x, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "y", &y, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "width", &w, true, 0) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "height", &h, true, 0) == PropertyFlags::NoValidConversion)
+    double x=0, y=0, w=0, h=0;
+    if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "width", &w) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "height", &h) == PropertyFlags::NoValidConversion)
         return false;
 
     m_rect = QRectF(mapFromScene(x, y), QSizeF(w, h) );

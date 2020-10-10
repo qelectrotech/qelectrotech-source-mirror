@@ -186,8 +186,8 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
     bool frame;
     propertyBool(dom_elmt, "frame", &frame);
 
-    double text_width;
-    propertyDouble(dom_elmt, "text_width", &text_width, true, -1);
+    double text_width=-1;
+    propertyDouble(dom_elmt, "text_width", &text_width);
     setTextWidth(text_width);
 	
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();

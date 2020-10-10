@@ -966,7 +966,7 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-    propertyBool(dom_element, "freezeLabel", &m_freeze_label, false);
+    propertyBool(dom_element, "freezeLabel", &m_freeze_label);
 	setProperties(pr);
 
 	return return_;
@@ -1022,7 +1022,7 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
         }
     }
 
-    QDomElement dom_seq = m_autoNum_seq.toXml(doc);
+    QDomElement dom_seq = m_autoNum_seq.toXml(doc); // swquentialNumbers tag
     dom_element.appendChild(dom_seq);
 
         // Export the properties and text

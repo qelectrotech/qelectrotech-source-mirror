@@ -150,13 +150,11 @@ bool PropertiesInterface::attribute(const QDomElement& e, const QString& attribu
  * \return True if reading an integer was successful, else False. If the attribute was not found,
  *          \p entier is not valid and the return value is False
  */
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyInteger(const QDomElement &e, const QString& attribute_name, int* entier, bool setDefaultValue, int defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyInteger(const QDomElement &e, const QString& attribute_name, int* entier) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, integerS, &attr)) {
-        if (entier && setDefaultValue)
-            *entier = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -174,13 +172,11 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyInteger(const QD
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDomElement &e, const QString& attribute_name, double* reel, bool setDefaultValue, double defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDomElement &e, const QString& attribute_name, double* reel) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, doubleS, &attr)) {
-        if (reel && setDefaultValue)
-            *reel = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -198,13 +194,11 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDo
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean, bool setDefaultValue, bool defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, boolS, &attr)) {
-        if (boolean && setDefaultValue)
-            *boolean = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -228,13 +222,11 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomE
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color, bool setDefaultValue, QColor defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, colorS, &attr)) {
-        if (color && setDefaultValue)
-            *color = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -251,12 +243,10 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDom
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid, bool setDefaultValue, QUuid defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid) {
     QString attr;
 
     if (!attribute(e, attribute_name, uuidS, &attr)) {
-        if (uuid && setDefaultValue)
-            *uuid = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -272,12 +262,10 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomE
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyString(const QDomElement& e, const QString& attribute_name, QString* string, bool setDefaultValue, QString defaultValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyString(const QDomElement& e, const QString& attribute_name, QString* string) {
 
     QString attr;
     if (!attribute(e, attribute_name, stringS, &attr)) {
-        if (string && setDefaultValue)
-            *string = defaultValue;
         return PropertyFlags::NotFound;
     }
 
