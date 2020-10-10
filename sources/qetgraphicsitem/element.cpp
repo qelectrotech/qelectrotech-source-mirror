@@ -745,7 +745,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
     
 		//************************//
 		//***Dynamic texts item***//
-		//************************//
+        //************************// read from the diagram section
 	for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTagName()))
     {
         DynamicElementTextItem *deti = new DynamicElementTextItem(this);
@@ -757,16 +757,16 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		//************************//
 		//***Element texts item***//
 		//************************//
-	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
+    QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input"); // inputs in diagram section
 	
 		//First case, we check for the text item converted to dynamic text item
 	const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys();
 	QList <DynamicElementTextItem *> successfully_converted; 
 	const QList <QDomElement> dom_inputs = inputs;
-	
-	for (DynamicElementTextItem *deti : conv_deti_list)
+    // TODO: legacy???
+    for (DynamicElementTextItem *deti : conv_deti_list) // elements read from the element collection definition
 	{
-		for(const QDomElement& dom_input : dom_inputs)
+        for(const QDomElement& dom_input : dom_inputs)
 		{
 				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
 				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element

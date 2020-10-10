@@ -32,7 +32,7 @@
 SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Slave)
 {
-	m_xref_item = nullptr;
+
 }
 
 /**
