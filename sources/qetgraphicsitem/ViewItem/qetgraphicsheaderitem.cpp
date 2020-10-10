@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -435,25 +435,11 @@ void QetGraphicsHeaderItem::adjustSize()
 		emit heightResized();
 	}
 
-	if(m_current_sections_width.size() == m_sections_minimum_width.size())
-	{
-		auto old_sections_width = m_current_sections_width;
-
-		for (int i=0 ; i<m_current_sections_width.size() ; ++i)
-		{
-			if (old_sections_width.at(i) < m_sections_minimum_width.at(i)) {
-				resizeSection(i, m_sections_minimum_width.at(i));
-			}
-		}
-	}
-
 	update();
 }
 
 void QetGraphicsHeaderItem::modelReseted()
 {
 	setUpMinimumSectionsSize();
-	m_current_sections_width.clear();
-	m_current_sections_width.resize(m_sections_minimum_width.size());
 	adjustSize();
 }

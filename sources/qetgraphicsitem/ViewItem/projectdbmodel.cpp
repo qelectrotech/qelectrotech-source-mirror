@@ -184,7 +184,7 @@ void ProjectDBModel::setQuery(const QString &query)
 	if (rm_) {
 		emit beginResetModel();
 	}
-	
+
 	m_query = query;
 	
 	if (m_project)
