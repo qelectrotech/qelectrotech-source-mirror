@@ -103,6 +103,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
 		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
+        bool searchedElement{false};
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -141,6 +142,7 @@ class DynamicElementTextItem : public DiagramTextItem
 						   m_other_report;
 		QPointer <Conductor> m_watched_conductor;
 		QString m_text,
+                m_text_old,
 				m_info_name,
 				m_composite_text,
 				m_report_formula,

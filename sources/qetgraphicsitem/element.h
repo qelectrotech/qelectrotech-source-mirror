@@ -55,7 +55,7 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 				   Slave = 16,
 				   Terminale = 32};
 
-		Element(const ElementsLocation &location, QGraphicsItem * = nullptr, int *state = nullptr, Element::kind link_type = Element::Simple);
+        Element(const ElementsLocation &location, QGraphicsItem * parent= nullptr, int *state = nullptr, Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
 		Element(const Element &);
