@@ -57,6 +57,10 @@ static int adjust_grp_row         = 4;
 static int frame_grp_row          = 5;
 static int hold_to_bottom_grp_row = 6;
 
+const char* user_text = "Texte utilisateur";
+const char* element_information = "Information de l'élément";
+const char* composite_text = "Texte composé";
+
 DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
 	QStandardItemModel(parent),
 	m_element(element)
@@ -136,9 +140,9 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
     src->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     
 	QString title;
-	if (deti->textFrom() == DynamicElementTextItem::UserText) title = tr("Texte utilisateur");
-	else if (deti->textFrom() == DynamicElementTextItem::ElementInfo) title = tr("Information de l'élément");
-	else title =  tr("Texte composé");
+    if (deti->textFrom() == DynamicElementTextItem::UserText) title = tr(user_text);
+    else if (deti->textFrom() == DynamicElementTextItem::ElementInfo) title = tr(element_information);
+    else title =  tr(composite_text);
     QStandardItem *srca = new QStandardItem(title);
     srca->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
     srca->setData(textFrom, Qt::UserRole+1);
@@ -172,7 +176,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
     qsi->appendRow(qsi_list);
 	
 		//Composite text
-	QStandardItem *composite = new QStandardItem(tr("Texte composé"));
+    QStandardItem *composite = new QStandardItem(tr(composite_text));
 	composite->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
 	DiagramContext dc;
@@ -397,7 +401,7 @@ DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *ite
 	
 	
 	QStandardItem *text_item = item;
-	while (text_item->parent())
+    while (text_item->parent()) // recursive search for the highest parent
 		text_item = text_item->parent();
 	
 	if (m_texts_list.values().contains(text_item)) //The item is a text
@@ -458,26 +462,26 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	QStandardItem *text_qsi = m_texts_list.value(deti);
 	
 	QString from = text_qsi->child(src_txt_row,1)->data(Qt::DisplayRole).toString();
-	if ((from == tr("Texte utilisateur")) && (deti->textFrom() != DynamicElementTextItem::UserText))
+    if ((from == tr(user_text)) && (deti->textFrom() != DynamicElementTextItem::UserText))
 		new QPropertyUndoCommand(deti, "textFrom", QVariant(deti->textFrom()), QVariant(DynamicElementTextItem::UserText), undo);
-	else if ((from == tr("Information de l'élément")) && (deti->textFrom() != DynamicElementTextItem::ElementInfo))
+    else if ((from == tr(element_information)) && (deti->textFrom() != DynamicElementTextItem::ElementInfo))
 		new QPropertyUndoCommand(deti, "textFrom", QVariant(deti->textFrom()), QVariant(DynamicElementTextItem::ElementInfo), undo);
-	else if ((from == tr("Texte composé")) && (deti->textFrom() != DynamicElementTextItem::CompositeText))
+    else if ((from == tr(composite_text)) && (deti->textFrom() != DynamicElementTextItem::CompositeText))
 		new QPropertyUndoCommand(deti, "textFrom", QVariant(deti->textFrom()), QVariant(DynamicElementTextItem::CompositeText), undo);
 	
-	if(from == tr("Texte utilisateur"))
+    if(from == tr(user_text))
 	{
 		QString text = text_qsi->child(usr_txt_row,1)->data(Qt::DisplayRole).toString();
 		if (text != deti->text())
 			new QPropertyUndoCommand(deti, "text", QVariant(deti->text()), QVariant(text), undo);
 	}
-	else if (from == tr("Information de l'élément"))
+    else if (from == tr(element_information))
 	{
 		QString info_name = text_qsi->child(info_txt_row,1)->data(Qt::UserRole+2).toString();
 		if(info_name != deti->infoName())
 			new QPropertyUndoCommand(deti, "infoName", QVariant(deti->infoName()), QVariant(info_name), undo);
 	}
-	else if (from == tr("Texte composé"))
+    else if (from == tr(composite_text))
 	{
 		QString composite_text = text_qsi->child(compo_txt_row,1)->data(Qt::UserRole+2).toString();
 		if(composite_text != deti->compositeText())
@@ -1112,6 +1116,7 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 		case DynamicElementTextItem::CompositeText: compo = true;break;
 	}
 
+    m_ignore_item_change = true;
 		//User text
 	qsi->child(usr_txt_row,0)->setEnabled(usr);
 	qsi->child(usr_txt_row,1)->setEnabled(usr);
@@ -1120,6 +1125,7 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 	qsi->child(info_txt_row,1)->setEnabled(info);
 		//Composite text
 	qsi->child(compo_txt_row,0)->setEnabled(compo);
+    m_ignore_item_change = false;
 	qsi->child(compo_txt_row,1)->setEnabled(compo);
 }
 
@@ -1157,6 +1163,10 @@ void DynamicElementTextModel::enableGroupRotationAndPos(ElementTextItemGroup *gr
 
 void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 {
+
+    if (m_ignore_item_change)
+        return;
+
 	DynamicElementTextItem *deti = textFromItem(qsi);
 	ElementTextItemGroup *etig = groupFromItem(qsi);
 	if (!deti && !etig)
@@ -1170,15 +1180,15 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 			dc = deti->elementUseForInfo()->elementInformations();
 		
 		if (qsi->data().toInt() == textFrom)
-		{
+        { // change textFrom
 			QString from = qsi->data(Qt::DisplayRole).toString();
 			
-			if (from == tr("Texte utilisateur"))
+            if (from == tr(user_text))
 			{
 				enableSourceText(deti, DynamicElementTextItem::UserText);
 				text_qsi->setData(text_qsi->child(usr_txt_row,1)->data(Qt::DisplayRole).toString());
 			}
-			else if (from == tr("Information de l'élément"))
+            else if (from == tr(element_information))
 			{
 				enableSourceText(deti, DynamicElementTextItem::ElementInfo);
 				QString info = text_qsi->child(info_txt_row,1)->data(Qt::UserRole+2).toString();
@@ -1213,7 +1223,7 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		//We emit the signal only if @qsi is in the second column, because the data are stored on this column
 		//the first column is use only for display the title of the property, except for the name of texts group
 	if((m_groups_list.values().contains(qsi) || qsi->column() == 1) && !m_block_dataChanged)
-		emit dataChanged();
+        emit dataChanged(); // TODO: where it goes?
     if(deti) deti->updateXref();
 }
 
@@ -1309,9 +1319,9 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		{
 			switch (deti->textFrom())
 			{
-				case DynamicElementTextItem::UserText: qsi->child(0,1)->setData(tr("Texte utilisateur"), Qt::DisplayRole); break;
-				case DynamicElementTextItem::ElementInfo : qsi->child(0,1)->setData(tr("Information de l'élément"), Qt::DisplayRole); break;
-				case DynamicElementTextItem::CompositeText : qsi->child(0,1)->setData(tr("Texte composé"), Qt::DisplayRole); break;
+                case DynamicElementTextItem::UserText: qsi->child(0,1)->setData(tr(user_text), Qt::DisplayRole); break;
+                case DynamicElementTextItem::ElementInfo : qsi->child(0,1)->setData(tr(element_information), Qt::DisplayRole); break;
+                case DynamicElementTextItem::CompositeText : qsi->child(0,1)->setData(tr(composite_text), Qt::DisplayRole); break;
 			}
 			enableSourceText(deti, deti->textFrom());
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
@@ -1448,6 +1458,15 @@ DynamicTextItemDelegate::DynamicTextItemDelegate(QObject *parent) :
     QStyledItemDelegate(parent)
 {}
 
+/*!
+ * \brief DynamicTextItemDelegate::createEditor
+ * Different widgets are used depending of the data which should be shown in the view.
+ * For example for choosing color, a color chooser is used.
+ * \param parent
+ * \param option
+ * \param index
+ * \return
+ */
 QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
 	switch (index.data(Qt::UserRole+1).toInt())
@@ -1456,9 +1475,9 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		{
 			QComboBox *qcb = new QComboBox(parent);
 			qcb->setObjectName("text_from");
-			qcb->addItem(tr("Texte utilisateur"));
-			qcb->addItem(tr("Information de l'élément"));
-			qcb->addItem(tr("Texte composé"));
+            qcb->addItem(tr(user_text));
+            qcb->addItem(tr(element_information));
+            qcb->addItem(tr(composite_text));
 			return qcb;
 		}
 		case DynamicElementTextModel::infoText:

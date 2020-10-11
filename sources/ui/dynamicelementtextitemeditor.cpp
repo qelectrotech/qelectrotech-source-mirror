@@ -186,6 +186,10 @@ QUndoCommand *DynamicElementTextItemEditor::associatedUndo() const
 		return nullptr;
 }
 
+/*!
+ * \brief DynamicElementTextItemEditor::dataEdited
+ * Apply changes to the text item. It is called when dataChanged() signal is called
+ */
 void DynamicElementTextItemEditor::dataEdited()
 {
 	if (m_live_edit)

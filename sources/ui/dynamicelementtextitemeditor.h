@@ -29,6 +29,10 @@ namespace Ui {
 	class DynamicElementTextItemEditor;
 }
 
+/*!
+ * \brief The DynamicElementTextItemEditor class
+ * Widget used to modify the properties of DynamicElementTextItem.
+ */
 class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidget
 {
     Q_OBJECT

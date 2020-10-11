@@ -106,6 +106,7 @@ class DynamicElementTextModel : public QStandardItemModel
 	QHash <DynamicElementTextItem *, QList<QMetaObject::Connection>> m_hash_text_connect;
 	QHash <ElementTextItemGroup *, QList<QMetaObject::Connection>> m_hash_group_connect;
 	bool m_block_dataChanged = false;
+    bool m_ignore_item_change{false};
 };
 
 class DynamicTextItemDelegate : public QStyledItemDelegate
