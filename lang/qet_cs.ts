@@ -51,7 +51,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="449"/>
         <source>log</source>
-        <translation type="unfinished"></translation>
+        <translation>Záznam</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Collection</source>
-        <translation type="unfinished">Sbírka</translation>
+        <translation>Sbírka</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
@@ -607,7 +607,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -617,12 +617,12 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
         <source>inclure les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahrnout záhlaví</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
         <source>Formater en tant que liste de materiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Formátovat jako seznam součástí</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="65"/>
@@ -661,13 +661,13 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="121"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Poloha listu</translation>
+        <translation>Poloha listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="123"/>
         <source>Quantité numéro d&apos;article</source>
         <comment>Special field with name : designation quantity</comment>
-        <translation type="unfinished"></translation>
+        <translation>Označení množství</translation>
     </message>
 </context>
 <context>
@@ -803,7 +803,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="313"/>
         <source>Unifilaire</source>
-        <translation>Jednodrátový</translation>
+        <translation>Jednožilový</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="102"/>
@@ -927,12 +927,12 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>Sběrnice</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
@@ -1011,7 +1011,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="528"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="567"/>
         <source>Couleur :</source>
-        <translation>Barva: </translation>
+        <translation>Barva:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="489"/>
@@ -1127,7 +1127,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/diagramview.cpp" line="469"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(Dev) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="558"/>
@@ -2609,7 +2609,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
         <location filename="../sources/configpages.cpp" line="295"/>
         <source>Export</source>
         <comment>configuration page title</comment>
-        <translation>Vyvést</translation>
+        <translation>Vyvedení</translation>
     </message>
 </context>
 <context>
@@ -3271,7 +3271,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
         <source>Japonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Japonský</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
@@ -3450,7 +3450,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Textový štítek</translation>
+        <translation>Textový štítek</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3552,7 +3552,8 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="417"/>
         <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
  il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt; POZOR: &lt;/center&gt;
+ %1 řádků chybí, aby se zobrazily všechny informace</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="537"/>
@@ -3856,43 +3857,43 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
         <source>Fin 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Konec 1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
         <source>Fin 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Konec 2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Délka:</translation>
+        <translation>Délka:</translation>
     </message>
 </context>
 <context>
@@ -4015,7 +4016,7 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="202"/>
         <source>Report de folio</source>
-        <translation>Zpráva o listu</translation>
+        <translation>Odkaz na list</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="204"/>
@@ -4033,12 +4034,12 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="86"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Sestavení: </translation>
+        <translation>Sestavení: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="306"/>
         <source>Compilation :   </source>
-        <translation type="unfinished"></translation>
+        <translation>Sestavení:    </translation>
     </message>
 </context>
 <context>
@@ -4724,12 +4725,12 @@ Section du conducteur : %1</source>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat ke kabelu: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>Ajouter au bus: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat ke sběrnici: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="415"/>
@@ -4878,169 +4879,169 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlavní okno</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Listy k vytištění:</translation>
+        <translation>Listy k vytištění:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Zatrhnout vše</translation>
+        <translation>Zatrhnout vše</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Zrušit zatrhnutí u všeho</translation>
+        <translation>Zrušit zatrhnutí u všeho</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="88"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Volba vykreslení</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="94"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Nakreslit okraj</translation>
+        <translation>Nakreslit okraj</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="101"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Nakreslit záhlaví výkresu</translation>
+        <translation>Nakreslit záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Zachovat barvy vodičů</translation>
+        <translation>Zachovat barvy vodičů</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="115"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Nakreslit svorky</translation>
+        <translation>Nakreslit svorky</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="125"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Volba tisku</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="131"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Přizpůsobit list straně</translation>
+        <translation>Přizpůsobit list straně</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="141"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Použít celou stranu</translation>
+        <translation>Použít celou stranu</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="148"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokud je zaškrtnuta tato volba, list bude zvětšen nebo zmenšen, aby zaplnil tisknutelnou plochu jedné a pouze jedné strany.&quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je-li zaškrtnuta tato volba, nebude brán zřetel na okraje papíru a celý jeho povrch se využije při tisku. Tuto možnost vaše tiskárna nemusí podporovat.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Pruh s nástroji</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Přizpůsobit šířku</translation>
+        <translation>Přizpůsobit šířku</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="234"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Přizpůsobit stranu</translation>
+        <translation>Přizpůsobit stranu</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="243"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Oddálit</translation>
+        <translation>Oddálit</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="252"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Přiblížit</translation>
+        <translation>Přiblížit</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="261"/>
         <source>Paysage</source>
-        <translation type="unfinished">Na šířku</translation>
+        <translation>Na šířku</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="270"/>
         <source>Portrait</source>
-        <translation type="unfinished">Na výšku</translation>
+        <translation>Na výšku</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="279"/>
         <source>Première page</source>
-        <translation type="unfinished">První strana</translation>
+        <translation>První strana</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="288"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Předchozí strana</translation>
+        <translation>Předchozí strana</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="297"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Další strana</translation>
+        <translation>Další strana</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="306"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Poslední strana</translation>
+        <translation>Poslední strana</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="315"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit jednu stranu</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="324"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Zobrazit dvě strany</translation>
+        <translation>Zobrazit dvě strany</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="333"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Zobrazit náhled na všechny strany</translation>
+        <translation>Zobrazit náhled na všechny strany</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="342"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozvržení strany</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="57"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Volby pro tisk</translation>
+        <translation>Volby pro tisk</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="84"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">projekt</translation>
+        <translation>projekt</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="113"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Tisk</translation>
+        <translation>Tisk</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="345"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">List bez názvu</translation>
+        <translation>List bez názvu</translation>
     </message>
 </context>
 <context>
@@ -5116,12 +5117,12 @@ Chcete uložit změny?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="715"/>
         <source>Revenir au debut du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Jít zpět na začátek projektu</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="718"/>
         <source>Aller à la fin du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Jít na konec projektu</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="733"/>
@@ -5171,12 +5172,12 @@ Chcete uložit změny?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="419"/>
         <source>Numéro d&apos;article</source>
-        <translation>Číslo článku</translation>
+        <translation>Číslo výrobku</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="421"/>
         <source>Numéro de commande</source>
-        <translation>Číslo příkazu</translation>
+        <translation>Číslo objednávky</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="423"/>
@@ -5192,7 +5193,7 @@ Chcete uložit změny?</translation>
         <location filename="../sources/qetapp.cpp" line="192"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished">Zleva doprava</translation>
+        <translation>Zleva doprava</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="408"/>
@@ -5264,13 +5265,13 @@ Chcete uložit změny?</translation>
         <location filename="../sources/qetapp.cpp" line="531"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">Záhlaví výkresů QET</translation>
+        <translation>Záhlaví výkresů QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="551"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">Vlastní záhlaví výkresů</translation>
+        <translation>Vlastní záhlaví výkresů</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2025"/>
@@ -6135,7 +6136,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
         <source>Afficher les projets</source>
-        <translation>Pohled na projekty</translation>
+        <translation>Zobrazení projektů</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
@@ -8644,7 +8645,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2423"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu qet_tb_generator&lt;br&gt;navštivte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;vyžaduje python 3.5 nebo novější.&lt;br&gt;&lt;B&gt;&lt;U&gt; Nejprve nainstalujte v OS Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. zkontrolujte, že máte nainstalován pip3: pip3 --version&lt;br&gt;Pokud ne, nainstalujte pomocí: sudo apt-get install python3-pip&lt;br&gt;2. Nainstalujte program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Spusťte program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace na OS Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2443"/>
@@ -8669,7 +8670,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
         <source>Coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="248"/>
@@ -8683,7 +8684,7 @@ Chcete je nahradit?</translation>
         <location filename="../sources/qetapp.cpp" line="2112"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto je chyba v kódu</translation>
     </message>
 </context>
 <context>
@@ -8707,18 +8708,20 @@ Chcete je nahradit?</translation>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="114"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace, které se mají zobrazit, jsou větší než maximální množství, které lze zobrazit v tabulkách.
+Přidejte novou tabulku nebo upravte stávající tabulky tak, aby zobrazovaly všechny informace.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="117"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace, které se mají zobrazit, jsou větší než maximální množství, které lze zobrazit v tabulce.
+Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala všechny informace.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="120"/>
         <source>Limitation de tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Omezení tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="933"/>
@@ -8983,7 +8986,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
         <source>Unifilaire</source>
-        <translation>Jednodrátový</translation>
+        <translation>Jednožilový</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="357"/>
@@ -9453,7 +9456,7 @@ Vytvořte svůj vlastní pomocí následujících proměnných:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="198"/>
         <source>Eléments report de folio</source>
-        <translation>Prvky odkazující na listy</translation>
+        <translation>Prvky odkazu na list</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="204"/>
@@ -11845,7 +11848,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="79"/>
         <source>Position : </source>
-        <translation>Poloha:</translation>
+        <translation>Poloha: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="82"/>
@@ -11865,7 +11868,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="94"/>
         <source>Name : </source>
-        <translation type="unfinished"></translation>
+        <translation>Název: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="199"/>
@@ -11881,7 +11884,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="268"/>
         <source>Modifier le nom du terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit název koncovky</translation>
     </message>
 </context>
 <context>
