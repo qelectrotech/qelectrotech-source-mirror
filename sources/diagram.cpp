@@ -927,6 +927,8 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	const QDomElement& root = document;
 	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
+
+    qDebug() << "Diagram: " << root.attribute("title");
 	
 	// Read attributes of this diagram
 	if (consider_informations) {
@@ -1023,6 +1025,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		int state = 0;
+        qDebug() << "Element from collection: " << element_location;
 		Element *nvel_elmt = ElementFactory::Instance() -> createElement(element_location, nullptr, &state);
 		if (state)
 		{

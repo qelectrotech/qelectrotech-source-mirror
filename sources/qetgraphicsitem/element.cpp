@@ -418,6 +418,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		{
 				//Minor workaround to find if there is a "input" tagg as label.
 				//If not, we set the tagg "label" to the first "input.
+            // TODO: Remove in later version begin
 			QList <QDomElement> input_field;
 			bool have_label = false;
 			for (QDomElement input_node = node.firstChildElement("input") ; !input_node.isNull() ; input_node = input_node.nextSiblingElement("input"))
@@ -429,8 +430,11 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 						have_label = true;
 				}
 			}
-			if(!have_label && !input_field.isEmpty())
+            if(!have_label && !input_field.isEmpty()) {
+                qDebug() << input_field.first().attribute("text");
 				input_field.first().setAttribute("tagg", "label");
+            }
+            // TODO: Remove in later version end
 			
 				//Parse the definition
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
@@ -716,16 +720,21 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	} else {
 		setRotation(90*read_ori);
 	}
+
+    // TODO: elementInformations are not read from the diagram section or? Yes see below
 	
-		//Befor load the dynamic text field,
-		//we remove the dynamic text field created from the description of this element, to avoid doublons.
+//#######################################################################################################################
+//####    START   #######################################################################################################
+//#######################################################################################################################
+        //Before load the dynamic text field,
+        //we remove the dynamic text field created from the description of this element, to avoid doublons.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		delete deti;
 	m_dynamic_text_list.clear();
-    
 		//************************//
 		//***Dynamic texts item***//
 		//************************//
+        // Texts in diagram section
 	for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTagName()))
     {
         DynamicElementTextItem *deti = new DynamicElementTextItem(this);
@@ -733,20 +742,24 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
         deti->fromXml(qde);
     }
 	
+    // TODO: remove in later version begin
 
 		//************************//
 		//***Element texts item***//
 		//************************//
-	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
+        // Inputs in diagram section
+    QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input"); // Inputs in diagram section
 	
 		//First case, we check for the text item converted to dynamic text item
-	const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys();
+    const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys(); // Texts in element definition (elements collection)
 	QList <DynamicElementTextItem *> successfully_converted; 
 	const QList <QDomElement> dom_inputs = inputs;
 	
-	for (DynamicElementTextItem *deti : conv_deti_list)
+
+
+    for (DynamicElementTextItem *deti : conv_deti_list) // Texts from element definition (elements collection)
 	{
-		for(const QDomElement& dom_input : dom_inputs)
+        for(const QDomElement& dom_input : dom_inputs) // Inputs in diagram section
 		{
 				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
 				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element
@@ -817,7 +830,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		group->fromXml(qde);
 	}
 	
-		//load informations
+        //load elementInformations from diagram section
 	DiagramContext dc;
 	dc.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
 		/**
@@ -991,6 +1004,12 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			}
 		}
 	}
+
+    // TODO: remove in later version end
+
+//#######################################################################################################################
+//####    END     #######################################################################################################
+//#######################################################################################################################
     m_state = QET::GIOK;
 	return(true);
 }

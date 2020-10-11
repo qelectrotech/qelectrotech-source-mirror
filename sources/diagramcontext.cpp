@@ -118,7 +118,7 @@ int DiagramContext::count() {
 
 /**
  * @brief DiagramContext::keyMustShow
- * @return the value pairs with key, if key no found, return false
+ * @return the value pairs with key, if key not found, return false
  */
 bool DiagramContext::keyMustShow(const QString &key) const {
 	if (m_content_show.contains(key))
