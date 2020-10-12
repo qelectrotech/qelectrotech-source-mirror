@@ -154,6 +154,18 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 	ui->m_date_cb->setDate(QDate::currentDate());
 	ui->m_date_cb->blockSignals(false);
 
+#ifdef Q_OS_WINDOWS
+	/*
+	 * On windows, the QPageSetupDialog use the native dialog.
+	 * This dialog can only manage physical printer ("native printer")
+	 */
+	if (m_printer->outputFormat() == QPrinter::PdfFormat)
+	{
+		ui->m_page_setup->setDisabled(true);
+		ui->m_page_setup->setText(tr("Mise en page (non disponible sous Windows pour l'export PDF)"));
+	}
+#endif
+
 	m_backup_diagram_background_color = Diagram::background_color;
 	Diagram::background_color = Qt::white;
 }
