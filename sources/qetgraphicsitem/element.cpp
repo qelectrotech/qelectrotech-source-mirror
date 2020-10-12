@@ -71,7 +71,7 @@ class ElementXmlRetroCompatibility
  * @param state, state of the instanciation
  */
 Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *state, kind link_type) :
-	QetGraphicsItem(parent),
+    QetGraphicsItem(parent),
 	m_link_type (link_type),
 	m_location (location)
 {
@@ -419,7 +419,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		if (elmts.tagName() == "description")
 		{
 				//Minor workaround to find if there is a "input" tagg as label.
-				//If not, we set the tagg "label" to the first "input.
+                //If not, we set the tagg "label" to the first "input. Why one must have a tagg label?
+                // is label a required field?
 			QList <QDomElement> input_field;
 			bool have_label = false;
 			for (QDomElement input_node = node.firstChildElement("input") ; !input_node.isNull() ; input_node = input_node.nextSiblingElement("input"))
@@ -715,6 +716,8 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	QString fl = e.attribute("freezeLabel", "false");
 	m_freeze_label = fl == "false"? false : true;
 
+    // TODO: why element information is not read?
+
 		//Load Sequential Values
 	if (e.hasAttribute("sequ_1") || e.hasAttribute("sequf_1") || e.hasAttribute("seqt_1") || e.hasAttribute("seqtf_1") || e.hasAttribute("seqh_1") || e.hasAttribute("sequf_1"))
 		ElementXmlRetroCompatibility::loadSequential(e, this);
@@ -745,7 +748,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
     
 		//************************//
 		//***Dynamic texts item***//
-        //************************// read from the diagram section
+        //************************//
+        // read from the diagram section
+        // this is not done in the older versions, because there only inputs are available.
 	for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTagName()))
     {
         DynamicElementTextItem *deti = new DynamicElementTextItem(this);
@@ -763,14 +768,16 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys();
 	QList <DynamicElementTextItem *> successfully_converted; 
 	const QList <QDomElement> dom_inputs = inputs;
-    // TODO: legacy???
+    // TODO: Legacy (0.7 and prior)
     for (DynamicElementTextItem *deti : conv_deti_list) // elements read from the element collection definition
 	{
-        for(const QDomElement& dom_input : dom_inputs)
+        for(const QDomElement& dom_input : dom_inputs) // elements in the diagram section
 		{
 				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
 				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element
 				//that mean this is the good text
+                // This is only used when in the diagram description the text elements are stored in the "inputs" section. In 0.8 and higher,
+                // texts are stored in directly in the "dynamic_elmt_text" section
 			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()), m_converted_text_from_xml_description.value(deti).x()) &&
 				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()), m_converted_text_from_xml_description.value(deti).y()))
 			{

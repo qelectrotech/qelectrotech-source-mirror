@@ -323,6 +323,9 @@ DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const {
  */
 void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
+
+    if (searchedElement)
+        int stop = true;
 	if(m_text_from == text_from)
 		return;
 
@@ -386,6 +389,9 @@ QString DynamicElementTextItem::text() const {
  */
 void DynamicElementTextItem::setText(const QString &text)
 {
+    if (m_text == "14" && text == "")
+        int a = 54;
+    m_text_old = m_text;
 	m_text = text;
 	if(m_text_from == DynamicElementTextItem::UserText)
 		setPlainText(m_text);
@@ -401,6 +407,9 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 {
 	QString old_info_name = m_info_name;
 	m_info_name = info_name;
+
+    if (searchedElement)
+        int stop = true;
 
 	
 	if(old_info_name == "label")
@@ -1321,6 +1330,17 @@ void DynamicElementTextItem::updateXref()
 
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
+    DynamicElementTextItem* abc = this;
+
+    int abcedwer;
+    abcedwer += 5;
+
+    if (text == "14")
+        searchedElement = true;
+    if (text == "")
+        int a = 5;
+    if (m_text_old == "14" && m_text == "")
+        int a = 5;
 	if (toPlainText() == text)
 		return;
 

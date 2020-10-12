@@ -1158,6 +1158,8 @@ void DynamicElementTextModel::enableGroupRotationAndPos(ElementTextItemGroup *gr
 void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 {
 	DynamicElementTextItem *deti = textFromItem(qsi);
+    if (deti->searchedElement)
+        int stop = 1;
 	ElementTextItemGroup *etig = groupFromItem(qsi);
 	if (!deti && !etig)
 		return;
@@ -1297,6 +1299,10 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 
 void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, ValueType type)
 {
+
+    if (deti->searchedElement)
+        int stop = 1;
+
 	QStandardItem *qsi = m_texts_list.value(deti);
 	if (!qsi)
 		return;

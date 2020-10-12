@@ -183,13 +183,14 @@ QString FileElementCollectionItem::name() const
  */
 QString FileElementCollectionItem::collectionPath() const
 {
+    QStandardItem* parent_ = parent();
 	if (isCollectionRoot()) {
 		if (m_path == QETApp::commonElementsDirN())
 			return "common://";
 		else
 			return "custom://";
 	}
-	else if (parent() && parent()->type() == FileElementCollectionItem::Type) {
+    else if (parent_ && parent()->type() == FileElementCollectionItem::Type) {
 		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(parent());
 		if (eci->isCollectionRoot())
 			return eci->collectionPath() + m_path;
