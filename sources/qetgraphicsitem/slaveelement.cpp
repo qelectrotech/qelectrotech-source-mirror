@@ -29,8 +29,8 @@
  * @param s parent diagram
  * @param state int used to know if the creation of element have error
  */
-SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	Element(location, qgi, state, Element::Slave)
+SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *parent, int *state) :
+    Element(location, parent, state, Element::Slave)
 {
 
 }
