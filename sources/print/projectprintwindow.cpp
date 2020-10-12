@@ -45,6 +45,7 @@
 void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputFormat format, QWidget *parent)
 {
 	auto printer_ = new QPrinter();
+	printer_->setDocName(ProjectPrintWindow::docName(project));
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	printer_->setOrientation(QPrinter::Landscape);
 #else
@@ -77,12 +78,10 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 	else //To pdf file
 	{
 		auto dir_path = project->currentDir();
-		auto doc_name = ProjectPrintWindow::docName(project);
-		QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + doc_name));
+		QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + printer_->docName()));
 		if (!file_name.endsWith(".pdf")) {
 			file_name.append(".pdf");
 		}
-		printer_->setDocName(doc_name);
 		printer_->setCreator(QString("QElectroTech %1").arg(QET::displayedVersion));
 		printer_->setOutputFileName(file_name);
 		printer_->setOutputFormat(QPrinter::PdfFormat);
