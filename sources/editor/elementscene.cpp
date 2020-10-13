@@ -60,13 +60,13 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
 	//http://www.qtcentre.org/archive/index.php/t-33730.html
 	//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
-	
+
 	m_behavior = Normal;
 	setItemIndexMethod(NoIndex);
 	setGrid(1, 1);
 	initPasteArea();
 	m_undo_stack.setClean();
-	m_decorator_lock = new QMutex(QMutex::NonRecursive);
+	m_decorator_lock = new QMutex();
 	connect(&m_undo_stack, SIGNAL(indexChanged(int)),
 		this, SLOT(managePrimitivesGroups()));
 	connect(this, SIGNAL(selectionChanged()),
