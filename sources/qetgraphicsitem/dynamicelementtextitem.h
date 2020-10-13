@@ -1,17 +1,17 @@
 ﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -33,7 +33,7 @@ class CrossRefItem;
 	@brief The DynamicElementTextItem class
 	This class provide a simple text field of element who can be added or removed directly from the diagram editor.
 	This text is created to compensate a big lack of the ElementTextItem : ElementTextItem can't be added or removed directly in the diagram editor
-	
+
 */
 class DynamicElementTextItem : public DiagramTextItem
 {
@@ -77,7 +77,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	private:
 		DynamicElementTextItem ();
 		DynamicElementTextItem(const DynamicElementTextItem &);
-		
+
 	public:
 		QDomElement toXml(QDomDocument &dom_doc) const override;
 		void fromXml(const QDomElement &dom_elmt) override;
@@ -104,6 +104,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setTextWidth(qreal width);
 		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
 
+		bool searchedElement{false};
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -140,22 +141,20 @@ class DynamicElementTextItem : public DiagramTextItem
 		m_master_element,
 		m_other_report;
 		QPointer <Conductor> m_watched_conductor;
-		QString
-		m_text,
-		m_info_name,
-		m_composite_text,
-		m_report_formula,
-		m_F_str;
+		QString m_text,
+				m_text_old,
+				m_info_name,
+				m_composite_text,
+				m_report_formula,
+				m_F_str;
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
 		QUuid m_uuid;
 		QMetaObject::Connection m_report_formula_con;
-		QList<QMetaObject::Connection>
-		m_formula_connection,
-		m_update_slave_Xref_connection;
-		QColor m_user_color;
-		bool
-		m_frame = false,
-		m_first_scene_change = true;
+		QList<QMetaObject::Connection> m_formula_connection,
+									   m_update_slave_Xref_connection;
+		QColor m_user_color{QColor()};
+		bool m_frame = false,
+			 m_first_scene_change = true;
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;

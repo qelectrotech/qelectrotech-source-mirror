@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -58,13 +58,13 @@ class Diagram : public QGraphicsScene
 	friend QETProject;
 
 	Q_OBJECT
-	
+
 		// constructors, destructor
 	private:
 		Diagram(QETProject *project);
 		~Diagram() override;
 		Diagram(const Diagram &diagram);
-	
+
 	// ATTRIBUTES
 	public:
 		/**
@@ -96,7 +96,7 @@ class Diagram : public QGraphicsScene
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
-		static QColor background_color;
+		static QColor background_color; // default value set in cpp file
 		/// Hash containing max values for folio sequential autonums in this diagram
 		QHash <QString, QStringList> m_elmt_unitfolio_max;
 		QHash <QString, QStringList> m_elmt_tenfolio_max;
@@ -128,7 +128,7 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
-	
+
 	// METHODS
 	protected:
 		void drawBackground(QPainter *, const QRectF &) override;
@@ -142,7 +142,7 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
-	
+
 	public:
 		QUuid uuid();
 		void setEventInterface (DiagramEventInterface *event_interface);
@@ -153,53 +153,42 @@ class Diagram : public QGraphicsScene
 		void setConductorsAutonumName(const QString &name);
 
 		static bool clipboardMayContainDiagram();
-	
+
 		// methods related to parent project
 		QETProject *project() const;
 		int         folioIndex() const;
 		void        showMe() {emit showDiagram(this);}
 		bool        isReadOnly() const;
-	
+
 		// methods related to conductor creation
 		void setConductor(bool);
 		void setConductorStart (QPointF);
 		void setConductorStop(QPointF);
 		QList < QSet <Conductor *> > potentials();
-	
+
 		// methods related to XML import/export
 		QDomDocument toXml(bool = true);
-		bool initFromXml(QDomElement &,
-				 QPointF = QPointF(),
-				 bool = true,
-				 DiagramContent * = nullptr);
-		bool fromXml(QDomDocument &,
-			     QPointF = QPointF(),
-			     bool = true,
-			     DiagramContent * = nullptr);
-		bool fromXml(QDomElement &,
-			     QPointF = QPointF(),
-			     bool = true,
-			     DiagramContent * = nullptr);
-		void folioSequentialsToXml(QHash<QString,
-					   QStringList>*,
-					   QDomElement *,
-					   const QString&,
-					   const QString&,
-					   QDomDocument *);
-		void folioSequentialsFromXml(const QDomElement&,
-					     QHash<QString,
-					     QStringList>*,
-					     const QString&,
-					     const QString&,
-					     const QString&,
-					     const QString&);
-	
+		bool initFromXml(QDomElement &, QPointF = QPointF(),
+				bool = true, DiagramContent * = nullptr);
+		bool fromXml(
+				QDomDocument &, QPointF = QPointF(),
+				bool = true, DiagramContent * = nullptr);
+		bool fromXml(
+				QDomElement &, QPointF = QPointF(),
+				bool = true, DiagramContent * = nullptr);
+		void folioSequentialsToXml(
+				QHash<QString, QStringList>*, QDomElement *, const QString&,
+				const QString&, QDomDocument *);
+		void folioSequentialsFromXml(
+				const QDomElement&, QHash<QString,QStringList>*, const QString&,
+				const QString&, const QString&,const QString&);
+
 		void refreshContents();
-	
+
 		// methods related to graphics items addition/removal on the diagram
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
-	
+
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
@@ -210,19 +199,19 @@ class Diagram : public QGraphicsScene
 		BorderOptions borderOptions();
 		DiagramPosition convertPosition(const QPointF &);
 		static QPointF snapToGrid(const QPointF &p);
-	
+
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);
 		bool drawColoredConductors() const;
 		void setDrawColoredConductors(bool);
-	
+
 		QString title() const;
 		bool toPaintDevice(QPaintDevice &, int = -1, int = -1,
 				   Qt::AspectRatioMode = Qt::KeepAspectRatio);
 		QSize imageSize() const;
-		
+
 		bool isEmpty() const;
-	
+
 		QList<Element *> elements() const;
 		QList<Conductor *> conductors() const;
 		QSet<Conductor *> selectedConductors() const;
@@ -232,29 +221,29 @@ class Diagram : public QGraphicsScene
 		ElementTextsMover &elementTextsMover();
 		bool usesElement(const ElementsLocation &);
 		bool usesTitleBlockTemplate(const QString &);
-		
+
 		QUndoStack &undoStack();
 		QGIManager &qgiManager();
-	
+
 		//methods related to element label Update Policy
 		void freezeElements(bool freeze);
 		void unfreezeElements();
 		void setFreezeNewElements(bool);
 		bool freezeNewElements();
-	
+
 		//methods related to conductor label Update Policy
 		void freezeConductors(bool freeze);
 		void setFreezeNewConductors(bool);
 		bool freezeNewConductors();
-	
+
 		//methods related to insertion and loading of folio sequential
 		void insertFolioSeqHash (QHash<QString, QStringList> *hash,
 					 const QString& title,
 					 const QString& seq,
 					 NumerotationContext *nc);
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
-				       const QString& title, const QString& seq,
-				       NumerotationContext *nc);
+					   const QString& title, const QString& seq,
+					   NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
 
 	public slots:
@@ -262,12 +251,12 @@ class Diagram : public QGraphicsScene
 		void titleChanged(const QString &);
 		void titleBlockTemplateChanged(const QString &);
 		void titleBlockTemplateRemoved(const QString &,
-					       const QString & = QString());
+						   const QString & = QString());
 		void setTitleBlockTemplate(const QString &);
 		void updateLabels();
 		void loadElmtFolioSeq();
 		void loadCndFolioSeq();
-	
+
 		// methods related to graphics items selection
 		void selectAll();
 		void deselectAll();

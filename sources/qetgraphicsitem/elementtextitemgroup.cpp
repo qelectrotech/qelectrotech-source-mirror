@@ -437,6 +437,7 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 	return dom_element;
 }
 
+// TOOD: inherit from propertiesinterface
 /**
 	@brief ElementTextItemGroup::fromXml
 	Import data of this group from xml

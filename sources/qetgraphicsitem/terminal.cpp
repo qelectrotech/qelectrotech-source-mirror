@@ -30,7 +30,7 @@ QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
 QColor Terminal::warningColor      = QColor("#ff8000");
 QColor Terminal::forbiddenColor    = QColor(Qt::red);
-const qreal Terminal::terminalSize = 4.0;
+const qreal Terminal::terminalSize = 4.0; // TODO: store terminalSize in terminaldata, because in PartTerminal there is the same parameter. So only one is needed
 const qreal Terminal::Z = 1000;
 
 /**
@@ -40,11 +40,8 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 	@param hiddenName
 */
-void Terminal::init(
-		QString number, QString name, bool hiddenName)
+void Terminal::init(QString number, QString name, bool hiddenName)
 {
-	hovered_color_  = Terminal::neutralColor;
-
 	// calcul de la position du point d'amarrage a l'element
 	dock_elmt_ = d->m_pos;
 	switch(d->m_orientation) {
@@ -57,17 +54,15 @@ void Terminal::init(
 	// Number of terminal
 	number_terminal_ = std::move(number);
 	// Name of terminal
-	name_terminal_ = std::move(name);
+	d->m_name = std::move(name);
 	name_terminal_hidden = hiddenName;
 	// par defaut : pas de conducteur
 
 	// QRectF null
 	br_ = new QRectF();
-	previous_terminal_ = nullptr;
 	// divers
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	hovered_ = false;
 	setToolTip(QObject::tr("Borne", "tooltip"));
 	setZValue(Z);
 }
@@ -214,8 +209,16 @@ void Terminal::setNumber(QString number)
 */
 void Terminal::setName(QString name, bool hiddenName)
 {
-	name_terminal_ = std::move(name);
+	d->m_name = std::move(name);
 	name_terminal_hidden = hiddenName;
+}
+
+/**
+	@brief Terminal::name
+	@return the name of terminal.
+*/
+inline QString Terminal::name() const {
+	return(d->m_name);
 }
 
 /**
@@ -745,6 +748,10 @@ bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 	return true;
 }
 
+void Terminal::setID(int id) {
+	m_id = id;
+}
+
 /**
 	@brief Terminal::conductors
 	@return La liste des conducteurs lies a cette borne
@@ -764,15 +771,24 @@ QDomElement Terminal::toXml(QDomDocument &doc) const
 {
 	QDomElement qdo = doc.createElement("terminal");
 
-	// for backward compatibility
-	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
-	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
-	// end for backward compatibility
+	qdo.appendChild(createXmlProperty(doc, "number", number_terminal_));
+	qdo.appendChild(createXmlProperty(doc, "nameHidden", name_terminal_hidden));
 
-	qdo.setAttribute("orientation", d->m_orientation);
-	qdo.setAttribute("number", number_terminal_);
-	qdo.setAttribute("name", name_terminal_);
-	qdo.setAttribute("nameHidden", name_terminal_hidden);
+	// store terminal data too!
+
+	// Do not store terminal data in its own child
+	// Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
+	QPointF tempPos = d->m_pos;
+	d->m_pos = dock_elmt_;
+	QDomElement terminalDataElement = d->toXml(doc);
+	d->m_pos = tempPos;
+
+	int childsCount = terminalDataElement.childNodes().count();
+	for (int i=0; i < childsCount; i++) {
+		QDomNode node = terminalDataElement.childNodes().at(i).cloneNode(); // cloneNode() is important, otherwise no deep clone is made
+		qdo.appendChild(node);
+	}
+
 	return(qdo);
 }
 
@@ -782,42 +798,24 @@ QDomElement Terminal::toXml(QDomDocument &doc) const
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
-bool Terminal::valideXml(QDomElement &terminal)
-{
-	// verifie le nom du tag
+bool Terminal::valideXml(const QDomElement &terminal) {
 	if (terminal.tagName() != "terminal") return(false);
 
-	// verifie la presence des attributs minimaux
-	if (!terminal.hasAttribute("x")) return(false);
-	if (!terminal.hasAttribute("y")) return(false);
-	if (!terminal.hasAttribute("orientation")) return(false);
+// affuteuse_250h.qet contains in line 8398 terminals which do not have this
+//    if (propertyString(terminal, "number"))
+//        return false;
+// affuteuse_250h.qet contains in line 8398 terminals which do not have this
+//    if (propertyBool(terminal, "nameHidden"))
+//        return false;
 
-	bool conv_ok;
-	// parse l'abscisse
-	terminal.attribute("x").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'ordonnee
-	terminal.attribute("y").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'id
-	terminal.attribute("id").toInt(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'orientation
-	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok) return(false);
-	if (terminal_or != Qet::North
-			&& terminal_or != Qet::South
-			&& terminal_or != Qet::East
-			&& terminal_or != Qet::West) return(false);
+	if (!TerminalData::valideXml(terminal))
+		return false;
 
 	// a ce stade, la borne est syntaxiquement correcte
-	return(true);
+	return true;
 }
 
-/**
+/** RETURNS True
 	@brief Terminal::fromXml
 	Permet de savoir si un element XML represente cette borne. Attention,
 	l'element XML n'est pas verifie
@@ -825,17 +823,17 @@ bool Terminal::valideXml(QDomElement &terminal)
 	@return true si la borne "se reconnait"
 	(memes coordonnes, meme orientation), false sinon
 */
-bool Terminal::fromXml(QDomElement &terminal)
+bool Terminal::fromXml(const QDomElement &terminal)
 {
-	number_terminal_ = terminal.attribute("number");
-	name_terminal_ = terminal.attribute("name");
-	name_terminal_hidden = terminal.attribute("nameHidden").toInt();
+	propertyString(terminal, "number", &number_terminal_);
 
-	return (
-		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
-		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-		(terminal.attribute("orientation").toInt() == d->m_orientation)
-	);
+	propertyBool(terminal, "nameHidden", &name_terminal_hidden);
+
+	if(!d->fromXml(terminal))
+		return false;
+
+	init(number_terminal_, d->m_name, name_terminal_hidden); // initialize dock_elmt_. This must be done after Terminal data is initialized
+	return true;
 }
 
 /**
@@ -870,6 +868,18 @@ Element *Terminal::parentElement() const
 QUuid Terminal::uuid() const
 {
 	return d->m_uuid;
+}
+
+int Terminal::ID() const {
+	return m_id;
+}
+
+QPointF Terminal::dockPos() {
+	return dock_elmt_;
+}
+
+QPointF Terminal::originPos() {
+	return d->m_pos;
 }
 
 /**

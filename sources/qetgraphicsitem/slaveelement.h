@@ -25,17 +25,17 @@ class SlaveElement : public Element
 {
 	Q_OBJECT
 	public:
-		explicit SlaveElement (
+	explicit SlaveElement (
 			const ElementsLocation &,
-			QGraphicsItem * = nullptr,
+			QGraphicsItem * parent= nullptr,
 			int * = nullptr);
 		~SlaveElement() override;
 		void linkToElement(Element *elmt) override;
 		void unlinkAllElements() override;
 		void unlinkElement(Element *elmt) override;
-	
+
 	private:
-		QGraphicsTextItem *m_xref_item;
+		QGraphicsTextItem *m_xref_item{nullptr};
 };
 
 #endif // SLAVEELEMENT_H

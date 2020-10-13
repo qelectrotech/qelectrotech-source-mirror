@@ -26,9 +26,7 @@
 */
 ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	DiagramTextItem(parent_conductor),
-	parent_conductor_(parent_conductor),
-	moved_by_user_(false),
-	rotate_by_user_(false)
+    parent_conductor_(parent_conductor)
 {
 	setAcceptHoverEvents(true);
 }
@@ -62,21 +60,36 @@ Conductor *ConductorTextItem::parentConductor() const
 	return(parent_conductor_);
 }
 
+void ConductorTextItem::toXml(QDomDocument& doc, QDomElement& e) {
+    if(moved_by_user_)
+    {
+        e.appendChild(PropertiesInterface::createXmlProperty(doc, "userx", pos().x()));
+        e.appendChild(PropertiesInterface::createXmlProperty(doc, "usery", pos().y()));
+    }
+    if(rotate_by_user_)
+        e.appendChild(PropertiesInterface::createXmlProperty(doc, "rotation", rotation()));
+}
+
+
 /**
 	@brief ConductorTextItem::fromXml
 	Read the properties stored in the xml element given in parameter
 	@param e
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
-	if (e.hasAttribute("userx")) {
-		setPos(e.attribute("userx").toDouble(),
-			   e.attribute("usery").toDouble());
-		moved_by_user_ = true;
-	}
-	if (e.hasAttribute("rotation")) {
-		setRotation(e.attribute("rotation").toDouble());
-		rotate_by_user_ = true;
-	}
+
+    double userx=0, usery=0;
+    if (PropertiesInterface::propertyDouble(e, "userx", &userx) == PropertiesInterface::PropertyFlags::Success &&
+        PropertiesInterface::propertyDouble(e, "usery", &usery) == PropertiesInterface::PropertyFlags::Success) {
+        setPos(userx, usery);
+        moved_by_user_ = true;
+    }
+
+    double rotation;
+    if (PropertiesInterface::propertyDouble(e, "rotation", &rotation) == PropertiesInterface::PropertyFlags::Success) {
+        setRotation(rotation);
+        rotate_by_user_ = true;
+    }
 }
 
 /**

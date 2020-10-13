@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -75,10 +75,10 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void startUserTransformation(const QRectF &initial_selection_rect) override;
 		void handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) override;
 
-		const QDomElement toXml(QDomDocument &dom_doc) const override;
-		void fromXml(const QDomElement &dom_elmt) override;
+		QDomElement toXml(QDomDocument &dom_doc) const override;
+		bool fromXml(const QDomElement &dom_elmt) override;
 		void fromTextFieldXml(const QDomElement &dom_element);
-
+		static bool valideXml(QDomElement& dom_elmt);
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
 		QString text() const;
@@ -116,7 +116,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 				m_info_name,
 				m_composite_text;
 		DynamicElementTextItem::TextFrom m_text_from = DynamicElementTextItem::UserText;
-		QUuid m_uuid;
+		QUuid m_uuid{QUuid::createUuid()};
 		bool m_frame = false,
 			 m_first_add = true,
 			 m_block_alignment = false;

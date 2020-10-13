@@ -84,8 +84,8 @@ void ConductorPropertiesWidget::setProperties(
 	ui->m_formula_le            -> setText    (m_properties.m_formula);
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
-	ui->m_cable_le              -> setText    (m_properties.m_cable);
-	ui->m_bus_le                -> setText    (m_properties.m_bus);
+//	ui->m_cable_le              -> setText    (m_properties.m_cable);
+//	ui->m_bus_le                -> setText    (m_properties.m_bus);
 	ui->m_tension_protocol_le   -> setText    (m_properties.m_tension_protocol);
 	ui->m_wire_color_le         -> setText    (m_properties.m_wire_color);
 	ui->m_wire_section_le       -> setText    (m_properties.m_wire_section);
@@ -130,8 +130,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.text                    = ui -> m_text_le -> text();
 	properties_.text_color              = ui -> m_text_color_kpb->color();
 	properties_.m_function              = ui -> m_function_le->text();
-	properties_.m_cable                 = ui -> m_cable_le->text();
-	properties_.m_bus                   = ui -> m_bus_le->text();
+//	properties_.m_cable                 = ui -> m_cable_le->text();
+//	properties_.m_bus                   = ui -> m_bus_le->text();
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
 	properties_.m_wire_color            = ui -> m_wire_color_le->text();
 	properties_.m_wire_section          = ui -> m_wire_section_le->text();

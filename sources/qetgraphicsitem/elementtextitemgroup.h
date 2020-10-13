@@ -32,10 +32,10 @@ class CrossRefItem;
 	This class represent a group of element text
 	Texts in the group can be aligned left / center /right
 */
-class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
+class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup // TODO: derive from PropertiesInterface
 {
 	Q_OBJECT
-	
+
 	Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 	Q_PROPERTY(qreal rotation READ rotation WRITE setRotation NOTIFY rotationChanged)
 	Q_PROPERTY(int verticalAdjustment READ verticalAdjustment WRITE setVerticalAdjustment NOTIFY verticalAdjustmentChanged)
@@ -43,7 +43,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
 	Q_PROPERTY(bool holdToBottomPage READ holdToBottomPage WRITE setHoldToBottomPage NOTIFY holdToBottomPageChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
-	
+
 	public:
 	signals:
 		void rotationChanged(qreal);
@@ -54,14 +54,14 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void xChanged();
 		void yChanged();
 		void frameChanged(bool frame);
-	
+
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);
 		~ElementTextItemGroup() override;
 		void addToGroup(QGraphicsItem *item);
 		void removeFromGroup(QGraphicsItem *item);
 		void blockAlignmentUpdate(bool block);
-		
+
 		void setAlignment(Qt::Alignment alignement);
 		Qt::Alignment alignment() const;
 		void updateAlignment();
@@ -76,11 +76,11 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		QList<DynamicElementTextItem *> texts() const;
 		Diagram *diagram() const;
 		Element *parentElement() const;
-		
+
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(QDomElement &dom_element);
 		static QString xmlTaggName() {return QString("texts_group");}
-		
+
 		void paint(QPainter *painter,
 			   const QStyleOptionGraphicsItem *option,
 			   QWidget *widget) override;
@@ -88,7 +88,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void setRotation(qreal angle);
 		void setPos(const QPointF &pos);
 		void setPos(qreal x, qreal y);
-		
+
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -99,7 +99,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void keyPressEvent(QKeyEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
-		
+
 	private:
 		void updateXref();
 		void adjustSlaveXrefPos();
@@ -108,11 +108,12 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	private:
 		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
-		bool m_first_move = true,
+		bool
+		m_first_move = true,
 		m_hold_to_bottom_of_page = false,
 		m_block_alignment_update = false,
 		m_frame = false;
-		QPointF m_initial_position;
+		QPointF m_initial_position{QPointF(0,0)};
 		int m_vertical_adjustment = 0;
 		CrossRefItem *m_Xref_item = nullptr;
 		Element *m_parent_element = nullptr;

@@ -25,17 +25,17 @@
 	@param size : the size of the handler
 */
 QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
-    m_size(size)
+		m_size(size)
 {
 	setFlag(QGraphicsItem::ItemIgnoresTransformations);
-	
+
 	m_handler_rect.setRect(0-m_size/2, 0-m_size/2, m_size, m_size);
 	m_br.setRect(-1-m_size/2, -1-m_size/2, m_size+2, m_size+2);
 }
 
 /**
 	@brief QetGraphicsHandlerItem::boundingRect
-	@return 
+	@return
 */
 QRectF QetGraphicsHandlerItem::boundingRect() const
 {

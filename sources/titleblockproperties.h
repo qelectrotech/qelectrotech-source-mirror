@@ -21,12 +21,14 @@
 #include "diagramcontext.h"
 #include "qet.h"
 
+#include "propertiesinterface.h"
+
 /**
 	This class provides a container for the properties of a particular title
 	block, i.e. title, author, date, filename, folio, template, custom
 	properties, ...
 */
-class TitleBlockProperties {
+class TitleBlockProperties: public PropertiesInterface {
 	public:
 	TitleBlockProperties();
 	virtual ~TitleBlockProperties();
@@ -39,10 +41,11 @@ class TitleBlockProperties {
 	bool operator==(const TitleBlockProperties &);
 	bool operator!=(const TitleBlockProperties &);
 	
-	void toXml(QDomElement &) const;
-	void fromXml(const QDomElement &);
-	void toSettings(QSettings &, const QString & = QString()) const;
-	void fromSettings(QSettings &, const QString & = QString());
+    QDomElement toXml(QDomDocument &e) const override;
+    void toXml(QDomElement &e) const;
+    bool fromXml(const QDomElement &) override;
+    void toSettings(QSettings &, const QString & = QString()) const override;
+    void fromSettings(const QSettings &, const QString & = QString()) override;
 
 	void setAutoPageNum(QString autonum) {auto_page_num = autonum;}
 
@@ -61,11 +64,11 @@ class TitleBlockProperties {
 	QString version;          ///< Version (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)
 	QString auto_page_num;
-	DateManagement useDate;   ///< Wheter to use the date attribute
+    DateManagement useDate{UseDateValue};   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
-	Qt::Edge display_at;       ///< Edge to display the titleblock
-	QET::QetCollection collection; ///<Specify the location of the title block
+    Qt::Edge display_at{Qt::Edge::BottomEdge};       ///< Edge to display the titleblock
+    QET::QetCollection collection{QET::QetCollection::Common}; ///<Specify the location of the title block
 
 	private:
 	QString exportDate() const;

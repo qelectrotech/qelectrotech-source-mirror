@@ -97,40 +97,70 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 }
 
 /**
-	@brief PartArc::toXml
-	Export this arc in xml
-	@param xml_document : Xml document to use for create the xml element.
-	@return : an xml element that describe this arc
-*/
-const QDomElement PartArc::toXml(QDomDocument &xml_document) const
-{
+ * @brief PartArc::toXml
+ * Export this arc in xml
+ * @param xml_document : Xml document to use for create the xml element.
+ * @return : an xml element that describe this arc
+ */
+QDomElement PartArc::toXml(QDomDocument &xml_document) const
+	{
 	QDomElement xml_element = xml_document.createElement("arc");
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-	xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-	xml_element.setAttribute("height", QString("%1").arg(rect().height()));
-		//to maintain compatibility with the previous version, we write the angle in degrees.
-	xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
-	xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
-	stylesToXml(xml_element);
+
+	xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
+	xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
+	xml_element.appendChild(createXmlProperty(xml_document, "width", rect().width()));
+	xml_element.appendChild(createXmlProperty(xml_document, "height", rect().height()));
+
+	//to maintain compatibility with the previous version, we write the angle in degrees.
+	xml_element.appendChild(createXmlProperty(xml_document, "start", m_start_angle / 16));
+	xml_element.appendChild(createXmlProperty(xml_document, "angle", m_span_angle / 16));
+
+
+	stylesToXml(xml_document, xml_element);
 	return(xml_element);
 }
 
 /**
-	@brief PartArc::fromXml
-	Import the properties of this arc from a xml element.
-	@param qde : Xml document to use.
-*/
-void PartArc::fromXml(const QDomElement &qde) {
+ * @brief PartArc::fromXml
+ * Import the properties of this arc from a xml element.
+ * @param qde : Xml document to use.
+ */
+bool PartArc::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
-	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
-								 qde.attribute("y", "0").toDouble()),
-					QSizeF(qde.attribute("width",  "0").toDouble(),
-						   qde.attribute("height", "0").toDouble()) );
 
-	m_start_angle = qde.attribute("start", "0").toDouble() * 16;
-	m_span_angle  = qde.attribute("angle", "-1440").toDouble() * 16;
+	double x=0, y=0, w=0, h=0;
+	if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "width", &w) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "height", &h) == PropertyFlags::NoValidConversion)
+		return false;
+
+	m_rect = QRectF(mapFromScene(x, y), QSizeF(w, h) );
+
+	m_start_angle = 0;
+	if (propertyDouble(qde, "start", &m_start_angle)  == PropertyFlags::NoValidConversion)
+		return false;
+	m_start_angle *= 16;
+
+	m_span_angle = -1440;
+	if (propertyDouble(qde, "angle", &m_span_angle) == PropertyFlags::NoValidConversion)
+		return false;
+	m_span_angle *= 16;
+
+	return true;
+}
+
+bool PartArc::valideXml(QDomElement& element) {
+
+	if (propertyDouble(element, "x") == PropertyFlags::NoValidConversion ||
+		propertyDouble(element, "y") == PropertyFlags::NoValidConversion ||
+		propertyDouble(element, "width") == PropertyFlags::NoValidConversion ||
+		propertyDouble(element, "height") == PropertyFlags::NoValidConversion ||
+		propertyDouble(element, "start")  == PropertyFlags::NoValidConversion ||
+		propertyDouble(element, "angle") == PropertyFlags::NoValidConversion)
+		return false;
+	return true;
 }
 
 /**

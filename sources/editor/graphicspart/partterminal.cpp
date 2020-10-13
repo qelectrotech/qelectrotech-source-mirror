@@ -29,8 +29,9 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
 {
 	d = new TerminalData(this);
-	d -> m_orientation = Qet::North;
-	d -> m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
+	d->m_name = tr("terminal");
+	d->m_orientation = Qet::North;
+	d->m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
 	updateSecondPoint();
 	setZValue(100000);
 }
@@ -44,10 +45,21 @@ PartTerminal::~PartTerminal()
 	Importe les proprietes d'une borne depuis un element XML
 	@param xml_elmt Element XML a lire
 */
-void PartTerminal::fromXml(const QDomElement &xml_elmt) {
-	d -> fromXml(xml_elmt);
-	setPos(d -> m_pos);
+bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
+
+	QUuid uuid;
+	// update part and add uuid, which is used in the new version to connect terminals together
+	// if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
+	// to identify terminals
+	propertyUuid(xml_elmt, "uuid", &d->m_uuid);
+
+	if (!d->fromXml(xml_elmt))
+		return false;
+
+	setPos(d->m_pos);
 	updateSecondPoint();
+
+	return true;
 }
 
 /**
@@ -55,9 +67,26 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant la borne
 */
-const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const
+QDomElement PartTerminal::toXml(QDomDocument &xml_document) const
 {
-	return d -> toXml(xml_document);
+	QDomElement qdo = xml_document.createElement("terminal");
+
+	qdo.appendChild(createXmlProperty(xml_document, "uuid", d->m_uuid));
+
+	d->m_pos = pos();
+
+	// Do not store terminal data in its own child
+	QDomElement terminalDataElement = d->toXml(xml_document);
+	for (int i=0; i < terminalDataElement.childNodes().length(); i++) {
+		qdo.appendChild(terminalDataElement.childNodes().at(i).cloneNode()); // cloneNode() is important, otherwise no deep clone is made
+	}
+
+	return qdo;
+}
+
+bool PartTerminal::valideXml(QDomElement& element)
+{
+	return TerminalData::valideXml(element);
 }
 
 /**

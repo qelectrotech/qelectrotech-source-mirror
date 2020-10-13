@@ -38,7 +38,7 @@ class ElementTextItemGroup;
 /**
 	This is the base class for electrical elements.
 */
-class Element : public QetGraphicsItem
+class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 {
 	friend class DiagramEventAddElement;
 
@@ -46,22 +46,20 @@ class Element : public QetGraphicsItem
 	public:
 			/**
 				@brief The kind enum
-				Used to know the kind of this element
-				(master, slave, report ect...)
+				Used to know the kind of this element (master, slave, report ect...)
 			*/
-		enum kind {
-			Simple = 1,
-			NextReport = 2,
-			PreviousReport = 4,
-			AllReport = 6,
-			Master = 8,
-			Slave = 16,
-			Terminale = 32};
+		enum kind {Simple = 1,
+				   NextReport = 2,
+				   PreviousReport = 4,
+				   AllReport = 6,
+				   Master = 8,
+				   Slave = 16,
+				   Terminale = 32};
 
-		Element(const ElementsLocation &location,
-			QGraphicsItem * = nullptr,
-			int *state = nullptr,
-			Element::kind link_type = Element::Simple);
+		Element(
+				const ElementsLocation &location,
+				QGraphicsItem * parent= nullptr, int *state = nullptr,
+				Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
 		Element(const Element &);
@@ -130,17 +128,10 @@ class Element : public QetGraphicsItem
 		QPoint hotspot() const;
 		void editProperty() override;
 		static bool valideXml(QDomElement &);
-		virtual bool fromXml(
-				QDomElement &,
-				QHash<int,
-				Terminal *> &);
-		virtual QDomElement toXml(
-				QDomDocument &,
-				QHash<Terminal *,
-				int> &) const;
+		virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &);
+		virtual QDomElement toXml(QDomDocument &) const;
 		QUuid uuid() const;
 		int orientation() const;
-
 			//METHODS related to texts
 		void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
 		void removeDynamicTextItem(DynamicElementTextItem *deti);

@@ -38,10 +38,10 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 	public:
 		QetGraphicsHandlerItem(qreal size = 10);
 		QRectF boundingRect() const override;
-		
+
 		enum { Type = UserType + 1200};
 		int type() const override {return Type;}
-		
+
 		void setColor(QColor color);
 
 	protected:
@@ -50,12 +50,11 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 			   QWidget *widget) override;
 
 	private:
-		QRectF m_handler_rect,
-			   m_br;
+		QRectF m_handler_rect,m_br;
 		qreal m_size;
-		QColor m_color;
+		QColor m_color{Qt::black};
 		QPen m_pen;
-		
+
 	public:
 		static QVector<QetGraphicsHandlerItem *> handlerForPoint(
 				const QVector<QPointF> &points, int size = 10);

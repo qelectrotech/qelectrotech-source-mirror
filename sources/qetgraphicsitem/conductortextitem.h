@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -42,6 +42,7 @@ class ConductorTextItem : public DiagramTextItem
 		enum { Type = UserType + 1006 };
 		Conductor *parentConductor() const;
 		void fromXml(const QDomElement &) override;
+		void toXml(QDomDocument& doc, QDomElement& e);
 		int type() const override { return Type; }
 		virtual bool wasMovedByUser() const;
 		virtual bool wasRotateByUser() const;
@@ -61,8 +62,8 @@ class ConductorTextItem : public DiagramTextItem
 		// attributes
 	private:
 		Conductor *parent_conductor_;
-		bool moved_by_user_;
-		bool rotate_by_user_;
+		bool moved_by_user_{false};
+		bool rotate_by_user_{false};
 		QPointF before_mov_pos_;
 };
 #endif

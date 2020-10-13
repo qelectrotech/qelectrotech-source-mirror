@@ -40,8 +40,8 @@ FileElementCollectionItem::FileElementCollectionItem()
 	@return true if path exist.
 */
 bool FileElementCollectionItem::setRootPath(const QString& path,
-					    bool set_data,
-					    bool hide_element)
+						bool set_data,
+						bool hide_element)
 {
 	QDir dir(path);
 	if (dir.exists())
@@ -190,16 +190,16 @@ QString FileElementCollectionItem::name() const
 */
 QString FileElementCollectionItem::collectionPath() const
 {
+	QStandardItem* parent_ = parent();
 	if (isCollectionRoot()) {
 		if (m_path == QETApp::commonElementsDirN())
 			return "common://";
 		else
 			return "custom://";
 	}
-	else if (parent() && parent()->type()
-		 == FileElementCollectionItem::Type) {
-		ElementCollectionItem *eci =
-				static_cast<ElementCollectionItem*>(parent());
+	else if (parent_ && parent()->type() == FileElementCollectionItem::Type)
+	{
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(parent());
 		if (eci->isCollectionRoot())
 			return eci->collectionPath() + m_path;
 		else
@@ -276,7 +276,7 @@ void FileElementCollectionItem::setUpData()
 		setFlags(Qt::ItemIsSelectable
 			 | Qt::ItemIsDragEnabled
 			 | Qt::ItemIsEnabled);
-		
+
 		//Set the local name and all informations of the element
 		//in the data Qt::UserRole+1, these data will be use for search.
 		ElementsLocation loc(collectionPath());
@@ -331,8 +331,8 @@ void FileElementCollectionItem::setUpIcon()
 	@param hide_element
 */
 void FileElementCollectionItem::setPathName(const QString& path_name,
-					    bool set_data,
-					    bool hide_element)
+						bool set_data,
+						bool hide_element)
 {
 	m_path = path_name;
 
@@ -353,7 +353,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all directory in this directory.
 	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot,
-				     QDir::Name))
+					 QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -368,7 +368,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
 	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot,
-				     QDir::Name))
+					 QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

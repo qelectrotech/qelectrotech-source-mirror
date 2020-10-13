@@ -835,6 +835,7 @@ void QetShapeItem::handlerMouseReleaseEvent()
 	}
 }
 
+// TODO: inherit from Propertiesinterface!
 /**
 	@brief QetShapeItem::fromXml
 	Build this item from the xml description

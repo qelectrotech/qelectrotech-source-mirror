@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -42,8 +42,8 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr(
-			     "T",
-			     "default text when adding a text in the element editor"));
+				 "T",
+				 "default text when adding a text in the element editor"));
 
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
@@ -66,29 +66,49 @@ PartText::~PartText()
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
-void PartText::fromXml(const QDomElement &xml_element) {
-	bool ok;
+bool PartText::fromXml(const QDomElement &xml_element)
+{
+	int size;
+	QString font;
 
-	if (xml_element.hasAttribute("size")) {
-		int font_size = xml_element.attribute("size").toInt(&ok);
-		if (!ok || font_size < 1) {
-			font_size = 20;
+	if (propertyInteger(xml_element, "size", &size) != PropertyFlags::NotFound)
+	{
+		if (size < 1) {
+			size = 20;
 		}
-		QFont font_ = this -> font();
-		font_.setPointSize(font_size);
+		QFont font_ = this->font();
+		font_.setPointSize(size);
 		setFont(font_);
 	}
-	else if (xml_element.hasAttribute("font")) {
+	else if (propertyString(xml_element, "font", &font) != PropertyFlags::NotFound)
+	{
 		QFont font_;
-		font_.fromString(xml_element.attribute("font"));
+		font_.fromString(font);
 		setFont(font_);
+	} else {
+		return false;
 	}
 
-	setDefaultTextColor(QColor(xml_element.attribute("color", "#000000")));
-	setPlainText(xml_element.attribute("text"));
-	setPos(xml_element.attribute("x").toDouble(),
-			xml_element.attribute("y").toDouble());
-	setRotation(xml_element.attribute("rotation", QString::number(0)).toDouble());
+	QColor color;
+	QString text;
+	propertyColor(xml_element, "color", &color);
+	setDefaultTextColor(color);
+
+
+	propertyString(xml_element, "text", &text);
+	setPlainText(text);
+
+	double x=0, y=0, rot=0;
+	if (propertyDouble(xml_element, "x", &x) == PropertyFlags::NoValidConversion ||
+		propertyDouble(xml_element, "y", &y) == PropertyFlags::NoValidConversion)
+		return false;
+	setPos(x, y);
+
+	if (propertyDouble(xml_element, "rotation", &rot) == PropertyFlags::NoValidConversion)
+		return false;
+	setRotation(rot);
+
+	return true;
 }
 
 /**
@@ -96,18 +116,42 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-const QDomElement PartText::toXml(QDomDocument &xml_document) const
+QDomElement PartText::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement(xmlName());
 
-	xml_element.setAttribute("x", QString::number(pos().x()));
-	xml_element.setAttribute("y", QString::number(pos().y()));
-	xml_element.setAttribute("text", toPlainText());
-	xml_element.setAttribute("font", font().toString());
-	xml_element.setAttribute("rotation", QString::number(rotation()));
-	xml_element.setAttribute("color", defaultTextColor().name());
+	xml_element.appendChild(createXmlProperty(xml_document, "x", pos().x()));
+	xml_element.appendChild(createXmlProperty(xml_document, "y", pos().y()));
+	xml_element.appendChild(createXmlProperty(xml_document, "text", toPlainText()));
+	xml_element.appendChild(createXmlProperty(xml_document, "font", font().toString()));
+	xml_element.appendChild(createXmlProperty(xml_document, "rotation", rotation()));
+	xml_element.appendChild(createXmlProperty(xml_document, "color", defaultTextColor().name()));
 
 	return(xml_element);
+}
+
+bool PartText::valideXml(QDomElement& element) {
+
+	if (propertyInteger(element, "size") == PropertyFlags::NotFound ||
+		propertyString(element, "font") == PropertyFlags::NotFound) {
+		return false;
+	}
+
+	if (propertyString(element, "color") == PropertyFlags::NoValidConversion)
+		return false;
+
+
+	if (propertyString(element, "text"))
+		return false;
+
+	if (propertyDouble(element, "x") == PropertyFlags::NoValidConversion ||
+		propertyDouble(element, "y") == PropertyFlags::NoValidConversion)
+		return false;
+
+	if (propertyDouble(element, "rotation", 0) == PropertyFlags::NoValidConversion)
+		return false;
+
+	return true;
 }
 
 /**

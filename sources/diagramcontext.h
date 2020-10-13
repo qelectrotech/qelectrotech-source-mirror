@@ -79,7 +79,7 @@ class DiagramContext
 		void fromXml(const QDomElement &, const QString & = "property");
 		void fromXml(const pugi::xml_node &dom_element, const QString &tag_name = "property");
 		void toSettings(QSettings &, const QString &) const;
-		void fromSettings(QSettings &, const QString &);
+        void fromSettings(const QSettings &, const QString &);
 		
 		static QString validKeyRegExp();
 	

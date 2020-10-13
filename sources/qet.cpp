@@ -28,37 +28,6 @@
 #include <QActionGroup>
 
 /**
-	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
-	en orientation. Si la chaine fait plusieurs caracteres, seul le
-	premier est pris en compte. En cas d'incoherence, Qet::North est
-	retourne.
-	@param s Chaine de caractere cense representer une orientation
-	@return l'orientation designee par la chaine de caractere
-*/
-Qet::Orientation Qet::orientationFromString(const QString &s) {
-	QChar c = s[0];
-	if (c == 'e') return(Qet::East);
-	else if (c == 's') return(Qet::South);
-	else if (c == 'w') return (Qet::West);
-	else return(Qet::North);
-}
-
-/**
-	@param o une orientation
-	@return une chaine de caractere representant l'orientation
-*/
-QString Qet::orientationToString(Qet::Orientation o) {
-	QString ret;
-	switch(o) {
-		case Qet::North: ret = "n"; break;
-		case Qet::East : ret = "e"; break;
-		case Qet::South: ret = "s"; break;
-		case Qet::West : ret = "w"; break;
-	}
-	return(ret);
-}
-
-/**
 	Indique si deux orientations de Borne sont sur le meme axe (Vertical / Horizontal).
 	@param a La premiere orientation de Borne
 	@param b La seconde orientation de Borne

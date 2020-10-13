@@ -85,54 +85,69 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 }
 
 /**
-	@brief PartPolygon::fromXml
-	Import the properties of this polygon from a xml element
-	@param qde : Xml document to use
-*/
-void PartPolygon::fromXml(const QDomElement &qde)
+ * @brief PartPolygon::fromXml
+ * Import the properties of this polygon from a xml element
+ * @param qde : Xml document to use
+ */
+bool PartPolygon::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
 
+	int error_counter = 0;
 	int i = 1;
 	while(true)
 	{
-		if (QET::attributeIsAReal(qde, QString("x%1").arg(i)) &&\
-			QET::attributeIsAReal(qde, QString("y%1").arg(i)))
-			++ i;
+		if (propertyDouble(qde, QString("x%1").arg(i)) == PropertyFlags::Success &&
+			propertyDouble(qde, QString("y%1").arg(i)) == PropertyFlags::Success)
+			i++;
 
 		else break;
 	}
 
 	QPolygonF temp_polygon;
+	double x, y;
 	for (int j = 1 ; j < i ; ++ j)
 	{
-		temp_polygon << QPointF(qde.attribute(QString("x%1").arg(j)).toDouble(),
-								qde.attribute(QString("y%1").arg(j)).toDouble());
+		error_counter += propertyDouble(qde, QString("x%1").arg(j), &x);
+		error_counter += propertyDouble(qde, QString("y%1").arg(j), &y);
+		if (error_counter)
+			return false;
+		temp_polygon << QPointF(x, y);
 	}
 	m_polygon = temp_polygon;
 
-	m_closed = qde.attribute("closed") != "false";
+	if (propertyBool(qde, "closed", &m_closed) != PropertyFlags::Success)
+		return false;
+
+	return true;
 }
 
 /**
-	@brief PartPolygon::toXml
-	Export this polygin in xml
-	@param xml_document : Xml document to use for create the xml element
-	@return an xml element that describe this polygon
-*/
-const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
+ * @brief PartPolygon::toXml
+ * Export this polygin in xml
+ * @param xml_document : Xml document to use for create the xml element
+ * @return an xml element that describe this polygon
+ */
+QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("polygon");
 	int i = 1;
 	foreach(QPointF point, m_polygon) {
 		point = mapToScene(point);
-		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
-		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
+		xml_element.appendChild(createXmlProperty(xml_document, QString("x%1").arg(i), point.x()));
+		xml_element.appendChild(createXmlProperty(xml_document, QString("y%1").arg(i), point.y()));
 		++ i;
 	}
-	if (!m_closed) xml_element.setAttribute("closed", "false");
-	stylesToXml(xml_element);
+
+	xml_element.appendChild(createXmlProperty(xml_document, "closed", m_closed));
+
+	stylesToXml(xml_document, xml_element);
 	return(xml_element);
+}
+
+bool PartPolygon::valideXml(QDomElement& element) {
+	// TODO: implement
+	return true;
 }
 
 /**

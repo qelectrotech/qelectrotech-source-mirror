@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -54,7 +54,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 			this->m_parent_element->diagram()->undoStack().push(undo);
 		}
 	});
-	
+
 		//Option when text is displayed in multiple line
 	QTextOption option = document()->defaultTextOption();
 	option.setAlignment(Qt::AlignHCenter);
@@ -87,7 +87,7 @@ DynamicElementTextItem::DynamicElementTextItem()
 QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 {
 	QDomElement root_element = dom_doc.createElement(xmlTagName());
-	
+
 	root_element.setAttribute("x", QString::number(pos().x()));
 	root_element.setAttribute("y", QString::number(pos().y()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
@@ -95,10 +95,10 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	root_element.setAttribute("font", font().toString());
-	
+
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
-	
+
 	me = QMetaEnum::fromType<Qt::Alignment>();
 	if(this->alignment() &Qt::AlignRight)
 		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
@@ -106,19 +106,19 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
 	else if(this->alignment() &Qt::AlignHCenter)
 		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
-	
+
 	if(this->alignment() &Qt::AlignBottom)
 		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
 	else if(this->alignment() & Qt::AlignTop)
 		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
 	else if(this->alignment() &Qt::AlignVCenter)
 		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
-	
-	
+
+
 	QDomElement dom_text = dom_doc.createElement("text");
 	dom_text.appendChild(dom_doc.createTextNode(toPlainText()));
 	root_element.appendChild(dom_text);
-	
+
 		//Info name
 	if(!m_info_name.isEmpty())
 	{
@@ -126,7 +126,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		dom_info_name.appendChild(dom_doc.createTextNode(m_info_name));
 		root_element.appendChild(dom_info_name);
 	}
-	
+
 		//Composite text
 	if(!m_composite_text.isEmpty())
 	{
@@ -134,7 +134,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		dom_comp_text.appendChild(dom_doc.createTextNode(m_composite_text));
 		root_element.appendChild(dom_comp_text);
 	}
-	
+
 		//Color
 	if(color() != QColor(Qt::black))
 	{
@@ -142,7 +142,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		dom_color.appendChild(dom_doc.createTextNode(color().name()));
 		root_element.appendChild(dom_color);
 	}
-	
+
 	return root_element;
 }
 
@@ -157,7 +157,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		qDebug() << "DynamicElementTextItem::fromXml : Wrong tagg name";
 		return;
 	}
-	
+
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 
 	if (dom_elmt.hasAttribute("font"))
@@ -177,11 +177,11 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
-	
+
 		//Text from
 	QMetaEnum me = textFromMetaEnum();
 	setTextFrom(DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data())));
-	
+
 	me = QMetaEnum::fromType<Qt::Alignment>();
 	if(dom_elmt.hasAttribute("Halignment"))
 		setAlignment(Qt::Alignment(me.keyToValue(dom_elmt.attribute("Halignment").toStdString().data())));
@@ -200,7 +200,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_info_name = dom_elmt.firstChildElement("info_name");
 	if(!dom_info_name.isNull())
 		setInfoName(dom_info_name.text());
-	
+
 		//Composite text
 	QDomElement dom_comp_text = dom_elmt.firstChildElement("composite_text");
 	if(!dom_comp_text.isNull())
@@ -210,10 +210,10 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_color = dom_elmt.firstChildElement("color");
 	if(!dom_color.isNull())
 		setColor(QColor(dom_color.text()));
-	
+
 		//Force the update of the displayed text
-	setTextFrom(m_text_from);
-	
+	setTextFrom(m_text_from); // TODO: does not update because there is a retrun inside if the textfrom argument is the same as m_text_from
+
 	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
 							  dom_elmt.attribute("y", QString::number(0)).toDouble());
 }
@@ -241,7 +241,7 @@ ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 		if(ElementTextItemGroup *grp = dynamic_cast<ElementTextItemGroup *>(parentItem()))
 		   return grp;
 	}
-	
+
 	return nullptr;
 }
 
@@ -261,7 +261,7 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 	Element *elmt = parentElement();
 	if(!elmt)
 		return nullptr;
-	
+
 	switch (elmt->linkType())
 	{
 		case Element::Simple:
@@ -325,15 +325,18 @@ DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const
 */
 void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
+
+	if (searchedElement)
+		int stop = true;
 	if(m_text_from == text_from)
 		return;
-	
+
 	setNoEditable(text_from == UserText? false : true);
 	clearFormulaConnection();
-	
+
 	TextFrom old_text_from = m_text_from;
 	m_text_from = text_from;
-	
+
 	if(m_text_from == UserText)
 	{
 		setPlainText(m_text);
@@ -348,7 +351,7 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		}
 		else
 			setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
-		
+
 		if(old_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
@@ -361,15 +364,15 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		}
 		else
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
-		
+
 		if(old_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
-		
+
 	if(m_parent_element.data()->linkType() == Element::Master ||
 	   m_parent_element.data()->linkType() == Element::Slave)
 		updateXref();
-		
+
 	emit textFromChanged(m_text_from);
 }
 
@@ -389,6 +392,9 @@ QString DynamicElementTextItem::text() const
 */
 void DynamicElementTextItem::setText(const QString &text)
 {
+	if (m_text == "14" && text == "")
+		int a = 54;
+	m_text_old = m_text;
 	m_text = text;
 	if(m_text_from == DynamicElementTextItem::UserText)
 		setPlainText(m_text);
@@ -405,7 +411,10 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	QString old_info_name = m_info_name;
 	m_info_name = info_name;
 
-	
+	if (searchedElement)
+		int stop = true;
+
+
 	if(old_info_name == "label")
 	{
 		clearFormulaConnection();
@@ -429,7 +438,7 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 		}
 	}
 	else if (m_info_name == "label" && elementUseForInfo())
-	{	
+	{
 		setupFormulaConnection();
 		updateLabel();
 		updateXref();
@@ -437,7 +446,7 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 	else if(elementUseForInfo() && m_text_from == DynamicElementTextItem::ElementInfo) {
 		setPlainText(elementUseForInfo()->elementInformations().value(info_name).toString());
 	}
-	
+
 	emit infoNameChanged(info_name);
 }
 
@@ -459,7 +468,7 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 {
 	QString old_composite_text = m_composite_text;
 	m_composite_text = text;
-	
+
 	if(old_composite_text.contains("%{label}"))
 	{
 		clearFormulaConnection();
@@ -478,7 +487,7 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 			removeConnectionForReportFormula(m_report_formula);
 		if(m_composite_text.contains("%{label}"))
 			setConnectionForReportFormula(m_report_formula);
-		
+
 		updateReportText();
 	}
 	else if (m_composite_text.contains("%{label}") && elementUseForInfo())
@@ -494,7 +503,7 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 			dc = elementUseForInfo()->elementInformations();
 		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 	}
-	
+
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -539,7 +548,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		if(m_slave_Xref_item)
 			m_slave_Xref_item->setDefaultTextColor(Qt::black);
 	}
-	
+
 	DiagramTextItem::mousePressEvent(event);
 }
 
@@ -548,33 +557,33 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	@param event
 */
 void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{	
+{
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
 		if(diagram() && m_first_move)
 			diagram()->elementTextsMover().beginMovement(diagram(), this);
-		
+
 		if(m_first_move)
 		{
 			m_initial_position = pos();
 			if(parentElement())
 				parentElement()->setHighlighted(true);
 		}
-		
+
 		QPointF current_parent_pos;
 		QPointF button_down_parent_pos;
 		current_parent_pos = mapToParent(mapFromScene(event->scenePos()));
 		button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
-		
+
 		QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
 		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
-		
+
 		if(diagram())
 			diagram()->elementTextsMover().continueMovement(event);
 	} else {
 		event->ignore();
 	}
-	
+
 	if(m_first_move)
 		m_first_move = false;
 }
@@ -587,10 +596,10 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_parent_element)
 		m_parent_element->setHighlighted(false);
-	
+
 	if(m_parent_element && m_parent_element->diagram())
 		m_parent_element.data()->diagram()->elementTextsMover().endMovement();
-	
+
 	if(!(event->modifiers() & Qt::ControlModifier))
 		QGraphicsTextItem::mouseReleaseEvent(event);
 }
@@ -618,12 +627,12 @@ void DynamicElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
 void DynamicElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	DiagramTextItem::hoverEnterEvent(event);
-	
+
 		//If the text is selected we set the real color, otherwise the editor will display the color of text as blue,
 		//but this is not the color set by the user.
 	if(isSelected())
 		return;
-	
+
 	if ((parentElement()->linkType() & Element::AllReport) && m_other_report)
 	{
 		if( (m_text_from == ElementInfo && m_info_name == "label") ||
@@ -642,25 +651,25 @@ void DynamicElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	DiagramTextItem::hoverLeaveEvent(event);
-	
+
 	if(m_user_color.isValid())
 	{
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
 	}
-	
+
 }
 
 void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	DiagramTextItem::paint(painter, option, widget);
-	
+
 	if (m_frame)
 	{
 		painter->save();
 		painter->setFont(QETApp::dynamicTextsItemFont(font().pointSize()));
-		
-			//Adjust the thickness according to the font size, 
+
+			//Adjust the thickness according to the font size,
 		qreal w=0.3;
 		if(font().pointSize() >= 5)
 		{
@@ -668,7 +677,7 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 			if(w > 2.5)
 				w = 2.5;
 		}
-		
+
 		QPen pen;
 		pen.setColor(color());
 		pen.setWidthF(w);
@@ -678,7 +687,7 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 			//Adjust the rounding of the rectangle according to the size of the font
 		qreal ro = font().pointSizeF()/3;
 		painter->drawRoundedRect(frameRect(), ro, ro);
-		
+
 		painter->restore();
 	}
 }
@@ -691,7 +700,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 	{
 		if(m_parent_element.isNull())
 			return QGraphicsObject::itemChange(change, value);
-		
+
 			//If the parent is slave, we keep aware about the changement of master.
 		if(m_parent_element.data()->linkType() == Element::Slave)
 		{
@@ -708,13 +717,13 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 				m_report_formula = m_parent_element.data()->diagram()->project()->defaultReportProperties();
 				m_report_formula_con = connect(m_parent_element.data()->diagram()->project(), &QETProject::reportPropertiesChanged, this, &DynamicElementTextItem::reportFormulaChanged);
 			}
-			
+
 				//Add connection to keep up to date the status of the element linked to the parent folio report of this text.
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::reportChanged);
 				//The parent is already linked, we call reportChanged for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				reportChanged();
-			
+
 			if(m_parent_element.data()->terminals().size())
 			{
 					//Add connection to keep up date the conductors added or removed to the parent folio report element
@@ -732,7 +741,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				updateXref();
 		}
-		
+
 		m_first_scene_change = false;
 		return QGraphicsObject::itemChange(change, value);
 	}
@@ -741,7 +750,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		updateXref();
 		updateXref();
 	}
-	
+
 	return QGraphicsObject::itemChange(change, value);
 }
 
@@ -749,7 +758,7 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 {
 	if(watched != m_slave_Xref_item)
 		return false;
-	
+
 	if(event->type() == QEvent::GraphicsSceneHoverEnter) {
 		m_slave_Xref_item->setDefaultTextColor(Qt::blue);
 		return true;
@@ -762,7 +771,7 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 		zoomToLinkedElement();
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -773,7 +782,7 @@ void DynamicElementTextItem::elementInfoChanged()
 	if(element) {
 		dc = element->elementInformations();
 	}
-	
+
 	QString final_text;
 
 
@@ -799,12 +808,12 @@ void DynamicElementTextItem::elementInfoChanged()
 			//connection if the label is created from a formula
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
-		
+
 		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
 	}
 	else if (m_text_from  == UserText)
 		final_text = m_text;
-	
+
 	setPlainText(final_text);
 	emit plainTextChanged();
 }
@@ -823,16 +832,16 @@ void DynamicElementTextItem::masterChanged()
 		m_master_element.clear();
 		updateXref();
 	}
-	
+
 	if(elementUseForInfo())
 	{
 		m_master_element = elementUseForInfo();
 		if(m_text_from == ElementInfo || m_text_from == CompositeText)
 			connect(m_master_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
-		
+
 		updateXref();
 	}
-		
+
 		//Because master changed we update this text
 	elementInfoChanged();
 }
@@ -859,23 +868,23 @@ void DynamicElementTextItem::reportChanged()
 			m_report_formula_con = connect(parentElement()->diagram()->project(), &QETProject::reportPropertiesChanged, this, &DynamicElementTextItem::reportFormulaChanged);
 		}
 	}
-	
+
 	bool text_have_label = false;
-	
+
 	if((textFrom() == ElementInfo && m_info_name == "label") ||
 	   (textFrom() == CompositeText && m_composite_text.contains("%{label}")))
 		text_have_label = true;
-	
+
 	if(text_have_label)
 		removeConnectionForReportFormula(m_report_formula);
-	
+
 	m_other_report.clear();
 	if(!m_parent_element.data()->linkedElements().isEmpty())
 		m_other_report = m_parent_element.data()->linkedElements().first();
-		
+
 		//Because linked report was changed, we ensure there is a conductor watched
 	setPotentialConductor();
-	
+
 	if(text_have_label)
 	{
 		setConnectionForReportFormula(m_report_formula);
@@ -890,7 +899,7 @@ void DynamicElementTextItem::reportChanged()
 void DynamicElementTextItem::reportFormulaChanged()
 {
 	m_report_formula = parentElement()->diagram()->project()->defaultReportProperties();
-	
+
 	if(m_text_from == ElementInfo && m_info_name == "label")
 		updateReportText();
 }
@@ -899,11 +908,11 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 {
 	if(m_other_report.isNull() || formula.isEmpty())
 		return;
-	
+
 	Element *other_elmt = m_other_report.data();
 	QString string = formula;
 	Diagram *other_diagram = m_other_report.data()->diagram();
-	
+
 		//Because the variable %F is a reference to another text which can contain variables,
 		//we must to replace %F by the real text, to check if the real text contain the variable %id
 	if (other_diagram && string.contains("%F"))
@@ -912,7 +921,7 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 		string.replace("%F", other_diagram->border_and_titleblock.folio());
 		connect(&other_diagram->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &DynamicElementTextItem::updateReportFormulaConnection);
 	}
-	
+
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
 	{
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
@@ -928,11 +937,11 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 {
 	if(m_other_report.isNull() || formula.isEmpty())
 		return;
-	
+
 	Element *other_element = m_other_report.data();
 	QString string = formula;
 	Diagram *other_diagram = m_other_report.data()->diagram();
-	
+
 		//Because the variable %F is a reference to another text which can contain variables,
 		//we must to replace %F by the real text, to check if the real text contain the variable %id
 	if (other_diagram && string.contains("%F"))
@@ -940,14 +949,14 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 		string.replace("%F", m_F_str);
 		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &DynamicElementTextItem::updateReportFormulaConnection);
 	}
-	
+
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
 		disconnect(other_element, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))
 		disconnect(other_element, &Element::xChanged, this, &DynamicElementTextItem::updateReportText);
-	
+
 }
 
 /**
@@ -960,25 +969,25 @@ void DynamicElementTextItem::setupFormulaConnection()
 		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
 	{
 		clearFormulaConnection();
-		
+
 		Element *element = elementUseForInfo();
 		if (!element)
 			return;
-		
+
 		Diagram *diagram = element->diagram();
 		QString formula = element->elementInformations().value("formula").toString();
 
 			//Label is frozen, so we don't update it.
 		if (element->isFreezeLabel())
 			return;
-		
+
 		if (diagram && formula.contains("%F"))
 		{
 			m_F_str = diagram->border_and_titleblock.folio();
 			formula.replace("%F", m_F_str);
 			m_formula_connection << connect(&diagram->border_and_titleblock, &BorderTitleBlock::titleBlockFolioChanged, this, &DynamicElementTextItem::updateLabel);
 		}
-		
+
 		if (diagram && (formula.contains("%f") || formula.contains("%id")))
 		{
 			m_formula_connection << connect(diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateLabel);
@@ -988,7 +997,7 @@ void DynamicElementTextItem::setupFormulaConnection()
 			m_formula_connection << connect(element, &Element::yChanged, this, &DynamicElementTextItem::updateLabel);
 		if (formula.contains("%c"))
 			m_formula_connection << connect(element, &Element::xChanged, this, &DynamicElementTextItem::updateLabel);
-			
+
 	}
 }
 
@@ -1003,7 +1012,7 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 {
 	if(!(m_parent_element.data()->linkType() & Element::AllReport))
 		return;
-	
+
 	removeConnectionForReportFormula(m_report_formula);
 	setConnectionForReportFormula(m_report_formula);
 	updateReportText();
@@ -1017,7 +1026,7 @@ void DynamicElementTextItem::updateReportText()
 {
 	if(!(m_parent_element.data()->linkType() & Element::AllReport))
 		return;
-	
+
 	if (m_text_from == ElementInfo && m_info_name == "label")
 	{
 		if(m_other_report)
@@ -1053,7 +1062,7 @@ void DynamicElementTextItem::updateLabel()
 		if(element) {
 			dc = element->elementInformations();
 		}
-		
+
 
 		if(m_text_from == ElementInfo && element) {
 			setPlainText(element->actualLabel());
@@ -1101,7 +1110,7 @@ void DynamicElementTextItem::setPotentialConductor()
 	{
 		if(parentElement()->terminals().isEmpty())
 			return;
-		
+
 		/*
 		 * #First case, if m_watched_conductor is a conductor of the parent report, everything is ok
 		 * #Second case, if the conductors list of parent report element is not empty,
@@ -1111,14 +1120,14 @@ void DynamicElementTextItem::setPotentialConductor()
 		 * #third case, if m_watched_conductor is null, we set a conductor of the linked report, if any.
 		 */
 		QList<Conductor *> c_list = parentElement()->terminals().first()->conductors();
-		
+
 		if(!c_list.isEmpty() && c_list.contains(m_watched_conductor.data()))
 			return;
 		else if(!c_list.isEmpty())
 		{
 			if(!m_watched_conductor.isNull())
 				disconnect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
-			
+
 			m_watched_conductor = c_list.first();
 			connect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
 		}
@@ -1135,7 +1144,7 @@ void DynamicElementTextItem::setPotentialConductor()
 	{
 		if(!m_watched_conductor.isNull())
 			disconnect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
-		
+
 		m_watched_conductor.clear();
 	}
 }
@@ -1174,11 +1183,11 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 QString DynamicElementTextItem::reportReplacedCompositeText() const
 {
 	QString string;
-	
+
 	if(m_parent_element.data()->linkType() & Element::AllReport)
 	{
 		string = m_composite_text;
-		
+
 		if (string.contains("%{label}") && m_other_report)
 		{
 			Element *elmt = m_other_report.data();
@@ -1198,7 +1207,7 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 				string.replace("%{conductor_section}", m_watched_conductor.data()->properties().m_wire_section);
 		}
 	}
-	
+
 	return string;
 }
 
@@ -1211,9 +1220,9 @@ void DynamicElementTextItem::zoomToLinkedElement()
 {
 	if(!parentElement())
 		return;
-	
+
 	Element *zoomed_element = nullptr;
-	
+
 	if(parentElement()->linkType() == Element::Slave && m_master_element)
 	{
 		if ((m_text_from == ElementInfo && m_info_name == "label") ||
@@ -1226,18 +1235,18 @@ void DynamicElementTextItem::zoomToLinkedElement()
 		   (m_text_from == CompositeText && m_composite_text.contains("%{label}")))
 			zoomed_element = m_other_report.data();
 	}
-	
+
 	if(zoomed_element)
 	{
 			//Unselect and ungrab mouse to prevent unwanted
 			//move when linked element is in the same scene of this.
 		setSelected(false);
 		ungrabMouse();
-		
+
 		if(scene() != zoomed_element->scene())
 			zoomed_element->diagram()->showMe();
 		zoomed_element->setSelected(true);
-		
+
 			//Zoom to the element
 		for(QGraphicsView *view : zoomed_element->scene()->views())
 		{
@@ -1259,7 +1268,7 @@ void DynamicElementTextItem::updateXref()
 		if(m_parent_element.data()->linkType() == Element::Master)
 		{
 			XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_parent_element.data()->kindInformations()["type"].toString());
-			
+
 			if(m_text_from == DynamicElementTextItem::ElementInfo &&
 			   m_info_name == "label" &&
 			   !m_parent_element.data()->linkedElements().isEmpty() &&
@@ -1286,13 +1295,13 @@ void DynamicElementTextItem::updateXref()
 				XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_master_element.data()->kindInformations()["type"].toString());
 				QString xref_label = xrp.slaveLabel();
 				xref_label = autonum::AssignVariables::formulaToLabel(xref_label, m_master_element.data()->rSequenceStruct(), m_master_element.data()->diagram(), m_master_element.data());
-				
+
 				if(!m_slave_Xref_item)
 				{
 					m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
 					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
 					m_slave_Xref_item->installSceneEventFilter(this);
-					
+
 					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
 					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
 					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
@@ -1314,7 +1323,7 @@ void DynamicElementTextItem::updateXref()
 		delete m_Xref_item;
 		m_Xref_item = nullptr;
 	}
-	
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
@@ -1325,6 +1334,8 @@ void DynamicElementTextItem::updateXref()
 
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
+	if (text == "14")
+		searchedElement = true;
 	if (toPlainText() == text)
 		return;
 
@@ -1335,13 +1346,13 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 	if (m_parent_element.data()->state() == QET::GIBuildingFromXml ||
 		m_parent_element.data()->state() == QET::GILoadingFromXml)
 		update_alignment = false;
-	
+
 	if (update_alignment) {
 		prepareAlignment();
 	}
-	
+
 	DiagramTextItem::setPlainText(text);
-	
+
 		//User define a text width
 	if (m_text_width > 0)
 	{
@@ -1354,11 +1365,11 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 			}
 		}
 	}
-	
+
 	if (update_alignment) {
 		finishAlignment();
 	}
-	
+
 	if (m_Xref_item) {
 		m_Xref_item->autoPos();
 	}

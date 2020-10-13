@@ -20,6 +20,8 @@
 #include "qetapp.h"
 #include "richtext/richtexteditor_p.h"
 #include "diagram.h"
+#include "dynamicelementtextitem.h"
+
 
 /**
 	@brief DiagramTextItem::DiagramTextItem
@@ -218,12 +220,24 @@ QRectF DiagramTextItem::frameRect() const
 
 void DiagramTextItem::setHtml(const QString &text)
 {
+    DynamicElementTextItem* abc = dynamic_cast<DynamicElementTextItem*>(this);
+    if (abc) {
+        if (abc->searchedElement) {
+            int stop = 1;
+        }
+    }
 	QGraphicsTextItem::setHtml(text);
 	m_is_html = true;
 }
 
 void DiagramTextItem::setPlainText(const QString &text)
 {
+    DynamicElementTextItem* abc = dynamic_cast<DynamicElementTextItem*>(this);
+    if (abc) {
+        if (abc->searchedElement) {
+            int stop = 1;
+        }
+    }
 	QGraphicsTextItem::setPlainText(text);
 	m_is_html = false;
 }
@@ -243,6 +257,16 @@ bool DiagramTextItem::isHtml() const
 */
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+
+    DynamicElementTextItem* abc = dynamic_cast<DynamicElementTextItem*>(this);
+    if (abc) {
+        if (abc->searchedElement) {
+            int stop = 1;
+            QString text = toPlainText();
+            qDebug() << text;
+        }
+    }
+
 	painter -> setRenderHint(QPainter::Antialiasing, false);
 	QGraphicsTextItem::paint(painter, option, widget);
 

@@ -76,14 +76,7 @@ class ConductorXmlRetroCompatibility
 */
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
-	terminal2(p2),
-	m_mouse_over(false),
-	m_text_item(nullptr),
-	segments(nullptr),
-	m_moving_segment(false),
-	modified_path(false),
-	has_to_save_profile(false),
-	must_highlight_(Conductor::None)
+	terminal2(p2)
 {
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
@@ -580,41 +573,13 @@ ConductorTextItem *Conductor::textItem() const
 }
 
 /**
-	Methode de validation d'element XML
-	@param e Un element XML sense represente un Conducteur
-	@return true si l'element XML represente bien un Conducteur ; false sinon
+	@brief Conductor::valideXml
+	@param e
+	@return true
 */
-bool Conductor::valideXml(QDomElement &e){
-	// verifie le nom du tag
-	if (e.tagName() != "conductor") return(false);
-
-	// verifie la presence des attributs minimaux
-	if (!e.hasAttribute("terminal1")) return(false);
-	if (!e.hasAttribute("terminal2")) return(false);
-
-	bool conv_ok;
-	// parse l'abscisse
-	if (e.hasAttribute("element1")) {
-		if (QUuid(e.attribute("element1")).isNull())
-			return false;
-		if (QUuid(e.attribute("terminal1")).isNull())
-			return false;
-	} else {
-		e.attribute("terminal1").toInt(&conv_ok);
-		if (!conv_ok) return(false);
-	}
-
-	// parse l'ordonnee
-	if (e.hasAttribute("element2")) {
-		if (QUuid(e.attribute("element2")).isNull())
-			return false;
-		if (QUuid(e.attribute("terminal2")).isNull())
-			return false;
-	} else {
-		e.attribute("terminal2").toInt(&conv_ok);
-		if (!conv_ok) return(false);
-	}
-	return(true);
+bool Conductor::valideXml(QDomElement &e)
+{
+	return true;
 }
 
 /**
@@ -984,13 +949,16 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 /**
 	@brief Conductor::fromXml
 	Load the conductor and her information from xml element
-	@param dom_element
+	@param e
 	@return true is loading success else return false
 */
-bool Conductor::fromXml(QDomElement &dom_element)
+bool Conductor::fromXml(const QDomElement &dom_element)
 {
-	setPos(dom_element.attribute("x", nullptr).toDouble(),
-		   dom_element.attribute("y", nullptr).toDouble());
+	// TODO: seems to short!
+	double x=0, y=0;
+	propertyDouble(dom_element, "x", &x);
+	propertyDouble(dom_element, "y", &y);
+	setPos(x, y);
 
 	bool return_ = pathFromXml(dom_element);
 
@@ -1004,49 +972,48 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	m_freeze_label = dom_element.attribute("freezeLabel") == "true"? true : false;
-
+	propertyBool(dom_element, "freezeLabel", &m_freeze_label);
 	setProperties(pr);
 
 	return return_;
 }
 
-/**
-	@brief Conductor::toXml
-	Exporte les caracteristiques du conducteur sous forme d'une element XML.
-	@param dom_document :
-	Le document XML a utiliser pour creer l'element XML
-	@param table_adr_id :
-	Hash stockant les correspondances entre les ids des
-	bornes dans le document XML et leur adresse en memoire
-	@return Un element XML representant le conducteur
-*/
-QDomElement Conductor::toXml(QDomDocument &dom_document,
-				 QHash<Terminal *,
-				 int> &table_adr_id) const
-{
-	QDomElement dom_element = dom_document.createElement("conductor");
 
-	dom_element.setAttribute("x", QString::number(pos().x()));
-	dom_element.setAttribute("y", QString::number(pos().y()));
+// does not support legacy method
+// dom_element.setAttribute("terminal1", table_adr_id.value(terminal1));
+QDomElement Conductor::toXml(QDomDocument & doc) const
+{
+	QDomElement dom_element = doc.createElement("conductor");
+
+	dom_element.appendChild(createXmlProperty(doc, "x", pos().x()));
+	dom_element.appendChild(createXmlProperty(doc, "y", pos().y()));
 
 	// Terminal is uniquely identified by the uuid of the terminal and the element
-	if (terminal1->uuid().isNull()) {
-		// legacy method to identify the terminal
-		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+	QUuid terminal = terminal1->uuid();
+	QUuid terminalParent = terminal1->parentElement()->uuid();
+	if (terminalParent.isNull() || terminal.isNull()) {
+		// legacy when the terminal does not have a valid uuid
+		// do not store element1 information, because this is used to determine in the fromXml
+		// process that legacy file format
+		dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal1->ID()));
 	} else {
-		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+		dom_element.appendChild(createXmlProperty(doc, "element1", terminalParent));
+		dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal));
 	}
 
-	if (terminal2->uuid().isNull()) {
-		// legacy method to identify the terminal
-		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+	terminal = terminal2->uuid();
+	terminalParent = terminal2->parentElement()->uuid();
+	if (terminalParent.isNull() || terminal.isNull()) {
+		// legacy when the terminal does not have a valid uuid
+		// do not store element1 information, because this is used to determine in the fromXml
+		// process that legacy file format
+		dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->ID()));
 	} else {
-		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+		dom_element.appendChild(createXmlProperty(doc, "element2", terminal2->parentElement()->uuid()));
+		dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->uuid()));
 	}
-	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
+
+	dom_element.appendChild(createXmlProperty(doc, "freezeLabel", m_freeze_label));
 
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
@@ -1056,33 +1023,32 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		QDomElement current_segment;
 		foreach(ConductorSegment *segment, segmentsList())
 		{
-			current_segment = dom_document.createElement("segment");
-			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
+			current_segment = doc.createElement("segment");
+			current_segment.appendChild(createXmlProperty(doc, "orientation", segment->isHorizontal() ? "horizontal": "vertical"));
+			current_segment.appendChild(createXmlProperty(doc, "length", segment -> length()));
 			dom_element.appendChild(current_segment);
 		}
 	}
 
-	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
+	QDomElement dom_seq = m_autoNum_seq.toXml(doc); // swquentialNumbers tag
 	dom_element.appendChild(dom_seq);
 
 		// Export the properties and text
-	m_properties. toXml(dom_element);
-	if(m_text_item->wasMovedByUser())
-	{
-		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
-		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
+	QDomElement conductorProperties = m_properties.toXml(doc);
+	for (int i=0; i < conductorProperties.childNodes().count(); i++) {
+		QDomNode node = conductorProperties.childNodes().at(i).cloneNode(); // cloneNode() is important!
+		dom_element.appendChild(node);
 	}
-	if(m_text_item->wasRotateByUser())
-		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
+
+	m_text_item->toXml(doc, dom_element);
 
 	return(dom_element);
 }
 
 /**
 	@brief Conductor::pathFromXml
-	Generate the path (of the line) from xml file by checking the segments in the xml
-	file
+	Generate the path (of the line) from xml file by checking
+	the segments in the xml file
 	@param e
 	@return true if generate path success else return false
 */
@@ -1096,14 +1062,21 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		if (current_segment.isNull() || current_segment.tagName() != "segment") continue;
 
 		// le segment doit avoir une longueur
-		if (!current_segment.hasAttribute("length")) continue;
+		qreal segment_length;
+		if (propertyDouble(current_segment, "length", & segment_length))
+			continue;
 
-		// cette longueur doit etre un reel
-		bool ok;
-		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
-		if (!ok) continue;
+		bool isHorizontal = false;
+		QString orientation;
+		if (propertyString(current_segment, "orientation", &orientation) == PropertyFlags::Success) {
+			if (orientation == "horizontal")
+				isHorizontal = true;
+		} else {
+			qDebug() << "PathFromXML failed";
+			return false;
+		}
 
-		if (current_segment.attribute("orientation") == "horizontal") {
+		if (isHorizontal) {
 			segments_x << segment_length;
 			segments_y << 0.0;
 		} else {

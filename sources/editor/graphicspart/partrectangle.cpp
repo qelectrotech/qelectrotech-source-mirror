@@ -84,15 +84,15 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 	@param xml_document : Xml document to use for create the xml element.
 	@return an xml element that describe this ellipse
 */
-const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
+QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("rect");
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
-	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
 
+	xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
+	xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
+	xml_element.appendChild(createXmlProperty(xml_document, "width", m_rect.width()));
+	xml_element.appendChild(createXmlProperty(xml_document, "height", m_rect.height()));
 	QRectF rect = m_rect.normalized();
 	qreal x = m_xRadius;
 	if (x > rect.width()/2) {
@@ -106,7 +106,10 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("rx", QString::number(m_xRadius));
 	xml_element.setAttribute("ry", QString::number(m_yRadius));
 
-	stylesToXml(xml_element);
+	xml_element.appendChild(createXmlProperty(xml_document, "rx", m_xRadius));
+	xml_element.appendChild(createXmlProperty(xml_document, "ry", m_yRadius));
+
+	stylesToXml(xml_document, xml_element);
 	return(xml_element);
 }
 
@@ -115,18 +118,45 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	Import the properties of this rectangle from a xml element.
 	@param qde : Xml document to use.
 */
-void PartRectangle::fromXml(const QDomElement &qde)
+bool PartRectangle::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-	setPos(mapFromScene(qde.attribute("x", "0").toDouble(),
-						qde.attribute("y", "0").toDouble()));
 
-	QRectF rect(QPointF(0,0), QSizeF(qde.attribute("width",  "0").toDouble(),
-									 qde.attribute("height", "0").toDouble()));
+	double x=0, y=0, w=0, h=0, rx=0, ry=0;
+	if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion)
+		return false;
+
+	setPos(mapFromScene(x, y));
+
+	if (propertyDouble(qde, "width", &w) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "width", &h) == PropertyFlags::NoValidConversion)
+		return false;
+
+	QRectF rect(QPointF(x,y), QSizeF(w, h));
 
 	setRect(rect.normalized());
-	setXRadius(qde.attribute("rx", "0").toDouble());
-	setYRadius(qde.attribute("ry", "0").toDouble());
+
+	if (propertyDouble(qde, "rx", &rx) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "ry", &ry) == PropertyFlags::NoValidConversion)
+		return false;
+
+	setXRadius(rx);
+	setYRadius(ry);
+
+	return true;
+}
+
+bool PartRectangle::valideXml(QDomElement& element) {
+	// parameters have default values so no value is not a non valid xml element
+	if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) |
+		(propertyDouble(element, "y") & PropertyFlags::NoValidConversion) |
+		(propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
+		(propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
+		(propertyDouble(element, "rx") & PropertyFlags::NoValidConversion) |
+		(propertyDouble(element, "ry") & PropertyFlags::NoValidConversion))
+		return false;
+	return true;
 }
 
 /**

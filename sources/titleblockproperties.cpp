@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -23,11 +23,7 @@
 	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
 	vides (date vide + useDate a UseDateValue).
 */
-TitleBlockProperties::TitleBlockProperties() :
-	date(),
-	useDate(UseDateValue),
-	display_at(Qt::BottomEdge),
-	collection (QET::QetCollection::Common)
+TitleBlockProperties::TitleBlockProperties()
 {
 }
 
@@ -69,13 +65,12 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 	return(!(*this == ip));
 }
 
-
 /**
-	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
-	@param e Element XML auquel seront ajoutes des attributs
+	@brief TitleBlockProperties::toXml
+	@param e
 */
-void TitleBlockProperties::toXml(QDomElement &e) const
-{
+void TitleBlockProperties::toXml(QDomElement &e) const {
+
 	e.setAttribute("author",   author);
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
@@ -92,7 +87,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const
 		e.setAttribute("titleblocktemplate", template_name);
 		e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
 	}
-	
+
 	if (context.keys().count()) {
 		QDomElement properties = e.ownerDocument().createElement("properties");
 		context.toXml(properties);
@@ -100,36 +95,50 @@ void TitleBlockProperties::toXml(QDomElement &e) const
 	}
 }
 
-/**
+QDomElement TitleBlockProperties::toXml(QDomDocument &d) const {
+	Q_UNUSED(d)
+	qDebug() << "NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+	return QDomElement();
+}
+
+/** RETURNS True
 	Importe le cartouche a partir des attributs XML de l'element e
 	@param e Element XML dont les attributs seront lus
 */
-void TitleBlockProperties::fromXml(const QDomElement &e) {
+bool TitleBlockProperties::fromXml(const QDomElement &e) {
+
+
 	// reads the historical fields
-	if (e.hasAttribute("author"))      author   = e.attribute("author");
-	if (e.hasAttribute("title"))       title    = e.attribute("title");
-	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
-	if (e.hasAttribute("plant"))       plant   = e.attribute("plant");
-	if (e.hasAttribute("locmach"))     locmach  = e.attribute("locmach");
-	if (e.hasAttribute("indexrev"))    indexrev  = e.attribute("indexrev");
-	if (e.hasAttribute("version"))     version   = e.attribute("version");
-	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
-	if (e.hasAttribute("auto_page_num")) auto_page_num = e.attribute("auto_page_num");
-	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
-	if (e.hasAttribute("displayAt")) display_at = (e.attribute("displayAt") == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
-	
-		// reads the template used to render the title block
-	if (e.hasAttribute("titleblocktemplate"))
-	{
-		template_name = e.attribute("titleblocktemplate");
-		collection = QET::qetCollectionFromString(e.attribute("titleblocktemplateCollection"));
+	propertyString(e, "author", &author);
+	propertyString(e, "title", &title);
+	propertyString(e, "filename", &filename);
+	propertyString(e, "plant", &plant);
+	propertyString(e, "locmach", &locmach);
+	propertyString(e, "indexrev", &indexrev);
+	propertyString(e, "version", &version);
+	propertyString(e, "folio", &folio);
+	propertyString(e, "auto_page_num", &auto_page_num);
+	QString date;
+	propertyString(e, "date", &date);
+	setDateFromString(date);
+
+	QString display_at_temp;
+	if (propertyString(e, "displayAt", &display_at_temp) == PropertyFlags::Success)
+		display_at = (display_at_temp == "bottom" ? Qt::BottomEdge : Qt::RightEdge); // otherwise it gets default in header file
+
+	// reads the template used to render the title block
+	if (propertyString(e, "titleblocktemplate", &template_name) == PropertyFlags::Success) {
+		QString tbc;
+		if (propertyString(e, "titleblocktemplateCollection", &tbc) == PropertyFlags::Success)
+			collection = QET::qetCollectionFromString(tbc);
 	}
-	
+
 	// reads the additional fields used to fill the title block
 	context.clear();
 	foreach (QDomElement e, QET::findInDomElement(e, "properties")) {
 		context.fromXml(e);
 	}
+	return true;
 }
 
 /**
@@ -161,7 +170,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	@param settings Parametres a lire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void TitleBlockProperties::fromSettings(QSettings &settings, const QString &prefix) {
+void TitleBlockProperties::fromSettings(const QSettings &settings, const QString &prefix) {
 	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();

@@ -78,56 +78,85 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 }
 
 /**
-	@brief PartEllipse::toXml
-	Export this ellipse in xml
-	@param xml_document : Xml document to use for create the xml element.
-	@return : an xml element that describe this ellipse
-*/
-const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
+ * @brief PartEllipse::toXml
+ * Export this ellipse in xml
+ * @param xml_document : Xml document to use for create the xml element.
+ * @return : an xml element that describe this ellipse
+ */
+QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element;
 	if (qFuzzyCompare(rect().width(), rect().height()))
 	{
 		xml_element = xml_document.createElement("circle");
-		xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
+		xml_element.appendChild(createXmlProperty(xml_document, "diameter", rect().width()));
 	}
 	else
 	{
 		xml_element = xml_document.createElement("ellipse");
-		xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-		xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+		xml_element.appendChild(createXmlProperty(xml_document, "width", rect().width()));
+		xml_element.appendChild(createXmlProperty(xml_document, "height", rect().height()));
 	}
 
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
+	xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
 
-	stylesToXml(xml_element);
+	stylesToXml(xml_document, xml_element);
 
 	return(xml_element);
 }
 
 /**
-	@brief PartEllipse::fromXml
-	Import the properties of this ellipse from a xml element.
-	@param qde : Xml document to use.
-*/
-void PartEllipse::fromXml(const QDomElement &qde)
+ * @brief PartEllipse::fromXml
+ * Import the properties of this ellipse from a xml element.
+ * @param qde : Xml document to use.
+ */
+bool PartEllipse::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-	qreal width, height;
+	double x=0, y=0, width=0, height=0;
 
 	if (qde.tagName() == "ellipse")
 	{
-		width = qde.attribute("width",  "0").toDouble();
-		height = qde.attribute("height", "0").toDouble();
+		if (propertyDouble(qde, "width", &width) == PropertyFlags::NoValidConversion ||
+			propertyDouble(qde, "height", &height) == PropertyFlags::NoValidConversion)
+			return false;
 	}
-	else
-		width = height = qde.attribute("diameter", "0").toDouble();
+	else {
+		if (propertyDouble(qde, "diameter", &width) == PropertyFlags::NoValidConversion)
+			return false;
+		height = width;
+	}
 
-	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
-								 qde.attribute("y", "0").toDouble()),
-					QSizeF(width, height));
+
+	if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
+		propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion)
+		return false;
+
+	m_rect = QRectF(mapFromScene(x, y), QSizeF(width, height));
+
+	return true;
+}
+
+bool PartEllipse::valideXml(QDomElement& element) {
+	if (element.tagName() == "ellipse")
+	{
+		if (propertyDouble(element, "width") & PropertyFlags::NoValidConversion ||
+			propertyDouble(element, "height") & PropertyFlags::NoValidConversion)
+			return false;
+	}
+	else {
+		if (propertyDouble(element, "diameter") & PropertyFlags::NoValidConversion)
+			return false;
+	}
+
+
+	if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) ||
+		(propertyDouble(element, "y") & PropertyFlags::NoValidConversion))
+		return false;
+
+	return true;
 }
 
 /**

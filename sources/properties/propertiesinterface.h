@@ -20,7 +20,11 @@
 
 #include <QString>
 #include <QSettings>
+#include <QColor>
 #include <QDomElement>
+#include <limits>
+#include "qet.h"
+#include <QUuid>
 
 /**
 	@brief The PropertiesInterface class
@@ -30,40 +34,66 @@
 class PropertiesInterface
 {
 	public:
-		PropertiesInterface();
-		virtual ~PropertiesInterface();
-		/**
-			@brief toSettings
-			Save properties to setting file.
-			@param settings : is use for prefix a word
-			befor the name of each paramètre
-			@param QString
-		*/
-		virtual void toSettings (QSettings &settings,
-					 const QString = QString()) const =0;
-		/**
-			@brief fromSettings
-			load properties to setting file.
-			@param settings : is use for prefix a word
-			befor the name of each paramètre
-			@param QString
-		*/
-		virtual void fromSettings (const QSettings &settings,
-					   const QString = QString()) =0;
-		/**
-			@brief toXml
-			Save properties to xml element
-			@param xml_document
-			@return QDomElement
-		*/
-		virtual QDomElement toXml (QDomDocument &xml_document) const =0;
-		/**
-			@brief fromXml
-			load properties to xml element
-			@param xml_element
-			@return true / false
-		*/
-		virtual bool fromXml (const QDomElement &xml_element) =0;
+	PropertiesInterface();
+	// Save/load properties to setting file. QString is use for prefix a word befor the name of each paramètre
+	virtual void toSettings	  (QSettings &settings, const QString& = QString()) const {Q_UNUSED(settings)};
+	virtual void fromSettings (const QSettings &settings, const QString& = QString()) {Q_UNUSED(settings)};
+	// Save/load properties to xml element
+	virtual QDomElement toXml		  (QDomDocument &xml_document) const =0;
+	virtual bool fromXml	  (const QDomElement &xml_element) =0;
+	static bool valideXml(QDomElement& element);
+
+	/*!
+	 * Use this functions to add properties to the xml document
+	 */
+	static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QString value);
+	static QDomElement createXmlProperty(QDomDocument &doc, const QString& name, const char* value);
+	static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const int value);
+	static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const double value);
+	static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const bool value);
+	static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value);
+	static QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QColor value);
+
+	static QDomElement property(const QDomElement& e, const QString& name);
+	static bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
+
+	enum PropertyFlags {
+		Success = 0,
+		NotFound = 1,
+		NoValidConversion = 2,
+		// = 4
+	};
+
+	/*!
+	 * Try not using the default Value feature. It is better to initialize the class members in the class definition!
+	 */
+	static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr);
+	static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr);
+	static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr);
+	static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr);
+	static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr);
+	static PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr);
+
+
+	static bool validXmlProperty(const QDomElement& e);
+
+	QVariant XmlProperty(const QDomElement& element);
+
+	/**
+		Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
+		en orientation. Si la chaine fait plusieurs caracteres, seul le
+		premier est pris en compte. En cas d'incoherence, Qet::North est
+		retourne.
+		@param s Chaine de caractere cense representer une orientation
+		@return l'orientation designee par la chaine de caractere
+	*/
+	static Qet::Orientation orientationFromString(const QString &s);
+
+	/**
+		@param o une orientation
+		@return une chaine de caractere representant l'orientation
+	*/
+	static QString orientationToString(Qet::Orientation o);
 };
 
 #endif // PROPERTIESINTERFACE_H
