@@ -781,7 +781,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
@@ -873,12 +873,12 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>Bus</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
@@ -1131,7 +1131,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/diagramview.cpp" line="469"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">(Dev) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="558"/>
@@ -1926,7 +1926,8 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="356"/>
         <source>Élement
 </source>
-        <translation>Bauteil</translation>
+        <translation>Bauteil
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="359"/>
@@ -1953,7 +1954,8 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Sous-type : %1
 </source>
-        <translation>Subtyp: %1</translation>
+        <translation>Subtyp: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="366"/>
@@ -3874,38 +3876,38 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
         <source>Fin 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ende 1:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
         <source>Fin 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ende 2:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Länge:</translation>
+        <translation>Länge:</translation>
     </message>
 </context>
 <context>
@@ -4735,12 +4737,12 @@ Querschnitt des Leiters: %1</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Kabel hinzufügen: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>Ajouter au bus: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zum Bus hinzufügen: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="415"/>
@@ -4889,72 +4891,72 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Druckoptionen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Zu druckende Folien:</translation>
+        <translation>Zu druckende Folien:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Alles auswählen</translation>
+        <translation>Alles auswählen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Auswahl aufheben</translation>
+        <translation>Auswahl aufheben</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="88"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Renderoptionen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="94"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Zeichnungsrahmen zeichnen</translation>
+        <translation>Zeichnungsrahmen anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="101"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Zeichnungskopf zeichnen</translation>
+        <translation>Zeichnungskopf anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Leiterfarben erhalten</translation>
+        <translation>Leiterfarben erhalten</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="115"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Bauteilanschlüsse zeichnen</translation>
+        <translation>Bauteilanschlüsse zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="125"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Druckoptionen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="131"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Folie an Blattgröße anpassen</translation>
+        <translation>Folie an Seitengröße anpassen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="141"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Gesamte Blattfläche verwenden</translation>
+        <translation>Gesamte Blattfläche verwenden</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="148"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn diese Option aktiviert ist, wird das Folio vergrößert oder verkleinert, um den gesamten druckbaren Bereich einer einzigen Seite auszufüllen.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn diese Option aktiviert ist, werden die Seitenränder ignoriert und das gesamte Blatt zum Drucken verwendet. Dies wird von Ihrem Drucker möglicherweise nicht unterstützt.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -4964,94 +4966,94 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Breite anpassen</translation>
+        <translation>Auf Seitenbreite anpassen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="234"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Folie anpassen</translation>
+        <translation>Auf ganze Seite anpassen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="243"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Verkleinern</translation>
+        <translation>Verkleinern</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="252"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Vergrößern</translation>
+        <translation>Vergrößern</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="261"/>
         <source>Paysage</source>
-        <translation type="unfinished">Querformat</translation>
+        <translation>Querformat</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="270"/>
         <source>Portrait</source>
-        <translation type="unfinished">Hochformat</translation>
+        <translation>Hochformat</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="279"/>
         <source>Première page</source>
-        <translation type="unfinished">Erste Folie</translation>
+        <translation>Erste Seite</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="288"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Vorherige Folie</translation>
+        <translation>Vorherige Seite</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="297"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Nächste Folie</translation>
+        <translation>Nächste Seite</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="306"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Letzte Folie</translation>
+        <translation>Letzte Seite</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="315"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Einzelseite anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="324"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Zwei Folien anzeigen</translation>
+        <translation>Zwei Seiten anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="333"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Alle Folien anzeigen</translation>
+        <translation>Alle Seiten anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="342"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Seite einrichten</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="57"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Druckoptionen</translation>
+        <translation>Druckoptionen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="84"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">Projekt</translation>
+        <translation>Projekt</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="113"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Drucken</translation>
+        <translation>Drucken</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="345"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Folie ohne Titel</translation>
+        <translation>Folie ohne Titel</translation>
     </message>
 </context>
 <context>
