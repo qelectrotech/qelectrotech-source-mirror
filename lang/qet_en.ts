@@ -2576,37 +2576,37 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
         <source>Centre :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
         <source>Vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
         <source>Horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
         <source>Diamètres :</source>
-        <translation type="unfinished"></translation>
+        <translation>Diameters :</translation>
     </message>
 </context>
 <context>
@@ -4907,17 +4907,17 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
         <source>Toutes les dates</source>
-        <translation type="unfinished"></translation>
+        <translation>All dates</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>À partir de la date du :</source>
-        <translation type="unfinished"></translation>
+        <translation>From the date of:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="113"/>
         <source>À la date du  :</source>
-        <translation type="unfinished"></translation>
+        <translation>In date of  :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="155"/>
@@ -5064,12 +5064,12 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Export in pdf</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="165"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
-        <translation type="unfinished"></translation>
+        <translation>Layout (not available on Windows for PDF export)</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
@@ -5079,12 +5079,12 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Exporter sous : </source>
-        <translation type="unfinished"></translation>
+        <translation>Export as : </translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Fichier (*.pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>File (*.pdf</translation>
     </message>
 </context>
 <context>
@@ -5787,13 +5787,13 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Export in pdf</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Export one or more folios of the current project</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
