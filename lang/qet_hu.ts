@@ -2583,37 +2583,37 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
         <source>Centre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Közép :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
         <source>Vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Függőleges :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
         <source>Horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vízszintes :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
         <source>Diamètres :</source>
-        <translation type="unfinished"></translation>
+        <translation>Átmérő :</translation>
     </message>
 </context>
 <context>
@@ -4919,17 +4919,17 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
         <source>Toutes les dates</source>
-        <translation type="unfinished"></translation>
+        <translation>Minden dátum</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>À partir de la date du :</source>
-        <translation type="unfinished"></translation>
+        <translation>A következő időponttól kezdve :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="113"/>
         <source>À la date du  :</source>
-        <translation type="unfinished"></translation>
+        <translation>A következő időpontban :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="155"/>
@@ -5076,12 +5076,12 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportálás PDF-be</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="165"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elrendezés (PDF-fájlok exportálásához nem érhető el Windows-ban)</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
@@ -5091,12 +5091,12 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Exporter sous : </source>
-        <translation type="unfinished"></translation>
+        <translation>Exportálás : </translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Fichier (*.pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl (*.pdf</translation>
     </message>
 </context>
 <context>
@@ -6261,13 +6261,13 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportálás PDF-be</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportálja a jelenlegi projekt egy vagy több tervlapját</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
