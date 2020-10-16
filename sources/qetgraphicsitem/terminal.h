@@ -20,6 +20,8 @@
 #include <QtWidgets>
 #include <QtXml>
 #include "qet.h"
+#include "propertiesinterface.h"
+
 class Conductor;
 class Diagram;
 class Element;
@@ -31,7 +33,7 @@ class TerminalData;
     plug point for conductors.
     This class handles all mouse events for connecting conductors
 */
-class Terminal : public QGraphicsObject
+class Terminal : public QGraphicsObject, public PropertiesInterface
 {
     Q_OBJECT
 
@@ -77,6 +79,9 @@ class Terminal : public QGraphicsObject
         Diagram  *diagram             () const;
         Element  *parentElement       () const;
         QUuid uuid                    () const;
+        int ID() const;
+        QPointF dockPos();
+        QPointF originPos();
 
         QList<Conductor *> conductors() const;
         Qet::Orientation orientation() const;
@@ -88,11 +93,12 @@ class Terminal : public QGraphicsObject
         void updateConductor();
         bool isLinkedTo(Terminal *);
         bool canBeLinkedTo(Terminal *);
+        void setID(int id);
 
         // methods related to XML import/export
-        static bool valideXml(QDomElement  &);
-        bool fromXml (QDomElement &);
-        QDomElement toXml (QDomDocument &) const;
+        static bool valideXml(const QDomElement  &);
+        bool fromXml (const QDomElement &) override;
+        QDomElement toXml (QDomDocument &) const override;
 
     protected:
         // methods related to events management
@@ -110,6 +116,7 @@ class Terminal : public QGraphicsObject
         static const qreal terminalSize;
         static const qreal Z;
         // Various static colors used for hover effects
+        // The assignement is in the cpp file
         /// default color
         static QColor neutralColor;
         /// color for legal actions
@@ -142,16 +149,17 @@ class Terminal : public QGraphicsObject
         */
         QRectF *br_{nullptr};
         /// Last terminal seen through an attached conductor
-        Terminal *previous_terminal_;
+        Terminal *previous_terminal_{nullptr};
         /// Whether the mouse pointer is hovering the terminal
-        bool hovered_;
+        bool hovered_{false};
         /// Color used for the hover effect
-        QColor hovered_color_;
+        QColor hovered_color_{Terminal::hovered_color_};
         /// Number of Terminal
         QString number_terminal_;
-        /// Name of Terminal
-        QString name_terminal_;
-        bool name_terminal_hidden;
+        bool name_terminal_hidden{true};
+
+        /// legacy id used by the conductor to find the terminal. From 0.8x on the uuid is used instead.
+        int m_id{-1};
 
     private:
         void init(QString number, QString name, bool hiddenName);
@@ -177,15 +185,7 @@ inline QString Terminal::number() const
     return(number_terminal_);
 }
 
-/**
-    @brief Terminal::name
-    @return the name of terminal.
-*/
-inline QString Terminal::name() const
 {
-    return(name_terminal_);
-}
-
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
                         const bool all_diagram = true);
 

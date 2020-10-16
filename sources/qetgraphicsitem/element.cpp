@@ -96,7 +96,8 @@ Element::Element(
         }
     }
     int elmt_state;
-    buildFromXml(location.xml(), &elmt_state);
+    qDebug() << "\tCollection Path: " << location.collectionPath();
+    buildFromXml(location.xml(), &elmt_state); // build from the collection definition
     if (state) {
         *state = elmt_state;
     }
@@ -387,7 +388,7 @@ void Element::drawHighlight(
 
 /**
     @brief Element::buildFromXml
-    Build this element from an xml description
+    Build this element from an xml description (from the collection)
     @param xml_def_elmt
     @param state
     Optional pointer which define the status of build
@@ -504,11 +505,15 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
                 if (qde.isNull())
                     continue;
 
-                if (parseElement(qde)) {
+                qDebug() << "\t\tElement.cpp:buildFromXml;parseElement: " << qde.tagName();
+                
+                if (parseElement(qde)) { // TODO: why lines are not parsed here?
+                    qDebug() << "\t\t\tParsing Element success";
                     ++ parsed_elements_count;
                 }
                 else
                 {
+                    qDebug() << "\t\t\tParsing Element no success";
                     if (state)
                         *state = 7;
                     m_state = QET::GIOK;
@@ -541,7 +546,6 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
         m_state = QET::GIOK;
         return(true);
     }
-}
 
 /**
     @brief Element::parseElement
@@ -644,13 +648,11 @@ DynamicElementTextItem *Element::parseDynamicText(
 */
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
-    TerminalData* data = new TerminalData();
-    if (!data->fromXml(dom_element)) {
-        delete data;
+    if (!Terminal::valideXml(dom_element))
         return nullptr;
-    }
 
-    Terminal *new_terminal = new Terminal(data, this);
+    Terminal *new_terminal = new Terminal(0, 0, Qet::Orientation::North, this); // does not matter which values are typed in here, because they get overwritten by the fromXML() function
+    new_terminal->fromXml(dom_element);
     m_terminals << new_terminal;
 
         //Sort from top to bottom and left to rigth
@@ -665,7 +667,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
             return (a->dockConductor().y() < b->dockConductor().y());
     });
 
-    return(new_terminal);
+    return(new_terminal); // TODO: makes no sense
 }
 
 /**
@@ -715,7 +717,7 @@ bool Element::fromXml(
         les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
         ce recensement servira lors de la mise en place des fils
     */
-    QList<QDomElement> liste_terminals;
+    QList<QDomElement> liste_terminals; // terminals in the element in the diagram
     foreach(QDomElement qde,
             QET::findInDomElement(e, "terminals", "terminal")) {
         if (Terminal::valideXml(qde)) liste_terminals << qde;
@@ -723,15 +725,29 @@ bool Element::fromXml(
 
     QHash<int, Terminal *> priv_id_adr;
     int terminals_non_trouvees = 0;
-    foreach(QGraphicsItem *qgi, childItems()) {
+    // The added childs from the collection now must match with the terminals from the diagram. Iterate through
+    // all Terminals in the collection and in the diagram to link them together
+    for(QGraphicsItem *qgi: childItems()) { // TODO: Where the Terminals are added as childs?
         if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
             bool terminal_trouvee = false;
-            foreach(QDomElement qde, liste_terminals) {
-                if (p -> fromXml(qde)) {
-                    priv_id_adr.insert(
-                            qde.attribute(
-                                "id").toInt(),
-                            p);
+            for(QDomElement qde: liste_terminals) {
+                // The position in the collection element definition is the origin position (originPos).
+                // The position in the diagram element definition  is the position where the conductor is connected (dock position)
+                // Therefore a simple operator overloading is not possible.
+                Terminal diagramTerminal(0,0, Qet::Orientation::East);
+                diagramTerminal.fromXml(qde);
+                QPointF dockPos1 = diagramTerminal.originPos(); // position here is directly the dock_elmt_ position (stored in the diagram)
+                QPointF dockPos2 = p->dockPos();
+                if (qFuzzyCompare(dockPos1.x(), dockPos2.x()) &&
+                    qFuzzyCompare(dockPos1.y(), dockPos2.y()) &&
+                    p->orientation() == diagramTerminal.orientation()) { // check if the part in the collection is the same as in the diagram stored
+                    qDebug() << "Matching Terminal found.";
+                    // store id for legacy purpose, because when opening a old project in the collection the terminal does not have an uuid. Therefore the id must be used
+                    if (p->uuid().isNull()) {
+                        p->setID(qde.attribute("id").toInt());
+                    }
+
+                    priv_id_adr.insert(qde.attribute("id").toInt(), p);
                     terminal_trouvee = true;
                     // We used to break here, because we did not expect
                     // several terminals to share the same position.
@@ -744,6 +760,7 @@ bool Element::fromXml(
 
     if (terminals_non_trouvees > 0)
     {
+        qDebug() << "element.cpp: Element::fromXML; Elements not found: " << terminals_non_trouvees;
         m_state = QET::GIOK;
         return(false);
     }
@@ -761,15 +778,15 @@ bool Element::fromXml(
         }
         // copie des associations id / adr
         foreach(int id_trouve, priv_id_adr.keys()) {
-            table_id_adr.insert(id_trouve,
+            table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
                         priv_id_adr.value(id_trouve));
         }
     }
 
     //load uuid of connected elements
-    QList <QDomElement> uuid_list = QET::findInDomElement(e,
-                                  "links_uuids",
-                                  "link_uuid");
+    QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
+    foreach (QDomElement qdo, uuid_list) tmp_uuids_link << qdo.attribute("uuid");
+    
     foreach (QDomElement qdo, uuid_list)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)    // ### Qt 6: remove
         tmp_uuids_link << qdo.attribute("uuid");
@@ -823,7 +840,7 @@ bool Element::fromXml(
 
         //************************//
         //***Dynamic texts item***//
-        //************************//
+        //************************// read from the diagram section
     for (const QDomElement& qde : QET::findInDomElement(
              e,
              "dynamic_texts",
@@ -837,7 +854,7 @@ bool Element::fromXml(
         //************************//
         //***Element texts item***//
         //************************//
-    QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
+    QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input"); // inputs in diagram section
 
         //First case, we check for the text item converted to dynamic text item
     const QList <DynamicElementTextItem *> conv_deti_list =
@@ -1194,18 +1211,7 @@ QDomElement Element::toXml(
     element.setAttribute("z", QString::number(this->zValue()));
     element.setAttribute("orientation", QString::number(orientation()));
 
-    /* get the first id to use for the bounds of this element
      * recupere le premier id a utiliser pour les bornes de cet element */
-    int id_terminal = 0;
-    if (!table_adr_id.isEmpty()) {
-        // trouve le plus grand id
-        int max_id_t = -1;
-        foreach (int id_t, table_adr_id.values()) {
-            if (id_t > max_id_t) max_id_t = id_t;
-        }
-        id_terminal = max_id_t + 1;
-    }
-
     // registration of device terminals
     // enregistrement des bornes de l'appareil
     QDomElement xml_terminals = document.createElement("terminals");
@@ -1214,8 +1220,10 @@ QDomElement Element::toXml(
     foreach(Terminal *t, terminals()) {
         // alors on enregistre la borne
         QDomElement terminal = t -> toXml(document);
-        terminal.setAttribute("id", id_terminal); // for backward compatibility
-        table_adr_id.insert(t, id_terminal ++);
+        if (t->ID() > 0) {
+            // for backward compatibility
+            terminal.setAttribute("id", t->ID()); // for backward compatibility
+        }
         xml_terminals.appendChild(terminal);
     }
     element.appendChild(xml_terminals);

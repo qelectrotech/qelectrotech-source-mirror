@@ -96,7 +96,7 @@ class Diagram : public QGraphicsScene
         /// margin around the diagram
         static const qreal margin;
         /// background color of diagram
-        static QColor background_color;
+        static QColor background_color; // default value set in cpp file
         /// Hash containing max values for folio sequential autonums in this diagram
         QHash <QString, QStringList> m_elmt_unitfolio_max;
         QHash <QString, QStringList> m_elmt_tenfolio_max;
@@ -282,6 +282,8 @@ class Diagram : public QGraphicsScene
         /// from the diagram within elements collection
         void findElementRequired(const ElementsLocation &);
 
+        /// Signal emitted when users wish to edit an element from the diagram
+        void editElementRequired(const ElementsLocation &);
         void diagramActivated();
 };
 Q_DECLARE_METATYPE(Diagram *)

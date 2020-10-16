@@ -161,7 +161,7 @@ void CustomElementGraphicPart::setAntialiased(const bool b)
     Each style separate by ; and name-style/value are separate by :
     @param qde : QDOmElement used to write the style.
 */
-void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
+void CustomElementGraphicPart::stylesToXml(QDomDocument &xml_document, QDomElement &qde) const
 {
     QString css_like_styles;
 
@@ -496,9 +496,8 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
     else if (_color == HTMLGrayBlackColor)  css_like_styles += "HTMLGrayBlack";
     else if (_color == NoneColor)  css_like_styles += "none";
 
-
-    qde.setAttribute("style", css_like_styles);
-    qde.setAttribute("antialias", _antialiased ? "true" : "false");
+    qde.appendChild(createXmlProperty(xml_document, "style", css_like_styles));
+    qde.appendChild(createXmlProperty(xml_document, "antialias", _antialiased ? "true" : "false"));
 }
 
 
@@ -511,6 +510,9 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
     resetStyles();
 
+    QString style_string;
+    propertyString(qde, "style", &style_string);
+    
         //Get the list of pair style/value
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)    // ### Qt 6: remove
     QStringList styles = qde.attribute("style").split(";", QString::SkipEmptyParts);

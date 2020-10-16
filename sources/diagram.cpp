@@ -735,14 +735,13 @@ QDomDocument Diagram::toXml(bool whole_content) {
     // schema properties
     // proprietes du schema
     if (whole_content) {
+        // TODO: compare with old version
         border_and_titleblock.titleBlockToXml(dom_root);
         border_and_titleblock.borderToXml(dom_root);
 
         // Default conductor properties
-        QDomElement default_conductor =
+        dom_root.appendChild(defaultConductorProperties.toXml(document));
                 document.createElement("defaultconductor");
-        defaultConductorProperties.toXml(default_conductor);
-        dom_root.appendChild(default_conductor);
 
         // Conductor autonum
         if (!m_conductors_autonum_name.isEmpty()) {
@@ -916,13 +915,11 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
     // correspondence table between the addresses of the terminals and their ids
     // table de correspondance entre les adresses des bornes et leurs ids
-    QHash<Terminal *, int> table_adr_id;
 
     if (!list_elements.isEmpty()) {
         auto dom_elements = document.createElement("elements");
         for (auto elmt : list_elements) {
-            dom_elements.appendChild(elmt->toXml(document,
-                                 table_adr_id));
+            dom_elements.appendChild(elmt->toXml(document));
         }
         dom_root.appendChild(dom_elements);
     }
@@ -930,8 +927,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
     if (!list_conductors.isEmpty()) {
         auto dom_conductors = document.createElement("conductors");
         for (auto cond : list_conductors) {
-            dom_conductors.appendChild(cond->toXml(document,
-                                   table_adr_id));
+            dom_conductors.appendChild(cond->toXml(document));
         }
         dom_root.appendChild(dom_conductors);
     }
@@ -991,7 +987,7 @@ void Diagram::folioSequentialsToXml(QHash<QString,
         QDomElement folioseq = doc->createElement(type);
         folioseq.setAttribute("title", i.key());
         for (int j = 0; j < i.value().size(); j++) {
-            folioseq.setAttribute(seq_type + QString::number(j+1),
+            folioseq.setAttribute(seq_type + QString::number(j+1), i.value().at(j));
                           i.value().at(j));
         }
         domElement->appendChild(folioseq);
@@ -1103,8 +1099,8 @@ Terminal* findTerminal(int conductor_index,
     QString element_index = "element" + QString::number(conductor_index);
     QString terminal_index = "terminal" + QString::number(conductor_index);
 
-    if (f.hasAttribute(element_index)) {
-        QUuid element_uuid = QUuid(f.attribute(element_index));
+    QUuid element_uuid;
+    if (PropertiesInterface::propertyUuid(conductor, element_index, &element_uuid) == PropertiesInterface::PropertyFlags::Success) {
         // element1 did not exist in the conductor part of the xml until prior 0.7
         // It is used as an indicator that uuid's are used to identify terminals
         bool element_found = false;
@@ -1112,7 +1108,8 @@ Terminal* findTerminal(int conductor_index,
             if (element->uuid() != element_uuid)
                 continue;
             element_found = true;
-            QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
+            QUuid terminal_uuid;
+            PropertiesInterface::propertyUuid(conductor, terminal_index, &terminal_uuid);
             for (auto terminal: element->terminals()) {
                 if (terminal->uuid() != terminal_uuid)
                     continue;
@@ -1136,9 +1133,11 @@ Terminal* findTerminal(int conductor_index,
                   << element_uuid
                   << "not found";
     } else {
-        // Backward compatibility.
-        // Until version 0.7 a generated id is used to link the terminal.
-        int id_p1 = f.attribute(terminal_index).toInt();
+        // Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
+        int id_p1 = -1;
+        if (PropertiesInterface::propertyInteger(conductor, terminal_index, &id_p1) != PropertiesInterface::PropertyFlags::Success) {
+            qDebug() << "diagramm.cpp:findTerminal(): Reading Id was not successfull";
+        }
         if (!table_adr_id.contains(id_p1)) {
             qDebug() << "Diagram::fromXml() : terminal id "
                  << id_p1
@@ -1146,6 +1145,7 @@ Terminal* findTerminal(int conductor_index,
         } else
             return table_adr_id.value(id_p1);
     }
+    qDebug() << "Diagram::findTerminal(): No terminal found.";
     return nullptr;
 }
 
@@ -1188,6 +1188,8 @@ bool Diagram::fromXml(QDomElement &document,
     // The first element must be a diagram
     if (root.tagName() != "diagram") return(false);
 
+    qDebug() << "Diagram::fromXml; Diagram: " << root.attribute("title");
+    
         // Read attributes of this diagram
     if (consider_informations)
     {
@@ -1202,6 +1204,7 @@ bool Diagram::fromXml(QDomElement &document,
         if (!default_conductor_elmt.isNull()) {
             defaultConductorProperties.fromXml(default_conductor_elmt);
         }
+
 
         // Load the autonum
         m_conductors_autonum_name = root.attribute("conductorAutonum");
@@ -1377,7 +1380,7 @@ bool Diagram::fromXml(QDomElement &document,
         Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
         Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
 
-        if (p1 && p2 && p1 != p2)
+        if (p1 && p2 && p1 != p2)// TODO: why the condition for unequal is required?
         {
             Conductor *c = new Conductor(p1, p2);
             if (c->isValid())
@@ -1388,6 +1391,8 @@ bool Diagram::fromXml(QDomElement &document,
             }
             else
                 delete c;
+        } else {
+            qDebug() << "Diagramm::fromXML(): No matching terminals found.";
         }
     }
 
