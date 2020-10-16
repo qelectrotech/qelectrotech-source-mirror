@@ -152,7 +152,7 @@ class DynamicElementTextItem : public DiagramTextItem
         QList<QMetaObject::Connection>
         m_formula_connection,
         m_update_slave_Xref_connection;
-        QColor m_user_color;
+        QColor m_user_color{QColor()};
         bool
         m_frame = false,
         m_first_scene_change = true;

@@ -19,6 +19,7 @@
 #define CONDUCTOR_H
 
 #include "conductorproperties.h"
+#include "propertiesinterface.h"
 #include <QGraphicsPathItem>
 #include "assignvariables.h"
 
@@ -39,7 +40,7 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
     This class represents a conductor, i.e. a wire between two element
     terminals.
 */
-class Conductor : public QGraphicsObject
+class Conductor : public QGraphicsObject, public PropertiesInterface
 {
     Q_OBJECT
 
@@ -100,11 +101,9 @@ class Conductor : public QGraphicsObject
 
     public:
         static bool valideXml (QDomElement &);
-        bool fromXml (QDomElement &);
-        QDomElement toXml (
-                QDomDocument &,
-                QHash<Terminal *,
-                int> &) const;
+        bool        fromXml   (const QDomElement &) override;
+        //QDomElement toXml     (QDomDocument &, QHash<Terminal *, int> &) const;
+        QDomElement toXml     (QDomDocument &doc) const override;
     private:
         bool pathFromXml(const QDomElement &);
 
@@ -181,28 +180,28 @@ class Conductor : public QGraphicsObject
         
         QVector<QetGraphicsHandlerItem *> m_handler_vector;
         int m_vector_index = -1;
-        bool m_mouse_over;
+        bool m_mouse_over{false};
             /// Functional properties
         ConductorProperties m_properties;
             /// Text input for non simple, non-singleline conductors
-        ConductorTextItem *m_text_item;
+        ConductorTextItem *m_text_item{nullptr};
             /// Segments composing the conductor
-        ConductorSegment *segments;
+        ConductorSegment *segments{nullptr};
             /// Attributs related to mouse interaction
-        bool m_moving_segment;
+        bool m_moving_segment{false};
         int moved_point;
         qreal m_previous_z_value;
         ConductorSegment *m_moved_segment;
         QPointF before_mov_text_pos_;
             /// Whether the conductor was manually modified by users
-        bool modified_path;
+        bool modified_path{false};
             /// Whether the current profile should be saved as soon as possible
-        bool has_to_save_profile;
+        bool has_to_save_profile{false};
             /// conductor profile: "photography" of what the conductor is supposed to look
             /// like - there is one profile per kind of traject
         ConductorProfilesGroup conductor_profiles;
             /// Define whether and how the conductor should be highlighted
-        Highlight must_highlight_;
+        Highlight must_highlight_{Conductor::None};
         bool m_valid;
         bool m_freeze_label = false;
 

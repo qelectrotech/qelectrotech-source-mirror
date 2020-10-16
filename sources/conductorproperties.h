@@ -22,13 +22,15 @@
 #include <QColor>
 #include <QSettings>
 
+#include "propertiesinterface.h"
+
 class QPainter;
 
 /**
     @brief The SingleLineProperties class
     This class represents the properties of a singleline conductor.
 */
-class SingleLineProperties {
+class SingleLineProperties: public PropertiesInterface {
     public:
     SingleLineProperties();
     virtual ~SingleLineProperties();
@@ -37,23 +39,24 @@ class SingleLineProperties {
     unsigned short int phasesCount();
     bool isPen() const;
     void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-    void toXml(QDomElement &) const;
-    void fromXml(QDomElement &);
+    QDomElement toXml(QDomDocument& doc) const override;
+    bool fromXml(const QDomElement &) override;
+    static bool valideXml(QDomElement& element);
     void toSettings(QSettings &, const QString & = QString()) const;
     void fromSettings(QSettings &, const QString & = QString());
 
     /// Whether the singleline conductor should display the ground symbol
-    bool hasGround;
+    bool hasGround{true};
     /// Whether the singleline conductor should display the neutral symbol
-    bool hasNeutral;
+    bool hasNeutral{true};
     /// Protective Earth Neutral: visually merge neutral and ground
-    bool is_pen;
+    bool is_pen{false};
 
     int operator==(const SingleLineProperties &) const;
     int operator!=(const SingleLineProperties &) const;
 
     private:
-    unsigned short int phases;
+    unsigned short int phases{1};
     void drawGround (QPainter *, QET::ConductorSegmentType, QPointF, qreal);
     void drawNeutral(QPainter *, QPointF, qreal);
     void drawPen(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
@@ -64,7 +67,7 @@ class SingleLineProperties {
     This class represents the functional properties of a particular conductor,
     i.e. properties other than path and terminals.
 */
-class ConductorProperties
+class ConductorProperties: public PropertiesInterface
 {
     public:
         ConductorProperties();
@@ -80,12 +83,12 @@ class ConductorProperties
 
 
         //Attributes
-        ConductorType type;
+        ConductorType type{ConductorType::Single};
 
-        QColor
-        color,
-        m_color_2,
-        text_color;
+        // TODO: set default values!
+        QColor        color{QColor(Qt::black)},
+                m_color_2{QColor(Qt::black)},
+                text_color{QColor(Qt::black)};
 
         QString
         text,
@@ -97,31 +100,32 @@ class ConductorProperties
         m_bus,
         m_cable;
 
-        int
+        int text_size{9},
         text_size,
         m_dash_size = 1;
 
-        double
+            double  cond_size{1},
         cond_size,
         verti_rotate_text,
         horiz_rotate_text;
 
-        bool
-        m_show_text,
-        m_one_text_per_folio,
+        bool    m_show_text{true},
+                m_one_text_per_folio{true},
         m_bicolor = false;
 
-        Qt::Alignment
+        Qt::Alignment 
+        m_horizontal_alignment = Qt::AlignBottom,
         m_horizontal_alignment = Qt::AlignBottom,
         m_vertical_alignment = Qt::AlignRight;
 
-        Qt::PenStyle style;
+        Qt::PenStyle style{Qt::PenStyle::SolidLine};
 
         SingleLineProperties singleLineProperties;
 
         // methods
-        void toXml(QDomElement &) const;
-        void fromXml(QDomElement &);
+        QDomElement toXml(QDomDocument &doc) const override;
+        bool fromXml(const QDomElement &) override;
+        static bool valideXml(QDomElement& element);
         void toSettings(QSettings &, const QString & = QString()) const;
         void fromSettings(QSettings &, const QString & = QString());
         static QString typeToString(ConductorType);

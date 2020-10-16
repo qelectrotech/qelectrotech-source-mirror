@@ -23,11 +23,7 @@
 /**
     Constructeur par defaut
 */
-SingleLineProperties::SingleLineProperties() :
-    hasGround(true),
-    hasNeutral(true),
-    is_pen(false),
-    phases(1)
+SingleLineProperties::SingleLineProperties()
 {
 }
 
@@ -215,12 +211,17 @@ void SingleLineProperties::drawPen(QPainter *painter,
     ajoutes a l'element e.
     @param e Element XML auquel seront ajoutes des attributs
 */
-void SingleLineProperties::toXml(QDomElement &e) const
-{
-    e.setAttribute("ground",  hasGround  ? "true" : "false");
-    e.setAttribute("neutral", hasNeutral ? "true" : "false");
-    e.setAttribute("phase",   phases);
-    if (isPen()) e.setAttribute("pen", "true");
+QDomElement SingleLineProperties::toXml(QDomDocument &doc) const {
+
+    QDomElement e = doc.createElement("SingleLine");
+    e.appendChild(createXmlProperty(doc, "ground", hasGround));
+    e.appendChild(createXmlProperty(doc, "neutral", hasNeutral));
+    e.appendChild(createXmlProperty(doc, "phase", phases));
+
+    if (isPen())
+        e.appendChild(createXmlProperty(doc, "pen", true));
+
+    return e;
 }
 
 /**
@@ -228,11 +229,36 @@ void SingleLineProperties::toXml(QDomElement &e) const
     de l'element e
     @param e Element XML dont les attributs seront lus
 */
-void SingleLineProperties::fromXml(QDomElement &e) {
-    hasGround  = e.attribute("ground")  == "true";
-    hasNeutral = e.attribute("neutral") == "true";
-    setPhasesCount(e.attribute("phase").toInt());
-    is_pen = (hasGround && hasNeutral && e.attribute("pen", "false") == "true");
+bool SingleLineProperties::fromXml(const QDomElement &e) {
+    if (propertyBool(e, "ground", &hasGround) != PropertyFlags::Success ||
+        propertyBool(e, "neutral", &hasNeutral) != PropertyFlags::Success)
+        return false;
+
+    int phase;
+    if (propertyInteger(e, "phase", &phase) != PropertyFlags::Success)
+        return false;
+    setPhasesCount(phase);
+
+    bool pen;
+    if (propertyBool(e, "pen", &pen) != PropertyFlags::Success)
+        return false;
+    is_pen = (hasGround && hasNeutral && pen);
+
+    return true;
+}
+
+bool SingleLineProperties::valideXml(QDomElement& e) {
+    if (propertyBool(e, "ground") != PropertyFlags::Success ||
+        propertyBool(e, "neutral") != PropertyFlags::Success)
+        return false;
+
+    if (propertyInteger(e, "phase") != PropertyFlags::Success)
+        return false;
+
+    if (propertyBool(e, "pen") != PropertyFlags::Success)
+        return false;
+
+    return true;
 }
 
 /**
@@ -266,98 +292,105 @@ ConductorProperties::~ConductorProperties()
     Export conductor propertie, in the XML element 'e'
     @param e the xml element
 */
-void ConductorProperties::toXml(QDomElement &e) const
+QDomElement ConductorProperties::toXml(QDomDocument& doc) const
 {
-    e.setAttribute("type", typeToString(type));
 
-    if (color != QColor(Qt::black))
-        e.setAttribute("color", color.name());
+    QDomElement e = doc.createElement("defaultconductor");
 
-    e.setAttribute("bicolor", m_bicolor? "true" : "false");
-    e.setAttribute("color2", m_color_2.name());
-    e.setAttribute("dash-size", QString::number(m_dash_size));
+    e.appendChild(createXmlProperty(doc, "type", typeToString(type)));
+    e.appendChild(createXmlProperty(doc, "color", color));
+
+    e.appendChild(createXmlProperty(doc, "bicolor", m_bicolor));
+    e.appendChild(createXmlProperty(doc, "color2", m_color_2));
+    e.appendChild(createXmlProperty(doc, "dash-size", m_dash_size));
 
     if (type == Single)
-        singleLineProperties.toXml(e);
+        e.appendChild(singleLineProperties.toXml(doc));
 
-    e.setAttribute("num", text);
-    e.setAttribute("text_color", text_color.name());
-    e.setAttribute("formula", m_formula);
-    e.setAttribute("cable", m_cable);
-    e.setAttribute("bus", m_bus);
-    e.setAttribute("function", m_function);
-    e.setAttribute("tension_protocol", m_tension_protocol);
-    e.setAttribute("conductor_color", m_wire_color);
-    e.setAttribute("conductor_section", m_wire_section);
-    e.setAttribute("numsize", QString::number(text_size));
-    e.setAttribute("condsize", QString::number(cond_size));
-    e.setAttribute("displaytext", m_show_text);
-    e.setAttribute("onetextperfolio", m_one_text_per_folio);
-    e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
-    e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
-
+    e.appendChild(createXmlProperty(doc, "num", text));
+    e.appendChild(createXmlProperty(doc, "text_color", text_color));
+    e.appendChild(createXmlProperty(doc, "formula", m_formula));
+    e.appendChild(createXmlProperty(doc, "function", m_function));
+    e.appendChild(createXmlProperty(doc, "tension_protocol", m_tension_protocol));
+    e.appendChild(createXmlProperty(doc, "conductor_color", m_wire_color));
+    e.appendChild(createXmlProperty(doc, "conductor_section", m_wire_section));
+    e.appendChild(createXmlProperty(doc, "numsize", text_size));
+    e.appendChild(createXmlProperty(doc, "condsize", cond_size));
+    e.appendChild(createXmlProperty(doc, "displaytext", m_show_text));
+    e.appendChild(createXmlProperty(doc, "onetextperfolio", m_one_text_per_folio));
+    e.appendChild(createXmlProperty(doc, "onetextperfolio", verti_rotate_text));
+    e.appendChild(createXmlProperty(doc, "horizrotatetext", horiz_rotate_text));
+// TODO: implement
+//e.setAttribute("cable", m_cable);
+// e.setAttribute("bus", m_bus);
     QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-    e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
-    e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
+    e.appendChild(createXmlProperty(doc, "horizontal-alignment", me.valueToKey(m_horizontal_alignment)));
+    e.appendChild(createXmlProperty(doc, "vertical-alignment", me.valueToKey(m_vertical_alignment)));
 
     QString conductor_style = writeStyle();
     if (!conductor_style.isEmpty())
-        e.setAttribute("style", conductor_style);
+        e.appendChild(createXmlProperty(doc, "style", conductor_style));
+
+    return e;
 }
 
 
-/**
+/** RETURNS True
     @brief ConductorProperties::fromXml
     Import conductor propertie, from the attribute of the xml element 'e'
     @param e the xml document
 */
-void ConductorProperties::fromXml(QDomElement &e)
+bool ConductorProperties::fromXml(const QDomElement &e)
 {
         // get conductor color
-    QColor xml_color= QColor(e.attribute("color"));
-    color = (xml_color.isValid()? xml_color : QColor(Qt::black));
-
-    QString bicolor_str = e.attribute("bicolor", "false");
-    m_bicolor = bicolor_str == "true"? true : false;
-
-    QColor xml_color_2 = QColor(e.attribute("color2"));
-    m_color_2 = xml_color_2.isValid()? xml_color_2 : QColor(Qt::black);
-
-    m_dash_size = e.attribute("dash-size", QString::number(1)).toInt();
+    propertyColor(e, "color", &color);
+    propertyBool(e, "bicolor", &m_bicolor);
+    propertyColor(e, "color2", &m_color_2);
+    propertyInteger(e, "dash-size", &m_dash_size);
 
         // read style of conductor
-    readStyle(e.attribute("style"));
+    QString style_string;
+    propertyString(e, "style", &style_string);
+    readStyle(style_string);
 
-    if (e.attribute("type") == typeToString(Single))
+    QString type_t;
+    if (propertyString(e, "type", &type_t) == PropertyFlags::Success) {
+        if (type_t == typeToString(Single))
     {
             // get specific properties for single conductor
         singleLineProperties.fromXml(e);
         type = Single;
     }
-    else
+        else if (type_t == typeToString(Multi))
         type = Multi;
+        else {
+            //Keep retrocompatible with version older than 0,4
+            //If the propertie @type is simple (removed since QET 0,4), we set text no visible.
+            //@TODO remove this code for qet 0.6 or later
 
-    text                 = e.attribute("num");
+            if (type_t == "simple") m_show_text = false;
+        }
+    }
+
+    propertyString(e, "num", &text);
+    // TODO: implement:
+    //m_cable              = e.attribute("cable");
+    //m_bus                = e.attribute("bus");
     // get text color
-    QColor xml_text_color= QColor(e.attribute("text_color"));
-    text_color = (xml_text_color.isValid()? xml_text_color : QColor(Qt::black));
-    m_formula            = e.attribute("formula");
-    m_cable              = e.attribute("cable");
-    m_bus                = e.attribute("bus");
-    m_function           = e.attribute("function");
-    m_tension_protocol   = e.attribute("tension_protocol");
-    m_wire_color         = e.attribute("conductor_color");
-    m_wire_section       = e.attribute("conductor_section");
-    text_size            = e.attribute("numsize", QString::number(9)).toInt();
-    cond_size            = e.attribute("condsize", QString::number(1)).toDouble();
-    m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
-    m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
-    verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
-    horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
+    propertyColor(e, "text_color", &text_color);
+    propertyString(e, "formula", &m_formula);
+    propertyString(e, "function", &m_function);
+    propertyString(e, "tension_protocol", &m_tension_protocol);
+    propertyString(e, "conductor_color", &m_wire_color);
+    propertyString(e, "conductor_section", &m_wire_section);
+    propertyInteger(e, "numsize", &text_size);
+    propertyDouble(e, "condsize", &cond_size);
+    propertyBool(e, "displaytext", &m_show_text);
+    propertyBool(e, "onetextperfolio", &m_one_text_per_folio);
+    propertyDouble(e, "vertirotatetext", &verti_rotate_text);
+    propertyDouble(e, "horizrotatetext", &horiz_rotate_text);
 
     QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-    m_horizontal_alignment = Qt::Alignment(
-                me.keyToValue(
                     e.attribute(
                         "horizontal-alignment",
                         "AlignBottom"
@@ -369,13 +402,38 @@ void ConductorProperties::fromXml(QDomElement &e)
                         "AlignRight"
                         ).toStdString().data()));
 
-    //Keep retrocompatible with version older than 0,4
-    //If the propertie @type is simple (removed since QET 0,4), we set text no visible.
-    //@TODO remove this code for qet 0.6 or later
-#if TODO_LIST
-#pragma message("@TODO remove this code for qet 0.6 or later")
-#endif
-    if (e.attribute("type") == "simple") m_show_text = false;
+    QString alinment_temp;
+    if (propertyString(e, "horizontal-alignment", &alinment_temp) == PropertyFlags::Success)
+        m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
+    if (propertyString(e, "vertical-alignment", &alinment_temp) == PropertyFlags::Success)
+        m_vertical_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
+
+    return true;
+}
+
+bool ConductorProperties::valideXml(QDomElement& e) {
+    if (propertyColor(e, "color") ||
+        propertyBool(e, "bicolor") ||
+        propertyColor(e, "color2") ||
+        propertyInteger(e, "dash-size") ||
+        propertyString(e, "type") ||
+        propertyString(e, "num") ||
+        propertyColor(e, "text_color") ||
+        propertyString(e, "formula") ||
+        propertyString(e, "function") ||
+        propertyString(e, "tension_protocol") ||
+        propertyString(e, "conductor_color") ||
+        propertyString(e, "conductor_section") ||
+        propertyInteger(e, "numsize") ||
+        propertyDouble(e, "condsize") ||
+        propertyBool(e, "displaytext") ||
+        propertyBool(e, "onetextperfolio") ||
+        propertyDouble(e, "vertirotatetext") ||
+        propertyDouble(e, "horizrotatetext") ||
+        propertyString(e, "horizontal-alignment") ||
+        propertyString(e, "vertical-alignment"))
+        return false;
+    return true;
 }
 
 /**
@@ -417,7 +475,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
     @param settings Parametres a lire
     @param prefix prefixe a ajouter devant les noms des parametres
 */
-void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix)
+void ConductorProperties::fromSettings(const QSettings &settings, const QString &prefix)
 {
     QColor settings_color = QColor(settings.value(prefix + "color").toString());
     color = (settings_color.isValid()? settings_color : QColor(Qt::black));

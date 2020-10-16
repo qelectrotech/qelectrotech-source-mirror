@@ -109,22 +109,24 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
     @param xml_document : Xml document to use for create the xml element.
     @return an xml element that describe this line
 */
-const QDomElement PartLine::toXml(QDomDocument &xml_document) const
+QDomElement PartLine::toXml(QDomDocument &xml_document) const
 {
     QPointF p1(sceneP1());
     QPointF p2(sceneP2());
 
     QDomElement xml_element = xml_document.createElement("line");
-    xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
-    xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
-    xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
-    xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
-    xml_element.setAttribute("end1", Qet::endTypeToString(first_end));
-    xml_element.setAttribute("length1", QString("%1").arg(first_length));
-    xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
-    xml_element.setAttribute("length2", QString("%1").arg(second_length));
 
-    stylesToXml(xml_element);
+    xml_element.appendChild(createXmlProperty(xml_document, "x1", p1.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y1", p1.y()));
+    xml_element.appendChild(createXmlProperty(xml_document, "x2", p2.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y2", p2.y()));
+
+    xml_element.appendChild(createXmlProperty(xml_document, "end1", Qet::endTypeToString(first_end)));
+    xml_element.appendChild(createXmlProperty(xml_document, "length1", first_length));
+    xml_element.appendChild(createXmlProperty(xml_document, "end2", Qet::endTypeToString(second_end)));
+    xml_element.appendChild(createXmlProperty(xml_document, "length2", second_length));
+    
+    stylesToXml(xml_document, xml_element);
     return(xml_element);
 }
 
@@ -133,17 +135,48 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
     Import the properties of this line from a xml element.
     @param qde : Xml document to use
 */
-void PartLine::fromXml(const QDomElement &qde) {
+bool PartLine::fromXml(const QDomElement &qde) {
     stylesFromXml(qde);
-    m_line = QLineF(mapFromScene(qde.attribute("x1", "0").toDouble(),
-                                 qde.attribute("y1", "0").toDouble()),
-                    mapFromScene(qde.attribute("x2", "0").toDouble(),
-                                 qde.attribute("y2", "0").toDouble()));
 
-    first_end     = Qet::endTypeFromString(qde.attribute("end1"));
-    first_length  = qde.attribute("length1", "1.5").toDouble();
-    second_end    = Qet::endTypeFromString(qde.attribute("end2"));
-    second_length = qde.attribute("length2", "1.5").toDouble();
+    double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+    if (propertyDouble(qde, "x1", &x1) == PropertyFlags::NoValidConversion ||
+    propertyDouble(qde, "y1", &y1) == PropertyFlags::NoValidConversion ||
+    propertyDouble(qde, "x2", &x2) == PropertyFlags::NoValidConversion ||
+    propertyDouble(qde, "y2", &y2) == PropertyFlags::NoValidConversion)
+        return false;
+
+    m_line = QLineF(mapFromScene(x1, y1),
+                    mapFromScene(x2, y2));
+
+    QString s;
+    if (propertyString(qde, "end1", &s) != PropertyFlags::Success)
+        return false;
+    first_end = Qet::endTypeFromString(s);
+
+    if (propertyString(qde, "end2", &s) != PropertyFlags::Success)
+        return false;
+
+    first_end = Qet::endTypeFromString(s);
+
+    if (propertyDouble(qde, "length1", &first_length) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "length2", &second_length) == PropertyFlags::NoValidConversion)
+        return false;
+
+    return true;
+}
+
+bool PartLine::valideXml(QDomElement& element) const {
+    if (propertyDouble(element, "x1") ||
+        propertyDouble(element, "y1") ||
+        propertyDouble(element, "x2") ||
+        propertyDouble(element, "y2") ||
+        propertyString(element, "end1") ||
+        propertyString(element, "end2") ||
+        propertyDouble(element, "length1") ||
+        propertyDouble(element, "length2") )
+        return false;
+
+    return true;
 }
 
 /**

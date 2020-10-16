@@ -75,9 +75,10 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
         void startUserTransformation(const QRectF &initial_selection_rect) override;
         void handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) override;
 
-        const QDomElement toXml(QDomDocument &dom_doc) const override;
-        void fromXml(const QDomElement &dom_elmt) override;
+        QDomElement toXml(QDomDocument &dom_doc) const override;
+        bool fromXml(const QDomElement &dom_elmt) override;
         void fromTextFieldXml(const QDomElement &dom_element);
+        static bool valideXml(QDomElement& dom_elmt);
 
         DynamicElementTextItem::TextFrom textFrom() const;
         void setTextFrom (DynamicElementTextItem::TextFrom text_from);
@@ -116,7 +117,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
                 m_info_name,
                 m_composite_text;
         DynamicElementTextItem::TextFrom m_text_from = DynamicElementTextItem::UserText;
-        QUuid m_uuid;
+        QUuid m_uuid{QUuid::createUuid()};
         bool m_frame = false,
              m_first_add = true,
              m_block_alignment = false;
