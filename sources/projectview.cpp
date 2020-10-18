@@ -521,7 +521,7 @@ void ProjectView::moveDiagramUpTop(DiagramView *diagram_view)
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, diagram_views().size());
+	m_tab->tabBar()->moveTab(diagram_view_position, 0);
 }
 
 /*
