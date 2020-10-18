@@ -488,7 +488,7 @@ void ElementPictureFactory::parsePolygon(const QDomElement &dom, QPainter &paint
 
 void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter, ElementPictureFactory::primitives &prim) const
 {
-	Q_UNUSED(prim);
+	Q_UNUSED(prim)
 
 	if (dom.tagName() != "text") {
 		return;
@@ -571,7 +571,8 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 #endif
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
 #endif
-	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-z-]+)$");
+
+	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$");
 	if (!rx.isValid())
 	{
 		qWarning() <<QObject::tr("this is an error in the code")
@@ -579,12 +580,11 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 			  << rx.patternErrorOffset();
 		return;
 	}
-	for (QString style : styles) {
+	for (auto style : styles)
+	{
 		QRegularExpressionMatch match = rx.match(style);
-		if (!match.hasMatch())
-		{
-			qDebug()<<"no Match"
-			       <<style;
+		if (!match.hasMatch()) {
+			qDebug() << "no Match" << style;
 		}else {
 			QString style_name = match.captured("name");
 			QString style_value = match.captured("value");

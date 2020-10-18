@@ -523,11 +523,16 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 
 		//Check each pair of style
 	QRegularExpression rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
-	foreach (QString style, styles)
+	for (auto style : styles)
 	{
-		if (rx!=QRegularExpression(style)) continue;
-		QString style_name = rx.namedCaptureGroups().at(1);
-		QString style_value = rx.namedCaptureGroups().at(2);
+		auto rx_match = rx.match(style);
+		if (!rx_match.hasMatch()) {
+			continue;
+		}
+
+		auto style_name = rx_match.captured(1);
+		auto style_value = rx_match.captured(2);
+
 		if (style_name == "line-style")
 		{
 			if      (style_value == "dashed")     _linestyle = DashedStyle;

@@ -448,11 +448,15 @@ void StyleEditor::updateForm()
 
 	if (part)
 	{
-		antialiasing -> setChecked(part -> antialiased());
-		outline_color -> setCurrentIndex(part -> color());
-		line_style    -> setCurrentIndex(part -> lineStyle());
-		size_weight   -> setCurrentIndex(part -> lineWeight());
-		filling_color -> setCurrentIndex(part -> filling());
+		antialiasing  ->setChecked(part -> antialiased());
+		outline_color ->removeItem(13); //Remove the separator for set the good index at the line below
+		outline_color ->setCurrentIndex(part->color());
+		outline_color ->insertSeparator(13);
+		line_style    ->setCurrentIndex(part -> lineStyle());
+		size_weight   ->setCurrentIndex(part -> lineWeight());
+		filling_color ->removeItem(13); //Remove the separator for set the good index at the line below
+		filling_color ->setCurrentIndex(part -> filling());
+		filling_color ->insertSeparator(13);
 	}
 	else if (m_part_list.size())
 	{
@@ -463,7 +467,7 @@ void StyleEditor::updateForm()
 		size_weight   -> setCurrentIndex(first_part -> lineWeight());
 		filling_color -> setCurrentIndex(first_part -> filling());
 
-		foreach (CustomElementGraphicPart *cegp, m_part_list)
+		for (auto cegp : m_part_list)
 		{
 			if (first_part -> antialiased() != cegp -> antialiased()) antialiasing -> setChecked(false);
 			if (first_part -> color()       != cegp -> color())      outline_color -> setCurrentIndex(-1);

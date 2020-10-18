@@ -61,7 +61,7 @@ PartPolygon::~PartPolygon()
 */
 void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
-	Q_UNUSED(widget);
+	Q_UNUSED(widget)
 
 	applyStylesToQPainter(*painter);
 

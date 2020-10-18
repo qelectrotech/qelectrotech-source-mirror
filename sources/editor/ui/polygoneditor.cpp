@@ -90,23 +90,25 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 {
 	if (!new_part)
 	{
-		if (m_part)
-		{
+		if (m_part) {
 			disconnectChangeConnections();
+			m_style->setPart(nullptr);
 		}
 		m_part = nullptr;
 		return(true);
 	}
 	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))
 	{
-		if (m_part == part_polygon) return true;
-		if (m_part)
-		{
+		if (m_part == part_polygon) {
+			return true;
+		}
+		if (m_part) {
 			disconnectChangeConnections();
 		}
 		m_part = part_polygon;
 		updateForm();
 		setUpChangeConnections();
+		m_style->setPart(m_part);
 		return(true);
 	}
 	return(false);
