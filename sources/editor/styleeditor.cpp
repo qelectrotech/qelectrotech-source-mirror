@@ -454,9 +454,9 @@ void StyleEditor::updateForm()
 		outline_color ->insertSeparator(13);
 		line_style    ->setCurrentIndex(part -> lineStyle());
 		size_weight   ->setCurrentIndex(part -> lineWeight());
-		filling_color ->removeItem(13); //Remove the separator for set the good index at the line below
+		filling_color ->removeItem(14); //Remove the separator for set the good index at the line below
 		filling_color ->setCurrentIndex(part -> filling());
-		filling_color ->insertSeparator(13);
+		filling_color ->insertSeparator(14);
 	}
 	else if (m_part_list.size())
 	{
