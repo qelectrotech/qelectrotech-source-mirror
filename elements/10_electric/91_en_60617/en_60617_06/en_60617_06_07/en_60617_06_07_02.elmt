@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="86" version="0.70" width="70" type="element" height="120">
+<definition link_type="simple" hotspot_x="65" hotspot_y="86" version="0.70" width="70" type="element" height="120">
     <uuid uuid="{d45b636c-fd8f-4f19-a537-99bda1708ecb}"/>
     <names>
         <name lang="fr">Moteur synchrone monophasé</name>

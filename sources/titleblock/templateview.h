@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -35,7 +35,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	// constructors, destructor
 	public:
 	TitleBlockTemplateView(QWidget * = nullptr);
-	TitleBlockTemplateView(QGraphicsScene *, QWidget * = nullptr);
+	TitleBlockTemplateView(QGraphicsScene *,
+			       QWidget * = nullptr);
 	~TitleBlockTemplateView() override;
 	private:
 	TitleBlockTemplateView(const TitleBlockTemplateView &);
@@ -99,7 +100,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	virtual qreal zoomFactor() const;
 	virtual void fillWithEmptyCells();
 	bool event(QEvent *) override;
-	virtual void normalizeCells(QList<TitleBlockCell> &, int x = 0, int y = 0) const;
+	virtual void normalizeCells(
+			QList<TitleBlockCell> &, int x = 0, int y = 0) const;
 	
 	signals:
 	void selectedCellsChanged(QList<TitleBlockCell *>);
@@ -114,7 +116,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	int lastContextMenuCellIndex() const;
 	int indexOf(QGraphicsLayoutItem *);
 	void removeItem(QGraphicsLayoutItem *);
-	TitleBlockTemplateCellsSet makeCellsSetFromGraphicsItems(const QList<QGraphicsItem *> &) const;
+	TitleBlockTemplateCellsSet makeCellsSetFromGraphicsItems(
+			const QList<QGraphicsItem *> &) const;
 	QString makePrettyToolTip(const QString &);
 	
 	private slots:

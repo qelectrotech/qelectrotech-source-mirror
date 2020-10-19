@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="50" hotspot_y="25" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" height="50" hotspot_y="25" type="element">
     <uuid uuid="{334c2784-513a-48fa-b4c1-05245f320410}"/>
     <names>
         <name lang="nl">knop noodstop slot</name>

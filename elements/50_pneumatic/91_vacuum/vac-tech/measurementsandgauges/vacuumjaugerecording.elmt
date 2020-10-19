@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="34" width="70" link_type="simple" height="40" version="0.80" orientation="dyyy" hotspot_y="19">
+<definition type="element" hotspot_x="34" width="70" link_type="simple" height="40" version="0.80" hotspot_y="19">
     <uuid uuid="{29ce955d-3d32-4ba8-aabd-d66a44a3f7d2}"/>
     <names>
         <name lang="fr">Jauge de vide avec enregistreur</name>

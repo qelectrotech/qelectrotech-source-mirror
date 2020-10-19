@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" version="0.70" type="element" hotspot_y="39" orientation="dyyy" width="150" height="80">
+<definition link_type="simple" hotspot_x="24" version="0.70" type="element" hotspot_y="39" width="150" height="80">
     <uuid uuid="{5259411f-a018-4883-b773-8767b61ca03a}"/>
     <names>
         <name lang="fr">Interrupteur crépusculaire astronomique</name>

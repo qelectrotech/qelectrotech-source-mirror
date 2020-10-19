@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="90" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="90" hotspot_x="16" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{68332bef-de43-4166-bb52-a9270d9c6a20}"/>
     <names>
         <name lang="en">Cylinder (engine) telescopic single acting pneumatic</name>

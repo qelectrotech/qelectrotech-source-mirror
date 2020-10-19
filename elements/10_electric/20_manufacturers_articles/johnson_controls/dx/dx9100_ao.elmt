@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="38" type="element" height="190" width="90" version="0.5">
+<definition link_type="simple" hotspot_x="24" hotspot_y="38" type="element" height="190" width="90" version="0.5">
     <uuid uuid="{fee86da0-05f8-4c17-bceb-e7c2f62d38f6}"/>
     <names>
         <name lang="pl">DX9100 - wyjścia analogowe</name>

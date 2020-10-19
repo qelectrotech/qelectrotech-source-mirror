@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" height="80">
     <uuid uuid="{d60750aa-a583-415f-988a-d93cd25b0883}"/>
     <names>
         <name lang="de">ODER</name>

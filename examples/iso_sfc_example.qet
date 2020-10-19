@@ -1320,7 +1320,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                         <name lang="cs">Makro kroky</name>
                     </names>
                     <element name="etape_initiale.elmt">
-                        <definition width="90" version="0.4" hotspot_x="42" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+                        <definition width="90" version="0.4" hotspot_x="42" hotspot_y="30" height="60" type="element" ic="true">
                             <names>
                                 <name lang="ar">خطوة</name>
                                 <name lang="de">Schritt</name>
@@ -1350,7 +1350,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="etape.elmt">
-                        <definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+                        <definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true">
                             <names>
                                 <name lang="ar">خطوة</name>
                                 <name lang="de">Schritt</name>
@@ -1379,7 +1379,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="stepmacro.elmt">
-                        <definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+                        <definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true">
                             <names>
                                 <name lang="ar">خطوة</name>
                                 <name lang="de">Schritt</name>
@@ -1410,7 +1410,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="stepenclosed.elmt">
-                        <definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy">
+                        <definition width="90" version="0.4" hotspot_x="41" hotspot_y="30" height="60" type="element" ic="true">
                             <names>
                                 <name lang="ar">خطوة</name>
                                 <name lang="de">Schritt</name>
@@ -1448,7 +1448,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="en">transitions</name>
                     </names>
                     <element name="transition.elmt">
-                        <definition width="60" version="0.4" hotspot_x="20" hotspot_y="21" height="40" type="element" ic="true" orientation="dyyy">
+                        <definition width="60" version="0.4" hotspot_x="20" hotspot_y="21" height="40" type="element" ic="true">
                             <names>
                                 <name lang="ar">إنتقاليّة</name>
                                 <name lang="de">Übergang</name>
@@ -1476,7 +1476,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="transfunc.elmt">
-                        <definition width="170" version="0.4" hotspot_x="5" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+                        <definition width="170" version="0.4" hotspot_x="5" hotspot_y="15" height="30" type="element" ic="true">
                             <names>
                                 <name lang="ar">مستمرّ</name>
                                 <name lang="de">Aktion</name>
@@ -1520,7 +1520,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license
                         <name lang="cs">Činy</name>
                     </names>
                     <element name="action_l.elmt">
-                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="17" height="40" type="element" ic="true" orientation="dyyy">
+                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="17" height="40" type="element" ic="true">
                             <names>
                                 <name lang="ar">مستمرّ</name>
                                 <name lang="de">Aktion</name>
@@ -1551,7 +1551,7 @@ L action is running for limited time, or when step is deactivated
                         </definition>
                     </element>
                     <element name="action_s.elmt">
-                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="15" height="30" type="element" ic="true">
                             <names>
                                 <name lang="ar">مستمرّ</name>
                                 <name lang="de">Aktion</name>
@@ -1581,7 +1581,7 @@ S The action is set , when step is deactivated the action stays true
                         </definition>
                     </element>
                     <element name="action_n.elmt">
-                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="15" height="30" type="element" ic="true" orientation="dyyy">
+                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="15" height="30" type="element" ic="true">
                             <names>
                                 <name lang="ar">مستمرّ</name>
                                 <name lang="de">Aktion</name>
@@ -1611,7 +1611,7 @@ N  executes whiler the step is active
                         </definition>
                     </element>
                     <element name="action_r.elmt">
-                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="16" height="30" type="element" ic="true" orientation="dyyy">
+                        <definition width="170" version="0.4" hotspot_x="8" hotspot_y="16" height="30" type="element" ic="true">
                             <names>
                                 <name lang="ar">مستمرّ</name>
                                 <name lang="de">Aktion</name>
@@ -1642,7 +1642,7 @@ R The action is reset , when step is activated the action is reset, meaning the 
                     </element>
                 </category>
                 <element name="convergence.elmt">
-                    <definition width="140" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+                    <definition width="140" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true">
                         <names>
                             <name lang="ar">إنتقاليّة</name>
                             <name lang="de">Übergang</name>
@@ -1671,7 +1671,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="flowdir.elmt">
-                    <definition width="30" version="0.4" hotspot_x="15" hotspot_y="5" height="30" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.4" hotspot_x="15" hotspot_y="5" height="30" type="element" ic="true">
                         <names>
                             <name lang="en">flow direction</name>
                             <name lang="nl">richting</name>
@@ -1687,7 +1687,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="jump_from.elmt">
-                    <definition width="30" version="0.4" hotspot_x="15" hotspot_y="32" height="60" link_type="previous_report" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.4" hotspot_x="15" hotspot_y="32" height="60" link_type="previous_report" type="element" ic="true">
                         <names>
                             <name lang="ar">الصفحة السابقة</name>
                             <name lang="de">Vorherige Seite</name>
@@ -1711,7 +1711,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="jump_to.elmt">
-                    <definition width="30" version="0.4" hotspot_x="15" hotspot_y="8" height="50" link_type="next_report" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.4" hotspot_x="15" hotspot_y="8" height="50" link_type="next_report" type="element" ic="true">
                         <names>
                             <name lang="ar">الصفحة السابقة</name>
                             <name lang="de">Vorherige Seite</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportpropertieswidget.h"
+#include <QFileSystemModel>
 
 /**
+	@brief ExportPropertiesWidget::ExportPropertiesWidget
 	Constructeur
 	@param parent QWidget parent
 */
@@ -29,6 +31,7 @@ ExportPropertiesWidget::ExportPropertiesWidget(QWidget *parent) : QWidget(parent
 }
 
 /**
+	@brief ExportPropertiesWidget::ExportPropertiesWidget
 	Constructeur
 	@param export_properties Parametres d'export a afficher / editer
 	@param parent QWidget parent
@@ -38,14 +41,20 @@ ExportPropertiesWidget::ExportPropertiesWidget(const ExportProperties &export_pr
 	setExportProperties(export_properties);
 }
 
-/// Destructeur
-ExportPropertiesWidget::~ExportPropertiesWidget() {
+/**
+	@brief ExportPropertiesWidget::~ExportPropertiesWidget
+	Destructeur
+*/
+ExportPropertiesWidget::~ExportPropertiesWidget()
+{
 }
 
 /**
+	@brief ExportPropertiesWidget::exportProperties
 	@return les parametres d'export definis via le widget
 */
-ExportProperties ExportPropertiesWidget::exportProperties() const {
+ExportProperties ExportPropertiesWidget::exportProperties() const
+{
 	ExportProperties export_properties;
 	
 	export_properties.destination_directory   = QDir(dirpath -> text());
@@ -61,6 +70,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const {
 }
 
 /**
+	@brief ExportPropertiesWidget::setExportProperties
 	@param export_properties les parametres d'export a afficher / editer via le widget
 */
 void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_properties) {
@@ -84,9 +94,17 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 }
 
 /**
+	@brief ExportPropertiesWidget::setPrintingMode
+	Puts the widget in Print or Export mode. Print mode
+	does not display as many options as Export mode.
+	/
 	Passe le widget en mode Impression ou en mode Export. Le mode Impression
 	n'affiche pas autant d'options que le mode Export.
-	@param mode true pour utiliser le widget en mode impression, false pour
+	@param mode
+	true to use the widget in print mode,
+	false to use it in export mode
+	/
+	true pour utiliser le widget en mode impression, false pour
 	l'utiliser en mode export
 */
 void ExportPropertiesWidget::setPrintingMode(bool mode) {
@@ -100,9 +118,12 @@ void ExportPropertiesWidget::setPrintingMode(bool mode) {
 }
 
 /**
-	Slot demandant a l'utilisateur de choisir un dossier
+	@brief ExportPropertiesWidget::slot_chooseADirectory
+	Slot asking the user to choose a folder
+	/ Slot demandant a l'utilisateur de choisir un dossier
 */
-void ExportPropertiesWidget::slot_chooseADirectory() {
+void ExportPropertiesWidget::slot_chooseADirectory()
+{
 	QString user_dir = QFileDialog::getExistingDirectory(
 		this,
 		tr("Exporter dans le dossier", "dialog title"),
@@ -114,9 +135,12 @@ void ExportPropertiesWidget::slot_chooseADirectory() {
 }
 
 /**
-	Cette methode construit le widget en lui-meme
+	@brief ExportPropertiesWidget::build
+	Generated the ExportPropertiesWidget ui
+	/ Cette methode construit le widget en lui-meme
 */
-void ExportPropertiesWidget::build() {
+void ExportPropertiesWidget::build()
+{
 	// le dialogue est un empilement vertical d'elements
 	QVBoxLayout *vboxLayout = new QVBoxLayout();
 	vboxLayout -> setContentsMargins(0, 0, 0, 0);
@@ -126,7 +150,7 @@ void ExportPropertiesWidget::build() {
 	dirpath_label = new QLabel(tr("Dossier cible :"), this);
 	dirpath = new QLineEdit(this);
 	QCompleter *completer = new QCompleter(this);
-	completer -> setModel(new QDirModel(completer));
+	completer -> setModel(new QFileSystemModel(completer));
 	dirpath -> setCompleter(completer);
 	button_browse = new QPushButton(tr("Parcourir"), this);
 	hboxLayout -> addWidget(dirpath_label);
@@ -156,10 +180,10 @@ void ExportPropertiesWidget::build() {
 	
 	// Choix de la zone du schema a exporter
 	exported_content_choices = new QButtonGroup(groupbox_options);
-    export_border = new QRadioButton(tr("Exporter entièrement le folio"), groupbox_options);
+	export_border = new QRadioButton(tr("Exporter entièrement le folio"), groupbox_options);
 	optionshlayout -> addWidget(export_border, 0, 0);
 	exported_content_choices -> addButton(export_border);
-    export_elements = new QRadioButton(tr("Exporter seulement les éléments"), groupbox_options);
+	export_elements = new QRadioButton(tr("Exporter seulement les éléments"), groupbox_options);
 	optionshlayout -> addWidget(export_elements, 0, 1);
 	exported_content_choices -> addButton(export_elements);
 	

@@ -1,0 +1,38 @@
+<definition width="140" height="150" hotspot_y="75" version="0.80" link_type="simple" type="element" hotspot_x="76">
+    <uuid uuid="{06b4b3ea-f24c-428d-ac42-e950a4899e3a}"/>
+    <names>
+        <name lang="fr">Endress&amp;Hauser Cerabar M PMP</name>
+        <name lang="en">Endress&amp;Hauser Cerabar M PMP</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <dynamic_text y="-41" uuid="{fa435d6b-010c-464a-8d5a-4eb924cf0da3}" z="1" x="-51" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,7,-1,5,50,0,0,0,0,0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc y="-70" width="127" height="140" x="-70" angle="-180" antialias="true" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="56.0448" x1="-15.5414" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-55" x="-19" color="#000000" text="E&amp;H" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="-42" color="#000000" text="+" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="0" y2="0" x2="-24.5" x1="-36.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.6056" x="-63.606" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.6056" x="-23.606" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="-43.6056" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-64" x1="-70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-44" x1="-56" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-6" x="-62" color="#000000" text="-" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-27" x="-14" color="#000000" text="PMP" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="-9.7059" y2="-7.2353" x2="-20" x1="-20" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" y2="-10" x2="-15" x1="-24" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-12" y2="-12" x2="-16" x1="-23" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-14" y2="-14" x2="-17.6364" x1="-21.3356" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="-44" uuid="{9b230afc-2fdc-4c6d-893c-f855c09cf679}" z="18" x="13" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,7,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>_</text>
+        </dynamic_text>
+        <text y="-42" x="-42" color="#000000" text="CERABAR M" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <terminal y="3" uuid="{3083fb98-33fd-4520-9651-c2b29fc755e3}" x="-40" orientation="s" name=""/>
+        <terminal y="3" uuid="{d08a1a0e-61be-4532-9952-ad870344f473}" x="-20" orientation="s" name=""/>
+        <terminal y="3" uuid="{25189b5b-a1c8-4104-aa1e-9d6c2d063e3b}" x="-60" orientation="s" name=""/>
+    </description>
+</definition>

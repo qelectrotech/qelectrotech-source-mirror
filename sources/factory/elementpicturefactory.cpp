@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,30 +28,31 @@
 #include <iostream>
 #include <QAbstractTextDocumentLayout>
 #include <QGraphicsSimpleTextItem>
+#include <QRegularExpression>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
 /**
- * @brief ElementPictureFactory::getPictures
- * Set the picture of the element at location.
- * Note, picture can be null
- * @param location
- * @param picture
- * @param low_picture
- */
+	@brief ElementPictureFactory::getPictures
+	Set the picture of the element at location.
+	Note, picture can be null
+	@param location
+	@param picture
+	@param low_picture
+*/
 void ElementPictureFactory::getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture)
 {
 	if(!location.exist()) {
 		return;
 	}
-	
+
 	QUuid uuid = location.uuid();
 	if(Q_UNLIKELY(uuid.isNull()))
 	{
 		build(location, &picture, &low_picture);
 		return;
 	}
-	
+
 	if(m_pictures_H.keys().contains(uuid))
 	{
 		picture = m_pictures_H.value(uuid);
@@ -68,19 +69,19 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 }
 
 /**
- * @brief ElementPictureFactory::pixmap
- * @param location
- * @return the pixmap of the element at @location
- * Note pixmap can be null
- */
+	@brief ElementPictureFactory::pixmap
+	@param location
+	@return the pixmap of the element at location
+	Note pixmap can be null
+*/
 QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 {
 	QUuid uuid = location.uuid();
-	
+
 	if (m_pixmap_H.contains(uuid)) {
 		return m_pixmap_H.value(uuid);
 	}
-	
+
 	if(build(location))
 	{
 		auto doc = location.pugiXml();
@@ -95,56 +96,62 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 
 		QPixmap pix(w, h);
 		pix.fill(QColor(255, 255, 255, 0));
-		
+
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 		painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
-		
+
 		if (!uuid.isNull()) {
 			m_pixmap_H.insert(uuid, pix);
 		}
 		return pix;
 	}
-	
+
 	return QPixmap();
 }
 
 
 /**
- * @brief ElementPictureFactory::getPrimitives
- * @param location
- * @return The primtive used to draw the element at @location
- */
-ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(const ElementsLocation &location)
+	@brief ElementPictureFactory::getPrimitives
+	@param location
+	@return The primtive used to draw the element at location
+*/
+ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
+		const ElementsLocation &location)
 {
 	if(!m_primitives_H.contains(location.uuid()))
 		build(location);
-	
+
 	return m_primitives_H.value(location.uuid());
 }
 
-ElementPictureFactory::~ElementPictureFactory() {
+ElementPictureFactory::~ElementPictureFactory()
+{
 	for (primitives p : m_primitives_H.values()) {
 		qDeleteAll(p.m_texts);
 	}
 }
 
 /**
- * @brief ElementPictureFactory::build
- * Build the picture from location.
- * @param location
- * @param picture
- * @param low_picture
- * if @picture and/or @low_picture are not null this function draw on it and don't store it.
- * if null, this function create a QPicture for normal and low zoom, draw on it and store it in m_pictures_H and m_low_pictures_H
- * @return 
- */
-bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *picture, QPicture *low_picture)
+	@brief ElementPictureFactory::build
+	Build the picture from location.
+	@param location
+	@param picture
+	@param low_picture
+	if picture and/or low_picture are not null
+	this function draw on it and don't store it.
+	if null, this function create a QPicture for normal and low zoom,
+	draw on it and store it in m_pictures_H and m_low_pictures_H
+	@return
+*/
+bool ElementPictureFactory::build(const ElementsLocation &location,
+				  QPicture *picture,
+				  QPicture *low_picture)
 {
 	QDomElement dom = location.xml();
-	
+
 		//Check if the curent version can read the xml description
 	if (dom.hasAttribute("version"))
 	{
@@ -159,7 +166,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 			) << std::endl;
 		}
 	}
-	
+
 		//This attributes must be present and valid
 	int w, h, hot_x, hot_y;
 	if (!QET::attributeIsAnInteger(dom, QString("width"), &w) ||\
@@ -169,7 +176,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 	{
 		return(false);
 	}
-	
+
 	QPainter painter;
 	QPicture pic;
 	primitives primitives_;
@@ -182,8 +189,8 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 	painter.setRenderHint(QPainter::Antialiasing,         true);
 	painter.setRenderHint(QPainter::TextAntialiasing,     true);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
-	
-	
+
+
 	QPainter low_painter;
 	QPicture low_pic;
 	if (low_picture) {
@@ -195,12 +202,12 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 	low_painter.setRenderHint(QPainter::Antialiasing,         true);
 	low_painter.setRenderHint(QPainter::TextAntialiasing,     true);
 	low_painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
-	
+
 	QPen tmp;
 	tmp.setWidthF(1.0); //Vaudoo line to take into account the setCosmetic - don't remove
 	tmp.setCosmetic(true);
 	low_painter.setPen(tmp);
-	
+
 		//scroll of the Children of the Definition: Parts of the Drawing
 	for (QDomNode node = dom.firstChild() ; !node.isNull() ; node = node.nextSibling())
 	{
@@ -208,9 +215,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 		if (elmts.isNull()) {
 			continue;
 		}
-		
+
 		if (elmts.tagName() == "description")
-		{	
+		{
 				//Manage the graphic description = part of drawing
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
 			{
@@ -224,7 +231,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 			}
 		}
 	}
-	
+
 		//End of the drawing
 	painter.end();
 	low_painter.end();
@@ -452,7 +459,7 @@ void ElementPictureFactory::parsePolygon(const QDomElement &dom, QPainter &paint
 	if (i < 3) {
 		return;
 	}
-	
+
 	QVector<QPointF> points; // empty vector created instead of default initialized vector with i-1 elements.
 	for (int j = 1 ; j < i ; ++ j) {
 		points.insert(
@@ -481,7 +488,7 @@ void ElementPictureFactory::parsePolygon(const QDomElement &dom, QPainter &paint
 
 void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter, ElementPictureFactory::primitives &prim) const
 {
-	Q_UNUSED(prim);
+	Q_UNUSED(prim)
 
 	if (dom.tagName() != "text") {
 		return;
@@ -542,11 +549,11 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 }
 
 /**
- * @brief ElementPictureFactory::setPainterStyle
- * apply the style store in dom to painter.
- * @param dom
- * @param painter
- */
+	@brief ElementPictureFactory::setPainterStyle
+	apply the style store in dom to painter.
+	@param dom
+	@param painter
+*/
 void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &painter) const
 {
 	QPen pen = painter.pen();
@@ -556,13 +563,31 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 	pen.setCapStyle(Qt::SquareCap);
 
 		//Get the couples style/value
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	const QStringList styles = dom.attribute("style").split(";", QString::SkipEmptyParts);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 5.14 or later")
+#endif
+	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
+#endif
 
-	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
-	for (QString style : styles) {
-		if (rx.exactMatch(style)) {
-			QString style_name = rx.cap(1);
-			QString style_value = rx.cap(2);
+	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$");
+	if (!rx.isValid())
+	{
+		qWarning() <<QObject::tr("this is an error in the code")
+			  << rx.errorString()
+			  << rx.patternErrorOffset();
+		return;
+	}
+	for (auto style : styles)
+	{
+		QRegularExpressionMatch match = rx.match(style);
+		if (!match.hasMatch()) {
+			qDebug() << "no Match" << style;
+		}else {
+			QString style_name = match.captured("name");
+			QString style_value = match.captured("value");
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
 				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);

@@ -1,4 +1,4 @@
-<definition width="860" height="70" link_type="simple" hotspot_y="35" hotspot_x="55" version="0.5" type="element" orientation="dyyy">
+<definition width="860" height="70" link_type="simple" hotspot_y="35" hotspot_x="55" version="0.5" type="element">
     <uuid uuid="{0edd29f9-1440-42bf-8c28-cbed5be15fc2}"/>
     <names>
         <name lang="cs">TWDLMDA ; 40DTK-CN2,40DUK-CN1 (vstupy)</name>

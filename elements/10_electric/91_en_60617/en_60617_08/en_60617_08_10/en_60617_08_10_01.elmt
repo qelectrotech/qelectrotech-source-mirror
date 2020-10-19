@@ -1,4 +1,4 @@
-<definition hotspot_x="15" type="element" width="30" hotspot_y="25" version="0.70" orientation="dyyy" height="30" link_type="simple">
+<definition hotspot_x="15" type="element" width="30" hotspot_y="25" version="0.70" height="30" link_type="simple">
     <uuid uuid="{1ff0241f-1ced-43bd-8cc1-d3a91501e4cb}"/>
     <names>
         <name lang="en">Lamp, general symbol</name>

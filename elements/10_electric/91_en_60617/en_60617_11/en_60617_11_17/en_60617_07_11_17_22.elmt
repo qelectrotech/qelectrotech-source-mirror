@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="104" width="110" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="104" width="110" hotspot_y="25">
     <uuid uuid="{210a400d-8ac9-47ee-89a6-08db1d061c84}"/>
     <names>
         <name lang="de">Endeispeisung mit Geräte-Einbaukasten</name>

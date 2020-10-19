@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="152" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
+<definition type="element" hotspot_y="152" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
     <uuid uuid="{1a2a8353-9964-452d-9a37-b35e1e1b941f}"/>
     <names>
         <name lang="de">MT8090XE 9.7"</name>

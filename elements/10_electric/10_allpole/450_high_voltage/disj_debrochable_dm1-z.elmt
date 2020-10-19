@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="21" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="24">
+<definition width="40" hotspot_x="21" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{b0472dfc-71a8-4459-a9f0-f06308346fe6}"/>
     <names>
         <name lang="cs">Výsuvný spínač DM1-Z</name>

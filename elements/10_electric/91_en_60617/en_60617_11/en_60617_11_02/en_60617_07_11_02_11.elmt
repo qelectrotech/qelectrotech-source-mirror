@@ -1,4 +1,4 @@
-<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+<definition hotspot_x="45" hotspot_y="45" height="50" link_type="simple" version="0.70" type="element" width="50">
     <uuid uuid="{1b94ba02-d52c-48ee-834a-bbcf66af4fe7}"/>
     <names>
         <name lang="de">Kraftwerk mit Windenergie betrieben,

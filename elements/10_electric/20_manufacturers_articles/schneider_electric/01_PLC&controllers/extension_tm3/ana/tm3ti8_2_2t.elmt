@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" height="90" type="element" hotspot_x="625" hotspot_y="46" version="0.70" width="880">
+<definition link_type="simple" height="90" type="element" hotspot_x="625" hotspot_y="46" version="0.70" width="880">
     <uuid uuid="{b5f9b5e1-f7bc-4e4b-8cbc-fb869e01d501}"/>
     <names>
         <name lang="fr">Cartes entrées TC TM3TI8T 2/2</name>

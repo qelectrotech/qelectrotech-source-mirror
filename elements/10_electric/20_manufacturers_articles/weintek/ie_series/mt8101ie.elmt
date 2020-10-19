@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="152" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
+<definition type="element" hotspot_y="152" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
     <uuid uuid="{bb67225f-609f-44e4-9848-20a1ab875bbf}"/>
     <names>
         <name lang="de">MT8101IE 10.1"</name>

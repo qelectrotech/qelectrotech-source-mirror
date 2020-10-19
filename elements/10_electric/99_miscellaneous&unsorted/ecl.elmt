@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="28" orientation="dyyy" height="50" hotspot_y="21" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="28" height="50" hotspot_y="21" type="element">
     <uuid uuid="{225e2544-39fc-438f-8299-0b7f1d5ea7b8}"/>
     <names>
         <name lang="es">ECL</name>

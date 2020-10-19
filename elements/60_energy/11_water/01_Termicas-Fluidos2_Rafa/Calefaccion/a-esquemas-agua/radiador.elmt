@@ -1,15 +1,21 @@
-<definition width="60" version="0.4" hotspot_x="30" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{FD8812A9-1833-4478-9A5D-5A1EA28C6BC8}"/><names>
+<definition hotspot_y="5" type="element" height="10" version="0.80" width="60" hotspot_x="29" link_type="simple">
+    <uuid uuid="{cb43202d-0fb6-4d3e-a318-6c0c10bec017}"/>
+    <names>
         <name lang="es">Radiador</name>
         <name lang="ca">Radiador</name>
+        <name lang="fr">Radiateur</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="40" x="-20" y="-3.37083" antialias="false" height="6.37083" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-19" x2="-15" x3="-9" x4="-3" antialias="false" x5="4" x6="11" x7="18" x8="18" closed="false" y1="-3.37083" y2="3" y3="-3.37083" y4="3" y5="-3.37083" y6="3" y7="-3.37083" y8="-3.37083"/>
-        <input x="-9" y="-4.5" size="4" rotate="true" text="_" tagg="label"/>
-        <terminal x="-22" y="-0.185414" orientation="w"/>
-        <terminal x="22" y="-0.185414" orientation="e"/>
+        <rect antialias="false" height="6.37083" width="40" x="-20" y="-3.37083" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <polygon y6="3" x3="-9" y5="-3.37083" y2="3" y1="-3.37083" x2="-15" y4="3" closed="false" y8="-3.37083" x7="18" x4="-3" x5="4" y3="-3.37083" x6="11" x8="18" x1="-19" y7="-3.37083" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-9" y="-12" uuid="{5a867d10-f65c-4eef-a48b-ecab0a11ac4b}" z="3" font="Sans Serif,4,-1,5,25,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="-22" y="-0.185414" uuid="{01d7a431-abcb-49e0-8b60-cbdfe4731980}" name="" orientation="w"/>
+        <terminal x="22" y="-0.185414" uuid="{85b1851e-2daa-4044-8451-0639e73ad91e}" name="" orientation="e"/>
     </description>
 </definition>

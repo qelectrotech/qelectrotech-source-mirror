@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="11">
     <uuid uuid="{010d81e7-6b8b-4527-b382-1d540a9dcb82}"/>
     <names>
         <name lang="cs">Uzavírací ventil, izolační</name>

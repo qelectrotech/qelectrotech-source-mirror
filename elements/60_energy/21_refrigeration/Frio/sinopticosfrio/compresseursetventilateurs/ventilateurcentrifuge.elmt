@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{80f9c1e9-7091-4ff9-99bd-f2a9e547ea42}"/>
     <names>
         <name lang="cs">Odstředivý ventilátor</name>

@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" hotspot_y="45" width="170" link_type="simple" orientation="dyyy" hotspot_x="105" height="130">
+<definition version="0.5" type="element" hotspot_y="45" width="170" link_type="simple" hotspot_x="105" height="130">
     <uuid uuid="{bf5fb5d1-5547-4abe-9300-63312e5a24ef}"/>
     <names>
         <name lang="fr">Zumtobel LM-4UAS</name>

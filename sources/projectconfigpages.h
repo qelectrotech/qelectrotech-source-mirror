@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -33,8 +33,9 @@ class FormulaAutonumberingW;
 class AutoNumberingManagementW;
 
 /**
-	This class, derived from ConfigPage, aims at providing the basic skeleton
-	for a project configuration page.
+	@brief The ProjectConfigPage class
+	This class, derived from ConfigPage,
+	aims at providing the basic skeleton for a project configuration page.
 */
 class ProjectConfigPage : public ConfigPage {
 	Q_OBJECT
@@ -122,12 +123,13 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 
 	//Methods
 	public:
-		ProjectAutoNumConfigPage (QETProject *project, QWidget *parent = nullptr);
+		ProjectAutoNumConfigPage (QETProject *project,
+					  QWidget *parent = nullptr);
 
 		QString title() const override;
-		QIcon   icon() const override;
-		void    applyProjectConf() override;
-		virtual void    changeToTab(int);
+		QIcon icon() const override;
+		void applyProjectConf() override;
+		virtual void changeToTab(int);
 	protected:
 		void initWidgets() override;
 		void initLayout() override {}

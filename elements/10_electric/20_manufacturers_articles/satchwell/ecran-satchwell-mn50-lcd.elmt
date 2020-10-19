@@ -1,4 +1,4 @@
-<definition width="470" hotspot_y="84" height="180" type="element" hotspot_x="225" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="470" hotspot_y="84" height="180" type="element" hotspot_x="225" version="0.5" link_type="simple">
     <uuid uuid="{84fbdfe5-873f-4e6c-a56c-7ada5bea5a5d}"/>
     <names>
         <name lang="nl">Scherm MN 50 LCD</name>

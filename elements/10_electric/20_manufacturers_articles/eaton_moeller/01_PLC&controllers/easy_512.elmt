@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="142" orientation="dyyy" hotspot_y="105" type="element" height="220" width="300" version="0.5">
+<definition link_type="simple" hotspot_x="142" hotspot_y="105" type="element" height="220" width="300" version="0.5">
     <uuid uuid="{a8e11745-74a6-478e-93b7-bf1f01596c50}"/>
     <names>
         <name lang="pl">Easy 512</name>

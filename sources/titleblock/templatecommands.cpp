@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -38,14 +38,16 @@ ModifyTitleBlockCellCommand::ModifyTitleBlockCellCommand(TitleBlockCell *cell, Q
 /**
 	Destructor
 */
-ModifyTitleBlockCellCommand::~ModifyTitleBlockCellCommand() {
+ModifyTitleBlockCellCommand::~ModifyTitleBlockCellCommand()
+{
 }
 
 /**
 	@see QUndoCommand::id()
 	@return the ID of this command.
 */
-int ModifyTitleBlockCellCommand::id() const {
+int ModifyTitleBlockCellCommand::id() const
+{
 	return(MODIFY_TITLE_BLOCK_CELL_COMMAND_ID);
 }
 
@@ -70,7 +72,8 @@ bool ModifyTitleBlockCellCommand::mergeWith(const QUndoCommand *command) {
 /**
 	Undo the change.
 */
-void ModifyTitleBlockCellCommand::undo() {
+void ModifyTitleBlockCellCommand::undo()
+{
 	if (!modified_cell_) return;
 	foreach (QString attribute, old_values_.keys()) {
 		modified_cell_ -> setAttribute(attribute, old_values_[attribute]);
@@ -81,7 +84,8 @@ void ModifyTitleBlockCellCommand::undo() {
 /**
 	Redo the change.
 */
-void ModifyTitleBlockCellCommand::redo() {
+void ModifyTitleBlockCellCommand::redo()
+{
 	if (!modified_cell_) return;
 	foreach (QString attribute, new_values_.keys()) {
 		modified_cell_ -> setAttribute(attribute, new_values_[attribute]);
@@ -92,7 +96,8 @@ void ModifyTitleBlockCellCommand::redo() {
 /**
 	@return the cell modified by this command
 */
-TitleBlockCell *ModifyTitleBlockCellCommand::cell() const {
+TitleBlockCell *ModifyTitleBlockCellCommand::cell() const
+{
 	return(modified_cell_);
 }
 
@@ -107,7 +112,8 @@ void ModifyTitleBlockCellCommand::setCell(TitleBlockCell *modified_cell) {
 /**
 	@return the view to be updated after the cell modification
 */
-TitleBlockTemplateView *ModifyTitleBlockCellCommand::view() const {
+TitleBlockTemplateView *ModifyTitleBlockCellCommand::view() const
+{
 	return(view_);
 }
 
@@ -122,7 +128,8 @@ void ModifyTitleBlockCellCommand::setView(TitleBlockTemplateView *view) {
 /**
 	Erase the known old/new values.
 */
-void ModifyTitleBlockCellCommand::clear() {
+void ModifyTitleBlockCellCommand::clear()
+{
 	old_values_.clear();
 	new_values_.clear();
 }
@@ -166,13 +173,15 @@ TitleBlockTemplateCommand::TitleBlockTemplateCommand(TitleBlockTemplate *tbtempl
 /**
 	Destructor
 */
-TitleBlockTemplateCommand::~TitleBlockTemplateCommand() {
+TitleBlockTemplateCommand::~TitleBlockTemplateCommand()
+{
 }
 
 /**
 	@return the modified title block template.
 */
-TitleBlockTemplate *TitleBlockTemplateCommand::titleBlockTemplate() const {
+TitleBlockTemplate *TitleBlockTemplateCommand::titleBlockTemplate() const
+{
 	return(tbtemplate_);
 }
 
@@ -187,7 +196,8 @@ void TitleBlockTemplateCommand::setTitleBlockTemplate(TitleBlockTemplate *tbtemp
 /**
 	@return the view to be updated after the template modification
 */
-TitleBlockTemplateView *TitleBlockTemplateCommand::view() const {
+TitleBlockTemplateView *TitleBlockTemplateCommand::view() const
+{
 	return(view_);
 }
 
@@ -202,7 +212,8 @@ void TitleBlockTemplateCommand::setView(TitleBlockTemplateView *view) {
 /**
 	Refresh the view, if any.
 */
-void TitleBlockTemplateCommand::refreshView() {
+void TitleBlockTemplateCommand::refreshView()
+{
 	if (!view_) return;
 	view_ -> refresh();
 }
@@ -210,7 +221,8 @@ void TitleBlockTemplateCommand::refreshView() {
 /**
 	Refresh the view, including layout reloading, if any.
 */
-void TitleBlockTemplateCommand::refreshLayout() {
+void TitleBlockTemplateCommand::refreshLayout()
+{
 	if (!view_) return;
 	view_ -> updateLayout();
 }
@@ -313,13 +325,15 @@ ModifyTemplateGridCommand::ModifyTemplateGridCommand(TitleBlockTemplate *tbtempl
 /**
 	Destructor
 */
-ModifyTemplateGridCommand::~ModifyTemplateGridCommand() {
+ModifyTemplateGridCommand::~ModifyTemplateGridCommand()
+{
 }
 
 /**
 	@return the index of the inserted/deleted row/column
 */
-int ModifyTemplateGridCommand::index() const {
+int ModifyTemplateGridCommand::index() const
+{
 	return(index_);
 }
 
@@ -334,7 +348,8 @@ void ModifyTemplateGridCommand::setIndex(int index) {
 /**
 	@return a list of pointers to cells composing the inserted/deleted row/column.
 */
-QList<TitleBlockCell *> ModifyTemplateGridCommand::cells() const {
+QList<TitleBlockCell *> ModifyTemplateGridCommand::cells() const
+{
 	return(cells_);
 }
 
@@ -349,7 +364,8 @@ void ModifyTemplateGridCommand::setCells(const QList<TitleBlockCell *> &cells) {
 /**
 	@return the dimension of the inserted/deleted row/column.
 */
-TitleBlockDimension ModifyTemplateGridCommand::dimension() const {
+TitleBlockDimension ModifyTemplateGridCommand::dimension() const
+{
 	return dimension_;
 }
 
@@ -364,7 +380,8 @@ void ModifyTemplateGridCommand::setDimension(const TitleBlockDimension &dimensio
 /**
 	@return true if this object is about inserting/deleting a row, false for a column.
 */
-int ModifyTemplateGridCommand::type() const {
+int ModifyTemplateGridCommand::type() const
+{
 	return(type_);
 }
 
@@ -380,7 +397,8 @@ void ModifyTemplateGridCommand::setType(bool type) {
 /**
 	@return true if the row/column is inserted, false if it is deleted
 */
-bool ModifyTemplateGridCommand::isInsertion() const {
+bool ModifyTemplateGridCommand::isInsertion() const
+{
 	return(insertion_);
 }
 
@@ -395,21 +413,24 @@ void ModifyTemplateGridCommand::setInsertion(bool insertion) {
 /**
 	Undo the change.
 */
-void ModifyTemplateGridCommand::undo() {
+void ModifyTemplateGridCommand::undo()
+{
 	apply(true);
 }
 
 /**
 	Redo the change.
 */
-void ModifyTemplateGridCommand::redo() {
+void ModifyTemplateGridCommand::redo()
+{
 	apply(false);
 }
 
 /**
 	Update the text describing what the command does.
 */
-void ModifyTemplateGridCommand::updateText() {
+void ModifyTemplateGridCommand::updateText()
+{
 	if (type_) {
 		if (insertion_) {
 			setText(QObject::tr("Insertion d'une ligne", "label used in the title block template editor undo list"));
@@ -472,13 +493,15 @@ ModifyTemplateDimension::ModifyTemplateDimension(TitleBlockTemplate *tbtemplate,
 /**
 	Destructor
 */
-ModifyTemplateDimension::~ModifyTemplateDimension() {
+ModifyTemplateDimension::~ModifyTemplateDimension()
+{
 }
 
 /**
 	@return the index of the resized row/column
 */
-int ModifyTemplateDimension::index() const {
+int ModifyTemplateDimension::index() const
+{
 	return(index_);
 }
 
@@ -493,7 +516,8 @@ void ModifyTemplateDimension::setIndex(int index) {
 /**
 	@return true if this object is about resizing a row, false for a column.
 */
-int ModifyTemplateDimension::type() const {
+int ModifyTemplateDimension::type() const
+{
 	return type_;
 }
 
@@ -509,7 +533,8 @@ void ModifyTemplateDimension::setType(bool type) {
 /**
 	@return the dimension of the row/column before it is resized
 */
-TitleBlockDimension ModifyTemplateDimension::dimensionBefore() const {
+TitleBlockDimension ModifyTemplateDimension::dimensionBefore() const
+{
 	return(before_);
 }
 
@@ -523,7 +548,8 @@ void ModifyTemplateDimension::setDimensionBefore(const TitleBlockDimension &dime
 /**
 	@return the dimension of the row/column after it is resized
 */
-TitleBlockDimension ModifyTemplateDimension::dimensionAfter() const {
+TitleBlockDimension ModifyTemplateDimension::dimensionAfter() const
+{
 	return(after_);
 }
 
@@ -537,21 +563,24 @@ void ModifyTemplateDimension::setDimensionAfter(const TitleBlockDimension &dimen
 /**
 	Restore the previous size of the row/column.
 */
-void ModifyTemplateDimension::undo() {
+void ModifyTemplateDimension::undo()
+{
 	apply(before_);
 }
 
 /**
 	Resize the row/column.
 */
-void ModifyTemplateDimension::redo() {
+void ModifyTemplateDimension::redo()
+{
 	apply(after_);
 }
 
 /**
 	Update the text describing what the command does.
 */
-void ModifyTemplateDimension::updateText() {
+void ModifyTemplateDimension::updateText()
+{
 	if (type_) {
 		setText(QObject::tr("Modification d'une ligne", "label used in the title block template editor undo list"));
 	} else {
@@ -631,7 +660,8 @@ MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_ce
 /**
 	Destructor
 */
-MergeCellsCommand::~MergeCellsCommand() {
+MergeCellsCommand::~MergeCellsCommand()
+{
 }
 
 /**
@@ -658,7 +688,8 @@ bool MergeCellsCommand::canMerge(const TitleBlockTemplateCellsSet &merged_cells,
 /**
 	@return true if this command object is valid and usable, false otherwise.
 */
-bool MergeCellsCommand::isValid() const {
+bool MergeCellsCommand::isValid() const
+{
 	// we consider having a non-zero spanning cell and positive spans makes a MergeCellsCommand valid
 	return(spanning_cell_ && row_span_after_ != -1 && col_span_after_ != -1);
 }
@@ -666,7 +697,8 @@ bool MergeCellsCommand::isValid() const {
 /**
 	Undo the merge operation.
 */
-void MergeCellsCommand::undo() {
+void MergeCellsCommand::undo()
+{
 	if (!isValid()) return;
 	
 	// restore the original spanning_cell attribute of all impacted cells
@@ -687,7 +719,8 @@ void MergeCellsCommand::undo() {
 /**
 	Apply the merge operation
 */
-void MergeCellsCommand::redo() {
+void MergeCellsCommand::redo()
+{
 	if (!isValid()) return;
 	
 	// set the spanning_cell attributes of spanned cells to the spanning cell
@@ -771,7 +804,8 @@ SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_
 /**
 	Destructor
 */
-SplitCellsCommand::~SplitCellsCommand() {
+SplitCellsCommand::~SplitCellsCommand()
+{
 }
 
 /**
@@ -798,7 +832,8 @@ bool SplitCellsCommand::canSplit(const TitleBlockTemplateCellsSet &splitted_cell
 /**
 	@return true if this command object is valid and usable, false otherwise.
 */
-bool SplitCellsCommand::isValid() const {
+bool SplitCellsCommand::isValid() const
+{
 	// we consider having a non-zero spanning cell and at least one spanned cell makes a SplitCellsCommand valid
 	return(spanning_cell_ && spanned_cells_.count());
 }
@@ -806,7 +841,8 @@ bool SplitCellsCommand::isValid() const {
 /**
 	Undo the split operation
 */
-void SplitCellsCommand::undo() {
+void SplitCellsCommand::undo()
+{
 	if (!isValid()) return;
 	
 	// the spanned cells are spanned again
@@ -827,7 +863,8 @@ void SplitCellsCommand::undo() {
 /**
 	Apply the split operation
 */
-void SplitCellsCommand::redo() {
+void SplitCellsCommand::redo()
+{
 	if (!isValid()) return;
 	
 	// the spanned cells are not spanned anymore
@@ -862,13 +899,15 @@ ChangeTemplateInformationsCommand::ChangeTemplateInformationsCommand(TitleBlockT
 /**
 	Destructor
 */
-ChangeTemplateInformationsCommand::~ChangeTemplateInformationsCommand() {
+ChangeTemplateInformationsCommand::~ChangeTemplateInformationsCommand()
+{
 }
 
 /**
 	Undo the information change
 */
-void ChangeTemplateInformationsCommand::undo() {
+void ChangeTemplateInformationsCommand::undo()
+{
 	if (!tbtemplate_) return;
 	tbtemplate_ -> setInformation(old_information_);
 }
@@ -876,7 +915,8 @@ void ChangeTemplateInformationsCommand::undo() {
 /**
 	Redo the information change
 */
-void ChangeTemplateInformationsCommand::redo() {
+void ChangeTemplateInformationsCommand::redo()
+{
 	tbtemplate_ -> setInformation(new_information_);
 }
 
@@ -891,13 +931,15 @@ CutTemplateCellsCommand::CutTemplateCellsCommand(TitleBlockTemplate *tb_template
 /**
 	Destructor
 */
-CutTemplateCellsCommand::~CutTemplateCellsCommand() {
+CutTemplateCellsCommand::~CutTemplateCellsCommand()
+{
 }
 
 /**
 	Undo a cut operation
 */
-void CutTemplateCellsCommand::undo() {
+void CutTemplateCellsCommand::undo()
+{
 	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
 		cell -> cell_type = cut_cells_.value(cell);
 	}
@@ -907,7 +949,8 @@ void CutTemplateCellsCommand::undo() {
 /**
 	Redo a cut operation
 */
-void CutTemplateCellsCommand::redo() {
+void CutTemplateCellsCommand::redo()
+{
 	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
 		cell -> cell_type = TitleBlockCell::EmptyCell;
 	}
@@ -924,7 +967,8 @@ void CutTemplateCellsCommand::setCutCells(const QList<TitleBlockCell *> &cells) 
 /**
 	Update the label describing this command
 */
-void CutTemplateCellsCommand::updateText() {
+void CutTemplateCellsCommand::updateText()
+{
 	setText(QObject::tr("Couper %n cellule(s)", "undo caption", cut_cells_.count()));
 }
 
@@ -942,20 +986,23 @@ PasteTemplateCellsCommand::PasteTemplateCellsCommand(TitleBlockTemplate *tb_temp
 /**
 	Destructor
 */
-PasteTemplateCellsCommand::~PasteTemplateCellsCommand() {
+PasteTemplateCellsCommand::~PasteTemplateCellsCommand()
+{
 }
 
 /**
 	Update the label describing this command
 */
-void PasteTemplateCellsCommand::updateText() {
+void PasteTemplateCellsCommand::updateText()
+{
 	setText(QObject::tr("Coller %n cellule(s)", "undo caption", erased_cells_.count()));
 }
 
 /**
 	Undo a paste action.
 */
-void PasteTemplateCellsCommand::undo() {
+void PasteTemplateCellsCommand::undo()
+{
 	bool span_management = erased_cells_.count() > 1;
 	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
 		cell -> loadContentFromCell(erased_cells_.value(cell));
@@ -973,7 +1020,8 @@ void PasteTemplateCellsCommand::undo() {
 /**
 	Redo a paste action.
 */
-void PasteTemplateCellsCommand::redo() {
+void PasteTemplateCellsCommand::redo()
+{
 	// we only play with spans when pasting more than one cell.
 	bool span_management = erased_cells_.count() > 1;
 	

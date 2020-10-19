@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="60" hotspot_y="23" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="60" hotspot_y="23" type="element">
     <uuid uuid="{ba141940-e7cb-4238-ba66-4938e9bee6e2}"/>
     <names>
         <name lang="nl">DIN 5 Pin 180°</name>

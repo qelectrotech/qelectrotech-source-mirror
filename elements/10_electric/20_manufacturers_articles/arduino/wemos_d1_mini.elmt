@@ -1,4 +1,4 @@
-<definition height="130" orientation="dyyy" version="0.80" width="100" hotspot_x="50" type="element" hotspot_y="75" link_type="simple">
+<definition height="130" version="0.80" width="100" hotspot_x="50" type="element" hotspot_y="75" link_type="simple">
     <uuid uuid="{ed13c43c-b6c4-4317-9545-47ac8386778e}"/>
     <names>
         <name lang="fr">Wemos D1 Mini</name>

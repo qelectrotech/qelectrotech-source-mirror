@@ -1,24 +1,27 @@
-<definition width="60" version="0.4" hotspot_x="44" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{338B0227-59AF-4134-8BC0-9AB391C1CA1B}"/><names>
+<definition hotspot_y="19" link_type="simple" width="60" version="0.80" type="element" height="40" hotspot_x="44">
+    <uuid uuid="{15843b0a-38bd-4e4a-b4f3-6cec872cbd8e}"/>
+    <names>
+        <name lang="fr">Compressseur rotatif</name>
         <name lang="es">Compr. Rotativo</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="3.81538" y2="0" x2="7.2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-20" y2="4" x2="-9"/>
-        <ellipse width="18.6469" x="-38" y="-10.0957" antialias="true" height="18.3354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="18.6469" x="-9" y="-10.0957" antialias="true" height="18.3354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.33175" x1="-3.28713" y2="3.07197" x2="-8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.33175" x1="3.934" y2="2.07197" x2="8.64687"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.87578" x1="0" y2="13.5963" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-14" x2="0"/>
-        <text x="-34" y="4" size="9" text="M"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-19" y2="0" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-20" y2="-4" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="9" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-6.18462" y2="0" x2="-2.8"/>
-        <terminal x="0" y="14" nameHidden="1" number="" name="" orientation="s"/>
-        <terminal x="0" y="-14" nameHidden="1" number="" name="" orientation="n"/>
-        <terminal x="-29" y="9" nameHidden="1" number="" name="" orientation="s"/>
+        <line x1="3.81538" y2="0" end1="none" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="7.2" antialias="false" length1="1.5"/>
+        <line x1="-20" y2="4" end1="none" y1="4" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-9" antialias="false" length1="1.5"/>
+        <ellipse width="18.6469" y="-10.0957" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-38" antialias="true" height="18.3354"/>
+        <ellipse width="18.6469" y="-10.0957" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" antialias="true" height="18.3354"/>
+        <line x1="-3.28713" y2="3.07197" end1="none" y1="-9.33175" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-8" antialias="false" length1="1.5"/>
+        <line x1="3.934" y2="2.07197" end1="none" y1="-9.33175" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="8.64687" antialias="false" length1="1.5"/>
+        <line x1="0" y2="13.5963" end1="none" y1="9.87578" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" antialias="false" length1="1.5"/>
+        <line x1="0" y2="-14" end1="none" y1="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" antialias="false" length1="1.5"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" rotation="0" text="M" color="#000000" x="-34"/>
+        <line x1="-19" y2="0" end1="none" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-10" antialias="false" length1="1.5"/>
+        <line x1="-20" y2="-4" end1="none" y1="-4" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-9" antialias="false" length1="1.5"/>
+        <line x1="0" y2="9" end1="none" y1="5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" antialias="false" length1="1.5"/>
+        <line x1="-6.18462" y2="0" end1="none" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-2.8" antialias="false" length1="1.5"/>
+        <terminal name="" y="14" uuid="{3ffb8a3b-14b2-40ee-942a-b1d5b362a350}" x="0" orientation="s"/>
+        <terminal name="" y="-14" uuid="{805fd483-daff-4511-9ad0-80021e9e398d}" x="0" orientation="n"/>
+        <terminal name="" y="9" uuid="{d8abce35-b76f-42a2-9bce-723e56c67476}" x="-29" orientation="s"/>
     </description>
 </definition>

@@ -1,4 +1,4 @@
-<definition hotspot_x="33" type="element" width="70" hotspot_y="36" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="33" type="element" width="70" hotspot_y="36" version="0.70" height="50" link_type="simple">
     <uuid uuid="{f5c2c36f-0df0-481f-b21d-095b253b3d88}"/>
     <names>
         <name lang="fr">Enceinte</name>

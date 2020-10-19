@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@
 #include "qetshapeitem.h"
 
 /**
- * @brief The DiagramEventAddShape class
- * This event manage the creation of a shape.
- */
+	@brief The DiagramEventAddShape class
+	This event manage the creation of a shape.
+*/
 class DiagramEventAddShape : public DiagramEventInterface
 {
 		Q_OBJECT

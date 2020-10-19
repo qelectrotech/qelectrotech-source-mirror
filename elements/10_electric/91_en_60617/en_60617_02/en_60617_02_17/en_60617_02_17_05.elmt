@@ -1,4 +1,4 @@
-<definition hotspot_x="4" version="0.70" orientation="dyyy" height="30" hotspot_y="14" width="10" type="element" link_type="simple">
+<definition hotspot_x="4" version="0.70" height="30" hotspot_y="14" width="10" type="element" link_type="simple">
     <uuid uuid="{f60e93f6-ebf9-4c74-93f8-62381735a914}"/>
     <names>
         <name lang="fr">Indicateur de point de contrôle</name>

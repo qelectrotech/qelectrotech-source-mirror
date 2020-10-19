@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,10 +23,10 @@
 class QPropertyUndoCommand;
 
 /**
- * @brief The PartEllipse class
- * This class represents an ellipse primitive which may be used to compose the
- * drawing of an electrical element within the element editor.
- */
+	@brief The PartEllipse class
+	This class represents an ellipse primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
+*/
 class PartEllipse : public  AbstractPartEllipse
 {
 		Q_OBJECT
@@ -43,9 +43,9 @@ class PartEllipse : public  AbstractPartEllipse
 	public:
 		enum { Type = UserType + 1103 };
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartEllipse.
-			 * @return the QGraphicsItem type
-			 */
+				Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartEllipse.
+				@return the QGraphicsItem type
+			*/
 		int type() const override { return Type; }	
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 

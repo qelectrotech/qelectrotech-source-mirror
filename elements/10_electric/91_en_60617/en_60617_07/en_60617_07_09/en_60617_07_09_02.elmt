@@ -1,4 +1,4 @@
-<definition width="20" orientation="dyyy" type="element" height="70" hotspot_x="6" version="0.70" hotspot_y="44" link_type="simple">
+<definition width="20" type="element" height="70" hotspot_x="6" version="0.70" hotspot_y="44" link_type="simple">
     <uuid uuid="{f2bdbfc6-2f7f-4082-a79b-f11dcadf815f}"/>
     <names>
         <name lang="fr">Interrupteurs fonctionnement sous l'effet de la température</name>

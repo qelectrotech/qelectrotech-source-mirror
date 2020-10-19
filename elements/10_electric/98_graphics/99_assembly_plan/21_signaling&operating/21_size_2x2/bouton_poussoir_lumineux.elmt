@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="30" hotspot_y="15" type="element">
     <uuid uuid="{a3111bee-4a5e-4e2e-8d6b-f57b3250ff99}"/>
     <names>
         <name lang="el">Φωτιζόμενο μπουτόν</name>

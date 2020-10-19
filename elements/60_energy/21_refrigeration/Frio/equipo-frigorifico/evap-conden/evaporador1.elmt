@@ -1,4 +1,4 @@
-<definition width="60" version="0.4" hotspot_x="21" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="21" hotspot_y="10" height="30" type="element" ic="true">
 <uuid uuid="{74D6CEA5-445B-42BB-8141-9939436B0755}"/><names>
         <name lang="es">Evaporador cúbico-1</name>
     </names>

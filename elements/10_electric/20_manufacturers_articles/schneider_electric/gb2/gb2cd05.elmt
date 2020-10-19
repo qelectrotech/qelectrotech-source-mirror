@@ -1,4 +1,4 @@
-<definition height="60" hotspot_x="20" hotspot_y="34" orientation="dyyy" link_type="master" type="element" version="0.80" width="40">
+<definition height="60" hotspot_x="20" hotspot_y="34" link_type="master" type="element" version="0.80" width="40">
     <uuid uuid="{2eb870f3-ec32-4d92-8bac-1322faf63c82}"/>
     <names>
         <name lang="it">Int. Aut. Magneto-termico 1P+N</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="54" version="0.70" type="element" height="380" hotspot_y="64" width="1180" orientation="dyyy">
+<definition link_type="simple" hotspot_x="54" version="0.70" type="element" height="380" hotspot_y="64" width="1180">
     <uuid uuid="{4976caf2-ee4f-4825-8142-338bab99b6d8}"/>
     <names>
         <name lang="el">MOVIDRIVE MDX60B/61B</name>

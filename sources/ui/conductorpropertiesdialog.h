@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,8 +34,10 @@ class ConductorPropertiesDialog : public QDialog
 		Q_OBJECT
 
 	public:
-		explicit ConductorPropertiesDialog (Conductor *conductor, QWidget *parent = nullptr);
-		static void PropertiesDialog (Conductor *conductor, QWidget *parent = nullptr);
+		explicit ConductorPropertiesDialog (
+			Conductor *conductor, QWidget *parent = nullptr);
+		static void PropertiesDialog (
+				Conductor *conductor, QWidget *parent = nullptr);
 		~ConductorPropertiesDialog() override;
 
 		ConductorProperties properties() const;

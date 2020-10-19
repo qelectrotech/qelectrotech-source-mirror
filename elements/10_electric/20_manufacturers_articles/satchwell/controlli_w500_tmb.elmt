@@ -1,4 +1,4 @@
-<definition width="270" hotspot_y="4" height="180" type="element" hotspot_x="5" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="270" hotspot_y="4" height="180" type="element" hotspot_x="5" version="0.5" link_type="simple">
     <uuid uuid="{f1793a49-2456-4128-b377-fd6f5f14f2d8}"/>
     <names>
         <name lang="nl">Controlli_W500_TMB</name>

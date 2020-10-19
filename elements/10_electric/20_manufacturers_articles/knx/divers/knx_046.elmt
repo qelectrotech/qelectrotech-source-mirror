@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="80" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="80" hotspot_x="24">
     <uuid uuid="{69ca686f-2d7a-4a3d-993b-2920671078d7}"/>
     <names>
         <name lang="it">ingresso digitale, uscita digitale</name>

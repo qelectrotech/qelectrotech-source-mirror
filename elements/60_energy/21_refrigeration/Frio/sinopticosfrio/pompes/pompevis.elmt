@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{7e42c31b-22f4-4118-bc77-490809a62775}"/>
     <names>
         <name lang="cs">Šroubové čerpadlo</name>

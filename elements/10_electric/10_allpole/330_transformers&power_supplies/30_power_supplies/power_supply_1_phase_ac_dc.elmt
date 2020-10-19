@@ -1,4 +1,4 @@
-<definition type="element" width="100" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="39" hotspot_x="30" height="80">
+<definition type="element" width="100" version="0.70" link_type="simple" hotspot_y="39" hotspot_x="30" height="80">
     <uuid uuid="{ffde5655-4105-4478-8b20-88f2ba6f33d3}"/>
     <names>
         <name lang="hu">24V DC tápegység 1 fázis</name>

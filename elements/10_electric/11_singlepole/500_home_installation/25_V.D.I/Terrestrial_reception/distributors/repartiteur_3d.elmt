@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" orientation="dyyy" hotspot_y="33" version="0.51" type="element" height="80" hotspot_x="40">
+<definition width="90" link_type="simple" hotspot_y="33" version="0.51" type="element" height="80" hotspot_x="40">
     <uuid uuid="{b2311419-d997-4a8d-b72c-852c1b18399b}"/>
     <names>
         <name lang="fr">Répartiteur 3 D</name>

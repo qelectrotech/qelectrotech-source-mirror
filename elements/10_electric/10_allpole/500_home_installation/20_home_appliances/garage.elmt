@@ -1,0 +1,49 @@
+<definition link_type="simple" type="element" height="180" width="130" hotspot_y="175" version="0.80" hotspot_x="5">
+    <uuid uuid="{d932099a-1f5b-48b2-bb9c-08229dfd4ab0}"/>
+    <names>
+        <name lang="fr">Garage</name>
+        <name lang="pl">Garaż</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-150" length2="1.5" length1="1.5" x2="70" y1="-170" x1="70" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="3" uuid="{9d833fe0-b4c0-48d5-bf15-1bb2f99cb9a8}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>20</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="4" uuid="{4ed9d8a6-7bce-4a95-848b-866e0356a908}" text_from="ElementInfo" y="-63" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-32" color="#000000"/>
+        <text text="Garage" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="2" y="-69" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-135" length2="1.5" length1="1.5" x2="35" y1="-160" x1="60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-135" length2="1.5" length1="1.5" x2="85" y1="-160" x1="60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-100" length2="1.5" length1="1.5" x2="40" y1="-140" x1="40" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-100" length2="1.5" length1="1.5" x2="80" y1="-100" x1="40" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-140" length2="1.5" length1="1.5" x2="80" y1="-100" x1="80" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-150" length2="1.5" length1="1.5" x2="50" y1="-170" x1="50" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-125" length2="1.5" length1="1.5" x2="45.5" y1="-100" x1="45.5" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-125" length2="1.5" length1="1.5" x2="74.069" y1="-125" x1="45.931" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-100" length2="1.5" length1="1.5" x2="74.5" y1="-125" x1="74.5" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-120" length2="1.5" length1="1.5" x2="74.07" y1="-120" x1="45.93" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-110" length2="1.5" length1="1.5" x2="74" y1="-110" x1="46" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-105" length2="1.5" length1="1.5" x2="74" y1="-105" x1="46" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-115" length2="1.5" length1="1.5" x2="74" y1="-115" x1="46" end2="none"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="25" uuid="{da209880-e9c6-4f64-904f-e19a1ce60e18}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G 2.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="26" uuid="{19a4bae2-83c1-4ea3-951d-181b5ad25a79}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <terminal orientation="n" name="" x="50" uuid="{8dae2627-0b48-4054-aa90-68363a2f6c6e}" y="-170"/>
+        <terminal orientation="n" name="" x="70" uuid="{fb108633-7f5e-4865-a6ee-331379ddd9cb}" y="-170"/>
+        <terminal orientation="s" name="" x="60" uuid="{60fe2106-6f98-4e73-8c27-38b5805e2047}" y="-100"/>
+    </description>
+</definition>

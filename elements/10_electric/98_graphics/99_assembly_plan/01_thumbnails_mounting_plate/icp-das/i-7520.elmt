@@ -1,4 +1,4 @@
-<definition hotspot_y="31" orientation="dyyy" hotspot_x="4" width="170" height="290" link_type="simple" type="element" version="0.80">
+<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="simple" type="element" version="0.80">
     <uuid uuid="{7710ce0b-74c5-467f-96d1-deeddc8a5c6d}"/>
     <names>
         <name lang="en">i-7520 - Isolated RS-232 to RS-485 Converter</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="100" hotspot_y="10">
+<definition type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="100" hotspot_y="10">
     <uuid uuid="{05fbb6c1-f6bd-4030-97ad-97298b4d22cd}"/>
     <names>
         <name lang="de">Reduzierstück</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="80" version="0.51" height="80" type="element" hotspot_x="37" link_type="simple" hotspot_y="57">
+<definition width="80" version="0.51" height="80" type="element" hotspot_x="37" link_type="simple" hotspot_y="57">
     <uuid uuid="{59025bb6-89b7-4d58-86c9-d02bc743e990}"/>
     <names>
         <name lang="es">Codo Alpex 20</name>

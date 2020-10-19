@@ -1,0 +1,53 @@
+<definition type="element" hotspot_x="4" link_type="simple" version="0.80" hotspot_y="4" width="110" height="110">
+    <uuid uuid="{752ddd35-f414-4a80-ba61-75871adfaf61}"/>
+    <names>
+        <name lang="cs">Počítač PC</name>
+        <name lang="de">Rechner</name>
+        <name lang="fr">Ordinateur PC couleur</name>
+        <name lang="en">Computer PC</name>
+        <name lang="nl">Computer PC</name>
+        <name lang="it">Computer PC</name>
+        <name lang="pl">Komputer PC</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="0" antialias="false" y="0" rx="2" width="100" ry="2" style="line-style:normal;line-weight:normal;filling:HTMLBlueCornflowerBlue;color:black" height="70"/>
+        <dynamic_text rotation="0" uuid="{0c9d986a-69c1-4e58-bac7-41a50693e4e4}" x="3" y="-20.45" Halignment="AlignLeft" text_from="ElementInfo" text_width="-1" frame="false" Valignment="AlignTop" z="2" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="0" antialias="false" y="80" rx="0" width="100" ry="0" style="line-style:normal;line-weight:normal;filling:gray;color:black" height="20"/>
+        <circle x="9.5" antialias="true" y="82.5" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="1"/>
+        <circle x="12.5" antialias="true" y="82.5" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="1"/>
+        <polygon y9="70" y6="80" x1="47" y3="78" x7="38" x9="47" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="78" x2="53" y2="70" y5="80" x4="63" x3="53" antialias="true" y1="70" x5="63" y7="78" x8="47" x6="38" y8="78"/>
+        <rect x="67" antialias="false" y="84" rx="0" width="25" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="5"/>
+        <circle x="5.5" antialias="true" y="88.5" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3"/>
+        <circle x="12" antialias="true" y="89" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
+        <circle x="6.5" antialias="true" y="82.5" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="1"/>
+        <rect x="3" antialias="false" y="3" rx="2" width="94" ry="2" style="line-style:normal;line-weight:thin;filling:none;color:black" height="64"/>
+        <dynamic_text rotation="0" uuid="{1b4efefa-c4ea-460f-9c90-01d7705dddfd}" x="20" y="15" Halignment="AlignLeft" text_from="UserText" text_width="-1" frame="false" Valignment="AlignTop" z="19" font="MS Shell Dlg 2,11,-1,5,50,0,0,0,0,0,Normal">
+            <text>_</text>
+        </dynamic_text>
+        <terminal uuid="{90be23ab-7aae-4bdb-9082-7122a9af8d97}" x="70" y="100" orientation="s" name=""/>
+        <terminal uuid="{fa16fb1f-4534-441d-9df9-4c6582546ad6}" x="50" y="100" orientation="s" name=""/>
+        <terminal uuid="{73c79a1d-1091-4a06-b37d-707b1287aec1}" x="60" y="100" orientation="s" name=""/>
+        <terminal uuid="{4c269034-e465-4572-a4ff-0cb639a6b45b}" x="40" y="100" orientation="s" name=""/>
+        <terminal uuid="{a595c179-7f78-4867-8008-d94161135130}" x="0" y="90" orientation="w" name=""/>
+        <terminal uuid="{d79ad10e-ef34-434d-859c-d3ec3445521e}" x="100" y="90" orientation="e" name=""/>
+        <terminal uuid="{b77e1735-cb7e-44db-8081-a8dace166c70}" x="30" y="100" orientation="s" name=""/>
+    </description>
+</definition>

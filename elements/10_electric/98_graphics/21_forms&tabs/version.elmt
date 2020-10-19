@@ -1,4 +1,4 @@
-<definition width="400" link_type="simple" version="0.5" hotspot_x="18" orientation="dyyy" height="150" hotspot_y="21" type="element">
+<definition width="400" link_type="simple" version="0.5" hotspot_x="18" height="150" hotspot_y="21" type="element">
     <uuid uuid="{5bcec2ed-d3cd-49ef-8365-e60cc994be62}"/>
     <names>
         <name lang="de">Versionsverfolgung</name>

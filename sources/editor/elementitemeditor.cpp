@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,22 +31,26 @@ ElementItemEditor::ElementItemEditor(QETElementEditor *editor, QWidget *parent) 
 }
 
 /// @return le QETElementEditor auquel cet editeur appartient
-QETElementEditor *ElementItemEditor::elementEditor() const {
+QETElementEditor *ElementItemEditor::elementEditor() const
+{
 	return(element_editor);
 }
 
 /// @return l'ElementScene contenant les parties editees par cet editeur
-ElementScene *ElementItemEditor::elementScene() const {
+ElementScene *ElementItemEditor::elementScene() const
+{
 	return(element_editor -> elementScene());
 }
 
 /// @return la QUndoStack a utiliser pour les annulations
-QUndoStack &ElementItemEditor::undoStack() const {
+QUndoStack &ElementItemEditor::undoStack() const
+{
 	return(elementScene() -> undoStack());
 }
 
 /// @return Le nom du type d'element edite
-QString ElementItemEditor::elementTypeName() const {
+QString ElementItemEditor::elementTypeName() const
+{
 	return(element_type_name);
 }
 
@@ -60,6 +64,7 @@ void ElementItemEditor::setElementTypeName(const QString &name) {
 	Equivaut a setPart(0)
 	@see setPart
 */
-void ElementItemEditor::detach() {
+void ElementItemEditor::detach()
+{
 	setPart(nullptr);
 }

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" version="0.51" hotspot_y="15" type="element" width="50" height="30" orientation="dyyy">
+<definition link_type="simple" hotspot_x="15" version="0.51" hotspot_y="15" type="element" width="50" height="30">
     <uuid uuid="{92b730c4-484f-4bab-8132-f3b42f14ac0f}"/>
     <names>
         <name lang="fr">Raccord union n° 341 MF</name>

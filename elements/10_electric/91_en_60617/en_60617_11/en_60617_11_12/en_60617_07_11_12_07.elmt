@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="60" height="70" hotspot_x="55" hotspot_y="65" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="60" height="70" hotspot_x="55" hotspot_y="65" version="0.70">
     <uuid uuid="{da352baa-78b4-4405-8fb7-8c19ff1b307a}"/>
     <names>
         <name lang="de">Verteiler</name>

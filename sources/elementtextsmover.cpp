@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2012 Xavier Guerrin
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -23,26 +23,28 @@
 #include <QObject>
 
 /**
- * @brief ElementTextsMover::ElementTextsMover
- */
-ElementTextsMover::ElementTextsMover() {}
+	@brief ElementTextsMover::ElementTextsMover
+*/
+ElementTextsMover::ElementTextsMover()
+{}
 
 /**
- * @brief ElementTextsMover::isReady
- * @return true if this ElementTextsMover is ready to process a new movement.
- * False if this ElementTextsMover is actually process a movement
- */
-bool ElementTextsMover::isReady() const {
+	@brief ElementTextsMover::isReady
+	@return true if this ElementTextsMover is ready to process a new movement.
+	False if this ElementTextsMover is actually process a movement
+*/
+bool ElementTextsMover::isReady() const
+{
 	return(!m_movement_running);
 }
 
 /**
- * @brief ElementTextsMover::beginMovement
- * Begin a movement
- * @param diagram : diagram where the movement is apply
- * @param driver_item : item moved by the mouse
- * @return : the number of moved text (driver_item include), or -1 if this ElementTextsMover can't begin a movement
- */
+	@brief ElementTextsMover::beginMovement
+	Begin a movement
+	@param diagram : diagram where the movement is apply
+	@param driver_item : item moved by the mouse
+	@return : the number of moved text (driver_item include), or -1 if this ElementTextsMover can't begin a movement
+*/
 int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
 	if (m_movement_running || !diagram)
@@ -101,9 +103,9 @@ void ElementTextsMover::continueMovement(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ElementTextsMover::endMovement
- * Finish the movement by pushing an undo command to the parent diagram of text item
- */
+	@brief ElementTextsMover::endMovement
+	Finish the movement by pushing an undo command to the parent diagram of text item
+*/
 void ElementTextsMover::endMovement()
 {	
 		//No movement or no items to move

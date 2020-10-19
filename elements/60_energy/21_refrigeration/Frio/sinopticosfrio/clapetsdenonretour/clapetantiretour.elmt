@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{50cad68d-e8c6-496a-a67b-4180b4aea55f}"/>
     <names>
         <name lang="cs">Pojistné ventily</name>

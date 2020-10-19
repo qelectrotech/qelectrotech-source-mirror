@@ -1,4 +1,4 @@
-<definition width="330" orientation="dyyy" version="0.5" height="100" type="element" hotspot_y="34" link_type="simple" hotspot_x="15">
+<definition width="330" version="0.5" height="100" type="element" hotspot_y="34" link_type="simple" hotspot_x="15">
     <uuid uuid="{1c3687c5-a859-4a66-a3b5-f3a8133860f7}"/>
     <names>
         <name lang="it">SINAMICS G110 6SL3211</name>

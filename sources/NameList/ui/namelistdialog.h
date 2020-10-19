@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,9 +27,9 @@ namespace Ui {
 }
 
 /**
- * @brief The NameListDialog class
- * Provide a dialog for let user define localized string;
- */
+	@brief The NameListDialog class
+	Provide a dialog for let user define localized string;
+*/
 class NameListDialog : public QDialog
 {
 	Q_OBJECT

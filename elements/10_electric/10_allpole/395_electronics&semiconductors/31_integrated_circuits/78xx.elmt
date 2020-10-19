@@ -1,19 +1,38 @@
-<definition width="40" orientation="dyyy" height="40" link_type="simple" type="element" hotspot_x="20" hotspot_y="14" version="0.5">
-<uuid uuid="{10F6ED11-3343-45F9-BE20-F537FB65D156}"/><names>
-        <name lang="ro">78xx</name>
+<definition width="40" hotspot_y="14" link_type="simple" version="0.80" height="40" hotspot_x="20" type="element">
+    <uuid uuid="{9e072a82-da11-45c1-b218-89bb3778737c}"/>
+    <names>
+        <name lang="fr">78xx</name>
+        <name lang="en">78xx</name>
         <name lang="pl">Układ scalony 78xx</name>
+        <name lang="ro">78xx</name>
     </names>
-    <informations>Author: Angelescu Constantin
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: Angelescu Constantin&#xd;
 titus0818@yahoo.com</informations>
     <description>
-        <rect x="-15" width="30" y="-10" height="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line y1="10" y2="16" x1="-10" end1="none" antialias="false" x2="-10" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line y1="10.8333" y2="16.1667" x1="0" end1="none" antialias="false" x2="0" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line y1="10.8333" y2="16.1667" x1="10" end1="none" antialias="false" x2="10" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-10" y="7" text="78xx" size="6"/>
-        <input x="20" y="0" text="_" rotate="true" tagg="label" size="9"/>
-        <terminal x="0" orientation="s" y="20"/>
-        <terminal x="10" orientation="s" y="20"/>
-        <terminal x="-10" orientation="s" y="20"/>
+        <rect width="30" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" y="-10" height="20" rx="0" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-10" y1="10" y2="16" x2="-10" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="10.8333" y2="16.1667" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="10" y1="10.8333" y2="16.1667" x2="10" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <text text="78xx" x="-10" color="#000000" y="7" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="20" text_width="-1" uuid="{2687d3d8-003a-4385-9231-61d5d13e597c}" y="-11.5" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" z="6">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="s" x="0" uuid="{1172f0ce-993f-4023-abb6-c00a3e190629}" y="20" name=""/>
+        <terminal orientation="s" x="10" uuid="{cb98556d-792d-4c8b-9187-d12608882c9b}" y="20" name=""/>
+        <terminal orientation="s" x="-10" uuid="{6d0dfdc6-2d90-4470-af17-02b20d615a0f}" y="20" name=""/>
     </description>
 </definition>

@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -200,7 +200,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	line_style -> addItem(tr("Pointillé", "element part line style"), CustomElementGraphicPart::DottedStyle);
 	line_style -> addItem(tr("Traits et points", "element part line style"), CustomElementGraphicPart::DashdottedStyle);
 	//normal_style -> setChecked(true);
-	
+
 	// epaisseur
 	size_weight = new QComboBox(this);
 	size_weight -> addItem(tr("Nulle", "element part weight"),  CustomElementGraphicPart::NoneWeight);
@@ -374,16 +374,16 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
-	
+
 	updateForm();
-	
+
 	auto main_layout = new QVBoxLayout();
-	main_layout -> setMargin(0);
-	
+	main_layout -> setContentsMargins(0,0,0,0);
+
 	main_layout -> addWidget(new QLabel("<u>" + tr("Apparence :") + "</u> "));
 
-	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
-	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	auto grid_layout = new QGridLayout(this);
 	grid_layout->addWidget(new QLabel(tr("Contour :")), 0,0, Qt::AlignRight);
 	grid_layout->addWidget(outline_color, 0, 1);
@@ -403,38 +403,44 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 }
 
 /// Destructeur
-StyleEditor::~StyleEditor() {
+StyleEditor::~StyleEditor()
+{
 }
 
 /// Update antialiasing with undo command
-void StyleEditor::updatePartAntialiasing() {
+void StyleEditor::updatePartAntialiasing()
+{
 	makeUndo(tr("style antialiasing"), "antialias", antialiasing -> isChecked());
 }
 
 /// Update color with undo command
-void StyleEditor::updatePartColor() {
+void StyleEditor::updatePartColor()
+{
 	makeUndo(tr("style couleur"),"color", outline_color->itemData(outline_color -> currentIndex()));
 }
 
 /// Update style with undo command
-void StyleEditor::updatePartLineStyle() {
+void StyleEditor::updatePartLineStyle()
+{
 	makeUndo(tr("style ligne"), "line_style", line_style->itemData(line_style -> currentIndex()));
 }
 
 /// Update weight with undo command
-void StyleEditor::updatePartLineWeight() {
+void StyleEditor::updatePartLineWeight()
+{
 	makeUndo(tr("style epaisseur"), "line_weight", size_weight->itemData(size_weight -> currentIndex()));
 }
 
 /// Update color filling with undo command
-void StyleEditor::updatePartFilling() {
+void StyleEditor::updatePartFilling()
+{
 	makeUndo(tr("style remplissage"), "filling", filling_color->itemData(filling_color -> currentIndex()));
 }
 
 /**
- * @brief StyleEditor::updateForm
- * Update the edition form according to the value of edited part(s)
- */
+	@brief StyleEditor::updateForm
+	Update the edition form according to the value of edited part(s)
+*/
 void StyleEditor::updateForm()
 {
 	if (!part && m_part_list.isEmpty()) return;
@@ -442,11 +448,15 @@ void StyleEditor::updateForm()
 
 	if (part)
 	{
-		antialiasing -> setChecked(part -> antialiased());
-		outline_color -> setCurrentIndex(part -> color());
-		line_style    -> setCurrentIndex(part -> lineStyle());
-		size_weight   -> setCurrentIndex(part -> lineWeight());
-		filling_color -> setCurrentIndex(part -> filling());
+		antialiasing  ->setChecked(part -> antialiased());
+		outline_color ->removeItem(13); //Remove the separator for set the good index at the line below
+		outline_color ->setCurrentIndex(part->color());
+		outline_color ->insertSeparator(13);
+		line_style    ->setCurrentIndex(part -> lineStyle());
+		size_weight   ->setCurrentIndex(part -> lineWeight());
+		filling_color ->removeItem(14); //Remove the separator for set the good index at the line below
+		filling_color ->setCurrentIndex(part -> filling());
+		filling_color ->insertSeparator(14);
 	}
 	else if (m_part_list.size())
 	{
@@ -457,7 +467,7 @@ void StyleEditor::updateForm()
 		size_weight   -> setCurrentIndex(first_part -> lineWeight());
 		filling_color -> setCurrentIndex(first_part -> filling());
 
-		foreach (CustomElementGraphicPart *cegp, m_part_list)
+		for (auto cegp : m_part_list)
 		{
 			if (first_part -> antialiased() != cegp -> antialiased()) antialiasing -> setChecked(false);
 			if (first_part -> color()       != cegp -> color())      outline_color -> setCurrentIndex(-1);
@@ -471,14 +481,15 @@ void StyleEditor::updateForm()
 }
 
 /**
- * @brief StyleEditor::setPart
- * Set the part to edit by this editor.
- * Note : editor can accept or refuse to edit a part
- * @param new_part : part to edit
- * @return  true if editor accept to edit this CustomElementPart otherwise false
- */
+	@brief StyleEditor::setPart
+	Set the part to edit by this editor.
+	Note : editor can accept or refuse to edit a part
+	@param new_part : part to edit
+	@return  true if editor accept to edit this CustomElementPart otherwise false
+*/
 bool StyleEditor::setPart(CustomElementPart *new_part) {
 	m_part_list.clear();
+	m_cep_list.clear();
 
 	if (!new_part)
 	{
@@ -489,6 +500,7 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part))
 	{
 		part = part_graphic;
+		m_cep_list.append(part_graphic);
 		updateForm();
 		return(true);
 	}
@@ -497,14 +509,14 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 }
 
 /**
- * @brief StyleEditor::setParts
- * Set several parts to edit by this editor.
- * Note : editor can accept or refuse to edit several parts.
- * @param part_list
- * @return true if every customeElementPart stored in part_list can
- * be edited by this part editor, otherwise return false
- * (see StyleEditor::isStyleEditable)
- */
+	@brief StyleEditor::setParts
+	Set several parts to edit by this editor.
+	Note : editor can accept or refuse to edit several parts.
+	@param part_list
+	@return true if every customeElementPart stored in part_list can
+	be edited by this part editor, otherwise return false
+	(see StyleEditor::isStyleEditable)
+*/
 bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 {
 	if (part_list.isEmpty()) return false;
@@ -534,21 +546,28 @@ bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 /**
 	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
 */
-CustomElementPart *StyleEditor::currentPart() const {
+CustomElementPart *StyleEditor::currentPart() const
+{
 	return(part);
 }
 
+QList<CustomElementPart*> StyleEditor::currentParts() const
+{
+	return m_cep_list;
+}
+
 /**
- * @brief StyleEditor::isStyleEditable
- * @param cep_list
- * @return true if all of the content of cep_list can be edited by style editor, else return false.
- */
+	@brief StyleEditor::isStyleEditable
+	@param cep_list
+	@return true if all of the content of cep_list
+	can be edited by style editor, else return false.
+*/
 bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 {
 	QStringList str;
 	str << "arc" << "ellipse" << "line" << "polygon" << "rect";
 
-	foreach (CustomElementPart *cep, cep_list)
+    for (CustomElementPart *cep: cep_list)
 		if (!str.contains(cep -> xmlName()))
 			return false;
 

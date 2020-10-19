@@ -1,0 +1,51 @@
+<definition hotspot_x="5" type="element" width="110" version="0.80" height="210" hotspot_y="5" link_type="simple">
+    <uuid uuid="{4fff04fd-8f3f-4ea0-b00c-9fc9f9a6f6e5}"/>
+    <names>
+        <name lang="fr">SNS216-Prise de courant modulaire 16A 2P+T connexion SanVis</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Prise de courant modulaire 16A 2P+T connexion SanVis</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">SNS216</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect y="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="100" x="0" height="200" rx="0" ry="0" antialias="false"/>
+        <circle y="67" style="line-style:normal;line-weight:normal;filling:black;color:black" x="45" diameter="10" antialias="true"/>
+        <circle y="92" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25" diameter="10" antialias="true"/>
+        <circle y="92" style="line-style:normal;line-weight:normal;filling:none;color:black" x="65" diameter="10" antialias="true"/>
+        <circle y="92" style="line-style:normal;line-weight:normal;filling:none;color:black" x="45" diameter="10" antialias="true"/>
+        <line length2="1.5" end2="none" end1="none" x1="48" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="52" length1="1.5" y2="99" y1="95" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="52" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="48" length1="1.5" y2="99" y1="95" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="50" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="50" length1="1.5" y2="99" y1="95" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="48" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="52" length1="1.5" y2="97" y1="97" antialias="false"/>
+        <rect y="50" style="line-style:normal;line-weight:thin;filling:none;color:black" width="100" x="0" height="100" rx="0" ry="0" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="50.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="50.5" length1="1.5" y2="185" y1="182" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="47" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="54" length1="1.5" y2="185" y1="185" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="48" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="53" length1="1.5" y2="187" y1="187" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="51" length1="1.5" y2="189" y1="189" antialias="false"/>
+        <circle y="56" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" diameter="80" antialias="true"/>
+        <text rotation="0" text="16A&#xa;250V~" color="#000000" y="20" font="Sans Serif,2,-1,5,50,0,0,0,0,0" x="60"/>
+        <dynamic_text rotation="0" uuid="{29d00974-0d6c-4657-87aa-27eab04e8d8a}" y="-23.5" Valignment="AlignTop" z="31" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" frame="false" text_width="-1" x="0" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{e9015d33-dac1-4928-9c1a-0b9dc300e5da}" y="50" Valignment="AlignTop" z="32" font="DejaVu Sans,2,-1,5,50,0,0,0,0,0" text_from="ElementInfo" frame="false" text_width="-1" x="0" Halignment="AlignLeft">
+            <text>SNS216</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{12f92c49-51df-46d1-9487-6330b21ab387}" y="126" Valignment="AlignTop" z="33" font="Sans Serif,3,-1,5,25,0,0,0,0,0" text_from="ElementInfo" frame="false" text_width="-1" x="6" Halignment="AlignLeft">
+            <text>Hager</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <circle y="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="57" diameter="15" antialias="false"/>
+    </description>
+</definition>

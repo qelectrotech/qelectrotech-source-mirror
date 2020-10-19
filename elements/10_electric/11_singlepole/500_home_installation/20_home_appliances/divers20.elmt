@@ -1,4 +1,4 @@
-<definition hotspot_x="5" width="130" version="0.51" orientation="dyyy" hotspot_y="296" type="element" height="300" link_type="master">
+<definition hotspot_x="5" width="130" version="0.51" hotspot_y="296" type="element" height="300" link_type="master">
     <uuid uuid="{2a94fac3-0978-48ff-892a-8ff7b9fec09d}"/>
     <names>
         <name lang="fr">Divers 20 A</name>

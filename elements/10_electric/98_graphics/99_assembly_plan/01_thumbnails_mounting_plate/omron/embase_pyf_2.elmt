@@ -1,4 +1,4 @@
-<definition width="40" height="80" link_type="simple" orientation="dyyy" hotspot_x="5" version="0.5" hotspot_y="35" type="element">
+<definition width="40" height="80" link_type="simple" hotspot_x="5" version="0.5" hotspot_y="35" type="element">
     <uuid uuid="{51e5fdfa-a4cf-45cd-ab35-e7b871dc6326}"/>
     <names>
         <name lang="it">Base PYF 2</name>

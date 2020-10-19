@@ -1,4 +1,4 @@
-<definition hotspot_x="61" orientation="dyyy" width="100" hotspot_y="23" version="0.70" link_type="master" height="50" type="element">
+<definition hotspot_x="61" width="100" hotspot_y="23" version="0.70" link_type="master" height="50" type="element">
     <uuid uuid="{ac09254a-46b6-491f-be79-15e36e8e2173}"/>
     <names>
         <name lang="fr">Interrupteur sectionneur tétrapolaire</name>

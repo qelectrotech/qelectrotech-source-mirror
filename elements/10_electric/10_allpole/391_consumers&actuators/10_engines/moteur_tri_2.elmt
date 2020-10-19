@@ -1,4 +1,4 @@
-<definition width="70" type="element" link_type="simple" height="70" version="0.80" orientation="dyyy" hotspot_y="28" hotspot_x="29">
+<definition width="70" type="element" link_type="simple" height="70" version="0.80" hotspot_y="28" hotspot_x="29">
     <uuid uuid="{1111b8d4-9778-4a75-9aec-0d628403a318}"/>
     <names>
         <name lang="cs">Trojfázový motor</name>

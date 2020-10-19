@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="20" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="6">
+<definition link_type="simple" type="element" width="20" hotspot_y="44" height="70" version="0.70" hotspot_x="6">
     <uuid uuid="{c5a7e766-877a-42fd-b2d0-295f1c128bda}"/>
     <names>
         <name lang="fr">Contact à ouverture (contact de repos)</name>

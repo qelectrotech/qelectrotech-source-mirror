@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_y="19" width="70" hotspot_x="34" height="50" orientation="dyyy" version="0.80">
+<definition link_type="simple" type="element" hotspot_y="19" width="70" hotspot_x="34" height="50" version="0.80">
     <uuid uuid="{f2cd8537-b764-45ed-a3a5-d68887ed2681}"/>
     <names>
         <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>

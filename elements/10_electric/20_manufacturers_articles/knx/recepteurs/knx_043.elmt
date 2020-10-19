@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="70" hotspot_x="44">
     <uuid uuid="{4daf3f0c-36e3-47d9-aded-7b5ecfddbc99}"/>
     <names>
         <name lang="it">Ricevitore IR</name>

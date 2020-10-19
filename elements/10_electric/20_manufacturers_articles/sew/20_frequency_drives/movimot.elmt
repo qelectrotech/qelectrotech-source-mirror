@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="117" width="230" height="240" orientation="dyyy" link_type="simple" hotspot_x="107">
+<definition type="element" version="0.5" hotspot_y="117" width="230" height="240" link_type="simple" hotspot_x="107">
     <uuid uuid="{3fb996d2-4a36-4cd9-9cc0-d3c2e1637229}"/>
     <names>
         <name lang="ar">MOVIMOT</name>

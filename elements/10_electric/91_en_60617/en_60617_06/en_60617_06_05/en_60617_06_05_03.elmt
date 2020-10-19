@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="78" hotspot_y="88" version="0.70" width="100" type="element" height="110">
+<definition link_type="simple" hotspot_x="78" hotspot_y="88" version="0.70" width="100" type="element" height="110">
     <uuid uuid="{046067e5-52cb-4ea0-acf5-3864cc081ff9}"/>
     <names>
         <name lang="fr">Génératrice DC</name>

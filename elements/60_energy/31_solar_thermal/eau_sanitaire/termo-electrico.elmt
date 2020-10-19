@@ -1,4 +1,4 @@
-<definition hotspot_y="34" hotspot_x="29" height="80" orientation="dyyy" width="50" version="0.80" type="element" link_type="simple">
+<definition hotspot_y="34" hotspot_x="29" height="80" width="50" version="0.80" type="element" link_type="simple">
     <uuid uuid="{1441f41a-d87e-458e-a563-d7d887d78ca9}"/>
     <names>
         <name lang="ca">Escalfador eléctric</name>

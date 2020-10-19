@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" width="770" height="160" link_type="simple" type="element" hotspot_x="426" hotspot_y="100">
+<definition version="0.5" width="770" height="160" link_type="simple" type="element" hotspot_x="426" hotspot_y="100">
     <uuid uuid="{91f4e130-b5cc-4189-b735-cdce56d2f240}"/>
     <names>
         <name lang="fr">EYR203F001 ENTREES ANALOGIQUES</name>

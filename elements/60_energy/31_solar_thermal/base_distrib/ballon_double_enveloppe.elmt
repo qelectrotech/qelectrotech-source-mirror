@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="55" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+<definition width="110" hotspot_x="55" type="element" link_type="simple" version="0.5" height="70" hotspot_y="35">
     <uuid uuid="{1886123d-7722-4441-870f-10ca460d9a5a}"/>
     <names>
         <name lang="cs">C zásobník s dvojitým pláštěm</name>

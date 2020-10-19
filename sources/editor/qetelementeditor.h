@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ class ElementView;
 */
 class QETElementEditor : public QETMainWindow {
 	Q_OBJECT
-	
+
 	// constructor, destructor
 	public:
 		QETElementEditor(QWidget * = nullptr);
@@ -42,51 +42,51 @@ class QETElementEditor : public QETMainWindow {
 		void setupActions();
 		void setupMenus();
 		void setupInterface();
-	
+
 	// attributes
 	private:
-	/// whether the editor is "read-only"
-	bool read_only;
-	/// menus
-	QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu;
-	/// view widget for the editing scene
-	ElementView *m_view;
-	/// editing scene
-	ElementScene *m_elmt_scene;
-	/// container for widgets dedicated to primitive edition
-	QDockWidget *m_tools_dock;
-	/// Stack of widgets for tools_dock
-	QStackedWidget *m_tools_dock_stack;
-	/// label displayed when several primitives are selected
-	QLabel *m_default_informations;
-	/// Hash associating primitive names with their matching edition widget
-	QHash<QString, ElementItemEditor *> m_editors;
-	/// container for the undo list
-	QDockWidget *m_undo_dock;
-	/// Container for the list of existing primitives
-	QDockWidget *m_parts_dock;
-	/// List of primitives
-	QListWidget *m_parts_list;
-	/// actions for the "file" menu
-	QAction *new_element, *open, *open_dxf, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
-	/// actions for the "edit" menu
-	QAction *selectall, *deselectall, *inv_select;
-	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
-	QAction *undo, *redo;
-	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_author, *m_edit_properties;
-	/// toolbars
-	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
-	/// Action group
-	QActionGroup *parts, *m_zoom_ag, *m_depth_action_group;
-	/// minimum window title
-	QString min_title;
-	/// filename of the currently edited element
-	QString filename_;
-	/// location of the currently edited element
-	ElementsLocation location_;
-	/// whether the currently edited element comes from a file or a location
-	bool opened_from_file;
-	
+		/// whether the editor is "read-only"
+		bool read_only;
+		/// menus
+		QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu;
+		/// view widget for the editing scene
+		ElementView *m_view;
+		/// editing scene
+		ElementScene *m_elmt_scene;
+		/// container for widgets dedicated to primitive edition
+		QDockWidget *m_tools_dock;
+		/// Stack of widgets for tools_dock
+		QStackedWidget *m_tools_dock_stack;
+		/// label displayed when several primitives are selected
+		QLabel *m_default_informations;
+		/// Hash associating primitive names with their matching edition widget
+		QHash<QString, ElementItemEditor *> m_editors;
+		/// container for the undo list
+		QDockWidget *m_undo_dock;
+		/// Container for the list of existing primitives
+		QDockWidget *m_parts_dock;
+		/// List of primitives
+		QListWidget *m_parts_list;
+		/// actions for the "file" menu
+		QAction *new_element, *open, *open_dxf, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
+		/// actions for the "edit" menu
+		QAction *selectall, *deselectall, *inv_select;
+		QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
+		QAction *undo, *redo;
+		QAction *edit_delete, *edit_size_hs, *edit_names, *edit_author, *m_edit_properties;
+		/// toolbars
+		QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
+		/// Action group
+		QActionGroup *parts, *m_zoom_ag, *m_depth_action_group;
+		/// minimum window title
+		QString min_title;
+		/// filename of the currently edited element
+		QString filename_;
+		/// location of the currently edited element
+		ElementsLocation location_;
+		/// whether the currently edited element comes from a file or a location
+		bool opened_from_file;
+
 	// methods
 	public:
 		void setNames(const NamesList &);
@@ -113,8 +113,8 @@ class QETElementEditor : public QETMainWindow {
 		void saveToLocation(ElementsLocation loc);
 
 	protected:
-	void closeEvent(QCloseEvent *) override;
-	void firstActivation(QEvent *) override;
+		void closeEvent(QCloseEvent *) override;
+		void firstActivation(QEvent *) override;
 
 	private:
 		bool canClose();
@@ -132,28 +132,28 @@ class QETElementEditor : public QETMainWindow {
 		void addDynamicTextField();
 		void UncheckAddPrimitive();
 
-	void slot_new();
-	void slot_open();
-	void slot_openDxf();
-	void slot_openFile();
-	void openRecentFile(const QString &);
-	void openElement(const QString &);
-	void slot_reload();
-	bool slot_save();
-	bool slot_saveAs();
-	bool slot_saveAsFile();
-	void slot_setRubberBandToView();
-	void slot_setNoDragToView();
-	void slot_updateInformations();
-	void slot_updateMenus();
-	void slot_updateTitle();
-	void slot_createPartsList();
-	void slot_updatePartsList();
-	void slot_updateSelectionFromPartsList();
-	bool checkElement();
-	void pasteFromFile();
-	void pasteFromElement();
-	void updateCurrentPartEditor();
+		void slot_new();
+		void slot_open();
+		void slot_openDxf();
+		void slot_openFile();
+		void openRecentFile(const QString &);
+		void openElement(const QString &);
+		void slot_reload();
+		bool slot_save();
+		bool slot_saveAs();
+		bool slot_saveAsFile();
+		void slot_setRubberBandToView();
+		void slot_setNoDragToView();
+		void slot_updateInformations();
+		void slot_updateMenus();
+		void slot_updateTitle();
+		void slot_createPartsList();
+		void slot_updatePartsList();
+		void slot_updateSelectionFromPartsList();
+		bool checkElement();
+		void pasteFromFile();
+		void pasteFromElement();
+		void updateCurrentPartEditor();
 };
 
 /**
@@ -166,21 +166,24 @@ inline void QETElementEditor::setNames(const NamesList &nameslist) {
 /**
 	@return the location of the currently edited element
 */
-inline ElementsLocation QETElementEditor::location() const {
+inline ElementsLocation QETElementEditor::location() const
+{
 	return(location_);
 }
 
 /**
 	@return the filename of the currently edited element
 */
-inline QString QETElementEditor::fileName() const {
+inline QString QETElementEditor::fileName() const
+{
 	return(filename_);
 }
 
 /**
 	@return the editing scene
 */
-inline ElementScene *QETElementEditor::elementScene() const {
+inline ElementScene *QETElementEditor::elementScene() const
+{
 	return(m_elmt_scene);
 }
 

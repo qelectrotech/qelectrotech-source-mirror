@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="20" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{5cddd31b-2dcc-416e-9cce-eec59071181c}"/>
     <names>
         <name lang="fr">Dispositif d`accrochage libéré</name>

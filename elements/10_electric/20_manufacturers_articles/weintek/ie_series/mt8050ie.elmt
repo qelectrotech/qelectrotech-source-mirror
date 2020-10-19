@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="112" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="210" width="260">
+<definition type="element" hotspot_y="112" link_type="simple" hotspot_x="155" version="0.80" height="210" width="260">
     <uuid uuid="{a5a425a2-f83a-4a84-8107-f2952fa4404c}"/>
     <names>
         <name lang="de">MT8050IE 4.3"</name>

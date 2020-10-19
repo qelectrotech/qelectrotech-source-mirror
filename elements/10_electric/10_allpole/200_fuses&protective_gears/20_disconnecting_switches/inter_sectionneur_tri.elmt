@@ -1,4 +1,4 @@
-<definition link_type="master" width="80" height="50" hotspot_x="51" orientation="dyyy" version="0.60" type="element" hotspot_y="24">
+<definition link_type="master" width="80" height="50" hotspot_x="51" version="0.60" type="element" hotspot_y="24">
     <uuid uuid="{a2740e69-3632-4ab0-8bd1-0591adc0b909}"/>
     <names>
         <name lang="fr">Interrupteur sectionneur triphasé</name>

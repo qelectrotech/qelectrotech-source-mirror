@@ -1,4 +1,4 @@
-<definition width="20" version="0.4" hotspot_x="10" hotspot_y="14" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="20" version="0.4" hotspot_x="10" hotspot_y="14" height="40" link_type="simple" type="element" ic="true">
 <uuid uuid="{405A6589-7A41-44AC-A16E-4C1163549549}"/><names>
         <name lang="es">Sensor de presión</name>
         <name lang="en">Pressure sensor</name>

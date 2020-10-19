@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="12">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="20" hotspot_y="12">
     <uuid uuid="{1c4e9a4f-dfcd-463e-aee7-502236d7d529}"/>
     <names>
         <name lang="cs">Plovákový ventil</name>

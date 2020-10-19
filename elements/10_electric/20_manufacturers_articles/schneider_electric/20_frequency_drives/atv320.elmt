@@ -1,4 +1,4 @@
-<definition link_type="master" width="450" hotspot_x="245" type="element" height="110" hotspot_y="54" orientation="dyyy" version="0.70">
+<definition link_type="master" width="450" hotspot_x="245" type="element" height="110" hotspot_y="54" version="0.70">
     <uuid uuid="{8d944540-f0d9-4a20-892c-61d5c2e585fa}"/>
     <names>
         <name lang="en">ATV320-M3/N4/S6</name>

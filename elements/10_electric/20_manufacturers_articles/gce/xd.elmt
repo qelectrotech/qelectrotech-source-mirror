@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="86" orientation="dyyy" height="100" width="100" version="0.70" link_type="simple" hotspot_x="50">
+<definition type="element" hotspot_y="86" height="100" width="100" version="0.70" link_type="simple" hotspot_x="50">
     <uuid uuid="{38eb610f-8abb-4ee1-b298-d11e9e19e5e4}"/>
     <names>
         <name lang="fr">GCE-Xdisplay</name>

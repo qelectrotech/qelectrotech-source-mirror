@@ -1,4 +1,4 @@
-<definition width="60" link_type="simple" version="0.5" hotspot_x="30" orientation="dyyy" height="40" hotspot_y="19" type="element">
+<definition width="60" link_type="simple" version="0.5" hotspot_x="30" height="40" hotspot_y="19" type="element">
     <uuid uuid="{d692a53d-bf99-47a4-9e9c-ff1334a17f95}"/>
     <names>
         <name lang="nl">Contact 3AC + nul +aarde</name>

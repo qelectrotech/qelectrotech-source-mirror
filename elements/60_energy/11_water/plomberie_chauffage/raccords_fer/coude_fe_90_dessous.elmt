@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="12" type="element" width="30" height="40" orientation="dyyy">
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="12" type="element" width="30" height="40">
     <uuid uuid="{fe83ea48-b1b6-4823-a391-9c863c1c8a16}"/>
     <names>
         <name lang="fr">Coude n° 90 DF</name>

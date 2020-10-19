@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" version="0.70">
     <uuid uuid="{40384867-aeff-4594-b0e2-92bc7b919555}"/>
     <names>
         <name lang="de">Drei Leiter, ein Neutralleiter, ein Schutzleiter</name>

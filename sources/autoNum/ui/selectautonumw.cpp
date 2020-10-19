@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,15 +24,18 @@
 #include "ui_formulaautonumberingw.h"
 #include "assignvariables.h"
 
+
 /**
- * Constructor
- */
+	@brief SelectAutonumW::SelectAutonumW
+	Constructor
+	@param type : int m_edited_type
+	@param parent : QWidget
+*/
 SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW),
 	m_edited_type(type)
 {
-
 	ui->setupUi(this);
 	ui->m_comboBox->lineEdit()->setClearButtonEnabled(true);
 	if (m_edited_type == 0)
@@ -50,7 +53,16 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	setContext(NumerotationContext());
 }
 
-SelectAutonumW::SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent) :
+/**
+	@brief SelectAutonumW::SelectAutonumW
+	Constructor
+	@param context : NumerotationContext
+	@param type : int m_edited_type
+	@param parent : QWidget
+*/
+SelectAutonumW::SelectAutonumW(const NumerotationContext &context,
+			       int type,
+			       QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW),
 	m_edited_type(type)
@@ -72,18 +84,22 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context, int type, QWi
 }
 
 /**
- * Destructor
- */
+	@brief SelectAutonumW::~SelectAutonumW
+	Destructor
+*/
 SelectAutonumW::~SelectAutonumW()
 {
 	delete ui;
 }
 
 /**
- * @brief SelectAutonumW::setCurrentContext
- * build the context of current diagram selected in the @diagram_chooser QcomboBox
- */
-void SelectAutonumW::setContext(const NumerotationContext &context) {
+	@brief SelectAutonumW::setContext
+	build the context of current diagram
+	selected in the diagram_chooser QcomboBox
+	@param context
+*/
+void SelectAutonumW::setContext(const NumerotationContext &context)
+{
 	m_context = context;
 
 	qDeleteAll(num_part_list_);
@@ -109,19 +125,21 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
 }
 
 /**
- * @brief SelectAutonumW::toNumContext
- * @return the content to @num_part_list to NumerotationContext
- */
-NumerotationContext SelectAutonumW::toNumContext() const {
+	@brief SelectAutonumW::toNumContext
+	@return the content to num_part_list to NumerotationContext
+*/
+NumerotationContext SelectAutonumW::toNumContext() const
+{
 	NumerotationContext nc;
-	foreach (NumPartEditorW *npew, num_part_list_) nc << npew -> toNumContext();
+	foreach (NumPartEditorW *npew, num_part_list_)
+		nc << npew -> toNumContext();
 	return nc;
 }
 
 /**
- * @brief SelectAutonumW::on_add_button_clicked
- *	Action on add_button, add a @NumPartEditor
- */
+	@brief SelectAutonumW::on_add_button_clicked
+ *	Action on add_button, add a NumPartEditor
+*/
 void SelectAutonumW::on_add_button_clicked()
 {
 	applyEnable(false);
@@ -133,10 +151,11 @@ void SelectAutonumW::on_add_button_clicked()
 }
 
 /**
- * @brief SelectAutonumW::on_remove_button_clicked
- *	Action on remove button, remove the last @NumPartEditor
- */
-void SelectAutonumW::on_remove_button_clicked() {
+	@brief SelectAutonumW::on_remove_button_clicked
+ *	Action on remove button, remove the last NumPartEditor
+*/
+void SelectAutonumW::on_remove_button_clicked()
+{
 	//remove if @num_part_list contains more than one item
 	if (num_part_list_.size() > 1) {
 		NumPartEditorW *part = num_part_list_.takeLast();
@@ -150,9 +169,9 @@ void SelectAutonumW::on_remove_button_clicked() {
 }
 
 /**
- * @brief SelectAutonumW::formula
- * @return autonumbering widget formula
- */
+	@brief SelectAutonumW::formula
+	@return autonumbering widget formula
+*/
 QString SelectAutonumW::formula()
 {
 	if (m_edited_type == 0)
@@ -169,10 +188,12 @@ QComboBox *SelectAutonumW::contextComboBox() const
 }
 
 /**
- * @brief SelectAutonumW::on_buttonBox_clicked
- * Action on @buttonBox clicked
- */
-void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
+	@brief SelectAutonumW::on_buttonBox_clicked
+	Action on button clicked
+	@param button
+*/
+void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
+{
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 	switch (answer) {
@@ -184,44 +205,50 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 		case QDialogButtonBox::HelpRole:
 			if (m_edited_type == 2)
 			{
-				QMessageBox::information (this, tr("Folio Autonumérotation", "title window"),
-                                                                        tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.\n"
-																		   "-Une numérotation est composée d'une variable minimum.\n"
-																		   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-                                                                           "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
+				QMessageBox::information (
+							this,
+							tr("Folio Autonumérotation",
+							   "title window"),
+							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.\n"
+							   "-Une numérotation est composée d'une variable minimum.\n"
+							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
 
-                                                                           "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-																		   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
-                                                                           "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-                                                                           "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-																		   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
+							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
+							   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
+							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
+							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
+							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-                                                                           "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
-																		   "help dialog about the folio autonumerotation"
-																		   ));
+							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
+							   "help dialog about the folio autonumerotation"
+							   ));
 				break;
 			}
 			else
 			{
-				QMessageBox::information (this, tr("Conducteur Autonumérotation", "title window"),
-                                                                        tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux conducteurs.\n"
-																		   "-Une numérotation est composée d'une variable minimum.\n"
-																		   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-                                                                           "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
+				QMessageBox::information (
+							this,
+							tr("Conducteur Autonumérotation",
+							   "title window"),
+							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux conducteurs.\n"
+							   "-Une numérotation est composée d'une variable minimum.\n"
+							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
 
-                                                                           "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-																		   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
-                                                                           "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-                                                                           "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-																		   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
+							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
+							   "qui s'incrémente à chaque nouveau conducteur de la valeur du champ \"Incrémentation\".\n"
+							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
+							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
+							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-                                                                           "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n"
+							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n"
 
-																		   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.\n"
+							   "\n-Le type \"N° folio\" représente le n° du folio en cours.\nLes autres champs ne sont pas utilisés.\n"
 
-																		   "\n-Le type \"Folio\" représente le nom du folio en cours.\nLes autres champs ne sont pas utilisés.",
-																		   "help dialog about the conductor autonumerotation"
-																		   ));
+							   "\n-Le type \"Folio\" représente le nom du folio en cours.\nLes autres champs ne sont pas utilisés.",
+							   "help dialog about the conductor autonumerotation"
+							   ));
 				break;
 			}
 			//apply the context in the diagram displayed by @diagram_chooser.
@@ -233,17 +260,23 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 }
 
 /**
- * @brief SelectAutonumW::applyEnable
- * enable/disable the apply button
- */
-void SelectAutonumW::applyEnable(bool b) {
+	@brief SelectAutonumW::applyEnable
+	enable/disable the apply button
+*/
+void SelectAutonumW::applyEnable(bool b)
+{
 	if (b){
 		bool valid= true;
-		foreach (NumPartEditorW *npe, num_part_list_) if (!npe -> isValid()) valid= false;
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(valid);
+		foreach (NumPartEditorW *npe, num_part_list_)
+			if (!npe -> isValid())
+				valid= false;
+
+		ui->buttonBox->button(QDialogButtonBox::Apply)
+				->setEnabled(valid);
 	}
 	else {
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+		ui->buttonBox->button(QDialogButtonBox::Apply)
+				->setEnabled(b);
 	}
 	if (m_edited_type == 0)
 		contextToFormula();
@@ -252,9 +285,9 @@ void SelectAutonumW::applyEnable(bool b) {
 }
 
 /**
- * @brief SelectAutonumW::contextToFormula
- * Apply formula to ElementAutonumbering Widget
- */
+	@brief SelectAutonumW::contextToFormula
+	Apply formula to ElementAutonumbering Widget
+*/
 void SelectAutonumW::contextToFormula()
 {
 	FormulaAutonumberingW* m_faw = nullptr;
@@ -266,14 +299,15 @@ void SelectAutonumW::contextToFormula()
 	if (m_faw)
 	{
 		m_faw->clearContext();
-		m_faw->setContext(autonum::numerotationContextToFormula(toNumContext()));
+		m_faw->setContext(autonum::numerotationContextToFormula(
+					  toNumContext()));
 	}
 }
 
 /**
- * @brief SelectAutonumW::on_m_next_pb_clicked
- * Increase NumerotationContext
- */
+	@brief SelectAutonumW::on_m_next_pb_clicked
+	Increase NumerotationContext
+*/
 void SelectAutonumW::on_m_next_pb_clicked()
 {
 	NumerotationContextCommands ncc (toNumContext());
@@ -282,9 +316,9 @@ void SelectAutonumW::on_m_next_pb_clicked()
 }
 
 /**
- * @brief SelectAutonumW::on_m_previous_pb_clicked
- * Decrease NumerotationContext
- */
+	@brief SelectAutonumW::on_m_previous_pb_clicked
+	Decrease NumerotationContext
+*/
 void SelectAutonumW::on_m_previous_pb_clicked()
 {
 	NumerotationContextCommands ncc (toNumContext());

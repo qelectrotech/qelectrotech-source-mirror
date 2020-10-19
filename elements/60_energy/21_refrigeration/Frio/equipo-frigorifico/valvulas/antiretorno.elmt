@@ -1,4 +1,4 @@
-<definition hotspot_y="19" link_type="simple" height="40" width="90" type="element" version="0.80" hotspot_x="45" orientation="dyyy">
+<definition hotspot_y="19" link_type="simple" height="40" width="90" type="element" version="0.80" hotspot_x="45">
     <uuid uuid="{ed70ccec-cbc9-44d6-8f46-e92582de964c}"/>
     <names>
         <name lang="fr">Anti-retour</name>

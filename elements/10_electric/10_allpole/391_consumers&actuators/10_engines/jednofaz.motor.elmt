@@ -1,4 +1,4 @@
-<definition version="0.70" height="80" type="element" width="80" hotspot_x="28" link_type="simple" hotspot_y="57" orientation="dyyy">
+<definition version="0.70" height="80" type="element" width="80" hotspot_x="28" link_type="simple" hotspot_y="57">
     <uuid uuid="{9f3d68cf-4c3e-40b1-9331-ebcff6b3a54b}"/>
     <names>
         <name lang="cs">Jednofázový motor</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="10" version="0.70" orientation="dyyy" height="40" hotspot_y="25" width="20" type="element" link_type="simple">
+<definition hotspot_x="10" version="0.70" height="40" hotspot_y="25" width="20" type="element" link_type="simple">
     <uuid uuid="{e9c63d06-fd70-42ce-b360-2c3f259b237b}"/>
     <names>
         <name lang="fr">Défaut (marquage de l'emplacement supposé

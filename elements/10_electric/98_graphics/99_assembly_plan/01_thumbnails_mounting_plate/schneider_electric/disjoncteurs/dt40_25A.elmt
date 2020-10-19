@@ -1,4 +1,4 @@
-<definition height="210" hotspot_y="5" orientation="dyyy" hotspot_x="2" type="element" width="50" version="0.80" link_type="simple">
+<definition height="210" hotspot_y="5" hotspot_x="2" type="element" width="50" version="0.80" link_type="simple">
     <uuid uuid="{cec7cb94-fcad-4acf-a2d3-7d7e4f73a6ab}"/>
     <names>
         <name lang="fr">DT40 Disjoncteur 25A</name>

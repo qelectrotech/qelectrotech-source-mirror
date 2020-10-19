@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="23" orientation="dyyy">
+<definition height="50" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="23">
     <uuid uuid="{ce6dc64f-bacf-4712-ae2f-7b0735eae58b}"/>
     <names>
         <name lang="en">Cylinder bellows</name>

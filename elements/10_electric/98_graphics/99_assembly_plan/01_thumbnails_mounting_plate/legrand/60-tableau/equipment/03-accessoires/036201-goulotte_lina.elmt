@@ -1,0 +1,26 @@
+<definition hotspot_x="5" link_type="simple" type="element" height="60" version="0.80" hotspot_y="2" width="460">
+    <uuid uuid="{92a2099c-91f8-4c7e-893b-06c1fdf6d0ca}"/>
+    <names>
+        <name lang="fr">036201 - Goulotte Lina25 25x40mm - longueur 2m</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation">LEG036201</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Goulotte Lina25 25x40mm - longueur 2m</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect antialias="false" x="0" rx="0" height="1" width="100" y="10" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0"/>
+        <rect antialias="false" x="0" rx="0" height="55" width="450" y="0" style="line-style:normal;line-weight:normal;filling:blue;color:none" ry="0"/>
+        <rect antialias="false" x="0" rx="0" height="10" width="450" y="40" style="line-style:normal;line-weight:normal;filling:white;color:none" ry="0"/>
+        <rect antialias="false" x="0" rx="0" height="10" width="450" y="10" style="line-style:normal;line-weight:normal;filling:white;color:none" ry="0"/>
+    </description>
+</definition>

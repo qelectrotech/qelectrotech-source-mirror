@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="30" hotspot_y="24" width="70" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="30" hotspot_y="24" width="70" height="60" link_type="simple" type="element">
     <uuid uuid="{1a7a2318-9d5f-4d40-a6dd-0df849781f8e}"/>
     <names>
         <name lang="en">Servovalve 4-2</name>

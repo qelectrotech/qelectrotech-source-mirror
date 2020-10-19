@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -35,10 +35,10 @@
 #include <QStringList>
 
 /**
- * @brief ExportElementTextPattern::ExportElementTextPattern
- * Constructor
- * @param elmt
- */
+	@brief ExportElementTextPattern::ExportElementTextPattern
+	Constructor
+	@param elmt
+*/
 ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 	m_element(elmt)
 {
@@ -74,10 +74,10 @@ ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 }
 
 /**
- * @brief ExportElementTextConf::getName
- * Open a dialog to let user set the name of the conf and return it
- * @return 
- */
+	@brief ExportElementTextConf::getName
+	Open a dialog to let user set the name of the conf and return it
+	@return 
+*/
 QString ExportElementTextPattern::getName(bool &ok) const
 {	
 	QString text = QInputDialog::getText(parentWidget(),
@@ -140,9 +140,10 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	
 	if(!exist)
 	{
-		QMessageBox::information(parentWidget(),
-								 QObject::tr("Configuration de textes"),
-								 QObject::tr("Aucune configuration de textes existante."));
+		QMessageBox::information(
+					parentWidget(),
+					QObject::tr("Configuration de textes"),
+					QObject::tr("Aucune configuration de textes existante."));
 		return;
 	}
 	
@@ -159,19 +160,24 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 }
 
 /**
- * @brief ImportElementTextPattern::getName
- * Open a dialog to let user select a conf
- * @param ok
- * @return 
- */
-QString ImportElementTextPattern::getName(const QStringList& list, bool *ok, bool *erase) const
+	@brief ImportElementTextPattern::getName
+	Open a dialog to let user select a conf
+	@param list
+	@param ok
+	@param erase
+	@return
+*/
+QString ImportElementTextPattern::getName(const QStringList& list,
+					  bool *ok,
+					  bool *erase) const
 {
-	return ImportElementTextPatternDialog::getItem(parentWidget(),
-                                                   QObject::tr("Sélectionner une configuration de textes"),
-                                                   QObject::tr("Sélectionner la configuration de textes à ajouter à l'élément"),
-												   list,
-												   ok,
-												   erase);
+	return ImportElementTextPatternDialog::getItem(
+				parentWidget(),
+				QObject::tr("Sélectionner une configuration de textes"),
+				QObject::tr("Sélectionner la configuration de textes à ajouter à l'élément"),
+				list,
+				ok,
+				erase);
 }
 
 QWidget *ImportElementTextPattern::parentWidget() const
@@ -185,11 +191,11 @@ QWidget *ImportElementTextPattern::parentWidget() const
 
 
 /**
- * @brief ImportElementTextPattern::apply
- * Apply the user choice
- * @param name : the name of the selected pattern
- * @param erase : erase the existing texts and groups of element.
- */
+	@brief ImportElementTextPattern::apply
+	Apply the user choice
+	@param name : the name of the selected pattern
+	@param erase : erase the existing texts and groups of element.
+*/
 void ImportElementTextPattern::apply(QString name, bool erase) const
 {
 	if(!name.endsWith(".xml"))

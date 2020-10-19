@@ -1,4 +1,4 @@
-<definition version="0.80" orientation="dyyy" link_type="simple" height="120" hotspot_x="65" hotspot_y="59" type="element" width="130">
+<definition version="0.80" link_type="simple" height="120" hotspot_x="65" hotspot_y="59" type="element" width="130">
     <uuid uuid="{233d6ccd-b758-4167-ae4a-14c846c2145f}"/>
     <names>
         <name lang="en">Micro800 - SERIALISOL</name>

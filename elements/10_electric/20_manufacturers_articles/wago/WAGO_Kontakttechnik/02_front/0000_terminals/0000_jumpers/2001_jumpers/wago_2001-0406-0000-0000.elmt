@@ -1,4 +1,4 @@
-<definition width="100" version="0.80" type="element" orientation="dyyy" hotspot_y="10" link_type="simple" height="20" hotspot_x="16">
+<definition width="100" version="0.80" type="element" hotspot_y="10" link_type="simple" height="20" hotspot_x="16">
     <names>
         <name lang="fr">2001-406</name>
         <name lang="en">2001-406</name>

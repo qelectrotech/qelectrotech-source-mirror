@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="6" height="250" version="0.5" width="190" hotspot_x="6" link_type="simple">
+<definition type="element" hotspot_y="6" height="250" version="0.5" width="190" hotspot_x="6" link_type="simple">
     <uuid uuid="{35467a7d-01c3-4241-a837-664805a6a6b0}"/>
     <names>
         <name lang="ar">OP 77B</name>

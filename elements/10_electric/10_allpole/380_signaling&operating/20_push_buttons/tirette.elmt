@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" hotspot_y="29" height="60" width="20" hotspot_x="8" version="0.5">
+<definition link_type="master" type="element" hotspot_y="29" height="60" width="20" hotspot_x="8" version="0.5">
 <uuid uuid="{B960BB89-7DC5-4651-B0C1-424EEAFCC0F4}"/><names>
         <name lang="ru">Кнопка (НР)</name>
         <name lang="pl">Łącznik przyciskowy z powrotem samoczynnym</name>

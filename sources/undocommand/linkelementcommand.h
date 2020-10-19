@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,11 +23,11 @@
 class Element;
 
 /**
- * @brief The LinkElementCommand class
- * This undo class manage link between elements.
- * In the same instance of this class, we can link and unlink elements from an edited element
- * This undo class support the merge.
- */
+	@brief The LinkElementCommand class
+	This undo class manage link between elements.
+	In the same instance of this class, we can link and unlink elements from an edited element
+	This undo class support the merge.
+*/
 class LinkElementCommand : public QUndoCommand
 {
 	public:

@@ -1,4 +1,4 @@
-<definition link_type="simple" height="130" hotspot_x="14" width="90" version="0.80" type="element" orientation="dyyy" hotspot_y="85">
+<definition link_type="simple" height="130" hotspot_x="14" width="90" version="0.80" type="element" hotspot_y="85">
     <uuid uuid="{dcad4fd0-c990-4071-a0e9-65ab80d59fca}"/>
     <names>
         <name lang="es">Intercambiador de placas</name>

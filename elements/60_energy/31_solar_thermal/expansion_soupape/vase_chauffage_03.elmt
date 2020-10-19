@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="25" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="28">
+<definition width="50" hotspot_x="25" type="element" link_type="simple" version="0.5" height="60" hotspot_y="28">
     <uuid uuid="{dc8d4b40-9cfb-46a3-bdd5-b545b82898ee}"/>
     <names>
         <name lang="cs">Nádoba, kruhové ohřívání</name>

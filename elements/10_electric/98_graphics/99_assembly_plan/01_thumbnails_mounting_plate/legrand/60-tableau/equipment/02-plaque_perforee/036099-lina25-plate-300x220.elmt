@@ -1,0 +1,23 @@
+<definition hotspot_y="2" type="element" width="400" link_type="simple" height="580" version="0.80" hotspot_x="2">
+    <uuid uuid="{ddf80d41-1294-436b-ba94-5ad140244640}"/>
+    <names>
+        <name lang="fr">036099 - Plaque perforée Lina 25 300x220 Marina</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">036099</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Plaque perforée Lina 25 Marina hauteur 300 x largeur 220</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <polygon y29="531" x64="354" y54="20" y2="20" x39="330" y39="560" x26="22" x7="65" x41="353" x28="25" x42="353" y61="44" antialias="true" y23="560" x27="23" x57="373" y59="38" x33="42" y58="35" y3="15" y40="560" x16="23" y34="555" y60="42" x43="354" y36="560" x3="348" y32="537" y63="42" y44="532" style="line-style:normal;line-weight:thin;filling:gray;color:black" x24="17" x12="39" x55="390" y46="531" x10="42" x53="395" y4="15" y48="535" x50="373" y11="38" y25="555" y6="0" y30="531" x21="0" x13="35" x2="353" y21="20" x18="22" x5="320" y38="575" x63="356" x9="42" x61="366" x59="372" x58="373" y62="44" x37="75" x45="360" y56="15" x22="0" y10="35" y22="555" y49="540" y37="575" x11="41" x52="390" x32="41" y52="560" y7="15" x29="29" x35="47" y19="15" y16="38" y50="555" y12="42" y35="560" x15="25" y43="535" x6="76" y8="15" y53="555" y24="560" x46="365" y17="35" x25="22" y28="533" x19="18" x56="377" y33="541" y14="44" y18="20" y55="15" y15="42" x36="65" x49="373" y45="531" x17="22" x30="35" y42="540" x44="357" x54="395" x40="348" x51="378" y13="44" y1="35" x8="46" x34="42" x62="360" x14="29" y5="0" x38="320" y41="555" x4="330" x47="369" x48="372" x23="5" x20="5" y31="533" y57="20" y20="15" y27="537" x1="353" y64="38" y47="532" x31="39" y9="20" y26="541" y51="560" x60="370"/>
+    </description>
+</definition>

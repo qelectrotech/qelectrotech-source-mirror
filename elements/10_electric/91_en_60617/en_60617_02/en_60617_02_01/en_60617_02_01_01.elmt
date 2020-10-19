@@ -1,4 +1,4 @@
-<definition hotspot_x="33" type="element" width="70" hotspot_y="27" version="0.70" orientation="dyyy" height="40" link_type="simple">
+<definition hotspot_x="33" type="element" width="70" hotspot_y="27" version="0.70" height="40" link_type="simple">
     <uuid uuid="{16ecb87a-6224-4ab4-aeed-436f782ed30a}"/>
     <names>
         <name lang="fr">Objet, par exemple:

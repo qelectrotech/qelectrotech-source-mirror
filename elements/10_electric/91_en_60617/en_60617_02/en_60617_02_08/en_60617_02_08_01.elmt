@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="14" link_type="simple" hotspot_x="7" height="30">
+<definition version="0.70" width="20" type="element" hotspot_y="14" link_type="simple" hotspot_x="7" height="30">
     <uuid uuid="{3a40fd6e-9b58-4707-9943-eb0594de484b}"/>
     <names>
         <name lang="fr">Effet thermique</name>

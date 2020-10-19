@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="34" type="element" height="70" width="180" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="34" type="element" height="70" width="180" version="0.5">
     <uuid uuid="{c39905bf-c0f7-48c5-8bf9-dbfc7d297203}"/>
     <names>
         <name lang="pl">Czujnik przewodności CLS40</name>

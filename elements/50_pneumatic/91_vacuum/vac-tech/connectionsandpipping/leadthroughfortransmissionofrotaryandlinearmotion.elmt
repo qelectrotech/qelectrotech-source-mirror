@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="19" width="40" link_type="simple" height="30" version="0.80" orientation="dyyy" hotspot_y="13">
+<definition type="element" hotspot_x="19" width="40" link_type="simple" height="30" version="0.80" hotspot_y="13">
     <uuid uuid="{31192147-361a-4cc5-abeb-9a9d2c73449f}"/>
     <names>
         <name lang="fr">Passage pour la transmission de mouvements rotatifs et linéaires</name>

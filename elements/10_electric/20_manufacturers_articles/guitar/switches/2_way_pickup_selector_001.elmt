@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="56" version="0.5" link_type="simple" type="element" hotspot_y="50" height="70" width="130">
+<definition hotspot_x="56" version="0.5" link_type="simple" type="element" hotspot_y="50" height="70" width="130">
     <uuid uuid="{304265ff-4dc9-43d1-8cb3-4cd386a98ede}"/>
     <names>
         <name lang="en">2 Way Pickup Selector 001</name>

@@ -1,4 +1,4 @@
-<definition width="220" hotspot_y="6" orientation="dyyy" link_type="master" height="130" hotspot_x="105" type="element" version="0.70">
+<definition width="220" hotspot_y="6" link_type="master" height="130" hotspot_x="105" type="element" version="0.70">
     <uuid uuid="{530f0d46-0d13-4c87-94ec-cff8c3625acd}"/>
     <names>
         <name lang="hu">Unitronics EX-A2X bővítő modul</name>

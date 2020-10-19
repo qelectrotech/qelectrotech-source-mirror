@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" orientation="dyyy" width="390" height="260" link_type="simple" hotspot_x="8" hotspot_y="4">
+<definition version="0.5" type="element" width="390" height="260" link_type="simple" hotspot_x="8" hotspot_y="4">
     <uuid uuid="{2cbbe2f8-0532-4bf2-bf08-067fc3f72dbb}"/>
     <names>
         <name lang="fr">API M241CE24T: vue</name>

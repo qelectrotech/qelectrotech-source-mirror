@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="105" hotspot_y="85" orientation="dyyy" type="element" height="90" width="110">
+<definition link_type="simple" version="0.70" hotspot_x="105" hotspot_y="85" type="element" height="90" width="110">
     <uuid uuid="{ca925849-2875-4272-baa7-7581d2b2c394}"/>
     <names>
         <name lang="fr">Commutateur complexe, symbole général</name>

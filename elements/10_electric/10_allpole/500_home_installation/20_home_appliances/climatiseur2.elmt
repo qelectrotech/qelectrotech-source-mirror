@@ -1,0 +1,32 @@
+<definition hotspot_x="40" link_type="simple" type="element" height="70" version="0.80" hotspot_y="4" width="80">
+    <uuid uuid="{97e71587-b54c-4f55-9d40-fe045bf1c807}"/>
+    <names>
+        <name lang="pl">Klimatyzator</name>
+        <name lang="fr">Climatiseur</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="0" length2="1.5" y2="10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-35" rx="0" height="50" width="70" y="10" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" angle="-360" x="-27" height="30" width="30" start="90" y="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-19" end2="none" antialias="false" x2="-5" y1="22" length2="1.5" y2="22" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-22" end2="none" antialias="false" x2="-2" y1="24" length2="1.5" y2="24" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-24" end2="none" antialias="false" x2="-1" y1="26" length2="1.5" y2="26" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-25" end2="none" antialias="false" x2="1" y1="28" length2="1.5" y2="28" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-26" end2="none" antialias="false" x2="2" y1="30" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-27" end2="none" antialias="false" x2="2" y1="32" length2="1.5" y2="32" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-27" end2="none" antialias="false" x2="2" y1="34" length2="1.5" y2="34" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-27" end2="none" antialias="false" x2="3" y1="36" length2="1.5" y2="36" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-27" end2="none" antialias="false" x2="2" y1="38" length2="1.5" y2="38" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-26" end2="none" antialias="false" x2="2" y1="40" length2="1.5" y2="40" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-25" end2="none" antialias="false" x2="1" y1="42" length2="1.5" y2="42" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-24" end2="none" antialias="false" x2="0" y1="44" length2="1.5" y2="44" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-22" end2="none" antialias="false" x2="-2" y1="46" length2="1.5" y2="46" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-19" end2="none" antialias="false" x2="-5" y1="48" length2="1.5" y2="48" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="0" length2="1.5" y2="10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="10" y="0" uuid="{f827446e-eb79-4330-9e32-765e5f38e931}"/>
+        <terminal orientation="n" name="" x="-10" y="0" uuid="{2e112237-75df-47b3-bc8f-15fd0e89489f}"/>
+        <terminal orientation="s" name="" x="0" y="60" uuid="{e323c17f-1635-4b73-898e-d07399277e39}"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
+<definition hotspot_x="24" version="0.70" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{6bce70ca-75fa-47c6-ab46-db10c884c99f}"/>
     <names>
         <name lang="fr">Impulsion de courant alternatif</name>

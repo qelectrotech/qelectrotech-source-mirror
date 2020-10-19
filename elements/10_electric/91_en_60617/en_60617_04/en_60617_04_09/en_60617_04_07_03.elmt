@@ -1,4 +1,4 @@
-<definition height="50" type="element" width="70" hotspot_y="45" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="34">
+<definition height="50" type="element" width="70" hotspot_y="45" link_type="simple" version="0.70" hotspot_x="34">
     <uuid uuid="{402f2ba8-8aba-4423-8bc8-8067dc145e91}"/>
     <names>
         <name lang="fr">Ligne à retard, type coaxial</name>

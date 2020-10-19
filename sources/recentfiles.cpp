@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -34,7 +34,7 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 {
 	mapper_ = new QSignalMapper(this);
 	connect(mapper_, SIGNAL(mapped(const QString &)), this, SLOT(handleMenuRequest(const QString &)));
-	
+
 	extractFilesFromSettings();
 	buildMenu();
 }
@@ -43,21 +43,27 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 	Destructeur
 	@todo determiner s'il faut detruire ou non le menu
 */
-RecentFiles::~RecentFiles() {
+RecentFiles::~RecentFiles()
+{
+#if TODO_LIST
+#pragma message("@TODO determiner s'il faut detruire ou non le menu")
+#endif
 	delete menu_;
 }
 
 /**
 	@return le nombre de fichiers a retenir
 */
-int RecentFiles::size() const {
+int RecentFiles::size() const
+{
 	return(size_);
 }
 
 /**
 	@return un menu listant les derniers fichiers ouverts
 */
-QMenu *RecentFiles::menu() const {
+QMenu *RecentFiles::menu() const
+{
 	return(menu_);
 }
 
@@ -65,7 +71,8 @@ QMenu *RecentFiles::menu() const {
 	@return l'icone affichee a cote de chaque fichier, ou une QIcon nulle si
 	aucune icone n'est utilisee.
 */
-QIcon RecentFiles::iconForFiles() const {
+QIcon RecentFiles::iconForFiles() const
+{
 	return(files_icon_);
 }
 
@@ -82,7 +89,8 @@ void RecentFiles::setIconForFiles(const QIcon &icon) {
 /**
 	Oublie les fichiers recents
 */
-void RecentFiles::clear() {
+void RecentFiles::clear()
+{
 	list_.clear();
 	buildMenu();
 }
@@ -90,7 +98,8 @@ void RecentFiles::clear() {
 /**
 	Sauvegarde les fichiers recents dans la configuration
 */
-void RecentFiles::save() {
+void RecentFiles::save()
+{
 	saveFilesToSettings();
 }
 
@@ -111,14 +120,14 @@ void RecentFiles::fileWasOpened(const QString &filepath) {
 }
 
 /**
- * @brief RecentFiles::extractFilesFromSettings
- * Read the list of recent file from settings
- */
+	@brief RecentFiles::extractFilesFromSettings
+	Read the list of recent file from settings
+*/
 void RecentFiles::extractFilesFromSettings()
 {
 		//Forget the list of recent files
 	list_.clear();
-	
+
 		//Get the last opened file from the settings
 	QSettings settings;
 	for (int i = size_ ; i >= 1  ; -- i)
@@ -135,22 +144,22 @@ void RecentFiles::extractFilesFromSettings()
 void RecentFiles::insertFile(const QString &filepath) {
 	// s'assure que le chemin soit exprime avec des separateurs conformes au systeme
 	QString filepath_ns = QDir::toNativeSeparators(filepath);
-	
+
 	// evite d'inserer un chemin de fichier vide ou en double
 	if (filepath_ns.isEmpty()) return;
 	list_.removeAll(filepath_ns);
-	
+
 	// insere le chemin de fichier
 	list_.push_front(filepath_ns);
-	
+
 	// s'assure que l'on ne retient pas plus de fichiers que necessaire
 	while (list_.count() > size_) list_.removeLast();
 }
 
 /**
- * @brief RecentFiles::saveFilesToSettings
- * Write the list of recent files to settings
- */
+	@brief RecentFiles::saveFilesToSettings
+	Write the list of recent files to settings
+*/
 void RecentFiles::saveFilesToSettings()
 {
 	QSettings settings;
@@ -164,14 +173,15 @@ void RecentFiles::saveFilesToSettings()
 /**
 	Construit le menu
 */
-void RecentFiles::buildMenu() {
+void RecentFiles::buildMenu()
+{
 	// reinitialise le menu
 	if (!menu_) {
 		menu_ = new QMenu;
 	} else {
 		menu_ -> clear();
 	}
-	
+
 	// remplit le menu
 	foreach (QString filepath, list_) {
 		// creee une nouvelle action pour le fichier
@@ -180,7 +190,7 @@ void RecentFiles::buildMenu() {
 			action -> setIcon(files_icon_);
 		}
 		menu_ -> addAction(action);
-		
+
 		// lie l'action et le mapper
 		mapper_ -> setMapping(action, filepath);
 		connect(action, SIGNAL(triggered()), mapper_, SLOT(map()));

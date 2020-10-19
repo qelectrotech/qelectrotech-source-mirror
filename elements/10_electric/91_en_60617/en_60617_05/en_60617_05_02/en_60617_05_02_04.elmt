@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" orientation="dyyy" type="element" height="30" width="20">
+<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" type="element" height="30" width="20">
     <uuid uuid="{caae6aa4-2413-4631-862b-2be1c369b5e2}"/>
     <names>
         <name lang="fr">Effet de claquage symétrique</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="40" version="0.51" height="30" type="element" hotspot_x="14" link_type="simple" hotspot_y="15">
+<definition width="40" version="0.51" height="30" type="element" hotspot_x="14" link_type="simple" hotspot_y="15">
     <uuid uuid="{458906b6-7fdb-48a3-b120-72aef006d2e3}"/>
     <names>
         <name lang="fr">Raccord multicouche à sertir</name>

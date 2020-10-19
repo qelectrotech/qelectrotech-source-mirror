@@ -1,0 +1,38 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{471ec520-a632-48d8-8067-212c38867d07}"/>
+    <names>
+        <name lang="cs">Odsávač par s filtrem</name>
+        <name lang="pl">Okap z wentylatorem i filtrem</name>
+        <name lang="ar">شفّاط  بمرشّح</name>
+        <name lang="de">Dunstabzugshaube</name>
+        <name lang="en">Cooker Hood filter</name>
+        <name lang="el">Απορροφητήρας</name>
+        <name lang="nl">Afzuigkap</name>
+        <name lang="it">Cappa aspirante/filtrante</name>
+        <name lang="fr">Hotte aspirante filtrante</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x1="-12" antialias="false" y3="23" x2="-12" y1="-1" y2="23" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" x4="12"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="2" text_width="-1" Halignment="AlignLeft" y="14.05" uuid="{40582990-7247-401d-be3d-9432de2cb224}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="23" length2="1.5" y2="17" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="6" end2="none" antialias="false" x2="6" y1="12" length2="1.5" y2="6" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-6" end2="none" antialias="false" x2="-6" y1="12" length2="1.5" y2="6" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-12" rx="0" height="7" width="24" y="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-180" x="-7.4982" height="4" width="4" start="-90" y="0.5849" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="4.9763" end2="none" antialias="true" x2="-5.0236" y1="0.5595" length2="1.5" y2="4.5595" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-5.0236" end2="none" antialias="true" x2="4.9763" y1="0.5595" length2="1.5" y2="4.5595" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-180" x="3.561" height="4" width="4" start="90" y="0.5849" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="23" length2="1.5" y2="29" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{eda005cb-5210-4d35-9014-354aa1c4ba15}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{fa8ee3f4-af56-4155-ab60-ff0230c06381}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{b2537051-ac6e-43e0-8b38-9b70e5416901}"/>
+    </description>
+</definition>

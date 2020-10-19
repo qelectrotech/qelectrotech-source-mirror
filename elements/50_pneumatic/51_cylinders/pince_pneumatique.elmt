@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="90" hotspot_x="18" type="element" link_type="simple" hotspot_y="32" orientation="dyyy">
+<definition height="50" version="0.5" width="90" hotspot_x="18" type="element" link_type="simple" hotspot_y="32">
     <uuid uuid="{c86fec1f-6b51-4bc1-aba5-9925aa8ff347}"/>
     <names>
         <name lang="en">Pneumatic clamp</name>

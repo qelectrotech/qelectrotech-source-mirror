@@ -1,4 +1,4 @@
-<definition hotspot_y="39" type="element" height="80" width="50" hotspot_x="25" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="39" type="element" height="80" width="50" hotspot_x="25" link_type="simple" version="0.5">
     <uuid uuid="{4f029867-b53e-4c2c-beec-87f65fa30f4e}"/>
     <names>
         <name lang="cs">Počítadlo hodin (en_60617)</name>

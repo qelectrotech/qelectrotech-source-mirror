@@ -1,4 +1,4 @@
-<definition hotspot_x="20" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
+<definition hotspot_x="20" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
     <uuid uuid="{bdfaa91f-5883-4be6-8218-af96f4e07cdc}"/>
     <names>
         <name lang="fr">Magnétorésistance, type linéare</name>

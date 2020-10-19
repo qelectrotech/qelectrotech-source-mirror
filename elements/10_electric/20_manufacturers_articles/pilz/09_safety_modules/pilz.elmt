@@ -1,4 +1,4 @@
-<definition width="410" hotspot_y="39" height="140" type="element" hotspot_x="65" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="410" hotspot_y="39" height="140" type="element" hotspot_x="65" version="0.5" link_type="simple">
     <uuid uuid="{abc067c8-f3ec-44d6-a1ea-bc998d59b0bf}"/>
     <names>
         <name lang="ru">Модуль безопасности PILZ</name>

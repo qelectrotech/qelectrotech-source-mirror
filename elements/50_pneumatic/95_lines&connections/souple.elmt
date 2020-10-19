@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" width="50" hotspot_x="24" type="element" link_type="simple" hotspot_y="10" orientation="dyyy">
+<definition height="30" version="0.5" width="50" hotspot_x="24" type="element" link_type="simple" hotspot_y="10">
     <uuid uuid="{7883bb31-3ce4-4323-988a-ae5c7b6480b0}"/>
     <names>
         <name lang="en">Flexible Connection</name>

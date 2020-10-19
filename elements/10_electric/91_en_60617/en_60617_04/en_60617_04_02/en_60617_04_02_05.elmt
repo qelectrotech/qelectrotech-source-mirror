@@ -1,4 +1,4 @@
-<definition width="50" height="60" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="22">
+<definition width="50" height="60" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="22">
     <uuid uuid="{b10f1573-1aaa-4cd4-a261-3596de858273}"/>
     <names>
         <name lang="de">gepolter Kondensator, z.B. Elektrolyt-

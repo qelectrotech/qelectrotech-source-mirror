@@ -1,4 +1,4 @@
-<definition width="220" link_type="simple" version="0.5" hotspot_x="5" orientation="dyyy" height="130" hotspot_y="25" type="element">
+<definition width="220" link_type="simple" version="0.5" hotspot_x="5" height="130" hotspot_y="25" type="element">
     <uuid uuid="{119cec26-3dc1-4c9b-b0f1-18775c39a0af}"/>
     <names>
         <name lang="nl">IP settings</name>

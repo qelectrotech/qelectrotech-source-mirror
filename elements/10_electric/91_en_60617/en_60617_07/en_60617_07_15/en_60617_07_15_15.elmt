@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="60" height="50" hotspot_y="24" hotspot_x="35" version="0.70" link_type="simple">
+<definition type="element" width="60" height="50" hotspot_y="24" hotspot_x="35" version="0.70" link_type="simple">
     <uuid uuid="{960f38c5-e65a-47ea-878e-5dd3d822ebbb}"/>
     <names>
         <name lang="de">elektromechanischer Antrieb eines polarisierten

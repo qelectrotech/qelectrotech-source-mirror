@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="25" orientation="dyyy">
+<definition height="40" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="25">
     <uuid uuid="{f315c912-5fff-4476-b190-01f1dca5e3fe}"/>
     <names>
         <name lang="en">Main drive</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="70" hotspot_y="44" hotspot_x="13" version="0.70" link_type="simple">
+<definition type="element" width="20" height="70" hotspot_y="44" hotspot_x="13" version="0.70" link_type="simple">
     <uuid uuid="{ebeab038-ea30-4da9-b9d7-82760f7851e4}"/>
     <names>
         <name lang="de">Lasttrennschalter mit selbsttätiger Auslösung</name>

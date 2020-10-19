@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,10 +23,10 @@
 class QUndoCommand;
 
 /**
- * @brief The PropertiesEditorWidget class
- * This class extend QWidget method for have common way
- * to edit propertie.
- */
+	@brief The PropertiesEditorWidget class
+	This class extend QWidget method for have common way
+	to edit propertie.
+*/
 class PropertiesEditorWidget : public QWidget
 {
 		Q_OBJECT

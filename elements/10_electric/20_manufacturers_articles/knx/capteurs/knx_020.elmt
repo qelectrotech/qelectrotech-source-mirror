@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{153771b0-4709-4155-9d2f-b3fa1a6fbcf9}"/>
     <names>
         <name lang="it">Termostato</name>

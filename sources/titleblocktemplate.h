@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,10 +25,12 @@
 #include "qet.h"
 
 /**
+	@brief The TitleBlockTemplate class
 	This class represents an title block template for an electric diagram.
-	It can read from an XML document the layout of the table that graphically
-	represents the title block, and can produce a graphical rendering of it from a
-	diagram context (object embedding the informations of the diagram we want to
+	It can read from an XML document the layout of the table
+	that graphically represents the title block,
+	and can produce a graphical rendering of it from a diagram context
+	(object embedding the informations of the diagram we want to
 	represent the title block.
 */
 class TitleBlockTemplate : public QObject {
@@ -77,15 +79,21 @@ class TitleBlockTemplate : public QObject {
 	
 	bool moveColumn(int, int);
 	void addColumn(int = -1);
-	bool insertColumn(const TitleBlockDimension &, const QList<TitleBlockCell *> &, int = -1);
+	bool insertColumn(const TitleBlockDimension &,
+			  const QList<TitleBlockCell *> &, int = -1);
 	QList<TitleBlockCell *> takeColumn(int);
 	QList<TitleBlockCell *> createColumn();
 	
 	TitleBlockCell *cell(int, int) const;
-	QSet<TitleBlockCell *> spannedCells(const TitleBlockCell *, bool = false) const;
+	QSet<TitleBlockCell *> spannedCells(
+			const TitleBlockCell *, bool = false) const;
 	QHash<TitleBlockCell *, QPair<int, int> > getAllSpans() const;
 	void setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &);
-	bool addLogo(const QString &, QByteArray *, const QString & = "svg", const QString & = "xml");
+	bool addLogo(
+			const QString &,
+			QByteArray *,
+			const QString & = "svg",
+			const QString & = "xml");
 	bool addLogoFromFile(const QString &, const QString & = QString());
 	bool saveLogoToFile(const QString &, const QString &);
 	bool removeLogo(const QString &);
@@ -97,8 +105,16 @@ class TitleBlockTemplate : public QObject {
 	QPixmap bitmapLogo(const QString &) const;
 	
 	void render(QPainter &, const DiagramContext &, int) const;
-	void renderDxf(QRectF &, const DiagramContext &, int, QString &, int) const;
-	void renderCell(QPainter &, const TitleBlockCell &, const DiagramContext &, const QRect &) const;
+	void renderDxf(
+			QRectF &,
+			const DiagramContext &,
+			int,
+			QString &,
+			int) const;
+	void renderCell(QPainter &,
+			const TitleBlockCell &,
+			const DiagramContext &,
+			const QRect &) const;
 	void applyCellSpans();
 	void forgetSpanning();
 	void forgetSpanning(TitleBlockCell *, bool = true);
@@ -130,25 +146,69 @@ class TitleBlockTemplate : public QObject {
 	void flushCells();
 	void initCells();
 	int lengthRange(int, int, const QList<int> &) const;
-	QString finalTextForCell(const TitleBlockCell &, const DiagramContext &) const;
-	QString interpreteVariables(const QString &, const DiagramContext &) const;
-	void renderTextCell(QPainter &, const QString &, const TitleBlockCell &, const QRectF &) const;
-	void renderTextCellDxf(QString &, const QString &, const TitleBlockCell &, qreal, qreal, qreal, qreal, int) const;
+	QString finalTextForCell(
+			const TitleBlockCell &,
+			const DiagramContext &) const;
+	QString interpreteVariables(
+			const QString &,
+			const DiagramContext &) const;
+	void renderTextCell(
+			QPainter &,
+			const QString &,
+			const TitleBlockCell &,
+			const QRectF &) const;
+	void renderTextCellDxf(
+			QString &,
+			const QString &,
+			const TitleBlockCell &,
+			qreal,
+			qreal,
+			qreal,
+			qreal,
+			int) const;
 	
 	// attributes
 	private:
-	QString name_;                                   ///< name identifying the Title Block Template within its parent collection
+	/**
+		@brief name_ : name identifying
+		the Title Block Template within its parent collection
+	*/
+	QString name_;
 	QString information_;
+	/**
+		@brief data_logos_ : Logos raw data
+	*/
+	QHash<QString, QByteArray >    data_logos_;
+	/**
+		@brief storage_logos_ :
+		Logos applied storage type (e.g. "xml" or "base64")
+	*/
+	QHash<QString, QString>        storage_logos_;
+	/**
+		@brief type_logos_ :
+		Logos types (e.g. "png", "jpeg", "svg")
+	*/
+	QHash<QString, QString>        type_logos_;
+	/**
+		@brief vector_logos_ : Rendered objects for vector logos
+	*/
+	QHash<QString, QSvgRenderer *> vector_logos_;
+	/**
+		@brief bitmap_logos_ : Pixmaps for bitmap logos
+	*/
+	QHash<QString, QPixmap>        bitmap_logos_;
 	
-	QHash<QString, QByteArray >    data_logos_;      ///< Logos raw data
-	QHash<QString, QString>        storage_logos_;   ///< Logos applied storage type (e.g. "xml" or "base64")
-	QHash<QString, QString>        type_logos_;      ///< Logos types (e.g. "png", "jpeg", "svg")
-	QHash<QString, QSvgRenderer *> vector_logos_;    ///< Rendered objects for vector logos
-	QHash<QString, QPixmap>        bitmap_logos_;    ///< Pixmaps for bitmap logos
-	
-	QList<int> rows_heights_;                        ///< rows heights -- simple integers
-	QList<TitleBlockDimension> columns_width_;       ///< columns widths -- @see TitleBlockColDimension
-	QList<TitleBlockCell *> registered_cells_;       ///< Cells objects created rattached to this template, but not mandatorily used
+	QList<int> rows_heights_; ///< rows heights -- simple integers
+	/**
+		@brief columns_width_ :
+		columns widths -- @see TitleBlockColDimension
+	*/
+	QList<TitleBlockDimension> columns_width_;
+	/**
+		@brief registered_cells_ : Cells objects created rattached
+		to this template, but not mandatorily used
+	*/
+	QList<TitleBlockCell *> registered_cells_;
 	QList< QList<TitleBlockCell *> > cells_;         ///< Cells grid
 };
 #endif

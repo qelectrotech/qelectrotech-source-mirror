@@ -1,78 +1,78 @@
-<definition type="element" height="120" hotspot_x="24" width="260" orientation="dyyy" link_type="simple" hotspot_y="30" version="0.80">
-    <uuid uuid="{b2924a85-657c-49f3-aca2-e364ceb7478e}"/>
+<definition width="260" height="120" hotspot_x="24" version="0.80" type="element" hotspot_y="30" link_type="simple">
+    <uuid uuid="{c405593c-7760-40de-b15d-a16766bd6307}"/>
     <names>
-        <name lang="cs">Ukazatel LCD 2x16</name>
-        <name lang="nl">Display LCD 2x16</name>
-        <name lang="fr">Afficheur LCD 2X16</name>
         <name lang="en">LCD 2X16</name>
+        <name lang="cs">Ukazatel LCD 2x16</name>
         <name lang="pl">Wyświetlacz LCD 2x16</name>
+        <name lang="fr">Afficheur LCD 2X16</name>
+        <name lang="nl">Display LCD 2x16</name>
         <name lang="it">Display LCD 2x16</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="designation"></elementInformation>
-        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
-        <elementInformation show="1" name="description"></elementInformation>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
-        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Afficheur LCD 2X16</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Arduino</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
     <informations>ezza</informations>
     <description>
-        <rect height="6" x="97" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="127" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="107" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="117" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="137" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="82" y="53" text="LCD" rotation="0" font="Sans Serif,14,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <rect x="97" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="127" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="107" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="117" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="137" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="82" y="53" font="Sans Serif,14,-1,5,50,0,0,0,0,0" rotation="0" text="LCD" color="#000000"/>
         <circle x="223" y="78" antialias="true" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="-18" y="79" antialias="true" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="223" y="-24" antialias="true" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="147" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="37" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="27" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="147" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="37" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="27" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="224.586" y="25.5858" antialias="true" diameter="2.82843" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="17" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="87" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="77" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="67" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="57" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="47" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="-3" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="6" x="7" y="-23" rx="0" antialias="false" width="6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="10" x="-6" y="-25" rx="0" antialias="false" width="161" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="114" x="-21" y="-27" rx="0" antialias="false" width="253" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="82" x="-10" y="-9" rx="0" antialias="false" width="230" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line y1="-4" y2="-4" antialias="false" x1="-6" length2="1.5" length1="1.5" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x2="214"/>
-        <line y1="70" y2="70" antialias="false" x1="-5" length2="1.5" length1="1.5" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x2="214"/>
-        <rect height="62" x="-3" y="3" rx="0" antialias="false" width="215" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="46" y="27" text="QElectroTech" rotation="0" font="Sans Serif,14,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <rect x="17" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="87" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="77" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="67" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="57" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="47" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-3" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="7" width="6" height="6" y="-23" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-6" width="161" height="10" y="-25" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-21" width="253" height="114" y="-27" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" width="230" height="82" y="-9" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" x1="-6" length1="1.5" antialias="false" y1="-4" y2="-4" length2="1.5" x2="214" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" x1="-5" length1="1.5" antialias="false" y1="70" y2="70" length2="1.5" x2="214" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <rect x="-3" width="215" height="62" y="3" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="46" y="27" font="Sans Serif,14,-1,5,50,0,0,0,0,0" rotation="0" text="QElectroTech" color="#000000"/>
         <circle x="-19" y="-24" antialias="true" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect height="18" x="222" y="22" rx="0" antialias="false" width="8" ry="0" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
+        <rect x="222" width="8" height="18" y="22" antialias="false" rx="0" ry="0" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
         <circle x="224.586" y="34.5858" antialias="true" diameter="2.82843" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <dynamic_text text_from="ElementInfo" x="-20" y="-61" text_width="-1" uuid="{c9cf42bc-322b-41c7-8010-308b2a7193c5}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="32" frame="false" Valignment="AlignTop">
+        <dynamic_text x="-20" y="-61" text_from="ElementInfo" Valignment="AlignTop" z="32" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{c9cf42bc-322b-41c7-8010-308b2a7193c5}" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <terminal x="110" y="-20" orientation="n"/>
-        <terminal x="100" y="-20" orientation="n"/>
-        <terminal x="40" y="-20" orientation="n"/>
-        <terminal x="80" y="-20" orientation="n"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="140" y="-20" orientation="n"/>
-        <terminal x="150" y="-20" orientation="n"/>
-        <terminal x="50" y="-20" orientation="n"/>
-        <terminal x="60" y="-20" orientation="n"/>
-        <terminal x="20" y="-20" orientation="n"/>
-        <terminal x="120" y="-20" orientation="n"/>
-        <terminal x="130" y="-20" orientation="n"/>
-        <terminal x="90" y="-20" orientation="n"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="70" y="-20" orientation="n"/>
-        <terminal x="30" y="-20" orientation="n"/>
+        <terminal x="110" name="" y="-20" uuid="{2aaed770-07b8-4afc-810e-604bec957a51}" orientation="n"/>
+        <terminal x="100" name="" y="-20" uuid="{4cbf4130-877e-4e7d-97ae-0580281395f2}" orientation="n"/>
+        <terminal x="40" name="" y="-20" uuid="{ef973fbc-879a-479c-a16e-dbfc7fcd1882}" orientation="n"/>
+        <terminal x="80" name="" y="-20" uuid="{51c3944e-c473-49b8-996c-9db1e3d1c4da}" orientation="n"/>
+        <terminal x="0" name="" y="-20" uuid="{3a6f3ddf-5543-424a-bb70-95905f12f60e}" orientation="n"/>
+        <terminal x="140" name="" y="-20" uuid="{ba5c6139-57ab-4e7d-8b74-15aa8ed214c0}" orientation="n"/>
+        <terminal x="150" name="" y="-20" uuid="{44b82031-4b01-42eb-902f-9286fc77edfa}" orientation="n"/>
+        <terminal x="50" name="" y="-20" uuid="{793bd51c-7d31-4217-87e4-57581ce91dc8}" orientation="n"/>
+        <terminal x="60" name="" y="-20" uuid="{216778be-19dd-4581-a42b-7014635a4ef2}" orientation="n"/>
+        <terminal x="20" name="" y="-20" uuid="{4c8e96dc-238c-472a-886b-bb559813a805}" orientation="n"/>
+        <terminal x="120" name="" y="-20" uuid="{27b60c31-a52f-4f69-8f30-46737d9d41b2}" orientation="n"/>
+        <terminal x="130" name="" y="-20" uuid="{a013bc1f-e545-4c1d-ab1c-f60413d350ad}" orientation="n"/>
+        <terminal x="90" name="" y="-20" uuid="{9eaed626-473e-4e0f-a128-8d16242f0a9f}" orientation="n"/>
+        <terminal x="10" name="" y="-20" uuid="{cd3b6df6-c4d4-40aa-9372-dcb50028d206}" orientation="n"/>
+        <terminal x="70" name="" y="-20" uuid="{fbc25fed-e1c4-46ae-a835-ee528ce13c6c}" orientation="n"/>
+        <terminal x="30" name="" y="-20" uuid="{630e25e2-02a4-4afe-95e3-e1b98082f83a}" orientation="n"/>
     </description>
 </definition>

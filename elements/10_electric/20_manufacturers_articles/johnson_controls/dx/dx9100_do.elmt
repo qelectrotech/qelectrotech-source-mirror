@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="11" orientation="dyyy" hotspot_y="37" type="element" height="150" width="100" version="0.5">
+<definition link_type="simple" hotspot_x="11" hotspot_y="37" type="element" height="150" width="100" version="0.5">
     <uuid uuid="{b10d1ea5-6dd3-42c0-97b4-72431974700d}"/>
     <names>
         <name lang="pl">DX9100 - wyjścia cyfrowe</name>

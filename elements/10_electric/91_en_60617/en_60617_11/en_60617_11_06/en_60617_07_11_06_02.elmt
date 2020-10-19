@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="100" height="70" hotspot_x="95" hotspot_y="64" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="100" height="70" hotspot_x="95" hotspot_y="64" version="0.70">
     <uuid uuid="{60c369a8-ca6d-4e21-9745-b4b2f566a885}"/>
     <names>
         <name lang="de">Durchgangs- und Abzweigverstärker</name>

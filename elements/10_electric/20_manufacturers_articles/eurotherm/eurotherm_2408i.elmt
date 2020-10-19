@@ -1,4 +1,4 @@
-<definition type="element" width="190" version="0.70" orientation="dyyy" link_type="master" hotspot_y="59" hotspot_x="95" height="70">
+<definition type="element" width="190" version="0.70" link_type="master" hotspot_y="59" hotspot_x="95" height="70">
     <uuid uuid="{33901561-5ea2-4b0c-a7b8-ec64331b13d2}"/>
     <names>
         <name lang="hu">Eurotherm 2408i</name>

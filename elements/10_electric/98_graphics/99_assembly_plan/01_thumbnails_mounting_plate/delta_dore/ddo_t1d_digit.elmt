@@ -1,4 +1,4 @@
-<definition link_type="slave" version="0.80" type="element" hotspot_x="4" orientation="dyyy" height="210" width="130" hotspot_y="5">
+<definition link_type="slave" version="0.80" type="element" hotspot_x="4" height="210" width="130" hotspot_y="5">
     <uuid uuid="{f475daed-b684-4024-9f91-6c5665e60a2a}"/>
     <names>
         <name lang="fr">T1D digit</name>

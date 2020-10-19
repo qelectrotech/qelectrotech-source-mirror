@@ -1,4 +1,4 @@
-<definition width="50" version="0.4" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="18" hotspot_y="25" height="40" type="element" ic="true">
 <uuid uuid="{45FC9FE3-D854-49A7-868E-55AA271FA606}"/><names>
         <name lang="en">Adjustable autotransformer</name>
         <name lang="es">Autotransformador regulable</name>

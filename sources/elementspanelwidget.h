@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,8 +21,9 @@
 #include "elementspanel.h"
 
 /**
-	This class embeds an elements panel under a toolbar providing various actions
-	to manage elements.
+	@brief The ElementsPanelWidget class
+	This class embeds an elements panel under a toolbar
+	providing various actions to manage elements.
 	@see ElementsPanel
 */
 class ElementsPanelWidget : public QWidget {
@@ -40,7 +41,17 @@ class ElementsPanelWidget : public QWidget {
 	private:
 	ElementsPanel *elements_panel;
 	QAction *open_directory, *copy_path;
-	QAction *prj_activate, *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_top, *prj_move_diagram_down, *prj_move_diagram_upx10, *prj_move_diagram_downx10;
+	QAction *prj_activate,
+		*prj_close,
+		*prj_edit_prop,
+		*prj_prop_diagram,
+		*prj_add_diagram,
+		*prj_del_diagram,
+		*prj_move_diagram_up,
+		*prj_move_diagram_top,
+		*prj_move_diagram_down,
+		*prj_move_diagram_upx10,
+		*prj_move_diagram_downx10;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QMenu *context_menu;
 	QLineEdit *filter_textfield;
@@ -50,7 +61,6 @@ class ElementsPanelWidget : public QWidget {
 	inline ElementsPanel &elementsPanel() const;
 	
 	signals:
-	void requestForDiagram(Diagram *);
 	void requestForProject(QETProject *);
 	void requestForNewDiagram(QETProject *);
 	void requestForProjectClosing(QETProject *);
@@ -86,16 +96,18 @@ class ElementsPanelWidget : public QWidget {
 	void filterEdited(const QString &);
 
 	protected:
-	void keyPressEvent   (QKeyEvent *e) override;
+	void keyPressEvent (QKeyEvent *e) override;
 	
 	private:
 	QString previous_filter_;
 };
 
 /**
+	@brief ElementsPanelWidget::elementsPanel
 	@return The elements panel embedded within this widget.
 */
-inline ElementsPanel &ElementsPanelWidget::elementsPanel() const {
+inline ElementsPanel &ElementsPanelWidget::elementsPanel() const
+{
 	return(*elements_panel);
 }
 

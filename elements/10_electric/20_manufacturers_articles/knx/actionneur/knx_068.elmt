@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="40" hotspot_x="14" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="40" hotspot_x="14">
     <uuid uuid="{6a527475-c40a-4957-92ee-633c62271fc1}"/>
     <names>
         <name lang="it">Uscita digitale, 1 can</name>

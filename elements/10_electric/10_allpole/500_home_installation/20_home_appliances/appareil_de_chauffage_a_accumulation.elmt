@@ -1,0 +1,32 @@
+<definition type="element" hotspot_x="35" width="70" height="40" link_type="simple" version="0.80" hotspot_y="20">
+    <uuid uuid="{3bbeaa20-0632-4b15-b56b-af9e11953efe}"/>
+    <names>
+        <name lang="de">Heizung mit Pufferspeicher</name>
+        <name lang="ar">سخّان بالتراكم</name>
+        <name lang="cs">Akumulační ohřívač, topné těleso</name>
+        <name lang="en">Heater has accumulated</name>
+        <name lang="el">Θερμοσυσσωρευτής</name>
+        <name lang="it">Apparecchio di riscaldamento ad accumulo</name>
+        <name lang="nl">Verwarming met accumulator (steenkachel)</name>
+        <name lang="pl">Grzejnik elektryczny akumulacyjny</name>
+        <name lang="fr">Appareil de chauffage a accumulation</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" y2="-11" end1="none" y1="-8" antialias="false" x2="10" end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text rotation="0" text_width="-1" x="-8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" y="3" z="1" frame="false" Halignment="AlignLeft" uuid="{f990c480-84af-438d-9811-122ae0514475}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="-33" ry="0" y="-7" width="66" height="23" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" y2="-10" end1="none" y1="-7" antialias="false" x2="-10" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-30" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="15" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="0" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-14" orientation="n" uuid="{4f998512-2f26-4c17-bd0c-2bcf1acbb41f}" name=""/>
+        <terminal x="10" y="-14" orientation="n" uuid="{4f998512-2f26-4c17-bd0c-2bcf1acbb41f}" name=""/>
+    </description>
+</definition>

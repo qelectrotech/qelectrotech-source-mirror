@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="30" hotspot_y="5" hotspot_x="15" height="30" link_type="simple" version="0.80">
+<definition type="element" width="30" hotspot_y="5" hotspot_x="15" height="30" link_type="simple" version="0.80">
     <uuid uuid="{324a8011-3323-478f-b241-39146dc885dd}"/>
     <names>
         <name lang="fr">Prise TV simple</name>

@@ -1,4 +1,4 @@
-<definition version="0.70" width="70" type="element" height="250" hotspot_x="45" hotspot_y="125" link_type="simple" orientation="dyyy">
+<definition version="0.70" width="70" type="element" height="250" hotspot_x="45" hotspot_y="125" link_type="simple">
     <uuid uuid="{8a988bdf-a948-42fe-a407-ba06f054734c}"/>
     <names>
         <name lang="en">BMXAMM0600</name>

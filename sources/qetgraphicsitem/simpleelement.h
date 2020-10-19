@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,15 +23,18 @@
 class QETProject;
 
 /**
- * @brief The SimpleElement class
- *this class represente a simple element with no specific attribute
- */
+	@brief The SimpleElement class
+	this class represente a simple element with no specific attribute
+*/
 class SimpleElement : public Element {
 
 	Q_OBJECT
 
 	public  :
-		explicit SimpleElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit SimpleElement(
+			const ElementsLocation &,
+			QGraphicsItem * = nullptr,
+			int * = nullptr);
 		~SimpleElement() override;
 
 		void initLink(QETProject *project) override;

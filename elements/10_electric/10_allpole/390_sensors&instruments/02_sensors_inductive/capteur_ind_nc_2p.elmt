@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element">
 <uuid uuid="{E3B9AA88-9574-4FC4-83E2-0913D386A593}"/><names>
         <name lang="ar">حساس حثي - مفتاح NC</name>
         <name lang="el">Επαγωγικός αισθητήρας, 2 ακροδέκτες, κλειστή επαφή</name>

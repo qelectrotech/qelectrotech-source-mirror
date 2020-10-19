@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" version="0.80" orientation="dyyy" link_type="simple" width="90" hotspot_x="5" height="210">
+<definition hotspot_y="4" type="element" version="0.80" link_type="simple" width="90" hotspot_x="5" height="210">
     <uuid uuid="{50bbf00b-b03f-414e-b8f3-24ad47641a96}"/>
     <names>
         <name lang="fr">092833 - Disjoncteur différentiel AC 20A 30mA Haut-Vis/Bas-Vis - Grand public</name>

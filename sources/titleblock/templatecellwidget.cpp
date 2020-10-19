@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,10 +26,14 @@
 #include "qetinformation.h"
 
 /**
+	@brief TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget
 	Constructor
-	@param parent Parent QWidget
+	@param parent_template : TitleBlockTemplate
+	@param parent : QWidget
 */
-TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(TitleBlockTemplate *parent_template, QWidget *parent) :
+TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(
+		TitleBlockTemplate *parent_template,
+		QWidget *parent) :
 	QWidget(parent),
 	read_only_(false)
 {
@@ -40,13 +44,15 @@ TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(TitleBlockTemplate *p
 /**
 	Destructor
 */
-TitleBlockTemplateCellWidget::~TitleBlockTemplateCellWidget() {
+TitleBlockTemplateCellWidget::~TitleBlockTemplateCellWidget()
+{
 }
 
 /**
 	Initialize layout and widgets.
 */
-void TitleBlockTemplateCellWidget::initWidgets() {
+void TitleBlockTemplateCellWidget::initWidgets()
+{
 	// type combo box: always displayed
 	cell_type_label_ = new QLabel(tr("Type de cellule :"));
 	cell_type_input_ = new QComboBox();
@@ -59,7 +65,7 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	name_input_ = new QLineEdit();
 	
 	// widgets specific to empty cells
-    empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le folio."));
+	empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le folio."));
 	
 	// widgets specific to logo cells
 	logo_label_ = new QLabel(tr("Logo"));
@@ -79,9 +85,9 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	align_label_ = new QLabel(tr("Alignement :"));
 	horiz_align_label_ = new QLabel(tr("horizontal :"));
 	horiz_align_input_ = new QComboBox();
-	horiz_align_input_ -> addItem(tr("Gauche"),      Qt::AlignLeft);
-	horiz_align_input_ -> addItem(tr("Centré"),   Qt::AlignHCenter);
-	horiz_align_input_ -> addItem(tr("Droite"),      Qt::AlignRight);
+	horiz_align_input_ -> addItem(tr("Gauche"), Qt::AlignLeft);
+	horiz_align_input_ -> addItem(tr("Centré"), Qt::AlignHCenter);
+	horiz_align_input_ -> addItem(tr("Droite"), Qt::AlignRight);
 	horiz_align_indexes_.insert(Qt::AlignLeft,    0);
 	horiz_align_indexes_.insert(Qt::AlignHCenter, 1);
 	horiz_align_indexes_.insert(Qt::AlignRight,   2);
@@ -221,7 +227,8 @@ void TitleBlockTemplateCellWidget::edit(TitleBlockCell *cell) {
 	Emit a type modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editType() {
+void TitleBlockTemplateCellWidget::editType()
+{
 	emitModification("type", cell_type_input_ -> itemData(cell_type_input_ -> currentIndex()));
 }
 
@@ -229,7 +236,8 @@ void TitleBlockTemplateCellWidget::editType() {
 	Emit a name modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editName() {
+void TitleBlockTemplateCellWidget::editName()
+{
 	emitModification("name", name_input_ -> text());
 }
 
@@ -237,7 +245,8 @@ void TitleBlockTemplateCellWidget::editName() {
 	Emit a modification command stating whether the label should be displayed or not.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editLabelDisplayed() {
+void TitleBlockTemplateCellWidget::editLabelDisplayed()
+{
 	emitModification("displaylabel", label_checkbox_ -> isChecked());
 }
 
@@ -245,7 +254,8 @@ void TitleBlockTemplateCellWidget::editLabelDisplayed() {
 	Emit a label modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editLabel() {
+void TitleBlockTemplateCellWidget::editLabel()
+{
 	if (!edited_cell_) return;
 	editTranslatableValue(edited_cell_ -> label, "label", tr("Label de cette cellule"));
 	label_input_ -> setText(edited_cell_ -> label.name());
@@ -255,7 +265,8 @@ void TitleBlockTemplateCellWidget::editLabel() {
 	Emit a value modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editValue() {
+void TitleBlockTemplateCellWidget::editValue()
+{
 	if (!edited_cell_) return;
 	editTranslatableValue(edited_cell_ -> value, "value", tr("Valeur de cette cellule"));
 	value_input_ -> setText(edited_cell_ -> value.name());
@@ -265,7 +276,8 @@ void TitleBlockTemplateCellWidget::editValue() {
 	Emit an alignment modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editAlignment() {
+void TitleBlockTemplateCellWidget::editAlignment()
+{
 	emitModification("alignment", alignment());
 }
 
@@ -273,7 +285,8 @@ void TitleBlockTemplateCellWidget::editAlignment() {
 	Emit a font size modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editFontSize() {
+void TitleBlockTemplateCellWidget::editFontSize()
+{
 	emitModification("fontsize", font_size_input_ -> value());
 }
 
@@ -281,7 +294,8 @@ void TitleBlockTemplateCellWidget::editFontSize() {
 	Emit a modification command stating whether the text should be adjusted if needed.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editAdjust() {
+void TitleBlockTemplateCellWidget::editAdjust()
+{
 	emitModification("horizontal_adjust", font_adjust_input_ -> isChecked());
 }
 
@@ -289,7 +303,8 @@ void TitleBlockTemplateCellWidget::editAdjust() {
 	Emit a logo modification command.
 	@see ModifyTitleBlockCellCommand
 */
-void TitleBlockTemplateCellWidget::editLogo() {
+void TitleBlockTemplateCellWidget::editLogo()
+{
 	emitModification("logo", logo_input_ -> currentText());
 }
 
@@ -342,7 +357,8 @@ void TitleBlockTemplateCellWidget::setReadOnly(bool read_only) {
 	Emit a horizontal alignment modification command.
 	@see ModifyTitleBlockCellCommand
 */
-int TitleBlockTemplateCellWidget::horizontalAlignment() const {
+int TitleBlockTemplateCellWidget::horizontalAlignment() const
+{
 	return(horiz_align_indexes_.key(horiz_align_input_ -> currentIndex()));
 }
 
@@ -350,21 +366,24 @@ int TitleBlockTemplateCellWidget::horizontalAlignment() const {
 	Emit a vertical alignment modification command.
 	@see ModifyTitleBlockCellCommand
 */
-int TitleBlockTemplateCellWidget::verticalAlignment() const {
+int TitleBlockTemplateCellWidget::verticalAlignment() const
+{
 	return(vert_align_indexes_.key(vert_align_input_ -> currentIndex()));
 }
 
 /**
 	@return the currently selected alignment.
 */
-int TitleBlockTemplateCellWidget::alignment() const {
+int TitleBlockTemplateCellWidget::alignment() const
+{
 	return(horizontalAlignment() | verticalAlignment());
 }
 
 /**
 	@return whether this edition widget is read only
 */
-bool TitleBlockTemplateCellWidget::isReadOnly() const {
+bool TitleBlockTemplateCellWidget::isReadOnly() const
+{
 	return(read_only_);
 }
 
@@ -400,7 +419,8 @@ void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const
 	@param attribute Modified cell attribute
 	@param new_value New value for the modified cell attribute
 */
-void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, const QVariant &new_value) const {
+void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, const QVariant &new_value) const
+{
 	if (!edited_cell_) return;
 	
 	// avoid creating a QUndoCommand object when no modification was actually done
@@ -419,7 +439,8 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 	@return a string describing the various variables provided by default by
 	the application.
 */
-QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
+QString TitleBlockTemplateCellWidget::defaultVariablesString() const
+{
 	QString def_var_string = tr(
 		"Par défaut, les variables suivantes sont disponibles :"
 		"<ul>"
@@ -439,7 +460,8 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 		"<li>%{projecttitle} : titre du projet</li>"
 		"<li>%{projectpath} : chemin du projet</li>"
 		"<li>%{projectfilename} : nom du fichier</li>"
-		"<li>%{saveddate} : date d'enregistrement du fichier</li>"
+		"<li>%{saveddate} : date d'enregistrement du fichier format yyyy-MM-dd</li>"
+		"<li>%{saveddate-eu} : date d'enregistrement du fichier format dd-MM-yyyy</li>"
 		"<li>%{savedtime} : heure d'enregistrement du fichier</li>"
 		"<li>%{savedfilename} : nom du fichier enregistré</li>"
 		"<li>%{savedfilepath} : chemin du fichier enregistré</li>"
@@ -451,7 +473,8 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 /**
 	@return a string describing what the user may enter as cell label / value.
 */
-QString TitleBlockTemplateCellWidget::labelValueInformationString() const {
+QString TitleBlockTemplateCellWidget::labelValueInformationString() const
+{
 	QString lab_val_inf_string = tr(
 		"Chaque cellule d'un cartouche affiche une valeur, optionnellement "
 		"précédée d'un label. Tous deux peuvent être traduits en "

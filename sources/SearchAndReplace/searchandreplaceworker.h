@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -44,9 +44,10 @@ struct advancedReplaceStruct
 };
 
 /**
- * @brief The SearchAndReplaceWorker class
- * This class is the worker use to change properties when use the search and replace function of QET
- */
+	@brief The SearchAndReplaceWorker class
+	This class is the worker use to change properties
+	when use the search and replace function of QET
+*/
 class SearchAndReplaceWorker
 {
 	public:
@@ -60,16 +61,27 @@ class SearchAndReplaceWorker
 		void replaceIndiText(IndependentTextItem *text);
 		void replaceConductor(QList <Conductor *> list);
 		void replaceConductor(Conductor *conductor);
-		void replaceAdvanced (QList<Diagram *> diagrams = QList<Diagram *>(), QList<Element *> elements = QList<Element *>(),\
-							  QList<IndependentTextItem *> texts = QList<IndependentTextItem *>(), QList<Conductor *> conductors = QList<Conductor *>());
+		void replaceAdvanced (
+				QList<Diagram *> diagrams = QList<Diagram *>(),
+				QList<Element *> elements = QList<Element *>(),
+				QList<IndependentTextItem *>
+					texts = QList<IndependentTextItem *>(),
+				QList<Conductor *>
+					conductors = QList<Conductor *>());
 		
-		static QString eraseText() {return QString("XXXXXXXXXXXXXXXXXXX");}
+		static QString eraseText()
+			{return QString("XXXXXXXXXXXXXXXXXXX");}
 		static QDate eraseDate() {return QDate(1900, 1, 1);}
-		static void setupLineEdit(QLineEdit *l, QCheckBox *cb, QString str);
+		static void setupLineEdit(QLineEdit *l,
+					  QCheckBox *cb,
+					  QString str);
 		static ConductorProperties invalidConductorProperties();
 		
-		static ConductorProperties applyChange(const ConductorProperties &original, const ConductorProperties &change);
-		static QString applyChange(const QString &original, const QString &change);
+		static ConductorProperties applyChange(
+				const ConductorProperties &original,
+				const ConductorProperties &change);
+		static QString applyChange(const QString &original,
+					   const QString &change);
 		
 	private:
 		TitleBlockProperties replaceAdvanced (Diagram *diagram);

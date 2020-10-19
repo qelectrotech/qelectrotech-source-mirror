@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="29" orientation="dyyy">
+<definition height="40" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="29">
     <uuid uuid="{557e7992-42cb-44f6-a4fc-e6165197b929}"/>
     <names>
         <name lang="en">Flexible cylinder, pneumatic muscle</name>

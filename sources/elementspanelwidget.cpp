@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -25,6 +25,13 @@
 #include "templatedeleter.h"
 
 /*
+	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
+	performs checks during drag'n drop of items and categories.
+	For example, it checks that a target category is writable
+	before authorizing the drop of an element.
+	Removing this flag allows you to test the behavior of management functions
+	items (copy, move, etc.).
+
 	Lorsque le flag ENABLE_PANEL_WIDGET_DND_CHECKS est defini, le panel
 	effectue des verifications lors des drag'n drop d'elements et categories.
 	Par exemple, il verifie qu'une categorie cible est accessible en ecriture
@@ -41,32 +48,32 @@
 ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	// initalise le panel d'elements
 	elements_panel = new ElementsPanel(this);
-	
+
 	// initialise les actions
-    open_directory           = new QAction(QET::Icons::FolderOpen,             tr("Ouvrir le dossier correspondant"),     this);
-    copy_path                = new QAction(QET::Icons::IC_CopyFile,            tr("Copier le chemin"),                    this);
-    prj_activate             = new QAction(QET::Icons::ProjectFile,            tr("Basculer vers ce projet"),             this);
-    prj_close                = new QAction(QET::Icons::DocumentClose,          tr("Fermer ce projet"),                    this);
-    prj_edit_prop            = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du projet"),          this);
-    prj_prop_diagram         = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du folio"),       this);
-    prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,             tr("Ajouter un folio"),                this);
-    prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Supprimer ce folio"),              this);
-    prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
-    prj_move_diagram_down    = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce folio"),               this);
-    prj_move_diagram_upx10   = new QAction(QET::Icons::GoUpDouble,             tr("Remonter ce folio x10"),           this);
-    prj_move_diagram_top     = new QAction(QET::Icons::GoTop,                  tr("Remonter ce folio au debut"),               this);
-    prj_move_diagram_downx10 = new QAction(QET::Icons::GoDownDouble,           tr("Abaisser ce folio x10"),           this);
+	open_directory           = new QAction(QET::Icons::FolderOpen,             tr("Ouvrir le dossier correspondant"),     this);
+	copy_path                = new QAction(QET::Icons::IC_CopyFile,            tr("Copier le chemin"),                    this);
+	prj_activate             = new QAction(QET::Icons::ProjectFile,            tr("Basculer vers ce projet"),             this);
+	prj_close                = new QAction(QET::Icons::DocumentClose,          tr("Fermer ce projet"),                    this);
+	prj_edit_prop            = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du projet"),          this);
+	prj_prop_diagram         = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du folio"),       this);
+	prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,             tr("Ajouter un folio"),                this);
+	prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Supprimer ce folio"),              this);
+	prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
+	prj_move_diagram_down    = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce folio"),               this);
+	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUpDouble,             tr("Remonter ce folio x10"),           this);
+	prj_move_diagram_top     = new QAction(QET::Icons::GoTop,                  tr("Remonter ce folio au debut"),               this);
+	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDownDouble,           tr("Abaisser ce folio x10"),           this);
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau modèle"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
 
- 
+
 	prj_del_diagram -> setShortcut(QKeySequence(Qt::Key_Delete));
 	prj_move_diagram_up -> setShortcut(QKeySequence(Qt::Key_F3));
 	prj_move_diagram_down -> setShortcut(QKeySequence(Qt::Key_F4));
 	prj_move_diagram_top -> setShortcut(QKeySequence(Qt::Key_F5));
-	
-	
+
+
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	filter_textfield = new QLineEdit(this);
 	filter_textfield -> setClearButtonEnabled(true);
@@ -74,7 +81,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 
 
 	context_menu = new QMenu(this);
-	
+
 	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
 	connect(copy_path,             SIGNAL(triggered()), this,           SLOT(copyPathForSelectedItem()));
 	connect(prj_activate,          SIGNAL(triggered()), this,           SLOT(activateProject()));
@@ -91,22 +98,21 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
 	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
 	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
-	
+
 	connect(filter_textfield,      SIGNAL(textChanged(const QString &)), this,             SLOT(filterEdited(const QString &)));
-	
+
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
-	connect(elements_panel,        SIGNAL(requestForDiagram(Diagram*)),                              this, SIGNAL(requestForDiagram(Diagram*)));
 	connect(
 		elements_panel,
 		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),
 		QETApp::instance(),
 		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
 	);
-	
+
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
-	vlayout -> setMargin(0);
+	vlayout -> setContentsMargins(0,0,0,0);
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(filter_textfield);
 	vlayout -> addWidget(elements_panel);
@@ -117,14 +123,16 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 /**
 	Destructeur
 */
-ElementsPanelWidget::~ElementsPanelWidget() {
+ElementsPanelWidget::~ElementsPanelWidget()
+{
 }
 
 /**
 	Require the desktop environment to open the directory containing the file
 	represented by the selected item, if any.
 */
-void ElementsPanelWidget::openDirectoryForSelectedItem() {
+void ElementsPanelWidget::openDirectoryForSelectedItem()
+{
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString dir_path = elements_panel -> dirPathForItem(qtwi);
 		if (!dir_path.isEmpty()) {
@@ -137,7 +145,8 @@ void ElementsPanelWidget::openDirectoryForSelectedItem() {
 	Copy the full path to the file represented by the selected item to the
 	clipboard.
 */
-void ElementsPanelWidget::copyPathForSelectedItem() {
+void ElementsPanelWidget::copyPathForSelectedItem()
+{
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString file_path = elements_panel -> filePathForItem(qtwi);
 		file_path = QDir::toNativeSeparators(file_path);
@@ -150,9 +159,10 @@ void ElementsPanelWidget::copyPathForSelectedItem() {
 /**
 	Recharge le panel d'elements
 */
-void ElementsPanelWidget::reloadAndFilter() {
+void ElementsPanelWidget::reloadAndFilter()
+{
 	// recharge tous les elements
-	elements_panel -> reload(true);
+	elements_panel -> reload();
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());
@@ -162,7 +172,8 @@ void ElementsPanelWidget::reloadAndFilter() {
 /**
 	* Emit the requestForProject signal with te selected project
 */
-void ElementsPanelWidget::activateProject() {
+void ElementsPanelWidget::activateProject()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForProject(selected_project));
 	}
@@ -171,7 +182,8 @@ void ElementsPanelWidget::activateProject() {
 /**
 	Emet le signal requestForProjectClosing avec le projet selectionne
 */
-void ElementsPanelWidget::closeProject() {
+void ElementsPanelWidget::closeProject()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForProjectClosing(selected_project));
 	}
@@ -180,7 +192,8 @@ void ElementsPanelWidget::closeProject() {
 /**
 	Emet le signal requestForProjectPropertiesEdition avec le projet selectionne
 */
-void ElementsPanelWidget::editProjectProperties() {
+void ElementsPanelWidget::editProjectProperties()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForProjectPropertiesEdition(selected_project));
 	}
@@ -189,7 +202,8 @@ void ElementsPanelWidget::editProjectProperties() {
 /**
 	Emet le signal requestForDiagramPropertiesEdition avec le schema selectionne
 */
-void ElementsPanelWidget::editDiagramProperties() {
+void ElementsPanelWidget::editDiagramProperties()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramPropertiesEdition(selected_diagram));
 	}
@@ -198,7 +212,8 @@ void ElementsPanelWidget::editDiagramProperties() {
 /**
 	Emet le signal requestForNewDiagram avec le projet selectionne
 */
-void ElementsPanelWidget::newDiagram() {
+void ElementsPanelWidget::newDiagram()
+{
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForNewDiagram(selected_project));
 	}
@@ -207,7 +222,8 @@ void ElementsPanelWidget::newDiagram() {
 /**
 	Emet le signal requestForDiagramDeletion avec le schema selectionne
 */
-void ElementsPanelWidget::deleteDiagram() {
+void ElementsPanelWidget::deleteDiagram()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramDeletion(selected_diagram));
 	}
@@ -215,8 +231,9 @@ void ElementsPanelWidget::deleteDiagram() {
 
 /**
 	Emet le signal requestForDiagramMoveUpTop avec le schema selectionne
-+ */
-void ElementsPanelWidget::moveDiagramUpTop() {
++*/
+void ElementsPanelWidget::moveDiagramUpTop()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUpTop(selected_diagram));
 	}
@@ -227,7 +244,8 @@ void ElementsPanelWidget::moveDiagramUpTop() {
 /**
 	Emet le signal requestForDiagramMoveUp avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramUp() {
+void ElementsPanelWidget::moveDiagramUp()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUp(selected_diagram));
 	}
@@ -236,7 +254,8 @@ void ElementsPanelWidget::moveDiagramUp() {
 /**
 	Emet le signal requestForDiagramMoveDown avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramDown() {
+void ElementsPanelWidget::moveDiagramDown()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveDown(selected_diagram));
 	}
@@ -245,7 +264,8 @@ void ElementsPanelWidget::moveDiagramDown() {
 /**
 	Emet le signal requestForDiagramMoveUpx10 avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramUpx10() {
+void ElementsPanelWidget::moveDiagramUpx10()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUpx10(selected_diagram));
 	}
@@ -254,7 +274,8 @@ void ElementsPanelWidget::moveDiagramUpx10() {
 /**
 	Emet le signal requestForDiagramMoveDownx10 avec le schema selectionne
 */
-void ElementsPanelWidget::moveDiagramDownx10() {
+void ElementsPanelWidget::moveDiagramDownx10()
+{
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveDownx10(selected_diagram));
 	}
@@ -264,10 +285,11 @@ void ElementsPanelWidget::moveDiagramDownx10() {
 /**
 	Opens a template editor to create a new title block template.
 */
-void ElementsPanelWidget::addTitleBlockTemplate() {
+void ElementsPanelWidget::addTitleBlockTemplate()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (!current_item) return;
-	
+
 	if (current_item -> type() == QET::TitleBlockTemplatesCollection) {
 		QETApp::instance() -> openTitleBlockTemplate(
 			elements_panel -> templateLocationForItem(current_item)
@@ -278,7 +300,8 @@ void ElementsPanelWidget::addTitleBlockTemplate() {
 /**
 	Opens an editor to edit the currently selected title block template, if any.
 */
-void ElementsPanelWidget::editTitleBlockTemplate() {
+void ElementsPanelWidget::editTitleBlockTemplate()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (current_item && current_item -> type() == QET::TitleBlockTemplate) {
 		QETApp::instance() -> openTitleBlockTemplate(
@@ -290,7 +313,8 @@ void ElementsPanelWidget::editTitleBlockTemplate() {
 /**
 	Delete the currently selected title block template, if any.
 */
-void ElementsPanelWidget::removeTitleBlockTemplate() {
+void ElementsPanelWidget::removeTitleBlockTemplate()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (current_item && current_item -> type() == QET::TitleBlockTemplate) {
 		TitleBlockTemplateDeleter(
@@ -303,21 +327,22 @@ void ElementsPanelWidget::removeTitleBlockTemplate() {
 /**
 	Met a jour les boutons afin d'assurer la coherence de l'interface
 */
-void ElementsPanelWidget::updateButtons() {
+void ElementsPanelWidget::updateButtons()
+{
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	int current_type = elements_panel -> currentItemType();
-	
+
 	if (current_type == QET::Project) {
 		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
 		prj_add_diagram -> setEnabled(is_writable);
 	} else if (current_type == QET::Diagram) {
 		Diagram    *selected_diagram         = elements_panel -> selectedDiagram();
 		QETProject *selected_diagram_project = selected_diagram -> project();
-		
+
 		bool is_writable           = !(selected_diagram_project -> isReadOnly());
 		int project_diagrams_count = selected_diagram_project -> diagrams().count();
 		int diagram_position       = selected_diagram_project -> diagrams().indexOf(selected_diagram);
-		
+
 		prj_del_diagram       -> setEnabled(is_writable);
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
@@ -347,17 +372,17 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	// recupere l'item concerne par l'evenement ainsi que son chemin
 	QTreeWidgetItem *item = elements_panel -> itemAt(pos);
 	if (!item) return;
-	
+
 	updateButtons();
 	context_menu -> clear();
-	
+
 	QString dir_path = elements_panel -> dirPathForItem(item);
 	if (!dir_path.isEmpty()) {
 		context_menu -> addAction(open_directory);
 		context_menu -> addAction(copy_path);
 		context_menu -> addSeparator();
 	}
-	
+
 	switch(item -> type()) {
 		case QET::Project:
 			context_menu -> addAction(prj_activate);
@@ -382,7 +407,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			context_menu -> addAction(tbt_remove);
 			break;
 	}
-	
+
 	// affiche le menu
 	if (!context_menu -> isEmpty()) {
 		context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos + QPoint(2, 2))));

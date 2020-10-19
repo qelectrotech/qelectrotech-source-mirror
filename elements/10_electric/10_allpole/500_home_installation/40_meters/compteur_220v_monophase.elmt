@@ -1,0 +1,34 @@
+<definition link_type="simple" type="element" height="60" width="40" hotspot_y="34" version="0.80" hotspot_x="20">
+    <uuid uuid="{769aaeb6-8a51-4dff-8172-aa038eff3d1d}"/>
+    <names>
+        <name lang="ar">عدّاد أحادي الوجه 220V </name>
+        <name lang="nl">KWh meter 230V</name>
+        <name lang="fr">Compteur 220V monophase</name>
+        <name lang="el">Μονοφασικός μετρητής</name>
+        <name lang="en">220V single phase meter</name>
+        <name lang="de">Zähler einphasig</name>
+        <name lang="pl">Licznik jednofazowy</name>
+        <name lang="cs">Jednofázové počítadlo 220V</name>
+        <name lang="it">Contatore monofase 230V</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="18" z="1" uuid="{4ede67ec-c1b4-473c-acbc-21eb38e97350}" text_from="ElementInfo" y="-25.95" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="9" width="20" ry="0" x="-10" rx="0" y="5"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" width="20" ry="0" x="-10" rx="0" y="-20"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" width="30" ry="0" x="-15" rx="0" y="-25"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="14" length2="1.5" length1="1.5" x2="10" y1="20" x1="10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="14" length2="1.5" length1="1.5" x2="-10" y1="20" x1="-10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-25" length2="1.5" length1="1.5" x2="10" y1="-30" x1="10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-25" length2="1.5" length1="1.5" x2="-10" y1="-30" x1="-10" end2="none"/>
+        <terminal orientation="s" name="" x="10" uuid="{4445f67d-13ed-49ac-8460-0889a6d3eb34}" y="20"/>
+        <terminal orientation="n" name="" x="10" uuid="{3e17abd2-2411-49d0-a518-d41d5ea9534f}" y="-30"/>
+        <terminal orientation="n" name="" x="-10" uuid="{f3242741-894e-40b7-8631-8346a4d75bf0}" y="-30"/>
+        <terminal orientation="s" name="" x="-10" uuid="{3f45c082-15c6-43de-9746-a5caaa4718ba}" y="20"/>
+    </description>
+</definition>

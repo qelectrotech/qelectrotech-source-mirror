@@ -1,0 +1,51 @@
+<definition height="60" hotspot_x="17" version="0.80" link_type="simple" type="element" width="40" hotspot_y="29">
+    <uuid uuid="{be4fd303-d4a8-4222-ab41-18fff7abb2b9}"/>
+    <names>
+        <name lang="de">Blitz-/Überspannungsschutz</name>
+        <name lang="nl">Overspanning beveiligig</name>
+        <name lang="fr">Parafoudre</name>
+        <name lang="it">Protez. alimentazione</name>
+        <name lang="es">Protección contra descargas 2</name>
+        <name lang="el">Προστασία από υπέρταση</name>
+        <name lang="cs">Bleskojistka, ochrana proti nárazu</name>
+        <name lang="pl">Ogranicznik przepięć</name>
+        <name lang="ar">حامي من الصواعق</name>
+        <name lang="en">Surge protection</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer">SOFREL</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" y="15" rotation="0" Halignment="AlignLeft" text_width="0" z="1" frame="false" x="-105" Valignment="AlignTop" text_from="ElementInfo" uuid="{5e606185-3322-4161-9d6b-df27dc27e33e}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-10" length2="1" y1="-20" end2="triangle" x2="-10" y2="-1" antialias="false"/>
+        <line length1="1" end1="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="-10" length2="0.5" y1="1" end2="none" x2="-10" y2="12" antialias="false"/>
+        <text font="Arial,4,-1,5,50,0,0,0,0,0,Normal" y="-17" rotation="0" x="-9" text="N" color="#000000"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="29" rotation="0" x="1" text="T" color="#000000"/>
+        <text font="Arial,4,-1,5,50,0,0,0,0,0,Normal" y="-16.6667" rotation="0" x="11" text="L1" color="#000000"/>
+        <line length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" y1="20" end2="none" x2="0" y2="12" antialias="false"/>
+        <line length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="10" length2="1" y1="-19" end2="triangle" x2="10" y2="-1" antialias="false"/>
+        <line length1="1" end1="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" x1="10" length2="0.5" y1="1" end2="none" x2="10" y2="7" antialias="false"/>
+        <rect rx="0" y="-8" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-13" width="6" antialias="false"/>
+        <rect rx="0" y="-8" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="7" width="6" antialias="false"/>
+        <line length1="2.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" length2="1.5" y1="8" end2="none" x2="10" y2="11" antialias="false"/>
+        <line length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" length2="1.5" y1="12" end2="none" x2="-9" y2="12" antialias="false"/>
+        <terminal y="22" orientation="s" x="0"/>
+        <terminal y="-21" orientation="n" x="-10"/>
+        <terminal y="-21" orientation="n" x="10"/>
+    </description>
+</definition>

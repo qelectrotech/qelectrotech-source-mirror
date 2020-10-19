@@ -1,4 +1,4 @@
-<definition width="60" height="40" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="28">
+<definition width="60" height="40" type="element" hotspot_x="24" version="0.70" link_type="simple" hotspot_y="28">
     <uuid uuid="{e836a89b-324b-4e07-86c2-e0a0512a4ee0}"/>
     <names>
         <name lang="de">Shunt

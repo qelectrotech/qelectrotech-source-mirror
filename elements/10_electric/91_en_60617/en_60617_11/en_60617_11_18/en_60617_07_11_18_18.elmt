@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="42" width="70" hotspot_y="45">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="42" width="70" hotspot_y="45">
     <uuid uuid="{f1c002b9-f7da-40b5-a4b8-93e85a142dd2}"/>
     <names>
         <name lang="de">Hindernisfeuer,

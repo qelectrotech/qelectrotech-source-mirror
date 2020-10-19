@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="64" orientation="dyyy" type="element" height="70" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="64" type="element" height="70" width="30">
     <uuid uuid="{e0462d57-7079-47fa-b4da-fd045fb47504}"/>
     <names>
         <name lang="fr">Diode à effet de claquage dans les deux sens</name>

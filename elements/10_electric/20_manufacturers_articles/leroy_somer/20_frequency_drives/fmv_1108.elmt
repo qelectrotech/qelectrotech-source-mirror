@@ -1,4 +1,4 @@
-<definition width="390" height="100" link_type="simple" orientation="dyyy" hotspot_x="15" version="0.5" hotspot_y="24" type="element">
+<definition width="390" height="100" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="24" type="element">
     <uuid uuid="{568c5226-cadb-460d-8d76-671f46beb992}"/>
     <names>
         <name lang="it">FMV 1108</name>

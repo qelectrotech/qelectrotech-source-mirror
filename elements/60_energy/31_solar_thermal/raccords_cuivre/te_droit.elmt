@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="12">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="12">
     <uuid uuid="{67745b64-8c2e-4833-9bd0-41c027b0e820}"/>
     <names>
         <name lang="cs">Spojovací článek T</name>

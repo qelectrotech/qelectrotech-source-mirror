@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="110" hotspot_x="16" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="110" hotspot_x="16" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{b5a720a8-2848-471e-b158-9d7e791e99b8}"/>
     <names>
         <name lang="en">Solenoid valve 2 / 2, with lever, spring compulsory</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,10 +22,10 @@
 #include <QAbstractButton>
 
 /**
- * @brief replaceAdvancedDialog::replaceAdvancedDialog
- * @param advanced
- * @param parent
- */
+	@brief replaceAdvancedDialog::replaceAdvancedDialog
+	@param advanced
+	@param parent
+*/
 replaceAdvancedDialog::replaceAdvancedDialog(advancedReplaceStruct advanced, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::replaceAdvancedDialog)
@@ -47,10 +47,10 @@ replaceAdvancedDialog::~replaceAdvancedDialog()
 }
 
 /**
- * @brief replaceAdvancedDialog::setAdvancedStruct
- * Set the edited advanced struct
- * @param advanced
- */
+	@brief replaceAdvancedDialog::setAdvancedStruct
+	Set the edited advanced struct
+	@param advanced
+*/
 void replaceAdvancedDialog::setAdvancedStruct(advancedReplaceStruct advanced)
 {
 	int index = advanced.who;
@@ -73,9 +73,9 @@ void replaceAdvancedDialog::setAdvancedStruct(advancedReplaceStruct advanced)
 }
 
 /**
- * @brief replaceAdvancedDialog::advancedStruct
- * @return the edited advanced struct
- */
+	@brief replaceAdvancedDialog::advancedStruct
+	@return the edited advanced struct
+*/
 advancedReplaceStruct replaceAdvancedDialog::advancedStruct() const
 {
 	advancedReplaceStruct a;
@@ -110,9 +110,9 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 }
 
 /**
- * @brief replaceAdvancedDialog::on_m_who_cb_currentIndexChanged
- * @param index
- */
+	@brief replaceAdvancedDialog::on_m_who_cb_currentIndexChanged
+	@param index
+*/
 void replaceAdvancedDialog::on_m_who_cb_currentIndexChanged(int index) {
 	fillWhatComboBox(index);
 }

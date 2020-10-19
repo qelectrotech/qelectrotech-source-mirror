@@ -1,4 +1,4 @@
-<definition hotspot_x="94" orientation="dyyy" version="0.70" link_type="simple" height="80" hotspot_y="75" type="element" width="130">
+<definition hotspot_x="94" version="0.70" link_type="simple" height="80" hotspot_y="75" type="element" width="130">
     <uuid uuid="{c9715012-b148-4dd8-9de2-e48b3a5da03d}"/>
     <names>
         <name lang="fr">Coupleur magnétique

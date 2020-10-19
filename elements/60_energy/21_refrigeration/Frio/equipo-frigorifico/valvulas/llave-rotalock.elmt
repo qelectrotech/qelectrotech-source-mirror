@@ -1,4 +1,4 @@
-<definition hotspot_x="35" hotspot_y="21" width="70" version="0.5" type="element" orientation="dyyy" height="40" link_type="simple">
+<definition hotspot_x="35" hotspot_y="21" width="70" version="0.5" type="element" height="40" link_type="simple">
 <uuid uuid="{69FA131B-C4DA-4503-930F-1F3BB19FC8B5}"/><names>
         <name lang="es">Llave rotalock</name>
         <name lang="ca">Llave rotalock</name>

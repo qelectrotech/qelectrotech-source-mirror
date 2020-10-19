@@ -1,4 +1,4 @@
-<definition hotspot_x="56" version="0.70" orientation="dyyy" height="50" hotspot_y="47" width="60" type="element" link_type="simple">
+<definition hotspot_x="56" version="0.70" height="50" hotspot_y="47" width="60" type="element" link_type="simple">
     <uuid uuid="{250eb5f4-8368-446c-9e81-4c0e0c76a84e}"/>
     <names>
         <name lang="fr">Point neutre</name>

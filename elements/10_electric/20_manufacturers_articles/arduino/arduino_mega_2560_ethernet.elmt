@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_y="34" width="190" hotspot_x="23" height="400" orientation="dyyy" version="0.80">
+<definition link_type="simple" type="element" hotspot_y="34" width="190" hotspot_x="23" height="400" version="0.80">
     <uuid uuid="{31bcd13a-8b64-4fab-a2a6-4608f67519f4}"/>
     <names>
         <name lang="nl">Arduino Mega 2560 Ethernet</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="10" type="element" hotspot_y="10" link_type="simple" hotspot_x="5" height="20">
+<definition version="0.70" width="10" type="element" hotspot_y="10" link_type="simple" hotspot_x="5" height="20">
     <uuid uuid="{41289310-1d16-4cbc-875f-9c4a94e88280}"/>
     <names>
         <name lang="fr">Actionné lorsque la grandeur caractéristique soit dépasse une valeur d'ajustement haute, soit descente en dessous d’une valeur d'ajustement basse</name>

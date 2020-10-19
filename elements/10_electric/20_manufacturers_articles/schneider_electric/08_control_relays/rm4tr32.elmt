@@ -1,0 +1,55 @@
+<definition link_type="master" type="element" height="80" width="80" hotspot_y="47" version="0.80" hotspot_x="40">
+    <uuid uuid="{ad35063d-6b8a-4d02-b1bf-ddc7db234062}"/>
+    <names>
+        <name lang="fr">Relais de control RM4TR32</name>
+        <name lang="en">rm4tr32</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description">RELAIS DE CONTRÔLE DE RÉSEAU TRIPHASÉ RM4T PLAGE 300 À 430 V</elementInformation>
+        <elementInformation show="1" name="designation">RM4TR32</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-35" length2="1.5" length1="1.5" x2="-23" y1="-35" x1="-35" end2="none"/>
+        <text text="L1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-23" y="-25" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="25" length2="1.5" length1="1.5" x2="-35" y1="-35" x1="-35" end2="none"/>
+        <text text="L2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-3" y="-25" color="#000000"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" diameter="5" y="-37.5"/>
+        <text text="L3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="17" y="-25" color="#000000"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.5" diameter="5" y="-37.5"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-35" length2="1.5" length1="1.5" x2="-3" y1="-35" x1="-17" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-35" length2="1.5" length1="1.5" x2="17" y1="-35" x1="3" end2="none"/>
+        <circle antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.5" diameter="5" y="-37.5"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="80" height="17" width="19" start="269" x="-12.5" y="-8.5"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="10" length2="1.5" length1="1.5" x2="-15" y1="-15" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="10" length2="1.5" length1="1.5" x2="15" y1="10" x1="-15" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="10" length2="1.5" length1="1.5" x2="15" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-70" z="15" uuid="{85582e89-73b3-4546-9679-65627c778223}" text_from="ElementInfo" y="-31.5" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="Schneider Electric " font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-21" y="18" color="#000000"/>
+        <text text="RM4TR32" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-11" y="23" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-35" length2="1.5" length1="1.5" x2="35" y1="-35" x1="23" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="25" length2="1.5" length1="1.5" x2="35" y1="-35" x1="35" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="25" length2="1.5" length1="1.5" x2="35" y1="25" x1="-35" end2="none"/>
+        <text text="208...440V 50/60Hz" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-23" y="-19" color="#000000"/>
+        <terminal orientation="n" name="" x="-20" uuid="{fba22222-604c-453f-993b-6ac4a8d32658}" y="-38"/>
+        <terminal orientation="n" name="" x="20" uuid="{262e5bdf-9e01-4e7f-b326-c7ce13c53db2}" y="-38"/>
+        <terminal orientation="n" name="" x="0" uuid="{cc40b178-f93b-486f-af61-0f5baaa24361}" y="-38"/>
+    </description>
+</definition>

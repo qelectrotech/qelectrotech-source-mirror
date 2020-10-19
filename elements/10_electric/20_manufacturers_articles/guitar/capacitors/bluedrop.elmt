@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="90" version="0.5" hotspot_x="44" hotspot_y="9" height="50" orientation="dyyy">
+<definition link_type="simple" type="element" width="90" version="0.5" hotspot_x="44" hotspot_y="9" height="50">
     <uuid uuid="{e8e1aae3-bba1-44f2-8692-8de5e8af451a}"/>
     <names>
         <name lang="en">Mylar Capacitor - Blue Drop</name>

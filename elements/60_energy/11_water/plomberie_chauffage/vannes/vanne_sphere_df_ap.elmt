@@ -1,4 +1,4 @@
-<definition width="50" version="0.51" orientation="dyyy" link_type="simple" hotspot_x="22" hotspot_y="26" type="element" height="40">
+<definition width="50" version="0.51" link_type="simple" hotspot_x="22" hotspot_y="26" type="element" height="40">
     <uuid uuid="{01bedd1c-bf9c-48ae-94a9-c405d0c75cef}"/>
     <names>
         <name lang="pl">Zawór kulowy </name>

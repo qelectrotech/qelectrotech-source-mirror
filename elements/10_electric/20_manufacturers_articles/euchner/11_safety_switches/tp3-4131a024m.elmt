@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="105" orientation="dyyy" hotspot_y="49" type="element" height="100" width="220" version="0.5">
+<definition link_type="simple" hotspot_x="105" hotspot_y="49" type="element" height="100" width="220" version="0.5">
     <uuid uuid="{4333ddda-7ea9-490f-8b3e-f914bd76f575}"/>
     <names>
         <name lang="pl">TP3-4131A024M</name>

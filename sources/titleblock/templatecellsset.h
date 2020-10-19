@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,7 +29,6 @@ class TitleBlockTemplateCellsSet : public QList<TitleBlockTemplateVisualCell *> 
 	// Constructors, destructor
 	public:
 	TitleBlockTemplateCellsSet(const TitleBlockTemplateView *);
-	TitleBlockTemplateCellsSet(const TitleBlockTemplateCellsSet &);
 	virtual ~TitleBlockTemplateCellsSet();
 	
 	// methods

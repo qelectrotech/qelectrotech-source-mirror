@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="30" hotspot_y="5" width="40" orientation="dyyy" height="20" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="30" hotspot_y="5" width="40" height="20" link_type="simple" type="element">
     <uuid uuid="{b3d514b1-bc11-4f65-91de-445aae6865bc}"/>
     <names>
         <name lang="en">Control air pressure drop</name>

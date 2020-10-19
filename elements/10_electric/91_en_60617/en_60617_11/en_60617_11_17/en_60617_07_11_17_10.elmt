@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="34" width="90" hotspot_y="10">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="34" width="90" hotspot_y="10">
     <uuid uuid="{59d77b6b-0e55-48a9-aa15-2c5f468590d8}"/>
     <names>
         <name lang="de">Elktro-Installationskanal mit interner

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,9 +26,9 @@ namespace Ui {
 }
 
 /**
- * @brief The BorderPropertiesWidget class
- * this widget edit the properties of a border
- */
+	@brief The BorderPropertiesWidget class
+	this widget edit the properties of a border
+*/
 class BorderPropertiesWidget : public QWidget
 {
 		Q_OBJECT

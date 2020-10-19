@@ -1,0 +1,31 @@
+<definition link_type="simple" hotspot_y="12" width="40" type="element" height="70" hotspot_x="10" version="0.80">
+    <uuid uuid="{9e1df6d1-306f-49f5-bf9a-6466a40a2136}"/>
+    <names>
+        <name lang="nl">Watt uur meter</name>
+        <name lang="it">Misuratore di Wh</name>
+        <name lang="en">Watt hour meter</name>
+        <name lang="pl">Licznik watogodzin</name>
+        <name lang="cs">Počítadlo watthodin</name>
+        <name lang="el">Μετρητής βατ/ώρα</name>
+        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -</name>
+        <name lang="fr">Compteur d'énergie active Wattheuremètre</name>
+        <name lang="de">Wattstundenzähler</name>
+    </names>
+    <elementInformations/>
+    <informations>EN 60617: 08-04-03</informations>
+    <description>
+        <rect x="-6" width="32" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" y="0" rx="0"/>
+        <dynamic_text text_width="-1" x="27" z="2" frame="false" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="17.05" uuid="{e0af5b4a-9517-49d2-9579-9f851abc05d6}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="14" y1="14" x1="-6" x2="26" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <text x="0" color="#000000" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="Wh" y="35"/>
+        <line y2="0" y1="-5" x1="0" x2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="0" y1="-5" x1="20" x2="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <terminal x="20" name="" y="-5" uuid="{3d8496aa-f88d-460c-ae0a-fad2bad4a5a8}" orientation="n"/>
+        <terminal x="0" name="" y="50" uuid="{9d7a11ff-4a5f-4fe8-b506-e43ceefde6f9}" orientation="s"/>
+        <terminal x="20" name="" y="50" uuid="{e61b924f-44c3-46b2-8b11-0979e4696329}" orientation="s"/>
+        <terminal x="0" name="" y="-5" uuid="{9a9ed87b-1c1f-4c09-ac12-569cd4c08be8}" orientation="n"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition height="180" link_type="simple" width="110" version="0.80" type="element" orientation="dyyy" hotspot_x="60" hotspot_y="88">
+<definition height="180" link_type="simple" width="110" version="0.80" type="element" hotspot_x="60" hotspot_y="88">
     <uuid uuid="{300405b2-272f-4fc4-8c6d-3e8b1fee743d}"/>
     <names>
         <name lang="fr">Sfere - uc3011</name>

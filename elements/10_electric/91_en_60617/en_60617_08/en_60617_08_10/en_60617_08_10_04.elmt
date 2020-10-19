@@ -1,4 +1,4 @@
-<definition width="30" height="70" type="element" hotspot_x="14" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="44">
+<definition width="30" height="70" type="element" hotspot_x="14" version="0.70" link_type="simple" hotspot_y="44">
     <uuid uuid="{9d238bdf-fa56-42ad-b4cc-29328d045cea}"/>
     <names>
         <name lang="de">Stellungsanzeiger, elektromechanisch</name>

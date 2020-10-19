@@ -1,4 +1,4 @@
-<definition width="170" link_type="simple" orientation="dyyy" hotspot_y="44" version="0.51" type="element" height="90" hotspot_x="89">
+<definition width="170" link_type="simple" hotspot_y="44" version="0.51" type="element" height="90" hotspot_x="89">
     <uuid uuid="{2bc8b152-bc2b-4bf4-bdc2-c91f8a6695c3}"/>
     <names>
         <name lang="fr">Alimentation 2 sorties</name>

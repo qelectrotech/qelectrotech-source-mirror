@@ -1,4 +1,4 @@
-<definition hotspot_y="29" link_type="simple" hotspot_x="5" orientation="dyyy" width="980" type="element" version="0.80" height="650">
+<definition hotspot_y="29" link_type="simple" hotspot_x="5" width="980" type="element" version="0.80" height="650">
     <uuid uuid="{80743b63-d785-4b9f-8535-6053a78dabec}"/>
     <names>
         <name lang="de">Stückliste mit Kopfzeile</name>

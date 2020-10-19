@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="315" hotspot_y="94" height="180" version="0.5" type="element" width="470">
+<definition link_type="simple" hotspot_x="315" hotspot_y="94" height="180" version="0.5" type="element" width="470">
     <uuid uuid="{effcc182-065a-45ad-b4c4-c75e0daa9691}"/>
     <names>
         <name lang="fr">Thyritop 30 Biphasé</name>

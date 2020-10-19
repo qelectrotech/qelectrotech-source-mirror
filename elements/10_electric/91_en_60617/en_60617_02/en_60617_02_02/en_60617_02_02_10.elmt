@@ -1,4 +1,4 @@
-<definition version="0.70" width="30" hotspot_x="14" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="13">
+<definition version="0.70" width="30" hotspot_x="14" type="element" link_type="simple" height="20" hotspot_y="13">
     <uuid uuid="{fe56f0c5-d8af-487d-a78c-b1b098c8f8b8}"/>
     <names>
         <name lang="de">Wechselstrom, verschiedene Frequenzbereiche</name>

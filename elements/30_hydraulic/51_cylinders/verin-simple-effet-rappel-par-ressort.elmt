@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="30" hotspot_y="14" width="80" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="30" hotspot_y="14" width="80" height="40" link_type="simple" type="element">
     <uuid uuid="{5d3d072e-acf5-48ab-98e8-671d5e531960}"/>
     <names>
         <name lang="en">Single acting cylinder - returned by spring</name>

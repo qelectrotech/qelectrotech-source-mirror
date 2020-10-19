@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="17" version="0.70" width="30" type="element" height="20">
+<definition link_type="simple" hotspot_x="25" hotspot_y="17" version="0.70" width="30" type="element" height="20">
     <uuid uuid="{3924b0f1-2f35-4ab9-999f-e4acca248a43}"/>
     <names>
         <name lang="fr">Enroulement triphasé, en étoile</name>

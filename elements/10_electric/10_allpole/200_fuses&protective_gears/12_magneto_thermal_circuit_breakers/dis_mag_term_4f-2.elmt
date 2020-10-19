@@ -1,4 +1,4 @@
-<definition hotspot_y="50" width="110" version="0.51" orientation="dyyy" type="element" height="100" hotspot_x="56" link_type="simple">
+<definition hotspot_y="50" width="110" version="0.51" type="element" height="100" hotspot_x="56" link_type="simple">
     <uuid uuid="{686e19c6-6bce-4ced-8c01-2d7f58a78386}"/>
     <names>
         <name lang="el">Θερμομαγνητικό</name>

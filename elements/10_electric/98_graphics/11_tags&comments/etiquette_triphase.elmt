@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="8" width="20" hotspot_y="0" orientation="dyyy" height="10">
+<definition version="0.5" link_type="simple" type="element" hotspot_x="8" width="20" hotspot_y="0" height="10">
     <uuid uuid="{5f7c2dd7-50ca-41e8-aa21-8a1fc34a6fb2}"/>
     <names>
         <name lang="es">Etiqueta trifásico</name>

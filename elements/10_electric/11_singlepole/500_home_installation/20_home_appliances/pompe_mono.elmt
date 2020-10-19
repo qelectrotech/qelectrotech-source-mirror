@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{c4753f01-4332-4ed6-8465-4d6e2c4507ba}"/>
     <names>
         <name lang="fr">Pompe mono</name>

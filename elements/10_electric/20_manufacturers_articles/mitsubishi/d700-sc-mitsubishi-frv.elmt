@@ -1,4 +1,4 @@
-<definition type="element" width="390" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="92" hotspot_x="17" height="100">
+<definition type="element" width="390" version="0.70" link_type="simple" hotspot_y="92" hotspot_x="17" height="100">
     <uuid uuid="{8c6fcbc1-2016-418a-bdc5-eaeddd2cad23}"/>
     <names>
         <name lang="hu">D700SC frekvenciaváltó</name>

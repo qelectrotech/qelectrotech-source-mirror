@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,10 +20,10 @@
 #include "propertieseditorwidget.h"
 
 /**
- * @brief PropertiesEditorDockWidget::PropertiesEditorDockWidget
- * Constructor
- * @param parent : parent widget
- */
+	@brief PropertiesEditorDockWidget::PropertiesEditorDockWidget
+	Constructor
+	@param parent : parent widget
+*/
 PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 	QDockWidget(parent),
 	ui(new Ui::PropertiesEditorDockWidget)
@@ -32,9 +32,9 @@ PropertiesEditorDockWidget::PropertiesEditorDockWidget(QWidget *parent) :
 }
 
 /**
- * @brief PropertiesEditorDockWidget::~PropertiesEditorDockWidget
- * Destructor
- */
+	@brief PropertiesEditorDockWidget::~PropertiesEditorDockWidget
+	Destructor
+*/
 PropertiesEditorDockWidget::~PropertiesEditorDockWidget()
 {
 	clear();
@@ -42,26 +42,26 @@ PropertiesEditorDockWidget::~PropertiesEditorDockWidget()
 }
 
 /**
- * @brief PropertiesEditorDockWidget::clear
- * Remove all editor present in this dock and delete it.
- * They also disabled the button box at the bottom of this dock
- */
+	@brief PropertiesEditorDockWidget::clear
+	Remove all editor present in this dock and delete it.
+	They also disabled the button box at the bottom of this dock
+*/
 void PropertiesEditorDockWidget::clear()
 {
 	foreach (PropertiesEditorWidget *editor, m_editor_list)
 	{
 		m_editor_list.removeOne(editor);
 		ui->m_main_vlayout->removeWidget(editor);
-        delete editor;
+		delete editor;
 	}
 
 	m_editor_list.clear();
 }
 
 /**
- * @brief PropertiesEditorDockWidget::apply
- * Call the apply method for each editor present in this dock
- */
+	@brief PropertiesEditorDockWidget::apply
+	Call the apply method for each editor present in this dock
+*/
 void PropertiesEditorDockWidget::apply()
 {
 	foreach(PropertiesEditorWidget *editor, m_editor_list)
@@ -69,9 +69,9 @@ void PropertiesEditorDockWidget::apply()
 }
 
 /**
- * @brief PropertiesEditorDockWidget::reset
- * Call the reset method for each editor present in this widget
- */
+	@brief PropertiesEditorDockWidget::reset
+	Call the reset method for each editor present in this widget
+*/
 void PropertiesEditorDockWidget::reset()
 {
 	foreach(PropertiesEditorWidget *editor, m_editor_list)
@@ -79,15 +79,17 @@ void PropertiesEditorDockWidget::reset()
 }
 
 /**
- * @brief PropertiesEditorDockWidget::addEditor
- * Add an @editor in this dock at @index in the main vertical layout (note the button box
- * are displayed at bottom of this layout by default)
- * When an editor is added, we enable the button box
- * @param editor : editor to add;
- * @param index : index of editor in the layout
- * @return true if was added (or already add) or false if can't be add (editor = nullptr)
- */
-bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor, int index)
+	@brief PropertiesEditorDockWidget::addEditor
+	Add an editor in this dock at index in the main vertical layout
+	(note the button box are displayed at bottom of this layout by default)
+	When an editor is added, we enable the button box
+	@param editor : editor to add;
+	@param index : index of editor in the layout
+	@return true if was added (or already add)
+	or false if can't be add (editor = nullptr)
+*/
+bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor,
+					   int index)
 {
 	if (!editor) return false;
 	if (m_editor_list.contains(editor)) return true;
@@ -98,20 +100,22 @@ bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor, int i
 }
 
 /**
- * @brief PropertiesEditorDockWidget::editors
- * @return all editor used in this dock
- */
-QList<PropertiesEditorWidget *> PropertiesEditorDockWidget::editors() const {
+	@brief PropertiesEditorDockWidget::editors
+	@return all editor used in this dock
+*/
+QList<PropertiesEditorWidget *> PropertiesEditorDockWidget::editors() const
+{
 	return m_editor_list;
 }
 
 /**
- * @brief PropertiesEditorDockWidget::removeEditor
- * Remove @editor from this dock. The editor wasn't delete a the end of this method
- * If the editor was the last on this widget, we disabled the button box
- * @param editor : editor to remove
- * @return true on success, else false
- */
+	@brief PropertiesEditorDockWidget::removeEditor
+	Remove editor from this dock.
+	The editor wasn't delete a the end of this method
+	If the editor was the last on this widget, we disabled the button box
+	@param editor : editor to remove
+	@return true on success, else false
+*/
 bool PropertiesEditorDockWidget::removeEditor(PropertiesEditorWidget *editor)
 {
 	bool result = m_editor_list.removeOne(editor);

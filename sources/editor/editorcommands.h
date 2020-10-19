@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,17 +24,22 @@
 #include "qgimanager.h"
 
 /**
- * @brief The ElementEditionCommand class
- * 	ElementEditionCommand is the base class for all commands classes involved in
+	@brief The ElementEditionCommand class
+	ElementEditionCommand is the base class for all commands classes involved in
 	the edition of an electrical element. It provides commonly required methods
 	and attributes, such as accessors to the modified scene and view.
- */
+*/
 class ElementEditionCommand : public QUndoCommand
 {
 		// constructors, destructor
 	public:
-		ElementEditionCommand(ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
-		ElementEditionCommand(const QString &, ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
+		ElementEditionCommand(ElementScene * = nullptr,
+				      ElementView * = nullptr,
+				      QUndoCommand * = nullptr);
+		ElementEditionCommand(const QString &,
+				      ElementScene * = nullptr,
+				      ElementView * = nullptr,
+				      QUndoCommand * = nullptr);
 		~ElementEditionCommand() override;
 	private:
 		ElementEditionCommand(const ElementEditionCommand &);
@@ -74,37 +79,6 @@ class DeletePartsCommand : public ElementEditionCommand {
 	private:
 	/// Deleted primitives
 	QList<QGraphicsItem *> deleted_parts;
-};
-
-/**
-	This command pastes primitives when editing an electrical element.
-*/
-class PastePartsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = nullptr);
-	~PastePartsCommand() override;
-	private:
-	PastePartsCommand(const PastePartsCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	virtual void setOffset(int, const QPointF &, int, const QPointF &);
-	
-	// attributes
-	private:
-	/// Pasted content
-	ElementContent content_;
-	/// Data required to undo a copy/paste with offset
-	int old_offset_paste_count_;
-	QPointF old_start_top_left_corner_;
-	int new_offset_paste_count_;
-	QPointF new_start_top_left_corner_;
-	bool uses_offset;
-	/// Prevent the first call to redo()
-	bool first_redo;
 };
 
 /**
@@ -290,7 +264,12 @@ class ScalePartsCommand : public ElementEditionCommand {
 
 class ChangePropertiesCommand : public ElementEditionCommand {
 	public:
-	ChangePropertiesCommand (ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent=nullptr);
+	ChangePropertiesCommand (
+			ElementScene *scene,
+			const QString& type,
+			const DiagramContext& info,
+			const DiagramContext& elmt_info,
+			QUndoCommand *parent=nullptr);
 	~ChangePropertiesCommand () override;
 
 	void undo() override;

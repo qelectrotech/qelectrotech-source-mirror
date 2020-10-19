@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="34" hotspot_x="44" version="0.70" link_type="simple">
+<definition type="element" width="50" height="70" hotspot_y="34" hotspot_x="44" version="0.70" link_type="simple">
     <uuid uuid="{45d1c39b-c0ed-4f8b-8377-428a71e2daa2}"/>
     <names>
         <name lang="de">näherungsempfindlicher Schalter, (Schließer)</name>

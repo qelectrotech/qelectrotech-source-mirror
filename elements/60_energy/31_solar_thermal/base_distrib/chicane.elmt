@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="50" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="44">
+<definition width="110" hotspot_x="50" type="element" link_type="simple" version="0.5" height="80" hotspot_y="44">
     <uuid uuid="{570ed40b-64c6-466f-8ac4-2b791bde175d}"/>
     <names>
         <name lang="cs">D zásobník s přehradami</name>

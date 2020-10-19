@@ -1,4 +1,4 @@
-<definition type="element" height="50" width="40" orientation="dyyy" hotspot_x="21" hotspot_y="24" link_type="slave" version="0.70">
+<definition type="element" height="50" width="40" hotspot_x="21" hotspot_y="24" link_type="slave" version="0.70">
     <uuid uuid="{248ac6e9-3f18-4c6e-8f85-914db7ef49c7}"/>
     <names>
         <name lang="fr">Contact simple NO (tempo repos et travail)</name>

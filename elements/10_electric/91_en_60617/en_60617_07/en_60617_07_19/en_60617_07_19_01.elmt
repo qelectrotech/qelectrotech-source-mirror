@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="30" height="70" hotspot_y="34" hotspot_x="15" version="0.70" link_type="simple">
+<definition type="element" width="30" height="70" hotspot_y="34" hotspot_x="15" version="0.70" link_type="simple">
     <uuid uuid="{6942a97e-15cf-4d2c-b68a-7adc776fd4cc}"/>
     <names>
         <name lang="de">Näherungssensor</name>

@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="140" hotspot_x="16" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="140" hotspot_x="16" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{23a5e74a-b85a-43ac-8144-b5a575c6fa23}"/>
     <names>
         <name lang="en">Servo valve controlled by two electromagnetic coils</name>

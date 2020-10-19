@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,56 +22,60 @@
 #include "configpages.h"
 
 /**
- * @brief ProjectPropertiesDialog::ProjectPropertiesDialog
- * Default constructor
- * @param project : project to edit properties
- * @param parent : parent widget of this dialog
- */
+	@brief ProjectPropertiesDialog::ProjectPropertiesDialog
+	Default constructor
+	@param project : project to edit properties
+	@param parent : parent widget of this dialog
+*/
 ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *parent) {
-    NewDiagramPage *newDiagramPage = new NewDiagramPage(project,parent,this);
-    ProjectAutoNumConfigPage *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
+	NewDiagramPage *newDiagramPage = new NewDiagramPage(project,parent,this);
+	ProjectAutoNumConfigPage *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
 	m_properties_dialog = new ConfigDialog (parent);
 	m_properties_dialog -> setWindowTitle(QObject::tr("Propriétés du projet", "window title"));
-	m_properties_dialog -> addPage(new ProjectMainConfigPage       (project));
-    m_properties_dialog -> addPage(newDiagramPage);
-    m_properties_dialog -> addPage(projectAutoNumConfigPage);
-    connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
-    connect(projectAutoNumConfigPage,SIGNAL(saveCurrentTbp()),newDiagramPage,SLOT(saveCurrentTbp()));
-    connect(projectAutoNumConfigPage,SIGNAL(loadSavedTbp()),newDiagramPage,SLOT(loadSavedTbp()));
+	m_properties_dialog -> addPage(new ProjectMainConfigPage(project));
+	m_properties_dialog -> addPage(newDiagramPage);
+	m_properties_dialog -> addPage(projectAutoNumConfigPage);
+	connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
+	connect(projectAutoNumConfigPage,SIGNAL(saveCurrentTbp()),newDiagramPage,SLOT(saveCurrentTbp()));
+	connect(projectAutoNumConfigPage,SIGNAL(loadSavedTbp()),newDiagramPage,SLOT(loadSavedTbp()));
 	m_properties_dialog->setMinimumHeight(690);
-    
 }
 
 /**
- * @brief ProjectPropertiesDialog::~ProjectPropertiesDialog
- */
-ProjectPropertiesDialog::~ProjectPropertiesDialog () {
+	@brief ProjectPropertiesDialog::~ProjectPropertiesDialog
+*/
+ProjectPropertiesDialog::~ProjectPropertiesDialog ()
+{
 	delete m_properties_dialog;
 }
 
 /**
- * @brief ProjectPropertiesDialog::exec
- * execute this dialog.
- */
-void ProjectPropertiesDialog::exec() {
+	@brief ProjectPropertiesDialog::exec
+	execute this dialog.
+*/
+void ProjectPropertiesDialog::exec()
+{
 	m_properties_dialog->setWindowModality(Qt::WindowModal);
 	m_properties_dialog -> exec();
 }
 
 /**
- * @brief ProjectPropertiesDialog::setCurrentPage
- * Change the current displayed page by p.
- * @param p : page to display
- */
+	@brief ProjectPropertiesDialog::setCurrentPage
+	Change the current displayed page by p.
+	@param p : page to display
+*/
 void ProjectPropertiesDialog::setCurrentPage(ProjectPropertiesDialog::Page p) {
 	m_properties_dialog -> setCurrentPage(static_cast <int> (p));
 }
 
 /**
- * @brief ProjectPropertiesDialog::changeToFolio
- * Change the current displayed tab to folio tab.
- */
-void ProjectPropertiesDialog::changeToFolio() {
-	ProjectAutoNumConfigPage *autoNumPage = static_cast <ProjectAutoNumConfigPage*>(m_properties_dialog->pages.at(2));
+	@brief ProjectPropertiesDialog::changeToFolio
+	Change the current displayed tab to folio tab.
+*/
+void ProjectPropertiesDialog::changeToFolio()
+{
+	ProjectAutoNumConfigPage *autoNumPage =
+			static_cast <ProjectAutoNumConfigPage*>(
+				m_properties_dialog->pages.at(2));
 	autoNumPage->changeToTab(3);
 }

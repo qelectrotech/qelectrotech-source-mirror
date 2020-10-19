@@ -1,4 +1,4 @@
-<definition hotspot_y="47" width="160" height="80" link_type="simple" version="0.80" hotspot_x="66" orientation="dyyy" type="element">
+<definition hotspot_y="47" width="160" height="80" link_type="simple" version="0.80" hotspot_x="66" type="element">
     <uuid uuid="{5d1564dc-9b28-4465-be38-9ce9c2ff656b}"/>
     <names>
         <name lang="fr">Codeur incrémental</name>

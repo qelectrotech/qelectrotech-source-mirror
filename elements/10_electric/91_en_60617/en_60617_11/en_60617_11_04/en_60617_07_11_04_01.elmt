@@ -1,4 +1,4 @@
-<definition type="element" width="70" version="0.70" hotspot_y="55" orientation="dyyy" height="60" link_type="simple" hotspot_x="55">
+<definition type="element" width="70" version="0.70" hotspot_y="55" height="60" link_type="simple" hotspot_x="55">
     <uuid uuid="{860e9293-dec8-43e6-9f1c-6e3046bb7044}"/>
     <names>
         <name lang="fr">Cabine ou armoire pour installation extérieure</name>

@@ -1,4 +1,4 @@
-<definition height="40" type="element" width="50" orientation="dyyy" hotspot_x="26" link_type="simple" version="0.5" hotspot_y="22">
+<definition height="40" type="element" width="50" hotspot_x="26" link_type="simple" version="0.5" hotspot_y="22">
     <uuid uuid="{3b6d3919-8ca3-4641-8890-911084813179}"/>
     <names>
         <name lang="ar">ملف حلقي بقطبين</name>

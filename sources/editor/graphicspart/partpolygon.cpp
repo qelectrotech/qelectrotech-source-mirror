@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -25,11 +25,11 @@
 
 
 /**
- * @brief PartPolygon::PartPolygon
- * Constructor
- * @param editor : editor of this item
- * @param parent : parent item
- */
+	@brief PartPolygon::PartPolygon
+	Constructor
+	@param editor : editor of this item
+	@param parent : parent item
+*/
 PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
 	m_closed(false),
@@ -44,8 +44,8 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 }
 
 /**
- * @brief PartPolygon::~PartPolygon
- */
+	@brief PartPolygon::~PartPolygon
+*/
 PartPolygon::~PartPolygon()
 {
 	if(m_undo_command) delete m_undo_command;
@@ -53,20 +53,27 @@ PartPolygon::~PartPolygon()
 }
 
 /**
- * @brief PartPolygon::paint
- * Draw this polygon
- * @param painter
- * @param options
- * @param widget
- */
+	@brief PartPolygon::paint
+	Draw this polygon
+	@param painter
+	@param options
+	@param widget
+*/
 void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
-	Q_UNUSED(widget);
+	Q_UNUSED(widget)
 
 	applyStylesToQPainter(*painter);
 
 	QPen t = painter -> pen();
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
+#endif
 	if (isSelected()) t.setColor(Qt::red);
 	painter -> setPen(t);
 
@@ -78,10 +85,10 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 }
 
 /**
- * @brief PartPolygon::fromXml
- * Import the properties of this polygon from a xml element
- * @param qde : Xml document to use
- */
+	@brief PartPolygon::fromXml
+	Import the properties of this polygon from a xml element
+	@param qde : Xml document to use
+*/
 void PartPolygon::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
@@ -95,7 +102,7 @@ void PartPolygon::fromXml(const QDomElement &qde)
 
 		else break;
 	}
-	
+
 	QPolygonF temp_polygon;
 	for (int j = 1 ; j < i ; ++ j)
 	{
@@ -103,16 +110,16 @@ void PartPolygon::fromXml(const QDomElement &qde)
 								qde.attribute(QString("y%1").arg(j)).toDouble());
 	}
 	m_polygon = temp_polygon;
-	
+
 	m_closed = qde.attribute("closed") != "false";
 }
 
 /**
- * @brief PartPolygon::toXml
- * Export this polygin in xml
- * @param xml_document : Xml document to use for create the xml element
- * @return an xml element that describe this polygon
- */
+	@brief PartPolygon::toXml
+	Export this polygin in xml
+	@param xml_document : Xml document to use for create the xml element
+	@return an xml element that describe this polygon
+*/
 const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("polygon");
@@ -129,10 +136,10 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 }
 
 /**
- * @brief PartPolygon::isUseless
- * @return true if this part is irrelevant and does not deserve to be Retained / registered.
- * A polygon is relevant when he have 2 differents points
- */
+	@brief PartPolygon::isUseless
+	@return true if this part is irrelevant and does not deserve to be Retained / registered.
+	A polygon is relevant when he have 2 differents points
+*/
 bool PartPolygon::isUseless() const
 {
 	if (m_polygon.count() < 2) return(true);
@@ -144,22 +151,23 @@ bool PartPolygon::isUseless() const
 }
 
 /**
- * @brief PartPolygon::sceneGeometricRect
- * @return the minimum, margin-less rectangle this part can fit into, in scene
- * coordinates. It is different from boundingRect() because it is not supposed
- * to imply any margin, and it is different from shape because it is a regular
- * rectangle, not a complex shape.
- */
-QRectF PartPolygon::sceneGeometricRect() const {
+	@brief PartPolygon::sceneGeometricRect
+	@return the minimum, margin-less rectangle this part can fit into, in scene
+	coordinates. It is different from boundingRect() because it is not supposed
+	to imply any margin, and it is different from shape because it is a regular
+	rectangle, not a complex shape.
+*/
+QRectF PartPolygon::sceneGeometricRect() const
+{
 	return(mapToScene(m_polygon.boundingRect()).boundingRect());
 }
 
 /**
- * @brief PartPolygon::startUserTransformation
- * Start the user-induced transformation, provided this primitive is contained
- * within the initial_selection_rect bounding rectangle.
- * @param initial_selection_rect
- */
+	@brief PartPolygon::startUserTransformation
+	Start the user-induced transformation, provided this primitive is contained
+	within the initial_selection_rect bounding rectangle.
+	@param initial_selection_rect
+*/
 void PartPolygon::startUserTransformation(const QRectF &initial_selection_rect)
 {
 	Q_UNUSED(initial_selection_rect)
@@ -167,11 +175,11 @@ void PartPolygon::startUserTransformation(const QRectF &initial_selection_rect)
 }
 
 /**
- * @brief PartPolygon::handleUserTransformation
- * Handle the user-induced transformation from initial_selection_rect to new_selection_rect
- * @param initial_selection_rect
- * @param new_selection_rect
- */
+	@brief PartPolygon::handleUserTransformation
+	Handle the user-induced transformation from initial_selection_rect to new_selection_rect
+	@param initial_selection_rect
+	@param new_selection_rect
+*/
 void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect)
 {
 	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
@@ -179,29 +187,31 @@ void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect,
 }
 
 /**
- * @brief PartPolygon::preferredScalingMethod
- * This method is called by the decorator when it needs to determine the best
- * way to interactively scale a primitive. It is typically called when only a
- * single primitive is being scaled.
- * @return : This reimplementation systematically returns QET::RoundScaleRatios.
- */
-QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
+	@brief PartPolygon::preferredScalingMethod
+	This method is called by the decorator when it needs to determine the best
+	way to interactively scale a primitive. It is typically called when only a
+	single primitive is being scaled.
+	@return : This reimplementation systematically returns QET::RoundScaleRatios.
+*/
+QET::ScalingMethod PartPolygon::preferredScalingMethod() const
+{
 	return(QET::RoundScaleRatios);
 }
 
 /**
- * @brief PartPolygon::polygon
- * @return the item's polygon, or an empty polygon if no polygon has been set.
- */
-QPolygonF PartPolygon::polygon() const {
+	@brief PartPolygon::polygon
+	@return the item's polygon, or an empty polygon if no polygon has been set.
+*/
+QPolygonF PartPolygon::polygon() const
+{
 	return m_polygon;
 }
 
 /**
- * @brief PartPolygon::setPolygon
- * Sets the item's polygon to be the given polygon.
- * @param polygon
- */
+	@brief PartPolygon::setPolygon
+	Sets the item's polygon to be the given polygon.
+	@param polygon
+*/
 void PartPolygon::setPolygon(const QPolygonF &polygon)
 {
 	if (m_polygon == polygon) return;
@@ -212,10 +222,10 @@ void PartPolygon::setPolygon(const QPolygonF &polygon)
 }
 
 /**
- * @brief PartPolygon::addPoint
- * Add new point to polygon
- * @param point
- */
+	@brief PartPolygon::addPoint
+	Add new point to polygon
+	@param point
+*/
 void PartPolygon::addPoint(const QPointF &point)
 {
 	prepareGeometryChange();
@@ -223,10 +233,10 @@ void PartPolygon::addPoint(const QPointF &point)
 }
 
 /**
- * @brief PartPolygon::setLastPoint
- * Set the last point of polygon to @point
- * @param point
- */
+	@brief PartPolygon::setLastPoint
+	Set the last point of polygon to point
+	@param point
+*/
 void PartPolygon::setLastPoint(const QPointF &point)
 {
 	if (m_polygon.size())
@@ -237,9 +247,9 @@ void PartPolygon::setLastPoint(const QPointF &point)
 }
 
 /**
- * @brief PartPolygon::removeLastPoint
- * Remove the last point of polygon
- */
+	@brief PartPolygon::removeLastPoint
+	Remove the last point of polygon
+*/
 void PartPolygon::removeLastPoint()
 {
 	if (m_polygon.size())
@@ -254,41 +264,41 @@ void PartPolygon::setClosed(bool close)
 	if (m_closed == close) return;
 	prepareGeometryChange();
 	m_closed = close;
-    emit closedChange();
+	emit closedChange();
 }
 
 /**
- * @brief PartPolygon::setHandlerColor
- * Set the handler at pos @pos (in polygon coordinate) to color @color.
- * @param pos
- * @param color
- */
+	@brief PartPolygon::setHandlerColor
+	Set the handler at pos pos (in polygon coordinate) to color color.
+	@param pos
+	@param color
+*/
 void PartPolygon::setHandlerColor(QPointF pos, const QColor &color)
 {
-    for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
-        if (qghi->pos() == mapToScene(pos)) {
-            qghi->setColor(color);
-        }
-    }
+	for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+		if (qghi->pos() == mapToScene(pos)) {
+			qghi->setColor(color);
+		}
+	}
 }
 
 /**
- * @brief PartPolygon::resetAllHandlerColor
- * Reset the color of every handlers
+	@brief PartPolygon::resetAllHandlerColor
+	Reset the color of every handlers
 */
 void PartPolygon::resetAllHandlerColor()
 {
-    for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
-        qghi->setColor(Qt::blue);
-    }
+	for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+		qghi->setColor(Qt::blue);
+	}
 }
 
 /**
- * @brief PartPolygon::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief PartPolygon::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged && scene())
@@ -297,8 +307,8 @@ QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const
 		{
 				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
 				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged); 
-			
+			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged);
+
 			if (scene()->selectedItems().size() == 1)
 				addHandler();
 		}
@@ -316,26 +326,26 @@ QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const
 	{
 		if(scene())
 			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartPolygon::sceneSelectionChanged);
-		
+
 		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
-	
+
 	return QGraphicsItem::itemChange(change, value);
 }
 
 /**
- * @brief PartPolygon::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief PartPolygon::sceneEventFilter
+	@param watched
+	@param event
+	@return
+*/
 bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 		//Watched must be an handler
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
 		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
-		
+
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
 			m_vector_index = m_handler_vector.indexOf(qghi);
@@ -359,7 +369,7 @@ bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -388,13 +398,13 @@ void PartPolygon::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 }
 
 /**
- * @brief PartPolygon::adjusteHandlerPos
- */
+	@brief PartPolygon::adjusteHandlerPos
+*/
 void PartPolygon::adjusteHandlerPos()
 {
 	if(m_handler_vector.isEmpty())
 		return;
-	
+
 	if (m_handler_vector.size() == m_polygon.size())
 	{
 		QVector <QPointF> points_vector = mapToScene(m_polygon);
@@ -410,33 +420,33 @@ void PartPolygon::adjusteHandlerPos()
 }
 
 /**
- * @brief PartPolygon::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief PartPolygon::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void PartPolygon::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
-	
+
 	m_undo_command = new QPropertyUndoCommand(this, "polygon", QVariant(m_polygon));
 	m_undo_command->setText(tr("Modifier un polygone"));
 }
 
 /**
- * @brief PartPolygon::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief PartPolygon::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void PartPolygon::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
-	
+
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = elementScene()->snapToGrid(event->scenePos());
 	new_pos = mapFromScene(new_pos);
-	
+
 	prepareGeometryChange();
 	m_polygon.replace(m_vector_index, new_pos);
 	adjusteHandlerPos();
@@ -444,15 +454,15 @@ void PartPolygon::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsS
 }
 
 /**
- * @brief PartPolygon::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief PartPolygon::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void PartPolygon::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
-	
+
 	m_undo_command->setNewValue(QVariant(m_polygon));
 	elementScene()->undoStack().push(m_undo_command);
 	m_undo_command = nullptr;
@@ -460,9 +470,9 @@ void PartPolygon::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphi
 }
 
 /**
- * @brief PartPolygon::sceneSelectionChanged
- * When the scene selection change, if there are several primitive selected, we remove the handler of this item
- */
+	@brief PartPolygon::sceneSelectionChanged
+	When the scene selection change, if there are several primitive selected, we remove the handler of this item
+*/
 void PartPolygon::sceneSelectionChanged()
 {
 	if (this->isSelected() && scene()->selectedItems().size() == 1)
@@ -472,15 +482,15 @@ void PartPolygon::sceneSelectionChanged()
 }
 
 /**
- * @brief PartPolygon::addHandler
- * Add handlers for this item
- */
+	@brief PartPolygon::addHandler
+	Add handlers for this item
+*/
 void PartPolygon::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
-	{		
+	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(m_polygon));
-		
+
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			handler->setColor(Qt::blue);
@@ -492,9 +502,9 @@ void PartPolygon::addHandler()
 }
 
 /**
- * @brief PartPolygon::removeHandler
- * Remove the handlers of this item
- */
+	@brief PartPolygon::removeHandler
+	Remove the handlers of this item
+*/
 void PartPolygon::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())
@@ -505,13 +515,13 @@ void PartPolygon::removeHandler()
 }
 
 /**
- * @brief PartPolygon::insertPoint
- * Insert a point in this polygone
- */
+	@brief PartPolygon::insertPoint
+	Insert a point in this polygone
+*/
 void PartPolygon::insertPoint()
 {
 	QPolygonF new_polygon = QetGraphicsHandlerUtility::polygonForInsertPoint(m_polygon, m_closed, elementScene()->snapToGrid(m_context_menu_pos));
-	
+
 	if(new_polygon != m_polygon)
 	{
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
@@ -522,14 +532,14 @@ void PartPolygon::insertPoint()
 }
 
 /**
- * @brief PartPolygon::removePoint
- * remove a point on this polygon
- */
+	@brief PartPolygon::removePoint
+	remove a point on this polygon
+*/
 void PartPolygon::removePoint()
 {
 	if (m_handler_vector.size() == 2)
 		return;
-	
+
 	QPointF point = mapToScene(m_context_menu_pos);
 	int index = -1;
 	for (int i=0 ; i<m_handler_vector.size() ; i++)
@@ -544,21 +554,21 @@ void PartPolygon::removePoint()
 	if (index > -1 && index<m_handler_vector.count())
 	{
 		QPolygonF polygon = this->polygon();
-        qDebug() << index;
+		qDebug() << index;
 		polygon.removeAt(index);
-		
+
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
 		QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
 		new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
 		elementScene()->undoStack().push(undo);
 	}
-	
+
 }
 
 /**
- * @brief PartPolygon::shape
- * @return the shape of this item
- */
+	@brief PartPolygon::shape
+	@return the shape of this item
+*/
 QPainterPath PartPolygon::shape() const
 {
 	QPainterPath shape;
@@ -589,9 +599,9 @@ QPainterPath PartPolygon::shadowShape() const
 }
 
 /**
- * @brief PartPolygon::boundingRect
- * @return the bounding rect of this item
- */
+	@brief PartPolygon::boundingRect
+	@return the bounding rect of this item
+*/
 QRectF PartPolygon::boundingRect() const
 {
 	QRectF r = m_polygon.boundingRect();

@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="40" hotspot_x="15" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="50" version="0.5" width="40" hotspot_x="15" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{501f92a9-adb3-4fed-89e2-c1f6437e51ea}"/>
     <names>
         <name lang="en">Differential Pressure</name>

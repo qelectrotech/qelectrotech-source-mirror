@@ -1,4 +1,4 @@
-<definition height="80" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+<definition height="80" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="30">
     <uuid uuid="{1faed31c-defb-4f0c-b44f-f47cb6e3ea46}"/>
     <names>
         <name lang="en">Integral Flowmeter</name>

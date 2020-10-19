@@ -1,4 +1,4 @@
-<definition width="60" hotspot_y="6" height="100" version="0.70" hotspot_x="7" link_type="master" type="element" orientation="dyyy">
+<definition width="60" hotspot_y="6" height="100" version="0.70" hotspot_x="7" link_type="master" type="element">
     <uuid uuid="{aa1df2e5-0495-4657-abda-0143e08e2314}"/>
     <names>
         <name lang="fr">Interrupteur sectionneur TETRA</name>

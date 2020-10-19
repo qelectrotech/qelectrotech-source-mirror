@@ -1,4 +1,4 @@
-<definition type="element" width="60" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="30" height="80">
+<definition type="element" width="60" version="0.70" link_type="simple" hotspot_y="45" hotspot_x="30" height="80">
     <uuid uuid="{9c1f65ae-44f8-4fe6-a0c0-4fa7698942a9}"/>
     <names>
         <name lang="hu">pneu időzítő</name>

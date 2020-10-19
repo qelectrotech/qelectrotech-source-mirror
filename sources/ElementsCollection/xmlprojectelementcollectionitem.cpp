@@ -1,19 +1,19 @@
 /*
-		Copyright 2006-2019 The QElectroTech Team
-		This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-		QElectroTech is free software: you can redistribute it and/or modify
-		it under the terms of the GNU General Public License as published by
-		the Free Software Foundation, either version 2 of the License, or
-		(at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-		QElectroTech is distributed in the hope that it will be useful,
-		but WITHOUT ANY WARRANTY; without even the implied warranty of
-		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-		GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-		You should have received a copy of the GNU General Public License
-		along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetproject.h"
 #include "xmlelementcollection.h"
@@ -21,16 +21,16 @@
 #include "xmlprojectelementcollectionitem.h"
 
 /**
- * @brief XmlProjectElementCollectionItem::XmlProjectElementCollectionItem
- * Constructor
- */
+	@brief XmlProjectElementCollectionItem::XmlProjectElementCollectionItem
+	Constructor
+*/
 XmlProjectElementCollectionItem::XmlProjectElementCollectionItem()
 {}
 
 /**
- * @brief XmlProjectElementCollectionItem::isDir
- * @return true if this item represent a directory
- */
+	@brief XmlProjectElementCollectionItem::isDir
+	@return true if this item represent a directory
+*/
 bool XmlProjectElementCollectionItem::isDir() const
 {
 	if (m_dom_element.tagName() == "category") return true;
@@ -38,9 +38,9 @@ bool XmlProjectElementCollectionItem::isDir() const
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::isElement
- * @return true if this item represent an element
- */
+	@brief XmlProjectElementCollectionItem::isElement
+	@return true if this item represent an element
+*/
 bool XmlProjectElementCollectionItem::isElement() const
 {
 	if (m_dom_element.tagName() == "element") return true;
@@ -48,9 +48,9 @@ bool XmlProjectElementCollectionItem::isElement() const
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::localName
- * @return the located name of this item
- */
+	@brief XmlProjectElementCollectionItem::localName
+	@return the located name of this item
+*/
 QString XmlProjectElementCollectionItem::localName()
 {
 	if (!text().isNull())
@@ -71,18 +71,18 @@ QString XmlProjectElementCollectionItem::localName()
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::name
- * @return The collection name of this item
- */
+	@brief XmlProjectElementCollectionItem::name
+	@return The collection name of this item
+*/
 QString XmlProjectElementCollectionItem::name() const
 {
 	return m_dom_element.attribute("name");
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::collectionPath
- * @return The path of this item relative to the collection.
- */
+	@brief XmlProjectElementCollectionItem::collectionPath
+	@return The path of this item relative to the collection.
+*/
 QString XmlProjectElementCollectionItem::collectionPath() const
 {
 	ElementsLocation loc (embeddedPath(), m_project);
@@ -93,10 +93,10 @@ QString XmlProjectElementCollectionItem::collectionPath() const
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::embeddedPath
- * @return The embedde path of this item
- * The path is in form : embed://dir/subdir/myElement.elmt
- */
+	@brief XmlProjectElementCollectionItem::embeddedPath
+	@return The embedde path of this item
+	The path is in form : embed://dir/subdir/myElement.elmt
+*/
 QString XmlProjectElementCollectionItem::embeddedPath() const
 {
 	if (isCollectionRoot())
@@ -114,9 +114,9 @@ QString XmlProjectElementCollectionItem::embeddedPath() const
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::isCollectionRoot
- * @return true if this item represent the root of collection
- */
+	@brief XmlProjectElementCollectionItem::isCollectionRoot
+	@return true if this item represent the root of collection
+*/
 bool XmlProjectElementCollectionItem::isCollectionRoot() const
 {
 	if (!parent())
@@ -128,12 +128,13 @@ bool XmlProjectElementCollectionItem::isCollectionRoot() const
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::addChildAtPath
- * Ask to this item item to add a new child with collection name @collection_name
- * (the child must exist in the xml element collection)
- * @param collection_name : name of the child item to add.
- */
-void XmlProjectElementCollectionItem::addChildAtPath(const QString &collection_name)
+	@brief XmlProjectElementCollectionItem::addChildAtPath
+	Ask to this item item to add a new child with collection name collection_name
+	(the child must exist in the xml element collection)
+	@param collection_name : name of the child item to add.
+*/
+void XmlProjectElementCollectionItem::addChildAtPath(
+		const QString &collection_name)
 {
 	if (collection_name.isEmpty())
 		return;
@@ -155,22 +156,25 @@ void XmlProjectElementCollectionItem::addChildAtPath(const QString &collection_n
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::project
- * @return the paretn project of the managed collection
- */
+	@brief XmlProjectElementCollectionItem::project
+	@return the paretn project of the managed collection
+*/
 QETProject *XmlProjectElementCollectionItem::project() const
 {
 	return m_project;
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::setProject
- * Set the project for this item.
- * Use this method for set this item the root of the collection
- * @param project : project to manage the collection
- * @param set_data : if true, call setUpData for every child of this item
- */
-void XmlProjectElementCollectionItem::setProject(QETProject *project, bool set_data, bool hide_element)
+	@brief XmlProjectElementCollectionItem::setProject
+	Set the project for this item.
+	Use this method for set this item the root of the collection
+	@param project : project to manage the collection
+	@param set_data : if true, call setUpData for every child of this item
+	@param hide_element : bool
+*/
+void XmlProjectElementCollectionItem::setProject(QETProject *project,
+						 bool set_data,
+						 bool hide_element)
 {
 	if (m_project)
 		return;
@@ -181,9 +185,9 @@ void XmlProjectElementCollectionItem::setProject(QETProject *project, bool set_d
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::setUpData
- * SetUp the data of this item
- */
+	@brief XmlProjectElementCollectionItem::setUpData
+	SetUp the data of this item
+*/
 void XmlProjectElementCollectionItem::setUpData()
 {
 		//Setup the displayed name
@@ -212,10 +216,10 @@ void XmlProjectElementCollectionItem::setUpData()
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::setUpIcon
- * SetUp the icon of this item.
- * Because icon use several memory, we use this method for setup icon instead setUpData.
- */
+	@brief XmlProjectElementCollectionItem::setUpIcon
+	SetUp the icon of this item.
+	Because icon use several memory, we use this method for setup icon instead setUpData.
+*/
 void XmlProjectElementCollectionItem::setUpIcon()
 {
 	if (!icon().isNull())
@@ -232,10 +236,11 @@ void XmlProjectElementCollectionItem::setUpIcon()
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::populate
- * Create the childs of this item
- * @param set_data : if true, call setUpData for every child of this item
- */
+	@brief XmlProjectElementCollectionItem::populate
+	Create the childs of this item
+	@param set_data : if true, call setUpData for every child of this item
+	@param hide_element : bool
+*/
 void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 {
 	QList <QDomElement> dom_category = m_project->embeddedElementCollection()->directories(m_dom_element);
@@ -267,13 +272,18 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 }
 
 /**
- * @brief XmlProjectElementCollectionItem::setXmlElement
- * Set the managed content of this item
- * @param element : the dom element (directory or element), to be managed by this item
- * @param project : the parent project of managed collection
- * @param set_data : if true, call setUpData for every child of this item
- */
-void XmlProjectElementCollectionItem::setXmlElement(const QDomElement& element, QETProject *project, bool set_data, bool hide_element)
+	@brief XmlProjectElementCollectionItem::setXmlElement
+	Set the managed content of this item
+	@param element :
+	the dom element (directory or element), to be managed by this item
+	@param project : the parent project of managed collection
+	@param set_data : if true, call setUpData for every child of this item
+	@param hide_element : bool
+*/
+void XmlProjectElementCollectionItem::setXmlElement(const QDomElement& element,
+						    QETProject *project,
+						    bool set_data,
+						    bool hide_element)
 {
 	m_dom_element = element;
 	m_project = project;

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -33,7 +33,8 @@ IntegrationMoveTitleBlockTemplatesHandler::IntegrationMoveTitleBlockTemplatesHan
 /**
 	Destructor
 */
-IntegrationMoveTitleBlockTemplatesHandler::~IntegrationMoveTitleBlockTemplatesHandler() {
+IntegrationMoveTitleBlockTemplatesHandler::~IntegrationMoveTitleBlockTemplatesHandler()
+{
 }
 
 /**
@@ -95,14 +96,16 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::errorWithATemplate(const 
 	@return the name to be used when this object returns QET::Rename
 	@see QET::Action
 */
-QString IntegrationMoveTitleBlockTemplatesHandler::nameForRenamingOperation() {
+QString IntegrationMoveTitleBlockTemplatesHandler::nameForRenamingOperation()
+{
 	return(rename_);
 }
 
 /**
 	@return the current date with a filename-friendly format
 */
-QString IntegrationMoveTitleBlockTemplatesHandler::dateString() const {
+QString IntegrationMoveTitleBlockTemplatesHandler::dateString() const
+{
 	return(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
 }
 
@@ -142,7 +145,8 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::askUser(const TitleBlockT
 /**
 	Initialize the user dialog.
 */
-void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
+void IntegrationMoveTitleBlockTemplatesHandler::initDialog()
+{
 	if (integ_dialog_) return;
 	integ_dialog_ = new QDialog(parent_widget_);
 	integ_dialog_ -> setWindowTitle(tr("Intégration d'un modèle de cartouche"));
@@ -238,7 +242,8 @@ void IntegrationMoveTitleBlockTemplatesHandler::radioButtonleftMargin(QRadioButt
 /**
 	Ensure the dialog remains consistent.
 */
-void IntegrationMoveTitleBlockTemplatesHandler::correctRadioButtons() {
+void IntegrationMoveTitleBlockTemplatesHandler::correctRadioButtons()
+{
 	erase_template_ -> setEnabled(integrate_new_template_ -> isChecked());
 	integrate_both_ -> setEnabled(integrate_new_template_ -> isChecked());
 }

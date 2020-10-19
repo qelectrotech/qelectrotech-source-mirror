@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" version="0.51" hotspot_x="20" orientation="dyyy" hotspot_y="21" height="30" width="40">
+<definition link_type="simple" type="element" version="0.51" hotspot_x="20" hotspot_y="21" height="30" width="40">
     <uuid uuid="{424a0b76-d190-4fb3-800d-e4298d5110af}"/>
     <names>
         <name lang="fr">Prise RJ45 Cat 6e</name>

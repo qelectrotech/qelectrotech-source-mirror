@@ -1,4 +1,4 @@
-<definition width="900" height="100" link_type="simple" hotspot_y="46" hotspot_x="15" version="0.5" type="element" orientation="dyyy">
+<definition width="900" height="100" link_type="simple" hotspot_y="46" hotspot_x="15" version="0.5" type="element">
     <uuid uuid="{19b6bb08-2737-4710-bd45-53c330fdab2f}"/>
     <names>
         <name lang="cs">TSX DEY 64D2K (spojka A)</name>

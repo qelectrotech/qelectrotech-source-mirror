@@ -1,4 +1,4 @@
-<definition hotspot_x="105" link_type="simple" height="100" type="element" width="210" version="0.80" hotspot_y="49" orientation="dyyy">
+<definition hotspot_x="105" link_type="simple" height="100" type="element" width="210" version="0.80" hotspot_y="49">
     <uuid uuid="{4feccd93-6acc-487d-8787-88ca87aac41f}"/>
     <names>
         <name lang="cs">Sick UE 45</name>

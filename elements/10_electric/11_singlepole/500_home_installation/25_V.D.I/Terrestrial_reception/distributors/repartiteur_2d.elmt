@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" orientation="dyyy" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="40">
+<definition width="90" link_type="simple" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="40">
     <uuid uuid="{2b9c4871-61e4-412d-9219-cf595a664869}"/>
     <names>
         <name lang="fr">Répartiteur 2 D</name>

@@ -1,4 +1,4 @@
-<definition type="element" height="10" link_type="simple" version="0.60" hotspot_x="36" hotspot_y="5" orientation="dyyy" width="90">
+<definition type="element" height="10" link_type="simple" version="0.60" hotspot_x="36" hotspot_y="5" width="90">
     <uuid uuid="{e02f4582-b5dd-4f81-ba71-e3d5521b4152}"/>
     <names>
         <name lang="ru">Кабель 3 жилы + PE</name>

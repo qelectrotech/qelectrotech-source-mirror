@@ -1,4 +1,4 @@
-<definition type="element" width="200" hotspot_y="6" link_type="terminal" hotspot_x="80" height="170" orientation="dyyy" version="0.80">
+<definition type="element" width="200" hotspot_y="6" link_type="terminal" hotspot_x="80" height="170" version="0.80">
     <uuid uuid="{fc4b13dc-6a84-4283-98de-f5465f563326}"/>
     <names>
         <name lang="fr">IPXV4 Mini</name>

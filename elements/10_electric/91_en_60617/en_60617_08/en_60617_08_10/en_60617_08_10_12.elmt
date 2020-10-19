@@ -1,4 +1,4 @@
-<definition width="40" height="80" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="64">
+<definition width="40" height="80" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="64">
     <uuid uuid="{d89252e0-1324-4936-b2ef-98fe5ec9ec60}"/>
     <names>
         <name lang="de">Pfeife, elektrisch betätigt </name>

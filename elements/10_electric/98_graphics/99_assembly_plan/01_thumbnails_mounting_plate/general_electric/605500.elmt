@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.80" type="element" hotspot_x="5" orientation="dyyy" height="210" width="170" hotspot_y="5">
+<definition link_type="simple" version="0.80" type="element" hotspot_x="5" height="210" width="170" hotspot_y="5">
     <uuid uuid="{dab49db6-47d8-4c15-98fe-3d900cb832fc}"/>
     <names>
         <name lang="fr">FP425/030</name>

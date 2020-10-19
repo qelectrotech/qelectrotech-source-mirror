@@ -1,0 +1,17 @@
+<definition type="element" hotspot_x="35" version="0.80" width="70" height="80" hotspot_y="46" link_type="simple">
+    <uuid uuid="{e5a46987-e259-4ca4-9e40-eedc3652f738}"/>
+    <names>
+        <name lang="cs">Pokus</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect width="60" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="65" rx="0" y="-35" antialias="false" ry="0"/>
+        <dynamic_text z="3" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Valignment="AlignTop" uuid="{cec75afa-b854-41b8-aed8-6edba82c76ff}" text_from="ElementInfo" x="-45" text_width="-1" y="-20" frame="false" rotation="0" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="n" x="20" y="-40"/>
+        <terminal orientation="n" x="-20" y="-40"/>
+    </description>
+</definition>

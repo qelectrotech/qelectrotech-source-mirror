@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{ee58311d-19b1-4db5-8e3b-c0635f6ef82d}"/>
     <names>
         <name lang="it">Pulsante, 2 can</name>

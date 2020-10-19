@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@
 class QetGraphicsHandlerItem;
 
 /**
- * This class represents a rectangle primitive which may be used to compose the
- * drawing of an electrical element within the element editor.
- * All coordinates is in item coordinate, except pos()
+	This class represents a rectangle primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
+	All coordinates is in item coordinate, except pos()
 */
 class PartRectangle :  public CustomElementGraphicPart
 {
@@ -52,9 +52,9 @@ class PartRectangle :  public CustomElementGraphicPart
 	public:
 		enum { Type = UserType + 1109 };
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartRectangle.
-			 * @return the QGraphicsItem type
-			 */
+				Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartRectangle.
+				@return the QGraphicsItem type
+			*/
 		int     type  () const override { return Type; }
 		void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name  () const override { return(QObject::tr("rectangle", "element part name")); }

@@ -1,4 +1,4 @@
-<definition height="250" hotspot_y="124" type="element" hotspot_x="45" width="90" orientation="dyyy" link_type="simple" version="0.80">
+<definition height="250" hotspot_y="124" type="element" hotspot_x="45" width="90" link_type="simple" version="0.80">
     <uuid uuid="{f819b338-facf-41b9-b253-bce257b628fd}"/>
     <names>
         <name lang="fr">F411U2 - Actionneur 2 relais bus</name>

@@ -1,4 +1,4 @@
-<definition width="100" type="element" link_type="master" height="80" version="0.80" orientation="dyyy" hotspot_y="34" hotspot_x="42">
+<definition width="100" type="element" link_type="master" height="80" version="0.80" hotspot_y="34" hotspot_x="42">
     <uuid uuid="{0e903371-96ba-4962-9d3f-1db497146add}"/>
     <names>
         <name lang="cs">Dvojpólový jistič 1 pól chránící</name>

@@ -1,4 +1,4 @@
-<definition height="70" link_type="simple" version="0.70" type="element" width="30" hotspot_x="15" hotspot_y="35" orientation="dyyy">
+<definition height="70" link_type="simple" version="0.70" type="element" width="30" hotspot_x="15" hotspot_y="35">
     <uuid uuid="{34180239-8a1b-42b0-9f0f-a9eed0270184}"/>
     <names>
         <name lang="en">TSXTLYEX_A</name>

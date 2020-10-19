@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="60" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="60" hotspot_x="24">
     <uuid uuid="{2efcf4c5-2eb8-4b65-bc98-f415bcb15a4b}"/>
     <names>
         <name lang="it">interf. PLC</name>

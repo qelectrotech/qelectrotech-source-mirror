@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" link_type="simple" width="90" orientation="dyyy" hotspot_x="44" hotspot_y="30" type="element">
+<definition height="60" version="0.5" link_type="simple" width="90" hotspot_x="44" hotspot_y="30" type="element">
     <uuid uuid="{c5009037-6d3c-47ee-9f94-b5dfd3b2ff76}"/>
     <names>
         <name lang="de">Integrierte Schaltung, 8 Pin</name>

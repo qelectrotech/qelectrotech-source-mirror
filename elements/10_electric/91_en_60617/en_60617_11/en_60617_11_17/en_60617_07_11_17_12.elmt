@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="44" width="100" hotspot_y="18">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="44" width="100" hotspot_y="18">
     <uuid uuid="{7db1167f-ed7f-4d56-a9df-d14e23c32a07}"/>
     <names>
         <name lang="de">Ausdehnungsstück für Leiter</name>

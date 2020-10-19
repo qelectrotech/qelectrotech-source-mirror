@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
+<definition link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
     <uuid uuid="{9b42e36d-d18b-46b0-a62a-6f69ea709f68}"/>
     <names>
         <name lang="fr">Machine, par example (au lieu de

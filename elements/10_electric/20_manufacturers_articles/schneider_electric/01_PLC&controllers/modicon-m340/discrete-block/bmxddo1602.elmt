@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" hotspot_y="125" orientation="dyyy" height="250" hotspot_x="45" width="70" type="element">
+<definition version="0.70" link_type="simple" hotspot_y="125" height="250" hotspot_x="45" width="70" type="element">
     <uuid uuid="{4cb89a18-11ae-4564-b1aa-389de16e364d}"/>
     <names>
         <name lang="en">BMXDDO1602</name>

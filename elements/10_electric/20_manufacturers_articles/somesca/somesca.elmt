@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="5" orientation="dyyy" hotspot_x="5" height="350" version="0.70" width="380" link_type="simple">
+<definition type="element" hotspot_y="5" hotspot_x="5" height="350" version="0.70" width="380" link_type="simple">
     <uuid uuid="{9cc53346-ad0b-471a-8ca4-7fa8ba44b963}"/>
     <names>
         <name lang="fr">SOMESCA</name>

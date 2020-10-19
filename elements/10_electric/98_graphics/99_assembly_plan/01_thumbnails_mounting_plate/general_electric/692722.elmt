@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="5" link_type="simple" version="0.80" hotspot_x="5" width="50" orientation="dyyy" height="210">
+<definition type="element" hotspot_y="5" link_type="simple" version="0.80" hotspot_x="5" width="50" height="210">
     <uuid uuid="{70506f3f-ae79-4f72-9b4d-a6b923d43c18}"/>
     <names>
         <name lang="fr">EPCN451C16</name>

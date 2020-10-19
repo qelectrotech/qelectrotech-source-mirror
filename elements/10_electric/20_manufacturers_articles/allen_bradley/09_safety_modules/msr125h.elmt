@@ -1,4 +1,4 @@
-<definition type="element" width="260" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="6" hotspot_x="55" height="90">
+<definition type="element" width="260" version="0.70" link_type="simple" hotspot_y="6" hotspot_x="55" height="90">
     <uuid uuid="{839586a6-bd9a-4dbb-85cd-e461a685ca7a}"/>
     <names>
         <name lang="hu">MSR125H</name>

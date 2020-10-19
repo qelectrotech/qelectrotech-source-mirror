@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" orientation="dyyy" type="element">
+<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" type="element">
     <uuid uuid="{718ed344-6c6a-48b4-90eb-913a822f0ae4}"/>
     <names>
         <name lang="fr">3501/CEN - Configurateur CEN</name>

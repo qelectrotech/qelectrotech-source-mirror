@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{b132eb51-e11b-4e94-8169-00ffb70386b3}"/>
     <names>
         <name lang="en">Separator drain valve</name>

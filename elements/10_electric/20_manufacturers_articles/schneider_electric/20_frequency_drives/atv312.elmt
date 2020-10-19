@@ -1,4 +1,4 @@
-<definition width="490" height="100" link_type="simple" hotspot_y="50" hotspot_x="245" version="0.5" type="element" orientation="dyyy">
+<definition width="490" height="100" link_type="simple" hotspot_y="50" hotspot_x="245" version="0.5" type="element">
     <uuid uuid="{8a66c960-5ff4-44e5-8f55-7652d894c8a1}"/>
     <names>
         <name lang="cs">Atv312</name>

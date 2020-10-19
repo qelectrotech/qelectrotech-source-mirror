@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="30" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="24">
+<definition link_type="simple" type="element" width="30" hotspot_y="44" height="70" version="0.70" hotspot_x="24">
     <uuid uuid="{0689a41d-8a35-4326-ad4e-0c2df52c8928}"/>
     <names>
         <name lang="fr">Contact à deux directions avec chevauchement</name>

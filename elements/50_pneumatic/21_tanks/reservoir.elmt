@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+<definition height="40" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="30">
     <uuid uuid="{b3fe8707-63f2-4221-a709-21c617152558}"/>
     <names>
         <name lang="en">Tank</name>

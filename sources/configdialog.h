@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,37 +25,37 @@ class QStackedWidget;
 class QDialogButtonBox;
 /**
 	This class represents the configuration dialog for QElectroTech.
-	It displays "configuration pages", each page having to provide an icon and
-	a title.
+	It displays "configuration pages",
+	each page having to provide an icon and a title.
 */
 class ConfigDialog : public QDialog {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	ConfigDialog(QWidget * = nullptr);
-	~ConfigDialog() override;
+		ConfigDialog(QWidget * = nullptr);
+		~ConfigDialog() override;
 	private:
-	ConfigDialog(const ConfigDialog &);
+		ConfigDialog(const ConfigDialog &);
 
-    public:
-	QList<ConfigPage *> pages;
+	public:
+		QList<ConfigPage *> pages;
 
 	
 	// methods
 	public slots:
-	void applyConf();
-	void addPage(ConfigPage *);
-	void setCurrentPage(const int index);
+		void applyConf();
+		void addPage(ConfigPage *);
+		void setCurrentPage(const int index);
 	
 	private:
-	void buildPagesList();
-	void addPageToList(ConfigPage *);
+		void buildPagesList();
+		void addPageToList(ConfigPage *);
 	
 	// attributes
 	private:
-	QListWidget *pages_list;
-	QStackedWidget *pages_widget;
-	QDialogButtonBox *buttons;
+		QListWidget *pages_list;
+		QStackedWidget *pages_widget;
+		QDialogButtonBox *buttons;
 
 
 

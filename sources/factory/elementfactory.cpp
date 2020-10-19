@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,12 +25,12 @@
 
 ElementFactory* ElementFactory::factory_ = nullptr;
 /**
- * @brief ElementFactory::createElement
- * @param location create element at this location
- * @param qgi parent item for this elemnt
- * @param state state of the creation
- * @return the element or 0
- */
+	@brief ElementFactory::createElement
+	@param location create element at this location
+	@param qgi parent item for this elemnt
+	@param state state of the creation
+	@return the element or 0
+*/
 Element * ElementFactory::createElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state)
 {
 	if (Q_UNLIKELY( !(location.isElement() && location.exist()) ))

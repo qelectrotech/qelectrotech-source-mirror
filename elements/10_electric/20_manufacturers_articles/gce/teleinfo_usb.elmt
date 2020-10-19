@@ -1,4 +1,4 @@
-<definition type="element" width="110" hotspot_y="66" link_type="simple" hotspot_x="50" height="140" orientation="dyyy" version="0.80">
+<definition type="element" width="110" hotspot_y="66" link_type="simple" hotspot_x="50" height="140" version="0.80">
     <uuid uuid="{097256a5-b109-432f-924a-9e6136615d2b}"/>
     <names>
         <name lang="fr">Téléinfo usb</name>

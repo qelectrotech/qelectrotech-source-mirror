@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="4" hotspot_y="24" type="element">
+<definition height="30" version="0.5" link_type="simple" width="30" hotspot_x="4" hotspot_y="24" type="element">
     <uuid uuid="{162e0efc-2e79-454a-9498-3fa7fe76e4d7}"/>
     <names>
         <name lang="de">rückwärts sperrende Thyristortetriode</name>

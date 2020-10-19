@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="14">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="20" hotspot_y="14">
     <uuid uuid="{df65010d-04ec-4034-9b23-b68b721c32f0}"/>
     <names>
         <name lang="cs">Šipka 3 směry 2</name>

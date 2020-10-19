@@ -1,5 +1,5 @@
 /*
-		Copyright 2006-2019 The QElectroTech Team
+		Copyright 2006-2020 The QElectroTech Team
 		This file is part of QElectroTech.
 
 		QElectroTech is free software: you can redistribute it and/or modify
@@ -22,10 +22,10 @@
 #include "elementslocation.h"
 
 /**
- * @brief The FileElementCollectionItem class
- * This class specialise ElementCollectionItem for manage a collection in
- * a file system. They represente a directory or an element.
- */
+	@brief The FileElementCollectionItem class
+	This class specialise ElementCollectionItem for manage a collection in
+	a file system. They represente a directory or an element.
+*/
 class FileElementCollectionItem : public ElementCollectionItem
 {
 	public:
@@ -34,7 +34,9 @@ class FileElementCollectionItem : public ElementCollectionItem
 		enum { Type = UserType+2 };
 		int type() const override { return Type;}
 
-		bool setRootPath(const QString& path, bool set_data = true, bool hide_element = false);
+		bool setRootPath(const QString& path,
+				 bool set_data = true,
+				 bool hide_element = false);
 		QString fileSystemPath() const;
 		QString dirPath() const;
 
@@ -53,7 +55,9 @@ class FileElementCollectionItem : public ElementCollectionItem
 		void setUpIcon() override;
 
 	private:
-		void setPathName(const QString& path_name, bool set_data = true, bool hide_element = false);
+		void setPathName(const QString& path_name,
+				 bool set_data = true,
+				 bool hide_element = false);
 		void populate(bool set_data = true, bool hide_element = false);
 
 	private:

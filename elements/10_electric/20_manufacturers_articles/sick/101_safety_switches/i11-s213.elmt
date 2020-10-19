@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="49" width="140" height="100" orientation="dyyy" link_type="simple" hotspot_x="65">
+<definition type="element" version="0.5" hotspot_y="49" width="140" height="100" link_type="simple" hotspot_x="65">
     <uuid uuid="{9151024d-e757-433e-a2b7-6bf58741fbe4}"/>
     <names>
         <name lang="ar">i11-S213</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,32 +29,47 @@ namespace Ui {
 }
 
 /**
- * @brief The RectangleEditor class
- * This class provides a widget to edit rectangles within the element editor.
- */
+	@brief The RectangleEditor class
+	This class provides a widget to edit rectangles within the element editor.
+*/
 class RectangleEditor : public ElementItemEditor
 {
 	Q_OBJECT
 	
 	public:
 		explicit RectangleEditor(QETElementEditor *editor, PartRectangle *rect = nullptr, QWidget *parent = nullptr);
-        ~RectangleEditor() override;
+	~RectangleEditor() override;
 	
-		bool setPart(CustomElementPart *part) override;
-		CustomElementPart *currentPart() const override;
-		QPointF editedTopLeft () const;
+	bool setPart(CustomElementPart *part) override;
+	bool setParts(QList <CustomElementPart *> parts) override;
+	CustomElementPart *currentPart() const override;
+	QList<CustomElementPart*> currentParts() const override;
+	QPointF editedTopLeft () const;
 	
 	public slots:
-		void updateForm() override;
+	void updateForm() override;
 	private:
-		void editingFinished();
-		void activeConnections(bool active);
+	void editingFinished();
+	void activeConnections(bool active);
+	void xPosChanged();
+	void yPosChanged();
+	void widthChanged();
+	void heightChanged();
+	void xRadiusChanged();
+	void yRadiusChanged();
+	/*!
+			\brief setUpChangeConnections
+			Setup the connection from the rectangles(s) to the widget, to update it when the rectangles(s) are changed (moved ...)
+	*/
+	void setUpChangeConnections();
+	void disconnectChangeConnections();
 	
 	private:
-		bool m_locked = false;
-		StyleEditor *m_style;
-		PartRectangle *m_part;
-		Ui::RectangleEditor *ui;
+	bool m_locked = false;
+	StyleEditor *m_style;
+	PartRectangle *m_part;
+	Ui::RectangleEditor *ui;
+	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // RECTANGLEEDITOR_H

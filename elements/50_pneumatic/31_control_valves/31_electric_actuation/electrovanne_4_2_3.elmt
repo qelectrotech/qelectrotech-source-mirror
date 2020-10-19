@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="130" hotspot_x="9" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="130" hotspot_x="9" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{2b3725a9-43ac-4645-9b29-6c93a187e33b}"/>
     <names>
         <name lang="en">Valve 4 / 3 control, controlled by push button</name>

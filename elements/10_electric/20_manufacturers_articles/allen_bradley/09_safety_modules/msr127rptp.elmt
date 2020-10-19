@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="85" orientation="dyyy" hotspot_y="39" type="element" height="90" width="260" version="0.5">
+<definition link_type="simple" hotspot_x="85" hotspot_y="39" type="element" height="90" width="260" version="0.5">
     <uuid uuid="{acc41331-77ff-47ac-8bb6-ae676ad44231}"/>
     <names>
         <name lang="pl">MSR127RP/TP</name>

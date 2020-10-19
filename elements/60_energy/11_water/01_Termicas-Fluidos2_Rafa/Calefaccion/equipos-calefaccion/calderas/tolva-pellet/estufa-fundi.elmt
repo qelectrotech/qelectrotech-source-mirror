@@ -1,8 +1,9 @@
-<definition width="60" version="0.4" hotspot_x="29" hotspot_y="27" height="60" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="60" version="0.4" hotspot_x="29" hotspot_y="27" height="60" link_type="simple" type="element" ic="true">
 <uuid uuid="{1752C9AF-C89D-4459-84AF-B99702CB5EEE}"/><names>
         <name lang="es">Estufa fundición</name>
         <name lang="ca">Estufa fundició</name>
         <name lang="it">Stufa in ghisa</name>
+        <name lang="fr">Poêle fonte</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

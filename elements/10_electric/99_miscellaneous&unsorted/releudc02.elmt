@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="20" orientation="dyyy" height="70" hotspot_y="34" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="20" height="70" hotspot_y="34" type="element">
     <uuid uuid="{c9d56732-ec46-4e09-a5a7-1f0b03c6fead}"/>
     <names>
         <name lang="de">Relais DC 01</name>

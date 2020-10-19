@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="22">
+<definition width="40" hotspot_x="20" type="element" link_type="simple" version="0.5" height="30" hotspot_y="22">
     <uuid uuid="{864007cd-0cc4-4664-b7ae-67fb24e3f965}"/>
     <names>
         <name lang="cs">Ventil stálého tlaku (levý)</name>

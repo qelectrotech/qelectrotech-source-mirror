@@ -1,4 +1,4 @@
-<definition hotspot_x="16" hotspot_y="25" orientation="dyyy" height="30" type="element" link_type="simple" width="30" version="0.5">
+<definition hotspot_x="16" hotspot_y="25" height="30" type="element" link_type="simple" width="30" version="0.5">
     <uuid uuid="{740a8bd2-bb22-4f31-a3d1-49b566fabd97}"/>
     <names>
         <name lang="fr">Projecteur</name>

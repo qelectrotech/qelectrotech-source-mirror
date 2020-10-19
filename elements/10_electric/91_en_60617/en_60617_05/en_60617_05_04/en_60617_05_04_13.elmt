@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" orientation="dyyy" type="element" height="50" width="40">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" type="element" height="50" width="40">
     <uuid uuid="{65081578-de39-4cbe-927e-64cd35b2a8aa}"/>
     <names>
         <name lang="fr">Thyristor triode passant en inverse, gâchette

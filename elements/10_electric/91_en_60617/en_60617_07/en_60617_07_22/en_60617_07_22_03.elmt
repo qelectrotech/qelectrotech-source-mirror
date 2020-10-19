@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="50" hotspot_y="24" hotspot_x="10" version="0.70" link_type="simple">
+<definition type="element" width="20" height="50" hotspot_y="24" hotspot_x="10" version="0.70" link_type="simple">
     <uuid uuid="{af068e7c-c8f1-4151-be67-b882e8293150}"/>
     <names>
         <name lang="de">Überspannungsableiter</name>

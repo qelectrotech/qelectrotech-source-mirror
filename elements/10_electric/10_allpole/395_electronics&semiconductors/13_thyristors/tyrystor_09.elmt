@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="8" hotspot_y="24" type="element">
+<definition height="30" version="0.5" link_type="simple" width="30" hotspot_x="8" hotspot_y="24" type="element">
     <uuid uuid="{ad1585ac-3f7a-4a49-ad78-c53234157ed2}"/>
     <names>
         <name lang="de">Abschalt-Thyristortriode, P-Gate (Kathode

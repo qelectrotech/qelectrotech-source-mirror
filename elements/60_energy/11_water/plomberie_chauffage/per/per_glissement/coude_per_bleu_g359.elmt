@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="17" orientation="dyyy" hotspot_y="14" version="0.51" link_type="simple" width="40" type="element">
+<definition height="50" hotspot_x="17" hotspot_y="14" version="0.51" link_type="simple" width="40" type="element">
     <uuid uuid="{a3dcef29-daa6-4266-ace2-47b99c44b760}"/>
     <names>
         <name lang="fr">Coude écrou libre PER glissement </name>

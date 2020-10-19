@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,14 +27,18 @@ class DiagramView;
 class Diagram;
 
 /**
- * @brief The DVEventInterface class
- * This class is the main interface for manage event of a Diagram View.
- * This do nothing, for create new event behavior, we must to create new class from this.
- * Each method return a bool: True if the methode do something else return false.
- * Each method of DVEventInterface return false;
- * isRunning() return true if action is started but not finish. By default return false.
- * isFinish() return true when the action is finish, or not started. By default return true.
- */
+	@brief The DVEventInterface class
+	This class is the main interface for manage event of a Diagram View.
+	This do nothing, for create new event behavior,
+	we must to create new class from this.
+	Each method return a bool:
+	True if the methode do something else return false.
+	Each method of DVEventInterface return false;
+	isRunning() return true if action is started but not finish.
+	By default return false.
+	isFinish() return true when the action is finish, or not started.
+	By default return true.
+*/
 class DVEventInterface : public QObject
 {
 	Q_OBJECT
@@ -54,8 +58,8 @@ class DVEventInterface : public QObject
 
 	signals:
 		/**
-		 * @brief finish
-		 * emited when the interface finish is work
+			@brief finish
+			emited when the interface finish is work
 		 */
 		void finish();
 

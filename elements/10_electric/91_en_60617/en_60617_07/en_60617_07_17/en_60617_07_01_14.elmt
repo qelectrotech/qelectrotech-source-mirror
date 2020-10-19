@@ -1,4 +1,4 @@
-<definition hotspot_x="85" hotspot_y="105" orientation="dyyy" height="110" link_type="simple" version="0.70" type="element" width="110">
+<definition hotspot_x="85" hotspot_y="105" height="110" link_type="simple" version="0.70" type="element" width="110">
     <uuid uuid="{0bdc546e-3d11-4ebd-b568-91f3c494a559}"/>
     <names>
         <name lang="de">Überstromrelais mit zwei Ausgängen</name>

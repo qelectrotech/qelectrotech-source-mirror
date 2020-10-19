@@ -1,4 +1,4 @@
-<definition hotspot_x="20" height="60" type="element" orientation="dyyy" hotspot_y="29" version="0.80" link_type="simple" width="40">
+<definition hotspot_x="20" height="60" type="element" hotspot_y="29" version="0.80" link_type="simple" width="40">
     <uuid uuid="{41bfc019-0961-4c72-989f-0e88ad5e650c}"/>
     <names>
         <name lang="en">Filtering apparatus, general</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="85" orientation="dyyy" height="130" version="0.5" width="220" type="element" link_type="simple" hotspot_x="125">
+<definition hotspot_y="85" height="130" version="0.5" width="220" type="element" link_type="simple" hotspot_x="125">
     <uuid uuid="{ca56fef5-6e15-4b73-9d1c-fa1fc1819d3a}"/>
     <names>
         <name lang="fr">Zumtobel LM-3DLIS</name>

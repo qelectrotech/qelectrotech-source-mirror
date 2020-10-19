@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="24" width="510" height="100" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="24" width="510" height="100" link_type="simple" hotspot_x="15">
     <uuid uuid="{ae7e7a91-db2b-4c1a-be70-2564a1f29bcf}"/>
     <names>
         <name lang="ar">MOVITRAC B</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="59" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="120">
+<definition hotspot_x="59" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="120">
     <uuid uuid="{2eaf7880-eb95-4995-911f-3bc962271343}"/>
     <names>
         <name lang="en">Black Beauty</name>

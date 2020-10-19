@@ -1,4 +1,4 @@
-<definition hotspot_x="55" version="0.70" type="element" width="120" link_type="simple" height="390" hotspot_y="195" orientation="dyyy">
+<definition hotspot_x="55" version="0.70" type="element" width="120" link_type="simple" height="390" hotspot_y="195">
     <uuid uuid="{11d2adcc-b789-41b3-b6db-09d3a3fd5cd5}"/>
     <names>
         <name lang="en">EL9110 Potential supply with diag.</name>

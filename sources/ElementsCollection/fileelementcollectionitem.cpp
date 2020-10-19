@@ -1,5 +1,5 @@
 /*
-		Copyright 2006-2019 The QElectroTech Team
+		Copyright 2006-2020 The QElectroTech Team
 		This file is part of QElectroTech.
 
 		QElectroTech is free software: you can redistribute it and/or modify
@@ -24,20 +24,24 @@
 #include <QDir>
 
 /**
- * @brief FileElementCollectionItem::FileElementCollectionItem
- * Constructor
- */
+	@brief FileElementCollectionItem::FileElementCollectionItem
+	Constructor
+*/
 FileElementCollectionItem::FileElementCollectionItem()
 {}
 
 /**
- * @brief FileElementCollectionItem::setRootPath
- * Set path has root path for this file item.
- * Use this function only to set the beginning of a file collection.
- * @param path
- * @return true if path exist.
- */
-bool FileElementCollectionItem::setRootPath(const QString& path, bool set_data, bool hide_element)
+	@brief FileElementCollectionItem::setRootPath
+	Set path has root path for this file item.
+	Use this function only to set the beginning of a file collection.
+	@param path
+	@param set_data
+	@param hide_element
+	@return true if path exist.
+*/
+bool FileElementCollectionItem::setRootPath(const QString& path,
+					    bool set_data,
+					    bool hide_element)
 {
 	QDir dir(path);
 	if (dir.exists())
@@ -51,26 +55,27 @@ bool FileElementCollectionItem::setRootPath(const QString& path, bool set_data, 
 }
 
 /**
- * @brief FileElementCollectionItem::fileSystemPath
- * @return the file system path of this item
- */
+	@brief FileElementCollectionItem::fileSystemPath
+	@return the file system path of this item
+*/
 QString FileElementCollectionItem::fileSystemPath() const
 {
 	if (isCollectionRoot())
 		return m_path;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *> (parent());
+	FileElementCollectionItem *feci =
+			static_cast<FileElementCollectionItem *> (parent());
 	if (feci)
 		return feci->fileSystemPath() + "/" + m_path;
 	else
-		return QString();
+		return QString();//Null string
 }
 
 /**
- * @brief FileElementCollectionItem::dirPath
- * @return the dir path of this item (if this item is a dir return the path,
- * if item is an element return the path of the parent directory)
- */
+	@brief FileElementCollectionItem::dirPath
+	@return the dir path of this item (if this item is a dir return the path,
+	if item is an element return the path of the parent directory)
+*/
 QString FileElementCollectionItem::dirPath() const
 {
 	if (isDir())
@@ -78,13 +83,13 @@ QString FileElementCollectionItem::dirPath() const
 	else if (parent() && parent()->type() == FileElementCollectionItem::Type)
 		return static_cast<FileElementCollectionItem*>(parent())->fileSystemPath();
 	else
-		return QString();
+		return QString();//Null string
 }
 
 /**
- * @brief FileElementCollectionItem::isDir
- * @return true if this item represent a directory
- */
+	@brief FileElementCollectionItem::isDir
+	@return true if this item represent a directory
+*/
 bool FileElementCollectionItem::isDir() const
 {
 	if (m_path.endsWith(".elmt"))
@@ -95,18 +100,18 @@ bool FileElementCollectionItem::isDir() const
 }
 
 /**
- * @brief FileElementCollectionItem::isElement
- * @return true if this item represent an element
- */
+	@brief FileElementCollectionItem::isElement
+	@return true if this item represent an element
+*/
 bool FileElementCollectionItem::isElement() const
 {
 	return (!isDir());
 }
 
 /**
- * @brief FileElementCollectionItem::localName
- * @return the located name of this item
- */
+	@brief FileElementCollectionItem::localName
+	@return the located name of this item
+*/
 QString FileElementCollectionItem::localName()
 {
 	if (!text().isNull())
@@ -127,7 +132,8 @@ QString FileElementCollectionItem::localName()
 			pugi::xml_document docu;
 			if(docu.load_file(str.toStdString().c_str()))
 			{
-				if (QString(docu.document_element().name()) == "qet-directory")
+				if (QString(docu.document_element().name())
+						== "qet-directory")
 				{
 					NamesList nl;
 					nl.fromXml(docu.document_element());
@@ -145,11 +151,12 @@ QString FileElementCollectionItem::localName()
 }
 
 /**
- * @brief FileElementCollectionItem::localName
- * Surcharged method, unlike the default method, avoid to create an elementLocation and so, gain time.
- * @param location
- * @return
- */
+	@brief FileElementCollectionItem::localName
+	Surcharged method, unlike the default method,
+	avoid to create an elementLocation and so, gain time.
+	@param location
+	@return
+*/
 QString FileElementCollectionItem::localName(const ElementsLocation &location)
 {
 	if (!text().isNull())
@@ -166,9 +173,9 @@ QString FileElementCollectionItem::localName(const ElementsLocation &location)
 }
 
 /**
- * @brief FileElementCollectionItem::name
- * @return The collection name of this item
- */
+	@brief FileElementCollectionItem::name
+	@return The collection name of this item
+*/
 QString FileElementCollectionItem::name() const
 {
 	if (isCollectionRoot())
@@ -178,9 +185,9 @@ QString FileElementCollectionItem::name() const
 }
 
 /**
- * @brief FileElementCollectionItem::collectionPath
- * @return The path of this item relative to the collection.
- */
+	@brief FileElementCollectionItem::collectionPath
+	@return The path of this item relative to the collection.
+*/
 QString FileElementCollectionItem::collectionPath() const
 {
 	if (isCollectionRoot()) {
@@ -189,8 +196,10 @@ QString FileElementCollectionItem::collectionPath() const
 		else
 			return "custom://";
 	}
-	else if (parent() && parent()->type() == FileElementCollectionItem::Type) {
-		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(parent());
+	else if (parent() && parent()->type()
+		 == FileElementCollectionItem::Type) {
+		ElementCollectionItem *eci =
+				static_cast<ElementCollectionItem*>(parent());
 		if (eci->isCollectionRoot())
 			return eci->collectionPath() + m_path;
 		else
@@ -201,40 +210,42 @@ QString FileElementCollectionItem::collectionPath() const
 }
 
 /**
- * @brief FileElementCollectionItem::isCollectionRoot
- * @return true if this item represent the root of collection
- */
+	@brief FileElementCollectionItem::isCollectionRoot
+	@return true if this item represent the root of collection
+*/
 bool FileElementCollectionItem::isCollectionRoot() const
 {
-	if (m_path == QETApp::commonElementsDirN() || m_path == QETApp::customElementsDirN())
+	if (m_path == QETApp::commonElementsDirN()
+			|| m_path == QETApp::customElementsDirN())
 		return true;
 	else
 		return false;
 }
 
 /**
- * @brief FileElementCollectionItem::isCommonCollection
- * @return True if this item represent the common collection
- */
+	@brief FileElementCollectionItem::isCommonCollection
+	@return True if this item represent the common collection
+*/
 bool FileElementCollectionItem::isCommonCollection() const
 {
 	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
 }
 
 /**
- * @brief FileElementCollectionItem::isCustomCollection
- * @return True if this item represent the custom collection
- */
+	@brief FileElementCollectionItem::isCustomCollection
+	@return True if this item represent the custom collection
+*/
 bool FileElementCollectionItem::isCustomCollection() const
 {
 	return fileSystemPath().startsWith(QETApp::customElementsDirN());
 }
 
 /**
- * @brief FileElementCollectionItem::addChildAtPath
- * Ask to this item item to add a child with collection name @collection_name
- * @param collection_name
- */
+	@brief FileElementCollectionItem::addChildAtPath
+	Ask to this item item to add a child
+	with collection name collection_name
+	@param collection_name
+*/
 void FileElementCollectionItem::addChildAtPath(const QString &collection_name)
 {
 	if (collection_name.isEmpty())
@@ -247,22 +258,27 @@ void FileElementCollectionItem::addChildAtPath(const QString &collection_name)
 }
 
 /**
- * @brief FileElementCollectionItem::setUpData
- * SetUp the data of this item
- */
+	@brief FileElementCollectionItem::setUpData
+	SetUp the data of this item
+*/
 void FileElementCollectionItem::setUpData()
 {
 	if (isDir())
 	{
 		localName();
-		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
+		setFlags(Qt::ItemIsSelectable
+			 | Qt::ItemIsDragEnabled
+			 | Qt::ItemIsDropEnabled
+			 | Qt::ItemIsEnabled);
 	}
 	else
 	{
-		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
+		setFlags(Qt::ItemIsSelectable
+			 | Qt::ItemIsDragEnabled
+			 | Qt::ItemIsEnabled);
 		
-			//Set the local name and all informations of the element
-			//in the data Qt::UserRole+1, these data will be use for search.
+		//Set the local name and all informations of the element
+		//in the data Qt::UserRole+1, these data will be use for search.
 		ElementsLocation loc(collectionPath());
 		DiagramContext context = loc.elementInformations();
 		QStringList search_list;
@@ -277,10 +293,11 @@ void FileElementCollectionItem::setUpData()
 }
 
 /**
- * @brief FileElementCollectionItem::setUpIcon
- * SetUp the icon of this item.
- * Because icon use several memory, we use this method for setup icon instead setUpData.
- */
+	@brief FileElementCollectionItem::setUpIcon
+	SetUp the icon of this item.
+	Because icon use several memory,
+	we use this method for setup icon instead setUpData.
+*/
 void FileElementCollectionItem::setUpIcon()
 {
 	if (!icon().isNull())
@@ -304,32 +321,39 @@ void FileElementCollectionItem::setUpIcon()
 }
 
 /**
- * @brief FileElementCollectionItem::setPathName
- * Set the name of this item in the file system path.
- * This item must have a parent, because they should be a child item of another.
- * For create a new file collection see setRootPath.
- * @param path_name
- */
-void FileElementCollectionItem::setPathName(const QString& path_name, bool set_data, bool hide_element)
+	@brief FileElementCollectionItem::setPathName
+	Set the name of this item in the file system path.
+	This item must have a parent,
+	because they should be a child item of another.
+	For create a new file collection see setRootPath.
+	@param path_name
+	@param set_data
+	@param hide_element
+*/
+void FileElementCollectionItem::setPathName(const QString& path_name,
+					    bool set_data,
+					    bool hide_element)
 {
 	m_path = path_name;
 
-		//This isn't an element, we create the childs
+	//This isn't an element, we create the childs
 	if (!path_name.endsWith(".elmt"))
 		populate(set_data, hide_element);
 }
 
 /**
- * @brief FileElementCollectionItem::populate
- * Create the childs of this item
- * @param set_data : if true, call setUpData for every child of this item
- */
+	@brief FileElementCollectionItem::populate
+	Create the childs of this item
+	@param set_data : if true, call setUpData for every child of this item
+	@param hide_element
+*/
 void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 {
 	QDir dir (fileSystemPath());
 
 		//Get all directory in this directory.
-	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot,
+				     QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -343,7 +367,8 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
-	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot,
+				     QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

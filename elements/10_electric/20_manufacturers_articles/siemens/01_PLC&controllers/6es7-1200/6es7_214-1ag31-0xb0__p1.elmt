@@ -1,4 +1,4 @@
-<definition width="130" orientation="dyyy" version="0.5" height="220" type="element" hotspot_y="39" link_type="simple" hotspot_x="14">
+<definition width="130" version="0.5" height="220" type="element" hotspot_y="39" link_type="simple" hotspot_x="14">
     <uuid uuid="{39a95119-2325-4a8f-a227-12e860cd609d}"/>
     <names>
         <name lang="en">CPU 1214C 6ES7214-1AG31-0XB0 PART1</name>

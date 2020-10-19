@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,11 +22,11 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
- * @brief ImagePropertiesWidget::ImagePropertiesWidget
- * Constructor
- * @param image : image to edit properties
- * @param parent : parent widget
- */
+	@brief ImagePropertiesWidget::ImagePropertiesWidget
+	Constructor
+	@param image : image to edit properties
+	@param parent : parent widget
+*/
 ImagePropertiesWidget::ImagePropertiesWidget(DiagramImageItem *image, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::ImagePropertiesWidget),
@@ -38,18 +38,19 @@ ImagePropertiesWidget::ImagePropertiesWidget(DiagramImageItem *image, QWidget *p
 }
 
 /**
- * @brief ImagePropertiesWidget::~ImagePropertiesWidget
- * Destructor
- */
-ImagePropertiesWidget::~ImagePropertiesWidget() {
+	@brief ImagePropertiesWidget::~ImagePropertiesWidget
+	Destructor
+*/
+ImagePropertiesWidget::~ImagePropertiesWidget()
+{
 	delete ui;
 }
 
 /**
- * @brief ImagePropertiesWidget::setImageItem
- * Set the image to edit properties
- * @param image : image to edit
- */
+	@brief ImagePropertiesWidget::setImageItem
+	Set the image to edit properties
+	@param image : image to edit
+*/
 void ImagePropertiesWidget::setImageItem(DiagramImageItem *image)
 {
 	if(!image) return;
@@ -66,9 +67,9 @@ void ImagePropertiesWidget::setImageItem(DiagramImageItem *image)
 }
 
 /**
- * @brief ImagePropertiesWidget::apply
- * Apply the change
- */
+	@brief ImagePropertiesWidget::apply
+	Apply the change
+*/
 void ImagePropertiesWidget::apply()
 {
 	if(!m_image) return;
@@ -88,9 +89,9 @@ void ImagePropertiesWidget::apply()
 }
 
 /**
- * @brief ImagePropertiesWidget::reset
- * Reset the change
- */
+	@brief ImagePropertiesWidget::reset
+	Reset the change
+*/
 void ImagePropertiesWidget::reset()
 {
 	if(!m_image) return;
@@ -101,11 +102,11 @@ void ImagePropertiesWidget::reset()
 }
 
 /**
- * @brief ImagePropertiesWidget::setLiveEdit
- * @param live_edit true -> enable live edit
+	@brief ImagePropertiesWidget::setLiveEdit
+	@param live_edit true -> enable live edit
  *					false -> disable live edit
- * @return always true
- */
+	@return always true
+*/
 bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 {
 	if (m_live_edit == live_edit) return true;
@@ -126,10 +127,10 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief ImagePropertiesWidget::associatedUndo
- * @return the change in an undo command (ItemResizerCommand).
- * If there is no change return nullptr
- */
+	@brief ImagePropertiesWidget::associatedUndo
+	@return the change in an undo command (ItemResizerCommand).
+	If there is no change return nullptr
+*/
 QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 {
 
@@ -143,9 +144,9 @@ QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 }
 
 /**
- * @brief ImagePropertiesWidget::updateUi
- * Udpdate the ui, notably when the image to edit change
- */
+	@brief ImagePropertiesWidget::updateUi
+	Udpdate the ui, notably when the image to edit change
+*/
 void ImagePropertiesWidget::updateUi()
 {
 	if (!m_image) return;
@@ -154,10 +155,10 @@ void ImagePropertiesWidget::updateUi()
 }
 
 /**
- * @brief ImagePropertiesWidget::on_m_scale_slider_valueChanged
- * Update the size of image when move slider.
- * @param value
- */
+	@brief ImagePropertiesWidget::on_m_scale_slider_valueChanged
+	Update the size of image when move slider.
+	@param value
+*/
 void ImagePropertiesWidget::on_m_scale_slider_valueChanged(int value)
 {
 		qreal scale = value;
@@ -165,9 +166,10 @@ void ImagePropertiesWidget::on_m_scale_slider_valueChanged(int value)
 }
 
 /**
- * @brief ImagePropertiesWidget::on_m_lock_pos_cb_clicked
- * Set movable or not the image according to corresponding check box
- */
-void ImagePropertiesWidget::on_m_lock_pos_cb_clicked() {
+	@brief ImagePropertiesWidget::on_m_lock_pos_cb_clicked
+	Set movable or not the image according to corresponding check box
+*/
+void ImagePropertiesWidget::on_m_lock_pos_cb_clicked()
+{
 	m_image->setMovable(!ui->m_lock_pos_cb->isChecked());
 }

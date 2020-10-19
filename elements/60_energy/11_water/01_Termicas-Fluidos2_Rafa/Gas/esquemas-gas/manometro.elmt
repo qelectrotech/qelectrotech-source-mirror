@@ -1,14 +1,20 @@
-<definition height="30" link_type="simple" hotspot_x="10" version="0.5" hotspot_y="21" type="element" width="20" orientation="dyyy">
-<uuid uuid="{7A5B743C-47A0-4066-9FC0-E2551D3E41FE}"/><names>
+<definition hotspot_y="21" type="element" height="30" version="0.80" width="20" hotspot_x="10" link_type="simple">
+    <uuid uuid="{8daf5311-59c7-48d2-a6ba-be7818bd0b0f}"/>
+    <names>
         <name lang="es">Manómetro</name>
+        <name lang="fr">Manometre</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <circle x="-5" y="-15" diameter="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line y1="-5" y2="0" x1="0" x2="0" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none"/>
-        <line y1="-8" y2="-12" x1="-3" x2="2" length1="1.5" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="triangle"/>
-        <input x="-6" size="4" rotate="true" y="-23" text="_" tagg="label"/>
-        <terminal x="0" y="0" orientation="s"/>
+        <circle antialias="true" diameter="10" x="-5" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" antialias="false" length1="1.5" x1="0" end2="none" length2="1.5" x2="0" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-3" end2="triangle" length2="1.5" x2="2" y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-6" y="-30.5" uuid="{b5495f75-0fff-4438-ade4-4536e33d6d9a}" z="4" font="Sans Serif,4,-1,5,25,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" y="0" uuid="{cc537283-fa9b-4c55-bf7e-32889d42aa04}" name="" orientation="s"/>
     </description>
 </definition>

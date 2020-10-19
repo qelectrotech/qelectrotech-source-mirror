@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="80" hotspot_y="40" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="80" hotspot_y="40" type="element">
     <uuid uuid="{2c5c6896-dc6e-44ce-ba81-05fbe325f15c}"/>
     <names>
         <name lang="nl">Encoder M12 12Pin</name>

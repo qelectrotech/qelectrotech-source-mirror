@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{4a68f376-774b-4669-97ca-5e5abd079df8}"/>
     <names>
         <name lang="en">Rotary plunger vacuum pump</name>

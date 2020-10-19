@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="65" orientation="dyyy" type="element" height="70" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="65" type="element" height="70" width="50">
     <uuid uuid="{8fc48434-8472-442b-934f-fb79c21acfb2}"/>
     <names>
         <name lang="fr">Transistor NPN avec base polarisée

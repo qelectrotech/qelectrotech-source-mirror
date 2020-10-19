@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="10" hotspot_y="5" width="50" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="10" hotspot_y="5" width="50" type="element" link_type="simple">
     <uuid uuid="{84d001cd-0aa3-4c5a-a6b1-9030a7c1ea2b}"/>
     <names>
         <name lang="fr">Contact mâle (d’une prise ou d’une fiche)

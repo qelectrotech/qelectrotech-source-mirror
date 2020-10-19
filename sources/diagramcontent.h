@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -47,7 +47,6 @@ class DiagramContent
 	public:
 		DiagramContent();
 		DiagramContent(Diagram *diagram, bool selected = true);
-		DiagramContent(const DiagramContent &);
 		~DiagramContent();
 		
 		/// Used to filter the different items carried by this container.

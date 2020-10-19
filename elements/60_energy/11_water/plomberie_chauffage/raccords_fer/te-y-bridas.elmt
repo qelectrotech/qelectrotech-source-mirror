@@ -1,7 +1,8 @@
-<definition type="element" height="60" version="0.5" link_type="simple" hotspot_y="39" orientation="dyyy" width="70" hotspot_x="28">
+<definition type="element" height="60" version="0.5" link_type="simple" hotspot_y="39" width="70" hotspot_x="28">
 <uuid uuid="{25638885-6EBF-449A-9C7E-9A6C70503178}"/><names>
         <name lang="ca">Y brides</name>
         <name lang="es">Y bridas</name>
+        <name lang="fr">Té Y à brides</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="50" hotspot_y="25" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="50" hotspot_y="25" type="element">
     <uuid uuid="{1b5c434d-630e-412b-98c0-c6f9f25a7016}"/>
     <names>
         <name lang="nl">DIN 4 Pin</name>

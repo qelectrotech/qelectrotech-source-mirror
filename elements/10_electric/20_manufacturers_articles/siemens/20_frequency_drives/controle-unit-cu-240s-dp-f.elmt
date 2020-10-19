@@ -1,4 +1,4 @@
-<definition width="790" orientation="dyyy" link_type="simple" hotspot_x="484" hotspot_y="66" type="element" height="120" version="0.5">
+<definition width="790" link_type="simple" hotspot_x="484" hotspot_y="66" type="element" height="120" version="0.5">
     <uuid uuid="{6cd58204-feb0-4df3-a845-e05e50c34d03}"/>
     <names>
         <name lang="en">CU-240S-DP-F</name>

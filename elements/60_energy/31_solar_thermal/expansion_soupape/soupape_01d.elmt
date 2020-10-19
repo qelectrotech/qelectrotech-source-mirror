@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="12" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="22">
+<definition width="30" hotspot_x="12" type="element" link_type="simple" version="0.5" height="40" hotspot_y="22">
     <uuid uuid="{657c154f-68b0-4d42-863a-f653defbcb63}"/>
     <names>
         <name lang="cs">Bezpečnostní uzávěr (pravý)</name>

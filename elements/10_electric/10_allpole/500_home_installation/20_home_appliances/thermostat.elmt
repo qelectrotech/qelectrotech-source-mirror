@@ -1,0 +1,37 @@
+<definition link_type="master" type="element" height="40" width="30" hotspot_y="14" version="0.80" hotspot_x="14">
+    <uuid uuid="{46e0c121-1833-489f-956b-14afcb9860cb}"/>
+    <names>
+        <name lang="nl">Energiemanagement</name>
+        <name lang="fr">Gestion Énergie</name>
+        <name lang="en">Energy management</name>
+        <name lang="de">Energieverwaltung</name>
+        <name lang="pl">Zarządzanie enerią</name>
+        <name lang="it">Gestione Energia</name>
+        <name lang="cs">Hospodaření s energií</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" height="2.1" width="3.6" start="-180" x="-1.8" y="-2.525"/>
+        <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" height="4.2" width="7.2" x="-3.6" y="10.775"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="10.78" length2="1.5" length1="1.5" x2="-1.8" y1="-1.12" x1="-1.8" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="10.78" length2="1.5" length1="1.5" x2="1.8" y1="-1.12" x1="1.8" end2="none"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" height="5.25" width="3.6" ry="0" x="-1.8" rx="0" y="5.88"/>
+        <text text="°C" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" x="1" y="1" color="#000000"/>
+        <rect antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="23" width="25" ry="0" x="-12" rx="0" y="-6"/>
+        <dynamic_text font="Sans Serif,6,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="19" z="9" uuid="{967aad78-bdda-439c-8d83-15f34dabbebc}" text_from="ElementInfo" y="-4" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="10" z="10" uuid="{9262d7b0-724c-4bd0-bf59-cff719b24881}" text_from="ElementInfo" y="-26.5" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="s" name="" x="0" uuid="{16e53a84-5347-41dc-991b-196bce9cfcbb}" y="17"/>
+        <terminal orientation="n" name="" x="10" uuid="{b564c400-2782-4ef0-815b-98a788bff630}" y="-6"/>
+        <terminal orientation="n" name="" x="-10" uuid="{6f6da23d-b796-4346-8d67-35676c0d710c}" y="-6"/>
+    </description>
+</definition>

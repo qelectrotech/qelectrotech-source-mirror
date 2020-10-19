@@ -1,0 +1,61 @@
+<definition hotspot_y="65" link_type="simple" width="50" height="640" type="element" version="0.80" hotspot_x="7">
+    <uuid uuid="{fb326e0a-5aac-4cf0-a5df-dd5e15e0445d}"/>
+    <names>
+        <name lang="fr">KCN325 - Peigne P+N- 3 rangées</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">KCN325</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Barre d'alimentation des inter. diff. pour coffret 2 rangées entraxe 125 mm</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect width="5" antialias="false" rx="0" y="-40" height="610" x="-5" style="line-style:normal;line-weight:thin;filling:gray;color:black" ry="0"/>
+        <polygon y3="240" x1="30" antialias="false" y2="270" x3="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="230" x4="20" x2="0" y4="220" y1="240" x5="30"/>
+        <polygon y3="520" x1="30.25" antialias="false" y2="550" x3="0.25" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="510" x4="20.25" x2="0.25" y4="500" y1="520" x5="30.25"/>
+        <dynamic_text rotation="0" y="252" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="532" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0.25" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="-28" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="270" y="3" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="-9" z="4" Halignment="AlignLeft" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{e4a56c36-b376-4dc5-954e-049d43f23ce2}" text_width="-1">
+            <text>KCN325</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="270" y="-18" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="-9" z="5" Halignment="AlignLeft" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{2cd5e253-a1e3-4469-8a78-30128ccd7d74}" text_width="-1">
+            <text>Hager</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <polygon y3="280" x1="30" antialias="false" y2="250" y6="240" x3="40" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="270" x4="0" x2="40" y4="280" y1="240" x5="0" x6="30"/>
+        <polygon y3="560" x1="30.25" antialias="false" y2="530" y6="520" x3="40.25" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="550" x4="0.25" x2="40.25" y4="560" y1="520" x5="0.25" x6="30.25"/>
+        <polygon y3="-40" x1="30" antialias="false" y2="-10" x3="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="-50" x4="20" x2="0" y4="-60" y1="-40" x5="30"/>
+        <polygon y3="0" x1="30" antialias="false" y2="-30" y6="-40" x3="40" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="-10" x4="0" x2="40" y4="0" y1="-40" x5="0" x6="30"/>
+        <terminal y="-55" x="25" name="" uuid="{b0a26b44-d833-4291-90f3-bd613ae774b2}" orientation="e"/>
+        <terminal y="0" x="10" name="" uuid="{ae3fefbc-a4d2-4647-b236-2d6db117a5a6}" orientation="s"/>
+        <terminal y="246" x="36" name="" uuid="{b318cba2-abfd-4460-a703-3284c60f2fcd}" orientation="e"/>
+        <terminal y="280" x="30" name="" uuid="{6c208ce5-acbd-46ea-877f-33d6a318ed43}" orientation="s"/>
+        <terminal y="225" x="25" name="" uuid="{8b59b9b2-d2be-4465-b7ca-b61b13d23734}" orientation="e"/>
+        <terminal y="-34" x="36" name="" uuid="{272efd5f-b40a-4d9c-9d94-e6f0bbd749ca}" orientation="e"/>
+        <terminal y="0" x="30" name="" uuid="{35209467-70e0-468d-8a90-9ae4b0e922fd}" orientation="s"/>
+        <terminal y="280" x="10" name="" uuid="{963a3517-35c0-4bdb-a33b-54d6ac39be6c}" orientation="s"/>
+        <terminal y="526" x="36.25" name="" uuid="{ff6ac11f-11ea-4378-86ac-8748517d2ee6}" orientation="e"/>
+        <terminal y="560" x="30.25" name="" uuid="{12cfd22a-90a9-4457-af6e-91d0a944e095}" orientation="s"/>
+        <terminal y="505" x="25.25" name="" uuid="{269d137e-fd13-4477-8901-73c084e7940c}" orientation="e"/>
+        <terminal y="560" x="10.25" name="" uuid="{edce5882-935e-40f3-8aa1-6ba33e869dfa}" orientation="s"/>
+    </description>
+</definition>

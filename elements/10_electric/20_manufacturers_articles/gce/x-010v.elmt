@@ -1,4 +1,4 @@
-<definition type="element" width="210" hotspot_y="4" link_type="terminal" hotspot_x="82" height="150" orientation="dyyy" version="0.80">
+<definition type="element" width="210" hotspot_y="4" link_type="terminal" hotspot_x="82" height="150" version="0.80">
     <uuid uuid="{5b3911b4-7dc7-4e12-bb69-28794c243cae}"/>
     <names>
         <name lang="fr">X-010V</name>

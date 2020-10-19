@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -52,13 +52,10 @@ class QETDiagramEditor : public QETMainWindow
 	Q_OBJECT
 	
 	public:
-		QETDiagramEditor(const QStringList & = QStringList(), QWidget * = nullptr);
+		QETDiagramEditor(
+				const QStringList & = QStringList(),
+				QWidget * = nullptr);
 		~QETDiagramEditor() override;
-	
-	private:
-		QETDiagramEditor(const QETDiagramEditor &);
-		
-	public:
 		void                 closeEvent        (QCloseEvent *) override;
 		QList<ProjectView *> openedProjects    () const;
 		void                 addProjectView    (ProjectView *);
@@ -72,8 +69,8 @@ class QETDiagramEditor : public QETMainWindow
 		
 	protected:
 		bool event(QEvent *) override;
-
 	private:
+		QETDiagramEditor(const QETDiagramEditor &);
 		void setUpElementsPanel ();
 		void setUpElementsCollectionWidget();
 		void setUpUndoStack     ();
@@ -117,7 +114,6 @@ class QETDiagramEditor : public QETMainWindow
 		void setTabbedMode();
 		void readSettings();
 		void writeSettings();
-		void activateDiagram(Diagram *);
 		void activateProject(QETProject *);
 		void activateProject(ProjectView *);
 		void activateWidget(QWidget *);
@@ -137,8 +133,6 @@ class QETDiagramEditor : public QETMainWindow
 		void reloadOldElementPanel();
 		void diagramWasAdded(DiagramView *);
 		void findElementInPanel(const ElementsLocation &);
-		void editElementInEditor(const ElementsLocation &);
-		void editSelectedElementInEditor();
 		void showError(const QETResult &);
 		void showError(const QString &);
 		void subWindowActivated(QMdiSubWindow *subWindows);
@@ -147,69 +141,79 @@ class QETDiagramEditor : public QETMainWindow
 		void selectionChanged();
 
 	public:
-		QAction *m_edit_diagram_properties;      ///< Show a dialog to edit diagram properties
-		QAction *m_conductor_reset;    ///< Reset paths of selected conductors
-		QAction *m_cut;                ///< Cut selection to clipboard
-		QAction *m_copy;               ///< Copy selection to clipboard
+		QAction
+		*m_edit_diagram_properties, ///< Show a dialog to edit diagram properties
+		*m_conductor_reset,         ///< Reset paths of selected conductors
+		*m_cut,                     ///< Cut selection to clipboard
+		*m_copy;                    ///< Copy selection to clipboard
 		
-		QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
-		QActionGroup m_selection_actions_group; ///Action related to edit a selected item
-		QActionGroup *m_depth_action_group = nullptr;
+		QActionGroup
+		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
+		m_selection_actions_group,  ///Action related to edit a selected item
+		*m_depth_action_group = nullptr;
 	
 	private:
-		QActionGroup *grp_visu_sel;  ///< Action group for visualisation vs edition mode
-		QActionGroup *m_group_view_mode; ///< Action group for project
-		QActionGroup m_add_item_actions_group; ///Action related to adding (add text image shape...)
-		QActionGroup m_zoom_actions_group;	     ///Action related to zoom for diagram
-		QActionGroup m_select_actions_group; ///Action related to global selections
-		QActionGroup m_file_actions_group; ///Actions related to file (open, close, save...)
+		QActionGroup
+		*grp_visu_sel,            ///< Action group for visualisation vs edition mode
+		*m_group_view_mode,       ///< Action group for project
+		m_add_item_actions_group, ///Action related to adding (add text image shape...)
+		m_zoom_actions_group,     ///Action related to zoom for diagram
+		m_select_actions_group,   ///Action related to global selections
+		m_file_actions_group;     ///Actions related to file (open, close, save...)
 		
-		QAction *m_tabbed_view_mode;   ///< Display projects as tabs
-		QAction *m_windowed_view_mode; ///< Display projects as windows
-		QAction *m_mode_selection;     ///< Set edition mode
-		QAction *m_mode_visualise;     ///< Set visualisation mode
-		QAction *m_export_diagram;     ///< Export diagrams of the current project as imagess
-		QAction *m_print;              ///< Print diagrams of the current project
-		QAction *m_quit_editor;        ///< Quit the diagram editor
-		QAction *undo;               ///< Cancel the latest action
-		QAction *redo;               ///< Redo the latest cancelled operation
-		QAction *m_paste;              ///< Paste clipboard content on the current diagram
-		QAction *m_auto_conductor;   ///< Enable/Disable the use of auto conductor
-		QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
-		QAction *m_grey_background;  ///< Switch the background color in white or grey
-		QAction *m_draw_grid;        ///< Switch the background grid display or not
-		QAction *m_project_edit_properties;      ///< Edit the properties of the current project.
-		QAction *m_project_add_diagram;    ///< Add a diagram to the current project.
-		QAction *m_remove_diagram_from_project;    ///< Delete a diagram from the current project
-		QAction *m_clean_project;          ///< Clean the content of the curent project by removing useless items
-		QAction *m_project_folio_list;    ///< Sommaire des schemas
-		QAction *m_csv_export;   ///< generate nomenclature
-		QAction *m_add_nomenclature; ///< Add nomenclature graphics item;
-		QAction *m_project_terminalBloc;   ///< generate terminal block
-        QAction *m_project_export_conductor_num; ///<Export the wire num to csv
-		QAction *m_export_project_db; ///Export to file the internal database of the current project
-		QAction *m_tile_window;        ///< Show MDI subwindows as tile
-		QAction *m_cascade_window;     ///< Show MDI subwindows as cascade
-		QAction *m_previous_window;        ///< Switch to the previous document
-		QAction *m_next_window;        ///< Switch to the next document
-		QAction *m_edit_selection;	 ///< To edit selected item
+		QAction
+		*m_tabbed_view_mode,		///< Display projects as tabs
+		*m_windowed_view_mode,		///< Display projects as windows
+		*m_mode_selection,		///< Set edition mode
+		*m_mode_visualise,		///< Set visualisation mode
+		*m_export_to_images,		///< Export diagrams of the current project as imagess
+		*m_export_to_pdf = nullptr, ///< Export project to pdf.
+		*m_print,			///< Print diagrams of the current project
+		*m_quit_editor,			///< Quit the diagram editor
+		*undo,				///< Cancel the latest action
+		*redo,				///< Redo the latest cancelled operation
+		*m_paste,			///< Paste clipboard content on the current diagram
+		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
+		*conductor_default,		///< Show a dialog to edit default conductor properties
+		*m_grey_background,		///< Switch the background color in white or grey
+		*m_draw_grid,			///< Switch the background grid display or not
+		*m_project_edit_properties,	///< Edit the properties of the current project.
+		*m_project_add_diagram,		///< Add a diagram to the current project.
+		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
+		*m_clean_project,		///< Clean the content of the curent project by removing useless items
+		*m_project_folio_list,		///< Sommaire des schemas
+		*m_csv_export,			///< generate nomenclature
+		*m_add_nomenclature,		///< Add nomenclature graphics item;
+		*m_add_summary,			///<Add summary graphics item
+		*m_project_terminalBloc,	///< generate terminal block
+		*m_project_export_conductor_num,///<Export the wire num to csv
+		*m_export_project_db,		///Export to file the internal database of the current project
+		*m_tile_window,			///< Show MDI subwindows as tile
+		*m_cascade_window,		///< Show MDI subwindows as cascade
+		*m_previous_window,		///< Switch to the previous document
+		*m_next_window,			///< Switch to the next document
+		*m_edit_selection,		///< To edit selected item
+		*m_delete_selection,		///< Delete selection
+		*m_rotate_selection,		///< Rotate selected elements and text items by 90 degrees
+		*m_rotate_texts,		///< Direct selected text items to a specific angle
+		*m_find_element,		///< Find the selected element in the panel
+		*m_group_selected_texts = nullptr,
+		*m_close_file,			///< Close current project file
+		*m_save_file,			///< Save current project
+		*m_save_file_as,		///< Save current project as a specific file
+		*m_find = nullptr;
+
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
-		QAction *m_delete_selection;				///< Delete selection
-		QAction *m_rotate_selection;				///< Rotate selected elements and text items by 90 degrees
-		QAction *m_rotate_texts;					///< Direct selected text items to a specific angle
-		QAction *m_find_element;					///< Find the selected element in the panel
-		QAction *m_group_selected_texts = nullptr;
-		QAction *m_close_file;			   ///< Close current project file
-		QAction *m_save_file;				   ///< Save current project
-		QAction *m_save_file_as;			   ///< Save current project as a specific file
-		QAction *m_find = nullptr;
 
 		QMdiArea m_workspace;
 		QSignalMapper windowMapper;
 		QDir open_dialog_dir; /// Directory to use for file dialogs such as File > save
-		QDockWidget *qdw_pa; /// Dock for the elements panel
-		QDockWidget *m_qdw_elmt_collection;
-		QDockWidget *qdw_undo; /// Dock for the undo list
+
+		QDockWidget
+		*qdw_pa, /// Dock for the elements panel
+		*m_qdw_elmt_collection,
+		*qdw_undo; /// Dock for the undo list
+
 		ElementsCollectionWidget *m_element_collection_widget;
 			
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
@@ -217,11 +221,12 @@ class QETDiagramEditor : public QETMainWindow
 		ElementsPanelWidget *pa;
 		QMenu *windows_menu;
 		
-		QToolBar *main_tool_bar       = nullptr,
-				 *view_tool_bar       = nullptr,
-				 *diagram_tool_bar    = nullptr,
-				 *m_add_item_tool_bar = nullptr,
-				 *m_depth_tool_bar    = nullptr;
+		QToolBar
+		*main_tool_bar       = nullptr,
+		*view_tool_bar       = nullptr,
+		*diagram_tool_bar    = nullptr,
+		*m_add_item_tool_bar = nullptr,
+		*m_depth_tool_bar    = nullptr;
 		
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,19 +23,47 @@
 #include <QDomElement>
 
 /**
- * @brief The PropertiesInterface class
- * This class is an interface for have common way to use properties in QElectroTech
- */
+	@brief The PropertiesInterface class
+	This class is an interface for have common way
+	to use properties in QElectroTech
+*/
 class PropertiesInterface
 {
 	public:
-	PropertiesInterface();
-	// Save/load properties to setting file. QString is use for prefix a word befor the name of each paramètre
-	virtual void toSettings	  (QSettings &settings, const QString = QString()) const =0;
-	virtual void fromSettings (const QSettings &settings, const QString = QString()) =0;
-	// Save/load properties to xml element
-	virtual void toXml		  (QDomElement &xml_element) const =0;
-	virtual void fromXml	  (const QDomElement &xml_element) =0;
+		PropertiesInterface();
+		virtual ~PropertiesInterface();
+		/**
+			@brief toSettings
+			Save properties to setting file.
+			@param settings : is use for prefix a word
+			befor the name of each paramètre
+			@param QString
+		*/
+		virtual void toSettings (QSettings &settings,
+					 const QString = QString()) const =0;
+		/**
+			@brief fromSettings
+			load properties to setting file.
+			@param settings : is use for prefix a word
+			befor the name of each paramètre
+			@param QString
+		*/
+		virtual void fromSettings (const QSettings &settings,
+					   const QString = QString()) =0;
+		/**
+			@brief toXml
+			Save properties to xml element
+			@param xml_document
+			@return QDomElement
+		*/
+		virtual QDomElement toXml (QDomDocument &xml_document) const =0;
+		/**
+			@brief fromXml
+			load properties to xml element
+			@param xml_element
+			@return true / false
+		*/
+		virtual bool fromXml (const QDomElement &xml_element) =0;
 };
 
 #endif // PROPERTIESINTERFACE_H

@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="123" hotspot_y="77" orientation="dyyy" type="element" height="80" width="130">
+<definition link_type="simple" version="0.70" hotspot_x="123" hotspot_y="77" type="element" height="80" width="130">
     <uuid uuid="{ac2127d3-6cca-42dc-9b59-c2e44ff55509}"/>
     <names>
         <name lang="fr">Élément de commutateur à six directions</name>

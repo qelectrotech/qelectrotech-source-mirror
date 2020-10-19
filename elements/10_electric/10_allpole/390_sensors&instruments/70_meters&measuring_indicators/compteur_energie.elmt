@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" height="50" width="40" hotspot_x="10" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="4" type="element" height="50" width="40" hotspot_x="10" link_type="simple" version="0.5">
     <uuid uuid="{7dfdf66d-a525-4cac-bf6b-4ae4177ccaf5}"/>
     <names>
         <name lang="cs">Počítadlo energie</name>

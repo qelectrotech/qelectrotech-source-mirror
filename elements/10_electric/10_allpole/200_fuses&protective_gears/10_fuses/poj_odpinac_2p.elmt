@@ -1,4 +1,4 @@
-<definition hotspot_y="23" link_type="simple" hotspot_x="13" orientation="dyyy" version="0.80" width="40" height="50" type="element">
+<definition hotspot_y="23" link_type="simple" hotspot_x="13" version="0.80" width="40" height="50" type="element">
     <uuid uuid="{c05b1ed0-3c90-4883-b55e-5ce37456066e}"/>
     <names>
         <name lang="fr">Porte fusible 2p</name>

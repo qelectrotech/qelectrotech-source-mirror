@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="15" width="40" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="15" width="40" height="30" version="0.51">
     <uuid uuid="{d6df8044-f6aa-40fb-be2c-9290984228df}"/>
     <names>
         <name lang="fr">Raccord DF GPL</name>

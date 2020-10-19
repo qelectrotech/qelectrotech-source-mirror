@@ -1,4 +1,4 @@
-<definition height="370" type="element" version="0.5" link_type="simple" width="340" orientation="dyyy" hotspot_x="165" hotspot_y="177">
+<definition height="370" type="element" version="0.5" link_type="simple" width="340" hotspot_x="165" hotspot_y="177">
 <uuid uuid="{72582659-F172-41BB-BFE1-2EDE84EC78E0}"/><names>
         <name lang="en">VIO 64 (800992)</name>
     </names>

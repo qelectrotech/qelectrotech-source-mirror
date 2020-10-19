@@ -1,0 +1,47 @@
+<definition version="0.80" hotspot_y="32" link_type="simple" hotspot_x="37" height="60" width="110" type="element">
+    <uuid uuid="{fc9b2a9a-d095-435f-a8e8-1b3a6a635881}"/>
+    <names>
+        <name lang="en">Flow sensor pulsmeter</name>
+        <name lang="pl">Czujnik przepływu</name>
+        <name lang="nl">Debiet  puls</name>
+        <name lang="fr">Capteur Debit</name>
+        <name lang="el">Αισθητήρας ροής</name>
+        <name lang="es">Sensor de flujo</name>
+        <name lang="it">Sensore di flusso</name>
+        <name lang="cs">Průtokové čidlo</name>
+        <name lang="de">Durchfluss Impulszähler</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="73" text_from="ElementInfo" z="1" text_width="-1" y="-30.45" Halignment="AlignLeft" uuid="{70e08bc9-03fb-428a-a0e1-1a5e35dad0ea}" Valignment="AlignTop" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" rx="0" y="-25" ry="0" width="105" antialias="false"/>
+        <circle x="-31.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8.5" antialias="true" diameter="17"/>
+        <line x1="-17" y1="0" end1="none" length1="1.5" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="8" length2="1.5" antialias="false"/>
+        <line x1="30" y1="-28" end1="none" length1="1.5" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-26" length2="1.5" antialias="false"/>
+        <line x1="60" y1="-28" end1="none" length1="1.5" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-26" length2="1.5" antialias="false"/>
+        <line x1="-10" y1="-24" end1="none" length1="1.5" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="24" length2="1.5" antialias="false"/>
+        <line x1="0" y1="-28" end1="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-26" length2="1.5" antialias="false"/>
+        <line x1="-17" y1="0" end1="none" length1="1.5" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-8" length2="1.5" antialias="false"/>
+        <polygon y13="10" y10="10" x11="29" y15="0" x3="9" y3="0" y2="10" x5="11" y21="10" x21="51" y1="10" y6="10" x19="49" y4="0" x22="58" antialias="false" x18="49" x7="19" y5="10" y22="10" x15="39" y14="10" x20="51" x17="41" x14="39" x6="19" y12="0" x10="29" y16="0" y20="0" x16="41" y17="10" x8="21" y7="0" x12="31" x13="31" y11="0" x4="11" x9="21" x2="9" y8="0" x1="0" y18="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y9="10" y19="0" closed="false"/>
+        <terminal x="0" orientation="n" y="-28"/>
+        <terminal x="30" orientation="n" y="-28"/>
+        <terminal x="60" orientation="n" y="-28"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition link_type="slave" hotspot_y="24" type="element" orientation="dyyy" version="0.5" hotspot_x="21" width="30" height="50">
+<definition link_type="slave" hotspot_y="24" type="element" version="0.5" hotspot_x="21" width="30" height="50">
     <uuid uuid="{899a0057-0d4d-4eb3-b712-12fb7ea16235}"/>
     <names>
         <name lang="el">Ανοικτή επαφή, καθυστέρηση ενεργοποίησης</name>

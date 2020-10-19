@@ -1,4 +1,4 @@
-<definition width="30" orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="7" type="element" version="0.51" height="40">
+<definition width="30" link_type="simple" hotspot_x="15" hotspot_y="7" type="element" version="0.51" height="40">
     <uuid uuid="{0d68344c-340e-461e-9fa5-3adc7a223ae2}"/>
     <names>
         <name lang="fr">détecteur de mouvement</name>

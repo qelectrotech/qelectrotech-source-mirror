@@ -1,4 +1,4 @@
-<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="10" orientation="dyyy" hotspot_y="5">
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="10" hotspot_y="5">
     <uuid uuid="{53319cb9-b296-46e0-8f5a-f1fd90784518}"/>
     <names>
         <name lang="de">Begrenzungslinie</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{a6654195-dc7d-43ea-a15c-f544cd0696b1}"/>
     <names>
         <name lang="en">Vacuum pump, general</name>

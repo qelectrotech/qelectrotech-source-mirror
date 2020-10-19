@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="44" type="element" height="90" width="30" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="44" type="element" height="90" width="30" version="0.5">
     <uuid uuid="{6dd021c1-60cb-4d3b-9af0-e177ba17eca5}"/>
     <names>
         <name lang="pl">Wielofunkcyjny przekaźnik czasowy TM16+</name>

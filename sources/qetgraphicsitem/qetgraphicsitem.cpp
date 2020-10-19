@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,11 +19,10 @@
 #include "diagram.h"
 
 /**
- * @brief QetGraphicsItem::QetGraphicsItem Default constructor
- * @param uuid, uuid of the item
- * @param diagram, diagram aka QGraphicsScene of the item
- * @param parent, Parent Item
- */
+	@brief QetGraphicsItem::QetGraphicsItem
+	Default constructor
+	@param parent : Parent Item
+*/
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	QGraphicsObject(parent),
 	is_movable_(true),
@@ -35,18 +34,18 @@ QetGraphicsItem::~QetGraphicsItem()
 {}
 
 /**
- * @brief QetGraphicsItem::diagram
+	@brief QetGraphicsItem::diagram
  *return the diagram of this item
- */
+*/
 Diagram* QetGraphicsItem::diagram() const{
 	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**
- * @brief QetGraphicsItem::setPos
+	@brief QetGraphicsItem::setPos
  *set the position of the item to p
- * @param p the new position of item
- */
+	@param p the new position of item
+*/
 void QetGraphicsItem::setPos(const QPointF &p) {
 	QPointF pp = Diagram::snapToGrid(p);
 	if (pp == pos() || !is_movable_)
@@ -55,28 +54,29 @@ void QetGraphicsItem::setPos(const QPointF &p) {
 }
 
 /**
- * @brief QetGraphicsItem::setPos
+	@brief QetGraphicsItem::setPos
  *set the position of the item
- * @param x new abscisse of item
- * @param y new ordonne of item
- */
+	@param x new abscisse of item
+	@param y new ordonne of item
+*/
 void QetGraphicsItem::setPos(qreal x, qreal y) {
 	setPos(QPointF(x, y));
 }
 
 /**
- * @brief QetGraphicsItem::state
- * @return the current state of this item 
- */
-QET::GraphicsItemState QetGraphicsItem::state() const {
+	@brief QetGraphicsItem::state
+	@return the current state of this item 
+*/
+QET::GraphicsItemState QetGraphicsItem::state() const
+{
 	return m_state;
 }
 
 /**
- * @brief QetGraphicsItem::mousePressEvent
+	@brief QetGraphicsItem::mousePressEvent
  *handle the mouse click
- * @param event
- */
+	@param event
+*/
 void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton)
@@ -91,10 +91,10 @@ void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief QetGraphicsItem::mouseDoubleClickEvent
+	@brief QetGraphicsItem::mouseDoubleClickEvent
  *handle the mouse double click
- * @param event
- */
+	@param event
+*/
 void QetGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	editProperty();
@@ -102,10 +102,10 @@ void QetGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief QetGraphicsItem::mouseMoveEvent
+	@brief QetGraphicsItem::mouseMoveEvent
  *handle mouse movement
- * @param event
- */
+	@param event
+*/
 void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (isSelected() && event->buttons() & Qt::LeftButton)
@@ -143,10 +143,10 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief QetGraphicsItem::mouseReleaseEvent
- *handle mouse release click
- * @param e
- */
+	@brief QetGraphicsItem::mouseReleaseEvent
+	handle mouse release click
+	@param event
+*/
 void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (diagram()) {

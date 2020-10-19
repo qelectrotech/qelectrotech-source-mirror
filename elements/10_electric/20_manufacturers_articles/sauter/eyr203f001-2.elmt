@@ -1,4 +1,4 @@
-<definition height="160" orientation="dyyy" version="0.5" width="770" link_type="simple" hotspot_x="384" hotspot_y="72" type="element">
+<definition height="160" version="0.5" width="770" link_type="simple" hotspot_x="384" hotspot_y="72" type="element">
     <uuid uuid="{3d2420ef-8939-42e8-8360-ac4881b5c0a1}"/>
     <names>
         <name lang="fr">EYR203 F001 NUMERIQUE</name>

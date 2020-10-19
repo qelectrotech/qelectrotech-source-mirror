@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2006-2019 The QElectroTech Team -->
+<!-- Copyright 2006-2020 The QElectroTech Team -->
 <application>
  <id type="desktop">qelectrotech.desktop</id>
  <metadata_license>GPL-2.0+</metadata_license>
@@ -20,6 +20,7 @@
  <summary xml:lang="nl">Elektrische schema bewerker</summary>
  <summary xml:lang="be">Elektrische schema editor</summary>
  <summary xml:lang="da">Elektrisk diagram redigering</summary>
+ <summary xml:lang="ja">電気回路図エディタ</summary>
  <description>
   <p>
    QElectroTech is a Qt5 application to design electric diagrams.
@@ -68,6 +69,10 @@
   <p xml:lang="da">
    QElectroTech er et Qt5 program til at redigere elektriske diagrammer.
    Det bruger XML filer for symboler og diagrammer og inkluderer diagram, symbol og titelblok redigering.
+   </p>
+  <p xml:lang="ja">
+   QElectroTech は電気回路図を作成する Qt5 アプリケーションです。
+   QET は要素と回路図に XML 形式を利用し、回路図エディタ、要素エディタ、表題欄エディタを含みます。
    </p>
  </description>
  <url type="homepage">http://qelectrotech.org</url>

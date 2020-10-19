@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="100" type="element" height="70">
+<definition link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="100" type="element" height="70">
     <uuid uuid="{aecd300f-78bf-499d-a2b6-8890464e0eba}"/>
     <names>
         <name lang="fr">Générateur à commande manuelle</name>

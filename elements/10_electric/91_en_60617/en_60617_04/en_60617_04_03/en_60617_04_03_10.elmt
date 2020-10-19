@@ -1,4 +1,4 @@
-<definition height="20" type="element" width="70" hotspot_y="10" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="64">
+<definition height="20" type="element" width="70" hotspot_y="10" link_type="simple" version="0.70" hotspot_x="64">
     <uuid uuid="{baff5aa7-bc0b-4e88-aab1-01a68104343f}"/>
     <names>
         <name lang="fr">Perle de ferrite sur un conducteur</name>

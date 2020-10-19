@@ -1,4 +1,4 @@
-<definition width="120" height="460" link_type="simple" hotspot_y="456" hotspot_x="6" version="0.5" type="element" orientation="dyyy">
+<definition width="120" height="460" link_type="simple" hotspot_y="456" hotspot_x="6" version="0.5" type="element">
     <uuid uuid="{52f3ee05-6537-4d04-8a0f-9c3b322ad7be}"/>
     <names>
         <name lang="cs">tsx</name>

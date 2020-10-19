@@ -1,4 +1,4 @@
-<definition width="170" height="110" link_type="simple" orientation="dyyy" hotspot_x="85" version="0.5" hotspot_y="39" type="element">
+<definition width="170" height="110" link_type="simple" hotspot_x="85" version="0.5" hotspot_y="39" type="element">
     <uuid uuid="{49ff8d49-3ea0-4f04-b6a3-96eef11142e1}"/>
     <names>
         <name lang="it">SR204P</name>

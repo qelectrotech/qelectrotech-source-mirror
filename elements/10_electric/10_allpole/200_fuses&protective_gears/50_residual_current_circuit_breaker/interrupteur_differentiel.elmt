@@ -1,4 +1,4 @@
-<definition width="50" link_type="master" hotspot_x="27" height="80" hotspot_y="34" type="element" version="0.70" orientation="dyyy">
+<definition width="50" link_type="master" hotspot_x="27" height="80" hotspot_y="34" type="element" version="0.70">
     <uuid uuid="{daaec1a5-d463-4bb3-9a92-e26a13f5a0ec}"/>
     <names>
         <name lang="ar">مفتاح تفاضلي</name>

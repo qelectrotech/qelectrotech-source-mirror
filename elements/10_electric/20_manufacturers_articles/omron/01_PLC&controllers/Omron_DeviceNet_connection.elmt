@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="35" hotspot_y="40" orientation="dyyy" width="60" height="90" type="element" version="0.51">
+<definition link_type="simple" hotspot_x="35" hotspot_y="40" width="60" height="90" type="element" version="0.51">
     <uuid uuid="{275f0267-93de-4f72-b6e9-01c3a33eae26}"/>
     <names>
         <name lang="en">Omron_DeviceNet_connection</name>

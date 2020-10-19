@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="34" type="element" height="130" width="490" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="34" type="element" height="130" width="490" version="0.5">
     <uuid uuid="{26a01d7f-4135-40d0-8f2d-045f46845935}"/>
     <names>
         <name lang="pl">Przetwornik pomiarowy mętności Liquisys M</name>

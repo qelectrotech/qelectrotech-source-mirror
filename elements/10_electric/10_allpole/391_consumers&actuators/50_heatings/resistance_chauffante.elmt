@@ -1,4 +1,4 @@
-<definition width="60" hotspot_x="29" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+<definition width="60" hotspot_x="29" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{9abf8967-4c0a-466c-918d-68bff2e5c820}"/>
     <names>
         <name lang="cs">Vytápěcí odpor</name>

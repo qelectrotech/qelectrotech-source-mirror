@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,9 +24,9 @@
 class Element;
 
 /**
- * @brief The AbstractElementPropertiesEditorWidget class
- * This class provide common method for all widget used to edit some properties of an element
- */
+	@brief The AbstractElementPropertiesEditorWidget class
+	This class provide common method for all widget used to edit some properties of an element
+*/
 class AbstractElementPropertiesEditorWidget : public PropertiesEditorWidget
 {
 		Q_OBJECT

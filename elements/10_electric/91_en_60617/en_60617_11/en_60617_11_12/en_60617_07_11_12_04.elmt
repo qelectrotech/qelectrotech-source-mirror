@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="30" height="30" hotspot_x="25" hotspot_y="25" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="30" height="30" hotspot_x="25" hotspot_y="25" version="0.70">
     <uuid uuid="{f0362182-8e50-42f0-904f-3a808518a837}"/>
     <names>
         <name lang="de">Dose,

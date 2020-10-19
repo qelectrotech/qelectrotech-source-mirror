@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="70" width="70" version="0.70" orientation="dyyy" hotspot_x="65" hotspot_y="65">
+<definition type="element" link_type="simple" height="70" width="70" version="0.70" hotspot_x="65" hotspot_y="65">
     <uuid uuid="{ae936a83-f11a-4a82-981b-b9cdd48dbdd9}"/>
     <names>
         <name lang="fr">Structure à retard fermée</name>

@@ -1,4 +1,4 @@
-<definition width="50" height="70" type="element" hotspot_x="36" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="44">
+<definition width="50" height="70" type="element" hotspot_x="36" version="0.70" link_type="simple" hotspot_y="44">
     <uuid uuid="{c1b611f9-d1eb-4cdd-a1da-c23f22d07b1a}"/>
     <names>
         <name lang="de">Leuchtmelder, versorgt durch eingebauten

@@ -1,4 +1,4 @@
-<definition width="10" hotspot_x="5" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="21">
+<definition width="10" hotspot_x="5" type="element" link_type="simple" version="0.5" height="50" hotspot_y="21">
     <uuid uuid="{c18cbc77-d189-4838-8493-2a11f787ee6f}"/>
     <names>
         <name lang="cs">Výfuk vzduchu</name>

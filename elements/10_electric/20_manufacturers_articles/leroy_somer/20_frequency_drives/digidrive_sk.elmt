@@ -1,4 +1,4 @@
-<definition width="360" height="80" link_type="simple" orientation="dyyy" hotspot_x="173" version="0.5" hotspot_y="36" type="element">
+<definition width="360" height="80" link_type="simple" hotspot_x="173" version="0.5" hotspot_y="36" type="element">
     <uuid uuid="{ec9f7b21-bc07-454e-a558-5e6e48ed81e7}"/>
     <names>
         <name lang="it">Digidrive SK</name>

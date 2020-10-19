@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -38,13 +38,15 @@ QETResult::QETResult(const QString &error_message, bool result) :
 /**
 	Destructor
 */
-QETResult::~QETResult() {
+QETResult::~QETResult()
+{
 }
 
 /**
 	@return the boolean value embedded within this result.
 */
-bool QETResult::isOk() const {
+bool QETResult::isOk() const
+{
 	return(result_);
 }
 
@@ -58,7 +60,8 @@ void QETResult::setResult(bool result) {
 /**
 	@return the error message embedded within this result.
 */
-QString QETResult::errorMessage() const {
+QString QETResult::errorMessage() const
+{
 	return(error_message_);
 }
 

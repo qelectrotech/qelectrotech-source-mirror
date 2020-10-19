@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,16 +23,17 @@
 #include "dynamicelementtextitem.h"
 
 /**
- * @brief The PartDynamicTextField class
- * This class represents an editable dynamic text field which may be used to compose the
- * drawing of an electrical element within the element editor.
- * The field will remain editable once the element is added onto
- * a diagram
- */
+	@brief The PartDynamicTextField class
+	This class represents an editable dynamic text field
+	which may be used to compose the
+	drawing of an electrical element within the element editor.
+	The field will remain editable once the element is added onto
+	a diagram
+*/
 class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 {
 	Q_OBJECT
-	
+
 	Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
 	Q_PROPERTY(DynamicElementTextItem::TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY textFromChanged)
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
@@ -42,12 +43,12 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
-	
+
 	public:
 			///PROPERTY
 		void setProperty(const char *name, const QVariant &value) override {QGraphicsTextItem::setProperty(name, value);}
 		QVariant property(const char *name) const override {return QGraphicsTextItem::property(name);}
-	
+
 	signals:
 		void taggChanged(QString tagg);
 		void textChanged(QString text);
@@ -59,13 +60,13 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void textWidthChanged(qreal width);
 		void alignmentChanged(Qt::Alignment alignment);
 		void fontChanged(QFont font);
-	
+
 	public:
 		PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
-		
+
 		enum {Type = UserType + 1110};
 		int type() const override {return Type;}
-		
+
 		QString name() const override;
 		QString xmlName() const override;
 		static QString xmlTaggName() {return QString("dynamic_text");}
@@ -73,11 +74,11 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		QRectF sceneGeometricRect() const override {return sceneBoundingRect();}
 		void startUserTransformation(const QRectF &initial_selection_rect) override;
 		void handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) override;
-		
+
 		const QDomElement toXml(QDomDocument &dom_doc) const override;
 		void fromXml(const QDomElement &dom_elmt) override;
 		void fromTextFieldXml(const QDomElement &dom_element);
-		
+
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
 		QString text() const;
@@ -87,7 +88,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
 		void setColor(const QColor& color);
-        QColor color() const;
+		QColor color() const;
 		void setFrame(bool frame);
 		bool frame() const;
 		void setTextWidth(qreal width);
@@ -95,20 +96,19 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void setAlignment(Qt::Alignment alignment);
 		Qt::Alignment alignment() const;
 		void setFont(const QFont &font);
-		
+
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
-        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
-        QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-		
+
 	private:
 		void elementInfoChanged();
-		
 		void prepareAlignment();
 		void finishAlignment();
-		
+
 	private:
 		QPointF m_origine_pos,
 				m_saved_point;

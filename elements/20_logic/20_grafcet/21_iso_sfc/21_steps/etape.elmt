@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="41" version="0.5" hotspot_y="29" link_type="simple" width="90" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="41" version="0.5" hotspot_y="29" link_type="simple" width="90" height="60">
     <uuid uuid="{8340221e-d8d5-422a-8e8f-caa8e0c04330}"/>
     <names>
         <name lang="de">Schritt</name>

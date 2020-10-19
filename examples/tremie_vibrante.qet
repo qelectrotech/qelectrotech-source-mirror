@@ -1017,7 +1017,7 @@
                         <name lang="fr">depart moteur</name>
                     </names>
                     <element name="disjoncteur_sectionneur_magnetothermique.elmt">
-                        <definition width="130" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dyyy">
+                        <definition width="130" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element">
                             <names>
                                 <name lang="fr">sectionneur magneto-thermique</name>
                             </names>
@@ -1172,7 +1172,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Stroje</name>
                     </names>
                     <element name="moteur_tri.elmt">
-                        <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
+                        <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element">
                             <names>
                                 <name lang="de">Drehstrom Motor</name>
                                 <name lang="ru">Трёхфазный эл. мотор</name>
@@ -1261,7 +1261,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="fr">texte</name>
                     </names>
                     <element name="texte6.elmt">
-                        <definition width="10" version="0.3" hotspot_x="10" hotspot_y="10" height="10" type="element" orientation="dyyy">
+                        <definition width="10" version="0.3" hotspot_x="10" hotspot_y="10" height="10" type="element">
                             <names>
                                 <name lang="fr">texte 6</name>
                             </names>
@@ -1277,7 +1277,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="fr">cadre</name>
                     </names>
                     <element name="cadre2.elmt">
-                        <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+                        <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element">
                             <names>
                                 <name lang="fr">cadre 2</name>
                             </names>
@@ -1288,7 +1288,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="cadre-20111216093613.elmt">
-                        <definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
+                        <definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element">
                             <names>
                                 <name lang="fr">cadre</name>
                             </names>
@@ -1299,7 +1299,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="cadre.elmt">
-                        <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+                        <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element">
                             <names>
                                 <name lang="fr">cadre</name>
                             </names>
@@ -1319,7 +1319,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="cs">Odkazy</name>
                 </names>
                 <element name="ref_folio_suivant.elmt">
-                    <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                    <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element">
                         <names>
                             <name lang="en">Next folio</name>
                             <name lang="fr">Reference folio suivant</name>
@@ -1336,7 +1336,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="ref_folio_precedent.elmt">
-                    <definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                    <definition width="50" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element">
                         <names>
                             <name lang="en">Previous folio</name>
                             <name lang="it">Foglio precedente</name>
@@ -1371,7 +1371,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Preventa_1</name>
                     </names>
                     <element name="xps_ac.elmt">
-                        <definition width="360" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true" orientation="dyyy">
+                        <definition width="360" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true">
                             <names>
                                 <name lang="en">XPS-AC</name>
                                 <name lang="fr">XPS-AC</name>
@@ -1584,7 +1584,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="cs">Svorky</name>
                 </names>
                 <element name="borne_continuite-20111213094641.elmt">
-                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>
@@ -1610,7 +1610,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="borne_continuite.elmt">
-                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>
@@ -1636,7 +1636,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="borne_continuite-20111216081731.elmt">
-                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>
@@ -1662,7 +1662,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="borne_continuite-20111216082453.elmt">
-                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>
@@ -1688,7 +1688,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="borne_continuite-20111216081527.elmt">
-                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>
@@ -1714,7 +1714,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="borne_continuite-20111216082528.elmt">
-                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="de">Klemmblock</name>
                             <name lang="ru">Клеммное соединение</name>
@@ -1830,7 +1830,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="cs">Optická čidla</name>
                         </names>
                         <element name="capteur_opt_nc_4p.elmt">
-                            <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+                            <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element">
                                 <names>
                                     <name lang="en">Optic sensor (NC)</name>
                                     <name lang="fr">capteur optique  (NC)</name>
@@ -1936,7 +1936,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="fr">Leroy Somer</name>
                         </names>
                         <element name="digidrive_sk.elmt">
-                            <definition width="370" version="0.3" hotspot_x="10" hotspot_y="10" height="90" type="element" orientation="dyyy">
+                            <definition width="370" version="0.3" hotspot_x="10" hotspot_y="10" height="90" type="element">
                                 <names>
                                     <name lang="fr">digidrive sk</name>
                                 </names>
@@ -2116,7 +2116,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Spínače</name>
                     </names>
                     <element name="contact_002.elmt">
-                        <definition width="60" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                        <definition width="60" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element">
                             <names>
                                 <name lang="en">Switch 2 positions</name>
                                 <name lang="fr">Interrupteur rotatif</name>
@@ -2269,7 +2269,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="a-u_004.elmt">
-                        <definition width="80" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                        <definition width="80" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true">
                             <names>
                                 <name lang="en">Push-button</name>
                                 <name lang="fr">Arret d`urgence</name>

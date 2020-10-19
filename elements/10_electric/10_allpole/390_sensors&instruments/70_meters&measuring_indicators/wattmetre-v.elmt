@@ -1,4 +1,4 @@
-<definition hotspot_y="29" type="element" height="60" width="40" hotspot_x="14" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="29" type="element" height="60" width="40" hotspot_x="14" link_type="simple" version="0.5">
     <uuid uuid="{e23817d5-48e7-43da-be33-6b4907a9a9dd}"/>
     <names>
         <name lang="cs">Wattmetr, svislý</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" width="890" height="70" hotspot_x="45" type="element" hotspot_y="32" version="0.5" orientation="dyyy">
+<definition link_type="simple" width="890" height="70" hotspot_x="45" type="element" hotspot_y="32" version="0.5">
     <uuid uuid="{d1418402-e5f9-4513-bfaa-b05b4a7e6ff1}"/>
     <names>
         <name lang="es">TM2 AVO 2HT (Salidas ana)</name>

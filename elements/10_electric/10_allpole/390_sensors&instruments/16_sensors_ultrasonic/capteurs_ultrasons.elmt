@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="29" version="0.5" hotspot_y="37" link_type="simple" width="50" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="37" link_type="simple" width="50" height="60">
     <uuid uuid="{10429ada-2bbc-45ba-99eb-61bd80780b17}"/>
     <names>
         <name lang="el">Αισθητήρας υπερήχων με 3 ακροδέκτες</name>

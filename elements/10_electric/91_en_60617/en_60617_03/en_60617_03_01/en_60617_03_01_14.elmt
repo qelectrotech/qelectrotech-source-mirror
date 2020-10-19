@@ -1,4 +1,4 @@
-<definition hotspot_x="46" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="90" type="element" link_type="simple">
+<definition hotspot_x="46" version="0.70" height="30" hotspot_y="24" width="90" type="element" link_type="simple">
     <uuid uuid="{253fa240-0eac-452e-88eb-8e0e096d8f41}"/>
     <names>
         <name lang="fr">Extrémité d’un conducteur ou d’un cable, non

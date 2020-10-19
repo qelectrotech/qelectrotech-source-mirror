@@ -1,0 +1,56 @@
+<definition link_type="simple" type="element" height="180" width="130" hotspot_y="85" version="0.80" hotspot_x="65">
+    <uuid uuid="{87c26124-49c2-4a67-abfd-1952ab1a41d2}"/>
+    <names>
+        <name lang="fr">Plancher chauffant</name>
+        <name lang="en">Heated floor</name>
+        <name lang="pl">Ogrzewanie podłogowe</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-80" length2="1.5" length1="1.5" x2="10" y1="-61.69" x1="10" end2="none"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="-60" rx="0" y="5"/>
+        <arc antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="180" height="9.07206" width="13.9115" start="270" x="13.7512" y="-52.6193"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="75" length2="1.5" length1="1.5" x2="60" y1="75" x1="-60" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="180" height="15.1201" width="17.3894" start="270" x="13.7512" y="-55.6434"/>
+        <arc antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-179" height="9.07206" width="17.3894" start="270" x="-26.2442" y="-40.5233"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-31" z="6" uuid="{fff4e367-5f28-412d-a32f-b74d295f33c5}" text_from="UserText" y="46" Halignment="AlignLeft">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-62" z="7" uuid="{9f02a415-1c4f-4b20-94d0-45ab50c4d454}" text_from="ElementInfo" y="27" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-31.4512" length2="1.5" length1="1.5" x2="24.1848" y1="-31.4512" x1="-19.6363" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-55.6434" length2="1.5" length1="1.5" x2="23.4893" y1="-55.6434" x1="-21.0275" end2="none"/>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-2" y="72" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="45" length2="1.5" length1="1.5" x2="60" y1="45" x1="-60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-52.6193" length2="1.5" length1="1.5" x2="20.7069" y1="-52.6193" x1="-21.0275" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="25" length2="1.5" length1="1.5" x2="60" y1="25" x1="-60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-43.5473" length2="1.5" length1="1.5" x2="20.7069" y1="-43.5473" x1="-21.4707" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-40.5233" length2="1.5" length1="1.5" x2="23.4893" y1="-40.5233" x1="-19.6363" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="6" y="60" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-28.4272" length2="1.5" length1="1.5" x2="24.1848" y1="-28.4272" x1="-21.0275" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-179" height="15.1201" width="20.8672" start="270" x="-29.7221" y="-43.5473"/>
+        <text text="Plancher chauffant" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="-58" y="21" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-2" y="88" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-22.3791" length2="1.5" length1="1.5" x2="-14.0717" y1="-61.6914" x1="-14.0717" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-21.9812" length2="1.5" length1="1.5" x2="-0.160262" y1="-62.0893" x1="-0.160262" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-21.9812" length2="1.5" length1="1.5" x2="13.7512" y1="-62.0893" x1="13.7512" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y2="-55.6434" length2="1.5" length1="1.5" x2="-21.0275" y1="-52.6193" x1="-21.0275" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-80" length2="1.5" length1="1.5" x2="-10" y1="-61.69" x1="-10" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="27.6628" z="27" uuid="{7fb7f0aa-d669-4d66-a768-800cd760e333}" text_from="ElementInfo" y="-48.5112" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-32" z="28" uuid="{c34e1c1a-b014-4bbd-a70c-67556dd0404c}" text_from="UserText" y="76.5" Halignment="AlignLeft">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-30" z="29" uuid="{e35bcff5-2eec-4962-8f18-416a8c1c087f}" text_from="UserText" y="61.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <terminal orientation="s" name="" x="0" uuid="{7d383dfe-7049-4f2c-b8c3-f202cb295224}" y="-20"/>
+        <terminal orientation="n" name="" x="10" uuid="{016cf312-f14a-49b6-aa5b-a1de991af26d}" y="-80"/>
+        <terminal orientation="n" name="" x="-10" uuid="{016cf312-f14a-49b6-aa5b-a1de991af26d}" y="-80"/>
+    </description>
+</definition>

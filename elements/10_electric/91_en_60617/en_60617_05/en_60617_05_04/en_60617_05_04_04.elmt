@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="17" hotspot_y="44" orientation="dyyy" type="element" height="50" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="17" hotspot_y="44" type="element" height="50" width="30">
     <uuid uuid="{7c01af25-7f0b-4dc1-a757-fe45fb346adc}"/>
     <names>
         <name lang="fr">Thyristor triode, type non spécifié</name>

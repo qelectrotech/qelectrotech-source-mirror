@@ -1,4 +1,4 @@
-<definition link_type="terminal" hotspot_x="275" hotspot_y="14" type="element" height="40" version="0.80" width="550" orientation="dyyy">
+<definition link_type="terminal" hotspot_x="275" hotspot_y="14" type="element" height="40" version="0.80" width="550">
     <uuid uuid="{ec665f4d-0be8-4527-bc11-a5f48e432a6c}"/>
     <names>
         <name lang="fr">405055 - Drivia 13 - Bornier de terre 5 + 27</name>

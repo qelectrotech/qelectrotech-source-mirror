@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" orientation="dyyy" type="element" link_type="simple" height="30" hotspot_y="15" version="0.51">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" height="30" hotspot_y="15" version="0.51">
     <uuid uuid="{5666f719-8977-45e6-bba1-0b1cba1df826}"/>
     <names>
         <name lang="fr">Siemens;6ES7390-1AE80-0AA0;6ES7390-1AE80-0AA0;Simatic S7 rail de montage L=480mm;7080021</name>

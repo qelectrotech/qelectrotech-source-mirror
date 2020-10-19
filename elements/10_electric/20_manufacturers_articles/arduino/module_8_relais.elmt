@@ -1,4 +1,4 @@
-<definition height="70" hotspot_x="130" orientation="dyyy" version="0.80" width="250" type="element" hotspot_y="56" link_type="simple">
+<definition height="70" hotspot_x="130" version="0.80" width="250" type="element" hotspot_y="56" link_type="simple">
     <uuid uuid="{8bc323da-901b-4499-ab66-1feb0fb8d144}"/>
     <names>
         <name lang="nl">relais module (8)</name>

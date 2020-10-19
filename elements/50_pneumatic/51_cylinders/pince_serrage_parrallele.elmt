@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="100" hotspot_x="9" type="element" link_type="simple" hotspot_y="45" orientation="dyyy">
+<definition height="50" version="0.5" width="100" hotspot_x="9" type="element" link_type="simple" hotspot_y="45">
     <uuid uuid="{da934865-0188-4ddd-8d74-37be1500bfca}"/>
     <names>
         <name lang="en">Grippers</name>

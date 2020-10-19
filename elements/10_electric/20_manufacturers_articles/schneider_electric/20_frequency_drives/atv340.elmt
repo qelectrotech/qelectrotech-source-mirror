@@ -1,4 +1,4 @@
-<definition width="730" version="0.70" type="element" hotspot_y="64" orientation="dyyy" link_type="master" hotspot_x="455" height="160">
+<definition width="730" version="0.70" type="element" hotspot_y="64" link_type="master" hotspot_x="455" height="160">
     <uuid uuid="{b3bdc477-8f0e-4c88-a424-b8cd51e20861}"/>
     <names>
         <name lang="cs">ATV340</name>

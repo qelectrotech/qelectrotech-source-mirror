@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="4" width="170" height="210">
+<definition version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="4" width="170" height="210">
     <uuid uuid="{1e4aa085-29fa-4cb5-a69d-a945475acc01}"/>
     <names>
         <name lang="fr">ABB Entrées 8 voies </name>

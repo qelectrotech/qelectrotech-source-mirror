@@ -1,4 +1,4 @@
-<definition width="310" orientation="dyyy" version="0.5" height="100" type="element" hotspot_y="32" link_type="simple" hotspot_x="14">
+<definition width="310" version="0.5" height="100" type="element" hotspot_y="32" link_type="simple" hotspot_x="14">
     <uuid uuid="{611d0ab4-56c9-4bc7-abd8-6b19ca06d6b4}"/>
     <names>
         <name lang="it">8200 vector CAN module E82ZAFCC001</name>

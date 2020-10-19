@@ -1,0 +1,44 @@
+<definition version="0.80" hotspot_y="164" height="170" type="element" link_type="master" hotspot_x="5" width="130">
+    <uuid uuid="{91e42502-e71f-4a1d-96e5-91e40cc6f9fd}"/>
+    <names>
+        <name lang="pl">Dzwonek</name>
+        <name lang="fr">Sonnerie</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect rx="0" y="-85" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="85" ry="0" width="120"/>
+        <line y2="-15" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-15"/>
+        <dynamic_text text_from="UserText" frame="false" y="-44" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="29" uuid="{285b5e9f-386d-4075-918f-028f70a4e2bc}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="5" text_width="-1">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" frame="false" y="-63" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="-2" uuid="{9335f0ff-beb5-4f32-9473-9849707aacd1}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="8" text_width="-1">
+            <text>Coffret</text>
+        </dynamic_text>
+        <text y="-18" text=" kA C" rotation="0" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-45" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-45"/>
+        <line y2="-65" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-65"/>
+        <text y="-30" text="A" rotation="0" x="66" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text y="-2" text=" mm²" rotation="0" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-130" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="31" x2="32" y1="-130"/>
+        <arc y="-160" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="30" height="60" angle="-180" start="0" width="60"/>
+        <line y2="-130" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="30" x2="90" y1="-130"/>
+        <dynamic_text text_from="UserText" frame="false" y="-13.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="28" uuid="{39390db0-2c38-4307-8a5c-d5b2bfc5695d}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="30" text_width="-1">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" frame="false" y="-28.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="30" uuid="{2dad747e-12f2-4890-ba5e-1a6ed8901fe6}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="32" text_width="-1">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" frame="false" y="-81.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="-2" uuid="{201da645-fd56-4bc7-8d8d-042f5e88eeff}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="37" text_width="-1">
+            <text>Sonnerie</text>
+        </dynamic_text>
+        <line y2="-130" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="50" x2="50" y1="-150"/>
+        <line y2="-130" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="70" x2="70" y1="-150"/>
+        <terminal y="-150" x="50" uuid="{6eb0fa75-b693-4443-8c8a-f58fbc8f1c71}" name="" orientation="n"/>
+        <terminal y="-100" x="60" uuid="{03ce051b-7f6b-4c0b-8acf-2699511e8469}" name="" orientation="s"/>
+        <terminal y="-150" x="70" uuid="{a659bf3a-993e-4b54-8325-ecc9eed7f373}" name="" orientation="n"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="54" width="290" height="150" orientation="dyyy" link_type="simple" hotspot_x="163">
+<definition type="element" version="0.5" hotspot_y="54" width="290" height="150" link_type="simple" hotspot_x="163">
     <uuid uuid="{7de607b9-baa8-4a97-a76d-c6ec38752cbc}"/>
     <names>
         <name lang="pl">WIT 6.2 CPU</name>

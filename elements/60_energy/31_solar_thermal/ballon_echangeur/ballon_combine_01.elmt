@@ -1,4 +1,4 @@
-<definition width="130" hotspot_x="65" type="element" link_type="simple" orientation="dyyy" version="0.5" height="250" hotspot_y="70">
+<definition width="130" hotspot_x="65" type="element" link_type="simple" version="0.5" height="250" hotspot_y="70">
     <uuid uuid="{ea6d140d-f082-4324-9116-e6726f74cfd7}"/>
     <names>
         <name lang="cs">Kombinovaný zásobnik 1000L</name>

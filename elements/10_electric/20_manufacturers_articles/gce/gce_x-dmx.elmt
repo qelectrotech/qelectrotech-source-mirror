@@ -1,4 +1,4 @@
-<definition width="100" height="200" type="element" link_type="simple" hotspot_x="51" hotspot_y="104" orientation="dyyy" version="0.5">
+<definition width="100" height="200" type="element" link_type="simple" hotspot_x="51" hotspot_y="104" version="0.5">
     <uuid uuid="{df6eb4a4-1795-42f4-bee7-6ed12bf770f7}"/>
     <names>
         <name lang="cs">X-DMX</name>

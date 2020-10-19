@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="80" hotspot_x="21" hotspot_y="36" version="0.51" width="60" link_type="simple">
+<definition type="element" height="80" hotspot_x="21" hotspot_y="36" version="0.51" width="60" link_type="simple">
     <uuid uuid="{377c714f-6498-412f-b02c-c75e9b35d4d6}"/>
     <names>
         <name lang="pl">Zawór bezpieczeństwa 3/4"</name>

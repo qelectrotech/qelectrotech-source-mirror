@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="15" orientation="dyyy" height="30" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="15" height="30" link_type="simple" hotspot_x="144">
     <uuid uuid="{f5877205-770b-4a5c-a251-b80f4f6bc71b}"/>
     <names>
         <name lang="fr">Ligne avec bouchon d'étanchéité (gaz ou

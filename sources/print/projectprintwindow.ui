@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProjectPrintWindow</class>
+ <widget class="QMainWindow" name="ProjectPrintWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>956</width>
+    <height>537</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <layout class="QHBoxLayout" name="m_vertical_layout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Folios à imprimer :</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="m_diagram_list">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="lineWidth">
+           <number>3</number>
+          </property>
+          <property name="midLineWidth">
+           <number>3</number>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>932</width>
+             <height>58</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_check_all_pb">
+          <property name="text">
+           <string>Tout cocher</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_uncheck_all">
+          <property name="text">
+           <string>Tout décocher</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
+           <property name="spacing">
+            <number>9</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="m_date_from_cb">
+             <item>
+              <property name="text">
+               <string>Toutes les dates</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>À partir de la date du :</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>À la date du  :</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateEdit" name="m_date_cb">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="m_apply_date_pb">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../qelectrotech.qrc">
+               <normaloff>:/ico/16x16/dialog-ok.png</normaloff>:/ico/16x16/dialog-ok.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Option de rendu</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QCheckBox" name="m_draw_border_cb">
+         <property name="text">
+          <string>Dessiner le cadre</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_draw_titleblock_cb">
+         <property name="text">
+          <string>Dessiner le cartouche</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_keep_conductor_color_cb">
+         <property name="text">
+          <string>Conserver les couleurs des conducteurs</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_draw_terminal_cb">
+         <property name="text">
+          <string>Dessiner les bornes</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>Option d'impression</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="m_fit_in_page_cb">
+         <property name="text">
+          <string>Adapter le folio à la page</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="m_use_full_page_cb">
+         <property name="text">
+          <string>Utiliser toute la feuille</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d'une et une seule page.&quot;</string>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l'impression.  Cela peut ne pas être supporté par votre imprimante.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <property name="openExternalLinks">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QDialogButtonBox" name="m_button_box">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="m_adjust_width_action"/>
+   <addaction name="m_adjust_page_action"/>
+   <addaction name="m_zoom_out_action"/>
+   <addaction name="m_zoom_in_action"/>
+   <addaction name="separator"/>
+   <addaction name="m_landscape_action"/>
+   <addaction name="m_portrait_action"/>
+   <addaction name="separator"/>
+   <addaction name="m_first_page_action"/>
+   <addaction name="m_previous_page_action"/>
+   <addaction name="m_next_page_action"/>
+   <addaction name="m_last_page_action"/>
+   <addaction name="separator"/>
+   <addaction name="m_display_single_page_action"/>
+   <addaction name="m_display_two_page_action"/>
+   <addaction name="m_display_all_page_action"/>
+   <addaction name="separator"/>
+   <addaction name="m_page_setup"/>
+  </widget>
+  <action name="m_adjust_width_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/view_fit_width.png</normaloff>:/ico/22x22/view_fit_width.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ajuster la largeur</string>
+   </property>
+  </action>
+  <action name="m_adjust_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/view-fit-window.png</normaloff>:/ico/22x22/view-fit-window.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ajuster la page</string>
+   </property>
+  </action>
+  <action name="m_zoom_out_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/zoom-out.png</normaloff>:/ico/16x16/zoom-out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom arrière</string>
+   </property>
+  </action>
+  <action name="m_zoom_in_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/zoom-in.png</normaloff>:/ico/16x16/zoom-in.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom avant</string>
+   </property>
+  </action>
+  <action name="m_landscape_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/landscape.png</normaloff>:/ico/22x22/landscape.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paysage</string>
+   </property>
+  </action>
+  <action name="m_portrait_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/portrait.png</normaloff>:/ico/22x22/portrait.png</iconset>
+   </property>
+   <property name="text">
+    <string>Portrait</string>
+   </property>
+  </action>
+  <action name="m_first_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/arrow-left-double.png</normaloff>:/ico/16x16/arrow-left-double.png</iconset>
+   </property>
+   <property name="text">
+    <string>Première page</string>
+   </property>
+  </action>
+  <action name="m_previous_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/arrow-left.png</normaloff>:/ico/16x16/arrow-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Page précédente</string>
+   </property>
+  </action>
+  <action name="m_next_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/arrow-right.png</normaloff>:/ico/16x16/arrow-right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Page suivante</string>
+   </property>
+  </action>
+  <action name="m_last_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/arrow-right-double.png</normaloff>:/ico/22x22/arrow-right-double.png</iconset>
+   </property>
+   <property name="text">
+    <string>Dernière page</string>
+   </property>
+  </action>
+  <action name="m_display_single_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/single_page.png</normaloff>:/ico/22x22/single_page.png</iconset>
+   </property>
+   <property name="text">
+    <string>Afficher une seule page</string>
+   </property>
+  </action>
+  <action name="m_display_two_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/two_pages.png</normaloff>:/ico/22x22/two_pages.png</iconset>
+   </property>
+   <property name="text">
+    <string>Afficher deux pages</string>
+   </property>
+  </action>
+  <action name="m_display_all_page_action">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/all_pages.png</normaloff>:/ico/22x22/all_pages.png</iconset>
+   </property>
+   <property name="text">
+    <string>Afficher un aperçu de toutes les pages</string>
+   </property>
+  </action>
+  <action name="m_page_setup">
+   <property name="icon">
+    <iconset resource="../../qelectrotech.qrc">
+     <normaloff>:/ico/48x48/document-print-frame.png</normaloff>:/ico/48x48/document-print-frame.png</iconset>
+   </property>
+   <property name="text">
+    <string>mise en page</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../qelectrotech.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_button_box</sender>
+   <signal>rejected()</signal>
+   <receiver>ProjectPrintWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>477</x>
+     <y>484</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>477</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

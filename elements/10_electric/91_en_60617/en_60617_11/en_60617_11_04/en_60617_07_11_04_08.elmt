@@ -1,4 +1,4 @@
-<definition type="element" width="50" version="0.70" hotspot_y="47" orientation="dyyy" height="50" link_type="simple" hotspot_x="45">
+<definition type="element" width="50" version="0.70" hotspot_y="47" height="50" link_type="simple" hotspot_x="45">
     <uuid uuid="{b8a8ce5c-519d-4d3d-ad67-457ca0bdf0b2}"/>
     <names>
         <name lang="fr">Anode de protection</name>

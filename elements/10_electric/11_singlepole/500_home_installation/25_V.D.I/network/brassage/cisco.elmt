@@ -1,0 +1,27 @@
+<definition hotspot_y="6" hotspot_x="5" link_type="simple" type="element" version="0.80" width="70" height="70">
+    <uuid uuid="{5e7ef189-793c-4e73-a591-c1448f36dea2}"/>
+    <names>
+        <name lang="fr">Borne WIFI</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <rect x="0" ry="7" style="line-style:normal;line-weight:normal;filling:HTMLWhiteAliceBlue;color:black" width="60" antialias="false" height="60" rx="7" y="0"/>
+        <text rotation="0" text="CISCO" color="#000000" x="14" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="22"/>
+        <text rotation="0" text="WIFI" color="#000000" x="16" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="46"/>
+        <rect x="10" ry="7" style="line-style:normal;line-weight:thin;filling:none;color:black" width="40" antialias="false" height="40" rx="7" y="10"/>
+        <terminal name="" uuid="{d7e1480f-5856-4ffa-aebf-aa4e9b717ea8}" x="30" orientation="n" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,37 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{f72df4b4-4e4d-4e20-901c-75ea3cc7834b}"/>
+    <names>
+        <name lang="cs">Ohřívač vody</name>
+        <name lang="pl">Ogrzewacz wody</name>
+        <name lang="ar">سخّان ماء</name>
+        <name lang="de">Wasserkocher</name>
+        <name lang="en">Water heater</name>
+        <name lang="el">Θερμοσίφωνας</name>
+        <name lang="nl">Water verwarmer</name>
+        <name lang="it">Scalda acqua</name>
+        <name lang="fr">Chauffe-eau</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc antialias="true" angle="180" x="-10" height="6" width="20" start="180" y="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-9" length2="1.5" y2="3" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-10" rx="0" height="20" width="20" y="2" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" angle="180" x="-10" height="6" width="20" start="0" y="-1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-3" rx="0" height="2" width="6" y="26" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-5" font="Sans Serif,6,-1,5,50,0,0,0,0,0" z="6" text_width="-1" Halignment="AlignLeft" y="3" uuid="{4785e635-176e-4562-a504-0f83a242a5a5}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="7" text_width="-1" Halignment="AlignLeft" y="-21.5" uuid="{0641b1d7-e0d5-4c21-93f6-325ebbbb1b3a}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="2" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="30" length2="1.5" y2="28" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{80b6b49f-8b0d-42d9-9149-0cc4fec0d899}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{b967796c-6ea3-48d1-a424-fd7d0d3173ab}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{af811e7b-30e5-4a2c-8f61-d908c0b42254}"/>
+    </description>
+</definition>

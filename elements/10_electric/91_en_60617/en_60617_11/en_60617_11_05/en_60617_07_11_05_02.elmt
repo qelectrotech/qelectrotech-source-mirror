@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" height="110" hotspot_x="45" hotspot_y="105" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="50" height="110" hotspot_x="45" hotspot_y="105" version="0.70">
     <uuid uuid="{76c3093f-fb9e-407d-a432-7fa037aa6ab3}"/>
     <names>
         <name lang="de">Kabelkopf (Empfangsstelle) ohne Ortsantenne</name>

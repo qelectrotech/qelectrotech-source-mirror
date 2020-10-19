@@ -1,0 +1,39 @@
+<definition hotspot_y="29" link_type="simple" hotspot_x="3" version="0.80" width="70" height="100" type="element">
+    <uuid uuid="{e807dcc6-487a-4e18-b94b-52f1affa4a34}"/>
+    <names>
+        <name lang="cs">Trafo 0703237</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle y="43" x="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" antialias="true"/>
+        <rect y="0" ry="0" x="0" width="64" height="42" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <text y="34" color="#000000" x="2" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" text="POJ: T 0,5A       ta: 40 C/B  &#xa;PRI:                  0   230                 V"/>
+        <rect y="-26" ry="0" x="24" width="8" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="-26" ry="0" x="40" width="8" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="42" ry="0" x="32" width="8" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="42" ry="0" x="11" width="42" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="-26" ry="0" x="32" width="8" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <circle y="-9" x="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" antialias="true"/>
+        <circle y="43" x="1" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" antialias="true"/>
+        <rect y="-14" ry="0" x="11" width="42" height="14" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="42" ry="0" x="24" width="8" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="-26" ry="0" x="16" width="8" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <circle y="-9" x="1" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" antialias="true"/>
+        <rect y="-10" ry="0" x="0" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="-10" ry="0" x="54" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="true"/>
+        <rect y="42" ry="0" x="54" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="42" ry="0" x="0" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <circle y="-12" x="18" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true"/>
+        <circle y="-12" x="26" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true"/>
+        <circle y="-12" x="34" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true"/>
+        <circle y="-12" x="42" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true"/>
+        <circle y="48" x="26" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true"/>
+        <circle y="48" x="34" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true"/>
+        <text y="7" color="#000000" x="2" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" text="SEC:          0 - 30        0 - 12&#xa;P=85VA     I: 2A         I: 2A"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" y="9" x="17" z="26" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" uuid="{dee5706f-4833-4949-a684-0813807bfdfe}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

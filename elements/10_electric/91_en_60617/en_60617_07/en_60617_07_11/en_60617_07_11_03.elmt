@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="95" hotspot_y="175" orientation="dyyy" type="element" height="180" width="100">
+<definition link_type="simple" version="0.70" hotspot_x="95" hotspot_y="175" type="element" height="180" width="100">
     <uuid uuid="{38326335-6fed-411a-8407-90518d8c17f1}"/>
     <names>
         <name lang="fr">Commutateur à commande par bouton,

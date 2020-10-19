@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="110" width="90" version="0.70" orientation="dyyy" hotspot_x="75" hotspot_y="105">
+<definition type="element" link_type="simple" height="110" width="90" version="0.70" hotspot_x="75" hotspot_y="105">
     <uuid uuid="{38355b7f-8d5b-4225-9e1e-c82591f6a2c0}"/>
     <names>
         <name lang="fr">Générateur thermoïonique à semiconducteur à

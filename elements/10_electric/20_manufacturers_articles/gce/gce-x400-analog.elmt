@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" link_type="simple" hotspot_x="64" hotspot_y="86" orientation="dyyy" height="190" width="130">
+<definition type="element" version="0.5" link_type="simple" hotspot_x="64" hotspot_y="86" height="190" width="130">
     <uuid uuid="{d1e2c86b-fbde-4a94-ac7c-3904ee3eeb75}"/>
     <names>
         <name lang="fr">GCE-X400-ANALOG</name>

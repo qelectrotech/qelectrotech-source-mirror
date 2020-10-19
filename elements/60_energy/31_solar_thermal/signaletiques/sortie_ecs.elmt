@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="21" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+<definition width="40" hotspot_x="21" type="element" link_type="simple" version="0.5" height="20" hotspot_y="11">
     <uuid uuid="{127dfcb4-3266-4ee6-8ca5-952a08e09f4e}"/>
     <names>
         <name lang="cs">Východ ECS</name>

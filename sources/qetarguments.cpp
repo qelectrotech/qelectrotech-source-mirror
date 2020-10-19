@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -100,7 +100,8 @@ QETArguments &QETArguments::operator=(const QETArguments &qet_arguments) {
 /**
 	Destructeur
 */
-QETArguments::~QETArguments() {
+QETArguments::~QETArguments()
+{
 }
 
 /**
@@ -117,7 +118,8 @@ void QETArguments::setArguments(const QList<QString> &args) {
 	dans l'ordre suivant : options connues puis inconnues, fichiers de types
 	projet puis element.
 */
-QList<QString> QETArguments::arguments() const {
+QList<QString> QETArguments::arguments() const
+{
 	return(options_ + unknown_options_ + project_files_ + element_files_ + tbt_files_);
 }
 
@@ -125,49 +127,56 @@ QList<QString> QETArguments::arguments() const {
 	@return tous les fichiers (projets et elements) passes en parametres.
 	Les fichiers de type projet viennent avant les fichiers de type element.
 */
-QList<QString> QETArguments::files() const {
+QList<QString> QETArguments::files() const
+{
 	return(project_files_ + element_files_ + tbt_files_);
 }
 
 /**
 	@return les fichiers de type projet
 */
-QList<QString> QETArguments::projectFiles() const {
+QList<QString> QETArguments::projectFiles() const
+{
 	return(project_files_);
 }
 
 /**
 	@return les fichiers de type element
 */
-QList<QString> QETArguments::elementFiles() const {
+QList<QString> QETArguments::elementFiles() const
+{
 	return(element_files_);
 }
 
 /**
 	@return title block template files
 */
-QList<QString> QETArguments::titleBlockTemplateFiles() const {
+QList<QString> QETArguments::titleBlockTemplateFiles() const
+{
 	return(tbt_files_);
 }
 
 /**
 	@return les options reconnues
 */
-QList<QString> QETArguments::options() const {
+QList<QString> QETArguments::options() const
+{
 	return(options_);
 }
 
 /**
 	@return les options non reconnues
 */
-QList<QString> QETArguments::unknownOptions() const {
+QList<QString> QETArguments::unknownOptions() const
+{
 	return(unknown_options_);
 }
 
 /**
 	Oublie tous les arguments de cet objet
 */
-void QETArguments::clear() {
+void QETArguments::clear()
+{
 	project_files_.clear();
 	element_files_.clear();
 	options_.clear();
@@ -290,7 +299,8 @@ void QETArguments::handleOptionArgument(const QString &option) {
 	@return true si l'utilisateur a specifie un dossier pour la collection
 	commune.
 */
-bool QETArguments::commonElementsDirSpecified() const {
+bool QETArguments::commonElementsDirSpecified() const
+{
 	return(!common_elements_dir_.isEmpty());
 }
 
@@ -298,7 +308,8 @@ bool QETArguments::commonElementsDirSpecified() const {
 	@return le dossier de la collection commune specifie par l'utilisateur.
 	Si l'utilisateur n'en a pas specifie, une chaine vide est retournee.
 */
-QString QETArguments::commonElementsDir() const {
+QString QETArguments::commonElementsDir() const
+{
 	return(common_elements_dir_);
 }
 #endif
@@ -308,7 +319,8 @@ QString QETArguments::commonElementsDir() const {
 	@return true if the user has specified a directory for the common title
 	block templates collection
 */
-bool QETArguments::commonTitleBlockTemplatesDirSpecified() const {
+bool QETArguments::commonTitleBlockTemplatesDirSpecified() const
+{
 	return(!common_tbt_dir_.isEmpty());
 }
 
@@ -316,7 +328,8 @@ bool QETArguments::commonTitleBlockTemplatesDirSpecified() const {
 	@return the directory of the common title block templates collection
 	specified by the user. If none were specified, return an empty string.
 */
-QString QETArguments::commonTitleBlockTemplatesDir() const {
+QString QETArguments::commonTitleBlockTemplatesDir() const
+{
 	return(common_tbt_dir_);
 }
 #endif
@@ -325,7 +338,8 @@ QString QETArguments::commonTitleBlockTemplatesDir() const {
 /**
 	@return true si l'utilisateur a specifie un dossier pour la configuration.
 */
-bool QETArguments::configDirSpecified() const {
+bool QETArguments::configDirSpecified() const
+{
 	return(!config_dir_.isEmpty());
 }
 
@@ -333,7 +347,8 @@ bool QETArguments::configDirSpecified() const {
 	@return le dossier de configuration specifie par l'utilisateur.
 	Si l'utilisateur n'en a pas specifie, une chaine vide est retournee.
 */
-QString QETArguments::configDir() const {
+QString QETArguments::configDir() const
+{
 	return(config_dir_);
 }
 #endif
@@ -341,7 +356,8 @@ QString QETArguments::configDir() const {
 /**
 	@return true si l'utilisateur a specifie un dossier pour les fichiers de langue
 */
-bool QETArguments::langDirSpecified() const {
+bool QETArguments::langDirSpecified() const
+{
 	return(!lang_dir_.isEmpty());
 }
 
@@ -349,7 +365,8 @@ bool QETArguments::langDirSpecified() const {
 	@return le dossier de langue specifie par l'utilisateur.
 	Si l'utilisateur n'en a pas specifie, une chaine vide est retournee.
 */
-QString QETArguments::langDir() const {
+QString QETArguments::langDir() const
+{
 	return(lang_dir_);
 }
 
@@ -357,7 +374,8 @@ QString QETArguments::langDir() const {
 	@return true si les arguments comportent une demande d'affichage de l'aide,
 	false sinon
 */
-bool QETArguments::printHelpRequested() const {
+bool QETArguments::printHelpRequested() const
+{
 	return(print_help_);
 }
 
@@ -365,7 +383,8 @@ bool QETArguments::printHelpRequested() const {
 	@return true si les arguments comportent une demande d'affichage de la
 	licence, false sinon
 */
-bool QETArguments::printLicenseRequested() const {
+bool QETArguments::printLicenseRequested() const
+{
 	return(print_license_);
 }
 
@@ -373,6 +392,7 @@ bool QETArguments::printLicenseRequested() const {
 	@return true si les arguments comportent une demande d'affichage de la
 	version, false sinon
 */
-bool QETArguments::printVersionRequested() const {
+bool QETArguments::printVersionRequested() const
+{
 	return(print_version_);
 }

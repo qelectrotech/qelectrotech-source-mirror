@@ -1,4 +1,4 @@
-<definition hotspot_y="10" version="0.51" height="20" width="30" type="element" orientation="dyyy" link_type="simple" hotspot_x="14">
+<definition hotspot_y="10" version="0.51" height="20" width="30" type="element" link_type="simple" hotspot_x="14">
     <uuid uuid="{87bc41a2-9046-4e1c-9042-a029afab48ef}"/>
     <names>
         <name lang="fr">Réduction laiton n° 245 DM</name>

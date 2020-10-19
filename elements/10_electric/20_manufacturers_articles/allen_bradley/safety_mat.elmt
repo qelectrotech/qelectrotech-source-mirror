@@ -1,4 +1,4 @@
-<definition type="element" width="90" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="89" hotspot_x="45" height="180">
+<definition type="element" width="90" version="0.70" link_type="simple" hotspot_y="89" hotspot_x="45" height="180">
     <uuid uuid="{fb4ff763-2822-41be-9907-5942de29994f}"/>
     <names>
         <name lang="hu">440F M biztonsági szőnyeg</name>

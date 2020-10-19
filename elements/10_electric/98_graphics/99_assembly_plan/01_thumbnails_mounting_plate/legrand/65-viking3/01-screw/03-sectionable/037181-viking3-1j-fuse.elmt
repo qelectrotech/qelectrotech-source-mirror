@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="4" type="element" orientation="dyyy" width="20" height="170">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="4" type="element" width="20" height="170">
     <uuid uuid="{9f06c844-2c22-42d3-bb74-423e655e14b6}"/>
     <names>
         <name lang="fr">037181 - Viking3 - 1 jonction Fusible 2,5mm² pas 6mm Gris</name>

@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="14">
+<definition width="40" hotspot_x="20" type="element" link_type="simple" version="0.5" height="40" hotspot_y="14">
     <uuid uuid="{334466d5-1edb-4bf5-affc-a0c4b82b0453}"/>
     <names>
         <name lang="cs">Přívod vzduchu</name>

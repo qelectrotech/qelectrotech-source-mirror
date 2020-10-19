@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -35,17 +35,20 @@ class QETProject;
 */
 class QETTitleBlockTemplateEditor : public QETMainWindow {
 	Q_OBJECT
-	
+
 	// constructor, destructor
 	public:
 	QETTitleBlockTemplateEditor(QWidget * = nullptr);
 	~QETTitleBlockTemplateEditor() override;
 	private:
 	QETTitleBlockTemplateEditor(const QETTitleBlockTemplateEditor &);
-	
+
 	// attributes
 	private:
 	/// menus TODO
+#if TODO_LIST
+#pragma message("@TODO menus")
+#endif
 	QMenu *file_menu_, *edit_menu_, *display_menu_;
 	/// actions
 	QAction *new_, *open_, *open_from_file_, *save_, *save_as_, *save_as_file_, *quit_;
@@ -80,19 +83,19 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	QUndoStack *undo_stack_;
 	QUndoView *undo_view_;
 	QDockWidget *undo_dock_widget_;
-	
+
 	// methods
 	public:
 	TitleBlockTemplateLocation location() const;
 	bool isEditing(const QString &ilepath);
 	void setOpenForDuplication(bool);
 	bool openForDuplication() const;
-	
+
 	protected:
 	bool canClose();
 	void firstActivation(QEvent *) override;
 	void closeEvent(QCloseEvent *) override;
-	
+
 	private:
 	void initActions();
 	void initMenus();
@@ -100,7 +103,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	void initWidgets();
 	void initLogoManager();
 	QString currentlyEditedTitle() const;
-	
+
 	public slots:
 	void readSettings();
 	void writeSettings();
@@ -122,7 +125,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	void quit();
 	void savePreviewWidthToApplicationSettings(int, int);
 	void editTemplateInformation();
-	
+
 	private slots:
 	TitleBlockTemplateLocation getTitleBlockTemplateLocationFromUser(const QString & = QString(), bool existing_only = true);
 	void pushCellUndoCommand(ModifyTitleBlockCellCommand *);

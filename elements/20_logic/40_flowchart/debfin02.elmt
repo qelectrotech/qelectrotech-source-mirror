@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="25" version="0.5" hotspot_y="21" link_type="simple" width="110" orientation="dyyy" height="50">
+<definition type="element" hotspot_x="25" version="0.5" hotspot_y="21" link_type="simple" width="110" height="50">
     <uuid uuid="{1994de37-9480-4f2b-932f-16f8d407c348}"/>
     <names>
         <name lang="el">Αρχή-τέλος προγράμματος</name>

@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="250" width="190" version="0.70" orientation="dyyy" hotspot_x="185" hotspot_y="245">
+<definition type="element" link_type="simple" height="250" width="190" version="0.70" hotspot_x="185" hotspot_y="245">
     <uuid uuid="{0519944a-b837-4e2c-921b-6d09303bc0d6}"/>
     <names>
         <name lang="fr">Électro-aimant engendrant un champ

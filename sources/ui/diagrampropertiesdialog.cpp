@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,11 +25,11 @@
 #include "changetitleblockcommand.h"
 
 /**
- * @brief DiagramPropertiesDialog::DiagramPropertiesDialog
- * Deafult constructor
- * @param diagram : diagram to edit properties
- * @param parent : parent widget
- */
+	@brief DiagramPropertiesDialog::DiagramPropertiesDialog
+	Deafult constructor
+	@param diagram : diagram to edit properties
+	@param parent : parent widget
+*/
 DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *parent) :
 	QDialog (parent),
 	m_diagram (diagram)
@@ -46,7 +46,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	setWindowFlags(Qt::Sheet);
 #endif
 
-    setWindowTitle(tr("Propriétés du folio", "window title"));
+	setWindowTitle(tr("Propriétés du folio", "window title"));
 
 	//Border widget
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);
@@ -67,23 +67,23 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		//Conductor widget
 	m_cpw = new ConductorPropertiesWidget(conductors, this);
 	m_cpw -> setReadOnly(diagram_is_read_only);
-	
+
 	QComboBox *autonum_combobox = m_cpw->autonumComboBox();
 	autonum_combobox->addItems(diagram->project()->conductorAutoNum().keys());
 	autonum_combobox->setCurrentIndex(autonum_combobox->findText(diagram->conductorsAutonumName()));
-	
+
 	connect(m_cpw->editAutonumPushButton(), &QPushButton::clicked, this, &DiagramPropertiesDialog::editAutonum);
 
 		// Buttons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&boutons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(&boutons, SIGNAL(rejected()), this, SLOT(reject()));
-	
+
 	QGridLayout *glayout = new QGridLayout;
 	glayout->addWidget(border_infos,0,0);
 	glayout->addWidget(titleblock_infos, 1, 0);
 	glayout->addWidget(m_cpw, 0, 1, 0, 1);
-	
+
 	QVBoxLayout vlayout(this);
 	vlayout.addLayout(glayout);
 	vlayout.addWidget(&boutons);
@@ -107,6 +107,9 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 		// Conducteur have change
 		if (new_conductors != conductors) {
+#if TODO_LIST
+#pragma message("@TODO implement an undo command to allow the user to undo/redo this action")
+#endif
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			diagram -> defaultConductorProperties = new_conductors;
 		}
@@ -121,19 +124,19 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 }
 
 /**
- * @brief DiagramPropertiesDialog::diagramPropertiesDialog
- * Static method to get a DiagramPropertiesDialog.
- * @param diagram : diagram to edit properties
- * @param parent : parent widget
- */
+	@brief DiagramPropertiesDialog::diagramPropertiesDialog
+	Static method to get a DiagramPropertiesDialog.
+	@param diagram : diagram to edit properties
+	@param parent : parent widget
+*/
 void DiagramPropertiesDialog::diagramPropertiesDialog(Diagram *diagram, QWidget *parent) {
 	DiagramPropertiesDialog dialog(diagram, parent);
 }
 
 /**
- * @brief DiagramPropertiesDialog::editAutonum
- * Open conductor autonum editor
- */
+	@brief DiagramPropertiesDialog::editAutonum
+	Open conductor autonum editor
+*/
 void DiagramPropertiesDialog::editAutonum()
 {
 	ProjectPropertiesDialog ppd (m_diagram->project(), this);
@@ -144,12 +147,13 @@ void DiagramPropertiesDialog::editAutonum()
 }
 
 /**
- * @brief DiagramPropertiesDialog::editAutonum
- * Open folio autonum editor
- */
-void DiagramPropertiesDialog::editAutoFolioNum () {
-    ProjectPropertiesDialog ppd (m_diagram->project(), this);
-    ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
-    ppd.changeToFolio();
-    ppd.exec();
+	@brief DiagramPropertiesDialog::editAutonum
+	Open folio autonum editor
+*/
+void DiagramPropertiesDialog::editAutoFolioNum ()
+{
+	ProjectPropertiesDialog ppd (m_diagram->project(), this);
+	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	ppd.changeToFolio();
+	ppd.exec();
 }

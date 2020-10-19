@@ -1,0 +1,22 @@
+<definition hotspot_x="10" link_type="master" type="element" height="40" version="0.80" hotspot_y="26" width="40">
+    <uuid uuid="{df29a77e-2538-403f-8853-01ce45e2521a}"/>
+    <names>
+        <name lang="fr">Volet Roulant</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <arc antialias="true" angle="-360" x="15.8993" height="11" width="12.1007" start="90" y="-16.175" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="180" x="-8.30203" height="11" width="12.1007" start="90" y="-21.675" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-2.25169" end2="none" antialias="false" x2="21.9497" y1="-21.675" length2="1.5" y2="-16.175" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="28" end2="none" antialias="false" x2="28" y1="-10.675" length2="1.5" y2="11.325" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="28" end2="none" antialias="false" x2="3.79865" y1="11.325" length2="1.5" y2="2.525" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="3.79865" end2="none" antialias="false" x2="3.79865" y1="-9.04755" length2="1.5" y2="2.54755" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-2.25169" end2="none" antialias="false" x2="21.9497" y1="-10.675" length2="1.5" y2="-5.175" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-360" x="18.9245" height="5.5" width="6.05034" start="270" y="-13.425" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="11.0591" y="-21.125" uuid="{46836d6e-6977-49e4-bde1-e82e1773a6df}"/>
+    </description>
+</definition>

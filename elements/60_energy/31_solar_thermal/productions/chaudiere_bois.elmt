@@ -1,4 +1,4 @@
-<definition hotspot_y="73" type="element" link_type="simple" orientation="dyyy" hotspot_x="44" width="90" height="140" version="0.51">
+<definition hotspot_y="73" type="element" link_type="simple" hotspot_x="44" width="90" height="140" version="0.51">
     <uuid uuid="{9667ecbe-c332-4559-b3aa-55a63b18d405}"/>
     <names>
         <name lang="fr">Chaudière Bois</name>

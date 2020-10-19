@@ -1,4 +1,4 @@
-<definition height="260" hotspot_x="145" version="0.80" orientation="dyyy" link_type="simple" type="element" hotspot_y="194" width="190">
+<definition height="260" hotspot_x="145" version="0.80" link_type="simple" type="element" hotspot_y="194" width="190">
     <uuid uuid="{99b77ebc-8d68-4ade-a560-aa34dfe592a8}"/>
     <names>
         <name lang="el">WESTERMO_TD29P</name>

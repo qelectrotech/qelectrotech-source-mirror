@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,27 +30,31 @@ QTextOrientationSpinBoxWidget::QTextOrientationSpinBoxWidget(QWidget *parent) :
 /**
 	Destructeur
 */
-QTextOrientationSpinBoxWidget::~QTextOrientationSpinBoxWidget() {
+QTextOrientationSpinBoxWidget::~QTextOrientationSpinBoxWidget()
+{
 }
 
 /**
 	@return un pointeur vers le QTextOrientationWidget
 */
-QTextOrientationWidget *QTextOrientationSpinBoxWidget::orientationWidget() const {
+QTextOrientationWidget *QTextOrientationSpinBoxWidget::orientationWidget() const
+{
 	return(orientation_widget_);
 }
 
 /**
 	@return un pointeur vers le QSpinBox
 */
-QDoubleSpinBox *QTextOrientationSpinBoxWidget::spinBox() const {
+QDoubleSpinBox *QTextOrientationSpinBoxWidget::spinBox() const
+{
 	return(spin_box_);
 }
 
 /**
 	@return l'orientation en cours
 */
-double QTextOrientationSpinBoxWidget::orientation() const {
+double QTextOrientationSpinBoxWidget::orientation() const
+{
 	return(orientation_widget_ -> orientation());
 }
 
@@ -59,21 +63,24 @@ double QTextOrientationSpinBoxWidget::orientation() const {
 	@return l'orientation en cours
 	@see orientation()
 */
-double QTextOrientationSpinBoxWidget::value() const {
+double QTextOrientationSpinBoxWidget::value() const
+{
 	return(orientation());
 }
 
 /**
 	@return true si le widget est en mode "lecture seule", false sinon
 */
-bool QTextOrientationSpinBoxWidget::isReadOnly() const {
+bool QTextOrientationSpinBoxWidget::isReadOnly() const
+{
 	return(orientation_widget_ -> isReadOnly());
 }
 
 /**
 	@param value Nouvelle valeur de l'orientation a afficher
 */
-void QTextOrientationSpinBoxWidget::setOrientation(const double &value) {
+void QTextOrientationSpinBoxWidget::setOrientation(const double &value)
+{
 	orientation_widget_ -> setOrientation(value);
 	spin_box_           -> setValue(value);
 }
@@ -83,14 +90,16 @@ void QTextOrientationSpinBoxWidget::setOrientation(const double &value) {
 	@param value Nouvelle valeur de l'orientation a afficher
 	@see setOrientation
 */
-void QTextOrientationSpinBoxWidget::setValue(const double &value) {
+void QTextOrientationSpinBoxWidget::setValue(const double &value)
+{
 	setOrientation(value);
 }
 
 /**
 	@param ro true pour passer le widget en mode "lecture seule", false sinon
 */
-void QTextOrientationSpinBoxWidget::setReadOnly(bool ro) {
+void QTextOrientationSpinBoxWidget::setReadOnly(bool ro)
+{
 	orientation_widget_ -> setReadOnly(ro);
 	spin_box_           -> setReadOnly(ro);
 }
@@ -98,7 +107,8 @@ void QTextOrientationSpinBoxWidget::setReadOnly(bool ro) {
 /**
 	Construit le widget
 */
-void QTextOrientationSpinBoxWidget::build() {
+void QTextOrientationSpinBoxWidget::build()
+{
 	orientation_widget_ = new QTextOrientationWidget();
 	orientation_widget_ -> setMinimumSize(90.0, 90.0);
 	
@@ -107,14 +117,25 @@ void QTextOrientationSpinBoxWidget::build() {
 	spin_box_ -> setSuffix("°");
 	
 	// met en place les relations entre le SpinBox et le QTextOrientationWidget
-	connect(spin_box_,           SIGNAL(valueChanged(double)),       orientation_widget_, SLOT(setOrientation(double)));
-	connect(orientation_widget_, SIGNAL(orientationChanged(double)), spin_box_,           SLOT(setValue(double)));
+	connect(spin_box_,
+		SIGNAL(valueChanged(double)),
+		orientation_widget_,
+		SLOT(setOrientation(double)));
+	connect(orientation_widget_,
+		SIGNAL(orientationChanged(double)),
+		spin_box_,
+		SLOT(setValue(double)));
 	
 	// cliquer sur un des carres du QTextOrientationWidget revient a finir une saisie dans le SpinBox
-	connect(orientation_widget_, SIGNAL(orientationChanged(double)), spin_box_, SIGNAL(editingFinished()));
+	connect(orientation_widget_,
+		SIGNAL(orientationChanged(double)),
+		spin_box_,
+		SIGNAL(editingFinished()));
 	
-	// lorsque l'utilisateur a change l'orientation, on emet un signal avec la valeur de la nouvelle orientation
-	connect(spin_box_, SIGNAL(editingFinished()), this, SLOT(emitChangeSignals()));
+	// lorsque l'utilisateur a change l'orientation,
+	// on emet un signal avec la valeur de la nouvelle orientation
+	connect(spin_box_, SIGNAL(editingFinished()),
+		this, SLOT(emitChangeSignals()));
 	
 	// dispose les widgets : le QTextOrientationWidget a gauche, le SpinBox a droite
 	QHBoxLayout *main_layout = new QHBoxLayout();
@@ -128,7 +149,8 @@ void QTextOrientationSpinBoxWidget::build() {
 /**
 	Emet le signal orientationEditingFinished avec la valeur de l'orientation en cours
 */
-void QTextOrientationSpinBoxWidget::emitChangeSignals() {
+void QTextOrientationSpinBoxWidget::emitChangeSignals()
+{
 	emit(editingFinished(orientation()));
 	emit(editingFinished());
 }

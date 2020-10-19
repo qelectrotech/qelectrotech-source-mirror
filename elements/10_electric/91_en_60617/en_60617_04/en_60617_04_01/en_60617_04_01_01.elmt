@@ -1,4 +1,4 @@
-<definition width="60" height="20" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="10">
+<definition width="60" height="20" type="element" hotspot_x="24" version="0.70" link_type="simple" hotspot_y="10">
     <uuid uuid="{d9d0c1f5-c679-4e38-a3cf-a24ee5af2d8e}"/>
     <names>
         <name lang="de">Widerstand

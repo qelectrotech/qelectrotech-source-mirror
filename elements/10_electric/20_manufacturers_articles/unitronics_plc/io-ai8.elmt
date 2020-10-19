@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="52" width="390" height="110" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="52" width="390" height="110" link_type="simple" hotspot_x="15">
     <uuid uuid="{8e85fa22-713e-44c2-bd75-bd859e809f81}"/>
     <names>
         <name lang="en">IO-AI8</name>

@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,10 +28,10 @@ class Diagram;
 class CrossRefItem;
 
 /**
- * @brief The ElementTextItemGroup class
- * This class represent a group of element text
- * Texts in the group can be aligned left / center /right
- */
+	@brief The ElementTextItemGroup class
+	This class represent a group of element text
+	Texts in the group can be aligned left / center /right
+*/
 class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 {
 	Q_OBJECT
@@ -81,7 +81,9 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void fromXml(QDomElement &dom_element);
 		static QString xmlTaggName() {return QString("texts_group");}
 		
-		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		void paint(QPainter *painter,
+			   const QStyleOptionGraphicsItem *option,
+			   QWidget *widget) override;
 		QRectF boundingRect() const override;
 		void setRotation(qreal angle);
 		void setPos(const QPointF &pos);
@@ -90,8 +92,10 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
-		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
-		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(
+				QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(
+				QGraphicsSceneMouseEvent *event) override;
 		void keyPressEvent(QKeyEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
@@ -105,9 +109,9 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		Qt::Alignment m_alignment = Qt::AlignJustify;
 		QString m_name;
 		bool m_first_move = true,
-			 m_hold_to_bottom_of_page = false,
-			 m_block_alignment_update = false,
-			 m_frame = false;
+		m_hold_to_bottom_of_page = false,
+		m_block_alignment_update = false,
+		m_frame = false;
 		QPointF m_initial_position;
 		int m_vertical_adjustment = 0;
 		CrossRefItem *m_Xref_item = nullptr;
@@ -115,7 +119,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		QList<QMetaObject::Connection> m_update_slave_Xref_connection;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		QMetaObject::Connection m_XrefChanged_timer,
-								m_linked_changed_timer;
+		m_linked_changed_timer;
 };
 
 #endif // ELEMENTTEXTITEMGROUP_H

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
+<definition type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
     <uuid uuid="{285ccb4d-4ad4-4944-a5ab-6830c281f88f}"/>
     <names>
         <name lang="fr">406884 - Disjoncteur 20A C 6kA - Auto/Vis</name>

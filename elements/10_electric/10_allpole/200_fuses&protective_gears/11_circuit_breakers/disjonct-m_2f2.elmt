@@ -1,4 +1,4 @@
-<definition version="0.70" height="60" type="element" width="40" hotspot_x="30" link_type="master" hotspot_y="34" orientation="dyyy">
+<definition version="0.70" height="60" type="element" width="40" hotspot_x="30" link_type="master" hotspot_y="34">
     <uuid uuid="{315bc1e6-0466-4d2f-a6e4-547252f6bd16}"/>
     <names>
         <name lang="ar">قطب ثنائي القطبية قطبين محميين</name>

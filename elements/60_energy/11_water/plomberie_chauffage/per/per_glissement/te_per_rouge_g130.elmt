@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="44" orientation="dyyy" hotspot_y="12" version="0.51" link_type="simple" width="70" type="element">
+<definition height="50" hotspot_x="44" hotspot_y="12" version="0.51" link_type="simple" width="70" type="element">
     <uuid uuid="{759f1a8e-609a-4e84-9c78-13ad59ac57e1}"/>
     <names>
         <name lang="fr">Raccord PER glissement </name>

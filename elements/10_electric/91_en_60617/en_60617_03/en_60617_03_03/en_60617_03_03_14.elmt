@@ -1,4 +1,4 @@
-<definition hotspot_x="54" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="60" type="element" link_type="simple">
+<definition hotspot_x="54" version="0.70" height="30" hotspot_y="24" width="60" type="element" link_type="simple">
     <uuid uuid="{bafc7129-e327-4178-a757-a1aa14c87ee1}"/>
     <names>
         <name lang="fr">Jack de coupure ou de séparation, type

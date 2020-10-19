@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="24" hotspot_y="33" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="24" hotspot_y="33" height="50" type="element" ic="true">
 <uuid uuid="{1996DFCE-0653-4223-AD34-6522E2A4C847}"/><names>
         <name lang="es">Torre de refrigeración</name>
     </names>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -37,7 +37,8 @@ HelperCell::HelperCell(QGraphicsItem *parent) :
 /**
 	Destructor
 */
-HelperCell::~HelperCell() {
+HelperCell::~HelperCell()
+{
 }
 
 /**
@@ -56,7 +57,8 @@ void HelperCell::setGeometry(const QRectF &g) {
 	@param constraint New value for the size hint
 	@return the size hint for \a which using the width or height of \a constraint
 */
-QSizeF HelperCell::sizeHint(Qt::SizeHint which, const QSizeF &constraint) const {
+QSizeF HelperCell::sizeHint(Qt::SizeHint which, const QSizeF &constraint) const
+{
 	Q_UNUSED(which);
 	return(constraint);
 }
@@ -64,7 +66,8 @@ QSizeF HelperCell::sizeHint(Qt::SizeHint which, const QSizeF &constraint) const 
 /**
 	@return the bounding rect of this helper cell
 */
-QRectF HelperCell::boundingRect() const {
+QRectF HelperCell::boundingRect() const
+{
 	return QRectF(QPointF(0,0), geometry().size());
 }
 
@@ -114,7 +117,8 @@ void HelperCell::setActions(const QList<QAction *> &actions) {
 /**
 	@return the list of actions displayed by the context menu of this helper cell.
 */
-QList<QAction *> HelperCell::actions() const {
+QList<QAction *> HelperCell::actions() const
+{
 	return actions_;
 }
 

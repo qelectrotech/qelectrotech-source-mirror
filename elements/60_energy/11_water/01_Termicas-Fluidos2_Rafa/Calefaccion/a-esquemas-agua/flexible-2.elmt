@@ -1,18 +1,25 @@
-<definition width="50" version="0.4" hotspot_x="24" hotspot_y="15" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{2B70B517-24A6-46C0-B83E-3C7802168181}"/><names>
+<definition hotspot_y="15" type="element" height="30" version="0.80" width="50" hotspot_x="24" link_type="simple">
+    <uuid uuid="{eeac60fe-46cd-4dbd-906d-318c0263ed92}"/>
+    <names>
         <name lang="es">Flexible2</name>
+        <name lang="en">Flexible2</name>
         <name lang="ca">Flexible2</name>
+        <name lang="fr">Flexible2</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="11" y2="0" x2="21"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8954" x1="10" y2="10.8866" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8954" x1="-10" y2="10.8866" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="-10"/>
-        <ellipse width="18" x="-9" y="-13" antialias="true" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-8" y="-16.5" size="3" rotate="true" text="_" tagg="label"/>
-        <terminal x="-20" y="0" orientation="w"/>
-        <terminal x="21" y="0" orientation="e"/>
+        <line end1="none" antialias="false" length1="1.5" x1="11" end2="none" length2="1.5" x2="21" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <line end1="none" antialias="false" length1="1.5" x1="10" end2="none" length2="1.5" x2="10" y2="10.8866" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8954"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-10" end2="none" length2="1.5" x2="-10" y2="10.8866" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10.8954"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-20" end2="none" length2="1.5" x2="-10" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0"/>
+        <ellipse antialias="true" height="26" width="18" x="-9" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-8" y="-23" uuid="{ca2e527e-5253-414e-a34c-91b0489a7890}" z="6" font="Sans Serif,3,-1,5,25,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="-20" y="0" uuid="{d72939ba-5076-409e-8a2b-b74eec824f83}" name="" orientation="w"/>
+        <terminal x="21" y="0" uuid="{02ebb170-1f4a-4b20-b8ff-274a69976869}" name="" orientation="e"/>
     </description>
 </definition>

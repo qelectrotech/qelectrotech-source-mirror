@@ -1,4 +1,4 @@
-<definition height="100" version="0.70" orientation="dyyy" width="110" hotspot_x="87" type="element" hotspot_y="90" link_type="simple">
+<definition height="100" version="0.70" width="110" hotspot_x="87" type="element" hotspot_y="90" link_type="simple">
     <uuid uuid="{4ebf67a3-d801-4e56-88fb-b744f6ad93c2}"/>
     <names>
         <name lang="fr">Enveloppe avec écran externe</name>

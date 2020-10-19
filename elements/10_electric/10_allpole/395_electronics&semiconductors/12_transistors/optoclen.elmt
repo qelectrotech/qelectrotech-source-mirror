@@ -1,4 +1,4 @@
-<definition link_type="simple" height="50" width="50" orientation="dyyy" version="0.80" type="element" hotspot_y="24" hotspot_x="17">
+<definition link_type="simple" height="50" width="50" version="0.80" type="element" hotspot_y="24" hotspot_x="17">
     <uuid uuid="{e9b44fe1-2a19-4d3a-95d9-22cb54906f8b}"/>
     <names>
         <name lang="pl">Transoptor 2</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="22" link_type="simple" height="50" width="30" type="element" version="0.80" hotspot_x="14" orientation="dyyy">
+<definition hotspot_y="22" link_type="simple" height="50" width="30" type="element" version="0.80" hotspot_x="14">
     <uuid uuid="{a6685b92-0907-4fc0-9f21-19af1972e5a6}"/>
     <names>
         <name lang="fr">Cuve à Fioul 1000L</name>

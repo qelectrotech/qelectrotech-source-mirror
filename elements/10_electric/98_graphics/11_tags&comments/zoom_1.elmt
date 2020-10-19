@@ -1,4 +1,4 @@
-<definition width="60" hotspot_x="36" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="33">
+<definition width="60" hotspot_x="36" type="element" link_type="simple" version="0.5" height="80" hotspot_y="33">
     <uuid uuid="{b2e90561-d722-4db9-99ea-df578571086b}"/>
     <names>
         <name lang="cs">Zoom 1</name>

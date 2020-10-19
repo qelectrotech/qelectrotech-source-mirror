@@ -1,4 +1,4 @@
-<definition link_type="simple" height="40" width="40" orientation="dyyy" version="0.80" type="element" hotspot_y="19" hotspot_x="19">
+<definition link_type="simple" height="40" width="40" version="0.80" type="element" hotspot_y="19" hotspot_x="19">
     <uuid uuid="{3b52c7d1-d848-4b39-be83-98dfb325fab7}"/>
     <names>
         <name lang="en">Graetz</name>

@@ -1,0 +1,47 @@
+<definition width="40" link_type="simple" hotspot_x="20" hotspot_y="28" type="element" version="0.80" height="60">
+    <uuid uuid="{8e43c6eb-db2f-40c1-96dd-d97b1f82f336}"/>
+    <names>
+        <name lang="fr">Prise Plexo  16A</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="nl">Contact AC + aarde</name>
+        <name lang="cs">Zásuvka jednopólová</name>
+        <name lang="ar">مقبس أحادي الوجه</name>
+        <name lang="es">Toma corriente 3P</name>
+        <name lang="en">Outlet 3 poles</name>
+        <name lang="it">Presa monofase</name>
+        <name lang="de">Steckdose 3-polig</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description">Prise Plexo  20A</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation">LEG069731</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" text_from="ElementInfo" frame="false" Valignment="AlignTop" x="19" y="-20" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" z="1" uuid="{9a66ab1b-c9d8-4de6-a786-a16ba182d28f}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length1="1.5" y1="15" antialias="false" x1="0" x2="0" end2="none" y2="22" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="30" antialias="true" x="-15" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" length1="1.5" y1="-11" antialias="false" x1="-10" x2="-10" end2="none" y2="-18" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="-7.5" y="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="-2.5" y="7.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line end1="none" length1="1.5" y1="-11" antialias="false" x1="10" x2="10" end2="none" y2="-18" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="3.5" y="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" length1="1.5" y1="5" antialias="false" x1="0" x2="0" end2="none" y2="3" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" length1="1.5" y1="0.7" antialias="false" x1="2" x2="-2" end2="none" y2="0.7" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" length1="1.5" y1="2.5" antialias="false" x1="-3" x2="3" end2="none" y2="2.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" length1="1.5" y1="-1.1" antialias="false" x1="-1" x2="1" end2="none" y2="-1.1" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="s" x="0" y="22"/>
+        <terminal orientation="n" x="-10" y="-20"/>
+        <terminal orientation="n" x="10" y="-20"/>
+    </description>
+</definition>

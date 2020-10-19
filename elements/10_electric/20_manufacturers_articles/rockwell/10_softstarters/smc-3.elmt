@@ -1,4 +1,4 @@
-<definition width="210" hotspot_y="24" height="100" type="element" hotspot_x="15" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="210" hotspot_y="24" height="100" type="element" hotspot_x="15" version="0.5" link_type="simple">
     <uuid uuid="{76d957af-e47a-458c-93ba-a1f265eeefbb}"/>
     <names>
         <name lang="el">SMC-3</name>

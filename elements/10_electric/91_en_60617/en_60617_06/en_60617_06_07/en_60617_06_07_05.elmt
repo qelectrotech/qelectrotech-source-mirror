@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="85" hotspot_y="106" version="0.70" width="90" type="element" height="110">
+<definition link_type="simple" hotspot_x="85" hotspot_y="106" version="0.70" width="90" type="element" height="110">
     <uuid uuid="{0e9417ee-081e-4449-ba26-e7e1439d61ac}"/>
     <names>
         <name lang="fr">Commutatrice triphasée à excitation en

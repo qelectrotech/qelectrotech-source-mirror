@@ -1,0 +1,53 @@
+<definition version="0.80" link_type="simple" height="210" hotspot_y="32" width="240" type="element" hotspot_x="14">
+    <uuid uuid="{95d8dca7-1f22-46c2-97d9-5046bdae0416}"/>
+    <names>
+        <name lang="pt">6AV6647-0AB11-3AX0_1</name>
+        <name lang="pl">6AV6647-0AB11-3AX0_1</name>
+        <name lang="en">6AV6647-0AB11-3AX0_COLOR</name>
+        <name lang="cs">6AV6647-0AB11-3AX0_1</name>
+        <name lang="ar">6AV6647-0AB11-3AX0_1</name>
+        <name lang="fr">6AV6647-0AB11-3AX0_COULEUR</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect ry="0" y="-28" height="197" antialias="false" x="-9" width="230" style="line-style:normal;line-weight:normal;filling:HTMLWhiteHoneydew;color:black" rx="0"/>
+        <text y="150" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="28" text="P1"/>
+        <text y="136" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="6" text="PROFINET"/>
+        <text y="160" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="166" text="L+"/>
+        <text y="150" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="14" text="X1"/>
+        <text y="-17" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-6" text="KTP600 BASIC MONO"/>
+        <text y="150" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="168" text="24VDC"/>
+        <text y="160" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="187" text="M"/>
+        <circle diameter="5" y="165.5" antialias="true" x="187.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="168" end1="none" x1="173" length2="1.5" antialias="false" x2="187" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="168" length1="1.5" end2="none"/>
+        <circle diameter="5" y="165.5" antialias="true" x="167.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="168" end1="none" x1="166" length2="1.5" antialias="false" x2="167" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="168" length1="1.5" end2="none"/>
+        <rect ry="0" y="140" height="28" antialias="false" x="10" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <line y1="168" end1="none" x1="160" length2="1.5" antialias="false" x2="160" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="140" length1="1.5" end2="none"/>
+        <line y1="140" end1="none" x1="161" length2="1.5" antialias="false" x2="200" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="140" length1="1.5" end2="none"/>
+        <line y1="140" end1="none" x1="200" length2="1.5" antialias="false" x2="200" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="168" length1="1.5" end2="none"/>
+        <line y1="168" end1="none" x1="193" length2="1.5" antialias="false" x2="199" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="168" length1="1.5" end2="none"/>
+        <rect ry="0" y="-10" height="130" antialias="false" x="10" width="191" style="line-style:normal;line-weight:normal;filling:cyan;color:black" rx="0"/>
+        <rect ry="0" y="165" height="3" antialias="false" x="12" width="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <dynamic_text Valignment="AlignTop" y="170.5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" uuid="{7cf2a61a-12c5-472b-ae59-dcc308cf5a01}" text_width="-1" text_from="ElementInfo" x="192" z="20" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="171" uuid="{3c321555-09c9-41bb-a419-38e4a99de6eb}" x="170" orientation="s" name=""/>
+        <terminal y="171" uuid="{2356c7d3-37e1-43d2-b9d5-2c204400a597}" x="190" orientation="s" name=""/>
+        <terminal y="169" uuid="{e126b89c-4359-428b-840a-8fddbb3a97f9}" x="25" orientation="s" name=""/>
+    </description>
+</definition>

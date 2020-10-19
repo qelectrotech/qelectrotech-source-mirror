@@ -1,0 +1,32 @@
+<definition link_type="simple" type="element" height="60" width="40" hotspot_y="14" version="0.80" hotspot_x="10">
+    <uuid uuid="{d2bf7256-6690-4842-bba5-78249b6bc2dd}"/>
+    <names>
+        <name lang="ar">عدّاد طاقة</name>
+        <name lang="nl">Energiemeter</name>
+        <name lang="fr">Compteur d’énergie</name>
+        <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
+        <name lang="en">Energy meter</name>
+        <name lang="de">Energiezähler</name>
+        <name lang="pl">Licznik energii</name>
+        <name lang="cs">Počítadlo energie</name>
+        <name lang="it">Misuratore di Kwh</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="1" uuid="{abf55041-7474-478c-8be2-dcee2e7588b7}" text_from="ElementInfo" y="4.05" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="10" length2="1.5" length1="1.5" x2="26" y1="10" x1="-6" end2="none"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="32" ry="0" x="-6" rx="0" y="0"/>
+        <text text="kWh" font="Sans Serif,10,-1,5,50,0,0,0,0,0" rotation="0" x="-4" y="30" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" length2="1.5" length1="1.5" x2="0" y1="-10" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" length2="1.5" length1="1.5" x2="20" y1="-10" x1="20" end2="none"/>
+        <terminal orientation="n" name="" x="0" uuid="{03d908a7-2a9f-4b60-b172-08c7c756cd01}" y="-10"/>
+        <terminal orientation="n" name="" x="20" uuid="{7ef7e4a7-50ba-4ec8-809b-6d9e38409d0b}" y="-10"/>
+        <terminal orientation="s" name="" x="20" uuid="{c60858e1-7881-42f1-bdcb-bbd15b54ef53}" y="40"/>
+        <terminal orientation="s" name="" x="0" uuid="{2fb54887-25b8-4ff4-9211-b8bc67fe7623}" y="40"/>
+    </description>
+</definition>

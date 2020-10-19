@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="40" version="0.5" hotspot_y="33" link_type="simple" width="80" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="40" version="0.5" hotspot_y="33" link_type="simple" width="80" height="60">
     <uuid uuid="{1bc98377-7c91-4de6-9a02-f8de3af35c5a}"/>
     <names>
         <name lang="de">Ausgangs Schritt</name>

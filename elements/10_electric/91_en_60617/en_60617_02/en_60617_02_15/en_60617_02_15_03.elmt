@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="50" type="element" hotspot_y="21" link_type="simple" hotspot_x="25" height="60">
+<definition version="0.70" width="50" type="element" hotspot_y="21" link_type="simple" hotspot_x="25" height="60">
     <uuid uuid="{73060add-5e3d-422c-997d-7f4d4eb5e479}"/>
     <names>
         <name lang="fr">Terre de protection</name>

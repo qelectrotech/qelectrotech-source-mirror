@@ -1,4 +1,4 @@
-<definition hotspot_y="29" orientation="dyyy" version="0.80" hotspot_x="33" link_type="simple" height="60" type="element" width="130">
+<definition hotspot_y="29" version="0.80" hotspot_x="33" link_type="simple" height="60" type="element" width="130">
     <uuid uuid="{32c136e8-678e-4661-8529-5a53a99fe367}"/>
     <names>
         <name lang="es">Interruptor de 3 posiciones</name>

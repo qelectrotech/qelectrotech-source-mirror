@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{4e7181b5-3229-4260-abdb-4f68631f8d23}"/>
     <names>
         <name lang="en">Evaporation pump</name>

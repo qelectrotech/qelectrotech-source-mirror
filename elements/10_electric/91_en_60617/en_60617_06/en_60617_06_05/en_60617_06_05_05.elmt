@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="165" hotspot_y="97" version="0.70" width="190" type="element" height="100">
+<definition link_type="simple" hotspot_x="165" hotspot_y="97" version="0.70" width="190" type="element" height="100">
     <uuid uuid="{34faf335-d71b-447d-8990-0373e2c11564}"/>
     <names>
         <name lang="fr">Convertisseur rotatif, DC/DC avec enroulement

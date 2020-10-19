@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="18">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="40" hotspot_y="18">
     <uuid uuid="{4431b788-b578-45e0-a645-c1a191f33629}"/>
     <names>
         <name lang="cs">Odlučovač</name>

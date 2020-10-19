@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="20" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="13">
+<definition link_type="simple" type="element" width="20" hotspot_y="44" height="70" version="0.70" hotspot_x="13">
     <uuid uuid="{94e3e2d2-68a1-4f90-8cc6-b1aaa10cad25}"/>
     <names>
         <name lang="fr">Contact de passage fermant momentanément

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="90" height="50" hotspot_y="24" hotspot_x="65" version="0.70" link_type="simple">
+<definition type="element" width="90" height="50" hotspot_y="24" hotspot_x="65" version="0.70" link_type="simple">
     <uuid uuid="{1afa01aa-7422-4599-9b4f-2d835860504e}"/>
     <names>
         <name lang="de">Antrieb mit zwei getrennten Wicklungen,

@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{6e734340-3c48-4415-84d3-8572379da228}"/>
     <names>
         <name lang="cs">Tlakové čerpadlo</name>

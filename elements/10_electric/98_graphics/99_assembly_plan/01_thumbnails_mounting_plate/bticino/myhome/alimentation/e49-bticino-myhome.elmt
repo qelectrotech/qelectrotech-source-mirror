@@ -1,4 +1,4 @@
-<definition height="250" hotspot_y="114" type="element" hotspot_x="45" width="90" orientation="dyyy" link_type="simple" version="0.80">
+<definition height="250" hotspot_y="114" type="element" hotspot_x="45" width="90" link_type="simple" version="0.80">
     <uuid uuid="{ab1927bb-4fe6-4949-b54a-8aec3a15f0e5}"/>
     <names>
         <name lang="fr">Alimentation modulaire MyHOME_Up 0,6A - 2 modules - 230V~ et 27V=</name>

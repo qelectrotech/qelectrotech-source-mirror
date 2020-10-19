@@ -1,0 +1,35 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{7c96412d-f0f7-4c70-863f-5ae966f3dd96}"/>
+    <names>
+        <name lang="cs">Ohřívač vody</name>
+        <name lang="pl">Ogrzewacz wody</name>
+        <name lang="ar">سخّان ماء</name>
+        <name lang="de">Wasserkocher</name>
+        <name lang="en">Water heater</name>
+        <name lang="el">Θερμοσίφωνας</name>
+        <name lang="nl">Water verwarmer</name>
+        <name lang="it">Scalda acqua</name>
+        <name lang="fr">Chauffe-eau</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-30" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="25" uuid="{8253482a-16e0-454f-befd-3c7214306f46}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-10" length2="1.5" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="10" y1="17" length2="1.5" y2="17" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="10" y1="5" length2="1.5" y2="5" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-11" end2="none" antialias="false" x2="11" y1="14" length2="1.5" y2="14" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-11" end2="none" antialias="false" x2="11" y1="8" length2="1.5" y2="8" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-12" end2="none" antialias="false" x2="12" y1="11" length2="1.5" y2="11" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="-12.0416" diameter="24.0832" y="-1.0415" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="24" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{95b5d1dd-00b1-463a-933f-84bbd0c11e8a}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{e1f7aa54-6f70-4e5a-8b3a-6d2fc74fc2b9}"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{9b3b1807-62ba-40d9-a324-4f476afe692e}"/>
+    </description>
+</definition>

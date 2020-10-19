@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="50" orientation="dyyy" type="element" link_type="simple" height="80" hotspot_y="39" version="0.51">
+<definition width="100" hotspot_x="50" type="element" link_type="simple" height="80" hotspot_y="39" version="0.51">
     <uuid uuid="{04a3553b-ac9a-44cb-92f6-06676b3eaa94}"/>
     <names>
         <name lang="en">3TX7004-3PB74</name>

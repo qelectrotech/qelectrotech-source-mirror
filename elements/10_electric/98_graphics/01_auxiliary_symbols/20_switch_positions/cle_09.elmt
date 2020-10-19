@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="13" width="30" hotspot_y="17" orientation="dyyy" height="20">
+<definition version="0.5" link_type="simple" type="element" hotspot_x="13" width="30" hotspot_y="17" height="20">
     <uuid uuid="{fc4eb4c3-aa1b-48c0-bbdb-00db1e6a4b2d}"/>
     <names>
         <name lang="el">Διακόπτης με κλειδί</name>

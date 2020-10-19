@@ -1,4 +1,4 @@
-<definition height="100" version="0.5" width="170" hotspot_x="24" type="element" link_type="simple" hotspot_y="63" orientation="dyyy">
+<definition height="100" version="0.5" width="170" hotspot_x="24" type="element" link_type="simple" hotspot_y="63">
     <uuid uuid="{0c228656-f61c-411c-a812-a164ec9d4330}"/>
     <names>
         <name lang="en">Filter, regulator, pressure gauge</name>

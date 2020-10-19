@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" hotspot_y="53" height="80" hotspot_x="67" link_type="simple" width="150" version="0.5">
+<definition type="element" hotspot_y="53" height="80" hotspot_x="67" link_type="simple" width="150" version="0.5">
 <uuid uuid="{90F688E8-A71A-49DF-B9F0-7519EE487A13}"/><names>
         <name lang="es">Roof-top Simpli</name>
     </names>

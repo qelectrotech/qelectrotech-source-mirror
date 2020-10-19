@@ -1,4 +1,4 @@
-<definition height="20" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="0" orientation="dyyy">
+<definition height="20" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="0">
     <uuid uuid="{43bc9f46-d7b4-48cf-b3f3-8d430f311c7f}"/>
     <names>
         <name lang="en">Element electric cable</name>

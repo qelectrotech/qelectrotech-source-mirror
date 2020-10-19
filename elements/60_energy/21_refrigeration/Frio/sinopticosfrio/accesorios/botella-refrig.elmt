@@ -1,4 +1,4 @@
-<definition hotspot_y="37" link_type="simple" height="60" width="30" type="element" version="0.80" hotspot_x="14" orientation="dyyy">
+<definition hotspot_y="37" link_type="simple" height="60" width="30" type="element" version="0.80" hotspot_x="14">
     <uuid uuid="{76a02ef0-da89-423a-9f41-e12c8e3757a6}"/>
     <names>
         <name lang="fr">Bouteille de réfrigérant</name>

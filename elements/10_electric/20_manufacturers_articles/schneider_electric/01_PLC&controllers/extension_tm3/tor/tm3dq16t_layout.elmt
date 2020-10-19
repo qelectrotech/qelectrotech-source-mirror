@@ -1,4 +1,4 @@
-<definition hotspot_y="8" width="70" type="element" version="0.5" height="240" orientation="dyyy" link_type="simple" hotspot_x="6">
+<definition hotspot_y="8" width="70" type="element" version="0.5" height="240" link_type="simple" hotspot_x="6">
     <uuid uuid="{b67e5832-908b-4a3e-9615-ee5f28348689}"/>
     <names>
         <name lang="en">Output transitors TM3DQ16T: layaout</name>

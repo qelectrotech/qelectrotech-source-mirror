@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="16" height="100" width="490" type="element" hotspot_y="24" orientation="dyyy">
+<definition version="0.80" link_type="simple" hotspot_x="16" height="100" width="490" type="element" hotspot_y="24">
     <uuid uuid="{906d4112-cced-4d1d-9216-2817ffcd50d2}"/>
     <names>
         <name lang="fr">ACS300</name>

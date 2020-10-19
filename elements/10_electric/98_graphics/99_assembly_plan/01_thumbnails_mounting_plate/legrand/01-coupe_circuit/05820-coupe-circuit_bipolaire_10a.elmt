@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" orientation="dyyy" type="element" width="50" height="210">
+<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" type="element" width="50" height="210">
     <uuid uuid="{ba403243-eb9d-4e24-8207-b2afc6868004}"/>
     <names>
         <name lang="fr">05820 - Coupe-circuit bipolaire 10A</name>

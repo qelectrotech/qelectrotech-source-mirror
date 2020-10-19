@@ -1,4 +1,4 @@
-<definition hotspot_x="105" hotspot_y="85" orientation="dyyy" type="element" version="0.70" height="250" link_type="simple" width="190">
+<definition hotspot_x="105" hotspot_y="85" type="element" version="0.70" height="250" link_type="simple" width="190">
     <uuid uuid="{78dfa959-dc21-4ffc-85c3-aeaa4a8f9ed3}"/>
     <names>
         <name lang="de">Abstimm-Anzeigeröhre

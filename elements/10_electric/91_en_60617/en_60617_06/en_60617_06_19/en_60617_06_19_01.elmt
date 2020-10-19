@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="70" width="70" version="0.70" orientation="dyyy" hotspot_x="25" hotspot_y="25">
+<definition type="element" link_type="simple" height="70" width="70" version="0.70" hotspot_x="25" hotspot_y="25">
     <uuid uuid="{2c63837a-5b3d-4ea8-a2ec-f660aae70e91}"/>
     <names>
         <name lang="fr">Régulateur en boucle fermée</name>

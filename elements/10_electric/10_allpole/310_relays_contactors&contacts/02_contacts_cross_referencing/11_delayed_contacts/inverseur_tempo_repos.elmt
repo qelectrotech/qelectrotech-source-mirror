@@ -1,4 +1,4 @@
-<definition height="50" link_type="slave" version="0.70" hotspot_y="24" orientation="dyyy" width="40" type="element" hotspot_x="33">
+<definition height="50" link_type="slave" version="0.70" hotspot_y="24" width="40" type="element" hotspot_x="33">
     <uuid uuid="{e7b66dbd-a6cb-4907-87b2-eda3b4bc3b45}"/>
     <names>
         <name lang="en">Timed switch rest </name>

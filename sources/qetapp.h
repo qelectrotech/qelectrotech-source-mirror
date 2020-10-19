@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -48,6 +48,7 @@ class QTextOrientationSpinBoxWidget;
 class RecentFiles;
 
 /**
+	@brief The QETApp class
 	This class represents the QElectroTech application.
 */
 class QETApp : public QObject
@@ -112,30 +113,47 @@ class QETApp : public QObject
 	public:
 		static void overrideCommonElementsDir(const QString &);
 	private:
-		static QString common_elements_dir; ///< Directory containing the common elements collection
+		/**
+			@brief common_elements_dir
+			Directory containing the common elements collection
+		*/
+		static QString common_elements_dir;
 #endif
 		
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
 	public:
 		static void overrideCommonTitleBlockTemplatesDir(const QString &);
 	private:
-		static QString common_tbt_dir_; ///< Directory containing the common title block templates collection
+		/**
+			@brief common_tbt_dir_
+			Directory containing
+			the common title block templates collection
+		*/
+		static QString common_tbt_dir_;
 #endif
 		
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	public:
 		static void overrideConfigDir(const QString &);
 	private:
-		static QString config_dir; ///< Directory containing the user configuration and the custom elements collection
+		/**
+			@brief config_dir
+			Directory containing the user configuration
+			and the custom elements collection
+		*/
+		static QString config_dir;
 #endif
 		
 	public:
 		static void overrideLangDir(const QString &);
-		static QString lang_dir; ///< Directory containing localization files.
+		/**
+			@brief lang_dir
+			Directory containing localization files.
+		*/
+		static QString lang_dir;
 		static QFont diagramTextsFont(qreal = -1.0);
 		static QFont diagramTextsItemFont(qreal = -1.0);
 		static QFont dynamicTextsItemFont(qreal = -1.0);
-		static QFont foliolistTextsFont(qreal = -1.0);
 		static QFont indiTextsItemFont (qreal = -1.0);
 		static QETDiagramEditor *diagramEditorForFile(const QString &);
 		static QETDiagramEditor *diagramEditorAncestorOf (const QWidget *child);
@@ -150,7 +168,7 @@ class QETApp : public QObject
 	protected:
 		
 #ifdef Q_OS_DARWIN
-    bool eventFiltrer(QObject *object, QEvent *);
+	bool eventFiltrer(QObject *object, QEvent *);
 #endif
 	
 		// attributes
@@ -182,9 +200,14 @@ class QETApp : public QObject
 		bool every_template_reduced;
 		bool every_template_visible;
 		QSignalMapper signal_map;
-		QETArguments qet_arguments_;        ///< Comand-line arguments parser
-		bool non_interactive_execution_;    ///< Whether the application will end without any user interaction
-		QPalette initial_palette_;          ///< System color palette
+		QETArguments qet_arguments_; ///< Comand-line arguments parser
+		/**
+			@brief non_interactive_execution_
+			Whether the application will end
+			without any user interaction
+		 */
+		bool non_interactive_execution_;
+		QPalette initial_palette_;   ///< System color palette
 		
 		static TitleBlockTemplatesFilesCollection *m_common_tbt_collection;
 		static TitleBlockTemplatesFilesCollection *m_custom_tbt_collection;

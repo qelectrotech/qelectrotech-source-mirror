@@ -1,4 +1,4 @@
-<definition width="1010" hotspot_x="55" type="element" link_type="simple" orientation="dyyy" version="0.5" height="640" hotspot_y="35">
+<definition width="1010" hotspot_x="55" type="element" link_type="simple" version="0.5" height="640" hotspot_y="35">
     <uuid uuid="{a3d2c509-21fb-4c15-a6f0-2219d233fe0d}"/>
     <names>
         <name lang="cs">Mřížka</name>

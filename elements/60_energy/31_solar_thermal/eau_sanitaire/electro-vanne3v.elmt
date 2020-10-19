@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="15">
     <uuid uuid="{498f12f0-6976-46fe-b1ee-512da700fafb}"/>
     <names>
         <name lang="cs">Elektrický uzávěr 3V</name>

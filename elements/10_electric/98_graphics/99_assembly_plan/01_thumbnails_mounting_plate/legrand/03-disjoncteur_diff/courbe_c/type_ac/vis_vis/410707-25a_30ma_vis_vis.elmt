@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" version="0.80" orientation="dyyy" link_type="simple" width="90" hotspot_x="5" height="210">
+<definition hotspot_y="4" type="element" version="0.80" link_type="simple" width="90" hotspot_x="5" height="210">
     <uuid uuid="{db3b7cdc-f774-4e48-9fc5-9edadd9bd327}"/>
     <names>
         <name lang="fr">410707 - Disjoncteur différentiel AC 25A 30mA Haut-Vis/Bas-Vis</name>

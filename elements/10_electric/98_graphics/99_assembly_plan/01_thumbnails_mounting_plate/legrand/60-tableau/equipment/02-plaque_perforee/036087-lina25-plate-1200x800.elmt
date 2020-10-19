@@ -1,0 +1,23 @@
+<definition hotspot_y="5" hotspot_x="5" link_type="simple" type="element" version="0.80" width="1710" height="2610">
+    <uuid uuid="{8d429e3f-6da5-4649-a5f3-689e0b8ebb8e}"/>
+    <names>
+        <name lang="fr">036087 - Plaque perforée Lina 25 1200x800 Atlantic/Marina</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Plaque perforée Lina 25 pour coffret Atlantic , Atlantic Inox et Marina hauteur 1200 x largeur 800</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">036087</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <polygon x30="35" x60="1675" y62="44" x17="22" x8="46" x63="1661" y49="2565" y35="2585" x51="1683" y58="35" x26="22" x43="1659" y61="44" y1="35" x25="22" x21="0" x11="41" y30="2556" x40="1653" style="line-style:normal;line-weight:thin;filling:gray;color:black" y11="38" y12="42" x61="1671" y37="2600" y20="15" y26="2566" y33="2566" x29="29" x42="1658" y22="2580" y21="20" x16="23" y16="38" y34="2580" y38="2600" y50="2580" x3="1653" y19="15" x39="1635" x6="76" x45="1665" x22="0" y54="20" y46="2556" y60="42" x34="42" x50="1678" y9="20" y44="2557" x23="5" y43="2560" y55="15" y14="44" x1="1658" x31="39" x35="47" y52="2585" y64="38" y23="2585" x10="42" x46="1670" x2="1658" x7="65" y25="2580" x38="1625" x49="1678" x28="25" y2="20" y40="2585" y29="2556" x59="1677" x18="22" y36="2585" x52="1695" x48="1677" x12="39" y17="35" x53="1700" x47="1674" y59="38" y18="20" y15="42" x15="25" y32="2562" y3="15" y39="2585" antialias="true" x64="1659" x9="42" y45="2556" x62="1665" y63="42" y7="15" x55="1695" x19="18" x33="42" y57="20" y4="15" x57="1678" x14="29" y48="2560" y13="44" x36="65" y6="0" y53="2580" x4="1635" x5="1625" y41="2580" x24="17" y10="35" x44="1662" x54="1700" y51="2585" y47="2557" x56="1682" y56="15" x37="75" y31="2558" y5="0" y42="2565" x32="41" y27="2562" y8="15" x41="1658" x58="1678" x27="23" x20="5" x13="35" y28="2558" y24="2585"/>
+    </description>
+</definition>

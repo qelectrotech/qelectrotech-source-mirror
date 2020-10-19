@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="21">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="30" hotspot_y="21">
     <uuid uuid="{019d9a9a-0d10-42d8-867e-1cb3c9e097c1}"/>
     <names>
         <name lang="cs">Elektrický ventil</name>

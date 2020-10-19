@@ -1,4 +1,4 @@
-<definition link_type="slave" version="0.80" orientation="dyyy" type="element" width="490" height="620" hotspot_x="15" hotspot_y="14">
+<definition link_type="slave" version="0.80" type="element" width="490" height="620" hotspot_x="15" hotspot_y="14">
     <uuid uuid="{fbaeb233-97c3-44d4-bd34-74071f06fe94}"/>
     <names>
         <name lang="fr">Code_Couleur Cablage</name>

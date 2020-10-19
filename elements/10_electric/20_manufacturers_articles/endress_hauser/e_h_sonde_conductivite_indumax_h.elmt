@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="33" type="element" height="70" width="180" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="33" type="element" height="70" width="180" version="0.5">
     <uuid uuid="{edc84e52-6cf2-431c-bcb7-b6ab21ecadca}"/>
     <names>
         <name lang="pl">Indukcyjna sonda przewodności H CLS54</name>

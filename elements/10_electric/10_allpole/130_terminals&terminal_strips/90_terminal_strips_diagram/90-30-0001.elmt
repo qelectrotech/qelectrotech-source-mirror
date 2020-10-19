@@ -1,4 +1,4 @@
-<definition height="70" hotspot_y="34" hotspot_x="4" version="0.5" orientation="dyyy" width="10" link_type="simple" type="element">
+<definition height="70" hotspot_y="34" hotspot_x="4" version="0.5" width="10" link_type="simple" type="element">
     <uuid uuid="{2ac227dc-33a0-49f5-b8a0-b834d9386b60}"/>
     <names>
         <name lang="de">Kabel Bezeichnungsschild</name>

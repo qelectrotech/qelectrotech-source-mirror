@@ -1,4 +1,4 @@
-<definition width="130" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="100" hotspot_y="25">
+<definition width="130" hotspot_x="24" type="element" link_type="simple" version="0.5" height="100" hotspot_y="25">
     <uuid uuid="{7f0eafb1-d3c3-4248-ae10-f6d3fd6e2e2f}"/>
     <names>
         <name lang="cs">Kolektory</name>

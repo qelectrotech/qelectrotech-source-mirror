@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="50" hotspot_y="31">
+<definition type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="50" hotspot_y="31">
     <uuid uuid="{edc2a7bd-7013-4e80-8ea9-3ce2f5cdd08c}"/>
     <names>
         <name lang="de">T-Abzweig</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="280" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="12" hotspot_x="25" height="110">
+<definition type="element" width="280" version="0.70" link_type="simple" hotspot_y="12" hotspot_x="25" height="110">
     <uuid uuid="{e8dcc95c-de0f-4585-955f-356cd6d5ffd5}"/>
     <names>
         <name lang="hu">G1501S Biztonsági relé</name>

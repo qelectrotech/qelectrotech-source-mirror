@@ -1,4 +1,4 @@
-<definition height="30" version="0.70" orientation="dyyy" width="70" hotspot_x="32" type="element" hotspot_y="15" link_type="simple">
+<definition height="30" version="0.70" width="70" hotspot_x="32" type="element" hotspot_y="15" link_type="simple">
     <uuid uuid="{94b2623d-5b1f-47e2-bb74-0d46513bddbf}"/>
     <names>
         <name lang="fr">Barrière de diffusion d'ions</name>

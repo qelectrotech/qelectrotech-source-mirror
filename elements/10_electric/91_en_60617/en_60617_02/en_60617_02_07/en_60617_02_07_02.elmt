@@ -1,4 +1,4 @@
-<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" hotspot_y="15">
     <uuid uuid="{6f2e36f7-1370-466e-9d90-0f524ac1a60a}"/>
     <names>
         <name lang="de">feste Materie</name>

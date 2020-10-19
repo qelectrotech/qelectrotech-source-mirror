@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="30" hotspot_y="20" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="30" hotspot_y="20" width="50" type="element" link_type="simple">
     <uuid uuid="{078fc4df-bbc4-46a0-9856-5a48a183d991}"/>
     <names>
         <name lang="fr">Rayonnement cohérent, non ionisant, bidirectionnel</name>

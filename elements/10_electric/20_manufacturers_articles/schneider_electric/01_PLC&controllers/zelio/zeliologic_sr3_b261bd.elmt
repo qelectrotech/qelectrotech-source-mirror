@@ -1,4 +1,4 @@
-<definition width="510" height="160" link_type="simple" hotspot_y="54" hotspot_x="130" version="0.5" type="element" orientation="dyyy">
+<definition width="510" height="160" link_type="simple" hotspot_y="54" hotspot_x="130" version="0.5" type="element">
     <uuid uuid="{0423c4bf-089e-4277-b90d-72bbfcb42d3d}"/>
     <names>
         <name lang="cs">Zelio Logic SR3 B261BD</name>

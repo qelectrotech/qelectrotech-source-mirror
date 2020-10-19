@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="20" hotspot_y="9" type="element">
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" height="20" hotspot_y="9" type="element">
     <uuid uuid="{374ed6b3-7329-4cad-ac8c-200b17508460}"/>
     <names>
         <name lang="de">Verdrahtung</name>

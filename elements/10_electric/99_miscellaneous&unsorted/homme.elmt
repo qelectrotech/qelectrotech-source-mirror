@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" version="0.5" hotspot_x="14" orientation="dyyy" height="50" hotspot_y="19" type="element">
+<definition width="40" link_type="simple" version="0.5" hotspot_x="14" height="50" hotspot_y="19" type="element">
     <uuid uuid="{a82ad680-1dc2-438c-9dec-5776093cdff1}"/>
     <names>
         <name lang="pt">Ser humano</name>

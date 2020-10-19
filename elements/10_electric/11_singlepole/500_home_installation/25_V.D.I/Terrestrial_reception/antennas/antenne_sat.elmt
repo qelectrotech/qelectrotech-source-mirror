@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="90" hotspot_x="39" hotspot_y="38" width="100" orientation="dyyy" version="0.51">
+<definition type="element" link_type="simple" height="90" hotspot_x="39" hotspot_y="38" width="100" version="0.51">
     <uuid uuid="{4767fbfe-cb55-4d4a-a83a-a816c3a8694a}"/>
     <names>
         <name lang="fr">Antenne Sat</name>

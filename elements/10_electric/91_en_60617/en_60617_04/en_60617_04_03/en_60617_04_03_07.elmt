@@ -1,4 +1,4 @@
-<definition height="30" type="element" width="50" hotspot_y="17" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="42">
+<definition height="30" type="element" width="50" hotspot_y="17" link_type="simple" version="0.70" hotspot_x="42">
     <uuid uuid="{44a7a23c-946d-4ae6-bde5-36828bd52c81}"/>
     <names>
         <name lang="fr">Inductance variable par contact mobile, à variation

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="10" version="0.51" height="20" type="element" hotspot_x="6" link_type="simple" hotspot_y="10">
+<definition width="10" version="0.51" height="20" type="element" hotspot_x="6" link_type="simple" hotspot_y="10">
     <uuid uuid="{6872dbe4-1397-42a0-b1cd-8144871df45e}"/>
     <names>
         <name lang="fr">Bouchon mâle</name>

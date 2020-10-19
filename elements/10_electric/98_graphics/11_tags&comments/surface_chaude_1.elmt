@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" orientation="dyyy" height="30">
+<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" height="30">
     <uuid uuid="{970474a2-271f-4af7-9359-359bc6a99bfc}"/>
     <names>
         <name lang="el">Θερμή επιφάνεια</name>

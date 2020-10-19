@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,28 +20,29 @@
 
 #include <QUndoCommand>
 #include <QPointer>
+#include <QHash>
 
 class ConductorTextItem;
 class Diagram;
 class QParallelAnimationGroup;
 
 /**
- * @brief The RotateTextsCommand class
- * Open a dialog for edit the rotation of the current selected texts and texts group in diagram.
- * Just instantiate this undo command and push it in a QUndoStack.
- */
+	@brief The RotateTextsCommand class
+	Open a dialog for edit the rotation of the current selected texts and texts group in diagram.
+	Just instantiate this undo command and push it in a QUndoStack.
+*/
 class RotateTextsCommand : public QUndoCommand
 {
 	public:
 		RotateTextsCommand(Diagram *diagram, QUndoCommand *parent=nullptr);
-		
+
 		void undo() override;
 		void redo() override;
-		
+
 	private:
 		void openDialog();
 		void setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end);
-		
+
 	private:
 		QPointer<Diagram> m_diagram;
 		QHash<ConductorTextItem *, bool> m_cond_texts;

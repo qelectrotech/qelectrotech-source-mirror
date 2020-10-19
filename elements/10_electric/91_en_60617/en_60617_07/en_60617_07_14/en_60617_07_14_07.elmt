@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{826368b9-a470-4650-839a-8db3d510069e}"/>
     <names>
         <name lang="de">Anlasser mit Spartransformator</name>

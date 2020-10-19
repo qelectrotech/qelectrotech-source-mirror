@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="7" hotspot_y="25" orientation="dyyy" type="element" height="30" width="10">
+<definition link_type="simple" version="0.70" hotspot_x="7" hotspot_y="25" type="element" height="30" width="10">
     <uuid uuid="{fc56ac29-3e9e-4891-acfc-151c07ad77fd}"/>
     <names>
         <name lang="fr">Effet de claquage dans un seul sens

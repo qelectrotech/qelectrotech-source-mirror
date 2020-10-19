@@ -1,4 +1,4 @@
-<definition hotspot_y="5" orientation="dyyy" height="210" width="50" link_type="simple" hotspot_x="2" type="element" version="0.80">
+<definition hotspot_y="5" height="210" width="50" link_type="simple" hotspot_x="2" type="element" version="0.80">
     <uuid uuid="{3129d286-407f-44af-ac80-e86c49326110}"/>
     <names>
         <name lang="fr">iDT40 Disjoncteur 16A</name>

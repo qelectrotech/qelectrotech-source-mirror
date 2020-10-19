@@ -38,62 +38,62 @@
 #include "singleapplication.h"
 
 struct InstancesInfo {
-    bool primary;
-    quint32 secondary;
-    qint64 primaryPid;
-    quint16 checksum;
+	bool primary;
+	quint32 secondary;
+	qint64 primaryPid;
+	quint16 checksum;
 };
 
 struct ConnectionInfo {
-    explicit ConnectionInfo() :
-        msgLen(0), instanceId(0), stage(0) {}
-    qint64 msgLen;
-    quint32 instanceId;
-    quint8 stage;
+	explicit ConnectionInfo() :
+		msgLen(0), instanceId(0), stage(0) {}
+	qint64 msgLen;
+	quint32 instanceId;
+	quint8 stage;
 };
 
 class SingleApplicationPrivate : public QObject {
-Q_OBJECT
-public:
-    enum ConnectionType : quint8 {
-        InvalidConnection = 0,
-        NewInstance = 1,
-        SecondaryInstance = 2,
-        Reconnect = 3
-    };
-    enum ConnectionStage : quint8 {
-        StageHeader = 0,
-        StageBody = 1,
-        StageConnected = 2,
-    };
-    Q_DECLARE_PUBLIC(SingleApplication)
-
-    SingleApplicationPrivate( SingleApplication *q_ptr );
-     ~SingleApplicationPrivate();
-
-    void genBlockServerName();
-    void initializeMemoryBlock();
-    void startPrimary();
-    void startSecondary();
-    void connectToPrimary(int msecs, ConnectionType connectionType );
-    quint16 blockChecksum();
-    qint64 primaryPid();
-    void readInitMessageHeader(QLocalSocket *socket);
-    void readInitMessageBody(QLocalSocket *socket);
-
-    SingleApplication *q_ptr;
-    QSharedMemory *memory;
-    QLocalSocket *socket;
-    QLocalServer *server;
-    quint32 instanceNumber;
-    QString blockServerName;
-    SingleApplication::Options options;
-    QMap<QLocalSocket*, ConnectionInfo> connectionMap;
-
-public Q_SLOTS:
-    void slotConnectionEstablished();
-    void slotDataAvailable( QLocalSocket*, quint32 );
-    void slotClientConnectionClosed( QLocalSocket*, quint32 );
+	Q_OBJECT
+	public:
+	enum ConnectionType : quint8 {
+		InvalidConnection = 0,
+		NewInstance = 1,
+		SecondaryInstance = 2,
+		Reconnect = 3
+	};
+	enum ConnectionStage : quint8 {
+		StageHeader = 0,
+		StageBody = 1,
+		StageConnected = 2,
+	};
+	Q_DECLARE_PUBLIC(SingleApplication)
+	
+	SingleApplicationPrivate( SingleApplication *q_ptr );
+	~SingleApplicationPrivate();
+	
+	void genBlockServerName();
+	void initializeMemoryBlock();
+	void startPrimary();
+	void startSecondary();
+	void connectToPrimary(int msecs, ConnectionType connectionType );
+	quint16 blockChecksum();
+	qint64 primaryPid();
+	void readInitMessageHeader(QLocalSocket *socket);
+	void readInitMessageBody(QLocalSocket *socket);
+	
+	SingleApplication *q_ptr;
+	QSharedMemory *memory;
+	QLocalSocket *socket;
+	QLocalServer *server;
+	quint32 instanceNumber;
+	QString blockServerName;
+	SingleApplication::Options options;
+	QMap<QLocalSocket*, ConnectionInfo> connectionMap;
+	
+	public Q_SLOTS:
+	void slotConnectionEstablished();
+	void slotDataAvailable( QLocalSocket*, quint32 );
+	void slotClientConnectionClosed( QLocalSocket*, quint32 );
 };
 
 #endif // SINGLEAPPLICATION_P_H

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -39,6 +39,7 @@ void ReportPropertieWidget::setReportProperties(const QString& label) {
 	ui->line_edit->setText(label);
 }
 
-QString ReportPropertieWidget::ReportProperties() const {
+QString ReportPropertieWidget::ReportProperties() const
+{
 	return ui->line_edit->text();
 }

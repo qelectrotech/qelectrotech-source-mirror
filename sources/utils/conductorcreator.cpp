@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,11 +28,12 @@
 #include <QPolygonF>
 
 /**
- * @brief ConductorCreator::ConductorCreator
- * Create an electrical potential between all terminals of @terminals_list.
- * the terminals of the list must be in the same diagram.
- * @param terminals_list
- */
+	@brief ConductorCreator::ConductorCreator
+	Create an electrical potential between all terminals of terminals_list.
+	the terminals of the list must be in the same diagram.
+	@param d Diagram
+	@param terminals_list QList<Terminal *>
+*/
 ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list) :
 	m_terminals_list(terminals_list)
 {
@@ -68,11 +69,11 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 }
 
 /**
- * @brief ConductorCreator::create
- * Create an electrical potential between the terminals of the diagram d, contained in the polygon
- * @param d
- * @param polygon : polygon in diagram coordinate
- */
+	@brief ConductorCreator::create
+	Create an electrical potential between the terminals of the diagram d, contained in the polygon
+	@param d Diagram
+	@param polygon : polygon in diagram coordinate
+*/
 void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 {
 	QList<Terminal *> t_list;
@@ -92,9 +93,9 @@ void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 }
 
 /**
- * @brief ConductorCreator::propertieToUse
- * @return the conductor properties to use for the new conductors.
- */
+	@brief ConductorCreator::propertieToUse
+	@return the conductor properties to use for the new conductors.
+*/
 void ConductorCreator::setUpPropertieToUse()
 {
 	QList<Conductor *> potentials = existingPotential();
@@ -130,11 +131,11 @@ void ConductorCreator::setUpPropertieToUse()
 }
 
 /**
- * @brief ConductorCreator::existingPotential
- * Return the list of existing potential of
- * the terminal list
- * @return 
- */
+	@brief ConductorCreator::existingPotential
+	Return the list of existing potential of
+	the terminal list
+	@return c_list QList<Conductor *>
+*/
 QList<Conductor *> ConductorCreator::existingPotential()
 {
 	QList<Conductor *> c_list;
@@ -174,9 +175,9 @@ QList<Conductor *> ConductorCreator::existingPotential()
 }
 
 /**
- * @brief ConductorCreator::hubTerminal
- * @return 
- */
+	@brief ConductorCreator::hubTerminal
+	@return hub_terminal
+*/
 Terminal *ConductorCreator::hubTerminal()
 {
 	Terminal *hub_terminal = m_terminals_list.first();

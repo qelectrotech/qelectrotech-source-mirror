@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,9 +24,9 @@
 
 class Diagram;
 /**
- * @brief The ChangeTitleBlockCommand class
- * This command changes the title block properties for a particular diagram.
- */
+	@brief The ChangeTitleBlockCommand class
+	This command changes the title block properties for a particular diagram.
+*/
 class ChangeTitleBlockCommand : public QUndoCommand
 {
 	public:

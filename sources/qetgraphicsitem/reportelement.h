@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,23 +21,27 @@
 #include "element.h"
 
 /**
- * @brief The ReportElement class
+	@brief The ReportElement class
  *this class represent an element that can be linked to an other ReportElement
- * a folio report in a diagram is a element that show a wire go on an other folio
- */
+	a folio report in a diagram is a element that show a wire go on an other folio
+*/
 class ReportElement : public Element
 {
 	Q_OBJECT
 
 	public :
-		explicit ReportElement(const ElementsLocation &,const QString& link_type, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit ReportElement(
+			const ElementsLocation &,
+			const QString& link_type,
+			QGraphicsItem * = nullptr,
+			int * = nullptr);
 		~ReportElement() override;
 		void linkToElement(Element *) override;
 		void unlinkAllElements() override;
 		void unlinkElement(Element *elmt) override;
 		
 	private:
-		int              m_inverse_report;
+		int m_inverse_report;
 };
 
 #endif // REPORTELEMENT_H

@@ -1,0 +1,49 @@
+<definition link_type="master" type="element" height="300" width="130" hotspot_y="295" version="0.80" hotspot_x="5">
+    <uuid uuid="{1c816307-fb32-46da-a431-b46bd8822492}"/>
+    <names>
+        <name lang="fr">Volet Roulant</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="5" uuid="{34d72c65-7ab2-42e2-bdcb-9a31450a3b1e}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="8" uuid="{a17a1b2d-b9ae-48fb-b9e4-44ebd5a4c9b6}" text_from="UserText" y="-63" Halignment="AlignLeft">
+            <text>Local</text>
+        </dynamic_text>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-32" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-360" height="20" width="20" start="90" x="70" y="-150"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" height="20" width="20" start="90" x="39.1867" y="-157.603"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-150" length2="1.5" length1="1.5" x2="80" y1="-157.571" x1="48.7293" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-105" length2="1.5" length1="1.5" x2="90" y1="-140" x1="90" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-116" length2="1.5" length1="1.5" x2="50" y1="-105" x1="90" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-115.959" length2="1.5" length1="1.5" x2="50" y1="-137.041" x1="50" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-127.641" length2="1.5" length1="1.5" x2="89.2678" y1="-137.641" x1="49.2678" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-360" height="10" width="10" start="270" x="75" y="-145"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="40" uuid="{8655735a-e6be-4a60-9c9a-0113b9beee0d}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="41" uuid="{c1241711-c9b3-4a9a-97df-e40117c0addd}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="42" uuid="{811f6149-a0cf-4902-af2e-aaad9a48b315}" text_from="UserText" y="-81.5" Halignment="AlignLeft">
+            <text>Volet roulant</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-150" length2="1.5" length1="1.5" x2="80" y1="-160" x1="80" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-155" length2="1.5" length1="1.5" x2="60" y1="-160" x1="60" end2="none"/>
+        <terminal orientation="n" name="" x="60" uuid="{8b2a6bb1-7a4c-46de-aa44-5fbdcb533428}" y="-290"/>
+        <terminal orientation="n" name="" x="80" uuid="{6b9b3623-d2f0-462d-93ec-e94e69e55e13}" y="-160"/>
+        <terminal orientation="s" name="" x="70" uuid="{131f5912-8cd1-45cd-b213-143c3f2d033a}" y="-110"/>
+        <terminal orientation="n" name="" x="60" uuid="{291587e7-b88d-42f2-a15f-6953b4ecd85a}" y="-160"/>
+    </description>
+</definition>

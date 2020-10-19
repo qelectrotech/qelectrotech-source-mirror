@@ -1,4 +1,4 @@
-<definition height="110" link_type="master" hotspot_x="245" orientation="dyyy" hotspot_y="54" width="450" type="element" version="0.5">
+<definition height="110" link_type="master" hotspot_x="245" hotspot_y="54" width="450" type="element" version="0.5">
     <uuid uuid="{6ebe6646-5364-4c92-b28f-6be9841431b6}"/>
     <names>
         <name lang="nl">ATV312-M3/N4/S6</name>

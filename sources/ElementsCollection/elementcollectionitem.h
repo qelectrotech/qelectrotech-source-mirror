@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,11 +21,11 @@
 #include <QStandardItem>
 
 /**
- * @brief The ElementCollectionItem class
- * This class represent a item (a directory or an element) in a element collection.
- * This class must be herited for specialisation.
- * This item is used by ElementsCollectionModel for manage the elements collection
- */
+	@brief The ElementCollectionItem class
+	This class represent a item (a directory or an element) in a element collection.
+	This class must be herited for specialisation.
+	This item is used by ElementsCollectionModel for manage the elements collection
+*/
 class ElementCollectionItem : public QStandardItem
 {
 	public:

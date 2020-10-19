@@ -32,64 +32,66 @@
 #include "elementtextitemgroup.h"
 #include "qetgraphicstableitem.h"
 #include "graphicstablepropertieseditor.h"
-#include "nomenclaturemodel.h"
-#include "nomenclaturemodelpropertieswidget.h"
+#include "projectdbmodelpropertieswidget.h"
+#include "projectdbmodel.h"
 
 /**
- * @brief PropertiesEditorFactory::propertiesEditor
- * @param model : the model to be edited
- * @param editor : if the properties editor to be created is the same class as @editor, the this function set @item as edited item of @editor and return editor
- * @param parent : parent widget of the returned editor
- * @return an editor or nullptr
- */
-PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QAbstractItemModel *model, PropertiesEditorWidget *editor, QWidget *parent)
+	@brief PropertiesEditorFactory::propertiesEditor
+	@param model : the model to be edited
+	@param editor :
+	if the properties editor to be created is the same class as editor,
+	the this function set item as edited item of editor and return editor
+	@param parent : parent widget of the returned editor
+	@return an editor or nullptr
+*/
+PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
+		QAbstractItemModel *model,
+		PropertiesEditorWidget *editor,
+		QWidget *parent)
 {
-	Q_UNUSED(model)
-	Q_UNUSED(editor)
-	Q_UNUSED(parent)
-
-	if (auto m = static_cast<NomenclatureModel *>(model))
+	if (auto m = static_cast<ProjectDBModel *>(model))
 	{
 		if (editor &&
-			editor->metaObject()->className() == NomenclatureModelPropertiesWidget::staticMetaObject.className())
+			editor->metaObject()->className()
+				== ProjectDBModelPropertiesWidget::staticMetaObject.className())
 		{
-			static_cast<NomenclatureModelPropertiesWidget *>(editor)->setModel(m);
+			static_cast<ProjectDBModelPropertiesWidget *>(editor)->setModel(m);
 			return editor;
 		}
-		return new NomenclatureModelPropertiesWidget(m, parent);
+		return new ProjectDBModelPropertiesWidget(m, parent);
 	}
 	return nullptr;
 }
 
 /**
-* @brief propertiesEditor
-* @param items : The items to be edited
-* @param editor : If the properties editor to be created is the same class as @editor, then this function set @item as edited item of @editor and return editor
-* @param parent : parent widget of the returned editor
-* @return : an editor or nullptr;
+	@brief propertiesEditor
+	@param items : The items to be edited
+	@param editor :
+	If the properties editor to be created is the same class as editor,
+	then this function set item as edited item of editor and return editor
+	@param parent : parent widget of the returned editor
+	@return : an editor or nullptr;
 */
-PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QList<QGraphicsItem *> items, PropertiesEditorWidget *editor, QWidget *parent)
+PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
+		QList<QGraphicsItem *> items,
+		PropertiesEditorWidget *editor,
+		QWidget *parent)
 {
-	int count_ = items.size();
+	const int count_ = items.size();
+	if (count_ == 0) {
+		return nullptr;
+	}
+	QGraphicsItem *item = items.first();
+	const int type_ = item->type();
 
 		//The editor widget can only edit one item
 		//or several items of the same type
-	if (count_ != 1)
-	{
-		if (count_ == 0) {
+	for (auto qgi : items) {
+		if (qgi->type() != type_) {
 			return nullptr;
-		}
-
-		int type_ = items.first()->type();
-		for (QGraphicsItem *qgi : items) {
-			if (qgi->type() != type_) {
-				return nullptr;
-			}
 		}
 	}
 
-	QGraphicsItem *item = items.first();
-	const int type_ = item->type();
 	QString class_name;
 	if (editor) {
 		class_name = editor->metaObject()->className();

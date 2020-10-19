@@ -1,0 +1,62 @@
+<definition type="element" version="0.80" height="180" width="130" hotspot_y="175" link_type="master" hotspot_x="2">
+    <uuid uuid="{11f8382f-a3dd-4e67-be13-1d465332273e}"/>
+    <names>
+        <name lang="fr">Plancher chauffant</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect x="0" y="-85" ry="0" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black" width="120" antialias="false" rx="0"/>
+        <circle diameter="4" x="68" y="-172" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <arc x="80" y="-155.445" height="15.5419" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8" angle="180" antialias="true" start="90"/>
+        <arc x="61.2" y="-144.208" height="11.8362" style="line-style:normal;line-weight:normal;filling:none;color:black" width="7.8" angle="180" antialias="true" start="0"/>
+        <arc x="88" y="-155.445" height="15.5419" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8" angle="180" antialias="true" start="90"/>
+        <line x2="120" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" y2="-15" antialias="false" length1="1.5" x1="0" end1="none" length2="1.5"/>
+        <arc x="80" y="-139.903" height="15.5419" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8" angle="180" antialias="true" start="270"/>
+        <arc x="88" y="-139.903" height="15.5419" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8" angle="180" antialias="true" start="270"/>
+        <dynamic_text x="29" y="-44" Halignment="AlignLeft" text_width="-1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" uuid="{9c6a5c3f-caea-489f-8101-15add2df2087}" Valignment="AlignTop" text_from="UserText" z="10">
+            <text>10</text>
+        </dynamic_text>
+        <arc x="72" y="-155.445" height="15.5419" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8" angle="180" antialias="true" start="90"/>
+        <line x2="61.2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-120.536" y2="-120.536" antialias="false" length1="1.5" x1="37.8" end1="none" length2="1.5"/>
+        <arc x="72" y="-139.903" height="15.5419" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8" angle="180" antialias="true" start="270"/>
+        <dynamic_text x="-2" y="-63" Halignment="AlignLeft" text_width="-1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" uuid="{f0ce9416-7f78-4820-91cb-dcfaff33ce9c}" Valignment="AlignTop" text_from="UserText" z="16">
+            <text>Local</text>
+        </dynamic_text>
+        <line x2="38" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-116.59" y2="-138" antialias="false" length1="1.5" x1="36.5" end1="none" length2="1.5"/>
+        <line x2="61" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-116.59" y2="-138" antialias="false" length1="1.5" x1="62.5" end1="none" length2="1.5"/>
+        <text x="58" y="-18" rotation="0" text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <line x2="120" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" y2="-45" antialias="false" length1="1.5" x1="0" end1="none" length2="1.5"/>
+        <line x2="32.6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-116.59" y2="-116.59" antialias="false" length1="1.5" x1="36.5" end1="none" length2="1.5"/>
+        <line x2="66.4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-116.59" y2="-116.59" antialias="false" length1="1.5" x1="62.5" end1="none" length2="1.5"/>
+        <line x2="120" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-65" y2="-65" antialias="false" length1="1.5" x1="0" end1="none" length2="1.5"/>
+        <line x2="30" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-116.59" y2="-138" antialias="false" length1="1.5" x1="32.6" end1="none" length2="1.5"/>
+        <line x2="69" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-116.59" y2="-138" antialias="false" length1="1.5" x1="66.4" end1="none" length2="1.5"/>
+        <arc x="30" y="-144.208" height="11.8362" style="line-style:normal;line-weight:normal;filling:none;color:black" width="7.8" angle="180" antialias="true" start="0"/>
+        <text x="66" y="-30" rotation="0" text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <arc x="33.9" y="-156.044" height="23.6724" style="line-style:normal;line-weight:normal;filling:none;color:black" width="31.2" angle="180" antialias="true" start="0"/>
+        <line x2="61.2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-132.372" y2="-130.399" antialias="false" length1="1.5" x1="49.5" end1="none" length2="1.5"/>
+        <line x2="49.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-130.399" y2="-132.372" antialias="false" length1="1.5" x1="37.8" end1="none" length2="1.5"/>
+        <line x2="125" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:green" y1="-170" y2="-170" antialias="false" length1="1.5" x1="5" end1="none" length2="1.5"/>
+        <line x2="98" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-114" y2="-114" antialias="false" length1="1.5" x1="22" end1="none" length2="1.5"/>
+        <text x="58" y="-2" rotation="0" text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <dynamic_text x="30" y="-28.5" Halignment="AlignLeft" text_width="-1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" frame="false" uuid="{4df2a33c-9310-4626-b429-fb9dbd75ca8a}" Valignment="AlignTop" text_from="UserText" z="41">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text x="28" y="-13.5" Halignment="AlignLeft" text_width="-1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" frame="false" uuid="{67903a50-67ee-4743-91aa-84b0ac785a68}" Valignment="AlignTop" text_from="UserText" z="43">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text x="-2" y="-81.5" Halignment="AlignLeft" text_width="-1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" uuid="{e86f0d07-50cb-44a8-b809-027629b5c513}" Valignment="AlignTop" text_from="UserText" z="51">
+            <text>Plancher Chauffant</text>
+        </dynamic_text>
+        <circle diameter="4" x="48" y="-172" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <terminal x="50" y="-170" orientation="n" name="" uuid="{4bd22cc2-afac-429a-b651-3575a18eef40}"/>
+        <terminal x="60" y="-115" orientation="s" name="" uuid="{10ceb531-363b-4888-b6fe-7c206710802d}"/>
+        <terminal x="70" y="-170" orientation="n" name="" uuid="{10f8e008-6783-463b-876f-0ae9b683c334}"/>
+    </description>
+</definition>

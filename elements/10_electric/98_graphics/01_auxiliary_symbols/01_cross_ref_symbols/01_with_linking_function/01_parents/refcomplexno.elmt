@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="25" hotspot_y="31" height="60" type="element" ic="true" orientation="dyyy" link_type="next_report">
+<definition width="40" version="0.4" hotspot_x="25" hotspot_y="31" height="60" type="element" ic="true" link_type="next_report">
 <uuid uuid="{677BF742-F56D-4122-A8AF-2E7F790EBD26}"/><names>
         <name lang="en">ref complex contact NO</name>
         <name lang="it">Contatto NO</name>

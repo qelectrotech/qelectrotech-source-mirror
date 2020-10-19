@@ -874,7 +874,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Stroje</name>
                     </names>
                     <element name="moteur_tri.elmt">
-                        <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
+                        <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element">
                             <names>
                                 <name lang="ar">محرّك ثلاثي الأوجه</name>
                                 <name lang="de">Drehstrom Motor</name>
@@ -1018,7 +1018,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </element>
                     </category>
                     <element name="etiquette_triphase.elmt">
-                        <definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
+                        <definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element">
                             <names>
                                 <name lang="ar">علامة مصدر ثلاثي الأطوار</name>
                                 <name lang="en">Label three phase</name>
@@ -1051,7 +1051,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="cs">Svorky</name>
                 </names>
                 <element name="borne_continuite.elmt">
-                    <definition width="30" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="ar">طرف توصيل</name>
                             <name lang="de">Klemmblock</name>
@@ -1101,7 +1101,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Magnetotepelný jistič GV</name>
                     </names>
                     <element name="disjoncteur_magneto-thermique.elmt">
-                        <definition width="130" version="0.3" hotspot_x="85" hotspot_y="55" height="110" type="element" orientation="dyyy">
+                        <definition width="130" version="0.3" hotspot_x="85" hotspot_y="55" height="110" type="element">
                             <names>
                                 <name lang="ar">قاطع مغناطيسي-حراري GV</name>
                                 <name lang="de">Motorschutzschalter</name>
@@ -1209,7 +1209,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="cs">Spínače</name>
                     </names>
                     <element name="bouton_tournant_01.elmt">
-                        <definition width="70" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                        <definition width="70" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true">
                             <names>
                                 <name lang="ar">محدد بوضعين محمي بقفل, سحب المفتاح إلى اليسار </name>
                                 <name lang="en">Selector switch 2-position stay put, key withdrawal from LH</name>
@@ -1240,7 +1240,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="bouton_tournant_02.elmt">
-                        <definition width="80" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                        <definition width="80" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true">
                             <names>
                                 <name lang="ar">مُحدّد دوار بوضعين ثابتين محمي بقفل, إخراج المفتاح إلى اليسار</name>
                                 <name lang="en">Selector switch 2-position stay put, key withdrawal from LH</name>
@@ -1668,7 +1668,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </definition>
             </element>
             <element name="moteur_tri_2.elmt">
-                <definition width="90" version="0.3" hotspot_x="53" hotspot_y="28" height="70" type="element" orientation="dyyy">
+                <definition width="90" version="0.3" hotspot_x="53" hotspot_y="28" height="70" type="element">
                     <names>
                         <name lang="ar">محرّك ثلاثي الأوجه</name>
                         <name lang="de">Drehstrom Motor</name>

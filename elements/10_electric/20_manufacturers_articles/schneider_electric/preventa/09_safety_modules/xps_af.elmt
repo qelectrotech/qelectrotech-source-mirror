@@ -1,4 +1,4 @@
-<definition width="350" height="130" link_type="simple" hotspot_y="34" hotspot_x="65" version="0.5" type="element" orientation="dyyy">
+<definition width="350" height="130" link_type="simple" hotspot_y="34" hotspot_x="65" version="0.5" type="element">
     <uuid uuid="{a3fa55be-ffaa-40a4-bf21-8cb8f560592f}"/>
     <names>
         <name lang="cs">XPS-AF</name>

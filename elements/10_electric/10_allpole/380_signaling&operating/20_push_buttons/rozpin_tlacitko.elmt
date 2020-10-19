@@ -1,4 +1,4 @@
-<definition version="0.70" height="50" type="element" width="30" hotspot_x="22" link_type="simple" hotspot_y="26" orientation="dyyy">
+<definition version="0.70" height="50" type="element" width="30" hotspot_x="22" link_type="simple" hotspot_y="26">
     <uuid uuid="{26747ab8-68b3-48bc-ba35-994bd72091e1}"/>
     <names>
         <name lang="cs">Rozpínací tlačítko</name>

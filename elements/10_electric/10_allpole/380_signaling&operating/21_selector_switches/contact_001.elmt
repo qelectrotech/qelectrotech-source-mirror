@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" orientation="dyyy" height="50" hotspot_y="24" hotspot_x="15" width="40" link_type="master">
+<definition type="element" version="0.5" height="50" hotspot_y="24" hotspot_x="15" width="40" link_type="master">
 <uuid uuid="{87812D0E-B64A-46FA-A0A9-1FB6C7837553}"/><names>
         <name lang="de">Drehschalter 1-polig Schliesser ein/aus</name>
         <name lang="pl">Łącznik obrotowy przełączny</name>

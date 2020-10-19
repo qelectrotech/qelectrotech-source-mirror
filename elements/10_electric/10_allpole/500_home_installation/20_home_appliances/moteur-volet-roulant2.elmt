@@ -1,0 +1,31 @@
+<definition hotspot_x="11" link_type="master" type="element" height="40" version="0.80" hotspot_y="5" width="80">
+    <uuid uuid="{007e9328-17f9-4ea2-9313-d80abbac9d8e}"/>
+    <names>
+        <name lang="fr">Volet Roulant</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <circle antialias="true" x="-5" diameter="30" y="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-360" x="50.8993" height="11" width="12.1007" start="90" y="4.825" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" x="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1 ~" y="23" color="#000000"/>
+        <arc antialias="true" angle="180" x="26.698" height="11" width="12.1007" start="90" y="-0.675" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" x="6" font="Sans Serif,8,-1,5,50,0,0,0,0,0" text="M" y="13" color="#000000"/>
+        <line x1="32.7483" end2="none" antialias="false" x2="56.9497" y1="-0.675" length2="1.5" y2="4.825" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="63" end2="none" antialias="false" x2="63" y1="10.325" length2="1.5" y2="32.325" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="4" length2="1.5" y2="0" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="63" end2="none" antialias="false" x2="38.7987" y1="32.325" length2="1.5" y2="23.525" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" end2="none" antialias="false" x2="20" y1="0" length2="1.5" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="38.7987" end2="none" antialias="false" x2="38.7987" y1="11.9525" length2="1.5" y2="23.5476" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="27" length2="1.5" y2="32" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="32.7483" end2="none" antialias="false" x2="56.9497" y1="10.325" length2="1.5" y2="15.825" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-360" x="53.9245" height="5.5" width="6.05034" start="270" y="7.575" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="0" y="0" uuid="{1faccbcf-d5b9-499a-8b15-62ab1e26ec4b}"/>
+        <terminal orientation="s" name="" x="0" y="31" uuid="{75053000-1b78-46f8-bbc3-0cb07150413e}"/>
+        <terminal orientation="n" name="" x="20" y="0" uuid="{0e03d738-1660-4a68-918f-178d10d6d9f9}"/>
+        <terminal orientation="n" name="" x="46.0591" y="-0.125" uuid="{46836d6e-6977-49e4-bde1-e82e1773a6df}"/>
+    </description>
+</definition>

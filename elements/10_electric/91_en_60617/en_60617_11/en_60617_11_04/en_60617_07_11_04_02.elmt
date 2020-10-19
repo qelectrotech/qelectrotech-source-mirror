@@ -1,4 +1,4 @@
-<definition type="element" width="70" version="0.70" hotspot_y="55" orientation="dyyy" height="60" link_type="simple" hotspot_x="55">
+<definition type="element" width="70" version="0.70" hotspot_y="55" height="60" link_type="simple" hotspot_x="55">
     <uuid uuid="{0c1c78d0-73a3-4822-81a2-ffa1d9164b9d}"/>
     <names>
         <name lang="fr">Cabine d'amplification</name>

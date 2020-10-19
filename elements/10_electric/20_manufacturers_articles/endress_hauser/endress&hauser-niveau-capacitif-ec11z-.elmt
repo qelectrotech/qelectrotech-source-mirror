@@ -1,0 +1,45 @@
+<definition width="140" height="150" hotspot_y="75" version="0.80" link_type="simple" type="element" hotspot_x="76">
+    <uuid uuid="{9d2c19ff-b79d-489e-a84c-8e630b802498}"/>
+    <names>
+        <name lang="fr">Endress&amp;Hauser Niveau capacitif ec11z </name>
+        <name lang="en">Endress&amp;Hauser capacitive Level ec11z </name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc y="-70" width="127" height="140" x="-70" angle="-180" antialias="true" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-16" x="-23" color="#000000" text="+" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="0" y2="0" x2="-3.5" x1="-15.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-6" x="-23" color="#000000" text="3" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-55" x="-19" color="#000000" text="E&amp;H" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="-2" color="#000000" text="4" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="-42" color="#000000" text="2" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="18" color="#000000" text="5" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="38" color="#000000" text="6" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="0" y2="0" x2="-24.5" x1="-36.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="15.5" x1="3.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="36.5" x1="24.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="56" x1="44" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="36.3945" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.6056" x="-63.606" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="16.3945" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.6056" x="-23.606" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="-3.60555" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="-43.6056" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-64" x1="-70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-44" x1="-56" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-18" x="-65" color="#000000" text="Signal" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="-62" color="#000000" text="1" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-41" x="-27" color="#000000" text="EC11Z" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text y="-48" uuid="{b2ef9a3f-43f9-41bf-ba4d-ba6469d1c8da}" z="25" x="-51" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,7,-1,5,50,0,0,0,0,0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="3" uuid="{cabe2444-7daa-429d-9cac-3700e7fa2687}" x="-40" orientation="s" name=""/>
+        <terminal y="3" uuid="{b6509369-720d-41dd-8aad-209d88967ed0}" x="-20" orientation="s" name=""/>
+        <terminal y="3" uuid="{4e05ac41-69c1-4c76-962d-3ff52003620b}" x="0" orientation="s" name=""/>
+        <terminal y="3" uuid="{ae741de4-4cbe-4374-a886-8434bf65edd7}" x="20" orientation="s" name=""/>
+        <terminal y="3" uuid="{c81a3298-9e5f-4e9f-851d-dc0d278ab780}" x="40" orientation="s" name=""/>
+        <terminal y="3" uuid="{d8bb2efa-58ba-4745-a5be-2e89b37c8a81}" x="-60" orientation="s" name=""/>
+    </description>
+</definition>

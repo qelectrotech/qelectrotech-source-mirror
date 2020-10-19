@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="95" width="100" hotspot_y="46">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="95" width="100" hotspot_y="46">
     <uuid uuid="{0d9471e5-321b-44a5-b053-32ae065cbb5c}"/>
     <names>
         <name lang="de">Kreuzschalter</name>

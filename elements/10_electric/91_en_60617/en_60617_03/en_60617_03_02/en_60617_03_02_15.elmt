@@ -1,4 +1,4 @@
-<definition hotspot_x="54" version="0.70" orientation="dyyy" height="140" hotspot_y="136" width="110" type="element" link_type="simple">
+<definition hotspot_x="54" version="0.70" height="140" hotspot_y="136" width="110" type="element" link_type="simple">
     <uuid uuid="{7fce7ef2-ef6a-44b0-9cd0-ffd8eb8fdf8b}"/>
     <names>
         <name lang="fr">Alternateur triphasé figuré en représentation

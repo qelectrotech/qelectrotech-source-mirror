@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,10 +27,10 @@ namespace Ui {
 }
 
 /**
- * @brief The ElementPropertiesEditorWidget class
- * This class provide a dialog for edit various property of element, like
- * the type (master, slave, report etc....) and kind info.
- */
+	@brief The ElementPropertiesEditorWidget class
+	This class provide a dialog for edit various property of element, like
+	the type (master, slave, report etc....) and kind info.
+*/
 class ElementPropertiesEditorWidget : public QDialog
 {
 	Q_OBJECT

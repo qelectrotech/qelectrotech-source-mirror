@@ -1,4 +1,4 @@
-<definition hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="50">
+<definition hotspot_x="35" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="50">
     <uuid uuid="{a3138171-c5d8-4c0e-9cf8-82a597dba2d3}"/>
     <names>
         <name lang="fr">Photodiode

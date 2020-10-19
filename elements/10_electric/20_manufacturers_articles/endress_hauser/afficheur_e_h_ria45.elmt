@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="44" type="element" height="120" width="290" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="44" type="element" height="120" width="290" version="0.5">
     <uuid uuid="{fa6e0a9e-0157-494c-a65f-a5931a596edd}"/>
     <names>
         <name lang="pl">RIA45</name>

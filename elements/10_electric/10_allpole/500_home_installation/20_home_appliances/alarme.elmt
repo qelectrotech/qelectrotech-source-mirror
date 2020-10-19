@@ -1,0 +1,54 @@
+<definition hotspot_x="26" link_type="master" type="element" height="190" version="0.80" hotspot_y="185" width="150">
+    <uuid uuid="{64f745af-eff4-44e7-ae28-1703291d8955}"/>
+    <names>
+        <name lang="pl">Alarm</name>
+        <name lang="en">Alarm</name>
+        <name lang="fr">Alarme</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" x="0" rx="0" height="85" width="120" y="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-15" length2="1.5" y2="-15" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="29" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="5" text_width="-1" Halignment="AlignLeft" y="-44" uuid="{3926ff82-9140-4741-b09d-c8873f205d17}">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="-2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="7" text_width="-1" Halignment="AlignLeft" y="-63" uuid="{8faa4f1d-1ed6-4d65-9670-990d9b4f9be4}">
+            <text>Local</text>
+        </dynamic_text>
+        <text rotation="0" x="58" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text=" kA C" y="-18" color="#000000"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-45" length2="1.5" y2="-45" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-65" length2="1.5" y2="-65" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" x="66" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="A" y="-32" color="#000000"/>
+        <text rotation="0" x="58" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text=" mm²" y="-2" color="#000000"/>
+        <line x1="27" end2="none" antialias="false" x2="27" y1="-139.375" length2="1.5" y2="-120.625" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="90" x="-23" height="20" width="100" start="0" y="-120" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="90" x="-23" height="20" width="100" start="270" y="-160" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="77" end2="none" antialias="false" x2="77" y1="-149.804" length2="1.5" y2="-110.196" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="31" end2="none" antialias="false" x2="31" y1="-139.232" length2="1.5" y2="-120.768" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="35" end2="none" antialias="false" x2="35" y1="-139.391" length2="1.5" y2="-120.609" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="82.2501" end2="none" antialias="false" x2="102.75" y1="-130" length2="1.5" y2="-130" end1="none" length1="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <line x1="82" end2="none" antialias="false" x2="104" y1="-140" length2="1.5" y2="-148" end1="none" length1="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <line x1="82" end2="none" antialias="false" x2="103" y1="-120" length2="1.5" y2="-114" end1="none" length1="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <line x1="82" end2="none" antialias="false" x2="103" y1="-135" length2="1.5" y2="-138" end1="none" length1="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <line x1="82" end2="none" antialias="false" x2="103" y1="-125" length2="1.5" y2="-121" end1="none" length1="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="30" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="41" text_width="-1" Halignment="AlignLeft" y="-28.5" uuid="{0cf2cb76-d04a-4b90-9bc2-44cd6d1aae76}">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="28" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="42" text_width="-1" Halignment="AlignLeft" y="-13.5" uuid="{987024af-8043-4eb1-939b-331cbde51715}">
+            <text>3 G1.5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="-2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="43" text_width="-1" Halignment="AlignLeft" y="-81.5" uuid="{4dfe2ab4-9c97-4790-8e49-3f61982d1984}">
+            <text>Alarme</text>
+        </dynamic_text>
+        <line x1="40" end2="none" antialias="false" x2="40" y1="-180" length2="1.5" y2="-140" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" end2="none" antialias="false" x2="60" y1="-180" length2="1.5" y2="-142" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" end2="none" antialias="false" x2="50" y1="-110" length2="1.5" y2="-118" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="60" y="-180" uuid="{8a24b0e5-af93-4b55-a585-2735bf871b4e}"/>
+        <terminal orientation="s" name="" x="50" y="-110" uuid="{492f48b8-61d9-422e-9ca3-9c1c14be9321}"/>
+        <terminal orientation="n" name="" x="40" y="-180" uuid="{1c88072a-41a6-4742-a8bc-2edc31b8c112}"/>
+    </description>
+</definition>

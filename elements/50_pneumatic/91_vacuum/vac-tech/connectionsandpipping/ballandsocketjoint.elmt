@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="20" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="40" type="element" hotspot_y="20" version="0.80" link_type="simple" width="50">
     <uuid uuid="{7e6d8dac-7080-4762-9208-e6894a6ce8d9}"/>
     <names>
         <name lang="en">Ball-and-socket joint</name>

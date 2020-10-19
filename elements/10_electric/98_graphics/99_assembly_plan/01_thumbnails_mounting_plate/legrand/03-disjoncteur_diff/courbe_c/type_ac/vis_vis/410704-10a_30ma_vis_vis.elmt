@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" version="0.80" orientation="dyyy" link_type="simple" width="90" hotspot_x="5" height="210">
+<definition hotspot_y="4" type="element" version="0.80" link_type="simple" width="90" hotspot_x="5" height="210">
     <uuid uuid="{e3064d1c-0b35-4f95-974c-291732aff952}"/>
     <names>
         <name lang="fr">410704 - Disjoncteur différentiel AC 10A 30mA Haut-Vis/Bas-Vis</name>

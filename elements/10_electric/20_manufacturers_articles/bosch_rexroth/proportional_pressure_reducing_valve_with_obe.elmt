@@ -1,4 +1,4 @@
-<definition height="80" hotspot_x="115" version="0.70" width="230" hotspot_y="45" link_type="simple" type="element" orientation="dyyy">
+<definition height="80" hotspot_x="115" version="0.70" width="230" hotspot_y="45" link_type="simple" type="element">
     <uuid uuid="{54ee6788-c890-4841-8e7c-b702cf27f488}"/>
     <names>
         <name lang="en">Proportional pressure reducing valve with OBE</name>

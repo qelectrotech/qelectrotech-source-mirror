@@ -1,4 +1,4 @@
-<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" hotspot_y="15">
     <uuid uuid="{d3c5350d-5655-4e5f-a99e-ac0bcda68a3c}"/>
     <names>
         <name lang="de">Isolierstoff oder Dielektrikum</name>

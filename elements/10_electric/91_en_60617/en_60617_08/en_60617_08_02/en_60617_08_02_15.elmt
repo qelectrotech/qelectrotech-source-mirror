@@ -1,4 +1,4 @@
-<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+<definition type="element" width="50" height="50" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
     <uuid uuid="{d306de65-526c-4385-86da-e6bd4046eb95}"/>
     <names>
         <name lang="de">Drehzahlmeßgerät, anzeigend</name>

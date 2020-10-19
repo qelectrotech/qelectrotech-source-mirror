@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="15" hotspot_y="23" orientation="dyyy" link_type="simple" type="element" version="0.80" width="30">
+<definition height="50" hotspot_x="15" hotspot_y="23" link_type="simple" type="element" version="0.80" width="30">
     <uuid uuid="{f09c1826-5deb-4e5d-a565-992b010a8007}"/>
     <names>
         <name lang="it">Presa monofase</name>

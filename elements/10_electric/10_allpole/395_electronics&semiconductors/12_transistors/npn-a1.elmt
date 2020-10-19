@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="19" hotspot_y="24" type="element">
+<definition height="50" version="0.5" link_type="simple" width="40" hotspot_x="19" hotspot_y="24" type="element">
     <uuid uuid="{7c1ad2e1-70e2-4893-a831-e64818aeddab}"/>
     <names>
         <name lang="pl">Tranzystor biopolarny npn</name>

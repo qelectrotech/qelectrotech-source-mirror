@@ -1,4 +1,4 @@
-<definition width="50" type="element" version="0.70" hotspot_y="24" orientation="dyyy" hotspot_x="33" height="50" link_type="master">
+<definition width="50" type="element" version="0.70" hotspot_y="24" hotspot_x="33" height="50" link_type="master">
     <uuid uuid="{c1d17128-3672-44b5-a1dd-946af2444d6b}"/>
     <names>
         <name lang="fr">Relais temporisé</name>

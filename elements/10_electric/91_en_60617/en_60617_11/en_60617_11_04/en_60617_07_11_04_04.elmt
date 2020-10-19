@@ -1,4 +1,4 @@
-<definition type="element" width="30" version="0.70" hotspot_y="5" orientation="dyyy" height="30" link_type="simple" hotspot_x="5">
+<definition type="element" width="30" version="0.70" hotspot_y="5" height="30" link_type="simple" hotspot_x="5">
     <uuid uuid="{0494478d-d4cf-420d-8554-2b29cc877daa}"/>
     <names>
         <name lang="fr">Concentrateur (automatique) de lignes</name>

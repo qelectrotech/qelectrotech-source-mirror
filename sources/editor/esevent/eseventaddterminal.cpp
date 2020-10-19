@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@
 #include "eseventaddterminal.h"
 
 /**
- * @brief ESEventAddTerminal::ESEventAddTerminal
- * @param scene
- */
+	@brief ESEventAddTerminal::ESEventAddTerminal
+	@param scene
+*/
 ESEventAddTerminal::ESEventAddTerminal(ElementScene *scene) :
 	ESEventInterface(scene)
 {
@@ -35,17 +35,18 @@ ESEventAddTerminal::ESEventAddTerminal(ElementScene *scene) :
 }
 
 /**
- * @brief ESEventAddTerminal::~ESEventAddTerminal
- */
-ESEventAddTerminal::~ESEventAddTerminal() {
+	@brief ESEventAddTerminal::~ESEventAddTerminal
+*/
+ESEventAddTerminal::~ESEventAddTerminal()
+{
 	delete m_terminal;
 }
 
 /**
- * @brief ESEventAddTerminal::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddTerminal::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddTerminal::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	QPointF pos = m_scene -> snapToGrid(event -> scenePos());
 	updateHelpCross(pos);
@@ -54,10 +55,10 @@ bool ESEventAddTerminal::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddTerminal::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddTerminal::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::LeftButton) {
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Borne"), m_scene, m_terminal));
@@ -80,10 +81,10 @@ bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddTerminal::keyPressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddTerminal::keyPressEvent
+	@param event
+	@return
+*/
 bool ESEventAddTerminal::keyPressEvent(QKeyEvent *event) {
 	if (event -> key() == Qt::Key_Space) {
 		switch (m_terminal->orientation()) {

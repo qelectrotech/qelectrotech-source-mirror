@@ -1,4 +1,4 @@
-<definition hotspot_x="49" orientation="dyyy" version="0.80" width="90" hotspot_y="21" type="element" height="40" link_type="simple">
+<definition hotspot_x="49" version="0.80" width="90" hotspot_y="21" type="element" height="40" link_type="simple">
     <uuid uuid="{b61ce9f5-d6b3-4d27-9a5d-135143b90f9e}"/>
     <names>
         <name lang="fr">Adaptateur pH/ORP phidget 1130</name>

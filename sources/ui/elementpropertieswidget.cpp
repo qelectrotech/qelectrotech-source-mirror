@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,18 +26,20 @@
 #include "dynamicelementtextitemeditor.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "qetapp.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QUndoStack>
 
 /**
- * @brief ElementPropertiesWidget::ElementPropertiesWidget
- * Default constructor
- * @param elmt
- * @param parent
- */
-ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt, QWidget *parent) :
+	@brief ElementPropertiesWidget::ElementPropertiesWidget
+	Default constructor
+	@param elmt
+	@param parent
+*/
+ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget (parent),
 	m_diagram (elmt->diagram()),
 	m_tab (nullptr),
@@ -48,14 +50,17 @@ ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt, QWidget *parent)
 }
 
 /**
- * @brief ElementPropertiesWidget::ElementPropertiesWidget
- * Same as default constructor, the edited element, is the parent element of @text.
- * The only difference with default constructor, is that the current tab is the tab for dynamic texts,
- * and the item in the tree that represent @text is expanded and selected.
- * @param text
- * @param parent
- */
-ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text, QWidget *parent) :
+	@brief ElementPropertiesWidget::ElementPropertiesWidget
+	Same as default constructor, the edited element,
+	is the parent element of text.
+	The only difference with default constructor,
+	is that the current tab is the tab for dynamic texts,
+	and the item in the tree that represent text is expanded and selected.
+	@param text
+	@param parent
+*/
+ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget (parent),
 	m_tab (nullptr),
 	m_general_widget(nullptr)
@@ -69,14 +74,17 @@ ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text, Q
 }
 
 /**
- * @brief ElementPropertiesWidget::ElementPropertiesWidget
- * Same as default constructor, the edited element, is the parent element of @group.
- * The only difference with default constructor, is that the current tab is the tab for dynamic texts,
- * and the item in the tree that represent @group is expanded and selected.
- * @param group
- * @param parent
- */
-ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group, QWidget *parent) :
+	@brief ElementPropertiesWidget::ElementPropertiesWidget
+	Same as default constructor, the edited element,
+	is the parent element of group.
+	The only difference with default constructor,
+	is that the current tab is the tab for dynamic texts,
+	and the item in the tree that represent group is expanded and selected.
+	@param group
+	@param parent
+*/
+ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget (parent),
 	m_tab (nullptr),
 	m_general_widget(nullptr)
@@ -91,10 +99,10 @@ ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group, QW
 }
 
 /**
- * @brief ElementPropertiesWidget::setElement
- * Set @element to be the edited element
- * @param element
- */
+	@brief ElementPropertiesWidget::setElement
+	Set element to be the edited element
+	@param element
+*/
 void ElementPropertiesWidget::setElement(Element *element)
 {
 	if (m_element == element) return;
@@ -118,11 +126,14 @@ void ElementPropertiesWidget::setElement(Element *element)
 }
 
 /**
- * @brief ElementPropertiesWidget::setDynamicText
- * convenience function: same as call : ElementPropertiesWidget::setElement, with parameter the parent element of @text.
- * Set the dynamics text tab as current tab, expand and select the item that represent @text
- * @param text
- */
+	@brief ElementPropertiesWidget::setDynamicText
+	convenience function:
+	same as call : ElementPropertiesWidget::setElement,
+	with parameter the parent element of text.
+	Set the dynamics text tab as current tab,
+	expand and select the item that represent text
+	@param text
+*/
 void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 {
 	if(text->parentElement())
@@ -141,11 +152,14 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 }
 
 /**
- * @brief ElementPropertiesWidget::setTextsGroup
- * Conveniance function : same as call : ElementPropertiesWidget::setElement, with parameter the parent element of @group.
- * Set the dynamics text tab as current tab, expand and select the item that represent @group
- * @param group
- */
+	@brief ElementPropertiesWidget::setTextsGroup
+	Conveniance function :
+	same as call : ElementPropertiesWidget::setElement,
+	with parameter the parent element of group.
+	Set the dynamics text tab as current tab,
+	expand and select the item that represent group
+	@param group
+*/
 void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 {
 	if(group->parentItem() && group->parentItem()->type() == Element::Type)
@@ -164,10 +178,10 @@ void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 }
 
 /**
- * @brief ElementPropertiesWidget::apply
- * Apply the new properties by pushing an undo command
- * to the parent project's undo stack of element
- */
+	@brief ElementPropertiesWidget::apply
+	Apply the new properties by pushing an undo command
+	to the parent project's undo stack of element
+*/
 void ElementPropertiesWidget::apply()
 {
 	QList <QUndoCommand *> undo_list;
@@ -191,10 +205,11 @@ void ElementPropertiesWidget::apply()
 }
 
 /**
- * @brief ElementPropertiesWidget::reset
- * Reset the edited properties
- */
-void ElementPropertiesWidget::reset() {
+	@brief ElementPropertiesWidget::reset
+	Reset the edited properties
+*/
+void ElementPropertiesWidget::reset()
+{
 	foreach (PropertiesEditorWidget *pew, m_list_editor) pew->reset();
 }
 
@@ -210,9 +225,9 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief ElementPropertiesWidget::findInPanel
- * If m_element is a custom element, emit findElementRequired
- */
+	@brief ElementPropertiesWidget::findInPanel
+	If m_element is a custom element, emit findElementRequired
+*/
 void ElementPropertiesWidget::findInPanel()
 {
 	if (m_element && m_diagram)
@@ -223,23 +238,23 @@ void ElementPropertiesWidget::findInPanel()
 }
 
 /**
- * @brief ElementPropertiesWidget::editElement
- * If m_element is a custom element, emit findElementRequired and editElementRequired
- */
+	@brief ElementPropertiesWidget::editElement
+	If m_element is a custom element, emit findElementRequired and editElementRequired
+*/
 void ElementPropertiesWidget::editElement()
 {
 	if (m_element && m_diagram)
 	{
 		m_diagram->findElementRequired(m_element.data()->location());
-		m_diagram->editElementRequired(m_element.data()->location());
+		QETApp::instance()->openElementLocations(QList<ElementsLocation>() << m_element.data()->location());
 		emit findEditClicked();
 	}
 }
 
 /**
- * @brief ElementPropertiesWidget::build
- * Build the content of this widget
- */
+	@brief ElementPropertiesWidget::build
+	Build the content of this widget
+*/
 void ElementPropertiesWidget::buildGui()
 {
 	m_tab = new QTabWidget(this);
@@ -249,9 +264,9 @@ void ElementPropertiesWidget::buildGui()
 }
 
 /**
- * @brief ElementPropertiesWidget::updateUi
- * Update the content of this widget
- */
+	@brief ElementPropertiesWidget::updateUi
+	Update the content of this widget
+*/
 void ElementPropertiesWidget::updateUi()
 {
 		//We keep the current title of the tab, to return to the same tab
@@ -292,7 +307,7 @@ void ElementPropertiesWidget::updateUi()
 		default:
 			break;
 	}
-    m_list_editor << new DynamicElementTextItemEditor(m_element, this);
+	m_list_editor << new DynamicElementTextItemEditor(m_element, this);
 
 		//Add each editors in tab widget
 	for (AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
@@ -317,9 +332,9 @@ void ElementPropertiesWidget::updateUi()
 }
 
 /**
- * @brief ElementPropertiesWidget::addGeneralWidget
- * Add or update the general widget on this tab widget
- */
+	@brief ElementPropertiesWidget::addGeneralWidget
+	Add or update the general widget on this tab widget
+*/
 void ElementPropertiesWidget::addGeneralWidget()
 {
 	int index = m_tab->currentIndex();
@@ -334,9 +349,9 @@ void ElementPropertiesWidget::addGeneralWidget()
 }
 
 /**
- * @brief ElementPropertiesWidget::generalWidget
- * @return build and return the "general" widget
- */
+	@brief ElementPropertiesWidget::generalWidget
+	@return build and return the "general" widget
+*/
 QWidget *ElementPropertiesWidget::generalWidget()
 {
 	QString description_string(tr("Élement\n"));
@@ -347,6 +362,8 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	if (folio_index != -1) {
 		description_string += QString(tr("Folio : %1\n")).arg(folio_index + 1);
 	}
+	description_string += QString(tr("Type : %1\n")).arg(m_element ->linkTypeToString());
+	description_string += QString(tr("Sous-type : %1\n")).arg(m_element ->kindInformations()["type"].toString());
 	description_string += QString(tr("Position : %1\n")).arg(m_diagram -> convertPosition(m_element -> scenePos()).toString());
 	description_string += QString(tr("Rotation : %1°\n")).arg(m_element.data()->rotation());
 	description_string += QString(tr("Dimensions : %1*%2\n")).arg(m_element -> size().width()).arg(m_element -> size().height());
@@ -361,6 +378,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		//widget for the text
 	QLabel *label = new QLabel (description_string, general_widget);
 	label->setWordWrap(true);
+	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
 
 		//widget for the pixmap
@@ -373,7 +391,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
 	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
-    QHBoxLayout *hlayout_ = new QHBoxLayout;
+	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);
 	vlayout_->addLayout(hlayout_);

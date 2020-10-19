@@ -1,40 +1,60 @@
-<definition width="120" version="0.4" hotspot_x="50" hotspot_y="54" height="100" type="element" ic="true" orientation="dyyy"link_type="master">
-<uuid uuid="{89367A67-60DD-4DBD-BC4F-A5CE9D086CD3}"/><names>
-        <name lang="nl">KNX voeding 320mA</name>
-        <name lang="be">KNX voeding 320mA</name>
+<definition hotspot_y="45" type="element" height="90" version="0.80" width="100" hotspot_x="49" link_type="master">
+    <uuid uuid="{a7d840cd-9288-4d44-9451-0e65b79abf97}"/>
+    <names>
         <name lang="en">KNX power supplies 320mA</name>
+        <name lang="nl">KNX voeding 320mA</name>
+        <name lang="cs">Dodávky elektřiny KNX 320mA</name>
         <name lang="fr">KNX alimentations 320mA</name>
         <name lang="it">Alimentatore KNX 320mA</name>
-        <name lang="cs">Dodávky elektřiny KNX 320mA</name>
+        <name lang="be">KNX voeding 320mA</name>
     </names>
-    <informations>
-		Author: RDS for QelectroTech
-		
+    <kindInformations>
+        <kindInformation name="type" show="1"></kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">KNX</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+    </elementInformations>
+    <informations>&#xd;
+		Author: RDS for QelectroTech&#xd;
+		&#xd;
     </informations>
     <description>
-        <rect width="80" x="-40" y="-40" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-4" y="26" size="3" text="320 mA"/>
-        <text x="42" y="-13" size="4" text="+"/>
-        <text x="43" y="7" size="4" text="-"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="-17" y2="33" x2="-9"/>
-        <arc width="10" x="-25" y="-35" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <text x="-37" y="22" size="3" text="PE"/>
-        <text x="-37" y="2" size="3" text="N"/>
-        <text x="-4" y="33" size="3" text="30V DC"/>
-        <text x="-37" y="-18" size="3" text="L"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-40" y2="-40" x2="20"/>
-        <text x="-12" y="-29" size="3" text="230V AC"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="-29" y2="30" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x1="-29" y2="33" x2="-21"/>
-        <arc width="10" x="-35" y="-35" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.6097" x1="20" y2="39.5772" x2="20"/>
-        <rect width="12" x="24" y="-36" antialias="false" height="72" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <input x="41" y="-34.5" size="9" rotate="true" text="T_" tagg='label'/>
-        <text x="33" y="23" size="5" rotation="270" color="white" text="KNX 30V DC"/>
-        <terminal x="-45" y="-20" nameHidden="0" number="" name="L" orientation="w"/>
-        <terminal x="-45" y="0" nameHidden="0" number="" name="N" orientation="w"/>
-        <terminal x="-44" y="20" nameHidden="0" number="" name="PE" orientation="w"/>
-        <terminal x="45" y="-10" nameHidden="0" number="" name="+" orientation="e"/>
-        <terminal x="45" y="10" nameHidden="0" number="" name="-" orientation="e"/>
+        <rect antialias="false" height="80" width="80" x="-40" y="-40" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <text x="-4" y="26" text="320 mA" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="42" y="-13" text="+" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="43" y="7" text="-" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-17" end2="none" length2="1.5" x2="-9" y2="33" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33"/>
+        <arc antialias="true" height="10" width="10" x="-25" y="-35" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <text x="-37" y="22" text="PE" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="-37" y="2" text="N" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="-4" y="33" text="30V DC" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="-37" y="-18" text="L" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-40" end2="none" length2="1.5" x2="20" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40"/>
+        <text x="-12" y="-29" text="230V AC" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-29" end2="none" length2="1.5" x2="-9" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-29" end2="none" length2="1.5" x2="-21" y2="33" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33"/>
+        <arc antialias="true" height="10" width="10" x="-35" y="-35" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <line end1="none" antialias="false" length1="1.5" x1="20" end2="none" length2="1.5" x2="20" y2="39.5772" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.6097"/>
+        <rect antialias="false" height="72" width="12" x="24" y="-36" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" ry="0"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="41" y="-46" uuid="{90917379-9fa3-4fe0-82bf-22de355f6a9a}" z="18" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="33" y="23" text="KNX 30V DC" color="#ffffff" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <terminal x="-45" y="-20" uuid="{7364d7d8-b260-40dd-90d7-cf0cba50c986}" name="L" orientation="w"/>
+        <terminal x="-45" y="0" uuid="{fc5bed5d-09f3-41c5-9379-75abff1001b1}" name="N" orientation="w"/>
+        <terminal x="-44" y="20" uuid="{f924d1b9-e2ed-459f-abcf-8c2dbad89857}" name="PE" orientation="w"/>
+        <terminal x="45" y="-10" uuid="{222fa5a6-2069-4307-b9fc-58595d08a864}" name="+" orientation="e"/>
+        <terminal x="45" y="10" uuid="{64de58f9-ae51-4693-b378-ef3ca8c7697a}" name="-" orientation="e"/>
     </description>
 </definition>

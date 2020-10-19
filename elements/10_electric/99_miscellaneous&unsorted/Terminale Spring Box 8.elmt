@@ -1,0 +1,54 @@
+<definition width="90" height="30" hotspot_y="5" hotspot_x="40" version="0.80" type="element" link_type="simple">
+    <uuid uuid="{e83e5059-7968-46b2-b36f-0218b050a96a}"/>
+    <names>
+        <name lang="fr">Borne automatique à ressorts 8 entrées (Wago)</name>
+        <name lang="it">Terminale Spring Box 8</name>
+        <name lang="en">Terminale Spring Box 8</name>
+    </names>
+    <elementInformations/>
+    <informations>
+      Author convertor: Ronny Desmedt
+      ELMT created by dxfTOelmt converter V1.0
+   </informations>
+    <description>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="-21"/>
+        <rect width="82" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="0" height="20" antialias="false" ry="1" x="-36" rx="1"/>
+        <line x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="30" end1="none" length1="1.5" y1="4"/>
+        <line x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-30" end1="none" length1="1.5" y1="4"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="0" end1="none" length1="1.5" y1="4"/>
+        <line x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="20" end1="none" length1="1.5" y1="4"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="29"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="19"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="36.445"/>
+        <line x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-30" end1="none" length1="1.5" y1="17"/>
+        <line x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="40" end1="none" length1="1.5" y1="4"/>
+        <line x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="30" end1="none" length1="1.5" y1="4"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="16.445"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="6.445"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="9"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-3.555"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="-1"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-23.555"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-13.555"/>
+        <line x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-20" end1="none" length1="1.5" y1="4"/>
+        <line x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="-10" end1="none" length1="1.5" y1="4"/>
+        <line x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-10" end1="none" length1="1.5" y1="4"/>
+        <line x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="0" end1="none" length1="1.5" y1="4"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="0" end1="none" length1="1.5" y1="4"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="10" end1="none" length1="1.5" y1="4"/>
+        <line x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="10" end1="none" length1="1.5" y1="4"/>
+        <line x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="20" end1="none" length1="1.5" y1="4"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="-11"/>
+        <line x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-20" end1="none" length1="1.5" y1="17"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="26.445"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-33.555"/>
+        <terminal orientation="s" y="17" uuid="{63ba3eae-9aee-4c01-b69a-1c08ed60e6d7}" x="40" name=""/>
+        <terminal orientation="s" y="17" uuid="{eb338493-235e-4448-9ddd-9b9f761b4e59}" x="-20" name=""/>
+        <terminal orientation="s" y="17" uuid="{b6b6837c-1fb0-4d51-b82e-f75652e7bf95}" x="-10" name=""/>
+        <terminal orientation="s" y="17" uuid="{3f89f462-c81c-47dd-a912-2d2c8fc73c30}" x="0" name=""/>
+        <terminal orientation="s" y="17" uuid="{ff94345e-cc2a-4554-a195-8f34c662eb20}" x="20" name=""/>
+        <terminal orientation="s" y="17" uuid="{6be61472-1b25-4948-8ac0-133a7a8a0204}" x="30" name=""/>
+        <terminal orientation="s" y="17" uuid="{c6774409-1e6e-44fb-a6b5-ffe92c2625d0}" x="-30" name=""/>
+        <terminal orientation="s" y="17" uuid="{5bc3f241-865f-4fce-a096-cc053e70df2c}" x="10" name=""/>
+    </description>
+</definition>

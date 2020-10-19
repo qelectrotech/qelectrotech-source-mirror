@@ -1,4 +1,4 @@
-<definition hotspot_x="64" width="140" hotspot_y="126" version="0.5" orientation="dyyy" height="260" type="element" link_type="simple">
+<definition hotspot_x="64" width="140" hotspot_y="126" version="0.5" height="260" type="element" link_type="simple">
     <uuid uuid="{38de2b52-2981-4fb2-818f-acddc926bbf2}"/>
     <names>
         <name lang="en">Logo-module-230v-4i-4q-relais/04</name>

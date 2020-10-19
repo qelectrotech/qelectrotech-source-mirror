@@ -1,4 +1,4 @@
-<definition width="150" height="240" orientation="dyyy" hotspot_y="75" hotspot_x="85" link_type="simple" type="element" version="0.70">
+<definition width="150" height="240" hotspot_y="75" hotspot_x="85" link_type="simple" type="element" version="0.70">
     <uuid uuid="{d4c125ef-b827-40e4-b07b-2eb5c3417e1f}"/>
     <names>
         <name lang="de">Thyratron

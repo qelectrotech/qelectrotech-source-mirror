@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="85" orientation="dyyy" height="90" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="85" height="90" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{ff4a357f-034d-4b75-a353-1a1bb2b6a06b}"/>
     <names>
         <name lang="de">Unterspannungsrelais</name>

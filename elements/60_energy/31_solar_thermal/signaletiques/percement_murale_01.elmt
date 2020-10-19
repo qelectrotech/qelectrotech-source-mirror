@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="25" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="24">
+<definition width="30" hotspot_x="25" type="element" link_type="simple" version="0.5" height="30" hotspot_y="24">
     <uuid uuid="{bcf7300e-4f3d-4bd9-a160-cfa8bee3c07e}"/>
     <names>
         <name lang="cs">Přechod přes stěnu</name>

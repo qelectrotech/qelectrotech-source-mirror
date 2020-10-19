@@ -1,4 +1,4 @@
-<definition height="90" version="0.5" width="120" hotspot_x="4" type="element" link_type="simple" hotspot_y="5" orientation="dyyy">
+<definition height="90" version="0.5" width="120" hotspot_x="4" type="element" link_type="simple" hotspot_y="5">
     <uuid uuid="{9d94b6a3-2293-47c3-ae96-c45d2011fadb}"/>
     <names>
         <name lang="en">Rressure regulator</name>

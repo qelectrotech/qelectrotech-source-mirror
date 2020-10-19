@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="50" type="element">
 <uuid uuid="{AB8155B2-BD01-40A5-938C-A5C32AF52E27}"/><names>
         <name lang="ar">مُبدّل ب3 وضعيات (1-0-2)</name>
         <name lang="de">Drehschalter 3 Positionen</name>

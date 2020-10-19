@@ -1,4 +1,4 @@
-<definition hotspot_x="5" orientation="dyyy" version="0.70" width="330" link_type="simple" hotspot_y="9" type="element" height="110">
+<definition hotspot_x="5" version="0.70" width="330" link_type="simple" hotspot_y="9" type="element" height="110">
     <uuid uuid="{cf03f919-71c6-4e6a-873e-1854604d175c}"/>
     <names>
         <name lang="fr">PROSONIC S FMU90</name>

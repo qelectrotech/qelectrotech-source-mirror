@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true">
 <uuid uuid="{156E97ED-993B-4591-8592-AC6B1464661B}"/><names>
         <name lang="es">Llave de paso bola</name>
     </names>

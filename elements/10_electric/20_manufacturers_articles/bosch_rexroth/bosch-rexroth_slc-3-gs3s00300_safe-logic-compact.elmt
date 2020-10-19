@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="270" version="0.70" hotspot_x="35" hotspot_y="135" type="element" link_type="simple" width="70">
+<definition height="270" version="0.70" hotspot_x="35" hotspot_y="135" type="element" link_type="simple" width="70">
     <uuid uuid="{14596b91-6d15-4f92-a27c-20b913f2bd2a}"/>
     <names>
         <name lang="de">Bosch Rexroth SLC-3-GS3S00300 Safe Logic Compact, Gateway Modul mit 2x Sercos RJ45 Schnittstellen</name>

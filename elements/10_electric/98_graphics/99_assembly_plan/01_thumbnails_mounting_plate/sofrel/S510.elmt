@@ -1,0 +1,82 @@
+<definition hotspot_x="85" hotspot_y="316" height="600" version="0.80" type="element" link_type="slave" width="810">
+    <uuid uuid="{9d771d88-4b85-4c02-898c-0ee4ea94820a}"/>
+    <names>
+        <name lang="it">Frontale S510</name>
+        <name lang="pl">Lokalna jednostka telemetryczna S510</name>
+        <name lang="pt">Unidade de telemetria S510</name>
+        <name lang="ar">واجهة S510</name>
+        <name lang="en">Frontview S510</name>
+        <name lang="cs">Místní telemetrick jednotka S510</name>
+        <name lang="nl">Voorzijde S510</name>
+        <name lang="el">Τερματικό S510</name>
+        <name lang="es">Facade S510</name>
+        <name lang="fr">Façade S510</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+    </kindInformations>
+    <informations>S.Deffaux&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;
+Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect rx="5" height="280.82" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y="0.125" x="0.545" ry="5" width="372"/>
+        <line x1="47.745" length1="1.5" x2="55.575" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" end2="none" y2="194.931" end1="none" y1="199.436" length2="1.5"/>
+        <arc angle="-32" start="-180" height="7.50854" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="197.935" x="47.033" width="7.11821"/>
+        <arc angle="-120" start="-240" height="7.50854" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="194.18" x="54.151" width="7.11821"/>
+        <line x1="55.575" length1="1.5" x2="47.745" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" end2="none" y2="227.218" end1="none" y1="231.723" length2="1.5"/>
+        <arc angle="-30" start="-150" height="7.50854" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="221.211" x="47.033" width="7.11821"/>
+        <arc angle="-120" start="0" height="7.50854" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="224.966" x="54.151" width="7.11821"/>
+        <rect rx="0" height="12" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="258.125" x="241.545" ry="0" width="45"/>
+        <line x1="47.033" length1="1.5" x2="47.033" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" end2="none" y2="224.215" end1="none" y1="201.689" length2="1.5"/>
+        <line x1="61.269" length1="1.5" x2="61.269" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" end2="none" y2="227.969" end1="none" y1="197.935" length2="1.5"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="226.467" x="56.287" width="2.84728"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="196.433" x="56.287" width="2.84728"/>
+        <text text="4" y="255" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="304" color="#ffffff"/>
+        <text text="3" y="255" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="234.242" color="#ffffff"/>
+        <dynamic_text uuid="{b8b37aed-7b11-433d-817b-ce15703f6253}" Halignment="AlignLeft" text_from="UserText" frame="false" y="-307.399" rotation="0" font="Sans Serif,11,-1,5,50,0,0,0,0,0" z="16" Valignment="AlignTop" text_width="-1" x="402.29">
+            <text>AT_</text>
+            <color>#ffffff</color>
+        </dynamic_text>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="211.45" x="56.287" width="2.84728"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="200.187" x="49.169" width="2.84728"/>
+        <text text="2" y="255" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="165.907" color="#ffffff"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="218.959" x="56.287" width="2.84728"/>
+        <text text="1" y="255" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="98.996" color="#ffffff"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="203.942" x="56.287" width="2.84728"/>
+        <rect rx="0" height="23.2765" style="line-style:normal;line-weight:thin;filling:none;color:white" antialias="false" y="-312.655" x="398.019" ry="0" width="49.1156"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="215.204" x="49.169" width="2.84728"/>
+        <arc angle="-50" start="-74" height="150.171" style="line-style:normal;line-weight:hight;filling:none;color:white" antialias="true" y="-7.779" x="-81.92" width="711.821"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="222.713" x="49.169" width="2.84728"/>
+        <arc angle="-80" start="-70" height="150.171" style="line-style:normal;line-weight:hight;filling:none;color:white" antialias="true" y="64.2826" x="10.73" width="711.821"/>
+        <ellipse height="3.00342" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="true" y="207.696" x="49.169" width="2.84728"/>
+        <text text="0" y="255" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="34.22" color="#ffffff"/>
+        <rect rx="0" height="12.76" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="258.005" x="172.315" ry="0" width="45"/>
+        <rect rx="0" height="12" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="258.125" x="106.545" ry="0" width="45"/>
+        <rect rx="0" height="12" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="258.005" x="39.915" ry="0" width="45"/>
+        <text text="120/240V" y="267.013" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" x="39.915" color="#ffffff"/>
+        <text text="510" y="79" font="Sans Serif,23,-1,5,50,0,0,0,0,0" rotation="0" x="260" color="#ffffff"/>
+        <text text="s" y="81" font="Sans Serif,46,-1,5,50,0,0,0,0,0" rotation="0" x="227" color="#ffffff"/>
+        <text text="SOFREL" y="12" font="MS Sans Serif,20,-1,5,75,0,0,0,0,0" rotation="0" x="227" color="#ffffff"/>
+        <text text="LACROIX" y="237.73" font="MS Shell Dlg 2,16,-1,5,75,0,0,0,0,0,Gras" rotation="270" x="32.797" color="#ffffff"/>
+        <dynamic_text uuid="{3e9f0467-5dd1-4897-af05-f1c48968ae37}" Halignment="AlignLeft" text_from="UserText" frame="false" y="260.256" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="47" Valignment="AlignTop" text_width="-1" x="242.784">
+            <text>_</text>
+            <color>#ffffff</color>
+        </dynamic_text>
+        <dynamic_text uuid="{3b8fe63b-ecdc-41d5-a52e-e2ffcd36425d}" Halignment="AlignLeft" text_from="UserText" frame="false" y="260.13" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="53" Valignment="AlignTop" text_width="-1" x="173.737">
+            <text>_</text>
+        </dynamic_text>
+        <dynamic_text uuid="{7273693d-9b1a-4e00-b932-719f1c4d05cd}" Halignment="AlignLeft" text_from="UserText" frame="false" y="260.256" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="56" Valignment="AlignTop" text_width="-1" x="103.979">
+            <text>_</text>
+            <color>#ffffff</color>
+        </dynamic_text>
+        <dynamic_text uuid="{dd7046e1-8e39-446b-99bb-f2de6ae01aa4}" Halignment="AlignLeft" text_from="ElementInfo" frame="false" y="-302.894" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="65" Valignment="AlignTop" text_width="-1" x="436.647">
+            <text></text>
+            <info_name>label</info_name>
+            <color>#ffffff</color>
+        </dynamic_text>
+    </description>
+</definition>

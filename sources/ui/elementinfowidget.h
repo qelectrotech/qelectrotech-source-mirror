@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,9 +32,9 @@ namespace Ui {
 }
 
 /**
- * @brief The ElementInfoWidget class
- * this class is a widget to edit an element informations.
- */
+	@brief The ElementInfoWidget class
+	this class is a widget to edit an element informations.
+*/
 class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT

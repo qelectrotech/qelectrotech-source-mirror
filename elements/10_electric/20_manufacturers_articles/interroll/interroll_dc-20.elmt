@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="100" hotspot_x="5" version="0.70" width="200" hotspot_y="89" orientation="dyyy">
+<definition type="element" link_type="simple" height="100" hotspot_x="5" version="0.70" width="200" hotspot_y="89">
     <uuid uuid="{4efa7ccc-8560-4bcb-940d-5124e1254d88}"/>
     <names>
         <name lang="hu">DriveControl 20</name>

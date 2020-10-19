@@ -1,4 +1,4 @@
-<definition width="160" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+<definition width="160" height="180" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element">
     <uuid uuid="{0a952279-52d6-4ba6-803b-c8cd70aa792f}"/>
     <names>
         <name lang="cs">Deska PD4</name>

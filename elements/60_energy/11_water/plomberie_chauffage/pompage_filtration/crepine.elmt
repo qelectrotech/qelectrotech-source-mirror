@@ -1,4 +1,4 @@
-<definition hotspot_x="12" link_type="simple" height="20" orientation="dyyy" type="element" width="40" hotspot_y="10" version="0.51">
+<definition hotspot_x="12" link_type="simple" height="20" type="element" width="40" hotspot_y="10" version="0.51">
     <uuid uuid="{15f7c0af-fdca-454b-853b-e88fc18bc262}"/>
     <names>
         <name lang="fr">Crépine</name>

@@ -1,4 +1,4 @@
-<definition height="360" orientation="dyyy" link_type="simple" hotspot_y="65" version="0.80" type="element" width="50" hotspot_x="7">
+<definition height="360" link_type="simple" hotspot_y="65" version="0.80" type="element" width="50" hotspot_x="7">
     <uuid uuid="{c75e3f33-4e70-40d4-b7d4-eccea16bbc6d}"/>
     <names>
         <name lang="fr">405000 - Peigne P+N VX³ - 2 rangées</name>

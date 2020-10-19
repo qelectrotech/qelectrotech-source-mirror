@@ -1,4 +1,4 @@
-<definition version="0.51" orientation="dyyy" type="element" link_type="simple" height="30" hotspot_x="41" hotspot_y="7" width="80">
+<definition version="0.51" type="element" link_type="simple" height="30" hotspot_x="41" hotspot_y="7" width="80">
     <uuid uuid="{a994fd37-cbcb-49c1-98a4-96d881c0df95}"/>
     <names>
         <name lang="fr">Antenne UHF</name>

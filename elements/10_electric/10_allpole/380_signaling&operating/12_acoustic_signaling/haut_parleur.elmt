@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" orientation="dyyy" hotspot_y="19" version="0.5" hotspot_x="15" width="30">
+<definition height="40" link_type="simple" type="element" hotspot_y="19" version="0.5" hotspot_x="15" width="30">
     <uuid uuid="{3aea23d8-a9ab-4ece-bce6-a5156c8313db}"/>
     <names>
         <name lang="fr">Haut-parleur</name>

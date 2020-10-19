@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="86" type="element" height="180" width="190" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="86" type="element" height="180" width="190" version="0.5">
     <uuid uuid="{bbf156fc-ae45-4a4c-850a-0db34bfaa22c}"/>
     <names>
         <name lang="en">BVS OI-3-001-E</name>

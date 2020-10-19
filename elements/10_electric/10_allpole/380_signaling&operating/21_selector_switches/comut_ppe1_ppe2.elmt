@@ -1,4 +1,4 @@
-<definition height="60" hotspot_x="34" hotspot_y="29" orientation="dyyy" link_type="simple" type="element" version="0.80" width="120">
+<definition height="60" hotspot_x="34" hotspot_y="29" link_type="simple" type="element" version="0.80" width="120">
     <uuid uuid="{f5a479cc-76d2-4ab9-8d43-ba447656bb7a}"/>
     <names>
         <name lang="it">Commutatore a 3 posizioni </name>

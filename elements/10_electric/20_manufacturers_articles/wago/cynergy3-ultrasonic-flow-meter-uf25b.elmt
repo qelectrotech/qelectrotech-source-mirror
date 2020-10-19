@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" height="80" version="0.61" type="element" width="200" hotspot_y="50" hotspot_x="37">
+<definition link_type="simple" height="80" version="0.61" type="element" width="200" hotspot_y="50" hotspot_x="37">
     <uuid uuid="{6533441a-bb19-4772-8d41-5ee94196545e}"/>
     <names>
         <name lang="nl">Debiet - Cynergy 3 UF25B</name>

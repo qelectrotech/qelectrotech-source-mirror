@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" orientation="dyyy" type="element" width="50" height="210">
+<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" type="element" width="50" height="210">
     <uuid uuid="{c610e7fd-d703-47c0-bceb-253cadedafd7}"/>
     <names>
         <name lang="fr">05800 - Coupe-circuit unipolaire</name>

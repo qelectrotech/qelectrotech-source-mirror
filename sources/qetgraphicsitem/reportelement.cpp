@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@ ReportElement::ReportElement(const ElementsLocation &location, const QString& li
 {}
 
 /**
- * @brief ReportElement::~ReportElement
- * Destructor
- */
+	@brief ReportElement::~ReportElement
+	Destructor
+*/
 ReportElement::~ReportElement()
 {
 	unlinkAllElements();
@@ -41,11 +41,11 @@ ReportElement::~ReportElement()
 }
 
 /**
- * @brief ReportElement::linkToElement
- * Link this element to the other element
- * @param elmt
- * element to be linked with this
- */
+	@brief ReportElement::linkToElement
+	Link this element to the other element
+	@param elmt
+	element to be linked with this
+*/
 void ReportElement::linkToElement(Element * elmt)
 {
 	if (!diagram() && !elmt -> diagram())
@@ -70,9 +70,9 @@ void ReportElement::linkToElement(Element * elmt)
 }
 
 /**
- * @brief ReportElement::unLinkAllElements
- * Unlink all of the element in the QList connected_elements
- */
+	@brief ReportElement::unLinkAllElements
+	Unlink all of the element in the QList connected_elements
+*/
 void ReportElement::unlinkAllElements()
 {
 	if (isFree())
@@ -92,12 +92,12 @@ void ReportElement::unlinkAllElements()
 	emit linkedElementChanged();
 }
 /**
- * @brief ReportElement::unlinkElement
+	@brief ReportElement::unlinkElement
  *unlink the specified element.
  *for reportelement, they must be only one linked element, so we call
  *unlinkAllElements for clear the connected_elements list.
- * @param elmt
- */
+	@param elmt
+*/
 void ReportElement::unlinkElement(Element *elmt) {
 	Q_UNUSED (elmt);
 	unlinkAllElements();

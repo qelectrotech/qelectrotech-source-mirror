@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" orientation="dyyy" type="element" height="40" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" type="element" height="40" width="50">
     <uuid uuid="{a37db8bb-78f5-4562-9632-277283b60376}"/>
     <names>
         <name lang="fr">Transistor à effet de champ à grille-jonction

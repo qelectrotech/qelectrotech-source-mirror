@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="25" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="25" hotspot_y="10" height="20" type="element" ic="true">
 <uuid uuid="{48A63690-760B-4E08-9394-1DBB3B48F8BF}"/><names>
         <name lang="es">Flecha 2</name>
         <name lang="fr">Fléche 2</name>

@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="80" hotspot_y="40" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="80" hotspot_y="40" type="element">
     <uuid uuid="{ff4b4de8-6164-4b54-92a7-b29a3b3e6cf9}"/>
     <names>
         <name lang="nl">Mini-DIN 8 Pin</name>

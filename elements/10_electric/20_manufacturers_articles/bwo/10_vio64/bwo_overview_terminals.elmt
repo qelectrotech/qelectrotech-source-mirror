@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" height="210" hotspot_y="5" link_type="simple" width="40" orientation="dyyy" hotspot_x="6">
+<definition version="0.5" type="element" height="210" hotspot_y="5" link_type="simple" width="40" hotspot_x="6">
 <uuid uuid="{3B595F54-B332-4222-8008-1430BBEB8F89}"/><names>
         <name lang="fr">Vue d'ensemble (bornes)</name>
         <name lang="de">Übersicht (Klemmen)</name>

@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="13">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="13">
     <uuid uuid="{f61cab44-59d5-4439-8ac3-961dabbecdf5}"/>
     <names>
         <name lang="cs">Elektrický uzávěr 2V</name>

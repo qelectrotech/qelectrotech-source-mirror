@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="17" orientation="dyyy" hotspot_y="24" type="element" height="100" width="450" version="0.5">
+<definition link_type="simple" hotspot_x="17" hotspot_y="24" type="element" height="100" width="450" version="0.5">
     <uuid uuid="{e377221a-d1a6-414d-93e9-14a622e5ef97}"/>
     <names>
         <name lang="pl">MCD 500</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{36d604c7-5361-425f-bf8e-a8f06b882ace}"/>
     <names>
         <name lang="fr">Liaison, par exemple:

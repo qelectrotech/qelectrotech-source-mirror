@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="112" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="210" width="260">
+<definition type="element" hotspot_y="112" link_type="simple" hotspot_x="155" version="0.80" height="210" width="260">
     <uuid uuid="{5789aa5f-7965-4940-8de9-084241463786}"/>
     <names>
         <name lang="de">MT8051IP 4.3"</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="120" height="50" hotspot_y="24" hotspot_x="46" version="0.70" link_type="simple">
+<definition type="element" width="120" height="50" hotspot_y="24" hotspot_x="46" version="0.70" link_type="simple">
     <uuid uuid="{64826db0-66b0-4592-9f2a-4ee3123589d1}"/>
     <names>
         <name lang="de">elektronisches Relais, betätigt durch LED</name>

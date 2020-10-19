@@ -1,0 +1,34 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{3c512ee2-4928-4815-8747-7d039b534e96}"/>
+    <names>
+        <name lang="cs">Lednička, chladnička</name>
+        <name lang="pl">Chłodziarka</name>
+        <name lang="ar">ثلاّجة</name>
+        <name lang="de">Kühlschrank</name>
+        <name lang="en">Refrigerator</name>
+        <name lang="el">Ψυγείο</name>
+        <name lang="nl">Koelkast</name>
+        <name lang="it">Frigorifero</name>
+        <name lang="fr">Réfrigérateur</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="12" uuid="{7495ff0f-140e-4b0e-9567-b9a35813c630}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-12" antialias="false" y3="23" x2="-12" y1="-1" y2="23" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" x4="12"/>
+        <line x1="-2" end2="none" antialias="false" x2="2" y1="13" length2="1.5" y2="9" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-2" end2="none" antialias="false" x2="2" y1="9" length2="1.5" y2="13" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-3" end2="none" antialias="false" x2="3" y1="11" length2="1.5" y2="11" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="8" length2="1.5" y2="14" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="0" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="23" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{3a8c8738-1b8c-4f02-9fc9-a2349814fc7a}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{c2a12b3b-9597-4c0c-83ee-652194376fb9}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{90f5e5b2-dde5-4023-bb7e-40a995c0b8e8}"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition hotspot_x="60" width="120" hotspot_y="45" version="0.5" orientation="dyyy" height="100" type="element" link_type="simple">
+<definition hotspot_x="60" width="120" hotspot_y="45" version="0.5" height="100" type="element" link_type="simple">
     <uuid uuid="{2b26f6cf-df3d-43d7-9e7b-c1d317d9a0c7}"/>
     <names>
         <name lang="en">logo-textdisplay-24v</name>

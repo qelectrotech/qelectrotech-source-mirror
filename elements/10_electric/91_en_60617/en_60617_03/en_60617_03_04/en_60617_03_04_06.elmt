@@ -1,4 +1,4 @@
-<definition hotspot_x="64" version="0.70" orientation="dyyy" height="80" hotspot_y="24" width="140" type="element" link_type="simple">
+<definition hotspot_x="64" version="0.70" height="80" hotspot_y="24" width="140" type="element" link_type="simple">
     <uuid uuid="{0ee4e231-6287-4f80-94bc-123e6e697d22}"/>
     <names>
         <name lang="fr">Boîte pour une dérivation avec trois

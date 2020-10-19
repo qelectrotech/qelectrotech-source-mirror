@@ -1,37 +1,43 @@
-<definition hotspot_x="22" hotspot_y="25" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-<uuid uuid="{91B56D05-E449-41CB-923E-E069B89AB09A}"/><names>
+<definition hotspot_y="25" link_type="simple" width="50" version="0.80" type="element" height="50" hotspot_x="22">
+    <uuid uuid="{bac73a83-6b74-48d7-9ae5-073ee7427f84}"/>
+    <names>
+        <name lang="fr">Ventilateur hélicoïdale</name>
         <name lang="ca">Ventilador Helicohidal</name>
         <name lang="es">Ventilador Helicohidal</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="6" y2="17" end1="none" x1="-3" y1="18" length1="1.5"/>
-        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="26.3775" y="-16.131" antialias="true" height="33.4003" x="-16.0565"/>
-        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="16.5076" y="-7.78089" antialias="true" height="17.5353" x="-8.07148"/>
-        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="21.4644" y="-10.2859" antialias="true" height="22.5452" x="-11.0498"/>
-        <ellipse style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.2322" y="-4.44085" antialias="true" height="10.0201" x="-5.43373"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-16.131" width="8.5727" angle="-150" antialias="true" height="15.8652" x="-2.11485" start="-90"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6.94588" width="5.27552" angle="-90" antialias="true" height="12.5251" x="1.18235" start="-180"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-16.131" width="4.61607" angle="-90" antialias="true" height="9.1851" x="1.18235" start="0"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6.11088" width="13.1888" angle="-95" antialias="true" height="10.0201" x="1.18235" start="-180"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-0.265813" width="11.2105" angle="-90" antialias="true" height="4.17504" x="-4.09316" start="90"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-0.265813" width="7.25383" angle="-80" antialias="true" height="3.34003" x="7.1173" start="-100"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-0.265813" width="7.91327" angle="-240" antialias="true" height="16.7002" x="-3.43373" start="90"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.27586" width="4.61607" angle="-90" antialias="true" height="12.5251" x="-3.43373" start="0"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="7.24927" width="3.95663" angle="-90" antialias="true" height="8.35009" x="-2.77428" start="-180"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4.44085" width="12.5293" angle="-240" antialias="true" height="10.0201" x="-11.347" start="0"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5.27586" width="9.89159" angle="-90" antialias="true" height="5.01006" x="-4.7526" start="-90"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3.60585" width="6.59439" angle="-90" antialias="true" height="2.50503" x="-11.347" start="90"/>
-        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-13.2356" width="26.95" angle="-220" antialias="true" height="28.2578" x="-14.5802" start="-70"/>
-        <input rotate="true" text="_" tagg="label" y="22" x="-12" size="4"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-17" width="29" angle="-180" antialias="true" height="34" x="-12" start="90"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="3" y2="-17" end1="none" x1="-6" y1="-16" length1="1.5"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-3" y2="-16" end1="none" x1="-2" y1="-16" length1="1.5"/>
-        <polygon y4="-12" x6="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="8" antialias="false" x2="10" y2="-8" y7="-11" x5="8" y3="-9" y5="-11" x4="9" y6="-11" closed="false" x1="8" y1="-11" x3="11"/>
-        <polygon y4="-13" x6="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="9" antialias="false" x2="13" y2="-9" y7="-12" x5="9" y3="-10" y5="-12" x4="12" y6="-12" closed="false" x1="10" y1="-8" x3="14"/>
-        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" width="2" y="-2" antialias="false" height="4" x="0"/>
-        <terminal y="0" x="22" orientation="e"/>
-        <terminal y="-17" x="11" orientation="n"/>
-        <terminal y="0" x="-18" orientation="w"/>
+        <line x1="-3" y2="17" end1="none" y1="18" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="6" antialias="false" length1="1.5"/>
+        <ellipse width="26.3775" y="-16.131" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.0565" antialias="true" height="33.4003"/>
+        <ellipse width="16.5076" y="-7.78089" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-8.07148" antialias="true" height="17.5353"/>
+        <ellipse width="21.4644" y="-10.2859" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-11.0498" antialias="true" height="22.5452"/>
+        <ellipse width="11.2322" y="-4.44085" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-5.43373" antialias="true" height="10.0201"/>
+        <arc start="-90" width="8.5727" y="-16.131" angle="-150" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.11485" antialias="true" height="15.8652"/>
+        <arc start="-180" width="5.27552" y="-6.94588" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="1.18235" antialias="true" height="12.5251"/>
+        <arc start="0" width="4.61607" y="-16.131" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="1.18235" antialias="true" height="9.1851"/>
+        <arc start="-180" width="13.1888" y="-6.11088" angle="-95" style="line-style:normal;line-weight:normal;filling:none;color:black" x="1.18235" antialias="true" height="10.0201"/>
+        <arc start="90" width="11.2105" y="-0.265813" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.09316" antialias="true" height="4.17504"/>
+        <arc start="-100" width="7.25383" y="-0.265813" angle="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.1173" antialias="true" height="3.34003"/>
+        <arc start="90" width="7.91327" y="-0.265813" angle="-240" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.43373" antialias="true" height="16.7002"/>
+        <arc start="0" width="4.61607" y="-5.27586" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.43373" antialias="true" height="12.5251"/>
+        <arc start="-180" width="3.95663" y="7.24927" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.77428" antialias="true" height="8.35009"/>
+        <arc start="0" width="12.5293" y="-4.44085" angle="-240" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.347" antialias="true" height="10.0201"/>
+        <arc start="-90" width="9.89159" y="-5.27586" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.7526" antialias="true" height="5.01006"/>
+        <arc start="90" width="6.59439" y="-3.60585" angle="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.347" antialias="true" height="2.50503"/>
+        <arc start="-70" width="26.95" y="-13.2356" angle="-220" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-14.5802" antialias="true" height="28.2578"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="14.5" uuid="{6e5b2126-c92b-40d3-aaa1-62521c6b5763}" Halignment="AlignLeft" rotation="0" x="-12" text_width="-1" frame="false" text_from="ElementInfo" z="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc start="90" width="29" y="-17" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" antialias="true" height="34"/>
+        <line x1="-6" y2="-17" end1="none" y1="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="3" antialias="false" length1="1.5"/>
+        <line x1="-2" y2="-16" end1="none" y1="-16" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-3" antialias="false" length1="1.5"/>
+        <polygon y6="-11" x3="11" x1="8" y2="-8" y1="-11" y4="-12" x6="8" x4="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="8" x2="10" y3="-9" x5="8" y7="-11" closed="false" antialias="false" y5="-11"/>
+        <polygon y6="-12" x3="14" x1="10" y2="-9" y1="-8" y4="-13" x6="9" x4="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="9" x2="13" y3="-10" x5="9" y7="-12" closed="false" antialias="false" y5="-12"/>
+        <ellipse width="2" y="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" antialias="false" height="4"/>
+        <terminal name="" y="0" uuid="{9152995d-9203-414b-be1d-7d8c189efb7d}" x="22" orientation="e"/>
+        <terminal name="" y="-17" uuid="{55ac33f5-66b5-4e1c-a5a4-330559eae36b}" x="11" orientation="n"/>
+        <terminal name="" y="0" uuid="{4a3d38e3-66e0-4969-ad23-48c5e1c0c299}" x="-18" orientation="w"/>
     </description>
 </definition>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,40 +20,57 @@
 
 #include "elementitemeditor.h"
 
+#include <QLineEdit>
+
 class PartTerminal;
 class QDoubleSpinBox;
 class QComboBox;
 
 /**
+	@brief The TerminalEditor class
 	This class provides a widget to edit terminals within the element editor.
+	The class is capable to change the values of multiple parts of the same time.
+	The displayed values are from the first selected element
 */
 class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
+
 	// Constructors, destructor
 	public:
-	TerminalEditor(QETElementEditor *, PartTerminal * = nullptr, QWidget * = nullptr);
-	~TerminalEditor() override;
+		TerminalEditor(
+				QETElementEditor *,
+				QList<PartTerminal *>& terms,
+				QWidget * = nullptr);
+		TerminalEditor(QETElementEditor *, QWidget * = nullptr);
+		~TerminalEditor() override;
 	private:
-	TerminalEditor(const TerminalEditor &);
-	
+		TerminalEditor(const TerminalEditor &);
+		void init();
+
 	// attributes
 	private:
-		PartTerminal *part;
+		QList<PartTerminal *> m_terminals;
+		PartTerminal *m_part{nullptr};
 		QDoubleSpinBox *qle_x, *qle_y;
 		QComboBox *orientation;
-		bool m_locked;
-	
+		QLineEdit *name;
+		bool m_locked{false};
+
 	// methods
 	public:
-	bool setPart(CustomElementPart *) override;
-	CustomElementPart *currentPart() const override;
-	
+		bool setPart(CustomElementPart *) override;
+		bool setParts(QList<CustomElementPart *> parts) override;
+		CustomElementPart *currentPart() const override;
+		QList<CustomElementPart*> currentParts() const override;
+
 	public slots:
 		void updateTerminalO();
-		void updatePos();
+		void updateXPos();
+		void updateYPos();
+		void updateName();
 		void updateForm() override;
-	
+
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif

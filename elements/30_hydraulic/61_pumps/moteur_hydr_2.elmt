@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="11" hotspot_y="34" width="80" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="11" hotspot_y="34" width="80" height="60" link_type="simple" type="element">
     <uuid uuid="{3f03ff15-c9b5-45f8-b4ef-58b07fed1275}"/>
     <names>
         <name lang="en">hydraulic motor 2</name>

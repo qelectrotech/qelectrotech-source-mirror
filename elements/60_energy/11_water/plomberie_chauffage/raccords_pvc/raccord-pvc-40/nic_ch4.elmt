@@ -1,4 +1,4 @@
-<definition version="0.51" hotspot_y="18" width="200" height="120" type="element" hotspot_x="34" orientation="dyyy" link_type="simple">
+<definition version="0.51" hotspot_y="18" width="200" height="120" type="element" hotspot_x="34" link_type="simple">
     <uuid uuid="{bdc86f4f-b3a3-4617-884a-13581685e56d}"/>
     <names>
         <name lang="fr">Coude 45°  PVC 40 MF</name>

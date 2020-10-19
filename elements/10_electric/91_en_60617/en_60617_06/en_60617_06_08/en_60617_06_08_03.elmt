@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="75" hotspot_y="104" version="0.70" width="90" type="element" height="130">
+<definition link_type="simple" hotspot_x="75" hotspot_y="104" version="0.70" width="90" type="element" height="130">
     <uuid uuid="{23d2bf12-5563-4484-80f7-08de6f8f1e9f}"/>
     <names>
         <name lang="fr">Moteur asynchrone triphasé à rotor à bagues</name>

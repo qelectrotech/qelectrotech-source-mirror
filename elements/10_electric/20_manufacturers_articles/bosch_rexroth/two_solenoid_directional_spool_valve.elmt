@@ -1,4 +1,4 @@
-<definition height="80" hotspot_x="135" version="0.70" width="260" hotspot_y="45" link_type="simple" type="element" orientation="dyyy">
+<definition height="80" hotspot_x="135" version="0.70" width="260" hotspot_y="45" link_type="simple" type="element">
     <uuid uuid="{1182b89e-0e42-4d83-9ec8-d04a5fd19967}"/>
     <names>
         <name lang="en">Two solenoid directional spool valve</name>

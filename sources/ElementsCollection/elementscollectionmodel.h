@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #define ELEMENTSCOLLECTIONMODEL2_H
 
 #include <QStandardItemModel>
+#include <QHash>
 #include "elementslocation.h"
 
 class XmlProjectElementCollectionItem;

@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="13" width="30" orientation="dyyy" height="30" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="13" width="30" height="30" link_type="simple" type="element">
     <uuid uuid="{3ecd6cbe-659d-4aa0-b21b-cc44cc649cb6}"/>
     <names>
         <name lang="en">Push adjustable length</name>

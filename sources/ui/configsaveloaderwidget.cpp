@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,10 +19,10 @@
 #include "ui_configsaveloaderwidget.h"
 
 ConfigSaveLoaderWidget::ConfigSaveLoaderWidget(QWidget *parent) :
-    QGroupBox(parent),
-    ui(new Ui::ConfigSaveLoaderWidget)
+	QGroupBox(parent),
+	ui(new Ui::ConfigSaveLoaderWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 ConfigSaveLoaderWidget::~ConfigSaveLoaderWidget()
@@ -30,11 +30,13 @@ ConfigSaveLoaderWidget::~ConfigSaveLoaderWidget()
 	delete ui;
 }
 
-QString ConfigSaveLoaderWidget::selectedText() const {
+QString ConfigSaveLoaderWidget::selectedText() const
+{
 	return ui->m_combo_box->currentText();
 }
 
-QString ConfigSaveLoaderWidget::text() const {
+QString ConfigSaveLoaderWidget::text() const
+{
 	return ui->m_line_edit->text();
 }
 
@@ -42,10 +44,12 @@ void ConfigSaveLoaderWidget::addItem(QString text) {
 	ui->m_combo_box->addItem(text);
 }
 
-void ConfigSaveLoaderWidget::on_m_load_pb_clicked() {
+void ConfigSaveLoaderWidget::on_m_load_pb_clicked()
+{
 	emit loadClicked();
 }
 
-void ConfigSaveLoaderWidget::on_m_save_pb_clicked() {
+void ConfigSaveLoaderWidget::on_m_save_pb_clicked()
+{
 	emit saveClicked();
 }

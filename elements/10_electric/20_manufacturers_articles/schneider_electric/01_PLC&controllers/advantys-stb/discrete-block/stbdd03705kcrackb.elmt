@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="383" link_type="simple" version="0.70" height="100" type="element" hotspot_y="52" width="750">
+<definition hotspot_x="383" link_type="simple" version="0.70" height="100" type="element" hotspot_y="52" width="750">
     <uuid uuid="{a8d3e268-0f1e-4692-a596-d2f7f1e0829d}"/>
     <names>
         <name lang="fr">STBDDO3705KC-rack B</name>

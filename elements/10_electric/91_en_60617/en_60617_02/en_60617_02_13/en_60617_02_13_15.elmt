@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="15" orientation="dyyy" height="30" version="0.70" hotspot_x="31">
+<definition link_type="simple" type="element" width="40" hotspot_y="15" height="30" version="0.70" hotspot_x="31">
     <uuid uuid="{9c7fbd32-cc73-4517-b70f-e2b225bd5635}"/>
     <names>
         <name lang="fr">Commande par galet</name>

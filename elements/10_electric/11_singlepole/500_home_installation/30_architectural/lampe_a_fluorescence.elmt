@@ -1,4 +1,4 @@
-<definition hotspot_x="35" hotspot_y="8" orientation="dyyy" height="20" type="element" link_type="simple" width="70" version="0.5">
+<definition hotspot_x="35" hotspot_y="8" height="20" type="element" link_type="simple" width="70" version="0.5">
     <uuid uuid="{216019da-3a0d-4079-babb-b89e3b2d7ba0}"/>
     <names>
         <name lang="fr">Lampe à fluorescence</name>

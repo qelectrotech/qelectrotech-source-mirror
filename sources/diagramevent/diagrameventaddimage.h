@@ -1,19 +1,19 @@
 /*
-        Copyright 2006-2019 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef DIAGRAMEVENTADDIMAGE_H
 #define DIAGRAMEVENTADDIMAGE_H
@@ -24,28 +24,28 @@ class Diagram;
 class DiagramImageItem;
 
 /**
- * @brief The DiagramEventAddImage class
- * This diagram event, handle the adding of an image in a diagram.
- */
+	@brief The DiagramEventAddImage class
+	This diagram event, handle the adding of an image in a diagram.
+*/
 class DiagramEventAddImage : public DiagramEventInterface
 {
-        Q_OBJECT
+	Q_OBJECT
 
-        public:
-            DiagramEventAddImage(Diagram *diagram);
-            ~DiagramEventAddImage() override;
+	public:
+		DiagramEventAddImage(Diagram *diagram);
+		~DiagramEventAddImage() override;
 
-            void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
-            void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
-            void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
-            void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
 
-            bool isNull () const;
-    private:
-            void openDialog();
+		 bool isNull () const;
+	private:
+		void openDialog();
 
-            DiagramImageItem *m_image;
-            bool m_is_added;
+		DiagramImageItem *m_image;
+		bool m_is_added;
 };
 
 #endif // DIAGRAMEVENTADDIMAGE_H

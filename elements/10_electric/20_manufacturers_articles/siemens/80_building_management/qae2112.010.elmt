@@ -1,0 +1,41 @@
+<definition width="40" height="30" link_type="simple" version="0.80" hotspot_x="14" hotspot_y="5" type="element">
+    <uuid uuid="{44f1d28e-6827-46ce-b69f-a2564b56b2be}"/>
+    <names>
+        <name lang="de">QAE2112.010 PT1000</name>
+        <name lang="nl">QAE2112.010 PT1000</name>
+        <name lang="cs">QAE2112.010 PT1000</name>
+        <name lang="es">QAE2112.010 PT1000</name>
+        <name lang="el">QAE2112.010 PT1000</name>
+        <name lang="pl">QAE2112.010 PT1000</name>
+        <name lang="it">QAE2112.010 PT1000</name>
+        <name lang="fr">QAE2112.010  PT1000</name>
+        <name lang="en">QAE2112.010 PT1000</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Siemens</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">QAE2112.010</elementInformation>
+        <elementInformation name="description" show="1">Sonde à plongeur PT1000</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="-7" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_width="-1" uuid="{0449173f-918a-47c4-9ab7-6689e6ae72b1}" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" z="1" y="-15.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" length1="1.5" x2="-6" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-10" y1="10" antialias="false"/>
+        <line length2="1.5" length1="1.5" x2="16" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="20" y1="10" antialias="false"/>
+        <rect x="-5" width="20" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0" antialias="false" y="5"/>
+        <polygon x2="0" closed="false" y2="20" x4="15" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-5" y1="20" y3="0" x3="10" antialias="false" y4="0"/>
+        <terminal name="" x="-10" uuid="{fab8229c-c6e6-4882-9617-dacab929e8f7}" orientation="w" y="10"/>
+        <terminal name="" x="20" uuid="{44461534-08dd-44fb-8c7e-62b7080440e7}" orientation="e" y="10"/>
+    </description>
+</definition>

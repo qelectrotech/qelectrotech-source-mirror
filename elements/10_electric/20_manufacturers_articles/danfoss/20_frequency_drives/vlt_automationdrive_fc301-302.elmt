@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="6" type="element" height="100" width="470" version="0.5">
+<definition link_type="simple" hotspot_x="24" hotspot_y="6" type="element" height="100" width="470" version="0.5">
     <uuid uuid="{8b0ee3eb-2ee4-42eb-bc23-1c95091c96df}"/>
     <names>
         <name lang="pl">VLT AutomationDrive FC301/302</name>

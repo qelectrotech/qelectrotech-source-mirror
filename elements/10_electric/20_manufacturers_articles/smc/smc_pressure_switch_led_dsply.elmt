@@ -1,4 +1,4 @@
-<definition height="90" width="160" hotspot_x="5" type="element" link_type="simple" orientation="dyyy" version="0.70" hotspot_y="82">
+<definition height="90" width="160" hotspot_x="5" type="element" link_type="simple" version="0.70" hotspot_y="82">
     <uuid uuid="{b2590683-69ba-4718-b075-111229a9b44e}"/>
     <names>
         <name lang="en">SMC ISE30A-01-P Pressure Sensor</name>

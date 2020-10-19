@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="16" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="8">
+<definition width="30" hotspot_x="16" type="element" link_type="simple" version="0.5" height="20" hotspot_y="8">
     <uuid uuid="{7d97d034-74cf-4200-a510-1c5482a03748}"/>
     <names>
         <name lang="cs">Vodovodní uzávěr ECS</name>

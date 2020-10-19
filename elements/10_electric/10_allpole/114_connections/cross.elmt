@@ -1,4 +1,4 @@
-<definition height="20" link_type="terminal" hotspot_x="9" width="20" orientation="dyyy" hotspot_y="9" version="0.70" type="element">
+<definition height="20" link_type="terminal" hotspot_x="9" width="20" hotspot_y="9" version="0.70" type="element">
     <uuid uuid="{8c0d3e9c-dc37-41d7-bfd5-fe4dbf8dc4fb}"/>
     <names>
         <name lang="ru">Пересечение</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="60" height="70" hotspot_y="44" hotspot_x="30" version="0.70" link_type="simple">
+<definition type="element" width="60" height="70" hotspot_y="44" hotspot_x="30" version="0.70" link_type="simple">
     <uuid uuid="{6c0f49b1-2f91-434b-8ef5-6d69f1122cb1}"/>
     <names>
         <name lang="de">Zweiwege-Trennschalter</name>

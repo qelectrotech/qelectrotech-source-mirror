@@ -1,4 +1,4 @@
-<definition width="330" orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="41" type="element" height="110" version="0.5">
+<definition width="330" link_type="simple" hotspot_x="15" hotspot_y="41" type="element" height="110" version="0.5">
     <uuid uuid="{78dc7a5c-7d10-42b1-9608-0e5771e26ec7}"/>
     <names>
         <name lang="ar">Micromaster 420</name>

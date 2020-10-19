@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="36" type="element" height="110" width="230" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="36" type="element" height="110" width="230" version="0.5">
     <uuid uuid="{9a4df9b3-c515-428a-bc60-9ab25c454955}"/>
     <names>
         <name lang="pl">Bitop L</name>

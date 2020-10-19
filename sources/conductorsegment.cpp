@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -41,7 +41,8 @@ ConductorSegment::ConductorSegment(
 /**
 	Destructeur - Relie le segment precedent au suivant
 */
-ConductorSegment::~ConductorSegment() {
+ConductorSegment::~ConductorSegment()
+{
 	if (hasPreviousSegment()) previousSegment() -> setNextSegment(nextSegment());
 	if (hasNextSegment()) nextSegment() -> setPreviousSegment(previousSegment());
 }
@@ -54,7 +55,8 @@ ConductorSegment::~ConductorSegment() {
 	@param possible_dx La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConductorSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx) const {
+bool ConductorSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx) const
+{
 	
 	Q_ASSERT_X(isVertical(), "ConductorSegment::canMove1stPointX", "segment non vertical");
 	
@@ -113,7 +115,8 @@ bool ConductorSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_d
 	@param possible_dx La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConductorSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx) const {
+bool ConductorSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx) const
+{
 	
 	Q_ASSERT_X(isVertical(), "ConductorSegment::canMove2ndPointX", "segment non vertical");
 	
@@ -172,7 +175,8 @@ bool ConductorSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_d
 	@param possible_dy La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConductorSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy) const {
+bool ConductorSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy) const
+{
 	
 	Q_ASSERT_X(isHorizontal(), "ConductorSegment::canMove1stPointY", "segment non horizontal");
 	
@@ -231,7 +235,8 @@ bool ConductorSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_d
 	@param possible_dy La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConductorSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy) const {
+bool ConductorSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy) const
+{
 	
 	Q_ASSERT_X(isHorizontal(), "ConductorSegment::canMove2ndPointY", "segment non horizontal");
 	
@@ -401,59 +406,68 @@ void ConductorSegment::setNextSegment(ConductorSegment *ns) {
 }
 
 /// @return true si ce segment est un segment statique, cad un segment relie a une borne
-bool ConductorSegment::isStatic() const {
+bool ConductorSegment::isStatic() const
+{
 	return(isFirstSegment() || isLastSegment());
 }
 
 /// @return true si ce segment est le premier du conducteur
-bool ConductorSegment::isFirstSegment() const {
+bool ConductorSegment::isFirstSegment() const
+{
 	return(!hasPreviousSegment());
 }
 
 /// @return true si ce segment est le dernier du conducteur
-bool ConductorSegment::isLastSegment() const {
+bool ConductorSegment::isLastSegment() const
+{
 	return(!hasNextSegment());
 }
 
 /**
 	@return Le segment precedent
 */
-ConductorSegment *ConductorSegment::previousSegment()  const {
+ConductorSegment *ConductorSegment::previousSegment()  const
+{
 	return(previous_segment);
 }
 
 /**
 	@return Le segment suivant
 */
-ConductorSegment *ConductorSegment::nextSegment()  const {
+ConductorSegment *ConductorSegment::nextSegment()  const
+{
 	return(next_segment);
 }
 
 /**
 	@return true si le segment est vertical, false sinon
 */
-bool ConductorSegment::isVertical() const {
+bool ConductorSegment::isVertical() const
+{
 	return(point1.x() == point2.x());
 }
 
 /**
 	@return true si le segment est horizontal, false sinon
 */
-bool ConductorSegment::isHorizontal() const {
+bool ConductorSegment::isHorizontal() const
+{
 	return(point1.y() == point2.y());
 }
 
 /**
 	@return le premier point du segment
 */
-QPointF ConductorSegment::firstPoint() const {
+QPointF ConductorSegment::firstPoint() const
+{
 	return(point1);
 }
 
 /**
 	@return le second point du segment
 */
-QPointF ConductorSegment::secondPoint() const {
+QPointF ConductorSegment::secondPoint() const
+{
 	return(point2);
 }
 
@@ -476,21 +490,24 @@ void ConductorSegment::setSecondPoint(const QPointF &p) {
 /**
 	@return true si le segment a un segment precedent, false sinon
 */
-bool ConductorSegment::hasPreviousSegment() const {
+bool ConductorSegment::hasPreviousSegment() const
+{
 	return(previous_segment != nullptr);
 }
 
 /**
 	@return true si le segment a un segment suivant, false sinon
 */
-bool ConductorSegment::hasNextSegment() const {
+bool ConductorSegment::hasNextSegment() const
+{
 	return(next_segment != nullptr);
 }
 
 /**
 	@return Le centre du rectangle delimitant le conducteur
 */
-QPointF ConductorSegment::middle() const {
+QPointF ConductorSegment::middle() const
+{
 	return(
 		QPointF(
 			(point1.x()+ point2.x()) / 2.0,
@@ -502,7 +519,8 @@ QPointF ConductorSegment::middle() const {
 /**
 	@return La longueur du conducteur
 */
-qreal ConductorSegment::length() const {
+qreal ConductorSegment::length() const
+{
 	if (isHorizontal()) {
 		return(secondPoint().x() - firstPoint().x());
 	} else {
@@ -511,11 +529,13 @@ qreal ConductorSegment::length() const {
 }
 
 /// @return QET::Horizontal si le segment est horizontal, QET::Vertical sinon
-QET::ConductorSegmentType ConductorSegment::type() const {
+QET::ConductorSegmentType ConductorSegment::type() const
+{
 	return(isHorizontal() ? QET::Horizontal : QET::Vertical);
 }
 
 /// @return true si les deux points constituant le segment sont egaux
-bool ConductorSegment::isPoint() const {
+bool ConductorSegment::isPoint() const
+{
 	return(point1 == point2);
 }

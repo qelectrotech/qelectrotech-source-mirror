@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="22" type="element" link_type="simple" orientation="dyyy" version="0.5" height="100" hotspot_y="57">
+<definition width="50" hotspot_x="22" type="element" link_type="simple" version="0.5" height="100" hotspot_y="57">
     <uuid uuid="{5ac1f3a6-518b-4097-a2bb-074f7ca9a4b8}"/>
     <names>
         <name lang="cs">Nástěnné topné těleso</name>

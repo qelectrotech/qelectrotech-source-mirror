@@ -15,9 +15,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	ui->setupUi(this);
 	m_default_text = m_text->compositeText();
 	ui->m_plain_text_edit->setPlainText(m_default_text);
-#if QT_VERSION >= 0x050300
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
-#endif
 	setUpComboBox();
 }
 
@@ -28,35 +26,35 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) 
 	ui->setupUi(this);
 	m_default_text = std::move(text);
 	ui->m_plain_text_edit->setPlainText(m_default_text);
-#if QT_VERSION >= 0x050300
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
-#endif
 	setUpComboBox();
 }
 
-CompositeTextEditDialog::~CompositeTextEditDialog() {
+CompositeTextEditDialog::~CompositeTextEditDialog()
+{
 	delete ui;
 }
 
 /**
- * @brief CompositeTextEditDialog::plainText
- * @return The edited text
- */
-QString CompositeTextEditDialog::plainText() const {
+	@brief CompositeTextEditDialog::plainText
+	@return The edited text
+*/
+QString CompositeTextEditDialog::plainText() const
+{
 	return ui->m_plain_text_edit->toPlainText();
 }
 
 /**
- * @brief CompositeTextEditDialog::setUpComboBox
- * Add the available element information in the combo box
- */
+	@brief CompositeTextEditDialog::setUpComboBox
+	Add the available element information in the combo box
+*/
 void CompositeTextEditDialog::setUpComboBox()
 {
 	QStringList qstrl;
 	
 	if(m_text && (m_text->parentElement()->linkType() & Element::AllReport)) //Special treatment for text owned by a folio report
 	{
-		qstrl << "label" << "function" << "tension-protocol";
+		qstrl << "label" << "function" << "tension_protocol" << "conductor_color" << "conductor_section";
 	}
 	else
 	{
@@ -82,10 +80,10 @@ void CompositeTextEditDialog::on_m_info_cb_activated(const QString &arg1)
 }
 
 /**
- * @brief CompositeTextEditDialog::focusInEvent
- * Reimplemented from QWidget::focusInEvent
- * @param event
- */
+	@brief CompositeTextEditDialog::focusInEvent
+	Reimplemented from QWidget::focusInEvent
+	@param event
+*/
 void CompositeTextEditDialog::focusInEvent(QFocusEvent *event)
 {
 	ui->m_plain_text_edit->setFocus();

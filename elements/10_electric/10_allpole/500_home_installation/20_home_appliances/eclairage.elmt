@@ -1,0 +1,61 @@
+<definition link_type="master" type="element" height="180" width="130" hotspot_y="175" version="0.80" hotspot_x="5">
+    <uuid uuid="{ae9120bf-13b8-4b4d-96b4-de7d6e2389ec}"/>
+    <names>
+        <name lang="nl">Verlichting</name>
+        <name lang="fr">Éclairage</name>
+        <name lang="en">Lighting</name>
+        <name lang="de">Beleuchtung</name>
+        <name lang="pl">Oświetlenie</name>
+        <name lang="cs">Osvětlení</name>
+        <name lang="it">Illuminazione</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="5" uuid="{ce2423e9-82af-4780-b691-ff00728cd532}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>10</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="8" uuid="{2c580922-45ee-4582-b07e-27c7ccc564d1}" text_from="UserText" y="-63" Halignment="AlignLeft">
+            <text>Local</text>
+        </dynamic_text>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-32" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-100" length2="1.5" length1="1.5" x2="48" y1="-123" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-100" length2="1.5" length1="1.5" x2="72" y1="-123" x1="72" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-97" length2="1.5" length1="1.5" x2="56" y1="-100" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-97" length2="1.5" length1="1.5" x2="63" y1="-100" x1="72" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-280" height="40" width="40" start="-130" x="40" y="-160"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-124" length2="1.5" length1="1.5" x2="72" y1="-124" x1="48" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" angle="-180" height="4" width="8" start="0" x="56" y="-99"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-97" length2="1.5" length1="1.5" x2="63" y1="-97" x1="56" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-100" length2="1.5" length1="1.5" x2="72" y1="-100" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-104" length2="1.5" length1="1.5" x2="72" y1="-100" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-108" length2="1.5" length1="1.5" x2="72" y1="-104" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-112" length2="1.5" length1="1.5" x2="72" y1="-108" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-116" length2="1.5" length1="1.5" x2="72" y1="-112" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-120" length2="1.5" length1="1.5" x2="72" y1="-116" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-122" length2="1.5" length1="1.5" x2="59" y1="-120" x1="48" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-157" length2="1.5" length1="1.5" x2="50" y1="-170" x1="50" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-158" length2="1.5" length1="1.5" x2="70" y1="-170" x1="70" end2="none"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="47" uuid="{10b8aa4a-41bd-42e4-a627-23486d46c711}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="48" uuid="{74aeaf43-b38a-44e1-a873-549f8294eab3}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="49" uuid="{6b6369fa-0ec9-4f46-b77f-c690a7380d81}" text_from="UserText" y="-81.5" Halignment="AlignLeft">
+            <text>Éclairage</text>
+        </dynamic_text>
+        <terminal orientation="n" name="" x="50" uuid="{743ec6ca-61e9-4783-b3cc-54a31fcd020e}" y="-170"/>
+        <terminal orientation="s" name="" x="60" uuid="{9ffa5bd8-d5c3-416e-b5b2-ddb3d565e0d1}" y="-98"/>
+        <terminal orientation="n" name="" x="70" uuid="{bf24747d-b080-4cdf-9abd-043b852afa4b}" y="-170"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition width="230" height="80" type="element" hotspot_x="65" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="50">
+<definition width="230" height="80" type="element" hotspot_x="65" version="0.70" link_type="simple" hotspot_y="50">
     <uuid uuid="{355377ca-7ff4-4c3b-af0e-ba9441f47b8e}"/>
     <names>
         <name lang="de">Impulszähler mit Vielfach-Kontaktgeber</name>

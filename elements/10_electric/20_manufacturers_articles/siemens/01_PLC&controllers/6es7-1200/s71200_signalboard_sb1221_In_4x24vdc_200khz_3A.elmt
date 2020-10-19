@@ -1,4 +1,4 @@
-<definition hotspot_x="51" width="110" hotspot_y="28" version="0.5" orientation="dyyy" height="70" type="element" link_type="simple">
+<definition hotspot_x="51" width="110" hotspot_y="28" version="0.5" height="70" type="element" link_type="simple">
     <uuid uuid="{158af2fd-1c7a-4119-b67f-b0787b3a808f}"/>
     <names>
         <name lang="en">S7-1200-signalboard-sb1221-I-4x24vdc-200khz/3A</name>

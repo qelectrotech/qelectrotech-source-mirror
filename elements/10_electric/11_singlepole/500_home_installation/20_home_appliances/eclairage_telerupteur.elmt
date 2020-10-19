@@ -1,4 +1,4 @@
-<definition hotspot_y="186" type="element" width="130" height="190" link_type="simple" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="186" type="element" width="130" height="190" link_type="simple" version="0.51" hotspot_x="5">
     <uuid uuid="{fe9f727a-a1d0-4850-ad00-b4db97bbe1ad}"/>
     <names>
         <name lang="fr">ECL télérupteur</name>

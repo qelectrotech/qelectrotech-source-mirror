@@ -1,4 +1,4 @@
-<definition width="50" orientation="dyyy" version="0.5" height="200" type="element" hotspot_y="30" link_type="simple" hotspot_x="15">
+<definition width="50" version="0.5" height="200" type="element" hotspot_y="30" link_type="simple" hotspot_x="15">
     <uuid uuid="{4222c0d2-0482-4b13-aede-98225a49a304}"/>
     <names>
         <name lang="en">ET200S PM-E-DC24V FACE 6ES7 138-4CA01-0AA0</name>

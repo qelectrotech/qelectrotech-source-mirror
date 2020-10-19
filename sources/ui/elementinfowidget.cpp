@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,11 +24,11 @@
 #include "element.h"
 
 /**
- * @brief ElementInfoWidget::ElementInfoWidget
- * Constructor
- * @param elmt element to edit information
- * @param parent parent widget
- */
+	@brief ElementInfoWidget::ElementInfoWidget
+	Constructor
+	@param elmt element to edit information
+	@param parent parent widget
+*/
 ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::ElementInfoWidget),
@@ -40,9 +40,9 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 }
 
 /**
- * @brief ElementInfoWidget::~ElementInfoWidget
- * Destructor
- */
+	@brief ElementInfoWidget::~ElementInfoWidget
+	Destructor
+*/
 ElementInfoWidget::~ElementInfoWidget()
 {
 	qDeleteAll(m_eipw_list);
@@ -50,10 +50,10 @@ ElementInfoWidget::~ElementInfoWidget()
 }
 
 /**
- * @brief ElementInfoWidget::setElement
- * Set @element to be the edited element
- * @param element
- */
+	@brief ElementInfoWidget::setElement
+	Set element to be the edited element
+	@param element
+*/
 void ElementInfoWidget::setElement(Element *element)
 {
 	if (m_element == element) return;
@@ -84,10 +84,10 @@ void ElementInfoWidget::setElement(Element *element)
 }
 
 /**
- * @brief ElementInfoWidget::apply
- * Apply the new information with a new undo command (got with method associatedUndo)
- * pushed to the stack of element project.
- */
+	@brief ElementInfoWidget::apply
+	Apply the new information with a new undo command (got with method associatedUndo)
+	pushed to the stack of element project.
+*/
 void ElementInfoWidget::apply()
 {
 	if (QUndoCommand *undo = associatedUndo())
@@ -95,12 +95,12 @@ void ElementInfoWidget::apply()
 }
 
 /**
- * @brief ElementInfoWidget::associatedUndo
- * If the edited info is different of the actual element info,
- * return a QUndoCommand with the change.
- * If no change return nullptr;
- * @return
- */
+	@brief ElementInfoWidget::associatedUndo
+	If the edited info is different of the actual element info,
+	return a QUndoCommand with the change.
+	If no change return nullptr;
+	@return
+*/
 QUndoCommand* ElementInfoWidget::associatedUndo() const
 {
 	DiagramContext new_info = currentInfo();
@@ -113,10 +113,10 @@ QUndoCommand* ElementInfoWidget::associatedUndo() const
 }
 
 /**
- * @brief ElementInfoWidget::setLiveEdit
- * @param live_edit true : enable the live edit mode, false disable
- * @return always true;
- */
+	@brief ElementInfoWidget::setLiveEdit
+	@param live_edit true : enable the live edit mode, false disable
+	@return always true;
+*/
 bool ElementInfoWidget::setLiveEdit(bool live_edit)
 {
 	if (m_live_edit == live_edit) return true;
@@ -131,13 +131,13 @@ bool ElementInfoWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief ElementInfoWidget::event
- * Reimplemented from QWidget::event
- * Only give focus to the first line edit at first activation.
- * After send the event to QWidget.
- * @param event
- * @return
- */
+	@brief ElementInfoWidget::event
+	Reimplemented from QWidget::event
+	Only give focus to the first line edit at first activation.
+	After send the event to QWidget.
+	@param event
+	@return
+*/
 bool ElementInfoWidget::event(QEvent *event)
 {
 	if (m_first_activation)
@@ -152,9 +152,9 @@ bool ElementInfoWidget::event(QEvent *event)
 }
 
 /**
- * @brief ElementInfoWidget::enableLiveEdit
- * Enable the live edit mode
- */
+	@brief ElementInfoWidget::enableLiveEdit
+	Enable the live edit mode
+*/
 void ElementInfoWidget::enableLiveEdit()
 {
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
@@ -162,9 +162,9 @@ void ElementInfoWidget::enableLiveEdit()
 }
 
 /**
- * @brief ElementInfoWidget::disableLiveEdit
- * disable the live edit mode
- */
+	@brief ElementInfoWidget::disableLiveEdit
+	disable the live edit mode
+*/
 void ElementInfoWidget::disableLiveEdit()
 {
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
@@ -172,9 +172,9 @@ void ElementInfoWidget::disableLiveEdit()
 }
 
 /**
- * @brief ElementInfoWidget::buildInterface
- * Build the widget
- */
+	@brief ElementInfoWidget::buildInterface
+	Build the widget
+*/
 void ElementInfoWidget::buildInterface()
 {
 	foreach (QString str, QETApp::elementInfoKeys())
@@ -187,10 +187,11 @@ void ElementInfoWidget::buildInterface()
 }
 
 /**
- * @brief ElementInfoWidget::infoPartWidgetForKey
- * @param key
- * @return the ElementInfoPartWidget with key @key, if not found return nullptr;
- */
+	@brief ElementInfoWidget::infoPartWidgetForKey
+	@param key
+	@return the ElementInfoPartWidget with key key,
+	if not found return nullptr;
+*/
 ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
 {
 	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
@@ -203,10 +204,10 @@ ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &ke
 }
 
 /**
- * @brief ElementInfoWidget::updateUi
- * fill information fetch in m_element_info to the
- * corresponding line edit
- */
+	@brief ElementInfoWidget::updateUi
+	fill information fetch in m_element_info to the
+	corresponding line edit
+*/
 void ElementInfoWidget::updateUi()
 {
 		//We disable live edit to avoid wrong undo when we fill the line edit with new text
@@ -224,9 +225,9 @@ void ElementInfoWidget::updateUi()
 }
 
 /**
- * @brief ElementInfoWidget::currentInfo
- * @return the info currently edited
- */
+	@brief ElementInfoWidget::currentInfo
+	@return the info currently edited
+*/
 DiagramContext ElementInfoWidget::currentInfo() const
 {
 	DiagramContext info_;
@@ -249,18 +250,19 @@ DiagramContext ElementInfoWidget::currentInfo() const
 }
 
 /**
- * @brief ElementInfoWidget::firstActivated
- * Slot activated when this widget is show.
- * Set the focus to the first line edit provided by this widget
- */
-void ElementInfoWidget::firstActivated() {
+	@brief ElementInfoWidget::firstActivated
+	Slot activated when this widget is show.
+	Set the focus to the first line edit provided by this widget
+*/
+void ElementInfoWidget::firstActivated()
+{
 	m_eipw_list.first() -> setFocusTolineEdit();
 }
 
 /**
- * @brief ElementInfoWidget::elementInfoChange
- * This slot is called when m_element::elementInformation change.
- */
+	@brief ElementInfoWidget::elementInfoChange
+	This slot is called when m_element::elementInformation change.
+*/
 void ElementInfoWidget::elementInfoChange()
 {
 	if(currentInfo() != m_element->elementInformations())

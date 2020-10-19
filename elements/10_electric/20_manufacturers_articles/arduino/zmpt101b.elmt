@@ -1,0 +1,58 @@
+<definition hotspot_x="35" version="0.80" link_type="simple" width="70" height="160" type="element" hotspot_y="10">
+    <uuid uuid="{1ec5bd1e-7c62-4216-a203-f57725725084}"/>
+    <names>
+        <name lang="nl">ZMPT101B</name>
+        <name lang="pl">ZMPT101B</name>
+        <name lang="en">ZMPT101B</name>
+        <name lang="it">ZMPT101B</name>
+        <name lang="cs">ZMPT101B</name>
+        <name lang="fr">ZMPT101B</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">ZMPT101B</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>Dimitrios Tanis</informations>
+    <description>
+        <circle diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="23" y="-4"/>
+        <circle diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="23" y="138"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" rx="0" antialias="false" x="1" y="135" height="10" ry="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="18" text="Gnd" y="27"/>
+        <circle diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-29" y="138"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" rx="0" antialias="false" x="-11" y="135" height="10" ry="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="-2" text="Out" y="25"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="8" text="Gnd" y="27"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="-13" text="Vcc" y="26"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" rx="0" antialias="false" x="-8" y="-5" height="6" ry="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" rx="0" antialias="false" x="2" y="-5" height="6" ry="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" rx="0" antialias="false" x="12" y="-5" height="6" ry="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" rx="0" antialias="false" x="-18" y="-5" height="6" ry="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-23" text="ZMPT101B" y="104"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="60" rx="0" antialias="false" x="-30" y="-5" height="150" ry="0"/>
+        <dynamic_text z="16" Valignment="AlignTop" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" frame="false" Halignment="AlignLeft" x="31" uuid="{856cffb5-5ab6-4a52-92eb-7051c468830e}" text_width="-1" y="124.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-29" y="-4"/>
+        <rect style="line-style:normal;line-weight:eleve;filling:none;color:black" width="54" rx="0" antialias="false" x="-27" y="75" height="50" ry="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="14" rx="0" antialias="false" x="16" y="44" height="28" ry="0"/>
+        <circle diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="25" y="45"/>
+        <line end1="none" length2="1.5" y1="47" x2="29" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="47" antialias="false" x1="25" length1="1.5" end2="none"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="30" rx="0" antialias="false" x="-15" y="130" height="15" ry="0"/>
+        <terminal orientation="n" name="" x="15" uuid="{abfbbd7a-5a45-4c85-91c6-b482ef15e3cb}" y="-5"/>
+        <terminal orientation="n" name="" x="-5" uuid="{de0d45f7-3d15-42f1-beab-f544e3baa52a}" y="-5"/>
+        <terminal orientation="n" name="" x="5" uuid="{2129e619-bbd3-49e2-9a8b-2cabbdf7bd0a}" y="-5"/>
+        <terminal orientation="s" name="" x="6" uuid="{64be66c2-7a7c-4b01-9e61-b812a88a9a1c}" y="144"/>
+        <terminal orientation="n" name="" x="-15" uuid="{b48d5d4c-2fa4-4bcc-88a1-3e31ebdb5c85}" y="-5"/>
+        <terminal orientation="s" name="" x="-6" uuid="{c6da0090-9e8e-4864-b56f-5f48a2588e38}" y="144"/>
+    </description>
+</definition>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,10 +29,12 @@ class TitleBlockTemplateLocationChooser : public QWidget {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocation &, QWidget * = nullptr);
+	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocation &,
+					  QWidget * = nullptr);
 	~TitleBlockTemplateLocationChooser() override;
 	private:
-	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocationChooser &);
+	TitleBlockTemplateLocationChooser(
+			const TitleBlockTemplateLocationChooser &);
 	
 	// methods
 	public:

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="52" width="750" height="110" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="52" width="750" height="110" link_type="simple" hotspot_x="15">
     <uuid uuid="{1764257f-cc34-4f45-a8b6-cfe4ac65d312}"/>
     <names>
         <name lang="en">IO-LC3</name>

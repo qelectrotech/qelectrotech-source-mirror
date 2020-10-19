@@ -1193,7 +1193,7 @@
                         <name lang="cs">Několik vedení</name>
                     </names>
                     <element name="pe.elmt">
-                        <definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                        <definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element">
                             <names>
                                 <name lang="ru">Нейтраль</name>
                                 <name lang="fr">Protection Electrique</name>
@@ -1208,7 +1208,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="src_p.elmt">
-                        <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                        <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element">
                             <names>
                                 <name lang="ar">مصدر وجه</name>
                                 <name lang="de">Phase</name>
@@ -1231,7 +1231,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="src_n.elmt">
-                        <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                        <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element">
                             <names>
                                 <name lang="ar">مصدر محايد</name>
                                 <name lang="de">Neutralleiter</name>
@@ -1260,7 +1260,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="fr">Habitat</name>
                 </names>
                 <element name="minuterie.elmt">
-                    <definition width="80" version="0.3" hotspot_x="40" hotspot_y="45" height="90" type="element" ic="true" orientation="dyyy">
+                    <definition width="80" version="0.3" hotspot_x="40" hotspot_y="45" height="90" type="element" ic="true">
                         <names>
                             <name lang="fr">Minuterie type LEGRAND</name>
                         </names>
@@ -1536,7 +1536,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                 </definition>
             </element>
             <element name="pc.elmt">
-                <definition width="50" version="0.3" hotspot_x="35" hotspot_y="40" height="60" type="element" orientation="dyyy">
+                <definition width="50" version="0.3" hotspot_x="35" hotspot_y="40" height="60" type="element">
                     <names>
                         <name lang="ru">Нейтраль</name>
                         <name lang="fr">Protection Electrique</name>

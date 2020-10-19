@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,13 +18,15 @@
 #ifndef XREFPROPERTIES_H
 #define XREFPROPERTIES_H
 
-#include "propertiesinterface.h"
 #include <QStringList>
+#include <QHash>
+
+#include "propertiesinterface.h"
 
 /**
- * @brief The XRefProperties class
- * this class store properties used by XrefItem
- */
+	@brief The XRefProperties class
+	this class store properties used by XrefItem
+*/
 class XRefProperties : public PropertiesInterface
 {
 	public:
@@ -40,10 +42,12 @@ class XRefProperties : public PropertiesInterface
 		Label
 	};
 
-	void toSettings	  (QSettings &settings, const QString = QString()) const override;
-	void fromSettings (const QSettings &settings, const QString = QString()) override;
-	void toXml		  (QDomElement &xml_element) const override;
-	void fromXml	  (const QDomElement &xml_element) override;
+	void toSettings	  (QSettings &settings,
+			   const QString = QString()) const override;
+	void fromSettings (const QSettings &settings,
+			   const QString = QString()) override;
+	QDomElement toXml (QDomDocument &xml_document) const override;
+	bool fromXml(const QDomElement &xml_element) override;
 
 	static QHash<QString, XRefProperties> defaultProperties();
 
@@ -73,6 +77,8 @@ class XRefProperties : public PropertiesInterface
 	void setOffset(const int offset) {m_offset = offset;}
 	int offset() const				 {return m_offset;}
 
+	void setKey(QString& key) {m_key = key;}
+
 	private:
 	bool m_show_power_ctc;
 	DisplayHas m_display;
@@ -83,6 +89,7 @@ class XRefProperties : public PropertiesInterface
 	QString m_master_label;
 	QString m_slave_label;
 	int     m_offset;
+	QString m_key;
 };
 
 #endif // XREFPROPERTIES_H

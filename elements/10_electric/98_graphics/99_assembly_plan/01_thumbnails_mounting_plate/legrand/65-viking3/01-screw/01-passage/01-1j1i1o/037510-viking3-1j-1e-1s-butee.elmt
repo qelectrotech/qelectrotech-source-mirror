@@ -1,0 +1,25 @@
+<definition hotspot_y="6" version="0.80" type="element" height="130" hotspot_x="3" width="20" link_type="simple">
+    <uuid uuid="{c17ad349-6f69-4cde-a164-d4bfecba9d22}"/>
+    <names>
+        <name lang="fr">037510 -Butée de blocage pour bloc de jonction Viking3 avec pas 6mm automatique</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">037510</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Butée de blocage pour bloc de jonction Viking3 avec pas 6mm automatique</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect height="117" y="0" width="13" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" antialias="false" x="0" ry="0"/>
+        <rect height="103" y="7" width="13" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" antialias="false" x="0" ry="0"/>
+        <rect height="13" y="52" width="13" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" antialias="false" x="0" ry="0"/>
+    </description>
+</definition>

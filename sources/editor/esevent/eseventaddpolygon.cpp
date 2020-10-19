@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,27 +23,28 @@
 #include "editorcommands.h"
 
 /**
- * @brief ESEventAddPolygon::ESEventAddPolygon
- * @param scene
- */
+	@brief ESEventAddPolygon::ESEventAddPolygon
+	@param scene
+*/
 ESEventAddPolygon::ESEventAddPolygon(ElementScene *scene) :
 	ESEventInterface(scene),
 	m_polygon(nullptr)
 {}
 
 /**
- * @brief ESEventAddPolygon::~ESEventAddPolygon
- */
-ESEventAddPolygon::~ESEventAddPolygon() {
+	@brief ESEventAddPolygon::~ESEventAddPolygon
+*/
+ESEventAddPolygon::~ESEventAddPolygon()
+{
 	if (m_running || m_abort)
 		delete m_polygon;
 }
 
 /**
- * @brief ESEventAddPolygon::mousePressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddPolygon::mousePressEvent
+	@param event
+	@return
+*/
 bool ESEventAddPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::LeftButton) {
 		if(!m_running) m_running = true;
@@ -63,10 +64,10 @@ bool ESEventAddPolygon::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddPolygon::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddPolygon::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddPolygon::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_polygon) return false;
@@ -76,10 +77,10 @@ bool ESEventAddPolygon::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddPolygon::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddPolygon::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::RightButton) {
 		if (m_polygon) {
@@ -99,10 +100,10 @@ bool ESEventAddPolygon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddPolygon::mouseDoubleClickEvent
- * @param event
- * @return
- */
+	@brief ESEventAddPolygon::mouseDoubleClickEvent
+	@param event
+	@return
+*/
 bool ESEventAddPolygon::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event -> button() == Qt::LeftButton)

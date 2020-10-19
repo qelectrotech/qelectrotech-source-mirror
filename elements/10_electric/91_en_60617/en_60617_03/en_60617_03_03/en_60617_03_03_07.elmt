@@ -1,4 +1,4 @@
-<definition hotspot_x="34" version="0.70" orientation="dyyy" height="120" hotspot_y="110" width="80" type="element" link_type="simple">
+<definition hotspot_x="34" version="0.70" height="120" hotspot_y="110" width="80" type="element" link_type="simple">
     <uuid uuid="{7c3d9c90-7fd4-49d1-a16d-59f2da9a8e61}"/>
     <names>
         <name lang="fr">Prise et fiche multipolaires</name>

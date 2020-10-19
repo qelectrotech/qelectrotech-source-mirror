@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="15" orientation="dyyy" height="30" version="0.70" hotspot_x="27">
+<definition link_type="simple" type="element" width="40" hotspot_y="15" height="30" version="0.70" hotspot_x="27">
     <uuid uuid="{5df20ff5-79cf-41f6-87b8-723ac0d750b4}"/>
     <names>
         <name lang="fr">Actionneur manuel protégé contre une

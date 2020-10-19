@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@ class PartDynamicTextField;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddDynamicTextField class
- * This ESEvent manage creation of dynamic text field in an ElementScene
- */
+	@brief The ESEventAddDynamicTextField class
+	This ESEvent manage creation of dynamic text field in an ElementScene
+*/
 class ESEventAddDynamicTextField : public ESEventInterface
 {
 	public:

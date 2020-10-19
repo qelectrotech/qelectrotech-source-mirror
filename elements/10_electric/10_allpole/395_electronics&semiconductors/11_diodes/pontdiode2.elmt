@@ -1,4 +1,4 @@
-<definition hotspot_y="60" link_type="simple" hotspot_x="53" orientation="dyyy" width="70" type="element" version="0.80" height="80">
+<definition hotspot_y="60" link_type="simple" hotspot_x="53" width="70" type="element" version="0.80" height="80">
     <uuid uuid="{04cd2f29-05b2-4e0f-8f97-7937adf58522}"/>
     <names>
         <name lang="de">Gleichrichter in Brückenschaltung</name>

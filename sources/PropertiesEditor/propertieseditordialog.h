@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,16 +24,20 @@
 #include <QAbstractButton>
 
 /**
- * @brief The PropertiesEditorDialog class
- * Create a dialog to edit some properties of a thing.
- * Only create a instance of this class and call exec, all is done for you in this class.
- * The first argument (a template) must be a subclass of QWidget and provide the 3 methods bellow :
- * QString::title()
- * void::apply()
- * void::reset()
- * You can subclass the interface PropertiesEditorWidget who provide all this methods.
- * This dialog take ownership of the editor, so the editor will be deleted by this dialog
- */
+	@brief The PropertiesEditorDialog class
+	Create a dialog to edit some properties of a thing.
+	Only create a instance of this class and call exec,
+	all is done for you in this class.
+	The first argument (a template) must be a subclass
+	of QWidget and provide the 3 methods bellow :
+	QString::title()
+	void::apply()
+	void::reset()
+	You can subclass the interface PropertiesEditorWidget
+	who provide all this methods.
+	This dialog take ownership of the editor,
+	so the editor will be deleted by this dialog
+*/
 class PropertiesEditorDialog : public QDialog
 {
 		Q_OBJECT
@@ -42,19 +46,27 @@ class PropertiesEditorDialog : public QDialog
 		PropertiesEditorDialog(T editor, QWidget *parent = nullptr) :
 		QDialog (parent)
 		{
-				//Set dialog title
+			//Set dialog title
 			setWindowTitle(editor->title());
-				//Reparent the editor, to be deleted at the same time of this dialog
+			// Reparent the editor,
+			// to be deleted at the same time of this dialog
 			editor->setParent(this);
 
-				//Build the dialog
+			//Build the dialog
 			QVBoxLayout *vlayout = new QVBoxLayout(this);
 			vlayout->addWidget(editor);
-			QDialogButtonBox *button_box = new QDialogButtonBox (QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Reset, this);
+			QDialogButtonBox *button_box = new QDialogButtonBox (
+						QDialogButtonBox::Apply
+						| QDialogButtonBox::Cancel
+						| QDialogButtonBox::Reset,
+						this);
 			vlayout->addWidget(button_box);
 
-				//Setup connection between button box and the editor
-			connect(button_box, &QDialogButtonBox::clicked, [editor, button_box, this](QAbstractButton *button)
+			//Setup connection between button box and the editor
+			connect(button_box,
+				&QDialogButtonBox::clicked,
+				[editor, button_box, this]
+				(QAbstractButton *button)
 			{
 				switch(button_box->buttonRole(button))
 				{

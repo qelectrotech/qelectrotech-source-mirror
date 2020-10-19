@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ class ElementItemEditor : public QWidget
 		// constructors, destructor
 	public:
 		ElementItemEditor(QETElementEditor *, QWidget * = nullptr);
-		~ElementItemEditor() override {};
+		~ElementItemEditor() override {}
 	private:
 		ElementItemEditor(const ElementItemEditor &);
 	
@@ -54,6 +54,7 @@ class ElementItemEditor : public QWidget
 		virtual bool setParts(QList <CustomElementPart *>) {return false;}
 
 		virtual CustomElementPart *currentPart() const = 0;
+		virtual QList<CustomElementPart*> currentParts() const = 0;
 		virtual void updateForm() = 0;
 	
 		// attributes

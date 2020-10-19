@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,10 +30,10 @@ class QPainter;
 class QGraphicsSimpleTextItem;
 
 /**
- * @brief The ElementPictureFactory class
- * This class is singleton factory, use
- * to create and get the picture use by elements
- */
+	@brief The ElementPictureFactory class
+	This class is singleton factory, use
+	to create and get the picture use by elements
+*/
 class ElementPictureFactory
 {
 	public :
@@ -49,9 +49,9 @@ class ElementPictureFactory
 		
 		
 		/**
-		 * @brief instance
-		 * @return The instance of the factory
-		 */
+			@brief instance
+			@return The instance of the factory
+		*/
 		static ElementPictureFactory* instance()
 		{
 			static QMutex mutex;
@@ -67,9 +67,9 @@ class ElementPictureFactory
 		}
 		
 		/**
-		 * @brief dropInstance
-		 * Drop the instance of factory
-		 */
+			@brief dropInstance
+			Drop the instance of factory
+		*/
 		static void dropInstance()
 		{
 			static QMutex mutex;

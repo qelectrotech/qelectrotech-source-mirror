@@ -1,4 +1,4 @@
-<definition hotspot_x="115" hotspot_y="145" orientation="dyyy" type="element" version="0.70" height="240" link_type="simple" width="210">
+<definition hotspot_x="115" hotspot_y="145" type="element" version="0.70" height="240" link_type="simple" width="210">
     <uuid uuid="{61df7210-6ce5-4d25-9f2f-8b8449f0b1d2}"/>
     <names>
         <name lang="de">Magnetron</name>

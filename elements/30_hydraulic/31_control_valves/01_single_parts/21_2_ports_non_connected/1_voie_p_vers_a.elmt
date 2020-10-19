@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" height="40" link_type="simple" type="element">
     <uuid uuid="{61f3c2ac-775e-499f-a691-74b977414e3c}"/>
     <names>
         <name lang="en">2 ports open directional</name>

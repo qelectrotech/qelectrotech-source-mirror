@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="30" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="30">
     <uuid uuid="{afaeca23-3d9e-49b9-a829-291fe6e35675}"/>
     <names>
         <name lang="en">Pressure Transmitter</name>

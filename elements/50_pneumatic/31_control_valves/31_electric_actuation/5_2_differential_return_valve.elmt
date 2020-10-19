@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="70" version="0.70" width="130" link_type="simple" type="element" hotspot_x="85" hotspot_y="44">
+<definition height="70" version="0.70" width="130" link_type="simple" type="element" hotspot_x="85" hotspot_y="44">
     <uuid uuid="{0005acd1-738c-4b00-a8c9-223784cd019e}"/>
     <names>
         <name lang="hu">5/2 differenciál visszatérítésű szelep ASCO</name>

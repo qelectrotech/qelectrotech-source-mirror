@@ -1,0 +1,47 @@
+<definition link_type="simple" height="50" version="0.80" type="element" width="30" hotspot_x="14" hotspot_y="14">
+    <uuid uuid="{4d0f626b-332d-4919-8caf-7a9de7b81eb6}"/>
+    <names>
+        <name lang="el">Ψυγειοκαταψύκτης</name>
+        <name lang="de">Kühlschrank mit Gefrierfach</name>
+        <name lang="pl">Chłodziarka z zamrażarką</name>
+        <name lang="nl">Koelkast met vriezer</name>
+        <name lang="cs">Lednička s mrazákem</name>
+        <name lang="ar">ثلاّجة بجزء للتجميد</name>
+        <name lang="en">Refrigerator with freezer</name>
+        <name lang="fr">Réfrigérateur avec partie congélateur</name>
+        <name lang="it">Frigorifero / congelatore</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y2="2" antialias="false" x2="8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="4" x1="6" end1="none" length1="1.5"/>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="2" x="-12" y="6" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{c134de90-801e-483a-b3b0-d27a45a69f2e}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect height="8" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12" y="-1" width="24" rx="0"/>
+        <line y2="4" antialias="false" x2="8" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="2" x1="6" end1="none" length1="1.5"/>
+        <polygon y2="23" x3="12" antialias="false" x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" y1="-1" y3="23" x1="-12" x4="12"/>
+        <line y2="3" antialias="false" x2="9" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="3" x1="5" end1="none" length1="1.5"/>
+        <line y2="2" antialias="false" x2="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="4" x1="-8" end1="none" length1="1.5"/>
+        <line y2="5" antialias="false" x2="7" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="1" x1="7" end1="none" length1="1.5"/>
+        <line y2="4" antialias="false" x2="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="2" x1="-8" end1="none" length1="1.5"/>
+        <line y2="3" antialias="false" x2="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="3" x1="-9" end1="none" length1="1.5"/>
+        <line y2="5" antialias="false" x2="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="1" x1="-7" end1="none" length1="1.5"/>
+        <line y2="2" antialias="false" x2="1" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="4" x1="-1" end1="none" length1="1.5"/>
+        <line y2="14" antialias="false" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="18" x1="-2" end1="none" length1="1.5"/>
+        <line y2="4" antialias="false" x2="1" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="2" x1="-1" end1="none" length1="1.5"/>
+        <line y2="18" antialias="false" x2="2" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="14" x1="-2" end1="none" length1="1.5"/>
+        <line y2="3" antialias="false" x2="1.9406" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="3" x1="-2.0593" end1="none" length1="1.5"/>
+        <line y2="16" antialias="false" x2="3" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="16" x1="-3" end1="none" length1="1.5"/>
+        <line y2="5" antialias="false" x2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="1" x1="0" end1="none" length1="1.5"/>
+        <line y2="19" antialias="false" x2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="13" x1="0" end1="none" length1="1.5"/>
+        <line y2="-2" antialias="false" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-10" x1="-10" end1="none" length1="1.5"/>
+        <line y2="-2" antialias="false" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-10" x1="10" end1="none" length1="1.5"/>
+        <line y2="30" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="24" x1="0" end1="none" length1="1.5"/>
+        <terminal orientation="n" x="-10" name="" y="-10" uuid="{8e6519be-9fc9-4076-a253-7af57e9879ea}"/>
+        <terminal orientation="n" x="10" name="" y="-10" uuid="{2e115227-aa7c-4533-a3bd-e9257155fa60}"/>
+        <terminal orientation="s" x="0" name="" y="30" uuid="{f0d331eb-fa42-4229-b566-c697ccc7b9f0}"/>
+    </description>
+</definition>

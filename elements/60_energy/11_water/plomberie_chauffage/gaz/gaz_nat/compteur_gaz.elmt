@@ -1,4 +1,4 @@
-<definition height="90" hotspot_x="35" version="0.51" width="60" type="element" orientation="dyyy" link_type="simple" hotspot_y="24">
+<definition height="90" hotspot_x="35" version="0.51" width="60" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{9fbd3acc-8fa1-41c8-acb8-93790261e6d1}"/>
     <names>
         <name lang="fr">Compteur Gaz</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,19 +15,21 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "xrefpropertieswidget.h"
 
 #include <utility>
-#include "ui_xrefpropertieswidget.h"
-#include "qdebug.h"
+#include <QHash>
 #include <QMetaEnum>
 
+#include "xrefpropertieswidget.h"
+#include "ui_xrefpropertieswidget.h"
+#include "qdebug.h"
+
 /**
- * @brief XRefPropertiesWidget::XRefPropertiesWidget
- * Default constructor
- * @param properties: properties to use
- * @param parent: parent widget
- */
+	@brief XRefPropertiesWidget::XRefPropertiesWidget
+	Default constructor
+	@param properties: properties to use
+	@param parent: parent widget
+*/
 XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> properties, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::XRefPropertiesWidget),
@@ -42,9 +44,9 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 }
 
 /**
- * @brief XRefPropertiesWidget::~XRefPropertiesWidget
- * Default destructor
- */
+	@brief XRefPropertiesWidget::~XRefPropertiesWidget
+	Default destructor
+*/
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
 	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
@@ -54,30 +56,32 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
 }
 
 /**
- * @brief XRefPropertiesWidget::setProperties
- * set new properties for this widget
- * @param properties
- */
-void XRefPropertiesWidget::setProperties(const QHash <QString, XRefProperties> &properties) {
+	@brief XRefPropertiesWidget::setProperties
+	set new properties for this widget
+	@param properties
+*/
+void XRefPropertiesWidget::setProperties(const QHash <QString,
+					 XRefProperties> &properties) {
 	m_properties = properties;
 	updateDisplay();
 	m_previous_type_index = ui->m_type_cb->currentIndex();
 }
 
 /**
- * @brief XRefPropertiesWidget::properties
- * @return the properties edited by this widget
- */
-QHash <QString, XRefProperties> XRefPropertiesWidget::properties(){
+	@brief XRefPropertiesWidget::properties
+	@return the properties edited by this widget
+*/
+QHash <QString, XRefProperties> XRefPropertiesWidget::properties()
+{
 	saveProperties(ui->m_type_cb->currentIndex());
 	return m_properties;
 }
 
 /**
- * @brief XRefPropertiesWidget::setReadOnly
- * Set all of this widget disable if true
- * @param ro
- */
+	@brief XRefPropertiesWidget::setReadOnly
+	Set all of this widget disable if true
+	@param ro
+*/
 void XRefPropertiesWidget::setReadOnly(bool ro) {
 	ui->m_type_cb->setDisabled(ro);
 	ui->m_display_gb->setDisabled(ro);
@@ -89,44 +93,45 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
 }
 
 /**
- * @brief XRefPropertiesWidget::buildUi
- * Build some widget of this ui.
- */
+	@brief XRefPropertiesWidget::buildUi
+	Build some widget of this ui.
+*/
 void XRefPropertiesWidget::buildUi()
 {
-	ui -> m_type_cb -> addItem(tr("Bobine"),			   "coil");
+	ui -> m_type_cb -> addItem(tr("Bobine"), "coil");
 	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
 	ui -> m_type_cb -> addItem(tr("Commutateur / bouton"), "commutator");
 
-	ui -> m_snap_to_cb -> addItem(tr("En bas de page"),					  "bottom");
+	ui -> m_snap_to_cb -> addItem(tr("En bas de page"), "bottom");
 	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
 
 	ui -> m_xrefpos_cb -> addItem(tr("Top"),"top");
 	ui -> m_xrefpos_cb -> addItem(tr("Bottom"),"bottom");
 	ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
 	ui -> m_xrefpos_cb -> addItem(tr("Rigth"),"right");
-	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");                                                
+	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 
 /**
- * @brief XRefPropertiesWidget::saveProperties
- * Save the properties of the type define at @index of the combo box m_type_cb
- * @param index
- */
+	@brief XRefPropertiesWidget::saveProperties
+	Save the properties of the type define at index of the combo box m_type_cb
+	@param index
+*/
 void XRefPropertiesWidget::saveProperties(int index) {
 	QString type = ui->m_type_cb->itemData(index).toString();
 	XRefProperties xrp = m_properties[type];
 
-	if		(ui->m_display_has_cross_rb->isChecked())	 xrp.setDisplayHas(XRefProperties::Cross);
-	else if (ui->m_display_has_contacts_rb->isChecked()) xrp.setDisplayHas(XRefProperties::Contacts);
-	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
-		 xrp.setSnapTo(XRefProperties::Bottom);
-	else xrp.setSnapTo(XRefProperties::Label);
-
-
-
-
+	if (ui->m_display_has_cross_rb->isChecked())
+		xrp.setDisplayHas(XRefProperties::Cross);
+	else if (ui->m_display_has_contacts_rb->isChecked())
+		xrp.setDisplayHas(XRefProperties::Contacts);
+	if (ui->m_snap_to_cb->itemData(
+				ui->m_snap_to_cb->currentIndex()).toString()
+			== "bottom")
+		xrp.setSnapTo(XRefProperties::Bottom);
+	else
+		xrp.setSnapTo(XRefProperties::Label);
 
 	if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "bottom") xrp.setXrefPos(Qt::AlignBottom);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "top") xrp.setXrefPos(Qt::AlignTop);
@@ -145,10 +150,11 @@ void XRefPropertiesWidget::saveProperties(int index) {
 }
 
 /**
- * @brief XRefPropertiesWidget::updateDisplay
- * Update display with the curent displayed type.
- */
-void XRefPropertiesWidget::updateDisplay() {
+	@brief XRefPropertiesWidget::updateDisplay
+	Update display with the curent displayed type.
+*/
+void XRefPropertiesWidget::updateDisplay()
+{
 	QString type = ui->m_type_cb->itemData(ui->m_type_cb->currentIndex()).toString();
 	XRefProperties xrp = m_properties[type];
 
@@ -191,11 +197,12 @@ void XRefPropertiesWidget::updateDisplay() {
 }
 
 /**
- * @brief XRefPropertiesWidget::typeChanged
- * manage the save of the current properties,
- * when the combo box of type change.
- */
-void XRefPropertiesWidget::typeChanged() {
+	@brief XRefPropertiesWidget::typeChanged
+	manage the save of the current properties,
+	when the combo box of type change.
+*/
+void XRefPropertiesWidget::typeChanged()
+{
 	//save the properties of the previous xref type
 	saveProperties(m_previous_type_index);
 	//update display with the current xref type
@@ -206,9 +213,9 @@ void XRefPropertiesWidget::typeChanged() {
 }
 
 /**
- * @brief XRefPropertiesWidget::enableOffsetSB
- * Enable Offset SB only if Snap to Footer is selected
- */
+	@brief XRefPropertiesWidget::enableOffsetSB
+	Enable Offset SB only if Snap to Footer is selected
+*/
 void XRefPropertiesWidget::enableOffsetSB(int i){
 	if (i)
 		ui->m_offset_sb->setEnabled(false);

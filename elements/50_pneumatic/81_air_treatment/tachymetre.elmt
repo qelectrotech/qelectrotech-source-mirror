@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{e9a0bd97-5f5c-442d-904a-b75ef0738488}"/>
     <names>
         <name lang="en">Tachometer</name>

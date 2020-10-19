@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -36,13 +36,15 @@ TitleBlockDimensionWidget::TitleBlockDimensionWidget(bool complete, QWidget *par
 /**
 	Destructor
 */
-TitleBlockDimensionWidget::~TitleBlockDimensionWidget() {
+TitleBlockDimensionWidget::~TitleBlockDimensionWidget()
+{
 }
 
 /**
 	@return true if this dialog shows the optional radio buttons
 */
-bool TitleBlockDimensionWidget::isComplete() const {
+bool TitleBlockDimensionWidget::isComplete() const
+{
 	return(complete_);
 }
 
@@ -50,7 +52,8 @@ bool TitleBlockDimensionWidget::isComplete() const {
 	@return a pointer to the label displayed right before the spinbox.
 	Useful to specify a custom text.
 */
-QLabel *TitleBlockDimensionWidget::label() const {
+QLabel *TitleBlockDimensionWidget::label() const
+{
 	return(spinbox_label_);
 }
 
@@ -58,14 +61,16 @@ QLabel *TitleBlockDimensionWidget::label() const {
 	@return a pointer to the spinbox
 	Useful to specify custom parameters, such as the minimum value
 */
-QSpinBox *TitleBlockDimensionWidget::spinbox() const {
+QSpinBox *TitleBlockDimensionWidget::spinbox() const
+{
 	return(spinbox_);
 }
 
 /**
 	@return The dimension as currently shown by the dialog
 */
-TitleBlockDimension TitleBlockDimensionWidget::value() const {
+TitleBlockDimension TitleBlockDimensionWidget::value() const
+{
 	QET::TitleBlockColumnLength type = QET::Absolute;
 	if (complete_) {
 		type = static_cast<QET::TitleBlockColumnLength>(dimension_type_ -> checkedId());
@@ -90,7 +95,8 @@ void TitleBlockDimensionWidget::setValue(const TitleBlockDimension &dim) {
 	@return Whether or not this widget should allow edition of the displayed
 	dimension.
 */
-bool TitleBlockDimensionWidget::isReadOnly() const {
+bool TitleBlockDimensionWidget::isReadOnly() const
+{
 	return(read_only_);
 }
 
@@ -113,7 +119,8 @@ void TitleBlockDimensionWidget::setReadOnly(bool read_only) {
 /**
 	Initialize the widgets composing the dialog.
 */
-void TitleBlockDimensionWidget::initWidgets() {
+void TitleBlockDimensionWidget::initWidgets()
+{
 	// basic widgets: label + spinbox
 	spinbox_label_ = new QLabel(tr("Largeur :", "default dialog label"));
 	
@@ -122,9 +129,15 @@ void TitleBlockDimensionWidget::initWidgets() {
 	
 	// extra widgets, for the user to specify whether the value is absolute, relative, etc.
 	if (complete_) {
-		absolute_button_  = new QRadioButton(tr("Absolu",             "a traditional, absolute measure"));
-		relative_button_  = new QRadioButton(tr("Relatif au total",   "a percentage of the total width"));
-		remaining_button_ = new QRadioButton(tr("Relatif au restant", "a percentage of what remains from the total width"));
+		absolute_button_  = new QRadioButton(
+					tr("Absolu",
+					   "a traditional, absolute measure"));
+		relative_button_  = new QRadioButton(
+					tr("Relatif au total",
+					   "a percentage of the total width"));
+		remaining_button_ = new QRadioButton(
+					tr("Relatif au restant",
+					   "a percentage of what remains from the total width"));
 		dimension_type_   = new QButtonGroup(this);
 		dimension_type_ -> addButton(absolute_button_,  QET::Absolute);
 		dimension_type_ -> addButton(relative_button_,  QET::RelativeToTotalLength);
@@ -144,7 +157,8 @@ void TitleBlockDimensionWidget::initWidgets() {
 /**
 	Initialize the layout of the dialog.
 */
-void TitleBlockDimensionWidget::initLayouts() {
+void TitleBlockDimensionWidget::initLayouts()
+{
 	QHBoxLayout *hlayout0 = new QHBoxLayout();
 	hlayout0 -> addWidget(spinbox_label_);
 	hlayout0 -> addWidget(spinbox_);
@@ -162,7 +176,8 @@ void TitleBlockDimensionWidget::initLayouts() {
 /**
 	Ensure the suffix displayed by the spinbox matches the selected kind of length.
 */
-void TitleBlockDimensionWidget::updateSpinBoxSuffix() {
+void TitleBlockDimensionWidget::updateSpinBoxSuffix()
+{
 	if (complete_ && dimension_type_ -> checkedId() != QET::Absolute) {
 		spinbox_ -> setSuffix(tr("%", "spinbox suffix when changing the dimension of a row/column"));
 		spinbox_ -> setMinimum(1);

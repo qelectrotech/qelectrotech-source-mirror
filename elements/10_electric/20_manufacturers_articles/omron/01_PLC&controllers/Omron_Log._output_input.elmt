@@ -1,4 +1,4 @@
-<definition type="element" version="0.51" link_type="simple" hotspot_x="36" height="80" hotspot_y="42" width="60" orientation="dyyy">
+<definition type="element" version="0.51" link_type="simple" hotspot_x="36" height="80" hotspot_y="42" width="60">
     <uuid uuid="{77f57856-92f5-4dbb-a973-3bebf93ed1ae}"/>
     <names>
         <name lang="en">Log.output/input</name>

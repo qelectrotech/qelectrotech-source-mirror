@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="44" version="0.5" link_type="simple" type="element" hotspot_y="9" height="50" width="90">
+<definition hotspot_x="44" version="0.5" link_type="simple" type="element" hotspot_y="9" height="50" width="90">
     <uuid uuid="{bfe2eb97-b1e9-4a3b-a4be-7ede8c4df7bb}"/>
     <names>
         <name lang="en">Mylar Capacitor - Chocolate Drop</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="100" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="100" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{8782d908-bb26-4293-a507-6be1d1646ac4}"/>
     <names>
         <name lang="de">elektronische Schalteinrichtung mit Schließer

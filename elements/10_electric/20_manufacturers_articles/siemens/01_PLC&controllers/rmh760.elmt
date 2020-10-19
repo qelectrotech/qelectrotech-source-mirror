@@ -1,4 +1,4 @@
-<definition version="0.5" width="550" link_type="simple" hotspot_x="185" hotspot_y="64" type="element" height="150" orientation="dyyy">
+<definition version="0.5" width="550" link_type="simple" hotspot_x="185" hotspot_y="64" type="element" height="150">
     <uuid uuid="{cedf0d40-6cda-423d-b6bf-10e4ca9eb8f6}"/>
     <names>
         <name lang="fr">rmh760</name>

@@ -1,4 +1,4 @@
-<definition width="120" type="element" hotspot_x="56" orientation="dyyy" link_type="master" version="0.5" hotspot_y="51" height="90">
+<definition width="120" type="element" hotspot_x="56" link_type="master" version="0.5" hotspot_y="51" height="90">
 <uuid uuid="{E40EDAE1-0866-459F-AB51-A80C5A6BB038}"/><names>
         <name lang="en">PKE32/XTUCP-36 (168972)</name>
     </names>

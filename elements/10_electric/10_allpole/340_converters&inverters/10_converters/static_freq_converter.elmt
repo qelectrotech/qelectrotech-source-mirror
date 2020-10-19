@@ -1,4 +1,4 @@
-<definition hotspot_y="56" type="element" height="140" width="210" hotspot_x="112" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="56" type="element" height="140" width="210" hotspot_x="112" link_type="simple" version="0.5">
     <uuid uuid="{fe8918d6-68c7-476b-8393-bbf223f2f472}"/>
     <names>
         <name lang="cs">Měnič kmitočtu</name>

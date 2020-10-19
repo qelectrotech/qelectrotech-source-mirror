@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,16 +25,16 @@ class ConfigSaveLoaderWidget;
 }
 
 /**
- * @brief The ConfigSaveLoaderWidget class
- * This group box provide 4 widget:
- * A combo box with the available config.
- * A push button to load the selected config of combo box
- * A line edit to edit the text of the config to save
- * A push button to save the config
- */
+	@brief The ConfigSaveLoaderWidget class
+	This group box provide 4 widget:
+	A combo box with the available config.
+	A push button to load the selected config of combo box
+	A line edit to edit the text of the config to save
+	A push button to save the config
+*/
 class ConfigSaveLoaderWidget : public QGroupBox
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit ConfigSaveLoaderWidget(QWidget *parent = nullptr);

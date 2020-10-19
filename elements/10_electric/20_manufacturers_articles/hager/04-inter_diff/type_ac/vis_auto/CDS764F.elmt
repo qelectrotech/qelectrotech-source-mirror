@@ -1,0 +1,62 @@
+<definition hotspot_y="37" link_type="master" width="120" height="90" type="element" version="0.80" hotspot_x="46">
+    <uuid uuid="{df02f4d8-3181-48c1-9f11-af25267792e7}"/>
+    <names>
+        <name lang="fr">CDC764F-Interrupteur différentiel 2P 63A 30mA type AC à bornes décalées SanVis</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">CDC722F</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Interrupteur différentiel 2P 25A 30mA type AC à bornes décalées SanVis</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX&#xd;&#xd;
+Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="10" end2="none" antialias="false" y2="40" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" y1="4"/>
+        <polygon y3="-20" x1="-30" antialias="true" y2="0" closed="false" x3="-35" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-30" y1="3"/>
+        <polygon y3="-20" x1="-20" antialias="true" y2="0" closed="false" x3="-25" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-20" y1="5"/>
+        <line x1="-10" end2="none" antialias="false" y2="40" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10" y1="4"/>
+        <dynamic_text rotation="0" y="-18" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="20" z="6" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{7c189aba-a86c-4286-964d-b437612ed744}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-22" end2="none" antialias="false" y2="-10" end1="none" length2="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" length1="1.5" x2="8" y1="-10"/>
+        <polygon y3="-20" x1="-10" antialias="true" y2="0" closed="false" x3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" y1="3"/>
+        <polygon y3="-20" x1="10" antialias="true" y2="0" closed="false" x3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" y1="3"/>
+        <line x1="-10" end2="none" antialias="false" y2="-20" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10" y1="-30"/>
+        <line x1="-8" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-12" y1="-22"/>
+        <line x1="-12" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8" y1="-22"/>
+        <line x1="10" end2="none" antialias="false" y2="-20" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" y1="-30"/>
+        <line x1="12" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="8" y1="-22"/>
+        <line x1="8" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="12" y1="-22"/>
+        <text rotation="0" y="20" text="63A" x="22" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" y="34" text="30mA" x="22" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <line x1="-10" end2="none" antialias="false" y2="35" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-30" y1="35"/>
+        <line x1="-30" end2="none" antialias="false" y2="20" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-30" y1="35"/>
+        <rect width="4" antialias="false" rx="0" y="10" height="10" x="-32" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <line x1="-30" end2="none" antialias="false" y2="3" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="-30" y1="10"/>
+        <polygon y3="-25" x1="-30" antialias="false" y2="-25" closed="false" x3="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" y5="-20" x4="-20" x2="-30" y4="-20" y1="-20" x5="-20"/>
+        <line x1="-20" end2="none" antialias="false" y2="5" end1="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x2="10" y1="5"/>
+        <line x1="-40" end2="none" antialias="false" y2="-10" end1="none" length2="1.5" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" length1="1.5" x2="-35" y1="-10"/>
+        <polygon y3="-7" x1="-38" antialias="false" y2="-13" closed="false" x3="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" y5="-7" x4="-38" x2="-40" y4="-7" y1="-13" x5="-38"/>
+        <rect width="40" antialias="false" rx="5" y="20" height="10" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="5"/>
+        <text rotation="0" y="44" text="Type AC" x="22" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <terminal y="40" x="10" name="" uuid="{8d2bfe5e-d90e-4cf6-9684-ec7993c96962}" orientation="s"/>
+        <terminal y="40" x="-10" name="" uuid="{55e046b5-ad35-4f8b-b03c-64f583a865c6}" orientation="s"/>
+        <terminal y="-30" x="-10" name="" uuid="{8b060a75-097d-422b-999a-fbd0e448fcbd}" orientation="n"/>
+        <terminal y="-30" x="10" name="" uuid="{262b7433-6ee0-425a-8dbc-7b84393df4ff}" orientation="n"/>
+    </description>
+</definition>

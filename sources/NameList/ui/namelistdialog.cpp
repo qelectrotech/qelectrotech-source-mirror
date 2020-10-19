@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -35,7 +35,8 @@ NameListDialog::NameListDialog(QWidget *parent) :
 #endif
 }
 
-NameListDialog::~NameListDialog() {
+NameListDialog::~NameListDialog()
+{
 	delete ui;
 }
 
@@ -44,11 +45,12 @@ void NameListDialog::setInformationText(const QString &text) {
 }
 
 /**
- * @brief NameListDialog::namelistWidget
- * @return the name list widget used by this dialog.
- * The ownership of the namelistwidget stay to this dialog
- */
-NameListWidget *NameListDialog::namelistWidget() const {
+	@brief NameListDialog::namelistWidget
+	@return the name list widget used by this dialog.
+	The ownership of the namelistwidget stay to this dialog
+*/
+NameListWidget *NameListDialog::namelistWidget() const
+{
 	return m_namelist_widget;
 }
 
@@ -62,6 +64,7 @@ void NameListDialog::setHelpText(const QString &text)
 	}
 }
 
-void NameListDialog::showHelpDialog() {
+void NameListDialog::showHelpDialog()
+{
 	QMessageBox::information(this, tr("Variables de cartouche"), m_help_text);
 }

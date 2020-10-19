@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -51,14 +51,15 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 /**
 	Destructeur
 */
-NewElementWizard::~NewElementWizard() {
+NewElementWizard::~NewElementWizard()
+{
 }
 
 /**
- * @brief NewElementWizard::preselectedLocation
- * Select item in the tree view represented by location,
- * @param location
- */
+	@brief NewElementWizard::preselectedLocation
+	Select item in the tree view represented by location,
+	@param location
+*/
 void NewElementWizard::preselectedLocation(const ElementsLocation &location)
 {
 	QModelIndex index = m_model->indexFromLocation(location);
@@ -69,9 +70,9 @@ void NewElementWizard::preselectedLocation(const ElementsLocation &location)
 }
 
 /**
- * @brief NewElementWizard::buildStep1
- * @return
- */
+	@brief NewElementWizard::buildStep1
+	@return
+*/
 QWizardPage *NewElementWizard::buildStep1()
 {
 	QWizardPage *page = new QWizardPage();
@@ -96,10 +97,11 @@ QWizardPage *NewElementWizard::buildStep1()
 }
 
 /**
- * @brief NewElementWizard::buildStep2
- * @return
- */
-QWizardPage *NewElementWizard::buildStep2() {
+	@brief NewElementWizard::buildStep2
+	@return
+*/
+QWizardPage *NewElementWizard::buildStep2()
+{
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
 	page -> setTitle(tr("Étape 2/3 : Nom du fichier", "wizard page title"));
@@ -120,10 +122,11 @@ QWizardPage *NewElementWizard::buildStep2() {
 }
 
 /**
- * @brief NewElementWizard::buildStep3
- * @return
- */
-QWizardPage *NewElementWizard::buildStep3() {
+	@brief NewElementWizard::buildStep3
+	@return
+*/
+QWizardPage *NewElementWizard::buildStep3()
+{
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
 	page -> setTitle(tr("Étape 3/3 : Noms de l'élément", "wizard page title"));
@@ -141,9 +144,9 @@ QWizardPage *NewElementWizard::buildStep3() {
 }
 
 /**
- * @brief NewElementWizard::validateCurrentPage
- * @return true if the current step is valid
- */
+	@brief NewElementWizard::validateCurrentPage
+	@return true if the current step is valid
+*/
 bool NewElementWizard::validateCurrentPage()
 {
 	WizardState wizard_state = static_cast<WizardState>(currentPage() -> property("WizardState").toInt());
@@ -166,10 +169,10 @@ bool NewElementWizard::validateCurrentPage()
 }
 
 /**
- * @brief NewElementWizard::validStep1
- * Valid the setp 1
- * @return trie if the step is valid.
- */
+	@brief NewElementWizard::validStep1
+	Valid the setp 1
+	@return trie if the step is valid.
+*/
 bool NewElementWizard::validStep1()
 {
 		//They must be one directory selected
@@ -198,11 +201,12 @@ bool NewElementWizard::validStep1()
 }
 
 /**
- * @brief NewElementWizard::validStep2
- * Valid the step 2
- * @return true if step is valid
- */
-bool NewElementWizard::validStep2() {
+	@brief NewElementWizard::validStep2
+	Valid the step 2
+	@return true if step is valid
+*/
+bool NewElementWizard::validStep2()
+{
 	QString file_name = m_qle_filename -> text();
 
 	if (file_name.isEmpty()) {
@@ -230,10 +234,11 @@ bool NewElementWizard::validStep2() {
 }
 
 /**
- * @brief NewElementWizard::createNewElement
- * Lauch an element editor for create the new element
- */
-void NewElementWizard::createNewElement() {
+	@brief NewElementWizard::createNewElement
+	Lauch an element editor for create the new element
+*/
+void NewElementWizard::createNewElement()
+{
 	QETElementEditor *edit_new_element = new QETElementEditor(parentWidget());
 	edit_new_element -> setNames(m_names_list -> names());
 

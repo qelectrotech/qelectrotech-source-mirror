@@ -1,4 +1,4 @@
-<definition hotspot_y="20" type="element" link_type="simple" orientation="dyyy" hotspot_x="35" width="70" height="40" version="0.51">
+<definition hotspot_y="20" type="element" link_type="simple" hotspot_x="35" width="70" height="40" version="0.51">
     <uuid uuid="{7333d732-a6a1-4b7c-9fd1-5062fb40596f}"/>
     <names>
         <name lang="fr">Détendeur GPL</name>

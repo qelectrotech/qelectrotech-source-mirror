@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -26,28 +26,32 @@
 #include "terminal.h"
 #include "diagramcommands.h"
 #include "qetgraphicstableitem.h"
+#include "qetdiagrameditor.h"
 
 /**
- * @brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
- * @param diagram : deigram where this undo work
- * @param content : content to remove
- * @param parent : parent undo
- */
-DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const DiagramContent &content, QUndoCommand *parent) :
+	@brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
+	@param diagram : deigram where this undo work
+	@param content : content to remove
+	@param parent : parent undo
+*/
+DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
+		Diagram *diagram,
+		const DiagramContent &content,
+		QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_removed_contents(content),
 	m_diagram(diagram)
 {
-		//If parent element of a dynamic element text item is also in @m_removed_content,
-		//we remove it, because when the element will be removed from the scene every child's will also be removed.
+	//If parent element of a dynamic element text item is also in m_removed_content,
+	//we remove it, because when the element will be removed from the scene every child's will also be removed.
 	const QSet<DynamicElementTextItem *> elmt_set = m_removed_contents.m_element_texts;
 	for(DynamicElementTextItem *deti : elmt_set)
 	{
 		if (m_removed_contents.m_elements.contains(deti->parentElement()))
 			m_removed_contents.m_element_texts.remove(deti);
-			
+
 	}
-	
+
 		//When remove a deti we must to know his parent item, for re-add deti as child of the parent
 		//when undo this command
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
@@ -57,46 +61,64 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 		else
 			m_elmt_text_hash.insert(deti, deti->parentElement());
 	}
-	
-		//If parent element of ElementTextItemGroup is also in @m_removed_content,
-		//we remove it, because when the element will be removed from the scene every child's will also be removed.
+
+	//If parent element of ElementTextItemGroup is also in m_removed_content,
+	//we remove it, because when the element will be removed from the scene every child's will also be removed.
 	const QSet<ElementTextItemGroup *> group_set = m_removed_contents.m_texts_groups;
 	for(ElementTextItemGroup *group : group_set)
 	{
 		if(m_removed_contents.m_elements.contains(group->parentElement()))
 			m_removed_contents.m_texts_groups.remove(group);
 	}
-	
+
 		//The deletion of the groups is not managed by this undo, but by a RemoveTextsGroupCommand
 	for(ElementTextItemGroup *group : m_removed_contents.m_texts_groups) {
 		new RemoveTextsGroupCommand(group->parentElement(), group, this);
 	}
-	
+
 	m_removed_contents.m_texts_groups.clear();
 	setPotentialsOfRemovedElements();
 
-		//Store some information about the tables
+		//Get all linkeds table of removed table.
 	for (auto table : m_removed_contents.m_tables)
 	{
-		tableStatus status;
-		status.next = table->nextTable();
-		status.previous = table->previousTable();
-		m_tables_status.insert(table, status);
+			//Table is already managed, jump to next loop
+		if (m_table_scene_hash.keys().contains(table))
+			continue;
+
+		auto first_table  = table; //The first table if the table is linked to another
+		while(first_table->previousTable())
+			first_table = first_table->previousTable();
+		auto current_table = first_table;
+
+		m_table_scene_hash.insert(first_table, first_table->scene());
+		while (current_table->nextTable())
+		{
+			current_table = current_table->nextTable();
+			m_table_scene_hash.insert(current_table, current_table->scene());
+		}
 	}
-	
-	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
+
+	setText(QString(QObject::tr(
+				"supprimer %1",
+				"undo caption - %1 is a sentence listing the removed content"))
+		.arg(m_removed_contents.sentence(DiagramContent::All)));
+	//Table is now managed by m_table_scene_hash,
+	//we clear the tables of m_removed_content
+	m_removed_contents.m_tables.clear();
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
 }
 
-DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand() {
+DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand()
+{
 	m_diagram->qgiManager().release(m_removed_contents.items(DiagramContent::All));
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements
- * This function creates new conductors (if needed) for conserve the electrical potentials
- * present at the terminals of each removed elements.
- */
+	@brief DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements
+	This function creates new conductors (if needed) for conserve the electrical potentials
+	present at the terminals of each removed elements.
+*/
 void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 {
 	for (Element *elmt : m_removed_contents.m_elements)
@@ -111,17 +133,17 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 		if (terminals_list.isEmpty()) {
 			continue;
 		}
-		
+
 		for (Terminal *t : terminals_list)
 		{
 				//All new created conductors will be docked to hub_terminal
 			Terminal *hub_terminal = nullptr;
 			QList<Terminal *> terminals_to_connect_list;
-			
+
 			for (Conductor *c : t->conductors())
 			{
 				Terminal *other_terminal = c->terminal1 == t ? c->terminal2 : c->terminal1;
-				
+
 				if (m_removed_contents.items(DiagramContent::Elements).contains(other_terminal->parentElement()))
 				{
 					other_terminal = terminalInSamePotential(other_terminal, c);
@@ -129,7 +151,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 						continue;
 					}
 				}
-				
+
 				terminals_to_connect_list.append(other_terminal);
 				if (hub_terminal == nullptr) {
 					hub_terminal = other_terminal;
@@ -144,12 +166,12 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 					}
 				}
 			}
-			
+
 			terminals_to_connect_list.removeAll(hub_terminal);
 			if (hub_terminal == nullptr || terminals_to_connect_list.isEmpty()) {
 				continue;
 			}
-			
+
 			ConductorProperties properties = hub_terminal->conductors().first()->properties();
 			for (Terminal *t : terminals_to_connect_list)
 			{
@@ -166,10 +188,17 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 						continue;
 					}
 				}
-				
+
 				if (exist_ == false)
 				{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 					m_connected_terminals.append(qMakePair<Terminal *, Terminal *>(hub_terminal, t));
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+					qDebug()<<"Help code for QT 6 or later";
+#endif
 					Conductor *new_cond = new Conductor(hub_terminal, t);
 					new_cond->setProperties(properties);
 					new AddItemCommand<Conductor*>(new_cond, t->diagram(), QPointF(), this);
@@ -180,15 +209,19 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::terminalInSamePotential
- * Return a terminal at the same potential of @terminal, by traveling through the conductors connected to @terminal
- * only if the owner element of the terminal is not delete by this undo command.
- * Return nullptr if a terminal can't be found.
- * @param terminal - terminal from search
- * @param conductor_to_exclude - a conductor to exlcude from search.
- * @return 
- */
-Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(Terminal *terminal, Conductor *conductor_to_exclude)
+	@brief DeleteQGraphicsItemCommand::terminalInSamePotential
+	Return a terminal at the same potential of terminal,
+	by traveling through the conductors connected to terminal
+	only if the owner element of the terminal
+	is not delete by this undo command.
+	Return nullptr if a terminal can't be found.
+	@param terminal - terminal from search
+	@param conductor_to_exclude - a conductor to exlcude from search.
+	@return
+*/
+Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(
+		Terminal *terminal,
+		Conductor *conductor_to_exclude)
 {
 	QList<Conductor *> conductor_list = terminal->conductors();
 	conductor_list.removeAll(conductor_to_exclude);
@@ -208,14 +241,14 @@ Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(Terminal *terminal
 			return  terminal_to_return;
 		}
 	}
-	
+
 	return nullptr;
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::undo
- * Undo this command
- */
+	@brief DeleteQGraphicsItemCommand::undo
+	Undo this command
+*/
 void DeleteQGraphicsItemCommand::undo()
 {
 	m_diagram->showMe();
@@ -227,7 +260,7 @@ void DeleteQGraphicsItemCommand::undo()
 	for(Element *e : m_removed_contents.m_elements)
 		for(Element *elmt : m_link_hash[e])
 				e->linkToElement(elmt);
-	
+
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(m_elmt_text_hash.keys().contains(deti))
@@ -240,34 +273,20 @@ void DeleteQGraphicsItemCommand::undo()
 		}
 	}
 
-	for (auto table : m_removed_contents.m_tables)
+	for (auto table : m_table_scene_hash.keys())
 	{
-		auto pair = m_tables_status.value(table);
-
-		if(pair.next && pair.previous) // Table is between two tables
-		{
-			pair.next->setPreviousTable(nullptr);
-			table->setPreviousTable(pair.previous);
-			pair.next->setPreviousTable(table);
-		}
-		else if (pair.next) //Table is the first table of linked tables
-		{
-			auto model = pair.next->model();
-			pair.next->setPreviousTable(table);
-			table->setModel(model);
-		}
-		else if (pair.previous) { //Table is the last of linked tables
-			table->setPreviousTable(pair.previous);
+		if (!m_table_scene_hash.value(table).isNull()) {
+			m_table_scene_hash.value(table)->addItem(table);
 		}
 	}
-	
+
 	QUndoCommand::undo();
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::redo
- * Redo the delete command
- */
+	@brief DeleteQGraphicsItemCommand::redo
+	Redo the delete command
+*/
 void DeleteQGraphicsItemCommand::redo()
 {
 	m_diagram -> showMe();
@@ -286,14 +305,14 @@ void DeleteQGraphicsItemCommand::redo()
 				conductor_list.first() -> calculateTextItemPosition();
 		}
 	}
-	
+
 	for(Element *e : m_removed_contents.m_elements)
 	{
 			//Get linked element, for relink it at undo
 		if (!e->linkedElements().isEmpty())
 			m_link_hash.insert(e, e->linkedElements());
 	}
-	
+
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(deti->parentGroup() && deti->parentGroup()->parentElement())
@@ -303,23 +322,15 @@ void DeleteQGraphicsItemCommand::redo()
 		deti->setParentItem(nullptr);
 	}
 
-	for (auto table : m_removed_contents.m_tables)
+	for (auto table : m_table_scene_hash.keys())
 	{
-		auto pair = m_tables_status.value(table);
-
-		if(pair.next && pair.previous) { // Table is between two tables
-			pair.next->setPreviousTable(pair.previous); //change the previous table of the current next table of @table
-		} else if (pair.next) { //Table is the first table of linked tables
-			pair.next->setPreviousTable(nullptr);	//Next table haven't got model anymore
-			pair.next->setModel(table->model());
-		} else if (pair.previous) { //Table is the last of linked tables
-			table->setPreviousTable(nullptr); //Remove the previous table @table
+		if (!m_table_scene_hash.value(table).isNull()) {
+			m_table_scene_hash.value(table)->removeItem(table);
 		}
 	}
 
-	
 	for(QGraphicsItem *item : m_removed_contents.items())
 		m_diagram->removeItem(item);
-	
+
 	QUndoCommand::redo();
 }

@@ -1,4 +1,4 @@
-<definition hotspot_x="16" hotspot_y="30" orientation="dyyy" height="40" type="element" link_type="simple" width="40" version="0.5">
+<definition hotspot_x="16" hotspot_y="30" height="40" type="element" link_type="simple" width="40" version="0.5">
     <uuid uuid="{bdb122e8-6852-4125-9ae1-4d804f5b1c61}"/>
     <names>
         <name lang="fr">Projecteur d'illumination</name>

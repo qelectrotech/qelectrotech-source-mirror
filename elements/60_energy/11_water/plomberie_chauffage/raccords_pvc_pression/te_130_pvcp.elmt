@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="24" orientation="dyyy" width="50" height="30" hotspot_y="20" link_type="simple" version="0.51">
+<definition type="element" hotspot_x="24" width="50" height="30" hotspot_y="20" link_type="simple" version="0.51">
     <uuid uuid="{b507ed0b-e4c7-4f69-b57c-45eca69b55e2}"/>
     <names>
         <name lang="fr">Té égal PVC Pression</name>

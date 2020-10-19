@@ -1,4 +1,4 @@
-<definition height="160" version="0.5" link_type="simple" width="80" orientation="dyyy" hotspot_x="36" hotspot_y="72" type="element">
+<definition height="160" version="0.5" link_type="simple" width="80" hotspot_x="36" hotspot_y="72" type="element">
     <uuid uuid="{18e864f6-497e-46e8-abd4-d2891b166956}"/>
     <names>
         <name lang="de">Netzwerkstation Ende</name>

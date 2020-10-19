@@ -1,4 +1,4 @@
-<definition width="150" height="250" type="element" version="0.70" orientation="dyyy" link_type="simple" hotspot_x="95" hotspot_y="125">
+<definition width="150" height="250" type="element" version="0.70" link_type="simple" hotspot_x="95" hotspot_y="125">
     <uuid uuid="{5e580f5e-5f39-42e1-a3e2-a00051ff976b}"/>
     <names>
         <name lang="en">BMXCPS2010</name>

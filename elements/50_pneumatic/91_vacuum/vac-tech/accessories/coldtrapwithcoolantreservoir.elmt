@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="22" width="50" link_type="simple" height="50" version="0.80" orientation="dyyy" hotspot_y="28">
+<definition type="element" hotspot_x="22" width="50" link_type="simple" height="50" version="0.80" hotspot_y="28">
     <uuid uuid="{1edf9557-8e7b-47bc-abb1-c73fb86fab7f}"/>
     <names>
         <name lang="fr">Piège à froid avec réservoir réfrigéré</name>

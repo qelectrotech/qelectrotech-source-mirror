@@ -1,4 +1,4 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="38" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.4" hotspot_x="25" hotspot_y="38" height="80" link_type="simple" type="element" ic="true">
 <uuid uuid="{61D250AA-CE4E-43D3-948F-1E5049FD9589}"/><names>
         <name lang="ar">بالون جامع 1000 ل</name>
         <name lang="en">1000L Combined ball</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="105" height="230" width="140" hotspot_y="217" version="0.70">
+<definition link_type="simple" type="element" hotspot_x="105" height="230" width="140" hotspot_y="217" version="0.70">
     <uuid uuid="{3e14c6e6-8f5f-4048-924c-3e2e456f3b5c}"/>
     <names>
         <name lang="de">Drehstromtransformator,

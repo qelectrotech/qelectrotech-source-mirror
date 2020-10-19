@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{3575ef48-1909-4830-b23d-5e65fecd65fc}"/>
     <names>
         <name lang="it">Sensore infrarosso</name>

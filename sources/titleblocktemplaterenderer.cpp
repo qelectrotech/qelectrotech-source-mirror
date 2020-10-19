@@ -2,8 +2,9 @@
 #include "titleblocktemplate.h"
 
 /**
+	@brief TitleBlockTemplateRenderer::TitleBlockTemplateRenderer
 	Constructor
-	@param parnet Parent QObject of this renderer
+	@param parent : Parent QObject of this renderer
 */
 TitleBlockTemplateRenderer::TitleBlockTemplateRenderer(QObject *parent) :
 	QObject(parent),
@@ -14,22 +15,28 @@ TitleBlockTemplateRenderer::TitleBlockTemplateRenderer(QObject *parent) :
 }
 
 /**
+	@brief TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer
 	Destructor
 */
-TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer() {
+TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer()
+{
 }
 
 /**
+	@brief TitleBlockTemplateRenderer::titleBlockTemplate
 	@return the titleblock template used for the rendering
 */
-const TitleBlockTemplate *TitleBlockTemplateRenderer::titleBlockTemplate() const {
+const TitleBlockTemplate *TitleBlockTemplateRenderer::titleBlockTemplate() const
+{
 	return(m_titleblock_template);
 }
 
 /**
-	@param titleblock_template TitleBlock template to render.
+	@brief TitleBlockTemplateRenderer::setTitleBlockTemplate
+	@param titleblock_template : TitleBlock template to render.
 */
-void TitleBlockTemplateRenderer::setTitleBlockTemplate(const TitleBlockTemplate *titleblock_template) {
+void TitleBlockTemplateRenderer::setTitleBlockTemplate(
+		const TitleBlockTemplate *titleblock_template) {
 	if (titleblock_template != m_titleblock_template) {
 		m_titleblock_template = titleblock_template;
 		invalidateRenderedTemplate();
@@ -37,43 +44,50 @@ void TitleBlockTemplateRenderer::setTitleBlockTemplate(const TitleBlockTemplate 
 }
 
 /**
- * @brief TitleBlockTemplateRenderer::setContext
- * @param context : Context to use when rendering the titleblock
- */
+	@brief TitleBlockTemplateRenderer::setContext
+	@param context : Context to use when rendering the titleblock
+*/
 void TitleBlockTemplateRenderer::setContext(const DiagramContext &context) {
 	m_context = context;
 	invalidateRenderedTemplate();
 }
 
 /**
- * @brief TitleBlockTemplateRenderer::context
- * @return the current diagram context use when render the titleblock
- */
-DiagramContext TitleBlockTemplateRenderer::context() const {
+	@brief TitleBlockTemplateRenderer::context
+	@return the current diagram context use when render the titleblock
+*/
+DiagramContext TitleBlockTemplateRenderer::context() const
+{
 	return  m_context;
 }
 
 /**
-	@return the height of the rendered template, or -1 if no template has been
+	@brief TitleBlockTemplateRenderer::height
+	@return the height of the rendered template,
+	or -1 if no template has been
 	set for this renderer.
 	@see TitleBlockTemplate::height()
 */
-int TitleBlockTemplateRenderer::height() const {
+int TitleBlockTemplateRenderer::height() const
+{
 	if (!m_titleblock_template) return(-1);
 	return(m_titleblock_template -> height());
 }
 
 /**
+	@brief TitleBlockTemplateRenderer::render
 	Render the titleblock.
-	@param provided_painter QPainter to use to render the titleblock.
-	@param titleblock_width The total width of the titleblock to render
+	@param provided_painter : QPainter to use to render the titleblock.
+	@param titleblock_width : The total width of the titleblock to render
 */
-void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblock_width) {
+void TitleBlockTemplateRenderer::render(QPainter *provided_painter,
+					int titleblock_width) {
 	if (!m_titleblock_template) return;
 	
 	if (m_use_cache) {
 		// Do we really need to calculate all this again?
-		if (titleblock_width != m_last_known_titleblock_width || m_rendered_template.isNull()) {
+		if (titleblock_width != m_last_known_titleblock_width
+				|| m_rendered_template.isNull()) {
 			renderToQPicture(titleblock_width);
 		}
 		
@@ -81,19 +95,34 @@ void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblo
 		m_rendered_template.play(provided_painter);
 		provided_painter -> restore();
 	} else {
-		m_titleblock_template -> render(*provided_painter, m_context, titleblock_width);
+		m_titleblock_template -> render(*provided_painter,
+						m_context,
+						titleblock_width);
 	}
 }
 
-
-void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect, int titleblock_width, QString &file_path, int color) {
+/**
+	@brief TitleBlockTemplateRenderer::renderDxf
+	@param title_block_rect
+	@param titleblock_width
+	@param file_path
+	@param color
+*/
+void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect,
+					   int titleblock_width,
+					   QString &file_path,
+					   int color) {
 	if (!m_titleblock_template) return;
-	m_titleblock_template -> renderDxf(title_block_rect, m_context, titleblock_width, file_path, color);
+	m_titleblock_template -> renderDxf(title_block_rect,
+					   m_context,
+					   titleblock_width,
+					   file_path, color);
 }
 
 /**
+	@brief TitleBlockTemplateRenderer::renderToQPicture
 	Renders the titleblock to the internal QPicture
-	@param titleblock_width Width of the titleblock to render
+	@param titleblock_width : Width of the titleblock to render
 */
 void TitleBlockTemplateRenderer::renderToQPicture(int titleblock_width) {
 	if (!m_titleblock_template) return;
@@ -108,26 +137,31 @@ void TitleBlockTemplateRenderer::renderToQPicture(int titleblock_width) {
 }
 
 /**
-	Invalidates the previous rendering of the template by resetting the internal
-	QPicture.
+	@brief TitleBlockTemplateRenderer::invalidateRenderedTemplate
+	Invalidates the previous rendering of the template
+	by resetting the internal QPicture.
 */
-void TitleBlockTemplateRenderer::invalidateRenderedTemplate() {
+void TitleBlockTemplateRenderer::invalidateRenderedTemplate()
+{
 	m_rendered_template = QPicture();
 }
 
 /**
-	@param use_cache true for this renderer to use its QPicture-based cache,
-	false otherwise.
+	@brief TitleBlockTemplateRenderer::setUseCache
+	@param use_cache :
+	true for this renderer to use its QPicture-based cache, false otherwise.
 */
 void TitleBlockTemplateRenderer::setUseCache(bool use_cache) {
 	m_use_cache = use_cache;
 }
 
 /**
-	@return true if this renderer uses its QPicture-based cache, false
-	otherwise.
+	@brief TitleBlockTemplateRenderer::useCache
+	@return true if this renderer uses its QPicture-based cache,
+	false otherwise.
 */
-bool TitleBlockTemplateRenderer::useCache() const {
+bool TitleBlockTemplateRenderer::useCache() const
+{
 	return(m_use_cache);
 }
 

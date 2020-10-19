@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,9 +21,10 @@
 #include "templatescollection.h"
 
 /**
+	@brief TitleBlockTemplateLocationSaver::TitleBlockTemplateLocationSaver
 	Constructor
-	@param location Initial location displayed by the widget
-	@param widget Parent QWidget
+	@param location
+	@param parent : QWidget
 */
 TitleBlockTemplateLocationSaver::TitleBlockTemplateLocationSaver(
 	const TitleBlockTemplateLocation &location,
@@ -38,13 +39,15 @@ TitleBlockTemplateLocationSaver::TitleBlockTemplateLocationSaver(
 /**
 	Destructor
 */
-TitleBlockTemplateLocationSaver::~TitleBlockTemplateLocationSaver() {
+TitleBlockTemplateLocationSaver::~TitleBlockTemplateLocationSaver()
+{
 }
 
 /**
 	@return the currently selected/entered name
 */
-QString TitleBlockTemplateLocationSaver::name() const {
+QString TitleBlockTemplateLocationSaver::name() const
+{
 	int template_index = templates_ -> currentIndex();
 	return(template_index ? templates_ -> currentText() : new_name_ -> text());
 }
@@ -73,17 +76,19 @@ void TitleBlockTemplateLocationSaver::setLocation(const TitleBlockTemplateLocati
 	Initialize this widget.
 	@param location Initial location displayed by the widget
 */
-void TitleBlockTemplateLocationSaver::init() {
+void TitleBlockTemplateLocationSaver::init()
+{
 	new_name_ = new QLineEdit();
 	connect(templates_, SIGNAL(currentIndexChanged(int)), this, SLOT(updateNewName()));
-	form_layout_ -> addRow(tr("ou nouveau nom",       "used in save as form"), new_name_);
+	form_layout_ -> addRow(tr("ou nouveau nom", "used in save as form"), new_name_);
 	updateTemplates();
 }
 
 /**
 	Update the templates list according to the selected collection.
 */
-void TitleBlockTemplateLocationSaver::updateTemplates() {
+void TitleBlockTemplateLocationSaver::updateTemplates()
+{
 	TitleBlockTemplatesCollection *current_collection = collection();
 	if (!current_collection) return;
 	
@@ -98,7 +103,8 @@ void TitleBlockTemplateLocationSaver::updateTemplates() {
 	Enable or diable the "new name" text field depending of the selected
 	template.
 */
-void TitleBlockTemplateLocationSaver::updateNewName() {
+void TitleBlockTemplateLocationSaver::updateNewName()
+{
 	int template_index = templates_ -> currentIndex();
 	new_name_ -> setEnabled(!template_index);
 }

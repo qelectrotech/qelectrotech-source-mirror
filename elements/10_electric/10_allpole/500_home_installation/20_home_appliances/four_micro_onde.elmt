@@ -1,0 +1,39 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{1827eb12-85e8-41e0-9bdd-46c490787a10}"/>
+    <names>
+        <name lang="cs">Mikrovlnná trouba</name>
+        <name lang="pl">Kuchenka mikrofalowa</name>
+        <name lang="ar">فرن ميكرو موجي</name>
+        <name lang="de">Mikrowellenofen</name>
+        <name lang="en">Microwave oven</name>
+        <name lang="el">Φούρνος μικροκυμάτων</name>
+        <name lang="nl">Magnetron</name>
+        <name lang="it">Forno micro-onde</name>
+        <name lang="fr">Four à micro-ondes</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="13.05" uuid="{37774f37-3125-46cf-8095-29f0a0794d6c}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-12" antialias="false" y3="22.8945" x2="-12" y1="-1.1054" y2="22.8945" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1.1054" x4="12"/>
+        <line x1="-5" end2="none" antialias="false" x2="5" y1="5" length2="1.5" y2="10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="3" height="5" width="5" start="0" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-5" end2="none" antialias="false" x2="5" y1="13" length2="1.5" y2="18" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-5" end2="none" antialias="false" x2="5" y1="9" length2="1.5" y2="14" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="-8" height="5" width="5" start="-180" y="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="3" height="5" width="5" start="0" y="12.8945" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="3" height="5" width="5" start="0" y="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="-8" height="5" width="5" start="-180" y="12.8945" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="-8" height="5" width="5" start="-180" y="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="24" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-2" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{ce174422-ad0d-4504-83fc-48adb0b11e4c}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{e425277e-a393-4fe7-aab2-75025b7fd352}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{fb8635e6-fb90-4ce7-a5a3-9d876cbedc3e}"/>
+    </description>
+</definition>

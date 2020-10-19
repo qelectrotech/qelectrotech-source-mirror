@@ -1,0 +1,47 @@
+<definition hotspot_x="5" link_type="simple" type="element" height="190" version="0.80" hotspot_y="186" width="130">
+    <uuid uuid="{c3ed926c-4aca-41a3-868f-b1c75686558b}"/>
+    <names>
+        <name lang="pl">Budynek</name>
+        <name lang="fr">Bât Ext</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" x="0" rx="0" height="85" width="120" y="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-15" length2="1.5" y2="-15" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="29" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="3" text_width="-1" Halignment="AlignLeft" y="-44" uuid="{33dea6e8-e7e1-4ef0-8cc3-db6e4a573bb1}">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="4" text_width="-1" Halignment="AlignLeft" y="-63" uuid="{a175bc77-aa1e-45e2-ab56-e57ce0318cdc}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" x="58" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text=" kA C" y="-18" color="#000000"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-45" length2="1.5" y2="-45" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-65" length2="1.5" y2="-65" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" x="66" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="A" y="-32" color="#000000"/>
+        <text rotation="0" x="2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="Bâtiment extérieur" y="-69" color="#000000"/>
+        <line x1="60" end2="none" antialias="false" x2="35" y1="-160" length2="1.5" y2="-135" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="60" end2="none" antialias="false" x2="85" y1="-160" length2="1.5" y2="-135" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" end2="none" antialias="false" x2="40" y1="-140" length2="1.5" y2="-100" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" end2="none" antialias="false" x2="80" y1="-100" length2="1.5" y2="-100" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="80" end2="none" antialias="false" x2="80" y1="-100" length2="1.5" y2="-140" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" end2="none" antialias="false" x2="50" y1="-100" length2="1.5" y2="-125" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" end2="none" antialias="false" x2="70" y1="-125" length2="1.5" y2="-125" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="70" end2="none" antialias="false" x2="70" y1="-125" length2="1.5" y2="-100" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="58" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="20" text_width="-1" Halignment="AlignLeft" y="-12" uuid="{98b54f6f-8e80-4046-bb09-7016295d7409}">
+            <text> mm²</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="28" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="21" text_width="-1" Halignment="AlignLeft" y="-13.5" uuid="{ef241b91-044f-472a-a358-68eadb931921}">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <line x1="50" end2="none" antialias="false" x2="50" y1="-180" length2="1.5" y2="-150" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="30" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="22" text_width="-1" Halignment="AlignLeft" y="-28.5" uuid="{dc60b908-290f-42a9-b529-d1695dc364b2}">
+            <text>4.5</text>
+        </dynamic_text>
+        <line x1="70" end2="none" antialias="false" x2="70" y1="-180" length2="1.5" y2="-151" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="50" y="-180" uuid="{723765bc-b612-4e1a-92ef-567119429f9d}"/>
+        <terminal orientation="n" name="" x="70" y="-180" uuid="{8c1aa559-1491-45cb-aa15-e8bbff0f376e}"/>
+        <terminal orientation="s" name="" x="60" y="-100" uuid="{68237cd7-8357-4a9c-8e50-9f8f1d6debe7}"/>
+    </description>
+</definition>

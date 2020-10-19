@@ -1,40 +1,56 @@
-<definition width="160" hotspot_y="39" link_type="simple" height="90" hotspot_x="75" type="element" orientation="dyyy" version="0.70">
-    <uuid uuid="{41132875-b04d-4c5b-82fe-76e8eff17c7d}"/>
+<definition hotspot_y="39" link_type="simple" width="160" version="0.80" type="element" height="90" hotspot_x="75">
+    <uuid uuid="{50bdb18f-c76c-4593-a171-faacabe0632f}"/>
     <names>
+        <name lang="en">pressure_switch_rexroth_lcd</name>
         <name lang="hu">Rexroth nyomáskapcsoló LDC</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Rexroth</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <text text="2" size="5" x="8" y="37.1972"/>
-        <text text="3" size="5" x="-42" y="37.1972"/>
-        <text text="4" size="5" x="48" y="37.1972"/>
-        <text text="L-" size="7" x="-41" y="23.1972"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="33" x1="68" y1="28" antialias="false" x2="68" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="74" y1="43.1972" antialias="false" x2="80" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-36.5" y1="43.1972" antialias="false" x2="-24.5" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="13.5" y1="43.1972" antialias="false" x2="25.5" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="34.5" y1="43.1972" antialias="false" x2="46.5" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="54" y1="43.1972" antialias="false" x2="66" length1="1.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63.606" y="39.5916" antialias="true" diameter="7.2111"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="46.3945" y="39.5917" antialias="true" diameter="7.2111"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.39445" y="39.5917" antialias="true" diameter="7.2111"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-43.6056" y="39.5917" antialias="true" diameter="7.2111"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-70" y1="43.1972" antialias="false" x2="-64" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-56" y1="43.1972" antialias="false" x2="-44" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-16" y1="43.1972" antialias="false" x2="6" length1="1.5"/>
-        <text text="L+" size="7" x="-65" y="23.1972"/>
-        <text text="1" size="5" x="-62" y="37.1972"/>
-        <text text="REXROTH 0821 100 103" size="7" x="-60" y="-25"/>
-        <input text="_" tagg="label" rotate="true" size="10" x="-70" y="0"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="28" x1="-3" y1="28" antialias="false" x2="68" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="33" x1="-3" y1="28" antialias="false" x2="-3" length1="1.5"/>
-        <rect width="85" height="35" style="line-style:normal;line-weight:normal;filling:gray;color:black" x="-10" y="-11.8028" antialias="false"/>
-        <text text="LCD display" size="7" x="8" y="7.19723"/>
-        <rect width="150" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" y="-36.8028" antialias="false"/>
-        <terminal x="50" y="46.1972" orientation="s"/>
-        <terminal x="-40" y="46.1972" orientation="s"/>
-        <terminal x="10" y="46.1972" orientation="s"/>
-        <terminal x="-60" y="46.1972" orientation="s"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="37.1972" rotation="0" text="2" color="#000000" x="8"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="37.1972" rotation="0" text="3" color="#000000" x="-42"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="37.1972" rotation="0" text="4" color="#000000" x="48"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="23.1972" rotation="0" text="L-" color="#000000" x="-41"/>
+        <line x1="68" y2="33" end1="none" y1="28" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="68" antialias="false" length1="1.5"/>
+        <line x1="74" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="80" antialias="false" length1="1.5"/>
+        <line x1="-36.5" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-24.5" antialias="false" length1="1.5"/>
+        <line x1="13.5" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="25.5" antialias="false" length1="1.5"/>
+        <line x1="34.5" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="46.5" antialias="false" length1="1.5"/>
+        <line x1="54" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="66" antialias="false" length1="1.5"/>
+        <circle y="39.5916" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63.606" diameter="7.2111" antialias="true"/>
+        <circle y="39.5917" style="line-style:normal;line-weight:normal;filling:none;color:black" x="46.3945" diameter="7.2111" antialias="true"/>
+        <circle y="39.5917" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.39445" diameter="7.2111" antialias="true"/>
+        <circle y="39.5917" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-43.6056" diameter="7.2111" antialias="true"/>
+        <line x1="-70" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-64" antialias="false" length1="1.5"/>
+        <line x1="-56" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-44" antialias="false" length1="1.5"/>
+        <line x1="-16" y2="43.1972" end1="none" y1="43.1972" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="6" antialias="false" length1="1.5"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="23.1972" rotation="0" text="L+" color="#000000" x="-65"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="37.1972" rotation="0" text="1" color="#000000" x="-62"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" text="REXROTH 0821 100 103" color="#000000" x="-60"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-12" uuid="{d44f7d12-081c-45e3-a38b-6a74b0059c0a}" Halignment="AlignLeft" rotation="0" x="-70" text_width="-1" frame="false" text_from="ElementInfo" z="21">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-3" y2="28" end1="none" y1="28" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="68" antialias="false" length1="1.5"/>
+        <line x1="-3" y2="33" end1="none" y1="28" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-3" antialias="false" length1="1.5"/>
+        <rect width="85" y="-11.8028" style="line-style:normal;line-weight:normal;filling:gray;color:black" rx="0" x="-10" ry="0" antialias="false" height="35"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="7.19723" rotation="0" text="LCD display" color="#000000" x="8"/>
+        <rect width="150" y="-36.8028" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-70" ry="0" antialias="false" height="80"/>
+        <terminal name="" y="46.1972" uuid="{e2ca0933-a39f-4f21-9cce-4046d77d1ec6}" x="50" orientation="s"/>
+        <terminal name="" y="46.1972" uuid="{c3c5436a-be09-470c-844f-c87ef6016409}" x="-40" orientation="s"/>
+        <terminal name="" y="46.1972" uuid="{64da56e9-5f6a-4f49-876e-51b740ecd9ac}" x="10" orientation="s"/>
+        <terminal name="" y="46.1972" uuid="{1f003657-b38a-4d02-813e-70e99261cc0d}" x="-60" orientation="s"/>
     </description>
 </definition>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="70" width="130" height="160" orientation="dyyy" link_type="simple" hotspot_x="65">
+<definition type="element" version="0.5" hotspot_y="70" width="130" height="160" link_type="simple" hotspot_x="65">
     <uuid uuid="{587d0990-8eea-4a43-b1d7-fc5d6791f7a1}"/>
     <names>
         <name lang="pl">FX3-XTIO84002</name>

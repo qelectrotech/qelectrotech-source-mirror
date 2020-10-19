@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="25" version="0.5" hotspot_y="19" link_type="simple" width="70" orientation="dyyy" height="40">
+<definition type="element" hotspot_x="25" version="0.5" hotspot_y="19" link_type="simple" width="70" height="40">
     <uuid uuid="{1f64880a-c70c-4835-a030-ed6908cb812c}"/>
     <names>
         <name lang="de">Magnetventil</name>

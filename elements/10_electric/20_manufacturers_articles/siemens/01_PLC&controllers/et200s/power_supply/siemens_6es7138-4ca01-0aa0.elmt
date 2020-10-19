@@ -1,4 +1,4 @@
-<definition width="70" height="90" orientation="dyyy" link_type="simple" hotspot_x="29" hotspot_y="35" type="element" version="0.51">
+<definition width="70" height="90" link_type="simple" hotspot_x="29" hotspot_y="35" type="element" version="0.51">
     <uuid uuid="{289ca1bc-4168-43ab-94a6-eb3cf69e1887}"/>
     <names>
         <name lang="de">Terminalmodul 6ES7138-4CA01-0AA0</name>

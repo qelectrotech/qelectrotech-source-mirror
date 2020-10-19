@@ -1,4 +1,4 @@
-<definition width="10" height="40" version="0.80" type="element" hotspot_x="5" hotspot_y="29" link_type="simple" orientation="dyyy">
+<definition width="10" height="40" version="0.80" type="element" hotspot_x="5" hotspot_y="29" link_type="simple">
     <uuid uuid="{0a87daed-97c5-402f-9d7a-04e022d52331}"/>
     <names>
         <name lang="fr">3501/OI - Configurateur O/I</name>

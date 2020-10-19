@@ -1,4 +1,4 @@
-<definition hotspot_y="29" width="70" hotspot_x="35" type="element" orientation="dyyy" link_type="master" version="0.5" height="60">
+<definition hotspot_y="29" width="70" hotspot_x="35" type="element" link_type="master" version="0.5" height="60">
     <uuid uuid="{053d4ab9-cc1d-4570-86eb-192406870d14}"/>
     <names>
         <name lang="es">Seccionador</name>

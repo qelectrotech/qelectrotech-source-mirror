@@ -1,4 +1,4 @@
-<definition width="50" height="60" type="element" hotspot_x="23" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="22">
+<definition width="50" height="60" type="element" hotspot_x="23" version="0.70" link_type="simple" hotspot_y="22">
     <uuid uuid="{2bb6b702-83d3-473d-9ba8-3389a9f1ff3b}"/>
     <names>
         <name lang="de">Kondensator mit Voreinstellung</name>

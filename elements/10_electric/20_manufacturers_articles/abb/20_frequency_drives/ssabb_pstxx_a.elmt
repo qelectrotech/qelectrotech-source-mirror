@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" height="120" width="470" type="element" hotspot_y="6" orientation="dyyy">
+<definition version="0.80" link_type="simple" hotspot_x="5" height="120" width="470" type="element" hotspot_y="6">
     <uuid uuid="{27997ff4-b8fe-4890-9674-7c87177a1c8f}"/>
     <names>
         <name lang="en">ABB PST</name>

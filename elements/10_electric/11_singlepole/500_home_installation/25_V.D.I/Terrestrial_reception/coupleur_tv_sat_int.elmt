@@ -1,4 +1,4 @@
-<definition width="120" link_type="simple" orientation="dyyy" hotspot_y="14" version="0.51" type="element" height="60" hotspot_x="40">
+<definition width="120" link_type="simple" hotspot_y="14" version="0.51" type="element" height="60" hotspot_x="40">
     <uuid uuid="{31b936e5-f3a3-4ec3-b7a2-93ac7866a41e}"/>
     <names>
         <name lang="fr">CoupleurTV-Sat int</name>

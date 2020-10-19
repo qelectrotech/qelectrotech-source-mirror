@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="24" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="24" version="0.80" link_type="simple" width="50">
     <uuid uuid="{7d686b7b-fa4c-40a5-8f4b-faf10b369710}"/>
     <names>
         <name lang="en">Vacuum gauge, operating and display unit for vacuum

@@ -1,4 +1,4 @@
-<definition height="50" link_type="simple" width="50" version="0.80" type="element" orientation="dyyy" hotspot_x="25" hotspot_y="24">
+<definition height="50" link_type="simple" width="50" version="0.80" type="element" hotspot_x="25" hotspot_y="24">
     <uuid uuid="{8b16aaf2-ea1f-4933-bb36-3f41d72f32c3}"/>
     <names>
         <name lang="fr">Module Fil Pilote</name>

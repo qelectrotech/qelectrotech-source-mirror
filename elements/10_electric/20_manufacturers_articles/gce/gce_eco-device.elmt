@@ -1,4 +1,4 @@
-<definition type="element" width="190" hotspot_y="94" link_type="simple" hotspot_x="95" height="190" orientation="dyyy" version="0.80">
+<definition type="element" width="190" hotspot_y="94" link_type="simple" hotspot_x="95" height="190" version="0.80">
     <uuid uuid="{981f8dc8-8881-4e9a-bd35-231c395d047e}"/>
     <names>
         <name lang="fr">ECO-Device</name>

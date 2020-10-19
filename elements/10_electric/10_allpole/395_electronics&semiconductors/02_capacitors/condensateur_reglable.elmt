@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="24" type="element">
+<definition height="30" version="0.5" link_type="simple" width="20" hotspot_x="10" hotspot_y="24" type="element">
     <uuid uuid="{8cac9436-039e-4acc-87b3-aded0a455be2}"/>
     <names>
         <name lang="de">Kondensator mit einstellbarer Kapazität</name>

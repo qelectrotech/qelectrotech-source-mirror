@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="20" hotspot_x="10" type="element" link_type="simple" hotspot_y="36" orientation="dyyy">
+<definition height="50" version="0.5" width="20" hotspot_x="10" type="element" link_type="simple" hotspot_y="36">
     <uuid uuid="{12af5626-710a-456b-a20c-4d61cb605184}"/>
     <names>
         <name lang="en">Silent air</name>

@@ -1,4 +1,4 @@
-<definition width="150" height="90" link_type="simple" orientation="dyyy" hotspot_x="15" version="0.5" hotspot_y="14" type="element">
+<definition width="150" height="90" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="14" type="element">
     <uuid uuid="{5aa35eb9-bf11-47b7-8846-bc89b31988fb}"/>
     <names>
         <name lang="it">OMRON 7H EC</name>

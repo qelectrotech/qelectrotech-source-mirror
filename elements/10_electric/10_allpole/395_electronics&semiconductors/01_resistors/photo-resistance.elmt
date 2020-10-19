@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="10" hotspot_y="28" type="element">
+<definition height="60" version="0.5" link_type="simple" width="30" hotspot_x="10" hotspot_y="28" type="element">
     <uuid uuid="{aaed5959-51ae-4569-9b4a-3fda93adf22e}"/>
     <names>
         <name lang="de">Photowiderstand</name>

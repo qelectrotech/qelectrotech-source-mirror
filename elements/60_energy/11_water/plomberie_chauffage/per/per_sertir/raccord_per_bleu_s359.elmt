@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="15" orientation="dyyy" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
+<definition height="30" hotspot_x="15" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
     <uuid uuid="{524b0eb7-a8e7-4c4a-a9f8-a621440fe7b0}"/>
     <names>
         <name lang="fr">Raccord PER à sertir</name>

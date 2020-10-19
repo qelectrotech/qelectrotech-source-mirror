@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="11" hotspot_y="34" width="80" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="11" hotspot_y="34" width="80" height="60" link_type="simple" type="element">
     <uuid uuid="{8a5a532d-620b-441d-8221-06b69811cdc6}"/>
     <names>
         <name lang="en">Pump hydraulic motor 3</name>

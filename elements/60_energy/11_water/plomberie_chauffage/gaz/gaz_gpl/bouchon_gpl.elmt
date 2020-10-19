@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="4" width="20" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="4" width="20" height="30" version="0.51">
     <uuid uuid="{f6415328-4889-4305-8519-8c77b28826ec}"/>
     <names>
         <name lang="fr">Bouchon GPL</name>

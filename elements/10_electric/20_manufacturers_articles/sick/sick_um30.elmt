@@ -1,4 +1,4 @@
-<definition type="element" width="180" version="0.70" orientation="dyyy" link_type="terminal" hotspot_y="7" hotspot_x="55" height="70">
+<definition type="element" width="180" version="0.70" link_type="terminal" hotspot_y="7" hotspot_x="55" height="70">
     <uuid uuid="{da065862-a109-4dca-8e0c-c9dd9b4aa1d4}"/>
     <names>
         <name lang="hu">SICK UM30</name>

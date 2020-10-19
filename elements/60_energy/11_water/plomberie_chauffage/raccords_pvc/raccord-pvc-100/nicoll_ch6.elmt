@@ -1,4 +1,4 @@
-<definition version="0.51" hotspot_y="50" width="70" height="70" type="element" hotspot_x="23" orientation="dyyy" link_type="simple">
+<definition version="0.51" hotspot_y="50" width="70" height="70" type="element" hotspot_x="23" link_type="simple">
     <uuid uuid="{9f3eee3e-143f-4702-8cdb-c9fee571f43b}"/>
     <names>
         <name lang="fr">Coude 67°30 PVC 100</name>

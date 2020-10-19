@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{127a162e-5bc2-4049-b9d2-5186e0a44bd4}"/>
     <names>
         <name lang="fr">Pompe tri</name>

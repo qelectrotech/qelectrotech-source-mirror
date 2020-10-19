@@ -1,4 +1,4 @@
-<definition width="190" hotspot_x="95" orientation="dyyy" type="element" link_type="simple" height="100" hotspot_y="56" version="0.51">
+<definition width="190" hotspot_x="95" type="element" link_type="simple" height="100" hotspot_y="56" version="0.51">
     <uuid uuid="{376721ca-9cf4-497c-8ada-770b50be41ab}"/>
     <names>
         <name lang="en">RSS260-D-ST (103003602)</name>

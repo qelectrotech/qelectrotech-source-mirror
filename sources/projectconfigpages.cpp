@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -46,22 +46,29 @@ ProjectConfigPage::ProjectConfigPage(QETProject *project, QWidget *parent) :
 /**
 	Destructor
 */
-ProjectConfigPage::~ProjectConfigPage() {
+ProjectConfigPage::~ProjectConfigPage()
+{
 }
 
 /**
 	@return the project being edited by this page
 */
-QETProject *ProjectConfigPage::project() const {
+QETProject *ProjectConfigPage::project() const
+{
 	return(m_project);
 }
 
 /**
+	@brief ProjectConfigPage::setProject
 	Set \a new_project as the project being edited by this page.
-	@param read_values True to read values from the project into widgets before setting them read only accordingly, false otherwise. Defaults to true.
+	@param new_project : True to read values from the project
+	into widgets before setting them read only accordingly,
+	false otherwise. Defaults to true.
+	@param read_values
 	@return the former project
 */
-QETProject *ProjectConfigPage::setProject(QETProject *new_project, bool read_values) {
+QETProject *ProjectConfigPage::setProject(QETProject *new_project,
+					  bool read_values) {
 	if (new_project == m_project) return(m_project);
 	
 	QETProject *former_project = m_project;
@@ -76,7 +83,8 @@ QETProject *ProjectConfigPage::setProject(QETProject *new_project, bool read_val
 /**
 	Apply the configuration after user input
 */
-void ProjectConfigPage::applyConf() {
+void ProjectConfigPage::applyConf()
+{
 	if (!m_project || m_project -> isReadOnly()) return;
 	applyProjectConf();
 }
@@ -86,7 +94,8 @@ void ProjectConfigPage::applyConf() {
 	readValuesFromProject() and adjustReadOnly() if a non-zero project has been
 	set. Typically, you should call this function in your subclass constructor.
 */
-void ProjectConfigPage::init() {
+void ProjectConfigPage::init()
+{
 	initWidgets();
 	initLayout();
 	if (m_project) {
@@ -111,27 +120,31 @@ ProjectMainConfigPage::ProjectMainConfigPage(QETProject *project, QWidget *paren
 /**
 	Destructor
 */
-ProjectMainConfigPage::~ProjectMainConfigPage() {
+ProjectMainConfigPage::~ProjectMainConfigPage()
+{
 }
 
 /**
 	@return the title for this page
 */
-QString ProjectMainConfigPage::title() const {
+QString ProjectMainConfigPage::title() const
+{
 	return(tr("Général", "configuration page title"));
 }
 
 /**
 	@return the icon for this page
 */
-QIcon ProjectMainConfigPage::icon() const {
+QIcon ProjectMainConfigPage::icon() const
+{
 	return(QET::Icons::Settings);
 }
 
 /**
 	Apply the configuration after user input
 */
-void ProjectMainConfigPage::applyProjectConf() {
+void ProjectMainConfigPage::applyProjectConf()
+{
 	bool modified_project = false;
 	
 	QString new_title = title_value_ -> text();
@@ -153,14 +166,16 @@ void ProjectMainConfigPage::applyProjectConf() {
 /**
 	@return the project title entered by the user
 */
-QString ProjectMainConfigPage::projectTitle() const {
+QString ProjectMainConfigPage::projectTitle() const
+{
 	return(title_value_ -> text());
 }
 
 /**
 	Initialize widgets displayed by the page.
 */
-void ProjectMainConfigPage::initWidgets() {
+void ProjectMainConfigPage::initWidgets()
+{
 	title_label_ = new QLabel(tr("Titre du projet :", "label when configuring"));
 	title_value_ = new QLineEdit();
 	title_information_ = new QLabel(tr("Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.", "informative label"));
@@ -178,7 +193,8 @@ void ProjectMainConfigPage::initWidgets() {
 /**
 	Initialize the layout of this page.
 */
-void ProjectMainConfigPage::initLayout() {
+void ProjectMainConfigPage::initLayout()
+{
 	QVBoxLayout *main_layout0 = new QVBoxLayout();
 	QHBoxLayout *title_layout0 = new QHBoxLayout();
 	title_layout0 -> addWidget(title_label_);
@@ -196,7 +212,8 @@ void ProjectMainConfigPage::initLayout() {
 /**
 	Read properties from the edited project then fill widgets with them.
 */
-void ProjectMainConfigPage::readValuesFromProject() {
+void ProjectMainConfigPage::readValuesFromProject()
+{
 	title_value_ -> setText(m_project -> title());
 	project_variables_ -> setContext(m_project -> projectProperties());
 }
@@ -204,8 +221,9 @@ void ProjectMainConfigPage::readValuesFromProject() {
 /**
 	Set the content of this page read only if the project is read only,
 	editable if the project is editable.
- */
-void ProjectMainConfigPage::adjustReadOnly() {
+*/
+void ProjectMainConfigPage::adjustReadOnly()
+{
 	bool is_read_only = m_project -> isReadOnly();
 	title_value_ -> setReadOnly(is_read_only);
 }
@@ -213,12 +231,13 @@ void ProjectMainConfigPage::adjustReadOnly() {
 //######################################################################################//
 
 /**
- * @brief ProjectAutoNumConfigPage::ProjectAutoNumConfigPage
- * Default constructor
- * @param project, project to edit
- * @param parent, parent widget
- */
-ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget *parent) :
+	@brief ProjectAutoNumConfigPage::ProjectAutoNumConfigPage
+	Default constructor
+	@param project : project to edit
+	@param parent : parent widget
+*/
+ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project,
+						    QWidget *parent) :
 	ProjectConfigPage(project, parent)
 {
 	initWidgets();
@@ -227,32 +246,35 @@ ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::title
- * Title of this config page
- * @return
- */
-QString ProjectAutoNumConfigPage::title() const {
-    return tr("Numérotation auto");
+	@brief ProjectAutoNumConfigPage::title
+	Title of this config page
+	@return
+*/
+QString ProjectAutoNumConfigPage::title() const
+{
+	return tr("Numérotation auto");
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::icon
- * Icon of this config pafe
- * @return
- */
-QIcon ProjectAutoNumConfigPage::icon() const {
+	@brief ProjectAutoNumConfigPage::icon
+	Icon of this config pafe
+	@return
+*/
+QIcon ProjectAutoNumConfigPage::icon() const
+{
 	return QIcon (QET::Icons::AutoNum);
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::applyProjectConf
- */
-void ProjectAutoNumConfigPage::applyProjectConf() {}
+	@brief ProjectAutoNumConfigPage::applyProjectConf
+*/
+void ProjectAutoNumConfigPage::applyProjectConf()
+{}
 
 /**
- * @brief ProjectAutoNumConfigPage::initWidgets
- * Init some widget of this page
- */
+	@brief ProjectAutoNumConfigPage::initWidgets
+	Init some widget of this page
+*/
 void ProjectAutoNumConfigPage::initWidgets()
 {
 	QTabWidget *tab_widget = new QTabWidget(this);
@@ -263,19 +285,19 @@ void ProjectAutoNumConfigPage::initWidgets()
 	
 		//Conductor tab
 	m_saw_conductor = new SelectAutonumW(1);
-    tab_widget->addTab(m_saw_conductor, tr("Conducteurs"));
+	tab_widget->addTab(m_saw_conductor, tr("Conducteurs"));
 	
 		//Element tab
 	m_saw_element = new SelectAutonumW(0);
-    tab_widget->addTab(m_saw_element, tr("Eléments"));
+	tab_widget->addTab(m_saw_element, tr("Eléments"));
 	
 		//Folio Tab
 	m_saw_folio = new SelectAutonumW(2);
-    tab_widget->addTab(m_saw_folio, tr("Folios"));
+	tab_widget->addTab(m_saw_folio, tr("Folios"));
 	
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
-    tab_widget->addTab(m_faw, tr("Numérotation auto des folios"));
+	tab_widget->addTab(m_faw, tr("Numérotation auto des folios"));
 	
 	QHBoxLayout *main_layout = new QHBoxLayout();
 	main_layout->addWidget(tab_widget);
@@ -283,9 +305,9 @@ void ProjectAutoNumConfigPage::initWidgets()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::readValuesFromProject
- * Read value stored on project, and update display
- */
+	@brief ProjectAutoNumConfigPage::readValuesFromProject
+	Read value stored on project, and update display
+*/
 void ProjectAutoNumConfigPage::readValuesFromProject()
 {
 		//Conductor Tab
@@ -305,16 +327,17 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::adjustReadOnly
- * set this config page disable if project is read only
- */
-void ProjectAutoNumConfigPage::adjustReadOnly() {
+	@brief ProjectAutoNumConfigPage::adjustReadOnly
+	set this config page disable if project is read only
+*/
+void ProjectAutoNumConfigPage::adjustReadOnly()
+{
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::buildConnections
- * setup some connections
- */
+	@brief ProjectAutoNumConfigPage::buildConnections
+	setup some connections
+*/
 void ProjectAutoNumConfigPage::buildConnections()
 {
 		//Management Tab
@@ -340,30 +363,30 @@ void ProjectAutoNumConfigPage::buildConnections()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContext_conductor
- * Display the current selected context for conductor
- * @param str, key of context stored in project
- */
+	@brief ProjectAutoNumConfigPage::updateContext_conductor
+	Display the current selected context for conductor
+	@param str : key of context stored in project
+*/
 void ProjectAutoNumConfigPage::updateContextConductor(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_conductor -> setContext(NumerotationContext());
 	else m_saw_conductor ->setContext(m_project->conductorAutoNum(str));
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContext_folio
- * Display the current selected context for folio
- * @param str, key of context stored in project
- */
+	@brief ProjectAutoNumConfigPage::updateContext_folio
+	Display the current selected context for folio
+	@param str : key of context stored in project
+*/
 void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_folio -> setContext(NumerotationContext());
 	else m_saw_folio ->setContext(m_project->folioAutoNum(str));
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContextElement
- * Display the current selected context for element
- * @param str, key of context stored in project
- */
+	@brief ProjectAutoNumConfigPage::updateContextElement
+	Display the current selected context for element
+	@param str : key of context stored in project
+*/
 void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 {
 	if (str == tr("Nom de la nouvelle numérotation"))
@@ -377,9 +400,9 @@ void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContextElement
- * Save the current displayed Element formula in project
- */
+	@brief ProjectAutoNumConfigPage::saveContextElement
+	Save the current displayed Element formula in project
+*/
 void ProjectAutoNumConfigPage::saveContextElement()
 {
 		// If the text is the default text "Name of new numerotation" save the edited context
@@ -408,9 +431,9 @@ void ProjectAutoNumConfigPage::saveContextElement()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::removeContextElement
- * Remove from project the current element numerotation context
- */
+	@brief ProjectAutoNumConfigPage::removeContextElement
+	Remove from project the current element numerotation context
+*/
 void ProjectAutoNumConfigPage::removeContextElement()
 {
 		//if default text, return
@@ -421,9 +444,9 @@ void ProjectAutoNumConfigPage::removeContextElement()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContext_conductor
- * Save the current displayed conductor context in project
- */
+	@brief ProjectAutoNumConfigPage::saveContext_conductor
+	Save the current displayed conductor context in project
+*/
 void ProjectAutoNumConfigPage::saveContextConductor()
 {
 		// If the text is the default text "Name of new numerotation" save the edited context
@@ -451,10 +474,11 @@ void ProjectAutoNumConfigPage::saveContextConductor()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContext_folio
- * Save the current displayed folio context in project
- */
-void ProjectAutoNumConfigPage::saveContextFolio() {
+	@brief ProjectAutoNumConfigPage::saveContext_folio
+	Save the current displayed folio context in project
+*/
+void ProjectAutoNumConfigPage::saveContextFolio()
+{
 	// If the text is the default text "Name of new numerotation" save the edited context
 	// With the the name "No name"
 	if (m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation")) {
@@ -474,10 +498,11 @@ void ProjectAutoNumConfigPage::saveContextFolio() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::applyAutoNum
- * Apply auto folio numbering, New Folios or Selected Folios
- */
-void ProjectAutoNumConfigPage::applyAutoNum() {
+	@brief ProjectAutoNumConfigPage::applyAutoNum
+	Apply auto folio numbering, New Folios or Selected Folios
+*/
+void ProjectAutoNumConfigPage::applyAutoNum()
+{
 
 	if (m_faw->newFolios){
 		int foliosRemaining = m_faw->newFoliosNumber();
@@ -498,10 +523,11 @@ void ProjectAutoNumConfigPage::applyAutoNum() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::applyAutoManagement
- * Apply Management Options in Selected Folios
- */
-void ProjectAutoNumConfigPage::applyManagement() {
+	@brief ProjectAutoNumConfigPage::applyAutoManagement
+	Apply Management Options in Selected Folios
+*/
+void ProjectAutoNumConfigPage::applyManagement()
+{
 	int from;
 	int to;
 	//Apply to Entire Project
@@ -592,10 +618,11 @@ void ProjectAutoNumConfigPage::applyManagement() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::removeContext
- * Remove from project the current conductor numerotation context
- */
-void ProjectAutoNumConfigPage::removeContextConductor() {
+	@brief ProjectAutoNumConfigPage::removeContext
+	Remove from project the current conductor numerotation context
+*/
+void ProjectAutoNumConfigPage::removeContextConductor()
+{
 	//if default text, return
 	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText() );
@@ -604,10 +631,11 @@ void ProjectAutoNumConfigPage::removeContextConductor() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::removeContext_folio
- * Remove from project the current folio numerotation context
- */
-void ProjectAutoNumConfigPage::removeContextFolio() {
+	@brief ProjectAutoNumConfigPage::removeContext_folio
+	Remove from project the current folio numerotation context
+*/
+void ProjectAutoNumConfigPage::removeContextFolio()
+{
 	//if default text, return
 	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeFolioAutoNum (m_saw_folio->contextComboBox() -> currentText() );
@@ -616,11 +644,11 @@ void ProjectAutoNumConfigPage::removeContextFolio() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::changeToTab
- * @param tab index
- * Change to Selected Tab
- */
+	@brief ProjectAutoNumConfigPage::changeToTab
+	@param i index
+	Change to Selected Tab
+*/
 void ProjectAutoNumConfigPage::changeToTab(int i)
 {
-	Q_UNUSED(i);
+	qDebug()<<"Q_UNUSED"<<i;
 }

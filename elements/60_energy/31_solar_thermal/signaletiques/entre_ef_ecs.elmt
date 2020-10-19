@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="20" hotspot_y="11">
     <uuid uuid="{370e43cc-a25d-4aff-be2c-090acdc9da8b}"/>
     <names>
         <name lang="cs">Přívod studené užitkové vody</name>

@@ -1,0 +1,43 @@
+<definition version="0.80" hotspot_y="165" height="170" type="element" link_type="master" hotspot_x="5" width="130">
+    <uuid uuid="{86c35f36-8f09-44eb-a432-b064f89b8f6a}"/>
+    <names>
+        <name lang="fr">Divers 32 A</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">protection</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect rx="0" y="-85" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="85" ry="0" width="120"/>
+        <line y2="-15" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-15"/>
+        <dynamic_text text_from="UserText" frame="false" y="-44" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="29" uuid="{390dea94-e123-49c8-8276-32e1a892a643}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="6" text_width="-1">
+            <text>32</text>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" frame="false" y="-63" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="-2" uuid="{108049b5-3b23-4a33-912a-a82e4fd635da}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="7" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="-18" text=" kA C" rotation="0" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-45" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-45"/>
+        <line y2="-65" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-65"/>
+        <text y="-30" text="A" rotation="0" x="66" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text y="-2" text=" mm²" rotation="0" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text text_from="UserText" frame="false" y="-81.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="-2" uuid="{68f3e849-c264-429a-9881-83aaed9d814a}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="22" text_width="-1">
+            <text>Désignation</text>
+        </dynamic_text>
+        <line y2="-110" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="60" x2="30" y1="-150"/>
+        <line y2="-110" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="30" x2="90" y1="-110"/>
+        <line y2="-110" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="60" x2="90" y1="-150"/>
+        <dynamic_text text_from="UserText" frame="false" y="-13.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="28" uuid="{a092ffb7-6e6b-4ee7-99fe-131245ad9687}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="32" text_width="-1">
+            <text>3 G 6.0</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" frame="false" y="-28.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="28" uuid="{11499895-64aa-44e5-ac6b-142326f3360d}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="34" text_width="-1">
+            <text>4.5</text>
+        </dynamic_text>
+        <terminal y="-160" x="50" uuid="{3867082f-2162-419d-bf2b-00999ed6a7b3}" name="" orientation="n"/>
+        <terminal y="-160" x="70" uuid="{40cea879-afe2-4989-9c15-ac884c83082e}" name="" orientation="n"/>
+    </description>
+</definition>

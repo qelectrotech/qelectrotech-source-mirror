@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,11 +25,11 @@
 #include "qtextorientationspinboxwidget.h"
 
 /**
- * @brief RotateTextsCommand::RotateTextsCommand
- * @param diagram : Apply the rotation to the selected texts and group of texts
- * of diagram at construction time. 
- * @param parent : undo parent
- */
+	@brief RotateTextsCommand::RotateTextsCommand
+	@param diagram : Apply the rotation to the selected texts and group of texts
+	of diagram at construction time. 
+	@param parent : undo parent
+*/
 RotateTextsCommand::RotateTextsCommand(Diagram *diagram, QUndoCommand *parent) :
 QUndoCommand(parent),
 m_diagram(diagram)
@@ -74,10 +74,8 @@ m_diagram(diagram)
 		for(ElementTextItemGroup *grp : groups_list)
 			setupAnimation(grp, "rotation", grp->rotation(), m_rotation);
 	}
-#if QT_VERSION >= 0x050900
 	else
 		setObsolete(true);
-#endif
 	
 }
 
@@ -132,10 +130,8 @@ void RotateTextsCommand::openDialog()
 	
 	if (ori_text_dialog.exec() == QDialog::Accepted)
 		m_rotation = ori_widget->orientation();
-#if QT_VERSION >= 0x050900
 	else
 		setObsolete(true);
-#endif
 }
 
 void RotateTextsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end)

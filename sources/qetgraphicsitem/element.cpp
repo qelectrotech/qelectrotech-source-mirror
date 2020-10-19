@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -23,6 +23,7 @@
 #include "elementprovider.h"
 #include "diagramposition.h"
 #include "terminal.h"
+#include "terminaldata.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "elementpropertieswidget.h"
 #include "numerotationcontextcommands.h"
@@ -32,22 +33,30 @@
 #include "elementtextitemgroup.h"
 #include "elementpicturefactory.h"
 #include "iostream"
+#include <QDomElement>
 
 class ElementXmlRetroCompatibility
 {
 	friend class Element;
 
-	static void loadSequential(const QDomElement &dom_element, const QString& seq, QStringList* list)
+	static void loadSequential(
+			const QDomElement &dom_element,
+			const QString& seq,
+			QStringList* list)
 	{
 		int i = 0;
-		while (!dom_element.attribute(seq + QString::number(i+1)).isEmpty())
+		while (!dom_element.attribute(seq +
+						  QString::number(i+1)).isEmpty())
 		{
-				list->append(dom_element.attribute(seq + QString::number(i+1)));
+				list->append(dom_element.attribute(
+							 seq +
+							 QString::number(i+1)));
 				i++;
 		}
 	}
 
-	static void loadSequential(const QDomElement &dom_element, Element *element)
+	static void loadSequential(
+			const QDomElement &dom_element, Element *element)
 	{
 		autonum::sequentialNumbers sn;
 
@@ -63,12 +72,17 @@ class ElementXmlRetroCompatibility
 };
 
 /**
- * @brief Element::Element
- * @param location, location of this element
- * @param parent, parent graphics item
- * @param state, state of the instanciation
- */
-Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *state, kind link_type) :
+	@brief Element::Element
+	@param location : location of this element
+	@param parent : parent graphics item
+	@param state : state of the instanciation
+	@param link_type
+*/
+Element::Element(
+		const ElementsLocation &location,
+		QGraphicsItem *parent,
+		int *state,
+		kind link_type) :
 	QetGraphicsItem(parent),
 	m_link_type (link_type),
 	m_location (location)
@@ -92,14 +106,16 @@ Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *s
 	if (state) {
 		*state = 0;
 	}
-	
+
 	setPrefix(autonum::elementPrefixForLocation(location));
 	m_uuid = QUuid::createUuid();
 	setZValue(10);
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsMovable
+		 | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
-	
-	connect(this, &Element::rotationChanged, [this]() {
+
+	connect(this, &Element::rotationChanged, [this]()
+{
 		for(QGraphicsItem *qgi : childItems())
 		{
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
@@ -109,8 +125,8 @@ Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *s
 }
 
 /**
- * @brief Element::~Element
- */
+	@brief Element::~Element
+*/
 Element::~Element()
 {
 	qDeleteAll (m_dynamic_text_list);
@@ -118,27 +134,28 @@ Element::~Element()
 }
 
 /**
- * @brief Element::terminals
- * @return the list of terminals of this element.
- */
-QList<Terminal *> Element::terminals() const {
+	@brief Element::terminals
+	@return the list of terminals of this element.
+*/
+QList<Terminal *> Element::terminals() const
+{
 	return m_terminals;
 }
 
 /**
- * @brief Element::conductors
- * @return The list of conductors docked to this element
- * the list is sorted according to the position of the terminal where the conductor is docked
- * from top to bottom, and left to right.
- */
+	@brief Element::conductors
+	@return The list of conductors docked to this element
+	the list is sorted according to the position of the terminal where the conductor is docked
+	from top to bottom, and left to right.
+*/
 QList<Conductor *> Element::conductors() const
 {
 	QList<Conductor *> conductors;
-	
+
 	for (Terminal *t : m_terminals) {
 		conductors << t -> conductors();
 	}
-	
+
 	return(conductors);
 }
 
@@ -148,9 +165,13 @@ void Element::editProperty()
 	{
 		ElementPropertiesWidget *epw = new ElementPropertiesWidget(this);
 		PropertiesEditorDialog dialog(epw, QApplication::activeWindow());
-		connect(epw, &ElementPropertiesWidget::findEditClicked, &dialog, &QDialog::reject);
-			//Must be windowModal, else when user do a drag and drop
-			//with the "text" tab of ElementPropertiesWidget, the ui freeze, until user press escape key
+		connect(epw,
+			&ElementPropertiesWidget::findEditClicked,
+			&dialog,
+			&QDialog::reject);
+		//Must be windowModal, else when user do a drag and drop
+		//with the "text" tab of ElementPropertiesWidget,
+		//the ui freeze, until user press escape key
 		dialog.setWindowModality(Qt::WindowModal);
 		dialog.exec();
 	}
@@ -159,16 +180,17 @@ void Element::editProperty()
 /**
 	@param hl true pour mettre l'element en evidence, false sinon
 */
-void Element::setHighlighted(bool hl) {
+void Element::setHighlighted(bool hl)
+{
 	m_must_highlight = hl;
 	update();
 }
 
 /**
- * @brief Element::displayHelpLine
- * Display the help line of each terminal if b is true
- * @param b
- */
+	@brief Element::displayHelpLine
+	Display the help line of each terminal if b is true
+	@param b
+*/
 void Element::displayHelpLine(bool b)
 {
 	foreach (Terminal *t, terminals())
@@ -176,23 +198,33 @@ void Element::displayHelpLine(bool b)
 }
 
 /**
- * @brief Element::paint
- * @param painter
- * @param options
- * @param widget
- */
-void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *)
+	@brief Element::paint
+	@param painter
+	@param options
+*/
+void Element::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options,
+		QWidget *)
 {
 	if (m_must_highlight) {
 		drawHighlight(painter, options);
 	}
-	
-	if (options && options -> levelOfDetail < 1.0) {
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	if (options && options -> levelOfDetail < 1.0)
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
+#endif
+	{
 		painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
 		painter->drawPicture(0, 0, m_picture);
 	}
-	
+
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
 		drawSelection(painter, options);
@@ -202,18 +234,20 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 /**
 	@return Le rectangle delimitant le contour de l'element
 */
-QRectF Element::boundingRect() const {
-	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()), dimensions));
+QRectF Element::boundingRect() const
+{
+	return(QRectF(QPointF(-hotspot_coord.x(), -hotspot_coord.y()),
+			  dimensions));
 }
 
 /**
- * @brief Element::setSize
- * Define the size of the element.
- * The size must be a multiple of 10.
- * If not, the dimensions indicated will be arrrondies to higher tens.
- * @param wid
- * @param hei 
- */
+	@brief Element::setSize
+	Define the size of the element.
+	The size must be a multiple of 10.
+	If not, the dimensions indicated will be arrrondies to higher tens.
+	@param wid
+	@param hei
+*/
 void Element::setSize(int wid, int hei)
 {
 	prepareGeometryChange();
@@ -226,7 +260,8 @@ void Element::setSize(int wid, int hei)
 /**
 	@return la taille de l'element sur le schema
 */
-QSize Element::size() const {
+QSize Element::size() const
+{
 	return(dimensions);
 }
 
@@ -235,7 +270,8 @@ QSize Element::size() const {
 	Necessite que la taille ait deja ete definie
 	@param hs Coordonnees du hotspot
 */
-QPoint Element::setHotspot(QPoint hs) {
+QPoint Element::setHotspot(QPoint hs)
+{
 	// la taille doit avoir ete definie
 	prepareGeometryChange();
 	if (dimensions.isNull()) hotspot_coord = QPoint(0, 0);
@@ -251,15 +287,17 @@ QPoint Element::setHotspot(QPoint hs) {
 /**
 	@return Le hotspot courant de l'element
 */
-QPoint Element::hotspot() const {
+QPoint Element::hotspot() const
+{
 	return(hotspot_coord);
 }
 
 /**
- * @brief Element::pixmap
- * @return the pixmap of this element
- */
-QPixmap Element::pixmap() {
+	@brief Element::pixmap
+	@return the pixmap of this element
+*/
+QPixmap Element::pixmap()
+{
 	return ElementPictureFactory::instance()->pixmap(m_location);
 }
 
@@ -270,7 +308,10 @@ QPixmap Element::pixmap() {
 	@param painter Le QPainter a utiliser pour dessiner les axes
 	@param options Les options de style a prendre en compte
 */
-void Element::drawAxes(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+void Element::drawAxes(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options)
+{
 	Q_UNUSED(options);
 	painter -> setPen(Qt::blue);
 	painter -> drawLine(0, 0, 10, 0);
@@ -288,8 +329,11 @@ void Element::drawAxes(QPainter *painter, const QStyleOptionGraphicsItem *option
 	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
 	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
- */
-void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+*/
+void Element::drawSelection(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options)
+{
 	Q_UNUSED(options);
 	painter -> save();
 	// Annulation des renderhints
@@ -303,7 +347,9 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	t.setCosmetic(true);
 	painter -> setPen(t);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1),
+				   10,
+				   10);
 	painter -> restore();
 }
 
@@ -311,12 +357,16 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
 	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
- */
-void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+*/
+void Element::drawHighlight(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *options)
+{
 	Q_UNUSED(options);
 	painter -> save();
-	
-	qreal gradient_radius = qMin(boundingRect().width(), boundingRect().height()) / 2.0;
+
+	qreal gradient_radius = qMin(boundingRect().width(),
+					 boundingRect().height()) / 2.0;
 	QRadialGradient gradient(
 		boundingRect().center(),
 		gradient_radius,
@@ -325,33 +375,36 @@ void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *o
 	gradient.setColorAt(0.0, QColor::fromRgb(69, 137, 255, 255));
 	gradient.setColorAt(1.0, QColor::fromRgb(69, 137, 255, 0));
 	QBrush brush(gradient);
-	
+
 	painter -> setPen(Qt::NoPen);
 	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1),
+				   10,
+				   10);
 	painter -> restore();
 }
 
 /**
- * @brief Element::buildFromXml
- * Build this element from an xml description
- * @param xml_def_elmt
- * @param state
- * Optional pointer which define the status of build
- * 0 - evreything all right
- * 4 - xml isn't a "definition"
- * 5 - attribute of the definition isn't present or valid
- * 6 - the definition is empty
- * 7 - parsing of a xml node who describe a graphical part failed.
- * 8 - No part of the drawing could be loaded
- * @return 
- */
+	@brief Element::buildFromXml
+	Build this element from an xml description
+	@param xml_def_elmt
+	@param state
+	Optional pointer which define the status of build
+	0 - evreything all right
+	4 - xml isn't a "definition"
+	5 - attribute of the definition isn't present or valid
+	6 - the definition is empty
+	7 - parsing of a xml node who describe a graphical part failed.
+	8 - No part of the drawing could be loaded
+	@return
+*/
 bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 {
 	m_state = QET::GIBuildingFromXml;
 
-	if (xml_def_elmt.tagName() != "definition" || xml_def_elmt.attribute("type") != "element")
+	if (xml_def_elmt.tagName() != "definition"
+			|| xml_def_elmt.attribute("type") != "element")
 	{
 		if (state) *state = 4;
 		m_state = QET::GIOK;
@@ -362,7 +415,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	if (xml_def_elmt.hasAttribute("version"))
 	{
 		bool conv_ok;
-		qreal element_version = xml_def_elmt.attribute("version").toDouble(&conv_ok);
+		qreal element_version = xml_def_elmt.attribute(
+					"version").toDouble(&conv_ok);
 		if (conv_ok && QET::version.toDouble() < element_version)
 		{
 			std::cerr << qPrintable(
@@ -401,43 +455,55 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	setToolTip(name());
 
 		//load kind informations
-	m_kind_informations.fromXml(xml_def_elmt.firstChildElement("kindInformations"), "kindInformation");
+	m_kind_informations.fromXml(
+			xml_def_elmt.firstChildElement("kindInformations"),
+			"kindInformation");
 		//load element information
-	m_element_informations.fromXml(xml_def_elmt.firstChildElement("elementInformations"), "elementInformation");
+	m_element_informations.fromXml(
+			xml_def_elmt.firstChildElement("elementInformations"),
+			"elementInformation");
 
 		//scroll of the Children of the Definition: Parts of the Drawing
 	int parsed_elements_count = 0;
-	for (QDomNode node = xml_def_elmt.firstChild() ; !node.isNull() ; node = node.nextSibling())
+	for (QDomNode node = xml_def_elmt.firstChild() ;
+		 !node.isNull() ;
+		 node = node.nextSibling())
 	{
 		QDomElement elmts = node.toElement();
 		if (elmts.isNull())
 			continue;
-		
+
 		if (elmts.tagName() == "description")
 		{
 				//Minor workaround to find if there is a "input" tagg as label.
 				//If not, we set the tagg "label" to the first "input.
 			QList <QDomElement> input_field;
 			bool have_label = false;
-			for (QDomElement input_node = node.firstChildElement("input") ; !input_node.isNull() ; input_node = input_node.nextSiblingElement("input"))
+			for (QDomElement input_node = node.firstChildElement("input") ;
+				 !input_node.isNull() ;
+				 input_node = input_node.nextSiblingElement("input"))
 			{
 				if (!input_node.isNull())
 				{
 					input_field << input_node;
-					if (input_node.attribute("tagg", "none") == "label")
+					if (input_node.attribute("tagg", "none")
+							== "label")
 						have_label = true;
 				}
 			}
 			if(!have_label && !input_field.isEmpty())
-				input_field.first().setAttribute("tagg", "label");
-			
+				input_field.first().setAttribute("tagg",
+								 "label");
+
 				//Parse the definition
-			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling())
+			for (QDomNode n = node.firstChild() ;
+				 !n.isNull() ;
+				 n = n.nextSibling())
 			{
 				QDomElement qde = n.toElement();
 				if (qde.isNull())
 					continue;
-				
+
 				if (parseElement(qde)) {
 					++ parsed_elements_count;
 				}
@@ -453,8 +519,10 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	}
 
 	ElementPictureFactory *epf = ElementPictureFactory::instance();
-	epf->getPictures(m_location, const_cast<QPicture&>(m_picture), const_cast<QPicture&>(m_low_zoom_picture));
-	
+	epf->getPictures(m_location,
+			 const_cast<QPicture&>(m_picture),
+			 const_cast<QPicture&>(m_low_zoom_picture));
+
 	if(!m_picture.isNull())
 		++ parsed_elements_count;
 
@@ -476,11 +544,11 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 }
 
 /**
- * @brief Element::parseElement
- * Parse the element of the xml description of this element
- * @param dom
- * @return 
- */
+	@brief Element::parseElement
+	Parse the element of the xml description of this element
+	@param dom
+	@return
+*/
 bool Element::parseElement(const QDomElement &dom)
 {
 	if      (dom.tagName() == "terminal")     return(parseTerminal(dom));
@@ -490,13 +558,13 @@ bool Element::parseElement(const QDomElement &dom)
 }
 
 /**
- * @brief Element::parseInput
- * Parse the input (old text field)
- * the parsed input are converted to dynamic text field, this function
- * is only here to keep compatibility with old text.
- * @param dom_element
- * @return 
- */
+	@brief Element::parseInput
+	Parse the input (old text field)
+	the parsed input are converted to dynamic text field, this function
+	is only here to keep compatibility with old text.
+	@param dom_element
+	@return
+*/
 bool Element::parseInput(const QDomElement &dom_element)
 {
 	qreal pos_x, pos_y;
@@ -511,27 +579,34 @@ bool Element::parseInput(const QDomElement &dom_element)
 		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
 		deti->setText(dom_element.attribute("text", "_"));
 		QFont font = deti->font();
-		font.setPointSize(dom_element.attribute("size", QString::number(9)).toInt());
+		font.setPointSize(dom_element.attribute("size",
+							QString::number(9)).toInt());
 		deti->setFont(font);
-		deti->setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
+		deti->setRotation(dom_element.attribute("rotation",
+							QString::number(0)).toDouble());
 
 		if(dom_element.attribute("tagg", "none") != "none")
 		{
 			deti->setTextFrom(DynamicElementTextItem::ElementInfo);
 			deti->setInfoName(dom_element.attribute("tagg"));
 		}
-		
+
 			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
 			//The origin transformation point of ElementTextItem is the middle of left edge, and so by definition, change with the size of the font
 			//We need to use a QTransform to find the pos of this text from the saved pos of text item
 		QTransform transform;
 			//First make the rotation
-		transform.rotate(dom_element.attribute("rotation", "0").toDouble());
-		QPointF pos = transform.map(QPointF(0, -deti->boundingRect().height()/2));
+		transform.rotate(dom_element.attribute("rotation",
+							   "0").toDouble());
+		QPointF pos = transform.map(
+					QPointF(0,
+						-deti->boundingRect().height()/2));
 		transform.reset();
 			//Second translate to the pos
-		QPointF p(dom_element.attribute("x", QString::number(0)).toDouble(),
-				  dom_element.attribute("y", QString::number(0)).toDouble());
+		QPointF p(dom_element.attribute("x",
+						QString::number(0)).toDouble(),
+			  dom_element.attribute("y",
+						QString::number(0)).toDouble());
 		transform.translate(p.x(), p.y());
 		deti->setPos(transform.map(pos));
 		m_converted_text_from_xml_description.insert(deti, p);
@@ -540,18 +615,19 @@ bool Element::parseInput(const QDomElement &dom_element)
 }
 
 /**
- * @brief Element::parseDynamicText
- * Create the dynamic text field describ in @dom_element
- * @param dom_element
- * @return 
- */
-DynamicElementTextItem *Element::parseDynamicText(const QDomElement &dom_element)
+	@brief Element::parseDynamicText
+	Create the dynamic text field describ in dom_element
+	@param dom_element
+	@return
+*/
+DynamicElementTextItem *Element::parseDynamicText(
+		const QDomElement &dom_element)
 {
 	DynamicElementTextItem *deti = new DynamicElementTextItem(this);
 		//Because the xml description of a .elmt file is the same as how a dynamic text field is save to xml in a .qet file
 		//wa call fromXml, we just change the tagg name (.elmt = dynamic_text, .qet = dynamic_elmt_text)
 		//and the uuid (because the uuid, is the uuid of the descritpion and not the uuid of instantiated dynamic text field)
-	
+
 	QDomElement dom(dom_element.cloneNode(true).toElement());
 	dom.setTagName(DynamicElementTextItem::xmlTagName());
 	deti->fromXml(dom);
@@ -560,47 +636,35 @@ DynamicElementTextItem *Element::parseDynamicText(const QDomElement &dom_element
 	return deti;
 }
 
+/*!
+	\brief Element::parseTerminal
+	Parse partTerminal from xml structure
+	\param dom_element
+	\return
+*/
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
-	qreal terminalx, terminaly;
-	Qet::Orientation terminalo;
-	if (!QET::attributeIsAReal(dom_element, QString("x"), &terminalx)) {
-		return(nullptr);
+	TerminalData* data = new TerminalData();
+	if (!data->fromXml(dom_element)) {
+		delete data;
+		return nullptr;
 	}
-	if (!QET::attributeIsAReal(dom_element, QString("y"), &terminaly)) {
-		return(nullptr);
-	}
-	if (!dom_element.hasAttribute("orientation")) {
-		return(nullptr);
-	}
-	if (dom_element.attribute("orientation") == "n") {
-		terminalo = Qet::North;
-	}
-	else if (dom_element.attribute("orientation") == "s") {
-		terminalo = Qet::South;
-	}
-	else if (dom_element.attribute("orientation") == "e") {
-		terminalo = Qet::East;
-	}
-	else if (dom_element.attribute("orientation") == "w") {
-		terminalo = Qet::West;
-	}
-	else {
-		return(nullptr);
-	}
-	
-	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
+
+	Terminal *new_terminal = new Terminal(data, this);
 	m_terminals << new_terminal;
-	
+
 		//Sort from top to bottom and left to rigth
-	std::sort(m_terminals.begin(), m_terminals.end(), [](Terminal *a, Terminal *b)
+	std::sort(m_terminals.begin(),
+		  m_terminals.end(),
+		  [](Terminal *a,
+		  Terminal *b)
 	{
 		if(a->dockConductor().y() == b->dockConductor().y())
 			return (a->dockConductor().x() < b->dockConductor().x());
 		else
 			return (a->dockConductor().y() < b->dockConductor().y());
 	});
-	
+
 	return(new_terminal);
 }
 
@@ -612,17 +676,17 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 bool Element::valideXml(QDomElement &e) {
 	// verifie le nom du tag
 	if (e.tagName() != "element") return(false);
-	
+
 	// verifie la presence des attributs minimaux
 	if (!e.hasAttribute("type")) return(false);
 	if (!e.hasAttribute("x"))    return(false);
 	if (!e.hasAttribute("y"))    return(false);
-	
+
 	bool conv_ok;
 	// parse l'abscisse
 	e.attribute("x").toDouble(&conv_ok);
 	if (!conv_ok) return(false);
-	
+
 	// parse l'ordonnee
 	e.attribute("y").toDouble(&conv_ok);
 	if (!conv_ok) return(false);
@@ -630,19 +694,21 @@ bool Element::valideXml(QDomElement &e) {
 }
 
 /**
- * @brief Element::fromXml
- * Import the parameters of this element from a xml document.
- * When call this function ensure this element is already in a scene, because
- * the dynamic text item and element text item group (in the xml file) are created in this function
- * and need a diagram for create their Xref, when this element is linked to another.
- * If not the Xref can be not displayed, until the next call of update Xref of the group or text item.
- * @param e : the dom element where the parameter is stored
- * @param table_id_adr : Reference to the mapping table between IDs of the XML file
- * and the addresses in memory. If the import succeeds, it must be add the right couples (id, address).
- * @param handle_inputs_rotation : apply the rotation of this element to his child text
- * @return 
- */
-bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation)
+	@brief Element::fromXml
+	Import the parameters of this element from a xml document.
+	When call this function ensure this element is already in a scene, because
+	the dynamic text item and element text item group (in the xml file) are created in this function
+	and need a diagram for create their Xref, when this element is linked to another.
+	If not the Xref can be not displayed, until the next call of update Xref of the group or text item.
+	@param e : the dom element where the parameter is stored
+	@param table_id_adr : Reference to the mapping table between IDs of the XML file
+	and the addresses in memory. If the import succeeds, it must be add the right couples (id, address).
+	@return
+*/
+bool Element::fromXml(
+		QDomElement &e,
+		QHash<int,
+		Terminal *> &table_id_adr)
 {
 	m_state = QET::GILoadingFromXml;
 	/*
@@ -650,10 +716,11 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		ce recensement servira lors de la mise en place des fils
 	*/
 	QList<QDomElement> liste_terminals;
-	foreach(QDomElement qde, QET::findInDomElement(e, "terminals", "terminal")) {
+	foreach(QDomElement qde,
+			QET::findInDomElement(e, "terminals", "terminal")) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
-	
+
 	QHash<int, Terminal *> priv_id_adr;
 	int terminals_non_trouvees = 0;
 	foreach(QGraphicsItem *qgi, childItems()) {
@@ -661,7 +728,10 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			bool terminal_trouvee = false;
 			foreach(QDomElement qde, liste_terminals) {
 				if (p -> fromXml(qde)) {
-					priv_id_adr.insert(qde.attribute("id").toInt(), p);
+					priv_id_adr.insert(
+							qde.attribute(
+								"id").toInt(),
+							p);
 					terminal_trouvee = true;
 					// We used to break here, because we did not expect
 					// several terminals to share the same position.
@@ -671,12 +741,12 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			if (!terminal_trouvee) ++ terminals_non_trouvees;
 		}
 	}
-	
+
 	if (terminals_non_trouvees > 0)
 	{
 		m_state = QET::GIOK;
 		return(false);
-	} 
+	}
 	else
 	{
 		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
@@ -691,14 +761,24 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		}
 		// copie des associations id / adr
 		foreach(int id_trouve, priv_id_adr.keys()) {
-			table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
+			table_id_adr.insert(id_trouve,
+						priv_id_adr.value(id_trouve));
 		}
 	}
 
 	//load uuid of connected elements
-	QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
-	foreach (QDomElement qdo, uuid_list) tmp_uuids_link << qdo.attribute("uuid");
-	
+	QList <QDomElement> uuid_list = QET::findInDomElement(e,
+								  "links_uuids",
+								  "link_uuid");
+	foreach (QDomElement qdo, uuid_list)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		tmp_uuids_link << qdo.attribute("uuid");
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+		qDebug()<<"Help code for QT 6 or later";
+#endif
 	//uuid of this element
 	m_uuid= QUuid(e.attribute("uuid", QUuid::createUuid().toString()));
 
@@ -709,101 +789,124 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	m_freeze_label = fl == "false"? false : true;
 
 		//Load Sequential Values
-	if (e.hasAttribute("sequ_1") || e.hasAttribute("sequf_1") || e.hasAttribute("seqt_1") || e.hasAttribute("seqtf_1") || e.hasAttribute("seqh_1") || e.hasAttribute("sequf_1"))
+	if (e.hasAttribute("sequ_1")
+			|| e.hasAttribute("sequf_1")
+			|| e.hasAttribute("seqt_1")
+			|| e.hasAttribute("seqtf_1")
+			|| e.hasAttribute("seqh_1")
+			|| e.hasAttribute("sequf_1"))
 		ElementXmlRetroCompatibility::loadSequential(e, this);
 	else
 		m_autoNum_seq.fromXml(e.firstChildElement("sequentialNumbers"));
 
 		//Position and selection.
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
-	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	QGraphicsObject::setPos(e.attribute("x").toDouble(),
+				e.attribute("y").toDouble());
 	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	
+	setFlags(QGraphicsItem::ItemIsMovable
+		 | QGraphicsItem::ItemIsSelectable);
+
 	// orientation
 	bool conv_ok;
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = 0;
-	if (handle_inputs_rotation) {
-		setRotation(rotation() + (90*read_ori));
-	} else {
-		setRotation(90*read_ori);
+	if (!conv_ok || read_ori < 0 || read_ori > 3) {
+		read_ori = 0;
 	}
-	
+	setRotation(90*read_ori);
+
 		//Befor load the dynamic text field,
 		//we remove the dynamic text field created from the description of this element, to avoid doublons.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		delete deti;
 	m_dynamic_text_list.clear();
-    
+
 		//************************//
 		//***Dynamic texts item***//
 		//************************//
-	for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTagName()))
-    {
-        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
-        addDynamicTextItem(deti);
-        deti->fromXml(qde);
-    }
-	
+	for (const QDomElement& qde : QET::findInDomElement(
+			 e,
+			 "dynamic_texts",
+			 DynamicElementTextItem::xmlTagName()))
+	{
+		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+		addDynamicTextItem(deti);
+		deti->fromXml(qde);
+	}
 
 		//************************//
 		//***Element texts item***//
 		//************************//
 	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
-	
+
 		//First case, we check for the text item converted to dynamic text item
-	const QList <DynamicElementTextItem *> conv_deti_list = m_converted_text_from_xml_description.keys();
-	QList <DynamicElementTextItem *> successfully_converted; 
+	const QList <DynamicElementTextItem *> conv_deti_list =
+			m_converted_text_from_xml_description.keys();
+	QList <DynamicElementTextItem *> successfully_converted;
 	const QList <QDomElement> dom_inputs = inputs;
-	
+
 	for (DynamicElementTextItem *deti : conv_deti_list)
 	{
 		for(const QDomElement& dom_input : dom_inputs)
 		{
-				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
-				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element
-				//that mean this is the good text
-			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()), m_converted_text_from_xml_description.value(deti).x()) &&
-				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()), m_converted_text_from_xml_description.value(deti).y()))
+			//we use the same method used in ElementTextItem::fromXml
+			//to compar and know if the input dom element is for one of the text stored.
+			//The comparaison is made from the text position :
+			//if the position of the text is the same as the position stored in 'input' dom element
+			//that mean this is the good text
+			if (qFuzzyCompare(qreal(dom_input.attribute("x").toDouble()),
+					  m_converted_text_from_xml_description.value(deti).x()) &&
+				qFuzzyCompare(qreal(dom_input.attribute("y").toDouble()),
+						  m_converted_text_from_xml_description.value(deti).y()))
 			{
 					//Once again this 'if', is only for retrocompatibility with old old old project
-					//when element text with tagg "label" is not null, but the element information "label" is. 
-				if((deti->textFrom() == DynamicElementTextItem::ElementInfo) && (deti->infoName() == "label"))
-					m_element_informations.addValue("label", dom_input.attribute("text"));
-				
+					//when element text with tagg "label" is not null, but the element information "label" is.
+				if((deti->textFrom() == DynamicElementTextItem::ElementInfo)
+						&& (deti->infoName() == "label"))
+					m_element_informations.addValue(
+								"label",
+								dom_input.attribute("text"));
+
 				deti->setText(dom_input.attribute("text"));
-				
+
 				qreal rotation = deti->rotation();
 				QPointF xml_pos = m_converted_text_from_xml_description.value(deti);
-				
+
 				if (dom_input.attribute("userrotation").toDouble())
 					rotation = dom_input.attribute("userrotation").toDouble();
-				
+
 				if (dom_input.hasAttribute("userx"))
 					xml_pos.setX(dom_input.attribute("userx").toDouble());
 				if(dom_input.hasAttribute("usery"))
 					xml_pos.setY(dom_input.attribute("usery", "0").toDouble());
-				
-					//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
-					//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
-					//We need to use a QTransform to find the pos of this text from the saved pos of text item
-				
+
+				//the origin transformation point of PartDynamicTextField
+				//is the top left corner, no matter the font size
+				//The origin transformation point of PartTextField
+				//is the middle of left edge, and so by definition,
+				//change with the size of the font
+				//We need to use a QTransform to find the pos of
+				//this text from the saved pos of text item
+
 				deti->setPos(xml_pos);
 				deti->setRotation(rotation);
-				
+
 				QTransform transform;
 					//First make the rotation
 				transform.rotate(rotation);
-				QPointF pos = transform.map(QPointF(0, -deti->boundingRect().height()/2));
+				QPointF pos = transform.map(
+						QPointF(0,
+							-deti->boundingRect().height()/2));
 				transform.reset();
 					//Second translate to the pos
 				transform.translate(xml_pos.x(), xml_pos.y());
 				deti->setPos(transform.map(pos));
-				
-					//dom_input and deti matched we remove the dom_input from @inputs list,
-					//to avoid unnecessary checking made below
-					//we also move deti from the m_converted_text_from_xml_description to m_dynamic_text_list
+
+				//dom_input and deti matched we remove
+				//the dom_input from inputs list,
+				//to avoid unnecessary checking made below
+				//we also move deti from the
+				//m_converted_text_from_xml_description to m_dynamic_text_list
 				inputs.removeAll(dom_input);
 				m_dynamic_text_list.append(deti);
 				m_converted_text_from_xml_description.remove(deti);
@@ -811,35 +914,47 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			}
 		}
 	}
-	
-		//###Firts case : if this is the first time the user open the project since text item are converted to dynamic text,
-		//in the previous opening of the project, every texts field present in the element description was created.
-		//At save time, the values of each of them was save in the 'input' dom element.
-		//The loop upper is made for the first case, to import the values in 'input' to the new converted dynamic texts field.
-		//###Second case : this is not the first time the user open the project since text item are converted to dynamic text.
-		//That mean, in a previous opening of the project, the text item was already converted and save as a dynamic text field.
-		//So there isn't 'input' dom element in the project, and every dynamic text item present in m_converted_text_from_xml_description
-		//need to be deleted (because already exist in m_dynamic_text_list, from a previous save)
+
+	//###Firts case : if this is the first time the user open the project since text item are converted to dynamic text,
+	//in the previous opening of the project, every texts field present in the element description was created.
+	//At save time, the values of each of them was save in the 'input' dom element.
+	//The loop upper is made for the first case, to import the values in 'input' to the new converted dynamic texts field.
+	//###Second case : this is not the first time the user open the project since text item are converted to dynamic text.
+	//That mean, in a previous opening of the project, the text item was already converted and save as a dynamic text field.
+	//So there isn't 'input' dom element in the project, and every dynamic text item present in m_converted_text_from_xml_description
+	//need to be deleted (because already exist in m_dynamic_text_list, from a previous save)
 	for (DynamicElementTextItem *deti : m_converted_text_from_xml_description.keys())
 		delete deti;
 	m_converted_text_from_xml_description.clear();
-	
-	for (QDomElement qde : QET::findInDomElement(e, "texts_groups", ElementTextItemGroup::xmlTaggName()))
+
+	for (QDomElement qde : QET::findInDomElement(
+			 e,
+			 "texts_groups",
+			 ElementTextItemGroup::xmlTaggName()))
 	{
-		ElementTextItemGroup *group = addTextGroup("loaded_from_xml_group");
+		ElementTextItemGroup *group =
+				addTextGroup("loaded_from_xml_group");
 		group->fromXml(qde);
 	}
-	
+
 		//load informations
 	DiagramContext dc;
-	dc.fromXml(e.firstChildElement("elementInformations"), "elementInformation");
-		/**
-		 * Since the commit 4791, the value used as "label" and "formula" is stored in differents keys (instead of the same key, "label" in previous version),
-		 * so, if "label" contain "%" (Use variable value), and "formula" does not exist,
-		 * this mean the label was made before commit 4791 (0.51 dev). So we swap the value stored in "label" to "formula" as expected.
-		 * @TODO remove this code at version 0.7 or more (probably useless).
-		 */
-	if (dc["label"].toString().contains("%") && dc["formula"].toString().isNull())
+	dc.fromXml(e.firstChildElement("elementInformations"),
+		   "elementInformation");
+	/*
+	 * Since the commit 4791, the value used as "label" and "formula"
+	 * is stored in differents keys (instead of the same key,
+	 * "label" in previous version), so, if "label" contain "%"
+	 * (Use variable value), and "formula" does not exist,
+	 * this mean the label was made before commit 4791 (0.51 dev).
+	 * So we swap the value stored in "label" to "formula" as expected.
+	 * @TODO remove this code at version 0.7 or more (probably useless).
+	 */
+#if TODO_LIST
+#pragma message("@TODO remove this code for qet 0.7 or later")
+#endif
+	if (dc["label"].toString().contains("%")
+			&& dc["formula"].toString().isNull())
 	{
 		dc.addValue("formula", dc["label"]);
 	}
@@ -847,52 +962,65 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	if(dc.value("label").toString().isEmpty() &&
 	   !m_element_informations.value("label").toString().isEmpty())
 		dc.addValue("label", m_element_informations.value("label"));
-	
-		//We must to block the update of the alignment when load the information
-		//otherwise the pos of the text will not be the same as it was at save time.
+
+	//We must to block the update of the alignment when load the information
+	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		deti->m_block_alignment = true;
 	setElementInformations(dc);
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		deti->m_block_alignment = false;
-	
-	
-	/**
-	  During the devel of the version 0.7, the "old text" was replaced by the dynamic element text item.
-	  When open a project made befor the 0.7, we must to reproduce the same visual when the label are not empty and visible,
-      and comment are not empty and visible and/or location are not empty and visible.
-	  we create a text group with inside the needed texts, label and comment and/or location.
-	  */
-		//#1 There must be old text converted to dynamic text
+
+
+	/* During the devel of the version 0.7,
+	 * the "old text" was replaced by the dynamic element text item.
+	 * When open a project made befor the 0.7,
+	 * we must to reproduce the same visual when
+	 * the label are not empty and visible,
+	 * and comment are not empty
+	 * and visible and/or location are not empty and visible.
+	 * we create a text group with inside the needed texts,
+	 * label and comment and/or location.
+	 */
+	//#1 There must be old text converted to dynamic text
 	if(!successfully_converted.isEmpty())
 	{
-			//#2 the element information must have label not empty and visible
-			//and a least comment or location not empty and visible
-		QString label = m_element_informations.value("label").toString();
-		QString comment = m_element_informations.value("comment").toString();
-		QString location = m_element_informations.value("location").toString();
+		//#2 the element information must have label not empty and visible
+		//and a least comment or location not empty and visible
+		QString label = m_element_informations.value(
+					"label").toString();
+		QString comment = m_element_informations.value(
+					"comment").toString();
+		QString location = m_element_informations.value(
+					"location").toString();
 		bool la = m_element_informations.keyMustShow("label");
 		bool c = m_element_informations.keyMustShow("comment");
 		bool lo = m_element_informations.keyMustShow("location");
-		
+
 		if((m_link_type != Master) ||
 		   ((m_link_type == Master) &&
-			(diagram()->project()->defaultXRefProperties(m_kind_informations["type"].toString()).snapTo() == XRefProperties::Label))
+			(diagram()->project()->defaultXRefProperties(
+				 m_kind_informations["type"].toString()).snapTo()
+			 == XRefProperties::Label))
 		   )
 		{
 			if(!label.isEmpty() && la &&
-			   ((!comment.isEmpty() && c) || (!location.isEmpty() && lo)))
+			   ((!comment.isEmpty() && c)
+				|| (!location.isEmpty() && lo)))
 			{
-					//#2 in the converted list one text must have text from = element info and info name = label
-				for(DynamicElementTextItem *deti : successfully_converted)
+				//#2 in the converted list one text must have text from = element info and info name = label
+				for(DynamicElementTextItem *deti
+					: successfully_converted)
 				{
-					if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "label")
+					if(deti->textFrom()== DynamicElementTextItem::ElementInfo
+							&& deti->infoName() == "label")
 					{
 						qreal rotation = deti->rotation();
-						
+
 							//Create the comment item
 						DynamicElementTextItem *comment_text = nullptr;
-						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						if (m_link_type !=PreviousReport
+								|| m_link_type !=NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
@@ -911,7 +1039,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							comment_text->setPos(deti->x(), deti->y()+10); //+10 is arbitrary, comment_text must be below deti
 							addDynamicTextItem(comment_text);
 						}
-							//create the location item
+						//create the location item
 						DynamicElementTextItem *location_text = nullptr;
 						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
 						{
@@ -931,27 +1059,32 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
 							addDynamicTextItem(location_text);
 						}
-						
+
 						QPointF pos = deti->pos();
-						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						if (m_link_type !=PreviousReport
+							|| m_link_type !=NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
 						}
-							//Create the group
-						ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
+						//Create the group
+						ElementTextItemGroup *group =
+							addTextGroup(tr("Label + commentaire"));
 						addTextToGroup(deti, group);
 						if(comment_text)
-							addTextToGroup(comment_text, group);
+							addTextToGroup(comment_text,
+									   group);
 						if(location_text)
-							addTextToGroup(location_text, group);
+							addTextToGroup(location_text,
+									   group);
 						group->setAlignment(Qt::AlignVCenter);
 						group->setVerticalAdjustment(-4);
 						group->setRotation(rotation);
-							//Change the position of the group, so that the text "label" stay in the same
-							//position in scene coordinate
+						//Change the position of the group,
+						//so that the text "label" stay in the same
+						//position in scene coordinate
 						group->setPos(pos - deti->pos());
-						
+
 						break;
 					}
 				}
@@ -959,15 +1092,17 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		}
 		else
 		{
-				//This element is supposed to be a master and Xref property snap to bottom
+			//This element is supposed to be a master and Xref property snap to bottom
 			if((!comment.isEmpty() && c) || (!location.isEmpty() && lo))
 			{
-					//Create the comment item
+				//Create the comment item
 				DynamicElementTextItem *comment_text = nullptr;
 				if(!comment.isEmpty() && c)
 				{
 					comment_text = new DynamicElementTextItem(this);
-					comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+					comment_text
+						->setTextFrom(
+							DynamicElementTextItem::ElementInfo);
 					comment_text->setInfoName("comment");
 					QFont font = comment_text->font();
 					font.setPointSize(6);
@@ -976,24 +1111,29 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 					comment_text->setTextWidth(80);
 					addDynamicTextItem(comment_text);
 				}
-					//create the location item
+				//create the location item
 				DynamicElementTextItem *location_text = nullptr;
 				if(!location.isEmpty() && lo)
 				{
 					location_text = new DynamicElementTextItem(this);
-					location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
+					location_text
+						->setTextFrom(
+							DynamicElementTextItem::ElementInfo);
 					location_text->setInfoName("location");
 					QFont font = location_text->font();
 					font.setPointSize(6);
 					location_text->setFont(font);
 					location_text->setTextWidth(80);
 					if(comment_text)
-						location_text->setPos(comment_text->x(), comment_text->y()+10); //+10 is arbitrary, location_text must be below the comment
+						location_text->setPos(
+							comment_text->x(),
+							comment_text->y()+10); //+10 is arbitrary, location_text must be below the comment
 					addDynamicTextItem(location_text);
 				}
-				
-					//Create the group
-				ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
+
+				//Create the group
+				ElementTextItemGroup *group =
+					addTextGroup(tr("Label + commentaire"));
 				if(comment_text)
 					addTextToGroup(comment_text, group);
 				if(location_text)
@@ -1004,22 +1144,33 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			}
 		}
 	}
-    m_state = QET::GIOK;
+	m_state = QET::GIOK;
 	return(true);
 }
 
 /**
-	Permet d'exporter l'element en XML
-	@param document Document XML a utiliser
-	@param table_adr_id Table de correspondance entre les adresses des bornes
-	et leur id dans la representation XML ; cette table completee par cette
-	methode
-	@return L'element XML representant cet element electrique
+	@brief Element::toXml
+	Allows to export the element in XML
+	\~French Permet d'exporter l'element en XML
+	\~ @param document : XML document to use
+	\~French Document XML a utiliser
+	\~ @param table_adr_id :
+	Correspondence table between the addresses of the terminals
+	and their id in the XML representation;
+	this table completed by this method
+	\~French Table de correspondance entre les adresses des bornes
+	et leur id dans la representation XML ;
+	cette table completee par cette methode
+	\~ @return The XML element representing this electrical element
+	\~French L'element XML representant cet element electrique
 */
-QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table_adr_id) const
+QDomElement Element::toXml(
+		QDomDocument &document,
+		QHash<Terminal *,
+		int> &table_adr_id) const
 {
 	QDomElement element = document.createElement("element");
-	
+
 		// type
 	element.setAttribute("type", m_location.path());
 
@@ -1036,14 +1187,15 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	QDomElement seq = m_autoNum_seq.toXml(document);
 	if (seq.hasChildNodes())
 		element.appendChild(seq);
-	
+
 	// position, selection et orientation
 	element.setAttribute("x", QString::number(pos().x()));
 	element.setAttribute("y", QString::number(pos().y()));
 	element.setAttribute("z", QString::number(this->zValue()));
 	element.setAttribute("orientation", QString::number(orientation()));
-	
-	/* recupere le premier id a utiliser pour les bornes de cet element */
+
+	/* get the first id to use for the bounds of this element
+	 * recupere le premier id a utiliser pour les bornes de cet element */
 	int id_terminal = 0;
 	if (!table_adr_id.isEmpty()) {
 		// trouve le plus grand id
@@ -1053,19 +1205,21 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		}
 		id_terminal = max_id_t + 1;
 	}
-	
+
+	// registration of device terminals
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement("terminals");
+	// for each child of the element
 	// pour chaque enfant de l'element
 	foreach(Terminal *t, terminals()) {
 		// alors on enregistre la borne
 		QDomElement terminal = t -> toXml(document);
-		terminal.setAttribute("id", id_terminal);
+		terminal.setAttribute("id", id_terminal); // for backward compatibility
 		table_adr_id.insert(t, id_terminal ++);
 		xml_terminals.appendChild(terminal);
 	}
 	element.appendChild(xml_terminals);
-	
+
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement("inputs");
 	element.appendChild(inputs);
@@ -1075,27 +1229,29 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	if (! isFree()) {
 		QDomElement links_uuids = document.createElement("links_uuids");
 		foreach (Element *elmt, connected_elements) {
-			QDomElement link_uuid = document.createElement("link_uuid");
+			QDomElement link_uuid =
+					document.createElement("link_uuid");
 			link_uuid.setAttribute("uuid", elmt->uuid().toString());
 			links_uuids.appendChild(link_uuid);
 		}
 		element.appendChild(links_uuids);
 	}
 
-        //save information of this element
+	//save information of this element
 	if (! m_element_informations.keys().isEmpty()) {
-		QDomElement infos = document.createElement("elementInformations");
+		QDomElement infos =
+				document.createElement("elementInformations");
 		m_element_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
-    	
-        //Dynamic texts
-    QDomElement dyn_text = document.createElement("dynamic_texts");
-    for (DynamicElementTextItem *deti : m_dynamic_text_list)
+
+	//Dynamic texts
+	QDomElement dyn_text = document.createElement("dynamic_texts");
+	for (DynamicElementTextItem *deti : m_dynamic_text_list)
 		dyn_text.appendChild(deti->toXml(document));
-	
+
 	QDomElement texts_group = document.createElement("texts_groups");
-	
+
 		//Dynamic texts owned by groups
 	for(ElementTextItemGroup *group : m_texts_group)
 	{
@@ -1105,74 +1261,77 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 			//each time a text is removed from the group, the alignement is not updated
 		Qt::Alignment al = group->alignment();
 		group->setAlignment(Qt::AlignTop);
-		
+
 			//Remove the texts from group
 		QList<DynamicElementTextItem *> deti_list = group->texts();
 		for(DynamicElementTextItem *deti : deti_list)
 			group->removeFromGroup(deti);
-		
+
 			//Save the texts to xml
 		for (DynamicElementTextItem *deti : deti_list)
 			dyn_text.appendChild(deti->toXml(document));
-		
+
 			//Re add texts to group
 		for(DynamicElementTextItem *deti : deti_list)
 			group->addToGroup(deti);
-		
+
 			//Restor the alignement
 		group->setAlignment(al);
-		
+
 			//Save the group to xml
 		texts_group.appendChild(group->toXml(document));
 		group->blockAlignmentUpdate(false);
 	}
-	
+
 		//Append the dynamic texts to element
 	element.appendChild(dyn_text);
 		//Append the texts group to element
 	element.appendChild(texts_group);
 
-    return(element);
+	return(element);
 }
 
 /**
- * @brief Element::addDynamiqueTextItem
- * Add @deti as a dynamic text item of this element, @deti is reparented to this
- * If @deti is null, a new DynamicElementTextItem is created and added to this element.
- * @param deti
- */
+	@brief Element::addDynamiqueTextItem
+	Add deti as a dynamic text item of this element,
+	deti is reparented to this
+	If deti is null, a new DynamicElementTextItem is created
+	and added to this element.
+	@param deti
+*/
 void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 {
-    if (deti && !m_dynamic_text_list.contains(deti))
+	if (deti && !m_dynamic_text_list.contains(deti))
 	{
-        m_dynamic_text_list.append(deti);
+		m_dynamic_text_list.append(deti);
 		deti->setParentItem(this);
 		emit textAdded(deti);
 	}
-    else
-    {
-        DynamicElementTextItem *text = new DynamicElementTextItem(this);
-        m_dynamic_text_list.append(text);
+	else
+	{
+		DynamicElementTextItem *text = new DynamicElementTextItem(this);
+		m_dynamic_text_list.append(text);
 		emit textAdded(text);
-    }
+	}
 }
 
 /**
- * @brief Element::removeDynamicTextItem
- * Remove @deti, no matter if is a child of this element or a child of a group of this element.
- * Set he parent item of @deti to 0, @deti is not deleted.
- * @param deti
- */
+	@brief Element::removeDynamicTextItem
+	Remove deti, no matter if is a child of this element
+	or a child of a group of this element.
+	Set he parent item of deti to 0, deti is not deleted.
+	@param deti
+*/
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 {
-    if (m_dynamic_text_list.contains(deti))
+	if (m_dynamic_text_list.contains(deti))
 	{
-        m_dynamic_text_list.removeOne(deti);
+		m_dynamic_text_list.removeOne(deti);
 		deti->setParentItem(nullptr);
 		emit textRemoved(deti);
 		return;
 	}
-	
+
 	for(ElementTextItemGroup *group : m_texts_group)
 	{
 		if(group->texts().contains(deti))
@@ -1187,33 +1346,35 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 }
 
 /**
- * @brief Element::dynamicTextItems
- * @return all dynamic text items of this element directly child of this element.
- * Texts in text-groups belonging to this element are not returned by this function.
- * @see ElementTextItemGroup::texts
- */
-QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
+	@brief Element::dynamicTextItems
+	@return all dynamic text items of this element directly child of this element.
+	Texts in text-groups belonging to this element are not returned by this function.
+	@see ElementTextItemGroup::texts
+*/
+QList<DynamicElementTextItem *> Element::dynamicTextItems() const
+{
 	return m_dynamic_text_list;
 }
 
 /**
- * @brief Element::addTextGroup
- * Create and add an element text item group to this element.
- * If this element already have a group with the same name,
- * then @name will renamed to name1 or name2 etc....
- * @param name : the name of the group
- * @return the created group.
- */
+	@brief Element::addTextGroup
+	Create and add an element text item group to this element.
+	If this element already have a group with the same name,
+	then name will renamed to name1 or name2 etc....
+	@param name : the name of the group
+	@return the created group.
+*/
 ElementTextItemGroup *Element::addTextGroup(const QString &name)
 {
 	if(m_texts_group.isEmpty())
 	{
-		ElementTextItemGroup *group = new ElementTextItemGroup(name, this);
+		ElementTextItemGroup *group = new ElementTextItemGroup(name,
+									   this);
 		m_texts_group << group;
 		emit textsGroupAdded(group);
 		return group;
 	}
-		
+
 		//Set a new name if name already exist
 	QString rename = name;
 	int i=1;
@@ -1222,7 +1383,7 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 		rename = name+QString::number(i);
 		i++;
 	}
-	
+
 		//Create the group
 	ElementTextItemGroup *group = new ElementTextItemGroup(rename, this);
 	m_texts_group << group;
@@ -1231,81 +1392,84 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 }
 
 /**
- * @brief Element::addTextGroup
- * @param group add group @group to the group of this element.
- * the group must not be owned by an element.
- */
+	@brief Element::addTextGroup
+	@param group add group to the group of this element.
+	the group must not be owned by an element.
+*/
 void Element::addTextGroup(ElementTextItemGroup *group)
 {
 	if(group->parentElement())
 		return;
-	
+
 	m_texts_group << group;
 	group->setParentItem(this);
 	emit textsGroupAdded(group);
 }
 
 /**
- * @brief Element::removeTextGroup
- * Remove the text group @group from this element, and set the parent of group to 0.
- * group is not deleted.
- * All texts owned by the group will be reparented to this element
- * @param name
- */
+	@brief Element::removeTextGroup
+	Remove the text group group from this element,
+	and set the parent of group to 0.
+	group is not deleted.
+	All texts owned by the group will be reparented to this element
+	@param group
+*/
 void Element::removeTextGroup(ElementTextItemGroup *group)
 {
 	if(!m_texts_group.contains(group))
 		return;
-	
+
 	const QList <QGraphicsItem *> items_list = group->childItems();
-	
+
 	for(QGraphicsItem *qgi : items_list)
 	{
 		if(qgi->type() == DynamicElementTextItem::Type)
 		{
-			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(qgi);
+			DynamicElementTextItem *deti =
+				static_cast<DynamicElementTextItem *>(qgi);
 			removeTextFromGroup(deti, group);
 		}
 	}
-	
-	
+
+
 	emit textsGroupAboutToBeRemoved(group);
 	m_texts_group.removeOne(group);
 	group->setParentItem(nullptr);
 }
 
 /**
- * @brief Element::textGroup
- * @param name
- * @return the text group named @name or nullptr if this element
- * haven't got a group with this name
- */
+	@brief Element::textGroup
+	@param name
+	@return the text group named name or nullptr if this element
+	haven't got a group with this name
+*/
 ElementTextItemGroup *Element::textGroup(const QString &name) const
 {
 	for (ElementTextItemGroup *group : m_texts_group)
 		if(group->name() == name)
 			return group;
-	
+
 	return nullptr;
 }
 
 /**
- * @brief Element::textGroups
- * @return All texts groups of this element
- */
+	@brief Element::textGroups
+	@return All texts groups of this element
+*/
 QList<ElementTextItemGroup *> Element::textGroups() const
 {
 	return m_texts_group;
 }
 
 /**
- * @brief Element::addTextToGroup
- * Add the text @text to the group @group;
- * If @group isn't owned by this element return false.
- * The text must be a text of this element.
- * @return : true if the text was succesfully added to the group.
- */
-bool Element::addTextToGroup(DynamicElementTextItem *text, ElementTextItemGroup *group)
+	@brief Element::addTextToGroup
+	Add the text text to the group group;
+	If group isn't owned by this element return false.
+	The text must be a text of this element.
+	@return : true if the text was succesfully added to the group.
+*/
+bool Element::addTextToGroup(DynamicElementTextItem *text,
+				 ElementTextItemGroup *group)
 {
 	if(!m_dynamic_text_list.contains(text))
 		return false;
@@ -1314,23 +1478,25 @@ bool Element::addTextToGroup(DynamicElementTextItem *text, ElementTextItemGroup 
 
 	m_dynamic_text_list.removeOne(text);
 	emit textRemoved(text);
-	
+
 	group->addToGroup(text);
 	emit textAddedToGroup(text, group);
-	
+
 	return true;
 }
 
 /**
- * @brief Element::removeTextFromGroup
- * Remove the text @text from the group @group, en reparent @text to this element
- * @return true if text was succesfully removed
- */
-bool Element::removeTextFromGroup(DynamicElementTextItem *text, ElementTextItemGroup *group)
+	@brief Element::removeTextFromGroup
+	Remove the text text from the group group,
+	en reparent text to this element
+	@return true if text was succesfully removed
+*/
+bool Element::removeTextFromGroup(DynamicElementTextItem *text,
+				  ElementTextItemGroup *group)
 {
 	if(!m_texts_group.contains(group))
 		return false;
-	
+
 	if(group->texts().contains(text))
 	{
 		group->removeFromGroup(text);
@@ -1338,18 +1504,18 @@ bool Element::removeTextFromGroup(DynamicElementTextItem *text, ElementTextItemG
 		addDynamicTextItem(text);
 		return true;
 	}
-	
+
 	return false;
 }
 
 /**
- * @brief Element::AlignedFreeTerminals
- * @return a list of terminal (owned by this element) aligned to other terminal (from other element)
- * The first Terminal of QPair is a Terminal owned by this element,
- * this terminal haven't got any conductor docked.
- * The second Terminal of QPair is a Terminal owned by an other element,
- * which is aligned with the first Terminal. The second Terminal can have or not docked conductors.
- */
+	@brief Element::AlignedFreeTerminals
+	@return a list of terminal (owned by this element) aligned to other terminal (from other element)
+	The first Terminal of QPair is a Terminal owned by this element,
+	this terminal haven't got any conductor docked.
+	The second Terminal of QPair is a Terminal owned by an other element,
+	which is aligned with the first Terminal. The second Terminal can have or not docked conductors.
+*/
 QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 {
 	QList <QPair <Terminal *, Terminal *> > list;
@@ -1358,7 +1524,8 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 	{
 		if (terminal->conductors().isEmpty())
 		{
-			Terminal *other_terminal = terminal -> alignedWithTerminal();
+			Terminal *other_terminal =
+					terminal -> alignedWithTerminal();
 			if (other_terminal)
 				list << qMakePair(terminal, other_terminal);
 		}
@@ -1368,14 +1535,15 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 }
 
 /**
- * @brief Element::initLink
- * Initialise the link between this element and other elements.
- * This method can be call once because init the link according to
- * uuid store in a private list, after link, the list is clear, so
- * call another time do nothing.
- *
- * @param prj, ownership project of this element and other element to be linked
- */
+	@brief Element::initLink
+	Initialise the link between this element and other elements.
+	This method can be call once because init the link according to
+	uuid store in a private list, after link, the list is clear, so
+	call another time do nothing.
+
+	@param prj :
+	ownership project of this element and other element to be linked
+*/
 void Element::initLink(QETProject *prj)
 {
 		// if nothing to link return now
@@ -1385,41 +1553,41 @@ void Element::initLink(QETProject *prj)
 	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
 		elmt->linkToElement(this);
 	}
-    tmp_uuids_link.clear();
+	tmp_uuids_link.clear();
 }
 
 QString Element::linkTypeToString() const
 {
-    switch (m_link_type)
-    {
-        case Simple:
-            return "Simple";
-        case NextReport :
-            return "NextReport";
-        case PreviousReport:
-            return "PreviousReport";
-        case Master:
-            return "Master";
-        case Slave:
-            return "Slave";
-        case Terminale:
-            return "Terminale";
-        default:
-            return "Unknown";
-    }
+	switch (m_link_type)
+	{
+		case Simple:
+			return "Simple";
+		case NextReport :
+			return "NextReport";
+		case PreviousReport:
+			return "PreviousReport";
+		case Master:
+			return "Master";
+		case Slave:
+			return "Slave";
+		case Terminale:
+			return "Terminale";
+		default:
+			return "Unknown";
+	}
 }
 
 /**
- * @brief Element::setElementInformations
- * Set new information for this element.
- * If new information is different of current infotmation emit @elementInfoChange
- * @param dc
- */
+	@brief Element::setElementInformations
+	Set new information for this element.
+	If new information is different of current infotmation emit elementInfoChange
+	@param dc
+*/
 void Element::setElementInformations(DiagramContext dc)
 {
-    if (m_element_informations == dc) {
-        return;
-    }
+	if (m_element_informations == dc) {
+		return;
+	}
 
 	DiagramContext old_info = m_element_informations;
 	m_element_informations = dc;
@@ -1428,19 +1596,26 @@ void Element::setElementInformations(DiagramContext dc)
 }
 
 /**
- * @brief comparPos
- * Compare position of the two elements. Compare 3 points:
- * 1 folio - 2 row - 3 line
- * returns a response when a comparison is found.
- * @return true if elmt1 is at lower position than elmt 2, else false
- */
-bool comparPos(const Element *elmt1, const Element *elmt2) {
+	@brief comparPos
+	Compare position of the two elements. Compare 3 points:
+	1 folio - 2 row - 3 line
+	returns a response when a comparison is found.
+	@return true if elmt1 is at lower position than elmt 2, else false
+*/
+bool comparPos(const Element *elmt1, const Element *elmt2)
+{
 	//Compare folio first
 	if (elmt1->diagram()->folioIndex() != elmt2->diagram()->folioIndex())
-		return elmt1->diagram()->folioIndex() < elmt2->diagram()->folioIndex();
+		return elmt1->diagram()->folioIndex()
+				<
+				elmt2->diagram()->folioIndex();
 	//Compare the row(in letter pos) in second
-	QString a = elmt1->diagram()->convertPosition(elmt1->scenePos()).letter();
-	QString b = elmt2->diagram()->convertPosition(elmt2->scenePos()).letter();
+	QString a = elmt1
+			->diagram()
+			->convertPosition(elmt1->scenePos()).letter();
+	QString b = elmt2
+			->diagram()
+			->convertPosition(elmt2->scenePos()).letter();
 	if (a != b)
 		return a<b;
 	//In last compare the line, if line is egal, return sorted by row in real pos
@@ -1450,9 +1625,9 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 }
 
 /**
- * @brief Element::mouseMoveEvent
- * @param event
- */
+	@brief Element::mouseMoveEvent
+	@param event
+*/
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseMoveEvent(event);
@@ -1463,9 +1638,9 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Element::mouseReleaseEvent
- * @param event
- */
+	@brief Element::mouseReleaseEvent
+	@param event
+*/
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseReleaseEvent(event);
@@ -1476,13 +1651,14 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * When mouse over element
- * change m_mouse_over to true   (used in paint() function )
- * Also highlight linked elements
- * @param e QGraphicsSceneHoverEvent
+	When mouse over element
+	change m_mouse_over to true   (used in paint() function )
+	Also highlight linked elements
+	@param e QGraphicsSceneHoverEvent
 */
-void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
-    Q_UNUSED(e)
+void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
+{
+	Q_UNUSED(e)
 
 	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(true);
@@ -1493,13 +1669,14 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
- * When mouse over element leave the position
- * change m_mouse_over to false(used in paint() function )
- * Also un-highlight linked elements
- * @param e QGraphicsSceneHoverEvent
+	When mouse over element leave the position
+	change m_mouse_over to false(used in paint() function )
+	Also un-highlight linked elements
+	@param e QGraphicsSceneHoverEvent
 */
-void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
-    Q_UNUSED(e)
+void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
+{
+	Q_UNUSED(e)
 
 	foreach (Element *elmt, linkedElements())
 		elmt -> setHighlighted(false);
@@ -1509,100 +1686,124 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
- * @brief Element::setUpFormula
- * Set up the formula used to create the label of this element
- * @param : if true set tagged text to code letter (ex K for coil) with condition :
- * formula is empty, text tagged "label" is emptty or "_";
- */
+	@brief Element::setUpFormula
+	Set up the formula used to create the label of this element
+	@param code_letter : Q_UNUSED(code_letter)
+	if true set tagged text to code letter
+	(ex K for coil) with condition :
+	formula is empty, text tagged "label" is emptty or "_";
+*/
 void Element::setUpFormula(bool code_letter)
 {
 	Q_UNUSED(code_letter)
-	
+
 	if (linkType() == Element::Slave || linkType() & Element::AllReport)
 		return;
 
 	if (diagram())
 	{
-		QString formula = diagram()->project()->elementAutoNumCurrentFormula();
+		QString formula = diagram()
+				->project()
+				->elementAutoNumCurrentFormula();
 
 		m_element_informations.addValue("formula", formula);
-		
-		QString element_currentAutoNum = diagram()->project()->elementCurrentAutoNum();
-		NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
+
+		QString element_currentAutoNum = diagram()
+				->project()
+				->elementCurrentAutoNum();
+		NumerotationContext nc = diagram()
+				->project()
+				->elementAutoNum(element_currentAutoNum);
 		NumerotationContextCommands ncc (nc);
-		
+
 		m_autoNum_seq.clear();
-		autonum::setSequential(formula, m_autoNum_seq, nc, diagram(), element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
+		autonum::setSequential(formula,
+					   m_autoNum_seq,
+					   nc,
+					   diagram(),
+					   element_currentAutoNum);
+		diagram()->project()->addElementAutoNum(element_currentAutoNum,
+							ncc.next());
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
 			DiagramContext dc = m_element_informations;
-            m_element_informations.addValue("label", actualLabel());
+			m_element_informations.addValue("label", actualLabel());
 			emit elementInfoChange(dc, m_element_informations);
 		}
 	}
 }
 
 /**
- * @brief Element::getPrefix
- * get Element Prefix
- */
-QString Element::getPrefix() const{
+	@brief Element::getPrefix
+	get Element Prefix
+*/
+QString Element::getPrefix() const
+{
 	return m_prefix;
 }
 
 /**
- * @brief Element::setPrefix
- * set Element Prefix
- */
-void Element::setPrefix(QString prefix) {
+	@brief Element::setPrefix
+	set Element Prefix
+*/
+void Element::setPrefix(QString prefix)
+{
 	m_prefix = std::move(prefix);
 }
 
 /**
- * @brief Element::freezeLabel
- * Freeze this element label
- */
+	@brief Element::freezeLabel
+	Freeze this element label
+*/
 void Element::freezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;
 }
 
 /**
- * @brief Element::freezeNewAddedElement
- * Freeze this label if needed
- */
-void Element::freezeNewAddedElement() {
-	if (this->diagram()->freezeNewElements() || this->diagram()->project()->isFreezeNewElements()) {
+	@brief Element::freezeNewAddedElement
+	Freeze this label if needed
+*/
+void Element::freezeNewAddedElement()
+{
+	if (this->diagram()->freezeNewElements()
+			|| this->diagram()->project()->isFreezeNewElements()) {
 		freezeLabel(true);
 	}
-    else return;
+	else return;
 }
 
 /**
- * @brief Element::actualLabel
- * Always return the current label to be displayed.
- * This function is usefull when label is based on formula, because label can change at any time.
- * @return
- */
+	@brief Element::actualLabel
+	Always return the current label to be displayed.
+	This function is usefull when label is based on formula, because label can change at any time.
+	@return
+*/
 QString Element::actualLabel()
 {
-    if (m_element_informations.value("formula").toString().isEmpty()) {
-        return m_element_informations.value("label").toString();
-    } else {
-        return autonum::AssignVariables::formulaToLabel(m_element_informations.value("formula").toString(), m_autoNum_seq, diagram(), this);
-    }
+	if (m_element_informations.value("formula").toString().isEmpty()) {
+		return m_element_informations.value("label").toString();
+	} else {
+	return autonum::AssignVariables::formulaToLabel(
+				m_element_informations.value(
+					"formula").toString(),
+				m_autoNum_seq,
+				diagram(),
+				this);
+	}
 }
 
 /**
- * @brief Element::name
- * @return the human name of this element
- */
-QString Element::name() const {
+	@brief Element::name
+	@return the human name of this element
+*/
+QString Element::name() const
+{
 	return m_names.name(m_location.baseName());
 }
 
-ElementsLocation Element::location() const {
+ElementsLocation Element::location() const
+{
 	return m_location;
 }

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="15" version="0.5" hotspot_y="8" link_type="next_report" width="30" orientation="dyyy" height="30">
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="8" link_type="next_report" width="30" height="30">
     <uuid uuid="{59c1bd6a-e25a-4a13-9ce9-e90f6ef4ff37}"/>
     <names>
         <name lang="de">Vorherige Seite</name>

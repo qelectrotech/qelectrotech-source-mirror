@@ -1,4 +1,4 @@
-<definition type="element" width="40" hotspot_x="29" version="0.51" link_type="terminal" height="20" hotspot_y="11" orientation="dyyy">
+<definition type="element" width="40" hotspot_x="29" version="0.51" link_type="terminal" height="20" hotspot_y="11">
     <uuid uuid="{1251a098-31f6-4308-a0b6-9aa39a0580cd}"/>
     <names>
         <name lang="fr">Tube Cuivre</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="6" type="element" height="100" width="430" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="6" type="element" height="100" width="430" version="0.5">
     <uuid uuid="{d295b0c9-a6af-424c-b77e-24ead2d93069}"/>
     <names>
         <name lang="pl">VLT 2800</name>

@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="100" hotspot_y="40" version="0.70" width="40" hotspot_x="20" link_type="simple">
+<definition type="element" height="100" hotspot_y="40" version="0.70" width="40" hotspot_x="20" link_type="simple">
     <uuid uuid="{b4b70d3d-8784-4323-b17b-d8ff3677cdc1}"/>
     <names>
         <name lang="en">Three-pole source + PEN</name>

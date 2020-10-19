@@ -1,0 +1,25 @@
+<definition hotspot_x="-1" width="10" type="element" height="140" version="0.80" link_type="simple" hotspot_y="66">
+    <uuid uuid="{9ac67efc-1e9f-4b4f-afd3-c5d0e3d9762b}"/>
+    <names>
+        <name lang="fr">037552 - Viking3- Cloison terminale pour blocs de jonction à vis Viking3 avec 2 entrées 2 sorties</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation">037552</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description">Cloison terminale pour blocs de jonction à vis Viking3 avec 2 entrées 2 sorties</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" y="-60" rx="0" width="5" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" antialias="false" x="3" height="128"/>
+        <rect ry="0" y="-53" rx="0" width="5" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" antialias="false" x="3" height="113"/>
+        <rect ry="0" y="-3" rx="0" width="5" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" antialias="false" x="3" height="13"/>
+    </description>
+</definition>

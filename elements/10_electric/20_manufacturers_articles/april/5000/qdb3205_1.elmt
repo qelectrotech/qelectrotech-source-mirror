@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_y="50" width="980" hotspot_x="28" height="150" orientation="dyyy" version="0.80">
+<definition link_type="simple" type="element" hotspot_y="50" width="980" hotspot_x="28" height="150" version="0.80">
     <uuid uuid="{918bcb5c-370e-4add-b49a-959d32aef95e}"/>
     <names>
         <name lang="cs">QDB 3205_1</name>

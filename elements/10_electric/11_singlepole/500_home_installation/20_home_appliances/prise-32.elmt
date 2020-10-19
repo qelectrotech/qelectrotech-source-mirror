@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{93c9dad1-7014-4708-a36e-fbec9825c0b9}"/>
     <names>
         <name lang="fr">Prise 32 A</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,6 +19,8 @@
 #define XREFPROPERTIESWIDGET_H
 
 #include <QWidget>
+#include <QHash>
+
 #include "properties/xrefproperties.h"
 
 namespace Ui {
@@ -26,9 +28,9 @@ namespace Ui {
 }
 
 /**
- * @brief The XRefPropertiesWidget class
- * This class provide a widget to edit the XRefProperties
- */
+	@brief The XRefPropertiesWidget class
+	This class provide a widget to edit the XRefProperties
+*/
 class XRefPropertiesWidget : public QWidget
 {
 	Q_OBJECT

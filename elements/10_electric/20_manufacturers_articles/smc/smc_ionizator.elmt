@@ -1,4 +1,4 @@
-<definition type="element" width="360" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="86" hotspot_x="159" height="100">
+<definition type="element" width="360" version="0.70" link_type="simple" hotspot_y="86" hotspot_x="159" height="100">
     <uuid uuid="{dea8b7fd-1ed1-4b27-9e33-94a7b08277ca}"/>
     <names>
         <name lang="hu">SMC ionizátor</name>

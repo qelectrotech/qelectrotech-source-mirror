@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="215" orientation="dyyy" hotspot_y="105" type="element" height="220" width="440" version="0.5">
+<definition link_type="simple" hotspot_x="215" hotspot_y="105" type="element" height="220" width="440" version="0.5">
     <uuid uuid="{7655d8d5-4f86-43b2-a9f4-52eab2a5951f}"/>
     <names>
         <name lang="pl">EC4P-222-MRAD1</name>

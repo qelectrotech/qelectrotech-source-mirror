@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{59026f60-3a00-40dd-b90f-569275a31a9e}"/>
     <names>
         <name lang="it">Ingresso analogico, generico</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="130" hotspot_x="65" version="0.51" link_type="simple" height="190" hotspot_y="6" orientation="dyyy">
+<definition type="element" width="130" hotspot_x="65" version="0.51" link_type="simple" height="190" hotspot_y="6">
     <uuid uuid="{36babc0d-ff58-482e-895e-23a78388f503}"/>
     <names>
         <name lang="en">Heated floor</name>

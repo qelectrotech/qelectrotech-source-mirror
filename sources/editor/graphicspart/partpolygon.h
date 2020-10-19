@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,10 +26,10 @@ class QetGraphicsHandlerItem;
 class QAction;
 
 /**
- * @brief The PartPolygon class
- * This class represents a polygon primitive which may be used to compose the
- * drawing of an electrical element within the element editor.
- */
+	@brief The PartPolygon class
+	This class represents a polygon primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
+*/
 class PartPolygon : public CustomElementGraphicPart
 {
 		Q_OBJECT
@@ -84,8 +84,8 @@ class PartPolygon : public CustomElementGraphicPart
 		bool isClosed  () const {return m_closed;}
 		void setClosed (bool close);
 
-        void setHandlerColor(QPointF pos, const QColor &color) final;
-        void resetAllHandlerColor() final;
+		void setHandlerColor(QPointF pos, const QColor &color) final;
+		void resetAllHandlerColor() final;
 
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;

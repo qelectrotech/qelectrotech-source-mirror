@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="60" hotspot_x="40" orientation="dyyy" width="60" hotspot_y="42" version="0.51">
+<definition type="element" link_type="simple" height="60" hotspot_x="40" width="60" hotspot_y="42" version="0.51">
     <uuid uuid="{b550a0f1-a852-48ce-a74e-f6c3f0901a19}"/>
     <names>
         <name lang="es">Valv seg 3/4Hembra</name>

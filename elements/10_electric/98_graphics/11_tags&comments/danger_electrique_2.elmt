@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="25" width="50" hotspot_y="24" orientation="dyyy" height="50">
+<definition version="0.5" link_type="simple" type="element" hotspot_x="25" width="50" hotspot_y="24" height="50">
     <uuid uuid="{9ae57267-cfe6-40de-8a86-596a55f1c373}"/>
     <names>
         <name lang="el">Κίνδυνος ηλεκτροπληξίας</name>

@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{f79eebce-6a9a-4e3f-b9f5-8e3db3234ede}"/>
     <names>
         <name lang="cs">Odstředivé čerpadlo</name>

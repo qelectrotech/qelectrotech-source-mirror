@@ -1,4 +1,4 @@
-<definition width="70" hotspot_x="53" type="element" link_type="simple" height="20" hotspot_y="10" orientation="dyyy" version="0.51">
+<definition width="70" hotspot_x="53" type="element" link_type="simple" height="20" hotspot_y="10" version="0.51">
     <uuid uuid="{87167b9f-1506-44ef-a0da-e8501d931209}"/>
     <names>
         <name lang="fr">Câble 11 PATC </name>

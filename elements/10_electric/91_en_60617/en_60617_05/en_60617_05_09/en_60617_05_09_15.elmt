@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="30" width="60" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="25">
+<definition type="element" link_type="simple" height="30" width="60" version="0.70" hotspot_x="55" hotspot_y="25">
     <uuid uuid="{333ee40c-7a9e-49ff-b825-872c208ad159}"/>
     <names>
         <name lang="fr">Structure à retard de couplage</name>

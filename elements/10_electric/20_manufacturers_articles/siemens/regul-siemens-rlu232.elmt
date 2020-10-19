@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="84" height="150" version="0.5" width="360" hotspot_x="194" link_type="simple">
+<definition type="element" hotspot_y="84" height="150" version="0.5" width="360" hotspot_x="194" link_type="simple">
     <uuid uuid="{aca7e107-45e0-41e8-a936-c7c08bbef4e1}"/>
     <names>
         <name lang="ar">حاكم  siemens RL232</name>

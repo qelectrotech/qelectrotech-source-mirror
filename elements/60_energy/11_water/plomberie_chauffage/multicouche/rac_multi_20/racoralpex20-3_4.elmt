@@ -1,23 +1,28 @@
-<definition width="60" version="0.4" hotspot_x="38" hotspot_y="16" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{D7B9BB83-B6D3-48D7-82D1-1BB6C59EBEAD}"/><names>
-        <name lang="es">Rácor 20-3/"</name>
-        <name lang="ca">Rácord 20-3/"</name>
+<definition hotspot_y="16" type="element" height="50" version="0.80" width="60" hotspot_x="39" link_type="simple">
+    <uuid uuid="{dc16f730-b637-4ef1-bd0a-a664697a0b49}"/>
+    <names>
+        <name lang="es">Rácor 20-3/4"</name>
+        <name lang="ca">Rácord 20-3/4"</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <arc width="8.1" x="-23.9" y="15.2863" antialias="true" height="13.3242" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <rect width="4.8" x="-15.8" y="1.96202" antialias="false" height="11.6587" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="15.3" x="-31.1" y="-5.53284" antialias="false" height="27.4812" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.296492" x1="-20.1544" y2="0.296492" x2="-30.3345"/>
-        <arc width="7.2" x="-23" y="-11.3622" antialias="true" height="11.6587" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.2863" x1="-30.2665" y2="15.2863" x2="-20.228"/>
-        <arc width="6.3" x="-22.1" y="0.296492" antialias="true" height="14.9898" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="-23" y="25" size="4" rotate="true" text="rá 20-3/4&quot;" tagg="label"/>
-        <rect width="20.85" x="-9.5" y="0.296492" antialias="false" height="14.9898" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="2.4" x="11.35" y="2.79479" antialias="false" height="9.99317" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="1.5" x="-11.15" y="-2.18766" antialias="false" height="19.7515" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <terminal x="-31.1" y="7.79137" orientation="w"/>
-        <terminal x="13.75" y="7.79137" orientation="e"/>
+        <arc antialias="true" height="13.3242" width="8.1" x="-23.9" y="15.2863" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>
+        <rect antialias="false" height="11.6587" width="4.8" x="-15.8" y="1.96202" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="27.4812" width="15.3" x="-31.1" y="-5.53284" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-20.1544" end2="none" length2="1.5" x2="-30.3345" y2="0.296492" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.296492"/>
+        <arc antialias="true" height="11.6587" width="7.2" x="-23" y="-11.3622" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-30.2665" end2="none" length2="1.5" x2="-20.228" y2="15.2863" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15.2863"/>
+        <arc antialias="true" height="14.9898" width="6.3" x="-22.1" y="0.296492" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-23" y="17.5" uuid="{0c659392-2737-43c2-80ea-35bda9e90297}" z="8" font="Sans Serif,4,-1,5,25,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect antialias="false" height="14.9898" width="20.85" x="-9.5" y="0.296492" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="9.99317" width="2.4" x="11.35" y="2.79479" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="19.7515" width="1.5" x="-11.15" y="-2.18766" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" ry="0"/>
+        <terminal x="-31.1" y="7.79137" uuid="{87bcee9b-eba9-4094-adf3-7009d607382e}" name="" orientation="w"/>
+        <terminal x="13.75" y="7.79137" uuid="{660dd3f7-3d51-4afb-b397-decbd91ce444}" name="" orientation="e"/>
     </description>
 </definition>

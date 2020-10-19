@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="9" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="9" height="20" version="0.70" hotspot_x="29">
     <uuid uuid="{e07c1aea-49df-4b9f-b472-8f801ba67cb8}"/>
     <names>
         <name lang="fr">Commande par levier</name>

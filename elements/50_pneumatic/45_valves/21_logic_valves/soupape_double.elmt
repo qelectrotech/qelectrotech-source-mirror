@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="38" orientation="dyyy">
+<definition height="60" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="38">
     <uuid uuid="{4845c845-16fb-46bb-8720-fa8cb0ed8caf}"/>
     <names>
         <name lang="en">Dual signal valve (valve logical AND)</name>

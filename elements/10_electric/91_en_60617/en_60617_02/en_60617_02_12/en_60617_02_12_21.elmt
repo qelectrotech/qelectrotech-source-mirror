@@ -1,4 +1,4 @@
-<definition hotspot_x="45" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="70" type="element" link_type="simple">
+<definition hotspot_x="45" version="0.70" height="30" hotspot_y="15" width="70" type="element" link_type="simple">
     <uuid uuid="{27e68db1-536d-4f6f-a5cc-e6f389b3f33b}"/>
     <names>
         <name lang="fr">Frein serré</name>

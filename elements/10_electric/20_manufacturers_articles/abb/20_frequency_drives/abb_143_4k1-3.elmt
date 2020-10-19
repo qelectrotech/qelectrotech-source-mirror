@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="255" height="100" width="520" type="element" hotspot_y="52" orientation="dyyy">
+<definition version="0.80" link_type="simple" hotspot_x="255" height="100" width="520" type="element" hotspot_y="52">
     <uuid uuid="{185de924-dae4-4a2b-9c4e-442d5755c02a}"/>
     <names>
         <name lang="hu">ABB ACS 143-4K1-3</name>

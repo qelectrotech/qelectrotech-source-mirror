@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@
 #include <QFileDialog>
 
 /**
- * @brief GeneralConfigurationPage::GeneralConfigurationPage
- * @param parent
- */
+	@brief GeneralConfigurationPage::GeneralConfigurationPage
+	@param parent
+*/
 GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ConfigPage(parent),
 	ui(new Ui::GeneralConfigurationPage)
@@ -47,7 +47,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
 	else
-	ui->m_use_windows_mode_rb->setChecked(true);
+		ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
@@ -55,18 +55,13 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_export_terminal->setChecked(settings.value("nomenclature-exportlist", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
-	ui->m_foliolist_sb->setValue(settings.value("projectview/foliolist_position", 2).toInt());
 	
 	QString fontInfos = settings.value("diagramitemfont").toString() + " " +
-                        settings.value("diagramitemsize").toString() + " (" +
-                        settings.value("diagramitemstyle").toString() + ")";
+			settings.value("diagramitemsize").toString() + " (" +
+			settings.value("diagramitemstyle").toString() + ")";
 	ui->m_font_pb->setText(fontInfos);
 
 	
-	QString foliolistfontInfos = settings.value("foliolistfont").toString() + " " +
-                        settings.value("foliolistsize").toString() + " (" +
-                        settings.value("folioliststyle").toString() + ")";
-	ui->m_folio_list_pb->setText(foliolistfontInfos);
 	
 
 		//Dynamic element text item
@@ -136,9 +131,9 @@ GeneralConfigurationPage::~GeneralConfigurationPage()
 }
 
 /**
- * @brief GeneralConfigurationPage::applyConf
- * Write all configuration in settings file
- */
+	@brief GeneralConfigurationPage::applyConf
+	Write all configuration in settings file
+*/
 void GeneralConfigurationPage::applyConf()
 {
 	QSettings settings;
@@ -175,7 +170,6 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
-	settings.setValue("projectview/foliolist_position", ui->m_foliolist_sb->value());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
@@ -237,53 +231,56 @@ void GeneralConfigurationPage::applyConf()
 }
 
 /**
- * @brief GeneralConfigurationPage::title
- * @return The title of this page
- */
-QString GeneralConfigurationPage::title() const {
+	@brief GeneralConfigurationPage::title
+	@return The title of this page
+*/
+QString GeneralConfigurationPage::title() const
+{
 	return(tr("Général", "configuration page title"));
 }
 
 /**
- * @brief GeneralConfigurationPage::icon
- * @return The icon of this page
- */
-QIcon GeneralConfigurationPage::icon() const {
+	@brief GeneralConfigurationPage::icon
+	@return The icon of this page
+*/
+QIcon GeneralConfigurationPage::icon() const
+{
 	return(QET::Icons::Settings);
 }
 
 /**
- * @brief GeneralConfigurationPage::fillLang
- * fill all available lang
- */
+	@brief GeneralConfigurationPage::fillLang
+	fill all available lang
+*/
 void GeneralConfigurationPage::fillLang()
 {
-	ui->m_lang_cb->addItem(QET::Icons::translation,  tr("Système"), "system");
+	ui->m_lang_cb->addItem(QET::Icons::translation,	tr("Système"), "system");
 	ui->m_lang_cb->insertSeparator(1);
 
 		// all lang available on lang directory
-	ui->m_lang_cb->addItem(QET::Icons::ar,           tr("Arabe"), "ar");
-	ui->m_lang_cb->addItem(QET::Icons::br,           tr("Brézilien"), "pt_br");
-	ui->m_lang_cb->addItem(QET::Icons::catalonia,    tr("Catalan"), "ca");
-	ui->m_lang_cb->addItem(QET::Icons::cs,           tr("Tchèque"), "cs");
-	ui->m_lang_cb->addItem(QET::Icons::de,           tr("Allemand"), "de");
-	ui->m_lang_cb->addItem(QET::Icons::da,           tr("Danois"), "da");
-	ui->m_lang_cb->addItem(QET::Icons::gr,           tr("Grec"), "el");
-	ui->m_lang_cb->addItem(QET::Icons::en,           tr("Anglais"), "en");
-	ui->m_lang_cb->addItem(QET::Icons::es,           tr("Espagnol"), "es");
-	ui->m_lang_cb->addItem(QET::Icons::fr,           tr("Français"), "fr");
-	ui->m_lang_cb->addItem(QET::Icons::hr,           tr("Croate"), "hr");
-	ui->m_lang_cb->addItem(QET::Icons::it,           tr("Italien"), "it");
-	ui->m_lang_cb->addItem(QET::Icons::pl,           tr("Polonais"), "pl");
-	ui->m_lang_cb->addItem(QET::Icons::pt,           tr("Portugais"), "pt");
-	ui->m_lang_cb->addItem(QET::Icons::ro,           tr("Roumains"), "ro");
-	ui->m_lang_cb->addItem(QET::Icons::ru,           tr("Russe"), "ru");
-	ui->m_lang_cb->addItem(QET::Icons::sl,           tr("Slovène"), "sl");
-	ui->m_lang_cb->addItem(QET::Icons::nl,           tr("Pays-Bas"), "nl");
-	ui->m_lang_cb->addItem(QET::Icons::no,           tr("Norvege"), "nb");
-	ui->m_lang_cb->addItem(QET::Icons::be,           tr("Belgique-Flemish"), "be");
-	ui->m_lang_cb->addItem(QET::Icons::tr,           tr("Turc"), "tr");
-	ui->m_lang_cb->addItem(QET::Icons::hu,           tr("Hongrois"), "hu");
+	ui->m_lang_cb->addItem(QET::Icons::ar,		tr("Arabe"), "ar");
+	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brézilien"), "pt_br");
+	ui->m_lang_cb->addItem(QET::Icons::catalonia,	tr("Catalan"), "ca");
+	ui->m_lang_cb->addItem(QET::Icons::cs,		tr("Tchèque"), "cs");
+	ui->m_lang_cb->addItem(QET::Icons::de,		tr("Allemand"), "de");
+	ui->m_lang_cb->addItem(QET::Icons::da,		tr("Danois"), "da");
+	ui->m_lang_cb->addItem(QET::Icons::gr,		tr("Grec"), "el");
+	ui->m_lang_cb->addItem(QET::Icons::en,		tr("Anglais"), "en");
+	ui->m_lang_cb->addItem(QET::Icons::es,		tr("Espagnol"), "es");
+	ui->m_lang_cb->addItem(QET::Icons::fr,		tr("Français"), "fr");
+	ui->m_lang_cb->addItem(QET::Icons::hr,		tr("Croate"), "hr");
+	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italien"), "it");
+	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japonais"), "ja");
+	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polonais"), "pl");
+	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portugais"), "pt");
+	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Roumains"), "ro");
+	ui->m_lang_cb->addItem(QET::Icons::ru,		tr("Russe"), "ru");
+	ui->m_lang_cb->addItem(QET::Icons::sl,		tr("Slovène"), "sl");
+	ui->m_lang_cb->addItem(QET::Icons::nl,		tr("Pays-Bas"), "nl");
+	ui->m_lang_cb->addItem(QET::Icons::no,		tr("Norvege"), "nb");
+	ui->m_lang_cb->addItem(QET::Icons::be,		tr("Belgique-Flemish"), "be");
+	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turc"), "tr");
+	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hongrois"), "hu");
 
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system
@@ -300,9 +297,9 @@ void GeneralConfigurationPage::fillLang()
 }
 
 /**
- * @brief GeneralConfigurationPage::on_m_font_pb_clicked
- * Apply font to config
- */
+	@brief GeneralConfigurationPage::on_m_font_pb_clicked
+	Apply font to config
+*/
 void GeneralConfigurationPage::on_m_font_pb_clicked()
 {
 	bool ok;
@@ -315,16 +312,16 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 		settings.setValue("diagramitemweight", font.weight());
 		settings.setValue("diagramitemstyle", font.styleName());
 		QString fontInfos = settings.value("diagramitemfont").toString() + " " +
-                            settings.value("diagramitemsize").toString() + " (" +
-                            settings.value("diagramitemstyle").toString() + ")";
-        ui->m_font_pb->setText(fontInfos);
+				settings.value("diagramitemsize").toString() + " (" +
+				settings.value("diagramitemstyle").toString() + ")";
+		ui->m_font_pb->setText(fontInfos);
 	}
 }
 
 /**
- * @brief GeneralConfigurationPage::m_dyn_text_font_pb_clicked
- *  Apply font to config
- */
+	@brief GeneralConfigurationPage::m_dyn_text_font_pb_clicked
+	 Apply font to config
+*/
 void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 {
 	bool ok;
@@ -341,31 +338,11 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 }
 
 
-/**
- * @brief GeneralConfigurationPage::on_m_folio_list_pb_clicked
- * Apply font to summary pages
- */
-void GeneralConfigurationPage::on_m_folio_list_pb_clicked()
-{
-	bool ok;
-	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
-	if (ok)
-	{
-		settings.setValue("foliolistfont", font.family());
-		settings.setValue("foliolistsize", font.pointSize());
-		settings.setValue("foliolistweight", font.weight());
-		settings.setValue("folioliststyle", font.styleName());
-		QString fontInfos = settings.value("foliolistfont").toString() + " " +
-                            settings.value("foliolistsize").toString() + " (" +
-                            settings.value("folioliststyle").toString() + ")";
-        ui->m_folio_list_pb->setText(fontInfos);
-	}
-}
+
 
 void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
 {
-    if (index == 1)
+	if (index == 1)
 	{
 		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection commune"), QDir::homePath());
 		if (!path.isEmpty()) {
@@ -379,7 +356,7 @@ void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int 
 
 void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int index)
 {
-    if (index == 1)
+	if (index == 1)
 	{
 		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QDir::homePath());
 		if (!path.isEmpty()) {
@@ -393,7 +370,7 @@ void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int 
 
 void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int index)
 {
-    if (index == 1)
+	if (index == 1)
 	{
 		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches utilisateur"), QDir::homePath());
 		if (!path.isEmpty()) {

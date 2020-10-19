@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="14" version="0.5" hotspot_y="24" link_type="simple" width="30" orientation="dyyy" height="30">
+<definition type="element" hotspot_x="14" version="0.5" hotspot_y="24" link_type="simple" width="30" height="30">
     <uuid uuid="{ac0b702f-5be7-4986-b7ab-5871ec767f25}"/>
     <names>
         <name lang="fr">connecteur interne</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="0" hotspot_y="5" version="0.70" width="20" type="element" height="20">
+<definition link_type="simple" hotspot_x="0" hotspot_y="5" version="0.70" width="20" type="element" height="20">
     <uuid uuid="{f0b2ee25-0162-4e99-8799-6358ec4c0074}"/>
     <names>
         <name lang="fr">Enroulement triphasé, en T</name>

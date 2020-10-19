@@ -1,4 +1,4 @@
-<definition width="70" height="50" type="element" hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+<definition width="70" height="50" type="element" hotspot_x="35" version="0.70" link_type="simple" hotspot_y="45">
     <uuid uuid="{f76564a2-a8b7-4fb2-919c-bd7849b34269}"/>
     <names>
         <name lang="de">Drehwinkelgeber</name>

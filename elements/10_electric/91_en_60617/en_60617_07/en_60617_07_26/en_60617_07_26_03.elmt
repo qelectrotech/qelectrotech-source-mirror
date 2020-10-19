@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="170" height="70" hotspot_y="34" hotspot_x="65" version="0.70" link_type="simple">
+<definition type="element" width="170" height="70" hotspot_y="34" hotspot_x="65" version="0.70" link_type="simple">
     <uuid uuid="{6f8e213b-b446-4976-af94-3ac8e4ebf53a}"/>
     <names>
         <name lang="de">3 poliges thermisches Überlastrelais</name>

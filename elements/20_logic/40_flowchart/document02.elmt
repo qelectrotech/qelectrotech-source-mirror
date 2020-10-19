@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="15" version="0.5" hotspot_y="28" link_type="simple" width="90" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="28" link_type="simple" width="90" height="80">
     <uuid uuid="{d0792cbd-6fd8-4457-a76f-f1ceca5e60ad}"/>
     <names>
         <name lang="el">Έγγραφο</name>

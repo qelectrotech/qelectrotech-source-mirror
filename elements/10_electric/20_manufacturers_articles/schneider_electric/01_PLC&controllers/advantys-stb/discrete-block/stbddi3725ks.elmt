@@ -1,4 +1,4 @@
-<definition link_type="simple" height="290" hotspot_y="125" width="60" type="element" version="0.70" orientation="dyyy" hotspot_x="14">
+<definition link_type="simple" height="290" hotspot_y="125" width="60" type="element" version="0.70" hotspot_x="14">
     <uuid uuid="{82c96885-4bef-4807-8578-338249d4fc08}"/>
     <names>
         <name lang="en">digital in STBDDI3725KS</name>

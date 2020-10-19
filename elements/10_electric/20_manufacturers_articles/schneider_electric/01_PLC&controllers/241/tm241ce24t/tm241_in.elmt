@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="495" hotspot_y="46" height="90" width="1010" orientation="dyyy" version="0.5" type="element">
+<definition link_type="simple" hotspot_x="495" hotspot_y="46" height="90" width="1010" version="0.5" type="element">
     <uuid uuid="{010AE4AF-66E1-4E90-864B-A25443A4C5A6}"/>
     <names>
         <name lang="fr">Cartes entrées M241 Schneider 1/2</name>

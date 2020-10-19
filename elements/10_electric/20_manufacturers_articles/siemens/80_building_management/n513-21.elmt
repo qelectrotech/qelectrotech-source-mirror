@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="46" height="100" version="0.5" width="410" hotspot_x="39" link_type="master">
+<definition type="element" hotspot_y="46" height="100" version="0.5" width="410" hotspot_x="39" link_type="master">
     <uuid uuid="{074379bc-ad09-468d-99d8-5414d14dacf9}"/>
     <names>
         <name lang="be">N513/21 uitbreidingsmodule op N513/11</name>

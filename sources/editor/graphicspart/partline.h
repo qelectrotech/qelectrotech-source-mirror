@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -63,9 +63,9 @@ class PartLine : public CustomElementGraphicPart
 		enum { Type = UserType + 1104 };
 	
 		 /**
-		  * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartLine.
-		  * @return the QGraphicsItem type
-		  */
+			Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartLine.
+			@return the QGraphicsItem type
+		 */
 		int type() const override { return Type; }
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name() const override { return(QObject::tr("ligne", "element part name")); }
@@ -110,10 +110,8 @@ class PartLine : public CustomElementGraphicPart
 		void removeHandler();
 		
 		QPainterPath path() const;
-		QList<QPointF> fourShapePoints() const;
 		QRectF firstEndCircleRect() const;
 		QRectF secondEndCircleRect() const;
-		void debugPaint(QPainter *);
 
 		/*****************/
 		Qet::EndType first_end;

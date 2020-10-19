@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,15 +22,16 @@
 #include <QValidator>
 #include "numerotationcontext.h"
 
-/**
- *This class represent a single part num widget. By this widget, we can define and edit
- *how the num auto must work .
- *This widget is called by selectautonumw.
- */
 namespace Ui {
 	class NumPartEditorW;
 }
 
+/**
+	@brief The NumPartEditorW class
+	This class represent a single part num widget.
+	By this widget, we can define and edit how the num auto must work.
+	This widget is called by selectautonumw.
+*/
 class NumPartEditorW : public QWidget
 {
 	Q_OBJECT
@@ -38,7 +39,10 @@ class NumPartEditorW : public QWidget
 		//METHODS
 	public:
 		explicit NumPartEditorW(int type, QWidget *parent = nullptr);
-		NumPartEditorW (NumerotationContext &, int, int type, QWidget *parent=nullptr);
+		NumPartEditorW (NumerotationContext &,
+				int,
+				int type,
+				QWidget *parent=nullptr);
 		~NumPartEditorW() override;
 
 		enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
@@ -66,7 +70,7 @@ class NumPartEditorW : public QWidget
 	private:
 		Ui::NumPartEditorW *ui;
 		QValidator *intValidator;
-		int m_edited_type = -1; //0 == element : 1 == conductor : 2 == folio
+		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio
 	
 
 

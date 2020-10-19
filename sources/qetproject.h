@@ -1,22 +1,25 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef QET_PROJECT_H
 #define QET_PROJECT_H
+
+#include <KAutoSaveFile>
+#include <QHash>
 
 #include "nameslist.h"
 #include "elementslocation.h"
@@ -60,7 +63,7 @@ class QETProject : public QObject
 		};
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
-	
+
 		// constructors, destructor
 	public:
 		QETProject (QObject *parent = nullptr);
@@ -70,15 +73,13 @@ class QETProject : public QObject
 
 	private:
 		QETProject(const QETProject &);
-	
+
 		// methods
 	public:
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
-		int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
-		void setFolioSheetsQuantity(int);   /// set the folio sheets quantity for this project
 		int folioIndex(const Diagram *) const;
 		XmlElementCollection *embeddedElementCollection()const;
 		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
@@ -166,14 +167,13 @@ class QETProject : public QObject
 		DiagramContext projectProperties();
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
-	
+
 	public slots:
 		Diagram *addNewDiagram(int pos = -1);
-		QList <Diagram *> addNewDiagramFolioList();
 		void removeDiagram(Diagram *);
 		void diagramOrderChanged(int, int);
 		void setModified(bool);
-	
+
 	signals:
 		void projectFilePathChanged(QETProject *, const QString &);
 		void projectTitleChanged(QETProject *, const QString &);
@@ -196,14 +196,14 @@ class QETProject : public QObject
 		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
-	
+
 	private slots:
 		void updateDiagramsFolioData();
 		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void usedTitleBlockTemplateChanged(const QString &);
 		void undoStackChanged (bool a) {if (!a) setModified(true);}
-	
+
 	private:
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
@@ -218,7 +218,7 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
-	
+
 	// attributes
 	private:
 			/// File path this project is saved to
@@ -261,15 +261,13 @@ class QETProject : public QObject
 			/// Element Auto Numbering
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
-			/// Folio List Sheets quantity for this project.
-		int m_folio_sheets_quantity = 0;
 		bool m_auto_conductor = true;
 		XmlElementCollection *m_elements_collection = nullptr;
 		bool m_freeze_new_elements = false;
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
-		KAutoSaveFile *m_backup_file = nullptr;
+		KAutoSaveFile m_backup_file;
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
 };

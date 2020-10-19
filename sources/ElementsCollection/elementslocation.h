@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,15 +32,22 @@ class QETProject;
 class XmlElementCollection;
 
 /**
+	@brief The ElementsLocation class
+	This class represents the location,
+	the location of an element or of a category,
+	even of a collection ... in a collection.
+	She encapsulates a virtual path.
+	\~French
 	Cette classe represente la localisation, l'emplacement d'un element ou
-	d'une categorie, voire d'une collection... dans une collection. Elle
-	encapsule un chemin virtuel.
+	d'une categorie, voire d'une collection... dans une collection.
+	Elle encapsule un chemin virtuel.
 */
 class ElementsLocation
 {
 	public:
 		ElementsLocation();
-		ElementsLocation(const QString &path, QETProject *project = nullptr);
+		ElementsLocation(const QString &path,
+				 QETProject *project = nullptr);
 		ElementsLocation(const ElementsLocation &);
 		ElementsLocation(const QMimeData *data);
 		virtual ~ElementsLocation();

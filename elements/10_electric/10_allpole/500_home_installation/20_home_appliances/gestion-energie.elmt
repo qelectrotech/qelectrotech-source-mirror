@@ -1,0 +1,46 @@
+<definition link_type="simple" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
+    <uuid uuid="{6223064e-0744-4b38-ac4c-bb9be77cea74}"/>
+    <names>
+        <name lang="nl">Energiemanagement</name>
+        <name lang="fr">Gestion Énergie</name>
+        <name lang="en">Energy management</name>
+        <name lang="de">Energieverwaltung</name>
+        <name lang="pl">Zarządzanie enerią</name>
+        <name lang="cs">Hospodaření s energií</name>
+        <name lang="it">Gestione Energia</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="6" uuid="{1220d352-052d-4f72-b2e4-cff5ab11902e}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="7" uuid="{94f31f3e-06ec-4db2-9a88-2d14a2a9573b}" text_from="UserText" y="-63" Halignment="AlignLeft">
+            <text>Coffret</text>
+        </dynamic_text>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-30" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" height="6" width="6" start="-180" x="57" y="-154"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:red;color:black" x="54" diameter="12" y="-116"/>
+        <rect antialias="false" style="line-style:normal;line-weight:thin;filling:red;color:black" height="15" width="6" ry="0" x="57" rx="0" y="-130"/>
+        <text text="°C" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="73" y="-135" color="#000000"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="34" uuid="{1b772a86-21a0-4577-82d9-ad672f25c951}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="37" uuid="{92f18812-2cbb-49ca-8623-e7317e07283a}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="38" uuid="{2286cf29-fb06-454b-aac5-fbfec1bcccbe}" text_from="UserText" y="-81.5" Halignment="AlignLeft">
+            <text>Gestion Énergie</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-116" length2="1.5" length1="1.5" x2="57" y1="-150" x1="57" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-116" length2="1.5" length1="1.5" x2="63" y1="-150" x1="63" end2="none"/>
+        <terminal orientation="n" name="" x="50" uuid="{e96dc82e-f597-47dc-8040-5606515e884e}" y="-160"/>
+        <terminal orientation="n" name="" x="70" uuid="{74549a99-4cbc-48fe-9e1a-569759eab2ba}" y="-160"/>
+    </description>
+</definition>

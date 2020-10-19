@@ -1,4 +1,4 @@
-<definition hotspot_y="19" type="element" link_type="terminal" orientation="dyyy" hotspot_x="38" width="70" height="40" version="0.51">
+<definition hotspot_y="19" type="element" link_type="terminal" hotspot_x="38" width="70" height="40" version="0.51">
     <uuid uuid="{17b11441-e4f6-4282-a30e-3bb2177c8cd0}"/>
     <names>
         <name lang="fr">Tube Cu gaz</name>

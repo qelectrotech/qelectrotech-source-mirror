@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2013 QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -21,10 +21,10 @@
 #include "imagepropertieswidget.h"
 
 /**
- * @brief DiagramImageItem::DiagramImageItem
- * Constructor without pixmap
- * @param parent_item the parent graphics item
- */
+	@brief DiagramImageItem::DiagramImageItem
+	Constructor without pixmap
+	@param parent_item the parent graphics item
+*/
 DiagramImageItem::DiagramImageItem(QetGraphicsItem *parent_item):
 	QetGraphicsItem(parent_item)
 {
@@ -32,11 +32,11 @@ DiagramImageItem::DiagramImageItem(QetGraphicsItem *parent_item):
 }
 
 /**
- * @brief DiagramImageItem::DiagramImageItem
- * Constructor with pixmap
- * @param pixmap the pixmap to be draw
- * @param parent_item the parent graphic item
- */
+	@brief DiagramImageItem::DiagramImageItem
+	Constructor with pixmap
+	@param pixmap the pixmap to be draw
+	@param parent_item the parent graphic item
+*/
 DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *parent_item):
 	QetGraphicsItem(parent_item),
 	pixmap_(pixmap)
@@ -46,19 +46,20 @@ DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *paren
 }
 
 /**
- * @brief DiagramImageItem::~DiagramImageItem
- * Destructor
- */
-DiagramImageItem::~DiagramImageItem() {
+	@brief DiagramImageItem::~DiagramImageItem
+	Destructor
+*/
+DiagramImageItem::~DiagramImageItem()
+{
 }
 
 /**
- * @brief DiagramImageItem::paint
- * Draw the pixmap.
- * @param painter the Qpainter to use for draw the pixmap
- * @param option the style option
- * @param widget the QWidget where we draw the pixmap
- */
+	@brief DiagramImageItem::paint
+	Draw the pixmap.
+	@param painter the Qpainter to use for draw the pixmap
+	@param option the style option
+	@param widget the QWidget where we draw the pixmap
+*/
 void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	painter -> drawPixmap(pixmap_.rect(),pixmap_);
 
@@ -70,7 +71,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> setRenderHint(QPainter::Antialiasing,          false);
 		painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 		painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-        // Dessin du cadre de selection en noir à partir du boundingrect
+		// Dessin du cadre de selection en noir à partir du boundingrect
 		QPen t(Qt::black);
 		t.setStyle(Qt::DashLine);
 		painter -> setPen(t);
@@ -80,9 +81,9 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 }
 
 /**
- * @brief DiagramImageItem::editProperty
- * Open the approriate dialog to edit this image
- */
+	@brief DiagramImageItem::editProperty
+	Open the approriate dialog to edit this image
+*/
 void DiagramImageItem::editProperty()
 {
 	if (diagram() -> isReadOnly()) return;
@@ -91,22 +92,23 @@ void DiagramImageItem::editProperty()
 }
 
 /**
- * @brief DiagramImageItem::setPixmap
- * Set the new pixmap to be draw
- * @param pixmap the new pixmap
- */
+	@brief DiagramImageItem::setPixmap
+	Set the new pixmap to be draw
+	@param pixmap the new pixmap
+*/
 void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
 	pixmap_ = pixmap;
 	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
- * @brief DiagramImageItem::boundingRect
- * the outer bounds of the item as a rectangle,
- * if no pixmap are set, return a default QRectF
- * @return a QRectF represent the bounding rectangle
- */
-QRectF DiagramImageItem::boundingRect() const {
+	@brief DiagramImageItem::boundingRect
+	the outer bounds of the item as a rectangle,
+	if no pixmap are set, return a default QRectF
+	@return a QRectF represent the bounding rectangle
+*/
+QRectF DiagramImageItem::boundingRect() const
+{
 	if (!pixmap_.isNull()) {
 		return (QRectF(pixmap_.rect()));
 	} else {
@@ -116,19 +118,20 @@ QRectF DiagramImageItem::boundingRect() const {
 }
 
 /**
- * @brief DiagramImageItem::name
- * @return the generic name of this item (picture)
- */
-QString DiagramImageItem::name() const {
+	@brief DiagramImageItem::name
+	@return the generic name of this item (picture)
+*/
+QString DiagramImageItem::name() const
+{
 	return tr("une image");
 }
 
 /**
- * @brief DiagramImageItem::fromXml
- * Load this image fro xml elemebt @e
- * @param e
- * @return true if succesfully load.
- */
+	@brief DiagramImageItem::fromXml
+	Load this image fro xml elemebt e
+	@param e
+	@return true if succesfully load.
+*/
 bool DiagramImageItem::fromXml(const QDomElement &e)
 {
 	if (e.tagName() != "image") {
@@ -140,11 +143,11 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 		return (false);
 	}
 
-		//load xml image to QByteArray
+	//load xml image to QByteArray
 	QByteArray array;
 	array = QByteArray::fromBase64(e.text().toLatin1());
 
-		//Set QPixmap from the @array
+	//Set QPixmap from the array
 	QPixmap pixmap;
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);
@@ -163,7 +166,8 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	@param document Le document XML a utiliser
 	@return L'element XML representant l'image
 */
-QDomElement DiagramImageItem::toXml(QDomDocument &document) const {
+QDomElement DiagramImageItem::toXml(QDomDocument &document) const
+{
 	QDomElement result = document.createElement("image");
 	//write some attribute
 	result.setAttribute("x", QString::number(pos().x()));

@@ -1,4 +1,4 @@
-<definition width="150" height="200" type="element" link_type="simple" hotspot_x="68" hotspot_y="94" orientation="dyyy" version="0.5">
+<definition width="150" height="200" type="element" link_type="simple" hotspot_x="68" hotspot_y="94" version="0.5">
     <uuid uuid="{a681dbe0-3670-4eb3-92e0-15d60820f062}"/>
     <names>
         <name lang="cs">X-GSM</name>

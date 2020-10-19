@@ -1,0 +1,33 @@
+<definition link_type="simple" type="element" height="60" width="40" hotspot_y="34" version="0.80" hotspot_x="20">
+    <uuid uuid="{72fab75c-53f0-49ae-993b-62959e5d171d}"/>
+    <names>
+        <name lang="nl">VAr energie meter</name>
+        <name lang="fr">Varheuremètre</name>
+        <name lang="el">Μετρητής αέργου ισχύος (βαρόμετρο)</name>
+        <name lang="en">reactive energy meter</name>
+        <name lang="de">Blindverbrauchszähler</name>
+        <name lang="pl">Licznik warogodzin</name>
+        <name lang="cs">Měřič hodin jalového výkonu (varhodin)</name>
+        <name lang="it">Misuratore di varh</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="18" z="1" uuid="{8416f61b-53c9-4b63-ac6f-13a011b22354}" text_from="ElementInfo" y="-20.95" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="26" width="30" ry="0" x="-15" rx="0" y="-14"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" width="30" ry="0" x="-15" rx="0" y="-22"/>
+        <text text="varh" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" x="-12" y="4" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-22" length2="1.5" length1="1.5" x2="-10" y1="-30" x1="-10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-22" length2="1.5" length1="1.5" x2="10" y1="-30" x1="10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="20" length2="1.5" length1="1.5" x2="-10" y1="12" x1="-10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="20" length2="1.5" length1="1.5" x2="10" y1="13" x1="10" end2="none"/>
+        <terminal orientation="n" name="" x="10" uuid="{50652be6-92b3-4320-a2f6-895bb52b7583}" y="-30"/>
+        <terminal orientation="s" name="" x="10" uuid="{a8f1556e-e8ba-4f17-ab11-cbbcfde7c2e5}" y="20"/>
+        <terminal orientation="n" name="" x="-10" uuid="{53c40b71-e9d6-43e8-91ed-753e115296eb}" y="-30"/>
+        <terminal orientation="s" name="" x="-10" uuid="{8b99cbb4-f3ad-4068-b148-ad59d6d92329}" y="20"/>
+    </description>
+</definition>

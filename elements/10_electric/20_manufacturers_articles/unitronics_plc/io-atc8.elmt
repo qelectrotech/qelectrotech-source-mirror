@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="52" width="630" height="110" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="52" width="630" height="110" link_type="simple" hotspot_x="15">
     <uuid uuid="{c7648f05-c193-40c9-85d2-8071e877e239}"/>
     <names>
         <name lang="en">IO-ATC8</name>

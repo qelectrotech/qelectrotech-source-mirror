@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" height="80">
     <uuid uuid="{5a3bb8a6-5e18-4f09-a771-838029d6c5d0}"/>
     <names>
         <name lang="de">ODER 3 Eingänge</name>

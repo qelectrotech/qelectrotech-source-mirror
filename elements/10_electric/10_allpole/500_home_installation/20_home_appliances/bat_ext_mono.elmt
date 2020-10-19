@@ -1,0 +1,50 @@
+<definition hotspot_x="5" hotspot_y="176" width="130" version="0.80" type="element" height="180" link_type="master">
+    <uuid uuid="{c996c312-8a23-4674-9b48-26e6af99d28d}"/>
+    <names>
+        <name lang="fr">Bât Ext mono</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect y="-85" x="0" rx="0" width="120" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="85"/>
+        <line length1="1.5" y1="-15" end1="none" end2="none" x1="0" length2="1.5" y2="-15" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text y="-44" x="29" Valignment="AlignTop" text_width="-1" uuid="{2ee02e1d-a5ea-421a-b439-e3a0ead41c27}" Halignment="AlignLeft" frame="false" text_from="UserText" z="5" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0">
+            <text>10</text>
+        </dynamic_text>
+        <text y="-18" text=" kA C" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <dynamic_text y="-63" x="-2" Valignment="AlignTop" text_width="-1" uuid="{70653ff3-98e3-4dd1-bff0-f5db820e5260}" Halignment="AlignLeft" frame="false" text_from="UserText" z="8" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0">
+            <text>Local</text>
+        </dynamic_text>
+        <line length1="1.5" y1="-45" end1="none" end2="none" x1="0" length2="1.5" y2="-45" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-65" end1="none" end2="none" x1="0" length2="1.5" y2="-65" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text y="-32" text="A" x="66" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <line length1="1.5" y1="-160" end1="none" end2="none" x1="60" length2="1.5" y2="-135" x2="35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-160" end1="none" end2="none" x1="60" length2="1.5" y2="-135" x2="85" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-140" end1="none" end2="none" x1="40" length2="1.5" y2="-100" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-100" end1="none" end2="none" x1="40" length2="1.5" y2="-100" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-100" end1="none" end2="none" x1="80" length2="1.5" y2="-140" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-100" end1="none" end2="none" x1="50" length2="1.5" y2="-125" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-125" end1="none" end2="none" x1="50" length2="1.5" y2="-125" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-125" end1="none" end2="none" x1="70" length2="1.5" y2="-100" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-170" end1="none" end2="none" x1="50" length2="1.5" y2="-150" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line length1="1.5" y1="-170" end1="none" end2="none" x1="70" length2="1.5" y2="-150" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text y="-12" x="58" Valignment="AlignTop" text_width="-1" uuid="{be33f398-4de3-4bb9-b2b9-2917aa820c30}" Halignment="AlignLeft" frame="false" text_from="UserText" z="38" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0">
+            <text> mm²</text>
+        </dynamic_text>
+        <dynamic_text y="-13.5" x="28" Valignment="AlignTop" text_width="-1" uuid="{b19f3d05-3fd9-4e86-8784-f9d35c2fb994}" Halignment="AlignLeft" frame="false" text_from="UserText" z="39" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text y="-28.5" x="30" Valignment="AlignTop" text_width="-1" uuid="{52e4fc03-f95f-49d0-8bf9-b0325fd4ad7f}" Halignment="AlignLeft" frame="false" text_from="UserText" z="40" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text y="-81.5" x="-2" Valignment="AlignTop" text_width="-1" uuid="{d70238fe-9e72-4b3f-a3ab-491ba8e3372c}" Halignment="AlignLeft" frame="false" text_from="UserText" z="41" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0">
+            <text>Bâtiment extérieur</text>
+        </dynamic_text>
+        <terminal y="-100" x="60" name="" orientation="s" uuid="{7952be86-3060-4cc0-a781-ac00d7e59a10}"/>
+        <terminal y="-170" x="70" name="" orientation="n" uuid="{2c7f1e9b-9e1f-4e67-b3f6-57af9d1e7f67}"/>
+        <terminal y="-170" x="50" name="" orientation="n" uuid="{523f90d3-a9c6-4f37-a8c3-a96ba3d9e03d}"/>
+    </description>
+</definition>

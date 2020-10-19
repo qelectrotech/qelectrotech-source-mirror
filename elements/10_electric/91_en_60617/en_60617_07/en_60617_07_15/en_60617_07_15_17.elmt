@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="100" height="50" hotspot_y="24" hotspot_x="36" version="0.70" link_type="simple">
+<definition type="element" width="100" height="50" hotspot_y="24" hotspot_x="36" version="0.70" link_type="simple">
     <uuid uuid="{a66661f0-2ac5-4199-97e9-95e4ddda8bc2}"/>
     <names>
         <name lang="de">polarisiertes Relais mit neutraler Mittelstellung,

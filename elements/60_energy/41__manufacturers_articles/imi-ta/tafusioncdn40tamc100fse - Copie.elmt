@@ -1,4 +1,4 @@
-<definition width="200" orientation="dyyy" link_type="simple" type="element" hotspot_y="170" hotspot_x="54" version="0.80" height="250">
+<definition width="200" link_type="simple" type="element" hotspot_y="170" hotspot_x="54" version="0.80" height="250">
     <uuid uuid="{661a9ee9-5429-45aa-abb1-6335d39bfcc4}"/>
     <names>
         <name lang="fr">tafusioncdn40tamc100fse</name>

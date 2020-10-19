@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="90" height="70" hotspot_y="55" hotspot_x="35" version="0.70" link_type="simple">
+<definition type="element" width="90" height="70" hotspot_y="55" hotspot_x="35" version="0.70" link_type="simple">
     <uuid uuid="{ba198749-0bbb-4b15-93c2-208cb0356455}"/>
     <names>
         <name lang="de">näherungsempfindliche Einrichtung,

@@ -1,4 +1,4 @@
-<definition hotspot_x="35" link_type="simple" version="0.70" height="270" hotspot_y="135" type="element" orientation="dyyy" width="70">
+<definition hotspot_x="35" link_type="simple" version="0.70" height="270" hotspot_y="135" type="element" width="70">
     <uuid uuid="{66ba5ec7-c189-4c8e-a6c9-ce7d315a75e3}"/>
     <names>
         <name lang="fr">Bosch Rexroth SLC-3-CPU000300 ;Safe Logic Compact, module CPU de sécurité avec interfaces RS232 et FlexBus, tension d'alim. 24VDC</name>

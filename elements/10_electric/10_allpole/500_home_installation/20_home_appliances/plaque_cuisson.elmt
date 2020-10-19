@@ -1,0 +1,37 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{883d8f55-8c00-4d25-9dd0-a0d5dffa0194}"/>
+    <names>
+        <name lang="ru">Эл. плита</name>
+        <name lang="cs">Deska na vaření</name>
+        <name lang="es">Placa de cocina</name>
+        <name lang="pl">Kuchenka elektryczna</name>
+        <name lang="ar">لوحة طبخ</name>
+        <name lang="de">Herdplatte</name>
+        <name lang="en">Solid plate</name>
+        <name lang="el">Κεραμική εστία</name>
+        <name lang="nl">Inductieplaat</name>
+        <name lang="it">Fornelli</name>
+        <name lang="fr">Plaque de cuisson</name>
+        <name lang="pt">Placa de fogão</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="12" uuid="{fe72d015-df6c-49bb-b156-06d1855a4275}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-12" antialias="false" y3="23" x2="-12" y1="-1" y2="23" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" x4="12"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="-8.5" diameter="7" y="13.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="true" x="0.5" diameter="9" y="12.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="true" x="-9.5" diameter="9" y="2.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="true" x="1.5" diameter="7" y="3.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-1" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="23" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{b2c4ba2f-173f-4ca9-ace1-2c5b92f93bae}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{0a68f4bc-4934-40b2-ac11-c233acb77e44}"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{57d26b67-b059-44d1-9cbb-788e2f6f8ed6}"/>
+    </description>
+</definition>

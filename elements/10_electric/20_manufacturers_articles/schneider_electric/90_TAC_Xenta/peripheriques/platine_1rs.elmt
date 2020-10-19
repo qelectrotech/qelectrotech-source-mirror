@@ -1,4 +1,4 @@
-<definition width="70" height="120" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+<definition width="70" height="120" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element">
     <uuid uuid="{28bf02d4-57dc-4f5b-be05-2ae410b7727c}"/>
     <names>
         <name lang="cs">Deska 1RS</name>

@@ -1,4 +1,4 @@
-<definition width="60" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="60" hotspot_y="23" type="element">
+<definition width="60" link_type="simple" version="0.5" hotspot_x="25" height="60" hotspot_y="23" type="element">
     <uuid uuid="{291fc0d7-cc36-4f89-a4f8-e7bef74d95be}"/>
     <names>
         <name lang="nl">DIN 2 pin, luidspreker</name>

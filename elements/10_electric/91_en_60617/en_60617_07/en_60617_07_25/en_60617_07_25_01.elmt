@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="30" height="50" hotspot_y="24" hotspot_x="15" version="0.70" link_type="simple">
+<definition type="element" width="30" height="50" hotspot_y="24" hotspot_x="15" version="0.70" link_type="simple">
     <uuid uuid="{6f3f7cf5-4f86-4ba6-91ad-6885f0c8b402}"/>
     <names>
         <name lang="de">elektronischer Schalter, allgemein</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="51" height="150" width="110" hotspot_y="70" version="0.70">
+<definition link_type="simple" type="element" hotspot_x="51" height="150" width="110" hotspot_y="70" version="0.70">
     <uuid uuid="{fa2a609e-e9ec-496f-ae7a-b54eabf136de}"/>
     <names>
         <name lang="de">Spannungswandler</name>

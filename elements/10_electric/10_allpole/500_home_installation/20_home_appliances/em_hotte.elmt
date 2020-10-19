@@ -1,0 +1,54 @@
+<definition link_type="simple" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
+    <uuid uuid="{27cec05a-dd9a-41e3-a11c-917cf5e79d97}"/>
+    <names>
+        <name lang="fr">Hotte</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="5" uuid="{403afc19-36b9-4372-916f-1a9f0e6f9b84}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>16</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="7" uuid="{ca174203-6209-4d1c-8d4b-026e32f51ec0}" text_from="UserText" y="-63" Halignment="AlignLeft">
+            <text>Cuisine</text>
+        </dynamic_text>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-30" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-125" length2="1.5" length1="1.5" x2="90" y1="-125" x1="30" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" angle="-180" height="10" width="30" start="-180" x="30" y="-130"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" angle="-180" height="30" width="10" start="90" x="55" y="-155"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" angle="-180" height="10" width="30" start="0" x="60" y="-130"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" height="30" width="10" start="-90" x="55" y="-125"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="60" width="60" start="70" x="30" y="-155"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="60" width="60" start="-20" x="30" y="-155"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="60" width="60" start="-110" x="30" y="-154"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="60" width="60" start="-200" x="30" y="-155"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-40" height="30" width="30" start="60" x="45" y="-140"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-40" height="30" width="30" start="-30" x="45" y="-140"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-40" height="30" width="30" start="-120" x="45" y="-140"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-40" height="30" width="30" start="-210" x="45" y="-141"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="45" width="45" start="65" x="36.5" y="-147.5"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="45" width="45" start="-20" x="37.5" y="-147.5"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="45" width="45" start="-110" x="37.5" y="-147.5"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-50" height="45" width="45" start="-200" x="38.5" y="-147.5"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="49" uuid="{fe814140-919a-41af-a6a2-0250014f3f47}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="50" uuid="{f473ac63-98bd-48c1-aa31-7a226c25964a}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="51" uuid="{13f5bbd5-8a33-4c3b-83cb-cd88cad76f07}" text_from="UserText" y="-81.5" Halignment="AlignLeft">
+            <text>Hotte</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-153" length2="1.5" length1="1.5" x2="50" y1="-160" x1="50" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-153" length2="1.5" length1="1.5" x2="70" y1="-160" x1="70" end2="none"/>
+        <terminal orientation="n" name="" x="50" uuid="{8ed22208-8758-4af3-9d48-c48e0746cd17}" y="-160"/>
+        <terminal orientation="n" name="" x="70" uuid="{4d7a08aa-fb67-4175-841a-cf05afd74ce0}" y="-160"/>
+        <terminal orientation="s" name="" x="60" uuid="{2a280cce-5305-461d-9f5a-7bf12db87e96}" y="-95"/>
+    </description>
+</definition>

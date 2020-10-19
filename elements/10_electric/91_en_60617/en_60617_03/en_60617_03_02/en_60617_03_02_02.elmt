@@ -1,4 +1,4 @@
-<definition hotspot_x="4" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="10" type="element" link_type="simple">
+<definition hotspot_x="4" version="0.70" height="10" hotspot_y="4" width="10" type="element" link_type="simple">
     <uuid uuid="{707b0bd8-0480-47b8-b00d-8e9493ce20b1}"/>
     <names>
         <name lang="fr">Borne</name>

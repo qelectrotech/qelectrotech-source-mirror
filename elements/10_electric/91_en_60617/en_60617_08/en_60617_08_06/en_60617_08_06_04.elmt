@@ -1,4 +1,4 @@
-<definition width="70" height="50" type="element" hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="44">
+<definition width="70" height="50" type="element" hotspot_x="35" version="0.70" link_type="simple" hotspot_y="44">
     <uuid uuid="{c327dee7-e320-499f-a9f7-79ec9068c33f}"/>
     <names>
         <name lang="de">Thermoelement mit nicht isoliertem

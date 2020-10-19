@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{24f8678b-f56f-42be-ba14-69cee49c7467}"/>
     <names>
         <name lang="en">Barrier filter with magnetic</name>

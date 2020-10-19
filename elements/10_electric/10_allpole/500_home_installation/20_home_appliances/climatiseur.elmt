@@ -1,0 +1,57 @@
+<definition hotspot_x="5" link_type="simple" type="element" height="170" version="0.80" hotspot_y="165" width="130">
+    <uuid uuid="{025e6dae-2241-4413-b228-c43061357843}"/>
+    <names>
+        <name lang="pl">Klimatyzator</name>
+        <name lang="fr">Climatiseur</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <line x1="70" end2="none" antialias="false" x2="70" y1="-160" length2="1.5" y2="-150" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="0" rx="0" height="85" width="120" y="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-15" length2="1.5" y2="-15" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="29" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="3" text_width="-1" Halignment="AlignLeft" y="-44" uuid="{1ecc481b-f69a-46ab-ad0d-5bb4f2de15cc}">
+            <text>20</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="4" text_width="-1" Halignment="AlignLeft" y="-63" uuid="{573c3e20-8ee2-49d7-93e2-8b5797b08b08}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" x="58" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text=" kA C" y="-18" color="#000000"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-45" length2="1.5" y2="-45" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="120" y1="-65" length2="1.5" y2="-65" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" x="66" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="A" y="-32" color="#000000"/>
+        <text rotation="0" x="58" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text=" mm²" y="-2" color="#000000"/>
+        <rect antialias="false" x="25" rx="0" height="50" width="70" y="-150" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" angle="-360" x="33" height="30" width="30" start="90" y="-140" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="41" end2="none" antialias="false" x2="55" y1="-138" length2="1.5" y2="-138" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="38" end2="none" antialias="false" x2="58" y1="-136" length2="1.5" y2="-136" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="36" end2="none" antialias="false" x2="59" y1="-134" length2="1.5" y2="-134" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="35" end2="none" antialias="false" x2="61" y1="-132" length2="1.5" y2="-132" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="34" end2="none" antialias="false" x2="62" y1="-130" length2="1.5" y2="-130" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="33" end2="none" antialias="false" x2="62" y1="-128" length2="1.5" y2="-128" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="33" end2="none" antialias="false" x2="62" y1="-126" length2="1.5" y2="-126" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="33" end2="none" antialias="false" x2="63" y1="-124" length2="1.5" y2="-124" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="33" end2="none" antialias="false" x2="62" y1="-122" length2="1.5" y2="-122" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="34" end2="none" antialias="false" x2="62" y1="-120" length2="1.5" y2="-120" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="35" end2="none" antialias="false" x2="61" y1="-118" length2="1.5" y2="-118" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="36" end2="none" antialias="false" x2="60" y1="-116" length2="1.5" y2="-116" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="38" end2="none" antialias="false" x2="58" y1="-114" length2="1.5" y2="-114" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="41" end2="none" antialias="false" x2="55" y1="-112" length2="1.5" y2="-112" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="27" text_width="-1" Halignment="AlignLeft" y="-82.5" uuid="{facf0c3c-e71b-49e1-8f73-382c017b478c}">
+            <text>Climatiseur</text>
+        </dynamic_text>
+        <line x1="50" end2="none" antialias="false" x2="50" y1="-160" length2="1.5" y2="-150" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="34" rx="0" height="1" width="2" y="-99" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="84" rx="0" height="1" width="2" y="-99" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="28" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="31" text_width="-1" Halignment="AlignLeft" y="-13.5" uuid="{08eecd9e-1608-4a77-a849-b11c01cdaf7a}">
+            <text>3 G 2.5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="UserText" rotation="0" x="30" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="32" text_width="-1" Halignment="AlignLeft" y="-28.5" uuid="{4130e06b-6af1-446a-b3df-a8259baf7283}">
+            <text>4.5</text>
+        </dynamic_text>
+        <terminal orientation="n" name="" x="50" y="-160" uuid="{2e112237-75df-47b3-bc8f-15fd0e89489f}"/>
+        <terminal orientation="s" name="" x="60" y="-100" uuid="{e323c17f-1635-4b73-898e-d07399277e39}"/>
+        <terminal orientation="n" name="" x="70" y="-160" uuid="{f827446e-eb79-4330-9e32-765e5f38e931}"/>
+    </description>
+</definition>

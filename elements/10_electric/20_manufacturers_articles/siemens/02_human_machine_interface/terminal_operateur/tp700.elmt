@@ -1,4 +1,4 @@
-<definition type="element" height="170" hotspot_x="105" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="80" width="220">
+<definition type="element" height="170" hotspot_x="105" version="0.70" link_type="simple" hotspot_y="80" width="220">
     <uuid uuid="{8eb4b555-e2ff-4f6c-a986-40708a7393eb}"/>
     <names>
         <name lang="en">Siemens TP700 (6AV2-124-0GC01-0AX0)</name>

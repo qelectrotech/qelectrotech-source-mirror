@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="110" height="420" type="element" hotspot_x="55" link_type="simple" hotspot_y="199">
+<definition version="0.51" width="110" height="420" type="element" hotspot_x="55" link_type="simple" hotspot_y="199">
     <uuid uuid="{a6f2daf7-ed98-4d18-9cba-3f63ef8129f5}"/>
     <names>
         <name lang="en">Siemens Double Motor Modul (6SL3120-2TE21-8AA3)</name>

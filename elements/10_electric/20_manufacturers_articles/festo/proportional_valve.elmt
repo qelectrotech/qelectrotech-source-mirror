@@ -1,4 +1,4 @@
-<definition width="270" hotspot_x="106" height="110" link_type="simple" orientation="dyyy" type="element" version="0.70" hotspot_y="40">
+<definition width="270" hotspot_x="106" height="110" link_type="simple" type="element" version="0.70" hotspot_y="40">
     <uuid uuid="{629ec862-dfe9-40a5-bf95-fb47c6db9d0f}"/>
     <names>
         <name lang="en">FESTO VPPM Proportional valve</name>

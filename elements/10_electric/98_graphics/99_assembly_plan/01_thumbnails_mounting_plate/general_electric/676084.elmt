@@ -1,4 +1,4 @@
-<definition width="170" type="element" hotspot_x="5" version="0.5" orientation="dyyy" hotspot_y="5" link_type="simple" height="210">
+<definition width="170" type="element" hotspot_x="5" version="0.5" hotspot_y="5" link_type="simple" height="210">
     <uuid uuid="{bafdf4e7-1afe-4b60-94b5-ab6bf915b56f}"/>
     <names>
         <name lang="fr">EP454C32</name>

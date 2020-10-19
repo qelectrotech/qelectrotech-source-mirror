@@ -1,4 +1,4 @@
-<definition hotspot_y="75" orientation="dyyy" version="0.51" hotspot_x="38" link_type="simple" width="70" type="element" height="110">
+<definition hotspot_y="75" version="0.51" hotspot_x="38" link_type="simple" width="70" type="element" height="110">
     <uuid uuid="{3c740482-2005-4672-b12c-8fa00ff68ece}"/>
     <names>
         <name lang="cs">Krytá izolovaná zásuvka (EN 60617 11-13-0x)</name>

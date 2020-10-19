@@ -1,4 +1,4 @@
-<definition type="element" width="340" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="11" hotspot_x="157" height="100">
+<definition type="element" width="340" version="0.70" link_type="simple" hotspot_y="11" hotspot_x="157" height="100">
     <uuid uuid="{721f3577-3854-4109-87f1-d84ca616fa86}"/>
     <names>
         <name lang="hu">Euchner TZ1ER</name>

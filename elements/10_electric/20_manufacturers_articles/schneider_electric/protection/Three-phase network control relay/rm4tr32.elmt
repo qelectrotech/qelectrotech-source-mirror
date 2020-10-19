@@ -1,4 +1,4 @@
-<definition version="0.70" width="80" type="element" height="70" hotspot_x="40" hotspot_y="42" link_type="master" orientation="dyyy">
+<definition version="0.70" width="80" type="element" height="70" hotspot_x="40" hotspot_y="42" link_type="master">
     <uuid uuid="{8a733b9f-9af8-4c7c-9814-d92567f8e6b0}"/>
     <names>
         <name lang="en">rm4tr32</name>

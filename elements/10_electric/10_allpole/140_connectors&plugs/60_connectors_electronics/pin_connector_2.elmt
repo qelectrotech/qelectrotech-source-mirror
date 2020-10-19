@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="20" hotspot_y="11" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="10" height="20" hotspot_y="11" type="element">
     <uuid uuid="{b6a7fd5d-b063-400c-b314-cef1e6448609}"/>
     <names>
         <name lang="nl">Connector 2 pin</name>

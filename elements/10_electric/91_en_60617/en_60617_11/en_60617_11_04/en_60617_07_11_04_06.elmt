@@ -1,4 +1,4 @@
-<definition type="element" width="30" version="0.70" hotspot_y="10" orientation="dyyy" height="20" link_type="simple" hotspot_x="25">
+<definition type="element" width="30" version="0.70" hotspot_y="10" height="20" link_type="simple" hotspot_x="25">
     <uuid uuid="{d6f287ef-df37-4cbf-a6a3-a470065cacbd}"/>
     <names>
         <name lang="fr">Dispositif évitant le glissement d'un câble</name>

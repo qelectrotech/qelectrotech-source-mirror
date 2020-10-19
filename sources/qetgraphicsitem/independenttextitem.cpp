@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -37,16 +37,17 @@ IndependentTextItem::IndependentTextItem() :
 }
 
 /**
+	@brief IndependentTextItem::IndependentTextItem
 	Constructeur
 	@param text Le texte affiche par le champ de texte
-	@param parent_diagram Le schema auquel est rattache le champ de texte
 */
 IndependentTextItem::IndependentTextItem(const QString &text) :
 	DiagramTextItem(text, nullptr)
 {}
 
 /// Destructeur
-IndependentTextItem::~IndependentTextItem() {
+IndependentTextItem::~IndependentTextItem()
+{
 }
 
 /**

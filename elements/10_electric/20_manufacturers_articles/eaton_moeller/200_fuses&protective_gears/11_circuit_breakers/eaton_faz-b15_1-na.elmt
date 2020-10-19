@@ -1,23 +1,40 @@
-<definition hotspot_y="31" type="element" hotspot_x="38" orientation="dyyy" height="60" version="0.5" link_type="master" width="50">
-<uuid uuid="{1CA4B221-7262-4C89-9474-EB66EE531487}"/><names>
+<definition width="50" height="60" hotspot_x="38" version="0.80" type="element" hotspot_y="31" link_type="master">
+    <uuid uuid="{54d1f8c1-db53-4078-9e06-2a5d0f35e2a3}"/>
+    <names>
         <name lang="en">FAZ-B15/1-NA (132685)</name>
     </names>
     <kindInformations>
-        <kindInformation show="1" name="type">protection</kindInformation>
+        <kindInformation name="type" show="1">protection</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1">FAZ-B15/1-NA </elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Eaton Moeller</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">132685</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text size="6" x="-34" y="-13" text="15A(B)"/>
-        <text size="6" x="2" y="18" text="2"/>
-        <polygon x2="0" y1="-10" x1="-5" y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y2="10" x3="0" antialias="true"/>
-        <input size="9" x="-53" y="1" tagg="label" text="_"/>
-        <line x2="0" y1="-20" x1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="-12" end1="none" antialias="false"/>
-        <text size="6" x="2" y="-15" text="1"/>
-        <polygon x4="-9" x6="-4" x8="-4" x1="-16" y1="0" closed="false" x3="-13" x7="-4" y6="-3" antialias="false" x2="-12" y3="-5" x5="-8" y4="-6" y2="-1" y8="-3" y7="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" y5="-2"/>
-        <line x2="-3" y1="5" x1="-15" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="2" end1="none" antialias="false"/>
-        <polygon x2="-12.85" y1="5.43882" y4="5.43882" x5="-16" x1="-16" y6="5.43882" y3="5.84891" x4="-16" x6="-16" style="line-style:normal;line-weight:normal;filling:black;color:black" y5="5.43882" y2="2.97827" x3="-11.95" antialias="false"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="20" orientation="s"/>
+        <text x="-34" y="-13" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="15A(B)" color="#000000"/>
+        <text x="2" y="18" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="2" color="#000000"/>
+        <polygon x1="-5" antialias="true" y1="-10" x3="0" closed="false" y3="20" y2="10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text x="-53" y="-10.5" text_from="ElementInfo" Valignment="AlignTop" z="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{947c09a5-09d7-4c56-88b0-7956b88f2014}" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" x1="0" length1="1.5" antialias="false" y1="-20" y2="-12" length2="1.5" x2="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="2" y="-15" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="1" color="#000000"/>
+        <polygon y7="-3" antialias="false" y5="-2" y1="0" x8="-4" x7="-4" x3="-13" x4="-9" y3="-5" y6="-3" y8="-3" x1="-16" x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-1" x5="-8" x6="-4" y4="-6" closed="false"/>
+        <line end1="none" x1="-15" length1="1.5" antialias="false" y1="5" y2="2" length2="1.5" x2="-3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-16" y4="5.43882" antialias="false" y1="5.43882" x3="-11.95" y3="5.84891" y6="5.43882" y2="2.97827" y5="5.43882" x2="-12.85" x4="-16" x5="-16" x6="-16" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="0" name="" y="-20" uuid="{685559c9-1f67-4301-a2b2-54585d9b0b4d}" orientation="n"/>
+        <terminal x="0" name="" y="20" uuid="{3cd7dad3-45e3-4d41-a95d-0d66eccba6bb}" orientation="s"/>
     </description>
 </definition>

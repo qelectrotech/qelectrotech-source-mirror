@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="15" orientation="dyyy" height="30" version="0.70" hotspot_x="31">
+<definition link_type="simple" type="element" width="40" hotspot_y="15" height="30" version="0.70" hotspot_x="31">
     <uuid uuid="{fc2b98a2-c01e-44a0-ae33-ea6afcc3a6bb}"/>
     <names>
         <name lang="fr">Actionné par un dispositif électromagnétique</name>

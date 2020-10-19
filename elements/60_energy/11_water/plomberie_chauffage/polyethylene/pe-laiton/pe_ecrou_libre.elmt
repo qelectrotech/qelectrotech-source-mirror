@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="30" hotspot_x="20" hotspot_y="15" version="0.51" width="40" link_type="simple">
+<definition type="element" height="30" hotspot_x="20" hotspot_y="15" version="0.51" width="40" link_type="simple">
     <uuid uuid="{35259f62-0462-4dc5-a299-8d3445499ba2}"/>
     <names>
         <name lang="fr">Raccord PE à écrou libre</name>

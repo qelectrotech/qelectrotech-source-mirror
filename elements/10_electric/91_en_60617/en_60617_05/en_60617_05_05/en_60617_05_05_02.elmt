@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" orientation="dyyy" type="element" height="50" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" type="element" height="50" width="50">
     <uuid uuid="{dc2f8e18-c2c8-4254-b514-95aa9ffaeb26}"/>
     <names>
         <name lang="fr">Transistor NPN, avec collecteur relié à

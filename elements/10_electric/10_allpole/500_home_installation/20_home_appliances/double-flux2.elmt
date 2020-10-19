@@ -1,0 +1,35 @@
+<definition hotspot_x="55" link_type="master" type="element" height="90" version="0.80" hotspot_y="37" width="110">
+    <uuid uuid="{ea4f7353-a0a1-4638-8be6-91f0f5aa5d0f}"/>
+    <names>
+        <name lang="fr">Double Flux</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" x="-30" rx="0" height="50" width="60" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="-40" rx="0" height="10" width="10" y="30" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="30" rx="0" height="10" width="10" y="30" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="-40" rx="0" height="10" width="10" y="0" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="15" rx="0" height="10" width="10" y="-15" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <line x1="-50" end2="none" antialias="false" x2="-20" y1="35" length2="1.5" y2="35" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" end2="none" antialias="false" x2="20" y1="35" length2="1.5" y2="5" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" end2="none" antialias="false" x2="20" y1="4.5" length2="1.5" y2="-25.5" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="49.583" end2="none" antialias="false" x2="20.4167" y1="35" length2="1.5" y2="35" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" end2="none" antialias="false" x2="-20" y1="35" length2="1.5" y2="5" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" end2="none" antialias="false" x2="-50" y1="5" length2="1.5" y2="5" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" end2="none" antialias="false" x2="18" y1="-26" length2="1.5" y2="-23" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" end2="none" antialias="false" x2="22" y1="-26" length2="1.5" y2="-23" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" end2="none" antialias="false" x2="47" y1="35" length2="1.5" y2="33" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="50" end2="none" antialias="false" x2="47" y1="35" length2="1.5" y2="37" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-5" length2="1.5" y2="-30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-5" length2="1.5" y2="-30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="s" name="" x="0" y="45" uuid="{af362965-a238-4407-8c92-12dcb6e90f62}"/>
+        <terminal orientation="n" name="" x="-10" y="-30" uuid="{d8be0cf9-8eb2-49a5-b9fa-b0a536a0149e}"/>
+        <terminal orientation="n" name="" x="10" y="-30" uuid="{f3ba218e-ae2b-4a78-ad11-bbbafe2bf1c4}"/>
+    </description>
+</definition>

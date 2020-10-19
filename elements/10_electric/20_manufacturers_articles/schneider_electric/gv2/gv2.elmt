@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" height="100" hotspot_x="26" link_type="simple" hotspot_y="49" width="60" type="element">
+<definition version="0.70" height="100" hotspot_x="26" link_type="simple" hotspot_y="49" width="60" type="element">
     <uuid uuid="{33f551e4-75ee-45c0-ac9b-bb4f20a8c3b3}"/>
     <names>
         <name lang="fr">GV2ME</name>

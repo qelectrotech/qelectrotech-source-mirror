@@ -1,0 +1,44 @@
+<definition link_type="simple" type="element" height="180" width="130" hotspot_y="175" version="0.80" hotspot_x="5">
+    <uuid uuid="{c3305d69-2360-42a7-bd4b-ab740b3b82e8}"/>
+    <names>
+        <name lang="fr">Heures Creuses</name>
+        <name lang="pl">Zegar sterujący licznika</name>
+    </names>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="6" uuid="{a5ce27e3-0e6b-4d8c-b646-d2059545d305}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="7" uuid="{7f201aa0-e82b-4cf3-a84e-fe04a225750e}" text_from="UserText" y="-63" Halignment="AlignLeft">
+            <text>Coffret</text>
+        </dynamic_text>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-30" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="30" diameter="60" y="-160"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-158" length2="1.5" length1="1.5" x2="60" y1="-159" x1="60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-130" length2="1.5" length1="1.5" x2="32" y1="-130" x1="31" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-130" length2="1.5" length1="1.5" x2="88" y1="-130" x1="89" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-102" length2="1.5" length1="1.5" x2="60" y1="-101" x1="60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-130" length2="1.5" length1="1.5" x2="85" y1="-130" x1="60" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-146" length2="1.5" length1="1.5" x2="60" y1="-130" x1="60" end2="none"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="38" uuid="{d9a1c78e-681e-419d-8091-7ccb7d0a83af}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="40" uuid="{4dc80bcc-79bd-4d4a-8c48-0d8f85124b2c}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,6,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="41" uuid="{2ef2a227-c729-4f03-a99a-033f75388de7}" text_from="UserText" y="-81" Halignment="AlignLeft">
+            <text>Heures Creuses</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-158" length2="1.5" length1="1.5" x2="50" y1="-170" x1="50" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-158" length2="1.5" length1="1.5" x2="70" y1="-170" x1="70" end2="none"/>
+        <terminal orientation="n" name="" x="50" uuid="{a849bed1-f90a-4676-8e81-37bde24ca06e}" y="-170"/>
+        <terminal orientation="n" name="" x="70" uuid="{70898310-3dc9-4013-956d-aff34e6dd6c0}" y="-170"/>
+    </description>
+</definition>

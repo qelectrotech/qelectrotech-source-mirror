@@ -24,134 +24,142 @@
 #include <QFontDialog>
 
 /**
- * @brief AddTableDialog::AddNomenclatureDialog
- * @param parent
- */
-AddTableDialog::AddTableDialog(QWidget *parent) :
-    QDialog(parent),
+	@brief AddTableDialog::AddTableDialog
+	@param content_widget : the widget to display in the "content" tab.
+	This dialog take ownership of content_widget.
+	@param parent : parent widget.
+*/
+AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
+	QDialog(parent),
 	ui(new Ui::AddTableDialog)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	ui->m_header_font_pb->setText(m_header_font.family());
 	ui->m_table_font_pb->setText(m_table_font.family());
-	ui->m_tab->addTab(m_query_widget, tr("Contenu"));
+	m_content_widget = content_widget;
+	content_widget->setParent(this);
+	ui->m_tab->addTab(content_widget, tr("Contenu"));
 	fillSavedQuery();
 	
 	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::saveClicked, this, &AddTableDialog::saveConfig);
 	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::loadClicked, this, &AddTableDialog::loadConfig);
-	
 }
 
 /**
- * @brief AddTableDialog::~AddNomenclatureDialog
- */
-AddTableDialog::~AddTableDialog() {
+	@brief AddTableDialog::~AddNomenclatureDialog
+*/
+AddTableDialog::~AddTableDialog()
+{
 	delete ui;
 }
 
 /**
- * @brief AddTableDialog::setQueryWidget
- * Not implemented yet
- * @param widget
- */
+	@brief AddTableDialog::setQueryWidget
+	Not implemented yet
+	@param widget
+*/
 void AddTableDialog::setQueryWidget(QWidget *widget) {
 	Q_UNUSED(widget)
 }
 
 /**
- * @brief AddTableDialog::queryStr
- * @return
- */
-QString AddTableDialog::queryStr() {
-	return m_query_widget->queryStr();
-}
-
-/**
- * @brief AddTableDialog::adjustTableToFolio
- * @return
- */
-bool AddTableDialog::adjustTableToFolio() const {
+	@brief AddTableDialog::adjustTableToFolio
+	@return
+*/
+bool AddTableDialog::adjustTableToFolio() const
+{
 	return ui->m_adjust_table_size_cb->isChecked();
 }
 
 /**
- * @brief AddTableDialog::addNewTableToNewDiagram
- * @return
- */
-bool AddTableDialog::addNewTableToNewDiagram() const {
+	@brief AddTableDialog::addNewTableToNewDiagram
+	@return
+*/
+bool AddTableDialog::addNewTableToNewDiagram() const
+{
 	return ui->m_add_table_and_folio->isChecked();
 }
 
 /**
- * @brief AddTableDialog::tableName
- * @return
- */
-QString AddTableDialog::tableName() const {
+	@brief AddTableDialog::tableName
+	@return
+*/
+QString AddTableDialog::tableName() const
+{
 	return ui->m_table_name_le->text();
 }
 
 /**
- * @brief AddTableDialog::headerMargins
- * @return
- */
-QMargins AddTableDialog::headerMargins() const {
+	@brief AddTableDialog::headerMargins
+	@return
+*/
+QMargins AddTableDialog::headerMargins() const
+{
 	return  m_header_margins;
 }
 
 /**
- * @brief AddTableDialog::headerAlignment
- * @return
- */
+	@brief AddTableDialog::headerAlignment
+	@return
+*/
 Qt::Alignment AddTableDialog::headerAlignment() const
 {
 	switch (ui->m_header_alignment_cb->currentIndex()) {
 		case 0 :
 			return  Qt::AlignLeft;
 		case 1:
-			return Qt::AlignCenter;
+			return Qt::AlignHCenter;
 		default:
 			return Qt::AlignRight;
 	}
 }
 
 /**
- * @brief AddTableDialog::headerFont
- * @return
- */
-QFont AddTableDialog::headerFont() const {
+	@brief AddTableDialog::headerFont
+	@return
+*/
+QFont AddTableDialog::headerFont() const
+{
 	return m_header_font;
 }
 
 /**
- * @brief AddTableDialog::tableMargins
- * @return
- */
-QMargins AddTableDialog::tableMargins() const {
+	@brief AddTableDialog::tableMargins
+	@return
+*/
+QMargins AddTableDialog::tableMargins() const
+{
 	return m_table_margins;
 }
 
 /**
- * @brief AddTableDialog::tableAlignment
- * @return
- */
+	@brief AddTableDialog::tableAlignment
+	@return
+*/
 Qt::Alignment AddTableDialog::tableAlignment() const
 {
 	switch (ui->m_table_alignment_cb->currentIndex()) {
 		case 0 :
 			return  Qt::AlignLeft;
 		case 1:
-			return Qt::AlignCenter;
+			return Qt::AlignHCenter;
 		default:
 			return Qt::AlignRight;
 	}
 }
 
 /**
- * @brief AddTableDialog::tableFont
- * @return
- */
-QFont AddTableDialog::tableFont() const {
+	@brief AddTableDialog::tableFont
+	@return
+*/
+QFont AddTableDialog::tableFont() const
+{
 	return m_table_font;
+}
+
+QWidget *AddTableDialog::contentWidget() const
+{
+	return m_content_widget;
 }
 
 void AddTableDialog::on_m_header_font_pb_clicked()

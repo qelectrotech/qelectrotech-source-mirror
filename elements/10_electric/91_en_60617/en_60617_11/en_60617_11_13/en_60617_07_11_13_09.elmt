@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="25" width="30" hotspot_y="35">
+<definition type="element" version="0.70" height="40" link_type="simple" hotspot_x="25" width="30" hotspot_y="35">
     <uuid uuid="{095a3011-9f21-474e-8a4b-953cfbc36380}"/>
     <names>
         <name lang="de">Fernmeldesteckdose, allgemein</name>

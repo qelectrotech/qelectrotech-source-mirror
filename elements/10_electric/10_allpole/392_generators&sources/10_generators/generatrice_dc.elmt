@@ -1,4 +1,4 @@
-<definition height="70" link_type="simple" type="element" orientation="dyyy" hotspot_y="34" version="0.5" hotspot_x="20" width="40">
+<definition height="70" link_type="simple" type="element" hotspot_y="34" version="0.5" hotspot_x="20" width="40">
     <uuid uuid="{bfae4d03-faf2-4ad8-a8eb-291c493b826a}"/>
     <names>
         <name lang="fr">Générateur à courant continu</name>

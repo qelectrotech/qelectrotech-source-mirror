@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="65" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="70" hotspot_y="65" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{05d2e3c4-693e-4513-9b79-891c38b1487e}"/>
     <names>
         <name lang="de">Buchholzschutz</name>

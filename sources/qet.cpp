@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -24,6 +24,8 @@
 #include <QFileInfo>
 #include <QSaveFile>
 #include <QTextStream>
+#include <QRegularExpression>
+#include <QActionGroup>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -69,11 +71,11 @@ bool Qet::surLeMemeAxe(Qet::Orientation a, Qet::Orientation b) {
 }
 
 /**
- * @brief Qet::isOpposed
- * @param a
- * @param b
- * @return true if a and b is opposed, else false;
- */
+	@brief Qet::isOpposed
+	@param a
+	@param b
+	@return true if a and b is opposed, else false;
+*/
 bool Qet::isOpposed(Qet::Orientation a, Qet::Orientation b)
 {
 	bool result = false;
@@ -100,19 +102,19 @@ bool Qet::isOpposed(Qet::Orientation a, Qet::Orientation b)
 }
 
 /**
- * @brief Qet::isHorizontal
- * @param a
- * @return true if @a is horizontal, else false.
- */
+	@brief Qet::isHorizontal
+	@param a
+	@return true if @a is horizontal, else false.
+*/
 bool Qet::isHorizontal(Qet::Orientation a) {
 	return(a == Qet::East || a == Qet::West);
 }
 
 /**
- * @brief Qet::isVertical
- * @param a
- * @return true if @a is vertical, else false.
- */
+	@brief Qet::isVertical
+	@param a
+	@return true if @a is vertical, else false.
+*/
 bool Qet::isVertical(Qet::Orientation a) {
 	return(a == Qet::North || a == Qet::South);
 }
@@ -163,30 +165,37 @@ bool QET::lineContainsPoint(const QLineF &line, const QPointF &point) {
 	@return true si le projete orthogonal du point sur la droite appartient au
 	segment de droite.
 */
-bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF *intersection) {
+bool QET::orthogonalProjection(
+		const QPointF &point,const QLineF &line,QPointF *intersection)
+{
 	// recupere le vecteur normal de `line'
 	QLineF line_normal_vector(line.normalVector());
 	QPointF normal_vector(line_normal_vector.dx(), line_normal_vector.dy());
-	
+
 	// cree une droite perpendiculaire a `line' passant par `point'
 	QLineF perpendicular_line(point, point + normal_vector);
-	
+
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point); // ### Qt 6: remove
-#else
-	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 5.14 or later")
 #endif
-	
+	QLineF::IntersectType it = line.
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+			intersect // ### Qt 6: remove
+#else
+			intersects
+#endif
+			(perpendicular_line, &intersection_point);
+
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
-	
+
 	// fournit le point d'intersection a l'appelant si necessaire
 	if (intersection) {
 		*intersection = intersection_point;
 	}
-	
+
 	// determine si le point d'intersection appartient au segment de droite
 	if (QET::lineContainsPoint(line, intersection_point)) {
 		return(true);
@@ -202,7 +211,9 @@ bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF
 	@param entier Pointeur facultatif vers un entier
 	@return true si l'attribut est bien un entier, false sinon
 */
-bool QET::attributeIsAnInteger(const QDomElement &e, const QString& nom_attribut, int *entier) {
+bool QET::attributeIsAnInteger(
+		const QDomElement &e,const QString& nom_attribut,int *entier)
+{
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -221,7 +232,9 @@ bool QET::attributeIsAnInteger(const QDomElement &e, const QString& nom_attribut
 	@param reel Pointeur facultatif vers un double
 	@return true si l'attribut est bien un reel, false sinon
 */
-bool QET::attributeIsAReal(const QDomElement &e, const QString& nom_attribut, qreal *reel) {
+bool QET::attributeIsAReal(
+		const QDomElement &e,const QString& nom_attribut,qreal *reel)
+{
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -233,16 +246,27 @@ bool QET::attributeIsAReal(const QDomElement &e, const QString& nom_attribut, qr
 }
 
 /**
+	@brief QET::ElementsAndConductorsSentence
 	Permet de composer rapidement la proposition "x elements et y conducteurs"
 	ou encore "x elements, y conducteurs et z champs de texte".
 	@param elements_count nombre d'elements
 	@param conductors_count nombre de conducteurs
 	@param texts_count nombre de champs de texte
 	@param images_count nombre d'images
+	@param shapes_count
+	@param element_text_count
+	@param tables_count
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
-QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count, int shapes_count, int element_text_count, int tables_count)
+QString QET::ElementsAndConductorsSentence(
+		int elements_count,
+		int conductors_count,
+		int texts_count,
+		int images_count,
+		int shapes_count,
+		int element_text_count,
+		int tables_count)
 {
 	QString text;
 	if (elements_count) {
@@ -252,7 +276,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			elements_count
 		);
 	}
-	
+
 	if (conductors_count) {
 		if (!text.isEmpty()) text += ", ";
 		text += QObject::tr(
@@ -261,7 +285,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			conductors_count
 		);
 	}
-	
+
 	if (texts_count) {
 		if (!text.isEmpty()) text += ", ";
 		text += QObject::tr(
@@ -288,7 +312,7 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 			shapes_count
 		);
 	}
-	
+
 	if (element_text_count) {
 		if (!text.isEmpty()) text += ", ";
 		text += QObject::tr(
@@ -304,16 +328,21 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 					"part of a sentence listing the content of diagram",
 					tables_count);
 	}
-	
+
 	return(text);
 }
 
 /**
 	@return the list of \a tag_name elements directly under the \a e XML element.
 */
-QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &tag_name) {
+QList<QDomElement> QET::findInDomElement(
+		const QDomElement &e, const QString &tag_name)
+{
 	QList<QDomElement> return_list;
-	for (QDomNode node = e.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+	for (QDomNode node = e.firstChild() ;
+		 !node.isNull() ;
+		 node = node.nextSibling())
+	{
 		if (!node.isElement()) continue;
 		QDomElement element = node.toElement();
 		if (element.isNull() || element.tagName() != tag_name) continue;
@@ -330,16 +359,24 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &ta
 	@param children tag XML a rechercher
 	@return La liste des elements XML children
 */
-QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &parent, const QString &children) {
+QList<QDomElement> QET::findInDomElement(
+		const QDomElement &e,const QString &parent,const QString &children)
+{
 	QList<QDomElement> return_list;
-	
+
 	// parcours des elements parents
-	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
+	for (QDomNode enfant = e.firstChild() ;
+		 !enfant.isNull() ;
+		 enfant = enfant.nextSibling())
+	{
 		// on s'interesse a l'element XML "parent"
 		QDomElement parents = enfant.toElement();
 		if (parents.isNull() || parents.tagName() != parent) continue;
 		// parcours des enfants de l'element XML "parent"
-		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling()) {
+		for (QDomNode node_children = parents.firstChild() ;
+			 !node_children.isNull() ;
+			 node_children = node_children.nextSibling())
+		{
 			// on s'interesse a l'element XML "children"
 			QDomElement n_children = node_children.toElement();
 			if (!n_children.isNull() && n_children.tagName() == children) return_list.append(n_children);
@@ -349,7 +386,8 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &pa
 }
 
 /// @return le texte de la licence de QElectroTech (GNU/GPL)
-QString QET::license() {
+QString QET::license()
+{
 	// Recuperation du texte de la GNU/GPL dans un fichier integre a l'application
 	QFile *file_license = new QFile(":/LICENSE");
 	QString txt_license;
@@ -377,8 +415,10 @@ QString QET::license() {
 	@return la liste des caracteres interdits dans les noms de fichiers sous
 	Windows
 */
-QList<QChar> QET::forbiddenCharacters() {
-	return(QList<QChar>() << '\\' << '/' << ':' << '*' << '?' << '"' << '<' << '>' << '|');
+QList<QChar> QET::forbiddenCharacters()
+{
+	return(QList<QChar>()
+		   << '\\' << '/' << ':' << '*' << '?' << '"'<< '<' << '>' << '|');
 }
 
 /**
@@ -390,17 +430,21 @@ QList<QChar> QET::forbiddenCharacters() {
 	@param name Chaine de caractere a transformer en nom de fichier potable
 	@todo virer les caracteres accentues ?
 */
-QString QET::stringToFileName(const QString &name) {
+QString QET::stringToFileName(const QString &name)
+{
+#if TODO_LIST
+#pragma message("@TODO virer les caracteres accentues ?")
+#endif
 	QString file_name(name.toLower());
-	
+
 	// remplace les caracteres interdits par des tirets
 	foreach(QChar c, QET::forbiddenCharacters()) {
 		file_name.replace(c, '-');
 	}
-	
+
 	// remplace les espaces par des underscores
 	file_name.replace(' ', '_');
-	
+
 	return(file_name);
 }
 
@@ -430,12 +474,12 @@ QString QET::unescapeSpaces(const QString &string) {
 */
 QString QET::joinWithSpaces(const QStringList &string_list) {
 	QString returned_string;
-	
+
 	for (int i = 0 ; i < string_list.count() ; ++ i) {
 		returned_string += QET::escapeSpaces(string_list.at(i));
 		if (i != string_list.count() - 1) returned_string += " ";
 	}
-	
+
 	return(returned_string);
 }
 
@@ -446,9 +490,19 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 	@return La liste des sous-chaines, sans echappement.
 */
 QStringList QET::splitWithSpaces(const QString &string) {
-	// les chaines sont separees par des espaces non echappes = avec un nombre nul ou pair de backslashes devant
-	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), QString::SkipEmptyParts);
-	
+	// les chaines sont separees par des espaces non echappes
+	// = avec un nombre nul ou pair de backslashes devant
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 5.14 or later")
+#endif
+	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
+						   QString
+#else
+						   Qt
+#endif
+						   ::SkipEmptyParts);
+
 	QStringList returned_list;
 	foreach(QString escaped_string, escaped_strings) {
 		returned_list << QET::unescapeSpaces(escaped_string);
@@ -536,13 +590,13 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 
 	QString second_canonical_path = QFileInfo(second).canonicalFilePath();
 	if (second_canonical_path.isEmpty()) return(false);
-	
+
 #ifdef Q_OS_WIN
 	// sous Windows, on ramene les chemins en minuscules
 	first_canonical_path  = first_canonical_path.toLower();
 	second_canonical_path = second_canonical_path.toLower();
 #endif
-	
+
 	return(first_canonical_path == second_canonical_path);
 }
 
@@ -557,44 +611,53 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 */
 bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message)
 {
-    QSaveFile file(filepath);
+	QSaveFile file(filepath);
 
-        // Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
-    bool file_opening = file.open(QIODevice::WriteOnly);
-    if (!file_opening)
-    {
-        if (error_message)
-        {
-            *error_message = QString(QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
-                                                 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
-        }
-        return(false);
-    }
+	// Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
+	bool file_opening = file.open(QIODevice::WriteOnly);
+	if (!file_opening)
+	{
+		if (error_message)
+		{
+			*error_message = QString(QObject::tr(
+							 "Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
+		}
+		return(false);
+	}
 
-    QTextStream out(&file);
-    out.setCodec("UTF-8");
-    out.setGenerateByteOrderMark(false);
-    out << xml_doc.toString(4);
-    if  (!file.commit())
-    {
-        if (error_message) {
-            *error_message = QString(QObject::tr("Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
-                                                 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
-        }
+	QTextStream out(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	out.setCodec("UTF-8");
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	out.setEncoding(QStringConverter::Utf8);
+#endif
+	out.setGenerateByteOrderMark(false);
+	out << xml_doc.toString(4);
+	if  (!file.commit())
+	{
+		if (error_message) {
+			*error_message = QString(QObject::tr(
+							 "Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
+							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    return(true);
+	return(true);
 }
 
 /**
- * @brief QET::eachStrIsEqual
- * @param qsl list of string to compare
- * @return true if every string is identical, else false;
- * The list must not be empty
- * If the list can be empty, call isEmpty() before calling this function
- */
+	@brief QET::eachStrIsEqual
+	@param qsl list of string to compare
+	@return true if every string is identical, else false;
+	The list must not be empty
+	If the list can be empty, call isEmpty() before calling this function
+*/
 bool QET::eachStrIsEqual(const QStringList &qsl) {
 	if (qsl.size() == 1) return true;
 	foreach (const QString t, qsl) {
@@ -604,10 +667,10 @@ bool QET::eachStrIsEqual(const QStringList &qsl) {
 }
 
 /**
- * @brief QET::qetCollectionToString
- * @param c QetCollection value to convert
- * @return The QetCollection enum value converted to a QString
- */
+	@brief QET::qetCollectionToString
+	@param c QetCollection value to convert
+	@return The QetCollection enum value converted to a QString
+*/
 QString QET::qetCollectionToString(const QET::QetCollection &c)
 {
 	switch (c)
@@ -624,11 +687,11 @@ QString QET::qetCollectionToString(const QET::QetCollection &c)
 }
 
 /**
- * @brief QET::qetCollectionFromString
- * @param str string to convert
- * @return The corresponding QetCollection value from a string.
- * If the string don't match anything, we return the failsafe value QetCollection::Common
- */
+	@brief QET::qetCollectionFromString
+	@param str string to convert
+	@return The corresponding QetCollection value from a string.
+	If the string don't match anything, we return the failsafe value QetCollection::Common
+*/
 QET::QetCollection QET::qetCollectionFromString(const QString &str)
 {
 	if (str == "common")
@@ -642,16 +705,16 @@ QET::QetCollection QET::qetCollectionFromString(const QString &str)
 }
 
 /**
- * @brief QET::depthActionGroup
- * @param parent
- * @return an action group which contain 4 actions (forward, raise, lower, backward)
- * already made with icon, shortcut and data (see QET::DepthOption)
- */
+	@brief QET::depthActionGroup
+	@param parent
+	@return an action group which contain 4 actions (forward, raise, lower, backward)
+	already made with icon, shortcut and data (see QET::DepthOption)
+*/
 QActionGroup *QET::depthActionGroup(QObject *parent)
 {
 	QActionGroup *action_group = new QActionGroup(parent);
 
-	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);	
+	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);
 	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
 	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
 	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
@@ -660,17 +723,17 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	edit_raise   ->setStatusTip(QObject::tr("Rapproche la ou les sélections"));
 	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
 	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
-	
+
 	edit_raise   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Up")));
 	edit_lower   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Down")));
 	edit_backward->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+End")));
 	edit_forward ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Home")));
-	
+
 	edit_forward ->setData(QET::BringForward);
 	edit_raise   ->setData(QET::Raise);
 	edit_lower   ->setData(QET::Lower);
 	edit_backward->setData(QET::SendBackward);
-	
+
 	return action_group;
 }
 
@@ -687,8 +750,9 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 			{
 				QFileInfo info_(*file);
 				*error_message = QString(
-							QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
-										"error message when attempting to write an XML file")
+							QObject::tr(
+								"Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+								"error message when attempting to write an XML file")
 				).arg(info_.absoluteFilePath()).arg(file->error());
 			}
 			return false;
@@ -697,7 +761,14 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 
 	QTextStream out(file);
 	out.seek(0);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	out.setCodec("UTF-8");
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	out.setEncoding(QStringConverter::Utf8);
+#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if (opened_here) {

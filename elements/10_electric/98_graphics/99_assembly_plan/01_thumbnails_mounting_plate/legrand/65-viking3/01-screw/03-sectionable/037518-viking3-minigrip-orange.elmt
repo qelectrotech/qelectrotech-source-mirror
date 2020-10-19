@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" orientation="dyyy" width="20" height="110">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" width="20" height="110">
     <uuid uuid="{9acdc0f4-841d-4efa-8587-ad28277ae5bc}"/>
     <names>
         <name lang="fr">037518 - Viking3 - Mini préhenseur Orange</name>

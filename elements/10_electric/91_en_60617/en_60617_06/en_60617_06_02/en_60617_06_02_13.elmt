@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+<definition link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
     <uuid uuid="{e79f2559-53ff-4df0-a8b1-ae7e744a64aa}"/>
     <names>
         <name lang="fr">Enroulement hexaphasé, en double zigzag,

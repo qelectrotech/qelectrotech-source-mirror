@@ -1,15 +1,18 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="13" height="30" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A80203FB-11A0-4625-BFBA-F0A309EE0267}"/><names>
+<definition hotspot_y="12" link_type="simple" width="30" version="0.80" type="element" height="30" hotspot_x="14">
+    <uuid uuid="{bf91b73c-c55c-49d4-a0a4-a592cc1cdebe}"/>
+    <names>
+        <name lang="fr">Ventilateur</name>
         <name lang="es">Ventilador</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <ellipse width="18.6469" x="-9" y="-9.09572" antialias="true" height="18.3354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.33175" x1="-2.28713" y2="0.0719713" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.33175" x1="2.934" y2="0.0719713" x2="9.64687"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0.24885" x2="1.59142" x3="1.59142" x4="0.24885" antialias="false" x5="-1.09373" x6="-1.09373" x7="0.24885" x8="2.26271" x9="4.94786" closed="false" y1="-0.872939" y10="3.36245" y2="-1.93174" y11="2.83304" y3="-5.10813" y4="-6.69632" y12="1.24484" y5="-5.10813" x10="4.94786" y13="-0.872939" y6="-2.46113" x11="2.934" y7="-0.872939" x12="0.920137" y8="-0.343541" x13="0.24885" y9="1.77424"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0.24885" x2="-1.76501" x3="-3.77888" x4="-3.77888" antialias="false" x5="-1.76501" x6="0.24885" x7="0.24885" x8="0.24885" closed="false" y1="-0.872939" y2="-0.343541" y3="2.30365" y4="3.89185" y5="3.36245" y6="1.24484" y7="-0.343541" y8="-0.343541"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.15548" x1="0" y2="11.3766" x2="0"/>
-        <terminal x="0" y="11.3766" nameHidden="1" number="" name="" orientation="s"/>
+        <ellipse width="18.6469" y="-9.09572" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" antialias="true" height="18.3354"/>
+        <line x1="-2.28713" y2="0.0719713" end1="none" y1="-8.33175" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-9" antialias="false" length1="1.5"/>
+        <line x1="2.934" y2="0.0719713" end1="none" y1="-8.33175" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="9.64687" antialias="false" length1="1.5"/>
+        <polygon y10="3.36245" x13="0.24885" y6="-2.46113" y8="-0.343541" x11="2.934" x5="-1.09373" y12="1.24484" closed="false" y1="-0.872939" y2="-1.93174" x8="2.26271" x7="0.24885" x2="1.59142" x6="-1.09373" y9="1.77424" x1="0.24885" x10="4.94786" x4="0.24885" y3="-5.10813" y13="-0.872939" y4="-6.69632" y11="2.83304" antialias="false" y5="-5.10813" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="-0.872939" x3="1.59142" x9="4.94786" x12="0.920137"/>
+        <polygon y6="1.24484" y8="-0.343541" x5="-1.76501" closed="false" y1="-0.872939" y2="-0.343541" x8="0.24885" x7="0.24885" x2="-1.76501" x6="0.24885" x1="0.24885" x4="-3.77888" y3="2.30365" y4="3.89185" antialias="false" y5="3.36245" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="-0.343541" x3="-3.77888"/>
+        <line x1="0" y2="11.3766" end1="none" y1="9.15548" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" antialias="false" length1="1.5"/>
+        <terminal name="" y="11.3766" uuid="{52dc87fe-f67a-4abf-9bc1-9be9255ad28a}" x="0" orientation="s"/>
     </description>
 </definition>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="25" type="element" height="220" width="140" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="25" type="element" height="220" width="140" version="0.5">
     <uuid uuid="{4f56968d-60bb-4717-9515-b8bbb477ea35}"/>
     <names>
         <name lang="pl">XTM-905 moduł komunikacyjny</name>

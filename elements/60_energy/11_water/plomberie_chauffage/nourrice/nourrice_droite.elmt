@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="60" version="0.51" height="30" type="element" hotspot_x="16" link_type="simple" hotspot_y="8">
+<definition width="60" version="0.51" height="30" type="element" hotspot_x="16" link_type="simple" hotspot_y="8">
     <uuid uuid="{73d187c9-fbb4-4878-baf9-0dbb24112233}"/>
     <names>
         <name lang="fr">Nourrice droite</name>

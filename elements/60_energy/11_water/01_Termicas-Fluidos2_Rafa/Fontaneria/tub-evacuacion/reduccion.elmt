@@ -1,19 +1,25 @@
-<definition width="50" version="0.4" hotspot_x="27" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{F738E348-0935-41A5-BBFE-ACD739CB4B11}"/><names>
+<definition hotspot_y="14" type="element" height="30" version="0.80" width="50" hotspot_x="26" link_type="simple">
+    <uuid uuid="{3594686e-23d7-4b73-8331-6426119d9beb}"/>
+    <names>
         <name lang="es">Reducción</name>
         <name lang="ca">Reducció</name>
+        <name lang="fr">Réduction</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="8.55" x="8.44" y="-5.47805" antialias="false" height="15.4781" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="8.55" x="-20.9" y="-10.4326" antialias="false" height="20.8373" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.02325" x1="-11.9643" y2="8.02325" x2="7.63961"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512" x1="-12.1501" y2="-8.0512" x2="-5.72654"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.69305" x1="-0.38" y2="-8.0512" x2="-5.51"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.15136" x1="0.61" y2="-3.17129" x2="8.17"/>
-        <input x="-9" y="13.5" size="4" rotate="true" text="_" tagg="label"/>
-        <terminal x="-21" y="0" orientation="w"/>
-        <terminal x="17" y="1" orientation="e"/>
+        <rect antialias="false" height="15.4781" width="8.55" x="8.44" y="-5.47805" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="20.8373" width="8.55" x="-20.9" y="-10.4326" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-11.9643" end2="none" length2="1.5" x2="7.63961" y2="8.02325" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.02325"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-12.1501" end2="none" length2="1.5" x2="-5.72654" y2="-8.0512" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.0512"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-0.38" end2="none" length2="1.5" x2="-5.51" y2="-8.0512" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.69305"/>
+        <line end1="none" antialias="false" length1="1.5" x1="0.61" end2="none" length2="1.5" x2="8.17" y2="-3.17129" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.15136"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-9" y="6" uuid="{3d31b028-dcf7-4d0c-adba-908c38ee2728}" z="7" font="Sans Serif,4,-1,5,25,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="-21" y="0" uuid="{4ff96312-2bfd-488e-81bc-6208cd3ca182}" name="" orientation="w"/>
+        <terminal x="17" y="1" uuid="{92d65fff-37cc-47aa-912f-6e4dcabdd8bd}" name="" orientation="e"/>
     </description>
 </definition>

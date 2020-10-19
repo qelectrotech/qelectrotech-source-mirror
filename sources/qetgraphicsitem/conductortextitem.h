@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,40 +29,40 @@ class Conductor;
 class ConductorTextItem : public DiagramTextItem
 {
 	Q_OBJECT
-	
-        // constructors, destructor
+
+		// constructors, destructor
 	public:
-        ConductorTextItem(Conductor * = nullptr);
-        ConductorTextItem(const QString &, Conductor * = nullptr);
-        ~ConductorTextItem() override;
+		ConductorTextItem(Conductor * = nullptr);
+		ConductorTextItem(const QString &, Conductor * = nullptr);
+		~ConductorTextItem() override;
 	private:
-        ConductorTextItem(const ConductorTextItem &);
+		ConductorTextItem(const ConductorTextItem &);
 
 	public:
-        enum { Type = UserType + 1006 };
-        Conductor *parentConductor() const;
-        void fromXml(const QDomElement &) override;
-        int type() const override { return Type; }
-        virtual bool wasMovedByUser() const;
-        virtual bool wasRotateByUser() const;
-        virtual void forceMovedByUser(bool);
-        virtual void forceRotateByUser(bool);
-        virtual void setPos(const QPointF &pos);
-        virtual void setPos(qreal x, qreal y);
-	
+		enum { Type = UserType + 1006 };
+		Conductor *parentConductor() const;
+		void fromXml(const QDomElement &) override;
+		int type() const override { return Type; }
+		virtual bool wasMovedByUser() const;
+		virtual bool wasRotateByUser() const;
+		virtual void forceMovedByUser(bool);
+		virtual void forceRotateByUser(bool);
+		virtual void setPos(const QPointF &pos);
+		virtual void setPos(qreal x, qreal y);
+
 	protected:
-        void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
-        void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
-        void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
-        void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
-        void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
-        void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
+		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
 
-        // attributes
+		// attributes
 	private:
-        Conductor *parent_conductor_;
-        bool moved_by_user_;
-        bool rotate_by_user_;
-        QPointF before_mov_pos_;
+		Conductor *parent_conductor_;
+		bool moved_by_user_;
+		bool rotate_by_user_;
+		QPointF before_mov_pos_;
 };
 #endif

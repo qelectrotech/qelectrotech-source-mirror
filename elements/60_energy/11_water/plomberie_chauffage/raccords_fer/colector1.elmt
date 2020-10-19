@@ -1,32 +1,38 @@
-<definition width="170" height="60" link_type="simple" hotspot_x="63" hotspot_y="24" version="0.5" type="element" orientation="dyyy">
-<uuid uuid="{9B9132D1-972C-45A1-98E3-9DBBAF19AC8A}"/><names>
+<definition hotspot_y="24" type="element" height="60" version="0.80" width="170" hotspot_x="63" link_type="simple">
+    <uuid uuid="{5415e9a6-0660-4504-92a3-fab65a8ecb0e}"/>
+    <names>
         <name lang="es">Colector-1</name>
         <name lang="ca">Col.lector-1</name>
+        <name lang="fr">Collecteur</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <rect width="10" height="7" antialias="false" y="20" x="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="5" height="5" antialias="false" y="3" x="94" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" height="7" antialias="false" y="-17" x="74" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" height="7" antialias="false" y="-17" x="35" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="135" height="30" antialias="false" y="-10" x="-47" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" height="7" antialias="false" y="-17" x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21" height="2" antialias="false" y="-19" x="-11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21" height="2" antialias="false" y="-19" x="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21" height="2" antialias="false" y="-19" x="68" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="10" height="30" antialias="true" y="-10" angle="-180" start="90" x="84" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21" height="2" antialias="false" y="27" x="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="10" height="30" antialias="true" y="-10" angle="-180" start="-90" x="-52" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input y="5" text="Ø_" tagg="label" size="6" x="-20" rotate="true"/>
-        <rect width="10" height="7" antialias="false" y="-17" x="-45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="21" height="2" antialias="false" y="-19" x="-51" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="5" height="5" antialias="false" y="2" x="-57" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal y="-20" orientation="n" x="79"/>
-        <terminal y="-20" orientation="n" x="0"/>
-        <terminal y="30" orientation="s" x="20"/>
-        <terminal y="6" orientation="e" x="100"/>
-        <terminal y="-20" orientation="n" x="40"/>
-        <terminal y="5" orientation="w" x="-58"/>
-        <terminal y="-20" orientation="n" x="-40"/>
+        <rect antialias="false" height="7" width="10" x="15" y="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="5" width="5" x="94" y="3" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="7" width="10" x="74" y="-17" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="7" width="10" x="35" y="-17" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="30" width="135" x="-47" y="-10" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="7" width="10" x="-5" y="-17" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="2" width="21" x="-11" y="-19" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="2" width="21" x="29" y="-19" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="2" width="21" x="68" y="-19" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" height="30" width="10" x="84" y="-10" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <rect antialias="false" height="2" width="21" x="9" y="27" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" height="30" width="10" x="-52" y="-10" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-20" y="-4" uuid="{9179f507-4f9a-4cf5-b637-f6477942a3d9}" z="13" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect antialias="false" height="7" width="10" x="-45" y="-17" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="2" width="21" x="-51" y="-19" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" height="5" width="5" x="-57" y="2" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <terminal x="79" y="-20" uuid="{80dc6a71-1bcd-4b41-8ca1-0d8132ce7d32}" name="" orientation="n"/>
+        <terminal x="0" y="-20" uuid="{abed3518-5779-4a90-9b13-d63848f56d10}" name="" orientation="n"/>
+        <terminal x="20" y="30" uuid="{d2fc199b-bc30-49d8-947f-7062e18807af}" name="" orientation="s"/>
+        <terminal x="100" y="6" uuid="{18d7268b-93e4-4b44-94f6-257026148540}" name="" orientation="e"/>
+        <terminal x="40" y="-20" uuid="{13f229db-12f4-4a93-902f-c9bed3d550ae}" name="" orientation="n"/>
+        <terminal x="-58" y="5" uuid="{3c629eea-35d8-4574-92aa-6f1b436892c6}" name="" orientation="w"/>
+        <terminal x="-40" y="-20" uuid="{bd568b53-ecee-4592-8071-815386ddce38}" name="" orientation="n"/>
     </description>
 </definition>

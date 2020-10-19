@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="43">
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" hotspot_x="45" hotspot_y="43">
     <uuid uuid="{05ead3cd-a4d1-4bc2-b27c-c7a4c35a641e}"/>
     <names>
         <name lang="fr">Redresseur/onduleur</name>

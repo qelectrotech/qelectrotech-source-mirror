@@ -1,4 +1,4 @@
-<definition type="element" height="80" hotspot_x="25" orientation="dyyy" version="0.80" width="70" hotspot_y="34" link_type="master">
+<definition type="element" height="80" hotspot_x="25" version="0.80" width="70" hotspot_y="34" link_type="master">
     <uuid uuid="{7918dddd-80f2-475c-86b1-95816fbf2d1e}"/>
     <names>
         <name lang="fr">Réenclencheur automatique</name>

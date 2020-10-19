@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="50" hotspot_x="17" type="element" link_type="simple" hotspot_y="15" orientation="dyyy">
+<definition height="40" version="0.5" width="50" hotspot_x="17" type="element" link_type="simple" hotspot_y="15">
     <uuid uuid="{c7519c30-74ba-4496-81ec-6029f6998b7c}"/>
     <names>
         <name lang="en">Pneumatic rotary engine</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="9" type="element" width="20" hotspot_y="4" version="0.70" orientation="dyyy" height="10" link_type="simple">
+<definition hotspot_x="9" type="element" width="20" hotspot_y="4" version="0.70" height="10" link_type="simple">
     <uuid uuid="{054eeb83-9440-441f-996c-139dfe276fba}"/>
     <names>
         <name lang="en">04- Alternating current</name>

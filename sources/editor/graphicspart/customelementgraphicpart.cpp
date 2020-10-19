@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -19,14 +19,18 @@
 #include "elementscene.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
+#include <QRegularExpression>
+
 /**
- * @brief CustomElementGraphicPart::CustomElementGraphicPart
- * Default constructor.
- * By default, item is selectable, send geometry change (Qt > 4.6),
- * accept mouse left button and accept hover event
- * @param editor QETElement editor that belong this.
- */
-CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent) :
+	@brief CustomElementGraphicPart::CustomElementGraphicPart
+	Default constructor.
+	By default, item is selectable, send geometry change (Qt > 4.6),
+	accept mouse left button and accept hover event
+	@param editor QETElement editor that belong this.
+	@param parent
+*/
+CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor,
+						   QGraphicsItem *parent) :
 	QGraphicsObject (parent),
 	CustomElementPart(editor),
 	m_hovered (false),
@@ -36,38 +40,51 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGr
 	_color(BlackColor),
 	_antialiased(false)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
+	setFlags(QGraphicsItem::ItemIsSelectable
+		 | QGraphicsItem::ItemIsMovable
+		 | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 }
 
 /**
- * @brief CustomElementGraphicPart::~CustomElementGraphicPart
- * Destructor
- */
+	@brief CustomElementGraphicPart::~CustomElementGraphicPart
+	Destructor
+*/
 CustomElementGraphicPart::~CustomElementGraphicPart() {}
 
 /**
- * @brief CustomElementGraphicPart::drawCross
- * Draw a cross at pos center
- * @param center : center of cross
- * @param painter : painter to use for draw cross,
- * the painter state is restored at end of this method.
- */
-void CustomElementGraphicPart::drawCross(const QPointF &center, QPainter *painter)
+	@brief CustomElementGraphicPart::drawCross
+	Draw a cross at pos center
+	@param center : center of cross
+	@param painter : painter to use for draw cross,
+	the painter state is restored at end of this method.
+*/
+void CustomElementGraphicPart::drawCross(const QPointF &center,
+					 QPainter *painter)
 {
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
-	painter -> setPen((painter -> brush().color() == QColor(Qt::black) && painter -> brush().isOpaque()) ? Qt::yellow : Qt::blue);
-	painter -> drawLine(QLineF(center.x() - 2.0, center.y(), center.x() + 2.0, center.y()));
-	painter -> drawLine(QLineF(center.x(), center.y() - 2.0, center.x(), center.y() + 2.0));
+	painter -> setPen((painter -> brush().color()
+			   == QColor(Qt::black)
+			   && painter -> brush().isOpaque())
+			  ? Qt::yellow
+			  : Qt::blue);
+	painter -> drawLine(QLineF(center.x() - 2.0,
+				   center.y(),
+				   center.x() + 2.0,
+				   center.y()));
+	painter -> drawLine(QLineF(center.x(),
+				   center.y() - 2.0,
+				   center.x(),
+				   center.y() + 2.0));
 	painter -> restore();
 }
 
 /**
- * @brief CustomElementGraphicPart::setLineStyle
- * Set line style to ls
- * @param ls
- */
+	@brief CustomElementGraphicPart::setLineStyle
+	Set line style to ls
+	@param ls
+*/
 void CustomElementGraphicPart::setLineStyle(const LineStyle ls)
 {
 	if (_linestyle == ls) return;
@@ -76,10 +93,10 @@ void CustomElementGraphicPart::setLineStyle(const LineStyle ls)
 }
 
 /**
- * @brief CustomElementGraphicPart::setLineWeight
- * Set line weight to lw
- * @param lw
- */
+	@brief CustomElementGraphicPart::setLineWeight
+	Set line weight to lw
+	@param lw
+*/
 void CustomElementGraphicPart::setLineWeight(const LineWeight lw)
 {
 	if (_lineweight == lw) return;
@@ -88,12 +105,12 @@ void CustomElementGraphicPart::setLineWeight(const LineWeight lw)
 }
 
 /**
- * @brief CustomElementGraphicPart::penWeight
- * @return the weight of pen
- */
+	@brief CustomElementGraphicPart::penWeight
+	@return the weight of pen
+*/
 qreal CustomElementGraphicPart::penWeight() const
 {
-	if      (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
+	if (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
 	else if (_lineweight == NormalWeight) return 1;
 	else if (_lineweight == UltraWeight)  return 2;
 	else if (_lineweight == BigWeight)    return 5;
@@ -101,10 +118,10 @@ qreal CustomElementGraphicPart::penWeight() const
 }
 
 /**
- * @brief CustomElementGraphicPart::setFilling
- * Set filling to f
- * @param f
- */
+	@brief CustomElementGraphicPart::setFilling
+	Set filling to f
+	@param f
+*/
 void CustomElementGraphicPart::setFilling(const Filling f)
 {
 	if (_filling == f) return;
@@ -113,10 +130,10 @@ void CustomElementGraphicPart::setFilling(const Filling f)
 }
 
 /**
- * @brief CustomElementGraphicPart::setColor
- * Set color to c
- * @param c
- */
+	@brief CustomElementGraphicPart::setColor
+	Set color to c
+	@param c
+*/
 void CustomElementGraphicPart::setColor(const Color c)
 {
 	if (_color == c) return;
@@ -125,10 +142,10 @@ void CustomElementGraphicPart::setColor(const Color c)
 }
 
 /**
- * @brief CustomElementGraphicPart::setAntialiased
- * Set antialias to b
- * @param b
- */
+	@brief CustomElementGraphicPart::setAntialiased
+	Set antialias to b
+	@param b
+*/
 void CustomElementGraphicPart::setAntialiased(const bool b)
 {
 	if (_antialiased == b) return;
@@ -137,23 +154,23 @@ void CustomElementGraphicPart::setAntialiased(const bool b)
 }
 
 /**
- * @brief CustomElementGraphicPart::stylesToXml
- * Write the curent style to xml element.
- * The style are stored like this:
- * name-of-style:value;name-of-style:value
- * Each style separate by ; and name-style/value are separate by :
- * @param qde : QDOmElement used to write the style.
- */
+	@brief CustomElementGraphicPart::stylesToXml
+	Write the curent style to xml element.
+	The style are stored like this:
+	name-of-style:value;name-of-style:value
+	Each style separate by ; and name-style/value are separate by :
+	@param qde : QDOmElement used to write the style.
+*/
 void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 {
 	QString css_like_styles;
-	
+
 	css_like_styles += "line-style:";
 	if      (_linestyle == DashedStyle)     css_like_styles += "dashed";
 	else if (_linestyle == DottedStyle)     css_like_styles += "dotted";
 	else if (_linestyle == DashdottedStyle) css_like_styles += "dashdotted";
 	else if (_linestyle == NormalStyle)     css_like_styles += "normal";
-	
+
 	css_like_styles += ";line-weight:";
 	if      (_lineweight == NoneWeight)   css_like_styles += "none";
 	else if (_lineweight == ThinWeight)   css_like_styles += "thin";
@@ -486,24 +503,36 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 
 
 /**
- * @brief CustomElementGraphicPart::stylesFromXml
- * Read the style used by this, from a xml element.
- * @param qde : QDomElement used to read the style
- */
+	@brief CustomElementGraphicPart::stylesFromXml
+	Read the style used by this, from a xml element.
+	@param qde : QDomElement used to read the style
+*/
 void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
 	resetStyles();
-	
+
 		//Get the list of pair style/value
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = qde.attribute("style").split(";", QString::SkipEmptyParts);
-	
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 5.14 or later")
+#endif
+	QStringList styles = qde.attribute("style").split(";", Qt::SkipEmptyParts);
+#endif
+
 		//Check each pair of style
-	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
-	foreach (QString style, styles)
+	QRegularExpression rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
+	for (auto style : styles)
 	{
-		if (!rx.exactMatch(style)) continue;
-		QString style_name = rx.cap(1);
-		QString style_value = rx.cap(2);
+		auto rx_match = rx.match(style);
+		if (!rx_match.hasMatch()) {
+			continue;
+		}
+
+		auto style_name = rx_match.captured(1);
+		auto style_value = rx_match.captured(2);
+
 		if (style_name == "line-style")
 		{
 			if      (style_value == "dashed")     _linestyle = DashedStyle;
@@ -844,10 +873,10 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 
 
 /**
- * @brief CustomElementGraphicPart::resetStyles
- * Reset the curent style to default,
- * same style of default constructor
- */
+	@brief CustomElementGraphicPart::resetStyles
+	Reset the curent style to default,
+	same style of default constructor
+*/
 void CustomElementGraphicPart::resetStyles()
 {
 	_linestyle = NormalStyle;
@@ -858,22 +887,22 @@ void CustomElementGraphicPart::resetStyles()
 }
 
 /**
- * @brief CustomElementGraphicPart::applyStylesToQPainter
- * Apply the current style to the QPainter
- * @param painter
- */
+	@brief CustomElementGraphicPart::applyStylesToQPainter
+	Apply the current style to the QPainter
+	@param painter
+*/
 void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 {
 		//Get the pen and brush
 	QPen pen = painter.pen();
 	QBrush brush = painter.brush();
-	
+
 		//Apply pen style
 	if      (_linestyle == DashedStyle)     pen.setStyle(Qt::DashLine);
 	else if (_linestyle == DashdottedStyle) pen.setStyle(Qt::DashDotLine);
 	else if (_linestyle == DottedStyle)     pen.setStyle(Qt::DotLine);
 	else if (_linestyle == NormalStyle)     pen.setStyle(Qt::SolidLine);
-	
+
 		//Apply pen width
 	if      (_lineweight == NoneWeight)   pen.setColor(QColor(0, 0, 0, 0));
 	else if (_lineweight == ThinWeight)   pen.setWidth(0);
@@ -1044,7 +1073,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 		else if (_filling == HTMLGrayDarkSlateGrayFilling)  brush.setColor(QColor(47, 79, 79));
 		else if (_filling == HTMLGrayBlackFilling)  brush.setColor(QColor(0, 0, 0));
 	}
-	
+
 		//Apply pen color
 	if      (_color == WhiteColor) pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
 	else if (_color == BlackColor) pen.setColor(QColor(  0,   0,   0, pen.color().alpha()));
@@ -1200,23 +1229,23 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == HTMLGrayDarkSlateGrayColor)  pen.setColor(QColor(47, 79, 79));
 	else if (_color == HTMLGrayBlackColor)  pen.setColor(QColor(0, 0, 0));
 	else if (_color == NoneColor)  pen.setBrush(Qt::transparent);
-	
+
 		//Apply antialiasing
 	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);
 	painter.setRenderHint(QPainter::TextAntialiasing,      _antialiased);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform, _antialiased);
-	
+
 	painter.setPen(pen);
 	painter.setBrush(brush);
 }
 
 /**
- * @brief CustomElementGraphicPart::drawShadowShape
- * Draw a transparent blue shadow arround the shape of this item.
- * The QPainterPathStroker used to draw shadows have a width of SHADOWS_HEIGHT
- * Be carefull if penWeight of this item is to 0 the outline of strock is bigger of 0.5
- * @param painter : painter to use for draw this shadows
- */
+	@brief CustomElementGraphicPart::drawShadowShape
+	Draw a transparent blue shadow arround the shape of this item.
+	The QPainterPathStroker used to draw shadows have a width of SHADOWS_HEIGHT
+	Be carefull if penWeight of this item is to 0 the outline of strock is bigger of 0.5
+	@param painter : painter to use for draw this shadows
+*/
 void CustomElementGraphicPart::drawShadowShape(QPainter *painter)
 {
 		//@FIXME if pen weight is 0, the strock outline is SHADOWS_HEIGHT/2 + 0.5
@@ -1235,14 +1264,14 @@ void CustomElementGraphicPart::drawShadowShape(QPainter *painter)
 }
 
 /**
- * @brief CustomElementGraphicPart::itemChange
- * Reimplemented from QGraphicsObject.
- * If the item position change call updateCurrentPartEditor()
- * the change is always send to QGraphicsObject
- * @param change
- * @param value
- * @return the returned value of QGraphicsObject::itemChange
- */
+	@brief CustomElementGraphicPart::itemChange
+	Reimplemented from QGraphicsObject.
+	If the item position change call updateCurrentPartEditor()
+	the change is always send to QGraphicsObject
+	@param change
+	@param value
+	@return the returned value of QGraphicsObject::itemChange
+*/
 QVariant CustomElementGraphicPart::itemChange(GraphicsItemChange change, const QVariant &value)
 {
 	if (scene())
@@ -1253,11 +1282,11 @@ QVariant CustomElementGraphicPart::itemChange(GraphicsItemChange change, const Q
 }
 
 /**
- * @brief CustomElementGraphicPart::hoverEnterEvent
- * Reimplemented from QGraphicsObject.
- * Set m_hovered to true
- * @param event
- */
+	@brief CustomElementGraphicPart::hoverEnterEvent
+	Reimplemented from QGraphicsObject.
+	Set m_hovered to true
+	@param event
+*/
 void CustomElementGraphicPart::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = true;
@@ -1265,11 +1294,11 @@ void CustomElementGraphicPart::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 }
 
 /**
- * @brief CustomElementGraphicPart::hoverLeaveEvent
- * Reimplemented from QGraphicsObject.
- * Set m_hovered to false
- * @param event
- */
+	@brief CustomElementGraphicPart::hoverLeaveEvent
+	Reimplemented from QGraphicsObject.
+	Set m_hovered to false
+	@param event
+*/
 void CustomElementGraphicPart::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = false;

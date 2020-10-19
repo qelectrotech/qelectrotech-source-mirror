@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="31" orientation="dyyy">
+<definition height="40" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="31">
     <uuid uuid="{d60e3b83-b1fc-4388-9577-601ebb7d1906}"/>
     <names>
         <name lang="en">Calibrated valve</name>

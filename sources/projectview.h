@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -71,6 +71,7 @@ class QVBoxLayout;
 
 
 /**
+	@brief The ProjectView class
 	This class provides a widget displaying the diagrams of a particular
 	project using tabs.
 */
@@ -98,7 +99,6 @@ class ProjectView : public QWidget
 		void changeLastTab();
 
 	public slots:
-		void addNewDiagramFolioList();
 		void removeDiagram(DiagramView *);
 		void removeDiagram(Diagram *);
 		void showDiagram(DiagramView *);
@@ -117,7 +117,6 @@ class ProjectView : public QWidget
 		void moveDiagramUpx10(Diagram *);
 		void moveDiagramDownx10(DiagramView *);
 		void moveDiagramDownx10(Diagram *);
-		void printProject();
 		void exportProject();
 		QETResult save();
 		QETResult saveAs();
@@ -136,7 +135,6 @@ class ProjectView : public QWidget
 		void errorEncountered(const QString &);
 			// relayed signals
 		void findElementRequired(const ElementsLocation &);
-		void editElementRequired(const ElementsLocation &);
 
 	private:
 		void initActions();
@@ -164,7 +162,9 @@ class ProjectView : public QWidget
 
 		// attributes
 	private:
-		QAction *m_add_new_diagram;
+		QAction *m_add_new_diagram,
+		*m_first_view,
+		*m_end_view;
 		QETProject *m_project;
 		QVBoxLayout *layout_;
 		QWidget *fallback_widget_;

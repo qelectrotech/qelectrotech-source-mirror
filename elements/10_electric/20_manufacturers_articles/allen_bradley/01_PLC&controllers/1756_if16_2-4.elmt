@@ -1,4 +1,4 @@
-<definition hotspot_y="110" type="element" height="120" link_type="simple" width="880" orientation="dyyy" version="0.80" hotspot_x="7">
+<definition hotspot_y="110" type="element" height="120" link_type="simple" width="880" version="0.80" hotspot_x="7">
     <uuid uuid="{f2aa1814-eccb-4834-a566-fa05e3ab5b84}"/>
     <names>
         <name lang="hu">1756-IF16 2/4</name>

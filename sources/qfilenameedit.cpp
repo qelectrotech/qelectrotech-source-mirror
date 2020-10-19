@@ -1,25 +1,26 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qfilenameedit.h"
 #include  "qetregexpvalidator.h"
 #include <QKeyEvent>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QToolTip>
+#include <QtDebug>
 
 /**
 	Constructeur
@@ -36,7 +37,7 @@ QFileNameEdit::QFileNameEdit(QWidget *parent) : QLineEdit(parent) {
 */
 QFileNameEdit::QFileNameEdit(const QString &contents, QWidget *parent) : QLineEdit(parent) {
 	init();
-	if (!contents.isEmpty() && regexp_.exactMatch(contents)) {
+	if (!contents.isEmpty() && regexp_.match(contents).hasMatch()) {
 		setText(contents);
 	}
 }
@@ -44,28 +45,32 @@ QFileNameEdit::QFileNameEdit(const QString &contents, QWidget *parent) : QLineEd
 /**
 	Destructeur
 */
-QFileNameEdit::~QFileNameEdit() {
+QFileNameEdit::~QFileNameEdit()
+{
 }
 
 /**
 	@return true si le champ de texte est vide, false sinon
 */
-bool QFileNameEdit::isEmpty() {
+bool QFileNameEdit::isEmpty()
+{
 	return(text().isEmpty());
 }
 
 /**
 	@return true si le champ de texte n'est pas vide et est valide
 */
-bool QFileNameEdit::isValid() {
-	return(regexp_.exactMatch(text()));
+bool QFileNameEdit::isValid()
+{
+	return(regexp_.match(text()).hasMatch());
 }
 
 /**
 	Construit l'objet
 */
-void QFileNameEdit::init() {
-	regexp_ = QRegExp("^[0-9a-z_\\-\\.]+$", Qt::CaseSensitive);
+void QFileNameEdit::init()
+{
+	regexp_ = QRegularExpression("^[0-9a-z_\\-\\.]+$");
 	validator_ = new QETRegExpValidator(regexp_, this);
 	setValidator(validator_);
 	tooltip_text_ = QString(
@@ -83,7 +88,8 @@ void QFileNameEdit::init() {
 /**
 	Affiche l'info-bulle informant l'utilisateur des caracteres autorises.
 */
-void QFileNameEdit::displayToolTip() {
+void QFileNameEdit::displayToolTip()
+{
 	QToolTip::showText(
 		mapToGlobal(QPoint(x() + width(), 0)),
 		tooltip_text_,
@@ -95,6 +101,7 @@ void QFileNameEdit::displayToolTip() {
 /**
 	Gere le fait que la validation du champ de texte ait echoue.
 */
-void QFileNameEdit::validationFailed() {
+void QFileNameEdit::validationFailed()
+{
 	displayToolTip();
 }

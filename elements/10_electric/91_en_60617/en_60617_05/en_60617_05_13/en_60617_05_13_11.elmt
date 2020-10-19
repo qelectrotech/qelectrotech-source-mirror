@@ -1,4 +1,4 @@
-<definition hotspot_x="175" hotspot_y="205" orientation="dyyy" type="element" version="0.70" height="210" link_type="simple" width="240">
+<definition hotspot_x="175" hotspot_y="205" type="element" version="0.70" height="210" link_type="simple" width="240">
     <uuid uuid="{fc55cdaf-64c4-4f1d-b628-6175809cf43c}"/>
     <names>
         <name lang="de">Rückwärtswellen-Verstärkerröhre, M-Typ</name>

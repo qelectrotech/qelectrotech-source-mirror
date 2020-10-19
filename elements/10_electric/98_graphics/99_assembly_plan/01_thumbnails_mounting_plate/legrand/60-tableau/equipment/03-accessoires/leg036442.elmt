@@ -1,0 +1,24 @@
+<definition hotspot_y="25" type="element" width="40" link_type="simple" height="50" version="0.80" hotspot_x="20">
+    <uuid uuid="{05dc9175-54c4-4d1a-b97a-2ac343e170b1}"/>
+    <names>
+        <name lang="fr">Clips écrou M6</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">LEG036442</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Clips-écrous M6</elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <rect y="-20" style="line-style:normal;line-weight:normal;filling:HTMLGrayGainsboro;color:black" width="30" antialias="false" height="40" x="-15" ry="2" rx="2"/>
+        <circle y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="false" x="-10"/>
+    </description>
+</definition>

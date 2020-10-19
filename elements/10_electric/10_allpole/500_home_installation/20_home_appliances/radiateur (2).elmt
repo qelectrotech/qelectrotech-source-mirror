@@ -1,0 +1,36 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="40" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{c1e87e51-f68d-4b30-8c36-f0d4c6fa9452}"/>
+    <names>
+        <name lang="ru">Эл. конвектор</name>
+        <name lang="cs">Elektrické topné těleso</name>
+        <name lang="es">Radiador eléctrico</name>
+        <name lang="pl">Grzejnik konwekcyjny</name>
+        <name lang="ar">مُشعّ كهربائي</name>
+        <name lang="de">Heizkörper</name>
+        <name lang="en">Electric convector</name>
+        <name lang="el">Θερμοπομπός</name>
+        <name lang="nl">Elektrische luchtverwarmer</name>
+        <name lang="it">Termo-convettore</name>
+        <name lang="fr">Radiateur électrique</name>
+        <name lang="pt">Irradiador eléctrico</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="2" uuid="{1d98c1a6-cff8-4118-a8c0-e896fe6f4b3b}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-12" antialias="false" y3="15" x2="-12" y1="0" y2="15" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="0" x4="12"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-12" end2="none" antialias="false" x2="12" y1="4.5" length2="1.5" y2="4.5" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-12" end2="none" antialias="false" x2="12" y1="3" length2="1.5" y2="3" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-12" end2="none" antialias="false" x2="12" y1="1.5" length2="1.5" y2="1.5" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-10" length2="1.5" y2="0" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="15" length2="1.5" y2="20" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{5abd9f82-1eab-4203-94da-95b82fc82672}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{00840cc4-dad1-4246-9928-99605a67819f}"/>
+        <terminal orientation="s" name="" x="0" y="20" uuid="{458bfeca-0e4d-40d2-ac10-4b51dfeab581}"/>
+    </description>
+</definition>

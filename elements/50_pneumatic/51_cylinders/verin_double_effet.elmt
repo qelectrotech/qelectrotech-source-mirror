@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="90" hotspot_x="17" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="60" version="0.5" width="90" hotspot_x="17" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{56dcf9fa-7b68-4c68-9903-06a5cc2d5bf1}"/>
     <names>
         <name lang="en">Double acting single rod cylinder with locking pin pneumatic</name>

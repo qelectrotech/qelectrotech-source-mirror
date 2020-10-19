@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="36" orientation="dyyy" height="90" hotspot_y="45" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="36" height="90" hotspot_y="45" type="element">
     <uuid uuid="{f9512315-ebb2-41b7-96f4-f3489774b378}"/>
     <names>
         <name lang="el">D-SUB 15 ακροδέκτες (θηλυκό)</name>

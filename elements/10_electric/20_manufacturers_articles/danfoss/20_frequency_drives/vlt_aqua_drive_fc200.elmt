@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="6" type="element" height="100" width="470" version="0.5">
+<definition link_type="simple" hotspot_x="24" hotspot_y="6" type="element" height="100" width="470" version="0.5">
     <uuid uuid="{609bd94b-9acf-4a51-984c-b68d5caa0d84}"/>
     <names>
         <name lang="pl">VLT AQUA Drive FC200</name>

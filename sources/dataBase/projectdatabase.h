@@ -1,4 +1,4 @@
-/*
+﻿/*
 		Copyright 2006-2020 QElectroTech Team
 		This file is part of QElectroTech.
 
@@ -26,48 +26,67 @@
 
 class Element;
 class QETProject;
+class Diagram;
+class sqlite3;
 
 /**
- * @brief The projectDataBase class
- * This class wrap a sqlite data base where you can find several thing about
- * the content of a project.
+	@brief The projectDataBase class
+	This class wrap a sqlite data base where you can find several thing
+	about the content of a project.
  *
- * NOTE this class is still in developement.
- */
+	@note this class is still in developement.
+*/
 class projectDataBase : public QObject
 {
 	Q_OBJECT
 
 	public:
 		projectDataBase(QETProject *project, QObject *parent = nullptr);
-	private:
-		projectDataBase(QETProject *project, const QString &connection_name, const QString &path, QObject *parent = nullptr);
-	public:
 		virtual ~projectDataBase() override;
 
 		void updateDB();
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
+		void addElement(Element *element);
+		void removeElement(Element *element);
+		void elementInfoChanged(Element *element);
+		void addDiagram(Diagram *diagram);
+		void removeDiagram(Diagram *diagram);
 
 	signals:
 		void dataBaseUpdated();
 
 	private:
-		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
+		bool createDataBase();
 		void createElementNomenclatureView();
+		void createSummaryView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
-		static QHash<QString, QString> elementInfoToString(Element *elmt);
+		void prepareQuery();
+		static QHash<QString, QString> elementInfoToString(
+				Element *elmt);
 
 	private:
 		QPointer<QETProject> m_project;
 		QSqlDatabase m_data_base;
-		QSqlQuery m_insert_elements_query;
+		QSqlQuery m_insert_elements_query,
+				  m_insert_element_info_query,
+				  m_remove_element_query,
+				  m_update_element_query,
+				  m_insert_diagram_query,
+				  m_remove_diagram_query,
+				  m_insert_diagram_info_query;
 
+#ifdef QET_EXPORT_PROJECT_DB
 	public:
-		static void exportDb(projectDataBase *db, QWidget *parent = nullptr, const QString &caption = QString(), const QString &dir = QString());
+		static sqlite3 *sqliteHandle(QSqlDatabase *db);
+		static void exportDb(projectDataBase *db,
+				     QWidget *parent = nullptr,
+				     const QString &caption = QString(),
+				     const QString &dir = QString());
+#endif
 };
 
 #endif // PROJECTDATABASE_H

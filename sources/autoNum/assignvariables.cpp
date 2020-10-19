@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,8 +29,8 @@
 namespace autonum
 {
 	/**
-	 * @brief sequentialNumbers::sequentialNumbers
-	 */
+		@brief sequentialNumbers::sequentialNumbers
+	*/
 	sequentialNumbers::sequentialNumbers()
 	{}
 
@@ -44,9 +44,11 @@ namespace autonum
 		hundred_folio = other.hundred_folio;
 	}
 
-	sequentialNumbers::~sequentialNumbers() {}
+	sequentialNumbers::~sequentialNumbers()
+{}
 
-	sequentialNumbers &sequentialNumbers::operator=(const sequentialNumbers &other)
+	sequentialNumbers &sequentialNumbers::operator=(
+			const sequentialNumbers &other)
 	{
 		if (&other == this || other == *this)
 			return (*this);
@@ -83,37 +85,57 @@ namespace autonum
 	}
 
 	/**
-	 * @brief sequentialNumbers::toXml
-	 * export this sequential numbers into a QDomElement.
-	 * @param document : QDomDocument used to create the QDomElement
-	 * @param tag_name : the tag name used for the QDomElement.
-	 * @return A QDomElement, if this sequential have no value, the returned QDomELement is empty
-	 */
-	QDomElement sequentialNumbers::toXml(QDomDocument &document, const QString& tag_name) const
+		@brief sequentialNumbers::toXml
+		export this sequential numbers into a QDomElement.
+		@param document : QDomDocument used to create the QDomElement
+		@param tag_name : the tag name used for the QDomElement.
+		@return A QDomElement, if this sequential have no value,
+		the returned QDomELement is empty
+	*/
+	QDomElement sequentialNumbers::toXml(QDomDocument &document,
+					     const QString& tag_name) const
 	{
 		QDomElement element = document.createElement(tag_name);
 
 		if (!unit.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "unit", unit.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "unit",
+						    unit.join(";")));
 		if (!unit_folio.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "unitFolio", unit_folio.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "unitFolio",
+						    unit_folio.join(";")));
 		if(!ten.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "ten", ten.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "ten",
+						    ten.join(";")));
 		if(!ten_folio.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "tenFolio", ten_folio.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "tenFolio",
+						    ten_folio.join(";")));
 		if(!hundred.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "hundred", hundred.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "hundred",
+						    hundred.join(";")));
 		if(!hundred_folio.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "hundredFolio", hundred_folio.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "hundredFolio",
+						    hundred_folio.join(";")));
 
 		return element;
 	}
 
 	/**
-	 * @brief sequentialNumbers::fromXml
-	 * Import sequential values from a QDomElement
-	 * @param element
-	 */
+		@brief sequentialNumbers::fromXml
+		Import sequential values from a QDomElement
+		@param element
+	*/
 	void sequentialNumbers::fromXml(const QDomElement &element)
 	{
 		if (!element.hasChildNodes())
@@ -152,29 +174,40 @@ namespace autonum
 	}
 
 	/**
-	 * @brief AssignVariables::formulaToLabel
-	 * Return the @formula with variable assigned (ready to be displayed)
-	 * @param formula - the formula to work
-	 * @param seqStruct - struct where is stocked int values (struct is passed as a reference and modified by this static method)
-	 * @param diagram - the diagram where occure the formula.
-	 * @param elmt - parent element (if any) of the formula
-	 * @return the string with variable assigned.
-	 */
-	QString AssignVariables::formulaToLabel(QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt)
+		@brief AssignVariables::formulaToLabel
+		Return the formula with variable assigned
+		(ready to be displayed)
+		@param formula - the formula to work
+		@param seqStruct - struct where is stocked int values
+		(struct is passed as a reference
+		and modified by this static method)
+		@param diagram - the diagram where occure the formula.
+		@param elmt - parent element (if any) of the formula
+		@return the string with variable assigned.
+	*/
+	QString AssignVariables::formulaToLabel(QString formula,
+						sequentialNumbers &seqStruct,
+						Diagram *diagram,
+						const Element *elmt)
 	{
-		AssignVariables av(std::move(formula), seqStruct, diagram, elmt);
+		AssignVariables av(std::move(formula),
+				   seqStruct,
+				   diagram,
+				   elmt);
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
 	
 	/**
-	 * @brief AssignVariables::replaceVariable
-	 * Replace the variables in @formula in form %{my-var} to the corresponding value stored in @dc
-	 * @param formula
-	 * @param dc
-	 * @return 
-	 */
-	QString AssignVariables::replaceVariable(const QString &formula, const DiagramContext &dc)
+		@brief AssignVariables::replaceVariable
+		Replace the variables in formula in form %{my-var}
+		to the corresponding value stored in dc
+		@param formula
+		@param dc
+		@return
+	*/
+	QString AssignVariables::replaceVariable(const QString &formula,
+						 const DiagramContext &dc)
 	{
 		QString str = formula;
 		str.replace("%{label}", dc.value("label").toString());
@@ -183,13 +216,15 @@ namespace autonum
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
-		str.replace("%{manufacturer_reference}", dc.value("manufacturer_reference").toString());
+		str.replace("%{manufacturer_reference}",
+			    dc.value("manufacturer_reference").toString());
 		str.replace("%{supplier}", dc.value("supplier").toString());
 		str.replace("%{quantity}", dc.value("quantity").toString());
 		str.replace("%{unity}", dc.value("unity").toString());
 		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
 		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
-		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
+		str.replace("%{machine_manufacturer_reference}",
+			    dc.value("machine_manufacturer_reference").toString());
 		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{void}", QString());
@@ -198,7 +233,10 @@ namespace autonum
 	}
 	
 	
-	AssignVariables::AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt):
+	AssignVariables::AssignVariables(const QString& formula,
+					 const sequentialNumbers& seqStruct,
+					 Diagram *diagram,
+					 const Element *elmt):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
@@ -208,14 +246,33 @@ namespace autonum
 	{
 		if (m_diagram)
 		{
-			m_assigned_label.replace("%F",  m_diagram -> border_and_titleblock.folio());
-			m_assigned_label.replace("%f",     QString::number(m_diagram->folioIndex()+1));
-			m_assigned_label.replace("%id",    QString::number(m_diagram->folioIndex()+1));
-			m_assigned_label.replace("%total", QString::number(m_diagram->border_and_titleblock.folioTotal()));
-			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.plant());
-			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
+			m_assigned_label.replace("%F",
+						 m_diagram
+						 -> border_and_titleblock
+						 .folio());
+			m_assigned_label.replace("%f",
+						 QString::number(
+							 m_diagram
+							 ->folioIndex()+1));
+			m_assigned_label.replace("%id",
+						 QString::number(
+							 m_diagram
+							 ->folioIndex()+1));
+			m_assigned_label.replace("%total",
+						 QString::number(
+							 m_diagram
+							 ->border_and_titleblock
+							 .folioTotal()));
+			m_assigned_label.replace("%M",
+						 m_diagram
+						 -> border_and_titleblock
+						 .plant());
+			m_assigned_label.replace("%LM",
+						 m_diagram
+						 -> border_and_titleblock
+						 .locmach());
 
-	QSettings settings;
+			QSettings settings;
 			if (m_element)
 			{
 			if (settings.value("border-columns_0", true).toBool()){
@@ -297,13 +354,16 @@ namespace autonum
 	}
 
 	/**
-	 * @brief setSequentialToList
-	 * Append all sequential of type @type owned by @context in list
-	 * @param list : list to have value inserted
-	 * @param context : numerotation context to retrieve value
-	 * @param type : type of sequential (unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
-	 */
-	void setSequentialToList(QStringList &list, NumerotationContext &context, const QString& type)
+		@brief setSequentialToList
+		Append all sequential of type type owned by context in list
+		@param list : list to have value inserted
+		@param context : numerotation context to retrieve value
+		@param type : type of sequential
+		(unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
+	*/
+	void setSequentialToList(QStringList &list,
+				 NumerotationContext &context,
+				 const QString& type)
 	{
 		for (int i = 0; i < context.size(); i++)
 		{
@@ -321,13 +381,16 @@ namespace autonum
 	}
 
 	/**
-	 * @brief setFolioSequentialToHash
-	 * Insert all value of @list in @hash with key @autoNumName
-	 * @param list : list to get values from
-	 * @param hash : hash to have values inserted
-	 * @param autoNumName : name to use as key of hash
-	 */
-	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName)
+		@brief setFolioSequentialToHash
+		Insert all value of list in hash with key autoNumName
+		@param list : list to get values from
+		@param hash : hash to have values inserted
+		@param autoNumName : name to use as key of hash
+	*/
+	void setFolioSequentialToHash(QStringList &list,
+				      QHash<QString,
+				      QStringList> &hash,
+				      const QString& autoNumName)
 	{
 		if (hash.isEmpty() || !hash.contains(autoNumName))
 		{
@@ -355,15 +418,20 @@ namespace autonum
 	}
 
 	/**
-	 * @brief setSequential
-	 * Fill seqStruct
-	 * @param label : label of sequential to fill (%sequ_, %sequf_, %seqt_, ect....)
-	 * @param seqStruct : struct to fill
-	 * @param context : numerotation context use to know the current sequential num.
-	 * @param diagram : diagram where the sequential occur, notably use when label is folio type (%sequf_, %seqtf_, %seqhf_),
-	 * to keep up to date the current sequential of folio.
-	 * @param hashKey : the hash key used to store the sequential for folio type.
-	 */
+		@brief setSequential
+		Fill seqStruct
+		@param label : label of sequential to fill
+		(%sequ_, %sequf_, %seqt_, ect....)
+		@param seqStruct : struct to fill
+		@param context : numerotation context use
+		to know the current sequential num.
+		@param diagram : diagram where the sequential occur,
+		notably use when label is folio type
+		(%sequf_, %seqtf_, %seqhf_),
+		to keep up to date the current sequential of folio.
+		@param hashKey :
+		the hash key used to store the sequential for folio type.
+	*/
 	void setSequential(const QString& label, sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, const QString& hashKey)
 	{
 		if (!context.isEmpty())
@@ -399,10 +467,10 @@ namespace autonum
 	}
 
 	/**
-	 * @brief numerotationContextToFormula
-	 * @param nc
-	 * @return the numerotation context, converted to formula
-	 */
+		@brief numerotationContextToFormula
+		@param nc
+		@return the numerotation context, converted to formula
+	*/
 	QString numerotationContextToFormula(const NumerotationContext &nc)
 	{
 		QString type;
@@ -476,11 +544,13 @@ namespace autonum
 	}
 
 	/**
-	 * @brief elementPrefixForLocation
-	 * @param location
-	 * @return the prefix for an element represented by location, prefix can be null.
-	 * Search for a prefix only if @location represent an element embedded in a project
-	 */
+		@brief elementPrefixForLocation
+		@param location
+		@return the prefix for an element represented by location,
+			prefix can be null.
+		Search for a prefix only if location represent
+		an element embedded in a project
+	*/
 	QString elementPrefixForLocation(const ElementsLocation &location)
 	{
 		if (!location.isProject())

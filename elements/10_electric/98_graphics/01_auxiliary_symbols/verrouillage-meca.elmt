@@ -1,4 +1,4 @@
-<definition type="element" height="20" orientation="dyyy" version="0.5" link_type="simple" hotspot_y="1" width="20" hotspot_x="7">
+<definition type="element" height="20" version="0.5" link_type="simple" hotspot_y="1" width="20" hotspot_x="7">
     <uuid uuid="{7d23d234-1736-40be-8423-98280338f775}"/>
     <names>
         <name lang="en">Mechanical lock</name>

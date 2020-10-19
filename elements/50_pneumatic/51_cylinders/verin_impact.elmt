@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{e89853b9-7440-49f8-a624-73ace39d0937}"/>
     <names>
         <name lang="en">Pneumatic Actuators Impact</name>

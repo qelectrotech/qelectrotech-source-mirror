@@ -1,4 +1,4 @@
-<definition width="90" hotspot_x="44" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="38">
+<definition width="90" hotspot_x="44" type="element" link_type="simple" version="0.5" height="70" hotspot_y="38">
     <uuid uuid="{e950e085-2f0e-42fe-bff4-1ddfa590fc56}"/>
     <names>
         <name lang="cs">B polopřímý</name>

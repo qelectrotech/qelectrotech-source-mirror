@@ -1,0 +1,31 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{d26a4699-c6af-4e2d-8f8c-a3f5f97f19d6}"/>
+    <names>
+        <name lang="cs">Elektrický spotřebič</name>
+        <name lang="pl">Kuchenka elektryczna</name>
+        <name lang="ar">جهاز كهرومنزلي</name>
+        <name lang="de">Haushaltsgerät</name>
+        <name lang="en">Appliance</name>
+        <name lang="el">Ηλεκτρική συσκευή</name>
+        <name lang="nl">Elektrisch apparaat</name>
+        <name lang="it">Apparecchio elettrico</name>
+        <name lang="fr">Appareil électroménager</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="11" uuid="{1b114bca-74ea-4b20-aed2-59fc13dce304}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-12" antialias="false" y3="23" x2="-12" y1="-1" y2="23" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" x4="12"/>
+        <text rotation="0" x="-4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="E" y="14.3333" color="#000000"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-1" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="30" length2="1.5" y2="23" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{f406d716-7aa1-4e8f-a89e-1e6e59511d19}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{0e0f9fc5-4eda-43b8-869e-4961bf1cf69e}"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{9879b02c-8516-4315-93a8-be77fd0e4d9e}"/>
+    </description>
+</definition>

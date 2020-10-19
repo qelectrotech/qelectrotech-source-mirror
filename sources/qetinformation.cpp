@@ -1,29 +1,30 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "qetinformation.h"
 
 #include <QObject>
 #include <QHash>
 
+#include "qetinformation.h"
+
 /**
- * @brief QETInformation::titleblockInfoKeys
- * @return all available key for use with a titleblock
- */
+	@brief QETInformation::titleblockInfoKeys
+	@return all available key for use with a titleblock
+*/
 QStringList QETInformation::titleblockInfoKeys()
 {
 	QStringList info_list;
@@ -44,19 +45,20 @@ QStringList QETInformation::titleblockInfoKeys()
 	info_list << "projectpath";
 	info_list << "projectfilename";
 	info_list << "saveddate";
+	info_list << "saveddate-eu";
 	info_list << "savedtime";
 	info_list << "savedfilename";
 	info_list << "savedfilepath";
-	
+
 	return info_list;
 }
 
 /**
- * @brief QETInformation::titleblockTranslatedInfoKey
- * @param info : info key to be translated
- * @return the translated information given by @info
- * If  @info don't match, return an empty string
- */
+	@brief QETInformation::titleblockTranslatedInfoKey
+	@param info : info key to be translated
+	@return the translated information given by info
+	If info don't match, return an empty string
+*/
 QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 {
 	if      (info == "author")             return QObject::tr("Auteur");
@@ -75,7 +77,8 @@ QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 	else if (info == "projecttitle")       return QObject::tr("Titre du projet");
 	else if (info == "projectpath")        return QObject::tr("Chemin du fichier du projet");
 	else if (info == "projectfilename")    return QObject::tr("Nom du fichier");
-	else if (info == "saveddate")          return QObject::tr("Date d'enregistrement du fichier");
+	else if (info == "saveddate")          return QObject::tr("Date d'enregistrement du fichier format yyyy-MM-dd");
+	else if (info == "saveddate-eu")       return QObject::tr("Date d'enregistrement du fichier format dd-MM-yyyy");
 	else if (info == "savedtime")          return QObject::tr("Heure d'enregistrement du fichier");
 	else if (info == "savedfilename")      return QObject::tr("Nom du fichier enregistré");
 	else if (info == "savedfilepath")      return QObject::tr("Chemin du fichier enregistré");
@@ -83,11 +86,11 @@ QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 }
 
 /**
- * @brief QETInformation::titleblockInfoKeysToVar
- * @param info
- * @return var in form %{my-var} corresponding to the info.
- * if there is not available var for the given info, the returned var is %{void}
- */
+	@brief QETInformation::titleblockInfoKeysToVar
+	@param info
+	@return var in form %{my-var} corresponding to the info.
+	if there is not available var for the given info, the returned var is %{void}
+*/
 QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 {
 	if      (info == "author")             return QString("%{author}");
@@ -107,6 +110,7 @@ QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 	else if (info == "projectpath")        return QString("%{projectpath}");
 	else if (info == "projectfilename")    return QString("%{projectfilename}");
 	else if (info == "saveddate")          return QString("%{saveddate}");
+	else if (info == "saveddate-eu")       return QString("%{saveddate-eu}");
 	else if (info == "savedtime")          return QString("%{savedtime}");
 	else if (info == "savedfilename")      return QString("%{savedfilename}");
 	else if (info == "savedfilepath")      return QString("%{savedfilepath}");
@@ -114,10 +118,10 @@ QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 }
 
 /**
- * @brief QETInformation::titleblockTranslatedKeyHashVar
- * @return a QHash with for key, the translated information key of title block,
- * and for value the corresponding var.
- */
+	@brief QETInformation::titleblockTranslatedKeyHashVar
+	@return a QHash with for key, the translated information key of title block,
+	and for value the corresponding var.
+*/
 QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 {
 	QHash <QString, QString> hash_;

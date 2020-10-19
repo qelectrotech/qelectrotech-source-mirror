@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="24" width="50" hotspot_y="10">
+<definition type="element" version="0.70" height="20" link_type="simple" hotspot_x="24" width="50" hotspot_y="10">
     <uuid uuid="{ef31ec00-9e49-4701-b765-24152e21e9bd}"/>
     <names>
         <name lang="de">Elektro-Installationskanal, allgemein</name>

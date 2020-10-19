@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="39" type="element" height="90" width="200" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="39" type="element" height="90" width="200" version="0.5">
     <uuid uuid="{526ce442-85ab-4b7f-a884-a2d1362309e1}"/>
     <names>
         <name lang="pl">MSR33RT/RTP</name>

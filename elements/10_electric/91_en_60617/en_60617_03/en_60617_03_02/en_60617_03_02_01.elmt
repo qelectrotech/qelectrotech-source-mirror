@@ -1,4 +1,4 @@
-<definition hotspot_x="4" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="10" type="element" link_type="simple">
+<definition hotspot_x="4" version="0.70" height="10" hotspot_y="4" width="10" type="element" link_type="simple">
     <uuid uuid="{8dde5b2e-ac66-401d-a3e6-f791310732ea}"/>
     <names>
         <name lang="fr">Dérivation

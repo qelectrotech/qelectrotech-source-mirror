@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="24" height="100" version="0.5" width="310" hotspot_x="15" link_type="simple">
+<definition type="element" hotspot_y="24" height="100" version="0.5" width="310" hotspot_x="15" link_type="simple">
     <uuid uuid="{49d75740-fa6a-437a-9d55-0dc3acb20ddf}"/>
     <names>
         <name lang="ar">3RW</name>

@@ -1,4 +1,4 @@
-<definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="10">
+<definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="20" hotspot_y="10">
     <uuid uuid="{592797f0-933d-41a3-918f-1dfa2ae25b4b}"/>
     <names>
         <name lang="de">bidirektionale kreisförmige Bewegung bidirektionale Drehung bidirektionales Drehmoment</name>

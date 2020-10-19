@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="25" hotspot_y="29" type="element">
+<definition height="60" version="0.5" link_type="simple" width="40" hotspot_x="25" hotspot_y="29" type="element">
     <uuid uuid="{1db2be55-fa6c-40d6-afa6-e5da144931aa}"/>
     <names>
         <name lang="de">NPN Transistor</name>

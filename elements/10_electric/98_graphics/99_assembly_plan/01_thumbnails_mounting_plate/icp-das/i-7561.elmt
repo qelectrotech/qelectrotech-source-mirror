@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" orientation="dyyy" type="element" width="170" version="0.80">
+<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" type="element" width="170" version="0.80">
     <uuid uuid="{bb2564a4-8449-45f6-8858-c6da2dadfa61}"/>
     <names>
         <name lang="en">i-7561 - USB to RS-232/422/485 Converter</name>

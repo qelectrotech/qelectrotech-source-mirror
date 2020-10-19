@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,10 +31,10 @@
 #include <QGraphicsSceneMouseEvent>
 
 /**
- * @brief DynamicElementTextItem::DynamicElementTextItem
- * Constructor
- * @param parent_element
- */
+	@brief DynamicElementTextItem::DynamicElementTextItem
+	Constructor
+	@param parent_element
+*/
 DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	m_parent_element(parent_element),
 	m_uuid(QUuid::createUuid())
@@ -66,9 +66,9 @@ DynamicElementTextItem::~DynamicElementTextItem()
 {}
 
 /**
- * @brief DynamicElementTextItem::textFromMetaEnum
- * @return The QMetaEnum of the enum TextFrom 
- */
+	@brief DynamicElementTextItem::textFromMetaEnum
+	@return The QMetaEnum of the enum TextFrom
+*/
 QMetaEnum DynamicElementTextItem::textFromMetaEnum()
 {
 	DynamicElementTextItem deti;
@@ -79,11 +79,11 @@ DynamicElementTextItem::DynamicElementTextItem()
 {}
 
 /**
- * @brief DynamicElementTextItem::toXml
- * Export this text to xml
- * @param dom_doc
- * @return 
- */
+	@brief DynamicElementTextItem::toXml
+	Export this text to xml
+	@param dom_doc
+	@return
+*/
 QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 {
 	QDomElement root_element = dom_doc.createElement(xmlTagName());
@@ -147,10 +147,10 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 }
 
 /**
- * @brief DynamicElementTextItem::fromXml
- * Import this text from xml
- * @param dom_elmt
- */
+	@brief DynamicElementTextItem::fromXml
+	Import this text from xml
+	@param dom_elmt
+*/
 void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 {
 	if (dom_elmt.tagName() != xmlTagName()) {
@@ -219,20 +219,21 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 }
 
 /**
- * @brief DynamicElementTextItem::ParentElement
- * @return a pointer to the parent element. Note the pointer can be null.
- * Note that the text can return a parent element,
- * even if the text belong to a group of this same element.
- */
-Element *DynamicElementTextItem::parentElement() const {
+	@brief DynamicElementTextItem::ParentElement
+	@return a pointer to the parent element. Note the pointer can be null.
+	Note that the text can return a parent element,
+	even if the text belong to a group of this same element.
+*/
+Element *DynamicElementTextItem::parentElement() const
+{
 	return m_parent_element;
 }
 
 /**
- * @brief DynamicElementTextItem::parentGroup
- * @return The group where this text belong, if this item
- * is note in a group, return nullptr.
- */
+	@brief DynamicElementTextItem::parentGroup
+	@return The group where this text belong, if this item
+	is note in a group, return nullptr.
+*/
 ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 {
 	if(parentItem())
@@ -245,16 +246,16 @@ ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 }
 
 /**
- * @brief DynamicElementTextItem::elementUseForInfo
- * @return a pointer to the element we must use for the variable information.
- * If this text is owned by a simple element, the simple element is returned, this is the same element returned by the function parentElement().
- * If this text is owned by a master element, the master element is returned, this is the same element returned by the function parentElement().
- * If this text is owned by a report element, the report element is returned, this is the same element returned by the function parentElement().
- * If this text is owned by a terminal element, the terminal element is returned, this is the same element returned by the function parentElement().
- * If this text is owned by a slave element, we return the master element set as master of the parent slave element,
- * if the parent slave is not linked to a master, this function return a nullptr.
- * If this text have no parent element, return nullptr
- */
+	@brief DynamicElementTextItem::elementUseForInfo
+	@return a pointer to the element we must use for the variable information.
+	If this text is owned by a simple element, the simple element is returned, this is the same element returned by the function parentElement().
+	If this text is owned by a master element, the master element is returned, this is the same element returned by the function parentElement().
+	If this text is owned by a report element, the report element is returned, this is the same element returned by the function parentElement().
+	If this text is owned by a terminal element, the terminal element is returned, this is the same element returned by the function parentElement().
+	If this text is owned by a slave element, we return the master element set as master of the parent slave element,
+	if the parent slave is not linked to a master, this function return a nullptr.
+	If this text have no parent element, return nullptr
+*/
 Element *DynamicElementTextItem::elementUseForInfo() const
 {
 	Element *elmt = parentElement();
@@ -286,10 +287,10 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 }
 
 /**
- * @brief DynamicElementTextItem::refreshLabelConnection
- * Refresh the connection of this text when the source of text is label,
- * or composite text, with a variable %{label}
- */
+	@brief DynamicElementTextItem::refreshLabelConnection
+	Refresh the connection of this text when the source of text is label,
+	or composite text, with a variable %{label}
+*/
 void DynamicElementTextItem::refreshLabelConnection()
 {
 	if ((m_text_from == ElementInfo && m_info_name == "label") ||
@@ -309,18 +310,19 @@ void DynamicElementTextItem::refreshLabelConnection()
 }
 
 /**
- * @brief DynamicElementTextItem::textFrom
- * @return what the final text is created from.
- */
-DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const {
+	@brief DynamicElementTextItem::textFrom
+	@return what the final text is created from.
+*/
+DynamicElementTextItem::TextFrom DynamicElementTextItem::textFrom() const
+{
 	return m_text_from;
 }
 
 /**
- * @brief DynamicElementTextItem::setTextFrom
- * Set the final text is created from.
- * @param text_from
- */
+	@brief DynamicElementTextItem::setTextFrom
+	Set the final text is created from.
+	@param text_from
+*/
 void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_from)
 {
 	if(m_text_from == text_from)
@@ -372,18 +374,19 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 }
 
 /**
- * @brief DynamicElementTextItem::text
- * @return the text of this text
- */
-QString DynamicElementTextItem::text() const {
+	@brief DynamicElementTextItem::text
+	@return the text of this text
+*/
+QString DynamicElementTextItem::text() const
+{
 	return m_text;
 }
 
 /**
- * @brief DynamicElementTextItem::setText
- * Set the text of this text
- * @param formula
- */
+	@brief DynamicElementTextItem::setText
+	Set the text of this text
+	@param text
+*/
 void DynamicElementTextItem::setText(const QString &text)
 {
 	m_text = text;
@@ -393,10 +396,10 @@ void DynamicElementTextItem::setText(const QString &text)
 }
 
 /**
- * @brief DynamicElementTextItem::setInfoName
- * Set the information name of the parent element.
- * @param info_name
- */
+	@brief DynamicElementTextItem::setInfoName
+	Set the information name of the parent element.
+	@param info_name
+*/
 void DynamicElementTextItem::setInfoName(const QString &info_name)
 {
 	QString old_info_name = m_info_name;
@@ -439,18 +442,19 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 }
 
 /**
- * @brief DynamicElementTextItem::infoName
- * @return the info name of this text
- */
-QString DynamicElementTextItem::infoName() const {
+	@brief DynamicElementTextItem::infoName
+	@return the info name of this text
+*/
+QString DynamicElementTextItem::infoName() const
+{
 	return m_info_name;
 }
 
 /**
- * @brief DynamicElementTextItem::setCompositeText
- * Set the composite text of this text item to @text
- * @param text
- */
+	@brief DynamicElementTextItem::setCompositeText
+	Set the composite text of this text item to text
+	@param text
+*/
 void DynamicElementTextItem::setCompositeText(const QString &text)
 {
 	QString old_composite_text = m_composite_text;
@@ -495,9 +499,9 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 }
 
 /**
- * @brief DynamicElementTextItem::compositeText
- * @return 
- */
+	@brief DynamicElementTextItem::compositeText
+	@return
+*/
 QString DynamicElementTextItem::compositeText() const
 {
 	return m_composite_text;
@@ -521,9 +525,9 @@ QUuid DynamicElementTextItem::uuid() const
 }
 
 /**
- * @brief DynamicElementTextItem::mousePressEvent
- * @param event
- */
+	@brief DynamicElementTextItem::mousePressEvent
+	@param event
+*/
 void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 		//The text become selected, we set the real color, otherwise the editor will display the color of text as blue,
@@ -540,9 +544,9 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DynamicElementTextItem::mouseMoveEvent
- * @param event
- */
+	@brief DynamicElementTextItem::mouseMoveEvent
+	@param event
+*/
 void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {	
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
@@ -576,9 +580,9 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DynamicElementTextItem::mouseReleaseEvent
- * @param event
- */
+	@brief DynamicElementTextItem::mouseReleaseEvent
+	@param event
+*/
 void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_parent_element)
@@ -592,12 +596,12 @@ void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DynamicElementTextItem::mouseDoubleClickEvent
- * Reimplemented functions, for add extra feature when this text is owned by a slave.
- * In this case if the parent slave element is linked to a master, and this text display the label of the master
- * (both if the 'text from' is 'element info' or 'composite text') the QGraphicsView go to master and select it.
- * @param event
- */
+	@brief DynamicElementTextItem::mouseDoubleClickEvent
+	Reimplemented functions, for add extra feature when this text is owned by a slave.
+	In this case if the parent slave element is linked to a master, and this text display the label of the master
+	(both if the 'text from' is 'element info' or 'composite text') the QGraphicsView go to master and select it.
+	@param event
+*/
 void DynamicElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	DiagramTextItem::mouseDoubleClickEvent(event);
@@ -605,12 +609,12 @@ void DynamicElementTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
 }
 
 /**
- * @brief DynamicElementTextItem::hoverEnterEvent
- * If the parent element of this text is a folio report or a slave element, the element is linked
- * and the text display the variable "label" we set the text blue for signal the user that the text act like
- * a link when we double click on.
- * @param event
- */
+	@brief DynamicElementTextItem::hoverEnterEvent
+	If the parent element of this text is a folio report or a slave element, the element is linked
+	and the text display the variable "label" we set the text blue for signal the user that the text act like
+	a link when we double click on.
+	@param event
+*/
 void DynamicElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	DiagramTextItem::hoverEnterEvent(event);
@@ -632,9 +636,9 @@ void DynamicElementTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 }
 
 /**
- * @brief DynamicElementTextItem::hoverLeaveEvent
- * @param event
- */
+	@brief DynamicElementTextItem::hoverLeaveEvent
+	@param event
+*/
 void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	DiagramTextItem::hoverLeaveEvent(event);
@@ -806,10 +810,10 @@ void DynamicElementTextItem::elementInfoChanged()
 }
 
 /**
- * @brief DynamicElementTextItem::masterChanged
- * This function is only use when the parent element is a slave.
- * Call when the master element linked to the parent slave element of this text change
- */
+	@brief DynamicElementTextItem::masterChanged
+	This function is only use when the parent element is a slave.
+	Call when the master element linked to the parent slave element of this text change
+*/
 void DynamicElementTextItem::masterChanged()
 {
 		//First we remove the old connection
@@ -834,10 +838,10 @@ void DynamicElementTextItem::masterChanged()
 }
 
 /**
- * @brief DynamicElementTextItem::reportChanged
- * This function is only use when parent element of this text is a folio report
- * The linked report of the parent element was changed
- */
+	@brief DynamicElementTextItem::reportChanged
+	This function is only use when parent element of this text is a folio report
+	The linked report of the parent element was changed
+*/
 void DynamicElementTextItem::reportChanged()
 {
 		/*
@@ -880,9 +884,9 @@ void DynamicElementTextItem::reportChanged()
 }
 
 /**
- * @brief DynamicElementTextItem::reportFormulaChanged
- * The report formula use in the project was changed
- */
+	@brief DynamicElementTextItem::reportFormulaChanged
+	The report formula use in the project was changed
+*/
 void DynamicElementTextItem::reportFormulaChanged()
 {
 	m_report_formula = parentElement()->diagram()->project()->defaultReportProperties();
@@ -947,9 +951,9 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 }
 
 /**
- * @brief DynamicElementTextItem::setupFormulaConnection
- * Setup the required connection for the formula of the label.
- */
+	@brief DynamicElementTextItem::setupFormulaConnection
+	Setup the required connection for the formula of the label.
+*/
 void DynamicElementTextItem::setupFormulaConnection()
 {
 	if ((m_text_from == ElementInfo && m_info_name == "label") ||
@@ -1006,9 +1010,9 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 }
 
 /**
- * @brief DynamicElementTextItem::updateReportText
- * This function is only use when this text is owned by a report, and this text have for info the Label.
- */
+	@brief DynamicElementTextItem::updateReportText
+	This function is only use when this text is owned by a report, and this text have for info the Label.
+*/
 void DynamicElementTextItem::updateReportText()
 {
 	if(!(m_parent_element.data()->linkType() & Element::AllReport))
@@ -1034,37 +1038,37 @@ void DynamicElementTextItem::updateReportText()
 }
 
 /**
- * @brief DynamicElementTextItem::updateLabel
- * Update the displayed text, when this dynamic text is based on the label of the parent element.
- * This function is notably use when the label itself is based from a formula.
- * If this dynamic text isn't based on label, this function do nothing.
- */
+	@brief DynamicElementTextItem::updateLabel
+	Update the displayed text, when this dynamic text is based on the label of the parent element.
+	This function is notably use when the label itself is based from a formula.
+	If this dynamic text isn't based on label, this function do nothing.
+*/
 void DynamicElementTextItem::updateLabel()
 {
 	if ((m_text_from == ElementInfo && m_info_name == "label") ||
 		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
 	{
 		DiagramContext dc;
-        Element *element = elementUseForInfo();
-        if(element) {
-            dc = element->elementInformations();
-        }
+		Element *element = elementUseForInfo();
+		if(element) {
+			dc = element->elementInformations();
+		}
 		
 
-        if(m_text_from == ElementInfo && element) {
-            setPlainText(element->actualLabel());
+		if(m_text_from == ElementInfo && element) {
+			setPlainText(element->actualLabel());
 		}
-        else if (m_text_from == CompositeText) {
+		else if (m_text_from == CompositeText) {
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
-        }
+		}
 	}
 }
 
 /**
- * @brief DynamicElementTextItem::conductorWasAdded
- * Function only use when parent element is a folio report
- * @param conductor
- */
+	@brief DynamicElementTextItem::conductorWasAdded
+	Function only use when parent element is a folio report
+	@param conductor
+*/
 void DynamicElementTextItem::conductorWasAdded(Conductor *conductor)
 {
 	Q_UNUSED(conductor)
@@ -1072,10 +1076,10 @@ void DynamicElementTextItem::conductorWasAdded(Conductor *conductor)
 }
 
 /**
- * @brief DynamicElementTextItem::conductorWasRemoved
- * Function only use when parent element is a folio report
- * @param conductor
- */
+	@brief DynamicElementTextItem::conductorWasRemoved
+	Function only use when parent element is a folio report
+	@param conductor
+*/
 void DynamicElementTextItem::conductorWasRemoved(Conductor *conductor)
 {
 	if(m_watched_conductor.data() == conductor)
@@ -1087,10 +1091,10 @@ void DynamicElementTextItem::conductorWasRemoved(Conductor *conductor)
 }
 
 /**
- * @brief DynamicElementTextItem::setPotentialConductor
- * This function is only used when the parent element of this text is a report element
- * Get a conductor in the potential of the parent report
- */
+	@brief DynamicElementTextItem::setPotentialConductor
+	This function is only used when the parent element of this text is a report element
+	Get a conductor in the potential of the parent report
+*/
 void DynamicElementTextItem::setPotentialConductor()
 {
 	if(parentElement() && (parentElement()->linkType() & Element::AllReport))
@@ -1137,9 +1141,9 @@ void DynamicElementTextItem::setPotentialConductor()
 }
 
 /**
- * @brief DynamicElementTextItem::conductorPropertiesChanged
- * This function is only used when the parent element of this text is a report element
- */
+	@brief DynamicElementTextItem::conductorPropertiesChanged
+	This function is only used when the parent element of this text is a report element
+*/
 void DynamicElementTextItem::conductorPropertiesChanged()
 {
 	if(m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport))
@@ -1148,11 +1152,11 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 		{
 			if(m_info_name == "function")
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_function : "");
-			else if (m_info_name == "tension-protocol")
+			else if (m_info_name == "tension_protocol")
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_tension_protocol : "");
-			else if (m_info_name == "couleur-conducteur")
+			else if (m_info_name == "conductor_color")
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_color : "");
-			else if (m_info_name == "section-conducteur")
+			else if (m_info_name == "conductor_section")
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_section : "");
 		}
 		else if (m_text_from == CompositeText) {
@@ -1162,11 +1166,11 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 }
 
 /**
- * @brief DynamicElementTextItem::reportReplacedCompositeText
- * This function is only used when the parent element of this text is a report element
- * @return the composite text with the variable replaced by the real value.
- * If the parent element of this text is not a folio report, return a default QString.
- */
+	@brief DynamicElementTextItem::reportReplacedCompositeText
+	This function is only used when the parent element of this text is a report element
+	@return the composite text with the variable replaced by the real value.
+	If the parent element of this text is not a folio report, return a default QString.
+*/
 QString DynamicElementTextItem::reportReplacedCompositeText() const
 {
 	QString string;
@@ -1179,19 +1183,19 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 		{
 			Element *elmt = m_other_report.data();
 			QString label = m_report_formula;
-            label = elmt->actualLabel();
+			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 			string.replace("%{label}", label);
 		}
 		if (m_watched_conductor)
 		{
 			if(string.contains("%{function}"))
 				string.replace("%{function}", m_watched_conductor.data()->properties().m_function);
-			if(string.contains("%{tension-protocol}"))
-				string.replace("%{tension-protocol}", m_watched_conductor.data()->properties().m_tension_protocol);
-			if(string.contains("%{}couleur-conducteur"))
-				string.replace("%{couleur-conducteur}", m_watched_conductor.data()->properties().m_wire_color);
-			if(string.contains("%{}section-conducteur"))
-				string.replace("%{section-conducteur}", m_watched_conductor.data()->properties().m_wire_section);
+			if(string.contains("%{tension_protocol}"))
+				string.replace("%{tension_protocol}", m_watched_conductor.data()->properties().m_tension_protocol);
+			if(string.contains("%{conductor_color}"))
+				string.replace("%{conductor_color}", m_watched_conductor.data()->properties().m_wire_color);
+			if(string.contains("%{conductor_section}"))
+				string.replace("%{conductor_section}", m_watched_conductor.data()->properties().m_wire_section);
 		}
 	}
 	
@@ -1199,10 +1203,10 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 }
 
 /**
- * @brief DynamicElementTextItem::zoomToLinkedElement
- * If the parent element is a folio report or a slave element,
- * and is linked, zoom to the linked element
- */
+	@brief DynamicElementTextItem::zoomToLinkedElement
+	If the parent element is a folio report or a slave element,
+	and is linked, zoom to the linked element
+*/
 void DynamicElementTextItem::zoomToLinkedElement()
 {
 	if(!parentElement())
@@ -1245,9 +1249,9 @@ void DynamicElementTextItem::zoomToLinkedElement()
 }
 
 /**
- * @brief DynamicElementTextItem::updateXref
- * Create or delete the Xref according to the current properties of the project
- */
+	@brief DynamicElementTextItem::updateXref
+	Create or delete the Xref according to the current properties of the project
+*/
 void DynamicElementTextItem::updateXref()
 {
 	if(diagram())

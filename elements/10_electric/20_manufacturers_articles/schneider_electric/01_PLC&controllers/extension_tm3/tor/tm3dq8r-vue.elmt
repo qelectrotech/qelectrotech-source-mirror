@@ -1,4 +1,4 @@
-<definition height="240" hotspot_x="6" type="element" version="0.70" link_type="simple" width="70" hotspot_y="8" orientation="dyyy">
+<definition height="240" hotspot_x="6" type="element" version="0.70" link_type="simple" width="70" hotspot_y="8">
     <uuid uuid="{b9bb44b8-c63a-4af8-8b12-8e695ec819ce}"/>
     <names>
         <name lang="en">tor output TM3DQ8/G: layout</name>

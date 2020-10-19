@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="45" link_type="simple" width="300" hotspot_y="25" orientation="dyyy" type="element" height="60">
+<definition version="0.80" hotspot_x="45" link_type="simple" width="300" hotspot_y="25" type="element" height="60">
     <uuid uuid="{c7adfb8e-22ff-4b36-b6e4-c3e9622719a0}"/>
     <names>
         <name lang="fr">Switch 8 ports</name>

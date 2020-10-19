@@ -1,4 +1,4 @@
-<definition hotspot_y="29" version="0.70" link_type="simple" width="440" orientation="dyyy" type="element" height="120" hotspot_x="22">
+<definition hotspot_y="29" version="0.70" link_type="simple" width="440" type="element" height="120" hotspot_x="22">
     <uuid uuid="{9ffd5c6b-11aa-4c34-9f95-cc26d121c225}"/>
     <names>
         <name lang="ar">Endress+Hauser Liquisys M CPM223</name>

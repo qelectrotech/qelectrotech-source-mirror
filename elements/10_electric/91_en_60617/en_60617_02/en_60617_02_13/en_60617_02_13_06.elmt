@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="29">
     <uuid uuid="{339ce204-2233-4a39-9558-3d66c2436d9b}"/>
     <names>
         <name lang="fr">Commande par effet de proximité</name>

@@ -1,0 +1,50 @@
+<definition width="60" height="30" hotspot_y="5" hotspot_x="30" version="0.80" type="element" link_type="simple">
+    <uuid uuid="{64570b6e-ddef-4316-9c28-36d2b01aaae0}"/>
+    <names>
+        <name lang="fr">Borne automatique à ressorts 5 entrées (Wago)</name>
+        <name lang="it">Terminale Spring Box 5</name>
+        <name lang="en">Terminale Spring Box 5</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+    </elementInformations>
+    <informations>
+      Author convertor: Ronny Desmedt
+      ELMT created by dxfTOelmt converter V1.0
+   </informations>
+    <description>
+        <rect width="52" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="0" height="20" antialias="false" ry="1" x="-26" rx="1"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="16.445"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="6.445"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="9"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-3.555"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="-1"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-23.555"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="11.595" diameter="7" antialias="true" x="-13.555"/>
+        <line x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-20" end1="none" length1="1.5" y1="4"/>
+        <line x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="-10" end1="none" length1="1.5" y1="4"/>
+        <line x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-10" end1="none" length1="1.5" y1="4"/>
+        <line x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="0" end1="none" length1="1.5" y1="4"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="0" end1="none" length1="1.5" y1="4"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="10" end1="none" length1="1.5" y1="4"/>
+        <line x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="10" end1="none" length1="1.5" y1="4"/>
+        <line x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="17" end2="none" antialias="false" x1="20" end1="none" length1="1.5" y1="4"/>
+        <circle style="line-style:normal;line-weight:thin;filling:black;color:black" y="3" diameter="2" antialias="false" x="-11"/>
+        <line x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="4" end2="none" antialias="false" x1="-20" end1="none" length1="1.5" y1="17"/>
+        <terminal orientation="s" y="17" uuid="{ff94345e-cc2a-4554-a195-8f34c662eb20}" x="20" name=""/>
+        <terminal orientation="s" y="17" uuid="{5bc3f241-865f-4fce-a096-cc053e70df2c}" x="10" name=""/>
+        <terminal orientation="s" y="17" uuid="{eb338493-235e-4448-9ddd-9b9f761b4e59}" x="-20" name=""/>
+        <terminal orientation="s" y="17" uuid="{b6b6837c-1fb0-4d51-b82e-f75652e7bf95}" x="-10" name=""/>
+        <terminal orientation="s" y="17" uuid="{3f89f462-c81c-47dd-a912-2d2c8fc73c30}" x="0" name=""/>
+    </description>
+</definition>

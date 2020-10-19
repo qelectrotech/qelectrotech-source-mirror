@@ -3,7 +3,8 @@
 /**
 	Constructor
 */
-TitleBlockCell::TitleBlockCell() {
+TitleBlockCell::TitleBlockCell()
+{
 	cell_type = TitleBlockCell::EmptyCell;
 	num_row = num_col = -1;
 	row_span = col_span = 0;
@@ -20,27 +21,31 @@ TitleBlockCell::TitleBlockCell() {
 /**
 	Destructor
 */
-TitleBlockCell::~TitleBlockCell() {
+TitleBlockCell::~TitleBlockCell()
+{
 }
 
 /**
 	@return the type of this cell
 */
-TitleBlockCell::TemplateCellType TitleBlockCell::type() const {
+TitleBlockCell::TemplateCellType TitleBlockCell::type() const
+{
 	return(cell_type);
 }
 
 /**
 	@return the horizontal alignment of this cell
 */
-int TitleBlockCell::horizontalAlign() const {
+int TitleBlockCell::horizontalAlign() const
+{
 	return(alignment & Qt::AlignHorizontal_Mask);
 }
 
 /**
 	@return the vertical alignment of this cell
 */
-int TitleBlockCell::verticalAlign() const {
+int TitleBlockCell::verticalAlign() const
+{
 	return(alignment & Qt::AlignVertical_Mask);
 }
 
@@ -131,7 +136,8 @@ QString TitleBlockCell::attributeName(const QString &attribute) {
 /**
 	@return true if this cell spans over other cells, false otherwise.
 */
-bool TitleBlockCell::spans() const {
+bool TitleBlockCell::spans() const
+{
 	return(row_span || col_span);
 }
 
@@ -217,7 +223,8 @@ void TitleBlockCell::loadContentFromXml(const QDomElement &cell_element) {
 }
 
 /**
-	@param xml_element XML element to which cell content will be exported
+	@brief TitleBlockCell::saveContentToXml
+	@param cell_elmt : XML element to which cell content will be exported
 */
 void TitleBlockCell::saveContentToXml(QDomElement &cell_elmt) {
 	cell_elmt.setAttribute("name", value_name);

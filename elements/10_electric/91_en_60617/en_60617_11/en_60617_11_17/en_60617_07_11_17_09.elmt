@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="84" width="90" hotspot_y="15">
+<definition type="element" version="0.70" height="20" link_type="simple" hotspot_x="84" width="90" hotspot_y="15">
     <uuid uuid="{5971c0b4-adb6-42e0-897e-4975167ff42e}"/>
     <names>
         <name lang="de">Ausgleichsstück, Länge einstellbar</name>

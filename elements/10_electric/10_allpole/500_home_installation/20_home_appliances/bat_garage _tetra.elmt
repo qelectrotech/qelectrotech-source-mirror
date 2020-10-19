@@ -1,0 +1,58 @@
+<definition link_type="master" height="180" version="0.80" type="element" width="130" hotspot_x="5" hotspot_y="175">
+    <uuid uuid="{4c4ea7f3-fbb1-49e7-b2f8-29861c4b1941}"/>
+    <names>
+        <name lang="fr">Garage tétra</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect height="85" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="-85" width="120" rx="0"/>
+        <line y2="-15" antialias="false" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-15" x1="0" end1="none" length1="1.5"/>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="7" x="29" y="-44" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{93785c08-d9be-4e10-ae44-6bb57a1ab334}" text_from="UserText">
+            <text>20</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="9" x="-2" y="-63" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{7ab45588-79e9-4f06-a28d-bcb59598d0ad}" text_from="UserText">
+            <text>Local</text>
+        </dynamic_text>
+        <text color="#000000" text=" kA C" rotation="0" x="58" y="-18" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-45" antialias="false" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-45" x1="0" end1="none" length1="1.5"/>
+        <line y2="-65" antialias="false" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-65" x1="0" end1="none" length1="1.5"/>
+        <text color="#000000" text="A" rotation="0" x="66" y="-32" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" text=" mm²" rotation="0" x="58" y="-2" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-135" antialias="false" x2="35" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-160" x1="60" end1="none" length1="1.5"/>
+        <line y2="-135" antialias="false" x2="85" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-160" x1="60" end1="none" length1="1.5"/>
+        <line y2="-100" antialias="false" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-140" x1="40" end1="none" length1="1.5"/>
+        <line y2="-100" antialias="false" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-100" x1="40" end1="none" length1="1.5"/>
+        <line y2="-140" antialias="false" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-100" x1="80" end1="none" length1="1.5"/>
+        <line y2="-125" antialias="false" x2="45.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-100" x1="45.5" end1="none" length1="1.5"/>
+        <line y2="-125" antialias="false" x2="74.069" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-125" x1="45.931" end1="none" length1="1.5"/>
+        <line y2="-100" antialias="false" x2="74.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-125" x1="74.5" end1="none" length1="1.5"/>
+        <line y2="-120" antialias="false" x2="74.07" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="-120" x1="45.93" end1="none" length1="1.5"/>
+        <line y2="-110" antialias="false" x2="74" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="-110" x1="46" end1="none" length1="1.5"/>
+        <line y2="-105" antialias="false" x2="74" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="-105" x1="46" end1="none" length1="1.5"/>
+        <line y2="-115" antialias="false" x2="74" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length2="1.5" y1="-115" x1="46" end1="none" length1="1.5"/>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="45" x="28" y="-13.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{346daaa4-dacb-4520-8d5a-b5e03bb83ab9}" text_from="UserText">
+            <text>5 G 2.5</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="46" x="30" y="-28.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{cda1ee8d-ccfe-4045-99f4-34e8ed9519d4}" text_from="UserText">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="47" x="-2" y="-81.5" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{525b40a5-81a4-4abb-8cba-715f568df8ee}" text_from="UserText">
+            <text>Garage</text>
+        </dynamic_text>
+        <line y2="-150" antialias="false" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-170" x1="50" end1="none" length1="1.5"/>
+        <line y2="-150" antialias="false" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-170" x1="70" end1="none" length1="1.5"/>
+        <line y2="-155" antialias="false" x2="90" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-170" x1="90" end1="none" length1="1.5"/>
+        <line y2="-140" antialias="false" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-155" x1="90" end1="none" length1="1.5"/>
+        <line y2="-155" antialias="false" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-165" x1="30" end1="none" length1="1.5"/>
+        <line y2="-140" antialias="false" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-155" x1="30" end1="none" length1="1.5"/>
+        <terminal orientation="n" x="50" name="" y="-170" uuid="{fd224ec8-a206-4f1b-9c6a-77d1c8d720af}"/>
+        <terminal orientation="s" x="60" name="" y="-100" uuid="{cab960c8-9a88-4778-93e8-8870d1a45ec6}"/>
+        <terminal orientation="n" x="70" name="" y="-170" uuid="{4ff9ca97-d39b-4b69-8c29-64878c5a8216}"/>
+        <terminal orientation="n" x="90" name="" y="-170" uuid="{ea3d5e12-550a-4020-9d77-7f68df1c346f}"/>
+        <terminal orientation="n" x="30" name="" y="-170" uuid="{c0a75599-da2d-4ba3-acf9-6712290142f9}"/>
+    </description>
+</definition>

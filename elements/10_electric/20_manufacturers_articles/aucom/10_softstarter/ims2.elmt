@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="24" type="element" height="100" width="400" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="24" type="element" height="100" width="400" version="0.5">
     <uuid uuid="{0b4c0de4-c521-4917-8802-787adef451b1}"/>
     <names>
         <name lang="pl">IMS2</name>

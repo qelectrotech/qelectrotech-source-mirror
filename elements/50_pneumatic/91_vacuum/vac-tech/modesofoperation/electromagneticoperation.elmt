@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="35" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="35" version="0.80" link_type="simple" width="50">
     <uuid uuid="{246fb855-6a9b-4842-8cea-90b77b209d4a}"/>
     <names>
         <name lang="en">Electromagnetic operation</name>

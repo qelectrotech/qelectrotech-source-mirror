@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="23">
+<definition width="40" hotspot_x="20" type="element" link_type="simple" version="0.5" height="40" hotspot_y="23">
     <uuid uuid="{e9eaf2a7-cb9d-40a9-a5aa-39ae42a7815a}"/>
     <names>
         <name lang="cs">Rozdílový uzávěr (pravý)</name>

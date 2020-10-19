@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="11">
     <uuid uuid="{33fb7b5c-30ba-4c27-95c2-1984f21ab356}"/>
     <names>
         <name lang="cs">Jednoduchý pojistný ventil</name>

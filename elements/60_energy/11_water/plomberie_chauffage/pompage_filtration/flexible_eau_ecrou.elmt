@@ -1,4 +1,4 @@
-<definition height="30" orientation="dyyy" hotspot_y="15" width="60" version="0.51" hotspot_x="14" type="element" link_type="simple">
+<definition height="30" hotspot_y="15" width="60" version="0.51" hotspot_x="14" type="element" link_type="simple">
     <uuid uuid="{6dad1546-2c7a-4540-915b-f32fe10b6bef}"/>
     <names>
         <name lang="fr">Flexible eau écrou</name>

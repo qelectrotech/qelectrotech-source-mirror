@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="123" hotspot_y="77" orientation="dyyy" type="element" height="80" width="170">
+<definition link_type="simple" version="0.70" hotspot_x="123" hotspot_y="77" type="element" height="80" width="170">
     <uuid uuid="{12a611ea-0fa5-4afa-84d5-7780a6ff890f}"/>
     <names>
         <name lang="fr">Élément de commutateur multidirectionnel</name>

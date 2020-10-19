@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="simple" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="simple" version="0.51" hotspot_x="5">
     <uuid uuid="{87143022-ab60-41bc-914f-5e44612d309d}"/>
     <names>
         <name lang="fr">Gestion Énergie</name>

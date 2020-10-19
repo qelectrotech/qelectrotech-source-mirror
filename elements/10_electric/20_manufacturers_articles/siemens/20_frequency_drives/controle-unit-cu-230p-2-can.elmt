@@ -1,4 +1,4 @@
-<definition width="720" orientation="dyyy" link_type="simple" hotspot_x="398" hotspot_y="77" type="element" height="130" version="0.5">
+<definition width="720" link_type="simple" hotspot_x="398" hotspot_y="77" type="element" height="130" version="0.5">
     <uuid uuid="{8965ab31-69e2-4eb7-9020-dfd05eecbd6c}"/>
     <names>
         <name lang="en">CU-230P-2-CAN</name>

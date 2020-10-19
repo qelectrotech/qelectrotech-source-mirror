@@ -1,0 +1,34 @@
+<definition link_type="simple" hotspot_y="28" width="40" type="element" height="50" hotspot_x="20" version="0.80">
+    <uuid uuid="{26790347-a782-4e88-b60b-c0a80a1c9563}"/>
+    <names>
+        <name lang="nl">Ampere uur meter</name>
+        <name lang="it">Misuratore di Ah</name>
+        <name lang="en">Ampere Hour Meter</name>
+        <name lang="pl">Licznik amperogodzin</name>
+        <name lang="cs">Ampérmetr</name>
+        <name lang="el">Μετρητής κατανάλωσης, Αμπερώρια (Ah)</name>
+        <name lang="ar">أمبيرساعة متر </name>
+        <name lang="fr">Ampèreheuremètre</name>
+        <name lang="de">Amperestundenzähler</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_width="-1" x="18" z="1" frame="false" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="-15.95" uuid="{8ebf2d39-e040-418d-b06a-085a578da846}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-8" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Ah" y="2.3333"/>
+        <rect x="-15" width="30" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" y="-11" rx="0"/>
+        <rect x="-15" width="30" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" y="-19" rx="0"/>
+        <line y2="-19" y1="-23" x1="-10" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-19" y1="-23" x1="10" x2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="15" y1="11" x1="10" x2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="15" y1="11" x1="-10" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <terminal x="-10" name="" y="15" uuid="{415c29db-49be-4149-a814-485a55219ba1}" orientation="s"/>
+        <terminal x="-10" name="" y="-23" uuid="{c2151c4c-d885-4b8b-92f1-b32afa1b5161}" orientation="n"/>
+        <terminal x="10" name="" y="-23" uuid="{bdbaf99e-b5f1-4ca4-b70a-61f6eac4f960}" orientation="n"/>
+        <terminal x="10" name="" y="15" uuid="{73e13ecf-294a-4963-855f-dbd855ce3e47}" orientation="s"/>
+    </description>
+</definition>

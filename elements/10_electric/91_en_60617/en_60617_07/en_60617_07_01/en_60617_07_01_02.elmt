@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
+<definition type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
     <uuid uuid="{cfa74398-85eb-4d6b-9896-66425783acc0}"/>
     <names>
         <name lang="de">Leistungsschalter-Funktion </name>

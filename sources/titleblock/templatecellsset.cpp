@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,6 +15,9 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QMultiMap>
+
 #include "templatecellsset.h"
 #include "templatevisualcell.h"
 #include "templateview.h"
@@ -30,25 +33,17 @@ TitleBlockTemplateCellsSet::TitleBlockTemplateCellsSet(const TitleBlockTemplateV
 }
 
 /**
-	Copy constructor
-	@param copy TitleBlockTemplateCellsSet object to copy
-*/
-TitleBlockTemplateCellsSet::TitleBlockTemplateCellsSet(const TitleBlockTemplateCellsSet &copy) :
-	QList<TitleBlockTemplateVisualCell *>(copy),
-	parent_view_(copy.parent_view_)
-{
-}
-
-/**
 	Destructor
 */
-TitleBlockTemplateCellsSet::~TitleBlockTemplateCellsSet() {
+TitleBlockTemplateCellsSet::~TitleBlockTemplateCellsSet()
+{
 }
 
 /**
 	@return a QPainterPath composed of the rectangles from cells within this set
 */
-QPainterPath TitleBlockTemplateCellsSet::painterPath() const {
+QPainterPath TitleBlockTemplateCellsSet::painterPath() const
+{
 	QPainterPath cells_path;
 	foreach (TitleBlockTemplateVisualCell *cell, *this) {
 		cells_path.addRect(cell -> geometry());
@@ -60,7 +55,8 @@ QPainterPath TitleBlockTemplateCellsSet::painterPath() const {
 	@return true if the cells within this set are composing a rectangle shape,
 	false otherwise.
 */
-bool TitleBlockTemplateCellsSet::isRectangle() const {
+bool TitleBlockTemplateCellsSet::isRectangle() const
+{
 	if (!count()) return(false);
 	if (count() == 1) return(true);
 	
@@ -73,7 +69,8 @@ bool TitleBlockTemplateCellsSet::isRectangle() const {
 /**
 	@return true if all cells within this set are selected
 */
-bool TitleBlockTemplateCellsSet::allCellsAreSelected() const {
+bool TitleBlockTemplateCellsSet::allCellsAreSelected() const
+{
 	foreach (TitleBlockTemplateVisualCell *cell, *this) {
 		if (!cell -> isSelected()) {
 			return(false);
@@ -86,7 +83,8 @@ bool TitleBlockTemplateCellsSet::allCellsAreSelected() const {
 	@return true if this set includes at least one cell which is spanned by a
 	cell not present in this set, false otherwise.
 */
-bool TitleBlockTemplateCellsSet::hasExternalSpan() const {
+bool TitleBlockTemplateCellsSet::hasExternalSpan() const
+{
 	// fetches all cells concerned by this set
 	QSet<TitleBlockCell *> all_cells = cells(true);
 	
@@ -102,7 +100,8 @@ bool TitleBlockTemplateCellsSet::hasExternalSpan() const {
 /**
 	@return the top left cell within this set, or 0 if this set is empty
 */
-TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
+TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const
+{
 	if (empty()) return(nullptr);
 	if (count() == 1) return(first());
 	
@@ -110,7 +109,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 	QMultiMap<int, TitleBlockTemplateVisualCell *> top_cells;
 	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {
-			top_cells.insertMulti(cell -> num_row, cell_view);
+			top_cells.insert(cell -> num_row, cell_view);
 		}
 	}
 	QList<TitleBlockTemplateVisualCell *> candidates = top_cells.values(top_cells.keys().first());
@@ -133,14 +132,15 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 /**
 	@return the bottom right cell within this set, or 0 if this set is empty
 */
-TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() const {
+TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() const
+{
 	if (empty()) return(nullptr);
 	if (count() == 1) return(first());
 	
 	// look for cells at the bottom
 	QMultiMap<qreal, TitleBlockTemplateVisualCell *> bottom_cells;
 	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
-		bottom_cells.insertMulti(cell_view -> geometry().bottom(), cell_view);
+		bottom_cells.insert(cell_view -> geometry().bottom(), cell_view);
 	}
 	QList<TitleBlockTemplateVisualCell *> candidates = bottom_cells.values(bottom_cells.keys().last());
 	if (candidates.count() == 1) return(candidates.first());
@@ -162,7 +162,8 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() cons
 	@return the merge area, i.e. the rectangle delimited by the top left cell
 	and the bottom right cell within this cells set.
 */
-QRectF TitleBlockTemplateCellsSet::mergeAreaRect() const {
+QRectF TitleBlockTemplateCellsSet::mergeAreaRect() const
+{
 	QRectF merge_area;
 	if (!parent_view_) return(merge_area);
 	
@@ -181,7 +182,8 @@ QRectF TitleBlockTemplateCellsSet::mergeAreaRect() const {
 	provided, this method will use mergeAreaRect().
 	@return the cells contained in the merge area of this cells set
 */
-TitleBlockTemplateCellsSet TitleBlockTemplateCellsSet::mergeArea(const QRectF &rect) const {
+TitleBlockTemplateCellsSet TitleBlockTemplateCellsSet::mergeArea(const QRectF &rect) const
+{
 	TitleBlockTemplateCellsSet merge_area(parent_view_);
 	if (!parent_view_) return(merge_area);
 	
@@ -195,7 +197,8 @@ TitleBlockTemplateCellsSet TitleBlockTemplateCellsSet::mergeArea(const QRectF &r
 	@return the list of cells rendered by the current selection
 	@param include_spanned whether to include spanned cells or not
 */
-QSet<TitleBlockCell *> TitleBlockTemplateCellsSet::cells(bool include_spanned) const {
+QSet<TitleBlockCell *> TitleBlockTemplateCellsSet::cells(bool include_spanned) const
+{
 	QSet<TitleBlockCell *> set;
 	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="35" version="0.5" link_type="simple" type="element" hotspot_y="63" height="100" width="70">
+<definition hotspot_x="35" version="0.5" link_type="simple" type="element" hotspot_y="63" height="100" width="70">
     <uuid uuid="{f444f89f-d336-49b8-8810-bfed950a0c18}"/>
     <names>
         <name lang="en">Tone 250k ohms</name>

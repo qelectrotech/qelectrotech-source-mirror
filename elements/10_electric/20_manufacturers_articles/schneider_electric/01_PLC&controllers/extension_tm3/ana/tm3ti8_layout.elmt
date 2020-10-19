@@ -1,4 +1,4 @@
-<definition height="240" orientation="dyyy" hotspot_y="8" width="70" type="element" version="0.70" hotspot_x="11" link_type="simple">
+<definition height="240" hotspot_y="8" width="70" type="element" version="0.70" hotspot_x="11" link_type="simple">
     <uuid uuid="{07fc9247-9887-4299-bcd4-3874b931954d}"/>
     <names>
         <name lang="fr">entrées ana TM3TI8: vue</name>

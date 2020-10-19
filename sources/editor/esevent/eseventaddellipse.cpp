@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,28 +23,29 @@
 #include "elementscene.h"
 
 /**
- * @brief ESEventAddEllipse::ESEventAddEllipse
- * @param scene
- */
+	@brief ESEventAddEllipse::ESEventAddEllipse
+	@param scene
+*/
 ESEventAddEllipse::ESEventAddEllipse(ElementScene *scene) :
 	ESEventInterface(scene),
 	m_ellipse(nullptr)
 {}
 
 /**
- * @brief ESEventAddEllipse::~ESEventAddEllipse
- */
-ESEventAddEllipse::~ESEventAddEllipse() {
+	@brief ESEventAddEllipse::~ESEventAddEllipse
+*/
+ESEventAddEllipse::~ESEventAddEllipse()
+{
 	if (m_running || m_abort){
 		delete m_ellipse;
 	}
 }
 
 /**
- * @brief ESEventAddEllipse::mousePressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddEllipse::mousePressEvent
+	@param event
+	@return
+*/
 bool ESEventAddEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::LeftButton) {
 		if(!m_running) m_running = true;
@@ -72,10 +73,10 @@ bool ESEventAddEllipse::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddRect::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddRect::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddEllipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_ellipse) return false;
@@ -94,10 +95,10 @@ bool ESEventAddEllipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddEllipse::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddEllipse::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::RightButton) {
 		if (m_ellipse) {delete m_ellipse; m_ellipse = nullptr;}

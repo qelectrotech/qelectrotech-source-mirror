@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="33" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
+<definition type="element" hotspot_y="33" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
     <uuid uuid="{a1618165-d2e7-4a91-afae-6d6eecf025a9}"/>
     <names>
         <name lang="ar">IM365 RECEIVE 365-0BA01-0AA0</name>

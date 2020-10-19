@@ -1,28 +1,34 @@
-<definition width="80" version="0.4" hotspot_x="33" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{3BD35E35-0E62-4A0A-AC3E-4BBC6976829B}"/><names>
-        <name lang="es">Turbina de gas</name>
+<definition width="80" hotspot_y="23" link_type="simple" version="0.80" height="40" hotspot_x="33" type="element">
+    <uuid uuid="{a2d9e8e9-987a-4109-a9e8-802b9c752752}"/>
+    <names>
+        <name lang="fr">Turbine Gaz</name>
         <name lang="ca">Turbina de gas</name>
+        <name lang="es">Turbina de gas</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <ellipse width="2" x="-25" y="-2" antialias="true" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="3" x="28" y="4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="26" y="-4" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="24" y="-4" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="22" y="-4" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="-21" y="-1" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon y21="10" x15="9" x16="-3" x17="-7" x18="-8" x19="-11" x20="-21" x21="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-31" x2="-31" x3="-21" x4="-11" x5="-8" x6="-7" closed="false" x7="-3" x8="9" x9="18" y1="10" y2="-20" y3="-20" y4="-10" y5="-10" y6="-14" y7="-16" y8="-11" y10="-14" y9="-11" y11="-14" y12="4" y13="4" y14="1" y15="1" y16="6" y17="3" y18="0" y19="0" x10="24" x11="32" x12="32" antialias="false" x13="25" x14="19" y20="10"/>
-        <ellipse width="1" x="24" y="-12" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="1" x="26" y="-12" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="-24" y="-18" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="-21" y="-18" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-24" x2="-18" x3="-10" x4="-6" antialias="false" x5="-2" x6="9" x7="19" x8="19" x9="10" closed="false" y1="-7" y10="-4" y2="-10" y11="-2" y3="-8" y4="-8" y12="-2" y5="-6" x10="-1" y13="-1" y6="-8" x11="-6" y14="-4" y7="-8" x12="-10" y15="-7" y8="-2" x13="-20" y9="-2" x14="-24" x15="-24"/>
-        <ellipse width="1" x="22" y="-12" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="22" x="19" y="-6" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="3" x="11" y="-18" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-21" y="16.5" size="4" rotate="true" text="_" tagg="label"/>
-        <terminal x="42" y="-5" orientation="e"/>
-        <terminal x="12" y="-18" orientation="n"/>
-        <terminal x="29" y="11" orientation="s"/>
+        <ellipse width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" height="9" y="-2" antialias="true"/>
+        <rect width="3" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="28" y="4" height="7" rx="0" antialias="false"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="26" height="6" y="-4" antialias="true"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="24" height="6" y="-4" antialias="true"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="22" height="6" y="-4" antialias="true"/>
+        <ellipse width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" height="8" y="-1" antialias="true"/>
+        <polygon y21="10" y5="-10" y18="0" x5="-8" x16="-3" y1="10" x8="9" x3="-21" x21="-30" x4="-11" y20="10" y6="-14" y15="1" y9="-11" x1="-31" x12="32" x20="-21" y19="0" y12="4" antialias="false" y13="4" x2="-31" x10="24" x18="-8" y11="-14" y2="-20" x6="-7" y8="-11" y3="-20" x14="19" y17="3" y14="1" x15="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x17="-7" x7="-3" y7="-16" x19="-11" x11="32" x9="18" y16="6" y10="-14" y4="-10" x13="25" closed="false"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="24" height="6" y="-12" antialias="true"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="26" height="6" y="-12" antialias="true"/>
+        <ellipse width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-24" height="10" y="-18" antialias="true"/>
+        <ellipse width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21" height="8" y="-18" antialias="true"/>
+        <polygon y6="-8" y8="-2" y11="-2" x4="-6" x6="9" y5="-6" y2="-10" x7="19" x1="-24" y4="-8" antialias="false" y3="-8" x3="-10" x15="-24" y10="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x12="-10" x2="-18" y1="-7" y12="-2" x13="-20" x5="-2" y15="-7" x10="-1" y9="-2" x14="-24" closed="false" x11="-6" x9="10" x8="19" y14="-4" y7="-8" y13="-1"/>
+        <ellipse width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="22" height="6" y="-12" antialias="true"/>
+        <rect width="22" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="19" y="-6" height="2" rx="0" antialias="false"/>
+        <rect width="3" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="11" y="-18" height="7" rx="0" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-21" text_width="-1" uuid="{568b0640-bec9-46fd-a5fc-0365b381634e}" y="9" rotation="0" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" z="16">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="e" x="42" uuid="{f5bcf76e-c308-42fe-9ad5-460caaf42185}" y="-5" name=""/>
+        <terminal orientation="n" x="12" uuid="{d8c02a69-0b57-4bcd-8d62-475fe2a81caf}" y="-18" name=""/>
+        <terminal orientation="s" x="29" uuid="{df3b695c-5b3c-4aae-933c-a647d25b7c7d}" y="11" name=""/>
     </description>
 </definition>

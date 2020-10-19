@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="87" version="0.5" link_type="simple" type="element" hotspot_y="94" height="100" width="120">
+<definition hotspot_x="87" version="0.5" link_type="simple" type="element" hotspot_y="94" height="100" width="120">
     <uuid uuid="{27f2918f-7b76-4e50-9934-420efd929712}"/>
     <names>
         <name lang="en">5 Way Pickup Selector Switch</name>

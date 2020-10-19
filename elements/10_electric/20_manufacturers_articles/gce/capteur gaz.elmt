@@ -1,4 +1,4 @@
-<definition type="element" width="110" hotspot_y="6" link_type="terminal" hotspot_x="55" height="140" orientation="dyyy" version="0.80">
+<definition type="element" width="110" hotspot_y="6" link_type="terminal" hotspot_x="55" height="140" version="0.80">
     <uuid uuid="{baea4887-3555-4d3f-b946-155c77dc2309}"/>
     <names>
         <name lang="fr">Capteur Gaz</name>

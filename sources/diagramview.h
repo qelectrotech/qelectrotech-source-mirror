@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -108,8 +108,6 @@ class DiagramView : public QGraphicsView
 		void titleChanged(DiagramView *, const QString &);
 			/// Signal emitted when users wish to locate an element from the diagram within elements collection
 		void findElementRequired(const ElementsLocation &);
-			/// Signal emitted when users wish to edit an element from the diagram
-		void editElementRequired(const ElementsLocation &);
 			/// Signal emmitted when diagram must be show
 		void showDiagram (Diagram *);
 			/// Signal emmtted when free rubberband changed.
@@ -117,9 +115,6 @@ class DiagramView : public QGraphicsView
 		void freeRubberBandChanged(QPolygonF polygon);
 	
 	public slots:
-		void selectNothing();
-		void selectAll();
-		void selectInvert();
 		void setVisualisationMode();
 		void setSelectionMode();
 		void zoom(const qreal zoom_factor);
@@ -132,8 +127,6 @@ class DiagramView : public QGraphicsView
 		void pasteHere();
 		void adjustSceneRect();
 		void updateWindowTitle();
-		void editSelectedConductorColor();
-		void editConductorColor(Conductor *);
 		void resetConductors();
 	
 	private slots:

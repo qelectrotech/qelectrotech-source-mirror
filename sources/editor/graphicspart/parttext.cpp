@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,56 +30,64 @@
 PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
 	CustomElementPart(editor),
-    previous_text()
+	previous_text()
 {
 	document() -> setDocumentMargin(1.0);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	real_font_size_ = font().pointSize();
-    setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges | QGraphicsItem::ItemIsMovable);
+	setFlags(QGraphicsItem::ItemIsSelectable
+		 | QGraphicsItem::ItemSendsGeometryChanges
+		 | QGraphicsItem::ItemIsMovable);
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
-	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
-	
+	setPlainText(QObject::tr(
+			     "T",
+			     "default text when adding a text in the element editor"));
+
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
-	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
-	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
+	connect(document(),
+		SIGNAL(blockCountChanged(int)),
+		this,
+		SLOT(adjustItemPosition(int)));
+	connect(document(),
+		SIGNAL(contentsChanged()),
+		this,
+		SLOT(adjustItemPosition()));
 }
 
 /// Destructeur
-PartText::~PartText() {
+PartText::~PartText()
+{
 }
 
 /**
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
-void PartText::fromXml(const QDomElement &xml_element)
-{
+void PartText::fromXml(const QDomElement &xml_element) {
 	bool ok;
 
-	if (xml_element.hasAttribute("size"))
-	{
+	if (xml_element.hasAttribute("size")) {
 		int font_size = xml_element.attribute("size").toInt(&ok);
 		if (!ok || font_size < 1) {
 			font_size = 20;
 		}
-		QFont font_ = this->font();
+		QFont font_ = this -> font();
 		font_.setPointSize(font_size);
 		setFont(font_);
 	}
-	else if (xml_element.hasAttribute("font"))
-	{
+	else if (xml_element.hasAttribute("font")) {
 		QFont font_;
 		font_.fromString(xml_element.attribute("font"));
 		setFont(font_);
 	}
-	
+
 	setDefaultTextColor(QColor(xml_element.attribute("color", "#000000")));
 	setPlainText(xml_element.attribute("text"));
 	setPos(xml_element.attribute("x").toDouble(),
-		   xml_element.attribute("y").toDouble());
+			xml_element.attribute("y").toDouble());
 	setRotation(xml_element.attribute("rotation", QString::number(0)).toDouble());
 }
 
@@ -110,7 +118,7 @@ QPointF PartText::margin() const
 	QFont used_font = font();
 	QFontMetrics qfm(used_font);
 	qreal document_margin = document() -> documentMargin();
-	
+
 	QPointF margin(
 		// marge autour du texte
 		document_margin,
@@ -121,20 +129,21 @@ QPointF PartText::margin() const
 }
 
 /**
-	@reimp QGraphicsItem::focusInEvent(QFocusEvent *)
-	@param e The QFocusEvent object describing the focus gain.
+	@brief PartText::focusInEvent
+	@param e : The QFocusEvent object describing the focus gain.
 	Start text edition when the item gains focus.
+	@see QGraphicsItem::focusInEvent(QFocusEvent *)
 */
 void PartText::focusInEvent(QFocusEvent *e) {
 	startEdition();
 	QGraphicsTextItem::focusInEvent(e);
 }
 
-
 /**
-	@reimp QGraphicsItem::focusOutEvent(QFocusEvent *)
-	@param e The QFocusEvent object describing the focus loss.
+	@brief PartText::focusOutEvent
+	@param e : The QFocusEvent object describing the focus loss.
 	End text edition when the item loses focus.
+	@see QGraphicsItem::focusOutEvent(QFocusEvent *)
 */
 void PartText::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
@@ -142,9 +151,11 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 }
 
 /**
-	@reimp QGraphicsTextItem::keyPressEvent()
-	Used to handle the escape key when the event is delivered to the field, not
-	to the decorator.
+	@brief PartText::keyPressEvent
+	Used to handle the escape key when the event is delivered to the field,
+	not to the decorator.
+	@param event
+	@see QGraphicsTextItem::keyPressEvent()
 */
 void PartText::keyPressEvent(QKeyEvent *event) {
 	if (event -> key() == Qt::Key_Escape) {
@@ -172,12 +183,10 @@ void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	@param value Valeur numerique relative au changement
 */
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
-		updateCurrentPartEditor();
-	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
-		if (value.toBool() == true) {
+	if (change == QGraphicsItem::ItemPositionHasChanged ||
+		change == QGraphicsItem::ItemSceneHasChanged ||
+		change == QGraphicsItem::ItemSelectedHasChanged) {
 			updateCurrentPartEditor();
-		}
 	}
 	return(QGraphicsTextItem::itemChange(change, value));
 }
@@ -185,7 +194,8 @@ QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) 
 /**
 	@return le rectangle delimitant cette partie.
 */
-QRectF PartText::boundingRect() const {
+QRectF PartText::boundingRect() const
+{
 	QRectF r = QGraphicsTextItem::boundingRect();
 	r.adjust(0.0, -1.1, 0.0, 0.0);
 	return(r);
@@ -196,7 +206,8 @@ QRectF PartText::boundingRect() const {
 	conservee / enregistree.
 	Un texte statique n'est pas pertinent lorsque son texte est vide.
 */
-bool PartText::isUseless() const {
+bool PartText::isUseless() const
+{
 	return(toPlainText().isEmpty());
 }
 
@@ -206,7 +217,8 @@ bool PartText::isUseless() const {
 	to imply any margin, and it is different from shape because it is a regular
 	rectangle, not a complex shape.
 */
-QRectF PartText::sceneGeometricRect() const {
+QRectF PartText::sceneGeometricRect() const
+{
 	return(sceneBoundingRect());
 }
 
@@ -227,71 +239,63 @@ void PartText::handleUserTransformation(const QRectF &initial_selection_rect, co
 	// let's try the naive approach
 	QPointF new_pos = mapPoints(initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_point_).first();
 	setPos(new_pos);
-	
+
 	// adjust the font size following the vertical scale factor
 	qreal sy = new_selection_rect.height() / initial_selection_rect.height();
 	qreal new_font_size = saved_font_size_ * sy;
 	setProperty("real_size", qMax(1, qRound(new_font_size)));
 }
 
-void PartText::setDefaultTextColor(const QColor &color)
-{
-	if (color != this->defaultTextColor())
-	{
+void PartText::setDefaultTextColor(const QColor &color) {
+	if (color != this -> defaultTextColor()) {
 		QGraphicsTextItem::setDefaultTextColor(color);
 		emit colorChanged(color);
 	}
 }
 
-void PartText::setPlainText(const QString &text)
-{
-	if (text != this->toPlainText())
-	{
+void PartText::setPlainText(const QString &text) {
+	if (text != this -> toPlainText()) {
 		QGraphicsTextItem::setPlainText(text);
 		emit plainTextChanged(text);
 	}
 }
 
-void PartText::setFont(const QFont &font)
-{
-	if (font != this->font())
-	{
+void PartText::setFont(const QFont &font) {
+	if (font != this -> font()) {
 		QGraphicsTextItem::setFont(font);
 		emit fontChanged(font);
 	}
 }
 
-
-void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-    if((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable))
-    {
-        QPointF pos = event->scenePos() + (m_origine_pos - event->buttonDownScenePos(Qt::LeftButton));
-        event->modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene()->snapToGrid(pos));
-    }
-    else
-        QGraphicsObject::mouseMoveEvent(event);
+void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+	if((event -> buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
+		QPointF pos = event -> scenePos() + (m_origine_pos - event -> buttonDownScenePos(Qt::LeftButton));
+		event -> modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene() -> snapToGrid(pos));
+	}
+	else {
+		QGraphicsObject::mouseMoveEvent(event);
+	}
 }
 
-void PartText::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-    if(event->button() == Qt::LeftButton)
-        m_origine_pos = this->pos();
+void PartText::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+	if(event -> button() == Qt::LeftButton)
+		m_origine_pos = this -> pos();
 
-    QGraphicsObject::mousePressEvent(event);
+	QGraphicsObject::mousePressEvent(event);
 }
 
-void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{
-    if((event->button() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable) && m_origine_pos != pos())
-    {
-        QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origine_pos), QVariant(pos()));
-        undo->setText(tr("Déplacer un texte"));
-        undo->enableAnimation();
-        elementScene()->undoStack().push(undo);
-    }
+void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+	if((event -> button() & Qt::LeftButton) &&
+		(flags() & QGraphicsItem::ItemIsMovable) &&
+		m_origine_pos != pos())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origine_pos), QVariant(pos()));
+		undo -> setText(tr("Déplacer un texte"));
+		undo -> enableAnimation();
+		elementScene() -> undoStack().push(undo);
+	}
 
-    QGraphicsObject::mouseReleaseEvent(event);
+	QGraphicsObject::mouseReleaseEvent(event);
 }
 
 /**
@@ -304,7 +308,7 @@ void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void PartText::adjustItemPosition(int new_block_count) {
 	Q_UNUSED(new_block_count);
 	QPointF origin_offset = margin();
-	
+
 	QTransform base_translation;
 	base_translation.translate(-origin_offset.x(), -origin_offset.y());
 	setTransform(base_translation, false);
@@ -329,7 +333,8 @@ void PartText::setEditable(bool editable) {
 /**
 	Start text edition by storing the former value of the text.
 */
-void PartText::startEdition() {
+void PartText::startEdition()
+{
 	// !previous_text.isNull() means the text is being edited
 	previous_text = toPlainText();
 }
@@ -340,14 +345,12 @@ void PartText::startEdition() {
 */
 void PartText::endEdition()
 {
-	if (!previous_text.isNull())
-	{
+	if (!previous_text.isNull()) {
 			// the text was being edited
 		QString new_text = toPlainText();
-		if (previous_text != new_text)
-		{
+		if (previous_text != new_text) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "text", previous_text, new_text);
-			undo->setText(tr("Modifier un champ texte"));
+			undo -> setText(tr("Modifier un champ texte"));
 			undoStack().push(undo);
 			previous_text = QString();
 		}

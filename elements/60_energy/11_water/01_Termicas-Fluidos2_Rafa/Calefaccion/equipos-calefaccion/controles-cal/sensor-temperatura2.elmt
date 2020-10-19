@@ -1,4 +1,4 @@
-<definition hotspot_y="16" link_type="simple" hotspot_x="23" orientation="dyyy" width="40" type="element" version="0.80" height="60">
+<definition hotspot_y="16" link_type="simple" hotspot_x="23" width="40" type="element" version="0.80" height="60">
     <uuid uuid="{332b180e-b3ae-4eba-a75c-164dd354fee3}"/>
     <names>
         <name lang="es">Sensor temperatura 2</name>

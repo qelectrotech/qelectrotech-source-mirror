@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="35" width="50" hotspot_y="36">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="35" width="50" hotspot_y="36">
     <uuid uuid="{cd37aa54-53b2-4d84-8f66-88c230041972}"/>
     <names>
         <name lang="de">Steckdose mit Abdeckung</name>

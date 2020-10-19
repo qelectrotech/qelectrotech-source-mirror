@@ -1,4 +1,4 @@
-<definition height="90" version="0.70" orientation="dyyy" width="90" hotspot_x="85" type="element" hotspot_y="85" link_type="simple">
+<definition height="90" version="0.70" width="90" hotspot_x="85" type="element" hotspot_y="85" link_type="simple">
     <uuid uuid="{ba9867ec-513c-426a-81d7-0aa24953d866}"/>
     <names>
         <name lang="fr">Enveloppe contenant du gaz</name>

@@ -1,4 +1,4 @@
-<definition width="90" hotspot_x="44" type="element" link_type="simple" orientation="dyyy" version="0.5" height="140" hotspot_y="73">
+<definition width="90" hotspot_x="44" type="element" link_type="simple" version="0.5" height="140" hotspot_y="73">
     <uuid uuid="{3fcb1aa6-c7ab-402d-be10-c524e3848372}"/>
     <names>
         <name lang="cs">Kotel na dřevo</name>

@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="11">
     <uuid uuid="{bf23616a-47dd-406f-b677-ce82e84a9362}"/>
     <names>
         <name lang="cs">Uzavírací ventil</name>

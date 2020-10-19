@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="30" hotspot_y="15" type="element">
     <uuid uuid="{96100c5a-e46c-4440-9d8e-e14b0b5107f8}"/>
     <names>
         <name lang="el">Περιστροφικός διακόπτης, κέντρο</name>

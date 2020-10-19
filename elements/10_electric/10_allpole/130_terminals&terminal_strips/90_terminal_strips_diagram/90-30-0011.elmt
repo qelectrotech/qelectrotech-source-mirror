@@ -1,4 +1,4 @@
-<definition height="20" hotspot_y="6" hotspot_x="4" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+<definition height="20" hotspot_y="6" hotspot_x="4" version="0.5" width="30" link_type="simple" type="element">
     <uuid uuid="{2935f975-67f8-4e41-ad18-7fbb24e67465}"/>
     <names>
         <name lang="de">Kabel Ader nach unten</name>

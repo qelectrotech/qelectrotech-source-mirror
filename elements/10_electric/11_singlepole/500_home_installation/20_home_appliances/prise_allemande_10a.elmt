@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{a9688442-3510-4396-b631-c11ba93465f1}"/>
     <names>
         <name lang="fr">Prise Allemande 10 A</name>

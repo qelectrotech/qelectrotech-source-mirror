@@ -1,4 +1,4 @@
-<definition type="element" height="160" hotspot_x="7" orientation="dyyy" version="0.80" width="400" hotspot_y="4" link_type="simple">
+<definition type="element" height="160" hotspot_x="7" version="0.80" width="400" hotspot_y="4" link_type="simple">
     <uuid uuid="{2677c55c-7688-4031-bac8-a41e32e33157}"/>
     <names>
         <name lang="en">Board 8DI</name>

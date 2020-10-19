@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{d94868b7-b865-49b7-8337-8adb6cbbff83}"/>
     <names>
         <name lang="de">Anlasser für Stern-Dreieck-Schaltung</name>

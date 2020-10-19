@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="12" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="29">
+<definition width="20" hotspot_x="12" type="element" link_type="simple" version="0.5" height="60" hotspot_y="29">
     <uuid uuid="{c76e9f74-eb38-4c03-a42c-ac4fa8321843}"/>
     <names>
         <name lang="cs">Dvojitý elektrický výboj</name>

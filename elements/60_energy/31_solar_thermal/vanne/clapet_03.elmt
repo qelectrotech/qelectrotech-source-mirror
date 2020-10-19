@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="7">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="7">
     <uuid uuid="{e662190e-e093-47d2-84e3-4c3452eed554}"/>
     <names>
         <name lang="cs">Kuličkový pojistný ventil</name>

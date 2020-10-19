@@ -1,4 +1,4 @@
-<definition width="70" height="60" type="element" hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="55">
+<definition width="70" height="60" type="element" hotspot_x="35" version="0.70" link_type="simple" hotspot_y="55">
     <uuid uuid="{c2eb5896-07ed-470e-adec-6c67aa4911b0}"/>
     <names>
         <name lang="de">Thermoelement mit isoliertem Heizelement</name>

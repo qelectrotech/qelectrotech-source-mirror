@@ -1,4 +1,4 @@
-<definition hotspot_y="10" type="element" link_type="simple" orientation="dyyy" hotspot_x="11" width="20" height="20" version="0.51">
+<definition hotspot_y="10" type="element" link_type="simple" hotspot_x="11" width="20" height="20" version="0.51">
     <uuid uuid="{fe9784b4-abdb-4e6e-b6ac-61bf61a0b542}"/>
     <names>
         <name lang="fr">Bouchon Cu n° 300</name>

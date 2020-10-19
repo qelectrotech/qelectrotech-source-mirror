@@ -2034,7 +2034,7 @@
                         <name lang="fr">Bornes</name>
                     </names>
                     <element name="borne_continuite.elmt">
-                        <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                        <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                             <names>
                                 <name lang="en">Terminal block</name>
                                 <name lang="fr">Borne continuité</name>
@@ -2051,7 +2051,7 @@
                         </definition>
                     </element>
                     <element name="Bornes_s.elmt">
-                        <definition width="10" version="0.1" hotspot_x="5" hotspot_y="5" height="30" type="element" orientation="dyyy">
+                        <definition width="10" version="0.1" hotspot_x="5" hotspot_y="5" height="30" type="element">
                             <names>
                                 <name lang="en">Output terminal</name>
                                 <name lang="fr">Borne sortie</name>
@@ -2064,7 +2064,7 @@
                         </definition>
                     </element>
                     <element name="Bornes_e.elmt">
-                        <definition width="10" version="0.1" hotspot_x="5" hotspot_y="25" height="30" type="element" orientation="dyyy">
+                        <definition width="10" version="0.1" hotspot_x="5" hotspot_y="25" height="30" type="element">
                             <names>
                                 <name lang="en">Input terminal</name>
                                 <name lang="fr">Borne entrée</name>

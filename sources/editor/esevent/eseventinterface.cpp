@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,9 +32,9 @@ ESEventInterface::ESEventInterface(ElementScene *scene) :
 }
 
 /**
- * @brief ESEventInterface::init
- * Init this event interface
- */
+	@brief ESEventInterface::init
+	Init this event interface
+*/
 void ESEventInterface::init()
 {
 	m_scene->setBehavior(ElementScene::Behavior::AddPart);
@@ -42,9 +42,9 @@ void ESEventInterface::init()
 }
 
 /**
- * @brief ESEventInterface::~ESEventInterface
- * Destructor
- */
+	@brief ESEventInterface::~ESEventInterface
+	Destructor
+*/
 ESEventInterface::~ESEventInterface()
 {
 	delete m_help_horiz;
@@ -80,11 +80,11 @@ bool ESEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
 }
 
 /**
- * @brief ESEventInterface::keyPressEvent
- * By default, press escape key abort the curent action
- * @param event
- * @return
- */
+	@brief ESEventInterface::keyPressEvent
+	By default, press escape key abort the curent action
+	@param event
+	@return
+*/
 bool ESEventInterface::keyPressEvent(QKeyEvent *event) {
 	if (event->key() == Qt::Key_Escape) {
 		m_running = false;
@@ -99,11 +99,13 @@ bool ESEventInterface::KeyReleaseEvent(QKeyEvent *event) {
 	return false;
 }
 
-bool ESEventInterface::isRunning() const {
+bool ESEventInterface::isRunning() const
+{
 	return m_running;
 }
 
-bool ESEventInterface::isFinish() const {
+bool ESEventInterface::isFinish() const
+{
 	return !m_running;
 }
 

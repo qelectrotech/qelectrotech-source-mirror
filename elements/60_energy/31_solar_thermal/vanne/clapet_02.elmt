@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="8">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="8">
     <uuid uuid="{526c37fb-deb3-494d-a4c6-ec7a18e8e7d2}"/>
     <names>
         <name lang="cs">Pružinový pojistný ventil</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="20" version="0.51" height="20" type="element" hotspot_x="10" link_type="simple" hotspot_y="3">
+<definition width="20" version="0.51" height="20" type="element" hotspot_x="10" link_type="simple" hotspot_y="3">
     <uuid uuid="{60390f6c-586a-44c5-b7f7-86bc10e2c856}"/>
     <names>
         <name lang="fr">Volant</name>

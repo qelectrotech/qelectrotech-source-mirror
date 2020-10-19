@@ -1,4 +1,4 @@
-<definition width="770" version="0.5" type="element" orientation="dyyy" link_type="simple" height="160" hotspot_x="424" hotspot_y="67">
+<definition width="770" version="0.5" type="element" link_type="simple" height="160" hotspot_x="424" hotspot_y="67">
     <uuid uuid="{ec0ae29f-1f71-40df-82da-47553334dd15}"/>
     <names>
         <name lang="fr">EYR203F001 SORTIES ANALOGIQUES</name>

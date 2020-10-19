@@ -1,0 +1,50 @@
+<definition width="10" hotspot_y="35" link_type="simple" version="0.80" height="70" hotspot_x="2" type="element">
+    <uuid uuid="{2e648d97-f12c-4e75-b6b1-3be06c47a55d}"/>
+    <names>
+        <name lang="it">Base P2RF 1</name>
+        <name lang="nl">Basis P2RF 1</name>
+        <name lang="cs">Patice P2RF 1</name>
+        <name lang="fr">borne 2 5</name>
+        <name lang="el">Βάση P2RF 1</name>
+        <name lang="en">Base P2RF 1</name>
+        <name lang="pl">Podstawa P2RF 1</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect width="5.98" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="-30" height="60" rx="0" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="2.9875" y1="-19.92" y2="-18.5314" x2="2.9875" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="2.9875" y1="18.0822" y2="19.4709" x2="2.9875" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <ellipse width="2.9925" style="line-style:normal;line-weight:normal;filling:none;color:black" x="1.49125" height="2.77727" y="17.3879" antialias="true"/>
+        <ellipse width="2.9925" style="line-style:normal;line-weight:normal;filling:none;color:black" x="1.49125" height="2.77727" y="-20.6143" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="2.23937" y1="18.7765" y2="18.7765" x2="3.73562" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="2.23937" y1="-19.2257" y2="-19.2257" x2="3.73562" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="-0.005" y1="-22.8815" y2="-22.8815" x2="5.98" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="-0.005" y1="-15.9393" y2="-15.9393" x2="5.98" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="-0.005" y1="22.2481" y2="22.2481" x2="5.98" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" x1="-0.005" y1="14.6106" y2="14.6106" x2="5.98" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-2" text_width="-1" uuid="{b96ddaf4-2da5-4443-aed8-8933dd2fca18}" y="31.1263" rotation="0" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_from="ElementInfo" Halignment="AlignLeft" z="22">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text frame="false" Valignment="AlignTop" x="12" text_width="-1" uuid="{6c7bc22b-b4c7-4e1e-a5d6-82a5e27c6ed9}" y="8" rotation="90" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_from="ElementInfo" Halignment="AlignLeft" z="23">
+            <text></text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <terminal orientation="n" x="2.9875" uuid="{75dc0901-5a0f-49a5-a837-e7f1d92cc88b}" y="-29.4648" name=""/>
+        <terminal orientation="s" x="3" uuid="{32cbb1b4-ed2a-44b9-94ec-7a8be72abbaf}" y="30" name=""/>
+    </description>
+</definition>

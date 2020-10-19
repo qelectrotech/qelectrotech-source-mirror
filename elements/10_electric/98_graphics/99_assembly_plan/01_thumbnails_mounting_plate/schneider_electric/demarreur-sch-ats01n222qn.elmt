@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" width="60" version="0.80" hotspot_y="82" type="element" height="170" hotspot_x="26">
+<definition link_type="simple" width="60" version="0.80" hotspot_y="82" type="element" height="170" hotspot_x="26">
     <uuid uuid="{a9443cfa-fd29-4abb-96e6-892fa5cdb90c}"/>
     <names>
         <name lang="nl">ATS01N222QN</name>

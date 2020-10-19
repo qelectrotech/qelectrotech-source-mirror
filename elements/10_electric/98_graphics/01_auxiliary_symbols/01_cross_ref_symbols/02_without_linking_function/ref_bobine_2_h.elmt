@@ -1,4 +1,4 @@
-<definition height="20" hotspot_x="5" width="10" type="element" version="0.5" hotspot_y="5" orientation="dyyy" link_type="simple">
+<definition height="20" hotspot_x="5" width="10" type="element" version="0.5" hotspot_y="5" link_type="simple">
     <uuid uuid="{8e8c3f9b-5577-4420-9302-e031a145f576}"/>
     <names>
         <name lang="fr">Reference bobine h</name>

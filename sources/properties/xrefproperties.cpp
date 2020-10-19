@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,14 +15,16 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QMetaEnum>
+#include <QHash>
+
 #include "xrefproperties.h"
 #include "qetapp.h"
-#include <QMetaEnum>
 
 /**
- * @brief XRefProperties::XRefProperties
- * Default Constructor
- */
+	@brief XRefProperties::XRefProperties
+	Default Constructor
+*/
 XRefProperties::XRefProperties()
 {
 	m_show_power_ctc = true;
@@ -36,12 +38,14 @@ XRefProperties::XRefProperties()
 }
 
 /**
- * @brief XRefProperties::toSettings
- * Save to settings
- * @param settings: QSettings to use
- * @param prefix: prefix before properties name
- */
-void XRefProperties::toSettings(QSettings &settings, const QString prefix) const {
+	@brief XRefProperties::toSettings
+	Save to settings
+	@param settings: QSettings to use
+	@param prefix: prefix before properties name
+*/
+void XRefProperties::toSettings(QSettings &settings,
+				const QString prefix) const
+{
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
@@ -54,7 +58,7 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	QString slave_label = m_slave_label;
 	settings.setValue(prefix + "slave_label", slave_label);
 
- 
+
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	settings.setValue(prefix + "xrefpos",  var.valueToKey(m_xref_pos));
 
@@ -64,12 +68,13 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 }
 
 /**
- * @brief XRefProperties::fromSettings
- * load from settings
- * @param settings: QSettings to use
- * @param prefix: prefix before properties name
- */
-void XRefProperties::fromSettings(const QSettings &settings, const QString prefix)
+	@brief XRefProperties::fromSettings
+	load from settings
+	@param settings: QSettings to use
+	@param prefix: prefix before properties name
+*/
+void XRefProperties::fromSettings(const QSettings &settings,
+				  const QString prefix)
 {
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
@@ -89,11 +94,17 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 }
 
 /**
- * @brief XRefProperties::toXml
- * Save to xml
- * @param xml_element: QDomElement to use for saving
- */
-void XRefProperties::toXml(QDomElement &xml_element) const {
+	@brief XRefProperties::toXml
+	Save to xml
+	@param xml_document : QDomElement to use for saving
+	@return QDomElement
+*/
+QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
+{
+
+	QDomElement xml_element = xml_document.createElement("xref");
+	xml_element.setAttribute("type", m_key);
+
 	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
@@ -101,7 +112,7 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("snapto", snap);
 
 	QString xrefpos;
-	
+
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
 
@@ -114,14 +125,16 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	foreach (QString key, m_prefix.keys()) {
 		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
 	}
+
+	return xml_element;
 }
 
 /**
- * @brief XRefProperties::fromXml
- * Load from xml
- * @param xml_element: QDomElement to use for load
- */
-void XRefProperties::fromXml(const QDomElement &xml_element) {
+	@brief XRefProperties::fromXml
+	Load from xml
+	@param xml_element: QDomElement to use for load
+*/
+bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
@@ -143,15 +156,16 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
 	}
+	return true;
 }
 
 /**
- * @brief XRefProperties::defaultProperties
- * @return the default properties stored in the setting file
- * For the xref, there is 2 propreties.
- * For coil, stored with the string "coil" in the returned QHash.
- * For protection, stored with the string "protection" in the returned QHash.
- */
+	@brief XRefProperties::defaultProperties
+	@return the default properties stored in the setting file
+	For the xref, there is 2 propreties.
+	For coil, stored with the string "coil" in the returned QHash.
+	For protection, stored with the string "protection" in the returned QHash.
+*/
 QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 {
 	QHash <QString, XRefProperties> hash;
@@ -181,7 +195,8 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 			m_xref_pos == xrp.m_xref_pos );
 }
 
-bool XRefProperties::operator !=(const XRefProperties &xrp) const {
+bool XRefProperties::operator !=(const XRefProperties &xrp) const
+{
 	return (! (*this == xrp));
 }
 

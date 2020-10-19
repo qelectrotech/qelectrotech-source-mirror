@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,7 +31,8 @@ TitleBlockDimension::TitleBlockDimension(int v, QET::TitleBlockColumnLength t) :
 /**
 	@return a string describing this dimension in a human-readable format.
 */
-QString TitleBlockDimension::toString() const {
+QString TitleBlockDimension::toString() const
+{
 	QString dim_str;
 	if (type == QET::Absolute) {
 		dim_str = QObject::tr("%1px", "titleblock: absolute width");
@@ -46,7 +47,8 @@ QString TitleBlockDimension::toString() const {
 /**
 	@return a string describing this dimension in a short format.
 */
-QString TitleBlockDimension::toShortString() const {
+QString TitleBlockDimension::toShortString() const
+{
 	QString short_string;
 	if (type == QET::RelativeToTotalLength) {
 		short_string = "t";

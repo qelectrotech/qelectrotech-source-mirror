@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" orientation="dyyy" height="20">
+<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" height="20">
     <uuid uuid="{020b48f9-213b-4d5b-be76-e882d705d568}"/>
     <names>
         <name lang="el">Θέσεις διακόπτη</name>

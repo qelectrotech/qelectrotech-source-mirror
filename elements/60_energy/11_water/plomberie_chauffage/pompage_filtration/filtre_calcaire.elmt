@@ -1,4 +1,4 @@
-<definition height="150" orientation="dyyy" hotspot_y="18" width="50" version="0.51" hotspot_x="25" type="element" link_type="simple">
+<definition height="150" hotspot_y="18" width="50" version="0.51" hotspot_x="25" type="element" link_type="simple">
     <uuid uuid="{1f1acea6-b338-4af2-ba9c-b4545d49f93b}"/>
     <names>
         <name lang="fr">Filtre calcaire</name>

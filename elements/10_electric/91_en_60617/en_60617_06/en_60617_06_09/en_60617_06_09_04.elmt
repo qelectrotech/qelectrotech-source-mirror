@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="85" hotspot_y="157" version="0.70" width="120" type="element" height="160">
+<definition link_type="simple" hotspot_x="85" hotspot_y="157" version="0.70" width="120" type="element" height="160">
     <uuid uuid="{2d2a672f-4d53-49b3-985a-4e86f7d8f46b}"/>
     <names>
         <name lang="fr">Transformateur à trois enroulements</name>

@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="31" orientation="dyyy">
+<definition height="40" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="31">
     <uuid uuid="{a78f56c7-1cac-4e91-b1d5-eb3afbc93118}"/>
     <names>
         <name lang="en">Rotating spindle with 3 cables</name>

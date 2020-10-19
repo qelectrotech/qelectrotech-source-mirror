@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="12" orientation="dyyy" hotspot_y="39" type="element" height="80" width="150" version="0.5">
+<definition link_type="simple" hotspot_x="12" hotspot_y="39" type="element" height="80" width="150" version="0.5">
     <uuid uuid="{f9ac9205-ef3d-410f-b6f3-f70a5732ffb4}"/>
     <names>
         <name lang="pl">Omnigrad 2653</name>

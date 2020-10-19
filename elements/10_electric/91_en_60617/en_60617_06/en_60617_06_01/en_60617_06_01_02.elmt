@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="5" version="0.70" width="20" type="element" height="30">
+<definition link_type="simple" hotspot_x="15" hotspot_y="5" version="0.70" width="20" type="element" height="30">
     <uuid uuid="{24846d9b-12d6-4d92-80d0-1234e6e2bce5}"/>
     <names>
         <name lang="fr">Trois enroulements séparé</name>

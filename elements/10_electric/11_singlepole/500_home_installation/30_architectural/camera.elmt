@@ -1,4 +1,4 @@
-<definition hotspot_y="14" link_type="simple" height="30" width="80" hotspot_x="36" orientation="dyyy" version="0.51" type="element">
+<definition hotspot_y="14" link_type="simple" height="30" width="80" hotspot_x="36" version="0.51" type="element">
     <uuid uuid="{4fa0d72e-fad4-4ef3-bb66-9d196954b64f}"/>
     <names>
         <name lang="pl">Kamera</name>

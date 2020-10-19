@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{f9b1efaa-eedc-4856-af0d-99c59a63fb79}"/>
     <names>
         <name lang="cs">Termostatický uzávěr ECS</name>

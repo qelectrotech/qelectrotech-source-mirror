@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="35" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="35" version="0.80" link_type="simple" width="50">
     <uuid uuid="{c51db6a8-49de-4341-b90e-1480eb71b8c3}"/>
     <names>
         <name lang="en">Hydraulic or pneumatic operation</name>

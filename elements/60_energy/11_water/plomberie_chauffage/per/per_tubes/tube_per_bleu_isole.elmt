@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="26" orientation="dyyy" hotspot_y="15" version="0.51" link_type="terminal" width="40" type="element">
+<definition height="30" hotspot_x="26" hotspot_y="15" version="0.51" link_type="terminal" width="40" type="element">
     <uuid uuid="{b3fb963c-8b75-4a3b-b009-2ad8cfdd9800}"/>
     <names>
         <name lang="fr">Tube PER isolé</name>

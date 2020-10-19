@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="30" hotspot_x="19" hotspot_y="15" version="0.51" width="40" link_type="simple">
+<definition type="element" height="30" hotspot_x="19" hotspot_y="15" version="0.51" width="40" link_type="simple">
     <uuid uuid="{0d1778b5-09d1-4fc4-9c98-3b8f2af1ca51}"/>
     <names>
         <name lang="fr">Raccord PE M</name>

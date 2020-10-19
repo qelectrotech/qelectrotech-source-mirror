@@ -1,4 +1,4 @@
-<definition width="1010" type="element" link_type="simple" version="0.60" orientation="dyyy" height="90" hotspot_x="495" hotspot_y="46">
+<definition width="1010" type="element" link_type="simple" version="0.60" height="90" hotspot_x="495" hotspot_y="46">
     <uuid uuid="{094f15d0-8f97-49d0-a231-4b715d9e4023}"/>
     <names>
         <name lang="en">M241CE24R input modules 2/2 Schneider</name>

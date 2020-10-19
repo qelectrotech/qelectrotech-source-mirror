@@ -1,0 +1,31 @@
+<definition type="element" hotspot_x="35" width="70" height="40" link_type="simple" version="0.80" hotspot_y="21">
+    <uuid uuid="{5a876f11-effc-4223-bd7b-3f1cebbb1634}"/>
+    <names>
+        <name lang="de">Heizung</name>
+        <name lang="ar">جهاز تدفئة</name>
+        <name lang="cs">Ohřívač, topné těleso</name>
+        <name lang="en">Heater</name>
+        <name lang="el">Συσκευή θέρμανσης</name>
+        <name lang="it">Riscaldatore</name>
+        <name lang="nl">Verwarmer</name>
+        <name lang="pl">Grzejnik elektryczny</name>
+        <name lang="fr">Appareil de chauffage</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" y2="-10" end1="none" y1="-4" antialias="false" x2="10" end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" y2="-10" end1="none" y1="-4" antialias="false" x2="-10" end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text rotation="0" text_width="-1" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" y="0" z="2" frame="false" Halignment="AlignLeft" uuid="{02f3d299-30d7-4dbd-8863-c6eceec6f9e1}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="-30" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="15" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="0" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-15" ry="0" y="-4" width="15" height="17" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="10" y="-14" orientation="n" uuid="{f112c459-f423-41ac-9652-9c30ea0ed0b5}" name=""/>
+        <terminal x="-10" y="-14" orientation="n" uuid="{7869b2d0-e245-4bf9-86dc-d3be70d93aaf}" name=""/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition width="1050" type="element" height="80" orientation="dyyy" hotspot_y="56" link_type="simple" hotspot_x="405" version="0.5">
+<definition width="1050" type="element" height="80" hotspot_y="56" link_type="simple" hotspot_x="405" version="0.5">
 <uuid uuid="{C200213F-73B5-4B19-8520-FCEC636398BD}"/><names>
         <name lang="en">CDB02.1B-ET-EC-EC-NN-S4-S4-NN-NN-FW (R911338542)</name>
     </names>

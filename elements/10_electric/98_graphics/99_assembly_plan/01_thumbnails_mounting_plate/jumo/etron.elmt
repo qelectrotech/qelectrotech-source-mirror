@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" height="100" hotspot_x="8" hotspot_y="6" type="element" link_type="simple" width="40">
+<definition version="0.70" height="100" hotspot_x="8" hotspot_y="6" type="element" link_type="simple" width="40">
     <uuid uuid="{b9736638-064a-4ede-975f-b95f476d2849}"/>
     <names>
         <name lang="fr">eTRON t</name>

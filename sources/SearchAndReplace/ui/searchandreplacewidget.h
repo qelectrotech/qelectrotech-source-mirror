@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -53,13 +53,23 @@ class SearchAndReplaceWidget : public QWidget
 		void addElement(Element *element);
 		void search();
 		
-		void setVisibleAllParents(QTreeWidgetItem *item, bool expend_parent = true);
-		QTreeWidgetItem *nextItem(QTreeWidgetItem *item=nullptr, QTreeWidgetItemIterator::IteratorFlag flags = QTreeWidgetItemIterator::All) const;
-		QTreeWidgetItem *previousItem(QTreeWidgetItem *item=nullptr, QTreeWidgetItemIterator::IteratorFlag flags = QTreeWidgetItemIterator::All) const;
+		void setVisibleAllParents(QTreeWidgetItem *item,
+					  bool expend_parent = true);
+		QTreeWidgetItem *nextItem(
+				QTreeWidgetItem *item=nullptr,
+				QTreeWidgetItemIterator::IteratorFlag flags
+				= QTreeWidgetItemIterator::All) const;
+		QTreeWidgetItem *previousItem(
+				QTreeWidgetItem *item=nullptr,
+				QTreeWidgetItemIterator::IteratorFlag flags
+				= QTreeWidgetItemIterator::All) const;
 		void updateNextPreviousButtons();
 		void itemChanged(QTreeWidgetItem *item, int column);
-		void setChildCheckState(QTreeWidgetItem *item, Qt::CheckState check, bool deep = true);
-		void updateParentCheckState(QTreeWidgetItem *item, bool all_parents = true);
+		void setChildCheckState(QTreeWidgetItem *item,
+					Qt::CheckState check,
+					bool deep = true);
+		void updateParentCheckState(QTreeWidgetItem *item,
+					    bool all_parents = true);
 		void activateNextChecked();
 		QList<Diagram *> selectedDiagram() const;
 		QList<Element *> selectedElement() const;
@@ -74,9 +84,12 @@ class SearchAndReplaceWidget : public QWidget
 	private slots:
 		void on_m_quit_button_clicked();
 		void on_m_advanced_pb_toggled(bool checked);
-		void on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column);
+		void on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item,
+							int column);
 		void on_m_reload_pb_clicked();	
-		void on_m_tree_widget_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+		void on_m_tree_widget_currentItemChanged(
+				QTreeWidgetItem *current,
+				QTreeWidgetItem *previous);
 		void on_m_next_pb_clicked();
 		void on_m_previous_pb_clicked();
 		void on_m_folio_pb_clicked();
@@ -104,7 +117,8 @@ class SearchAndReplaceWidget : public QWidget
 		QList<QTreeWidgetItem *> m_qtwi_elmts;
 		QList<QTreeWidgetItem *> m_category_qtwi;
 		QHash<QTreeWidgetItem *, QPointer <Element>> m_element_hash;
-		QHash<QTreeWidgetItem *, QPointer <IndependentTextItem>> m_text_hash;
+		QHash<QTreeWidgetItem *,
+			QPointer <IndependentTextItem>> m_text_hash;
 		QHash<QTreeWidgetItem *, QPointer <Conductor>> m_conductor_hash;
 		QPointer<Element> m_highlighted_element;
 		QPointer<QGraphicsObject> m_last_selected;

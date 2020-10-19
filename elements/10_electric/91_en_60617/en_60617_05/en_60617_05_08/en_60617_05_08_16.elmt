@@ -1,4 +1,4 @@
-<definition height="40" version="0.70" orientation="dyyy" width="80" hotspot_x="35" type="element" hotspot_y="25" link_type="simple">
+<definition height="40" version="0.70" width="80" hotspot_x="35" type="element" hotspot_y="25" link_type="simple">
     <uuid uuid="{bf5c0fae-2fd5-421b-9147-7db639258218}"/>
     <names>
         <name lang="fr">Électrode d'accumulation à émission

@@ -1,0 +1,58 @@
+<definition hotspot_y="40" link_type="master" width="50" height="70" type="element" version="0.80" hotspot_x="18">
+    <uuid uuid="{116b7277-f5c2-4f9b-9622-f8062c4101a4}"/>
+    <names>
+        <name lang="fr">NGT720  20A</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="designation" show="1">NGT720</elementInformation>
+        <elementInformation name="comment" show="1">20A</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Disjoncteur 1P+N 6-10kA courbe D - 20A 1 module</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-10" end2="none" antialias="false" y2="20" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10" y1="3"/>
+        <line x1="-12" end2="none" antialias="false" y2="-10" end1="none" length2="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" length1="1.5" x2="7" y1="-10"/>
+        <polygon y3="-20" x1="-10" antialias="true" y2="0" closed="false" x3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" y1="3"/>
+        <line x1="10" end2="none" antialias="false" y2="20" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" y1="16"/>
+        <polygon y3="-20" x1="10" antialias="true" y2="0" closed="false" x3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" y1="3"/>
+        <dynamic_text rotation="0" y="-20" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="20" z="6" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{0afdb394-69b7-48fe-b2ce-3abb444ef6b3}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc width="8" antialias="true" y="10.5" height="5" x="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <line x1="-10" end2="none" antialias="false" y2="-20" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-10" y1="-30"/>
+        <line x1="10" end2="none" antialias="false" y2="10" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" y1="8"/>
+        <line x1="10" end2="none" antialias="false" y2="8" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="15" y1="8"/>
+        <line x1="15" end2="none" antialias="false" y2="8" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="15" y1="3"/>
+        <line x1="-8" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-12" y1="-22"/>
+        <line x1="10" end2="none" antialias="false" y2="3" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="15" y1="3"/>
+        <line x1="-12" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-8" y1="-22"/>
+        <line x1="10" end2="none" antialias="false" y2="-20" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" y1="-30"/>
+        <line x1="12" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="8" y1="-22"/>
+        <line x1="8" end2="none" antialias="true" y2="-18" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="12" y1="-22"/>
+        <dynamic_text rotation="0" y="-5" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="15" z="18" Halignment="AlignLeft" font="Arial,9,-1,5,50,0,0,0,0,0,Normal" uuid="{0e0653ea-01b2-48bb-8668-edd62f7eed33}" text_width="-1">
+            <text>20A</text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <text rotation="0" y="22" text="2" x="12" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" y="-25" text="1" x="12" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" y="-25" text="N" x="-9" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" y="21" text="D" x="19" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <terminal y="-30" x="-10" name="" uuid="{313ae06d-af44-4502-9d4d-ba2b6a219468}" orientation="n"/>
+        <terminal y="-30" x="10" name="" uuid="{0a7c4e4d-ed26-4286-b1bb-fdcb409988ad}" orientation="n"/>
+        <terminal y="20" x="10" name="" uuid="{70d1db28-51d0-4332-bca4-da7d36674ed9}" orientation="s"/>
+        <terminal y="20" x="-10" name="" uuid="{6cf65f57-95fb-4b24-aada-aeb924fc4d8d}" orientation="s"/>
+    </description>
+</definition>

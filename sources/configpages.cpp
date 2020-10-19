@@ -1,20 +1,26 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QFontDialog>
+#include <QFont>
+#include <QSizePolicy>
+#include <utility>
+
 #include "configpages.h"
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
@@ -27,19 +33,18 @@
 #include "qetproject.h"
 #include "reportproperties.h"
 #include "qetapp.h"
-#include <QFontDialog>
-#include <QFont>
-#include <QSizePolicy>
-#include <utility>
+#include "nameslist.h"
 
 /**
- * @brief NewDiagramPage::NewDiagramPage
- * Default constructor
- * @param project, If project, edit the propertie of Project
- * else edit the properties by default of QElectroTech
- * @param parent, parent widget
- */
-NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectPropertiesDialog *ppd) :
+	@brief NewDiagramPage::NewDiagramPage
+	Default constructor
+	@param project : QETProject
+	@param parent : QWidget
+	@param ppd : ProjectPropertiesDialog
+*/
+NewDiagramPage::NewDiagramPage(QETProject *project,
+			       QWidget *parent,
+			       ProjectPropertiesDialog *ppd) :
 	ConfigPage (parent),
 	ppd_ (ppd),
 	m_project  (project)
@@ -50,9 +55,15 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	bpw = new BorderPropertiesWidget(BorderProperties::defaultProperties());
 	// default titleblock properties
 	QList <TitleBlockTemplatesCollection *> c;
-	c << QETApp::commonTitleBlockTemplatesCollection() << QETApp::customTitleBlockTemplatesCollection();
+	c << QETApp::commonTitleBlockTemplatesCollection()
+	  << QETApp::customTitleBlockTemplatesCollection();
 	if (m_project) c << m_project->embeddedTitleBlockTemplatesCollection();
-	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true, project, parent);
+	ipw = new TitleBlockPropertiesWidget(
+				c,
+				TitleBlockProperties::defaultProperties(),
+				true,
+				project,
+				parent);
 	// default conductor properties
 	m_cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
 	m_cpw->setHiddenAvailableAutonum(true);
@@ -63,11 +74,11 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 
 	//If there is a project, we edit his properties
 	if (m_project) {
-		bpw	   -> setProperties		  (m_project -> defaultBorderProperties());
-		m_cpw	   -> setProperties       (m_project -> defaultConductorProperties());
-		ipw    -> setProperties       (m_project -> defaultTitleBlockProperties());
-		rpw	   -> setReportProperties (m_project -> defaultReportProperties());
-		xrefpw -> setProperties		  (m_project -> defaultXRefProperties());
+		bpw -> setProperties (m_project -> defaultBorderProperties());
+		m_cpw -> setProperties (m_project -> defaultConductorProperties());
+		ipw -> setProperties (m_project -> defaultTitleBlockProperties());
+		rpw -> setReportProperties (m_project -> defaultReportProperties());
+		xrefpw -> setProperties (m_project -> defaultXRefProperties());
 	}
 
 	connect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
@@ -93,19 +104,21 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 }
 
 /**
- * @brief NewDiagramPage::~NewDiagramPage
- */
-NewDiagramPage::~NewDiagramPage() {
+	@brief NewDiagramPage::~NewDiagramPage
+*/
+NewDiagramPage::~NewDiagramPage()
+{
 	disconnect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
 }
 
 /**
- * @brief NewDiagramPage::applyConf
- * Apply conf for this page.
- * If there is a project, save in the project,
- * else save to the default conf of QElectroTech
- */
-void NewDiagramPage::applyConf() {
+	@brief NewDiagramPage::applyConf
+	Apply conf for this page.
+	If there is a project, save in the project,
+	else save to the default conf of QElectroTech
+*/
+void NewDiagramPage::applyConf()
+{
 	if (m_project) { //If project we save to the project
 		if (m_project -> isReadOnly()) return;
 		bool modified_project = false;
@@ -171,28 +184,31 @@ void NewDiagramPage::applyConf() {
 }
 
 /**
- * @brief NewDiagramPage::icon
- * @return  icon of this page
- */
-QIcon NewDiagramPage::icon() const {
+	@brief NewDiagramPage::icon
+	@return  icon of this page
+*/
+QIcon NewDiagramPage::icon() const
+{
 	if (m_project) return(QET::Icons::NewDiagram);
 	return(QET::Icons::Projects);
 }
 
 /**
- * @brief NewDiagramPage::title
- * @return title of this page
- */
-QString NewDiagramPage::title() const {
+	@brief NewDiagramPage::title
+	@return title of this page
+*/
+QString NewDiagramPage::title() const
+{
 	if (m_project) return(tr("Nouveau folio", "configuration page title"));
 	return(tr("Nouveau projet", "configuration page title"));
 }
 
 /**
- * @brief NewDiagramPage::changeToAutoFolioTab
- * Set the current tab to Autonum
- */
-void NewDiagramPage::changeToAutoFolioTab(){
+	@brief NewDiagramPage::changeToAutoFolioTab
+	Set the current tab to Autonum
+*/
+void NewDiagramPage::changeToAutoFolioTab()
+{
 	if (m_project){
 		ppd_->setCurrentPage(ProjectPropertiesDialog::Autonum);
 		ppd_->changeToFolio();
@@ -201,9 +217,9 @@ void NewDiagramPage::changeToAutoFolioTab(){
 }
 
 /**
- * @brief NewDiagramPage::setFolioAutonum
- * Set temporary TBP to use in auto folio num
- */
+	@brief NewDiagramPage::setFolioAutonum
+	Set temporary TBP to use in auto folio num
+*/
 void NewDiagramPage::setFolioAutonum(QString autoNum){
 	TitleBlockProperties tbptemp = ipw->propertiesAutoNum(std::move(autoNum));
 	ipw->setProperties(tbptemp);
@@ -211,18 +227,20 @@ void NewDiagramPage::setFolioAutonum(QString autoNum){
 }
 
 /**
- * @brief NewDiagramPage::saveCurrentTbp
- * Save current TBP to retrieve after auto folio	num
- */
-void NewDiagramPage::saveCurrentTbp(){
+	@brief NewDiagramPage::saveCurrentTbp
+	Save current TBP to retrieve after auto folio	num
+*/
+void NewDiagramPage::saveCurrentTbp()
+{
 	savedTbp = ipw->properties();
 }
 
 /**
- * @brief NewDiagramPage::loadSavedTbp
- * Retrieve saved auto folio num
- */
-void NewDiagramPage::loadSavedTbp(){
+	@brief NewDiagramPage::loadSavedTbp
+	Retrieve saved auto folio num
+*/
+void NewDiagramPage::loadSavedTbp()
+{
 	ipw->setProperties(savedTbp);
 	applyConf();
 }
@@ -234,13 +252,13 @@ void NewDiagramPage::loadSavedTbp(){
 ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 	// epw contient les options d'export
 	epw = new ExportPropertiesWidget(ExportProperties::defaultExportProperties());
-	
+
 	// layout vertical contenant le titre, une ligne horizontale et epw
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	
+
 	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);
-	
+
 	QFrame *horiz_line = new QFrame();
 	horiz_line -> setFrameShape(QFrame::HLine);
 	vlayout1 -> addWidget(horiz_line);
@@ -252,7 +270,8 @@ ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 }
 
 /// Destructeur
-ExportConfigPage::~ExportConfigPage() {
+ExportConfigPage::~ExportConfigPage()
+{
 }
 
 /**
@@ -265,12 +284,14 @@ void ExportConfigPage::applyConf()
 }
 
 /// @return l'icone de cette page
-QIcon ExportConfigPage::icon() const {
+QIcon ExportConfigPage::icon() const
+{
 	return(QET::Icons::DocumentExport);
 }
 
 /// @return le titre de cette page
-QString ExportConfigPage::title() const {
+QString ExportConfigPage::title() const
+{
 	return(tr("Export", "configuration page title"));
 }
 
@@ -282,13 +303,13 @@ PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
 	// epw contient les options d'export
 	epw = new ExportPropertiesWidget(ExportProperties::defaultPrintProperties());
 	epw -> setPrintingMode(true);
-	
+
 	// layout vertical contenant le titre, une ligne horizontale et epw
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	
+
 	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);
-	
+
 	QFrame *horiz_line = new QFrame();
 	horiz_line -> setFrameShape(QFrame::HLine);
 	vlayout1 -> addWidget(horiz_line);
@@ -300,20 +321,21 @@ PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
 }
 
 /// Destructeur
-PrintConfigPage::~PrintConfigPage() {
+PrintConfigPage::~PrintConfigPage()
+{
 }
 
 /**
- * @brief PrintConfigPage::applyConf
- * Apply the config of this page
- */
+	@brief PrintConfigPage::applyConf
+	Apply the config of this page
+*/
 void PrintConfigPage::applyConf()
 {
 	QString prefix = "print/default";
-	
+
 	QSettings settings;
 	epw -> exportProperties().toSettings(settings, prefix);
-	
+
 	// annule l'enregistrement de certaines proprietes non pertinentes
 	settings.remove(prefix + "path");
 	settings.remove(prefix + "format");
@@ -321,12 +343,14 @@ void PrintConfigPage::applyConf()
 }
 
 /// @return l'icone de cette page
-QIcon PrintConfigPage::icon() const {
+QIcon PrintConfigPage::icon() const
+{
 	return(QET::Icons::Printer);
 }
 
 /// @return le titre de cette page
-QString PrintConfigPage::title() const {
+QString PrintConfigPage::title() const
+{
 	return(tr("Impression", "configuration page title"));
 }
 

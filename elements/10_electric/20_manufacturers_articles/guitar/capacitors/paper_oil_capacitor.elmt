@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="72" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="150">
+<definition hotspot_x="72" version="0.5" link_type="simple" type="element" hotspot_y="9" height="20" width="150">
     <uuid uuid="{bfe1743e-e006-485e-b0b6-3b8c1ae0e4b6}"/>
     <names>
         <name lang="en">.022 uF Paper and Oil Capacitor</name>

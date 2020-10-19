@@ -1,0 +1,30 @@
+<definition version="0.80" width="110" hotspot_x="55" height="50" hotspot_y="16" link_type="simple" type="element">
+    <uuid uuid="{beeb940b-1275-40ea-85a1-1284f6d54698}"/>
+    <names>
+        <name lang="fr">Servomoteur V2V</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <polygon x8="50" x4="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y4="30" y6="-10" y8="5" antialias="false" y2="5" y7="-10" y3="30" x1="-50" y1="5" x2="50" y5="6" x6="-50" x7="50" x3="40" x5="-50"/>
+        <text text="N1" rotation="0" y="3.05" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-4.5"/>
+        <text text="0VAC" rotation="270" y="25" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="3.1"/>
+        <text text="UB" rotation="0" y="2" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-44"/>
+        <text text="N1" rotation="0" y="3" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-24"/>
+        <text text="Y" rotation="0" y="2" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="18"/>
+        <text text="X" rotation="0" y="2" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="38"/>
+        <line length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y1="-10" x2="-29" y2="5" antialias="false" end1="none" x1="-29"/>
+        <line length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y1="-10" x2="-9" y2="5" antialias="false" end1="none" x1="-9"/>
+        <line length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y1="-10" x2="10" y2="5" antialias="false" end1="none" x1="10"/>
+        <line length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" y1="-10" x2="30" y2="5" antialias="false" end1="none" x1="30"/>
+        <text text="24VAC" rotation="270" y="26" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-36"/>
+        <text text="0VAC" rotation="270" y="25" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-15"/>
+        <text text="IN" rotation="270" y="25" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="30"/>
+        <text text="Out" rotation="270" y="25" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="45"/>
+        <terminal y="-10" uuid="{25856fc8-a4f9-424d-8ce9-2c622b33a013}" x="-20" orientation="n" name=""/>
+        <terminal y="-10" uuid="{e1ff28ca-3f4b-472b-9242-32632655ab02}" x="-40" orientation="n" name=""/>
+        <terminal y="-10" uuid="{273ab8b4-9e35-446a-a0e5-8588738dbd61}" x="40" orientation="n" name=""/>
+        <terminal y="-10" uuid="{2cd0f02f-9fc9-488f-b0b5-506296460149}" x="20" orientation="n" name=""/>
+        <terminal y="-10" uuid="{bc4a4212-db22-4cbe-94f2-f9cb1ca5e2f5}" x="0" orientation="n" name=""/>
+    </description>
+</definition>

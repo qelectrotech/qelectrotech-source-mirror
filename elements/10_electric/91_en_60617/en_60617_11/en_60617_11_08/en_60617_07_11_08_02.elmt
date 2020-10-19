@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="70" height="30" hotspot_x="25" hotspot_y="5" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="70" height="30" hotspot_x="25" hotspot_y="5" version="0.70">
     <uuid uuid="{f4f49a0c-097b-4c1d-acb5-8e2c1cb72b22}"/>
     <names>
         <name lang="de">Stichdose</name>

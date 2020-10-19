@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{5aad6c57-5f8c-40a6-9219-8dcbcd3c15cc}"/>
     <names>
         <name lang="fr">Prise Tri + N 16 A</name>

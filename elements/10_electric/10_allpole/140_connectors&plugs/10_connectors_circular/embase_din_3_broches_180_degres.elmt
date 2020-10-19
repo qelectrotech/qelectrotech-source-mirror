@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="60" hotspot_y="23" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="60" hotspot_y="23" type="element">
     <uuid uuid="{d23e52bf-9e3e-446b-994d-3f4f20acd607}"/>
     <names>
         <name lang="nl">DIN 3 Pin 180°</name>

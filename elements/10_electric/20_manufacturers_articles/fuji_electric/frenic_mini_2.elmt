@@ -1,4 +1,4 @@
-<definition width="140" height="220" orientation="dyyy" version="0.80" link_type="simple" hotspot_x="9" type="element" hotspot_y="209">
+<definition width="140" height="220" version="0.80" link_type="simple" hotspot_x="9" type="element" hotspot_y="209">
     <uuid uuid="{77c616ba-e44d-4148-96c0-e3f95b26a6e4}"/>
     <names>
         <name lang="cs">Frenic Mini 2</name>

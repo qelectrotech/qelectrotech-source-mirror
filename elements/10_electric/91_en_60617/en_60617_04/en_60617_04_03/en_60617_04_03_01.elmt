@@ -1,4 +1,4 @@
-<definition height="20" type="element" width="50" hotspot_y="15" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="45">
+<definition height="20" type="element" width="50" hotspot_y="15" link_type="simple" version="0.70" hotspot_x="45">
     <uuid uuid="{a2de7e88-fade-484c-85e3-04485578b544}"/>
     <names>
         <name lang="fr">Inductance

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,17 +23,20 @@
 class CrossRefItem;
 
 /**
- * @brief The MasterElement class
- * This class is a custom element, with extended behavior
- * to be a master element. Master element can be linked with slave element
- * and display a cross ref item for know with what other element he is linked
- */
+	@brief The MasterElement class
+	This class is a custom element, with extended behavior
+	to be a master element. Master element can be linked with slave element
+	and display a cross ref item for know with what other element he is linked
+*/
 class MasterElement : public Element
 {
 	Q_OBJECT
-	
+
 	public:
-		explicit MasterElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit MasterElement(
+			const ElementsLocation &,
+			QGraphicsItem * = nullptr,
+			int * = nullptr);
 		~MasterElement() override;
 
 		void linkToElement     (Element *elmt) override;
@@ -43,7 +46,9 @@ class MasterElement : public Element
 		QRectF XrefBoundingRect() const;
 		
 	protected:
-		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		QVariant itemChange(
+				GraphicsItemChange change,
+				const QVariant &value) override;
 
 	private:
 		void xrefPropertiesChanged();

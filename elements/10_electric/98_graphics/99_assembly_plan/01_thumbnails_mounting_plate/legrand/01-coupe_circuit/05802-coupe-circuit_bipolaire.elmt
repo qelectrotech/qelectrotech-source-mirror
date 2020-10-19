@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" orientation="dyyy" type="element" width="50" height="210">
+<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" type="element" width="50" height="210">
     <uuid uuid="{8d049a22-22c9-4a27-bd86-5097ec7f790d}"/>
     <names>
         <name lang="fr">05802 - Coupe-circuit bipolaire</name>

@@ -1,0 +1,25 @@
+<definition hotspot_y="64" hotspot_x="124" link_type="simple" height="130" type="element" version="0.80" width="250">
+    <uuid uuid="{323e399d-f815-4586-b1c3-5c9bd6d77a70}"/>
+    <names>
+        <name lang="fr">Pattes de fixation murale</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">LEG036401</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1">0,25</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Pattes fixation murale (X4) - pour coffret Atlantic - 300 kg -</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <line y2="62" end1="none" x2="0" y1="-62" x1="0" length1="1.5" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc angle="180" y="-62.355" x="-122.495" start="270" height="125" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" width="244.995"/>
+        <polygon y11="23" y15="47" y10="10" y21="60" x14="90.8399" y2="-61" x15="80" x4="60" x19="47" y18="56" y22="61" y12="30.1608" x24="0" y7="-25.1425" x6="89.8481" y13="36" x13="99" x11="113" x5="78.1783" x23="10" x9="121.851" y14="41.486" x22="20" y5="-47.4136" y9="0.148521" x1="6.95926" style="line-style:normal;line-weight:thin;filling:white;color:white" x3="40" y20="59" x21="29" x10="120" y19="57" x12="106.457" y23="62" y4="-54" y3="-58" y8="-6.57735" x17="60" x25="0" x2="22" antialias="false" y6="-41.7556" y24="62" x8="121.193" y25="-62" y1="-61.912" y17="54" x18="52" x20="36" x16="70" x7="111.306" y16="51"/>
+    </description>
+</definition>

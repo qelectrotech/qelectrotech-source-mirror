@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="60" link_type="simple" hotspot_x="44" width="90" hotspot_y="34">
+<definition type="element" version="0.70" height="60" link_type="simple" hotspot_x="44" width="90" hotspot_y="34">
     <uuid uuid="{63679980-83d6-4ccb-9499-432d973943c7}"/>
     <names>
         <name lang="de">Gerader Elektro-Installationskanal mit stufig (1

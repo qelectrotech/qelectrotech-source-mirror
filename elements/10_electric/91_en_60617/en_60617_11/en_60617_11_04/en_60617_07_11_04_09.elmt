@@ -1,4 +1,4 @@
-<definition type="element" width="60" version="0.70" hotspot_y="51" orientation="dyyy" height="60" link_type="simple" hotspot_x="46">
+<definition type="element" width="60" version="0.70" hotspot_y="51" height="60" link_type="simple" hotspot_x="46">
     <uuid uuid="{1bb135c9-007b-483c-b67c-bad260004d3e}"/>
     <names>
         <name lang="fr">Anode de protection en magnésium</name>

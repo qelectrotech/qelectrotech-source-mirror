@@ -1,4 +1,4 @@
-<definition width="90" hotspot_x="45" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="39">
+<definition width="90" hotspot_x="45" type="element" link_type="simple" version="0.5" height="70" hotspot_y="39">
     <uuid uuid="{d5225de9-1d96-48ba-85c6-aa465047fde5}"/>
     <names>
         <name lang="cs">A nepřímý výměník A</name>

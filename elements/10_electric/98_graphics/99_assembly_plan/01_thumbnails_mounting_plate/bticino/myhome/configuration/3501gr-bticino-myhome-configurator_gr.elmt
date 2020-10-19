@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" orientation="dyyy" type="element">
+<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" type="element">
     <uuid uuid="{bfa5c953-ddbe-4688-8be6-249eb4ed4d84}"/>
     <names>
         <name lang="fr">3501/GR - Configurateur GR</name>

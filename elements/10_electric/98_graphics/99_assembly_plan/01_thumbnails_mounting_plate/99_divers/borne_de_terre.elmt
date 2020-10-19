@@ -1,4 +1,4 @@
-<definition hotspot_y="34" width="20" link_type="terminal" type="element" height="70" hotspot_x="10" orientation="dyyy" version="0.80">
+<definition hotspot_y="34" width="20" link_type="terminal" type="element" height="70" hotspot_x="10" version="0.80">
     <uuid uuid="{b01905cd-fc59-4e1d-869e-46b2861b4ecd}"/>
     <names>
         <name lang="nl">Basis P2RF 1</name>

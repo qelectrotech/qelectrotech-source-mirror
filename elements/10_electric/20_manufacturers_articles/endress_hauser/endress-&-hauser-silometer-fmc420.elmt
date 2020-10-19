@@ -1,0 +1,130 @@
+<definition width="510" height="180" hotspot_y="83" version="0.80" link_type="simple" type="element" hotspot_x="495">
+    <uuid uuid="{cf78dc49-5a8e-4bec-9dcf-d41f8b9269e8}"/>
+    <names>
+        <name lang="it">6EP1931-2EC21</name>
+        <name lang="pt">6EP1931-2EC21</name>
+        <name lang="cs">6EP1931-2EC21</name>
+        <name lang="fr">Endress &amp; Hauser Silometer FMC420</name>
+        <name lang="es">6EP1931-2EC21</name>
+        <name lang="pl">6EP1931-2EC21</name>
+        <name lang="en">6EP1931-2EC21</name>
+        <name lang="ar">6EP1931-2EC21</name>
+        <name lang="el">6EP1931-2EC21</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line y1="80.44" y2="60.5938" x2="-270" x1="-270" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="44" width="104" rx="0" height="16" x="-322" ry="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="76" x="-312" color="#000000" text="0-4mA" rotation="0" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-47" x="-478" color="#000000" text="E&amp;H" rotation="0" font="LyX,14,-1,5,50,0,0,0,0,0"/>
+        <line y1="51" y2="51" x2="-296.527" x1="-298.436" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="45.3429" y2="46.6286" x2="-293" x1="-293" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="45.5" uuid="{efdf3c6e-5d4b-489a-af82-e6d16176147c}" z="7" x="-275" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="87" x="-229" color="#000000" text="9" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text y="45" uuid="{c6a121d9-2599-4b0f-867b-1b35eb704e13}" z="9" x="-233" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,7,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>+</text>
+        </dynamic_text>
+        <text y="87" x="-279" color="#000000" text="8" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="87" x="-329" color="#000000" text="7" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="47" x="-79" color="#000000" text="20mA" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="47" x="-170" color="#000000" text="10V" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="87" x="-116" color="#000000" text="11" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="50" y2="50" x2="-120.133" x1="-136.8" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="47" x="-126" color="#000000" text="0" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <circle y="42" x="-153.5" diameter="16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-222.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="87" x="-429" color="#000000" text="2" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="87" x="-379" color="#000000" text="3" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="85" x="-94" color="#000000" text="12" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="87" x="-185" color="#000000" text="10" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="47" x="-34" color="#000000" text="0-4mA" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="87" x="-6" color="#000000" text="13" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="55" y2="45" x2="-140" x1="-151" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-223" x1="-267" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-372.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="45" y2="45" x2="-145" x1="-140" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="45" y2="49" x2="-140" x1="-140" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="80.44" y2="60.5938" x2="-220" x1="-220" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-12.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="53.5" uuid="{0f5ef6c1-5863-49c8-9bc0-9987b34c9186}" z="32" x="-170" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>-</text>
+        </dynamic_text>
+        <circle y="87.5" x="-82.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-422.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="78.8571" y2="50.0549" x2="-120" x1="-120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="-80" x2="10" x1="10" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="74" uuid="{eaf0cebc-0293-487e-9f42-62e833d2acb8}" z="37" x="-430.5" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="270" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>N</text>
+        </dynamic_text>
+        <circle y="87.5" x="-122.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-272.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="54.5" uuid="{2a7ea609-d950-4b94-ba68-f1ea07e122ef}" z="40" x="-139" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>+</text>
+        </dynamic_text>
+        <circle y="87.5" x="-322.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-172.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-123" x1="-167" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-173" x1="-217" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-82.7285" x1="-117.251" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-323" x1="-367" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-12.6231" x1="-77.3479" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-273" x1="-317" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" y2="50" x2="-10.5136" x1="-34.4492" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="80" y2="50" x2="-170" x1="-170" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-373" x1="-417" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="40" uuid="{6060a44b-978a-4834-9fad-2d2693ae89c3}" z="52" x="-265" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,6,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>Sonde</text>
+        </dynamic_text>
+        <line y1="50" y2="50" x2="-154.066" x1="-169.863" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="53.5" uuid="{38728f55-328a-45f7-9381-132af161fd37}" z="54" x="-79" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>-</text>
+        </dynamic_text>
+        <dynamic_text y="53.5" uuid="{ef099ef1-cf39-4db2-b7c0-5894e4ae0a36}" z="55" x="-26" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>+</text>
+        </dynamic_text>
+        <line y1="80" y2="50" x2="-80" x1="-80" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" y2="50" x2="-51.6536" x1="-80.32" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" y2="80" x2="-10" x1="-10" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="74" uuid="{c8cc88e7-e231-4bde-8c57-8fd6ca25e138}" z="59" x="-480.5" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="270" text_width="-1" font="LyX,8,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>L1</text>
+        </dynamic_text>
+        <dynamic_text y="-28" uuid="{aeffea10-3395-482b-bd7b-34a16df80066}" z="60" x="-132" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,9,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>__</text>
+        </dynamic_text>
+        <text y="-20" x="-479" color="#000000" text="Silometer FMC420" rotation="0" font="LyX,14,-1,5,50,0,0,0,0,0"/>
+        <line y1="80.44" y2="60.5938" x2="-320" x1="-320" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="87.5" x="-472.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-423" x1="-467" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="-80" x2="-490" x1="-490" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="90" y2="90" x2="-473" x1="-490" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-80" y2="-80" x2="9.71748" x1="-490.662" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="58" y2="69" x2="-370" x1="-370" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="57" y2="57" x2="-361" x1="-380" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="54" y2="54" x2="-365" x1="-376" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="51" y2="51" x2="-368" x1="-372" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="86" x="-479" color="#000000" text="1" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <circle y="42" x="-50.5" diameter="16" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="55" y2="45" x2="-37" x1="-48" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="45" y2="45" x2="-42" x1="-37" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="45" y2="49" x2="-37" x1="-37" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="49" x="-295" diameter="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="51" y2="51" x2="-287.527" x1="-289.436" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="54.3429" y2="55.6286" x2="-293" x1="-293" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="76" x="-257" color="#000000" text="20V" rotation="0" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <line y1="90" y2="90" x2="10" x1="-7" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="92" uuid="{891bfd83-e61a-40d1-b3a1-7d23c523cc66}" x="-470" orientation="s" name=""/>
+        <terminal y="92" uuid="{27633a6a-1818-41e6-a6f3-8830ea7c3e4a}" x="-420" orientation="s" name=""/>
+        <terminal y="92" uuid="{a38aee8c-e9f6-4d82-8525-3af848b61aae}" x="-370" orientation="s" name=""/>
+        <terminal y="92" uuid="{e2ca2d92-fd35-4579-b1c2-69e506c06326}" x="-80" orientation="s" name=""/>
+        <terminal y="92" uuid="{4d24ee3d-454c-4584-ad02-9a2cb0a52117}" x="-10" orientation="s" name=""/>
+        <terminal y="92" uuid="{417c975a-6464-4024-8fcd-d637e2a96049}" x="-170" orientation="s" name=""/>
+        <terminal y="92" uuid="{b33482ac-8b39-45a2-9687-847992869fe4}" x="-120" orientation="s" name=""/>
+        <terminal y="92" uuid="{179d3523-2773-4f09-be59-7933844084ba}" x="-320" orientation="s" name=""/>
+        <terminal y="92" uuid="{3f78a44f-37d4-4510-b4ab-fa907289dac3}" x="-270" orientation="s" name=""/>
+        <terminal y="92" uuid="{61ea994b-33c0-4cf8-b4a9-41deaeda5719}" x="-220" orientation="s" name=""/>
+    </description>
+</definition>

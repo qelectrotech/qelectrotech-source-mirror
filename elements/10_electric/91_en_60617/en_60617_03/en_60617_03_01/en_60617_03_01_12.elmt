@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="30" hotspot_y="11" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="30" hotspot_y="11" width="90" type="element" link_type="simple">
     <uuid uuid="{3bf46289-0ecf-4046-ba0b-7ffee8daf802}"/>
     <names>
         <name lang="fr">Paire coaxiale raccordée sur bornes</name>

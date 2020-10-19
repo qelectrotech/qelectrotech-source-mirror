@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" orientation="dyyy" type="element" height="30" width="20">
+<definition link_type="simple" version="0.70" hotspot_x="10" hotspot_y="25" type="element" height="30" width="20">
     <uuid uuid="{c346b575-72b8-45d0-8591-902c7c467243}"/>
     <names>
         <name lang="fr">Effet unitunnel</name>

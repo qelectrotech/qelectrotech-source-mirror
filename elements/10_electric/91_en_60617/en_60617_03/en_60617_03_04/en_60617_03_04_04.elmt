@@ -1,4 +1,4 @@
-<definition hotspot_x="54" version="0.70" orientation="dyyy" height="40" hotspot_y="16" width="130" type="element" link_type="simple">
+<definition hotspot_x="54" version="0.70" height="40" hotspot_y="16" width="130" type="element" link_type="simple">
     <uuid uuid="{0823930e-5a2d-4806-8e59-d71b132219e3}"/>
     <names>
         <name lang="fr">Boîte d'extrémité avec un câble tripolaire</name>

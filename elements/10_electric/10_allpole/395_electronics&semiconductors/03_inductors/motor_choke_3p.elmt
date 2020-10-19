@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" height="80" hotspot_y="39" link_type="simple" width="90" orientation="dyyy" hotspot_x="52">
+<definition version="0.5" type="element" height="80" hotspot_y="39" link_type="simple" width="90" hotspot_x="52">
 <uuid uuid="{3CE07A0C-3267-4580-A74B-FA7AC84973B0}"/><names>
         <name lang="fr">Self moteur tripolaire</name>
         <name lang="de">Motordrossel 3-polig</name>

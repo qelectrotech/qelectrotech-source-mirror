@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,7 +34,9 @@ class ConductorPropertiesWidget : public QWidget
 
 	public:
 		explicit ConductorPropertiesWidget(QWidget *parent = nullptr);
-		explicit ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent = nullptr);
+		explicit ConductorPropertiesWidget(
+			const ConductorProperties &properties,
+			QWidget *parent = nullptr);
 		~ConductorPropertiesWidget() override;
 
 	//METHODS

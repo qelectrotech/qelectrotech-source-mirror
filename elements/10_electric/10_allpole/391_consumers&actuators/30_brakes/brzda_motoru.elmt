@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="80" hotspot_y="57" version="0.70" width="60" hotspot_x="37" link_type="simple">
+<definition type="element" height="80" hotspot_y="57" version="0.70" width="60" hotspot_x="37" link_type="simple">
     <uuid uuid="{405b76b2-7aea-44a4-9248-386c70bd81ef}"/>
     <names>
         <name lang="en">Magnetic brake</name>

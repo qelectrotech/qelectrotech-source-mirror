@@ -1,4 +1,4 @@
-<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+<definition width="50" height="50" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="45">
     <uuid uuid="{3be73d9a-1a96-484d-90b0-8a0636190baf}"/>
     <names>
         <name lang="de">Wirkleistungsschreiber</name>

@@ -1,4 +1,4 @@
-<definition width="50" height="70" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="65">
+<definition width="50" height="70" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="65">
     <uuid uuid="{bd6bad22-53b9-4476-9bf9-a730036a8af0}"/>
     <names>
         <name lang="de">Blindverbrauchszähler </name>

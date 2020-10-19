@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" height="130" hotspot_x="306" type="element" orientation="dyyy" width="630" hotspot_y="59">
+<definition version="0.70" link_type="simple" height="130" hotspot_x="306" type="element" width="630" hotspot_y="59">
     <uuid uuid="{178aaf02-f2ad-4377-94fa-34b8271905e5}"/>
     <names>
         <name lang="hu">SEW MOVITRAC 3000</name>

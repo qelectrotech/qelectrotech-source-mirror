@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="20" hotspot_y="10" width="50" type="element" link_type="simple">
     <uuid uuid="{0585e84a-da53-4fa9-9fa6-08b7fd334724}"/>
     <names>
         <name lang="fr">Retour automatique</name>

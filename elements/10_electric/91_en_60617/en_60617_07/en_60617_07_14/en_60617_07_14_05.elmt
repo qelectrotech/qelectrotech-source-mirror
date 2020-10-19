@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{51e1b1ef-8b7e-4700-85fa-9dc99ae65a22}"/>
     <names>
         <name lang="de">Anlasser für Direktanlauf, mit Schütz zur

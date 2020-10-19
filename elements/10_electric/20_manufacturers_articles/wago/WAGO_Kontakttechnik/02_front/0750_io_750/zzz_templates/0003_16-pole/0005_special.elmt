@@ -1,4 +1,4 @@
-<definition height="360" type="element" width="60" hotspot_y="179" orientation="dyyy" hotspot_x="29" link_type="simple" version="0.80">
+<definition height="360" type="element" width="60" hotspot_y="179" hotspot_x="29" link_type="simple" version="0.80">
     <names>
         <name lang="fr">Function-Module</name>
         <name lang="en">Function-Module</name>

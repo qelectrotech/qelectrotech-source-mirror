@@ -1,21 +1,39 @@
-<definition width="50" version="0.4" hotspot_x="6" hotspot_y="14" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{64C6A537-A2F1-4B07-81C3-406F263556AF}"/><names>
+<definition type="element" link_type="simple" width="50" hotspot_x="7" height="30" version="0.80" hotspot_y="14">
+    <uuid uuid="{fa3d37d0-a379-4639-807b-dfa4230ac435}"/>
+    <names>
         <name lang="es">ACS vivienda</name>
         <name lang="ca">ACS vivenda</name>
+        <name lang="fr">ECS</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.7505" x1="0.014002" y2="-9.7505" x2="11.0682"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.7505" x1="11.5" y2="-1.72091" x2="19"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.29388" x1="14.5" y2="-5.7357" x2="25"/>
-        <arc width="18" x="7" y="-11.0888" antialias="true" height="13.3826" style="line-style:normal;line-weight:normal;filling:none;color:black" start="10" angle="-110"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.05917" x1="28" y2="0.955619" x2="38.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.97041" x1="19" y2="13" x2="23.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="2.29388" x1="25" y2="8.98521" x2="32.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-0.382645" x1="26.5" y2="3.63215" x2="32.5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3.63215" x1="22" y2="8.98521" x2="26.5"/>
-        <input x="5" y="-18" size="4" rotate="true" text="ACS_" tagg="label"/>
-        <terminal x="-0.5" y="-9.7505" orientation="w"/>
+        <line y2="-9.7505" end1="none" y1="-9.7505" length2="1.5" length1="1.5" end2="none" x2="11.0682" x1="0.014002" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="-1.72091" end1="none" y1="-9.7505" length2="1.5" length1="1.5" end2="none" x2="19" x1="11.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="-5.7357" end1="none" y1="2.29388" length2="1.5" length1="1.5" end2="none" x2="25" x1="14.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="10" x="7" width="18" height="13.3826" angle="-110" y="-11.0888" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="0.955619" end1="none" y1="-3.05917" length2="1.5" length1="1.5" end2="none" x2="38.5" x1="28" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y2="13" end1="none" y1="4.97041" length2="1.5" length1="1.5" end2="none" x2="23.5" x1="19" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y2="8.98521" end1="none" y1="2.29388" length2="1.5" length1="1.5" end2="none" x2="32.5" x1="25" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y2="3.63215" end1="none" y1="-0.382645" length2="1.5" length1="1.5" end2="none" x2="32.5" x1="26.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y2="8.98521" end1="none" y1="3.63215" length2="1.5" length1="1.5" end2="none" x2="26.5" x1="22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text rotation="0" uuid="{7bf99f06-b0cf-4799-bb2b-2965c84fca28}" x="5" text_width="-1" Halignment="AlignLeft" text_from="ElementInfo" z="10" y="-25.5" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Valignment="AlignTop" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal uuid="{e7930f40-2716-4c3e-ae57-8fc3b7631c92}" x="-0.5" name="" y="-9.7505" orientation="w"/>
     </description>
 </definition>

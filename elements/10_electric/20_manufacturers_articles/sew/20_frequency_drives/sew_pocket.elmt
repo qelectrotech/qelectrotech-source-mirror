@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="29" version="0.70" type="element" height="180" hotspot_y="87" width="70" orientation="dyyy">
+<definition link_type="simple" hotspot_x="29" version="0.70" type="element" height="180" hotspot_y="87" width="70">
     <uuid uuid="{216e6464-3cf5-4977-a05e-7c239ea0c4bf}"/>
     <names>
         <name lang="fr">sew_pocket</name>

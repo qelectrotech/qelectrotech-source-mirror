@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.80" type="element" hotspot_x="5" orientation="dyyy" height="210" width="90" hotspot_y="5">
+<definition link_type="simple" version="0.80" type="element" hotspot_x="5" height="210" width="90" hotspot_y="5">
     <uuid uuid="{034036e2-3625-4759-8b97-600d731ebfcb}"/>
     <names>
         <name lang="fr">FPEU225/030</name>

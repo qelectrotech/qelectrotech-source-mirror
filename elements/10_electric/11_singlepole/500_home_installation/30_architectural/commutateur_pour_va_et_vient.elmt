@@ -1,4 +1,4 @@
-<definition hotspot_x="15" hotspot_y="15" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+<definition hotspot_x="15" hotspot_y="15" height="40" type="element" link_type="simple" width="30" version="0.5">
     <uuid uuid="{5f86f892-3287-45b4-b8fa-10c1e88bf0c8}"/>
     <names>
         <name lang="fr">Commutateur intermédiaire pour va-et-vient

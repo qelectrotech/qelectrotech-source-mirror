@@ -1,4 +1,4 @@
-<definition hotspot_y="17" type="element" link_type="simple" orientation="dyyy" hotspot_x="30" width="60" height="90" version="0.51">
+<definition hotspot_y="17" type="element" link_type="simple" hotspot_x="30" width="60" height="90" version="0.51">
     <uuid uuid="{389cf182-5f5e-48e6-a8c2-5e5daf85778e}"/>
     <names>
         <name lang="fr">Filtre à cartouche</name>

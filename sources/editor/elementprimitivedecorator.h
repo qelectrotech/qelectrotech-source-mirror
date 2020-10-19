@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -50,7 +50,9 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 			// methods
 		QRectF internalBoundingRect() const;
 		QRectF boundingRect () const override;
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
+		void paint(QPainter *,
+			   const QStyleOptionGraphicsItem *,
+			   QWidget * = nullptr) override;
 		int type() const override { return Type; }
 		void setItems(const QList<QGraphicsItem *> &);
 		void setItems(const QList<CustomElementPart *> &);

@@ -1,4 +1,4 @@
-<definition type="element" width="320" version="0.5" height="150" link_type="simple" hotspot_x="275" orientation="dyyy" hotspot_y="74">
+<definition type="element" width="320" version="0.5" height="150" link_type="simple" hotspot_x="275" hotspot_y="74">
     <uuid uuid="{bc7af774-82fd-4c2a-8168-0034f8058f2f}"/>
     <names>
         <name lang="fr">rmz782</name>

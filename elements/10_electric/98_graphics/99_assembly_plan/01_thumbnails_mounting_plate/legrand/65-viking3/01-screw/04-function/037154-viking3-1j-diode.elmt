@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="4" hotspot_y="6" type="element" orientation="dyyy" width="20" height="130">
+<definition version="0.80" link_type="simple" hotspot_x="4" hotspot_y="6" type="element" width="20" height="130">
     <uuid uuid="{85452113-f473-48d2-a51a-710b0e824069}"/>
     <names>
         <name lang="fr">037154 - Viking3 - 1 jonction Diode 2,5mm² pas 5mm Gris foncé</name>

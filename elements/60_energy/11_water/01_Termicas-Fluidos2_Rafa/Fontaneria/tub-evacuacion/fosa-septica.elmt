@@ -1,29 +1,34 @@
-<definition width="70" version="0.4" hotspot_x="34" hotspot_y="12" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{A9E07CA0-D61D-4FDF-9CAE-EACAB1C971CF}"/><names>
-        <name lang="es">Fosa Séptica</name>
-        <name lang="ca">Fossa sèptica</name>
+<definition width="70" hotspot_y="12" link_type="simple" version="0.80" height="40" hotspot_x="34" type="element">
+    <uuid uuid="{bf83c5e4-2b93-41b0-8b52-3a17f9f9c135}"/>
+    <names>
+        <name lang="fr">Fosse septique</name>
         <name lang="ca">Fosse septique</name>
+        <name lang="es">Fosa Séptica</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <arc width="12" x="-25" y="-8" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <arc width="12" x="13" y="-8" antialias="true" height="11" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <rect width="8" x="-4" y="-8" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="5" x="12" y="-2" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="40" x="-20" y="0" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="7" x="-23" y="0" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <arc width="6" x="16" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
-        <arc width="7" x="16" y="0" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <rect width="3" x="19" y="-9" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="5" x="-17" y="-2" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="6" x="-22" y="-5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
-        <rect width="3" x="-23" y="-9" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x4="3" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="-3" y2="3" x2="0" y3="0" x3="3" y4="0"/>
-        <input x="-17" y="13" size="4" rotate="true" text="fosa sep." tagg="label"/>
-        <rect width="12" x="-6" y="-10" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="62" x="-30" y="-10" antialias="false" height="35" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <terminal x="-23" y="-7" orientation="w"/>
-        <terminal x="22" y="-7" orientation="e"/>
+        <arc width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90" x="-25" y="-8" height="11" antialias="true"/>
+        <arc width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90" x="13" y="-8" height="11" antialias="true"/>
+        <rect width="8" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" y="-8" height="8" rx="0" antialias="false"/>
+        <rect width="5" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="12" y="-2" height="2" rx="0" antialias="false"/>
+        <rect width="40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="0" height="20" rx="0" antialias="false"/>
+        <arc width="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180" x="-23" y="0" height="20" antialias="true"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90" x="16" y="-5" height="5" antialias="true"/>
+        <arc width="7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180" x="16" y="0" height="20" antialias="true"/>
+        <rect width="3" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="19" y="-9" height="5" rx="0" antialias="false"/>
+        <rect width="5" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17" y="-2" height="2" rx="0" antialias="false"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90" x="-22" y="-5" height="5" antialias="true"/>
+        <rect width="3" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-23" y="-9" height="5" rx="0" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x4="3" y3="0" x1="-3" y1="0" y2="3" x2="0" closed="false" x3="3" y4="0" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-17" text_width="-1" uuid="{a9263101-6a0e-4ad6-9dd1-7f441bfbff2c}" y="5.5" rotation="0" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" z="14">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect width="12" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" y="-10" height="2" rx="0" antialias="false"/>
+        <rect width="62" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-30" y="-10" height="35" rx="0" antialias="false"/>
+        <terminal orientation="w" x="-23" uuid="{8198f3d1-3bba-4a49-8df5-7411cdf934db}" y="-7" name=""/>
+        <terminal orientation="e" x="22" uuid="{b9a02896-a7d8-451f-b030-436c07f0047c}" y="-7" name=""/>
     </description>
 </definition>

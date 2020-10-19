@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" orientation="dyyy" type="element" width="50" height="210">
+<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" type="element" width="50" height="210">
     <uuid uuid="{1391f4b7-bb35-45a2-a319-fd86fd7b4d84}"/>
     <names>
         <name lang="fr">05824 - Coupe-circuit bipolaire 32A</name>

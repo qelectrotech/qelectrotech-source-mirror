@@ -1,4 +1,4 @@
-<definition width="70" hotspot_x="53" type="element" link_type="simple" height="20" hotspot_y="10" orientation="dyyy" version="0.51">
+<definition width="70" hotspot_x="53" type="element" link_type="simple" height="20" hotspot_y="10" version="0.51">
     <uuid uuid="{84da2d48-8920-4dcc-812d-bf4be623502f}"/>
     <names>
         <name lang="fr">Câble 17 VATC </name>

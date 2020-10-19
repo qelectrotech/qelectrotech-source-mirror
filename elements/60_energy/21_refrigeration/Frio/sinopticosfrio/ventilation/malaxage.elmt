@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="25">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="50" hotspot_y="25">
     <uuid uuid="{8f727eb4-d460-479e-b98a-448f16efae09}"/>
     <names>
         <name lang="cs">Smíchávací komora</name>

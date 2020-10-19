@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="20" hotspot_y="12" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="20" hotspot_y="12" width="90" type="element" link_type="simple">
     <uuid uuid="{9a182bfd-b6b7-439f-9817-6f6139083eb6}"/>
     <names>
         <name lang="fr">Circuit à courant continu</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="10" hotspot_y="7" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="10" hotspot_y="7" width="50" type="element" link_type="simple">
     <uuid uuid="{c3c8ee62-90d1-40cf-82d8-1cbcc7cdc57f}"/>
     <names>
         <name lang="fr">Dispositif de blocage</name>

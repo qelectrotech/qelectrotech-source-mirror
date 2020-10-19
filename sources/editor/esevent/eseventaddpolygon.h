@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@ class PartPolygon;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddPolygon class
- * This ESEvent manage creation of polygon in an ElementScene
- */
+	@brief The ESEventAddPolygon class
+	This ESEvent manage creation of polygon in an ElementScene
+*/
 class ESEventAddPolygon : public ESEventInterface
 {
 	public:

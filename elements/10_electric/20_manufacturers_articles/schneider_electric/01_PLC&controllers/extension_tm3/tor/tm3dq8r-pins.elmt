@@ -1,4 +1,4 @@
-<definition height="90" hotspot_x="495" type="element" version="0.70" link_type="simple" width="970" hotspot_y="44" orientation="dyyy">
+<definition height="90" hotspot_x="495" type="element" version="0.70" link_type="simple" width="970" hotspot_y="44">
     <uuid uuid="{a74b72ab-9e78-45f8-bacb-6fab4299ec3c}"/>
     <names>
         <name lang="fr">Cartes sorties TM3DM24R Schneider</name>

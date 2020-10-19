@@ -1,0 +1,43 @@
+<definition link_type="simple" type="element" height="180" width="130" hotspot_y="175" version="0.80" hotspot_x="5">
+    <uuid uuid="{bbdf9ed5-5025-4af2-a7da-a4a6d2d225fe}"/>
+    <names>
+        <name lang="fr">Réfrigérateur</name>
+        <name lang="pl">Chłodziarka</name>
+    </names>
+    <elementInformations/>
+    <informations>CBH41</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="3" uuid="{4e4f65ef-034e-447b-95ea-b112b6df9d2e}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>20</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="4" uuid="{3369a596-b990-4bc0-9c4e-f8e9c74b0314}" text_from="ElementInfo" y="-63" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text=" kA C" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-18" color="#000000"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-30" color="#000000"/>
+        <text text="Réfrigérateur" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="2" y="-69" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" width="60" ry="0" x="30" rx="0" y="-160"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" width="2" ry="0" x="34" rx="0" y="-150"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-142" length2="1.5" length1="1.5" x2="78" y1="-148" x1="72" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-142" length2="1.5" length1="1.5" x2="72" y1="-148" x1="78" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-145" length2="1.5" length1="1.5" x2="80" y1="-145" x1="70" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-140" length2="1.5" length1="1.5" x2="75" y1="-150" x1="75" end2="none"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="19" uuid="{6d35d4a0-b23a-4156-aed0-f0a115988bae}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>3 G 2.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="20" uuid="{acfe97cc-5186-4f01-9184-10657e2a9758}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-160" length2="1.5" length1="1.5" x2="50" y1="-170" x1="50" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-160" length2="1.5" length1="1.5" x2="70" y1="-170" x1="70" end2="none"/>
+        <terminal orientation="n" name="" x="70" uuid="{34e1929b-f5b9-4e53-b348-479238c678fd}" y="-170"/>
+        <terminal orientation="n" name="" x="50" uuid="{2f13ebd9-0485-4153-ab41-23c7023a0446}" y="-170"/>
+        <terminal orientation="s" name="" x="60" uuid="{7f181ae4-e287-44c9-9575-a176eef2869c}" y="-90"/>
+    </description>
+</definition>

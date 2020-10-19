@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@
 #include "eseventaddarc.h"
 
 /**
- * @brief ESEventAddArc::ESEventAddArc
- * @param scene
- */
+	@brief ESEventAddArc::ESEventAddArc
+	@param scene
+*/
 ESEventAddArc::ESEventAddArc(ElementScene *scene) :
 	ESEventInterface(scene),
 	m_arc(nullptr),
@@ -33,18 +33,19 @@ ESEventAddArc::ESEventAddArc(ElementScene *scene) :
 {}
 
 /**
- * @brief ESEventAddArc::~ESEventAddArc
- */
-ESEventAddArc::~ESEventAddArc() {
+	@brief ESEventAddArc::~ESEventAddArc
+*/
+ESEventAddArc::~ESEventAddArc()
+{
 	if (m_running || m_abort)
 		delete m_arc;
 }
 
 /**
- * @brief ESEventAddPolygon::mousePressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddPolygon::mousePressEvent
+	@param event
+	@return
+*/
 bool ESEventAddArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event -> button() == Qt::LeftButton)
@@ -79,10 +80,10 @@ bool ESEventAddArc::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ESEventAddArc::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddArc::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddArc::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_arc) return false;
@@ -94,10 +95,10 @@ bool ESEventAddArc::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddArc::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddArc::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::RightButton) {
 		if (m_arc) {delete m_arc; m_arc = nullptr;}
@@ -108,10 +109,10 @@ bool ESEventAddArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddArc::keyPressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddArc::keyPressEvent
+	@param event
+	@return
+*/
 bool ESEventAddArc::keyPressEvent(QKeyEvent *event) {
 	if (m_arc && event->key() == Qt::Key_Space) {
 		m_inverted = m_inverted ? false : true;
@@ -123,9 +124,9 @@ bool ESEventAddArc::keyPressEvent(QKeyEvent *event) {
 }
 
 /**
- * @brief ESEventAddArc::updateArc
- * Redraw the arc with curent value
- */
+	@brief ESEventAddArc::updateArc
+	Redraw the arc with curent value
+*/
 void ESEventAddArc::updateArc()
 {
 	qreal width  = (m_mouse_pos.x() - m_origin.x())*2;

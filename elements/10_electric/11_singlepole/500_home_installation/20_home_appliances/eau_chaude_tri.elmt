@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{f4c01ab6-3448-4997-8295-7b63f8b61053}"/>
     <names>
         <name lang="fr">Eau Chaude Sanitaire tri</name>

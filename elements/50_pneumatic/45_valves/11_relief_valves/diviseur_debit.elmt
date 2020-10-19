@@ -1,4 +1,4 @@
-<definition height="90" version="0.5" width="90" hotspot_x="15" type="element" link_type="simple" hotspot_y="44" orientation="dyyy">
+<definition height="90" version="0.5" width="90" hotspot_x="15" type="element" link_type="simple" hotspot_y="44">
     <uuid uuid="{60ea7c8b-47e6-4e9d-8025-268ea093ed71}"/>
     <names>
         <name lang="en">Flow divider</name>

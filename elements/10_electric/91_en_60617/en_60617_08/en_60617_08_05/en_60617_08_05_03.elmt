@@ -1,4 +1,4 @@
-<definition width="70" height="80" type="element" hotspot_x="65" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="55">
+<definition width="70" height="80" type="element" hotspot_x="65" version="0.70" link_type="simple" hotspot_y="55">
     <uuid uuid="{b46a7f43-9759-4b2e-bdbe-75897074ef4e}"/>
     <names>
         <name lang="de">Impulszähler mit manueller Voreinstellung auf

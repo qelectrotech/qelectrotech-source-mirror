@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="51" hotspot_y="47" version="0.70" width="110" type="element" height="100">
+<definition link_type="simple" hotspot_x="51" hotspot_y="47" version="0.70" width="110" type="element" height="100">
     <uuid uuid="{2c912077-6de2-4a05-93f7-2ac54703edbe}"/>
     <names>
         <name lang="fr">Transformateur à prise médiane sur un

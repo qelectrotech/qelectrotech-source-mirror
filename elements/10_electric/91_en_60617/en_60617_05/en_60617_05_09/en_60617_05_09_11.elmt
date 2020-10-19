@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="250" width="190" version="0.70" orientation="dyyy" hotspot_x="185" hotspot_y="245">
+<definition type="element" link_type="simple" height="250" width="190" version="0.70" hotspot_x="185" hotspot_y="245">
     <uuid uuid="{1942498c-5887-4df7-bd36-48adc2f79b1a}"/>
     <names>
         <name lang="fr">Aimant permanent engendrant un champ

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="20" hotspot_y="15" hotspot_x="10" version="0.70" link_type="simple">
+<definition type="element" width="20" height="20" hotspot_y="15" hotspot_x="10" version="0.70" link_type="simple">
     <uuid uuid="{c7e545a6-5835-46d6-a0cb-0c23a60e6267}"/>
     <names>
         <name lang="de">Schütz-Funktion</name>

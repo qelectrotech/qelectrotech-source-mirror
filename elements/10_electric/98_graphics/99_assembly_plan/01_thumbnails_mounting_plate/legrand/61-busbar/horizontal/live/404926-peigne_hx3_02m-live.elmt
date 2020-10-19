@@ -1,4 +1,4 @@
-<definition height="30" hotspot_y="14" link_type="terminal" version="0.80" orientation="dyyy" type="element" width="50" hotspot_x="34">
+<definition height="30" hotspot_y="14" link_type="terminal" version="0.80" type="element" width="50" hotspot_x="34">
     <uuid uuid="{54e41229-5e0f-41b4-a781-7fd77e2040d8}"/>
     <names>
         <name lang="fr">404926 - Peigne P+N HX³ - 2 modules</name>

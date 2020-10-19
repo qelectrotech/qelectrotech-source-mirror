@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="35" version="0.5" hotspot_y="49" link_type="simple" width="70" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="35" version="0.5" hotspot_y="49" link_type="simple" width="70" height="60">
     <uuid uuid="{05425599-4c1d-41c0-9e88-04aee219a025}"/>
     <names>
         <name lang="de">Netzteil AC/DC</name>

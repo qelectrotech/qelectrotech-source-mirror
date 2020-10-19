@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="12" width="40" link_type="simple" height="40" version="0.80" orientation="dyyy" hotspot_y="23">
+<definition type="element" hotspot_x="12" width="40" link_type="simple" height="40" version="0.80" hotspot_y="23">
     <uuid uuid="{5d12230b-3f9f-437d-aa78-88cfa95b50d9}"/>
     <names>
         <name lang="fr">Piège à froid, symbole général</name>

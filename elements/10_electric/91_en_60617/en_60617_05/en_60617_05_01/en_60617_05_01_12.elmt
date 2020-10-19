@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="30" orientation="dyyy" type="element" height="40" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="30" type="element" height="40" width="30">
     <uuid uuid="{5042fdd1-611c-4a2e-874b-e8e037cddcf6}"/>
     <names>
         <name lang="fr">Indication du type de conductivité du canal

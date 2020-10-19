@@ -1,4 +1,4 @@
-<definition height="210" width="250" link_type="simple" orientation="dyyy" hotspot_y="4" hotspot_x="5" type="element" version="0.80">
+<definition height="210" width="250" link_type="simple" hotspot_y="4" hotspot_x="5" type="element" version="0.80">
     <uuid uuid="{5131cccf-73d7-40f7-bf59-a769186fd9f3}"/>
     <names>
         <name lang="fr">412000 - Eco compteur de consommation des énergies</name>

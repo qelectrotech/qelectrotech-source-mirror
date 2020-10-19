@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" orientation="dyyy" type="element" width="50" height="210">
+<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" type="element" width="50" height="210">
     <uuid uuid="{2fe0641f-b8ae-4cb6-b47c-2cfd6f6e2bcd}"/>
     <names>
         <name lang="fr">05811 - Coupe-circuit unipolaire 16A</name>

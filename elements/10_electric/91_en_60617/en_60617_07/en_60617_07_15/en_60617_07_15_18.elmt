@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="100" height="50" hotspot_y="24" hotspot_x="36" version="0.70" link_type="simple">
+<definition type="element" width="100" height="50" hotspot_y="24" hotspot_x="36" version="0.70" link_type="simple">
     <uuid uuid="{826ec518-7cc4-4702-8cdf-fe6a3169e44b}"/>
     <names>
         <name lang="de">polarisiertes Relais, bistabil</name>

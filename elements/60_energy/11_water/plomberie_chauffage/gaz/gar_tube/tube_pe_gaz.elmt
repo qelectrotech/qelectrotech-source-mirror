@@ -1,4 +1,4 @@
-<definition hotspot_y="11" type="element" link_type="terminal" orientation="dyyy" hotspot_x="25" width="40" height="20" version="0.51">
+<definition hotspot_y="11" type="element" link_type="terminal" hotspot_x="25" width="40" height="20" version="0.51">
     <uuid uuid="{e933ebb5-8d63-4910-be71-d74230d6bbc3}"/>
     <names>
         <name lang="fr">Tube PE gaz</name>

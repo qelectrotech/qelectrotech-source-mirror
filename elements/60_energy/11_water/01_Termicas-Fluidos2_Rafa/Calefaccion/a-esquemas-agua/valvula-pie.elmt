@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="10" link_type="simple" type="element" version="0.80" width="20" height="30" hotspot_y="14">
+<definition hotspot_x="10" link_type="simple" type="element" version="0.80" width="20" height="30" hotspot_y="14">
     <uuid uuid="{a20e4a38-5e08-4aed-8a2e-073380e992d5}"/>
     <names>
         <name lang="ca">Vàlvula de peu</name>

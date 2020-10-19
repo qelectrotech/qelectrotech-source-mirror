@@ -1,4 +1,4 @@
-<definition hotspot_x="64" height="310" hotspot_y="164" type="element" orientation="dyyy" link_type="simple" width="130" version="0.51">
+<definition hotspot_x="64" height="310" hotspot_y="164" type="element" link_type="simple" width="130" version="0.51">
     <uuid uuid="{2149145b-ca9f-4e91-b301-149254d970eb}"/>
     <names>
         <name lang="fr">Adaptateur IO Eth 1734AENT</name>

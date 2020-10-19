@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="39" width="190" height="110" orientation="dyyy" link_type="simple" hotspot_x="65">
+<definition type="element" version="0.5" hotspot_y="39" width="190" height="110" link_type="simple" hotspot_x="65">
     <uuid uuid="{171df120-aa3e-49b2-8135-bfde2fba1862}"/>
     <names>
         <name lang="ar">UE410-MU</name>

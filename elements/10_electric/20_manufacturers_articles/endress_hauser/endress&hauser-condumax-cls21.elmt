@@ -1,0 +1,35 @@
+<definition width="140" height="150" hotspot_y="75" version="0.80" link_type="simple" type="element" hotspot_x="76">
+    <uuid uuid="{980a8644-af83-4ff7-91b8-90b398c4a075}"/>
+    <names>
+        <name lang="fr">Endress&amp;Hauser Condumax CLS21</name>
+        <name lang="en">Endress&amp;Hauser Condumax CLS21</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc y="-70" width="127" height="140" x="-70" angle="-180" antialias="true" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-3.5" x1="-15.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-6" x="-23" color="#000000" text="3" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-55" x="-19" color="#000000" text="E&amp;H" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="-2" color="#000000" text="4" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" x="-42" color="#000000" text="2" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="0" y2="0" x2="-24.5" x1="-36.5" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="56.9275" x1="3.75923" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.6056" x="-63.606" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.6056" x="-23.606" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="-3.60555" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-3.60555" x="-43.6056" diameter="7.2111" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-64" x1="-70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" y2="0" x2="-44" x1="-56" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-6" x="-62" color="#000000" text="1" rotation="0" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-38" x="-26" color="#000000" text="CLS21" rotation="0" font="LyX,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="-17.7059" y2="-15.2353" x2="0" x1="0" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-18" y2="-18" x2="5" x1="-4" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="4" x1="-3" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-22" y2="-22" x2="2.36358" x1="-1.33561" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="3" uuid="{8c828804-04f8-43f3-9297-17e922cd8563}" x="-40" orientation="s" name=""/>
+        <terminal y="3" uuid="{13cba366-0279-4ef8-8192-e8ab307c24c5}" x="-20" orientation="s" name=""/>
+        <terminal y="3" uuid="{b51daac3-6fec-4454-b77a-d9b22c955a8f}" x="0" orientation="s" name=""/>
+        <terminal y="3" uuid="{1914770d-58a3-4c6e-92e9-2b955d613539}" x="-60" orientation="s" name=""/>
+    </description>
+</definition>

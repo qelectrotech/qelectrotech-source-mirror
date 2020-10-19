@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@ class PartTerminal;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddTerminal class
- * This ESEvent manage creation of terminal in an ElementScene
- */
+	@brief The ESEventAddTerminal class
+	This ESEvent manage creation of terminal in an ElementScene
+*/
 class ESEventAddTerminal : public ESEventInterface
 {
 	public:

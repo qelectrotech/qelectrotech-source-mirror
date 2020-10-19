@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="130" hotspot_x="19" type="element" link_type="simple" hotspot_y="23" orientation="dyyy">
+<definition height="40" version="0.5" width="130" hotspot_x="19" type="element" link_type="simple" hotspot_y="23">
     <uuid uuid="{431e3664-4098-48c2-9ec4-99d98d40e641}"/>
     <names>
         <name lang="en">Pneumatic Actuator "tandem" double acting 

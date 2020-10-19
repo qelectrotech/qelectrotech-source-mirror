@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.70" orientation="dyyy" height="40" hotspot_y="11" width="50" type="element" link_type="simple">
+<definition hotspot_x="24" version="0.70" height="40" hotspot_y="11" width="50" type="element" link_type="simple">
     <uuid uuid="{a9f1180e-2e17-4447-a1da-57f8a2b3e331}"/>
     <names>
         <name lang="fr">Prise de conducteur n'interrompant pas le

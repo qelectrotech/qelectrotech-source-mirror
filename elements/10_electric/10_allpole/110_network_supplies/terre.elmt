@@ -1,4 +1,4 @@
-<definition height="30" width="20" link_type="terminal" hotspot_x="10" version="0.80" orientation="dyyy" type="element" hotspot_y="19">
+<definition height="30" width="20" link_type="terminal" hotspot_x="10" version="0.80" type="element" hotspot_y="19">
     <uuid uuid="{e4e753a8-9fde-4e8e-9256-0cf99d67e3de}"/>
     <names>
         <name lang="pt">Terra</name>

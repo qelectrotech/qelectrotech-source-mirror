@@ -1,0 +1,36 @@
+<definition height="30" hotspot_y="13" width="80" hotspot_x="38" type="element" version="0.70" link_type="simple">
+    <uuid uuid="{fef81b16-3fcc-48f3-a3f3-55cedf052d7e}"/>
+    <names>
+        <name lang="cs">C091D 4p fem</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line y1="10" x2="27" end1="none" y2="13" x1="30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="7" end1="none" y2="13" x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="-13" end1="none" y2="13" x1="-10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="-5" x2="-30" end1="none" y2="10" x1="-30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="33" end1="none" y2="13" x1="30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="-7" end1="none" y2="13" x1="-10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="13" end1="none" y2="13" x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="-5" x2="-10" end1="none" y2="10" x1="-10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="-5" x2="10" end1="none" y2="10" x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="-5" x2="30" end1="none" y2="10" x1="30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="5" x2="30" end1="none" y2="5" x1="-30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="8" x2="30" end1="none" y2="8" x1="-30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="-33" end1="none" y2="13" x1="-30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <line y1="10" x2="-27" end1="none" y2="13" x1="-30" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none"/>
+        <text x="-28" y="-1" color="#000000" text="1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text x="-8" y="-1" color="#000000" text="2" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text x="12" y="-1" color="#000000" text="3" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text x="32" y="-1" color="#000000" text="4" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text x="-60" uuid="{dffe6cad-58c7-478b-9e86-5bce11c771f8}" y="-5" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" Halignment="AlignLeft" z="19" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="-10" y="-5" orientation="n"/>
+        <terminal x="10" y="-5" orientation="n"/>
+        <terminal x="30" y="-5" orientation="n"/>
+        <terminal x="-30" y="-5" orientation="n"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="6" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="5">
+<definition width="20" hotspot_x="6" type="element" link_type="simple" version="0.5" height="20" hotspot_y="5">
     <uuid uuid="{9e91fc76-9bab-4622-b643-308665c80c4c}"/>
     <names>
         <name lang="cs">Průměr</name>

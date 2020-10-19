@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" hotspot_y="15" orientation="dyyy" height="30" version="0.70" hotspot_x="39">
+<definition link_type="simple" type="element" width="50" hotspot_y="15" height="30" version="0.70" hotspot_x="39">
     <uuid uuid="{40c49f2a-b61d-4536-bfbc-e3153d97d359}"/>
     <names>
         <name lang="fr">Actionné par comptage</name>

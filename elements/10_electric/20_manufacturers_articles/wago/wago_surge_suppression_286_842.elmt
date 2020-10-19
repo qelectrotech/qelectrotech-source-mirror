@@ -1,4 +1,4 @@
-<definition width="110" orientation="dyyy" version="0.5" height="170" type="element" hotspot_y="44" link_type="simple" hotspot_x="69">
+<definition width="110" version="0.5" height="170" type="element" hotspot_y="44" link_type="simple" hotspot_x="69">
     <uuid uuid="{123e1ee3-a38d-448f-8b4d-a4a9945100ad}"/>
     <names>
         <name lang="en">Surge suppression module wago 230 AC 286-842</name>

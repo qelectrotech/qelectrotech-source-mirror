@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="15" type="element" width="40" height="30" orientation="dyyy">
+<definition link_type="simple" hotspot_x="14" version="0.51" hotspot_y="15" type="element" width="40" height="30">
     <uuid uuid="{3fab18f1-47ba-4773-810f-3c23b15f1e15}"/>
     <names>
         <name lang="fr">Raccord union n° 340 DF</name>

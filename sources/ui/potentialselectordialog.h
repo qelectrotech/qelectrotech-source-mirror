@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,13 +28,16 @@ class Element;
 class AbstractPotentialSelector
 {
 	public:
-		AbstractPotentialSelector() : m_conductor_number_1(0), m_conductor_number_2(0) {}
+		AbstractPotentialSelector()
+			: m_conductor_number_1(0)
+			, m_conductor_number_2(0) {}
 		virtual ~AbstractPotentialSelector() {}
 		virtual bool isValid() const = 0;
 
 		autonum::sequentialNumbers m_seq_num_1, m_seq_num_2;
 		int m_conductor_number_1, m_conductor_number_2;
-		QList<ConductorProperties> m_properties_list_1, m_properties_list_2;
+		QList<ConductorProperties> m_properties_list_1,
+		m_properties_list_2;
 		QList <Conductor *> m_conductors_list_1, m_conductors_list_2;
 };
 
@@ -43,42 +46,55 @@ namespace Ui {
 }
 
 /**
- * @brief The PotentialSelectorDialog class
- * This dialog is used when user try to connect two existing potential together.
- * The dialog ask to user to make a choice between the properties of the two existing potential,
- * to apply it for the new potential.
- *
- * Each constructor have a QUndoCommand @parent_undo for parameter
- * If @parent_undo isn't null, when user click on OK button, the dialog will use the parent-undo
- * as parent of the undo command that describe the changes.
- * If @parent_undo is null, the created undo-command is push to the undo stack of the parent diagram of a conductor in potential.
- * else we apply the change without a QUndoCommand.
- * 
- * the static function chosenProperties, open a dialog who ask user to make a choice between the given
- * properties
- */
+	@brief The PotentialSelectorDialog class
+	This dialog is used when user try to connect
+	two existing potential together.
+	The dialog ask to user to make a choice between
+	the properties of the two existing potential,
+	to apply it for the new potential.
+
+	Each constructor have a QUndoCommand parent_undo for parameter
+	If parent_undo isn't null, when user click on OK button,
+	the dialog will use the parent-undo
+	as parent of the undo command that describe the changes.
+	If parent_undo is null, the created undo-command is push
+	to the undo stack of the parent diagram of a conductor in potential.
+	else we apply the change without a QUndoCommand.
+
+	the static function chosenProperties,
+	open a dialog who ask user to make a choice between the given
+	properties
+*/
 class PotentialSelectorDialog : public QDialog
 {
-        Q_OBJECT
+		Q_OBJECT
 	
 	public:
-		static ConductorProperties chosenProperties(QList<ConductorProperties> list, QWidget *parent = nullptr);
+		static ConductorProperties chosenProperties(
+				QList<ConductorProperties> list,
+				QWidget *parent = nullptr);
 
-    public:
-		explicit PotentialSelectorDialog(Conductor *conductor, QUndoCommand *parent_undo = nullptr, QWidget *parent = nullptr);
-		explicit PotentialSelectorDialog(Element *report, QUndoCommand *parent_undo = nullptr, QWidget *parent = nullptr);
-        ~PotentialSelectorDialog() override;
+	public:
+		explicit PotentialSelectorDialog(
+				Conductor *conductor,
+				QUndoCommand *parent_undo = nullptr,
+				QWidget *parent = nullptr);
+		explicit PotentialSelectorDialog(
+				Element *report,
+				QUndoCommand *parent_undo = nullptr,
+				QWidget *parent = nullptr);
+		~PotentialSelectorDialog() override;
 	
 
 	private slots:
 		void on_buttonBox_accepted();
 
 	private:
-        void buildWidget();
+		void buildWidget();
 
-    private:
-        Ui::PotentialSelectorDialog *ui;
-        Conductor *m_conductor;
+	private:
+		Ui::PotentialSelectorDialog *ui;
+		Conductor *m_conductor;
 		Element *m_report;
 		QUndoCommand *m_parent_undo;
 		autonum::sequentialNumbers m_sequential_num;

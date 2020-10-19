@@ -1,4 +1,4 @@
-<definition width="70" height="70" type="element" hotspot_x="65" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="44">
+<definition width="70" height="70" type="element" hotspot_x="65" version="0.70" link_type="simple" hotspot_y="44">
     <uuid uuid="{b62e511c-127c-42ac-83e3-31af992d29f5}"/>
     <names>
         <name lang="de">Impulszähler, elektrisch betätigt</name>

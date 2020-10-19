@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_x="39" hotspot_y="38" orientation="dyyy" version="0.5" width="80" height="80">
+<definition type="element" link_type="simple" hotspot_x="39" hotspot_y="38" version="0.5" width="80" height="80">
 <uuid uuid="{BF651A87-0EFE-45A9-9D2A-2C574BF96BEB}"/><names>
         <name lang="en">D-SUB HD 20 pin (male)</name>
         <name lang="es">D-SUB HD 20 pines (macho)</name>

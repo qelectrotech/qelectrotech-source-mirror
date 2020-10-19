@@ -1,0 +1,63 @@
+<definition hotspot_y="23" version="0.80" hotspot_x="61" link_type="master" height="50" type="element" width="100">
+    <uuid uuid="{9d6d227e-c233-41ef-96b3-4127b11e20cb}"/>
+    <names>
+        <name lang="en">Four pole switch disconnector</name>
+        <name lang="fr">Interrupteur sectionneur 20A</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="description" show="1">Interrupteur sectionneur 20A</elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="comment" show="1">20A</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">LEG022118</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x2="-10" x3="-10" antialias="true" y2="11" y1="-9" y3="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15" closed="false"/>
+        <circle antialias="true" x="28" diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="-52" diameter="4" y="11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="30" x3="30" antialias="true" y2="11" y1="-9" y3="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="25" closed="false"/>
+        <circle antialias="true" x="8" diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="30" antialias="false" length2="1.5" y2="-11" end2="none" y1="-19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" length1="1.5"/>
+        <circle antialias="true" x="-32" diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="28" antialias="false" length2="1.5" y2="-11" end2="none" y1="-11" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="32" length1="1.5"/>
+        <dynamic_text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" x="32.75" z="9" Valignment="AlignTop" frame="false" y="-7" uuid="{951a9adc-1e0f-4e24-8137-16b3e55dd9ab}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle antialias="true" x="-12" diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-50" antialias="false" length2="1.5" y2="1" end2="none" y1="1" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="25" length1="1.5"/>
+        <polygon x2="-10" x3="-10" antialias="true" y2="11" y1="-9" y3="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15" closed="false"/>
+        <polygon x2="10" x3="10" antialias="true" y2="11" y1="-9" y3="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" closed="false"/>
+        <polygon x2="-30" x3="-30" antialias="true" y2="11" y1="-9" y3="21" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-35" closed="false"/>
+        <line x2="-10" antialias="false" length2="1.5" y2="-11" end2="none" y1="-19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" length1="1.5"/>
+        <line x2="-12" antialias="false" length2="1.5" y2="-11" end2="none" y1="-11" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-8" length1="1.5"/>
+        <line x2="-30" antialias="false" length2="1.5" y2="-11" end2="none" y1="-19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" length1="1.5"/>
+        <line x2="-32" antialias="false" length2="1.5" y2="-11" end2="none" y1="-11" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-28" length1="1.5"/>
+        <line x2="10" antialias="false" length2="1.5" y2="-11" end2="none" y1="-19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" length1="1.5"/>
+        <line x2="8" antialias="false" length2="1.5" y2="-11" end2="none" y1="-11" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" length1="1.5"/>
+        <line x2="-55" antialias="false" length2="1.5" y2="-9" end2="none" y1="11" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-50" length1="1.5"/>
+        <dynamic_text rotation="0" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" text_from="ElementInfo" x="30" z="22" Valignment="AlignTop" frame="false" y="10" uuid="{61d3f7ab-43c6-4706-9904-39d8b176a08f}" Halignment="AlignLeft">
+            <text>20A</text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal orientation="n" x="-10" y="-19"/>
+        <terminal orientation="s" x="30" y="21"/>
+        <terminal orientation="n" x="30" y="-19"/>
+        <terminal orientation="n" x="-30" y="-19"/>
+        <terminal orientation="s" x="-30" y="21"/>
+        <terminal orientation="s" x="10" y="21"/>
+        <terminal orientation="n" x="10" y="-19"/>
+        <terminal orientation="s" x="-10" y="21"/>
+    </description>
+</definition>

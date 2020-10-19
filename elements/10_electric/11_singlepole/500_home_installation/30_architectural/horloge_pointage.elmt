@@ -1,4 +1,4 @@
-<definition hotspot_x="15" hotspot_y="26" orientation="dyyy" height="40" type="element" link_type="simple" width="30" version="0.5">
+<definition hotspot_x="15" hotspot_y="26" height="40" type="element" link_type="simple" width="30" version="0.5">
     <uuid uuid="{d421de61-3a13-47ec-826e-f58dc87255d5}"/>
     <names>
         <name lang="fr">Horloge de pointage, Enregistreur horaire</name>

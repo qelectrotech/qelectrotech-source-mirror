@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,10 +24,10 @@ class QPropertyUndoCommand;
 class QetGraphicsHandlerItem;
 
 /**
- * @brief The PartArc class
- * This class represents an elliptical arc primitive which may be used to
- * compose the drawing of an electrical element within the element editor.
- */
+	@brief The PartArc class
+	This class represents an elliptical arc primitive which may be used to
+	compose the drawing of an electrical element within the element editor.
+*/
 class PartArc : public AbstractPartEllipse
 {
 		Q_OBJECT
@@ -42,9 +42,9 @@ class PartArc : public AbstractPartEllipse
 	public:
 		enum { Type = UserType + 1101 };
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartArc.
-			 * @return the QGraphicsItem type
-			 */
+				Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartArc.
+				@return the QGraphicsItem type
+			*/
 		int type() const override { return Type; }
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 
@@ -59,6 +59,7 @@ class PartArc : public AbstractPartEllipse
 		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
 		void setStartAngle(const int &start_angle) override {AbstractPartEllipse::setStartAngle(start_angle); adjusteHandlerPos();}
 		void setSpanAngle(const int &span_angle) override {AbstractPartEllipse::setSpanAngle(span_angle); adjusteHandlerPos();}
+		QRectF sceneGeometricRect() const override;
 
 	protected:
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;

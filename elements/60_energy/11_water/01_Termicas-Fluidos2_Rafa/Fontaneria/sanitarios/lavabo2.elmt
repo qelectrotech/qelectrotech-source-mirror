@@ -1,18 +1,36 @@
-<definition width="40" version="0.4" hotspot_x="25" hotspot_y="29" height="60" link_type="simple" type="element" orientation="dyyy">
-<uuid uuid="{0ACD0BBD-FD45-4E62-9C26-77E4BF42BFF4}"/><names>
-        <name lang="es">Lavabo</name>
+<definition width="40" hotspot_y="29" link_type="simple" version="0.80" height="60" hotspot_x="25" type="element">
+    <uuid uuid="{073db41b-e7b2-43ef-85d0-d0761381329c}"/>
+    <names>
+        <name lang="fr">Lavabo</name>
         <name lang="ca">Pica</name>
+        <name lang="es">Lavabo</name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.7368" x1="-20.9653" y2="-11.7368" x2="8.17906"/>
-        <rect width="2.6" x="2.8" y="-19.8842" antialias="false" height="5.43158" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2.8" x2="-5" x3="-7.6" x4="-6.3" antialias="false" x5="-5" x6="-5" x7="2.8" x8="2.8" x9="2.8" closed="false" y1="-19.8842" y10="-17.1684" y2="-22.6" y3="-19.8842" y4="-18.5263" y5="-19.8842" x10="2.8" y6="-19.8842" y7="-17.1684" y8="-17.1684" y9="-17.1684"/>
-        <rect width="5.2" x="5.4" y="8.63158" antialias="false" height="3.07368" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="9" x2="-22" x3="-22" x4="-22" antialias="false" x5="-21" x6="-18" x7="-12" x8="-3" x9="-2" closed="false" y1="-14" y10="23" y2="-14" y11="24" y3="-13" y4="-11" y12="25" y5="-10" x10="-2" y13="25" y6="-8" x11="-4" y14="-14" y7="-6" x12="-4" y15="-14" y8="-6" x13="9" y16="-14" y9="-5" x14="9" x15="9" x16="9"/>
-        <input x="-17" y="10.5" size="6" rotate="true" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="-1.7913" y2="23" x2="8.77391"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-1.096" y2="-5" x2="8.104"/>
-        <terminal x="10" y="10" orientation="e"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-20.9653" y1="-11.7368" y2="-11.7368" x2="8.17906" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <rect width="2.6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2.8" y="-19.8842" height="5.43158" rx="0" antialias="false"/>
+        <polygon y6="-19.8842" y8="-17.1684" x4="-6.3" x6="-5" y5="-19.8842" y2="-22.6" x7="2.8" x1="2.8" y4="-18.5263" antialias="false" y3="-19.8842" x3="-7.6" y10="-17.1684" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-5" y1="-19.8842" x5="-5" x10="2.8" y9="-17.1684" closed="false" x9="2.8" x8="2.8" y7="-17.1684"/>
+        <rect width="5.2" ry="0" style="line-style:dotted;line-weight:normal;filling:none;color:black" x="5.4" y="8.63158" height="3.07368" rx="0" antialias="false"/>
+        <polygon y6="-8" y8="-6" y11="24" x4="-22" x6="-18" x16="9" y5="-10" y2="-14" x7="-12" x1="9" y4="-11" antialias="false" y3="-13" x3="-22" x15="9" y16="-14" y10="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x12="-4" x2="-22" y1="-14" y12="25" x13="9" x5="-21" y15="-14" x10="-2" y9="-5" x14="9" closed="false" x11="-4" x9="-2" x8="-3" y14="-14" y7="-6" y13="25"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-17" text_width="-1" uuid="{22e19859-b7bf-4d46-9223-bffb9047d752}" y="1.5" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" z="6">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-1.7913" y1="23" y2="23" x2="8.77391" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-1.096" y1="-5" y2="-5" x2="8.104" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <terminal orientation="e" x="10" uuid="{ae8ff062-80b7-4934-a2ba-fc5ec4442171}" y="10" name=""/>
     </description>
 </definition>

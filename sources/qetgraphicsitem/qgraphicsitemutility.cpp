@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,11 +22,11 @@
 #include <QDebug>
 
 /**
- * @brief centerToParentBottom
- * Center the item at the bottom of is parent.
- * @param item item to center
- * @return true if centered else false (item have not parent)
- */
+	@brief centerToParentBottom
+	Center the item at the bottom of is parent.
+	@param item item to center
+	@return true if centered else false (item have not parent)
+*/
 bool centerToParentBottom(QGraphicsItem *item) {
 	if (! item->parentItem()) {
 		qDebug() << "Qet::centerToParentBottom : item have not parent";
@@ -42,13 +42,13 @@ bool centerToParentBottom(QGraphicsItem *item) {
 }
 
 /**
- * @brief centerToBottomDiagram
- * Set item pos to the bottom of diagram and centered vertically to element_to_follow, and add offset.
- * @param item_to_center
- * @param element_to_follow
- * @param offset
- * @return true if element is centered else false (element_to_follow have not diagram)
- */
+	@brief centerToBottomDiagram
+	Set item pos to the bottom of diagram and centered vertically to element_to_follow, and add offset.
+	@param item_to_center
+	@param element_to_follow
+	@param offset
+	@return true if element is centered else false (element_to_follow have not diagram)
+*/
 #include "elementtextitemgroup.h"
 #include "crossrefitem.h"
 bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset) {

@@ -1,0 +1,62 @@
+<definition link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
+    <uuid uuid="{026b324d-c5b7-4228-ac76-73b5af85d6d4}"/>
+    <names>
+        <name lang="fr">Moteur mono</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black" x4="50" y4="-110" y2="-108" y5="-110" x5="48" y3="-108" x2="46" y1="-110" x1="48" x3="52"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black" x4="72" y4="-110" y2="-108" y5="-110" x5="70" y3="-108" x2="68" y1="-110" x1="70" x3="74"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" height="4" width="4" start="-90" x="82" y="-114"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="85" width="120" ry="0" x="0" rx="0" y="-85"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-15" length2="1.5" length1="1.5" x2="120" y1="-15" x1="0" end2="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="29" z="10" uuid="{f4d5538b-5cdd-43b2-8f4b-6d6f02ed7af7}" text_from="UserText" y="-44" Halignment="AlignLeft">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="12" uuid="{7ccc0455-50d0-4c40-ace5-90ce46664dc5}" text_from="UserText" y="-63" Halignment="AlignLeft">
+            <text>Local</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-45" length2="1.5" length1="1.5" x2="120" y1="-45" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-65" length2="1.5" length1="1.5" x2="120" y1="-65" x1="0" end2="none"/>
+        <text text="A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="66" y="-32" color="#000000"/>
+        <text text=" mm²" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="58" y="-2" color="#000000"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" width="40" ry="0" x="40" rx="0" y="-140"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" height="30" width="10" start="-90" x="34" y="-140"/>
+        <line antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" end1="none" y2="-125" length2="1.5" length1="1.5" x2="28" y1="-125" x1="33" end2="none"/>
+        <rect antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="1.5" width="2" ry="0" x="68" rx="0" y="-143"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-138" length2="1.5" length1="1.5" x2="78" y1="-138" x1="42" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-130" length2="1.5" length1="1.5" x2="77.5101" y1="-130" x1="42.4899" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-126" length2="1.5" length1="1.5" x2="78" y1="-126" x1="42" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-122" length2="1.5" length1="1.5" x2="78" y1="-122" x1="42" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-118" length2="1.5" length1="1.5" x2="78" y1="-118" x1="42" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-114" length2="1.5" length1="1.5" x2="78" y1="-114" x1="42" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-134" length2="1.5" length1="1.5" x2="77.5088" y1="-134" x1="42.4912" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-112" length2="1.5" length1="1.5" x2="86" y1="-138" x1="86" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-140" length2="1.5" length1="1.5" x2="80" y1="-140" x1="84" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-110" length2="1.5" length1="1.5" x2="80" y1="-110" x1="84" end2="none"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black" height="6" width="2" ry="0" x="32" rx="0" y="-128"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="4" width="16" ry="0" x="52" rx="0" y="-144"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" height="4" width="4" start="0" x="82" y="-140"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="51" uuid="{405d3356-5b99-4fea-b5b1-ab638412d272}" text_from="UserText" y="-13.5" Halignment="AlignLeft">
+            <text>4 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="58" z="52" uuid="{b4d5c237-eb34-48a9-8f02-1f4af6e65e42}" text_from="UserText" y="-27.5" Halignment="AlignLeft">
+            <text> kA C</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="30" z="53" uuid="{374aeae3-49b8-40b8-a34e-43e38eb82efb}" text_from="UserText" y="-28.5" Halignment="AlignLeft">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-2" z="54" uuid="{7bb6d843-9961-43ec-ba42-ae3257954923}" text_from="UserText" y="-81.5" Halignment="AlignLeft">
+            <text>Moteur</text>
+        </dynamic_text>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="52" y4="-144" y2="-150" y5="-144" x5="52" y3="-144" x2="50" y1="-158" x1="50" x3="52" closed="false"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="68" y4="-144" y2="-150" y3="-144" x2="70" y1="-160" x1="70" x3="68" closed="false"/>
+        <terminal orientation="s" name="" x="60" uuid="{bc205df0-bbdc-4f87-b604-4ada82db5fa3}" y="-110"/>
+        <terminal orientation="n" name="" x="50" uuid="{b23de979-e4d2-45c9-9368-c577cd4a0ac1}" y="-160"/>
+        <terminal orientation="n" name="" x="70" uuid="{a6936c20-3010-442e-91ce-3f1d91fdc6ca}" y="-160"/>
+    </description>
+</definition>

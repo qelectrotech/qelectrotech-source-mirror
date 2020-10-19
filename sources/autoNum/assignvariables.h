@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -55,10 +55,10 @@ namespace autonum
 	};
 
 	/**
-	 * @brief The AssignVariables class
-	 * This class assign variable of a formula string.
-	 * Return the final string used to be displayed from a formula string.
-	 */
+		@brief The AssignVariables class
+		This class assign variable of a formula string.
+		Return the final string used to be displayed from a formula string.
+	*/
 	class AssignVariables
 	{
 		public:

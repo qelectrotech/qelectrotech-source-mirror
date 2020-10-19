@@ -8256,7 +8256,7 @@
                     <name lang="pl">Zabezpieczenia</name>
                 </names>
                 <element name="wylacznik_1f.elmt">
-                    <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="60" type="element" orientation="dyyy">
+                    <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="60" type="element">
                         <names>
                             <name lang="pl">Wyłącznik</name>
                         </names>
@@ -8281,7 +8281,7 @@
                     </definition>
                 </element>
                 <element name="cb-rcd_01.elmt">
-                    <definition width="60" version="0.3" hotspot_x="30" hotspot_y="25" height="70" type="element" ic="true" orientation="dyyy">
+                    <definition width="60" version="0.3" hotspot_x="30" hotspot_y="25" height="70" type="element" ic="true">
                         <names>
                             <name lang="pl">Wyłącznik różnicowo-prądowy RCBO</name>
                         </names>
@@ -8324,7 +8324,7 @@
                     </definition>
                 </element>
                 <element name="wyl_silnik_2.elmt">
-                    <definition width="100" version="0.4" hotspot_x="66" hotspot_y="45" height="90" link_type="master" type="element" ic="true" orientation="dyyy">
+                    <definition width="100" version="0.4" hotspot_x="66" hotspot_y="45" height="90" link_type="master" type="element" ic="true">
                         <names>
                             <name lang="pl">Wyłącznik silnikowy</name>
                         </names>
@@ -8386,7 +8386,7 @@
                     </definition>
                 </element>
                 <element name="odlacznik_bez_1f.elmt">
-                    <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Odłącznik bezpiecznikowy</name>
                         </names>
@@ -8405,7 +8405,7 @@
                     </definition>
                 </element>
                 <element name="wylacznik_3f.elmt">
-                    <definition width="80" version="0.3" hotspot_x="40" hotspot_y="25" height="60" type="element" ic="true" orientation="dyyy">
+                    <definition width="80" version="0.3" hotspot_x="40" hotspot_y="25" height="60" type="element" ic="true">
                         <names>
                             <name lang="pl">Wyłącznik</name>
                         </names>
@@ -8627,7 +8627,7 @@
                                 </element>
                             </category>
                             <element name="6av6641-0ca0-0ax0.elmt">
-                                <definition width="220" version="0.4" hotspot_x="5" hotspot_y="46" height="110" link_type="simple" type="element" ic="true" orientation="dyyy">
+                                <definition width="220" version="0.4" hotspot_x="5" hotspot_y="46" height="110" link_type="simple" type="element" ic="true">
                                     <names>
                                         <name lang="en">6AV6641-0CA01-0AX0</name>
                                         <name lang="fr">6AV6641-0CA01-0AX0</name>
@@ -8699,7 +8699,7 @@
                                     <name lang="pl">Jednostki centralne</name>
                                 </names>
                                 <element name="6es7_313-5bf03-0ab0__p1.elmt">
-                                    <definition width="320" version="0.4" hotspot_x="12" hotspot_y="48" height="120" link_type="simple" type="element" ic="true" orientation="dyyy">
+                                    <definition width="320" version="0.4" hotspot_x="12" hotspot_y="48" height="120" link_type="simple" type="element" ic="true">
                                         <names>
                                             <name lang="en">6ES7 313-5BF03-0AB0 (part 1/8)</name>
                                             <name lang="fr">6ES7 313-5BF03-0AB0 (part 1/8)</name>
@@ -9697,7 +9697,7 @@
                         <name lang="pl">Czujniki</name>
                     </names>
                     <element name="czujnik_ind_no_3p.elmt">
-                        <definition width="70" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+                        <definition width="70" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element">
                             <names>
                                 <name lang="pl">Czujnik indukcyjny (NO)</name>
                             </names>
@@ -9738,7 +9738,7 @@
                         <name lang="pl">Instalacje pneumatyczne i hydrauliczne</name>
                     </names>
                     <element name="przew_zasil_pneum.elmt">
-                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Przewód zasilający instalacji pneumatycznej</name>
                             </names>
@@ -9753,7 +9753,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                         </definition>
                     </element>
                     <element name="03_zawor.elmt">
-                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Zawór</name>
                             </names>
@@ -9769,7 +9769,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                         </definition>
                     </element>
                     <element name="sred_przew_pneum.elmt">
-                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Średnica przewodu pneumatycznego</name>
                             </names>
@@ -9784,7 +9784,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                         </definition>
                     </element>
                     <element name="06_inne_urzadzenie.elmt">
-                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Inne urządzenie</name>
                             </names>
@@ -9800,7 +9800,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                         </definition>
                     </element>
                     <element name="01_element_wykonawczy.elmt">
-                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Element wykonawczy</name>
                             </names>
@@ -9821,7 +9821,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                         <name lang="pl">Odejścia linii</name>
                     </names>
                     <element name="nastepna_strona_1-1.elmt">
-                        <definition width="30" version="0.4" hotspot_x="13" hotspot_y="18" height="40" link_type="next_report" type="element" ic="true" orientation="dyyy">
+                        <definition width="30" version="0.4" hotspot_x="13" hotspot_y="18" height="40" link_type="next_report" type="element" ic="true">
                             <names>
                                 <name lang="pl">Następna strona 1</name>
                             </names>
@@ -9835,7 +9835,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="poprzednia_strona_1.elmt">
-                        <definition width="60" version="0.4" hotspot_x="44" hotspot_y="15" height="30" link_type="previous_report" type="element" ic="true" orientation="dyyy">
+                        <definition width="60" version="0.4" hotspot_x="44" hotspot_y="15" height="30" link_type="previous_report" type="element" ic="true">
                             <names>
                                 <name lang="pl">Poprezdnia strona 1</name>
                             </names>
@@ -9849,7 +9849,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="poprzednia_strona_1-1.elmt">
-                        <definition width="30" version="0.4" hotspot_x="17" hotspot_y="21" height="40" link_type="previous_report" type="element" ic="true" orientation="dyyy">
+                        <definition width="30" version="0.4" hotspot_x="17" hotspot_y="21" height="40" link_type="previous_report" type="element" ic="true">
                             <names>
                                 <name lang="pl">Poprezdnia strona 1</name>
                             </names>
@@ -9863,7 +9863,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="nastepna_strona_1.elmt">
-                        <definition width="40" version="0.4" hotspot_x="15" hotspot_y="15" height="30" link_type="next_report" type="element" ic="true" orientation="dyyy">
+                        <definition width="40" version="0.4" hotspot_x="15" hotspot_y="15" height="30" link_type="next_report" type="element" ic="true">
                             <names>
                                 <name lang="pl">Następna strona 1</name>
                             </names>
@@ -9877,7 +9877,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="koniec_linii.elmt">
-                        <definition width="20" version="0.4" hotspot_x="16" hotspot_y="5" height="10" link_type="simple" type="element" ic="true" orientation="dyyy">
+                        <definition width="20" version="0.4" hotspot_x="16" hotspot_y="5" height="10" link_type="simple" type="element" ic="true">
                             <names>
                                 <name lang="pl">Koniec linii</name>
                             </names>
@@ -9895,7 +9895,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Odsyłacze</name>
                     </names>
                     <element name="wejscie_adresowe.elmt">
-                        <definition width="50" version="0.22" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="50" version="0.22" hotspot_x="35" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Wejście adresowe</name>
                             </names>
@@ -9909,7 +9909,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="odsylacz_3_h.elmt">
-                        <definition width="30" version="0.22" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
+                        <definition width="30" version="0.22" hotspot_x="15" hotspot_y="30" height="30" type="element">
                             <names>
                                 <name lang="pl">Odsyłacz_3 (poziomo)</name>
                             </names>
@@ -9923,7 +9923,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="wyjscie_adresowe.elmt">
-                        <definition width="40" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                        <definition width="40" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element">
                             <names>
                                 <name lang="pl">Wyjście adresowe</name>
                             </names>
@@ -9963,7 +9963,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Teksty</name>
                     </names>
                     <element name="tekst_005.elmt">
-                        <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                        <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element">
                             <names>
                                 <name lang="pl">Tekst 05</name>
                             </names>
@@ -9979,7 +9979,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Linie i ramki</name>
                     </names>
                     <element name="linia_pozioma_2.elmt">
-                        <definition width="20" version="0.22" hotspot_x="20" hotspot_y="20" height="20" type="element" orientation="dyyy">
+                        <definition width="20" version="0.22" hotspot_x="20" hotspot_y="20" height="20" type="element">
                             <names>
                                 <name lang="pl">Linia pozioma (2/2)</name>
                             </names>
@@ -9991,7 +9991,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="luk_3.elmt">
-                        <definition width="50" version="0.3" hotspot_x="5" hotspot_y="5" height="50" type="element" orientation="dyyy">
+                        <definition width="50" version="0.3" hotspot_x="5" hotspot_y="5" height="50" type="element">
                             <names>
                                 <name lang="pl">Łuk 3</name>
                             </names>
@@ -10004,7 +10004,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="ramka_3.elmt">
-                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element" orientation="dyyy">
+                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element">
                             <names>
                                 <name lang="pl">Ramka (3/4)</name>
                             </names>
@@ -10018,7 +10018,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="ramka_4.elmt">
-                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element" orientation="dyyy">
+                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element">
                             <names>
                                 <name lang="pl">Ramka (4/4)</name>
                             </names>
@@ -10032,7 +10032,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="ramka_1.elmt">
-                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element" orientation="dyyy">
+                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element">
                             <names>
                                 <name lang="pl">Ramka (1/4)</name>
                             </names>
@@ -10046,7 +10046,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="ramka_2.elmt">
-                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element" orientation="dyyy">
+                        <definition width="20" version="0.3" hotspot_x="20" hotspot_y="20" height="20" type="element">
                             <names>
                                 <name lang="pl">Ramka (2/4)</name>
                             </names>
@@ -10061,7 +10061,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </element>
                 </category>
                 <element name="tekst_08.elmt">
-                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element">
                         <names>
                             <name lang="pl">Tekst 08</name>
                         </names>
@@ -10072,7 +10072,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="tekst_10.elmt">
-                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element">
                         <names>
                             <name lang="pl">Tekst 10</name>
                         </names>
@@ -10083,7 +10083,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="tekst_005.elmt">
-                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="20" type="element">
                         <names>
                             <name lang="pl">Tekst 05</name>
                         </names>
@@ -10094,7 +10094,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="tekst_s1_v.elmt">
-                    <definition width="30" version="0.22" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
+                    <definition width="30" version="0.22" hotspot_x="15" hotspot_y="30" height="30" type="element">
                         <names>
                             <name lang="pl">Tekst s1 (poziomo)</name>
                         </names>
@@ -10107,7 +10107,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="nastepna_strona.elmt">
-                    <definition width="40" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+                    <definition width="40" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element">
                         <names>
                             <name lang="en">Next folio</name>
                             <name lang="pl">Następna strona</name>
@@ -10131,7 +10131,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Silniki</name>
                     </names>
                     <element name="silnik_3f.elmt">
-                        <definition width="70" version="0.22" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy">
+                        <definition width="70" version="0.22" hotspot_x="25" hotspot_y="35" height="70" type="element">
                             <names>
                                 <name lang="en">Motor three phase</name>
                                 <name lang="pl">Silnik trójfazowy</name>
@@ -10343,7 +10343,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 <name lang="cs">Tlačítka</name>
                             </names>
                             <element name="arret_durgence_tourner_deverouiller.elmt">
-                                <definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" orientation="dyyy">
+                                <definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element">
                                     <names>
                                         <name lang="en">Emergency stop turned unlocked</name>
                                         <name lang="fr">Arret d'urgence tourné dévérouillé</name>
@@ -10367,7 +10367,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="bouton_poussoir_lumineux.elmt">
-                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element">
                                     <names>
                                         <name lang="en">Illuminated pushbutton</name>
                                         <name lang="fr">Bouton poussoir lumineux</name>
@@ -10385,7 +10385,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="bouton_tournant_centre.elmt">
-                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element">
                                     <names>
                                         <name lang="en">Turning button centered</name>
                                         <name lang="fr">Bouton tournant centré</name>
@@ -10403,7 +10403,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="bouton_poussoir.elmt">
-                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element">
                                     <names>
                                         <name lang="en">Pushbutton</name>
                                         <name lang="fr">Bouton poussoir</name>
@@ -10462,7 +10462,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                                 </definition>
                             </element>
                             <element name="porte_etiquette_vide.elmt">
-                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="50" type="element" orientation="dyyy">
+                                <definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="50" type="element">
                                     <names>
                                         <name lang="en">Label holder virgin</name>
                                         <name lang="fr">Porte étiquette vièrge</name>
@@ -10492,7 +10492,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Liniowe przetworniki energii</name>
                     </names>
                     <element name="chwytak.elmt">
-                        <definition width="90" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+                        <definition width="90" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element">
                             <names>
                                 <name lang="pl">Chwytak pneumatyczny</name>
                             </names>
@@ -10525,7 +10525,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="silow_dwu_ham_stala.elmt">
-                        <definition width="70" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+                        <definition width="70" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element">
                             <names>
                                 <name lang="pl">Siłownik pneumatyczny dwustronnego działania z jednostronnym hamowaniem o stałej wartości</name>
                             </names>
@@ -10552,7 +10552,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">FESTO</name>
                     </names>
                     <element name="iso_2.elmt">
-                        <definition width="120" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+                        <definition width="120" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element">
                             <names>
                                 <name lang="pl">2</name>
                             </names>
@@ -10598,7 +10598,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="frc-kf_d.elmt">
-                        <definition width="370" version="0.22" hotspot_x="15" hotspot_y="35" height="130" type="element" orientation="dyyy">
+                        <definition width="370" version="0.22" hotspot_x="15" hotspot_y="35" height="130" type="element">
                             <names>
                                 <name lang="pl">FRC-KF, seria D</name>
                             </names>
@@ -10897,7 +10897,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         </definition>
                     </element>
                     <element name="iso_1.elmt">
-                        <definition width="140" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+                        <definition width="140" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element">
                             <names>
                                 <name lang="pl">1</name>
                             </names>
@@ -10955,7 +10955,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Zawory sterujące ciśnieniem</name>
                     </names>
                     <element name="zaw_dlaw-zwrot_jed.elmt">
-                        <definition width="70" version="0.22" hotspot_x="15" hotspot_y="40" height="80" type="element" orientation="dyyy">
+                        <definition width="70" version="0.22" hotspot_x="15" hotspot_y="40" height="80" type="element">
                             <names>
                                 <name lang="pl">Zawór dławiący nastawialny</name>
                             </names>
@@ -11015,7 +11015,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Inne</name>
                     </names>
                     <element name="tlumik_halasu.elmt">
-                        <definition width="30" version="0.22" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+                        <definition width="30" version="0.22" hotspot_x="15" hotspot_y="35" height="50" type="element">
                             <names>
                                 <name lang="pl">Tłumik hałasu</name>
                             </names>
@@ -11037,7 +11037,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Gromadzenie, przygotowanie i utrzymanie właściwości płynu</name>
                     </names>
                     <element name="zespol_red_man.elmt">
-                        <definition width="120" version="0.22" hotspot_x="5" hotspot_y="5" height="90" type="element" orientation="dyyy">
+                        <definition width="120" version="0.22" hotspot_x="5" hotspot_y="5" height="90" type="element">
                             <names>
                                 <name lang="pl">Zespół elementów przygotowujących płyn (filtr, reduktor, manometr)</name>
                             </names>
@@ -11145,7 +11145,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Cewki</name>
                     </names>
                     <element name="cewka_1.elmt">
-                        <definition width="50" version="0.4" hotspot_x="17" hotspot_y="30" height="60" link_type="master" type="element" ic="true" orientation="dyyy">
+                        <definition width="50" version="0.4" hotspot_x="17" hotspot_y="30" height="60" link_type="master" type="element" ic="true">
                             <names>
                                 <name lang="en">Coil</name>
                                 <name lang="pl">Cewka</name>
@@ -11221,7 +11221,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="pl">Zasilacze</name>
                     </names>
                     <element name="zasilacz_ac_dc_1f_h.elmt">
-                        <definition width="50" version="0.22" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
+                        <definition width="50" version="0.22" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true">
                             <names>
                                 <name lang="pl">Zasilacz AC/DC</name>
                             </names>
@@ -11252,7 +11252,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="pl">Telemecanique</name>
                         </names>
                         <element name="altivar_11.elmt">
-                            <definition width="290" version="0.22" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
+                            <definition width="290" version="0.22" hotspot_x="15" hotspot_y="25" height="100" type="element">
                                 <names>
                                     <name lang="pl">Altivar 11</name>
                                 </names>
@@ -11367,7 +11367,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="pl">Osprzęt łączeniowy</name>
                 </names>
                 <element name="gniazdo_1.elmt">
-                    <definition width="70" version="0.22" hotspot_x="0" hotspot_y="0" height="50" type="element" orientation="dyyy">
+                    <definition width="70" version="0.22" hotspot_x="0" hotspot_y="0" height="50" type="element">
                         <names>
                             <name lang="pl">Gniazdo wtyczkowe</name>
                         </names>
@@ -11388,7 +11388,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="zacisk.elmt">
-                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true">
                         <names>
                             <name lang="pl">Zacisk</name>
                         </names>
@@ -11407,7 +11407,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="pl">Zestyki</name>
                 </names>
                 <element name="zes_przel_pneu_1.elmt">
-                    <definition width="70" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="70" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Zestyk przełączny sterowany pneumatycznie lub hydraulicznie, jednokierunkowy</name>
                         </names>
@@ -11433,7 +11433,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="zes_no-no.elmt">
-                    <definition width="40" version="0.4" hotspot_x="21" hotspot_y="25" height="50" link_type="slave" type="element" ic="true" orientation="dyyy">
+                    <definition width="40" version="0.4" hotspot_x="21" hotspot_y="25" height="50" link_type="slave" type="element" ic="true">
                         <names>
                             <name lang="pl">Zestyki 2 x NO</name>
                         </names>
@@ -11462,7 +11462,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="zes_nz_przek_ciepl.elmt">
-                    <definition width="50" version="0.4" hotspot_x="22" hotspot_y="30" height="60" link_type="slave" type="element" ic="true" orientation="dyyy">
+                    <definition width="50" version="0.4" hotspot_x="22" hotspot_y="30" height="60" link_type="slave" type="element" ic="true">
                         <names>
                             <name lang="pl">Zestyk rozwierny przekażnika cieplnego</name>
                         </names>
@@ -11487,7 +11487,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="zes_no_11-14.elmt">
-                    <definition width="40" version="0.4" hotspot_x="18" hotspot_y="30" height="60" link_type="slave" type="element" ic="true" orientation="dyyy">
+                    <definition width="40" version="0.4" hotspot_x="18" hotspot_y="30" height="60" link_type="slave" type="element" ic="true">
                         <names>
                             <name lang="pl">Zestyk zwierny (11-14)</name>
                         </names>
@@ -11509,7 +11509,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="zes_no_3-4.elmt">
-                    <definition width="20" version="0.4" hotspot_x="11" hotspot_y="35" height="50" link_type="slave" type="element" ic="true" orientation="dyyy">
+                    <definition width="20" version="0.4" hotspot_x="11" hotspot_y="35" height="50" link_type="slave" type="element" ic="true">
                         <names>
                             <name lang="pl">Zestyk zwierny (3-4)</name>
                         </names>
@@ -11531,7 +11531,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="zes_nz_lus_21-22.elmt">
-                    <definition width="40" version="0.4" hotspot_x="15" hotspot_y="30" height="60" link_type="slave" type="element" ic="true" orientation="dyyy">
+                    <definition width="40" version="0.4" hotspot_x="15" hotspot_y="30" height="60" link_type="slave" type="element" ic="true">
                         <names>
                             <name lang="pl">Zestyk lustrzany</name>
                         </names>
@@ -11565,7 +11565,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                     <name lang="pl">Inne</name>
                 </names>
                 <element name="ekran_1p.elmt">
-                    <definition width="70" version="0.22" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
+                    <definition width="70" version="0.22" hotspot_x="15" hotspot_y="20" height="20" type="element">
                         <names>
                             <name lang="pl">Ekran 3</name>
                         </names>
@@ -11577,7 +11577,7 @@ licencja: zobacz  http://qelectrotech.org/wiki/doc/elements_license</information
                     </definition>
                 </element>
                 <element name="termopara.elmt">
-                    <definition width="60" version="0.22" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
+                    <definition width="60" version="0.22" hotspot_x="25" hotspot_y="35" height="60" type="element">
                         <names>
                             <name lang="pl">Termopara</name>
                         </names>
@@ -11684,7 +11684,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="pl">Łączniki</name>
                 </names>
                 <element name="lacznik_100.elmt">
-                    <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Łącznik przyciskowy z samoczynnym powrotem</name>
                         </names>
@@ -11705,7 +11705,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_603.elmt">
-                    <definition width="80" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                    <definition width="80" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" ic="true">
                         <names>
                             <name lang="pl">Łącznik przyciskowy, odblokowywany przez obracanie (przycisk bezpieczeństwa), </name>
                         </names>
@@ -11734,7 +11734,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="rozlacznik_3fn.elmt">
-                    <definition width="110" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                    <definition width="110" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" ic="true">
                         <names>
                             <name lang="pl">Rozłącznik</name>
                         </names>
@@ -11771,7 +11771,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_518.elmt">
-                    <definition width="90" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                    <definition width="90" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" ic="true">
                         <names>
                             <name lang="pl">Łącznik obrotowy przełączny, uruchamiany kluczykiem, z kluczykiem wyjmowanym w lewym położeniu</name>
                         </names>
@@ -11830,7 +11830,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_512.elmt">
-                    <definition width="70" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="70" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Łącznik obrotowy przełączny z samoczynnym powrotem, uruchamiany kluczykiem</name>
                         </names>
@@ -11858,7 +11858,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="stycznik.elmt">
-                    <definition width="70" version="0.4" hotspot_x="32" hotspot_y="31" height="60" link_type="slave" type="element" ic="true" orientation="dyyy">
+                    <definition width="70" version="0.4" hotspot_x="32" hotspot_y="31" height="60" link_type="slave" type="element" ic="true">
                         <names>
                             <name lang="en">Contact power contactor</name>
                             <name lang="pl">Stycznik</name>
@@ -11897,7 +11897,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_102.elmt">
-                    <definition width="70" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+                    <definition width="70" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true">
                         <names>
                             <name lang="pl">Łącznik przyciskowy z samoczynnym powrotem</name>
                         </names>
@@ -11924,7 +11924,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_200.elmt">
-                    <definition width="60" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="60" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Łącznik przyciskowy podświetlony z samoczynnym powrotem</name>
                         </names>
@@ -11949,7 +11949,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_900.elmt">
-                    <definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Łącznik z samoczynnym powrotem, uruchamiany nogą</name>
                         </names>
@@ -11968,7 +11968,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     </definition>
                 </element>
                 <element name="lacznik_101.elmt">
-                    <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dyyy">
+                    <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element">
                         <names>
                             <name lang="pl">Łącznik przyciskowy z samoczynnym powrotem</name>
                         </names>
@@ -12003,7 +12003,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="pl">Telemecanique</name>
                         </names>
                         <element name="xps_ac.elmt">
-                            <definition width="210" version="0.22" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+                            <definition width="210" version="0.22" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true">
                                 <names>
                                     <name lang="en">XPS-AC</name>
                                     <name lang="fr">XPS-AC</name>
@@ -12093,7 +12093,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             </definition>
                         </element>
                         <element name="xps_dmb.elmt">
-                            <definition width="190" version="0.4" hotspot_x="65" hotspot_y="35" height="100" link_type="simple" type="element" ic="true" orientation="dyyy">
+                            <definition width="190" version="0.4" hotspot_x="65" hotspot_y="35" height="100" link_type="simple" type="element" ic="true">
                                 <names>
                                     <name lang="en">XPS-DMB</name>
                                     <name lang="fr">XPS-DMB</name>
@@ -12195,7 +12195,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                             <name lang="pl">Euchner</name>
                         </names>
                         <element name="nz1vz-528_e.elmt">
-                            <definition width="140" version="0.4" hotspot_x="65" hotspot_y="45" height="90" link_type="simple" type="element" ic="true" orientation="dyyy">
+                            <definition width="140" version="0.4" hotspot_x="65" hotspot_y="45" height="90" link_type="simple" type="element" ic="true">
                                 <names>
                                     <name lang="pl">NZ1VZ-528 E</name>
                                 </names>
@@ -12238,7 +12238,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
             </category>
         </category>
         <element name="ekran.elmt">
-            <definition width="110" version="0.22" hotspot_x="5" hotspot_y="20" height="20" type="element" orientation="dyyy">
+            <definition width="110" version="0.22" hotspot_x="5" hotspot_y="20" height="20" type="element">
                 <names>
                     <name lang="pl">Ekran 3</name>
                 </names>
@@ -12250,7 +12250,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
             </definition>
         </element>
         <element name="zamek.elmt">
-            <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+            <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element">
                 <names>
                     <name lang="pl">Zamek</name>
                 </names>
@@ -12270,7 +12270,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
             </definition>
         </element>
         <element name="nowy_element.elmt">
-            <definition width="20" version="0.3" hotspot_x="5" hotspot_y="5" height="10" type="element" orientation="dyyy">
+            <definition width="20" version="0.3" hotspot_x="5" hotspot_y="5" height="10" type="element">
                 <names>
                     <name lang="pl">Nazwa nowego elementu</name>
                 </names>

@@ -1,4 +1,4 @@
-<definition type="element" width="50" height="70" orientation="dyyy" link_type="simple" hotspot_y="65" hotspot_x="25" version="0.70">
+<definition type="element" width="50" height="70" link_type="simple" hotspot_y="65" hotspot_x="25" version="0.70">
     <uuid uuid="{27f73ab1-154b-499e-bf97-f71d4b15818a}"/>
     <names>
         <name lang="de">Meßgerät, integrierend zB. Elektrizitätszähler</name>

@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="13">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="13">
     <uuid uuid="{1a774a9f-50b1-40ba-b6c4-3bbf5ce3bc69}"/>
     <names>
         <name lang="cs">Uzávěr T.A.</name>

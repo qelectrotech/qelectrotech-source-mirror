@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="13">
+<definition width="40" hotspot_x="15" type="element" link_type="simple" version="0.5" height="30" hotspot_y="13">
     <uuid uuid="{935a0fa6-0349-4569-ab8c-b06b3280455d}"/>
     <names>
         <name lang="cs">Pumpa se zvratným uzávěrem</name>

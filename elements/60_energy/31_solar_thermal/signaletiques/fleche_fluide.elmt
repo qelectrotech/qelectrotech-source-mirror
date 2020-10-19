@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="10" hotspot_y="4">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="10" hotspot_y="4">
     <uuid uuid="{eb1fb72a-7a6c-4f21-bf13-b49fd0915b8b}"/>
     <names>
         <name lang="cs">Směr průtoku kapaliny</name>

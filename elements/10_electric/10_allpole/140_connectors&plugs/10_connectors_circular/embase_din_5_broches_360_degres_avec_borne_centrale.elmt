@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="60" hotspot_y="23" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="60" hotspot_y="23" type="element">
     <uuid uuid="{d8f3ea1f-b354-43bd-b274-03f315f4cfc6}"/>
     <names>
         <name lang="nl">DIN 5 Pin 360° centraal pin</name>

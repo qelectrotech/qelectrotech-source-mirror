@@ -1,4 +1,4 @@
-<definition type="element" width="130" hotspot_y="65" link_type="simple" hotspot_x="58" height="200" orientation="dyyy" version="0.80">
+<definition type="element" width="130" hotspot_y="65" link_type="simple" hotspot_x="58" height="200" version="0.80">
     <uuid uuid="{201e02f3-08a7-4e96-a917-03c035f61698}"/>
     <names>
         <name lang="fr">WEMOS DI PRO</name>

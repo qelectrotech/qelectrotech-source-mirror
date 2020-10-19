@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,7 +32,8 @@ TitleBlockTemplateDeleter::TitleBlockTemplateDeleter(const TitleBlockTemplateLoc
 /**
 	Destructor
 */
-TitleBlockTemplateDeleter::~TitleBlockTemplateDeleter() {
+TitleBlockTemplateDeleter::~TitleBlockTemplateDeleter()
+{
 }
 
 /**
@@ -41,7 +42,8 @@ TitleBlockTemplateDeleter::~TitleBlockTemplateDeleter() {
 	actually proceeding to the deletion.
 	@return true if the deletion succeeded, false otherwise.
 */
-bool TitleBlockTemplateDeleter::exec() {
+bool TitleBlockTemplateDeleter::exec()
+{
 	if (!template_location_.isValid()) return(false);
 	
 	QString name = template_location_.name();

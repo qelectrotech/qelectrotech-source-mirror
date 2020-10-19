@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,17 +20,16 @@
 
 #include <QRectF>
 #include <QLineF>
-#include <QColor>
 #include <QPolygonF>
 
 class QPainter;
 
 /**
- * @brief The QetGraphicsHandlerUtility class
- * This class provide some methods to create and use handler for
- * modify graphics shape like line rectangle etc...
- * They also provide some conveniance static method.
- */
+	@brief The QetGraphicsHandlerUtility class
+	This class provide some methods to create and use handler for
+	modify graphics shape like line rectangle etc...
+	They also provide some conveniance static method.
+*/
 class QetGraphicsHandlerUtility
 {
 	public:
@@ -39,6 +38,7 @@ class QetGraphicsHandlerUtility
 		static QVector <QPointF> pointsForArc  (const QRectF &rect, qreal start_angle, qreal span_angle);
 		static QRectF rectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 		static QRectF mirrorRectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
+		static QRectF rectForArc (const QRectF &rect, qreal start_angle, qreal span_angle);
 		static QLineF lineForPosAtIndex (const QLineF &old_line, const QPointF &pos, int index);
 		static QPolygonF polygonForInsertPoint(const QPolygonF &old_polygon, bool closed, const QPointF &pos);
 		static QVector <QPointF> pointForRadiusRect (const QRectF &rect, qreal xRadius, qreal yRadius, Qt::SizeMode mode = Qt::AbsoluteSize);

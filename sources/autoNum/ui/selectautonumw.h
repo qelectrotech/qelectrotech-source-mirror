@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,6 +31,9 @@ namespace Ui {
 	class SelectAutonumW;
 }
 
+/**
+	@brief The SelectAutonumW class
+*/
 class SelectAutonumW : public QWidget
 {
 	Q_OBJECT
@@ -38,7 +41,9 @@ class SelectAutonumW : public QWidget
 	//METHODS
 	public:
 		explicit SelectAutonumW(int type, QWidget *parent = nullptr);
-		explicit SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent = nullptr);
+		explicit SelectAutonumW(const NumerotationContext &context,
+					int type,
+					QWidget *parent = nullptr);
 		~SelectAutonumW() override;
 
 		void setContext (const NumerotationContext &context);
@@ -70,7 +75,7 @@ class SelectAutonumW : public QWidget
 		NumerotationContext m_context;
 		FormulaAutonumberingW *m_feaw;
 		FormulaAutonumberingW *m_fcaw;
-		int m_edited_type = -1; //0 == element : 1 == conductor : 2 == folio
+		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio
 };
 
 #endif // SELECTAUTONUMW_H

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="46" height="100" version="0.5" width="410" hotspot_x="39" link_type="master">
+<definition type="element" hotspot_y="46" height="100" version="0.5" width="410" hotspot_x="39" link_type="master">
     <uuid uuid="{4c37e76b-7711-4515-8ec1-7b801995fdf4}"/>
     <names>
         <name lang="be">N513/11 basis module (max 4 uitbreidingen)</name>

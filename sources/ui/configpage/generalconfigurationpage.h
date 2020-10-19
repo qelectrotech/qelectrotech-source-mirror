@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -40,7 +40,6 @@ class GeneralConfigurationPage : public ConfigPage
 	private slots:
 		void on_m_font_pb_clicked();
 		void on_m_dyn_text_font_pb_clicked();
-		void on_m_folio_list_pb_clicked();
 		void on_m_common_elmt_path_cb_currentIndexChanged(int index);
 		void on_m_custom_elmt_path_cb_currentIndexChanged(int index);
 		void on_m_custom_tbt_path_cb_currentIndexChanged(int index);

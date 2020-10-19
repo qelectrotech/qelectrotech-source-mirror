@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,7 +28,8 @@ DVEventInterface::DVEventInterface(DiagramView *dv) :
 {
 }
 
-DVEventInterface::~DVEventInterface() {
+DVEventInterface::~DVEventInterface()
+{
 }
 
 bool DVEventInterface::mouseDoubleClickEvent(QMouseEvent *event) {
@@ -57,12 +58,12 @@ bool DVEventInterface::wheelEvent(QWheelEvent *event) {
 }
 
 /**
- * @brief DVEventInterface::keyPressEvent
- * By default, press escape key abort the curent action.
- * isFinish return true, and emit finish
- * @param event
- * @return
- */
+	@brief DVEventInterface::keyPressEvent
+	By default, press escape key abort the curent action.
+	isFinish return true, and emit finish
+	@param event
+	@return
+*/
 bool DVEventInterface::keyPressEvent(QKeyEvent *event)
 {
 	if (event->key() == Qt::Key_Escape)
@@ -80,10 +81,12 @@ bool DVEventInterface::KeyReleaseEvent(QKeyEvent *event) {
 	return false;
 }
 
-bool DVEventInterface::isRunning() const {
+bool DVEventInterface::isRunning() const
+{
 	return m_running;
 }
 
-bool DVEventInterface::isFinish() const {
+bool DVEventInterface::isFinish() const
+{
 	return !m_running;
 }

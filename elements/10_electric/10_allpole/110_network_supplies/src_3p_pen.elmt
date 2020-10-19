@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" version="0.5" hotspot_x="23" orientation="dyyy" height="80" hotspot_y="41" type="element">
+<definition width="40" link_type="simple" version="0.5" hotspot_x="23" height="80" hotspot_y="41" type="element">
     <uuid uuid="{c0913e95-3b3c-4dc2-a74d-bc73ded78c32}"/>
     <names>
         <name lang="es">Fuente tripolar + PEN</name>

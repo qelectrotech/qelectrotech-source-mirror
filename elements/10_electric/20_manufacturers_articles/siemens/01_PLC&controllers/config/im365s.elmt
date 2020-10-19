@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="33" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
+<definition type="element" hotspot_y="33" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
     <uuid uuid="{433fabd4-a891-4a7d-9184-62d1a4661cb1}"/>
     <names>
         <name lang="ar">IM365 SEND 365-0BA01-0AA0</name>

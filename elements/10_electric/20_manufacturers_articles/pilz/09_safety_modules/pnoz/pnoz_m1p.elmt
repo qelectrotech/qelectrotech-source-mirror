@@ -1,4 +1,4 @@
-<definition width="770" hotspot_y="74" height="150" type="element" hotspot_x="380" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="770" hotspot_y="74" height="150" type="element" hotspot_x="380" version="0.5" link_type="simple">
     <uuid uuid="{9033d436-e64a-460e-b80c-3912d8bdd8c9}"/>
     <names>
         <name lang="ru">PNOZ m1p</name>

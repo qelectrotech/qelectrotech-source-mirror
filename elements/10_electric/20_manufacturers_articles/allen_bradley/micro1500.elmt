@@ -1,4 +1,4 @@
-<definition version="0.80" orientation="dyyy" link_type="simple" height="100" hotspot_x="93" hotspot_y="49" type="element" width="470">
+<definition version="0.80" link_type="simple" height="100" hotspot_x="93" hotspot_y="49" type="element" width="470">
     <uuid uuid="{41cfb1f2-f272-4bcd-a5dc-95810a78e1e6}"/>
     <names>
         <name lang="en">Micrologix 1500 LRP</name>

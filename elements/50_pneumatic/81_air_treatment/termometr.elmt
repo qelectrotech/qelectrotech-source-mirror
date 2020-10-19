@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="50" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{751eb270-f677-442c-9db3-0c2665f2e5cf}"/>
     <names>
         <name lang="en">Thermometer</name>

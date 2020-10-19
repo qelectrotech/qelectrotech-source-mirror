@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="20" hotspot_y="10" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="20" hotspot_y="10" type="element">
     <uuid uuid="{7693c5e0-762b-4309-8d97-cb74619f9efd}"/>
     <names>
         <name lang="pt">Fonte de fase</name>

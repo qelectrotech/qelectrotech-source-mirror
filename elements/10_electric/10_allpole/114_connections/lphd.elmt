@@ -1,0 +1,19 @@
+<definition version="0.70" height="30" type="element" width="30" hotspot_x="14" link_type="simple" hotspot_y="12">
+    <uuid uuid="{3015326e-2599-495e-8ef0-c12ff5313dd0}"/>
+    <names>
+        <name lang="cs">Všestranný spoj</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <polygon x6="6" x2="-5" x8="6" y5="5" y2="0" closed="false" x10="0" x3="0" x7="10" y7="0" y4="10" y11="-5" antialias="false" x9="0" x11="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="0" y9="5" y10="-5" y1="0" y6="0" x4="0" x1="-10" y8="0" y3="5"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-13" text_from="ElementInfo" y="-12" z="2" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{14c0b70c-c028-49ef-bf72-3c3c9cd64669}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" y="-5" orientation="n"/>
+        <terminal x="0" y="10" orientation="s"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="65" height="70" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{81368e50-1f41-4d30-8dd2-55c66cf7b7b1}"/>
     <names>
         <name lang="de">Meßrelais zum Erkennen der Rotorblockierung</name>

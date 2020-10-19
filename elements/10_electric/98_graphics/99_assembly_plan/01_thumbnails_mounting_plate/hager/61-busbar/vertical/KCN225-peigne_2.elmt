@@ -1,0 +1,51 @@
+<definition hotspot_y="65" link_type="simple" width="50" height="360" type="element" version="0.80" hotspot_x="7">
+    <uuid uuid="{077c07f7-c5e8-4a3c-8335-f59d3de44af7}"/>
+    <names>
+        <name lang="fr">KCN225 - Peigne P+N  - 2 rangées</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">KCN225</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Barre d'alimentation des inter. diff. pour coffret 2 rangées entraxe 125 mm</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect width="5" antialias="false" rx="0" y="-40" height="330" x="-5" style="line-style:normal;line-weight:thin;filling:gray;color:black" ry="0"/>
+        <polygon y3="240" x1="30" antialias="false" y2="270" x3="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="230" x4="20" x2="0" y4="220" y1="240" x5="30"/>
+        <dynamic_text rotation="0" y="-28" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="252" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y3="280" x1="30" antialias="false" y2="250" y6="240" x3="40" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="270" x4="0" x2="40" y4="280" y1="240" x5="0" x6="30"/>
+        <dynamic_text rotation="270" y="3" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="-9" z="4" Halignment="AlignLeft" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{e4a56c36-b376-4dc5-954e-049d43f23ce2}" text_width="-1">
+            <text>KCN225</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="270" y="-18" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="-9" z="5" Halignment="AlignLeft" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{2cd5e253-a1e3-4469-8a78-30128ccd7d74}" text_width="-1">
+            <text>Hager</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <polygon y3="-40" x1="30" antialias="false" y2="-10" x3="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="-50" x4="20" x2="0" y4="-60" y1="-40" x5="30"/>
+        <polygon y3="0" x1="30" antialias="false" y2="-30" y6="-40" x3="40" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="-10" x4="0" x2="40" y4="0" y1="-40" x5="0" x6="30"/>
+        <terminal y="0" x="10" name="" uuid="{8a21964f-dcd0-409f-bf00-6745af5d1bb0}" orientation="s"/>
+        <terminal y="280" x="30" name="" uuid="{be47949f-5871-4d37-8fa2-e9f694c6b646}" orientation="s"/>
+        <terminal y="225" x="25" name="" uuid="{46fa23a5-c167-48fd-ba73-f00d2aaad7b1}" orientation="e"/>
+        <terminal y="-34" x="36" name="" uuid="{22ee8a6f-8ae6-4b27-bee2-3b53b324d2b0}" orientation="e"/>
+        <terminal y="0" x="30" name="" uuid="{f2237852-1d6b-47cf-ba27-4938ab59152f}" orientation="s"/>
+        <terminal y="-55" x="25" name="" uuid="{255504f1-948c-4f60-8c61-397243b02c0b}" orientation="e"/>
+        <terminal y="246" x="36" name="" uuid="{c1fc3bd4-32d6-4877-bd97-e6a3f927bc51}" orientation="e"/>
+        <terminal y="280" x="10" name="" uuid="{2b9b14f1-7a22-410b-8940-ae17af584207}" orientation="s"/>
+    </description>
+</definition>

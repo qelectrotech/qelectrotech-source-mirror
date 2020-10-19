@@ -1,4 +1,4 @@
-<definition height="180" link_type="simple" type="element" orientation="dyyy" hotspot_y="83" version="0.5" hotspot_x="158" width="270">
+<definition height="180" link_type="simple" type="element" hotspot_y="83" version="0.5" hotspot_x="158" width="270">
     <uuid uuid="{d154f55e-fc0e-451a-be66-71cfff85e9ce}"/>
     <names>
         <name lang="fr">Groupe electrogene diesel</name>

@@ -1,4 +1,4 @@
-<definition height="30" type="element" width="50" hotspot_y="25" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="45">
+<definition height="30" type="element" width="50" hotspot_y="25" link_type="simple" version="0.70" hotspot_x="45">
     <uuid uuid="{5744b7ac-46cc-47b3-b6b2-e5fea6dde86c}"/>
     <names>
         <name lang="fr">Inductance à noyau magnétique avec entrefer</name>

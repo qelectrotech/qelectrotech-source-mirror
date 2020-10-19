@@ -1,4 +1,4 @@
-<definition height="110" link_type="master" hotspot_x="245" orientation="dyyy" hotspot_y="54" width="450" type="element" version="0.5">
+<definition height="110" link_type="master" hotspot_x="245" hotspot_y="54" width="450" type="element" version="0.5">
     <uuid uuid="{976befdb-5dfa-4e0d-9259-bd7ed30be3d4}"/>
     <names>
         <name lang="nl">ATV31-N4</name>

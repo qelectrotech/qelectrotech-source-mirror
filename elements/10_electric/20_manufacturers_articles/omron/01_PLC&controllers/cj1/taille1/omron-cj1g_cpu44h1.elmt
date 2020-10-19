@@ -1,4 +1,4 @@
-<definition width="90" height="110" link_type="simple" orientation="dyyy" hotspot_x="6" version="0.5" hotspot_y="100" type="element">
+<definition width="90" height="110" link_type="simple" hotspot_x="6" version="0.5" hotspot_y="100" type="element">
     <uuid uuid="{b3eddc8e-bf04-46af-ac82-82073e9c0f3b}"/>
     <names>
         <name lang="it">omron-cj1g_cpu44h1</name>

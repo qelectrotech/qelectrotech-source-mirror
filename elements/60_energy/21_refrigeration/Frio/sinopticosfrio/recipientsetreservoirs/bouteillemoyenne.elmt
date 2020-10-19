@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="30" hotspot_y="14">
     <uuid uuid="{c723b217-294d-4fd0-9c22-ec79526615f7}"/>
     <names>
         <name lang="cs">Střední láhev</name>

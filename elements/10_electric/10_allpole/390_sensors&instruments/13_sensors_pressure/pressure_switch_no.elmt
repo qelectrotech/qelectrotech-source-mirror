@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" type="element" hotspot_y="30" hotspot_x="15" link_type="simple" width="70" height="60">
+<definition version="0.5" type="element" hotspot_y="30" hotspot_x="15" link_type="simple" width="70" height="60">
 <uuid uuid="{F25AB2D9-F810-4FF1-AD64-4F4D802087A7}"/><names>
         <name lang="en">Pressure switch (NO)</name>
         <name lang="es">Presóstato NA</name>

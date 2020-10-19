@@ -1,4 +1,4 @@
-<definition width="770" height="90" link_type="simple" hotspot_y="25" hotspot_x="55" version="0.5" type="element" orientation="dyyy">
+<definition width="770" height="90" link_type="simple" hotspot_y="25" hotspot_x="55" version="0.5" type="element">
     <uuid uuid="{ddc706e3-21f2-4d07-bfc8-f769381373ac}"/>
     <names>
         <name lang="cs">TWDLMDA20DUK (výstupy)</name>

@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{696b45da-dda9-4c10-93b9-fd2e6e80cd73}"/>
     <names>
         <name lang="it">Attuatore tapparella, 1 can</name>

@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="15" orientation="dyyy">
+<definition height="30" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="15">
     <uuid uuid="{e7b12c7f-f4f4-4fb0-8150-909687e96004}"/>
     <names>
         <name lang="en">Quick opening valves with mechanical feedback</name>

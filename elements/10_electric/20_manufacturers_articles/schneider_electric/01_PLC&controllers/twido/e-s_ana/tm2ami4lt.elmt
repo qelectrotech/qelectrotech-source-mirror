@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" hotspot_x="55" width="890" hotspot_y="37" type="element" height="70" orientation="dyyy">
+<definition version="0.5" link_type="simple" hotspot_x="55" width="890" hotspot_y="37" type="element" height="70">
     <uuid uuid="{3187c90a-9cd0-4114-b3a2-82419c2d2f7b}"/>
     <names>
         <name lang="el">TM2 AMI 4LT (είσοδοι ana)</name>

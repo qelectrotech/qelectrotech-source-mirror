@@ -1,4 +1,4 @@
-<definition width="50" height="140" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="76" type="element">
+<definition width="50" height="140" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="76" type="element">
     <uuid uuid="{af2dcfbb-a993-4574-9ac3-cbb081bb2b79}"/>
     <names>
         <name lang="it">cRIO 9269 modulo 4 uscite analogiche</name>

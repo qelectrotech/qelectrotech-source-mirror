@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,7 +34,8 @@ QGIManager::QGIManager(QGraphicsScene *sc) :
 	change avec la methode setDestroyQGIOnDelete
 	@see setDestroyQGIOnDelete
 */
-QGIManager::~QGIManager(){
+QGIManager::~QGIManager()
+{
 	if (!destroy_qgi_on_delete) return;
 	foreach(QGraphicsItem *qgi, qgi_manager.keys()) {
 		if (!scene -> items().contains(qgi)) delete qgi;
@@ -98,6 +99,7 @@ void QGIManager::setDestroyQGIOnDelete(bool b) {
 	@param qgi QGraphicsItem dont il faut verifier la presence
 	@return true si l'item est gere, false sinon
 */
-bool QGIManager::manages(QGraphicsItem *qgi) const {
+bool QGIManager::manages(QGraphicsItem *qgi) const
+{
 	return(qgi_manager.contains(qgi));
 }

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="70" height="50" hotspot_x="65" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="70" height="50" hotspot_x="65" hotspot_y="45" version="0.70">
     <uuid uuid="{05ea7c50-03fa-474d-b7de-576f84694c29}"/>
     <names>
         <name lang="de">Zweiwegverteiler</name>

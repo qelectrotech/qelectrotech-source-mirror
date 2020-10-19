@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,22 +24,31 @@ namespace Ui {
 	class ElementInfoPartWidget;
 }
 
+/**
+	@brief The ElementInfoPartWidget class
+	gebruikt bij schema editor
+	als men edit dit Element aanklikt
+*/
 class ElementInfoPartWidget : public QWidget
 {
 	Q_OBJECT
 
 	//METHODS
 	public:
-		explicit ElementInfoPartWidget(QString key, const QString& translated_key, QWidget *parent = nullptr);
+		explicit ElementInfoPartWidget(
+			QString key,
+			const QString& translated_key,
+			QWidget *parent = nullptr);
 		~ElementInfoPartWidget() override;
 
-		QString key         () const {return key_;}
-		void    setText     (const QString &);
-		QString text        () const;
+		QString key () const
+{return key_;}
+		QString text () const;
+		void setText (const QString &);
 		void setPlaceHolderText (const QString &text);
-		void    setFocusTolineEdit();
-		void    setEnabled(bool e);
-		void    setDisabled(bool d);
+		void setFocusTolineEdit();
+		void setEnabled(bool e);
+		void setDisabled(bool d);
 		void setEraseTextVisible (bool visible);
 		void setEraseTextChecked (bool check);
 		Qt::CheckState EraseTextCheckState ()const;

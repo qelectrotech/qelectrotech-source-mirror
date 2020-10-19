@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="80" height="60" hotspot_y="34" hotspot_x="65" version="0.70" link_type="simple">
+<definition type="element" width="80" height="60" hotspot_y="34" hotspot_x="65" version="0.70" link_type="simple">
     <uuid uuid="{f80316bf-4843-47fa-855c-9526c6f8ec71}"/>
     <names>
         <name lang="de">elektronischer Schalter, nur in einer Richtung

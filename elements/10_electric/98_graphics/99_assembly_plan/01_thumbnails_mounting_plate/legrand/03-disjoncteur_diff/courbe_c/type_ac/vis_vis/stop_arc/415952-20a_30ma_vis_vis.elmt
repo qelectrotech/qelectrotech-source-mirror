@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" link_type="simple" hotspot_x="45" width="130" version="0.80" hotspot_y="6" height="220">
+<definition type="element" link_type="simple" hotspot_x="45" width="130" version="0.80" hotspot_y="6" height="220">
     <uuid uuid="{52d93bd7-138d-463b-850e-302bb0302485}"/>
     <names>
         <name lang="fr">415952 - Disjoncteur différentiel STOP ARC AC 20A 30mA Haut-Vis/Bas-Vis</name>

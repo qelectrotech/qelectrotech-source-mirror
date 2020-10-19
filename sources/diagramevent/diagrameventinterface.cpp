@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,7 +29,8 @@ DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
 	m_diagram -> clearSelection();
 }
 
-DiagramEventInterface::~DiagramEventInterface() {};
+DiagramEventInterface::~DiagramEventInterface()
+{};
 
 void DiagramEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
@@ -52,10 +53,10 @@ void DiagramEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
 }
 
 /**
- * @brief DiagramEventInterface::keyPressEvent
- * By default, press escape key abort the curent action
- * @param event
- */
+	@brief DiagramEventInterface::keyPressEvent
+	By default, press escape key abort the curent action
+	@param event
+*/
 void DiagramEventInterface::keyPressEvent(QKeyEvent *event)
 {
 	if (event->key() == Qt::Key_Escape)
@@ -71,7 +72,8 @@ void DiagramEventInterface::keyReleaseEvent(QKeyEvent *event){
 	Q_UNUSED (event);
 }
 
-bool DiagramEventInterface::isRunning() const {
+bool DiagramEventInterface::isRunning() const
+{
 	return m_running;
 }
 

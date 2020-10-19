@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="110" type="element" width="60" hotspot_y="8" version="0.70" hotspot_x="7" link_type="simple">
+<definition height="110" type="element" width="60" hotspot_y="8" version="0.70" hotspot_x="7" link_type="simple">
     <uuid uuid="{5db69389-0b66-454b-850c-a7c8fd4d1cbe}"/>
     <names>
         <name lang="fr">cTRON 08 petit</name>

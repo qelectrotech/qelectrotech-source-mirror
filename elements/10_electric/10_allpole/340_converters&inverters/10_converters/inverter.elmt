@@ -1,4 +1,4 @@
-<definition hotspot_y="62" type="element" height="150" width="130" hotspot_x="33" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="62" type="element" height="150" width="130" hotspot_x="33" link_type="simple" version="0.5">
     <uuid uuid="{85aaac96-da53-4c45-9e27-baeb656b4a15}"/>
     <names>
         <name lang="cs">Střídač</name>

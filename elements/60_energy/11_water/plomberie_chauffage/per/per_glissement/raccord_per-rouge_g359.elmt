@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="15" orientation="dyyy" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
+<definition height="30" hotspot_x="15" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
     <uuid uuid="{dde14993-a7d4-4b37-a4c4-debc127ff5d5}"/>
     <names>
         <name lang="fr">Écrou libre PER glissement </name>

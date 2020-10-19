@@ -1,4 +1,4 @@
-<definition link_type="slave" hotspot_y="24" version="0.70" width="40" type="element" height="50" orientation="dyyy" hotspot_x="29">
+<definition link_type="slave" hotspot_y="24" version="0.70" width="40" type="element" height="50" hotspot_x="29">
     <uuid uuid="{9bb6f34d-fccd-49a9-9d2b-523eb1e2459f}"/>
     <names>
         <name lang="en">Simple contact (NC / switch-on and off delay timer)</name>

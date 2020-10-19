@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{6983c879-15a9-4065-96c9-534cdbc94d37}"/>
     <names>
         <name lang="it">Sensore corrente/tensione</name>

@@ -1,4 +1,4 @@
-<definition height="20" hotspot_x="4" width="20" type="element" version="0.5" hotspot_y="4" orientation="dyyy" link_type="simple">
+<definition height="20" hotspot_x="4" width="20" type="element" version="0.5" hotspot_y="4" link_type="simple">
     <uuid uuid="{e32986ae-7605-46d4-bcb2-2fcab48e0d41}"/>
     <names>
         <name lang="fr">Refence voyant h</name>

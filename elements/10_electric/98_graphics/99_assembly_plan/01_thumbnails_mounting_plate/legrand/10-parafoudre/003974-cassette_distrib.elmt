@@ -1,4 +1,4 @@
-<definition hotspot_y="32" type="element" version="0.80" orientation="dyyy" link_type="simple" width="90" hotspot_x="45" height="70">
+<definition hotspot_y="32" type="element" version="0.80" link_type="simple" width="90" hotspot_x="45" height="70">
     <uuid uuid="{c17e4b2f-9d62-41c5-9a82-19ca7e0aeab8}"/>
     <names>
         <name lang="fr">003974 - Cassette parafoudre - Distribution</name>

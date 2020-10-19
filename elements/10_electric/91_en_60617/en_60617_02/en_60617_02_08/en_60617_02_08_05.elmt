@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="5" link_type="simple" hotspot_x="14" height="10">
+<definition version="0.70" width="30" type="element" hotspot_y="5" link_type="simple" hotspot_x="14" height="10">
     <uuid uuid="{f08d3519-b54a-4ec1-956b-71c326a7aed2}"/>
     <names>
         <name lang="fr">Temporisation</name>

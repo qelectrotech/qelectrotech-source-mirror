@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="63" version="0.5" hotspot_y="6" link_type="simple" width="140" orientation="dyyy" height="30">
+<definition type="element" hotspot_x="63" version="0.5" hotspot_y="6" link_type="simple" width="140" height="30">
     <uuid uuid="{90271351-9830-402f-b54a-18d26d362dbf}"/>
     <names>
         <name lang="de">Fortsetzen</name>

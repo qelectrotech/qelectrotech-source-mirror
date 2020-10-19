@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 /**
 	Constructeur
 	@param parent_conductor  Conducteur auquel ce texte est rattache
-	@param parent_diagram    Schema auquel ce texte et son conducteur parent sont rattaches
 */
 ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	DiagramTextItem(parent_conductor),
@@ -38,9 +37,9 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	Constructeur
 	@param text Le texte affiche par le champ de texte
 	@param parent_conductor  Conducteur auquel ce texte est rattache
-	@param parent_diagram    Schema auquel ce texte et son conducteur parent sont rattaches
 */
-ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_conductor) :
+ConductorTextItem::ConductorTextItem(
+		const QString &text, Conductor *parent_conductor) :
 	DiagramTextItem(text, parent_conductor),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
@@ -50,22 +49,24 @@ ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_cond
 /**
 	Destructeur
 */
-ConductorTextItem::~ConductorTextItem() {
+ConductorTextItem::~ConductorTextItem()
+{
 }
 
 /**
 	@return le conducteur parent de ce champ de texte, ou 0 si celui-ci n'en a
 	pas
 */
-Conductor *ConductorTextItem::parentConductor() const {
+Conductor *ConductorTextItem::parentConductor() const
+{
 	return(parent_conductor_);
 }
 
 /**
- * @brief ConductorTextItem::fromXml
- * Read the properties stored in the xml element given in parameter
- * @param e
- */
+	@brief ConductorTextItem::fromXml
+	Read the properties stored in the xml element given in parameter
+	@param e
+*/
 void ConductorTextItem::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("userx")) {
 		setPos(e.attribute("userx").toDouble(),
@@ -82,15 +83,17 @@ void ConductorTextItem::fromXml(const QDomElement &e) {
 	@return true si ce champ de texte a ete explictement deplace par
 	l'utilisateur, false sinon
 */
-bool ConductorTextItem::wasMovedByUser() const {
+bool ConductorTextItem::wasMovedByUser() const
+{
 	return(moved_by_user_);
 }
 
 /**
- * @brief ConductorTextItem::wasRotateByUser
- * @return true if text was explicit moved by user else false
- */
-bool ConductorTextItem::wasRotateByUser() const {
+	@brief ConductorTextItem::wasRotateByUser
+	@return true if text was explicit moved by user else false
+*/
+bool ConductorTextItem::wasRotateByUser() const
+{
 	return(rotate_by_user_);
 }
 
@@ -110,68 +113,68 @@ void ConductorTextItem::forceMovedByUser(bool moved_by_user) {
 }
 
 /**
- * @brief ConductorTextItem::forceRotateByUser
- * @param rotate_by_user true pour que la rotation du texte soit consideree
+	@brief ConductorTextItem::forceRotateByUser
+	@param rotate_by_user true pour que la rotation du texte soit consideree
 	comme ayant ete definie par l'utilisateur (et donc soit sauvegardee), false
 	pour remettre le texte a sont angle originelle
- */
+*/
 void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 	if (rotate_by_user == rotate_by_user_) return;
 
 	rotate_by_user_ = rotate_by_user;
 	if (!rotate_by_user && parent_conductor_) {
 		parent_conductor_ -> calculateTextItemPosition();
-    }
+	}
 }
 
 /**
- * @brief ConductorTextItem::setPos
- * @param pos
- */
+	@brief ConductorTextItem::setPos
+	@param pos
+*/
 void ConductorTextItem::setPos(const QPointF &pos)
 {
-    /*
-     * In some condition the conductor text item is outside the border of folio in the left.
-     * They cause a margin on the left of folio and in most case this margin is unwanted and annoying the user.
-     * If the text is empty and the scene position is outside the border (left and top),
-     * we can say that this position, is unwanted by user.
-     * So we move this text item to the top left of the bounding rect of parent conductors, because we sure this position is wanted by user.
-     */
-    DiagramTextItem::setPos(pos);
-    if(toPlainText().isEmpty() && (scenePos().x() < 0 || scenePos().y() < 0))
-    {
-        Conductor *cond = parentConductor();
-        if(cond)
-            DiagramTextItem::setPos(cond->boundingRect().topLeft());
-        else
-            DiagramTextItem::setPos(0,0);
-    }
+	/*
+	 * In some condition the conductor text item is outside the border of folio in the left.
+	 * They cause a margin on the left of folio and in most case this margin is unwanted and annoying the user.
+	 * If the text is empty and the scene position is outside the border (left and top),
+	 * we can say that this position, is unwanted by user.
+	 * So we move this text item to the top left of the bounding rect of parent conductors, because we sure this position is wanted by user.
+	 */
+	DiagramTextItem::setPos(pos);
+	if(toPlainText().isEmpty() && (scenePos().x() < 0 || scenePos().y() < 0))
+	{
+		Conductor *cond = parentConductor();
+		if(cond)
+			DiagramTextItem::setPos(cond->boundingRect().topLeft());
+		else
+			DiagramTextItem::setPos(0,0);
+	}
 }
 
 /**
- * @brief ConductorTextItem::setPos
- * @param x
- * @param y
- */
+	@brief ConductorTextItem::setPos
+	@param x
+	@param y
+*/
 void ConductorTextItem::setPos(qreal x, qreal y)
 {
-    QPointF p(x,y);
-    setPos(p);
+	QPointF p(x,y);
+	setPos(p);
 }
 
 /**
- * @brief ConductorTextItem::mousePressEvent
- * @param event
- */
+	@brief ConductorTextItem::mousePressEvent
+	@param event
+*/
 void ConductorTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	before_mov_pos_ = pos();
 	DiagramTextItem::mousePressEvent(event);
 }
 
 /**
- * @brief ConductorTextItem::mouseMoveEvent
- * @param event
- */
+	@brief ConductorTextItem::mouseMoveEvent
+	@param event
+*/
 void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if (textInteractionFlags() & Qt::TextEditable) QGraphicsTextItem::mouseMoveEvent(event);
 
@@ -194,9 +197,9 @@ void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ConductorTextItem::mouseReleaseEvent
- * @param e
- */
+	@brief ConductorTextItem::mouseReleaseEvent
+	@param e
+*/
 void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (flags() & QGraphicsItem::ItemIsMovable) {
 
@@ -244,9 +247,10 @@ void ConductorTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	change m_mouse_hover to false(used in paint() function )
 	@param e  QGraphicsSceneHoverEvent
 */
-void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
+{
 	Q_UNUSED(e);
-	//qDebug() << "Leave mouse over";
+	qDebug() << "Leave mouse over";
 	m_mouse_hover = false;
 	update();
 }
@@ -255,7 +259,7 @@ void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Do nothing default function .
 	@param e  QGraphicsSceneHoverEvent
 */
-void ConductorTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
-	Q_UNUSED(e);
-    QGraphicsTextItem::hoverMoveEvent(e);
+void ConductorTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e)
+{
+	QGraphicsTextItem::hoverMoveEvent(e);
 }

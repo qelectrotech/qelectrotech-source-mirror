@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="70" hotspot_y="44" hotspot_x="13" version="0.70" link_type="simple">
+<definition type="element" width="20" height="70" hotspot_y="44" hotspot_x="13" version="0.70" link_type="simple">
     <uuid uuid="{0b0da1f8-2626-4999-b7fd-303b67c20f3f}"/>
     <names>
         <name lang="de">Schütz mit selbsttätiger Auslösung</name>

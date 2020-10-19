@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_y="125" link_type="simple" width="70" height="250" type="element" hotspot_x="44" version="0.70">
+<definition hotspot_y="125" link_type="simple" width="70" height="250" type="element" hotspot_x="44" version="0.70">
     <uuid uuid="{29dc94a8-bbc5-4fb7-8c2b-fc7bc83b0126}"/>
     <names>
         <name lang="en">BMXDDM16022</name>

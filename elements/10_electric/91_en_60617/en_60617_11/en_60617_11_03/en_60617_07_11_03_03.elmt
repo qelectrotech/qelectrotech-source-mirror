@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="15" orientation="dyyy" height="30" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="15" height="30" link_type="simple" hotspot_x="144">
     <uuid uuid="{a046bcd3-8554-44e2-ad35-082a77c12013}"/>
     <names>
         <name lang="fr">Ligne aérienne</name>

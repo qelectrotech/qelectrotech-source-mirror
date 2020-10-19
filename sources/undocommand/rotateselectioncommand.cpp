@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -80,8 +80,8 @@ m_diagram(diagram)
 }
 
 /**
- * @brief RotateSelectionCommand::undo
- */
+	@brief RotateSelectionCommand::undo
+*/
 void RotateSelectionCommand::undo()
 {
 	m_diagram->showMe();
@@ -96,8 +96,8 @@ void RotateSelectionCommand::undo()
 }
 
 /**
- * @brief RotateSelectionCommand::redo
- */
+	@brief RotateSelectionCommand::redo
+*/
 void RotateSelectionCommand::redo()
 {
 	m_diagram->showMe();
@@ -111,9 +111,9 @@ void RotateSelectionCommand::redo()
 }
 
 /**
- * @brief RotateSelectionCommand::isValid
- * @return true if this command rotate a least one item.
- */
+	@brief RotateSelectionCommand::isValid
+	@return true if this command rotate a least one item.
+*/
 bool RotateSelectionCommand::isValid()
 {
 	if(childCount())

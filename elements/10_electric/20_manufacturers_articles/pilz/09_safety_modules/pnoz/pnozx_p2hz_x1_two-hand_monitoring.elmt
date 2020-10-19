@@ -1,4 +1,4 @@
-<definition width="270" hotspot_y="39" height="110" type="element" hotspot_x="65" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="270" hotspot_y="39" height="110" type="element" hotspot_x="65" version="0.5" link_type="simple">
     <uuid uuid="{8152e1c4-72d8-435b-8834-ed2941174d22}"/>
     <names>
         <name lang="el">P2HZ X1</name>

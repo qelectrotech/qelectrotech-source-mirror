@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="30" hotspot_y="15" type="element">
     <uuid uuid="{da9297ad-d8a3-4434-b0d3-36bd61f6aed8}"/>
     <names>
         <name lang="el">Μπουτόν</name>

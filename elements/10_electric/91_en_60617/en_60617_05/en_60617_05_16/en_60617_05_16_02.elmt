@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="175" orientation="dyyy" version="0.70" hotspot_x="85" width="90" height="190" link_type="simple">
+<definition type="element" hotspot_y="175" version="0.70" hotspot_x="85" width="90" height="190" link_type="simple">
     <uuid uuid="{30d7b0ec-dddf-43d4-80fd-72e2d21f8d7e}"/>
     <names>
         <name lang="fr">Diode solion</name>

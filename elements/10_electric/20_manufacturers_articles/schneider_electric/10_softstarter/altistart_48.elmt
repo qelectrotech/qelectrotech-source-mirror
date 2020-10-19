@@ -1,4 +1,4 @@
-<definition width="450" height="100" link_type="simple" hotspot_y="24" hotspot_x="17" version="0.5" type="element" orientation="dyyy">
+<definition width="450" height="100" link_type="simple" hotspot_y="24" hotspot_x="17" version="0.5" type="element">
     <uuid uuid="{17f605f3-408e-447b-97f4-ce4de19bc1ed}"/>
     <names>
         <name lang="cs">Altivar 48</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -202,6 +202,7 @@ namespace QET {
 		extern QIcon hr;
 		extern QIcon hu;
 		extern QIcon it;
+		extern QIcon jp;
 		extern QIcon pl;
 		extern QIcon pt;
 		extern QIcon ro;

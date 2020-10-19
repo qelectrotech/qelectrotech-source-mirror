@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+<definition link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
     <uuid uuid="{1e52f5f4-dae6-47e5-8292-a8b3e660d46b}"/>
     <names>
         <name lang="fr">Enroulement tétraphasé, avec neutre sorti</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="24" version="0.5" hotspot_y="10" link_type="simple" width="40" orientation="dyyy" height="20">
+<definition type="element" hotspot_x="24" version="0.5" hotspot_y="10" link_type="simple" width="40" height="20">
     <uuid uuid="{f418beb3-a109-4235-9e56-559291974ece}"/>
     <names>
         <name lang="de">Ausgang Report</name>

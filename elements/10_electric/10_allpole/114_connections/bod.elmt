@@ -1,0 +1,15 @@
+<definition width="20" height="20" hotspot_y="9" type="element" link_type="simple" hotspot_x="9" version="0.60">
+    <uuid uuid="{079913f8-18b5-4524-84bd-aadf75dfefbf}"/>
+    <names>
+        <name lang="cs">Bod</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y="-2" x="-2"/>
+        <input rotate="true" text=" " tagg="label" size="9" y="-3" x="-11"/>
+        <terminal orientation="e" y="0" x="2"/>
+        <terminal orientation="w" y="0" x="-2"/>
+        <terminal orientation="s" y="2" x="0"/>
+        <terminal orientation="n" y="-2" x="0"/>
+    </description>
+</definition>

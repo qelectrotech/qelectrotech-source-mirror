@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,17 +24,24 @@
 class QObject;
 
 /**
- * @brief The QPropertyUndoCommand class
- * This undo command manage QProperty of a QObject.
- * This undo command can use QPropertyAnimation to animate the change when undo/redo is call
- * To use animation call setAnimated(true). By default animation is disable.
- * Some QVariant date can't be animated and result this command don't work.
- */
+	@brief The QPropertyUndoCommand class
+	This undo command manage QProperty of a QObject.
+	This undo command can use QPropertyAnimation to animate the change when undo/redo is call
+	To use animation call setAnimated(true). By default animation is disable.
+	Some QVariant date can't be animated and result this command don't work.
+*/
 class QPropertyUndoCommand : public QUndoCommand
 {
 	public:
-		QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, const QVariant &new_value, QUndoCommand *parent = nullptr);
-		QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, QUndoCommand *parent = nullptr);
+		QPropertyUndoCommand(QObject *object,
+				     const char *property_name,
+				     const QVariant &old_value,
+				     const QVariant &new_value,
+				     QUndoCommand *parent = nullptr);
+		QPropertyUndoCommand(QObject *object,
+				     const char *property_name,
+				     const QVariant &old_value,
+				     QUndoCommand *parent = nullptr);
 		QPropertyUndoCommand(const QPropertyUndoCommand *other);
 
 		void setNewValue(const QVariant &new_value);

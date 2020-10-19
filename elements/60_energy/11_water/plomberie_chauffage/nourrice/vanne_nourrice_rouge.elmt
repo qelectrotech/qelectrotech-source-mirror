@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="50" hotspot_x="24" hotspot_y="24" version="0.51" width="60" link_type="simple">
+<definition type="element" height="50" hotspot_x="24" hotspot_y="24" version="0.51" width="60" link_type="simple">
     <uuid uuid="{1df668ea-ce29-4386-a2ac-ad56a40ae1c7}"/>
     <names>
         <name lang="fr">Vanne nourrice</name>

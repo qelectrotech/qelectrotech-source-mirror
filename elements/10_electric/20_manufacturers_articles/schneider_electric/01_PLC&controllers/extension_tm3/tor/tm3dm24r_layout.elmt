@@ -1,4 +1,4 @@
-<definition hotspot_y="8" width="110" type="element" version="0.5" height="240" orientation="dyyy" link_type="simple" hotspot_x="7">
+<definition hotspot_y="8" width="110" type="element" version="0.5" height="240" link_type="simple" hotspot_x="7">
     <uuid uuid="{06e85c4a-c339-4156-9335-64986ad39878}"/>
     <names>
         <name lang="en">tor in/out TM3DM24R: layout</name>

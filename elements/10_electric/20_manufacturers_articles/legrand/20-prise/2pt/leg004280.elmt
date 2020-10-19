@@ -1,0 +1,49 @@
+<definition hotspot_y="28" height="60" type="element" version="0.80" link_type="simple" width="40" hotspot_x="20">
+    <uuid uuid="{f0426e95-49c4-4015-9cd6-bebf20ad123e}"/>
+    <names>
+        <name lang="es">Toma corriente 3P</name>
+        <name lang="de">Steckdose 3-polig</name>
+        <name lang="it">Presa monofase</name>
+        <name lang="en">Outlet 3 poles</name>
+        <name lang="fr">Prise modulaire 16A</name>
+        <name lang="nl">Contact AC + aarde</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="ar">مقبس أحادي الوجه</name>
+        <name lang="cs">Zásuvka jednopólová</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="designation">LEG004280</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description">Prise modulaire 16A</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-19.7" uuid="{9a66ab1b-c9d8-4de6-a786-a16ba182d28f}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" x="19.3725" z="1" text_width="-1" Valignment="AlignTop" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="0" y2="22" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="14" length2="1.5"/>
+        <circle diameter="30" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-15"/>
+        <line x2="-10" x1="-10" y2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="-11" length2="1.5"/>
+        <circle diameter="5" y="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-7.5"/>
+        <circle diameter="5" y="7.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" x="-2.5"/>
+        <line x2="10" x1="10" y2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="-11" length2="1.5"/>
+        <circle diameter="5" y="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="3.5"/>
+        <line x2="0" x1="0" y2="3" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="5" length2="1.5"/>
+        <line x2="-2" x1="2" y2="0.7" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="0.7" length2="1.5"/>
+        <line x2="3" x1="-3" y2="2.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="2.5" length2="1.5"/>
+        <line x2="1" x1="-1" y2="-1.1" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y1="-1.1" length2="1.5"/>
+        <terminal y="-20" x="-10" orientation="n"/>
+        <terminal y="22" x="0" orientation="s"/>
+        <terminal y="-20" x="10" orientation="n"/>
+    </description>
+</definition>

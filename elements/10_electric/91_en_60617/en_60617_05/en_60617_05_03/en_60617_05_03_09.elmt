@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" orientation="dyyy" type="element" height="50" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" type="element" height="50" width="50">
     <uuid uuid="{8814eac4-906a-4c28-9fa0-5a974826c32e}"/>
     <names>
         <name lang="fr">Diode bidirectionelle</name>

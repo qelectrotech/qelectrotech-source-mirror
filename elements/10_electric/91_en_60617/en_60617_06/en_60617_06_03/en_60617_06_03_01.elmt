@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="10" version="0.70" width="30" type="element" height="20">
+<definition link_type="simple" hotspot_x="25" hotspot_y="10" version="0.70" width="30" type="element" height="20">
     <uuid uuid="{c2fbbb6d-4925-4e78-952e-8a154c7bd713}"/>
     <names>
         <name lang="fr">Enroulement de commutation ou de

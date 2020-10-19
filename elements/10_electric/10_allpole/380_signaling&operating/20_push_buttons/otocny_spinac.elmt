@@ -1,4 +1,4 @@
-<definition version="0.70" height="50" type="element" width="40" hotspot_x="29" link_type="simple" hotspot_y="25" orientation="dyyy">
+<definition version="0.70" height="50" type="element" width="40" hotspot_x="29" link_type="simple" hotspot_y="25">
     <uuid uuid="{caef4d22-3e62-462b-9b42-52fe7a7e7e6f}"/>
     <names>
         <name lang="cs">Otočný spínač</name>

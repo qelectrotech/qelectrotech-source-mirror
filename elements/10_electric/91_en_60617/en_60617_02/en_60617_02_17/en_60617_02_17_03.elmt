@@ -1,4 +1,4 @@
-<definition hotspot_x="15" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="30" type="element" link_type="simple">
+<definition hotspot_x="15" version="0.70" height="20" hotspot_y="15" width="30" type="element" link_type="simple">
     <uuid uuid="{0a6b6f75-1c45-452e-b233-54e3e5dc87b1}"/>
     <names>
         <name lang="fr">Aimant permanent</name>

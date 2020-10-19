@@ -1,4 +1,4 @@
-<definition width="50" height="20" link_type="simple" hotspot_x="25" hotspot_y="10" version="0.5" type="element" orientation="dyyy">
+<definition width="50" height="20" link_type="simple" hotspot_x="25" hotspot_y="10" version="0.5" type="element">
 <uuid uuid="{E05DA8A3-6A95-45CE-A869-CD1697FAFA7D}"/><names>
         <name lang="es">Reducción excéntrica</name>
         <name lang="ca">Reducció excèntrica</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -33,8 +33,8 @@ class QDomDocument;
 class DiagramTextItem : public QGraphicsTextItem
 {
 	Q_OBJECT
-    
-    Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
+
+	Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText)
 	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
@@ -68,10 +68,10 @@ class DiagramTextItem : public QGraphicsTextItem
 		QPointF mapMovementFromParent (const QPointF &) const;
 
 		void setFont(const QFont &font);
-        
-        void setColor(const QColor& color);
-        QColor color() const;
-        
+
+		void setColor(const QColor& color);
+		QColor color() const;
+
 		void setNoEditable(bool e = true) {m_no_editable = e;}
 		
 		void setAlignment(const Qt::Alignment &alignment);
@@ -85,7 +85,9 @@ class DiagramTextItem : public QGraphicsTextItem
 		bool isHtml() const;
 
 	protected:
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		void paint(QPainter *,
+			   const QStyleOptionGraphicsItem *,
+			   QWidget *) override;
 		void focusInEvent(QFocusEvent *) override;
 		void focusOutEvent(QFocusEvent *) override;
 
@@ -104,13 +106,15 @@ class DiagramTextItem : public QGraphicsTextItem
 
 	
 	protected:
-		bool m_mouse_hover = false,
-			 m_first_move = true,
-		     m_no_editable,
-			 m_is_html = false;
+		bool
+		m_mouse_hover = false,
+		m_first_move = true,
+		m_no_editable,
+		m_is_html = false;
 
-		QString m_previous_html_text,
-				m_previous_text;
+		QString
+		m_previous_html_text,
+		m_previous_text;
 		
 		QPointF m_mouse_to_origin_movement;
 		

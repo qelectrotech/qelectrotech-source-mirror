@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="80" version="0.5" hotspot_x="39" hotspot_y="25" height="50" orientation="dyyy">
+<definition link_type="simple" type="element" width="80" version="0.5" hotspot_x="39" hotspot_y="25" height="50">
     <uuid uuid="{b844e62c-8b77-4ab7-bcbe-a58b70fec040}"/>
     <names>
         <name lang="en">Push Pull 003</name>

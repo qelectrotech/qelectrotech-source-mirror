@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" version="0.5" hotspot_x="20" hotspot_y="75" height="80" orientation="dyyy">
+<definition link_type="simple" type="element" width="40" version="0.5" hotspot_x="20" hotspot_y="75" height="80">
     <uuid uuid="{d48d023f-1f1d-4549-b27b-2806dcb839ee}"/>
     <names>
         <name lang="en">3 Way Pickup Selector Switch</name>

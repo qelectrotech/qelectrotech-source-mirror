@@ -1,4 +1,4 @@
-<definition hotspot_x="35" link_type="simple" height="80" type="element" width="70" version="0.80" hotspot_y="38" orientation="dyyy">
+<definition hotspot_x="35" link_type="simple" height="80" type="element" width="70" version="0.80" hotspot_y="38">
     <uuid uuid="{9b6d7261-76a5-46a0-90a4-243589f7ff6d}"/>
     <names>
         <name lang="cs">TSK 6741</name>

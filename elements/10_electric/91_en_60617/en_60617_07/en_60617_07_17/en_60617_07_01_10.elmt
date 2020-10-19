@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="65" height="70" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{00503f4a-9568-42ae-af68-87cdd3758817}"/>
     <names>
         <name lang="de">Meßrelais zum Erfassen von

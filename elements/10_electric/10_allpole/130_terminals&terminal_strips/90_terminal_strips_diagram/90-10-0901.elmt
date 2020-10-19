@@ -1,4 +1,4 @@
-<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" orientation="dyyy" width="510" link_type="simple" type="element">
+<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" width="510" link_type="simple" type="element">
     <uuid uuid="{c17e98a3-738f-4c7a-ac89-91bb4c08fb45}"/>
     <names>
         <name lang="fr">Connecteur 25 fiches</name>

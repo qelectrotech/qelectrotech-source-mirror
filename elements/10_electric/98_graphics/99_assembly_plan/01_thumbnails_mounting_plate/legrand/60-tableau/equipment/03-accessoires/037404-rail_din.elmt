@@ -1,0 +1,30 @@
+<definition hotspot_y="40" version="0.80" type="element" height="80" hotspot_x="2" width="450" link_type="simple">
+    <uuid uuid="{330276d2-8476-463d-a7ee-c160418d1bf5}"/>
+    <names>
+        <name lang="cs">Spojovací lišta TS35</name>
+        <name lang="en">Mounting rail TS35</name>
+        <name lang="fr">Rail DIN EN 60715 symétrique à couper profondeur 7,5mm - longueur 2m</name>
+        <name lang="de">Tragschiene TS35</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">LEG037404</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Rail DIN EN 60715 symétrique à couper profondeur 7,5mm - longueur 2m</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:gray" antialias="false" x2="445" x1="0" y1="-27" y2="-27" end1="none" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:gray" antialias="false" x2="445" x1="0" y1="-35" y2="-35" end1="none" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:gray" antialias="false" x2="445" x1="0" y1="27" y2="27" end1="none" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:gray" antialias="false" x2="445" x1="0" y1="35" y2="35" end1="none" length1="1.5" end2="none" length2="1.5"/>
+        <line style="line-style:dashdotted;line-weight:thin;filling:none;color:gray" antialias="false" x2="445" x1="0" y1="0" y2="0" end1="none" length1="1.5" end2="none" length2="1.5"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition width="50" type="element" link_type="simple" height="60" version="0.80" orientation="dyyy" hotspot_y="27" hotspot_x="24">
+<definition width="50" type="element" link_type="simple" height="60" version="0.80" hotspot_y="27" hotspot_x="24">
     <uuid uuid="{e00c09f2-96d8-4b0c-beba-b358d41b52c5}"/>
     <names>
         <name lang="nl">Motor  1fase</name>

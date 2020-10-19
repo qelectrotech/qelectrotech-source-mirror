@@ -1,4 +1,4 @@
-<definition version="0.80" orientation="dyyy" link_type="master" height="120" hotspot_x="163" hotspot_y="59" type="element" width="440">
+<definition version="0.80" link_type="master" height="120" hotspot_x="163" hotspot_y="59" type="element" width="440">
     <uuid uuid="{4ab1a0c4-8f74-44c8-a948-0b10d9e71460}"/>
     <names>
         <name lang="en">Micro 830 24QBB</name>

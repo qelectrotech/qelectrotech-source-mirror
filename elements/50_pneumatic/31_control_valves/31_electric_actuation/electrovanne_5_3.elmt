@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="150" hotspot_x="15" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="150" hotspot_x="15" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{7ea70477-8cbc-4b36-bf39-8f6d99cf892d}"/>
     <names>
         <name lang="en">Solenoid 5 / 3</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -39,25 +39,43 @@ class TitleBlockPropertiesWidget : public QWidget
 		Q_OBJECT
 
 	public:
-		explicit TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
-		explicit TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
-		explicit TitleBlockPropertiesWidget(QList <TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock = TitleBlockProperties(), bool current_date = false, QETProject *project = nullptr, QWidget *parent = nullptr);
+		explicit TitleBlockPropertiesWidget(
+			const TitleBlockProperties &titleblock = TitleBlockProperties(),
+			bool current_date = false,
+			QETProject *project = nullptr,
+			QWidget *parent = nullptr);
+		explicit TitleBlockPropertiesWidget(
+			TitleBlockTemplatesCollection *tbt_collection,
+			const TitleBlockProperties &titleblock = TitleBlockProperties(),
+			bool current_date = false,
+			QETProject *project = nullptr,
+			QWidget *parent = nullptr);
+		explicit TitleBlockPropertiesWidget(
+			QList <TitleBlockTemplatesCollection *> tbt_collection,
+			const TitleBlockProperties &titleblock = TitleBlockProperties(),
+			bool current_date = false,
+			QETProject *project = nullptr,
+			QWidget *parent = nullptr);
 		~TitleBlockPropertiesWidget() override;
 
 		void setProperties(const TitleBlockProperties &properties);
 		TitleBlockProperties properties() const;
 		TitleBlockProperties propertiesAutoNum(QString autoNum) const;
 		TitleBlockTemplateLocation currentTitleBlockLocation () const;
-		void setPropertiesWithAutoNum(const TitleBlockProperties &properties, QString autoNum);
+		void setPropertiesWithAutoNum(
+				const TitleBlockProperties &properties,
+				QString autoNum);
 
 		void setTitleBlockTemplatesVisible(const bool &visible);
 		void setReadOnly (const bool &ro);
 
 	private:
-		void addCollection (TitleBlockTemplatesCollection *tbt_collection);
+		void addCollection (
+				TitleBlockTemplatesCollection *tbt_collection);
 		QString currentTitleBlockTemplateName () const;
 		void initDialog(const bool &current_date, QETProject *project);
-		int getIndexFor (const QString &tbt_name, const QET::QetCollection collection) const;
+		int getIndexFor (const QString &tbt_name,
+				 const QET::QetCollection collection) const;
 
 	private slots:
 		void editCurrentTitleBlockTemplate();

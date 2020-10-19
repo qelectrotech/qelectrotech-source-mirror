@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="80" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="74">
+<definition link_type="simple" type="element" width="80" hotspot_y="44" height="70" version="0.70" hotspot_x="74">
     <uuid uuid="{98cfb761-8855-4f87-8383-fda7b690485b}"/>
     <names>
         <name lang="fr">Interrupteur de position, contact à ouverture à

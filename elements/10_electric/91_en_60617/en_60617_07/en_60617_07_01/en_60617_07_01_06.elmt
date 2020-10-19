@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="10" height="20" hotspot_y="10" hotspot_x="7" version="0.70" link_type="simple">
+<definition type="element" width="10" height="20" hotspot_y="10" hotspot_x="7" version="0.70" link_type="simple">
     <uuid uuid="{11050332-08d3-40e3-8b49-7c78e8aac13f}"/>
     <names>
         <name lang="de">Endschalter-Funktion</name>

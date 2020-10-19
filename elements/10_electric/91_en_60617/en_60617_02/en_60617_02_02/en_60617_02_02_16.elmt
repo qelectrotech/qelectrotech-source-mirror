@@ -1,4 +1,4 @@
-<definition type="element" width="20" height="20" version="0.70" hotspot_x="10" hotspot_y="7" orientation="dyyy" link_type="simple">
+<definition type="element" width="20" height="20" version="0.70" hotspot_x="10" hotspot_y="7" link_type="simple">
     <uuid uuid="{36201f6f-66d4-4d2d-97aa-0afc80dee89f}"/>
     <names>
         <name lang="fr">Conducteur médian</name>

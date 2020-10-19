@@ -1,0 +1,58 @@
+<definition version="0.80" link_type="master" hotspot_y="40" height="70" type="element" width="50" hotspot_x="18">
+    <uuid uuid="{73cc4d65-b7f7-49ca-9aeb-bfd37d813318}"/>
+    <names>
+        <name lang="fr">MFN706  6A</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">MFN706</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="comment" show="1">6A</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="description" show="1">DISJONCTEUR UNI+N COURBE C6 A</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" end2="none" length2="1.5" y1="3" antialias="false" x2="-10" end1="none" y2="20" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-10" antialias="false" x2="7" end1="none" y2="-10" x1="-12" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <polygon x3="-15" y1="3" antialias="true" x2="-10" y2="0" x1="-10" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="16" antialias="false" x2="10" end1="none" y2="20" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="5" y1="3" antialias="true" x2="10" y2="0" x1="10" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <dynamic_text rotation="0" uuid="{0afdb394-69b7-48fe-b2ce-3abb444ef6b3}" frame="false" Halignment="AlignLeft" Valignment="AlignTop" y="-20" text_width="-1" text_from="ElementInfo" x="20" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="6">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc angle="-180" antialias="true" y="10.5" start="90" x="6" height="5" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-30" antialias="false" x2="-10" end1="none" y2="-20" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="8" antialias="false" x2="10" end1="none" y2="10" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="8" antialias="false" x2="15" end1="none" y2="8" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="3" antialias="false" x2="15" end1="none" y2="8" x1="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-22" antialias="true" x2="-12" end1="none" y2="-18" x1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="3" antialias="false" x2="15" end1="none" y2="3" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-22" antialias="true" x2="-8" end1="none" y2="-18" x1="-12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-30" antialias="false" x2="10" end1="none" y2="-20" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-22" antialias="true" x2="8" end1="none" y2="-18" x1="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y1="-22" antialias="true" x2="12" end1="none" y2="-18" x1="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text rotation="0" uuid="{0e0653ea-01b2-48bb-8668-edd62f7eed33}" frame="false" Halignment="AlignLeft" Valignment="AlignTop" y="-5" text_width="-1" text_from="ElementInfo" x="15" font="Arial,9,-1,5,50,0,0,0,0,0,Normal" z="18">
+            <text>6A</text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <text rotation="0" y="22" text="2" x="12" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" y="-25" text="1" x="12" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" y="-25" text="N" x="-9" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" y="21" text="C" x="19" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <terminal uuid="{313ae06d-af44-4502-9d4d-ba2b6a219468}" name="" y="-30" x="-10" orientation="n"/>
+        <terminal uuid="{0a7c4e4d-ed26-4286-b1bb-fdcb409988ad}" name="" y="-30" x="10" orientation="n"/>
+        <terminal uuid="{70d1db28-51d0-4332-bca4-da7d36674ed9}" name="" y="20" x="10" orientation="s"/>
+        <terminal uuid="{6cf65f57-95fb-4b24-aada-aeb924fc4d8d}" name="" y="20" x="-10" orientation="s"/>
+    </description>
+</definition>

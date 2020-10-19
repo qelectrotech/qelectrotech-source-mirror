@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,9 +27,9 @@ class QDialogButtonBox;
 class QLabel;
 
 /**
- * @brief The ElementsCategoryEditor class
- * This class provides a dialog to edit an existing category or create a new one.
- */
+	@brief The ElementsCategoryEditor class
+	This class provides a dialog to edit an existing category or create a new one.
+*/
 class ElementsCategoryEditor : public QDialog
 {
 	Q_OBJECT

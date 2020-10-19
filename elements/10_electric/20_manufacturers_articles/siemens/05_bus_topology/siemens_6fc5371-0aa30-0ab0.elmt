@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="60" height="460" type="element" hotspot_x="30" link_type="simple" hotspot_y="240">
+<definition version="0.51" width="60" height="460" type="element" hotspot_x="30" link_type="simple" hotspot_y="240">
     <uuid uuid="{e2a0ec78-2cc8-4b75-8a38-92c2ff3e127f}"/>
     <names>
         <name lang="en">Siemens NCU 710.3B PN (6FC5371-0AA30-0AB0)</name>

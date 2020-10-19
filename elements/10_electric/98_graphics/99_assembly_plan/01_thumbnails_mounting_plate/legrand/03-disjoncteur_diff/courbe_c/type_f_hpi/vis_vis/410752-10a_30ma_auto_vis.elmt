@@ -1,4 +1,4 @@
-<definition height="210" hotspot_y="4" hotspot_x="5" link_type="simple" type="element" version="0.80" orientation="dyyy" width="90">
+<definition height="210" hotspot_y="4" hotspot_x="5" link_type="simple" type="element" version="0.80" width="90">
     <uuid uuid="{4fd2a132-a066-4320-a54f-d34edcc2bf9c}"/>
     <names>
         <name lang="fr">410752 - Disjoncteur différentiel F/Hpi 10A 30mA Haut-Vis/Bas-Vis</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="21" link_type="simple" height="40" width="20" type="element" version="0.80" hotspot_x="9" orientation="dyyy">
+<definition hotspot_y="21" link_type="simple" height="40" width="20" type="element" version="0.80" hotspot_x="9">
     <uuid uuid="{28fab967-495e-4080-915d-ce42c601efae}"/>
     <names>
         <name lang="fr">Sonde de pression</name>

@@ -1,4 +1,4 @@
-<definition height="40" type="element" width="70" orientation="dyyy" hotspot_x="46" link_type="simple" version="0.5" hotspot_y="22">
+<definition height="40" type="element" width="70" hotspot_x="46" link_type="simple" version="0.5" hotspot_y="22">
     <uuid uuid="{25c10fe2-db19-4afa-ade6-1050bbca25f7}"/>
     <names>
         <name lang="ar">ملف حلقي بأربع أقطاب</name>

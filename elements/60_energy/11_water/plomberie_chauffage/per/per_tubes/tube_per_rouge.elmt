@@ -1,4 +1,4 @@
-<definition height="20" hotspot_x="23" orientation="dyyy" hotspot_y="10" version="0.51" link_type="terminal" width="40" type="element">
+<definition height="20" hotspot_x="23" hotspot_y="10" version="0.51" link_type="terminal" width="40" type="element">
     <uuid uuid="{f178d02e-f5bb-4c07-a13d-2a3135899895}"/>
     <names>
         <name lang="fr">Tube PER </name>

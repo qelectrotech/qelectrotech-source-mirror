@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,24 +28,26 @@ class QetGraphicsItem : public QGraphicsObject
 	Q_OBJECT
 
 	public:
-			//constructor destructor
+		//constructor destructor
 		QetGraphicsItem(QGraphicsItem *parent = nullptr);
 		~QetGraphicsItem() override = 0;
 
-			//public methode
-		Diagram *diagram       () const;
-		virtual void     setPos        (const QPointF &p);
-		virtual void     setPos        (qreal x, qreal y);
+		//public methode
+		Diagram *diagram () const;
+		virtual void setPos (const QPointF &p);
+		virtual void setPos (qreal x, qreal y);
 
-		virtual bool isMovable () const {return is_movable_;}
+		virtual bool isMovable () const
+{return is_movable_;}
 		virtual void setMovable (bool movable) { is_movable_ = movable;}
 
-		virtual void     editProperty  ()      {}
-		virtual QString  name       ()const {return QString("");}
+		virtual void editProperty () {}
+		virtual QString name ()const
+{return QString("");}
 		
 		QET::GraphicsItemState state() const;
 
-		//protected method
+	//protected method
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;

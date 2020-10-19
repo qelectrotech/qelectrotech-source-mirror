@@ -1,4 +1,4 @@
-<definition width="370" height="210" type="element" link_type="simple" hotspot_x="185" hotspot_y="104" orientation="dyyy" version="0.5">
+<definition width="370" height="210" type="element" link_type="simple" hotspot_x="185" hotspot_y="104" version="0.5">
     <uuid uuid="{ff0e0934-77cd-440f-860a-b077a9abe00a}"/>
     <names>
         <name lang="cs">X-4VR</name>

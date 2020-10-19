@@ -20,6 +20,7 @@
 
 #include "PropertiesEditor/propertieseditorwidget.h"
 #include <QPointer>
+#include <QButtonGroup>
 
 namespace Ui {
 class GraphicsTablePropertiesEditor;
@@ -31,12 +32,12 @@ class QUndoStack;
 class QButtonGroup;
 
 /**
- * @brief The GraphicsTablePropertiesEditor class
- * This widget is used to edit the property of both QetGraphicsTableItem and QetGraphicsHeaderItem
- */
+	@brief The GraphicsTablePropertiesEditor class
+	This widget is used to edit the property of both QetGraphicsTableItem and QetGraphicsHeaderItem
+*/
 class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit GraphicsTablePropertiesEditor(QetGraphicsTableItem *table = nullptr, QWidget *parent = nullptr);
@@ -51,10 +52,13 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		void on_m_header_font_pb_clicked();
 		void on_m_table_font_pb_clicked();
 		virtual void updateUi() override;
+		void updateInfoLabel();
 		void on_m_table_name_le_textEdited(const QString &arg1);
 		void on_m_previous_table_cb_activated(int index);
 		void on_m_previous_pb_clicked();
 		void on_m_next_pb_clicked();
+		void on_m_auto_geometry_pb_clicked();
+		void on_m_apply_geometry_to_linked_table_pb_clicked();
 
 	private:
 		void setUpEditConnection();

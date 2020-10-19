@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,6 +15,9 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QHash>
+
 #include "shapegraphicsitempropertieswidget.h"
 #include "ui_shapegraphicsitempropertieswidget.h"
 #include "qetshapeitem.h"
@@ -22,11 +25,11 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::ShapeGraphicsItemPropertiesWidget
- * Constructor
- * @param item : shape to edit
- * @param parent : parent widget
- */
+	@brief ShapeGraphicsItemPropertiesWidget::ShapeGraphicsItemPropertiesWidget
+	Constructor
+	@param item : shape to edit
+	@param parent : parent widget
+*/
 ShapeGraphicsItemPropertiesWidget::ShapeGraphicsItemPropertiesWidget(QetShapeItem *item, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::ShapeGraphicsItemPropertiesWidget),
@@ -45,19 +48,19 @@ ShapeGraphicsItemPropertiesWidget::ShapeGraphicsItemPropertiesWidget(QList<QetSh
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::~ShapeGraphicsItemPropertiesWidget
- * Destructor
- */
+	@brief ShapeGraphicsItemPropertiesWidget::~ShapeGraphicsItemPropertiesWidget
+	Destructor
+*/
 ShapeGraphicsItemPropertiesWidget::~ShapeGraphicsItemPropertiesWidget()
 {
 	delete ui;
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::setItem
- * Set @shape as the current edited item
- * @param shape
- */
+	@brief ShapeGraphicsItemPropertiesWidget::setItem
+	Set shape as the current edited item
+	@param shape
+*/
 void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 {
 	if (m_shape != shape)
@@ -88,10 +91,10 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::setItems
- * Set a list of shapes to be edited
- * @param shapes_list
- */
+	@brief ShapeGraphicsItemPropertiesWidget::setItems
+	Set a list of shapes to be edited
+	@param shapes_list
+*/
 void ShapeGraphicsItemPropertiesWidget::setItems(QList<QetShapeItem *> shapes_list)
 {
 	for (QMetaObject::Connection c : m_connect_list) {
@@ -119,10 +122,10 @@ void ShapeGraphicsItemPropertiesWidget::setItems(QList<QetShapeItem *> shapes_li
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::apply
- * Apply the current change, by pushing an undo command to the
- * undo stack of the shape diagram.
- */
+	@brief ShapeGraphicsItemPropertiesWidget::apply
+	Apply the current change, by pushing an undo command to the
+	undo stack of the shape diagram.
+*/
 void ShapeGraphicsItemPropertiesWidget::apply()
 {
 	Diagram *d = nullptr;
@@ -151,19 +154,20 @@ void ShapeGraphicsItemPropertiesWidget::apply()
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::reset
- * Reset the change
- */
-void ShapeGraphicsItemPropertiesWidget::reset() {
+	@brief ShapeGraphicsItemPropertiesWidget::reset
+	Reset the change
+*/
+void ShapeGraphicsItemPropertiesWidget::reset()
+{
 	updateUi();
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::associatedUndo
- * @return an undo command that represent the change edited by this widget.
- * The returned undo command is a QPropertyUndoCommand with the properties "pen".
- * If there isn't change, return nullptr
- */
+	@brief ShapeGraphicsItemPropertiesWidget::associatedUndo
+	@return an undo command that represent the change edited by this widget.
+	The returned undo command is a QPropertyUndoCommand with the properties "pen".
+	If there isn't change, return nullptr
+*/
 QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 {
 	if (m_live_edit)
@@ -357,8 +361,8 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::updateUi
- */
+	@brief ShapeGraphicsItemPropertiesWidget::updateUi
+*/
 void ShapeGraphicsItemPropertiesWidget::updateUi()
 {
 	if (!m_shape && m_shapes_list.isEmpty()) {
@@ -455,10 +459,10 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::setLiveEdit
- * @param live_edit
- * @return always true
- */
+	@brief ShapeGraphicsItemPropertiesWidget::setLiveEdit
+	@param live_edit
+	@return always true
+*/
 bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 {
 	if (live_edit == m_live_edit) {
@@ -480,9 +484,9 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief ShapeGraphicsItemPropertiesWidget::setUpEditConnection
- * Disconnect the previous connection, and reconnect the connection between the editors widgets and void ShapeGraphicsItemPropertiesWidget::apply function
- */
+	@brief ShapeGraphicsItemPropertiesWidget::setUpEditConnection
+	Disconnect the previous connection, and reconnect the connection between the editors widgets and void ShapeGraphicsItemPropertiesWidget::apply function
+*/
 void ShapeGraphicsItemPropertiesWidget::setUpEditConnection()
 {
 	for (QMetaObject::Connection c : m_edit_connection) {

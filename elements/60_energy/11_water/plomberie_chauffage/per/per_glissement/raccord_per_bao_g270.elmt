@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="15" orientation="dyyy" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
+<definition height="30" hotspot_x="15" hotspot_y="15" version="0.51" link_type="simple" width="40" type="element">
     <uuid uuid="{bdb2354f-3c2e-481f-a312-f2308194af9f}"/>
     <names>
         <name lang="fr">Raccord Femelle PER glissement </name>

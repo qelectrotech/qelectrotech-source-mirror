@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,9 +27,9 @@ namespace Ui {
 }
 
 /**
- * @brief The IndiTextPropertiesWidget class
- * This widget is used to edit the properties of one or several independent text item
- */
+	@brief The IndiTextPropertiesWidget class
+	This widget is used to edit the properties of one or several independent text item
+*/
 class IndiTextPropertiesWidget : public PropertiesEditorWidget
 {
 	Q_OBJECT

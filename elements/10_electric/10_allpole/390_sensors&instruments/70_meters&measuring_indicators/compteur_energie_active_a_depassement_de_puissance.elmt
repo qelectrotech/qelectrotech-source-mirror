@@ -1,4 +1,4 @@
-<definition hotspot_y="29" type="element" height="50" width="40" hotspot_x="20" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="29" type="element" height="50" width="40" hotspot_x="20" link_type="simple" version="0.5">
     <uuid uuid="{5d2fbcc2-bb81-4457-9560-44f42101a63e}"/>
     <names>
         <name lang="cs">Počítadlo překročení spotřeby watthodin</name>

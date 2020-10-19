@@ -1,0 +1,26 @@
+<definition version="0.70" height="40" type="element" width="10" hotspot_x="5" link_type="simple" hotspot_y="14">
+    <uuid uuid="{3a906aab-bfdf-43b8-97d1-61dd36477b0a}"/>
+    <names>
+        <name lang="cs">Pin konektoru</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,8,-1,5,50,0,0,0,0,0" frame="false" x="-23" text_from="ElementInfo" y="-11.5" z="1" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{678859fa-88de-44b5-b142-7f1d3692566d}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" length2="1.5" antialias="false" length1="1.5" end2="none" y2="11" end1="none" x2="-1"/>
+        <line y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="1" length2="1.5" antialias="false" length1="1.5" end2="none" y2="11" end1="none" x2="1"/>
+        <line y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="20" end1="none" x2="0"/>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="0" end1="none" x2="0"/>
+        <arc height="6" x="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-84" y="0" width="6" start="-180" antialias="true"/>
+        <arc height="6" x="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-84" y="0" width="6" start="83" antialias="true"/>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" x="-3" text_from="UserText" y="-12" z="8" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{834fd33c-baf9-4d10-9a3a-0e9887fbf191}" Halignment="AlignLeft">
+            <text>1</text>
+        </dynamic_text>
+        <terminal x="0" y="-10" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition hotspot_x="35" type="element" width="50" hotspot_y="54" version="0.70" orientation="dyyy" height="70" link_type="simple">
+<definition hotspot_x="35" type="element" width="50" hotspot_y="54" version="0.70" height="70" link_type="simple">
     <uuid uuid="{889a48e4-2cfb-4128-88a4-a5c3208d044b}"/>
     <names>
         <name lang="en">Buzzer</name>

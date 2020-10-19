@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="70" hotspot_y="34" hotspot_x="12" version="0.70" link_type="simple">
+<definition type="element" width="20" height="70" hotspot_y="34" hotspot_x="12" version="0.70" link_type="simple">
     <uuid uuid="{d9b28d5b-a892-4820-9224-551cd22d63a9}"/>
     <names>
         <name lang="de">Sicherungsschalter</name>

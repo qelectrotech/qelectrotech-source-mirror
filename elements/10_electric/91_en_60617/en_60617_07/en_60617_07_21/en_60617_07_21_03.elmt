@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="40" height="70" hotspot_y="34" hotspot_x="7" version="0.70" link_type="simple">
+<definition type="element" width="40" height="70" hotspot_y="34" hotspot_x="7" version="0.70" link_type="simple">
     <uuid uuid="{5403ef79-a42f-4028-a58f-94f0de476d52}"/>
     <names>
         <name lang="de">Sicherung mit mechanischer Auslösemeldung

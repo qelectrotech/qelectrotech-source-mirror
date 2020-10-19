@@ -1,4 +1,4 @@
-<definition width="50" height="140" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="76" type="element">
+<definition width="50" height="140" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="76" type="element">
     <uuid uuid="{4fc19ff4-e517-45f4-b812-5a80e1b3069e}"/>
     <names>
         <name lang="it">cRIO 9481 - modulo 4 uscite a relè 2A</name>

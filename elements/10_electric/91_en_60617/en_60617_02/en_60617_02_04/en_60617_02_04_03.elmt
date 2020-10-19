@@ -1,4 +1,4 @@
-<definition version="0.70" width="20" hotspot_x="9" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="10">
+<definition version="0.70" width="20" hotspot_x="9" type="element" link_type="simple" height="20" hotspot_y="10">
     <uuid uuid="{1fe99a36-46a5-4bf3-9fd3-f22a782803b0}"/>
     <names>
         <name lang="de">einfachgerichtete kreisförmige Bewegung einfachgerichtete Drehung einfachgerichtetes Drehmoment</name>

@@ -1,4 +1,4 @@
-<definition width="90" version="0.4" hotspot_x="53" hotspot_y="45" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="90" version="0.4" hotspot_x="53" hotspot_y="45" height="80" link_type="simple" type="element" ic="true">
 <uuid uuid="{8EAF31DE-66CB-4DFA-BCDF-E9907BC31B72}"/><names>
         <name lang="es">Caldera de pié</name>
         <name lang="en">Floor boiler</name>

@@ -1,4 +1,4 @@
-<definition width="80" height="290" link_type="simple" orientation="dyyy" hotspot_x="36" version="0.5" hotspot_y="139" type="element">
+<definition width="80" height="290" link_type="simple" hotspot_x="36" version="0.5" hotspot_y="139" type="element">
     <uuid uuid="{7ec2df7a-c94c-47fa-8a70-3b7fe7bbf541}"/>
     <names>
         <name lang="it">OMRON-CJ1W_B7A22</name>

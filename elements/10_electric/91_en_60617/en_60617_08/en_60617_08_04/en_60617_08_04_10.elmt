@@ -1,4 +1,4 @@
-<definition width="80" height="70" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="65">
+<definition width="80" height="70" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="65">
     <uuid uuid="{446aeea8-44cf-41bf-ac25-08810edf95cf}"/>
     <names>
         <name lang="de">Wattstundenzähler mit

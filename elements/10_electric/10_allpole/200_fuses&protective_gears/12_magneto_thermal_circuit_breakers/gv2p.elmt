@@ -1,4 +1,4 @@
-<definition width="100" height="100" type="element" link_type="master" hotspot_x="62" orientation="dyyy" version="0.70" hotspot_y="50">
+<definition width="100" height="100" type="element" link_type="master" hotspot_x="62" version="0.70" hotspot_y="50">
     <uuid uuid="{a1127a29-289f-4e17-b644-91d4c39da639}"/>
     <names>
         <name lang="de">Motorschutzschalter</name>

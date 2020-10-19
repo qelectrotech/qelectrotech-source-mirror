@@ -1,4 +1,4 @@
-<definition hotspot_x="25" width="60" hotspot_y="34" version="0.5" orientation="dyyy" height="80" type="element" link_type="simple">
+<definition hotspot_x="25" width="60" hotspot_y="34" version="0.5" height="80" type="element" link_type="simple">
     <uuid uuid="{7dee15d8-d959-4242-84c2-9a829c3bd03d}"/>
     <names>
         <name lang="en">logo-power-230v-acdc-24vdc</name>

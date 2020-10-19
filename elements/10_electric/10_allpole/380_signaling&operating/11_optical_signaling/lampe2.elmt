@@ -1,4 +1,4 @@
-<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="29" version="0.5" hotspot_x="15" width="30">
+<definition height="60" link_type="simple" type="element" hotspot_y="29" version="0.5" hotspot_x="15" width="30">
     <uuid uuid="{c8f5ab5f-4534-4307-90b4-c6601cc77abb}"/>
     <names>
         <name lang="fr">Lampe</name>

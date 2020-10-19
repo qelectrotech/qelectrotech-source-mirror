@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="15" orientation="dyyy">
+<definition height="30" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="15">
     <uuid uuid="{3948a9a2-c070-4496-bf4a-78285300e01a}"/>
     <names>
         <name lang="en">Quick coupling with check valve</name>

@@ -1,4 +1,4 @@
-<definition width="130" height="130" link_type="simple" hotspot_y="39" hotspot_x="17" version="0.5" type="element" orientation="dyyy">
+<definition width="130" height="130" link_type="simple" hotspot_y="39" hotspot_x="17" version="0.5" type="element">
     <uuid uuid="{f2600569-f72e-48a0-a556-433e586c8933}"/>
     <names>
         <name lang="cs">Altistart 01N1</name>

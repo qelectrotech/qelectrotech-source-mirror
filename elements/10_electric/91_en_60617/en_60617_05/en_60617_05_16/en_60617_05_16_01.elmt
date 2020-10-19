@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="175" orientation="dyyy" version="0.70" hotspot_x="85" width="90" height="190" link_type="simple">
+<definition type="element" hotspot_y="175" version="0.70" hotspot_x="85" width="90" height="190" link_type="simple">
     <uuid uuid="{db9603ac-84d4-4156-add1-810c81889b5e}"/>
     <names>
         <name lang="fr">Accumulateur de quantité d'électricité</name>

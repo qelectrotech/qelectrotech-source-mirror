@@ -1,23 +1,26 @@
-<definition width="50" version="0.4" hotspot_x="27" hotspot_y="11" height="20" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B64A09E4-82C0-4BB3-AEC3-F6884181034A}"/><names>
+<definition width="50" hotspot_y="11" link_type="simple" version="0.80" height="20" hotspot_x="26" type="element">
+    <uuid uuid="{2a12b4f8-60e3-456d-bb12-1e6b47fee5f7}"/>
+    <names>
+        <name lang="fr">Capilaire d'expansion</name>
         <name lang="es">Capilar expansion</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <arc width="6" x="-14" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="2" x="10" y="-3" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="11.7474" y2="-1" x2="17.2737"/>
-        <arc width="6" x="4" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="3" x="-1" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <arc width="3" x="-6" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-21.2526" y2="-1" x2="-15.7263"/>
-        <arc width="8" x="-6" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="3" x="-11" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <arc width="8" x="-11" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="3" x="4" y="-5" antialias="true" height="7.2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <arc width="8" x="-1" y="-5.2" antialias="true" height="5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="2" x="-16" y="-3" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
-        <terminal x="-22" y="-1" nameHidden="110" number="" name="" orientation="w"/>
-        <terminal x="18" y="-1" nameHidden="40" number="" name="" orientation="e"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180" x="-14" y="-5.2" height="5.8" antialias="true"/>
+        <arc width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-90" x="10" y="-3" height="2" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="11.7474" y1="-1" y2="-1" x2="17.2737" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180" x="4" y="-5.2" height="5.8" antialias="true"/>
+        <arc width="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180" x="-1" y="-5" height="7.2" antialias="true"/>
+        <arc width="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180" x="-6" y="-5" height="7.2" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-21.2526" y1="-1" y2="-1" x2="-15.7263" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <arc width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180" x="-6" y="-5.2" height="5.8" antialias="true"/>
+        <arc width="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180" x="-11" y="-5" height="7.2" antialias="true"/>
+        <arc width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180" x="-11" y="-5.2" height="5.8" antialias="true"/>
+        <arc width="3" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180" x="4" y="-5" height="7.2" antialias="true"/>
+        <arc width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180" x="-1" y="-5.2" height="5.8" antialias="true"/>
+        <arc width="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90" x="-16" y="-3" height="2" antialias="true"/>
+        <terminal orientation="w" x="-22" uuid="{d28974eb-f000-4c2d-a243-b5bc5f43346b}" y="-1" name=""/>
+        <terminal orientation="e" x="18" uuid="{35e0dd65-1414-43db-ad06-d4364bb230b7}" y="-1" name=""/>
     </description>
 </definition>

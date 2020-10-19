@@ -1,8 +1,9 @@
-<definition width="70" height="20" link_type="simple" hotspot_x="34" hotspot_y="9" version="0.5" type="element" orientation="dyyy">
+<definition width="70" height="20" link_type="simple" hotspot_x="34" hotspot_y="9" version="0.5" type="element">
 <uuid uuid="{B3EDB3A5-35F6-450A-8885-32895AB94F16}"/><names>
         <name lang="es">Tubo acero sodar</name>
         <name lang="ca">Canonada acer sodar</name>
-    </names>
+ <name lang="fr">tube acier</name>
+        </names>
     <informations></informations>
     <description>
         <rect width="59.0575" height="13.4863" antialias="false" y="-6.48628" x="-29.5448" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

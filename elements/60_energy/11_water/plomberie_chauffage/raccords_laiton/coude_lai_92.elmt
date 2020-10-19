@@ -1,4 +1,4 @@
-<definition hotspot_x="30" width="50" height="50" type="element" version="0.51" link_type="simple" hotspot_y="10" orientation="dyyy">
+<definition hotspot_x="30" width="50" height="50" type="element" version="0.51" link_type="simple" hotspot_y="10">
     <uuid uuid="{d33f3303-0c92-4f25-b8e3-3a703d42e3c6}"/>
     <names>
         <name lang="fr">Coude laiton n° 92 MF</name>

@@ -1,4 +1,4 @@
-<definition height="40" type="element" width="50" hotspot_y="35" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="45">
+<definition height="40" type="element" width="50" hotspot_y="35" link_type="simple" version="0.70" hotspot_x="45">
     <uuid uuid="{ea7a531a-1648-4b62-9bfa-e97e3d44f901}"/>
     <names>
         <name lang="fr">Inductance variable de façon continue à noyau

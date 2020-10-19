@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="18">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="40" hotspot_y="18">
     <uuid uuid="{10310f28-387b-45a9-8636-e5d789e5fd15}"/>
     <names>
         <name lang="cs">Odlučovač oleje</name>

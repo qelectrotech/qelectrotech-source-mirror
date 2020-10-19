@@ -1,4 +1,4 @@
-<definition width="370" height="80" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element" orientation="dyyy">
+<definition width="370" height="80" link_type="simple" hotspot_y="4" hotspot_x="5" version="0.5" type="element">
     <uuid uuid="{182a35fb-8e8a-4e37-9c07-f4f58dbdd6f6}"/>
     <names>
         <name lang="cs">TWDALM3LT</name>

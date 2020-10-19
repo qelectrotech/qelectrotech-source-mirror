@@ -1,4 +1,4 @@
-<definition height="50" type="element" width="90" hotspot_y="37" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="85">
+<definition height="50" type="element" width="90" hotspot_y="37" link_type="simple" version="0.70" hotspot_x="85">
     <uuid uuid="{f35a5bd0-e95e-4538-a6ac-1b8e06fa77aa}"/>
     <names>
         <name lang="fr">Ligne à retard, type magnétostrictif avec

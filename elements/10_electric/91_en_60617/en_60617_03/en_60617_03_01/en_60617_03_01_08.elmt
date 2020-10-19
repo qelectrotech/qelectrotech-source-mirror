@@ -1,4 +1,4 @@
-<definition hotspot_x="45" version="0.70" orientation="dyyy" height="40" hotspot_y="25" width="90" type="element" link_type="simple">
+<definition hotspot_x="45" version="0.70" height="40" hotspot_y="25" width="90" type="element" link_type="simple">
     <uuid uuid="{8e5a8aba-4301-4a30-8f36-fa5c2e347ddb}"/>
     <names>
         <name lang="fr">Liaison torsadée</name>

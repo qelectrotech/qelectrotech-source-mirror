@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,8 +24,9 @@ class NumStrategy;
 class Diagram;
 
 /**
- * this class provide methods to handle content of NumerotationContext.
- */
+	@brief The NumerotationContextCommands class
+	this class provide methods to handle content of NumerotationContext.
+*/
 class NumerotationContextCommands
 {
 	public:

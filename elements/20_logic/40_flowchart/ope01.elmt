@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" height="60">
     <uuid uuid="{376fc4a7-f2d8-4018-81b8-a2bc264c4b30}"/>
     <names>
         <name lang="el">Επεξεργασία / Λειτουργίες</name>

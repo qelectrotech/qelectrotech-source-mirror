@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -37,7 +37,8 @@ TitleBlockTemplateVisualCell::TitleBlockTemplateVisualCell(QGraphicsItem *parent
 /**
 	Destructor
 */
-TitleBlockTemplateVisualCell::~TitleBlockTemplateVisualCell() {
+TitleBlockTemplateVisualCell::~TitleBlockTemplateVisualCell()
+{
 }
 
 /**
@@ -56,7 +57,8 @@ void TitleBlockTemplateVisualCell::setGeometry(const QRectF &g) {
 	@param constraint New value for the size hint
 	@return the size hint for \a which using the width or height of \a constraint
 */
-QSizeF TitleBlockTemplateVisualCell::sizeHint(Qt::SizeHint which, const QSizeF &constraint) const {
+QSizeF TitleBlockTemplateVisualCell::sizeHint(Qt::SizeHint which, const QSizeF &constraint) const
+{
 	Q_UNUSED(which);
 	return constraint;
 }
@@ -64,7 +66,8 @@ QSizeF TitleBlockTemplateVisualCell::sizeHint(Qt::SizeHint which, const QSizeF &
 /**
 	@return the bounding rect of this helper cell
 */
-QRectF TitleBlockTemplateVisualCell::boundingRect() const {
+QRectF TitleBlockTemplateVisualCell::boundingRect() const
+{
 	return QRectF(QPointF(0,0), geometry().size());
 }
 
@@ -74,7 +77,11 @@ QRectF TitleBlockTemplateVisualCell::boundingRect() const {
 	@param option Rendering options
 	@param widget QWidget being painted, if any
 */
-void TitleBlockTemplateVisualCell::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+void TitleBlockTemplateVisualCell::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *option,
+		QWidget *widget)
+{
 	Q_UNUSED(option);
 	Q_UNUSED(widget);
 	
@@ -99,7 +106,9 @@ void TitleBlockTemplateVisualCell::paint(QPainter *painter, const QStyleOptionGr
 	@param tbt Parent title block template of the previewed cell
 	@param cell Previewed cell
 */
-void TitleBlockTemplateVisualCell::setTemplateCell(TitleBlockTemplate *tbt, TitleBlockCell *cell) {
+void TitleBlockTemplateVisualCell::setTemplateCell(
+		TitleBlockTemplate *tbt, TitleBlockCell *cell)
+{
 	template_ = tbt;
 	cell_     = cell;
 }
@@ -107,14 +116,16 @@ void TitleBlockTemplateVisualCell::setTemplateCell(TitleBlockTemplate *tbt, Titl
 /**
 	@return the parent title block template of the previewed cell
 */
-TitleBlockTemplate *TitleBlockTemplateVisualCell::titleBlockTemplate() const {
+TitleBlockTemplate *TitleBlockTemplateVisualCell::titleBlockTemplate() const
+{
 	return(template_);
 }
 
 /**
 	@return the previewed title block cell
 */
-TitleBlockCell *TitleBlockTemplateVisualCell::cell() const {
+TitleBlockCell *TitleBlockTemplateVisualCell::cell() const
+{
 	return(cell_);
 }
 
@@ -122,7 +133,8 @@ TitleBlockCell *TitleBlockTemplateVisualCell::cell() const {
 	@return the title block cell previewed by this object, plus the cells it
 	spans over, if any
 */
-QSet<TitleBlockCell *> TitleBlockTemplateVisualCell::cells() const {
+QSet<TitleBlockCell *> TitleBlockTemplateVisualCell::cells() const
+{
 	QSet<TitleBlockCell *> set;
 	if (cell_) {
 		if (template_) {

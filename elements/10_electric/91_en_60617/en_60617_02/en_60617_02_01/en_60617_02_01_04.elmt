@@ -1,4 +1,4 @@
-<definition hotspot_x="33" type="element" width="70" hotspot_y="33" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="33" type="element" width="70" hotspot_y="33" version="0.70" height="50" link_type="simple">
     <uuid uuid="{047e50b4-706b-4a97-913f-af989726a3f3}"/>
     <names>
         <name lang="fr">Enveloppe (ampoule ou cuve)</name>

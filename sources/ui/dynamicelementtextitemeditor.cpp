@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,15 +32,15 @@
 #include <QUndoCommand>
 
 DynamicElementTextItemEditor::DynamicElementTextItemEditor(Element *element, QWidget *parent) :
-    AbstractElementPropertiesEditorWidget(parent),
-    ui(new Ui::DynamicElementTextItemEditor)
+	AbstractElementPropertiesEditorWidget(parent),
+	ui(new Ui::DynamicElementTextItemEditor)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	
-    ui->m_tree_view->setItemDelegate(new DynamicTextItemDelegate(ui->m_tree_view));
+	ui->m_tree_view->setItemDelegate(new DynamicTextItemDelegate(ui->m_tree_view));
 	ui->m_remove_selection->setDisabled(true);
 	
-    setElement(element);
+	setElement(element);
 }
 
 DynamicElementTextItemEditor::~DynamicElementTextItemEditor()
@@ -50,17 +50,17 @@ DynamicElementTextItemEditor::~DynamicElementTextItemEditor()
 
 void DynamicElementTextItemEditor::setElement(Element *element)
 {
-    if (m_element == element)
-        return;
-    
-     m_element = element;
-    
-    DynamicElementTextModel *old_model = m_model;
-    m_model = new DynamicElementTextModel(element, ui->m_tree_view);
+	if (m_element == element)
+		return;
+
+	m_element = element;
+
+	DynamicElementTextModel *old_model = m_model;
+	m_model = new DynamicElementTextModel(element, ui->m_tree_view);
 	connect(m_model, &DynamicElementTextModel::dataChanged, this, &DynamicElementTextItemEditor::dataEdited);
-    ui->m_tree_view->setModel(m_model);
-    
-    if(old_model)
+	ui->m_tree_view->setModel(m_model);
+
+	if(old_model)
 		delete old_model;
 }
 
@@ -135,10 +135,10 @@ void DynamicElementTextItemEditor::apply()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::setCurrentText
- * Expand and select the item for text @text
- * @param text
- */
+	@brief DynamicElementTextItemEditor::setCurrentText
+	Expand and select the item for text text
+	@param text
+*/
 void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 {
 	QModelIndex index = m_model->indexFromText(text);
@@ -146,16 +146,16 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 		return;
 	
 	ui->m_tree_view->expand(index);
-	ui->m_tree_view->expand(index.child(0,0));
+	ui->m_tree_view->expand(index.QModelIndex::model()->index(0,0));
 	ui->m_tree_view->setCurrentIndex(index);
 	ui->m_remove_selection->setEnabled(true);
 }
 
 /**
- * @brief DynamicElementTextItemEditor::setCurrentGroup
- * Expand and select the item for group @group
- * @param group
- */
+	@brief DynamicElementTextItemEditor::setCurrentGroup
+	Expand and select the item for group group
+	@param group
+*/
 void DynamicElementTextItemEditor::setCurrentGroup(ElementTextItemGroup *group)
 {
 	QModelIndex index = m_model->indexFromGroup(group);
@@ -193,15 +193,15 @@ void DynamicElementTextItemEditor::dataEdited()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_add_text_clicked
- * Add a new dynamic text
- */
+	@brief DynamicElementTextItemEditor::on_m_add_text_clicked
+	Add a new dynamic text
+*/
 void DynamicElementTextItemEditor::on_m_add_text_clicked()
 {
-    if (!m_element)
-        return;
+	if (!m_element)
+		return;
 	
-    DynamicElementTextItem *deti = new DynamicElementTextItem(m_element);
+	DynamicElementTextItem *deti = new DynamicElementTextItem(m_element);
 	if (m_element->diagram())
 	{
 		m_element->diagram()->undoStack().push(new AddElementTextCommand(m_element, deti));
@@ -214,14 +214,14 @@ void DynamicElementTextItemEditor::on_m_add_text_clicked()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_remove_selection_clicked
- * Remove the selected item
- */
+	@brief DynamicElementTextItemEditor::on_m_remove_selection_clicked
+	Remove the selected item
+*/
 void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 {
-    DynamicElementTextItem *deti = m_model->textFromIndex(ui->m_tree_view->currentIndex());
-    if(deti)
-    {
+	DynamicElementTextItem *deti = m_model->textFromIndex(ui->m_tree_view->currentIndex());
+	if(deti)
+	{
 		if(m_element->diagram())
 		{
 			DiagramContent dc;
@@ -229,16 +229,16 @@ void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 			m_element->diagram()->undoStack().push(new DeleteQGraphicsItemCommand(m_element->diagram(), dc));
 		}
 		return;
-    }
+	}
 	ElementTextItemGroup *group = m_model->groupFromIndex(ui->m_tree_view->currentIndex());
 	if(group && m_element.data()->diagram())
 		m_element.data()->diagram()->undoStack().push(new RemoveTextsGroupCommand(m_element.data(), group));
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_add_group_clicked
- * Add a new group
- */
+	@brief DynamicElementTextItemEditor::on_m_add_group_clicked
+	Add a new group
+*/
 void DynamicElementTextItemEditor::on_m_add_group_clicked()
 {
 	QString name = QInputDialog::getText(this, tr("Nom du groupe"), tr("Entrer le nom du nouveau groupe"));
@@ -259,10 +259,10 @@ void DynamicElementTextItemEditor::on_m_tree_view_clicked(const QModelIndex &ind
 
 void DynamicElementTextItemEditor::on_m_export_pb_clicked()
 {
-    ExportElementTextPattern eetp(m_element);
+	ExportElementTextPattern eetp(m_element);
 }
 
 void DynamicElementTextItemEditor::on_m_import_pb_clicked()
 {
-    ImportElementTextPattern ietp(m_element);
+	ImportElementTextPattern ietp(m_element);
 }

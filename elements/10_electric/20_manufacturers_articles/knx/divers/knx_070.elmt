@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="14" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="14">
     <uuid uuid="{f833d12f-e022-41d2-9d81-ae15201190a8}"/>
     <names>
         <name lang="it">Alimentatore + protezione</name>

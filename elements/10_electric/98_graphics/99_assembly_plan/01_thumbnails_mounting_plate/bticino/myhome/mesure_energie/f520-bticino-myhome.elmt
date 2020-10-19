@@ -1,4 +1,4 @@
-<definition height="250" hotspot_y="194" type="element" hotspot_x="35" width="50" orientation="dyyy" link_type="simple" version="0.80">
+<definition height="250" hotspot_y="194" type="element" hotspot_x="35" width="50" link_type="simple" version="0.80">
     <uuid uuid="{6c6fab70-5df3-4ec8-8b1e-fe278f89b3ea}"/>
     <names>
         <name lang="nl">F520 - Meter met 3 ingangen</name>

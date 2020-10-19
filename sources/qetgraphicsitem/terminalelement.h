@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,12 +22,15 @@
 #include "element.h"
 
 class QETProject;
-
+/**
+	@brief The TerminalElement class
+*/
 class TerminalElement : public Element
 {
 		Q_OBJECT
 	public:
-		TerminalElement(const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
+		TerminalElement(const ElementsLocation &,
+				QGraphicsItem * = nullptr, int * = nullptr);
 		~TerminalElement() override;
 		void initLink(QETProject *project) override;
 };

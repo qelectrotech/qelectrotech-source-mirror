@@ -1,4 +1,4 @@
-<definition height="190" version="0.70" orientation="dyyy" width="160" hotspot_x="115" type="element" hotspot_y="185" link_type="simple">
+<definition height="190" version="0.70" width="160" hotspot_x="115" type="element" hotspot_y="185" link_type="simple">
     <uuid uuid="{8ba98b6c-ee89-482f-9fa0-9ef906f926b9}"/>
     <names>
         <name lang="fr">Revêtement conducteur sur la surface interne

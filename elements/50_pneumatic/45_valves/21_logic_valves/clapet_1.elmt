@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="20" hotspot_x="10" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="50" version="0.5" width="20" hotspot_x="10" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{79f914dd-7a04-4060-874e-c94796bb1c59}"/>
     <names>
         <name lang="en">Check valve with spring</name>

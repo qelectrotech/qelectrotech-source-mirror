@@ -1,4 +1,4 @@
-<definition width="350" height="130" link_type="simple" hotspot_y="34" hotspot_x="65" version="0.5" type="element" orientation="dyyy">
+<definition width="350" height="130" link_type="simple" hotspot_y="34" hotspot_x="65" version="0.5" type="element">
     <uuid uuid="{69b65df3-203a-4429-aff9-59a38892c7ce}"/>
     <names>
         <name lang="cs">XPS-AFL</name>

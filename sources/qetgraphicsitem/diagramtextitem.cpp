@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 QElectroTech Team
+	Copyright 2006-2020 QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,18 +22,18 @@
 #include "diagram.h"
 
 /**
- * @brief DiagramTextItem::DiagramTextItem
- * @param parent : parent item
- */
+	@brief DiagramTextItem::DiagramTextItem
+	@param parent : parent item
+*/
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent) :
 	QGraphicsTextItem(parent)
 { build(); }
 
 /**
- * @brief DiagramTextItem::DiagramTextItem
- * @param text : text to display
- * @param parent : parent item
- */
+	@brief DiagramTextItem::DiagramTextItem
+	@param text : text to display
+	@param parent : parent item
+*/
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent) :
 	QGraphicsTextItem(text, parent),
 	m_mouse_hover(false),
@@ -41,9 +41,9 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent) :
 { build(); }
 
 /**
- * @brief DiagramTextItem::build
- * Build this item with default value
- */
+	@brief DiagramTextItem::build
+	Build this item with default value
+*/
 void DiagramTextItem::build()
 {
 		//set Zvalue at 10 to be upper than the DiagramImageItem
@@ -57,20 +57,22 @@ void DiagramTextItem::build()
 }
 
 /**
- * @brief DiagramTextItem::diagram
- * @return The diagram of this item or 0 if this text isn't in a diagram
- */
-Diagram *DiagramTextItem::diagram() const {
+	@brief DiagramTextItem::diagram
+	@return The diagram of this item or 0 if this text isn't in a diagram
+*/
+Diagram *DiagramTextItem::diagram() const
+{
 	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**
- * @brief DiagramTextItem::toXml
- * This method do nothing and return an empty DomElement
- * This is used to be inherited by child class
- * @return
- */
-QDomElement DiagramTextItem::toXml(QDomDocument &) const {
+	@brief DiagramTextItem::toXml
+	This method do nothing and return an empty DomElement
+	This is used to be inherited by child class
+	@return
+*/
+QDomElement DiagramTextItem::toXml(QDomDocument &) const
+{
 	return QDomElement();
 }
 
@@ -80,7 +82,8 @@ QDomElement DiagramTextItem::toXml(QDomDocument &) const {
 	@param movement Vecteur exprime en coordonnees locales
 	@return le meme vecteur, exprime en coordonnees de la scene
 */
-QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const
+{
 	// on definit deux points en coordonnees locales
 	QPointF local_origin(0.0, 0.0);
 	QPointF local_movement_point(movement);
@@ -99,7 +102,8 @@ QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
 	@param movement Vecteur exprime en coordonnees de la scene
 	@return le meme vecteur, exprime en coordonnees locales
 */
-QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const
+{
 	// on definit deux points sur la scene
 	QPointF scene_origin(0.0, 0.0);
 	QPointF scene_movement_point(movement);
@@ -118,7 +122,8 @@ QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const {
 	@param movement Vecteur exprime en coordonnees locales
 	@return le meme vecteur, exprime en coordonnees du parent
 */
-QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const
+{
 	// on definit deux points en coordonnees locales
 	QPointF local_origin(0.0, 0.0);
 	QPointF local_movement_point(movement);
@@ -137,7 +142,8 @@ QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
 	@param movement Vecteur exprime en coordonnees du parent
 	@return le meme vecteur, exprime en coordonnees locales
 */
-QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
+QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const
+{
 	// on definit deux points sur le parent
 	QPointF parent_origin(0.0, 0.0);
 	QPointF parent_movement_point(movement);
@@ -166,11 +172,12 @@ void DiagramTextItem::setFont(const QFont &font)
 
 void DiagramTextItem::setColor(const QColor& color)
 {
-    setDefaultTextColor(color);
+	setDefaultTextColor(color);
 	emit colorChanged(color);
 }
 
-QColor DiagramTextItem::color() const {
+QColor DiagramTextItem::color() const
+{
 	return defaultTextColor();
 }
 
@@ -186,9 +193,9 @@ Qt::Alignment DiagramTextItem::alignment() const
 }
 
 /**
- * @brief DiagramTextItem::frameRect
- * @return the rect used to draw a frame around this text
- */
+	@brief DiagramTextItem::frameRect
+	@return the rect used to draw a frame around this text
+*/
 QRectF DiagramTextItem::frameRect() const
 {	
 		//Get the bounding rectangle of the text
@@ -221,18 +228,19 @@ void DiagramTextItem::setPlainText(const QString &text)
 	m_is_html = false;
 }
 
-bool DiagramTextItem::isHtml() const {
+bool DiagramTextItem::isHtml() const
+{
 	return m_is_html;
 }
 
 /**
- * @brief DiagramTextItem::paint
- * Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
- * If text is hovered, this method draw the bounding rect in grey
- * @param painter : painter to use
- * @param option : style option
- * @param widget : widget where must to draw
- */
+	@brief DiagramTextItem::paint
+	Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
+	If text is hovered, this method draw the bounding rect in grey
+	@param painter : painter to use
+	@param option : style option
+	@param widget : widget where must to draw
+*/
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
@@ -261,9 +269,9 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 }
 
 /**
- * @brief DiagramTextItem::focusInEvent
- * @param e
- */
+	@brief DiagramTextItem::focusInEvent
+	@param event
+*/
 void DiagramTextItem::focusInEvent(QFocusEvent *event)
 {
 	QGraphicsTextItem::focusInEvent(event);
@@ -275,9 +283,9 @@ void DiagramTextItem::focusInEvent(QFocusEvent *event)
 }
 
 /**
- * @brief DiagramTextItem::focusOutEvent
- * @param event
- */
+	@brief DiagramTextItem::focusOutEvent
+	@param event
+*/
 void DiagramTextItem::focusOutEvent(QFocusEvent *event)
 {
 	QGraphicsTextItem::focusOutEvent(event);
@@ -313,9 +321,9 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief DiagramTextItem::mousePressEvent
- * @param event
- */
+	@brief DiagramTextItem::mousePressEvent
+	@param event
+*/
 void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton)
@@ -328,9 +336,9 @@ void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramTextItem::mouseMoveEvent
- * @param event
- */
+	@brief DiagramTextItem::mouseMoveEvent
+	@param event
+*/
 void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if (textInteractionFlags() & Qt::TextEditable) QGraphicsTextItem::mouseMoveEvent(event);
 
@@ -359,9 +367,9 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief DiagramTextItem::mouseReleaseEvent
- * @param event
- */
+	@brief DiagramTextItem::mouseReleaseEvent
+	@param event
+*/
 void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
 {
 		//Signal to diagram movement is finish
@@ -394,19 +402,19 @@ void DiagramTextItem::applyRotation(const qreal &angle) {
 }
 
 /**
- * @brief DiagramTextItem::prepareAlignment
- * Call this function before changing the bounding rect of this text.
- */
+	@brief DiagramTextItem::prepareAlignment
+	Call this function before changing the bounding rect of this text.
+*/
 void DiagramTextItem::prepareAlignment()
 {
 	m_alignment_rect = boundingRect();
 }
 
 /**
- * @brief DiagramTextItem::finishAlignment
- * Call this function after changing the bouding rect of this text
- * to set the position of this text according to the alignment property.
- */
+	@brief DiagramTextItem::finishAlignment
+	Call this function after changing the bouding rect of this text
+	to set the position of this text according to the alignment property.
+*/
 void DiagramTextItem::finishAlignment()
 {
 	if(m_block_alignment)
@@ -448,8 +456,8 @@ void DiagramTextItem::finishAlignment()
 }
 
 /**
- * @brief Edit the text with HtmlEditor
- */
+	@brief Edit the text with HtmlEditor
+*/
 void DiagramTextItem::edit()
 {
 	QWidget *parent = nullptr;

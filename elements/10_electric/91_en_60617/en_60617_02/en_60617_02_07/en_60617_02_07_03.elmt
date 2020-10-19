@@ -1,4 +1,4 @@
-<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" hotspot_y="15">
     <uuid uuid="{e2867150-23d3-4db9-b798-e9ecd01d5649}"/>
     <names>
         <name lang="de">flüssige Materie</name>

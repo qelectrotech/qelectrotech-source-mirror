@@ -1,4 +1,4 @@
-<definition hotspot_y="62" height="130" link_type="simple" orientation="dyyy" type="element" version="0.51" width="170" hotspot_x="85">
+<definition hotspot_y="62" height="130" link_type="simple" type="element" version="0.51" width="170" hotspot_x="85">
     <uuid uuid="{6ec8b9e0-4ddd-4b32-ac7c-45850d814cc6}"/>
     <names>
         <name lang="fr">C013XXL relais de securité</name>

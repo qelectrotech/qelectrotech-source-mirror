@@ -1,4 +1,4 @@
-<definition hotspot_x="14" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
+<definition hotspot_x="14" version="0.70" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
     <uuid uuid="{3195ba60-e7cc-4848-bdb7-c478b2cc6695}"/>
     <names>
         <name lang="fr">Perforation de bande ou utilisation de bande perforée</name>

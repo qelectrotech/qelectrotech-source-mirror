@@ -1,4 +1,4 @@
-<definition height="180" version="0.5" type="element" hotspot_y="94" width="630" hotspot_x="315" link_type="simple" orientation="dyyy">
+<definition height="180" version="0.5" type="element" hotspot_y="94" width="630" hotspot_x="315" link_type="simple">
     <uuid uuid="{9fd65720-ff35-4dca-8f04-ea676a80e959}"/>
     <names>
         <name lang="fr">Thyritop 30 Triphasé</name>

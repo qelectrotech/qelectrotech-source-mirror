@@ -1,0 +1,37 @@
+<definition height="50" version="0.80" link_type="simple" width="40" hotspot_y="24" type="element" hotspot_x="20">
+    <uuid uuid="{26fe1324-1ec6-4b7c-b221-c3afdcf0caf4}"/>
+    <names>
+        <name lang="fr">Eclairage</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>S.defffaux
+Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Halignment="AlignLeft" frame="false" y="-19.7" Valignment="AlignTop" rotation="0" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{9a66ab1b-c9d8-4de6-a786-a16ba182d28f}" text_from="ElementInfo" x="19.3725">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" y2="20" y1="14" x1="0" length2="1.5" x2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none"/>
+        <circle y="-15" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15"/>
+        <line length1="1.5" y2="-18" y1="-11" x1="-10" length2="1.5" x2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none"/>
+        <line length1="1.5" y2="-18" y1="-11" x1="10" length2="1.5" x2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none"/>
+        <line length1="1.5" y2="10" y1="-10" x1="-10" length2="1.5" x2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none"/>
+        <line length1="1.5" y2="10" y1="-10" x1="10" length2="1.5" x2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none"/>
+        <terminal y="20" orientation="s" uuid="{5e35d52e-4a3a-461c-a53f-9e6e6f684f4f}" name="" x="0"/>
+        <terminal y="-20" orientation="n" uuid="{bc31bdbc-5454-48c5-b913-48b69c7be3f4}" name="" x="-10"/>
+        <terminal y="-20" orientation="n" uuid="{a9072ac7-314d-444d-8aa8-40dc41ae277b}" name="" x="10"/>
+    </description>
+</definition>

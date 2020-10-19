@@ -1,4 +1,4 @@
-<definition height="50" type="element" width="50" hotspot_y="45" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="25">
+<definition height="50" type="element" width="50" hotspot_y="45" link_type="simple" version="0.70" hotspot_x="25">
     <uuid uuid="{5c883a98-881d-46fd-8867-306bc2cd3818}"/>
     <names>
         <name lang="fr">Ligne à retard</name>

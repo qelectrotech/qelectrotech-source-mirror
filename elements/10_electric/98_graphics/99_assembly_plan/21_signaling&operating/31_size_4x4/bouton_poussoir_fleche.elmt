@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="50" hotspot_y="25" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" height="50" hotspot_y="25" type="element">
     <uuid uuid="{dbbd0546-bd7c-4f28-ae06-fec97f0dbd0f}"/>
     <names>
         <name lang="el">Μπουτόν, βέλος πάνω</name>

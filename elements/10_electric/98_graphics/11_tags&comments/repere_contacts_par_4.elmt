@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+<definition width="40" hotspot_x="20" type="element" link_type="simple" version="0.5" height="70" hotspot_y="35">
     <uuid uuid="{ea73da5f-bda2-4589-8d60-e63b19d46670}"/>
     <names>
         <name lang="pl">Lokalizacja zestyków</name>

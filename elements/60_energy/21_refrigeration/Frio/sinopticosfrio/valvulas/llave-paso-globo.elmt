@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="20" hotspot_y="10" height="20" type="element" ic="true">
 <uuid uuid="{EFF05595-13E8-45C6-936B-1BD3123ECE91}"/><names>
         <name lang="es">Llave de paso globo</name>
     </names>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="15" width="50" hotspot_y="15">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="15" width="50" hotspot_y="15">
     <uuid uuid="{b2b53552-a26b-45cc-8e15-66a66b538ed1}"/>
     <names>
         <name lang="de">Flugplatzfeuer, weiss, rundstrahlend</name>

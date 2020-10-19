@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="90" height="50" hotspot_y="24" hotspot_x="34" version="0.70" link_type="simple">
+<definition type="element" width="90" height="50" hotspot_y="24" hotspot_x="34" version="0.70" link_type="simple">
     <uuid uuid="{5e3e6f83-083f-4fa7-a72b-76113e979cf6}"/>
     <names>
         <name lang="de">polarisiertes Relais, selbsttätig rückstellend,

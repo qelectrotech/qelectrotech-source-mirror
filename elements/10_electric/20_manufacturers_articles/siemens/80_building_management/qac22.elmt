@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" width="40" hotspot_y="5" height="30" version="0.80" type="element" hotspot_x="14">
+<definition link_type="simple" width="40" hotspot_y="5" height="30" version="0.80" type="element" hotspot_x="14">
     <uuid uuid="{05a71d00-6012-4f87-a24a-1fde50b25f93}"/>
     <names>
         <name lang="pl">QAC22</name>

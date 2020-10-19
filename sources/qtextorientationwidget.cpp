@@ -1,28 +1,29 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qtextorientationwidget.h"
 #include <algorithm>
+#include <QMouseEvent>
 
 /**
 	Constructeur
 	Par defaut, ce widget met en valeur les angles multiples de 45 degres
 	et presente un texte oriente a 0 degre, avec la police par defaut de
-	l'application. Le texte affiche est 
+	l'application. Le texte affiche est
 	@param parent Widget parent
 */
 QTextOrientationWidget::QTextOrientationWidget(QWidget *parent) :
@@ -36,14 +37,14 @@ QTextOrientationWidget::QTextOrientationWidget(QWidget *parent) :
 	// chaines par defaut
 	text_size_hash_.insert(tr("Ex.",     "Short example string"),  -1);
 	text_size_hash_.insert(tr("Exemple", "Longer example string"), -1);
-	
+
 	// definit la politique de gestion de la taille de ce widget :
 	// on prefere la sizeHint()
 	QSizePolicy size_policy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	// on souhaite conserver le rapport entre sa hauteur et sa largeur
 	size_policy.setHeightForWidth(true);
 	setSizePolicy(size_policy);
-	
+
 	// suivi de la souris : permet de recevoir les evenements relatifs aux
 	// mouvement de la souris sans que l'utilisateur n'ait a cliquer
 	setMouseTracking(true);
@@ -52,7 +53,8 @@ QTextOrientationWidget::QTextOrientationWidget(QWidget *parent) :
 /**
 	Destructeur
 */
-QTextOrientationWidget::~QTextOrientationWidget() {
+QTextOrientationWidget::~QTextOrientationWidget()
+{
 }
 
 /**
@@ -70,7 +72,8 @@ void QTextOrientationWidget::setOrientation(const double &angle) {
 	0 degre correspond a un texte horizontal, de gauche a droite
 	90 degres correspondent a un texte vertical de haut en bas
 */
-double QTextOrientationWidget::orientation() const {
+double QTextOrientationWidget::orientation() const
+{
 	return(current_orientation_);
 }
 
@@ -80,7 +83,7 @@ double QTextOrientationWidget::orientation() const {
 */
 void QTextOrientationWidget::setFont(const QFont &font) {
 	text_font_ = font;
-	
+
 	// invalide le cache contenant les longueurs des textes a disposition
 	foreach(QString text, text_size_hash_.keys()) {
 		text_size_hash_[text] = -1;
@@ -90,7 +93,8 @@ void QTextOrientationWidget::setFont(const QFont &font) {
 /**
 	@return la police utilisee pour le texte affiche
 */
-QFont QTextOrientationWidget::font() const {
+QFont QTextOrientationWidget::font() const
+{
 	return(text_font_);
 }
 
@@ -104,7 +108,8 @@ void QTextOrientationWidget::setDisplayText(bool display_text) {
 /**
 	@return la police utilisee pour le texte affiche
 */
-bool QTextOrientationWidget::textDisplayed() const {
+bool QTextOrientationWidget::textDisplayed() const
+{
 	return(display_text_);
 }
 
@@ -117,7 +122,7 @@ bool QTextOrientationWidget::textDisplayed() const {
 */
 void QTextOrientationWidget::setUsableTexts(const QStringList &texts_list) {
 	if (texts_list.isEmpty()) return;
-	
+
 	// on oublie les anciennes chaines
 	foreach(QString text, text_size_hash_.keys()) {
 		// il faut oublier les anciennes chaines
@@ -125,7 +130,7 @@ void QTextOrientationWidget::setUsableTexts(const QStringList &texts_list) {
 			text_size_hash_.remove(text);
 		}
 	}
-	
+
 	// on ajoute les nouvelles, sans les calculer (on met -1 en guise de longueur)
 	foreach(QString text, texts_list) {
 		if (!text_size_hash_.contains(text)) {
@@ -137,14 +142,16 @@ void QTextOrientationWidget::setUsableTexts(const QStringList &texts_list) {
 /**
 	@return la liste des chaines dont le widget dispose pour afficher un texte
 */
-QStringList QTextOrientationWidget::usableTexts() const {
+QStringList QTextOrientationWidget::usableTexts() const
+{
 	return(text_size_hash_.keys());
 }
 
 /**
 	@return true si le widget est en mode "lecture seule", false sinon
 */
-bool QTextOrientationWidget::isReadOnly() const {
+bool QTextOrientationWidget::isReadOnly() const
+{
 	return(read_only_);
 }
 
@@ -158,7 +165,8 @@ void QTextOrientationWidget::setReadOnly(bool ro) {
 /**
 	@return la taille recommandee pour ce widget
 */
-QSize QTextOrientationWidget::sizeHint() const {
+QSize QTextOrientationWidget::sizeHint() const
+{
 	return(QSize(50, 50));
 }
 
@@ -167,7 +175,8 @@ QSize QTextOrientationWidget::sizeHint() const {
 	@return la hauteur preferee pour une largeur donnee
 	Pour ce widget : retourne la largeur fournie afin de maintenir le widget carre
 */
-int QTextOrientationWidget::heightForWidth(int w) const {
+int QTextOrientationWidget::heightForWidth(int w) const
+{
 	return(w);
 }
 
@@ -177,31 +186,31 @@ int QTextOrientationWidget::heightForWidth(int w) const {
 */
 void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 	Q_UNUSED(event);
-	
+
 	// rectangle de travail avec son centre et son rayon
 	QRect drawing_rectangle(QPoint(0, 0), size());
 	drawing_rectangle.adjust(5, 5, -5, -5);
-	
+
 	QPointF drawing_rectangle_center(drawing_rectangle.center());
 	qreal drawing_rectangle_radius = drawing_rectangle.width() / 2.0;
-	
+
 	QPainter p;
 	p.begin(this);
-	
+
 	p.setRenderHint(QPainter::Antialiasing,     true);
 	p.setRenderHint(QPainter::TextAntialiasing, true);
-	
+
 	// cercle gris a fond jaune
 	p.setPen(QPen(QBrush(QColor("#9FA8A8")), 2.0));
 	p.setBrush(QBrush(QColor("#ffffaa")));
 	p.drawEllipse(drawing_rectangle);
-	
+
 	// ligne rouge indiquant l'angle actuel
 	p.setPen(QPen(QBrush(Qt::red), 1.0));
 	p.translate(drawing_rectangle_center);
 	p.rotate(current_orientation_);
 	p.drawLine(QLineF(QPointF(), QPointF(drawing_rectangle_radius, 0.0)));
-	
+
 	// texte optionnel
 	if (display_text_) {
 		// determine le texte a afficher
@@ -215,7 +224,7 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 			p.drawText(QPoint(), chosen_text);
 		}
 	}
-	
+
 	// carres verts a fond vert
 	qreal squares_size = size().width() / 15.0;
 	qreal square_offset = - squares_size / 2.0;
@@ -236,7 +245,7 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 			p.setBrush(QBrush(QColor("#248A34")));
 		}
 	}
-	
+
 	p.end();
 }
 
@@ -246,9 +255,15 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 */
 void QTextOrientationWidget::mouseMoveEvent(QMouseEvent *event) {
 	if (read_only_) return;
-	
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	bool drawn_angle_hovered = positionIsASquare(event -> localPos(), &highlight_angle_);
-	
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	bool drawn_angle_hovered = positionIsASquare(event -> position(), &highlight_angle_);
+#endif
+
 	if (must_highlight_angle_ != drawn_angle_hovered) {
 		must_highlight_angle_ = drawn_angle_hovered;
 		update();
@@ -261,10 +276,16 @@ void QTextOrientationWidget::mouseMoveEvent(QMouseEvent *event) {
 */
 void QTextOrientationWidget::mouseReleaseEvent(QMouseEvent *event) {
 	if (read_only_) return;
-	
+
 	double clicked_angle;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	bool drawn_angle_clicked = positionIsASquare(event -> localPos(), &clicked_angle);
-	
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+	bool drawn_angle_clicked = positionIsASquare(event -> position(), &clicked_angle);
+#endif
 	if (drawn_angle_clicked) {
 		setOrientation(clicked_angle);
 		emit(orientationChanged(clicked_angle));
@@ -280,14 +301,16 @@ void QTextOrientationWidget::mouseReleaseEvent(QMouseEvent *event) {
 QString QTextOrientationWidget::getMostUsableStringForRadius(const qreal &radius) {
 	// s'assure que l'on connait la longueur de chaque texte a disposition
 	generateTextSizeHash();
-	
+
 	// recupere les longueurs a disposition
 	QList<qreal> available_lengths = text_size_hash_.values();
 	// trie les longueurs par ordre croissant
 	std::sort(available_lengths.begin(), available_lengths.end());
 	// recherche la position ou l'on insererait le rayon
-	QList<qreal>::const_iterator i = qUpperBound(available_lengths, radius);
-	
+	QList<qreal>::const_iterator i = std::upper_bound(available_lengths.begin(),
+							  available_lengths.end(),
+							  radius);
+
 	// la valeur precedent cette position est donc celle qui nous interesse
 	if (i == available_lengths.begin()) {
 		// nous sommes au debut de la liste - nous ne pouvons donc pas afficher de chaine
@@ -304,7 +327,8 @@ QString QTextOrientationWidget::getMostUsableStringForRadius(const qreal &radius
 	S'assure que le hash associant les textes utilisables a leur taille soit
 	correctement rempli.
 */
-void QTextOrientationWidget::generateTextSizeHash() {
+void QTextOrientationWidget::generateTextSizeHash()
+{
 	QFontMetrics font_metrics(text_font_);
 	foreach(QString text, text_size_hash_.keys()) {
 		if (text_size_hash_[text] == -1) {
@@ -324,27 +348,27 @@ bool QTextOrientationWidget::positionIsASquare(const QPointF &pos, double *angle
 	// rectangle de travail avec son centre et son rayon
 	QRect drawing_rectangle(QPoint(0, 0), size());
 	drawing_rectangle.adjust(5, 5, -5, -5);
-	
+
 	QPointF drawing_rectangle_center(drawing_rectangle.center());
 	qreal drawing_rectangle_radius = drawing_rectangle.width() / 2.0;
-	
+
 	qreal squares_size = size().width() / 15.0;
 	qreal square_offset = - squares_size / 2.0;
 	QRectF square_qrect = QRect(square_offset, square_offset, squares_size, squares_size);
-	
+
 	for (double drawing_angle = 0.0 ; drawing_angle < 360.0 ; drawing_angle += squares_interval_) {
 		QTransform transform = QTransform()
 			.translate(drawing_rectangle_center.x(), drawing_rectangle_center.y())
 			.rotate(drawing_angle)
 			.translate(drawing_rectangle_radius - 1.0, 0.0)
 			.rotate(-45.0);
-		
+
 		QRectF mapped_rectangle = transform.mapRect(square_qrect);
 		if (mapped_rectangle.contains(pos)) {
 			if (angle_value_ptr) *angle_value_ptr = drawing_angle;
 			return(true);
 		}
 	}
-	
+
 	return(false);
 }

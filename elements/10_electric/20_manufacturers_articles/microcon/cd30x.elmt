@@ -1,4 +1,4 @@
-<definition width="100" height="180" orientation="dyyy" version="0.80" link_type="simple" hotspot_x="46" type="element" hotspot_y="89">
+<definition width="100" height="180" version="0.80" link_type="simple" hotspot_x="46" type="element" hotspot_y="89">
     <uuid uuid="{7b140968-a522-4086-87d3-87f600317130}"/>
     <names>
         <name lang="cs">CD30x</name>

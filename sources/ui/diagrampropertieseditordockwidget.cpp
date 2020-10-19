@@ -21,10 +21,10 @@
 #include "propertieseditorfactory.h"
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
- * Constructor
- * @param parent : parent widget
- */
+	@brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
+	Constructor
+	@param parent : parent widget
+*/
 DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *parent) :
 	PropertiesEditorDockWidget(parent),
 	m_diagram(nullptr),
@@ -32,28 +32,31 @@ DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *pa
 {}
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::setDiagram
- * Set the diagram to edit the selection.
- * Connect the diagram signal selectionChanged() to this slot selectionChanged();
- * If diagram = nullptr, we just disconnect all signal and remove editor.
- * @param diagram
- * @param diagram
- */
+	@brief DiagramPropertiesEditorDockWidget::setDiagram
+	Set the diagram to edit the selection.
+	Connect the diagram signal selectionChanged() to this slot selectionChanged();
+	If diagram = nullptr, we just disconnect all signal and remove editor.
+	@param diagram
+*/
 void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 {
 	if (m_diagram == diagram) return;
 
 	if (m_diagram)
 	{
-		disconnect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
-		disconnect(m_diagram, SIGNAL(destroyed()),        this, SLOT(diagramWasDeleted()));
+		disconnect(m_diagram, SIGNAL(selectionChanged()),
+			   this, SLOT(selectionChanged()));
+		disconnect(m_diagram, SIGNAL(destroyed()),
+			   this, SLOT(diagramWasDeleted()));
 	}
 
 	if (diagram)
 	{
 		m_diagram = diagram;
-		connect(m_diagram, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()), Qt::QueuedConnection);
-		connect(m_diagram, SIGNAL(destroyed()),        this, SLOT(diagramWasDeleted()));
+		connect(m_diagram, SIGNAL(selectionChanged()),
+			this, SLOT(selectionChanged()), Qt::QueuedConnection);
+		connect(m_diagram, SIGNAL(destroyed()),
+			this, SLOT(diagramWasDeleted()));
 		selectionChanged();
 	}
 	else
@@ -65,17 +68,20 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 }
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::selectionChanged
- * The current selection of diagram was changed.
- * We fill the dock with the appropriate ElementPropertiesWidget of the current selection.
- */
+	@brief DiagramPropertiesEditorDockWidget::selectionChanged
+	The current selection of diagram was changed.
+	We fill the dock with the appropriate ElementPropertiesWidget of the current selection.
+*/
 void DiagramPropertiesEditorDockWidget::selectionChanged()
 {
 	if (!m_diagram) {
 		return;
 	}
 
-	auto editor_ = PropertiesEditorFactory::propertiesEditor(m_diagram->selectedItems(), editors().count()? editors().first() : nullptr, this);
+	auto editor_ = PropertiesEditorFactory::propertiesEditor(
+				m_diagram->selectedItems(),
+				editors().count() ? editors().first() : nullptr,
+				this);
 	if (!editor_) {
 		clear();
 		return;
@@ -92,9 +98,9 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 }
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::diagramWasDeleted
- * Remove current editor and set m_diagram to nullptr.
- */
+	@brief DiagramPropertiesEditorDockWidget::diagramWasDeleted
+	Remove current editor and set m_diagram to nullptr.
+*/
 void DiagramPropertiesEditorDockWidget::diagramWasDeleted()
 {
 	m_diagram = nullptr;

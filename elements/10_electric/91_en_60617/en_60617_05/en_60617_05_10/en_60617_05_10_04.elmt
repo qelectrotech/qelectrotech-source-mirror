@@ -1,4 +1,4 @@
-<definition width="130" height="170" orientation="dyyy" hotspot_y="125" hotspot_x="65" link_type="simple" type="element" version="0.70">
+<definition width="130" height="170" hotspot_y="125" hotspot_x="65" link_type="simple" type="element" version="0.70">
     <uuid uuid="{b036c064-3c7c-4c4e-a84d-4b0500e9f19e}"/>
     <names>
         <name lang="de">Flüssigkathode, isoliert</name>

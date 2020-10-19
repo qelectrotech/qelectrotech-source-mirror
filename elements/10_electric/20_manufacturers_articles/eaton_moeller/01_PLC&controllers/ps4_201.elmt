@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="224" orientation="dyyy" hotspot_y="115" type="element" height="240" width="460" version="0.5">
+<definition link_type="simple" hotspot_x="224" hotspot_y="115" type="element" height="240" width="460" version="0.5">
     <uuid uuid="{c21fc069-600a-4832-9b27-9e52184f1cd8}"/>
     <names>
         <name lang="pl">PS4 201</name>

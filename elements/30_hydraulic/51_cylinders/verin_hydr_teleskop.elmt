@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="16" hotspot_y="24" width="90" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="16" hotspot_y="24" width="90" height="40" link_type="simple" type="element">
     <uuid uuid="{ef70741f-8f72-4fa1-9fe1-581d1bd4c50c}"/>
     <names>
         <name lang="en">Telescopic hydraulic cylinder</name>

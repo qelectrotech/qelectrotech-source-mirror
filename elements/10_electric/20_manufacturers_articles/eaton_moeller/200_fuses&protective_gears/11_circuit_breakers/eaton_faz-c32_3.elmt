@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="31" link_type="master" version="0.5" width="90" height="60" hotspot_x="50" orientation="dyyy">
+<definition type="element" hotspot_y="31" link_type="master" version="0.5" width="90" height="60" hotspot_x="50">
     <uuid uuid="{b5b0f538-38c1-41b5-9ba7-62fe45457515}"/>
     <names>
         <name lang="en">FAZ-C32/3 (278876)</name>

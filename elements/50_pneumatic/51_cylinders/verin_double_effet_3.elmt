@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="90" hotspot_x="35" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="90" hotspot_x="35" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{ad7129d0-ed46-4478-8c7b-6aaf9919ac9e}"/>
     <names>
         <name lang="en">Double acting actuator with hollow shaft</name>

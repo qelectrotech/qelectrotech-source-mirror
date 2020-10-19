@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="2" width="30" orientation="dyyy" height="10" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="2" width="30" height="10" link_type="simple" type="element">
     <uuid uuid="{0dd39709-38f3-4620-86a9-cf7f03fbc0e5}"/>
     <names>
         <name lang="en">Push-button</name>

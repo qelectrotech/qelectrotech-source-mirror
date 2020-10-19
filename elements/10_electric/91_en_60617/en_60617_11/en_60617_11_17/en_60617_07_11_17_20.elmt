@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="34" width="70" hotspot_y="15">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="34" width="70" hotspot_y="15">
     <uuid uuid="{daf82945-6ad4-4aa7-93e7-6b05394fb4a5}"/>
     <names>
         <name lang="de">Endeinspeisung</name>

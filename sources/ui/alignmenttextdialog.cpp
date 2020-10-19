@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -51,9 +51,9 @@ AlignmentTextDialog::~AlignmentTextDialog()
 }
 
 /**
- * @brief AlignmentTextDialog::alignment
- * @return the selected alignment
- */
+	@brief AlignmentTextDialog::alignment
+	@return the selected alignment
+*/
 Qt::Alignment AlignmentTextDialog::alignment() const
 {
 	if(ui->top_left->isChecked())

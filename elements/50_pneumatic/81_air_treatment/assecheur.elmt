@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35" orientation="dyyy">
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
     <uuid uuid="{b474e1c6-8ed7-480a-b0a8-6f8aec9ed3d7}"/>
     <names>
         <name lang="en">Dryer</name>

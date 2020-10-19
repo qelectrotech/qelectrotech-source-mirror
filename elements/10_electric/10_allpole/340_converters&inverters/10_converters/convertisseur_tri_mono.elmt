@@ -1,4 +1,4 @@
-<definition hotspot_y="35" type="element" height="70" width="60" hotspot_x="30" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="35" type="element" height="70" width="60" hotspot_x="30" link_type="simple" version="0.5">
     <uuid uuid="{ad88d374-e4a5-4af7-8b15-717363f0b3f8}"/>
     <names>
         <name lang="nl">Wisselspanning driefase > wisselspanning eenfase AC3>AC1</name>

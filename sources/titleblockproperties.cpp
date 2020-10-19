@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,7 +34,8 @@ TitleBlockProperties::TitleBlockProperties() :
 /**
 	Destructeur
 */
-TitleBlockProperties::~TitleBlockProperties() {
+TitleBlockProperties::~TitleBlockProperties()
+{
 }
 
 /**
@@ -73,7 +74,8 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
-void TitleBlockProperties::toXml(QDomElement &e) const {
+void TitleBlockProperties::toXml(QDomElement &e) const
+{
 	e.setAttribute("author",   author);
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
@@ -131,12 +133,13 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 }
 
 /**
- * @brief TitleBlockProperties::toSettings
- * Export the TitleBlockProperties into a QSettings
- * @param settings : setting to use
- * @param prefix : name to use as prefix for this property
- */
-void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const {
+	@brief TitleBlockProperties::toSettings
+	Export the TitleBlockProperties into a QSettings
+	@param settings : setting to use
+	@param prefix : name to use as prefix for this property
+*/
+void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const
+{
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
@@ -176,9 +179,9 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 }
 
 /**
- * @brief TitleBlockProperties::defaultProperties
- * Return the default properties stored in the setting file
- */
+	@brief TitleBlockProperties::defaultProperties
+	Return the default properties stored in the setting file
+*/
 TitleBlockProperties TitleBlockProperties::defaultProperties()
 {
 	QSettings settings;
@@ -192,7 +195,8 @@ TitleBlockProperties TitleBlockProperties::defaultProperties()
 /**
 	@return La date a utiliser
 */
-QDate TitleBlockProperties::finalDate() const {
+QDate TitleBlockProperties::finalDate() const
+{
 	if (useDate == UseDateValue) {
 		return(date);
 	} else {
@@ -207,7 +211,8 @@ QDate TitleBlockProperties::finalDate() const {
 	  * now pour afficher la date courante (a la creation du schema)
 	  * une date au format yyyyMMdd pour utiliser une date fixe
 */
-QString TitleBlockProperties::exportDate() const {
+QString TitleBlockProperties::exportDate() const
+{
 	QString date_setting_value;
 	if (useDate == UseDateValue) {
 		if (date.isNull()) date_setting_value = "null";

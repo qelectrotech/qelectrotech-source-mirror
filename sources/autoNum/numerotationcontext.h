@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,14 +26,17 @@
 	This class represents a numerotation context, i.e. the data (type, value, increase)
 	of a numerotation at a given time. It is notably used by conductor
 	to store the informations they need to do their autonumerotation.
- */
+*/
 class NumerotationContext
 {
 	public:
 	NumerotationContext ();
 	NumerotationContext (QDomElement &);
 	void clear();
-	bool addValue(const QString &, const QVariant & = QVariant(1), const int = 1, const int = 0);
+	bool addValue(const QString &,
+		      const QVariant & = QVariant(1),
+		      const int = 1,
+		      const int = 0);
 	QString operator[] (const int &) const;
 	void operator << (const NumerotationContext &);
 	int size() const;

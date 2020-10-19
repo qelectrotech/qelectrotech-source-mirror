@@ -1,4 +1,4 @@
-<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+<definition type="element" width="50" height="50" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
     <uuid uuid="{d95d40d9-58d5-4dc8-ba9a-580c9ca04a81}"/>
     <names>
         <name lang="de">Synchronoskop </name>

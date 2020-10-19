@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{7470aefd-2f4c-46ec-a300-f99fd9b34a07}"/>
     <names>
         <name lang="it">Allarme contatto aperto</name>

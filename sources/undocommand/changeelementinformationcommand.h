@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,13 +24,17 @@
 class Element;
 
 /**
- * @brief The ChangeElementInformationCommand class
- * This class manage undo/redo to change the element information.
- */
+	@brief The ChangeElementInformationCommand class
+	This class manage undo/redo to change the element information.
+*/
 class ChangeElementInformationCommand : public QUndoCommand
 {
 	public:
-		ChangeElementInformationCommand(Element *elmt, DiagramContext &old_info, DiagramContext &new_info, QUndoCommand *parent = nullptr);
+		ChangeElementInformationCommand(
+				Element *elmt,
+				DiagramContext &old_info,
+				DiagramContext &new_info,
+				QUndoCommand *parent = nullptr);
 
 		int id() const override {return 1;}
 		bool mergeWith(const QUndoCommand *other) override;
@@ -42,8 +46,7 @@ class ChangeElementInformationCommand : public QUndoCommand
 
 	private:
 		Element       *m_element;
-		DiagramContext m_old_info,
-					   m_new_info;
+		DiagramContext m_old_info, m_new_info;
 };
 
 #endif // CHANGEELEMENTINFORMATIONCOMMAND_H

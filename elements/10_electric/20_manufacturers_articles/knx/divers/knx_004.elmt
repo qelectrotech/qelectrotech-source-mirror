@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="20" width="20" hotspot_x="14" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="20" width="20" hotspot_x="14">
     <uuid uuid="{12658330-47ef-445e-adb5-74ee8b8b843d}"/>
     <names>
         <name lang="it">Dispositivo di blocco</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
     <uuid uuid="{38937980-a4d9-4666-b43d-f537960b72ac}"/>
     <names>
         <name lang="de">Taster mit Leuchte</name>

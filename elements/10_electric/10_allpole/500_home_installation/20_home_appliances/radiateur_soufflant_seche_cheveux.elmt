@@ -1,0 +1,38 @@
+<definition link_type="simple" type="element" height="50" width="30" hotspot_y="14" version="0.80" hotspot_x="14">
+    <uuid uuid="{89039a67-b9cd-42b3-9074-52ff08df22d7}"/>
+    <names>
+        <name lang="ar">مشعاع نافخ - مجفف شعر</name>
+        <name lang="nl">Ventilator verwarmer</name>
+        <name lang="fr">Radiateur soufflant sèche cheveux</name>
+        <name lang="el">Στεγνωτήρας μαλλιών</name>
+        <name lang="en">Fan heater hairdryer</name>
+        <name lang="de">Gebläseheizkörper</name>
+        <name lang="pl">Suszarka do włosów</name>
+        <name lang="cs">Vysoušeč vlasů, fén na vlasy</name>
+        <name lang="it">Asciuga capelli</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="-7" z="1" uuid="{cead8dbc-bbb1-475f-bdfc-ea74fbe0d0bd}" text_from="ElementInfo" y="12" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" height="4" width="4" start="-90" x="-7.4982" y="12.585"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="16.5596" length2="1.5" length1="1.5" x2="-5.0236" y1="12.5596" x1="4.9763" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="16.5596" length2="1.5" length1="1.5" x2="4.9763" y1="12.5596" x1="-5.0236" end2="none"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" height="4" width="4" start="90" x="3.561" y="12.585"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" width="6" ry="0" x="-12" rx="0" y="-1"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" width="6" ry="0" x="6" rx="0" y="-1"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" width="6" ry="0" x="0" rx="0" y="-1"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6" width="6" ry="0" x="-6" rx="0" y="-1"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="12" y4="-1" y2="23" y3="23" x2="-12" y1="-1" x1="-12" x3="12"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-1" length2="1.5" length1="1.5" x2="-10" y1="-10" x1="-10" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="24" length2="1.5" length1="1.5" x2="0" y1="30" x1="0" end2="none"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-10" length2="1.5" length1="1.5" x2="10" y1="-2" x1="10" end2="none"/>
+        <terminal orientation="n" name="" x="-10" uuid="{e5493254-cd3d-4b0f-8db6-db69a81b207f}" y="-10"/>
+        <terminal orientation="n" name="" x="10" uuid="{7156d3ab-469c-49c2-bc30-dd9ee1a513b3}" y="-10"/>
+        <terminal orientation="s" name="" x="0" uuid="{abee7d33-4181-4424-9133-2f9e1dabfdd7}" y="30"/>
+    </description>
+</definition>

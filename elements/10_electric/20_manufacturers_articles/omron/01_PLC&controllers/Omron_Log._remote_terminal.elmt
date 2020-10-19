@@ -1,4 +1,4 @@
-<definition type="element" version="0.51" link_type="simple" hotspot_x="36" height="120" hotspot_y="82" width="60" orientation="dyyy">
+<definition type="element" version="0.51" link_type="simple" hotspot_x="36" height="120" hotspot_y="82" width="60">
     <uuid uuid="{a506d330-0f98-49aa-8967-ec6b35b90a61}"/>
     <names>
         <name lang="en">Remote_terminal</name>

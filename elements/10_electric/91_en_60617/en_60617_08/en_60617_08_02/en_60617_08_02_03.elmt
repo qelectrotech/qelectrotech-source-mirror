@@ -1,4 +1,4 @@
-<definition type="element" width="70" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="45" version="0.70">
+<definition type="element" width="70" height="50" link_type="simple" hotspot_y="45" hotspot_x="45" version="0.70">
     <uuid uuid="{7a9d2436-d434-45c8-ac8b-7ef3f2830edb}"/>
     <names>
         <name lang="de">Blindstrommeßgerät, anzeigend

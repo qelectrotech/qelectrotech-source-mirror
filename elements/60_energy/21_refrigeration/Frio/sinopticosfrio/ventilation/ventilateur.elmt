@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="24">
+<definition width="50" hotspot_x="14" type="element" link_type="simple" version="0.5" height="50" hotspot_y="24">
     <uuid uuid="{2a5b4750-0be8-4a4c-a3f6-bef95019900d}"/>
     <names>
         <name lang="cs">Větrák</name>

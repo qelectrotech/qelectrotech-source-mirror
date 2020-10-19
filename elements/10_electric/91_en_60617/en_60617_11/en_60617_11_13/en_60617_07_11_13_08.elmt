@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+<definition type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
     <uuid uuid="{0f1c6905-5c1d-421a-bfda-ab96ebfabd68}"/>
     <names>
         <name lang="de">Steckdose mit Trenntrafo</name>

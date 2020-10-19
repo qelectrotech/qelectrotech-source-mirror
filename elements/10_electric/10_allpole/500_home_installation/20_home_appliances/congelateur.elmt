@@ -1,0 +1,42 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{d127476d-ed64-4ffb-a4d4-f35decfc1903}"/>
+    <names>
+        <name lang="cs">Mraznička, mrazák, mrazicí skříň</name>
+        <name lang="pl">Zamrażarka</name>
+        <name lang="ar">مُجمّد</name>
+        <name lang="de">Gefriergerät</name>
+        <name lang="en">Freezer</name>
+        <name lang="el">Καταψύκτης</name>
+        <name lang="nl">Vriezer</name>
+        <name lang="it">Congelatore</name>
+        <name lang="fr">Congélateur</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="9" uuid="{357d20d9-92af-4291-b57f-a49ffc57ce9b}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-2" end2="none" antialias="false" x2="2" y1="17" length2="1.5" y2="13" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="5" end2="none" antialias="false" x2="9" y1="12" length2="1.5" y2="8" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-12" antialias="false" y3="23" x2="-12" y1="-1" y2="23" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" x4="12"/>
+        <line x1="-2" end2="none" antialias="false" x2="2" y1="13" length2="1.5" y2="17" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="5" end2="none" antialias="false" x2="9" y1="8" length2="1.5" y2="12" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-9" end2="none" antialias="false" x2="-5" y1="12" length2="1.5" y2="8" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-3" end2="none" antialias="false" x2="3" y1="15" length2="1.5" y2="15" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="4" end2="none" antialias="false" x2="10" y1="10" length2="1.5" y2="10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-9" end2="none" antialias="false" x2="-5" y1="8" length2="1.5" y2="12" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="12" length2="1.5" y2="18" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7" end2="none" antialias="false" x2="7" y1="7" length2="1.5" y2="13" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-4" y1="10" length2="1.5" y2="10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-7" end2="none" antialias="false" x2="-7" y1="7" length2="1.5" y2="13" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-2" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="30" length2="1.5" y2="24" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{b6819b17-30fc-43a5-93c7-e2e364c1ec86}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{cc159b63-6d07-4c5a-a56c-14d8fbe1c12f}"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{b6819b17-30fc-43a5-93c7-e2e364c1ec86}"/>
+    </description>
+</definition>

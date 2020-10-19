@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,10 +24,10 @@
 class Element;
 
 /**
- * @brief The DiagramEventAddElement class
- * This diagram event add a new element, for each left click button at the position of click.
- * Space key rotate current element by 90°, right click button finish this event.
- */
+	@brief The DiagramEventAddElement class
+	This diagram event add a new element, for each left click button at the position of click.
+	Space key rotate current element by 90°, right click button finish this event.
+*/
 class DiagramEventAddElement : public DiagramEventInterface
 {
 		Q_OBJECT

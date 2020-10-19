@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="60" hotspot_x="15" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="60" hotspot_x="15" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{7105b57c-ab81-4064-a378-f64c1ab0fd84}"/>
     <names>
         <name lang="en">Motor in one direction only

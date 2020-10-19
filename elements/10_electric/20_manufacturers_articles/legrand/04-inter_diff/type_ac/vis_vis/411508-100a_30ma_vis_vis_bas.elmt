@@ -1,0 +1,58 @@
+<definition hotspot_x="46" link_type="master" hotspot_y="36" width="120" height="90" type="element" version="0.80">
+    <uuid uuid="{83fffd98-10ce-49ff-b67c-09bc00145f9e}"/>
+    <names>
+        <name lang="fr">411508 - Interrupteur différentiel AC 100A 30mA Haut-Vis/Bas-Vis</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="designation">4115 08</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="description">Interrupteur différentiel DX³-ID arrivée haute et départ bas à vis - 2P 230V~ 100A typeAC 30mA - 2 modules</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="46" text="Type AC" rotation="0" x="22"/>
+        <circle diameter="3" y="-19.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-11.5"/>
+        <line x1="10" x2="10" end1="none" y2="40" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="4" antialias="false"/>
+        <polygon x1="-30" x2="-30" y3="-20" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="3" antialias="true" x3="-35"/>
+        <polygon x1="-20" x2="-20" y3="-20" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="5" antialias="true" x3="-25"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{7c189aba-a86c-4286-964d-b437612ed744}" text_width="-1" text_from="ElementInfo" y="-18" Halignment="AlignLeft" z="6" Valignment="AlignTop" rotation="0" frame="false" x="20">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-10" x2="-10" end1="none" y2="40" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="4" antialias="false"/>
+        <line x1="-22" x2="8" end1="none" y2="-10" length1="1.5" length2="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" end2="none" y1="-10" antialias="false"/>
+        <polygon x1="-10" x2="-10" y3="-20" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" antialias="true" x3="-15"/>
+        <polygon x1="10" x2="10" y3="-20" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" antialias="true" x3="5"/>
+        <line x1="-10" x2="-10" end1="none" y2="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-30" antialias="false"/>
+        <line x1="10" x2="10" end1="none" y2="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-30" antialias="false"/>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="20" text="100A" rotation="0" x="22"/>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="35" text="30mA" rotation="0" x="20"/>
+        <line x1="-10" x2="-30" end1="none" y2="35" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="35" antialias="false"/>
+        <line x1="-30" x2="-30" end1="none" y2="20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="35" antialias="false"/>
+        <rect width="4" ry="0" height="10" y="10" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="-32"/>
+        <line x1="-30" x2="-30" end1="none" y2="3" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="10" antialias="false"/>
+        <polygon x1="-30" x2="-30" y4="-20" y3="-25" y2="-25" y5="-20" x4="-20" x5="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-20" antialias="false" x3="-20"/>
+        <line x1="-20" x2="10" end1="none" y2="5" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="5" antialias="false"/>
+        <line x1="-40" x2="-35" end1="none" y2="-10" length1="1.5" length2="1.5" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" end2="none" y1="-10" antialias="false"/>
+        <polygon x1="-38" x2="-40" y4="-7" y3="-7" y2="-13" y5="-7" x4="-38" x5="-38" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-13" antialias="false" x3="-40"/>
+        <rect width="40" ry="5" height="10" y="20" rx="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-20"/>
+        <line x1="7" x2="13" end1="none" y2="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-20" antialias="false"/>
+        <line x1="-13" x2="-7" end1="none" y2="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-20" antialias="false"/>
+        <circle diameter="3" y="-19.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="8.5"/>
+        <terminal uuid="{87415b3d-e6e9-495a-a3df-40344ef9afa7}" orientation="n" y="-30" name="" x="-10"/>
+        <terminal uuid="{f91c8a09-5ee4-4548-ae40-55621682a1f0}" orientation="s" y="40" name="" x="-10"/>
+        <terminal uuid="{a13a9106-e108-4219-8f6d-222ad13197cb}" orientation="s" y="40" name="" x="10"/>
+        <terminal uuid="{d3b9f3c3-7d4d-4ff6-a86e-1dce5cb4c35a}" orientation="n" y="-30" name="" x="10"/>
+    </description>
+</definition>

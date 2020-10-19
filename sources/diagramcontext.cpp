@@ -1,33 +1,34 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramcontext.h"
-#include <QRegExp>
 #include "qet.h"
 #include <QDebug>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 /**
- * @brief DiagramContext::add
- * Add all value of @other to this.
- * If a key already exist, the value is replaced.
- * If a key doesn't exist, she will be added.
- * All other keys of this context, which are not present in @other, stay unchanged.
- * @param other
- */
+	@brief DiagramContext::add
+	Add all value of other to this.
+	If a key already exist, the value is replaced.
+	If a key doesn't exist, she will be added.
+	All other keys of this context, which are not present in other, stay unchanged.
+	@param other
+*/
 void DiagramContext::add(DiagramContext other)
 {
 	for (QString key : other.keys()) {
@@ -36,9 +37,9 @@ void DiagramContext::add(DiagramContext other)
 }
 
 /**
- * @brief DiagramContext::remove
- * @param key
- */
+	@brief DiagramContext::remove
+	@param key
+*/
 void DiagramContext::remove(const QString &key) {
 	m_content.remove(key);
 }
@@ -67,14 +68,16 @@ QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const
 	@param key string key
 	@return true if that key is known to the diagram context, false otherwise
 */
-bool DiagramContext::contains(const QString &key) const {
+bool DiagramContext::contains(const QString &key) const
+{
 	return(m_content.contains(key));
 }
 
 /**
 	@param key
 */
-const QVariant DiagramContext::operator[](const QString &key) const {
+const QVariant DiagramContext::operator[](const QString &key) const
+{
 	return(m_content[key]);
 }
 
@@ -97,14 +100,16 @@ bool DiagramContext::addValue(const QString &key, const QVariant &value, bool sh
 	return(false);
 }
 
-QVariant DiagramContext::value(const QString &key) const {
+QVariant DiagramContext::value(const QString &key) const
+{
 	return m_content.value(key);
 }
 
 /**
 	Clear the content of this diagram context.
 */
-void DiagramContext::clear() {
+void DiagramContext::clear()
+{
 	m_content.clear();
 	m_content_show.clear();
 }
@@ -112,26 +117,30 @@ void DiagramContext::clear() {
 /**
 	@return the number of key/value pairs stored in this object.
 */
-int DiagramContext::count() {
+int DiagramContext::count()
+{
 	return(m_content.count());
 }
 
 /**
- * @brief DiagramContext::keyMustShow
- * @return the value pairs with key, if key no found, return false
- */
-bool DiagramContext::keyMustShow(const QString &key) const {
+	@brief DiagramContext::keyMustShow
+	@return the value pairs with key, if key no found, return false
+*/
+bool DiagramContext::keyMustShow(const QString &key) const
+{
 	if (m_content_show.contains(key))
 		return m_content_show[key];
 	return false;
 }
 
-bool DiagramContext::operator==(const DiagramContext &dc) const {
+bool DiagramContext::operator==(const DiagramContext &dc) const
+{
 	return(m_content     == dc.m_content &&
 		   m_content_show == dc.m_content_show);
 }
 
-bool DiagramContext::operator!=(const DiagramContext &dc) const {
+bool DiagramContext::operator!=(const DiagramContext &dc) const
+{
 	return(!(*this == dc));
 }
 
@@ -139,7 +148,8 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const {
 	Export this context properties under the \a e XML element, using tags
 	named \a tag_name (defaults to "property").
 */
-void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const {
+void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
+{
 	foreach (QString key, keys()) {
 		QDomElement property = e.ownerDocument().createElement(tag_name);
 		property.setAttribute("name", key);
@@ -163,11 +173,12 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 }
 
 /**
- * @brief DiagramContext::fromXml
- * Read this context properties from the @dom_element, looking for tags named @tag_name
- * @param dom_element : dom element to parse
- * @param tag_name : tag name to find, by default "property"
- */
+	@brief DiagramContext::fromXml
+	Read this context properties from the dom_element,
+	looking for tags named tag_name
+	@param dom_element : dom element to parse
+	@param tag_name : tag name to find, by default "property"
+*/
 void DiagramContext::fromXml(const pugi::xml_node &dom_element, const QString &tag_name)
 {
 	for(auto node = dom_element.child(tag_name.toStdString().c_str()) ; node ; node = node.next_sibling(tag_name.toStdString().c_str()))
@@ -181,7 +192,8 @@ void DiagramContext::fromXml(const pugi::xml_node &dom_element, const QString &t
 	Export this context properties to \a settings by creating an array named \a
 	array_name.
 */
-void DiagramContext::toSettings(QSettings &settings, const QString &array_name) const {
+void DiagramContext::toSettings(QSettings &settings, const QString &array_name) const
+{
 	settings.beginWriteArray(array_name);
 	int i = 0;
 	foreach (QString key, m_content.keys()) {
@@ -212,7 +224,8 @@ void DiagramContext::fromSettings(QSettings &settings, const QString &array_name
 	@return the regular expression used to check whether a given key is acceptable.
 	@see keyIsAcceptable()
 */
-QString DiagramContext::validKeyRegExp() {
+QString DiagramContext::validKeyRegExp()
+{
 	return("^[a-z0-9-_]+$");
 }
 
@@ -227,9 +240,11 @@ bool DiagramContext::stringLongerThan(const QString &a, const QString &b) {
 	@param key a key string
 	@return true if that key is acceptable, false otherwise
 */
-bool DiagramContext::keyIsAcceptable(const QString &key) const {
-	QRegExp re(DiagramContext::validKeyRegExp());
-	return(re.exactMatch(key));
+bool DiagramContext::keyIsAcceptable(const QString &key) const
+{
+	QRegularExpression re(DiagramContext::validKeyRegExp());
+	QRegularExpressionMatch match =re.match(key);
+	return match.hasMatch();
 }
 
 QDebug operator <<(QDebug debug, const DiagramContext &context)

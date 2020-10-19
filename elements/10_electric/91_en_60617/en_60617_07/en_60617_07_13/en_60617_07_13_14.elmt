@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="130" height="70" hotspot_y="44" hotspot_x="124" version="0.70" link_type="simple">
+<definition type="element" width="130" height="70" hotspot_y="44" hotspot_x="124" version="0.70" link_type="simple">
     <uuid uuid="{6a677ddc-b7c0-4277-90ed-d0e3e59f7bb6}"/>
     <names>
         <name lang="de">Schalter mit zwangsläufiger Öffnung der

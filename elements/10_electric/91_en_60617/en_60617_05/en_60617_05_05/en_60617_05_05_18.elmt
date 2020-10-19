@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="45" hotspot_y="40" orientation="dyyy" type="element" height="90" width="80">
+<definition link_type="simple" version="0.70" hotspot_x="45" hotspot_y="40" type="element" height="90" width="80">
     <uuid uuid="{424bb98d-197c-49a0-a0bf-5f8b0dbe65c9}"/>
     <names>
         <name lang="fr">Transistor bipolaire à grille isolée (IGBT) de

@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" orientation="dyyy" type="element" height="50" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" type="element" height="50" width="50">
     <uuid uuid="{0de55f8e-db53-494b-82e3-9e1dfc41d97e}"/>
     <names>
         <name lang="fr">Thyristor triode symétrique

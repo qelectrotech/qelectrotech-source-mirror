@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="19">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="60" hotspot_y="19">
     <uuid uuid="{093d7269-b049-4711-a892-c41d86fa726d}"/>
     <names>
         <name lang="cs">Uzávěr s průtokoměrem</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="14" hotspot_y="30" orientation="dyyy" height="80" type="element" link_type="simple" width="40" version="0.5">
+<definition hotspot_x="14" hotspot_y="30" height="80" type="element" link_type="simple" width="40" version="0.5">
     <uuid uuid="{f3a4f1a8-15c1-42d3-a478-ab336dba08ea}"/>
     <names>
         <name lang="fr">Coffret de répartition avec 4 canalisations</name>

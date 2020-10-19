@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="19" link_type="simple" type="element" version="0.80" width="40" height="20" hotspot_y="10">
+<definition hotspot_x="19" link_type="simple" type="element" version="0.80" width="40" height="20" hotspot_y="10">
     <uuid uuid="{251e441e-fe60-4f51-9a8e-13ac9eaa6199}"/>
     <names>
         <name lang="ca">Clau de globus</name>

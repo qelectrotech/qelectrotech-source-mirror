@@ -1,4 +1,4 @@
-<definition height="290" width="60" version="0.70" link_type="simple" orientation="dyyy" hotspot_y="125" type="element" hotspot_x="15">
+<definition height="290" width="60" version="0.70" link_type="simple" hotspot_y="125" type="element" hotspot_x="15">
     <uuid uuid="{dfc0d7c9-1277-46b6-88ab-d2b8ec08eb1d}"/>
     <names>
         <name lang="en">digital_output_stbddo3705ks</name>

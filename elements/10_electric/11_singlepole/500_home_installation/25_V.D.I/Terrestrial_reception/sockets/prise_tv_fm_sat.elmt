@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="30" hotspot_y="6" hotspot_x="15" height="30" link_type="simple" version="0.80">
+<definition type="element" width="30" hotspot_y="6" hotspot_x="15" height="30" link_type="simple" version="0.80">
     <uuid uuid="{481bb89d-1c7a-477b-a301-c4c457b678a8}"/>
     <names>
         <name lang="fr">Prise TV-FM-Sat</name>

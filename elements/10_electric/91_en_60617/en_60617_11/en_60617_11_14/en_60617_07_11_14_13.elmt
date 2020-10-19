@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="45" width="50" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="45" width="50" hotspot_y="25">
     <uuid uuid="{6ffd3973-10ab-4557-bc5e-8c7e85507bf0}"/>
     <names>
         <name lang="de">Schalter, allgemein</name>

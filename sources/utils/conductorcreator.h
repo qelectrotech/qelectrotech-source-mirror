@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,10 +31,10 @@ class Conductor;
 
 
 /**
- * @brief The ConductorCreator class
- * This class create one or several or several conductors
- * in a given context
- */
+	@brief The ConductorCreator class
+	This class create one or several or several conductors
+	in a given context
+*/
 class ConductorCreator
 {
 	public:

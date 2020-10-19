@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="200" height="310" type="element" hotspot_x="101" link_type="simple" hotspot_y="117">
+<definition version="0.51" width="200" height="310" type="element" hotspot_x="101" link_type="simple" hotspot_y="117">
     <uuid uuid="{f69a2b7a-fa43-4b8c-8e59-0f3bc6dc2f1a}"/>
     <names>
         <name lang="en">Siemens Scalance X108 (6GK5108-0BA00-2AA3)</name>

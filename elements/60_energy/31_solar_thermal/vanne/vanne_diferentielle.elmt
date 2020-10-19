@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="23" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="40" hotspot_x="23" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{6d536957-e195-4ab1-b65b-bae4ed266bce}"/>
     <names>
         <name lang="cs">Diferenciální ventil</name>

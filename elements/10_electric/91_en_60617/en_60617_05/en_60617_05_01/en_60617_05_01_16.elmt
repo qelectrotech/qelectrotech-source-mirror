@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" orientation="dyyy" type="element" height="30" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" type="element" height="30" width="30">
     <uuid uuid="{a9660c36-2f8a-455e-864f-8a9a879ef041}"/>
     <names>
         <name lang="fr">Emetteur: N sur région P</name>

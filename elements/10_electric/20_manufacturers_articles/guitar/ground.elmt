@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="13" version="0.5" link_type="simple" type="element" hotspot_y="15" height="30" width="70">
+<definition hotspot_x="13" version="0.5" link_type="simple" type="element" hotspot_y="15" height="30" width="70">
     <uuid uuid="{939a5c53-668d-40b3-ad4a-56ec6642db8f}"/>
     <names>
         <name lang="en">ground</name>

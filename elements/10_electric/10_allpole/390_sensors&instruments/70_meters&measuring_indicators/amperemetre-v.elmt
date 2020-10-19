@@ -1,4 +1,4 @@
-<definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" link_type="simple" version="0.5">
     <uuid uuid="{5372758b-421b-4c93-b357-776137202ca4}"/>
     <names>
         <name lang="cs">Svislý ampérmetr</name>

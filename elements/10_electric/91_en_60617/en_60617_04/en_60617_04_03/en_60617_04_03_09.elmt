@@ -1,4 +1,4 @@
-<definition height="30" type="element" width="130" hotspot_y="22" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="85">
+<definition height="30" type="element" width="130" hotspot_y="22" link_type="simple" version="0.70" hotspot_x="85">
     <uuid uuid="{993dda7d-fff5-476b-84f8-c3787e9224be}"/>
     <names>
         <name lang="fr">Étouffoir de câble coaxial à noyau magnétique</name>

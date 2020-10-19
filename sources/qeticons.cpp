@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -194,6 +194,7 @@ namespace QET {
 		QIcon hr;
 		QIcon hu;
 		QIcon it;
+		QIcon jp;
 		QIcon pl;
 		QIcon pt;
 		QIcon ro;
@@ -368,7 +369,8 @@ namespace QET {
 /**
 	Initialise les icones de l'application QElectroTech
 */
-void QET::Icons::initIcons() {
+void QET::Icons::initIcons()
+{
 	// we may need to mirror some icons for right-to-left languages
 	bool rtl = QApplication::isRightToLeft();
 	QTransform reverse = QTransform().scale(-1, 1);
@@ -389,26 +391,26 @@ void QET::Icons::initIcons() {
 	ArrowRightDouble    .addFile(":/ico/22x22/arrow-right-double.png");
 	Autoconnect         .addFile(":/ico/22x22/autoconnect.png");
 	BringForward        .addFile(":/ico/22x22/bring_forward.png");
-    Cancel              .addFile(":/ico/16x16/item-cancel.png");
+	Cancel              .addFile(":/ico/16x16/item-cancel.png");
 	Conductor           .addFile(":/ico/16x16/conductor.png");
-    ConductorEdit       .addFile(":/ico/16x16/conductor-edit.png");
-    ConductorSettings   .addFile(":/ico/16x16/conductor-reset.png");
-    ConductorSettings   .addFile(":/ico/22x22/conductor2.png");
+	ConductorEdit       .addFile(":/ico/16x16/conductor-edit.png");
+	ConductorSettings   .addFile(":/ico/16x16/conductor-reset.png");
+	ConductorSettings   .addFile(":/ico/22x22/conductor2.png");
 	Configure           .addFile(":/ico/16x16/configure.png");
 	Configure           .addFile(":/ico/22x22/configure.png");
 	ConfigureToolbars   .addFile(":/ico/16x16/configure-toolbars.png");
 	ConfigureToolbars   .addFile(":/ico/22x22/configure-toolbars.png");
-    IC_CopyFile            .addFile(":/ico/16x16/item-copy.png");
-    DiagramAdd          .addFile(":/ico/16x16/folio-new.png");
-    DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
-    Diagram             .addFile(":/ico/16x16/diagram.png");
+	IC_CopyFile            .addFile(":/ico/16x16/item-copy.png");
+	DiagramAdd          .addFile(":/ico/16x16/folio-new.png");
+	DiagramAdd          .addFile(":/ico/22x22/diagram_add.png");
+	Diagram             .addFile(":/ico/16x16/diagram.png");
 	Diagram             .addFile(":/ico/diagram.png");
 	DiagramBg           .addFile(":/ico/22x22/diagram_bg.png");
-    DiagramDelete       .addFile(":/ico/16x16/folio-delete.png");
-    DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
+	DiagramDelete       .addFile(":/ico/16x16/folio-delete.png");
+	DiagramDelete       .addFile(":/ico/22x22/diagram_del.png");
 	DialogCancel        .addFile(":/ico/16x16/dialog-cancel.png");
 	DialogCancel        .addFile(":/ico/22x22/dialog-cancel.png");
-    DialogInformation   .addFile(":/ico/16x16/folio-properties.png");
+	DialogInformation   .addFile(":/ico/16x16/folio-properties.png");
 	DialogInformation   .addFile(":/ico/22x22/dialog-information.png");
 	DialogOk            .addFile(":/ico/16x16/dialog-ok.png");
 	DialogOk            .addFile(":/ico/22x22/dialog-ok.png");
@@ -416,7 +418,7 @@ void QET::Icons::initIcons() {
 	DocumentClose       .addFile(":/ico/22x22/document-close.png");
 	DocumentExport      .addFile(":/ico/16x16/document-export.png");
 	DocumentExport      .addFile(":/ico/22x22/document-export.png");
-    DocumentSpreadsheet .addFile(":/ico/16x16/export-csv.png");
+	DocumentSpreadsheet .addFile(":/ico/16x16/export-csv.png");
 	DocumentExport      .addFile(":/ico/128x128/document-export.png");
 	DocumentImport      .addFile(":/ico/16x16/document-import.png");
 	DocumentImport      .addFile(":/ico/22x22/document-import.png");
@@ -658,6 +660,7 @@ void QET::Icons::initIcons() {
 	hr                  .addFile(":/ico/24x16/hr.png");
 	hu                  .addFile(":/ico/24x16/hu.png");
 	it                  .addFile(":/ico/24x16/it.png");
+	jp                  .addFile(":/ico/24x16/jp.png");
 	pl                  .addFile(":/ico/24x16/pl.png");
 	pt                  .addFile(":/ico/24x16/pt.png");
 	ro                  .addFile(":/ico/24x16/ro.png");

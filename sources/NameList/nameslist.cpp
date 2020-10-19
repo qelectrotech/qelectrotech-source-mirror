@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,20 +24,15 @@ int NamesList::MetaTypeId = qRegisterMetaType<NamesList>("NamesList");
 /**
 	Constructeur
 */
-NamesList::NamesList() {
-}
-
-/**
-	Constructeur de copie
-	@param other La NamesList a copier
-*/
-NamesList::NamesList(const NamesList &other) : hash_names(other.hash_names) {	
+NamesList::NamesList()
+{
 }
 
 /**
 	Destructeur
 */
-NamesList::~NamesList() {
+NamesList::~NamesList()
+{
 }
 
 /**
@@ -63,28 +58,32 @@ void NamesList::removeName(const QString &lang) {
 /**
 	Supprime tous les noms
 */
-void NamesList::clearNames() {
+void NamesList::clearNames()
+{
 	hash_names.clear();
 }
 
 /**
 	@return La liste de toutes les langues disponibles
 */
-QList<QString> NamesList::langs() const {
+QList<QString> NamesList::langs() const
+{
 	return(hash_names.keys());
 }
 
 /**
 	@return true si la liste de noms est vide, false sinon
 */
-bool NamesList::isEmpty() const {
+bool NamesList::isEmpty() const
+{
 	return(hash_names.isEmpty());
 }
 
 /**
 	@return Le nombre de noms dans la liste
 */
-int NamesList::count() const {
+int NamesList::count() const
+{
 	return(hash_names.count());
 }
 
@@ -102,7 +101,8 @@ QString &NamesList::operator[](const QString &lang) {
 	@return Le nom dans la langue donnee ou QString() si ce nom n'est pas
 	defini
 */
-const QString NamesList::operator[](const QString &lang) const {
+const QString NamesList::operator[](const QString &lang) const
+{
 	return(hash_names.value(lang));
 }
 
@@ -133,15 +133,15 @@ void NamesList::fromXml(const QDomElement &xml_element, const QHash<QString, QSt
 }
 
 /**
- * @brief NamesList::fromXml
- * Load the list of lang <-> name from an xml description.
- * @xml_element must be the parent of a child element tagged "names"
- * If a couple lang <-> name already exist, they will overwrited, else
- * they will be appened.
- * @param xml_element : xml element to analyze
- * @param xml_options : A set of options related to XML parsing.
- * @see getXmlOptions()
- */
+	@brief NamesList::fromXml
+	Load the list of lang <-> name from an xml description.
+	xml_element must be the parent of a child element tagged "names"
+	If a couple lang <-> name already exist, they will overwrited, else
+	they will be appened.
+	@param xml_element : xml element to analyze
+	@param xml_options : A set of options related to XML parsing.
+	@see getXmlOptions()
+*/
 void NamesList::fromXml(const pugi::xml_node &xml_element, const QHash<QString, QString> &xml_options)
 {
 	QHash<QString, QString> xml_opt = getXmlOptions(xml_options);
@@ -173,7 +173,8 @@ void NamesList::fromXml(const pugi::xml_node &xml_element, const QHash<QString, 
 	@return L'element XML correspondant a la section "names"
 	@see count()
 */
-QDomElement NamesList::toXml(QDomDocument &xml_document, const QHash<QString, QString> &xml_options) const {
+QDomElement NamesList::toXml(QDomDocument &xml_document, const QHash<QString, QString> &xml_options) const
+{
 	QHash<QString, QString> xml_opt = getXmlOptions(xml_options);
 	QDomElement names_elmt = xml_document.createElement(xml_opt["ParentTagName"]);
 	QHashIterator<QString, QString> names_iterator(hash_names);
@@ -194,7 +195,8 @@ QDomElement NamesList::toXml(QDomDocument &xml_document, const QHash<QString, QS
 		* LanguageAttribute (falls back to "lang")
 	@return the same set, with at least all the known options
 */
-QHash<QString, QString> NamesList::getXmlOptions(const QHash<QString, QString> &xml_options) const {
+QHash<QString, QString> NamesList::getXmlOptions(const QHash<QString, QString> &xml_options) const
+{
 	QHash<QString, QString> new_xml_options = xml_options;
 	if (!xml_options.contains("ParentTagName")) {
 		new_xml_options.insert("ParentTagName", "names");
@@ -212,7 +214,8 @@ QHash<QString, QString> NamesList::getXmlOptions(const QHash<QString, QString> &
 	@param nl une autre liste de noms
 	@return true si les listes de noms sont differentes, false sinon
 */
-bool NamesList::operator!=(const NamesList &nl) const {
+bool NamesList::operator!=(const NamesList &nl) const
+{
 	return(hash_names != nl.hash_names);
 }
 
@@ -220,7 +223,8 @@ bool NamesList::operator!=(const NamesList &nl) const {
 	@param nl une autre liste de noms
 	@return true si les listes de noms sont identiques, false sinon
 */
-bool NamesList::operator==(const NamesList &nl) const {
+bool NamesList::operator==(const NamesList &nl) const
+{
 	return(hash_names == nl.hash_names);
 }
 
@@ -235,7 +239,8 @@ bool NamesList::operator==(const NamesList &nl) const {
 	@param fallback_name name to be returned when no adequate name has been found
 	@return The adequate name regarding the current system locale.
 */
-QString NamesList::name(const QString &fallback_name) const {
+QString NamesList::name(const QString &fallback_name) const
+{
 	QString system_language = QETApp::langFromSetting();
 	QString returned_name;
 	if (!hash_names[system_language].isEmpty()) {

@@ -1,4 +1,4 @@
-<definition hotspot_y="15" link_type="simple" height="30" width="90" type="element" version="0.80" hotspot_x="51" orientation="dyyy">
+<definition hotspot_y="15" link_type="simple" height="30" width="90" type="element" version="0.80" hotspot_x="51">
     <uuid uuid="{bfe05752-d935-4679-a9ad-b8241b75aafa}"/>
     <names>
         <name lang="fr">Grille  pluviale</name>

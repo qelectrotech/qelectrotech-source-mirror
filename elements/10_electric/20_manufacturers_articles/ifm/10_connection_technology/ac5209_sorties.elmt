@@ -1,4 +1,4 @@
-<definition link_type="simple" width="170" hotspot_y="125" orientation="dyyy" version="0.70" height="250" type="element" hotspot_x="44">
+<definition link_type="simple" width="170" hotspot_y="125" version="0.70" height="250" type="element" hotspot_x="44">
     <uuid uuid="{d4eaf20b-2503-4ab5-bf18-8a5a004df679}"/>
     <names>
         <name lang="fr">AC5209 (sorties)</name>

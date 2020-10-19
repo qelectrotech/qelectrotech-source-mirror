@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element">
 <uuid uuid="{5C01E808-DB2D-4192-81D9-2A80A7C5EDDC}"/><names>
         <name lang="ar">حسّاس سعوي ب 3 أطراف (NC)</name>
         <name lang="el">Χωρητικός αισθητήρας, κλειστή επαφή 3 ακρ</name>

@@ -1,4 +1,4 @@
-<definition width="100" height="240" link_type="simple" hotspot_y="119" hotspot_x="50" version="0.5" type="element" orientation="dyyy">
+<definition width="100" height="240" link_type="simple" hotspot_y="119" hotspot_x="50" version="0.5" type="element">
     <uuid uuid="{412b68af-150c-4a84-a197-2b99f55d82b0}"/>
     <names>
         <name lang="cs">BMX P34 2010</name>

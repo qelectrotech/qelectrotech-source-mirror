@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="7" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="20" hotspot_x="7" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{bed2ec06-d113-47b9-9597-eb19f63964c0}"/>
     <names>
         <name lang="cs">Bezpečnostní ventil</name>

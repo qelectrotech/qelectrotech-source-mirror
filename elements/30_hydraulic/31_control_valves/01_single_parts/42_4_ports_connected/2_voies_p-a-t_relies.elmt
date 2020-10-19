@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="10" hotspot_y="34" width="40" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="10" hotspot_y="34" width="40" height="60" link_type="simple" type="element">
     <uuid uuid="{67db8120-081e-4a48-83e4-80914b7d075d}"/>
     <names>
         <name lang="en">4 ports -P-A-T connected</name>

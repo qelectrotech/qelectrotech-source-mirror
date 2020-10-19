@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="22" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="24">
+<definition width="40" hotspot_x="22" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{7cde364c-5e09-40c3-90a3-93a0cc908d41}"/>
     <names>
         <name lang="cs">Přerušovač PM</name>

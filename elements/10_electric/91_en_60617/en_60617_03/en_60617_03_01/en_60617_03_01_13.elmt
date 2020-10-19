@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
     <uuid uuid="{a85ab32a-fdcd-4cd7-8fd4-346058dec64f}"/>
     <names>
         <name lang="fr">Paire coaxiale sous écran</name>

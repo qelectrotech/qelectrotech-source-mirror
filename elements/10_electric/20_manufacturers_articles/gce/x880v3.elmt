@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="295" orientation="dyyy" hotspot_y="54" type="element" height="130" width="590" version="0.5">
+<definition link_type="simple" hotspot_x="295" hotspot_y="54" type="element" height="130" width="590" version="0.5">
     <uuid uuid="{abdb405f-f54f-435f-8d40-11a8eeb5ffad}"/>
     <names>
         <name lang="pl">X880 V3</name>

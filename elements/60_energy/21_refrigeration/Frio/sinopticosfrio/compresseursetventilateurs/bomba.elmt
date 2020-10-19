@@ -1,15 +1,19 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E4B90CE3-11C7-4D2A-B267-B66591B5586C}"/><names>
+<definition width="30" hotspot_y="19" link_type="simple" version="0.80" height="40" hotspot_x="14" type="element">
+    <uuid uuid="{726d4bfa-df31-4590-94fd-cd83da236479}"/>
+    <names>
+        <name lang="fr">Pompe</name>
+        <name lang="en">Pump</name>
         <name lang="es">Bomba</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <ellipse width="18.6469" x="-9" y="-9.09572" antialias="true" height="18.3354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.33175" x1="-0.28713" y2="0.0719713" x2="-9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.33175" x1="-0.066" y2="0.0719713" x2="9.64687"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.87578" x1="0" y2="13.5963" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-14" x2="0"/>
-        <terminal x="0" y="14" nameHidden="1" number="" name="" orientation="s"/>
-        <terminal x="0" y="-14" nameHidden="8" number="" name="" orientation="n"/>
+        <ellipse width="19.175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9.5" height="19.33" y="-9.5" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-0.28713" y1="-9.33175" y2="0.0719713" x2="-9" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-0.066" y1="-9.33175" y2="0.0719713" x2="9.64687" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="9.87578" y2="13.5963" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="-10" y2="-14" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <terminal orientation="n" x="0" uuid="{691cc240-200c-4031-880b-242655b6833e}" y="-14" name=""/>
+        <terminal orientation="s" x="0" uuid="{dae45d6e-3c81-4334-8a5c-c8ebd35b9165}" y="14" name=""/>
     </description>
 </definition>

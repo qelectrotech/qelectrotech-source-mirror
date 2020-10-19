@@ -1,4 +1,4 @@
-<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+<definition hotspot_x="45" hotspot_y="45" height="50" link_type="simple" version="0.70" type="element" width="50">
     <uuid uuid="{0f9e0fd1-d663-4a84-9595-f18d7aa7d9fe}"/>
     <names>
         <name lang="de">Station,

@@ -1,4 +1,4 @@
-<definition hotspot_x="11" hotspot_y="4" version="0.70" type="element" height="20" orientation="dyyy" link_type="terminal" width="30">
+<definition hotspot_x="11" hotspot_y="4" version="0.70" type="element" height="20" link_type="terminal" width="30">
     <uuid uuid="{141e7e1e-4f7f-456d-9f04-52c32109b969}"/>
     <names>
         <name lang="en">Combine</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="50" type="element" hotspot_y="21" link_type="simple" hotspot_x="25" height="60">
+<definition version="0.70" width="50" type="element" hotspot_y="21" link_type="simple" hotspot_x="25" height="60">
     <uuid uuid="{75f4f150-7c5c-42dc-89a4-65dbedb3144d}"/>
     <names>
         <name lang="fr">Terre sans bruit</name>

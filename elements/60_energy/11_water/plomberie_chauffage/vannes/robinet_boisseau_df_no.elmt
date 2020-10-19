@@ -1,4 +1,4 @@
-<definition width="50" version="0.51" orientation="dyyy" link_type="simple" hotspot_x="24" hotspot_y="15" type="element" height="30">
+<definition width="50" version="0.51" link_type="simple" hotspot_x="24" hotspot_y="15" type="element" height="30">
     <uuid uuid="{a45d3d96-e737-4d47-b52c-08203b62561c}"/>
     <names>
         <name lang="fr">Vanne à boisseau DF NO</name>

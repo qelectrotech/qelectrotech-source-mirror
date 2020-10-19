@@ -1,4 +1,4 @@
-<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" width="30" link_type="simple" type="element">
     <uuid uuid="{2d155649-d0f5-419b-b94a-a13d3fcf38c7}"/>
     <names>
         <name lang="fr">Borne (continuité)</name>

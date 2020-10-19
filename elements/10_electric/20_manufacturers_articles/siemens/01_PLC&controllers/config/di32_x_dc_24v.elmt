@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="35" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
+<definition type="element" hotspot_y="35" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
     <uuid uuid="{6c546cf3-be17-4361-9771-9d6b5f9944bf}"/>
     <names>
         <name lang="ar">SM321   DI 32 x DC24V</name>

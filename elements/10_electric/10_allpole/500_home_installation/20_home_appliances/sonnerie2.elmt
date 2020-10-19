@@ -1,0 +1,52 @@
+<definition version="0.80" hotspot_y="174" height="180" type="element" link_type="master" hotspot_x="5" width="130">
+    <uuid uuid="{7f7516f7-eefc-4570-b8b1-39e90ebe21a6}"/>
+    <names>
+        <name lang="pl">Dzwonek</name>
+        <name lang="fr"> Sonnerie 2</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>cbh41</informations>
+    <description>
+        <rect rx="0" y="-85" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="85" ry="0" width="120"/>
+        <line y2="-15" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-15"/>
+        <dynamic_text text_from="UserText" frame="false" y="-44" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="29" uuid="{05adb210-b0d3-4b9c-842c-4ee370ba7077}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="6" text_width="-1">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" frame="false" y="-63" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="-2" uuid="{1191fa17-c7e2-4b37-a30b-354f3b338fe4}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="8" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="-18" text=" kA C" rotation="0" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-45" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-45"/>
+        <line y2="-65" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="0" x2="120" y1="-65"/>
+        <text y="-31" text="A" rotation="0" x="66" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text y="-2" text=" mm²" rotation="0" x="58" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y2="-149" end2="none" end1="none" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="50" x2="53" y1="-170"/>
+        <line y2="-149" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="52.5417" x2="66.4583" y1="-149"/>
+        <arc y="-144" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="36" height="31" angle="90" start="270" width="12"/>
+        <arc y="-149" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="48" height="46" angle="90" start="90" width="10"/>
+        <arc y="-149" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="62" height="46" angle="-90" start="90" width="10"/>
+        <arc y="-143" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="72" height="30" angle="90" start="-180" width="14"/>
+        <line y2="-113" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="42.7222" x2="78.2778" y1="-113"/>
+        <arc y="-115.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" x="57.5" height="5" angle="-180" start="0" width="5"/>
+        <line y2="-144" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="50.1429" x2="69.8571" y1="-144"/>
+        <arc y="-152" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="40" height="10" angle="-90" start="-180" width="10"/>
+        <arc y="-152" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="70" height="10" angle="90" start="0" width="10"/>
+        <arc y="-157" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="65" height="20" angle="90" start="0" width="20"/>
+        <arc y="-157" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="35" height="20" angle="-90" start="-180" width="20"/>
+        <dynamic_text text_from="UserText" frame="false" y="-13.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="28" uuid="{2e085102-478b-4583-9955-1530af7782f8}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="44" text_width="-1">
+            <text>3 G 1.5</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" frame="false" y="-28.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="30" uuid="{3c8e8fa2-ab0d-4033-b307-5b6b6e4533bd}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="45" text_width="-1">
+            <text>4.5</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" frame="false" y="-81.5" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" x="-2" uuid="{56b2ab91-4443-43b7-b393-99212acebc71}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="46" text_width="-1">
+            <text>Sonnerie</text>
+        </dynamic_text>
+        <line y2="-149" end2="none" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x1="70" x2="68" y1="-170"/>
+        <terminal y="-110" x="60" uuid="{fa1acbf4-a7b2-4eea-b1cd-f0780abd5274}" name="" orientation="s"/>
+    </description>
+</definition>

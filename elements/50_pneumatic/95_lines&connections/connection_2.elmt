@@ -1,4 +1,4 @@
-<definition height="20" version="0.5" width="20" hotspot_x="14" type="element" link_type="simple" hotspot_y="14" orientation="dyyy">
+<definition height="20" version="0.5" width="20" hotspot_x="14" type="element" link_type="simple" hotspot_y="14">
     <uuid uuid="{1c77fc1c-a72e-4db4-b530-13d39624ce61}"/>
     <names>
         <name lang="en">Cable Connection - 2</name>

@@ -1,4 +1,4 @@
-<definition width="40" version="0.4" hotspot_x="16" hotspot_y="9" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
+<definition width="40" version="0.4" hotspot_x="16" hotspot_y="9" height="20" link_type="simple" type="element" ic="true">
 <uuid uuid="{7B659768-C2FD-4129-88B8-30B997BC8BC7}"/><names>
         <name lang="es">Sale a</name>
         <name lang="en">Go to</name>

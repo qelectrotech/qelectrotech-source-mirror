@@ -1,4 +1,4 @@
-<definition height="110" hotspot_x="55" link_type="simple" width="1020" type="element" hotspot_y="15" orientation="dyyy" version="0.70">
+<definition height="110" hotspot_x="55" link_type="simple" width="1020" type="element" hotspot_y="15" version="0.70">
     <uuid uuid="{67ba78e6-eb44-46ba-b022-6365a8f96f95}"/>
     <names>
         <name lang="en">bmxddi_4</name>

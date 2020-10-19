@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
     <uuid uuid="{b0f560d0-288d-4a31-b09a-9c4debeedc53}"/>
     <names>
         <name lang="de">Windrichtungsanzeiger</name>

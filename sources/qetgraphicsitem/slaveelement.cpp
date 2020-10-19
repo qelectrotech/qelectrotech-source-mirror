@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,33 +22,35 @@
 #include "dynamicelementtextitem.h"
 
 /**
- * @brief SlaveElement::SlaveElement
- * Default constructor
- * @param location location of xml definition
- * @param qgi parent QGraphicItem
- * @param s parent diagram
- * @param state int used to know if the creation of element have error
- */
-SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	@brief SlaveElement::SlaveElement
+	Default constructor
+	@param location location of xml definition
+	@param qgi parent QGraphicItem
+	@param state int used to know if the creation of element have error
+*/
+SlaveElement::SlaveElement(const ElementsLocation &location,
+			   QGraphicsItem *qgi,
+			   int *state) :
 	Element(location, qgi, state, Element::Slave)
 {
 	m_xref_item = nullptr;
 }
 
 /**
- * @brief SlaveElement::~SlaveElement
- * default destructor
- */
-SlaveElement::~SlaveElement() {
+	@brief SlaveElement::~SlaveElement
+	default destructor
+*/
+SlaveElement::~SlaveElement()
+{
 	unlinkAllElements();
 }
 
 /**
- * @brief SlaveElement::linkToElement
- * Link this slave to another element
- * For this class element must be a master
- * @param elmt
- */
+	@brief SlaveElement::linkToElement
+	Link this slave to another element
+	For this class element must be a master
+	@param elmt
+*/
 void SlaveElement::linkToElement(Element *elmt)
 {
 		// check if element is master and if isn't already linked
@@ -65,9 +67,9 @@ void SlaveElement::linkToElement(Element *elmt)
 }
 
 /**
- * @brief SlaveElement::unlinkAllElements
- * Unlink all of the element in the QList connected_elements
- */
+	@brief SlaveElement::unlinkAllElements
+	Unlink all of the element in the QList connected_elements
+*/
 void SlaveElement::unlinkAllElements()
 {
 		// if this element is free no need to do something
@@ -80,10 +82,10 @@ void SlaveElement::unlinkAllElements()
 }
 
 /**
- * @brief SlaveElement::unlinkElement
- * Unlink the given elmt in parametre
- * @param elmt
- */
+	@brief SlaveElement::unlinkElement
+	Unlink the given elmt in parametre
+	@param elmt
+*/
 void SlaveElement::unlinkElement(Element *elmt)
 {
 		//Ensure elmt is linked to this element

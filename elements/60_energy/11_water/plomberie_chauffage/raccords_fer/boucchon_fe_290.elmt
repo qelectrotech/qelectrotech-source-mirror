@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" link_type="simple" height="20" hotspot_y="10" version="0.51" hotspot_x="7">
+<definition type="element" width="20" link_type="simple" height="20" hotspot_y="10" version="0.51" hotspot_x="7">
     <uuid uuid="{b8dc8e30-e392-4721-aa57-c1ad36657d0b}"/>
     <names>
         <name lang="fr">Bouchon fer n° 290</name>

@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="50" version="0.5" width="70" hotspot_x="15" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{5c1e4259-f94d-4880-8c96-88a840cd0414}"/>
     <names>
         <name lang="en">Diaphragm actuator bracket</name>

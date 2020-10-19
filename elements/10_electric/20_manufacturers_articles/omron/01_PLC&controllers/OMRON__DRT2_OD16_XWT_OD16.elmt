@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" hotspot_x="160" type="element" width="380" version="0.51" height="100" hotspot_y="42">
+<definition link_type="simple" hotspot_x="160" type="element" width="380" version="0.51" height="100" hotspot_y="42">
     <uuid uuid="{66721b0b-a728-4d9e-a1a6-6cef4085a10a}"/>
     <names>
         <name lang="fr">OMRON_DRT2-OD16/XWT-OD16</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="137" width="70" link_type="simple" hotspot_x="35" type="element" orientation="dyyy" version="0.70" height="270">
+<definition hotspot_y="137" width="70" link_type="simple" hotspot_x="35" type="element" version="0.70" height="270">
     <uuid uuid="{e039feb0-7952-4bef-afad-df0aa9d54da4}"/>
     <names>
         <name lang="fr">Bosch Rexroth SLC-3-XTIO84302 Safe Logic Compact, module à 8 entrées sécurisées et 4 sorties sécurisées</name>

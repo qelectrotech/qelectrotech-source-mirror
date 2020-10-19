@@ -1,0 +1,49 @@
+<definition hotspot_x="20" type="element" width="40" version="0.80" height="60" hotspot_y="28" link_type="simple">
+    <uuid uuid="{35882c5a-be46-4d62-895f-46a21821a1fa}"/>
+    <names>
+        <name lang="ar">مقبس أحادي الوجه</name>
+        <name lang="en">Outlet 3 poles</name>
+        <name lang="it">Presa monofase</name>
+        <name lang="cs">Zásuvka jednopólová</name>
+        <name lang="es">Toma corriente 3P</name>
+        <name lang="fr">SNS216-Prise de courant modulaire 16A 2P+T connexion SanVis</name>
+        <name lang="de">Steckdose 3-polig</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="nl">Contact AC + aarde</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Prise de courant modulaire 16A 2P+T connexion SanVis</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">SNS216</elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" uuid="{9a66ab1b-c9d8-4de6-a786-a16ba182d28f}" y="-19.7" Valignment="AlignTop" z="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" frame="false" text_width="-1" x="19.3725" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" end2="none" end1="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" length1="1.5" y2="22" y1="14" antialias="false"/>
+        <circle y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" diameter="30" antialias="true"/>
+        <line length2="1.5" end2="none" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" length1="1.5" y2="-18" y1="-11" antialias="false"/>
+        <circle y="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7.5" diameter="5" antialias="true"/>
+        <circle y="7.5" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-2.5" diameter="5" antialias="true"/>
+        <line length2="1.5" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" length1="1.5" y2="-18" y1="-11" antialias="false"/>
+        <circle y="-7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3.5" diameter="5" antialias="true"/>
+        <line length2="1.5" end2="none" end1="none" x1="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="0" length1="1.5" y2="3" y1="5" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="2" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-2" length1="1.5" y2="0.7" y1="0.7" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="-3" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="3" length1="1.5" y2="2.5" y1="2.5" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" x1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="1" length1="1.5" y2="-1.1" y1="-1.1" antialias="false"/>
+        <terminal uuid="{db6fa952-57db-4132-9982-41ae79e11587}" name="" orientation="n" y="-20" x="-10"/>
+        <terminal uuid="{4212a1ea-2c28-435c-bda0-f5f2f0e5c2c8}" name="" orientation="s" y="22" x="0"/>
+        <terminal uuid="{410e3a50-44b9-4e03-9843-c108bce48ff3}" name="" orientation="n" y="-20" x="10"/>
+    </description>
+</definition>

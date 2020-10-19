@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="29" type="element">
+<definition height="60" version="0.5" link_type="simple" width="20" hotspot_x="10" hotspot_y="29" type="element">
     <uuid uuid="{25d9b3b5-2dbb-40f2-a242-c0ad6686bc5a}"/>
     <names>
         <name lang="ru">Конденсатор</name>

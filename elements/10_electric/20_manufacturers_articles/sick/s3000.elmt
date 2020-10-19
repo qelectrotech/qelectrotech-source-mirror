@@ -1,4 +1,4 @@
-<definition type="element" width="190" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="264" hotspot_x="94" height="540">
+<definition type="element" width="190" version="0.70" link_type="simple" hotspot_y="264" hotspot_x="94" height="540">
     <uuid uuid="{584a5e9b-19be-4d7e-a9a8-8fe72c17f0a4}"/>
     <names>
         <name lang="hu">S3000 Radar</name>

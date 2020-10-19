@@ -1,4 +1,4 @@
-<definition height="20" hotspot_x="23" orientation="dyyy" hotspot_y="10" version="0.51" link_type="terminal" width="40" type="element">
+<definition height="20" hotspot_x="23" hotspot_y="10" version="0.51" link_type="terminal" width="40" type="element">
     <uuid uuid="{e3d250b3-d61c-4cdc-8a37-d02bb378aa6b}"/>
     <names>
         <name lang="fr">Tube PER BAO</name>

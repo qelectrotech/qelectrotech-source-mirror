@@ -1,11 +1,17 @@
-<definition width="40" version="0.4" hotspot_x="14" hotspot_y="23" height="40" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{EA3747DE-4909-4FC4-8B43-F2B90529A7B6}"/><names>
-        <name lang="es">Soporte unidad exterior</name>
+<definition hotspot_y="23" link_type="simple" width="40" version="0.80" type="element" height="40" hotspot_x="14">
+    <uuid uuid="{8c8db3a8-6eaa-423e-a92f-23f62aaf80f4}"/>
+    <names>
+        <name lang="fr">Support unité extérieur</name>
         <name lang="ca">Soport unitat exterior</name>
+        <name lang="es">Soporte unidad exterior</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-4.86" x2="-4.86" x3="20.4975" x4="20.4975" antialias="false" x5="-4.86" x6="-4.86" x7="-9" x8="-9" x9="-4.86" closed="false" y1="-20.0125" y2="6.61049" y3="6.61049" y4="8.74032" y5="11.4026" y6="13" y7="13" y8="-20.0125" y9="-20.0125"/>
-        <input x="-3" y="14.5" size="4" rotate="true" text="_" tagg="label"/>
+        <polygon y6="13" y8="-20.0125" x5="-4.86" closed="false" y1="-20.0125" y2="6.61049" x8="-9" x7="-9" x2="-4.86" x6="-4.86" y9="-20.0125" x1="-4.86" x4="20.4975" y3="6.61049" y4="8.74032" antialias="false" y5="11.4026" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="13" x3="20.4975" x9="-4.86"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="7" uuid="{d9ecbf97-32bd-45f3-aa66-3a41659f8a0c}" Halignment="AlignLeft" rotation="0" x="-3" text_width="-1" frame="false" text_from="ElementInfo" z="2">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
     </description>
 </definition>

@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element">
 <uuid uuid="{2FBBC41B-7DDC-4781-A767-984293079A8D}"/><names>
         <name lang="ar">حسّاس مغناطيسي 3 (NO)</name>
         <name lang="el">Μαγνητικός αισθητήρας, 3 ακροδέκτες, ανοικτή επαφή</name>

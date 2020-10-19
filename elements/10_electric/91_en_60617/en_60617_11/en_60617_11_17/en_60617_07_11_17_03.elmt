@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="36" width="40" hotspot_y="5">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="36" width="40" hotspot_y="5">
     <uuid uuid="{af420b5b-39f0-4330-a008-09b7cec6d61e}"/>
     <names>
         <name lang="de">Endabdeckung</name>

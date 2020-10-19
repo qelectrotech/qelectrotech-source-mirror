@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="8" version="0.5" hotspot_y="10" link_type="simple" width="170" orientation="dyyy" height="30">
+<definition type="element" hotspot_x="8" version="0.5" hotspot_y="10" link_type="simple" width="170" height="30">
     <uuid uuid="{a91f0682-4d4c-4fdf-9601-3c90fce8731a}"/>
     <names>
         <name lang="de">Aktion</name>

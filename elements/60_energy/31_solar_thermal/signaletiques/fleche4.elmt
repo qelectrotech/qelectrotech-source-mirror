@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="16" type="element" link_type="simple" orientation="dyyy" version="0.5" height="10" hotspot_y="5">
+<definition width="50" hotspot_x="16" type="element" link_type="simple" version="0.5" height="10" hotspot_y="5">
     <uuid uuid="{64eee05c-8ee5-4057-b85b-9356b0f30342}"/>
     <names>
         <name lang="cs">Směr 4 (dlouhá šipka)</name>

@@ -1,4 +1,4 @@
-<definition height="50" version="0.70" orientation="dyyy" width="130" hotspot_x="125" type="element" hotspot_y="35" link_type="simple">
+<definition height="50" version="0.70" width="130" hotspot_x="125" type="element" hotspot_y="35" link_type="simple">
     <uuid uuid="{650c5157-bfa0-4a1d-b4b9-1bd9519b4ed2}"/>
     <names>
         <name lang="fr">Électrode de déviation radiale</name>

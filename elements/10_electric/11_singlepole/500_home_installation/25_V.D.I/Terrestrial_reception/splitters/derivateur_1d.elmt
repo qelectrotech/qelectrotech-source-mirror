@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" orientation="dyyy" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="40">
+<definition width="90" link_type="simple" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="40">
     <uuid uuid="{de17f00f-4cf7-443b-b34a-9d9a3c8660c6}"/>
     <names>
         <name lang="fr">Dérivateur 1 D</name>

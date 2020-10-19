@@ -1,4 +1,4 @@
-<definition hotspot_y="5" orientation="dyyy" hotspot_x="3" height="180" version="0.80" link_type="simple" type="element" width="20">
+<definition hotspot_y="5" hotspot_x="3" height="180" version="0.80" link_type="simple" type="element" width="20">
     <uuid uuid="{84b6faae-e483-4d28-b827-2eca8d085ef5}"/>
     <names>
         <name lang="fr">037108 - Viking3 - 2 jonctions 2 étages 4mm² pas 6mm Bleu</name>

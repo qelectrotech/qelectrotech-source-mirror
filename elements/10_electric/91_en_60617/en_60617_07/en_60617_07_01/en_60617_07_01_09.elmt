@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{6352cf68-21aa-43cb-8b7d-7356e2b69205}"/>
     <names>
         <name lang="de">zwangsläufige Betätigung eines Schalters </name>

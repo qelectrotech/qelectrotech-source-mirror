@@ -1,4 +1,4 @@
-<definition hotspot_y="58" type="element" link_type="simple" orientation="dyyy" hotspot_x="107" width="270" height="130" version="0.51">
+<definition hotspot_y="58" type="element" link_type="simple" hotspot_x="107" width="270" height="130" version="0.51">
     <uuid uuid="{4b61241a-b7d1-40ac-8247-df66d33f137e}"/>
     <names>
         <name lang="fr">Filtre à cartouche duo</name>

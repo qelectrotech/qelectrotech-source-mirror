@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="30" type="element" hotspot_y="15" version="0.80" link_type="simple" width="50">
     <uuid uuid="{af716c7b-5e4e-4982-9d4d-01fa42f2e783}"/>
     <names>
         <name lang="en">Stop cock</name>

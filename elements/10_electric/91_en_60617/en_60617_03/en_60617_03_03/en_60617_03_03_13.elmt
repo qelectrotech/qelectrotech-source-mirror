@@ -1,4 +1,4 @@
-<definition hotspot_x="84" version="0.70" orientation="dyyy" height="50" hotspot_y="44" width="90" type="element" link_type="simple">
+<definition hotspot_x="84" version="0.70" height="50" hotspot_y="44" width="90" type="element" link_type="simple">
     <uuid uuid="{4f255b3b-fbff-460b-8945-6316096bda31}"/>
     <names>
         <name lang="fr">Fiche et jack, tripolaires, type téléphone, jack

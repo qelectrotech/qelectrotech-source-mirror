@@ -1,19 +1,96 @@
 ====== ChangeLog from 0.7 to 0.8 ======
 
-* Element editor :
-* with Ctrl key you can moving by keyboard primitives selected by 0.1 point instead by 1 points, added the same feature for moving the selected aera.
-* Improve polygon widget editor on elements editor.
+
+* Moving the main QET repository SVN trunk to GIT.
+* Add a mirror of the main QET repository, which is synced to hosted at tuxfamily.org to Github.
+* Doxyfile update add QCH file for doxygen-generated docs using qhelpgenerator and then import them into Qt Creator.
+* Improve portability of Doxyfile (Simon).
+* Fix deprecated warnings (Simon).
+* Wrap code for better readability (Simon, Damian).
+
+
+
+
+* Elements collection :
+Improve collection 7378 elements in 1092 categories
+Thanks Sebastien, Dinozzo, Simon,  Rafał, Arnaud, Bisku, Fernando, Riesermauf, Alexis, david, Plc-user, Christophe, Michele,  Galexis, Jevgenijs, Gabor, 
+Benoit Michel, Franck, Ludovic, Cyrille, ossau2mation,  Mitzot,  Edgar, Nuri, Friskolon, Baboune41, Wiktor, shateks, Dik, Shateks,  Marcin
+
 
 * Diagram editor :
-* User can choose now folio list emplacement in project by select position number in settings :
-1 for the first position
-2 for the second position
-etc
-0 for always at the end of project
-Because index folio is 0 and not 1 we apply -1 in formula to not complicate your life..
+
+* The export of the nomenclature to csv file has been completely rewritten :
+It is now possible to choose which information to export as well as the order in which it should be displayed.
+An option allows filtering by type of element: all, terminal block, button / switch.
+Another option allows to display or not the column headers in the csv file.
+With these options, it is possible to create a nomenclature, an order list, but also for printing labels: list of terminals and list of buttons / switches.
+It is possible to save / load a configuration easily.
+Finally, the work being done by an SQLite database, a text field allows the user to create his own SQL query.
+
+* Add Conductors numbering to csv file.
+
+* Add new summary table.
+
+* add BOM creation dialog :
+nomenclature is now integrated into the project (accompanied by several parameters in order to be customizable).
+Tables can have a name.
+Tables an be added to any folio.
+Font margin and alignment (right center left) separately adjustable for headers and table cells.
+Position size and number of lines is adjustable.
+Possibility of linking several tables together, especially when the entire nomenclature cannot be contained in a folio.
+Automatic adjustment of the size of the table in relation to the folio.
+Option to apply the geometry of an array to all the array linked to it, so that everything is homogeneous.
+Save / load table configuration and content to make creation faster.
+Option to automatically adjust the table to the folio.
+Option to automatically add new tables in new folios if the nomenclature cannot be contained in 1 to N folios / tables.
+
+* Table content:
+Fully customizable, you display what you want or want (info to display in the desired order, filter on type of element, filter on content of the info "contains, not contains, not empty etc ..." ).
+The content being generated from a sqlite database, you can write your own request.
 
 
+* Loading of element collections is now faster (thanks to the pugixml parser)
+* The loading of collections of elements no longer freezes QElectroTech.
+* The appearance and disappearance of the search / replace menu is animated.
+* Fix wrong position of slave xref after open a saved project
 
+* Add font color of the conductors (Simon).
+* Add section and color properties for wires.
+
+* config dialog : 
+* Add QScrollArea to configdialog and resize to max_screen (Simon).
+* Add gui resize depending on screen size (Simon).
+* Add Screen info user (Simon).
+* Mod ScrollArea on demand (Simon).
+
+
+* Element editor:
+* Polygon editing widget, when you click on a point in the list, the corresponding point changes color in order to better visualize what you are doing.
+On this same list, a right click opens a contextual menu allowing to delete the selected point or inserted a point after the selected one.
+When holding the ctrl + directional arrow key, the selected parts move by 0.1 instead of 1 point.
+* with Ctrl key you can moving by keyboard primitives selected by 0.1 point instead by 1 points, added the same feature for moving the selected aera.
+* Added 140 web standard colors In Element editor (Arnaud).
+
+* Add multiedit feature (martin).
+* Add terminals uuid for next features (martin).
+
+
+* Windows :
+* Fix bad fonts rendering if Qt version >= 5.13.1.
+See : https://bugreports.qt.io/browse/QTBUG-83161
+* Fix backup file on windows
+For unknown reason KautoSaveFile don't write the file on Windows if file
+is open in another part of the code.
+No error is returned and use the method :
+qint64 QIODevice::write(const QByteArray &byteArray) return the good
+number of bytes written but the real file stay empty.
+Probably the problem don't come from KautoSaveFile but QFileDevice or
+QIODevice on windows.
+
+The fix consist to open the file just before write on it and close it
+just after.
+
+* writeToFile on a other Thread to improve this for windows performance (Simon).
 
 
 * macOS :
@@ -22,46 +99,31 @@ Because index folio is 0 and not 1 we apply -1 in formula to not complicate your
 (removed by Qt upstream) https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=commitdiff;h=ea47d152b35158ba07a55d009f57df0e4c2a048f;hp=08cc9b9991ae9ab51bed5b857b6257401401ff6f
 
 
+* Add Snap packages :
+* thanks Max for help.
+https://snapcraft.io/qelectrotech
+See: https://qelectrotech.org/forum/viewtopic.php?id=1426
+* Use kde-neon extension
+The kde-neon extension reduces our boilerplate in snapcraft.yaml
+and reduces the snap size considerably, as we do not need to ship
+any library that is already included in the kde-frameworks-5-core18
+snap itself.
 
-* For the Flatpak package : remove the file name extension added
+This limits qelectrotech builds to the architectures supported
+by kde-frameworks-5-core18, i.e. only amd64.
+
+https://git.tuxfamily.org/qet/qet.git/log/?qt=grep&q=snap
+
+
+
+* Add Flatpak packages : 
+* thanks Mathieu for help.
+See: https://github.com/qelectrotech/qelectrotech-source-mirror/pull/18
+* remove the file name extension added
 automatically to the saved files even if the user sets an unknown file
 extension for the program.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://git.tuxfamily.org/qet/qet.git/log/?qt=grep&q=flatpak
 
 
 

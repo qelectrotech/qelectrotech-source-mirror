@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="9" orientation="dyyy" hotspot_y="34" type="element" height="100" width="80" version="0.5">
+<definition link_type="simple" hotspot_x="9" hotspot_y="34" type="element" height="100" width="80" version="0.5">
     <uuid uuid="{5dcbec8f-ec96-4c13-9604-4656cdbf697c}"/>
     <names>
         <name lang="pl">Przetwornik temperatury TMT180</name>

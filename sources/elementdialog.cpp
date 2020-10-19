@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,10 +30,10 @@
 #include "qetmessagebox.h"
 
 /**
- * @brief ElementDialog::ElementDialog
- * @param mode
- * @param parent
- */
+	@brief ElementDialog::ElementDialog
+	@param mode
+	@param parent
+*/
 ElementDialog::ElementDialog(uint mode, QWidget *parent) :
 	QDialog(parent),
 	m_mode(mode)
@@ -43,9 +43,9 @@ ElementDialog::ElementDialog(uint mode, QWidget *parent) :
 }
 
 /**
- * @brief ElementDialog::setUpWidget
- * Build and setup the widgets of this dialog
- */
+	@brief ElementDialog::setUpWidget
+	Build and setup the widgets of this dialog
+*/
 void ElementDialog::setUpWidget()
 {
 	setWindowModality(Qt::WindowModal);
@@ -124,9 +124,9 @@ void ElementDialog::setUpWidget()
 }
 
 /**
- * @brief ElementDialog::setUpConnection
- * Setup connection of this dialog
- */
+	@brief ElementDialog::setUpConnection
+	Setup connection of this dialog
+*/
 void ElementDialog::setUpConnection()
 {
 	connect(m_tree_view, &QTreeView::clicked, this, &ElementDialog::indexClicked);
@@ -137,9 +137,9 @@ void ElementDialog::setUpConnection()
 }
 
 /**
- * @brief ElementDialog::indexClicked
- * @param index
- */
+	@brief ElementDialog::indexClicked
+	@param index
+*/
 void ElementDialog::indexClicked(const QModelIndex &index)
 {
 	ElementCollectionItem *eci = static_cast<ElementCollectionItem*> (m_model->itemFromIndex(index));
@@ -148,9 +148,9 @@ void ElementDialog::indexClicked(const QModelIndex &index)
 }
 
 /**
- * @brief ElementDialog::checkCurrentLocation
- * Update this dialog according to the current selected location and the current mode
- */
+	@brief ElementDialog::checkCurrentLocation
+	Update this dialog according to the current selected location and the current mode
+*/
 void ElementDialog::checkCurrentLocation()
 {
 	if (m_mode == OpenElement) {
@@ -236,10 +236,10 @@ void ElementDialog::checkAccept()
 }
 
 /**
- * @brief ElementDialog::location
- * @return The selected location or a null location if user has selected nothing
- * or selection isn't compatible with the curent mode
- */
+	@brief ElementDialog::location
+	@return The selected location or a null location if user has selected nothing
+	or selection isn't compatible with the curent mode
+*/
 ElementsLocation ElementDialog::location() const
 {
 	if (m_mode == OpenElement)
@@ -272,32 +272,32 @@ ElementsLocation ElementDialog::location() const
 }
 
 /**
- * @brief ElementDialog::getOpenElementLocation
- * Display a dialog for open an element through her location
- * @param parentWidget
- * @return The location of the selected element
- */
+	@brief ElementDialog::getOpenElementLocation
+	Display a dialog for open an element through her location
+	@param parentWidget
+	@return The location of the selected element
+*/
 ElementsLocation ElementDialog::getOpenElementLocation(QWidget *parentWidget) {
 	return(ElementDialog::execConfiguredDialog(ElementDialog::OpenElement, parentWidget));
 }
 
 /**
- * @brief ElementDialog::getSaveElementLocation
- * Display a dialog that allow to user to select an element (existing or not) who he want to save
- * @param parentWidget
- * @return The location where the element must be save
- */
+	@brief ElementDialog::getSaveElementLocation
+	Display a dialog that allow to user to select an element (existing or not) who he want to save
+	@param parentWidget
+	@return The location where the element must be save
+*/
 ElementsLocation ElementDialog::getSaveElementLocation(QWidget *parentWidget) {
 	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveElement, parentWidget));
 }
 
 /**
- * @brief ElementDialog::execConfiguredDialog
- * launch a dialog with the chosen mode
- * @param mode : mode of the dialog
- * @param parentWidget : parent widget of the dialog
- * @return the chosen location
- */
+	@brief ElementDialog::execConfiguredDialog
+	launch a dialog with the chosen mode
+	@param mode : mode of the dialog
+	@param parentWidget : parent widget of the dialog
+	@return the chosen location
+*/
 ElementsLocation ElementDialog::execConfiguredDialog(int mode, QWidget *parentWidget)
 {
 	ElementDialog *element_dialog = new ElementDialog(mode, parentWidget);

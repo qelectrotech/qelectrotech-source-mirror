@@ -1,4 +1,4 @@
-<definition type="element" width="110" version="0.70" hotspot_y="30" orientation="dyyy" height="40" link_type="simple" hotspot_x="104">
+<definition type="element" width="110" version="0.70" hotspot_y="30" height="40" link_type="simple" hotspot_x="104">
     <uuid uuid="{1989ab53-815c-49c6-884c-3f3811878e6c}"/>
     <names>
         <name lang="fr">Concentrateur de lignes sur poteau</name>

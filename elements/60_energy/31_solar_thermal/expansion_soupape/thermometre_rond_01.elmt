@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="14">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="40" hotspot_y="14">
     <uuid uuid="{7ae977aa-13fc-405a-86c2-739618387763}"/>
     <names>
         <name lang="cs">Teploměr s číselníkem</name>

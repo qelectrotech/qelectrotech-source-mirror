@@ -1,0 +1,33 @@
+<definition link_type="simple" hotspot_y="44" width="50" type="element" height="80" hotspot_x="25" version="0.80">
+    <uuid uuid="{d24cd314-db5b-47e0-be59-97ba24171e96}"/>
+    <names>
+        <name lang="nl">Watt uur meter (en_60617)</name>
+        <name lang="it">Misuratore di Wh (en_60617)</name>
+        <name lang="pl">Licznik watogodzin (en_60617)</name>
+        <name lang="en">Watt hour meter (en_60617)</name>
+        <name lang="cs">Počítadlo watthodin(en_60617) </name>
+        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -(en_60617) </name>
+        <name lang="fr">Compteur d'énergie active Wattheuremètre (en_60617)</name>
+        <name lang="de">Wattstundenzähler (EN 60617)</name>
+    </names>
+    <elementInformations/>
+    <informations>https://github.com/jonasstein/qelectrotech-symbols&#xd;&#xd;
+EN 60617</informations>
+    <description>
+        <dynamic_text text_width="-1" x="23" z="1" frame="false" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="-10.95" uuid="{b0deaf89-852a-4b82-a9c0-c5c0cbb96c46}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-10" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Wh" y="7"/>
+        <rect x="-20" width="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" y="-15" rx="0"/>
+        <rect x="-20" width="40" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" y="-35" rx="0"/>
+        <line y2="-35" y1="-40" x1="-10" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-36" y1="-40" x1="10" x2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="30" y1="25" x1="10" x2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="30" y1="25" x1="-10" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <terminal x="-10" name="" y="-40" uuid="{df6115b4-ae75-4a61-a35c-7ad81ffaf3eb}" orientation="n"/>
+        <terminal x="10" name="" y="-40" uuid="{df6115b4-ae75-4a61-a35c-7ad81ffaf3eb}" orientation="n"/>
+        <terminal x="-10" name="" y="30" uuid="{0d11dc0b-abdc-4f1e-b082-8bbeb61fcfdd}" orientation="s"/>
+        <terminal x="10" name="" y="30" uuid="{67ac4117-bd99-4eb8-9e72-ca302033babd}" orientation="s"/>
+    </description>
+</definition>

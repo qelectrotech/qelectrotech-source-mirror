@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" orientation="dyyy" hotspot_y="9" version="0.51" type="element" height="20" hotspot_x="13">
+<definition width="40" link_type="simple" hotspot_y="9" version="0.51" type="element" height="20" hotspot_x="13">
     <uuid uuid="{82a689cc-7613-4963-bc25-beb8d61f53aa}"/>
     <names>
         <name lang="fr">Charge 75 Ohms</name>

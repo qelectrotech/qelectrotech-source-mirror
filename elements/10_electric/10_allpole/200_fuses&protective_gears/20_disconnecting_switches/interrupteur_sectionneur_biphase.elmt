@@ -1,4 +1,4 @@
-<definition link_type="master" hotspot_x="51" type="element" width="60" height="50" hotspot_y="24" version="0.70" orientation="dyyy">
+<definition link_type="master" hotspot_x="51" type="element" width="60" height="50" hotspot_y="24" version="0.70">
     <uuid uuid="{1efb43f5-78b4-401d-8031-581442217549}"/>
     <names>
         <name lang="fr">Interrupteur sectionneur biphasé</name>

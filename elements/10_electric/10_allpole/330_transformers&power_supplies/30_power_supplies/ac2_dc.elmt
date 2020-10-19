@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="29" version="0.5" hotspot_y="25" link_type="simple" width="60" orientation="dyyy" height="40">
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="25" link_type="simple" width="60" height="40">
     <uuid uuid="{3973dcdb-e383-4a83-adff-69061aa9fe78}"/>
     <names>
         <name lang="el">Μονοφασικό εναλλασσόμενο > Συνεχές</name>

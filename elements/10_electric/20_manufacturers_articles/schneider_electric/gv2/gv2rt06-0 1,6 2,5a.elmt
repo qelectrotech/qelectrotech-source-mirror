@@ -1,4 +1,4 @@
-<definition hotspot_y="34" link_type="master" height="60" type="element" width="60" orientation="dyyy" hotspot_x="30" version="0.70">
+<definition hotspot_y="34" link_type="master" height="60" type="element" width="60" hotspot_x="30" version="0.70">
     <uuid uuid="{84f2724c-db9c-456d-9713-312b53f45d64}"/>
     <names>
         <name lang="ar">قاطع ثلاثي القطبية</name>

@@ -1,27 +1,33 @@
-<definition hotspot_x="22" hotspot_y="30" width="50" type="element" version="0.5" height="60" link_type="simple" orientation="dyyy">
-<uuid uuid="{5005F646-D020-4BE3-AE43-6D06E60D7F5A}"/><names>
+<definition hotspot_y="30" link_type="simple" width="50" version="0.80" type="element" height="60" hotspot_x="22">
+    <uuid uuid="{f69ca2bb-266c-4711-8a9b-44c5a701c784}"/>
+    <names>
+        <name lang="fr">Echangeur à plaques</name>
         <name lang="ca">Intercanviador de plaques</name>
         <name lang="es">Intercambador placas</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.5172" width="4.725" antialias="false" height="4.62887" x="15.115"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="16.4281" width="4.725" antialias="false" height="5.04796" x="-15.125"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="17.2694" width="4.725" antialias="false" height="5.04796" x="15.115"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-0.005" y2="24" end1="none" x1="-0.005" y1="-23.8316" length1="1.5"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="3.3025" y2="24" end1="none" x1="3.3025" y1="-23.8316" length1="1.5"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23.8316" width="3.78" antialias="false" height="47.8316" x="11.335"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="7.555" y2="24" end1="none" x1="7.555" y1="-23.8316" length1="1.5"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23.8316" width="3.78" antialias="false" height="47.8316" x="-10.4"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-3.785" y2="24" end1="none" x1="-3.785" y1="-23.8316" length1="1.5"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="10.39" y2="-21.5172" end1="none" x1="-5.675" y1="-21.5172" length1="1.5"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="11.335" y2="21.476" end1="none" x1="-6.62" y1="21.476" length1="1.5"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21.5172" width="4.725" antialias="false" height="4.62887" x="-15.125"/>
-        <input rotate="true" text="_" tagg="label" y="-25.7603" x="-5.675" size="4"/>
-        <terminal y="-20" x="-15" orientation="w"/>
-        <terminal y="19.7934" x="19.84" orientation="e"/>
-        <terminal y="20" x="-15" orientation="w"/>
-        <terminal y="-19.2028" x="19.84" orientation="e"/>
+        <rect width="4.725" y="-21.5172" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="15.115" ry="0" antialias="false" height="4.62887"/>
+        <rect width="4.725" y="16.4281" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-15.125" ry="0" antialias="false" height="5.04796"/>
+        <rect width="4.725" y="17.2694" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="15.115" ry="0" antialias="false" height="5.04796"/>
+        <line x1="-0.005" y2="24" end1="none" y1="-23.8316" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-0.005" antialias="false" length1="1.5"/>
+        <line x1="3.3025" y2="24" end1="none" y1="-23.8316" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="3.3025" antialias="false" length1="1.5"/>
+        <rect width="3.78" y="-23.8316" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="11.335" ry="0" antialias="false" height="47.8316"/>
+        <line x1="7.555" y2="24" end1="none" y1="-23.8316" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="7.555" antialias="false" length1="1.5"/>
+        <rect width="3.78" y="-23.8316" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-10.4" ry="0" antialias="false" height="47.8316"/>
+        <line x1="-3.785" y2="24" end1="none" y1="-23.8316" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-3.785" antialias="false" length1="1.5"/>
+        <line x1="-5.675" y2="-21.5172" end1="none" y1="-21.5172" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="10.39" antialias="false" length1="1.5"/>
+        <line x1="-6.62" y2="21.476" end1="none" y1="21.476" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="11.335" antialias="false" length1="1.5"/>
+        <rect width="4.725" y="-21.5172" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-15.125" ry="0" antialias="false" height="4.62887"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="-33.2603" uuid="{16edcc8a-712e-4d83-8b57-267b2bfd853a}" Halignment="AlignLeft" rotation="0" x="-5.675" text_width="-1" frame="false" text_from="ElementInfo" z="13">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal name="" y="-20" uuid="{8ad56e16-62e6-4e6b-9d2a-97ffbfb7b6dc}" x="-15" orientation="w"/>
+        <terminal name="" y="19.7934" uuid="{a89591d7-48be-4b4b-87c9-c308baba3f4b}" x="19.84" orientation="e"/>
+        <terminal name="" y="20" uuid="{aa51bcf2-a604-473f-bb34-d7f741f40941}" x="-15" orientation="w"/>
+        <terminal name="" y="-19.2028" uuid="{894e111d-a373-4423-89be-38da9fbd220c}" x="19.84" orientation="e"/>
     </description>
 </definition>

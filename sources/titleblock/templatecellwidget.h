@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@ class TitleBlockCell;
 class NamesList;
 
 /**
+	@brief The TitleBlockTemplateCellWidget class
 	This class implements an edition widget for cells that compose a title
 	block template.
 */
@@ -33,86 +34,92 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	
 	// constructor, destructor
 	public:
-	TitleBlockTemplateCellWidget(TitleBlockTemplate * = nullptr, QWidget * = nullptr);
-	~TitleBlockTemplateCellWidget() override;
+		TitleBlockTemplateCellWidget(
+				TitleBlockTemplate * = nullptr,
+				QWidget * = nullptr);
+		~TitleBlockTemplateCellWidget() override;
 	private:
-	TitleBlockTemplateCellWidget(const TitleBlockTemplateCellWidget &);
+		TitleBlockTemplateCellWidget(
+				const TitleBlockTemplateCellWidget &);
 	
 	// attributes
 	private:
-	/// is the template read-only?
-	bool read_only_;
-	QLabel    *cell_type_label_;
-	QComboBox *cell_type_input_;
-	
-	QLabel *empty_label_;
-	
-	QLabel      *logo_label_;
-	QComboBox   *logo_input_;
-	QPushButton *add_logo_input_;
-	
-	QLabel        *name_label_;
-	QLineEdit     *name_input_;
-	QCheckBox     *label_checkbox_;
-	QLineEdit     *label_input_;
-	QPushButton   *label_edit_;
-	QLabel        *value_label_;
-	QLineEdit     *value_input_;
-	QPushButton   *value_edit_;
-	QLabel        *align_label_;
-	QLabel        *horiz_align_label_;
-	QComboBox     *horiz_align_input_;
-	QHash<int, int> horiz_align_indexes_;
-	QLabel        *vert_align_label_;
-	QComboBox     *vert_align_input_;
-	QHash<int, int> vert_align_indexes_;
-	QLabel        *font_size_label_;
-	QSpinBox      *font_size_input_;
-	QCheckBox     *font_adjust_input_;
-	QVBoxLayout   *cell_editor_layout_;
-	QHBoxLayout   *cell_editor_type_and_name_layout_;
-	QGridLayout   *cell_editor_text_layout_;
-	QHBoxLayout   *cell_editor_image_layout_;
-	
-	TitleBlockCell *edited_cell_;
+		/// is the template read-only?
+		bool read_only_;
+		QLabel    *cell_type_label_;
+		QComboBox *cell_type_input_;
+
+		QLabel *empty_label_;
+
+		QLabel      *logo_label_;
+		QComboBox   *logo_input_;
+		QPushButton *add_logo_input_;
+
+		QLabel        *name_label_;
+		QLineEdit     *name_input_;
+		QCheckBox     *label_checkbox_;
+		QLineEdit     *label_input_;
+		QPushButton   *label_edit_;
+		QLabel        *value_label_;
+		QLineEdit     *value_input_;
+		QPushButton   *value_edit_;
+		QLabel        *align_label_;
+		QLabel        *horiz_align_label_;
+		QComboBox     *horiz_align_input_;
+		QHash<int, int> horiz_align_indexes_;
+		QLabel        *vert_align_label_;
+		QComboBox     *vert_align_input_;
+		QHash<int, int> vert_align_indexes_;
+		QLabel        *font_size_label_;
+		QSpinBox      *font_size_input_;
+		QCheckBox     *font_adjust_input_;
+		QVBoxLayout   *cell_editor_layout_;
+		QHBoxLayout   *cell_editor_type_and_name_layout_;
+		QGridLayout   *cell_editor_text_layout_;
+		QHBoxLayout   *cell_editor_image_layout_;
+
+		TitleBlockCell *edited_cell_;
 	
 	// methods
 	public:
-	int horizontalAlignment() const;
-	int verticalAlignment() const;
-	int alignment() const;
-	bool isReadOnly() const;
+		int horizontalAlignment() const;
+		int verticalAlignment() const;
+		int alignment() const;
+		bool isReadOnly() const;
 	
 	protected:
-	void editTranslatableValue(NamesList &, const QString &, const QString &) const;
-	void emitModification(const QString &, const QVariant &) const;
-	QString defaultVariablesString() const;
-	QString labelValueInformationString() const;
+		void editTranslatableValue(NamesList &,
+					   const QString &,
+					   const QString &) const;
+		void emitModification(const QString &,
+				      const QVariant &) const;
+		QString defaultVariablesString() const;
+		QString labelValueInformationString() const;
 	
 	private:
-	void initWidgets();
+		void initWidgets();
 	
 	public slots:
-	void updateFormType(int);
-	void edit(TitleBlockCell *);
-	void editType();
-	void editName();
-	void editLabelDisplayed();
-	void editLabel();
-	void editValue();
-	void editAlignment();
-	void editFontSize();
-	void editAdjust();
-	void editLogo();
-	void updateLogosComboBox(const TitleBlockTemplate *);
-	void setReadOnly(bool);
+		void updateFormType(int);
+		void edit(TitleBlockCell *);
+		void editType();
+		void editName();
+		void editLabelDisplayed();
+		void editLabel();
+		void editValue();
+		void editAlignment();
+		void editFontSize();
+		void editAdjust();
+		void editLogo();
+		void updateLogosComboBox(const TitleBlockTemplate *);
+		void setReadOnly(bool);
 	
 	private slots:
 	
 	
 	signals:
-	void logoEditionRequested();
-	void cellModified(ModifyTitleBlockCellCommand *) const;
+		void logoEditionRequested();
+		void cellModified(ModifyTitleBlockCellCommand *) const;
 };
 
 #endif

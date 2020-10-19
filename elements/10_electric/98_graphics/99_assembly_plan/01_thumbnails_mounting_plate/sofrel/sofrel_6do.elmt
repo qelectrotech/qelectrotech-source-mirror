@@ -1,4 +1,4 @@
-<definition link_type="slave" version="0.80" orientation="dyyy" type="element" width="90" height="360" hotspot_x="45" hotspot_y="165">
+<definition link_type="slave" version="0.80" type="element" width="90" height="360" hotspot_x="45" hotspot_y="165">
     <uuid uuid="{a5d0a5d8-2c67-4495-bd4c-2d88ddf7311a}"/>
     <names>
         <name lang="fr">6 DO</name>

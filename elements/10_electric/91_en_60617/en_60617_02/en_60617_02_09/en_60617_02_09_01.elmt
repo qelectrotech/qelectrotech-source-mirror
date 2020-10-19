@@ -1,4 +1,4 @@
-<definition hotspot_x="17" version="0.70" orientation="dyyy" height="20" hotspot_y="17" width="20" type="element" link_type="simple">
+<definition hotspot_x="17" version="0.70" height="20" hotspot_y="17" width="20" type="element" link_type="simple">
     <uuid uuid="{259cbd68-fd30-4318-8083-b55fc31468b9}"/>
     <names>
         <name lang="fr">Rayonnement électromagnétique non ionisant, par exemple ondes radioélectriques ou lumière visible</name>

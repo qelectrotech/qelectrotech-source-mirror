@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="29">
     <uuid uuid="{8ed642df-b9a8-4333-917c-71538b2adc13}"/>
     <names>
         <name lang="fr">Commande par volant</name>

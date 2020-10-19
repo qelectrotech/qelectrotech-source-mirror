@@ -1,4 +1,4 @@
-<definition hotspot_x="14" type="element" hotspot_y="24" width="30" version="0.80" link_type="slave" height="40" orientation="dyyy">
+<definition hotspot_x="14" type="element" hotspot_y="24" width="30" version="0.80" link_type="slave" height="40">
     <uuid uuid="{70e0188f-3cb8-4079-9a56-c14109caa566}"/>
     <names>
         <name lang="en">3-way motorized valve</name>

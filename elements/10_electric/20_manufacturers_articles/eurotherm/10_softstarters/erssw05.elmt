@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="24" type="element" height="100" width="280" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="24" type="element" height="100" width="280" version="0.5">
     <uuid uuid="{c2592208-5c8b-4ea7-9c4a-362521c44197}"/>
     <names>
         <name lang="pl">ERSSW05</name>

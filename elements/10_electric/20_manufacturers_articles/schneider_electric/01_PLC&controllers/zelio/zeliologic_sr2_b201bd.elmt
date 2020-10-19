@@ -1,4 +1,4 @@
-<definition width="510" height="160" link_type="simple" hotspot_y="54" hotspot_x="130" version="0.5" type="element" orientation="dyyy">
+<definition width="510" height="160" link_type="simple" hotspot_y="54" hotspot_x="130" version="0.5" type="element">
     <uuid uuid="{90f21e0a-a914-44e8-95ce-47d4ba2c251b}"/>
     <names>
         <name lang="cs">Zelio Logic SR2 B201BD</name>

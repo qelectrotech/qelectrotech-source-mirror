@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_y="18" orientation="dyyy" hotspot_x="13" width="60" height="40" version="0.80">
+<definition type="element" link_type="simple" hotspot_y="18" hotspot_x="13" width="60" height="40" version="0.80">
     <uuid uuid="{bdaf5ba8-ac37-4518-b0ae-6e98828eaa6d}"/>
     <names>
         <name lang="cs">Pojistkový odpínač 3p</name>

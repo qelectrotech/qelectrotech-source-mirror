@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{0640ab80-cf42-4ce0-8015-6dd50e93084a}"/>
     <names>
         <name lang="it">Lumin, IR, 1 can</name>

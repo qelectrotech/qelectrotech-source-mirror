@@ -1,4 +1,4 @@
-<definition width="90" height="80" type="element" hotspot_x="62" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="53">
+<definition width="90" height="80" type="element" hotspot_x="62" version="0.70" link_type="simple" hotspot_y="53">
     <uuid uuid="{343cb3bb-f91e-4d54-83d6-6058bba1c3f7}"/>
     <names>
         <name lang="de">Impulszähler mit elektrischer Rückstellung auf

@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="6" type="element" orientation="dyyy" width="20" height="160">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="6" type="element" width="20" height="160">
     <uuid uuid="{2ff7f572-39c9-4c05-a8be-94c7c8fd3be0}"/>
     <names>
         <name lang="fr">037187 - Viking3 - 1 jonction Fusible Bouchon 2,5mm² pas 6mm</name>

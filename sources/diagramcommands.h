@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,14 +34,16 @@ class DiagramImageItem;
 class QetGraphicsItem;
 
 /**
- * @brief The AddItemCommand class
- * This command add an item in a diagram
- * The item to add is template, but must be QGraphicsItem or derived.
- */
+	@brief The AddItemCommand class
+	This command add an item in a diagram
+	The item to add is template, but must be QGraphicsItem or derived.
+*/
 template <typename QGI>
 class AddItemCommand : public QUndoCommand {
 	public:
-		AddItemCommand(QGI item, Diagram *diagram, const QPointF &pos = QPointF(), QUndoCommand *parent = nullptr) :
+		AddItemCommand(QGI item, Diagram *diagram,
+			       const QPointF &pos = QPointF(),
+			       QUndoCommand *parent = nullptr) :
 			QUndoCommand (parent),
 			m_item (item),
 			m_diagram (diagram),
@@ -80,12 +82,14 @@ QString itemText(const IndependentTextItem *item);
 QString itemText(const Conductor           *item);
 
 /**
+	@brief The PasteDiagramCommand class
 	This command pastes some content onto a particular diagram.
 */
 class PasteDiagramCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	PasteDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = nullptr);
+	PasteDiagramCommand(Diagram *, const DiagramContent &,
+			    QUndoCommand * = nullptr);
 	~PasteDiagramCommand() override;
 	private:
 	PasteDiagramCommand(const PasteDiagramCommand &);
@@ -108,24 +112,28 @@ class PasteDiagramCommand : public QUndoCommand {
 };
 
 /**
+	@brief The CutDiagramCommand class
 	This command cuts content from a particular diagram.
 */
 class CutDiagramCommand : public DeleteQGraphicsItemCommand {
 	// constructors, destructor
 	public:
-	CutDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = nullptr);
+	CutDiagramCommand(Diagram *, const DiagramContent &,
+			  QUndoCommand * = nullptr);
 	~CutDiagramCommand() override;
 	private:
 	CutDiagramCommand(const CutDiagramCommand &);
 };
 
 /**
+	@brief The MoveElementsCommand class
 	This command moves some content on a particular diagram.
 */
 class MoveElementsCommand : public QUndoCommand {
 		// constructors, destructor
 	public:
-		MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = nullptr);
+		MoveElementsCommand(Diagram *, const DiagramContent &,
+				    const QPointF &m, QUndoCommand * = nullptr);
 		~MoveElementsCommand() override;
 	private:
 		MoveElementsCommand(const MoveElementsCommand &);
@@ -137,7 +145,10 @@ class MoveElementsCommand : public QUndoCommand {
 		virtual void move(const QPointF &);
 
 	private:
-		void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant& start, const QVariant& end);
+		void setupAnimation (QObject * target,
+				     const QByteArray &propertyName,
+				     const QVariant& start,
+				     const QVariant& end);
 	
 	// attributes
 	private:
@@ -154,8 +165,9 @@ class MoveElementsCommand : public QUndoCommand {
 };
 
 /**
-	This command moves text items related to conductors on a particular
-	diagram.
+	@brief The MoveConductorsTextsCommand class
+	This command moves text items related to conductors
+	on a particular diagram.
 */
 class MoveConductorsTextsCommand : public QUndoCommand {
 	// constructors, destructor
@@ -169,7 +181,10 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 	public:
 	void undo() override;
 	void redo() override;
-	virtual void addTextMovement(ConductorTextItem *, const QPointF &, const QPointF &, bool = false);
+	virtual void addTextMovement(ConductorTextItem *,
+				     const QPointF &,
+				     const QPointF &,
+				     bool = false);
 	
 	private:
 	void regenerateTextLabel();
@@ -185,12 +200,16 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 };
 
 /**
+	@brief The ChangeDiagramTextCommand class
 	This commad modifies a text item.
 */
 class ChangeDiagramTextCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeDiagramTextCommand(DiagramTextItem *, const QString &before, const QString &after, QUndoCommand * = nullptr);
+	ChangeDiagramTextCommand(DiagramTextItem *,
+				 const QString &before,
+				 const QString &after,
+				 QUndoCommand * = nullptr);
 	~ChangeDiagramTextCommand() override;
 	private:
 	ChangeDiagramTextCommand(const ChangeDiagramTextCommand &);
@@ -214,12 +233,15 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 };
 
 /**
+	@brief The ChangeConductorCommand class
 	This command changes a particular conductor.
 */
 class ChangeConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, Qt::Corner, QUndoCommand * = nullptr);
+	ChangeConductorCommand(Conductor *, const ConductorProfile &,
+			       const ConductorProfile &, Qt::Corner,
+			       QUndoCommand * = nullptr);
 	~ChangeConductorCommand() override;
 	private:
 	ChangeConductorCommand(const ChangeConductorCommand &);
@@ -250,12 +272,15 @@ class ChangeConductorCommand : public QUndoCommand {
 };
 
 /**
+	@brief The ResetConductorCommand class
 	This command resets conductor paths.
 */
 class ResetConductorCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ResetConductorCommand(const QHash<Conductor *, ConductorProfilesGroup> &, QUndoCommand * = nullptr);
+	ResetConductorCommand(const QHash<Conductor *,
+			      ConductorProfilesGroup> &,
+			      QUndoCommand * = nullptr);
 	~ResetConductorCommand() override;
 	private:
 	ResetConductorCommand(const ResetConductorCommand &);
@@ -275,12 +300,14 @@ class ResetConductorCommand : public QUndoCommand {
 
 
 /**
+	@brief The ChangeBorderCommand class
 	This command changes the border properties of a particular diagram.
 */
 class ChangeBorderCommand : public QUndoCommand {
 	// constructors, destructor
 	public:
-	ChangeBorderCommand(Diagram *, const BorderProperties &, const BorderProperties &, QUndoCommand * = nullptr);
+	ChangeBorderCommand(Diagram *, const BorderProperties &,
+			    const BorderProperties &, QUndoCommand * = nullptr);
 	~ChangeBorderCommand() override;
 	private:
 	ChangeBorderCommand(const ChangeBorderCommand &);

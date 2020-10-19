@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="86" version="0.70" width="70" type="element" height="110">
+<definition link_type="simple" hotspot_x="65" hotspot_y="86" version="0.70" width="70" type="element" height="110">
     <uuid uuid="{4dbfd3c0-7fbf-4480-b58f-affadfc442a5}"/>
     <names>
         <name lang="fr">Alternateur synchrone à aimant permanent,

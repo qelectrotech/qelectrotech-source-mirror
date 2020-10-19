@@ -1,0 +1,36 @@
+<definition version="0.70" height="30" type="element" width="80" hotspot_x="36" link_type="simple" hotspot_y="10">
+    <uuid uuid="{975dd87a-7ff8-439e-a7d3-f61f02bd5f6a}"/>
+    <names>
+        <name lang="cs">C16 4p male</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line y1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-4" end1="none" x2="30"/>
+        <line y1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-4" end1="none" x2="10"/>
+        <line y1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-4" end1="none" x2="-10"/>
+        <line y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-1" end1="none" x2="13"/>
+        <line y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-1" end1="none" x2="-7"/>
+        <line y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-1" end1="none" x2="33"/>
+        <line y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-3" end1="none" x2="30"/>
+        <line y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-3" end1="none" x2="-10"/>
+        <line y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-3" end1="none" x2="10"/>
+        <line y1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-33" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-4" end1="none" x2="-30"/>
+        <line y1="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-1" end1="none" x2="-27"/>
+        <line y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-3" end1="none" x2="-30"/>
+        <line y1="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" length2="1.5" antialias="false" length1="1.5" end2="none" y2="1" end1="none" x2="30"/>
+        <line y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" length2="1.5" antialias="false" length1="1.5" end2="none" y2="3" end1="none" x2="30"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-28" color="#000000" text="1" y="10" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-8" color="#000000" text="2" y="10" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="12" color="#000000" text="3" y="10" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="32" color="#000000" text="PE" y="10" rotation="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-64" text_from="ElementInfo" y="-9" z="19" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{1640ef0e-7d5c-4342-a5c8-90b708c32e4c}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="10" y="10" orientation="s"/>
+        <terminal x="-30" y="10" orientation="s"/>
+        <terminal x="30" y="10" orientation="s"/>
+        <terminal x="-10" y="10" orientation="s"/>
+    </description>
+</definition>

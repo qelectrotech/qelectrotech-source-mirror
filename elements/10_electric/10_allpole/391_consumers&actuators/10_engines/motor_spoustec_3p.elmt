@@ -1,4 +1,4 @@
-<definition version="0.70" height="90" type="element" width="100" hotspot_x="39" link_type="simple" hotspot_y="44" orientation="dyyy">
+<definition version="0.70" height="90" type="element" width="100" hotspot_x="39" link_type="simple" hotspot_y="44">
     <uuid uuid="{1dc359e3-f208-4598-b694-3e3a3b5305c2}"/>
     <names>
         <name lang="cs">Motorový spouštěč</name>

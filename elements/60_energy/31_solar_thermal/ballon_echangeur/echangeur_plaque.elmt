@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="40">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="80" hotspot_y="40">
     <uuid uuid="{f3a8b1fa-94d9-494a-a8fe-cee107878c95}"/>
     <names>
         <name lang="cs">Deskový výměník tepla</name>

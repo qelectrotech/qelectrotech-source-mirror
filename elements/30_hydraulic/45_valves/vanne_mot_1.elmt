@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="14" hotspot_y="12" width="50" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="14" hotspot_y="12" width="50" height="40" link_type="simple" type="element">
     <uuid uuid="{bdf5d2c6-75b3-4214-a7cd-df012c1a9cbb}"/>
     <names>
         <name lang="en">Motorized valve</name>

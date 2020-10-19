@@ -1,4 +1,4 @@
-<definition hotspot_x="104" version="0.70" type="element" width="220" link_type="simple" height="390" hotspot_y="195" orientation="dyyy">
+<definition hotspot_x="104" version="0.70" type="element" width="220" link_type="simple" height="390" hotspot_y="195">
     <uuid uuid="{56913ccd-f3e5-4cfc-b185-a5c04f09f9b6}"/>
     <names>
         <name lang="en">EK1101 Coupler </name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,14 @@
 #include "aboutqetdialog.h"
 #include "ui_aboutqetdialog.h"
 #include "qet.h"
+#include "qetapp.h"
+#include "machine_info.h"
+#include <QDate>
 
-#include <QThread>
-
+/**
+	@brief AboutQETDialog::AboutQETDialog
+	@param parent
+*/
 AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::AboutQETDialog)
@@ -33,18 +38,26 @@ AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	setVersion();
 	setLibraries();
 	setLicence();
+	setLoginfo();
 }
 
+/**
+	@brief AboutQETDialog::~AboutQETDialog
+*/
 AboutQETDialog::~AboutQETDialog()
 {
 	delete ui;
 }
 
+/**
+	@brief AboutQETDialog::setAbout
+*/
 void AboutQETDialog::setAbout()
 {
+
 	QString str  = tr("QElectroTech, une application de réalisation de schémas électriques.", "about tab, description line") +
-			"<br><br>" +
-			tr("2006-2019 Les développeurs de QElectroTech", "about tab, developers line") +
+			"<br><br> 2006-"+QDate::currentDate().toString("yyyy")+
+			tr(" Les développeurs de QElectroTech", "about tab, developers line") +
 			"<br><br>"
 			"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
 			"<br><br>" +
@@ -53,17 +66,28 @@ void AboutQETDialog::setAbout()
 	ui->m_about_label->setText(str);
 }
 
+/**
+	@brief AboutQETDialog::setAuthors
+*/
 void AboutQETDialog::setAuthors()
 {
-	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",     tr("Idée originale"));
-	addAuthor(ui->m_author_label, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Développement"));
-	addAuthor(ui->m_author_label, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("Développement"));
-	addAuthor(ui->m_author_label, "Davi Fochi",         "davi@fochi.com.br",           tr("Développement"));
-	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",           tr("Convertisseur DXF"));
-	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",         tr("Plugin Bornier"));
-	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("Développement"));
+	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",         tr("Idée originale"));
+	addAuthor(ui->m_author_label, "Laurent Trinques",   "scorpio@qelectrotech.org",        tr("Développement"));
+	addAuthor(ui->m_author_label, "Joshua Claveau",     "Joshua@qelectrotech.org",         tr("Développement"));
+	addAuthor(ui->m_author_label, "Davi Fochi",         "davi@fochi.com.br",               tr("Développement"));
+	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",               tr("Convertisseur DXF"));
+	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",             tr("Plugin Bornier"));
+	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",       tr("Développement"));
+	addAuthor(ui->m_author_label, "Simon De Backer",    "￼￼debacker@qelectrotech.org",       tr("Développement"));
+	addAuthor(ui->m_author_label, "David Varley",       "David.Varley@cborn.com",          tr("Développement"));
+	addAuthor(ui->m_author_label, "Damian Caceres",     "damiancaceresmoreno@yahoo.es",    tr("Développement"));
+	addAuthor(ui->m_author_label, "Martin Marmsoler",   "martin.marmsoler@gmail.com",      tr("Développement"));
+	addAuthor(ui->m_author_label, "Sébastien Deffaux",  "s.deffaux@live.fr",               tr("Collection"));
 }
 
+/**
+	@brief AboutQETDialog::setTranslators
+*/
 void AboutQETDialog::setTranslators()
 {
 	addAuthor(ui->m_translators_label, "Alfredo Carreto",                           "electronicos_mx@yahoo.com.mx",   tr("Traduction en espagnol"));
@@ -92,6 +116,9 @@ void AboutQETDialog::setTranslators()
 	addAuthor(ui->m_translators_label, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
 }
 
+/**
+	@brief AboutQETDialog::setContributors
+*/
 void AboutQETDialog::setContributors()
 {
 	addAuthor(ui->m_contrib_label, "Remi Collet",         "remi@fedoraproject.org",              tr("Paquets Fedora et Red Hat"));
@@ -115,38 +142,21 @@ void AboutQETDialog::setContributors()
 	addAuthor(ui->m_contrib_label, "Maximilian Federle",   "",                                   tr("Paquets Snap"));
 }
 
+/**
+	@brief AboutQETDialog::setVersion
+*/
 void AboutQETDialog::setVersion()
 {
-	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V " + QET::displayedVersion + "</span>";
-	QString compilation_info = "<br />" + tr("Compilation : ");
-#ifdef __GNUC__
-#ifdef __APPLE_CC__
-	compilation_info += "  CLANG " + QString(__clang_version__ );
-	compilation_info += " <br>Built with Qt " + QString(QT_VERSION_STR);
-	compilation_info += " - Date : " + QString(__DATE__);
-	compilation_info += " : " + QString(__TIME__);
-	compilation_info += " <br>Run with Qt "+ QString(qVersion());
-	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
-	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
-	compilation_info += "  -   " + QString(QSysInfo::currentCpuArchitecture());
-	compilation_info += " -  Version :    " + QString(QSysInfo::prettyProductName());
-	compilation_info += "</br>" " -  Kernel :     " + QString(QSysInfo::kernelVersion());
-#else
-	compilation_info += "  GCC " + QString(__VERSION__);
-	compilation_info += "<br>Built with Qt " + QString(QT_VERSION_STR);
-	compilation_info += " - Date : " + QString(__DATE__);
-	compilation_info += " : " + QString(__TIME__);
-	compilation_info += " <br>Run with Qt "+ QString(qVersion());
-	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
-	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
-	compilation_info += "  -   " + QString(QSysInfo::currentCpuArchitecture());
-	compilation_info += " -  Version :    " + QString(QSysInfo::prettyProductName());
-	compilation_info += "</br>" " -  Kernel :     " + QString(QSysInfo::kernelVersion());
-#endif
-#endif
-	ui->m_version_label->setText(str + compilation_info);
+	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V "
+			+ QET::displayedVersion
+			+ "</span>";
+	Machine_info *my_ma =new Machine_info(this);
+	ui->m_version_label->setText(str + my_ma->compilation_info());
 }
 
+/**
+	@brief AboutQETDialog::setLibraries
+*/
 void AboutQETDialog::setLibraries()
 {
 	addLibrary(ui->m_libraries_label, "KDE lib",            "https://api.kde.org");
@@ -154,19 +164,40 @@ void AboutQETDialog::setLibraries()
 	addLibrary(ui->m_libraries_label, "pugixml",            "https://pugixml.org");
 }
 
+/**
+	@brief AboutQETDialog::setLicence
+*/
 void AboutQETDialog::setLicence()
 {
 	ui->m_license_text_edit->setPlainText(QET::license());
 }
 
 /**
- * @brief AboutQETDialog::addAuthor
- * Adds a person to the list of authors
- * @param label : QLabel which will add the person
- * @param name : Name of person
- * @param email : E-mail address of the person
- * @param work : Function / work done by the person
- */
+	@brief AboutQETDialog::setLoginfo
+	fills the m_log_comboBox with log files
+*/
+void AboutQETDialog::setLoginfo()
+{
+	const QString path = QETApp::configDir() + "/";
+	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
+	filter = filter.arg("[0123456789]"); // valid characters
+	Q_FOREACH (auto fileInfo,
+		   QDir(path).entryInfoList(
+			   QStringList(filter),
+			   QDir::Files))
+	{
+		ui->m_log_comboBox->addItem(fileInfo.absoluteFilePath());
+	}
+}
+
+/**
+	@brief AboutQETDialog::addAuthor
+	Adds a person to the list of authors
+	@param label : QLabel which will add the person
+	@param name : Name of person
+	@param email : E-mail address of the person
+	@param work : Function / work done by the person
+*/
 void AboutQETDialog::addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work)
 {
 	QString new_text = label->text();
@@ -178,6 +209,12 @@ void AboutQETDialog::addAuthor(QLabel *label, const QString &name, const QString
 	label->setText(new_text);
 }
 
+/**
+	@brief AboutQETDialog::addLibrary
+	@param label
+	@param name
+	@param link
+*/
 void AboutQETDialog::addLibrary(QLabel *label, const QString &name, const QString &link)
 {
 	QString new_text = label->text();
@@ -187,4 +224,13 @@ void AboutQETDialog::addLibrary(QLabel *label, const QString &name, const QStrin
 		// Add the function of the person
 	new_text += Library_template.arg(name).arg(link);
 	label->setText(new_text);
+}
+
+void AboutQETDialog::on_m_log_comboBox_currentTextChanged(const QString &arg1)
+{
+	QFile log_File(arg1);
+	if(log_File.open(QIODevice::ReadOnly)){
+		ui->m_log_textEdit->setPlainText(log_File.readAll());
+	}
+	log_File.close();
 }

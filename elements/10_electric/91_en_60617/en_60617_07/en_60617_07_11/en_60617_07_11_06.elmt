@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="156" hotspot_y="65" orientation="dyyy" type="element" height="70" width="160">
+<definition link_type="simple" version="0.70" hotspot_x="156" hotspot_y="65" type="element" height="70" width="160">
     <uuid uuid="{ef20de80-d3a4-4802-8405-f9428d2e08db}"/>
     <names>
         <name lang="fr">Commutateur avec diagramme de position</name>

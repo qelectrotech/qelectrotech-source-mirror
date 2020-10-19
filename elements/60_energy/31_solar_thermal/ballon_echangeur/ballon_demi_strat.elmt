@@ -1,4 +1,4 @@
-<definition width="130" hotspot_x="65" type="element" link_type="simple" orientation="dyyy" version="0.5" height="250" hotspot_y="121">
+<definition width="130" hotspot_x="65" type="element" link_type="simple" version="0.5" height="250" hotspot_y="121">
     <uuid uuid="{4a15f335-370e-4d8e-88ef-f911c6f544bf}"/>
     <names>
         <name lang="cs">Vrstvový zásobník 1000L</name>

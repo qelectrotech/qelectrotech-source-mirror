@@ -1,4 +1,4 @@
-<definition height="230" orientation="dyyy" hotspot_y="3" width="70" type="element" version="0.70" hotspot_x="14" link_type="simple">
+<definition height="230" hotspot_y="3" width="70" type="element" version="0.70" hotspot_x="14" link_type="simple">
     <uuid uuid="{358d16d2-42da-4fec-9618-15c434bfeb47}"/>
     <names>
         <name lang="fr">TM4ES4 Switch Ethernet 4 ports: vue</name>

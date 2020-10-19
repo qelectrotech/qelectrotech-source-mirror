@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_y="25" hotspot_x="5" orientation="dyyy" height="80" type="element" width="130" link_type="simple">
+<definition version="0.80" hotspot_y="25" hotspot_x="5" height="80" type="element" width="130" link_type="simple">
     <uuid uuid="{b80c45b5-a880-49f7-83d9-d7d796498528}"/>
     <names>
         <name lang="fr">Yucel_7Ah</name>

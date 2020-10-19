@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="10" hotspot_y="24" width="40" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="10" hotspot_y="24" width="40" height="40" link_type="simple" type="element">
     <uuid uuid="{88e8ffae-36d3-4f09-adaa-24d980501bfd}"/>
     <names>
         <name lang="en">3 holes - P->A</name>

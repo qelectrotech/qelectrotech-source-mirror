@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+<definition width="50" hotspot_x="15" type="element" link_type="simple" version="0.5" height="30" hotspot_y="15">
     <uuid uuid="{a3353c95-79f1-4924-81a8-b399fffdcf7d}"/>
     <names>
         <name lang="cs">Klíči chybí zástrčka, vstup dovolen</name>

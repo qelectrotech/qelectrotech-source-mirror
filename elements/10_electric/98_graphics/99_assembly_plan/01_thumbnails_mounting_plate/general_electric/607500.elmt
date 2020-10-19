@@ -1,4 +1,4 @@
-<definition hotspot_x="85" type="element" hotspot_y="5" version="0.80" width="170" link_type="simple" orientation="dyyy" height="210">
+<definition hotspot_x="85" type="element" hotspot_y="5" version="0.80" width="170" link_type="simple" height="210">
     <uuid uuid="{579e4486-9b4c-4119-a71a-a2dd279b6f4d}"/>
     <names>
         <name lang="fr">DOCA232/030</name>

@@ -1,4 +1,4 @@
-<definition width="130" height="200" link_type="simple" hotspot_y="93" hotspot_x="62" version="0.5" type="element" orientation="dyyy">
+<definition width="130" height="200" link_type="simple" hotspot_y="93" hotspot_x="62" version="0.5" type="element">
     <uuid uuid="{048ea9eb-c1e0-4db9-a624-4471952e97f0}"/>
     <names>
         <name lang="cs">STR 101</name>

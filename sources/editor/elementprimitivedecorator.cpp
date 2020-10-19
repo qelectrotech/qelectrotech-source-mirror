@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -48,7 +48,8 @@ ElementPrimitiveDecorator::~ElementPrimitiveDecorator()
 	@return the internal bouding rect, i.e. the smallest rectangle containing
 	the bounding rectangle of every selected item.
 */
-QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
+QRectF ElementPrimitiveDecorator::internalBoundingRect() const
+{
 	if (!decorated_items_.count() || !scene()) return(QRectF());
 
 	//if @decorated_items_ contain one item and if this item is a vertical or horizontal partline, apply a specific methode
@@ -73,15 +74,21 @@ QRectF ElementPrimitiveDecorator::boundingRect() const
 }
 
 /**
-	Paint the contents of an item in local coordinates, using \a painter, with
-	respect to \a option and
-	@param option The option parameter provides style options for the item, such
+	@brief ElementPrimitiveDecorator::paint
+	Paint the contents of an item in local coordinates, using \a painter,
+	with respect to \a option and
+	@param painter :
+	@param option :
+	The option parameter provides style options for the item, such
 	as its state, exposed area and its level-of-detail hints.
-	@param The widget argument is optional. If provided, it points to the
-	widget that is being painted on; otherwise, it is 0. For cached painting,
-	widget is always 0.
+	@param widget :
+	The widget argument is optional. If provided,
+	it points to the widget that is being painted on; otherwise, it is 0.
+	For cached painting, widget is always 0.
 */
-void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void ElementPrimitiveDecorator::paint(QPainter *painter,
+				      const QStyleOptionGraphicsItem *option,
+				      QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
@@ -133,14 +140,16 @@ void ElementPrimitiveDecorator::setItems(const QList<QGraphicsItem *> &items)
 /**
 	@return the list of items this decorator is supposed to manipulate
 */
-QList<CustomElementPart *> ElementPrimitiveDecorator::items() const {
+QList<CustomElementPart *> ElementPrimitiveDecorator::items() const
+{
 	return(decorated_items_);
 }
 
 /**
 	@return the list of items this decorator is supposed to manipulate
 */
-QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const {
+QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const
+{
 	QList<QGraphicsItem *> list;
 	foreach (CustomElementPart *part_item, decorated_items_) {
 		if (QGraphicsItem *item = dynamic_cast<QGraphicsItem *>(part_item)) {
@@ -244,7 +253,9 @@ void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *even
 }
 
 /**
-	@reimp QGraphicsItem::keyPressEvent
+	@brief ElementPrimitiveDecorator::keyPressEvent
+	@param e
+	@see QGraphicsItem::keyPressEvent
 */
 void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e)
 {
@@ -295,7 +306,9 @@ void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e)
 }
 
 /**
-	@reimp QGraphicsItem::keyReleaseEvent
+	@brief ElementPrimitiveDecorator::keyReleaseEvent
+	@param e
+	@see QGraphicsItem::keyReleaseEvent
 */
 void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 	// detecte le relachement d'une touche de direction ( = deplacement de parties)
@@ -327,7 +340,8 @@ void ElementPrimitiveDecorator::init()
 /**
 	Save the original bounding rectangle.
 */
-void ElementPrimitiveDecorator::saveOriginalBoundingRect() {
+void ElementPrimitiveDecorator::saveOriginalBoundingRect()
+{
 	original_bounding_rect_ = internalBoundingRect();
 }
 
@@ -335,7 +349,8 @@ void ElementPrimitiveDecorator::saveOriginalBoundingRect() {
 	Adjust the effective bounding rect. This method should be called after the
 	modified_bouding_rect_ attribute was modified.
 */
-void ElementPrimitiveDecorator::adjustEffectiveBoundingRect() {
+void ElementPrimitiveDecorator::adjustEffectiveBoundingRect()
+{
 	prepareGeometryChange();
 	effective_bounding_rect_ = modified_bounding_rect_ | effective_bounding_rect_;
 	update();
@@ -345,7 +360,8 @@ void ElementPrimitiveDecorator::adjustEffectiveBoundingRect() {
 /**
 	Start a movement (i.e. either a move or scaling operation)
 */
-void ElementPrimitiveDecorator::startMovement() {
+void ElementPrimitiveDecorator::startMovement()
+{
 	adjust();
 	
 	foreach(CustomElementPart *item, decorated_items_) {
@@ -399,7 +415,8 @@ void ElementPrimitiveDecorator::applyMovementToRect(int movement_type, const QPo
 	}
 }
 
-CustomElementPart *ElementPrimitiveDecorator::singleItem() const {
+CustomElementPart *ElementPrimitiveDecorator::singleItem() const
+{
 	if (decorated_items_.count() == 1) {
 		return(decorated_items_.first());
 	}
@@ -440,7 +457,8 @@ void ElementPrimitiveDecorator::scaleItems(const QRectF &original_rect, const QR
 /**
 	@return the bounding rectangle of \a item, in scene coordinates
 */
-QRectF ElementPrimitiveDecorator::getSceneBoundingRect(QGraphicsItem *item) const {
+QRectF ElementPrimitiveDecorator::getSceneBoundingRect(QGraphicsItem *item) const
+{
 	if (!item) return(QRectF());
 	return(item -> mapRectToScene(item -> boundingRect()));
 }
@@ -472,8 +490,8 @@ QVector<QPointF> ElementPrimitiveDecorator::getResizingsPoints() const
 }
 
 /**
- * @brief ElementPrimitiveDecorator::adjusteHandlerPos
- */
+	@brief ElementPrimitiveDecorator::adjusteHandlerPos
+*/
 void ElementPrimitiveDecorator::adjusteHandlerPos()
 {
 	QVector <QPointF> points_vector = mapToScene(getResizingsPoints());
@@ -482,10 +500,10 @@ void ElementPrimitiveDecorator::adjusteHandlerPos()
 }
 
 /**
- * @brief ElementPrimitiveDecorator::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief ElementPrimitiveDecorator::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void ElementPrimitiveDecorator::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event);
@@ -499,10 +517,10 @@ void ElementPrimitiveDecorator::handlerMousePressEvent(QetGraphicsHandlerItem *q
 }
 
 /**
- * @brief ElementPrimitiveDecorator::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief ElementPrimitiveDecorator::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -554,10 +572,10 @@ void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qg
 }
 
 /**
- * @brief ElementPrimitiveDecorator::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief ElementPrimitiveDecorator::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -585,9 +603,9 @@ void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem 
 }
 
 /**
- * @brief ElementPrimitiveDecorator::addHandler
- * Add handlers for this item
- */
+	@brief ElementPrimitiveDecorator::addHandler
+	Add handlers for this item
+*/
 void ElementPrimitiveDecorator::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -605,9 +623,9 @@ void ElementPrimitiveDecorator::addHandler()
 }
 
 /**
- * @brief ElementPrimitiveDecorator::removeHandler
- * Remove the handlers of this item
- */
+	@brief ElementPrimitiveDecorator::removeHandler
+	Remove the handlers of this item
+*/
 void ElementPrimitiveDecorator::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())
@@ -645,7 +663,8 @@ QPointF ElementPrimitiveDecorator::deltaForRoundScaling(const QRectF &original, 
 	Round the coordinates of \a point so it is snapped to the grid defined by the
 	grid_step_x_ and grid_step_y_ attributes.
 */
-QPointF ElementPrimitiveDecorator::snapConstPointToGrid(const QPointF &point) const {
+QPointF ElementPrimitiveDecorator::snapConstPointToGrid(const QPointF &point) const
+{
 	return(
 		QPointF(
 			qRound(point.x() / grid_step_x_) * grid_step_x_,
@@ -658,7 +677,8 @@ QPointF ElementPrimitiveDecorator::snapConstPointToGrid(const QPointF &point) co
 	Round the coordinates of \a point so it is snapped to the grid defined by the
 	grid_step_x_ and grid_step_y_ attributes.
 */
-void ElementPrimitiveDecorator::snapPointToGrid(QPointF &point) const {
+void ElementPrimitiveDecorator::snapPointToGrid(QPointF &point) const
+{
 	point.rx() = qRound(point.x() / grid_step_x_) * grid_step_x_;
 	point.ry() = qRound(point.y() / grid_step_y_) * grid_step_y_;
 }
@@ -688,11 +708,11 @@ QET::ScalingMethod ElementPrimitiveDecorator::scalingMethod(QGraphicsSceneMouseE
 }
 
 /**
- * @brief ElementPrimitiveDecorator::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief ElementPrimitiveDecorator::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant ElementPrimitiveDecorator::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSceneHasChanged)
@@ -718,11 +738,11 @@ QVariant ElementPrimitiveDecorator::itemChange(QGraphicsItem::GraphicsItemChange
 }
 
 /**
- * @brief ElementPrimitiveDecorator::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief ElementPrimitiveDecorator::sceneEventFilter
+	@param watched
+	@param event
+	@return
+*/
 bool ElementPrimitiveDecorator::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 	//Watched must be an handler

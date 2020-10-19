@@ -1,27 +1,29 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QRegExp>
 #include "numparteditorw.h"
 #include "ui_numparteditorw.h"
 
 /**
- * Constructor
- */
+	@brief NumPartEditorW::NumPartEditorW
+	Constructor
+	@param type
+	@param parent
+*/
 NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
@@ -34,10 +36,18 @@ NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 }
 
 /**
- * Constructor
- * Build with value of @context at position i
- */
-NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, QWidget *parent):
+	@brief NumPartEditorW::NumPartEditorW
+	Constructor
+	Build with value of context at position i
+	@param context
+	@param i
+	@param type
+	@param parent
+*/
+NumPartEditorW::NumPartEditorW (NumerotationContext &context,
+				int i,
+				int type,
+				QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
 	intValidator (new QIntValidator(0,99999,this)),
@@ -49,28 +59,42 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, Q
 
 	else {
 		QStringList strl = context.itemAt(i);
-		if (strl.at(0)=="unit") setType(NumPartEditorW::unit, true);
-		else if (strl.at(0)=="unitfolio") setType(NumPartEditorW::unitfolio, true);
-		else if (strl.at(0)=="ten") setType(NumPartEditorW::ten, true);
-		else if (strl.at(0)=="tenfolio") setType(NumPartEditorW::tenfolio, true);
-		else if (strl.at(0)=="hundred") setType(NumPartEditorW::hundred, true);
-		else if (strl.at(0)=="hundredfolio") setType(NumPartEditorW::hundredfolio, true);
-		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
-		else if (strl.at(0)=="idfolio") setType(NumPartEditorW::idfolio);
-		else if (strl.at(0)=="folio") setType(NumPartEditorW::folio);
-		else if (strl.at(0)=="plant") setType(NumPartEditorW::plant);
-		else if (strl.at(0)=="locmach") setType(NumPartEditorW::locmach);
-		else if (strl.at(0)=="elementline") setType(NumPartEditorW::elementline);
-		else if (strl.at(0)=="elementcolumn") setType(NumPartEditorW::elementcolumn);
-		else if (strl.at(0)=="elementprefix") setType(NumPartEditorW::elementprefix);
+		if (strl.at(0)=="unit")
+			setType(NumPartEditorW::unit, true);
+		else if (strl.at(0)=="unitfolio")
+			setType(NumPartEditorW::unitfolio, true);
+		else if (strl.at(0)=="ten")
+			setType(NumPartEditorW::ten, true);
+		else if (strl.at(0)=="tenfolio")
+			setType(NumPartEditorW::tenfolio, true);
+		else if (strl.at(0)=="hundred")
+			setType(NumPartEditorW::hundred, true);
+		else if (strl.at(0)=="hundredfolio")
+			setType(NumPartEditorW::hundredfolio, true);
+		else if (strl.at(0)=="string")
+			setType(NumPartEditorW::string);
+		else if (strl.at(0)=="idfolio")
+			setType(NumPartEditorW::idfolio);
+		else if (strl.at(0)=="folio")
+			setType(NumPartEditorW::folio);
+		else if (strl.at(0)=="plant")
+			setType(NumPartEditorW::plant);
+		else if (strl.at(0)=="locmach")
+			setType(NumPartEditorW::locmach);
+		else if (strl.at(0)=="elementline")
+			setType(NumPartEditorW::elementline);
+		else if (strl.at(0)=="elementcolumn")
+			setType(NumPartEditorW::elementcolumn);
+		else if (strl.at(0)=="elementprefix")
+			setType(NumPartEditorW::elementprefix);
 		ui -> value_field -> setText(strl.at(1));
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
 	}
 }
 
 /**
- * Destructor
- */
+	Destructor
+*/
 NumPartEditorW::~NumPartEditorW()
 {
 	delete intValidator;
@@ -83,29 +107,49 @@ void NumPartEditorW::setVisibleItems()
 	QStringList items;
 	if (m_edited_type == 2)
 	{
-		items	<< tr("Chiffre 1") << tr("Chiffre 01")
-				<< tr("Chiffre 001")
-				<< tr("Texte");
+		items	<< tr("Chiffre 1")
+			<< tr("Chiffre 01")
+			<< tr("Chiffre 001")
+			<< tr("Texte");
 	}
 	else if (m_edited_type == 1)
 	{
-		items	<< tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
-				<< tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-				<< tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach");
+		items	<< tr("Chiffre 1")
+			<< tr("Chiffre 1 - Folio")
+			<< tr("Chiffre 01")
+			<< tr("Chiffre 01 - Folio")
+			<< tr("Chiffre 001")
+			<< tr("Chiffre 001 - Folio")
+			<< tr("Texte")
+			<< tr("N° folio")
+			<< tr("Folio")
+			<< tr("Installation")
+			<< tr("Locmach");
 	}
 	else
-		items << tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
-			  << tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-			  << tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach")
-			  << tr("Element Line") << tr("Element Column") << tr("Element Prefix");
+		items << tr("Chiffre 1")
+		      << tr("Chiffre 1 - Folio")
+		      << tr("Chiffre 01")
+		      << tr("Chiffre 01 - Folio")
+		      << tr("Chiffre 001")
+		      << tr("Chiffre 001 - Folio")
+		      << tr("Texte")
+		      << tr("N° folio")
+		      << tr("Folio")
+		      << tr("Installation")
+		      << tr("Locmach")
+		      << tr("Element Line")
+		      << tr("Element Column")
+		      << tr("Element Prefix");
 	ui->type_cb->insertItems(0,items);
 }
 
 /**
- * @brief NumPartEditorW::toNumContext
- * @return the display to NumerotationContext
- */
-NumerotationContext NumPartEditorW::toNumContext() {
+	@brief NumPartEditorW::toNumContext
+	@return the display to NumerotationContext
+*/
+NumerotationContext NumPartEditorW::toNumContext()
+{
 	NumerotationContext nc;
 	QString type_str;
 	switch (type_) {
@@ -152,28 +196,41 @@ NumerotationContext NumPartEditorW::toNumContext() {
 			type_str = "elementprefix";
 			break;
 	}
-	if (type_str == "unitfolio" || type_str == "tenfolio" || type_str == "hundredfolio")
-		nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value(), ui->value_field->displayText().toInt());
+	if (type_str == "unitfolio"
+			|| type_str == "tenfolio"
+			|| type_str == "hundredfolio")
+		nc.addValue(type_str,
+			    ui -> value_field -> displayText(),
+			    ui -> increase_spinBox -> value(),
+			    ui->value_field->displayText().toInt());
 	else
-	nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value());
+	nc.addValue(type_str,
+		    ui -> value_field -> displayText(),
+		    ui -> increase_spinBox -> value());
 	return nc;
 }
 
 /**
- * @brief NumPartEditorW::isValid
- * @return true if value field isn't empty or if type is folio
- */
-bool NumPartEditorW::isValid() {
-	if (type_ == folio || type_ == idfolio || type_ == elementline || type_ == plant || type_ == locmach ||
-		type_ == elementcolumn || type_ == elementprefix) {return true;}
+	@brief NumPartEditorW::isValid
+	@return true if value field isn't empty or if type is folio
+*/
+bool NumPartEditorW::isValid()
+{
+	if (type_ == folio
+			|| type_ == idfolio
+			|| type_ == elementline
+			|| type_ == plant
+			|| type_ == locmach
+			|| type_ == elementcolumn
+			|| type_ == elementprefix) {return true;}
 	else if(ui -> value_field -> text().isEmpty()) {return false;}
 	else return true;
 }
 
 /**
- * @brief NumPartEditorW::on_type_cb_activated
- * Action when user change the type comboBox
- */
+	@brief NumPartEditorW::on_type_cb_activated
+	Action when user change the type comboBox
+*/
 void NumPartEditorW::on_type_cb_activated(int) {
 	if (ui->type_cb->currentText() == tr("Chiffre 1"))
 		setType(unit);
@@ -207,36 +264,54 @@ void NumPartEditorW::on_type_cb_activated(int) {
 }
 
 /**
- * @brief NumPartEditorW::on_value_field_textChanged
- * emit changed when @value_field text changed
- */
-void NumPartEditorW::on_value_field_textEdited() {
+	@brief NumPartEditorW::on_value_field_textChanged
+	emit changed when value_field text changed
+*/
+void NumPartEditorW::on_value_field_textEdited()
+{
 	emit changed();
 }
 
 /**
- * @brief NumPartEditorW::on_increase_spinBox_valueChanged
- * emit changed when @increase_spinBox value changed
- */
+	@brief NumPartEditorW::on_increase_spinBox_valueChanged
+	emit changed when increase_spinBox value changed
+*/
 void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
 
 /**
- * @brief NumPartEditorW::setType
- * Set good behavior by type @t
- * @param t, type used
- * @param fnum, force the behavior of numeric type
- */
+	@brief NumPartEditorW::setType
+	Set good behavior by type t
+	@param t : type used
+	@param fnum : force the behavior of numeric type
+*/
 void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	setCurrentIndex(t);
 
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
-	if ( ((t==unit || t==unitfolio || t==ten || t==tenfolio || t==hundred || t==hundredfolio) &&
-		  (type_==string || type_==folio || type_==plant || type_==locmach ||type_==idfolio ||
-		   type_==elementcolumn || type_==elementline || type_==elementprefix))
-		 || fnum) {
+	if (
+			(
+				(t==unit
+				 || t==unitfolio
+				 || t==ten
+				 || t==tenfolio
+				 || t==hundred
+				 || t==hundredfolio
+				 )
+				&& (type_==string
+				    || type_==folio
+				    || type_==plant
+				    || type_==locmach
+				    || type_==idfolio
+				    || type_==elementcolumn
+				    || type_==elementline
+				    || type_==elementprefix)
+			)
+			|| fnum
+	)
+	{
 		ui -> value_field -> clear();
 		ui -> value_field -> setEnabled(true);
 		ui -> value_field -> setValidator(intValidator);
@@ -244,8 +319,14 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setValue(1);
 	}
 	//@t isn't a numeric type
-	else if (t == string || t == folio || t == idfolio || t == elementline || t == plant || t == locmach ||
-			 t == elementcolumn || t == elementprefix) {
+	else if (t == string
+		 || t == folio
+		 || t == idfolio
+		 || t == elementline
+		 || t == plant
+		 || t == locmach
+		 || t == elementcolumn
+		 || t == elementprefix) {
 		ui -> value_field -> clear();
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {
@@ -285,10 +366,10 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 }
 
 /**
- * @brief NumPartEditorW::setCurrentIndex
- * Set Current Index of type_cb
- * @param t, type used
- */
+	@brief NumPartEditorW::setCurrentIndex
+	Set Current Index of type_cb
+	@param t : type used
+*/
 void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 	int i=-1;
 	if (t == unit)

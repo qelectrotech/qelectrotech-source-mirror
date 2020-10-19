@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="42" version="0.5" hotspot_y="29" link_type="simple" width="50" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="42" version="0.5" hotspot_y="29" link_type="simple" width="50" height="60">
     <uuid uuid="{ff97d8a8-6396-43b6-bbce-9d37f9bc3c56}"/>
     <names>
         <name lang="de">Näherungsschalter Schliesser</name>

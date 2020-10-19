@@ -1,4 +1,4 @@
-<definition width="50" height="110" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="105">
+<definition width="50" height="110" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="105">
     <uuid uuid="{9364e3e3-9556-4b30-a1b9-c7dc79ea9f5c}"/>
     <names>
         <name lang="de">Magnetkern mit fünf Wicklungen</name>

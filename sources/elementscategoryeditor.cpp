@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,12 +28,12 @@
 #include <QHBoxLayout>
 
 /**
- * @brief ElementsCategoryEditor::ElementsCategoryEditor
- * Constructor
- * @param location : location of the category to edit, or parent directory/category for the creation of a new category
- * @param edit : true = edit mode, false = creation mode
- * @param parent : parent widget
- */
+	@brief ElementsCategoryEditor::ElementsCategoryEditor
+	Constructor
+	@param location : location of the category to edit, or parent directory/category for the creation of a new category
+	@param edit : true = edit mode, false = creation mode
+	@param parent : parent widget
+*/
 ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &location, bool edit, QWidget *parent) :
 	QDialog(parent),
 	m_edit_mode(edit),
@@ -84,24 +84,25 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &location,
 }
 
 /**
- * @brief ElementsCategoryEditor::~ElementsCategoryEditor
- * Destructor
- */
-ElementsCategoryEditor::~ElementsCategoryEditor() {
+	@brief ElementsCategoryEditor::~ElementsCategoryEditor
+	Destructor
+*/
+ElementsCategoryEditor::~ElementsCategoryEditor()
+{
 }
 
 /**
- * @brief ElementsCategoryEditor::createdLocation
- * @return the location of the created directory
- */
+	@brief ElementsCategoryEditor::createdLocation
+	@return the location of the created directory
+*/
 ElementsLocation ElementsCategoryEditor::createdLocation() const
 {
 	return m_created_location;
 }
 
 /**
- * @brief ElementsCategoryEditor::setUpWidget
- */
+	@brief ElementsCategoryEditor::setUpWidget
+*/
 void ElementsCategoryEditor::setUpWidget()
 {
 	QVBoxLayout *editor_layout = new QVBoxLayout();
@@ -125,9 +126,9 @@ void ElementsCategoryEditor::setUpWidget()
 }
 
 /**
- * @brief ElementsCategoryEditor::acceptCreation
- * Valid the creation of the category
- */
+	@brief ElementsCategoryEditor::acceptCreation
+	Valid the creation of the category
+*/
 void ElementsCategoryEditor::acceptCreation()
 {
 	if (!m_location.isWritable()) {
@@ -176,9 +177,9 @@ void ElementsCategoryEditor::acceptCreation()
 }
 
 /**
- * @brief ElementsCategoryEditor::acceptUpdate
- * Valid the update of the category
- */
+	@brief ElementsCategoryEditor::acceptUpdate
+	Valid the update of the category
+*/
 void ElementsCategoryEditor::acceptUpdate()
 {
 	if (!m_location.isWritable()) {

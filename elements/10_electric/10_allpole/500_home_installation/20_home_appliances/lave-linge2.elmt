@@ -1,0 +1,41 @@
+<definition hotspot_x="16" link_type="simple" type="element" height="60" version="0.80" hotspot_y="34" width="40">
+    <uuid uuid="{138eba03-d63b-4598-be56-b19c39190fa4}"/>
+    <names>
+        <name lang="es">Lavadora</name>
+        <name lang="fr">Machine à laver</name>
+        <name lang="ca">Rentadora</name>
+    </names>
+    <elementInformations/>
+    <informations>Rafael Ferrando.
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <arc antialias="true" angle="-90" x="12.2941" height="20.5151" width="7.33895" start="0" y="-5.63951" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7.42211" end2="none" antialias="false" x2="7.96339" y1="-18.806" length2="1.5" y2="-18.806" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" angle="-90" x="13.3949" height="18.6916" width="5.50421" start="0" y="-4.72773" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse antialias="true" x="8.65622" height="5.41367" width="3.89724" y="-21.8136" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="18.5322" rx="0" height="0.911783" width="1.46779" y="3.47832" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="1.83603" rx="0" height="4.21062" width="3.89724" y="-21.2121" style="line-style:normal;line-weight:normal;filling:black;color:black" ry="0"/>
+        <line x1="8.16906" end2="none" antialias="false" x2="8.65622" y1="-21.8136" length2="1.5" y2="-21.2121" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10.6049" end2="none" antialias="false" x2="10.6049" y1="-23.3375" length2="1.5" y2="-22.6691" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8.65622" end2="none" antialias="false" x2="8.16906" y1="-17.0015" length2="1.5" y2="-16.4" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="12.5535" end2="none" antialias="false" x2="13.0406" y1="-17.0015" length2="1.5" y2="-16.4" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10.6049" end2="none" antialias="false" x2="11.5792" y1="-18.806" length2="1.5" y2="-20.0091" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-10.83" rx="0" height="1.80455" width="4.87156" y="-20.0091" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <rect antialias="false" x="-13.2658" rx="0" height="9.02278" width="29.2294" y="-24.2197" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line x1="13.0406" end2="none" antialias="false" x2="14.0149" y1="-20.6106" length2="1.5" y2="-21.2121" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-13.2658" rx="0" height="32.482" width="29.2294" y="-15.197" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <ellipse antialias="true" x="-5.47133" height="15.6395" width="13.6404" y="-7.97874" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse antialias="true" x="-7.54014" height="20.1543" width="17.6578" y="-10.0876" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="10.1177" rx="0" height="2.40607" width="1.46147" y="-1.96356" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="2.38652" font="Sans Serif,4,-1,5,25,0,0,0,0,0" z="19" text_width="-1" Halignment="AlignLeft" y="5.0962" uuid="{89c1f6f0-8132-402a-8591-4c323e82e534}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-30" length2="1.5" y2="-25" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-30" length2="1.5" y2="-25" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="17" length2="1.5" y2="20" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-30" uuid="{79a75695-2506-4be2-b37c-88fa8e361b65}"/>
+        <terminal orientation="n" name="" x="10" y="-30" uuid="{fcbd86bd-2a65-4f67-b64e-8ad7c93c4683}"/>
+        <terminal orientation="s" name="" x="0" y="20" uuid="{7bd9a67f-963c-4116-ab81-2d9a7b879b62}"/>
+    </description>
+</definition>

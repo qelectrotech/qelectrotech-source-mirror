@@ -1,17 +1,17 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -32,31 +32,32 @@ SearchAndReplaceWorker::SearchAndReplaceWorker()
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceDiagram
- * Replace all properties of each diagram in @diagram_list,
- * by the current titleblock propertie of this worker
- * @param diagram_list, list of diagram to be changed, all diagrams must belong to the same project;
- */
+	@brief SearchAndReplaceWorker::replaceDiagram
+	Replace all properties of each diagram in diagram_list,
+	by the current titleblock propertie of this worker
+	@param diagram_list : list of diagram to be changed,
+	all diagrams must belong to the same project;
+*/
 void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 {
 	if (diagram_list.isEmpty()) {
 		return;
 	}
-	
+
 	QETProject *project = diagram_list.first()->project();
 	for (Diagram *d : diagram_list) {
 		if (d->project() != project) {
 			return;
 		}
 	}
-	
+
 	QUndoStack *us = project->undoStack();
 	us->beginMacro(QObject::tr("Chercher/remplacer les propriétés de folio"));
 	for (Diagram *d : diagram_list)
 	{
 		TitleBlockProperties old_propertie = d->border_and_titleblock.exportTitleBlock();
 		TitleBlockProperties new_properties = old_propertie;
-		
+
 		new_properties.title = applyChange(new_properties.title, m_titleblock_properties.title);
 		new_properties.author = applyChange(new_properties.author, m_titleblock_properties.author);
 		new_properties.filename = applyChange(new_properties.filename, m_titleblock_properties.filename);
@@ -73,9 +74,9 @@ void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 				new_properties.date = m_titleblock_properties.date;
 			}
 		}
-		
+
 		new_properties.context.add(m_titleblock_properties.context);
-		
+
 		if (old_propertie != new_properties) {
 			project->undoStack()->push(new ChangeTitleBlockCommand(d, old_propertie, new_properties));
 		}
@@ -91,18 +92,20 @@ void SearchAndReplaceWorker::replaceDiagram(Diagram *diagram)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceElement
- * Replace all properties of each elements in @list
- * All element must belong to the same project, if not this function do nothing.
- * All change are made through a undo command append to undo list of the project.
- * @param list
- */
+	@brief SearchAndReplaceWorker::replaceElement
+	Replace all properties of each elements in list
+	All element must belong to the same project,
+	if not this function do nothing.
+	All change are made through a undo command append
+	to undo list of the project.
+	@param list
+*/
 void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 {
 	if (list.isEmpty() || !list.first()->diagram()) {
 		return;
 	}
-	
+
 	QETProject *project_ = list.first()->diagram()->project();
 	for (Element *elmt : list)
 	{
@@ -112,7 +115,7 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 			}
 		}
 	}
-	
+
 	project_->undoStack()->beginMacro(QObject::tr("Chercher/remplacer les propriétés d'éléments."));
 	for (Element *elmt : list)
 	{
@@ -128,7 +131,7 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 				new_context.addValue(key, applyChange(old_context.value(key).toString(),
 													  m_element_context.value(key).toString()));
 			}
-			
+
 			if (old_context != new_context)
 			{
 				ChangeElementInformationCommand *undo = new ChangeElementInformationCommand(elmt, old_context, new_context);
@@ -147,11 +150,11 @@ void SearchAndReplaceWorker::replaceElement(Element *element)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceIndiText
- * Replace all displayed text of independent text of @list
- * Each must belong to the same project, if not this function do nothing
- * @param list
- */
+	@brief SearchAndReplaceWorker::replaceIndiText
+	Replace all displayed text of independent text of list
+	Each must belong to the same project, if not this function do nothing
+	@param list
+*/
 void SearchAndReplaceWorker::replaceIndiText(QList<IndependentTextItem *> list)
 {
 	if (list.isEmpty() || !list.first()->diagram()) {
@@ -164,7 +167,7 @@ void SearchAndReplaceWorker::replaceIndiText(QList<IndependentTextItem *> list)
 			return;
 		}
 	}
-	
+
 	project_->undoStack()->beginMacro(QObject::tr("Chercher/remplacer des textes independants"));
 	for (IndependentTextItem *text : list)
 	{
@@ -183,18 +186,20 @@ void SearchAndReplaceWorker::replaceIndiText(IndependentTextItem *text)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceConductor
- * Replace all properties of each conductor in @list
- * All conductor must belong to the same project, if not this function do nothing.
- * All change are made through a undo command append to undo list of the project.
- * @param list
- */
+	@brief SearchAndReplaceWorker::replaceConductor
+	Replace all properties of each conductor in list
+	All conductor must belong to the same project,
+	if not this function do nothing.
+	All change are made through a undo command append
+	to undo list of the project.
+	@param list
+*/
 void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 {
 	if (list.isEmpty() || !list.first()->diagram()) {
 		return;
 	}
-	
+
 	QETProject *project_ = list.first()->diagram()->project();
 	for (Conductor *c : list) {
 		if (!c->diagram() ||
@@ -202,12 +207,12 @@ void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 			return;
 		}
 	}
-	
+
 	project_->undoStack()->beginMacro(QObject::tr("Chercher/remplacer les propriétés de conducteurs."));
 	for (Conductor *c : list)
 	{
 		ConductorProperties cp = applyChange(c->properties(), m_conductor_properties);
-		
+
 		if (cp != c->properties())
 		{
 			QSet <Conductor *> conductors_list = c->relatedPotentialConductors(true);
@@ -232,21 +237,25 @@ void SearchAndReplaceWorker::replaceConductor(Conductor *conductor)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * Apply the change of text according to the current advancedStruct
- * All items in the 4 list must belong to the same QETProject,
- * if not this function do nothing
- * @param d
- * @param e
- * @param t
- * @param c
- */
-void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<Element *> elements, QList<IndependentTextItem *> texts, QList<Conductor *> conductors)
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	Apply the change of text according to the current advancedStruct
+	All items in the 4 list must belong to the same QETProject,
+	if not this function do nothing
+	@param diagrams :
+	@param elements :
+	@param texts :
+	@param conductors :
+*/
+void SearchAndReplaceWorker::replaceAdvanced(
+		QList<Diagram *> diagrams,
+		QList<Element *> elements,
+		QList<IndependentTextItem *> texts,
+		QList<Conductor *> conductors)
 {
 	QETProject *project_ = nullptr;
-	
-		//Some test to check if a least one list have one item
-		//and if all items belong to the same project
+
+	//Some test to check if a least one list have one item
+	//and if all items belong to the same project
 	if (!diagrams.isEmpty()) {
 		project_ = diagrams.first()->project();
 	} else if (!elements.isEmpty() && elements.first()->diagram()) {
@@ -258,7 +267,7 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 	} else {
 		return;
 	}
-	
+
 	for (Diagram *dd : diagrams) {
 		if (dd->project() != project_) {
 			return;
@@ -279,13 +288,13 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 			return;
 		}
 	}
-		//The end of the test
-	
+	//The end of the test
+
 	int who = m_advanced_struct.who;
 	if (who == -1) {
 		return;
 	}
-	
+
 	project_->undoStack()->beginMacro(QObject::tr("Rechercher / remplacer avancé"));
 	if (who == 0)
 	{
@@ -319,7 +328,7 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 			{
 				QSet <Conductor *> potential_conductors = conductor->relatedPotentialConductors(true);
 				potential_conductors << conductor;
-				
+
 				for (Conductor *c : potential_conductors)
 				{
 					QVariant old_value, new_value;
@@ -335,10 +344,16 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 		for (IndependentTextItem *text : texts)
 		{
 			QRegularExpression rx(m_advanced_struct.search);
+			if (!rx.isValid())
+			{
+				qWarning() <<QObject::tr("this is an error in the code")
+					  << rx.errorString()
+					  << rx.patternErrorOffset();
+			}
 			QString replace = m_advanced_struct.replace;
 			QString after = text->toPlainText();
 			after = after.replace(rx, replace);
-			
+
 			if (after != text->toPlainText()) {
 				project_->undoStack()->push(new ChangeDiagramTextCommand(text, text->toPlainText(), after));
 			}
@@ -348,16 +363,20 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 }
 
 /**
- * @brief SearchAndReplaceWorker::setupLineEdit
- * With search and replace, when the variable to edit is a text,
- * the editor is always the same no matter if it is for a folio, element or conductor.
- * The editor is a QLineEdit to edit the text and checkbox to erase the text if checked.
- * This function fill the editor, from the current string
- * @param l
- * @param cb
- * @param str
- */
-void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l, QCheckBox *cb, QString str)
+	@brief SearchAndReplaceWorker::setupLineEdit
+	With search and replace, when the variable to edit is a text,
+	the editor is always the same no matter if it is for a folio,
+	element or conductor.
+	The editor is a QLineEdit to edit the text
+	and checkbox to erase the text if checked.
+	This function fill the editor, from the current string
+	@param l
+	@param cb
+	@param str
+*/
+void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l,
+					   QCheckBox *cb,
+					   QString str)
 {
 	l->setText(str);
 	cb->setChecked(str == eraseText() ? true : false);
@@ -367,7 +386,7 @@ void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l, QCheckBox *cb, QString 
 ConductorProperties SearchAndReplaceWorker::invalidConductorProperties()
 {
 	ConductorProperties cp;
-	
+
 		//init with invalid value the conductor properties
 	cp.text_size = 0;
 	cp.text.clear();
@@ -380,20 +399,22 @@ ConductorProperties SearchAndReplaceWorker::invalidConductorProperties()
 	cp.cond_size = 0;
 	cp.m_color_2 = QColor();
 	cp.m_dash_size = 0;
-	
+
 	return cp;
 }
 
 /**
- * @brief SearchAndReplaceWorker::applyChange
- * @param original : the original properties
- * @param change : the change properties, to be merged with @original
- * @return a new conductor properties with the change applyed.
- */
-ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorProperties &original, const ConductorProperties &change)
+	@brief SearchAndReplaceWorker::applyChange
+	@param original : the original properties
+	@param change : the change properties, to be merged with original
+	@return a new conductor properties with the change applyed.
+*/
+ConductorProperties SearchAndReplaceWorker::applyChange(
+		const ConductorProperties &original,
+		const ConductorProperties &change)
 {
 	ConductorProperties new_properties = original;
-	
+
 	if (change.text_size > 2) {new_properties.text_size = change.text_size;}
 	new_properties.m_formula = applyChange(new_properties.m_formula, change.m_formula);
 	new_properties.text = applyChange(new_properties.text, change.text);
@@ -415,17 +436,18 @@ ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorPropertie
 	if (change.m_color_2.isValid()) {new_properties.m_color_2 = change.m_color_2;}
 	if (change.m_dash_size >= 2) {new_properties.m_dash_size = change.m_dash_size;}
 	new_properties.singleLineProperties = change.singleLineProperties;
-	
+
 	return new_properties;
 }
 
 /**
- * @brief SearchAndReplaceWorker::applyChange
- * @param original : the original string
- * @param change : the changed string:
- * @return the string to be use in the properties
- */
-QString SearchAndReplaceWorker::applyChange(const QString &original, const QString &change)
+	@brief SearchAndReplaceWorker::applyChange
+	@param original : the original string
+	@param change : the changed string:
+	@return the string to be use in the properties
+*/
+QString SearchAndReplaceWorker::applyChange(const QString &original,
+					    const QString &change)
 {
 	if (change.isEmpty())           {return original;}
 	else if (change == eraseText()) {return QString();}
@@ -433,18 +455,24 @@ QString SearchAndReplaceWorker::applyChange(const QString &original, const QStri
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * @param diagram
- * @return the titleblock properties with the change applied,
- * according to the state of @m_advanced_struct
- */
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	@param diagram
+	@return the titleblock properties with the change applied,
+	according to the state of m_advanced_struct
+*/
 TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
 {
 	TitleBlockProperties p = diagram->border_and_titleblock.exportTitleBlock();
-	
+
 	if (m_advanced_struct.who == 0)
 	{
 		QRegularExpression rx(m_advanced_struct.search);
+		if (!rx.isValid())
+		{
+			qWarning() <<QObject::tr("this is an error in the code")
+				  << rx.errorString()
+				  << rx.patternErrorOffset();
+		}
 		QString replace = m_advanced_struct.replace;
 		QString what = m_advanced_struct.what;
 		if (what == "title") {p.title = p.title.replace(rx, replace);}
@@ -459,53 +487,66 @@ TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * @param element
- * @return The diagram context with the change applied,
- * according to the state of @m_advanced_struct
- */
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	@param element
+	@return The diagram context with the change applied,
+	according to the state of m_advanced_struct
+*/
 DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
 {
 	DiagramContext context = element->elementInformations();
-	
+
 	if (m_advanced_struct.who == 1)
 	{
 		QString what = m_advanced_struct.what;
 		if (context.contains(what))
 		{
 			QRegularExpression rx(m_advanced_struct.search);
+			if (!rx.isValid())
+			{
+				qWarning() <<QObject::tr("this is an error in the code")
+					  << rx.errorString()
+					  << rx.patternErrorOffset();
+			}
 			QString replace = m_advanced_struct.replace;
 			QString value = context[what].toString();
 			context.addValue(what, value.replace(rx, replace));
 		}
 	}
-	
+
 	return context;
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * @param conductor
- * @return the conductor properties with the change applied,
- * according to the state of @m_advanced_struct
- */
-ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor)
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	@param conductor
+	@return the conductor properties with the change applied,
+	according to the state of m_advanced_struct
+*/
+ConductorProperties SearchAndReplaceWorker::replaceAdvanced(
+		Conductor *conductor)
 {
 	ConductorProperties properties = conductor->properties();
-	
+
 	if (m_advanced_struct.who == 2)
 	{
 		QRegularExpression rx(m_advanced_struct.search);
+		if (!rx.isValid())
+		{
+			qWarning() <<QObject::tr("this is an error in the code")
+				  << rx.errorString()
+				  << rx.patternErrorOffset();
+		}
 		QString what = m_advanced_struct.what;
 		QString replace = m_advanced_struct.replace;
-		
+
 		if (what == "formula")               {properties.m_formula.replace(rx, replace);}
 		else if (what == "text")             {properties.text.replace(rx, replace);}
 		else if (what == "function")         {properties.m_function.replace(rx, replace);}
 		else if (what == "tension/protocol") {properties.m_tension_protocol.replace(rx, replace);}
-		else if (what == "couleur-conducteur") {properties.m_wire_color.replace(rx, replace);}
-		else if (what == "section-conducteur") {properties.m_wire_section.replace(rx, replace);}
+		else if (what == "conductor_color") {properties.m_wire_color.replace(rx, replace);}
+		else if (what == "conductor_section") {properties.m_wire_section.replace(rx, replace);}
 	}
-	
+
 	return properties;
 }

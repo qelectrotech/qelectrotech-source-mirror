@@ -1,25 +1,31 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="16" height="30" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{E0F6389A-3510-4372-8FF9-7A0C74512E88}"/><names>
-        <name lang="es">Sonda calidad aire</name>
+<definition hotspot_y="16" link_type="simple" width="30" version="0.80" type="element" height="30" hotspot_x="14">
+    <uuid uuid="{bf68d19a-a3ea-45b7-88cd-8d52840e042a}"/>
+    <names>
+        <name lang="fr">sonde qualité de l'air</name>
         <name lang="ca">Sonda qualitat aire</name>
+        <name lang="es">Sonda calidad aire</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25335" x1="-7.8" y2="6.13626" x2="-7.8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25335" x1="-6.4" y2="6.13626" x2="-6.4"/>
-        <polygon x4="10.54" antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:blue" y1="6.16991" x1="10.54" y2="6.16991" x2="4.87" y3="4.82373" x3="4.87" y4="6.16991"/>
-        <ellipse width="5.7456" x="5.0128" y="-0.891622" antialias="true" height="5.14354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="24.5" x="-11.37" y="-8.28496" antialias="false" height="16.3197" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.394262" x1="5.4916" y2="1.68015" x2="7.8856"/>
-        <polygon x4="13.137" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-7.4263" x1="-12" y2="8.57869" x2="-12" y3="8.57869" x3="13.137" y4="8.57869"/>
-        <rect width="11.97" x="-3.04" y="-7.00501" antialias="false" height="3.19994" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="5.7456" x="-3.1996" y="-0.891622" antialias="true" height="5.14354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.394262" x1="-2.7208" y2="1.68015" x2="-0.3268"/>
-        <polygon x4="2.07" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="6.16991" x1="2.07" y2="6.16991" x2="-3.6" y3="4.82373" x3="-3.6" y4="6.16991"/>
-        <input x="-15" y="12" size="4" rotate="true" text="cal._" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3.25335" x1="-9.2" y2="6.13626" x2="-9.2"/>
-        <terminal x="-9" y="-10" orientation="n"/>
-        <terminal x="0" y="-10" orientation="n"/>
+        <line x1="-7.8" y2="6.13626" end1="none" y1="-3.25335" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-7.8" antialias="false" length1="1.5"/>
+        <line x1="-6.4" y2="6.13626" end1="none" y1="-3.25335" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-6.4" antialias="false" length1="1.5"/>
+        <polygon x3="4.87" x1="10.54" y2="6.16991" y1="6.16991" y4="6.16991" x4="10.54" style="line-style:normal;line-weight:normal;filling:blue;color:blue" x2="4.87" y3="4.82373" antialias="false"/>
+        <ellipse width="5.7456" y="-0.891622" style="line-style:normal;line-weight:normal;filling:none;color:black" x="5.0128" antialias="true" height="5.14354"/>
+        <rect width="24.5" y="-8.28496" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-11.37" ry="0" antialias="false" height="16.3197"/>
+        <line x1="5.4916" y2="1.68015" end1="none" y1="0.394262" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="7.8856" antialias="false" length1="1.5"/>
+        <polygon x3="13.137" x1="-12" y2="8.57869" y1="-7.4263" y4="8.57869" x4="13.137" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12" y3="8.57869" closed="false" antialias="false"/>
+        <rect width="11.97" y="-7.00501" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-3.04" ry="0" antialias="false" height="3.19994"/>
+        <ellipse width="5.7456" y="-0.891622" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.1996" antialias="true" height="5.14354"/>
+        <line x1="-2.7208" y2="1.68015" end1="none" y1="0.394262" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-0.3268" antialias="false" length1="1.5"/>
+        <polygon x3="-3.6" x1="2.07" y2="6.16991" y1="6.16991" y4="6.16991" x4="2.07" style="line-style:normal;line-weight:normal;filling:red;color:red" x2="-3.6" y3="4.82373" antialias="false"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="4.5" uuid="{83fafca0-8807-46b9-9f0b-3fcbf4d4e5f9}" Halignment="AlignLeft" rotation="0" x="-15" text_width="-1" frame="false" text_from="ElementInfo" z="12">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-9.2" y2="6.13626" end1="none" y1="-3.25335" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-9.2" antialias="false" length1="1.5"/>
+        <terminal name="" y="-10" uuid="{97da591e-daea-48a1-8c16-5a2686dae8c5}" x="-9" orientation="n"/>
+        <terminal name="" y="-10" uuid="{3967bc57-cb62-4219-bb90-a113b8ba7aee}" x="0" orientation="n"/>
     </description>
 </definition>

@@ -1,27 +1,33 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "editorcommands.h"
 
 /**
-	Constructs an ElementEditionCommand, thus embedding the provided \a scene and \a view.
-	@param parent Parent command
+	@brief ElementEditionCommand::ElementEditionCommand
+	Constructs an ElementEditionCommand,
+	thus embedding the provided \a scene and \a view.
+	@param scene
+	@param view
+	@param parent : Parent command
 */
-ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *view, QUndoCommand *parent):
+ElementEditionCommand::ElementEditionCommand(ElementScene *scene,
+					     ElementView *view,
+					     QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_scene(scene),
 	m_view(view)
@@ -29,11 +35,18 @@ ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *v
 }
 
 /**
-	Constructs an ElementEditionCommand, thus embedding the provided \a scene and \a view.
-	@param text Text describing the effect of the command
-	@param parent Parent command
+	@brief ElementEditionCommand::ElementEditionCommand
+	Constructs an ElementEditionCommand,
+	thus embedding the provided \a scene and \a view.
+	@param text : Text describing the effect of the command
+	@param scene
+	@param view
+	@param parent : Parent command
 */
-ElementEditionCommand::ElementEditionCommand(const QString &text, ElementScene *scene, ElementView *view, QUndoCommand *parent):
+ElementEditionCommand::ElementEditionCommand(const QString &text,
+					     ElementScene *scene,
+					     ElementView *view,
+					     QUndoCommand *parent):
 	QUndoCommand(text, parent),
 	m_scene(scene),
 	m_view(view)
@@ -43,13 +56,15 @@ ElementEditionCommand::ElementEditionCommand(const QString &text, ElementScene *
 /**
 	Destructor
 */
-ElementEditionCommand::~ElementEditionCommand() {
+ElementEditionCommand::~ElementEditionCommand()
+{
 }
 
 /**
 	@return the element editor/scene the command should take place on
 */
-ElementScene *ElementEditionCommand::elementScene() const {
+ElementScene *ElementEditionCommand::elementScene() const
+{
 	return(m_scene);
 }
 
@@ -63,7 +78,8 @@ void ElementEditionCommand::setElementScene(ElementScene *scene) {
 /**
 	@return the view the effect of the command should be rendered on
 */
-ElementView *ElementEditionCommand::elementView() const {
+ElementView *ElementEditionCommand::elementView() const
+{
 	return(m_view);
 }
 
@@ -95,14 +111,16 @@ DeletePartsCommand::DeletePartsCommand(
 }
 
 /// Destructeur : detruit egalement les parties supprimees
-DeletePartsCommand::~DeletePartsCommand() {
+DeletePartsCommand::~DeletePartsCommand()
+{
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		m_scene -> qgiManager().release(qgi);
 	}
 }
 
 /// Restaure les parties supprimees
-void DeletePartsCommand::undo() {
+void DeletePartsCommand::undo()
+{
 	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		m_scene -> addItem(qgi);
@@ -111,85 +129,13 @@ void DeletePartsCommand::undo() {
 }
 
 /// Supprime les parties
-void DeletePartsCommand::redo() {
+void DeletePartsCommand::redo()
+{
 	m_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		m_scene -> removeItem(qgi);
 	}
 	m_scene -> blockSignals(false);
-}
-
-/*** CutPartsCommand ***/
-/**
-	Constructeur
-	@param view ElementView concernee
-	@param c Liste des parties collees
-	@param parent QUndoCommand parent
-*/
-PastePartsCommand::PastePartsCommand(
-	ElementView *view,
-	const ElementContent &c,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(view ? view -> scene() : nullptr, view, parent),
-	content_(c),
-	uses_offset(false),
-	first_redo(true)
-{
-	setText(QObject::tr("coller"));
-	m_scene -> qgiManager().manage(content_);
-}
-
-/// Destructeur
-PastePartsCommand::~PastePartsCommand() {
-	m_scene -> qgiManager().release(content_);
-}
-
-/// annule le coller
-void PastePartsCommand::undo() {
-	// enleve les parties
-	m_scene -> blockSignals(true);
-	foreach(QGraphicsItem *part, content_) {
-		m_scene -> removeItem(part);
-	}
-	m_scene -> blockSignals(false);
-	if (uses_offset) {
-		m_view -> offset_paste_count_    = old_offset_paste_count_;
-		m_view -> start_top_left_corner_ = old_start_top_left_corner_;
-	}
-	m_view -> adjustSceneRect();
-}
-
-/// refait le coller
-void PastePartsCommand::redo() {
-	if (first_redo) first_redo = false;
-	else {
-		// pose les parties
-		m_scene -> blockSignals(true);
-		foreach(QGraphicsItem *part, content_) {
-			m_scene -> addItem(part);
-		}
-		m_scene -> blockSignals(false);
-		if (uses_offset) {
-			m_view -> offset_paste_count_    = new_offset_paste_count_;
-			m_view -> start_top_left_corner_ = new_start_top_left_corner_;
-		}
-	}
-	m_scene -> slot_select(content_);
-	m_view -> adjustSceneRect();
-}
-
-/**
-	Indique a cet objet d'annulation que le c/c a annuler ou refaire etait un
-	c/c avec decalage ; il faut plus d'informations pour annuler ce type de
-	collage.
-*/
-void PastePartsCommand::setOffset(int old_offset_pc, const QPointF &old_start_tlc, int new_offset_pc, const QPointF &new_start_tlc) {
-	old_offset_paste_count_    = old_offset_pc;
-	old_start_top_left_corner_ = old_start_tlc;
-	new_offset_paste_count_    = new_offset_pc;
-	new_start_top_left_corner_ = new_start_tlc;
-	uses_offset = true;
 }
 
 /*** CutPartsCommand ***/
@@ -210,7 +156,8 @@ CutPartsCommand::CutPartsCommand(
 }
 
 /// Destructeur
-CutPartsCommand::~CutPartsCommand() {
+CutPartsCommand::~CutPartsCommand()
+{
 }
 
 /*** MovePartsCommand ***/
@@ -235,16 +182,19 @@ MovePartsCommand::MovePartsCommand(
 }
 
 /// Destructeur
-MovePartsCommand::~MovePartsCommand() {
+MovePartsCommand::~MovePartsCommand()
+{
 }
 
 /// Annule le deplacement
-void MovePartsCommand::undo() {
+void MovePartsCommand::undo()
+{
 	foreach(QGraphicsItem *qgi, moved_parts) qgi -> moveBy(-movement.x(), -movement.y());
 }
 
 /// Refait le deplacement
-void MovePartsCommand::redo() {
+void MovePartsCommand::redo()
+{
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
 		first_redo = false;
@@ -275,17 +225,20 @@ AddPartCommand::AddPartCommand(
 }
 
 /// Destructeur
-AddPartCommand::~AddPartCommand() {
+AddPartCommand::~AddPartCommand()
+{
 	m_scene -> qgiManager().release(part);
 }
 
 /// Annule l'ajout
-void AddPartCommand::undo() {
+void AddPartCommand::undo()
+{
 	m_scene -> removeItem(part);
 }
 
 /// Refait l'ajout
-void AddPartCommand::redo() {
+void AddPartCommand::redo()
+{
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
 		if (!part -> zValue()) {
@@ -322,16 +275,19 @@ ChangeNamesCommand::ChangeNamesCommand(
 }
 
 /// Destructeur
-ChangeNamesCommand::~ChangeNamesCommand() {
+ChangeNamesCommand::~ChangeNamesCommand()
+{
 }
 
 /// Annule le changement
-void ChangeNamesCommand::undo() {
+void ChangeNamesCommand::undo()
+{
 	m_scene -> setNames(names_before);
 }
 
 /// Refait le changement
-void ChangeNamesCommand::redo() {
+void ChangeNamesCommand::redo()
+{
 	m_scene -> setNames(names_after);
 }
 
@@ -351,10 +307,10 @@ ChangeZValueCommand::ChangeZValueCommand(
 {
 	// retrieve all primitives but terminals
 	QList<QGraphicsItem *> items_list = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
-	
+
 	// prend un snapshot des zValues
 	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
-	
+
 	// choisit le nom en fonction du traitement
 	if (m_option == QET::BringForward) {
 		setText(QObject::tr("amener au premier plan", "undo caption"));
@@ -372,16 +328,19 @@ ChangeZValueCommand::ChangeZValueCommand(
 }
 
 /// Destructeur
-ChangeZValueCommand::~ChangeZValueCommand() {
+ChangeZValueCommand::~ChangeZValueCommand()
+{
 }
 
 /// Annule les changements de zValue
-void ChangeZValueCommand::undo() {
+void ChangeZValueCommand::undo()
+{
 	foreach(QGraphicsItem *qgi, undo_hash.keys()) qgi -> setZValue(undo_hash[qgi]);
 }
 
 /// Refait les changements de zValue
-void ChangeZValueCommand::redo() {
+void ChangeZValueCommand::redo()
+{
 	foreach(QGraphicsItem *qgi, redo_hash.keys()) qgi -> setZValue(redo_hash[qgi]);
 }
 
@@ -409,11 +368,18 @@ void ChangeZValueCommand::applyBringForward(const QList<QGraphicsItem *> &items_
 */
 void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 	QList<QGraphicsItem *> my_items_list = items_list;
-	
+
 	for (int i = my_items_list.count() - 2 ; i >= 0 ; -- i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i +1] -> isSelected()) {
+#if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
 				my_items_list.swap(i, i + 1);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 5.13 or later")
+#endif
+				my_items_list.swapItemsAt(i, i + 1);
+#endif
 			}
 		}
 	}
@@ -427,15 +393,22 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 */
 void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 	QList<QGraphicsItem *> my_items_list = items_list;
-	
+
 	for (int i = 1 ; i < my_items_list.count() ; ++ i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i - 1] -> isSelected()) {
+#if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
 				my_items_list.swap(i, i - 1);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 5.13 or later")
+#endif
+				my_items_list.swapItemsAt(i, i - 1);
+#endif
 			}
 		}
 	}
-	
+
 	int z = 1;
 	foreach(QGraphicsItem *qgi, my_items_list) redo_hash.insert(qgi, z ++);
 }
@@ -473,16 +446,19 @@ ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const Q
 }
 
 /// Destructeur
-ChangeInformationsCommand::~ChangeInformationsCommand() {
+ChangeInformationsCommand::~ChangeInformationsCommand()
+{
 }
 
 /// Annule le changement d'autorisation pour les connexions internes
-void ChangeInformationsCommand::undo() {
+void ChangeInformationsCommand::undo()
+{
 	m_scene -> setInformations(old_informations_);
 }
 
 /// Refait le changement d'autorisation pour les connexions internes
-void ChangeInformationsCommand::redo() {
+void ChangeInformationsCommand::redo()
+{
 	m_scene -> setInformations(new_informations_);
 }
 
@@ -499,20 +475,23 @@ ScalePartsCommand::ScalePartsCommand(ElementScene *scene, QUndoCommand * parent)
 /**
 	Destructor
 */
-ScalePartsCommand::~ScalePartsCommand() {
+ScalePartsCommand::~ScalePartsCommand()
+{
 }
 
 /**
 	Undo the scaling operation
 */
-void ScalePartsCommand::undo() {
+void ScalePartsCommand::undo()
+{
 	scale(new_rect_, original_rect_);
 }
 
 /**
 	Redo the scaling operation
 */
-void ScalePartsCommand::redo() {
+void ScalePartsCommand::redo()
+{
 	if (first_redo) {
 		first_redo = false;
 		return;
@@ -523,7 +502,8 @@ void ScalePartsCommand::redo() {
 /**
 	@return the element editor/scene the command should take place on
 */
-ElementScene *ScalePartsCommand::elementScene() const {
+ElementScene *ScalePartsCommand::elementScene() const
+{
 	return(m_scene);
 }
 
@@ -538,16 +518,21 @@ void ScalePartsCommand::setScaledPrimitives(const QList<CustomElementPart *> &pr
 /**
 	@return the list of primitives to be scaled by this command
 */
-QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const {
+QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const
+{
 	return(scaled_primitives_);
 }
 
 /**
+	@brief ScalePartsCommand::setTransformation
 	Define the transformation applied by this command
-	@param original_rect Bounding rectangle for all scaled primitives before the operation
-	@param original_rect Bounding rectangle for all scaled primitives after the operation
-*/
-void ScalePartsCommand::setTransformation(const QRectF &original_rect, const QRectF &new_rect) {
+	@param original_rect :
+	Bounding rectangle for all scaled primitives before the operation
+	@param new_rect :
+	Bounding rectangle for all scaled primitives after the operation
+ */
+void ScalePartsCommand::setTransformation(const QRectF &original_rect,
+					  const QRectF &new_rect) {
 	original_rect_ = original_rect;
 	new_rect_ = new_rect;
 }
@@ -557,7 +542,8 @@ void ScalePartsCommand::setTransformation(const QRectF &original_rect, const QRe
 	are the bounding rectangles for all scaled primitives respectively before
 	and after the operation.
 */
-QPair<QRectF, QRectF> ScalePartsCommand::transformation() {
+QPair<QRectF, QRectF> ScalePartsCommand::transformation()
+{
 	return(QPair<QRectF, QRectF>(original_rect_, new_rect_));
 }
 
@@ -568,7 +554,7 @@ void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
 	if (!scaled_primitives_.count()) return;
 	if (before == after) return;
 	if (!before.width() || !before.height()) return; // cowardly flee division by zero FIXME?
-	
+
 	foreach (CustomElementPart *part_item, scaled_primitives_) {
 		part_item -> startUserTransformation(before);
 		part_item -> handleUserTransformation(before, after);
@@ -578,7 +564,8 @@ void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
 /**
 	Generate the text describing what this command does exactly.
 */
-void ScalePartsCommand::adjustText() {
+void ScalePartsCommand::adjustText()
+{
 	if (scaled_primitives_.count() == 1) {
 		setText(QObject::tr("redimensionnement %1", "undo caption -- %1 is the resized primitive type name").arg(scaled_primitives_.first() -> name()));
 	} else {
@@ -586,14 +573,20 @@ void ScalePartsCommand::adjustText() {
 	}
 }
 /**
- * @brief ChangePropertiesCommand::ChangePropertiesCommand
- * Change the properties of the drawed element
- * @param scene: scene to belong the property
- * @param type: new type of element.
- * @param context: new info about type.
- * @param parent: parent undo
- */
-ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent) :
+	@brief ChangePropertiesCommand::ChangePropertiesCommand
+	Change the properties of the drawed element
+	@param scene : scene to belong the property
+	@param type : new type of element.
+	@param info
+	@param elmt_info : new info about type.
+	@param parent : parent undo
+*/
+ChangePropertiesCommand::ChangePropertiesCommand(
+		ElementScene *scene,
+		const QString& type,
+		const DiagramContext& info,
+		const DiagramContext& elmt_info,
+		QUndoCommand *parent) :
 	ElementEditionCommand(scene, nullptr, parent)
 {
 	m_type << scene->m_elmt_type << type;
@@ -602,7 +595,8 @@ ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, const QStr
 	setText(QObject::tr("Modifier les propriétés"));
 }
 
-ChangePropertiesCommand::~ChangePropertiesCommand() {}
+ChangePropertiesCommand::~ChangePropertiesCommand()
+{}
 
 void ChangePropertiesCommand::undo()
 {

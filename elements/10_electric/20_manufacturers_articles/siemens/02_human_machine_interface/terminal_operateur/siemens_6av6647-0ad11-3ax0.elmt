@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="490" height="340" type="element" hotspot_x="245" link_type="simple" hotspot_y="173">
+<definition version="0.51" width="490" height="340" type="element" hotspot_x="245" link_type="simple" hotspot_y="173">
     <uuid uuid="{c251d418-e150-4b64-b3f4-6e378ecbe887}"/>
     <names>
         <name lang="fr">Siemens;6AV6647-0AD11-3AX0;6AV6647-0AD11-3AX0;Simatic HMI panneau de commande KTP600 Basic Color PN, interface Profinet, écran 6 pouces TFT, commande tactile et touches;7080013</name>

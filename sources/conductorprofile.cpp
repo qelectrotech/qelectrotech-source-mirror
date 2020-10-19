@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,7 +21,8 @@
 #include "terminal.h"
 
 /// Constructeur
-ConductorProfile::ConductorProfile() {
+ConductorProfile::ConductorProfile()
+{
 }
 
 /**
@@ -64,23 +65,27 @@ ConductorProfile &ConductorProfile::operator=(const ConductorProfile &c) {
 }
 
 /// destructeur
-ConductorProfile::~ConductorProfile() {
+ConductorProfile::~ConductorProfile()
+{
 	setNull();
 }
 
 /// @return true si le profil est nul
-bool ConductorProfile::isNull() const {
+bool ConductorProfile::isNull() const
+{
 	return(segments.isEmpty());
 }
 
 /// supprime les segments du profil de conducteur
-void ConductorProfile::setNull() {
+void ConductorProfile::setNull()
+{
 	foreach(ConductorSegmentProfile *csp, segments) delete csp;
 	segments.clear();
 }
 
 /// @return la largeur occupee par le conducteur
-qreal ConductorProfile::width() const {
+qreal ConductorProfile::width() const
+{
 	qreal width = 0.0;
 	foreach(ConductorSegmentProfile *csp, segments) {
 		if (csp -> isHorizontal) width += csp -> length;
@@ -101,7 +106,8 @@ qreal ConductorProfile::height() const{
 	@param type Type de Segments
 	@return Le nombre de segments composant le conducteur.
 */
-uint ConductorProfile::segmentsCount(QET::ConductorSegmentType type) const {
+uint ConductorProfile::segmentsCount(QET::ConductorSegmentType type) const
+{
 	if (type == QET::Both) return(segments.count());
 	uint nb_seg = 0;
 	foreach(ConductorSegmentProfile *csp, segments) {
@@ -112,7 +118,8 @@ uint ConductorProfile::segmentsCount(QET::ConductorSegmentType type) const {
 }
 
 /// @return les segments horizontaux de ce profil
-QList<ConductorSegmentProfile *> ConductorProfile::horizontalSegments() {
+QList<ConductorSegmentProfile *> ConductorProfile::horizontalSegments()
+{
 	QList<ConductorSegmentProfile *> segments_list;
 	foreach(ConductorSegmentProfile *csp, segments) {
 		if (csp -> isHorizontal) segments_list << csp;
@@ -121,7 +128,8 @@ QList<ConductorSegmentProfile *> ConductorProfile::horizontalSegments() {
 }
 
 /// @return les segments verticaux de ce profil
-QList<ConductorSegmentProfile *> ConductorProfile::verticalSegments() {
+QList<ConductorSegmentProfile *> ConductorProfile::verticalSegments()
+{
 	QList<ConductorSegmentProfile *> segments_list;
 	foreach(ConductorSegmentProfile *csp, segments) {
 		if (!csp -> isHorizontal) segments_list << csp;

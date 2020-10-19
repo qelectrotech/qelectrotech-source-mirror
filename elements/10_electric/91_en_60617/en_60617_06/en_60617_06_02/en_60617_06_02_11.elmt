@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+<definition link_type="simple" hotspot_x="25" hotspot_y="25" version="0.70" width="30" type="element" height="30">
     <uuid uuid="{d04d4d4c-8b88-4d80-bbcb-4c95a6360bee}"/>
     <names>
         <name lang="fr">Enroulement hexaphasé, en polygone</name>

@@ -1,4 +1,4 @@
-<definition width="110" link_type="simple" version="0.5" hotspot_x="56" orientation="dyyy" height="80" hotspot_y="38" type="element">
+<definition width="110" link_type="simple" version="0.5" hotspot_x="56" height="80" hotspot_y="38" type="element">
     <uuid uuid="{de0f8891-6715-4236-ace9-450c82695746}"/>
     <names>
         <name lang="el">Ρελέ στάθμης</name>

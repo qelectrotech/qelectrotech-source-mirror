@@ -1,4 +1,4 @@
-<definition width="80" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="26">
+<definition width="80" hotspot_x="20" type="element" link_type="simple" version="0.5" height="120" hotspot_y="26">
     <uuid uuid="{dd5ee844-e6aa-4ed8-b3aa-16f82f719e0a}"/>
     <names>
         <name lang="cs">Jistič DM2</name>

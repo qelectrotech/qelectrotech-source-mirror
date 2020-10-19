@@ -1,25 +1,31 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_y="37" width="60" height="60" orientation="dyyy" hotspot_x="39">
-<uuid uuid="{52065060-5A4E-4DC1-A811-3DE14F6EA849}"/><names>
+<definition hotspot_y="37" type="element" height="60" version="0.80" width="60" hotspot_x="39" link_type="simple">
+    <uuid uuid="{93c87de1-679e-49e7-8923-694e45b583bb}"/>
+    <names>
         <name lang="es">Codo bridas</name>
         <name lang="ca">Colçe brides</name>
+        <name lang="fr">Coude bride</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30.2025" width="3.5047" y="-17.4536" height="34.7036"/>
-        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-34" width="41" y="-32" height="39" angle="90"/>
-        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.1316" width="4.4982" y="-11.8873" height="5.47951" angle="-90"/>
-        <arc antialias="true" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10.3843" width="4.4982" y="-25.1066" height="5.47951" angle="-90"/>
-        <arc antialias="true" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-26.1316" width="4.4982" y="7.0308" height="5.47951" angle="-90"/>
-        <arc antialias="true" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.6085" width="5.4982" y="-25.1066" height="5.47951" angle="-90"/>
-        <line antialias="false" y1="-23.2238" x2="-5.8861" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-13.6121" x1="-5.8861" end2="none" length1="1.5" length2="1.5"/>
-        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15.6334" width="31.9892" y="-27.9606" height="2.67684"/>
-        <input text="Codo" tagg="label" rotate="true" x="-22" size="6" y="-2"/>
-        <arc antialias="true" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22" width="16" y="-20" height="14" angle="90"/>
-        <line antialias="false" y1="7" x2="-14.6923" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="7" x1="-23.3077" end2="none" length1="1.5" length2="1.5"/>
-        <line antialias="false" y1="-6" x2="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-6" x1="-13" end2="none" length1="1.5" length2="1.5"/>
-        <line antialias="false" y1="-13" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-23" x1="7" end2="none" length1="1.5" length2="1.5"/>
-        <terminal x="-30" y="0" orientation="w"/>
-        <terminal x="-1" y="-28" orientation="n"/>
+        <rect antialias="false" height="34.7036" width="3.5047" x="-30.2025" y="-17.4536" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" height="39" width="41" x="-34" y="-32" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90"/>
+        <arc antialias="true" height="5.47951" width="4.4982" x="-26.1316" y="-11.8873" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>
+        <arc antialias="true" height="5.47951" width="4.4982" x="-10.3843" y="-25.1066" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>
+        <arc antialias="true" height="5.47951" width="4.4982" x="-26.1316" y="7.0308" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>
+        <arc antialias="true" height="5.47951" width="5.4982" x="7.6085" y="-25.1066" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-5.8861" end2="none" length2="1.5" x2="-5.8861" y2="-13.6121" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23.2238"/>
+        <rect antialias="false" height="2.67684" width="31.9892" x="-15.6334" y="-27.9606" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-22" y="-11" uuid="{582332a7-5718-4871-97f1-6ec01259351f}" z="9" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc antialias="true" height="14" width="16" x="-22" y="-20" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-23.3077" end2="none" length2="1.5" x2="-14.6923" y2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-13" end2="none" length2="1.5" x2="-23" y2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6"/>
+        <line end1="none" antialias="false" length1="1.5" x1="7" end2="none" length2="1.5" x2="7" y2="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13"/>
+        <terminal x="-30" y="0" uuid="{d5d9dfdb-f2ec-4c34-98d4-b91f3c5c3dde}" name="" orientation="w"/>
+        <terminal x="-1" y="-28" uuid="{eedd1061-ba14-46ea-bfd7-2708920b535f}" name="" orientation="n"/>
     </description>
 </definition>

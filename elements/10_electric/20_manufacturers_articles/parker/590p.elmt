@@ -1,4 +1,4 @@
-<definition width="840" hotspot_y="4" height="160" type="element" hotspot_x="408" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="840" hotspot_y="4" height="160" type="element" hotspot_x="408" version="0.5" link_type="simple">
     <uuid uuid="{0d3448db-aa57-4465-a2ed-2d64b0cee7da}"/>
     <names>
         <name lang="en">Parker 590p</name>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="59" width="510" height="130" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="59" width="510" height="130" link_type="simple" hotspot_x="15">
     <uuid uuid="{0a364dd1-9593-4366-a533-4eb9fb5849e1}"/>
     <names>
         <name lang="en">IO-PT400</name>

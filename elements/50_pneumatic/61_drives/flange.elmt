@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="40" hotspot_x="20" type="element" link_type="simple" hotspot_y="45" orientation="dyyy">
+<definition height="50" version="0.5" width="40" hotspot_x="20" type="element" link_type="simple" hotspot_y="45">
     <uuid uuid="{fe17c46e-5650-48c9-a99b-8e49c36e2ee1}"/>
     <names>
         <name lang="en">Coupling</name>

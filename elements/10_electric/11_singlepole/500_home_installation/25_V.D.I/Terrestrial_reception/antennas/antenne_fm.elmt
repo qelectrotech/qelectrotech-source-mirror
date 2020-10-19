@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" orientation="dyyy" hotspot_y="22" version="0.51" type="element" height="30" hotspot_x="9">
+<definition width="40" link_type="simple" hotspot_y="22" version="0.51" type="element" height="30" hotspot_x="9">
     <uuid uuid="{a748d98b-1a3b-40a7-a223-b877ed7f5e3b}"/>
     <names>
         <name lang="fr">Antenne FM</name>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="54" width="290" height="150" orientation="dyyy" link_type="simple" hotspot_x="163">
+<definition type="element" version="0.5" hotspot_y="54" width="290" height="150" link_type="simple" hotspot_x="163">
     <uuid uuid="{0a6e551c-ab6f-4057-acdb-fdff7558f3a1}"/>
     <names>
         <name lang="pl">Wit 0.8</name>

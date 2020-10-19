@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,8 +32,10 @@ class DiagramPropertiesEditorDockWidget : public PropertiesEditorDockWidget
 		void setDiagram(Diagram *diagram);
 
 	private: //Make this method private because only this class manage the editor widget.
-		bool addEditor(PropertiesEditorWidget *editor, int index = 0) { return PropertiesEditorDockWidget::addEditor(editor, index); }
-		bool removeEditor(PropertiesEditorWidget *editor) { return PropertiesEditorDockWidget::removeEditor(editor); }
+		bool addEditor(PropertiesEditorWidget *editor,int index = 0)
+		{return PropertiesEditorDockWidget::addEditor(editor,index); }
+		bool removeEditor(PropertiesEditorWidget *editor)
+		{ return PropertiesEditorDockWidget::removeEditor(editor); }
 
 	private slots:
 		void selectionChanged();

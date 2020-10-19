@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="30" hotspot_x="45" hotspot_y="6" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="30" hotspot_x="45" hotspot_y="6" version="0.70">
     <uuid uuid="{367883aa-e54f-4158-8530-1c1f26689b64}"/>
     <names>
         <name lang="de">Entzerrer</name>

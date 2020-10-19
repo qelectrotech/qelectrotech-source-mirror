@@ -1,4 +1,4 @@
-<definition height="30" version="0.70" orientation="dyyy" width="90" hotspot_x="85" type="element" hotspot_y="25" link_type="simple">
+<definition height="30" version="0.70" width="90" hotspot_x="85" type="element" hotspot_y="25" link_type="simple">
     <uuid uuid="{7b096886-9c19-49c2-a3d6-55932e132a6d}"/>
     <names>
         <name lang="fr">Électrodes de déviation latérale</name>

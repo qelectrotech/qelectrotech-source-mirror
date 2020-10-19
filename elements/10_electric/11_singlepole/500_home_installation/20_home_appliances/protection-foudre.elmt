@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="130" height="300" link_type="master" version="0.51" hotspot_x="5">
     <uuid uuid="{7cb32418-27f3-495a-89d5-e18ff4116a8c}"/>
     <names>
         <name lang="fr">Protection Foudre</name>

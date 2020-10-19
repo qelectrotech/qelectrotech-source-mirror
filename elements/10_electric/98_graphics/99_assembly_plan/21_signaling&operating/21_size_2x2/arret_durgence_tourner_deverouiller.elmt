@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="50" hotspot_y="25" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" height="50" hotspot_y="25" type="element">
     <uuid uuid="{55d7b5d1-8af7-45f5-9d9b-c87daa05fe07}"/>
     <names>
         <name lang="nl">Stop nood draai reset</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="50" orientation="dyyy" version="0.51" hotspot_x="56" link_type="simple" width="70" type="element" height="110">
+<definition hotspot_y="50" version="0.51" hotspot_x="56" link_type="simple" width="70" type="element" height="110">
     <uuid uuid="{68830151-5901-40f6-b94d-dc68b85165a2}"/>
     <names>
         <name lang="fr">Disjoncteur differentiel 1P+N</name>

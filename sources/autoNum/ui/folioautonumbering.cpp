@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,8 +23,8 @@
 #include "qetproject.h"
 #include "diagram.h"
 /**
- * Constructor
- */
+	Constructor
+*/
 FolioAutonumberingW::FolioAutonumberingW(QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	project_(project),
@@ -39,58 +39,63 @@ FolioAutonumberingW::FolioAutonumberingW(QETProject *project, QWidget *parent) :
 }
 
 /**
- * Destructor
- */
+	Destructor
+*/
 FolioAutonumberingW::~FolioAutonumberingW()
 {
 	delete ui;
 }
 
 /**
- * @brief FolioAutonumberingW::setContext
- * construct autonums in the comboBox selected in the @autonum_chooser QcomboBox
- */
-void FolioAutonumberingW::setContext(QList <QString> autonums) {
+	@brief FolioAutonumberingW::setContext
+	construct autonums in the comboBox selected in the autonum_chooser QcomboBox
+*/
+void FolioAutonumberingW::setContext(QList <QString> autonums)
+{
 	foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
 }
 
 /**
- * @brief FolioAutonumberingW::autoNumSelected
- * returns the current autonum selected
- */
-QString FolioAutonumberingW::autoNumSelected(){
+	@brief FolioAutonumberingW::autoNumSelected
+	returns the current autonum selected
+*/
+QString FolioAutonumberingW::autoNumSelected()
+{
 	return ui->m_autonums_cb->currentText();
 }
 
 /**
- * @brief FolioAutonumberingW::fromFolio
- * returns the current "From Folio" index
- */
-int FolioAutonumberingW::fromFolio(){
+	@brief FolioAutonumberingW::fromFolio
+	returns the current "From Folio" index
+*/
+int FolioAutonumberingW::fromFolio()
+{
 	return ui->m_from_cb->currentIndex()-1;
 }
 
 /**
- * @brief FolioAutonumberingW::toFolio
- * returns the current "To Folio" index
- */
-int FolioAutonumberingW::toFolio(){
+	@brief FolioAutonumberingW::toFolio
+	returns the current "To Folio" index
+*/
+int FolioAutonumberingW::toFolio()
+{
 	return ui->m_to_cb->currentIndex()+this->fromFolio()+1;
 }
 
 /**
- * @brief FolioAutonumberingW::newFoliosNumber
- * returns the number of folios to create
- */
-int FolioAutonumberingW::newFoliosNumber(){
+	@brief FolioAutonumberingW::newFoliosNumber
+	returns the number of folios to create
+*/
+int FolioAutonumberingW::newFoliosNumber()
+{
 	return ui->m_new_tabs_sb->value();
 }
-
 /**
- * @brief FolioAutonumberingW::updateFolioList
- * update Folio List in From and To ComboBox
- */
-void FolioAutonumberingW::updateFolioList(){
+	@brief FolioAutonumberingW::updateFolioList
+	update Folio List in From and To ComboBox
+*/
+void FolioAutonumberingW::updateFolioList()
+{
 	ui   -> m_from_cb->clear();
 	ui   -> m_to_cb->clear();
 	if (newFolios){
@@ -101,10 +106,11 @@ void FolioAutonumberingW::updateFolioList(){
 }
 
 /**
- * @brief FolioAutonumberingW::on_m_create_new_tabs_rb_clicked
+	@brief FolioAutonumberingW::on_m_create_new_tabs_rb_clicked
  *	Enable New Tabs SpinBox
- */
-void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked() {
+*/
+void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked()
+{
 	ui->m_from_cb->setEnabled(false);
 	ui->m_to_cb->setEnabled(false);
 	ui->m_new_tabs_sb->setEnabled(true);
@@ -113,10 +119,11 @@ void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked() {
 }
 
 /**
- * @brief FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked
+	@brief FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked
  *	Enable From ComboBox, fill From ComboBox
- */
-void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
+*/
+void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked()
+{
 	ui->m_new_tabs_sb->setEnabled(false);
 	ui->m_from_cb->setEnabled(true);
 	ui->m_to_cb->setEnabled(true);
@@ -132,25 +139,28 @@ void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
 }
 
 /**
- * @brief FolioAutonumberingW::on_m_new_tabs_sb_valueChanged
+	@brief FolioAutonumberingW::on_m_new_tabs_sb_valueChanged
  *	Enable Apply if any new folio is to be created
- */
-void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(int){
+*/
+void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(int)
+{
 	if (ui->m_new_tabs_sb->value()>0) applyEnable(true);
 	else applyEnable(false);
 }
 
 /**
- * @brief FolioAutonumberingW::on_m_from_cb_currentIndexChanged
+	@brief FolioAutonumberingW::on_m_from_cb_currentIndexChanged
  *	Enable To ComboBox
- */
-void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int){
+*/
+void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int)
+{
 	int index = ui->m_from_cb->currentIndex();
 	ui->m_to_cb->clear();
 	if (index > 0){
 		ui->m_to_cb->setEnabled(true);
 		for (int i=index;i<project_->diagrams().size();i++)
-			ui->m_to_cb->addItem(project_->diagrams().at(i)->title());
+			ui->m_to_cb->addItem(project_
+					     ->diagrams().at(i)->title());
 		applyEnable(true);
 	}
 	else{
@@ -160,31 +170,35 @@ void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int){
 }
 
 /**
- * @brief SelectAutonumW::on_buttonBox_clicked
- * Action on @buttonBox clicked
- */
-void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
+	@brief SelectAutonumW::on_buttonBox_clicked
+	Action on buttonBox clicked
+*/
+void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button)
+{
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 
 	switch (answer) {
 			//help dialog - not implemented yet -
 		case QDialogButtonBox::HelpRole:
-			QMessageBox::information (this, tr("Folio Autonumbering", "title window"),
-                                                                    tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.\n"
-																	   "-Une numérotation est composée d'une variable minimum.\n"
-																	   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
-                                                                       "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
+			QMessageBox::information (
+						this,
+						tr("Folio Autonumbering",
+						   "title window"),
+						tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.\n"
+						   "-Une numérotation est composée d'une variable minimum.\n"
+						   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+						   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
 
-                                                                       "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
-																	   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
-                                                                       "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
-                                                                       "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
-																	   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
+						   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
+						   "qui s'incrémente à chaque nouveau folio de la valeur du champ \"Incrémentation\".\n"
+						   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
+						   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
+						   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-                                                                       "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
-																	   "help dialog about the folio autonumerotation"
-																	   ));
+						   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
+						   "help dialog about the folio autonumerotation"
+						   ));
 			break;
 		case QDialogButtonBox::ApplyRole:
 			applyEnable(true);
@@ -195,22 +209,26 @@ void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
 }
 
 /**
- * @brief SelectAutonumW::applyEnable
- * enable/disable the apply button
- */
-void FolioAutonumberingW::applyEnable(bool b) {
+	@brief SelectAutonumW::applyEnable
+	enable/disable the apply button
+*/
+void FolioAutonumberingW::applyEnable(bool b)
+{
 	if (b){
 		bool valid = true;
 		if (ui->m_create_new_tabs_rb->isChecked()){
 			if (ui->m_new_tabs_sb->value()==0) valid = false;
-			ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
+			ui->buttonBox->button(QDialogButtonBox::Apply)
+					->setEnabled(valid);
 		}
 		else{
 			if (ui->m_to_cb->currentText()=="") valid = false;
-			ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
+			ui->buttonBox->button(QDialogButtonBox::Apply)
+					->setEnabled(valid);
 		}
 	}
 	else{
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+		ui->buttonBox->button(QDialogButtonBox::Apply)
+				->setEnabled(b);
 		}
 }

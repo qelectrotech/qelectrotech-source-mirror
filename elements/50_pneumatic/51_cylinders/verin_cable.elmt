@@ -1,4 +1,4 @@
-<definition height="50" version="0.5" width="120" hotspot_x="15" type="element" link_type="simple" hotspot_y="25" orientation="dyyy">
+<definition height="50" version="0.5" width="120" hotspot_x="15" type="element" link_type="simple" hotspot_y="25">
     <uuid uuid="{53b8a067-c7f0-4227-8ee7-90d3dffb286e}"/>
     <names>
         <name lang="en">Pneumatic actuator cable</name>

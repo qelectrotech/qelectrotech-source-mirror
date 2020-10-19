@@ -1,4 +1,4 @@
-<definition hotspot_x="27" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
+<definition hotspot_x="27" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
     <uuid uuid="{b189e54b-feaf-4743-b928-7ff9b37755bb}"/>
     <names>
         <name lang="fr">Cellule photovoltaïque</name>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,21 +29,19 @@ class ExportPropertiesWidget;
 */
 class ExportDialog : public QDialog {
 	Q_OBJECT
-	
-	// constructors, destructor
+
 	public:
+	// constructors, destructor
 	ExportDialog(QETProject *, QWidget * = nullptr);
 	~ExportDialog() override;
-	
-	private:
-	ExportDialog(const ExportDialog &);
-	
+
 	// methods
-	public:
 	int diagramsToExportCount() const;
 	static QPointF rotation_transformed(qreal, qreal, qreal, qreal, qreal);
-	
+
 	private:
+	ExportDialog(const ExportDialog &);
+
 	class ExportDiagramLine {
 		public:
 		ExportDiagramLine(Diagram *, QSize);
@@ -85,12 +83,10 @@ class ExportDialog : public QDialog {
 	QETProject *project_;
 	
 	// methods
-	private:
 	QWidget *initDiagramsListPart();
 	void saveReloadDiagramParameters(Diagram *, bool = true);
 	void generateSvg(Diagram *, int, int, bool, QIODevice &);
-	void generateDxf(Diagram *, int, int, bool, QString &);
-	void fillRow(const QString&, const QRectF &, QString, const QString&, QString, QString);
+	void generateDxf(Diagram *, int, int, QString &);
 	QImage generateImage(Diagram *, int, int, bool);
 	void exportDiagram(ExportDiagramLine *);
 	qreal diagramRatio(Diagram *);

@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{01a380ef-3418-4ddb-8aa2-6d9ec6e5fd26}"/>
     <names>
         <name lang="it">Uscita digitale, generica</name>

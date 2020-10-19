@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,7 +28,7 @@ class QETMainWindow : public QMainWindow {
 	
 	// constructor, destructor
 	public:
-	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = nullptr);
+	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = Qt::Widget);
 	~QETMainWindow() override;
 	
 	// methods

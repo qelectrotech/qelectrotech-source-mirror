@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,10 +28,10 @@ class QetGraphicsHandlerItem;
 class QAction;
 
 /**
- * @brief The QetShapeItem class
- * this class is used to draw a basic shape (line, rectangle, ellipse)
- * into a diagram, that can be saved to .qet file.
- */
+	@brief The QetShapeItem class
+	this class is used to draw a basic shape (line, rectangle, ellipse)
+	into a diagram, that can be saved to .qet file.
+*/
 class QetShapeItem : public QetGraphicsItem
 {
 	Q_OBJECT
@@ -62,10 +62,15 @@ class QetShapeItem : public QetGraphicsItem
 
 		enum { Type = UserType + 1008 };
 
-		QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = nullptr);
+		QetShapeItem(
+				QPointF,
+				QPointF = QPointF(0,0),
+				ShapeType = Line,
+				QGraphicsItem *parent = nullptr);
 		~QetShapeItem() override;
 
-			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a QetShapeItem @return the QGraphicsItem type
+		//Enable the use of qgraphicsitem_cast to safely cast a
+		//QGraphicsItem into a QetShapeItem return the QGraphicsItem type
 		int type() const override { return Type; }
 
 			///METHODS
@@ -76,8 +81,8 @@ class QetShapeItem : public QetGraphicsItem
 		ShapeType shapeType() const {return m_shapeType;}
 
 		virtual bool	    fromXml (const QDomElement &);
-		virtual QDomElement toXml	(QDomDocument &document) const;
-		virtual bool		toDXF	(const QString &filepath,const QPen &pen);
+		virtual QDomElement toXml (QDomDocument &document) const;
+		virtual bool toDXF (const QString &filepath,const QPen &pen);
 
 		void editProperty() override;
 		QString name() const override;
@@ -105,13 +110,21 @@ class QetShapeItem : public QetGraphicsItem
 		QPainterPath shape()  const override;
 
 	protected:
-		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-		void hoverEnterEvent   (QGraphicsSceneHoverEvent *event) override;
-		void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event) override;
-		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
-        QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
-        bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
-		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
+		void paint(
+				QPainter *painter,
+				const QStyleOptionGraphicsItem *option,
+				QWidget *widget) override;
+		void hoverEnterEvent (QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent (QGraphicsSceneHoverEvent *event) override;
+		void mousePressEvent (QGraphicsSceneMouseEvent *event) override;
+		QVariant itemChange(
+				GraphicsItemChange change,
+				const QVariant &value) override;
+		bool sceneEventFilter(
+				QGraphicsItem *watched,
+				QEvent *event) override;
+		void contextMenuEvent(
+				QGraphicsSceneContextMenuEvent *event) override;
 
 	private:
 		void switchResizeMode();
@@ -120,32 +133,32 @@ class QetShapeItem : public QetGraphicsItem
 		void insertPoint();
 		void removePoint();
 		
-		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMousePressEvent();
+		void handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent();
 
 		///ATTRIBUTES
 	private:
 		ShapeType	 m_shapeType;
 		QPen		 m_pen;
-		QBrush       m_brush;
+		QBrush		 m_brush;
 		QPointF		 m_P1,
-					 m_P2,
-					 m_old_P1,
-					 m_old_P2,
-					 m_context_menu_pos;
+				 m_P2,
+				 m_old_P1,
+				 m_old_P2,
+				 m_context_menu_pos;
 		QPolygonF	 m_polygon, m_old_polygon;
 		bool		 m_hovered;
-		int			 m_vector_index;
-		bool m_closed = false,
-			 m_modifie_radius_equaly = false;
-		int m_resize_mode = 1;
-        QVector<QetGraphicsHandlerItem *> m_handler_vector;
-		QAction *m_insert_point,
-				*m_remove_point;
-		qreal m_xRadius = 0,
-			  m_yRadius = 0,
-			  m_old_xRadius,
-			  m_old_yRadius;
+		int		 m_vector_index;
+		bool		 m_closed = false,
+				 m_modifie_radius_equaly = false;
+		int		 m_resize_mode = 1;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		QAction		 *m_insert_point,
+				 *m_remove_point;
+		qreal		 m_xRadius = 0,
+				 m_yRadius = 0,
+				 m_old_xRadius,
+				 m_old_yRadius;
 };
 #endif // QETSHAPEITEM_H

@@ -35,8 +35,8 @@ my $todo = 'TODO';
 our $default_language = 'fr';
 our @misc_desktop_files = qw(misc/qelectrotech.desktop misc/x-qet-element.desktop misc/x-qet-project.desktop misc/x-qet-titleblock.desktop);
 our @misc_xml_files     = qw(misc/qelectrotech.xml     misc/x-qet-element.xml     misc/x-qet-project.xml     misc/x-qet-titleblock.xml);
-our @readme_files       = qw(CREDIT README INSTALL ELEMENTS.LICENSE packaging/linux/fedora/README.elements);
-our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro);
+our @readme_files       = qw(CREDIT README INSTALL ELEMENTS.LICENSE build-aux/linux/fedora/README.elements);
+our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro da pt_br hu sr tr nb ja);
 our %languages = (
 	'fr' => {
 		'name'               => 'Français',
@@ -63,28 +63,28 @@ our %languages = (
 		'qt'                 => 1
 	},
 	'ru' => {
-		'name'               => 'Russe',
-		'french_name'        => 'Русский',
-		'translator_name'    => 'Yuriy Litkevich',
-		'translator_mail_ml' => 'lit-uriy@yandex.ru',
+		'name'               => 'Русский',
+		'french_name'        => 'Russe',
+		'translator_name'    => 'Yuriy Litkevich & Evgeny Kozlov',
+		'translator_mail_ml' => 'evgeny@qelectrotech.org',
 		'qt'                 => 1
 	},
 	'pt' => {
-		'name'               => 'Portugais',
-		'french_name'        => 'Português',
+		'name'               => 'Português',
+		'french_name'        => 'Portugais',
 		'translator_name'    => 'Jose Carlos Martins',
 		'translator_mail_ml' => 'jose@qelectrotech.org',
 		'qt'                 => 1
 	},
 	'cs' => {
-		'name'               => 'Czech',
+		'name'               => 'český',
 		'french_name'        => 'Tchèque',
 		'translator_name'    => 'Pavel Fric',
 		'translator_mail_ml' => 'pavelfric@seznam.cz',
 		'qt'                 => 1
 	},
 	'pl' => {
-		'name'               => 'Polska',
+		'name'               => 'Polski',
 		'french_name'        => 'Polonais',
 		'translator_name'    => 'Pawel Smiech',
 		'translator_mail_ml' => 'pawel32640@gmail.com',
@@ -95,12 +95,12 @@ our %languages = (
 		'french_name'        => 'Catalan',
 		'translator_name'    => 'Youssef Ouamalkran & Eduard Amoros',
 		'translator_mail_ml' => 'youssefsan@gmail.com',
-		'qt'                 => 0
+		'qt'                 => 1
 	},
 	'ro' => {
 		'name'               => 'Română',
 		'french_name'        => 'Roumain',
-		'translator_name'    => 'Gabi Mandoc',
+		'translator_name'    => 'Gabi Mandoc & Titus',
 		'translator_mail_ml' => 'gabriel.mandoc@gic.ro',
 		'qt'                 => 0
 	},
@@ -113,52 +113,103 @@ our %languages = (
 	},
 	'it' => {
 		'name'               => 'Italiano',
-		'french_name'        => 'Italiano',
+		'french_name'        => 'Italien',
 		'translator_name'    => 'Alessandro Conti & Silvio Brera',
 		'translator_mail_ml' => 'dr.slump@alexconti.it',
 		'qt'                 => 1
 	},
 	'ar' => {
-		'name'               => 'Arabic',
+		'name'               => 'العربية',
 		'french_name'        => 'Arabe',
 		'translator_name'    => 'Mohamed Souabni',
 		'translator_mail_ml' => 'souabnimohamed@yahoo.fr',
 		'qt'                 => 1
 	},
 	'sl' => {
-		'name'               => 'Slovenian',
+		'name'               => 'Slovenski',
 		'french_name'        => 'Slovene',
 		'translator_name'    => 'Uroš Platiše',
 		'translator_mail_ml' => 'uros.platise@energycon.eu',
 		'qt'                 => 1
 	},
 	'hr' => {
-		'name'               => 'Croatian',
+		'name'               => 'Hrvatski',
 		'french_name'        => 'Croate',
 		'translator_name'    => 'Antun Marakovic',
 		'translator_mail_ml' => 'antun.marakovic@lolaribar.hr',
 		'qt'                 => 1
 	},
 	'el' => {
-		'name'               => 'Greek',
+		'name'               => 'ελληνικά',
 		'french_name'        => 'Grec',
 		'translator_name'    => 'Nikos Papadopoylos &  Yannis Gyftomitros',
 		'translator_mail_ml' => '231036448@freemail.gr',
 		'qt'                 => 1
 	},
 	'nl' => {
-		'name'               => 'Netherlands',
-		'french_name'        => 'Pays-Bas',
+		'name'               => 'Nederlands',
+		'french_name'        => '‎Néerlandais',
 		'translator_name'    => 'Paul Van Deelen & Elbert',
 		'translator_mail_ml' => 'shooter@home.nl',
 		'qt'                 => 1
 	},
 	'be' => {
 		'name'               => 'Belgium-Flemish',
-		'french_name'        => 'Belgique-flamand',
+		'french_name'        => 'Belge-flamand',
 		'translator_name'    => 'Ronny Desmedt',
 		'translator_mail_ml' => 'r.desmedt@live.be',
 		'qt'                 => 1
+	},
+	'da' => {
+		'name'               => 'Dansk',
+		'french_name'        => 'Danois',
+		'translator_name'    => 'ossau2mation',
+		'translator_mail_ml' => '',
+		'qt'                 => 1
+	},
+	'pt_br' => {
+		'name'               => 'Brasileiro',
+		'french_name'        => 'Brésilien',
+		'translator_name'    => 'Hilario & Thiago Cruz',
+		'translator_mail_ml' => '',
+		'qt'                 => 1
+	},
+	'hu' => {
+		'name'               => 'Magyar',
+		'french_name'        => 'Hongrois',
+		'translator_name'    => 'Gábor Gubányi',
+		'translator_mail_ml' => 'gubanyig@gmail.com',
+		'qt'                 => 1
+	},
+	'sr' => {
+		'name'               => 'српски',
+		'french_name'        => 'Serbe',
+		'translator_name'    => '',
+		'translator_mail_ml' => '',
+		'qt'                 => 1
+	},
+	'tr' => {
+		'name'               => 'Türk',
+		'french_name'        => 'Turc',
+		'translator_name'    => 'Aziz & Emir',
+		'translator_mail_ml' => 'aziz.karabudak@argevi.com',
+		'qt'                 => 1
+	},
+	'nb' => {
+		'name'               => 'Norwegian',
+		'french_name'        => 'Norvege',
+		'translator_name'    => 'JoelAs',
+		'translator_mail_ml' => '',
+		'qt'                 => 1
+	},
+	'ja' => {
+		'name'               => '日本語',
+		'french_name'        => 'Japonais',
+		'translator_name'    => 'Yuki',
+		'translator_mail_ml' => 'yuki.atoh@gmail.com',
+		'qt'                 => 1,
+		'desktop_progress_summary' => $ok,
+		'xml_progress_summary' => $ok
 	}
 );
 

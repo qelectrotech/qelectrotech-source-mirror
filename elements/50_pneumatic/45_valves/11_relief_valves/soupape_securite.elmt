@@ -1,4 +1,4 @@
-<definition height="70" version="0.5" width="60" hotspot_x="9" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="70" version="0.5" width="60" hotspot_x="9" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{17f6fd0e-3182-4bee-bca8-058267c4f563}"/>
     <names>
         <name lang="en">Pressure relief valve</name>

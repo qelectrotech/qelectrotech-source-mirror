@@ -1,0 +1,26 @@
+<definition hotspot_x="16" version="0.80" width="40" type="element" height="120" hotspot_y="54" link_type="simple">
+    <uuid uuid="{8af25449-c0d4-4cf1-a95e-73b48f21d1ed}"/>
+    <names>
+        <name lang="fr">039596 - Viking3 - Porte-étiquette transparent à inclinaison variable</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="designation" show="1">039596</elementInformation>
+        <elementInformation name="description" show="1">Porte-étiquette transparent à inclinaison variable</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect y="-50" style="line-style:normal;line-weight:none;filling:HTMLWhiteHoneydew;color:black" width="27" x="-10" height="111" ry="0" antialias="false" rx="0"/>
+        <dynamic_text y="50" frame="false" rotation="270" Valignment="AlignTop" x="-10" z="3" Halignment="AlignLeft" uuid="{92fc3108-8d35-4c27-a2d0-9cd3460207d3}" text_from="UserText" font="MS Shell Dlg 2,11,-1,5,50,0,0,0,0,0,Normal" text_width="-1">
+            <text>BORNIER X1</text>
+        </dynamic_text>
+    </description>
+</definition>

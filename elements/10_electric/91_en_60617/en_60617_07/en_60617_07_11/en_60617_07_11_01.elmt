@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="45" hotspot_y="397" orientation="dyyy" type="element" height="400" width="170">
+<definition link_type="simple" version="0.70" hotspot_x="45" hotspot_y="397" type="element" height="400" width="170">
     <uuid uuid="{d7bb1ddf-df0a-41f4-a22e-c015e512fcba}"/>
     <names>
         <name lang="fr">Commutateur à commande par levier à trois

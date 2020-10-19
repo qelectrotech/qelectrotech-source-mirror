@@ -1,4 +1,4 @@
-<definition version="0.70" height="60" type="element" width="70" hotspot_x="17" link_type="master" hotspot_y="30" orientation="dyyy">
+<definition version="0.70" height="60" type="element" width="70" hotspot_x="17" link_type="master" hotspot_y="30">
     <uuid uuid="{33213f58-54db-423e-9c10-89ca3adf538b}"/>
     <names>
         <name lang="cs">Nouzové zastavení</name>

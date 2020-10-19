@@ -1,4 +1,4 @@
-<definition width="250" hotspot_y="150" height="300" type="element" hotspot_x="125" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="250" hotspot_y="150" height="300" type="element" hotspot_x="125" version="0.5" link_type="simple">
     <uuid uuid="{73fe51a5-5887-4d04-9788-3d597950fee2}"/>
     <names>
         <name lang="nl">Proface LT3301L</name>

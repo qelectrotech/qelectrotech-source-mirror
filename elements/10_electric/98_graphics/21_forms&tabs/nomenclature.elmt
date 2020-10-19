@@ -1,4 +1,4 @@
-<definition width="980" height="650" type="element" hotspot_y="29" version="0.70" orientation="dyyy" hotspot_x="5" link_type="simple">
+<definition width="980" height="650" type="element" hotspot_y="29" version="0.70" hotspot_x="5" link_type="simple">
     <uuid uuid="{538b486c-e7dd-42a6-8358-aac0f3f5a7b9}"/>
     <names>
         <name lang="it">Testata Nomenclatura</name>

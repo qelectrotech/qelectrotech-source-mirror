@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,22 +26,22 @@ class QKeyEvent;
 class Diagram;
 
 /**
- * @brief The DiagramEventInterface class
- * isRunning() return true if action is running (do something). By default return false.
+	@brief The DiagramEventInterface class
+	isRunning() return true if action is running (do something). By default return false.
  *
- * ##USE DiagramEventInterface##
- * This class is the basic interface for manage event on a diagram.
- * To create a behavior for event diagram, we need to herite this class.
- * This interface work like this :
- * You need to create an interface and call diagram::setEventInterface(pointer_of_your_interface).
- * When a diagram get an event (mouse or key) if they have an event interface,
- * they send the event (with the status accepted to false) to the interface (for exemple mousePressEvent).
- * If the interface do something with this event, you need to set to true the accepted status of the event, then diagram do nothing.
- * When the interface job is done, we need to emit the signal finish(), the diagram use this signal to delete the interface.
- * Be carreful with the destructor, diagram can at any time (even if interface is still running) delete the interface,
- * the bool m_abort is here for that at destruction time.
+	##USE DiagramEventInterface##
+	This class is the basic interface for manage event on a diagram.
+	To create a behavior for event diagram, we need to herite this class.
+	This interface work like this :
+	You need to create an interface and call diagram::setEventInterface(pointer_of_your_interface).
+	When a diagram get an event (mouse or key) if they have an event interface,
+	they send the event (with the status accepted to false) to the interface (for exemple mousePressEvent).
+	If the interface do something with this event, you need to set to true the accepted status of the event, then diagram do nothing.
+	When the interface job is done, we need to emit the signal finish(), the diagram use this signal to delete the interface.
+	Be carreful with the destructor, diagram can at any time (even if interface is still running) delete the interface,
+	the bool m_abort is here for that at destruction time.
  *
- */
+*/
 class DiagramEventInterface : public QObject
 {
 		Q_OBJECT

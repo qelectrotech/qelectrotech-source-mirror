@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -36,9 +36,9 @@ NameListWidget::~NameListWidget()
 }
 
 /**
- * @brief NameListWidget::addLine
- * Add a new line to the name list widget
- */
+	@brief NameListWidget::addLine
+	Add a new line to the name list widget
+*/
 void NameListWidget::addLine()
 {
 	clean();
@@ -53,10 +53,10 @@ void NameListWidget::addLine()
 }
 
 /**
- * @brief NameListWidget::setNames
- * Set the current names of this dialog from @name_list
- * @param name_list
- */
+	@brief NameListWidget::setNames
+	Set the current names of this dialog from name_list
+	@param name_list
+*/
 void NameListWidget::setNames(const NamesList &name_list)
 {
 	for (QString lang : name_list.langs())
@@ -66,7 +66,9 @@ void NameListWidget::setNames(const NamesList &name_list)
 		values << lang << value;
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(values);
 		if (!m_read_only) {
-			qtwi->setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+			qtwi->setFlags(Qt::ItemIsEditable
+				       | Qt::ItemIsEnabled
+				       | Qt::ItemIsSelectable);
 		}
 		ui->m_tree->addTopLevelItem(qtwi);
 		ui->m_tree->sortItems(0, Qt::AscendingOrder);
@@ -74,9 +76,9 @@ void NameListWidget::setNames(const NamesList &name_list)
 }
 
 /**
- * @brief NameListWidget::names
- * @return the current name list edited by this dialog
- */
+	@brief NameListWidget::names
+	@return the current name list edited by this dialog
+*/
 NamesList NameListWidget::names() const
 {
 	NamesList nl_;
@@ -95,10 +97,10 @@ NamesList NameListWidget::names() const
 }
 
 /**
- * @brief NameListWidget::setReadOnly
- * Set this dialog to read only or not.
- * @param ro
- */
+	@brief NameListWidget::setReadOnly
+	Set this dialog to read only or not.
+	@param ro
+*/
 void NameListWidget::setReadOnly(bool ro)
 {
 	m_read_only = ro;
@@ -116,11 +118,12 @@ void NameListWidget::setReadOnly(bool ro)
 }
 
 /**
- * @brief NameListWidget::isEmpty
- * @return true if empty.
- * An empty dialog, is a dialog without any edited lang. 
- */
-bool NameListWidget::isEmpty() const {
+	@brief NameListWidget::isEmpty
+	@return true if empty.
+	An empty dialog, is a dialog without any edited lang.
+*/
+bool NameListWidget::isEmpty() const
+{
 	return names().isEmpty();
 }
 
@@ -142,9 +145,9 @@ void NameListWidget::setClipboardValue(QHash<QString, QString> value)
 }
 
 /**
- * @brief NameListWidget::clean
- * Clean the lists of names by removing the emtpy lines
- */
+	@brief NameListWidget::clean
+	Clean the lists of names by removing the emtpy lines
+*/
 void NameListWidget::clean()
 {
 	int names_count = ui->m_tree->topLevelItemCount() - 1;

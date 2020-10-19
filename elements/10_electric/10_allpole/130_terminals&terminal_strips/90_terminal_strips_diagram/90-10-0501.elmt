@@ -1,4 +1,4 @@
-<definition height="10" hotspot_y="5" hotspot_x="5" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+<definition height="10" hotspot_y="5" hotspot_x="5" version="0.5" width="30" link_type="simple" type="element">
     <uuid uuid="{9a3ee0a0-5a0e-4f0c-93dd-396ddc3d7f11}"/>
     <names>
         <name lang="de">Einlegebrücke</name>

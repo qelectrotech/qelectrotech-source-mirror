@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="125" hotspot_y="105" orientation="dyyy" type="element" height="130" width="150">
+<definition link_type="simple" version="0.70" hotspot_x="125" hotspot_y="105" type="element" height="130" width="150">
     <uuid uuid="{3a66c9bd-34be-4094-bd0d-71fbb8a7fe5e}"/>
     <names>
         <name lang="fr">Commutateur à galette à 18 positions</name>

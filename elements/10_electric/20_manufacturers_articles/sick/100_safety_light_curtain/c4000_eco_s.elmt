@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="35" width="70" height="140" orientation="dyyy" link_type="simple" hotspot_x="16">
+<definition type="element" version="0.5" hotspot_y="35" width="70" height="140" link_type="simple" hotspot_x="16">
     <uuid uuid="{dd233749-0663-463b-bdd3-a47e7a509a2b}"/>
     <names>
         <name lang="ar">(C4000S ECO S)</name>

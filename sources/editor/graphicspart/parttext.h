@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,16 +20,15 @@
 #include <QtWidgets>
 #include "customelementpart.h"
 #include "qetapp.h"
+
 class TextEditor;
 class ElementPrimitiveDecorator;
 /**
 	This class represents an static text primitive which may be used to compose
 	the drawing of an electrical element within the element editor.
 */
-class PartText : public QGraphicsTextItem, public CustomElementPart
-{
+class PartText : public QGraphicsTextItem, public CustomElementPart {
 	Q_OBJECT
-
 	Q_PROPERTY(qreal real_size READ realSize WRITE setRealSize)
 	Q_PROPERTY(QColor color READ defaultTextColor WRITE setDefaultTextColor NOTIFY colorChanged)
 	Q_PROPERTY(QString text READ toPlainText WRITE setPlainText NOTIFY plainTextChanged)
@@ -39,15 +38,15 @@ class PartText : public QGraphicsTextItem, public CustomElementPart
 		void fontChanged(const QFont &font);
 		void colorChanged(const QColor &color);
 		void plainTextChanged(const QString &text);
-	
+
 		// constructors, destructor
 	public:
 		PartText(QETElementEditor *, QGraphicsItem * = nullptr);
 		~PartText() override;
-	
+
 	private:
 		PartText(const PartText &);
-	
+
 		// methods
 	public:
 		enum { Type = UserType + 1107 };
@@ -75,31 +74,31 @@ class PartText : public QGraphicsTextItem, public CustomElementPart
 		void setDefaultTextColor(const QColor &color);
 		void setPlainText(const QString &text);
 		void setFont(const QFont &font);
-	
+
 	public slots:
-        void adjustItemPosition(int = 0);
-        void setEditable(bool);
-        void startEdition();
-        void endEdition();
-	
+		void adjustItemPosition(int = 0);
+		void setEditable(bool);
+		void startEdition();
+		void endEdition();
+
 	protected:
-        void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
-        void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
-        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
-        void focusInEvent(QFocusEvent *) override;
-        void focusOutEvent(QFocusEvent *) override;
-        void keyPressEvent(QKeyEvent *) override;
-        void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *) override;
-        QVariant itemChange(GraphicsItemChange, const QVariant &) override;
-        QRectF boundingRect() const override;
-	
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void focusInEvent(QFocusEvent *) override;
+		void focusOutEvent(QFocusEvent *) override;
+		void keyPressEvent(QKeyEvent *) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *) override;
+		QVariant itemChange(GraphicsItemChange, const QVariant &) override;
+		QRectF boundingRect() const override;
+
 	private:
-        QPointF margin() const;
-        QString previous_text;
-        qreal real_font_size_;
-        QPointF saved_point_;
-        qreal saved_font_size_;
-        QGraphicsItem *decorator_;
-        QPointF m_origine_pos;
+		QPointF margin() const;
+		QString previous_text;
+		qreal real_font_size_;
+		QPointF saved_point_;
+		qreal saved_font_size_;
+		QGraphicsItem *decorator_;
+		QPointF m_origine_pos;
 };
 #endif

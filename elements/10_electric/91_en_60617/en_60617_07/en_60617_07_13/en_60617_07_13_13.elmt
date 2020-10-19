@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="210" height="120" hotspot_y="45" hotspot_x="195" version="0.70" link_type="simple">
+<definition type="element" width="210" height="120" hotspot_y="45" hotspot_x="195" version="0.70" link_type="simple">
     <uuid uuid="{1e30a864-c9c0-483f-a7e0-3d34d4462014}"/>
     <names>
         <name lang="de">3poliges Schaltgerät mit Motorantrieb und

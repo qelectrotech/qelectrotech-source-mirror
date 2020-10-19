@@ -1,0 +1,63 @@
+<definition link_type="master" hotspot_y="23" width="100" type="element" height="50" hotspot_x="61" version="0.80">
+    <uuid uuid="{e8593377-18bd-441c-bca4-69c6ccf2aaae}"/>
+    <names>
+        <name lang="en">Four pole switch disconnector</name>
+        <name lang="fr">Interrupteur sectionneur 32A</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="designation">LEG022113</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description">Interrupteur sectionneur 32A</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment">32A</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon closed="false" y3="21" y2="11" y1="-9" x1="-15" x3="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle x="28" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-11"/>
+        <circle x="-52" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="11"/>
+        <polygon closed="false" y3="21" y2="11" y1="-9" x1="25" x3="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle x="8" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-11"/>
+        <line y2="-11" y1="-19" x1="30" x2="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <circle x="-32" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-11"/>
+        <line y2="-11" y1="-11" x1="32" x2="28" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <dynamic_text text_width="-1" x="32.75" z="9" frame="false" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="-7" uuid="{951a9adc-1e0f-4e24-8137-16b3e55dd9ab}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle x="-12" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-11"/>
+        <line y2="1" y1="1" x1="25" x2="-50" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <polygon closed="false" y3="21" y2="11" y1="-9" x1="-15" x3="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <polygon closed="false" y3="21" y2="11" y1="-9" x1="5" x3="10" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <polygon closed="false" y3="21" y2="11" y1="-9" x1="-35" x3="-30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line y2="-11" y1="-19" x1="-10" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-11" y1="-11" x1="-8" x2="-12" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-11" y1="-19" x1="-30" x2="-30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-11" y1="-11" x1="-28" x2="-32" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-11" y1="-19" x1="10" x2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-11" y1="-11" x1="12" x2="8" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <line y2="-9" y1="11" x1="-50" x2="-55" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
+        <dynamic_text text_width="-1" x="30" z="22" frame="false" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_from="ElementInfo" y="10" uuid="{61d3f7ab-43c6-4706-9904-39d8b176a08f}">
+            <text>32A</text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal x="-10" name="" y="-19" uuid="{a53ceb28-6120-401a-8d93-c9b67d1d3bae}" orientation="n"/>
+        <terminal x="30" name="" y="21" uuid="{471d2f27-781a-4a85-951c-410e66f2e960}" orientation="s"/>
+        <terminal x="30" name="" y="-19" uuid="{4da683f9-52c1-4e3c-a5ff-4172c9910390}" orientation="n"/>
+        <terminal x="-30" name="" y="-19" uuid="{2e91a6bf-0d0c-4473-a5c0-61dc76d45d9c}" orientation="n"/>
+        <terminal x="-30" name="" y="21" uuid="{36b42f71-c36d-4b7c-bffb-aae682171c9b}" orientation="s"/>
+        <terminal x="10" name="" y="21" uuid="{5c4ccc60-6981-49b1-a089-e6cee5ff0055}" orientation="s"/>
+        <terminal x="10" name="" y="-19" uuid="{3817cc82-56fd-40bd-8cab-034cc713531b}" orientation="n"/>
+        <terminal x="-10" name="" y="21" uuid="{395fcbb3-932d-46ba-84f7-3c93c8e16432}" orientation="s"/>
+    </description>
+</definition>

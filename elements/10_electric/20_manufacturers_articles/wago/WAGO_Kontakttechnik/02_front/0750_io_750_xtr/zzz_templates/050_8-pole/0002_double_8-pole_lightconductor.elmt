@@ -1,4 +1,4 @@
-<definition version="0.80" width="100" hotspot_y="180" hotspot_x="54" link_type="simple" orientation="dyyy" type="element" height="360">
+<definition version="0.80" width="100" hotspot_y="180" hotspot_x="54" link_type="simple" type="element" height="360">
     <names>
         <name lang="en">double 8-fold / Light-Conductor</name>
         <name lang="fr">double 8-fold / Light-Conductor</name>

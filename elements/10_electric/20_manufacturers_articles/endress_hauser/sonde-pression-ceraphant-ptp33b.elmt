@@ -1,0 +1,82 @@
+<definition width="210" height="230" hotspot_y="175" version="0.80" link_type="simple" type="element" hotspot_x="41">
+    <uuid uuid="{6f0519ea-d651-4745-a3e0-7e6a673ac1bb}"/>
+    <names>
+        <name lang="fr">Sonde Pression CERAPHANT PTP33B</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle y="-78" x="14" diameter="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="22" x="6" color="#000000" text="1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <circle y="-96" x="34" diameter="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-87" x="38" color="#000000" text="-" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <circle y="-40" x="-20" diameter="80" antialias="true" style="line-style:normal;line-weight:eleve;filling:none;color:black"/>
+        <circle y="12" x="-4" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <circle y="-34" x="-14" diameter="68" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-36" x="-16" diameter="72" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-18" x="6" color="#000000" text="4" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="14" y2="14" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="17" x="134" color="#000000" text="3-BU" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-25" x="130" color="#000000" text="1-BN" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-11" x="131" color="#000000" text="2-WH" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-18" x="30" color="#000000" text="3" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="22" x="30" color="#000000" text="2" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <circle y="-20" x="36" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <circle y="12" x="36" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <circle y="-20" x="-4" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <text y="27" x="134" color="#000000" text="4-V/J" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="8" x="8" color="#000000" text="M12x1" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <line y1="-50" y2="-50" x2="40" x1="0" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="20" x2="-30" x1="-30" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" y2="50" x2="40" x1="0" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-50" x2="0" x1="-30" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" y2="50" x2="0" x1="-30" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="20" x2="70" x1="70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" y2="50" x2="40" x1="70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="-20" uuid="{f0483631-3ab7-4652-be86-5bbde0d3fc12}" z="27" x="-70" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-50" y2="-20" x2="70" x1="40" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-20" width="40" rx="1" height="40" x="70" ry="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-14" y2="-14" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" y2="-5" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" y2="-10" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="6" y2="6" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-14" y2="-20" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" y2="-10" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="6" y2="10" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" y2="10" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line y1="14" y2="20" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" y2="20" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-170" x="-35" diameter="110" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" y2="-64" x2="0" x1="0" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" y2="-64" x2="40" x1="40" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-168" x="-33" diameter="106" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-147" width="64" rx="0" height="24" x="-12" ry="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-150" width="70" rx="0" height="30" x="-15" ry="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-96" x="-6" diameter="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-87" x="-3" color="#000000" text="+" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text y="-120" uuid="{e5b62c70-e2c7-4690-9465-e4c55e6e33a9}" z="55" x="-30" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>CERAPHANT PTP33B</text>
+        </dynamic_text>
+        <dynamic_text y="-18" uuid="{94855a6d-d6a7-4cc0-ad42-f3f3b1bf2e51}" z="56" x="26" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>0V</text>
+        </dynamic_text>
+        <dynamic_text y="18" uuid="{94855a6d-d6a7-4cc0-ad42-f3f3b1bf2e51}" z="56" x="-4" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>10-35VDC</text>
+        </dynamic_text>
+        <dynamic_text y="22" uuid="{1ddba7d5-7d29-44d2-8d6d-acc38b153729}" z="57" x="4" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>(4-20mA)</text>
+        </dynamic_text>
+        <dynamic_text y="-12" uuid="{1ddba7d5-7d29-44d2-8d6d-acc38b153729}" z="57" x="26" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>(4-20mA)</text>
+        </dynamic_text>
+        <terminal y="10" uuid="{d6321b02-cd30-4a9c-b613-f07d13fdf39c}" x="160" orientation="e" name=""/>
+        <terminal y="-10" uuid="{fe462f8d-05b0-4890-b4ef-27c1f98d2444}" x="160" orientation="e" name=""/>
+        <terminal y="20" uuid="{d33bb54c-3a25-4e3a-a6ab-3906cb860432}" x="160" orientation="e" name=""/>
+        <terminal y="-20" uuid="{632a9a69-1947-4ebc-8a81-1374e12d1e1f}" x="160" orientation="e" name=""/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="74" type="element" height="160" width="130" version="0.5">
+<definition link_type="simple" hotspot_x="24" hotspot_y="74" type="element" height="160" width="130" version="0.5">
     <uuid uuid="{e0b4b2b0-0f72-4bb4-8664-c2e839d79ac2}"/>
     <names>
         <name lang="pl">Crouzet 80149604</name>

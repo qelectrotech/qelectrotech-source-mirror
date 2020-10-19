@@ -1,4 +1,4 @@
-<definition width="40" height="20" hotspot_x="30" version="0.51" hotspot_y="10" type="element" orientation="dyyy" link_type="terminal">
+<definition width="40" height="20" hotspot_x="30" version="0.51" hotspot_y="10" type="element" link_type="terminal">
     <uuid uuid="{d97af948-ae0b-4ef2-afa0-afd15b1204a4}"/>
     <names>
         <name lang="fr">Tube Cuivre Wicu</name>

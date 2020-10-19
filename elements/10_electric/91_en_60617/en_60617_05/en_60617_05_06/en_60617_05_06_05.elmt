@@ -1,4 +1,4 @@
-<definition hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="50">
+<definition hotspot_x="25" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="50">
     <uuid uuid="{dc4fd66b-deaf-43a7-aaac-722325580eb3}"/>
     <names>
         <name lang="fr">Générateur Hall avec quatre liaisons</name>

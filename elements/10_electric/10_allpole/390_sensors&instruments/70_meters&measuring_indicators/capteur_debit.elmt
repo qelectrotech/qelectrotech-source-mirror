@@ -1,4 +1,4 @@
-<definition hotspot_y="32" type="element" height="60" width="110" hotspot_x="37" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="32" type="element" height="60" width="110" hotspot_x="37" link_type="simple" version="0.5">
     <uuid uuid="{1d13f47e-2002-4ed7-9979-c9386d119907}"/>
     <names>
         <name lang="cs">Průtokové čidlo</name>

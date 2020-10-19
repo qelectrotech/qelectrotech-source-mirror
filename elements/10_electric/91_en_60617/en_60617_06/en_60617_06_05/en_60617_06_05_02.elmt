@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="74" hotspot_y="88" version="0.70" width="90" type="element" height="110">
+<definition link_type="simple" hotspot_x="74" hotspot_y="88" version="0.70" width="90" type="element" height="110">
     <uuid uuid="{3df97f30-429a-4b53-9b06-fb415c077353}"/>
     <names>
         <name lang="fr">Moteur shunt (à excitation en dérivation) DC</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="34" hotspot_x="15" version="0.70" link_type="simple">
+<definition type="element" width="50" height="70" hotspot_y="34" hotspot_x="15" version="0.70" link_type="simple">
     <uuid uuid="{e55bf77d-c60c-41ec-9206-c23476cb499c}"/>
     <names>
         <name lang="de">Berührungssensor </name>

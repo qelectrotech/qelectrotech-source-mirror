@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="60" hotspot_y="55" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" height="60" hotspot_y="55" type="element">
     <uuid uuid="{405c2f9b-bd54-4ad6-a3b0-d933434b7c96}"/>
     <names>
         <name lang="el">Ετικέτα, πάνω/κάτω</name>

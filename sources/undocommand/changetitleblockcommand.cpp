@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,12 +20,12 @@
 #include "diagram.h"
 
 /**
- * @brief ChangeTitleBlockCommand::ChangeTitleBlockCommand
- * @param d
- * @param old_ip
- * @param new_ip
- * @param parent
- */
+	@brief ChangeTitleBlockCommand::ChangeTitleBlockCommand
+	@param d
+	@param old_ip
+	@param new_ip
+	@param parent
+*/
 ChangeTitleBlockCommand::ChangeTitleBlockCommand(
 	Diagram *d,
 	const TitleBlockProperties &old_ip,
@@ -38,7 +38,8 @@ ChangeTitleBlockCommand::ChangeTitleBlockCommand(
 	new_titleblock(new_ip)
 {}
 
-ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {}
+ChangeTitleBlockCommand::~ChangeTitleBlockCommand()
+{}
 
 void ChangeTitleBlockCommand::undo()
 {

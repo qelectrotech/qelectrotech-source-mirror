@@ -1,4 +1,4 @@
-<definition hotspot_x="34" link_type="simple" height="60" type="element" width="70" version="0.80" hotspot_y="38" orientation="dyyy">
+<definition hotspot_x="34" link_type="simple" height="60" type="element" width="70" version="0.80" hotspot_y="38">
     <uuid uuid="{fc322143-365e-480b-a75c-89171b76cf32}"/>
     <names>
         <name lang="cs">Krokový motor</name>

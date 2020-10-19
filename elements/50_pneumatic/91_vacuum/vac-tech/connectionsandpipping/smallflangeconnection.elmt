@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="26" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="26" version="0.80" link_type="simple" width="50">
     <uuid uuid="{23aa550c-061f-4413-a148-aeb82cc2a241}"/>
     <names>
         <name lang="en">Small flange connection</name>

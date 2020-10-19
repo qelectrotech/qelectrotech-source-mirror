@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="50" hotspot_x="7" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{68f177ae-b730-400c-89b4-325981d83d72}"/>
     <names>
         <name lang="en">Motor with two directions of

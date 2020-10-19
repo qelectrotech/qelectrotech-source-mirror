@@ -1,4 +1,4 @@
-<definition height="10" hotspot_x="3" width="20" type="element" version="0.5" hotspot_y="1" orientation="dyyy" link_type="simple">
+<definition height="10" hotspot_x="3" width="20" type="element" version="0.5" hotspot_y="1" link_type="simple">
     <uuid uuid="{6c27a25d-24ed-47c9-8cbc-de0461dd8d70}"/>
     <names>
         <name lang="fr">Reference contact NC h</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="45" version="0.70" orientation="dyyy" height="130" hotspot_y="125" width="90" type="element" link_type="simple">
+<definition hotspot_x="45" version="0.70" height="130" hotspot_y="125" width="90" type="element" link_type="simple">
     <uuid uuid="{381d0f69-2358-4e3b-b45c-d6a018cd9508}"/>
     <names>
         <name lang="fr">Conducteur dans un câble</name>

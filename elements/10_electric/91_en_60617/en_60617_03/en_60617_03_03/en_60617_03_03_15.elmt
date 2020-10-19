@@ -1,4 +1,4 @@
-<definition hotspot_x="54" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="140" type="element" link_type="simple">
+<definition hotspot_x="54" version="0.70" height="30" hotspot_y="15" width="140" type="element" link_type="simple">
     <uuid uuid="{758545be-8868-434d-98a3-c1e9db84a635}"/>
     <names>
         <name lang="fr">Fiche coaxiale et prise coaxiale</name>

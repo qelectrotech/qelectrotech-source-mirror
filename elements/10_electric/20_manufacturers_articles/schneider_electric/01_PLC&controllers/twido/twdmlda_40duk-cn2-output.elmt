@@ -1,4 +1,4 @@
-<definition width="770" height="90" link_type="simple" hotspot_y="25" hotspot_x="55" version="0.5" type="element" orientation="dyyy">
+<definition width="770" height="90" link_type="simple" hotspot_y="25" hotspot_x="55" version="0.5" type="element">
     <uuid uuid="{aea1c167-0a3d-4e9a-943c-6356e850cbc8}"/>
     <names>
         <name lang="cs">TWDLMDA40DUK "CN2" (výstupy)</name>

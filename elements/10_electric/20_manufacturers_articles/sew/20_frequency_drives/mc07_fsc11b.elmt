@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="48" width="310" height="110" orientation="dyyy" link_type="simple" hotspot_x="145">
+<definition type="element" version="0.5" hotspot_y="48" width="310" height="110" link_type="simple" hotspot_x="145">
     <uuid uuid="{909e70b6-cf49-4ea5-a91a-db461e28ad69}"/>
     <names>
         <name lang="ar">MC07 FSC11B</name>

@@ -1,4 +1,4 @@
-<definition height="160" version="0.5" link_type="simple" width="90" orientation="dyyy" hotspot_x="39" hotspot_y="72" type="element">
+<definition height="160" version="0.5" link_type="simple" width="90" hotspot_x="39" hotspot_y="72" type="element">
     <uuid uuid="{8a568edb-5ef6-4d71-af8f-d0b17213564c}"/>
     <names>
         <name lang="de">Netzwerkstation mitte</name>

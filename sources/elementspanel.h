@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -52,12 +52,11 @@ class ElementsPanel : public GenericPanel {
 	
 	signals:
 	void requestForProject(QETProject *);
-	void requestForDiagram(Diagram *);
 	void requestForTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
-	void reload(bool = false);
+	void reload();
 	void filter(const QString &, QET::Filtering = QET::RegularFilter);
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);

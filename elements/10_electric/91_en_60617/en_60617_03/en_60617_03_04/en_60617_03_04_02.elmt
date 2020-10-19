@@ -1,4 +1,4 @@
-<definition hotspot_x="85" version="0.70" orientation="dyyy" height="50" hotspot_y="45" width="130" type="element" link_type="simple">
+<definition hotspot_x="85" version="0.70" height="50" hotspot_y="45" width="130" type="element" link_type="simple">
     <uuid uuid="{97448812-91ee-4917-9368-d553b527427f}"/>
     <names>
         <name lang="fr">Boîte d'extrémité avec trois câbles unipolaires</name>

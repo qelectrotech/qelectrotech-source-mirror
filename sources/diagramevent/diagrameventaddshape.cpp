@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,11 +20,11 @@
 #include "diagramcommands.h"
 
 /**
- * @brief DiagramEventAddShape::DiagramEventAddShape
- * Default constructor
- * @param diagram : the diagram where this event must operate
- * @param shape_type : the type of shape to draw
- */
+	@brief DiagramEventAddShape::DiagramEventAddShape
+	Default constructor
+	@param diagram : the diagram where this event must operate
+	@param shape_type : the type of shape to draw
+*/
 DiagramEventAddShape::DiagramEventAddShape(Diagram *diagram, QetShapeItem::ShapeType shape_type) :
 	DiagramEventInterface(diagram),
 	m_shape_type (shape_type),
@@ -37,8 +37,8 @@ DiagramEventAddShape::DiagramEventAddShape(Diagram *diagram, QetShapeItem::Shape
 }
 
 /**
- * @brief DiagramEventAddShape::~DiagramEventAddShape
- */
+	@brief DiagramEventAddShape::~DiagramEventAddShape
+*/
 DiagramEventAddShape::~DiagramEventAddShape()
 {
 	if ((m_running || m_abort) && m_shape_item)
@@ -54,10 +54,10 @@ DiagramEventAddShape::~DiagramEventAddShape()
 }
 
 /**
- * @brief DiagramEventAddShape::mousePressEvent
- * Action when mouse is pressed
- * @param event : event of mouse press
- */
+	@brief DiagramEventAddShape::mousePressEvent
+	Action when mouse is pressed
+	@param event : event of mouse press
+*/
 void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (Q_UNLIKELY(m_diagram->isReadOnly())) {
@@ -107,10 +107,10 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddShape::mouseMoveEvent
- * Action when mouse move
- * @param event : event of mouse move
- */
+	@brief DiagramEventAddShape::mouseMoveEvent
+	Action when mouse move
+	@param event : event of mouse move
+*/
 void DiagramEventAddShape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	updateHelpCross(event->scenePos());
@@ -128,10 +128,10 @@ void DiagramEventAddShape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddShape::mouseReleaseEvent
- * Action when mouse button is released
- * @param event : event of mouse release
- */
+	@brief DiagramEventAddShape::mouseReleaseEvent
+	Action when mouse button is released
+	@param event : event of mouse release
+*/
 void DiagramEventAddShape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::RightButton)
@@ -170,10 +170,10 @@ void DiagramEventAddShape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddShape::mouseDoubleClickEvent
- * Action when mouse button is double clicked
- * @param event : event of mouse double click
- */
+	@brief DiagramEventAddShape::mouseDoubleClickEvent
+	Action when mouse button is double clicked
+	@param event : event of mouse double click
+*/
 void DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 		//If current item is a polyline, add it with an undo command
@@ -204,10 +204,10 @@ void DiagramEventAddShape::init()
 }
 
 /**
- * @brief DiagramEventAddShape::updateHelpCross
- * Create and update the position of the cross to help user for draw new shape
- * @param p : the center of the cross
- */
+	@brief DiagramEventAddShape::updateHelpCross
+	Create and update the position of the cross to help user for draw new shape
+	@param p : the center of the cross
+*/
 void DiagramEventAddShape::updateHelpCross(const QPointF &p)
 {
 		//If line isn't created yet, we create it.

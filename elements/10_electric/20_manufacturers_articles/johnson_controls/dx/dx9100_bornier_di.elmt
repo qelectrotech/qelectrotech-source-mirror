@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="40" type="element" height="210" width="130" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="40" type="element" height="210" width="130" version="0.5">
     <uuid uuid="{14387edd-19b7-4a96-89a9-3da4490e5c89}"/>
     <names>
         <name lang="pl">DX9100 - zaciski wejść cyfrowych</name>

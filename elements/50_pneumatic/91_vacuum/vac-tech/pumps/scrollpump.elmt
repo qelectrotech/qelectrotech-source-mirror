@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24">
     <uuid uuid="{e7e1dffc-8fc8-41b6-afba-8efd5eca3ae5}"/>
     <names>
         <name lang="en">Scroll pump</name>

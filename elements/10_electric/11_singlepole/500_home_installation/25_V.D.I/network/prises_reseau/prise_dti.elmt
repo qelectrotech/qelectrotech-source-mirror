@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" hotspot_x="35" height="70" type="element" width="70" hotspot_y="40" version="0.80">
+<definition link_type="simple" hotspot_x="35" height="70" type="element" width="70" hotspot_y="40" version="0.80">
     <uuid uuid="{73efef4a-1a7d-4702-98a0-e773b3c013e4}"/>
     <names>
         <name lang="fr">Prise DTI</name>

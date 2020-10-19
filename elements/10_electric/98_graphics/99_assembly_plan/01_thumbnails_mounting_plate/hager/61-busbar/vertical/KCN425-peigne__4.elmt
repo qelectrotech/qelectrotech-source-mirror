@@ -1,0 +1,71 @@
+<definition hotspot_y="65" link_type="simple" width="50" height="920" type="element" version="0.80" hotspot_x="7">
+    <uuid uuid="{c7c25211-b4b9-497d-b25f-23c5fbd927c5}"/>
+    <names>
+        <name lang="fr">KCN425 - Peigne P+N- 4 rangées</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">KCN425</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Barre d'alimentation des inter. diff. pour coffret 2 rangées entraxe 125 mm</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect width="5" antialias="false" rx="0" y="-40" height="890" x="-4.875" style="line-style:normal;line-weight:thin;filling:gray;color:black" ry="0"/>
+        <polygon y3="240" x1="30.125" antialias="false" y2="270" x3="0.125" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="230" x4="20.125" x2="0.125" y4="220" y1="240" x5="30.125"/>
+        <polygon y3="800" x1="30.25" antialias="false" y2="830" x3="0.25" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="790" x4="20.25" x2="0.25" y4="780" y1="800" x5="30.25"/>
+        <dynamic_text rotation="0" y="-28" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0.125" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="532" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0.375" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="812" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0.25" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="252" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="0.125" z="3" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y3="520" x1="30.375" antialias="false" y2="550" x3="0.375" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="510" x4="20.375" x2="0.375" y4="500" y1="520" x5="30.375"/>
+        <dynamic_text rotation="270" y="3" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="-8.88" z="4" Halignment="AlignLeft" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{e4a56c36-b376-4dc5-954e-049d43f23ce2}" text_width="-1">
+            <text>KCN425</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="270" y="-18" frame="false" Valignment="AlignTop" text_from="ElementInfo" x="-8.875" z="5" Halignment="AlignLeft" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{2cd5e253-a1e3-4469-8a78-30128ccd7d74}" text_width="-1">
+            <text>Hager</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <polygon y3="840" x1="30.25" antialias="false" y2="810" y6="800" x3="40.25" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="830" x4="0.25" x2="40.25" y4="840" y1="800" x5="0.25" x6="30.25"/>
+        <polygon y3="280" x1="30.125" antialias="false" y2="250" y6="240" x3="40.125" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="270" x4="0.125" x2="40.125" y4="280" y1="240" x5="0.125" x6="30.125"/>
+        <polygon y3="560" x1="30.375" antialias="false" y2="530" y6="520" x3="40.375" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="550" x4="0.375" x2="40.375" y4="560" y1="520" x5="0.375" x6="30.375"/>
+        <polygon y3="-40" x1="30.125" antialias="false" y2="-10" x3="0.125" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="-50" x4="20.125" x2="0.125" y4="-60" y1="-40" x5="30.125"/>
+        <polygon y3="0" x1="30.125" antialias="false" y2="-30" y6="-40" x3="40.125" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="-10" x4="0.125" x2="40.125" y4="0" y1="-40" x5="0.125" x6="30.125"/>
+        <terminal y="0" x="10.125" name="" uuid="{76f87d36-6f50-4196-adb4-bb28f2982922}" orientation="s"/>
+        <terminal y="225" x="25.125" name="" uuid="{485d5891-27af-48c7-8b5f-d4f3cda02f96}" orientation="e"/>
+        <terminal y="806" x="36.25" name="" uuid="{4556dd54-4e7f-4659-8c1b-88d87ef51447}" orientation="e"/>
+        <terminal y="840" x="10.25" name="" uuid="{8a7a9731-8090-473c-8526-8cd190950381}" orientation="s"/>
+        <terminal y="-34" x="36.125" name="" uuid="{0cad37a1-08d0-42c4-9e80-974e0b828890}" orientation="e"/>
+        <terminal y="280" x="30.125" name="" uuid="{03e86080-1d99-4891-b5d6-0316bc15cc2b}" orientation="s"/>
+        <terminal y="280" x="10.125" name="" uuid="{59f583d2-79b0-4c70-af3c-8cb173fd1f03}" orientation="s"/>
+        <terminal y="246" x="36.125" name="" uuid="{a1c773df-b27a-40de-98cd-d52b93886414}" orientation="e"/>
+        <terminal y="-55" x="25.125" name="" uuid="{13013243-fbef-4634-a704-36e28d1a4b9a}" orientation="e"/>
+        <terminal y="526" x="36.375" name="" uuid="{16cdfb91-c385-4ddd-b414-b32889d05fbc}" orientation="e"/>
+        <terminal y="0" x="30.125" name="" uuid="{8dae121d-5def-4c07-a1b1-83f90514c228}" orientation="s"/>
+        <terminal y="560" x="30.375" name="" uuid="{ae2c0a0e-8c53-442c-8064-1744cfa764a1}" orientation="s"/>
+        <terminal y="505" x="25.375" name="" uuid="{7930b196-763a-4fae-9977-154acc1aa472}" orientation="e"/>
+        <terminal y="560" x="10.375" name="" uuid="{01384cbb-21f5-4a13-b0c9-60c0de8337ef}" orientation="s"/>
+        <terminal y="840" x="30.25" name="" uuid="{96e2a336-4112-49fe-ad2e-15c35ddc08a2}" orientation="s"/>
+        <terminal y="785" x="25.25" name="" uuid="{0bbd98bb-dfae-4165-a94a-6d429c3c2001}" orientation="e"/>
+    </description>
+</definition>

@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24" orientation="dyyy">
+<definition height="40" link_type="simple" type="element" version="0.5" hotspot_y="19" width="50" hotspot_x="24">
     <uuid uuid="{2fed51f7-207e-4221-a48d-084ee1a87762}"/>
     <names>
         <name lang="it">Ingresso digitale, 4 can</name>

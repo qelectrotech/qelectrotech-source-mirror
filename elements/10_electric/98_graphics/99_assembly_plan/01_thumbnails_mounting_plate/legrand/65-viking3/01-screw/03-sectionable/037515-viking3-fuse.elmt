@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" orientation="dyyy" width="20" height="110">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" width="20" height="110">
     <uuid uuid="{93e43afb-d097-42c1-96c5-58f45d3e0b88}"/>
     <names>
         <name lang="fr">037515 - Viking3 - Préhenseur fusible Gris</name>

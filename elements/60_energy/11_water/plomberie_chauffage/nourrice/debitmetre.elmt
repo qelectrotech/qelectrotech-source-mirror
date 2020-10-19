@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="20" version="0.51" height="40" type="element" hotspot_x="10" link_type="simple" hotspot_y="23">
+<definition width="20" version="0.51" height="40" type="element" hotspot_x="10" link_type="simple" hotspot_y="23">
     <uuid uuid="{4af99af0-6dbf-4ceb-89bf-f29f96257559}"/>
     <names>
         <name lang="fr">Débitmètre</name>

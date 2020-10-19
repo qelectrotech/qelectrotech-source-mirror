@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_x="47" hotspot_y="70" version="0.70" orientation="dyyy" width="120" height="150">
+<definition link_type="simple" type="element" hotspot_x="47" hotspot_y="70" version="0.70" width="120" height="150">
     <uuid uuid="{2d932077-b029-4acd-bca1-d7c33b05097a}"/>
     <names>
         <name lang="de">Stromwandler oder Impulstransformator mit

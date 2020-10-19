@@ -1,4 +1,4 @@
-<definition width="50" height="30" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="23">
+<definition width="50" height="30" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="23">
     <uuid uuid="{b42738fe-d4a3-4265-9e3e-90dd53821085}"/>
     <names>
         <name lang="de">Magnetkern, eine Wicklung mit n Windungen</name>

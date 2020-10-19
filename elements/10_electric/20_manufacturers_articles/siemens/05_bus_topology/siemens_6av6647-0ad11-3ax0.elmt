@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="220" height="170" type="element" hotspot_x="105" link_type="simple" hotspot_y="82">
+<definition version="0.51" width="220" height="170" type="element" hotspot_x="105" link_type="simple" hotspot_y="82">
     <uuid uuid="{741ddb46-6e9b-41b9-99bb-7762ae199fc7}"/>
     <names>
         <name lang="en">Siemens KTP600 (6AV6647-0AD11-3AX0)</name>

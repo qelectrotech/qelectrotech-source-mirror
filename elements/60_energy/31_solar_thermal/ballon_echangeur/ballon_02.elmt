@@ -1,4 +1,4 @@
-<definition width="130" hotspot_x="63" type="element" link_type="simple" orientation="dyyy" version="0.5" height="250" hotspot_y="115">
+<definition width="130" hotspot_x="63" type="element" link_type="simple" version="0.5" height="250" hotspot_y="115">
     <uuid uuid="{880fb144-6d02-4b12-8979-41cfc75806b7}"/>
     <names>
         <name lang="cs">Zásobnik s výměníkem 2</name>

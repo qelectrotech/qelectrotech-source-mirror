@@ -1,0 +1,39 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{644b8f1e-72ef-4929-9fe6-112ec12f62d0}"/>
+    <names>
+        <name lang="cs">Spotřebič na vaření</name>
+        <name lang="pl">Kuchenka elektryczna</name>
+        <name lang="ar">جهاز طبخ</name>
+        <name lang="de">Kochgerät</name>
+        <name lang="en">Cooking Appliance</name>
+        <name lang="el">Μαγειρείο</name>
+        <name lang="nl">Kook apparaat</name>
+        <name lang="it">Cucina</name>
+        <name lang="fr">Appareil de cuisson</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-2.3114" end2="none" antialias="false" x2="3.6885" y1="20.7775" length2="1.5" y2="14.7775" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="2" text_width="-1" Halignment="AlignLeft" y="11" uuid="{4fb9478e-cab9-4049-bff8-e9d1acf9998a}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-3.822" end2="none" antialias="false" x2="2.1779" y1="19.0445" length2="1.5" y2="13.0445" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-4.2669" end2="none" antialias="false" x2="0.733" y1="17.733" length2="1.5" y2="12.733" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="true" x="-4.4721" diameter="8.9442" y="12.5279" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-4" end2="none" antialias="false" x2="-1" y1="16" length2="1.5" y2="13" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="1" end2="none" antialias="false" x2="4" y1="21" length2="1.5" y2="18" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-1" end2="none" antialias="false" x2="4" y1="21.0445" length2="1.5" y2="16.0445" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-3" end2="none" antialias="false" x2="3" y1="20" length2="1.5" y2="14" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x1="-12" antialias="false" y3="24" x2="-12" y1="0" y2="24" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="0" x4="12"/>
+        <line x1="-12" end2="none" antialias="false" x2="12" y1="5" length2="1.5" y2="5" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="24" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{d23d5d6a-748b-48d2-a474-1d0a864cf539}"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{701b0f84-6e94-4e95-90c6-c3c99772b23e}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{55aa6d67-e3c4-4b76-9d08-05bf5fc819bd}"/>
+    </description>
+</definition>

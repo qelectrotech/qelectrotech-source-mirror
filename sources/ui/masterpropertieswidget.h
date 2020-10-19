@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
+
 #include "abstractelementpropertieseditorwidget.h"
 
 class Element;
@@ -35,24 +36,30 @@ namespace Ui {
 }
 
 /**
- * @brief The MasterPropertiesWidget class
- * This class is a widget for make link between a master element with several slave element.
- * This class embenddedthe undo/redo command when apply new connection.
- */
-
+	@brief The MasterPropertiesWidget class
+	This class is a widget for make link between a master element
+	with several slave element.
+	This class embenddedthe undo/redo command when apply new connection.
+*/
 class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT
 
 	public:
-		explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = nullptr);
+		explicit MasterPropertiesWidget(Element *elmt,
+						QWidget *parent = nullptr);
 		~MasterPropertiesWidget() override;
 
 		void setElement (Element *element) override;
 		void apply() override;
 		void reset() override;
 		QUndoCommand *associatedUndo () const override;
-		QString title() const override {return tr("Référence croisée (maître)");}
+		/**
+			@brief title
+			@return QString title
+		*/
+		QString title() const override {
+			return tr("Référence croisée (maître)");}
 		bool setLiveEdit(bool live_edit) override;
 
 	public slots:

@@ -1,4 +1,4 @@
-<definition hotspot_y="4" link_type="simple" height="10" width="30" type="element" version="0.80" hotspot_x="12" orientation="dyyy">
+<definition hotspot_y="4" link_type="simple" height="10" width="30" type="element" version="0.80" hotspot_x="12">
     <uuid uuid="{61283c96-720d-4fc7-9e4d-26afca0e8b4d}"/>
     <names>
         <name lang="fr">Sonde PTC</name>

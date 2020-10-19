@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="60" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{608b64a6-dbfb-4fbc-8004-cce2556c88bd}"/>
     <names>
         <name lang="en">Pneumatic Actuator Double (twin)</name>

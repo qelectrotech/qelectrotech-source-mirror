@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="20" hotspot_y="9" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="20" hotspot_y="9" width="50" type="element" link_type="simple">
     <uuid uuid="{e209a402-41de-443a-b5fb-d397d311708f}"/>
     <names>
         <name lang="fr">Verrouillage mécanique entre deux appareils</name>

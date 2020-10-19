@@ -1,4 +1,4 @@
-<definition hotspot_x="240" height="200" type="element" hotspot_y="99" width="500" link_type="simple" orientation="dyyy" version="0.51">
+<definition hotspot_x="240" height="200" type="element" hotspot_y="99" width="500" link_type="simple" version="0.51">
     <uuid uuid="{cfb47504-f024-4e1f-9910-9e3febc17d50}"/>
     <names>
         <name lang="fr">PNOZ X3</name>

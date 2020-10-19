@@ -1,4 +1,4 @@
-<definition hotspot_y="25" type="element" height="40" width="60" hotspot_x="29" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="25" type="element" height="40" width="60" hotspot_x="29" link_type="simple" version="0.5">
     <uuid uuid="{44d49199-2c96-4ce6-bab3-2b210bd469fe}"/>
     <names>
         <name lang="cs">Střídavý proud > stejnosměrný proud</name>

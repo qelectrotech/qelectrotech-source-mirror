@@ -1,4 +1,4 @@
-<definition hotspot_y="296" type="element" width="150" height="300" link_type="master" version="0.51" hotspot_x="26" orientation="dyyy">
+<definition hotspot_y="296" type="element" width="150" height="300" link_type="master" version="0.51" hotspot_x="26">
     <uuid uuid="{c7a38bf2-2378-4031-acb7-64fc6375fb98}"/>
     <names>
         <name lang="fr">Alarme</name>

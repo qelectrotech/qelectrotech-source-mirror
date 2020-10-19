@@ -1,0 +1,33 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{0ca44a06-42da-464b-b848-93eeb3d98759}"/>
+    <names>
+        <name lang="ru">Печь</name>
+        <name lang="cs">Elektrická pec</name>
+        <name lang="es">Horno</name>
+        <name lang="pl">Piekarnik elektryczny</name>
+        <name lang="de">Elektrobackofen</name>
+        <name lang="en">Oven</name>
+        <name lang="el">Φούρνος</name>
+        <name lang="nl">Elektrische Oven</name>
+        <name lang="it">Forno</name>
+        <name lang="fr">Four</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Jonas Stein&#xd;
+</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="12" uuid="{6da80e6b-0b45-4c7a-85e8-19a1990a1023}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="-9" rx="0" height="2" width="18" y="3" style="line-style:normal;line-weight:none;filling:black;color:white" ry="0"/>
+        <rect antialias="false" x="-9" rx="0" height="2" width="18" y="18" style="line-style:normal;line-weight:none;filling:black;color:white" ry="0"/>
+        <polygon x1="-12" antialias="false" y3="23" x2="-12" y1="-1" y2="23" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-1" x4="12"/>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="-1" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="23" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{958c1acb-6486-467c-9240-bcbe45f39c02}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{5ac887d1-3455-450d-8597-fe1cb05a3aaa}"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{f19ddc68-342e-43a8-9ba2-2918a4220864}"/>
+    </description>
+</definition>

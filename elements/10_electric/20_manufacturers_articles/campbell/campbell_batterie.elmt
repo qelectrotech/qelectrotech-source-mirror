@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="36" type="element" height="70" width="140" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="36" type="element" height="70" width="140" version="0.5">
     <uuid uuid="{d144671b-8446-4850-b4c6-e0a306313743}"/>
     <names>
         <name lang="pl">Campbell - Bateria PS100E 12V</name>

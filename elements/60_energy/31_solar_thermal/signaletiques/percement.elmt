@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="0" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="4">
+<definition width="20" hotspot_x="0" type="element" link_type="simple" version="0.5" height="30" hotspot_y="4">
     <uuid uuid="{c9312571-c5c0-4a59-8bb5-7dbc73ee751a}"/>
     <names>
         <name lang="cs">Přechod</name>

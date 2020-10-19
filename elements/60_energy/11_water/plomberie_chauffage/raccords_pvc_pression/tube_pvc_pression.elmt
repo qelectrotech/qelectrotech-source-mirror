@@ -1,4 +1,4 @@
-<definition hotspot_y="10" hotspot_x="34" height="20" orientation="dyyy" type="element" version="0.51" width="70" link_type="simple">
+<definition hotspot_y="10" hotspot_x="34" height="20" type="element" version="0.51" width="70" link_type="simple">
     <uuid uuid="{5c22b440-e2da-4666-84cd-131c55267508}"/>
     <names>
         <name lang="fr">Tube PVC pression</name>

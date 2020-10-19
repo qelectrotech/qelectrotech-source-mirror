@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="12" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="12">
+<definition width="30" hotspot_x="12" type="element" link_type="simple" version="0.5" height="30" hotspot_y="12">
     <uuid uuid="{b6999848-8653-4421-8891-38eaf1f8d69a}"/>
     <names>
         <name lang="cs">Velké koleno 90</name>

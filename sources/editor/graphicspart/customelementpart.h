@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,21 +29,27 @@ class QGraphicsItem;
 class QGraphicsSceneMouseEvent;
 
 /**
-	This abstract class represents a primitive of the visual representation of an
-	electrical element. The Element, FixedElement and CustomElement classes do not
-	embed its attributes and methods in order to remain lightweight; indeed, there
-	is no point for those classes to store their visual representation with
-	anything more complex than a QImage.
+	@brief The CustomElementPart class
+	This abstract class represents a primitive of
+	the visual representation of an electrical element.
+	The Element, FixedElement and CustomElement classes do not embed 
+	its attributes and methods in order to remain lightweight; indeed,
+	there is no point for those classes to store their visual representation
+	with anything more complex than a QImage.
 */
 class CustomElementPart {
 	// constructors, destructor
 	public:
 	/**
+		@brief CustomElementPart
 		Constructor
 		@param editor Element editor this primitive is attached to
 	*/
 	CustomElementPart(QETElementEditor *editor) : element_editor(editor) {}
-	/// Destructor
+	/**
+		@brief ~CustomElementPart
+		Destructor
+	*/
 	virtual ~CustomElementPart() {}
 	
 	private:
@@ -78,13 +84,15 @@ class CustomElementPart {
 	virtual bool isUseless() const = 0;
 	virtual QRectF sceneGeometricRect() const = 0;
 	/**
-		Inform this part a user-induced transformation is about to begin. This method can be used to save data required by handleUserTransformation().
+		Inform this part a user-induced transformation is about to begin.
+		This method can be used to save data required by handleUserTransformation().
 	*/
 	virtual void startUserTransformation(const QRectF &) = 0;
 	/**
 		Make this part fit into the provided rectangle.
 	*/
-	virtual void handleUserTransformation(const QRectF &, const QRectF &) = 0;
+	virtual void handleUserTransformation(const QRectF &,
+					      const QRectF &) = 0;
 	/// @return a pointer to the parent element editor
 	virtual QETElementEditor *elementEditor() const;
 	/**
@@ -106,6 +114,9 @@ class CustomElementPart {
 	virtual QET::ScalingMethod preferredScalingMethod() const;
 	
 	protected:
-	QList<QPointF> mapPoints(const QRectF &, const QRectF &, const QList<QPointF> &);
+	QList<QPointF> mapPoints(
+			const QRectF &,
+			const QRectF &,
+			const QList<QPointF> &);
 };
 #endif

@@ -1,4 +1,4 @@
-<definition version="0.51" type="element" height="70" orientation="dyyy" width="200" hotspot_x="25" link_type="simple" hotspot_y="56">
+<definition version="0.51" type="element" height="70" width="200" hotspot_x="25" link_type="simple" hotspot_y="56">
     <uuid uuid="{924c4bdb-47e2-49aa-a639-f264afe62860}"/>
     <names>
         <name lang="fr">Panneau de brassage 6 RJ45 1 à 6</name>

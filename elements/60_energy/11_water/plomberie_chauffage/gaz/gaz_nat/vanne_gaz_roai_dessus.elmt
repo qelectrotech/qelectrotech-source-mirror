@@ -1,4 +1,4 @@
-<definition hotspot_y="20" type="element" link_type="simple" orientation="dyyy" hotspot_x="24" width="50" height="40" version="0.51">
+<definition hotspot_y="20" type="element" link_type="simple" hotspot_x="24" width="50" height="40" version="0.51">
     <uuid uuid="{d75846ee-d152-4a65-b1f9-d9696d62cca0}"/>
     <names>
         <name lang="fr">Vanne à sphère  Gaz ROAI</name>

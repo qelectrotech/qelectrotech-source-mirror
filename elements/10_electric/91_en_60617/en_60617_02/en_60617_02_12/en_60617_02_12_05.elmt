@@ -1,4 +1,4 @@
-<definition hotspot_x="15" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="30" type="element" link_type="simple">
+<definition hotspot_x="15" version="0.70" height="30" hotspot_y="15" width="30" type="element" link_type="simple">
     <uuid uuid="{315d5905-5375-49b9-bab0-bc3ab1a26d99}"/>
     <names>
         <name lang="fr">Action retardée</name>

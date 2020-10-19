@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
+<definition type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
     <uuid uuid="{c144a2de-bddc-46fb-a90a-7c8f15642c81}"/>
     <names>
         <name lang="de">Lasttrennschalter-Funktion</name>

@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24" orientation="dyyy">
+<definition height="40" version="0.5" width="70" hotspot_x="16" type="element" link_type="simple" hotspot_y="24">
     <uuid uuid="{387e0c8b-ff87-404f-b0d9-b37174185aff}"/>
     <names>
         <name lang="en">Single acting cylinder

@@ -1,4 +1,4 @@
-<definition version="0.80" orientation="dyyy" link_type="simple" height="120" hotspot_x="76" hotspot_y="63" type="element" width="160">
+<definition version="0.80" link_type="simple" height="120" hotspot_x="76" hotspot_y="63" type="element" width="160">
     <uuid uuid="{e4ff1494-8c64-4463-8233-d8f187baa025}"/>
     <names>
         <name lang="en">PanelView 800</name>

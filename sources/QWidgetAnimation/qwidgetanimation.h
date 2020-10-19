@@ -23,18 +23,25 @@
 #include <QRect>
 
 /**
- * @brief The QWidgetAnimation class
- * This class animate the show and hide function of a QWidget.
- *
- * The role of  @behavior is to calcul as best the animation process when widget is show.
- * Because this class don't change the current and final size of the widget but her maximum size during the animation process,
- * we must to know in advance the final size of the widget.
- * Behavior minimumSizeHint : the final size of the widget will be his minimum size hint.
- * Behavior availableSpace : the final size of widget will be the available size of her parent.
- * Since parent can have other widgets you can add a QVector of widget to subtract of the final size.
- * Because we suppose the animated widget will take the maximum available space, we subtract the minimum size hint of widgets in QVector.
- * Behavior lastSize : The widget will have the same size as the last time he was showed.
- */
+	@brief The QWidgetAnimation class
+	This class animate the show and hide function of a QWidget.
+
+	The role of behavior is to calcul as best the animation process
+	when widget is show.
+	Because this class don't change the current and final size
+	of the widget but her maximum size during the animation process,
+	we must to know in advance the final size of the widget.
+	Behavior minimumSizeHint : the final size of the widget
+	will be his minimum size hint.
+	Behavior availableSpace : the final size of widget will be
+	the available size of her parent.
+	Since parent can have other widgets you can add a QVector of widget
+	to subtract of the final size.
+	Because we suppose the animated widget will take the maximum
+	available space, we subtract the minimum size hint of widgets in QVector.
+	Behavior lastSize :
+	The widget will have the same size as the last time he was showed.
+*/
 class QWidgetAnimation : public QPropertyAnimation
 {
 	Q_OBJECT
@@ -46,7 +53,12 @@ class QWidgetAnimation : public QPropertyAnimation
 			lastSize,
 		};
 
-		QWidgetAnimation(QWidget *widget, Qt::Orientation orientation, QWidgetAnimation::Behavior behavior = QWidgetAnimation::minimumSizeHint, int duration = 250);
+		QWidgetAnimation(
+				QWidget *widget,
+				Qt::Orientation orientation,
+				QWidgetAnimation::Behavior
+				  behavior = QWidgetAnimation::minimumSizeHint,
+				int duration = 250);
 		void widgetToSubtract (QVector<QWidget *> widgets);
 
 		void show();

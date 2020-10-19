@@ -1,4 +1,4 @@
-<definition width="520" height="100" link_type="simple" orientation="dyyy" hotspot_x="15" version="0.5" hotspot_y="24" type="element">
+<definition width="520" height="100" link_type="simple" hotspot_x="15" version="0.5" hotspot_y="24" type="element">
     <uuid uuid="{6491cb0b-1a01-4583-bb93-7aa59baca7bd}"/>
     <names>
         <name lang="it">UMV 4301</name>

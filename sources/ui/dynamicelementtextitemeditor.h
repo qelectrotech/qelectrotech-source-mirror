@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,14 +31,16 @@ namespace Ui {
 
 class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidget
 {
-    Q_OBJECT
-    
+	Q_OBJECT
+
 	public:
-	   explicit DynamicElementTextItemEditor(Element *element, QWidget *parent = nullptr);
+		explicit DynamicElementTextItemEditor(
+			Element *element,
+			QWidget *parent = nullptr);
 		~DynamicElementTextItemEditor() override;
 	
 		void setElement(Element *element) override;
-        QString title() const override {return tr("Textes");}
+		QString title() const override {return tr("Textes");}
 		bool setLiveEdit(bool live_edit) override;
 		void apply() override;
 		void setCurrentText(DynamicElementTextItem *text);
@@ -47,18 +49,18 @@ class DynamicElementTextItemEditor : public AbstractElementPropertiesEditorWidge
 	
 	private:
 		void dataEdited();
-    
-    private slots:
-        void on_m_add_text_clicked();
-        void on_m_remove_selection_clicked();
+
+	private slots:
+		void on_m_add_text_clicked();
+		void on_m_remove_selection_clicked();
 		void on_m_add_group_clicked();
 		void on_m_tree_view_clicked(const QModelIndex &index);
 		void on_m_export_pb_clicked();
 		void on_m_import_pb_clicked();
 		
-		private:
+	private:
 		Ui::DynamicElementTextItemEditor *ui;
-        DynamicElementTextModel *m_model = nullptr;
+		DynamicElementTextModel *m_model = nullptr;
 };
 
 #endif // DYNAMICELEMENTTEXTITEMEDITOR_H

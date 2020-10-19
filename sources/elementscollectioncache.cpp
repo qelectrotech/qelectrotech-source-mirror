@@ -1,17 +1,17 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -51,8 +51,14 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		cache_db_.exec("PRAGMA locking_mode = EXCLUSIVE");
 		cache_db_.exec("PRAGMA synchronous = OFF");
 
-			//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
-			//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
+#if TODO_LIST
+#pragma message("@TODO This code remove old table with mtime for create table with uuid, created at version 0,5")
+#endif
+		//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
+		//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
+#if TODO_LIST
+#pragma message("@TODO remove this code for qet 0.6 or later")
+#endif
 		QSqlQuery table_name(cache_db_);
 		if (table_name.exec("PRAGMA table_info(names)"))
 		{
@@ -70,7 +76,9 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 			else
 				table_name.finish();
 		}
-
+#if TODO_LIST
+#pragma message("@TODO the tables could already exist, handle that case.")
+#endif
 			//@TODO the tables could already exist, handle that case.
 		cache_db_.exec("CREATE TABLE names"
 					   "("
@@ -103,7 +111,8 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 /**
 	Destructor
 */
-ElementsCollectionCache::~ElementsCollectionCache() {
+ElementsCollectionCache::~ElementsCollectionCache()
+{
 	delete select_name_;
 	delete select_pixmap_;
 	delete insert_name_;
@@ -122,7 +131,8 @@ void ElementsCollectionCache::setLocale(const QString &locale) {
 /**
 	@return The locale to be used when dealing with names.
 */
-QString ElementsCollectionCache::locale() const {
+QString ElementsCollectionCache::locale() const
+{
 	return(locale_);
 }
 
@@ -144,19 +154,20 @@ bool ElementsCollectionCache::setPixmapStorageFormat(const QString &format) {
 	@return the pixmap storage format. Default is "PNG"
 	@see setPixmapStorageFormat()
 */
-QString ElementsCollectionCache::pixmapStorageFormat() const {
+QString ElementsCollectionCache::pixmapStorageFormat() const
+{
 	return(pixmap_storage_format_);
 }
 
 /**
- * @brief ElementsCollectionCache::fetchElement
- * Retrieve the data for a given element, using the cache if available,
- * filling it otherwise. Data are then available through pixmap() and name() methods.
- * @param location The definition of an element.
- * @see pixmap()
- * @see name()
- * @return True if the retrieval succeeded, false otherwise.
- */
+	@brief ElementsCollectionCache::fetchElement
+	Retrieve the data for a given element, using the cache if available,
+	filling it otherwise. Data are then available through pixmap() and name() methods.
+	@param location The definition of an element.
+	@see pixmap()
+	@see name()
+	@return True if the retrieval succeeded, false otherwise.
+*/
 bool ElementsCollectionCache::fetchElement(ElementsLocation &location)
 {
 		// can we use the cache with this element?
@@ -189,14 +200,16 @@ bool ElementsCollectionCache::fetchElement(ElementsLocation &location)
 /**
 	@return The last name fetched through fetchElement().
 */
-QString ElementsCollectionCache::name() const {
+QString ElementsCollectionCache::name() const
+{
 	return(current_name_);
 }
 
 /**
 	@return The last pixmap fetched through fetchElement().
 */
-QPixmap ElementsCollectionCache::pixmap() const {
+QPixmap ElementsCollectionCache::pixmap() const
+{
 	return(current_pixmap_);
 }
 
@@ -204,14 +217,17 @@ QPixmap ElementsCollectionCache::pixmap() const {
 	Retrieve the data by building the full CustomElement object matching the
 	given location, without using the cache. Data are then available through
 	pixmap() and name() methods.
-	@param Location Location of a given Element.
+	@param location Location of a given Element.
 	@return True if the retrieval succeeded, false otherwise.
 */
 bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 	int state;
 	Element *custom_elmt = ElementFactory::Instance() -> createElement(location, nullptr, &state);
 	if (state) {
-		qDebug() << "ElementsCollectionCache::fetchData() : Le chargement du composant" << qPrintable(location.toString()) << "a echoue avec le code d'erreur" << state;
+		qDebug() << "ElementsCollectionCache::fetchData() : Le chargement du composant"
+			 << qPrintable(location.toString())
+			 << "a echoue avec le code d'erreur"
+			 << state;
 	} else {
 		current_name_   = custom_elmt -> name();
 		current_pixmap_ = custom_elmt -> pixmap();
@@ -221,14 +237,15 @@ bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 }
 
 /**
- * @brief ElementsCollectionCache::fetchNameFromCache
- * Retrieve the name for an element, given its path and uuid
- * The value is then available through the name() method.
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid : Element uuid
- * @return True if the retrieval succeeded, false otherwise.
- */
-bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUuid &uuid)
+	@brief ElementsCollectionCache::fetchNameFromCache
+	Retrieve the name for an element, given its path and uuid
+	The value is then available through the name() method.
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid : Element uuid
+	@return True if the retrieval succeeded, false otherwise.
+*/
+bool ElementsCollectionCache::fetchNameFromCache(const QString &path,
+						 const QUuid &uuid)
 {
 	select_name_ -> bindValue(":path", path);
 	select_name_ -> bindValue(":locale", locale_);
@@ -249,14 +266,15 @@ bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUui
 }
 
 /**
- * @brief ElementsCollectionCache::fetchPixmapFromCache
- * Retrieve the pixmap for an element, given its path and uuid.
- * It is then available through the pixmap() method.
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid : Element uuid
- * @return True if the retrieval succeeded, false otherwise.
- */
-bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QUuid &uuid)
+	@brief ElementsCollectionCache::fetchPixmapFromCache
+	Retrieve the pixmap for an element, given its path and uuid.
+	It is then available through the pixmap() method.
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid : Element uuid
+	@return True if the retrieval succeeded, false otherwise.
+*/
+bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path,
+						   const QUuid &uuid)
 {
 	select_pixmap_ -> bindValue(":path", path);
 	select_pixmap_ -> bindValue(":uuid", uuid.toString());
@@ -279,14 +297,15 @@ bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QU
 }
 
 /**
- * @brief ElementsCollectionCache::cacheName
- * Cache the current (i.e. last retrieved) name The cache entry will use the locale set via setLocale().
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid :Element uuid
- * @return True if the caching succeeded, false otherwise.
- * @see name()
- */
-bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
+	@brief ElementsCollectionCache::cacheName
+	Cache the current (i.e. last retrieved) name The cache entry will use the locale set via setLocale().
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid :Element uuid
+	@return True if the caching succeeded, false otherwise.
+	@see name()
+*/
+bool ElementsCollectionCache::cacheName(const QString &path,
+					const QUuid &uuid)
 {
 	insert_name_ -> bindValue(":path",   path);
 	insert_name_ -> bindValue(":locale", locale_);
@@ -301,14 +320,15 @@ bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
 }
 
 /**
- * @brief ElementsCollectionCache::cachePixmap
- * Cache the current (i.e. last retrieved) pixmap
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid : Element uuid
- * @return True if the caching succeeded, false otherwise.
- * @see pixmap()
- */
-bool ElementsCollectionCache::cachePixmap(const QString &path, const QUuid &uuid)
+	@brief ElementsCollectionCache::cachePixmap
+	Cache the current (i.e. last retrieved) pixmap
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid : Element uuid
+	@return True if the caching succeeded, false otherwise.
+	@see pixmap()
+*/
+bool ElementsCollectionCache::cachePixmap(const QString &path,
+					  const QUuid &uuid)
 {
 	QByteArray ba;
 	QBuffer buffer(&ba);

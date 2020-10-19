@@ -1,4 +1,4 @@
-<definition hotspot_x="15" version="0.70" link_type="simple" hotspot_y="44" orientation="dyyy" width="30" type="element" height="90">
+<definition hotspot_x="15" version="0.70" link_type="simple" hotspot_y="44" width="30" type="element" height="90">
     <uuid uuid="{a53bfb04-5b91-4448-976b-c4cf8c19b175}"/>
     <names>
         <name lang="pl">Zacisk uziemiający</name>

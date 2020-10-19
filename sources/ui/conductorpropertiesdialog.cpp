@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,12 +24,13 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
- * @brief ConductorPropertiesDialog::ConductorPropertiesDialog
- * Constructor
- * @param conductor, conductor to edit propertie
- * @param parent, parent widget
- */
-ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidget *parent) :
+	@brief ConductorPropertiesDialog::ConductorPropertiesDialog
+	Constructor
+	@param conductor : conductor to edit propertie
+	@param parent : parent widget
+*/
+ConductorPropertiesDialog::ConductorPropertiesDialog(
+		Conductor *conductor, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ConductorPropertiesDialog)
 {
@@ -45,24 +46,26 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidg
 }
 
 /**
- * @brief ConductorPropertiesDialog::~ConductorPropertiesDialog
- */
+	@brief ConductorPropertiesDialog::~ConductorPropertiesDialog
+*/
 ConductorPropertiesDialog::~ConductorPropertiesDialog()
 {
 	delete ui;
 }
 
 /**
- * @brief ConductorPropertiesDialog::PropertiesDialog
- * Static method for open and apply properties.
- * @param conductor, conductor to edit propertie
- * @param parent, parent widget
- */
-void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *parent)
+	@brief ConductorPropertiesDialog::PropertiesDialog
+	Static method for open and apply properties.
+	@param conductor : conductor to edit propertie
+	@param parent : parent widget
+*/
+void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
+						 QWidget *parent)
 {
 	ConductorPropertiesDialog cpd (conductor, parent);
 
-	if (cpd.exec() == QDialog::Rejected || cpd.properties() == conductor->properties()) return;
+	if (cpd.exec() == QDialog::Rejected
+			|| cpd.properties() == conductor->properties()) return;
 
 	QVariant old_value, new_value;
 	old_value.setValue(conductor->properties());
@@ -86,19 +89,21 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *
 }
 
 /**
- * @brief ConductorPropertiesDialog::properties
- * @return the edited properties
- */
-ConductorProperties ConductorPropertiesDialog::properties() const {
+	@brief ConductorPropertiesDialog::properties
+	@return the edited properties
+*/
+ConductorProperties ConductorPropertiesDialog::properties() const
+{
 	return m_cpw -> properties();
 }
 
 /**
- * @brief ConductorPropertiesDialog::applyAll
- * @return
- * true -> must apply the propertie to all conductor at the same potential
- * false -> must apply properties only for the edited conductor
- */
-bool ConductorPropertiesDialog::applyAll() const {
+	@brief ConductorPropertiesDialog::applyAll
+	@return
+	true -> must apply the propertie to all conductor at the same potential
+	false -> must apply properties only for the edited conductor
+*/
+bool ConductorPropertiesDialog::applyAll() const
+{
 	return ui -> m_apply_all_cb -> isChecked();
 }

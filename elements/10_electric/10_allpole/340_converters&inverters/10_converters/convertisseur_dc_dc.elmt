@@ -1,4 +1,4 @@
-<definition hotspot_y="44" type="element" height="50" width="50" hotspot_x="34" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="44" type="element" height="50" width="50" hotspot_x="34" link_type="simple" version="0.5">
     <uuid uuid="{8326e12d-d015-48a6-8731-125daca056b5}"/>
     <names>
         <name lang="nl">Gelijkspanning > gelijkspanning DC > DC</name>

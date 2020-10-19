@@ -1,0 +1,38 @@
+<definition hotspot_x="124" height="260" type="element" version="0.80" link_type="simple" width="240" hotspot_y="120">
+    <uuid uuid="{72d1c830-b817-4869-952e-7d6e0d9d73ed}"/>
+    <names>
+        <name lang="fr">Façade SG1000</name>
+        <name lang="el">Τερματικό S51000</name>
+        <name lang="es">Facade SG1000</name>
+        <name lang="cs">Místní telemetrick jednotka SG1000</name>
+        <name lang="ar">واجهة SG1000</name>
+        <name lang="en">Frontview S1000</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">S550</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.Deffaux&#xd;&#xd;
+Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect antialias="false" height="247.567" ry="15" style="line-style:normal;line-weight:normal;filling:HTMLBlueCornflowerBlue;color:black" x="-120" y="-113.567" width="231.6" rx="15"/>
+        <text rotation="0" text="110/230V" x="-96" y="118.113" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" color="#ffffff"/>
+        <text rotation="0" text="SG1000" x="-90" y="-50" font="Sans Serif,37,-1,5,50,0,0,0,0,0" color="#ffffff"/>
+        <dynamic_text rotation="0" z="5" x="694" y="-211" frame="false" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" text_from="ElementInfo" uuid="{dd7046e1-8e39-446b-99bb-f2de6ae01aa4}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+            <color>#ffffff</color>
+        </dynamic_text>
+        <text rotation="0" text="ETHERNET" x="40" y="120" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" color="#ffffff"/>
+    </description>
+</definition>

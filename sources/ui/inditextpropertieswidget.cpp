@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,10 +25,10 @@
 #include <QLineEdit>
 
 /**
- * @brief IndiTextPropertiesWidget::IndiTextPropertiesWidget
- * @param text : the text to edit
- * @param parent : the parent widget of this widget
- */
+	@brief IndiTextPropertiesWidget::IndiTextPropertiesWidget
+	@param text : the text to edit
+	@param parent : the parent widget of this widget
+*/
 IndiTextPropertiesWidget::IndiTextPropertiesWidget(IndependentTextItem *text, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::IndiTextPropertiesWidget)
@@ -40,11 +40,13 @@ IndiTextPropertiesWidget::IndiTextPropertiesWidget(IndependentTextItem *text, QW
 }
 
 /**
- * @brief IndiTextPropertiesWidget::IndiTextPropertiesWidget
- * @param text_list : a list of texts to edit
- * @param parent : the parent widget of this widget
- */
-IndiTextPropertiesWidget::IndiTextPropertiesWidget(QList<IndependentTextItem *> text_list, QWidget *parent) :
+	@brief IndiTextPropertiesWidget::IndiTextPropertiesWidget
+	@param text_list : a list of texts to edit
+	@param parent : the parent widget of this widget
+*/
+IndiTextPropertiesWidget::IndiTextPropertiesWidget(
+		QList<IndependentTextItem *> text_list,
+		QWidget *parent) :
 	PropertiesEditorWidget (parent),
 	ui(new Ui::IndiTextPropertiesWidget)
 {
@@ -53,16 +55,17 @@ IndiTextPropertiesWidget::IndiTextPropertiesWidget(QList<IndependentTextItem *> 
 }
 
 /**
- * @brief IndiTextPropertiesWidget::~IndiTextPropertiesWidget
- */
-IndiTextPropertiesWidget::~IndiTextPropertiesWidget() {
+	@brief IndiTextPropertiesWidget::~IndiTextPropertiesWidget
+*/
+IndiTextPropertiesWidget::~IndiTextPropertiesWidget()
+{
 	delete  ui;
 }
 
 /**
- * @brief IndiTextPropertiesWidget::setText
- * @param text : set @text as edited text
- */
+	@brief IndiTextPropertiesWidget::setText
+	@param text : set text as edited text
+*/
 void IndiTextPropertiesWidget::setText(IndependentTextItem *text)
 {
 	if (m_text) {
@@ -109,10 +112,10 @@ void IndiTextPropertiesWidget::setText(QList<IndependentTextItem *> text_list)
 }
 
 /**
- * @brief IndiTextPropertiesWidget::apply
- * Apply the current edition through a QUndoCommand pushed
- * to the undo stack of text's diagram.
- */
+	@brief IndiTextPropertiesWidget::apply
+	Apply the current edition through a QUndoCommand pushed
+	to the undo stack of text's diagram.
+*/
 void IndiTextPropertiesWidget::apply()
 {
 	Diagram *d = nullptr;
@@ -138,10 +141,10 @@ void IndiTextPropertiesWidget::apply()
 }
 
 /**
- * @brief IndiTextPropertiesWidget::setLiveEdit
- * @param live_edit
- * @return 
- */
+	@brief IndiTextPropertiesWidget::setLiveEdit
+	@param live_edit
+	@return 
+*/
 bool IndiTextPropertiesWidget::setLiveEdit(bool live_edit)
 {
 	if (m_live_edit == live_edit) {
@@ -162,9 +165,9 @@ bool IndiTextPropertiesWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief IndiTextPropertiesWidget::associatedUndo
- * @return 
- */
+	@brief IndiTextPropertiesWidget::associatedUndo
+	@return 
+*/
 QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 {
 	if (m_live_edit)
@@ -314,9 +317,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 }
 
 /**
- * @brief IndiTextPropertiesWidget::setUpEditConnection
- * Disconnect the previous connection, and reconnect the connection between the editors widgets and void IndiTextPropertiesWidget::apply function
- */
+	@brief IndiTextPropertiesWidget::setUpEditConnection
+	Disconnect the previous connection, and reconnect the connection between the editors widgets and void IndiTextPropertiesWidget::apply function
+*/
 void IndiTextPropertiesWidget::setUpEditConnection()
 {
 	for (QMetaObject::Connection c : m_edit_connection) {
@@ -339,8 +342,8 @@ void IndiTextPropertiesWidget::setUpEditConnection()
 }
 
 /**
- * @brief IndiTextPropertiesWidget::updateUi
- */
+	@brief IndiTextPropertiesWidget::updateUi
+*/
 void IndiTextPropertiesWidget::updateUi()
 {
 	if (!m_text && m_text_list.isEmpty()) {
@@ -417,9 +420,10 @@ void IndiTextPropertiesWidget::updateUi()
 }
 
 /**
- * @brief IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked
- */
-void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked() {
+	@brief IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked
+*/
+void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked()
+{
 	if (m_text) {
 		m_text->edit();
 	}
@@ -427,7 +431,7 @@ void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked() {
 
 void IndiTextPropertiesWidget::on_m_break_html_pb_clicked()
 {
-    if (m_text) {
+	if (m_text) {
 		m_text->setPlainText(m_text->toPlainText());
 	}
 	for (QPointer<IndependentTextItem> piti : m_text_list) {

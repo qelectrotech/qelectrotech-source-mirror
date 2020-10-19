@@ -1,4 +1,4 @@
-<definition type="element" width="20" height="10" version="0.70" hotspot_x="6" hotspot_y="5" orientation="dyyy" link_type="simple">
+<definition type="element" width="20" height="10" version="0.70" hotspot_x="6" hotspot_y="5" link_type="simple">
     <uuid uuid="{6dd64888-e0fb-427c-b249-79cb9ff8e43c}"/>
     <names>
         <name lang="fr">Transit de l'énergie issue des barres</name>

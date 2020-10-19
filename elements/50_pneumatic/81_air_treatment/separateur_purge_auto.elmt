@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{c5dc4703-75f2-40a4-9d46-48a465ab0c6f}"/>
     <names>
         <name lang="en">Separator drain valve with an automatic trigger</name>

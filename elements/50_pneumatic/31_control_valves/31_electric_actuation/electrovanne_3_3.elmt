@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" width="140" hotspot_x="10" type="element" link_type="simple" hotspot_y="34" orientation="dyyy">
+<definition height="60" version="0.5" width="140" hotspot_x="10" type="element" link_type="simple" hotspot_y="34">
     <uuid uuid="{1269fe53-53b7-4c81-838d-8de2beae1b0f}"/>
     <names>
         <name lang="en">Distributor 3 / 3 Control, Electromagnetic</name>

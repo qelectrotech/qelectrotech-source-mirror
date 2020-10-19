@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="18">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="18">
     <uuid uuid="{b9fe7b6c-b168-4425-8a53-3eb55b291287}"/>
     <names>
         <name lang="cs">Filtr se sítkem</name>

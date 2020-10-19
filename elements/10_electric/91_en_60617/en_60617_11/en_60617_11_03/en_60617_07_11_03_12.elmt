@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="33" orientation="dyyy" height="40" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="33" height="40" link_type="simple" hotspot_x="144">
     <uuid uuid="{3a380d73-2f07-4ed0-b919-4bfe99a5d739}"/>
     <names>
         <name lang="fr">Alimentation en courant continu par lignes de

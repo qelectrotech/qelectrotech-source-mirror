@@ -1,4 +1,4 @@
-<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+<definition type="element" width="50" height="50" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
     <uuid uuid="{fe5c16fb-132e-4ef4-8dd7-4b8d6f93bde7}"/>
     <names>
         <name lang="de">Phasenwinkelmeßgerät, anzeigend</name>

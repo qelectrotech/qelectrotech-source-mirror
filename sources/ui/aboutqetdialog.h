@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,6 +26,9 @@ namespace Ui {
 	class AboutQETDialog;
 }
 
+/**
+	@brief The AboutQETDialog class
+*/
 class AboutQETDialog : public QDialog
 {
 	Q_OBJECT
@@ -35,6 +38,7 @@ class AboutQETDialog : public QDialog
 		~AboutQETDialog();
 
 	private:
+		Ui::AboutQETDialog *ui;
 		void setAbout();
 		void setAuthors();
 		void setTranslators();
@@ -42,11 +46,18 @@ class AboutQETDialog : public QDialog
 		void setVersion();
 		void setLibraries();
 		void setLicence();
-		void addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work);
-		void addLibrary(QLabel *label, const QString &name, const QString &link);
+		void setLoginfo();
+		void addAuthor(
+				QLabel *label,
+				const QString &name,
+				const QString &email,
+				const QString &work);
+		void addLibrary(QLabel *label,
+				const QString &name,
+				const QString &link);
 
-	private:
-		Ui::AboutQETDialog *ui;
+private slots:
+	void on_m_log_comboBox_currentTextChanged(const QString &arg1);
 };
 
 #endif // ABOUTQETDIALOG_H

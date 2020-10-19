@@ -1,4 +1,4 @@
-<definition width="110" orientation="dyyy" version="0.5" height="210" type="element" hotspot_y="35" link_type="simple" hotspot_x="15">
+<definition width="110" version="0.5" height="210" type="element" hotspot_y="35" link_type="simple" hotspot_x="15">
     <uuid uuid="{96d2097e-5f1c-445f-8b52-fccda10ca9c3}"/>
     <names>
         <name lang="en">ETHERNET SWITCH CSM 1277 6GK7277-1AA10-0AA0</name>

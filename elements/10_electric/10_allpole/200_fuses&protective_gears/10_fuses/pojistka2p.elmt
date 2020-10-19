@@ -1,4 +1,4 @@
-<definition hotspot_y="19" link_type="simple" hotspot_x="5" orientation="dyyy" version="0.80" width="20" height="40" type="element">
+<definition hotspot_y="19" link_type="simple" hotspot_x="5" version="0.80" width="20" height="40" type="element">
     <uuid uuid="{329f82a5-7029-4192-ab32-2e8b11615564}"/>
     <names>
         <name lang="fr">Fusible 2p</name>

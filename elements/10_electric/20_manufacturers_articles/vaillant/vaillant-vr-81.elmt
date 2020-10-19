@@ -1,7 +1,8 @@
-<definition link_type="simple" type="element" hotspot_x="65" hotspot_y="43" height="80" width="130" version="0.70" orientation="dyyy">
+<definition link_type="simple" type="element" hotspot_x="65" hotspot_y="43" height="80" width="130" version="0.70">
     <uuid uuid="{8c3f3227-28ad-4b7a-a885-3be1d8161e0c}"/>
     <names>
         <name lang="de">Vaillant VR 81</name>
+        <name lang="fr">Vaillant VR 81</name>
     </names>
     <elementInformations/>
     <informations>Manfred Rieser

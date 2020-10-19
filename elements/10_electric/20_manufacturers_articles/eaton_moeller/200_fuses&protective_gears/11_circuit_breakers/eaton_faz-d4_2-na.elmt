@@ -1,4 +1,4 @@
-<definition width="70" type="element" hotspot_x="36" orientation="dyyy" link_type="master" version="0.5" hotspot_y="31" height="60">
+<definition width="70" type="element" hotspot_x="36" link_type="master" version="0.5" hotspot_y="31" height="60">
 <uuid uuid="{85E1C0DE-B1CA-4D29-BA0A-7928F2312C9E}"/><names>
         <name lang="en">FAZ-D4/2-NA (102182)</name>
     </names>

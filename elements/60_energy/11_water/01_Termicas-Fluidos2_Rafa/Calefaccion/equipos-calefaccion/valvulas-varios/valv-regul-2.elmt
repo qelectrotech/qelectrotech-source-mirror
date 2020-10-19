@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="18" link_type="simple" type="element" version="0.80" width="40" height="30" hotspot_y="19">
+<definition hotspot_x="18" link_type="simple" type="element" version="0.80" width="40" height="30" hotspot_y="19">
     <uuid uuid="{78097dbc-136c-472c-85de-f761404ab316}"/>
     <names>
         <name lang="ca">Vàlv. reguladora-2</name>

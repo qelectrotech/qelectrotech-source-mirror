@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="14" orientation="dyyy" height="20" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="14" height="20" link_type="simple" hotspot_x="144">
     <uuid uuid="{23372b21-dc97-4161-b0f0-177e86bdb505}"/>
     <names>
         <name lang="fr">Ligne immergée</name>

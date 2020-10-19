@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="36" type="element" height="70" width="150" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="36" type="element" height="70" width="150" version="0.5">
     <uuid uuid="{cafbc5fb-c07c-4bd6-926f-ef66e341baf9}"/>
     <names>
         <name lang="pl">Czuknik przewodności CLS40</name>

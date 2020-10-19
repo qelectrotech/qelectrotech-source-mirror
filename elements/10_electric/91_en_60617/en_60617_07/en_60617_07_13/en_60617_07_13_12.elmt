@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="140" height="120" hotspot_y="45" hotspot_x="127" version="0.70" link_type="simple">
+<definition type="element" width="140" height="120" hotspot_y="45" hotspot_x="127" version="0.70" link_type="simple">
     <uuid uuid="{57361543-d2f2-4ab6-babf-05a091e0a10a}"/>
     <names>
         <name lang="de">Motor- oder handbetätigtes 3poliges

@@ -1,0 +1,36 @@
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+    <uuid uuid="{c066b497-8dca-4ed6-b0e8-91f434c3f908}"/>
+    <names>
+        <name lang="ru">Посудомоечная машина</name>
+        <name lang="cs">Myčka na nádobí</name>
+        <name lang="es">Lavavajillas</name>
+        <name lang="pl">Zmywarka</name>
+        <name lang="ar">غسّالة أواني</name>
+        <name lang="de">Geschirrspüler</name>
+        <name lang="en">Dishwasher</name>
+        <name lang="el">Πλυντήριο πιάτων</name>
+        <name lang="nl">Afwasmachine</name>
+        <name lang="it">Lavastoviglie</name>
+        <name lang="fr">Lave-vaisselle</name>
+        <name lang="pt">Máquina de lavar louça</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x1="-12" antialias="false" y3="24" x2="-12" y1="0" y2="24" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="0" x4="12"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="2" text_width="-1" Halignment="AlignLeft" y="12" uuid="{2a25318d-a5e8-400c-a7b4-a4add5dbdb5c}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-10" end2="none" antialias="false" x2="-10" y1="-10" length2="1.5" y2="0" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="-8" diameter="16" y="6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="true" x="-6" diameter="12" y="8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-12" end2="none" antialias="false" x2="12" y1="4" length2="1.5" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" x2="10" y1="0" length2="1.5" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" end2="none" antialias="false" x2="0" y1="24" length2="1.5" y2="30" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" name="" x="10" y="-10" uuid="{49e50554-5ae1-4441-91cb-f19c4c039f8c}"/>
+        <terminal orientation="s" name="" x="0" y="30" uuid="{8b02c49f-e13d-4cdc-a640-7b6b63a60c33}"/>
+        <terminal orientation="n" name="" x="-10" y="-10" uuid="{51103b6a-6ee8-40e1-838a-969e9e72d761}"/>
+    </description>
+</definition>

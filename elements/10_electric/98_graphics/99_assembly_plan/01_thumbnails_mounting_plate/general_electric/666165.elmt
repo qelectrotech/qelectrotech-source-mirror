@@ -1,4 +1,4 @@
-<definition version="0.80" type="element" height="210" hotspot_x="5" orientation="dyyy" link_type="simple" width="90" hotspot_y="5">
+<definition version="0.80" type="element" height="210" hotspot_x="5" link_type="simple" width="90" hotspot_y="5">
     <uuid uuid="{142cb400-0631-4708-8f63-3d5650a2c2f9}"/>
     <names>
         <name lang="cs">CTX DN24 30 230A</name>

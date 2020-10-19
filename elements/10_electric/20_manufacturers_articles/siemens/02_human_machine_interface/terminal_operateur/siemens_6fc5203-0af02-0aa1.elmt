@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="780" height="320" type="element" hotspot_x="383" link_type="simple" hotspot_y="263">
+<definition version="0.51" width="780" height="320" type="element" hotspot_x="383" link_type="simple" hotspot_y="263">
     <uuid uuid="{8f13e3ec-7d49-497c-802e-ee656dbd88dd}"/>
     <names>
         <name lang="fr">Siemens;6FC5203-0AF02-0AA1;6FC5203-0AF02-0AA1;Sinumerik tableau de commande OP 012, écran 12,1 pouces avec souris et touches à membrane;7080015</name>

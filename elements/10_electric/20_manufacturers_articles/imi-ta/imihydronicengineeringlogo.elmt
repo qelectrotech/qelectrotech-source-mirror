@@ -1,4 +1,4 @@
-<definition version="0.80" height="10" hotspot_x="2" orientation="dyyy" type="element" link_type="simple" hotspot_y="-2" width="10">
+<definition version="0.80" height="10" hotspot_x="2" type="element" link_type="simple" hotspot_y="-2" width="10">
     <uuid uuid="{a9fcaf1c-3042-40ce-81a8-85b605ba7684}"/>
     <names>
         <name lang="en">imihydronicengineeringvectorlogo</name>

@@ -1,0 +1,25 @@
+<definition version="0.80" type="element" hotspot_x="-1" link_type="simple" width="10" hotspot_y="86" height="180">
+    <uuid uuid="{b6c91ddf-7c9c-4f4f-a74a-978aec39d4da}"/>
+    <names>
+        <name lang="fr">037553 - Viking3 - 2 jonctions 2 étages 4mm² pas 6mm Gris</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">037553</elementInformation>
+        <elementInformation name="description" show="1">Bloc de jonction de passage à vis Viking3 avec 2 jonctions 2 étages</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect antialias="false" y="-80" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" width="5" height="168" x="3" ry="0"/>
+        <rect antialias="false" y="-73" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" width="5" height="153" x="3" ry="0"/>
+        <rect antialias="false" y="-4" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayLightSlateGray;color:black" width="5" height="13" x="3" ry="0"/>
+    </description>
+</definition>

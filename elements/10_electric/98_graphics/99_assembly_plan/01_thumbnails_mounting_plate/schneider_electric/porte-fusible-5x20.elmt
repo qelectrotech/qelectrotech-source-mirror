@@ -1,4 +1,4 @@
-<definition hotspot_y="4" height="150" type="element" version="0.80" link_type="simple" width="40" orientation="dyyy" hotspot_x="10">
+<definition hotspot_y="4" height="150" type="element" version="0.80" link_type="simple" width="40" hotspot_x="10">
     <uuid uuid="{6d0625dc-9004-444b-934e-aec5016b0157}"/>
     <names>
         <name lang="fr">Porte Fusibles 5x20</name>

@@ -1,21 +1,31 @@
-<definition width="60" version="0.4" hotspot_x="20" hotspot_y="24" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{179A233D-B385-4ABF-9FB7-11EDC5EFB521}"/><names>
+<definition width="60" hotspot_y="24" link_type="simple" version="0.80" height="50" hotspot_x="20" type="element">
+    <uuid uuid="{bcc981a6-e475-4842-80dd-58dc66691d23}"/>
+    <names>
+        <name lang="fr">Solenoïde</name>
         <name lang="es">solenoide</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="29" y2="15" x2="29"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="0" y2="16" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-16" x2="0"/>
-        <rect width="30" x="-15" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-15" y2="-10" x2="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="15" y2="0" x2="28"/>
-        <input x="-19" y="17" size="6" rotate="true" text="A2" tagg="none"/>
-        <input x="-17" y="-15" size="6" rotate="true" text="A1" tagg="none"/>
-        <polygon x4="24" y5="-10" x5="34" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="34" y2="10" x2="24" y3="10" x3="34" y4="-10"/>
-        <input x="5" y="18.5" size="6" rotate="true" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="29" y2="-11" x2="29"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="29" y1="10" y2="15" x2="29" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="11" y2="16" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="-10" y2="-16" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <rect width="30" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" y="-10" height="20" rx="0" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-15" y1="10" y2="-10" x2="15" end2="none" length1="1.5" end1="none" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="15" y1="0" y2="0" x2="28" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-19" text_width="-1" uuid="{7982a738-a239-4e24-80d9-1e79289a678b}" y="8" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_from="UserText" Halignment="AlignLeft" z="7">
+            <text>A2</text>
+        </dynamic_text>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-17" text_width="-1" uuid="{a92ce760-c761-40d1-9730-bc2e62406c9d}" y="-24" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_from="UserText" Halignment="AlignLeft" z="8">
+            <text>A1</text>
+        </dynamic_text>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x5="34" x4="24" y3="10" x1="34" y1="-10" y2="10" x2="24" closed="false" x3="34" y4="-10" y5="-10" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="5" text_width="-1" uuid="{9bad5d2d-5feb-4bd6-9f81-d3009215f76d}" y="9.5" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" z="10">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="29" y1="-16" y2="-11" x2="29" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <terminal orientation="n" x="0" uuid="{bae0a2f3-a724-4bf2-ba7c-4f63a484b471}" y="-20" name=""/>
+        <terminal orientation="s" x="0" uuid="{d40598f3-011d-4423-8c1e-4ef6a7f1e4d9}" y="21" name=""/>
     </description>
 </definition>

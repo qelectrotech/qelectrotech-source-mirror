@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_y="180" width="60" link_type="simple" type="element" height="360" orientation="dyyy" hotspot_x="29">
+<definition version="0.80" hotspot_y="180" width="60" link_type="simple" type="element" height="360" hotspot_x="29">
     <names>
         <name lang="de">AI 2 LED</name>
         <name lang="en">AI 2 LED</name>

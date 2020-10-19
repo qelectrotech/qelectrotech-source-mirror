@@ -1,4 +1,4 @@
-<definition type="element" width="70" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="35" version="0.70">
+<definition type="element" width="70" height="50" link_type="simple" hotspot_y="45" hotspot_x="35" version="0.70">
     <uuid uuid="{f22179ab-4d4d-446c-9f05-d95a96d52022}"/>
     <names>
         <name lang="de">Meßrelais und verwandte Einrichtungen</name>

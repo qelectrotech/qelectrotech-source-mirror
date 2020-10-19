@@ -1,4 +1,4 @@
-<definition width="30" hotspot_y="14" height="30" hotspot_x="11" version="0.51" orientation="dyyy" link_type="terminal" type="element">
+<definition width="30" hotspot_y="14" height="30" hotspot_x="11" version="0.51" link_type="terminal" type="element">
     <uuid uuid="{679c3cc2-61ad-4769-a835-2afc94bc536d}"/>
     <names>
         <name lang="ar">طرف توصيل</name>

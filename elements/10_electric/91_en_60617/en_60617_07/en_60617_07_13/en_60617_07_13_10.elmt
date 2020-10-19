@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="44" hotspot_x="43" version="0.70" link_type="simple">
+<definition type="element" width="50" height="70" hotspot_y="44" hotspot_x="43" version="0.70" link_type="simple">
     <uuid uuid="{b01f7f51-6ba8-411b-9f58-2e4cb4a5fad8}"/>
     <names>
         <name lang="de">Trennschalter mit Blockiereinrichtung,

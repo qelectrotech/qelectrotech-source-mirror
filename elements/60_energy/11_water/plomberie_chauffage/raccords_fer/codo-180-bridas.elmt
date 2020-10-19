@@ -1,18 +1,24 @@
-<definition width="60" hotspot_y="46" height="60" type="element" version="0.5" orientation="dyyy" hotspot_x="36" link_type="simple">
-<uuid uuid="{A7C4A05C-0E4C-4B0C-B1DB-73D3E1DFE773}"/><names>
-        <name lang="ca">Colze 180 brides</name>
+<definition hotspot_y="46" type="element" height="60" version="0.80" width="60" hotspot_x="36" link_type="simple">
+    <uuid uuid="{2dda81a9-0598-49f7-aee0-cb5263810eb2}"/>
+    <names>
         <name lang="es">Codo 180 bridas</name>
+        <name lang="ca">Colze 180 brides</name>
+        <name lang="fr">Coude 180 bride</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line x1="-7.0778" y1="-36.1532" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-23.6117" length1="1.5" end2="none" length2="1.5" x2="-7.0778" end1="none"/>
-        <rect width="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" x="-9" height="20"/>
-        <arc start="90" width="17.4672" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23.4929" x="-15.547" height="14.5147" angle="-180"/>
-        <arc start="90" width="49.4188" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-36.8055" x="-31.4411" height="41.1398" angle="-180"/>
-        <input y="6.5" rotate="true" x="8" size="4" tagg="label" text="_"/>
-        <rect width="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" x="-9" height="20"/>
-        <terminal y="-30" x="-10" orientation="w"/>
-        <terminal y="0" x="-10" orientation="w"/>
+        <line end1="none" antialias="false" length1="1.5" x1="-7.0778" end2="none" length2="1.5" x2="-7.0778" y2="-23.6117" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36.1532"/>
+        <rect antialias="false" height="20" width="2" x="-9" y="-12" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <arc antialias="true" height="14.5147" width="17.4672" x="-15.547" y="-23.4929" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <arc antialias="true" height="41.1398" width="49.4188" x="-31.4411" y="-36.8055" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="8" y="-1" uuid="{aa920c77-e5c3-49d3-a67b-4e167201e770}" z="5" font="Sans Serif,4,-1,5,25,0,0,0,0,0" rotation="0" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect antialias="false" height="20" width="2" x="-9" y="-40" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <terminal x="-10" y="-30" uuid="{0f138560-9deb-4e86-9d37-57b8bff2c724}" name="" orientation="w"/>
+        <terminal x="-10" y="0" uuid="{90c0a95a-38f1-4603-82be-0455d6b42481}" name="" orientation="w"/>
     </description>
 </definition>

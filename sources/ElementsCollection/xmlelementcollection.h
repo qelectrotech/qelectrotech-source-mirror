@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,75 +27,96 @@ class QFile;
 class QETProject;
 
 /**
- * @brief The XmlElementCollection class
- * This class represent a collection of elements stored to xml
- */
+	@brief The XmlElementCollection class
+	This class represent a collection of elements stored to xml
+*/
 class XmlElementCollection : public QObject
 {
 		Q_OBJECT
 
 	public:
 		XmlElementCollection (QETProject *project);
-		XmlElementCollection (const QDomElement &dom_element, QETProject *project);
+		XmlElementCollection (const QDomElement &dom_element,
+				      QETProject *project);
 		QDomElement root() const;
 		QDomElement importCategory() const;
 		QDomNodeList childs(const QDomElement &parent_element) const;
-		QDomElement child(const QDomElement &parent_element, const QString &child_name) const;
+		QDomElement child(const QDomElement &parent_element,
+				  const QString &child_name) const;
 		QDomElement child(const QString &path) const;
-		QList<QDomElement> directories(const QDomElement &parent_element) const;
-		QStringList directoriesNames(const QDomElement &parent_element) const;
-		QList<QDomElement> elements(const QDomElement &parent_element) const;
-		QStringList elementsNames(const QDomElement &parent_element) const;
+		QList<QDomElement> directories(
+				const QDomElement &parent_element) const;
+		QStringList directoriesNames(
+				const QDomElement &parent_element) const;
+		QList<QDomElement> elements(
+				const QDomElement &parent_element) const;
+		QStringList elementsNames(
+				const QDomElement &parent_element) const;
 		QDomElement element(const QString &path) const;
 		QDomElement directory(const QString &path) const;
 		QString addElement (ElementsLocation &location);
-		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
+		bool addElementDefinition (const QString &dir_path,
+					   const QString &elmt_name,
+					   const QDomElement &xml_definition);
 		bool removeElement(const QString& path);
-		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString(), bool deep_copy = true);
+		ElementsLocation copy (ElementsLocation &source,
+				       ElementsLocation &destination,
+				       const QString& rename = QString(),
+				       bool deep_copy = true);
 		bool exist (const QString &path) const;
-		bool createDir (const QString& path, const QString& name, const NamesList &name_list);
+		bool createDir (const QString& path,
+				const QString& name,
+				const NamesList &name_list);
 		bool removeDir (const QString& path);
 
-		QList <ElementsLocation> elementsLocation (QDomElement dom_element = QDomElement(), bool childs = true) const;
+		QList <ElementsLocation> elementsLocation (
+				QDomElement dom_element = QDomElement(),
+				bool childs = true) const;
 		ElementsLocation domToLocation(QDomElement dom_element) const;
 
 		void cleanUnusedElement();
 		void cleanUnusedDirectory();
 
 	private:
-		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString(), bool deep_copy = true);
-		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
+		ElementsLocation copyDirectory(
+				ElementsLocation &source,
+				ElementsLocation &destination,
+				const QString& rename = QString(),
+				bool deep_copy = true);
+		ElementsLocation copyElement(ElementsLocation &source,
+					     ElementsLocation &destination,
+					     const QString& rename = QString());
 
 	signals:
-			/**
-			 * @brief elementAdded
-			 * This signal is emited when a element is added to this collection
-			 * @param collection_path, the path of element in this collection
-			 */
+		/**
+			@brief elementAdded
+			This signal is emited when a element is added to this collection
+			@param collection_path : the path of element in this collection
+		*/
 		void elementAdded(QString collection_path);
-			/**
-			 * @brief elementChanged
-			 * This signal is emited when the defintion of the element at path was changed
-			 * @param collection_path, the path of this element in this collection
-			 */
+		/**
+			@brief elementChanged
+			This signal is emited when the defintion of the element at path was changed
+			@param collection_path : the path of this element in this collection
+		*/
 		void elementChanged (QString collection_path);
-			/**
-			 * @brief elementRemoved
-			 * This signal is emited when an element is removed to this collection
-			 * @param collection_path, the path of the removed element in this collection
-			 */
+		/**
+			@brief elementRemoved
+			This signal is emited when an element is removed to this collection
+			@param collection_path : the path of the removed element in this collection
+		*/
 		void elementRemoved(QString collection_path);
-			/**
-			 * @brief directorieAdded
-			 * This signal is emited when a directorie is added to this collection
-			 * @param collection_path, the path of the new directorie
-			 */
+		/**
+			@brief directorieAdded
+			This signal is emited when a directorie is added to this collection
+			@param collection_path : the path of the new directorie
+		*/
 		void directorieAdded(QString collection_path);
-			/**
-			 * @brief directoryRemoved
-			 * This signal is emited when a directory is removed to this collection
-			 * @param collection_path, the path of the removed directory
-			 */
+		/**
+			@brief directoryRemoved
+			This signal is emited when a directory is removed to this collection
+			@param collection_path : the path of the removed directory
+		*/
 		void directoryRemoved(QString collection_path);
 
 	private:

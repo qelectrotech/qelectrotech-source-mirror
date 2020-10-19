@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
+<definition type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
     <uuid uuid="{ebb8674f-6d91-4c9a-aaf2-40d2da48c1d0}"/>
     <names>
         <name lang="fr">406773 - Disjoncteur 10A C 6kA - Vis/Vis</name>

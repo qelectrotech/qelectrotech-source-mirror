@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,12 +25,11 @@ class ElementsLocation;
 class QGraphicsItem;
 
 /**
- * @brief The ElementFactory class
- *this class is a pattern factory and also a singleton factory.
- *this class create new instance of herited class element like
- *simple element or report element.
- *
- */
+	@brief The ElementFactory class
+	this class is a pattern factory and also a singleton factory.
+	this class create new instance of herited class element like
+	simple element or report element.
+*/
 class ElementFactory
 {
 		//methods for singleton pattern
