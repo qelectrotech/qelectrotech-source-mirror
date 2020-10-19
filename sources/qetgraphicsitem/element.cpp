@@ -539,13 +539,12 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		m_state = QET::GIOK;
 		return(false);
 	}
-	else
-	{
-		if (state)
-			*state = 0;
-		m_state = QET::GIOK;
-		return(true);
-	}
+
+    if (state)
+        *state = 0;
+    m_state = QET::GIOK;
+    return(true);
+}
 
 /**
 	@brief Element::parseElement
@@ -709,8 +708,7 @@ bool Element::valideXml(QDomElement &e) {
 */
 bool Element::fromXml(
 		QDomElement &e,
-		QHash<int,
-		Terminal *> &table_id_adr)
+        QHash<int, Terminal *> &table_id_adr)
 {
 	m_state = QET::GILoadingFromXml;
 	/*
@@ -778,7 +776,7 @@ bool Element::fromXml(
 		}
 		// copie des associations id / adr
 		foreach(int id_trouve, priv_id_adr.keys()) {
-			table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
+            table_id_adr.insert(id_trouve,
 						priv_id_adr.value(id_trouve));
 		}
 	}
@@ -1078,6 +1076,7 @@ bool Element::fromXml(
 						}
 
 						QPointF pos = deti->pos();
+                        // TODO: check
 						if (m_link_type !=PreviousReport
 							|| m_link_type !=NextReport)
 						{
@@ -1182,9 +1181,7 @@ bool Element::fromXml(
 	\~French L'element XML representant cet element electrique
 */
 QDomElement Element::toXml(
-		QDomDocument &document,
-		QHash<Terminal *,
-		int> &table_adr_id) const
+        QDomDocument &document) const
 {
 	QDomElement element = document.createElement("element");
 
@@ -1211,7 +1208,6 @@ QDomElement Element::toXml(
 	element.setAttribute("z", QString::number(this->zValue()));
 	element.setAttribute("orientation", QString::number(orientation()));
 
-	 * recupere le premier id a utiliser pour les bornes de cet element */
 	// registration of device terminals
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement("terminals");

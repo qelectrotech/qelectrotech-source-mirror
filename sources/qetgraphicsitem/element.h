@@ -130,7 +130,7 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 		QPoint hotspot() const;
 		void editProperty() override;
 		static bool valideXml(QDomElement &);
-		virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
+        virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &);
 		virtual QDomElement toXml(QDomDocument &) const;
 		QUuid uuid() const;
 		int orientation() const;

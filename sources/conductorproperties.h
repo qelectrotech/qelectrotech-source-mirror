@@ -100,12 +100,11 @@ class ConductorProperties: public PropertiesInterface
 		m_bus,
 		m_cable;
 
-		int text_size{9},
-		text_size,
+        int text_size{9},
 		m_dash_size = 1;
 
-			double  cond_size{1},
-		cond_size,
+            double
+        cond_size{1},
 		verti_rotate_text,
 		horiz_rotate_text;
 
@@ -114,8 +113,7 @@ class ConductorProperties: public PropertiesInterface
 		m_bicolor = false;
 
 		Qt::Alignment 
-		m_horizontal_alignment = Qt::AlignBottom,
-		m_horizontal_alignment = Qt::AlignBottom,
+		m_horizontal_alignment = Qt::AlignBottom,        
 		m_vertical_alignment = Qt::AlignRight;
 
 		Qt::PenStyle style{Qt::PenStyle::SolidLine};
@@ -126,8 +124,8 @@ class ConductorProperties: public PropertiesInterface
 		QDomElement toXml(QDomDocument &doc) const override;
 		bool fromXml(const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
-		void toSettings(QSettings &, const QString & = QString()) const;
-		void fromSettings(QSettings &, const QString & = QString());
+        void toSettings(QSettings &, const QString & = QString()) const override;
+        void fromSettings(QSettings &, const QString & = QString()) override;
 		static QString typeToString(ConductorType);
 		void applyForEqualAttributes(QList<ConductorProperties> list);
 

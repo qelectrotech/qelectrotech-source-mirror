@@ -43,8 +43,8 @@ class PropertiesInterface
 			befor the name of each paramètre
 			@param QString
 		*/
-		virtual void toSettings (QSettings &settings,
-					 const QString = QString()) const =0;
+        virtual void toSettings(QSettings &,
+                                const QString & = QString()) const =0;
 		/**
 			@brief fromSettings
 			load properties to setting file.
@@ -52,8 +52,8 @@ class PropertiesInterface
 			befor the name of each paramètre
 			@param QString
 		*/
-		virtual void fromSettings (const QSettings &settings,
-					   const QString = QString()) =0;
+        virtual void fromSettings(QSettings &,
+                                  const QString & = QString()) = 0;
 		/**
 			@brief toXml
 			Save properties to xml element

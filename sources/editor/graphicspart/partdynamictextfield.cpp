@@ -157,15 +157,13 @@ QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	@param dom_elmt
 */
 bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
+{
 	if (dom_elmt.tagName() != xmlName()) {
 		qDebug() << "PartDynamicTextField::fromXml : Wrong tagg name";
 		return false;
 	}
 
 	double x=0, y=0, z=0, rot=0;
-		dom_elmt.attribute("y", QString::number(0)).toDouble()
-	);
-
 	if (propertyDouble(dom_elmt, "x", &x) == PropertyFlags::NoValidConversion ||
 		propertyDouble(dom_elmt, "y", &y) == PropertyFlags::NoValidConversion ||
 		propertyDouble(dom_elmt, "z", &z) == PropertyFlags::NoValidConversion ||
@@ -183,7 +181,6 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 		font_.fromString(font);
 		setFont(font_);
 	} else {	//Keep compatibility TODO remove in futur
-	else {
 #if TODO_LIST
 #pragma message("@TODO remove in futur")
 #endif

@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "propertiesinterface.h"
+#include <QDebug>
 
-
+/*!
  * Available property types
  */
 namespace  {

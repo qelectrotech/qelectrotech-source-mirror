@@ -987,6 +987,7 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 }
 
 // does not support legacy method
+/*!
 	@brief Conductor::toXml
 	Exporte les caracteristiques du conducteur sous forme d'une element XML.
 	@param dom_document :
@@ -995,6 +996,7 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 	Hash stockant les correspondances entre les ids des
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
+*/
 QDomElement Conductor::toXml(QDomDocument & doc) const {
 	QDomElement dom_element = doc.createElement("conductor");
 

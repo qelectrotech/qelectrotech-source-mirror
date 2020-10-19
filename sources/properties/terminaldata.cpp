@@ -41,7 +41,7 @@ void TerminalData::setParent(QGraphicsObject* parent)
 	@param settings UNUSED
 	@param prefix UNUSED
 */
-void TerminalData::toSettings(QSettings &settings, const QString prefix) const
+void TerminalData::toSettings(QSettings &settings, const QString &prefix) const
 
 {
 	Q_UNUSED(settings);
@@ -56,7 +56,7 @@ void TerminalData::toSettings(QSettings &settings, const QString prefix) const
 	@param settings UNUSED
 	@param prefix UNUSED
 */
-void TerminalData::fromSettings(const QSettings &settings, const QString prefix)
+void TerminalData::fromSettings(QSettings &settings, const QString& prefix)
 {
 	Q_UNUSED(settings);
 	Q_UNUSED(prefix);
@@ -134,8 +134,7 @@ bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 
 	// read the orientation of the terminal
 	// lit l'orientation de la borne
-	m_orientation = Qet::orientationFromString(
-				xml_element.attribute("orientation"));
+	m_orientation = orientationFromString(o);
 	return true;
 }
 
