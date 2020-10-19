@@ -33,6 +33,7 @@
 #include "assignvariables.h"
 
 #include <QTimer>
+#include <QDate>
 #include <QStandardPaths>
 #include <utility>
 #include <QtConcurrent>
@@ -291,6 +292,7 @@ void QETProject::setFilePath(const QString &filepath)
 
 		//title block variables should be updated after file save as dialog is confirmed, before file is saved.
 	m_project_properties.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("saveddate-eu", QDate::currentDate().toString("dd-MM-yyyy"));
 	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
@@ -940,9 +942,10 @@ QETResult QETProject::write()
 	//title block variables should be updated after file save dialog is confirmed, before file is saved.
 	m_project_properties.addValue(
 				"saveddate",
-				QDate::currentDate().toString(
-					QLocale::system().toString(
-						QLocale::ShortFormat)));
+				QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue(
+				"saveddate-eu",
+				QDate::currentDate().toString("dd-MM-yyyy"));
 	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
