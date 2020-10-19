@@ -1035,7 +1035,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1327"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1332"/>
         <source>Déplacer une primitive</source>
         <translation>Μετακίνηση ενός βασικού στοιχείου</translation>
     </message>
@@ -4634,30 +4634,30 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>Σημεία του πολύγωνου:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="211"/>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="248"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="213"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="250"/>
         <source>Modifier un polygone</source>
         <translation>Επεξεργασία πολυγώνου</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="234"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="236"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="236"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="238"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Το πολύγωνο πρέπει να διαθέτει τουλάχιστον δύο σημεία.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="309"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="311"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Προσθήκη σημείου σε πολύγωνο</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="328"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="330"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Διαγραφή σημείου από πολύγωνο</translation>
     </message>
@@ -7321,13 +7321,13 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1130"/>
+        <location filename="../sources/qetproject.cpp" line="1133"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1290"/>
+        <location filename="../sources/qetproject.cpp" line="1293"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -7335,48 +7335,48 @@ Que désirez vous faire ?</source>
 Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1288"/>
+        <location filename="../sources/qetproject.cpp" line="1291"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="336"/>
+        <location filename="../sources/qetproject.cpp" line="338"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Έργο « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="343"/>
+        <location filename="../sources/qetproject.cpp" line="345"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Έργο %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="350"/>
+        <location filename="../sources/qetproject.cpp" line="352"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Ανώνυμο έργο</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="359"/>
+        <location filename="../sources/qetproject.cpp" line="361"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [μόνο-για-ανάγνωση]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="367"/>
+        <location filename="../sources/qetproject.cpp" line="369"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [Αλλαγμένο]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1349"/>
+        <location filename="../sources/qetproject.cpp" line="1352"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου...&lt;/b&gt;&lt;br/&gt;Δημιουργία των σελίδων&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1391"/>
+        <location filename="../sources/qetproject.cpp" line="1394"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του τρέχοντος έργου ...&lt;/b&gt;&lt;br/&gt;Εφαρμογή των παραπομπών&lt;/p&gt;</translation>
     </message>
@@ -8256,17 +8256,17 @@ Que désirez vous faire ?</source>
         <translation>οριζόντια προσαρμογή</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="63"/>
+        <location filename="../sources/qetinformation.cpp" line="64"/>
         <source>Auteur</source>
         <translation>Συγγραφέας </translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="65"/>
+        <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Titre</source>
         <translation>Τίτλος</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="64"/>
+        <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Date</source>
         <translation>Ημερομηνία </translation>
     </message>
@@ -8411,12 +8411,12 @@ Que désirez vous faire ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="72"/>
+        <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Position du folio</source>
         <translation>Θέση σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="71"/>
+        <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Numéro de folio</source>
         <translation>Αριθμός σελίδας</translation>
     </message>
@@ -8600,77 +8600,82 @@ Voulez-vous la remplacer ?</source>
         <translation>Αναζήτηση/αντικατάσταση ανεξάρτητων κειμένων</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="66"/>
+        <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Fichier</source>
         <translation>Αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="67"/>
+        <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Installation (=)</source>
         <translation>Εγκατάσταση (=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="68"/>
+        <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Localisation (+)</source>
         <translation>Τοποθεσία (+)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="69"/>
+        <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Indice de révision</source>
         <translation>Δείκτης αναθεώρησης</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="70"/>
+        <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Version de QElectroTech</source>
         <translation>Έκδοση του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="73"/>
+        <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Nombre de folio</source>
         <translation>Αριθμός Σελίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="74"/>
+        <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Numéro du folio précédent</source>
         <translation>Αριθμός προηγούμενης σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="75"/>
+        <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Numéro du folio suivant</source>
         <translation>Αριθμός επόμενης σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="76"/>
+        <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Titre du projet</source>
         <translation>Τίτλος έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="77"/>
+        <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Chemin du fichier du projet</source>
         <translation>Διαδρομή αρχείου έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="78"/>
+        <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Nom du fichier</source>
         <translation>Όνομα αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="79"/>
-        <source>Date d&apos;enregistrement du fichier</source>
-        <translation>Ημερομηνία αποθήκευσης αρχείου</translation>
+        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="82"/>
         <source>Heure d&apos;enregistrement du fichier</source>
         <translation>Ωρα αποθήκευσης αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <location filename="../sources/qetinformation.cpp" line="83"/>
         <source>Nom du fichier enregistré</source>
         <translation>Όνομα του αποθηκευμένου αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="82"/>
+        <location filename="../sources/qetinformation.cpp" line="84"/>
         <source>Chemin du fichier enregistré</source>
         <translation>Διαδρομή αποθηκευμένου αρχείου</translation>
     </message>
@@ -8723,7 +8728,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="536"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="412"/>
         <location filename="../sources/conductorproperties.cpp" line="834"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="577"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
         <location filename="../sources/qetapp.cpp" line="2120"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
@@ -12395,11 +12400,11 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Από προεπιλογή, είναι διαθέσιμες οι ακόλουθες μεταβλητές: &lt;ul&gt;&lt;li&gt;%{author}: συγγραφέας φύλλου &lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία φύλλου &lt;/li&gt;&lt;li&gt;%{title}: τίτλος του φύλλου &lt;/li&gt;&lt;li&gt;%{filename}: όνομα αρχείου έργου &lt;/li&gt;&lt;li&gt;%{plant}: όνομα της εγκατάστασης (=) στην οποία βρίσκεται το φύλλο &lt;li&gt;%{locmach}: όνομα της τοποθεσίας (+) στην οποία βρίσκεται το φύλλο &lt;/li&gt;&lt;li&gt;%{indexrev}: δείκτης αναθεώρησης του φύλλου &lt;/li&gt;&lt;/li&gt;{version}: έκδοση του λογισμικού &lt;/li&gt;&lt;li&gt;% {folio}: αριθμός φύλλου &lt;/li&gt;&lt;li&gt;%{folio-id} }: Θέση φύλλου στο έργο &lt;/li&gt;&lt;li&gt;%{folio-total }:ο συνολικός αριθμός φύλλων στο έργο &lt;/li&gt;&lt;li&gt;% {previous-folio-num}: αριθμός του προηγούμενου φύλλου &lt;/li&gt;&lt;li&gt;% {projecttitle}: Τίτλος έργου&lt;/li&gt;&lt;li&gt;%{projectpath}: Διαδρομή έργου&lt;/li&gt;&lt;li&gt;% {projectfilename}: όνομα αρχείου &lt;/li&gt; &lt;li&gt;%{saveddate}: ημερομηνία αποθήκευσης του αρχείου &lt;/li&gt; &lt;li&gt;%{savedtime}: χρόνος αποθήκευσης του αρχείου &lt;/li&gt;&lt;li&gt;% {savedfilename} όνομα αποθηκευμένου αρχείου &lt;/li&gt;&lt;li&gt;% {savedfilepath}: διαδρομή του αποθηκευμένου αρχείου &lt;/li&gt; &lt;/ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="477"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Κάθε κελί της πινακίδας εμφανίζει μια τιμή, προαιρετικά προηγείται μια ετικέτα. Και τα δυο μπορούν να μεταφραστούν σε πολλές γλώσσες.&lt;br/&gt;Από τη στιγμή που αυτό που επεξεργάζεστε είναι ένα &lt;em&gt;πρότυπο&lt;/em&gt; πινακίδας, να αποφεύγετε την εισαγωγή δεδομένων απευθείας: προτιμήστε την εισαγωγή μεταβλητών όπως %{όνομα-μεταβλητής}, η οποία θα αντικατασταθεί αργότερα με τις αντίστοιχες τιμές στο διάγραμμα.</translation>
     </message>

@@ -1038,7 +1038,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
 <context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1327"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1332"/>
         <source>Déplacer une primitive</source>
         <translation>Mover una primitiva</translation>
     </message>
@@ -4648,30 +4648,30 @@ Por favor use el editor avanzado para esto.</translation>
         <translation>Puntos del polígono:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="211"/>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="248"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="213"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="250"/>
         <source>Modifier un polygone</source>
         <translation>Editar un polígono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="234"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="236"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="236"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="238"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>El polígono tiene que implicar al menos dos puntos.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="309"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="311"/>
         <source>Ajouter un point à un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="328"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="330"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation type="unfinished">Eliminar un punto de un polígono</translation>
     </message>
@@ -7342,61 +7342,61 @@ Las condiciones requeridas no son validas</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1290"/>
+        <location filename="../sources/qetproject.cpp" line="1293"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>Parece que se ha guaradado este documento con una versión antigua de QElectroTech. Puede ser que no se pueda abrir una parte o la totalidad del documento. ¿Que quiere hacer?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1288"/>
+        <location filename="../sources/qetproject.cpp" line="1291"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Advertencia</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="336"/>
+        <location filename="../sources/qetproject.cpp" line="338"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Projecto « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="343"/>
+        <location filename="../sources/qetproject.cpp" line="345"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Proyecto %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="350"/>
+        <location filename="../sources/qetproject.cpp" line="352"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Proyecto sín título</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="359"/>
+        <location filename="../sources/qetproject.cpp" line="361"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [sólo lectura]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="367"/>
+        <location filename="../sources/qetproject.cpp" line="369"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [modificado]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1130"/>
+        <location filename="../sources/qetproject.cpp" line="1133"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Un error ocurrió durante la integración del modelo.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1349"/>
+        <location filename="../sources/qetproject.cpp" line="1352"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Apertura del proyecto en curso...&lt;/b&gt;&lt;br/&gt;Creación de folios&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1391"/>
+        <location filename="../sources/qetproject.cpp" line="1394"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Apertura del proyecto en curso...&lt;/b&gt;&lt;br/&gt;Configuración de referencias cruzadas&lt;/p&gt;</translation>
     </message>
@@ -8280,17 +8280,17 @@ Que désirez vous faire ?</source>
         <translation>ajuste horizontal</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="63"/>
+        <location filename="../sources/qetinformation.cpp" line="64"/>
         <source>Auteur</source>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="65"/>
+        <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Titre</source>
         <translation>Titulo</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="64"/>
+        <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
@@ -8435,12 +8435,12 @@ Que désirez vous faire ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="72"/>
+        <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Position du folio</source>
         <translation>Posición del folio</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="71"/>
+        <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Numéro de folio</source>
         <translation>Número de folio</translation>
     </message>
@@ -8626,77 +8626,82 @@ Voulez-vous la remplacer ?</source>
         <translation>Buscar / reemplazar los textos independientes</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="66"/>
+        <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Fichier</source>
         <translation>Archivo</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="67"/>
+        <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Installation (=)</source>
         <translation>Instalación (=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="68"/>
+        <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Localisation (+)</source>
         <translation>Localización (+)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="69"/>
+        <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Indice de révision</source>
         <translation>Índice de revisión</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="70"/>
+        <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Version de QElectroTech</source>
         <translation>Versión de QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="73"/>
+        <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Nombre de folio</source>
         <translation>Nombre de folio</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="74"/>
+        <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Numéro du folio précédent</source>
         <translation>Número del folio anterior</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="75"/>
+        <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Numéro du folio suivant</source>
         <translation>Número de folio siguiente</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="76"/>
+        <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Titre du projet</source>
         <translation>Título del proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="77"/>
+        <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Chemin du fichier du projet</source>
         <translation>Ruta del archivo del proyecto</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="78"/>
+        <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Nom du fichier</source>
         <translation>Nombre de archivo</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="79"/>
-        <source>Date d&apos;enregistrement du fichier</source>
-        <translation>Fecha en que se guardó el archivo</translation>
+        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="82"/>
         <source>Heure d&apos;enregistrement du fichier</source>
         <translation>Hora en que se guardó el archivo</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <location filename="../sources/qetinformation.cpp" line="83"/>
         <source>Nom du fichier enregistré</source>
         <translation>Nombre del archivo guardado</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="82"/>
+        <location filename="../sources/qetinformation.cpp" line="84"/>
         <source>Chemin du fichier enregistré</source>
         <translation>Ruta del archivo guardado</translation>
     </message>
@@ -8749,7 +8754,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="536"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="412"/>
         <location filename="../sources/conductorproperties.cpp" line="834"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="577"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
         <location filename="../sources/qetapp.cpp" line="2120"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
@@ -12412,11 +12417,11 @@ asociar el nombre de &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Por defecto, las siguientes variables están disponibles. :&lt;ul&gt;&lt;li&gt;%{author} : autor del folio&lt;/li&gt;&lt;li&gt;%{date} : fecha del folio&lt;/li&gt;&lt;li&gt;%{title} : título del folio&lt;/li&gt;&lt;li&gt;%{filename} : nombre del archivo del proyecto&lt;/li&gt;&lt;li&gt;%{plant} : nombre de la instalación (=) en que se encuentra el folio&lt;/li&gt;&lt;li&gt;%{locmach} : nombre de la ubicación (+) en que se encuentra el folio&lt;/li&gt;&lt;li&gt;%{indexrev} : Índice de revisión del folio&lt;/li&gt;&lt;li&gt;%{version} : versión de software&lt;/li&gt;&lt;li&gt;%{folio} : número de folio&lt;/li&gt;&lt;li&gt;%{folio-id} : posición del folio en el proyecto&lt;/li&gt;&lt;li&gt;%{folio-total} : Número total de folios en el proyecto.&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : número del folio anterior&lt;/li&gt;&lt;li&gt;%{next-folio-num} : número del folio siguiente&lt;/li&gt;&lt;li&gt;%{projecttitle} : título del proyecto&lt;/li&gt;&lt;li&gt;%{projectpath} : ruta del proyecto&lt;/li&gt;&lt;li&gt;%{projectfilename} : nombre del archivo&lt;/li&gt;&lt;li&gt;%{saveddate} : fecha en que se guardó el archivo&lt;/li&gt;&lt;li&gt;%{savedtime} : hora en que se guardó el archivo&lt;/li&gt;&lt;li&gt;%{savedfilename} : nombre del archivo guardado&lt;/li&gt;&lt;li&gt;%{savedfilepath} : ruta del archivo guardado&lt;/li&gt;&lt;/ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="477"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Cada celda de un rótulo muestra un valor, opcionalmente precedido por una etiqueta. Todos pueden ser traducidos a varios idiomas.&lt;br/&gt;A medida que se está editando actualmente un &lt;em&gt;modelo&lt;/em&gt;de título, no ingresar directamente los datos en bruto: Inserte en su lugar las variables del formulario %{nombre-de-variable}, luego se reemplazará con los valores apropiados en el folio.</translation>
     </message>

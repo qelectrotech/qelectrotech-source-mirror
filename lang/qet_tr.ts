@@ -1039,7 +1039,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1327"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1332"/>
         <source>Déplacer une primitive</source>
         <translation>Öncülü Taşıma</translation>
     </message>
@@ -4654,30 +4654,30 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
         <translation>Poligonun noktaları :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="234"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="236"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="236"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="238"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Poligon en az iki noktaya sahip olmalıdır.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="309"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="311"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Poligona bir nokta ekle</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="328"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="330"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Poligondan bir noktayı sil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="211"/>
-        <location filename="../sources/editor/ui/polygoneditor.cpp" line="248"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="213"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="250"/>
         <source>Modifier un polygone</source>
         <translation>Çokgen değiştir</translation>
     </message>
@@ -7345,49 +7345,49 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="336"/>
+        <location filename="../sources/qetproject.cpp" line="338"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Proje « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="343"/>
+        <location filename="../sources/qetproject.cpp" line="345"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Proje %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="350"/>
+        <location filename="../sources/qetproject.cpp" line="352"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Başlıksız proje</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="359"/>
+        <location filename="../sources/qetproject.cpp" line="361"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [salt okunur]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="367"/>
+        <location filename="../sources/qetproject.cpp" line="369"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [değiştirildi]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1130"/>
+        <location filename="../sources/qetproject.cpp" line="1133"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Şablon entegre edilirken bir hata oluştu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1288"/>
+        <location filename="../sources/qetproject.cpp" line="1291"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Uyarılar</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1290"/>
+        <location filename="../sources/qetproject.cpp" line="1293"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -7395,12 +7395,12 @@ Que désirez vous faire ?</source>
 Ne yapmak istersiniz?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1349"/>
+        <location filename="../sources/qetproject.cpp" line="1352"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Mevcut Proje Açılıyor&lt;/b&gt;&lt;br/&gt;Sayfa Oluşturma&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1391"/>
+        <location filename="../sources/qetproject.cpp" line="1394"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Devam eden projeyi açıyor...&lt;/b&gt;&lt;br/&gt;Çapraz referansları ayarlama&lt;/p&gt;</translation>
     </message>
@@ -7891,17 +7891,17 @@ Ne yapmak istersiniz?</translation>
         <translation>Resim yüklenemiyor.</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="63"/>
+        <location filename="../sources/qetinformation.cpp" line="64"/>
         <source>Auteur</source>
         <translation>Yazar</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="65"/>
+        <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Titre</source>
         <translation>Başlık</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="64"/>
+        <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Date</source>
         <translation>Tarih</translation>
     </message>
@@ -8206,12 +8206,12 @@ Değiştirmek ister misiniz?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="72"/>
+        <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Position du folio</source>
         <translation>Sayfa Pozisyonu</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="71"/>
+        <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Numéro de folio</source>
         <translation>Sayfa Numarası</translation>
     </message>
@@ -8622,77 +8622,82 @@ Değiştirmek ister misiniz?</translation>
         <translation>Bağımsız metinleri Bul / Değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="66"/>
+        <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Fichier</source>
         <translation>Dosya</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="67"/>
+        <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Installation (=)</source>
         <translation>Kurulum (=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="68"/>
+        <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Localisation (+)</source>
         <translation>Konum</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="69"/>
+        <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Indice de révision</source>
         <translation>Revizyon İndeksi</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="70"/>
+        <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Version de QElectroTech</source>
         <translation>QElectroTech Versiyonu</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="73"/>
+        <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Nombre de folio</source>
         <translation>Sayfa Sayısı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="74"/>
+        <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Numéro du folio précédent</source>
         <translation>Önceki Sayfanın sayısı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="75"/>
+        <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Numéro du folio suivant</source>
         <translation>Sonraki sayfanın sayısı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="76"/>
+        <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Titre du projet</source>
         <translation>Proje başlığı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="77"/>
+        <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Chemin du fichier du projet</source>
         <translation>Proje dosya yolu</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="78"/>
+        <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Nom du fichier</source>
         <translation>Dosya adı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="79"/>
-        <source>Date d&apos;enregistrement du fichier</source>
-        <translation>Dosya kaydetme tarihi</translation>
+        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="82"/>
         <source>Heure d&apos;enregistrement du fichier</source>
         <translation>Dosya kaydetme zamanı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <location filename="../sources/qetinformation.cpp" line="83"/>
         <source>Nom du fichier enregistré</source>
         <translation>Kaydedilmiş dosyanın adı</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="82"/>
+        <location filename="../sources/qetinformation.cpp" line="84"/>
         <source>Chemin du fichier enregistré</source>
         <translation>Kaydedilmiş dosya yolu</translation>
     </message>
@@ -8745,7 +8750,7 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="536"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="412"/>
         <location filename="../sources/conductorproperties.cpp" line="834"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="577"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
         <location filename="../sources/qetapp.cpp" line="2120"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
@@ -12422,11 +12427,11 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Varsayılan olarak aşağıdaki değişkenler kullanılabilir :&lt;ul&gt;&lt;li&gt;%{author}: sayfa yazarı &lt;/li&gt;&lt;li&gt;%{date}: sayfa tarihi &lt;/li&gt;&lt;li&gt;%{title}: folio title &lt;/li&gt;&lt;li&gt;%{filename}: proje dosya adı&lt;/li&gt;&lt;li&gt;%{plant}: kurulumun adı (=) sayfanın bulunduğu &lt;/li&gt;&lt;li&gt;%{locmach}: Yerin adı  (+) sayfanın olduğu &lt;/li&gt;&lt;li&gt;%{indexrev} : sayfanın index revizyonu &lt;/li&gt;&lt;li&gt;%{version}: yazılım versiyonu &lt;/li&gt;&lt;li&gt;%{folio}: sayfa numarası &lt;/li&gt;&lt;li&gt;%{folio-id}: projenin sayfa pozisyonu &lt;/li&gt;&lt;li&gt;%{folio-total }: projedeki toplam sayfa sayısı &lt;/li&gt;&lt;li&gt;%{previous-folio-num}: bir önceki sayfanın numarası &lt;/li&gt;&lt;li&gt;%{next-folio-num}: bir sonraki sayfanın numarası &lt;/li&gt;&lt;li&gt;% {projecttitle}: proje başlığı &lt;/li&gt;&lt;li&gt;%{projectpath}: proje yolu &lt;/li&gt;&lt;li&gt;%{projectfilename}:dosya adı &lt;/li&gt;&lt;li&gt;%{saveddate}: dosya kaydedilme tarihi &lt;/li&gt;&lt;li&gt;%{savedtime}: dosya kaydedilme zamanı &lt;/li&gt;&lt;li&gt;%{savedfilename}: kaydedilmiş dosya adı &lt;/li&gt;&lt;li&gt;%{savedfilepath}: kaydedilmiş dosya yolu &lt;/li&gt;&lt;/ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="477"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Antetteki her bir hücre, isteğe bağlı olarak bir etiketle öncelen bir değer görüntüler. Her ikisi de birkaç dile dönüştürülebilir. &lt;br/&gt; Şu anda düzenlediğiniz şey bir antetin &lt;em&gt; şablonu &lt;/em&gt; olduğu için doğrudan ham veri girmeyin: bunun yerine değişkenleri %{nom-de-variable}, daha sonra sayfadaki uygun değerlerle değiştirilecektir.</translation>
     </message>
