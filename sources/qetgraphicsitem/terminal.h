@@ -156,7 +156,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		/// Whether the mouse pointer is hovering the terminal
 		bool hovered_{false};
 		/// Color used for the hover effect
-		QColor hovered_color_{Terminal::hovered_color_};
+        QColor hovered_color_{Terminal::neutralColor};
 		/// Number of Terminal
 		QString number_terminal_;
 		bool name_terminal_hidden{true};
