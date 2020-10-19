@@ -47,7 +47,6 @@ PartTerminal::~PartTerminal()
 */
 bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
 
-	QUuid uuid;
 	// update part and add uuid, which is used in the new version to connect terminals together
 	// if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
 	// to identify terminals
