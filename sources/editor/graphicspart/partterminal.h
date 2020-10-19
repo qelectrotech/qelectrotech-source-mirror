@@ -79,7 +79,7 @@ class PartTerminal : public CustomElementGraphicPart {
 
 	private:
 		void updateSecondPoint();
-		TerminalData* d; // pointer to the terminal data
+        TerminalData* d{nullptr}; // pointer to the terminal data
 
 	private:
 		QPointF saved_position_;
