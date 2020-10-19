@@ -131,10 +131,10 @@ bool PartRectangle::fromXml(const QDomElement &qde)
 	setPos(mapFromScene(x, y));
 
 	if (propertyDouble(qde, "width", &w) == PropertyFlags::NoValidConversion ||
-		propertyDouble(qde, "width", &h) == PropertyFlags::NoValidConversion)
+        propertyDouble(qde, "height", &h) == PropertyFlags::NoValidConversion)
 		return false;
 
-	QRectF rect(QPointF(x,y), QSizeF(w, h));
+    QRectF rect(QPointF(0,0), QSizeF(w, h));
 
 	setRect(rect.normalized());
 
@@ -153,7 +153,7 @@ bool PartRectangle::valideXml(QDomElement& element) {
 	if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) |
 		(propertyDouble(element, "y") & PropertyFlags::NoValidConversion) |
 		(propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
-		(propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
+        (propertyDouble(element, "height") & PropertyFlags::NoValidConversion) |
 		(propertyDouble(element, "rx") & PropertyFlags::NoValidConversion) |
 		(propertyDouble(element, "ry") & PropertyFlags::NoValidConversion))
 		return false;
