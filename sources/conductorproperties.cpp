@@ -391,16 +391,6 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 	propertyDouble(e, "horizrotatetext", &horiz_rotate_text);
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-					e.attribute(
-						"horizontal-alignment",
-						"AlignBottom"
-						).toStdString().data()));
-	m_vertical_alignment = Qt::Alignment(
-				me.keyToValue(
-					e.attribute(
-						"vertical-alignment",
-						"AlignRight"
-						).toStdString().data()));
 
 	QString alinment_temp;
 	if (propertyString(e, "horizontal-alignment", &alinment_temp) == PropertyFlags::Success)
@@ -475,7 +465,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	@param settings Parametres a lire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void ConductorProperties::fromSettings(const QSettings &settings, const QString &prefix)
+void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix)
 {
 	QColor settings_color = QColor(settings.value(prefix + "color").toString());
 	color = (settings_color.isValid()? settings_color : QColor(Qt::black));

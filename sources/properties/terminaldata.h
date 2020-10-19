@@ -27,9 +27,9 @@ class TerminalData : public PropertiesInterface
 
 		void setParent(QGraphicsObject* parent);
 		void toSettings(QSettings &settings,
-				const QString prefix = QString()) const override;
-	void toSettings(QSettings &settings, const QString& = QString()) const override;
-	void fromSettings(const QSettings &settings, const QString& = QString()) override;
+                        const QString& prefix = QString()) const override;
+        void fromSettings(QSettings &settings,
+                          const QString& = QString()) override;
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 

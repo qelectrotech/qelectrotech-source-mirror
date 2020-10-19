@@ -63,6 +63,8 @@ class PartRectangle :  public CustomElementGraphicPart
 		QDomElement toXml   (QDomDocument &) const override;
 		bool fromXml (const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
 
 		QRectF rect() const;
 		void   setRect(const QRectF &rect);

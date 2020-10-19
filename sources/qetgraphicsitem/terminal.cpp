@@ -209,6 +209,7 @@ void Terminal::setNumber(QString number)
 	@param hiddenName : bool
 */
 void Terminal::setName(QString name, bool hiddenName)
+{
 	d->m_name = std::move(name);
 	name_terminal_hidden = hiddenName;
 }
@@ -798,7 +799,7 @@ QDomElement Terminal::toXml(QDomDocument &doc) const
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
-bool Terminal::valideXml(const QDomElement &terminal) {
+bool Terminal::valideXml(const QDomElement &terminal)
 {
 	if (terminal.tagName() != "terminal") return(false);
 

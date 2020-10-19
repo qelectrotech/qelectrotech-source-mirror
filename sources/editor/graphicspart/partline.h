@@ -73,6 +73,8 @@ class PartLine : public CustomElementGraphicPart
 		QDomElement toXml(QDomDocument &) const override;
 		bool fromXml(const QDomElement &) override;
 		bool valideXml(QDomElement& element) const;
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
 		virtual QPointF sceneP1() const;
 		virtual QPointF sceneP2() const;
 		QPainterPath shape() const override;

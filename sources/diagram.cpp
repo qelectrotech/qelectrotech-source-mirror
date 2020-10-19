@@ -987,7 +987,7 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 		QDomElement folioseq = doc->createElement(type);
 		folioseq.setAttribute("title", i.key());
 		for (int j = 0; j < i.value().size(); j++) {
-			folioseq.setAttribute(seq_type + QString::number(j+1), i.value().at(j));
+            folioseq.setAttribute(seq_type + QString::number(j+1),
 						  i.value().at(j));
 		}
 		domElement->appendChild(folioseq);
@@ -1090,7 +1090,7 @@ bool Diagram::initFromXml(QDomElement &document,
 	@return
 */
 Terminal* findTerminal(int conductor_index,
-			   QDomElement& f,
+               QDomElement& conductor,
 			   QHash<int,
 			   Terminal *>& table_adr_id,
 			   QList<Element *>& added_elements) {

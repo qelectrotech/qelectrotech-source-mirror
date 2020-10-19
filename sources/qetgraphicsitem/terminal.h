@@ -100,6 +100,9 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		bool fromXml (const QDomElement &) override;
 		QDomElement toXml (QDomDocument &) const override;
 
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
+
 	protected:
 		// methods related to events management
 		void hoverEnterEvent  (QGraphicsSceneHoverEvent *) override;
@@ -132,7 +135,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		QGraphicsLineItem *m_help_line_a{nullptr};
 
 
-		TerminalData* d;
+        TerminalData* d{nullptr};
 
 		/// Parent electrical element
 		Element *parent_element_{nullptr};
@@ -185,7 +188,7 @@ inline QString Terminal::number() const
 	return(number_terminal_);
 }
 
-{
+
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
 						const bool all_diagram = true);
 

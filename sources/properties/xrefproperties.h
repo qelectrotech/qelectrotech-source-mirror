@@ -42,10 +42,9 @@ class XRefProperties : public PropertiesInterface
 		Label
 	};
 
-	void toSettings	  (QSettings &settings, const QString& = QString()) const override;
-	void fromSettings (const QSettings &settings, const QString& = QString()) override;
-	void fromSettings (const QSettings &settings,
-			   const QString = QString()) override;
+    void toSettings	  (QSettings &settings, const QString& = QString()) const override;
+    void fromSettings (QSettings &settings,
+               const QString& = QString()) override;
 	QDomElement toXml (QDomDocument &xml_document) const override;
 	bool fromXml(const QDomElement &xml_element) override;
 

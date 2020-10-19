@@ -64,6 +64,8 @@ class PartPolygon : public CustomElementGraphicPart
 		bool fromXml(const QDomElement &) override;
 		QDomElement toXml(QDomDocument &) const override;
 		static bool valideXml(QDomElement& element);
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
 
 
 		QPainterPath shape () const override;

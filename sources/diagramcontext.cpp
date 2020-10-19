@@ -209,10 +209,8 @@ void DiagramContext::toSettings(QSettings &settings, const QString &array_name) 
 	Read this context properties from \a settings by running through the array
 	named \a array_name.
 */
-void DiagramContext::fromSettings(const QSettings &settings, const QString &array_name) {
+void DiagramContext::fromSettings(QSettings &settings, const QString &array_name) {
 	int size = settings.beginReadArray(array_name);
-	QSettings& s = const_cast<QSettings&>(settings);
-	int size = s.beginReadArray(array_name);
 	for (int i = 0 ; i < size; ++ i) {
 		settings.setArrayIndex(i);
 		QString key = settings.value("name").toString();

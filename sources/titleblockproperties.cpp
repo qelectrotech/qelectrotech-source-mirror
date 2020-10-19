@@ -171,7 +171,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	@param settings Parametres a lire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void TitleBlockProperties::fromSettings(const QSettings &settings, const QString &prefix) {
+void TitleBlockProperties::fromSettings(QSettings &settings, const QString &prefix) {
 	title	= settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();

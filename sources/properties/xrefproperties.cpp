@@ -36,7 +36,7 @@ XRefProperties::XRefProperties()
 	@param prefix: prefix before properties name
 */
 void XRefProperties::toSettings(QSettings &settings,
-				const QString prefix) const
+                const QString &prefix) const
 {
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
@@ -65,8 +65,8 @@ void XRefProperties::toSettings(QSettings &settings,
 	@param settings: QSettings to use
 	@param prefix: prefix before properties name
 */
-void XRefProperties::fromSettings(const QSettings &settings,
-				  const QString prefix)
+void XRefProperties::fromSettings(QSettings &settings,
+                  const QString &prefix)
 {
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
@@ -147,7 +147,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	propertyString(xml_element, "slave_label", &m_slave_label);
 	QString value;
 	foreach (QString key, m_prefix_keys) {
-		if (!propertyString(xml_element, key + "prefix", &value));
+        if (!propertyString(xml_element, key + "prefix", &value))
 			m_prefix.insert(key, value);
 	}
 	return true;

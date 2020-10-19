@@ -67,6 +67,7 @@ PartText::~PartText()
 	@param xml_element Element XML a lire
 */
 bool PartText::fromXml(const QDomElement &xml_element)
+{
 	int size;
 	QString font;
 
