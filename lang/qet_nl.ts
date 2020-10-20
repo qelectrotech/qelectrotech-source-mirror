@@ -7063,7 +7063,7 @@ de voorwaarden zijn ongeldig</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>Te veel onderdelen, lijst is niet gemaakt.</translation>
     </message>
     <message>

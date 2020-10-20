@@ -7095,7 +7095,7 @@ betingelser ikke gyldig</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>For mange dele, liste genereres ikke.</translation>
     </message>
     <message>

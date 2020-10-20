@@ -7104,7 +7104,7 @@ wymagane warunki nie zostały spełnione</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>Zbyt wiele części, lista nie jest generowana.</translation>
     </message>
     <message>

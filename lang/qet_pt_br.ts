@@ -7158,7 +7158,7 @@ as condições não são válidas</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>Demasiados objetos, lista não gerada.</translation>
     </message>
     <message>

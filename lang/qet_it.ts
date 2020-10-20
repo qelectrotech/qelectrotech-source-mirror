@@ -7079,7 +7079,7 @@ le condizioni richieste non sono validi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>Troppe parti, lista non generata.</translation>
     </message>
     <message>

@@ -7113,7 +7113,7 @@ les conditions requises ne sont pas valides</source>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation></translation>
     </message>
     <message>

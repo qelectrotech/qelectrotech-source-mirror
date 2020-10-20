@@ -7083,7 +7083,7 @@ podmínky nejsou platné</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>Příliš jednoduché. Seznam nebyl vytvořen.</translation>
     </message>
     <message>
