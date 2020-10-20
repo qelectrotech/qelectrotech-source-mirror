@@ -318,7 +318,7 @@ QDomElement ConductorProperties::toXml(QDomDocument& doc) const
 	e.appendChild(createXmlProperty(doc, "condsize", cond_size));
 	e.appendChild(createXmlProperty(doc, "displaytext", m_show_text));
 	e.appendChild(createXmlProperty(doc, "onetextperfolio", m_one_text_per_folio));
-	e.appendChild(createXmlProperty(doc, "onetextperfolio", verti_rotate_text));
+    e.appendChild(createXmlProperty(doc, "vertirotatetext", verti_rotate_text));
 	e.appendChild(createXmlProperty(doc, "horizrotatetext", horiz_rotate_text));
 // TODO: implement
 //e.setAttribute("cable", m_cable);
