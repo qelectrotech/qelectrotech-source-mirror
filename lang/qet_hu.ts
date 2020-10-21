@@ -8657,12 +8657,12 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
-        <translation type="unfinished"></translation>
+        <translation>A fájl mentési dátuma év-hó-nap formátumú</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>A fájl mentési dátuma nap-hó-év formátumú</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="82"/>
@@ -12403,7 +12403,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Alapértelmezésben a következő változók érhetők el: &lt;ul&gt;&lt;li&gt;%{author}: tervlap szerzője &lt;/li&gt;&lt;li&gt;%{date}: tervlap dátuma &lt;/li&gt;&lt;li&gt;%{title}: tervlap címe &lt;/li&gt;&lt;li&gt;%{filename}: projekt fájl neve &lt;/li&gt;&lt;li&gt;%{plant}: installáció neve (=) amelyben a tervlap található &lt;/li&gt;&lt;li&gt;%{locmach}:elhelyezkedés neve (+) amelyben a tervlap található &lt;/li&gt;&lt;li&gt;%{indexrev}: tervlap revízió jelzése &lt;/li&gt;&lt;li&gt;%{version}: szoftver verzió &lt;/li&gt;&lt;li&gt;%{folio}: tervlap szám &lt;/li&gt;&lt;li&gt;%{folio-id}: a tervlap pozíciója projektben &lt;/li&gt;&lt;li&gt;%{folio-total }: az összes tervlap száma a projektben &lt;/li&gt;&lt;li&gt;%{previous-folio-num}: az előző tervlap száma &lt;/li&gt;&lt;li&gt;%{next-folio-num}: a következő tervlap száma &lt;/li&gt;&lt;li&gt;%{projecttitle}: a projekt címe &lt;/li&gt;&lt;li&gt;%{projectpath}: a projekt elérési útvonala &lt;/li&gt;&lt;li&gt;%{projectfilename}: a fájl neve &lt;/li&gt;&lt;li &gt;%{saveddate}: fájl mentésének dátumának formátuma év-hó-nap &lt;/li&gt;&lt;li&gt;%{saveddate-eu}: fájl mentésének dátumának formátuma nap-hó-év &lt;/li&gt;&lt;li&gt;%{savedtime}: időpont, amikor a fájl mentve volt &lt;/li&gt;&lt;li&gt;%{savedfilename}: mentett fájl neve &lt;/li&gt;&lt;li&gt;%{savedfilepath}: mentett fájl elérési útvonala &lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
