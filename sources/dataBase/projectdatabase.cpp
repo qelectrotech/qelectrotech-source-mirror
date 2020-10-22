@@ -161,12 +161,24 @@ void projectDataBase::addDiagram(Diagram *diagram)
 	auto infos = diagram->border_and_titleblock.titleblockInformation();
 	for (auto key : QETApp::diagramInfoKeys())
 	{
-		if (key == "date") {
+	if (key == "date") {
+	
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+			m_insert_diagram_info_query.bindValue(
+			":date", 
+			QDate::fromString(
+			infos.value("date").toString(), 
+			Qt::SystemLocaleShortDate));
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6.0 or later")
+#endif
 			m_insert_diagram_info_query.bindValue(
 				":date",
 				QLocale::system().toString(
 					infos.value("date").toDate(),
 					QLocale::ShortFormat));
+#endif
 		} else {
 			auto value = infos.value(key);
 			auto bind = key.prepend(":");
@@ -423,12 +435,23 @@ void projectDataBase::populateDiagramInfoTable()
 		auto infos = diagram->border_and_titleblock.titleblockInformation();
 		for (auto key : QETApp::diagramInfoKeys())
 		{
-			if (key == "date") {
+		if (key == "date") {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+			m_insert_diagram_info_query.bindValue(
+			":date", 
+			QDate::fromString(
+			infos.value("date").toString(), 
+			Qt::SystemLocaleShortDate));
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6.0 or later")
+#endif
 				m_insert_diagram_info_query.bindValue(
 					":date",
 					QLocale::system().toString(
 						infos.value("date").toDate(),
 						QLocale::ShortFormat));
+#endif
 			} else {
 				auto value = infos.value(key);
 				auto bind = key.prepend(":");
