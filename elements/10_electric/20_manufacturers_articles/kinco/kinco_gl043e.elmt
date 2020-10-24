@@ -1,0 +1,46 @@
+<definition version="0.80" link_type="simple" hotspot_x="95" height="150" width="190" type="element" hotspot_y="75">
+    <uuid uuid="{3989d96e-d09a-4925-806b-c776f794b191}"/>
+    <names>
+        <name lang="fr">KINCO GL043E</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">KINCO</elementInformation>
+        <elementInformation name="designation" show="1">GL043E</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect antialias="false" y="50" height="16" rx="0" ry="0" width="30" x="55" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" antialias="false" y="58" x="58" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" antialias="false" y="58" x="-62" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" antialias="false" y="58" x="-42" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" antialias="false" y="58" x="78" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="1" y="57" x="59" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="6" y="57" x="78" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="COM0/COM2" y="50" x="55" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="GND" y="58" x="-65" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="FG" y="58" x="-43" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <rect antialias="false" y="-70" height="140" rx="2" ry="2" width="180" x="-90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="KINCO GL043E" y="35" x="-35" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <rect antialias="false" y="-60" height="80" rx="5" ry="5" width="160" x="-80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="DC24V" y="58" x="-85" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <rect antialias="false" y="50" height="16" rx="0" ry="0" width="53" x="-87" style="line-style:dashed;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" antialias="false" y="58" x="-82" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="46" text_width="-1" y="-70" uuid="{26fb43e7-0761-4dad-8f01-d845169a34c7}" Valignment="AlignTop" x="90" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal">
+            <text>_</text>
+        </dynamic_text>
+        <terminal name="" orientation="s" y="64" uuid="{9071f08c-b9bf-4923-862e-6949363e71e0}" x="80"/>
+        <terminal name="" orientation="s" y="64" uuid="{6ea53f6a-1b01-4c53-b56d-311af40fe016}" x="60"/>
+        <terminal name="" orientation="s" y="64" uuid="{f73c7b51-76f6-4c32-b981-cff7dac72933}" x="-40"/>
+        <terminal name="" orientation="s" y="64" uuid="{d44152aa-f747-4224-b6e5-06f35c7ea13c}" x="-60"/>
+        <terminal name="" orientation="s" y="64" uuid="{b54aebb1-7913-4439-9d06-7c4170ddcca7}" x="-80"/>
+    </description>
+</definition>
