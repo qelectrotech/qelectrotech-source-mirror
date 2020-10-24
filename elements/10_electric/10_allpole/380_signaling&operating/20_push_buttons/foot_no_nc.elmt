@@ -1,37 +1,48 @@
-<definition width="70" version="0.3" hotspot_x="25" hotspot_y="30" height="60" type="element" orientation="dnny">
-<uuid uuid="{F412BF99-0EAC-4BD7-B0D8-3C38D1BA4B6D}"/><names>
-        <name lang="ar">مفتاح بدوّاسة (NO/NC)</name>
+<definition version="0.80" link_type="simple" hotspot_x="19" height="50" width="50" type="element" hotspot_y="24">
+    <uuid uuid="{990f5268-dfca-4943-b1d9-e82c0d4ae841}"/>
+    <names>
+        <name lang="es">Paro de emergencia con pedal (NA/NC)</name>
+        <name lang="nl">Voetschakelaar (NO/NC)</name>
         <name lang="el">Ποδοδιακόπτης, ανοικτή και κλειστή επαφή</name>
         <name lang="en">Foot Switch (NO/NC)</name>
-        <name lang="es">Paro de emergencia con pedal (NA/NC)</name>
-        <name lang="de">Fußschalter 2-polig Schliesser/Öffner</name>
+        <name lang="ar">مفتاح بدوّاسة (NO/NC)</name>
         <name lang="it">Comando a pedale (NO/NC)</name>
+        <name lang="cs">Pedálový spínač (NO/NC)</name>
         <name lang="fr">Interrupteur à pedale (NO/NC)</name>
         <name lang="pl">Łącznik wielozestykowy napędzany nogą</name>
-        <name lang="cs">Pedálový spínač (NO/NC)</name>
-        <name lang="nl">Voetschakelaar (NO/NC)</name>
+        <name lang="de">Fußschalter 2-polig Schliesser/Öffner</name>
     </names>
-    <kindInformations>
-        <kindInformation show="1" name="type">commutator</kindInformation>
-    </kindInformations>
+    <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="20" y2="-9" x2="27"/>
-        <input x="-2" y="-14.5" size="5" rotate="true" text="13"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="2" x1="-19" y2="-4" x2="-13" y3="4" x3="-13"/>
-        <input x="17" y="-14.5" size="5" rotate="true" text="21"/>
-        <input x="18" y="17.5" size="5" rotate="true" text="22"/>
-        <input x="-2" y="17.5" size="5" rotate="true" text="14"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="20" y2="10" x2="20" y3="-10" x3="26"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-13" y2="0" x2="23"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-9" x2="20"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="10" x2="0" y3="-10" x3="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
-        <input x="26" y="3.6666" size="9" text="_" tagg="label"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="20" orientation="s"/>
-        <terminal x="20" y="-20" orientation="n"/>
-        <terminal x="20" y="20" orientation="s"/>
+        <line y1="0" length2="1.5" antialias="false" end1="none" y2="0" length1="1.5" end2="none" x1="-12" x2="23" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line y1="-9" length2="1.5" antialias="false" end1="none" y2="-9" length1="1.5" end2="none" x1="20" x2="27" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="2" text_width="-1" y="-23" uuid="{103311ab-7139-4ca2-a914-9e89bc4ec8a7}" Valignment="AlignTop" x="-3" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,3,-1,5,50,0,0,0,0,0">
+            <text>13</text>
+        </dynamic_text>
+        <line y1="-5" length2="1.5" antialias="false" end1="none" y2="5" length1="1.5" end2="none" x1="-9.7256" x2="-13.9133" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="4" text_width="-1" y="-23" uuid="{50d62516-a25d-4431-b4bb-ee70971dad6f}" Valignment="AlignTop" x="17" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,3,-1,5,50,0,0,0,0,0">
+            <text>21</text>
+        </dynamic_text>
+        <dynamic_text frame="false" rotation="0" z="5" text_width="-1" y="9" uuid="{d91a2d31-da0e-47e2-8236-82b8c18f7c08}" Valignment="AlignTop" x="17" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,3,-1,5,50,0,0,0,0,0">
+            <text>22</text>
+        </dynamic_text>
+        <dynamic_text frame="false" rotation="0" z="6" text_width="-1" y="9" uuid="{f625d933-1de1-4066-bad0-ac16003441e6}" Valignment="AlignTop" x="-3" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,3,-1,5,50,0,0,0,0,0">
+            <text>14</text>
+        </dynamic_text>
+        <line y1="5" length2="1.5" antialias="false" end1="none" y2="3" length1="1.5" end2="none" x1="-13.9059" x2="-16.4185" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="20" x3="26" closed="false" antialias="true" y2="10" x1="20" y3="-10" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-9" length1="1.5" end2="none" x1="20" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="20" x3="-6" closed="false" antialias="true" y2="10" x1="0" y3="-10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-9" length1="1.5" end2="none" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="12" text_width="-1" y="-8" uuid="{7cef0658-2571-4a65-b7e6-c14252e4b178}" Valignment="AlignTop" x="26" text_from="ElementInfo" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal name="21" orientation="n" y="-20" uuid="{faae3ab0-3906-402d-8782-ef9d0ac0413b}" x="20"/>
+        <terminal name="13" orientation="n" y="-20" uuid="{209816c7-3f76-4f05-84d1-722f15518734}" x="0"/>
+        <terminal name="22" orientation="s" y="20" uuid="{3f32169a-026a-43e8-af61-efa7268f5512}" x="20"/>
+        <terminal name="14" orientation="s" y="20" uuid="{f8e508cc-0ac1-420b-9b64-b9f012fbd7de}" x="0"/>
     </description>
 </definition>
