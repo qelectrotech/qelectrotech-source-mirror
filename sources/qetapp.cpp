@@ -1793,6 +1793,7 @@ void QETApp::configureQET()
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
 		cd.setParent(parent_widget, cd.windowFlags());
+		cd.setMaximumSize(parent_widget->size());
 	}
 
 	// display the dialog then avoid linking it to any parent widget
