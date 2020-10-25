@@ -3054,7 +3054,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Salvatoaggio automatico dei progetti (applicato al prossimo avvio di QElectrotech)</translation>
+        <translation>Salvatoggio automatico dei progetti (applicato al prossimo avvio di QElectrotech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>

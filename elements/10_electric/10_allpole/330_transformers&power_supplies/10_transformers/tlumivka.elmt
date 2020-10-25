@@ -1,0 +1,25 @@
+<definition link_type="simple" type="element" version="0.80" width="50" hotspot_y="16" hotspot_x="24" height="30">
+    <uuid uuid="{3a401a8c-2087-4a75-b13b-ef6474f241c8}"/>
+    <names>
+        <name lang="fr">Transformateur</name>
+        <name lang="cs">Tlumivka s jádrem</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-5" start="0" x="-20" height="10" angle="180"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-5" start="0" x="-10" height="10" angle="180"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-5" start="0" x="0" height="10" angle="180"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-5" start="0" x="10" height="10" angle="180"/>
+        <line antialias="false" x1="-20" style="line-style:normal;line-weight:eleve;filling:none;color:black" length2="1.5" end1="none" y1="-10" end2="none" y2="-10" length1="1.5" x2="-4"/>
+        <line antialias="false" x1="4" style="line-style:normal;line-weight:eleve;filling:none;color:black" length2="1.5" end1="none" y1="-10" end2="none" y2="-10" length1="1.5" x2="20"/>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="ElementInfo" y="-20" rotation="0" x="-46" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="7" uuid="{5c02f2f0-17c0-4d09-8dca-24b1182962ad}" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" y1="0" end2="none" y2="5" length1="1.5" x2="-20"/>
+        <line antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" y1="0" end2="none" y2="5" length1="1.5" x2="20"/>
+        <terminal y="5" x="-20" uuid="{4be4ef83-90c0-42ea-bb99-46ec8279a815}" name="" orientation="s"/>
+        <terminal y="5" x="20" uuid="{93686765-ccb3-4dff-a58b-04814173e817}" name="" orientation="s"/>
+    </description>
+</definition>
