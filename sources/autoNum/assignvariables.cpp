@@ -603,14 +603,14 @@ namespace autonum
 					for (int j=i; j<= dirLevel; j = j +1)
 					{
 							//if there is a prefix available apply prefix
-						if(rxml.name()=="prefix")
+						if(rxml.name().toString()=="prefix")
 						{
 							return rxml.readElementText();
 						}
 							//if there isn't a prefix available, find parent prefix in parent folder
 						else
 						{
-							while (rxml.readNextStartElement() && rxml.name()!="prefix")
+							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
 							{
 								rxml.skipCurrentElement();
 								rxml.readNext();
@@ -646,14 +646,14 @@ namespace autonum
 					for (int j=i; j<= dirLevel; j = j +1)
 					{
 							//if there is a prefix available apply prefix
-						if(rxml.name()=="prefix")
+						if(rxml.name().toString()=="prefix")
 						{
 							return rxml.readElementText();
 						}
 							//if there isn't a prefix available, find parent prefix in parent folder
 						else
 						{
-							while (rxml.readNextStartElement() && rxml.name()!="prefix")
+							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
 							{
 								rxml.skipCurrentElement();
 								rxml.readNext();
