@@ -8663,12 +8663,12 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaakdatum van bestand in formaat yyyy-MM-dd</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaakdatum van bestand in formaat dd-MM-yyyy</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="82"/>
@@ -12398,7 +12398,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard zijn de volgende variabelen beschikbaar :&lt;ul&gt;&lt;li&gt;{author} : auteur van het blad&lt;/li&gt;&lt;li&gt;%{date} : datum op het blad&lt;/li&gt;&lt;li&gt;%{title} : naam van het blad&lt;/li&gt;&lt;li&gt;%{filename} : bestandsnaam van het project&lt;/li&gt;&lt;li&gt;%{plant} : naam van de installatie (=) waarin het blad zich bevindt&lt;/li&gt;&lt;li&gt;%{locmach} : naam van de plaats (+) waar het blad zich bevindt&lt;/li&gt;&lt;li&gt;%{indexrev} : revisie-index van het blad&lt;/li&gt;&lt;li&gt;%{version} : versie van het programma&lt;/li&gt;&lt;li&gt;%{folio} : bladnummer&lt;/li&gt;&lt;li&gt;%{folio-id} : positie van het blad in het project&lt;/li&gt;&lt;li&gt;%{folio-total} : aantal bladen in het project&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : vorig bladnummer&lt;/li&gt;&lt;li&gt;%{next-folio-num} : volgend bladnummer&lt;/li&gt;&lt;li&gt;%{projecttitle} : projectnaam&lt;/li&gt;&lt;li&gt;%{projectpath} : pad van het project&lt;/li&gt;&lt;li&gt;%{projectfilename} : bestandsnaam van project&lt;/li&gt;&lt;li&gt;%{saveddate} : datum bestand gewijzigd in formaat yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : datum bestand gewijzigd in formaat dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : tijd bestand gewijzigd&lt;/li&gt;&lt;li&gt;%{savedfilename} : naam gewijzigd bestand&lt;/li&gt;&lt;li&gt;%{savedfilepath} : pad gewijzigd bestand&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
