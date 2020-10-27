@@ -24,7 +24,6 @@
 #include "element.h"
 #include "qetxml.h"
 #include <QPicture>
-#include <QDebug>
 
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
@@ -685,19 +684,14 @@ pugi::xml_document ElementsLocation::pugiXml() const
 	}
 	else
 	{
-		QString str = m_collection_path;
-		//Get the xml dom from Qt xml and copie to pugi xml
-		QDomElement element = m_project
-				->embeddedElementCollection()
-				->element(str.remove("embed://"));
+			//Get the xml dom from Qt xml and copie to pugi xml
 		QDomDocument qdoc;
-		if (isElement())
-		{
-			qdoc.appendChild(qdoc.importNode(
-						 element.firstChildElement(
-							 "definition"),
-						 true));
+		QString str = m_collection_path;
+		if (isElement()) {
+			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
+			qdoc.appendChild(qdoc.importNode(element.firstChildElement("definition"),true));
 		} else {
+			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
 			qdoc.appendChild(qdoc.importNode(element, true));
 		}
 		docu.load_string(qdoc.toString(4).toStdString().c_str());
