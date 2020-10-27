@@ -4731,9 +4731,7 @@ Conductor section : %1</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation>
-20/5000
-Add to cable: %1</translation>
+        <translation>Add to cable: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
