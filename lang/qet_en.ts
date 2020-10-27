@@ -2146,7 +2146,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="37"/>
         <source>Numéro du folio</source>
-        <translation></translation>
+        <translation>Folio number</translation>
     </message>
 </context>
 <context>
@@ -2581,7 +2581,7 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
         <source>Centre :</source>
-        <translation></translation>
+        <translation>Center :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
@@ -3058,7 +3058,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>Accès aux collections</source>
-        <translation></translation>
+        <translation>Access the collections</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
