@@ -675,12 +675,13 @@ pugi::xml_document ElementsLocation::pugiXml() const
 #endif
 	if (!m_project)
 	{
-		if (docu.load_file(m_file_system_path.toStdString().c_str()))
-		{
 #ifndef Q_OS_LINUX
+		if (docu.load_file(m_file_system_path.toStdString().c_str())) {
 			docu.save(m_string_stream);
-#endif
 		}
+#else
+		docu.load_file(m_file_system_path.toStdString().c_str());
+#endif
 	}
 	else
 	{
