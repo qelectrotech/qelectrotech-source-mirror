@@ -175,8 +175,13 @@ void QETApp::setLanguage(const QString &desired_language) {
 #endif
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
 #endif
-	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
-		qtTranslator.load("qt_" + desired_language, languages_path);
+	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path))
+	{
+		if(!qtTranslator.load("qt_" + desired_language, languages_path))
+			qWarning()
+					<<"failed to load"
+					<<"qt_" + desired_language
+					<<languages_path;
 	}
 	qApp->installTranslator(&qtTranslator);
 
@@ -191,7 +196,11 @@ void QETApp::setLanguage(const QString &desired_language) {
 		if (desired_language != "fr") {
 			// use of the English version by default
 			// utilisation de la version anglaise par defaut
-			qetTranslator.load("qet_en", languages_path);
+			if(!qetTranslator.load("qet_en", languages_path))
+				qWarning()
+						<<"failed to load"
+						<<"qet_en"
+						<<languages_path;
 		}
 	}
 	qApp->installTranslator(&qetTranslator);
