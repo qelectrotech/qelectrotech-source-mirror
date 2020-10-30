@@ -69,10 +69,9 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 */
 void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 {
-	if (!location.exist())
-		return;
+	if (! location.exist()) return;
 
-	QDrag *drag = new QDrag(this);
+	QScopedPointer<QDrag> drag(new QDrag(this));
 
 	QString location_str = location.toString();
 	QMimeData *mime_data = new QMimeData();
@@ -91,14 +90,12 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 
 			//Build the element for set the pixmap of the QDrag
 		int elmt_creation_state;
-		Element *temp_elmt = ElementFactory::Instance()->createElement(
-					location, nullptr,
-					&elmt_creation_state);
-		if (elmt_creation_state)
-		{
-			delete temp_elmt;
-			return;
-		}
+		QScopedPointer<Element> temp_elmt(
+		    ElementFactory::Instance()->createElement(
+			location,
+			nullptr,
+			&elmt_creation_state));
+		if (elmt_creation_state) { return; }
 
 		QPixmap elmt_pixmap(temp_elmt->pixmap());
 		QPoint elmt_hotspot(temp_elmt->hotspot());
@@ -123,9 +120,6 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 
 		drag->setPixmap(elmt_pixmap);
 		drag->setHotSpot(elmt_hotspot);
-
-
-		delete temp_elmt;
 	}
 
 	drag->setMimeData(mime_data);
