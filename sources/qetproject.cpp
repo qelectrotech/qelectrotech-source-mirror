@@ -33,7 +33,6 @@
 #include "assignvariables.h"
 
 #include <QTimer>
-#include <QDate>
 #include <QStandardPaths>
 #include <utility>
 #include <QtConcurrent>
@@ -291,9 +290,10 @@ void QETProject::setFilePath(const QString &filepath)
 	}
 
 		//title block variables should be updated after file save as dialog is confirmed, before file is saved.
-	m_project_properties.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
-	m_project_properties.addValue("saveddate-eu", QDate::currentDate().toString("dd-MM-yyyy"));
-	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
+	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
+	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
@@ -925,12 +925,12 @@ bool QETProject::close()
 */
 QETResult QETProject::write()
 {
-	// this operation requires a filepath
+		// this operation requires a filepath
 	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
 
-	// if the project was opened read-only
-	// and the file is still non-writable, do not save the project
+		// if the project was opened read-only
+		// and the file is still non-writable, do not save the project
 	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 
@@ -939,14 +939,11 @@ QETResult QETProject::write()
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
 		return(error_message);
 
-	//title block variables should be updated after file save dialog is confirmed, before file is saved.
-	m_project_properties.addValue(
-				"saveddate",
-				QDate::currentDate().toString("yyyy-MM-dd"));
-	m_project_properties.addValue(
-				"saveddate-eu",
-				QDate::currentDate().toString("dd-MM-yyyy"));
-	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+		//title block variables should be updated after file save dialog is confirmed, before file is saved.
+	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
+	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
+	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 

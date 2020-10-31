@@ -46,6 +46,7 @@ QStringList QETInformation::titleblockInfoKeys()
 	info_list << "projectfilename";
 	info_list << "saveddate";
 	info_list << "saveddate-eu";
+	info_list << "saveddate-us";
 	info_list << "savedtime";
 	info_list << "savedfilename";
 	info_list << "savedfilepath";
@@ -77,8 +78,9 @@ QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 	else if (info == "projecttitle")       return QObject::tr("Titre du projet");
 	else if (info == "projectpath")        return QObject::tr("Chemin du fichier du projet");
 	else if (info == "projectfilename")    return QObject::tr("Nom du fichier");
-	else if (info == "saveddate")          return QObject::tr("Date d'enregistrement du fichier format yyyy-MM-dd");
+	else if (info == "saveddate")          return QObject::tr("Date d'enregistrement du fichier format local");
 	else if (info == "saveddate-eu")       return QObject::tr("Date d'enregistrement du fichier format dd-MM-yyyy");
+	else if (info == "saveddate-us")       return QObject::tr("Date d'enregistrement du fichier format yyyy-MM-dd");
 	else if (info == "savedtime")          return QObject::tr("Heure d'enregistrement du fichier");
 	else if (info == "savedfilename")      return QObject::tr("Nom du fichier enregistré");
 	else if (info == "savedfilepath")      return QObject::tr("Chemin du fichier enregistré");
@@ -111,6 +113,7 @@ QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 	else if (info == "projectfilename")    return QString("%{projectfilename}");
 	else if (info == "saveddate")          return QString("%{saveddate}");
 	else if (info == "saveddate-eu")       return QString("%{saveddate-eu}");
+	else if (info == "saveddate-us")       return QString("%{saveddate-us}");
 	else if (info == "savedtime")          return QString("%{savedtime}");
 	else if (info == "savedfilename")      return QString("%{savedfilename}");
 	else if (info == "savedfilepath")      return QString("%{savedfilepath}");
