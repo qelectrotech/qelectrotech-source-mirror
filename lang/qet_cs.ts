@@ -98,7 +98,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Plugin Bornier</source>
-        <translation>Přídavný modul svorkový pásek</translation>
+        <translation>Přídavný modul svorkovnice</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
@@ -876,7 +876,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="235"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>Čárky a tečky</translation>
+        <translation>Přerušovaná a tečkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
@@ -1059,7 +1059,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="157"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation>Názvy mohou obsahovat pouze malá písmena, číslice a spojovací čárky.</translation>
+        <translation>Názvy mohou obsahovat pouze malá písmena, číslice a čárky spojovníků.</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
@@ -1117,7 +1117,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/diagramview.cpp" line="52"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>Toto je oblast, ve které plodíte své výkresy přidáváním prvků a umísťováním vodičů mezi jejich svorkami (koncovkami). Také můžete přidat nezávislé texty.</translation>
+        <translation>Toto je oblast, ve které plodíte své výkresy přidáváním prvků a umísťováním vodičů mezi jejich svorkami. Také můžete přidat nezávislé texty.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="80"/>
@@ -1132,7 +1132,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/diagramview.cpp" line="608"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation>Spojit vybrané koncovky</translation>
+        <translation>Spojit vybrané svorky</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="890"/>
@@ -1850,7 +1850,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="125"/>
         <source>Bornier</source>
-        <translation>Svorkový pásek</translation>
+        <translation>Svorkovnice</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="128"/>
@@ -2096,7 +2096,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
         <source>Borniers</source>
-        <translation>Svorkové pásky</translation>
+        <translation>Svorkovnice</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
@@ -2489,7 +2489,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="53"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Otevřít příslušný adresář</translation>
+        <translation>Otevřít základní adresář</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="54"/>
@@ -2577,37 +2577,37 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
         <source>Centre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Střed:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
         <source>Vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Svislý:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
         <source>Horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodorovný:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
         <source>Diamètres :</source>
-        <translation type="unfinished"></translation>
+        <translation>Průměry:</translation>
     </message>
 </context>
 <context>
@@ -2868,7 +2868,7 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3038,7 +3038,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Vyvést svorky (zakončení) do seznamu součástí (součástek, číselníku)</translation>
+        <translation>Vyvést svorky do seznamu součástí</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
@@ -3098,12 +3098,12 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
         <source>DiagramEditor xGrid</source>
-        <translation>Editor diagramu xMřížka</translation>
+        <translation>Editor výkresu xMřížka</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
         <source>DiagramEditor yGrid</source>
-        <translation>Editor diagramu yMřížka</translation>
+        <translation>Editor výkresu yMřížka</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
@@ -3172,12 +3172,12 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="687"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation>Editor diagramu (klávesa: vlevo/vpravo) xMřížka</translation>
+        <translation>Editor výkresu (klávesa: vlevo/vpravo) xMřížka</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="694"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation>Editor diagramu (klávesa: nahoru/dolů) yMřížka</translation>
+        <translation>Editor výkresu (klávesa: nahoru/dolů) yMřížka</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
@@ -3187,12 +3187,12 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation>Editor diagramu (klávesa: vlevo/vpravo) xMřížka</translation>
+        <translation>Editor výkresu (klávesa: vlevo/vpravo) xMřížka</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation>Editor diagramu (klávesa: nahoru/dolů) yMřížka</translation>
+        <translation>Editor výkresu (klávesa: nahoru/dolů) yMřížka</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
@@ -3964,7 +3964,7 @@ Na toto , prosím, použijte pokročilý editor.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="459"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="470"/>
         <source>N° de fil</source>
-        <translation>Č.drátu</translation>
+        <translation>Číslo drátu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="460"/>
@@ -4023,7 +4023,7 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="202"/>
         <source>Report de folio</source>
-        <translation>Odkaz na list</translation>
+        <translation>Odkazování listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="204"/>
@@ -4906,17 +4906,17 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
         <source>Toutes les dates</source>
-        <translation type="unfinished"></translation>
+        <translation>Všechna data</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>À partir de la date du :</source>
-        <translation type="unfinished"></translation>
+        <translation>Od data:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="113"/>
         <source>À la date du  :</source>
-        <translation type="unfinished"></translation>
+        <translation>K datu:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="155"/>
@@ -5063,12 +5063,12 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést do PDF</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="165"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozvržení (nedostupné v OS Windows pro vyvedení do PDF)</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
@@ -5078,12 +5078,12 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Exporter sous : </source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést jako: </translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Fichier (*.pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor (*.pdf</translation>
     </message>
 </context>
 <context>
@@ -5214,7 +5214,7 @@ Chcete uložit změny?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="426"/>
         <source>Numéro d&apos;article</source>
-        <translation>Číslo výrobku</translation>
+        <translation>Číslo druhu zboží</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="428"/>
@@ -5581,7 +5581,7 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="1785"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation>Nastavit QElectroTech</translation>
+        <translation>Nastavení QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1928"/>
@@ -5781,18 +5781,18 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="473"/>
         <source>&amp;Mosaïque</source>
-        <translation>Klást jedno &amp;vedle druhého</translation>
+        <translation>Klást &amp;vedle sebe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést do PDF</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést jeden nebo několik listů nynějšího projektu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
@@ -5802,7 +5802,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
         <source>Lancer le plugin de création de borniers</source>
-        <translation>Spustit přídavný modul na vytváření koncovek</translation>
+        <translation>Spustit přídavný modul na vytváření svorkovnic</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
@@ -6016,7 +6016,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
         <source>Pas de zoom</source>
-        <translation>Bez přiblížení</translation>
+        <translation>Obnovit výchozí zvětšení</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="569"/>
@@ -6066,7 +6066,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Réinitialiser les conducteurs</source>
-        <translation>Nastavit znovu vodiče</translation>
+        <translation>Obnovit výchozí vodiče</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="332"/>
@@ -6158,7 +6158,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="764"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Nedávno otevřený</translation>
+        <translation>&amp;Nedávno otevřené</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="903"/>
@@ -6256,7 +6256,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
         <source>Ajouter un sommaire</source>
-        <translation>Přidat stručný obsah</translation>
+        <translation>Přidat souhrn</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="616"/>
@@ -6406,7 +6406,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="729"/>
         <source>Ajouter</source>
-        <translation>Přidat</translation>
+        <translation>Přidání</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="976"/>
@@ -6593,7 +6593,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="296"/>
         <source>Ajouter une borne</source>
-        <translation>Přidat zakončení</translation>
+        <translation>Přidat svorku</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="197"/>
@@ -6624,7 +6624,7 @@ Dostupné volby:
         <location filename="../sources/editor/qetelementeditor.cpp" line="791"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation>&lt;br&gt;V nepřítomnosti koncovky může být prvek spojen s jinými prvky prostřednictvím vodičů.</translation>
+        <translation>&lt;br&gt;V nepřítomnosti svorky může být prvek spojen s jinými prvky prostřednictvím vodičů.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="224"/>
@@ -6659,7 +6659,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="272"/>
         <source>Pas de zoom</source>
-        <translation>Bez přiblížení</translation>
+        <translation>Obnovit výchozí zvětšení</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="276"/>
@@ -6842,7 +6842,7 @@ Učiňte jej spustitelným: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="382"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Nedávno otevřený</translation>
+        <translation>&amp;Nedávno otevřené</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="394"/>
@@ -6899,12 +6899,12 @@ Učiňte jej spustitelným: chmod +x ./DXFtoQET
         <location filename="../sources/editor/qetelementeditor.cpp" line="790"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation>Chybí zakončení</translation>
+        <translation>Chybí svorka</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="812"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt; &lt;b&gt;Chyba&lt;/b  &gt; :&lt;br&gt;Odkazy na listy musí mít jednoduchou koncovku  &lt;br&gt;&lt;b&gt;Řešení&lt;/b&gt; :&lt;br&gt; Ověřte, že prvek má jen jednu koncovku</translation>
+        <translation>&lt;br&gt; &lt;b&gt;Chyba&lt;/b  &gt; :&lt;br&gt;Odkazy na listy musí mít jednoduchou svorku.&lt;br&gt;&lt;b&gt;Řešení&lt;/b&gt; :&lt;br&gt; Ověřte, že prvek má jen jednu svorku</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="824"/>
@@ -6935,7 +6935,7 @@ Učiňte jej spustitelným: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="811"/>
         <source>Absence de borne</source>
-        <translation>Chybí koncovka</translation>
+        <translation>Chybí svorka</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="144"/>
@@ -7198,7 +7198,7 @@ podmínky nejsou platné</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="59"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Nastavit QElectroTech</translation>
+        <translation>&amp;Nastavení QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="60"/>
@@ -7317,7 +7317,7 @@ podmínky nejsou platné</translation>
         <location filename="../sources/qetmainwindow.cpp" line="233"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation>Zobrazit</translation>
+        <translation>Zobrazení</translation>
     </message>
 </context>
 <context>
@@ -7485,7 +7485,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="384"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
-        <translation>Bez přiblížení</translation>
+        <translation>Obnovit výchozí zvětšení</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
@@ -7734,7 +7734,7 @@ Co chcete dělat?</translation>
         <translation>Povolenými znaky jsou:
  - číslice [0-9]
  - malá písmena [a-z]
- - čárka [-], podtržítko [_] a tečka [.]
+ - čárka: spojovník [-], podtržítko [_] a tečka [.]
 </translation>
     </message>
 </context>
@@ -7812,7 +7812,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/diagramcommands.cpp" line="558"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation>Nastavit znovu %1</translation>
+        <translation>Obnovit výchozí %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changetitleblockcommand.cpp" line="35"/>
@@ -8081,7 +8081,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
         <source>Borne</source>
         <comment>tooltip</comment>
-        <translation>Zakončení</translation>
+        <translation>Svorka</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="155"/>
@@ -8113,7 +8113,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1019"/>
         <source>Réinitialiser les dimensions</source>
-        <translation>Nastavit znovu velikost</translation>
+        <translation>Obnovit výchozí velikost</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1023"/>
@@ -8341,7 +8341,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="64"/>
         <source>Borne</source>
-        <translation>Zakončení</translation>
+        <translation>Svorka</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="64"/>
@@ -8668,12 +8668,12 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum uložení souboru ve formátu rrrr-MM-dd</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum uložení souboru ve formátu dd-MM-rrrr</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="82"/>
@@ -8723,7 +8723,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>
         <source>Ajouter un sommaire</source>
-        <translation>Přidat stručný obsah</translation>
+        <translation>Přidat souhrn</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
@@ -9155,13 +9155,13 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="206"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>Tečkovaná čára</translation>
+        <translation>Přerušovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="209"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>Tečky a čárky</translation>
+        <translation>Přerušovaná a tečkovaná čára</translation>
     </message>
 </context>
 <context>
@@ -9440,7 +9440,7 @@ Vytvořte svůj vlastní pomocí následujících proměnných:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
         <source>avancé</source>
-        <translation>pokročilé</translation>
+        <translation>Pokročilé</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
@@ -9505,7 +9505,7 @@ Vytvořte svůj vlastní pomocí následujících proměnných:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="186"/>
         <source>Eléments maître</source>
-        <translation>Hlavní prvky</translation>
+        <translation>Nadřízené prvky</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="192"/>
@@ -9520,7 +9520,7 @@ Vytvořte svůj vlastní pomocí následujících proměnných:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="204"/>
         <source>Eléments bornier</source>
-        <translation>Koncové prvky</translation>
+        <translation>Prvky svorky</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1039"/>
@@ -9548,7 +9548,7 @@ Vytvořte svůj vlastní pomocí následujících proměnných:
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1295"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1296"/>
         <source> [édité]</source>
-        <translation> [upraveno]</translation>
+        <translation> [uprav.]</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="212"/>
@@ -9644,7 +9644,7 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="234"/>
@@ -9666,7 +9666,7 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="232"/>
@@ -9700,7 +9700,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
         <source>Tiret</source>
-        <translation>Čárkovaná</translation>
+        <translation>Přerušovaná</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
@@ -9710,7 +9710,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
         <source>Traits et points</source>
-        <translation>Čárky a tečky</translation>
+        <translation>Přerušovaná a tečkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
@@ -9720,7 +9720,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
         <source>Tiret custom</source>
-        <translation>Vlastní čárkovaná čára</translation>
+        <translation>Vlastní přerušovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
@@ -10806,7 +10806,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="199"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation>Čárkovaná</translation>
+        <translation>Přerušovaná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="200"/>
@@ -10818,7 +10818,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="201"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation>Tečky a čárky</translation>
+        <translation>Přerušovaná a tečkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="206"/>
@@ -11943,7 +11943,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="268"/>
         <source>Modifier le nom du terminal</source>
-        <translation>Změnit název koncovky</translation>
+        <translation>Změnit název svorky</translation>
     </message>
 </context>
 <context>
@@ -12377,7 +12377,7 @@ Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} 
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ve výchozím nastavení jsou dostupné následující proměnné:&lt;ul&gt;&lt;li&gt;%{author} : autor listu&lt;/li&gt;&lt;li&gt;%{date} : datum listu&lt;/li&gt;&lt;li&gt;%{title} : název listu&lt;/li&gt;&lt;li&gt;%{filename} : název souboru projektu&lt;/li&gt;&lt;li&gt;%{plant} : název instalace (=), v níž se nachází list&lt;/li&gt;&lt;li&gt;%{locmach} : název lokalizace (+), v níž se nachází list&lt;/li&gt;&lt;li&gt;%{indexrev} : číslo změny listu&lt;/li&gt;&lt;li&gt;%{version} : verze programu&lt;/li&gt;&lt;li&gt;%{folio} : číslo listu&lt;/li&gt;&lt;li&gt;%{folio-id} : poloha listu v projektu&lt;/li&gt;&lt;li&gt;%{folio-total} : celkový počet listů v projektu&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : číslo předchozího listu&lt;/li&gt;&lt;li&gt;%{next-folio-num} : číslo dalšího listu&lt;/li&gt;&lt;li&gt;%{projecttitle} : název projektu&lt;/li&gt;&lt;li&gt;%{projectpath} : cesta k projektu&lt;/li&gt;&lt;li&gt;%{projectfilename} : název souboru&lt;/li&gt;&lt;li&gt;%{saveddate} : datum uložení souboru ve formátu rrrr-MM-dd&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : datum uložení souboru ve formátu dd-MM-rrrr&lt;/li&gt;&lt;li&gt;%{savedtime} : hodina uložení souboru&lt;/li&gt;&lt;li&gt;%{savedfilename} : název uloženého souboru&lt;/li&gt;&lt;li&gt;%{savedfilepath} : cesta k uloženému souboru&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
@@ -12772,7 +12772,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation>&amp;Zobrazit kontakt</translation>
+        <translation>&amp;Zobrazit kontakty</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
@@ -12984,7 +12984,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="798"/>
         <source>Rich Text</source>
-        <translation>Upravovatelný text</translation>
+        <translation>Formátovaný text</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="799"/>
@@ -13090,7 +13090,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation>:</translation>
+        <translation>Čím:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
