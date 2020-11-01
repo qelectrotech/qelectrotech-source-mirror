@@ -1,4 +1,4 @@
-﻿/*
+/*
 		Copyright 2006-2020 QElectroTech Team
 		This file is part of QElectroTech.
 
@@ -42,6 +42,28 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	m_project(project)
 {
 	createDataBase();
+	connect(m_project, &QETProject::diagramAdded, [this](QETProject *, Diagram *diagram) {
+		this->addDiagram(diagram);
+	});
+	connect(m_project, &QETProject::diagramRemoved, [this](QETProject *, Diagram *diagram) {
+		this->removeDiagram(diagram);
+	});
+	connect(m_project, &QETProject::projectDiagramsOrderChanged, [this]()
+	{
+		for (auto diagram : m_project->diagrams())
+		{
+			m_diagram_order_changed.bindValue(":pos", m_project->folioIndex(diagram)+1);
+			m_diagram_order_changed.bindValue(":uuid", diagram->uuid());
+			m_diagram_order_changed.exec();
+
+
+			m_diagram_info_order_changed.bindValue(":folio", diagram->border_and_titleblock.titleblockInformation().value("folio"));
+			m_diagram_info_order_changed.bindValue(":uuid", diagram->uuid());
+			m_diagram_info_order_changed.exec();
+
+		}
+		emit dataBaseUpdated();
+	});
 }
 
 /**
@@ -151,27 +173,12 @@ void projectDataBase::elementInfoChanged(Element *element)
 void projectDataBase::addDiagram(Diagram *diagram)
 {
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
-	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram));
+	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
 	if(!m_insert_diagram_query.exec()) {
 		qDebug() << "projectDataBase::addDiagram insert error : " << m_insert_diagram_query.lastError();
 	}
 
-
-	m_insert_diagram_info_query.bindValue(":uuid", diagram->uuid());
-	auto infos = diagram->border_and_titleblock.titleblockInformation();
-	for (auto key : QETApp::diagramInfoKeys())
-	{
-		if (key == "date")
-		{
-			m_insert_diagram_info_query.bindValue( ":date",
-												   QLocale::system().toDate(infos.value("date").toString(),
-																			QLocale::ShortFormat));
-		} else {
-			auto value = infos.value(key);
-			auto bind = key.prepend(":");
-			m_insert_diagram_info_query.bindValue(bind, value);
-		}
-	}
+	bindDiagramInfoValues(m_insert_diagram_info_query, diagram);
 
 	if (!m_insert_diagram_info_query.exec()) {
 		qDebug() << "projectDataBase::addDiagram insert info error : " << m_insert_diagram_info_query.lastError();
@@ -188,6 +195,21 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 	} else {
 		emit dataBaseUpdated();
 	}
+}
+
+void projectDataBase::diagramInfoChanged(Diagram *diagram)
+{
+	bindDiagramInfoValues(m_update_diagram_info_query, diagram);
+
+	if (!m_update_diagram_info_query.exec()) {
+		qDebug() << "projectDataBase::diagramInfoChanged update error : " << m_update_diagram_info_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+void projectDataBase::diagramOrderChanged()
+{
 }
 
 /**
@@ -342,7 +364,7 @@ void projectDataBase::populateDiagramTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
-		m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram));
+		m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
 		if(!m_insert_diagram_query.exec()) {
 			qDebug() << "projectDataBase::populateDiagramTable insert error : " << m_insert_diagram_query.lastError();
 		}
@@ -417,21 +439,7 @@ void projectDataBase::populateDiagramInfoTable()
 
 	for (auto *diagram : m_project->diagrams())
 	{
-		m_insert_diagram_info_query.bindValue(":uuid", diagram->uuid());
-
-		auto infos = diagram->border_and_titleblock.titleblockInformation();
-		for (auto key : QETApp::diagramInfoKeys())
-		{
-			if (key == "date") {
-				m_insert_diagram_info_query.bindValue( ":date",
-													   QLocale::system().toDate(infos.value("date").toString(),
-																				QLocale::ShortFormat));
-			} else {
-				auto value = infos.value(key);
-				auto bind = key.prepend(":");
-				m_insert_diagram_info_query.bindValue(bind, value);
-			}
-		}
+		bindDiagramInfoValues(m_insert_diagram_info_query, diagram);
 
 		if (!m_insert_diagram_info_query.exec()) {
 			qDebug() << "projectDataBase::populateDiagramInfoTable insert error : " << m_insert_diagram_info_query.lastError();
@@ -461,6 +469,22 @@ void projectDataBase::prepareQuery()
 				   bind_diag_info_values.join(", ") +
 				   ")");
 	m_insert_diagram_info_query.prepare(insert_diag_info);
+
+		//UPDATE DIAGRAM INFO
+	QString update_diagram_str("UPDATE diagram_info SET ");
+	for (auto str : QETApp::diagramInfoKeys()) {
+		update_diagram_str.append(str + " = :" + str + ", ");
+	}
+	update_diagram_str.remove(update_diagram_str.length()-2, 2); //Remove the last ", "
+	update_diagram_str.append(" WHERE diagram_uuid = :uuid");
+	m_update_diagram_info_query = QSqlQuery(m_data_base);
+	m_update_diagram_info_query.prepare(update_diagram_str);
+
+		//UPDATE DIAGRAM ORDER
+	m_diagram_order_changed = QSqlQuery(m_data_base);
+	m_diagram_order_changed.prepare("UPDATE diagram SET pos = :pos WHERE uuid = :uuid");
+	m_diagram_info_order_changed = QSqlQuery(m_data_base);
+	m_diagram_info_order_changed.prepare("UPDATE diagram_info SET folio = :folio WHERE diagram_uuid = :uuid");
 
 		//INSERT ELEMENT
 	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type)");
@@ -516,6 +540,25 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	}
 
 	return hash;
+}
+
+void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
+{
+	query.bindValue(":uuid", diagram->uuid());
+
+	auto infos = diagram->border_and_titleblock.titleblockInformation();
+	for (auto key : QETApp::diagramInfoKeys())
+	{
+		if (key == "date") {
+			query.bindValue( ":date",
+							 QLocale::system().toDate(infos.value("date").toString(),
+													  QLocale::ShortFormat));
+		} else {
+			auto value = infos.value(key);
+			auto bind = key.prepend(":");
+			query.bindValue(bind, value);
+		}
+	}
 }
 
 #ifdef QET_EXPORT_PROJECT_DB
