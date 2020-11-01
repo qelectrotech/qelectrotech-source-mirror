@@ -51,7 +51,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="449"/>
         <source>log</source>
-        <translation></translation>
+        <translation>Log</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
