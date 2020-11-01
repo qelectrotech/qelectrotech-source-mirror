@@ -11,7 +11,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>À propos</source>
-        <translation>O programu</translation>
+        <translation>Program</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
@@ -41,7 +41,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
         <source>Accord de licence</source>
-        <translation>Licenční ujednání</translation>
+        <translation>Povolení</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="434"/>
@@ -57,13 +57,13 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation>QElectroTech, program pro vytváření elektrotechnických výkresů.</translation>
+        <translation>QElectroTech - program na vytváření elektrotechnických výkresů</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation> Vývojáři QElectroTechu</translation>
+        <translation> vývojáři QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
@@ -870,23 +870,23 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="234"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>Tečkovaná čára</translation>
+        <translation>Čárkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="235"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>Přerušovaná a tečkovaná čára</translation>
+        <translation>Čerchovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
         <source>terre</source>
-        <translation>uzemnění</translation>
+        <translation>Uzemnění</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
         <source>neutre</source>
-        <translation>nulový</translation>
+        <translation>Nulový</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
@@ -927,7 +927,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation>kabel</translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
@@ -1059,7 +1059,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="157"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation>Názvy mohou obsahovat pouze malá písmena, číslice a čárky spojovníků.</translation>
+        <translation>Názvy mohou obsahovat pouze malá písmena, číslice a spojovací čárky (spojovníky).</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
@@ -2762,7 +2762,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
         <location filename="../sources/exportpropertieswidget.cpp" line="178"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
-        <translation>Volby znázornění</translation>
+        <translation>Volby pro znázornění</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
@@ -2777,22 +2777,22 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
         <source>Dessiner la grille</source>
-        <translation>Nakreslit mřížku</translation>
+        <translation>Kreslit mřížku</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
         <source>Dessiner le cadre</source>
-        <translation>Nakreslit okraj</translation>
+        <translation>Kreslit okraj</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
         <source>Dessiner le cartouche</source>
-        <translation>Nakreslit záhlaví výkresu</translation>
+        <translation>Kreslit záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
         <source>Dessiner les bornes</source>
-        <translation>Nakreslit svorky</translation>
+        <translation>Kreslit svorky</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
@@ -2950,7 +2950,7 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
         <source>Chemin de la collection utilisateur</source>
-        <translation>Cesta k uživatelské sbírce</translation>
+        <translation>Cesta k vlastní sbírce</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
@@ -2984,7 +2984,7 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation>(Nahrát sbírky prvků znovu, aby se použily změny)</translation>
+        <translation>Aby se změny použily je třeba sbírky prvků nahrát znovu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
@@ -3021,14 +3021,14 @@ textu a čísel.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation>Zvýraznit čerstvě začleněné prvky v panelu</translation>
+        <translation>Zvýraznit v panelu čerstvě začleněné prvky</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="281"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Prvky mohou zahrnout informace o jejich autorech, licenci, nebo veškeré další užitečné informace, které shledáte prospěšnými pro toto pole.
-Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</translation>
+        <translation>Prvky mohou zahrnout údaje o jejich autorech, licenci, nebo veškeré další užitečné informace, které shledáte prospěšnými.
+Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
@@ -3068,12 +3068,12 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation>Adresář s uživatelskou sbírkou</translation>
+        <translation>Adresář s vlastní sbírkou</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation>Adresář s uživatelskými záhlavími výkresů</translation>
+        <translation>Adresář s vlastními záhlavími výkresů</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
@@ -3088,7 +3088,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="541"/>
         <source>Grille + Clavier</source>
-        <translation>Mřížka + klávesnice</translation>
+        <translation>Mřížka a klávesnice</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="547"/>
@@ -3098,12 +3098,12 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
         <source>DiagramEditor xGrid</source>
-        <translation>Editor výkresu xMřížka</translation>
+        <translation>Souřadnice x mřížky editoru výkresu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
         <source>DiagramEditor yGrid</source>
-        <translation>Editor výkresu yMřížka</translation>
+        <translation>Souřadnice y mřížky editoru výkresu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
@@ -3162,47 +3162,47 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
-        <translation>Mřížka musí být zapnuta, aby byly vidět změny.</translation>
+        <translation>Aby byly změny vidět, mřížka musí být zapnuta.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation>Přesunutí na klávesnici: 1 - 30</translation>
+        <translation>Posunutí předmětu v mřížce pomocí klávesnice: 1 - 30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="687"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation>Editor výkresu (klávesa: vlevo/vpravo) xMřížka</translation>
+        <translation>Posun v mřížce editoru výkresu, souřadnice x: klávesa šipky vlevo/vpravo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="694"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation>Editor výkresu (klávesa: nahoru/dolů) yMřížka</translation>
+        <translation>Posun v mřížce editoru výkresu, souřadnice y: klávesa šipky nahoru/dolů</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation>Přesunutí na klávesnici pomocí klávesy Alt: 1 - 30: 1 - 9</translation>
+        <translation>Posunutí předmětu v mřížce pomocí klávesnice při stisknutí klávesy Alt: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation>Editor výkresu (klávesa: vlevo/vpravo) xMřížka</translation>
+        <translation>Posun v mřížce editoru výkresu, souřadnice x: klávesa šipky vlevo/vpravo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation>Editor výkresu (klávesa: nahoru/dolů) yMřížka</translation>
+        <translation>Posun v mřížce editoru výkresu, souřadnice y: klávesa šipky nahoru/dolů</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation>Neukládejte štítky položek při kopírovat vložit</translation>
+        <translation>Neukládat štítky položek při kopírovat-vložit</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
         <source>Autoriser le dézoom au delà du folio</source>
-        <translation>Povolit zvětšení za listem</translation>
+        <translation>Povolit zrušení zvětšení mimo list</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="239"/>
@@ -3218,7 +3218,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="261"/>
         <source>Arabe</source>
-        <translation>Arabský</translation>
+        <translation>Arabština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="262"/>
@@ -3228,107 +3228,107 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="263"/>
         <source>Catalan</source>
-        <translation>Katalánský</translation>
+        <translation>Katalánština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="264"/>
         <source>Tchèque</source>
-        <translation>Český</translation>
+        <translation>Čeština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="265"/>
         <source>Allemand</source>
-        <translation>Německý</translation>
+        <translation>Němčina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="266"/>
         <source>Danois</source>
-        <translation>Dánský</translation>
+        <translation>Dánština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="267"/>
         <source>Grec</source>
-        <translation>Řecký</translation>
+        <translation>Řečtina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="268"/>
         <source>Anglais</source>
-        <translation>Anglický</translation>
+        <translation>Angličtina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="269"/>
         <source>Espagnol</source>
-        <translation>Španělský</translation>
+        <translation>Španělština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="270"/>
         <source>Français</source>
-        <translation>Francouzský</translation>
+        <translation>Francouzština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="271"/>
         <source>Croate</source>
-        <translation>Chorvatský</translation>
+        <translation>Chorvatština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
         <source>Italien</source>
-        <translation>Italský</translation>
+        <translation>Italština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
         <source>Japonais</source>
-        <translation>Japonský</translation>
+        <translation>Japonština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
         <source>Polonais</source>
-        <translation>Polský</translation>
+        <translation>Polština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="275"/>
         <source>Portugais</source>
-        <translation>Portugalský</translation>
+        <translation>Portugalština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
         <source>Roumains</source>
-        <translation>Rumunský</translation>
+        <translation>Rumunština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="277"/>
         <source>Russe</source>
-        <translation>Ruský</translation>
+        <translation>Ruština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="278"/>
         <source>Slovène</source>
-        <translation>Slovinský</translation>
+        <translation>Slovinština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="279"/>
         <source>Pays-Bas</source>
-        <translation>Nizozemský</translation>
+        <translation>Nizozemština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="280"/>
         <source>Norvege</source>
-        <translation>Norský</translation>
+        <translation>Norština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
         <source>Belgique-Flemish</source>
-        <translation>Belgický vlámský</translation>
+        <translation>Belgičtina vlámština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="282"/>
         <source>Turc</source>
-        <translation>Turecký</translation>
+        <translation>Turečtina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
         <source>Hongrois</source>
-        <translation>Maďarský</translation>
+        <translation>Maďarština</translation>
     </message>
 </context>
 <context>
@@ -4926,12 +4926,12 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation>Nakreslit okraj</translation>
+        <translation>Kreslit okraj</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation>Nakreslit záhlaví výkresu</translation>
+        <translation>Kreslit záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
@@ -4941,7 +4941,7 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation>Nakreslit svorky</translation>
+        <translation>Kreslit svorky</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -5496,7 +5496,7 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation>Nahrává se... Inicializuje se vyrovnávací paměť sbírky s prvky</translation>
+        <translation>Nahrává se... Spouští se vyrovnávací paměť sbírky s prvky</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="107"/>
@@ -7255,7 +7255,7 @@ podmínky nejsou platné</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Soutenir le projet par un don</source>
-        <translation>Podpořit projekt darem</translation>
+        <translation>Podpora projektu darem</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="124"/>
@@ -7764,49 +7764,49 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="37"/>
         <source>un champ texte</source>
-        <translation>textové pole</translation>
+        <translation>Textové pole</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
         <source>un conducteur</source>
-        <translation>vodič</translation>
+        <translation>Vodič</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="102"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
-        <translation>smazat %1</translation>
+        <translation>Smazat %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="59"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
-        <translation>vložit %1</translation>
+        <translation>Vložit %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="154"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
-        <translation>vyjmout %1</translation>
+        <translation>Vyjmout %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="203"/>
         <location filename="../sources/diagramcommands.cpp" line="414"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation>přesunout %1</translation>
+        <translation>Přesunout %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="436"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation>upravit text</translation>
+        <translation>Upravit text</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="488"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation>upravit vodič</translation>
+        <translation>Upravit vodič</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="558"/>
@@ -7818,61 +7818,61 @@ Co chcete dělat?</translation>
         <location filename="../sources/undocommand/changetitleblockcommand.cpp" line="35"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>upravit záhlaví výkresu</translation>
+        <translation>Upravit záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="609"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation>upravit rozměry listu</translation>
+        <translation>Upravit rozměry listu</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="105"/>
         <source>suppression</source>
         <comment>undo caption</comment>
-        <translation>smazání</translation>
+        <translation>Smazání</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="177"/>
         <source>déplacement</source>
         <comment>undo caption</comment>
-        <translation>přemístění</translation>
+        <translation>Přesunutí</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="220"/>
         <source>ajout %1</source>
         <comment>undo caption</comment>
-        <translation>vložit %1</translation>
+        <translation>Vložit %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="271"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
-        <translation>úprava názvů</translation>
+        <translation>Upravení názvů</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="316"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
-        <translation>přesunout dopředu</translation>
+        <translation>Dát úplně nahoru</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="319"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
-        <translation>zvýšit</translation>
+        <translation>Dát nahoru</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="322"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
-        <translation>snížit</translation>
+        <translation>Dát dolů</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="325"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
-        <translation>přesunout dozadu</translation>
+        <translation>Dát úplně dolů</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="442"/>
@@ -7901,25 +7901,25 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
         <source>arc</source>
         <comment>element part name</comment>
-        <translation>oblouk</translation>
+        <translation>Oblouk</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.h" line="53"/>
         <source>ellipse</source>
         <comment>element part name</comment>
-        <translation>elipsa</translation>
+        <translation>Elipsa</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partline.h" line="71"/>
         <source>ligne</source>
         <comment>element part name</comment>
-        <translation>čára</translation>
+        <translation>Čára</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.h" line="62"/>
         <source>polygone</source>
         <comment>element part name</comment>
-        <translation>mnohoúhelník</translation>
+        <translation>Mnohoúhelník</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="44"/>
@@ -7931,7 +7931,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/graphicspart/parttext.h" line="59"/>
         <source>texte</source>
         <comment>element part name</comment>
-        <translation>text</translation>
+        <translation>Text</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="273"/>
@@ -8020,42 +8020,42 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/qet.cpp" line="717"/>
         <source>Amener au premier plan</source>
-        <translation>Přesunout dopředu</translation>
+        <translation>Dát úplně nahoru</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="718"/>
         <source>Rapprocher</source>
-        <translation>Zvýšit</translation>
+        <translation>Dát nahoru</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="719"/>
         <source>Éloigner</source>
-        <translation>Snížit</translation>
+        <translation>Dát dolů</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="720"/>
         <source>Envoyer au fond</source>
-        <translation>Přesunout dozadu</translation>
+        <translation>Dát úplně dolů</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="722"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation>Přenést výběr do popředí</translation>
+        <translation>Přenést výběr(y) do popředí</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="723"/>
         <source>Rapproche la ou les sélections</source>
-        <translation>Přiblížit výběr</translation>
+        <translation>Přiblížit výběr(y)</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="724"/>
         <source>Éloigne la ou les sélections</source>
-        <translation>Oddálit výběr</translation>
+        <translation>Oddálit výběr(y)</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="725"/>
         <source>Envoie en arrière plan la ou les sélections</source>
-        <translation>Přenést výběr do pozadí</translation>
+        <translation>Přenést výběr(y) do pozadí</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="727"/>
@@ -8087,13 +8087,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="155"/>
         <source>couper des parties</source>
         <comment>undo caption</comment>
-        <translation>vyjmout části</translation>
+        <translation>Vyjmout části</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.h" line="60"/>
         <source>rectangle</source>
         <comment>element part name</comment>
-        <translation>obdélník</translation>
+        <translation>Obdélník</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="988"/>
@@ -8103,7 +8103,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="990"/>
         <source>schema</source>
-        <translation>výkres</translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1015"/>
@@ -8578,12 +8578,12 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="70"/>
         <source>%p% effectué (%v sur %m)</source>
-        <translation>%p% vykonáno (%v v %m)</translation>
+        <translation>%p% vykonáno (%v z %m)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="198"/>
         <source>chargement %p% (%v sur %m)</source>
-        <translation>bahrání %p% (%v v %m)</translation>
+        <translation>Nahrává se %p% (%v z %m)</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="55"/>
@@ -9081,7 +9081,7 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="397"/>
         <source>neutre</source>
-        <translation>nulový</translation>
+        <translation>Nulový</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="430"/>
@@ -9091,7 +9091,7 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="433"/>
         <source>terre</source>
-        <translation>uzemnění</translation>
+        <translation>Uzemnění</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
@@ -9155,13 +9155,13 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="206"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>Přerušovaná čára</translation>
+        <translation>Čárkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="209"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>Přerušovaná a tečkovaná čára</translation>
+        <translation>Čerchovaná čára</translation>
     </message>
 </context>
 <context>
@@ -9333,7 +9333,7 @@ Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} 
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Popisek odkazu na list</translation>
+        <translation>Štítek odkazování listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -9345,13 +9345,13 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>Můžete stanovit vlastní štítek pro odkazy na listy.
-Vytvořte svůj vlastní pomocí následujících proměnných:
+        <translation>Můžete stanovit vlastní štítek pro odkazování listu.
+Vytvořte svůj vlastní text pomocí následujících proměnných:
 % f: poloha listu v projektu
 % F: číslo listu
 % M: instalace
 % LM: umístění
-% l: číslo čáry
+% l: číslo řádku
 % c: číslo sloupce</translation>
     </message>
 </context>
@@ -9425,7 +9425,7 @@ Vytvořte svůj vlastní pomocí následujících proměnných:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="93"/>
         <source>Sensible à la casse</source>
-        <translation>Rozlišovat velká a malá písmena</translation>
+        <translation>Rozlišovat velikost písmen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
@@ -9695,12 +9695,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
         <source>Normal</source>
-        <translation>Běžná</translation>
+        <translation>Plná</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
         <source>Tiret</source>
-        <translation>Přerušovaná</translation>
+        <translation>Čárkovaná</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
@@ -9710,17 +9710,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
         <source>Traits et points</source>
-        <translation>Přerušovaná a tečkovaná čára</translation>
+        <translation>Čerchovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
         <source>Traits points points</source>
-        <translation>Čárka, tečka, tečka</translation>
+        <translation>Čerchovaná čára se dvěma tečkami</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
         <source>Tiret custom</source>
-        <translation>Vlastní přerušovaná čára</translation>
+        <translation>Vlastní čárkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
@@ -10800,13 +10800,13 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="198"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Běžná</translation>
+        <translation>Plná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="199"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation>Přerušovaná</translation>
+        <translation>Čárkovaná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="200"/>
@@ -10818,7 +10818,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="201"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation>Přerušovaná a tečkovaná čára</translation>
+        <translation>Čerchovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="206"/>
@@ -12143,7 +12143,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
-        <translation>Informace záhlaví výkresů</translation>
+        <translation>Údaje v záhlaví výkresů</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
@@ -12232,8 +12232,8 @@ Používají se následující proměnné:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Zde můžete stanovit vaše vlastní přiřazení název/hodnota, takže s nimi bude záhlaví výkresu počítat. Příklad:
-Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} číslicí 1745.</translation>
+        <translation>Zde můžete stanovit vaše vlastní přiřazení pro název/hodnota, takže s nimi bude záhlaví výkresu počítat. Příklad:
+Přiřazení názvu &quot;volta&quot; a hodnoty &quot;1745&quot; v záhlaví výkresu nahradí %{volta} číslicí 1745.</translation>
     </message>
 </context>
 <context>
