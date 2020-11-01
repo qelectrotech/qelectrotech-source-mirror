@@ -6,7 +6,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation type="unfinished">Despre QElectrotech</translation>
+        <translation>Despre QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="434"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished">Acest program este publicat sub licenţă GNU/GPL.</translation>
+        <translation>Acest program este publicat sub licenţă GNU/GPL.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="449"/>
@@ -57,7 +57,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectrotech, o aplicaţie pentru realizarea schemelor electrice.</translation>
+        <translation>QElectrotech, o aplicaţie pentru realizarea schemelor electrice.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <source>Idée originale</source>
-        <translation type="unfinished">Ideea originală</translation>
+        <translation>Ideea originală</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
@@ -88,7 +88,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="136"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="139"/>
         <source>Développement</source>
-        <translation type="unfinished">Dezvoltare</translation>
+        <translation>Dezvoltare</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
@@ -109,76 +109,76 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="94"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished">Traducerea în spaniolă</translation>
+        <translation>Traducerea în spaniolă</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished">Traducerea în rusă</translation>
+        <translation>Traducerea în rusă</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished">Traducerea în portugheză</translation>
+        <translation>Traducerea în portugheză</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished">Traducerea în cehă</translation>
+        <translation>Traducerea în cehă</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished">Traducerea în poloneză</translation>
+        <translation>Traducerea în poloneză</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished">Traducerea în germană</translation>
+        <translation>Traducerea în germană</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished">Traducerea în română</translation>
+        <translation>Traducerea în română</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished">Traducerea în italiană</translation>
+        <translation>Traducerea în italiană</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished">Traducerea în arabă</translation>
+        <translation>Traducerea în arabă</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished">Traducerea în croată</translation>
+        <translation>Traducerea în croată</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished">Traducerea în catalană</translation>
+        <translation>Traducerea în catalană</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished">Traducerea în greacă</translation>
+        <translation>Traducerea în greacă</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished">Traducerea în olandeză</translation>
+        <translation>Traducerea în olandeză</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished">Traducerea în flamandă</translation>
+        <translation>Traducerea în flamandă</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
@@ -204,61 +204,61 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="124"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished">Pachete Fedora și Red Hat</translation>
+        <translation>Pachete Fedora și Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="125"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished">Pachete Mageia</translation>
+        <translation>Pachete Mageia</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="126"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="127"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="128"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished">Pachete pentru Debian</translation>
+        <translation>Pachete pentru Debian</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="129"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished">Pachete Gentoo</translation>
+        <translation>Pachete Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished">Pachete OS/2</translation>
+        <translation>Pachete OS/2</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished">Pachete FreeBSD</translation>
+        <translation>Pachete FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished">Pachete MAC OS X</translation>
+        <translation>Pachete MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished">Pachete Archlinux AUR</translation>
+        <translation>Pachete Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Icônes</source>
-        <translation type="unfinished">Pictograme</translation>
+        <translation>Pictograme</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="137"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
         <source>Documentation</source>
-        <translation type="unfinished">Documentație</translation>
+        <translation>Documentație</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="140"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">Colecție de elemente</translation>
+        <translation>Colecție de elemente</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="141"/>
@@ -328,7 +328,7 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation type="unfinished">Stânga</translation>
+        <translation>Stânga</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
@@ -340,13 +340,13 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation type="unfinished">Dreapta</translation>
+        <translation>Dreapta</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation type="unfinished">Font :</translation>
+        <translation>Font :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
@@ -364,7 +364,7 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="156"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Aliniament :</translation>
+        <translation>Aliniament :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="136"/>
@@ -448,7 +448,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Conductor</translation>
+        <translation>Conductor</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
@@ -463,7 +463,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="153"/>
@@ -476,7 +476,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
@@ -558,7 +558,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
@@ -607,7 +607,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Dispunere în pagină</translation>
+        <translation>Dispunere în pagină</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
@@ -622,29 +622,29 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="65"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">listă componente_</translation>
+        <translation>listă componente_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Salvează ca... </translation>
+        <translation>Salvează ca... </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Fișiere csv (*.csv)</translation>
+        <translation>Fișiere csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="75"/>
         <source>Erreur</source>
-        <translation type="unfinished">Eroare</translation>
+        <translation>Eroare</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="76"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Nu se poate înlocui fișierul!
+        <translation>Nu se poate înlocui fișierul!
 
 </translation>
     </message>
@@ -808,7 +808,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation type="unfinished">Tip</translation>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
@@ -912,7 +912,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
         <source>éditer les numérotations</source>
-        <translation type="unfinished">Editare numerotare</translation>
+        <translation>Editare numerotare</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
@@ -984,7 +984,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="518"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="511"/>
@@ -1000,7 +1000,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="457"/>
         <source>Apparence</source>
-        <translation type="unfinished">Aspect</translation>
+        <translation>Aspect</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="528"/>
@@ -1048,7 +1048,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -1059,12 +1059,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">Nume</translation>
+        <translation>Nume</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">Valoare</translation>
+        <translation>Valoare</translation>
     </message>
 </context>
 <context>
@@ -1170,7 +1170,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="43"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="53"/>
@@ -1183,7 +1183,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
@@ -1260,7 +1260,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="66"/>
         <source>Valeur</source>
-        <translation type="unfinished">Valoare</translation>
+        <translation>Valoare</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="140"/>
@@ -1297,7 +1297,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="159"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="173"/>
@@ -1379,14 +1379,14 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="719"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1523"/>
         <source>Gauche</source>
-        <translation type="unfinished">Stânga</translation>
+        <translation>Stânga</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="643"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="720"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1524"/>
         <source>Droite</source>
-        <translation type="unfinished">Dreapta</translation>
+        <translation>Dreapta</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="645"/>
@@ -1456,7 +1456,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="118"/>
@@ -1592,7 +1592,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1703"/>
         <source>Gauche</source>
-        <translation type="unfinished">Stânga</translation>
+        <translation>Stânga</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1704"/>
@@ -1602,7 +1602,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1705"/>
         <source>Droite</source>
-        <translation type="unfinished">Dreapta</translation>
+        <translation>Dreapta</translation>
     </message>
 </context>
 <context>
@@ -1662,12 +1662,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/elementdialog.cpp" line="78"/>
         <source>Titre</source>
-        <translation type="unfinished">Titlu</translation>
+        <translation>Titlu</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="79"/>
         <source>Label</source>
-        <translation type="unfinished">Etichetă</translation>
+        <translation>Etichetă</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="113"/>
@@ -1677,7 +1677,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/elementdialog.cpp" line="113"/>
         <source>Nom du nouvel élément</source>
-        <translation type="unfinished">Numele elementului nou</translation>
+        <translation>Numele elementului nou</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="232"/>
@@ -1751,7 +1751,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="50"/>
         <source>Informations</source>
-        <translation type="unfinished">Informații</translation>
+        <translation>Informații</translation>
     </message>
 </context>
 <context>
@@ -1764,7 +1764,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <source>Type</source>
-        <translation type="unfinished">Tip</translation>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
@@ -1804,12 +1804,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
         <source>Informations</source>
-        <translation type="unfinished">Informații</translation>
+        <translation>Informații</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="137"/>
         <source>Nom</source>
-        <translation type="unfinished">Nume</translation>
+        <translation>Nume</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="142"/>
@@ -1903,7 +1903,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="347"/>
         <source>Général</source>
-        <translation type="unfinished">General</translation>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="357"/>
@@ -1927,7 +1927,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Tip : %1
+        <translation>Tip : %1
 </translation>
     </message>
     <message>
@@ -1969,12 +1969,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Găsește în panou</translation>
+        <translation>Găsește în panou</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="392"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Editare element</translation>
+        <translation>Editare element</translation>
     </message>
 </context>
 <context>
@@ -1982,7 +1982,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
@@ -2273,17 +2273,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="145"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished">Deschide dosarul corespunzător</translation>
+        <translation>Deschide dosarul corespunzător</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="147"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Editare element</translation>
+        <translation>Editare element</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="149"/>
         <source>Supprimer l&apos;élément</source>
-        <translation type="unfinished">Șterge elementul</translation>
+        <translation>Șterge elementul</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="151"/>
@@ -2293,7 +2293,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="153"/>
         <source>Recharger les collections</source>
-        <translation type="unfinished">Reâncarcă colecțiile</translation>
+        <translation>Reâncarcă colecțiile</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="155"/>
@@ -2308,7 +2308,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="159"/>
         <source>Nouvel élément</source>
-        <translation type="unfinished">Element nou</translation>
+        <translation>Element nou</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="161"/>
@@ -2328,13 +2328,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="180"/>
         <source>Rechercher</source>
-        <translation type="unfinished">Caută</translation>
+        <translation>Caută</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="390"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Se șterge elementul?</translation>
+        <translation>Se șterge elementul?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
@@ -2347,13 +2347,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="406"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Se șterge elementul</translation>
+        <translation>Se șterge elementul</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="408"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">A eșuat ștergerea elementului.</translation>
+        <translation>A eșuat ștergerea elementului.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="433"/>
@@ -2562,7 +2562,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
@@ -2790,7 +2790,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
@@ -2866,7 +2866,7 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Text etichetă</translation>
+        <translation>Text etichetă</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
@@ -2879,7 +2879,7 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
@@ -2997,7 +2997,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation type="unfinished">Evidențiază elementele integrate recent în panou</translation>
+        <translation>Evidențiază elementele integrate recent în panou</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="281"/>
@@ -3013,7 +3013,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
@@ -3100,7 +3100,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <source>Police :</source>
-        <translation type="unfinished">Font :</translation>
+        <translation>Font :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
@@ -3361,7 +3361,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
@@ -3377,7 +3377,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="80"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="326"/>
         <source>Aucun</source>
-        <translation type="unfinished">Nimic</translation>
+        <translation>Nimic</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
@@ -3432,7 +3432,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Text etichetă</translation>
+        <translation>Text etichetă</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3454,19 +3454,19 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="350"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="493"/>
         <source>Gauche</source>
-        <translation type="unfinished">Stânga</translation>
+        <translation>Stânga</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="357"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="500"/>
         <source>Centré</source>
-        <translation type="unfinished">Centru</translation>
+        <translation>Centru</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="364"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="507"/>
         <source>Droite</source>
-        <translation type="unfinished">Dreapta</translation>
+        <translation>Dreapta</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
@@ -3482,7 +3482,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="486"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Aliniament :</translation>
+        <translation>Aliniament :</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="557"/>
@@ -3547,22 +3547,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Blochează poziția</translation>
+        <translation>Blochează poziția</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation type="unfinished">Dimensiunea imaginii</translation>
+        <translation>Dimensiunea imaginii</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="142"/>
@@ -3575,12 +3575,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Integrarea unui element</translation>
+        <translation>Integrarea unui element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation type="unfinished">Elementul este deja integrat în proiect. Totuși, versiunea pe care încercați să o introduceți pare diferită. Ce doriți să faceți ?</translation>
+        <translation>Elementul este deja integrat în proiect. Totuși, versiunea pe care încercați să o introduceți pare diferită. Ce doriți să faceți ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
@@ -3590,7 +3590,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation type="unfinished">Integrează elementul adăugat</translation>
+        <translation>Integrează elementul adăugat</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
@@ -3600,7 +3600,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation type="unfinished">Utilizează în paralel cele două elemente</translation>
+        <translation>Utilizează în paralel cele două elemente</translation>
     </message>
 </context>
 <context>
@@ -3613,7 +3613,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Text etichetă</translation>
+        <translation>Text etichetă</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
@@ -3626,7 +3626,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
@@ -3646,13 +3646,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle :</source>
-        <translation type="unfinished">Unghi:</translation>
+        <translation>Unghi:</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
@@ -3673,7 +3673,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
@@ -3837,7 +3837,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
@@ -3897,13 +3897,13 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="439"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="447"/>
         <source>Label</source>
-        <translation type="unfinished">Etichetă</translation>
+        <translation>Etichetă</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="440"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="448"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentariu</translation>
+        <translation>Comentariu</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="449"/>
@@ -3955,7 +3955,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="462"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="473"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Culoare conductor</translation>
+        <translation>Culoare conductor</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
@@ -3996,12 +3996,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="202"/>
         <source>Report de folio</source>
-        <translation type="unfinished">Raport folio</translation>
+        <translation>Raport folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="204"/>
         <source>Référence croisée (esclave)</source>
-        <translation type="unfinished">Referință încrucișată (sclav)</translation>
+        <translation>Referință încrucișată (sclav)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -4014,7 +4014,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/machine_info.cpp" line="123"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Compilație : </translation>
+        <translation>Compilație : </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="343"/>
@@ -4152,7 +4152,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
         <location filename="../sources/ui/multipastedialog.ui" line="51"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="32"/>
@@ -4208,22 +4208,22 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">Limbă</translation>
+        <translation>Limbă</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished">Adaugă o linie</translation>
+        <translation>Adaugă o linie</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
@@ -4236,7 +4236,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="95"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="96"/>
@@ -4414,7 +4414,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="251"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="392"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="118"/>
@@ -4565,7 +4565,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
@@ -4804,7 +4804,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
@@ -4814,7 +4814,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Reâncarcă</translation>
+        <translation>Reâncarcă</translation>
     </message>
 </context>
 <context>
@@ -4859,12 +4859,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Selectează tot</translation>
+        <translation>Selectează tot</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Deselectează tot</translation>
+        <translation>Deselectează tot</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
@@ -4889,22 +4889,22 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Desenează cadrul</translation>
+        <translation>Desenează cadrul</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Desenează cartușul</translation>
+        <translation>Desenează cartușul</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Păstrează culorile conductorilor</translation>
+        <translation>Păstrează culorile conductorilor</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Desenează bornele</translation>
+        <translation>Desenează bornele</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -4919,7 +4919,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Utilizează toată pagina</translation>
+        <translation>Utilizează toată pagina</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
@@ -4939,52 +4939,52 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Potrivește lățimea</translation>
+        <translation>Potrivește lățimea</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Potrivește pagina</translation>
+        <translation>Potrivește pagina</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Scade zoom</translation>
+        <translation>Scade zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Mărește zoom</translation>
+        <translation>Mărește zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">Peisaj</translation>
+        <translation>Peisaj</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">Portret</translation>
+        <translation>Portret</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">Prima pagină</translation>
+        <translation>Prima pagină</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Pagina anterioară</translation>
+        <translation>Pagina anterioară</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Pagina următoare</translation>
+        <translation>Pagina următoare</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Ultima pagină</translation>
+        <translation>Ultima pagină</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
@@ -4994,12 +4994,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Afișează două pagini</translation>
+        <translation>Afișează două pagini</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Afișează o previzualizare cu toate paginile</translation>
+        <translation>Afișează o previzualizare cu toate paginile</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
@@ -5010,18 +5010,18 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/print/projectprintwindow.cpp" line="64"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Opțiuni tipărire</translation>
+        <translation>Opțiuni tipărire</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="105"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">proiect</translation>
+        <translation>proiect</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="136"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Tipărește</translation>
+        <translation>Tipărește</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -5251,7 +5251,7 @@ Doriți să se salveze modificările ?</translation>
         <location filename="../sources/qetapp.cpp" line="199"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished">LTR</translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="415"/>
@@ -5299,17 +5299,17 @@ Doriți să se salveze modificările ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="478"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="514"/>
         <source>Titre</source>
-        <translation type="unfinished">Titlu</translation>
+        <translation>Titlu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="515"/>
         <source>Auteur</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="516"/>
@@ -5319,7 +5319,7 @@ Doriți să se salveze modificările ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="517"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="520"/>
@@ -5329,7 +5329,7 @@ Doriți să se salveze modificările ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="521"/>
         <source>Date</source>
-        <translation type="unfinished">Dată</translation>
+        <translation>Dată</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="522"/>
@@ -5340,13 +5340,13 @@ Doriți să se salveze modificările ?</translation>
         <location filename="../sources/qetapp.cpp" line="538"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">Cartușe QET</translation>
+        <translation>Cartușe QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="558"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">Cartușe utilizator</translation>
+        <translation>Cartușe utilizator</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1300"/>
@@ -5494,7 +5494,7 @@ Doriți să se salveze modificările ?</translation>
         <location filename="../sources/qetapp.cpp" line="2196"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished">Editoare cartuș</translation>
+        <translation>Editoare cartuș</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2245"/>
@@ -5773,7 +5773,7 @@ Opțiuni disponibile:
         <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation type="unfinished">Elimină un rând</translation>
+        <translation>Elimină un rând</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
@@ -5864,7 +5864,7 @@ Opțiuni disponibile:
         <location filename="../sources/qetdiagrameditor.cpp" line="733"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Adâncime</translation>
+        <translation>Adâncime</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1393"/>
@@ -6045,12 +6045,12 @@ Opțiuni disponibile:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
         <source>Ajouter un rectangle</source>
-        <translation type="unfinished">Adaugă un dreptunghi</translation>
+        <translation>Adaugă un dreptunghi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
         <source>Ajouter une ellipse</source>
-        <translation type="unfinished">Adaugă o elipsă</translation>
+        <translation>Adaugă o elipsă</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="647"/>
@@ -6222,7 +6222,7 @@ Opțiuni disponibile:
         <location filename="../sources/qetdiagrameditor.cpp" line="149"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Proiecte</translation>
+        <translation>Proiecte</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="181"/>
@@ -6245,7 +6245,7 @@ Opțiuni disponibile:
         <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation type="unfinished">Adaugă o linie</translation>
+        <translation>Adaugă o linie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="464"/>
@@ -7989,22 +7989,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="717"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Adu în prim plan</translation>
+        <translation>Adu în prim plan</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="718"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Crește</translation>
+        <translation>Crește</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="719"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Micșorează</translation>
+        <translation>Micșorează</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="720"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Trimite în fundal</translation>
+        <translation>Trimite în fundal</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="722"/>
@@ -8029,22 +8029,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="727"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="728"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="729"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="730"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
@@ -8322,7 +8322,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementtextsmover.cpp" line="150"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
         <source> et</source>
-        <translation type="unfinished"> și </translation>
+        <translation> și </translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="153"/>
@@ -8337,19 +8337,19 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Salvează ca... </translation>
+        <translation>Salvează ca... </translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Fișiere csv (*.csv)</translation>
+        <translation>Fișiere csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="62"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Nu se poate înlocui fișierul!
+        <translation>Nu se poate înlocui fișierul!
 
 </translation>
     </message>
@@ -8366,12 +8366,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="123"/>
         <source>Collection QET</source>
-        <translation type="unfinished">Colecție QET</translation>
+        <translation>Colecție QET</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="125"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished">Colecție utilizator</translation>
+        <translation>Colecție utilizator</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="127"/>
@@ -8381,7 +8381,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Proiect fără titlu</translation>
+        <translation>Proiect fără titlu</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
@@ -8452,7 +8452,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Rotește</translation>
+        <translation>Rotește</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
@@ -8463,7 +8463,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="114"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">Orientare texte selectate</translation>
+        <translation>Orientare texte selectate</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="64"/>
@@ -8655,7 +8655,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Adaugă un rezumat</translation>
+        <translation>Adaugă un rezumat</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
@@ -8791,7 +8791,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="93"/>
         <source>Largeur :</source>
-        <translation type="unfinished">Lățime :</translation>
+        <translation>Lățime :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="103"/>
@@ -8807,7 +8807,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="32"/>
         <source>Hauteur :</source>
-        <translation type="unfinished">Înălțime :</translation>
+        <translation>Înălțime :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.cpp" line="172"/>
@@ -8830,22 +8830,22 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation type="unfinished">Șterge</translation>
+        <translation>Șterge</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation type="unfinished">Redenumește</translation>
+        <translation>Redenumește</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation type="unfinished">Anulează</translation>
+        <translation>Anulează</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Text etichetă</translation>
+        <translation>Text etichetă</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="31"/>
@@ -8858,7 +8858,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished">Tip</translation>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
@@ -8923,13 +8923,13 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="278"/>
         <source>Texte visible</source>
-        <translation type="unfinished">Text vizibil</translation>
+        <translation>Text vizibil</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="81"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="268"/>
         <source>Angle :</source>
-        <translation type="unfinished">Unghi:</translation>
+        <translation>Unghi:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
@@ -8944,7 +8944,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="98"/>
         <source>Texte :</source>
-        <translation type="unfinished">Text :</translation>
+        <translation>Text :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="68"/>
@@ -8959,7 +8959,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Culoare conductor</translation>
+        <translation>Culoare conductor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -8975,58 +8975,58 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">Monofilar</translation>
+        <translation>Monofilar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="357"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Împământare neutră de protecție</translation>
+        <translation>Împământare neutră de protecție</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="367"/>
         <source>Phase</source>
-        <translation type="unfinished">Faze</translation>
+        <translation>Faze</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="370"/>
         <source>phase</source>
-        <translation type="unfinished">faza</translation>
+        <translation>faza</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="381"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="414"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">Număr de faze</translation>
+        <translation>Număr de faze</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="394"/>
         <source>Neutre</source>
-        <translation type="unfinished">Neutru</translation>
+        <translation>Neutru</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="397"/>
         <source>neutre</source>
-        <translation type="unfinished">nul</translation>
+        <translation>nul</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="430"/>
         <source>Terre</source>
-        <translation type="unfinished">Împământare</translation>
+        <translation>Împământare</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="433"/>
         <source>terre</source>
-        <translation type="unfinished">împământare</translation>
+        <translation>împământare</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Text etichetă</translation>
+        <translation>Text etichetă</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="454"/>
@@ -9036,7 +9036,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="465"/>
         <source>Apparence</source>
-        <translation type="unfinished">Aspect</translation>
+        <translation>Aspect</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="471"/>
@@ -9047,12 +9047,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="478"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="554"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Culoare :</translation>
+        <translation>Culoare :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="508"/>
         <source>Style :</source>
-        <translation type="unfinished">Stil :</translation>
+        <translation>Stil :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="515"/>
@@ -9073,25 +9073,25 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="574"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="203"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">Linie continuă</translation>
+        <translation>Linie continuă</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="206"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Linie punctată</translation>
+        <translation>Linie punctată</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="209"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished">Puncte și linii</translation>
+        <translation>Puncte și linii</translation>
     </message>
 </context>
 <context>
@@ -9107,12 +9107,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Principal</translation>
+        <translation>Principal</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
@@ -9127,12 +9127,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">Fișier :</translation>
+        <translation>Fișier :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibil ca % titlu pentru modelele de cartușe</translation>
+        <translation>Disponibil ca % titlu pentru modelele de cartușe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -9149,17 +9149,17 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibil ca % autor pentru modelele de cartușe</translation>
+        <translation>Disponibil ca % autor pentru modelele de cartușe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Autor :</translation>
+        <translation>Autor :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">Dată :</translation>
+        <translation>Dată :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
@@ -9174,32 +9174,32 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibil ca % nume fișier pentru modelele de cartușe</translation>
+        <translation>Disponibil ca % nume fișier pentru modelele de cartușe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">Folio :</translation>
+        <translation>Folio :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Fără dată</translation>
+        <translation>Fără dată</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibil ca % date pentru modelele de cartușe</translation>
+        <translation>Disponibil ca % date pentru modelele de cartușe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Dată fixă :</translation>
+        <translation>Dată fixă :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Configurează la data curentă</translation>
+        <translation>Configurează la data curentă</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
@@ -9223,7 +9223,7 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Titlu :</translation>
+        <translation>Titlu :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -9239,13 +9239,13 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Personalizat</translation>
+        <translation>Personalizat</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">Puteți defini aici numele/valoarea personalizată de utilizat în cartuș. Ex. :
+        <translation>Puteți defini aici numele/valoarea personalizată de utilizat în cartuș. Ex. :
 asociind numele &quot;volta&quot; cu valoarea &quot;1745&quot; se va înlocui %{volta} cu 1745 în cartuș.</translation>
     </message>
 </context>
@@ -9279,7 +9279,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
@@ -9324,7 +9324,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
@@ -9364,12 +9364,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Conductor</translation>
+        <translation>Conductor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
@@ -9379,7 +9379,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Înlocuiește</translation>
+        <translation>Înlocuiește</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
@@ -9505,17 +9505,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation type="unfinished">Numerotări disponibile :</translation>
+        <translation>Numerotări disponibile :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation type="unfinished">Numele noii numerotări</translation>
+        <translation>Numele noii numerotări</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation type="unfinished">Șterge numerotarea</translation>
+        <translation>Șterge numerotarea</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
@@ -9599,7 +9599,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
@@ -9614,27 +9614,27 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
         <source>Normal</source>
-        <translation type="unfinished">Normal</translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
         <source>Tiret</source>
-        <translation type="unfinished">Liniat</translation>
+        <translation>Liniat</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
         <source>Pointillé</source>
-        <translation type="unfinished">Punctat</translation>
+        <translation>Punctat</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
         <source>Traits et points</source>
-        <translation type="unfinished">Puncte și linii</translation>
+        <translation>Puncte și linii</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
         <source>Traits points points</source>
-        <translation type="unfinished">Linii puncte puncte</translation>
+        <translation>Linii puncte puncte</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
@@ -9644,7 +9644,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
         <source>Type</source>
-        <translation type="unfinished">Tip</translation>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
@@ -9665,7 +9665,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="128"/>
         <source>Aucun</source>
-        <translation type="unfinished">Nimic</translation>
+        <translation>Nimic</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="133"/>
@@ -9710,12 +9710,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="173"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Orizontal</translation>
+        <translation>Orizontal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="178"/>
         <source>Vertical</source>
-        <translation type="unfinished">Vertical</translation>
+        <translation>Vertical</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="183"/>
@@ -9740,12 +9740,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="226"/>
         <source>Verrouiller la position</source>
-        <translation type="unfinished">Blochează poziția</translation>
+        <translation>Blochează poziția</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="233"/>
         <source>Polygone fermé</source>
-        <translation type="unfinished">Poligon închis</translation>
+        <translation>Poligon închis</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
@@ -9815,7 +9815,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Gris</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Gri</translation>
+        <translation>Gri</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
@@ -11773,7 +11773,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formular</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
@@ -11907,7 +11907,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
         <source>Police :</source>
-        <translation type="unfinished">Font :</translation>
+        <translation>Font :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
@@ -11932,7 +11932,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Culoare :</translation>
+        <translation>Culoare :</translation>
     </message>
 </context>
 <context>
@@ -12297,7 +12297,7 @@ asociind numele &quot;volta&quot; cu valoarea &quot;1745&quot; se va înlocui %{
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="478"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished">Fiecare celulă a unui cartuș afișează o valoare, facultativ precedată de o etichetă. Ambele pot fi traduse în câteva limbi.&lt;br/&gt;Ceea ce editați curent este un&lt;em&gt;model&lt;/em&gt; de cartuș, evită introducerea datelor brute direct: este preferată introducerea variabilelor precum %{nume-variabilă}, care va fi înlocuită după aceea cu valorile adecvate din folio.</translation>
+        <translation>Fiecare celulă a unui cartuș afișează o valoare, facultativ precedată de o etichetă. Ambele pot fi traduse în câteva limbi.&lt;br/&gt;Ceea ce editați curent este un&lt;em&gt;model&lt;/em&gt; de cartuș, evită introducerea datelor brute direct: este preferată introducerea variabilelor precum %{nume-variabilă}, care va fi înlocuită după aceea cu valorile adecvate din folio.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="322"/>
@@ -12709,7 +12709,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="179"/>
         <source>Esclave</source>
-        <translation type="unfinished">Sclav</translation>
+        <translation>Sclav</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="189"/>
@@ -13016,17 +13016,17 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Conductor</translation>
+        <translation>Conductor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>

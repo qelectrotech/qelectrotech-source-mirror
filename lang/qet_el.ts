@@ -10051,7 +10051,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Red : Red</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Κόκκινο: Κόκκινο</translation>
+        <translation>Κόκκινο: Κόκκινο</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>

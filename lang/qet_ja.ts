@@ -103,7 +103,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Collection</source>
-        <translation type="unfinished">コレクション</translation>
+        <translation>コレクション</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
@@ -607,7 +607,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">ダイアログ</translation>
+        <translation>ダイアログ</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -661,7 +661,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="121"/>
         <source>Position du folio</source>
-        <translation type="unfinished">フォリオ位置</translation>
+        <translation>フォリオ位置</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="123"/>
@@ -2574,7 +2574,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">フォーム</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
@@ -3872,7 +3872,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">フォーム</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
@@ -3908,7 +3908,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">長さ :</translation>
+        <translation>長さ :</translation>
     </message>
 </context>
 <context>
@@ -4896,17 +4896,17 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">印刷するフォリオ :</translation>
+        <translation>印刷するフォリオ :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">全て選択</translation>
+        <translation>全て選択</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">全て解除</translation>
+        <translation>全て解除</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
@@ -4931,22 +4931,22 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">図枠を描く</translation>
+        <translation>図枠を描く</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">表題欄を描く</translation>
+        <translation>表題欄を描く</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">導体の色を保持</translation>
+        <translation>導体の色を保持</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">端子を描く</translation>
+        <translation>端子を描く</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -4956,12 +4956,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">フォリオをページに合わせる</translation>
+        <translation>フォリオをページに合わせる</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">ページの全体を利用</translation>
+        <translation>ページの全体を利用</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
@@ -4981,52 +4981,52 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">幅に合わせる</translation>
+        <translation>幅に合わせる</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">ページに合わせる</translation>
+        <translation>ページに合わせる</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">ズームアウト</translation>
+        <translation>ズームアウト</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">ズームイン</translation>
+        <translation>ズームイン</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">横</translation>
+        <translation>横</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">縦</translation>
+        <translation>縦</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">最初のページ</translation>
+        <translation>最初のページ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">前のページ</translation>
+        <translation>前のページ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">次のページ</translation>
+        <translation>次のページ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">最後のページ</translation>
+        <translation>最後のページ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
@@ -5036,12 +5036,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">見開きページ表示</translation>
+        <translation>見開きページ表示</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">全てのページを表示</translation>
+        <translation>全てのページを表示</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
@@ -5052,18 +5052,18 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/print/projectprintwindow.cpp" line="64"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">印刷オプション</translation>
+        <translation>印刷オプション</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="105"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">プロジェクト</translation>
+        <translation>プロジェクト</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="136"/>
         <source>Imprimer</source>
-        <translation type="unfinished">印刷</translation>
+        <translation>印刷</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -5078,7 +5078,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">無題のフォリオ</translation>
+        <translation>無題のフォリオ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>

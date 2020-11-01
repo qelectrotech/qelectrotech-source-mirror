@@ -103,7 +103,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Collection</source>
-        <translation type="unfinished">Coleção</translation>
+        <translation>Coleção</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished">Exibir</translation>
+        <translation>Exibir</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
@@ -317,42 +317,42 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
         <source>Nom du tableau</source>
-        <translation type="unfinished">Nome da tabela</translation>
+        <translation>Nome da tabela</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="73"/>
         <source>Texte des en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation type="unfinished">Esquerda</translation>
+        <translation>Esquerda</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="169"/>
         <source>Centre</source>
-        <translation type="unfinished">Centro</translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation type="unfinished">Direita</translation>
+        <translation>Direita</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation type="unfinished">Fonte:</translation>
+        <translation>Fonte:</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="149"/>
         <source>Éditer</source>
-        <translation type="unfinished">Editar</translation>
+        <translation>Editar</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="119"/>
@@ -374,12 +374,12 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="202"/>
         <source>Configuration</source>
-        <translation type="unfinished">Configuração</translation>
+        <translation>Configuração</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="41"/>
         <source>Contenu</source>
-        <translation type="unfinished">Conteúdo</translation>
+        <translation>Conteúdo</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="168"/>
@@ -607,7 +607,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Diálogo</translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -661,7 +661,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="121"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Posição da página</translation>
+        <translation>Posição da página</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="123"/>
@@ -1029,7 +1029,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
         <source>Configuration</source>
-        <translation type="unfinished">Configuração</translation>
+        <translation>Configuração</translation>
     </message>
 </context>
 <context>
@@ -1935,7 +1935,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Tipo: %1
+        <translation>Tipo: %1
 </translation>
     </message>
     <message>
@@ -2575,7 +2575,7 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
@@ -3872,7 +3872,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
@@ -3908,7 +3908,7 @@ Por favor, use o editor avançado para isso.</translation>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Largura:</translation>
+        <translation>Largura:</translation>
     </message>
 </context>
 <context>
@@ -4035,7 +4035,7 @@ Por favor, use o editor avançado para isso.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="462"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="473"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Cor do condutor</translation>
+        <translation>Cor do condutor</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
@@ -4049,7 +4049,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="123"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Compilação: </translation>
+        <translation>Compilação: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="343"/>
@@ -4833,12 +4833,12 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="347"/>
         <source>Position</source>
-        <translation type="unfinished">Posição</translation>
+        <translation>Posição</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="349"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Posição da página</translation>
+        <translation>Posição da página</translation>
     </message>
 </context>
 <context>
@@ -4846,17 +4846,17 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished">Consulta</translation>
+        <translation>Consulta</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Recarregar</translation>
+        <translation>Recarregar</translation>
     </message>
 </context>
 <context>
@@ -4896,17 +4896,17 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Páginas a imprimir:</translation>
+        <translation>Páginas a imprimir:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Selecionar todos</translation>
+        <translation>Selecionar todos</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Desmarcar todos</translation>
+        <translation>Desmarcar todos</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
@@ -4931,22 +4931,22 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Desenhar a borda</translation>
+        <translation>Desenhar a borda</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Desenhar a moldura</translation>
+        <translation>Desenhar a moldura</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Manter as cores dos condutores</translation>
+        <translation>Manter as cores dos condutores</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Desenhar os terminais</translation>
+        <translation>Desenhar os terminais</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -4956,12 +4956,12 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Ajustar ao tamanho da folha</translation>
+        <translation>Ajustar ao tamanho da folha</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Utilizar página inteira</translation>
+        <translation>Utilizar página inteira</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
@@ -4981,52 +4981,52 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Ajustar à largura</translation>
+        <translation>Ajustar à largura</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Ajustar à página</translation>
+        <translation>Ajustar à página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Diminuir Zoom</translation>
+        <translation>Diminuir Zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Aumentar Zoom</translation>
+        <translation>Aumentar Zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">Paisagem</translation>
+        <translation>Paisagem</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">Retrato</translation>
+        <translation>Retrato</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">Primeira página</translation>
+        <translation>Primeira página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Página anterior</translation>
+        <translation>Página anterior</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Página seguinte</translation>
+        <translation>Página seguinte</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Última página</translation>
+        <translation>Última página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
@@ -5036,12 +5036,12 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Exibir duas páginas</translation>
+        <translation>Exibir duas páginas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Exibir uma visualização geral de todas as páginas</translation>
+        <translation>Exibir uma visualização geral de todas as páginas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
@@ -5052,18 +5052,18 @@ As seguintes variáveis ​​são incompatíveis:
         <location filename="../sources/print/projectprintwindow.cpp" line="64"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Opções de impressão</translation>
+        <translation>Opções de impressão</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="105"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">projeto</translation>
+        <translation>projeto</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="136"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Imprimir</translation>
+        <translation>Imprimir</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -5078,7 +5078,7 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Página sem título</translation>
+        <translation>Página sem título</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
@@ -5294,7 +5294,7 @@ Você deseja salvar as alterações ?</translation>
         <location filename="../sources/qetapp.cpp" line="199"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished">LTR</translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="415"/>
@@ -5367,7 +5367,7 @@ Você deseja salvar as alterações ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="520"/>
         <source>Indice de révision</source>
-        <translation type="unfinished">Índice de revisão</translation>
+        <translation>Índice de revisão</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="521"/>
@@ -5377,19 +5377,19 @@ Você deseja salvar as alterações ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="522"/>
         <source>Position</source>
-        <translation type="unfinished">Posição</translation>
+        <translation>Posição</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="538"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">Blocos de título do QET</translation>
+        <translation>Blocos de título do QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="558"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">Blocos de título do usuário</translation>
+        <translation>Blocos de título do usuário</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1300"/>
@@ -8703,7 +8703,7 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2417"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">Erro ao abrir qet_tb_generator plugin</translation>
+        <translation>Erro ao abrir qet_tb_generator plugin</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2381"/>
@@ -8718,7 +8718,7 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Adicionar um resumo</translation>
+        <translation>Adicionar um resumo</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
@@ -9023,7 +9023,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Cor do condutor</translation>
+        <translation>Cor do condutor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>

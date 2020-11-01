@@ -6,7 +6,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation type="unfinished">حول برنامج QElectrotech</translation>
+        <translation>حول برنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="434"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished">هذا البرنامج تحت الترخيص  GNU/GPL.</translation>
+        <translation>هذا البرنامج تحت الترخيص  GNU/GPL.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="449"/>
@@ -57,7 +57,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectrotech, تطبيقة لرسم المُخططات الكهربائية . </translation>
+        <translation>QElectrotech, تطبيقة لرسم المُخططات الكهربائية . </translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
@@ -69,12 +69,12 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished">للتواصل :  &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+        <translation>للتواصل :  &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <source>Idée originale</source>
-        <translation type="unfinished">الفكرة الأصلية</translation>
+        <translation>الفكرة الأصلية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
@@ -88,113 +88,113 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="136"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="139"/>
         <source>Développement</source>
-        <translation type="unfinished">تطوير</translation>
+        <translation>تطوير</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished">محوّل DXF</translation>
+        <translation>محوّل DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished">نقطة توصيل</translation>
+        <translation>نقطة توصيل</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Collection</source>
-        <translation type="unfinished">مجموعة</translation>
+        <translation>مجموعة</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="94"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished">الترجمة للإسبانية</translation>
+        <translation>الترجمة للإسبانية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished">الرجمة للروسية</translation>
+        <translation>الرجمة للروسية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished">الترجمة للبرتغالية</translation>
+        <translation>الترجمة للبرتغالية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished">الترجمة للتشيكية</translation>
+        <translation>الترجمة للتشيكية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished">الترجمة للبولندية</translation>
+        <translation>الترجمة للبولندية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished">الترجمة للألمانية</translation>
+        <translation>الترجمة للألمانية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished">الترجمة للرومانية</translation>
+        <translation>الترجمة للرومانية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished">الترجمة للإيطالية</translation>
+        <translation>الترجمة للإيطالية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished">الترجمة للعربية</translation>
+        <translation>الترجمة للعربية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished">ترجمة للكرواتية</translation>
+        <translation>ترجمة للكرواتية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished">الترجمة للكتالونية</translation>
+        <translation>الترجمة للكتالونية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished">الترجمة لليونانية</translation>
+        <translation>الترجمة لليونانية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished">الترجمة للهولندية</translation>
+        <translation>الترجمة للهولندية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished">الترجمة للفلامون</translation>
+        <translation>الترجمة للفلامون</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished">الترجمة الدنماركية</translation>
+        <translation>الترجمة الدنماركية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished">الترجمة البرازيلية</translation>
+        <translation>الترجمة البرازيلية</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="114"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="115"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="116"/>
@@ -242,23 +242,23 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished">حزم  Archlinux AUR</translation>
+        <translation>حزم  Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Icônes</source>
-        <translation type="unfinished">إيقونات</translation>
+        <translation>إيقونات</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="137"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
         <source>Documentation</source>
-        <translation type="unfinished">توثيق</translation>
+        <translation>توثيق</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="140"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">مجموعة عناصر</translation>
+        <translation>مجموعة عناصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="141"/>
@@ -302,7 +302,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished">عرض</translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
@@ -328,25 +328,25 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation type="unfinished">يسار</translation>
+        <translation>يسار</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="169"/>
         <source>Centre</source>
-        <translation type="unfinished">مركز</translation>
+        <translation>مركز</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation type="unfinished">يمين</translation>
+        <translation>يمين</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation type="unfinished">خطّ :</translation>
+        <translation>خطّ :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
@@ -364,7 +364,7 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="156"/>
         <source>Alignement :</source>
-        <translation type="unfinished">اصطفاف :</translation>
+        <translation>اصطفاف :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="136"/>
@@ -607,12 +607,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">حوار</translation>
+        <translation>حوار</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
         <source>Mise en page</source>
-        <translation type="unfinished">تخطيط الصفحة</translation>
+        <translation>تخطيط الصفحة</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
@@ -627,35 +627,35 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="65"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">تسمية _</translation>
+        <translation>تسمية _</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">حفظ باسم...</translation>
+        <translation>حفظ باسم...</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">ملفات  csv (*.csv)</translation>
+        <translation>ملفات  csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="75"/>
         <source>Erreur</source>
-        <translation type="unfinished">خطأ</translation>
+        <translation>خطأ</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="76"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">استحالة تعويض الملفّ !
+        <translation>استحالة تعويض الملفّ !
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="119"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="121"/>
@@ -1055,7 +1055,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -1066,12 +1066,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">اسم</translation>
+        <translation>اسم</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">قيمة</translation>
+        <translation>قيمة</translation>
     </message>
 </context>
 <context>
@@ -1947,7 +1947,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">طراز : %1
+        <translation>طراز : %1
 </translation>
     </message>
     <message>
@@ -2002,7 +2002,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
@@ -2027,7 +2027,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished">حذف التحديد</translation>
+        <translation>حذف التحديد</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
@@ -2137,12 +2137,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="34"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="35"/>
         <source>Titre du folio</source>
-        <translation type="unfinished">عنوان الصفحة</translation>
+        <translation>عنوان الصفحة</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="36"/>
@@ -2591,7 +2591,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
@@ -2601,12 +2601,12 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
@@ -2918,7 +2918,7 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formule</source>
-        <translation type="unfinished">صيغة</translation>
+        <translation>صيغة</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -3068,7 +3068,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
         <source>Collections</source>
-        <translation type="unfinished">مجموعات</translation>
+        <translation>مجموعات</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
@@ -3133,7 +3133,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
         <source>Textes</source>
-        <translation type="unfinished">نصوص</translation>
+        <translation>نصوص</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
@@ -3145,7 +3145,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <source>Police :</source>
-        <translation type="unfinished">خطّ :</translation>
+        <translation>خطّ :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
@@ -3401,12 +3401,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished">عرض</translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
@@ -3417,7 +3417,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="80"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="326"/>
         <source>Aucun</source>
-        <translation type="unfinished">لا شيئ</translation>
+        <translation>لا شيئ</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
@@ -3472,7 +3472,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished">علامة نصيّة</translation>
+        <translation>علامة نصيّة</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3494,19 +3494,19 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="350"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="493"/>
         <source>Gauche</source>
-        <translation type="unfinished">يسار</translation>
+        <translation>يسار</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="357"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="500"/>
         <source>Centré</source>
-        <translation type="unfinished">مركزي</translation>
+        <translation>مركزي</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="364"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="507"/>
         <source>Droite</source>
-        <translation type="unfinished">يمين</translation>
+        <translation>يمين</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
@@ -3522,7 +3522,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="486"/>
         <source>Alignement :</source>
-        <translation type="unfinished">اصطفاف :</translation>
+        <translation>اصطفاف :</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="557"/>
@@ -3648,12 +3648,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">حوار</translation>
+        <translation>حوار</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">علامة نصيّة</translation>
+        <translation>علامة نصيّة</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
@@ -3666,7 +3666,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
@@ -3686,13 +3686,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle :</source>
-        <translation type="unfinished">الزاوية :</translation>
+        <translation>الزاوية :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
         <source>px</source>
-        <translation type="unfinished">px بيكسل</translation>
+        <translation>px بيكسل</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
@@ -3713,7 +3713,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
@@ -3732,22 +3732,22 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="182"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="187"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">تحريك حقل نصّي</translation>
+        <translation>تحريك حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="192"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">دوران حقل نصّي</translation>
+        <translation>دوران حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="196"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished">تعديل حقل نصّي</translation>
+        <translation>تعديل حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="202"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">تعديل حجم حقل نصّي</translation>
+        <translation>تعديل حجم حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="207"/>
@@ -3877,7 +3877,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
@@ -4035,7 +4035,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="462"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="473"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">لون الموصل</translation>
+        <translation>لون الموصل</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
@@ -4054,7 +4054,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/machine_info.cpp" line="123"/>
         <source>Compilation : </source>
-        <translation type="unfinished">تجميع :</translation>
+        <translation>تجميع :</translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="343"/>
@@ -4235,7 +4235,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">حوار</translation>
+        <translation>حوار</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
@@ -4248,22 +4248,22 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">اللغة</translation>
+        <translation>اللغة</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished">اضافة سطر</translation>
+        <translation>اضافة سطر</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
@@ -4494,7 +4494,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="253"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="394"/>
         <source>Installation</source>
-        <translation type="unfinished">تركيب</translation>
+        <translation>تركيب</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
@@ -4605,17 +4605,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
@@ -4625,12 +4625,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished">إضافة نقطة</translation>
+        <translation>إضافة نقطة</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished">حذف هذه النقطة</translation>
+        <translation>حذف هذه النقطة</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
@@ -4652,7 +4652,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="311"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished">إضافة نقطة لمتعدد الأضلع</translation>
+        <translation>إضافة نقطة لمتعدد الأضلع</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="330"/>
@@ -4834,7 +4834,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="347"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="349"/>
@@ -4847,7 +4847,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
@@ -4857,7 +4857,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">إعادة التحميل</translation>
+        <translation>إعادة التحميل</translation>
     </message>
 </context>
 <context>
@@ -4897,17 +4897,17 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">صفحات للطباعة :</translation>
+        <translation>صفحات للطباعة :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">وضع علامة على الكلّ</translation>
+        <translation>وضع علامة على الكلّ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">إزالة العلامة عن الكلّ</translation>
+        <translation>إزالة العلامة عن الكلّ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
@@ -4932,22 +4932,22 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">رسم الإطار</translation>
+        <translation>رسم الإطار</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">رسم إطار التعريف</translation>
+        <translation>رسم إطار التعريف</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">احتفظ بألوان الأسلاك الموصلة</translation>
+        <translation>احتفظ بألوان الأسلاك الموصلة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">رسم أطراف التوصيل</translation>
+        <translation>رسم أطراف التوصيل</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -4957,12 +4957,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">موائمة الصفحة مع الورقة</translation>
+        <translation>موائمة الصفحة مع الورقة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">استعمل كلّ الورقة</translation>
+        <translation>استعمل كلّ الورقة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
@@ -4982,52 +4982,52 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">مُلائمة العرض</translation>
+        <translation>مُلائمة العرض</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">مُلائمة الصفحة</translation>
+        <translation>مُلائمة الصفحة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">تصغير</translation>
+        <translation>تصغير</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">تكبير</translation>
+        <translation>تكبير</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">مشهد أفقي</translation>
+        <translation>مشهد أفقي</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">مشهد عمودي</translation>
+        <translation>مشهد عمودي</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">الصفحة الأولى</translation>
+        <translation>الصفحة الأولى</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">الصفحة السابقة</translation>
+        <translation>الصفحة السابقة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">الصفحة التالية</translation>
+        <translation>الصفحة التالية</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">الصفحة الأخيرة</translation>
+        <translation>الصفحة الأخيرة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
@@ -5037,12 +5037,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">عرض صفحتين</translation>
+        <translation>عرض صفحتين</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">عرض لمحة عن كلّ الصفحات</translation>
+        <translation>عرض لمحة عن كلّ الصفحات</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
@@ -5053,18 +5053,18 @@ Les variables suivantes sont incompatibles :
         <location filename="../sources/print/projectprintwindow.cpp" line="64"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">خيارات الطباعة</translation>
+        <translation>خيارات الطباعة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="105"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">مشروع</translation>
+        <translation>مشروع</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="136"/>
         <source>Imprimer</source>
-        <translation type="unfinished">طباعة</translation>
+        <translation>طباعة</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -5079,7 +5079,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">صفحة بدون عنوان</translation>
+        <translation>صفحة بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
@@ -5305,7 +5305,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="417"/>
         <location filename="../sources/qetapp.cpp" line="518"/>
         <source>Installation</source>
-        <translation type="unfinished">تركيب</translation>
+        <translation>تركيب</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="418"/>
@@ -5342,17 +5342,17 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="478"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="514"/>
         <source>Titre</source>
-        <translation type="unfinished">العنوان</translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="515"/>
         <source>Auteur</source>
-        <translation type="unfinished">المؤلف</translation>
+        <translation>المؤلف</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="516"/>
@@ -5362,7 +5362,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="517"/>
         <source>Folio</source>
-        <translation type="unfinished">صفحة</translation>
+        <translation>صفحة</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="520"/>
@@ -5372,24 +5372,24 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="521"/>
         <source>Date</source>
-        <translation type="unfinished">التاريخ</translation>
+        <translation>التاريخ</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="522"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="538"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">إطارات تعريف QET</translation>
+        <translation>إطارات تعريف QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="558"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">إطارات تعريف المستعمل</translation>
+        <translation>إطارات تعريف المستعمل</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1300"/>
@@ -8729,7 +8729,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2417"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">حدث خطأ أثناء تشغيل المكون الإضافي qet_tb_generator</translation>
+        <translation>حدث خطأ أثناء تشغيل المكون الإضافي qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2381"/>
@@ -8744,7 +8744,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">إضافة مُلخص</translation>
+        <translation>إضافة مُلخص</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
@@ -8947,7 +8947,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished">نوع</translation>
+        <translation>نوع</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
@@ -9002,23 +9002,23 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="261"/>
         <source>Fonction :</source>
-        <translation type="unfinished">وظيفة :</translation>
+        <translation>وظيفة :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="211"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished">صيغة النص:</translation>
+        <translation>صيغة النص:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="278"/>
         <source>Texte visible</source>
-        <translation type="unfinished">نص ظاهر</translation>
+        <translation>نص ظاهر</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="81"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="268"/>
         <source>Angle :</source>
-        <translation type="unfinished">الزاوية :</translation>
+        <translation>الزاوية :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
@@ -9028,12 +9028,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="52"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished">حجم النص:</translation>
+        <translation>حجم النص:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="98"/>
         <source>Texte :</source>
-        <translation type="unfinished">نص :</translation>
+        <translation>نص :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="68"/>
@@ -9048,7 +9048,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">لون الموصل</translation>
+        <translation>لون الموصل</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9064,58 +9064,58 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">أحادي السلك</translation>
+        <translation>أحادي السلك</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="357"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">حماية الأرضي -المحايد</translation>
+        <translation>حماية الأرضي -المحايد</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>PEN</source>
-        <translation type="unfinished">قلم</translation>
+        <translation>قلم</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="367"/>
         <source>Phase</source>
-        <translation type="unfinished">طور</translation>
+        <translation>طور</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="370"/>
         <source>phase</source>
-        <translation type="unfinished">طور</translation>
+        <translation>طور</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="381"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="414"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">عدد الأطوار </translation>
+        <translation>عدد الأطوار </translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="394"/>
         <source>Neutre</source>
-        <translation type="unfinished">محايد</translation>
+        <translation>محايد</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="397"/>
         <source>neutre</source>
-        <translation type="unfinished">محايد</translation>
+        <translation>محايد</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="430"/>
         <source>Terre</source>
-        <translation type="unfinished">أرضي</translation>
+        <translation>أرضي</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="433"/>
         <source>terre</source>
-        <translation type="unfinished">أرضي</translation>
+        <translation>أرضي</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <source>TextLabel</source>
-        <translation type="unfinished">علامة نصيّة</translation>
+        <translation>علامة نصيّة</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="454"/>
@@ -9125,7 +9125,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="465"/>
         <source>Apparence</source>
-        <translation type="unfinished">المظهر</translation>
+        <translation>المظهر</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="471"/>
@@ -9136,12 +9136,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="478"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="554"/>
         <source>Couleur :</source>
-        <translation type="unfinished">اللون:</translation>
+        <translation>اللون:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="508"/>
         <source>Style :</source>
-        <translation type="unfinished">نمط :</translation>
+        <translation>نمط :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="515"/>
@@ -9152,35 +9152,35 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="525"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished">لون ثانوي:</translation>
+        <translation>لون ثانوي:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="547"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished">حجم الخطّ:</translation>
+        <translation>حجم الخطّ:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="574"/>
         <source>px</source>
-        <translation type="unfinished">px بيكسل</translation>
+        <translation>px بيكسل</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="203"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">خط مستمرّ</translation>
+        <translation>خط مستمرّ</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="206"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">خط متقطع</translation>
+        <translation>خط متقطع</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="209"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished">خطوط و نقاط</translation>
+        <translation>خطوط و نقاط</translation>
     </message>
 </context>
 <context>
@@ -9196,32 +9196,32 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">أساسية</translation>
+        <translation>أساسية</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">مُؤشر Rev</translation>
+        <translation>مُؤشر Rev</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished">تحديد موقع</translation>
+        <translation>تحديد موقع</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">ملف :</translation>
+        <translation>ملف :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">مُتاح كـ  %title بالنسبة لنماذج إطارات التعريف</translation>
+        <translation>مُتاح كـ  %title بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -9238,57 +9238,57 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">مُتاح كـ %author بالنسبة لنماذج إطارات التعريف</translation>
+        <translation>مُتاح كـ %author بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">المؤلف :</translation>
+        <translation>المؤلف :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">التاريخ :</translation>
+        <translation>التاريخ :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">تركيب :</translation>
+        <translation>تركيب :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">مُتااح كـ % Revمؤشر بالنسبة لنماذج إطارات التعريف</translation>
+        <translation>مُتااح كـ % Revمؤشر بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">مُتاح كـ %filename بالنسبة لنماذج إطارات التعريف</translation>
+        <translation>مُتاح كـ %filename بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">صفحة :</translation>
+        <translation>صفحة :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">بدون تاريخ</translation>
+        <translation>بدون تاريخ</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">مُتاح كـ  %date بالنسبة لنماذج إطارات التعريف</translation>
+        <translation>مُتاح كـ  %date بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">تاريخ ثابت :</translation>
+        <translation>تاريخ ثابت :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">تطبيق التاريخ الحالي</translation>
+        <translation>تطبيق التاريخ الحالي</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
@@ -9302,7 +9302,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">مُتاح كـ % صفحة لقوالب الاطارات
+        <translation>مُتاح كـ % صفحة لقوالب الاطارات
 المتغيرات التالية قابلة للاستخدام:
 -%id : عدد الورقة الحالية في المشروع
 -%المجموع الكلي: إجمالي عدد الأوراق في المشروع
@@ -9311,12 +9311,12 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">مُتاح كـ %locmach بالنسبة نماذج الاطارات </translation>
+        <translation>مُتاح كـ %locmach بالنسبة نماذج الاطارات </translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">العنوان :</translation>
+        <translation>العنوان :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -9332,13 +9332,13 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">مُخصّص</translation>
+        <translation>مُخصّص</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">بالإمكان تعريف الارتباطات الخاصة بكم أسماء /قيّم لكي تُؤخذ في الإعتبار بالنسبة لإطار التعريف . مثال:
+        <translation>بالإمكان تعريف الارتباطات الخاصة بكم أسماء /قيّم لكي تُؤخذ في الإعتبار بالنسبة لإطار التعريف . مثال:
 إرتباط الإسم  &quot;volta&quot; والقيمة  &quot;1745&quot; تُعوّض  %{volta} بـ 1745 في إطار التعريف.</translation>
     </message>
 </context>
@@ -9372,7 +9372,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
@@ -9417,7 +9417,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
         <source>Folio</source>
-        <translation type="unfinished">صفحة</translation>
+        <translation>صفحة</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
@@ -9457,12 +9457,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
         <source>Élément</source>
-        <translation type="unfinished">العنصر</translation>
+        <translation>العنصر</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
         <source>Conducteur</source>
-        <translation type="unfinished">موصل</translation>
+        <translation>موصل</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
@@ -9472,7 +9472,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
         <source>Remplacer</source>
-        <translation type="unfinished">تعويض</translation>
+        <translation>تعويض</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
@@ -11823,7 +11823,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="392"/>
         <source>Style :</source>
-        <translation type="unfinished">نمط :</translation>
+        <translation>نمط :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="394"/>
@@ -11866,7 +11866,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
@@ -11891,7 +11891,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="130"/>
         <source>Position</source>
-        <translation type="unfinished">موضع</translation>
+        <translation>موضع</translation>
     </message>
 </context>
 <context>
@@ -11968,7 +11968,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="222"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">دوران حقل نصّي</translation>
+        <translation>دوران حقل نصّي</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="235"/>
@@ -11990,7 +11990,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
@@ -12000,7 +12000,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
         <source>Police :</source>
-        <translation type="unfinished">خطّ :</translation>
+        <translation>خطّ :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
@@ -12025,7 +12025,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
         <source>Couleur :</source>
-        <translation type="unfinished">اللون:</translation>
+        <translation>اللون:</translation>
     </message>
 </context>
 <context>
@@ -13120,17 +13120,17 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">صفحة</translation>
+        <translation>صفحة</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">العنصر</translation>
+        <translation>العنصر</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">موصل</translation>
+        <translation>موصل</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>

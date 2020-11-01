@@ -2577,7 +2577,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
@@ -2587,12 +2587,12 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>

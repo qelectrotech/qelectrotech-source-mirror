@@ -103,7 +103,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Collection</source>
-        <translation type="unfinished">Kolekcja</translation>
+        <translation>Kolekcja</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
@@ -609,7 +609,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -663,7 +663,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="121"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Pozycja arkusza</translation>
+        <translation>Pozycja arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="123"/>
@@ -1939,7 +1939,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Typ: %1
+        <translation>Typ: %1
 </translation>
     </message>
     <message>
@@ -2593,12 +2593,12 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
@@ -3476,7 +3476,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3919,7 +3919,7 @@ Użyj do tego zaawansowanego edytora.</translation>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Rozmiar:</translation>
+        <translation>Rozmiar:</translation>
     </message>
 </context>
 <context>
@@ -4060,7 +4060,7 @@ Użyj do tego zaawansowanego edytora.</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="123"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Kompilacja: </translation>
+        <translation>Kompilacja: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="343"/>
@@ -4912,17 +4912,17 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Arkusze do druku:</translation>
+        <translation>Arkusze do druku:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Zaznacz wszystkie</translation>
+        <translation>Zaznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Odznacz wszystkie</translation>
+        <translation>Odznacz wszystkie</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
@@ -4947,22 +4947,22 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Rysuj obramowanie</translation>
+        <translation>Rysuj obramowanie</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Rysuj tabliczkę rysunkową</translation>
+        <translation>Rysuj tabliczkę rysunkową</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Zachowaj kolory przewodów</translation>
+        <translation>Zachowaj kolory przewodów</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Rysuj terminale</translation>
+        <translation>Rysuj terminale</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -4972,12 +4972,12 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Dostosuj arkusz do strony</translation>
+        <translation>Dostosuj arkusz do strony</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Wykorzystaj całą stroną</translation>
+        <translation>Wykorzystaj całą stroną</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
@@ -4997,52 +4997,52 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Dostosuj do szerokości</translation>
+        <translation>Dostosuj do szerokości</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Dostosuj do arkusza</translation>
+        <translation>Dostosuj do arkusza</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Pomniejsz</translation>
+        <translation>Pomniejsz</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Powiększ</translation>
+        <translation>Powiększ</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">Poziomo</translation>
+        <translation>Poziomo</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">Pionowo</translation>
+        <translation>Pionowo</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">Pierwsza strona</translation>
+        <translation>Pierwsza strona</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Poprzedna strona</translation>
+        <translation>Poprzedna strona</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Następna strona</translation>
+        <translation>Następna strona</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Ostatnia strona</translation>
+        <translation>Ostatnia strona</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
@@ -5052,12 +5052,12 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Podgląd dwóch stron</translation>
+        <translation>Podgląd dwóch stron</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Podgląd wszystkich stron</translation>
+        <translation>Podgląd wszystkich stron</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
@@ -5074,12 +5074,12 @@ Poniższe zmienne są zgodne:
         <location filename="../sources/print/projectprintwindow.cpp" line="105"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">projekt</translation>
+        <translation>projekt</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="136"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Drukuj</translation>
+        <translation>Drukuj</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -5257,7 +5257,7 @@ Czy chcesz zapisać zmiany?</translation>
         <location filename="../sources/qetapp.cpp" line="199"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished">LTR</translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="415"/>
@@ -5329,13 +5329,13 @@ Czy chcesz zapisać zmiany?</translation>
         <location filename="../sources/qetapp.cpp" line="538"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">Tabliczki rysunkowe QET</translation>
+        <translation>Tabliczki rysunkowe QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="558"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">Tabliczki rysunkowe użytkownika</translation>
+        <translation>Tabliczki rysunkowe użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2033"/>

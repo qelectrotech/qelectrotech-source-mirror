@@ -1131,7 +1131,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/diagramview.cpp" line="505"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished">(Dev) X: %1 Y: %2</translation>
+        <translation>(Dev) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="608"/>
@@ -10977,7 +10977,7 @@ Andere Felder werden nicht verwendet.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="234"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Rosa: Mediumvioletred</translation>
+        <translation>Rosa: Mediumvioletred</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="235"/>
