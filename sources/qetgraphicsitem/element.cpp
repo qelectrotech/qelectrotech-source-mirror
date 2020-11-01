@@ -1015,12 +1015,13 @@ bool Element::fromXml(
 					if(deti->textFrom()== DynamicElementTextItem::ElementInfo
 							&& deti->infoName() == "label")
 					{
+						qDebug() << "see 'Mod overlapping comparisons' in git";
 						qreal rotation = deti->rotation();
 
 							//Create the comment item
 						DynamicElementTextItem *comment_text = nullptr;
-						if (m_link_type !=PreviousReport
-								|| m_link_type !=NextReport)
+						if (m_link_type != PreviousReport
+							&& m_link_type != NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
@@ -1041,7 +1042,8 @@ bool Element::fromXml(
 						}
 						//create the location item
 						DynamicElementTextItem *location_text = nullptr;
-						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						if (m_link_type != PreviousReport
+							&& m_link_type != NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
@@ -1061,8 +1063,8 @@ bool Element::fromXml(
 						}
 
 						QPointF pos = deti->pos();
-						if (m_link_type !=PreviousReport
-							|| m_link_type !=NextReport)
+						if (m_link_type != PreviousReport
+							&& m_link_type != NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
