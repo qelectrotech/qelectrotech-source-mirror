@@ -57,13 +57,6 @@
 #include <QModelIndex>
 #include <utility>
 
-/*
-	Nombre maximum de primitives affichees par la "liste des parties"
-	Au-dela, un petit message est affiche, indiquant que ce nombre a ete depasse
-	et que la liste ne sera donc pas mise a jour.
-*/
-#define QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST 200
-
 /**
 	Constructeur
 	@param parent QWidget parent
@@ -1464,7 +1457,9 @@ void QETElementEditor::slot_createPartsList()
 	// on ne construit plus la liste a partir de 200 primitives
 	// c'est ingerable : la maj de la liste prend trop de temps et le resultat
 	// est inexploitable
-	if (qgis.count() <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
+    QSettings settings;
+    int maxParts = settings.value("elementeditor/max-parts-element-editor-list", 200).toInt();
+    if (qgis.count() <= maxParts) {
 		for (int j = qgis.count() - 1 ; j >= 0 ; -- j) {
 			QGraphicsItem *qgi = qgis[j];
 			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
@@ -1486,7 +1481,7 @@ void QETElementEditor::slot_createPartsList()
 		}
 	}
 	else {
-		m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée.")));
+        m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée: ") + QString::number(qgis.count())));
 	}
 	m_parts_list -> blockSignals(false);
 }
@@ -1497,10 +1492,12 @@ void QETElementEditor::slot_createPartsList()
 void QETElementEditor::slot_updatePartsList()
 {
 	int items_count = m_elmt_scene -> items().count();
+    QSettings settings;
+    int maxParts = settings.value("elementeditor/max-parts-element-editor-list", 200).toInt();
 	if (m_parts_list -> count() != items_count) {
 		slot_createPartsList();
 	}
-	else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
+    else if (items_count <= maxParts) {
 		m_parts_list -> blockSignals(true);
 		int i = 0;
 		QList<QGraphicsItem *> items = m_elmt_scene -> zItems();

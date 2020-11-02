@@ -7104,7 +7104,7 @@ Les condicions requerides no són vàlides</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>No s&apos;ha pogut generar la llista.</translation>
     </message>
     <message>

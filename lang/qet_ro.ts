@@ -7088,7 +7088,7 @@ condițiile nu sunt valide</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
-        <source>Trop de primitives, liste non générée.</source>
+        <source>Trop de primitives, liste non générée: </source>
         <translation>Prea multe componente, lista nu a fost randată.</translation>
     </message>
     <message>
