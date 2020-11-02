@@ -61,6 +61,7 @@ QString SummaryQueryWidget::queryStr() const
 	QStringList keys = selectedKeys();
 
 	QString select ="SELECT ";
+	QString order_by = " ORDER BY ";
 
 	QString column;
 	bool first = true;
@@ -69,13 +70,15 @@ QString SummaryQueryWidget::queryStr() const
 			first = false;
 		} else {
 			column += ", ";
+			order_by +=", ";
 		}
 		column += key;
+		order_by += key;
 	}
 
 	QString from = " FROM project_summary_view";
 
-	QString q(select + column + from);
+	QString q(select + column + from + order_by);
 	return q;
 }
 

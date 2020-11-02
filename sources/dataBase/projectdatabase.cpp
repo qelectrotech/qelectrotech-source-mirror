@@ -182,9 +182,20 @@ void projectDataBase::addDiagram(Diagram *diagram)
 
 	if (!m_insert_diagram_info_query.exec()) {
 		qDebug() << "projectDataBase::addDiagram insert info error : " << m_insert_diagram_info_query.lastError();
-	} else {
-		emit dataBaseUpdated();
 	}
+
+		//The information "folio" of other existing diagram can have the variable %total,
+		//so when a new diagram is added this variable change.
+		//We need to update this information in the database.
+	for (auto diagram : project()->diagrams())
+	{
+		m_diagram_info_order_changed.bindValue(":folio", diagram->border_and_titleblock.titleblockInformation().value("folio"));
+		m_diagram_info_order_changed.bindValue(":uuid", diagram->uuid());
+		if (!m_diagram_info_order_changed.exec()) {
+			qDebug() << "projectDataBase::addDiagram update diagram infp order error : " << m_diagram_info_order_changed.lastError();
+		}
+	}
+	emit dataBaseUpdated();
 }
 
 void projectDataBase::removeDiagram(Diagram *diagram)
