@@ -415,12 +415,12 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="59"/>
         <source>horizontal :</source>
-        <translation>vodorovný:</translation>
+        <translation>Vodorovný:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="61"/>
         <source>vertical :</source>
-        <translation>svislý:</translation>
+        <translation>Svislý:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="63"/>
@@ -1774,7 +1774,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
         <source>Type de base :</source>
-        <translation>Typ základny:</translation>
+        <translation>Základní typ:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="47"/>
@@ -4771,7 +4771,8 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="255"/>
         <source>Numérotation auto</source>
-        <translation>Automatické číslování</translation>
+        <translation>Automatické
+číslování</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="284"/>
@@ -8793,12 +8794,12 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1019"/>
         <source>une shape</source>
-        <translation>tvar</translation>
+        <translation> tvar</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1015"/>
         <source>une ligne</source>
-        <translation>čára</translation>
+        <translation> čáru</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
@@ -8828,17 +8829,17 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1016"/>
         <source>un rectangle</source>
-        <translation>obdélník</translation>
+        <translation> obdélník</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1017"/>
         <source>une éllipse</source>
-        <translation>elipsa</translation>
+        <translation> elipsu</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1018"/>
         <source>une polyligne</source>
-        <translation>mnohoúhelník</translation>
+        <translation> mnohoúhelník</translation>
     </message>
 </context>
 <context>
