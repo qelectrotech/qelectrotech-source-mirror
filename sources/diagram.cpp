@@ -1650,6 +1650,8 @@ void Diagram::setTitleBlockTemplate(const QString &template_name)
 
 	if (template_name != current_name)
 		emit(usedTitleBlockTemplateChanged(template_name));
+
+	project()->dataBase()->diagramInfoChanged(this);
 }
 
 /**

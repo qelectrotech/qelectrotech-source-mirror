@@ -1221,7 +1221,6 @@ void QETProject::removeDiagram(Diagram *diagram)
 
 	if (m_diagrams_list.removeAll(diagram))
 	{
-		m_data_base.removeDiagram(diagram);
 		emit(diagramRemoved(this, diagram));
 		diagram->deleteLater();
 	}
@@ -1652,7 +1651,7 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	} else {
 		m_diagrams_list.insert(pos, diagram);
 	}
-	m_data_base.addDiagram(diagram);
+
 	updateDiagramsFolioData();
 }
 
