@@ -1625,7 +1625,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/elementdialog.cpp" line="62"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
-        <translation>Åbne symbol</translation>
+        <translation>Åbn symbol</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="63"/>
@@ -1649,7 +1649,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/elementdialog.cpp" line="70"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
-        <translation>Åbne kategori</translation>
+        <translation>Åbn kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
@@ -2111,7 +2111,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="330"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation>Åbne valgt konfiguration</translation>
+        <translation>Åbn valgt konfiguration</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="357"/>
@@ -2287,7 +2287,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="145"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Åbne mappe</translation>
+        <translation>Åbn mappe</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="147"/>
@@ -2488,7 +2488,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="53"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Åbne mappe</translation>
+        <translation>Åbn mappe</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="54"/>
@@ -5629,7 +5629,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="817"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Vise eller skjule symbol panel</translation>
+        <translation>Vis eller skjul symbol panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
@@ -5840,7 +5840,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="534"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
-        <translation>Åbne eksisterende projekt</translation>
+        <translation>Åbn eksisterende projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="535"/>
@@ -6017,12 +6017,12 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>&amp;Ouvrir</source>
-        <translation>&amp;Åbne</translation>
+        <translation>&amp;Åbn</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="974"/>
         <source>Ouvrir un fichier</source>
-        <translation>Åbne fil</translation>
+        <translation>Åbn fil</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
@@ -6092,17 +6092,17 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
-        <translation>Vise eller skjule værktøjslinje</translation>
+        <translation>Vis eller skjul værktøjslinje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="815"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
-        <translation>Vise eller skjule værktøjslinjen Vise</translation>
+        <translation>Vis eller skjul værktøjslinjen Vis</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="816"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
-        <translation>Vise eller skjule værktøjslinjen Diagram</translation>
+        <translation>Vis eller skjul værktøjslinjen Diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="696"/>
@@ -6127,7 +6127,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="818"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation>Vise eller skjule gendan liste</translation>
+        <translation>Vis eller skjul gendan liste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
@@ -6159,7 +6159,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
         <source>Chercher/remplacer</source>
-        <translation>Søge/erstatte</translation>
+        <translation>Søg/erstat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="752"/>
@@ -6169,7 +6169,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="764"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Seneste åbnet</translation>
+        <translation>&amp;Senest åbnet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="903"/>
@@ -6367,7 +6367,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="464"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
-        <translation>Vise åbne projekter i vinduer</translation>
+        <translation>Vis åbne projekter i vinduer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="420"/>
@@ -6378,7 +6378,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
-        <translation>Vise åbne projekter i faneblade</translation>
+        <translation>Vis åbne projekter i faneblade</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
@@ -6541,7 +6541,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
         <source>&amp;Ouvrir</source>
-        <translation>&amp;Åbne</translation>
+        <translation>&amp;Åbn</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="145"/>
@@ -6687,7 +6687,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
         <source>&amp;Ouvrir depuis un fichier</source>
-        <translation>&amp;Åbne fra fil</translation>
+        <translation>&amp;Åbn fra fil</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
@@ -6855,7 +6855,7 @@ Gør den kørbar: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="382"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Seneste åbnet</translation>
+        <translation>&amp;Senest åbnet</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="394"/>
@@ -7102,7 +7102,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1596"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation>Åbne fil</translation>
+        <translation>Åbn fil</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1598"/>
@@ -7437,13 +7437,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation>&amp;Åbne</translation>
+        <translation>&amp;Åbn</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation>Åbne fra fil</translation>
+        <translation>Åbn fra fil</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="370"/>
@@ -8591,27 +8591,27 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="55"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation>Søge/erstatte ark egenskaber</translation>
+        <translation>Søg/erstat ark egenskaber</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="119"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation>Søge/erstatte symbol egenskaber.</translation>
+        <translation>Søg/erstat symbol egenskaber.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="211"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation>Søge/erstatte ledere egenskaber.</translation>
+        <translation>Søg/erstat ledere egenskaber.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="298"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation>Søge/erstatte avanceret</translation>
+        <translation>Søg/erstat avanceret</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
         <source>Chercher/remplacer des textes independants</source>
-        <translation>Søge/erstatte uafhængige tekste</translation>
+        <translation>Søg/erstat uafhængige tekste</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="67"/>
@@ -9999,13 +9999,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Pink : HotPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lyserød : Varm lyserød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Pink : DeepPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lyserød : Dyb lyserød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
@@ -10017,13 +10017,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lyserød : Mellem violet rød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Red : LightSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Lys laks</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
@@ -10035,7 +10035,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Red : DarkSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Mørk laks</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
@@ -10047,7 +10047,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Red : IndianRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Indianer rød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
@@ -10060,7 +10060,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Red : Firebrick</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Ild fast sten</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
@@ -11898,7 +11898,7 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation>Vise information</translation>
+        <translation>Vis information</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
@@ -13122,7 +13122,7 @@ Maksimum længde: %2piksel
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation>Søge/erstatte avanceret</translation>
+        <translation>Søg/erstat avanceret</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
