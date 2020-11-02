@@ -441,5 +441,7 @@ void QetGraphicsHeaderItem::adjustSize()
 void QetGraphicsHeaderItem::modelReseted()
 {
 	setUpMinimumSectionsSize();
+	m_current_sections_width.clear();
+	m_current_sections_width.resize(m_sections_minimum_width.size());
 	adjustSize();
 }
