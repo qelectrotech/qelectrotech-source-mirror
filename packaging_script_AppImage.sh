@@ -15,13 +15,7 @@ GITCOMMIT=$(git rev-parse --short HEAD)
 A=$(git rev-list HEAD --count)
 HEAD=$(($A+473))
 
-VERSION=$(cat sources/qet.h | grep "const QString version" | cut -d\" -f2 | cut -d\" -f1)          #Find version tag in GIT sources/qet.h
-tagName=$(cat sources/qet.h | grep displayedVersion | cut -d\" -f2 | cut -d\" -f1)                 #Find displayedVersion tag in GIT sources/qet.h
-
-# recupere le numero de la nouvelle revision
-#revAp=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
-
-# On recupere le numero de version de l'originale
+# We recover the version number of the original
 tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h | cut -d\" -f2 | cut -d\" -f1 )
 
 # On modifie l'originale avec le numéro de révision du dépôt GIT
