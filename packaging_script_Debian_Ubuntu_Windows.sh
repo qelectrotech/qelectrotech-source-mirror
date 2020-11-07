@@ -11,7 +11,14 @@ SSH_OPTIONS=-B
 
 cd $DEFAULT_DIR
 cd qet_git
-git pull
+# get updates
+echo  -e "\033[1;31m uses the repo submodule (note not yet) n/Y?.\033[m"
+read a
+if [[ $a == "Y" || $a == "y" ]]; then
+  git submodule update --init --recursive
+else
+  git pull
+fi
 
 GITCOMMIT=$(git rev-parse --short HEAD)
 
