@@ -18,6 +18,7 @@
 #include "elementpropertieseditorwidget.h"
 #include "ui_elementpropertieseditorwidget.h"
 #include "qetapp.h"
+#include "qetinformation.h"
 
 #include <QItemDelegate>
 
@@ -184,7 +185,7 @@ void ElementPropertiesEditorWidget::populateTree()
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree);
 		qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
 		qtwi->setData(0, Qt::DisplayRole,
-			      QETApp::elementTranslatedInfoKey(key));
+				  QETInformation::translatedInfoKey(key));
 		qtwi->setData(0, Qt::UserRole, key);
 		qtwi->setText(1, m_elmt_info.value(key).toString());
 	}

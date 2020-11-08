@@ -21,6 +21,7 @@
 #include "elementinfopartwidget.h"
 #include "qetapp.h"
 #include "searchandreplaceworker.h"
+#include "qetinformation.h"
 
 #include <QAbstractButton>
 
@@ -74,7 +75,7 @@ void ReplaceElementDialog::buildWidget()
 	
 	for (QString str : QETApp::elementInfoKeys())
 	{
-		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
+		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		eipw->setEraseTextVisible(true);
 		eipw->setPlaceHolderText(tr("Ne pas modifier"));
 		ui->m_scroll_layout->addWidget(eipw);

@@ -20,6 +20,7 @@
 #include "qetproject.h"
 #include "qetxml.h"
 #include "qetapp.h"
+#include "qetinformation.h"
 
 #include <QSqlError>
 #include <QSqlRecord>
@@ -348,7 +349,7 @@ void ProjectDBModel::setHeaderString()
 		} else if (field_name == "diagram_position") {
 			header_name = tr("Position du folio");
 		} else {
-			header_name = QETApp::elementTranslatedInfoKey(field_name);
+			header_name = QETInformation::translatedInfoKey(field_name);
 			if (header_name.isEmpty()) {
 				header_name = QETApp::diagramTranslatedInfoKey(field_name);
 			}

@@ -413,37 +413,6 @@ QStringList QETApp::elementInfoKeys()
 }
 
 /**
-	@brief ElementsProperties::translatedInfo
-	Return the translated information key given by info
-	If info don't match, return an empty string
-	@param info the key to be translated
-	@return
-*/
-QString QETApp::elementTranslatedInfoKey(const QString &info)
-{
-	if (info == "formula") return tr("Formule du label");
-	else if (info == "label") return tr("Label");
-	else if (info == "plant") return tr("Installation");
-	else if (info == "location") return tr("Localisation");
-
-	else if (info == "comment") return tr("Commentaire");
-	else if (info == "function") return tr("Fonction");
-	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
-	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
-
-	else if (info == "description") return tr("Description textuelle");
-	else if (info == "designation") return tr("Numéro d'article");
-	else if (info == "manufacturer") return tr("Fabricant");
-	else if (info == "manufacturer_reference") return tr("Numéro de commande");
-	else if (info == "machine_manufacturer_reference") return tr("Numéro interne");
-	else if (info == "supplier") return tr("Fournisseur");
-	else if (info == "quantity") return tr("Quantité");
-	else if (info == "unity") return tr("Unité");
-
-	else return QString();
-}
-
-/**
 	@brief QETApp::elementInfoToVar
 	@param info
 	@return var in form %{my-var} corresponding to the info,

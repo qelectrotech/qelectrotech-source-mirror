@@ -18,6 +18,7 @@
 #include "replaceadvanceddialog.h"
 #include "ui_replaceadvanceddialog.h"
 #include "qetapp.h"
+#include "qetinformation.h"
 
 #include <QAbstractButton>
 
@@ -99,7 +100,7 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 	}
 	else if (index == 1) {
 		for (QString str : QETApp::elementInfoKeys()) {
-			ui->m_what_cb->addItem(QETApp::elementTranslatedInfoKey(str), str);
+			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 	else if (index == 2) {

@@ -22,6 +22,7 @@
 #include "diagram.h"
 #include "elementinfopartwidget.h"
 #include "element.h"
+#include "qetinformation.h"
 
 /**
 	@brief ElementInfoWidget::ElementInfoWidget
@@ -177,9 +178,9 @@ void ElementInfoWidget::disableLiveEdit()
 */
 void ElementInfoWidget::buildInterface()
 {
-	foreach (QString str, QETApp::elementInfoKeys())
+	for (auto str : QETApp::elementInfoKeys())
 	{
-		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
+		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}
@@ -194,7 +195,7 @@ void ElementInfoWidget::buildInterface()
 */
 ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
 {
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	for (auto eipw : m_eipw_list)
 	{
 		if (eipw->key() == key)
 			return eipw;

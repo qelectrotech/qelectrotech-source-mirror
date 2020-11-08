@@ -20,6 +20,7 @@
 #include "elementquerywidget.h"
 #include "qetproject.h"
 #include "qetapp.h"
+#include "qetinformation.h"
 
 #include <QMessageBox>
 #include <QSqlError>
@@ -122,7 +123,7 @@ QString BOMExportDialog::getBom()
 				} else if (field_name == "designation_qty") {
 					header_name << tr("Quantité numéro d'article", "Special field with name : designation quantity");
 				} else {
-					header_name << QETApp::elementTranslatedInfoKey(field_name);
+					header_name << QETInformation::translatedInfoKey(field_name);
 					if (header_name.isEmpty()) {
 						header_name << QETApp::diagramTranslatedInfoKey(field_name);
 					}

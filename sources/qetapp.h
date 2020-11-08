@@ -74,7 +74,6 @@ class QETApp : public QObject
 		
 		static ElementsCollectionCache *collectionCache();
 		static QStringList elementInfoKeys();
-		static QString elementTranslatedInfoKey(const QString &);
 		static QString elementInfoToVar(const QString &info);
 		
 		static QStringList conductorInfoKeys();

@@ -6,6 +6,7 @@
 #include "element.h"
 #include "qetapp.h"
 #include "conductor.h"
+#include "qetinformation.h"
 
 CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, QWidget *parent) :
 	QDialog(parent),
@@ -66,7 +67,7 @@ void CompositeTextEditDialog::setUpComboBox()
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : qstrl) {
-		info_map.insert(QETApp::elementTranslatedInfoKey(str), QETApp::elementInfoToVar(str));
+		info_map.insert(QETInformation::translatedInfoKey(str), QETApp::elementInfoToVar(str));
 	}
 	for(const QString& key : info_map.keys()) {
 		ui->m_info_cb->addItem(key, info_map.value(key));

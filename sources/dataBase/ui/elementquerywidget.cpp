@@ -18,6 +18,7 @@
 #include "elementquerywidget.h"
 #include "ui_elementquerywidget.h"
 #include "qetapp.h"
+#include "qetinformation.h"
 
 #include <QRegularExpression>
 
@@ -449,7 +450,7 @@ void ElementQueryWidget::setUpItems()
 		if (key == "formula")
 			continue;
 
-		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
+		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_var_list);
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}
