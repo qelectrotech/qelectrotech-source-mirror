@@ -38,6 +38,27 @@ static QString COND_FORMULA_VAR          = "%{formula}";
 static QString COND_TEXT                 = "text";
 static QString COND_TEXT_VAR             = "%{text}";
 
+/** Default information related to diagram **/
+static QString DIA_AUTHOR            = "author";
+static QString DIA_AUTHOR_VAR        = "%{author}";
+static QString DIA_DATE              = "date";
+static QString DIA_DATE_VAR          = "%{date}";
+static QString DIA_DISPLAY_FOLIO     = "display_folio";
+static QString DIA_DISPLAY_FOLIO_VAR = "%{display_folio}";
+static QString DIA_FILENAME          = "filename";
+static QString DIA_FILENAME_VAR      = "%{filename}";
+static QString DIA_FOLIO             = "folio";
+static QString DIA_FOLIO_VAR         = "%{folio}";
+static QString DIA_INDEX_REV         = "indexrev";
+static QString DIA_INDEX_REV_VAR     = "%{indexrev}";
+static QString DIA_LOCMACH           = "locmach";
+static QString DIA_LOCMACH_VAR       = "%{locmach}";
+static QString DIA_PLANT             = "plant";
+static QString DIA_PLANT_VAR         = "%{plant}";
+static QString DIA_POS               = "pos";
+static QString DIA_POS_VAR           = "%{pos}";
+static QString DIA_TITLE             = "title";
+static QString DIA_TITLE_VAR         = "%{title}";
 
 /**
 	@brief QETInformation::titleblockInfoKeys
@@ -46,15 +67,15 @@ static QString COND_TEXT_VAR             = "%{text}";
 QStringList QETInformation::titleblockInfoKeys()
 {
 	QStringList info_list;
-	info_list << "author";
-	info_list << "date";
-	info_list << "title";
-	info_list << "filename";
-	info_list << "plant";
-	info_list << "locmach";
-	info_list << "indexrev";
+	info_list << DIA_AUTHOR;
+	info_list << DIA_DATE;
+	info_list << DIA_TITLE;
+	info_list << DIA_FILENAME;
+	info_list << DIA_PLANT;
+	info_list << DIA_LOCMACH;
+	info_list << DIA_INDEX_REV;
 	info_list << "version";
-	info_list << "folio";
+	info_list << DIA_FOLIO;
 	info_list << "folio-id";
 	info_list << "folio-total";
 	info_list << "previous-folio-num";
@@ -80,15 +101,15 @@ QStringList QETInformation::titleblockInfoKeys()
 */
 QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 {
-	if      (info == "author")             return QString("%{author}");
-	else if (info == "date")               return QString("%{date}");
-	else if (info == "title")              return QString("%{title}");
-	else if (info == "filename")           return QString("%{filename}");
-	else if (info == "plant")              return QString("%{plant}");
-	else if (info == "locmach")            return QString("%{locmach}");
-	else if (info == "indexrev")           return QString("%{indexrev}");
+	if      (info == DIA_AUTHOR)           return DIA_AUTHOR_VAR;
+	else if (info == DIA_DATE)             return DIA_DATE_VAR;
+	else if (info == DIA_TITLE)            return DIA_TITLE_VAR;
+	else if (info == DIA_FILENAME)         return DIA_FILENAME_VAR;
+	else if (info == DIA_PLANT)            return DIA_PLANT_VAR;
+	else if (info == DIA_LOCMACH)          return DIA_LOCMACH_VAR;
+	else if (info == DIA_INDEX_REV)        return DIA_INDEX_REV_VAR;
 	else if (info == "version")            return QString("%{version}");
-	else if (info == "folio")              return QString("%{folio}");
+	else if (info == DIA_FOLIO)            return DIA_FOLIO_VAR;
 	else if (info == "folio-id")           return QString("%{folio-id}");
 	else if (info == "folio-total")        return QString("%{folio-total}");
 	else if (info == "previous-folio-num") return QString("%{previous-folio-num}");
@@ -102,7 +123,7 @@ QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 	else if (info == "savedtime")          return QString("%{savedtime}");
 	else if (info == "savedfilename")      return QString("%{savedfilename}");
 	else if (info == "savedfilepath")      return QString("%{savedfilepath}");
-	else return QString("%{void");
+	else return QString("%{void}");
 }
 
 /**
@@ -157,6 +178,20 @@ QStringList QETInformation::conductorInfoKeys()
 	return  list;
 }
 
+QStringList QETInformation::diagramInfoKeys()
+{
+	QStringList list = {DIA_TITLE,
+					   DIA_AUTHOR,
+					   DIA_FILENAME,
+					   DIA_FOLIO,
+					   DIA_PLANT,
+					   DIA_LOCMACH,
+					   DIA_INDEX_REV,
+					   DIA_DATE,
+					   DIA_DISPLAY_FOLIO};
+	return list;
+}
+
 /**
  * @brief QETInformation::translatedInfoKey
  * @param info
@@ -166,13 +201,14 @@ QStringList QETInformation::conductorInfoKeys()
  */
 QString QETInformation::translatedInfoKey(const QString &info)
 {
-	if      (info == "author")                         return QObject::tr("Auteur");
-	else if (info == "date")                           return QObject::tr("Date");
-	else if (info == "title")                          return QObject::tr("Titre");
-	else if (info == "filename")                       return QObject::tr("Fichier");
-	else if (info == "plant")                          return QObject::tr("Installation (=)");
-	else if (info == "locmach")                        return QObject::tr("Localisation (+)");
-	else if (info == "indexrev")                       return QObject::tr("Indice de révision");
+	if      (info == DIA_AUTHOR)                       return QObject::tr("Auteur");
+	else if (info == DIA_DATE)                         return QObject::tr("Date");
+	else if (info == DIA_TITLE)                        return QObject::tr("Titre");
+	else if (info == DIA_FILENAME)                     return QObject::tr("Fichier");
+	else if (info == DIA_PLANT)                        return QObject::tr("Installation (=)");
+	else if (info == DIA_LOCMACH)                      return QObject::tr("Localisation (+)");
+	else if (info == DIA_INDEX_REV)                    return QObject::tr("Indice de révision");
+	else if (info == DIA_POS)                          return QObject::tr("Position");
 	else if (info == "version")                        return QObject::tr("Version de QElectroTech");
 	else if (info == "folio")                          return QObject::tr("Numéro de folio");
 	else if (info == "folio-id")                       return QObject::tr("Position du folio");
@@ -190,8 +226,6 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == "savedfilepath")                  return QObject::tr("Chemin du fichier enregistré");
 	else if (info == "formula")                        return QObject::tr("Formule du label");
 	else if (info == ELMT_LABEL)                       return QObject::tr("Label");
-	else if (info == "plant")                          return QObject::tr("Installation");
-	else if (info == "location")                       return QObject::tr("Localisation");
 	else if (info == "comment")                        return QObject::tr("Commentaire");
 	else if (info == "function")                       return QObject::tr("Fonction");
 	else if (info == "auxiliary1")                     return QObject::tr("Bloc auxiliaire 1");
@@ -204,8 +238,6 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == "supplier")                       return QObject::tr("Fournisseur");
 	else if (info == "quantity")                       return QObject::tr("Quantité");
 	else if (info == "unity")                          return QObject::tr("Unité");
-	else if (info == "formula")                        return QObject::tr("Formule du texte");
-	else if (info == "text")                           return QObject::tr("Texte");
 	else if (info == COND_FUNCTION)                    return QObject::tr("Fonction");
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Tension / Protocole");
 	else if (info == COND_COLOR)                       return QObject::tr("Couleur du fil");

@@ -94,8 +94,8 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 	
 	if (index == 0)
 	{
-		for (QString str : QETApp::diagramInfoKeys()) {
-			ui->m_what_cb->addItem(QETApp::diagramTranslatedInfoKey(str), str);
+		for (QString str : QETInformation::diagramInfoKeys()) {
+			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 	else if (index == 1) {

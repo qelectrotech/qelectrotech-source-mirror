@@ -38,6 +38,7 @@ namespace QETInformation
 	QStringList folioReportInfoKeys();
 	QHash <QString, QString> folioReportInfoKeyToVar();
 	QStringList conductorInfoKeys();
+	QStringList diagramInfoKeys();
 
 	QString translatedInfoKey(const QString &info);
 }

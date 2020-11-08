@@ -18,6 +18,7 @@
 #include "summaryquerywidget.h"
 #include "ui_summaryquerywidget.h"
 #include "qetapp.h"
+#include "qetinformation.h"
 
 #include <QListWidgetItem>
 
@@ -121,12 +122,12 @@ void SummaryQueryWidget::setQuery(const QString &query)
 */
 void SummaryQueryWidget::setUpItems()
 {
-	for (auto key : QETApp::diagramInfoKeys())
+	for (auto key : QETInformation::diagramInfoKeys())
 	{
 		if (key == "filename" || key == "display_folio") {
 			continue;
 		}
-		auto item = new QListWidgetItem(QETApp::diagramTranslatedInfoKey(key), ui->m_available_list);
+		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_available_list);
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}

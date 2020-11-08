@@ -125,9 +125,6 @@ QString BOMExportDialog::getBom()
 				} else {
 					header_name << QETInformation::translatedInfoKey(field_name);
 					if (header_name.isEmpty()) {
-						header_name << QETApp::diagramTranslatedInfoKey(field_name);
-					}
-					if (header_name.isEmpty()) {
 						header_name << field_name;
 					}
 				}

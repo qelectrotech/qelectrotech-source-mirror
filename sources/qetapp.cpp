@@ -428,46 +428,6 @@ QString QETApp::elementInfoToVar(const QString &info)
 }
 
 /**
-	@brief QETApp::diagramInfoKeys
-	@return the diagram default default information keys
-*/
-QStringList QETApp::diagramInfoKeys()
-{
-	QStringList list;
-	list.append("title");
-	list.append("author");
-	list.append("filename");
-	list.append("folio");
-	list.append("plant");
-	list.append("locmach");
-	list.append("indexrev");
-	list.append("date");
-	list.append("display_folio");
-
-	return list;
-}
-
-/**
-	@brief QETApp::diagramTranslatedInfoKey
-	@param key
-	@return the translated information key given by key
-	If key don't match, return an empty string
-*/
-QString QETApp::diagramTranslatedInfoKey(const QString &key)
-{
-	if      (key == "title")    return tr("Titre");
-	else if (key == "author")   return tr("Auteur");
-	else if (key == "filename") return tr("Fichier");
-	else if (key == "folio")    return tr("Folio");
-	else if (key == "plant")    return tr("Installation");
-	else if (key == "locmach")  return tr("Localisation");
-	else if (key == "indexrev") return tr("Indice de révision");
-	else if (key == "date")     return tr("Date");
-	else if (key == "pos")      return tr("Position");
-	else return QString();
-}
-
-/**
 	@brief QETApp::commonTitleBlockTemplatesCollection
 	@return the common title block templates collection,
 	i.e. the one provided by QElecrotTech

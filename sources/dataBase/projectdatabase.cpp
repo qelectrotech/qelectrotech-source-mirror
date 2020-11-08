@@ -22,6 +22,7 @@
 #include "element.h"
 #include "diagram.h"
 #include "diagramposition.h"
+#include "qetinformation.h"
 
 #include <QSqlError>
 #include <QLocale>
@@ -268,7 +269,7 @@ bool projectDataBase::createDataBase()
 	//Create the diagram info table
 	QString diagram_info_table("CREATE TABLE diagram_info (diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, ");
 	first_ = true;
-	for (auto string : QETApp::diagramInfoKeys())
+	for (auto string : QETInformation::diagramInfoKeys())
 	{
 		if (first_) {
 			first_ = false;
@@ -471,11 +472,11 @@ void projectDataBase::prepareQuery()
 		//INSERT DIAGRAM INFO
 	m_insert_diagram_info_query = QSqlQuery(m_data_base);
 	QStringList bind_diag_info_values;
-	for (auto key : QETApp::diagramInfoKeys()) {
+	for (auto key : QETInformation::diagramInfoKeys()) {
 		bind_diag_info_values << key.prepend(":");
 	}
 	QString insert_diag_info("INSERT INTO diagram_info (diagram_uuid, " +
-				   QETApp::diagramInfoKeys().join(", ") +
+				   QETInformation::diagramInfoKeys().join(", ") +
 				   ") VALUES (:uuid, " +
 				   bind_diag_info_values.join(", ") +
 				   ")");
@@ -483,7 +484,7 @@ void projectDataBase::prepareQuery()
 
 		//UPDATE DIAGRAM INFO
 	QString update_diagram_str("UPDATE diagram_info SET ");
-	for (auto str : QETApp::diagramInfoKeys()) {
+	for (auto str : QETInformation::diagramInfoKeys()) {
 		update_diagram_str.append(str + " = :" + str + ", ");
 	}
 	update_diagram_str.remove(update_diagram_str.length()-2, 2); //Remove the last ", "
@@ -558,7 +559,7 @@ void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
 	query.bindValue(":uuid", diagram->uuid());
 
 	auto infos = diagram->border_and_titleblock.titleblockInformation();
-	for (auto key : QETApp::diagramInfoKeys())
+	for (auto key : QETInformation::diagramInfoKeys())
 	{
 		if (key == "date") {
 			query.bindValue( ":date",
