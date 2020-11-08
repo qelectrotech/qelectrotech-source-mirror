@@ -27,6 +27,10 @@ namespace QETInformation
 	QString titleblockTranslatedInfoKey(const QString &info);
 	QString titleblockInfoKeysToVar(const QString &info);
 	QHash <QString, QString> titleblockTranslatedKeyHashVar();
+	QStringList folioReportInfoKey();
+	QHash <QString, QString> folioReportInfoKeyToVar();
+
+	QString translatedInfoKey(const QString &info);
 }
 
 #endif // QETINFORMATION_H

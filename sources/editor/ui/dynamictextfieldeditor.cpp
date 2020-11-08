@@ -24,6 +24,7 @@
 #include "qetapp.h"
 #include "compositetexteditdialog.h"
 #include "alignmenttextdialog.h"
+#include "qetinformation.h"
 #include <assert.h>
 
 #include <QPointer>
@@ -40,7 +41,6 @@ DynamicTextFieldEditor::DynamicTextFieldEditor(
 	if(text_field) {
 		setPart(text_field);
 	}
-	fillInfoComboBox();
 }
 
 DynamicTextFieldEditor::~DynamicTextFieldEditor()
@@ -73,6 +73,7 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part) {
 	m_text_field = static_cast<PartDynamicTextField *>(qgi);
 	updateForm();
 	setUpConnections();
+	fillInfoComboBox();
 	return true;
 }
 
@@ -86,7 +87,7 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 		return true;
 	}
 
-	if (PartDynamicTextField *part= static_cast<PartDynamicTextField *>(parts.first())) {
+	if (PartDynamicTextField *part = static_cast<PartDynamicTextField *>(parts.first())) {
 		if (m_text_field) {
 			disconnectConnections();
 		}
@@ -99,6 +100,7 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 
 		setUpConnections();
 		updateForm();
+		fillInfoComboBox();
 		return true;
 	}
 	return(false);
@@ -204,7 +206,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	QString type = elementEditor() -> elementScene() -> elementType();
 
 	if(type.contains("report")) {
-		strl << "function" << "tension_protocol" << "conductor_color" << "conductor_section";
+		strl = QETInformation::folioReportInfoKey();
 	}
 	else {
 		strl = QETApp::elementInfoKeys();
@@ -213,7 +215,8 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : strl)
-		info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
+		info_map.insert(QETInformation::translatedInfoKey(str), str);
+
 
 	for (const QString& key : info_map.keys())
 		ui -> m_elmt_info_cb -> addItem(key, info_map.value(key));

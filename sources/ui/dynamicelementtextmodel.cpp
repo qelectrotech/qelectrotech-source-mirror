@@ -17,14 +17,7 @@
 */
 #include "dynamicelementtextmodel.h"
 #include "dynamicelementtextitem.h"
-#include <QStandardItem>
-#include <QHash>
-#include <QColorDialog>
-#include <QModelIndex>
-#include <QComboBox>
-#include <QUndoCommand>
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetapp.h"
 #include "element.h"
 #include "compositetexteditdialog.h"
 #include "terminal.h"
@@ -34,6 +27,15 @@
 #include "diagram.h"
 #include "addelementtextcommand.h"
 #include "alignmenttextdialog.h"
+#include "qetinformation.h"
+#include "qetapp.h"
+
+#include <QStandardItem>
+#include <QHash>
+#include <QColorDialog>
+#include <QModelIndex>
+#include <QComboBox>
+#include <QUndoCommand>
 
 static int src_txt_row   = 0;
 static int usr_txt_row   = 1;
@@ -175,7 +177,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 
 	QStandardItem *infoa =
 			new QStandardItem(
-				QETApp::elementTranslatedInfoKey(
+				QETInformation::translatedInfoKey(
 					deti->infoName()));
 	infoa->setFlags(Qt::ItemIsSelectable
 			| Qt::ItemIsEnabled
@@ -1446,7 +1448,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			QString info_name = deti->infoName();
 			qsi->child(info_txt_row,1)->setData(info_name, Qt::UserRole+2);
-			qsi->child(info_txt_row,1)->setData(QETApp::elementTranslatedInfoKey(info_name), Qt::DisplayRole);
+			qsi->child(info_txt_row,1)->setData(QETInformation::translatedInfoKey(info_name), Qt::DisplayRole);
 			break;
 		}
 		case compositeText:
@@ -1599,7 +1601,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				//the value of the combo box are always alphabetically sorted
 			QMap <QString, QString> info_map;
 			for(const QString& str : availableInfo(deti)) {
-				info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
+				info_map.insert(QETInformation::translatedInfoKey(str), str);
 			}
 			
 			QComboBox *qcb = new QComboBox(parent);
@@ -1901,22 +1903,7 @@ QStringList DynamicTextItemDelegate::availableInfo(
 	
 	if(deti->parentElement()->linkType() & Element::AllReport) //Special treatment for text owned by a folio report
 	{
-		qstrl << "label";
-		
-		if(!deti->m_watched_conductor.isNull())
-		{
-			Conductor *cond = deti->m_watched_conductor.data();
-			if (!cond->properties().m_function.isEmpty())
-				qstrl << "function";
-			if(!cond->properties().m_tension_protocol.isEmpty())
-				qstrl << "tension_protocol";
-			if(!cond->properties().m_wire_color.isEmpty())
-				qstrl << "conductor_color";
-			if(!cond->properties().m_wire_section.isEmpty())
-				qstrl << "conductor_section";
-		}
-		 
-		 return qstrl;
+		return QETInformation::folioReportInfoKey();
 	}
 	else
 	{
