@@ -206,7 +206,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	QString type = elementEditor() -> elementScene() -> elementType();
 
 	if(type.contains("report")) {
-		strl = QETInformation::folioReportInfoKey();
+		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
 		strl = QETApp::elementInfoKeys();

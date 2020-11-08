@@ -76,9 +76,6 @@ class QETApp : public QObject
 		static QStringList elementInfoKeys();
 		static QString elementInfoToVar(const QString &info);
 		
-		static QStringList conductorInfoKeys();
-		static QString conductorTranslatedInfoKey(const QString &key);
-		
 		static QStringList diagramInfoKeys();
 		static QString diagramTranslatedInfoKey(const QString &key);
 		

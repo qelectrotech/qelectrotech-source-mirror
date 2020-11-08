@@ -1903,7 +1903,7 @@ QStringList DynamicTextItemDelegate::availableInfo(
 	
 	if(deti->parentElement()->linkType() & Element::AllReport) //Special treatment for text owned by a folio report
 	{
-		return QETInformation::folioReportInfoKey();
+		return QETInformation::folioReportInfoKeys();
 	}
 	else
 	{

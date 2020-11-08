@@ -428,40 +428,6 @@ QString QETApp::elementInfoToVar(const QString &info)
 }
 
 /**
-	@brief QETApp::conductorInfoKeys
-	@return the conductor information keys
-*/
-QStringList QETApp::conductorInfoKeys()
-{
-	QStringList keys;
-	keys.append("formula");
-	keys.append("text");
-	keys.append("function");
-	keys.append("tension/protocol");
-	keys.append("conductor_color");
-	keys.append("conductor_section");
-
-	return keys;
-}
-
-/**
-	@brief QETApp::conductorTranslatedInfoKey
-	@param key
-	@return the translated information key given by key
-	If key don't match, return an empty string
-*/
-QString QETApp::conductorTranslatedInfoKey(const QString &key)
-{
-	if      (key == "formula")           return tr("Formule du texte");
-	else if (key == "text")              return tr("Texte");
-	else if (key == "function")          return tr("Fonction");
-	else if (key ==  "tension/protocol") return tr("Tension / Protocole");
-	else if (key ==  "conductor_color")  return tr("Couleur du fil");
-	else if (key ==  "conductor_section")return tr("Section du fil");
-	return QString();
-}
-
-/**
 	@brief QETApp::diagramInfoKeys
 	@return the diagram default default information keys
 */

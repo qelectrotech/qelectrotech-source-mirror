@@ -104,8 +104,8 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 		}
 	}
 	else if (index == 2) {
-		for (QString str : QETApp::conductorInfoKeys()) {
-			ui->m_what_cb->addItem(QETApp::conductorTranslatedInfoKey(str), str);
+		for (auto str : QETInformation::conductorInfoKeys()) {
+			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 }

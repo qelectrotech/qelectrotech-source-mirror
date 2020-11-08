@@ -33,6 +33,11 @@ static QString COND_COLOR                = "conductor_color";
 static QString COND_COLOR_VAR            = "%{conductor_color}";
 static QString COND_SECTION              = "conductor_section";
 static QString COND_SECTION_var          = "%{conductor_section}";
+static QString COND_FORMULA              = "formula";
+static QString COND_FORMULA_VAR          = "%{formula}";
+static QString COND_TEXT                 = "text";
+static QString COND_TEXT_VAR             = "%{text}";
+
 
 /**
 	@brief QETInformation::titleblockInfoKeys
@@ -65,16 +70,6 @@ QStringList QETInformation::titleblockInfoKeys()
 	info_list << "savedfilepath";
 
 	return info_list;
-}
-
-/**
-	@brief QETInformation::titleblockTranslatedInfoKey
-	@param info : info key to be translated
-	@return the translated information given by info
-	If info don't match, return an empty string
-*/
-QString QETInformation::titleblockTranslatedInfoKey(const QString &info) {
-	return translatedInfoKey(info);
 }
 
 /**
@@ -119,7 +114,7 @@ QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 {
 	QHash <QString, QString> hash_;
 	for (QString str : titleblockInfoKeys()) {
-		hash_.insert(titleblockTranslatedInfoKey(str), titleblockInfoKeysToVar(str));
+		hash_.insert(translatedInfoKey(str), titleblockInfoKeysToVar(str));
 	}
 	return hash_;
 }
@@ -128,14 +123,13 @@ QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
  * @brief QETInformation::folioReportInfoKey
  * @return The info key available for dynamic element text item of a folio report
  */
-QStringList QETInformation::folioReportInfoKey()
+QStringList QETInformation::folioReportInfoKeys()
 {
-	QStringList list;
-	list << ELMT_LABEL;
-	list << COND_FUNCTION;
-	list << COND_TENSION_PROTOCOL;
-	list << COND_COLOR;
-	list << COND_SECTION;
+	QStringList list = {ELMT_LABEL,
+						COND_FUNCTION,
+						COND_TENSION_PROTOCOL,
+						COND_COLOR,
+						COND_SECTION};
 
 	return list;
 }
@@ -149,6 +143,18 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 	H_.insert(COND_SECTION, COND_SECTION_var);
 
 	return H_;
+}
+
+QStringList QETInformation::conductorInfoKeys()
+{
+	QStringList list = 	{COND_FORMULA,
+						 COND_TEXT,
+						 COND_FUNCTION,
+						 COND_TENSION_PROTOCOL,
+						 COND_COLOR,
+						 COND_SECTION};
+
+	return  list;
 }
 
 /**
@@ -204,5 +210,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Tension / Protocole");
 	else if (info == COND_COLOR)                       return QObject::tr("Couleur du fil");
 	else if (info == COND_SECTION)                     return QObject::tr("Section du fil");
+	else if (info == COND_TEXT)                        return QObject::tr("Texte");
+	else if (info == COND_FORMULA)                     return QObject::tr("Formule du texte");
 	else return QString();
 }
