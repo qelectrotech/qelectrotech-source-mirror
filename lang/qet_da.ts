@@ -8671,17 +8671,17 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Date d&apos;enregistrement du fichier format local</source>
-        <translation type="unfinished"></translation>
+        <translation>Dato fil blev gemt, lokal format</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="83"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
-        <translation></translation>
+        <translation>Dato fil blev gemt, yyyy-MM-dd format</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="82"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
-        <translation></translation>
+        <translation>Dato fil blev gemt, dd-MM-yyyy format</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="84"/>
@@ -10983,37 +10983,37 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="230"/>
         <source>Pink : LightPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lyserød : Lys lyserød</translation>
+        <translation>Lyserød : Lys lyserød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="231"/>
         <source>Pink : HotPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lyserød : Varm lyserød</translation>
+        <translation>Lyserød : Varm lyserød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="232"/>
         <source>Pink : DeepPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lyserød : Dyb lyserød</translation>
+        <translation>Lyserød : Dyb lyserød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="233"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lyserød : Lys violet rød</translation>
+        <translation>Lyserød : Bleg violet rød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="234"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lyserød : Mellem violet rød</translation>
+        <translation>Lyserød : Mellem violet rød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="235"/>
         <source>Red : LightSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Rød : Lys laks</translation>
+        <translation>Rød : Lys laks</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="236"/>
@@ -11025,7 +11025,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="237"/>
         <source>Red : DarkSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Rød : Mørk laks</translation>
+        <translation>Rød : Mørk laks</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="238"/>
@@ -11037,7 +11037,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="239"/>
         <source>Red : IndianRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Rød : Indianer rød</translation>
+        <translation>Rød : Indianer rød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="240"/>
@@ -11049,7 +11049,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="241"/>
         <source>Red : Firebrick</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Rød : Ild fast sten</translation>
+        <translation>Rød : Ild fast sten</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="242"/>
@@ -12416,7 +12416,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Følgende variabler er som standard tilgængelige:&lt;ul&gt;&lt;li&gt;%{author}: ark forfatter&lt;/li&gt;&lt;li&gt;%{date}: ark dato&lt;/li&gt;&lt;li&gt;%{title}: ark titel&lt;/li&gt;&lt;li&gt;%{filename}: projekt filnavn&lt;/li&gt;&lt;li&gt;%{plant}: installation navn (=) hvor ark erplaceret&lt;/li&gt;&lt;li&gt;%{locmach}: placering navn (+) hvor ark er placeret&lt;/li&gt;&lt;li&gt;%{indexrev}: ark revisionindeks&lt;/li&gt;&lt;li&gt;%{version}: software version&lt;/li&gt;&lt;li&gt;%{folio}: ark nummer&lt;/li&gt;&lt;li&gt;%{folio-id}: ark placering i projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: ark antal i projekt&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: forrige ark nummer&lt;/li&gt;&lt;li&gt;%{next-folio-num}: næste ark nummer&lt;/li&gt;&lt;li&gt;%{projecttitle}: projekt titel&lt;/li&gt;&lt;li&gt;%{projectpath}: projekt sti&lt;/li&gt;&lt;li&gt;%projectfilename}: filnanv&lt;/li&gt;&lt;li&gt;%{saveddate}: dato for gemt fil, lokal format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: dato for gemt fil, dd-MM-yyyy format&lt;/li&gt;&lt;li&gt;%{saveddate-us}: dato for gemt fil, yyyy-MM-dd format&lt;/li&gt;&lt;li&gt;%savedtime}: tidspunkt for gemt fil&lt;/li&gt;&lt;li&gt;%{savedfilename}: gemt fil navn&lt;/li&gt;&lt;li&gt;%{savedfilepath}: gemt fil sti&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="479"/>
