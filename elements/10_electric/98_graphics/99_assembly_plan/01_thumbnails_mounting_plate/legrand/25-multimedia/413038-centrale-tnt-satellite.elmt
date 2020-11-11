@@ -1,0 +1,87 @@
+<definition version="0.80" hotspot_x="5" width="490" height="210" link_type="simple" hotspot_y="4" type="element">
+    <uuid uuid="{45c1ca8e-61c6-484a-9486-79bacb240c33}"/>
+    <names>
+        <name lang="fr">413038 - Centrale automatique Gigabit TNT Satellite</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description">Centrale automatique Gigabit modulaire télévision TNT satellite 8 sorties RJ45 - 12 modules</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation">4 130 38</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect y="0" style="line-style:normal;line-weight:thin;filling:white;color:black" x="0" antialias="false" ry="0" width="480" height="200" rx="0"/>
+        <rect y="119.19" style="line-style:normal;line-weight:thin;filling:black;color:black" x="467.25" antialias="false" ry="0" width="2" height="13" rx="0"/>
+        <circle y="129.695" style="line-style:normal;line-weight:thin;filling:white;color:black" diameter="1" x="467.75" antialias="false"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="-21.95" frame="false" Halignment="AlignLeft" x="0" rotation="0" z="4" uuid="{185c6802-06b8-4f9c-84ee-4ffb5720f7bd}" Valignment="AlignTop" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect y="50" style="line-style:normal;line-weight:thin;filling:none;color:black" x="0" antialias="false" ry="0" width="480" height="100" rx="0"/>
+        <polygon closed="false" y2="144" style="line-style:normal;line-weight:normal;filling:none;color:purple" y3="144" x1="4" x3="6" antialias="false" y1="120" x2="4"/>
+        <polygon closed="false" y2="144" style="line-style:normal;line-weight:normal;filling:none;color:purple" x1="6" antialias="false" y1="144" x2="8"/>
+        <dynamic_text font="DejaVu Sans,2,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="136" frame="false" Halignment="AlignLeft" x="466" rotation="270" z="8" uuid="{e9015d33-dac1-4928-9c1a-0b9dc300e5da}" Valignment="AlignTop" text_width="-1">
+            <text>4 130 38</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <line y2="144" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:purple" length1="1.5" end1="none" x1="27" antialias="false" y1="144" x2="139"/>
+        <dynamic_text font="Sans Serif,3,-1,5,25,0,0,0,0,0" text_from="ElementInfo" y="137.5" frame="false" Halignment="AlignLeft" x="5.89844" rotation="0" z="10" uuid="{12f92c49-51df-46d1-9487-6330b21ab387}" Valignment="AlignTop" text_width="-1">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <rect y="80" style="line-style:normal;line-weight:thin;filling:none;color:black" x="0" antialias="false" ry="0" width="480" height="30" rx="0"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="125" color="#000000" x="5" rotation="0" text="MULTIMEDIA GIGABIT SAT &amp; TV AUTOMATIC SWITCH&#xa;8 outputs&#xa;47 - 862 MHz / 950 - 2150 MHz"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="275.072" rotation="0" text="RJ45&#xa;   5"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="194.791" rotation="0" text="RJ45&#xa;   4"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="354.634" rotation="0" text="RJ45&#xa;   7"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="154.509" rotation="0" text="RJ45&#xa;   3"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="394.916" rotation="0" text="RJ45&#xa;   8"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="314.353" rotation="0" text="RJ45&#xa;   6"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="115.228" rotation="0" text="RJ45&#xa;   2"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="11.25" color="#000000" x="74.9469" rotation="0" text="RJ45&#xa;   1"/>
+        <rect y="140" style="line-style:normal;line-weight:thin;filling:white;color:black" x="142" antialias="false" ry="1" width="13" height="2" rx="1"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="145" color="#000000" x="141" rotation="0" text="PHONE @"/>
+        <rect y="140" style="line-style:normal;line-weight:thin;filling:white;color:black" x="240" antialias="false" ry="1" width="13" height="2" rx="1"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="145" color="#000000" x="241" rotation="0" text="LINE @"/>
+        <rect y="140" style="line-style:normal;line-weight:thin;filling:white;color:black" x="338" antialias="false" ry="1" width="13" height="2" rx="1"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="145" color="#000000" x="341" rotation="0" text="TV @"/>
+        <rect y="140" style="line-style:normal;line-weight:thin;filling:green;color:black" x="441" antialias="false" ry="1" width="13" height="2" rx="1"/>
+        <line y2="144" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:purple" length1="1.5" end1="none" x1="157" antialias="false" y1="144" x2="239"/>
+        <line y2="144" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:purple" length1="1.5" end1="none" x1="254" antialias="false" y1="144" x2="336"/>
+        <line y2="144" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:purple" length1="1.5" end1="none" x1="352" antialias="false" y1="144" x2="479"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="68" color="#000000" x="214" rotation="20" text="🕻"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="70" color="#000000" x="251" rotation="0" text="📺"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="58" color="#000000" x="230" rotation="0" text="💻"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="78" color="#000000" x="230" rotation="0" text="🖧"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="451.744" rotation="0" text="Power"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="321.806" rotation="0" text="LAN@"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="290" rotation="0" text="Phone@"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="354.291" rotation="0" text="TV@"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="43.7031" rotation="0" text="SAT2"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="14" rotation="0" text="SAT 1"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="191" color="#000000" x="69.1875" rotation="0" text="Hz / TNT"/>
+        <terminal y="200" orientation="s" x="300" uuid="{9432d62e-178f-4705-9fd5-2e5c20db2b45}" name=""/>
+        <terminal y="200" orientation="s" x="330" uuid="{d50900da-30eb-4ec0-859f-9b3790ac6ee1}" name=""/>
+        <terminal y="0" orientation="n" x="320" uuid="{4055f317-80e5-4ad1-8dbc-1d9e416d4be5}" name=""/>
+        <terminal y="0" orientation="n" x="80" uuid="{63dad425-cfde-4a52-b27f-c95041411451}" name=""/>
+        <terminal y="0" orientation="n" x="200" uuid="{da452c65-3c66-4fcf-8634-eddb1aaf6c39}" name=""/>
+        <terminal y="0" orientation="n" x="160" uuid="{1e346f23-d491-43c9-a759-5d744f1d346c}" name=""/>
+        <terminal y="0" orientation="n" x="360" uuid="{a2b3abbf-a3ba-45e3-bbd4-ab242755961e}" name=""/>
+        <terminal y="200" orientation="s" x="50" uuid="{c73b76dc-2549-4d1e-86e7-378d9ad49088}" name=""/>
+        <terminal y="200" orientation="s" x="80" uuid="{1ec432ef-ea7a-45da-914c-636db0de2a35}" name=""/>
+        <terminal y="200" orientation="s" x="360" uuid="{f6bfa59d-7d32-4a02-977b-9f1c9f0e0d11}" name=""/>
+        <terminal y="0" orientation="n" x="120" uuid="{a409fb31-81cb-414e-b487-b461a5f6cf15}" name=""/>
+        <terminal y="0" orientation="n" x="400" uuid="{c2adba90-ccb7-4987-8bd4-0f5fcc5db96f}" name=""/>
+        <terminal y="200" orientation="s" x="20" uuid="{ccd659ff-ed74-43f4-ae20-29e429affb98}" name=""/>
+        <terminal y="0" orientation="n" x="280.125" uuid="{9ce2847f-0c12-4324-be67-554af9dcd6f6}" name=""/>
+        <terminal y="200" orientation="s" x="460" uuid="{e52cd5a7-4d94-43e0-9503-a6a3cd9290d3}" name=""/>
+    </description>
+</definition>

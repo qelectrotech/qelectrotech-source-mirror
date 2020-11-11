@@ -1,0 +1,60 @@
+<definition version="0.80" hotspot_x="5" width="190" height="210" link_type="simple" hotspot_y="4" type="element">
+    <uuid uuid="{ff4841c0-95cc-429b-a66b-798396887e05}"/>
+    <names>
+        <name lang="fr">413008 - DTI modulaire RJ45</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description">DTI modulaire RJ45 pour coffret multimédia - 4,5 modules</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation">4 130 08</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect y="0" style="line-style:normal;line-weight:thin;filling:white;color:black" x="0" antialias="false" ry="0" width="180" height="200" rx="0"/>
+        <rect y="118.19" style="line-style:normal;line-weight:thin;filling:black;color:black" x="165.25" antialias="false" ry="0" width="2" height="13" rx="0"/>
+        <circle y="128.695" style="line-style:normal;line-weight:thin;filling:white;color:black" diameter="1" x="165.75" antialias="false"/>
+        <rect y="50" style="line-style:normal;line-weight:thin;filling:none;color:black" x="0" antialias="false" ry="0" width="180" height="100" rx="0"/>
+        <polygon closed="false" y2="144" style="line-style:normal;line-weight:normal;filling:none;color:purple" y3="144" x1="4" x3="6" antialias="false" y1="120" x2="4"/>
+        <polygon closed="false" y2="144" style="line-style:normal;line-weight:normal;filling:none;color:purple" x1="6" antialias="false" y1="144" x2="8"/>
+        <line y2="144" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:purple" length1="1.5" end1="none" x1="27" antialias="false" y1="144" x2="179"/>
+        <rect y="80" style="line-style:normal;line-weight:thin;filling:none;color:black" x="0" antialias="false" ry="0" width="180" height="30" rx="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="-21.95" frame="false" Halignment="AlignLeft" x="0" rotation="0" z="9" uuid="{185c6802-06b8-4f9c-84ee-4ffb5720f7bd}" Valignment="AlignTop" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="125" color="#000000" x="7" rotation="0" text="DTI RJ45"/>
+        <dynamic_text font="DejaVu Sans,2,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="135" frame="false" Halignment="AlignLeft" x="164" rotation="270" z="11" uuid="{e9015d33-dac1-4928-9c1a-0b9dc300e5da}" Valignment="AlignTop" text_width="-1">
+            <text>4 130 08</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,3,-1,5,25,0,0,0,0,0" text_from="ElementInfo" y="137.5" frame="false" Halignment="AlignLeft" x="5.89844" rotation="0" z="12" uuid="{12f92c49-51df-46d1-9487-6330b21ab387}" Valignment="AlignTop" text_width="-1">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="10.25" color="#000000" x="74.9469" rotation="0" text="SORTIE RJ45"/>
+        <text font="Sans Serif,20,-1,5,50,0,0,0,0,0" y="142" color="#3465a4" x="115" rotation="0" text="DTI"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="192" color="#000000" x="14" rotation="0" text="TEST (entrée)"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="98" color="#000000" x="138.734" rotation="0" text="  MODULE&#xa;RC INTEGRE"/>
+        <rect y="92" style="line-style:normal;line-weight:thin;filling:none;color:black" x="137" antialias="false" ry="0" width="33" height="15" rx="0"/>
+        <rect y="94" style="line-style:normal;line-weight:thin;filling:none;color:black" x="85" antialias="false" ry="0" width="10" height="10" rx="0"/>
+        <polygon y5="101" y12="100" y2="96" x3="93" x4="92" x11="88" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x6="91" x1="87" y6="101" y13="96" x12="87" x8="89" y4="100" y1="96" x7="91" x10="88" x9="89" y9="101" x2="93" y11="100" y7="102" y10="101" y3="100" x5="92" x13="87" y8="102"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="85" color="#000000" x="112" rotation="0" text="A&#xa;    TEST&#xa;B"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="65" color="#000000" x="80" rotation="0" text="TEST"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="72" color="#000000" x="78" rotation="0" text="A           B"/>
+        <terminal y="200" orientation="s" x="30" uuid="{249e76d5-4741-4813-894f-f7ef1f105fd0}" name=""/>
+        <terminal y="104" orientation="n" x="90" uuid="{eb878f0b-31fb-4d64-8ef2-e528b0ed86ec}" name=""/>
+        <terminal y="0" orientation="n" x="90" uuid="{63dad425-cfde-4a52-b27f-c95041411451}" name=""/>
+        <terminal y="75" orientation="n" x="80" uuid="{52eb111c-5a95-4919-8c38-1f888f7c44d9}" name=""/>
+        <terminal y="83" orientation="w" x="105" uuid="{95105085-1096-4f6e-9f59-0a9aa1b1eb5c}" name=""/>
+        <terminal y="75" orientation="n" x="100" uuid="{157ee9de-3b1d-460f-bb5c-7ebd938b4b13}" name=""/>
+        <terminal y="97" orientation="w" x="105" uuid="{2f30f20d-bd7a-4aa6-878a-be8db7745f5a}" name=""/>
+    </description>
+</definition>
