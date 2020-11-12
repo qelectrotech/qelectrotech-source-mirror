@@ -4,8 +4,10 @@
         <name lang="fr">750-431</name>
         <name lang="de">750-431</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text x="-355" y="-12" text="24V" size="7"/>
         <line end1="none" length1="1.5" end2="none" x2="360" antialias="false" x1="-360" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" length2="1.5"/>

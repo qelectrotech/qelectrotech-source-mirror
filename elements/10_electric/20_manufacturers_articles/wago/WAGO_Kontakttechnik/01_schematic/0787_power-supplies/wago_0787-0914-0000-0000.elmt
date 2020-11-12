@@ -13,8 +13,10 @@
         <name lang="it">787-914</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text size="7" rotation="-90" x="10.1" text="Fan-Control" y="26"/>
         <text size="5" x="18" text="Sig-" y="33"/>

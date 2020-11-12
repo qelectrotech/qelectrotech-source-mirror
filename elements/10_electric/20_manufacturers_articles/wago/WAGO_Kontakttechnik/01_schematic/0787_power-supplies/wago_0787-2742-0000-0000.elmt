@@ -12,8 +12,10 @@
         <name lang="nl">787-2742</name>
         <name lang="pl">787-2742</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle x="37.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.5"/>
         <circle x="-1" diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y="32"/>

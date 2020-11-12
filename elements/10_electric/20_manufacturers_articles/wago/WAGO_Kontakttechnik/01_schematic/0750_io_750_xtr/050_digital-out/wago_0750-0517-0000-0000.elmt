@@ -12,8 +12,10 @@
         <name lang="it">750-517/0040-0000</name>
         <name lang="el">750-517/0040-0000</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line end2="none" length2="1.5" y2="3" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" y1="50" antialias="false" x1="40"/>
         <line end2="none" length2="1.5" y2="50" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-360" y1="-40" antialias="false" x1="-360"/>

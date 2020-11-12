@@ -12,8 +12,10 @@
         <name lang="it">750-8100</name>
         <name lang="el">750-8100</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle diameter="5" antialias="true" x="-362.5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-355" text="Eth2" size="9" y="24"/>

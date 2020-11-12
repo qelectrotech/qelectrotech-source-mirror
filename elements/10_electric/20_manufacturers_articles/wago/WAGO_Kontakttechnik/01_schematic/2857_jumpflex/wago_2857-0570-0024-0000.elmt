@@ -5,8 +5,10 @@
         <name lang="en">2857-570/024-000</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line length2="1.5" x2="217" y2="-40" end1="none" x1="203" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" y1="-40"/>
         <line length2="1.5" x2="157" y2="-40" end1="none" x1="143" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" y1="-40"/>

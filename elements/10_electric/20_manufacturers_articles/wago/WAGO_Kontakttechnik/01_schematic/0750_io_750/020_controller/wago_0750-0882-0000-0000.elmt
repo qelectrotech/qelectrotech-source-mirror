@@ -12,8 +12,10 @@
         <name lang="es">750-882</name>
         <name lang="ar">750-882</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="17.5" x="-362.5"/>
         <text text="IP Adr. 1:" y="4" x="-312" size="9"/>

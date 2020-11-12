@@ -12,8 +12,10 @@
         <name lang="pt">750-1515/0040-0000 (I)</name>
         <name lang="el">750-1515/0040-0000 (I)</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text x="-38" size="9" y="46" text="0V"/>
         <line end2="none" length2="1.5" y2="10" length1="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="280" y1="48" antialias="false" x1="280"/>

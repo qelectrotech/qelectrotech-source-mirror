@@ -12,8 +12,10 @@
         <name lang="fr">750-652</name>
         <name lang="nl">750-652</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text text="Mode:" size="9" y="-27" x="98"/>
         <line y1="25" x2="-10" end2="none" x1="-30" y2="25" length1="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>

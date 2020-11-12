@@ -13,8 +13,10 @@
         <name lang="ar">2787-2348</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-52.5" diameter="5" y="7.5" antialias="true"/>
         <text rotation="0" x="-47.3594" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="7" text="PE"/>

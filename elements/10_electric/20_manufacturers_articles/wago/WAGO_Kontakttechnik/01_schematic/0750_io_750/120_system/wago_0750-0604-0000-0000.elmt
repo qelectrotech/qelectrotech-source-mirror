@@ -4,8 +4,10 @@
         <name lang="de">750-604</name>
         <name lang="fr">750-604</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line antialias="false" y1="50" y2="8.5" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end1="none" x1="-280" x2="-280" end2="circle" length2="1.5"/>
         <line antialias="false" y1="50" y2="8.5" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end1="none" x1="-200" x2="-200" end2="circle" length2="1.5"/>

@@ -4,8 +4,10 @@
         <name lang="en">2857-401</name>
         <name lang="fr">2857-401</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <rect height="50" y="-40" width="220" antialias="false" x="-350" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input text="0 mA ... 20 mA" tagg="none" y="-4" size="7" x="-277" rotate="true"/>

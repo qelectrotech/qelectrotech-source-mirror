@@ -13,8 +13,10 @@
         <name lang="fr">750-636/0000-0800</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line antialias="false" y2="50" end2="none" x1="-360" end1="none" length1="1.5" y1="12.5" x2="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
         <text x="-355" size="7" text="24V" y="-11"/>

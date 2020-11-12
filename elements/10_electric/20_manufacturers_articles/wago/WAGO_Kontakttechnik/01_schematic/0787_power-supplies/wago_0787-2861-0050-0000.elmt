@@ -5,8 +5,10 @@
         <name lang="en">787-2861/0050-0000</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text rotation="0" x="122" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vout+"/>
         <text rotation="0" x="203" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vout+"/>

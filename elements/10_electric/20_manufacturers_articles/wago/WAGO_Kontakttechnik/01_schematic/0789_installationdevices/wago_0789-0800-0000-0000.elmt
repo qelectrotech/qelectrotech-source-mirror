@@ -10,8 +10,10 @@
         <name lang="ar">789-800</name>
         <name lang="cs">789-800</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text x="34" text="D" y="26" size="5"/>
         <text x="14" text="A" y="26" size="5"/>

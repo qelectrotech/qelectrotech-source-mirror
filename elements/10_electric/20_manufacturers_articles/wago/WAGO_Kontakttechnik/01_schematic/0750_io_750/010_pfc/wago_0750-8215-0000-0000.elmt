@@ -13,8 +13,10 @@
         <name lang="en">750-8215</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle x="-362.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="97.5"/>
         <line x1="-360" end1="none" end2="none" x2="-360" length2="1.5" antialias="false" y1="82.5" length1="1.5" y2="97.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -114,7 +116,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="125" size="5" text="7" y="-42"/>
         <text x="205" size="5" text="4" y="-42"/>
         <text x="285" size="5" text="8" y="-42"/>
-        <text x="-137" size="9" text="PFC200 CS 2ETH RS CAN DPS" y="125"/>
+        <text x="-137" size="9" text="PFC200 G2 4ETH CAN USB" y="125"/>
         <terminal x="-360" orientation="w" y="100"/>
         <terminal x="-360" orientation="w" y="0"/>
         <terminal x="-40" orientation="n" y="-40"/>

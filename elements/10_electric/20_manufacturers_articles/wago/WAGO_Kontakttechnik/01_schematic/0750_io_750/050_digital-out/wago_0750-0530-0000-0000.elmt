@@ -12,8 +12,10 @@
         <name lang="nl">750-530</name>
         <name lang="cs">750-530</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text size="9" x="-38" text="DO4" y="46"/>
         <text size="9" x="42" text="DO5" y="46"/>

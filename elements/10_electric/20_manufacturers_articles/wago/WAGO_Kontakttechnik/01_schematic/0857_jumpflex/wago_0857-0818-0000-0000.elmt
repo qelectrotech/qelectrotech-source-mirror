@@ -5,8 +5,10 @@
         <name lang="en">857-818</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <dynamic_text text_from="UserText" z="1" font_family="Sans Serif" text_width="-1" Halignment="AlignLeft" frame="false" font_size="7" rotation="0" Valignment="AlignTop" uuid="{d4cafa74-408f-4c68-ad0f-438385d90683}" x="-280" y="-14">
             <text>Ni100</text>

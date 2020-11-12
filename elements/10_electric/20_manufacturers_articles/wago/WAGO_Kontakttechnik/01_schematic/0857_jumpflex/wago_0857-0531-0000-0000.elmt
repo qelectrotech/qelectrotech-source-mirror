@@ -4,8 +4,10 @@
         <name lang="en">857-531</name>
         <name lang="fr">857-531</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text text="IN+" y="-24" size="9" x="30"/>
         <input text="-10 V ... +10 V" tagg="none" y="-4" size="7" x="40" rotate="true"/>

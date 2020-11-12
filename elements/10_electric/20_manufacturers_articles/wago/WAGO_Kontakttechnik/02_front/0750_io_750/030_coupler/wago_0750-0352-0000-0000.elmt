@@ -6,11 +6,9 @@
     </names>
     <elementInformations/>
     <informations>
-     Author: DXF converter
-     License:see http://qelectrotech.org/wiki/doc/elements_license
-     Converter version:V3.0 DB
-
-</informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <polygon x2="82.06" x17="79.61" y22="150.78" y2="169.95" x3="82.06" y3="162.96" y7="-162.45" x7="-75.82" y12="16.07" x5="-79.33" x11="89.08" y8="-162.45" y15="80.8" y19="145.53" y9="-169.44" antialias="false" x14="89.08" x4="-75.82" y13="21.31" x13="79.61" x16="79.61" x8="82.06" y16="80.8" x12="79.61" y17="86.05" x21="79.61" x6="-79.33" y4="162.96" x22="89.08" y20="145.53" y6="-158.94" y5="159.45" x18="89.08" x20="79.61" x19="89.08" y18="86.05" x10="89.08" x15="89.08" x1="89.12" style="line-style:normal;line-weight:thin;filling:white;color:black" y11="16.07" y21="150.78" y1="169.95" y14="21.31" y10="-169.44" x9="82.06"/>
         <polygon x1="42.7" antialias="false" y2="-94.28" y3="-82.61" x2="48.54" y1="-94.28" x3="48.54" style="line-style:normal;line-weight:thin;filling:red;color:black" x4="42.7" y4="-82.61"/>

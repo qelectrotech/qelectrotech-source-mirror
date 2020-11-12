@@ -13,8 +13,10 @@
         <name lang="ar">2787-2146</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" y2="70" x1="-27" antialias="false" length1="1.5" end2="none" length2="1.5" y1="70"/>
         <text rotation="0" x="-47.3594" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="37" text="Comm."/>

@@ -13,8 +13,10 @@
         <name lang="el">787-974</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <rect width="15" style="line-style:normal;line-weight:normal;filling:black;color:black" x="15" height="60" y="-20" antialias="false" rx="0" ry="0"/>
         <text rotation="0" x="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="8" text="AC 12 V"/>

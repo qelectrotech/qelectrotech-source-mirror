@@ -4,8 +4,10 @@
         <name lang="de">750-1418 (I)</name>
         <name lang="fr">750-1418 (I)</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line y2="10" x1="130" antialias="false" length2="1.5" end2="none" end1="none" x2="130" y1="-38" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line y2="10" x1="-30" antialias="false" length2="1.5" end2="none" end1="none" x2="-30" y1="-38" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

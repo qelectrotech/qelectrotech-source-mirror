@@ -12,8 +12,10 @@
         <name lang="pl">750-460/0000-0003</name>
         <name lang="en">750-460/0000-0003</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line style="line-style:dotted;line-weight:normal;filling:none;color:black" end1="none" x2="40" y2="50" length2="1.5" antialias="false" x1="40" y1="25" end2="none" length1="1.5"/>
         <line style="line-style:dotted;line-weight:normal;filling:none;color:black" end1="none" x2="200" y2="50" length2="1.5" antialias="false" x1="200" y1="25" end2="none" length1="1.5"/>

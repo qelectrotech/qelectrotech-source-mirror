@@ -4,8 +4,10 @@
         <name lang="de">750-1607 (II)</name>
         <name lang="fr">750-1607 (II)</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line y2="-11.5" end1="none" antialias="false" length1="1.5" x1="-280" y1="50" length2="1.5" x2="-280" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
         <line y2="-11.5" end1="none" antialias="false" length1="1.5" x1="200" y1="50" length2="1.5" x2="200" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>

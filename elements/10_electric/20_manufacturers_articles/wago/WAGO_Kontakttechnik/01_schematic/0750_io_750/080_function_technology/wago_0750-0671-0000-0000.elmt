@@ -13,8 +13,10 @@
         <name lang="en">750-671</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5" end2="none" x2="-360" y2="50" antialias="false" x1="-360" end1="none" length1="1.5"/>
         <text text="24V" size="7" x="-355" y="-11"/>

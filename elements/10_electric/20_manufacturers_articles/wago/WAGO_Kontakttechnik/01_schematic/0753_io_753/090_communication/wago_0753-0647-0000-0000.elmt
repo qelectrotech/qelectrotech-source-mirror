@@ -12,8 +12,10 @@
         <name lang="fr">753-647</name>
         <name lang="nl">753-647</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line y1="50" x2="40" end2="none" x1="40" y2="0" length1="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
         <text text="DALI+" size="9" y="48" x="-276"/>

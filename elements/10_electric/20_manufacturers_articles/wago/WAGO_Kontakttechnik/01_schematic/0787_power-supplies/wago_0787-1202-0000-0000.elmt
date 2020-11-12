@@ -12,8 +12,10 @@
         <name lang="es">787-1202</name>
         <name lang="pl">787-1202</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text text="GND" size="5" y="33" x="16"/>
         <text text="GND" size="5" y="13" x="16"/>

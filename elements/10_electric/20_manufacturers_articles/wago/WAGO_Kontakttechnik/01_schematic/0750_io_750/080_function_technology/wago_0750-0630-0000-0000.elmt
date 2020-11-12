@@ -12,8 +12,10 @@
         <name lang="de">750-630</name>
         <name lang="cs">750-630</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50" antialias="false" end2="none" x2="-360" y1="12.5" length2="1.5" x1="-360" end1="none"/>
         <line length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="8.5" antialias="false" end2="circle" x2="120" y1="50" length2="1.5" x1="120" end1="none"/>

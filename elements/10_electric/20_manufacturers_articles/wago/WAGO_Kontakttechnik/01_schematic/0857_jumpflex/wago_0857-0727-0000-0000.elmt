@@ -5,8 +5,10 @@
         <name lang="fr">857-727</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text rotation="0" text="14 (RL)" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="45" color="#000000"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-44" end1="none" x2="-32" y1="-5" length1="1.5" y2="-5" end2="simple" antialias="false"/>

@@ -4,8 +4,10 @@
         <name lang="fr">750-1417</name>
         <name lang="de">750-1417</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle antialias="false" diameter="2" y="9" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-181"/>
         <circle antialias="false" diameter="2" y="9" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-21"/>

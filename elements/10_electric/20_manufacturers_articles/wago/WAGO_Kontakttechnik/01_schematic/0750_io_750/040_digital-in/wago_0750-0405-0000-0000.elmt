@@ -4,8 +4,10 @@
         <name lang="en">750-405</name>
         <name lang="de">750-405</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line end2="none" x2="360" length2="1.5" end1="none" length1="1.5" x1="360" y2="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="12.5"/>
         <line end2="none" x2="-360" length2="1.5" end1="none" length1="1.5" x1="-360" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="32.5"/>

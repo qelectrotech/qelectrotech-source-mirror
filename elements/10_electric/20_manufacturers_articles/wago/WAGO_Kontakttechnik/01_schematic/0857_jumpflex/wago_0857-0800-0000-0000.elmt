@@ -5,8 +5,10 @@
         <name lang="en">857-800</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line length1="1.5" x1="-140" x2="-40" antialias="false" y2="-15" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-15" end2="none" end1="none"/>
         <line length1="1.5" x1="-120" x2="-120" antialias="false" y2="-15" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-40" end2="none" end1="none"/>

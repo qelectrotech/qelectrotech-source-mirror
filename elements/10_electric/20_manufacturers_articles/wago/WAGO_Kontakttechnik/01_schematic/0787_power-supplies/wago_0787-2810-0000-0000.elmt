@@ -12,8 +12,10 @@
         <name lang="pl">787-2810</name>
         <name lang="en">787-2810</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <input x="-17" text="12 V" rotate="true" size="8" tagg="none" y="44"/>
         <text x="-38" text="DC/DC 24 V / 5/10/12 V" size="5" y="-43"/>

@@ -5,8 +5,10 @@
         <name lang="de">859-794</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle x="38" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" y="-22" antialias="true"/>
         <text x="45" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" text="-2" color="#000000"/>

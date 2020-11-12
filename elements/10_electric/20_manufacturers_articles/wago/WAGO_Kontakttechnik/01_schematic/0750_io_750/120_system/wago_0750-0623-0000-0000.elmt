@@ -4,8 +4,10 @@
         <name lang="en">750-623</name>
         <name lang="fr">750-623</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text y="-24" size="9" text="24V_GND" x="-199"/>
         <line y2="27.5" x1="360" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" end1="none" x2="360" length2="1.5" y1="12.5"/>

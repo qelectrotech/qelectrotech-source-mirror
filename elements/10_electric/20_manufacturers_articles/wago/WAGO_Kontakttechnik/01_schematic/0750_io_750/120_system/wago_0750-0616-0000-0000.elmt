@@ -12,8 +12,10 @@
         <name lang="it">750-616</name>
         <name lang="cs">750-616</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle x="117.5" antialias="true" y="-42.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line x1="-360" length1="1.5" end2="none" x2="360" antialias="false" y1="50" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50"/>

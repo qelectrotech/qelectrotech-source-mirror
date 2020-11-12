@@ -6,11 +6,9 @@
     </names>
     <elementInformations/>
     <informations>
-     Author: DXF converter
-     License:see http://qelectrotech.org/wiki/doc/elements_license
-     Converter version:V3.0 DB
-
-</informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <polygon y1="169.695" x18="87.5" y16="80.545" y7="-162.705" y14="21.055" x1="87.54" x17="78.03" x4="-77.4" y10="-169.695" x5="-80.91" x3="80.48" y6="-159.195" y9="-169.695" y12="15.815" x9="80.48" y2="169.695" x19="87.5" y22="150.525" y4="162.705" x22="87.5" x7="-77.4" y19="145.275" y5="159.195" x10="87.5" x8="80.48" x2="80.48" x16="78.03" y21="150.525" x14="87.5" x11="87.5" y17="85.795" y11="15.815" x15="87.5" y20="145.275" style="line-style:normal;line-weight:thin;filling:white;color:black" x6="-80.91" antialias="false" y8="-162.705" x12="78.03" y15="80.545" x20="78.03" x13="78.03" x21="78.03" y18="85.795" y3="162.705" y13="21.055"/>
         <polygon y1="25.2361" x18="20.9405" y16="10.774" y7="10.5341" y14="10.5341" x1="7.81014" x17="20.671" x4="6.34926" y10="15.6368" x5="6.14455" y23="24.9835" x3="6.66974" y6="10.5341" y9="20.146" y12="17.8851" x9="15.9057" y2="25.0466" x19="21.0814" y22="24.6551" y4="24.2257" x22="20.607" x7="11.3201" y19="12.2771" y24="25.2361" y5="23.6446" x10="15.9057" x8="11.3201" x2="7.14408" x16="20.2615" y21="24.1877" x14="12.819" x11="14.3939" y17="11.1403" y11="15.6368" x15="19.4546" y20="23.5183" style="line-style:normal;line-weight:thin;filling:green;color:green" x6="6.14455" antialias="false" y8="20.146" x12="14.3939" y15="10.5341" x20="21.0814" x24="19.4926" x13="12.819" x21="20.9276" y18="11.6077" y3="24.6551" y13="17.8851" x23="20.1976"/>

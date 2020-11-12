@@ -5,8 +5,10 @@
         <name lang="de">859-312</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text text="14" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="45" color="#000000" rotation="0" y="-24"/>
         <text text="A1+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-197" color="#000000" rotation="0" y="-24"/>

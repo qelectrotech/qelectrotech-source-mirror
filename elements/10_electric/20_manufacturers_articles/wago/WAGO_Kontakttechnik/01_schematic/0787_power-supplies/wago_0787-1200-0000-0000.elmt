@@ -13,8 +13,10 @@
         <name lang="en">787-1200</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text x="16" y="23" size="5" text="GND"/>
         <text x="16" y="3" size="5" text="GND"/>

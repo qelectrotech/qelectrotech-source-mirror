@@ -12,8 +12,10 @@
         <name lang="fr">750-8101</name>
         <name lang="en">750-8101</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-362.5" diameter="5" y="17.5"/>
         <line x1="-360" y1="2.5" length2="1.5" y2="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-360" antialias="false" end1="none" length1="1.5" end2="none"/>

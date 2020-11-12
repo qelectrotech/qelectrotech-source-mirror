@@ -4,8 +4,10 @@
         <name lang="en">787-2861/0100-0000</name>
         <name lang="fr">787-2861/0100-0000</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text x="122" text="Vout+" size="9" y="-24"/>
         <text x="203" text="Vout+" size="9" y="-24"/>

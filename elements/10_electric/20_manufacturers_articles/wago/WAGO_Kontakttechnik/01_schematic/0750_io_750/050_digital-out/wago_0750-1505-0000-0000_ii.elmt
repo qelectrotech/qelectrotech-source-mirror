@@ -4,8 +4,10 @@
         <name lang="fr">750-1505 (II)</name>
         <name lang="de">750-1505 (II)</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text x="-35" y="44" size="9" text="DO12"/>
         <text x="45" y="44" size="9" text="DO13"/>

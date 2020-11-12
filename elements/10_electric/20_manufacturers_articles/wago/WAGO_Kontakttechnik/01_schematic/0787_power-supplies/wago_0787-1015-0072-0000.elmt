@@ -13,8 +13,10 @@
         <name lang="pl">787-1015/072-000</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-42.7734" antialias="true" y="7.5" diameter="5"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-42.7734" antialias="true" y="-12.5" diameter="5"/>

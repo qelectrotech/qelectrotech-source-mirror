@@ -5,8 +5,10 @@
         <name lang="fr">857-412</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <dynamic_text Valignment="AlignTop" y="-14" z="1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{04cc5cef-7c64-4df9-97b1-30ff4bc922bc}" text_from="UserText" rotation="0" frame="false" x="-280" text_width="-1" Halignment="AlignLeft">
             <text>0 (2) V ... 10 V</text>

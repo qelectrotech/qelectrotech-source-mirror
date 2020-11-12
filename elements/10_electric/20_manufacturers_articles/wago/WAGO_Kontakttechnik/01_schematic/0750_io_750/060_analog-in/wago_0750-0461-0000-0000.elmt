@@ -12,8 +12,10 @@
         <name lang="it">750-461</name>
         <name lang="pl">750-461</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line end2="none" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="120" end1="none" length1="1.5" length2="1.5" x1="144" y2="10" y1="24"/>
         <line end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="310" end1="none" length1="1.5" length2="1.5" x1="290" y2="20" y1="20"/>

@@ -6,11 +6,9 @@
     </names>
     <elementInformations/>
     <informations>
-     Author: DXF converter
-     License:see http://qelectrotech.org/wiki/doc/elements_license
-     Converter version:V3.0 DB
-
-</informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle diameter="40" y="8.305" style="line-style:normal;line-weight:thin;filling:white;color:black" x="97.8525" antialias="false"/>
         <polygon y1="170.07" x18="154.348" y16="80.91" y7="-162.34" y14="21.43" x1="154.398" x17="144.898" x4="-191.022" y10="-169.34" x5="-194.512" y23="170.07" x3="147.368" y6="-158.84" y9="-169.34" y12="16.18" x9="147.368" y2="170.07" x19="154.348" y22="150.89" y4="163.07" x22="154.348" x7="-191.022" y19="145.64" y5="159.57" x10="154.358" x8="147.368" x2="147.368" x16="144.898" y21="150.89" x14="154.348" x11="154.348" y17="86.16" y11="16.18" x15="154.348" y20="145.64" style="line-style:normal;line-weight:thin;filling:white;color:black" x6="-194.512" antialias="false" y8="-162.34" x12="144.888" y15="80.91" x20="154.188" x13="144.888" x21="154.188" y18="86.16" y3="163.07" y13="21.43" x23="154.398"/>

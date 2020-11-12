@@ -13,8 +13,10 @@
         <name lang="it">750-816/300-000</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none" antialias="false" length1="1.5" x1="40" x2="40" y2="-38" end1="none" y1="10"/>
         <line style="line-style:normal;line-weight:thin;filling:black;color:black" length2="1.5" end2="none" antialias="false" length1="1.5" x1="-40" x2="-40" y2="-38" end1="circle" y1="-8.5"/>

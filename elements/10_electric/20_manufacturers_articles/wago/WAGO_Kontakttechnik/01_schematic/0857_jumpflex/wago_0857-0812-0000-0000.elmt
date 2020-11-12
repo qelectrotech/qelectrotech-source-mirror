@@ -5,8 +5,10 @@
         <name lang="en">857-812</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <text size="7" x="-218.109" text="TC-" y="-28"/>
         <text size="7" x="-277.406" text="TC+" y="-25"/>

@@ -4,8 +4,10 @@
         <name lang="fr">289-174</name>
         <name lang="de">289-174</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle antialias="true" diameter="5" y="-42.5" x="317.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text size="9" y="17" x="327" text="RJ-45"/>

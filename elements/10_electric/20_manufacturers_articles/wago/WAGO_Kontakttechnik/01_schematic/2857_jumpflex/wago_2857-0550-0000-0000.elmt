@@ -5,8 +5,10 @@
         <name lang="fr">2857-550</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="160" x="-410" y="-40" height="50" antialias="false"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="-32.5" y="-42.5" antialias="true"/>

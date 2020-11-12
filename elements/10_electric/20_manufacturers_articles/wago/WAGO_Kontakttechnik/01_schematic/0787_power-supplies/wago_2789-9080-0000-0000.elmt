@@ -13,8 +13,10 @@
         <name lang="en">2789-9080</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" y2="-40" x1="-30" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
         <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-23" y2="40" x1="-30" antialias="false" length1="1.5" end2="none" length2="1.5" y1="40"/>

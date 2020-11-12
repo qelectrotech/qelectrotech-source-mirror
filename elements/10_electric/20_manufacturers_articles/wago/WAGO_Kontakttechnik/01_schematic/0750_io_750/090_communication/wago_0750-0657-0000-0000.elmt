@@ -5,8 +5,10 @@
         <name lang="de">750-657</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle antialias="false" y="-11" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" x="259"/>
         <line length2="1.5" antialias="false" y2="-10" end2="none" end1="none" x2="260" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="260" y1="46.8575"/>

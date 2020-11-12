@@ -12,8 +12,10 @@
         <name lang="es">750-517</name>
         <name lang="ar">750-517</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line y1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="40" y2="3" x2="40" end2="none" length2="1.5"/>
         <line y1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" y2="50" x2="-360" end2="none" length2="1.5"/>

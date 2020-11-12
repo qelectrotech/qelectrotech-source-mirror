@@ -6,11 +6,9 @@
     </names>
     <elementInformations/>
     <informations>
-     Author: DXF converter
-     License:see http://qelectrotech.org/wiki/doc/elements_license
-     Converter version:V3.0 DB
-
-</informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <polygon x2="8.84" x1="-9.34" antialias="false" x4="-9.34" y4="171.511" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y3="171.511" y2="-43.982" y1="-43.982" x3="8.84"/>
         <ellipse width="16.74" antialias="false" x="-8.73" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="163.52" height="7"/>

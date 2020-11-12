@@ -4,8 +4,10 @@
         <name lang="de">750-1416/0040-0000</name>
         <name lang="fr">750-1416/0040-0000</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle diameter="2" x="-181" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-11" antialias="false"/>
         <circle diameter="2" x="-21" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-11" antialias="false"/>

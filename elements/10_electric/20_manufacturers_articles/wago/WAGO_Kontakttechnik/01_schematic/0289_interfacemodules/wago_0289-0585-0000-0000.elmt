@@ -4,8 +4,10 @@
         <name lang="fr">289-585</name>
         <name lang="de">289-585</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <circle antialias="true" diameter="5" y="-42.5" x="357.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text size="6" y="26" x="362" text="male"/>

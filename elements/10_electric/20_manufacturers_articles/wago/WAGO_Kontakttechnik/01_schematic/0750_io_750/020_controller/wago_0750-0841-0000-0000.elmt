@@ -12,8 +12,10 @@
         <name lang="cs">750-841</name>
         <name lang="ar">750-841</name>
     </names>
-    <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
     <description>
         <line x1="40" end2="none" y2="-38" antialias="false" y1="10" end1="none" length2="1.5" x2="40" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x1="-40" end2="none" y2="-38" antialias="false" y1="-8.5" end1="circle" length2="1.5" x2="-40" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
