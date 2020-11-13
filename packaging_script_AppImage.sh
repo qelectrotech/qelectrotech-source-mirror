@@ -9,13 +9,8 @@ git reset --hard origin/master
 
 cd ..
 # get updates
-echo  -e "\033[1;31m uses the repo submodule (note not yet) n/Y?.\033[m"
-read a
-if [[ $a == "Y" || $a == "y" ]]; then
-  git submodule update --init --recursive
-else
-  git pull
-fi
+git pull --recurse-submodules
+
 sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
 
 GITCOMMIT=$(git rev-parse --short HEAD)
