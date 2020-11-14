@@ -92,4 +92,8 @@
     <source>Conducteurs</source>
     <target>Leitungen</target>
 </phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Folie</target>
+</phrase>
 </QPH>
