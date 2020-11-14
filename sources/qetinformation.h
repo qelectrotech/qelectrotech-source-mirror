@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -35,11 +35,17 @@ namespace QETInformation
 	QStringList titleblockInfoKeys();
 	QString titleblockInfoKeysToVar(const QString &info);
 	QHash <QString, QString> titleblockTranslatedKeyHashVar();
+
 	QStringList folioReportInfoKeys();
 	QHash <QString, QString> folioReportInfoKeyToVar();
+
 	QStringList conductorInfoKeys();
 	QStringList diagramInfoKeys();
 
+	QStringList elementInfoKeys();
+	QString elementInfoToVar(const QString &info);
+
+	QString infoToVar(const QString &info);
 	QString translatedInfoKey(const QString &info);
 }
 

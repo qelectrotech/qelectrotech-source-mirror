@@ -59,7 +59,7 @@ void CompositeTextEditDialog::setUpComboBox()
 	}
 	else
 	{
-		qstrl = QETApp::elementInfoKeys();
+		qstrl = QETInformation::elementInfoKeys();
 		qstrl.removeAll("formula");
 	}
 	
@@ -67,7 +67,7 @@ void CompositeTextEditDialog::setUpComboBox()
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : qstrl) {
-		info_map.insert(QETInformation::translatedInfoKey(str), QETApp::elementInfoToVar(str));
+		info_map.insert(QETInformation::translatedInfoKey(str), QETInformation::elementInfoToVar(str));
 	}
 	for(const QString& key : info_map.keys()) {
 		ui->m_info_cb->addItem(key, info_map.value(key));

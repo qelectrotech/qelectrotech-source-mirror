@@ -387,47 +387,6 @@ ElementsCollectionCache *QETApp::collectionCache()
 }
 
 /**
-	@brief QETApp::elementInfoKeys
-	@return all available key for describe an element
-*/
-QStringList QETApp::elementInfoKeys()
-{
-	QStringList info_list;
-	info_list << "formula"
-			  << "label"
-			  << "plant"
-			  << "location"
-			  << "comment"
-			  << "function"
-			  << "auxiliary1"
-			  << "auxiliary2"
-			  << "description"
-			  << "designation"
-			  << "manufacturer"
-			  << "manufacturer_reference"
-			  << "machine_manufacturer_reference"
-			  << "supplier"
-			  << "quantity"
-			  << "unity";
-	return info_list;
-}
-
-/**
-	@brief QETApp::elementInfoToVar
-	@param info
-	@return var in form %{my-var} corresponding to the info,
-	if there is not available var for the given info
-	the returned var is %{void}
-	@see QETApp::elementInfoKeys for list
-*/
-QString QETApp::elementInfoToVar(const QString &info)
-{
-	if (elementInfoKeys().contains(info))
-		return QString("%{")+info+QString("}");
-	return (QString ("%{void}"));
-}
-
-/**
 	@brief QETApp::commonTitleBlockTemplatesCollection
 	@return the common title block templates collection,
 	i.e. the one provided by QElecrotTech

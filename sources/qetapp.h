@@ -73,8 +73,6 @@ class QETApp : public QObject
 		static void printLicense();
 		
 		static ElementsCollectionCache *collectionCache();
-		static QStringList elementInfoKeys();
-		static QString elementInfoToVar(const QString &info);
 		
 		static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
 		static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();

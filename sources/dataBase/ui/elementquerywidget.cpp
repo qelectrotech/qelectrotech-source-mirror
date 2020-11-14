@@ -445,7 +445,7 @@ QStringList ElementQueryWidget::selectedKeys() const
 */
 void ElementQueryWidget::setUpItems()
 {
-	for(QString key : QETApp::elementInfoKeys())
+	for(QString key : QETInformation::elementInfoKeys())
 	{
 		if (key == "formula")
 			continue;

@@ -178,7 +178,7 @@ void ElementInfoWidget::disableLiveEdit()
 */
 void ElementInfoWidget::buildInterface()
 {
-	for (auto str : QETApp::elementInfoKeys())
+	for (auto str : QETInformation::elementInfoKeys())
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);

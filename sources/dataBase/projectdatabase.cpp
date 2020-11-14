@@ -160,7 +160,7 @@ void projectDataBase::removeElement(Element *element)
 void projectDataBase::elementInfoChanged(Element *element)
 {
 	auto hash = elementInfoToString(element);
-	for (auto str : QETApp::elementInfoKeys()) {
+	for (auto str : QETInformation::elementInfoKeys()) {
 		m_update_element_query.bindValue(":" + str, hash.value(str));
 	}
 	m_update_element_query.bindValue(":uuid", element->uuid().toString());
@@ -286,7 +286,7 @@ bool projectDataBase::createDataBase()
 	//Create the element info table
 	QString element_info_table("CREATE TABLE element_info(element_uuid VARCHAR(50) PRIMARY KEY NOT NULL,");
 	first_=true;
-	for (auto string : QETApp::elementInfoKeys())
+	for (auto string : QETInformation::elementInfoKeys())
 	{
 		if (first_) {
 			first_ = false;
@@ -506,11 +506,11 @@ void projectDataBase::prepareQuery()
 
 		//INSERT ELEMENT INFO
 	QStringList bind_values;
-	for (auto key : QETApp::elementInfoKeys()) {
+	for (auto key : QETInformation::elementInfoKeys()) {
 		bind_values << key.prepend(":");
 	}
 	QString insert_element_info("INSERT INTO element_info (element_uuid," +
-				   QETApp::elementInfoKeys().join(", ") +
+				   QETInformation::elementInfoKeys().join(", ") +
 				   ") VALUES (:uuid," +
 				   bind_values.join(", ") +
 				   ")");
@@ -524,7 +524,7 @@ void projectDataBase::prepareQuery()
 
 		//UPDATE ELEMENT INFO
 	QString update_str("UPDATE element_info SET ");
-	for (auto string : QETApp::elementInfoKeys()) {
+	for (auto string : QETInformation::elementInfoKeys()) {
 		update_str.append(string + " = :" + string + ", ");
 	}
 	update_str.remove(update_str.length()-2, 2); //Remove the last ", "
@@ -541,7 +541,7 @@ void projectDataBase::prepareQuery()
 QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 {
 	QHash<QString, QString> hash; //Store the value for each columns
-	for (auto key : QETApp::elementInfoKeys())
+	for (auto key : QETInformation::elementInfoKeys())
 	{
 		if (key == "label") {
 			hash.insert(key, elmt->actualLabel());
