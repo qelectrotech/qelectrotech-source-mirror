@@ -60,7 +60,7 @@
         <line x1="360" x2="360" end2="none" length2="1.5" antialias="false" y1="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13" length1="1.5"/>
         <line x1="360" x2="360" end2="none" length2="1.5" antialias="false" y1="-7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" length1="1.5"/>
         <line x1="-360" x2="360" end2="none" length2="1.5" antialias="false" y1="-10" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" length1="1.5"/>
-        <text text="WAGO 750-1516/0000-0000 (II)" size="9" y="-27" x="-331"/>
+        <text text="WAGO 750-1516 (II)" size="9" y="-27" x="-331"/>
         <text text="24V" size="9" y="46" x="282"/>
         <text text="DO8" size="9" y="46" x="202"/>
         <text text="24V" size="9" y="46" x="-198"/>

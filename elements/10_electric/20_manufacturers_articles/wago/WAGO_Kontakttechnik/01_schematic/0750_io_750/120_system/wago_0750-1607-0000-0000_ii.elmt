@@ -57,7 +57,7 @@
         <line y2="-13" end1="none" antialias="false" length1="1.5" x1="360" y1="-40" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line y2="7" end1="none" antialias="false" length1="1.5" x1="360" y1="-7" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line y2="-10" end1="none" antialias="false" length1="1.5" x1="-360" y1="-10" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="-331" y="-27" text="WAGO 750-1607/0000-0000 (II)" size="9"/>
+        <text x="-331" y="-27" text="WAGO 750-1607 (II)" size="9"/>
         <input x="219" y="-31" rotate="true" tagg="label" text="X123" size="9"/>
         <text x="-278" y="58" text="5" size="5"/>
         <text x="-197" y="58" text="13" size="5"/>

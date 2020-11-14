@@ -1,8 +1,8 @@
 <definition width="730" hotspot_x="365" type="element" hotspot_y="55" link_type="simple" height="110" version="0.51">
     <names>
-        <name lang="de">750-495/0000-0002 (I)</name>
-        <name lang="en">750-495/0000-0002 (I)</name>
-        <name lang="fr">750-495/0000-0002 (I)</name>
+        <name lang="de">750-495/000-002 (I)</name>
+        <name lang="en">750-495/000-002 (I)</name>
+        <name lang="fr">750-495/000-002 (I)</name>
     </names>
     <informations>
         Author: plc-user for QElectroTech
@@ -40,7 +40,7 @@
         <text text="1" size="5" y="-42" x="-276"/>
         <text text="L1" size="9" y="-24" x="-279"/>
         <text text="8" size="5" y="-42" x="286"/>
-        <text text="WAGO 750-495/0000-0002 (I)" size="9" y="45" x="-330"/>
+        <text text="WAGO 750-495/000-002 (I)" size="9" y="45" x="-330"/>
         <text text="6" size="5" y="-42" x="-36"/>
         <text text="L3" size="9" y="-24" x="42"/>
         <text text="3" size="5" y="-42" x="46"/>
