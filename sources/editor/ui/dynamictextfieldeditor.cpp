@@ -209,7 +209,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
-		strl = QETApp::elementInfoKeys();
+		strl = QETInformation::elementInfoKeys();
 	}
 		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
 		//the value of the combo box are always alphabetically sorted

@@ -99,7 +99,7 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 		}
 	}
 	else if (index == 1) {
-		for (QString str : QETApp::elementInfoKeys()) {
+		for (QString str : QETInformation::elementInfoKeys()) {
 			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}

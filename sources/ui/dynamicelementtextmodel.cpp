@@ -1912,7 +1912,7 @@ QStringList DynamicTextItemDelegate::availableInfo(
 			return qstrl;
 		
 		
-		QStringList info_list = QETApp::elementInfoKeys();
+		QStringList info_list = QETInformation::elementInfoKeys();
 		info_list.removeAll("formula"); //No need to have formula
 		DiagramContext dc = elmt->elementInformations();
 		

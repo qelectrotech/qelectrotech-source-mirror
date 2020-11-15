@@ -73,7 +73,7 @@ void ReplaceElementDialog::buildWidget()
 		this->done(ui->m_button_box->buttonRole(button_));
 	});
 	
-	for (QString str : QETApp::elementInfoKeys())
+	for (QString str : QETInformation::elementInfoKeys())
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		eipw->setEraseTextVisible(true);

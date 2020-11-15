@@ -32,6 +32,7 @@
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
+#include "qetinformation.h"
 
 #include <QSettings>
 
@@ -798,7 +799,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 {
 	QStringList list;
 	DiagramContext context = element->elementInformations();
-	for (QString key : QETApp::elementInfoKeys())
+	for (QString key : QETInformation::elementInfoKeys())
 	{
 		QString str = context.value(key).toString();
 		if (!str.isEmpty()) {

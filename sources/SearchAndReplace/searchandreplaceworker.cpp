@@ -24,6 +24,7 @@
 #include "independenttextitem.h"
 #include "diagramcommands.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetinformation.h"
 
 
 SearchAndReplaceWorker::SearchAndReplaceWorker()
@@ -126,7 +127,7 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 		{
 			DiagramContext old_context;
 			DiagramContext new_context =  old_context = elmt->elementInformations();
-			for (QString key : QETApp::elementInfoKeys())
+			for (QString key : QETInformation::elementInfoKeys())
 			{
 				new_context.addValue(key, applyChange(old_context.value(key).toString(),
 													  m_element_context.value(key).toString()));
