@@ -1,8 +1,8 @@
 <definition link_type="simple" height="110" hotspot_x="354" version="0.60" width="730" hotspot_y="55" type="element">
     <names>
-        <name lang="en">750-1415/0040-0000</name>
-        <name lang="de">750-1415/0040-0000</name>
-        <name lang="fr">750-1415/0040-0000</name>
+        <name lang="en">750-1416/040-000</name>
+        <name lang="de">750-1416/040-000</name>
+        <name lang="fr">750-1416/040-000</name>
     </names>
     <informations>
         Author: plc-user for QElectroTech
@@ -101,11 +101,11 @@
         <text x="-19" size="9" y="-24" text="24V"/>
         <text x="-14" size="5" y="-42" text="8"/>
         <text x="-176" size="5" y="-42" text="4"/>
-        <text x="-329" size="9" y="45" text="WAGO 750-1415/0040-0000"/>
+        <text x="-329" size="9" y="45" text="WAGO 750-1416/040-000"/>
         <text x="-179" size="9" y="-24" text="24V"/>
         <text x="-138" size="9" y="-24" text="DI3"/>
         <text x="-134" size="5" y="-42" text="5"/>
-        <text x="-120" size="9" y="45" text="8-Channel DI, DC 24V, 3ms /XTR"/>
+        <text x="-120" size="9" y="45" text="8-Channel DI, DC 24V, 0,2ms /XTR"/>
         <circle diameter="2" x="-261" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-11" antialias="false"/>
         <line end2="none" length2="1.5" y2="-10" length1="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-260" y1="-38" antialias="false" x1="-260"/>
         <terminal x="-350" orientation="w" y="10"/>

@@ -1,16 +1,16 @@
 <definition link_type="simple" height="110" hotspot_x="364" version="0.60" width="730" hotspot_y="44" type="element">
     <names>
-        <name lang="es">750-1515/0040-0000 (I)</name>
-        <name lang="de">750-1515/0040-0000 (I)</name>
-        <name lang="en">750-1515/0040-0000 (I)</name>
-        <name lang="pl">750-1515/0040-0000 (I)</name>
-        <name lang="nl">750-1515/0040-0000 (I)</name>
-        <name lang="ar">750-1515/0040-0000 (I)</name>
-        <name lang="cs">750-1515/0040-0000 (I)</name>
-        <name lang="fr">750-1515/0040-0000 (I)</name>
-        <name lang="it">750-1515/0040-0000 (I)</name>
-        <name lang="pt">750-1515/0040-0000 (I)</name>
-        <name lang="el">750-1515/0040-0000 (I)</name>
+        <name lang="es">750-1515/040-000 (I)</name>
+        <name lang="de">750-1515/040-000 (I)</name>
+        <name lang="en">750-1515/040-000 (I)</name>
+        <name lang="pl">750-1515/040-000 (I)</name>
+        <name lang="nl">750-1515/040-000 (I)</name>
+        <name lang="ar">750-1515/040-000 (I)</name>
+        <name lang="cs">750-1515/040-000 (I)</name>
+        <name lang="fr">750-1515/040-000 (I)</name>
+        <name lang="it">750-1515/040-000 (I)</name>
+        <name lang="pt">750-1515/040-000 (I)</name>
+        <name lang="el">750-1515/040-000 (I)</name>
     </names>
     <informations>
         Author: plc-user for QElectroTech
@@ -58,7 +58,7 @@
         <line end2="none" length2="1.5" y2="-13" length1="1.5" end1="none" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" x2="360" y1="-40" antialias="false" x1="360"/>
         <line end2="none" length2="1.5" y2="7" length1="1.5" end1="none" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" x2="360" y1="-7" antialias="false" x1="360"/>
         <line end2="none" length2="1.5" y2="-10" length1="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="360" y1="-10" antialias="false" x1="-360"/>
-        <text x="-331" size="9" y="-27" text="WAGO 750-1515/0040-0000 (I)"/>
+        <text x="-331" size="9" y="-27" text="WAGO 750-1515/040-000 (I)"/>
         <text x="282" size="9" y="46" text="0V"/>
         <text x="202" size="9" y="46" text="DO4"/>
         <text x="-198" size="9" y="46" text="0V"/>

@@ -1,8 +1,8 @@
 <definition link_type="simple" height="110" hotspot_x="354" version="0.60" width="730" hotspot_y="55" type="element">
     <names>
-        <name lang="de">750-1415/0040-0000 (I)</name>
-        <name lang="en">750-1415/0040-0000 (I)</name>
-        <name lang="fr">750-1415/0040-0000 (I)</name>
+        <name lang="de">750-1415/040-000 (I)</name>
+        <name lang="en">750-1415/040-000 (I)</name>
+        <name lang="fr">750-1415/040-000 (I)</name>
     </names>
     <informations>
         Author: plc-user for QElectroTech
@@ -61,7 +61,7 @@
         <text x="291" size="9" y="-24" text="24V"/>
         <text x="296" size="5" y="-42" text="8"/>
         <text x="-26" size="5" y="-42" text="4"/>
-        <text x="-329" size="9" y="45" text="WAGO 750-1415/0040-0000 (I)"/>
+        <text x="-329" size="9" y="45" text="WAGO 750-1415/040-000 (I)"/>
         <text x="-29" size="9" y="-24" text="24V"/>
         <text x="52" size="9" y="-24" text="DI3"/>
         <text x="56" size="5" y="-42" text="5"/>
