@@ -2301,6 +2301,11 @@ void QETDiagramEditor::selectionChanged()
 */
 void QETDiagramEditor::generateTerminalBlock()
 {
+#ifdef TODO_LIST
+#	pragma message("@TODO Merge 'qet_tb_generator' code in to Qet")
+#	pragma message("https://github.com/qelectrotech/qet_tb_generator")
+#endif
+
 	bool success;
 	QProcess *process = new QProcess(qApp);
 
