@@ -1169,7 +1169,10 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
 */
 void QETElementEditor::slot_openDxf ()
 {
-
+#ifdef TODO_LIST
+#	pragma message("@TODO Merge 'DXF to GET-2020' code in to Qet")
+#	pragma message("https://github.com/qelectrotech/DXFtoQET-2020")
+#endif
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
 #elif defined(Q_OS_MAC)
