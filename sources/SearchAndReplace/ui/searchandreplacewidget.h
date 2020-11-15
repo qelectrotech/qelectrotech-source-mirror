@@ -27,12 +27,14 @@
 #include "QWidgetAnimation/qwidgetanimation.h"
 
 class QTreeWidgetItem;
+class QETDiagramEditor;
+class QAction;
 
 namespace Ui {
 	class SearchAndReplaceWidget;
 }
 
-class QETDiagramEditor;
+
 
 class SearchAndReplaceWidget : public QWidget
 {
@@ -52,17 +54,22 @@ class SearchAndReplaceWidget : public QWidget
 		void fillItemsList();
 		void addElement(Element *element);
 		void search();
+		void setUpActions();
+		void setUpConenctions();
 		
 		void setVisibleAllParents(QTreeWidgetItem *item,
 					  bool expend_parent = true);
+
 		QTreeWidgetItem *nextItem(
 				QTreeWidgetItem *item=nullptr,
 				QTreeWidgetItemIterator::IteratorFlag flags
 				= QTreeWidgetItemIterator::All) const;
+
 		QTreeWidgetItem *previousItem(
 				QTreeWidgetItem *item=nullptr,
 				QTreeWidgetItemIterator::IteratorFlag flags
 				= QTreeWidgetItemIterator::All) const;
+
 		void updateNextPreviousButtons();
 		void itemChanged(QTreeWidgetItem *item, int column);
 		void setChildCheckState(QTreeWidgetItem *item,
@@ -126,6 +133,10 @@ class SearchAndReplaceWidget : public QWidget
 		SearchAndReplaceWorker m_worker;
 		QWidgetAnimation *m_vertical_animation;
 		QWidgetAnimation *m_horizontal_animation;
+
+		QAction *m_select_elements   = nullptr,
+				*m_select_conductors = nullptr,
+				*m_select_texts      = nullptr;
 };
 
 #endif // SEARCHANDREPLACEWIDGET_H

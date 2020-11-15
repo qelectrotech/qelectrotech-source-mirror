@@ -295,6 +295,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::CustomContextMenu</enum>
+        </property>
         <property name="uniformRowHeights">
          <bool>true</bool>
         </property>

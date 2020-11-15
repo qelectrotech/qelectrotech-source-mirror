@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -33,6 +33,7 @@
 #include "elementtextitemgroup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "qetinformation.h"
+#include "diagramcontent.h"
 
 #include <QSettings>
 
@@ -62,9 +63,8 @@ SearchAndReplaceWidget::SearchAndReplaceWidget(QWidget *parent) :
 
 	setHideAdvanced(true);
 	setUpTreeItems();
-
-	connect(ui->m_search_le, &QLineEdit::textEdited,
-		this, &SearchAndReplaceWidget::search);
+	setUpActions();
+	setUpConenctions();
 }
 
 /**
@@ -442,6 +442,69 @@ void SearchAndReplaceWidget::search()
 }
 
 /**
+ * @brief SearchAndReplaceWidget::setUpActions
+ * Setup some actions used in this widget
+ */
+void SearchAndReplaceWidget::setUpActions()
+{
+	m_select_elements   = new QAction(QET::Icons::Element,   tr("Sélectionner les éléments de ce folio"),    ui->m_tree_widget);
+	m_select_conductors = new QAction(QET::Icons::Conductor, tr("Sélectionner les conducteurs de ce folio"), ui->m_tree_widget);
+	m_select_texts      = new QAction(QET::Icons::PartText,  tr("Sélectionner les textes de ce folio"),      ui->m_tree_widget);
+}
+
+/**
+ * @brief SearchAndReplaceWidget::setUpConenctions
+ * Setup some connection used in this widget
+ */
+void SearchAndReplaceWidget::setUpConenctions()
+{
+	connect(ui->m_search_le, &QLineEdit::textEdited,
+		this, &SearchAndReplaceWidget::search);
+
+	connect(ui->m_tree_widget, &QTreeWidget::customContextMenuRequested, [this](const QPoint &pos)
+	{
+		if (m_diagram_hash.keys().contains(ui->m_tree_widget->currentItem()))
+		{
+			QMenu *menu = new QMenu(ui->m_tree_widget);
+			menu->addAction(m_select_elements);
+			menu->addAction(m_select_conductors);
+			menu->addAction(m_select_texts);
+			menu->popup(ui->m_tree_widget->mapToGlobal(pos));
+		}
+	});
+
+	connect(m_select_elements, &QAction::triggered, [this]()
+	{
+		DiagramContent dc(m_diagram_hash.value(ui->m_tree_widget->currentItem()), false);
+		for (auto elmt : dc.m_elements) {
+			if (auto item = m_element_hash.key(elmt)) {
+				item->setCheckState(0, Qt::Checked);
+			}
+		}
+	});
+
+	connect(m_select_conductors, &QAction::triggered, [this]()
+	{
+		DiagramContent dc(m_diagram_hash.value(ui->m_tree_widget->currentItem()), false);
+		for (auto cond : dc.conductors()) {
+			if (auto item = m_conductor_hash.key(cond)) {
+				item->setCheckState(0, Qt::Checked);
+			}
+		}
+	});
+
+	connect(m_select_texts, &QAction::triggered, [this]()
+	{
+		DiagramContent dc(m_diagram_hash.value(ui->m_tree_widget->currentItem()), false);
+		for (auto text : dc.m_text_fields) {
+			if (auto item = m_text_hash.key(text)) {
+				item->setCheckState(0, Qt::Checked);
+			}
+		}
+	});
+}
+
+/**
 	@brief SearchAndReplaceWidget::setVisibleAllParents
 	Set visible all parents of item until the invisible root item
 	@param item
@@ -583,7 +646,7 @@ void SearchAndReplaceWidget::updateNextPreviousButtons()
 */
 void SearchAndReplaceWidget::itemChanged(QTreeWidgetItem *item, int column)
 {
-	Q_UNUSED(column);
+	Q_UNUSED(column)
 	ui->m_tree_widget->blockSignals(true);
 
 	setChildCheckState(item, item->checkState(0));
@@ -929,7 +992,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 		QTreeWidgetItem *current,
 		QTreeWidgetItem *previous)
 {
-	Q_UNUSED(previous);
+	Q_UNUSED(previous)
 
 	if(m_highlighted_element) {
 		m_highlighted_element.data()->setHighlighted(false);
@@ -1223,7 +1286,7 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 */
 void SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged(int index)
 {
-	Q_UNUSED(index);
+	Q_UNUSED(index)
 	search();
 }
 
@@ -1234,7 +1297,7 @@ void SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged(int index)
 */
 void SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged(int arg1)
 {
-	Q_UNUSED(arg1);
+	Q_UNUSED(arg1)
 	search();
 }
 
