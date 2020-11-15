@@ -38,8 +38,6 @@ static QString ELMT_UNITY                        = "unity";
 static QString ELMT_PLANT                        = "plant";
 static QString ELMT_LOCATION                     = "location";
 
-//Voir la suite dans QETApp::elementInfoKeys()
-
 /** Default information related to conductor **/
 static QString COND_FUNCTION             = "function";
 static QString COND_TENSION_PROTOCOL     = "tension/protocol";
@@ -49,16 +47,35 @@ static QString COND_FORMULA              = "formula";
 static QString COND_TEXT                 = "text";
 
 /** Default information related to diagram **/
-static QString DIA_AUTHOR            = "author";
-static QString DIA_DATE              = "date";
-static QString DIA_DISPLAY_FOLIO     = "display_folio";
-static QString DIA_FILENAME          = "filename";
-static QString DIA_FOLIO             = "folio";
-static QString DIA_INDEX_REV         = "indexrev";
-static QString DIA_LOCMACH           = "locmach";
-static QString DIA_PLANT             = "plant";
-static QString DIA_POS               = "pos";
-static QString DIA_TITLE             = "title";
+static QString DIA_AUTHOR             = "author";
+static QString DIA_DATE               = "date";
+static QString DIA_DISPLAY_FOLIO      = "display_folio";
+static QString DIA_FILENAME           = "filename";
+static QString DIA_FOLIO              = "folio";
+static QString DIA_INDEX_REV          = "indexrev";
+static QString DIA_LOCMACH            = "locmach";
+static QString DIA_PLANT              = "plant";
+static QString DIA_POS                = "pos";
+static QString DIA_TITLE              = "title";
+static QString DIA_FOLIO_ID           = "folio-id";
+static QString DIA_PREVIOUS_FOLIO_NUM = "previous-folio-num";
+static QString DIA_NEXT_FOLIO_NUM     = "next-folio-num";
+
+/** Default information related to project **/
+static QString PROJECT_FOLIO_TOTAL     = "folio-total";
+static QString PROJECT_TITLE           = "projecttitle";
+static QString PROJECT_PATH            = "projectpath";
+static QString PROJECT_FILE_NAME       = "projectfilename";
+static QString PROJECT_SAVE_DATE       = "saveddate";
+static QString PROJECT_SAVE_DATE_EU    = "saveddate-eu";
+static QString PROJECT_SAVE_DATE_US    = "saveddate-us";
+static QString PROJECT_SAVE_TIME       = "savedtime";
+static QString PROJECT_SAVED_FILE_NAME = "savedfilename";
+static QString PROJECT_SAVED_FILE_PATH = "savedfilepath";
+
+
+/** Default information related to QElectroTech **/
+static QString QET_VERSION = "version";
 
 /**
 	@brief QETInformation::titleblockInfoKeys
@@ -66,30 +83,28 @@ static QString DIA_TITLE             = "title";
 */
 QStringList QETInformation::titleblockInfoKeys()
 {
-	QStringList info_list;
-	info_list << DIA_AUTHOR;
-	info_list << DIA_DATE;
-	info_list << DIA_TITLE;
-	info_list << DIA_FILENAME;
-	info_list << DIA_PLANT;
-	info_list << DIA_LOCMACH;
-	info_list << DIA_INDEX_REV;
-	info_list << "version";
-	info_list << DIA_FOLIO;
-	info_list << "folio-id";
-	info_list << "folio-total";
-	info_list << "previous-folio-num";
-	info_list << "next-folio-num";
-	info_list << "projecttitle";
-	info_list << "projectpath";
-	info_list << "projectfilename";
-	info_list << "saveddate";
-	info_list << "saveddate-eu";
-	info_list << "saveddate-us";
-	info_list << "savedtime";
-	info_list << "savedfilename";
-	info_list << "savedfilepath";
-
+	QStringList info_list = { DIA_AUTHOR,
+							  DIA_DATE,
+							  DIA_TITLE,
+							  DIA_FILENAME,
+							  DIA_PLANT,
+							  DIA_LOCMACH,
+							  DIA_INDEX_REV,
+							  QET_VERSION,
+							  DIA_FOLIO,
+							  DIA_FOLIO_ID,
+							  PROJECT_FOLIO_TOTAL,
+							  DIA_PREVIOUS_FOLIO_NUM,
+							  DIA_NEXT_FOLIO_NUM,
+							  PROJECT_TITLE,
+							  PROJECT_PATH,
+							  PROJECT_FILE_NAME,
+							  PROJECT_SAVE_DATE,
+							  PROJECT_SAVE_DATE_EU,
+							  PROJECT_SAVE_DATE_US,
+							  PROJECT_SAVE_TIME,
+							  PROJECT_SAVED_FILE_NAME,
+							  PROJECT_SAVED_FILE_PATH };
 	return info_list;
 }
 
@@ -127,11 +142,11 @@ QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
  */
 QStringList QETInformation::folioReportInfoKeys()
 {
-	QStringList list = {ELMT_LABEL,
-						COND_FUNCTION,
-						COND_TENSION_PROTOCOL,
-						COND_COLOR,
-						COND_SECTION};
+	QStringList list = { ELMT_LABEL,
+						 COND_FUNCTION,
+						 COND_TENSION_PROTOCOL,
+						 COND_COLOR,
+						 COND_SECTION };
 
 	return list;
 }
@@ -149,27 +164,26 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 
 QStringList QETInformation::conductorInfoKeys()
 {
-	QStringList list = 	{COND_FORMULA,
-						 COND_TEXT,
-						 COND_FUNCTION,
-						 COND_TENSION_PROTOCOL,
-						 COND_COLOR,
-						 COND_SECTION};
-
+	QStringList list = 	{ COND_FORMULA,
+						  COND_TEXT,
+						  COND_FUNCTION,
+						  COND_TENSION_PROTOCOL,
+						  COND_COLOR,
+						  COND_SECTION };
 	return  list;
 }
 
 QStringList QETInformation::diagramInfoKeys()
 {
-	QStringList list = {DIA_TITLE,
-					   DIA_AUTHOR,
-					   DIA_FILENAME,
-					   DIA_FOLIO,
-					   DIA_PLANT,
-					   DIA_LOCMACH,
-					   DIA_INDEX_REV,
-					   DIA_DATE,
-					   DIA_DISPLAY_FOLIO};
+	QStringList list = { DIA_TITLE,
+						 DIA_AUTHOR,
+						 DIA_FILENAME,
+						 DIA_FOLIO,
+						 DIA_PLANT,
+						 DIA_LOCMACH,
+						 DIA_INDEX_REV,
+						 DIA_DATE,
+						 DIA_DISPLAY_FOLIO };
 	return list;
 }
 
@@ -190,7 +204,7 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_MACHINE_MANUFACTURER_REF,
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
-						 ELMT_UNITY};
+						 ELMT_UNITY };
 	return list;
 }
 
@@ -236,21 +250,21 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == DIA_LOCMACH)                      return QObject::tr("Localisation (+)");
 	else if (info == DIA_INDEX_REV)                    return QObject::tr("Indice de révision");
 	else if (info == DIA_POS)                          return QObject::tr("Position");
-	else if (info == "version")                        return QObject::tr("Version de QElectroTech");
-	else if (info == "folio")                          return QObject::tr("Numéro de folio");
-	else if (info == "folio-id")                       return QObject::tr("Position du folio");
-	else if (info == "folio-total")                    return QObject::tr("Nombre de folio");
-	else if (info == "previous-folio-num")             return QObject::tr("Numéro du folio précédent");
-	else if (info == "next-folio-num")                 return QObject::tr("Numéro du folio suivant");
-	else if (info == "projecttitle")                   return QObject::tr("Titre du projet");
-	else if (info == "projectpath")                    return QObject::tr("Chemin du fichier du projet");
-	else if (info == "projectfilename")                return QObject::tr("Nom du fichier");
-	else if (info == "saveddate")                      return QObject::tr("Date d'enregistrement du fichier format local");
-	else if (info == "saveddate-eu")                   return QObject::tr("Date d'enregistrement du fichier format dd-MM-yyyy");
-	else if (info == "saveddate-us")                   return QObject::tr("Date d'enregistrement du fichier format yyyy-MM-dd");
-	else if (info == "savedtime")                      return QObject::tr("Heure d'enregistrement du fichier");
-	else if (info == "savedfilename")                  return QObject::tr("Nom du fichier enregistré");
-	else if (info == "savedfilepath")                  return QObject::tr("Chemin du fichier enregistré");
+	else if (info == QET_VERSION)                      return QObject::tr("Version de QElectroTech");
+	else if (info == DIA_FOLIO)                        return QObject::tr("Numéro de folio");
+	else if (info == DIA_FOLIO_ID)                     return QObject::tr("Position du folio");
+	else if (info == PROJECT_FOLIO_TOTAL)              return QObject::tr("Nombre de folio");
+	else if (info == DIA_PREVIOUS_FOLIO_NUM)           return QObject::tr("Numéro du folio précédent");
+	else if (info == DIA_NEXT_FOLIO_NUM)               return QObject::tr("Numéro du folio suivant");
+	else if (info == PROJECT_TITLE)                    return QObject::tr("Titre du projet");
+	else if (info == PROJECT_PATH)                     return QObject::tr("Chemin du fichier du projet");
+	else if (info == PROJECT_FILE_NAME)                return QObject::tr("Nom du fichier");
+	else if (info == PROJECT_SAVE_DATE)                return QObject::tr("Date d'enregistrement du fichier format local");
+	else if (info == PROJECT_SAVE_DATE_EU)             return QObject::tr("Date d'enregistrement du fichier format dd-MM-yyyy");
+	else if (info == PROJECT_SAVE_DATE_US)             return QObject::tr("Date d'enregistrement du fichier format yyyy-MM-dd");
+	else if (info == PROJECT_SAVE_TIME)                return QObject::tr("Heure d'enregistrement du fichier");
+	else if (info == PROJECT_SAVED_FILE_NAME)          return QObject::tr("Nom du fichier enregistré");
+	else if (info == PROJECT_SAVED_FILE_PATH)          return QObject::tr("Chemin du fichier enregistré");
 	else if (info == ELMT_FORMULA)                     return QObject::tr("Formule du label");
 	else if (info == ELMT_LABEL)                       return QObject::tr("Label");
 	else if (info == ELMT_COMMENT)                     return QObject::tr("Commentaire");
