@@ -251,7 +251,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == "savedtime")                      return QObject::tr("Heure d'enregistrement du fichier");
 	else if (info == "savedfilename")                  return QObject::tr("Nom du fichier enregistré");
 	else if (info == "savedfilepath")                  return QObject::tr("Chemin du fichier enregistré");
-	else if (info == ELMT_LABEL)                       return QObject::tr("Formule du label");
+	else if (info == ELMT_FORMULA)                     return QObject::tr("Formule du label");
 	else if (info == ELMT_LABEL)                       return QObject::tr("Label");
 	else if (info == ELMT_COMMENT)                     return QObject::tr("Commentaire");
 	else if (info == ELMT_FUNCTION)                    return QObject::tr("Fonction");
@@ -265,6 +265,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_SUPPLIER)                    return QObject::tr("Fournisseur");
 	else if (info == ELMT_QUANTITY)                    return QObject::tr("Quantité");
 	else if (info == ELMT_UNITY)                       return QObject::tr("Unité");
+	else if (info == ELMT_LOCATION)                    return QObject::tr("Localisation (+)");
 	else if (info == COND_FUNCTION)                    return QObject::tr("Fonction");
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Tension / Protocole");
 	else if (info == COND_COLOR)                       return QObject::tr("Couleur du fil");
