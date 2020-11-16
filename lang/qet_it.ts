@@ -2333,7 +2333,8 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Si è sicuri di voler eliminare questo elemento?</translation>
+        <translation type="unfinished">Si è sicuri di voler eliminare questo elemento?
+</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="406"/>
@@ -3050,7 +3051,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
         <source> min</source>
         <comment>minute</comment>
-        <translation type="unfinished"> min</translation>
+        <translation> min</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
@@ -3092,7 +3093,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Salvatoaggio automatico dei progetti (applicato al prossimo avvio di QElectrotech)</translation>
+        <translation>Salvataggio automatico dei progetti (applicato al prossimo avvio di QElectrotech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
