@@ -51,7 +51,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="449"/>
         <source>log</source>
-        <translation type="unfinished"></translation>
+        <translation>καταγραφή</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
@@ -63,7 +63,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Οι προγραμματιστές του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
@@ -622,7 +622,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
         <source>Formater en tant que liste de materiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαμόρφωση ως κατάλογος εξαρτημάτων</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
@@ -922,17 +922,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Τμήμα αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Αγωγός</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>Δίαυλος</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
@@ -1942,7 +1942,8 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="366"/>
         <source>Sous-type : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Υπο-τύπος:%1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="367"/>
@@ -3451,22 +3452,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
         <source>Géometrie et lignes</source>
-        <translation type="unfinished"></translation>
+        <translation>Γεωμετρία και γραμμές</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
         <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή γεωμετρίας σε όλους τους πίνακες που συνδέονται με αυτόν</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
         <source>Ajuster le tableau au folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή πίνακα στη σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3568,12 +3569,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="417"/>
         <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
  il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt; ΠΡΟΣΟΧΗ: &lt;/center&gt;
+ λείπουν %1γραμμές για να εμφανιστούν όλες οι πληροφορίες</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="537"/>
         <source>Appliquer la géometrie d&apos;un tableau aux tableau liée à celui-ci</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή της γεωμετρίας ενος πίνακα στον πίνακα που συνδέεται με αυτόν</translation>
     </message>
 </context>
 <context>
@@ -3877,17 +3879,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
@@ -3897,7 +3899,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
@@ -3997,7 +3999,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="474"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Τμήμα αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -4732,7 +4734,8 @@ Couleur du conducteur : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="333"/>
         <source>
 Section du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Τμήμα αγωγού: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
@@ -4911,7 +4914,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
         <source>Toutes les dates</source>
-        <translation type="unfinished"></translation>
+        <translation>Όλες οι ημερομηνίες</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
@@ -4926,7 +4929,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="155"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογές αποτύπωσης</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
@@ -4951,7 +4954,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογές εκτύπωσης</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
@@ -4991,12 +4994,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished"></translation>
+        <translation>Σμίκρυνση</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεγέθυνση</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
@@ -5031,7 +5034,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Προβολή μονής σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
@@ -5046,7 +5049,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαμόρφωση της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="64"/>
@@ -5068,7 +5071,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ως pdf</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="165"/>
@@ -5083,12 +5086,12 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Exporter sous : </source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ως: </translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Fichier (*.pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχείο (*.pdf</translation>
     </message>
 </context>
 <context>
@@ -6098,13 +6101,13 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή ως pdf</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εξάγει μία ή περισσότερες σελίδες του τρέχοντος έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
@@ -8481,7 +8484,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Position</source>
-        <translation type="unfinished">Θέση</translation>
+        <translation>Θέση</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="253"/>
@@ -8531,83 +8534,83 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Formule du label</source>
-        <translation type="unfinished">Τύπος ετικέτας</translation>
+        <translation>Τύπος ετικέτας</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Label</source>
-        <translation type="unfinished">Ετικέτα</translation>
+        <translation>Ετικέτα</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Σχόλιο</translation>
+        <translation>Σχόλιο</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="271"/>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">Βοηθητικό μπλοκ 1</translation>
+        <translation>Βοηθητικό μπλοκ 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">Βοηθητικό μπλοκ 2</translation>
+        <translation>Βοηθητικό μπλοκ 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
-        <translation type="unfinished">Κείμενο περιγραφής</translation>
+        <translation>Κείμενο περιγραφής</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished">Αριθμός άρθρου</translation>
+        <translation>Αριθμός άρθρου</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Κατασκευαστής</translation>
+        <translation>Κατασκευαστής</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Αριθμός παραγγελίας</translation>
+        <translation>Αριθμός παραγγελίας</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Εσωτερικός αριθμός</translation>
+        <translation>Εσωτερικός αριθμός</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Προμηθευτής</translation>
+        <translation>Προμηθευτής</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
-        <translation type="unfinished">Ποσότητα</translation>
+        <translation>Ποσότητα</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
-        <translation type="unfinished">Ενότητα</translation>
+        <translation>Ενότητα</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Τάση / πρωτόκολλο</translation>
+        <translation>Τάση / πρωτόκολλο</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρώμα καλωδίου</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
@@ -8617,7 +8620,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
-        <translation type="unfinished">Τύπος κειμένου</translation>
+        <translation>Τύπος κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
@@ -8677,7 +8680,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
         <source>Coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Επικόλληση</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="259"/>
@@ -8987,7 +8990,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Τμήμα αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
@@ -11852,7 +11855,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Πληροφορίες προς εμφάνιση</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
@@ -11915,7 +11918,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="94"/>
         <source>Name : </source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="199"/>
