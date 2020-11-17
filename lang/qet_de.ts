@@ -679,7 +679,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
@@ -781,7 +781,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Leitereigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
@@ -858,7 +858,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
         <source>Autonumérotation</source>
-        <translation>Auto-Nummerierung</translation>
+        <translation>Automatische Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
@@ -1932,7 +1932,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="363"/>
         <source>Folio : %1
 </source>
-        <translation>Folie: %1
+        <translation>Seitennummer: %1
 </translation>
     </message>
     <message>
@@ -1987,7 +1987,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Retrouver dans le panel</source>
-        <translation>Im Panel zurückfinden</translation>
+        <translation>Bauteil in Sammlung suchen</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="392"/>
@@ -2460,7 +2460,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <location filename="../sources/elementspanel.cpp" line="191"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Ziehen/ablegen, um die Zeichnungskopf auf die Folie anzuwenden.</translation>
+        <translation>Ziehen/Ablegen, um den Zeichnungskopf auf der Folie anzuwenden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="229"/>
@@ -2580,7 +2580,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschaften der Ellipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
@@ -2854,7 +2854,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="186"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation>Foliennummerierung</translation>
+        <translation>Automatische Foliennummerierung</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="188"/>
@@ -2941,9 +2941,9 @@ that you create. Text and number inputs are
  - %prefix: Gerätekennbuchstabe
  - %l: Zeilennummer
  - %c: Spaltennummer
- - %F: Foliennummer (Benutzer definiert)
- - %f oder %id: Foliennummer (Durchnummerierung)
- - %total: gesamte Folienanzahl
+ - %F: Foliennummer
+ - %f oder %id: Seitennummer der Folie
+ - %total: Anzahl der Folien im Projekt
 Sie können auch beliebige Variable verwenden,
 die Sie im Zeichnungskopf kreiert haben.
 Texte und Zahlen sind ebenso erlaubt.</translation>
@@ -3013,7 +3013,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation>Foliennummer anstelle von Reihenfolgenindex im Projekt verwenden</translation>
+        <translation>Foliennummern anstelle von Seitennummern für Projektanzeigen verwenden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
@@ -3035,7 +3035,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation>neu zum Projekt hinzugefügte Bauteile im Panel hervorheben</translation>
+        <translation>Neu zum Projekt hinzugefügte Bauteile in der Sammlung hervorheben</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="281"/>
@@ -3077,12 +3077,12 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
         <source>Répertoire de la collection commune</source>
-        <translation>Pfad zur gemeinsamen Sammlung</translation>
+        <translation>Pfad zur gemeinsamen Bauteilsammlung</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation>Pfad zur Benutzersammlung</translation>
+        <translation>Pfad zur Benutzer-Bauteilsammlung</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
@@ -3122,12 +3122,12 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>In Fenstern anz&amp;eigen (wirksam nach einem Neustart von QElectroTech)</translation>
+        <translation>Projekte in Fenstern anz&amp;eigen (wirksam nach einem Neustart von QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation>In Reitern anzeigen (wirksa&amp;m nach einem Neustart von QElectroTech)</translation>
+        <translation>Projekte in Reitern anzeigen (wirksa&amp;m nach einem Neustart von QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
@@ -3466,7 +3466,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
         <source>Ajuster le tableau au folio</source>
-        <translation>Tabelle an Foliegröße anpassen</translation>
+        <translation>Tabelle an Foliengröße anpassen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
@@ -3878,7 +3878,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Linieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
@@ -4277,12 +4277,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="95"/>
         <source>Folio</source>
-        <translation>Folie</translation>
+        <translation>Folieneigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="96"/>
         <source>Conducteur</source>
-        <translation>Leiter</translation>
+        <translation>Leitereigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="97"/>
@@ -4983,7 +4983,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="259"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugleiste Druckoptionen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
@@ -5701,7 +5701,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
         <source>Retrouver dans le panel</source>
-        <translation>Suche im Panel</translation>
+        <translation>Bauteil in Sammlung suchen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
@@ -5965,7 +5965,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation>findet die Auswahl im Panel zurück</translation>
+        <translation>Sucht das Bauteil in der Sammlung</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="333"/>
@@ -6068,7 +6068,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
         <source>Exporter au format CSV</source>
-        <translation>In CSV Format exportieren</translation>
+        <translation>Als CSV-Datei exportieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
@@ -6197,7 +6197,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="817"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Zeigt oder versteckt das Bauteilpanel</translation>
+        <translation>Zeigt oder versteckt die Bauteilsammlung</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="818"/>
@@ -8280,7 +8280,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="255"/>
         <source>Position du folio</source>
-        <translation>Seite</translation>
+        <translation>Seitennummer der Folie</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="254"/>
@@ -8490,7 +8490,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Position</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="253"/>
@@ -8540,93 +8540,93 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Formule du label</source>
-        <translation type="unfinished">BMK-Formel</translation>
+        <translation>BMK-Formel</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Label</source>
-        <translation type="unfinished">Betriebsmittelkennzeichen</translation>
+        <translation>Betriebsmittelkennzeichen (BMK)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="271"/>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funktion</translation>
+        <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">Zusatzfeld 1</translation>
+        <translation>Zusatzinfo 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">Zusatzfeld 2</translation>
+        <translation>Zusatzinfo 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
-        <translation type="unfinished">Artikelbeschreibung</translation>
+        <translation>Artikelbeschreibung</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished">Artikelnummer</translation>
+        <translation>Artikelnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Hersteller</translation>
+        <translation>Hersteller</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Bestellnummer</translation>
+        <translation>Bestellnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Interne Nummer</translation>
+        <translation>Interne Nummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Lieferant</translation>
+        <translation>Lieferant</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
-        <translation type="unfinished">Menge</translation>
+        <translation>Menge</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
-        <translation type="unfinished">Einheit</translation>
+        <translation>Einheit</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Spannung/Protokoll</translation>
+        <translation>Spannung/Protokoll</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished">Drahtfarbe</translation>
+        <translation>Drahtfarbe</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation type="unfinished">Drahtabschnitt</translation>
+        <translation>Drahtabschnitt</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
-        <translation type="unfinished">Textformel</translation>
+        <translation>Textformel</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
@@ -8701,7 +8701,7 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/qetapp.cpp" line="1984"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
-        <translation type="unfinished"></translation>
+        <translation>Dies ist ein Programmfehler.</translation>
     </message>
 </context>
 <context>
@@ -9207,7 +9207,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation>Folie:</translation>
+        <translation>Foliennummer:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
@@ -9243,9 +9243,9 @@ Les variables suivantes sont utilisables :
 - %autonum : Folio Auto Numeration</source>
         <translation>In der Zeichnungskopf-Vorlagen als %folio verfügbar.
 Folgende Variablen stehen im Feld Folie zur Verfügung:
-%id: Blattnummer der aktuellen Folie im Projekt
-%total: Anzahl aller Folien im Projekt
-%autonum: Folie lt. Folien-Auto-Nummerierung</translation>
+%id: Seitennummer der Folie im Projekt
+%total: Anzahl der Folien im Projekt
+%autonum: Automatische Foliennummerierung</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
@@ -9305,7 +9305,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Sie können eigene Querverweistexte definieren.
 Folgende Variablen sind verfügbar:
-%f: Seitennummer der Folie im Projekt
+%f: Seitennummer der Folie
 %F: Foliennummer
 %M: Anlage
 %LM: Ort
@@ -9483,17 +9483,17 @@ Folgende Variablen sind verfügbar:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="450"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteile auf dieser Folie auswählen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="451"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiter auf dieser Folie auswählen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="452"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Texte auf dieser Folie auswählen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1103"/>
@@ -9600,7 +9600,7 @@ Folgende Variablen sind verfügbar:
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="210"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation>Folien-Auto-Nummerierung</translation>
+        <translation>Automatische Foliennummerierung</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="212"/>
@@ -9662,17 +9662,17 @@ Vorangestellte Nullen werden hinzugefügt falls der Startwert vom Feld &quot;Wer
 - Der Typ &quot;Text&quot; steht für einen fixen Text.
 In diesem Fall wird das Feld &quot;Inkrementierung&quot; ignoriert.
 
-- Der Typ &quot;Foliennummer&quot; steht für die Pos-Nr. der Folie im Projekt (Reihenfolge).
+- Der Typ &quot;Foliennummer&quot; steht für die Seitennummer der Folie.
 Andere Felder werden nicht verwendet.
 
-- Der Typ &quot;Folie&quot; steht für die Nummernangabe in der jeweiligen Folie.
+- Der Typ &quot;Folie&quot; steht für die Foliennummer.
 Andere Felder werden nicht verwendet.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="232"/>
         <source>Conducteur Autonumérotation</source>
         <comment>title window</comment>
-        <translation>Auto-Nummerierung der Leiter</translation>
+        <translation>Automatische Nummerierung der Leiter</translation>
     </message>
 </context>
 <context>
@@ -11854,7 +11854,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Informationen auswählen</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
@@ -11879,7 +11879,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="134"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>Seite</translation>
     </message>
 </context>
 <context>
@@ -12098,7 +12098,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Folio :</source>
-        <translation>Folie:</translation>
+        <translation>Foliennummer:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
@@ -12169,9 +12169,9 @@ Les variables suivantes sont utilisables :
 - %autonum : Folio Auto Numeration</source>
         <translation>In Zeichnungskopf-Vorlagen als %folio verfügbar.
 Folgende Variablen stehen im Feld Folie zur Verfügung:
-%id: Blattnummer im Projekt
-%total: Anzahl aller Blätter im Projekt
-%autonum: Folien-Auto-Nummerierung</translation>
+%id: Seitennummer der Folie im Projekt
+%total: Anzahl der Folien im Projekt
+%autonum: Automatische Foliennummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
@@ -12389,7 +12389,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Standardmäßig sind die folgenden Variablen verfügbar:&lt;ul&gt;&lt;li&gt;%{author}: Autor der Folie &lt;/li&gt;&lt;li&gt;%{date}: Datum des Folie&lt;/li&gt;&lt;li&gt;%{title}: Titel der Folie&lt;/li&gt;&lt;li&gt;%{filename}: Dateiname des Projekts&lt;/li&gt;&lt;li&gt;%{plant}: Name der Anlage (=), zu der die Folie gehört&lt;/li&gt;&lt;li&gt;%{locmach}: Name des Ortes (+), zu dem die Folie gehört&lt;/li&gt;&lt;li&gt;%{indexrev}: Revisionsindex der Folie&lt;/li&gt;&lt;li&gt;%{version}: Softwareversion&lt;/li&gt;&lt;li&gt;%{folio}: Foliennummerierung&lt;/li&gt;&lt;li&gt;%{folio-id}: Seitennummer der Folie im Projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: Gesamtzahl aller Folien im Projekt&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: Nummer der vorherigen Folie&lt;/li&gt;&lt;li&gt;%{next-folio-num}: Nummer der nächsten Folie&lt;/li&gt;&lt;li&gt;%{projecttitle}: Titel des Projekts&lt;/li&gt;&lt;li&gt;%{projectpath}: Projektpfad&lt;/li&gt;&lt;li&gt;%{projectfilename}: Name der Projektdatei&lt;/li&gt;&lt;li&gt;%{saveddate}: Speicherdatum der Dateim im lokalen Format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: Speicherdatum der Datei im Format TT-MM-JJJJ&lt;/li&gt;&lt;li&gt;%{saveddate-us}: Speicherdatum der Datei im Format JJJJ-MM-TT&lt;/li&gt;&lt;li&gt;%{savedtime}: Zeitpunkt des Speicherns der Datei&lt;/li&gt;&lt;li&gt;%{savedfilename}: Name der gespeicherten Datei&lt;/li&gt;&lt;li&gt;%{savedfilepath}: Pfad zur gespeicherten Datei&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Standardmäßig sind die folgenden Variablen verfügbar:&lt;ul&gt;&lt;li&gt;%{author}: Autor der Folie &lt;/li&gt;&lt;li&gt;%{date}: Datum der Folie&lt;/li&gt;&lt;li&gt;%{title}: Titel der Folie&lt;/li&gt;&lt;li&gt;%{filename}: Dateiname des Projekts&lt;/li&gt;&lt;li&gt;%{plant}: Name der Anlage (=), zu der die Folie gehört&lt;/li&gt;&lt;li&gt;%{locmach}: Name des Ortes (+), zu dem die Folie gehört&lt;/li&gt;&lt;li&gt;%{indexrev}: Revisionsindex der Folie&lt;/li&gt;&lt;li&gt;%{version}: Softwareversion&lt;/li&gt;&lt;li&gt;%{folio}: Foliennummer&lt;/li&gt;&lt;li&gt;%{folio-id}: Seitennummer der Folie&lt;/li&gt;&lt;li&gt;%{folio-total}: Anzahl der Folien im Projekt&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: Nummer der vorherigen Folie&lt;/li&gt;&lt;li&gt;%{next-folio-num}: Nummer der nächsten Folie&lt;/li&gt;&lt;li&gt;%{projecttitle}: Titel des Projekts&lt;/li&gt;&lt;li&gt;%{projectpath}: Projektpfad&lt;/li&gt;&lt;li&gt;%{projectfilename}: Name der Projektdatei&lt;/li&gt;&lt;li&gt;%{saveddate}: Speicherdatum der Dateim im lokalen Format&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: Speicherdatum der Datei im Format TT-MM-JJJJ&lt;/li&gt;&lt;li&gt;%{saveddate-us}: Speicherdatum der Datei im Format JJJJ-MM-TT&lt;/li&gt;&lt;li&gt;%{savedtime}: Zeitpunkt des Speicherns der Datei&lt;/li&gt;&lt;li&gt;%{savedfilename}: Name der gespeicherten Datei&lt;/li&gt;&lt;li&gt;%{savedfilepath}: Pfad zur gespeicherten Datei&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="479"/>
@@ -12815,8 +12815,8 @@ Maximale Länge: %2px
 %M: Installation 
 %LM: Localisation </source>
         <translation>Folgende Variablen sind verfügbar:
-%f: Folien-ID
-%F: Folienname
+%f: Seitennummer der Folie
+%F: Foliennummer
 %l: Zeilennummer
 %c: Spaltennummer
 %M: Anlage
