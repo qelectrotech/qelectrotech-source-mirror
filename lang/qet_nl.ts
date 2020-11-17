@@ -26,7 +26,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation>Medewerkers</translation>
+        <translation>Bijdragers</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
@@ -491,17 +491,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="45"/>
         <source>Apply to Selected Locations</source>
-        <translation>Toepassen op geselecteerde locaties</translation>
+        <translation>Op geselecteerde locaties toepassen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="52"/>
         <source>Apply to Selected Folios</source>
-        <translation>Toepassen op geselecteerde bladen</translation>
+        <translation>Op geselecteerde bladen toepassen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="59"/>
         <source>Apply to Entire Project</source>
-        <translation>Toepassen op het gehele project</translation>
+        <translation>Op het gehele project toepassen</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="78"/>
@@ -521,14 +521,14 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
         <source>Conductor</source>
-        <translation>Geleiders</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
         <source>Only New</source>
-        <translation>Nieuwe</translation>
+        <translation>Alleen nieuwe</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
@@ -547,18 +547,18 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
         <source>Element</source>
-        <translation>Elementen</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
         <source>Only Existent</source>
-        <translation>Bestaande</translation>
+        <translation>Alleen bestaande</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
         <source>Folio</source>
-        <translation>Bladen</translation>
+        <translation>Blad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
@@ -818,7 +818,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
         <source>Texte visible</source>
-        <translation>Tekst zichtbaar</translation>
+        <translation>Tekst weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
@@ -870,7 +870,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="234"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>Streeplijn</translation>
+        <translation>Streepjeslijn</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="235"/>
@@ -912,7 +912,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
         <source>Autonumérotation</source>
-        <translation>Automatische nummering</translation>
+        <translation>Autonummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
@@ -1143,7 +1143,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="117"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation>Kies de nieuwe kleur voor deze geleider</translation>
+        <translation>Kies een nieuwe kleur voor deze geleider</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="136"/>
@@ -1344,13 +1344,13 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="297"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="737"/>
         <source>Position X</source>
-        <translation>Positie X</translation>
+        <translation>X-Positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="312"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="752"/>
         <source>Position Y</source>
-        <translation>Positie Y</translation>
+        <translation>Y-Positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
@@ -1637,7 +1637,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/elementdialog.cpp" line="66"/>
         <source>Enregistrer un élément</source>
         <comment>dialog title</comment>
-        <translation>Sla een element op</translation>
+        <translation>Een element opslaan</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="67"/>
@@ -1662,7 +1662,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/elementdialog.cpp" line="74"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
-        <translation>Sla een categorie op</translation>
+        <translation>Een categorie opslaan</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="78"/>
@@ -1688,7 +1688,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/elementdialog.cpp" line="232"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation>U moet een element of een categorie met een naam voor het element selecteren.</translation>
+        <translation>U dient een element of een categorie met een naam voor het element te selecteren.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="200"/>
@@ -1713,7 +1713,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/elementdialog.cpp" line="208"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation>Geen element geselecteerd.</translation>
+        <translation>Selectie is geen element.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="219"/>
@@ -3006,7 +3006,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
         <source>Désactivé</source>
-        <translation>Deactiveer</translation>
+        <translation>Uitschakelen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
@@ -3027,7 +3027,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>Accès aux collections</source>
-        <translation>Kiezen van collecties</translation>
+        <translation>Toegang tot collecties</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
@@ -3059,7 +3059,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Elk element bevat een vrij tekstveld met informatie over de auteur, de licentie of andere voor u relevante informatie.
-Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translation>
+Hieronder kunt u de standaardtekst voor nieuwe elementen hiervoor opgeven:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
@@ -3099,12 +3099,12 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Gebruik ven&amp;sters (toegepast na herstarten van QElectroTech)</translation>
+        <translation>Ven&amp;sters gebruiken (toegepast na herstarten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation>Gebruik tabs (toegepast na he&amp;rstarten van QElectroTech)</translation>
+        <translation>Tabs gebruiken (toegepast na he&amp;rstarten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
@@ -3349,7 +3349,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
         <location filename="../sources/genericpanel.cpp" line="218"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dit is een QElectroTech project, dwz een bestand met de .qet extensie dat meerdere bladen bevat. Het bevat ook de elementen en titelblokken die op deze bladen zijn gebruikt.</translation>
+        <translation>Dit is een QElectroTech project, d.w.z. een bestand met de .qet extensie dat meerdere bladen bevat. Het bevat ook de elementen en titelblokken die op deze bladen zijn gebruikt.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="346"/>
@@ -3448,7 +3448,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
         <source>Géometrie et lignes</source>
-        <translation>Geometrie en lijnen</translation>
+        <translation>Vormgeving en regels</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
@@ -3612,12 +3612,12 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation>Dit element bestaat reeds in dit project. Echter de versie verschilt. Wat wilt u doen?</translation>
+        <translation>Dit element bestaat al in dit project. Echter de versie verschilt. Wat wilt u doen?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation>Gebruik het reeds bestaande element</translation>
+        <translation>Gebruik het bestaande element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
@@ -3627,7 +3627,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation>Overschrijf het reeds bestaande element</translation>
+        <translation>Overschrijf het bestaande element</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
@@ -3650,7 +3650,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation>Verwijder bestaande tekst</translation>
+        <translation>Bestaande teksten overschrijven</translation>
     </message>
 </context>
 <context>
@@ -4261,7 +4261,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation>Kopieer naar het klembord</translation>
+        <translation>Naar klembord kopiëren</translation>
     </message>
 </context>
 <context>
@@ -4344,7 +4344,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/newelementwizard.cpp" line="108"/>
         <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation>Geef bestandsnaam voor het nieuwe element.</translation>
+        <translation>Geef de bestandsnaam voor het nieuwe element.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="132"/>
@@ -8487,7 +8487,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="253"/>
@@ -8537,93 +8537,93 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Formule du label</source>
-        <translation type="unfinished">Labelformule</translation>
+        <translation>Labelformule</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Commentaar</translation>
+        <translation>Commentaar</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="271"/>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
-        <translation type="unfinished">Functie</translation>
+        <translation>Functie</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">Extern blok 1</translation>
+        <translation>Extern blok 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">Extern blok 2</translation>
+        <translation>Extern blok 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
-        <translation type="unfinished">Beschrijving</translation>
+        <translation>Beschrijving</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished">Artikelnummer</translation>
+        <translation>Artikelnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Fabrikant</translation>
+        <translation>Fabrikant</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Bestelnummer</translation>
+        <translation>Bestelnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Intern nummer</translation>
+        <translation>Intern nummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Leverancier</translation>
+        <translation>Leverancier</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
-        <translation type="unfinished">Aantal</translation>
+        <translation>Aantal</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
-        <translation type="unfinished">Eénheid</translation>
+        <translation>Eénheid</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Voltage / Protocol</translation>
+        <translation>Voltage / Protocol</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished">Draadkleur</translation>
+        <translation>Draadkleur</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation type="unfinished">Draaddoorsnede</translation>
+        <translation>Draaddoorsnede</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
-        <translation type="unfinished">Tekstformule</translation>
+        <translation>Tekstformule</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
@@ -9481,17 +9481,17 @@ Maak uw eigen label met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="450"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>De elementen op dit blad selecteren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="451"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>De geleiders op dit blad selecteren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="452"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>De teksten op dit blad selecteren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1103"/>
@@ -9529,7 +9529,7 @@ Maak uw eigen label met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="351"/>
         <source>Inconnue</source>
-        <translation>Onbekende</translation>
+        <translation>Onbekend</translation>
     </message>
 </context>
 <context>
