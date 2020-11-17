@@ -250,6 +250,16 @@ void SearchAndReplaceWidget::fillItemsList()
 	connect(project_, &QETProject::destroyed, this,
 		&SearchAndReplaceWidget::on_m_reload_pb_clicked);
 
+	m_root_qtwi         ->setCheckState(0, Qt::Checked);
+	m_folio_qtwi        ->setCheckState(0, Qt::Checked);
+	m_elements_qtwi     ->setCheckState(0, Qt::Checked);
+	m_simple_elmt_qtwi  ->setCheckState(0, Qt::Checked);
+	m_report_elmt_qtwi  ->setCheckState(0, Qt::Checked);
+	m_master_elmt_qtwi  ->setCheckState(0, Qt::Checked);
+	m_slave_elmt_qtwi   ->setCheckState(0, Qt::Checked);
+	m_terminal_elmt_qtwi->setCheckState(0, Qt::Checked);
+	m_indi_text_qtwi    ->setCheckState(0, Qt::Checked);
+	m_conductor_qtwi    ->setCheckState(0, Qt::Checked);
 
 	DiagramContent dc;
 	for (Diagram *diagram : project_->diagrams())
@@ -260,7 +270,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		if (settings.value("genericpanel/folio", true).toBool()) {
 			str = diagram->border_and_titleblock.finalfolio();
 		} else {
-			str = QString::number(diagram->folioIndex());
+			str = QString::number(diagram->folioIndex()+1);
 		}
 
 		str.append(" " + diagram->title());
@@ -292,6 +302,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		qtwi->setData(0, Qt::UserRole, iti->toPlainText());
 		m_text_hash.insert(qtwi, QPointer<IndependentTextItem>(iti));
 	}
+
 	m_indi_text_qtwi->sortChildren(0, Qt::AscendingOrder);
 
 	for (Conductor *c : dc.m_potential_conductors)
