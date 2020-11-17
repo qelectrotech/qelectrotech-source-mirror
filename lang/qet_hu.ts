@@ -8481,7 +8481,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="253"/>
@@ -8531,93 +8531,93 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Formule du label</source>
-        <translation type="unfinished">Címke képlet</translation>
+        <translation>Címke képlet</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Label</source>
-        <translation type="unfinished">Címke</translation>
+        <translation>Címke</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Megjegyzés</translation>
+        <translation>Megjegyzés</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="271"/>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkció</translation>
+        <translation>Funkció</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">kiegészítő egység 1</translation>
+        <translation>kiegészítő egység 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">kiegészítő egység 2</translation>
+        <translation>kiegészítő egység 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
-        <translation type="unfinished">Szöveges leírás</translation>
+        <translation>Szöveges leírás</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished">Cikkszám</translation>
+        <translation>Cikkszám</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Gyártó</translation>
+        <translation>Gyártó</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Rendelési szám</translation>
+        <translation>Rendelési szám</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Belső szám</translation>
+        <translation>Belső szám</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Beszállító</translation>
+        <translation>Beszállító</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
-        <translation type="unfinished">Mennyiség</translation>
+        <translation>Mennyiség</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
-        <translation type="unfinished">Egység</translation>
+        <translation>Egység</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Feszültség / Protokol</translation>
+        <translation>Feszültség / Protokol</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished">Vezető színe</translation>
+        <translation>Vezető színe</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation type="unfinished">Vezető keresztmetszete</translation>
+        <translation>Vezető keresztmetszete</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
-        <translation type="unfinished">Szöveg képlet</translation>
+        <translation>Szöveg képlet</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
@@ -9473,17 +9473,17 @@ Hozd létre saját szövegedet a következő változók használatával:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="450"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Válaszd ki ennek a tervlapnak az tervjeleit</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="451"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Válaszd ki ennek a tervlapnak a vezetőit</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="452"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Válaszd ki ennek a tervlapnak az szövegeit</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1103"/>
