@@ -49,7 +49,8 @@ static int width_txt_row = 8;
 static int x_txt_row     = 9;
 static int y_txt_row     = 10;
 static int rot_txt_row   = 11;
-static int align_txt_row = 12;
+static int keep_rot_row  = 12;
+static int align_txt_row = 13;
 
 static int align_grp_row          = 0;
 static int x_grp_row              = 1;
@@ -335,10 +336,24 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 				| Qt::ItemIsEnabled
 				| Qt::ItemIsEditable);
 		
-		qsi_list.clear();;
+		qsi_list.clear();
 		qsi_list << rot << rot_a;
 		qsi->appendRow(qsi_list);
-		
+
+			//keep visual rotation
+		auto keep_rotation = new QStandardItem(tr("Conserver la rotation visuel"));
+		keep_rotation->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		auto keep_rotation_a = new QStandardItem;
+		keep_rotation_a->setCheckable(true);
+		keep_rotation_a->setCheckState(deti->keepVisualRotation() ? Qt::Checked : Qt::Unchecked);
+		keep_rotation_a->setData(DynamicElementTextModel::keepVisualRotation, Qt::UserRole+1);
+		keep_rotation_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+
+		qsi_list.clear();
+		qsi_list << keep_rotation << keep_rotation_a;
+		qsi->appendRow(qsi_list);
+
 			//Alignment
 		QStandardItem *alignment = new QStandardItem(tr("Alignement"));
 		alignment->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
@@ -598,6 +613,16 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "rotation", QVariant(deti->rotation()), QVariant(rot), undo);
 			quc->setAnimated(true, false);
 			quc->setText(tr("Pivoter un texte d'élément"));
+		}
+	}
+
+	if (text_qsi->child(keep_rot_row,1))
+	{
+		bool keep_rot = text_qsi->child(keep_rot_row, 1)->checkState() == Qt::Checked? true : false;
+		if (keep_rot != deti->keepVisualRotation())
+		{
+			auto qpuc = new QPropertyUndoCommand(deti, "keepVisualRotation", QVariant(deti->keepVisualRotation()), QVariant(keep_rot), undo);
+			qpuc->setText(tr("Modifier le maintient de la rotation d'un texte d'élément"));
 		}
 	}
 		

@@ -174,7 +174,7 @@ namespace QET {
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	qreal round(qreal, qreal);
-	qreal correctAngle(const qreal &);
+	qreal correctAngle(const qreal &, const bool &positive = false);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	bool writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString * error_message= nullptr);
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);

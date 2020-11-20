@@ -570,10 +570,11 @@ qreal QET::round(qreal x, qreal epsilon) {
 	@param angle Un angle quelconque
 	@return l'angle passe en parametre, mais ramene entre -360.0 + 360.0 degres
 */
-qreal QET::correctAngle(const qreal &angle) {
+qreal QET::correctAngle(const qreal &angle, const bool &positive) {
 	// ramene l'angle demande entre -360.0 et +360.0 degres
 	qreal corrected_angle = angle;
-	while (corrected_angle <= -360.0) corrected_angle += 360.0;
+	while (corrected_angle <= -360.0 ||
+		   (positive && corrected_angle < 0)) corrected_angle += 360.0;
 	while (corrected_angle >=  360.0) corrected_angle -= 360.0;
 	return(corrected_angle);
 }

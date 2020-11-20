@@ -44,6 +44,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	setParentItem(parent_element);
 	QSettings settings;
 	setRotation(settings.value("dynamic_text_rotation", 0).toInt());
+	setKeepVisualRotation(true);
 	setTextWidth(settings.value("dynamic_text_widht", -1).toInt());
 	connect(this, &DynamicElementTextItem::textEdited, [this](const QString &old_str, const QString &new_str)
 	{
@@ -95,6 +96,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
@@ -159,6 +161,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	}
 	
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
+	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font"))
 	{
@@ -1249,6 +1252,32 @@ void DynamicElementTextItem::zoomToLinkedElement()
 }
 
 /**
+ * @brief DynamicElementTextItem::parentElementRotationChanged
+ * Called when the parent element is rotated
+ */
+void DynamicElementTextItem::parentElementRotationChanged()
+{
+	if (m_parent_element && m_keep_visual_rotation)
+	{
+			//We temporally disconnect for not change m_visual_rotation value.
+			//We don't use block signal, because rotationChanged signal is used in other place.
+		disconnect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
+		this->setRotation(QET::correctAngle(m_visual_rotation_ref - m_parent_element->rotation(), true));
+		connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
+	}
+}
+
+/**
+ * @brief DynamicElementTextItem::thisRotationChanged
+ * This function is called when user change the rotation of the text
+ * and "keep visual rotation" is to true
+ * to keep in memory the visual rotation wanted by the user.
+ */
+void DynamicElementTextItem::thisRotationChanged() {
+	m_visual_rotation_ref = this->rotation() + m_parent_element->rotation();
+}
+
+/**
 	@brief DynamicElementTextItem::updateXref
 	Create or delete the Xref according to the current properties of the project
 */
@@ -1420,5 +1449,24 @@ void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
 	m_slave_Xref_item->setPos(pos);
 
 	return;
+}
+
+void DynamicElementTextItem::setKeepVisualRotation(bool set)
+{
+	m_keep_visual_rotation = set;
+	emit keepVisualRotationChanged(set);
+	if (set) {
+		m_visual_rotation_ref = this->rotation() + m_parent_element->rotation();
+		connect(m_parent_element, &Element::rotationChanged, this, &DynamicElementTextItem::parentElementRotationChanged);
+		connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
+	}
+	else {
+		disconnect(m_parent_element, &Element::rotationChanged, this, &DynamicElementTextItem::parentElementRotationChanged);
+		disconnect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
+	}
+}
+
+bool DynamicElementTextItem::keepVisualRotation() const {
+	return m_keep_visual_rotation;
 }
 
