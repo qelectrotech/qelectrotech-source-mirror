@@ -1361,7 +1361,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="344"/>
         <source>Conserver la rotation visuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Oriëntatie behouden</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="361"/>
@@ -1381,7 +1381,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="625"/>
         <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig hoe de elementtekst zijn oriëntatoe behoudt</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="636"/>
