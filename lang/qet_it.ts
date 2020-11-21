@@ -1178,7 +1178,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="53"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="54"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>Modifica un testo dell&apos;elemento</translation>
     </message>
@@ -1258,200 +1258,210 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="264"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="795"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="265"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="820"/>
         <source>Cadre</source>
         <translation>Cornice</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="161"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="162"/>
         <source>Texte</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="297"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="737"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="298"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="762"/>
         <source>Position X</source>
         <translation>Posizione X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="312"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="752"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="313"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="777"/>
         <source>Position Y</source>
         <translation>Posizione Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1117"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="344"/>
+        <source>Conserver la rotation visuel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="625"/>
+        <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1142"/>
         <source>Déplacer un texte dans un autre groupe</source>
         <translation>Spostare un testo da un gruppo ad un altro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="149"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="517"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="528"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1294"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1432"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="150"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="532"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="543"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1319"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1457"/>
         <source>Information de l&apos;élément</source>
         <translation>Informazioni dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="547"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
         <translation>Modificare la dimensione di un testo dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="280"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="281"/>
         <source>Largeur</source>
         <translation>Larghezza</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="647"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="723"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1527"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="672"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="748"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1552"/>
         <source>Centre</source>
         <translation>Centro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="645"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="722"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1526"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="670"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="747"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1551"/>
         <source>Droite</source>
         <translation>Destro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="611"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="636"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
         <translation>Modificare l&apos;allineamento di un testo di elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="643"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="721"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1525"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="668"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="746"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1550"/>
         <source>Gauche</source>
         <translation>Sinistra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="234"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="235"/>
         <source>Police</source>
         <translation>Carattere</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="811"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="836"/>
         <source>Maintenir en bas de page</source>
         <translation>Mantenere in fondo alla pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="219"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="220"/>
         <source>Taille</source>
         <translation>Dimensione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="68"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="69"/>
         <source>Valeur</source>
         <translation>Valore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="767"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="792"/>
         <source>Rotation</source>
         <translation>Rotazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="781"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="806"/>
         <source>Ajustement vertical</source>
         <translation>Regolazione verticale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="147"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="515"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="522"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1289"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1431"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="148"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="530"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="537"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1314"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1456"/>
         <source>Texte utilisateur</source>
         <translation>Testo utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="67"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="68"/>
         <source>Propriété</source>
         <translation>Proprietà</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="175"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="176"/>
         <source>Information</source>
         <translation>Informazioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="600"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="615"/>
         <source>Pivoter un texte d&apos;élément</source>
         <translation>Ruotare un testo dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="554"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="569"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
         <translation>Cambiare il carattere del testo di un elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="568"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="583"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
         <translation>Modificare la cornice di un testo dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="248"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
         <source>Couleur</source>
         <translation>Colore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="150"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="195"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="519"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="151"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="196"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1433"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="549"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1458"/>
         <source>Texte composé</source>
         <translation>Testo composto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="635"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="660"/>
         <source>Éditer un groupe de textes</source>
         <translation>Modificare un gruppo di testi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="142"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="143"/>
         <source>Source du texte</source>
         <translation>Sorgente del testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="346"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="361"/>
         <source>Éditer</source>
         <translation>Modifica</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="588"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="603"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation>Spostare un testo dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="202"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="203"/>
         <source>Mon texte composé</source>
         <translation>Mio Testo composto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="576"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="591"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
         <translation>Modificare la larghezza di un testo dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="343"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="716"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="358"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="741"/>
         <source>Alignement</source>
         <translation>Allineamento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="507"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="522"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>Modifica un testo dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="561"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="576"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
         <translation>Modificare il colore di un testo dell&apos;elemento</translation>
     </message>
@@ -1580,32 +1590,32 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1584"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1609"/>
         <source>Information de l&apos;élément</source>
         <translation>Informazione dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1706"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1731"/>
         <source>Centre</source>
         <translation>Centro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1707"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1732"/>
         <source>Droite</source>
         <translation>Destro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1705"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1730"/>
         <source>Gauche</source>
         <translation>Sinistra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1583"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1608"/>
         <source>Texte utilisateur</source>
         <translation>Testo utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1585"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1610"/>
         <source>Texte composé</source>
         <translation>Testo composto</translation>
     </message>
@@ -7802,7 +7812,7 @@ Cosa vuoi fare?</translation>
         <translation>Selezionare un&apos;immagine...</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="719"/>
+        <location filename="../sources/qet.cpp" line="720"/>
         <source>Éloigner</source>
         <translation>Abbassare</translation>
     </message>
@@ -7842,7 +7852,7 @@ Cosa vuoi fare?</translation>
         <translation>Collezione sconosciuta</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="727"/>
+        <location filename="../sources/qet.cpp" line="728"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
@@ -7852,7 +7862,7 @@ Cosa vuoi fare?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="729"/>
+        <location filename="../sources/qet.cpp" line="730"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Shift+End</translation>
     </message>
@@ -7888,7 +7898,7 @@ Cosa vuoi fare?</translation>
         <translation>Numero di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="720"/>
+        <location filename="../sources/qet.cpp" line="721"/>
         <source>Envoyer au fond</source>
         <translation>Metti sullo sfondo</translation>
     </message>
@@ -7908,12 +7918,12 @@ Cosa vuoi fare?</translation>
         <translation>Pagina senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="730"/>
+        <location filename="../sources/qet.cpp" line="731"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="728"/>
+        <location filename="../sources/qet.cpp" line="729"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
@@ -7959,7 +7969,7 @@ Cosa vuoi fare?</translation>
         <translation>Inserire un testo di elemento in un gruppo di testi</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="723"/>
+        <location filename="../sources/qet.cpp" line="724"/>
         <source>Rapproche la ou les sélections</source>
         <translation>Sposta in alto la(e) selezione(i)</translation>
     </message>
@@ -7989,7 +7999,7 @@ Cosa vuoi fare?</translation>
         <translation>Pour installer le plugin qet_tb_generator&lt;br&gt;Visitez: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Première installation sur macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; 1. Installez, si nécessaire, le bundle python 3.8 uniquement, car le programme utilise chein coder en dur pour localiser le plugin qet-tb-generator&lt;br&gt; Visitez:&lt;br&gt;&lt;a href = &apos;https: //qelectrotech.org/forum/viewtopic.php? pid = 5674 # p5674 &apos;&gt; howto&lt;/a&gt;&lt;br&gt; 2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Mise à jour sur macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="718"/>
+        <location filename="../sources/qet.cpp" line="719"/>
         <source>Rapprocher</source>
         <translation>Alzare</translation>
     </message>
@@ -8031,7 +8041,7 @@ La si vuole sostituire ?</translation>
         <translation>Anteprima</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="722"/>
+        <location filename="../sources/qet.cpp" line="723"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>Porta la(e) selezione(i) in primo piano</translation>
     </message>
@@ -8254,26 +8264,26 @@ La si vuole sostituire ?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="622"/>
-        <location filename="../sources/qet.cpp" line="753"/>
+        <location filename="../sources/qet.cpp" line="623"/>
+        <location filename="../sources/qet.cpp" line="754"/>
         <location filename="../sources/qetxml.cpp" line="268"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation type="unfinished">Impossibile aprire il file %1 in scrittura, riscontrato errore %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="643"/>
+        <location filename="../sources/qet.cpp" line="644"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation type="unfinished">Si è verificato un erroredurante il recupero delfile %1,si è verificato l&apos;errore %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="724"/>
+        <location filename="../sources/qet.cpp" line="725"/>
         <source>Éloigne la ou les sélections</source>
         <translation>Sposta in basso la(e) selezione(i)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="725"/>
+        <location filename="../sources/qet.cpp" line="726"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>Porta sullo sfondo la(e) selezione(i)</translation>
     </message>
@@ -8450,7 +8460,7 @@ La si vuole sostituire ?</translation>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="473"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="508"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="537"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="413"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="424"/>
         <location filename="../sources/conductorproperties.cpp" line="834"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
         <location filename="../sources/qetapp.cpp" line="1984"/>
@@ -8465,7 +8475,7 @@ La si vuole sostituire ?</translation>
         <translation>Terminale</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="717"/>
+        <location filename="../sources/qet.cpp" line="718"/>
         <source>Amener au premier plan</source>
         <translation>Portare in primo piano</translation>
     </message>
@@ -9361,7 +9371,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Sostituisci</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="351"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="362"/>
         <source>Inconnue</source>
         <translation>Sconosciuto</translation>
     </message>
@@ -9396,17 +9406,17 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Elementi semplici</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="450"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="461"/>
         <source>Sélectionner les éléments de ce folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="451"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="462"/>
         <source>Sélectionner les conducteurs de ce folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="452"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="463"/>
         <source>Sélectionner les textes de ce folio</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9491,30 +9501,30 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Intere parole</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1103"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1104"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1113"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1114"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1134"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1142"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1161"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1171"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1225"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1228"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1235"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1238"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1265"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1266"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1274"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1275"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1318"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1319"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1327"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1328"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1350"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1351"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1359"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1360"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1115"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1124"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1125"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1145"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1153"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1172"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1182"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1236"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1239"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1246"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1249"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1276"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1277"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1285"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1286"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1329"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1330"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1338"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1339"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1361"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1362"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1370"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1371"/>
         <source> [édité]</source>
         <translation> [modificato]</translation>
     </message>
