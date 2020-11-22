@@ -10038,8 +10038,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Red : Crimson</source>
         <comment>element part color</comment>
-        <translatorcomment>Rød : Blodrød</translatorcomment>
-        <translation></translation>
+        <translation>Rød : Blodrød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
@@ -10135,7 +10134,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gul : Bleg goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
@@ -10183,7 +10182,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Brown : Wheat</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Hvede</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="89"/>
@@ -10201,25 +10200,25 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="91"/>
         <source>Brown : RosyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Lyserød brun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Brown : SandyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Sand brun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Brown : Goldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="94"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Mørk goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="95"/>
@@ -10231,13 +10230,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="96"/>
         <source>Brown : Chocolate</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Chokolade</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="97"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Saddelbrun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="98"/>
@@ -10255,7 +10254,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Brown : Maroon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Rødbrun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="101"/>
@@ -10297,7 +10296,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="107"/>
         <source>Green : LawnGreen</source>
         <comment>element part color</comment>
-        <translation>Grøn : Græsplæne</translation>
+        <translation>Grøn : Græsgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="108"/>
@@ -10315,13 +10314,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Green : SpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Forårsgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="111"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Mellem foårsgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="112"/>
@@ -10333,13 +10332,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Green : PaleGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Bleg grøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="114"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Mørk havgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="115"/>
@@ -10351,19 +10350,19 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="116"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Mellem havgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>Green : SeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Havgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="118"/>
         <source>Green : ForestGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Skovgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="119"/>
@@ -10375,13 +10374,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="120"/>
         <source>Green : DarkGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Mørkegrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>Cyan : Aqua</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Turkis : Vand</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="122"/>
@@ -10453,13 +10452,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="133"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Lys stålblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>Blue : PowderBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Pulverblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
@@ -10477,13 +10476,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="137"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Lys himmelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Dyb himmelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="139"/>
@@ -10495,13 +10494,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Kornblomst blå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>Blue : SteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Stålblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="142"/>
@@ -10531,13 +10530,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="146"/>
         <source>Blue : Navy</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Marine</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Midnatblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="148"/>
@@ -10549,73 +10548,73 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>Purple : Thistle</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Tidsel</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="150"/>
         <source>Purple : Plum</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Blomme</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>Purple : Violet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Violet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="152"/>
         <source>Purple : Orchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Orkidee</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="153"/>
         <source>Purple : Fuchsia</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Fuchsia</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="154"/>
         <source>Purple : Magenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="155"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Mellem orkidee</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="156"/>
         <source>Purple : MediumPurple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Mellem lilla</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="157"/>
         <source>Purple : BlueViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lille : Blåviolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="158"/>
         <source>Purple : DarkViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lille : Mørkviolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="159"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Mørk orkidee</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="160"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Mørk magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="161"/>
@@ -10633,19 +10632,19 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="163"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Mørk skiferblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="164"/>
         <source>Purple : SlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Skiferblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="165"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lilla : Mellem skiferblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="166"/>
@@ -10795,13 +10794,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="190"/>
         <source>Gray : SlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Skifergrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="191"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Mørk skifergrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="192"/>
@@ -11023,7 +11022,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="240"/>
         <source>Red : Crimson</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Blodrød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="241"/>
@@ -11077,7 +11076,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="249"/>
         <source>Yellow : Yellow</source>
         <comment>element part filling</comment>
-        <translation>Gul : gul</translation>
+        <translation>Gul : Gul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="250"/>
@@ -11089,7 +11088,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="251"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gul : Citron chiffon</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="252"/>
@@ -11119,7 +11118,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="256"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gul : Bleg goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="257"/>
@@ -11167,7 +11166,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="264"/>
         <source>Brown : Wheat</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Hvede</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="265"/>
@@ -11185,25 +11184,25 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="267"/>
         <source>Brown : RosyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Lyserød brun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="268"/>
         <source>Brown : SandyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Sand brun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="269"/>
         <source>Brown : Goldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="270"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Mørk goldenrod</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="271"/>
@@ -11215,13 +11214,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="272"/>
         <source>Brown : Chocolate</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Chokolade</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="273"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Saddelbrun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="274"/>
@@ -11239,7 +11238,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="276"/>
         <source>Brown : Maroon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Brun : Rødbrun</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="277"/>
@@ -11299,13 +11298,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="286"/>
         <source>Green : SpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Forårsgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="287"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Mellem foårsgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="288"/>
@@ -11365,7 +11364,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="297"/>
         <source>Cyan : Aqua</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Turkis : Vand</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="298"/>
@@ -11779,13 +11778,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="366"/>
         <source>Gray : SlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Skifergrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="367"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Mørk skifergrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
