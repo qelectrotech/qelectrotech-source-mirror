@@ -173,11 +173,17 @@ void projectDataBase::elementInfoChanged(Element *element)
 
 void projectDataBase::elementInfoChanged(QList<Element *> elements)
 {
-	m_data_base.transaction();
+	this->blockSignals(true);
+		//Block signal for not emit dataBaseUpdated at
+		//each call of the method elementInfoChanged(Element *element)
+
+	m_data_base.transaction();	
 	for (auto elmt : elements) {
 		elementInfoChanged(elmt);
 	}
 	m_data_base.commit();
+
+	this->blockSignals(false);
 	emit dataBaseUpdated();
 }
 
