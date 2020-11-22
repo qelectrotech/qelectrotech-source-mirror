@@ -171,6 +171,16 @@ void projectDataBase::elementInfoChanged(Element *element)
 	}
 }
 
+void projectDataBase::elementInfoChanged(QList<Element *> elements)
+{
+	m_data_base.transaction();
+	for (auto elmt : elements) {
+		elementInfoChanged(elmt);
+	}
+	m_data_base.commit();
+	emit dataBaseUpdated();
+}
+
 void projectDataBase::addDiagram(Diagram *diagram)
 {
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());

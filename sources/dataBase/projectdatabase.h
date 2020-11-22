@@ -51,6 +51,7 @@ class projectDataBase : public QObject
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
 		void elementInfoChanged (Element *element);
+		void elementInfoChanged (QList<Element *> elements);
 
 		void addDiagram         (Diagram *diagram);
 		void removeDiagram      (Diagram *diagram);

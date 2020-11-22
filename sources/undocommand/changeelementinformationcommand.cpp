@@ -33,23 +33,44 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(
 		DiagramContext &old_info,
 		DiagramContext &new_info,
 		QUndoCommand *parent) :
-	QUndoCommand (parent),
-	m_element    (elmt),
-	m_old_info   (old_info),
-	m_new_info   (new_info)
+	QUndoCommand (parent)
 {
+	m_map.insert(QPointer<Element>(elmt), QPair(old_info, new_info));
 	setText(QObject::tr("Modifier les informations de l'élément : %1")
-		.arg(elmt -> name()));
+			.arg(elmt -> name()));
+}
+
+ChangeElementInformationCommand::ChangeElementInformationCommand(QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext> > map,
+																 QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_map(map)
+{
+	setText(QObject::tr("Modifier les informations de plusieurs éléments"));
 }
 
 bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 {
-	if (id() != other->id()) return false;
-	ChangeElementInformationCommand const *undo =
-			static_cast<const ChangeElementInformationCommand*>(other);
-	if (m_element != undo->m_element) return false;
-	m_new_info = undo->m_new_info;
-	return true;
+	if (id() != other->id())
+		return false;
+
+	ChangeElementInformationCommand const *other_undo = static_cast<const ChangeElementInformationCommand*>(other);
+
+		//In case of other undo_undo have the same elements as keys
+		//We move the QMap m_map of other_undo to this m_map.
+	if (m_map.size() == other_undo->m_map.size())
+	{
+		for (auto key : other_undo->m_map.keys()) {
+			if (!m_map.keys().contains(key)) {
+				return false;
+			}
+		}
+
+		m_map = other_undo->m_map;
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 /**
@@ -57,7 +78,9 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 */
 void ChangeElementInformationCommand::undo()
 {
-	m_element -> setElementInformations(m_old_info);
+	for (auto element : m_map.keys()) {
+		element->setElementInformations(m_map.value(element).first);
+	}
 	updateProjectDB();
 }
 
@@ -66,14 +89,23 @@ void ChangeElementInformationCommand::undo()
 */
 void ChangeElementInformationCommand::redo()
 {
-	m_element -> setElementInformations(m_new_info);
+	for (auto element : m_map.keys()) {
+		element->setElementInformations(m_map.value(element).second);
+	}
 	updateProjectDB();
 }
 
 void ChangeElementInformationCommand::updateProjectDB()
 {
-	if(m_element->diagram()) {
-		m_element->diagram()->project()->dataBase()->elementInfoChanged(
-					m_element);
+	auto elmt = m_map.keys().first().data();
+	if(elmt && elmt->diagram())
+	{
+			//need to have a list of element instead of QPointer<Element>
+			//for the function elementInfoChange of the database
+		QList<Element *> list_;
+		for (auto p_elmt : m_map.keys())
+			list_ << p_elmt.data();
+
+		elmt->diagram()->project()->dataBase()->elementInfoChanged(list_);
 	}
 }

@@ -36,6 +36,9 @@ class ChangeElementInformationCommand : public QUndoCommand
 				DiagramContext &new_info,
 				QUndoCommand *parent = nullptr);
 
+		ChangeElementInformationCommand(QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> map,
+										QUndoCommand *parent = nullptr);
+
 		int id() const override {return 1;}
 		bool mergeWith(const QUndoCommand *other) override;
 		void undo() override;
@@ -45,8 +48,7 @@ class ChangeElementInformationCommand : public QUndoCommand
 		void updateProjectDB();
 
 	private:
-		Element       *m_element;
-		DiagramContext m_old_info, m_new_info;
+		QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> m_map;
 };
 
 #endif // CHANGEELEMENTINFORMATIONCOMMAND_H
