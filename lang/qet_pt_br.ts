@@ -51,7 +51,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="449"/>
         <source>log</source>
-        <translation type="unfinished"></translation>
+        <translation>log</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
@@ -63,7 +63,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Os desenvolvedores do Qelectrotech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Collection</source>
-        <translation type="unfinished">Coleção</translation>
+        <translation>Coleção</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
@@ -297,99 +297,99 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="14"/>
         <source>Ajouter un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustes da tabela</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished">Exibir</translation>
+        <translation>Exibir</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar o tamanho da tabela a página</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicione nova página e tabela, se necessário.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
         <source>Nom du tableau</source>
-        <translation type="unfinished">Nome da tabela</translation>
+        <translation>Nome da tabela</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="73"/>
         <source>Texte des en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto do Cabeçalho</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation type="unfinished">Esquerda</translation>
+        <translation>Esquerda</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="169"/>
         <source>Centre</source>
-        <translation type="unfinished">Centro</translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation type="unfinished">Direita</translation>
+        <translation>Direita</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation type="unfinished">Fonte:</translation>
+        <translation>Fonte:</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="149"/>
         <source>Éditer</source>
-        <translation type="unfinished">Editar</translation>
+        <translation>Editar</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="119"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="142"/>
         <source>Marges :</source>
-        <translation type="unfinished"></translation>
+        <translation>Margens</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="156"/>
         <source>Alignement :</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinhamento :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="136"/>
         <source>Texte du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Texto da tabela</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="202"/>
         <source>Configuration</source>
-        <translation type="unfinished">Configuração</translation>
+        <translation>Configuração</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="41"/>
         <source>Contenu</source>
-        <translation type="unfinished">Conteúdo</translation>
+        <translation>Conteúdo</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="168"/>
         <source>Sélectionner la police des en tête du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione a fonte no topo da tabela</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="179"/>
         <source>Sélectionner la police des cellules du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione a fonte das células da tabela</translation>
     </message>
 </context>
 <context>
@@ -607,7 +607,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Diálogo</translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -617,12 +617,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
         <source>inclure les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>incluir cabeçalhos</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
         <source>Formater en tant que liste de materiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatar como lista de material</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
@@ -661,13 +661,14 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Posição da página</translation>
+        <translation>Posição da página</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
         <source>Quantité numéro d&apos;article</source>
         <comment>Special field with name : designation quantity</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Campo especial com nome: quantidade de designação</translatorcomment>
+        <translation>Número de quantidade do item</translation>
     </message>
 </context>
 <context>
@@ -853,17 +854,17 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Seção do condutor</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>cable</source>
-        <translation type="unfinished"></translation>
+        <translation>cabo</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation>bus</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
@@ -973,7 +974,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>Couleur du texte:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cor do texto</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
@@ -1024,12 +1025,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>GroupBox</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
         <source>Configuration</source>
-        <translation type="unfinished">Configuração</translation>
+        <translation>Configuração</translation>
     </message>
 </context>
 <context>
@@ -1127,7 +1128,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/diagramview.cpp" line="505"/>
         <source>(Dev) X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(Dev) X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="608"/>
@@ -1332,7 +1333,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="344"/>
         <source>Conserver la rotation visuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Manter rotação</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="361"/>
@@ -1347,7 +1348,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="625"/>
         <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar como o texto do elemento permanece rotacionado</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="636"/>
@@ -1945,14 +1946,14 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Tipo: %1
+        <translation>Tipo: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="366"/>
         <source>Sous-type : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="367"/>
@@ -2585,37 +2586,37 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
         <source>Centre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Centro :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
         <source>Vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertical :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
         <source>Horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
         <source>Diamètres :</source>
-        <translation type="unfinished"></translation>
+        <translation>Diâmetros :</translation>
     </message>
 </context>
 <context>
@@ -3034,7 +3035,7 @@ que você cria. Entradas de texto e números
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
         <source>Parcourir...</source>
-        <translation>Viagem...</translation>
+        <translation>Personalizado</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
@@ -3292,7 +3293,7 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
         <source>Japonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Japonês</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
@@ -3327,7 +3328,7 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="280"/>
         <source>Norvege</source>
-        <translation type="unfinished"></translation>
+        <translation>Noruega</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
@@ -3461,22 +3462,22 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
         <source>Géometrie et lignes</source>
-        <translation type="unfinished"></translation>
+        <translation>Geometria e linhas</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
         <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar geometria a todas as tabelas vinculadas a esta</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
         <source>Ajuster le tableau au folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajusta a tabela a página</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Rótulo do texto</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3578,12 +3579,13 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="417"/>
         <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
  il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;ATENÇÃO :&lt;/center&gt;
+ Faltam %1 linhas para mostrar todas as informações</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="537"/>
         <source>Appliquer la géometrie d&apos;un tableau aux tableau liée à celui-ci</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicar a geometria de uma tabela à tabela ligada a ela</translation>
     </message>
 </context>
 <context>
@@ -3882,43 +3884,43 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
         <source>X1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
         <source>Y1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
         <source>X2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>X2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
         <source>Fin 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Fim 1 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
         <source>Y2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
         <source>Fin 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Fim 2 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
         <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
         <source>Longueur :</source>
-        <translation type="unfinished">Largura:</translation>
+        <translation>Largura :</translation>
     </message>
 </context>
 <context>
@@ -4045,13 +4047,13 @@ Por favor, use o editor avançado para isso.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="462"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="473"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Cor do condutor</translation>
+        <translation>Cor do condutor</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="474"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Seção do condutor</translation>
     </message>
 </context>
 <context>
@@ -4059,12 +4061,12 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="123"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Compilação: </translation>
+        <translation>Compilação : </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="343"/>
         <source>Compilation :   </source>
-        <translation type="unfinished"></translation>
+        <translation>Compilação :   </translation>
     </message>
 </context>
 <context>
@@ -4072,27 +4074,27 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
         <source>Editer les marges</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de margens</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
         <source>Haut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Superior :</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="78"/>
         <source>Gauche :</source>
-        <translation type="unfinished"></translation>
+        <translation>Esquerda :</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="85"/>
         <source>Droit :</source>
-        <translation type="unfinished"></translation>
+        <translation>Direita :</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="92"/>
         <source>Bas :</source>
-        <translation type="unfinished"></translation>
+        <translation>Inferior :</translation>
     </message>
 </context>
 <context>
@@ -4734,7 +4736,8 @@ Tensão/Protocólo : %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="330"/>
         <source>
 Couleur du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Cor do condutor : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
@@ -4742,17 +4745,17 @@ Couleur du conducteur : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="333"/>
         <source>
 Section du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Seção do condutor : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
         <source>Ajouter au câble: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar ao cabo: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="343"/>
         <source>Ajouter au bus: %1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="415"/>
@@ -4843,12 +4846,12 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="348"/>
         <source>Position</source>
-        <translation type="unfinished">Posição</translation>
+        <translation>Posição</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="350"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Posição da página</translation>
+        <translation>Posição da página</translation>
     </message>
 </context>
 <context>
@@ -4856,17 +4859,17 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished">Consulta</translation>
+        <translation>Consulta</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Recarregar</translation>
+        <translation>Recarregar</translation>
     </message>
 </context>
 <context>
@@ -4901,204 +4904,204 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Janela principal</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Páginas a imprimir:</translation>
+        <translation>Páginas a imprimir:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Selecionar todos</translation>
+        <translation>Selecionar todos</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Desmarcar todos</translation>
+        <translation>Desmarcar todos</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
         <source>Toutes les dates</source>
-        <translation type="unfinished"></translation>
+        <translation>Todas as datas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>À partir de la date du :</source>
-        <translation type="unfinished"></translation>
+        <translation>A partir da data de:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="113"/>
         <source>À la date du  :</source>
-        <translation type="unfinished"></translation>
+        <translation>Na data de  :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="155"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Opções de renderização</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Desenhar a borda</translation>
+        <translation>Desenhar a borda</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Desenhar a moldura</translation>
+        <translation>Desenhar a moldura</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Manter as cores dos condutores</translation>
+        <translation>Manter as cores dos condutores</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Desenhar os terminais</translation>
+        <translation>Desenhar os terminais</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Opções de impressão</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Ajustar ao tamanho da folha</translation>
+        <translation>Ajustar ao tamanho da folha</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Utilizar página inteira</translation>
+        <translation>Utilizar página inteira</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Se esta opção estiver marcada, a página será ampliado ou reduzido para preencher toda a superfície de impressão de apenas uma página. &quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se esta opção estiver marcada, as margens da folha serão ignoradas e toda a sua superfície será usada para impressão. Isso pode não ser compatível com a sua impressora.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="259"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Barra de ferramenta</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Ajustar à largura</translation>
+        <translation>Ajustar à largura</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Ajustar à página</translation>
+        <translation>Ajustar à página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Diminuir Zoom</translation>
+        <translation>Diminuir Zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Aumentar Zoom</translation>
+        <translation>Aumentar Zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">Paisagem</translation>
+        <translation>Paisagem</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">Retrato</translation>
+        <translation>Retrato</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">Primeira página</translation>
+        <translation>Primeira página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Página anterior</translation>
+        <translation>Página anterior</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Página seguinte</translation>
+        <translation>Página seguinte</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Última página</translation>
+        <translation>Última página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar página única</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Exibir duas páginas</translation>
+        <translation>Exibir duas páginas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Exibir uma visualização geral de todas as páginas</translation>
+        <translation>Exibir uma visualização geral de todas as páginas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>layout</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="64"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Opções de impressão</translation>
+        <translation>Opções de impressão</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="105"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">projeto</translation>
+        <translation>projeto</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="136"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Imprimir</translation>
+        <translation>Imprimir</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar em pdf</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="165"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
-        <translation type="unfinished"></translation>
+        <translation>Layout (não disponível no Windows para exportação em PDF)</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="423"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Página sem título</translation>
+        <translation>Página sem título</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Exporter sous : </source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar como:</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Fichier (*.pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivo (*.pdf</translation>
     </message>
 </context>
 <context>
@@ -5186,12 +5189,12 @@ Você deseja salvar as alterações ?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="715"/>
         <source>Revenir au debut du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Volte para o início do projeto</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="718"/>
         <source>Aller à la fin du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir para o final do projeto</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="733"/>
@@ -5244,19 +5247,19 @@ Você deseja salvar as alterações ?</translation>
         <location filename="../sources/qetapp.cpp" line="208"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished">LTR</translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="401"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">Blocos de título do QET</translation>
+        <translation>Blocos de título do QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="421"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">Blocos de título do usuário</translation>
+        <translation>Blocos de título do usuário</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1163"/>
@@ -5706,13 +5709,13 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar em pdf</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportar uma ou mais páginas do projeto atual</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
@@ -6120,7 +6123,7 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="420"/>
         <source>Ajouter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar lista de nomes</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="478"/>
@@ -6148,12 +6151,12 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
         <source>SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation>ESPAÇO</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
         <source>Ctrl+SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+ESPAÇO</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="649"/>
@@ -8032,8 +8035,8 @@ O que você deseja fazer?</translation>
         <location filename="../sources/qet.cpp" line="326"/>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n tabela(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -8497,7 +8500,7 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Position</source>
-        <translation type="unfinished">Posição</translation>
+        <translation>Posição</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="253"/>
@@ -8537,108 +8540,108 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="262"/>
         <source>Date d&apos;enregistrement du fichier format local</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvando data do arquivo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="264"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de gravação do formato de arquivo aaaa-MM-dd</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Formule du label</source>
-        <translation type="unfinished">Fórmula da legenda</translation>
+        <translation>Fórmula da legenda</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Label</source>
-        <translation type="unfinished">Legenda</translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentário</translation>
+        <translation>Comentário</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="271"/>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
-        <translation type="unfinished">Função</translation>
+        <translation>Função</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">Bloco auxiliar 1</translation>
+        <translation>Bloco auxiliar 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">Bloco auxiliar 2</translation>
+        <translation>Bloco auxiliar 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
-        <translation type="unfinished">Descrição textual</translation>
+        <translation>Descrição textual</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished">Número do artigo</translation>
+        <translation>Número do artigo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Fabricante</translation>
+        <translation>Fabricante</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Número do pedido</translation>
+        <translation>Número do pedido</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Número interno</translation>
+        <translation>Número interno</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Fornecedor</translation>
+        <translation>Fornecedor</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
-        <translation type="unfinished">Quantidade</translation>
+        <translation>Quantidade</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
-        <translation type="unfinished">Unidade</translation>
+        <translation>Unidade</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Tensão / Protocólo</translation>
+        <translation>Tensão / Protocólo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Cor do cabo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Seção do cabo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
-        <translation type="unfinished">Fórmula do texto</translation>
+        <translation>Fórmula do texto</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de registro do arquivo no formato dd-MM-aaaa</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="265"/>
@@ -8668,32 +8671,32 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2402"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Para instalar o plugin qet_tb_generator&lt;br&gt;Visite :&lt;br&gt;&lt;a&gt; href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requer python 3.5 ou superior.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Primeira instalação no Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. verifique se o pip3 está instalado: pip3 --version&lt;br&gt;Se não for instalado com: sudo apt-get install python3-pip&lt;br&gt;2. Instale o programa: sudo pip3 install qet_tb_generator&lt;br&gt;3. Execute o programa: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Atualizar no Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2422"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">Erro ao abrir qet_tb_generator plugin</translation>
+        <translation>Erro ao abrir qet_tb_generator plugin</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2386"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Para instalar o plugin qet_tb_generator&lt;br&gt;Visite  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Primeira instalação no macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Instale, se necessário, o pacote python 3.8 apenas, porque o programa usa PATH codificado para localizar o plugin qet-tb-generator&lt;br&gt;Visite :&lt;br&gt;&lt;a href=&apos;https: //qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Atualização no macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="48"/>
         <source>Ajouter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar lista de nomes</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Adicionar um resumo</translation>
+        <translation>Adicionar um resumo</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="45"/>
         <source>Coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="259"/>
@@ -8708,7 +8711,7 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/qetapp.cpp" line="1984"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="107"/>
         <source>this is an error in the code</source>
-        <translation type="unfinished"></translation>
+        <translation>este é um erro no código</translation>
     </message>
 </context>
 <context>
@@ -8733,18 +8736,20 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="114"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation type="unfinished"></translation>
+        <translation>A informação a ser exibida é maior do que a quantidade máxima que pode ser exibida pelas tabelas.
+Adicione uma nova tabela ou ajuste as tabelas existentes para mostrar todas as informações.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="117"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation type="unfinished"></translation>
+        <translation>A informação a ser exibida é maior do que a quantidade máxima que pode ser exibida pela tabela.
+Adicione uma nova tabela ou ajuste a tabela existente para exibir todas as informações.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="120"/>
         <source>Limitation de tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Limitação de tabela</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="925"/>
@@ -8993,7 +8998,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Cor do condutor</translation>
+        <translation>Cor do condutor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9004,7 +9009,7 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Seção do condutor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
@@ -9489,17 +9494,17 @@ Crie seu próprio texto usando as seguintes variáveis:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="461"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione os elementos desta página</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="462"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione os condutores desta página</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="463"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione os textos desta página</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1114"/>
@@ -11817,12 +11822,12 @@ Os outros campos não são utilizados.</translation>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="392"/>
         <source>Style :</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="394"/>
         <source>Épaisseur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Espessura :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="401"/>
@@ -11860,32 +11865,32 @@ Os outros campos não são utilizados.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished">Informações disponíveis</translation>
+        <translation>Informações disponíveis</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Informações a serem exibidas</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
         <source>Configuration</source>
-        <translation type="unfinished">Configuração</translation>
+        <translation>Configuração</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished">Consulta SQL :</translation>
+        <translation>Consulta SQL :</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="134"/>
         <source>Position</source>
-        <translation type="unfinished">Posição</translation>
+        <translation>Posição</translation>
     </message>
 </context>
 <context>
@@ -11933,7 +11938,7 @@ Os outros campos não são utilizados.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="94"/>
         <source>Name : </source>
-        <translation type="unfinished"></translation>
+        <translation>Nome : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="199"/>
@@ -11949,7 +11954,7 @@ Os outros campos não são utilizados.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="268"/>
         <source>Modifier le nom du terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Mudar o nome do terminal</translation>
     </message>
 </context>
 <context>
@@ -12395,7 +12400,8 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="444"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Manter original todos dentro dos colchetes</translatorcomment>
+        <translation>Por padrão, as seguintes variáveis ​​estão disponíveis :&lt;ul&gt;&lt;li&gt;%{author} : autor da página&lt;/li&gt;&lt;li&gt;%{date} : data da página&lt;/li&gt;&lt;li&gt;%{title}: título da página&lt;/li&gt;&lt;li&gt;%{filename} : nome do arquivo do projeto &lt;/li&gt;&lt;li&gt;% {plant} : nome da instalação (=) em que a página está localizad&lt;/li&gt;&lt;li&gt;%{locmach}: nome do local (+) onde a página está localizado&lt;/li&gt;&lt;li&gt;%{indexrev} : índice de revisão da página&lt;/li&gt;&lt;li&gt;%{version} : versão do software &lt;/li&gt; &lt;li&gt;% {folio} : número da página&lt;/li&gt;&lt;li&gt;%{folio-id} : posição da página no projeto&lt;/li&gt;&lt;li&gt;%{fólio-total} : número total de páginas no projeto&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : número da página anterior&lt;/li&gt;&lt;li&gt;%{next-folio-num} : número da próxima página&lt;/li&gt;&lt;li&gt;%{projecttitle} : título do projeto&lt;/li&gt;&lt;li&gt;%{projectpath} : caminho do projeto&lt;/li&gt;&lt;li&gt;%{projectfilename}: nome do arquivo&lt;/li&gt;&lt;li&gt;%{saveddate}: data de salvamento do arquivo&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : data de gravação do arquivo de formato dd-MM-aaaa&lt;/li&gt;&lt;li&gt;%{ savedate-us}: data de gravação em formato de arquivo aaaa-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : hora de gravação do arquivo&lt;/li&gt;&lt;li&gt;%{savedfilename} : nome do arquivo salvo&lt;/li&gt;&lt;li&gt;%{savedfilepath} : caminho do arquivo salvo&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="479"/>
