@@ -307,7 +307,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation>Ajustar o tamanho da tabela a página</translation>
+        <translation>Ajustar o tamanho da tabela à página</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
