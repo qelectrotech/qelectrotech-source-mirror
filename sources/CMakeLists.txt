@@ -1,0 +1,179 @@
+cmake_minimum_required(VERSION 3.5)
+
+
+# Add sub directories
+add_subdirectory(autoNum)
+add_subdirectory(dataBase)
+add_subdirectory(diagramevent)
+add_subdirectory(dvevent)
+add_subdirectory(editor)
+add_subdirectory(ElementsCollection)
+add_subdirectory(factory)
+add_subdirectory(NameList)
+add_subdirectory(print)
+add_subdirectory(properties)
+add_subdirectory(PropertiesEditor)
+add_subdirectory(pugixml)
+add_subdirectory(qetgraphicsitem)
+add_subdirectory(QetGraphicsItemModeler)
+add_subdirectory(QPropertyUndoCommand)
+add_subdirectory(QWidgetAnimation)
+add_subdirectory(richtext)
+add_subdirectory(SearchAndReplace)
+add_subdirectory(titleblock)
+add_subdirectory(ui)
+add_subdirectory(undocommand)
+add_subdirectory(utils)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+#tedo
+#xml svg network sql printsupport KWidgetsAddons KCoreAddons
+find_package(
+    QT
+   NAMES
+    Qt6
+    Qt5
+   COMPONENTS
+    Widgets
+    Charts
+    Concurrent
+   REQUIRED
+   )
+find_package(
+    Qt${QT_VERSION_MAJOR}
+   COMPONENTS
+    Widgets
+    Charts
+    Concurrent
+   REQUIRED
+   )
+
+add_executable(
+  ${PROJECT_NAME}
+  borderproperties.cpp
+  borderproperties.h
+  bordertitleblock.cpp
+  bordertitleblock.h
+  conductorautonumerotation.cpp
+  conductorautonumerotation.h
+  conductornumexport.cpp
+  conductornumexport.h
+  conductorprofile.cpp
+  conductorprofile.h
+  conductorproperties.cpp
+  conductorproperties.h
+  conductorsegment.cpp
+  conductorsegment.h
+  conductorsegmentprofile.h
+  configdialog.cpp
+  configdialog.h
+  configpage.h
+  configpages.cpp
+  configpages.h
+  createdxf.cpp
+  createdxf.h
+  diagramcommands.cpp
+  diagramcommands.h
+  diagramcontent.cpp
+  diagramcontent.h
+  diagramcontext.cpp
+  diagramcontext.h
+  diagram.cpp
+  diagram.h
+  diagramposition.cpp
+  diagramposition.h
+  diagramview.cpp
+  diagramview.h
+  elementdialog.cpp
+  elementdialog.h
+  elementprovider.cpp
+  elementprovider.h
+  elementscategoryeditor.cpp
+  elementscategoryeditor.h
+  elementscollectioncache.cpp
+  elementscollectioncache.h
+  elementsmover.cpp
+  elementsmover.h
+  elementspanel.cpp
+  elementspanel.h
+  elementspanelwidget.cpp
+  elementspanelwidget.h
+  elementtextpattern.cpp
+  elementtextpattern.h
+  elementtextsmover.cpp
+  elementtextsmover.h
+  exportdialog.cpp
+  exportdialog.h
+  exportproperties.cpp
+  exportproperties.h
+  exportpropertieswidget.cpp
+  exportpropertieswidget.h
+  genericpanel.cpp
+  genericpanel.h
+  machine_info.cpp
+  machine_info.h
+  main.cpp
+  newelementwizard.cpp
+  newelementwizard.h
+  projectconfigpages.cpp
+  projectconfigpages.h
+  projectview.cpp
+  projectview.h
+  qetapp.cpp
+  qetapp.h
+  qetarguments.cpp
+  qetarguments.h
+  qet.cpp
+  qetdiagrameditor.cpp
+  qetdiagrameditor.h
+  qet.h
+  qeticons.cpp
+  qeticons.h
+  qetinformation.cpp
+  qetinformation.h
+  qetmainwindow.cpp
+  qetmainwindow.h
+  qetmessagebox.cpp
+  qetmessagebox.h
+  qetproject.cpp
+  qetproject.h
+  qetregexpvalidator.cpp
+  qetregexpvalidator.h
+  qetresult.cpp
+  qetresult.h
+  qetxml.cpp
+  qetxml.h
+  qfilenameedit.cpp
+  qfilenameedit.h
+  qgimanager.cpp
+  qgimanager.h
+  qtextorientationspinboxwidget.cpp
+  qtextorientationspinboxwidget.h
+  qtextorientationwidget.cpp
+  qtextorientationwidget.h
+  recentfiles.cpp
+  recentfiles.h
+  titleblockcell.cpp
+  titleblockcell.h
+  titleblockproperties.cpp
+  titleblockproperties.h
+  titleblocktemplate.cpp
+  titleblocktemplate.h
+  titleblocktemplaterenderer.cpp
+  titleblocktemplaterenderer.h
+)
+
+target_link_libraries(
+  ${PROJECT_NAME}
+  PRIVATE
+   Qt${QT_VERSION_MAJOR}::Widgets
+   Qt${QT_VERSION_MAJOR}::Charts
+   Qt${QT_VERSION_MAJOR}::Concurrent)
