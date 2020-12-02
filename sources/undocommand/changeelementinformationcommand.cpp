@@ -35,7 +35,7 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(
 		QUndoCommand *parent) :
 	QUndoCommand (parent)
 {
-	m_map.insert(QPointer<Element>(elmt), QPair(old_info, new_info));
+	m_map.insert(QPointer<Element>(elmt), qMakePair(old_info, new_info));
 	setText(QObject::tr("Modifier les informations de l'élément : %1")
 			.arg(elmt -> name()));
 }
@@ -56,7 +56,6 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 	ChangeElementInformationCommand const *other_undo = static_cast<const ChangeElementInformationCommand*>(other);
 
 		//In case of other undo_undo have the same elements as keys
-		//We move the QMap m_map of other_undo to this m_map.
 	if (m_map.size() == other_undo->m_map.size())
 	{
 		for (auto key : other_undo->m_map.keys()) {
@@ -65,7 +64,16 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 			}
 		}
 
-		m_map = other_undo->m_map;
+			//Other_undo will be merged with this undo :
+			//Replace the new_info values of this m_map
+			//by the new_info values of other_undo's m_map
+		for (auto key : other_undo->m_map.keys())
+		{
+			m_map.insert(key,
+						 qMakePair(
+							 m_map.value(key).first,
+							 other_undo->m_map.value(key).second));
+		}
 		return true;
 	}
 	else {
