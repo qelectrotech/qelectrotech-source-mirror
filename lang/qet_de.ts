@@ -3988,7 +3988,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="459"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="470"/>
         <source>N° de fil</source>
-        <translation>Draht-Nr.</translation>
+        <translation type="unfinished">Leiternummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="460"/>
@@ -8626,12 +8626,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation>Drahtfarbe</translation>
+        <translation type="unfinished">Leiterfarbe</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation>Drahtabschnitt</translation>
+        <translation type="unfinished">Leiterabschnitt</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
