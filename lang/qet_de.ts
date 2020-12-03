@@ -868,7 +868,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
         <source>Section du conducteur</source>
-        <translation>Leiterabschnitt</translation>
+        <translation>Leiterquerschnitt</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
@@ -3988,7 +3988,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="459"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="470"/>
         <source>N° de fil</source>
-        <translation type="unfinished">Leiternummer</translation>
+        <translation>Leiternummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="460"/>
@@ -4012,7 +4012,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="474"/>
         <source>Section du conducteur</source>
-        <translation>Leiterabschnitt</translation>
+        <translation>Leiterquerschnitt</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -4748,8 +4748,7 @@ Farbe des Leiters: %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="333"/>
         <source>
 Section du conducteur : %1</source>
-        <translation>
-Querschnitt des Leiters: %1</translation>
+        <translation>Leiterquerschnitt: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
@@ -8626,12 +8625,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished">Leiterfarbe</translation>
+        <translation>Leiterfarbe</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation type="unfinished">Leiterabschnitt</translation>
+        <translation>Leiterquerschnitt</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
@@ -8997,7 +8996,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation>Farbe des Leiters</translation>
+        <translation>Leiterfarbe:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9008,7 +9007,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation>Leiterabschnitt</translation>
+        <translation>Leiterquerschnitt:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
