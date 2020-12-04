@@ -8620,7 +8620,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Spannung / Protokoll</translation>
+        <translation>Spannung / Protokoll</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
