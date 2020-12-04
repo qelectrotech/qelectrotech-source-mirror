@@ -30,10 +30,11 @@
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
 #endif
-#include <QScreen>
-#include <QPainter>
+#include <QMarginsF>
 #include <QPageSetupDialog>
+#include <QPainter>
 #include <QPrintDialog>
+#include <QScreen>
 
 /**
  * @brief ProjectPrintWindow::ProjectPrintWindow
@@ -383,13 +384,16 @@ int ProjectPrintWindow::verticalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	printable_area = full_page ? m_printer->paperRect() : m_printer->pageRect();
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
-#endif
-				qDebug()<<"Help code for QT 6 or later";
+#	endif
+	printable_area =
+		full_page ?
+			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
+			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
 #endif
 	QRect diagram_rect = diagramRect(diagram, option);
 
@@ -449,18 +453,19 @@ QString ProjectPrintWindow::settingsSectionName(const QPrinter *printer)
 
 void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	QSettings settings;
-	QString printer_section = settingsSectionName(m_printer);
+	QString	  printer_section = settingsSectionName(m_printer);
 
-	while (!settings.group().isEmpty()) settings.endGroup();
+	while (! settings.group().isEmpty()) settings.endGroup();
 	settings.beginGroup("printers");
-	if (!settings.childGroups().contains(printer_section)) {
+	if (! settings.childGroups().contains(printer_section))
+	{
 		settings.endGroup();
 		return;
 	}
 
 	settings.beginGroup(printer_section);
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (settings.contains("orientation")) {
 		QString value = settings.value("orientation", "landscape").toString();
 		m_printer -> setOrientation(value == "landscape" ? QPrinter::Landscape : QPrinter::Portrait);
@@ -487,17 +492,74 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 		qreal value = settings.value("margin" + margins_names.at(i), -1.0).toReal(&conv_ok);
 		if (conv_ok && value != -1.0) margins[i] = value;
 	}
-	m_printer -> setPageMargins(margins[0], margins[1], margins[2], margins[3], QPrinter::Millimeter);
-	m_printer -> setFullPage(settings.value("fullpage", "false").toString() == "true");
-
-	settings.endGroup();
-	settings.endGroup();
+	m_printer->setPageMargins(
+		margins[0],
+		margins[1],
+		margins[2],
+		margins[3],
+		QPrinter::Millimeter);
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
+#	endif
+	if (settings.contains("orientation"))
+	{
+		QString value = settings.value("orientation", "landscape").toString();
+		m_printer->setPageOrientation(
+			value == "landscape" ? QPageLayout::Landscape :
+								   QPageLayout::Portrait);
+	}
+	if (settings.contains("papersize"))
+	{
+		int value = settings.value("papersize", QPageSize::A4).toInt();
+		if (value == QPageSize::Custom)
+		{
+			bool w_ok, h_ok;
+			int	 w = settings.value("customwidthmm", -1).toInt(&w_ok);
+			int	 h = settings.value("customheightmm", -1).toInt(&h_ok);
+			if (w_ok && h_ok && w != -1 && h != -1)
+			{
+				m_printer->setPageSize(QPageSize(
+					QSizeF(w, h),
+					QPageSize::Millimeter,
+					"Custom",
+					QPageSize::FuzzyMatch));
+			}
+		}
+		else if (value < QPageSize::Custom)
+		{
+			QPageSize var;
+			var.id(value);
+			m_printer->setPageSize(var);
+		}
+	}
+
+	qreal margins[4];
+	margins[0] = m_printer->pageLayout().margins().left();
+	margins[1] = m_printer->pageLayout().margins().top();
+	margins[2] = m_printer->pageLayout().margins().right();
+	margins[3] = m_printer->pageLayout().margins().bottom();
+	QStringList margins_names(
+		QStringList() << "left"
+					  << "top"
+					  << "right"
+					  << "bottom");
+	for (int i = 0; i < 4; ++i)
+	{
+		bool  conv_ok;
+		qreal value = settings.value("margin" + margins_names.at(i), -1.0)
+						  .toReal(&conv_ok);
+		if (conv_ok && value != -1.0) margins[i] = value;
+	}
+	m_printer->setPageMargins(
+		QMarginsF(margins[0], margins[1], margins[2], margins[3]),
+		QPageLayout::Millimeter);
 #endif
-	qDebug()<<"Help code for QT 6 or later";
-#endif
+	m_printer->setFullPage(
+		settings.value("fullpage", "false").toString() == "true");
+
+	settings.endGroup();
+	settings.endGroup();
 }
 
 void ProjectPrintWindow::savePageSetupForCurrentPrinter()
