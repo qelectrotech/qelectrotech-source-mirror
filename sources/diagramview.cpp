@@ -449,7 +449,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 		//Start drag view when hold the middle button
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -505,8 +505,8 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	setToolTip(tr("(Dev) X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
-		//Drag the view
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		// Drag the view
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->buttons() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -573,8 +573,8 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
-		//Stop drag view
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		// Stop drag view
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST

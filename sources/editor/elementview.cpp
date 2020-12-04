@@ -372,8 +372,9 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	du milieu de la souris.
 	@param e QMouseEvent decrivant l'evenement souris
 */
-void ElementView::mousePressEvent(QMouseEvent *e) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+void ElementView::mousePressEvent(QMouseEvent* e)
+{
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -393,8 +394,9 @@ void ElementView::mousePressEvent(QMouseEvent *e) {
 	@brief ElementView::mouseMoveEvent
 	Manage the event move mouse
 */
-void ElementView::mouseMoveEvent(QMouseEvent *e) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+void ElementView::mouseMoveEvent(QMouseEvent* e)
+{
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->buttons() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -418,8 +420,9 @@ void ElementView::mouseMoveEvent(QMouseEvent *e) {
 	@brief ElementView::mouseReleaseEvent
 	Manage event release click mouse
 */
-void ElementView::mouseReleaseEvent(QMouseEvent *e) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+void ElementView::mouseReleaseEvent(QMouseEvent* e)
+{
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST
