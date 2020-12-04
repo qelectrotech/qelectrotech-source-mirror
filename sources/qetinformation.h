@@ -32,6 +32,67 @@
  */
 namespace QETInformation
 {
+	/** Default information related to element **/
+	static QString ELMT_LABEL                        = "label";
+	static QString ELMT_FORMULA                      = "formula";
+	static QString ELMT_COMMENT                      = "comment";
+	static QString ELMT_FUNCTION                     = "function";
+	static QString ELMT_AUX1                         = "auxiliary1";
+	static QString ELMT_AUX2                         = "auxiliary2";
+	static QString ELMT_DESCRIPTION                  = "description";
+	static QString ELMT_DESIGNATION                  = "designation";
+	static QString ELMT_MANUFACTURER                 = "manufacturer";
+	static QString ELMT_MANUFACTURER_REF             = "manufacturer_reference";
+	static QString ELMT_MACHINE_MANUFACTURER_REF     = "machine_manufacturer_reference";
+	static QString ELMT_SUPPLIER                     = "supplier";
+	static QString ELMT_QUANTITY                     = "quantity";
+	static QString ELMT_UNITY                        = "unity";
+	static QString ELMT_PLANT                        = "plant";
+	static QString ELMT_LOCATION                     = "location";
+
+	/** Default information related to conductor **/
+	static QString COND_FUNCTION             = "function";
+	static QString COND_TENSION_PROTOCOL     = "tension_protocol";
+	static QString COND_COLOR                = "conductor_color";
+	static QString COND_SECTION              = "conductor_section";
+	static QString COND_FORMULA              = "formula";
+	static QString COND_TEXT                 = "text";
+
+	/** Default information related to diagram **/
+	static QString DIA_AUTHOR             = "author";
+	static QString DIA_DATE               = "date";
+	static QString DIA_DISPLAY_FOLIO      = "display_folio";
+	static QString DIA_FILENAME           = "filename";
+	static QString DIA_FOLIO              = "folio";
+	static QString DIA_INDEX_REV          = "indexrev";
+	static QString DIA_LOCMACH            = "locmach";
+	static QString DIA_PLANT              = "plant";
+	static QString DIA_POS                = "pos";
+	static QString DIA_TITLE              = "title";
+	static QString DIA_FOLIO_ID           = "folio-id";
+	static QString DIA_PREVIOUS_FOLIO_NUM = "previous-folio-num";
+	static QString DIA_NEXT_FOLIO_NUM     = "next-folio-num";
+
+	/** Default information related to project **/
+	static QString PROJECT_FOLIO_TOTAL     = "folio-total";
+	static QString PROJECT_TITLE           = "projecttitle";
+	static QString PROJECT_PATH            = "projectpath";
+	static QString PROJECT_FILE_NAME       = "projectfilename";
+	static QString PROJECT_SAVE_DATE       = "saveddate";
+	static QString PROJECT_SAVE_DATE_EU    = "saveddate-eu";
+	static QString PROJECT_SAVE_DATE_US    = "saveddate-us";
+	static QString PROJECT_SAVE_TIME       = "savedtime";
+	static QString PROJECT_SAVED_FILE_NAME = "savedfilename";
+	static QString PROJECT_SAVED_FILE_PATH = "savedfilepath";
+
+
+	/** Default information related to QElectroTech **/
+	static QString QET_VERSION = "version";
+
+
+
+
+
 	QStringList titleblockInfoKeys();
 	QString titleblockInfoKeysToVar(const QString &info);
 	QHash <QString, QString> titleblockTranslatedKeyHashVar();

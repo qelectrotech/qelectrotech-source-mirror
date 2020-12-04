@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
-#include "qet.h"
 #include "element.h"
 #include "qetapp.h"
 #include "diagram.h"
@@ -25,6 +24,7 @@
 #include "conductor.h"
 #include "elementtextitemgroup.h"
 #include "crossrefitem.h"
+#include "qetinformation.h"
 
 #include <QDomDocument>
 #include <QDomElement>
@@ -1153,13 +1153,13 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 	{
 		if(m_text_from == ElementInfo)
 		{
-			if(m_info_name == "function")
+			if(m_info_name == QETInformation::COND_FUNCTION)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_function : "");
-			else if (m_info_name == "tension_protocol")
+			else if (m_info_name == QETInformation::COND_TENSION_PROTOCOL)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_tension_protocol : "");
-			else if (m_info_name == "conductor_color")
+			else if (m_info_name == QETInformation::COND_COLOR)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_color : "");
-			else if (m_info_name == "conductor_section")
+			else if (m_info_name == QETInformation::COND_SECTION)
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_section : "");
 		}
 		else if (m_text_from == CompositeText) {
