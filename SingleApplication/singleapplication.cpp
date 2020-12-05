@@ -113,7 +113,7 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 #pragma message("@TODO remove code for QT 5.10 or later")
 #endif
 		quint32 value = QRandomGenerator::global()->generate();
-		QThread::sleep( 8 + static_cast <unsigned long>( static_cast <float>( value ) / RAND_MAX * 10 ) );
+		QThread::sleep(8 + static_cast<unsigned long>(value / RAND_MAX * 10));
 #endif
 	}
 
