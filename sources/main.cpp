@@ -15,11 +15,12 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "qetapp.h"
-#include "singleapplication.h"
-#include "qet.h"
-#include "macosxopenevent.h"
+#include "../SingleApplication/singleapplication.h"
 #include "machine_info.h"
+#include "qet.h"
+#include "qetapp.h"
+#include "utils/macosxopenevent.h"
+
 #include <QStyleFactory>
 
 /**

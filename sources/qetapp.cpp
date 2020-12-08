@@ -16,24 +16,25 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapp.h"
+
+#include "aboutqetdialog.h"
 #include "configdialog.h"
 #include "configpages.h"
-#include "qetdiagrameditor.h"
-#include "qetelementeditor.h"
+#include "editor/qetelementeditor.h"
 #include "elementscollectioncache.h"
-#include "titleblocktemplate.h"
-#include "qettemplateeditor.h"
+#include "factory/elementfactory.h"
+#include "factory/elementpicturefactory.h"
+#include "generalconfigurationpage.h"
+#include "projectview.h"
+#include "qetdiagrameditor.h"
+#include "qeticons.h"
+#include "qetmessagebox.h"
 #include "qetproject.h"
+#include "qettemplateeditor.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
-#include "qeticons.h"
-#include "templatescollection.h"
-#include "generalconfigurationpage.h"
-#include "qetmessagebox.h"
-#include "projectview.h"
-#include "elementpicturefactory.h"
-#include "aboutqetdialog.h"
-#include "factory/elementfactory.h"
+#include "titleblock/templatescollection.h"
+#include "titleblocktemplate.h"
 
 #include <cstdlib>
 #include <iostream>

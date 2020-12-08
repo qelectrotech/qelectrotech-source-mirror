@@ -16,16 +16,16 @@
    along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "bomexportdialog.h"
+
+#include "../dataBase/ui/elementquerywidget.h"
+#include "../qetapp.h"
+#include "../qetinformation.h"
+#include "../qetproject.h"
 #include "ui_bomexportdialog.h"
-#include "elementquerywidget.h"
-#include "qetproject.h"
-#include "qetapp.h"
-#include "qetinformation.h"
 
 #include <QMessageBox>
 #include <QSqlError>
 #include <QSqlRecord>
-
 
 /**
 	@brief BOMExportDialog::BOMExportDialog

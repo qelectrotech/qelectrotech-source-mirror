@@ -18,16 +18,16 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include <algorithm>
-#include <QPicture>
-#include <QHash>
-
-#include "qet.h"
+#include "../ElementsCollection/elementslocation.h"
+#include "../NameList/nameslist.h"
+#include "../autoNum/assignvariables.h"
+#include "../diagramcontext.h"
+#include "../qet.h"
 #include "qetgraphicsitem.h"
-#include "diagramcontext.h"
-#include "assignvariables.h"
-#include "elementslocation.h"
-#include "nameslist.h"
+
+#include <QHash>
+#include <QPicture>
+#include <algorithm>
 
 class QETProject;
 class Terminal;

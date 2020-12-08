@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "xmlelementcollection.h"
-#include "nameslist.h"
-#include "qetxml.h"
+
+#include "../NameList/nameslist.h"
+#include "../qetproject.h"
+#include "../qetxml.h"
 #include "elementslocation.h"
-#include "qetproject.h"
 
 /**
 	@brief XmlElementCollection::XmlElementCollection

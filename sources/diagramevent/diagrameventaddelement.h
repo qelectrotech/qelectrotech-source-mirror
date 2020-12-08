@@ -18,8 +18,8 @@
 #ifndef DIAGRAMEVENTADDELEMENT_H
 #define DIAGRAMEVENTADDELEMENT_H
 
+#include "../ElementsCollection/elementslocation.h"
 #include "diagrameventinterface.h"
-#include "elementslocation.h"
 
 class Element;
 

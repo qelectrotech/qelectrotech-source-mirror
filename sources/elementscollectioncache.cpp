@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscollectioncache.h"
+
 #include "factory/elementfactory.h"
-#include "element.h"
 #include "qet.h"
+#include "qetgraphicsitem/element.h"
 
 #include <QImageWriter>
-#include <QSqlQuery>
 #include <QSqlError>
+#include <QSqlQuery>
 
 /**
 	Construct a cache for elements collections.

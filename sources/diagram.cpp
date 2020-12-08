@@ -15,32 +15,34 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <math.h>
-#include <cassert>
-#include "qetgraphicsitem/conductor.h"
-#include "qetgraphicsitem/conductortextitem.h"
-#include "factory/elementfactory.h"
 #include "diagram.h"
+
+#include "ElementsCollection/elementcollectionhandler.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
+#include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
-#include "exportdialog.h"
-#include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "qetgraphicsitem/qetshapeitem.h"
-#include "terminal.h"
-#include "diagrameventinterface.h"
-#include "qetapp.h"
-#include "elementcollectionhandler.h"
-#include "element.h"
 #include "diagramview.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "undocommand/addelementtextcommand.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetgraphicstableitem.h"
-#include "qetxml.h"
 #include "elementprovider.h"
+#include "exportdialog.h"
+#include "factory/elementfactory.h"
+#include "qetapp.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/terminal.h"
+#include "qetxml.h"
+#include "undocommand/addelementtextcommand.h"
+
+#include <cassert>
+#include <math.h>
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;

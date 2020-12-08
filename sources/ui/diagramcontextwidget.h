@@ -18,8 +18,9 @@
 #ifndef DIAGRAMCONTEXTWIDGET_H
 #define DIAGRAMCONTEXTWIDGET_H
 
+#include "../diagramcontext.h"
+
 #include <QWidget>
-#include "diagramcontext.h"
 
 namespace Ui {
 	class DiagramContextWidget;

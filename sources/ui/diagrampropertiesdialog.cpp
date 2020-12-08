@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrampropertiesdialog.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../undocommand/changetitleblockcommand.h"
 #include "borderpropertieswidget.h"
-#include "titleblockpropertieswidget.h"
 #include "conductorpropertieswidget.h"
-#include "diagramcommands.h"
 #include "projectpropertiesdialog.h"
-#include "diagram.h"
-#include "changetitleblockcommand.h"
+#include "titleblockpropertieswidget.h"
 
 /**
 	@brief DiagramPropertiesDialog::DiagramPropertiesDialog

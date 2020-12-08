@@ -15,22 +15,23 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QtDebug>
-#include <QMultiHash>
+#include "../qetgraphicsitem/conductor.h"
 
-#include "conductor.h"
+#include "../autoNum/numerotationcontextcommands.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "conductorautonumerotation.h"
+#include "conductorpropertiesdialog.h"
 #include "conductorsegment.h"
 #include "conductorsegmentprofile.h"
 #include "conductortextitem.h"
-#include "element.h"
-#include "diagram.h"
 #include "diagramcommands.h"
+#include "element.h"
 #include "qetdiagrameditor.h"
-#include "terminal.h"
-#include "conductorautonumerotation.h"
-#include "conductorpropertiesdialog.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "numerotationcontextcommands.h"
+
+#include <QMultiHash>
+#include <QtDebug>
 
 #define PR(x) qDebug() << #x " = " << x;
 

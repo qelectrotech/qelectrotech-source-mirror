@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_DIMENSION_H
 #define TITLEBLOCK_SLASH_DIMENSION_H
-#include "qet.h"
+#include "../qet.h"
 
 /**
 	This struct is a simple container associating a length with its type.

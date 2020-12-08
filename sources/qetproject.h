@@ -18,18 +18,18 @@
 #ifndef QET_PROJECT_H
 #define QET_PROJECT_H
 
-#include <KAutoSaveFile>
-#include <QHash>
-
-#include "nameslist.h"
-#include "elementslocation.h"
+#include "ElementsCollection/elementslocation.h"
+#include "NameList/nameslist.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
-#include "titleblockproperties.h"
-#include "templatescollection.h"
+#include "dataBase/projectdatabase.h"
+#include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
-#include "projectdatabase.h"
-#include "reportproperties.h"
+#include "titleblock/templatescollection.h"
+#include "titleblockproperties.h"
+
+#include <KAutoSaveFile>
+#include <QHash>
 
 class Diagram;
 class ElementsLocation;

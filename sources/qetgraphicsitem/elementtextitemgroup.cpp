@@ -16,18 +16,19 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextitemgroup.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetapp.h"
+#include "../undocommand/addelementtextcommand.h"
+#include "crossrefitem.h"
 #include "dynamicelementtextitem.h"
 #include "element.h"
-#include "diagram.h"
-#include "addelementtextcommand.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "crossrefitem.h"
-#include "qetapp.h"
 #include "masterelement.h"
 #include "qgraphicsitemutility.h"
 
-#include <QPainter>
 #include <QGraphicsSceneMouseEvent>
+#include <QPainter>
 #include <utility>
 
 /**

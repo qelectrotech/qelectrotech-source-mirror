@@ -16,18 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramcontent.h"
-#include <QGraphicsItem>
-#include "element.h"
-#include "independenttextitem.h"
-#include "conductor.h"
-#include "diagramimageitem.h"
-#include "qetshapeitem.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
+
 #include "diagram.h"
-#include "terminal.h"
-#include "conductortextitem.h"
-#include "qetgraphicstableitem.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/terminal.h"
+
+#include <QGraphicsItem>
 
 /**
 	@brief DiagramContent::DiagramContent

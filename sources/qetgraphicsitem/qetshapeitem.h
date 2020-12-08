@@ -18,9 +18,10 @@
 #ifndef QETSHAPEITEM_H
 #define QETSHAPEITEM_H
 
-#include <QPen>
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetgraphicsitem.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+
+#include <QPen>
 
 class QDomElement;
 class QDomDocument;

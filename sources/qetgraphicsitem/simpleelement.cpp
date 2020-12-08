@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "simpleelement.h"
-#include "diagram.h"
+
+#include "../diagram.h"
 
 /**
 	@brief SimpleElement::SimpleElement

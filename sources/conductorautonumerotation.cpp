@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorautonumerotation.h"
-#include "numerotationcontextcommands.h"
-#include "qetdiagrameditor.h"
-#include "conductor.h"
+
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "autoNum/assignvariables.h"
+#include "autoNum/numerotationcontextcommands.h"
 #include "diagram.h"
 #include "qet.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "potentialselectordialog.h"
-#include "assignvariables.h"
+#include "qetdiagrameditor.h"
+#include "qetgraphicsitem/conductor.h"
+#include "ui/potentialselectordialog.h"
 
 /**
 	@brief ConductorAutoNumerotation::ConductorAutoNumerotation

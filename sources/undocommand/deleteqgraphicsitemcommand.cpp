@@ -16,17 +16,18 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "deleteqgraphicsitemcommand.h"
-#include "dynamicelementtextitem.h"
-#include "diagram.h"
-#include "element.h"
-#include "conductor.h"
-#include "conductortextitem.h"
-#include "elementtextitemgroup.h"
+
+#include "../conductortextitem.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../dynamicelementtextitem.h"
+#include "../elementtextitemgroup.h"
+#include "../qetdiagrameditor.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qetgraphicstableitem.h"
 #include "addelementtextcommand.h"
-#include "terminal.h"
-#include "diagramcommands.h"
-#include "qetgraphicstableitem.h"
-#include "qetdiagrameditor.h"
 
 /**
 	@brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand

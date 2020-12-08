@@ -18,11 +18,11 @@
 #ifndef DYNAMICELEMENTTEXTMODEL_H
 #define DYNAMICELEMENTTEXTMODEL_H
 
-#include <QStandardItemModel>
-#include <QHash>
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 
+#include <QHash>
+#include <QStandardItemModel>
 #include <qstyleditemdelegate.h>
-#include "dynamicelementtextitem.h"
 
 class QUndoCommand;
 class ElementTextItemGroup;

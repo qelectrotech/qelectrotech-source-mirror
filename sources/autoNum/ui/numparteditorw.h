@@ -18,9 +18,10 @@
 #ifndef NUMPARTEDITORW_H
 #define NUMPARTEDITORW_H
 
-#include <QWidget>
+#include "../numerotationcontext.h"
+
 #include <QValidator>
-#include "numerotationcontext.h"
+#include <QWidget>
 
 namespace Ui {
 	class NumPartEditorW;

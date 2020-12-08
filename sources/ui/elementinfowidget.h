@@ -18,9 +18,10 @@
 #ifndef ELEMENTINFOWIDGET_H
 #define ELEMENTINFOWIDGET_H
 
-#include <QWidget>
+#include "../diagramcontext.h"
 #include "abstractelementpropertieseditorwidget.h"
-#include "diagramcontext.h"
+
+#include <QWidget>
 
 class Element;
 class QUndoCommand;

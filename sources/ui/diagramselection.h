@@ -18,10 +18,10 @@
 #ifndef DIAGRAMSELECTION_H
 #define DIAGRAMSELECTION_H
 
-#include <QWidget>
+#include "../diagram.h"
+#include "../qetproject.h"
 
-#include "diagram.h"
-#include "qetproject.h"
+#include <QWidget>
 
 namespace Ui {
 	class diagramselection;

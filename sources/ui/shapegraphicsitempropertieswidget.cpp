@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QHash>
-
 #include "shapegraphicsitempropertieswidget.h"
-#include "ui_shapegraphicsitempropertieswidget.h"
-#include "qetshapeitem.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetshapeitem.h"
+#include "../ui_shapegraphicsitempropertieswidget.h"
+
+#include <QHash>
 
 /**
 	@brief ShapeGraphicsItemPropertiesWidget::ShapeGraphicsItemPropertiesWidget

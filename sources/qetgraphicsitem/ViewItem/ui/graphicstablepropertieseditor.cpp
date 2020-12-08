@@ -16,15 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "graphicstablepropertieseditor.h"
-#include "ui_graphicstablepropertieseditor.h"
-#include "qetgraphicstableitem.h"
-#include "qetgraphicsheaderitem.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../../diagram.h"
+#include "../../../elementprovider.h"
+#include "../../../utils/qetutils.h"
+#include "../qetgraphicsheaderitem.h"
+#include "../qetgraphicstableitem.h"
 #include "itemmodelcommand.h"
 #include "propertieseditorfactory.h"
-#include "elementprovider.h"
-#include "qetutils.h"
+#include "ui_graphicstablepropertieseditor.h"
 
 #include <QAbstractItemModel>
 #include <QFontDialog>

@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "linkelementcommand.h"
-#include "element.h"
-#include "diagram.h"
-#include "conductorautonumerotation.h"
-#include "conductor.h"
-#include "potentialselectordialog.h"
+
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../potentialselectordialog.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
 
 /**
 	@brief LinkElementCommand::LinkElementCommand

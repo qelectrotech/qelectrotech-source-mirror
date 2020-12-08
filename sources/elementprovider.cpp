@@ -16,10 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementprovider.h"
-#include "qetproject.h"
+
 #include "diagram.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/element.h"
-#include "qetgraphicstableitem.h"
+#include "qetproject.h"
+
 #include <QAbstractItemModel>
 
 /**

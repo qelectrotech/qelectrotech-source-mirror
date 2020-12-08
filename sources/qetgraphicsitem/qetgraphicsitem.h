@@ -18,8 +18,9 @@
 #ifndef QETGRAPHICSITEM_H
 #define QETGRAPHICSITEM_H
 
+#include "../qet.h"
+
 #include <QGraphicsObject>
-#include "qet.h"
 
 class Diagram;
 

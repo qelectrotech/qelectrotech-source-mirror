@@ -18,8 +18,9 @@
 #ifndef FOLIOAUTONUMBERING_H
 #define FOLIOAUTONUMBERING_H
 
+#include "../numerotationcontext.h"
+
 #include <QWidget>
-#include "numerotationcontext.h"
 
 class NumPartEditorW;
 class QAbstractButton;

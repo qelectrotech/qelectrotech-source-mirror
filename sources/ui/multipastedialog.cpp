@@ -16,15 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QSettings>
-#include <QHash>
-
 #include "multipastedialog.h"
-#include "ui_multipastedialog.h"
-#include "diagram.h"
-#include "diagramcommands.h"
-#include "element.h"
-#include "conductorautonumerotation.h"
+
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetgraphicsitem/element.h"
+#include "../ui_multipastedialog.h"
+
+#include <QHash>
+#include <QSettings>
 
 MultiPasteDialog::MultiPasteDialog(Diagram *diagram, QWidget *parent) :
 	QDialog(parent),

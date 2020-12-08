@@ -18,8 +18,9 @@
 #ifndef AUTONUMBERINGDOCKWIDGET_H
 #define AUTONUMBERINGDOCKWIDGET_H
 
-#include "qetproject.h"
-#include "projectview.h"
+#include "../projectview.h"
+#include "../qetproject.h"
+
 #include <QDockWidget>
 
 namespace Ui {

@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "reportelement.h"
-#include "diagramposition.h"
-#include "qetproject.h"
-#include "diagram.h"
-#include "terminal.h"
-#include "conductor.h"
+
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qetproject.h"
 #include "dynamicelementtextitem.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, const QString& link_type,QGraphicsItem *qgi, int *state) :

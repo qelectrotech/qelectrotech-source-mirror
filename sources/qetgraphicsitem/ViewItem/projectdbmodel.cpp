@@ -16,11 +16,12 @@
 				along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdbmodel.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
+#include "../../qetproject.h"
+#include "../../qetxml.h"
 #include "projectdatabase.h"
-#include "qetproject.h"
-#include "qetxml.h"
-#include "qetapp.h"
-#include "qetinformation.h"
 
 #include <QSqlError>
 #include <QSqlRecord>

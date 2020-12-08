@@ -16,14 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstablefactory.h"
-#include "qetgraphicstableitem.h"
-#include "projectdbmodel.h"
-#include "elementquerywidget.h"
-#include "diagram.h"
-#include "qetgraphicsheaderitem.h"
+
+#include "../diagram.h"
+#include "../projectdbmodel.h"
+#include "../qetgraphicsheaderitem.h"
+#include "../qetgraphicstableitem.h"
 #include "addtabledialog.h"
-#include "qetutils.h"
 #include "elementquerywidget.h"
+#include "qetutils.h"
 #include "summaryquerywidget.h"
 
 #include <QDialog>

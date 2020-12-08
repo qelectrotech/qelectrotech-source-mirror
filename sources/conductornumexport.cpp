@@ -16,12 +16,13 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductornumexport.h"
+
 #include "diagram.h"
 #include "diagramcontent.h"
-#include "conductor.h"
-#include "terminal.h"
-#include "element.h"
-#include "conductortextitem.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 
 #include <QFileDialog>
 

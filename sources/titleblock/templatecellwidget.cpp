@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatecellwidget.h"
-#include "titleblockcell.h"
-#include "nameslist.h"
-#include "titleblocktemplate.h"
+
+#include "../NameList/nameslist.h"
+#include "../NameList/ui/namelistdialog.h"
+#include "../NameList/ui/namelistwidget.h"
+#include "../qeticons.h"
+#include "../qetinformation.h"
+#include "../titleblockcell.h"
+#include "../titleblocktemplate.h"
 #include "templatecommands.h"
-#include "qeticons.h"
-#include "namelistdialog.h"
-#include "namelistwidget.h"
-#include "qetinformation.h"
 
 /**
 	@brief TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget

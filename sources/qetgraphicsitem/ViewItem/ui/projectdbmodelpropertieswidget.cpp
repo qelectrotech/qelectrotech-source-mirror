@@ -16,11 +16,12 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdbmodelpropertieswidget.h"
+
+#include "../../../dataBase/ui/elementquerywidget.h"
+#include "../../../dataBase/ui/summaryquerywidget.h"
+#include "../../../qetproject.h"
+#include "../projectdbmodel.h"
 #include "ui_projectdbmodelpropertieswidget.h"
-#include "projectdbmodel.h"
-#include "qetproject.h"
-#include "elementquerywidget.h"
-#include "summaryquerywidget.h"
 
 #include <QDialogButtonBox>
 

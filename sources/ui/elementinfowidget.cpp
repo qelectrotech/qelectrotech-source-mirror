@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfowidget.h"
-#include "ui_elementinfowidget.h"
-#include "qetapp.h"
-#include "changeelementinformationcommand.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetinformation.h"
+#include "../ui_elementinfowidget.h"
+#include "../undocommand/changeelementinformationcommand.h"
 #include "elementinfopartwidget.h"
-#include "element.h"
-#include "qetinformation.h"
 
 /**
 	@brief ElementInfoWidget::ElementInfoWidget

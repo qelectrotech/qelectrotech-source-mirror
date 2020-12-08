@@ -18,9 +18,10 @@
 #ifndef MULTIPASTEDIALOG_H
 #define MULTIPASTEDIALOG_H
 
-#include <QDialog>
-#include "diagramcontent.h"
+#include "../diagramcontent.h"
 #include "QDomDocument"
+
+#include <QDialog>
 
 class Diagram;
 

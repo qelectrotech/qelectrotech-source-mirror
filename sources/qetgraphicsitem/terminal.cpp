@@ -15,16 +15,17 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "terminal.h"
+#include "../qetgraphicsitem/terminal.h"
 
-#include <utility>
-#include "diagram.h"
-#include "qetgraphicsitem/element.h"
-#include "qetgraphicsitem/conductor.h"
-#include "diagramcommands.h"
-#include "conductorautonumerotation.h"
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
 #include "terminaldata.h"
+
+#include <utility>
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);

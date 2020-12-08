@@ -17,9 +17,10 @@
 */
 #ifndef TERMINAL_H
 #define TERMINAL_H
+#include "../qet.h"
+
 #include <QtWidgets>
 #include <QtXml>
-#include "qet.h"
 class Conductor;
 class Diagram;
 class Element;

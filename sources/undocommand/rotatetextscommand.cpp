@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "rotatetextscommand.h"
+
+#include "../diagram.h"
+#include "../qetapp.h"
+#include "../qtextorientationspinboxwidget.h"
+#include "conductortextitem.h"
 #include "diagramcontent.h"
-#include "diagram.h"
 #include "diagramtextitem.h"
 #include "elementtextitemgroup.h"
-#include "conductortextitem.h"
-#include "qetapp.h"
-#include "qtextorientationspinboxwidget.h"
 
 /**
 	@brief RotateTextsCommand::RotateTextsCommand

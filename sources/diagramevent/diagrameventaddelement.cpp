@@ -16,12 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
-#include "elementfactory.h"
-#include "diagram.h"
-#include "element.h"
-#include "diagramcommands.h"
-#include "conductorautonumerotation.h"
 
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetgraphicsitem/element.h"
+#include "elementfactory.h"
 
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement

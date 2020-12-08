@@ -18,8 +18,9 @@
 #ifndef BORDERPROPERTIESWIDGET_H
 #define BORDERPROPERTIESWIDGET_H
 
+#include "../borderproperties.h"
+
 #include <QWidget>
-#include "borderproperties.h"
 
 namespace Ui {
 	class BorderPropertiesWidget;

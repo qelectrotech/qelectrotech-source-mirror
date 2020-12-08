@@ -16,33 +16,33 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+
+#include "QWidgetAnimation/qwidgetanimation.h"
+#include "autoNum/ui/autonumberingdockwidget.h"
+#include "conductornumexport.h"
+#include "diagramcommands.h"
+#include "diagrameventaddimage.h"
+#include "diagrameventaddshape.h"
+#include "diagrameventaddtext.h"
+#include "diagrampropertieseditordockwidget.h"
 #include "diagramview.h"
+#include "dialogwaiting.h"
+#include "elementscollectionwidget.h"
 #include "elementspanelwidget.h"
-#include "recentfiles.h"
+#include "factory/qetgraphicstablefactory.h"
+#include "projectprintwindow.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
-#include "diagrampropertieseditordockwidget.h"
-#include "diagrameventaddshape.h"
-#include "diagrameventaddimage.h"
-#include "diagrameventaddtext.h"
-#include "elementscollectionwidget.h"
-#include "autonumberingdockwidget.h"
-#include "dynamicelementtextitem.h"
-#include "conductortextitem.h"
+#include "recentfiles.h"
+#include "ui/bomexportdialog.h"
+#include "undocommand/addelementtextcommand.h"
 #include "undocommand/rotateselectioncommand.h"
-#include "rotatetextscommand.h"
-#include "diagramcommands.h"
-#include "dialogwaiting.h"
-#include "addelementtextcommand.h"
-#include "conductornumexport.h"
-#include "qetgraphicstableitem.h"
-#include "bomexportdialog.h"
-#include "QWidgetAnimation/qwidgetanimation.h"
-#include "qetgraphicstablefactory.h"
-#include "projectprintwindow.h"
+#include "undocommand/rotatetextscommand.h"
 
 #include <KAutoSaveFile>
-
 
 /**
 	@brief QETDiagramEditor::QETDiagramEditor

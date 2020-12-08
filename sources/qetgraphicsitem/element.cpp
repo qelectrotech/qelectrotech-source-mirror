@@ -16,24 +16,26 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
-#include "diagram.h"
-#include "conductor.h"
-#include "diagramcommands.h"
-#include <utility>
-#include "elementprovider.h"
-#include "diagramposition.h"
-#include "terminal.h"
-#include "terminaldata.h"
-#include "PropertiesEditor/propertieseditordialog.h"
-#include "elementpropertieswidget.h"
-#include "numerotationcontextcommands.h"
-#include "diagramcontext.h"
-#include "changeelementinformationcommand.h"
+
+#include "../PropertiesEditor/propertieseditordialog.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../diagramcontext.h"
+#include "../diagramposition.h"
+#include "../elementpicturefactory.h"
+#include "../elementpropertieswidget.h"
+#include "../elementprovider.h"
+#include "../numerotationcontextcommands.h"
+#include "../properties/terminaldata.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../undocommand/changeelementinformationcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
-#include "elementpicturefactory.h"
 #include "iostream"
+
 #include <QDomElement>
+#include <utility>
 
 class ElementXmlRetroCompatibility
 {

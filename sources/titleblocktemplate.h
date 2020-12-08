@@ -17,12 +17,13 @@
 */
 #ifndef TITLEBLOCK_TEMPLATE_H
 #define TITLEBLOCK_TEMPLATE_H
-#include <QtXml>
-#include <QtSvg>
 #include "diagramcontext.h"
-#include "titleblockcell.h"
-#include "dimension.h"
 #include "qet.h"
+#include "titleblock/dimension.h"
+#include "titleblockcell.h"
+
+#include <QtSvg>
+#include <QtXml>
 
 /**
 	@brief The TitleBlockTemplate class

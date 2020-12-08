@@ -18,8 +18,9 @@
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
+#include "autoNum/assignvariables.h"
+
 #include <QList>
-#include "assignvariables.h"
 
 class Diagram;
 class Conductor;

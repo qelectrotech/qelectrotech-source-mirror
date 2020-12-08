@@ -19,7 +19,7 @@
 #define PANELAPPAREILS_H
 
 #include "genericpanel.h"
-#include "templatelocation.h"
+#include "titleblock/templatelocation.h"
 
 class QETProject;
 class Diagram;

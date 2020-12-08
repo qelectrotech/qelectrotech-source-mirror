@@ -18,10 +18,11 @@
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
 
-#include <QGraphicsView>
+#include "ElementsCollection/elementslocation.h"
+#include "titleblock/templatelocation.h"
+
 #include <QClipboard>
-#include "elementslocation.h"
-#include "templatelocation.h"
+#include <QGraphicsView>
 
 class Conductor;
 class Diagram;

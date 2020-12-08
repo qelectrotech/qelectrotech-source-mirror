@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanel.h"
-#include "qetapp.h"
-#include "qetproject.h"
+
 #include "diagram.h"
+#include "qetapp.h"
 #include "qeticons.h"
-#include "templatescollection.h"
+#include "qetproject.h"
+#include "titleblock/templatescollection.h"
 
 /*
 	Lorsque le flag ENABLE_PANEL_DND_CHECKS est defini, le panel d'elements

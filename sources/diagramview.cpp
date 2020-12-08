@@ -16,23 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
-#include "diagramcommands.h"
 
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "diagramcommands.h"
+#include "diagramevent/diagrameventaddelement.h"
+#include "dvevent/dveventinterface.h"
+#include "projectview.h"
+#include "qetdiagrameditor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/conductor.h"
-
-#include "projectview.h"
-#include "integrationmovetemplateshandler.h"
-#include "qetdiagrameditor.h"
 #include "qeticons.h"
-#include "diagrampropertiesdialog.h"
-#include "dveventinterface.h"
-#include "diagrameventaddelement.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "multipastedialog.h"
-#include "changetitleblockcommand.h"
-#include "conductorcreator.h"
+#include "titleblock/integrationmovetemplateshandler.h"
+#include "ui/diagrampropertiesdialog.h"
+#include "ui/multipastedialog.h"
+#include "undocommand/changetitleblockcommand.h"
+#include "utils/conductorcreator.h"
 
 #include <QDropEvent>
 

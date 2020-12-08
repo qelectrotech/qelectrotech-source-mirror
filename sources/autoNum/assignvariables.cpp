@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "assignvariables.h"
-#include "diagram.h"
-#include "element.h"
-#include "diagramposition.h"
-#include "qetapp.h"
-#include "qetxml.h"
 
-#include <QVariant>
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetxml.h"
+
 #include <QStringList>
+#include <QVariant>
 #include <utility>
 
 namespace autonum

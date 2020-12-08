@@ -16,22 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectview.h"
-#include "qetproject.h"
-#include "diagramview.h"
+
+#include "ElementsCollection/xmlelementcollection.h"
+#include "autoNum/assignvariables.h"
 #include "diagram.h"
+#include "diagramview.h"
+#include "editor/qetelementeditor.h"
 #include "exportdialog.h"
 #include "qetapp.h"
-#include "qetelementeditor.h"
-#include "borderpropertieswidget.h"
-#include "titleblockpropertieswidget.h"
-#include "conductorpropertieswidget.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "qetproject.h"
 #include "qettemplateeditor.h"
-#include "projectpropertiesdialog.h"
-#include "xmlelementcollection.h"
-#include "autoNum/assignvariables.h"
-#include "dialogwaiting.h"
+#include "ui/borderpropertieswidget.h"
+#include "ui/conductorpropertieswidget.h"
+#include "ui/dialogwaiting.h"
+#include "ui/projectpropertiesdialog.h"
+#include "ui/titleblockpropertieswidget.h"
 
 /**
 	Constructeur

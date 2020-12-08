@@ -18,10 +18,10 @@
 #ifndef DELETEQGRAPHICSITEMCOMMAND_H
 #define DELETEQGRAPHICSITEMCOMMAND_H
 
-#include <QUndoCommand>
-#include <QHash>
+#include "../diagramcontent.h"
 
-#include "diagramcontent.h"
+#include <QHash>
+#include <QUndoCommand>
 
 class Diagram;
 class ElementTextItemGroup;

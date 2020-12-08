@@ -16,21 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectconfigpages.h"
+
+#include "autoNum/numerotationcontext.h"
+#include "autoNum/ui/autonumberingmanagementw.h"
+#include "autoNum/ui/folioautonumbering.h"
+#include "autoNum/ui/formulaautonumberingw.h"
+#include "autoNum/ui/selectautonumw.h"
 #include "qeticons.h"
 #include "qetproject.h"
-#include "borderpropertieswidget.h"
-#include "conductorpropertieswidget.h"
-#include "diagramcontextwidget.h"
-#include "titleblockpropertieswidget.h"
-#include <QtWidgets>
+#include "ui/borderpropertieswidget.h"
+#include "ui/conductorpropertieswidget.h"
+#include "ui/diagramcontextwidget.h"
 #include "ui/reportpropertiewidget.h"
+#include "ui/titleblockpropertieswidget.h"
 #include "ui/xrefpropertieswidget.h"
-#include "selectautonumw.h"
-#include "numerotationcontext.h"
-#include "folioautonumbering.h"
-#include "formulaautonumberingw.h"
-#include "autonumberingmanagementw.h"
 #include "ui_autonumberingmanagementw.h"
+
+#include <QtWidgets>
 
 /**
 	Constructor

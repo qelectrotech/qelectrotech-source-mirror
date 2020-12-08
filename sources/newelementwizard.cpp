@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "newelementwizard.h"
-#include "namelistwidget.h"
-#include "qetelementeditor.h"
-#include "qfilenameedit.h"
+
+#include "ElementsCollection/elementcollectionitem.h"
+#include "ElementsCollection/elementscollectionmodel.h"
+#include "NameList/ui/namelistwidget.h"
+#include "editor/qetelementeditor.h"
 #include "qetmessagebox.h"
-#include "elementscollectionmodel.h"
-#include "elementcollectionitem.h"
+#include "qfilenameedit.h"
 
 /**
 	Constructeur

@@ -17,12 +17,13 @@
 */
 #ifndef ELEMENT_SCENE_H
 #define ELEMENT_SCENE_H
+#include "../NameList/nameslist.h"
+#include "../diagramcontext.h"
+#include "../qgimanager.h"
+#include "elementcontent.h"
+
 #include <QtWidgets>
 #include <QtXml>
-#include "qgimanager.h"
-#include "elementcontent.h"
-#include "diagramcontext.h"
-#include "nameslist.h"
 
 class CustomElementPart;
 class ElementEditionCommand;

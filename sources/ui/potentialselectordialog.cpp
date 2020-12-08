@@ -16,19 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QRadioButton>
-#include <QHash>
-
 #include "potentialselectordialog.h"
-#include "ui_potentialselectordialog.h"
-#include "conductor.h"
-#include "terminal.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "diagram.h"
-#include "element.h"
-#include "reportelement.h"
-#include "assignvariables.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../autoNum/assignvariables.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../reportelement.h"
+#include "../ui_potentialselectordialog.h"
 #include "formulaassistantdialog.h"
+
+#include <QHash>
+#include <QRadioButton>
 
 //### BEGIN PRIVATE CLASS ###//
 

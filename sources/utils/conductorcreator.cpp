@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorcreator.h"
-#include "diagram.h"
+
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../potentialselectordialog.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "qgraphicsitem.h"
-#include "terminal.h"
-#include "conductor.h"
-#include "potentialselectordialog.h"
-#include "diagramcommands.h"
-#include "conductorautonumerotation.h"
-#include "element.h"
 
 #include <QPolygonF>
 

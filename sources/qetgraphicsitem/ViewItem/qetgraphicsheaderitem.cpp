@@ -16,10 +16,11 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicsheaderitem.h"
+
+#include "../../createdxf.h"
+#include "../../qetxml.h"
+#include "../../utils/qetutils.h"
 #include "qabstractitemmodel.h"
-#include "qetxml.h"
-#include "qetutils.h"
-#include "createdxf.h"
 
 #include <QFontMetrics>
 #include <QPainter>

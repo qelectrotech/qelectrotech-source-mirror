@@ -17,9 +17,10 @@
 */
 #ifndef TITLEBLOCK_SLASH_MOVE_TEMPLATES_HANDLER_H
 #define TITLEBLOCK_SLASH_MOVE_TEMPLATES_HANDLER_H
-#include <QtCore>
-#include "qet.h"
+#include "../qet.h"
 #include "templatelocation.h"
+
+#include <QtCore>
 
 /**
 	This class defines the minimal interface required to implement an object

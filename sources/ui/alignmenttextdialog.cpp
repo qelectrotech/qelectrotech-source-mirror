@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "alignmenttextdialog.h"
+
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "ui_alignmenttextdialog.h"
-#include "dynamicelementtextitem.h"
 
 AlignmentTextDialog::AlignmentTextDialog(Qt::Alignment alignment, QWidget *parent) :
 	QDialog(parent),

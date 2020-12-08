@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "linksingleelementwidget.h"
-#include "ui_linksingleelementwidget.h"
-#include "diagram.h"
-#include "elementprovider.h"
-#include "linkelementcommand.h"
-#include "diagramposition.h"
-#include "conductor.h"
+
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../elementprovider.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../ui_linksingleelementwidget.h"
+#include "../undocommand/linkelementcommand.h"
 
 #include <QTreeWidgetItem>
 

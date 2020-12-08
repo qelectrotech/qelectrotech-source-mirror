@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatelocation.h"
+
+#include "../qetapp.h"
 #include "templatescollection.h"
-#include "qetapp.h"
 
 #include <QRegularExpression>
 

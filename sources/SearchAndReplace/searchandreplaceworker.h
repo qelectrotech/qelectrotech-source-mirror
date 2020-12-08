@@ -18,10 +18,10 @@
 #ifndef SEARCHANDREPLACEWORKER_H
 #define SEARCHANDREPLACEWORKER_H
 
-#include <QDate>
+#include "../conductorproperties.h"
+#include "../titleblockproperties.h"
 
-#include "titleblockproperties.h"
-#include "conductorproperties.h"
+#include <QDate>
 
 class Diagram;
 class Element;

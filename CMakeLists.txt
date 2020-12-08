@@ -83,10 +83,7 @@ find_package(
   PrintSupport
  REQUIRED
  )
-
-if(DEFINED ENV{ok_simon})
-add_executable(
-  ${PROJECT_NAME}
+set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
@@ -596,7 +593,11 @@ add_executable(
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/qetutils.h
   )
-
+if(DEFINED ENV{ok_simon})
+add_executable(
+  ${PROJECT_NAME}
+  ${QET_SRC_FILES}
+  )
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
@@ -649,5 +650,7 @@ target_link_libraries(
  else()
    message("ok_simon is not set, assuming QET WILL_FAIL to COMPILE")
 endif()
+
+
 # Add sub directories
 add_subdirectory(tests)

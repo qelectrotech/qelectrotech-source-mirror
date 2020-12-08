@@ -18,8 +18,9 @@
 #ifndef ELEMENTS_COLLECTION_CACHE_H
 #define ELEMENTS_COLLECTION_CACHE_H
 
+#include "ElementsCollection/elementslocation.h"
+
 #include <QSqlDatabase>
-#include "elementslocation.h"
 
 /**
 	This class implements a SQLite cache for data related to elements

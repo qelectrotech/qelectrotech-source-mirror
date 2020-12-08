@@ -17,11 +17,12 @@
 */
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
-#include <QtWidgets>
-#include <QDialog>
 #include "configpage.h"
-#include "projectpropertiesdialog.h"
-#include "titleblockpropertieswidget.h"
+#include "ui/projectpropertiesdialog.h"
+#include "ui/titleblockpropertieswidget.h"
+
+#include <QDialog>
+#include <QtWidgets>
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;

@@ -1,43 +1,44 @@
 /*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportdialog.h"
-#include <QSvgGenerator>
-#include <cmath>
-#include <QtXml>
-#include <utility>
+
+#include "conductorsegment.h"
+#include "createdxf.h"
+#include "exportpropertieswidget.h"
+#include "factory/elementpicturefactory.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/diagramtextitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
-#include "exportpropertieswidget.h"
-#include "createdxf.h"
-#include "conductorsegment.h"
-#include "qetgraphicsitem/conductor.h"
-#include "qetgraphicsitem/diagramtextitem.h"
-#include "qetgraphicsitem/conductortextitem.h"
-#include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "qetgraphicsitem/qetshapeitem.h"
-#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
-#include "elementpicturefactory.h"
-#include "element.h"
-#include "dynamicelementtextitem.h"
-#include "terminal.h"
 
 #include <QGraphicsSimpleTextItem>
+#include <QSvgGenerator>
+#include <QtXml>
+#include <cmath>
+#include <utility>
 
 /**
 	Constructeur

@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "titleblocktemplate.h"
+
+#include "NameList/nameslist.h"
+#include "createdxf.h"
 #include "qet.h"
 #include "qetapp.h"
-#include "nameslist.h"
-#include "createdxf.h"
 // uncomment the line below to get more debug information
 //#define TITLEBLOCK_TEMPLATE_DEBUG
 

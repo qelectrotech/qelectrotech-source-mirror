@@ -19,8 +19,9 @@
 #ifndef CONDUCTORPROPERTIESDIALOG_H
 #define CONDUCTORPROPERTIESDIALOG_H
 
+#include "../conductorproperties.h"
+
 #include <QDialog>
-#include "conductorproperties.h"
 
 class Conductor;
 class ConductorPropertiesWidget;

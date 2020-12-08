@@ -18,12 +18,12 @@
 #ifndef PROJECT_VIEW_H
 #define PROJECT_VIEW_H
 
+#include "qetresult.h"
+#include "titleblock/templatelocation.h"
+
+#include <QTabBar>
 #include <QWidget>
 #include <QtWidgets>
-#include <QTabBar>
-
-#include "templatelocation.h"
-#include "qetresult.h"
 
 #ifdef Q_OS_MACOS
 

@@ -16,10 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qgraphicsitemutility.h"
+
+#include "../diagram.h"
 #include "element.h"
-#include "diagram.h"
-#include <QGraphicsItem>
+
 #include <QDebug>
+#include <QGraphicsItem>
 
 /**
 	@brief centerToParentBottom

@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "slaveelement.h"
-#include "diagramposition.h"
-#include "qetapp.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../qetapp.h"
 #include "dynamicelementtextitem.h"
 
 /**

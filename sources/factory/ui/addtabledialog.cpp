@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "addtabledialog.h"
-#include "ui_addtabledialog.h"
-#include "elementquerywidget.h"
+
+#include "../../dataBase/ui/elementquerywidget.h"
+#include "../../utils/qetutils.h"
 #include "marginseditdialog.h"
-#include "qetutils.h"
+#include "ui_addtabledialog.h"
 
 #include <QFontDialog>
 

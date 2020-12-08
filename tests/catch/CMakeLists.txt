@@ -17,6 +17,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 message("_____________________________________________________________________")
+
 project(C_unittests LANGUAGES CXX)
 
 if(DEFINED ENV{QET_DIR})
@@ -32,7 +33,12 @@ SET(CMAKE_CXX_STANDARD 17)
 
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5Xml REQUIRED)
+find_package(Qt5Svg REQUIRED)
+find_package(Qt5Sql REQUIRED)
+find_package(Qt5Concurrent REQUIRED)
 find_package(Qt5Widgets REQUIRED)
+find_package(KF5WidgetsAddons)
+find_package(KF5CoreAddons)
 
 Include(FetchContent)
 
@@ -43,21 +49,28 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
+
 add_executable(
     ${PROJECT_NAME}
     tst_My_test.cpp
+    src/borderproperties_test.cpp
     main.cpp
-    ${QET_DIR}/sources/borderproperties.h
-    ${QET_DIR}/sources/borderproperties.cpp)
+    ${QET_DIR}/sources/borderproperties.cpp
+    ${QET_DIR}/sources/borderproperties.h)
 
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
     Catch2::Catch2
     PRIVATE
+    KF5::WidgetsAddons
+    KF5::CoreAddons
     Qt5::Gui
     Qt5::Xml
-    Qt5::Widgets)
+    Qt5::Svg
+    Qt5::Sql
+    Qt5::Widgets
+    Qt5::Concurrent)
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})
     set(CATCH_INCLUDE_DIR $ENV{CATCH_INCLUDE_DIR})

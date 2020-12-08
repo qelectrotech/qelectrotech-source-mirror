@@ -18,8 +18,9 @@
 #ifndef CONDUCTORPROPERTIESWIDGET_H
 #define CONDUCTORPROPERTIESWIDGET_H
 
+#include "../conductorproperties.h"
+
 #include <QWidget>
-#include "conductorproperties.h"
 class QTextOrientationSpinBoxWidget;
 class QComboBox;
 class QPushButton;

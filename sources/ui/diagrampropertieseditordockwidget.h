@@ -18,7 +18,7 @@
 #ifndef DIAGRAMPROPERTIESEDITORDOCKWIDGET_H
 #define DIAGRAMPROPERTIESEDITORDOCKWIDGET_H
 
-#include "PropertiesEditor/propertieseditordockwidget.h"
+#include "../PropertiesEditor/propertieseditordockwidget.h"
 
 class Diagram;
 

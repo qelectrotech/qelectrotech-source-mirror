@@ -16,20 +16,21 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstableitem.h"
-#include "diagram.h"
-#include "qetgraphicsheaderitem.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetxml.h"
-#include "elementprovider.h"
-#include "qetutils.h"
-#include "projectdbmodel.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../diagram.h"
+#include "../../qetxml.h"
+#include "../../utils/qetutils.h"
 #include "createdxf.h"
+#include "elementprovider.h"
+#include "projectdbmodel.h"
+#include "qetgraphicsheaderitem.h"
 
 #include <QAbstractItemModel>
 #include <QFontMetrics>
-#include <QPainter>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QPainter>
 
 static int no_model_height = 20;
 static int no_model_width = 40;

@@ -16,11 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectprintwindow.h"
-#include "ui_projectprintwindow.h"
 
-#include "qetproject.h"
-#include "diagram.h"
-#include "qeticons.h"
+#include "../diagram.h"
+#include "../qeticons.h"
+#include "../qetproject.h"
+#include "ui_projectprintwindow.h"
 
 #include <QPrintPreviewWidget>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove

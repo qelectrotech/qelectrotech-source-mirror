@@ -18,8 +18,9 @@
 #ifndef REPLACEELEMENTDIALOG_H
 #define REPLACEELEMENTDIALOG_H
 
+#include "../../diagramcontext.h"
+
 #include <QDialog>
-#include "diagramcontext.h"
 
 class ElementInfoPartWidget;
 

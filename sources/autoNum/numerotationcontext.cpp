@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "numerotationcontext.h"
-#include "qet.h"
 
-#include <utility>
+#include "../qet.h"
+
 #include <QRegularExpression>
+#include <utility>
 
 /**
 	Constructor

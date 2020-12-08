@@ -16,10 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextsmover.h"
-#include "diagram.h"
+
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
+#include "diagram.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+
 #include <QObject>
 
 /**

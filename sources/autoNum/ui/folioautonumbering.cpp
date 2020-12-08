@@ -16,12 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "folioautonumbering.h"
+
+#include "../../diagram.h"
+#include "../../qetproject.h"
 #include "ui_folioautonumbering.h"
+
 #include <QMessageBox>
 #include <QPushButton>
 #include <QtWidgets>
-#include "qetproject.h"
-#include "diagram.h"
 /**
 	Constructor
 */

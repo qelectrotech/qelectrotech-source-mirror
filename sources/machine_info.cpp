@@ -118,7 +118,7 @@ void Machine_info::send_info_to_debug()
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
 #endif
 #endif
-	qInfo()<< "GitRevision " + QString(GIT_COMMIT_SHA);
+	qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
 	qInfo()<< "QElectroTech V " + QET::displayedVersion;
 	qInfo()<< tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT

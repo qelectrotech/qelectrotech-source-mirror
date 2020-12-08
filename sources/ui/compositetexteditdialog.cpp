@@ -1,12 +1,13 @@
 #include "compositetexteditdialog.h"
 
-#include <utility>
+#include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetinformation.h"
 #include "ui_compositetexteditdialog.h"
-#include "dynamicelementtextitem.h"
-#include "element.h"
-#include "qetapp.h"
-#include "conductor.h"
-#include "qetinformation.h"
+
+#include <utility>
 
 CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, QWidget *parent) :
 	QDialog(parent),

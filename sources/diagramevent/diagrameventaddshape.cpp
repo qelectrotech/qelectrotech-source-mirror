@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddshape.h"
-#include "diagram.h"
-#include "diagramcommands.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
 
 /**
 	@brief DiagramEventAddShape::DiagramEventAddShape

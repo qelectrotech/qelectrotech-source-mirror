@@ -18,9 +18,9 @@
 #ifndef CHANGETITLEBLOCKCOMMAND_H
 #define CHANGETITLEBLOCKCOMMAND_H
 
-#include <QUndoCommand>
+#include "../titleblockproperties.h"
 
-#include "titleblockproperties.h"
+#include <QUndoCommand>
 
 class Diagram;
 /**

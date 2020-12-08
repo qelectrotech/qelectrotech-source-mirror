@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorpropertieswidget.h"
+
+#include "../conductorproperties.h"
+#include "../qetapp.h"
+#include "../qtextorientationspinboxwidget.h"
 #include "ui_conductorpropertieswidget.h"
-#include "conductorproperties.h"
-#include "qetapp.h"
-#include "qtextorientationspinboxwidget.h"
 
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget

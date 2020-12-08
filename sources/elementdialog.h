@@ -18,8 +18,9 @@
 #ifndef ELEMENT_DIALOG_H
 #define ELEMENT_DIALOG_H
 
+#include "ElementsCollection/elementslocation.h"
+
 #include <QDialog>
-#include "elementslocation.h"
 
 class QDialogButtonBox;
 class QFileNameEdit;

@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductortextitem.h"
-#include "conductor.h"
+
+#include "../diagram.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
-#include "diagram.h"
 
 /**
 	Constructeur

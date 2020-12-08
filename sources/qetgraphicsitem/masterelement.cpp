@@ -16,9 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "masterelement.h"
+
+#include "../diagram.h"
 #include "crossrefitem.h"
-#include "diagram.h"
 #include "dynamicelementtextitem.h"
+
 #include <QRegularExpression>
 
 /**

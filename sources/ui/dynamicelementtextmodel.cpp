@@ -16,25 +16,26 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextmodel.h"
-#include "dynamicelementtextitem.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "element.h"
-#include "compositetexteditdialog.h"
-#include "terminal.h"
-#include "conductor.h"
-#include "elementtextitemgroup.h"
-#include "qeticons.h"
-#include "diagram.h"
-#include "addelementtextcommand.h"
-#include "alignmenttextdialog.h"
-#include "qetinformation.h"
-#include "qetapp.h"
 
-#include <QStandardItem>
-#include <QHash>
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../dynamicelementtextitem.h"
+#include "../elementtextitemgroup.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qeticons.h"
+#include "../qetinformation.h"
+#include "../undocommand/addelementtextcommand.h"
+#include "alignmenttextdialog.h"
+#include "compositetexteditdialog.h"
+
 #include <QColorDialog>
-#include <QModelIndex>
 #include <QComboBox>
+#include <QHash>
+#include <QModelIndex>
+#include <QStandardItem>
 #include <QUndoCommand>
 
 static int src_txt_row   = 0;

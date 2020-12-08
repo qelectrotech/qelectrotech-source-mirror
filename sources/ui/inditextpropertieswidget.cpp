@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "inditextpropertieswidget.h"
-#include "ui_inditextpropertieswidget.h"
-#include "independenttextitem.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "diagram.h"
-#include "diagramcommands.h"
-#include <QtGlobal>
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../independenttextitem.h"
+#include "../ui_inditextpropertieswidget.h"
+
 #include <QLineEdit>
+#include <QtGlobal>
 
 /**
 	@brief IndiTextPropertiesWidget::IndiTextPropertiesWidget

@@ -16,11 +16,12 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetxml.h"
-#include "nameslist.h"
 
-#include <QPen>
+#include "NameList/nameslist.h"
+
 #include <QDir>
 #include <QFont>
+#include <QPen>
 
 /**
 	@brief QETXML::penToXml

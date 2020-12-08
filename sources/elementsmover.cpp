@@ -16,16 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementsmover.h"
-#include "conductor.h"
-#include "conductortextitem.h"
+
+#include "conductorautonumerotation.h"
 #include "diagram.h"
 #include "diagramcommands.h"
-#include "element.h"
-#include "independenttextitem.h"
-#include "diagramimageitem.h"
-#include "conductorautonumerotation.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
 
 /**
 	@brief ElementsMover::ElementsMover Constructor

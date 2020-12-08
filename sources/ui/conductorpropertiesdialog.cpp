@@ -17,11 +17,12 @@
 */
 
 #include "conductorpropertiesdialog.h"
-#include "ui_conductorpropertiesdialog.h"
-#include "conductor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "conductorpropertieswidget.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "ui_conductorpropertiesdialog.h"
 
 /**
 	@brief ConductorPropertiesDialog::ConductorPropertiesDialog

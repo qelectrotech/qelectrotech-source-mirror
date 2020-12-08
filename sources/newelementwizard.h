@@ -18,8 +18,9 @@
 #ifndef NEW_ELEMENT_WIZARD_H
 #define NEW_ELEMENT_WIZARD_H
 
+#include "ElementsCollection/elementslocation.h"
+
 #include <QWizard>
-#include "elementslocation.h"
 
 class NameListWidget;
 class QFileNameEdit;

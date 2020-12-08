@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventinterface.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
-
 
 DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
 	m_diagram(diagram),

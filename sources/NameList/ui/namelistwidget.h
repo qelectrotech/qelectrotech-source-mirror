@@ -18,10 +18,10 @@
 #ifndef NAMELISTWIDGET_H
 #define NAMELISTWIDGET_H
 
-#include <QWidget>
-#include <QHash>
+#include "../nameslist.h"
 
-#include "nameslist.h"
+#include <QHash>
+#include <QWidget>
 
 namespace Ui {
 	class NameListWidget;

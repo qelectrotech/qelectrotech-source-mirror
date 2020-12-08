@@ -18,7 +18,7 @@
 #ifndef REPLACECONDUCTORDIALOG_H
 #define REPLACECONDUCTORDIALOG_H
 
-#include "conductorproperties.h"
+#include "../../conductorproperties.h"
 
 #include <QDialog>
 

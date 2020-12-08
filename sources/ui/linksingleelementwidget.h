@@ -18,10 +18,10 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include <QHash>
-
-#include "element.h"
+#include "../qetgraphicsitem/element.h"
 #include "abstractelementpropertieseditorwidget.h"
+
+#include <QHash>
 
 class QTreeWidgetItem;
 

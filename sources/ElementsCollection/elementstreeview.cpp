@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementstreeview.h"
+
+#include "../qetgraphicsitem/element.h"
 #include "elementcollectionitem.h"
-#include "elementslocation.h"
 #include "elementfactory.h"
+#include "elementslocation.h"
 #include "qeticons.h"
-#include "element.h"
 
 #include <QDrag>
 #include <QStandardItemModel>

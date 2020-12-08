@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
-#include "qetelementeditor.h"
+
+#include "diagram.h"
+#include "editor/qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"
-#include "qetproject.h"
-#include "diagram.h"
 #include "qeticons.h"
-#include "templatedeleter.h"
+#include "qetproject.h"
+#include "titleblock/templatedeleter.h"
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel

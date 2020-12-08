@@ -18,14 +18,14 @@
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
 
+#include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "qetmainwindow.h"
+
 #include <QActionGroup>
+#include <QDir>
 #include <QMdiArea>
 #include <QSignalMapper>
-#include <QDir>
 #include <QUndoGroup>
-
-#include "qetmainwindow.h"
-#include "searchandreplacewidget.h"
 
 class QMdiSubWindow;
 class QETProject;

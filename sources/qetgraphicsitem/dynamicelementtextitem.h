@@ -18,11 +18,12 @@
 #ifndef DYNAMICELEMENTTEXTITEM_H
 #define DYNAMICELEMENTTEXTITEM_H
 
+#include "../properties/xrefproperties.h"
 #include "diagramtextitem.h"
-#include "xrefproperties.h"
 #include "element.h"
-#include <QUuid>
+
 #include <QPointer>
+#include <QUuid>
 
 class Element;
 class Conductor;

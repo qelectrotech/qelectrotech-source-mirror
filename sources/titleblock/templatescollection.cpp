@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatescollection.h"
-#include "titleblocktemplate.h"
-#include "qetapp.h"
-#include "qetproject.h"
+
+#include "../qetapp.h"
+#include "../qetproject.h"
+#include "../titleblocktemplate.h"
 
 #include <QRegularExpression>
 

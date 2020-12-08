@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "autonumberingdockwidget.h"
-#include "qetapp.h"
+
+#include "../../diagram.h"
+#include "../../diagramview.h"
+#include "../../qetapp.h"
+#include "../../titleblockproperties.h"
+#include "../../ui/projectpropertiesdialog.h"
+#include "../numerotationcontext.h"
 #include "ui_autonumberingdockwidget.h"
-#include "diagramview.h"
-#include "diagram.h"
-#include "titleblockproperties.h"
-#include "numerotationcontext.h"
-#include "projectpropertiesdialog.h"
 
 /**
 	@brief AutoNumberingDockWidget::AutoNumberingDockWidget

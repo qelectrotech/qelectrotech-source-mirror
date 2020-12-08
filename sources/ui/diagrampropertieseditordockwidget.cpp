@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrampropertieseditordockwidget.h"
-#include "diagram.h"
-#include "PropertiesEditor/propertieseditorwidget.h"
-#include "propertieseditorfactory.h"
+
+#include "../PropertiesEditor/propertieseditorwidget.h"
+#include "../diagram.h"
+#include "../propertieseditorfactory.h"
 
 /**
 	@brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget

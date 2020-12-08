@@ -16,19 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpicturefactory.h"
-#include "elementslocation.h"
-#include "qet.h"
-#include "qetapp.h"
+
+#include "../ElementsCollection/elementslocation.h"
+#include "../qet.h"
+#include "../qetapp.h"
 #include "partline.h"
 
-#include <QDomElement>
-#include <QPainter>
-#include <QTextDocument>
-#include <QPicture>
-#include <iostream>
 #include <QAbstractTextDocumentLayout>
+#include <QDomElement>
 #include <QGraphicsSimpleTextItem>
+#include <QPainter>
+#include <QPicture>
 #include <QRegularExpression>
+#include <QTextDocument>
+#include <iostream>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 

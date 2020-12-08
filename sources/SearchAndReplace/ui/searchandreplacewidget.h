@@ -18,13 +18,13 @@
 #ifndef SEARCHANDREPLACEWIDGET_H
 #define SEARCHANDREPLACEWIDGET_H
 
-#include <QWidget>
-#include <QTreeWidgetItemIterator>
+#include "../../QWidgetAnimation/qwidgetanimation.h"
+#include "../../qetgraphicsitem/element.h"
+#include "../../qetgraphicsitem/independenttextitem.h"
+#include "../searchandreplaceworker.h"
 
-#include "element.h"
-#include "independenttextitem.h"
-#include "searchandreplaceworker.h"
-#include "QWidgetAnimation/qwidgetanimation.h"
+#include <QTreeWidgetItemIterator>
+#include <QWidget>
 
 class QTreeWidgetItem;
 class QETDiagramEditor;

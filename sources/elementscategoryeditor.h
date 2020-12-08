@@ -18,8 +18,9 @@
 #ifndef ELEMENTS_CATEGORY_EDITOR_H
 #define ELEMENTS_CATEGORY_EDITOR_H
 
+#include "ElementsCollection/elementslocation.h"
+
 #include <QDialog>
-#include "elementslocation.h"
 
 class NameListWidget;
 class QFileNameEdit;

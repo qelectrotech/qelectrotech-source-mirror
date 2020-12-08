@@ -18,14 +18,14 @@
 #ifndef QET_APP_H
 #define QET_APP_H
 
-#include <QTranslator>
-#include <QSystemTrayIcon>
-#include <QPalette>
-#include <QByteArray>
-
-#include "elementslocation.h"
-#include "templatelocation.h"
+#include "ElementsCollection/elementslocation.h"
 #include "qetarguments.h"
+#include "titleblock/templatelocation.h"
+
+#include <QByteArray>
+#include <QPalette>
+#include <QSystemTrayIcon>
+#include <QTranslator>
 
 class QSplashScreen;
 class QMenu;

@@ -16,16 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramcommands.h"
-#include "qetgraphicsitem/element.h"
+
+#include "diagram.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
-#include "diagram.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/diagramtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qgimanager.h"
-#include "diagram.h"
-#include "qetgraphicsitem/diagramtextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "elementtextitemgroup.h"
+
 #include <QPropertyAnimation>
 
 QString itemText(const QetGraphicsItem *item) {

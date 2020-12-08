@@ -16,13 +16,14 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscollectionmodel.h"
+
+#include "../qetapp.h"
+#include "../qetproject.h"
+#include "elementcollectionhandler.h"
 #include "elementcollectionitem.h"
 #include "fileelementcollectionitem.h"
-#include "xmlprojectelementcollectionitem.h"
-#include "qetapp.h"
 #include "xmlelementcollection.h"
-#include "qetproject.h"
-#include "elementcollectionhandler.h"
+#include "xmlprojectelementcollectionitem.h"
 
 #include <QFutureWatcher>
 #include <QtConcurrent>

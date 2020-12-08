@@ -17,11 +17,10 @@
 */
 #ifndef CUSTOM_ELEMENT_EDITOR_H
 #define CUSTOM_ELEMENT_EDITOR_H
-#include "qetmainwindow.h"
-#include "qet.h"
+#include "../ElementsCollection/elementslocation.h"
+#include "../qet.h"
+#include "../qetmainwindow.h"
 #include "elementscene.h"
-#include "elementslocation.h"
-
 
 class ElementItemEditor;
 class ElementView;

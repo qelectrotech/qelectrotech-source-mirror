@@ -16,17 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitemeditor.h"
-#include "ui_dynamicelementtextitemeditor.h"
-#include "dynamicelementtextitem.h"
-#include "element.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../dynamicelementtextitem.h"
+#include "../elementtextitemgroup.h"
+#include "../elementtextpattern.h"
+#include "../qetgraphicsitem/element.h"
+#include "../ui_dynamicelementtextitemeditor.h"
+#include "../undocommand/addelementtextcommand.h"
+#include "../undocommand/deleteqgraphicsitemcommand.h"
 #include "dynamicelementtextmodel.h"
-#include "diagram.h"
-#include "undocommand/deleteqgraphicsitemcommand.h"
-#include "undocommand/addelementtextcommand.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "elementtextitemgroup.h"
-#include "deleteqgraphicsitemcommand.h"
-#include "elementtextpattern.h"
 
 #include <QTreeView>
 #include <QUndoCommand>

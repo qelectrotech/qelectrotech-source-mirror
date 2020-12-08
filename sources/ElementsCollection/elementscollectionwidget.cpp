@@ -16,26 +16,27 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscollectionwidget.h"
-#include "elementscollectionmodel.h"
-#include "elementcollectionitem.h"
-#include "qeticons.h"
-#include "fileelementcollectionitem.h"
-#include "elementslocation.h"
-#include "qetapp.h"
-#include "qetmessagebox.h"
-#include "elementscategoryeditor.h"
-#include "newelementwizard.h"
-#include "xmlprojectelementcollectionitem.h"
-#include "qetproject.h"
-#include "qetelementeditor.h"
-#include "elementstreeview.h"
-#include "qetdiagrameditor.h"
 
-#include <QVBoxLayout>
-#include <QMenu>
+#include "../editor/qetelementeditor.h"
+#include "../elementscategoryeditor.h"
+#include "../newelementwizard.h"
+#include "../qetapp.h"
+#include "../qetdiagrameditor.h"
+#include "../qeticons.h"
+#include "../qetmessagebox.h"
+#include "../qetproject.h"
+#include "elementcollectionitem.h"
+#include "elementscollectionmodel.h"
+#include "elementslocation.h"
+#include "elementstreeview.h"
+#include "fileelementcollectionitem.h"
+#include "xmlprojectelementcollectionitem.h"
+
 #include <QDesktopServices>
-#include <QUrl>
+#include <QMenu>
 #include <QTimer>
+#include <QUrl>
+#include <QVBoxLayout>
 #include <QtGlobal>
 
 /**

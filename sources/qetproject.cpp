@@ -16,28 +16,28 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include "qetproject.h"
+
+#include "ElementsCollection/xmlelementcollection.h"
+#include "autoNum/assignvariables.h"
+#include "autoNum/numerotationcontext.h"
+#include "autoNum/numerotationcontextcommands.h"
 #include "diagram.h"
 #include "qetapp.h"
-#include "qetresult.h"
-#include "movetemplateshandler.h"
 #include "qetmessagebox.h"
+#include "qetresult.h"
+#include "titleblock/integrationmovetemplateshandler.h"
+#include "titleblock/movetemplateshandler.h"
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
-#include "numerotationcontext.h"
-#include "integrationmovetemplateshandler.h"
-#include "xmlelementcollection.h"
-#include "importelementdialog.h"
-#include "numerotationcontextcommands.h"
-#include "assignvariables.h"
+#include "ui/importelementdialog.h"
 
-#include <QTimer>
-#include <QStandardPaths>
-#include <utility>
-#include <QtConcurrent>
 #include <QHash>
+#include <QStandardPaths>
+#include <QTimer>
+#include <QtConcurrent>
 #include <QtDebug>
+#include <utility>
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 

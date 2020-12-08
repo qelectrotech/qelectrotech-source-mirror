@@ -16,16 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "searchandreplaceworker.h"
-#include "diagram.h"
-#include "changetitleblockcommand.h"
-#include "changeelementinformationcommand.h"
-#include "element.h"
-#include "qetapp.h"
-#include "independenttextitem.h"
-#include "diagramcommands.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetinformation.h"
 
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/independenttextitem.h"
+#include "../qetinformation.h"
+#include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/changetitleblockcommand.h"
 
 SearchAndReplaceWorker::SearchAndReplaceWorker()
 {

@@ -17,9 +17,10 @@
 */
 
 #include "diagrameventaddtext.h"
-#include "independenttextitem.h"
-#include "diagramcommands.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../independenttextitem.h"
 
 /**
 	@brief DiagramEventAddText::DiagramEventAddText

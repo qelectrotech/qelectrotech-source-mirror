@@ -16,15 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
-#include "element.h"
-#include "qetapp.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "terminal.h"
-#include "conductor.h"
-#include "elementtextitemgroup.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qetinformation.h"
 #include "crossrefitem.h"
-#include "qetinformation.h"
+#include "element.h"
+#include "elementtextitemgroup.h"
 
 #include <QDomDocument>
 #include <QDomElement>

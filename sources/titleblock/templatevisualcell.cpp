@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatevisualcell.h"
+
+#include "../diagramcontext.h"
 #include "titleblocktemplate.h"
-#include "diagramcontext.h"
 
 /**
 	Constructor

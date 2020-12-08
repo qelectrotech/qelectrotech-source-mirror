@@ -16,8 +16,9 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "borderpropertieswidget.h"
+
+#include "../diagram.h"
 #include "ui_borderpropertieswidget.h"
-#include "diagram.h"
 
 /**
 	@brief BorderPropertiesWidget::BorderPropertiesWidget

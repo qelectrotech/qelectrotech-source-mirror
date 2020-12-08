@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "imagepropertieswidget.h"
-#include "ui_imagepropertieswidget.h"
-#include "diagramimageitem.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../diagramimageitem.h"
+#include "../ui_imagepropertieswidget.h"
 
 /**
 	@brief ImagePropertiesWidget::ImagePropertiesWidget

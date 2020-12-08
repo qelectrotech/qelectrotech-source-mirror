@@ -18,9 +18,10 @@
 #ifndef SELECTAUTONUMW_H
 #define SELECTAUTONUMW_H
 
-#include <QWidget>
-#include "numerotationcontext.h"
+#include "../numerotationcontext.h"
 #include "formulaautonumberingw.h"
+
+#include <QWidget>
 
 class NumPartEditorW;
 class QAbstractButton;

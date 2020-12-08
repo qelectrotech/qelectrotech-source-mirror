@@ -17,13 +17,14 @@
 */
 #ifndef BORDERTITLEBLOCK_H
 #define BORDERTITLEBLOCK_H
+#include "autoNum/numerotationcontext.h"
+#include "borderproperties.h"
 #include "diagramcontext.h"
 #include "titleblockproperties.h"
-#include "borderproperties.h"
+
+#include <QDate>
 #include <QObject>
 #include <QRectF>
-#include <QDate>
-#include "numerotationcontext.h"
 class QPainter;
 class DiagramPosition;
 class TitleBlockTemplate;

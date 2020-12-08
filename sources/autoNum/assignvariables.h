@@ -17,13 +17,12 @@
 */
 #ifndef ASSIGNVARIABLES_H
 #define ASSIGNVARIABLES_H
-
-#include <QString>
-#include <QPointF>
-#include <QStringList>
-
+#include "../diagramcontext.h"
 #include "numerotationcontext.h"
-#include "diagramcontext.h"
+
+#include <QPointF>
+#include <QString>
+#include <QStringList>
 
 class Diagram;
 class Element;

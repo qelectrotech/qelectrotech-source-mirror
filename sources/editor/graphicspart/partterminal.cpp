@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partterminal.h"
-#include "terminal.h"
+
+#include "../qetgraphicsitem/terminal.h"
 
 /**
 	@brief PartTerminal::PartTerminal

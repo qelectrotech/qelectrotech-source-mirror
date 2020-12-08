@@ -18,8 +18,9 @@
 #ifndef IMPORTELEMENTDIALOG_H
 #define IMPORTELEMENTDIALOG_H
 
+#include "../qet.h"
+
 #include <QDialog>
-#include "qet.h"
 
 namespace Ui {
 	class ImportElementDialog;

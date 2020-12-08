@@ -23,12 +23,10 @@ class QPolygonF;
 class Terminal;
 class Conductor;
 
-#include "conductorproperties.h"
-#include "conductorproperties.h"
-#include "assignvariables.h"
+#include "../autoNum/assignvariables.h"
+#include "../conductorproperties.h"
 
 #include <QList>
-
 
 /**
 	@brief The ConductorCreator class

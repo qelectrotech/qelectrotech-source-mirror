@@ -16,21 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpropertieswidget.h"
-#include "element.h"
-#include "elementinfowidget.h"
-#include "masterpropertieswidget.h"
-#include "linksingleelementwidget.h"
-#include "diagram.h"
-#include "diagramposition.h"
-#include "qeticons.h"
-#include "dynamicelementtextitemeditor.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "qetapp.h"
 
-#include <QVBoxLayout>
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../dynamicelementtextitem.h"
+#include "../elementtextitemgroup.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qeticons.h"
+#include "dynamicelementtextitemeditor.h"
+#include "elementinfowidget.h"
+#include "linksingleelementwidget.h"
+#include "masterpropertieswidget.h"
+
 #include <QLabel>
 #include <QUndoStack>
+#include <QVBoxLayout>
 
 /**
 	@brief ElementPropertiesWidget::ElementPropertiesWidget

@@ -16,16 +16,17 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdatabase.h"
-#include "qetapp.h"
-#include "qetproject.h"
-#include "elementprovider.h"
-#include "element.h"
-#include "diagram.h"
-#include "diagramposition.h"
-#include "qetinformation.h"
 
-#include <QSqlError>
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../elementprovider.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetinformation.h"
+#include "../qetproject.h"
+
 #include <QLocale>
+#include <QSqlError>
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
 #include <QSqlDriver>

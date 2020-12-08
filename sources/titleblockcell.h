@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_CELL_H
 #define TITLEBLOCK_CELL_H
-#include "nameslist.h"
+#include "NameList/nameslist.h"
 
 /**
 	This class is a container for the various parameters of a titleblock cell

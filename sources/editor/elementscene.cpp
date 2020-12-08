@@ -16,28 +16,29 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscene.h"
-#include "qetelementeditor.h"
-#include "elementprimitivedecorator.h"
-#include <cmath>
-#include "partline.h"
-#include "partrectangle.h"
-#include "partellipse.h"
-#include "partpolygon.h"
-#include "partterminal.h"
-#include "parttext.h"
-#include "partarc.h"
+
+#include "../NameList/ui/namelistdialog.h"
+#include "../NameList/ui/namelistwidget.h"
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
-#include "ui/elementpropertieseditorwidget.h"
+#include "elementprimitivedecorator.h"
 #include "eseventinterface.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "partarc.h"
 #include "partdynamictextfield.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "namelistdialog.h"
-#include "namelistwidget.h"
+#include "partellipse.h"
+#include "partline.h"
+#include "partpolygon.h"
+#include "partrectangle.h"
+#include "partterminal.h"
+#include "parttext.h"
+#include "qetelementeditor.h"
+#include "ui/elementpropertieseditorwidget.h"
 
-#include <algorithm>
 #include <QKeyEvent>
+#include <algorithm>
+#include <cmath>
 
 /**
 	@brief ElementScene::ElementScene

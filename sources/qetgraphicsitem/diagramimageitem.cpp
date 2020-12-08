@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramimageitem.h"
-#include "diagram.h"
-#include "PropertiesEditor/propertieseditordialog.h"
+
+#include "../PropertiesEditor/propertieseditordialog.h"
+#include "../diagram.h"
 #include "imagepropertieswidget.h"
 
 /**

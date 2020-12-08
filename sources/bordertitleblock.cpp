@@ -15,18 +15,19 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QPainter>
-#include <utility>
-#include <QLocale>
-
-#include "titleblocktemplate.h"
-#include "titleblocktemplaterenderer.h"
 #include "bordertitleblock.h"
-#include "diagramposition.h"
-#include "qetapp.h"
-#include "math.h"
+
 #include "createdxf.h"
 #include "diagram.h"
+#include "diagramposition.h"
+#include "math.h"
+#include "qetapp.h"
+#include "titleblocktemplate.h"
+#include "titleblocktemplaterenderer.h"
+
+#include <QLocale>
+#include <QPainter>
+#include <utility>
 
 #define MIN_COLUMN_COUNT 3
 #define MIN_ROW_COUNT 3

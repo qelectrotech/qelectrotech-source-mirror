@@ -16,16 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "rotateselectioncommand.h"
-#include "element.h"
-#include "conductortextitem.h"
-#include "independenttextitem.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "diagramimageitem.h"
-#include "diagram.h"
-#include "conductor.h"
-#include "qet.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../conductortextitem.h"
+#include "../diagram.h"
+#include "../diagramimageitem.h"
+#include "../dynamicelementtextitem.h"
+#include "../elementtextitemgroup.h"
+#include "../independenttextitem.h"
+#include "../qet.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
 
 #include <QGraphicsItem>
 

@@ -17,9 +17,10 @@
 */
 
 #include "diagrameventaddimage.h"
-#include "diagram.h"
-#include "diagramimageitem.h"
-#include "diagramcommands.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../diagramimageitem.h"
 
 /**
 	@brief DiagramEventAddImage::DiagramEventAddImage
