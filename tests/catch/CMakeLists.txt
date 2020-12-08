@@ -54,9 +54,14 @@ add_executable(
     ${PROJECT_NAME}
     tst_My_test.cpp
     src/borderproperties_test.cpp
+    src/qet_test.cpp
     main.cpp
     ${QET_DIR}/sources/borderproperties.cpp
-    ${QET_DIR}/sources/borderproperties.h)
+    ${QET_DIR}/sources/borderproperties.h
+    ${QET_DIR}/sources/qet.cpp
+    ${QET_DIR}/sources/qet.h
+    ${QET_DIR}/sources/qeticons.cpp
+    ${QET_DIR}/sources/qeticons.h)
 
 target_link_libraries(
     ${PROJECT_NAME}
