@@ -17,9 +17,10 @@
 */
 
 #include "fileelementcollectionitem.h"
+
+#include "../qetapp.h"
+#include "../qeticons.h"
 #include "elementslocation.h"
-#include "qetapp.h"
-#include "qeticons.h"
 
 #include <QDir>
 

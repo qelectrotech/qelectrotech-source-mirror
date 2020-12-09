@@ -18,7 +18,7 @@
 #ifndef SHAPEGRAPHICSITEMPROPERTIESWIDGET_H
 #define SHAPEGRAPHICSITEMPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "../PropertiesEditor/propertieseditorwidget.h"
 
 namespace Ui {
 	class ShapeGraphicsItemPropertiesWidget;

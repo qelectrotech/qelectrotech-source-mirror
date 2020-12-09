@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "masterpropertieswidget.h"
+
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../elementprovider.h"
+#include "element.h"
+#include "linkelementcommand.h"
 #include "ui_masterpropertieswidget.h"
+
 #include <QListWidgetItem>
-#include <diagramposition.h>
-#include <elementprovider.h>
-#include <diagram.h>
-#include <element.h>
-#include <linkelementcommand.h>
 
 /**
 	@brief MasterPropertiesWidget::MasterPropertiesWidget

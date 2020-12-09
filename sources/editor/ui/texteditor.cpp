@@ -16,9 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "texteditor.h"
-#include "ui_texteditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "parttext.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "ui_texteditor.h"
+
 #include <cassert>
 
 /**

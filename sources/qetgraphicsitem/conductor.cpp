@@ -17,18 +17,18 @@
 */
 #include "../qetgraphicsitem/conductor.h"
 
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
+#include "../conductorautonumerotation.h"
+#include "../conductorsegment.h"
+#include "../conductorsegmentprofile.h"
 #include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/terminal.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "conductorautonumerotation.h"
 #include "conductorpropertiesdialog.h"
-#include "conductorsegment.h"
-#include "conductorsegmentprofile.h"
 #include "conductortextitem.h"
-#include "diagramcommands.h"
 #include "element.h"
-#include "qetdiagrameditor.h"
 
 #include <QMultiHash>
 #include <QtDebug>

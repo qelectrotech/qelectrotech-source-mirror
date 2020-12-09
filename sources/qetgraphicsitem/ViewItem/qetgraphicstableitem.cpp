@@ -18,11 +18,11 @@
 #include "qetgraphicstableitem.h"
 
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../createdxf.h"
 #include "../../diagram.h"
+#include "../../elementprovider.h"
 #include "../../qetxml.h"
 #include "../../utils/qetutils.h"
-#include "createdxf.h"
-#include "elementprovider.h"
 #include "projectdbmodel.h"
 #include "qetgraphicsheaderitem.h"
 

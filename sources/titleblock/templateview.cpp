@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templateview.h"
-#include "templatevisualcell.h"
+
+#include "../qeticons.h"
+#include "dimensionwidget.h"
 #include "gridlayoutanimation.h"
 #include "helpercell.h"
 #include "splittedhelpercell.h"
-#include "templatecommands.h"
 #include "templatecellsset.h"
-#include "dimensionwidget.h"
-#include "qeticons.h"
+#include "templatecommands.h"
+#include "templatevisualcell.h"
 #define ROW_OFFSET 2
 #define COL_OFFSET 1
 #define DEFAULT_PREVIEW_WIDTH 600

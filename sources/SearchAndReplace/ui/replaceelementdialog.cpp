@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "replaceelementdialog.h"
-#include "ui_replaceelementdialog.h"
-#include "replaceelementdialog.h"
+
+#include "../qetapp.h"
+#include "../qetinformation.h"
 #include "elementinfopartwidget.h"
-#include "qetapp.h"
+#include "replaceelementdialog.h"
 #include "searchandreplaceworker.h"
-#include "qetinformation.h"
+#include "ui_replaceelementdialog.h"
 
 #include <QAbstractButton>
 

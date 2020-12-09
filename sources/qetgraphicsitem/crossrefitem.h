@@ -18,11 +18,11 @@
 #ifndef CROSSREFITEM_H
 #define CROSSREFITEM_H
 
-#include <QGraphicsObject>
-#include <QPicture>
-#include <QMultiMap>
+#include "../properties/xrefproperties.h"
 
-#include"properties/xrefproperties.h"
+#include <QGraphicsObject>
+#include <QMultiMap>
+#include <QPicture>
 
 class Element;
 class DynamicElementTextItem;

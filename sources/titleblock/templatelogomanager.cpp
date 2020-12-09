@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatelogomanager.h"
-#include "titleblocktemplate.h"
-#include "qeticons.h"
+
+#include "../qeticons.h"
+#include "../titleblocktemplate.h"
 
 #include <QStandardPaths>
 

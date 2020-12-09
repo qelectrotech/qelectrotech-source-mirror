@@ -18,9 +18,9 @@
 #ifndef PROJECTPRINTWINDOW_H
 #define PROJECTPRINTWINDOW_H
 
-#include <QMainWindow>
+#include "../exportproperties.h"
 
-#include "exportproperties.h"
+#include <QMainWindow>
 #include <QPrinter>
 
 namespace Ui {

@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "integrationmovetemplateshandler.h"
+
+#include "../qetmessagebox.h"
 #include "templatescollection.h"
-#include "qetmessagebox.h"
 
 /**
 	Constructor

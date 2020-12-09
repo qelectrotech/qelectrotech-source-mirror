@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "polygoneditor.h"
-#include "ui_polygoneditor.h"
-#include "partpolygon.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qetmessagebox.h"
 #include "elementscene.h"
-#include "qetmessagebox.h"
+#include "partpolygon.h"
 #include "styleeditor.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "ui_polygoneditor.h"
 
 /**
 	@brief PolygonEditor::PolygonEditor

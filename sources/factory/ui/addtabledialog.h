@@ -18,9 +18,9 @@
 #ifndef ADDTABLEDIALOG_H
 #define ADDTABLEDIALOG_H
 
-#include <QDialog>
+#include "../qetapp.h"
 
-#include "qetapp.h"
+#include <QDialog>
 
 namespace Ui {
 class AddTableDialog;

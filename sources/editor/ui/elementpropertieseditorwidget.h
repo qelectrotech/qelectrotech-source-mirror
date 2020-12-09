@@ -18,9 +18,10 @@
 #ifndef ELEMENTPROPERTIESEDITORWIDGET_H
 #define ELEMENTPROPERTIESEDITORWIDGET_H
 
-#include <QDialog>
+#include "../diagramcontext.h"
+
 #include <QAbstractButton>
-#include "diagramcontext.h"
+#include <QDialog>
 
 namespace Ui {
 	class ElementPropertiesEditorWidget;

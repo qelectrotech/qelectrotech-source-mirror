@@ -18,10 +18,10 @@
 #ifndef QETGRAPHICSHEADERITEM_H
 #define QETGRAPHICSHEADERITEM_H
 
-#include "qetapp.h"
+#include "../qetapp.h"
 
-#include <QGraphicsObject>
 #include <QFont>
+#include <QGraphicsObject>
 #include <QMargins>
 
 class QAbstractItemModel;

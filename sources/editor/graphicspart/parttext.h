@@ -17,9 +17,10 @@
 */
 #ifndef PART_TEXT_H
 #define PART_TEXT_H
-#include <QtWidgets>
+#include "../qetapp.h"
 #include "customelementpart.h"
-#include "qetapp.h"
+
+#include <QtWidgets>
 
 class TextEditor;
 class ElementPrimitiveDecorator;

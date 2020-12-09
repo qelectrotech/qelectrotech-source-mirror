@@ -41,10 +41,14 @@ project(qelectrotech
   HOMEPAGE_URL "https://qelectrotech.org/"
   LANGUAGES CXX)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
+
 SET(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
 
@@ -57,8 +61,37 @@ message("PROJECT_SOURCE_DIR: " ${PROJECT_SOURCE_DIR})
 message("QET_DIR:            " ${QET_DIR})
 message("GIT_COMMIT_SHA:     " ${GIT_COMMIT_SHA})
 
-find_package(KF5WidgetsAddons)
+
+Include(FetchContent)
+
 find_package(KF5CoreAddons)
+#---ToDo why you don't work :/
+#FetchContent_Declare(
+#  kcoreaddons
+#  GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
+#  GIT_TAG        v5.76.0)
+#FetchContent_MakeAvailable(kcoreaddons)
+#___ToDo
+
+#find_package(KF5WidgetsAddons)
+FetchContent_Declare(
+  kwidgetsaddons
+  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+  GIT_TAG        v5.76.0)
+
+FetchContent_MakeAvailable(kwidgetsaddons)
+
+
+
+set(QET_COMPONENTS
+  Widgets
+  Concurrent
+  Xml
+  Svg
+  Network
+  Sql
+  PrintSupport
+  LinguistTools)
 
 find_package(
   QT
@@ -66,28 +99,51 @@ find_package(
   Qt6
   Qt5
  COMPONENTS
-  Widgets
-  Concurrent
-  Xml
-  Svg
-  Network
-  Sql
-  PrintSupport
+  ${QET_COMPONENTS}
  REQUIRED
  )
 
 find_package(
   Qt${QT_VERSION_MAJOR}
  COMPONENTS
-  Widgets
-  Concurrent
-  Xml
-  Svg
-  Network
-  Sql
-  PrintSupport
- REQUIRED
- )
+ ${QET_COMPONENTS}
+ REQUIRED)
+
+qt5_create_translation(
+  QM_FILES
+  ${QET_DIR}/lang/qet_ca.ts
+  ${QET_DIR}/lang/qet_de.ts
+  ${QET_DIR}/lang/qet_es.ts
+  ${QET_DIR}/lang/qet_fr.ts
+  ${QET_DIR}/lang/qet_it.ts
+  ${QET_DIR}/lang/qet_mn.ts
+  ${QET_DIR}/lang/qet_pt_br.ts
+  ${QET_DIR}/lang/qet_ru.ts
+  ${QET_DIR}/lang/qet_sr.ts
+  ${QET_DIR}/lang/qet_zh.ts
+  ${QET_DIR}/lang/qet_be.ts
+  ${QET_DIR}/lang/qet_da.ts
+  ${QET_DIR}/lang/qet_en.ts
+  ${QET_DIR}/lang/qet_fi.ts
+  ${QET_DIR}/lang/qet_hu.ts
+  ${QET_DIR}/lang/qet_nl.ts
+  ${QET_DIR}/lang/qet_pl.ts
+  ${QET_DIR}/lang/qet_ro.ts
+  ${QET_DIR}/lang/qet_sk.ts
+  ${QET_DIR}/lang/qet_ar.ts
+  ${QET_DIR}/lang/qet_cs.ts
+  ${QET_DIR}/lang/qet_el.ts
+  ${QET_DIR}/lang/qet_hr.ts
+  ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_nb.ts
+  ${QET_DIR}/lang/qet_no.ts
+  ${QET_DIR}/lang/qet_pt.ts
+  ${QET_DIR}/lang/qet_sl.ts
+  ${QET_DIR}/lang/qet_tr.ts)
+
+
+message("QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
+
 set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
@@ -598,63 +654,77 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/qetutils.h
   )
-if(DEFINED ENV{ok_simon})
-add_executable(
-  ${PROJECT_NAME}
-  ${QET_SRC_FILES}
-  )
-target_link_libraries(
-  ${PROJECT_NAME}
-  PUBLIC
-   Qt${QT_VERSION_MAJOR}::Xml
-   Qt${QT_VERSION_MAJOR}::Svg
-   Qt${QT_VERSION_MAJOR}::Network
-   Qt${QT_VERSION_MAJOR}::Sql
-   Qt${QT_VERSION_MAJOR}::PrintSupport
-   KF5::WidgetsAddons
-   KF5::CoreAddons
-  PRIVATE
-   Qt${QT_VERSION_MAJOR}::Widgets
-   Qt${QT_VERSION_MAJOR}::Concurrent)
 
- target_include_directories(
-   ${PROJECT_NAME}
-   PRIVATE
-   ${PROJECT_SOURCE_DIR}/sources/titleblock
-   ${PROJECT_SOURCE_DIR}/sources/ui
-   ${PROJECT_SOURCE_DIR}/sources/qetgraphicsitem
-   ${PROJECT_SOURCE_DIR}/sources/qetgraphicsitem/ViewItem
-   ${PROJECT_SOURCE_DIR}/sources/qetgraphicsitem/ViewItem/ui
-   ${PROJECT_SOURCE_DIR}/sources/richtext
-   ${PROJECT_SOURCE_DIR}/sources/factory
-   ${PROJECT_SOURCE_DIR}/sources/properties
-   ${PROJECT_SOURCE_DIR}/sources/dvevent
-   ${PROJECT_SOURCE_DIR}/sources/editor
-   ${PROJECT_SOURCE_DIR}/sources/editor/esevent
-   ${PROJECT_SOURCE_DIR}/sources/editor/graphicspart
-   ${PROJECT_SOURCE_DIR}/sources/editor/ui
-   ${PROJECT_SOURCE_DIR}/sources/editor/UndoCommand
-   ${PROJECT_SOURCE_DIR}/sources/undocommand
-   ${PROJECT_SOURCE_DIR}/sources/diagramevent
-   ${PROJECT_SOURCE_DIR}/sources/ElementsCollection
-   ${PROJECT_SOURCE_DIR}/sources/ElementsCollection/ui
-   ${PROJECT_SOURCE_DIR}/sources/autoNum
-   ${PROJECT_SOURCE_DIR}/sources/autoNum/ui
-   ${PROJECT_SOURCE_DIR}/sources/ui/configpage
-   ${PROJECT_SOURCE_DIR}/sources/SearchAndReplace
-   ${PROJECT_SOURCE_DIR}/sources/SearchAndReplace/ui
-   ${PROJECT_SOURCE_DIR}/sources/NameList
-   ${PROJECT_SOURCE_DIR}/sources/NameList/ui
-   ${PROJECT_SOURCE_DIR}/sources/utils
-   ${PROJECT_SOURCE_DIR}/sources/pugixml
-   ${PROJECT_SOURCE_DIR}/sources/dataBase
-   ${PROJECT_SOURCE_DIR}/sources/dataBase/ui
-   ${PROJECT_SOURCE_DIR}/sources/factory/ui
-   ${PROJECT_SOURCE_DIR}/sources/print
-   )
- else()
-   message("ok_simon is not set, assuming QET WILL_FAIL to COMPILE")
-endif()
+#add_executable(
+#  ${PROJECT_NAME}
+#  ${QET_SRC_FILES}
+#  ${QM_FILES}
+#  )
+
+#target_link_libraries(
+#  ${PROJECT_NAME}
+#  PUBLIC
+#  PRIVATE
+#  Qt${QT_VERSION_MAJOR}::Xml
+#  Qt${QT_VERSION_MAJOR}::Svg
+#  Qt${QT_VERSION_MAJOR}::Network
+#  Qt${QT_VERSION_MAJOR}::Sql
+#  Qt${QT_VERSION_MAJOR}::PrintSupport
+#  Qt${QT_VERSION_MAJOR}::Widgets
+#  Qt${QT_VERSION_MAJOR}::Concurrent
+#  KF5::WidgetsAddons
+#  KF5::CoreAddons)
+
+#target_link_libraries(
+#    ${PROJECT_NAME}
+#    PUBLIC
+#    PRIVATE
+#    KF5::WidgetsAddons
+#    KF5::CoreAddons
+#    Qt5::Gui
+#    Qt5::Xml
+#    Qt5::Svg
+#    Qt5::Network
+#    Qt5::Sql
+#    Qt5::Widgets
+#    Qt5::Concurrent)
+
+# target_include_directories(
+#   ${PROJECT_NAME}
+#   PRIVATE
+#   ${QET_DIR}/sources/titleblock
+#   ${QET_DIR}/sources/ui
+#   ${QET_DIR}/sources/qetgraphicsitem
+#   ${QET_DIR}/sources/qetgraphicsitem/ViewItem
+#   ${QET_DIR}/sources/qetgraphicsitem/ViewItem/ui
+#   ${QET_DIR}/sources/richtext
+#   ${QET_DIR}/sources/factory
+#   ${QET_DIR}/sources/properties
+#   ${QET_DIR}/sources/dvevent
+#   ${QET_DIR}/sources/editor
+#   ${QET_DIR}/sources/editor/esevent
+#   ${QET_DIR}/sources/editor/graphicspart
+#   ${QET_DIR}/sources/editor/ui
+#   ${QET_DIR}/sources/editor/UndoCommand
+#   ${QET_DIR}/sources/undocommand
+#   ${QET_DIR}/sources/diagramevent
+#   ${QET_DIR}/sources/ElementsCollection
+#   ${QET_DIR}/sources/ElementsCollection/ui
+#   ${QET_DIR}/sources/autoNum
+#   ${QET_DIR}/sources/autoNum/ui
+#   ${QET_DIR}/sources/ui/configpage
+#   ${QET_DIR}/sources/SearchAndReplace
+#   ${QET_DIR}/sources/SearchAndReplace/ui
+#   ${QET_DIR}/sources/NameList
+#   ${QET_DIR}/sources/NameList/ui
+#   ${QET_DIR}/sources/utils
+#   ${QET_DIR}/sources/pugixml
+#   ${QET_DIR}/sources/dataBase
+#   ${QET_DIR}/sources/dataBase/ui
+#   ${QET_DIR}/sources/factory/ui
+#   ${QET_DIR}/sources/print
+#   )
+
 
 
 # Add sub directories

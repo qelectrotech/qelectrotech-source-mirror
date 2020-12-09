@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partellipse.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "elementscene.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 /**
 	@brief PartEllipse::PartEllipse

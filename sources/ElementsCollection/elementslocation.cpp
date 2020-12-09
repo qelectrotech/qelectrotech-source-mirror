@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementslocation.h"
-#include "qetapp.h"
-#include "xmlelementcollection.h"
-#include "qetproject.h"
-#include "elementscollectioncache.h"
-#include "elementpicturefactory.h"
+
+#include "../elementscollectioncache.h"
+#include "../qetapp.h"
+#include "../qetproject.h"
+#include "../qetxml.h"
 #include "element.h"
-#include "qetxml.h"
+#include "elementpicturefactory.h"
+#include "xmlelementcollection.h"
+
 #include <QPicture>
 
 // make this class usable with QVariant

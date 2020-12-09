@@ -17,11 +17,11 @@
 */
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
+#include "../qgimanager.h"
 #include "customelementpart.h"
-#include "elementview.h"
-#include "elementscene.h"
 #include "elementcontent.h"
-#include "qgimanager.h"
+#include "elementscene.h"
+#include "elementview.h"
 
 /**
 	@brief The ElementEditionCommand class

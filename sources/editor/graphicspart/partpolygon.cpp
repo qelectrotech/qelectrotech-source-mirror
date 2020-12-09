@@ -16,13 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partpolygon.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "elementscene.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "qetelementeditor.h"
-#include "qeticons.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+#include "../qeticons.h"
+#include "elementscene.h"
+#include "qetelementeditor.h"
 
 /**
 	@brief PartPolygon::PartPolygon

@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "summaryquerywidget.h"
+
+#include "../qetapp.h"
+#include "../qetinformation.h"
 #include "ui_summaryquerywidget.h"
-#include "qetapp.h"
-#include "qetinformation.h"
 
 #include <QListWidgetItem>
 

@@ -18,8 +18,9 @@
 #ifndef RENAMEDIALOG_H
 #define RENAMEDIALOG_H
 
+#include "../qet.h"
+
 #include <QDialog>
-#include "qet.h"
 
 namespace Ui {
     class RenameDialog;

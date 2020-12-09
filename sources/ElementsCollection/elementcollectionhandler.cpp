@@ -16,12 +16,14 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementcollectionhandler.h"
+
+#include "../qetproject.h"
+#include "../qetxml.h"
 #include "renamedialog.h"
 #include "xmlelementcollection.h"
-#include "qetproject.h"
-#include "qetxml.h"
-#include <QFile>
+
 #include <QDir>
+#include <QFile>
 
 /******************************************************/
 

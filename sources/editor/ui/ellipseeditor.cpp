@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ellipseeditor.h"
-#include "ui_ellipseeditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "elementscene.h"
 #include "partellipse.h"
 #include "styleeditor.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "elementscene.h"
+#include "ui_ellipseeditor.h"
 
 /**
  * @brief EllipseEditor::EllipseEditor

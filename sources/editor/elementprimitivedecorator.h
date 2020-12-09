@@ -18,8 +18,9 @@
 #ifndef ELEMENTPRIMITIVEDECORATOR_H
 #define ELEMENTPRIMITIVEDECORATOR_H
 
+#include "../qet.h"
+
 #include <QGraphicsObject>
-#include "qet.h"
 
 class ElementEditionCommand;
 class ElementScene;

@@ -18,9 +18,10 @@
 #ifndef GRAPHICSTABLEPROPERTIESEDITOR_H
 #define GRAPHICSTABLEPROPERTIESEDITOR_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
-#include <QPointer>
+#include "../PropertiesEditor/propertieseditorwidget.h"
+
 #include <QButtonGroup>
+#include <QPointer>
 
 namespace Ui {
 class GraphicsTablePropertiesEditor;

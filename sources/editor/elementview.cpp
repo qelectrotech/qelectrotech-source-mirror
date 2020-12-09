@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementview.h"
-#include "qetelementeditor.h"
-#include "qetapp.h"
+
+#include "../qetapp.h"
 #include "pastepartscommand.h"
+#include "qetelementeditor.h"
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView

@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partdynamictextfield.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetapp.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qetapp.h"
 #include "elementscene.h"
 
-#include <QGraphicsSceneMouseEvent>
-#include <QFont>
 #include <QColor>
+#include <QFont>
+#include <QGraphicsSceneMouseEvent>
 
 PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),

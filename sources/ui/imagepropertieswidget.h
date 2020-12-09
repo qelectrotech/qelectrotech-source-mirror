@@ -18,7 +18,7 @@
 #ifndef IMAGEPROPERTIESWIDGET_H
 #define IMAGEPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "../PropertiesEditor/propertieseditorwidget.h"
 
 class DiagramImageItem;
 

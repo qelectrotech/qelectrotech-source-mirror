@@ -18,8 +18,8 @@
 #include "conductortextitem.h"
 
 #include "../diagram.h"
+#include "../diagramcommands.h"
 #include "../qetgraphicsitem/conductor.h"
-#include "diagramcommands.h"
 
 /**
 	Constructeur

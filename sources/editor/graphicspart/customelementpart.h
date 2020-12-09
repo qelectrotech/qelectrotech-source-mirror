@@ -18,7 +18,7 @@
 #ifndef CUSTOM_ELEMENT_PART_H
 #define CUSTOM_ELEMENT_PART_H
 
-#include "qet.h"
+#include "../qet.h"
 
 class CustomElement;
 class ElementPrimitiveDecorator;

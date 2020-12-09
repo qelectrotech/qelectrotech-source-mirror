@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QMultiMap>
-
 #include "templatecellsset.h"
-#include "templatevisualcell.h"
+
+#include "../titleblockcell.h"
 #include "templateview.h"
-#include "titleblockcell.h"
+#include "templatevisualcell.h"
+
+#include <QMultiMap>
 
 /**
 	Constructor

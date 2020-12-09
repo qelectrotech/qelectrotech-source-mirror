@@ -18,7 +18,7 @@
 #ifndef PROJECTDBMODELPROPERTIESWIDGET_H
 #define PROJECTDBMODELPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "../PropertiesEditor/propertieseditorwidget.h"
 
 class ProjectDBModel;
 

@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "lineeditor.h"
-#include "ui_lineeditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qeticons.h"
 #include "elementitemeditor.h"
-#include "styleeditor.h"
-#include "partline.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementscene.h"
-#include "qeticons.h"
+#include "partline.h"
+#include "styleeditor.h"
+#include "ui_lineeditor.h"
 
 /**
 	@brief LineEditor::LineEditor

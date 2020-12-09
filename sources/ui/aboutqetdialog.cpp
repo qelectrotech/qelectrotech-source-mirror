@@ -16,10 +16,12 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "aboutqetdialog.h"
+
+#include "../machine_info.h"
+#include "../qet.h"
+#include "../qetapp.h"
 #include "ui_aboutqetdialog.h"
-#include "qet.h"
-#include "qetapp.h"
-#include "machine_info.h"
+
 #include <QDate>
 
 /**

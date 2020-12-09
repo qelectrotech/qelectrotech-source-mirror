@@ -17,8 +17,9 @@
 */
 #ifndef TITLEBLOCK_SLASH_HELPER_CELL_H
 #define TITLEBLOCK_SLASH_HELPER_CELL_H
+#include "../qet.h"
+
 #include <QtWidgets>
-#include "qet.h"
 
 /**
 	This class implements a helper widget for cells that indicate the length of

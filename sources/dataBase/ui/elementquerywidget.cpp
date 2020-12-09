@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementquerywidget.h"
+
+#include "../qetapp.h"
+#include "../qetinformation.h"
 #include "ui_elementquerywidget.h"
-#include "qetapp.h"
-#include "qetinformation.h"
 
 #include <QRegularExpression>
 

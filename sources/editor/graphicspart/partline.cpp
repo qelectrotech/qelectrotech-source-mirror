@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partline.h"
-#include <cmath>
-#include "elementscene.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "elementscene.h"
+
+#include <cmath>
 
 /**
 	@brief PartLine::PartLine

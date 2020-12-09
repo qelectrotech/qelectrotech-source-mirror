@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "arceditor.h"
-#include "styleeditor.h"
-#include "partarc.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementscene.h"
+#include "partarc.h"
+#include "styleeditor.h"
 
 /**
 	Constructeur

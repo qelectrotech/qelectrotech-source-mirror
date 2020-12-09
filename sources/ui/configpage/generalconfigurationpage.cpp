@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
-#include "ui_generalconfigurationpage.h"
-#include "qeticons.h"
-#include "qetapp.h"
 
-#include <QSettings>
-#include <QFontDialog>
+#include "../qetapp.h"
+#include "../qeticons.h"
+#include "ui_generalconfigurationpage.h"
+
 #include <QFileDialog>
+#include <QFontDialog>
+#include <QSettings>
 
 /**
 	@brief GeneralConfigurationPage::GeneralConfigurationPage

@@ -18,8 +18,9 @@
 #ifndef GENERALCONFIGURATIONPAGE_H
 #define GENERALCONFIGURATIONPAGE_H
 
+#include "../configpage.h"
+
 #include <QWidget>
-#include "configpage.h"
 
 namespace Ui {
 	class GeneralConfigurationPage;

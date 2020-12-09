@@ -16,18 +16,19 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetelementeditor.h"
-#include "qet.h"
-#include "qetapp.h"
+
+#include "../elementdialog.h"
+#include "../newelementwizard.h"
+#include "../qet.h"
+#include "../qetapp.h"
+#include "../qeticons.h"
+#include "../qetmessagebox.h"
+#include "../recentfiles.h"
+#include "customelementpart.h"
+#include "editorcommands.h"
+#include "elementitemeditor.h"
 #include "elementscene.h"
 #include "elementview.h"
-#include "customelementpart.h"
-#include "newelementwizard.h"
-#include "elementitemeditor.h"
-#include "elementdialog.h"
-#include "recentfiles.h"
-#include "qeticons.h"
-#include "qetmessagebox.h"
-#include "editorcommands.h"
 
 // editeurs de primitives
 #include "arceditor.h"

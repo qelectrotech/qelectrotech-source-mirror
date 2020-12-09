@@ -16,20 +16,21 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamictextfieldeditor.h"
-#include "ui_dynamictextfieldeditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qetapp.h"
+#include "../qetinformation.h"
+#include "alignmenttextdialog.h"
+#include "compositetexteditdialog.h"
 #include "customelementpart.h"
 #include "partdynamictextfield.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "qetelementeditor.h"
-#include "qetapp.h"
-#include "compositetexteditdialog.h"
-#include "alignmenttextdialog.h"
-#include "qetinformation.h"
-#include <assert.h>
+#include "ui_dynamictextfieldeditor.h"
 
-#include <QPointer>
-#include <QGraphicsItem>
 #include <QColorDialog>
+#include <QGraphicsItem>
+#include <QPointer>
+#include <assert.h>
 
 DynamicTextFieldEditor::DynamicTextFieldEditor(
 	QETElementEditor *editor, PartDynamicTextField *text_field, QWidget *parent) :

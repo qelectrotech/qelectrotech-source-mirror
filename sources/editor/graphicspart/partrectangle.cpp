@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partrectangle.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "elementscene.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 /**
 	@brief PartRectangle::PartRectangle

@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "parttext.h"
-#include "texteditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qetapp.h"
 #include "elementprimitivedecorator.h"
 #include "elementscene.h"
-#include "qetapp.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "texteditor.h"
 
 /**
 	Constructeur

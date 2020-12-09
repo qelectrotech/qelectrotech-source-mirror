@@ -18,7 +18,7 @@
 #include "templatevisualcell.h"
 
 #include "../diagramcontext.h"
-#include "titleblocktemplate.h"
+#include "../titleblocktemplate.h"
 
 /**
 	Constructor

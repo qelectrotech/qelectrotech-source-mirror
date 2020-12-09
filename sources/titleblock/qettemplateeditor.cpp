@@ -16,16 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qettemplateeditor.h"
-#include "qetmessagebox.h"
-#include "qeticons.h"
-#include "qetapp.h"
-#include "qetproject.h"
+
+#include "../qetapp.h"
+#include "../qeticons.h"
+#include "../qetmessagebox.h"
+#include "../qetproject.h"
 #include "templatecellwidget.h"
 #include "templatecommands.h"
-#include "templateview.h"
 #include "templatelocationsaver.h"
 #include "templatelogomanager.h"
-#include "templatecellwidget.h"
+#include "templateview.h"
 
 /**
 	@param parent parent QWidget of this window

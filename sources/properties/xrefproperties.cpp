@@ -15,11 +15,12 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QMetaEnum>
-#include <QHash>
-
 #include "xrefproperties.h"
-#include "qetapp.h"
+
+#include "../qetapp.h"
+
+#include <QHash>
+#include <QMetaEnum>
 
 /**
 	@brief XRefProperties::XRefProperties

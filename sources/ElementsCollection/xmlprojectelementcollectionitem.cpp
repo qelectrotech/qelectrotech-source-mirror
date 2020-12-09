@@ -15,10 +15,11 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "qetproject.h"
-#include "xmlelementcollection.h"
-#include "qeticons.h"
 #include "xmlprojectelementcollectionitem.h"
+
+#include "../qeticons.h"
+#include "../qetproject.h"
+#include "xmlelementcollection.h"
 
 /**
 	@brief XmlProjectElementCollectionItem::XmlProjectElementCollectionItem

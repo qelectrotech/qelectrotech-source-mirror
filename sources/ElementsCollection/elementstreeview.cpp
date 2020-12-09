@@ -18,10 +18,10 @@
 #include "elementstreeview.h"
 
 #include "../qetgraphicsitem/element.h"
+#include "../qeticons.h"
 #include "elementcollectionitem.h"
 #include "elementfactory.h"
 #include "elementslocation.h"
-#include "qeticons.h"
 
 #include <QDrag>
 #include <QStandardItemModel>

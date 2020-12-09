@@ -16,7 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dveventinterface.h"
-#include "diagramview.h"
+
+#include "../diagramview.h"
+
 #include <QMouseEvent>
 
 DVEventInterface::DVEventInterface(DiagramView *dv) :

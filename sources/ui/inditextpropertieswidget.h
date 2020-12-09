@@ -18,7 +18,8 @@
 #ifndef INDITEXTPROPERTIESWIDGET_H
 #define INDITEXTPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "../PropertiesEditor/propertieseditorwidget.h"
+
 #include <QPointer>
 class IndependentTextItem;
 

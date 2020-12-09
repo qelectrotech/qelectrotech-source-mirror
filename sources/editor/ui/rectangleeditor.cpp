@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "rectangleeditor.h"
-#include "ui_rectangleeditor.h"
-#include "styleeditor.h"
-#include "partrectangle.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qeticons.h"
 #include "elementscene.h"
-#include "qeticons.h"
+#include "partrectangle.h"
+#include "styleeditor.h"
+#include "ui_rectangleeditor.h"
 
 /**
 	@brief RectangleEditor::RectangleEditor

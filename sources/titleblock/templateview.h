@@ -17,8 +17,9 @@
 */
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_VIEW_H
 #define TITLEBLOCK_SLASH_TEMPLATE_VIEW_H
+#include "../titleblocktemplate.h"
+
 #include <QGraphicsView>
-#include "titleblocktemplate.h"
 class HelperCell;
 class SplittedHelperCell;
 class TitleBlockTemplateCommand;

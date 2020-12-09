@@ -18,10 +18,10 @@
 #include "rotatetextscommand.h"
 
 #include "../diagram.h"
+#include "../diagramcontent.h"
 #include "../qetapp.h"
 #include "../qtextorientationspinboxwidget.h"
 #include "conductortextitem.h"
-#include "diagramcontent.h"
 #include "diagramtextitem.h"
 #include "elementtextitemgroup.h"
 

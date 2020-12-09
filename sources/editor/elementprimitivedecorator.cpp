@@ -16,15 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementprimitivedecorator.h"
-#include "elementscene.h"
+
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../qet.h"
 #include "customelementpart.h"
 #include "editorcommands.h"
-#include "qet.h"
-#include <QPainter>
-#include <QGraphicsSceneHoverEvent>
-#include <QStyleOptionGraphicsItem>
+#include "elementscene.h"
+
 #include <QGraphicsScene>
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <QGraphicsSceneHoverEvent>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
 
 /**
 	Constructor

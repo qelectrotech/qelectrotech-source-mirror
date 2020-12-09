@@ -16,14 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminaleditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qeticons.h"
 #include "partterminal.h"
-#include "qeticons.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include <QDoubleSpinBox>
+
 #include <QComboBox>
-#include <QVBoxLayout>
+#include <QDoubleSpinBox>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QVBoxLayout>
 
 /**
 	@brief TerminalEditor::TerminalEditor

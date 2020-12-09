@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "styleeditor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qeticons.h"
 #include "customelementgraphicpart.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qeticons.h"
-#include <QComboBox>
+
 #include <QCheckBox>
-#include <QVBoxLayout>
+#include <QComboBox>
 #include <QLabel>
+#include <QVBoxLayout>
 
 /**
 	Constructeur

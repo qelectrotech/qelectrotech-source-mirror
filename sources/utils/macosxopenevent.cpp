@@ -16,7 +16,9 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "macosxopenevent.h"
-#include "singleapplication.h"
+
+#include "SingleApplication/singleapplication.h"
+
 #include <QFileOpenEvent>
 
 /**
