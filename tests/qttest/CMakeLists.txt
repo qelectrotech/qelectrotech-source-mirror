@@ -20,6 +20,11 @@ message("_____________________________________________________________________")
 
 project(qt_unittests LANGUAGES CXX)
 
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+SET(CMAKE_CXX_STANDARD 17)
+
 if(DEFINED ENV{QET_DIR})
   set(QET_DIR "../..")
   message("QET_DIR is not set, assuming QET is ../..")

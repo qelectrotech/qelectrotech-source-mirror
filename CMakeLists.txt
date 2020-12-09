@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 message(
   "_____________________________________________________________________"
@@ -40,6 +40,11 @@ project(qelectrotech
   DESCRIPTION "QET is a CAD/CAE editor focusing on schematics drawing features."
   HOMEPAGE_URL "https://qelectrotech.org/"
   LANGUAGES CXX)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+SET(CMAKE_CXX_STANDARD 17)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
 
