@@ -16,7 +16,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-message("_____________________________________________________________________")
+message("..___________________________________________________________________")
 
 project(C_unittests LANGUAGES CXX)
 
@@ -29,8 +29,14 @@ set(CMAKE_AUTOUIC ON)
 SET(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(DEFINED ENV{QET_DIR})
+message(".. PROJECT_NAME       :" ${PROJECT_NAME})
+message(".. PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
+if(NOT DEFINED QET_DIR)
   set(QET_DIR "../..")
+  message(".. QET_DIR is not set, assuming QET is ../..")
+endif()
+message(".. QET_DIR            :" ${QET_DIR})
+if(NOT DEFINED QET_COMPONENTS)
   set(QET_COMPONENTS
     Widgets
     Concurrent
@@ -40,22 +46,20 @@ if(DEFINED ENV{QET_DIR})
     Sql
     PrintSupport
     LinguistTools)
-  message("QET_DIR is not set, assuming QET is ../..")
+  message(".. QET_COMPONENTS is not set !!! I set them up !!!")
 endif()
-
-message("PROJECT_NAME:       " ${PROJECT_NAME})
-message("PROJECT_SOURCE_DIR: " ${PROJECT_SOURCE_DIR})
-message("QET_DIR:            " ${QET_DIR})
-
-find_package(
-  QT
- NAMES
-  Qt6
-  Qt5
- COMPONENTS
-  ${QET_COMPONENTS}
- REQUIRED
- )
+if(NOT DEFINED QT_VERSION_MAJOR)
+  find_package(
+    QT
+   NAMES
+    Qt6
+    Qt5
+   COMPONENTS
+    ${QET_COMPONENTS}
+   REQUIRED
+   )
+endif()
+message(".. QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
 find_package(
   Qt${QT_VERSION_MAJOR}
@@ -72,19 +76,24 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
+if(NOT DEFINED KF5_GIT_TAG)
+  set(KF5_GIT_TAG v5.76.0)
+  message(".. KF5_GIT_TAG        :" ${KF5_GIT_TAG})
+endif()
+
 find_package(KF5CoreAddons REQUIRED)
 #---ToDo why you don't work :/
 #FetchContent_Declare(
 #  kcoreaddons
 #  GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-#  GIT_TAG        v5.76.0)
+#  GIT_TAG        ${KF5_GIT_TAG})
 #FetchContent_MakeAvailable(kcoreaddons)
 #___ToDo
 
 FetchContent_Declare(
   kwidgetsaddons
   GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-  GIT_TAG        v5.76.0)
+  GIT_TAG        ${KF5_GIT_TAG})
 
 FetchContent_MakeAvailable(kwidgetsaddons)
 
@@ -104,13 +113,13 @@ target_link_libraries(
     PRIVATE
     KF5::WidgetsAddons
     KF5::CoreAddons
-    Qt5::Gui
-    Qt5::Xml
-    Qt5::Svg
-    Qt5::Sql
-    Qt5::Network
-    Qt5::Widgets
-    Qt5::Concurrent)
+    Qt::Gui
+    Qt::Xml
+    Qt::Svg
+    Qt::Sql
+    Qt::Network
+    Qt::Widgets
+    Qt::Concurrent)
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})
     set(CATCH_INCLUDE_DIR $ENV{CATCH_INCLUDE_DIR})
@@ -118,7 +127,7 @@ else ()
     set(CATCH_INCLUDE_DIR "") # set by Qt Creator wizard
 endif ()
 if (CATCH_INCLUDE_DIR STREQUAL "")
-    message("CATCH_INCLUDE_DIR is not set,"
+    message(".. CATCH_INCLUDE_DIR is not set,"
       "assuming Catch2 can be found automatically in your system")
 elseif (EXISTS ${CATCH_INCLUDE_DIR})
     include_directories(${CATCH_INCLUDE_DIR})

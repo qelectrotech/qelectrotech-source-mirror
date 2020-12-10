@@ -16,15 +16,18 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-message("_____________________________________________________________________")
+message(".____________________________________________________________________")
 project(unittests LANGUAGES CXX)
 
-message("PROJECT_NAME:       " ${PROJECT_NAME})
-message("PROJECT_SOURCE_DIR: " ${PROJECT_SOURCE_DIR})
-message("QET_DIR:            " ${QET_DIR})
+message(". PROJECT_NAME:       " ${PROJECT_NAME})
+message(". PROJECT_SOURCE_DIR: " ${PROJECT_SOURCE_DIR})
 
 # Add sub directories
-add_subdirectory(qttest)
+message(". Add sub directorie catch")
 add_subdirectory(catch)
+message(". Add sub directorie googletest")
 add_subdirectory(googletest)
+message(". Add sub directorie googlemock")
 add_subdirectory(googlemock)
+message(". Add sub directorie qttest")
+add_subdirectory(qttest)

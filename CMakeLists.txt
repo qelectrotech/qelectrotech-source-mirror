@@ -52,36 +52,37 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
 
+set(TODO_LIST)
 execute_process(
   COMMAND git -C ${QET_DIR} rev-parse --verify HEAD
   OUTPUT_VARIABLE  GIT_COMMIT_SHA)
 
-message("PROJECT_NAME:       " ${PROJECT_NAME})
-message("PROJECT_SOURCE_DIR: " ${PROJECT_SOURCE_DIR})
-message("QET_DIR:            " ${QET_DIR})
-message("GIT_COMMIT_SHA:     " ${GIT_COMMIT_SHA})
-
+message("PROJECT_NAME       :" ${PROJECT_NAME})
+message("PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
+message("QET_DIR            :" ${QET_DIR})
+message("GIT_COMMIT_SHA     :" ${GIT_COMMIT_SHA})
 
 Include(FetchContent)
+set(KF5_GIT_TAG v5.76.0)
+message("KF5_GIT_TAG        :" ${KF5_GIT_TAG})
 
 find_package(KF5CoreAddons)
 #---ToDo why you don't work :/
 #FetchContent_Declare(
 #  kcoreaddons
 #  GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-#  GIT_TAG        v5.76.0)
+#  GIT_TAG        ${KF5_GIT_TAG})
 #FetchContent_MakeAvailable(kcoreaddons)
 #___ToDo
 
-#find_package(KF5WidgetsAddons)
-FetchContent_Declare(
-  kwidgetsaddons
-  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-  GIT_TAG        v5.76.0)
 
-FetchContent_MakeAvailable(kwidgetsaddons)
+find_package(KF5WidgetsAddons)
+#FetchContent_Declare(
+#  kwidgetsaddons
+#  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+#  GIT_TAG        ${KF5_GIT_TAG})
 
-
+#FetchContent_MakeAvailable(kwidgetsaddons)
 
 set(QET_COMPONENTS
   Widgets
@@ -93,6 +94,8 @@ set(QET_COMPONENTS
   PrintSupport
   LinguistTools)
 
+message("QET_COMPONENTS     :" ${QET_COMPONENTS})
+
 find_package(
   QT
  NAMES
@@ -102,6 +105,7 @@ find_package(
   ${QET_COMPONENTS}
  REQUIRED
  )
+message("QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
 find_package(
   Qt${QT_VERSION_MAJOR}
@@ -111,6 +115,7 @@ find_package(
 
 qt5_create_translation(
   QM_FILES
+  ${CMAKE_SOURCE_DIR}
   ${QET_DIR}/lang/qet_ca.ts
   ${QET_DIR}/lang/qet_de.ts
   ${QET_DIR}/lang/qet_es.ts
@@ -140,9 +145,6 @@ qt5_create_translation(
   ${QET_DIR}/lang/qet_pt.ts
   ${QET_DIR}/lang/qet_sl.ts
   ${QET_DIR}/lang/qet_tr.ts)
-
-
-message("QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
 set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp
@@ -655,25 +657,25 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetutils.h
   )
 
-#add_executable(
-#  ${PROJECT_NAME}
-#  ${QET_SRC_FILES}
-#  ${QM_FILES}
-#  )
+add_executable(
+  ${PROJECT_NAME}
+  ${QET_SRC_FILES}
+  ${QM_FILES}
+  )
 
-#target_link_libraries(
-#  ${PROJECT_NAME}
-#  PUBLIC
-#  PRIVATE
-#  Qt${QT_VERSION_MAJOR}::Xml
-#  Qt${QT_VERSION_MAJOR}::Svg
-#  Qt${QT_VERSION_MAJOR}::Network
-#  Qt${QT_VERSION_MAJOR}::Sql
-#  Qt${QT_VERSION_MAJOR}::PrintSupport
-#  Qt${QT_VERSION_MAJOR}::Widgets
-#  Qt${QT_VERSION_MAJOR}::Concurrent
-#  KF5::WidgetsAddons
-#  KF5::CoreAddons)
+target_link_libraries(
+  ${PROJECT_NAME}
+  PUBLIC
+  PRIVATE
+  Qt${QT_VERSION_MAJOR}::Xml
+  Qt${QT_VERSION_MAJOR}::Svg
+  Qt${QT_VERSION_MAJOR}::Network
+  Qt${QT_VERSION_MAJOR}::Sql
+  Qt${QT_VERSION_MAJOR}::PrintSupport
+  Qt${QT_VERSION_MAJOR}::Widgets
+  Qt${QT_VERSION_MAJOR}::Concurrent
+  KF5::WidgetsAddons
+  KF5::CoreAddons)
 
 #target_link_libraries(
 #    ${PROJECT_NAME}
@@ -728,4 +730,5 @@ set(QET_SRC_FILES
 
 
 # Add sub directories
+message("Add sub directorie tests")
 add_subdirectory(tests)

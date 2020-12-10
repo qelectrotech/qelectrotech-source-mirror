@@ -16,7 +16,7 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-message("_____________________________________________________________________")
+message("..___________________________________________________________________")
 
 project(qt_unittests LANGUAGES CXX)
 
@@ -29,8 +29,14 @@ set(CMAKE_AUTOUIC ON)
 SET(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(DEFINED ENV{QET_DIR})
+message(".. PROJECT_NAME       :" ${PROJECT_NAME})
+message(".. PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
+if(NOT DEFINED QET_DIR)
   set(QET_DIR "../..")
+  message(".. QET_DIR is not set, assuming QET is ../..")
+endif()
+message(".. QET_DIR            :" ${QET_DIR})
+if(NOT DEFINED QET_COMPONENTS)
   set(QET_COMPONENTS
     Widgets
     Concurrent
@@ -40,46 +46,54 @@ if(DEFINED ENV{QET_DIR})
     Sql
     PrintSupport
     LinguistTools)
-  message("QET_DIR is not set, assuming QET is ../..")
+  message(".. QET_COMPONENTS is not set !!! I set them up !!!")
 endif()
-
-message("PROJECT_NAME:       " ${PROJECT_NAME})
-message("PROJECT_SOURCE_DIR: " ${PROJECT_SOURCE_DIR})
-message("QET_DIR:            " ${QET_DIR})
-
-find_package(Qt5Test REQUIRED)
-find_package(
-  QT
- NAMES
-  Qt6
-  Qt5
- COMPONENTS
-  ${QET_COMPONENTS}
- REQUIRED
- )
+if(NOT DEFINED QT_VERSION_MAJOR)
+  find_package(
+    QT
+   NAMES
+    Qt6
+    Qt5
+   COMPONENTS
+    ${QET_COMPONENTS}
+    Test
+   REQUIRED
+   )
+endif()
+message(".. QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
 find_package(
   Qt${QT_VERSION_MAJOR}
  COMPONENTS
  ${QET_COMPONENTS}
+ Test
  REQUIRED)
 
 Include(FetchContent)
 
+if(NOT DEFINED KF5_GIT_TAG)
+  set(KF5_GIT_TAG v5.76.0)
+  message(".. KF5_GIT_TAG        :" ${KF5_GIT_TAG})
+endif()
+
 find_package(KF5CoreAddons REQUIRED)
 #---ToDo why you don't work :/
+message(".. FetchContent_Declare kcoreaddons")
 #FetchContent_Declare(
 #  kcoreaddons
 #  GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-#  GIT_TAG        v5.76.0)
+#  GIT_TAG        ${KF5_GIT_TAG})
+#message(".. FetchContent_MakeAvailable kcoreaddons")
+#FetchContent_MakeAvailable(kcoreaddons)
 #___ToDo
 
+message(".. FetchContent_Declare kwidgetsaddons")
 FetchContent_Declare(
   kwidgetsaddons
   GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-  GIT_TAG        v5.76.0)
+  GIT_TAG        ${KF5_GIT_TAG})
 
-#FetchContent_MakeAvailable(kcoreaddons)
+message(".. FetchContent_MakeAvailable kwidgetsaddons")
 FetchContent_MakeAvailable(kwidgetsaddons)
 
 enable_testing()
@@ -90,14 +104,14 @@ add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 target_link_libraries(
   ${PROJECT_NAME}
   PRIVATE
-  Qt5::Test
+  Qt::Test
   KF5::CoreAddons
   KF5::WidgetsAddons
-  Qt5::Gui
-  Qt5::Xml
-  Qt5::Svg
-  Qt5::Sql
-  Qt5::Network
-  Qt5::Widgets
-  Qt5::Concurrent)
+  Qt::Gui
+  Qt::Xml
+  Qt::Svg
+  Qt::Sql
+  Qt::Network
+  Qt::Widgets
+  Qt::Concurrent)
 
