@@ -56,7 +56,7 @@ set(TODO_LIST)
 execute_process(
   COMMAND git -C ${QET_DIR} rev-parse --verify HEAD
   OUTPUT_VARIABLE  GIT_COMMIT_SHA)
-
+add_definitions(-DGIT_COMMIT_SHA -D${GIT_COMMIT_SHA})
 message("PROJECT_NAME       :" ${PROJECT_NAME})
 message("PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
 message("QET_DIR            :" ${QET_DIR})
