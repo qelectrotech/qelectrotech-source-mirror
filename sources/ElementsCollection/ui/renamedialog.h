@@ -18,7 +18,7 @@
 #ifndef RENAMEDIALOG_H
 #define RENAMEDIALOG_H
 
-#include "../qet.h"
+#include "../../qet.h"
 
 #include <QDialog>
 

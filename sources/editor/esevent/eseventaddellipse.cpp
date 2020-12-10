@@ -15,12 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QObject>
-
 #include "eseventaddellipse.h"
-#include "partellipse.h"
-#include "editorcommands.h"
-#include "elementscene.h"
+
+#include "../editorcommands.h"
+#include "../elementscene.h"
+#include "../graphicspart/partellipse.h"
+
+#include <QObject>
 
 /**
 	@brief ESEventAddEllipse::ESEventAddEllipse

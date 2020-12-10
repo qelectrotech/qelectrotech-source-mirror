@@ -18,7 +18,7 @@
 #ifndef REPLACEADVANCEDDIALOG_H
 #define REPLACEADVANCEDDIALOG_H
 
-#include "searchandreplaceworker.h"
+#include "../searchandreplaceworker.h"
 
 #include <QDialog>
 

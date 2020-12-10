@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "eseventinterface.h"
-#include "elementscene.h"
-#include "qetelementeditor.h"
+
+#include "../elementscene.h"
+#include "../qetelementeditor.h"
+
 #include <QGraphicsSceneMouseEvent>
 
 ESEventInterface::ESEventInterface(ElementScene *scene) :

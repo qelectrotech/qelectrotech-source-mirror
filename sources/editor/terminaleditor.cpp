@@ -18,8 +18,8 @@
 #include "terminaleditor.h"
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../editor/graphicspart/partterminal.h"
 #include "../qeticons.h"
-#include "partterminal.h"
 
 #include <QComboBox>
 #include <QDoubleSpinBox>

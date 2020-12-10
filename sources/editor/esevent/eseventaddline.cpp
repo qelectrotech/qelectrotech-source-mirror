@@ -15,14 +15,15 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "eseventaddline.h"
+
+#include "../editorcommands.h"
+#include "../elementscene.h"
+#include "../graphicspart/partline.h"
+#include "../qetelementeditor.h"
+
 #include <QGraphicsSceneMouseEvent>
 #include <QObject>
-
-#include "eseventaddline.h"
-#include "elementscene.h"
-#include "qetelementeditor.h"
-#include "partline.h"
-#include "editorcommands.h"
 
 /**
 	@brief ESEventAddLine::ESEventAddLine

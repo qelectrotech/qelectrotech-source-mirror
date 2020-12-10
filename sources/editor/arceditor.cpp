@@ -19,7 +19,7 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementscene.h"
-#include "partarc.h"
+#include "graphicspart/partarc.h"
 #include "styleeditor.h"
 
 /**

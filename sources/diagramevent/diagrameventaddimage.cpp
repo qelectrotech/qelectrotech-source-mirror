@@ -20,7 +20,7 @@
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
-#include "../diagramimageitem.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
 
 /**
 	@brief DiagramEventAddImage::DiagramEventAddImage

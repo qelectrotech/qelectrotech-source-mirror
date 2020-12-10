@@ -17,7 +17,7 @@
 */
 #ifndef PART_TEXT_H
 #define PART_TEXT_H
-#include "../qetapp.h"
+#include "../../qetapp.h"
 #include "customelementpart.h"
 
 #include <QtWidgets>

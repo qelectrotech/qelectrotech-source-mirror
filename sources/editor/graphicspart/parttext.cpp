@@ -17,11 +17,11 @@
 */
 #include "parttext.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../qetapp.h"
-#include "elementprimitivedecorator.h"
-#include "elementscene.h"
-#include "texteditor.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qetapp.h"
+#include "../elementprimitivedecorator.h"
+#include "../elementscene.h"
+#include "../ui/texteditor.h"
 
 /**
 	Constructeur

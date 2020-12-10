@@ -17,8 +17,8 @@
 */
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
+#include "../editor/graphicspart/customelementpart.h"
 #include "../qgimanager.h"
-#include "customelementpart.h"
 #include "elementcontent.h"
 #include "elementscene.h"
 #include "elementview.h"

@@ -17,9 +17,9 @@
 */
 #include "partdynamictextfield.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../qetapp.h"
-#include "elementscene.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qetapp.h"
+#include "../elementscene.h"
 
 #include <QColor>
 #include <QFont>

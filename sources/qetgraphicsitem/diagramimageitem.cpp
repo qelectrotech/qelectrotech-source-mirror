@@ -19,7 +19,7 @@
 
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../diagram.h"
-#include "imagepropertieswidget.h"
+#include "../ui/imagepropertieswidget.h"
 
 /**
 	@brief DiagramImageItem::DiagramImageItem

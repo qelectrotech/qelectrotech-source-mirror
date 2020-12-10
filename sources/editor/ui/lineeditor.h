@@ -18,7 +18,7 @@
 #ifndef LINEEDITOR_H
 #define LINEEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
 namespace Ui {
     class LineEditor;

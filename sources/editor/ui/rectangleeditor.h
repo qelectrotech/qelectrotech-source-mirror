@@ -18,7 +18,8 @@
 #ifndef RECTANGLEEDITOR_H
 #define RECTANGLEEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
+
 #include <QWidget>
 
 class StyleEditor;

@@ -18,7 +18,7 @@
 #ifndef PART_LINE_H
 #define PART_LINE_H
 
-#include "../qet.h"
+#include "../../qet.h"
 #include "customelementgraphicpart.h"
 
 class QPropertyUndoCommand;

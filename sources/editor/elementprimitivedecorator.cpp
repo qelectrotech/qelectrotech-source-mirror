@@ -18,8 +18,8 @@
 #include "elementprimitivedecorator.h"
 
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../editor/graphicspart/customelementpart.h"
 #include "../qet.h"
-#include "customelementpart.h"
 #include "editorcommands.h"
 #include "elementscene.h"
 

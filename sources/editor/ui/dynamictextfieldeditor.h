@@ -18,8 +18,8 @@
 #ifndef DYNAMICTEXTFIELDEDITOR_H
 #define DYNAMICTEXTFIELDEDITOR_H
 
-#include "elementitemeditor.h"
-#include "partdynamictextfield.h"
+#include "../elementitemeditor.h"
+#include "../graphicspart/partdynamictextfield.h"
 
 namespace Ui {
 	class DynamicTextFieldEditor;

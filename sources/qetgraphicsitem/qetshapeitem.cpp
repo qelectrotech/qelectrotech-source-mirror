@@ -26,7 +26,7 @@
 #include "../qet.h"
 #include "../qeticons.h"
 #include "../qetxml.h"
-#include "../shapegraphicsitempropertieswidget.h"
+#include "../ui/shapegraphicsitempropertieswidget.h"
 
 /**
 	@brief QetShapeItem::QetShapeItem

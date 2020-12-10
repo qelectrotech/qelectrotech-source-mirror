@@ -27,7 +27,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
-#include "qettemplateeditor.h"
+#include "titleblock/qettemplateeditor.h"
 #include "ui/borderpropertieswidget.h"
 #include "ui/conductorpropertieswidget.h"
 #include "ui/dialogwaiting.h"

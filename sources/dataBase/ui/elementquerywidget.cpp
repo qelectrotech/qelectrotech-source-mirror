@@ -17,8 +17,8 @@
 */
 #include "elementquerywidget.h"
 
-#include "../qetapp.h"
-#include "../qetinformation.h"
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_elementquerywidget.h"
 
 #include <QRegularExpression>

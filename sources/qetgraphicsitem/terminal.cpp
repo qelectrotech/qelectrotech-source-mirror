@@ -20,10 +20,10 @@
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../properties/terminaldata.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
-#include "terminaldata.h"
 
 #include <utility>
 

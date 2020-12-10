@@ -17,6 +17,7 @@
 */
 #include "qetelementeditor.h"
 
+#include "../editor/graphicspart/customelementpart.h"
 #include "../elementdialog.h"
 #include "../newelementwizard.h"
 #include "../qet.h"
@@ -24,7 +25,6 @@
 #include "../qeticons.h"
 #include "../qetmessagebox.h"
 #include "../recentfiles.h"
-#include "customelementpart.h"
 #include "editorcommands.h"
 #include "elementitemeditor.h"
 #include "elementscene.h"

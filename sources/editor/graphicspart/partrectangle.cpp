@@ -17,10 +17,10 @@
 */
 #include "partrectangle.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
-#include "elementscene.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
+#include "../elementscene.h"
 
 /**
 	@brief PartRectangle::PartRectangle

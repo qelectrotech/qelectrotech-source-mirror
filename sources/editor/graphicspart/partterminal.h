@@ -18,10 +18,10 @@
 #ifndef PART_TERMINAL_H
 #define PART_TERMINAL_H
 
+#include "../../properties/terminaldata.h"
 #include "customelementgraphicpart.h"
-#include "QUuid"
-#include "terminaldata.h"
 
+#include <QUuid>
 
 /**
 	This class represents a terminal which may be used to compose the drawing of

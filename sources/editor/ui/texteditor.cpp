@@ -17,8 +17,8 @@
 */
 #include "texteditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "parttext.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../graphicspart/parttext.h"
 #include "ui_texteditor.h"
 
 #include <cassert>

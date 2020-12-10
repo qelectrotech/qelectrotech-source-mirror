@@ -18,8 +18,8 @@
 #ifndef AUTONUMBERINGDOCKWIDGET_H
 #define AUTONUMBERINGDOCKWIDGET_H
 
-#include "../projectview.h"
-#include "../qetproject.h"
+#include "../../projectview.h"
+#include "../../qetproject.h"
 
 #include <QDockWidget>
 

@@ -17,11 +17,11 @@
 */
 #include "polygoneditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../qetmessagebox.h"
-#include "elementscene.h"
-#include "partpolygon.h"
-#include "styleeditor.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qetmessagebox.h"
+#include "../elementscene.h"
+#include "../graphicspart/partpolygon.h"
+#include "../styleeditor.h"
 #include "ui_polygoneditor.h"
 
 /**

@@ -18,10 +18,10 @@
 #ifndef TEXTEDITOR_H
 #define TEXTEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
-#include <QWidget>
 #include <QPointer>
+#include <QWidget>
 
 class PartText;
 

@@ -17,9 +17,9 @@
 */
 #include "lineeditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../qeticons.h"
-#include "elementitemeditor.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qeticons.h"
+#include "../elementitemeditor.h"
 #include "elementscene.h"
 #include "partline.h"
 #include "styleeditor.h"

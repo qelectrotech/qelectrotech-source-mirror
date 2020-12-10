@@ -17,10 +17,10 @@
 */
 #include "ellipseeditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "elementscene.h"
-#include "partellipse.h"
-#include "styleeditor.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../elementscene.h"
+#include "../graphicspart/partellipse.h"
+#include "../styleeditor.h"
 #include "ui_ellipseeditor.h"
 
 /**

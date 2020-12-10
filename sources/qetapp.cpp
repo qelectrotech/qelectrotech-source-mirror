@@ -17,24 +17,24 @@
 */
 #include "qetapp.h"
 
-#include "aboutqetdialog.h"
 #include "configdialog.h"
 #include "configpages.h"
 #include "editor/qetelementeditor.h"
 #include "elementscollectioncache.h"
 #include "factory/elementfactory.h"
 #include "factory/elementpicturefactory.h"
-#include "generalconfigurationpage.h"
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
-#include "qettemplateeditor.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
+#include "titleblock/qettemplateeditor.h"
 #include "titleblock/templatescollection.h"
 #include "titleblocktemplate.h"
+#include "ui/aboutqetdialog.h"
+#include "ui/configpage/generalconfigurationpage.h"
 
 #include <cstdlib>
 #include <iostream>

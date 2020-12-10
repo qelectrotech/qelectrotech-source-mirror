@@ -15,12 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QObject>
-
-#include "elementscene.h"
-#include "partarc.h"
-#include "editorcommands.h"
 #include "eseventaddarc.h"
+
+#include "../editorcommands.h"
+#include "../elementscene.h"
+#include "../graphicspart/partarc.h"
+
+#include <QObject>
 
 /**
 	@brief ESEventAddArc::ESEventAddArc

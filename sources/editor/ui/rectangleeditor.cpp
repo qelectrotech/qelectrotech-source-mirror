@@ -17,11 +17,11 @@
 */
 #include "rectangleeditor.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../qeticons.h"
-#include "elementscene.h"
-#include "partrectangle.h"
-#include "styleeditor.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qeticons.h"
+#include "../elementscene.h"
+#include "../graphicspart/partrectangle.h"
+#include "../styleeditor.h"
 #include "ui_rectangleeditor.h"
 
 /**

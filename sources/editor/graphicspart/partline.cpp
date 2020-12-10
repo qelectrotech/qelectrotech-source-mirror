@@ -17,9 +17,9 @@
 */
 #include "partline.h"
 
-#include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "elementscene.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../elementscene.h"
 
 #include <cmath>
 

@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "eseventadddynamictextfield.h"
-#include "elementscene.h"
-#include "editorcommands.h"
-#include "partdynamictextfield.h"
+
+#include "../editorcommands.h"
+#include "../elementscene.h"
+#include "../graphicspart/partdynamictextfield.h"
 
 #include <QUndoStack>
 

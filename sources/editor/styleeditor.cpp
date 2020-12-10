@@ -18,8 +18,8 @@
 #include "styleeditor.h"
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../editor/graphicspart/customelementgraphicpart.h"
 #include "../qeticons.h"
-#include "customelementgraphicpart.h"
 
 #include <QCheckBox>
 #include <QComboBox>

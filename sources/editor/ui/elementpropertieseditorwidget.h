@@ -18,7 +18,7 @@
 #ifndef ELEMENTPROPERTIESEDITORWIDGET_H
 #define ELEMENTPROPERTIESEDITORWIDGET_H
 
-#include "../diagramcontext.h"
+#include "../../diagramcontext.h"
 
 #include <QAbstractButton>
 #include <QDialog>

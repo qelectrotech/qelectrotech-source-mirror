@@ -17,7 +17,7 @@
 */
 #include "partterminal.h"
 
-#include "../qetgraphicsitem/terminal.h"
+#include "../../qetgraphicsitem/terminal.h"
 
 /**
 	@brief PartTerminal::PartTerminal

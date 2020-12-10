@@ -18,7 +18,7 @@
 #ifndef ELLIPSEEDITOR_H
 #define ELLIPSEEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
 namespace Ui {
 	class EllipseEditor;

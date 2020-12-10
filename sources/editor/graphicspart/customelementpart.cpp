@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "customelementpart.h"
-#include "qetelementeditor.h"
+
+#include "../qetelementeditor.h"
 
 /// @return le QETElementEditor auquel cet editeur appartient
 QETElementEditor *CustomElementPart::elementEditor() const

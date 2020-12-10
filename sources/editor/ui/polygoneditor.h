@@ -18,7 +18,7 @@
 #ifndef POLYGONEDITOR_H
 #define POLYGONEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
 class StyleEditor;
 class PartPolygon;
