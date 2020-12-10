@@ -20,6 +20,8 @@
 
 #include "eseventinterface.h"
 
+#include <QPointF>
+
 class ElementScene;
 class PartArc;
 class QGraphicsSceneMouseEvent;
