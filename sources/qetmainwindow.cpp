@@ -62,7 +62,11 @@ void QETMainWindow::initCommonActions()
 	{
 		qet_app->configureQET();
 #if TODO_LIST
-#pragma message("@TODO we use reloadOldElementPanel only to keep up to date the string of the folio in the old element panel. then, if user change the option "Use labels of folio instead of their ID" the string of folio in the old element panel is up to date")
+#	pragma message("@TODO we use reloadOldElementPanel only to keep up to ")
+#	pragma message("datethe string of the folio in the old element panel.")
+#	pragma message("then,if user change the option")
+#	pragma message(" 'Use labels of folio instead of their ID' the string")
+#	pragma message(" of folio in the old element panel is up to date")
 #endif
 			//TODO we use reloadOldElementPanel only to keep up to date the string of the folio in the old element panel.
 			//then, if user change the option "Use labels of folio instead of their ID" the string of folio in the old element panel is up to date

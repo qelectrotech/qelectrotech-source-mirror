@@ -52,9 +52,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
 
+# You can make your code warn on compile time for the TODO's
+# In order to do so, uncomment the following line.
+#add_definitions(-DTODO_LIST)
 
-
-add_definitions(-DTODO_LIST)
+# From De-Backer ik ben nog aan het testen.
+#set(BUILD_QET_YES "yes")
 
 execute_process(
   COMMAND git -C ${QET_DIR} rev-parse --verify HEAD
@@ -64,7 +67,7 @@ execute_process(
 string(REGEX REPLACE "\n$" "" GIT_COMMIT_SHA "${GIT_COMMIT_SHA}")
 
 # This adds to definitions => .cpp
-add_definitions(-DGIT_COMMIT_SHA=${GIT_COMMIT_SHA})
+add_definitions(-DGIT_COMMIT_SHA="${GIT_COMMIT_SHA}")
 
 message("PROJECT_NAME       :" ${PROJECT_NAME})
 message("PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
@@ -85,13 +88,13 @@ find_package(KF5CoreAddons)
 #___ToDo
 
 
-#find_package(KF5WidgetsAddons)
-FetchContent_Declare(
-  kwidgetsaddons
-  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-  GIT_TAG        ${KF5_GIT_TAG})
+find_package(KF5WidgetsAddons)
+#FetchContent_Declare(
+#  kwidgetsaddons
+#  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+#  GIT_TAG        ${KF5_GIT_TAG})
 
-FetchContent_MakeAvailable(kwidgetsaddons)
+#FetchContent_MakeAvailable(kwidgetsaddons)
 
 set(QET_COMPONENTS
   Widgets
@@ -105,55 +108,55 @@ set(QET_COMPONENTS
 
 message("QET_COMPONENTS     :" ${QET_COMPONENTS})
 
-#find_package(
-#  QT
-# NAMES
-#  Qt6
-#  Qt5
-# COMPONENTS
-#  ${QET_COMPONENTS}
-# REQUIRED
-# )
-#message("QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
+find_package(
+  QT
+ NAMES
+  Qt6
+  Qt5
+ COMPONENTS
+  ${QET_COMPONENTS}
+ REQUIRED
+ )
+message("QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
-#find_package(
-#  Qt${QT_VERSION_MAJOR}
-# COMPONENTS
-# ${QET_COMPONENTS}
-# REQUIRED)
+find_package(
+  Qt${QT_VERSION_MAJOR}
+ COMPONENTS
+ ${QET_COMPONENTS}
+ REQUIRED)
 
-#qt5_create_translation(
-#  QM_FILES
-#  ${CMAKE_SOURCE_DIR}
-#  ${QET_DIR}/lang/qet_ca.ts
-#  ${QET_DIR}/lang/qet_de.ts
-#  ${QET_DIR}/lang/qet_es.ts
-#  ${QET_DIR}/lang/qet_fr.ts
-#  ${QET_DIR}/lang/qet_it.ts
-#  ${QET_DIR}/lang/qet_mn.ts
-#  ${QET_DIR}/lang/qet_pt_br.ts
-#  ${QET_DIR}/lang/qet_ru.ts
-#  ${QET_DIR}/lang/qet_sr.ts
-#  ${QET_DIR}/lang/qet_zh.ts
-#  ${QET_DIR}/lang/qet_be.ts
-#  ${QET_DIR}/lang/qet_da.ts
-#  ${QET_DIR}/lang/qet_en.ts
-#  ${QET_DIR}/lang/qet_fi.ts
-#  ${QET_DIR}/lang/qet_hu.ts
-#  ${QET_DIR}/lang/qet_nl.ts
-#  ${QET_DIR}/lang/qet_pl.ts
-#  ${QET_DIR}/lang/qet_ro.ts
-#  ${QET_DIR}/lang/qet_sk.ts
-#  ${QET_DIR}/lang/qet_ar.ts
-#  ${QET_DIR}/lang/qet_cs.ts
-#  ${QET_DIR}/lang/qet_el.ts
-#  ${QET_DIR}/lang/qet_hr.ts
-#  ${QET_DIR}/lang/qet_ja.ts
-#  ${QET_DIR}/lang/qet_nb.ts
-#  ${QET_DIR}/lang/qet_no.ts
-#  ${QET_DIR}/lang/qet_pt.ts
-#  ${QET_DIR}/lang/qet_sl.ts
-#  ${QET_DIR}/lang/qet_tr.ts)
+qt5_create_translation(
+  QM_FILES
+  ${CMAKE_SOURCE_DIR}
+  ${QET_DIR}/lang/qet_ca.ts
+  ${QET_DIR}/lang/qet_de.ts
+  ${QET_DIR}/lang/qet_es.ts
+  ${QET_DIR}/lang/qet_fr.ts
+  ${QET_DIR}/lang/qet_it.ts
+  ${QET_DIR}/lang/qet_mn.ts
+  ${QET_DIR}/lang/qet_pt_br.ts
+  ${QET_DIR}/lang/qet_ru.ts
+  ${QET_DIR}/lang/qet_sr.ts
+  ${QET_DIR}/lang/qet_zh.ts
+  ${QET_DIR}/lang/qet_be.ts
+  ${QET_DIR}/lang/qet_da.ts
+  ${QET_DIR}/lang/qet_en.ts
+  ${QET_DIR}/lang/qet_fi.ts
+  ${QET_DIR}/lang/qet_hu.ts
+  ${QET_DIR}/lang/qet_nl.ts
+  ${QET_DIR}/lang/qet_pl.ts
+  ${QET_DIR}/lang/qet_ro.ts
+  ${QET_DIR}/lang/qet_sk.ts
+  ${QET_DIR}/lang/qet_ar.ts
+  ${QET_DIR}/lang/qet_cs.ts
+  ${QET_DIR}/lang/qet_el.ts
+  ${QET_DIR}/lang/qet_hr.ts
+  ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_nb.ts
+  ${QET_DIR}/lang/qet_no.ts
+  ${QET_DIR}/lang/qet_pt.ts
+  ${QET_DIR}/lang/qet_sl.ts
+  ${QET_DIR}/lang/qet_tr.ts)
 
 set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp
@@ -666,40 +669,44 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetutils.h
   )
 
-#add_executable(
-#  ${PROJECT_NAME}
-#  ${QET_SRC_FILES}
-#  ${QM_FILES}
-#  )
+if(DEFINED BUILD_QET_YES)
+  message("!!  TESTING TESTING TESTING TESTING TESTING  !!")
+add_executable(
+  ${PROJECT_NAME}
+  ${QET_SRC_FILES}
+  ${QM_FILES}
+  )
 
-#target_link_libraries(
-#  ${PROJECT_NAME}
-#  PUBLIC
-#  PRIVATE
-#  Qt${QT_VERSION_MAJOR}::Xml
-#  Qt${QT_VERSION_MAJOR}::Svg
-#  Qt${QT_VERSION_MAJOR}::Network
-#  Qt${QT_VERSION_MAJOR}::Sql
-#  Qt${QT_VERSION_MAJOR}::PrintSupport
-#  Qt${QT_VERSION_MAJOR}::Widgets
-#  Qt${QT_VERSION_MAJOR}::Concurrent
-#  KF5::WidgetsAddons
-#  KF5::CoreAddons)
+target_link_libraries(
+  ${PROJECT_NAME}
+  PUBLIC
+  PRIVATE
+  Qt${QT_VERSION_MAJOR}::Xml
+  Qt${QT_VERSION_MAJOR}::Svg
+  Qt${QT_VERSION_MAJOR}::Network
+  Qt${QT_VERSION_MAJOR}::Sql
+  Qt${QT_VERSION_MAJOR}::PrintSupport
+  Qt${QT_VERSION_MAJOR}::Widgets
+  Qt${QT_VERSION_MAJOR}::Concurrent
+  KF5::WidgetsAddons
+  KF5::CoreAddons)
 
-#target_link_libraries(
-#    ${PROJECT_NAME}
-#    PUBLIC
-#    PRIVATE
-#    KF5::WidgetsAddons
-#    KF5::CoreAddons
-#    Qt5::Gui
-#    Qt5::Xml
-#    Qt5::Svg
-#    Qt5::Network
-#    Qt5::Sql
-#    Qt5::Widgets
-#    Qt5::Concurrent)
-
+target_link_libraries(
+    ${PROJECT_NAME}
+    PUBLIC
+    PRIVATE
+    KF5::WidgetsAddons
+    KF5::CoreAddons
+    Qt5::Gui
+    Qt5::Xml
+    Qt5::Svg
+    Qt5::Network
+    Qt5::Sql
+    Qt5::Widgets
+    Qt5::Concurrent)
+else()
+  message("!!  sorry now Cmake can't get QET builds yet  !!")
+endif()
 # target_include_directories(
 #   ${PROJECT_NAME}
 #   PRIVATE
