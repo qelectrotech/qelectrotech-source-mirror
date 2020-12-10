@@ -979,7 +979,14 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 		if (last_digit != 'Z') {
 			// increments the last digit
 			// incremente le dernier digit
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 			last_digit = last_digit.toLatin1() + 1;
+#else
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
+			qDebug() << "Help code for QT 6 or later";
+#endif
 			return(first_digits + QString(last_digit));
 		} else {
 			return(incrementLetters(first_digits) + "A");

@@ -46,19 +46,44 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	collection.appendChild(import);
 
 	NamesList names;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 
-	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440,
-					 0x0442, 0x0438, 0x0440, 0x043E, 0x0432,
-					 0x0430, 0x043D, 0x043D, 0x044B, 0x0435,
-					 0x0020, 0x044D, 0x043B, 0x0435, 0x043C,
-					 0x0435, 0x043D, 0x0442, 0x044B };
-	const QChar greek_data[18] = { 0x0395, 0x03b9, 0x03c3, 0x03b7, 0x03b3,
-				       0x03bc, 0x03ad, 0x03bd, 0x03b1, 0x0020,
-				       0x03c3, 0x03c4, 0x03bf, 0x03b9, 0x03c7,
-				       0x03b5, 0x03af, 0x03b1 };
-	const QChar turkish_data[12] ={ 0x0130, 0x0074, 0x0068, 0x0061, 0x006C,
-					0x0020, 0x00F6, 0x011F, 0x0065, 0x006C,
-					0x0065, 0x0072 };
+	const QChar russian_data[24] = {
+		0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440,
+		0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020,
+		0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B};
+	const QChar greek_data[18] = {
+		0x0395,
+		0x03b9,
+		0x03c3,
+		0x03b7,
+		0x03b3,
+		0x03bc,
+		0x03ad,
+		0x03bd,
+		0x03b1,
+		0x0020,
+		0x03c3,
+		0x03c4,
+		0x03bf,
+		0x03b9,
+		0x03c7,
+		0x03b5,
+		0x03af,
+		0x03b1};
+	const QChar turkish_data[12] = {
+		0x0130,
+		0x0074,
+		0x0068,
+		0x0061,
+		0x006C,
+		0x0020,
+		0x00F6,
+		0x011F,
+		0x0065,
+		0x006C,
+		0x0065,
+		0x0072};
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
 	names.addName("de", "Importierte elemente");
@@ -77,7 +102,27 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	names.addName("da", "Importerede elementer");
 	names.addName("hr", "Uvezeni elementi");
 	names.addName("sl", "Uvoženi elementi");
-	
+#else
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
+	qDebug() << "Help code for QT 6 or later";
+	names.addName("fr", "Éléments importés");
+	names.addName("en", "Imported elements");
+	names.addName("de", "Importierte elemente");
+	names.addName("es", "Elementos importados");
+	names.addName("cs", "Zavedené prvky");
+	names.addName("pl", "Elementy importowane");
+	names.addName("pt", "elementos importados");
+	names.addName("it", "Elementi importati");
+	names.addName("nl", "Elementen geïmporteerd");
+	names.addName("hr", "Uvezeni elementi");
+	names.addName("ca", "Elements importats");
+	names.addName("ro", "Elemente importate");
+	names.addName("da", "Importerede elementer");
+	names.addName("hr", "Uvezeni elementi");
+	names.addName("sl", "Uvoženi elementi");
+#endif
 
 	import.appendChild(names.toXml(m_dom_document));
 }
