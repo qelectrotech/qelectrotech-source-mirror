@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "replaceconductordialog.h"
-#include "ui_replaceconductordialog.h"
-#include "searchandreplaceworker.h"
 
-#include <QPainter>
+#include "../searchandreplaceworker.h"
+#include "ui_replaceconductordialog.h"
+
 #include <QColorDialog>
+#include <QPainter>
 
 typedef SearchAndReplaceWorker sarw;
 

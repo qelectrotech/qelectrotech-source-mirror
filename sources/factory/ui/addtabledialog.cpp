@@ -18,8 +18,8 @@
 #include "addtabledialog.h"
 
 #include "../../dataBase/ui/elementquerywidget.h"
+#include "../../ui/marginseditdialog.h"
 #include "../../utils/qetutils.h"
-#include "marginseditdialog.h"
 #include "ui_addtabledialog.h"
 
 #include <QFontDialog>

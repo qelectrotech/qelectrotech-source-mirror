@@ -18,7 +18,7 @@
 #ifndef QETGRAPHICSHEADERITEM_H
 #define QETGRAPHICSHEADERITEM_H
 
-#include "../qetapp.h"
+#include "../../qetapp.h"
 
 #include <QFont>
 #include <QGraphicsObject>

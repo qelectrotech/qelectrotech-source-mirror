@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "pastepartscommand.h"
-#include "elementview.h"
-#include "partterminal.h"
+
+#include "../elementview.h"
+#include "../graphicspart/partterminal.h"
 
 /**
 	@brief PastePartsCommand::PastePartsCommand

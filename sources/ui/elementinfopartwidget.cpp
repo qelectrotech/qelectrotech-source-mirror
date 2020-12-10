@@ -17,9 +17,10 @@
 */
 #include "elementinfopartwidget.h"
 
-#include <utility>
+#include "../SearchAndReplace/searchandreplaceworker.h"
 #include "ui_elementinfopartwidget.h"
-#include "searchandreplaceworker.h"
+
+#include <utility>
 
 typedef SearchAndReplaceWorker sarw;
 

@@ -20,10 +20,10 @@
 #include "../diagram.h"
 #include "../diagramcontent.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/conductortextitem.h"
+#include "../qetgraphicsitem/diagramtextitem.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qtextorientationspinboxwidget.h"
-#include "conductortextitem.h"
-#include "diagramtextitem.h"
-#include "elementtextitemgroup.h"
 
 /**
 	@brief RotateTextsCommand::RotateTextsCommand

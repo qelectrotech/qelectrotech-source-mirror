@@ -17,16 +17,16 @@
 */
 #include "deleteqgraphicsitemcommand.h"
 
-#include "../conductortextitem.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
-#include "../dynamicelementtextitem.h"
-#include "../elementtextitemgroup.h"
 #include "../qetdiagrameditor.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qetgraphicsitem/terminal.h"
-#include "../qetgraphicstableitem.h"
 #include "addelementtextcommand.h"
 
 /**

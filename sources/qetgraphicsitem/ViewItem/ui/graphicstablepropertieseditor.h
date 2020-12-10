@@ -18,7 +18,7 @@
 #ifndef GRAPHICSTABLEPROPERTIESEDITOR_H
 #define GRAPHICSTABLEPROPERTIESEDITOR_H
 
-#include "../PropertiesEditor/propertieseditorwidget.h"
+#include "../../../PropertiesEditor/propertieseditorwidget.h"
 
 #include <QButtonGroup>
 #include <QPointer>

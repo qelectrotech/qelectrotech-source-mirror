@@ -20,9 +20,9 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../qeticons.h"
 #include "../elementitemeditor.h"
-#include "elementscene.h"
-#include "partline.h"
-#include "styleeditor.h"
+#include "../elementscene.h"
+#include "../graphicspart/partline.h"
+#include "../styleeditor.h"
 #include "ui_lineeditor.h"
 
 /**

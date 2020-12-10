@@ -20,11 +20,11 @@
 #include "../../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../../diagram.h"
 #include "../../../elementprovider.h"
+#include "../../../factory/propertieseditorfactory.h"
+#include "../../../undocommand/itemmodelcommand.h"
 #include "../../../utils/qetutils.h"
 #include "../qetgraphicsheaderitem.h"
 #include "../qetgraphicstableitem.h"
-#include "itemmodelcommand.h"
-#include "propertieseditorfactory.h"
 #include "ui_graphicstablepropertieseditor.h"
 
 #include <QAbstractItemModel>

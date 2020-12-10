@@ -19,7 +19,7 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
-#include "../diagramimageitem.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
 #include "../ui_imagepropertieswidget.h"
 
 /**

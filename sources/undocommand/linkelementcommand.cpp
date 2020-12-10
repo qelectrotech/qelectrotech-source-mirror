@@ -19,9 +19,9 @@
 
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
-#include "../potentialselectordialog.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../ui/potentialselectordialog.h"
 
 /**
 	@brief LinkElementCommand::LinkElementCommand

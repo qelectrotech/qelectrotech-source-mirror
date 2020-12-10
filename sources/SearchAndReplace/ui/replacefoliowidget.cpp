@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "replacefoliowidget.h"
+
+#include "../../ui/diagramcontextwidget.h"
+#include "../searchandreplaceworker.h"
 #include "ui_replacefoliowidget.h"
-#include "diagramcontextwidget.h"
-#include "searchandreplaceworker.h"
 
 #include <QDialogButtonBox>
 

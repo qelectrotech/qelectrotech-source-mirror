@@ -20,7 +20,7 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
-#include "../qetshapeitem.h"
+#include "../qetgraphicsitem/qetshapeitem.h"
 #include "../ui_shapegraphicsitempropertieswidget.h"
 
 #include <QHash>

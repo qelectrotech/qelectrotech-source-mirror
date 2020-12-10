@@ -18,7 +18,7 @@
 #include "elementview.h"
 
 #include "../qetapp.h"
-#include "pastepartscommand.h"
+#include "UndoCommand/pastepartscommand.h"
 #include "qetelementeditor.h"
 /**
 	Constructeur

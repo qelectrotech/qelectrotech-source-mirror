@@ -20,8 +20,8 @@
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"
-#include "element.h"
-#include "linkelementcommand.h"
+#include "../qetgraphicsitem/element.h"
+#include "../undocommand/linkelementcommand.h"
 #include "ui_masterpropertieswidget.h"
 
 #include <QListWidgetItem>

@@ -16,12 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementfactory.h"
-#include "QDomElement"
-#include "simpleelement.h"
-#include "reportelement.h"
-#include "masterelement.h"
-#include "slaveelement.h"
-#include "terminalelement.h"
+
+#include "../qetgraphicsitem/masterelement.h"
+#include "../qetgraphicsitem/reportelement.h"
+#include "../qetgraphicsitem/simpleelement.h"
+#include "../qetgraphicsitem/slaveelement.h"
+#include "../qetgraphicsitem/terminalelement.h"
+
+#include <QDomElement>
 
 ElementFactory* ElementFactory::factory_ = nullptr;
 /**

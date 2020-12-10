@@ -17,8 +17,8 @@
 */
 #include "generalconfigurationpage.h"
 
-#include "../qetapp.h"
-#include "../qeticons.h"
+#include "../../qetapp.h"
+#include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 
 #include <QFileDialog>

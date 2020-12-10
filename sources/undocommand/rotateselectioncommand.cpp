@@ -18,15 +18,15 @@
 #include "rotateselectioncommand.h"
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
-#include "../conductortextitem.h"
 #include "../diagram.h"
-#include "../diagramimageitem.h"
-#include "../dynamicelementtextitem.h"
-#include "../elementtextitemgroup.h"
-#include "../independenttextitem.h"
 #include "../qet.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/independenttextitem.h"
 
 #include <QGraphicsItem>
 

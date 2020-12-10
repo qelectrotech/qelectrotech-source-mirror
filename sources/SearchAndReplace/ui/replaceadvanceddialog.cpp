@@ -17,8 +17,8 @@
 */
 #include "replaceadvanceddialog.h"
 
-#include "../qetapp.h"
-#include "../qetinformation.h"
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_replaceadvanceddialog.h"
 
 #include <QAbstractButton>

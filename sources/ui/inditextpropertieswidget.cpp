@@ -20,7 +20,7 @@
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
-#include "../independenttextitem.h"
+#include "../qetgraphicsitem/independenttextitem.h"
 #include "../ui_inditextpropertieswidget.h"
 
 #include <QLineEdit>

@@ -19,10 +19,10 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
-#include "../dynamicelementtextitem.h"
-#include "../elementtextitemgroup.h"
 #include "../elementtextpattern.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../ui_dynamicelementtextitemeditor.h"
 #include "../undocommand/addelementtextcommand.h"
 #include "../undocommand/deleteqgraphicsitemcommand.h"

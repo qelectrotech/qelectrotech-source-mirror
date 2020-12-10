@@ -19,10 +19,10 @@
 
 #include "../diagram.h"
 #include "../diagramposition.h"
-#include "../dynamicelementtextitem.h"
-#include "../elementtextitemgroup.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qeticons.h"
 #include "dynamicelementtextitemeditor.h"
 #include "elementinfowidget.h"

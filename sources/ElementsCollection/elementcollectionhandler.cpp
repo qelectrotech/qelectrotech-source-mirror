@@ -19,7 +19,7 @@
 
 #include "../qetproject.h"
 #include "../qetxml.h"
-#include "renamedialog.h"
+#include "ui/renamedialog.h"
 #include "xmlelementcollection.h"
 
 #include <QDir>

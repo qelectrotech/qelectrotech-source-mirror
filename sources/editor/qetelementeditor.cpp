@@ -25,37 +25,34 @@
 #include "../qeticons.h"
 #include "../qetmessagebox.h"
 #include "../recentfiles.h"
+#include "arceditor.h"
 #include "editorcommands.h"
 #include "elementitemeditor.h"
 #include "elementscene.h"
 #include "elementview.h"
-
-// editeurs de primitives
-#include "arceditor.h"
-#include "ellipseeditor.h"
-#include "lineeditor.h"
-#include "polygoneditor.h"
-#include "rectangleeditor.h"
-#include "terminaleditor.h"
-#include "texteditor.h"
-#include "partterminal.h"
+#include "esevent/eseventaddarc.h"
+#include "esevent/eseventadddynamictextfield.h"
+#include "esevent/eseventaddellipse.h"
+#include "esevent/eseventaddline.h"
+#include "esevent/eseventaddpolygon.h"
+#include "esevent/eseventaddrect.h"
+#include "esevent/eseventaddterminal.h"
+#include "esevent/eseventaddtext.h"
+#include "graphicspart/partterminal.h"
 #include "styleeditor.h"
-#include "dynamictextfieldeditor.h"
+#include "terminaleditor.h"
+#include "ui/dynamictextfieldeditor.h"
+#include "ui/ellipseeditor.h"
+#include "ui/lineeditor.h"
+#include "ui/polygoneditor.h"
+#include "ui/rectangleeditor.h"
+#include "ui/texteditor.h"
 
-#include "eseventaddline.h"
-#include "eseventaddrect.h"
-#include "eseventaddellipse.h"
-#include "eseventaddpolygon.h"
-#include "eseventaddarc.h"
-#include "eseventaddtext.h"
-#include "eseventaddterminal.h"
-#include "eseventadddynamictextfield.h"
-
-#include <QMessageBox>
-#include <QTextStream>
-#include <QFileDialog>
 #include <QFile>
+#include <QFileDialog>
+#include <QMessageBox>
 #include <QModelIndex>
+#include <QTextStream>
 #include <utility>
 
 /*

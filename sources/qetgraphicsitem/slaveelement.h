@@ -18,7 +18,7 @@
 #ifndef SLAVEELEMENT_H
 #define SLAVEELEMENT_H
 
-#include "../../properties/xrefproperties.h"
+#include "../properties/xrefproperties.h"
 #include "element.h"
 
 class SlaveElement : public Element

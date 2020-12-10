@@ -24,7 +24,7 @@
 #include "editorcommands.h"
 #include "elementcontent.h"
 #include "elementprimitivedecorator.h"
-#include "eseventinterface.h"
+#include "esevent/eseventinterface.h"
 #include "graphicspart/partarc.h"
 #include "graphicspart/partdynamictextfield.h"
 #include "graphicspart/partellipse.h"

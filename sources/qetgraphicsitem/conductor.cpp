@@ -26,7 +26,7 @@
 #include "../diagramcommands.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/terminal.h"
-#include "conductorpropertiesdialog.h"
+#include "../ui/conductorpropertiesdialog.h"
 #include "conductortextitem.h"
 #include "element.h"
 

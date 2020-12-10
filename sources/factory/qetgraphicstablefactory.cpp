@@ -17,14 +17,14 @@
 */
 #include "qetgraphicstablefactory.h"
 
+#include "../dataBase/ui/elementquerywidget.h"
+#include "../dataBase/ui/summaryquerywidget.h"
 #include "../diagram.h"
-#include "../projectdbmodel.h"
-#include "../qetgraphicsheaderitem.h"
-#include "../qetgraphicstableitem.h"
-#include "addtabledialog.h"
-#include "elementquerywidget.h"
-#include "qetutils.h"
-#include "summaryquerywidget.h"
+#include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicsheaderitem.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "../utils/qetutils.h"
+#include "ui/addtabledialog.h"
 
 #include <QDialog>
 

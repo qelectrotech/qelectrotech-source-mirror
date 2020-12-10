@@ -18,7 +18,7 @@
 #ifndef ADDTABLEDIALOG_H
 #define ADDTABLEDIALOG_H
 
-#include "../qetapp.h"
+#include "../../qetapp.h"
 
 #include <QDialog>
 

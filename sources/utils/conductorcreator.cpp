@@ -20,10 +20,10 @@
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
-#include "../potentialselectordialog.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminal.h"
+#include "../ui/potentialselectordialog.h"
 #include "qgraphicsitem.h"
 
 #include <QPolygonF>

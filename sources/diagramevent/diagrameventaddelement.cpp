@@ -20,8 +20,8 @@
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../factory/elementfactory.h"
 #include "../qetgraphicsitem/element.h"
-#include "elementfactory.h"
 
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement

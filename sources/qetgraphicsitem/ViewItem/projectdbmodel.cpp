@@ -17,11 +17,11 @@
 */
 #include "projectdbmodel.h"
 
+#include "../../dataBase/projectdatabase.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "../../qetproject.h"
 #include "../../qetxml.h"
-#include "projectdatabase.h"
 
 #include <QSqlError>
 #include <QSqlRecord>

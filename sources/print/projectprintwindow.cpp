@@ -22,18 +22,18 @@
 #include "../qetproject.h"
 #include "ui_projectprintwindow.h"
 
-#include <QPrintPreviewWidget>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-#include <QDesktopWidget>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+#	include <QDesktopWidget>
 #else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
 #endif
 #include <QMarginsF>
 #include <QPageSetupDialog>
 #include <QPainter>
 #include <QPrintDialog>
+#include <QPrintPreviewWidget>
 #include <QScreen>
 
 /**

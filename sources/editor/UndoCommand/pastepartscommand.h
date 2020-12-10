@@ -18,8 +18,8 @@
 #ifndef PASTEPARTSCOMMAND_H
 #define PASTEPARTSCOMMAND_H
 
-#include "editorcommands.h"
-#include "elementcontent.h"
+#include "../editorcommands.h"
+#include "../elementcontent.h"
 
 class ElementView;
 

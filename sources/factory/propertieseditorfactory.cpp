@@ -20,6 +20,8 @@
 #include "../PropertiesEditor/propertieseditorwidget.h"
 #include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
+#include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
@@ -31,9 +33,8 @@
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
-#include "QGraphicsItem"
-#include "graphicstablepropertieseditor.h"
-#include "projectdbmodelpropertieswidget.h"
+
+#include <QGraphicsItem>
 
 /**
 	@brief PropertiesEditorFactory::propertiesEditor

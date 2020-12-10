@@ -18,9 +18,9 @@
 #include "elementpicturefactory.h"
 
 #include "../ElementsCollection/elementslocation.h"
+#include "../editor/graphicspart/partline.h"
 #include "../qet.h"
 #include "../qetapp.h"
-#include "partline.h"
 
 #include <QAbstractTextDocumentLayout>
 #include <QDomElement>

@@ -23,8 +23,8 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/reportelement.h"
 #include "../qetgraphicsitem/terminal.h"
-#include "../reportelement.h"
 #include "../ui_potentialselectordialog.h"
 #include "formulaassistantdialog.h"
 
