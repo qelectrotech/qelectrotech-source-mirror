@@ -52,6 +52,78 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
 
+# Paths used for compilation and installation of QET
+if(UNIX AND NOT APPLE)
+  # for Linux, BSD, Solaris, Minix
+  set(COMPIL_PREFIX               "/usr/local/")
+  set(INSTALL_PREFIX              "/usr/local/")
+  set(QET_BINARY_PATH             "bin/")
+  set(QET_COMMON_COLLECTION_PATH  "share/qelectrotech/elements/")
+  set(QET_COMMON_TBT_PATH         "share/qelectrotech/titleblocks/")
+  set(QET_LANG_PATH               "share/qelectrotech/lang/")
+  set(QET_EXAMPLES_PATH           "share/qelectrotech/examples/")
+  set(QET_LICENSE_PATH            "doc/qelectrotech/")
+  set(QET_MIME_XML_PATH           "../share/mime/application/")
+  set(QET_MIME_DESKTOP_PATH       "../share/mimelnk/application/")
+  set(QET_MIME_PACKAGE_PATH       "../share/mime/packages/")
+  set(QET_DESKTOP_PATH            "share/applications/")
+  set(QET_ICONS_PATH              "share/icons/hicolor/")
+  set(QET_MAN_PATH                "man/")
+  set(QET_APPDATA_PATH            "share/appdata")
+endif()
+
+if(APPLE)
+  # for MacOS X or iOS, watchOS, tvOS (since 3.10.3)
+  set(COMPIL_PREFIX               "./")
+  set(INSTALL_PREFIX              "/usr/local/")
+  set(QET_BINARY_PATH             "bin/")
+  set(QET_COMMON_COLLECTION_PATH  "../Resources/elements/")
+  set(QET_COMMON_TBT_PATH         "../Resources/titleblocks/")
+  set(QET_LANG_PATH               "../Resources/lang/")
+  set(QET_EXAMPLES_PATH           "share/qelectrotech/examples/")
+  set(QET_LICENSE_PATH            "doc/qelectrotech/")
+  set(QET_MIME_XML_PATH           "../share/mime/application/")
+  set(QET_MIME_DESKTOP_PATH       "../share/mimelnk/application/")
+  set(QET_DESKTOP_PATH            "share/applications/")
+  set(QET_ICONS_PATH              "share/icons/hicolor/")
+  set(QET_MAN_PATH                "man/")
+  set(ICON                        "ico/mac_icon/qelectrotech.icns")
+endif()
+
+if(WIN32)
+  # for Windows operating system in general
+  set(COMPIL_PREFIX               "./")
+  set(INSTALL_PREFIX              "./")
+  set(QET_BINARY_PATH             "./")
+  set(QET_COMMON_COLLECTION_PATH  "elements/")
+  set(QET_COMMON_TBT_PATH         "titleblocks/")
+  set(QET_LANG_PATH               "lang/")
+  set(QET_LICENSE_PATH            "./")
+  # Liste des ressources Windows
+#RC_FILE = qelectrotech.rc
+endif()
+# Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
+add_definitions(-DQET_ALLOW_OVERRIDE_CED_OPTION)
+
+# Comment the line below to disable the --common-tbt-dir option
+add_definitions(-DQET_ALLOW_OVERRIDE_CTBTD_OPTION)
+
+# Commenter la ligne ci-dessous pour desactiver l'option --config-dir
+add_definitions(-DQET_ALLOW_OVERRIDE_CD_OPTION)
+
+#comment the line below to disable the project database export
+#add_definitions(-DQET_EXPORT_PROJECT_DB) #error Todo
+
+# warn on *any* usage of deprecated APIs
+add_definitions(-DQT_DEPRECATED_WARNINGS)
+
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000 # disables all the APIs deprecated before Qt 6.0.0
+set(QT_DISABLE_DEPRECATED_BEFORE 0x060000)
+
+add_definitions(-DQT_MESSAGELOGCONTEXT)
+
 # You can make your code warn on compile time for the TODO's
 # In order to do so, uncomment the following line.
 #add_definitions(-DTODO_LIST)
@@ -181,39 +253,6 @@ find_package(
  COMPONENTS
  ${QET_COMPONENTS}
  REQUIRED)
-
-#qt5_create_translation(
-#  QM_FILES
-#  ${CMAKE_SOURCE_DIR}
-#  ${QET_DIR}/lang/qet_ca.ts
-#  ${QET_DIR}/lang/qet_de.ts
-#  ${QET_DIR}/lang/qet_es.ts
-#  ${QET_DIR}/lang/qet_fr.ts
-#  ${QET_DIR}/lang/qet_it.ts
-#  ${QET_DIR}/lang/qet_mn.ts
-#  ${QET_DIR}/lang/qet_pt_br.ts
-#  ${QET_DIR}/lang/qet_ru.ts
-#  ${QET_DIR}/lang/qet_sr.ts
-#  ${QET_DIR}/lang/qet_zh.ts
-#  ${QET_DIR}/lang/qet_be.ts
-#  ${QET_DIR}/lang/qet_da.ts
-#  ${QET_DIR}/lang/qet_en.ts
-#  ${QET_DIR}/lang/qet_fi.ts
-#  ${QET_DIR}/lang/qet_hu.ts
-#  ${QET_DIR}/lang/qet_nl.ts
-#  ${QET_DIR}/lang/qet_pl.ts
-#  ${QET_DIR}/lang/qet_ro.ts
-#  ${QET_DIR}/lang/qet_sk.ts
-#  ${QET_DIR}/lang/qet_ar.ts
-#  ${QET_DIR}/lang/qet_cs.ts
-#  ${QET_DIR}/lang/qet_el.ts
-#  ${QET_DIR}/lang/qet_hr.ts
-#  ${QET_DIR}/lang/qet_ja.ts
-#  ${QET_DIR}/lang/qet_nb.ts
-#  ${QET_DIR}/lang/qet_no.ts
-#  ${QET_DIR}/lang/qet_pt.ts
-#  ${QET_DIR}/lang/qet_sl.ts
-#  ${QET_DIR}/lang/qet_tr.ts)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
@@ -733,7 +772,8 @@ if(DEFINED BUILD_QET_YES)
 add_executable(
   ${PROJECT_NAME}
   ${QET_SRC_FILES}
-#  ${QM_FILES}
+  ${QM_FILES}
+  ${QET_DIR}/qelectrotech.qrc
   )
 
 target_link_libraries(
@@ -802,6 +842,39 @@ target_link_libraries(
     ${QET_DIR}/sources/print
     )
   #    ${QET_DIR}/SingleApplication
+
+  qt5_create_translation(
+    QM_FILES
+    ${CMAKE_SOURCE_DIR}
+    ${QET_DIR}/lang/qet_ca.ts
+    ${QET_DIR}/lang/qet_de.ts
+    ${QET_DIR}/lang/qet_es.ts
+    ${QET_DIR}/lang/qet_fr.ts
+    ${QET_DIR}/lang/qet_it.ts
+    ${QET_DIR}/lang/qet_mn.ts
+    ${QET_DIR}/lang/qet_pt_br.ts
+    ${QET_DIR}/lang/qet_ru.ts
+    ${QET_DIR}/lang/qet_sr.ts
+    ${QET_DIR}/lang/qet_zh.ts
+    ${QET_DIR}/lang/qet_be.ts
+    ${QET_DIR}/lang/qet_da.ts
+    ${QET_DIR}/lang/qet_en.ts
+    ${QET_DIR}/lang/qet_fi.ts
+    ${QET_DIR}/lang/qet_hu.ts
+    ${QET_DIR}/lang/qet_nl.ts
+    ${QET_DIR}/lang/qet_pl.ts
+    ${QET_DIR}/lang/qet_ro.ts
+    ${QET_DIR}/lang/qet_sk.ts
+    ${QET_DIR}/lang/qet_ar.ts
+    ${QET_DIR}/lang/qet_cs.ts
+    ${QET_DIR}/lang/qet_el.ts
+    ${QET_DIR}/lang/qet_hr.ts
+    ${QET_DIR}/lang/qet_ja.ts
+    ${QET_DIR}/lang/qet_nb.ts
+    ${QET_DIR}/lang/qet_no.ts
+    ${QET_DIR}/lang/qet_pt.ts
+    ${QET_DIR}/lang/qet_sl.ts
+    ${QET_DIR}/lang/qet_tr.ts)
 else()
   message("!!  sorry now Cmake can't get QET builds yet  !!")
 endif()
