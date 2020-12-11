@@ -79,11 +79,13 @@ if(DEFINED BUILD_KF5_YES)
   endif()
 
   #---ToDo why you don't work :/
+  set(BUILD_TESTING "0")
   FetchContent_Declare(
     kcoreaddons
     GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
     GIT_TAG        ${KF5_GIT_TAG})
   FetchContent_MakeAvailable(kcoreaddons)
+  unset(BUILD_TESTING)
   #___ToDo
 
   FetchContent_Declare(
