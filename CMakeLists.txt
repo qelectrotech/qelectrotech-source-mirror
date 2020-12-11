@@ -767,6 +767,40 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetutils.h
   )
 
+set(TS_FILES
+    ${QET_DIR}/lang/qet_ca.ts
+    ${QET_DIR}/lang/qet_de.ts
+    ${QET_DIR}/lang/qet_es.ts
+    ${QET_DIR}/lang/qet_fr.ts
+    ${QET_DIR}/lang/qet_it.ts
+    ${QET_DIR}/lang/qet_mn.ts
+    ${QET_DIR}/lang/qet_pt_br.ts
+    ${QET_DIR}/lang/qet_ru.ts
+    ${QET_DIR}/lang/qet_sr.ts
+    ${QET_DIR}/lang/qet_zh.ts
+    ${QET_DIR}/lang/qet_be.ts
+    ${QET_DIR}/lang/qet_da.ts
+    ${QET_DIR}/lang/qet_en.ts
+    ${QET_DIR}/lang/qet_fi.ts
+    ${QET_DIR}/lang/qet_hu.ts
+    ${QET_DIR}/lang/qet_nl.ts
+    ${QET_DIR}/lang/qet_pl.ts
+    ${QET_DIR}/lang/qet_ro.ts
+    ${QET_DIR}/lang/qet_sk.ts
+    ${QET_DIR}/lang/qet_ar.ts
+    ${QET_DIR}/lang/qet_cs.ts
+    ${QET_DIR}/lang/qet_el.ts
+    ${QET_DIR}/lang/qet_hr.ts
+    ${QET_DIR}/lang/qet_ja.ts
+    ${QET_DIR}/lang/qet_nb.ts
+    ${QET_DIR}/lang/qet_no.ts
+    ${QET_DIR}/lang/qet_pt.ts
+    ${QET_DIR}/lang/qet_sl.ts
+    ${QET_DIR}/lang/qet_tr.ts)
+
+  set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "lang")
+  qt5_add_translation(QM_FILES ${TS_FILES})
+
 if(DEFINED BUILD_QET_YES)
   message("!!  TESTING TESTING TESTING TESTING TESTING  !!")
 add_executable(
@@ -843,38 +877,6 @@ target_link_libraries(
     )
   #    ${QET_DIR}/SingleApplication
 
-  qt5_create_translation(
-    QM_FILES
-    ${CMAKE_SOURCE_DIR}
-    ${QET_DIR}/lang/qet_ca.ts
-    ${QET_DIR}/lang/qet_de.ts
-    ${QET_DIR}/lang/qet_es.ts
-    ${QET_DIR}/lang/qet_fr.ts
-    ${QET_DIR}/lang/qet_it.ts
-    ${QET_DIR}/lang/qet_mn.ts
-    ${QET_DIR}/lang/qet_pt_br.ts
-    ${QET_DIR}/lang/qet_ru.ts
-    ${QET_DIR}/lang/qet_sr.ts
-    ${QET_DIR}/lang/qet_zh.ts
-    ${QET_DIR}/lang/qet_be.ts
-    ${QET_DIR}/lang/qet_da.ts
-    ${QET_DIR}/lang/qet_en.ts
-    ${QET_DIR}/lang/qet_fi.ts
-    ${QET_DIR}/lang/qet_hu.ts
-    ${QET_DIR}/lang/qet_nl.ts
-    ${QET_DIR}/lang/qet_pl.ts
-    ${QET_DIR}/lang/qet_ro.ts
-    ${QET_DIR}/lang/qet_sk.ts
-    ${QET_DIR}/lang/qet_ar.ts
-    ${QET_DIR}/lang/qet_cs.ts
-    ${QET_DIR}/lang/qet_el.ts
-    ${QET_DIR}/lang/qet_hr.ts
-    ${QET_DIR}/lang/qet_ja.ts
-    ${QET_DIR}/lang/qet_nb.ts
-    ${QET_DIR}/lang/qet_no.ts
-    ${QET_DIR}/lang/qet_pt.ts
-    ${QET_DIR}/lang/qet_sl.ts
-    ${QET_DIR}/lang/qet_tr.ts)
 else()
   message("!!  sorry now Cmake can't get QET builds yet  !!")
 endif()
