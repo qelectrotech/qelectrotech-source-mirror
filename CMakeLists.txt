@@ -57,17 +57,52 @@ set(QET_DIR ${PROJECT_SOURCE_DIR})
 #add_definitions(-DTODO_LIST)
 
 # From De-Backer ik ben nog aan het testen.
-#set(BUILD_QET_YES "yes")
+set(BUILD_QET_YES "YES")
 
-execute_process(
-  COMMAND git -C ${QET_DIR} rev-parse --verify HEAD
-  OUTPUT_VARIABLE  GIT_COMMIT_SHA)
+# https://github.com/itay-grudev/SingleApplication/issues/18
+#qmake
+#DEFINES += QAPPLICATION_CLASS=QGuiApplication
+set(QAPPLICATION_CLASS QApplication)
 
-# This strips terminating newline in the variable
-string(REGEX REPLACE "\n$" "" GIT_COMMIT_SHA "${GIT_COMMIT_SHA}")
+find_package(Git QUIET)
 
-# This adds to definitions => .cpp
-add_definitions(-DGIT_COMMIT_SHA="${GIT_COMMIT_SHA}")
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+  # updates all git submodules
+  execute_process(
+    COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    RESULT_VARIABLE GIT_SUBMOD_RESULT)
+
+  if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+    message(
+      FATAL_ERROR
+      "git submodule update --init failed with "
+      ${GIT_SUBMOD_RESULT}
+      ", please checkout submodules")
+  endif()
+endif()
+
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+  #get GIT COMMIT SHA
+  execute_process(
+    COMMAND ${GIT_EXECUTABLE} -C ${QET_DIR} rev-parse --verify HEAD
+    OUTPUT_VARIABLE  GIT_COMMIT_SHA
+    RESULT_VARIABLE GIT_SUBMOD_RESULT)
+
+  # This strips terminating newline in the variable
+  string(REGEX REPLACE "\n$" "" GIT_COMMIT_SHA "${GIT_COMMIT_SHA}")
+
+  # This adds to definitions => .cpp
+  add_definitions(-DGIT_COMMIT_SHA="${GIT_COMMIT_SHA}")
+
+  if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+    message(
+      FATAL_ERROR
+      "git rev-parse --verify HEAD failed with "
+      ${GIT_SUBMOD_RESULT}
+      ", please check")
+  endif()
+endif()
 
 message("PROJECT_NAME       :" ${PROJECT_NAME})
 message("PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
@@ -75,26 +110,48 @@ message("QET_DIR            :" ${QET_DIR})
 message("GIT_COMMIT_SHA     :" ${GIT_COMMIT_SHA})
 
 Include(FetchContent)
-set(KF5_GIT_TAG v5.76.0)
-message("KF5_GIT_TAG        :" ${KF5_GIT_TAG})
 
-find_package(KF5CoreAddons)
-#---ToDo why you don't work :/
-#FetchContent_Declare(
-#  kcoreaddons
-#  GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-#  GIT_TAG        ${KF5_GIT_TAG})
-#FetchContent_MakeAvailable(kcoreaddons)
-#___ToDo
+#ToDo De-Backer
+#set(BUILD_KF5_YES "YES")
 
+if(DEFINED BUILD_KF5_YES)
 
-find_package(KF5WidgetsAddons)
-#FetchContent_Declare(
-#  kwidgetsaddons
-#  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-#  GIT_TAG        ${KF5_GIT_TAG})
+  if(NOT DEFINED KF5_GIT_TAG)
+    set(KF5_GIT_TAG v5.76.0)
+    message("KF5_GIT_TAG        :" ${KF5_GIT_TAG})
+  endif()
 
-#FetchContent_MakeAvailable(kwidgetsaddons)
+  #---ToDo why you don't work :/
+  FetchContent_Declare(
+    kcoreaddons
+    GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
+    GIT_TAG        ${KF5_GIT_TAG})
+  FetchContent_MakeAvailable(kcoreaddons)
+  #___ToDo
+
+  FetchContent_Declare(
+    kwidgetsaddons
+    GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+    GIT_TAG        ${KF5_GIT_TAG})
+  FetchContent_MakeAvailable(kwidgetsaddons)
+else()
+  find_package(KF5CoreAddons REQUIRED)
+  find_package(KF5WidgetsAddons REQUIRED)
+endif()
+
+FetchContent_Declare(
+  SingleApplication
+  GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
+  GIT_TAG        v3.1.5)
+
+FetchContent_MakeAvailable(SingleApplication)
+
+FetchContent_Declare(
+  pugixml
+  GIT_REPOSITORY https://github.com/zeux/pugixml.git
+  GIT_TAG        v1.11.1)
+
+FetchContent_MakeAvailable(pugixml)
 
 set(QET_COMPONENTS
   Widgets
@@ -125,38 +182,40 @@ find_package(
  ${QET_COMPONENTS}
  REQUIRED)
 
-qt5_create_translation(
-  QM_FILES
-  ${CMAKE_SOURCE_DIR}
-  ${QET_DIR}/lang/qet_ca.ts
-  ${QET_DIR}/lang/qet_de.ts
-  ${QET_DIR}/lang/qet_es.ts
-  ${QET_DIR}/lang/qet_fr.ts
-  ${QET_DIR}/lang/qet_it.ts
-  ${QET_DIR}/lang/qet_mn.ts
-  ${QET_DIR}/lang/qet_pt_br.ts
-  ${QET_DIR}/lang/qet_ru.ts
-  ${QET_DIR}/lang/qet_sr.ts
-  ${QET_DIR}/lang/qet_zh.ts
-  ${QET_DIR}/lang/qet_be.ts
-  ${QET_DIR}/lang/qet_da.ts
-  ${QET_DIR}/lang/qet_en.ts
-  ${QET_DIR}/lang/qet_fi.ts
-  ${QET_DIR}/lang/qet_hu.ts
-  ${QET_DIR}/lang/qet_nl.ts
-  ${QET_DIR}/lang/qet_pl.ts
-  ${QET_DIR}/lang/qet_ro.ts
-  ${QET_DIR}/lang/qet_sk.ts
-  ${QET_DIR}/lang/qet_ar.ts
-  ${QET_DIR}/lang/qet_cs.ts
-  ${QET_DIR}/lang/qet_el.ts
-  ${QET_DIR}/lang/qet_hr.ts
-  ${QET_DIR}/lang/qet_ja.ts
-  ${QET_DIR}/lang/qet_nb.ts
-  ${QET_DIR}/lang/qet_no.ts
-  ${QET_DIR}/lang/qet_pt.ts
-  ${QET_DIR}/lang/qet_sl.ts
-  ${QET_DIR}/lang/qet_tr.ts)
+#qt5_create_translation(
+#  QM_FILES
+#  ${CMAKE_SOURCE_DIR}
+#  ${QET_DIR}/lang/qet_ca.ts
+#  ${QET_DIR}/lang/qet_de.ts
+#  ${QET_DIR}/lang/qet_es.ts
+#  ${QET_DIR}/lang/qet_fr.ts
+#  ${QET_DIR}/lang/qet_it.ts
+#  ${QET_DIR}/lang/qet_mn.ts
+#  ${QET_DIR}/lang/qet_pt_br.ts
+#  ${QET_DIR}/lang/qet_ru.ts
+#  ${QET_DIR}/lang/qet_sr.ts
+#  ${QET_DIR}/lang/qet_zh.ts
+#  ${QET_DIR}/lang/qet_be.ts
+#  ${QET_DIR}/lang/qet_da.ts
+#  ${QET_DIR}/lang/qet_en.ts
+#  ${QET_DIR}/lang/qet_fi.ts
+#  ${QET_DIR}/lang/qet_hu.ts
+#  ${QET_DIR}/lang/qet_nl.ts
+#  ${QET_DIR}/lang/qet_pl.ts
+#  ${QET_DIR}/lang/qet_ro.ts
+#  ${QET_DIR}/lang/qet_sk.ts
+#  ${QET_DIR}/lang/qet_ar.ts
+#  ${QET_DIR}/lang/qet_cs.ts
+#  ${QET_DIR}/lang/qet_el.ts
+#  ${QET_DIR}/lang/qet_hr.ts
+#  ${QET_DIR}/lang/qet_ja.ts
+#  ${QET_DIR}/lang/qet_nb.ts
+#  ${QET_DIR}/lang/qet_no.ts
+#  ${QET_DIR}/lang/qet_pt.ts
+#  ${QET_DIR}/lang/qet_sl.ts
+#  ${QET_DIR}/lang/qet_tr.ts)
+
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
 set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp
@@ -674,7 +733,7 @@ if(DEFINED BUILD_QET_YES)
 add_executable(
   ${PROJECT_NAME}
   ${QET_SRC_FILES}
-  ${QM_FILES}
+#  ${QM_FILES}
   )
 
 target_link_libraries(
@@ -695,6 +754,8 @@ target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
     PRIVATE
+    pugixml::pugixml
+    SingleApplication::SingleApplication
     KF5::WidgetsAddons
     KF5::CoreAddons
     Qt5::Gui
@@ -704,46 +765,53 @@ target_link_libraries(
     Qt5::Sql
     Qt5::Widgets
     Qt5::Concurrent)
+
+  target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    ${QET_DIR}/sources/titleblock
+    ${QET_DIR}/sources/ui
+    ${QET_DIR}/sources/qetgraphicsitem
+    ${QET_DIR}/sources/qetgraphicsitem/ViewItem
+    ${QET_DIR}/sources/qetgraphicsitem/ViewItem/ui
+    ${QET_DIR}/sources/richtext
+    ${QET_DIR}/sources/factory
+    ${QET_DIR}/sources/properties
+    ${QET_DIR}/sources/dvevent
+    ${QET_DIR}/sources/editor
+    ${QET_DIR}/sources/editor/esevent
+    ${QET_DIR}/sources/editor/graphicspart
+    ${QET_DIR}/sources/editor/ui
+    ${QET_DIR}/sources/editor/UndoCommand
+    ${QET_DIR}/sources/undocommand
+    ${QET_DIR}/sources/diagramevent
+    ${QET_DIR}/sources/ElementsCollection
+    ${QET_DIR}/sources/ElementsCollection/ui
+    ${QET_DIR}/sources/autoNum
+    ${QET_DIR}/sources/autoNum/ui
+    ${QET_DIR}/sources/ui/configpage
+    ${QET_DIR}/sources/SearchAndReplace
+    ${QET_DIR}/sources/SearchAndReplace/ui
+    ${QET_DIR}/sources/NameList
+    ${QET_DIR}/sources/NameList/ui
+    ${QET_DIR}/sources/utils
+    ${QET_DIR}/sources/pugixml
+    ${QET_DIR}/sources/dataBase
+    ${QET_DIR}/sources/dataBase/ui
+    ${QET_DIR}/sources/factory/ui
+    ${QET_DIR}/sources/print
+    )
+  #    ${QET_DIR}/SingleApplication
 else()
   message("!!  sorry now Cmake can't get QET builds yet  !!")
 endif()
-# target_include_directories(
-#   ${PROJECT_NAME}
-#   PRIVATE
-#   ${QET_DIR}/sources/titleblock
-#   ${QET_DIR}/sources/ui
-#   ${QET_DIR}/sources/qetgraphicsitem
-#   ${QET_DIR}/sources/qetgraphicsitem/ViewItem
-#   ${QET_DIR}/sources/qetgraphicsitem/ViewItem/ui
-#   ${QET_DIR}/sources/richtext
-#   ${QET_DIR}/sources/factory
-#   ${QET_DIR}/sources/properties
-#   ${QET_DIR}/sources/dvevent
-#   ${QET_DIR}/sources/editor
-#   ${QET_DIR}/sources/editor/esevent
-#   ${QET_DIR}/sources/editor/graphicspart
-#   ${QET_DIR}/sources/editor/ui
-#   ${QET_DIR}/sources/editor/UndoCommand
-#   ${QET_DIR}/sources/undocommand
-#   ${QET_DIR}/sources/diagramevent
-#   ${QET_DIR}/sources/ElementsCollection
-#   ${QET_DIR}/sources/ElementsCollection/ui
-#   ${QET_DIR}/sources/autoNum
-#   ${QET_DIR}/sources/autoNum/ui
-#   ${QET_DIR}/sources/ui/configpage
-#   ${QET_DIR}/sources/SearchAndReplace
-#   ${QET_DIR}/sources/SearchAndReplace/ui
-#   ${QET_DIR}/sources/NameList
-#   ${QET_DIR}/sources/NameList/ui
-#   ${QET_DIR}/sources/utils
-#   ${QET_DIR}/sources/pugixml
-#   ${QET_DIR}/sources/dataBase
-#   ${QET_DIR}/sources/dataBase/ui
-#   ${QET_DIR}/sources/factory/ui
-#   ${QET_DIR}/sources/print
-#   )
 
 # Add sub directories
-message("Add sub directorie tests")
-add_subdirectory(tests)
+option(PACKAGE_TESTS "Build the tests" ON)
+
+if(PACKAGE_TESTS)
+    enable_testing()
+    message("Add sub directorie tests")
+    add_subdirectory(tests)
+endif()
 

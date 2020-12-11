@@ -76,26 +76,30 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(GTest)
 
-if(NOT DEFINED KF5_GIT_TAG)
-  set(KF5_GIT_TAG v5.76.0)
-  message(".. KF5_GIT_TAG        :" ${KF5_GIT_TAG})
+if(DEFINED BUILD_KF5_YES)
+
+  if(NOT DEFINED KF5_GIT_TAG)
+    set(KF5_GIT_TAG v5.76.0)
+    message(".. KF5_GIT_TAG        :" ${KF5_GIT_TAG})
+  endif()
+
+  #---ToDo why you don't work :/
+  FetchContent_Declare(
+    kcoreaddons
+    GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
+    GIT_TAG        ${KF5_GIT_TAG})
+  FetchContent_MakeAvailable(kcoreaddons)
+  #___ToDo
+
+  FetchContent_Declare(
+    kwidgetsaddons
+    GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+    GIT_TAG        ${KF5_GIT_TAG})
+  FetchContent_MakeAvailable(kwidgetsaddons)
+else()
+  find_package(KF5CoreAddons REQUIRED)
+  find_package(KF5WidgetsAddons REQUIRED)
 endif()
-
-find_package(KF5CoreAddons REQUIRED)
-#---ToDo why you don't work :/
-#FetchContent_Declare(
-#  kcoreaddons
-#  GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-#  GIT_TAG        ${KF5_GIT_TAG})
-#FetchContent_MakeAvailable(kcoreaddons)
-#___ToDo
-
-FetchContent_Declare(
-  kwidgetsaddons
-  GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-  GIT_TAG        ${KF5_GIT_TAG})
-
-FetchContent_MakeAvailable(kwidgetsaddons)
 
 add_executable(
     ${PROJECT_NAME}
