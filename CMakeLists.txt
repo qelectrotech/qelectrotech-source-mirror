@@ -184,7 +184,7 @@ message("GIT_COMMIT_SHA     :" ${GIT_COMMIT_SHA})
 Include(FetchContent)
 
 #ToDo De-Backer
-#set(BUILD_KF5_YES "YES")
+set(BUILD_KF5_YES "YES")
 
 if(DEFINED BUILD_KF5_YES)
 
@@ -195,11 +195,13 @@ if(DEFINED BUILD_KF5_YES)
   endif()
 
   #---ToDo why you don't work :/
+  set(BUILD_TESTING "0")
   FetchContent_Declare(
     kcoreaddons
     GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
     GIT_TAG        ${KF5_GIT_TAG})
   FetchContent_MakeAvailable(kcoreaddons)
+  unset(BUILD_TESTING)
   #___ToDo
 
   FetchContent_Declare(
