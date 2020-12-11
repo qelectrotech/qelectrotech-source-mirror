@@ -189,7 +189,8 @@ Include(FetchContent)
 if(DEFINED BUILD_KF5_YES)
 
   if(NOT DEFINED KF5_GIT_TAG)
-    set(KF5_GIT_TAG v5.76.0)
+    #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
+    set(KF5_GIT_TAG v5.70.0)
     message("KF5_GIT_TAG        :" ${KF5_GIT_TAG})
   endif()
 
