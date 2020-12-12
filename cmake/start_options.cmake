@@ -14,20 +14,16 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+message(" - start_options")
 
-message(".____________________________________________________________________")
-project(unittests LANGUAGES CXX)
+# Comment the line below to deactivate the --common-elements-dir option
+add_definitions(-DQET_ALLOW_OVERRIDE_CED_OPTION)
 
-message(". PROJECT_NAME              :" ${PROJECT_NAME})
-message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
+# Comment the line below to disable the --common-tbt-dir option
+add_definitions(-DQET_ALLOW_OVERRIDE_CTBTD_OPTION)
 
-# Add sub directories
-message(". Add sub directorie catch")
-add_subdirectory(catch)
-message(". Add sub directorie googletest")
-add_subdirectory(googletest)
-message(". Add sub directorie googlemock")
-add_subdirectory(googlemock)
-message(". Add sub directorie qttest")
-add_subdirectory(qttest)
+# Comment the line below to deactivate the --config-dir option
+add_definitions(-DQET_ALLOW_OVERRIDE_CD_OPTION)
+
+#comment the line below to disable the project database export
+#add_definitions(-DQET_EXPORT_PROJECT_DB) #error Todo

@@ -14,20 +14,19 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+message(" - developer_options")
 
-message(".____________________________________________________________________")
-project(unittests LANGUAGES CXX)
+# warn on *any* usage of deprecated APIs
+add_definitions(-DQT_DEPRECATED_WARNINGS)
 
-message(". PROJECT_NAME              :" ${PROJECT_NAME})
-message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+# disables all the APIs deprecated before Qt 6.0.0
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 
-# Add sub directories
-message(". Add sub directorie catch")
-add_subdirectory(catch)
-message(". Add sub directorie googletest")
-add_subdirectory(googletest)
-message(". Add sub directorie googlemock")
-add_subdirectory(googlemock)
-message(". Add sub directorie qttest")
-add_subdirectory(qttest)
+# to enable function names and line numbers even for release builds
+add_definitions(-DQT_MESSAGELOGCONTEXT)
+
+# You can make your code warn on compile time for the TODO's
+# In order to do so, uncomment the following line.
+#add_definitions(-DTODO_LIST)

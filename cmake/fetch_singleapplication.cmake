@@ -14,20 +14,18 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+message(" - fetch_singleapplication")
 
-message(".____________________________________________________________________")
-project(unittests LANGUAGES CXX)
+# https://github.com/itay-grudev/SingleApplication/issues/18
+#qmake
+#DEFINES += QAPPLICATION_CLASS=QGuiApplication
+set(QAPPLICATION_CLASS QApplication)
 
-message(". PROJECT_NAME              :" ${PROJECT_NAME})
-message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
+Include(FetchContent)
 
-# Add sub directories
-message(". Add sub directorie catch")
-add_subdirectory(catch)
-message(". Add sub directorie googletest")
-add_subdirectory(googletest)
-message(". Add sub directorie googlemock")
-add_subdirectory(googlemock)
-message(". Add sub directorie qttest")
-add_subdirectory(qttest)
+FetchContent_Declare(
+  SingleApplication
+  GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
+  GIT_TAG        v3.1.5)
+
+FetchContent_MakeAvailable(SingleApplication)

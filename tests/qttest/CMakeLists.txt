@@ -29,24 +29,16 @@ set(CMAKE_AUTOUIC ON)
 SET(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-message(".. PROJECT_NAME       :" ${PROJECT_NAME})
-message(".. PROJECT_SOURCE_DIR :" ${PROJECT_SOURCE_DIR})
+message(".. PROJECT_NAME              :" ${PROJECT_NAME})
+message(".. PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
 if(NOT DEFINED QET_DIR)
   set(QET_DIR "../..")
   message(".. QET_DIR is not set, assuming QET is ../..")
 endif()
-message(".. QET_DIR            :" ${QET_DIR})
+message(".. QET_DIR                   :" ${QET_DIR})
 if(NOT DEFINED QET_COMPONENTS)
-  set(QET_COMPONENTS
-    Widgets
-    Concurrent
-    Xml
-    Svg
-    Network
-    Sql
-    PrintSupport
-    LinguistTools)
   message(".. QET_COMPONENTS is not set !!! I set them up !!!")
+  include(../../cmake/qet_compilation_vars.cmake)
 endif()
 if(NOT DEFINED QT_VERSION_MAJOR)
   find_package(
@@ -60,7 +52,7 @@ if(NOT DEFINED QT_VERSION_MAJOR)
    REQUIRED
    )
 endif()
-message(".. QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
+message(".. QT_VERSION_MAJOR          :" ${QT_VERSION_MAJOR})
 
 find_package(
   Qt${QT_VERSION_MAJOR}
@@ -69,34 +61,9 @@ find_package(
  Test
  REQUIRED)
 
-Include(FetchContent)
-
-if(DEFINED BUILD_KF5_YES)
-
-  if(NOT DEFINED KF5_GIT_TAG)
-    set(KF5_GIT_TAG v5.76.0)
-    message(".. KF5_GIT_TAG        :" ${KF5_GIT_TAG})
-  endif()
-
-  #---ToDo why you don't work :/
-  set(BUILD_TESTING "0")
-  FetchContent_Declare(
-    kcoreaddons
-    GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-    GIT_TAG        ${KF5_GIT_TAG})
-  FetchContent_MakeAvailable(kcoreaddons)
-  unset(BUILD_TESTING)
-  #___ToDo
-
-  FetchContent_Declare(
-    kwidgetsaddons
-    GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-    GIT_TAG        ${KF5_GIT_TAG})
-  FetchContent_MakeAvailable(kwidgetsaddons)
-else()
-  find_package(KF5CoreAddons REQUIRED)
-  find_package(KF5WidgetsAddons REQUIRED)
-endif()
+include(../../cmake/fetch_kdeaddons.cmake)
+include(../../cmake/fetch_singleapplication.cmake)
+include(../../cmake/fetch_pugixml.cmake)
 
 enable_testing()
 

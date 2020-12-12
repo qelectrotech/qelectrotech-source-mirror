@@ -14,20 +14,22 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+message(" - git_update_submodules")
 
-message(".____________________________________________________________________")
-project(unittests LANGUAGES CXX)
+find_package(Git QUIET)
 
-message(". PROJECT_NAME              :" ${PROJECT_NAME})
-message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+  # updates all git submodules
+  execute_process(
+    COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    RESULT_VARIABLE GIT_SUBMOD_RESULT)
 
-# Add sub directories
-message(". Add sub directorie catch")
-add_subdirectory(catch)
-message(". Add sub directorie googletest")
-add_subdirectory(googletest)
-message(". Add sub directorie googlemock")
-add_subdirectory(googlemock)
-message(". Add sub directorie qttest")
-add_subdirectory(qttest)
+  if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+    message(
+      FATAL_ERROR
+      "git submodule update --init failed with "
+      ${GIT_SUBMOD_RESULT}
+      ", please checkout submodules")
+  endif()
+endif()

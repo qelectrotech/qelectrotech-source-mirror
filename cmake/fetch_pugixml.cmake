@@ -14,20 +14,13 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
+message(" - fetch_pugixml")
 
-message(".____________________________________________________________________")
-project(unittests LANGUAGES CXX)
+Include(FetchContent)
 
-message(". PROJECT_NAME              :" ${PROJECT_NAME})
-message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
+FetchContent_Declare(
+  pugixml
+  GIT_REPOSITORY https://github.com/zeux/pugixml.git
+  GIT_TAG        v1.11.1)
 
-# Add sub directories
-message(". Add sub directorie catch")
-add_subdirectory(catch)
-message(". Add sub directorie googletest")
-add_subdirectory(googletest)
-message(". Add sub directorie googlemock")
-add_subdirectory(googlemock)
-message(". Add sub directorie qttest")
-add_subdirectory(qttest)
+FetchContent_MakeAvailable(pugixml)
