@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
+include(cmake/hoto_update_cmake_message.cmake)
+
 cmake_minimum_required(VERSION 3.14...3.19 FATAL_ERROR)
 
 project(qelectrotech
@@ -42,7 +44,6 @@ include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
 include(cmake/qet_compilation_vars.cmake)
-
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
