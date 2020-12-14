@@ -72,7 +72,7 @@ find_package(
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
-set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "lang")
+set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
 qt5_add_translation(QM_FILES ${TS_FILES})
 
 # als laatse
