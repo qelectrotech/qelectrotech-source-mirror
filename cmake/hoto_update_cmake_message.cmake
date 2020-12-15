@@ -18,8 +18,8 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
   message(
     "_____________________________________________________________________")
   message("to update Cmake on linux:")
-  message(
-    "curl https://github.com/Kitware/CMake/releases/download/v3.19.1/cmake-3.19.1-Linux-x86_64.sh -o cmake.sh")
-  message(
-    "sudo sh cmake.sh --prefix=/usr/local/ --exclude-subdir")
+  message("https://github.com/Kitware/CMake/")
+  message("linux => cmake-3.19.1-Linux-x86_64.sh")
+  message("         sudo ./cmake.sh --prefix=/usr/local/ --exclude-subdir")
+  message("windows good luck :)")
 endif()
