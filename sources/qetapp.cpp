@@ -42,7 +42,10 @@
 #define STRINGIFY(x) #x
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#include <KAutoSaveFile>
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KAutoSaveFile>
+#endif
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
@@ -2080,6 +2083,9 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
+#ifdef BUILD_WITHOUT_KF5
+	return;
+#else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
 
 	//Remove from the list @stale_files, the stales file of opened project
@@ -2116,12 +2122,12 @@ void QETApp::checkBackupFiles()
 	}
 	for(const KAutoSaveFile *kasf : stale_files)
 	{
-#ifdef Q_OS_WIN
+#	ifdef Q_OS_WIN
 	//Remove the first character '/' before the name of the drive
 	text.append("<br>" + kasf->managedFile().path().remove(0,1));
-#else
+#	else
 	text.append("<br>" + kasf->managedFile().path());
-#endif
+#	endif
 	}
 
 	//Open backup file
@@ -2154,6 +2160,7 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
+#endif
 }
 
 /**

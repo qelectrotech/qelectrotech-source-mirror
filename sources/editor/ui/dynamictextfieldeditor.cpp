@@ -135,7 +135,10 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_frame_cb -> setChecked(m_text_field.data() -> frame());
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
+#ifdef BUILD_WITHOUT_KF5
+#else
 		ui -> m_color_kpb -> setColor(m_text_field.data() -> color());
+#endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
 

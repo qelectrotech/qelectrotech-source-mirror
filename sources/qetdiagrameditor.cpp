@@ -42,7 +42,10 @@
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 
-#include <KAutoSaveFile>
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KAutoSaveFile>
+#endif
 
 /**
 	@brief QETDiagramEditor::QETDiagramEditor
@@ -1847,6 +1850,8 @@ bool QETDiagramEditor::drawGrid() const
 	return m_draw_grid->isChecked();
 }
 
+#ifdef BUILD_WITHOUT_KF5
+#else
 /**
 	@brief QETDiagramEditor::openBackupFiles
 	@param backup_files
@@ -1877,7 +1882,7 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 		DialogWaiting::dropInstance();
 	}
 }
-
+#endif
 /**
 	met a jour le menu "Fenetres"
 */

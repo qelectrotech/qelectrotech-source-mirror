@@ -88,15 +88,8 @@ target_link_libraries(
     PUBLIC
     Catch2::Catch2
     PRIVATE
-    KF5::WidgetsAddons
-    KF5::CoreAddons
-    Qt::Gui
-    Qt::Xml
-    Qt::Svg
-    Qt::Sql
-    Qt::Network
-    Qt::Widgets
-    Qt::Concurrent)
+    ${KF5_PRIVATE_LIBRARIES}
+    ${QET_PRIVATE_LIBRARIES})
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})
     set(CATCH_INCLUDE_DIR $ENV{CATCH_INCLUDE_DIR})

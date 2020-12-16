@@ -17,14 +17,25 @@
 message(" - qet_compilation_vars")
 
 set(QET_COMPONENTS
-  Widgets
-  Concurrent
+  LinguistTools
+  PrintSupport
   Xml
   Svg
-  Network
   Sql
-  PrintSupport
-  LinguistTools)
+  Network
+  Widgets
+  Concurrent)
+
+set(QET_PRIVATE_LIBRARIES
+  Qt::PrintSupport
+  Qt::Gui
+  Qt::Xml
+  Qt::Svg
+  Qt::Sql
+  Qt::Network
+  Qt::Widgets
+  Qt::Concurrent
+  )
 
 set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp

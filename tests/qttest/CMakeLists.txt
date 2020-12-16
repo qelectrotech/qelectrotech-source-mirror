@@ -74,13 +74,6 @@ target_link_libraries(
   ${PROJECT_NAME}
   PRIVATE
   Qt::Test
-  KF5::CoreAddons
-  KF5::WidgetsAddons
-  Qt::Gui
-  Qt::Xml
-  Qt::Svg
-  Qt::Sql
-  Qt::Network
-  Qt::Widgets
-  Qt::Concurrent)
+  ${KF5_PRIVATE_LIBRARIES}
+  ${QET_PRIVATE_LIBRARIES})
 

@@ -79,19 +79,11 @@ add_executable(
     tst_My_test.cpp
     main.cpp
     )
-
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
     gtest gtest_main
     PRIVATE
-    KF5::WidgetsAddons
-    KF5::CoreAddons
-    Qt::Gui
-    Qt::Xml
-    Qt::Svg
-    Qt::Sql
-    Qt::Network
-    Qt::Widgets
-    Qt::Concurrent)
+    ${KF5_PRIVATE_LIBRARIES}
+    ${QET_PRIVATE_LIBRARIES})
 

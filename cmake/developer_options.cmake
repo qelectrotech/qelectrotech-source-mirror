@@ -30,3 +30,6 @@ add_definitions(-DQT_MESSAGELOGCONTEXT)
 # You can make your code warn on compile time for the TODO's
 # In order to do so, uncomment the following line.
 #add_definitions(-DTODO_LIST)
+
+# Build with KF5
+option(BUILD_WITH_KF5 "Build with KF5" ON)

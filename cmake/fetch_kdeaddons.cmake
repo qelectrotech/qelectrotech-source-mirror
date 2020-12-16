@@ -16,40 +16,52 @@
 
 message(" - fetch_kdeaddons")
 
-Include(FetchContent)
+if(DEFINED BUILD_WITH_KF5)
+  Include(FetchContent)
 
-set(BUILD_KF5_YES "YES")
+  set(BUILD_KF5_YES "YES")
 
-if(DEFINED BUILD_KF5_YES)
+  if(DEFINED BUILD_KF5_YES)
 
-  if(NOT DEFINED KF5_GIT_TAG)
-    #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
-    set(KF5_GIT_TAG v5.70.0)
+    if(NOT DEFINED KF5_GIT_TAG)
+      #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
+      set(KF5_GIT_TAG v5.70.0)
+    endif()
+
+    # Fix stop the run autotests of kcoreaddons
+    # see
+    # https://invent.kde.org/frameworks/kcoreaddons/-/blob/master/CMakeLists.txt#L98
+    # issue:
+    # CMake Error at /usr/share/ECM/modules/ECMAddTests.cmake:89 (add_executable):
+    # Cannot find source file:
+    # see
+    # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
+    set(KDE_SKIP_TEST_SETTINGS "TRUE")
+    set(BUILD_TESTING "0")
+    FetchContent_Declare(
+      ecm
+      GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
+      GIT_TAG        ${KF5_GIT_TAG})
+    FetchContent_MakeAvailable(ecm)
+
+    FetchContent_Declare(
+      kcoreaddons
+      GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
+      GIT_TAG        ${KF5_GIT_TAG})
+    FetchContent_MakeAvailable(kcoreaddons)
+
+    FetchContent_Declare(
+      kwidgetsaddons
+      GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+      GIT_TAG        ${KF5_GIT_TAG})
+    FetchContent_MakeAvailable(kwidgetsaddons)
+  else()
+    find_package(KF5CoreAddons REQUIRED)
+    find_package(KF5WidgetsAddons REQUIRED)
   endif()
 
-  # Fix stop the run autotests of kcoreaddons
-  # see
-  # https://invent.kde.org/frameworks/kcoreaddons/-/blob/master/CMakeLists.txt#L98
-  # issue:
-  # CMake Error at /usr/share/ECM/modules/ECMAddTests.cmake:89 (add_executable):
-  # Cannot find source file:
-  # see
-  # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
-  set(KDE_SKIP_TEST_SETTINGS "TRUE")
-  set(BUILD_TESTING "0")
-
-  FetchContent_Declare(
-    kcoreaddons
-    GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-    GIT_TAG        ${KF5_GIT_TAG})
-  FetchContent_MakeAvailable(kcoreaddons)
-
-  FetchContent_Declare(
-    kwidgetsaddons
-    GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-    GIT_TAG        ${KF5_GIT_TAG})
-  FetchContent_MakeAvailable(kwidgetsaddons)
-else()
-  find_package(KF5CoreAddons REQUIRED)
-  find_package(KF5WidgetsAddons REQUIRED)
+  set(KF5_PRIVATE_LIBRARIES
+    KF5::WidgetsAddons
+    KF5::CoreAddons
+    )
 endif()

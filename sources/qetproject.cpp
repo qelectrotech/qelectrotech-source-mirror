@@ -77,6 +77,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	init();
 }
 
+#ifdef BUILD_WITHOUT_KF5
+#else
 /**
 	@brief QETProject::QETProject
 	@param backup : backup file to open, QETProject take ownership of backup.
@@ -110,6 +112,7 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 
 	init();
 }
+#endif
 
 /**
 	@brief QETProject::~QETProject
@@ -276,12 +279,13 @@ void QETProject::setFilePath(const QString &filepath)
 	if (filepath == m_file_path) {
 		return;
 	}
-
+#ifdef BUILD_WITHOUT_KF5
+#else
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
 	}
 	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
-
+#endif
 	m_file_path = filepath;
 
 	QFileInfo fi(m_file_path);
@@ -1742,15 +1746,18 @@ NamesList QETProject::namesListForIntegrationCategory()
 */
 void QETProject::writeBackup()
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 	QDomDocument xml_project(toXml());
 	QtConcurrent::run(
 				QET::writeToFile,xml_project,&m_backup_file,nullptr);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
+#	else
+#		if TODO_LIST
+#			pragma message("@TODO remove code for QT 6 or later")
+#		endif
 	qDebug()<<"Help code for QT 6 or later";
+#	endif
 #endif
 }
 

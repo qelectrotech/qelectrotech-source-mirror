@@ -85,13 +85,6 @@ target_link_libraries(
     PUBLIC
     gmock gmock_main
     PRIVATE
-    KF5::WidgetsAddons
-    KF5::CoreAddons
-    Qt::Gui
-    Qt::Xml
-    Qt::Svg
-    Qt::Sql
-    Qt::Network
-    Qt::Widgets
-    Qt::Concurrent)
+    ${KF5_PRIVATE_LIBRARIES}
+    ${QET_PRIVATE_LIBRARIES})
 

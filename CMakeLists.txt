@@ -89,32 +89,10 @@ target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
   PRIVATE
-  Qt${QT_VERSION_MAJOR}::Xml
-  Qt${QT_VERSION_MAJOR}::Svg
-  Qt${QT_VERSION_MAJOR}::Network
-  Qt${QT_VERSION_MAJOR}::Sql
-  Qt${QT_VERSION_MAJOR}::PrintSupport
-  Qt${QT_VERSION_MAJOR}::Widgets
-  Qt${QT_VERSION_MAJOR}::Concurrent
-  KF5::WidgetsAddons
-  KF5::CoreAddons
-  )
-
-target_link_libraries(
-  ${PROJECT_NAME}
-  PUBLIC
-  PRIVATE
   pugixml::pugixml
   SingleApplication::SingleApplication
-  KF5::WidgetsAddons
-  KF5::CoreAddons
-  Qt5::Gui
-  Qt5::Xml
-  Qt5::Svg
-  Qt5::Network
-  Qt5::Sql
-  Qt5::Widgets
-  Qt5::Concurrent
+  ${KF5_PRIVATE_LIBRARIES}
+  ${QET_PRIVATE_LIBRARIES}
   )
 
 target_include_directories(
