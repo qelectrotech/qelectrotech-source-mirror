@@ -403,7 +403,7 @@ void ElementView::mouseMoveEvent(QMouseEvent* e)
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-	if (e->button() == Qt::MiddleButton)
+	if (e->buttons() == Qt::MiddleButton)
 #endif
 	{
 		QScrollBar *h = horizontalScrollBar();
