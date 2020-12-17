@@ -80,6 +80,7 @@ include(cmake/define_definitions.cmake)
 
 add_executable(
   ${PROJECT_NAME}
+  ${QET_RES_FILES}
   ${QET_SRC_FILES}
   ${QM_FILES}
   ${QET_DIR}/qelectrotech.qrc

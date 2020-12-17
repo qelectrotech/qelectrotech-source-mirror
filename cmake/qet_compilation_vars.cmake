@@ -37,6 +37,62 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Concurrent
   )
 
+set(QET_RES_FILES
+  ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
+  ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.ui
+  ${QET_DIR}/sources/autoNum/ui/folioautonumbering.ui
+  ${QET_DIR}/sources/autoNum/ui/formulaautonumberingw.ui
+  ${QET_DIR}/sources/autoNum/ui/numparteditorw.ui
+  ${QET_DIR}/sources/autoNum/ui/selectautonumw.ui
+  ${QET_DIR}/sources/dataBase/ui/elementquerywidget.ui
+  ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.ui
+  ${QET_DIR}/sources/editor/ui/elementpropertieseditorwidget.ui
+  ${QET_DIR}/sources/editor/ui/ellipseeditor.ui
+  ${QET_DIR}/sources/editor/ui/lineeditor.ui
+  ${QET_DIR}/sources/editor/ui/polygoneditor.ui
+  ${QET_DIR}/sources/editor/ui/rectangleeditor.ui
+  ${QET_DIR}/sources/editor/ui/texteditor.ui
+  ${QET_DIR}/sources/ElementsCollection/ui/renamedialog.ui
+  ${QET_DIR}/sources/factory/ui/addtabledialog.ui
+  ${QET_DIR}/sources/NameList/ui/namelistdialog.ui
+  ${QET_DIR}/sources/NameList/ui/namelistwidget.ui
+  ${QET_DIR}/sources/print/projectprintwindow.ui
+  ${QET_DIR}/sources/PropertiesEditor/propertieseditordockwidget.ui
+  ${QET_DIR}/sources/richtext/addlinkdialog.ui
+  ${QET_DIR}/sources/SearchAndReplace/ui/replaceadvanceddialog.ui
+  ${QET_DIR}/sources/SearchAndReplace/ui/replaceconductordialog.ui
+  ${QET_DIR}/sources/SearchAndReplace/ui/replaceelementdialog.ui
+  ${QET_DIR}/sources/SearchAndReplace/ui/replacefoliowidget.ui
+  ${QET_DIR}/sources/SearchAndReplace/ui/searchandreplacewidget.ui
+  ${QET_DIR}/sources/ui/aboutqetdialog.ui
+  ${QET_DIR}/sources/ui/alignmenttextdialog.ui
+  ${QET_DIR}/sources/ui/bomexportdialog.ui
+  ${QET_DIR}/sources/ui/borderpropertieswidget.ui
+  ${QET_DIR}/sources/ui/compositetexteditdialog.ui
+  ${QET_DIR}/sources/ui/conductorpropertiesdialog.ui
+  ${QET_DIR}/sources/ui/conductorpropertieswidget.ui
+  ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
+  ${QET_DIR}/sources/ui/diagramcontextwidget.ui
+  ${QET_DIR}/sources/ui/diagramselection.ui
+  ${QET_DIR}/sources/ui/dialogwaiting.ui
+  ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
+  ${QET_DIR}/sources/ui/elementinfopartwidget.ui
+  ${QET_DIR}/sources/ui/elementinfowidget.ui
+  ${QET_DIR}/sources/ui/formulaassistantdialog.ui
+  ${QET_DIR}/sources/ui/imagepropertieswidget.ui
+  ${QET_DIR}/sources/ui/importelementdialog.ui
+  ${QET_DIR}/sources/ui/importelementtextpatterndialog.ui
+  ${QET_DIR}/sources/ui/linksingleelementwidget.ui
+  ${QET_DIR}/sources/ui/marginseditdialog.ui
+  ${QET_DIR}/sources/ui/masterpropertieswidget.ui
+  ${QET_DIR}/sources/ui/multipastedialog.ui
+  ${QET_DIR}/sources/ui/potentialselectordialog.ui
+  ${QET_DIR}/sources/ui/reportpropertiewidget.ui
+  ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.ui
+  ${QET_DIR}/sources/ui/titleblockpropertieswidget.ui
+  ${QET_DIR}/sources/ui/xrefpropertieswidget.ui
+  ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.ui
+  )
 set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
