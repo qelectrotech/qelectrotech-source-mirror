@@ -183,11 +183,10 @@ void DynamicTextFieldEditor::setUpWidget(QWidget* parent)
 		tr("Information de l'\303\251l\303\251ment"));
 	m_text_from_cb->setItemText(2, tr("Texte compos\303\251"));
 
-	connect(
-		m_text_from_cb,
-		&QComboBox::currentIndexChanged,
-		this,
-		&DynamicTextFieldEditor::on_m_text_from_cb_activated);
+	connect(m_text_from_cb,
+			QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this,
+			&DynamicTextFieldEditor::on_m_text_from_cb_activated);
 
 	gridLayout->addWidget(m_text_from_cb, 2, 1, 1, 2);
 
