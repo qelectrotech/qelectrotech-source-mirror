@@ -51,7 +51,6 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/editor/ui/lineeditor.ui
   ${QET_DIR}/sources/editor/ui/polygoneditor.ui
   ${QET_DIR}/sources/editor/ui/rectangleeditor.ui
-  ${QET_DIR}/sources/editor/ui/texteditor.ui
   ${QET_DIR}/sources/ElementsCollection/ui/renamedialog.ui
   ${QET_DIR}/sources/factory/ui/addtabledialog.ui
   ${QET_DIR}/sources/NameList/ui/namelistdialog.ui
