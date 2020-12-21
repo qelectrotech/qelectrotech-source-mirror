@@ -1,0 +1,51 @@
+<definition version="0.80" height="90" hotspot_x="35" hotspot_y="44" width="70" link_type="simple" type="element">
+    <names>
+        <name lang="fr">2789-9015</name>
+        <name lang="be">2789-9015</name>
+        <name lang="cs">2789-9015</name>
+        <name lang="it">2789-9015</name>
+        <name lang="de">2789-9015</name>
+        <name lang="ar">2789-9015</name>
+        <name lang="nl">2789-9015</name>
+        <name lang="el">2789-9015</name>
+        <name lang="en">2789-9015</name>
+        <name lang="es">2789-9015</name>
+        <name lang="pl">2789-9015</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2789-9015</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <line length2="1.5" y1="-40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" end1="none" y2="-40" length1="1.5" x1="-30"/>
+        <text rotation="0" y="16" x="-19" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="Modbus RTU"/>
+        <text rotation="0" y="-11" x="-14" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" text="WAGO"/>
+        <text rotation="0" y="31" x="7.1094" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" text="X6"/>
+        <text rotation="0" y="31" x="-12.3906" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" text="X5"/>
+        <circle y="37.5" x="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle y="37.5" x="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle y="-42.5" x="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line length2="1.5" y1="40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" end1="none" y2="40" length1="1.5" x1="-30"/>
+        <line length2="1.5" y1="2" end2="none" antialias="true" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="-30" end1="none" y2="2" length1="1.5" x1="30"/>
+        <line length2="1.5" y1="-40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" end1="none" y2="40" length1="1.5" x1="-30"/>
+        <line length2="1.5" y1="40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" end1="none" y2="40" length1="1.5" x1="-7"/>
+        <line length2="1.5" y1="40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" end1="none" y2="40" length1="1.5" x1="13"/>
+        <line length2="1.5" y1="40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" end1="none" y2="-40" length1="1.5" x1="30"/>
+        <line length2="1.5" y1="-40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" end1="none" y2="-40" length1="1.5" x1="3"/>
+        <dynamic_text rotation="0" Halignment="AlignHCenter" y="-38" z="17" text_from="ElementInfo" text_width="-1" x="-4" frame="false" Valignment="AlignVCenter" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{7887e1bf-7914-4463-9f3a-9d4e58ed52ff}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" y="-1" x="-22" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" text="2789-9015"/>
+        <line length2="1.5" y1="40" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" y2="33" length1="1.5" x1="-10"/>
+        <line length2="1.5" y1="33" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" y2="33" length1="1.5" x1="-10"/>
+        <line length2="1.5" y1="33" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" y2="40" length1="1.5" x1="10"/>
+        <terminal orientation="s" y="40" x="10"/>
+        <terminal orientation="n" y="-40" x="0"/>
+        <terminal orientation="s" y="40" x="-10"/>
+    </description>
+</definition>
