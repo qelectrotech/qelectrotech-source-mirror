@@ -1,6 +1,16 @@
 <qet-directory>
     <names>
-        <name lang="en">Wago</name>
-        <name lang="cs">Wago</name>
+        <name lang="de">WAGO Kontakttechnik</name>
+        <name lang="ch">WAGO Contact</name>
+        <name lang="cn">WAGO Electronic</name>
+        <name lang="cz">WAGO Elektro</name>
+        <name lang="dk">WAGO Denmark</name>
+        <name lang="en">WAGO Limited</name>
+        <name lang="fr">WAGO Contact</name>
+        <name lang="nl">WAGO Nederland</name>
+        <name lang="no">WAGO Norge</name>
+        <name lang="pl">WAGO ELWAG</name>
+        <name lang="se">WAGO Sverige</name>
+        <name lang="br">WAGO Eletroeletrônicos</name>
     </names>
 </qet-directory>
