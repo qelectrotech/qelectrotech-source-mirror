@@ -4,7 +4,10 @@
         <name lang="de">787-2861/108-020</name>
         <name lang="fr">787-2861/108-020</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">787-2861/108-020</elementInformation>
+    </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license

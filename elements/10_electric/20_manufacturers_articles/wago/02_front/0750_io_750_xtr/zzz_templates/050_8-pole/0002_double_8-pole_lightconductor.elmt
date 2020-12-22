@@ -4,7 +4,10 @@
         <name lang="fr">double 8-fold / Light-Conductor</name>
         <name lang="de">doppel 8-fach / Lichtleiter</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+    </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license

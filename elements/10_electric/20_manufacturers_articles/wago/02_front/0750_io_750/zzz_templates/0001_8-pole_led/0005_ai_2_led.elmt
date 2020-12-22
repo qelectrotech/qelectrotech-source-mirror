@@ -4,7 +4,10 @@
         <name lang="en">AI 2 LED</name>
         <name lang="fr">AI 2 LED</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+    </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license

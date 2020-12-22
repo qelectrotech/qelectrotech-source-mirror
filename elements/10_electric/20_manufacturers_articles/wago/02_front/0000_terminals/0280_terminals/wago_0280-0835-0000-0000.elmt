@@ -1,10 +1,13 @@
 <definition height="270" type="element" hotspot_y="132" version="0.80" link_type="simple" width="30" hotspot_x="12">
     <names>
-        <name lang="fr">0280-0835 4-L orange</name>
-        <name lang="en">0280-0835 4-L orange</name>
-        <name lang="de">0280-0835 4-L orange</name>
+        <name lang="fr">280-835 4-L orange</name>
+        <name lang="en">280-835 4-L orange</name>
+        <name lang="de">280-835 4-L orange</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">280-835</elementInformation>
+    </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
