@@ -1,10 +1,13 @@
 <definition link_type="simple" type="element" hotspot_x="12" width="30" hotspot_y="132" height="270" version="0.80">
     <names>
-        <name lang="en">0280-0837 4-L green-yellow</name>
-        <name lang="de">0280-0837 4-L grün-gelb</name>
-        <name lang="fr">0280-0837 4-L vert-ambre</name>
+        <name lang="en">280-837 4-L green-yellow</name>
+        <name lang="de">280-837 4-L grün-gelb</name>
+        <name lang="fr">280-837 4-L vert-ambre</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">280-837</elementInformation>
+    </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license

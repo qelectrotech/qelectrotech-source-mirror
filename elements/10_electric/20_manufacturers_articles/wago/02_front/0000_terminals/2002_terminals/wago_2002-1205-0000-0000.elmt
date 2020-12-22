@@ -4,7 +4,10 @@
         <name lang="fr">2002-1205</name>
         <name lang="de">2002-1205</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2002-1205</elementInformation>
+    </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
