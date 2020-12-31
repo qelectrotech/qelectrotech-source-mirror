@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Interrupteur sectionneur triphasé</name>
         <name lang="es">Seccionador 3P mando de palanca</name>
+        <name lang="cs">Odpojovač 4P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

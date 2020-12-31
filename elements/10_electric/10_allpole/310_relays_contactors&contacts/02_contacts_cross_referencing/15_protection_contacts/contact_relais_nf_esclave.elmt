@@ -11,7 +11,7 @@
         <name lang="pl">Zestyk rozwierny przekaźnika cieplnego</name>
         <name lang="es">Contacto relé térmico NC</name>
         <name lang="nl">Thermisch bediend contact (NC)</name>
-        <name lang="cs">Tepelné spojovací relé (NC)</name>
+        <name lang="cs">Kontakt (NC) tepelného jističe</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

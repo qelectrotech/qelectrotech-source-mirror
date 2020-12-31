@@ -2,6 +2,7 @@
     <uuid uuid="{37d6d9ba-d64c-472b-a7e6-9507bdf52bf5}"/>
     <names>
         <name lang="en">Wire Connector 8-Port</name>
+        <name lang="cs">Svorka 8 vodičů</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

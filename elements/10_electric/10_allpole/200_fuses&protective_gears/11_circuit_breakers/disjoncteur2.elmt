@@ -8,7 +8,7 @@
         <name lang="pl">Wyłącznik</name>
         <name lang="es">Disyuntor 2P</name>
         <name lang="nl">Lastscheider 2</name>
-        <name lang="cs">Jistič 2</name>
+        <name lang="cs">Dvoupólový jistič</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

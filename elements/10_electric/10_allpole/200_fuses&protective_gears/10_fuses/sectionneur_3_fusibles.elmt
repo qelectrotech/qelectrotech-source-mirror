@@ -9,7 +9,7 @@
         <name lang="fr">Sectionneur portes fusible tri</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="nl">Zekeringscheider 3</name>
-        <name lang="cs">Tavný odpojovač</name>
+        <name lang="cs">Pojistkový odpínač 3p</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

@@ -2,7 +2,7 @@
     <uuid uuid="{c2284f74-b78e-4303-a664-a0be91ee9a10}"/>
     <names>
         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
-        <name lang="cs">Dvojpólový jistič 1 pól chránící</name>
+        <name lang="cs">Jističochránič 2P</name>
         <name lang="es">Disyuntor termico magnetico en polo P+N</name>
         <name lang="en">Circuit-breaker</name>
         <name lang="fr">Disjoncteur bipolaire 1 pole protege diféfrentiel</name>

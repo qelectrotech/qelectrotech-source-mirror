@@ -2,6 +2,7 @@
     <uuid uuid="{90ef162a-ae50-4497-8280-94fb3a4f0127}"/>
     <names>
         <name lang="en">Wire Connector 4-Port</name>
+        <name lang="cs">Svorka 4 vodiče</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

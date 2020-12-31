@@ -2,6 +2,7 @@
     <uuid uuid="{4549b364-073d-462a-8106-a7e2c1c94028}"/>
     <names>
         <name lang="en">Wire Connector 5-Port</name>
+        <name lang="cs">Svorka 5 vodičů</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

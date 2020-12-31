@@ -2,6 +2,7 @@
     <uuid uuid="{5177612b-985d-46c5-bcfc-e39abbcd8ce3}"/>
     <names>
         <name lang="en">Wire Connector 3-Port</name>
+        <name lang="cs">Svorka 3 vodiče</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer"></elementInformation>

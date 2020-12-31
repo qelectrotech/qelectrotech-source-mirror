@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Relais temporisé</name>
         <name lang="en">Timed relay</name>
+        <name lang="cs">Časové relé</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">coil</kindInformation>

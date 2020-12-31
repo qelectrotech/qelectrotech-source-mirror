@@ -2,7 +2,7 @@
     <uuid uuid="{f09cb4f3-8977-48d7-9996-e27c3cfc2414}"/>
     <names>
         <name lang="fr">Transformateur 230/400-12/24V</name>
-        <name lang="cs">Trafo se třemi vinutími</name>
+        <name lang="cs">Trafo se dvěma vinutími s odbočkami</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Transformateur 230/400-12/24V</elementInformation>

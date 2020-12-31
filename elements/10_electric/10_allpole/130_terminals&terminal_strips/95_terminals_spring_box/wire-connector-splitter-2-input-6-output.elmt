@@ -2,6 +2,7 @@
     <uuid uuid="{378a8f33-57d4-4461-992b-3987bf143846}"/>
     <names>
         <name lang="en">Wire Connector Splitter 2 Input-6 Output</name>
+        <name lang="cs">Rozbočovací svorka 2 vstupy, 6 výstupů</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

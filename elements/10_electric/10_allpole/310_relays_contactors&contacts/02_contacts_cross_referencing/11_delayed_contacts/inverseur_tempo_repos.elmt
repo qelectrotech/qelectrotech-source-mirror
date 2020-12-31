@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Timed switch rest </name>
         <name lang="fr">Inverseur temporisé repos</name>
+        <name lang="cs">Přepínací kontakt zpožděný odpad</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

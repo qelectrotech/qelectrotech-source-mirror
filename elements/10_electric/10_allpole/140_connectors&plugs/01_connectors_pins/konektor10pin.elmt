@@ -1,7 +1,7 @@
 <definition type="element" height="110" hotspot_y="73" version="0.70" width="40" hotspot_x="21" link_type="simple">
     <uuid uuid="{c438e710-e5c3-4a82-ae4d-3d1dfe111c13}"/>
     <names>
-        <name lang="cs">Konektor 10 pin</name>
+        <name lang="cs">Konektor 10 pin levý</name>
     </names>
     <elementInformations/>
     <informations></informations>

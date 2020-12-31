@@ -8,7 +8,7 @@
         <name lang="fr">Disjoncteur bipolaire 2 poles proteges</name>
         <name lang="pl">Wyłącznik</name>
         <name lang="nl">Lastscheider 2</name>
-        <name lang="cs">Dvojpólový jistič 2 póly chránící</name>
+        <name lang="cs">Dvoupólový jistič 2 póly chránící</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

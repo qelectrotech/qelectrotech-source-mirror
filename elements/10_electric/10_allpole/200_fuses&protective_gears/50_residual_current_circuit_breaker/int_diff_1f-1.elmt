@@ -10,7 +10,7 @@
         <name lang="pl">Wyłącznik różnicowoprądowy dwubiegunowy</name>
         <name lang="es">Dispositivo diferencial residual</name>
         <name lang="nl">Aardlekschakelaar</name>
-        <name lang="cs">Rozdílový jistič</name>
+        <name lang="cs">Proudový chránič 2P</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

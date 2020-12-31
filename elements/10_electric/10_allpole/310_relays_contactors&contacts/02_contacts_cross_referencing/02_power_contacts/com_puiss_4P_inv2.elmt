@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Contactor 2 changeover 4 poles</name>
         <name lang="fr">Contacteur 2 inverseur 4 poles</name>
+        <name lang="cs">Stykač 2 s mech. blokováním 4p</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">4</kindInformation>

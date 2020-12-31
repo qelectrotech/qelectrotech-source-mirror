@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Interrupteur sectionneur biphasé</name>
         <name lang="es">Seccionador 2P mando de palanca</name>
+        <name lang="cs">Odpínač 2P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

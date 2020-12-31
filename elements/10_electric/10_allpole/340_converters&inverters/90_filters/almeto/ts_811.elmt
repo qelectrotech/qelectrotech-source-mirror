@@ -1,7 +1,7 @@
 <definition hotspot_x="26" link_type="simple" height="60" type="element" width="60" version="0.80" hotspot_y="29">
     <uuid uuid="{f199d479-3cac-4ce9-ac7a-0459fe8fa72e}"/>
     <names>
-        <name lang="cs">Filtr TS 811 1751</name>
+        <name lang="cs">RFI filtr TS 811 1751</name>
         <name lang="fr">Filtr TS 811 1751</name>
     </names>
     <elementInformations>

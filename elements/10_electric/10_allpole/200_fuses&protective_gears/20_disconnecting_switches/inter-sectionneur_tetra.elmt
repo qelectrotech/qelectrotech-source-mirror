@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Interrupteur sectionneur tétrapolaire</name>
         <name lang="en">Four pole switch disconnector</name>
+        <name lang="cs">Odpojovač 4P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

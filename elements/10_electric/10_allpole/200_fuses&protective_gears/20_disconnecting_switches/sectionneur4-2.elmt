@@ -11,7 +11,7 @@
         <name lang="pl">Rozłącznik</name>
         <name lang="es">Seccionador</name>
         <name lang="nl">Scheidingsschakelaar</name>
-        <name lang="cs">Odpojovač</name>
+        <name lang="cs">Pojistkový odpínač 3P</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
