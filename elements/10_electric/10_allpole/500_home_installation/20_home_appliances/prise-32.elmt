@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Prise 32 A</name>
         <name lang="pl">Gniazdo wtyczkowe trójbiegunowe</name>
+        <name lang="cs">Zásuvka 32A 1f</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

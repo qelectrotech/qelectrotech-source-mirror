@@ -3,6 +3,7 @@
     <names>
         <name lang="pl">Gniazdo wtyczkowe pięciobiegunowe 3P+N+E</name>
         <name lang="fr">Prise Tri + N 16 A</name>
+        <name lang="cs">Zásuvka 3f+PEN 16A</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

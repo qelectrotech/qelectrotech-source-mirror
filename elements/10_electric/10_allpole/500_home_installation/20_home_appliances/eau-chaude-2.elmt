@@ -3,6 +3,7 @@
     <names>
         <name lang="pl">Podgrzewacz wody</name>
         <name lang="fr">Eau Chaude Sanitaire 2</name>
+        <name lang="cs">Ohřívač vody</name>
     </names>
     <elementInformations/>
     <informations>cbh41</informations>

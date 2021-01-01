@@ -2,6 +2,7 @@
     <uuid uuid="{e68e1a21-3537-49c1-9cf3-f3008f0ab0dd}"/>
     <names>
         <name lang="fr">Garage mono</name>
+        <name lang="cs">Garáž 1f</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

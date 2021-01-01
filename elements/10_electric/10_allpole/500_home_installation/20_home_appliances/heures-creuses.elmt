@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Heures Creuses</name>
         <name lang="pl">Zegar sterujący licznika</name>
+        <name lang="cs">Mimo špičku</name>
     </names>
     <elementInformations/>
     <informations>cbh41</informations>

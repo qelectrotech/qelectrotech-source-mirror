@@ -5,6 +5,7 @@
         <name lang="fr">Electrovanne avec connecteur</name>
         <name lang="pl">Elektrozawór</name>
         <name lang="de">Magnetventil mit Stecker</name>
+        <name lang="cs">Elektroventil s konektorem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

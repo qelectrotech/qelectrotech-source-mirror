@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Prise Extérieure 16 A</name>
         <name lang="pl">Gniazdo wtyczkowe trójbiegunowe zewnętrzne</name>
+        <name lang="cs">Venkovní zásuvka 16A 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>

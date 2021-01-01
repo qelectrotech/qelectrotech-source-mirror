@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Sèche-Serviettes</name>
         <name lang="pl">Chłodziarka</name>
+        <name lang="cs">Sušák na ručníky</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

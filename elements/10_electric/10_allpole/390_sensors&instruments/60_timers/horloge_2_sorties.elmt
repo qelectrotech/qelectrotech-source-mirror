@@ -8,7 +8,7 @@
         <name lang="fr">Horloge 2 sorties</name>
         <name lang="pl">Przekaźnik czasowy wielozestykowy</name>
         <name lang="es">Interruptor temporizado 2 salidas</name>
-        <name lang="cs">Časový spínač se dvěma výstupy</name>
+        <name lang="cs">Časový spínač 2x NC/NO</name>
         <name lang="nl">Tijdschakelaar 2 contacten</name>
     </names>
     <informations>Author: The QElectroTech team

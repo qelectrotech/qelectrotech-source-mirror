@@ -1,7 +1,7 @@
 <definition hotspot_y="39" type="element" height="80" width="50" hotspot_x="25" link_type="simple" version="0.5">
     <uuid uuid="{da2fc8c2-5a5f-48f4-9bf5-88cd6048fb3f}"/>
     <names>
-        <name lang="cs">Počítadlo watthodin(en_60617) </name>
+        <name lang="cs">Činný elektroměr</name>
         <name lang="nl">Watt uur meter (en_60617)</name>
         <name lang="it">Misuratore di Wh (en_60617)</name>
         <name lang="de">Wattstundenzähler (EN 60617)</name>

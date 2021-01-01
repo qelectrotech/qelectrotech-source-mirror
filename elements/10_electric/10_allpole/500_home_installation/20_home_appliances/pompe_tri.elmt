@@ -2,6 +2,7 @@
     <uuid uuid="{ebb83245-5127-4058-8896-29dda64268cc}"/>
     <names>
         <name lang="fr">Pompe tri</name>
+        <name lang="cs">Čerpadlo 3f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

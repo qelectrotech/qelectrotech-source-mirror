@@ -2,6 +2,7 @@
     <uuid uuid="{f28d938f-7604-4d17-ae61-1bde98ab7d1e}"/>
     <names>
         <name lang="fr">Réfrigérateur</name>
+        <name lang="cs">Chladnička</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -8,7 +8,7 @@
         <name lang="fr">Moteur série,DC</name>
         <name lang="pl">Silnik szeregowy prądu stałego</name>
         <name lang="nl">Motor DC Serie</name>
-        <name lang="cs">Sériový elektromotor, stejnosměrný proud</name>
+        <name lang="cs">Sériový DC motor</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

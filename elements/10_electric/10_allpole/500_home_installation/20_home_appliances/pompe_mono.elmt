@@ -2,6 +2,7 @@
     <uuid uuid="{5bc17679-35b1-49f6-9ff1-667ca8115a29}"/>
     <names>
         <name lang="fr">Pompe mono</name>
+        <name lang="cs">Čerpadlo 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

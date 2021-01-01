@@ -1,7 +1,7 @@
 <definition width="50" hotspot_x="22" type="element" link_type="simple" version="0.5" height="130" hotspot_y="50">
     <uuid uuid="{3e86d752-7dcc-4bec-b6b0-1a02f9138551}"/>
     <names>
-        <name lang="cs">Přerušovač IMB</name>
+        <name lang="cs">Odpínač s uzemňovačem IMB</name>
         <name lang="pl">Rozłącznik IMB</name>
         <name lang="it">Interruttore IMB</name>
         <name lang="en">Switch IMB</name>

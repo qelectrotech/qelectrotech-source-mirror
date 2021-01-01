@@ -8,7 +8,7 @@
         <name lang="fr">Horloge</name>
         <name lang="pl">Przekaźnik czasowy</name>
         <name lang="es">Interruptor temporizado</name>
-        <name lang="cs">Časový spínač</name>
+        <name lang="cs">Časový spínač NC/NO</name>
         <name lang="nl">Tijdschakelaar</name>
     </names>
     <informations>Author: The QElectroTech team

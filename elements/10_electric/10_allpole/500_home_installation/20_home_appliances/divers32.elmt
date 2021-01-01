@@ -2,6 +2,7 @@
     <uuid uuid="{86c35f36-8f09-44eb-a432-b064f89b8f6a}"/>
     <names>
         <name lang="fr">Divers 32 A</name>
+        <name lang="cs">Různé 32 A 1f</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

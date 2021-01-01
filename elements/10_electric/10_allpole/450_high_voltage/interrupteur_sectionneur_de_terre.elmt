@@ -1,7 +1,7 @@
 <definition width="20" hotspot_x="10" type="element" link_type="simple" version="0.5" height="50" hotspot_y="29">
     <uuid uuid="{c6339842-c3fa-439f-9107-c0d7b2388614}"/>
     <names>
-        <name lang="cs">Vypínač uzemnění</name>
+        <name lang="cs">Uzemňovač</name>
         <name lang="pt">Interruptor-seccionador de terra</name>
         <name lang="it">Interruttore-sezionatore di terra</name>
         <name lang="pl">Uziemnik</name>

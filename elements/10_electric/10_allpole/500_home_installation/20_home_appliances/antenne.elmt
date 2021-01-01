@@ -4,6 +4,7 @@
         <name lang="pl">Antena</name>
         <name lang="en">Antenna</name>
         <name lang="fr">Antenne</name>
+        <name lang="cs">Anténa</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

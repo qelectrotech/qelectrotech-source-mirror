@@ -2,6 +2,7 @@
     <uuid uuid="{9575f3fc-22b2-452c-8662-cba5b935b170}"/>
     <names>
         <name lang="fr">Filtration</name>
+        <name lang="cs">Filtrace</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

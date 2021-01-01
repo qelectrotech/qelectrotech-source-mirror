@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Chaudière</name>
         <name lang="pl">Kocioł</name>
+        <name lang="cs">Kotel 1f</name>
     </names>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>

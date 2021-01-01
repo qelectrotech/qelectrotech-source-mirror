@@ -9,7 +9,7 @@
         <name lang="pl">Czujnik pojemnościowy czteroprzewodowy</name>
         <name lang="es">Sensor capacitivo 4 terminales</name>
         <name lang="nl">Capacitief 4</name>
-        <name lang="cs">Kapacitní čidlo se čtyřmi svorkami</name>
+        <name lang="cs">Kapacitní snímač 4 vodiče</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
