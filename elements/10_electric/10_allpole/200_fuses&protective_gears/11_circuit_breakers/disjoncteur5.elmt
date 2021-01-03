@@ -8,7 +8,7 @@
         <name lang="pl">Wyłącznik</name>
         <name lang="es">Disyuntor 4P</name>
         <name lang="nl">Lastscheider 4</name>
-        <name lang="cs">Pojistkový odpínač 3p+N</name>
+        <name lang="cs">Čtyřpólový jistič</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
