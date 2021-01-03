@@ -1,5 +1,4 @@
 <definition hotspot_x="64" height="70" width="130" type="element" hotspot_y="34" version="0.80" link_type="simple">
-    <uuid uuid="{3779ce73-43e9-46de-996b-e6942248c2bb}"/>
     <names>
         <name lang="fr">289-128</name>
         <name lang="en">289-128</name>
@@ -36,9 +35,9 @@
         <rect rx="0" ry="0" antialias="false" height="10" width="30" y="-5" x="-15" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <polygon x3="-40" y4="10" antialias="false" x1="-60" x4="-60" x2="-40" y2="-10" y3="10" closed="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon x3="40" y4="10" antialias="false" x1="60" x4="60" x2="40" y2="-10" y3="10" closed="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal name="R1.2" orientation="e" y="-10" x="60" uuid="{63b4896d-aa1a-4385-8c54-3ea2bd9a09fb}"/>
-        <terminal name="R1.1" orientation="w" y="-10" x="-60" uuid="{e7c25c68-c714-4ce3-9ac0-69d9191b2039}"/>
-        <terminal name="R2.2" orientation="e" y="10" x="60" uuid="{b304bbc7-7b5a-4703-9b0a-c29421179bfe}"/>
-        <terminal name="R2.1" orientation="w" y="10" x="-60" uuid="{769d0dbf-101e-4360-9d8b-0f9413c452aa}"/>
+        <terminal name="R1.2" orientation="e" y="-10" x="60"/>
+        <terminal name="R1.1" orientation="w" y="-10" x="-60"/>
+        <terminal name="R2.2" orientation="e" y="10" x="60"/>
+        <terminal name="R2.1" orientation="w" y="10" x="-60"/>
     </description>
 </definition>

@@ -13,27 +13,12 @@
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
+        <rect y="-40" rx="0" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" ry="0" antialias="false" width="720"/>
         <text y="29" x="-355" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="PE" rotation="0"/>
-        <circle y="27.5" x="-362.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" x1="-360" y2="27.5" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12.5" x2="-360" end1="none"/>
-        <circle y="27.5" x="357.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" x1="-360" y2="50" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x2="-360" end1="none"/>
         <line length1="1.5" x1="-360" y2="30" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="30" x2="360" end1="none"/>
-        <line length1="1.5" x1="360" y2="27" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x2="360" end1="none"/>
-        <line length1="1.5" x1="360" y2="50" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="33" x2="360" end1="none"/>
         <text y="-11" x="-355" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="0-230V" rotation="0"/>
         <text y="9" x="-355" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="0V" rotation="0"/>
-        <circle y="7.5" x="-362.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" x1="-360" y2="7.5" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.5" x2="-360" end1="none"/>
-        <circle y="-12.5" x="-362.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle y="-12.5" x="357.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle y="7.5" x="357.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" x1="-360" y2="50" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x2="360" end1="none"/>
-        <line length1="1.5" x1="-360" y2="-40" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x2="360" end1="none"/>
-        <line length1="1.5" x1="-360" y2="-13" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x2="-360" end1="none"/>
         <line length1="1.5" x1="-360" y2="10" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10" x2="360" end1="none"/>
-        <line length1="1.5" x1="360" y2="-13" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x2="360" end1="none"/>
-        <line length1="1.5" x1="360" y2="7" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x2="360" end1="none"/>
         <line length1="1.5" x1="-360" y2="-10" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-10" x2="360" end1="none"/>
         <text y="-27" x="-331" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="WAGO 750-621" rotation="0"/>
         <dynamic_text y="-42.5" x="219" z="50" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" uuid="{1369a1dc-f6b4-474f-9d6f-c77aef8e3027}" frame="false" Valignment="AlignTop" rotation="0">
@@ -41,6 +26,12 @@
             <info_name>label</info_name>
         </dynamic_text>
         <text y="-27" x="-139" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Distance Module" rotation="0"/>
+        <polygon y2="-10" y1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="-12.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <polygon y2="10" y1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="7.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <polygon y2="30" y1="30" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="27.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
         <terminal y="10" name="" x="-360" orientation="w" uuid="{9da45865-eb0e-46a3-817d-697b4adf60c6}"/>
         <terminal y="-10" name="" x="-360" orientation="w" uuid="{e42a6c7a-6992-42b3-98a2-818cffc95091}"/>
         <terminal y="10" name="" x="360" orientation="e" uuid="{f7aeda5c-cc5b-44dd-bcc1-ec7c52edc9e5}"/>

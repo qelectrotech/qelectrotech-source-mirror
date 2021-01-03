@@ -21,25 +21,17 @@
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" x="-360" rx="0" y="-40" height="90" width="720" ry="0"/>
         <input size="9" rotate="true" y="41" x="220" text="X123" tagg="label"/>
         <text text="Baudrate:" size="9" x="-224" y="4"/>
         <input text="1000" tagg="none" size="9" rotate="true" x="-160" y="0"/>
         <text size="9" y="-22" x="-39" text="0V"/>
         <text size="9" y="-22" x="-119" text="0V"/>
-        <circle diameter="5" y="-2.5" x="-362.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
-        <line y2="-40" length2="1.5" y1="-40" x2="-283" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
-        <line y2="-40" length2="1.5" y1="-40" x2="360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-37" end2="none"/>
-        <line y2="-40" length2="1.5" y1="-40" x2="-43" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-117" end2="none"/>
-        <line y2="-40" length2="1.5" y1="-40" x2="-123" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-197" end2="none"/>
-        <line y2="-40" length2="1.5" y1="-40" x2="-203" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-277" end2="none"/>
-        <circle diameter="5" y="-42.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
-        <circle diameter="5" y="-42.5" x="-122.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
-        <circle diameter="5" y="-42.5" x="-202.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
-        <circle diameter="5" y="-42.5" x="-282.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
-        <line y2="50" length2="1.5" y1="50" x2="360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
-        <line y2="-2.5" length2="1.5" y1="-40" x2="-360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
-        <line y2="50" length2="1.5" y1="2.5" x2="-360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
-        <line y2="50" length2="1.5" y1="-40" x2="360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="360" end2="none"/>
+        <circle diameter="5" y="-2.5" x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-122.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-282.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
         <text size="9" y="45" x="-330" text="WAGO 750-348"/>
         <text size="9" y="4" x="-318" text="Node ID:"/>
         <input size="9" rotate="true" y="0" x="-265" text="1" tagg="none"/>
