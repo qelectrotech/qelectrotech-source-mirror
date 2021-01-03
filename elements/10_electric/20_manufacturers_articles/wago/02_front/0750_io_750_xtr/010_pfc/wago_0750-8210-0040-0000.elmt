@@ -34,7 +34,7 @@
         <rect ry="0" antialias="false" x="147.845" height="5" y="-132.17" style="line-style:normal;line-weight:thin;filling:gray;color:black" rx="0" width="10"/>
         <text rotation="0" color="#f3f3f3" x="124.845" text="C" y="-112.17" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
         <polygon x1="-55.015" antialias="false" y3="72.525" x4="-55.015" y1="31.755" x3="-50.405" y4="72.525" x2="-50.405" y2="31.755" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text rotation="270" color="#f3f3f3" x="26.4975" text="750-8210/040-000" y="78.4297" font="Sans Serif,8,-1,5,50,0,0,0,0,0"/>
+        <text rotation="270" color="#f3f3f3" x="26.5" text="750-8210/040-000" y="80" font="Sans Serif,8,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#f3f3f3" x="162.142" text="H" y="-103.17" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#f3f3f3" x="162.408" text="F" y="-121.17" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#f3f3f3" x="124.845" text="B" y="-121.17" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>

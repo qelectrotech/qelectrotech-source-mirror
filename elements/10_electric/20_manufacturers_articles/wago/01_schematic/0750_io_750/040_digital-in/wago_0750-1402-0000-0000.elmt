@@ -1,42 +1,36 @@
-<definition width="730" version="0.80" type="element" link_type="simple" hotspot_x="365" height="110" hotspot_y="55">
+<definition hotspot_x="365" link_type="simple" type="element" version="0.80" height="110" hotspot_y="55" width="730">
     <names>
-        <name lang="de">750-1402</name>
-        <name lang="en">750-1402</name>
         <name lang="fr">750-1402</name>
+        <name lang="en">750-1402</name>
+        <name lang="de">750-1402</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">750-1402</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation name="designation" show="1">750-1402</elementInformation>
     </elementInformations>
     <informations>
         Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <text text="Ribbon Cable" x="-79.8438" rotation="0" y="-13" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <line length2="1.5" x1="-360" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-40" length1="1.5" x2="-360" antialias="false" end2="none"/>
-        <circle x="197.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="-42.5" antialias="true"/>
-        <circle x="277.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="-42.5" antialias="true"/>
-        <circle x="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="-42.5" antialias="true"/>
-        <dynamic_text z="28" Valignment="AlignTop" x="220" rotation="0" y="29.5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" text_width="-1" uuid="{8b1a7996-c510-4890-8275-2288ec146d65}" Halignment="AlignLeft" frame="false">
+        <rect ry="0" y="-40" antialias="false" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-360" width="720"/>
+        <rect ry="0" y="-40" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-180" width="280"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-13" text="Ribbon Cable" color="#000000" x="-79.8438"/>
+        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="197.5"/>
+        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="277.5"/>
+        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" text="16DI 24V DC (low side)" color="#000000" x="-130"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" text="+24V" color="#000000" x="201"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" text="21" color="#000000" x="206"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" text="0V" color="#000000" x="281"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" text="22" color="#000000" x="286"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" text="WAGO 750-1402" color="#000000" x="-330"/>
+        <dynamic_text uuid="{8b1a7996-c510-4890-8275-2288ec146d65}" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="29.5" z="13" text_from="ElementInfo" frame="false" text_width="-1" x="220">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line length2="1.5" x1="203" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-40" length1="1.5" x2="277" antialias="false" end2="none"/>
-        <line length2="1.5" x1="283" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-40" length1="1.5" x2="360" antialias="false" end2="none"/>
-        <line length2="1.5" x1="-360" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-40" length1="1.5" x2="-43" antialias="false" end2="none"/>
-        <line length2="1.5" x1="360" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-40" length1="1.5" x2="360" antialias="false" end2="none"/>
-        <line length2="1.5" x1="-37" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-40" length1="1.5" x2="197" antialias="false" end2="none"/>
-        <line length2="1.5" x1="-360" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="50" length1="1.5" x2="360" antialias="false" end2="none"/>
-        <text text="16DI 24V DC (low side)" x="-130" rotation="0" y="45" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text text="+24V" x="201" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text text="21" x="206" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="0V" x="281" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text text="22" x="286" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="WAGO 750-1402" x="-330" rotation="0" y="45" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <polygon y4="-40" x1="-180" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="100" y1="-40" x2="-180" y3="-10" x4="100" antialias="false" closed="false"/>
-        <terminal name="" x="200" orientation="n" y="-40"/>
-        <terminal name="" x="280" orientation="n" y="-40"/>
-        <terminal name="" x="-40" orientation="n" y="-40"/>
+        <terminal orientation="n" y="-40" x="200"/>
+        <terminal orientation="n" y="-40" x="280"/>
+        <terminal orientation="n" y="-40" x="-40"/>
     </description>
 </definition>
