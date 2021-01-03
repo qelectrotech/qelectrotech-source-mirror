@@ -1,0 +1,79 @@
+<definition link_type="simple" width="90" version="0.80" height="110" type="element" hotspot_y="43" hotspot_x="44">
+    <names>
+        <name lang="de">787-1686</name>
+        <name lang="pl">787-1686</name>
+        <name lang="cs">787-1686</name>
+        <name lang="el">787-1686</name>
+        <name lang="it">787-1686</name>
+        <name lang="fr">787-1686</name>
+        <name lang="ar">787-1686</name>
+        <name lang="be">787-1686</name>
+        <name lang="en">787-1686</name>
+        <name lang="es">787-1686</name>
+        <name lang="nl">787-1686</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">787-1686</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <text y="57" color="#000000" text="14" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="11"/>
+        <line y2="-26" length1="1.5" length2="1.5" antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-16" end2="none" y1="-26" end1="none"/>
+        <line y2="-26" length1="1.5" length2="1.5" antialias="false" x1="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end2="none" y1="-26" end1="none"/>
+        <text y="57" color="#000000" text="13" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-9"/>
+        <line y2="-26" length1="1.5" length2="1.5" antialias="false" x1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4" end2="none" y1="-26" end1="none"/>
+        <circle y="-31.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3" x="8.5"/>
+        <line y2="-30" length1="1.1" length2="1.5" antialias="false" x1="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12" end2="none" y1="-27" end1="triangle"/>
+        <rect ry="0" rx="0" y="-40" width="80" height="100" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40"/>
+        <line y2="-30" length1="1.5" length2="1.5" antialias="false" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end2="none" y1="-26" end1="none"/>
+        <line y2="-30" length1="1.5" length2="1.5" antialias="false" x1="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" end2="none" y1="-26" end1="none"/>
+        <text y="27" color="#000000" text="V2 in-" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-37"/>
+        <polygon y3="-20" y2="-24" closed="false" antialias="false" x1="-7" x3="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-17" y1="-24"/>
+        <text y="-13" color="#000000" text="V out-" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="20"/>
+        <dynamic_text frame="false" Valignment="AlignTop" y="-58" text_width="-1" text_from="ElementInfo" z="14" uuid="{d641be1e-6bff-4cb4-8118-2f498044cd16}" font="Sans Serif,8,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" rotation="0" x="-37">
+            <text></text>
+            <info_name>plant</info_name>
+        </dynamic_text>
+        <text y="-33" color="#000000" text="V out+" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="20"/>
+        <circle y="27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5"/>
+        <circle y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="37.5"/>
+        <text y="40" color="#000000" text="WAGO 787-1686" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" x="-33"/>
+        <circle y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5"/>
+        <circle y="-32.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5"/>
+        <circle y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5"/>
+        <circle y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="37.5"/>
+        <text y="7" color="#000000" text="V2 in+" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-37"/>
+        <text y="-33" color="#000000" text="V1 in+" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-37"/>
+        <text y="-13" color="#000000" text="V1 in-" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-37"/>
+        <line y2="-10" length1="1.5" length2="1.5" antialias="false" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" end2="none" y1="-10" end1="none"/>
+        <polygon y3="-10" y2="30" closed="false" antialias="false" x1="-40" x3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" y1="30"/>
+        <circle y="-11.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3" x="18.5"/>
+        <line y2="-30" length1="1.5" length2="1.5" antialias="false" x1="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" end2="none" y1="-30" end1="none"/>
+        <polygon y3="-30" y2="10" closed="false" antialias="false" x1="-12" x3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" y1="10"/>
+        <circle y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="7.5"/>
+        <circle y="57.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-12.5"/>
+        <polygon y4="45" y3="47" y2="47" closed="false" antialias="false" x1="-10" x3="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" x4="4" y1="60"/>
+        <polygon y3="60" y2="47" closed="false" antialias="false" x1="4" x3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" y1="47"/>
+        <line y2="14" length1="1.5" length2="1.5" antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-16" end2="none" y1="14" end1="none"/>
+        <line y2="14" length1="1.5" length2="1.5" antialias="false" x1="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end2="none" y1="14" end1="none"/>
+        <line y2="14" length1="1.5" length2="1.5" antialias="false" x1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4" end2="none" y1="14" end1="none"/>
+        <line y2="10" length1="1.1" length2="1.5" antialias="false" x1="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12" end2="none" y1="13" end1="triangle"/>
+        <line y2="10" length1="1.5" length2="1.5" antialias="false" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end2="none" y1="14" end1="none"/>
+        <line y2="10" length1="1.5" length2="1.5" antialias="false" x1="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" end2="none" y1="14" end1="none"/>
+        <polygon y3="20" y2="16" closed="false" antialias="false" x1="-7" x3="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-17" y1="16"/>
+        <line y2="10" length1="1.5" length2="1.5" antialias="false" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" end2="none" y1="10" end1="none"/>
+        <line y2="-30" length1="1.5" length2="1.5" antialias="false" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" end2="none" y1="-30" end1="none"/>
+        <terminal y="60" orientation="s" name="NO13" x="-10"/>
+        <terminal y="60" orientation="s" name="NO14" x="10"/>
+        <terminal y="-10" orientation="w" name="V1in-" x="-40"/>
+        <terminal y="30" orientation="w" name="V2in-" x="-40"/>
+        <terminal y="10" orientation="w" name="V2in+" x="-40"/>
+        <terminal y="-30" orientation="w" name="V1in+" x="-40"/>
+        <terminal y="-30" orientation="e" name="Vout+" x="40"/>
+        <terminal y="-10" orientation="e" name="Vout-" x="40"/>
+    </description>
+</definition>
