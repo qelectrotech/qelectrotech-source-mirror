@@ -46,6 +46,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.ui
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.ui
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.ui
+  ${QET_DIR}/sources/editor/ui/dynamictextfieldeditor.ui
   ${QET_DIR}/sources/editor/ui/elementpropertieseditorwidget.ui
   ${QET_DIR}/sources/editor/ui/ellipseeditor.ui
   ${QET_DIR}/sources/editor/ui/lineeditor.ui
