@@ -22,7 +22,7 @@ add_definitions(-DQT_DEPRECATED_WARNINGS)
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 # disables all the APIs deprecated before Qt 6.0.0
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+#add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
 
 # to enable function names and line numbers even for release builds
 add_definitions(-DQT_MESSAGELOGCONTEXT)

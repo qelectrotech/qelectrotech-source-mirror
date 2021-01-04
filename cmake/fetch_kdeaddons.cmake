@@ -25,7 +25,7 @@ if(DEFINED BUILD_WITH_KF5)
 
     if(NOT DEFINED KF5_GIT_TAG)
       #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
-      set(KF5_GIT_TAG v5.70.0)
+      set(KF5_GIT_TAG v5.77.0)
     endif()
 
     # Fix stop the run autotests of kcoreaddons
