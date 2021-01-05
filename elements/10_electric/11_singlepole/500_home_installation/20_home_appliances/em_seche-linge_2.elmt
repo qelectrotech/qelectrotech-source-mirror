@@ -2,6 +2,7 @@
     <uuid uuid="{050f4261-0d2a-45df-ba58-562a248196b4}"/>
     <names>
         <name lang="fr">Sèche-Linge</name>
+        <name lang="cs">Sušička</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

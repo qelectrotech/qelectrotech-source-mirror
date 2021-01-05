@@ -2,6 +2,7 @@
     <uuid uuid="{f5e689b4-6cec-4357-8924-56ac9770b54c}"/>
     <names>
         <name lang="fr">Moteur tri</name>
+        <name lang="cs">Motor 3f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

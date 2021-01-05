@@ -2,6 +2,7 @@
     <uuid uuid="{72b2a3bb-add0-43b6-a879-0f274d95845b}"/>
     <names>
         <name lang="fr">Congélateur</name>
+        <name lang="cs">Mrazák</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{7a37a717-5d16-4aab-8205-835fd19089ed}"/>
     <names>
         <name lang="fr">Lave-Vaisselle</name>
+        <name lang="cs">Myčka</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

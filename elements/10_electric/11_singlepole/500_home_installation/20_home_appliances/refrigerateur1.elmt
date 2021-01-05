@@ -2,6 +2,7 @@
 <uuid uuid="{02BAB67A-59A3-468C-A27D-47DA879439F4}"/><names>
         <name lang="fr">Réfrigérateur</name>
         <name lang="pl">Chłodziarka</name>
+        <name lang="cs">Lednička, chladnička</name>
     </names>
     <informations>CBH41</informations>
     <description>

@@ -11,7 +11,7 @@
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="es">Seccionador</name>
         <name lang="nl">Zekeringscheider 1</name>
-        <name lang="cs">Odpojovač</name>
+        <name lang="cs">Pojistkový odpojovač</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
