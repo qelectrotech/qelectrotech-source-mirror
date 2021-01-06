@@ -2,6 +2,7 @@
     <uuid uuid="{c34e2a02-83f4-4262-9717-77ee772d242d}"/>
     <names>
         <name lang="fr">Fortigate 20C</name>
+        <name lang="cs">Fortigate 20C</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">Fortigate 20C</elementInformation>

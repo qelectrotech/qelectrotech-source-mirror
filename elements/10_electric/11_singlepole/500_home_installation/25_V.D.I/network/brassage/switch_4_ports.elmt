@@ -2,6 +2,7 @@
     <uuid uuid="{fb180e97-f10f-48f0-92fb-26ea4c9f5ce9}"/>
     <names>
         <name lang="fr">Switch 4 ports</name>
+        <name lang="cs">Přepínač 4 porty</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

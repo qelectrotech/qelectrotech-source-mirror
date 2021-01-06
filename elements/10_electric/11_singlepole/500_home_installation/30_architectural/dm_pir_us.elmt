@@ -5,6 +5,7 @@
         <name lang="it">Sensore PIR + ultrasuoni</name>
         <name lang="pl">Czujnik dualny</name>
         <name lang="de">PIR-Ulltraschallmelder</name>
+        <name lang="cs">PIR ultrazvukový detektor</name>
     </names>
     <informations></informations>
     <description>

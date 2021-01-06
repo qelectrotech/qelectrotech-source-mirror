@@ -5,6 +5,7 @@
         <name lang="it">Sensore ad ultrasuoni</name>
         <name lang="pl">Czujnik ultradźwiękowy</name>
 	<name lang="de">Ultraschalldetektor</name>
+	<name lang="cs">Ultrazvukový detektor</name>
     </names>
     <informations></informations>
     <description>

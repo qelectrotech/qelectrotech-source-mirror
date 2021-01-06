@@ -2,6 +2,7 @@
     <uuid uuid="{de17f00f-4cf7-443b-b34a-9d9a3c8660c6}"/>
     <names>
         <name lang="fr">Dérivateur 1 D</name>
+        <name lang="cs">Rozbočovač</name>
     </names>
     <informations>Baboune41</informations>
     <description>
