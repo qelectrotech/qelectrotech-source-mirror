@@ -32,13 +32,16 @@
 #include <QPointer>
 #include <assert.h>
 
-DynamicTextFieldEditor::DynamicTextFieldEditor(
-	QETElementEditor *editor, PartDynamicTextField *text_field, QWidget *parent) :
+DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
+											   PartDynamicTextField *text_field,
+											   QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	ui(new Ui::DynamicTextFieldEditor) {
+	ui(new Ui::DynamicTextFieldEditor)
+{
 	ui -> setupUi(this);
 	ui -> m_composite_text_pb -> setDisabled(true);
 	ui -> m_elmt_info_cb -> setDisabled(true);
+	setupWidget();
 	if(text_field) {
 		setPart(text_field);
 	}
@@ -137,7 +140,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 #ifdef BUILD_WITHOUT_KF5
 #else
-		ui -> m_color_kpb -> setColor(m_text_field.data() -> color());
+		m_color_kpb -> setColor(m_text_field.data() -> color());
 #endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
@@ -160,6 +163,20 @@ void DynamicTextFieldEditor::updateForm()
 
 		on_m_text_from_cb_activated(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
 	}
+}
+
+void DynamicTextFieldEditor::setupWidget()
+{
+#ifdef BUILD_WITHOUT_KF5
+#else
+	m_color_kpb = new KColorButton(this);
+	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
+
+	connect(m_color_kpb, &KColorButton::changed,
+			this, &DynamicTextFieldEditor::on_m_color_kpb_changed);
+
+	ui->m_main_grid_layout->addWidget(m_color_kpb, 7, 1, 1, 2);
+#endif
 }
 
 void DynamicTextFieldEditor::setUpConnections()

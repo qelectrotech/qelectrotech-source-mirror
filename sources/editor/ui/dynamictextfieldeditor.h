@@ -21,6 +21,11 @@
 #include "../elementitemeditor.h"
 #include "../graphicspart/partdynamictextfield.h"
 
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KColorButton>
+#endif
+
 namespace Ui {
 	class DynamicTextFieldEditor;
 }
@@ -43,6 +48,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		void updateForm() override;
 
 	private:
+		void setupWidget();
 		void fillInfoComboBox();
 		void setUpConnections();
 		void disconnectConnections();
@@ -68,6 +74,11 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		QPointer<PartDynamicTextField> m_text_field;
 		QList<PartDynamicTextField*> m_parts;
 		QList<QMetaObject::Connection> m_connection_list;
+
+	#ifdef BUILD_WITHOUT_KF5
+	#else
+		KColorButton* m_color_kpb = nullptr;
+	#endif
 };
 
 #endif // DYNAMICTEXTFIELDEDITOR_H
