@@ -63,7 +63,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation>Os desenvolvedores do Qelectrotech</translation>
+        <translation> Os desenvolvedores do Qelectrotech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
@@ -358,7 +358,7 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="119"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="142"/>
         <source>Marges :</source>
-        <translation>Margens</translation>
+        <translation>Margens :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
@@ -974,7 +974,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>Couleur du texte:</source>
-        <translation>Cor do texto</translation>
+        <translation>Cor do texto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
@@ -3035,7 +3035,7 @@ que você cria. Entradas de texto e números
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
         <source>Parcourir...</source>
-        <translation>Personalizado</translation>
+        <translation>Personalizado...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
@@ -4745,7 +4745,8 @@ Cor do condutor : %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="333"/>
         <source>
 Section du conducteur : %1</source>
-        <translation>Seção do condutor : %1</translation>
+        <translation>
+Seção do condutor : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="340"/>
@@ -5096,7 +5097,7 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
         <source>Exporter sous : </source>
-        <translation>Exportar como:</translation>
+        <translation>Exportar como : </translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="571"/>
@@ -8036,8 +8037,8 @@ O que você deseja fazer?</translation>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
         <translation>
-            <numerusform>%n tabela(s)</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n tabela</numerusform>
+            <numerusform>%n tabelas</numerusform>
         </translation>
     </message>
     <message>
@@ -10465,7 +10466,7 @@ Os outros campos não são utilizados.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part color</comment>
-        <translation>Azul: azul céu profundo </translation>
+        <translation>Azul : escuro</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="139"/>
