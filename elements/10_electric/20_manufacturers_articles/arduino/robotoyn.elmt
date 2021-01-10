@@ -2,6 +2,7 @@
     <uuid uuid="{8abf8460-f091-4370-af12-c4d111a487c9}"/>
     <names>
         <name lang="fr">WeMOS Mega + WiFi R3 ATmega2560 + ESP8266 </name>
+        <name lang="cs">WeMOS Mega + WiFi R3 ATmega2560 + ESP8266</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

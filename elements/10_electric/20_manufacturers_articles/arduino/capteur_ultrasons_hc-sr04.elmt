@@ -2,7 +2,7 @@
     <uuid uuid="{f2cd8537-b764-45ed-a3a5-d68887ed2681}"/>
     <names>
         <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>
-        <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
+        <name lang="cs">Ultrazvukové čidlo vzdálenosti HC-SR04</name>
         <name lang="fr">Capteur HC-SR04</name>
         <name lang="it">Sensore ultrasonico HC-SR04</name>
         <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>

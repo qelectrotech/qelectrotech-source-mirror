@@ -2,6 +2,7 @@
     <uuid uuid="{241832b7-c9e1-4a9e-bf49-961bd2074811}"/>
     <names>
         <name lang="en">Arduino Uno</name>
+        <name lang="cs">Arduino Uno</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>
