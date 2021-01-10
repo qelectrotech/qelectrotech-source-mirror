@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Proportional directional valve with OBE</name>
         <name lang="es">Válvula direccional proporcional con OBE</name>
+        <name lang="cs">Proporcionální směrový ventil s OBE</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

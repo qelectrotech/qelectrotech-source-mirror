@@ -3,6 +3,7 @@
         <name lang="fr">Vue d'ensemble (bornes)</name>
         <name lang="de">Übersicht (Klemmen)</name>
         <name lang="en">Overview (terminals)</name>
+        <name lang="cs">Přehled (svorky)</name>
     </names>
     <informations></informations>
     <description>

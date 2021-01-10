@@ -2,6 +2,7 @@
     <uuid uuid="{78d7b071-6d5d-4ab5-81f2-62f0a37906ea}"/>
     <names>
         <name lang="en">2806.B.0.0.0.2.01.000</name>
+        <name lang="cs">Mazací pumpa 2806.B.0.0.0.2.01.000</name>
        </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

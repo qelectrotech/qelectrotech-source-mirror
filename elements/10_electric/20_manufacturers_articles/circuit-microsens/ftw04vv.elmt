@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Raumfühler für relative Feuchte und Temperatur</name>
         <name lang="en">Room sensor for relative humidity and temperature</name>
+        <name lang="cs">Prostorové čidlo relativní vlhkosti a teploty</name>
     </names>
     <elementInformations>
         <elementInformation name="machine-manufacturer-reference" show="1">MOSB0102030405</elementInformation>

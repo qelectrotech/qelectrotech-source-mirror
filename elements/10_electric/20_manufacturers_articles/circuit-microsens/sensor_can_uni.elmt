@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Sensor_CAN</name>
         <name lang="en">Sensor_CAN</name>
+        <name lang="cs">Sensor_CAN</name>
     </names>
     <elementInformations/>
     <informations></informations>
