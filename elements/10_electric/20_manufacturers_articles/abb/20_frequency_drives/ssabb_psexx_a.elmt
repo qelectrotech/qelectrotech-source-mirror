@@ -2,7 +2,7 @@
     <uuid uuid="{ced73241-a6a5-43b6-aeca-e5a44250954b}"/>
     <names>
         <name lang="en">ABB PSE</name>
-        <name lang="cs">ABB PSE</name>
+        <name lang="cs">PSE</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>

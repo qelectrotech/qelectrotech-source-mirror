@@ -2,7 +2,7 @@
     <uuid uuid="{27997ff4-b8fe-4890-9674-7c87177a1c8f}"/>
     <names>
         <name lang="en">ABB PST</name>
-        <name lang="cs">ABB PST</name>
+        <name lang="cs">PST</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>

@@ -5,6 +5,7 @@
         <name lang="en">ABB PFEA111/112</name>
         <name lang="de">ABB PFEA111/112</name>
         <name lang="fi">ABB PFEA111/112</name>
+        <name lang="cs">Tenzometr PFEA 111/112 IP65</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>
