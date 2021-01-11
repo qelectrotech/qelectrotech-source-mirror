@@ -2,6 +2,7 @@
     <uuid uuid="{897ad3e7-0465-444e-9335-8d2fc4e03072}"/>
     <names>
         <name lang="en">DVP16SP11R (outputs)</name>
+        <name lang="cs">DVP16SP11R (výstupy)</name>
     </names>
     <elementInformations/>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

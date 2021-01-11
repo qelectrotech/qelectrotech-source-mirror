@@ -2,6 +2,7 @@
     <uuid uuid="{201e02f3-08a7-4e96-a917-03c035f61698}"/>
     <names>
         <name lang="fr">WEMOS DI PRO</name>
+        <name lang="cs">WEMOS DI PRO</name>
     </names>
     <elementInformations/>
     <informations></informations>

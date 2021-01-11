@@ -9,7 +9,7 @@
         <name lang="el">12V-Power-Suply</name>
         <name lang="en">12V-Power-Suply</name>
         <name lang="es">12V-Power-Suply</name>
-        <name lang="cs">12V-Power-Suply</name>
+        <name lang="cs">Napájecí zdroj 12V</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">GCE Electronics</elementInformation>

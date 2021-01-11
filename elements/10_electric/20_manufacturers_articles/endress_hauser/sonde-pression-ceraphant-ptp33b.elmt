@@ -2,6 +2,7 @@
     <uuid uuid="{6f0519ea-d651-4745-a3e0-7e6a673ac1bb}"/>
     <names>
         <name lang="fr">Sonde Pression CERAPHANT PTP33B</name>
+        <name lang="cs">Tlaková sonda CERAPHANT PTP33B</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

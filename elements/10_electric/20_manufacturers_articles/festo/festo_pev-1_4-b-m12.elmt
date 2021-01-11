@@ -2,6 +2,7 @@
     <uuid uuid="{a99db29b-c987-4ef9-846f-9d21c621ce06}"/>
     <names>
         <name lang="en">PEV-1/4-B-M12 (395540)</name>
+        <name lang="cs">PEV-1/4-B-M12 (395540)</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

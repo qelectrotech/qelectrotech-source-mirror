@@ -3,6 +3,7 @@
     <names>
         <name lang="hu">Eurotherm 2408i</name>
         <name lang="en">Eurotherm 2408i</name>
+        <name lang="cs">Eurotherm 2408i</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>
