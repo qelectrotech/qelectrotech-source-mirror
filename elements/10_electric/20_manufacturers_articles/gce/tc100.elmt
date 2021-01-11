@@ -2,6 +2,7 @@
     <uuid uuid="{aab3b28e-2678-47e1-8c9c-6989ce1cb8ad}"/>
     <names>
         <name lang="fr">TC-100</name>
+        <name lang="cs">TC-100</name>
     </names>
     <elementInformations>
         <elementInformation name="plant" show="1"></elementInformation>

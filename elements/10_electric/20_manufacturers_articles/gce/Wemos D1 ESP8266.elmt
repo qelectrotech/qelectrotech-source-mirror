@@ -2,6 +2,7 @@
     <uuid uuid="{519ee754-8140-4e07-9658-7a4c1f6226a0}"/>
     <names>
         <name lang="fr">WEMOS D1 </name>
+        <name lang="cs">WEMOS D1</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1"></elementInformation>

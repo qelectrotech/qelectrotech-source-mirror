@@ -2,6 +2,7 @@
     <uuid uuid="{b97af216-3748-4e11-906f-d925b563b47a}"/>
     <names>
         <name lang="fr">Sonde Température TMR345</name>
+        <name lang="cs">Snímač teploty TMR345</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

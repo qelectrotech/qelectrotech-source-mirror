@@ -2,6 +2,7 @@
     <uuid uuid="{122990aa-e1f2-400d-a700-d88ee16a70d3}"/>
     <names>
         <name lang="fr">Débimétre PROMAG 10</name>
+        <name lang="cs">Průtokoměr PROMAG 10</name>
     </names>
     <elementInformations>
         <elementInformation name="quantity" show="1"></elementInformation>
