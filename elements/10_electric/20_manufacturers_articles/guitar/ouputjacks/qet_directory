@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
         <name lang="en">Output Jacks</name>
-        <name lang="en">Sorties Jacks</name>
+        <name lang="fr">Sorties Jacks</name>
+        <name lang="cs">Output Jacks</name>
     </names>
 </qet-directory>

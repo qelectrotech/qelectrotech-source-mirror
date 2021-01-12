@@ -2,6 +2,7 @@
     <uuid uuid="{4042ea90-c9fa-498b-9c15-c703acad0e63}"/>
     <names>
         <name lang="en">Output Jack 2</name>
+        <name lang="cs">Output Jack 2</name>
     </names>
     <informations>Author: Thomas McMillan Grant Bennett
 Name: Output Jack

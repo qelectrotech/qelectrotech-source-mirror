@@ -2,6 +2,7 @@
     <uuid uuid="{51fc3490-b6b0-44f6-a8d5-7c03310b5408}"/>
     <names>
         <name lang="en">4 Way Switch</name>
+        <name lang="cs">4 Way Switch</name>
     </names>
     <informations>Author: Thomas McMillan Grant Bennett
 Name: 4 Way Switch

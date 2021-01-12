@@ -2,6 +2,7 @@
     <uuid uuid="{939a5c53-668d-40b3-ad4a-56ec6642db8f}"/>
     <names>
         <name lang="en">ground</name>
+        <name lang="cs">ground</name>
     </names>
     <informations>Author: Thomas McMillan Grant Bennett
 Name: Ground

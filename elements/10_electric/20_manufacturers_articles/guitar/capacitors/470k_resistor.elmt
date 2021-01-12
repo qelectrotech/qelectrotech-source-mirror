@@ -2,6 +2,7 @@
     <uuid uuid="{0d61ef8d-e649-4ecd-b334-6e93ba1c9143}"/>
     <names>
         <name lang="en">470k Resistor</name>
+        <name lang="cs">470k Resistor</name>
     </names>
     <informations>Author: Thomas McMillan Grant Bennett
 Name: 470k Ohm Resistor
