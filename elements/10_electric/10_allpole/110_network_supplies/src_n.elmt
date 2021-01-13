@@ -13,6 +13,7 @@
         <name lang="en">Neutral source</name>
         <name lang="fr">Source neutre</name>
         <name lang="ru">Нейтраль</name>
+	<name lang="hu">N</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
