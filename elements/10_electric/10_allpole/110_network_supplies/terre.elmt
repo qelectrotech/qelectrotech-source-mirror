@@ -13,6 +13,7 @@
         <name lang="es">Tierra</name>
         <name lang="ar">تأريض</name>
         <name lang="fr">Terre</name>
+	<name lang="hu">Földelés, védőföldelő</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

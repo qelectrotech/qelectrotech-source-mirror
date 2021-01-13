@@ -11,6 +11,7 @@
         <name lang="en">Distribution point TN-C >TN-S</name>
         <name lang="fr">Point de distribution TN-C >TN-S</name>
         <name lang="ru">Распределительный пункт TN-C >TN-S</name>
+	<name lang="hu">3F + PEN szétválasztva TN-C-ről TN-S-re</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
