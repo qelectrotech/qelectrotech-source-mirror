@@ -2,6 +2,7 @@
     <uuid uuid="{181599c5-3db6-4f4a-80b4-62a149b74cdf}"/>
     <names>
         <name lang="fr">KINCO K205-16DT</name>
+        <name lang="cs">KINCO K205-16DT</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

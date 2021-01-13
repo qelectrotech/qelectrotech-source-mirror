@@ -2,7 +2,7 @@
     <uuid uuid="{b096f0a2-4194-49ea-a56c-99171521c60e}"/>
     <names>
         <name lang="nl">cRIO 9472 8 relais uitgangen 2A gescheiden</name>
-        <name lang="cs">cRIO 9472 8 výstupy relé 2A</name>
+        <name lang="cs">cRIO 9472 8 reléových výstupů 2A</name>
         <name lang="it">cRIO 9472 - modulo 8 uscite a relè 2A</name>
         <name lang="fr">cRIO 9474 - 8 sorties relais 2A</name>
         <name lang="en">cRIO 9472 to 8 relay outputs 2A</name>

@@ -4,6 +4,7 @@
         <name lang="de">HDE-M1</name>
         <name lang="fr">HDE-M1</name>
         <name lang="en">HDE-M1</name>
+        <name lang="cs">HDE-M1</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">coil</kindInformation>

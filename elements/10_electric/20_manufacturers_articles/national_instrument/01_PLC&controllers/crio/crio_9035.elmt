@@ -2,7 +2,7 @@
     <uuid uuid="{437b8dda-b707-49a4-89f8-594470f803e3}"/>
     <names>
         <name lang="nl">cRIO 9024 - controller real-time</name>
-        <name lang="cs">cRIO 9024 - řízení skutečného času</name>
+        <name lang="cs">cRIO 9024 – kontrolér s RTC</name>
         <name lang="it">cRIO 9024 - controller real-time</name>
         <name lang="fr">contrôleur cRIO</name>
         <name lang="en">cRIO 9024 - controller real-time</name>
