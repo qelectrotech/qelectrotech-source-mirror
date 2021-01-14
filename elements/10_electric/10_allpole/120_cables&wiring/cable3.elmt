@@ -6,6 +6,7 @@
         <name lang="pl">Przewód czterożyłowy</name>
         <name lang="es">Cable 4G</name>
         <name lang="cs">Kabel 4G</name>
+        <name lang="hu">Kábel 3 + PE</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
