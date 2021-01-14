@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Line-terminator</name>
         <name lang="fr">Terminateur de ligne</name>
+        <name lang="cs">Line-terminator</name>
     </names>
 </qet-directory>

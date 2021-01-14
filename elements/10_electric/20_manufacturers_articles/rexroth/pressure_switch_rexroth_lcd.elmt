@@ -3,6 +3,7 @@
     <names>
         <name lang="en">pressure_switch_rexroth_lcd</name>
         <name lang="hu">Rexroth nyomáskapcsoló LDC</name>
+        <name lang="cs">pressure_switch_rexroth_lcd</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

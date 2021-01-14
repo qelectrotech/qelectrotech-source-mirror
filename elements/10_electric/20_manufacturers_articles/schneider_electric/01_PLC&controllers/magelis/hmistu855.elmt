@@ -3,6 +3,7 @@
         <name lang="en">Schneider Touch Screen HMISTU855</name>
         <name lang="fr">Ecran tactile Schneider HMISTU855</name>
     </names>
+    <name lang="cs">Dotyková obrazovka Schneider HMISTU855</name>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

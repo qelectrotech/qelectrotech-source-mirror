@@ -2,6 +2,7 @@
     <uuid uuid="{19a4512e-8078-4766-b953-450ffdb1bc79}"/>
     <names>
         <name lang="fr">STBDDI3725KC</name>
+        <name lang="cs">STBDDI3725KC</name>
     </names>
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>

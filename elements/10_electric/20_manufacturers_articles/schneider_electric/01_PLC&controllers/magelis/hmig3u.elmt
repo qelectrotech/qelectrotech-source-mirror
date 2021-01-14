@@ -2,6 +2,7 @@
     <uuid uuid="{4e193a8b-afa5-4c8a-a9f5-6ede8c3d5d4f}"/>
     <names>
         <name lang="en">HMI3GU</name>
+        <name lang="cs">HMI3GU</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Schneider Electric</elementInformation>

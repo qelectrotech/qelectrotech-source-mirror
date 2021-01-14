@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Battery control module</name>
         <name lang="fr">Module de Control de Batterie</name>
+        <name lang="cs">Battery control module</name>
     </names>
 </qet-directory>

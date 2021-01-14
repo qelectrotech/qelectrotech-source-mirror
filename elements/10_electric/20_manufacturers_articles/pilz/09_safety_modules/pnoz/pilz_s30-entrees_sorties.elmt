@@ -3,6 +3,7 @@
     <names>
         <name lang="en">PILZ S30 : inputs and outputs</name>
         <name lang="fr">PILZ S30 : entrées et sorties</name>
+        <name lang="cs">PILZ S30 : inputs and outputs</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

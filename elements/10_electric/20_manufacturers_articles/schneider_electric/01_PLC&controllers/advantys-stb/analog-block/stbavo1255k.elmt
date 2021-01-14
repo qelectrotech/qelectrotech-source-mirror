@@ -2,6 +2,7 @@
     <uuid uuid="{94cde6eb-d371-42e2-a419-16073f93870f}"/>
     <names>
         <name lang="fr">STBAVO1255K</name>
+        <name lang="cs">STBAVO1255K</name>
     </names>
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>

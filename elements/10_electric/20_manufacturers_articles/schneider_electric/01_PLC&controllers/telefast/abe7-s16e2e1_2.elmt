@@ -2,6 +2,7 @@
     <uuid uuid="{527422e9-a523-4897-967e-4a9ae6dea5b1}"/>
     <names>
         <name lang="fr">ABE7-S16E2E1/2</name>
+        <name lang="cs">ABE7-S16E2E1/2</name>
     </names>
     <elementInformations/>
     <informations>SIEMENS S7-300 (digital inputs)</informations>

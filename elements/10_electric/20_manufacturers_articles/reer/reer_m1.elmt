@@ -2,6 +2,7 @@
     <uuid uuid="{5f59b7c6-d8e4-4ce9-a989-e77421a40289}"/>
     <names>
         <name lang="fr">Reer_m1</name>
+        <name lang="cs">Reer_m1</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>
