@@ -2,6 +2,7 @@
     <uuid uuid="{a74b72ab-9e78-45f8-bacb-6fab4299ec3c}"/>
     <names>
         <name lang="fr">Cartes sorties TM3DM24R Schneider</name>
+        <name lang="cs">Karta výstupů TM3DM24R</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

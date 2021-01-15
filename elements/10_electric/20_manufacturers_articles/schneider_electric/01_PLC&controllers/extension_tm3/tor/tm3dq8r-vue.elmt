@@ -2,7 +2,8 @@
     <uuid uuid="{b9bb44b8-c63a-4af8-8b12-8e695ec819ce}"/>
     <names>
         <name lang="en">tor output TM3DQ8/G: layout</name>
-        <name lang="fr">Sorties tor TM3DQ8/g: vue</name>
+        <name lang="fr">Sorties tor TM3DQ8/G: vue</name>
+        <name lang="cs">Karta výstupů TM3DQ8/G: Náhled</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>
