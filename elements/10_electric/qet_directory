@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
         <name lang="pl">Elektrotechnika</name>
+    	<name lang="pt_br">Elétrica</name>
         <name lang="de">Elektrik</name>
         <name lang="el">Ηλεκτρικά</name>
         <name lang="it">Elettrica</name>
@@ -10,7 +11,7 @@
         <name lang="en">Electric</name>
         <name lang="fr">Electrique</name>
         <name lang="da">Elektrisk</name>
-	<name lang="es">Eléctrica</name>
+    	<name lang="es">Eléctrica</name>
         <name lang="ja">電気</name>
     </names>
 </qet-directory>
