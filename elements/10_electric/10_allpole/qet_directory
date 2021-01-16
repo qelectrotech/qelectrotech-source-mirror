@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
         <name lang="pl">Schematy wieloliniowe</name>
+    	<name lang="pt_br">Multifilar</name>
         <name lang="cs">Vícežilový</name>
         <name lang="it">Multifilare</name>
         <name lang="el">Πολυγραμμικό</name>
