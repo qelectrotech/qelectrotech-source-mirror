@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">TTA Weidmüller</name>
         <name lang="hu">TTA Weidmüller</name>
+        <name lang="cs">TTA Weidmüller</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>
