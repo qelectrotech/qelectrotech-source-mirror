@@ -3,6 +3,7 @@
         <name lang="fr">289-101</name>
         <name lang="de">289-101</name>
         <name lang="en">289-101</name>
+        <name lang="cs">289-101</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
