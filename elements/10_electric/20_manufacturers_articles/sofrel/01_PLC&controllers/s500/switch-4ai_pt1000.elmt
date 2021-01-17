@@ -2,6 +2,7 @@
     <uuid uuid="{bad85da9-a927-487d-84dc-de045f2d098e}"/>
     <names>
         <name lang="fr">Switch 4Ai PT1000/NI1000</name>
+        <name lang="cs">Přepínač 4Ai PT1000/NI1000</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">4-AI</elementInformation>

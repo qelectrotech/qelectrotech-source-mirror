@@ -2,6 +2,7 @@
     <uuid uuid="{e1a1651c-37eb-4f8b-923b-2e961a55b9a1}"/>
     <names>
         <name lang="fr">Sofrel 8Ai Input</name>
+        <name lang="cs">Sofrel 8Ai Input</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

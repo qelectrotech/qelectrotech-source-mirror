@@ -3,6 +3,7 @@
         <name lang="de">753-666/000-003 (FDI)</name>
         <name lang="fr">753-666/000-003 (FDI)</name>
         <name lang="en">753-666/000-003 (FDI)</name>
+        <name lang="cs">753-666/000-003 (FDI)</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

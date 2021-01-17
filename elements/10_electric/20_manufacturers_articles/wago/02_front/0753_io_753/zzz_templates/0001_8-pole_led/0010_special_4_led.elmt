@@ -3,6 +3,7 @@
         <name lang="fr">Special 4 LEDs</name>
         <name lang="en">Special 4 LEDs</name>
         <name lang="de">Special 4 LEDs</name>
+        <name lang="cs">Special 4 LEDs</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

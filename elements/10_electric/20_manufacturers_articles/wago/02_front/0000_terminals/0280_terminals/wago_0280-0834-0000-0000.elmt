@@ -3,6 +3,7 @@
         <name lang="fr">280-834 4-L bleu</name>
         <name lang="en">280-834 4-L blue</name>
         <name lang="de">280-834 4-L blau</name>
+        <name lang="cs">280-834 4-L modrá</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

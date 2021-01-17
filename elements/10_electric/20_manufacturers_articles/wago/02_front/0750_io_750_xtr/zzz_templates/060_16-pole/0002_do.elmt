@@ -3,6 +3,7 @@
         <name lang="de">DO</name>
         <name lang="fr">DO</name>
         <name lang="en">DO</name>
+        <name lang="cs">DO</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

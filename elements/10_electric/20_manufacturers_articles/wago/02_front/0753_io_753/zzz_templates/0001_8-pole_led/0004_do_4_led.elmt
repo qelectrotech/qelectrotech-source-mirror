@@ -3,6 +3,7 @@
         <name lang="fr">DO 4 LEDs</name>
         <name lang="en">DO 4 LEDs</name>
         <name lang="de">DO 4 LEDs</name>
+        <name lang="cs">DO 4 LEDs</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

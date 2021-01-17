@@ -3,6 +3,7 @@
         <name lang="de">249-117 Endklammer 10mm</name>
         <name lang="en">249-117 End-Stop 10mm</name>
         <name lang="fr">249-117 End-Stop 10mm</name>
+        <name lang="cs">249-117 Koncová svorka 10mm</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

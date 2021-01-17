@@ -3,6 +3,7 @@
         <name lang="de">286-842 - Überspannungsschutz 230 V AC</name>
         <name lang="en">Surge suppression module wago 230 AC 286-842</name>
         <name lang="pl">Ogranicznik przepięć wago 230 AC 286-842</name>
+        <name lang="cs">Modul přepěťové ochrany wago 230 AC 286-842</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

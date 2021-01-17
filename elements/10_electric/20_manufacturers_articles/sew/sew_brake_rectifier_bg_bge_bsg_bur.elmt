@@ -3,6 +3,7 @@
     <names>
         <name lang="en">SEW brake rectifier BG BGE BSG BUR</name>
         <name lang="hu">SEW fék egyenirányító BG BGE BSG BUR</name>
+        <name lang="cs">SEW Brzdový usměrňovač BG BGE BSG BUR</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

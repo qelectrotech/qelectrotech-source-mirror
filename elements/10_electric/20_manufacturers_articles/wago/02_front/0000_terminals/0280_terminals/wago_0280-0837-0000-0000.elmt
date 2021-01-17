@@ -3,6 +3,7 @@
         <name lang="en">280-837 4-L green-yellow</name>
         <name lang="de">280-837 4-L grün-gelb</name>
         <name lang="fr">280-837 4-L vert-ambre</name>
+        <name lang="cs">280-837 4-L žluto-zelená</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

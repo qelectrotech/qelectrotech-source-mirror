@@ -3,6 +3,7 @@
         <name lang="en">750-433</name>
         <name lang="fr">750-433</name>
         <name lang="de">750-433</name>
+        <name lang="cs">750-433</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">WAGO</elementInformation>

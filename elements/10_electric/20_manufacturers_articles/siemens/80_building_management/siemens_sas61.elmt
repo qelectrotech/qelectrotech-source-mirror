@@ -2,6 +2,7 @@
     <uuid uuid="{d39ff91e-0e2b-4526-8541-c467bbf2e829}"/>
     <names>
         <name lang="fr">Servomoteur Siemens 24V 0-10V</name>
+        <name lang="cs">Servomotor Siemens 24V 0-10V</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">commutator</kindInformation>

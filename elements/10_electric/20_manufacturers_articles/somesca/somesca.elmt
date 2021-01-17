@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">SOMESCA</name>
         <name lang="en">SOMESCA</name>
+        <name lang="cs">SOMESCA</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">SOMESCA</elementInformation>

@@ -3,6 +3,7 @@
         <name lang="fr">2006-1304 3-L bleu</name>
         <name lang="de">2006-1304 3-L blau</name>
         <name lang="en">2006-1304 3-L blue</name>
+        <name lang="cs">2006-1304 3-L modrá</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

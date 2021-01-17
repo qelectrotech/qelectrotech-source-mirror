@@ -2,6 +2,7 @@
     <uuid uuid="{863883e5-387a-410f-b4e4-08da560f2f5f}"/>
     <names>
         <name lang="fr">Façade S550 implantation</name>
+        <name lang="cs">Náhled S550</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

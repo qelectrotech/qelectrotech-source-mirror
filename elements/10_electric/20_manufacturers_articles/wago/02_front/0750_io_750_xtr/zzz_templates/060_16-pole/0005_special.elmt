@@ -3,6 +3,7 @@
         <name lang="de">Funktions-Modul</name>
         <name lang="fr">Function-Module</name>
         <name lang="en">Function-Module</name>
+        <name lang="cs">Funkční moduly</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

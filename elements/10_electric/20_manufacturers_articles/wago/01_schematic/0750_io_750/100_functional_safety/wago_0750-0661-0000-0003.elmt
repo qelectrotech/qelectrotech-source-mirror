@@ -3,6 +3,7 @@
         <name lang="en">750-661/000-003</name>
         <name lang="fr">750-661/000-003</name>
         <name lang="de">750-661/000-003</name>
+        <name lang="cs">750-661/000-003</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">WAGO</elementInformation>

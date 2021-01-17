@@ -2,6 +2,7 @@
     <uuid uuid="{88223d76-7c4d-4d47-8ee9-195042b3a5da}"/>
     <names>
         <name lang="en">V430J-RH2*</name>
+        <name lang="cs">V430J-RH2*</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

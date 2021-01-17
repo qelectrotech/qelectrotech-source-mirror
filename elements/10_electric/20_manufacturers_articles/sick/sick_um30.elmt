@@ -3,6 +3,7 @@
     <names>
         <name lang="hu">SICK UM30</name>
         <name lang="en">SICK UM30</name>
+        <name lang="cs">SICK UM30 ultrazvukový snímač</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">Sick</elementInformation>

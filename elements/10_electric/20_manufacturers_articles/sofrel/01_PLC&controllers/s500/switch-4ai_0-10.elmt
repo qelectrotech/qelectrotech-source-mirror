@@ -2,6 +2,7 @@
     <uuid uuid="{92b66c1f-9c27-4d2b-88cc-723fa3553342}"/>
     <names>
         <name lang="fr">Switch 4Ai 0-10V</name>
+        <name lang="cs">Přepínač 4Ai 0-10V</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">4-AI</elementInformation>

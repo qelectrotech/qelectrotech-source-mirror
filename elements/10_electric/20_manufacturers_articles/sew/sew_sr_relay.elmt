@@ -3,6 +3,7 @@
     <names>
         <name lang="en">SEW SR current relay</name>
         <name lang="hu">SEW SR áramrelé</name>
+        <name lang="en">SEW SR Proudové relé</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

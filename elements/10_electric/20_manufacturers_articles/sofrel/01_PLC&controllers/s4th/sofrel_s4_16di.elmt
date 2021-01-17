@@ -2,6 +2,7 @@
     <uuid uuid="{fb23d344-58c2-4e84-85fe-e53f9bcb4135}"/>
     <names>
         <name lang="fr">S4 16 DI</name>
+        <name lang="cs">S4 16 DI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

@@ -1,7 +1,8 @@
 <definition type="element" hotspot_y="49" version="0.5" hotspot_x="45" height="100" width="90" link_type="simple">
     <uuid uuid="{30bb13bc-523a-4de7-b430-f34256ad27c2}"/>
     <names>
-        <name lang="cs">Pump and fan monitor</name>
+        <name lang="en">Pump and Fan Monitor</name>
+        <name lang="cs">Monitor čerpadel a ventilátorů</name>
     </names>
     <informations>Patrik Augustin
 Pump and Fan monitor CH4X20

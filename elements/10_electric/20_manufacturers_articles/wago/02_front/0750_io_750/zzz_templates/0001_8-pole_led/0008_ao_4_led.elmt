@@ -3,6 +3,7 @@
         <name lang="de">AO 4 LED</name>
         <name lang="en">AO 4 LED</name>
         <name lang="fr">AO 4 LED</name>
+        <name lang="cs">AO 4 LED</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

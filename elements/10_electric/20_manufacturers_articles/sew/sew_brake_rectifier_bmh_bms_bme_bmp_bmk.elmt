@@ -3,6 +3,7 @@
     <names>
         <name lang="en">SEW BM*(H,S,E,P,K) brake rectifier</name>
         <name lang="hu">SEW BM*(H,S,E,P,K) fék egyenirányító</name>
+        <name lang="cs">SEW BM*(H,S,E,P,K) Brzdový usměrňovač</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

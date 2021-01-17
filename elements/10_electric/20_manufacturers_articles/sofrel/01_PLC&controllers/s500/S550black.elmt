@@ -10,7 +10,7 @@
         <name lang="ar">واجهة S550</name>
         <name lang="en">Frontview S550</name>
         <name lang="el">Τερματικό S550</name>
-        <name lang="cs">Místní telemetrick jednotka S550</name>
+        <name lang="cs">Místní telemetrická jednotka S550</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

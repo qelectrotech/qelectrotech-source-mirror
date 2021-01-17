@@ -3,6 +3,7 @@
     <names>
         <name lang="en">SEW brake release coil BG BGE BSG BUR</name>
         <name lang="hu">SEW fékkioldó tekercs BG BGE BSG BUR</name>
+        <name lang="cs">SEW Elektrická brzda BG BGE BSG BUR</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

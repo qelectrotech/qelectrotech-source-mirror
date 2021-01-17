@@ -3,6 +3,7 @@
         <name lang="fr">DI 2 LED</name>
         <name lang="de">DI 2 LED</name>
         <name lang="en">DI 2 LED</name>
+        <name lang="cs">DI 2 LED</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

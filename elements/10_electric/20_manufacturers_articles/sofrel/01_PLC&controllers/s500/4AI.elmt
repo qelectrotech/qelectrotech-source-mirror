@@ -2,6 +2,7 @@
     <uuid uuid="{242ad528-5973-447f-bc6b-aeaa66e0b730}"/>
     <names>
         <name lang="fr">4 AI</name>
+        <name lang="cs">4 AI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

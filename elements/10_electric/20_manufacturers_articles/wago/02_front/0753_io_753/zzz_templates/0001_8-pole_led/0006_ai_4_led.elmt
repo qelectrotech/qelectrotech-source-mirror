@@ -3,6 +3,7 @@
         <name lang="fr">AI 4 LEDs</name>
         <name lang="en">AI 4 LEDs</name>
         <name lang="de">AI 4 LEDs</name>
+        <name lang="cs">AI 4 LEDs</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

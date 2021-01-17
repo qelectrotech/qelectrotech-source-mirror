@@ -5,6 +5,7 @@
         <name lang="es">Tarjeta 8DO</name>
         <name lang="fr">Carte 8 DO</name>
         <name lang="it">Scheda 8DO</name>
+        <name lang="cs">Karta 8DO</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

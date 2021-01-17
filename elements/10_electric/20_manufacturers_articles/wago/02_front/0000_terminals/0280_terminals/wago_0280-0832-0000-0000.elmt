@@ -3,6 +3,7 @@
         <name lang="fr">280-832 4-L ambre</name>
         <name lang="en">280-832 4-L yellow</name>
         <name lang="de">280-832 4-L gelb</name>
+        <name lang="cs">280-832 4-L žlutá</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

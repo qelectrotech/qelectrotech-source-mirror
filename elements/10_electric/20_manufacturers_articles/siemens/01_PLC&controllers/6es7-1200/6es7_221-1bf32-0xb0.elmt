@@ -2,6 +2,7 @@
     <uuid uuid="{8e442f82-65b8-472e-999f-952fb809ef76}"/>
     <names>
         <name lang="en">6ES7 221-1BF30-0XB0</name>
+        <name lang="cs">6ES7 221-1BF30-0XB0</name>
     </names>
     <elementInformations/>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

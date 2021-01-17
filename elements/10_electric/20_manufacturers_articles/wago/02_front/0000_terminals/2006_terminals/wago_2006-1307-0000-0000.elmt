@@ -3,6 +3,7 @@
         <name lang="fr">2006-1307 3-L vert-ambre</name>
         <name lang="de">2006-1307 3-L grün-gelb</name>
         <name lang="en">2006-1307 3-L green-yellow</name>
+        <name lang="cs">2006-1307 3-L žluto-zelená</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

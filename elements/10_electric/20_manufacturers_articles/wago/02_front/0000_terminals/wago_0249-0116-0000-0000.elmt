@@ -3,6 +3,7 @@
         <name lang="en">249-116 End-Stop 6mm</name>
         <name lang="fr">249-116 End-Stop 6mm</name>
         <name lang="de">249-116 Endklammer 6mm</name>
+        <name lang="cs">249-116 Koncová svorka 6mm</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

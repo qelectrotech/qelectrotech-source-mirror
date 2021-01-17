@@ -3,6 +3,7 @@
         <name lang="de">AI</name>
         <name lang="fr">AI</name>
         <name lang="en">AI</name>
+        <name lang="cs">AI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

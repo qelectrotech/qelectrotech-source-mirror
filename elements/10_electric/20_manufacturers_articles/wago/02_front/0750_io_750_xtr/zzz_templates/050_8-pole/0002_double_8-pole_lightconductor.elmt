@@ -3,6 +3,7 @@
         <name lang="en">double 8-fold / Light-Conductor</name>
         <name lang="fr">double 8-fold / Light-Conductor</name>
         <name lang="de">doppel 8-fach / Lichtleiter</name>
+        <name lang="cs">double 8-fold / Light-Conductor</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
