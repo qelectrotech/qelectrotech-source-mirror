@@ -9,6 +9,7 @@
         <name lang="es">Enchufe y socket</name>
         <name lang="cs">Spojený pin</name>
         <name lang="nl">Steker en contact</name>
+        <name lang="hu">Csatlakozó dugó + aljzat</name>
     </names>
     <informations>EN 60617: 03-03-05</informations>
     <description>

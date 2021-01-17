@@ -12,6 +12,7 @@
         <name lang="el">Σύνδεσμος</name>
         <name lang="ar">موصل</name>
         <name lang="pl">Złącze wtykowe</name>
+        <name lang="hu">Anya + apa csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

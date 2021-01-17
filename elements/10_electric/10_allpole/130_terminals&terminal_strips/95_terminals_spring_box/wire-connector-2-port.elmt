@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Wire Connector 2-Port</name>
         <name lang="cs">Svorka 2 vodiče</name>
+        <name lang="hu">Kötőelem 2 tagos</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer"></elementInformation>

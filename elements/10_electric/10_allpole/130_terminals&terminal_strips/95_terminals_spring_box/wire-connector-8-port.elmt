@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Wire Connector 8-Port</name>
         <name lang="cs">Svorka 8 vodičů</name>
+        <name lang="hu">Kötőelem 8 tagos</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

@@ -10,6 +10,7 @@
         <name lang="ar">طرف ربط مصهر</name>
         <name lang="en">Terminal fuse</name>
         <name lang="fr">Borne fusible cablage</name>
+        <name lang="hu">Sorkapocs-biztosíték</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Wire Connector 4-Port</name>
         <name lang="cs">Svorka 4 vodiče</name>
+        <name lang="hu">Kötőelem 4 tagos</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

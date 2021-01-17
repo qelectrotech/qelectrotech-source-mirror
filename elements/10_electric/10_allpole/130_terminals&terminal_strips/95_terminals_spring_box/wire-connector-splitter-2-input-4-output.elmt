@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Wire Connector Splitter 2 Input-4 Output</name>
         <name lang="cs">Rozbočovací svorka 2 vstupy, 4 výstupy</name>
+        <name lang="hu">Kötőelem elosztó 2 bemenet, 4 kimenet</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
