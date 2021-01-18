@@ -909,7 +909,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
         <source>Protective Earth Neutral</source>
-        <translation>Védő Föld Nulla</translation>
+        <translation>Védőföldelő Nulla</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="427"/>
@@ -919,12 +919,12 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
         <source>Terre</source>
-        <translation>Föld</translation>
+        <translation>Földelés</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
         <source>terre</source>
-        <translation>föld</translation>
+        <translation>védőföldelés</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
