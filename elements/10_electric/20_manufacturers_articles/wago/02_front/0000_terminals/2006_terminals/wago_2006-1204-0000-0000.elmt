@@ -2,7 +2,8 @@
     <names>
         <name lang="fr">2006-1204 2-L bleu</name>
         <name lang="de">2006-1204 2-L blau</name>
-        <name lang="cs">2006-1204 2-L modrá</name>        <name lang="en">2006-1204 2-L blue</name>
+        <name lang="cs">2006-1204 2-L modrá</name>
+        <name lang="en">2006-1204 2-L blue</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
