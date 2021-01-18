@@ -1332,7 +1332,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="344"/>
         <source>Conserver la rotation visuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Zachovat viditelné otočení</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="361"/>
@@ -1347,7 +1347,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="625"/>
         <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit způsob otočení textu prvku</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="636"/>
@@ -8503,7 +8503,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="253"/>
@@ -8543,7 +8543,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="262"/>
         <source>Date d&apos;enregistrement du fichier format local</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum uložení souboru v místním formátu data</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="264"/>
@@ -8553,93 +8553,93 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Formule du label</source>
-        <translation type="unfinished">Vzorec štítku</translation>
+        <translation>Vzorec štítku</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Label</source>
-        <translation type="unfinished">Štítek</translation>
+        <translation>Štítek</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Poznámka</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="271"/>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkce</translation>
+        <translation>Funkce</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation type="unfinished">Pomocný blok 1</translation>
+        <translation>Pomocný blok 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 2</source>
-        <translation type="unfinished">Pomocný blok 2</translation>
+        <translation>Pomocný blok 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle</source>
-        <translation type="unfinished">Textový popis</translation>
+        <translation>Textový popis</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished">Číslo druhu zboží</translation>
+        <translation>Číslo druhu zboží</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant</source>
-        <translation type="unfinished">Výrobce</translation>
+        <translation>Výrobce</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Číslo objednávky</translation>
+        <translation>Číslo objednávky</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Vnitřní číslo</translation>
+        <translation>Vnitřní číslo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Dodavatel</translation>
+        <translation>Dodavatel</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité</source>
-        <translation type="unfinished">Množství</translation>
+        <translation>Množství</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité</source>
-        <translation type="unfinished">Jednota</translation>
+        <translation>Jednota</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Tension / Protocole</source>
-        <translation type="unfinished">Napětí/Protokol</translation>
+        <translation>Napětí/Protokol</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished">Barva drátu</translation>
+        <translation>Barva drátu</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Section du fil</source>
-        <translation type="unfinished">Úsek drátu</translation>
+        <translation>Úsek drátu</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Formule du texte</source>
-        <translation type="unfinished">Vzorec textu</translation>
+        <translation>Vzorec textu</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
@@ -9496,17 +9496,17 @@ Vytvořte svůj vlastní text pomocí následujících proměnných:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="461"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte prvky v tomto listu</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="462"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte vodiče v tomto listu</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="463"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte texty v tomto listu</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1114"/>
@@ -9534,7 +9534,7 @@ Vytvořte svůj vlastní text pomocí následujících proměnných:
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1370"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1371"/>
         <source> [édité]</source>
-        <translation> [uprav.]</translation>
+        <translation> [upraveno]</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="213"/>
