@@ -2,6 +2,7 @@
     <uuid uuid="{cec7cb94-fcad-4acf-a2d3-7d7e4f73a6ab}"/>
     <names>
         <name lang="fr">DT40 Disjoncteur 25A</name>
+        <name lang="cs">DT40 Jistič 25A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

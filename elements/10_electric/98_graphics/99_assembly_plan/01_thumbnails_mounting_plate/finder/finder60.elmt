@@ -7,7 +7,7 @@
         <name lang="nl">Relais algemeen finder Série 60</name>
         <name lang="en">General Purpose Relay</name>
         <name lang="el">Ρελέ τύπου λυχνίας</name>
-        <name lang="cs">Řadové relé Série 60</name>
+        <name lang="cs">Průmyslové relé Série 60</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{6a3f0edd-9457-4a63-a03c-eec1029e3d7c}"/>
     <names>
         <name lang="fr">413004 - Prise RJ45 6A STP modulaire</name>
+        <name lang="cs">413004 - Modulární zásuvka RJ45 6A STP</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{ce71c8b9-4642-420f-9d3f-6883760ed4cb}"/>
     <names>
         <name lang="en">F418U2</name>
+        <name lang="cs">F418U2</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Dimmer</elementInformation>

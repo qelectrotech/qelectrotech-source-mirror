@@ -2,6 +2,7 @@
     <uuid uuid="{c0c49001-062f-4dbc-a6c1-f70ac20250b3}"/>
     <names>
         <name lang="fr">CDC 748F</name>
+        <name lang="cs">CDC 748F</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">power</kindInformation>

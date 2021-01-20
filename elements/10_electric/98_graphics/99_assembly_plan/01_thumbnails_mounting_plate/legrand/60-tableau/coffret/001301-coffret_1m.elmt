@@ -2,6 +2,7 @@
     <uuid uuid="{2ea57fc7-e65c-443b-b0ff-d248dae90c72}"/>
     <names>
         <name lang="fr">001301 - Coffret cache-bornes - 1 module</name>
+        <name lang="cs">001301 - Rozvodnice plast - 1 modul</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

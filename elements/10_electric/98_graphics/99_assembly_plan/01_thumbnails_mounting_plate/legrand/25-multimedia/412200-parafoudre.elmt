@@ -2,6 +2,7 @@
     <uuid uuid="{74b23aa1-a6fc-4841-9588-36ec06b6e2bb}"/>
     <names>
         <name lang="fr">412200 - Parafoudre téléphonique et communication</name>
+        <name lang="cs">412200 - Svodič přepětí pro telefonní a komunikační linku</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

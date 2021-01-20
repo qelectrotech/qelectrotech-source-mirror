@@ -2,6 +2,7 @@
     <uuid uuid="{636fb7c4-bbfc-4004-818b-3d70264a0b65}"/>
     <names>
         <name lang="en">F411U1</name>
+        <name lang="cs">Ovládací jednotka 1 DO F411U1</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>

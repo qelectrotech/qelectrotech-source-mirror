@@ -2,6 +2,7 @@
     <uuid uuid="{eac00310-5d53-4338-b791-f6cfe1a22846}"/>
     <names>
         <name lang="fr">MFS701</name>
+        <name lang="cs">MFS701</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

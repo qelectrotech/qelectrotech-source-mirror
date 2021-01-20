@@ -2,6 +2,7 @@
     <uuid uuid="{62643563-f385-4cb2-b4bc-11fb181e4775}"/>
     <names>
         <name lang="fr">406785 - Disjoncteur 25A C 6kA - Auto/Vis</name>
+        <name lang="cs">406785 - Jistič 25A C 6kA - Auto/Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

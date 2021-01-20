@@ -2,6 +2,7 @@
     <uuid uuid="{a378ecf3-791a-4c7c-9544-ea321453cf9a}"/>
     <names>
         <name lang="fr">sectionneur bipolaire 63A Legrand</name>
+        <name lang="cs">Dvoupólový jistič 63A Legrand</name>
     </names>
     <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>

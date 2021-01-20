@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/8 - Configurateur 8</name>
         <name lang="en">3501/8 - Configurator 8</name>
+        <name lang="cs">3501/8 - Konfigurátor 8</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment">BTicino configurator 8</elementInformation>

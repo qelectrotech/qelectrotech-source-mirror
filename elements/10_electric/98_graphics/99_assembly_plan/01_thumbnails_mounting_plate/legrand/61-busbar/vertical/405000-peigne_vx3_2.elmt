@@ -2,6 +2,7 @@
     <uuid uuid="{c75e3f33-4e70-40d4-b7d4-eccea16bbc6d}"/>
     <names>
         <name lang="fr">405000 - Peigne P+N VX³ - 2 rangées</name>
+        <name lang="cs">405000 - Lišta P+N VX³ - 2 řady</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{e711ab68-8590-4a61-a7f2-c82c60b62c00}"/>
     <names>
         <name lang="fr">412410 - Télérupteur temporisé 2P 16A 250V - 2F 24V</name>
+        <name lang="cs">412410 - Impulzní relé 2P 16A 250V - 2F 24V</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

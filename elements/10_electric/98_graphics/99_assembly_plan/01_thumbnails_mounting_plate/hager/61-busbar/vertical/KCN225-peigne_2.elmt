@@ -2,6 +2,7 @@
     <uuid uuid="{077c07f7-c5e8-4a3c-8335-f59d3de44af7}"/>
     <names>
         <name lang="fr">KCN225 - Peigne P+N  - 2 rangées</name>
+        <name lang="cs">KCN225 - Propojovací lišta 1P+N</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

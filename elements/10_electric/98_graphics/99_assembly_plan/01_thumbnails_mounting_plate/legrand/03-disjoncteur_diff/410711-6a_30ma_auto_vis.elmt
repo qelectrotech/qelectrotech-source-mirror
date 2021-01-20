@@ -2,6 +2,7 @@
     <uuid uuid="{d4975fad-87dd-4c1f-93d9-c7a306a7e4b4}"/>
     <names>
         <name lang="fr">410711 - Disjoncteur différentiel AC 6A 30mA Haut-Auto/Bas-Vis</name>
+        <name lang="cs">410711 - Jistič - chránič AC 6A 30mA Haut-Auto/Bas-Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

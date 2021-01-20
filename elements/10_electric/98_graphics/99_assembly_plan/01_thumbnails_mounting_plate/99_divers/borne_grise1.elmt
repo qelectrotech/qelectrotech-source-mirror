@@ -2,6 +2,7 @@
     <uuid uuid="{b8d4522e-81ed-48b7-a0af-8b2fb06e04a8}"/>
     <names>
         <name lang="fr">Borne grise</name>
+        <name lang="cs">Svorka šedá</name>
     </names>
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>

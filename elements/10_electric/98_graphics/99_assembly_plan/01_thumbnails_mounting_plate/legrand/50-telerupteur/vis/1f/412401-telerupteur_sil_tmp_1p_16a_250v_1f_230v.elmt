@@ -2,6 +2,7 @@
     <uuid uuid="{1d3d9c28-f0ba-4f07-a3fe-0b44c3d8290e}"/>
     <names>
         <name lang="fr">412401 - Télérupteur silencieux temporisé 1P 16A 250V - 1F 230V</name>
+        <name lang="cs">412401 - Časové impulzní relé 1P 16A 250V - 1F 230V</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

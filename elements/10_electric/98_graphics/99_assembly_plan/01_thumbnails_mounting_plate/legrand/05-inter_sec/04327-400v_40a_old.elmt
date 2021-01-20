@@ -2,6 +2,7 @@
     <uuid uuid="{f8430264-86a3-462e-94cf-5e763de59d74}"/>
     <names>
         <name lang="fr">04327 - Interrupteur-sectionneur 400V 40A (ancien modèle)</name>
+        <name lang="cs">04327 - Odpínač 400V 40A (starý model)</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

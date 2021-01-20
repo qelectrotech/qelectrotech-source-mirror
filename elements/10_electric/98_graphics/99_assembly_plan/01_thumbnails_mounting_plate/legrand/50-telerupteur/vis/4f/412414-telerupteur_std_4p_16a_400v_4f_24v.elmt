@@ -2,6 +2,7 @@
     <uuid uuid="{6a17a7b1-ce10-4216-adc9-78fc7c8fd881}"/>
     <names>
         <name lang="fr">412414 - Télérupteur temporisé 4P 16A 250V - 4F 24V</name>
+        <name lang="cs">412414 - Impulzní spínač 4P 16A 250V - 4F 24V</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Télérupteur CX³ standard avec bornes à vis 4P 16A 400V~ contact 4F - tension commande 24V~ - 2 modules</elementInformation>

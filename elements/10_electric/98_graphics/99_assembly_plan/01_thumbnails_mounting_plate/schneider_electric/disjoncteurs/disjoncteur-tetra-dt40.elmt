@@ -2,6 +2,7 @@
     <uuid uuid="{14f8b475-899d-4bfe-bdc8-4dd24c0b4e09}"/>
     <names>
         <name lang="fr">Disjoncteur Tetra DT40</name>
+        <name lang="cs">Jistič Tetra DT40</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

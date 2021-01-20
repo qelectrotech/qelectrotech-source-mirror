@@ -2,6 +2,7 @@
     <uuid uuid="{34b73e09-9b23-4dd7-b8fa-cedaa47de36c}"/>
     <names>
         <name lang="fr">412008 - Transformateur de courant fermé 60A</name>
+        <name lang="cs">412008 - Proudový transformátor 60A</name>
     </names>
     <elementInformations>
         <elementInformation name="plant" show="1"></elementInformation>

@@ -1,7 +1,7 @@
 <definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="simple">
     <uuid uuid="{5a51d16d-1a56-45e8-8881-bed0aaaa19da}"/>
     <names>
-        <name lang="cs"></name>
+        <name lang="cs">Modré tlačítko</name>
         <name lang="pl"></name>
         <name lang="el"></name>
         <name lang="en"></name>

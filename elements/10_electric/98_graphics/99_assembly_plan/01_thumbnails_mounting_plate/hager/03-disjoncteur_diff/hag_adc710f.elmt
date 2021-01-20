@@ -2,6 +2,7 @@
     <uuid uuid="{e513c7f8-d631-4da2-b853-bf0c28f5baed}"/>
     <names>
         <name lang="fr">ADC 710F</name>
+        <name lang="cs">ADC 710F</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

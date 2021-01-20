@@ -2,6 +2,7 @@
     <uuid uuid="{f57c8e3f-cbca-498e-8f09-ec4615fdc694}"/>
     <names>
         <name lang="en">5WG1 567-1AB22 - Switching actuator - 230V - 10A</name>
+        <name lang="cs">5WG1 567-1AB22 - Spínací jednotka - 230V - 10A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

@@ -1,15 +1,15 @@
 <definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="simple">
     <uuid uuid="{d8700fb2-0294-45e1-9976-35a09f9483c2}"/>
     <names>
-        <name lang="cs">Jednopólový jistič</name>
-        <name lang="pl">Wyłącznik jednobiegunowy</name>
+        <name lang="cs">Červená kontrolka</name>
+        <name lang="pl"></name>
         <name lang="el">Μικροαυτόματος διακόπτης</name>
-        <name lang="en">1-pole circuit breaker</name>
-        <name lang="de">Leitungsschutzschalter 1-polig</name>
+        <name lang="en"></name>
+        <name lang="de"></name>
         <name lang="fr">Voyant Rouge</name>
-        <name lang="it">Interruttore 1 polo</name>
+        <name lang="it"></name>
         <name lang="ar">قطب قاطع  دائرة</name>
-        <name lang="nl">stroom onderbreker 1 polig</name>
+        <name lang="nl"></name>
     </names>
     <elementInformations/>
     <informations>PFIT 589</informations>

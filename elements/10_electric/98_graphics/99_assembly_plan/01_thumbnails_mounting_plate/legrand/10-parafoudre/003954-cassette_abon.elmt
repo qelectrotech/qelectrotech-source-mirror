@@ -2,6 +2,7 @@
     <uuid uuid="{c76e4ed8-d204-4072-bcd7-5e8ef402e84c}"/>
     <names>
         <name lang="fr">003954 - Cassette parafoudre - Abonné</name>
+        <name lang="cs">003954 - Náhradní kazeta svodiče přepětí</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

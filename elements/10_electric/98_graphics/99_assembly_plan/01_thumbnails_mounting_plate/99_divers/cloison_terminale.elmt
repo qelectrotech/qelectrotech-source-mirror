@@ -2,6 +2,7 @@
     <uuid uuid="{1b3a998d-3ecf-49e9-8b7c-bfb3c7bd3d7c}"/>
     <names>
         <name lang="fr">Cloison terminale</name>
+        <name lang="cs">Koncový díl</name>
     </names>
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>

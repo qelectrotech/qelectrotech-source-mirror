@@ -1,7 +1,7 @@
 <definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="simple">
     <uuid uuid="{2975cdd3-6ec6-48bd-91dc-b870423d6ee8}"/>
     <names>
-        <name lang="cs"></name>
+        <name lang="cs">Modrá kontrolka</name>
         <name lang="pl"></name>
         <name lang="el"></name>
         <name lang="en"></name>

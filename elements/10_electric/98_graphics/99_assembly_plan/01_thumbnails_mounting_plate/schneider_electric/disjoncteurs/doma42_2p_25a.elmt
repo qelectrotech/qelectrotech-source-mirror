@@ -2,6 +2,7 @@
     <uuid uuid="{9eac7720-3ad1-4fb2-9b4a-ea7d8cc966b6}"/>
     <names>
         <name lang="fr"> DomA42 2P 25A </name>
+        <name lang="cs"> DomA42 2P 25A </name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{a54af15a-4076-4b1b-aad6-ecd22d1d7223}"/>
     <names>
         <name lang="fr">411639 - Interrupteur différentiel A 63A 30mA Haut-Vis/Haut-Auto - 3 modules</name>
+        <name lang="cs">411639 - Chránič A 63A 30mA Haut-Vis/Haut-Auto - 3 moduly</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{e9057d8c-9a10-4860-a6a9-3f6be578f7be}"/>
     <names>
         <name lang="fr">415950 - Disjoncteur différentiel STOP ARC AC 10A 30mA Haut-Vis/Bas-Vis</name>
+        <name lang="cs">415950 - Jistič-chránič-AFDD STOP ARC AC 10A 30mA Haut-Vis/Bas-Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="plant" show="1"></elementInformation>

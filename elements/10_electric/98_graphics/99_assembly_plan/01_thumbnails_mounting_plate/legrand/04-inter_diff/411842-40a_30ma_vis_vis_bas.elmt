@@ -2,6 +2,7 @@
     <uuid uuid="{3e666bf0-92de-4809-84ec-1f35c1bf857b}"/>
     <names>
         <name lang="fr">411842 - Interrupteur différentiel B 40A 30mA Haut-Vis/Bas-Vis</name>
+        <name lang="cs">411842 - Chránič B 40A 30mA Haut-Vis/Bas-Vis</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

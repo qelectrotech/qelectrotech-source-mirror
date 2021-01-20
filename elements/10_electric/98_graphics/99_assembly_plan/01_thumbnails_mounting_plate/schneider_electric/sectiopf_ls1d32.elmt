@@ -2,6 +2,7 @@
     <uuid uuid="{279b4713-3191-4253-afa9-7c304c641c55}"/>
     <names>
         <name lang="fr">Inter Sectio LS1D32</name>
+        <name lang="cs">Pojistkový odpínač LS1D32</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>

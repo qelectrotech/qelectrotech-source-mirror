@@ -2,6 +2,7 @@
     <uuid uuid="{91703f59-9e59-4016-b4e6-793e7df8a5ae}"/>
     <names>
         <name lang="fr">410734 - Disjoncteur différentiel AC 10A 30mA Haut-Vis/Bas-Vis</name>
+        <name lang="cs">410734 - Jistič - chránič AC 10A 30mA Haut-Vis/Bas-Vis</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

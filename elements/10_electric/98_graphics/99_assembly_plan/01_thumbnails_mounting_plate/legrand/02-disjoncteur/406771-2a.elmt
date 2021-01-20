@@ -2,6 +2,7 @@
     <uuid uuid="{4552a611-f06a-41aa-b630-d67c61f6bd7c}"/>
     <names>
         <name lang="fr">406771 - Disjoncteur 2A C 6kA - Vis/Vis</name>
+        <name lang="cs">406771 - Jistič 2A C 6kA - Vis/Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

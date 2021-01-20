@@ -2,6 +2,7 @@
     <uuid uuid="{0746eecf-f66f-4075-9e42-b2a26ec42c4b}"/>
     <names>
         <name lang="fr">406436 - Interrupteur-sectionneur 400V 20A à voyant</name>
+        <name lang="cs">406436 - Odpínač s kontrolkou 400V 20A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

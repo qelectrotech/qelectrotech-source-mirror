@@ -2,6 +2,7 @@
     <uuid uuid="{5a3dfc29-05d4-4344-96bd-6152efb0342d}"/>
     <names>
         <name lang="en">i-7551 - RS-232 to RS-232 Converter</name>
+        <name lang="cs">i-7551 - Převodník RS-232 to RS-232</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7551</elementInformation>

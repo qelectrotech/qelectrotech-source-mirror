@@ -2,6 +2,7 @@
     <uuid uuid="{ed39aaa8-fa3f-423b-9829-1e2c8664a2bf}"/>
     <names>
         <name lang="fr">413017 - Alimentation modulaire 9V= 1,6A</name>
+        <name lang="fr">413017 - Napájecí zdroj 9V= 1,6A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

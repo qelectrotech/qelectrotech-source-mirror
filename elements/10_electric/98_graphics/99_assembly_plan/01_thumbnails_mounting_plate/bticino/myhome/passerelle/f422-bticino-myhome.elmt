@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">F422 - Passerelle SCS-SCS</name>
         <name lang="en">F422 - Gateway SCS-SCS</name>
+        <name lang="cs">F422 - Jednotka rozhraní SCS-SCS</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{a786eb77-296b-4e2d-a8d0-a2fbab36ce63}"/>
     <names>
         <name lang="fr">Porte étiquette AUTO-0-MAIN</name>
+        <name lang="cs">Štítek ovladače AUTO-0-MAIN</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Porte étiquette AUTO-0-MAIN</elementInformation>

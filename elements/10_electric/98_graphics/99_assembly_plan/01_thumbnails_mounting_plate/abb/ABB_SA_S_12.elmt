@@ -2,6 +2,7 @@
     <uuid uuid="{370b4939-1e71-4b25-afda-e3e0bd41d2cb}"/>
     <names>
         <name lang="fr">ABB Sorties 12 voies</name>
+        <name lang="cs">Binární vstupy 8 DI BE/S8.20.2.1</name>
     </names>
     <informations>Alexandre Dis</informations>
     <description>

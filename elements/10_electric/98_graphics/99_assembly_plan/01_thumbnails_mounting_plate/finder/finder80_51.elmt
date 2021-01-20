@@ -2,6 +2,7 @@
     <uuid uuid="{79f9e947-82f9-4853-8895-3e0b8b6a60ed}"/>
     <names>
         <name lang="fr">Temporizzatore 80.51</name>
+        <name lang="cs">Časové relé 80.51</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

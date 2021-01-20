@@ -2,6 +2,7 @@
     <uuid uuid="{eef95d18-ad4f-4cfb-a4d7-39dc0b842afa}"/>
     <names>
         <name lang="fr">412015 - Netatmo Compteur d'énergie</name>
+        <name lang="cs">412015 - Netatmo měřič spotřeby</name>
     </names>
     <elementInformations>
         <elementInformation name="plant" show="1"></elementInformation>

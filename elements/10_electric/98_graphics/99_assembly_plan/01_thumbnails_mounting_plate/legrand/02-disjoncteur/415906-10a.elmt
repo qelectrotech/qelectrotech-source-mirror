@@ -2,6 +2,7 @@
     <uuid uuid="{4eeb3aca-a6b8-4ce0-9d7f-cbca2893ac5a}"/>
     <names>
         <name lang="fr">415906 - Disjoncteur STOP ARC 10A C 6kA - Vis/Vis</name>
+        <name lang="cs">415906 - Jistič+AFDD STOP ARC 10A C 6kA - Vis/Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="plant" show="1"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{72f33228-65b2-4e86-a3e2-ac1cc07ac001}"/>
     <names>
         <name lang="fr">Vis HF</name>
+        <name lang="cs">Šroub M6-10 HF</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

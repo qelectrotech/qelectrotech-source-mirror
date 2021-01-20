@@ -6,6 +6,7 @@
         <name lang="en">Nomenclature header</name>
         <name lang="pl">Zestawienie materiałowe 1</name>
         <name lang="de">Stückliste mit Kopfzeile</name>
+        <name lang="cs">Seznam dílů se záhlavím</name>
     </names>
     <elementInformations/>
     <informations></informations>

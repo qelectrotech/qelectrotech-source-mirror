@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/OI - Configurateur O/I</name>
         <name lang="en">3501/OI - Configurator O/I</name>
+        <name lang="cs">3501/OI - Konfigurátor O/I</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">3501/O/I</elementInformation>

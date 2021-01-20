@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">412181 - Netatmo Module de contrôle</name>
         <name lang="en">412181 - Netatmo Control module</name>
+        <name lang="cs">412181 - Netatmo řídící jednotka</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

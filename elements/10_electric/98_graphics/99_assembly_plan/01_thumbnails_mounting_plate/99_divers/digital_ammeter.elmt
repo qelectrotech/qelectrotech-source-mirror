@@ -5,6 +5,7 @@
         <name lang="it">Amperometro digitale</name>
         <name lang="pl">Amperomierz cyfrowy</name>
         <name lang="en">Digital ammeter</name>
+        <name lang="cs">Digitální ampérmetr</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

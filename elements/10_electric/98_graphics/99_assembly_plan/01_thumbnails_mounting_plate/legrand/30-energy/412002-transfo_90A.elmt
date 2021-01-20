@@ -2,6 +2,7 @@
     <uuid uuid="{837582d0-a7b0-4a90-96b9-1363da64a9a8}"/>
     <names>
         <name lang="fr">412002 - Transformateur de courant ouvert 90A</name>
+        <name lang="cs">412002 - Otevřený transformátor proudu 90A</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

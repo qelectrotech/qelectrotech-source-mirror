@@ -1,7 +1,7 @@
 <definition hotspot_y="40" version="0.80" type="element" height="80" hotspot_x="2" width="450" link_type="simple">
     <uuid uuid="{330276d2-8476-463d-a7ee-c160418d1bf5}"/>
     <names>
-        <name lang="cs">Spojovací lišta TS35</name>
+        <name lang="cs">Montážní lišta TS35</name>
         <name lang="en">Mounting rail TS35</name>
         <name lang="fr">Rail DIN EN 60715 symétrique à couper profondeur 7,5mm - longueur 2m</name>
         <name lang="de">Tragschiene TS35</name>

@@ -2,5 +2,6 @@
     <names>
         <name lang="fr">Actionneur</name>
         <name lang="en">Actuator</name>
+        <name lang="cs">Výstupní jednotka relé</name>
     </names>
 </qet-directory>

@@ -2,6 +2,7 @@
     <uuid uuid="{4e587395-d232-4d8e-8da7-52b9af66354a}"/>
     <names>
         <name lang="fr">412171 - Netatmo Contacteur silencieux 1P 20AX 230V</name>
+        <name lang="cs">412171 - Netatmo tichý stykač 1P 20AX 230V</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

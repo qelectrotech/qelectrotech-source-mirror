@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/GEN - Configurateur GEN</name>
         <name lang="en">3501/GEN - Configurator GEN</name>
+        <name lang="cs">3501/GEN - Konfigurátor GEN</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Configurator GEN</elementInformation>

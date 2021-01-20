@@ -2,6 +2,7 @@
     <uuid uuid="{9437a521-f106-4b84-b567-593308c6eda3}"/>
     <names>
         <name lang="fr">412500 - Contacteur silencieux 230V - 2P 250V 25A O+F</name>
+        <name lang="cs">412500 - Instalační stykač 230V - 2P 250V 25A O+F</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Contacteur domestique CX³ silencieux bobine 230V~ - 2P 250V~ - 25A - contact O+F - 1 module</elementInformation>

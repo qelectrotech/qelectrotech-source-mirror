@@ -2,6 +2,7 @@
     <uuid uuid="{ff4841c0-95cc-429b-a66b-798396887e05}"/>
     <names>
         <name lang="fr">413008 - DTI modulaire RJ45</name>
+        <name lang="cs">413008 - DTI modulaire RJ45</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

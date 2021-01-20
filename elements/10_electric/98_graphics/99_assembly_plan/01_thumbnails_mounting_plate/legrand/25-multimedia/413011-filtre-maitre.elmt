@@ -2,6 +2,7 @@
     <uuid uuid="{9919a876-b7d8-469e-9a20-b867533a13d2}"/>
     <names>
         <name lang="fr">413011 - Filtre maître pour accès téléphone et internet</name>
+        <name lang="cs">413011 - Hlavní filtr pro přístup k telefonu a internetu</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/6 - Configurateur 6</name>
         <name lang="en">3501/6 - Configurator 6</name>
+        <name lang="cs">3501/6 - Konfigurátor 6</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

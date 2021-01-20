@@ -2,6 +2,7 @@
     <uuid uuid="{31354ca5-7aa6-4fb1-8ebb-6e531ae86e40}"/>
     <names>
         <name lang="fr">406431 - Interrupteur-sectionneur 400V 16A</name>
+        <name lang="cs">406431 - Odpínač 400V 16A</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

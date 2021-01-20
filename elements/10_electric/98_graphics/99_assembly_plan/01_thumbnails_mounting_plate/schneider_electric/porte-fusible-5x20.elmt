@@ -2,6 +2,7 @@
     <uuid uuid="{6d0625dc-9004-444b-934e-aec5016b0157}"/>
     <names>
         <name lang="fr">Porte Fusibles 5x20</name>
+        <name lang="cs">Pojistkový držák 5x20</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

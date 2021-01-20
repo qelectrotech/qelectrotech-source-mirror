@@ -2,6 +2,7 @@
     <uuid uuid="{90a05c26-40ce-4cd7-b7d9-acf1485636ef}"/>
     <names>
         <name lang="fr">411550 - Interrupteur différentiel A 16A 10mA Haut-Vis/Bas-Vis</name>
+        <name lang="cs">411550 - Chránič A 16A 10mA Haut-Vis/Bas-Vis</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

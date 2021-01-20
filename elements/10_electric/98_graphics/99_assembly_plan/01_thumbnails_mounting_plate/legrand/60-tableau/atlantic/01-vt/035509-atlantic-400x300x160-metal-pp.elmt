@@ -1,8 +1,8 @@
-
 <definition width="680" type="element" hotspot_y="5" version="0.80" height="910" hotspot_x="2" link_type="simple">
     <uuid uuid="{18842c11-c4ae-5051-940c-fddcdbd9ac2d}"/>
     <names>
         <name lang="fr">035509 - Coffret Atlantic 400x300x160 Métal IP66 IK10 RAL7035</name>
+        <name lang="cs">035509 - Skříň Atlantic 400x300x160 ocelová IP66 IK10 RAL7035</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

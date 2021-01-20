@@ -2,6 +2,7 @@
     <uuid uuid="{c35b024d-9568-41ce-99ff-19fdc0eb7e9b}"/>
     <names>
         <name lang="fr">16DI</name>
+        <name lang="cs">16DI</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">simple</kindInformation>

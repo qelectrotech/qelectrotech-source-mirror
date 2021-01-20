@@ -2,6 +2,7 @@
     <uuid uuid="{f80c56fb-ca6b-4632-bf1e-fb59f11790e1}"/>
     <names>
         <name lang="fr">5WG1-148-1AB22 - IP Interface</name>
+        <name lang="cs">5WG1-148-1AB22 - Jednotka rozhraní IP</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

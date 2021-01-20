@@ -2,6 +2,7 @@
     <uuid uuid="{67ae84ed-aa05-4245-aa54-956d49f591b1}"/>
     <names>
         <name lang="fr">411500 - Interrupteur différentiel AC 16A 10mA Haut-Vis/Bas-Vis</name>
+        <name lang="cs">411500 - Chránič AC 16A 10mA Haut-Vis/Bas-Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Interrupteur différentiel DX³-ID arrivée haute et départ bas à vis - 2P 230V~ 16A typeAC 10mA - 2 modules</elementInformation>

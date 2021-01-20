@@ -2,6 +2,7 @@
     <uuid uuid="{61065248-6969-4cbf-85c6-b98e684f0bd9}"/>
     <names>
         <name lang="fr">411614 - Interrupteur différentiel AC 40A 300mA Haut-Vis/Haut-Vis</name>
+        <name lang="cs">411614 - Chránič AC 40A 300mA Haut-Vis/Haut-Vis</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>

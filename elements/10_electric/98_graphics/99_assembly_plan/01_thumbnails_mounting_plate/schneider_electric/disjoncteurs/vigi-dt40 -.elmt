@@ -2,6 +2,7 @@
     <uuid uuid="{86208912-fa20-4c18-99b2-2975af31eaee}"/>
     <names>
         <name lang="fr">Vigi DT40</name>
+        <name lang="cs">Vigi DT40</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

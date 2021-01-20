@@ -2,6 +2,7 @@
     <uuid uuid="{c49da434-e33b-4eb6-af65-94c927bdd8fd}"/>
     <names>
         <name lang="en">i-7514U-G - 4CH Isolated RS-485 Hub</name>
+        <name lang="cs">i-7514U-G - 4kanálový izolovaný Hub RS-485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7514U-G</elementInformation>

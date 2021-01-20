@@ -2,6 +2,7 @@
     <uuid uuid="{ab4bbc6c-3ca9-46d7-99cf-3209ccf9775a}"/>
     <names>
         <name lang="fr">CDS 743F</name>
+        <name lang="cs">CDS 743F</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">power</kindInformation>

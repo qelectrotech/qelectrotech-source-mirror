@@ -2,6 +2,7 @@
     <uuid uuid="{f90ca4ef-6b6f-467a-abc8-82bfa46da611}"/>
     <names>
         <name lang="fr">035512 - Coffret Atlantic 700x500x250 Métal IP66 IK10 RAL7035</name>
+        <name lang="cs">035512 - Skříň Atlantic 700x500x250 ocelová IP66 IK10 RAL7035</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

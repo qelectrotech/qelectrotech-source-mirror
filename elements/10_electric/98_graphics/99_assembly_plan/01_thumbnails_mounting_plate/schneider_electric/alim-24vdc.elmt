@@ -2,6 +2,7 @@
     <uuid uuid="{188246a2-62a4-4e3d-ab07-88f10e777b68}"/>
     <names>
         <name lang="fr">Alim 24Vdc</name>
+        <name lang="cs">Zdroj 24Vdc</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

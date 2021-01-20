@@ -2,6 +2,7 @@
     <uuid uuid="{c610e7fd-d703-47c0-bceb-253cadedafd7}"/>
     <names>
         <name lang="fr">05800 - Coupe-circuit unipolaire</name>
+        <name lang="cs">05800 - Pojistkový odpínač 1P</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

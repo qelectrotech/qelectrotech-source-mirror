@@ -2,6 +2,7 @@
     <uuid uuid="{17276329-5e0a-4da7-97b9-b583121b882b}"/>
     <names>
         <name lang="fr">413015 - Filtre maître pour accès téléphone et internet 3 sorties + modem</name>
+        <name lang="cs">413015 - Hlavní filtr a telefonní rozdělovač 3 výstupy a 1 modemový výstup</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

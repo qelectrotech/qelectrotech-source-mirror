@@ -2,6 +2,7 @@
     <uuid uuid="{45c1ca8e-61c6-484a-9486-79bacb240c33}"/>
     <names>
         <name lang="fr">413038 - Centrale automatique Gigabit TNT Satellite</name>
+        <name lang="cs">413038 - Gigabitová TNT Satelitní automatická centrála</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

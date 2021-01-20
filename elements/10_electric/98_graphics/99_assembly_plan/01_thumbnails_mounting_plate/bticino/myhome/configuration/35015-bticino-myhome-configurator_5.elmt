@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/5 - Configurateur 5</name>
         <name lang="en">3501/5 - Configurator 5</name>
+        <name lang="cs">3501/5 - Konfigurátor 5</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment">BTicino configurator 5</elementInformation>
