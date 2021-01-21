@@ -187,6 +187,7 @@ void TextEditor::setUpEditConnection()
 			}
 		}
 	});
+
 	m_edit_connection << connect(m_x_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		QPointF pos(m_x_sb -> value(), 0);
 		for (int i=0; i < m_parts.length(); i++) {
@@ -199,7 +200,9 @@ void TextEditor::setUpEditConnection()
 				undoStack().push(undo);
 			}
 		}
+		m_x_sb->setFocus();
 	});
+
 	m_edit_connection << connect(m_y_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		QPointF pos(0, m_y_sb -> value());
 		for (int i=0; i < m_parts.length(); i++) {
@@ -212,7 +215,9 @@ void TextEditor::setUpEditConnection()
 				undoStack().push(undo);
 			}
 		}
+		m_y_sb->setFocus();
 	});
+
 	m_edit_connection << connect(m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
@@ -224,7 +229,9 @@ void TextEditor::setUpEditConnection()
 				undoStack().push(undo);
 			}
 		}
+		m_rotation_sb->setFocus();
 	});
+
 	m_edit_connection << connect(m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
@@ -236,6 +243,7 @@ void TextEditor::setUpEditConnection()
 				undoStack().push(undo);
 			}
 		}
+		m_size_sb->setFocus();
 	});
 }
 
