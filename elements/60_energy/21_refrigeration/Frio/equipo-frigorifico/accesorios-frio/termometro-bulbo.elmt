@@ -3,9 +3,10 @@
     <names>
         <name lang="fr">Thermométre à bulbe</name>
         <name lang="es">Termómetro bulbo</name>
+        <name lang="de">Kolbenthermometer</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <circle y="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11" diameter="22" antialias="true"/>
@@ -29,8 +30,8 @@ Mantenimiento de Instalaciones Térmicas</informations>
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <polygon y6="20" y8="20" x5="38" closed="false" y1="20" y2="23" x8="25" x7="25" x2="22" x6="35" y9="20" x1="25" x4="35" y3="25" y4="25" antialias="false" y5="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="20" x3="25" x9="25"/>
-        <line x1="12" y2="23" end1="none" y1="23" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" x2="23" antialias="false" length1="1.5"/>
+        <polygon y6="20" x5="38" closed="true" y1="20" y2="23" x2="22" x6="35" x1="25" x4="35" y3="25" y4="25" antialias="false" y5="22" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="25"/>
+        <line x1="12" y2="23" end1="none" y1="23" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" x2="22" antialias="false" length1="1.5"/>
         <terminal name="" y="22" uuid="{d89b205e-92c8-4c58-858e-b7889eceff49}" x="39" orientation="e"/>
     </description>
 </definition>

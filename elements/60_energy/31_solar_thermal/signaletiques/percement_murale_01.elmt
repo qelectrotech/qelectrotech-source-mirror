@@ -1,24 +1,29 @@
-<definition width="30" hotspot_x="25" type="element" link_type="simple" version="0.5" height="30" hotspot_y="24">
-    <uuid uuid="{bcf7300e-4f3d-4bd9-a160-cfa8bee3c07e}"/>
+<definition type="element" width="30" link_type="simple" hotspot_x="25" version="0.80" height="30" hotspot_y="24">
+    <uuid uuid="{5ec93342-84f1-4d45-a76d-913ccce79938}"/>
     <names>
-        <name lang="cs">Přechod přes stěnu</name>
-        <name lang="pl">Przejście przez ścianę</name>
         <name lang="it">Passaggio a muro</name>
-        <name lang="en">Passage wall</name>
         <name lang="es">Perforación del muro 01</name>
         <name lang="nl">Doorgang Muur</name>
         <name lang="ar">ممر حائطي</name>
+        <name lang="de">Wanddurchgang</name>
+        <name lang="en">Passage wall</name>
+        <name lang="pl">Przejście przez ścianę</name>
+        <name lang="cs">Přechod přes stěnu</name>
         <name lang="fr">Passage murale </name>
     </names>
+    <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" y1="0" x1="-20" closed="false" x3="-13" y3="-5" x2="-16"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" y1="-20" x1="0" closed="false" x3="-10" y3="-10" x2="-4"/>
-        <rect width="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-17" x="-16" height="14"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="8.48528" y="-14.2426" x="-14.2426"/>
-        <input tagg="label" rotate="true" size="8" y="1" x="-3" text="A"/>
-        <terminal y="0" x="-10" orientation="w"/>
-        <terminal y="-20" x="-10" orientation="e"/>
+        <polygon antialias="false" closed="false" y3="-5" x2="-16" x3="-13" y1="0" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0"/>
+        <polygon antialias="false" closed="false" y3="-10" x2="-4" x3="-10" y1="-20" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20"/>
+        <rect antialias="false" x="-16" width="12" y="-17" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="14" rx="0"/>
+        <circle antialias="true" x="-14.25" diameter="8.5" y="-14.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text font="Sans Serif,8,-1,5,50,0,0,0,0,0" text_width="-1" frame="false" x="-3" Valignment="AlignTop" Halignment="AlignLeft" y="-9.5" rotation="0" z="5" text_from="ElementInfo" uuid="{1fd4e192-3e6d-48ee-be28-c614a87d4ca9}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="e" x="-10" y="-20"/>
+        <terminal orientation="w" x="-10" y="0"/>
     </description>
 </definition>

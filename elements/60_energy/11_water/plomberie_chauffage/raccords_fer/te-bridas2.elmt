@@ -1,12 +1,13 @@
 <definition hotspot_y="28" link_type="simple" width="60" version="0.80" type="element" height="50" hotspot_x="30">
     <uuid uuid="{b22ba346-1302-4a5b-872f-bcdb0fb25f25}"/>
     <names>
+        <name lang="de">T-Stück mit Flansch</name>
         <name lang="fr">Té à brides</name>
         <name lang="ca">Te brides</name>
         <name lang="es">Te bridas</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <rect width="4.5047" y="-16.4536" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-23.2025" ry="0" antialias="false" height="34.7036"/>

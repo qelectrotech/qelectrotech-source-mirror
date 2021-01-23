@@ -1,12 +1,13 @@
 <definition hotspot_y="37" type="element" height="60" version="0.80" width="60" hotspot_x="39" link_type="simple">
     <uuid uuid="{93c87de1-679e-49e7-8923-694e45b583bb}"/>
     <names>
+        <name lang="de">Bogen mit Flansch</name>
         <name lang="es">Codo bridas</name>
         <name lang="ca">Colçe brides</name>
         <name lang="fr">Coude bride</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <rect antialias="false" height="34.7036" width="3.5047" x="-30.2025" y="-17.4536" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>

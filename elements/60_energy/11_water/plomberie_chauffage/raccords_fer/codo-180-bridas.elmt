@@ -1,12 +1,13 @@
 <definition hotspot_y="46" type="element" height="60" version="0.80" width="60" hotspot_x="36" link_type="simple">
     <uuid uuid="{2dda81a9-0598-49f7-aee0-cb5263810eb2}"/>
     <names>
+        <name lang="de">Bogen 180° mit Flansch</name>
         <name lang="es">Codo 180 bridas</name>
         <name lang="ca">Colze 180 brides</name>
         <name lang="fr">Coude 180 bride</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line end1="none" antialias="false" length1="1.5" x1="-7.0778" end2="none" length2="1.5" x2="-7.0778" y2="-23.6117" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36.1532"/>
