@@ -864,6 +864,12 @@ QDomDocument QETProject::toXml()
 	QDomDocument xml_doc;
 	QDomElement project_root = xml_doc.createElement("project");
 	project_root.setAttribute("version", QET::version);
+	if (project_title_.isEmpty())
+	{
+		// if project_title_is Empty add title from m_file_path
+		// is for project name in Collectie
+		setTitle(QFileInfo(m_file_path).completeBaseName());
+	}
 	project_root.setAttribute("title", project_title_);
 	xml_doc.appendChild(project_root);
 
