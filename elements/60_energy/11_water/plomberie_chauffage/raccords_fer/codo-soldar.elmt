@@ -1,12 +1,13 @@
 <definition hotspot_y="39" link_type="simple" width="60" version="0.80" type="element" height="50" hotspot_x="40">
     <uuid uuid="{a27387e6-72d4-4b0e-84dd-8a9a138bc7bc}"/>
     <names>
+        <name lang="de">Bogen 45° (Löt)</name>
         <name lang="fr">Coude à souder</name>
         <name lang="ca">Colze soldar</name>
         <name lang="es">Codo soldar</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <arc start="-45" width="17.4672" y="-21.4929" angle="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-18.547" antialias="true" height="14.5147"/>

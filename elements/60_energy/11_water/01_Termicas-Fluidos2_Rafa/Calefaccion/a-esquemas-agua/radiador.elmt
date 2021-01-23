@@ -3,10 +3,11 @@
     <names>
         <name lang="es">Radiador</name>
         <name lang="ca">Radiador</name>
+        <name lang="de">Heizkörper, Anschlüsse seitlich</name>
         <name lang="fr">Radiateur</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <rect antialias="false" height="6.37083" width="40" x="-20" y="-3.37083" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
