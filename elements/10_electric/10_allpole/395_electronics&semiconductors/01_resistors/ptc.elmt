@@ -1,0 +1,29 @@
+<definition width="20" link_type="simple" hotspot_x="14" version="0.80" height="60" hotspot_y="29" type="element">
+    <uuid uuid="{5b25b81b-712d-43ff-b4cf-f3653284b6d3}"/>
+    <names>
+        <name lang="pl">PTC</name>
+        <name lang="cs">PTC</name>
+        <name lang="it">PTC</name>
+        <name lang="nl">PTC</name>
+        <name lang="fr">PTC</name>
+        <name lang="es">PTC</name>
+        <name lang="de">PTC</name>
+        <name lang="en">PTC</name>
+        <name lang="ar">PTC</name>
+    </names>
+    <elementInformations/>
+    <informations>EN 60617: 04-01-04</informations>
+    <description>
+        <dynamic_text x="8" z="1" rotation="0" text_from="ElementInfo" frame="false" Valignment="AlignTop" uuid="{a8e69c5a-8390-49e3-8ae7-4ecfdc998a76}" Halignment="AlignLeft" y="-18.95" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-11" rotation="0" color="#000000" y="10" text="T" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line x1="0" end1="none" antialias="false" length2="1.5" length1="1.5" y1="20" y2="-20" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0"/>
+        <line x1="-11" end1="none" antialias="false" length2="1.5" length1="1.5" y1="-4" y2="-10" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-11"/>
+        <line x1="-8" end1="none" antialias="false" length2="1.5" length1="1.5" y1="-4" y2="-10" end2="simple" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8"/>
+        <rect x="-4" antialias="false" width="8" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" height="20" ry="0" y="-10"/>
+        <terminal x="0" name="" uuid="{c7e51b81-8463-48ea-8ce9-c9e0ee06f975}" orientation="n" y="-21"/>
+        <terminal x="0" name="" uuid="{93dabc0a-a6e8-4c0a-8d1c-c67b65a575e3}" orientation="s" y="21"/>
+    </description>
+</definition>

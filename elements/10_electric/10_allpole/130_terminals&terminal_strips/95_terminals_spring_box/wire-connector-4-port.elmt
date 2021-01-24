@@ -1,6 +1,7 @@
 <definition height="50" hotspot_x="30" hotspot_y="26" width="50" type="element" version="0.80" link_type="terminal">
     <uuid uuid="{90ef162a-ae50-4497-8280-94fb3a4f0127}"/>
     <names>
+        <name lang="de">4-polig</name>
         <name lang="en">Wire Connector 4-Port</name>
         <name lang="cs">Svorka 4 vodiče</name>
         <name lang="hu">Kötőelem 4 tagos</name>
