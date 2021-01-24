@@ -10,6 +10,7 @@
         <name lang="en">5-pin DIN socket</name>
         <name lang="es">Socket DIN de 5 pines</name>
         <name lang="fr">Embase DIN 5 broches</name>
+        <name lang="hu">5 tűs DIN csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

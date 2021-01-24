@@ -8,6 +8,7 @@
         <name lang="en">Encoder plug 17 Pin</name>
         <name lang="es">Conector para codificador de 17 pines</name>
         <name lang="fr">Fiche codeur 17 broches</name>
+        <name lang="hu">17 tűs enkóder csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

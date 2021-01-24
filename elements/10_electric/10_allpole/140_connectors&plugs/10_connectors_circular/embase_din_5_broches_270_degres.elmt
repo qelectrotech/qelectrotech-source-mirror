@@ -10,6 +10,7 @@
         <name lang="en">5-pin DIN socket 270 degrees</name>
         <name lang="es">Socket de 5 pines a 270 grados</name>
         <name lang="fr">Embase DIN 5 broches 270 degrés</name>
+        <name lang="hu">5 tűs DIN csatlakozó 270 fok</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
