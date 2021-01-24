@@ -1,6 +1,7 @@
 <definition version="0.80" hotspot_y="63" hotspot_x="30" width="50" link_type="terminal" height="90" type="element">
     <uuid uuid="{680935f6-7a08-4015-b372-6f83d950cce4}"/>
     <names>
+        <name lang="de">2 Potenziale: 2 In, 4 Out</name>
         <name lang="en">Wire Connector Splitter 2 Input-4 Output</name>
         <name lang="cs">Rozbočovací svorka 2 vstupy, 4 výstupy</name>
         <name lang="hu">Kötőelem elosztó 2 bemenet, 4 kimenet</name>
