@@ -11,6 +11,7 @@
         <name lang="en">D-SUB  9 pin (male)</name>
         <name lang="es">D-SUB 9 pines (macho)</name>
         <name lang="fr">SUB-D 9 broches (male)</name>
+        <name lang="hu">9 tűs apa D-Sub</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

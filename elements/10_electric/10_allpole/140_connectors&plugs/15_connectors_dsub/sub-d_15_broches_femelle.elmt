@@ -11,6 +11,7 @@
         <name lang="en">D-SUB  15 pin (female)</name>
         <name lang="es">D-SUB 15 pines (hembra)</name>
         <name lang="fr">SUB-D 15 broches (femelle)</name>
+        <name lang="hu">15 tűs anya D-Sub</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

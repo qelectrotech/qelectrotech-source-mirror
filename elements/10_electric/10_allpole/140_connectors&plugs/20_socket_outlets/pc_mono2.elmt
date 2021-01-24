@@ -10,6 +10,7 @@
         <name lang="fr">PC mono 2P+ Terre</name>
         <name lang="en">Outlet 3 poles</name>
         <name lang="es">Toma corriente 3P</name>
+        <name lang="hu">F + N + PE csatlakozó aljzat</name>
     </names>
     <elementInformations>
         <elementInformation name="plant" show="1"></elementInformation>

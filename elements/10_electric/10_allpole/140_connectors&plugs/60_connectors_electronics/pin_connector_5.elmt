@@ -10,6 +10,7 @@
         <name lang="el">Σύνδεσμος, 5 ακροδέκτες</name>
         <name lang="ar">وصلة, 5 دبابيس</name>
         <name lang="pl">Złącze pięciostykowe</name>
+        <name lang="hu">5 tűs csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

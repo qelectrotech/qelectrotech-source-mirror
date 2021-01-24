@@ -11,6 +11,7 @@
         <name lang="en">D-SUB  9 pin (female)</name>
         <name lang="es">D-SUB 9 pines (hembra)</name>
         <name lang="fr">SUB-D 9 broches (femelle)</name>
+        <name lang="hu">9 tűs anya D-Sub</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
