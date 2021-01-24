@@ -2,6 +2,7 @@
     <uuid uuid="{b5abb4c2-455d-45ff-95f2-328521f4e2e1}"/>
     <names>
         <name lang="en">Jump</name>
+        <name lang="de">Sprung</name>
         <name lang="fr">Saut</name>
         <name lang="ar">قفز</name>
         <name lang="cs">Skok</name>
