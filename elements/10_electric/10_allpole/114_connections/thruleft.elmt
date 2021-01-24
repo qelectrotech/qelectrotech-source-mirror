@@ -1,26 +1,27 @@
-<definition hotspot_y="4" height="20" hotspot_x="17" type="element" width="30" link_type="terminal" version="0.70">
-    <uuid uuid="{9e88368e-1b20-4a56-8941-5d17a4cce2d4}"/>
+<definition height="20" version="0.80" hotspot_x="17" link_type="terminal" width="30" type="element" hotspot_y="4">
+    <uuid uuid="{3dd412d9-6882-42ae-9f5f-eb04f2224214}"/>
     <names>
-        <name lang="cs">Levé spojení</name>
-        <name lang="ru">Справа налево</name>
-        <name lang="fr">Liaison gauche</name>
-        <name lang="en">Thru left</name>
-        <name lang="ar">ربط يسار</name>
-        <name lang="it">Collegamento sinistro</name>
-        <name lang="pl">Połączenie 4</name>
-        <name lang="es">A la izquierda</name>
         <name lang="hu">Balra továbbmenő leágazás</name>
+        <name lang="es">A la izquierda</name>
+        <name lang="ar">ربط يسار</name>
+        <name lang="pl">Połączenie 4</name>
+        <name lang="it">Collegamento sinistro</name>
+        <name lang="ru">Справа налево</name>
+        <name lang="de">Abzweig links</name>
+        <name lang="en">Thru left</name>
+        <name lang="fr">Liaison gauche</name>
+        <name lang="cs">Levé spojení</name>
     </names>
     <elementInformations/>
     <informations></informations>
     <description>
-        <dynamic_text font_size="1" rotation="0" uuid="{5ff9bef8-b6a8-4cf8-ba82-4dabe7b1820f}" text_width="-1" frame="false" text_from="UserText" z="1" x="1.5" y="-1.45">
+        <dynamic_text text_width="-1" text_from="UserText" Valignment="AlignTop" x="1.5" frame="false" rotation="0" uuid="{5ff9bef8-b6a8-4cf8-ba82-4dabe7b1820f}" z="1" y="-1.45" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal">
             <text>_</text>
         </dynamic_text>
-        <line x1="0" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" y2="0" end1="none" antialias="false" x2="-6"/>
-        <line x1="0" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="5" end1="none" antialias="false" x2="0"/>
-        <terminal x="4" orientation="e" y="0"/>
-        <terminal x="-10" orientation="w" y="0"/>
-        <terminal x="0" orientation="s" y="10"/>
+        <polygon y1="0" x4="0" x2="-5" x3="0" antialias="false" y2="0" y3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="10" x1="-10" closed="false"/>
+        <polygon y1="10" x2="0" x3="4" antialias="false" y2="0" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" closed="false"/>
+        <terminal x="0" uuid="{46980c8f-3fb1-4993-b1ec-6f3b60832fab}" orientation="s" name="" y="10"/>
+        <terminal x="-10" uuid="{401a02b0-a3d8-4f09-bd65-c4a6ad782686}" orientation="w" name="" y="0"/>
+        <terminal x="4" uuid="{223e7aaa-f9ff-47e6-b901-89471848b8de}" orientation="e" name="" y="0"/>
     </description>
 </definition>
