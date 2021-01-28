@@ -41,8 +41,8 @@ class ArcEditor : public ElementItemEditor
 	
 		// attributes
 	private:
-		PartArc *part;
-		StyleEditor *style_;
+		PartArc *m_part;
+		StyleEditor *m_style;
 		QDoubleSpinBox *x, *y, *h, *v;
 		QSpinBox *angle, *start_angle;
 		bool m_locked;
@@ -59,11 +59,8 @@ class ArcEditor : public ElementItemEditor
 	public slots:
 		void updateArcS();
 		void updateArcA();
-		void updateArcRectX();
-		void updateArcRectY();
-		void updateArcRectH();
-		void updateArcRectV();
 		void updateForm() override;
+		void updateRect();
 	
 	private:
 		void activeConnections(bool);
