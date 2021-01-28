@@ -5,6 +5,8 @@
 déplacement dans un seul sens</name>
         <name lang="de">Drehstrom-Linearmotor, Bewegung nur in einer
 Richtung</name>
+        <name lang="cs">Trojfázový indukční lineární motor
+s pohybem pouze jedním směrem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

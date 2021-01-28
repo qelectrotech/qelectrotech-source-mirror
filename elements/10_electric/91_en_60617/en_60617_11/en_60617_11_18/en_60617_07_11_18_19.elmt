@@ -4,6 +4,8 @@
         <name lang="de">Flugplatzfeuer, weiss blitzend, rund strahlend</name>
         <name lang="fr">Feu aéronautique au sol, faisceau
 omnidirectionnel, à éclats, blanc</name>
+        <name lang="cs">Letecké pozemní světelné návěstidlo,
+bílé, zábleskové, všesměrový svazek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="de">Wattstundenzähler, der nur die von der
 Sammelschiene abgegebene Energie zählt</name>
         <name lang="fr">Compteur d'énergie reçue du jeu de barres</name>
+        <name lang="cs">Watthodinový měřič pro energii ze sběrnice</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

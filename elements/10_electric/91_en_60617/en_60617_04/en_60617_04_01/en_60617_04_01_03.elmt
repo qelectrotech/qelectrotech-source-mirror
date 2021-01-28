@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Widerstand, veränderbar </name>
         <name lang="fr">Résistance réglable</name>
+        <name lang="cs">Nastavitelný rezistor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

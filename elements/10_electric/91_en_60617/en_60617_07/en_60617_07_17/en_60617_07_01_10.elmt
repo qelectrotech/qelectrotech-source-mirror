@@ -4,6 +4,7 @@
         <name lang="de">Meßrelais zum Erfassen von
 Windungsschlüssen</name>
         <name lang="fr">Relais de détection de court-circuit entre spires</name>
+        <name lang="cs">Relé zjišťující krátké spojení mezi vinutími</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

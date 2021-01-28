@@ -6,6 +6,9 @@ Changement de l'ordre de succession de
 phases</name>
         <name lang="de">Leiterverbindungen, Tausch von Leitern
 Wechsel von Phasenfolge</name>
+        <name lang="cs">Záměna vodičů
+Změna pořadí fází
+Převrácení polarity</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

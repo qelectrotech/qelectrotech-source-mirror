@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Diode bidirectionelle</name>
         <name lang="de">bidirektionale Diode</name>
+        <name lang="cs">Obousměrná dioda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

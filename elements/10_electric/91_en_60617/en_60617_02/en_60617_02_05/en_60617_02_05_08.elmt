@@ -4,6 +4,7 @@
         <name lang="fr">Transit de l'énergie dans les deux sens</name>
         <name lang="es">Tránsito de energía en ambas direcciones</name>
         <name lang="de">Energiefluß, bidirektional</name>
+        <name lang="cs">Obousměrný tok energie</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

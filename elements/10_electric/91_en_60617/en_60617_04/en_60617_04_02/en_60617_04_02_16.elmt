@@ -6,6 +6,7 @@ z.B. Halbleiter-Kondensator</name>
         <name lang="fr">Condensateur polarisé dépendant de la
 tension, par exemple condensateur à
 semiconducteu</name>
+        <name lang="cs">Kondenzátor polarizovaný napěťově závislý</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

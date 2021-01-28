@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Flugplatzfeuer, Unterflur, allgemein</name>
         <name lang="fr">Feu aéronautique au sol, en surface</name>
+        <name lang="cs">Letecké pozemnísvětelné návěstidlo, povrchové</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

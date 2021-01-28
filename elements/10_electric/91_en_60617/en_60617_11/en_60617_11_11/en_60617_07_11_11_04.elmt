@@ -4,6 +4,7 @@
         <name lang="de">Drei Leiter, ein Neutralleiter, ein Schutzleiter</name>
         <name lang="fr">Canalisation triphasée avec conducteur neutre
 et conducteur de protection</name>
+        <name lang="cs">Trojfázové vedení se středním a ochranným vodičem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

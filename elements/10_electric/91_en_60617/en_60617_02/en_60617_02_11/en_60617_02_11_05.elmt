@@ -4,6 +4,7 @@
         <name lang="fr">Clavier</name>
         <name lang="es">teclado</name>
         <name lang="de">Tastatur </name>
+        <name lang="cs">Klávesnice</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

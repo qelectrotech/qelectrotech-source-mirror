@@ -4,6 +4,8 @@
         <name lang="fr">Contact de passage fermant momentanément
 au relâchement de son organe de commande</name>
         <name lang="de">Wischer mit Kontaktgabe bei Rückfall</name>
+        <name lang="cs">Přechodný kontakt zapínací,
+spojující se krátkodobě při deaktivaci ovládacího ústrojí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

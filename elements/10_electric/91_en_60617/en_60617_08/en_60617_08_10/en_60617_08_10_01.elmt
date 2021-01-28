@@ -6,6 +6,8 @@
 Lampe de signalisation, symbole général</name>
         <name lang="de">Lampe.
 Leuchtmelder, allgemein</name>
+        <name lang="cs">Zdroj světla
+    Signální zdroj světla</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

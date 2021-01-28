@@ -7,6 +7,8 @@ intérieurement à la source</name>
         <name lang="de">IGFET-Transisstor, Anreicherungstyp, ein
 Gate, N-Kanal, Substrat intern mit Source
 verbunden</name>
+        <name lang="cs">IGFET-Tranzisstor, obohacovací typ, jedno hradlo, kanál N,
+s podložkou vnitřně připojenou k emitoru</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

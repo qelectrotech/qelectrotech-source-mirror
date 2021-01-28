@@ -4,6 +4,8 @@
         <name lang="fr">Thyristor triode bloqué en inverse, gâchette P
 (commandé côté cathode)</name>
         <name lang="de">Thyristordiode, rückwärts sperrend</name>
+        <name lang="cs">Triodový zpětně závěrný tyristor, hradlo P,
+(řízení do katody)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

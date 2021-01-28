@@ -5,6 +5,8 @@
 Wegweiser, 4000/9000 feet</name>
         <name lang="fr">Plaque d'avertissement de distance:
 "4000/9000 pieds"</name>
+        <name lang="cs">Výstražný návěstní znak
+pro vzdálenost "4000/9000 stop"</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

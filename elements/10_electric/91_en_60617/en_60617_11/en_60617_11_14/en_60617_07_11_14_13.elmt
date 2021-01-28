@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Schalter, allgemein</name>
         <name lang="fr">Interrupteur, symbole général</name>
+        <name lang="cs">Časovací zařízení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

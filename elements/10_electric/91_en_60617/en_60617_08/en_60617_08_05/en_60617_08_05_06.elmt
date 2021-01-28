@@ -3,6 +3,8 @@
     <names>
         <name lang="de">Zähleinrichtung, betätigt durch Nocke</name>
         <name lang="fr">Dispositif de comptage commandé par came</name>
+        <name lang="cs">Čítač ovládaný vačkou a
+zapínací kontakt pro každých n sepnutír</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

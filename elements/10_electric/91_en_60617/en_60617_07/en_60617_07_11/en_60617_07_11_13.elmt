@@ -4,6 +4,7 @@
         <name lang="fr">Élément de commutateur à six directions</name>
         <name lang="de">Mehrstellungsschalter mit sechs
 Schaltstellungen, gebrückt</name>
+        <name lang="cs">Jeden pól šestipolohového vícepólového spínače</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

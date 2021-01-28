@@ -5,6 +5,7 @@
 enroulement</name>
         <name lang="de">Transformator mit Mittenanzapfung an einer
 Wicklung</name>
+        <name lang="cs">Transformátor s vývodem ze středu jednoho vinutí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

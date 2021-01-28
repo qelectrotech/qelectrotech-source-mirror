@@ -4,6 +4,7 @@
         <name lang="fr">Propagation dans un seul sens Ecoulement dans un seul sens (énergie, signal, information)</name>
         <name lang="es">Propagación unidireccional Flujo unidireccional (energía, señal, información)</name>
         <name lang="de">Ausbreitung in einer Richtung (simplex) Fluß in einer Richtung (simplex) (Energie-, Signal-, Information-)</name>
+        <name lang="cs">Šíření jednosměrné, tok jednosměrný ( energie, signál, informace)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

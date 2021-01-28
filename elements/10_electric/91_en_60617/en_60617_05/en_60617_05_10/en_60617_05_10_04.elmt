@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Flüssigkathode, isoliert</name>
         <name lang="fr">Cathode liquide isolée de l'enveloppe</name>
+        <name lang="cs">Tekutá katoda izolovaná</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

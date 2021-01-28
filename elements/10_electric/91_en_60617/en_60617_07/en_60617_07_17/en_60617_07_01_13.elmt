@@ -3,6 +3,8 @@
     <names>
         <name lang="de">Meßrelais zum Erkennen der Rotorblockierung</name>
         <name lang="fr">Relais de mesure de détection de rotor bloqué</name>
+        <name lang="cs">Relé ke zjištění zabrzděného rotoru
+na základě měření proudu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

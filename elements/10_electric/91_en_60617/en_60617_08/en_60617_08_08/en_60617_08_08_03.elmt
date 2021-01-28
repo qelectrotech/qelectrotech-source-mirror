@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Uhr mit Kontaktgebe</name>
         <name lang="fr">Horloge à contact</name>
+        <name lang="cs">Hodiny se spínačem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

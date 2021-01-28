@@ -4,6 +4,7 @@
         <name lang="fr">Actionné par le niveau d'un liquide</name>
         <name lang="es">Accionado por el nivel de liquido</name>
         <name lang="de">ausgelöst durch Flüssigkeitspegel</name>
+        <name lang="cs">Uvádění v činnost hladinou kapaliny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

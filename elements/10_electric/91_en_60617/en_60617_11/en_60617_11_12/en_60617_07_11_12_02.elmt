@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Leitung, nach unten führend</name>
         <name lang="fr">Canalisation descendante</name>
+        <name lang="cs">Stoupací vedení směrem dolů</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

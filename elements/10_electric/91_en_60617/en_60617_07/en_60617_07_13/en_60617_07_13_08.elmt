@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Lasttrennschalter</name>
         <name lang="fr">Interrupteur-sectionneur</name>
+        <name lang="cs">Odpínač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

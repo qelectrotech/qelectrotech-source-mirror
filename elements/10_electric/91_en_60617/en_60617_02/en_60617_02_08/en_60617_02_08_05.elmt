@@ -4,6 +4,7 @@
         <name lang="fr">Temporisation</name>
         <name lang="es">Tiempo de espera</name>
         <name lang="de">Verzögerung</name>
+        <name lang="cs">Zpoždění</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

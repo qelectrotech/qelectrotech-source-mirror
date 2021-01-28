@@ -4,6 +4,7 @@
         <name lang="fr">Défaut d'isolement</name>
         <name lang="de">Isolationsfehler Überschlag</name>
         <name lang="es">Rollover de falla de aislamiento</name>
+        <name lang="cs">Přeskok, Průraz izolace</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

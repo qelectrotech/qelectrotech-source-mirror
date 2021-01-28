@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Ligne avec point de raccordement enterré</name>
         <name lang="de">Erdkabel mit Verbindungsstelle </name>
+        <name lang="cs">Vedení v zemi se spojkou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

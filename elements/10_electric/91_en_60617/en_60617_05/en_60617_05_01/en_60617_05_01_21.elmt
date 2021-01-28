@@ -7,6 +7,7 @@ PIN ou NIP</name>
         <name lang="de">Transition entre régions de types de
 conductivité différentes:
 - de P à N, ou de N à P</name>
+        <name lang="cs">Oblast vlastní elektrické vodivosti se strukturou PIN nebo NIP</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

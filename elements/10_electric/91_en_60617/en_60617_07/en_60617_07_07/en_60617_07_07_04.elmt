@@ -4,6 +4,8 @@
         <name lang="fr">Contact à fermeture à commande manuelle,
 symbole général</name>
         <name lang="de">handbetätigter Schalter, allgemein</name>
+        <name lang="cs">Otočný spínač se zapínacím kontaktem
+bez samočinného návratu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

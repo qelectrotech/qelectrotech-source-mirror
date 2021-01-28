@@ -4,6 +4,7 @@
         <name lang="fr">Commande par horloge électrique</name>
         <name lang="es">Accionado por reloj</name>
         <name lang="de">Betätigung durch Uhr</name>
+        <name lang="cs">Ovládání elektrickými hodinami</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="de">Impulszähler mit Vielfach-Kontaktgeber</name>
         <name lang="fr">Compteur d'impulsions électriques à plusieurs
 contacts</name>
+        <name lang="cs">Počítač impulzů s vícenásobnými kontakty</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

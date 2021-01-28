@@ -4,6 +4,8 @@
         <name lang="fr">Actionné lorsque la grandeur caractéristique descente en dessous de la valeur d'ajustement</name>
         <name lang="de">auslösend, wenn die charakteristische Größe niedriger als der eingestellte Wert ist</name>
         <name lang="es">Actuado cuando la cantidad característica cae por debajo del valor de ajuste</name>
+        <name lang="cs">Uvedení v činnost, pokud je 
+charakteristická veličina menší než nastavená hodnota</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

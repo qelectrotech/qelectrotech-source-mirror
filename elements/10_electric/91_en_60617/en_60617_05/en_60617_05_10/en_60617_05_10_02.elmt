@@ -5,6 +5,7 @@
 Zündelektrode</name>
         <name lang="fr">Electrode d'amorçage
 Electrode d'allumage</name>
+        <name lang="cs">Rozběhová, spouštěcí, zapalovací elektroda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,8 @@ commune par aimant permanent</name>
         <name lang="de">Gleichstrom-Umformer, rotierend, mit
 gemeinsamer Dauermagneterregung
 (Einankerumformer)</name>
+        <name lang="cs">Jednokotvový rotační měnič se společným buzením
+permanentním magnetem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

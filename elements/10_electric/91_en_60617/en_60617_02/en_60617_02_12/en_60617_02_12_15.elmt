@@ -4,6 +4,8 @@
         <name lang="fr">Dispositif de blocage engagé</name>
         <name lang="es">Dispositvo de bloqueo, ocupado movimiento a la izquierda bloqueado</name>
         <name lang="de">Blockiereinrichtung, verklinkt</name>
+        <name lang="cs">Blokovací zařízení zapnuté
+    pohyb doleva je blokován</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

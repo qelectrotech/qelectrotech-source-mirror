@@ -3,6 +3,7 @@
     <names>
         <name lang="de">elektronisches Schütz (Halbleiter)</name>
         <name lang="fr">Contacteur à semiconducteur (statique)</name>
+        <name lang="cs">Statický (polovodičový) stykač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

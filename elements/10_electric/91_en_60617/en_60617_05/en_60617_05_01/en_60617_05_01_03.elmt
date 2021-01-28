@@ -5,6 +5,7 @@
 connexions</name>
         <name lang="de">Halbleiterzone mit mehreren ohmschen
 Anschlüssen</name>
+        <name lang="cs">Polovodičová oblast s několika ohmickými připojeními</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

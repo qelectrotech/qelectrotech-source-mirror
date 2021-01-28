@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Boîte de jonction avec trois conducteurs</name>
         <name lang="de">Verbindungsmuffe</name>
+        <name lang="cs">Průběžná kabelová spojka se třemi vodiči</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

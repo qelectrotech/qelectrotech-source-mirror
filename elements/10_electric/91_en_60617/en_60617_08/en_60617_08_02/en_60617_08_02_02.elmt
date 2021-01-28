@@ -4,6 +4,7 @@
         <name lang="de">Blindstrommeßgerät, anzeigend
 Amperemeter für Blindstrom</name>
         <name lang="fr">Ampèremètre de courant réactif</name>
+        <name lang="cs">Ampérmetr jalového proudu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

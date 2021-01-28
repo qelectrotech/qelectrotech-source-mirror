@@ -4,6 +4,7 @@
         <name lang="de">Sicherung mit getrenntem Meldekontakt</name>
         <name lang="fr">Fusible à percuteur avec circuit de signalisation
 distinct</name>
+        <name lang="cs">Tavná pojistkase samostatným signálním obvodem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

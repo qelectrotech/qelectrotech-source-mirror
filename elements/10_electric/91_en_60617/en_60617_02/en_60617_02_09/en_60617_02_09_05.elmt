@@ -4,6 +4,7 @@
         <name lang="fr">Rayonnement cohérent, non ionisant, bidirectionnel</name>
         <name lang="es">Radiación coherente, no ionizante, bidireccional</name>
         <name lang="de">kohärente Strahlung, nicht ionisierend, bidirektional</name>
+        <name lang="cs">Koherentní záření, neionizující, obousměrné</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Liaison flexible</name>
         <name lang="de">bewegbare Verbindung</name>
+        <name lang="cs">Pohyblivé spojení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

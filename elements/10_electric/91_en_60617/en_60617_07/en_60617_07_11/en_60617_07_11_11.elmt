@@ -4,6 +4,7 @@
         <name lang="fr">Commutateur multidirectionnel</name>
         <name lang="de">Mehrstellungsschalter, gebrückt, ein Anschluss
 frei</name>
+        <name lang="cs">Vícepolohový spínač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

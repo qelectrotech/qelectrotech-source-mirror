@@ -4,6 +4,7 @@
         <name lang="fr">Dispositif de blocage</name>
         <name lang="es">Dispositivo de bloqueo</name>
         <name lang="de">Blockiereinrichtung</name>
+        <name lang="cs">Blokovací zařízení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

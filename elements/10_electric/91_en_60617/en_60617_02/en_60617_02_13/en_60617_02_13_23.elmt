@@ -4,6 +4,7 @@
         <name lang="fr">Actionné par effet électromagnétique</name>
         <name lang="es">Accionado por efecto electromagnetico</name>
         <name lang="de">ausgelöst durch elektromagnetischen Effekt</name>
+        <name lang="cs">Elektromagnetické uvádění do činnosti</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

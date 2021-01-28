@@ -5,6 +5,7 @@
 conducteur</name>
         <name lang="de">Abzweigung, bei der der Leiter nicht
 unterbrochen werden darf</name>
+        <name lang="cs">Napojení vodiče nepřerušující vodič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Wechselschalter, einpolig</name>
         <name lang="fr">Interrupteur unipolaire va-et-vient</name>
+        <name lang="cs">Střídavý přepínač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

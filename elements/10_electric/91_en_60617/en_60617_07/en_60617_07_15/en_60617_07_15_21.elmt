@@ -4,6 +4,7 @@
         <name lang="de">elektromechanischer Antrieb eines
 Thermorelais</name>
         <name lang="fr">Organe de commande d'un relais thermique</name>
+        <name lang="cs">Popudový článek tepelného relé</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

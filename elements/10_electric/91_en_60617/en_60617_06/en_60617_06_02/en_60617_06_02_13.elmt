@@ -5,6 +5,8 @@
 avec neutre sorti</name>
         <name lang="de">Sechsphasenwicklung, Gabelschaltung,
 Neutralleiter herausgeführt</name>
+        <name lang="cs">Šestifázové vinutí
+do lomené hvězdy s vyvedeným uzlem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Drehzahlmeßgerät, anzeigend</name>
         <name lang="fr">Tachymètre</name>
+        <name lang="cs">Otáčkoměr</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

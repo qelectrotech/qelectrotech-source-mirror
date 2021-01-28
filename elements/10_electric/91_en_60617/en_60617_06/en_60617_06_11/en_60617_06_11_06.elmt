@@ -5,6 +5,7 @@
 Spannungssteller</name>
         <name lang="fr">Autotransformateur, monophasé à réglage
 progressif de la tension</name>
+        <name lang="cs">Jednofázový autotransformátor s regulací napětí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

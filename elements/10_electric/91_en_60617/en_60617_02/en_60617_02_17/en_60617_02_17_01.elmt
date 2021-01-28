@@ -7,6 +7,8 @@ d'un défaut)</name>
 Ubicación de la falla)</name>
         <name lang="de">Fehler (Anzeige eines angenommenen
 Fehlerorts)</name>
+        <name lang="cs">Porucha(označení 
+předpokládaného místa poruchy)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

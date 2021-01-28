@@ -7,6 +7,9 @@
 Élément de lentille électronique</name>
         <name lang="de">zylindrische Fokussierelektrode
 elektronische Linse</name>
+        <name lang="cs">Válcová zaostřovací elektroda
+Elektroda se shlukovacím prostorem
+Prvek elektronické čočky</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Wirk- und Blindleistungsschreiber, kombiniert</name>
         <name lang="fr">Enregistreur combiné wattmètre et varmètre</name>
+        <name lang="cs">Kombinovaný zapisovací wattmetr a varmetr</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

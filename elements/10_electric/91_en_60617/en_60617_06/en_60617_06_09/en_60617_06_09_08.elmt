@@ -3,6 +3,8 @@
     <names>
         <name lang="fr">Inductance</name>
         <name lang="de">Drossel</name>
+        <name lang="cs">Tlumivka
+Reaktor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

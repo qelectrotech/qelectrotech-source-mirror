@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Conducteur dans un câble</name>
         <name lang="de">Leiter in einem Kabel</name>
+        <name lang="cs">Vodiče v kabelu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

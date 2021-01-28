@@ -8,6 +8,9 @@ Batterie pile ou accumulateurs</name>
 Sekundärzelle, -element,
 Batterie von Primär- oder Sekundärzellen,
 Akkumulator</name>
+        <name lang="cs">Primární článek,
+Sekundární článek,
+Baterie primárních nebo sekundárních článků</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

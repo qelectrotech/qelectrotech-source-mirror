@@ -4,6 +4,8 @@
         <name lang="de">Flugplatzfeuer, weiss, einseitig strahlend</name>
         <name lang="fr">Feu aéronautique au sol, faisceau blanc et
 unidirectionnel (en hauteur)</name>
+        <name lang="cs">Letecké pozemní světelné návěstidlo
+bílé a jednosměrný svazek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

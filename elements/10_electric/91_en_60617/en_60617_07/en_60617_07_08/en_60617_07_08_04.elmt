@@ -5,6 +5,8 @@
 manœuvre positive d'ouverture</name>
         <name lang="de">Endschalter mit zwangsläufiger Betätigung des
 Öffners</name>
+        <name lang="cs">Polohový spínač se zaručenou
+rozpojovací funkcí vypínacího kontaktu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

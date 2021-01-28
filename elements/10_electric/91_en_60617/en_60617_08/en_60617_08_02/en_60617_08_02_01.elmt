@@ -4,6 +4,7 @@
         <name lang="de">Spannungsmeßgerät, anzeigend
 Voltmeter</name>
         <name lang="fr">Voltmètre</name>
+        <name lang="cs">Voltmetr</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

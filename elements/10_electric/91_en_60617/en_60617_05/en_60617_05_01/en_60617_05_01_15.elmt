@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Plusieurs émetteurs P sur région N</name>
         <name lang="de">Mehrere P-Emitter auf einer N-Zone</name>
+        <name lang="cs">Několik emitorů typu P v oblasti N</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="de">Slave-Wattstundenzähler mit Drucker</name>
         <name lang="fr">Répétiteur d'un compteur d'énergie active avec
 dispositif d'impression</name>
+        <name lang="cs">Pomocný watthodinový měřič se zapisovačem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

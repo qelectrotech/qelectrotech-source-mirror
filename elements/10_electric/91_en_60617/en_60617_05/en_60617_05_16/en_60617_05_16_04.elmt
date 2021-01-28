@@ -5,6 +5,7 @@
 Élément pour mesurer le conductivité des
 liquides</name>
         <name lang="de">Leitfähigkeits-Zelle</name>
+        <name lang="cs">Článek pro měření vodivosti kapalin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

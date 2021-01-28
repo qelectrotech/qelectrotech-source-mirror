@@ -5,6 +5,8 @@
 dérivation</name>
         <name lang="de">Drehstrom-Umformer mit
 Nebenschlußerregung</name>
+        <name lang="cs">Trojfázový synchronní rotační měnič
+derivačně buzený</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

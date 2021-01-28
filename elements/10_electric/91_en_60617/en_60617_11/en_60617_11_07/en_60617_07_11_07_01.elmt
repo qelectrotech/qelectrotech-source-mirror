@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Zweiwegverteiler</name>
         <name lang="fr">Répartiteur à deux voies</name>
+        <name lang="cs">Rozbočovač, dvoucestný</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

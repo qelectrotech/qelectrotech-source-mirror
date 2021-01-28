@@ -4,6 +4,7 @@
         <name lang="de">Sicherung mit mechanischer Auslösemeldung
 (Schlagbolzensicherung)</name>
         <name lang="fr">Fusible à percuteur (à liaison mécanique)</name>
+        <name lang="cs">Tavná pojistka s mechanickým spojením</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Numérique</name>
         <name lang="de">digital</name>
         <name lang="es">digital</name>
+        <name lang="cs">Číslicové (digitální) signály</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,8 @@ pneumatique, à simple effet</name>
         <name lang="es">Accionado por energia hidráulica ó neumática, efecto simple</name>
         <name lang="de">ausgelöst durch pneumatische oder
 hydraulische Kraft in Pfeilrichtung</name>
+        <name lang="cs">Ovládání pneumaticky nebo hydraulicky,
+působení v jednom směru</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

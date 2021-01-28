@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Ligne avec vanne d'arrêt de gaz ou d'huile</name>
         <name lang="de">Leiter mi Absperrventil für Öl oder Gas</name>
+        <name lang="cs">Vedení s plynotěsným nebo olejotěsným uzavíracím ventilem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
