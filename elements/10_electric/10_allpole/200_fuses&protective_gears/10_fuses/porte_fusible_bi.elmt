@@ -9,6 +9,7 @@
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="nl">Zekeringscheider 1+N</name>
         <name lang="cs">Pojistkový odpínač  1p+N</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló N + F</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

@@ -10,6 +10,7 @@
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="nl">Zekeringscheider 2</name>
         <name lang="cs">Pojistkový odpínač 2p</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló karos működtetésű 2 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

@@ -10,6 +10,7 @@
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="nl">Zekeringscheider 3</name>
         <name lang="cs">Pojistkový odpínač 3p</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló karos működtetésű 3F</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

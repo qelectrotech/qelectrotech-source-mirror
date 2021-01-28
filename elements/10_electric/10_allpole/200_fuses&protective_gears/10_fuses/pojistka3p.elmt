@@ -5,6 +5,7 @@
         <name lang="cs">Pojistka 3p</name>
         <name lang="de">Sicherung 3p</name>
         <name lang="fr">Fusible 3p</name>
+        <name lang="hu">Olvadóbiztosító 3 pólusú</name>
     </names>
     <elementInformations/>
     <informations></informations>

@@ -5,6 +5,7 @@
         <name lang="cs">Pojistka 1p</name>
         <name lang="de">Sicherung 1p</name>
         <name lang="fr">Fusible 1p</name>
+        <name lang="hu">Olvadóbiztosító 1 pólusú</name>
     </names>
     <elementInformations/>
     <informations></informations>
