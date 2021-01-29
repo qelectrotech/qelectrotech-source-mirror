@@ -3343,7 +3343,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Mongolian</translation>
     </message>
 </context>
 <context>
@@ -8190,7 +8190,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="50"/>
         <source>Modifier les informations de plusieurs éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit information for multiple items</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="38"/>
