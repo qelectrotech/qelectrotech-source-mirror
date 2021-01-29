@@ -282,6 +282,8 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::be,		tr("Belgique-Flemish"), "be");
 	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turc"), "tr");
 	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hongrois"), "hu");
+	ui->m_lang_cb->addItem(QET::Icons::mn,		tr("Mongol"), "mn");
+
 
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system

@@ -204,6 +204,7 @@ namespace QET {
 		QIcon no;
 		QIcon be;
 		QIcon tr;
+		QIcon mn;
 		QIcon translation;
 		QIcon listDrawings;
 		QIcon AutoNum;
@@ -670,6 +671,7 @@ void QET::Icons::initIcons()
 	no                  .addFile(":/ico/24x16/no.png");
 	be                  .addFile(":/ico/24x16/be.png");
 	tr                  .addFile(":/ico/24x16/tr.png");
+	mn                  .addFile(":/ico/24x16/mn.png");
 	translation         .addFile(":/ico/22x22/applications-development-translation.png");
 	listDrawings        .addFile(":/ico/48x48/view-pim-journal.png");
 	AutoNum             .addFile(":/ico/128x128/plasmagik.png");
