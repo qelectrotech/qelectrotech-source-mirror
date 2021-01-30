@@ -3137,7 +3137,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
         <source>Langues</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
