@@ -2878,7 +2878,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak budou nové listy očíslovány.
+- Číslování se skládá z minimální proměnné.
+- Proměnnou číslování můžete přidat nebo odstranit pomocí tlačítek - a +.
+- Proměnná číslování zahrnuje: typ, hodnotu a přírůstek.
+
+- Typy „Číslice 1“, „Číslice 01“ a „Číslice 001“ představují číselný typ vymezený v poli „Hodnota“, který každý nový list zvýší o hodnotu pole „Přírůstek“.
+- „Číslice 01“ a „Číslice 001“ jsou ve výkresu znázorněny nejméně dvojmístnými a trojmístnými čísly.
+Pokud má číslice vymezená v poli Hodnota méně číslic než vybraný typ, bude jí předcházet jedna nebo dvě nuly, aby byl respektován její typ.
+
+-Typ &quot;Text&quot;, představuje pevný text.
+Pole „Přírůstek“ se nepoužívá.</translation>
     </message>
 </context>
 <context>
@@ -9640,7 +9650,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak budou nové listy očíslovány.
+- Číslování se skládá z nejmenší proměnné.
+- Proměnnou číslování můžete přidat nebo odstranit pomocí tlačítek - a +.
+- Proměnná číslování zahrnuje: typ, hodnotu a přírůstek.
+
+- Typy „Číslice 1“, „Číslice 01“ a „Číslice 001“ představují číselný typ vymezený v poli „Hodnota“, který každý nový list zvýší o hodnotu pole „Přírůstek“.
+- „Číslice 01“ a „Číslice 001“ jsou ve výkresu znázorněny nejméně dvojmístnými a trojmístnými čísly.
+Pokud má číslice vymezená v poli Hodnota méně číslic než vybraný typ, bude jí předcházet jedna nebo dvě nuly, aby byl respektován její typ.
+
+-Typ &quot;Text&quot;, představuje pevný text.
+Pole „Přírůstek“ se nepoužívá.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="235"/>
@@ -9662,7 +9682,17 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit, jak budou nové vodiče očíslovány.
+- Číslování se skládá z nejmenší proměnné.
+- Proměnnou číslování můžete přidat nebo odstranit pomocí tlačítek - a +.
+- Proměnná číslování zahrnuje: typ, hodnotu a přírůstek.
+
+- Typy „Číslice 1“, „Číslice 01“ a „Číslice 001“ představují číselný typ vymezený v poli „Hodnota“, který každý nový vodič zvýší o hodnotu pole „Přírůstek“.
+- „Číslice 01“ a „Číslice 001“ jsou ve výkresu znázorněny nejméně dvojmístnými a trojmístnými čísly.
+Pokud má číslice vymezená v poli Hodnota méně číslic než vybraný typ, bude jí předcházet jedna nebo dvě nuly, aby byl respektován její typ.
+
+-Typ &quot;Text&quot;, představuje pevný text.
+Pole „Přírůstek“ se nepoužívá.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="233"/>
@@ -12373,7 +12403,7 @@ Přiřazení názvu &quot;volta&quot; a hodnoty &quot;1745&quot; v záhlaví vý
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="445"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ve výchozím nastavení jsou dostupné následující proměnné:&lt;ul&gt;&lt;li&gt;%{author}: autor listu&lt;/li&gt;&lt;li&gt;%{date}: datum listu&lt;/li&gt;&lt;li&gt;%{title}: název listu &lt;/li&gt;&lt;li&gt;%{filename}: název souboru&lt;/li&gt;&lt;li&gt;%{plant}: název instalace (=), ve které se list nachází&lt;/li&gt;&lt;li&gt;%{locmach}: název umístění (+), kde se list nachází&lt;/li&gt;&lt;li&gt;%{indexrev}: změnové číslo listu&lt;/li&gt;&lt;li&gt;%{version}: číslo verze&lt;/li&gt;&lt;li&gt;%{folio}: číslo listu&lt;/li&gt;&lt;li&gt;%{folio-id}: poloha listu v projektu&lt;/li&gt;&lt;li&gt;%{folio-total}: ​​celkový počet listů v projektu&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: číslo předchozího listu&lt;/li&gt;&lt;li&gt;%{next-folio-num}: číslo dalšího listu&lt;/li&gt; &lt;li&gt;%{projecttitle}: název projektu&lt;/li&gt;&lt;li&gt;%{projectpath}: cesta k projektu&lt;/li&gt;&lt;li&gt;%{projectfilename}: název souboru projektu &lt;/li&gt;&lt;li&gt;%{saveddate}: datum uložení v místním formátu souboru&lt;/li&gt;&lt;li&gt;%{saveddate-eu}: datum uložení souboru ve formátu DD-MM-RRRR&lt;/li&gt; &lt;li&gt;%{saveddate-us}: datum uložení souboru ve formátu RRRR-MM-DD&lt;/li&gt;&lt;li&gt;%{savedtime}: čas uložení souboru&lt;/li&gt;&lt;li&gt;%{savedfilename}: název uloženého souboru&lt;/li&gt;&lt;li&gt;%{savedfilepath}: cesta k uloženému souboru&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="480"/>
