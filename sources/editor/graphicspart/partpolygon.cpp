@@ -22,7 +22,7 @@
 #include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "../../qeticons.h"
 #include "../elementscene.h"
-#include "../qetelementeditor.h"
+#include "../ui/qetelementeditor.h"
 
 /**
 	@brief PartPolygon::PartPolygon

@@ -20,9 +20,13 @@
 #include "ElementsCollection/elementcollectionitem.h"
 #include "ElementsCollection/elementscollectionmodel.h"
 #include "NameList/ui/namelistwidget.h"
-#include "editor/qetelementeditor.h"
+#include "editor/ui/qetelementeditor.h"
 #include "qetmessagebox.h"
 #include "qfilenameedit.h"
+
+#include <QTreeView>
+#include <QVBoxLayout>
+#include <QLabel>
 
 /**
 	Constructeur
