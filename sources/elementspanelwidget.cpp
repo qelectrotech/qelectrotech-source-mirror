@@ -18,7 +18,7 @@
 #include "elementspanelwidget.h"
 
 #include "diagram.h"
-#include "editor/qetelementeditor.h"
+#include "editor/ui/qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"
 #include "qeticons.h"

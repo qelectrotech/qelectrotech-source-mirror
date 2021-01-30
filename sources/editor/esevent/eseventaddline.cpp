@@ -20,7 +20,7 @@
 #include "../editorcommands.h"
 #include "../elementscene.h"
 #include "../graphicspart/partline.h"
-#include "../qetelementeditor.h"
+#include "../ui/qetelementeditor.h"
 
 #include <QGraphicsSceneMouseEvent>
 #include <QObject>

@@ -33,7 +33,7 @@
 #include "graphicspart/partrectangle.h"
 #include "graphicspart/partterminal.h"
 #include "graphicspart/parttext.h"
-#include "qetelementeditor.h"
+#include "ui/qetelementeditor.h"
 #include "ui/elementpropertieseditorwidget.h"
 
 #include <QKeyEvent>

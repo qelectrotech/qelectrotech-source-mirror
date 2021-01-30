@@ -19,7 +19,7 @@
 
 #include "configdialog.h"
 #include "configpages.h"
-#include "editor/qetelementeditor.h"
+#include "editor/ui/qetelementeditor.h"
 #include "elementscollectioncache.h"
 #include "factory/elementfactory.h"
 #include "factory/elementpicturefactory.h"

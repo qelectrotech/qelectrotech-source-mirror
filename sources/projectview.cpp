@@ -21,7 +21,7 @@
 #include "autoNum/assignvariables.h"
 #include "diagram.h"
 #include "diagramview.h"
-#include "editor/qetelementeditor.h"
+#include "editor/ui/qetelementeditor.h"
 #include "exportdialog.h"
 #include "qetapp.h"
 #include "qeticons.h"

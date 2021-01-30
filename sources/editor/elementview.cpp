@@ -19,7 +19,7 @@
 
 #include "../qetapp.h"
 #include "UndoCommand/pastepartscommand.h"
-#include "qetelementeditor.h"
+#include "ui/qetelementeditor.h"
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
