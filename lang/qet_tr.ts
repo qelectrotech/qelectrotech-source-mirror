@@ -3115,11 +3115,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 #Burada, oluşturacağınız öğeler için bu alanın varsayılan içeriğini belirtebilirsiniz :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Dil</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>QElectroTech&apos;in bir sonraki başlatma işleminde uygulanır</translation>
@@ -3158,6 +3153,11 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>&amp;Sekmeleri kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>

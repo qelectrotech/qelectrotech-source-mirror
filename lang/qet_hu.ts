@@ -3050,6 +3050,11 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>&amp;Fülek használata (alkalmazás a QElectroTech következő indításánál)</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
         <source>Textes</source>
         <translation>Szöveg</translation>
@@ -3214,11 +3219,6 @@ Szöveg és szám szintén bevihető.</translation>
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Az elem tartalmazhat információt a szerzőről, engedélyt, vagy más hasznos információt.
 A szövegmező alapértelmezett értékének meghatározása az új elemek alá vonatkoztatva :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Nyelv</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>

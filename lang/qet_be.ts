@@ -2979,11 +2979,6 @@ Tkest en cijfers zijn ook beschikbaar
         <translation>Pad naar gebruikers etiket</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Taal</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
         <source>Chemin de la collection commune</source>
         <translation>Pad naar de algemene collectie</translation>
@@ -3131,6 +3126,11 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Gebruik tabbladen (toegepast bij de volgende lancering van QElectroTech)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>

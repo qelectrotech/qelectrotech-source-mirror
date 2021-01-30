@@ -2987,11 +2987,6 @@ Litery i cyfry mogą być używane.</translation>
         <translation>Ścieżka do tabliczek rysunkowych użytkownika</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Język</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
         <source>Chemin de la collection commune</source>
         <translation>Ścieżka do kolekcji wspólnej</translation>
@@ -3138,6 +3133,11 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Użyj zakładek (zmiany zostaną zastosowane przy kolejnym urucho&amp;mieniu QElectroTech)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>

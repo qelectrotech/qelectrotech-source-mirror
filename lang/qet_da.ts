@@ -2978,11 +2978,6 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <translation>Sti til brugertilpasset titelblok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Sprog</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
         <source>Chemin de la collection commune</source>
         <translation>Sti til fælles samling</translation>
@@ -3134,6 +3129,11 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Brug faneblade (kr&amp;æver QElectroTech genstart)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>

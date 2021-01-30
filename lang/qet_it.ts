@@ -3033,6 +3033,11 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>(Ricaricare la raccolta di elementi per applicare le modifiche)</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>Textes d&apos;éléments</source>
         <translation>Testi degli elementi</translation>
@@ -3051,11 +3056,6 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="687"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Editor schemi (tasto: sinistra/destra) X</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Lingua</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>

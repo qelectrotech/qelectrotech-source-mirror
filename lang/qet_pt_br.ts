@@ -3096,11 +3096,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 Aqui você pode especificar o valor padrão deste campo para os itens que você irá criar :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Idioma</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Aplicado ao próximo lançamento do QElectroTech</translation>
@@ -3139,6 +3134,11 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Usar as guias (aplicadas ao próximo lança&amp;mento da QElectroTech)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langues</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
