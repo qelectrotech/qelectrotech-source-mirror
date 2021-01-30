@@ -19,8 +19,9 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon y3="0" y2="4" x4="-9" x3="2" x1="-9" x2="-9" y4="-4" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-4" closed="false" antialias="true"/>
         <line y2="0" x1="-9" x2="-12" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" end1="none" length2="1.5" antialias="false"/>
-        <dynamic_text Valignment="AlignTop" Halignment="AlignLeft" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{93888a84-3ffd-438d-acef-5396acba0750}" text_width="-1" x="6" frame="false" z="3" y="-11.5" text_from="UserText">
-            <text>/</text>
+        <dynamic_text Valignment="AlignTop" Halignment="AlignLeft" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{93888a84-3ffd-438d-acef-5396acba0750}" text_width="-1" x="6" frame="false" z="3" y="-11.5" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
         </dynamic_text>
         <terminal uuid="{975add6f-4ba5-44af-a4c0-e1f1c2024601}" name="" x="-13" orientation="w" y="0"/>
     </description>
