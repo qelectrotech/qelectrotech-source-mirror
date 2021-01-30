@@ -3114,7 +3114,7 @@ Hieronder kunt u de standaardtekst voor nieuwe elementen hiervoor opgeven:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
         <source>Langues</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
@@ -3349,7 +3349,7 @@ Hieronder kunt u de standaardtekst voor nieuwe elementen hiervoor opgeven:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Mongools</translation>
     </message>
 </context>
 <context>
@@ -8224,7 +8224,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="50"/>
         <source>Modifier les informations de plusieurs éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Informatie van meerdere elementen wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="38"/>
