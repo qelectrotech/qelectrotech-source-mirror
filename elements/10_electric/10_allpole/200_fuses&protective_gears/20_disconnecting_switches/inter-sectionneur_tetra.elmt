@@ -4,6 +4,7 @@
         <name lang="fr">Interrupteur sectionneur tétrapolaire</name>
         <name lang="en">Four pole switch disconnector</name>
         <name lang="cs">Odpínač 4P</name>
+        <name lang="hu">Terheléskapcsoló karos 4 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

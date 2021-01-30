@@ -11,6 +11,7 @@
         <name lang="es">Seccionador 3P</name>
         <name lang="cs">Odpínač 3P</name>
         <name lang="nl">Lastschakelaar</name>
+        <name lang="hu">Szakaszoló kapcsoló 3 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

@@ -12,6 +12,8 @@
         <name lang="es">Seccionador</name>
         <name lang="nl">Scheidingsschakelaar</name>
         <name lang="cs">Odpínač 3P</name>
+        <name lang="hu">Terheléskapcsoló</name>
+
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

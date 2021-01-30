@@ -11,6 +11,7 @@
         <name lang="es">Disyuntor termico magnetico 3P mando rotatorio</name>
         <name lang="fr">Disjoncteur Magnéto-thermique GV</name>
         <name lang="cs">Motorový spouštěč 3P</name>
+        <name lang="hu">Motorvédő kapcsoló GV2P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>
