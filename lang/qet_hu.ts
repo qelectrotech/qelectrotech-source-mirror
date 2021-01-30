@@ -3052,7 +3052,7 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
         <source>Langues</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyelvek</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
