@@ -24,9 +24,9 @@
         <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="description" show="1"></elementInformation>
     </elementInformations>
-    <informations>&#xd;
-		Author: RDS for QelectroTech&#xd;
-		&#xd;
+    <informations>
+		Author: RDS for QelectroTech
+		
     </informations>
     <description>
         <rect antialias="false" height="80" width="80" x="-40" y="-40" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>

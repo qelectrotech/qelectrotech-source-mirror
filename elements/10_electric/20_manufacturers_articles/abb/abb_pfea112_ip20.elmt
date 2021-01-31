@@ -20,7 +20,7 @@
         <elementInformation name="designation" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: PAI&#xd;
+    <informations>Author: PAI
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text y="-26" color="#000000" rotation="0" text="Out I" x="66" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>

@@ -20,7 +20,7 @@
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: PAI&#xd;
+    <informations>Author: PAI
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text y="95" text="Profibus 9-pole -sub connector" x="93" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000"/>
