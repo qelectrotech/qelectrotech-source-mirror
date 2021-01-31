@@ -1,0 +1,69 @@
+<definition height="210" version="0.80" hotspot_x="5" width="90" type="element" link_type="simple" hotspot_y="205">
+    <uuid uuid="{770499a2-5352-412a-a6df-d3c8461255f1}"/>
+    <names>
+        <name lang="de">SCN-SAFE.01</name>
+        <name lang="en">SCN-SAFE.01</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"/>
+        <elementInformation show="1" name="machine_manufacturer_reference"/>
+        <elementInformation show="1" name="description">Safty Modul</elementInformation>
+        <elementInformation show="1" name="designation">SCN-SAFE.01</elementInformation>
+        <elementInformation show="1" name="supplier"/>
+        <elementInformation show="1" name="manufacturer">MDT</elementInformation>
+        <elementInformation show="1" name="plant"/>
+        <elementInformation show="1" name="unity"/>
+        <elementInformation show="1" name="comment"/>
+        <elementInformation show="1" name="label">-SM</elementInformation>
+    </elementInformations>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <text text="U2" rotation="0" x="66" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88"/>
+        <rect ry="0" height="200" x="5.68434e-14" style="line-style:normal;line-weight:normal;filling:white;color:black" width="80" y="-200" rx="0" antialias="false"/>
+        <circle x="60" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-134" diameter="16" antialias="false"/>
+        <text text="Prog." rotation="0" x="62" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-124"/>
+        <text text="KNX" rotation="0" x="8" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-53"/>
+        <text text="MDT" rotation="0" x="54" color="#00008b" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-57"/>
+        <text text="www.MDT.de" rotation="0" x="55" color="#00008b" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-54"/>
+        <rect ry="0" height="15" x="18" style="line-style:normal;line-weight:thin;filling:black;color:black" width="10" y="-16" rx="0" antialias="false"/>
+        <rect ry="0" height="20" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" y="-50" rx="0" antialias="false"/>
+        <rect ry="0" height="15" x="28" style="line-style:normal;line-weight:thin;filling:red;color:red" width="10" y="-16" rx="0" antialias="false"/>
+        <rect ry="0" height="20" x="5.68434e-14" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" y="-170" rx="0" antialias="false"/>
+        <circle x="66" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-114" diameter="4" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-92" diameter="4" antialias="false"/>
+        <rect ry="0" height="6" x="36" style="line-style:normal;line-weight:normal;filling:red;color:red" width="3" y="-14" rx="0" antialias="false"/>
+        <text text="SCN-SAFE.01" rotation="0" x="2" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-143"/>
+        <text text="Sicherheitsmodul" rotation="0" x="2" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-136"/>
+        <arc height="5" start="2.375" x="9" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="11" angle="177.563" y="-61" antialias="true"/>
+        <text text=">1s" rotation="0" x="63" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-103"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-110" diameter="4" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-128" diameter="4" antialias="false"/>
+        <text text="Alarm" rotation="0" x="9" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-76"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-74" diameter="4" antialias="false"/>
+        <dynamic_text frame="false" rotation="0" x="0" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" y="-172" z="23" uuid="{4a09f995-3be6-471f-9a1c-8daa331b05bb}" text_from="CompositeText" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>-SM</text>
+            <info_name>plant</info_name>
+            <composite_text>%{plant}%{label}</composite_text>
+        </dynamic_text>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-134" diameter="16" antialias="false"/>
+        <text text="Safe" rotation="0" x="36" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-124"/>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-116" diameter="16" antialias="false"/>
+        <text text="2h" rotation="0" x="38" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-106"/>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-98" diameter="16" antialias="false"/>
+        <text text="12h" rotation="0" x="37" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-88"/>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-80" diameter="16" antialias="false"/>
+        <text text="Clear" rotation="0" x="35" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-70"/>
+        <line x2="29" y1="-126" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-126" end1="none" x1="21" length2="1.5" antialias="false"/>
+        <line x2="29" y1="-108" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-108" end1="none" x1="21" length2="1.5" antialias="false"/>
+        <line x2="29" y1="-90" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-90" end1="none" x1="21" length2="1.5" antialias="false"/>
+        <line x2="29" y1="-72" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-72" end1="none" x1="21" length2="1.5" antialias="false"/>
+        <terminal name="KNX_+" x="33" orientation="s" y="-2" uuid="{f215a24f-4476-46ec-a5e6-42f278f17346}"/>
+        <terminal name="KNX_-" x="23" orientation="s" y="-2" uuid="{f9194d95-7297-4f0b-8a3b-f8468d459b86}"/>
+    </description>
+</definition>

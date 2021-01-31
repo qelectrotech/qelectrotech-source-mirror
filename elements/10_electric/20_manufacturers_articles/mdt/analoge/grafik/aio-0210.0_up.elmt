@@ -1,0 +1,81 @@
+<definition height="110" version="0.80" hotspot_x="44" width="90" type="element" link_type="master" hotspot_y="53">
+    <uuid uuid="{791ff4ed-8024-4619-8cd2-07ad5c332751}"/>
+    <names>
+        <name lang="de">AIO-0210V.01 (UP)</name>
+        <name lang="en">AIO-0210V.01 (UP)</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="unity"/>
+        <elementInformation show="1" name="label">-AE</elementInformation>
+        <elementInformation show="1" name="designation">AIO-0210V.01 </elementInformation>
+        <elementInformation show="1" name="plant"/>
+        <elementInformation show="1" name="comment"/>
+        <elementInformation show="1" name="manufacturer_reference"/>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="supplier"/>
+        <elementInformation show="1" name="description">Analog Ein-/Ausgang 2fach UP</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"/>
+        <elementInformation show="1" name="manufacturer">MDT</elementInformation>
+    </elementInformations>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect ry="0" height="80" x="-39" style="line-style:normal;line-weight:normal;filling:white;color:white" width="80" y="-42" rx="0" antialias="false"/>
+        <circle x="14" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="29" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-22" diameter="4" antialias="false"/>
+        <circle x="-10" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="2" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="10" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="-2" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="-6" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="6" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <polygon y1="-42" x6="-29" closed="false" y6="38" x3="41" x5="31" x9="-29" y3="-32" y8="-32" style="line-style:normal;line-weight:normal;filling:white;color:black" y4="28" x8="-39" y7="28" y2="-42" x10="31" x4="41" y10="-42" x1="-29" x2="31" y9="-42" antialias="false" x7="-39" y5="38"/>
+        <text text="KNX" rotation="0" x="21" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="3"/>
+        <text text="MDT" rotation="0" x="17" color="#00008b" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-6"/>
+        <rect ry="0" height="15" x="-9" style="line-style:normal;line-weight:thin;filling:black;color:black" width="10" y="-46" rx="0" antialias="false"/>
+        <rect ry="0" height="15" x="1" style="line-style:normal;line-weight:thin;filling:red;color:red" width="10" y="-46" rx="0" antialias="false"/>
+        <text text="AIO-0410V.01" rotation="0" x="-34" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-17"/>
+        <text text="A = black&#xa;GND = brown&#xa;B = red&#xa;GND = orange" rotation="0" x="-34" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="7"/>
+        <dynamic_text frame="false" rotation="0" x="40" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" y="-32" z="17" uuid="{4a09f995-3be6-471f-9a1c-8daa331b05bb}" text_from="CompositeText" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>-AE</text>
+            <info_name>plant</info_name>
+            <composite_text>%{plant}%{label}</composite_text>
+        </dynamic_text>
+        <rect ry="0" height="15" x="-34" style="line-style:normal;line-weight:normal;filling:yellow;color:HTMLBlueDarkBlue" width="45" y="-15" rx="0" antialias="false"/>
+        <dynamic_text frame="false" rotation="0" x="-27" text_width="-1" font="Sans Serif,8,-1,5,0,0,0,0,0,0,normal" y="-19" z="19" uuid="{60bee164-d6ab-4c7f-9bb9-9b662558c325}" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter">
+            <text>1.1.2</text>
+            <info_name>plant</info_name>
+            <color>#00008b</color>
+        </dynamic_text>
+        <circle x="7" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-44" diameter="2" antialias="false"/>
+        <circle x="7" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-41" diameter="2" antialias="false"/>
+        <circle x="7" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-38" diameter="2" antialias="false"/>
+        <circle x="7" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-35" diameter="2" antialias="false"/>
+        <rect ry="0" height="3" x="2" style="line-style:normal;line-weight:normal;filling:gray;color:gray" width="1" y="-40" rx="0" antialias="false"/>
+        <circle x="-3" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-44" diameter="2" antialias="false"/>
+        <circle x="-3" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-41" diameter="2" antialias="false"/>
+        <circle x="-3" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-38" diameter="2" antialias="false"/>
+        <circle x="-3" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-35" diameter="2" antialias="false"/>
+        <rect ry="0" height="3" x="-8" style="line-style:normal;line-weight:normal;filling:gray;color:gray" width="1" y="-40" rx="0" antialias="false"/>
+        <rect ry="0" height="6" x="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" width="34" y="25" rx="0" antialias="false"/>
+        <circle x="-14" style="line-style:normal;line-weight:normal;filling:none;color:gray" y="27" diameter="2" antialias="false"/>
+        <circle x="24" style="line-style:normal;line-weight:normal;filling:gray;color:gray" y="-34" diameter="4" antialias="false"/>
+        <line x2="-13" y1="28" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="48" end1="none" x1="-13" length2="1.5" antialias="false"/>
+        <line x2="-9" y1="28" style="line-style:normal;line-weight:normal;filling:none;color:brun" end2="none" length1="1.5" y2="48" end1="none" x1="-9" length2="1.5" antialias="false"/>
+        <line x2="-5" y1="28" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" length1="1.5" y2="48" end1="none" x1="-5" length2="1.5" antialias="false"/>
+        <line x2="-1" y1="28" style="line-style:normal;line-weight:normal;filling:none;color:orange" end2="none" length1="1.5" y2="48" end1="none" x1="-1" length2="1.5" antialias="false"/>
+        <terminal name="" x="-1" orientation="s" y="48" uuid="{acbf835c-402e-48c1-94c5-2f2d73a5d3b6}"/>
+        <terminal name="" x="-13" orientation="s" y="48" uuid="{8cc1aa72-6520-4972-a62a-773bc448a734}"/>
+        <terminal name="" x="-5" orientation="s" y="48" uuid="{6186200d-4a19-4a7d-8d5f-3392fa115004}"/>
+        <terminal name="" x="-9" orientation="s" y="48" uuid="{5bec702b-839d-4ded-a0b9-9da59eaab0de}"/>
+        <terminal name="KNX_+" x="6" orientation="n" y="-46" uuid="{f215a24f-4476-46ec-a5e6-42f278f17346}"/>
+        <terminal name="KNX_-" x="-4" orientation="n" y="-46" uuid="{f9194d95-7297-4f0b-8a3b-f8468d459b86}"/>
+    </description>
+</definition>

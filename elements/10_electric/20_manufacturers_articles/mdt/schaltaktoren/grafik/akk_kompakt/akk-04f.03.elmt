@@ -1,0 +1,93 @@
+<definition height="210" version="0.80" hotspot_x="5" width="90" type="element" link_type="master" hotspot_y="205">
+    <uuid uuid="{6b65a9b6-ff4f-4a03-b867-eaa224a51705}"/>
+    <names>
+        <name lang="de">AKK-04FC.03</name>
+        <name lang="en">AKK-04FC.03</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer_reference"/>
+        <elementInformation show="1" name="machine_manufacturer_reference"/>
+        <elementInformation show="1" name="supplier"/>
+        <elementInformation show="1" name="unity"/>
+        <elementInformation show="1" name="description">Fan coil Aktor</elementInformation>
+        <elementInformation show="1" name="manufacturer">MDT</elementInformation>
+        <elementInformation show="1" name="designation">AKK-04FC.03</elementInformation>
+        <elementInformation show="1" name="plant"/>
+        <elementInformation show="1" name="label">-BA</elementInformation>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="comment"/>
+    </elementInformations>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <text text="U2" rotation="0" x="66" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88"/>
+        <rect ry="0" height="200" x="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="80" y="-200" rx="0" antialias="false"/>
+        <circle x="60" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-134" diameter="16" antialias="false"/>
+        <text text="Prog." rotation="0" x="62" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-124"/>
+        <text text="KNX" rotation="0" x="8" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-53"/>
+        <text text="MDT" rotation="0" x="54" color="#00008b" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-57"/>
+        <text text="www.MDT.de" rotation="0" x="55" color="#00008b" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-54"/>
+        <rect ry="0" height="15" x="18" style="line-style:normal;line-weight:thin;filling:black;color:black" width="10" y="-16" rx="0" antialias="false"/>
+        <rect ry="0" height="20" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" y="-50" rx="0" antialias="false"/>
+        <rect ry="0" height="15" x="28" style="line-style:normal;line-weight:thin;filling:red;color:red" width="10" y="-16" rx="0" antialias="false"/>
+        <rect ry="0" height="20" x="5.68434e-14" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" y="-170" rx="0" antialias="false"/>
+        <circle x="66" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-114" diameter="4" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-92" diameter="4" antialias="false"/>
+        <rect ry="0" height="6" x="36" style="line-style:normal;line-weight:normal;filling:red;color:red" width="3" y="-14" rx="0" antialias="false"/>
+        <text text="AKK-04FC.03 230VAC/16A" rotation="0" x="2" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-144"/>
+        <text text="Fan coil / Aktor 4fach" rotation="0" x="2" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-139"/>
+        <arc height="5" start="2.375" x="9" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="11" angle="177.563" y="-61" antialias="true"/>
+        <text text=">1s" rotation="0" x="63" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-103"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-110" diameter="4" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-128" diameter="4" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-74" diameter="4" antialias="false"/>
+        <dynamic_text frame="false" rotation="0" x="0" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" y="-172" z="22" uuid="{4a09f995-3be6-471f-9a1c-8daa331b05bb}" text_from="CompositeText" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>-BA</text>
+            <info_name>plant</info_name>
+            <composite_text>%{plant}%{label}</composite_text>
+        </dynamic_text>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-134" diameter="16" antialias="false"/>
+        <text text="A" rotation="0" x="39" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-124"/>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-116" diameter="16" antialias="false"/>
+        <text text="B" rotation="0" x="39" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-106"/>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-98" diameter="16" antialias="false"/>
+        <text text="C" rotation="0" x="39" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-88"/>
+        <circle x="33" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-80" diameter="16" antialias="false"/>
+        <text text="D" rotation="0" x="39" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-70"/>
+        <text text="1" rotation="0" x="9" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-124"/>
+        <rect ry="0" height="15" x="9" style="line-style:normal;line-weight:normal;filling:HTMLGreenLimeGreen;color:black" width="62" y="-195" rx="0" antialias="false"/>
+        <circle x="37" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-191" diameter="6" antialias="false"/>
+        <circle x="25" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-191" diameter="6" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-191" diameter="6" antialias="false"/>
+        <circle x="49" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-191" diameter="6" antialias="false"/>
+        <line x2="31" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="25" length2="1.5" antialias="false"/>
+        <line x2="55" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="49" length2="1.5" antialias="false"/>
+        <line x2="19" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="13" length2="1.5" antialias="false"/>
+        <circle x="61" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-191" diameter="6" antialias="false"/>
+        <line x2="43" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="37" length2="1.5" antialias="false"/>
+        <line x2="67" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="61" length2="1.5" antialias="false"/>
+        <text text="2" rotation="0" x="9" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-106"/>
+        <text text="3" rotation="0" x="9" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-88"/>
+        <text text="4/D" rotation="0" x="3" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-70"/>
+        <rect ry="0" height="15" x="17.5" style="line-style:normal;line-weight:normal;filling:yellow;color:HTMLBlueDarkBlue" width="45" y="-47" rx="0" antialias="false"/>
+        <dynamic_text frame="false" rotation="0" x="22.5" text_width="-1" font="Sans Serif,8,-1,5,0,0,0,0,0,0,normal" y="-51" z="47" uuid="{60bee164-d6ab-4c7f-9bb9-9b662558c325}" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter">
+            <text>1.1.2</text>
+            <info_name>plant</info_name>
+            <color>#00008b</color>
+        </dynamic_text>
+        <terminal name="KNX_+" x="33" orientation="s" y="-2" uuid="{f215a24f-4476-46ec-a5e6-42f278f17346}"/>
+        <terminal name="KNX_-" x="23" orientation="s" y="-2" uuid="{f9194d95-7297-4f0b-8a3b-f8468d459b86}"/>
+        <terminal name="L" x="52" orientation="n" y="-191" uuid="{5cbcb3a1-b356-40d8-9577-5c9df9382583}"/>
+        <terminal name="L" x="28" orientation="n" y="-191" uuid="{b166b0de-9587-48bd-b646-e6050142d9a6}"/>
+        <terminal name="L" x="40" orientation="n" y="-191" uuid="{c9d5b115-cc54-4453-862c-d1c0692b58d9}"/>
+        <terminal name="L" x="16" orientation="n" y="-191" uuid="{4e31af56-79d6-47a0-a9bb-46afe653bb41}"/>
+        <terminal name="L" x="64" orientation="n" y="-191" uuid="{4007dabc-69dd-40a7-9ddd-8aa4098b348d}"/>
+    </description>
+</definition>

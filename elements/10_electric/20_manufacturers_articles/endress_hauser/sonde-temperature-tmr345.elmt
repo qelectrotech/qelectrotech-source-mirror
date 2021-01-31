@@ -17,7 +17,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text text="1" x="6" color="#000000" y="22" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
