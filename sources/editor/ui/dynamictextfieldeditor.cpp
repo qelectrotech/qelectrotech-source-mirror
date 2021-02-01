@@ -24,8 +24,7 @@
 #include "../../qetinformation.h"
 #include "../../ui/alignmenttextdialog.h"
 #include "../../ui/compositetexteditdialog.h"
-#include "../ui/qetelementeditor.h"
-#include "../elementscene.h"
+#include "../qetelementeditor.h"
 #include "ui_dynamictextfieldeditor.h"
 
 #include <QColorDialog>

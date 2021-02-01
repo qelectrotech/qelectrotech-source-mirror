@@ -18,8 +18,7 @@
 #include "eseventinterface.h"
 
 #include "../elementscene.h"
-#include "../ui/qetelementeditor.h"
-#include "../elementview.h"
+#include "../qetelementeditor.h"
 
 #include <QGraphicsSceneMouseEvent>
 
@@ -41,7 +40,7 @@ ESEventInterface::ESEventInterface(ElementScene *scene) :
 void ESEventInterface::init()
 {
 	m_scene->setBehavior(ElementScene::Behavior::AddPart);
-	m_editor->elementView()->setDragMode(QGraphicsView::NoDrag);
+	m_editor->slot_setNoDragToView();
 }
 
 /**
@@ -54,31 +53,31 @@ ESEventInterface::~ESEventInterface()
 	delete m_help_verti;
 
 	m_scene->setBehavior(ElementScene::Behavior::Normal);
-	m_editor->elementView()->setDragMode(QGraphicsView::RubberBandDrag);
+	m_editor->slot_setRubberBandToView();
 }
 
 bool ESEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event)
+	Q_UNUSED (event);
 	return false;
 }
 
 bool ESEventInterface::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event)
+	Q_UNUSED (event);
 	return false;
 }
 
 bool ESEventInterface::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event)
+	Q_UNUSED (event);
 	return false;
 }
 
 bool ESEventInterface::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event)
+	Q_UNUSED (event);
 	return false;
 }
 
 bool ESEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
-	Q_UNUSED (event)
+	Q_UNUSED (event);
 	return false;
 }
 
@@ -98,7 +97,7 @@ bool ESEventInterface::keyPressEvent(QKeyEvent *event) {
 }
 
 bool ESEventInterface::KeyReleaseEvent(QKeyEvent *event) {
-	Q_UNUSED (event)
+	Q_UNUSED (event);
 	return false;
 }
 

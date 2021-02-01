@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementitemeditor.h"
-#include "ui/qetelementeditor.h"
+#include "qetelementeditor.h"
 #include "editorcommands.h"
 
 /**

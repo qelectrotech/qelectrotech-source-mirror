@@ -17,7 +17,7 @@
 */
 #include "elementscollectionwidget.h"
 
-#include "../editor/ui/qetelementeditor.h"
+#include "../editor/qetelementeditor.h"
 #include "../elementscategoryeditor.h"
 #include "../newelementwizard.h"
 #include "../qetapp.h"
@@ -38,9 +38,6 @@
 #include <QUrl>
 #include <QVBoxLayout>
 #include <QtGlobal>
-#include <QProgressBar>
-#include <QStatusBar>
-#include <QLineEdit>
 
 /**
 	@brief ElementsCollectionWidget::ElementsCollectionWidget

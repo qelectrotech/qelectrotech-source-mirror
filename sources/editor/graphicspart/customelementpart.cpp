@@ -17,8 +17,7 @@
 */
 #include "customelementpart.h"
 
-#include "../ui/qetelementeditor.h"
-#include "../elementscene.h"
+#include "../qetelementeditor.h"
 
 /// @return le QETElementEditor auquel cet editeur appartient
 QETElementEditor *CustomElementPart::elementEditor() const
