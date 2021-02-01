@@ -3133,7 +3133,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
         <source>Langues</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprog</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
@@ -3353,7 +3353,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Mongolsk</translation>
     </message>
 </context>
 <context>
@@ -8233,7 +8233,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="50"/>
         <source>Modifier les informations de plusieurs éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Rediger oplysninger for flere symboler</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="38"/>
@@ -10414,7 +10414,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="127"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Turkis : Havvand</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
@@ -10516,7 +10516,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Kongeblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
@@ -11470,13 +11470,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="315"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Lys himmelblå</translation>
+        <translation>Blå : Lys himmelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="316"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Dyb himmelblå</translation>
+        <translation>Blå : Dyb himmelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="317"/>
@@ -11488,19 +11488,19 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="318"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Kornblomst blå</translation>
+        <translation>Blå : Kornblomst blå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="319"/>
         <source>Blue : SteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Stålblå</translation>
+        <translation>Blå : Stålblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="320"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Kongeblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="321"/>
@@ -11542,73 +11542,73 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="327"/>
         <source>Purple : Thistle</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Tidsel</translation>
+        <translation>Lilla : Tidsel</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="328"/>
         <source>Purple : Plum</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Blomme</translation>
+        <translation>Lilla : Blomme</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="329"/>
         <source>Purple : Violet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Violet</translation>
+        <translation>Lilla : Violet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="330"/>
         <source>Purple : Orchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Orkidee</translation>
+        <translation>Lilla : Orkidee</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="331"/>
         <source>Purple : Fuchsia</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Fuchsia</translation>
+        <translation>Lilla : Fuchsia</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="332"/>
         <source>Purple : Magenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Magenta</translation>
+        <translation>Lilla : Magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="333"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Mellem orkidee</translation>
+        <translation>Lilla : Mellem orkidee</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="334"/>
         <source>Purple : MediumPurple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Mellem lilla</translation>
+        <translation>Lilla : Mellem lilla</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="335"/>
         <source>Purple : BlueViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lille : Blåviolet</translation>
+        <translation>Lille : Blåviolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="336"/>
         <source>Purple : DarkViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lille : Mørkviolet</translation>
+        <translation>Lille : Mørkviolet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="337"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Mørk orkidee</translation>
+        <translation>Lilla : Mørk orkidee</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="338"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Lilla : Mørk magenta</translation>
+        <translation>Lilla : Mørk magenta</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="339"/>
