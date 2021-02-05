@@ -44,8 +44,8 @@ void TerminalData::setParent(QGraphicsObject* parent)
 void TerminalData::toSettings(QSettings &settings, const QString prefix) const
 
 {
-	Q_UNUSED(settings);
-	Q_UNUSED(prefix);
+	Q_UNUSED(settings)
+	Q_UNUSED(prefix)
 }
 
 /**

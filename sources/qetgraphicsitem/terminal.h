@@ -42,8 +42,6 @@ class Terminal : public QGraphicsObject
 
 	// constructors, destructor
 	public:
-		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
-		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
 		Terminal(TerminalData* data, Element *e = nullptr);
 		~Terminal() override;
 
@@ -129,19 +127,14 @@ class Terminal : public QGraphicsObject
 		QPointF dock_elmt_;
 	private:
 		/// List of conductors attached to the terminal
-		QList<Conductor *> conductors_;
-		/**
-			Pointer to a rectangle representing the terminal bounding rect;
-			used to calculate the bounding rect once only;
-			used a pointer because boundingRect() is supposed to be const.
-		*/
-		QRectF *br_{nullptr};
-		/// Last terminal seen through an attached conductor
-		Terminal *previous_terminal_;
-		/// Whether the mouse pointer is hovering the terminal
-		bool hovered_;
-		/// Color used for the hover effect
-		QColor hovered_color_;
+		QList<Conductor *> m_conductors_list;
+		QRectF m_br;
+			/// Last terminal seen through an attached conductor
+		Terminal *m_previous_terminal = nullptr;
+			/// Whether the mouse pointer is hovering the terminal
+		bool m_hovered = false;
+			/// Color used for the hover effect
+		QColor m_hovered_color = Terminal::neutralColor;
 
 	private:
 		void init();
@@ -154,7 +147,7 @@ class Terminal : public QGraphicsObject
 */
 inline int Terminal::conductorsCount() const
 {
-	return(conductors_.size());
+	return(m_conductors_list.size());
 }
 
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
