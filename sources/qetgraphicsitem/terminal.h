@@ -45,8 +45,6 @@ class Terminal : public QGraphicsObject
 		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
 		Terminal(TerminalData* data, Element *e = nullptr);
-		Terminal(QPointF,      Qet::Orientation, QString number,
-			 QString name, bool hiddenName, Element * = nullptr);
 		~Terminal() override;
 
 	private:
@@ -82,10 +80,6 @@ class Terminal : public QGraphicsObject
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;
 		QPointF dockConductor() const;
-		QString number() const;
-		QString name() const;
-		void setNumber(QString number);
-		void setName(QString name, bool hiddenName);
 		void updateConductor();
 		bool isLinkedTo(Terminal *);
 		bool canBeLinkedTo(Terminal *);
@@ -148,16 +142,10 @@ class Terminal : public QGraphicsObject
 		bool hovered_;
 		/// Color used for the hover effect
 		QColor hovered_color_;
-		/// Number of Terminal
-		QString number_terminal_;
-		/// Name of Terminal
-		QString name_terminal_;
-		bool name_terminal_hidden;
 
 	private:
-		void init(QString number, QString name, bool hiddenName);
-		void init(QPointF pf, Qet::Orientation o, QString number,
-			  QString name, bool hiddenName);
+		void init();
+		void init(QPointF pf, Qet::Orientation o);
 };
 
 /**
@@ -167,24 +155,6 @@ class Terminal : public QGraphicsObject
 inline int Terminal::conductorsCount() const
 {
 	return(conductors_.size());
-}
-
-/**
-	@brief Terminal::number
-	@return the number of terminal.
-*/
-inline QString Terminal::number() const
-{
-	return(number_terminal_);
-}
-
-/**
-	@brief Terminal::name
-	@return the name of terminal.
-*/
-inline QString Terminal::name() const
-{
-	return(name_terminal_);
 }
 
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,

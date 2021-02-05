@@ -41,8 +41,7 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 	@param hiddenName
 */
-void Terminal::init(
-		QString number, QString name, bool hiddenName)
+void Terminal::init()
 {
 	hovered_color_  = Terminal::neutralColor;
 
@@ -55,12 +54,6 @@ void Terminal::init(
 		case Qet::South:
 		default        : dock_elmt_ += QPointF(0, -Terminal::terminalSize);
 	}
-	// Number of terminal
-	number_terminal_ = std::move(number);
-	// Name of terminal
-	name_terminal_ = std::move(name);
-	name_terminal_hidden = hiddenName;
-	// par defaut : pas de conducteur
 
 	// QRectF null
 	br_ = new QRectF();
@@ -82,12 +75,7 @@ void Terminal::init(
 	\param name
 	\param hiddenName
 */
-void Terminal::init(
-		QPointF pf,
-		Qet::Orientation o,
-		QString number,
-		QString name,
-		bool hiddenName)
+void Terminal::init(QPointF pf, Qet::Orientation o)
 {
 	// definition du pount d'amarrage pour un conducteur
 	d->m_pos  = pf;
@@ -96,7 +84,7 @@ void Terminal::init(
 	if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
 	else d->m_orientation = o;
 
-	init(number, name, hiddenName);
+	init();
 }
 
 /**
@@ -110,7 +98,7 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	d(new TerminalData(this)),
 	parent_element_ (e)
 {
-	init(pf, o, "_", "_", false);
+	init(pf, o);
 }
 
 /**
@@ -125,30 +113,7 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	d(new TerminalData(this)),
 	parent_element_  (e)
 {
-	init(QPointF(pf_x, pf_y), o, "_", "_", false);
-}
-
-/**
-	initialise une borne
-	@param pf  position du point d'amarrage pour un conducteur
-	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
-	@param num number of terminal (ex 3 - 4 for NO)
-	@param name of terminal
-	@param hiddenName hide or show the name
-	@param e   Element auquel cette borne appartient
-*/
-Terminal::Terminal(
-		QPointF pf,
-		Qet::Orientation o,
-		QString num,
-		QString name,
-		bool hiddenName,
-		Element *e) :
-	QGraphicsObject    (e),
-	d(new TerminalData(this)),
-	parent_element_  (e)
-{
-	init(pf, o, std::move(num), std::move(name), hiddenName);
+	init(QPointF(pf_x, pf_y), o);
 }
 
 Terminal::Terminal(TerminalData* data, Element* e) :
@@ -161,7 +126,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
 #endif
 	// TODO: what is when multiple parents exist. So the other relation is lost.
 	d->setParent(this);
-	init("_", "_", false);
+	init();
 }
 
 /**
@@ -196,27 +161,6 @@ Qet::Orientation Terminal::orientation() const
 			return((Qet::Orientation)angle);
 		}
 	} else return(d->m_orientation);
-}
-
-
-/**
-	@brief Terminal::setNumber
-	@param number
-*/
-void Terminal::setNumber(QString number)
-{
-	number_terminal_ = std::move(number);
-}
-
-/**
-	@brief Terminal::setName
-	@param name : QString
-	@param hiddenName : bool
-*/
-void Terminal::setName(QString name, bool hiddenName)
-{
-	name_terminal_ = std::move(name);
-	name_terminal_hidden = hiddenName;
 }
 
 /**
@@ -771,9 +715,6 @@ QDomElement Terminal::toXml(QDomDocument &doc) const
 	// end for backward compatibility
 
 	qdo.setAttribute("orientation", d->m_orientation);
-	qdo.setAttribute("number", number_terminal_);
-	qdo.setAttribute("name", name_terminal_);
-	qdo.setAttribute("nameHidden", name_terminal_hidden);
 	return(qdo);
 }
 
@@ -828,10 +769,6 @@ bool Terminal::valideXml(QDomElement &terminal)
 */
 bool Terminal::fromXml(QDomElement &terminal)
 {
-	number_terminal_ = terminal.attribute("number");
-	name_terminal_ = terminal.attribute("name");
-	name_terminal_hidden = terminal.attribute("nameHidden").toInt();
-
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&

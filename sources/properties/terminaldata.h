@@ -21,7 +21,7 @@ class TerminalData : public PropertiesInterface
 	public:
 		TerminalData();
 		TerminalData(QGraphicsObject* parent);
-		~TerminalData();
+		~TerminalData() override;
 
 		void init();
 
