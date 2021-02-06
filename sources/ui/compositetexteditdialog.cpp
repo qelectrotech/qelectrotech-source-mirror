@@ -53,10 +53,14 @@ QString CompositeTextEditDialog::plainText() const
 void CompositeTextEditDialog::setUpComboBox()
 {
 	QStringList qstrl;
-	
-	if(m_text && (m_text->parentElement()->linkType() & Element::AllReport)) //Special treatment for text owned by a folio report
+	bool is_report = false;
+	if (m_text && m_text->parentElement()->linkType() & Element::AllReport) {
+		is_report = true;
+	}
+
+	if(is_report) //Special treatment for text owned by a folio report
 	{
-		qstrl << "label" << "function" << "tension_protocol" << "conductor_color" << "conductor_section";
+		qstrl = QETInformation::folioReportInfoKeys();
 	}
 	else
 	{
@@ -68,7 +72,8 @@ void CompositeTextEditDialog::setUpComboBox()
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : qstrl) {
-		info_map.insert(QETInformation::translatedInfoKey(str), QETInformation::elementInfoToVar(str));
+		info_map.insert(QETInformation::translatedInfoKey(str),
+						is_report ? QETInformation::folioReportInfoToVar(str) : QETInformation::elementInfoToVar(str));
 	}
 	for(const QString& key : info_map.keys()) {
 		ui->m_info_cb->addItem(key, info_map.value(key));

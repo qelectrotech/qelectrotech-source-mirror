@@ -105,6 +105,14 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 	return H_;
 }
 
+QString QETInformation::folioReportInfoToVar(const QString &info)
+{
+	if (QETInformation::folioReportInfoKeys().contains(info))
+		return infoToVar(info);
+	else
+		return (QString ("%{void}"));
+}
+
 QStringList QETInformation::conductorInfoKeys()
 {
 	QStringList list = 	{ COND_FORMULA,

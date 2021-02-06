@@ -99,6 +99,7 @@ namespace QETInformation
 
 	QStringList folioReportInfoKeys();
 	QHash <QString, QString> folioReportInfoKeyToVar();
+	QString folioReportInfoToVar(const QString &info);
 
 	QStringList conductorInfoKeys();
 	QStringList diagramInfoKeys();
