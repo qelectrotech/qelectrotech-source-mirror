@@ -18,6 +18,12 @@ class QGraphicsObject;
 */
 class TerminalData : public PropertiesInterface
 {
+		enum Type {
+			Generic,
+			TerminalInner,
+			TerminalOuter
+		};
+
 	public:
 		TerminalData();
 		TerminalData(QGraphicsObject* parent);
@@ -33,6 +39,9 @@ class TerminalData : public PropertiesInterface
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 
+		static QString typeToString(TerminalData::Type type);
+		static TerminalData::Type typeFromString(const QString &string);
+
 	// must be public, because this class is a private member
 	// of PartTerminal/Terminal and they must access this data
 	public:
@@ -46,7 +55,7 @@ class TerminalData : public PropertiesInterface
 			Position of the second point of the terminal
 			in scene coordinates
 		*/
-		QPointF second_point;
+		QPointF m_second_point;
 		/**
 			@brief m_uuid
 			Uuid of the terminal.
@@ -80,6 +89,9 @@ class TerminalData : public PropertiesInterface
 			PartTerminal and Terminal have access to it.
 		*/
 		QPointF m_pos;
+
+		TerminalData::Type m_type = TerminalData::Generic;
+
 	private:
 		QGraphicsObject* q{nullptr};
 };

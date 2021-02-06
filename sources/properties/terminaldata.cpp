@@ -1,6 +1,7 @@
 #include "terminaldata.h"
 
 #include <QGraphicsObject>
+#include <QDebug>
 
 TerminalData::TerminalData():
 	PropertiesInterface()
@@ -58,8 +59,8 @@ void TerminalData::toSettings(QSettings &settings, const QString prefix) const
 */
 void TerminalData::fromSettings(const QSettings &settings, const QString prefix)
 {
-	Q_UNUSED(settings);
-	Q_UNUSED(prefix);
+	Q_UNUSED(settings)
+	Q_UNUSED(prefix)
 }
 
 /**
@@ -78,19 +79,16 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("terminal");
 
-	// write the position of the terminal
-	// ecrit la position de la borne
 	xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
 	xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
 
-	// Write name and number to XML
 	xml_element.setAttribute("uuid", m_uuid.toString());
 	xml_element.setAttribute("name", m_name);
 
-	// write the orientation of the terminal
-	// ecrit l'orientation de la borne
 	xml_element.setAttribute("orientation",
 				 Qet::orientationToString(m_orientation));
+
+	xml_element.setAttribute("type", typeToString(m_type));
 
 	return(xml_element);
 }
@@ -137,5 +135,45 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 	m_orientation = Qet::orientationFromString(
 				xml_element.attribute("orientation"));
 
+	m_type = typeFromString(xml_element.attribute("type"));
+
 	return true;
+}
+
+/**
+ * @brief TerminalData::typeToString
+ * @param type
+ * @return type into a QString
+ */
+QString TerminalData::typeToString(TerminalData::Type type)
+{
+	switch (type) {
+		case Generic:
+			return QString("Generic");
+		case TerminalInner :
+			return QString("TerminalInner");
+		case TerminalOuter :
+			return QString("TerminalOuter");
+	}
+}
+
+/**
+ * @brief TerminalData::typeFromString
+ * @param string
+ * @return The type describe in string to TerminalData::Type.
+ * if string doesn't describe a type, TerminalData::Generic is returned
+ */
+TerminalData::Type TerminalData::typeFromString(const QString &string)
+{
+	if (string == "Generic") {
+		return TerminalData::Generic;
+	} else if (string == "TerminalInner") {
+		return TerminalData::TerminalInner;
+	} else if (string == "TerminalOuter") {
+		return TerminalData::TerminalOuter;
+	} else {
+		qDebug() << "TerminalData::typeFromString, argument string is invalid"
+					" failsafe type 'TerminalData::Generic' is returned";
+		return TerminalData::Generic;
+	}
 }

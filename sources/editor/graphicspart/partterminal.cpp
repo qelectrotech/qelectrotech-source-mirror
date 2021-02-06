@@ -98,7 +98,7 @@ void PartTerminal::paint(
 	// dessin de la borne en rouge
 	t.setColor(isSelected() ? Terminal::neutralColor : Qt::red);
 	painter -> setPen(t);
-	painter -> drawLine(QPointF(0.0, 0.0), d -> second_point);
+	painter -> drawLine(QPointF(0.0, 0.0), d -> m_second_point);
 
 	// dessin du point d'amarrage au conducteur en bleu
 	t.setColor(isSelected() ? Qt::red : Terminal::neutralColor);
@@ -118,7 +118,7 @@ void PartTerminal::paint(
 QPainterPath PartTerminal::shape() const
 {
 	QPainterPath shape;
-	shape.lineTo(d -> second_point);
+	shape.lineTo(d -> m_second_point);
 
 	QPainterPathStroker pps;
 	pps.setWidth(1);
@@ -132,7 +132,7 @@ QPainterPath PartTerminal::shape() const
 */
 QRectF PartTerminal::boundingRect() const
 {
-	QRectF br(QPointF(0, 0), d -> second_point);
+	QRectF br(QPointF(0, 0), d -> m_second_point);
 	br = br.normalized();
 
 	qreal adjust = (SHADOWS_HEIGHT + 1) / 2;
@@ -174,10 +174,10 @@ void PartTerminal::updateSecondPoint()
 {
 	qreal ts = 4.0; // terminal size
 	switch(d -> m_orientation) {
-		case Qet::North: d -> second_point = QPointF(0.0,  ts); break;
-		case Qet::East : d -> second_point = QPointF(-ts, 0.0); break;
-		case Qet::South: d -> second_point = QPointF(0.0, -ts); break;
-		case Qet::West : d -> second_point = QPointF(ts,  0.0); break;
+		case Qet::North: d -> m_second_point = QPointF(0.0,  ts); break;
+		case Qet::East : d -> m_second_point = QPointF(-ts, 0.0); break;
+		case Qet::South: d -> m_second_point = QPointF(0.0, -ts); break;
+		case Qet::West : d -> m_second_point = QPointF(ts,  0.0); break;
 	}
 }
 
