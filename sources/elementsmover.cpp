@@ -19,14 +19,15 @@
 
 #include "conductorautonumerotation.h"
 #include "diagram.h"
-#include "diagramcommands.h"
 #include "qetgraphicsitem/conductor.h"
+#include "diagramcommands.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
+#include "undocommand/addgraphicsobjectcommand.h"
 
 /**
 	@brief ElementsMover::ElementsMover Constructor
@@ -185,7 +186,7 @@ void ElementsMover::endMovement()
 			Conductor *conductor = new Conductor(pair.first, pair.second);
 
 				//Create an undo object for each new auto conductor, with undo_object for parent
-			new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);
+			new AddGraphicsObjectCommand(conductor, diagram_, QPointF(), undo_object);
 				if (undo_object->text().isEmpty())
 					undo_object->setText(QObject::tr("Ajouter %n conducteur(s)", "add a numbers of conductor one or more", acc));
 

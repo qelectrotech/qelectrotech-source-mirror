@@ -19,9 +19,10 @@
 
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
-#include "../diagramcommands.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 #include "../factory/elementfactory.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/conductor.h"
 
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement
@@ -228,7 +229,7 @@ void DiagramEventAddElement::addElement()
 	element->m_converted_text_from_xml_description.clear();
 
 	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
-	new AddItemCommand<Element *>(element, m_diagram, m_element -> pos(), undo_object);
+	new AddGraphicsObjectCommand(element, m_diagram, m_element -> pos(), undo_object);
 
 		//When we search for free aligned terminal we
 		//temporally  remove m_element to avoid any interaction with the function Element::AlignedFreeTerminals
@@ -242,7 +243,7 @@ void DiagramEventAddElement::addElement()
 		QPair <Terminal *, Terminal *> pair = element -> AlignedFreeTerminals().takeFirst();
 
 		Conductor *conductor = new Conductor(pair.first, pair.second);
-		new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF(), undo_object);
+		new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
 
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);

@@ -19,7 +19,7 @@
 
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
-#include "../diagramcommands.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminal.h"
@@ -58,7 +58,7 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 		Conductor *cond = new Conductor(hub_terminal, t);
 		cond->setProperties(m_properties);
 		cond->setSequenceNum(m_sequential_number);
-		d->undoStack().push(new AddItemCommand<Conductor *>(cond, d));
+		d->undoStack().push(new AddGraphicsObjectCommand(cond, d));
 		
 		c_list.append(cond);
 	}

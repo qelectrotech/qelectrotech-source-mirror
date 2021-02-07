@@ -32,6 +32,7 @@
 #include "ui/multipastedialog.h"
 #include "undocommand/changetitleblockcommand.h"
 #include "utils/conductorcreator.h"
+#include "undocommand/addgraphicsobjectcommand.h"
 
 #include <QDropEvent>
 
@@ -283,16 +284,14 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 
-	m_diagram -> undoStack().push(
-				new AddItemCommand<IndependentTextItem *>(
-					iti, m_diagram, mapToScene(e->pos())));
+	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
+									iti, m_diagram, mapToScene(e->pos())));
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-	m_diagram -> undoStack().push(
-				new AddItemCommand<IndependentTextItem *>(
-					iti, m_diagram, e->position()));
+	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
+									iti, m_diagram, e->position()));
 #endif
 }
 

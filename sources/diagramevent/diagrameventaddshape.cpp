@@ -18,7 +18,7 @@
 #include "diagrameventaddshape.h"
 
 #include "../diagram.h"
-#include "../diagramcommands.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 
 /**
 	@brief DiagramEventAddShape::DiagramEventAddShape
@@ -89,7 +89,7 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			if (m_shape_item->shapeType() == QetShapeItem::Rectangle || m_shape_item->shapeType() == QetShapeItem::Ellipse) {
 				m_shape_item->setRect(m_shape_item->rect().normalized());
 			}
-			m_diagram->undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
+			m_diagram->undoStack().push (new AddGraphicsObjectCommand(m_shape_item, m_diagram));
 			m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 		}
 			//Else add a new point to polyline
@@ -192,7 +192,7 @@ void DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 			m_shape_item->removePoints();
 			m_shape_item->setClosed(true);
 		}
-		m_diagram->undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
+		m_diagram->undoStack().push (new AddGraphicsObjectCommand(m_shape_item, m_diagram));
 		m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 		event->setAccepted(true);
 	}

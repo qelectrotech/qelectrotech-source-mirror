@@ -18,7 +18,7 @@
 #include "deleteqgraphicsitemcommand.h"
 
 #include "../diagram.h"
-#include "../diagramcommands.h"
+#include "addgraphicsobjectcommand.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/conductor.h"
@@ -202,7 +202,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 #endif
 					Conductor *new_cond = new Conductor(hub_terminal, t);
 					new_cond->setProperties(properties);
-					new AddItemCommand<Conductor*>(new_cond, t->diagram(), QPointF(), this);
+					new AddGraphicsObjectCommand(new_cond, t->diagram(), QPointF(), this);
 				}
 			}
 		}

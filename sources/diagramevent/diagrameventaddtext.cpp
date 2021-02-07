@@ -19,7 +19,7 @@
 #include "diagrameventaddtext.h"
 
 #include "../diagram.h"
-#include "../diagramcommands.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 
 /**
@@ -46,11 +46,10 @@ void DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	if (event->button() == Qt::LeftButton)
 	{
 		IndependentTextItem *text = new IndependentTextItem();
-		m_diagram -> undoStack().push(
-					new AddItemCommand<IndependentTextItem *>(
-						text,
-						m_diagram,
-						event->scenePos()));
+		m_diagram->undoStack().push(new AddGraphicsObjectCommand(
+										text,
+										m_diagram,
+										event->scenePos()));
 		text->setTextInteractionFlags(Qt::TextEditorInteraction);
 		text->setFocus(Qt::MouseFocusReason);
 		emit finish();

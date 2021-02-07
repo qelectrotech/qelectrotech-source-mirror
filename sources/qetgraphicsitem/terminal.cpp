@@ -19,7 +19,7 @@
 
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
-#include "../diagramcommands.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 #include "../properties/terminaldata.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
@@ -676,7 +676,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 
 	QUndoCommand *undo = new QUndoCommand();
-	QUndoCommand *aic = new AddItemCommand<Conductor *>(new_conductor, diagram(), QPointF(), undo);
+	QUndoCommand *aic = new AddGraphicsObjectCommand(new_conductor, diagram(), QPointF(), undo);
 	undo->setText(aic->text());
 
 	if (use_properties)

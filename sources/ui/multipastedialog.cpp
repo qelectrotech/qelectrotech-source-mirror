@@ -21,7 +21,9 @@
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../ui_multipastedialog.h"
 
 #include <QHash>
@@ -131,7 +133,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 						QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
 
 						Conductor *conductor = new Conductor(pair.first, pair.second);
-						m_diagram->undoStack().push(new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF()));
+						m_diagram->undoStack().push(new AddGraphicsObjectCommand(conductor, m_diagram, QPointF()));
 
 						//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 						ConductorAutoNumerotation can  (conductor, m_diagram);
