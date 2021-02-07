@@ -230,6 +230,13 @@ void DiagramEventAddElement::addElement()
 	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
 	new AddItemCommand<Element *>(element, m_diagram, m_element -> pos(), undo_object);
 
+		//When we search for free aligned terminal we
+		//temporally  remove m_element to avoid any interaction with the function Element::AlignedFreeTerminals
+		//this is useful when an element who have two (or more) terminals opposite,
+		//because m_element is exactly at the same pos of the new element
+		//added to the scene so new conductor are created between terminal of the new element
+		//and the opposite terminal of m_element.
+	m_diagram->removeItem(m_element);
 	while (!element -> AlignedFreeTerminals().isEmpty() && m_diagram -> project() -> autoConductor())
 	{
 		QPair <Terminal *, Terminal *> pair = element -> AlignedFreeTerminals().takeFirst();
@@ -244,6 +251,7 @@ void DiagramEventAddElement::addElement()
 			conductor->setFreezeLabel(true);
 		}
 	}
+	m_diagram->addItem(m_element);
 
 	m_diagram -> undoStack().push(undo_object);
 	element->setUpFormula();
