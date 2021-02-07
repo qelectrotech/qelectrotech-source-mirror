@@ -41,6 +41,7 @@
 #include "undocommand/addelementtextcommand.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
+#include "diagram.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else

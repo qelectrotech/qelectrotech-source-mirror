@@ -29,6 +29,7 @@
 #include "../ui/conductorpropertiesdialog.h"
 #include "conductortextitem.h"
 #include "element.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 #include <QMultiHash>
 #include <QtDebug>

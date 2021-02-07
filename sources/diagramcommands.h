@@ -18,20 +18,12 @@
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
 
-#include "borderproperties.h"
 #include "qetgraphicsitem/conductor.h"
-#include "diagramcontent.h"
-#include "qet.h"
-#include "qetgraphicsitem/qetshapeitem.h"
 #include "conductorprofile.h"
-#include "diagram.h"
+#include "borderproperties.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 
 class DiagramTextItem;
-class Element;
-class IndependentTextItem;
-class DiagramImageItem;
-class QetGraphicsItem;
 
 /**
 	@brief The PasteDiagramCommand class

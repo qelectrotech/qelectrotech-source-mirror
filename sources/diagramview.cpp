@@ -33,6 +33,7 @@
 #include "undocommand/changetitleblockcommand.h"
 #include "utils/conductorcreator.h"
 #include "undocommand/addgraphicsobjectcommand.h"
+#include "diagram.h"
 
 #include <QDropEvent>
 

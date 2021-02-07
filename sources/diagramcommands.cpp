@@ -18,16 +18,10 @@
 #include "diagramcommands.h"
 
 #include "diagram.h"
-#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
-#include "qetgraphicsitem/independenttextitem.h"
 #include "qgimanager.h"
-
-#include <QPropertyAnimation>
 
 /**
 	@brief PasteDiagramCommand::PasteDiagramCommand
