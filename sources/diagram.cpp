@@ -1693,10 +1693,26 @@ void Diagram::invertSelection()
 	if (items().isEmpty()) return;
 
 	blockSignals(true);
-	foreach (QGraphicsItem *item,
-		 items()) item -> setSelected(!item -> isSelected());
+
+		//Get only allowed graphics item
+		//because some item can be deleted between the
+		//call of items() and the use of the item in the second 'for' loop
+		//and crash Qet with a segfault.
+	QVector<QGraphicsItem *> item_list;
+	for (auto item : items())
+	{
+		if (dynamic_cast<QetGraphicsItem *>(item) ||
+			dynamic_cast<DiagramTextItem *>(item) ||
+			dynamic_cast<Conductor *>(item)) {
+			item_list << item;
+		}
+	}
+	for (auto item : qAsConst(item_list)) {
+		item -> setSelected(!item -> isSelected());
+	}
+
 	blockSignals(false);
-	emit(selectionChanged());
+	emit selectionChanged();
 }
 
 /**
