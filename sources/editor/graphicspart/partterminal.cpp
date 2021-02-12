@@ -72,7 +72,7 @@ void PartTerminal::paint(
 		const QStyleOptionGraphicsItem *options,
 		QWidget *widget)
 {
-	Q_UNUSED(widget);
+	Q_UNUSED(widget)
 	painter -> save();
 
 	// annulation des renderhints
@@ -159,6 +159,20 @@ void PartTerminal::setName(QString& name) {
 	if (d -> m_name == name) return;
 	d -> m_name = name;
 	emit nameChanged();
+}
+
+/**
+ * @brief PartTerminal::setTerminalType
+ * Set the type of terminal to 'type'
+ * @param type
+ */
+void PartTerminal::setTerminalType(TerminalData::Type type)
+{
+	if (d->m_type == type) {
+		return;
+	}
+	d->m_type = type;
+	emit terminalTypeChanged();
 }
 
 void PartTerminal::setNewUuid()

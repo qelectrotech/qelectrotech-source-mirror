@@ -27,10 +27,13 @@
 	This class represents a terminal which may be used to compose the drawing of
 	an electrical element within the element editor.
 */
-class PartTerminal : public CustomElementGraphicPart {
+class PartTerminal : public CustomElementGraphicPart
+{
 	Q_OBJECT
+
 	Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
 	Q_PROPERTY(QString name READ name WRITE setName)
+	Q_PROPERTY(TerminalData::Type terminal_type READ terminalType WRITE setTerminalType)
 
 	public:
 		// constructors, destructor
@@ -42,6 +45,7 @@ class PartTerminal : public CustomElementGraphicPart {
 	signals:
 		void orientationChanged();
 		void nameChanged();
+		void terminalTypeChanged();
 
 		// methods
 	public:
@@ -51,7 +55,6 @@ class PartTerminal : public CustomElementGraphicPart {
 				@return the QGraphicsItem type
 			*/
 		int type() const override { return Type; }
-		QString name() const override { return d -> m_name; }
 		QString xmlName() const override { return(QString("terminal")); }
 		void fromXml(const QDomElement &) override;
 		const QDomElement toXml(QDomDocument &) const override;
@@ -71,7 +74,12 @@ class PartTerminal : public CustomElementGraphicPart {
 		Qet::Orientation orientation() const {return d -> m_orientation;}
 		void setOrientation(Qet::Orientation ori);
 
+		QString name() const override { return d -> m_name; }
 		void setName(QString& name);
+
+		TerminalData::Type terminalType() const {return d->m_type;}
+		void setTerminalType(TerminalData::Type type);
+
 		void setNewUuid();
 
 	private:

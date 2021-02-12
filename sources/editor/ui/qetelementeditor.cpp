@@ -41,7 +41,7 @@
 #include "lineeditor.h"
 #include "polygoneditor.h"
 #include "rectangleeditor.h"
-#include "../terminaleditor.h"
+#include "terminaleditor.h"
 #include "texteditor.h"
 #include "dynamictextfieldeditor.h"
 #include "../../newelementwizard.h"
@@ -553,14 +553,15 @@ void QETElementEditor::updateInformations()
 		style_editable = StyleEditor::isStyleEditable(cep_list);
 	}
 
-	if (same_xml_name) {
-		if (selection_xml_name == "terminal" ||
-			selection_xml_name == "text" ||
-			selection_xml_name == "dynamic_text" ||
-			selection_xml_name == "line" ||
-			selection_xml_name == "rect" ||
-			selection_xml_name == "ellipse" ||
-			selection_xml_name == "arc") {
+	if (same_xml_name)
+	{
+		if (   selection_xml_name == "text"
+			|| selection_xml_name == "dynamic_text"
+			|| selection_xml_name == "line"
+			|| selection_xml_name == "rect"
+			|| selection_xml_name == "ellipse"
+			|| selection_xml_name == "arc")
+		{
 			clearToolsDock();
 			//We add the editor widget
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
@@ -605,7 +606,9 @@ void QETElementEditor::updateInformations()
 			}
 			return;
 		}
-		else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
+		else if (cep_list.length() == 1 &&
+				 (selection_xml_name == "polygon" || selection_xml_name == "terminal"))
+		{
 #if TODO_LIST
 #pragma message("@TODO maybe allowing multipart edit when number of points is the same?")
 #endif

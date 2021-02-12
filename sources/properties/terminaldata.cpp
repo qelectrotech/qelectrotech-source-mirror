@@ -1,3 +1,20 @@
+/*
+	Copyright 2006-2021 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #include "terminaldata.h"
 
 #include <QGraphicsObject>
@@ -150,10 +167,10 @@ QString TerminalData::typeToString(TerminalData::Type type)
 	switch (type) {
 		case Generic:
 			return QString("Generic");
-		case TerminalInner :
-			return QString("TerminalInner");
-		case TerminalOuter :
-			return QString("TerminalOuter");
+		case Inner :
+			return QString("Inner");
+		case Outer :
+			return QString("Outer");
 	}
 }
 
@@ -167,10 +184,10 @@ TerminalData::Type TerminalData::typeFromString(const QString &string)
 {
 	if (string == "Generic") {
 		return TerminalData::Generic;
-	} else if (string == "TerminalInner") {
-		return TerminalData::TerminalInner;
-	} else if (string == "TerminalOuter") {
-		return TerminalData::TerminalOuter;
+	} else if (string == "Inner") {
+		return TerminalData::Inner;
+	} else if (string == "Outer") {
+		return TerminalData::Outer;
 	} else {
 		qDebug() << "TerminalData::typeFromString, argument string is invalid"
 					" failsafe type 'TerminalData::Generic' is returned";
