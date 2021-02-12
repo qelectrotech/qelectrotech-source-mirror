@@ -1265,24 +1265,6 @@ void CustomElementGraphicPart::drawShadowShape(QPainter *painter)
 }
 
 /**
-	@brief CustomElementGraphicPart::itemChange
-	Reimplemented from QGraphicsObject.
-	If the item position change call updateCurrentPartEditor()
-	the change is always send to QGraphicsObject
-	@param change
-	@param value
-	@return the returned value of QGraphicsObject::itemChange
-*/
-QVariant CustomElementGraphicPart::itemChange(GraphicsItemChange change, const QVariant &value)
-{
-	if (scene())
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged)
-			updateCurrentPartEditor();
-
-	return(QGraphicsObject::itemChange(change, value));
-}
-
-/**
 	@brief CustomElementGraphicPart::hoverEnterEvent
 	Reimplemented from QGraphicsObject.
 	Set m_hovered to true
