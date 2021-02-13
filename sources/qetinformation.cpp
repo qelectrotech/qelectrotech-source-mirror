@@ -239,3 +239,19 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == COND_FORMULA)                     return QObject::tr("Formule du texte");
 	else return QString();
 }
+
+QStringList QETInformation::elementEditorElementInfoKeys()
+{
+	QStringList list = { ELMT_LABEL,
+						 ELMT_PLANT,
+						 ELMT_COMMENT,
+						 ELMT_DESCRIPTION,
+						 ELMT_DESIGNATION,
+						 ELMT_MANUFACTURER,
+						 ELMT_MANUFACTURER_REF,
+						 ELMT_SUPPLIER,
+						 ELMT_QUANTITY,
+						 ELMT_UNITY,
+						 ELMT_MACHINE_MANUFACTURER_REF};
+	return list;
+}

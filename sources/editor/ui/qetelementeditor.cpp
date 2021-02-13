@@ -133,7 +133,9 @@ void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
  */
 void QETElementEditor::setNames(const NamesList &name_list)
 {
-	m_elmt_scene->setNames(name_list);
+	auto data = m_elmt_scene->elementData();
+	data.m_names_list = name_list;
+	m_elmt_scene->setElementData(data);
 }
 
 /**
@@ -438,7 +440,7 @@ QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString 
 void QETElementEditor::updateTitle()
 {
 	QString title = m_min_title;
-	title += " - " + m_elmt_scene -> names().name() + " ";
+	title += " - " + m_elmt_scene->elementData().m_names_list.name() + " ";
 	if (!m_file_name.isEmpty() || !m_location.isNull()) {
 		if (!m_elmt_scene -> undoStack().isClean()) {
 			title += tr("[Modifié]", "window title tag");
@@ -724,7 +726,8 @@ bool QETElementEditor::checkElement()
 
 		// Warning #1: Element haven't got terminal
 		// (except for report, because report must have one terminal and this checking is do below)
-	if (!m_elmt_scene -> containsTerminals() && !m_elmt_scene -> elementType().contains("report")) {
+	if (!m_elmt_scene -> containsTerminals() &&
+		!(m_elmt_scene->elementData().m_type & ElementData::AllReport)) {
 		warnings << qMakePair(
 						tr("Absence de borne", "warning title"),
 						tr(
@@ -736,7 +739,7 @@ bool QETElementEditor::checkElement()
 	}
 
 		// Check folio report element
-	if (m_elmt_scene -> elementType().contains("report"))
+	if (m_elmt_scene->elementData().m_type & ElementData::AllReport)
 	{
 		int terminal =0;
 
@@ -876,7 +879,7 @@ bool QETElementEditor::canClose()
 				"Voulez-vous enregistrer l'élément %1 ?",
 				"dialog content - %1 is an element name"
 			)
-		).arg(m_elmt_scene -> names().name()),
+		).arg(m_elmt_scene->elementData().m_names_list.name()),
 		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 		QMessageBox::Cancel
 	);
@@ -917,7 +920,9 @@ void QETElementEditor::readSettings()
 		restoreState(state.toByteArray());
 	}
 
-	m_elmt_scene->setInformations(settings.value("elementeditor/default-informations", "").toString());
+	auto data = m_elmt_scene->elementData();
+	data.m_drawing_information = settings.value("elementeditor/default-informations", "").toString();
+	m_elmt_scene->setElementData(data);
 }
 
 /**

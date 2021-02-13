@@ -282,13 +282,17 @@ ChangeNamesCommand::~ChangeNamesCommand()
 /// Annule le changement
 void ChangeNamesCommand::undo()
 {
-	m_scene -> setNames(names_before);
+	auto data = m_scene->elementData();
+	data.m_names_list = names_before;
+	m_scene->setElementData(data);
 }
 
 /// Refait le changement
 void ChangeNamesCommand::redo()
 {
-	m_scene -> setNames(names_after);
+	auto data = m_scene->elementData();
+	data.m_names_list = names_after;
+	m_scene->setElementData(data);
 }
 
 /**
@@ -453,13 +457,17 @@ ChangeInformationsCommand::~ChangeInformationsCommand()
 /// Annule le changement d'autorisation pour les connexions internes
 void ChangeInformationsCommand::undo()
 {
-	m_scene -> setInformations(old_informations_);
+	auto data = m_scene->elementData();
+	data.m_drawing_information = old_informations_;
+	m_scene->setElementData(data);
 }
 
 /// Refait le changement d'autorisation pour les connexions internes
 void ChangeInformationsCommand::redo()
 {
-	m_scene -> setInformations(new_informations_);
+	auto data = m_scene->elementData();
+	data.m_drawing_information = new_informations_;
+	m_scene->setElementData(data);
 }
 
 /**
@@ -572,45 +580,32 @@ void ScalePartsCommand::adjustText()
 		setText(QObject::tr("redimensionnement de %1 primitives", "undo caption -- %1 always > 1").arg(scaled_primitives_.count()));
 	}
 }
+
 /**
-	@brief ChangePropertiesCommand::ChangePropertiesCommand
-	Change the properties of the drawed element
-	@param scene : scene to belong the property
-	@param type : new type of element.
-	@param info
-	@param elmt_info : new info about type.
-	@param parent : parent undo
-*/
-ChangePropertiesCommand::ChangePropertiesCommand(
-		ElementScene *scene,
-		const QString& type,
-		const DiagramContext& info,
-		const DiagramContext& elmt_info,
-		QUndoCommand *parent) :
-	ElementEditionCommand(scene, nullptr, parent)
+ * @brief changeElementDataCommand::changeElementDataCommand
+ * Change the properties of the drawed element
+ * @param scene : scene to belong the property
+ * @param old_data : old data
+ * @param new_data : new data
+ * @param parent : parent undo command
+ */
+changeElementDataCommand::changeElementDataCommand(ElementScene *scene,
+												   ElementData old_data,
+												   ElementData new_data,
+												   QUndoCommand *parent) :
+	ElementEditionCommand(scene, nullptr, parent),
+	m_old(old_data),
+	m_new(new_data)
 {
-	m_type << scene->m_elmt_type << type;
-	m_kind_info << scene->m_elmt_kindInfo << info;
-	m_elmt_info << scene->m_elmt_information << elmt_info;
-	setText(QObject::tr("Modifier les propriétés"));
+	setText(QObject::tr("Modifier les propriétées de l'élément"));
 }
 
-ChangePropertiesCommand::~ChangePropertiesCommand()
-{}
-
-void ChangePropertiesCommand::undo()
-{
-	m_scene->m_elmt_type = m_type.first();
-	m_scene->m_elmt_kindInfo = m_kind_info.first();
-	m_scene->setElementInfo(m_elmt_info.first());
+void changeElementDataCommand::undo() {
+	m_scene->setElementData(m_old);
+	QUndoCommand::undo();
 }
 
-void ChangePropertiesCommand::redo()
-{
-	m_scene->m_elmt_type = m_type.last();
-	m_scene->m_elmt_kindInfo = m_kind_info.last();
-	m_scene->setElementInfo(m_elmt_info.last());
+void changeElementDataCommand::redo() {
+	m_scene->setElementData(m_new);
+	QUndoCommand::redo();
 }
-
-
-

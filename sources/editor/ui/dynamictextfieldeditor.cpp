@@ -225,9 +225,9 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	ui -> m_elmt_info_cb -> clear();
 
 	QStringList strl;
-	QString type = elementEditor() -> elementScene() -> elementType();
+	auto type = elementEditor()->elementScene()->elementData().m_type;
 
-	if(type.contains("report")) {
+	if(type & ElementData::AllReport) {
 		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
@@ -333,8 +333,8 @@ void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "infoName", m_parts[i] -> infoName(), info);
 			undo->setText(tr("Modifier l'information d'un texte"));
 			undoStack().push(undo);
-			m_parts[i] -> setPlainText(
-				elementEditor() -> elementScene() -> elementInformation().value(m_parts[i] -> infoName()).toString());
+			m_parts[i]->setPlainText(
+						elementEditor()->elementScene()->elementData().m_informations.value(m_parts[i] -> infoName()).toString());
 		}
 	}
 }

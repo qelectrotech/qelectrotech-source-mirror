@@ -63,6 +63,87 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 	return true;
 }
 
+QDomElement ElementData::kindInfoToXml(QDomDocument &document)
+{
+		//kindInformations
+	auto returned_elmt = document.createElement("kindInformations");
+
+	if (m_type == ElementData::Master)
+	{
+		auto xml_type  = document.createElement("kindInformation");
+		xml_type.setAttribute("name", "type");
+		auto type_txt = document.createTextNode(masterTypeToString(m_master_type));
+		xml_type.appendChild(type_txt);
+
+		returned_elmt.appendChild(xml_type);
+	}
+	else if (m_type == ElementData::Slave)
+	{
+			//type
+		auto xml_type  = document.createElement("kindInformation");
+		xml_type.setAttribute("name", "type");
+		auto type_txt = document.createTextNode(slaveTypeToString(m_slave_type));
+		xml_type.appendChild(type_txt);
+		returned_elmt.appendChild(xml_type);
+
+			//state
+		auto xml_state = document.createElement("kindInformation");
+		xml_state.setAttribute("name", "state");
+		auto state_txt = document.createTextNode(slaveStateToString(m_slave_state));
+		xml_state.appendChild(state_txt);
+
+		returned_elmt.appendChild(xml_state);
+
+			//contact count
+		auto xml_count = document.createElement("kindInformation");
+		xml_count.setAttribute("name", "number");
+		auto count_txt = document.createTextNode(QString::number(m_contact_count));
+		xml_count.appendChild(count_txt);
+
+		returned_elmt.appendChild(xml_count);
+	}
+
+	return returned_elmt;
+}
+
+bool ElementData::operator==(const ElementData &data) const
+{
+	if (data.m_type != m_type) {
+		return false;
+	}
+
+	if (data.m_type == ElementData::Master) {
+		if(data.m_master_type != m_master_type) {
+			return false;
+		}
+	}
+	else if (data.m_type == ElementData::Slave) {
+		if (data.m_slave_state != m_slave_state ||
+			data.m_slave_type != m_slave_type ||
+			data.m_contact_count != m_contact_count) {
+			return false;
+		}
+	}
+
+	if(data.m_informations != m_informations) {
+		return false;
+	}
+
+	if (data.m_names_list != m_names_list) {
+		return false;
+	}
+
+	if (m_drawing_information != m_drawing_information) {
+		return false;
+	}
+
+	return true;
+}
+
+bool ElementData::operator !=(const ElementData &data) const {
+	return !(*this == data);
+}
+
 QString ElementData::typeToString(ElementData::Type type)
 {
 	switch (type) {
@@ -202,30 +283,29 @@ ElementData::SlaveState ElementData::slaveStateFromString(const QString &string)
 
 void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 {
-	if (m_type != ElementData::Master ||
-		m_type != ElementData::Slave) {
-		return;
-	}
-
-	auto xml_kind = xml_element.firstChildElement("kindInformations");
-	for (auto dom_elmt : QETXML::findInDomElement(xml_kind, "kindInformation"))
+	if (m_type == ElementData::Master ||
+		m_type == ElementData::Slave)
 	{
-		if (!dom_elmt.hasAttribute("name")) {
-			continue;
-		}
-		auto name = dom_elmt.attribute("name");
+		auto xml_kind = xml_element.firstChildElement("kindInformations");
+		for (const auto &dom_elmt : QETXML::findInDomElement(xml_kind, "kindInformation"))
+		{
+			if (!dom_elmt.hasAttribute("name")) {
+				continue;
+			}
+			auto name = dom_elmt.attribute("name");
 
-		if (m_type == ElementData::Master &&
-			name == "type") {
-			m_master_type = masterTypeFromString(dom_elmt.text());
-		}
-		else if (m_type == ElementData::Slave ) {
-			if (name == "type") {
-				m_slave_type = slaveTypeFromString(dom_elmt.text());
-			} else if (name == "state") {
-				m_slave_state = slaveStateFromString(dom_elmt.text());
-			} else if (name == "number") {
-				m_contact_count = dom_elmt.text().toInt();
+			if (m_type == ElementData::Master &&
+				name == "type") {
+				m_master_type = masterTypeFromString(dom_elmt.text());
+			}
+			else if (m_type == ElementData::Slave ) {
+				if (name == "type") {
+					m_slave_type = slaveTypeFromString(dom_elmt.text());
+				} else if (name == "state") {
+					m_slave_state = slaveStateFromString(dom_elmt.text());
+				} else if (name == "number") {
+					m_contact_count = dom_elmt.text().toInt();
+				}
 			}
 		}
 	}

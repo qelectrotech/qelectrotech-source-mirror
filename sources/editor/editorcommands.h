@@ -262,23 +262,21 @@ class ScalePartsCommand : public ElementEditionCommand {
 	bool first_redo;
 };
 
-class ChangePropertiesCommand : public ElementEditionCommand {
+class changeElementDataCommand : public ElementEditionCommand
+{
 	public:
-	ChangePropertiesCommand (
-			ElementScene *scene,
-			const QString& type,
-			const DiagramContext& info,
-			const DiagramContext& elmt_info,
-			QUndoCommand *parent=nullptr);
-	~ChangePropertiesCommand () override;
+		changeElementDataCommand(ElementScene *scene,
+								 ElementData old_data,
+								 ElementData new_data,
+								 QUndoCommand *parent = nullptr);
+		~changeElementDataCommand() override {}
 
-	void undo() override;
-	void redo() override;
+		void undo() override;
+		void redo() override;
 
 	private:
-	QList <QString> m_type;
-	QList <DiagramContext> m_kind_info;
-	QList < DiagramContext> m_elmt_info;
+		ElementData m_old,
+					m_new;
 };
 
 #endif

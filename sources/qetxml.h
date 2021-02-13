@@ -86,6 +86,9 @@ namespace QETXML
 	void modelHeaderDataFromXml(
 			const QDomElement &element,
 			QAbstractItemModel *model);
+
+	QVector<QDomElement> findInDomElement(const QDomElement &dom_elmt,
+										  const QString &tag_name);
 }
 
 #endif // QETXML_H

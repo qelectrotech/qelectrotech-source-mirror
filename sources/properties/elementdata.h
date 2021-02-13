@@ -73,6 +73,10 @@ class ElementData : public PropertiesInterface
 		void fromSettings(const QSettings &settings,  const QString prefix = QString()) override;
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
+		QDomElement kindInfoToXml(QDomDocument &document);
+
+		bool operator==(const ElementData &data) const;
+		bool operator!=(const ElementData &data) const;
 
 		static QString typeToString(ElementData::Type type);
 		static ElementData::Type typeFromString(const QString &string);

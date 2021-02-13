@@ -105,6 +105,7 @@ namespace QETInformation
 	QStringList diagramInfoKeys();
 
 	QStringList elementInfoKeys();
+	QStringList elementEditorElementInfoKeys();
 	QString elementInfoToVar(const QString &info);
 
 	QString infoToVar(const QString &info);
