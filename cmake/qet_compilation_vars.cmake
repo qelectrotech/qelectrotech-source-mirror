@@ -581,6 +581,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h
+  ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.cpp
+  ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.h
   ${QET_DIR}/sources/undocommand/changeelementinformationcommand.cpp
   ${QET_DIR}/sources/undocommand/changeelementinformationcommand.h
   ${QET_DIR}/sources/undocommand/changetitleblockcommand.cpp
