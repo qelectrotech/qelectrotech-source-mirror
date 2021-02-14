@@ -5584,7 +5584,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Cop&amp;ier</source>
-        <translation>&amp;Kopieren</translation>
+        <translation>Kop&amp;ieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
@@ -6470,7 +6470,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
         <source>Cop&amp;ier</source>
-        <translation></translation>
+        <translation>Kop&amp;ieren</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
@@ -7344,7 +7344,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="377"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
-        <translation>&amp;Kopieren</translation>
+        <translation>Kop&amp;ieren</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="378"/>
