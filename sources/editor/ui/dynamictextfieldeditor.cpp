@@ -103,8 +103,8 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 			m_parts.append(static_cast<PartDynamicTextField*>(parts[i]));
 
 		setUpConnections();
-		updateForm();
 		fillInfoComboBox();
+		updateForm();
 		return true;
 	}
 	return(false);
