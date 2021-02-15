@@ -12,6 +12,7 @@
         <name lang="de">Fehlerstromschutzschalter 3-polig</name>
         <name lang="ru">Дифавтомат</name>
         <name lang="cs">Proudový chránič 3P</name>
+        <name lang="hu">Hibaáram-védőkapcsoló 3P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

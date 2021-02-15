@@ -10,6 +10,7 @@
         <name lang="nl">Lastscheider 1P+N</name>
         <name lang="pl">Wyłącznik</name>
         <name lang="de">Leitungsschutzschalter 1P+N</name>
+        <name lang="hu">Hibaáram-védőkapcsoló 1P+N</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

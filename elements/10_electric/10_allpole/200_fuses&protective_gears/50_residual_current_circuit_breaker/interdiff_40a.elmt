@@ -10,6 +10,7 @@
         <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
         <name lang="de">Leitungsschutzschalter 1P+N</name>
         <name lang="fr">Interrupteur différentiel  40A 30mA </name>
+        <name lang="hu">Hibaáram-védőkapcsoló 2P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

@@ -10,6 +10,7 @@
         <name lang="es">Relé térmico</name>
         <name lang="cs">Tepelné relé 2P</name>
         <name lang="nl">Thermisch blok </name>
+        <name lang="hu">Hőkioldó 3 pólusú 2 pólusúként alkalmazva</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
