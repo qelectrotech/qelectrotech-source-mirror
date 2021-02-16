@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -98,6 +98,13 @@ void ElementPropertiesEditorWidget::upDateInterface()
 		ui->m_master_type_cb->setCurrentIndex(
 					ui->m_master_type_cb->findData (
 						m_data.m_master_type));
+	} else if (m_data.m_type == ElementData::Terminale) {
+		ui->m_terminal_type_cb->setCurrentIndex(
+					ui->m_terminal_type_cb->findData(
+						m_data.m_terminal_type));
+		ui->m_terminal_func_cb->setCurrentIndex(
+					ui->m_terminal_func_cb->findData(
+						m_data.m_terminal_function));
 	}
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
@@ -130,7 +137,18 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_master_type_cb->addItem(tr("Bobine"),               ElementData::Coil);
 	ui->m_master_type_cb->addItem(tr("Organe de protection"), ElementData::Protection);
 	ui->m_master_type_cb->addItem(tr("Commutateur / bouton"), ElementData::Commutator);
-	
+
+	//Terminal option
+	ui->m_terminal_type_cb->addItem(tr("Générique"),    ElementData::TTGeneric);
+	ui->m_terminal_type_cb->addItem(tr("Fusible"),      ElementData::Fuse);
+	ui->m_terminal_type_cb->addItem(tr("Séctionnable"), ElementData::Sectional);
+	ui->m_terminal_type_cb->addItem(tr("Diode"),        ElementData::Diode);
+
+	ui->m_terminal_func_cb->addItem(tr("Générique"), ElementData::TFGeneric);
+	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::Phase);
+	ui->m_terminal_func_cb->addItem(tr("Neutre"),    ElementData::Neutral);
+	ui->m_terminal_func_cb->addItem(tr("Terre"),     ElementData::PE);
+
 	//Disable the edition of the first column of the information tree
 	//by this little workaround
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
@@ -199,6 +217,11 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	else if (m_data.m_type == ElementData::Master) {
 		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
 	}
+	else if (m_data.m_type == ElementData::Terminale)
+	{
+		m_data.m_terminal_type = ui->m_terminal_type_cb->currentData().value<ElementData::TerminalType>();
+		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
+	}
 	
 	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
 	{
@@ -220,16 +243,19 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 */
 void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int index)
 {
-	bool slave = false , master = false;
+	bool slave = false , master = false, terminal = false;
 
 	auto type_ = ui->m_base_type_cb->itemData(index).value<ElementData::Type>();
 	if (type_ == ElementData::Slave)
 		slave  = true;
 	else if (type_ == ElementData::Master)
 		master = true;
+	else if (type_ == ElementData::Terminale)
+		terminal = true;
 
 	ui->m_slave_gb->setVisible(slave);
 	ui->m_master_gb->setVisible(master);
+	ui->m_terminal_gb->setVisible(terminal);
 	
 	updateTree();
 }

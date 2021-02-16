@@ -115,7 +115,7 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 		auto xml_func = document.createElement("kindInformation");
 		xml_func.setAttribute("name", "function");
 		auto func_txt = document.createTextNode(terminalFunctionToString(m_terminal_function));
-		xml_type.appendChild(xml_func);
+		xml_func.appendChild(func_txt);
 		returned_elmt.appendChild(xml_func);
 	}
 
@@ -313,7 +313,7 @@ QString ElementData::terminalTypeToString(ElementData::TerminalType type)
 		case ElementData::Sectional:
 			return QString("sectional");
 		case ElementData::Diode:
-			return QString("didoe");
+			return QString("diode");
 	}
 }
 

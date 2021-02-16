@@ -465,8 +465,9 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.appendChild(m_element_data.m_names_list.toXml(xml_document));
 
 	auto type_ = m_element_data.m_type;
-	if (type_ == ElementData::Slave ||
-		type_ == ElementData::Master)
+	if (type_ == ElementData::Slave  ||
+		type_ == ElementData::Master ||
+		type_ == ElementData::Terminale)
 	{
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
