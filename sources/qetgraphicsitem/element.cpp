@@ -464,8 +464,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		m_state = QET::GIOK;
 		return(false);
 	}
-		//Extract the names
-	m_names.fromXml(xml_def_elmt);
+
+	m_data.fromXml(xml_def_elmt);
 	setToolTip(name());
 
 		//load kind informations
@@ -473,7 +473,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 			xml_def_elmt.firstChildElement("kindInformations"),
 			"kindInformation");
 		//load element information
-	m_element_informations.fromXml(
+	m_data.m_informations.fromXml(
 			xml_def_elmt.firstChildElement("elementInformations"),
 			"elementInformation");
 
@@ -877,7 +877,7 @@ bool Element::fromXml(
 					//when element text with tagg "label" is not null, but the element information "label" is.
 				if((deti->textFrom() == DynamicElementTextItem::ElementInfo)
 						&& (deti->infoName() == "label"))
-					m_element_informations.addValue(
+					m_data.m_informations.addValue(
 								"label",
 								dom_input.attribute("text"));
 
@@ -974,8 +974,8 @@ bool Element::fromXml(
 	}
 		//retrocompatibility with older version
 	if(dc.value("label").toString().isEmpty() &&
-	   !m_element_informations.value("label").toString().isEmpty())
-		dc.addValue("label", m_element_informations.value("label"));
+	   !m_data.m_informations.value("label").toString().isEmpty())
+		dc.addValue("label", m_data.m_informations.value("label"));
 
 	//We must to block the update of the alignment when load the information
 	//otherwise the pos of the text will not be the same as it was at save time.
@@ -1001,15 +1001,15 @@ bool Element::fromXml(
 	{
 		//#2 the element information must have label not empty and visible
 		//and a least comment or location not empty and visible
-		QString label = m_element_informations.value(
+		QString label = m_data.m_informations.value(
 					"label").toString();
-		QString comment = m_element_informations.value(
+		QString comment = m_data.m_informations.value(
 					"comment").toString();
-		QString location = m_element_informations.value(
+		QString location = m_data.m_informations.value(
 					"location").toString();
-		bool la = m_element_informations.keyMustShow("label");
-		bool c = m_element_informations.keyMustShow("comment");
-		bool lo = m_element_informations.keyMustShow("location");
+		bool la = m_data.m_informations.keyMustShow("label");
+		bool c = m_data.m_informations.keyMustShow("comment");
+		bool lo = m_data.m_informations.keyMustShow("location");
 
 		if((m_link_type != Master) ||
 		   ((m_link_type == Master) &&
@@ -1254,10 +1254,10 @@ QDomElement Element::toXml(
 	}
 
 	//save information of this element
-	if (! m_element_informations.keys().isEmpty()) {
+	if (! m_data.m_informations.keys().isEmpty()) {
 		QDomElement infos =
 				document.createElement("elementInformations");
-		m_element_informations.toXml(infos, "elementInformation");
+		m_data.m_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
 
@@ -1601,14 +1601,14 @@ QString Element::linkTypeToString() const
 */
 void Element::setElementInformations(DiagramContext dc)
 {
-	if (m_element_informations == dc) {
+	if (m_data.m_informations == dc) {
 		return;
 	}
 
-	DiagramContext old_info = m_element_informations;
-	m_element_informations = dc;
-	m_element_informations.addValue("label", actualLabel()); //Update the label if there is a formula
-	emit elementInfoChange(old_info, m_element_informations);
+	DiagramContext old_info = m_data.m_informations;
+	m_data.m_informations = dc;
+	m_data.m_informations.addValue("label", actualLabel()); //Update the label if there is a formula
+	emit elementInfoChange(old_info, m_data.m_informations);
 }
 
 /**
@@ -1722,7 +1722,7 @@ void Element::setUpFormula(bool code_letter)
 				->project()
 				->elementAutoNumCurrentFormula();
 
-		m_element_informations.addValue("formula", formula);
+		m_data.m_informations.addValue("formula", formula);
 
 		QString element_currentAutoNum = diagram()
 				->project()
@@ -1743,9 +1743,9 @@ void Element::setUpFormula(bool code_letter)
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
-			DiagramContext dc = m_element_informations;
-			m_element_informations.addValue("label", actualLabel());
-			emit elementInfoChange(dc, m_element_informations);
+			DiagramContext dc = m_data.m_informations;
+			m_data.m_informations.addValue("label", actualLabel());
+			emit elementInfoChange(dc, m_data.m_informations);
 		}
 	}
 }
@@ -1798,11 +1798,11 @@ void Element::freezeNewAddedElement()
 */
 QString Element::actualLabel()
 {
-	if (m_element_informations.value("formula").toString().isEmpty()) {
-		return m_element_informations.value("label").toString();
+	if (m_data.m_informations.value("formula").toString().isEmpty()) {
+		return m_data.m_informations.value("label").toString();
 	} else {
 	return autonum::AssignVariables::formulaToLabel(
-				m_element_informations.value(
+				m_data.m_informations.value(
 					"formula").toString(),
 				m_autoNum_seq,
 				diagram(),
@@ -1814,9 +1814,8 @@ QString Element::actualLabel()
 	@brief Element::name
 	@return the human name of this element
 */
-QString Element::name() const
-{
-	return m_names.name(m_location.baseName());
+QString Element::name() const {
+	return m_data.m_names_list.name(m_location.baseName());
 }
 
 ElementsLocation Element::location() const

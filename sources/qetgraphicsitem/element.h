@@ -24,6 +24,7 @@
 #include "../diagramcontext.h"
 #include "../qet.h"
 #include "qetgraphicsitem.h"
+#include "../properties/elementdata.h"
 
 #include <QHash>
 #include <QPicture>
@@ -100,7 +101,7 @@ class Element : public QetGraphicsItem
 
 			//METHODS related to information
 		DiagramContext elementInformations()const
-		{return m_element_informations;}
+		{return m_data.m_informations;}
 		virtual void setElementInformations(DiagramContext dc);
 		DiagramContext kindInformations() const
 		{return m_kind_informations;}
@@ -220,16 +221,16 @@ class Element : public QetGraphicsItem
 		kind              m_link_type = Element::Simple;
 
 			//ATTRIBUTES related to informations
-		DiagramContext m_element_informations, m_kind_informations;
+		DiagramContext m_kind_informations;
 		autonum::sequentialNumbers m_autoNum_seq;
 		bool m_freeze_label = false;
 		QString m_F_str;
 
 		ElementsLocation m_location;
-		NamesList m_names;
 		QList <Terminal *> m_terminals;
 		const QPicture m_picture;
 		const QPicture m_low_zoom_picture;
+		ElementData m_data;
 
 	private:
 		bool m_must_highlight = false;
