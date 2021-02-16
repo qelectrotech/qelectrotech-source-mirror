@@ -1,4 +1,4 @@
-﻿/*
+/*
 		Copyright 2006-2021 The QElectroTech Team
 		This file is part of QElectroTech.
 
@@ -66,6 +66,22 @@ class ElementData : public PropertiesInterface
 		};
 		Q_ENUM(SlaveState)
 
+		enum TerminalType {
+			TTGeneric,
+			Fuse,
+			Sectional,
+			Diode
+		};
+		Q_ENUM(TerminalType)
+
+		enum TerminalFunction {
+			TFGeneric,
+			Phase,
+			Neutral,
+			PE
+		};
+		Q_ENUM(TerminalFunction)
+
 		ElementData() {}
 		~ElementData() override {}
 
@@ -90,12 +106,24 @@ class ElementData : public PropertiesInterface
 		static QString slaveStateToString(ElementData::SlaveState type);
 		static ElementData::SlaveState slaveStateFromString(const QString &string);
 
+		static QString terminalTypeToString(ElementData::TerminalType type);
+		static ElementData::TerminalType terminalTypeFromString(const QString &string);
+
+		static QString terminalFunctionToString(ElementData::TerminalFunction function);
+		static ElementData::TerminalFunction terminalFunctionFromString(const QString &string);
+
 		// must be public, because this class is a private member
 		// of Element/ element editor and they must access this data
-		ElementData::Type       m_type        = ElementData::Simple;
+		ElementData::Type       m_type = ElementData::Simple;
+
 		ElementData::MasterType m_master_type = ElementData::Coil;
+
 		ElementData::SlaveType  m_slave_type  = ElementData::SSimple;
 		ElementData::SlaveState m_slave_state = ElementData::NO;
+
+		ElementData::TerminalType     m_terminal_type     = ElementData::TTGeneric;
+		ElementData::TerminalFunction m_terminal_function = ElementData::TFGeneric;
+
 		int m_contact_count = 1;
 		DiagramContext m_informations;
 		NamesList m_names_list;

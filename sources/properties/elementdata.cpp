@@ -102,6 +102,22 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 
 		returned_elmt.appendChild(xml_count);
 	}
+	else if (m_type == ElementData::Terminale)
+	{
+			//type
+		auto xml_type  = document.createElement("kindInformation");
+		xml_type.setAttribute("name", "type");
+		auto type_txt = document.createTextNode(terminalTypeToString(m_terminal_type));
+		xml_type.appendChild(type_txt);
+		returned_elmt.appendChild(xml_type);
+
+			//function
+		auto xml_func = document.createElement("kindInformation");
+		xml_func.setAttribute("name", "function");
+		auto func_txt = document.createTextNode(terminalFunctionToString(m_terminal_function));
+		xml_type.appendChild(xml_func);
+		returned_elmt.appendChild(xml_func);
+	}
 
 	return returned_elmt;
 }
@@ -118,9 +134,15 @@ bool ElementData::operator==(const ElementData &data) const
 		}
 	}
 	else if (data.m_type == ElementData::Slave) {
-		if (data.m_slave_state != m_slave_state ||
-			data.m_slave_type != m_slave_type ||
+		if (data.m_slave_state   != m_slave_state ||
+			data.m_slave_type    != m_slave_type  ||
 			data.m_contact_count != m_contact_count) {
+			return false;
+		}
+	}
+	else if (data.m_type == ElementData::Terminale) {
+		if (data.m_terminal_type     != m_terminal_type ||
+			data.m_terminal_function != m_terminal_function) {
 			return false;
 		}
 	}
@@ -281,10 +303,75 @@ ElementData::SlaveState ElementData::slaveStateFromString(const QString &string)
 	return ElementData::NO;
 }
 
+QString ElementData::terminalTypeToString(ElementData::TerminalType type)
+{
+	switch (type) {
+		case ElementData::TTGeneric :
+			return QString("generic");
+		case ElementData::Fuse :
+			return  QString("fuse");
+		case ElementData::Sectional:
+			return QString("sectional");
+		case ElementData::Diode:
+			return QString("didoe");
+	}
+}
+
+ElementData::TerminalType ElementData::terminalTypeFromString(const QString &string)
+{
+	if (string == "generic") {
+		return ElementData::TTGeneric;
+	} else if (string == "fuse") {
+		return ElementData::Fuse;
+	} else if (string == "sectional") {
+		return ElementData::Sectional;
+	} else if (string == "diode") {
+		return ElementData::Diode;
+	}
+
+	qDebug() << "ElementData::terminalTypeFromString : string : "
+			 << string
+			 << " don't exist, return failsafe value 'generic'";
+	return ElementData::TTGeneric;
+}
+
+QString ElementData::terminalFunctionToString(ElementData::TerminalFunction function)
+{
+	switch (function) {
+		case ElementData::TFGeneric:
+			return QString("generic");
+		case ElementData::Phase:
+			return QString ("phase");
+		case ElementData::Neutral:
+			return QString("neutral");
+		case ElementData::PE:
+			return QString("pe");
+	}
+}
+
+ElementData::TerminalFunction ElementData::terminalFunctionFromString(const QString &string)
+{
+	if (string == "generic") {
+		return ElementData::TFGeneric;
+	} else if (string == "phase") {
+		return ElementData::Phase;
+	} else if (string == "neutral") {
+		return ElementData::Neutral;
+	} else if (string == "pe") {
+		return ElementData::PE;
+	}
+
+	qDebug() << "ElementData::terminalFunctionFromString : string : "
+			 << string
+			 << " don't exist, return failsafe value 'generic'";
+	return ElementData::TFGeneric;
+}
+
 void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 {
 	if (m_type == ElementData::Master ||
-		m_type == ElementData::Slave)
+		m_type == ElementData::Slave  ||
+		m_type == ElementData::Terminale)
 	{
 		auto xml_kind = xml_element.firstChildElement("kindInformations");
 		for (const auto &dom_elmt : QETXML::findInDomElement(xml_kind, "kindInformation"))
@@ -305,6 +392,13 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 					m_slave_state = slaveStateFromString(dom_elmt.text());
 				} else if (name == "number") {
 					m_contact_count = dom_elmt.text().toInt();
+				}
+			}
+			else if (m_type == ElementData::Terminale) {
+				if (name == "type") {
+					m_terminal_type = terminalTypeFromString(dom_elmt.text());
+				} else if (name == "function") {
+					m_terminal_function = terminalFunctionFromString(dom_elmt.text());
 				}
 			}
 		}
