@@ -741,17 +741,22 @@ void ElementsCollectionWidget::search()
 		return;
 	}
 
+		//start the search when text have at least 3 letters.
+	if (text.count() < 3) {
+		return;
+	}
+
 	hideCollection(true);
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList text_list = text.split("+", QString::SkipEmptyParts);
+	const QStringList text_list = text.split("+", QString::SkipEmptyParts);
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
 #endif
-	QStringList text_list = text.split("+", Qt::SkipEmptyParts);
+	const QStringList text_list = text.split("+", Qt::SkipEmptyParts);
 #endif
 	QModelIndexList match_index;
-	foreach (QString txt, text_list) {
+	for (QString txt : text_list) {
 		match_index << m_model->match(m_showed_index.isValid()
 					      ? m_model->index(0,0,m_showed_index)
 					      : m_model->index(0,0),
@@ -762,7 +767,7 @@ void ElementsCollectionWidget::search()
 					      | Qt::MatchRecursive);
 	}
 
-	foreach(QModelIndex index, match_index)
+	for(QModelIndex index : match_index)
 		showAndExpandItem(index);
 }
 
