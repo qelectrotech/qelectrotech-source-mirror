@@ -581,41 +581,6 @@
    <header>kcolorbutton.h</header>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>tabWidget_2</tabstop>
-  <tabstop>m_multiwires_gb</tabstop>
-  <tabstop>m_one_text_per_folio_cb</tabstop>
-  <tabstop>m_text_size_sb</tabstop>
-  <tabstop>m_formula_le</tabstop>
-  <tabstop>m_text_le</tabstop>
-  <tabstop>m_show_text_cb</tabstop>
-  <tabstop>m_text_color_kpb</tabstop>
-  <tabstop>m_available_autonum_cb</tabstop>
-  <tabstop>m_edit_autonum_pb</tabstop>
-  <tabstop>m_function_le</tabstop>
-  <tabstop>m_tension_protocol_le</tabstop>
-  <tabstop>m_wire_color_le</tabstop>
-  <tabstop>m_wire_section_le</tabstop>
-  <tabstop>m_cable_le</tabstop>
-  <tabstop>m_bus_le</tabstop>
-  <tabstop>m_verti_cb</tabstop>
-  <tabstop>m_horiz_cb</tabstop>
-  <tabstop>m_singlewire_gb</tabstop>
-  <tabstop>m_phase_sb</tabstop>
-  <tabstop>m_update_preview_pb</tabstop>
-  <tabstop>m_neutral_cb</tabstop>
-  <tabstop>m_earth_cb</tabstop>
-  <tabstop>m_phase_cb</tabstop>
-  <tabstop>m_phase_slider</tabstop>
-  <tabstop>m_pen_cb</tabstop>
-  <tabstop>m_color_kpb</tabstop>
-  <tabstop>m_color_2_gb</tabstop>
-  <tabstop>m_dash_size_sb</tabstop>
-  <tabstop>m_color_2_kpb</tabstop>
-  <tabstop>m_cond_size_sb</tabstop>
-  <tabstop>m_line_style_cb</tabstop>
- </tabstops>
  <resources>
   <include location="../../qelectrotech.qrc"/>
  </resources>
