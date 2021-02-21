@@ -232,7 +232,8 @@ TARGET = qelectrotech
 
 # Ajustement des bibliotheques utilisees lors de l'edition des liens
 unix:QMAKE_LIBS_THREAD -= -lpthread
-unix|win32: PKGCONFIG += sqlite3
+unix: PKGCONFIG += sqlite3
+win32: CONFIG += sql
 
 # Enable C++17
 QMAKE_CXXFLAGS += -std=c++17

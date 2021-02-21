@@ -30,7 +30,10 @@
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
 #include <QSqlDriver>
-#include <sqlite3.h>
+// #include <sqlite3.h>
+#include <qtsqlglobal.h>
+#include <QSql>
+#include <QtSql>
 #endif
 
 /**
@@ -653,16 +656,16 @@ void projectDataBase::exportDb(projectDataBase *db,
 		if (!file_db.open()) {
 			return;
 		}
-
+/*
 		auto memory_db_handle = sqliteHandle(&db->m_data_base);
 		auto file_db_handle = sqliteHandle(&file_db);
 
-		auto sqlite_backup = sqlite3_backup_init(file_db_handle, "main", memory_db_handle, "main");
+        auto sqlite_backup = sqlite3_backup_init(file_db_handle, "main", memory_db_handle, "main");
 		if (sqlite_backup)
 		{
 			sqlite3_backup_step(sqlite_backup, -1);
 			sqlite3_backup_finish(sqlite_backup);
-		}
+        } */
 		file_db.close();
 	}
 	QSqlDatabase::removeDatabase(connection_name);
