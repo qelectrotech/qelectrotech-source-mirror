@@ -826,7 +826,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>Couleur du texte:</source>
-        <translation>Kolor tekstu</translation>
+        <translation>Kolor tekstu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -2600,7 +2600,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
         <source>Centre :</source>
-        <translation>Środek</translation>
+        <translation>Środek:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
@@ -5005,7 +5005,7 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation>Jeżeli ta opcja jest zaznaczona, marginesy arkusza zostaną zignorowane, a cała jego powierzchnia zostanie wykorzystana do drukowania. Może to nie być obsługiwane przez Twoją drukarkę. </translation>
+        <translation>Jeżeli ta opcja jest zaznaczona, marginesy arkusza zostaną zignorowane, a cała jego powierzchnia zostanie wykorzystana do drukowania. Może to nie być obsługiwane przez Twoją drukarkę.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="259"/>
@@ -5117,7 +5117,7 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="669"/>
         <source>Exporter sous : </source>
-        <translation>Eksportuj jako:</translation>
+        <translation>Eksportuj jako: </translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="669"/>
@@ -6670,7 +6670,8 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
 &gt;&gt; Instalacja w Windows
-Przenieś DXFtoQET.exe binary do C:\Users\user_name\AppData\Roaming\qet\ directory</translation>
+Przenieś DXFtoQET.exe binary do C:\Users\user_name\AppData\Roaming\qet\ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="169"/>
@@ -6684,7 +6685,8 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
 Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
 &gt;&gt; Instalacja w macOSX
-Przenieś DXFtoQET.app binary do /Users/user_name/.qet/ directory</translation>
+Przenieś DXFtoQET.app binary do /Users/user_name/.qet/ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="175"/>
@@ -6700,7 +6702,8 @@ Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
 &gt;&gt; Instalacja w Linux
 Preznieś DXFtoQET binary do twojego /home/user_name/.qet/ directory
-make it executable : chmod +x ./DXFtoQE</translation>
+make it executable : chmod +x ./DXFtoQE
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="295"/>
@@ -8773,14 +8776,14 @@ Czy chcesz ją zastąpić?</translation>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
         <translation>Wyświetlane informacje są większe niż maksymalna liczba, którą można wyświetlić w tabelach.
-Dodaj nową tabelę lub dostosuj istniejące tabele, aby wyświetlić wszystkie informacje. </translation>
+Dodaj nową tabelę lub dostosuj istniejące tabele, aby wyświetlić wszystkie informacje.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="118"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
         <translation>Wyświetlane informacje są większe niż maksymalna liczba, którą można wyświetlić w tabeli.
-Dodaj nową tabelę lub dostosuj istniejącą, aby wyświetlić wszystkie informacje. </translation>
+Dodaj nową tabelę lub dostosuj istniejącą, aby wyświetlić wszystkie informacje.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="121"/>
