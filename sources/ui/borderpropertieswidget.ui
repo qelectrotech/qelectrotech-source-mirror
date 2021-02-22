@@ -98,6 +98,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_colums_count_sp</tabstop>
+  <tabstop>m_columns_width_sp</tabstop>
+  <tabstop>m_rows_count_sp</tabstop>
+  <tabstop>m_rows_height_sp</tabstop>
+  <tabstop>m_display_columns_cb</tabstop>
+  <tabstop>m_display_rows_cb</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
