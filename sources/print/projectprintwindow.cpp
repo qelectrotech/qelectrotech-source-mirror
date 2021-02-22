@@ -95,13 +95,13 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 QString ProjectPrintWindow::docName(QETProject *project)
 {
 	QString doc_name;
-	if (!project->title().isEmpty()) {
-		doc_name = project->title();
-	} else if (!project->filePath().isEmpty()) {
-		doc_name = QFileInfo(project->filePath()).baseName();
+    if (!project->filePath().isEmpty()) {
+        doc_name = QFileInfo(project->filePath()).baseName();
+    } else if (!project->title().isEmpty()) {
+        doc_name = project->title();
+        doc_name = QET::stringToFileName(doc_name);
 	}
 
-	doc_name = QET::stringToFileName(doc_name);
 	if (doc_name.isEmpty()) {
 		doc_name = tr("projet", "string used to generate a filename");
 	}
@@ -666,7 +666,7 @@ QList<Diagram *> ProjectPrintWindow::selectedDiagram() const
 
 void ProjectPrintWindow::exportToPDF()
 {
-	auto file_name = QFileDialog::getSaveFileName(this, tr("Exporter sous : "), m_printer->outputFileName(), tr("Fichier (*.pdf)"));
+    auto file_name = QFileDialog::getSaveFileName(this, tr("Exporter sous : "), m_printer->outputFileName(), tr("Fichier (*.pdf)"));
 	if (file_name.isEmpty()) {
 		return;
 	}
