@@ -29,7 +29,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../qelectrotech.qrc">
        <normaloff>:/ico/16x16/folder-open.png</normaloff>:/ico/16x16/folder-open.png</iconset>
      </property>
     </widget>
@@ -40,13 +40,21 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../qelectrotech.qrc">
        <normaloff>:/ico/16x16/document-save.png</normaloff>:/ico/16x16/document-save.png</iconset>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>m_combo_box</tabstop>
+  <tabstop>m_load_pb</tabstop>
+  <tabstop>m_line_edit</tabstop>
+  <tabstop>m_save_pb</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../qelectrotech.qrc"/>
+ </resources>
  <connections/>
 </ui>

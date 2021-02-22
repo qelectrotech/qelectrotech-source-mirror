@@ -256,6 +256,15 @@
    <header>kcolorbutton.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_style_cb</tabstop>
+  <tabstop>m_size_dsb</tabstop>
+  <tabstop>m_color_kpb</tabstop>
+  <tabstop>m_brush_style_cb</tabstop>
+  <tabstop>m_brush_color_kpb</tabstop>
+  <tabstop>m_lock_pos_cb</tabstop>
+  <tabstop>m_close_polygon</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
