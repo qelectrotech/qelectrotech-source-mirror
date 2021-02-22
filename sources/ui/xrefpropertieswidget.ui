@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>XRefPropertiesWidget</class>
  <widget class="QWidget" name="XRefPropertiesWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>376</width>
+    <height>531</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -265,6 +273,20 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_type_cb</tabstop>
+  <tabstop>m_snap_to_cb</tabstop>
+  <tabstop>m_offset_sb</tabstop>
+  <tabstop>m_xrefpos_cb</tabstop>
+  <tabstop>m_display_has_contacts_rb</tabstop>
+  <tabstop>m_display_has_cross_rb</tabstop>
+  <tabstop>m_master_le</tabstop>
+  <tabstop>m_slave_le</tabstop>
+  <tabstop>m_show_power_cb</tabstop>
+  <tabstop>m_power_prefix_le</tabstop>
+  <tabstop>m_delay_prefix_le</tabstop>
+  <tabstop>m_switch_prefix_le</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
