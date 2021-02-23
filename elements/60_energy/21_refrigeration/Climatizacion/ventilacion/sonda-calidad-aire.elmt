@@ -4,9 +4,10 @@
         <name lang="fr">sonde qualité de l'air</name>
         <name lang="ca">Sonda qualitat aire</name>
         <name lang="es">Sonda calidad aire</name>
+        <name lang="de">Luftqualitätssonde</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line x1="-7.8" y2="6.13626" end1="none" y1="-3.25335" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-7.8" antialias="false" length1="1.5"/>

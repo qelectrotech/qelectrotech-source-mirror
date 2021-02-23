@@ -3,6 +3,8 @@
     <names>
         <name lang="fr">Enroulement triphasé, en triangle ouvert</name>
         <name lang="de">Dreiphasenwicklung, offene Dreieckschaltung</name>
+        <name lang="cs">Trojfázové vinutí,
+zapojené do otevřeného trojúhelníka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

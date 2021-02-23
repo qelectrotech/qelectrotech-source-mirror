@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,6 +17,8 @@
 */
 #ifndef TERMINAL_H
 #define TERMINAL_H
+#include "../qet.h"
+
 #include <QtWidgets>
 #include <QtXml>
 #include "qet.h"
@@ -86,10 +88,6 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;
 		QPointF dockConductor() const;
-		QString number() const;
-		QString name() const;
-		void setNumber(QString number);
-		void setName(QString name, bool hiddenName);
 		void updateConductor();
 		bool isLinkedTo(Terminal *);
 		bool canBeLinkedTo(Terminal *);
@@ -165,9 +163,8 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		int m_id{-1};
 
 	private:
-		void init(QString number, QString name, bool hiddenName);
-		void init(QPointF pf, Qet::Orientation o, QString number,
-			  QString name, bool hiddenName);
+		void init();
+		void init(QPointF pf, Qet::Orientation o);
 };
 
 /**
@@ -176,7 +173,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 */
 inline int Terminal::conductorsCount() const
 {
-	return(conductors_.size());
+	return(m_conductors_list.size());
 }
 
 /**

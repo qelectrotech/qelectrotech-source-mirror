@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,10 +18,11 @@
 #ifndef TITLEBLOCK_SLASH_TEMPLATES_COLLECTION_H
 #define TITLEBLOCK_SLASH_TEMPLATES_COLLECTION_H
 #define TITLEBLOCKS_FILE_EXTENSION ".titleblock"
+#include "../qet.h"
+#include "templatelocation.h"
+
 #include <QtCore>
 #include <QtXml>
-#include "templatelocation.h"
-#include "qet.h"
 class TitleBlockTemplate;
 class QETProject;
 

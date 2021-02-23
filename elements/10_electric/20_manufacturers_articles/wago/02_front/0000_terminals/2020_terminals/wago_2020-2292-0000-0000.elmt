@@ -1,0 +1,19 @@
+<definition hotspot_y="202" type="element" version="0.80" hotspot_x="10" link_type="simple" height="290" width="20">
+    <names>
+        <name lang="fr">2020-2292</name>
+        <name lang="de">2020-2292</name>
+        <name lang="en">2020-2292</name>
+        <name lang="cs">2020-2292</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2020-2292</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon x1="-1" y3="82.46" y1="-198.465" style="line-style:normal;line-weight:thin;filling:orange;color:orange" x3="2.5" y4="82.46" y2="-198.46" x2="2.5" x4="-1" antialias="false"/>
+    </description>
+</definition>

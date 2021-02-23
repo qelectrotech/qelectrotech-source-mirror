@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -86,6 +86,9 @@ namespace QETXML
 	void modelHeaderDataFromXml(
 			const QDomElement &element,
 			QAbstractItemModel *model);
+
+	QVector<QDomElement> findInDomElement(const QDomElement &dom_elmt,
+										  const QString &tag_name);
 }
 
 #endif // QETXML_H

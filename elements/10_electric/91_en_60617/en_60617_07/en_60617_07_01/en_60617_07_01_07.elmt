@@ -4,6 +4,8 @@
         <name lang="de">Funktion "selbsttätiger Rückgang"</name>
         <name lang="fr">Fonction retour automatique, par exemple
 retour à ressort</name>
+        <name lang="cs">Samočinný návrat,
+např. návrat skokem( působením pružiny)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

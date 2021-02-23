@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -189,7 +189,7 @@ namespace QET {
 		extern QIcon ZoomOut;
 		extern QIcon adding_image;
 		extern QIcon resize_image;
-		extern QIcon ar;
+		extern QIcon sa;
 		extern QIcon br;
 		extern QIcon catalonia;
 		extern QIcon cs;
@@ -212,6 +212,7 @@ namespace QET {
 		extern QIcon no;
 		extern QIcon be;
 		extern QIcon tr;
+		extern QIcon mn;
 		extern QIcon translation;
 		extern QIcon listDrawings;
 		extern QIcon AutoNum;

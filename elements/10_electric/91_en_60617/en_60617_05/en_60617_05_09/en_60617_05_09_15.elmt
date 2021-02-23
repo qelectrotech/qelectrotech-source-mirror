@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Structure à retard de couplage</name>
         <name lang="de">Verzögerungsleitungs-Koppler</name>
+        <name lang="cs">Zpomalovací vazební člen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

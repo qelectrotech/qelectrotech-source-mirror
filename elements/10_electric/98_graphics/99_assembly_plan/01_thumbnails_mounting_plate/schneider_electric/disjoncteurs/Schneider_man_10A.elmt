@@ -2,6 +2,7 @@
     <uuid uuid="{f11b6add-2d5e-4da4-b1d3-484ae37a1068}"/>
     <names>
         <name lang="fr"> Disjoncteur10A</name>
+        <name lang="cs"> Jistič 10A</name>
     </names>
     <elementInformations/>
     <informations></informations>

@@ -11,7 +11,7 @@
         <name lang="pl">Zestyk przełączny przerwowy</name>
         <name lang="es">Interruptor 3 posiciones</name>
         <name lang="nl">WisselContact (NC/NO)</name>
-        <name lang="cs">Dvoupolohový spínač</name>
+        <name lang="cs">Třípolohový přepínač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

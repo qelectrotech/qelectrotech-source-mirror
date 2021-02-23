@@ -4,12 +4,13 @@
         <name lang="es">D-SUB HD 20 pines (macho)</name>
         <name lang="fr">SUB-D HD 20 broches (femelle)</name>
         <name lang="nl">D-SUB 20 pin vrouw</name>
-        <name lang="cs">Zásuvka D-SUB HD 20 kolíků (ženská)</name>
+        <name lang="cs">Zástrčka D-SUB HD 20 kolíků</name>
         <name lang="de">Stecker D-SUB HD 20-polig männlich</name>
         <name lang="it">D-SUB 20 Pin (maschio)</name>
         <name lang="el">D-SUB HD 20 ακροδέκτες (αρσενικό)</name>
         <name lang="ar">sub din 20</name>
         <name lang="pl">Gniazdo D-Sub, piętnastostykowe</name>
+        <name lang="hu">20 tűs apa D-Sub HD</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

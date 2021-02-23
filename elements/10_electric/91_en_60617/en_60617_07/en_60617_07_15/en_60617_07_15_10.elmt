@@ -6,6 +6,7 @@ schaltenden Relais (schnell ansprechend und
 schnell rückfallend</name>
         <name lang="fr">Organe de commande d'un relais rapide (à
 mise au travail et à mise au repos rapides)</name>
+        <name lang="cs">Cívka rychlého přístroje (rychlý přítah i odpad)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

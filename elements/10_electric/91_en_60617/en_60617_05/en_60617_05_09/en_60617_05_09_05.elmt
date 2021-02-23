@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Sole émissive</name>
         <name lang="de">Sohle, emittierend</name>
+        <name lang="cs">Emitující uspořádání</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Accouplement mécanique embrayé</name>
         <name lang="es">Acoplamiento mecánico, ocupado</name>
         <name lang="de">Kupplung, gekuppelt</name>
+        <name lang="cs">Spojka, mechanické spojení zapnuto</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

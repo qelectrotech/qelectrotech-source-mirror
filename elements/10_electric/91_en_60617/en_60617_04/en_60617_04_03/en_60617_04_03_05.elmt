@@ -4,6 +4,7 @@
         <name lang="fr">Inductance variable de façon continue à noyau
 magnétique</name>
         <name lang="de">Induktivität, stetig veränderbar mit Magnetkern</name>
+        <name lang="cs">Indukční cívka s jádrem s měnitelnou indukčností</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

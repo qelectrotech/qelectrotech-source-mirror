@@ -10,6 +10,7 @@
         <name lang="en">2-pin DIN socket with center pin flat</name>
         <name lang="es">Socket DIN de 2 pines con pin plano central</name>
         <name lang="fr">Embase DIN 2 broches avec borne centrale plate</name>
+        <name lang="hu">2 pólusú DIN csatlakozó lapos középső érintkezővel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

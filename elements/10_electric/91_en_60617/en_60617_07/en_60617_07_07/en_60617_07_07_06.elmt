@@ -4,6 +4,9 @@
         <name lang="fr">Interrupteur d'arrêt d'urgence à manœuvre
 positive d'ouverture</name>
         <name lang="de">Pilz-Notdrucktaster</name>
+        <name lang="cs">Nouzový spínač (s hřibovou hlavicí)
+se zaručenou rozpojovací funkcí a
+s udržovanou polohou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

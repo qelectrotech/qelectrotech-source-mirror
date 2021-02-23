@@ -2,6 +2,7 @@
     <uuid uuid="{7510e6a0-4270-426a-b5e1-40fe95fc464e}"/>
     <names>
         <name lang="en">5WG1 262-1EB22 - Binary Input Device - dry contacts</name>
+        <name lang="cs">5WG1 262-1EB22 - Jednotka binárních vstupů</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

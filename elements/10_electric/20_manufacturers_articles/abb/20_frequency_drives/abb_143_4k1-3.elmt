@@ -3,6 +3,7 @@
     <names>
         <name lang="hu">ABB ACS 143-4K1-3</name>
         <name lang="en">ABB ACS 143-4K1-3</name>
+        <name lang="cs">ACS 143-4K1-3</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>

@@ -1,0 +1,44 @@
+<definition hotspot_x="64" height="70" width="130" type="element" hotspot_y="34" version="0.80" link_type="simple">
+    <names>
+        <name lang="fr">289-128</name>
+        <name lang="en">289-128</name>
+        <name lang="de">289-128</name>
+        <name lang="cs">289-128</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-128</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <line antialias="false" length1="1.5" x1="-60" x2="-60" y2="30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line antialias="false" length1="1.5" x1="-60" x2="60" y2="-30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line antialias="false" length1="1.5" x1="60" x2="60" y2="30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <text rotation="0" color="#000000" y="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-55" text="3"/>
+        <text rotation="0" color="#000000" y="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="50.625" text="4"/>
+        <circle diameter="5" antialias="true" y="7.5" x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="7.5" x="57.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text rotation="0" color="#000000" y="-12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="50.625" text="2"/>
+        <circle diameter="5" antialias="true" y="-12.5" x="57.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-12.5" x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <dynamic_text text_from="ElementInfo" rotation="0" y="28" frame="false" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="-4" z="42" uuid="{32815a7b-7a5c-4c39-bbd5-70f7869c4d0b}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" length1="1.5" x1="-41.5" x2="41.5" y2="0" y1="0" end1="circle" end2="circle" style="line-style:normal;line-weight:normal;filling:black;color:black" length2="1.5"/>
+        <line antialias="false" length1="1.5" x1="-60" x2="60" y2="30" y1="30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <text rotation="0" color="#000000" y="27" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-37" text="Resistor 9k1"/>
+        <text rotation="0" color="#000000" y="-12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-55" text="1"/>
+        <text rotation="0" color="#000000" y="-16" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-45" text="WAGO 289-128"/>
+        <rect rx="0" ry="0" antialias="false" height="10" width="30" y="-5" x="-15" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <polygon x3="-40" y4="10" antialias="false" x1="-60" x4="-60" x2="-40" y2="-10" y3="10" closed="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="40" y4="10" antialias="false" x1="60" x4="60" x2="40" y2="-10" y3="10" closed="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal name="R1.2" orientation="e" y="-10" x="60"/>
+        <terminal name="R1.1" orientation="w" y="-10" x="-60"/>
+        <terminal name="R2.2" orientation="e" y="10" x="60"/>
+        <terminal name="R2.1" orientation="w" y="10" x="-60"/>
+    </description>
+</definition>

@@ -1,5 +1,5 @@
 /*
-		Copyright 2006-2020 QElectroTech Team
+		Copyright 2006-2021 QElectroTech Team
 		This file is part of QElectroTech.
 
 		QElectroTech is free software: you can redistribute it and/or modify
@@ -16,24 +16,25 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "propertieseditorfactory.h"
-#include "QGraphicsItem"
-#include "element.h"
-#include "PropertiesEditor/propertieseditorwidget.h"
-#include "elementpropertieswidget.h"
-#include "element.h"
-#include "independenttextitem.h"
-#include "inditextpropertieswidget.h"
-#include "diagramimageitem.h"
-#include "imagepropertieswidget.h"
-#include "qetshapeitem.h"
-#include "shapegraphicsitempropertieswidget.h"
-#include "dynamicelementtextitem.h"
-#include "dynamicelementtextitemeditor.h"
-#include "elementtextitemgroup.h"
-#include "qetgraphicstableitem.h"
-#include "graphicstablepropertieseditor.h"
-#include "projectdbmodelpropertieswidget.h"
-#include "projectdbmodel.h"
+
+#include "../PropertiesEditor/propertieseditorwidget.h"
+#include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
+#include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/independenttextitem.h"
+#include "../qetgraphicsitem/qetshapeitem.h"
+#include "../ui/dynamicelementtextitemeditor.h"
+#include "../ui/elementpropertieswidget.h"
+#include "../ui/imagepropertieswidget.h"
+#include "../ui/inditextpropertieswidget.h"
+#include "../ui/shapegraphicsitempropertieswidget.h"
+
+#include <QGraphicsItem>
 
 /**
 	@brief PropertiesEditorFactory::propertiesEditor

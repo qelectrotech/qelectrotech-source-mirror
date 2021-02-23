@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">F425 - Mémoire</name>
         <name lang="en">F425 - Memory</name>
+        <name lang="cs">F425 - Paměťový modul</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>

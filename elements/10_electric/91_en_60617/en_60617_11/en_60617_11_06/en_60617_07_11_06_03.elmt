@@ -4,6 +4,7 @@
         <name lang="de">Endverstärker </name>
         <name lang="fr">Amplificateur terminal de ligne, secondaire ou
 tertiaire</name>
+        <name lang="cs">Koncový zesilovač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

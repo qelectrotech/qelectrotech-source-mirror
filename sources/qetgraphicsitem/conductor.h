@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,11 +17,12 @@
 */
 #ifndef CONDUCTOR_H
 #define CONDUCTOR_H
+#include "../autoNum/assignvariables.h"
+#include "../conductorproperties.h"
 
 #include "conductorproperties.h"
 #include "propertiesinterface.h"
 #include <QGraphicsPathItem>
-#include "assignvariables.h"
 
 class ConductorProfile;
 class ConductorSegmentProfile;

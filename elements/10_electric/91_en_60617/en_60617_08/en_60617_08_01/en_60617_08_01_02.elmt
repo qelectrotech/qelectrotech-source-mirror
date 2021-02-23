@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Meßgerät, aufzeichnend </name>
         <name lang="fr">Appareil enregistreur</name>
+        <name lang="cs">Zapisovací přístroj</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

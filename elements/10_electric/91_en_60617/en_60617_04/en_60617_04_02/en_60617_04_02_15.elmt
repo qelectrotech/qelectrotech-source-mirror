@@ -4,8 +4,8 @@
         <name lang="de">gepolter Kondensator, temperaturabhängig,
 z.B. Keramik-Kondensator</name>
         <name lang="fr">Condensateur polarisé dépendant de la
-température, par exemple condensateur
-céramique</name>
+température, par exemple condensateur céramique</name>
+        <name lang="cs">Kondenzátor polarizovaný, teplotně závislý</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

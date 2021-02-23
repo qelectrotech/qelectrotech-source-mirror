@@ -5,12 +5,14 @@
         <name lang="fr">Sources réseau</name>
         <name lang="it">Alimentazione da rete</name>
         <name lang="pl">Sieć elektroenergetyczna</name>
+    	<name lang="pt_br">Alimentação</name>
         <name lang="de">Netzquellen</name>
         <name lang="el">Παροχές δικτύου</name>
         <name lang="nl">Netvoedingen</name>
-        <name lang="cs">Síťové zdroje</name>
-		<name lang="es">Fuentes de red</name>
+        <name lang="cs">Napájení</name>
+    	<name lang="es">Fuentes de red</name>
         <name lang="da">Netværkskilder</name>
         <name lang="ja">電源網</name>
+        <name lang="hu">Hálózati források</name>
     </names>
 </qet-directory>

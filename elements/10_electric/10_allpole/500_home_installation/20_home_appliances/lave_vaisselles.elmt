@@ -1,7 +1,7 @@
 <definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{777c929a-aae3-4a28-a695-ea6c23a717b5}"/>
     <names>
-        <name lang="cs">Myčka na nádobí</name>
+        <name lang="cs">Myčka</name>
         <name lang="pl">Zmywarka</name>
         <name lang="ar">غسّالة أواني</name>
         <name lang="de">Geschirrspüler</name>

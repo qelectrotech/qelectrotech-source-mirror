@@ -4,6 +4,7 @@
         <name lang="fr">Commande rotative</name>
         <name lang="es">Accionado por giro</name>
         <name lang="de">Betätigung durch Drehen </name>
+        <name lang="cs">Ovládání otáčením</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

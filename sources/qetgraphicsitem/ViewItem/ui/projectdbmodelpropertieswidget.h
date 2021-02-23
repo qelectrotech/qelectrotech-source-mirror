@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #ifndef PROJECTDBMODELPROPERTIESWIDGET_H
 #define PROJECTDBMODELPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "../../../PropertiesEditor/propertieseditorwidget.h"
 
 class ProjectDBModel;
 

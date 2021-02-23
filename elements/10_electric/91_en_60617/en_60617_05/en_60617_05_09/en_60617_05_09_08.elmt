@@ -3,6 +3,8 @@
     <names>
         <name lang="fr">Structure à retard fermée</name>
         <name lang="de">Verzögerungsleitung, geschlossen</name>
+        <name lang="cs">Uzavřená zpomalovací struktura,
+zobrazena s baňkou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

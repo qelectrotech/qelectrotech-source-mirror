@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorcreator.h"
-#include "diagram.h"
+
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../ui/potentialselectordialog.h"
 #include "qgraphicsitem.h"
-#include "terminal.h"
-#include "conductor.h"
-#include "potentialselectordialog.h"
-#include "diagramcommands.h"
-#include "conductorautonumerotation.h"
-#include "element.h"
 
 #include <QPolygonF>
 
@@ -57,7 +58,7 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 		Conductor *cond = new Conductor(hub_terminal, t);
 		cond->setProperties(m_properties);
 		cond->setSequenceNum(m_sequential_number);
-		d->undoStack().push(new AddItemCommand<Conductor *>(cond, d));
+		d->undoStack().push(new AddGraphicsObjectCommand(cond, d));
 		
 		c_list.append(cond);
 	}

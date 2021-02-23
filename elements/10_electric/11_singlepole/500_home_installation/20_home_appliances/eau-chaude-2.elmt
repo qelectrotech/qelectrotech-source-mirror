@@ -2,6 +2,7 @@
 <uuid uuid="{20651A2C-D3C4-4BA3-97EA-DB569436CD36}"/><names>
         <name lang="fr">Eau Chaude Sanitaire 2</name>
         <name lang="pl">Podgrzewacz wody</name>
+        <name lang="cs">Ohřívač vody</name>
     </names>
     <informations>cbh41</informations>
     <description>

@@ -1,11 +1,12 @@
 <definition hotspot_y="16" type="element" height="50" version="0.80" width="60" hotspot_x="39" link_type="simple">
     <uuid uuid="{dc16f730-b637-4ef1-bd0a-a664697a0b49}"/>
     <names>
+        <name lang="de">Anschlussstutzen 20-3/4"</name>
         <name lang="es">Rácor 20-3/4"</name>
         <name lang="ca">Rácord 20-3/4"</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <arc antialias="true" height="13.3242" width="8.1" x="-23.9" y="15.2863" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-90"/>

@@ -11,6 +11,7 @@
         <name lang="es">Conexión 1 pin</name>
         <name lang="fr">Connecteur ,1 broche</name>
         <name lang="ar">وصلة , 1 دبوس</name>
+        <name lang="hu">1 tűs csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

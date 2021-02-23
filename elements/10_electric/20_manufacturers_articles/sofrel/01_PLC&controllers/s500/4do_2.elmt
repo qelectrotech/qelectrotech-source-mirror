@@ -2,6 +2,7 @@
     <uuid uuid="{38557030-7df4-4ae9-96d5-fdd2c52a986d}"/>
     <names>
         <name lang="fr">Sofrel 4 AO</name>
+        <name lang="cs">Sofrel 4 AO</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Cartes de sorties analoqigue</elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{8d049a22-22c9-4a27-bd86-5097ec7f790d}"/>
     <names>
         <name lang="fr">05802 - Coupe-circuit bipolaire</name>
+        <name lang="cs">05802 - Pojistkový odpínač 1P+N</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

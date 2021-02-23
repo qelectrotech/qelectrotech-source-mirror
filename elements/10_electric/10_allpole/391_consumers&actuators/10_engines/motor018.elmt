@@ -1,7 +1,7 @@
 <definition type="element" link_type="simple" hotspot_y="62" hotspot_x="65" width="190" height="100" version="0.80">
     <uuid uuid="{36bee958-905e-4ab9-80a4-03ddd1de1d2b}"/>
     <names>
-        <name lang="cs">Jednofázový motor 0,18kW</name>
+        <name lang="cs">Jednofázový brzdový motor</name>
         <name lang="ru">Однофазный эл. мотор</name>
         <name lang="pl">Silnik trójfazowy</name>
         <name lang="fr">Moteur triphasé</name>

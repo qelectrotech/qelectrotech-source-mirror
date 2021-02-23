@@ -4,6 +4,7 @@
         <name lang="fr">Siemens;6FC5210-0DF52-3AA0;6FC5210-0DF52-3AA0;Sinumerik unité centrale PCU 50.5-C, Celeron 1,8GHz, SSD 80GB, Win7 EmbSys 64Bits;7080019</name>
         <name lang="en">Siemens;6FC5210-0DF52-3AA0;6FC5210-0DF52-3AA0;Sinumerik control unit PCU 50.5-C, Celeron 1,8GHz, SSD 80GB, Win7 EmbSys 64Bits;7080019</name>
         <name lang="de">Siemens;6FC5210-0DF52-3AA0;6FC5210-0DF52-3AA0;Sinumerik Steuergerät PCU 50.5-C, Celeron 1,8GHz, SSD 80GB, Win7 EmbSys 64Bits;7080019</name>
+        <name lang="cs">Siemens;6FC5210-0DF52-3AA0;6FC5210-0DF52-3AA0;Sinumerik řídící jednotka PCU 50.5-C, Celeron 1,8GHz, SSD 80GB, Win7 EmbSys 64Bits;7080019</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

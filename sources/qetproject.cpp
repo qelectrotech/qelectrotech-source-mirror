@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,29 +16,28 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include "qetproject.h"
+
+#include "ElementsCollection/xmlelementcollection.h"
+#include "autoNum/assignvariables.h"
+#include "autoNum/numerotationcontext.h"
+#include "autoNum/numerotationcontextcommands.h"
 #include "diagram.h"
 #include "qetapp.h"
-#include "qetresult.h"
-#include "movetemplateshandler.h"
 #include "qetmessagebox.h"
+#include "qetresult.h"
+#include "titleblock/integrationmovetemplateshandler.h"
+#include "titleblock/movetemplateshandler.h"
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
-#include "numerotationcontext.h"
-#include "integrationmovetemplateshandler.h"
-#include "xmlelementcollection.h"
-#include "importelementdialog.h"
-#include "numerotationcontextcommands.h"
-#include "assignvariables.h"
+#include "ui/importelementdialog.h"
 
-#include <QTimer>
-#include <QDate>
-#include <QStandardPaths>
-#include <utility>
-#include <QtConcurrent>
 #include <QHash>
+#include <QStandardPaths>
+#include <QTimer>
+#include <QtConcurrent>
 #include <QtDebug>
+#include <utility>
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
@@ -78,6 +77,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	init();
 }
 
+#ifdef BUILD_WITHOUT_KF5
+#else
 /**
 	@brief QETProject::QETProject
 	@param backup : backup file to open, QETProject take ownership of backup.
@@ -111,6 +112,7 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 
 	init();
 }
+#endif
 
 /**
 	@brief QETProject::~QETProject
@@ -277,12 +279,13 @@ void QETProject::setFilePath(const QString &filepath)
 	if (filepath == m_file_path) {
 		return;
 	}
-
+#ifdef BUILD_WITHOUT_KF5
+#else
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
 	}
 	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
-
+#endif
 	m_file_path = filepath;
 
 	QFileInfo fi(m_file_path);
@@ -291,9 +294,10 @@ void QETProject::setFilePath(const QString &filepath)
 	}
 
 		//title block variables should be updated after file save as dialog is confirmed, before file is saved.
-	m_project_properties.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
-	m_project_properties.addValue("saveddate-eu", QDate::currentDate().toString("dd-MM-yyyy"));
-	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
+	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
+	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
@@ -860,6 +864,12 @@ QDomDocument QETProject::toXml()
 	QDomDocument xml_doc;
 	QDomElement project_root = xml_doc.createElement("project");
 	project_root.setAttribute("version", QET::version);
+	if (project_title_.isEmpty())
+	{
+		// if project_title_is Empty add title from m_file_path
+		// is for project name in Collectie
+		setTitle(QFileInfo(m_file_path).completeBaseName());
+	}
 	project_root.setAttribute("title", project_title_);
 	xml_doc.appendChild(project_root);
 
@@ -925,12 +935,12 @@ bool QETProject::close()
 */
 QETResult QETProject::write()
 {
-	// this operation requires a filepath
+		// this operation requires a filepath
 	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
 
-	// if the project was opened read-only
-	// and the file is still non-writable, do not save the project
+		// if the project was opened read-only
+		// and the file is still non-writable, do not save the project
 	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 
@@ -939,14 +949,11 @@ QETResult QETProject::write()
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
 		return(error_message);
 
-	//title block variables should be updated after file save dialog is confirmed, before file is saved.
-	m_project_properties.addValue(
-				"saveddate",
-				QDate::currentDate().toString("yyyy-MM-dd"));
-	m_project_properties.addValue(
-				"saveddate-eu",
-				QDate::currentDate().toString("dd-MM-yyyy"));
-	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+		//title block variables should be updated after file save dialog is confirmed, before file is saved.
+	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
+	m_project_properties.addValue("saveddate-us",  QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("saveddate-eu",  QDate::currentDate().toString("dd-MM-yyyy"));
+	m_project_properties.addValue("savedtime",     QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
@@ -1224,7 +1231,6 @@ void QETProject::removeDiagram(Diagram *diagram)
 
 	if (m_diagrams_list.removeAll(diagram))
 	{
-		m_data_base.removeDiagram(diagram);
 		emit(diagramRemoved(this, diagram));
 		diagram->deleteLater();
 	}
@@ -1653,7 +1659,7 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	} else {
 		m_diagrams_list.insert(pos, diagram);
 	}
-	m_data_base.addDiagram(diagram);
+
 	updateDiagramsFolioData();
 }
 
@@ -1663,11 +1669,42 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 */
 NamesList QETProject::namesListForIntegrationCategory()
 {
-	NamesList names;
-
-	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440, 0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020, 0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B };
-	const QChar greek_data[18] = { 0x0395, 0x03b9, 0x03c3, 0x03b7, 0x03b3, 0x03bc, 0x03ad, 0x03bd, 0x03b1, 0x0020, 0x03c3, 0x03c4, 0x03bf, 0x03b9, 0x03c7, 0x03b5, 0x03af, 0x03b1 };
-  const QChar japanese_data[10] = { 0x30A4, 0x30F3, 0x30D0, 0x30FC, 0x30C8, 0x3055, 0x308C, 0x305F, 0x8981, 0x7D20 };
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+	NamesList	names;
+	const QChar russian_data[24] = {
+		0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440,
+		0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020,
+		0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B};
+	const QChar greek_data[18] = {
+		0x0395,
+		0x03b9,
+		0x03c3,
+		0x03b7,
+		0x03b3,
+		0x03bc,
+		0x03ad,
+		0x03bd,
+		0x03b1,
+		0x0020,
+		0x03c3,
+		0x03c4,
+		0x03bf,
+		0x03b9,
+		0x03c7,
+		0x03b5,
+		0x03af,
+		0x03b1};
+	const QChar japanese_data[10] = {
+		0x30A4,
+		0x30F3,
+		0x30D0,
+		0x30FC,
+		0x30C8,
+		0x3055,
+		0x308C,
+		0x305F,
+		0x8981,
+		0x7D20};
 
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
@@ -1684,8 +1721,27 @@ NamesList QETProject::namesListForIntegrationCategory()
 	names.addName("ca", "Elements importats");
 	names.addName("ro", "Elemente importate");
 	names.addName("ja", QString(japanese_data, 10));
-
-	return(names);
+	return (names);
+#else
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
+	qDebug() << "Help code for QT 6 or later";
+	NamesList names;
+	names.addName("fr", "Éléments importés");
+	names.addName("en", "Imported elements");
+	names.addName("de", "Importierte elemente");
+	names.addName("es", "Elementos importados");
+	names.addName("cs", "Zavedené prvky");
+	names.addName("pl", "Elementy importowane");
+	names.addName("pt", "elementos importados");
+	names.addName("it", "Elementi importati");
+	names.addName("nl", "Elementen geïmporteerd");
+	names.addName("hr", "Uvezeni elementi");
+	names.addName("ca", "Elements importats");
+	names.addName("ro", "Elemente importate");
+	return (names);
+#endif
 }
 
 /**
@@ -1694,15 +1750,18 @@ NamesList QETProject::namesListForIntegrationCategory()
 */
 void QETProject::writeBackup()
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 	QDomDocument xml_project(toXml());
 	QtConcurrent::run(
 				QET::writeToFile,xml_project,&m_backup_file,nullptr);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
+#	else
+#		if TODO_LIST
+#			pragma message("@TODO remove code for QT 6 or later")
+#		endif
 	qDebug()<<"Help code for QT 6 or later";
+#	endif
 #endif
 }
 

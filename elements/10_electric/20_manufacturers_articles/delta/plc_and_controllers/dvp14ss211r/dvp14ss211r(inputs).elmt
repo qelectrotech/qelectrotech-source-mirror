@@ -2,6 +2,7 @@
     <uuid uuid="{32dbbd66-13b8-4fc6-a094-1c9a61493c3e}"/>
     <names>
         <name lang="en">DVP14SS211R (inputs)</name>
+        <name lang="cs">DVP14SS211R (vstupy)</name>
     </names>
     <elementInformations/>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

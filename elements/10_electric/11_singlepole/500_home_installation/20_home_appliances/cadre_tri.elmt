@@ -2,6 +2,7 @@
     <uuid uuid="{24d4ba33-98ab-421a-9a73-9ccecc5e224f}"/>
     <names>
         <name lang="fr">Cadre vide tri</name>
+        <name lang="cs">Vývod 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

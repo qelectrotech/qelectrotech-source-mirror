@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,21 +16,22 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpropertieswidget.h"
-#include "element.h"
-#include "elementinfowidget.h"
-#include "masterpropertieswidget.h"
-#include "linksingleelementwidget.h"
-#include "diagram.h"
-#include "diagramposition.h"
-#include "qeticons.h"
-#include "dynamicelementtextitemeditor.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "qetapp.h"
 
-#include <QVBoxLayout>
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qeticons.h"
+#include "dynamicelementtextitemeditor.h"
+#include "elementinfowidget.h"
+#include "linksingleelementwidget.h"
+#include "masterpropertieswidget.h"
+
 #include <QLabel>
 #include <QUndoStack>
+#include <QVBoxLayout>
 
 /**
 	@brief ElementPropertiesWidget::ElementPropertiesWidget

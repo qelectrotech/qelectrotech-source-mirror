@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #ifndef CUSTOM_ELEMENT_PART_H
 #define CUSTOM_ELEMENT_PART_H
 
-#include "qet.h"
+#include "../../qet.h"
 #include "propertiesinterface.h"
 
 class CustomElement;

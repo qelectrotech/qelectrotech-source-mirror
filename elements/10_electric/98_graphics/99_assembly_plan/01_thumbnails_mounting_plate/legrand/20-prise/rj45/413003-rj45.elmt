@@ -2,6 +2,7 @@
     <uuid uuid="{527a6908-c78e-4bf7-a50d-e6430d5f0727}"/>
     <names>
         <name lang="fr">Prise RJ45 modulaire</name>
+        <name lang="cs">Modulová zásuvka RJ45</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="en">timed switch work</name>
         <name lang="fr">Inverseur temporisé travail</name>
+        <name lang="cs">Přepínací kontakt zpožděný přítah</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="state">SW</kindInformation>

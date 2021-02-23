@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,15 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "searchandreplaceworker.h"
-#include "diagram.h"
-#include "changetitleblockcommand.h"
-#include "changeelementinformationcommand.h"
-#include "element.h"
-#include "qetapp.h"
-#include "independenttextitem.h"
-#include "diagramcommands.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/independenttextitem.h"
+#include "../qetinformation.h"
+#include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/changetitleblockcommand.h"
 
 SearchAndReplaceWorker::SearchAndReplaceWorker()
 {
@@ -126,7 +127,7 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 		{
 			DiagramContext old_context;
 			DiagramContext new_context =  old_context = elmt->elementInformations();
-			for (QString key : QETApp::elementInfoKeys())
+			for (QString key : QETInformation::elementInfoKeys())
 			{
 				new_context.addValue(key, applyChange(old_context.value(key).toString(),
 													  m_element_context.value(key).toString()));

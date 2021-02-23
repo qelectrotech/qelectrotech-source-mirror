@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,9 +29,9 @@ class QActionGroup;
 */
 namespace QET {
 	/// QElectroTech version (as string, used to mark projects and elements XML documents)
-	const QString version = "0.80";
+	const QString version = "0.90";
 	/// QElectroTech displayed version
-	const QString displayedVersion = "0.80-DEV";
+	const QString displayedVersion = "0.90-DEV";
 	QString license();
 	
 		//Describe the current state of a graphic item
@@ -174,7 +174,7 @@ namespace QET {
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	qreal round(qreal, qreal);
-	qreal correctAngle(const qreal &);
+	qreal correctAngle(const qreal &, const bool &positive = false);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	bool writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString * error_message= nullptr);
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);

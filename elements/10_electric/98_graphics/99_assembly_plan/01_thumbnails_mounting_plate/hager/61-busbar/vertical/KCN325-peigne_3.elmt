@@ -2,6 +2,7 @@
     <uuid uuid="{fb326e0a-5aac-4cf0-a5df-dd5e15e0445d}"/>
     <names>
         <name lang="fr">KCN325 - Peigne P+N- 3 rangées</name>
+        <name lang="cs">KCN325 - Propojovací lišta 3P</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1">KCN325</elementInformation>

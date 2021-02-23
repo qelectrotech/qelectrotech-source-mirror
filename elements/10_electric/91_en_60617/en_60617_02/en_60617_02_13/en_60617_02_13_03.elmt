@@ -4,6 +4,7 @@
         <name lang="fr">Commande par tirette</name>
         <name lang="es">Accionado por halamiento</name>
         <name lang="de">Betätigung durch Ziehen</name>
+        <name lang="cs">Ovládání tahem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,32 +15,34 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <math.h>
-#include <cassert>
-#include "qetgraphicsitem/conductor.h"
-#include "qetgraphicsitem/conductortextitem.h"
-#include "factory/elementfactory.h"
 #include "diagram.h"
+
+#include "ElementsCollection/elementcollectionhandler.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
+#include "diagramevent/diagrameventinterface.h"
 #include "diagramposition.h"
-#include "exportdialog.h"
-#include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "qetgraphicsitem/qetshapeitem.h"
-#include "terminal.h"
-#include "diagrameventinterface.h"
-#include "qetapp.h"
-#include "elementcollectionhandler.h"
-#include "element.h"
 #include "diagramview.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "undocommand/addelementtextcommand.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetgraphicstableitem.h"
-#include "qetxml.h"
 #include "elementprovider.h"
+#include "exportdialog.h"
+#include "factory/elementfactory.h"
+#include "qetapp.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/terminal.h"
+#include "qetxml.h"
+#include "undocommand/addelementtextcommand.h"
+
+#include <cassert>
+#include <math.h>
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
@@ -1655,6 +1657,8 @@ void Diagram::setTitleBlockTemplate(const QString &template_name)
 
 	if (template_name != current_name)
 		emit(usedTitleBlockTemplateChanged(template_name));
+
+	project()->dataBase()->diagramInfoChanged(this);
 }
 
 /**
@@ -1694,10 +1698,26 @@ void Diagram::invertSelection()
 	if (items().isEmpty()) return;
 
 	blockSignals(true);
-	foreach (QGraphicsItem *item,
-		 items()) item -> setSelected(!item -> isSelected());
+
+		//Get only allowed graphics item
+		//because some item can be deleted between the
+		//call of items() and the use of the item in the second 'for' loop
+		//and crash Qet with a segfault.
+	QVector<QGraphicsItem *> item_list;
+	for (auto item : items())
+	{
+		if (dynamic_cast<QetGraphicsItem *>(item) ||
+			dynamic_cast<DiagramTextItem *>(item) ||
+			dynamic_cast<Conductor *>(item)) {
+			item_list << item;
+		}
+	}
+	for (auto item : qAsConst(item_list)) {
+		item -> setSelected(!item -> isSelected());
+	}
+
 	blockSignals(false);
-	emit(selectionChanged());
+	emit selectionChanged();
 }
 
 /**

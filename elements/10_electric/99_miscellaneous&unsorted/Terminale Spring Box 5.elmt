@@ -4,6 +4,8 @@
         <name lang="fr">Borne automatique à ressorts 5 entrées (Wago)</name>
         <name lang="it">Terminale Spring Box 5</name>
         <name lang="en">Terminale Spring Box 5</name>
+        <name lang="de">Verbindungsklemme 5-polig</name>
+        <name lang="cs">Pružinová svorka 5 vodičů</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation"></elementInformation>

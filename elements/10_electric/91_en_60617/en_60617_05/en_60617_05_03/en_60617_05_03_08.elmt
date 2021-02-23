@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Diode unitunnel</name>
         <name lang="de">Unitunnel-Diode</name>
+        <name lang="cs">Inverzní dioda( jednotunelová)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

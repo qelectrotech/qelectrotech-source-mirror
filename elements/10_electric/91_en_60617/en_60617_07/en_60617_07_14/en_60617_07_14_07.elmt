@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Anlasser mit Spartransformator</name>
         <name lang="fr">Démarreur par autotransformateur</name>
+        <name lang="cs">Autotransformátorový spouštěč</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

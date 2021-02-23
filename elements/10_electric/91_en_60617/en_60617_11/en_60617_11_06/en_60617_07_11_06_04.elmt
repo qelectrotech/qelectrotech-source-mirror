@@ -4,6 +4,7 @@
         <name lang="de">Verstärker mit Rückwärtskanal </name>
         <name lang="fr">Amplificateur pour réseau de distribution avec
 voie de retour</name>
+        <name lang="cs">Zesilovač se zpětným kanálem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

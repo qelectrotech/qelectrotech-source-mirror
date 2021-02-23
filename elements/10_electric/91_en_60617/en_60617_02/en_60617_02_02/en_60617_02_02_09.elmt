@@ -4,6 +4,7 @@
         <name lang="de">Wechselstrom, verschiedene Frequenzbereiche</name>
         <name lang="fr">Courant alternatif, différentes bandes de fréquences</name>
         <name lang="es">Corriente alterna monofásica</name>
+        <name lang="cs">Střídavý proud - nízké kmitočty</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,24 +16,26 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
-#include "diagram.h"
-#include "conductor.h"
-#include "diagramcommands.h"
-#include <utility>
-#include "elementprovider.h"
-#include "diagramposition.h"
-#include "terminal.h"
-#include "terminaldata.h"
-#include "PropertiesEditor/propertieseditordialog.h"
-#include "elementpropertieswidget.h"
-#include "numerotationcontextcommands.h"
-#include "diagramcontext.h"
-#include "changeelementinformationcommand.h"
+
+#include "../PropertiesEditor/propertieseditordialog.h"
+#include "../autoNum/numerotationcontextcommands.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../diagramcontext.h"
+#include "../diagramposition.h"
+#include "../elementprovider.h"
+#include "../factory/elementpicturefactory.h"
+#include "../properties/terminaldata.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../ui/elementpropertieswidget.h"
+#include "../undocommand/changeelementinformationcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
-#include "elementpicturefactory.h"
 #include "iostream"
+
 #include <QDomElement>
+#include <utility>
 
 class ElementXmlRetroCompatibility
 {
@@ -212,6 +214,16 @@ void Element::paint(
 		drawHighlight(painter, options);
 	}
 
+		//Set default pen and brush to QPainter
+		//for avoid a strange bug when the Qt theme is a "dark" theme.
+		//Some part of an element are gray or white instead of black.
+		//This bug seems append only  when the QPainter use drawPicture method.
+		//See bug 175. https://qelectrotech.org/bugtracker/view.php?id=175
+	painter->save();
+	QPen pen;
+	QBrush brush;
+	painter->setPen(pen);
+	painter->setBrush(brush);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 	if (options && options -> levelOfDetail < 1.0)
 #else
@@ -225,6 +237,8 @@ void Element::paint(
 	} else {
 		painter->drawPicture(0, 0, m_picture);
 	}
+
+	painter->restore(); //Restor the QPainter after use drawPicture
 
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
@@ -451,8 +465,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		m_state = QET::GIOK;
 		return(false);
 	}
-		//Extract the names
-	m_names.fromXml(xml_def_elmt);
+
+	m_data.fromXml(xml_def_elmt);
 	setToolTip(name());
 
 		//load kind informations
@@ -460,7 +474,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 			xml_def_elmt.firstChildElement("kindInformations"),
 			"kindInformation");
 		//load element information
-	m_element_informations.fromXml(
+	m_data.m_informations.fromXml(
 			xml_def_elmt.firstChildElement("elementInformations"),
 			"elementInformation");
 
@@ -878,7 +892,7 @@ bool Element::fromXml(
 					//when element text with tagg "label" is not null, but the element information "label" is.
 				if((deti->textFrom() == DynamicElementTextItem::ElementInfo)
 						&& (deti->infoName() == "label"))
-					m_element_informations.addValue(
+					m_data.m_informations.addValue(
 								"label",
 								dom_input.attribute("text"));
 
@@ -975,8 +989,8 @@ bool Element::fromXml(
 	}
 		//retrocompatibility with older version
 	if(dc.value("label").toString().isEmpty() &&
-	   !m_element_informations.value("label").toString().isEmpty())
-		dc.addValue("label", m_element_informations.value("label"));
+	   !m_data.m_informations.value("label").toString().isEmpty())
+		dc.addValue("label", m_data.m_informations.value("label"));
 
 	//We must to block the update of the alignment when load the information
 	//otherwise the pos of the text will not be the same as it was at save time.
@@ -1002,15 +1016,15 @@ bool Element::fromXml(
 	{
 		//#2 the element information must have label not empty and visible
 		//and a least comment or location not empty and visible
-		QString label = m_element_informations.value(
+		QString label = m_data.m_informations.value(
 					"label").toString();
-		QString comment = m_element_informations.value(
+		QString comment = m_data.m_informations.value(
 					"comment").toString();
-		QString location = m_element_informations.value(
+		QString location = m_data.m_informations.value(
 					"location").toString();
-		bool la = m_element_informations.keyMustShow("label");
-		bool c = m_element_informations.keyMustShow("comment");
-		bool lo = m_element_informations.keyMustShow("location");
+		bool la = m_data.m_informations.keyMustShow("label");
+		bool c = m_data.m_informations.keyMustShow("comment");
+		bool lo = m_data.m_informations.keyMustShow("location");
 
 		if((m_link_type != Master) ||
 		   ((m_link_type == Master) &&
@@ -1030,12 +1044,13 @@ bool Element::fromXml(
 					if(deti->textFrom()== DynamicElementTextItem::ElementInfo
 							&& deti->infoName() == "label")
 					{
+						qDebug() << "see 'Mod overlapping comparisons' in git";
 						qreal rotation = deti->rotation();
 
 							//Create the comment item
 						DynamicElementTextItem *comment_text = nullptr;
-						if (m_link_type !=PreviousReport
-								|| m_link_type !=NextReport)
+						if (m_link_type != PreviousReport
+							&& m_link_type != NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
@@ -1056,7 +1071,8 @@ bool Element::fromXml(
 						}
 						//create the location item
 						DynamicElementTextItem *location_text = nullptr;
-						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						if (m_link_type != PreviousReport
+							&& m_link_type != NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
@@ -1076,9 +1092,8 @@ bool Element::fromXml(
 						}
 
 						QPointF pos = deti->pos();
-                        // TODO: check
-						if (m_link_type !=PreviousReport
-							|| m_link_type !=NextReport)
+						if (m_link_type != PreviousReport
+							&& m_link_type != NextReport)
 						{
 							m_state = QET::GIOK;
 							return(true);
@@ -1242,10 +1257,10 @@ QDomElement Element::toXml(
 	}
 
 	//save information of this element
-	if (! m_element_informations.keys().isEmpty()) {
+	if (! m_data.m_informations.keys().isEmpty()) {
 		QDomElement infos =
 				document.createElement("elementInformations");
-		m_element_informations.toXml(infos, "elementInformation");
+		m_data.m_informations.toXml(infos, "elementInformation");
 		element.appendChild(infos);
 	}
 
@@ -1589,14 +1604,14 @@ QString Element::linkTypeToString() const
 */
 void Element::setElementInformations(DiagramContext dc)
 {
-	if (m_element_informations == dc) {
+	if (m_data.m_informations == dc) {
 		return;
 	}
 
-	DiagramContext old_info = m_element_informations;
-	m_element_informations = dc;
-	m_element_informations.addValue("label", actualLabel()); //Update the label if there is a formula
-	emit elementInfoChange(old_info, m_element_informations);
+	DiagramContext old_info = m_data.m_informations;
+	m_data.m_informations = dc;
+	m_data.m_informations.addValue("label", actualLabel()); //Update the label if there is a formula
+	emit elementInfoChange(old_info, m_data.m_informations);
 }
 
 /**
@@ -1710,7 +1725,7 @@ void Element::setUpFormula(bool code_letter)
 				->project()
 				->elementAutoNumCurrentFormula();
 
-		m_element_informations.addValue("formula", formula);
+		m_data.m_informations.addValue("formula", formula);
 
 		QString element_currentAutoNum = diagram()
 				->project()
@@ -1731,9 +1746,9 @@ void Element::setUpFormula(bool code_letter)
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
-			DiagramContext dc = m_element_informations;
-			m_element_informations.addValue("label", actualLabel());
-			emit elementInfoChange(dc, m_element_informations);
+			DiagramContext dc = m_data.m_informations;
+			m_data.m_informations.addValue("label", actualLabel());
+			emit elementInfoChange(dc, m_data.m_informations);
 		}
 	}
 }
@@ -1786,11 +1801,11 @@ void Element::freezeNewAddedElement()
 */
 QString Element::actualLabel()
 {
-	if (m_element_informations.value("formula").toString().isEmpty()) {
-		return m_element_informations.value("label").toString();
+	if (m_data.m_informations.value("formula").toString().isEmpty()) {
+		return m_data.m_informations.value("label").toString();
 	} else {
 	return autonum::AssignVariables::formulaToLabel(
-				m_element_informations.value(
+				m_data.m_informations.value(
 					"formula").toString(),
 				m_autoNum_seq,
 				diagram(),
@@ -1802,9 +1817,8 @@ QString Element::actualLabel()
 	@brief Element::name
 	@return the human name of this element
 */
-QString Element::name() const
-{
-	return m_names.name(m_location.baseName());
+QString Element::name() const {
+	return m_data.m_names_list.name(m_location.baseName());
 }
 
 ElementsLocation Element::location() const

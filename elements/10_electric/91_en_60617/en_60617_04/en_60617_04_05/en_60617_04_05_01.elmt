@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Magnetkern mit fünf Wicklungen</name>
         <name lang="fr">Tore de ferrite avec cinq enroulements</name>
+        <name lang="cs">Feritové jádro s pěti vinutími</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,6 +1,7 @@
 <definition width="130" version="0.4" hotspot_x="64" hotspot_y="86" height="190" link_type="simple" type="element">
     <names>
         <name lang="fr">GCE-X400CT</name>
+        <name lang="cs">GCE-X400CT</name>
     </names>
     <informations></informations>
     <description>

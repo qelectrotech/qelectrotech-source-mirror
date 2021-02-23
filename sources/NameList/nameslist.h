@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,8 +17,9 @@
 */
 #ifndef NAMES_LIST_H
 #define NAMES_LIST_H
+#include "../pugixml/pugixml.hpp"
+
 #include <QtXml>
-#include "pugixml.hpp"
 /**
 	Cette classe represente une liste de noms, utilisee
 	par les elements et categories pour embarquer un meme nom en plusieurs

@@ -2,6 +2,7 @@
     <uuid uuid="{464550d9-0cb5-45c0-8f16-8a8409d96296}"/>
     <names>
         <name lang="fr">RF pulse</name>
+        <name lang="cs">RF pulse</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">GCE Electronics</elementInformation>

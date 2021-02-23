@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 #define PANELAPPAREILS_H
 
 #include "genericpanel.h"
-#include "templatelocation.h"
+#include "titleblock/templatelocation.h"
 
 class QETProject;
 class Diagram;

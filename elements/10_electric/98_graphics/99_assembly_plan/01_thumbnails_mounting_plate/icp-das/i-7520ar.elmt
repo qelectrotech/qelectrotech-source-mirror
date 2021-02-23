@@ -2,6 +2,7 @@
     <uuid uuid="{52f7aa8a-a3fa-40bd-8dd7-e42def3a1548}"/>
     <names>
         <name lang="en">i-7520AR - Isolated RS-232 to RS-422/485 Converter</name>
+        <name lang="cs">i-7520AR - Izolovaný převodník RS-232 - RS-422/485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7520AR</elementInformation>

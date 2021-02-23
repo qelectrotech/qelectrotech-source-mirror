@@ -2,6 +2,7 @@
     <uuid uuid="{50a29bd9-83e6-43c9-bd42-3b2db70d0436}"/>
     <names>
         <name lang="fr">SCHNEIDER ATV630U15N4</name>
+        <name lang="cs">SCHNEIDER ATV630U15N4</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">coil</kindInformation>

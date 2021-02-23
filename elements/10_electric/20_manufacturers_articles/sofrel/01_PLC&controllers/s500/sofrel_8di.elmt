@@ -5,6 +5,7 @@
         <name lang="it">Scheda 8Di</name>
         <name lang="fr">Carte 8 DI</name>
         <name lang="es">Tarjeta 8DI</name>
+        <name lang="cs">Karta 8DI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description">Carte d'entrées digitale</elementInformation>

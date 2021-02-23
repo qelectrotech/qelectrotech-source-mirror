@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductortextitem.h"
-#include "conductor.h"
-#include "diagramcommands.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetgraphicsitem/conductor.h"
 
 /**
 	Constructeur

@@ -1,11 +1,28 @@
+/*
+	Copyright 2006-2021 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #ifndef TERMINALDATA_H
 #define TERMINALDATA_H
 
+#include "../qet.h"
 #include "propertiesinterface.h"
-#include "qet.h"
 
-#include <QUuid>
 #include <QPointF>
+#include <QUuid>
 
 class QGraphicsObject;
 
@@ -18,10 +35,19 @@ class QGraphicsObject;
 */
 class TerminalData : public PropertiesInterface
 {
+	Q_GADGET
+
 	public:
+		enum Type {
+			Generic,
+			Inner,
+			Outer
+		};
+		Q_ENUM(Type)
+
 		TerminalData();
 		TerminalData(QGraphicsObject* parent);
-		~TerminalData();
+		~TerminalData() override;
 
 		void init();
 
@@ -35,6 +61,11 @@ class TerminalData : public PropertiesInterface
 
 	static bool valideXml(const QDomElement &xml_element);
 
+		static QString typeToString(TerminalData::Type type);
+		static TerminalData::Type typeFromString(const QString &string);
+
+	// must be public, because this class is a private member
+	// of PartTerminal/Terminal and they must access this data
 	public:
 		/**
 			@brief m_orientation
@@ -80,6 +111,7 @@ class TerminalData : public PropertiesInterface
 			PartTerminal and Terminal have access to it.
 		*/
 	QPointF m_pos{0,0};
+		TerminalData::Type m_type = TerminalData::Generic;
 	private:
 		QGraphicsObject* q{nullptr};
 };

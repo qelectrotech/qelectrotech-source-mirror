@@ -3,6 +3,7 @@
     <names>
         <name lang="it">Contattore ITC 2P 25A</name>
         <name lang="fr">Contacteur ITC 2P 25A</name>
+        <name lang="cs">Stykač ITC 2P 25A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

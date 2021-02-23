@@ -2,6 +2,7 @@
     <uuid uuid="{e7b3b427-ee48-4b9e-b025-ea02208ad654}"/>
     <names>
         <name lang="fr">Vide-Cave</name>
+        <name lang="cs">Vide-Cave</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

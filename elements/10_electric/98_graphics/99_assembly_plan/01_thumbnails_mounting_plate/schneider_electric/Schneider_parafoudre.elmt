@@ -2,6 +2,7 @@
     <uuid uuid="{73c7f878-40cb-4c12-9550-301ad6214138}"/>
     <names>
         <name lang="fr">parafoudre</name>
+        <name lang="cs">Svodič přepětí</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

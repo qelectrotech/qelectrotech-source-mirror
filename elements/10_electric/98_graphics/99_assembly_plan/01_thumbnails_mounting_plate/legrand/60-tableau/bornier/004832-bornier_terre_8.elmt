@@ -2,6 +2,7 @@
     <uuid uuid="{a0cf712e-5401-46d7-b9c8-7a9224b4358e}"/>
     <names>
         <name lang="fr">004832  - Bornier phase 8 x 1,5-16mm²</name>
+        <name lang="cs">004832  - Svorkovnice PE 8 x 1,5-16mm²</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

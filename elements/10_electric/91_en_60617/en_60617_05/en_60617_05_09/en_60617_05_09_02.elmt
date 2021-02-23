@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Réflecteur</name>
         <name lang="de">Reflektor</name>
+        <name lang="cs">Reflexní elektroda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Transistor IGBT de type à déplétion, canal P</name>
         <name lang="de">IGBT-Transistor, Verarmungstyp, P-Kanal</name>
+        <name lang="cs">IGBT-Tranzistor, ochuzovací typ, kanál P</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

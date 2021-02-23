@@ -3,6 +3,8 @@
     <names>
         <name lang="fr">Interrupteur sectionneur TETRA</name>
         <name lang="es">Seccionador 3P mando de palanca</name>
+        <name lang="cs">Odpínač 4P</name>
+        <name lang="hu">Terheléskapcsoló karos 4 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

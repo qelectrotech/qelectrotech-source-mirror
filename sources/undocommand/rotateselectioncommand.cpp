@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,16 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "rotateselectioncommand.h"
-#include "element.h"
-#include "conductortextitem.h"
-#include "independenttextitem.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "diagramimageitem.h"
-#include "diagram.h"
-#include "conductor.h"
-#include "qet.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qet.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/independenttextitem.h"
 
 #include <QGraphicsItem>
 

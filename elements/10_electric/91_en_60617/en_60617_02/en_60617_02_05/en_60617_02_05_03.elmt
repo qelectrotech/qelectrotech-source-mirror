@@ -4,6 +4,7 @@
         <name lang="fr">Propagations non simultanées dans les deux sens Emission et réception alternées</name>
         <name lang="es">Propagación no simultánea en ambas direcciones Transmisión y recepción alternativas</name>
         <name lang="de">Ausbreitung in beide Richtungen, nicht gleichzeitig abwechselnd Senden und Empfangen (halbduplex)</name>
+        <name lang="cs">Nesoučasné šíření oběma směry, střídavé vysílání a příjem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

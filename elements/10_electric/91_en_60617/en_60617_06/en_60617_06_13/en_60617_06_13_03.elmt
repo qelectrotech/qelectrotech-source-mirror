@@ -6,6 +6,8 @@ Sekundärwicklung auf jedem Kern</name>
         <name lang="fr">Transformateur de courant, à deux noyaux
 avec un enroulement secondaire sur chaque
 noyau</name>
+        <name lang="cs">Transformátor proudu se dvěma jádry a
+s jedním sekundárním vinutím na každém jádru</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

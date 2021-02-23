@@ -5,13 +5,14 @@
         <name lang="nl">driefasen + aardenul</name>
         <name lang="el">Τριφασικό + PEN</name>
         <name lang="de">Drehstrom + PEN</name>
-        <name lang="cs">3 fáze + PEN</name>
+        <name lang="cs">Přípojnice 3f+PEN</name>
         <name lang="pl">Linia trójfazowa (PEN)</name>
         <name lang="it">Sorgente tripolare + PEN</name>
         <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
         <name lang="en">Three-pole source + PEN</name>
         <name lang="fr">Source tripolaire + PEN</name>
         <name lang="ru">Трёхполюсный + PEN</name>
+	<name lang="hu">3F + PEN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

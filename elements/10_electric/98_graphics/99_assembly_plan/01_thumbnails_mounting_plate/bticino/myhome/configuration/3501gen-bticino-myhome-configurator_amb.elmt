@@ -3,6 +3,7 @@
     <names>
         <name lang="en">3501/AMB - Configurator AMB</name>
         <name lang="fr">3501/AMB - Configurateur AMB</name>
+        <name lang="cs">3501/AMB - Konfigurátor AMB</name>
     </names>
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>

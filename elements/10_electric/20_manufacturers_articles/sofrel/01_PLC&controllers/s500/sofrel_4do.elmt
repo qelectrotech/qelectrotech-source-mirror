@@ -5,6 +5,7 @@
         <name lang="it">Scheda 4DO</name>
         <name lang="en">Board 4DO</name>
         <name lang="es">Tarjeta 4DO</name>
+        <name lang="cs">Karta 4DO</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>

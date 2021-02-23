@@ -5,6 +5,8 @@
         <name lang="es">Accionado por un dispositivo electromagnético</name>
         <name lang="de">ausgelöst durch elektromagnetischen Effekt
 z.B.: Überstromschutz</name>
+        <name lang="cs">Uvádění do činnosti elektromagnetickým ústrojím,
+např v nadproudové ochraně</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

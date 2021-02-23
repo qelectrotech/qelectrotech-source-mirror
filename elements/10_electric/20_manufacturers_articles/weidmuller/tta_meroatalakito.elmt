@@ -2,7 +2,9 @@
     <uuid uuid="{058cd219-5795-41bb-a263-1cfb22b9fe9b}"/>
     <names>
         <name lang="fr">TTA Weidmüller</name>
+        <name lang="de">TTA Signalwandler/-trenner</name>
         <name lang="hu">TTA Weidmüller</name>
+        <name lang="cs">TTA Weidmüller</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

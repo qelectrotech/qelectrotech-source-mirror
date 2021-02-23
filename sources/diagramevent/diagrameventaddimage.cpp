@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,9 +17,10 @@
 */
 
 #include "diagrameventaddimage.h"
-#include "diagram.h"
-#include "diagramimageitem.h"
-#include "diagramcommands.h"
+
+#include "../diagram.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
 
 /**
 	@brief DiagramEventAddImage::DiagramEventAddImage
@@ -61,7 +62,7 @@ void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		QPointF pos = event->scenePos();
 		pos.rx() -= m_image->boundingRect().width()/2;
 		pos.ry() -= m_image->boundingRect().height()/2;
-		m_diagram -> undoStack().push (new AddItemCommand<DiagramImageItem *>(m_image, m_diagram, pos));
+		m_diagram -> undoStack().push (new AddGraphicsObjectCommand(m_image, m_diagram, pos));
 		
 		for (QGraphicsView *view : m_diagram->views()) {
 			view->setContextMenuPolicy((Qt::DefaultContextMenu));
@@ -87,7 +88,7 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!m_image || event->buttons() != Qt::NoButton) {
 		return;
-	};
+	}
 	
 	QPointF pos = event->scenePos();
 	

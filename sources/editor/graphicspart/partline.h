@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,8 @@
 #ifndef PART_LINE_H
 #define PART_LINE_H
 
+#include "../../qet.h"
 #include "customelementgraphicpart.h"
-#include "qet.h"
 
 class QPropertyUndoCommand;
 class QetGraphicsHandlerItem;

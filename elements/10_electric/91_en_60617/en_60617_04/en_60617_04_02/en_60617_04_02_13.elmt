@@ -5,6 +5,8 @@
 Elektrodenabstand</name>
         <name lang="fr">Condensateur régeable à double armature
 mobile</name>
+        <name lang="cs">Kondenzátor s rozděleným statorem,
+nastavitelný</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

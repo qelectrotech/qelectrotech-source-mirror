@@ -2,6 +2,7 @@
     <uuid uuid="{b45a41e2-0d48-4c80-b199-5396f92d7dda}"/>
     <names>
         <name lang="fr">VMC</name>
+        <name lang="cs">Ventilátor</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

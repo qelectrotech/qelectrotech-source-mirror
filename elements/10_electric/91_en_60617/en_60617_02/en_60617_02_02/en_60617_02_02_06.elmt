@@ -5,6 +5,7 @@
         <name lang="de">Wechselstrom und -Spannung </name>
         <name lang="en">Alternating current</name>
         <name lang="es">04- Corriente alterna 100 a 600khz</name>
+        <name lang="cs">04- Střídavý proud 100 až 600kHz</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{4fff04fd-8f3f-4ea0-b00c-9fc9f9a6f6e5}"/>
     <names>
         <name lang="fr">SNS216-Prise de courant modulaire 16A 2P+T connexion SanVis</name>
+        <name lang="cs">SNS216-Modulární zásuvka 16A 2P + PE SanVis připojení</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

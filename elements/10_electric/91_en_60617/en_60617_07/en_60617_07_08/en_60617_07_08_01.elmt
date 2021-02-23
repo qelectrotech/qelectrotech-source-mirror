@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Interrupteur de position, contact à fermeture</name>
         <name lang="de">Endschalter, Schließer</name>
+        <name lang="cs">Polohový spínač, zapínací kontakt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

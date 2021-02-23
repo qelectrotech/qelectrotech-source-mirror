@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Näherungssensor</name>
         <name lang="fr">Capteur sensible à une proximité</name>
+        <name lang="cs">Čidlo přiblížení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

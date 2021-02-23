@@ -7,6 +7,9 @@ Diode Zener</name>
         <name lang="de">Durchbruch-Diode, unidirektional
 Spannungsbegrenzer-Diode
 Z-Diode</name>
+        <name lang="cs">Dioda s průrazovým jevem
+Napěťová regulační dioda
+Zenerova dioda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

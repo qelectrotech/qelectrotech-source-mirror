@@ -4,12 +4,13 @@
         <name lang="el">Μπάρα γείωσης</name>
         <name lang="es">Barra de tierra</name>
         <name lang="de">Erdtrennklemme</name>
-        <name lang="cs">Zemnící tyč</name>
+        <name lang="cs">Uzemňovací svorka</name>
         <name lang="pl">Złącze gniazdowe dwuprzerwowe</name>
         <name lang="it">Barra di terra</name>
         <name lang="ar">مشبك أرضي</name>
         <name lang="en">Ground bar</name>
         <name lang="fr">Barette de terre</name>
+        <name lang="hu">Földelősín</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

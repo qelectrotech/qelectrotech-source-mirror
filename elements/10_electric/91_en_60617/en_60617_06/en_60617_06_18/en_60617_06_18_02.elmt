@@ -5,6 +5,8 @@
 chaleur par rayonnement non ionisant</name>
         <name lang="de">Thermoelektrischer Generator, betrieben durch
 nichtionisierende Strahlungswärme</name>
+        <name lang="cs">Termoelektrický generátor s neionizujícím
+radiačním tepelným zdrojem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

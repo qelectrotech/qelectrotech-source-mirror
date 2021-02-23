@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Électrode de déviation radiale</name>
         <name lang="de">radiale Ablenkelektrode</name>
+        <name lang="cs">Mřížka se sekundární emisí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,11 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "replaceelementdialog.h"
-#include "ui_replaceelementdialog.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
+#include "../../ui/elementinfopartwidget.h"
+#include "../searchandreplaceworker.h"
 #include "replaceelementdialog.h"
-#include "elementinfopartwidget.h"
-#include "qetapp.h"
-#include "searchandreplaceworker.h"
+#include "ui_replaceelementdialog.h"
 
 #include <QAbstractButton>
 
@@ -72,9 +74,9 @@ void ReplaceElementDialog::buildWidget()
 		this->done(ui->m_button_box->buttonRole(button_));
 	});
 	
-	for (QString str : QETApp::elementInfoKeys())
+	for (QString str : QETInformation::elementInfoKeys())
 	{
-		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
+		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		eipw->setEraseTextVisible(true);
 		eipw->setPlaceHolderText(tr("Ne pas modifier"));
 		ui->m_scroll_layout->addWidget(eipw);

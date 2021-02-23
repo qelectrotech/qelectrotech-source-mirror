@@ -2,6 +2,7 @@
     <uuid uuid="{81f35f08-b042-4370-9311-6dddaf71f787}"/>
     <names>
         <name lang="en">F411/1N</name>
+        <name lang="cs">Výstupní jednotka 1 relé F411/1N</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Actuator</elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,10 +18,10 @@
 #ifndef SEARCHANDREPLACEWORKER_H
 #define SEARCHANDREPLACEWORKER_H
 
-#include <QDate>
+#include "../conductorproperties.h"
+#include "../titleblockproperties.h"
 
-#include "titleblockproperties.h"
-#include "conductorproperties.h"
+#include <QDate>
 
 class Diagram;
 class Element;

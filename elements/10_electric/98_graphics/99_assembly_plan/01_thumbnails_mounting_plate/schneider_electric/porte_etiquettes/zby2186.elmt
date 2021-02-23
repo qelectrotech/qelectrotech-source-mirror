@@ -2,6 +2,7 @@
     <uuid uuid="{a8dd7736-4557-472c-9bd4-44a4ba59db02}"/>
     <names>
         <name lang="fr">Porte étiquette I-0-II</name>
+        <name lang="cs">Štítek ovladače I-0-II</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Porte étiquette I-0-II</elementInformation>

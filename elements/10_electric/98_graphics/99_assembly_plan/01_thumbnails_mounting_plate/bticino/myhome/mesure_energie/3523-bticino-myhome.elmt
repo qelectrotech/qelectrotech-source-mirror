@@ -7,6 +7,7 @@
         <name lang="it">3523 - Toroide</name>
         <name lang="es">3523 - Toroide</name>
         <name lang="de">3523 - Toroid</name>
+        <name lang="cs">3523 - Toroidní trafo pro F520</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Toroid</elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,11 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementstreeview.h"
+
+#include "../factory/elementfactory.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qeticons.h"
 #include "elementcollectionitem.h"
 #include "elementslocation.h"
-#include "elementfactory.h"
-#include "qeticons.h"
-#include "element.h"
 
 #include <QDrag>
 #include <QStandardItemModel>
@@ -69,10 +70,9 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 */
 void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 {
-	if (!location.exist())
-		return;
+	if (! location.exist()) return;
 
-	QDrag *drag = new QDrag(this);
+	QScopedPointer<QDrag> drag(new QDrag(this));
 
 	QString location_str = location.toString();
 	QMimeData *mime_data = new QMimeData();
@@ -91,14 +91,12 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 
 			//Build the element for set the pixmap of the QDrag
 		int elmt_creation_state;
-		Element *temp_elmt = ElementFactory::Instance()->createElement(
-					location, nullptr,
-					&elmt_creation_state);
-		if (elmt_creation_state)
-		{
-			delete temp_elmt;
-			return;
-		}
+		QScopedPointer<Element> temp_elmt(
+		    ElementFactory::Instance()->createElement(
+			location,
+			nullptr,
+			&elmt_creation_state));
+		if (elmt_creation_state) { return; }
 
 		QPixmap elmt_pixmap(temp_elmt->pixmap());
 		QPoint elmt_hotspot(temp_elmt->hotspot());
@@ -123,9 +121,6 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 
 		drag->setPixmap(elmt_pixmap);
 		drag->setHotSpot(elmt_hotspot);
-
-
-		delete temp_elmt;
 	}
 
 	drag->setMimeData(mime_data);

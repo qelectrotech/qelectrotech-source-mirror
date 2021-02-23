@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "masterpropertieswidget.h"
+
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../elementprovider.h"
+#include "../qetgraphicsitem/element.h"
+#include "../undocommand/linkelementcommand.h"
 #include "ui_masterpropertieswidget.h"
+
 #include <QListWidgetItem>
-#include <diagramposition.h>
-#include <elementprovider.h>
-#include <diagram.h>
-#include <element.h>
-#include <linkelementcommand.h>
 
 /**
 	@brief MasterPropertiesWidget::MasterPropertiesWidget

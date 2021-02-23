@@ -14,6 +14,7 @@
         <name lang="es">Masa</name>
         <name lang="ar">هيكل معدني</name>
         <name lang="fr">Masse</name>
+	<name lang="hu">Test</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

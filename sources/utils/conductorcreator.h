@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,12 +23,10 @@ class QPolygonF;
 class Terminal;
 class Conductor;
 
-#include "conductorproperties.h"
-#include "conductorproperties.h"
-#include "assignvariables.h"
+#include "../autoNum/assignvariables.h"
+#include "../conductorproperties.h"
 
 #include <QList>
-
 
 /**
 	@brief The ConductorCreator class

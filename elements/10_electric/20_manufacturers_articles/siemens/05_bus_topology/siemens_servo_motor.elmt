@@ -2,6 +2,7 @@
     <uuid uuid="{1ff44b4b-09e4-456a-92fa-2936eabb59d2}"/>
     <names>
         <name lang="en">Siemens Servo Motor</name>
+        <name lang="cs">Siemens Servo Motor</name>
     </names>
     <informations/>
     <description>

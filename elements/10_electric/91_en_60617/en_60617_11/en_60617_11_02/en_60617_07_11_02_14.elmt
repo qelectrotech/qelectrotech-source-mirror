@@ -6,6 +6,7 @@ Magnetohydrodynamisches Kraftwerk
 (Plasmakraftwerk) (in Betrieb oder undefiniert)</name>
         <name lang="fr">Centrale à plasma,
 Centrale MHD (en service ou indéterminé)</name>
+        <name lang="cs">Plazmová elektrárna ( v provozu)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

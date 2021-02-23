@@ -4,6 +4,7 @@
         <name lang="de">bidirektionale Kraft bidirektionale geradlinige Bewegung</name>
         <name lang="es">Esfuerzo bidireccional Movimiento rectilíneo bidireccional</name>
         <name lang="fr">Effort bidirectionnel Mouvement rectilinéaire bidirectionnel</name>
+        <name lang="cs">Obousměrná síla, obousměrný přímočarý pohyb</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

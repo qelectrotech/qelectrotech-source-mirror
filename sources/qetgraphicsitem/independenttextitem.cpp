@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "independenttextitem.h"
-#include "qet.h"
-#include "diagram.h"
-#include "diagramcommands.h"
-#include "qetapp.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qet.h"
+#include "../qetapp.h"
 
 #include <QDomElement>
 #include <QSettings>

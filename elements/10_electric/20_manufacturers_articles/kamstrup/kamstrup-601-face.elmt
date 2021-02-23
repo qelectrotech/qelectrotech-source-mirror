@@ -2,6 +2,7 @@
     <uuid uuid="{a147850e-2662-4e2d-84b4-94b6e21e38bb}"/>
     <names>
         <name lang="fr">Kamstrup 601</name>
+        <name lang="cs">Kamstrup 601</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

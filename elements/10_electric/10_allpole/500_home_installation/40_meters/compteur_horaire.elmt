@@ -8,7 +8,7 @@
         <name lang="en">Hour counter</name>
         <name lang="de">Betriebsstundenzähler</name>
         <name lang="pl">Licznik godzin</name>
-        <name lang="cs">Počítadlo hodin</name>
+        <name lang="cs">Počítadlo provozních hodin</name>
         <name lang="it">Conta tempo</name>
     </names>
     <elementInformations/>

@@ -2,6 +2,7 @@
     <uuid uuid="{614c2160-333c-4a4f-8a86-d66c5f7475e1}"/>
     <names>
         <name lang="fr">Plaque de cuisson</name>
+        <name lang="cs">Vařič</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

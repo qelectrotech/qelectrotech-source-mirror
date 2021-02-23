@@ -5,6 +5,7 @@
 Diac</name>
         <name lang="de">Thyristordiode, bidirektional
 Diac</name>
+        <name lang="cs">Obousměrný diodový tyristor, diak</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

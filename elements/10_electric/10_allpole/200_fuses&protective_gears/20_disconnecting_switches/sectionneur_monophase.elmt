@@ -10,8 +10,9 @@
         <name lang="ru">Разъеденитель</name>
         <name lang="nl">Lastschakelaar</name>
         <name lang="pt">Seccionador</name>
-        <name lang="cs">Odpojovač</name>
+        <name lang="cs">Pojistkový odpínač 2P</name>
         <name lang="pl">Odłącznik</name>
+        <name lang="hu">Szakaszoló kapcsoló 2 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

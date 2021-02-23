@@ -2,6 +2,7 @@
     <uuid uuid="{b15044e7-30ff-425f-ac08-10eb50eb1c73}"/>
     <names>
         <name lang="fr">Prise 2 P+T 230 V</name>
+        <name lang="cs">Zásuvka 2f+PEN 230 V</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

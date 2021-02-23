@@ -2,6 +2,7 @@
     <uuid uuid="{873c402a-e5e6-4c32-8035-e410c911636b}"/>
     <names>
         <name lang="fr">Sectio Fusibles TRI</name>
+        <name lang="cs">Sekce pojistek TRI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>

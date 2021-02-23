@@ -5,6 +5,7 @@
 Transformator</name>
         <name lang="fr">Lampe de signalisation alimentée par
 transformateur incorporé</name>
+        <name lang="cs">Kontrolka s vestavěným transformátorem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

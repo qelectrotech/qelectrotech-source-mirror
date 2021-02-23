@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,11 @@
 #ifndef ELEMENTPROPERTIESEDITORWIDGET_H
 #define ELEMENTPROPERTIESEDITORWIDGET_H
 
-#include <QDialog>
+#include "../../diagramcontext.h"
+#include "../../properties/elementdata.h"
+
 #include <QAbstractButton>
-#include "diagramcontext.h"
+#include <QDialog>
 
 namespace Ui {
 	class ElementPropertiesEditorWidget;
@@ -37,12 +39,13 @@ class ElementPropertiesEditorWidget : public QDialog
 
 	//METHODS
 	public:
-		explicit ElementPropertiesEditorWidget(QString &basic_type, DiagramContext &kind_info, DiagramContext &elmt_info, QWidget *parent = nullptr);
+		explicit ElementPropertiesEditorWidget(ElementData data, QWidget *parent = nullptr);
 		~ElementPropertiesEditorWidget() override;
 
-		void upDateInterface();
+		ElementData editedData() {return m_data;}
 
 	private:
+		void upDateInterface();
 		void setUpInterface();
 		void updateTree();
 		void populateTree();
@@ -55,9 +58,7 @@ class ElementPropertiesEditorWidget : public QDialog
 		//ATTRIBUTES
 	private:
 		Ui::ElementPropertiesEditorWidget *ui;
-		QString &m_basic_type;
-		DiagramContext &m_kind_info,
-					   &m_elmt_info;
+		ElementData m_data;
 };
 
 #endif // ELEMENTPROPERTIESEDITORWIDGET_H

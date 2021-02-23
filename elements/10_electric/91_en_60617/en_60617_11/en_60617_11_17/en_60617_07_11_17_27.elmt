@@ -5,6 +5,7 @@
 m) einstellbarem Abzweig</name>
         <name lang="fr">Élément droit avec dérivation déplaçable par
 pas</name>
+        <name lang="cs">Přímý díl s odbočkou přemístitelnou po krocích</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

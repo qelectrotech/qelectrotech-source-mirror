@@ -2,6 +2,7 @@
     <uuid uuid="{93662f61-411d-42b7-9d12-8bc19bd7498f}"/>
     <names>
         <name lang="fr">Carte 16 DI</name>
+        <name lang="cs">Karta 16 DI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description">Carte d'entrées digitale</elementInformation>

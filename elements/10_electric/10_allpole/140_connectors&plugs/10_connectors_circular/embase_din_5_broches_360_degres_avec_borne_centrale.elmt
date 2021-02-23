@@ -10,6 +10,7 @@
         <name lang="en">5-pin DIN socket 360 degrees with central terminal</name>
         <name lang="es">Socket de 5 pines a 360 grados con pin plano central</name>
         <name lang="fr">Embase DIN 5 broches 360 degrés avec borne centrale</name>
+        <name lang="hu">5 tűs DIN csatlakozó 360 fok középső csatlakozóval</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

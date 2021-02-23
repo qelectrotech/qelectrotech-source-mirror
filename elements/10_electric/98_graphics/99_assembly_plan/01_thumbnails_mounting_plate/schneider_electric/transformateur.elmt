@@ -2,6 +2,7 @@
     <uuid uuid="{f13834c7-a5c6-4072-9bcb-43cbffd13f38}"/>
     <names>
         <name lang="fr">Transfo 400V 230V / 24V</name>
+        <name lang="cs">Transformátor 400V/ 230V / 24V</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1"></elementInformation>

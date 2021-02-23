@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,11 +18,12 @@
 #ifndef DYNAMICELEMENTTEXTITEM_H
 #define DYNAMICELEMENTTEXTITEM_H
 
+#include "../properties/xrefproperties.h"
 #include "diagramtextitem.h"
-#include "xrefproperties.h"
 #include "element.h"
-#include <QUuid>
+
 #include <QPointer>
+#include <QUuid>
 
 class Element;
 class Conductor;
@@ -49,6 +50,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
+	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
 
 	public:
 
@@ -69,6 +71,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void frameChanged(bool frame);
 		void plainTextChanged();
 		void textWidthChanged(qreal width);
+		void keepVisualRotationChanged(bool keep);
 
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -104,6 +107,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setTextWidth(qreal width);
 		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
 
+		void setKeepVisualRotation(bool set);
+		bool keepVisualRotation() const;
+
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -133,6 +139,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		void conductorPropertiesChanged();
 		QString reportReplacedCompositeText() const;
 		void zoomToLinkedElement();
+		void parentElementRotationChanged();
+		void thisRotationChanged();
 
 	private:
 		QPointer <Element>
@@ -160,6 +168,8 @@ class DynamicElementTextItem : public DiagramTextItem
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;
 		QPointF m_initial_position;
+		bool m_keep_visual_rotation = true;
+		qreal m_visual_rotation_ref = 0;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

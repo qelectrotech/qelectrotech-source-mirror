@@ -2,6 +2,7 @@
     <uuid uuid="{a5a62f46-014e-4654-a16b-aaff46f65a80}"/>
     <names>
         <name lang="fr">JM Concept  ULCOS 920D2</name>
+        <name lang="cs">JM Concept  ULCOS 920D2</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1"></elementInformation>

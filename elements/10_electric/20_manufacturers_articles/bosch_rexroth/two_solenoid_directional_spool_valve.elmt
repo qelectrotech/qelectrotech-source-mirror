@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Two solenoid directional spool valve</name>
         <name lang="es">Válvula direccional de corredera de dos solenoides</name>
+        <name lang="cs">Dvojcívkový elektroventil</name>
     </names>
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>

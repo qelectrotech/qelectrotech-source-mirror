@@ -2,6 +2,7 @@
     <uuid uuid="{11d2adcc-b789-41b3-b6db-09d3a3fd5cd5}"/>
     <names>
         <name lang="en">EL9110 Potential supply with diag.</name>
+        <name lang="cs">Napájecí svorkovnice EL9110 s diagnostikou</name>
     </names>
     <elementInformations/>
     <informations>

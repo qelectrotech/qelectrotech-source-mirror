@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Enroulement diphasé</name>
         <name lang="de">Zweiphasenwicklung, L-Schaltung</name>
+        <name lang="cs">Dvoufázové spřažené vinutí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

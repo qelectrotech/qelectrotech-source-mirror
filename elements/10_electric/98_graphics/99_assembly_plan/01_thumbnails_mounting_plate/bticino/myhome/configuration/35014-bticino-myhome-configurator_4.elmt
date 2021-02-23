@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/4 - Configurateur 4</name>
         <name lang="en">3501/4 - Configurator 4</name>
+        <name lang="cs">3501/4 - Konfigurátor 4</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment">BTicino configurator 4</elementInformation>

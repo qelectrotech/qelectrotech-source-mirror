@@ -2,6 +2,7 @@
     <uuid uuid="{3b90cdf6-8d46-4b10-930e-ccb5964c922e}"/>
     <names>
         <name lang="fr">Servomoteur Siemens 230V 3 POINTS</name>
+        <name lang="cs">Servomotor Siemens 230V 3 POINTS</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Siemens</elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "customelementgraphicpart.h"
-#include "elementscene.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../elementscene.h"
 
 #include <QRegularExpression>
 
@@ -1263,24 +1264,6 @@ void CustomElementGraphicPart::drawShadowShape(QPainter *painter)
 	painter -> setPen   (Qt::NoPen);
 	painter -> drawPath (strock.createStroke(shadowShape()));
 	painter -> restore  ();
-}
-
-/**
-	@brief CustomElementGraphicPart::itemChange
-	Reimplemented from QGraphicsObject.
-	If the item position change call updateCurrentPartEditor()
-	the change is always send to QGraphicsObject
-	@param change
-	@param value
-	@return the returned value of QGraphicsObject::itemChange
-*/
-QVariant CustomElementGraphicPart::itemChange(GraphicsItemChange change, const QVariant &value)
-{
-	if (scene())
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged)
-			updateCurrentPartEditor();
-
-	return(QGraphicsObject::itemChange(change, value));
 }
 
 /**

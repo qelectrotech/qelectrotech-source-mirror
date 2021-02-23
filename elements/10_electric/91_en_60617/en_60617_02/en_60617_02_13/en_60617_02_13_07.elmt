@@ -4,6 +4,7 @@
         <name lang="fr">Commande par effleurement</name>
         <name lang="es">Accionado por dispositivo térmico</name>
         <name lang="de">Betätigung durch Berühren</name>
+        <name lang="cs">Ovládání dotykem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

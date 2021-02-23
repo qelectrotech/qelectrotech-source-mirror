@@ -9,9 +9,10 @@
         <name lang="nl">Lastschakelaar</name>
         <name lang="it">Sezionatore 3P</name>
         <name lang="en">break isolator</name>
-        <name lang="cs">Odpojovač</name>
+        <name lang="cs">Pojistkový odpínač 3P</name>
         <name lang="ar">مفتاح عزل</name>
         <name lang="pl">Odłącznik</name>
+        <name lang="hu">Szakaszoló kapcsoló 3 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

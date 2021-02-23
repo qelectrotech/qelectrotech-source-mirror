@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Dimmer</name>
         <name lang="fr">Interrupteur gradateur</name>
+        <name lang="cs">Stmívač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

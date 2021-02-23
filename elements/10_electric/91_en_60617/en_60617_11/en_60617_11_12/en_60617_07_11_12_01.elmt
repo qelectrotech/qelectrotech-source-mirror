@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Leitung, nach oben führend</name>
         <name lang="fr">Canalisation montante</name>
+        <name lang="cs">Stoupací vedení směrem vzhůru</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

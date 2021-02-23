@@ -2,6 +2,7 @@
     <uuid uuid="{1454d5c1-53d8-4d3c-8b36-6b7dd5a382dc}"/>
     <names>
         <name lang="fr">Alimentation 12V</name>
+        <name lang="cs">Napájecí zdroj DRC100A</name>
     </names>
     <elementInformations/>
     <informations></informations>

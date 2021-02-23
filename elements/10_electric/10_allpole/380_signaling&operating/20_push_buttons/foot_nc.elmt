@@ -1,0 +1,38 @@
+<definition version="0.80" link_type="simple" hotspot_x="19" height="50" width="30" type="element" hotspot_y="24">
+    <uuid uuid="{751b403e-f048-44ed-ac01-210d4e00bacc}"/>
+    <names>
+        <name lang="es">Paro de emergencia con pedal (NC)</name>
+        <name lang="nl">Voetschakelaar (NC)</name>
+        <name lang="el">Ποδοδιακόπτης, κλειστή επαφή</name>
+        <name lang="en">Foot Switch (NC)</name>
+        <name lang="ar">مفتاح بدوّاسة (NC)</name>
+        <name lang="it">Comando a pedale (NC)</name>
+        <name lang="cs">Nožní spínač (NC)</name>
+        <name lang="fr">Interrupteur à pedale (NC)</name>
+        <name lang="pl">Łącznik wielozestykowy napędzany nogą NC</name>
+        <name lang="de">Fußschalter 2-polig Öffner</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="0" length2="1.5" antialias="false" end1="none" y2="0" length1="1.5" end2="none" x1="-12" x2="3" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line y1="-9" length2="1.5" antialias="false" end1="none" y2="-9" length1="1.5" end2="none" x1="0" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" length2="1.5" antialias="false" end1="none" y2="5" length1="1.5" end2="none" x1="-9.7256" x2="-13.9133" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="4" text_width="-1" y="-24" uuid="{50d62516-a25d-4431-b4bb-ee70971dad6f}" Valignment="AlignTop" x="-3" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,3,-1,5,50,0,0,0,0,0">
+            <text>21</text>
+        </dynamic_text>
+        <dynamic_text frame="false" rotation="0" z="5" text_width="-1" y="10" uuid="{d91a2d31-da0e-47e2-8236-82b8c18f7c08}" Valignment="AlignTop" x="-3" text_from="UserText" Halignment="AlignLeft" font="Sans Serif,3,-1,5,50,0,0,0,0,0">
+            <text>22</text>
+        </dynamic_text>
+        <line y1="5" length2="1.5" antialias="false" end1="none" y2="3" length1="1.5" end2="none" x1="-13.9059" x2="-16.4185" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="20" x3="6" closed="false" antialias="true" y2="10" x1="0" y3="-10" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-9" length1="1.5" end2="none" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="12" text_width="-1" y="5" uuid="{7cef0658-2571-4a65-b7e6-c14252e4b178}" Valignment="AlignTop" x="-10" text_from="ElementInfo" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal name="21" orientation="n" y="-20" uuid="{faae3ab0-3906-402d-8782-ef9d0ac0413b}" x="0"/>
+        <terminal name="22" orientation="s" y="20" uuid="{3f32169a-026a-43e8-af61-efa7268f5512}" x="0"/>
+    </description>
+</definition>

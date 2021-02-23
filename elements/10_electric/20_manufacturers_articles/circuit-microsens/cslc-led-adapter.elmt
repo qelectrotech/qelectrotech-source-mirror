@@ -1,0 +1,26 @@
+<definition height="40" hotspot_y="23" version="0.80" width="40" link_type="simple" type="element" hotspot_x="20">
+    <uuid uuid="{de794e43-6cd2-4670-91a1-c2b8f8799ab9}"/>
+    <names>
+        <name lang="fr">CSLC LED Adapteur</name>
+        <name lang="de">CSLC LED Adapter</name>
+        <name lang="en">CSLC LED Adapter</name>
+        <name lang="cs">CSLC LED Adaptér</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="4" y="3" text="-"/>
+        <rect height="15" antialias="false" rx="0" x="-10" y="-20" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="30" antialias="false" rx="0" x="-15" y="-20" width="30" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="5" antialias="false" rx="0" x="-10" y="5" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" length2="1.5" x1="0" y1="5" y2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-7" y="10" text="+"/>
+        <dynamic_text z="6" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-20" y="-40" uuid="{1c4fb802-fa3a-415c-b830-e8b82a6ab476}" text_width="-1" text_from="ElementInfo">
+            <text></text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <terminal x="0" y="-10" uuid="{b2bf13ae-d664-487f-8e31-516cd09e5ab1}" name="" orientation="n"/>
+        <terminal x="-5" y="10" uuid="{d634680a-af96-43ad-bc87-59e56b00a5b5}" name="" orientation="s"/>
+        <terminal x="5" y="10" uuid="{e100199e-7d7d-414c-a78f-29755b70f44d}" name="" orientation="s"/>
+    </description>
+</definition>

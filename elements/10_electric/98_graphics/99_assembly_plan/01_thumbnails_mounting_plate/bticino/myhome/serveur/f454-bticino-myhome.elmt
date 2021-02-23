@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">F454 - Serveur Web A/V</name>
         <name lang="en">F454 - Web Server A/V</name>
+        <name lang="cs">F454 - Web Server A/V</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>

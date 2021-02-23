@@ -5,6 +5,8 @@
 strahlend</name>
         <name lang="fr">Indicateur de trajectoire d'approche de
 précision, faisceau unidirectionnel blanc/rouge</name>
+        <name lang="cs">Návěstní znak pro přesnou přibližovací dráhu,
+bílý/červený jednosměrný svazek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

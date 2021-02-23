@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Adaptateur pH/ORP phidget 1130</name>
         <name lang="en">pH/ORP adapter phidget 1130</name>
+        <name lang="cs">Phidgets 1130 pH / ORP adaptér</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description"></elementInformation>

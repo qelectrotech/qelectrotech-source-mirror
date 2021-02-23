@@ -2,6 +2,7 @@
     <uuid uuid="{32e075b5-c489-4643-b086-b7a6e29a27fd}"/>
     <names>
         <name lang="en">i-7510AR - RS-422/485 Repeater</name>
+        <name lang="cs">i-7510AR - Opakovač RS-422/485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

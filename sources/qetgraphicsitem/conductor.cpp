@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,22 +15,24 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QtDebug>
-#include <QMultiHash>
+#include "../qetgraphicsitem/conductor.h"
 
-#include "conductor.h"
-#include "conductorsegment.h"
-#include "conductorsegmentprofile.h"
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../autoNum/numerotationcontextcommands.h"
+#include "../conductorautonumerotation.h"
+#include "../conductorsegment.h"
+#include "../conductorsegmentprofile.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetdiagrameditor.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../ui/conductorpropertiesdialog.h"
 #include "conductortextitem.h"
 #include "element.h"
-#include "diagram.h"
-#include "diagramcommands.h"
-#include "qetdiagrameditor.h"
-#include "terminal.h"
-#include "conductorautonumerotation.h"
-#include "conductorpropertiesdialog.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "numerotationcontextcommands.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+
+#include <QMultiHash>
+#include <QtDebug>
 
 #define PR(x) qDebug() << #x " = " << x;
 

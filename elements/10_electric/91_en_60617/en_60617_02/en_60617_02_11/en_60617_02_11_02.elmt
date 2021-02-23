@@ -4,6 +4,7 @@
         <name lang="fr">Perforation de bande ou utilisation de bande perforée</name>
         <name lang="es">Perforación de la cinta o uso de cinta perforada</name>
         <name lang="de">Lochen von Streifen oder Verwendung von Lochstreifen</name>
+        <name lang="cs">Děrování pásky nebo použití děrné pásky</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

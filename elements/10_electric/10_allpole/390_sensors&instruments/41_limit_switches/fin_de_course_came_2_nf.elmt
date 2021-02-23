@@ -10,7 +10,7 @@
         <name lang="fr">Fin de course  à came (NF)</name>
         <name lang="pl">Zestyk rozwierny łącznika krańcowego</name>
         <name lang="es">Final de carrera (NC)</name>
-        <name lang="cs">Konec vodivého spojení (NC)</name>
+        <name lang="cs">Koncový spínač s kladkou NC</name>
         <name lang="nl">eindschakelaar (NC)</name>
     </names>
     <informations>Author: The QElectroTech team

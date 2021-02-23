@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,24 +16,25 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapp.h"
+
 #include "configdialog.h"
 #include "configpages.h"
-#include "qetdiagrameditor.h"
-#include "qetelementeditor.h"
+#include "editor/ui/qetelementeditor.h"
 #include "elementscollectioncache.h"
-#include "titleblocktemplate.h"
-#include "qettemplateeditor.h"
+#include "factory/elementfactory.h"
+#include "factory/elementpicturefactory.h"
+#include "projectview.h"
+#include "qetdiagrameditor.h"
+#include "qeticons.h"
+#include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
-#include "qeticons.h"
-#include "templatescollection.h"
-#include "generalconfigurationpage.h"
-#include "qetmessagebox.h"
-#include "projectview.h"
-#include "elementpicturefactory.h"
-#include "aboutqetdialog.h"
-#include "factory/elementfactory.h"
+#include "titleblock/qettemplateeditor.h"
+#include "titleblock/templatescollection.h"
+#include "titleblocktemplate.h"
+#include "ui/aboutqetdialog.h"
+#include "ui/configpage/generalconfigurationpage.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -41,7 +42,10 @@
 #define STRINGIFY(x) #x
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#include <KAutoSaveFile>
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KAutoSaveFile>
+#endif
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
@@ -175,8 +179,15 @@ void QETApp::setLanguage(const QString &desired_language) {
 #endif
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
 #endif
-	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
-		qtTranslator.load("qt_" + desired_language, languages_path);
+	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path))
+	{
+		qWarning() << "failed to load"
+				   << "qt_" + desired_language << qt_l10n_path << "("
+				   << __FILE__ << __LINE__ << __FUNCTION__ << ")";
+		if(!qtTranslator.load("qt_" + desired_language, languages_path))
+			qWarning() << "failed to load"
+					   << "qt_" + desired_language << languages_path << "("
+					   << __FILE__ << __LINE__ << __FUNCTION__ << ")";
 	}
 	qApp->installTranslator(&qtTranslator);
 
@@ -191,7 +202,10 @@ void QETApp::setLanguage(const QString &desired_language) {
 		if (desired_language != "fr") {
 			// use of the English version by default
 			// utilisation de la version anglaise par defaut
-			qetTranslator.load("qet_en", languages_path);
+			if(!qetTranslator.load("qet_en", languages_path))
+				qWarning() << "failed to load"
+						   << "qet_en" << languages_path << "(" << __FILE__
+						   << __LINE__ << __FUNCTION__ << ")";
 		}
 	}
 	qApp->installTranslator(&qetTranslator);
@@ -375,152 +389,6 @@ void QETApp::newElementEditor()
 ElementsCollectionCache *QETApp::collectionCache()
 {
 	return(collections_cache_);
-}
-
-/**
-	@brief QETApp::elementInfoKeys
-	@return all available key for describe an element
-*/
-QStringList QETApp::elementInfoKeys()
-{
-	QStringList info_list;
-	info_list << "formula"
-			  << "label"
-			  << "plant"
-			  << "location"
-			  << "comment"
-			  << "function"
-			  << "auxiliary1"
-			  << "auxiliary2"
-			  << "description"
-			  << "designation"
-			  << "manufacturer"
-			  << "manufacturer_reference"
-			  << "machine_manufacturer_reference"
-			  << "supplier"
-			  << "quantity"
-			  << "unity";
-	return info_list;
-}
-
-/**
-	@brief ElementsProperties::translatedInfo
-	Return the translated information key given by info
-	If info don't match, return an empty string
-	@param info the key to be translated
-	@return
-*/
-QString QETApp::elementTranslatedInfoKey(const QString &info)
-{
-	if (info == "formula") return tr("Formule du label");
-	else if (info == "label") return tr("Label");
-	else if (info == "plant") return tr("Installation");
-	else if (info == "location") return tr("Localisation");
-
-	else if (info == "comment") return tr("Commentaire");
-	else if (info == "function") return tr("Fonction");
-	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
-	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
-
-	else if (info == "description") return tr("Description textuelle");
-	else if (info == "designation") return tr("Numéro d'article");
-	else if (info == "manufacturer") return tr("Fabricant");
-	else if (info == "manufacturer_reference") return tr("Numéro de commande");
-	else if (info == "machine_manufacturer_reference") return tr("Numéro interne");
-	else if (info == "supplier") return tr("Fournisseur");
-	else if (info == "quantity") return tr("Quantité");
-	else if (info == "unity") return tr("Unité");
-
-	else return QString();
-}
-
-/**
-	@brief QETApp::elementInfoToVar
-	@param info
-	@return var in form %{my-var} corresponding to the info,
-	if there is not available var for the given info
-	the returned var is %{void}
-	@see QETApp::elementInfoKeys for list
-*/
-QString QETApp::elementInfoToVar(const QString &info)
-{
-	if (elementInfoKeys().contains(info))
-		return QString("%{")+info+QString("}");
-	return (QString ("%{void}"));
-}
-
-/**
-	@brief QETApp::conductorInfoKeys
-	@return the conductor information keys
-*/
-QStringList QETApp::conductorInfoKeys()
-{
-	QStringList keys;
-	keys.append("formula");
-	keys.append("text");
-	keys.append("function");
-	keys.append("tension/protocol");
-	keys.append("conductor_color");
-	keys.append("conductor_section");
-
-	return keys;
-}
-
-/**
-	@brief QETApp::conductorTranslatedInfoKey
-	@param key
-	@return the translated information key given by key
-	If key don't match, return an empty string
-*/
-QString QETApp::conductorTranslatedInfoKey(const QString &key)
-{
-	if      (key == "formula")           return tr("Formule du texte");
-	else if (key == "text")              return tr("Texte");
-	else if (key == "function")          return tr("Fonction");
-	else if (key ==  "tension/protocol") return tr("Tension / Protocole");
-	else if (key ==  "conductor_color")  return tr("Couleur du fil");
-	else if (key ==  "conductor_section")return tr("Section du fil");
-	return QString();
-}
-
-/**
-	@brief QETApp::diagramInfoKeys
-	@return the diagram default default information keys
-*/
-QStringList QETApp::diagramInfoKeys()
-{
-	QStringList list;
-	list.append("title");
-	list.append("author");
-	list.append("filename");
-	list.append("folio");
-	list.append("plant");
-	list.append("locmach");
-	list.append("indexrev");
-	list.append("date");
-	list.append("display_folio");
-
-	return list;
-}
-
-/**
-	@brief QETApp::diagramTranslatedInfoKey
-	@param key
-	@return the translated information key given by key
-	If key don't match, return an empty string
-*/
-QString QETApp::diagramTranslatedInfoKey(const QString &key)
-{
-	if      (key == "title")    return tr("Titre");
-	else if (key == "author")   return tr("Auteur");
-	else if (key == "filename") return tr("Fichier");
-	else if (key == "folio")    return tr("Folio");
-	else if (key == "plant")    return tr("Installation");
-	else if (key == "locmach")  return tr("Localisation");
-	else if (key == "indexrev") return tr("Indice de révision");
-	else if (key == "date")     return tr("Date");
-	else if (key == "pos")      return tr("Position");
-	else return QString();
 }
 
 /**
@@ -1793,6 +1661,7 @@ void QETApp::configureQET()
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
 		cd.setParent(parent_widget, cd.windowFlags());
+		cd.setMaximumSize(parent_widget->size());
 	}
 
 	// display the dialog then avoid linking it to any parent widget
@@ -2214,6 +2083,9 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
+#ifdef BUILD_WITHOUT_KF5
+	return;
+#else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
 
 	//Remove from the list @stale_files, the stales file of opened project
@@ -2250,12 +2122,12 @@ void QETApp::checkBackupFiles()
 	}
 	for(const KAutoSaveFile *kasf : stale_files)
 	{
-#ifdef Q_OS_WIN
+#	ifdef Q_OS_WIN
 	//Remove the first character '/' before the name of the drive
 	text.append("<br>" + kasf->managedFile().path().remove(0,1));
-#else
+#	else
 	text.append("<br>" + kasf->managedFile().path());
-#endif
+#	endif
 	}
 
 	//Open backup file
@@ -2288,6 +2160,7 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
+#endif
 }
 
 /**

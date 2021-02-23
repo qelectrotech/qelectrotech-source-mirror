@@ -6,6 +6,8 @@ selbsttätig rückstellend, arbeitet bei beiden
 Stromrichtungen</name>
         <name lang="fr">Relais polarisé à position médiane et
 retournant à la position médiane après coupure</name>
+        <name lang="cs">Polarizované relé s neutrální polohou a samočinným návratem,
+které je v činnosti jen při jednom směru proudu ve vinutí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

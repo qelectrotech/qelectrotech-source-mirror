@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,14 +18,14 @@
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
 
+#include "SearchAndReplace/ui/searchandreplacewidget.h"
+#include "qetmainwindow.h"
+
 #include <QActionGroup>
+#include <QDir>
 #include <QMdiArea>
 #include <QSignalMapper>
-#include <QDir>
 #include <QUndoGroup>
-
-#include "qetmainwindow.h"
-#include "searchandreplacewidget.h"
 
 class QMdiSubWindow;
 class QETProject;
@@ -41,8 +41,11 @@ class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
 class AutoNumberingDockWidget;
-class KAutoSaveFile;
 
+#ifdef BUILD_WITHOUT_KF5
+#else
+class KAutoSaveFile;
+#endif
 /**
 	This class represents the main window of the QElectroTech diagram editor and,
 	ipso facto, the most important part of the QElectroTech user interface.
@@ -65,9 +68,12 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *currentProjectView() const;
 		QETProject *currentProject() const;
 		bool drawGrid() const;
+#ifdef BUILD_WITHOUT_KF5
+#else
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
-		
-	protected:
+#endif
+
+	  protected:
 		bool event(QEvent *) override;
 	private:
 		QETDiagramEditor(const QETDiagramEditor &);

@@ -4,6 +4,7 @@
         <name lang="fr">Ligne souterraine</name>
         <name lang="de">Leiter im Erdreich,
 Erdkabel</name>
+        <name lang="cs">Vedení v zemi</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

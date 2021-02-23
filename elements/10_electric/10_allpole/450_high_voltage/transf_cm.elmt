@@ -1,7 +1,7 @@
 <definition width="40" hotspot_x="22" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{fee31101-7c54-4a49-95fe-8a3e3cd0a8d9}"/>
     <names>
-        <name lang="cs">Transformátor napětí CM</name>
+        <name lang="cs">Vývod s transformátorem CM</name>
         <name lang="pl">Transformator CM</name>
         <name lang="it">Trasformatore di potenziale CM</name>
         <name lang="en">Potential transformer CM</name>

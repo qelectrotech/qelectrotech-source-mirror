@@ -2,6 +2,7 @@
     <uuid uuid="{098b5608-ea88-4b40-8ee3-ba32b8cadfcb}"/>
     <names>
         <name lang="fr">Câble Cat 6e</name>
+        <name lang="cs">Kabel Cat 6e</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

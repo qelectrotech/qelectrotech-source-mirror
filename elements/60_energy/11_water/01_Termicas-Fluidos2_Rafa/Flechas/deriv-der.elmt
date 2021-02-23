@@ -1,11 +1,12 @@
 <definition hotspot_y="9" type="element" height="30" version="0.80" width="40" hotspot_x="25" link_type="simple">
     <uuid uuid="{e15c6467-6b7d-4ae6-9a2a-642d77d18d49}"/>
     <names>
+        <name lang="de">Abzweig rechts</name>
         <name lang="es">Deriv Derecha</name>
         <name lang="fr">Derivation Droite</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <polygon x3="10" antialias="false" x1="0" y3="0" x2="0" y2="4" style="line-style:normal;line-weight:normal;filling:black;color:black" x4="0" y4="-4" y1="-4"/>

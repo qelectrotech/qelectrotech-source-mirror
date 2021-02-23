@@ -12,6 +12,7 @@
         <name lang="en">Terminal block</name>
         <name lang="it">Terminale di unione</name>
         <name lang="cs">Spojovací svorka</name>
+        <name lang="hu">Sorkapocs</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

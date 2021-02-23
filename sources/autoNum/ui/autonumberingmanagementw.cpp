@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,15 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "autonumberingmanagementw.h"
-#include "ui_autonumberingmanagementw.h"
-#include "numparteditorw.h"
-#include <QMessageBox>
-#include "numerotationcontextcommands.h"
+
+#include "../../diagram.h"
+#include "../../qetproject.h"
+#include "../numerotationcontextcommands.h"
 #include "formulaautonumberingw.h"
-#include "ui_formulaautonumberingw.h"
+#include "numparteditorw.h"
 #include "qdebug.h"
-#include "qetproject.h"
-#include "diagram.h"
+#include "ui_autonumberingmanagementw.h"
+#include "ui_formulaautonumberingw.h"
+
+#include <QMessageBox>
 
 /**
 	@brief AutoNumberingManagementW::AutoNumberingManagementW

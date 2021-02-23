@@ -4,6 +4,7 @@
         <name lang="fr">Fiche et prise de connecteur, par exemple
 cavalier, mâle-mâle</name>
         <name lang="de">Steckverbindung, zwei Buchsen durch einen</name>
+        <name lang="cs">Zásuvková spojka s U kolíkem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

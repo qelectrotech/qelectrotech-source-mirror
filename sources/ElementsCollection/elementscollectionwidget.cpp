@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,27 +16,31 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscollectionwidget.h"
-#include "elementscollectionmodel.h"
-#include "elementcollectionitem.h"
-#include "qeticons.h"
-#include "fileelementcollectionitem.h"
-#include "elementslocation.h"
-#include "qetapp.h"
-#include "qetmessagebox.h"
-#include "elementscategoryeditor.h"
-#include "newelementwizard.h"
-#include "xmlprojectelementcollectionitem.h"
-#include "qetproject.h"
-#include "qetelementeditor.h"
-#include "elementstreeview.h"
-#include "qetdiagrameditor.h"
 
-#include <QVBoxLayout>
-#include <QMenu>
+#include "../editor/ui/qetelementeditor.h"
+#include "../elementscategoryeditor.h"
+#include "../newelementwizard.h"
+#include "../qetapp.h"
+#include "../qetdiagrameditor.h"
+#include "../qeticons.h"
+#include "../qetmessagebox.h"
+#include "../qetproject.h"
+#include "elementcollectionitem.h"
+#include "elementscollectionmodel.h"
+#include "elementslocation.h"
+#include "elementstreeview.h"
+#include "fileelementcollectionitem.h"
+#include "xmlprojectelementcollectionitem.h"
+
 #include <QDesktopServices>
-#include <QUrl>
+#include <QMenu>
 #include <QTimer>
+#include <QUrl>
+#include <QVBoxLayout>
 #include <QtGlobal>
+#include <QProgressBar>
+#include <QStatusBar>
+#include <QLineEdit>
 
 /**
 	@brief ElementsCollectionWidget::ElementsCollectionWidget
@@ -740,17 +744,22 @@ void ElementsCollectionWidget::search()
 		return;
 	}
 
+		//start the search when text have at least 3 letters.
+	if (text.count() < 3) {
+		return;
+	}
+
 	hideCollection(true);
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList text_list = text.split("+", QString::SkipEmptyParts);
+	const QStringList text_list = text.split("+", QString::SkipEmptyParts);
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
 #endif
-	QStringList text_list = text.split("+", Qt::SkipEmptyParts);
+	const QStringList text_list = text.split("+", Qt::SkipEmptyParts);
 #endif
 	QModelIndexList match_index;
-	foreach (QString txt, text_list) {
+	for (QString txt : text_list) {
 		match_index << m_model->match(m_showed_index.isValid()
 					      ? m_model->index(0,0,m_showed_index)
 					      : m_model->index(0,0),
@@ -761,7 +770,7 @@ void ElementsCollectionWidget::search()
 					      | Qt::MatchRecursive);
 	}
 
-	foreach(QModelIndex index, match_index)
+	for(QModelIndex index : match_index)
 		showAndExpandItem(index);
 }
 

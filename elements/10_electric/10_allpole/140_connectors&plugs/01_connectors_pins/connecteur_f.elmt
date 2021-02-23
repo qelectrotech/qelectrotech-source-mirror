@@ -6,12 +6,13 @@
         <name lang="es">Conector hembra</name>
         <name lang="nl">Contact vrouw</name>
         <name lang="pt">Conector fêmea</name>
-        <name lang="cs">Ženská spojka</name>
+        <name lang="cs">Kontakt zásuvka</name>
         <name lang="de">Steckverbindung Buchse</name>
         <name lang="it">Connettore femmina</name>
         <name lang="el">Θηλυκός σύνδεσμος</name>
         <name lang="ar">موصل أنثوي</name>
         <name lang="pl">Gniazdo</name>
+        <name lang="hu">Anya csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

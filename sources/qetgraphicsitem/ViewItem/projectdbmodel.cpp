@@ -1,5 +1,5 @@
 /*
-				Copyright 2006-2020 QElectroTech Team
+				Copyright 2006-2021 QElectroTech Team
 				This file is part of QElectroTech.
 				
 				QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,12 @@
 				along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdbmodel.h"
-#include "projectdatabase.h"
-#include "qetproject.h"
-#include "qetxml.h"
-#include "qetapp.h"
+
+#include "../../dataBase/projectdatabase.h"
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
+#include "../../qetproject.h"
+#include "../../qetxml.h"
 
 #include <QSqlError>
 #include <QSqlRecord>
@@ -348,10 +350,7 @@ void ProjectDBModel::setHeaderString()
 		} else if (field_name == "diagram_position") {
 			header_name = tr("Position du folio");
 		} else {
-			header_name = QETApp::elementTranslatedInfoKey(field_name);
-			if (header_name.isEmpty()) {
-				header_name = QETApp::diagramTranslatedInfoKey(field_name);
-			}
+			header_name = QETInformation::translatedInfoKey(field_name);
 			if (header_name.isEmpty()) {
 				header_name = field_name;
 			}

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@
 #ifndef PARTDYNAMICTEXTFIELD_H
 #define PARTDYNAMICTEXTFIELD_H
 
-#include "customelementpart.h"
+#include "../../qetgraphicsitem/dynamicelementtextitem.h"
 #include "QGraphicsTextItem"
-#include "dynamicelementtextitem.h"
+#include "customelementpart.h"
 
 /**
 	@brief The PartDynamicTextField class

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,11 +17,12 @@
 */
 
 #include "conductorpropertiesdialog.h"
-#include "ui_conductorpropertiesdialog.h"
-#include "conductor.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "conductorpropertieswidget.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "ui_conductorpropertiesdialog.h"
 
 /**
 	@brief ConductorPropertiesDialog::ConductorPropertiesDialog

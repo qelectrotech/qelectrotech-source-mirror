@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Unterimpedanzrelais</name>
         <name lang="fr">Relais à minimum d'impédance</name>
+        <name lang="cs">Relé snížené impedance</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

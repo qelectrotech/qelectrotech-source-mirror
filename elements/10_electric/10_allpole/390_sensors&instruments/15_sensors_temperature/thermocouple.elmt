@@ -9,7 +9,7 @@
         <name lang="fr">Thermocouple</name>
         <name lang="pl">Termopara</name>
         <name lang="es">Termopar</name>
-        <name lang="cs">Termočlánek</name>
+        <name lang="cs">Snímač teploty - termočlánek</name>
         <name lang="nl">Thermo koppel</name>
     </names>
     <informations>EN 60617: 08-06-01</informations>

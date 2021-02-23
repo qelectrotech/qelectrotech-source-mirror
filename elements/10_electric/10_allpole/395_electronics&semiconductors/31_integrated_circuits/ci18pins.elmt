@@ -1,7 +1,7 @@
 <definition type="element" height="180" version="0.5" width="80" link_type="simple" hotspot_x="39" hotspot_y="91">
 <uuid uuid="{E9DD98BE-0064-4565-A8E2-5D19DED65561}"/><names>
         <name lang="nl">IC 18 pin nummers</name>
-        <name lang="cs">Integrovaný obvod, 18 očíslovaných kolíků</name>
+        <name lang="cs">Integrovaný obvod, 18 pinů</name>
         <name lang="de">Integrierte Schaltung 18 Anschlüsse nummeriert</name>
         <name lang="it">Circuito integrato, 18 pin numerati</name>
         <name lang="ro">ic18pini</name>

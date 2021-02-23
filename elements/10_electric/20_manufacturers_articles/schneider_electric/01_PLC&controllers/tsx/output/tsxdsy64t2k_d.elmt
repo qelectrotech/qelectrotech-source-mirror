@@ -1,7 +1,7 @@
 <definition width="900" height="100" link_type="simple" hotspot_y="45" hotspot_x="15" version="0.5" type="element">
     <uuid uuid="{786a1ccf-7735-43c4-8266-7c387842710d}"/>
     <names>
-        <name lang="cs">TSX DSY 64T2K (spojka D)</name>
+        <name lang="cs">TSX DSY 64T2K (konektor D)</name>
         <name lang="pl">TSX DSY 64T2K (część D)</name>
         <name lang="en">TSX DSY 64T2K (connector D)</name>
         <name lang="it">TSX DSY 64T2K (connettore D)</name>

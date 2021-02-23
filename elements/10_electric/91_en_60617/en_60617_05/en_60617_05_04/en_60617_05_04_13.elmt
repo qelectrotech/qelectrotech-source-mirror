@@ -4,6 +4,8 @@
         <name lang="fr">Thyristor triode passant en inverse, gâchette
 non spécifiée</name>
         <name lang="de">rückwärts leitende Thyristortriode, allgemein</name>
+        <name lang="cs">Triodový zpětně propustný tyristor, hradlo N
+(s řízením do anody)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

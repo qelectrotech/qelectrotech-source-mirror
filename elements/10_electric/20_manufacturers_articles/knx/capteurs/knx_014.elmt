@@ -8,7 +8,7 @@
         <name lang="en">Brightness sensor</name>
         <name lang="es">Sensor de brillo, luminancia</name>
         <name lang="el">Αισθητήρας φωτεινότητας</name>
-        <name lang="cs">Světelnostní čidlo</name>
+        <name lang="cs">Čidlo osvětlení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

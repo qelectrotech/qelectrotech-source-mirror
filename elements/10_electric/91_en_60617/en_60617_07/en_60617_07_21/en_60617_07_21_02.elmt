@@ -4,6 +4,8 @@
         <name lang="de">Sicherung, der Anschluss unter Spannung
 gekennzeichnet</name>
         <name lang="fr">Fusible, extrémité restant sous tension</name>
+        <name lang="cs">Tavná pojistka, u níž strana
+zůstávající živou, je znázorněna tlustiou čarou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">KMA-E08</name>
         <name lang="en">KMA-E08</name>
+        <name lang="cs">KMA-E08</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

@@ -4,6 +4,7 @@
         <name lang="fr">Rayonnement électromagnétique, non ionisant, bidirectionnel, par exemple rada</name>
         <name lang="es">Radiación electromagnética, no ionizante, bidireccional, por ejemplo radar</name>
         <name lang="de">elektromagnetische Strahlung, nicht ionisierend, bidirektional, z.B.:: Rada</name>
+        <name lang="cs">Elekromagnetické záření neionizující, obousměrné (např. radar)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

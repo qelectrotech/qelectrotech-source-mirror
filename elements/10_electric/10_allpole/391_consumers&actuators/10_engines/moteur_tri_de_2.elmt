@@ -5,7 +5,7 @@
         <name lang="en">Six-phase engine</name>
         <name lang="fr">Moteur triphasé (double enroulement)</name>
         <name lang="es">Motor part winding</name>
-        <name lang="cs">Šestifázový motor</name>
+        <name lang="cs">Trojfázový motor</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

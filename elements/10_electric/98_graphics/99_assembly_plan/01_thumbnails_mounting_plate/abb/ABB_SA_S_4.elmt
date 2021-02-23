@@ -2,6 +2,7 @@
     <uuid uuid="{3709c88d-825f-4fc2-9570-8032f631378e}"/>
     <names>
         <name lang="fr">ABB Sorties 4 voies</name>
+        <name lang="cs">Binární výstupy 4DO SA/S 4</name>
     </names>
     <informations>Alexandre Dis</informations>
     <description>

@@ -6,6 +6,8 @@ avec indicateurs de polarité instantanée de
 tensions</name>
         <name lang="de">Transformator mit zwei Wicklungen, dargestellt
 mit Kennzeichnung gleicher Phasenlagen</name>
+        <name lang="cs">Transformátor se dvěma vinutími
+s označením okamžité polarity napětí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

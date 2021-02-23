@@ -6,6 +6,7 @@ d'excitation commun</name>
         <name lang="de">Gleichstrom-Umformer, rotierend, mit
 gemeinsamer Feldwicklung
 (Einankerumformer)</name>
+        <name lang="cs">Jednokotvový rotační měnič se společným budicím vinutím</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

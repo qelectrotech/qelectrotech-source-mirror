@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,22 +16,23 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextpattern.h"
-#include "qetapp.h"
-#include "element.h"
-#include "qet.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
-#include "addelementtextcommand.h"
+
 #include "diagram.h"
-#include "importelementtextpatterndialog.h"
-#include "deleteqgraphicsitemcommand.h"
+#include "qet.h"
+#include "qetapp.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+#include "ui/importelementtextpatterndialog.h"
+#include "undocommand/addelementtextcommand.h"
+#include "undocommand/deleteqgraphicsitemcommand.h"
 
 #include <QDir>
-#include <QInputDialog>
 #include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QInputDialog>
 #include <QMessageBox>
 #include <QObject>
-#include <QGraphicsView>
 #include <QStringList>
 
 /**

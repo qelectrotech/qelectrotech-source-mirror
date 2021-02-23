@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,13 +17,14 @@
 */
 #ifndef BORDERTITLEBLOCK_H
 #define BORDERTITLEBLOCK_H
+#include "autoNum/numerotationcontext.h"
+#include "borderproperties.h"
 #include "diagramcontext.h"
 #include "titleblockproperties.h"
-#include "borderproperties.h"
+
+#include <QDate>
 #include <QObject>
 #include <QRectF>
-#include <QDate>
-#include "numerotationcontext.h"
 class QPainter;
 class DiagramPosition;
 class TitleBlockTemplate;

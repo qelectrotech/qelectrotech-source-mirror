@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Diode à semiconducteur (symbole général)</name>
         <name lang="de">Halbleiterdiode, allgemein</name>
+        <name lang="cs">Dioda s teplotní závislostí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

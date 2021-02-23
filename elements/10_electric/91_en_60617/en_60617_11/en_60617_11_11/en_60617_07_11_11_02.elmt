@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Schutzleiter (PE)</name>
         <name lang="fr">Conducteur de protection</name>
+        <name lang="cs">Ochranný vodič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,11 +17,11 @@
 */
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
-#include "customelementpart.h"
-#include "elementview.h"
-#include "elementscene.h"
+#include "../editor/graphicspart/customelementpart.h"
+#include "../qgimanager.h"
 #include "elementcontent.h"
-#include "qgimanager.h"
+#include "elementscene.h"
+#include "elementview.h"
 
 /**
 	@brief The ElementEditionCommand class
@@ -262,23 +262,21 @@ class ScalePartsCommand : public ElementEditionCommand {
 	bool first_redo;
 };
 
-class ChangePropertiesCommand : public ElementEditionCommand {
+class changeElementDataCommand : public ElementEditionCommand
+{
 	public:
-	ChangePropertiesCommand (
-			ElementScene *scene,
-			const QString& type,
-			const DiagramContext& info,
-			const DiagramContext& elmt_info,
-			QUndoCommand *parent=nullptr);
-	~ChangePropertiesCommand () override;
+		changeElementDataCommand(ElementScene *scene,
+								 ElementData old_data,
+								 ElementData new_data,
+								 QUndoCommand *parent = nullptr);
+		~changeElementDataCommand() override {}
 
-	void undo() override;
-	void redo() override;
+		void undo() override;
+		void redo() override;
 
 	private:
-	QList <QString> m_type;
-	QList <DiagramContext> m_kind_info;
-	QList < DiagramContext> m_elmt_info;
+		ElementData m_old,
+					m_new;
 };
 
 #endif

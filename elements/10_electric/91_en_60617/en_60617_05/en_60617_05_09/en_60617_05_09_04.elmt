@@ -5,6 +5,8 @@
 fermée</name>
         <name lang="de">Sohle, nicht emittierend, für geschlossene
 Verzögerungsleitung</name>
+        <name lang="cs">Neemitující uspořádání pro uzavřené
+zpomalovací struktury</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

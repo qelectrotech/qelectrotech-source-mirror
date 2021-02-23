@@ -5,6 +5,7 @@
 Ansprechverzögerung</name>
         <name lang="fr">Organe de commande d'un relais à mise au
 travail retardée</name>
+        <name lang="cs">Cívka přístroje se zpožděním při přítahu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

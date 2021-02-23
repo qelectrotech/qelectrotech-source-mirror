@@ -2,6 +2,7 @@
     <uuid uuid="{0c981cad-1f87-4931-86c2-b3b2af320d88}"/>
     <names>
         <name lang="fr">Volet Roulant</name>
+        <name lang="cs">Roleta</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="en">One solenoid directional spool valve</name>
         <name lang="es">Válvula direccional de corredera de una solenoide</name>
+        <name lang="cs">Jednocívkový elektroventil</name>
     </names>
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>

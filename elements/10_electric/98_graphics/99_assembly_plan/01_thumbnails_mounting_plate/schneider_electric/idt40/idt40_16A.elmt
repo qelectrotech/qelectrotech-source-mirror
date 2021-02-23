@@ -2,6 +2,7 @@
     <uuid uuid="{3129d286-407f-44af-ac80-e86c49326110}"/>
     <names>
         <name lang="fr">iDT40 Disjoncteur 16A</name>
+        <name lang="cs">iDT40 Jistič 16A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description"></elementInformation>

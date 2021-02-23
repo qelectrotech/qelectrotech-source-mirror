@@ -2,6 +2,7 @@
     <uuid uuid="{36b5d10e-7724-4cac-9b37-8d3697dd34d4}"/>
     <names>
         <name lang="fr">E46ADCN - Alimentation modulaire BUS 230V~ 27V= 1,2A - 8 modules</name>
+        <name lang="cs">E46ADCN - Modulový zdroj BUS 230V~ 27V= 1,2A - 8 modulů</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Power</elementInformation>

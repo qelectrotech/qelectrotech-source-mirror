@@ -2,5 +2,6 @@
     <names>
         <name lang="fr">Passerelle</name>
         <name lang="en">Gateway</name>
+        <name lang="cs">Jednotka rozhraní</name>
     </names>
 </qet-directory>

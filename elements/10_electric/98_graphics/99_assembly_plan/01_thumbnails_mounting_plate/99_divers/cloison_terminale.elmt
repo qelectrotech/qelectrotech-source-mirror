@@ -1,0 +1,30 @@
+<definition type="element" hotspot_x="2" link_type="terminal" hotspot_y="5" width="10" height="130" version="0.80">
+    <uuid uuid="{1b3a998d-3ecf-49e9-8b7c-bfb3c7bd3d7c}"/>
+    <names>
+        <name lang="fr">Cloison terminale</name>
+        <name lang="cs">Koncový díl</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX
+Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect y="0" x="0" ry="0" rx="0" width="5" height="120" antialias="false" style="line-style:normal;line-weight:normal;filling:HTMLGrayLightSlateGray;color:black"/>
+        <dynamic_text y="150" x="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="ElementInfo" rotation="270" frame="false" Valignment="AlignTop" uuid="{b96ddaf4-2da5-4443-aed8-8933dd2fca18}" z="13" text_width="-1" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

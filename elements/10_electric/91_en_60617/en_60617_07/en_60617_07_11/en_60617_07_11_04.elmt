@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Commutateur à 6 directions</name>
         <name lang="de">Mehrstellungsschalter</name>
+        <name lang="cs">Vícepolohový spínač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

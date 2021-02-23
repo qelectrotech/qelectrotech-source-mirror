@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementquerywidget.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_elementquerywidget.h"
-#include "qetapp.h"
 
 #include <QRegularExpression>
 
@@ -444,12 +446,12 @@ QStringList ElementQueryWidget::selectedKeys() const
 */
 void ElementQueryWidget::setUpItems()
 {
-	for(QString key : QETApp::elementInfoKeys())
+	for(QString key : QETInformation::elementInfoKeys())
 	{
 		if (key == "formula")
 			continue;
 
-		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
+		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_var_list);
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}

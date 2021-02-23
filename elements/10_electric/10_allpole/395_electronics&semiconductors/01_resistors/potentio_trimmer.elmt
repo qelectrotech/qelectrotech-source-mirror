@@ -1,13 +1,13 @@
 <definition height="60" version="0.5" link_type="simple" width="30" hotspot_x="21" hotspot_y="29" type="element">
     <uuid uuid="{0f74cf5e-3079-4ef8-b991-ae5c133d259d}"/>
     <names>
-        <name lang="de">Potentiometer</name>
+        <name lang="de">Trimm-Potentiometer</name>
         <name lang="pl">Rezystor regulacyjny</name>
         <name lang="ro">Potențiometru trimer</name>
         <name lang="it">Potenzionetro</name>
         <name lang="en">Potentiometer trimmer</name>
         <name lang="es">Potenciómetro reducido "Trimpot"</name>
-        <name lang="cs">Potenciometr</name>
+        <name lang="cs">Odporový trimr</name>
         <name lang="fr">Potentiometre ajustable</name>
     </names>
     <informations>Author:titus

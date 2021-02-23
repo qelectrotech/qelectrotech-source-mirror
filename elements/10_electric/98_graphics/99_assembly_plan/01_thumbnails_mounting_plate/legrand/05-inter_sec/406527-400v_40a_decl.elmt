@@ -2,6 +2,7 @@
     <uuid uuid="{2fe76bd9-05e8-4265-9608-26926b2e1a07}"/>
     <names>
         <name lang="fr">406527 - Interrupteur-sectionneur 400V 40A à déclenchement</name>
+        <name lang="cs">406527 - Odpínač 400V 40A</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

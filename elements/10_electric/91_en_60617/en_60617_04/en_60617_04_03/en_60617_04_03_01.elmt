@@ -9,6 +9,10 @@ Piège</name>
 Spule
 Wicklung
 Drossel</name>
+        <name lang="cs">Induktor
+Cívka
+Vinutí
+Tlumivka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Région de semiconducteur avec une connexion</name>
         <name lang="de">Halbleiterzone mit einem ohmschen Anschluß</name>
+        <name lang="cs">Polovodičová oblast s jedním ohmickým připojením</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

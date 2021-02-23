@@ -2,9 +2,9 @@
     <uuid uuid="{ba9ac7ba-bd8f-4423-bc42-a3e03a1976b0}"/>
     <names>
         <name lang="de">Leuchte mit fünf Leuchtstofflampen</name>
-        <name lang="be">Armatuur met x fluorescerende buislampen
-</name>
+        <name lang="be">Armatuur met x fluorescerende buislampen</name>
         <name lang="fr">Luminaire à cinq tubes fluorescents</name>
+        <name lang="cs">Svítidlo s pěti zářivkami</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

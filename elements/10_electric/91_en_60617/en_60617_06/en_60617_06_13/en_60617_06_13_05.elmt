@@ -6,6 +6,8 @@ einem Kern</name>
         <name lang="fr">Transformateur de courant, à deux
 enroulements secondaires sur un circuit
 magnétique commun</name>
+        <name lang="cs">Transformátor proudu
+se dvěma sekundárními vinutími na jednom jádru</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,0 +1,82 @@
+<definition height="140" hotspot_y="88" version="0.80" width="80" link_type="simple" type="element" hotspot_x="25">
+    <uuid uuid="{792c3bc1-de2e-45f8-8b4a-fb272bb1b872}"/>
+    <names>
+        <name lang="de">G6 Powerline Modular</name>
+        <name lang="en">Smart Light ControllerV2</name>
+        <name lang="cs">Kontrolér Smart Light ControllerV2</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="26" y="27" text="Ink&#xa;2/6&#xa;&lt;"/>
+        <circle diameter="2" antialias="false" x="-3" y="-43" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="26" y="-28" text="Ink&#xa;2/3&#xa;&lt;"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-17" y="18" text="RS-232"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="26" y="-58" text="Ink&#xa;2/1&#xa;&lt;"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-18" y="-45" text="Sign"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-17" y="27" text="Eth&#xa;1/1&#xa;PD"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="26" y="-43" text="Ink&#xa;2/2&#xa;&lt;"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-16" y="-51" text="Power"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="26" y="12" text="Ink&#xa;2/5&#xa;&lt;"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-16" y="-49" text="Ring"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-10" y="-41" text="Out"/>
+        <rect height="120" antialias="false" rx="0" x="-20" y="-75" width="70" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="32" y="-15" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-10" y="-45" text="In"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-16" y="-53" text="System"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="26" y="-13" text="Ink&#xa;2/4&#xa;&lt;"/>
+        <rect height="10" antialias="false" rx="0" x="32" y="25" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="-3" y="-55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="-5" y="25" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="9.83333" antialias="false" rx="0" x="15" y="10.1667" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="32" y="-30" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="-5" y="10" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="-3" y="-59" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="9.83333" antialias="false" rx="0" x="0" y="-14.8333" width="4" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="32" y="-45" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="15" y="-30" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="43" y="27" text="Ink&#xa;3/6&#xa;&lt;"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="43" y="-58" text="Ink&#xa;3/1&#xa;&lt;"/>
+        <circle diameter="2" antialias="false" x="-3" y="-51" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="1" y="-55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="43" y="12" text="Ink&#xa;3/5&#xa;&lt;"/>
+        <rect height="10" antialias="false" rx="0" x="15" y="-45" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="43" y="-43" text="Ink&#xa;3/2&#xa;&lt;"/>
+        <rect height="10" antialias="false" rx="0" x="32" y="-60" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="32" y="10" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="-3" y="-47" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="1" y="-43" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="15" y="25" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="15" y="-15" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="1" y="-47" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="43" y="-28" text="Ink&#xa;3/3&#xa;&lt;"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="43" y="-13" text="Ink&#xa;3/4&#xa;&lt;"/>
+        <rect height="10" antialias="false" rx="0" x="15" y="-60" width="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="2" antialias="false" x="1" y="-51" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-16" y="-61" text="PLM Microsens"/>
+        <circle diameter="2" antialias="false" x="1" y="-59" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-11" end2="none" length2="1.5" x1="-11" y1="-47" y2="-42" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-17" y="14" text="Serial"/>
+        <dynamic_text z="50" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-25" y="-96" uuid="{50d6c0a3-612d-483f-87a6-fbfd128c4508}" text_width="-1" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect height="5" antialias="false" rx="0" x="-8" y="-80" width="16" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="20" y="30" uuid="{092d3542-4f8f-4122-8c8a-394c46e92f26}" name="" orientation="n"/>
+        <terminal x="0" y="30" uuid="{ec2afce9-5877-43d4-bc1c-24ba639bf9f4}" name="" orientation="n"/>
+        <terminal x="37" y="-25" uuid="{1db813b7-922c-4927-b089-6f6e60c3f69f}" name="" orientation="n"/>
+        <terminal x="20" y="-25" uuid="{7b115fcf-3771-4101-9c74-f6c15c8695f3}" name="" orientation="n"/>
+        <terminal x="20" y="15" uuid="{a0518d6a-2f04-4e74-848e-d98583240a0a}" name="" orientation="n"/>
+        <terminal x="37" y="-40" uuid="{8fdd3ba1-196a-4c42-97d3-d782b41235a8}" name="" orientation="n"/>
+        <terminal x="37" y="15" uuid="{464b898d-4020-4556-a2d9-b46d99271923}" name="" orientation="n"/>
+        <terminal x="37" y="30" uuid="{ce8c8c8f-f5f6-48bf-8264-92481a92b9e4}" name="" orientation="n"/>
+        <terminal x="37" y="-10" uuid="{9a5689cc-f30a-4ab5-99c3-83d12fa31ef1}" name="" orientation="n"/>
+        <terminal x="20" y="-55" uuid="{f9517ce1-314a-46f4-b989-794c96dce597}" name="" orientation="n"/>
+        <terminal x="20" y="-40" uuid="{ca2cce74-3a64-4fb8-8a5e-9c03f28cd7ea}" name="" orientation="n"/>
+        <terminal x="-5" y="-80" uuid="{bbf5c6d8-e4ed-4ca6-b290-244cb38492f0}" name="" orientation="n"/>
+        <terminal x="5" y="-80" uuid="{803430a8-3294-4627-844d-ea0de043d161}" name="" orientation="n"/>
+        <terminal x="0" y="-80" uuid="{2d5f9e04-4b81-4c93-a4a7-1d00385b3c5b}" name="" orientation="n"/>
+        <terminal x="20" y="-10" uuid="{386d7c58-80c6-44d5-b77e-ac34ffee7459}" name="" orientation="n"/>
+        <terminal x="37" y="-55" uuid="{97e9eeeb-3e14-4b90-a7cf-0c4f6d0b2ed5}" name="" orientation="n"/>
+    </description>
+</definition>

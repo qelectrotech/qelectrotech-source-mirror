@@ -4,10 +4,11 @@
         <name lang="de">Sicherheitsleuchte,
 Notleuchte mit getrenntem Stromkreis,
 Rettungszeichenleuchte</name>
-        <name lang="be">Noodverlichtingstoestel, aangesloten op een veiligheids-stroombaan
-</name>
+        <name lang="be">Noodverlichtingstoestel, aangesloten op een veiligheids-stroombaan</name>
         <name lang="fr">Appareil d'éclairage de sécurité sur circuit
 spécial</name>
+        <name lang="cs">Svítidlo nouzového osvětlení
+ve zvláštním obvodu</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

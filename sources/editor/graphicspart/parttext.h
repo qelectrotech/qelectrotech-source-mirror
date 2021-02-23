@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,9 +17,10 @@
 */
 #ifndef PART_TEXT_H
 #define PART_TEXT_H
-#include <QtWidgets>
+#include "../../qetapp.h"
 #include "customelementpart.h"
-#include "qetapp.h"
+
+#include <QtWidgets>
 
 class TextEditor;
 class ElementPrimitiveDecorator;

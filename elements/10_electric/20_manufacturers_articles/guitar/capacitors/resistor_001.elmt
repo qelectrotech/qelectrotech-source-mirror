@@ -2,6 +2,7 @@
     <uuid uuid="{b2769ca2-e330-4c19-b526-b04142a42e65}"/>
     <names>
         <name lang="en">R1 470k ohm</name>
+        <name lang="cs">Rezistor 470K</name>
     </names>
     <informations>Author: Thomas McMillan Grant Bennett
 Name: R1 470k ohm

@@ -2,6 +2,7 @@
     <uuid uuid="{75aa21a4-60cf-4826-b6eb-435ea263210e}"/>
     <names>
         <name lang="en">i-7561-G - USB to RS-232/422/485 Converter</name>
+        <name lang="cs">i-7561-G - Převodník USB - RS-232/422/485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7561-G</elementInformation>

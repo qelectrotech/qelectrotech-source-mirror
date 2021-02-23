@@ -2,6 +2,7 @@
     <uuid uuid="{5559d349-00c1-4112-ae2c-95d6003fc4df}"/>
     <names>
         <name lang="fr">Clips écrou M4</name>
+        <name lang="cs">Maticová spona M4</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

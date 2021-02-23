@@ -2,6 +2,7 @@
     <uuid uuid="{5131cccf-73d7-40f7-bf59-a769186fd9f3}"/>
     <names>
         <name lang="fr">412000 - Eco compteur de consommation des énergies</name>
+        <name lang="cs">412000 - Eco compteur spotřeby energie</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,15 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstablefactory.h"
-#include "qetgraphicstableitem.h"
-#include "projectdbmodel.h"
-#include "elementquerywidget.h"
-#include "diagram.h"
-#include "qetgraphicsheaderitem.h"
-#include "addtabledialog.h"
-#include "qetutils.h"
-#include "elementquerywidget.h"
-#include "summaryquerywidget.h"
+
+#include "../dataBase/ui/elementquerywidget.h"
+#include "../dataBase/ui/summaryquerywidget.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/ViewItem/projectdbmodel.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicsheaderitem.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "../utils/qetutils.h"
+#include "ui/addtabledialog.h"
 
 #include <QDialog>
 

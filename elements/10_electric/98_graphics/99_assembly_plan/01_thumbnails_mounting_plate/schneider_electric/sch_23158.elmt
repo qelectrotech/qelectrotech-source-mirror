@@ -2,6 +2,7 @@
     <uuid uuid="{cbc10752-cc53-4dc5-81d3-7e0d22c9609b}"/>
     <names>
         <name lang="fr">SCH_23158</name>
+        <name lang="cs">SCH_23158</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

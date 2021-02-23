@@ -8,6 +8,7 @@
         <name lang="es">Cable 3 fases+tierra</name>
         <name lang="it">Cavo 3 fasi + terra</name>
         <name lang="fr">Cable 3 phases+terre</name>
+        <name lang="hu">Kábel 3 + PE</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

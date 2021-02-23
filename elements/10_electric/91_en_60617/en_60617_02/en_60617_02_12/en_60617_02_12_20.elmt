@@ -4,6 +4,7 @@
         <name lang="fr">Frein</name>
         <name lang="es">Freno</name>
         <name lang="de">Bremse</name>
+        <name lang="cs">Brzda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

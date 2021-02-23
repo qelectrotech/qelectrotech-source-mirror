@@ -1,7 +1,7 @@
 <definition width="20" hotspot_x="10" type="element" link_type="simple" version="0.5" height="60" hotspot_y="29">
     <uuid uuid="{32742dca-1c26-4b37-860a-4db71252a3ec}"/>
     <names>
-        <name lang="cs">Vytápěcí odpory</name>
+        <name lang="cs">Výkonový odpor</name>
         <name lang="it">Resistenza di riscaldamento</name>
         <name lang="pl">Grzejnik</name>
         <name lang="en">Resistances heating</name>

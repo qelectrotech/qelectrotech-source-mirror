@@ -2,6 +2,7 @@
     <uuid uuid="{6e31146e-7650-46d1-bc6c-86cc232cca70}"/>
     <names>
         <name lang="fr">16DI</name>
+        <name lang="cs">16DI</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Kreuzabzweig</name>
         <name lang="fr">Croix, branchement à quatre voies</name>
+        <name lang="cs">Křížový kus</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

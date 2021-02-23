@@ -2,6 +2,7 @@
     <uuid uuid="{405edd67-9980-481f-b785-c54eebc2239d}"/>
     <names>
         <name lang="en">GEFRAN 40T 96</name>
+        <name lang="cs">Indikátor GEFRAN 40T 96</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

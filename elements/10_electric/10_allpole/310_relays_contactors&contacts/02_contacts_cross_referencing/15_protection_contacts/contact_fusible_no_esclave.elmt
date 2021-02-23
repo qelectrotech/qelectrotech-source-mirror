@@ -8,7 +8,7 @@
         <name lang="fr">Actionné par un dispositif fusible NO</name>
         <name lang="pl">Bezpiecznik wybijakowy z odzielnym zestykiem sygnalizacyjnym</name>
         <name lang="nl">Thermisch bediend contact (NO)</name>
-        <name lang="cs">Tepelné relé (NO)</name>
+        <name lang="cs">Signální kontakt pojistky (NO)</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

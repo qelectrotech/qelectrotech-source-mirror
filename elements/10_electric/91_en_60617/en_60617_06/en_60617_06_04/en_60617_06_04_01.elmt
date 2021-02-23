@@ -16,6 +16,13 @@ GS Synchrogenerator
 M Motor
 MG Motor/Synchrogenerator
 MS Synchromotor</name>
+        <name lang="cs">Stroj, všeobecná značka:
+C rotační měnič
+G generátor
+GS Synchronní alternátor
+M motor
+MG motor/synchrogenerátor
+MS synchronní motor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

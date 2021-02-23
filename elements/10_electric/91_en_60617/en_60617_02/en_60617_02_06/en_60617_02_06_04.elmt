@@ -3,6 +3,8 @@
     <names>
             <name lang="fr">Actionné lorsque la grandeur caractéristique est
     égale à zéro</name>
+            <name lang="cs">Uvedení v činnost, jestliže se 
+hodnota charakteristické veličiny rovná nule</name>
         <name lang="de">auslösend, wenn der Wert der
 charakteristischen Größe gleich Null ist</name>
         <name lang="es">Operado cuando la cantidad característica es igual a cero</name>

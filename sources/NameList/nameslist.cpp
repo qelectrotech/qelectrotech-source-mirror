@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "nameslist.h"
-#include "qetapp.h"
+
+#include "../qetapp.h"
 
 // make this class usable with QVariant
 int NamesList::MetaTypeId = qRegisterMetaType<NamesList>("NamesList");
@@ -229,28 +230,25 @@ bool NamesList::operator==(const NamesList &nl) const
 }
 
 /**
-	Return the adequate name regarding the current system locale.
-	By order of preference, this function chooses:
-		- the name in the system language
-		- the English name
-		- the provided fallback name if non-empty
-		- the first language encountered in the list
-		- an empty string
-	@param fallback_name name to be returned when no adequate name has been found
-	@return The adequate name regarding the current system locale.
-*/
+ * @brief NamesList::name
+ * Return the adequate name regarding the current system locale.
+ * By order of preference, this function chooses:
+ *  - the name in the system language
+ *  - the English name
+ *  - the provided fallback name if non-empty
+ *  - the first language encountered in the list
+ *  - an empty string
+ * @param fallback_name
+ * name to be returned when no adequate name has been found
+ * @return The adequate name regarding the current system locale.
+ */
 QString NamesList::name(const QString &fallback_name) const
 {
 	QString system_language = QETApp::langFromSetting();
-	QString returned_name;
-	if (!hash_names[system_language].isEmpty()) {
-		returned_name = hash_names[system_language];
-	} else if (!hash_names["en"].isEmpty()) {
-		returned_name = hash_names["en"];
-	} else if (!fallback_name.isEmpty()) {
-		returned_name = fallback_name;
-	} else if (hash_names.count()) {
-		returned_name = hash_names.value(hash_names.keys().first());
-	}
-	return(returned_name);
+	if (! hash_names[system_language].isEmpty())
+		return (hash_names[system_language]);
+	if (! hash_names["en"].isEmpty()) return (hash_names["en"]);
+	if (! fallback_name.isEmpty()) return (fallback_name);
+	if (hash_names.count()) return (hash_names.begin().value());
+	return (QString(""));
 }

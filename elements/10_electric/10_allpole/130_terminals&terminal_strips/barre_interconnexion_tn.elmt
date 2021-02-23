@@ -3,12 +3,13 @@
     <names>
         <name lang="es">Barra de interconexión TN</name>
         <name lang="de">TN-Verbindungsschiene</name>
-        <name lang="cs">Propojovací tyč TN</name>
+        <name lang="cs">Propojovací svorka TN</name>
         <name lang="pl">Oddzielacz w stanie zamknięcia</name>
         <name lang="it">Barra di connessione TN</name>
         <name lang="ar">شريط ربط</name>
         <name lang="en">Bar interconnection TN</name>
         <name lang="fr">Barre d'interconnection TN</name>
+        <name lang="hu">Belső sínösszekötő TN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

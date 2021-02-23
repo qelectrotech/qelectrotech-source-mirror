@@ -7,6 +7,7 @@ Spannungsanschlüssen</name>
         <name lang="fr">Shunt
 Résistance à bornes "courant" et "tension"
 séparées</name>
+        <name lang="cs">Bočník s oddělenými vývody proudu a napětí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

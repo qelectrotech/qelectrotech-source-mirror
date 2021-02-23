@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,9 +17,10 @@
 */
 
 #include "diagrameventaddtext.h"
-#include "independenttextitem.h"
-#include "diagramcommands.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
+#include "../qetgraphicsitem/independenttextitem.h"
 
 /**
 	@brief DiagramEventAddText::DiagramEventAddText
@@ -45,11 +46,10 @@ void DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	if (event->button() == Qt::LeftButton)
 	{
 		IndependentTextItem *text = new IndependentTextItem();
-		m_diagram -> undoStack().push(
-					new AddItemCommand<IndependentTextItem *>(
-						text,
-						m_diagram,
-						event->scenePos()));
+		m_diagram->undoStack().push(new AddGraphicsObjectCommand(
+										text,
+										m_diagram,
+										event->scenePos()));
 		text->setTextInteractionFlags(Qt::TextEditorInteraction);
 		text->setFocus(Qt::MouseFocusReason);
 		emit finish();

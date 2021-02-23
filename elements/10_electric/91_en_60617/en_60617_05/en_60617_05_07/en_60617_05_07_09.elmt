@@ -5,6 +5,8 @@
 Cathode chauffée ioniquement</name>
         <name lang="de">kalte Kathode
 ionenbeheizte Kathode</name>
+        <name lang="cs">Studená katoda,
+Katoda žhavená ionty</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

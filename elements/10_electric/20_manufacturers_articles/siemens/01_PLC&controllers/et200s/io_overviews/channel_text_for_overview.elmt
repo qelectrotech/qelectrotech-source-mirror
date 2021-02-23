@@ -4,6 +4,7 @@
         <name lang="fr">Texte de signal (référence croisée)</name>
         <name lang="en">Signal text (cross reference)</name>
         <name lang="de">Signaltext (Verweis)</name>
+        <name lang="cs">Text signálu (ckřížová reference)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

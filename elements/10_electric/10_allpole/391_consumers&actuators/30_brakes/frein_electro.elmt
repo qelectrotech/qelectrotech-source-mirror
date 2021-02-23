@@ -9,7 +9,7 @@
         <name lang="fr">Frein electromecanique</name>
         <name lang="pl"> Hamulec elektromechaniczny</name>
         <name lang="nl">Rem mechanisch</name>
-        <name lang="cs">Elektromechanická brzda</name>
+        <name lang="cs">Elektromagnetická brzda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

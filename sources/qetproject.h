@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,18 +18,20 @@
 #ifndef QET_PROJECT_H
 #define QET_PROJECT_H
 
-#include <KAutoSaveFile>
-#include <QHash>
-
-#include "nameslist.h"
-#include "elementslocation.h"
+#include "ElementsCollection/elementslocation.h"
+#include "NameList/nameslist.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
-#include "titleblockproperties.h"
-#include "templatescollection.h"
+#include "dataBase/projectdatabase.h"
+#include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
-#include "projectdatabase.h"
-#include "reportproperties.h"
+#include "titleblock/templatescollection.h"
+#include "titleblockproperties.h"
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KAutoSaveFile>
+#endif
+#include <QHash>
 
 class Diagram;
 class ElementsLocation;
@@ -40,7 +42,10 @@ class NumerotationContext;
 class QUndoStack;
 class XmlElementCollection;
 class QTimer;
+#ifdef BUILD_WITHOUT_KF5
+#else
 class KAutoSaveFile;
+#endif
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
@@ -68,7 +73,10 @@ class QETProject : public QObject
 	public:
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
+#ifdef BUILD_WITHOUT_KF5
+#else
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
+#endif
 		~QETProject() override;
 
 	private:
@@ -267,7 +275,10 @@ class QETProject : public QObject
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
+#ifdef BUILD_WITHOUT_KF5
+#else
 		KAutoSaveFile m_backup_file;
+#endif
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
 };

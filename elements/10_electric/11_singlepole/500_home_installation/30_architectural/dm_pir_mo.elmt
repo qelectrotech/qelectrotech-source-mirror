@@ -4,7 +4,8 @@
 	<name lang="fr">Détecteur PIR mouvements</name>
         <name lang="it">Sensore a doppia tesnologia</name>
         <name lang="pl">Czujnik ruchu na podczerwień</name>
-        <name lang="de">PIR-Bewegungsmelder</name>        
+        <name lang="de">PIR-Bewegungsmelder</name>
+        <name lang="cs">PIR detektor pohybu</name>
     </names>
     <informations></informations>
     <description>

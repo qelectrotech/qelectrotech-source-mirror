@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
-#include "elementfactory.h"
-#include "diagram.h"
-#include "element.h"
-#include "diagramcommands.h"
-#include "conductorautonumerotation.h"
 
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
+#include "../factory/elementfactory.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/conductor.h"
 
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement
@@ -228,14 +229,21 @@ void DiagramEventAddElement::addElement()
 	element->m_converted_text_from_xml_description.clear();
 
 	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
-	new AddItemCommand<Element *>(element, m_diagram, m_element -> pos(), undo_object);
+	new AddGraphicsObjectCommand(element, m_diagram, m_element -> pos(), undo_object);
 
+		//When we search for free aligned terminal we
+		//temporally  remove m_element to avoid any interaction with the function Element::AlignedFreeTerminals
+		//this is useful when an element who have two (or more) terminals opposite,
+		//because m_element is exactly at the same pos of the new element
+		//added to the scene so new conductor are created between terminal of the new element
+		//and the opposite terminal of m_element.
+	m_diagram->removeItem(m_element);
 	while (!element -> AlignedFreeTerminals().isEmpty() && m_diagram -> project() -> autoConductor())
 	{
 		QPair <Terminal *, Terminal *> pair = element -> AlignedFreeTerminals().takeFirst();
 
 		Conductor *conductor = new Conductor(pair.first, pair.second);
-		new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF(), undo_object);
+		new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
 
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
@@ -244,6 +252,7 @@ void DiagramEventAddElement::addElement()
 			conductor->setFreezeLabel(true);
 		}
 	}
+	m_diagram->addItem(m_element);
 
 	m_diagram -> undoStack().push(undo_object);
 	element->setUpFormula();

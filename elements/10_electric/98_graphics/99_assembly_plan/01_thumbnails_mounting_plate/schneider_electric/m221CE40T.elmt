@@ -2,6 +2,7 @@
     <uuid uuid="{ddba0a4c-ef4b-48b0-994c-dbfb4781fe78}"/>
     <names>
         <name lang="fr">M221CE40T</name>
+        <name lang="cs">M221CE40T</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,12 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QObject>
-
 #include "eseventaddpolygon.h"
-#include "elementscene.h"
-#include "partpolygon.h"
-#include "editorcommands.h"
+
+#include "../editorcommands.h"
+#include "../elementscene.h"
+#include "../graphicspart/partpolygon.h"
+
+#include <QObject>
 
 /**
 	@brief ESEventAddPolygon::ESEventAddPolygon

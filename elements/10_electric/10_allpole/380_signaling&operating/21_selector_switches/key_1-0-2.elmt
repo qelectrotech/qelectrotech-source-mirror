@@ -8,7 +8,7 @@
         <name lang="it">Selettore a chiave, 3 posizioni 1-0-2</name>
         <name lang="fr">Interrupteur a cle 3 positions</name>
         <name lang="pl">Zestyk przełączny napędzany kluczykiem</name>
-        <name lang="cs">Klíčový spínač - 3 polohy</name>
+        <name lang="cs">Třípolohový přepínač s nulou uprostřed (1-0-2), ovládaný klíčkem</name>
         <name lang="nl">Sleutelschakelaar 3 pos (NO/NO)</name>
     </names>
     <kindInformations>

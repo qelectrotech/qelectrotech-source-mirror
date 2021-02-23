@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Contact à ouverture (contact de repos)</name>
         <name lang="de">Öffner</name>
+        <name lang="cs">Vypínací kontakt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

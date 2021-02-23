@@ -2,6 +2,7 @@
     <uuid uuid="{8e87f5fa-03c2-4d50-aab4-a5ca5e4e7555}"/>
     <names>
         <name lang="fr">S7-1200 1215C DC/DC/RLY</name>
+        <name lang="cs">S7-1200 1215C DC/DC/RLY</name>
     </names>
     <elementInformations/>
     <informations></informations>

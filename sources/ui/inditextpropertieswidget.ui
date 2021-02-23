@@ -163,6 +163,16 @@ Veuillez utiliser l'éditeur avancé pour cela.</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_line_edit</tabstop>
+  <tabstop>m_font_pb</tabstop>
+  <tabstop>m_advanced_editor_pb</tabstop>
+  <tabstop>m_x_sb</tabstop>
+  <tabstop>m_y_sb</tabstop>
+  <tabstop>m_angle_sb</tabstop>
+  <tabstop>m_size_sb</tabstop>
+  <tabstop>m_break_html_pb</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

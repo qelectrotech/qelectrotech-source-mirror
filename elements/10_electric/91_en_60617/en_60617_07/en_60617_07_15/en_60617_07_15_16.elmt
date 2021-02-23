@@ -7,6 +7,8 @@ Stromrichtung</name>
         <name lang="fr">Relais polarisé fonctionnant pour un seul sens
 du courant et retournant en position de repos
 après coupure</name>
+        <name lang="cs">Polarizované relé se samočinným návratem,
+které je v činnosti jen při jednom směru proudu ve vinutí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

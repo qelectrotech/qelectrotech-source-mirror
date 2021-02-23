@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "imagepropertieswidget.h"
-#include "ui_imagepropertieswidget.h"
-#include "diagramimageitem.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
+#include "../ui_imagepropertieswidget.h"
 
 /**
 	@brief ImagePropertiesWidget::ImagePropertiesWidget

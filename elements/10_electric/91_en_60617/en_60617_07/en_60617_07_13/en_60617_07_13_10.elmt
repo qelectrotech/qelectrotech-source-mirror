@@ -4,6 +4,8 @@
         <name lang="de">Trennschalter mit Blockiereinrichtung,
 handbetätigt</name>
         <name lang="fr">Sectionneur à commande manuelle</name>
+        <name lang="cs">Odpojovač s blokovacím ústrojím
+ručně ovládaným</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

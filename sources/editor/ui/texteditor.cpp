@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "texteditor.h"
-#include "ui_texteditor.h"
-#include "parttext.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../graphicspart/parttext.h"
+
 #include <cassert>
 
 /**
@@ -29,9 +30,8 @@
 	@param parent : the parent widget
 */
 TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *parent) :
-	ElementItemEditor(editor, parent),
-	ui(new Ui::TextEditor) {
-	ui -> setupUi(this);
+	ElementItemEditor(editor, parent){
+	setUpWidget(parent);
 	setUpEditConnection();
 	if (text) {
 		setPart(text);
@@ -42,10 +42,7 @@ TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *paren
 /**
 	@brief TextEditor::~TextEditor
 */
-TextEditor::~TextEditor()
-{
-	delete ui;
-}
+TextEditor::~TextEditor() {}
 
 /**
 	@brief TextEditor::updateForm
@@ -59,13 +56,16 @@ void TextEditor::updateForm()
 
 	disconnectEditConnection();
 
-	ui -> m_line_edit -> setText(m_text -> toPlainText());
-	ui -> m_x_sb -> setValue(m_text -> pos().x());
-	ui -> m_y_sb -> setValue(m_text -> pos().y());
-	ui -> m_rotation_sb -> setValue(m_text -> rotation());
-	ui -> m_size_sb -> setValue(m_text -> font().pointSize());
-	ui -> m_font_pb -> setText(m_text -> font().family());
-	ui -> m_color_pb -> setColor(m_text -> defaultTextColor());
+	m_line_edit -> setText(m_text -> toPlainText());
+	m_x_sb -> setValue(m_text -> pos().x());
+	m_y_sb -> setValue(m_text -> pos().y());
+	m_rotation_sb -> setValue(m_text -> rotation());
+	m_size_sb -> setValue(m_text -> font().pointSize());
+	m_font_pb -> setText(m_text -> font().family());
+#ifdef BUILD_WITHOUT_KF5
+#else
+	m_color_pb -> setColor(m_text -> defaultTextColor());
+#endif
 
 	setUpEditConnection();
 }
@@ -109,7 +109,7 @@ bool TextEditor::setPart(CustomElementPart *part) {
 		disconnectChangeConnection();
 		return true;
 	}
-	
+
 	if (PartText *part_text = static_cast<PartText *>(part)) {
 		if (part_text == m_text) {
 			return true;
@@ -176,8 +176,8 @@ void TextEditor::setUpEditConnection()
 {
 	disconnectEditConnection();
 
-	m_edit_connection << connect(ui -> m_line_edit, &QLineEdit::editingFinished, [this]() {
-		QString text_ = ui -> m_line_edit -> text();
+	m_edit_connection << connect(m_line_edit, &QLineEdit::editingFinished, [this]() {
+		QString text_ = m_line_edit -> text();
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
 			if (text_ != partText -> toPlainText()) {
@@ -187,8 +187,9 @@ void TextEditor::setUpEditConnection()
 			}
 		}
 	});
-	m_edit_connection << connect(ui->m_x_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
-		QPointF pos(ui -> m_x_sb -> value(), 0);
+
+	m_edit_connection << connect(m_x_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
+		QPointF pos(m_x_sb -> value(), 0);
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
 			pos.setY(partText -> pos().y());
@@ -199,9 +200,11 @@ void TextEditor::setUpEditConnection()
 				undoStack().push(undo);
 			}
 		}
+		m_x_sb->setFocus();
 	});
-	m_edit_connection << connect(ui -> m_y_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
-		QPointF pos(0, ui -> m_y_sb -> value());
+
+	m_edit_connection << connect(m_y_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
+		QPointF pos(0, m_y_sb -> value());
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
 			pos.setX(partText -> pos().x());
@@ -212,30 +215,35 @@ void TextEditor::setUpEditConnection()
 				undoStack().push(undo);
 			}
 		}
+		m_y_sb->setFocus();
 	});
-	m_edit_connection << connect(ui -> m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
+
+	m_edit_connection << connect(m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
-			if (ui -> m_rotation_sb -> value() != partText -> rotation()) {
+			if (m_rotation_sb -> value() != partText -> rotation()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(
-					partText, "rotation", partText -> rotation(), ui -> m_rotation_sb -> value());
+					partText, "rotation", partText -> rotation(), m_rotation_sb -> value());
 				undo -> setText(tr("Pivoter un champ texte"));
 				undo -> setAnimated(true, false);
 				undoStack().push(undo);
 			}
 		}
+		m_rotation_sb->setFocus();
 	});
-	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
+
+	m_edit_connection << connect(m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
-			if (partText -> font().pointSize() != ui -> m_size_sb -> value()) {
+			if (partText -> font().pointSize() !=m_size_sb -> value()) {
 				QFont font_ = partText -> font();
-				font_.setPointSize(ui -> m_size_sb -> value());
+				font_.setPointSize(m_size_sb -> value());
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText -> font(), font_);
 				undo -> setText(tr("Modifier la police d'un texte"));
 				undoStack().push(undo);
 			}
 		}
+		m_size_sb->setFocus();
 	});
 }
 
@@ -248,11 +256,11 @@ void TextEditor::on_m_font_pb_clicked()
 	QFont font_ = QFontDialog::getFont(&ok, m_text -> font(), this);
 
 	if (ok && font_ != m_text -> font()) {
-		ui -> m_size_sb -> blockSignals(true);
-		ui -> m_size_sb -> setValue(font_.pointSize());
-		ui -> m_size_sb -> blockSignals(false);
+		m_size_sb -> blockSignals(true);
+		m_size_sb -> setValue(font_.pointSize());
+		m_size_sb -> blockSignals(false);
 
-		ui -> m_font_pb -> setText(font_.family());
+		m_font_pb -> setText(font_.family());
 	}
 
 	for (int i=0; i < m_parts.length(); i++) {
@@ -278,5 +286,91 @@ void TextEditor::on_m_color_pb_changed(const QColor &newColor) {
 			undo -> setText(tr("Modifier la couleur d'un texte"));
 			undoStack().push(undo);
 		}
-	}
+	  }
+}
+
+void TextEditor::setUpWidget(QWidget *parent)
+{
+	setWindowTitle(tr("Form"));
+	resize(378, 133);
+	QGridLayout *gridLayout = new QGridLayout(parent);
+	    gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+	    m_y_sb = new QSpinBox(parent);
+	    m_y_sb->setObjectName(QString::fromUtf8("m_y_sb"));
+	    m_y_sb->setMinimum(-10000);
+	    m_y_sb->setMaximum(10000);
+
+	    gridLayout->addWidget(m_y_sb, 1, 3, 1, 1);
+
+	    QLabel*label_2 = new QLabel(tr("Y :"),parent);
+
+	    gridLayout->addWidget(label_2, 1, 2, 1, 1);
+
+	    QLabel*label_4 = new QLabel(tr("Police :"),parent);
+
+	    gridLayout->addWidget(label_4, 2, 0, 1, 1);
+
+	    m_rotation_sb = new QSpinBox(parent);
+	    m_rotation_sb->setSuffix(tr("\302\260"));
+	    m_rotation_sb->setWrapping(true);
+	    m_rotation_sb->setMaximum(360);
+
+	    gridLayout->addWidget(m_rotation_sb, 1, 5, 1, 1);
+
+	    QLabel *label_3 = new QLabel(tr("Rotation :"),parent);
+
+	    gridLayout->addWidget(label_3, 1, 4, 1, 1);
+
+	    m_x_sb = new QSpinBox(parent);
+	    m_x_sb->setObjectName(QString::fromUtf8("m_x_sb"));
+	    m_x_sb->setMinimum(-10000);
+	    m_x_sb->setMaximum(10000);
+
+	    gridLayout->addWidget(m_x_sb, 1, 1, 1, 1);
+
+	    QLabel *label = new QLabel(tr("X :"),parent);
+
+	    gridLayout->addWidget(label, 1, 0, 1, 1);
+
+	    m_size_sb = new QSpinBox(parent);
+	    m_size_sb->setObjectName(QString::fromUtf8("m_size_sb"));
+
+	    gridLayout->addWidget(m_size_sb, 2, 1, 1, 1);
+
+	    m_line_edit = new QLineEdit(parent);
+	    m_line_edit->setObjectName(QString::fromUtf8("m_line_edit"));
+	    m_line_edit->setClearButtonEnabled(true);
+	    m_line_edit->setPlaceholderText(tr("Entrer votre texte ici"));
+
+	    gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
+#ifdef BUILD_WITHOUT_KF5
+#else
+	    m_color_pb = new KColorButton(parent);
+	    m_color_pb->setObjectName(QString::fromUtf8("m_color_pb"));
+
+	    connect(
+		    m_color_pb,
+		    &KColorButton::changed,
+		    this,
+		    &TextEditor::on_m_color_pb_changed);
+
+	    gridLayout->addWidget(m_color_pb, 2, 5, 1, 1);
+    #endif
+	    QLabel *label_5 = new QLabel(parent);
+	    label_5->setObjectName(QString::fromUtf8("label_5"));
+
+	    gridLayout->addWidget(label_5, 2, 4, 1, 1);
+
+	    m_font_pb = new QPushButton(tr("Couleur :"),parent);
+	    connect(m_font_pb,
+		    &QPushButton::pressed,
+		    this,
+		    &TextEditor::on_m_font_pb_clicked);
+
+	    gridLayout->addWidget(m_font_pb, 2, 2, 1, 2);
+
+	    QSpacerItem *verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+	    gridLayout->addItem(verticalSpacer, 3, 2, 1, 1);
+	    setLayout(gridLayout);
 }

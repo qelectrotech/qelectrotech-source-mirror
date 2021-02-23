@@ -6,6 +6,8 @@ durch den Schlagbolzen jeder einzelnen
 Sicherung</name>
         <name lang="fr">Interrupteur triphasé à ouverture automatique
 par l'un quelconque des fusibles à percuteur</name>
+        <name lang="cs">Trojpólový spínač s automatickým rozpojením
+kteroukoliv pojistkou s mechanickou vazbou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

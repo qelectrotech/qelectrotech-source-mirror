@@ -10,7 +10,7 @@
         <name lang="pl">Łącznik obrotowy przełączny z położeniem neutralnym</name>
         <name lang="es">Interruptor 3 posiciones incluso neutro</name>
         <name lang="nl">Keuzeschakelaar 3 pos met 0 (1-0-2) (NO/NO)</name>
-        <name lang="cs">Třípolohový přepínač včetně neutrální (1-0-2)</name>
+        <name lang="cs">Třípolohový přepínač s nulou uprostřed (1-0-2)</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>

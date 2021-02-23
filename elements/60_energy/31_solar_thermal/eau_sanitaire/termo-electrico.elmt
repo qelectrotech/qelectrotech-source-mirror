@@ -3,12 +3,13 @@
     <names>
         <name lang="ca">Escalfador eléctric</name>
         <name lang="it">Boiler elettrico</name>
+        <name lang="de">Elektroboiler</name>
         <name lang="en">Thermo electric heater</name>
         <name lang="fr">Chauffe eau électrique</name>
         <name lang="es">Calentador Termo Electrico</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line x2="11.18" x1="7.4" end2="none" antialias="false" y1="38.8288" end1="none" length1="1.5" y2="38.4249" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5"/>

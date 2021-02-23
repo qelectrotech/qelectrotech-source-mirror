@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,12 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementfactory.h"
-#include "QDomElement"
-#include "simpleelement.h"
-#include "reportelement.h"
-#include "masterelement.h"
-#include "slaveelement.h"
-#include "terminalelement.h"
+
+#include "../qetgraphicsitem/masterelement.h"
+#include "../qetgraphicsitem/reportelement.h"
+#include "../qetgraphicsitem/simpleelement.h"
+#include "../qetgraphicsitem/slaveelement.h"
+#include "../qetgraphicsitem/terminalelement.h"
+
+#include <QDomElement>
 
 ElementFactory* ElementFactory::factory_ = nullptr;
 /**

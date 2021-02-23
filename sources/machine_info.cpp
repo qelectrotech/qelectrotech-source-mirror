@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -118,7 +118,7 @@ void Machine_info::send_info_to_debug()
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
 #endif
 #endif
-	qInfo()<< "GitRevision " + QString(GIT_COMMIT_SHA);
+	qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
 	qInfo()<< "QElectroTech V " + QET::displayedVersion;
 	qInfo()<< tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT

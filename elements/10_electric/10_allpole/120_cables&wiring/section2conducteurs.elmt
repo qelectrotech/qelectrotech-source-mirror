@@ -2,11 +2,12 @@
     <uuid uuid="{c94d9e16-e3bb-4117-b037-466a15edcb14}"/>
     <names>
         <name lang="de">Verdrahtungsdefinition 2 Leiter</name>
-        <name lang="cs">Označení drátového propojení 2 vodiče</name>
+        <name lang="cs">Označení žil 2 vodiče</name>
         <name lang="pl">Oznaczenie pola przekroju przewodu dwużyłowego</name>
         <name lang="it">Sezione 2 conduttori</name>
         <name lang="fr">Section 2 conducteurs</name>
         <name lang="es">Sección 2 conductores</name>
+        <name lang="hu">2 ér keresztmetszet</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

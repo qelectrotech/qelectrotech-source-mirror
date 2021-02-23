@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,12 +18,12 @@
 #ifndef PROJECT_VIEW_H
 #define PROJECT_VIEW_H
 
+#include "qetresult.h"
+#include "titleblock/templatelocation.h"
+
+#include <QTabBar>
 #include <QWidget>
 #include <QtWidgets>
-#include <QTabBar>
-
-#include "templatelocation.h"
-#include "qetresult.h"
 
 #ifdef Q_OS_MACOS
 

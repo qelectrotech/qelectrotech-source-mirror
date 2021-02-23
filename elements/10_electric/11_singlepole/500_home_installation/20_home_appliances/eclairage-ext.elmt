@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Éclairage extérieur</name>
         <name lang="pl">Oświetlenie zewnętrzne</name>
+        <name lang="cs">Venkovní osvětlení</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

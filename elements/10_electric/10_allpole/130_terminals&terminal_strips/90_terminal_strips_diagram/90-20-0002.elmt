@@ -6,6 +6,8 @@
         <name lang="en">Device (connection on top)</name>
         <name lang="es">Dispositivo (conexión por encima)</name>
         <name lang="it">Dispositivo (connessione in alto)</name>
+        <name lang="cs">Zařízení (připojení shora)</name>
+        <name lang="hu">Eszköz (felső csatlakozás)</name>
     </names>
     <informations/>
     <description>

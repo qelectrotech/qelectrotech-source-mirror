@@ -2,6 +2,7 @@
     <uuid uuid="{beeb940b-1275-40ea-85a1-1284f6d54698}"/>
     <names>
         <name lang="fr">Servomoteur V2V</name>
+        <name lang="cs">Servomotor V2V</name>
     </names>
     <elementInformations/>
     <informations></informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Aimant permanent</name>
         <name lang="de">Dauermagnet</name>
         <name lang="es">Imán permanente</name>
+        <name lang="cs">Trvalý magnet</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

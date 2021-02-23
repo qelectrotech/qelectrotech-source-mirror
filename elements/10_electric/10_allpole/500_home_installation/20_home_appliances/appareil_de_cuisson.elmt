@@ -1,7 +1,7 @@
 <definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{644b8f1e-72ef-4929-9fe6-112ec12f62d0}"/>
     <names>
-        <name lang="cs">Spotřebič na vaření</name>
+        <name lang="cs">Kuchyňský spotřebič</name>
         <name lang="pl">Kuchenka elektryczna</name>
         <name lang="ar">جهاز طبخ</name>
         <name lang="de">Kochgerät</name>

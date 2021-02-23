@@ -1,7 +1,7 @@
 <definition hotspot_y="25" type="element" height="40" width="60" hotspot_x="29" link_type="simple" version="0.5">
     <uuid uuid="{c8219681-b937-465a-8d2f-b7fe69870cde}"/>
     <names>
-        <name lang="cs">Stejnosměrný proud > střídavý proud</name>
+        <name lang="cs">Střídač 1f DC/AC</name>
         <name lang="nl">Gelijkspanning > Wisselspanning DC > AC1</name>
         <name lang="it">DC / AC monofase</name>
         <name lang="ru">Пост. ток > Однофазный перем. ток</name>

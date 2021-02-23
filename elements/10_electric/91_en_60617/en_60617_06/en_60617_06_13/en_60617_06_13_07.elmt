@@ -5,6 +5,8 @@
 Sekundärwicklung hat eine Anzapfung.</name>
         <name lang="fr">Transformateur de courant, à un enroulement
 secondaire avec une prise</name>
+        <name lang="cs">Transformátor proudu
+s jedním sekundárním vinutím s jednou odbočkou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

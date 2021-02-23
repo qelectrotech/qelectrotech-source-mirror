@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Prise Tri 16 A</name>
         <name lang="pl">Gniazdo wtyczkowe czterobiegunowe 3P+E</name>
+        <name lang="cs">Zásuvka 3f+PEN 16A</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

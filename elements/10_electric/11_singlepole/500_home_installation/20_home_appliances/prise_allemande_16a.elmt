@@ -2,6 +2,7 @@
     <uuid uuid="{084d8876-8cbc-4c6d-8767-d4d4e55e1780}"/>
     <names>
         <name lang="fr">Prise Allemande 16 A</name>
+        <name lang="cs">Německá zásuvka 16 A</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

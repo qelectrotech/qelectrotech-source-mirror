@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,10 +15,11 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "qetproject.h"
-#include "xmlelementcollection.h"
-#include "qeticons.h"
 #include "xmlprojectelementcollectionitem.h"
+
+#include "../qeticons.h"
+#include "../qetproject.h"
+#include "xmlelementcollection.h"
 
 /**
 	@brief XmlProjectElementCollectionItem::XmlProjectElementCollectionItem

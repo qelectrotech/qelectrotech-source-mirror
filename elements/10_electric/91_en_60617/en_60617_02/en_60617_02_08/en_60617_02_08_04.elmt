@@ -4,6 +4,7 @@
         <name lang="fr">Effet ou dépendance de champ magnétique</name>
         <name lang="es">Efecto de campo magnético o dependencia</name>
         <name lang="de">Magnetfeld-Wirkung oder -Abhängigkeit </name>
+        <name lang="cs">Účinek magnetického pole nebo závislost na něm</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
 beweglichem Abzweig</name>
         <name lang="fr">Élément droit avec dérivation déplaçable de
 façon continue</name>
+        <name lang="cs">Přímý díl s plynule pohyblivou odbočkou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

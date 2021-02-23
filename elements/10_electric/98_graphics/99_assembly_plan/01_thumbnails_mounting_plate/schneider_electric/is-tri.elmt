@@ -2,6 +2,7 @@
     <uuid uuid="{1b76b957-3198-4bd9-a517-74aa4ad548bc}"/>
     <names>
         <name lang="fr">Inter Sectio TRI</name>
+        <name lang="cs">Pojistkový odpínač TRI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>

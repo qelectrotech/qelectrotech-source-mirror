@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,20 +17,20 @@
 */
 #ifndef DIAGRAM_H
 #define DIAGRAM_H
-#include <QtWidgets>
-#include <QtXml>
-#include <QHash>
-#include <QUuid>
-
+#include "autoNum/numerotationcontext.h"
 #include "bordertitleblock.h"
 #include "conductorproperties.h"
-#include "exportproperties.h"
-#include "qgimanager.h"
-#include "numerotationcontext.h"
-#include "qetproject.h"
-#include "properties/xrefproperties.h"
 #include "elementsmover.h"
 #include "elementtextsmover.h"
+#include "exportproperties.h"
+#include "properties/xrefproperties.h"
+#include "qetproject.h"
+#include "qgimanager.h"
+
+#include <QHash>
+#include <QUuid>
+#include <QtWidgets>
+#include <QtXml>
 
 class Conductor;
 class CustomElement;

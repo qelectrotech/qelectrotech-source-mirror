@@ -3,6 +3,8 @@
     <names>
         <name lang="fr">Interrupteur sectionneur biphasé</name>
         <name lang="es">Seccionador 2P mando de palanca</name>
+        <name lang="cs">Odpínač 2P</name>
+        <name lang="hu">Terheléskapcsoló karos 2 pólusú</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

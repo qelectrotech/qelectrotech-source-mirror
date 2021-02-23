@@ -5,6 +5,8 @@
 par échelons</name>
         <name lang="de">Induktivität mit bewegbarem Kontakt, stufig
 veränderbar</name>
+        <name lang="cs">Indukční cívka s pohyblivým kontaktem
+stupňovitě proměnná</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

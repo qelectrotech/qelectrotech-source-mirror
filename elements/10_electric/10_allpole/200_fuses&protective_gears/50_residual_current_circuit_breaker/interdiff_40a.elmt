@@ -4,12 +4,13 @@
         <name lang="nl">Lastscheider 1P+N</name>
         <name lang="es">Disyuntor termico magnetico en polo P+N</name>
         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
-        <name lang="cs">Dvojpólový jistič 1 pól chránící</name>
+        <name lang="cs">Proudový chránič 2P</name>
         <name lang="en">Circuit-breaker</name>
         <name lang="pl">Wyłącznik</name>
         <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
         <name lang="de">Leitungsschutzschalter 1P+N</name>
         <name lang="fr">Interrupteur différentiel  40A 30mA </name>
+        <name lang="hu">Hibaáram-védőkapcsoló 2P</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

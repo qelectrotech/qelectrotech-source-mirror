@@ -2,6 +2,7 @@
     <uuid uuid="{4d452165-2d55-43ba-8e4f-dc2193b7c50b}"/>
     <names>
         <name lang="fr">037180 - Viking3 - 1 jonction ouverte 2,5mm² pas 6mm</name>
+        <name lang="cs">037180 - Viking3 - 1 Rozpojitelná svorka 2,5mm² pas 6mm</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

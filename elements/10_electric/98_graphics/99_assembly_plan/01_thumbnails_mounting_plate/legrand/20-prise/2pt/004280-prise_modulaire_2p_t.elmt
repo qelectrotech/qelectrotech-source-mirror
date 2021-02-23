@@ -2,6 +2,7 @@
     <uuid uuid="{18c53c12-f042-4a44-96b9-154cba176cf6}"/>
     <names>
         <name lang="fr">004280 - Prise de courant modulaire avec terre 10A (équivalent grand public 092782)</name>
+        <name lang="cs">004280 - Modulová zásuvka na lištu 10A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

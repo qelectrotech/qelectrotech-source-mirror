@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,11 +18,11 @@
 #ifndef QetGraphicsTableItem_H
 #define QetGraphicsTableItem_H
 
-#include <QFont>
+#include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../../qetapp.h"
+#include "../../qetgraphicsitem/qetgraphicsitem.h"
 
-#include "qetgraphicsitem.h"
-#include "qetapp.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include <QFont>
 
 class QAbstractItemModel;
 class QetGraphicsHeaderItem;

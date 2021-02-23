@@ -6,6 +6,7 @@
         <name lang="en">Motor single phase</name>
         <name lang="fr">Moteur monophasé</name>
         <name lang="es">Motormonofásico</name>
+        <name lang="cs">Jednofázový motor</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team&#xd;&#xd;

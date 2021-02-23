@@ -2,6 +2,7 @@
     <uuid uuid="{63ab0014-738c-4f49-963f-5bd56858d60a}"/>
     <names>
         <name lang="fr">412400 - Télérupteur silencieux 1P 16A 250V - 1F 230V</name>
+        <name lang="cs">412400 - Spínač dálkového ovládání 1P 16A 250V - 1F 230V</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

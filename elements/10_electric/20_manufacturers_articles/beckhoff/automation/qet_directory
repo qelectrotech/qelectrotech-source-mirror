@@ -1,6 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr">Automation</name>
+        <name lang="fr">Automatisme</name>
         <name lang="en">Automation</name>
+        <name lang="de">Automation</name>
+        <name lang="cs">Automatizace</name>
     </names>
 </qet-directory>

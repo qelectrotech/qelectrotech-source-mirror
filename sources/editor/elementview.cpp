@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,9 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementview.h"
-#include "qetelementeditor.h"
-#include "qetapp.h"
-#include "pastepartscommand.h"
+
+#include "../qetapp.h"
+#include "UndoCommand/pastepartscommand.h"
+#include "ui/qetelementeditor.h"
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
@@ -372,8 +373,9 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	du milieu de la souris.
 	@param e QMouseEvent decrivant l'evenement souris
 */
-void ElementView::mousePressEvent(QMouseEvent *e) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+void ElementView::mousePressEvent(QMouseEvent* e)
+{
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -393,14 +395,15 @@ void ElementView::mousePressEvent(QMouseEvent *e) {
 	@brief ElementView::mouseMoveEvent
 	Manage the event move mouse
 */
-void ElementView::mouseMoveEvent(QMouseEvent *e) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+void ElementView::mouseMoveEvent(QMouseEvent* e)
+{
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->buttons() == Qt::MidButton)
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-	if (e->button() == Qt::MiddleButton)
+	if (e->buttons() == Qt::MiddleButton)
 #endif
 	{
 		QScrollBar *h = horizontalScrollBar();
@@ -418,8 +421,9 @@ void ElementView::mouseMoveEvent(QMouseEvent *e) {
 	@brief ElementView::mouseReleaseEvent
 	Manage event release click mouse
 */
-void ElementView::mouseReleaseEvent(QMouseEvent *e) {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+void ElementView::mouseReleaseEvent(QMouseEvent* e)
+{
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST

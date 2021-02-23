@@ -5,6 +5,7 @@
         <name lang="it">Sensore infrarosso (PIR)</name>
         <name lang="pl">Czujnik na podczerwień</name>
         <name lang="de">PIR-Melder</name>
+        <name lang="cs">PIR detektor</name>
     </names>
     <informations></informations>
     <description>

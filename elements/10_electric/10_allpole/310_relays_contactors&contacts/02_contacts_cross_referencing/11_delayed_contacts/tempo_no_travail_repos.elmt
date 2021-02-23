@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Contact simple NO (tempo repos et travail)</name>
         <name lang="en">Simple contact (switch-on and off delay timer)</name>
+        <name lang="cs">Kontakt NO zpožděný přítah i odpad</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">delayOnOff</kindInformation>

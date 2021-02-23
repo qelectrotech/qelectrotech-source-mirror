@@ -10,6 +10,7 @@
         <name lang="en">Encoder plug receptacle 12 points</name>
         <name lang="es">Receptaculo para codificador de 12 puntos</name>
         <name lang="fr">Fiche femelle codeur 12 points</name>
+        <name lang="hu">12 tűs enkóder csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

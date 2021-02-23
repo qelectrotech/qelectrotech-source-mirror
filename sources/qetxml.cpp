@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,11 +16,12 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetxml.h"
-#include "nameslist.h"
 
-#include <QPen>
+#include "NameList/nameslist.h"
+
 #include <QDir>
 #include <QFont>
+#include <QPen>
 
 /**
 	@brief QETXML::penToXml
@@ -552,4 +553,31 @@ void QETXML::modelHeaderDataFromXml(
 
 		model->setHeaderData(section_, orientation_, data_, role_);
 	}
+}
+
+/**
+ * @brief QETXML::findInDomElement
+ * @param dom_elmt
+ * @param tag_name
+ * @return all direct child of dom_elmt with tag name tag_name
+ */
+QVector<QDomElement> QETXML::findInDomElement(const QDomElement &dom_elmt, const QString &tag_name)
+{
+	QVector<QDomElement> return_list;
+	for (auto node = dom_elmt.firstChild() ;
+		 !node.isNull() ;
+		 node = node.nextSibling())
+	{
+		if (!node.isElement()) {
+			continue;
+		}
+
+		auto element = node.toElement();
+		if (element.isNull() || element.tagName() != tag_name) {
+			continue;
+		}
+
+		return_list << element;
+	}
+	return(return_list);
 }

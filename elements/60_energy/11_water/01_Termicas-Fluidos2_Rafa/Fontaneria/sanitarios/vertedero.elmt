@@ -4,9 +4,10 @@
         <name lang="es">Vertedero</name>
         <name lang="ca">Pica2</name>
         <name lang="fr">Vidoir</name>
+        <name lang="de">Ausguss</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line end1="none" antialias="false" length1="1.5" x1="1.67268" end2="none" length2="1.5" x2="3.29712" y2="-14.7185" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14.7185"/>

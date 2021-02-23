@@ -1,0 +1,72 @@
+<definition hotspot_x="9" width="70" type="element" link_type="simple" version="0.80" height="110" hotspot_y="90">
+    <uuid uuid="{98d5f378-7328-4a37-a9af-dd4456ff5cf0}"/>
+    <names>
+        <name lang="en">SEW BM*(H,S,E,P,K) brake rectifier</name>
+        <name lang="hu">SEW BM*(H,S,E,P,K) fék egyenirányító</name>
+        <name lang="cs">SEW BM*(H,S,E,P,K) Brzdový usměrňovač</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <circle diameter="4" y="-52" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-4" end2="none" end1="none" length2="1.5" antialias="false" y1="15" x2="56" y2="15" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" y="-12" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" y="-42" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="3" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-47" x="14" rotation="0"/>
+        <text text="2" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-57" x="14" rotation="0"/>
+        <text text="BMS" color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-46" x="29" rotation="0"/>
+        <text text="BMK" color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-16" x="29" rotation="0"/>
+        <text text="BMP" color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-26" x="29" rotation="0"/>
+        <text text="BME" color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-36" x="29" rotation="0"/>
+        <text text="15" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="2" x="12" rotation="0"/>
+        <text text="4" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-37" x="14" rotation="0"/>
+        <circle diameter="4" y="-62" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="14" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-8" x="12" rotation="0"/>
+        <line x1="56" end2="none" end1="none" length2="1.5" antialias="false" y1="15" x2="56" y2="-85" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="13" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-17" x="12" rotation="0"/>
+        <dynamic_text z="17" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" Valignment="AlignTop" Halignment="AlignLeft" text_from="ElementInfo" y="-86" text_width="-1" x="59" rotation="0" uuid="{a8903059-abc9-44e6-9a7d-2671de58170e}" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle diameter="4" y="-2" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="18" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" Valignment="AlignTop" Halignment="AlignLeft" text_from="ElementInfo" y="-42" text_width="-1" x="57" rotation="0" uuid="{40493ca9-a7c1-4e53-a808-5eacc4ee0c54}" frame="false">
+            <text></text>
+            <info_name>function</info_name>
+        </dynamic_text>
+        <line x1="56" end2="none" end1="none" length2="1.5" antialias="false" y1="-85" x2="-4" y2="-85" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" y="-25" x="1" ry="0" antialias="false" rx="0" height="30" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <line x1="-4" end2="none" end1="none" length2="1.5" antialias="false" y1="-85" x2="-4" y2="15" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="21" y="-75" x="1" ry="0" antialias="false" rx="0" height="40" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <circle diameter="4" y="-22" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-1" x2="6" y2="1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" y="-72" x="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-21" x2="6" y2="-19" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-11" x2="6" y2="-9" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-51" x2="6" y2="-49" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-41" x2="6" y2="-39" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-71" x2="6" y2="-69" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="8" end2="none" end1="none" length2="1.5" antialias="false" y1="-61" x2="6" y2="-59" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="SEW" color="#000000" font="MS Shell Dlg 2,8,-1,5,75,0,0,0,0,0,Félkövér" y="-73" x="27" rotation="0"/>
+        <text text="BMH" color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-56" x="29" rotation="0"/>
+        <text text="1" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-66" x="14" rotation="0"/>
+        <terminal orientation="w" name="" y="-20" x="0" uuid="{9d8e371e-2e21-40a7-b10d-c0e5cee74732}"/>
+        <terminal orientation="w" name="" y="0" x="0" uuid="{9dd43f14-4b33-49ef-9d48-83c439e505fc}"/>
+        <terminal orientation="w" name="" y="-50" x="0" uuid="{ba604d40-627b-4295-b06a-b65413f0b205}"/>
+        <terminal orientation="w" name="" y="-10" x="0" uuid="{3c5c0cd0-89b1-4b7d-a9f4-4da6f982cf0b}"/>
+        <terminal orientation="w" name="" y="-40" x="0" uuid="{530b4f31-1358-4358-bc6d-b08c6315bd77}"/>
+        <terminal orientation="w" name="" y="-70" x="0" uuid="{6acbcb13-fc2f-47a3-a9ea-005e9433a533}"/>
+        <terminal orientation="w" name="" y="-60" x="0" uuid="{c55657f0-729f-4601-9bd8-5fd1f2084300}"/>
+    </description>
+</definition>

@@ -5,6 +5,7 @@
         <name lang="fr">Socle de prise de courant (puissance) avec
 transformateur de séparation, par exemple:
 prise pour rasoir</name>
+        <name lang="cs">Zásuvka s oddělovacím transformátorem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

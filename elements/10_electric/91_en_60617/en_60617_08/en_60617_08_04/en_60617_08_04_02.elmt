@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Amperestundenzähler </name>
         <name lang="fr">Ampèreheuremètre</name>
+        <name lang="cs">Ampérhodinový měřič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

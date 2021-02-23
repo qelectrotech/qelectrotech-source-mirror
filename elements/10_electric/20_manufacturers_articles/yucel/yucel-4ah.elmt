@@ -2,6 +2,7 @@
     <uuid uuid="{22536956-b1b4-40af-a6ab-75023c3ae487}"/>
     <names>
         <name lang="fr">Yucel_4Ah</name>
+        <name lang="cs">Yucel_4Ah</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>

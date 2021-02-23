@@ -2,6 +2,7 @@
     <uuid uuid="{e1c4dfa6-a79c-4a61-b699-b041fa057fa9}"/>
     <names>
         <name lang="fr">GP50</name>
+        <name lang="cs">GP50</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

@@ -4,6 +4,7 @@
         <name lang="fr">Transistor NPN avec base polarisée
 transversalement</name>
         <name lang="de">NPN-Transistor mit zwei Basis-Anschlüsse</name>
+        <name lang="cs">NPN-Tranzistor s příčně polarizovanou bází</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

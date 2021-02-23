@@ -4,6 +4,8 @@
         <name lang="fr">Electrode unique de concentration
 électrostatique</name>
         <name lang="de">Elektrode zur elektrostatischen Fokussierung</name>
+        <name lang="cs">Jedna elektroda pro elektrostatické zaostřování
+podél otevřené zpomalovací struktury</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

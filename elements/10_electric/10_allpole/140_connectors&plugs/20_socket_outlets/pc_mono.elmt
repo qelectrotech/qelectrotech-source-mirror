@@ -3,13 +3,14 @@
     <names>
         <name lang="nl">Contact AC + aarde</name>
         <name lang="de">Steckdose 3-polig</name>
-        <name lang="cs">Zásuvka jednopólová</name>
+        <name lang="cs">Zásuvka jednofázová</name>
         <name lang="pl">Gniazdo wtyczkowe</name>
         <name lang="it">Presa monofase</name>
         <name lang="ar">مقبس أحادي الوجه</name>
         <name lang="en">Outlet 3 poles</name>
         <name lang="es">Toma corriente 3P</name>
         <name lang="fr">PC mono</name>
+        <name lang="hu">F + N + PE csatlakozó aljzat</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "replaceadvanceddialog.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_replaceadvanceddialog.h"
-#include "qetapp.h"
 
 #include <QAbstractButton>
 
@@ -93,18 +95,18 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 	
 	if (index == 0)
 	{
-		for (QString str : QETApp::diagramInfoKeys()) {
-			ui->m_what_cb->addItem(QETApp::diagramTranslatedInfoKey(str), str);
+		for (QString str : QETInformation::diagramInfoKeys()) {
+			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 	else if (index == 1) {
-		for (QString str : QETApp::elementInfoKeys()) {
-			ui->m_what_cb->addItem(QETApp::elementTranslatedInfoKey(str), str);
+		for (QString str : QETInformation::elementInfoKeys()) {
+			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 	else if (index == 2) {
-		for (QString str : QETApp::conductorInfoKeys()) {
-			ui->m_what_cb->addItem(QETApp::conductorTranslatedInfoKey(str), str);
+		for (auto str : QETInformation::conductorInfoKeys()) {
+			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 }

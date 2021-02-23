@@ -4,6 +4,7 @@
         <name lang="fr">Canal conducteur pour dispositifs à déplétion</name>
         <name lang="de">leitender Kanal für Elemente vom
 Verarmungstyp</name>
+        <name lang="cs">Vodivostní kanál pro sočástky ochuzovacího typu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,8 @@ commande manuelle</name>
         <name lang="de">Handbetätigter Schalter mit vier
 Schaltstellungen und vier unabhängigen
 Kontaktpaaren</name>
+        <name lang="cs">Čtyřpolohový spínač ručně ovládaný,
+mající čtyři nezávislé obvody</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

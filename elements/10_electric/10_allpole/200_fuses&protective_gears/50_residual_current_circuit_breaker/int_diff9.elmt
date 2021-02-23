@@ -2,7 +2,7 @@
     <uuid uuid="{fee3faef-5f4a-4a0b-bf0e-b6e93d9f9425}"/>
     <names>
         <name lang="de">Motorschutzschalter</name>
-        <name lang="cs">Magnetotepelný jistič GV</name>
+        <name lang="cs">Jističochránič 4P</name>
         <name lang="el">Θερμομαγνητικό</name>
         <name lang="pl">Wyłącznik z wbudowanym modułem różnicowoprądowym</name>
         <name lang="fr">Disjoncteur Magnéto-thermique </name>
@@ -10,6 +10,7 @@
         <name lang="en">Magneto-thermal circuit breaker </name>
         <name lang="es">Disyuntor termico magnetico en polos con dispositivo diferencial 4P</name>
         <name lang="ar">قاطع مغناطيسي-حراري GV</name>
+        <name lang="hu">Differenciál-védőkapcsoló 4P termikus és zárlatvédelemmel</name>
     </names>
     <informations></informations>
     <description>

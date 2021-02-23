@@ -3,6 +3,8 @@
     <names>
         <name lang="fr">Concentrateur (automatique) de lignes</name>
         <name lang="de">Leitungskonzentrator</name>
+        <name lang="cs">Sdružovací zařízení,
+Koncentrátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

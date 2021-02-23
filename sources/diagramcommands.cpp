@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,31 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramcommands.h"
-#include "qetgraphicsitem/element.h"
-#include "qetgraphicsitem/conductor.h"
+
+#include "diagram.h"
 #include "qetgraphicsitem/conductortextitem.h"
-#include "diagram.h"
-#include "qetgraphicsitem/independenttextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qgimanager.h"
-#include "diagram.h"
-#include "qetgraphicsitem/diagramtextitem.h"
-#include "qetgraphicsitem/diagramimageitem.h"
-#include "elementtextitemgroup.h"
-#include <QPropertyAnimation>
-
-QString itemText(const QetGraphicsItem *item) {
-	return item->name();
-}
-
-QString itemText(const IndependentTextItem *item) {
-	Q_UNUSED(item)
-	return QObject::tr("un champ texte");
-}
-
-QString itemText(const Conductor *item) {
-	Q_UNUSED(item)
-	return QObject::tr("un conducteur");
-}
 
 /**
 	@brief PasteDiagramCommand::PasteDiagramCommand

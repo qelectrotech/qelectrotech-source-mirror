@@ -1,0 +1,49 @@
+<definition link_type="simple" height="80" version="0.61" type="element" width="200" hotspot_y="50" hotspot_x="37">
+    <uuid uuid="{6533441a-bb19-4772-8d41-5ee94196545e}"/>
+    <names>
+        <name lang="nl">Debiet - Cynergy 3 UF25B</name>
+        <name lang="fr">Capteur de débit à ultrasons - Cynergy 3 UF25B</name>
+        <name lang="de">Durchfluss - Cynergy 3 UF25B</name>
+        <name lang="es">Sensor de flujo - Cynergy 3 UF25B</name>
+        <name lang="en">Ultrasonic flow sensor - Cynergy 3 UF25B</name>
+        <name lang="it">Sensore di flusso - Cynergy 3 UF25B</name>
+        <name lang="cs">Ultrazvukový snímač průtoku - Cynergy 3 UF25B</name>
+    </names>
+    <informations>Author: Richard Rondu</informations>
+    <description>
+        <text text="blue" rotation="270" x="58" y="-28" size="4"/>
+        <text text="Data in" rotation="270" x="81.0061" y="-7.8465" size="3"/>
+        <text text="white" rotation="270" x="98" y="-28" size="4"/>
+        <text text="orange" rotation="270" x="118" y="-28" size="4"/>
+        <text text="Current output" rotation="270" x="141.308" y="7.67511" size="3"/>
+        <text text="yellow" rotation="270" x="78" y="-28" size="4"/>
+        <text text="brown" rotation="270" x="138" y="-28" size="4"/>
+        <text text="green" rotation="270" x="38" y="-28" size="4"/>
+        <text text="PNP output" rotation="270" x="101.453" y="-0.0260805" size="3"/>
+        <text text="black" rotation="270" x="18" y="-28" size="4"/>
+        <text text="Voltage output" rotation="270" x="121.162" y="7.3845" size="3"/>
+        <input text="_" tagg="label" rotate="true" x="-80" y="-10" size="9"/>
+        <rect antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" width="195" x="-35" y="-25"/>
+        <text text="NPN output" rotation="270" x="64.2735" y="0.581222" size="3"/>
+        <circle diameter="17" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-31.5" y="-8.5"/>
+        <text text="24V" rotation="270" x="5" y="-14.5641" size="3"/>
+        <line y1="-24" end1="none" antialias="false" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-10" y2="24" length1="1.5" length2="1.5"/>
+        <line y1="-28" end1="none" antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" y2="-26" length1="1.5" length2="1.5"/>
+        <text text="0V" rotation="270" x="34.7756" y="-13.0532" size="3"/>
+        <text text="red" rotation="270" x="-2" y="-28" size="4"/>
+        <polygon y5="-23" y1="-23" closed="false" x5="40" antialias="false" x1="20" x3="40" y3="-20" y4="-23" style="line-style:normal;line-weight:normal;filling:none;color:green" x2="20" y2="-20" x4="40"/>
+        <text text="Cynergy 3 ultrasonic flow meter - UF25B" x="0" y="20" size="5"/>
+        <arc angle="90" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="90" x="-29" y="-3"/>
+        <arc angle="90" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="0" x="-29" y="-3"/>
+        <arc angle="90" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="270" x="-23" y="-3"/>
+        <arc angle="90" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="180" x="-23" y="-1"/>
+        <terminal orientation="n" x="20" y="-28"/>
+        <terminal orientation="n" x="0" y="-28"/>
+        <terminal orientation="n" x="80" y="-28"/>
+        <terminal orientation="n" x="40" y="-28"/>
+        <terminal orientation="n" x="140" y="-28"/>
+        <terminal orientation="n" x="120" y="-28"/>
+        <terminal orientation="n" x="60" y="-28"/>
+        <terminal orientation="n" x="100" y="-28"/>
+    </description>
+</definition>

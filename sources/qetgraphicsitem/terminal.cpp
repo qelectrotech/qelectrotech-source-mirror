@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,22 +15,23 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "terminal.h"
+#include "../qetgraphicsitem/terminal.h"
+
+#include "../conductorautonumerotation.h"
+#include "../diagram.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
+#include "../properties/terminaldata.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "conductortextitem.h"
 
 #include <utility>
-#include "diagram.h"
-#include "qetgraphicsitem/element.h"
-#include "qetgraphicsitem/conductor.h"
-#include "diagramcommands.h"
-#include "conductorautonumerotation.h"
-#include "conductortextitem.h"
-#include "terminaldata.h"
 
-QColor Terminal::neutralColor	  = QColor(Qt::blue);
-QColor Terminal::allowedColor	  = QColor(Qt::darkGreen);
-QColor Terminal::warningColor	  = QColor("#ff8000");
-QColor Terminal::forbiddenColor	= QColor(Qt::red);
-const qreal Terminal::terminalSize = 4.0; // TODO: store terminalSize in terminaldata, because in PartTerminal there is the same parameter. So only one is needed
+QColor Terminal::neutralColor      = QColor(Qt::blue);
+QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
+QColor Terminal::warningColor      = QColor("#ff8000");
+QColor Terminal::forbiddenColor    = QColor(Qt::red);
+const qreal Terminal::terminalSize = 4.0;
 const qreal Terminal::Z = 1000;
 
 /**
@@ -40,28 +41,29 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 	@param hiddenName
 */
-void Terminal::init(
-		QString number, QString name, bool hiddenName)
+void Terminal::init()
 {
-	// calcul de la position du point d'amarrage a l'element
+		//Calcul the docking point of the element
+		//m_pos of d is the docking point of conductor
 	dock_elmt_ = d->m_pos;
 	switch(d->m_orientation) {
 		case Qet::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
 		case Qet::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
 		case Qet::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
-		case Qet::South:
-		default		: dock_elmt_ += QPointF(0, -Terminal::terminalSize);
+		case Qet::South: dock_elmt_ += QPointF(0, -Terminal::terminalSize); break;
 	}
-	// Number of terminal
-	number_terminal_ = std::move(number);
-	// Name of terminal
-	d->m_name = std::move(name);
-	name_terminal_hidden = hiddenName;
-	// par defaut : pas de conducteur
 
-	// QRectF null
-	br_ = new QRectF();
-	// divers
+		//Calcul the bounding rect
+	qreal dcx = d->m_pos.x();
+	qreal dcy = d->m_pos.y();
+	qreal dex = dock_elmt_.x();
+	qreal dey = dock_elmt_.y();
+	QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
+	origin += QPointF(-3.0, -3.0);
+	qreal w = qAbs(dcx - dex) + 7;
+	qreal h = qAbs(dcy - dey) + 7;
+	m_br = QRectF(origin, QSizeF(w, h));
+
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	setToolTip(QObject::tr("Borne", "tooltip"));
@@ -151,23 +153,16 @@ Terminal::Terminal(TerminalData* data, Element* e) :
 	d(data),
 	parent_element_(e)
 {
-#if TODO_LIST
-#pragma message("@TODO what is when multiple parents exist. So the other relation is lost.")
-#endif
-	// TODO: what is when multiple parents exist. So the other relation is lost.
 	d->setParent(this);
-	init("_", "_", false);
+	init();
 }
 
 /**
-	Destructeur
-	La destruction de la borne entraine la destruction des conducteurs
-	associes.
-*/
-Terminal::~Terminal()
-{
-	foreach(Conductor *c, conductors_) delete c;
-	delete br_;
+ * @brief Terminal::~Terminal
+ * Destruction of the terminal, and also docked conductor
+ */
+Terminal::~Terminal() {
+	qDeleteAll(m_conductors_list);
 }
 
 /**
@@ -192,7 +187,6 @@ Qet::Orientation Terminal::orientation() const
 		}
 	} else return(d->m_orientation);
 }
-
 
 /**
 	@brief Terminal::setNumber
@@ -241,11 +235,11 @@ bool Terminal::addConductor(Conductor *conductor)
 			? conductor->terminal2 : conductor->terminal1;
 
 	//Check if this terminal isn't already linked with other_terminal
-	foreach (Conductor* cond, conductors_)
+	foreach (Conductor* cond, m_conductors_list)
 		if (cond -> terminal1 == other_terminal || cond -> terminal2 == other_terminal)
 			return false; //They already a conductor linked to this and other_terminal
 
-	conductors_.append(conductor);
+	m_conductors_list.append(conductor);
 	emit conductorWasAdded(conductor);
 	return(true);
 }
@@ -257,9 +251,9 @@ bool Terminal::addConductor(Conductor *conductor)
 */
 void Terminal::removeConductor(Conductor *conductor)
 {
-	int index = conductors_.indexOf(conductor);
+	int index = m_conductors_list.indexOf(conductor);
 	if (index == -1) return;
-	conductors_.removeAt(index);
+	m_conductors_list.removeAt(index);
 	emit conductorWasRemoved(conductor);
 }
 
@@ -316,10 +310,10 @@ void Terminal::paint(
 	painter -> drawLine(c, e);
 
 	// dessin du point d'amarrage au conducteur en bleu
-	t.setColor(hovered_color_);
+	t.setColor(m_hovered_color);
 	painter -> setPen(t);
-	painter -> setBrush(hovered_color_);
-	if (hovered_) {
+	painter -> setBrush(m_hovered_color);
+	if (m_hovered) {
 		painter -> setRenderHint(QPainter::Antialiasing, true);
 		painter -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
 	} else painter -> drawPoint(c);
@@ -451,21 +445,8 @@ QLineF Terminal::HelpLine() const
 	@brief Terminal::boundingRect
 	@return Le rectangle (en precision flottante) delimitant la borne et ses alentours.
 */
-QRectF Terminal::boundingRect() const
-{
-	if (br_ -> isNull())
-	{
-		qreal dcx = d->m_pos.x();
-		qreal dcy = d->m_pos.y();
-		qreal dex = dock_elmt_.x();
-		qreal dey = dock_elmt_.y();
-		QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
-		origin += QPointF(-3.0, -3.0);
-		qreal w = qAbs((int)(dcx - dex)) + 7;
-		qreal h = qAbs((int)(dcy - dey)) + 7;
-		*br_ = QRectF(origin, QSizeF(w, h));
-	}
-	return(*br_);
+QRectF Terminal::boundingRect() const {
+	return m_br;
 }
 
 /**
@@ -536,7 +517,7 @@ Terminal* Terminal::alignedWithTerminal() const
 */
 void Terminal::hoverEnterEvent(QGraphicsSceneHoverEvent *)
 {
-	hovered_ = true;
+	m_hovered = true;
 	update();
 }
 
@@ -552,7 +533,7 @@ void Terminal::hoverMoveEvent(QGraphicsSceneHoverEvent *) {}
 */
 void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *)
 {
-	hovered_ = false;
+	m_hovered = false;
 	update();
 }
 
@@ -582,11 +563,11 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	//setCursor(Qt::CrossCursor);
 
 	// d'un mouvement a l'autre, il faut retirer l'effet hover de la borne precedente
-	if (previous_terminal_) {
-		if (previous_terminal_ == this) hovered_ = true;
-		else previous_terminal_ -> hovered_ = false;
-		previous_terminal_ -> hovered_color_ = previous_terminal_ -> neutralColor;
-		previous_terminal_ -> update();
+	if (m_previous_terminal) {
+		if (m_previous_terminal == this) m_hovered = true;
+		else m_previous_terminal -> m_hovered = false;
+		m_previous_terminal -> m_hovered_color = m_previous_terminal -> neutralColor;
+		m_previous_terminal -> update();
 	}
 
 	Diagram *diag = diagram();
@@ -613,18 +594,18 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	// si le qgi est une borne...
 	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 	if (!other_terminal) return;
-	previous_terminal_ = other_terminal;
+	m_previous_terminal = other_terminal;
 
 	// s'il s'agit d'une borne, on lui applique l'effet hover approprie
 	if (!canBeLinkedTo(other_terminal)) {
-		other_terminal -> hovered_color_ = forbiddenColor;
+		other_terminal -> m_hovered_color = forbiddenColor;
 	} else if (other_terminal -> conductorsCount()) {
-		other_terminal -> hovered_color_ = warningColor;
+		other_terminal -> m_hovered_color = warningColor;
 	} else {
-		other_terminal -> hovered_color_ = allowedColor;
+		other_terminal -> m_hovered_color = allowedColor;
 	}
 
-	other_terminal -> hovered_ = true;
+	other_terminal -> m_hovered = true;
 	other_terminal -> update();
 }
 
@@ -635,8 +616,8 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 */
 void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 {
-	previous_terminal_ = nullptr;
-	hovered_color_	 = neutralColor;
+	m_previous_terminal = nullptr;
+	m_hovered_color     = neutralColor;
 
 	if (!diagram()) return;
 
@@ -651,8 +632,8 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 	if (!other_terminal) return;
 
-	other_terminal -> hovered_color_ = neutralColor;
-	other_terminal -> hovered_	   = false;
+	other_terminal -> m_hovered_color = neutralColor;
+	other_terminal -> m_hovered       = false;
 
 	//We stop her if we can't link this terminal with other terminal
 	if (!canBeLinkedTo(other_terminal)) return;
@@ -679,7 +660,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 
 	QUndoCommand *undo = new QUndoCommand();
-	QUndoCommand *aic = new AddItemCommand<Conductor *>(new_conductor, diagram(), QPointF(), undo);
+	QUndoCommand *aic = new AddGraphicsObjectCommand(new_conductor, diagram(), QPointF(), undo);
 	undo->setText(aic->text());
 
 	if (use_properties)
@@ -709,7 +690,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 */
 void Terminal::updateConductor()
 {
-	foreach (Conductor *conductor, conductors_)
+	foreach (Conductor *conductor, m_conductors_list)
 		conductor->updatePath();
 }
 
@@ -722,7 +703,7 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 	if (other_terminal == this) return(false);
 
 	bool already_linked = false;
-	foreach (Conductor *c, conductors_) {
+	foreach (Conductor *c, m_conductors_list) {
 		if (c -> terminal1 == other_terminal || c -> terminal2 == other_terminal) {
 			already_linked = true;
 			break;
@@ -759,7 +740,7 @@ void Terminal::setID(int id) {
 */
 QList<Conductor *> Terminal::conductors() const
 {
-	return(conductors_);
+	return(m_conductors_list);
 }
 
 /**

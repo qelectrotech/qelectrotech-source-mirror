@@ -4,6 +4,8 @@
         <name lang="de">bidirektionale kreisförmige Bewegung bidirektionale Drehung bidirektionales Drehmoment</name>
         <name lang="es">Par bidireccional de rotación bidireccional Rotación bidireccional</name>
         <name lang="fr">Mouvement circulaire bidirectionnel Rotation bidirectionnelle Couple bidirectionnel</name>
+        <name lang="cs">Obousměrný otáčivý pohyb,
+obousměrné otáčení, obousměrný točivý moment</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

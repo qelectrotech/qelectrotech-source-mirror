@@ -4,6 +4,7 @@
         <name lang="fr">Réception</name>
         <name lang="es">Recepción</name>
         <name lang="de">Empfangen</name>
+        <name lang="cs">Příjem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

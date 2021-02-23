@@ -2,6 +2,7 @@
     <uuid uuid="{c05b1ed0-3c90-4883-b55e-5ce37456066e}"/>
     <names>
         <name lang="fr">Porte fusible 2p</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló 2 pólusú</name>
         <name lang="cs">Pojistkový odpínač 2p</name>
     </names>
     <elementInformations/>

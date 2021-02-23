@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2006-2020 The QElectroTech Team
+   Copyright 2006-2021 The QElectroTech Team
    This file is part of QElectroTech.
 
    QElectroTech is free software: you can redistribute it and/or modify
@@ -16,15 +16,16 @@
    along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "bomexportdialog.h"
+
+#include "../dataBase/ui/elementquerywidget.h"
+#include "../qetapp.h"
+#include "../qetinformation.h"
+#include "../qetproject.h"
 #include "ui_bomexportdialog.h"
-#include "elementquerywidget.h"
-#include "qetproject.h"
-#include "qetapp.h"
 
 #include <QMessageBox>
 #include <QSqlError>
 #include <QSqlRecord>
-
 
 /**
 	@brief BOMExportDialog::BOMExportDialog
@@ -122,10 +123,7 @@ QString BOMExportDialog::getBom()
 				} else if (field_name == "designation_qty") {
 					header_name << tr("Quantité numéro d'article", "Special field with name : designation quantity");
 				} else {
-					header_name << QETApp::elementTranslatedInfoKey(field_name);
-					if (header_name.isEmpty()) {
-						header_name << QETApp::diagramTranslatedInfoKey(field_name);
-					}
+					header_name << QETInformation::translatedInfoKey(field_name);
 					if (header_name.isEmpty()) {
 						header_name << field_name;
 					}

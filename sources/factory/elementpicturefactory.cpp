@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,19 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpicturefactory.h"
-#include "elementslocation.h"
-#include "qet.h"
-#include "qetapp.h"
-#include "partline.h"
 
-#include <QDomElement>
-#include <QPainter>
-#include <QTextDocument>
-#include <QPicture>
-#include <iostream>
+#include "../ElementsCollection/elementslocation.h"
+#include "../editor/graphicspart/partline.h"
+#include "../qet.h"
+#include "../qetapp.h"
+
 #include <QAbstractTextDocumentLayout>
+#include <QDomElement>
 #include <QGraphicsSimpleTextItem>
+#include <QPainter>
+#include <QPicture>
 #include <QRegularExpression>
+#include <QTextDocument>
+#include <iostream>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 

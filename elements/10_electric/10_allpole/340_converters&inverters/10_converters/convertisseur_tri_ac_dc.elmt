@@ -2,7 +2,7 @@
     <uuid uuid="{ba37456e-e7a9-423d-a75d-4d5e8f0cbd22}"/>
     <names>
         <name lang="nl">Wisselspanning driefase > gelijkspanning  AC3 > DC</name>
-        <name lang="cs">Usměrňovač - měnič třífázový střídavý proud/stejnosměrný proud</name>
+        <name lang="cs">Napájecí zdroj 3f AC/DC</name>
         <name lang="it">Convertitore AC trifase / DC</name>
         <name lang="el">Μετατροπέας τριφασικό AC/DC</name>
         <name lang="de">Umrichter AC/DC 3-phasig</name>

@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Timed switch rest and work</name>
         <name lang="fr">Inverseur temporisé repos et travail</name>
+        <name lang="cs">Přepínací kontakt zpožděný přítah i odpad</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

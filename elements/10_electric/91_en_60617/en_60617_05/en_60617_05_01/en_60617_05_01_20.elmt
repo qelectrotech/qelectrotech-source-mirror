@@ -6,6 +6,8 @@ conductivité différentes:
 - de P à N, ou de N à P</name>
         <name lang="de">Übergang zwischen Zonen verschiedenen
 Leitertyps, entweder P auf N oder N auf P</name>
+        <name lang="cs">Přechod mezi oblastmi odlišných
+vodivostních typů, buď P na N nebo N na P</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

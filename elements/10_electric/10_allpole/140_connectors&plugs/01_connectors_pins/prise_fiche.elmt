@@ -7,8 +7,9 @@
         <name lang="fr">Fiche et prise</name>
         <name lang="pl">Złącze wtykowe</name>
         <name lang="es">Enchufe y socket</name>
-        <name lang="cs">Zástrčka a zásuvka</name>
+        <name lang="cs">Spojený pin</name>
         <name lang="nl">Steker en contact</name>
+        <name lang="hu">Csatlakozó dugó + aljzat</name>
     </names>
     <informations>EN 60617: 03-03-05</informations>
     <description>

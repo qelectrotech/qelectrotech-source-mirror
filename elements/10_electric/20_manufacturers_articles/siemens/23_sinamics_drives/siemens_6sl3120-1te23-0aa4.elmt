@@ -2,6 +2,7 @@
     <uuid uuid="{dafb6a52-9fed-42d3-a84d-668c82c239c2}"/>
     <names>
         <name lang="en">6SL3120-1TE23-0AA4</name>
+        <name lang="cs">6SL3120-1TE23-0AA4</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

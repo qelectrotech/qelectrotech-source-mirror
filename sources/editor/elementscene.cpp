@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,28 +16,29 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscene.h"
-#include "qetelementeditor.h"
-#include "elementprimitivedecorator.h"
-#include <cmath>
-#include "partline.h"
-#include "partrectangle.h"
-#include "partellipse.h"
-#include "partpolygon.h"
-#include "partterminal.h"
-#include "parttext.h"
-#include "partarc.h"
+
+#include "../NameList/ui/namelistdialog.h"
+#include "../NameList/ui/namelistwidget.h"
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
+#include "elementprimitivedecorator.h"
+#include "esevent/eseventinterface.h"
+#include "graphicspart/partarc.h"
+#include "graphicspart/partdynamictextfield.h"
+#include "graphicspart/partellipse.h"
+#include "graphicspart/partline.h"
+#include "graphicspart/partpolygon.h"
+#include "graphicspart/partrectangle.h"
+#include "graphicspart/partterminal.h"
+#include "graphicspart/parttext.h"
+#include "ui/qetelementeditor.h"
 #include "ui/elementpropertieseditorwidget.h"
-#include "eseventinterface.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
-#include "partdynamictextfield.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "namelistdialog.h"
-#include "namelistwidget.h"
 
-#include <algorithm>
 #include <QKeyEvent>
+#include <algorithm>
+#include <cmath>
 
 /**
 	@brief ElementScene::ElementScene
@@ -50,7 +51,6 @@
 */
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
-	m_elmt_type("simple"),
 	m_qgi_manager(this),
 	m_element_editor(editor)
 {
@@ -70,7 +70,25 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	connect(&m_undo_stack, SIGNAL(indexChanged(int)),
 		this, SLOT(managePrimitivesGroups()));
 	connect(this, SIGNAL(selectionChanged()),
-		this, SLOT(managePrimitivesGroups()));
+			this, SLOT(managePrimitivesGroups()));
+}
+
+/**
+ * @brief ElementScene::elementData
+ * @return the elementdata using by the scene
+ */
+ElementData ElementScene::elementData() {
+	return m_element_data;
+}
+
+void ElementScene::setElementData(ElementData data)
+{
+	bool emit_ = m_element_data.m_informations != data.m_informations;
+
+	m_element_data = data;
+
+	if (emit_)
+		emit elementInfoChanged();
 }
 
 /**
@@ -436,7 +454,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 				  -(qRound(size.y() - (ymargin/2)))));
 
 	root.setAttribute("version", QET::version);
-	root.setAttribute("link_type", m_elmt_type);
+	root.setAttribute("link_type", m_element_data.typeToString(m_element_data.m_type));
 
 	//Uuid used to compare two elements
 	QDomElement uuid = xml_document.createElement("uuid");
@@ -444,29 +462,29 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.appendChild(uuid);
 
 	//names of element
-	root.appendChild(m_names_list.toXml(xml_document));
+	root.appendChild(m_element_data.m_names_list.toXml(xml_document));
 
-	if (m_elmt_type == "slave" || m_elmt_type == "master")
+	auto type_ = m_element_data.m_type;
+	if (type_ == ElementData::Slave  ||
+		type_ == ElementData::Master ||
+		type_ == ElementData::Terminale)
 	{
-		QDomElement kindInfo = xml_document.createElement("kindInformations");
-		m_elmt_kindInfo.toXml(kindInfo, "kindInformation");
-		root.appendChild(kindInfo);
+		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
 
-	if(
-			m_elmt_type == "simple"
-			|| m_elmt_type == "master"
-			|| m_elmt_type == "terminal")
+	if(type_ == ElementData::Simple ||
+	   type_ == ElementData::Master ||
+	   type_ == ElementData::Terminale)
 	{
 		QDomElement element_info = xml_document.createElement("elementInformations");
-		m_elmt_information.toXml(element_info, "elementInformation");
+		m_element_data.m_informations.toXml(element_info, "elementInformation");
 		root.appendChild(element_info);
 	}
 
 	//complementary information about the element
 	QDomElement informations_element = xml_document.createElement("informations");
 	root.appendChild(informations_element);
-	informations_element.appendChild(xml_document.createTextNode(informations()));
+	informations_element.appendChild(xml_document.createTextNode(m_element_data.m_drawing_information));
 
 	QDomElement description = xml_document.createElement("description");
 
@@ -544,9 +562,16 @@ void ElementScene::fromXml(
 {
 	bool state = true;
 
-	//Consider the informations of the element
-	if (consider_informations) {
-		state = applyInformations(xml_document);
+		//Consider the informations of the element
+	if (consider_informations)
+	{
+			// Root must be an element definition
+		QDomElement root = xml_document.documentElement();
+
+		if (root.tagName() == "definition" &&
+			root.attribute("type") == "element") {
+			m_element_data.fromXml(root);
+		}
 	}
 
 	if (state)
@@ -699,19 +724,6 @@ QETElementEditor* ElementScene::editor() const
 }
 
 /**
-	@brief ElementScene::setElementInfo
-	@param dc
-*/
-void ElementScene::setElementInfo(const DiagramContext& dc)
-{
-	if(m_elmt_information != dc)
-	{
-		m_elmt_information = dc;
-		emit elementInfoChanged();
-	}
-}
-
-/**
 	@brief ElementScene::slot_select
 	Select the item in content,
 	every others items in the scene are deselected
@@ -832,7 +844,7 @@ void ElementScene::slot_editAuthorInformations()
 	// ajoute un QTextEdit au dialogue
 	QTextEdit *text_field = new QTextEdit();
 	text_field -> setAcceptRichText(false);
-	text_field -> setPlainText(informations());
+	text_field -> setPlainText(m_element_data.m_drawing_information);
 	text_field -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(text_field);
 
@@ -850,10 +862,10 @@ void ElementScene::slot_editAuthorInformations()
 	if (dialog_author.exec() == QDialog::Accepted && !is_read_only)
 	{
 		QString new_infos = text_field -> toPlainText().remove(QChar(13)); // CR-less text
-		if (new_infos != informations())
+		if (new_infos != m_element_data.m_drawing_information)
 		{
 			undoStack().push(new ChangeInformationsCommand(
-								 this, informations(), new_infos));
+								 this, m_element_data.m_drawing_information, new_infos));
 		}
 	}
 }
@@ -864,20 +876,15 @@ void ElementScene::slot_editAuthorInformations()
 */
 void  ElementScene::slot_editProperties()
 {
-	QString type = m_elmt_type;
-	DiagramContext kind_info = m_elmt_kindInfo;
-	DiagramContext elmt_info = m_elmt_information;
-
-	ElementPropertiesEditorWidget epew(type, kind_info, elmt_info);
+	ElementPropertiesEditorWidget epew(m_element_data);
 	epew.exec();
 
-	if (type != m_elmt_type ||
-		kind_info != m_elmt_kindInfo ||
-		elmt_info != m_elmt_information)
-		undoStack().push(new ChangePropertiesCommand(this,
-								 type,
-								 kind_info,
-								 elmt_info));
+	if (m_element_data != epew.editedData())
+	{
+		undoStack().push(new changeElementDataCommand(this,
+													  m_element_data,
+													  epew.editedData()));
+	}
 }
 
 /**
@@ -897,15 +904,15 @@ void ElementScene::slot_editNames()
 	dialog_.setInformationText(tr("Vous pouvez spécifier le nom de l'élément dans plusieurs langues."));
 
 	NameListWidget *nlw_ = dialog_.namelistWidget();
-	nlw_->setNames(m_names_list);
+	nlw_->setNames(m_element_data.m_names_list);
 	nlw_->setReadOnly(is_read_only);
 
 	if (dialog_.exec() == QDialog::Accepted && !is_read_only && !nlw_->isEmpty())
 	{
 		NamesList new_names = nlw_->names();
-		if (new_names != m_names_list) {
+		if (new_names != m_element_data. m_names_list) {
 			undoStack().push(new ChangeNamesCommand(this,
-								m_names_list,
+								m_element_data.m_names_list,
 								new_names));
 		}
 	}
@@ -1084,62 +1091,6 @@ QRectF ElementScene::elementContentBoundingRect(
 		bounding_rect |= qgi -> sceneBoundingRect();
 	}
 	return(bounding_rect);
-}
-
-/**
-	@brief ElementScene::applyInformations
-	Applies the information (dimensions, hostpot, orientations,
-	internal connections, names and additional information)
-	contained in an XML document.
-	\~French Applique les informations (dimensions, hostpot, orientations,
-	connexions internes, noms et informations complementaires)
-	contenu dans un document XML.
-	\~ @param xml_document : Document XML a analyser
-	\~ @return
-	true if reading and applying the information went well, false otherwise.
-	\~French true si la lecture et l'application
-	des informations s'est bien passee, false sinon.
-*/
-bool ElementScene::applyInformations(const QDomDocument &xml_document)
-{
-	// Root must be an element definition
-	QDomElement root = xml_document.documentElement();
-
-	if (
-			root.tagName() != "definition"
-			||
-			root.attribute("type") != "element")
-		return(false);
-
-	//Extract info about element type
-	m_elmt_type = root.attribute("link_type", "simple");
-	m_elmt_kindInfo.fromXml(
-				root.firstChildElement("kindInformations"),
-				"kindInformation");
-	//Extract info of element
-	m_elmt_information.fromXml(
-				root.firstChildElement("elementInformations"),
-				"elementInformation");
-
-	//Extract names of xml definition
-	m_names_list.fromXml(root);
-
-	//extract additional informations
-	setInformations(QString());
-	for (QDomNode node = root.firstChild() ;
-		 !node.isNull() ;
-		 node = node.nextSibling())
-	{
-		QDomElement elmt = node.toElement();
-		if (elmt.isNull()) continue;
-		if (elmt.tagName() == "informations")
-		{
-			setInformations(elmt.text());
-			break;
-		}
-	}
-
-	return(true);
 }
 
 /**

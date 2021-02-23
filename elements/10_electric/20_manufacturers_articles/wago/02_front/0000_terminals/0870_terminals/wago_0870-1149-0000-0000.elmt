@@ -1,0 +1,19 @@
+<definition height="330" link_type="simple" hotspot_y="139" hotspot_x="4" version="0.80" type="element" width="10">
+    <names>
+        <name lang="de">870-1149</name>
+        <name lang="fr">870-1149</name>
+        <name lang="en">870-1149</name>
+        <name lang="cs">870-1149</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">870-1149</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:orange;color:orange" y4="185" y1="-134.17" y2="-134.17" x1="-1" y3="185" x4="-1" antialias="false" x2="2.5" x3="2.5"/>
+    </description>
+</definition>

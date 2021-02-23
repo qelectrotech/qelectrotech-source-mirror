@@ -2,6 +2,7 @@
     <uuid uuid="{a5d0a5d8-2c67-4495-bd4c-2d88ddf7311a}"/>
     <names>
         <name lang="fr">6 DO</name>
+        <name lang="cs">6 DO</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">simple</kindInformation>

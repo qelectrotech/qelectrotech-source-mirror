@@ -1,6 +1,24 @@
+/*
+	Copyright 2006-2021 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #include "terminaldata.h"
 
 #include <QGraphicsObject>
+#include <QDebug>
 
 TerminalData::TerminalData():
 	PropertiesInterface()
@@ -44,8 +62,8 @@ void TerminalData::setParent(QGraphicsObject* parent)
 void TerminalData::toSettings(QSettings &settings, const QString &prefix) const
 
 {
-	Q_UNUSED(settings);
-	Q_UNUSED(prefix);
+	Q_UNUSED(settings)
+	Q_UNUSED(prefix)
 }
 
 /**
@@ -58,8 +76,8 @@ void TerminalData::toSettings(QSettings &settings, const QString &prefix) const
 */
 void TerminalData::fromSettings(QSettings &settings, const QString& prefix)
 {
-	Q_UNUSED(settings);
-	Q_UNUSED(prefix);
+	Q_UNUSED(settings)
+	Q_UNUSED(prefix)
 }
 
 /**
@@ -78,8 +96,6 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("terminaldata");
 
-	// write the position of the terminal
-	// Write name and number to XML
 	// m_pos cannot be stored, because in the partterminal it will not be updated.
 	// In PartTerminal m_pos is the position of the dock, in Terminal m_pos is the second side of the terminal
 	// This is hold for legacy compability reason
@@ -87,6 +103,7 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 	xml_element.appendChild(createXmlProperty(xml_document, "y", m_pos.y()));
 	xml_element.appendChild(createXmlProperty(xml_document, "name", m_name));
 	xml_element.appendChild(createXmlProperty(xml_document, "orientation", orientationToString(m_orientation)));
+	xml_element.appendChild(createXmlProperty(xml_document, "type", typeToString(m_type));
 
 	return(xml_element);
 }
@@ -135,6 +152,11 @@ bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 	// read the orientation of the terminal
 	// lit l'orientation de la borne
 	m_orientation = orientationFromString(o);
+	
+	QStrint type;
+	if (propertyString(xml_element, "type", &type))
+		return false;
+	m_type = typeFromString(type);
 	return true;
 }
 
@@ -142,8 +164,9 @@ bool TerminalData::valideXml(const QDomElement& xml_element) {
 	if (propertyDouble(xml_element, "x"))
 		return false;
 
-	if (propertyDouble(xml_element, "y"))
+	if (propertyString(xml_element, "type"))
 		return false;
+
 
 	  // legacy elements do not have an uuid
 //	if (propertyUuid(xml_element, "uuid"))
@@ -155,4 +178,42 @@ bool TerminalData::valideXml(const QDomElement& xml_element) {
 	if (propertyString(xml_element, "orientation"))
 		return false;
 	return true;
+}
+
+/**
+ * @brief TerminalData::typeToString
+ * @param type
+ * @return type into a QString
+ */
+QString TerminalData::typeToString(TerminalData::Type type)
+{
+	switch (type) {
+		case Generic:
+			return QString("Generic");
+		case Inner :
+			return QString("Inner");
+		case Outer :
+			return QString("Outer");
+	}
+}
+
+/**
+ * @brief TerminalData::typeFromString
+ * @param string
+ * @return The type describe in string to TerminalData::Type.
+ * if string doesn't describe a type, TerminalData::Generic is returned
+ */
+TerminalData::Type TerminalData::typeFromString(const QString &string)
+{
+	if (string == "Generic") {
+		return TerminalData::Generic;
+	} else if (string == "Inner") {
+		return TerminalData::Inner;
+	} else if (string == "Outer") {
+		return TerminalData::Outer;
+	} else {
+		qDebug() << "TerminalData::typeFromString, argument string is invalid"
+					" failsafe type 'TerminalData::Generic' is returned";
+		return TerminalData::Generic;
+	}
 }

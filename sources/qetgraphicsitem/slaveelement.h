@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,8 @@
 #ifndef SLAVEELEMENT_H
 #define SLAVEELEMENT_H
 
+#include "../properties/xrefproperties.h"
 #include "element.h"
-#include"properties/xrefproperties.h"
 
 class SlaveElement : public Element
 {

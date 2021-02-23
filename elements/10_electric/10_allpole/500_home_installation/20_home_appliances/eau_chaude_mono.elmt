@@ -2,6 +2,7 @@
     <uuid uuid="{1531c8b7-41b5-4245-a910-a072d2aada15}"/>
     <names>
         <name lang="fr">Eau Chaude Sanitaire mono</name>
+        <name lang="cs">Ohřívač vody</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

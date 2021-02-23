@@ -2,6 +2,7 @@
     <uuid uuid="{92ac8d4b-a63e-412f-acd1-b7766f65a303}"/>
     <names>
         <name lang="en">i-7563U-G - USB to 3 Channels 485 Converter</name>
+        <name lang="cs">i-7563U-G  Převodník USB - 3x RS485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7563U-G</elementInformation>

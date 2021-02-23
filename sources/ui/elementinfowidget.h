@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,10 @@
 #ifndef ELEMENTINFOWIDGET_H
 #define ELEMENTINFOWIDGET_H
 
-#include <QWidget>
+#include "../diagramcontext.h"
 #include "abstractelementpropertieseditorwidget.h"
-#include "diagramcontext.h"
+
+#include <QWidget>
 
 class Element;
 class QUndoCommand;

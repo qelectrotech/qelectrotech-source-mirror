@@ -4,6 +4,7 @@
         <name lang="fr">Commutateur à commande par levier à trois
 positions</name>
         <name lang="de">Schalter mit drei Schaltstellungen</name>
+        <name lang="cs">Páčkový ovládací spínač, třípolohový</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

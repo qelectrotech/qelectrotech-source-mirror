@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,18 +15,19 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QPainter>
-#include <utility>
-#include <QLocale>
-
-#include "titleblocktemplate.h"
-#include "titleblocktemplaterenderer.h"
 #include "bordertitleblock.h"
-#include "diagramposition.h"
-#include "qetapp.h"
-#include "math.h"
+
 #include "createdxf.h"
 #include "diagram.h"
+#include "diagramposition.h"
+#include "math.h"
+#include "qetapp.h"
+#include "titleblocktemplate.h"
+#include "titleblocktemplaterenderer.h"
+
+#include <QLocale>
+#include <QPainter>
+#include <utility>
 
 #define MIN_COLUMN_COUNT 3
 #define MIN_ROW_COUNT 3
@@ -978,7 +979,14 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 		if (last_digit != 'Z') {
 			// increments the last digit
 			// incremente le dernier digit
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 			last_digit = last_digit.toLatin1() + 1;
+#else
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
+			qDebug() << "Help code for QT 6 or later";
+#endif
 			return(first_digits + QString(last_digit));
 		} else {
 			return(incrementLetters(first_digits) + "A");

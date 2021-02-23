@@ -4,6 +4,7 @@
         <name lang="fr">Moteur asynchrone triphasé, à rotor en court-
 circuit</name>
         <name lang="de">Drehstrom-Asynchronmotor mit Käfigläufer </name>
+        <name lang="cs">Trojfázový indukční motor s kotvou nakrátko</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{23ca9091-a7f1-4a59-9233-5d6c69bc9b9c}"/>
     <names>
         <name lang="fr">Four à micro-ondes</name>
+        <name lang="cs">Mikrovlnná trouba</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

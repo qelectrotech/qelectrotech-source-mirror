@@ -4,6 +4,7 @@
         <name lang="de">Kreuzung zweier unabhängiger Verteilsysteme</name>
         <name lang="fr">Croisement de deux canalisations
 indépendantes</name>
+        <name lang="cs">Křížení dvou nezávislých systémů</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

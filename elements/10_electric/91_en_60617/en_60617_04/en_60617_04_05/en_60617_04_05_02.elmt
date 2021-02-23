@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Magnetkern, eine Wicklung mit n Windungen</name>
         <name lang="fr">Tore de ferrite avec un enroulement à n tours</name>
+        <name lang="cs">Feritové jádro s jedním vinutím o n závitech</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

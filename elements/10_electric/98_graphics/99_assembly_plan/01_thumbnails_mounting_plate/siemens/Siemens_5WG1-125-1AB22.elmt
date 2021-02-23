@@ -2,6 +2,7 @@
     <uuid uuid="{41c6b983-e804-4d63-93d4-ca174faa1604}"/>
     <names>
         <name lang="fr">5WG1-125-1AB22 - Power Supply 640mA</name>
+        <name lang="cs">5WG1-125-1AB22 - Napájecí zdroj 640mA</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

@@ -4,6 +4,8 @@
         <name lang="de">Kurvenfeuer, weiss, einseitig strahlend</name>
         <name lang="fr">Feu de virage, faisceau blanc et unidirectionnel
 (en surface)</name>
+        <name lang="cs">Světelné návěstidlo v zatáčce,
+barva bílá a jednosměrný svazek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

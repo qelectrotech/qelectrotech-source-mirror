@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/AUX - Configurateur AUX</name>
         <name lang="en">3501/AUX - Configurator AUX</name>
+        <name lang="cs">3501/AUX - Konfigurátor AUX</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Configurator AUX</elementInformation>

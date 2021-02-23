@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "rotatetextscommand.h"
-#include "diagramcontent.h"
-#include "diagram.h"
-#include "diagramtextitem.h"
-#include "elementtextitemgroup.h"
-#include "conductortextitem.h"
-#include "qetapp.h"
-#include "qtextorientationspinboxwidget.h"
+
+#include "../diagram.h"
+#include "../diagramcontent.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/conductortextitem.h"
+#include "../qetgraphicsitem/diagramtextitem.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qtextorientationspinboxwidget.h"
 
 /**
 	@brief RotateTextsCommand::RotateTextsCommand

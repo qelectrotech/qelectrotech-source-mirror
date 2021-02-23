@@ -2,6 +2,7 @@
     <uuid uuid="{4d6a3997-662c-4dba-821a-a34269f6921e}"/>
     <names>
         <name lang="fr">412404 - Télérupteur temporisé 1P 16A 250V - 1F 12V</name>
+        <name lang="cs">412404 - Impulzní spínač 1P 16A 250V - 1F 12V</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

@@ -5,6 +5,7 @@
 Resonanzrelais</name>
         <name lang="fr">Organe de commande d'un relais à résonance
 mécanique</name>
+        <name lang="cs">Cívka přístroje s mechanickou rezonancí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

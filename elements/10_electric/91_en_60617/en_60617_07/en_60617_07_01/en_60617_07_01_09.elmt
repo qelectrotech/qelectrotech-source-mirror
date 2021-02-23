@@ -3,6 +3,7 @@
     <names>
         <name lang="de">zwangsläufige Betätigung eines Schalters </name>
         <name lang="fr">Manœuvre positive d'un interrupteur</name>
+        <name lang="cs">Zaručená činnost spínače</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,7 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partterminal.h"
-#include "terminal.h"
+
+#include "../../qetgraphicsitem/terminal.h"
 
 /**
 	@brief PartTerminal::PartTerminal
@@ -98,7 +99,7 @@ void PartTerminal::paint(
 		const QStyleOptionGraphicsItem *options,
 		QWidget *widget)
 {
-	Q_UNUSED(widget);
+	Q_UNUSED(widget)
 	painter -> save();
 
 	// annulation des renderhints
@@ -124,7 +125,7 @@ void PartTerminal::paint(
 	// dessin de la borne en rouge
 	t.setColor(isSelected() ? Terminal::neutralColor : Qt::red);
 	painter -> setPen(t);
-	painter -> drawLine(QPointF(0.0, 0.0), d -> second_point);
+	painter -> drawLine(QPointF(0.0, 0.0), d -> m_second_point);
 
 	// dessin du point d'amarrage au conducteur en bleu
 	t.setColor(isSelected() ? Qt::red : Terminal::neutralColor);
@@ -144,7 +145,7 @@ void PartTerminal::paint(
 QPainterPath PartTerminal::shape() const
 {
 	QPainterPath shape;
-	shape.lineTo(d -> second_point);
+	shape.lineTo(d -> m_second_point);
 
 	QPainterPathStroker pps;
 	pps.setWidth(1);
@@ -158,7 +159,7 @@ QPainterPath PartTerminal::shape() const
 */
 QRectF PartTerminal::boundingRect() const
 {
-	QRectF br(QPointF(0, 0), d -> second_point);
+	QRectF br(QPointF(0, 0), d -> m_second_point);
 	br = br.normalized();
 
 	qreal adjust = (SHADOWS_HEIGHT + 1) / 2;
@@ -187,6 +188,20 @@ void PartTerminal::setName(QString& name) {
 	emit nameChanged();
 }
 
+/**
+ * @brief PartTerminal::setTerminalType
+ * Set the type of terminal to 'type'
+ * @param type
+ */
+void PartTerminal::setTerminalType(TerminalData::Type type)
+{
+	if (d->m_type == type) {
+		return;
+	}
+	d->m_type = type;
+	emit terminalTypeChanged();
+}
+
 void PartTerminal::setNewUuid()
 {
 	d -> m_uuid = QUuid::createUuid();
@@ -200,10 +215,10 @@ void PartTerminal::updateSecondPoint()
 {
 	qreal ts = 4.0; // terminal size
 	switch(d -> m_orientation) {
-		case Qet::North: d -> second_point = QPointF(0.0,  ts); break;
-		case Qet::East : d -> second_point = QPointF(-ts, 0.0); break;
-		case Qet::South: d -> second_point = QPointF(0.0, -ts); break;
-		case Qet::West : d -> second_point = QPointF(ts,  0.0); break;
+		case Qet::North: d -> m_second_point = QPointF(0.0,  ts); break;
+		case Qet::East : d -> m_second_point = QPointF(-ts, 0.0); break;
+		case Qet::South: d -> m_second_point = QPointF(0.0, -ts); break;
+		case Qet::West : d -> m_second_point = QPointF(ts,  0.0); break;
 	}
 }
 

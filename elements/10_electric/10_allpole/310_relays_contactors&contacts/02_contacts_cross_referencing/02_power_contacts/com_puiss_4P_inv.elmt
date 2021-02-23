@@ -1,0 +1,51 @@
+<definition version="0.80" link_type="slave" hotspot_x="90" height="60" width="100" type="element" hotspot_y="29">
+    <uuid uuid="{baa1b63b-88e4-4d36-bf15-73a7b845b60b}"/>
+    <names>
+        <name lang="en">Contactor 1 changeover 4 poles</name>
+        <name lang="fr">Contacteur 1 inverseur 4 poles</name>
+        <name lang="cs">Stykač 1 s mech. blokováním 4p</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="number" show="1">4</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="type" show="1">power</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="0" length2="1.48" antialias="false" end1="none" y2="0" length1="1.5" end2="none" x1="-83" x2="-3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="6&#xa;T3" y="18" x="-36" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="4&#xa;T2" y="18" x="-56" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="8&#xa;T4" y="18" x="-16" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <polygon y1="-10" x3="-20" closed="false" antialias="true" y2="10" x1="-25" y3="20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" x3="-40" closed="false" antialias="true" y2="10" x1="-45" y3="20" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" x3="-60" closed="false" antialias="true" y2="10" x1="-65" y3="20" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-10" length1="1.5" end2="none" x1="-40" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-10" length1="1.5" end2="none" x1="-60" x2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text frame="false" rotation="0" z="10" text_width="-1" y="-10" uuid="{cf89cd93-26be-471d-aaae-5af0536b9bb9}" Valignment="AlignTop" x="-100" text_from="ElementInfo" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-10" length1="1.5" end2="none" x1="-20" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="2&#xa;T1" y="18" x="-76" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <arc antialias="true" y="-14.5" height="5" width="5" x="-42.5" start="-90" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" y="-14.5" height="5" width="5" x="-22.5" start="-90" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" y="-14.5" height="5" width="5" x="-62.5" start="-90" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="3&#xa;L2" y="-20" x="-55" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="5&#xa;L3" y="-20" x="-36" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="7&#xa;L4" y="-20" x="-16" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <polygon y1="-10" x3="-80" closed="false" antialias="true" y2="10" x1="-85" y3="20" x2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" length2="1.5" antialias="false" end1="none" y2="-10" length1="1.5" end2="none" x1="-80" x2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc antialias="true" y="-14.5" height="5" width="5" x="-82.5" start="-90" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" color="#000000" text="1&#xa;L1" y="-20" x="-76" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <polygon y1="-2" y4="-2" x3="0" antialias="false" x4="-4" y2="-2" x1="-4" y3="3" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal name="7" orientation="n" y="-20" uuid="{aef20556-47cf-474c-8766-ff7d847b000a}" x="-20"/>
+        <terminal name="3" orientation="n" y="-20" uuid="{4c167395-1a48-4105-bf26-a9498814a1f3}" x="-60"/>
+        <terminal name="6" orientation="s" y="20" uuid="{80aa01e9-8810-42e4-a39f-9f097cec5126}" x="-40"/>
+        <terminal name="1" orientation="n" y="-20" uuid="{611c6946-9a08-4c22-9704-f2cf240ff731}" x="-80"/>
+        <terminal name="4" orientation="s" y="20" uuid="{a82fb8b8-00ad-4fa9-bbe3-a7ef6527b523}" x="-60"/>
+        <terminal name="5" orientation="n" y="-20" uuid="{f4e10dc4-bf5f-41a7-8623-240a3d1ad917}" x="-40"/>
+        <terminal name="2" orientation="s" y="20" uuid="{a30378fb-df7f-41fc-9ebf-e6237d0a70e0}" x="-80"/>
+        <terminal name="8" orientation="s" y="20" uuid="{5277858a-4998-4df0-b3df-38835be0b1d0}" x="-20"/>
+    </description>
+</definition>

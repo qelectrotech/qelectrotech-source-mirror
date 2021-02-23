@@ -2,6 +2,7 @@
     <uuid uuid="{83b9e74f-4b98-46c0-bb19-bfc1a05ad683}"/>
     <names>
         <name lang="fr">Eau Chaude Sanitaire tri</name>
+        <name lang="cs">Ohřívač vody 3f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

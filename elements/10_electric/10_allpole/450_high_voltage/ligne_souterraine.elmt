@@ -1,7 +1,7 @@
 <definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="20" hotspot_y="2">
     <uuid uuid="{2c964aeb-f85b-4888-b7ea-23f53dad397b}"/>
     <names>
-        <name lang="cs">Podzemní vodič, zemní kabel</name>
+        <name lang="cs">Podzemní kabel</name>
         <name lang="it">Linea sotteranea</name>
         <name lang="pl">Linia podziemna</name>
         <name lang="en">Underground line</name>

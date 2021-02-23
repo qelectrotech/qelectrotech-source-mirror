@@ -4,6 +4,7 @@
         <name lang="fr">Effet de claquage symétrique</name>
         <name lang="de">Durchbruch-Effekt, in beiden Richtungen
 (bidirektional)</name>
+        <name lang="cs">Obousměrný průrazový jev</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

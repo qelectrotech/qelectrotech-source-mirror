@@ -1,0 +1,42 @@
+<definition link_type="terminal" type="element" width="40" hotspot_x="20" hotspot_y="26" height="50" version="0.80">
+    <uuid uuid="{5177612b-985d-46c5-bcfc-e39abbcd8ce3}"/>
+    <names>
+        <name lang="de">3-polig</name>
+        <name lang="en">Wire Connector 3-Port</name>
+        <name lang="cs">Svorka 3 vodiče</name>
+        <name lang="hu">Kötőelem 3 tagos</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>
+      Author convertor: Mario Luongo
+
+
+   </informations>
+    <description>
+        <rect antialias="false" rx="1" x="-17.7" y="-22.5" width="35.4" height="42" style="line-style:normal;line-weight:normal;filling:lightgray;color:gray" ry="1"/>
+        <rect antialias="false" rx="0" x="-4" y="-17" width="8" height="3" style="line-style:normal;line-weight:thin;filling:HTMLGrayGainsboro;color:white" ry="0"/>
+        <rect antialias="false" rx="1" x="-14" y="-10" width="8" height="30" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1"/>
+        <rect antialias="false" rx="1" x="-4" y="-10" width="8" height="30" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1"/>
+        <rect antialias="false" rx="1" x="6" y="-10" width="8" height="30" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1"/>
+        <line y1="5" length1="1.5" x1="-10" antialias="false" x2="-10" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" end1="none"/>
+        <line y1="5" length1="1.5" x1="0" antialias="false" x2="0" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" end1="none"/>
+        <line y1="-5" length1="1.5" x1="10" antialias="false" x2="-10" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" end1="none"/>
+        <line y1="-5" length1="1.5" x1="10" antialias="false" x2="10" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end1="none"/>
+        <circle antialias="false" x="-1" y="-6" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="2"/>
+        <terminal uuid="{5bc3f241-865f-4fce-a096-cc053e70df2c}" x="10" y="5" orientation="s" name=""/>
+        <terminal uuid="{3f89f462-c81c-47dd-a912-2d2c8fc73c30}" x="0" y="5" orientation="s" name=""/>
+        <terminal uuid="{b6b6837c-1fb0-4d51-b82e-f75652e7bf95}" x="-10" y="5" orientation="s" name=""/>
+    </description>
+</definition>

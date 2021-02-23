@@ -2,6 +2,7 @@
     <uuid uuid="{0ec7e035-5779-42d8-99e0-5579abd7c684}"/>
     <names>
         <name lang="en">PN3001</name>
+        <name lang="cs">PN3001</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

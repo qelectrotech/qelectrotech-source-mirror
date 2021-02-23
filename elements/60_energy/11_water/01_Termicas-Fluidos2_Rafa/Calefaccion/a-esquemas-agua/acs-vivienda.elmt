@@ -18,7 +18,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line y2="-9.7505" end1="none" y1="-9.7505" length2="1.5" length1="1.5" end2="none" x2="11.0682" x1="0.014002" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

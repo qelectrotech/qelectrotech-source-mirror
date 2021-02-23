@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,11 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicsheaderitem.h"
+
+#include "../../createdxf.h"
+#include "../../qetxml.h"
+#include "../../utils/qetutils.h"
 #include "qabstractitemmodel.h"
-#include "qetxml.h"
-#include "qetutils.h"
-#include "createdxf.h"
 
 #include <QFontMetrics>
 #include <QPainter>
@@ -441,5 +442,7 @@ void QetGraphicsHeaderItem::adjustSize()
 void QetGraphicsHeaderItem::modelReseted()
 {
 	setUpMinimumSectionsSize();
+	m_current_sections_width.clear();
+	m_current_sections_width.resize(m_sections_minimum_width.size());
 	adjustSize();
 }

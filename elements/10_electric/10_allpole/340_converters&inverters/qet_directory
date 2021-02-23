@@ -6,10 +6,11 @@
         <name lang="fr">Convertisseurs et variateurs</name>
         <name lang="it">Convertitori e inverter</name>
         <name lang="pl">Przetworniki i przekształtniki</name>
+    	<name lang="pt_br">Conversores e inversores</name>
         <name lang="de">Umformer und Umrichter</name>
         <name lang="nl">Omzetters en Omkeerders</name>
         <name lang="el">Μετατροπείς και αντιστροφείς</name>
-        <name lang="cs">Měniče a plynulé převaděče</name>
+        <name lang="cs">Měniče a střídače</name>
         <name lang="ja">変換器とインバータ</name>
     </names>
 </qet-directory>

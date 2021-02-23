@@ -4,6 +4,7 @@
         <name lang="de">einfachgerichtete Kraft einfachgerichtete, geradlinige Bewegung</name>
         <name lang="es">Esfuerzo unidireccional, movimiento rectilíneo unidireccional</name>
         <name lang="fr">Effort unidirectionnel, Mouvement rectilinéaire unidirectionnel</name>
+        <name lang="cs">Jednosměrná síla, jednosměrný přímočarý pohyb - ve směru šipky</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

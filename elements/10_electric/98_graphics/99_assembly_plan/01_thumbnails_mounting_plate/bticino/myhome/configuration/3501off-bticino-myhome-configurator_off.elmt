@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/OFF - Configurateur OFF</name>
         <name lang="en">3501/OFF - Configurator OFF</name>
+        <name lang="cs">3501/OFF - Konfigurátor OFF</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Configurator OFF</elementInformation>

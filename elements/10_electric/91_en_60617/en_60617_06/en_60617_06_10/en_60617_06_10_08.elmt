@@ -5,6 +5,7 @@
 triangle</name>
         <name lang="de">Drehstromtransformator,
 Stern/Dreieckschaltung</name>
+        <name lang="cs">Trojfázový transformátor hvězda-trojúhelník</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

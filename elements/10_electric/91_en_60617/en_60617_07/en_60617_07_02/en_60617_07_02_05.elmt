@@ -4,6 +4,7 @@
         <name lang="fr">Contact à deux directions avec position
 médiane de coupure</name>
         <name lang="de">Wechsler mit Mittelstellung "Aus"</name>
+        <name lang="cs">Přepínací kontakt se střední klidovou polohou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

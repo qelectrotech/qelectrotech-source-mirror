@@ -4,6 +4,7 @@
         <name lang="fr">Impression sur Bande</name>
         <name lang="es">Impresión de banda</name>
         <name lang="de">Drucken auf einen Streifen </name>
+        <name lang="cs">Tisk na pásku</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

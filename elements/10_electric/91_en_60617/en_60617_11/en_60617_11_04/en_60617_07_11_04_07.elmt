@@ -5,6 +5,7 @@
 glissement du câble</name>
         <name lang="de">Einstiegschacht mit einem Kabel mit
 Kriechstromkompensator</name>
+        <name lang="cs">Vstupní šachta se zařízením proti posouvání kabelu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

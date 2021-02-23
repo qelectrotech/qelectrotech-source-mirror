@@ -2,6 +2,7 @@
     <uuid uuid="{fbaeb233-97c3-44d4-bd34-74071f06fe94}"/>
     <names>
         <name lang="fr">Code_Couleur Cablage</name>
+        <name lang="cs">Barevný kód kabelu</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">simple</kindInformation>

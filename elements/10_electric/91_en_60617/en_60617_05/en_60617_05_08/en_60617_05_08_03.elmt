@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Électrode de modulation d'intensité</name>
         <name lang="de">Intensitätsmodulier-Elektrode (Wehneltzylinder</name>
+        <name lang="cs">Řídící elektroda (modulační)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

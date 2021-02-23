@@ -1,0 +1,40 @@
+<definition type="element" hotspot_x="19" link_type="simple" height="50" width="40" hotspot_y="25" version="0.80">
+    <uuid uuid="{c7d0e778-bde2-4b8a-85d1-97345dd4eef8}"/>
+    <names>
+        <name lang="en">Fuse 3p</name>
+        <name lang="cs">Pojistka 3p</name>
+        <name lang="de">Sicherung 3p</name>
+        <name lang="fr">Fusible 3p</name>
+        <name lang="hu">Olvadóbiztosító 3 pólusú</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="7" rx="0" y="-10" height="20" antialias="false" ry="0" width="6"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="0.8125" color="#000000" text="3" y="-15" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="11" color="#000000" text="5" y="-15" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="1" color="#000000" text="4" y="19" rotation="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.6875" rx="0" y="-10" height="20" antialias="false" ry="0" width="6"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="11" color="#000000" text="6" y="19" rotation="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="-10" y2="20" length1="1.5" end2="none" length2="1.5" x1="-10" antialias="false" end1="none"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-9" color="#000000" text="2" y="19" rotation="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" rx="0" y="-10" height="20" antialias="false" ry="0" width="6"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-30" Halignment="AlignLeft" uuid="{c8fdb551-ba1e-4910-9293-206116b3640f}" y="-17" Valignment="AlignTop" z="9" rotation="0" text_from="ElementInfo" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="0" y2="20" length1="1.5" end2="none" length2="1.5" x1="0" antialias="false" end1="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" frame="false" x="-36" Halignment="AlignLeft" uuid="{9a3517e6-3bbf-4a00-8ebb-198952257b50}" y="0" Valignment="AlignTop" z="10" rotation="0" text_from="ElementInfo" text_width="-1">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="10" y2="20" length1="1.5" end2="none" length2="1.5" x1="10" antialias="false" end1="none"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-9" color="#000000" text="1" y="-15" rotation="0"/>
+        <terminal x="-10" uuid="{5985d006-9796-4e90-a278-fbb06c9842e1}" y="20" name="" orientation="s"/>
+        <terminal x="0" uuid="{a558c01d-720f-4ee5-b8fc-aca90c52b181}" y="20" name="" orientation="s"/>
+        <terminal x="0" uuid="{a078f70f-2f77-492d-a96a-c86399a376ba}" y="-20" name="" orientation="n"/>
+        <terminal x="-10" uuid="{61f16275-3023-4416-94fb-f2b02c3ead02}" y="-20" name="" orientation="n"/>
+        <terminal x="10" uuid="{aee46aca-d778-4f4c-b77c-abc8436c6481}" y="-20" name="" orientation="n"/>
+        <terminal x="10" uuid="{2dba3e52-95b9-4efb-9ffa-170fd3e516f8}" y="20" name="" orientation="s"/>
+    </description>
+</definition>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partdynamictextfield.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetapp.h"
-#include "elementscene.h"
 
-#include <QGraphicsSceneMouseEvent>
-#include <QFont>
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qetapp.h"
+#include "../elementscene.h"
+
 #include <QColor>
+#include <QFont>
+#include <QGraphicsSceneMouseEvent>
 
 PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
@@ -352,7 +353,7 @@ void PartDynamicTextField::setText(const QString &text) {
 void PartDynamicTextField::setInfoName(const QString &info_name) {
 	m_info_name = info_name;
 	if(m_text_from == DynamicElementTextItem::ElementInfo && elementScene())
-		setPlainText(elementScene() -> elementInformation().value(m_info_name).toString());
+		setPlainText(elementScene()->elementData().m_informations.value(m_info_name).toString());
 	emit infoNameChanged(m_info_name);
 }
 
@@ -372,7 +373,7 @@ QString PartDynamicTextField::infoName() const{
 void PartDynamicTextField::setCompositeText(const QString &text) {
 	m_composite_text = text;
 	if(m_text_from == DynamicElementTextItem::CompositeText && elementScene())
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene() -> elementInformation()));
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene()->elementData().m_informations));
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -585,10 +586,10 @@ void PartDynamicTextField::elementInfoChanged()
 		return;
 
 	if(m_text_from == DynamicElementTextItem::ElementInfo)
-		setPlainText(elementScene() -> elementInformation().value(m_info_name).toString());
+		setPlainText(elementScene()->elementData().m_informations.value(m_info_name).toString());
 	else if (m_text_from == DynamicElementTextItem::CompositeText && elementScene())
 		setPlainText(autonum::AssignVariables::replaceVariable(
-			m_composite_text, elementScene() -> elementInformation()));
+			m_composite_text, elementScene()->elementData().m_informations));
 }
 
 void PartDynamicTextField::prepareAlignment()

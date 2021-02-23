@@ -11,7 +11,7 @@
         <name lang="pl">Zestyk zwierny przekaźnika cieplnego</name>
         <name lang="es">Contacto relé térmico NA</name>
         <name lang="nl">Thermisch bediend contact (NO)</name>
-        <name lang="cs">Tepelné spojovací relé (NO)</name>
+        <name lang="cs">Kontakt (NO) tepelného jističe</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Anlasser (Blocksymbol), stetig veränderbar</name>
         <name lang="fr">Démarreur - régleur</name>
+        <name lang="cs">Spouštěč- regulátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

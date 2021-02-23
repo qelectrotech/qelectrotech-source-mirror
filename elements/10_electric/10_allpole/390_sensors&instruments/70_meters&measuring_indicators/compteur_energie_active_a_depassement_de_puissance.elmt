@@ -1,7 +1,7 @@
 <definition hotspot_y="29" type="element" height="50" width="40" hotspot_x="20" link_type="simple" version="0.5">
     <uuid uuid="{5d2fbcc2-bb81-4457-9560-44f42101a63e}"/>
     <names>
-        <name lang="cs">Počítadlo překročení spotřeby watthodin</name>
+        <name lang="cs">Měřič překročení spotřeby</name>
         <name lang="nl">Overcapaciteit teller</name>
         <name lang="it">Contatore di energia attiva a supero di potenza</name>
         <name lang="de">Überverbrauchszähler, Spitzenzähler&#xd;</name>

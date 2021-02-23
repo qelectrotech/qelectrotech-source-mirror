@@ -2,6 +2,7 @@
     <uuid uuid="{b80c45b5-a880-49f7-83d9-d7d796498528}"/>
     <names>
         <name lang="fr">Yucel_7Ah</name>
+        <name lang="cs">Yucel_7Ah</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1"></elementInformation>

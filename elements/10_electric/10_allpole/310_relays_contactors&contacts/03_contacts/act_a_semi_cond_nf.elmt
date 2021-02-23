@@ -6,7 +6,7 @@
         <name lang="it">Contatto a comando elettronico (NC)</name>
         <name lang="fr">Dispositif de commande à semi-conducteur NC</name>
         <name lang="pl">Zestyk rozwierny sterowany elektronicznie</name>
-        <name lang="cs">Přepínací zařízení s kontaktem NC řízené elektronicky</name>
+        <name lang="cs">Elektronicky řízený kontakt (NC)</name>
         <name lang="nl">Electronisch contact (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
