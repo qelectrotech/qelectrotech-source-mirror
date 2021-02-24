@@ -20,8 +20,8 @@
 #include "../autoNum/assignvariables.h"
 #include "../conductorproperties.h"
 
-#include "conductorproperties.h"
-#include "propertiesinterface.h"
+#include "../conductorproperties.h"
+#include "../properties/propertiesinterface.h"
 #include <QGraphicsPathItem>
 
 class ConductorProfile;

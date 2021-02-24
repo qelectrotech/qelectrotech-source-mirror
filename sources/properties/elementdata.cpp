@@ -19,12 +19,12 @@
 #include "../qetxml.h"
 #include <QDebug>
 
-void ElementData::toSettings(QSettings &settings, const QString prefix) const {
+void ElementData::toSettings(QSettings &settings, const QString& prefix) const {
 	Q_UNUSED(settings)
 	Q_UNUSED(prefix)
 }
 
-void ElementData::fromSettings(const QSettings &settings, const QString prefix) {
+void ElementData::fromSettings(QSettings &settings, const QString& prefix) {
 	Q_UNUSED(settings)
 	Q_UNUSED(prefix)
 }

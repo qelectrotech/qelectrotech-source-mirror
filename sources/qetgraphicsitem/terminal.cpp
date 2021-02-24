@@ -41,7 +41,7 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 	@param hiddenName
 */
-void Terminal::init()
+void Terminal::init(QString number, QString name, bool hiddenName)
 {
 		//Calcul the docking point of the element
 		//m_pos of d is the docking point of conductor
@@ -62,7 +62,13 @@ void Terminal::init()
 	origin += QPointF(-3.0, -3.0);
 	qreal w = qAbs(dcx - dex) + 7;
 	qreal h = qAbs(dcy - dey) + 7;
-	m_br = QRectF(origin, QSizeF(w, h));
+    m_br = QRectF(origin, QSizeF(w, h));
+
+    // Number of terminal
+    number_terminal_ = std::move(number);
+    // Name of terminal
+    d->m_name = std::move(name);
+    name_terminal_hidden = hiddenName;
 
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
@@ -84,7 +90,7 @@ void Terminal::init(
 		Qet::Orientation o,
 		QString number,
 		QString name,
-		bool hiddenName)
+        bool hiddenName)
 {
 	// definition du pount d'amarrage pour un conducteur
 	d->m_pos  = pf;
@@ -93,7 +99,7 @@ void Terminal::init(
 	if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
 	else d->m_orientation = o;
 
-	init(number, name, hiddenName);
+    init(number, name, hiddenName);
 }
 
 /**
@@ -154,7 +160,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
 	parent_element_(e)
 {
 	d->setParent(this);
-	init();
+    init("_", "_", false);
 }
 
 /**
@@ -162,7 +168,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
  * Destruction of the terminal, and also docked conductor
  */
 Terminal::~Terminal() {
-	qDeleteAll(m_conductors_list);
+    qDeleteAll(m_conductors_list);
 }
 
 /**
@@ -563,7 +569,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	//setCursor(Qt::CrossCursor);
 
 	// d'un mouvement a l'autre, il faut retirer l'effet hover de la borne precedente
-	if (m_previous_terminal) {
+    if (m_previous_terminal) {
 		if (m_previous_terminal == this) m_hovered = true;
 		else m_previous_terminal -> m_hovered = false;
 		m_previous_terminal -> m_hovered_color = m_previous_terminal -> neutralColor;

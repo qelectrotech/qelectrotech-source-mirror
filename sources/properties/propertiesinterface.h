@@ -23,7 +23,7 @@
 #include <QColor>
 #include <QDomElement>
 #include <limits>
-#include "qet.h"
+#include "sources/qet.h"
 #include <QUuid>
 
 /**
@@ -91,9 +91,6 @@ class PropertiesInterface
 		// = 4
 	};
 
-	/*!
-	 * Try not using the default Value feature. It is better to initialize the class members in the class definition!
-	 */
 	static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr);
 	static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr);
 	static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr);

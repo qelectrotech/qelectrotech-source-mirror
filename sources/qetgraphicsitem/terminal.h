@@ -21,8 +21,8 @@
 
 #include <QtWidgets>
 #include <QtXml>
-#include "qet.h"
-#include "propertiesinterface.h"
+#include "../qet.h"
+#include "../properties/propertiesinterface.h"
 
 class Conductor;
 class Diagram;
@@ -84,6 +84,11 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		int ID() const;
 		QPointF dockPos();
 		QPointF originPos();
+        QString number() const;
+        void setNumber(QString number);
+        void setName(QString name, bool hiddenName);
+        QString name() const;
+
 
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;
@@ -142,19 +147,19 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		QPointF dock_elmt_;
 	private:
 		/// List of conductors attached to the terminal
-		QList<Conductor *> conductors_;
+        QList<Conductor *> m_conductors_list;
 		/**
 			Pointer to a rectangle representing the terminal bounding rect;
 			used to calculate the bounding rect once only;
 			used a pointer because boundingRect() is supposed to be const.
 		*/
-		QRectF *br_{nullptr};
+        QRectF m_br;
 		/// Last terminal seen through an attached conductor
-		Terminal *previous_terminal_{nullptr};
+        Terminal *m_previous_terminal{nullptr};
 		/// Whether the mouse pointer is hovering the terminal
-		bool hovered_{false};
+        bool m_hovered{false};
 		/// Color used for the hover effect
-        QColor hovered_color_{Terminal::neutralColor};
+        QColor m_hovered_color{Terminal::neutralColor};
 		/// Number of Terminal
 		QString number_terminal_;
 		bool name_terminal_hidden{true};
@@ -163,8 +168,8 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		int m_id{-1};
 
 	private:
-		void init();
-		void init(QPointF pf, Qet::Orientation o);
+        void init(QString number, QString name, bool hiddenName);
+        void init(QPointF pf, Qet::Orientation o,QString number, QString name, bool hiddenName);
 };
 
 /**
@@ -173,7 +178,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 */
 inline int Terminal::conductorsCount() const
 {
-	return(m_conductors_list.size());
+    return(m_conductors_list.size());
 }
 
 /**

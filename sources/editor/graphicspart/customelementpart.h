@@ -19,7 +19,7 @@
 #define CUSTOM_ELEMENT_PART_H
 
 #include "../../qet.h"
-#include "propertiesinterface.h"
+#include "../../properties/propertiesinterface.h"
 
 class CustomElement;
 class ElementPrimitiveDecorator;

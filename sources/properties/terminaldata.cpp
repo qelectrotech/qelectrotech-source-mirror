@@ -103,7 +103,7 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 	xml_element.appendChild(createXmlProperty(xml_document, "y", m_pos.y()));
 	xml_element.appendChild(createXmlProperty(xml_document, "name", m_name));
 	xml_element.appendChild(createXmlProperty(xml_document, "orientation", orientationToString(m_orientation)));
-	xml_element.appendChild(createXmlProperty(xml_document, "type", typeToString(m_type));
+    xml_element.appendChild(createXmlProperty(xml_document, "type", typeToString(m_type)));
 
 	return(xml_element);
 }
@@ -153,7 +153,7 @@ bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 	// lit l'orientation de la borne
 	m_orientation = orientationFromString(o);
 	
-	QStrint type;
+    QString type;
 	if (propertyString(xml_element, "type", &type))
 		return false;
 	m_type = typeFromString(type);

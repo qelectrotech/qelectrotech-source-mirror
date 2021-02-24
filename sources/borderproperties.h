@@ -20,7 +20,7 @@
 #include <QtCore>
 #include <QtXml>
 
-#include "propertiesinterface.h"
+#include "properties/propertiesinterface.h"
 
 /**
 	@brief The BorderProperties class

@@ -18,7 +18,7 @@
 #ifndef ELEMENTDATA_H
 #define ELEMENTDATA_H
 
-#include "propertiesinterface.h"
+#include "../properties/propertiesinterface.h"
 #include "../diagramcontext.h"
 #include "../NameList/nameslist.h"
 
@@ -85,8 +85,8 @@ class ElementData : public PropertiesInterface
 		ElementData() {}
 		~ElementData() override {}
 
-		void toSettings(QSettings &settings, const QString prefix = QString()) const override;
-		void fromSettings(const QSettings &settings,  const QString prefix = QString()) override;
+        void toSettings(QSettings &settings, const QString& prefix = QString()) const override;
+        void fromSettings(QSettings &settings,  const QString& prefix = QString()) override;
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 		QDomElement kindInfoToXml(QDomDocument &document);

@@ -19,7 +19,7 @@
 #define TERMINALDATA_H
 
 #include "../qet.h"
-#include "propertiesinterface.h"
+#include "../properties/propertiesinterface.h"
 
 #include <QPointF>
 #include <QUuid>
@@ -73,11 +73,11 @@ class TerminalData : public PropertiesInterface
 		*/
 	Qet::Orientation m_orientation{Qet::Orientation::North};
 		/**
-			@brief second_point
+            @brief m_second_point
 			Position of the second point of the terminal
 			in scene coordinates
 		*/
-	QPointF second_point{0,0};
+    QPointF m_second_point{0,0};
 		/**
 			@brief m_uuid
 			Uuid of the terminal.

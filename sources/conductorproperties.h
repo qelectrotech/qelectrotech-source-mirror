@@ -22,7 +22,7 @@
 #include <QColor>
 #include <QSettings>
 
-#include "propertiesinterface.h"
+#include "properties/propertiesinterface.h"
 
 class QPainter;
 

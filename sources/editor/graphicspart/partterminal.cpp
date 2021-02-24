@@ -250,7 +250,7 @@ QRectF PartTerminal::sceneGeometricRect() const
 */
 void PartTerminal::startUserTransformation(const QRectF &initial_selection_rect) {
 	Q_UNUSED(initial_selection_rect)
-	saved_position_ = scenePos();
+    m_saved_position = scenePos();
 }
 
 /**
@@ -258,6 +258,6 @@ void PartTerminal::startUserTransformation(const QRectF &initial_selection_rect)
 */
 void PartTerminal::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
 	QPointF mapped_point = mapPoints(
-		initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_position_).first();
+        initial_selection_rect, new_selection_rect, QList<QPointF>() << m_saved_position).first();
 	setPos(mapped_point);
 }

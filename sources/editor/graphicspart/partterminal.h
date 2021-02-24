@@ -90,6 +90,6 @@ class PartTerminal : public CustomElementGraphicPart
         TerminalData* d{nullptr}; // pointer to the terminal data
 
 	private:
-		QPointF saved_position_;
+        QPointF m_saved_position;
 };
 #endif

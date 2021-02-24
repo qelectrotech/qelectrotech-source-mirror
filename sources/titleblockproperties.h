@@ -21,7 +21,7 @@
 #include "diagramcontext.h"
 #include "qet.h"
 
-#include "propertiesinterface.h"
+#include "properties/propertiesinterface.h"
 
 /**
 	This class provides a container for the properties of a particular title
