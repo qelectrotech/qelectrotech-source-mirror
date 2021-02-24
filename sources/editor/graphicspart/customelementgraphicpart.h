@@ -309,8 +309,6 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		void applyStylesToQPainter(QPainter &) const;
 		void drawShadowShape (QPainter *painter);
 
-		QVariant itemChange(GraphicsItemChange change,
-					const QVariant &value) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
