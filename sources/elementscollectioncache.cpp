@@ -53,31 +53,6 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		cache_db_.exec("PRAGMA synchronous = OFF");
 
 #if TODO_LIST
-#pragma message("@TODO This code remove old table with mtime for create table with uuid, created at version 0,5")
-#endif
-		//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
-		//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
-#if TODO_LIST
-#pragma message("@TODO remove this code for qet 0.6 or later")
-#endif
-		QSqlQuery table_name(cache_db_);
-		if (table_name.exec("PRAGMA table_info(names)"))
-		{
-			if (table_name.seek(2))
-			{
-				QString str = table_name.value(1).toString();
-				table_name.finish();
-				if (str == "mtime")
-				{
-					QSqlQuery error;
-					error = cache_db_.exec("DROP TABLE names");
-					error = cache_db_.exec("DROP TABLE pixmaps");
-				}
-			}
-			else
-				table_name.finish();
-		}
-#if TODO_LIST
 #pragma message("@TODO the tables could already exist, handle that case.")
 #endif
 			//@TODO the tables could already exist, handle that case.
