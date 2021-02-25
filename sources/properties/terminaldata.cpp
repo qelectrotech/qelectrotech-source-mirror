@@ -154,9 +154,9 @@ bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
 	m_orientation = orientationFromString(o);
 	
     QString type;
-	if (propertyString(xml_element, "type", &type))
-		return false;
-	m_type = typeFromString(type);
+    if (propertyString(xml_element, "type", &type) == PropertyFlags::Success)
+        m_type = typeFromString(type);
+
 	return true;
 }
 
@@ -164,8 +164,9 @@ bool TerminalData::valideXml(const QDomElement& xml_element) {
 	if (propertyDouble(xml_element, "x"))
 		return false;
 
-	if (propertyString(xml_element, "type"))
-		return false;
+    // Old projects do not have this property.
+//	if (propertyString(xml_element, "type"))
+//		return false;
 
 
 	  // legacy elements do not have an uuid
