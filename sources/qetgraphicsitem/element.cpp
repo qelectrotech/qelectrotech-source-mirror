@@ -862,27 +862,6 @@ bool Element::fromXml(
 	DiagramContext dc;
 	dc.fromXml(e.firstChildElement("elementInformations"),
 		   "elementInformation");
-	/*
-	 * Since the commit 4791, the value used as "label" and "formula"
-	 * is stored in differents keys (instead of the same key,
-	 * "label" in previous version), so, if "label" contain "%"
-	 * (Use variable value), and "formula" does not exist,
-	 * this mean the label was made before commit 4791 (0.51 dev).
-	 * So we swap the value stored in "label" to "formula" as expected.
-	 * @TODO remove this code at version 0.7 or more (probably useless).
-	 */
-#if TODO_LIST
-#pragma message("@TODO remove this code for qet 0.7 or later")
-#endif
-	if (dc["label"].toString().contains("%")
-			&& dc["formula"].toString().isNull())
-	{
-		dc.addValue("formula", dc["label"]);
-	}
-		//retrocompatibility with older version
-	if(dc.value("label").toString().isEmpty() &&
-	   !m_data.m_informations.value("label").toString().isEmpty())
-		dc.addValue("label", m_data.m_informations.value("label"));
 
 	//We must to block the update of the alignment when load the information
 	//otherwise the pos of the text will not be the same as it was at save time.
