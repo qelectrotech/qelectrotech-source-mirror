@@ -852,26 +852,8 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	m_brush = QETXML::brushFromXml(e.firstChildElement("brush"));
 
 	QString type = e.attribute("type");
-#if TODO_LIST
-#pragma message("@TODO Compatibility for version older than N°4075, shape type was stored with an int")
-#endif
-		//@TODO Compatibility for version older than N°4075, shape type was stored with an int
-	if (type.size() == 1)
-	{
-		switch(e.attribute("type","0").toInt())
-		{
-			case 0: m_shapeType = Line;      break;
-			case 1: m_shapeType = Rectangle; break;
-			case 2: m_shapeType = Ellipse;   break;
-			case 3: m_shapeType = Polygon;  break;
-		}
-	}
-		//For version after N°4075, shape is stored with a string
-	else
-	{
-		QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
-		m_shapeType = QetShapeItem::ShapeType(me.keysToValue(type.toStdString().data()));
-	}
+	QMetaEnum me = metaObject()->enumerator(metaObject()->indexOfEnumerator("ShapeType"));
+	m_shapeType = QetShapeItem::ShapeType(me.keysToValue(type.toStdString().data()));
 
 	if (m_shapeType != Polygon)
 	{
