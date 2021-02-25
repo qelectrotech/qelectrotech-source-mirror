@@ -368,14 +368,6 @@ void ConductorProperties::fromXml(QDomElement &e)
 						"vertical-alignment",
 						"AlignRight"
 						).toStdString().data()));
-
-	//Keep retrocompatible with version older than 0,4
-	//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
-	//@TODO remove this code for qet 0.6 or later
-#if TODO_LIST
-#pragma message("@TODO remove this code for qet 0.6 or later")
-#endif
-	if (e.attribute("type") == "simple") m_show_text = false;
 }
 
 /**
