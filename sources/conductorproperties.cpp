@@ -391,7 +391,6 @@ bool ConductorProperties::fromXml(const QDomElement &e)
 	propertyDouble(e, "horizrotatetext", &horiz_rotate_text);
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-
 	QString alinment_temp;
 	if (propertyString(e, "horizontal-alignment", &alinment_temp) == PropertyFlags::Success)
 		m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
