@@ -1311,6 +1311,27 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 					return;
 				}
 			}
+				//Since QElectrotech 0.9 the compatibility with project made with
+				//Qet 0.6 or lower is break;
+			if (conv_ok && m_project_qet_version <= 0.6 )
+			{
+				auto ret = QET::QetMessageBox::warning(
+							   nullptr,
+							   tr("Avertissement ", "message box title"),
+							   tr("Le projet que vous tentez d'ouvrir est partiellement "
+								  "compatible avec votre version de QElectroTech.\n"
+								  "Afin de le rendre totalement compatible veuillez ouvrir ce même projet "
+								  "avec la version 0.8 de QElectroTech sauvegarder le projet "
+								  "et l'ouvrir à  nouveau avec cette version.\n"
+								  "Que désirez vous faire ?"),
+							   QMessageBox::Open | QMessageBox::Cancel);
+
+				if (ret == QMessageBox::Cancel)
+				{
+					m_state = FileOpenDiscard;
+					return;
+				}
+			}
 		}
 		setTitle(root_elmt.attribute("title"));
 	}
