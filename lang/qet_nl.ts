@@ -1127,7 +1127,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="504"/>
         <source>X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="607"/>
@@ -1811,12 +1811,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="113"/>
         <source>Élément bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementaansluiting</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="126"/>
         <source>Fonction</source>
-        <translation type="unfinished">Functie</translation>
+        <translation>Functie</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="156"/>
@@ -1918,37 +1918,37 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="142"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="143"/>
         <source>Fusible</source>
-        <translation type="unfinished"></translation>
+        <translation>Zekering</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
         <source>Séctionnable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deelbaar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
         <source>Diode</source>
-        <translation type="unfinished"></translation>
+        <translation>Diode</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="148"/>
         <source>Phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="149"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nul</translation>
+        <translation>Nul</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
         <source>Terre</source>
-        <translation type="unfinished">Aarde</translation>
+        <translation>Aarde</translation>
     </message>
 </context>
 <context>
@@ -5141,7 +5141,7 @@ De volgende variabelen zijn compatibel :
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="669"/>
         <source>Fichier (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand (*.pdf)</translation>
     </message>
 </context>
 <context>
@@ -6474,47 +6474,47 @@ Opties :
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="14"/>
         <source>QElectroTech - Éditeur d&apos;élément</source>
-        <translation type="unfinished">QElectroTech - Elementbewerker</translation>
+        <translation>QElectroTech - Elementbewerker</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="91"/>
         <source>&amp;Aide</source>
-        <translation type="unfinished">&amp;Help</translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="110"/>
         <source>Annulations</source>
-        <translation type="unfinished">Geschiedenis</translation>
+        <translation>Geschiedenis</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="122"/>
         <source>Parties</source>
-        <translation type="unfinished">Onderdelen</translation>
+        <translation>Onderdelen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="134"/>
         <source>Informations</source>
-        <translation type="unfinished">Informatie</translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="143"/>
         <source>Outils</source>
-        <translation type="unfinished"></translation>
+        <translation>Gereedschappen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="160"/>
         <source>Affichage</source>
-        <translation type="unfinished">Weergave</translation>
+        <translation>Weergave</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="175"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="188"/>
         <source>Annulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Geschiedenis</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="293"/>
@@ -6524,17 +6524,17 @@ Opties :
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="329"/>
         <source>C&amp;oller dans la zone</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;lakken in gebied</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="338"/>
         <source>Un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Een bestand</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="347"/>
         <source>Un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Een element</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="356"/>
@@ -6549,52 +6549,52 @@ Opties :
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="437"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished">O&amp;ver QElectroTech</translation>
+        <translation>O&amp;ver QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="440"/>
         <source>Affiche des informations sur QElectroTech</source>
-        <translation type="unfinished">Toon informatie over QElectroTech</translation>
+        <translation>Toon informatie over QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="449"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished">Online gebruiksaanwijzing</translation>
+        <translation>Online gebruiksaanwijzing</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="452"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
-        <translation type="unfinished">Bekijk met de standaardbrowser de online gebruiksaanwijzing van QElectroTech</translation>
+        <translation>Bekijk met de standaardbrowser de online gebruiksaanwijzing van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="461"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished">YouTube-kanaal</translation>
+        <translation>YouTube-kanaal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="464"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
-        <translation type="unfinished">Ga met de standaardbrowser naar het YouTube-kanaal van QElectroTech</translation>
+        <translation>Ga met de standaardbrowser naar het YouTube-kanaal van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="473"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished">Steun het project met een donatie</translation>
+        <translation>Steun het project met een donatie</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="476"/>
         <source>Soutenir le projet QElectroTech par un don</source>
-        <translation type="unfinished">Steun het QElectroTech-project met een donatie</translation>
+        <translation>Steun het QElectroTech-project met een donatie</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="485"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished">Over &amp;Qt</translation>
+        <translation>Over &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="488"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
-        <translation type="unfinished">Toon informatie over Qt bibliotheek</translation>
+        <translation>Toon informatie over Qt bibliotheek</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1030"/>
@@ -6941,7 +6941,7 @@ de DXFtoQET.app binary in /Users/user_name/.qet/ directory
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="73"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Weergave van panelen en werkbalken</translation>
+        <translation>Weergave van panelen en werkbalken</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="219"/>
@@ -7339,14 +7339,16 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="1320"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Waarschuwing </translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1321"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version de QElectroTech.
 Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8 de QElectroTech sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Het project dat u wilt openen is niet volledig compatibel met deze versie van Qelectrotech.
+Om dit project compatibel te maken met Qelectrotech versie 0.8 slaat u het met deze versie op en opent u het opnieuw.
+Wilt u dit doen ?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1379"/>
@@ -7750,7 +7752,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="92"/>
         <source>un element graphique</source>
-        <translation type="unfinished"></translation>
+        <translation>een grafisch element</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="103"/>
@@ -8061,7 +8063,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="600"/>
         <source>Modifier les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van het element wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partrectangle.h" line="60"/>
@@ -12038,17 +12040,17 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="122"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
         <source>Bornier intérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Interne aansluiting</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
         <source>Bornier extérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe aansluiting</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
@@ -12058,37 +12060,37 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Type aansluiting wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Aansluiting wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
         <source>y :</source>
-        <translation type="unfinished"></translation>
+        <translation>y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
         <source>Orientation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Oriëntatie :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
         <source>x :</source>
-        <translation type="unfinished"></translation>
+        <translation>x :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Type :</translation>
     </message>
 </context>
 <context>
