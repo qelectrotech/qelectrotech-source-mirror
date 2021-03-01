@@ -1114,7 +1114,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/diagramview.cpp" line="53"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>In diesem Bereich wird der Schaltplan erstellt.</translation>
+        <translation>In diesem Bereich entwerfen Sie Ihre Schaltpläne, indem Sie Elemente hinzufügen und Leiter zwischen Anschlüssen verlegen. Es ist auch möglich, unabhängige Texte hinzuzufügen.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="78"/>
@@ -2358,7 +2358,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="157"/>
         <source>Recharger les collections</source>
-        <translation>Sammlungen neu laden</translation>
+        <translation>Bauteilsammlungen neu laden</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="159"/>
@@ -2842,7 +2842,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
         <source>Dessiner les bornes</source>
-        <translation>Bauteilanschlüsse zeichnen</translation>
+        <translation>Anschlüsse zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
@@ -3094,7 +3094,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Klemmen in Betriebsmittelverzeichnis exportieren</translation>
+        <translation>Anschlüsse in Betriebsmittelverzeichnis exportieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
@@ -5004,7 +5004,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation>Bauteilanschlüsse zeichnen</translation>
+        <translation>Anschlüsse zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
@@ -5545,7 +5545,8 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Abbrechen</translation>
+        <translatorcomment>Rückgängig</translatorcomment>
+        <translation>Arbeitsschritte</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
@@ -5607,12 +5608,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Annuler</source>
-        <translation>Rückgängig</translation>
+        <translation>Rückgängig: </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Refaire</source>
-        <translation>Wiederholen</translation>
+        <translation>Wiederholen: </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
@@ -6034,12 +6035,12 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="153"/>
         <source>Projets</source>
         <comment>dock title</comment>
-        <translation>Projekte</translation>
+        <translation>Projektdaten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="185"/>
         <source>Collections</source>
-        <translation>Sammlungen</translation>
+        <translation>Bauteilsammlungen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="345"/>
@@ -6502,12 +6503,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="110"/>
         <source>Annulations</source>
-        <translation>Rückgängig machen</translation>
+        <translation>Arbeitsschritte</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="122"/>
         <source>Parties</source>
-        <translation>Teile</translation>
+        <translation>Bestandteile</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="134"/>
@@ -6532,7 +6533,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="188"/>
         <source>Annulation</source>
-        <translation>Rückgängig machen</translation>
+        <translation>Rückgängig: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="293"/>
@@ -6592,12 +6593,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="461"/>
         <source>Chaine Youtube</source>
-        <translation>Youtube Kanal</translation>
+        <translation>Youtube-Kanal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="464"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
-        <translation>Den Youtube Kanal von QElectroTech im Standard Webbrowser öffnen</translation>
+        <translation>Den Youtube-Kanal von QElectroTech im Standard Webbrowser öffnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="473"/>
@@ -6739,7 +6740,7 @@ Ausführbar machen: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="978"/>
         <source>Annuler</source>
-        <translation>Abbrechen</translation>
+        <translation>Rückgängig: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="73"/>
@@ -7185,12 +7186,12 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="93"/>
         <source>Manuel en ligne</source>
-        <translation>Online Hilfe-Anleitung</translation>
+        <translation>Online-Dokumentation (englisch)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="103"/>
         <source>Chaine Youtube</source>
-        <translation>Youtube Kanal</translation>
+        <translation>Youtube-Kanal</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="111"/>
@@ -7208,7 +7209,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetmainwindow.cpp" line="104"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Öffne den Youtube Kanal von QElectroTech im Standard Webbrowser</translation>
+        <translation>Öffne den Youtube-Kanal von QElectroTech im Standard Webbrowser</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="112"/>
@@ -12047,22 +12048,22 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
         <source>Bornier intérieur</source>
-        <translation type="unfinished">interne Klemme</translation>
+        <translation>interner Kontakt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
         <source>Bornier extérieur</source>
-        <translation type="unfinished">externe Klemme</translation>
+        <translation>externer Kontakt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
         <source>Modifier le nom du terminal</source>
-        <translation>Namen des Klemmblocks ändern</translation>
+        <translation>Name des Anschlusses ändern</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
-        <translation>Typ des Klemmblocks ändern</translation>
+        <translation>Typ des Anschlusses ändern</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
