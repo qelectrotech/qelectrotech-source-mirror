@@ -1323,6 +1323,15 @@ void Element::setElementInformations(DiagramContext dc)
 }
 
 /**
+ * @brief Element::elementData
+ * @return the element data used by this element
+ */
+ElementData Element::elementData() const
+{
+	return m_data;
+}
+
+/**
 	@brief comparPos
 	Compare position of the two elements. Compare 3 points:
 	1 folio - 2 row - 3 line
