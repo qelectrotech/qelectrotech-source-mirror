@@ -1,0 +1,48 @@
+<definition hotspot_y="15" width="70" orientation="dyyy" height="230" version="0.70" hotspot_x="34" link_type="simple" type="element">
+    <uuid uuid="{36c95bf0-254c-4d0a-81af-866db548ae97}"/>
+    <names>
+        <name lang="en">Wiper to 11 contacts</name>
+        <name lang="nl">Sleepcontact naar 11 polen</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle x="-15" antialias="false" y="195" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="155" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="200" y1="200"/>
+        <circle x="-15" antialias="false" y="175" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="95" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="135" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="100" y1="100"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="180" y1="180"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="160" y1="160"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="80" y1="80"/>
+        <circle x="-15" antialias="false" y="115" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="140" y1="140"/>
+        <circle x="-15" antialias="false" y="35" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="120" y1="120"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="60" y1="60"/>
+        <rect x="-20" rx="0" antialias="false" y="-10" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="220" ry="0"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="40" y1="40"/>
+        <circle x="-15" antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="0" y1="0"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="20" y1="20"/>
+        <line length2="1.5" x1="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="0" y1="0"/>
+        <polygon x1="-2" y4="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-2" y2="3" x3="-5" y1="-3" x4="-2" y3="0"/>
+        <terminal x="-30" y="140" orientation="w"/>
+        <terminal x="-30" y="160" orientation="w"/>
+        <terminal x="30" y="0" orientation="e"/>
+        <terminal x="-30" y="60" orientation="w"/>
+        <terminal x="-30" y="80" orientation="w"/>
+        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="-30" y="40" orientation="w"/>
+        <terminal x="-30" y="120" orientation="w"/>
+        <terminal x="-30" y="100" orientation="w"/>
+        <terminal x="-30" y="20" orientation="w"/>
+        <terminal x="-30" y="180" orientation="w"/>
+        <terminal x="-30" y="200" orientation="w"/>
+    </description>
+</definition>

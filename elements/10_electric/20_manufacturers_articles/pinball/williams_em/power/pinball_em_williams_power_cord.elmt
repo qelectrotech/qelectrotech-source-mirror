@@ -1,0 +1,21 @@
+<definition height="40" version="0.70" orientation="dyyy" width="50" hotspot_x="24" link_type="simple" type="element" hotspot_y="34">
+    <uuid uuid="{d67bb38e-704e-4df0-bcd5-6b5fc4f8b27f}"/>
+    <names>
+        <name lang="en">Power cord</name>
+        <name lang="nl">Stekker</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line end1="none" length1="1.5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" y1="-20" antialias="false" x1="-10" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="-5" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="20" end2="none" length2="1.5"/>
+        <arc y="-30" height="20" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="180" x="-10"/>
+        <line end1="none" length1="1.5" x2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-11" y1="0" antialias="false" x1="-5" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-11" y1="0" antialias="false" x1="5" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" y1="-28" antialias="false" x1="-5" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" y1="-28" antialias="false" x1="5" end2="none" length2="1.5"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

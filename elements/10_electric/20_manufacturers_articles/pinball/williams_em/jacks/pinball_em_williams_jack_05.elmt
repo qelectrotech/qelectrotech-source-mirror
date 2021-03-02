@@ -1,0 +1,32 @@
+<definition type="element" width="50" orientation="dyyy" hotspot_x="24" hotspot_y="15" version="0.70" link_type="simple" height="110">
+    <uuid uuid="{3398a8e0-2b95-4231-8820-ad19908d197a}"/>
+    <names>
+        <name lang="en">Jack with 5 positions</name>
+        <name lang="nl">Contact met 5 posities</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect width="20" rx="0" x="-10" y="-10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="100"/>
+        <line length2="1.5" y2="0" end1="none" x1="-20" y1="0" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10"/>
+        <line length2="1.5" y2="20" end1="none" x1="-20" y1="20" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10"/>
+        <line length2="1.5" y2="40" end1="none" x1="-20" y1="40" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10"/>
+        <line length2="1.5" y2="60" end1="none" x1="-20" y1="60" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10"/>
+        <line length2="1.5" y2="80" end1="none" x1="-20" y1="80" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-10"/>
+        <line length2="1.5" y2="80" end1="none" x1="20" y1="80" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10"/>
+        <line length2="1.5" y2="60" end1="none" x1="10" y1="60" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="20"/>
+        <line length2="1.5" y2="40" end1="none" x1="10" y1="40" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="20"/>
+        <line length2="1.5" y2="20" end1="none" x1="10" y1="20" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="20"/>
+        <line length2="1.5" y2="0" end1="none" x1="10" y1="0" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="20"/>
+        <terminal x="-20" y="60" orientation="w"/>
+        <terminal x="-20" y="40" orientation="w"/>
+        <terminal x="-20" y="20" orientation="w"/>
+        <terminal x="20" y="20" orientation="e"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="20" y="40" orientation="e"/>
+        <terminal x="-20" y="80" orientation="w"/>
+        <terminal x="-20" y="0" orientation="w"/>
+        <terminal x="20" y="60" orientation="e"/>
+        <terminal x="20" y="80" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition hotspot_y="15" width="70" orientation="dyyy" height="50" version="0.70" hotspot_x="34" link_type="simple" type="element">
+    <uuid uuid="{292efe3b-b14f-4bf4-b666-7edcff8c76e6}"/>
+    <names>
+        <name lang="en">Wiper to 2 contacts</name>
+        <name lang="nl">Sleepcontact naar 2 polen</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle x="-15" antialias="false" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <rect x="-20" rx="0" antialias="false" y="-10" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" ry="0"/>
+        <circle x="-15" antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="0" y1="0"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="20" y1="20"/>
+        <line length2="1.5" x1="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="0" y1="0"/>
+        <polygon x1="-2" y4="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-2" y2="3" x3="-5" y1="-3" x4="-2" y3="0"/>
+        <terminal x="30" y="0" orientation="e"/>
+        <terminal x="-30" y="20" orientation="w"/>
+        <terminal x="-30" y="0" orientation="w"/>
+    </description>
+</definition>

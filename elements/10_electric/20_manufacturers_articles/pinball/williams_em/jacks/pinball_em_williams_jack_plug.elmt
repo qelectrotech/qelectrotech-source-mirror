@@ -1,0 +1,16 @@
+<definition height="20" version="0.70" orientation="dyyy" width="30" hotspot_x="14" link_type="simple" type="element" hotspot_y="10">
+    <uuid uuid="{648b691b-a9ce-44ae-96dd-c02039645205}"/>
+    <names>
+        <name lang="en">Plug</name>
+        <name lang="nl">Contactpin</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect y="-5" height="10" width="4" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-2" ry="0"/>
+        <line end1="none" length1="1.5" x2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="-10" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="2" end2="none" length2="1.5"/>
+        <terminal y="0" orientation="e" x="10"/>
+        <terminal y="0" orientation="w" x="-10"/>
+    </description>
+</definition>

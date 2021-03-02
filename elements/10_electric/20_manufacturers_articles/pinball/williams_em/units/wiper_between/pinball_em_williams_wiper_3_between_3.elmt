@@ -1,0 +1,39 @@
+<definition hotspot_y="15" width="70" orientation="dyyy" height="130" version="0.70" hotspot_x="34" link_type="simple" type="element">
+    <uuid uuid="{e2c18efc-1f4f-45cb-a814-09c1b5554535}"/>
+    <names>
+        <name lang="en">3 wipers between 3 contact pairs</name>
+        <name lang="nl">3 sleepcontacten tussen 3 contactparen</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line length2="1.5" x1="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="5" y2="40" y1="40"/>
+        <line length2="1.5" x1="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="5" y2="20" y1="20"/>
+        <circle x="5" antialias="false" y="75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <polygon x1="-5" y4="20" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-2" y2="17" x3="-2" y1="20" x4="-5" y3="23"/>
+        <polygon x1="-5" y4="40" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-2" y2="37" x3="-2" y1="40" x4="-5" y3="43"/>
+        <polygon x1="2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="5" y2="40" x3="2" y1="37" y3="43"/>
+        <polygon x1="2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="5" y2="20" x3="2" y1="17" y3="23"/>
+        <circle x="5" antialias="false" y="95" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="5" antialias="false" y="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <rect x="-20" rx="0" antialias="false" y="-10" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="120" ry="0"/>
+        <circle x="-15" antialias="false" y="95" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="5" y2="0" y1="0"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="60" y1="60"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="80" y1="80"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="100" y1="100"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="60" y1="60"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-16" y2="80" y1="80"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-16" y2="100" y1="100"/>
+        <polygon x1="-5" y4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-2" y2="-3" x3="-2" y1="0" x4="-5" y3="3"/>
+        <polygon x1="2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="5" y2="0" x3="2" y1="-3" y3="3"/>
+        <terminal x="30" y="100" orientation="e"/>
+        <terminal x="-30" y="80" orientation="w"/>
+        <terminal x="-30" y="60" orientation="w"/>
+        <terminal x="30" y="60" orientation="e"/>
+        <terminal x="30" y="80" orientation="e"/>
+        <terminal x="-30" y="100" orientation="w"/>
+    </description>
+</definition>
