@@ -52,6 +52,8 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/editor/ui/lineeditor.ui
   ${QET_DIR}/sources/editor/ui/polygoneditor.ui
   ${QET_DIR}/sources/editor/ui/rectangleeditor.ui
+  ${QET_DIR}/sources/editor/ui/qetelementeditor.ui
+  ${QET_DIR}/sources/editor/ui/terminaleditor.ui
   ${QET_DIR}/sources/ElementsCollection/ui/renamedialog.ui
   ${QET_DIR}/sources/factory/ui/addtabledialog.ui
   ${QET_DIR}/sources/NameList/ui/namelistdialog.ui
@@ -260,12 +262,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/elementscene.h
   ${QET_DIR}/sources/editor/elementview.cpp
   ${QET_DIR}/sources/editor/elementview.h
-  ${QET_DIR}/sources/editor/qetelementeditor.cpp
-  ${QET_DIR}/sources/editor/qetelementeditor.h
   ${QET_DIR}/sources/editor/styleeditor.cpp
   ${QET_DIR}/sources/editor/styleeditor.h
-  ${QET_DIR}/sources/editor/terminaleditor.cpp
-  ${QET_DIR}/sources/editor/terminaleditor.h
 
   ${QET_DIR}/sources/editor/esevent/eseventaddarc.cpp
   ${QET_DIR}/sources/editor/esevent/eseventaddarc.h
@@ -320,8 +318,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/ui/polygoneditor.h
   ${QET_DIR}/sources/editor/ui/rectangleeditor.cpp
   ${QET_DIR}/sources/editor/ui/rectangleeditor.h
+  ${QET_DIR}/sources/editor/ui/terminaleditor.cpp
+  ${QET_DIR}/sources/editor/ui/terminaleditor.h
   ${QET_DIR}/sources/editor/ui/texteditor.cpp
   ${QET_DIR}/sources/editor/ui/texteditor.h
+  ${QET_DIR}/sources/editor/ui/qetelementeditor.h
+  ${QET_DIR}/sources/editor/ui/qetelementeditor.cpp
 
   ${QET_DIR}/sources/editor/UndoCommand/pastepartscommand.cpp
   ${QET_DIR}/sources/editor/UndoCommand/pastepartscommand.h
@@ -371,6 +373,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/print/projectprintwindow.cpp
   ${QET_DIR}/sources/print/projectprintwindow.h
 
+  ${QET_DIR}/sources/properties/elementdata.cpp
+  ${QET_DIR}/sources/properties/elementdata.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp

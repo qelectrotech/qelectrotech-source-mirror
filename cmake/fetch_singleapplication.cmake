@@ -26,6 +26,6 @@ Include(FetchContent)
 FetchContent_Declare(
   SingleApplication
   GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
-  GIT_TAG        v3.1.5)
+  GIT_TAG        v3.2.0)
 
 FetchContent_MakeAvailable(SingleApplication)
