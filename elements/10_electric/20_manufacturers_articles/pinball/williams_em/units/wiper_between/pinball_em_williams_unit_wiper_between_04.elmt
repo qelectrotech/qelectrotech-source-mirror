@@ -1,0 +1,39 @@
+<definition hotspot_y="15" width="70" orientation="dyyy" height="90" version="0.70" hotspot_x="34" link_type="simple" type="element">
+    <uuid uuid="{aac95ab4-e46a-401d-90c6-0564253d0711}"/>
+    <names>
+        <name lang="en">Wiper between 4 contact pairs</name>
+        <name lang="nl">Sleepcontact tussen 4 contactparen</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle x="5" antialias="false" y="35" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="5" antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="5" antialias="false" y="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="5" antialias="false" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <rect x="-20" rx="0" antialias="false" y="-10" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="80" ry="0"/>
+        <circle x="-15" antialias="false" y="55" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="35" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle x="-15" antialias="false" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <line length2="1.5" x1="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="5" y2="0" y1="0"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="0" y1="0"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="20" y1="20"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="40" y1="40"/>
+        <line length2="1.5" x1="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="30" y2="60" y1="60"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-16" y2="0" y1="0"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-15" y2="20" y1="20"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-16" y2="40" y1="40"/>
+        <line length2="1.5" x1="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-16" y2="60" y1="60"/>
+        <polygon x1="-5" y4="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-2" y2="-3" x3="-2" y1="0" x4="-5" y3="3"/>
+        <polygon x1="2" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="5" y2="0" x3="2" y1="-3" y3="3"/>
+        <terminal x="30" y="0" orientation="e"/>
+        <terminal x="30" y="60" orientation="e"/>
+        <terminal x="-30" y="20" orientation="w"/>
+        <terminal x="30" y="20" orientation="e"/>
+        <terminal x="30" y="40" orientation="e"/>
+        <terminal x="-30" y="0" orientation="w"/>
+        <terminal x="-30" y="60" orientation="w"/>
+        <terminal x="-30" y="40" orientation="w"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition height="30" version="0.70" orientation="dyyy" width="20" hotspot_x="10" link_type="simple" type="element" hotspot_y="17">
+    <uuid uuid="{ff754778-ac11-493d-828a-5f763560b02e}"/>
+    <names>
+        <name lang="en">Ground</name>
+        <name lang="nl">Aarde</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line end1="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="-10" antialias="false" x1="0" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="7" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="0" y1="0" antialias="false" x1="-7" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="-5" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="4" y1="4" antialias="false" x1="5" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="3" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="8" y1="8" antialias="false" x1="-3" end2="none" length2="1.5"/>
+        <terminal y="-10" orientation="n" x="0"/>
+    </description>
+</definition>

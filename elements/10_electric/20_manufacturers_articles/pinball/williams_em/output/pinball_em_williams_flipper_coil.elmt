@@ -1,0 +1,22 @@
+<definition height="30" version="0.70" orientation="dyyy" width="50" hotspot_x="24" link_type="simple" type="element" hotspot_y="11">
+    <uuid uuid="{6d4161fc-3f61-48cc-8322-9d384c2f7550}"/>
+    <names>
+        <name lang="en">Flipper coil</name>
+        <name lang="nl">Flipperspoel</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="0"/>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="8"/>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="-16"/>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="-8"/>
+        <line end1="none" length1="1.5" x2="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="-20" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="16" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="0" antialias="false" x1="0" end2="none" length2="1.5"/>
+        <circle y="0" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" antialias="false" x="-2"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="10" orientation="s" x="0"/>
+    </description>
+</definition>
