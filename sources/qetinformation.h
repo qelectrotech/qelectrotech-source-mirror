@@ -108,6 +108,8 @@ namespace QETInformation
 	QStringList elementEditorElementInfoKeys();
 	QString elementInfoToVar(const QString &info);
 
+	QStringList terminalElementInfoKeys();
+
 	QString infoToVar(const QString &info);
 	QString translatedInfoKey(const QString &info);
 }
