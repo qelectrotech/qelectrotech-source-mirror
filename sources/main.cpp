@@ -18,10 +18,10 @@
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
-#include "singleapplication.h"
 #include "utils/macosxopenevent.h"
 
 #include <QStyleFactory>
+#include <QApplication>
 
 /**
 	@brief myMessageOutput
@@ -174,7 +174,7 @@ int main(int argc, char **argv)
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
 #endif
-	SingleApplication app(argc, argv, true);
+	QApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
 	//or drop these same files to the QET icon of the dock
@@ -182,23 +182,8 @@ int main(int argc, char **argv)
 	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
 #endif
-
-	if (app.isSecondary())
-	{
-		QStringList arg_list = app.arguments();
-		//Remove the first argument, it's the binary file
-		arg_list.takeFirst();
-		QETArguments qetarg(arg_list);
-		QString message = "launched-with-args: " + QET::joinWithSpaces(
-					QStringList(qetarg.arguments()));
-		app.sendMessage(message.toUtf8());
-		return 0;
-	}
-
 	QETApp qetapp;
 	QETApp::instance()->installEventFilter(&qetapp);
-	QObject::connect(&app, &SingleApplication::receivedMessage,
-			 &qetapp, &QETApp::receiveMessage);
 
 	// for debugging
 	qInstallMessageHandler(myMessageOutput);
