@@ -1,0 +1,18 @@
+<definition height="30" version="0.70" orientation="dyyy" width="50" hotspot_x="24" link_type="simple" type="element" hotspot_y="15">
+    <uuid uuid="{f75bd99b-67cd-4d09-bea0-677ba9528257}"/>
+    <names>
+        <name lang="en">Service outlet</name>
+        <name lang="nl">Servicestopcontact</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="false" x="-10"/>
+        <line end1="none" length1="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="-10" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="10" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" y1="-5" antialias="false" x1="-4" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" y1="-5" antialias="false" x1="4" end2="none" length2="1.5"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

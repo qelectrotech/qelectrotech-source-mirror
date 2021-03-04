@@ -1136,7 +1136,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/diagramview.cpp" line="504"/>
         <source>X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="607"/>
@@ -1820,12 +1820,12 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="113"/>
         <source>Élément bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs elem</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="126"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkció</translation>
+        <translation>Funkció</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="156"/>
@@ -1927,37 +1927,37 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="142"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation>Általános</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="143"/>
         <source>Fusible</source>
-        <translation type="unfinished"></translation>
+        <translation>Biztosíték</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
         <source>Séctionnable</source>
-        <translation type="unfinished"></translation>
+        <translation>Választható</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
         <source>Diode</source>
-        <translation type="unfinished"></translation>
+        <translation>Dióda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="148"/>
         <source>Phase</source>
-        <translation type="unfinished">Fázis</translation>
+        <translation>Fázis</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="149"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nulla</translation>
+        <translation>Nulla</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
         <source>Terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Föld</translation>
     </message>
 </context>
 <context>
@@ -2709,7 +2709,7 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="153"/>
         <source>Nom de fichier</source>
-        <translation>Fáljnév</translation>
+        <translation>Fájlnév</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="154"/>
@@ -5149,7 +5149,7 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="669"/>
         <source>Fichier (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl (*.pdf)</translation>
     </message>
 </context>
 <context>
@@ -6497,47 +6497,47 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="14"/>
         <source>QElectroTech - Éditeur d&apos;élément</source>
-        <translation type="unfinished">QElectroTech - Elem Szerkesztő</translation>
+        <translation>QElectroTech - Elem Szerkesztő</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="91"/>
         <source>&amp;Aide</source>
-        <translation type="unfinished">&amp;Segítség</translation>
+        <translation>&amp;Segítség</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="110"/>
         <source>Annulations</source>
-        <translation type="unfinished">Visszavonás</translation>
+        <translation>Visszavonás</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="122"/>
         <source>Parties</source>
-        <translation type="unfinished">Alkatrészek</translation>
+        <translation>Alkatrészek</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="134"/>
         <source>Informations</source>
-        <translation type="unfinished">Információ</translation>
+        <translation>Információ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="143"/>
         <source>Outils</source>
-        <translation type="unfinished">Eszközök</translation>
+        <translation>Eszközök</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="160"/>
         <source>Affichage</source>
-        <translation type="unfinished">Megjelenítés</translation>
+        <translation>Megjelenítés</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="175"/>
         <source>Élément</source>
-        <translation type="unfinished">Elem</translation>
+        <translation>Elem</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="188"/>
         <source>Annulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Visszavonás</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="293"/>
@@ -6562,67 +6562,67 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="329"/>
         <source>C&amp;oller dans la zone</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Beillesztés a területre</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="338"/>
         <source>Un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy fájl</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="347"/>
         <source>Un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy elem</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="437"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished">&amp;A QElectroTech-ről</translation>
+        <translation>&amp;A QElectroTech-ről</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="440"/>
         <source>Affiche des informations sur QElectroTech</source>
-        <translation type="unfinished">Információk megjelenítése a QElectroTech</translation>
+        <translation>Információk megjelenítése a QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="449"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished">Interneten elérhető felhasználói kézikönyv</translation>
+        <translation>Interneten elérhető felhasználói kézikönyv</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="452"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
-        <translation type="unfinished">Az alapértelmezett böngésző elindítása az internetes QElectrotech felhasználói kézikönyvhöz</translation>
+        <translation>Az alapértelmezett böngésző elindítása az internetes QElectrotech felhasználói kézikönyvhöz</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="461"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished">Youtube csatorna</translation>
+        <translation>Youtube csatorna</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="464"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
-        <translation type="unfinished">Az alapértelmezett böngésző elindítása a QElectrotech Youtube csatornájához</translation>
+        <translation>Az alapértelmezett böngésző elindítása a QElectrotech Youtube csatornájához</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="473"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished">A projekt támogatása adománnyal</translation>
+        <translation>A projekt támogatása adománnyal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="476"/>
         <source>Soutenir le projet QElectroTech par un don</source>
-        <translation type="unfinished">A QElectroTech projekt támogatása adománnyal</translation>
+        <translation>A QElectroTech projekt támogatása adománnyal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="485"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished">&amp;Rólunk</translation>
+        <translation>&amp;Rólunk</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="488"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
-        <translation type="unfinished">Információk megjelenítése a Qt könyvtárról</translation>
+        <translation>Információk megjelenítése a Qt könyvtárról</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="356"/>
@@ -6957,7 +6957,7 @@ végrahajtásához : chmod +x ./DXFtoQET
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="73"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Megjelenítés</translation>
+        <translation>Megjelenítés</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="219"/>
@@ -7343,14 +7343,16 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="1320"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Figyelem </translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1321"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version de QElectroTech.
 Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8 de QElectroTech sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation>A megnyitni kívánt projekt részben kompatibilis a QElectroTech verziójával.
+Annak érdekében, hogy teljes mértékben kompatibilis legyen, kérjük, nyissa meg ugyanazt a projektet a QElectroTech 0.8 verziójával, mentse a projektet, és nyissa meg újra ezzel a verzióval.
+Mit akarsz csinálni?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1379"/>
@@ -7745,7 +7747,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="92"/>
         <source>un element graphique</source>
-        <translation type="unfinished"></translation>
+        <translation>egy grafikus elem</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="103"/>
@@ -7918,7 +7920,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="600"/>
         <source>Modifier les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Elem tulajdonságainak szerkesztése</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
@@ -8641,7 +8643,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="212"/>
         <source>Nom du fichier</source>
-        <translation>Fáljnév</translation>
+        <translation>Fájlnév</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="213"/>
@@ -12032,17 +12034,17 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="122"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation>Általános</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
         <source>Bornier intérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Belső sorkapocs</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
         <source>Bornier extérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Külső sorkapocs</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
@@ -12052,37 +12054,37 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>A csatlakozó típusának megváltoztatása</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
         <source>y :</source>
-        <translation type="unfinished"></translation>
+        <translation>y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
         <source>Orientation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tájolás :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
         <source>x :</source>
-        <translation type="unfinished"></translation>
+        <translation>x :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Név:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
         <source>Type :</source>
-        <translation type="unfinished">Típus :</translation>
+        <translation>Típus :</translation>
     </message>
 </context>
 <context>

@@ -188,13 +188,13 @@ void ElementPropertiesEditorWidget::updateTree()
 */
 void ElementPropertiesEditorWidget::populateTree()
 {	
-	auto keys = QETInformation::elementEditorElementInfoKeys();
+	const auto keys = QETInformation::elementEditorElementInfoKeys();
 	for(const QString& key : keys)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree);
 		qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
 		qtwi->setData(0, Qt::DisplayRole,
-				  QETInformation::translatedInfoKey(key));
+					  QETInformation::translatedInfoKey(key));
 		qtwi->setData(0, Qt::UserRole, key);
 		qtwi->setText(1, m_data.m_informations.value(key).toString());
 	}
@@ -256,6 +256,8 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_slave_gb->setVisible(slave);
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
-	
+	ui->tabWidget->setTabVisible(1,
+								 (type_ == ElementData::Simple ||
+								  type_ == ElementData::Master));
 	updateTree();
 }

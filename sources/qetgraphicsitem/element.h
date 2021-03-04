@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -103,6 +103,15 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 		DiagramContext elementInformations()const
 		{return m_data.m_informations;}
 		virtual void setElementInformations(DiagramContext dc);
+
+		ElementData elementData() const;
+
+		/**
+		 * @brief kindInformations
+		 * @deprecated
+		 * use elementData function instead
+		 * @return
+		 */
 		DiagramContext kindInformations() const
 		{return m_kind_informations;}
 		//@kind_information_ is used to store more information
@@ -159,8 +168,20 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
 		QList<Element *> linkedElements ();
+
+		/**
+		 * @brief linkType
+		 * use elementData function instead
+		 * @return
+		 */
 		virtual kind linkType() const {return m_link_type;} // return the linkable type
+		/**
+		 * @brief linkTypeToString
+		 * use elementData function instead
+		 * @return
+		 */
 		QString linkTypeToString() const;
+
 		void newUuid() {m_uuid = QUuid::createUuid();}	 //create new uuid for this element
 
 	protected:

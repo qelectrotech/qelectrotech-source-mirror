@@ -1,0 +1,25 @@
+<definition hotspot_y="25" width="50" orientation="dyyy" height="50" version="0.70" hotspot_x="24" link_type="simple" type="element">
+    <uuid uuid="{a5464c2a-4620-41a8-a18f-e34f0e0fa5ee}"/>
+    <names>
+        <name lang="en">Switch on Score Motor (M.B.) - Center input - Mirrored and inverted</name>
+        <name lang="nl">Schakelaar op Score Motor (M.B.) - Input midden - Gespiegeld en omgekeerd</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc x="-10" start="0" antialias="true" y="-20" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" angle="180"/>
+        <rect x="2" rx="0" antialias="false" y="-15" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black" height="30" ry="0"/>
+        <line length2="1.5" x1="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-5" y2="-10" y1="-10"/>
+        <line length2="1.5" x1="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-10" y2="10" y1="-10"/>
+        <rect x="-5" rx="0" antialias="false" y="3" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black" height="12" ry="0"/>
+        <line length2="1.5" x1="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="10" y2="10" y1="-10"/>
+        <arc x="-10" start="180" antialias="true" y="0" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" angle="180"/>
+        <rect x="-5" rx="0" antialias="false" y="-15" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black" height="12" ry="0"/>
+        <line length2="1.5" x1="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="20" y2="0" y1="0"/>
+        <line length2="1.5" x1="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-5" y2="10" y1="10"/>
+        <line length2="1.5" x1="10" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" end1="none" end2="none" x2="-10" y2="-5" y1="-15"/>
+        <terminal x="-20" y="10" orientation="w"/>
+        <terminal x="-20" y="-10" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

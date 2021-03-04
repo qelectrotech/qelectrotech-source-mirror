@@ -1,0 +1,19 @@
+<definition height="20" version="0.70" orientation="dyyy" width="50" hotspot_x="24" link_type="simple" type="element" hotspot_y="10">
+    <uuid uuid="{2275166e-668f-4912-b838-1def0f65418e}"/>
+    <names>
+        <name lang="en">Coil</name>
+        <name lang="nl">Spoel</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="-8"/>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="-16"/>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="0"/>
+        <arc y="-4" height="8" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" antialias="true" start="0" x="8"/>
+        <line end1="none" length1="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="-16" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="0" antialias="false" x1="20" end2="none" length2="1.5"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

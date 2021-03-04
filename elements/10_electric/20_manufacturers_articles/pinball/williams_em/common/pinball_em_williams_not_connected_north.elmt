@@ -1,0 +1,15 @@
+<definition height="30" version="0.70" orientation="dyyy" width="20" hotspot_x="10" link_type="simple" type="element" hotspot_y="18">
+    <uuid uuid="{e446ec4b-827d-4df3-bed0-dd4adbd2b62a}"/>
+    <names>
+        <name lang="en">Not connected (north)</name>
+        <name lang="nl">Niet verbonden (noord)</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line end1="none" length1="1.5" x2="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6" y1="-6" antialias="false" x1="-6" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="6" y1="-6" antialias="false" x1="6" end2="none" length2="1.5"/>
+        <line end1="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" y1="0" antialias="false" x1="0" end2="none" length2="1.5"/>
+        <terminal y="-10" orientation="n" x="0"/>
+    </description>
+</definition>

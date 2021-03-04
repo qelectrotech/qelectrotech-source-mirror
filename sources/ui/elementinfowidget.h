@@ -72,6 +72,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		Ui::ElementInfoWidget           *ui;
 		QList <ElementInfoPartWidget *>  m_eipw_list;
 		bool m_first_activation;
+		bool m_ui_builded = false;
 };
 
 #endif // ELEMENTINFOWIDGET_H

@@ -1,0 +1,21 @@
+<definition height="40" orientation="dyyy" hotspot_y="20" link_type="simple" version="0.70" type="element" hotspot_x="24" width="50">
+    <uuid uuid="{3509d560-3eb8-4527-b5b2-35d66bf3fc64}"/>
+    <names>
+        <name lang="nl">Schakelaar (M.B.) - Input midden - Gespiegeld en omgekeerd</name>
+        <name lang="en">Switch (M.B.) - Center input - Mirrored and inverted</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect height="30" rx="0" ry="0" x="2" y="-15" antialias="false" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x1="-20" end2="none" antialias="false" end1="none" y1="-10" length2="1.5" x2="-5" length1="1.5" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="12" rx="0" ry="0" x="-5" y="3" antialias="false" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect height="12" rx="0" ry="0" x="-5" y="-15" antialias="false" width="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x1="5" end2="none" antialias="false" end1="none" y1="0" length2="1.5" x2="20" length1="1.5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" end2="none" antialias="false" end1="none" y1="10" length2="1.5" x2="-5" length1="1.5" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" end2="none" antialias="false" end1="none" y1="-15" length2="1.5" x2="-10" length1="1.5" y2="-5" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <terminal x="20" y="0" orientation="e"/>
+        <terminal x="-20" y="10" orientation="w"/>
+        <terminal x="-20" y="-10" orientation="w"/>
+    </description>
+</definition>

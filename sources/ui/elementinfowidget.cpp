@@ -37,7 +37,6 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	m_first_activation (false)
 {
 	ui->setupUi(this);
-	buildInterface();
 	setElement(elmt);
 }
 
@@ -179,7 +178,14 @@ void ElementInfoWidget::disableLiveEdit()
 */
 void ElementInfoWidget::buildInterface()
 {
-	for (auto str : QETInformation::elementInfoKeys())
+	QStringList keys;
+	auto type_ = m_element.data()->elementData().m_type;
+	if (type_ == ElementData::Terminale)
+		keys = QETInformation::terminalElementInfoKeys();
+	else
+		keys = QETInformation::elementInfoKeys();
+
+	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);
@@ -212,6 +218,10 @@ ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &ke
 */
 void ElementInfoWidget::updateUi()
 {
+	if (!m_ui_builded) {
+		buildInterface();
+		m_ui_builded = true;
+	}
 		//We disable live edit to avoid wrong undo when we fill the line edit with new text
 	if (m_live_edit) disableLiveEdit();
 
