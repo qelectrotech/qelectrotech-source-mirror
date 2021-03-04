@@ -1196,6 +1196,7 @@ bool Diagram::fromXml(QDomElement &document,
 	if (consider_informations)
 	{
 		// Load border and titleblock
+
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
 

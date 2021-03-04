@@ -65,8 +65,6 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	// contenu par defaut du cartouche
 	importTitleBlock(TitleBlockProperties());
 
-	display_titleblock_ = true;
-	display_border_ = true;
 	setFolioData(1, 1);
 	updateRectangles();
 }
@@ -217,9 +215,23 @@ QDomElement BorderTitleBlock::titleBlockToXml(QDomDocument& doc) {
 	@param xml_elmt the XML element values will be read from
 */
 void BorderTitleBlock::titleBlockFromXml(const QDomElement &xml_elmt) {
-	TitleBlockProperties tbp;
-	tbp.fromXml(xml_elmt);
-	importTitleBlock(tbp);
+
+    TitleBlockProperties tbp;
+    QString tagname = tbp.tagName();
+    QDomElement titleBlockProperties = xml_elmt.firstChildElement(tagname);
+
+    if (!titleBlockProperties.isNull())
+    {
+        tbp.fromXml(titleBlockProperties);
+        importTitleBlock(tbp);
+    }
+    else
+    {
+        // legacy
+        // Remove this part in a later step
+        tbp.fromXml(xml_elmt);
+        importTitleBlock(tbp);
+    }
 }
 
 /**

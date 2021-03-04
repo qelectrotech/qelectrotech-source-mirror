@@ -154,6 +154,7 @@ class PropertiesInterface
 
 	QVariant XmlProperty(const QDomElement& element);
     void setTagName(const QString& tagname);
+    QString tagName() const;
 
 	/**
 		Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")

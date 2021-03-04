@@ -60,6 +60,11 @@ void PropertiesInterface::setTagName(const QString& tagname)
     mTagName = tagname;
 }
 
+QString PropertiesInterface::tagName() const
+{
+    return mTagName;
+}
+
 QDomElement PropertiesInterface::toXml (QDomDocument &xml_document) const
 {
     QDomElement element = xml_document.createElement(mTagName);
@@ -76,6 +81,8 @@ bool PropertiesInterface::fromXml (const QDomElement &xml_element)
 
     if (!propertiesFromXml(xml_element))
         return false;
+
+    return true;
 }
 
 bool PropertiesInterface::valideXml(QDomElement& element) {
@@ -403,7 +410,10 @@ QString PropertiesInterface::orientationToString(Qet::Orientation o) {
  * \param e
  */
 void PropertiesInterface::propertiesToXml(QDomElement& e) const
-{
+{    
+    if (properties.count() == 0)
+        return;
+
     QDomDocument doc = e.ownerDocument();
     auto up = doc.createElement(userPropertiesS);
     for (auto i = properties.begin(); i != properties.end(); ++i)
@@ -418,9 +428,8 @@ void PropertiesInterface::propertiesToXml(QDomElement& e) const
             up.appendChild(createXmlProperty(i.key(), i.value().toDouble())); break;
         case QVariant::Type::Bool:
             up.appendChild(createXmlProperty(i.key(), i.value().toBool())); break;
-//        case QVariant::Type::Color:
-//            // TODO: correct?
-//            up.appendChild(createXmlProperty(i.key(), i.value().toString())); break;
+        case QVariant::Type::Color:
+            up.appendChild(createXmlProperty(i.key(), QColor(i.value().value<QColor>()))); break;
         default:
             break;
         }
@@ -502,4 +511,6 @@ bool PropertiesInterface::propertiesFromXml(const QDomElement& e)
             }
         }
     }
+
+    return true;
 }

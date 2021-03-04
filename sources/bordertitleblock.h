@@ -286,10 +286,10 @@ class BorderTitleBlock : public QObject
 		QRectF diagram_rect_;
 	
 			// display options
-		bool display_titleblock_;
+        bool display_titleblock_{true};
 		bool display_columns_;
 		bool display_rows_;
-		bool display_border_;
+        bool display_border_{true};
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 };
 #endif

@@ -25,6 +25,7 @@
 */
 TitleBlockProperties::TitleBlockProperties()
 {
+    setTagName("titleblock");
 }
 
 /**
