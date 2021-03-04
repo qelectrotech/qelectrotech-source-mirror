@@ -37,8 +37,8 @@ class BorderProperties : public PropertiesInterface {
 		bool operator==(const BorderProperties &);
 		bool operator!=(const BorderProperties &);
 	
-		QDomElement toXml(QDomDocument &dom_doc) const override;
-		bool fromXml(const QDomElement &) override;
+		void toXmlPriv(QDomElement&) const override;
+        bool fromXmlPriv(const QDomElement &) override;
 		static bool valideXml(QDomElement& e);
         void toSettings(QSettings &, const QString & = QString()) const override;
         void fromSettings(QSettings &, const QString & = QString()) override;

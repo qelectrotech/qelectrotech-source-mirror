@@ -82,7 +82,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		DynamicElementTextItem(const DynamicElementTextItem &);
 		
 	public:
-		QDomElement toXml(QDomDocument &dom_doc) const override;
+        QDomElement toXml(QDomDocument&) const override;
 		void fromXml(const QDomElement &dom_elmt) override;
 
 		Element *parentElement() const;

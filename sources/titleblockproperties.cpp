@@ -65,48 +65,40 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 	return(!(*this == ip));
 }
 
-
 /**
-	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
-	@param e Element XML auquel seront ajoutes des attributs
+    Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
+    @param e Element XML auquel seront ajoutes des attributs
 */
-void TitleBlockProperties::toXml(QDomElement &e) const
-{
-	e.setAttribute("author",   author);
-	e.setAttribute("title",	title);
-	e.setAttribute("filename", filename);
-	e.setAttribute("plant", plant);
-	e.setAttribute("locmach", locmach);
-	e.setAttribute("indexrev",indexrev);
-	e.setAttribute("version", version);
-	e.setAttribute("folio",	folio);
-	e.setAttribute("auto_page_num", auto_page_num);
-	e.setAttribute("date",	 exportDate());
-	e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
-	if (!template_name.isEmpty())
-	{
-		e.setAttribute("titleblocktemplate", template_name);
-		e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
-	}
-	
-	if (context.keys().count()) {
-		QDomElement properties = e.ownerDocument().createElement("properties");
-		context.toXml(properties);
-		e.appendChild(properties);
-	}
-}
+void TitleBlockProperties::toXmlPriv(QDomElement& e) const {
+    e.appendChild(createXmlProperty("author", author));
+    e.appendChild(createXmlProperty("title", title));
+    e.appendChild(createXmlProperty("filename", filename));
+    e.appendChild(createXmlProperty("plant", plant));
+    e.appendChild(createXmlProperty("locmach", locmach));
+    e.appendChild(createXmlProperty("indexrev", indexrev));
+    e.appendChild(createXmlProperty("version", version));
+    e.appendChild(createXmlProperty("folio", folio));
+    e.appendChild(createXmlProperty("date", exportDate()));
+    e.appendChild(createXmlProperty("display_at", display_at == Qt::BottomEdge? "bottom" : "right"));
+    if (!template_name.isEmpty())
+    {
+        e.appendChild(createXmlProperty("titleblocktemplate", template_name));
+        e.appendChild(createXmlProperty("titleblocktemplateCollection", QET::qetCollectionToString(collection)));
+    }
 
-QDomElement TitleBlockProperties::toXml(QDomDocument &d) const {
-	Q_UNUSED(d)
-	qDebug() << "NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-	return QDomElement();
+    if (context.keys().count()) {
+        QDomElement properties = e.ownerDocument().createElement("properties");
+        context.toXml(properties);
+        e.appendChild(properties);
+    }
+
 }
 
 /** RETURNS True
 	Importe le cartouche a partir des attributs XML de l'element e
 	@param e Element XML dont les attributs seront lus
 */
-bool TitleBlockProperties::fromXml(const QDomElement &e) {
+bool TitleBlockProperties::fromXmlPriv(const QDomElement &e) {
 
 
 	// reads the historical fields

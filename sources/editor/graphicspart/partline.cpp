@@ -30,13 +30,10 @@
 	@param parent : parent item
 */
 PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent) :
-	CustomElementGraphicPart(editor, parent),
-	first_end(Qet::None),
-	first_length(1.5),
-	second_end(Qet::None),
-	second_length(1.5),
-	m_undo_command(nullptr)
-{}
+    CustomElementGraphicPart(editor, parent)
+{
+    setTagName("line");
+}
 
 /// Destructeur
 PartLine::~PartLine()
@@ -105,30 +102,27 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 }
 
 /**
-	@brief PartLine::toXml
+    @brief PartLine::toXmlPriv
 	Export this line in xml
 	@param xml_document : Xml document to use for create the xml element.
 	@return an xml element that describe this line
 */
-QDomElement PartLine::toXml(QDomDocument &xml_document) const
+void PartLine::toXmlPriv(QDomElement& e) const
 {
 	QPointF p1(sceneP1());
 	QPointF p2(sceneP2());
 
-	QDomElement xml_element = xml_document.createElement("line");
+    e.appendChild(createXmlProperty("x1", p1.x()));
+    e.appendChild(createXmlProperty("y1", p1.y()));
+    e.appendChild(createXmlProperty("x2", p2.x()));
+    e.appendChild(createXmlProperty("y2", p2.y()));
 
-	xml_element.appendChild(createXmlProperty(xml_document, "x1", p1.x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y1", p1.y()));
-	xml_element.appendChild(createXmlProperty(xml_document, "x2", p2.x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y2", p2.y()));
-
-	xml_element.appendChild(createXmlProperty(xml_document, "end1", Qet::endTypeToString(first_end)));
-	xml_element.appendChild(createXmlProperty(xml_document, "length1", first_length));
-	xml_element.appendChild(createXmlProperty(xml_document, "end2", Qet::endTypeToString(second_end)));
-	xml_element.appendChild(createXmlProperty(xml_document, "length2", second_length));
+    e.appendChild(createXmlProperty("end1", Qet::endTypeToString(first_end)));
+    e.appendChild(createXmlProperty("length1", first_length));
+    e.appendChild(createXmlProperty("end2", Qet::endTypeToString(second_end)));
+    e.appendChild(createXmlProperty("length2", second_length));
 	
-	stylesToXml(xml_document, xml_element);
-	return(xml_element);
+    stylesToXml(e);
 }
 
 /**
@@ -136,7 +130,7 @@ QDomElement PartLine::toXml(QDomDocument &xml_document) const
 	Import the properties of this line from a xml element.
 	@param qde : Xml document to use
 */
-bool PartLine::fromXml(const QDomElement &qde) {
+bool PartLine::fromXmlPriv(const QDomElement &qde) {
 	stylesFromXml(qde);
 
 	double x1 = 0, y1 = 0, x2 = 0, y2 = 0;

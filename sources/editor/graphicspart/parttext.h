@@ -59,11 +59,11 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		int type() const override { return Type; }
 		QString name() const override { return(QObject::tr("texte", "element part name")); }
 		QString xmlName() const override { return(QString("text")); }
-		bool fromXml(const QDomElement &) override;
+		bool fromXmlPriv(const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
-		QDomElement toXml(QDomDocument &) const override;
+        void toXmlPriv(QDomElement&) const override;
 		void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
 		bool isUseless() const override;
 		QRectF sceneGeometricRect() const override;

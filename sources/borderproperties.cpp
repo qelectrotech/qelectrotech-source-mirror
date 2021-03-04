@@ -32,7 +32,7 @@
 	- 17 colonnes affichees de 60.0 px de large pour 20.0px de haut
 	- 8	lignes affichees de 80.0 px de haut pour 20.0px de large
 */
-BorderProperties::BorderProperties()
+BorderProperties::BorderProperties(): PropertiesInterface("border")
 {
 }
 
@@ -80,7 +80,7 @@ bool BorderProperties::operator!=(const BorderProperties &bp) {
 }
 
 /**
-	@brief BorderProperties::toXml
+    @brief BorderProperties::toXmlPriv
 	Exports dimensions as XML attributes added to element e.
 	\~French Exporte les dimensions sous formes d'attributs XML ajoutes a l'element e.
 
@@ -88,22 +88,17 @@ bool BorderProperties::operator!=(const BorderProperties &bp) {
 	XML element to which attributes will be added
 	\~French Element XML auquel seront ajoutes des attributs
 */
-QDomElement BorderProperties::toXml(QDomDocument &dom_doc) const {
-
-	QDomElement e = dom_doc.createElement("border");
-
-	e.appendChild(createXmlProperty(dom_doc, "cols", columns_count));
-	e.appendChild(createXmlProperty(dom_doc, "colsize", columns_width));
-	e.appendChild(createXmlProperty(dom_doc, "rows", rows_count));
-	e.appendChild(createXmlProperty(dom_doc, "rowsize", rows_height));
-	e.appendChild(createXmlProperty(dom_doc, "displayrows", display_rows));
-	e.appendChild(createXmlProperty(dom_doc, "displaycols", display_columns));
-
-	return e;
+void BorderProperties::toXmlPriv(QDomElement& e) const {
+    e.appendChild(createXmlProperty("cols", columns_count));
+    e.appendChild(createXmlProperty("colsize", columns_width));
+    e.appendChild(createXmlProperty("rows", rows_count));
+    e.appendChild(createXmlProperty("rowsize", rows_height));
+    e.appendChild(createXmlProperty("displayrows", display_rows));
+    e.appendChild(createXmlProperty("displaycols", display_columns));
 }
 
-/**RETURNS True
-	@brief BorderProperties::fromXml
+/*!RETURNS True
+    @brief BorderProperties::fromXmlPriv
 	Import dimensions from XML attributes of element e
 	\~French Importe les dimensions a partir des attributs XML de l'element e
 
@@ -111,7 +106,7 @@ QDomElement BorderProperties::toXml(QDomDocument &dom_doc) const {
 	XML element whose attributes will be read
 	\~French Element XML dont les attributs seront lus
 */
-bool BorderProperties::fromXml(const QDomElement &e) {
+bool BorderProperties::fromXmlPriv(const QDomElement &e) {
 
 	if (propertyInteger(e, "cols", &columns_count) == PropertyFlags::NoValidConversion ||
 		propertyDouble(e, "colsize", &columns_width) == PropertyFlags::NoValidConversion ||

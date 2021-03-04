@@ -23,7 +23,7 @@
 /**
 	Constructeur par defaut
 */
-SingleLineProperties::SingleLineProperties()
+SingleLineProperties::SingleLineProperties(): PropertiesInterface("SingleLine")
 {
 }
 
@@ -211,17 +211,14 @@ void SingleLineProperties::drawPen(QPainter *painter,
 	ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
-QDomElement SingleLineProperties::toXml(QDomDocument &doc) const {
+void SingleLineProperties::toXmlPriv(QDomElement& e) const {
 
-	QDomElement e = doc.createElement("SingleLine");
-	e.appendChild(createXmlProperty(doc, "ground", hasGround));
-	e.appendChild(createXmlProperty(doc, "neutral", hasNeutral));
-	e.appendChild(createXmlProperty(doc, "phase", phases));
+	e.appendChild(createXmlProperty("ground", hasGround));
+	e.appendChild(createXmlProperty("neutral", hasNeutral));
+	e.appendChild(createXmlProperty("phase", phases));
 
 	if (isPen())
-		e.appendChild(createXmlProperty(doc, "pen", true));
-
-	return e;
+		e.appendChild(createXmlProperty("pen", true));
 }
 
 /**
@@ -229,7 +226,7 @@ QDomElement SingleLineProperties::toXml(QDomDocument &doc) const {
 	de l'element e
 	@param e Element XML dont les attributs seront lus
 */
-bool SingleLineProperties::fromXml(const QDomElement &e) {
+bool SingleLineProperties::fromXmlPriv(const QDomElement &e) {
 	if (propertyBool(e, "ground", &hasGround) != PropertyFlags::Success ||
 		propertyBool(e, "neutral", &hasNeutral) != PropertyFlags::Success)
 		return false;
@@ -266,17 +263,7 @@ bool SingleLineProperties::valideXml(QDomElement& e) {
 	multifilaire noir dont le texte est "_"
 */
 ConductorProperties::ConductorProperties() :
-	type(Multi),
-	color(Qt::black),
-	text_color(Qt::black),
-	text("_"),
-	text_size(9),
-	cond_size(1),
-	verti_rotate_text(270),
-	horiz_rotate_text(0),
-	m_show_text(true),
-	m_one_text_per_folio(false),
-	style(Qt::SolidLine)
+    PropertiesInterface("defaultconductor")
 {}
 
 /**
@@ -292,46 +279,45 @@ ConductorProperties::~ConductorProperties()
 	Export conductor propertie, in the XML element 'e'
 	@param e the xml element
 */
-QDomElement ConductorProperties::toXml(QDomDocument& doc) const
+void ConductorProperties::toXmlPriv(QDomElement& e) const
 {
 
-	QDomElement e = doc.createElement("defaultconductor");
+	e.appendChild(createXmlProperty("type", typeToString(type)));
+	e.appendChild(createXmlProperty("color", color));
 
-	e.appendChild(createXmlProperty(doc, "type", typeToString(type)));
-	e.appendChild(createXmlProperty(doc, "color", color));
-
-	e.appendChild(createXmlProperty(doc, "bicolor", m_bicolor));
-	e.appendChild(createXmlProperty(doc, "color2", m_color_2));
-	e.appendChild(createXmlProperty(doc, "dash-size", m_dash_size));
+	e.appendChild(createXmlProperty("bicolor", m_bicolor));
+	e.appendChild(createXmlProperty("color2", m_color_2));
+	e.appendChild(createXmlProperty("dash-size", m_dash_size));
 
 	if (type == Single)
-		e.appendChild(singleLineProperties.toXml(doc));
+    {
+        QDomDocument doc;
+        e.appendChild(singleLineProperties.toXml(doc));
+    }
 
-	e.appendChild(createXmlProperty(doc, "num", text));
-	e.appendChild(createXmlProperty(doc, "text_color", text_color));
-	e.appendChild(createXmlProperty(doc, "formula", m_formula));
-	e.appendChild(createXmlProperty(doc, "function", m_function));
-	e.appendChild(createXmlProperty(doc, "tension_protocol", m_tension_protocol));
-	e.appendChild(createXmlProperty(doc, "conductor_color", m_wire_color));
-	e.appendChild(createXmlProperty(doc, "conductor_section", m_wire_section));
-	e.appendChild(createXmlProperty(doc, "numsize", text_size));
-	e.appendChild(createXmlProperty(doc, "condsize", cond_size));
-	e.appendChild(createXmlProperty(doc, "displaytext", m_show_text));
-	e.appendChild(createXmlProperty(doc, "onetextperfolio", m_one_text_per_folio));
-    e.appendChild(createXmlProperty(doc, "vertirotatetext", verti_rotate_text));
-	e.appendChild(createXmlProperty(doc, "horizrotatetext", horiz_rotate_text));
+	e.appendChild(createXmlProperty("num", text));
+	e.appendChild(createXmlProperty("text_color", text_color));
+	e.appendChild(createXmlProperty("formula", m_formula));
+	e.appendChild(createXmlProperty("function", m_function));
+	e.appendChild(createXmlProperty("tension_protocol", m_tension_protocol));
+	e.appendChild(createXmlProperty("conductor_color", m_wire_color));
+	e.appendChild(createXmlProperty("conductor_section", m_wire_section));
+	e.appendChild(createXmlProperty("numsize", text_size));
+	e.appendChild(createXmlProperty("condsize", cond_size));
+	e.appendChild(createXmlProperty("displaytext", m_show_text));
+	e.appendChild(createXmlProperty("onetextperfolio", m_one_text_per_folio));
+    e.appendChild(createXmlProperty("vertirotatetext", verti_rotate_text));
+	e.appendChild(createXmlProperty("horizrotatetext", horiz_rotate_text));
 // TODO: implement
 //e.setAttribute("cable", m_cable);
 // e.setAttribute("bus", m_bus);
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	e.appendChild(createXmlProperty(doc, "horizontal-alignment", me.valueToKey(m_horizontal_alignment)));
-	e.appendChild(createXmlProperty(doc, "vertical-alignment", me.valueToKey(m_vertical_alignment)));
+	e.appendChild(createXmlProperty("horizontal-alignment", me.valueToKey(m_horizontal_alignment)));
+	e.appendChild(createXmlProperty("vertical-alignment", me.valueToKey(m_vertical_alignment)));
 
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty())
-		e.appendChild(createXmlProperty(doc, "style", conductor_style));
-
-	return e;
+		e.appendChild(createXmlProperty("style", conductor_style));
 }
 
 
@@ -340,7 +326,7 @@ QDomElement ConductorProperties::toXml(QDomDocument& doc) const
 	Import conductor propertie, from the attribute of the xml element 'e'
 	@param e the xml document
 */
-bool ConductorProperties::fromXml(const QDomElement &e)
+bool ConductorProperties::fromXmlPriv(const QDomElement &e)
 {
 		// get conductor color
 	propertyColor(e, "color", &color);

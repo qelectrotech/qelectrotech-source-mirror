@@ -67,7 +67,7 @@ PartText::~PartText()
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
-bool PartText::fromXml(const QDomElement &xml_element)
+bool PartText::fromXmlPriv(const QDomElement &xml_element)
 {
 	int size;
 	QString font;
@@ -117,18 +117,16 @@ bool PartText::fromXml(const QDomElement &xml_element)
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-QDomElement PartText::toXml(QDomDocument &xml_document) const
+void PartText::toXmlPriv(QDomElement& e) const
 {
-	QDomElement xml_element = xml_document.createElement(xmlName());
+    //QDomElement xml_element = xml_document.createElement(xmlName());
 
-	xml_element.appendChild(createXmlProperty(xml_document, "x", pos().x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y", pos().y()));
-	xml_element.appendChild(createXmlProperty(xml_document, "text", toPlainText()));
-	xml_element.appendChild(createXmlProperty(xml_document, "font", font().toString()));
-	xml_element.appendChild(createXmlProperty(xml_document, "rotation", rotation()));
-	xml_element.appendChild(createXmlProperty(xml_document, "color", defaultTextColor().name()));
-
-	return(xml_element);
+    e.appendChild(createXmlProperty("x", pos().x()));
+    e.appendChild(createXmlProperty("y", pos().y()));
+    e.appendChild(createXmlProperty("text", toPlainText()));
+    e.appendChild(createXmlProperty("font", font().toString()));
+    e.appendChild(createXmlProperty("rotation", rotation()));
+    e.appendChild(createXmlProperty("color", defaultTextColor().name()));
 }
 
 bool PartText::valideXml(QDomElement& element) {

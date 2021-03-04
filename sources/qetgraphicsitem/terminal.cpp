@@ -92,6 +92,7 @@ void Terminal::init(
 		QString name,
         bool hiddenName)
 {
+    setTagName("terminal");
 	// definition du pount d'amarrage pour un conducteur
 	d->m_pos  = pf;
 
@@ -750,34 +751,22 @@ QList<Conductor *> Terminal::conductors() const
 }
 
 /**
-	@brief Terminal::toXml
+    @brief Terminal::toXmlPriv
 	Methode d'export en XML
 	@param doc Le Document XML a utiliser pour creer l'element XML
 	@return un QDomElement representant cette borne
 */
-QDomElement Terminal::toXml(QDomDocument &doc) const
+void Terminal::toXmlPriv(QDomElement &qdo) const
 {
-	QDomElement qdo = doc.createElement("terminal");
-
-	qdo.appendChild(createXmlProperty(doc, "number", number_terminal_));
-	qdo.appendChild(createXmlProperty(doc, "nameHidden", name_terminal_hidden));
-
-	// store terminal data too!
+    qdo.appendChild(createXmlProperty("number", number_terminal_));
+    qdo.appendChild(createXmlProperty("nameHidden", name_terminal_hidden));
 
 	// Do not store terminal data in its own child
 	// Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
 	QPointF tempPos = d->m_pos;
 	d->m_pos = dock_elmt_;
-	QDomElement terminalDataElement = d->toXml(doc);
+    d->toXmlPriv(qdo); // TerminalData
 	d->m_pos = tempPos;
-
-	int childsCount = terminalDataElement.childNodes().count();
-	for (int i=0; i < childsCount; i++) {
-		QDomNode node = terminalDataElement.childNodes().at(i).cloneNode(); // cloneNode() is important, otherwise no deep clone is made
-		qdo.appendChild(node);
-	}
-
-	return(qdo);
 }
 
 /**
@@ -812,7 +801,7 @@ bool Terminal::valideXml(const QDomElement &terminal)
 	@return true si la borne "se reconnait"
 	(memes coordonnes, meme orientation), false sinon
 */
-bool Terminal::fromXml(const QDomElement &terminal) {
+bool Terminal::fromXmlPriv(const QDomElement &terminal) {
 	propertyString(terminal, "number", &number_terminal_);
 
 	propertyBool(terminal, "nameHidden", &name_terminal_hidden);

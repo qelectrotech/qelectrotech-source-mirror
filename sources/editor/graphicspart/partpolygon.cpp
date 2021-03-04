@@ -35,6 +35,7 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	m_closed(false),
 	m_undo_command(nullptr)
 {
+    setTagName("polygon");
 	m_insert_point = new QAction(tr("Ajouter un point"), this);
 	m_insert_point->setIcon(QET::Icons::Add);
 	connect(m_insert_point, &QAction::triggered, this, &PartPolygon::insertPoint);
@@ -89,7 +90,7 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	Import the properties of this polygon from a xml element
 	@param qde : Xml document to use
 */
-bool PartPolygon::fromXml(const QDomElement &qde)
+bool PartPolygon::fromXmlPriv(const QDomElement &qde)
 {
 	stylesFromXml(qde);
 
@@ -123,26 +124,23 @@ bool PartPolygon::fromXml(const QDomElement &qde)
 }
 
 /**
-	@brief PartPolygon::toXml
+    @brief PartPolygon::toXmlPriv
 	Export this polygin in xml
-	@param xml_document : Xml document to use for create the xml element
-	@return an xml element that describe this polygon
+    @param e: properties get part of this DomElement
 */
-QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
+void PartPolygon::toXmlPriv(QDomElement& e) const
 {
-	QDomElement xml_element = xml_document.createElement("polygon");
 	int i = 1;
 	foreach(QPointF point, m_polygon) {
 		point = mapToScene(point);
-		xml_element.appendChild(createXmlProperty(xml_document, QString("x%1").arg(i), point.x()));
-		xml_element.appendChild(createXmlProperty(xml_document, QString("y%1").arg(i), point.y()));
+        e.appendChild(createXmlProperty(QString("x%1").arg(i), point.x()));
+        e.appendChild(createXmlProperty(QString("y%1").arg(i), point.y()));
 		++ i;
 	}
 
-	xml_element.appendChild(createXmlProperty(xml_document, "closed", m_closed));
+    e.appendChild(createXmlProperty("closed", m_closed));
 
-	stylesToXml(xml_document, xml_element);
-	return(xml_element);
+    stylesToXml(e);
 }
 
 bool PartPolygon::valideXml(QDomElement& element) {

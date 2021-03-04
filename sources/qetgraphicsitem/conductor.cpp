@@ -80,6 +80,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
 	terminal2(p2)
 {
+    setTagName("conductor");
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	m_previous_z_value = zValue();
@@ -962,7 +963,7 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 	@param dom_element
 	@return true is loading success else return false
 */
-bool Conductor::fromXml(const QDomElement &dom_element)
+bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 {
 	// TODO: seems to short!
 	double x=0, y=0;
@@ -990,7 +991,7 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 
 // does not support legacy method
 /*!
-	@brief Conductor::toXml
+    @brief Conductor::toXmlPriv
 	Exporte les caracteristiques du conducteur sous forme d'une element XML.
 	@param dom_document :
 	Le document XML a utiliser pour creer l'element XML
@@ -999,12 +1000,10 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
-QDomElement Conductor::toXml(QDomDocument & doc) const {
-	QDomElement dom_element = doc.createElement("conductor");
+void Conductor::toXmlPriv(QDomElement& e) const {
 
-
-	dom_element.appendChild(createXmlProperty(doc, "x", pos().x()));
-	dom_element.appendChild(createXmlProperty(doc, "y", pos().y()));
+    e.appendChild(createXmlProperty("x", pos().x()));
+    e.appendChild(createXmlProperty("y", pos().y()));
 
 	// Terminal is uniquely identified by the uuid of the terminal and the element
 	QUuid terminal = terminal1->uuid();
@@ -1013,10 +1012,10 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
 		// legacy when the terminal does not have a valid uuid
 		// do not store element1 information, because this is used to determine in the fromXml
 		// process that legacy file format
-		dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal1->ID()));
+        e.appendChild(createXmlProperty("terminal1", terminal1->ID()));
 	} else {
-		dom_element.appendChild(createXmlProperty(doc, "element1", terminalParent));
-		dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal));
+        e.appendChild(createXmlProperty("element1", terminalParent));
+        e.appendChild(createXmlProperty("terminal1", terminal));
 	}
 
 	terminal = terminal2->uuid();
@@ -1025,13 +1024,15 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
 		// legacy when the terminal does not have a valid uuid
 		// do not store element1 information, because this is used to determine in the fromXml
 		// process that legacy file format
-		dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->ID()));
+        e.appendChild(createXmlProperty("terminal2", terminal2->ID()));
 	} else {
-		dom_element.appendChild(createXmlProperty(doc, "element2", terminal2->parentElement()->uuid()));
-		dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->uuid()));
+        e.appendChild(createXmlProperty("element2", terminal2->parentElement()->uuid()));
+        e.appendChild(createXmlProperty("terminal2", terminal2->uuid()));
 	}
 
-	dom_element.appendChild(createXmlProperty(doc, "freezeLabel", m_freeze_label));
+    e.appendChild(createXmlProperty("freezeLabel", m_freeze_label));
+
+    QDomDocument doc;
 
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
@@ -1042,25 +1043,23 @@ QDomElement Conductor::toXml(QDomDocument & doc) const {
 		foreach(ConductorSegment *segment, segmentsList())
 		{
 			current_segment = doc.createElement("segment");
-			current_segment.appendChild(createXmlProperty(doc, "orientation", segment->isHorizontal() ? "horizontal": "vertical"));
-			current_segment.appendChild(createXmlProperty(doc, "length", segment -> length()));
-			dom_element.appendChild(current_segment);
+			current_segment.appendChild(createXmlProperty("orientation", segment->isHorizontal() ? "horizontal": "vertical"));
+			current_segment.appendChild(createXmlProperty("length", segment -> length()));
+            e.appendChild(current_segment);
 		}
 	}
 
 	QDomElement dom_seq = m_autoNum_seq.toXml(doc); // swquentialNumbers tag
-	dom_element.appendChild(dom_seq);
+    e.appendChild(dom_seq);
 
 		// Export the properties and text
 	QDomElement conductorProperties = m_properties.toXml(doc);
 	for (int i=0; i < conductorProperties.childNodes().count(); i++) {
 		QDomNode node = conductorProperties.childNodes().at(i).cloneNode(); // cloneNode() is important!
-		dom_element.appendChild(node);
+        e.appendChild(node);
 	}
 
-	m_text_item->toXml(doc, dom_element);
-
-	return(dom_element);
+    m_text_item->toXml(e);
 }
 
 /**

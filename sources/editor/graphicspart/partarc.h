@@ -51,8 +51,8 @@ class PartArc : public AbstractPartEllipse
 			//Name and XML
 		QString name()	const override { return(QObject::tr("arc", "element part name")); }
 		QString xmlName() const override { return(QString("arc")); }
-		QDomElement toXml   (QDomDocument &) const override;
-		bool fromXml (const QDomElement &) override;
+		void toXmlPriv(QDomElement&) const override;
+		bool fromXmlPriv (const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}

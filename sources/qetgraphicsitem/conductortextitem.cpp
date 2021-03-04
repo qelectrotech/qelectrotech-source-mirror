@@ -61,14 +61,14 @@ Conductor *ConductorTextItem::parentConductor() const
 	return(parent_conductor_);
 }
 
-void ConductorTextItem::toXml(QDomDocument& doc, QDomElement& e) {
+void ConductorTextItem::toXml(QDomElement& e) {
 	if(moved_by_user_)
 	{
-		e.appendChild(PropertiesInterface::createXmlProperty(doc, "userx", pos().x()));
-		e.appendChild(PropertiesInterface::createXmlProperty(doc, "usery", pos().y()));
+		e.appendChild(PropertiesInterface::createXmlProperty("userx", pos().x()));
+		e.appendChild(PropertiesInterface::createXmlProperty("usery", pos().y()));
 	}
 	if(rotate_by_user_)
-		e.appendChild(PropertiesInterface::createXmlProperty(doc, "rotation", rotation()));
+		e.appendChild(PropertiesInterface::createXmlProperty("rotation", rotation()));
 }
 
 

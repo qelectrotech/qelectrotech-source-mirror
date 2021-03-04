@@ -28,6 +28,7 @@
 */
 XRefProperties::XRefProperties()
 {
+    setTagName("xref");
 }
 
 /**
@@ -92,36 +93,32 @@ void XRefProperties::fromSettings(QSettings &settings,
 	@param xml_document : QDomElement to use for saving
 	@return QDomElement
 */
-QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
+void XRefProperties::toXmlPriv(QDomElement& e) const
 {
 
-	QDomElement xml_element = xml_document.createElement("xref");
-
-	xml_element.appendChild(createXmlProperty(xml_document, "type", m_key));
-	xml_element.appendChild(createXmlProperty(xml_document, "showpowerctc", m_show_power_ctc));
-	xml_element.appendChild(createXmlProperty(xml_document, "displayhas", m_display == Cross? "cross" : "contacts"));
-	xml_element.appendChild(createXmlProperty(xml_document, "snapto", m_snap_to == Bottom? "bottom" : "label"));
+    e.appendChild(createXmlProperty("type", m_key));
+    e.appendChild(createXmlProperty("showpowerctc", m_show_power_ctc));
+    e.appendChild(createXmlProperty("displayhas", m_display == Cross? "cross" : "contacts"));
+    e.appendChild(createXmlProperty("snapto", m_snap_to == Bottom? "bottom" : "label"));
 
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	xml_element.appendChild(createXmlProperty(xml_document, "xrefpos", var.valueToKey(m_xref_pos)));
-	xml_element.appendChild(createXmlProperty(xml_document, "offset", m_offset));
-	xml_element.appendChild(createXmlProperty(xml_document, "master_label", m_master_label));
-	xml_element.appendChild(createXmlProperty(xml_document, "slave_label", m_slave_label));
+    e.appendChild(createXmlProperty("xrefpos", var.valueToKey(m_xref_pos)));
+    e.appendChild(createXmlProperty("offset", m_offset));
+    e.appendChild(createXmlProperty("master_label", m_master_label));
+    e.appendChild(createXmlProperty("slave_label", m_slave_label));
 
 	foreach (QString key, m_prefix.keys()) {
-		xml_element.appendChild(createXmlProperty(xml_document, key + "prefix", m_prefix.value(key)));
+        e.appendChild(createXmlProperty(key + "prefix", m_prefix.value(key)));
 	}
-
-	return xml_element;
 }
 
 /** RETURNS True
-	@brief XRefProperties::fromXml
+    @brief XRefProperties::fromXmlPriv
 	Load from xml
 	@param xml_element: QDomElement to use for load
 */
-bool XRefProperties::fromXml(const QDomElement &xml_element) {
+bool XRefProperties::fromXmlPriv(const QDomElement &xml_element) {
 
 	if (propertyBool(xml_element, "showpowerctc", &m_show_power_ctc))
 		return false;

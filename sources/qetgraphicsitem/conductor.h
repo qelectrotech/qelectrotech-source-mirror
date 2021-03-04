@@ -102,8 +102,8 @@ class Conductor : public QGraphicsObject, public PropertiesInterface
 
 	public:
 		static bool valideXml (QDomElement &);
-		bool		fromXml   (const QDomElement &) override;
-		QDomElement toXml	 (QDomDocument &doc) const override;
+        bool fromXmlPriv(const QDomElement &) override;
+        void toXmlPriv(QDomElement&) const override;
         void toSettings(QSettings &, const QString & = QString()) const override {}
         void fromSettings(QSettings &, const QString & = QString()) override {}
 	private:

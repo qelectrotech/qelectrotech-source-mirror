@@ -29,6 +29,7 @@
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
 {
+    setTagName("terminal");
 	d = new TerminalData(this);
 	d->m_name = tr("terminal");
 	d -> m_orientation = Qet::North;
@@ -46,7 +47,7 @@ PartTerminal::~PartTerminal()
 	Importe les proprietes d'une borne depuis un element XML
 	@param xml_elmt Element XML a lire
 */
-bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
+bool PartTerminal::fromXmlPriv(const QDomElement &xml_elmt) {
 
 	// update part and add uuid, which is used in the new version to connect terminals together
 	// if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
@@ -67,21 +68,16 @@ bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant la borne
 */
-QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
+void PartTerminal::toXmlPriv(QDomElement& e) const {
 
-	QDomElement qdo = xml_document.createElement("terminal");
-
-	qdo.appendChild(createXmlProperty(xml_document, "uuid", d->m_uuid));
+    e.appendChild(createXmlProperty("uuid", d->m_uuid));
 
 	d->m_pos = pos();
 
 	// Do not store terminal data in its own child
-	QDomElement terminalDataElement = d->toXml(xml_document);
-	for (int i=0; i < terminalDataElement.childNodes().length(); i++) {
-		qdo.appendChild(terminalDataElement.childNodes().at(i).cloneNode()); // cloneNode() is important, otherwise no deep clone is made
-	}
+    QDomDocument doc = e.ownerDocument();
+    e.appendChild(d->toXml(doc));
 
-	return qdo;
 }
 
 bool PartTerminal::valideXml(QDomElement& element) {

@@ -174,7 +174,7 @@ class BorderTitleBlock : public QObject
 		void setPreviousFolioNum(const QString &previous);
 		void setNextFolioNum(const QString &next);
 		
-		void titleBlockToXml(QDomElement &doc);
+        QDomElement titleBlockToXml(QDomDocument &doc);
 		void titleBlockFromXml(const QDomElement &);
 		void borderToXml(QDomElement &);
 		void borderFromXml(const QDomElement &);

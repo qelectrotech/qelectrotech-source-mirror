@@ -45,8 +45,8 @@ class XRefProperties : public PropertiesInterface
     void toSettings	  (QSettings &settings, const QString& = QString()) const override;
     void fromSettings (QSettings &settings,
                const QString& = QString()) override;
-	QDomElement toXml (QDomDocument &xml_document) const override;
-	bool fromXml(const QDomElement &xml_element) override;
+    void toXmlPriv(QDomElement&) const override;
+    bool fromXmlPriv(const QDomElement &xml_element) override;
 
 	static QHash<QString, XRefProperties> defaultProperties();
 

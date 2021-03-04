@@ -21,13 +21,13 @@
 #include <QDebug>
 
 TerminalData::TerminalData():
-	PropertiesInterface()
+    PropertiesInterface("terminaldata")
 {
 	init();
 }
 
 TerminalData::TerminalData(QGraphicsObject *parent):
-	PropertiesInterface(),
+    PropertiesInterface("terminaldata"),
 	q(parent)
 {
 	init();
@@ -81,35 +81,33 @@ void TerminalData::fromSettings(QSettings &settings, const QString& prefix)
 }
 
 /**
-	@brief TerminalData::toXml
+    @brief TerminalData::toXmlPriv
 	Save properties to xml element
 	write the name, number, position and orientation of the terminal
 	to xml_element
 
 	@note This method is only called from the PartTerminal
 	and should never called from the Terminal class
-	@param xml_document
-	@return xml_element : DomElement with
+    @param e: element to store the properties
 	the name, number, position and orientation of the terminal
 */
-QDomElement TerminalData::toXml(QDomDocument &xml_document) const
+void TerminalData::toXmlPriv(QDomElement& e) const
 {
-	QDomElement xml_element = xml_document.createElement("terminaldata");
+    // TODO:
+    //QDomElement xml_element = xml_document.createElement("terminaldata");
 
 	// m_pos cannot be stored, because in the partterminal it will not be updated.
 	// In PartTerminal m_pos is the position of the dock, in Terminal m_pos is the second side of the terminal
 	// This is hold for legacy compability reason
-	xml_element.appendChild(createXmlProperty(xml_document, "x", m_pos.x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y", m_pos.y()));
-	xml_element.appendChild(createXmlProperty(xml_document, "name", m_name));
-	xml_element.appendChild(createXmlProperty(xml_document, "orientation", orientationToString(m_orientation)));
-    xml_element.appendChild(createXmlProperty(xml_document, "type", typeToString(m_type)));
-
-	return(xml_element);
+    e.appendChild(createXmlProperty("x", m_pos.x()));
+    e.appendChild(createXmlProperty("y", m_pos.y()));
+    e.appendChild(createXmlProperty("name", m_name));
+    e.appendChild(createXmlProperty("orientation", orientationToString(m_orientation)));
+    e.appendChild(createXmlProperty("type", typeToString(m_type)));
 }
 
 /*
-	@brief TerminalData::fromXml
+    @brief TerminalData::fromXmlPriv
 	load properties to xml element
 
 	@note This method is only called from the PartTerminal
@@ -117,7 +115,7 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 	@param xml_element
 	@return true if succeeded / false if the attribute is not real
 */
-bool TerminalData::fromXml (const QDomElement &xml_element) // RETURNS True
+bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
 {
 	qreal term_x = 0.0;
 	qreal term_y = 0.0;

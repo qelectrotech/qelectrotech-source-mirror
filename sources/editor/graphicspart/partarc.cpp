@@ -29,10 +29,9 @@
 	@param parent : parent item
 */
 PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
-	AbstractPartEllipse(editor, parent)
+    AbstractPartEllipse(editor, parent)
 {
-	m_start_angle = 0;
-	m_span_angle = -1440;
+    setTagName("arc");
 }
 
 /**
@@ -102,23 +101,22 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	@param xml_document : Xml document to use for create the xml element.
 	@return : an xml element that describe this arc
 */
-QDomElement PartArc::toXml(QDomDocument &xml_document) const
+void PartArc::toXmlPriv(QDomElement& e) const
 {
-	QDomElement xml_element = xml_document.createElement("arc");
+    e.setTagName("arc");
 	QPointF top_left(sceneTopLeft());
 
-	xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
-	xml_element.appendChild(createXmlProperty(xml_document, "width", rect().width()));
-	xml_element.appendChild(createXmlProperty(xml_document, "height", rect().height()));
+    e.appendChild(createXmlProperty("x", top_left.x()));
+    e.appendChild(createXmlProperty("y", top_left.y()));
+    e.appendChild(createXmlProperty("width", rect().width()));
+    e.appendChild(createXmlProperty("height", rect().height()));
 
 		//to maintain compatibility with the previous version, we write the angle in degrees.
-	xml_element.appendChild(createXmlProperty(xml_document, "start", m_start_angle / 16));
-	xml_element.appendChild(createXmlProperty(xml_document, "angle", m_span_angle / 16));
+    e.appendChild(createXmlProperty("start", m_start_angle / 16));
+    e.appendChild(createXmlProperty("angle", m_span_angle / 16));
 
 
-	stylesToXml(xml_document, xml_element);
-	return(xml_element);
+    stylesToXml(e);
 }
 
 /**
@@ -126,7 +124,7 @@ QDomElement PartArc::toXml(QDomDocument &xml_document) const
 	Import the properties of this arc from a xml element.
 	@param qde : Xml document to use.
 */
-bool PartArc::fromXml(const QDomElement &qde) {
+bool PartArc::fromXmlPriv(const QDomElement &qde) {
 	stylesFromXml(qde);
 
 	double x=0, y=0, w=0, h=0;

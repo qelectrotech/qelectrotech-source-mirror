@@ -738,7 +738,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// proprietes du schema
 	if (whole_content) {
 		// TODO: compare with old version
-		border_and_titleblock.titleBlockToXml(dom_root);
+        dom_root.appendChild(border_and_titleblock.titleBlockToXml(document));
 		border_and_titleblock.borderToXml(dom_root);
 
 		// Default conductor properties

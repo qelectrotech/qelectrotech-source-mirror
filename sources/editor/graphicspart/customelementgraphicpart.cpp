@@ -162,7 +162,7 @@ void CustomElementGraphicPart::setAntialiased(const bool b)
 	Each style separate by ; and name-style/value are separate by :
 	@param qde : QDOmElement used to write the style.
 */
-void CustomElementGraphicPart::stylesToXml(QDomDocument &xml_document, QDomElement &qde) const
+void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 {
 	QString css_like_styles;
 
@@ -497,8 +497,8 @@ void CustomElementGraphicPart::stylesToXml(QDomDocument &xml_document, QDomEleme
 	else if (_color == HTMLGrayBlackColor)  css_like_styles += "HTMLGrayBlack";
 	else if (_color == NoneColor)  css_like_styles += "none";
 
-	qde.appendChild(createXmlProperty(xml_document, "style", css_like_styles));
-	qde.appendChild(createXmlProperty(xml_document, "antialias", _antialiased ? "true" : "false"));
+	qde.appendChild(createXmlProperty("style", css_like_styles));
+	qde.appendChild(createXmlProperty("antialias", _antialiased ? "true" : "false"));
 }
 
 

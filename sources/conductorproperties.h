@@ -39,8 +39,8 @@ class SingleLineProperties: public PropertiesInterface {
 	unsigned short int phasesCount();
 	bool isPen() const;
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-	QDomElement toXml(QDomDocument& doc) const override;
-	bool fromXml(const QDomElement &) override;
+    void toXmlPriv(QDomElement&) const override;
+    bool fromXmlPriv(const QDomElement &) override;
 	static bool valideXml(QDomElement& element);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
@@ -83,7 +83,7 @@ class ConductorProperties: public PropertiesInterface
 
 
 		//Attributes
-		ConductorType type{ConductorType::Single};
+        ConductorType type{ConductorType::Multi};
 
 		// TODO: set default values!
 		QColor		color{QColor(Qt::black)},
@@ -91,7 +91,7 @@ class ConductorProperties: public PropertiesInterface
 				text_color{QColor(Qt::black)};
 
 		QString
-		text,
+        text{"_"},
 		m_function,
 		m_tension_protocol,
 		m_wire_color,
@@ -105,11 +105,11 @@ class ConductorProperties: public PropertiesInterface
 
             double
         cond_size{1},
-		verti_rotate_text,
-		horiz_rotate_text;
+            verti_rotate_text{270},
+            horiz_rotate_text{0};
 
 		bool	m_show_text{true},
-				m_one_text_per_folio{true},
+                m_one_text_per_folio{false},
 		m_bicolor = false;
 
 		Qt::Alignment 
@@ -121,8 +121,8 @@ class ConductorProperties: public PropertiesInterface
 		SingleLineProperties singleLineProperties;
 
 		// methods
-		QDomElement toXml(QDomDocument &doc) const override;
-		bool fromXml(const QDomElement &) override;
+        void toXmlPriv(QDomElement&) const override;
+        bool fromXmlPriv(const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &, const QString & = QString()) const override;
         void fromSettings(QSettings &, const QString & = QString()) override;

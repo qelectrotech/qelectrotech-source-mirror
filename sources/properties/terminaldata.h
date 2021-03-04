@@ -56,8 +56,8 @@ class TerminalData : public PropertiesInterface
                         const QString& prefix = QString()) const override;
         void fromSettings(QSettings &settings,
                           const QString& = QString()) override;
-		QDomElement toXml(QDomDocument &xml_element) const override;
-		bool fromXml(const QDomElement &xml_element) override;
+        void toXmlPriv(QDomElement &) const override;
+		bool fromXmlPriv(const QDomElement &xml_element) override;
 
 	static bool valideXml(const QDomElement &xml_element);
 

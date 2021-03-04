@@ -86,36 +86,36 @@ DynamicElementTextItem::DynamicElementTextItem()
 	@param dom_doc
 	@return
 */
-QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
+QDomElement DynamicElementTextItem::toXml(QDomDocument& dom_doc) const
 {
-	QDomElement root_element = dom_doc.createElement(xmlTagName());
+    QDomElement root_element = dom_doc.createElement(xmlTagName());
 	
-	root_element.setAttribute("x", QString::number(pos().x()));
-	root_element.setAttribute("y", QString::number(pos().y()));
-	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-	root_element.setAttribute("uuid", m_uuid.toString());
-	root_element.setAttribute("frame", m_frame? "true" : "false");
-	root_element.setAttribute("text_width", QString::number(m_text_width));
-	root_element.setAttribute("font", font().toString());
-	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
+    root_element.setAttribute("x", QString::number(pos().x()));
+    root_element.setAttribute("y", QString::number(pos().y()));
+    root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+    root_element.setAttribute("uuid", m_uuid.toString());
+    root_element.setAttribute("frame", m_frame? "true" : "false");
+    root_element.setAttribute("text_width", QString::number(m_text_width));
+    root_element.setAttribute("font", font().toString());
+    root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	
 	QMetaEnum me = textFromMetaEnum();
-	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
+    root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
 	me = QMetaEnum::fromType<Qt::Alignment>();
 	if(this->alignment() &Qt::AlignRight)
-		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
+        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
 	else if(this->alignment() &Qt::AlignLeft)
-		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
+        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
 	else if(this->alignment() &Qt::AlignHCenter)
-		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
+        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
 	
 	if(this->alignment() &Qt::AlignBottom)
-		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
+        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
 	else if(this->alignment() & Qt::AlignTop)
-		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
+        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
 	else if(this->alignment() &Qt::AlignVCenter)
-		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
+        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
 	
 	
 	QDomElement dom_text = dom_doc.createElement("text");

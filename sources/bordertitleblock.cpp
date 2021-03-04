@@ -207,8 +207,8 @@ QRectF BorderTitleBlock::insideBorderRect() const
 	Exports the title block current values to XML.
 	@param xml_elmt the XML element attributes will be added to
 */
-void BorderTitleBlock::titleBlockToXml(QDomElement& doc) {
-	exportTitleBlock().toXml(doc);
+QDomElement BorderTitleBlock::titleBlockToXml(QDomDocument& doc) {
+    return exportTitleBlock().toXml(doc);
 }
 
 /**

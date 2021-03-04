@@ -52,8 +52,8 @@ class PartEllipse : public  AbstractPartEllipse
 			//Name and XML
 		QString name()	const override { return(QObject::tr("ellipse", "element part name")); }
 		QString xmlName() const override { return(QString("ellipse")); }
-		QDomElement toXml   (QDomDocument &) const override;
-		bool  fromXml (const QDomElement &) override;
+        void toXmlPriv(QDomElement&) const override;
+        bool fromXmlPriv(const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}

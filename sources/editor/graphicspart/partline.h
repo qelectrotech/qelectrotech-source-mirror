@@ -70,8 +70,8 @@ class PartLine : public CustomElementGraphicPart
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name() const override { return(QObject::tr("ligne", "element part name")); }
 		QString xmlName() const override { return(QString("line")); }
-		QDomElement toXml(QDomDocument &) const override;
-		bool fromXml(const QDomElement &) override;
+		void toXmlPriv(QDomElement&) const override;
+		bool fromXmlPriv(const QDomElement &) override;
 		bool valideXml(QDomElement& element) const;
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
@@ -117,15 +117,15 @@ class PartLine : public CustomElementGraphicPart
 		QRectF secondEndCircleRect() const;
 
 		/*****************/
-		Qet::EndType first_end;
+        Qet::EndType first_end{Qet::EndType::None};
 		qreal		first_length{1.5};
 
-		Qet::EndType second_end;
+        Qet::EndType second_end{Qet::EndType::None};
 		qreal		second_length{1.5};
 		QList<QPointF> saved_points_;
 		QLineF m_line;
 		int m_vector_index = -1;
-		QPropertyUndoCommand *m_undo_command;
+        QPropertyUndoCommand *m_undo_command{nullptr};
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif

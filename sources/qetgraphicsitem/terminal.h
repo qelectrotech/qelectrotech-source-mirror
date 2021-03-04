@@ -100,8 +100,8 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 
 		// methods related to XML import/export
 		static bool valideXml(const QDomElement  &);
-		bool fromXml (const QDomElement &) override;
-		QDomElement toXml (QDomDocument &) const override;
+		bool fromXmlPriv (const QDomElement &) override;
+                void toXmlPriv(QDomElement &) const override;
 
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}

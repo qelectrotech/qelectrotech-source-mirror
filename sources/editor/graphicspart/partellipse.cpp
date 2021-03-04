@@ -79,41 +79,37 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 }
 
 /**
-	@brief PartEllipse::toXml
+    @brief PartEllipse::toXmlPriv
 	Export this ellipse in xml
-	@param xml_document : Xml document to use for create the xml element.
 	@return : an xml element that describe this ellipse
 */
-QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
+void PartEllipse::toXmlPriv(QDomElement& e) const
 {
-	QDomElement xml_element;
 	if (qFuzzyCompare(rect().width(), rect().height()))
 	{
-		xml_element = xml_document.createElement("circle");
-		xml_element.appendChild(createXmlProperty(xml_document, "diameter", rect().width()));
+        e.setTagName("circle");
+        e.appendChild(createXmlProperty("diameter", rect().width()));
 	}
 	else
 	{
-		xml_element = xml_document.createElement("ellipse");
-		xml_element.appendChild(createXmlProperty(xml_document, "width", rect().width()));
-		xml_element.appendChild(createXmlProperty(xml_document, "height", rect().height()));
+        e.setTagName("ellipse");
+        e.appendChild(createXmlProperty("width", rect().width()));
+        e.appendChild(createXmlProperty("height", rect().height()));
 	}
 
 	QPointF top_left(sceneTopLeft());
-	xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
+    e.appendChild(createXmlProperty("x", top_left.x()));
+    e.appendChild(createXmlProperty("y", top_left.y()));
 
-	stylesToXml(xml_document, xml_element);
-
-	return(xml_element);
+    stylesToXml(e);
 }
 
 /**
-	@brief PartEllipse::fromXml
+    @brief PartEllipse::fromXmlPriv
 	Import the properties of this ellipse from a xml element.
 	@param qde : Xml document to use.
 */
-bool PartEllipse::fromXml(const QDomElement &qde)
+bool PartEllipse::fromXmlPriv(const QDomElement &qde)
 {
 	stylesFromXml(qde);
 	double x=0, y=0, width=0, height=0;

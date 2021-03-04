@@ -61,8 +61,8 @@ class PartPolygon : public CustomElementGraphicPart
 
 		QString name() const override { return(QObject::tr("polygone", "element part name")); }
 		QString xmlName() const override { return(QString("polygon")); }
-		bool fromXml(const QDomElement &) override;
-		QDomElement toXml(QDomDocument &) const override;
+		bool fromXmlPriv(const QDomElement &) override;
+		void toXmlPriv(QDomElement&) const override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
@@ -109,7 +109,7 @@ class PartPolygon : public CustomElementGraphicPart
 		void removePoint();
 		
 		
-		bool m_closed;
+        bool m_closed{false};
 		QList<QPointF> saved_points_;
 		QPolygonF m_polygon;
 		QPropertyUndoCommand *m_undo_command;

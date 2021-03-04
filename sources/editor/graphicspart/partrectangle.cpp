@@ -30,7 +30,9 @@
 */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
-{}
+{
+    setTagName("rect");
+}
 
 /**
 	@brief PartRectangle::~PartRectangle
@@ -80,20 +82,19 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 }
 
 /**
-	@brief PartRectangle::toXml
+    @brief PartRectangle::toXmlPriv
 	Export this rectangle in xml
 	@param xml_document : Xml document to use for create the xml element.
 	@return an xml element that describe this ellipse
 */
-QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
+void PartRectangle::toXmlPriv(QDomElement& e) const
 {
-	QDomElement xml_element = xml_document.createElement("rect");
 	QPointF top_left(sceneTopLeft());
 
-	xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
-	xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
-	xml_element.appendChild(createXmlProperty(xml_document, "width", m_rect.width()));
-	xml_element.appendChild(createXmlProperty(xml_document, "height", m_rect.height()));
+    e.appendChild(createXmlProperty("x", top_left.x()));
+    e.appendChild(createXmlProperty("y", top_left.y()));
+    e.appendChild(createXmlProperty("width", m_rect.width()));
+    e.appendChild(createXmlProperty("height", m_rect.height()));
 
 	QRectF rect = m_rect.normalized();
 	qreal x = m_xRadius;
@@ -105,14 +106,13 @@ QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 		y = rect.height()/2;
 	}
 
-	xml_element.setAttribute("rx", QString::number(m_xRadius));
-	xml_element.setAttribute("ry", QString::number(m_yRadius));
+    e.setAttribute("rx", QString::number(m_xRadius));
+    e.setAttribute("ry", QString::number(m_yRadius));
 
-	xml_element.appendChild(createXmlProperty(xml_document, "rx", m_xRadius));
-	xml_element.appendChild(createXmlProperty(xml_document, "ry", m_yRadius));
+    e.appendChild(createXmlProperty("rx", m_xRadius));
+    e.appendChild(createXmlProperty("ry", m_yRadius));
 	
-	stylesToXml(xml_document, xml_element);
-	return(xml_element);
+    stylesToXml(e);
 }
 
 /**
@@ -120,7 +120,7 @@ QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	Import the properties of this rectangle from a xml element.
 	@param qde : Xml document to use.
 */
-bool PartRectangle::fromXml(const QDomElement &qde)
+bool PartRectangle::fromXmlPriv(const QDomElement &qde)
 {
 	stylesFromXml(qde);
 
