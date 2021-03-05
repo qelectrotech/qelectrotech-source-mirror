@@ -26,52 +26,6 @@
 #include "sources/qet.h"
 #include <QUuid>
 
-//struct Property {
-//    enum class Type {
-//        String,
-//        Int,
-//        Double,
-//        Bool,
-//        Uuid,
-//        Color
-//    };
-//    Property(enum Type type, QVariant& value): type(type), value(value) {};
-//   enum Type type;
-//   QVariant value;
-//};
-
-//class Property_T
-//{
-//public:
-//    enum class Type {
-//        String,
-//        Int,
-//        Double,
-//        Bool,
-//        Uuid,
-//        Color
-//    };
-//    Property_T(enum Type type): mType(type)
-//    {}
-//public:
-//    enum Type mType;
-//};
-
-//class PropertyDouble: Property_T
-//{
-//public:
-//    PropertyDouble(double& value): Property_T(Property_T::Type::Double), mValue(value) {};
-//public:
-//    double mValue;
-//};
-
-class DomElement: public QDomElement
-{
-public:
-    DomElement(): QDomElement() {};
-    DomElement(QDomElement& e): QDomElement(e) {};
-};
-
 /**
 	@brief The PropertiesInterface class
 	This class is an interface for have common way
@@ -114,6 +68,48 @@ class PropertiesInterface
 			@return true / false
 		*/
         virtual bool fromXml (const QDomElement &xml_element);
+
+    /*!
+     * \brief deleteUserProperties
+     * Delete all userproperties
+     */
+    void deleteUserProperties();
+
+    /*!
+     * \brief userPropertiesCount
+     * Returns the number of user properties
+     * \return
+     */
+    int userPropertiesCount() const;
+
+    /*!
+     * \brief setUserProperty
+     * Adds a new property if \p key does not exist in the \p properties member,
+     * otherwise overwrite the value
+     * \param key
+     * \param value
+     */
+    void setUserProperty(const QString& key, const QVariant& value);
+
+    /*!
+     * \brief existUserProperty
+     * Checks if a user property with key \p key is available or not
+     * \param key
+     * \return
+     */
+    bool existUserProperty(const QString& key) const;
+
+    /*!
+     * \brief userProperty
+     * Returns the value of a user property with key \p key
+     * If \p key is not found, an invalid QVariant is returned.
+     * Use QVariant::type() to get the type of the vale
+     * \param key
+     * \return
+     */
+    QVariant userPropertyValue(const QString& key);
+
+
 	static bool valideXml(QDomElement& element);
 
 	/*!
@@ -175,6 +171,11 @@ class PropertiesInterface
 private:
     virtual void toXmlPriv (QDomElement &e) const =0;
     virtual bool fromXmlPriv (const QDomElement &e) =0;
+    /*!
+     * \brief PropertiesInterface::propertiesToXml
+     * Write all user properties to the DomElement \p e
+     * \param e
+     */
     void propertiesToXml(QDomElement& e) const;
     bool propertiesFromXml (const QDomElement &e);
 

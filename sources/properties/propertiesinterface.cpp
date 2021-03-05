@@ -404,11 +404,34 @@ QString PropertiesInterface::orientationToString(Qet::Orientation o) {
 	return(ret);
 }
 
-/*!
- * \brief PropertiesInterface::propertiesToXml
- * Write all user properties to the DomElement \p e
- * \param e
- */
+void PropertiesInterface::deleteUserProperties()
+{
+    properties.clear();
+}
+
+int PropertiesInterface::userPropertiesCount() const
+{
+    return properties.count();
+}
+
+void PropertiesInterface::setUserProperty(const QString& key, const QVariant& value)
+{
+    properties[key] = value;
+}
+
+bool PropertiesInterface::existUserProperty(const QString& key) const
+{
+    return properties.contains(key);
+}
+
+QVariant PropertiesInterface::userPropertyValue(const QString& key)
+{
+    if (!existUserProperty(key))
+        return QVariant();
+
+    return properties[key];
+}
+
 void PropertiesInterface::propertiesToXml(QDomElement& e) const
 {    
     if (properties.count() == 0)
