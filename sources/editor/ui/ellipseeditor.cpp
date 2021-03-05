@@ -110,9 +110,9 @@ QList<CustomElementPart *> EllipseEditor::currentParts() const {
 }
 
 /**
- * @brief EllipseEditor::updateForm
+ * @brief EllipseEditor::updateFormPriv
  */
-void EllipseEditor::updateForm()
+void EllipseEditor::updateFormPriv()
 {
 	if (!m_part) {
 		return;

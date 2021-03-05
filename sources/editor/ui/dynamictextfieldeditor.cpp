@@ -130,7 +130,7 @@ QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const
 	return parts;
 }
 
-void DynamicTextFieldEditor::updateForm()
+void DynamicTextFieldEditor::updateFormPriv()
 {
 	if(m_text_field) {
 		ui -> m_x_sb -> setValue(m_text_field.data() -> x());

@@ -45,7 +45,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart*> currentParts() const override;
-		void updateForm() override;
+        void updateFormPriv() override;
 
 	private:
 		void setupWidget();

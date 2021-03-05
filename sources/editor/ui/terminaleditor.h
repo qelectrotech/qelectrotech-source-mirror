@@ -39,7 +39,7 @@ class TerminalEditor : public ElementItemEditor
 		TerminalEditor(QETElementEditor *editor, QWidget *parent = nullptr);
 		~TerminalEditor() override;
 
-        void updateForm() override;
+        void updateFormPriv() override;
 		bool setPart(CustomElementPart *new_part) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart *> currentParts() const override {return QList<CustomElementPart *>();}

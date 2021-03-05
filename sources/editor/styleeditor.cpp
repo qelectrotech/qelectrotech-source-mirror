@@ -440,10 +440,10 @@ void StyleEditor::updatePartFilling()
 }
 
 /**
-	@brief StyleEditor::updateForm
+    @brief StyleEditor::updateFormPriv
 	Update the edition form according to the value of edited part(s)
 */
-void StyleEditor::updateForm()
+void StyleEditor::updateFormPriv()
 {
 	if (!part && m_part_list.isEmpty()) return;
 	activeConnections(false);

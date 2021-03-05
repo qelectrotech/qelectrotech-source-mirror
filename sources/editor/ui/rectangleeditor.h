@@ -48,7 +48,7 @@ class RectangleEditor : public ElementItemEditor
 	QPointF editedTopLeft () const;
 	
 	public slots:
-	void updateForm() override;
+    void updateFormPriv() override;
 	private:
 	void editingFinished();
 	void activeConnections(bool active);

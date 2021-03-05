@@ -59,7 +59,7 @@ class ArcEditor : public ElementItemEditor
 	public slots:
 		void updateArcS();
 		void updateArcA();
-		void updateForm() override;
+        void updateFormPriv() override;
 		void updateRect();
 	
 	private:
