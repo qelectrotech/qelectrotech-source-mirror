@@ -63,7 +63,6 @@ class PolygonEditor : public ElementItemEditor
 	Ui::PolygonEditor *ui;
 	StyleEditor *m_style = nullptr;
 	PartPolygon *m_part = nullptr;
-	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // POLYGONEDITOR_H

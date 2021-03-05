@@ -70,7 +70,6 @@ class RectangleEditor : public ElementItemEditor
 	StyleEditor *m_style;
 	PartRectangle *m_part;
 	Ui::RectangleEditor *ui;
-	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // RECTANGLEEDITOR_H

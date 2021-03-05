@@ -73,7 +73,6 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		Ui::DynamicTextFieldEditor *ui;
 		QPointer<PartDynamicTextField> m_text_field;
 		QList<PartDynamicTextField*> m_parts;
-		QList<QMetaObject::Connection> m_connection_list;
 
 	#ifdef BUILD_WITHOUT_KF5
 	#else

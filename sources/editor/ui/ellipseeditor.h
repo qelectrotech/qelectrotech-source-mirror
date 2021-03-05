@@ -59,8 +59,7 @@ class EllipseEditor : public ElementItemEditor
 	private:
 		Ui::EllipseEditor *ui;
 		PartEllipse *m_part = nullptr;
-		StyleEditor *m_style = nullptr;
-		QList <QMetaObject::Connection> m_change_connections;
+        StyleEditor *m_style = nullptr;
 
 };
 

@@ -63,6 +63,8 @@ class ElementItemEditor : public QWidget
     private:
         virtual void updateFormPriv() = 0;
 	
+protected:
+        QList<QMetaObject::Connection> m_change_connections;
 		// attributes
 	private:
 		QETElementEditor *element_editor;

@@ -46,8 +46,6 @@ class ArcEditor : public ElementItemEditor
 		QDoubleSpinBox *x, *y, *h, *v;
 		QSpinBox *angle, *start_angle;
 		bool m_locked;
-
-		QList <QMetaObject::Connection> m_change_connections;
 	
 		// methods
 	public:
