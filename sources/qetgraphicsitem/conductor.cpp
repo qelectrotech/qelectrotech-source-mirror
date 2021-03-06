@@ -1974,53 +1974,70 @@ void Conductor::deleteSegments()
 }
 
 /**
-	@param point Un point situe a l'exterieur du polygone
-	@param polygon Le polygone dans lequel on veut rapatrier le point
-	@return la position du point, une fois ramene dans le polygone, ou plus
-	exactement sur le bord du polygone
-*/
-QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath &polygon) {
-	// decompose le polygone en lignes et points
-	QList<QPolygonF> polygons = polygon.simplified().toSubpathPolygons();
+ * @brief Conductor::movePointIntoPolygon
+ * @param point : A point located outside the polygon
+ * @param polygon : The polygon in which we want to move the point
+ * @return the position of the point, once brought back into the polygon,
+ * or more exactly on the edge of the polygon
+ */
+QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath &polygon)
+{
+		// decomposes the polygon into lines and points
+	const QList<QPolygonF> polygons = polygon.simplified().toSubpathPolygons();
 	QList<QLineF> lines;
 	QList<QPointF> points;
-	foreach(QPolygonF polygon, polygons) {
-		if (polygon.count() <= 1) continue;
 
-		// on recense les lignes et les points
+	for (QPolygonF polygon : polygons)
+	{
+		if (polygon.count() <= 1)
+			continue;
+
+			// lines and points are counted
 		for (int i = 1 ; i < polygon.count() ; ++ i) {
 			lines << QLineF(polygon.at(i - 1), polygon.at(i));
 			points << polygon.at(i -1);
 		}
 	}
 
-	// on fait des projetes orthogonaux du point sur les differents segments du
-	// polygone, en les triant par longueur croissante
+		// we make orthogonal projections of the point on the different
+		// segments of the polygon, sorting them by increasing length
 	QMap<qreal, QPointF> intersections;
-	foreach (QLineF line, lines) {
+	for (QLineF line : lines)
+	{
 		QPointF intersection_point;
 		if (QET::orthogonalProjection(point, line, &intersection_point)) {
 			intersections.insert(QLineF(intersection_point, point).length(), intersection_point);
 		}
 	}
-	if (intersections.count()) {
-		// on determine la plus courte longueur pour un projete orthogonal
+
+	if (intersections.count())
+	{
+			// the shortest length for an orthogonal project is determined
 		QPointF the_point = intersections[intersections.keys().first()];
 		return(the_point);
-	} else {
-			// determine le coin du polygone le plus proche du point exterieur
-			qreal minimum_length = -1;
-			int point_index = -1;
-			for (int i = 0 ; i < points.count() ; ++ i) {
-				qreal length = qAbs(QLineF(points.at(i), point).length());
-				if (minimum_length < 0 || length < minimum_length) {
-					minimum_length = length;
-					point_index    = i;
-				}
+	}
+	else
+	{
+			// determines the corner of the polygon closest to the outer point
+		qreal minimum_length = -1;
+		int point_index = -1;
+		for (int i = 0 ; i < points.count() ; ++ i)
+		{
+			qreal length = qAbs(QLineF(points.at(i), point).length());
+			if (minimum_length < 0 || length < minimum_length) {
+				minimum_length = length;
+				point_index    = i;
 			}
-			// on connait desormais le coin le plus proche du texte
+		}
+			// we now know the closest corner of the text
 
-		// aucun projete orthogonal n'a donne quoi que ce soit, on met le texte sur un des coins du polygone
+
+		if (point_index == -1 ||
+			point_index+1 > points.size()) {
+			return QPointF(0,0);
+		}
+
+			// no orthogonal projection gave anything, we put the text on one of the corners of the polygon
 		return(points.at(point_index));
 	}
 }
