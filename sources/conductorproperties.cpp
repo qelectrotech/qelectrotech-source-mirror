@@ -20,6 +20,8 @@
 #include <QMetaEnum>
 #include <QRegularExpression>
 #include <QtDebug>
+
+#include "qetxml.h"
 /**
 	Constructeur par defaut
 */
@@ -213,12 +215,12 @@ void SingleLineProperties::drawPen(QPainter *painter,
 */
 void SingleLineProperties::toXmlPriv(QDomElement& e) const {
 
-	e.appendChild(createXmlProperty("ground", hasGround));
-	e.appendChild(createXmlProperty("neutral", hasNeutral));
-	e.appendChild(createXmlProperty("phase", phases));
+	e.appendChild(QETXML::createXmlProperty("ground", hasGround));
+	e.appendChild(QETXML::createXmlProperty("neutral", hasNeutral));
+	e.appendChild(QETXML::createXmlProperty("phase", phases));
 
 	if (isPen())
-		e.appendChild(createXmlProperty("pen", true));
+		e.appendChild(QETXML::createXmlProperty("pen", true));
 }
 
 /**
@@ -227,17 +229,17 @@ void SingleLineProperties::toXmlPriv(QDomElement& e) const {
 	@param e Element XML dont les attributs seront lus
 */
 bool SingleLineProperties::fromXmlPriv(const QDomElement &e) {
-	if (propertyBool(e, "ground", &hasGround) != PropertyFlags::Success ||
-		propertyBool(e, "neutral", &hasNeutral) != PropertyFlags::Success)
+	if (QETXML::propertyBool(e, "ground", &hasGround) != QETXML::PropertyFlags::Success ||
+		QETXML::propertyBool(e, "neutral", &hasNeutral) != QETXML::PropertyFlags::Success)
 		return false;
 
 	int phase;
-	if (propertyInteger(e, "phase", &phase) != PropertyFlags::Success)
+	if (QETXML::propertyInteger(e, "phase", &phase) != QETXML::PropertyFlags::Success)
 		return false;
 	setPhasesCount(phase);
 
 	bool pen;
-	if (propertyBool(e, "pen", &pen) != PropertyFlags::Success)
+	if (QETXML::propertyBool(e, "pen", &pen) != QETXML::PropertyFlags::Success)
 		return false;
 	is_pen = (hasGround && hasNeutral && pen);
 
@@ -245,14 +247,14 @@ bool SingleLineProperties::fromXmlPriv(const QDomElement &e) {
 }
 
 bool SingleLineProperties::valideXml(QDomElement& e) {
-	if (propertyBool(e, "ground") != PropertyFlags::Success ||
-		propertyBool(e, "neutral") != PropertyFlags::Success)
+	if (QETXML::propertyBool(e, "ground") != QETXML::PropertyFlags::Success ||
+		QETXML::propertyBool(e, "neutral") != QETXML::PropertyFlags::Success)
 		return false;
 
-	if (propertyInteger(e, "phase") != PropertyFlags::Success)
+	if (QETXML::propertyInteger(e, "phase") != QETXML::PropertyFlags::Success)
 		return false;
 
-	if (propertyBool(e, "pen") != PropertyFlags::Success)
+	if (QETXML::propertyBool(e, "pen") != QETXML::PropertyFlags::Success)
 		return false;
 
 	return true;
@@ -282,12 +284,12 @@ ConductorProperties::~ConductorProperties()
 void ConductorProperties::toXmlPriv(QDomElement& e) const
 {
 
-	e.appendChild(createXmlProperty("type", typeToString(type)));
-	e.appendChild(createXmlProperty("color", color));
+	e.appendChild(QETXML::createXmlProperty("type", typeToString(type)));
+	e.appendChild(QETXML::createXmlProperty("color", color));
 
-	e.appendChild(createXmlProperty("bicolor", m_bicolor));
-	e.appendChild(createXmlProperty("color2", m_color_2));
-	e.appendChild(createXmlProperty("dash-size", m_dash_size));
+	e.appendChild(QETXML::createXmlProperty("bicolor", m_bicolor));
+	e.appendChild(QETXML::createXmlProperty("color2", m_color_2));
+	e.appendChild(QETXML::createXmlProperty("dash-size", m_dash_size));
 
 	if (type == Single)
     {
@@ -295,29 +297,29 @@ void ConductorProperties::toXmlPriv(QDomElement& e) const
         e.appendChild(singleLineProperties.toXml(doc));
     }
 
-	e.appendChild(createXmlProperty("num", text));
-	e.appendChild(createXmlProperty("text_color", text_color));
-	e.appendChild(createXmlProperty("formula", m_formula));
-	e.appendChild(createXmlProperty("function", m_function));
-	e.appendChild(createXmlProperty("tension_protocol", m_tension_protocol));
-	e.appendChild(createXmlProperty("conductor_color", m_wire_color));
-	e.appendChild(createXmlProperty("conductor_section", m_wire_section));
-	e.appendChild(createXmlProperty("numsize", text_size));
-	e.appendChild(createXmlProperty("condsize", cond_size));
-	e.appendChild(createXmlProperty("displaytext", m_show_text));
-	e.appendChild(createXmlProperty("onetextperfolio", m_one_text_per_folio));
-    e.appendChild(createXmlProperty("vertirotatetext", verti_rotate_text));
-	e.appendChild(createXmlProperty("horizrotatetext", horiz_rotate_text));
+	e.appendChild(QETXML::createXmlProperty("num", text));
+	e.appendChild(QETXML::createXmlProperty("text_color", text_color));
+	e.appendChild(QETXML::createXmlProperty("formula", m_formula));
+	e.appendChild(QETXML::createXmlProperty("function", m_function));
+	e.appendChild(QETXML::createXmlProperty("tension_protocol", m_tension_protocol));
+	e.appendChild(QETXML::createXmlProperty("conductor_color", m_wire_color));
+	e.appendChild(QETXML::createXmlProperty("conductor_section", m_wire_section));
+	e.appendChild(QETXML::createXmlProperty("numsize", text_size));
+	e.appendChild(QETXML::createXmlProperty("condsize", cond_size));
+	e.appendChild(QETXML::createXmlProperty("displaytext", m_show_text));
+	e.appendChild(QETXML::createXmlProperty("onetextperfolio", m_one_text_per_folio));
+    e.appendChild(QETXML::createXmlProperty("vertirotatetext", verti_rotate_text));
+	e.appendChild(QETXML::createXmlProperty("horizrotatetext", horiz_rotate_text));
 // TODO: implement
 //e.setAttribute("cable", m_cable);
 // e.setAttribute("bus", m_bus);
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	e.appendChild(createXmlProperty("horizontal-alignment", me.valueToKey(m_horizontal_alignment)));
-	e.appendChild(createXmlProperty("vertical-alignment", me.valueToKey(m_vertical_alignment)));
+	e.appendChild(QETXML::createXmlProperty("horizontal-alignment", me.valueToKey(m_horizontal_alignment)));
+	e.appendChild(QETXML::createXmlProperty("vertical-alignment", me.valueToKey(m_vertical_alignment)));
 
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty())
-		e.appendChild(createXmlProperty("style", conductor_style));
+		e.appendChild(QETXML::createXmlProperty("style", conductor_style));
 }
 
 
@@ -329,18 +331,18 @@ void ConductorProperties::toXmlPriv(QDomElement& e) const
 bool ConductorProperties::fromXmlPriv(const QDomElement &e)
 {
 		// get conductor color
-	propertyColor(e, "color", &color);
-	propertyBool(e, "bicolor", &m_bicolor);
-	propertyColor(e, "color2", &m_color_2);
-	propertyInteger(e, "dash-size", &m_dash_size);
+    QETXML::propertyColor(e, "color", &color);
+	QETXML::propertyBool(e, "bicolor", &m_bicolor);
+    QETXML::propertyColor(e, "color2", &m_color_2);
+	QETXML::propertyInteger(e, "dash-size", &m_dash_size);
 
 		// read style of conductor
 	QString style_string;
-	propertyString(e, "style", &style_string);
+    QETXML::propertyString(e, "style", &style_string);
 	readStyle(style_string);
 
 	QString type_t;
-	if (propertyString(e, "type", &type_t) == PropertyFlags::Success) {
+    if (QETXML::propertyString(e, "type", &type_t) == QETXML::PropertyFlags::Success) {
 		if (type_t == typeToString(Single))
 	{
 			// get specific properties for single conductor
@@ -358,55 +360,55 @@ bool ConductorProperties::fromXmlPriv(const QDomElement &e)
 		}
 	}
 
-	propertyString(e, "num", &text);
+    QETXML::propertyString(e, "num", &text);
 	// TODO: implement:
 	//m_cable			  = e.attribute("cable");
 	//m_bus				= e.attribute("bus");
 	// get text color
-	propertyColor(e, "text_color", &text_color);
-	propertyString(e, "formula", &m_formula);
-	propertyString(e, "function", &m_function);
-	propertyString(e, "tension_protocol", &m_tension_protocol);
-	propertyString(e, "conductor_color", &m_wire_color);
-	propertyString(e, "conductor_section", &m_wire_section);
-	propertyInteger(e, "numsize", &text_size);
-	propertyDouble(e, "condsize", &cond_size);
-	propertyBool(e, "displaytext", &m_show_text);
-	propertyBool(e, "onetextperfolio", &m_one_text_per_folio);
-	propertyDouble(e, "vertirotatetext", &verti_rotate_text);
-	propertyDouble(e, "horizrotatetext", &horiz_rotate_text);
+    QETXML::propertyColor(e, "text_color", &text_color);
+    QETXML::propertyString(e, "formula", &m_formula);
+    QETXML::propertyString(e, "function", &m_function);
+    QETXML::propertyString(e, "tension_protocol", &m_tension_protocol);
+    QETXML::propertyString(e, "conductor_color", &m_wire_color);
+    QETXML::propertyString(e, "conductor_section", &m_wire_section);
+	QETXML::propertyInteger(e, "numsize", &text_size);
+	QETXML::propertyDouble(e, "condsize", &cond_size);
+	QETXML::propertyBool(e, "displaytext", &m_show_text);
+	QETXML::propertyBool(e, "onetextperfolio", &m_one_text_per_folio);
+	QETXML::propertyDouble(e, "vertirotatetext", &verti_rotate_text);
+	QETXML::propertyDouble(e, "horizrotatetext", &horiz_rotate_text);
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	QString alinment_temp;
-	if (propertyString(e, "horizontal-alignment", &alinment_temp) == PropertyFlags::Success)
+    if (QETXML::propertyString(e, "horizontal-alignment", &alinment_temp) == QETXML::PropertyFlags::Success)
 		m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
-	if (propertyString(e, "vertical-alignment", &alinment_temp) == PropertyFlags::Success)
+    if (QETXML::propertyString(e, "vertical-alignment", &alinment_temp) == QETXML::PropertyFlags::Success)
 		m_vertical_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
 
 	return true;
 }
 
 bool ConductorProperties::valideXml(QDomElement& e) {
-	if (propertyColor(e, "color") ||
-		propertyBool(e, "bicolor") ||
-		propertyColor(e, "color2") ||
-		propertyInteger(e, "dash-size") ||
-		propertyString(e, "type") ||
-		propertyString(e, "num") ||
-		propertyColor(e, "text_color") ||
-		propertyString(e, "formula") ||
-		propertyString(e, "function") ||
-		propertyString(e, "tension_protocol") ||
-		propertyString(e, "conductor_color") ||
-		propertyString(e, "conductor_section") ||
-		propertyInteger(e, "numsize") ||
-		propertyDouble(e, "condsize") ||
-		propertyBool(e, "displaytext") ||
-		propertyBool(e, "onetextperfolio") ||
-		propertyDouble(e, "vertirotatetext") ||
-		propertyDouble(e, "horizrotatetext") ||
-		propertyString(e, "horizontal-alignment") ||
-		propertyString(e, "vertical-alignment"))
+    if (QETXML::propertyColor(e, "color") ||
+		QETXML::propertyBool(e, "bicolor") ||
+        QETXML::propertyColor(e, "color2") ||
+		QETXML::propertyInteger(e, "dash-size") ||
+        QETXML::propertyString(e, "type") ||
+        QETXML::propertyString(e, "num") ||
+        QETXML::propertyColor(e, "text_color") ||
+        QETXML::propertyString(e, "formula") ||
+        QETXML::propertyString(e, "function") ||
+        QETXML::propertyString(e, "tension_protocol") ||
+        QETXML::propertyString(e, "conductor_color") ||
+        QETXML::propertyString(e, "conductor_section") ||
+		QETXML::propertyInteger(e, "numsize") ||
+		QETXML::propertyDouble(e, "condsize") ||
+		QETXML::propertyBool(e, "displaytext") ||
+		QETXML::propertyBool(e, "onetextperfolio") ||
+		QETXML::propertyDouble(e, "vertirotatetext") ||
+		QETXML::propertyDouble(e, "horizrotatetext") ||
+        QETXML::propertyString(e, "horizontal-alignment") ||
+        QETXML::propertyString(e, "vertical-alignment"))
 		return false;
 	return true;
 }

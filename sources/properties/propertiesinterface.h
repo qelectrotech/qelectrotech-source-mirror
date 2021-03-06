@@ -112,43 +112,6 @@ class PropertiesInterface
 
 	static bool valideXml(QDomElement& element);
 
-	/*!
-	 * Use this functions to add properties to the xml document
-	 */
-	static QDomElement createXmlProperty(const QString& name, const QString value);
-    static QDomElement createXmlProperty(const QString& name, const char* value);
-	static QDomElement createXmlProperty(const QString& name, const int value);
-	static QDomElement createXmlProperty(const QString& name, const double value);
-	static QDomElement createXmlProperty(const QString& name, const bool value);
-	static QDomElement createXmlProperty(const QString& name, const QUuid value);
-	static QDomElement createXmlProperty(const QString& name, const QColor value);
-
-	static QDomElement property(const QDomElement& e, const QString& name);
-	static bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
-
-	enum PropertyFlags {
-		Success = 0,
-		NotFound = 1,
-		NoValidConversion = 2,
-		// = 4
-	};
-
-    static PropertyFlags propertyInteger(const QString& value, int* entry = nullptr);
-	static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr);
-    static PropertyFlags propertyDouble(const QString& value, double* entry = nullptr);
-	static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr);
-	static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr);
-    static PropertyFlags propertyBool(const QString& value, bool* entry = nullptr);
-	static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr);
-    static PropertyFlags propertyUuid(const QString& value, QUuid* entry = nullptr);
-	static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr);
-    static PropertyFlags propertyColor(const QString& value, QColor* entry = nullptr);
-	static PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr);
-
-
-	static bool validXmlProperty(const QDomElement& e);
-
-	QVariant XmlProperty(const QDomElement& element);
     void setTagName(const QString& tagname);
     QString tagName() const;
 

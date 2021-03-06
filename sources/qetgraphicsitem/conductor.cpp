@@ -31,6 +31,8 @@
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
+#include "../qetxml.h"
+
 #include <QMultiHash>
 #include <QtDebug>
 
@@ -583,11 +585,11 @@ ConductorTextItem *Conductor::textItem() const
 bool Conductor::valideXml(QDomElement &e){
 
 //	// TODO: seems to short! (see fromXML)
-//	if (propertyDouble(e, "x") ||
-//		propertyDouble(e, "y"))
+//	if (QETXML::propertyDouble(e, "x") ||
+//		QETXML::propertyDouble(e, "y"))
 //		return false;
 
-//	if (propertyBool(e, "freezeLabel"))
+//	if (QETXML::propertyBool(e, "freezeLabel"))
 //		return false;
 
 	return true;
@@ -967,8 +969,8 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 {
 	// TODO: seems to short!
 	double x=0, y=0;
-	propertyDouble(dom_element, "x", &x);
-	propertyDouble(dom_element, "y", &y);
+	QETXML::propertyDouble(dom_element, "x", &x);
+	QETXML::propertyDouble(dom_element, "y", &y);
 	setPos(x, y);
 
 	bool return_ = pathFromXml(dom_element);
@@ -983,7 +985,7 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	propertyBool(dom_element, "freezeLabel", &m_freeze_label);
+	QETXML::propertyBool(dom_element, "freezeLabel", &m_freeze_label);
 	setProperties(pr);
 
 	return return_;
@@ -1002,8 +1004,8 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 */
 void Conductor::toXmlPriv(QDomElement& e) const {
 
-    e.appendChild(createXmlProperty("x", pos().x()));
-    e.appendChild(createXmlProperty("y", pos().y()));
+    e.appendChild(QETXML::createXmlProperty("x", pos().x()));
+    e.appendChild(QETXML::createXmlProperty("y", pos().y()));
 
 	// Terminal is uniquely identified by the uuid of the terminal and the element
 	QUuid terminal = terminal1->uuid();
@@ -1012,10 +1014,10 @@ void Conductor::toXmlPriv(QDomElement& e) const {
 		// legacy when the terminal does not have a valid uuid
 		// do not store element1 information, because this is used to determine in the fromXml
 		// process that legacy file format
-        e.appendChild(createXmlProperty("terminal1", terminal1->ID()));
+        e.appendChild(QETXML::createXmlProperty("terminal1", terminal1->ID()));
 	} else {
-        e.appendChild(createXmlProperty("element1", terminalParent));
-        e.appendChild(createXmlProperty("terminal1", terminal));
+        e.appendChild(QETXML::createXmlProperty("element1", terminalParent));
+        e.appendChild(QETXML::createXmlProperty("terminal1", terminal));
 	}
 
 	terminal = terminal2->uuid();
@@ -1024,13 +1026,13 @@ void Conductor::toXmlPriv(QDomElement& e) const {
 		// legacy when the terminal does not have a valid uuid
 		// do not store element1 information, because this is used to determine in the fromXml
 		// process that legacy file format
-        e.appendChild(createXmlProperty("terminal2", terminal2->ID()));
+        e.appendChild(QETXML::createXmlProperty("terminal2", terminal2->ID()));
 	} else {
-        e.appendChild(createXmlProperty("element2", terminal2->parentElement()->uuid()));
-        e.appendChild(createXmlProperty("terminal2", terminal2->uuid()));
+        e.appendChild(QETXML::createXmlProperty("element2", terminal2->parentElement()->uuid()));
+        e.appendChild(QETXML::createXmlProperty("terminal2", terminal2->uuid()));
 	}
 
-    e.appendChild(createXmlProperty("freezeLabel", m_freeze_label));
+    e.appendChild(QETXML::createXmlProperty("freezeLabel", m_freeze_label));
 
     QDomDocument doc;
 
@@ -1043,8 +1045,8 @@ void Conductor::toXmlPriv(QDomElement& e) const {
 		foreach(ConductorSegment *segment, segmentsList())
 		{
 			current_segment = doc.createElement("segment");
-			current_segment.appendChild(createXmlProperty("orientation", segment->isHorizontal() ? "horizontal": "vertical"));
-			current_segment.appendChild(createXmlProperty("length", segment -> length()));
+			current_segment.appendChild(QETXML::createXmlProperty("orientation", segment->isHorizontal() ? "horizontal": "vertical"));
+			current_segment.appendChild(QETXML::createXmlProperty("length", segment -> length()));
             e.appendChild(current_segment);
 		}
 	}
@@ -1138,12 +1140,12 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 
 		// le segment doit avoir une longueur
 		qreal segment_length;
-		if (propertyDouble(current_segment, "length", & segment_length))
+		if (QETXML::propertyDouble(current_segment, "length", & segment_length))
 			continue;
 
 		bool isHorizontal = false;
 		QString orientation;
-		if (propertyString(current_segment, "orientation", &orientation) == PropertyFlags::Success) {
+        if (QETXML::propertyString(current_segment, "orientation", &orientation) == QETXML::PropertyFlags::Success) {
 			if (orientation == "horizontal")
 				isHorizontal = true;
 		} else {

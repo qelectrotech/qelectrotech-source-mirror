@@ -22,6 +22,8 @@
 #include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "../elementscene.h"
 
+#include "../../qetxml.h"
+
 /**
 	@brief PartEllipse::PartEllipse
 	Constructor
@@ -88,18 +90,18 @@ void PartEllipse::toXmlPriv(QDomElement& e) const
 	if (qFuzzyCompare(rect().width(), rect().height()))
 	{
         e.setTagName("circle");
-        e.appendChild(createXmlProperty("diameter", rect().width()));
+        e.appendChild(QETXML::createXmlProperty("diameter", rect().width()));
 	}
 	else
 	{
         e.setTagName("ellipse");
-        e.appendChild(createXmlProperty("width", rect().width()));
-        e.appendChild(createXmlProperty("height", rect().height()));
+        e.appendChild(QETXML::createXmlProperty("width", rect().width()));
+        e.appendChild(QETXML::createXmlProperty("height", rect().height()));
 	}
 
 	QPointF top_left(sceneTopLeft());
-    e.appendChild(createXmlProperty("x", top_left.x()));
-    e.appendChild(createXmlProperty("y", top_left.y()));
+    e.appendChild(QETXML::createXmlProperty("x", top_left.x()));
+    e.appendChild(QETXML::createXmlProperty("y", top_left.y()));
 
     stylesToXml(e);
 }
@@ -116,19 +118,19 @@ bool PartEllipse::fromXmlPriv(const QDomElement &qde)
 
 	if (qde.tagName() == "ellipse")
 	{
-		if (propertyDouble(qde, "width", &width) == PropertyFlags::NoValidConversion ||
-			propertyDouble(qde, "height", &height) == PropertyFlags::NoValidConversion)
+		if (QETXML::propertyDouble(qde, "width", &width) == QETXML::PropertyFlags::NoValidConversion ||
+			QETXML::propertyDouble(qde, "height", &height) == QETXML::PropertyFlags::NoValidConversion)
 			return false;
 	}
 	else {
-		if (propertyDouble(qde, "diameter", &width) == PropertyFlags::NoValidConversion)
+		if (QETXML::propertyDouble(qde, "diameter", &width) == QETXML::PropertyFlags::NoValidConversion)
 			return false;
 		height = width;
 	}
 
 
-	if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
-		propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(qde, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(qde, "y", &y) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
 	m_rect = QRectF(mapFromScene(x, y), QSizeF(width, height));
@@ -139,18 +141,18 @@ bool PartEllipse::fromXmlPriv(const QDomElement &qde)
 bool PartEllipse::valideXml(QDomElement& element) {
 	if (element.tagName() == "ellipse")
 	{
-		if (propertyDouble(element, "width") & PropertyFlags::NoValidConversion ||
-			propertyDouble(element, "height") & PropertyFlags::NoValidConversion)
+		if (QETXML::propertyDouble(element, "width") & QETXML::PropertyFlags::NoValidConversion ||
+			QETXML::propertyDouble(element, "height") & QETXML::PropertyFlags::NoValidConversion)
 			return false;
 	}
 	else {
-		if (propertyDouble(element, "diameter") & PropertyFlags::NoValidConversion)
+		if (QETXML::propertyDouble(element, "diameter") & QETXML::PropertyFlags::NoValidConversion)
 			return false;
 	}
 
 
-	if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) ||
-		(propertyDouble(element, "y") & PropertyFlags::NoValidConversion))
+	if ((QETXML::propertyDouble(element, "x") & QETXML::PropertyFlags::NoValidConversion) ||
+		(QETXML::propertyDouble(element, "y") & QETXML::PropertyFlags::NoValidConversion))
 		return false;
 
 	return true;

@@ -23,6 +23,8 @@
 #include "../elementscene.h"
 #include "../ui/texteditor.h"
 
+#include "../../qetxml.h"
+
 /**
 	Constructeur
 	@param editor L'editeur d'element concerne
@@ -72,7 +74,7 @@ bool PartText::fromXmlPriv(const QDomElement &xml_element)
 	int size;
 	QString font;
 
-	if (propertyInteger(xml_element, "size", &size) != PropertyFlags::NotFound)
+    if (QETXML::propertyInteger(xml_element, "size", &size) != QETXML::PropertyFlags::NotFound)
 	{
 		if (size < 1) {
 			size = 20;
@@ -81,7 +83,7 @@ bool PartText::fromXmlPriv(const QDomElement &xml_element)
 		font_.setPointSize(size);
 		setFont(font_);
 	}
-	else if (propertyString(xml_element, "font", &font) != PropertyFlags::NotFound)
+    else if (QETXML::propertyString(xml_element, "font", &font) != QETXML::PropertyFlags::NotFound)
 	{
 		QFont font_;
 		font_.fromString(font);
@@ -92,20 +94,20 @@ bool PartText::fromXmlPriv(const QDomElement &xml_element)
 
 	QColor color;
 	QString text;
-	propertyColor(xml_element, "color", &color);
+    QETXML::propertyColor(xml_element, "color", &color);
 	setDefaultTextColor(color);
 
 
-	propertyString(xml_element, "text", &text);
+    QETXML::propertyString(xml_element, "text", &text);
 	setPlainText(text);
 
 	double x=0, y=0, rot=0;
-	if (propertyDouble(xml_element, "x", &x) == PropertyFlags::NoValidConversion ||
-		propertyDouble(xml_element, "y", &y) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(xml_element, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(xml_element, "y", &y) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 	setPos(x, y);
 
-	if (propertyDouble(xml_element, "rotation", &rot) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(xml_element, "rotation", &rot) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 	setRotation(rot);
 
@@ -121,33 +123,33 @@ void PartText::toXmlPriv(QDomElement& e) const
 {
     //QDomElement xml_element = xml_document.createElement(xmlName());
 
-    e.appendChild(createXmlProperty("x", pos().x()));
-    e.appendChild(createXmlProperty("y", pos().y()));
-    e.appendChild(createXmlProperty("text", toPlainText()));
-    e.appendChild(createXmlProperty("font", font().toString()));
-    e.appendChild(createXmlProperty("rotation", rotation()));
-    e.appendChild(createXmlProperty("color", defaultTextColor().name()));
+    e.appendChild(QETXML::createXmlProperty("x", pos().x()));
+    e.appendChild(QETXML::createXmlProperty("y", pos().y()));
+    e.appendChild(QETXML::createXmlProperty("text", toPlainText()));
+    e.appendChild(QETXML::createXmlProperty("font", font().toString()));
+    e.appendChild(QETXML::createXmlProperty("rotation", rotation()));
+    e.appendChild(QETXML::createXmlProperty("color", defaultTextColor().name()));
 }
 
 bool PartText::valideXml(QDomElement& element) {
 
-	if (propertyInteger(element, "size") == PropertyFlags::NotFound ||
-		propertyString(element, "font") == PropertyFlags::NotFound) {
+    if (QETXML::propertyInteger(element, "size") == QETXML::PropertyFlags::NotFound ||
+        QETXML::propertyString(element, "font") == QETXML::PropertyFlags::NotFound) {
 		return false;
 	}
 
-	if (propertyString(element, "color") == PropertyFlags::NoValidConversion)
+    if (QETXML::propertyString(element, "color") == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
 
-	if (propertyString(element, "text"))
+    if (QETXML::propertyString(element, "text"))
 		return false;
 
-	if (propertyDouble(element, "x") == PropertyFlags::NoValidConversion ||
-		propertyDouble(element, "y") == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(element, "x") == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(element, "y") == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
-	if (propertyDouble(element, "rotation", 0) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(element, "rotation", 0) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
 	return true;

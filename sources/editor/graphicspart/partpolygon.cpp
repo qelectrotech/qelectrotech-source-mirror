@@ -24,6 +24,8 @@
 #include "../elementscene.h"
 #include "../ui/qetelementeditor.h"
 
+#include "../../qetxml.h"
+
 /**
 	@brief PartPolygon::PartPolygon
 	Constructor
@@ -98,8 +100,8 @@ bool PartPolygon::fromXmlPriv(const QDomElement &qde)
 	int i = 1;
 	while(true)
 	{
-		if (propertyDouble(qde, QString("x%1").arg(i)) == PropertyFlags::Success &&
-			propertyDouble(qde, QString("y%1").arg(i)) == PropertyFlags::Success)
+		if (QETXML::propertyDouble(qde, QString("x%1").arg(i)) == QETXML::PropertyFlags::Success &&
+			QETXML::propertyDouble(qde, QString("y%1").arg(i)) == QETXML::PropertyFlags::Success)
 			i++;
 
 		else break;
@@ -109,15 +111,15 @@ bool PartPolygon::fromXmlPriv(const QDomElement &qde)
 	double x, y;
 	for (int j = 1 ; j < i ; ++ j)
 	{
-		error_counter += propertyDouble(qde, QString("x%1").arg(j), &x);
-		error_counter += propertyDouble(qde, QString("y%1").arg(j), &y);
+		error_counter += QETXML::propertyDouble(qde, QString("x%1").arg(j), &x);
+		error_counter += QETXML::propertyDouble(qde, QString("y%1").arg(j), &y);
 		if (error_counter)
 			return false;
 		temp_polygon << QPointF(x, y);
 	}
 	m_polygon = temp_polygon;
 
-	if (propertyBool(qde, "closed", &m_closed) != PropertyFlags::Success)
+	if (QETXML::propertyBool(qde, "closed", &m_closed) != QETXML::PropertyFlags::Success)
 		return false;
 
 	return true;
@@ -133,12 +135,12 @@ void PartPolygon::toXmlPriv(QDomElement& e) const
 	int i = 1;
 	foreach(QPointF point, m_polygon) {
 		point = mapToScene(point);
-        e.appendChild(createXmlProperty(QString("x%1").arg(i), point.x()));
-        e.appendChild(createXmlProperty(QString("y%1").arg(i), point.y()));
+        e.appendChild(QETXML::createXmlProperty(QString("x%1").arg(i), point.x()));
+        e.appendChild(QETXML::createXmlProperty(QString("y%1").arg(i), point.y()));
 		++ i;
 	}
 
-    e.appendChild(createXmlProperty("closed", m_closed));
+    e.appendChild(QETXML::createXmlProperty("closed", m_closed));
 
     stylesToXml(e);
 }

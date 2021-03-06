@@ -21,6 +21,8 @@
 #include "../../qetapp.h"
 #include "../elementscene.h"
 
+#include "../../qetxml.h"
+
 #include <QColor>
 #include <QFont>
 #include <QGraphicsSceneMouseEvent>
@@ -97,33 +99,33 @@ void PartDynamicTextField::handleUserTransformation(
 void PartDynamicTextField::toXmlPriv(QDomElement& e) const
 {
 
-    e.appendChild(createXmlProperty("x", pos().x()));
-    e.appendChild(createXmlProperty("y", pos().y()));
-    e.appendChild(createXmlProperty("z", zValue()));
-    e.appendChild(createXmlProperty("rotation", QET::correctAngle(rotation())));
+    e.appendChild(QETXML::createXmlProperty("x", pos().x()));
+    e.appendChild(QETXML::createXmlProperty("y", pos().y()));
+    e.appendChild(QETXML::createXmlProperty("z", zValue()));
+    e.appendChild(QETXML::createXmlProperty("rotation", QET::correctAngle(rotation())));
 
-    e.appendChild(createXmlProperty("font", font().toString()));
-    e.appendChild(createXmlProperty("uuid", m_uuid));
-    e.appendChild(createXmlProperty("frame", m_frame));
-    e.appendChild(createXmlProperty("text_width", m_text_width));
+    e.appendChild(QETXML::createXmlProperty("font", font().toString()));
+    e.appendChild(QETXML::createXmlProperty("uuid", m_uuid));
+    e.appendChild(QETXML::createXmlProperty("frame", m_frame));
+    e.appendChild(QETXML::createXmlProperty("text_width", m_text_width));
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
-    e.appendChild(createXmlProperty("text_from", me.valueToKey(m_text_from)));
+    e.appendChild(QETXML::createXmlProperty("text_from", me.valueToKey(m_text_from)));
 
 	me = QMetaEnum::fromType<Qt::Alignment>();
 	if(this -> alignment() &Qt::AlignRight)
-        e.appendChild(createXmlProperty("Halignment", me.valueToKey(Qt::AlignRight)));
+        e.appendChild(QETXML::createXmlProperty("Halignment", me.valueToKey(Qt::AlignRight)));
 	else if(this -> alignment() &Qt::AlignLeft)
-        e.appendChild(createXmlProperty("Halignment", me.valueToKey(Qt::AlignLeft)));
+        e.appendChild(QETXML::createXmlProperty("Halignment", me.valueToKey(Qt::AlignLeft)));
 	else if(this -> alignment() &Qt::AlignHCenter)
-        e.appendChild(createXmlProperty("Halignment", me.valueToKey(Qt::AlignHCenter)));
+        e.appendChild(QETXML::createXmlProperty("Halignment", me.valueToKey(Qt::AlignHCenter)));
 
 	if(this -> alignment() &Qt::AlignBottom)
-        e.appendChild(createXmlProperty("Valignment", me.valueToKey(Qt::AlignBottom)));
+        e.appendChild(QETXML::createXmlProperty("Valignment", me.valueToKey(Qt::AlignBottom)));
 	else if(this -> alignment() & Qt::AlignTop)
-        e.appendChild(createXmlProperty("Valignment", me.valueToKey(Qt::AlignTop)));
+        e.appendChild(QETXML::createXmlProperty("Valignment", me.valueToKey(Qt::AlignTop)));
 	else if(this -> alignment() &Qt::AlignVCenter)
-        e.appendChild(createXmlProperty("Valignment", me.valueToKey(Qt::AlignVCenter)));
+        e.appendChild(QETXML::createXmlProperty("Valignment", me.valueToKey(Qt::AlignVCenter)));
 
     QDomDocument dom_doc;
 	QDomElement dom_text = dom_doc.createElement("text");
@@ -167,10 +169,10 @@ bool PartDynamicTextField::fromXmlPriv(const QDomElement &dom_elmt)
 	}
 
 	double x=0, y=0, z=0, rot=0;
-	if (propertyDouble(dom_elmt, "x", &x) == PropertyFlags::NoValidConversion ||
-		propertyDouble(dom_elmt, "y", &y) == PropertyFlags::NoValidConversion ||
-		propertyDouble(dom_elmt, "z", &z) == PropertyFlags::NoValidConversion ||
-		propertyDouble(dom_elmt, "rotation", &rot) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(dom_elmt, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(dom_elmt, "y", &y) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(dom_elmt, "z", &z) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(dom_elmt, "rotation", &rot) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 	
 	QGraphicsTextItem::setPos(x, y);
@@ -178,7 +180,7 @@ bool PartDynamicTextField::fromXmlPriv(const QDomElement &dom_elmt)
 	QGraphicsTextItem::setRotation(rot);
 
 	QString font;
-	if (propertyString(dom_elmt, "font", &font) == PropertyFlags::Success)
+    if (QETXML::propertyString(dom_elmt, "font", &font) == QETXML::PropertyFlags::Success)
 	{
 		QFont font_;
 		font_.fromString(font);
@@ -191,24 +193,24 @@ bool PartDynamicTextField::fromXmlPriv(const QDomElement &dom_elmt)
 		setFont(QETApp::dynamicTextsItemFont(9));
 	}
 
-	propertyUuid(dom_elmt, "uuid", &m_uuid);
+    QETXML::propertyUuid(dom_elmt, "uuid", &m_uuid);
 	bool frame;
-	propertyBool(dom_elmt, "frame", &frame);
+	QETXML::propertyBool(dom_elmt, "frame", &frame);
 
 	double text_width=-1;
-	propertyDouble(dom_elmt, "text_width", &text_width);
+	QETXML::propertyDouble(dom_elmt, "text_width", &text_width);
 	setTextWidth(text_width);
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	QString text_from;
-	propertyString(dom_elmt, "text_from", &text_from);
+    QETXML::propertyString(dom_elmt, "text_from", &text_from);
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(text_from.toStdString().data()));
 
 	me = QMetaEnum::fromType<Qt::Alignment>();
 	QString alignment;
-	if(propertyString(dom_elmt, "Halignment", &alignment) != PropertyFlags::NotFound)
+    if(QETXML::propertyString(dom_elmt, "Halignment", &alignment) != QETXML::PropertyFlags::NotFound)
 		setAlignment(Qt::Alignment(me.keyToValue(alignment.toStdString().data())));
-	if(propertyString(dom_elmt, "Valignment", &alignment) != PropertyFlags::NotFound)
+    if(QETXML::propertyString(dom_elmt, "Valignment", &alignment) != QETXML::PropertyFlags::NotFound)
 		setAlignment(Qt::Alignment(
 			me.keyToValue(dom_elmt.attribute("Valignment").toStdString().data())) | this -> alignment());
 
@@ -240,21 +242,21 @@ bool PartDynamicTextField::fromXmlPriv(const QDomElement &dom_elmt)
 }
 
 bool PartDynamicTextField::valideXml(QDomElement& dom_elmt) {
-	if (propertyDouble(dom_elmt, "x") == PropertyFlags::NoValidConversion ||
-		propertyDouble(dom_elmt, "y") == PropertyFlags::NoValidConversion ||
-		propertyDouble(dom_elmt, "z") == PropertyFlags::NoValidConversion ||
-		propertyDouble(dom_elmt, "rotation") == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(dom_elmt, "x") == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(dom_elmt, "y") == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(dom_elmt, "z") == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(dom_elmt, "rotation") == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
-	if (propertyUuid(dom_elmt, "uuid") == PropertyFlags::NoValidConversion)
+    if (QETXML::propertyUuid(dom_elmt, "uuid") == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
-	if (propertyString(dom_elmt, "text_from"))
+    if (QETXML::propertyString(dom_elmt, "text_from"))
 		return false;
 
-	if(propertyString(dom_elmt, "Halignment") == PropertyFlags::NotFound)
+    if(QETXML::propertyString(dom_elmt, "Halignment") == QETXML::PropertyFlags::NotFound)
 		return false;
-	if(propertyString(dom_elmt, "Valignment") == PropertyFlags::NotFound)
+    if(QETXML::propertyString(dom_elmt, "Valignment") == QETXML::PropertyFlags::NotFound)
 		return false;
 
 	return true;

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "borderproperties.h"
+#include "qetxml.h"
 
 /**
 	@brief BorderProperties::BorderProperties
@@ -89,12 +90,12 @@ bool BorderProperties::operator!=(const BorderProperties &bp) {
 	\~French Element XML auquel seront ajoutes des attributs
 */
 void BorderProperties::toXmlPriv(QDomElement& e) const {
-    e.appendChild(createXmlProperty("cols", columns_count));
-    e.appendChild(createXmlProperty("colsize", columns_width));
-    e.appendChild(createXmlProperty("rows", rows_count));
-    e.appendChild(createXmlProperty("rowsize", rows_height));
-    e.appendChild(createXmlProperty("displayrows", display_rows));
-    e.appendChild(createXmlProperty("displaycols", display_columns));
+    e.appendChild(QETXML::createXmlProperty("cols", columns_count));
+    e.appendChild(QETXML::createXmlProperty("colsize", columns_width));
+    e.appendChild(QETXML::createXmlProperty("rows", rows_count));
+    e.appendChild(QETXML::createXmlProperty("rowsize", rows_height));
+    e.appendChild(QETXML::createXmlProperty("displayrows", display_rows));
+    e.appendChild(QETXML::createXmlProperty("displaycols", display_columns));
 }
 
 /*!RETURNS True
@@ -108,12 +109,12 @@ void BorderProperties::toXmlPriv(QDomElement& e) const {
 */
 bool BorderProperties::fromXmlPriv(const QDomElement &e) {
 
-	if (propertyInteger(e, "cols", &columns_count) == PropertyFlags::NoValidConversion ||
-		propertyDouble(e, "colsize", &columns_width) == PropertyFlags::NoValidConversion ||
-		propertyInteger(e, "rows", &rows_count) == PropertyFlags::NoValidConversion ||
-		propertyDouble(e, "rowsize", &rows_height) == PropertyFlags::NoValidConversion ||
-		propertyBool(e, "displaycols", &display_columns) == PropertyFlags::NoValidConversion ||
-		propertyBool(e, "displayrows", &display_rows) == PropertyFlags::NoValidConversion)
+    if (QETXML::propertyInteger(e, "cols", &columns_count) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyDouble(e, "colsize", &columns_width) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyInteger(e, "rows", &rows_count) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyDouble(e, "rowsize", &rows_height) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyBool(e, "displaycols", &display_columns) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyBool(e, "displayrows", &display_rows) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
 	return true;
@@ -121,12 +122,12 @@ bool BorderProperties::fromXmlPriv(const QDomElement &e) {
 
 bool BorderProperties::valideXml(QDomElement& e) {
 
-	if (propertyInteger(e, "cols") == PropertyFlags::Success ||
-		propertyDouble(e, "colsize") == PropertyFlags::Success ||
-		propertyInteger(e, "rows") == PropertyFlags::Success ||
-		propertyDouble(e, "rowsize") == PropertyFlags::Success ||
-		propertyBool(e, "displaycols") == PropertyFlags::Success ||
-		propertyBool(e, "displayrows") == PropertyFlags::Success)
+    if (QETXML::propertyInteger(e, "cols") == QETXML::PropertyFlags::Success ||
+        QETXML::propertyDouble(e, "colsize") == QETXML::PropertyFlags::Success ||
+        QETXML::propertyInteger(e, "rows") == QETXML::PropertyFlags::Success ||
+        QETXML::propertyDouble(e, "rowsize") == QETXML::PropertyFlags::Success ||
+        QETXML::propertyBool(e, "displaycols") == QETXML::PropertyFlags::Success ||
+        QETXML::propertyBool(e, "displayrows") == QETXML::PropertyFlags::Success)
 		return true;
 	return false;
 }

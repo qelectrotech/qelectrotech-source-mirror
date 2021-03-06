@@ -22,6 +22,8 @@
 #include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "../elementscene.h"
 
+#include "../../qetxml.h"
+
 /**
 	@brief PartRectangle::PartRectangle
 	Constructor
@@ -91,10 +93,10 @@ void PartRectangle::toXmlPriv(QDomElement& e) const
 {
 	QPointF top_left(sceneTopLeft());
 
-    e.appendChild(createXmlProperty("x", top_left.x()));
-    e.appendChild(createXmlProperty("y", top_left.y()));
-    e.appendChild(createXmlProperty("width", m_rect.width()));
-    e.appendChild(createXmlProperty("height", m_rect.height()));
+    e.appendChild(QETXML::createXmlProperty("x", top_left.x()));
+    e.appendChild(QETXML::createXmlProperty("y", top_left.y()));
+    e.appendChild(QETXML::createXmlProperty("width", m_rect.width()));
+    e.appendChild(QETXML::createXmlProperty("height", m_rect.height()));
 
 	QRectF rect = m_rect.normalized();
 	qreal x = m_xRadius;
@@ -109,8 +111,8 @@ void PartRectangle::toXmlPriv(QDomElement& e) const
     e.setAttribute("rx", QString::number(m_xRadius));
     e.setAttribute("ry", QString::number(m_yRadius));
 
-    e.appendChild(createXmlProperty("rx", m_xRadius));
-    e.appendChild(createXmlProperty("ry", m_yRadius));
+    e.appendChild(QETXML::createXmlProperty("rx", m_xRadius));
+    e.appendChild(QETXML::createXmlProperty("ry", m_yRadius));
 	
     stylesToXml(e);
 }
@@ -125,22 +127,22 @@ bool PartRectangle::fromXmlPriv(const QDomElement &qde)
 	stylesFromXml(qde);
 
 	double x=0, y=0, w=0, h=0, rx=0, ry=0;
-	if (propertyDouble(qde, "x", &x) == PropertyFlags::NoValidConversion ||
-		propertyDouble(qde, "y", &y) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(qde, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(qde, "y", &y) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
 	setPos(mapFromScene(x, y));
 
-	if (propertyDouble(qde, "width", &w) == PropertyFlags::NoValidConversion ||
-        propertyDouble(qde, "height", &h) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(qde, "width", &w) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyDouble(qde, "height", &h) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
     QRectF rect(QPointF(0,0), QSizeF(w, h));
 
 	setRect(rect.normalized());
 
-	if (propertyDouble(qde, "rx", &rx) == PropertyFlags::NoValidConversion ||
-		propertyDouble(qde, "ry", &ry) == PropertyFlags::NoValidConversion)
+	if (QETXML::propertyDouble(qde, "rx", &rx) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(qde, "ry", &ry) == QETXML::PropertyFlags::NoValidConversion)
 		return false;
 
 	setXRadius(rx);
@@ -151,12 +153,12 @@ bool PartRectangle::fromXmlPriv(const QDomElement &qde)
 
 bool PartRectangle::valideXml(QDomElement& element) {
 	// parameters have default values so no value is not a non valid xml element
-	if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) |
-		(propertyDouble(element, "y") & PropertyFlags::NoValidConversion) |
-		(propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
-        (propertyDouble(element, "height") & PropertyFlags::NoValidConversion) |
-		(propertyDouble(element, "rx") & PropertyFlags::NoValidConversion) |
-		(propertyDouble(element, "ry") & PropertyFlags::NoValidConversion))
+	if ((QETXML::propertyDouble(element, "x") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "y") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "width") & QETXML::PropertyFlags::NoValidConversion) |
+        (QETXML::propertyDouble(element, "height") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "rx") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "ry") & QETXML::PropertyFlags::NoValidConversion))
 		return false;
 	return true;
 }

@@ -20,6 +20,8 @@
 #include <QGraphicsObject>
 #include <QDebug>
 
+#include "../qetxml.h"
+
 TerminalData::TerminalData():
     PropertiesInterface("terminaldata")
 {
@@ -99,11 +101,11 @@ void TerminalData::toXmlPriv(QDomElement& e) const
 	// m_pos cannot be stored, because in the partterminal it will not be updated.
 	// In PartTerminal m_pos is the position of the dock, in Terminal m_pos is the second side of the terminal
 	// This is hold for legacy compability reason
-    e.appendChild(createXmlProperty("x", m_pos.x()));
-    e.appendChild(createXmlProperty("y", m_pos.y()));
-    e.appendChild(createXmlProperty("name", m_name));
-    e.appendChild(createXmlProperty("orientation", orientationToString(m_orientation)));
-    e.appendChild(createXmlProperty("type", typeToString(m_type)));
+    e.appendChild(QETXML::createXmlProperty("x", m_pos.x()));
+    e.appendChild(QETXML::createXmlProperty("y", m_pos.y()));
+    e.appendChild(QETXML::createXmlProperty("name", m_name));
+    e.appendChild(QETXML::createXmlProperty("orientation", orientationToString(m_orientation)));
+    e.appendChild(QETXML::createXmlProperty("type", typeToString(m_type)));
 }
 
 /*
@@ -123,10 +125,10 @@ bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
 	// reads the position of the terminal
 	// lit la position de la borne
 
-	if (propertyDouble(xml_element, "x", &term_x))
+	if (QETXML::propertyDouble(xml_element, "x", &term_x))
 		return false;
 
-	if (propertyDouble(xml_element, "y", &term_y))
+	if (QETXML::propertyDouble(xml_element, "y", &term_y))
 		return false;
 
 	m_pos = QPointF(term_x, term_y);
@@ -139,12 +141,12 @@ bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
 	// older version of qet. So use the legacy approach
 
 
-	//if (propertyString(xml_element, "name", &m_name))
+    //if (QETXML::propertyString(xml_element, "name", &m_name))
 	//	return false;
-	propertyString(xml_element, "name", &m_name); // some parts do not have a name. Example: affuteuse_250h.qet, Terminal at x="0" y="-20"
+    QETXML::propertyString(xml_element, "name", &m_name); // some parts do not have a name. Example: affuteuse_250h.qet, Terminal at x="0" y="-20"
 
 	QString o;
-	if (propertyString(xml_element, "orientation", &o))
+    if (QETXML::propertyString(xml_element, "orientation", &o))
 		return false;
 
 	// read the orientation of the terminal
@@ -152,29 +154,29 @@ bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
 	m_orientation = orientationFromString(o);
 	
     QString type;
-    if (propertyString(xml_element, "type", &type) == PropertyFlags::Success)
+    if (QETXML::propertyString(xml_element, "type", &type) == QETXML::PropertyFlags::Success)
         m_type = typeFromString(type);
 
 	return true;
 }
 
 bool TerminalData::valideXml(const QDomElement& xml_element) {
-	if (propertyDouble(xml_element, "x"))
+	if (QETXML::propertyDouble(xml_element, "x"))
 		return false;
 
     // Old projects do not have this property.
-//	if (propertyString(xml_element, "type"))
+//	if (QETXML::propertyString(xml_element, "type"))
 //		return false;
 
 
 	  // legacy elements do not have an uuid
-//	if (propertyUuid(xml_element, "uuid"))
+//	if (QETXML::propertyUuid(xml_element, "uuid"))
 //		return false;
 
-	//if (propertyString(xml_element, "name")) // some parts do not have a name. Example: affuteuse_250h.qet, Terminal at x="0" y="-20"
+    //if (QETXML::propertyString(xml_element, "name")) // some parts do not have a name. Example: affuteuse_250h.qet, Terminal at x="0" y="-20"
 	//	return false;
 
-	if (propertyString(xml_element, "orientation"))
+    if (QETXML::propertyString(xml_element, "orientation"))
 		return false;
 	return true;
 }

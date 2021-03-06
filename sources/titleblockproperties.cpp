@@ -19,6 +19,8 @@
 #include "qet.h"
 #include "qetapp.h"
 
+#include "qetxml.h"
+
 /**
 	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
 	vides (date vide + useDate a UseDateValue).
@@ -71,20 +73,20 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
     @param e Element XML auquel seront ajoutes des attributs
 */
 void TitleBlockProperties::toXmlPriv(QDomElement& e) const {
-    e.appendChild(createXmlProperty("author", author));
-    e.appendChild(createXmlProperty("title", title));
-    e.appendChild(createXmlProperty("filename", filename));
-    e.appendChild(createXmlProperty("plant", plant));
-    e.appendChild(createXmlProperty("locmach", locmach));
-    e.appendChild(createXmlProperty("indexrev", indexrev));
-    e.appendChild(createXmlProperty("version", version));
-    e.appendChild(createXmlProperty("folio", folio));
-    e.appendChild(createXmlProperty("date", exportDate()));
-    e.appendChild(createXmlProperty("display_at", display_at == Qt::BottomEdge? "bottom" : "right"));
+    e.appendChild(QETXML::createXmlProperty("author", author));
+    e.appendChild(QETXML::createXmlProperty("title", title));
+    e.appendChild(QETXML::createXmlProperty("filename", filename));
+    e.appendChild(QETXML::createXmlProperty("plant", plant));
+    e.appendChild(QETXML::createXmlProperty("locmach", locmach));
+    e.appendChild(QETXML::createXmlProperty("indexrev", indexrev));
+    e.appendChild(QETXML::createXmlProperty("version", version));
+    e.appendChild(QETXML::createXmlProperty("folio", folio));
+    e.appendChild(QETXML::createXmlProperty("date", exportDate()));
+    e.appendChild(QETXML::createXmlProperty("display_at", display_at == Qt::BottomEdge? "bottom" : "right"));
     if (!template_name.isEmpty())
     {
-        e.appendChild(createXmlProperty("titleblocktemplate", template_name));
-        e.appendChild(createXmlProperty("titleblocktemplateCollection", QET::qetCollectionToString(collection)));
+        e.appendChild(QETXML::createXmlProperty("titleblocktemplate", template_name));
+        e.appendChild(QETXML::createXmlProperty("titleblocktemplateCollection", QET::qetCollectionToString(collection)));
     }
 
     if (context.keys().count()) {
@@ -103,27 +105,27 @@ bool TitleBlockProperties::fromXmlPriv(const QDomElement &e) {
 
 
 	// reads the historical fields
-	propertyString(e, "author", &author);
-	propertyString(e, "title", &title);
-	propertyString(e, "filename", &filename);
-	propertyString(e, "plant", &plant);
-	propertyString(e, "locmach", &locmach);
-	propertyString(e, "indexrev", &indexrev);
-	propertyString(e, "version", &version);
-	propertyString(e, "folio", &folio);
-	propertyString(e, "auto_page_num", &auto_page_num);
+	QETXML::propertyString(e, "author", &author);
+	QETXML::propertyString(e, "title", &title);
+	QETXML::propertyString(e, "filename", &filename);
+	QETXML::propertyString(e, "plant", &plant);
+	QETXML::propertyString(e, "locmach", &locmach);
+	QETXML::propertyString(e, "indexrev", &indexrev);
+	QETXML::propertyString(e, "version", &version);
+	QETXML::propertyString(e, "folio", &folio);
+	QETXML::propertyString(e, "auto_page_num", &auto_page_num);
 	QString date;
-	propertyString(e, "date", &date);
+	QETXML::propertyString(e, "date", &date);
 	setDateFromString(date);
 
 	QString display_at_temp;
-	if (propertyString(e, "displayAt", &display_at_temp) == PropertyFlags::Success)
+	if (QETXML::propertyString(e, "displayAt", &display_at_temp) == QETXML::PropertyFlags::Success)
 		display_at = (display_at_temp == "bottom" ? Qt::BottomEdge : Qt::RightEdge); // otherwise it gets default in header file
 	
 		// reads the template used to render the title block
-	if (propertyString(e, "titleblocktemplate", &template_name) == PropertyFlags::Success) {
+	if (QETXML::propertyString(e, "titleblocktemplate", &template_name) == QETXML::PropertyFlags::Success) {
 		QString tbc;
-		if (propertyString(e, "titleblocktemplateCollection", &tbc) == PropertyFlags::Success)
+		if (QETXML::propertyString(e, "titleblocktemplateCollection", &tbc) == QETXML::PropertyFlags::Success)
 			collection = QET::qetCollectionFromString(tbc);
 	}
 	

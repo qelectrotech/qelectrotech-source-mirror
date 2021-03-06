@@ -39,6 +39,8 @@
 #include <QtDebug>
 #include <utility>
 
+#include "qetxml.h"
+
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
 /**
@@ -1533,7 +1535,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
 			QString type;
-			if (PropertiesInterface::propertyString(elmt, "type", &type) == PropertiesInterface::PropertyFlags::Success)
+            if (QETXML::propertyString(elmt, "type", &type) == QETXML::PropertyFlags::Success)
 				m_default_xref_properties.insert(type, xrp);
 			else
 				qDebug() << "xref Property was not added to m_default_xref_properties.";

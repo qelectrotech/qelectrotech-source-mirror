@@ -44,6 +44,8 @@
 #include <cassert>
 #include <math.h>
 
+#include "qetxml.h"
+
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
 int Diagram::xKeyGrid = 10;
@@ -1102,7 +1104,7 @@ Terminal* findTerminal(int conductor_index,
 	QString terminal_index = "terminal" + QString::number(conductor_index);
 
 	QUuid element_uuid;
-	if (PropertiesInterface::propertyUuid(conductor, element_index, &element_uuid) == PropertiesInterface::PropertyFlags::Success) {
+    if (QETXML::propertyUuid(conductor, element_index, &element_uuid) == QETXML::PropertyFlags::Success) {
 		// element1 did not exist in the conductor part of the xml until prior 0.7
 		// It is used as an indicator that uuid's are used to identify terminals
 		bool element_found = false;
@@ -1111,7 +1113,7 @@ Terminal* findTerminal(int conductor_index,
 				continue;
 			element_found = true;
 			QUuid terminal_uuid;
-			PropertiesInterface::propertyUuid(conductor, terminal_index, &terminal_uuid);
+            QETXML::propertyUuid(conductor, terminal_index, &terminal_uuid);
 			for (auto terminal: element->terminals()) {
 				if (terminal->uuid() != terminal_uuid)
 					continue;
@@ -1137,7 +1139,7 @@ Terminal* findTerminal(int conductor_index,
 	} else {
 		// Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
 		int id_p1 = -1;
-		if (PropertiesInterface::propertyInteger(conductor, terminal_index, &id_p1) != PropertiesInterface::PropertyFlags::Success) {
+        if (QETXML::propertyInteger(conductor, terminal_index, &id_p1) != QETXML::PropertyFlags::Success) {
 			qDebug() << "diagramm.cpp:findTerminal(): Reading Id was not successfull";
 		}
 		if (!table_adr_id.contains(id_p1)) {
