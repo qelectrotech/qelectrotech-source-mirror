@@ -1783,7 +1783,8 @@ void QETProject::writeBackup()
 #		if TODO_LIST
 #			pragma message("@TODO remove code for QT 6 or later")
 #		endif
-	qDebug()<<"Help code for QT 6 or later";
+	qDebug() << "Help code for QT 6 or later"
+			 << "QtConcurrent::run its backwards now...function, object, args";
 #	endif
 #endif
 }

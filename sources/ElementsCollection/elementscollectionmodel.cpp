@@ -284,9 +284,20 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 		this, &ElementsCollectionModel::loadingProgressRangeChanged);
 	connect(watcher, &QFutureWatcher<void>::finished,
 		this, &ElementsCollectionModel::loadingFinished);
-	connect(watcher, &QFutureWatcher<void>::finished,
-		watcher, &QFutureWatcher<void>::deleteLater);
+	connect(
+		watcher,
+		&QFutureWatcher<void>::finished,
+		watcher,
+		&QFutureWatcher<void>::deleteLater);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 	m_future = QtConcurrent::map(m_items_list_to_setUp, setUpData);
+#else
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
+	qDebug() << "Help code for QT 6 or later"
+			 << "QtConcurrent::run its backwards now...function, object, args";
+#endif
 	watcher->setFuture(m_future);
 }
 
