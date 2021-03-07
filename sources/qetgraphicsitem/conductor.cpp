@@ -967,7 +967,6 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 */
 bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 {
-	// TODO: seems to short!
 	double x=0, y=0;
 	QETXML::propertyDouble(dom_element, "x", &x);
 	QETXML::propertyDouble(dom_element, "y", &y);
@@ -976,8 +975,16 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 	bool return_ = pathFromXml(dom_element);
 
 	m_text_item -> fromXml(dom_element);
-	ConductorProperties pr;
-	pr.fromXml(dom_element);
+
+    auto prs = QETXML::findInDomElement(dom_element, ConductorProperties::xmlTagName());
+    ConductorProperties pr;
+    if (!prs.isEmpty()) {
+        pr.fromXml(prs.first());
+    } else {
+       // legacy
+       // added in 0.9 remove in later version!
+       pr.fromXml(dom_element);
+    }
 
 		//Load Sequential Values
 	if (dom_element.hasAttribute("sequ_1") || dom_element.hasAttribute("sequf_1") || dom_element.hasAttribute("seqt_1") || dom_element.hasAttribute("seqtf_1") || dom_element.hasAttribute("seqh_1") || dom_element.hasAttribute("sequf_1"))
@@ -1044,7 +1051,7 @@ void Conductor::toXmlPriv(QDomElement& dom_element) const {
     dom_element.appendChild(dom_seq);
 
         // Export the properties and text
-    m_properties. toXml(doc);
+    dom_element.appendChild(m_properties. toXml(doc));
     if(m_text_item->wasMovedByUser())
     {
         dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));

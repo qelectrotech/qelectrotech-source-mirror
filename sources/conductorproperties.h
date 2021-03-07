@@ -121,9 +121,8 @@ class ConductorProperties: public PropertiesInterface
 		SingleLineProperties singleLineProperties;
 
 		// methods
-        void toXmlPriv(QDomElement&) const override;
-        bool fromXmlPriv(const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
+        static QString xmlTagName();
         void toSettings(QSettings &, const QString & = QString()) const override;
         void fromSettings(QSettings &, const QString & = QString()) override;
 		static QString typeToString(ConductorType);
@@ -134,6 +133,10 @@ class ConductorProperties: public PropertiesInterface
 		// operators
 		bool operator==(const ConductorProperties &) const;
 		bool operator!=(const ConductorProperties &) const;
+
+    private:
+        void toXmlPriv(QDomElement&) const override;
+        bool fromXmlPriv(const QDomElement &) override;
 
 	private:
 		void readStyle(const QString &);

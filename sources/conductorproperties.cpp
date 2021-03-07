@@ -22,6 +22,10 @@
 #include <QtDebug>
 
 #include "qetxml.h"
+
+namespace {
+    const QString conductorPropertiesXmlName = "conductorProperties";
+}
 /**
 	Constructeur par defaut
 */
@@ -263,7 +267,7 @@ bool SingleLineProperties::valideXml(QDomElement& e) {
 	multifilaire noir dont le texte est "_"
 */
 ConductorProperties::ConductorProperties() :
-    PropertiesInterface("defaultconductor")
+    PropertiesInterface(xmlTagName())
 {}
 
 /**
@@ -411,6 +415,11 @@ bool ConductorProperties::valideXml(QDomElement& e) {
         QETXML::propertyString(e, "vertical-alignment"))
 		return false;
 	return true;
+}
+
+QString ConductorProperties::xmlTagName()
+{
+    return conductorPropertiesXmlName;
 }
 
 /**
