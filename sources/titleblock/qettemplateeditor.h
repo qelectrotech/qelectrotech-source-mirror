@@ -22,6 +22,7 @@
 #include "templatelocation.h"
 #include "templateview.h"
 
+#include <QCloseEvent>
 #include <QtWidgets>
 class ModifyTitleBlockCellCommand;
 class TitleBlockTemplateCommand;

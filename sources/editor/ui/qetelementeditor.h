@@ -18,8 +18,10 @@
 #ifndef QETELEMENTEDITOR_H
 #define QETELEMENTEDITOR_H
 
-#include <QMainWindow>
 #include "../../ElementsCollection/elementslocation.h"
+
+#include <QCloseEvent>
+#include <QMainWindow>
 
 class ElementScene;
 class QActionGroup;

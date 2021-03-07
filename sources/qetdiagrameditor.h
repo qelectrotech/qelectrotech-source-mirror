@@ -22,6 +22,7 @@
 #include "qetmainwindow.h"
 
 #include <QActionGroup>
+#include <QCloseEvent>
 #include <QDir>
 #include <QMdiArea>
 #include <QSignalMapper>
