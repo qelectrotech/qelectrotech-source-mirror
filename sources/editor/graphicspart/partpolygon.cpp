@@ -130,19 +130,17 @@ bool PartPolygon::fromXmlPriv(const QDomElement &qde)
 	Export this polygin in xml
     @param e: properties get part of this DomElement
 */
-void PartPolygon::toXmlPriv(QDomElement& e) const
+void PartPolygon::toXmlPriv(QDomElement& xml_element) const
 {
-	int i = 1;
-	foreach(QPointF point, m_polygon) {
-		point = mapToScene(point);
-        e.appendChild(QETXML::createXmlProperty(QString("x%1").arg(i), point.x()));
-        e.appendChild(QETXML::createXmlProperty(QString("y%1").arg(i), point.y()));
-		++ i;
-	}
-
-    e.appendChild(QETXML::createXmlProperty("closed", m_closed));
-
-    stylesToXml(e);
+    int i = 1;
+    foreach(QPointF point, m_polygon) {
+        point = mapToScene(point);
+        xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
+        xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
+        ++ i;
+    }
+    if (!m_closed) xml_element.setAttribute("closed", "false");
+    stylesToXml(xml_element);
 }
 
 bool PartPolygon::valideXml(QDomElement& element) {

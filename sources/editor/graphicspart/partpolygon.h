@@ -62,7 +62,7 @@ class PartPolygon : public CustomElementGraphicPart
 		QString name() const override { return(QObject::tr("polygone", "element part name")); }
 		QString xmlName() const override { return(QString("polygon")); }
 		bool fromXmlPriv(const QDomElement &) override;
-		void toXmlPriv(QDomElement&) const override;
+        void toXmlPriv(QDomElement&xml_element) const override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}

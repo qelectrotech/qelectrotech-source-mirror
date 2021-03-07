@@ -90,12 +90,12 @@ bool BorderProperties::operator!=(const BorderProperties &bp) {
 	\~French Element XML auquel seront ajoutes des attributs
 */
 void BorderProperties::toXmlPriv(QDomElement& e) const {
-    e.appendChild(QETXML::createXmlProperty("cols", columns_count));
-    e.appendChild(QETXML::createXmlProperty("colsize", columns_width));
-    e.appendChild(QETXML::createXmlProperty("rows", rows_count));
-    e.appendChild(QETXML::createXmlProperty("rowsize", rows_height));
-    e.appendChild(QETXML::createXmlProperty("displayrows", display_rows));
-    e.appendChild(QETXML::createXmlProperty("displaycols", display_columns));
+    e.setAttribute("cols",        columns_count);
+    e.setAttribute("colsize",     QString("%1").arg(columns_width));
+    e.setAttribute("rows",        rows_count);
+    e.setAttribute("rowsize",     QString("%1").arg(rows_height));
+    e.setAttribute("displaycols", display_columns ? "true" : "false");
+    e.setAttribute("displayrows", display_rows    ? "true" : "false");
 }
 
 /*!RETURNS True

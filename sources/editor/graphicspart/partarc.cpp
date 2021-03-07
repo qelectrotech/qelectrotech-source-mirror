@@ -103,22 +103,18 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	@param xml_document : Xml document to use for create the xml element.
 	@return : an xml element that describe this arc
 */
-void PartArc::toXmlPriv(QDomElement& e) const
+void PartArc::toXmlPriv(QDomElement& xml_element) const
 {
-    e.setTagName("arc");
-	QPointF top_left(sceneTopLeft());
-
-    e.appendChild(QETXML::createXmlProperty("x", top_left.x()));
-    e.appendChild(QETXML::createXmlProperty("y", top_left.y()));
-    e.appendChild(QETXML::createXmlProperty("width", rect().width()));
-    e.appendChild(QETXML::createXmlProperty("height", rect().height()));
-
-		//to maintain compatibility with the previous version, we write the angle in degrees.
-    e.appendChild(QETXML::createXmlProperty("start", m_start_angle / 16));
-    e.appendChild(QETXML::createXmlProperty("angle", m_span_angle / 16));
-
-
-    stylesToXml(e);
+    xml_element.setTagName("arc");
+    QPointF top_left(sceneTopLeft());
+    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+    xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
+    xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+        //to maintain compatibility with the previous version, we write the angle in degrees.
+    xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
+    xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
+    stylesToXml(xml_element);
 }
 
 /**

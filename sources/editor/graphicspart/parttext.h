@@ -63,7 +63,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
-        void toXmlPriv(QDomElement&) const override;
+        void toXmlPriv(QDomElement&xml_element) const override;
 		void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
 		bool isUseless() const override;
 		QRectF sceneGeometricRect() const override;

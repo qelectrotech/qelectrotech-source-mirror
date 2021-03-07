@@ -109,22 +109,21 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 	@param xml_document : Xml document to use for create the xml element.
 	@return an xml element that describe this line
 */
-void PartLine::toXmlPriv(QDomElement& e) const
+void PartLine::toXmlPriv(QDomElement& xml_element) const
 {
-	QPointF p1(sceneP1());
-	QPointF p2(sceneP2());
+    QPointF p1(sceneP1());
+    QPointF p2(sceneP2());
 
-    e.appendChild(QETXML::createXmlProperty("x1", p1.x()));
-    e.appendChild(QETXML::createXmlProperty("y1", p1.y()));
-    e.appendChild(QETXML::createXmlProperty("x2", p2.x()));
-    e.appendChild(QETXML::createXmlProperty("y2", p2.y()));
+    xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
+    xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
+    xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
+    xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
+    xml_element.setAttribute("end1", Qet::endTypeToString(first_end));
+    xml_element.setAttribute("length1", QString("%1").arg(first_length));
+    xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
+    xml_element.setAttribute("length2", QString("%1").arg(second_length));
 
-    e.appendChild(QETXML::createXmlProperty("end1", Qet::endTypeToString(first_end)));
-    e.appendChild(QETXML::createXmlProperty("length1", first_length));
-    e.appendChild(QETXML::createXmlProperty("end2", Qet::endTypeToString(second_end)));
-    e.appendChild(QETXML::createXmlProperty("length2", second_length));
-	
-    stylesToXml(e);
+    stylesToXml(xml_element);
 }
 
 /**

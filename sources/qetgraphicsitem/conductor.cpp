@@ -1002,66 +1002,56 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
-void Conductor::toXmlPriv(QDomElement& e) const {
+void Conductor::toXmlPriv(QDomElement& dom_element) const {
 
-    e.appendChild(QETXML::createXmlProperty("x", pos().x()));
-    e.appendChild(QETXML::createXmlProperty("y", pos().y()));
+    dom_element.setAttribute("x", QString::number(pos().x()));
+    dom_element.setAttribute("y", QString::number(pos().y()));
 
-	// Terminal is uniquely identified by the uuid of the terminal and the element
-	QUuid terminal = terminal1->uuid();
-	QUuid terminalParent = terminal1->parentElement()->uuid();
-	if (terminalParent.isNull() || terminal.isNull()) {
-		// legacy when the terminal does not have a valid uuid
-		// do not store element1 information, because this is used to determine in the fromXml
-		// process that legacy file format
-        e.appendChild(QETXML::createXmlProperty("terminal1", terminal1->ID()));
-	} else {
-        e.appendChild(QETXML::createXmlProperty("element1", terminalParent));
-        e.appendChild(QETXML::createXmlProperty("terminal1", terminal));
-	}
+    // Terminal is uniquely identified by the uuid of the terminal and the element
+    if (terminal1->uuid().isNull()) {
+        // legacy method to identify the terminal
+        dom_element.setAttribute("terminal1", terminal1->ID()); // for backward compability
+    } else {
+        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+    }
 
-	terminal = terminal2->uuid();
-	terminalParent = terminal2->parentElement()->uuid();
-	if (terminalParent.isNull() || terminal.isNull()) {
-		// legacy when the terminal does not have a valid uuid
-		// do not store element1 information, because this is used to determine in the fromXml
-		// process that legacy file format
-        e.appendChild(QETXML::createXmlProperty("terminal2", terminal2->ID()));
-	} else {
-        e.appendChild(QETXML::createXmlProperty("element2", terminal2->parentElement()->uuid()));
-        e.appendChild(QETXML::createXmlProperty("terminal2", terminal2->uuid()));
-	}
+    if (terminal2->uuid().isNull()) {
+        // legacy method to identify the terminal
+        dom_element.setAttribute("terminal2", terminal2->ID()); // for backward compability
+    } else {
+        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+    }
+    dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 
-    e.appendChild(QETXML::createXmlProperty("freezeLabel", m_freeze_label));
+    // on n'exporte les segments du conducteur que si ceux-ci ont
+    // ete modifies par l'utilisateur
+    if (modified_path)
+    {
+        // parcours et export des segments
+        QDomElement current_segment;
+        foreach(ConductorSegment *segment, segmentsList())
+        {
+            current_segment = dom_element.ownerDocument().createElement("segment");
+            current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+            current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
+            dom_element.appendChild(current_segment);
+        }
+    }
+    QDomDocument doc = dom_element.ownerDocument();
+    QDomElement dom_seq = m_autoNum_seq.toXml(doc);
+    dom_element.appendChild(dom_seq);
 
-    QDomDocument doc;
-
-	// on n'exporte les segments du conducteur que si ceux-ci ont
-	// ete modifies par l'utilisateur
-	if (modified_path)
-	{
-		// parcours et export des segments
-		QDomElement current_segment;
-		foreach(ConductorSegment *segment, segmentsList())
-		{
-			current_segment = doc.createElement("segment");
-			current_segment.appendChild(QETXML::createXmlProperty("orientation", segment->isHorizontal() ? "horizontal": "vertical"));
-			current_segment.appendChild(QETXML::createXmlProperty("length", segment -> length()));
-            e.appendChild(current_segment);
-		}
-	}
-
-	QDomElement dom_seq = m_autoNum_seq.toXml(doc); // swquentialNumbers tag
-    e.appendChild(dom_seq);
-
-		// Export the properties and text
-	QDomElement conductorProperties = m_properties.toXml(doc);
-	for (int i=0; i < conductorProperties.childNodes().count(); i++) {
-		QDomNode node = conductorProperties.childNodes().at(i).cloneNode(); // cloneNode() is important!
-        e.appendChild(node);
-	}
-
-    m_text_item->toXml(e);
+        // Export the properties and text
+    m_properties. toXml(doc);
+    if(m_text_item->wasMovedByUser())
+    {
+        dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
+        dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
+    }
+    if(m_text_item->wasRotateByUser())
+        dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
 }
 
 /**

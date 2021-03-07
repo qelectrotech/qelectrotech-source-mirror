@@ -72,13 +72,12 @@ bool PartTerminal::fromXmlPriv(const QDomElement &xml_elmt) {
 */
 void PartTerminal::toXmlPriv(QDomElement& e) const {
 
-    e.appendChild(QETXML::createXmlProperty("uuid", d->m_uuid));
+    e.setAttribute("uuid", d->m_uuid.toString());
 
-	d->m_pos = pos();
+    d->m_pos = pos();
 
-	// Do not store terminal data in its own child
     QDomDocument doc = e.ownerDocument();
-    e.appendChild(d->toXml(doc));
+    e.appendChild(d -> toXml(doc));
 
 }
 

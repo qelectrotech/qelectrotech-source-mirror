@@ -119,16 +119,14 @@ bool PartText::fromXmlPriv(const QDomElement &xml_element)
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-void PartText::toXmlPriv(QDomElement& e) const
+void PartText::toXmlPriv(QDomElement& xml_element) const
 {
-    //QDomElement xml_element = xml_document.createElement(xmlName());
-
-    e.appendChild(QETXML::createXmlProperty("x", pos().x()));
-    e.appendChild(QETXML::createXmlProperty("y", pos().y()));
-    e.appendChild(QETXML::createXmlProperty("text", toPlainText()));
-    e.appendChild(QETXML::createXmlProperty("font", font().toString()));
-    e.appendChild(QETXML::createXmlProperty("rotation", rotation()));
-    e.appendChild(QETXML::createXmlProperty("color", defaultTextColor().name()));
+    xml_element.setAttribute("x", QString::number(pos().x()));
+    xml_element.setAttribute("y", QString::number(pos().y()));
+    xml_element.setAttribute("text", toPlainText());
+    xml_element.setAttribute("font", font().toString());
+    xml_element.setAttribute("rotation", QString::number(rotation()));
+    xml_element.setAttribute("color", defaultTextColor().name());
 }
 
 bool PartText::valideXml(QDomElement& element) {

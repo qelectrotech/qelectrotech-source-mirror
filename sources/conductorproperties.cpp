@@ -215,12 +215,10 @@ void SingleLineProperties::drawPen(QPainter *painter,
 */
 void SingleLineProperties::toXmlPriv(QDomElement& e) const {
 
-	e.appendChild(QETXML::createXmlProperty("ground", hasGround));
-	e.appendChild(QETXML::createXmlProperty("neutral", hasNeutral));
-	e.appendChild(QETXML::createXmlProperty("phase", phases));
-
-	if (isPen())
-		e.appendChild(QETXML::createXmlProperty("pen", true));
+    e.setAttribute("ground",  hasGround  ? "true" : "false");
+    e.setAttribute("neutral", hasNeutral ? "true" : "false");
+    e.setAttribute("phase",   phases);
+    if (isPen()) e.setAttribute("pen", "true");
 }
 
 /**
@@ -284,42 +282,44 @@ ConductorProperties::~ConductorProperties()
 void ConductorProperties::toXmlPriv(QDomElement& e) const
 {
 
-	e.appendChild(QETXML::createXmlProperty("type", typeToString(type)));
-	e.appendChild(QETXML::createXmlProperty("color", color));
+    e.setAttribute("type", typeToString(type));
 
-	e.appendChild(QETXML::createXmlProperty("bicolor", m_bicolor));
-	e.appendChild(QETXML::createXmlProperty("color2", m_color_2));
-	e.appendChild(QETXML::createXmlProperty("dash-size", m_dash_size));
+    if (color != QColor(Qt::black))
+        e.setAttribute("color", color.name());
 
-	if (type == Single)
+    e.setAttribute("bicolor", m_bicolor? "true" : "false");
+    e.setAttribute("color2", m_color_2.name());
+    e.setAttribute("dash-size", QString::number(m_dash_size));
+
+    if (type == Single)
     {
-        QDomDocument doc;
-        e.appendChild(singleLineProperties.toXml(doc));
+        QDomDocument doc = e.ownerDocument();
+        singleLineProperties.toXml(doc);
     }
 
-	e.appendChild(QETXML::createXmlProperty("num", text));
-	e.appendChild(QETXML::createXmlProperty("text_color", text_color));
-	e.appendChild(QETXML::createXmlProperty("formula", m_formula));
-	e.appendChild(QETXML::createXmlProperty("function", m_function));
-	e.appendChild(QETXML::createXmlProperty("tension_protocol", m_tension_protocol));
-	e.appendChild(QETXML::createXmlProperty("conductor_color", m_wire_color));
-	e.appendChild(QETXML::createXmlProperty("conductor_section", m_wire_section));
-	e.appendChild(QETXML::createXmlProperty("numsize", text_size));
-	e.appendChild(QETXML::createXmlProperty("condsize", cond_size));
-	e.appendChild(QETXML::createXmlProperty("displaytext", m_show_text));
-	e.appendChild(QETXML::createXmlProperty("onetextperfolio", m_one_text_per_folio));
-    e.appendChild(QETXML::createXmlProperty("vertirotatetext", verti_rotate_text));
-	e.appendChild(QETXML::createXmlProperty("horizrotatetext", horiz_rotate_text));
-// TODO: implement
-//e.setAttribute("cable", m_cable);
-// e.setAttribute("bus", m_bus);
-	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	e.appendChild(QETXML::createXmlProperty("horizontal-alignment", me.valueToKey(m_horizontal_alignment)));
-	e.appendChild(QETXML::createXmlProperty("vertical-alignment", me.valueToKey(m_vertical_alignment)));
+    e.setAttribute("num", text);
+    e.setAttribute("text_color", text_color.name());
+    e.setAttribute("formula", m_formula);
+    e.setAttribute("cable", m_cable);
+    e.setAttribute("bus", m_bus);
+    e.setAttribute("function", m_function);
+    e.setAttribute("tension_protocol", m_tension_protocol);
+    e.setAttribute("conductor_color", m_wire_color);
+    e.setAttribute("conductor_section", m_wire_section);
+    e.setAttribute("numsize", QString::number(text_size));
+    e.setAttribute("condsize", QString::number(cond_size));
+    e.setAttribute("displaytext", m_show_text);
+    e.setAttribute("onetextperfolio", m_one_text_per_folio);
+    e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
+    e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
 
-	QString conductor_style = writeStyle();
-	if (!conductor_style.isEmpty())
-		e.appendChild(QETXML::createXmlProperty("style", conductor_style));
+    QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+    e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
+    e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
+
+    QString conductor_style = writeStyle();
+    if (!conductor_style.isEmpty())
+        e.setAttribute("style", conductor_style);
 }
 
 

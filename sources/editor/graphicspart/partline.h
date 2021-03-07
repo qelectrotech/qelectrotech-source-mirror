@@ -70,7 +70,7 @@ class PartLine : public CustomElementGraphicPart
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name() const override { return(QObject::tr("ligne", "element part name")); }
 		QString xmlName() const override { return(QString("line")); }
-		void toXmlPriv(QDomElement&) const override;
+        void toXmlPriv(QDomElement&xml_element) const override;
 		bool fromXmlPriv(const QDomElement &) override;
 		bool valideXml(QDomElement& element) const;
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}

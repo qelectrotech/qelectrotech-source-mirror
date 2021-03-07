@@ -93,19 +93,18 @@ void TerminalData::fromSettings(QSettings &settings, const QString& prefix)
     @param e: element to store the properties
 	the name, number, position and orientation of the terminal
 */
-void TerminalData::toXmlPriv(QDomElement& e) const
+void TerminalData::toXmlPriv(QDomElement& xml_element) const
 {
-    // TODO:
-    //QDomElement xml_element = xml_document.createElement("terminaldata");
+    xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
+    xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
 
-	// m_pos cannot be stored, because in the partterminal it will not be updated.
-	// In PartTerminal m_pos is the position of the dock, in Terminal m_pos is the second side of the terminal
-	// This is hold for legacy compability reason
-    e.appendChild(QETXML::createXmlProperty("x", m_pos.x()));
-    e.appendChild(QETXML::createXmlProperty("y", m_pos.y()));
-    e.appendChild(QETXML::createXmlProperty("name", m_name));
-    e.appendChild(QETXML::createXmlProperty("orientation", orientationToString(m_orientation)));
-    e.appendChild(QETXML::createXmlProperty("type", typeToString(m_type)));
+    xml_element.setAttribute("uuid", m_uuid.toString());
+    xml_element.setAttribute("name", m_name);
+
+    xml_element.setAttribute("orientation",
+	orientationToString(m_orientation));
+
+    xml_element.setAttribute("type", typeToString(m_type));
 }
 
 /*

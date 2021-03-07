@@ -760,15 +760,12 @@ QList<Conductor *> Terminal::conductors() const
 */
 void Terminal::toXmlPriv(QDomElement &qdo) const
 {
-    qdo.appendChild(QETXML::createXmlProperty("number", number_terminal_));
-    qdo.appendChild(QETXML::createXmlProperty("nameHidden", name_terminal_hidden));
+    // for backward compatibility
+    qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
+    qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+    // end for backward compatibility
 
-	// Do not store terminal data in its own child
-	// Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
-	QPointF tempPos = d->m_pos;
-	d->m_pos = dock_elmt_;
-    d->toXmlPriv(qdo); // TerminalData
-	d->m_pos = tempPos;
+    qdo.setAttribute("orientation", d->m_orientation);
 }
 
 /**

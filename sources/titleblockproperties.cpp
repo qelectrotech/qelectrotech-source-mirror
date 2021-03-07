@@ -73,20 +73,21 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
     @param e Element XML auquel seront ajoutes des attributs
 */
 void TitleBlockProperties::toXmlPriv(QDomElement& e) const {
-    e.appendChild(QETXML::createXmlProperty("author", author));
-    e.appendChild(QETXML::createXmlProperty("title", title));
-    e.appendChild(QETXML::createXmlProperty("filename", filename));
-    e.appendChild(QETXML::createXmlProperty("plant", plant));
-    e.appendChild(QETXML::createXmlProperty("locmach", locmach));
-    e.appendChild(QETXML::createXmlProperty("indexrev", indexrev));
-    e.appendChild(QETXML::createXmlProperty("version", version));
-    e.appendChild(QETXML::createXmlProperty("folio", folio));
-    e.appendChild(QETXML::createXmlProperty("date", exportDate()));
-    e.appendChild(QETXML::createXmlProperty("display_at", display_at == Qt::BottomEdge? "bottom" : "right"));
+    e.setAttribute("author",   author);
+    e.setAttribute("title",    title);
+    e.setAttribute("filename", filename);
+    e.setAttribute("plant", plant);
+    e.setAttribute("locmach", locmach);
+    e.setAttribute("indexrev",indexrev);
+    e.setAttribute("version", version);
+    e.setAttribute("folio",    folio);
+    e.setAttribute("auto_page_num", auto_page_num);
+    e.setAttribute("date",     exportDate());
+    e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
     if (!template_name.isEmpty())
     {
-        e.appendChild(QETXML::createXmlProperty("titleblocktemplate", template_name));
-        e.appendChild(QETXML::createXmlProperty("titleblocktemplateCollection", QET::qetCollectionToString(collection)));
+        e.setAttribute("titleblocktemplate", template_name);
+        e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
     }
 
     if (context.keys().count()) {
@@ -94,7 +95,6 @@ void TitleBlockProperties::toXmlPriv(QDomElement& e) const {
         context.toXml(properties);
         e.appendChild(properties);
     }
-
 }
 
 /** RETURNS True

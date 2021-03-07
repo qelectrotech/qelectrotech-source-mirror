@@ -57,7 +57,7 @@ class PartTerminal : public CustomElementGraphicPart
 		int type() const override { return Type; }
 		QString xmlName() const override { return(QString("terminal")); }
 		bool fromXmlPriv(const QDomElement &) override;
-		void toXmlPriv(QDomElement&) const override;
+        void toXmlPriv(QDomElement&xml_element) const override;
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}

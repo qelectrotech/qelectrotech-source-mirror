@@ -89,32 +89,28 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 	@param xml_document : Xml document to use for create the xml element.
 	@return an xml element that describe this ellipse
 */
-void PartRectangle::toXmlPriv(QDomElement& e) const
+void PartRectangle::toXmlPriv(QDomElement& xml_element) const
 {
-	QPointF top_left(sceneTopLeft());
+    QPointF top_left(sceneTopLeft());
+    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+    xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
+    xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
 
-    e.appendChild(QETXML::createXmlProperty("x", top_left.x()));
-    e.appendChild(QETXML::createXmlProperty("y", top_left.y()));
-    e.appendChild(QETXML::createXmlProperty("width", m_rect.width()));
-    e.appendChild(QETXML::createXmlProperty("height", m_rect.height()));
+    QRectF rect = m_rect.normalized();
+    qreal x = m_xRadius;
+    if (x > rect.width()/2) {
+        x = rect.width()/2;
+    }
+    qreal y = m_yRadius;
+    if (y > rect.height()/2) {
+        y = rect.height()/2;
+    }
 
-	QRectF rect = m_rect.normalized();
-	qreal x = m_xRadius;
-	if (x > rect.width()/2) {
-		x = rect.width()/2;
-	}
-	qreal y = m_yRadius;
-	if (y > rect.height()/2) {
-		y = rect.height()/2;
-	}
+    xml_element.setAttribute("rx", QString::number(m_xRadius));
+    xml_element.setAttribute("ry", QString::number(m_yRadius));
 
-    e.setAttribute("rx", QString::number(m_xRadius));
-    e.setAttribute("ry", QString::number(m_yRadius));
-
-    e.appendChild(QETXML::createXmlProperty("rx", m_xRadius));
-    e.appendChild(QETXML::createXmlProperty("ry", m_yRadius));
-	
-    stylesToXml(e);
+    stylesToXml(xml_element);
 }
 
 /**

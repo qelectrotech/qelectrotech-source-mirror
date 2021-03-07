@@ -75,7 +75,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void startUserTransformation(const QRectF &initial_selection_rect) override;
 		void handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) override;
 
-        void toXmlPriv(QDomElement&) const override;
+        void toXmlPriv(QDomElement&root_element) const override;
         bool fromXmlPriv(const QDomElement &dom_elmt) override;
 		void fromTextFieldXml(const QDomElement &dom_element);
 		static bool valideXml(QDomElement& dom_elmt);

@@ -85,25 +85,25 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	Export this ellipse in xml
 	@return : an xml element that describe this ellipse
 */
-void PartEllipse::toXmlPriv(QDomElement& e) const
+void PartEllipse::toXmlPriv(QDomElement& xml_element) const
 {
-	if (qFuzzyCompare(rect().width(), rect().height()))
-	{
-        e.setTagName("circle");
-        e.appendChild(QETXML::createXmlProperty("diameter", rect().width()));
-	}
-	else
-	{
-        e.setTagName("ellipse");
-        e.appendChild(QETXML::createXmlProperty("width", rect().width()));
-        e.appendChild(QETXML::createXmlProperty("height", rect().height()));
-	}
+    if (qFuzzyCompare(rect().width(), rect().height()))
+    {
+        xml_element.setTagName("circle");
+        xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
+    }
+    else
+    {
+        xml_element.setTagName("ellipse");
+        xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
+        xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+    }
 
-	QPointF top_left(sceneTopLeft());
-    e.appendChild(QETXML::createXmlProperty("x", top_left.x()));
-    e.appendChild(QETXML::createXmlProperty("y", top_left.y()));
+    QPointF top_left(sceneTopLeft());
+    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
 
-    stylesToXml(e);
+    stylesToXml(xml_element);
 }
 
 /**
