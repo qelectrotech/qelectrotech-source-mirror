@@ -744,8 +744,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		border_and_titleblock.borderToXml(dom_root);
 
 		// Default conductor properties
-		dom_root.appendChild(defaultConductorProperties.toXml(document));
-				document.createElement("defaultconductor");
+        defaultConductorProperties.setTagName("defaultconductor");
+        dom_root.appendChild(defaultConductorProperties.toXml(document));
 
 		// Conductor autonum
 		if (!m_conductors_autonum_name.isEmpty()) {
