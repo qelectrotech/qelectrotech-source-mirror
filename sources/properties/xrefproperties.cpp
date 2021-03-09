@@ -22,20 +22,15 @@
 #include <QHash>
 #include <QMetaEnum>
 
+#include "../qetxml.h"
+
 /**
 	@brief XRefProperties::XRefProperties
 	Default Constructor
 */
 XRefProperties::XRefProperties()
 {
-	m_show_power_ctc = true;
-	m_display = Cross;
-	m_snap_to = Bottom;
-	m_prefix_keys << "power" << "delay" << "switch";
-	m_master_label = "%f-%l%c";
-	m_slave_label = "(%f-%l%c)";
-	m_offset = 0;
-	m_xref_pos = Qt::AlignBottom;
+    setTagName("xref");
 }
 
 /**
@@ -45,7 +40,7 @@ XRefProperties::XRefProperties()
 	@param prefix: prefix before properties name
 */
 void XRefProperties::toSettings(QSettings &settings,
-				const QString prefix) const
+                const QString &prefix) const
 {
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
@@ -74,8 +69,8 @@ void XRefProperties::toSettings(QSettings &settings,
 	@param settings: QSettings to use
 	@param prefix: prefix before properties name
 */
-void XRefProperties::fromSettings(const QSettings &settings,
-				  const QString prefix)
+void XRefProperties::fromSettings(QSettings &settings,
+                  const QString &prefix)
 {
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
@@ -100,62 +95,66 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	@param xml_document : QDomElement to use for saving
 	@return QDomElement
 */
-QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
+void XRefProperties::toXmlPriv(QDomElement& xml_element) const
 {
+    xml_element.setAttribute("type", m_key);
 
-	QDomElement xml_element = xml_document.createElement("xref");
-	xml_element.setAttribute("type", m_key);
+    xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
+    QString display = m_display == Cross? "cross" : "contacts";
+    xml_element.setAttribute("displayhas", display);
+    QString snap = m_snap_to == Bottom? "bottom" : "label";
+    xml_element.setAttribute("snapto", snap);
 
-	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
-	QString display = m_display == Cross? "cross" : "contacts";
-	xml_element.setAttribute("displayhas", display);
-	QString snap = m_snap_to == Bottom? "bottom" : "label";
-	xml_element.setAttribute("snapto", snap);
+    QString xrefpos;
 
-	QString xrefpos;
+    QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+    xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
 
-	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
-
-	int offset = m_offset;
-	xml_element.setAttribute("offset", QString::number(offset));
-	QString master_label = m_master_label;
-	xml_element.setAttribute("master_label", master_label);
-	QString slave_label = m_slave_label;
-	xml_element.setAttribute("slave_label", slave_label);
-	foreach (QString key, m_prefix.keys()) {
-		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
-	}
-
-	return xml_element;
+    int offset = m_offset;
+    xml_element.setAttribute("offset", QString::number(offset));
+    QString master_label = m_master_label;
+    xml_element.setAttribute("master_label", master_label);
+    QString slave_label = m_slave_label;
+    xml_element.setAttribute("slave_label", slave_label);
+    foreach (QString key, m_prefix.keys()) {
+        xml_element.setAttribute(key + "prefix", m_prefix.value(key));
+    }
 }
 
-/**
-	@brief XRefProperties::fromXml
+/** RETURNS True
+    @brief XRefProperties::fromXmlPriv
 	Load from xml
 	@param xml_element: QDomElement to use for load
 */
-bool XRefProperties::fromXml(const QDomElement &xml_element) {
-	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
-	QString display = xml_element.attribute("displayhas", "cross");
-	display == "cross"? m_display = Cross : m_display = Contacts;
-	QString snap = xml_element.attribute("snapto", "label");
-	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+bool XRefProperties::fromXmlPriv(const QDomElement &xml_element) {
 
-	QString xrefpos = xml_element.attribute("xrefpos","Left");
+	if (QETXML::propertyBool(xml_element, "showpowerctc", &m_show_power_ctc))
+		return false;
 
-	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+	QString display;
+    if (QETXML::propertyString(xml_element, "displayhas", &display) != QETXML::PropertyFlags::NotFound) {
+		display == "cross"? m_display = Cross : m_display = Contacts;
+	}
 
-	if(xml_element.hasAttribute("xrefpos"))
-		m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xml_element.attribute("xrefpos").toStdString().data()));
-	else
-		m_xref_pos = Qt::AlignBottom;
 
-	m_offset = xml_element.attribute("offset", "0").toInt();
-	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
-	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
+	QString snap;
+    if (QETXML::propertyString(xml_element, "snapto", &snap)  != QETXML::PropertyFlags::NotFound) {
+		snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+	}
+
+	QString xrefpos;
+    if (QETXML::propertyString(xml_element, "xrefpos", &xrefpos) != QETXML::PropertyFlags::NotFound) {
+		QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+		m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xrefpos.toStdString().data()));
+	}
+	// TODO: why it compiles without this true??
+	QETXML::propertyInteger(xml_element, "offset", &m_offset);
+    QETXML::propertyString(xml_element, "master_label", &m_master_label);
+    QETXML::propertyString(xml_element, "slave_label", &m_slave_label);
+	QString value;
 	foreach (QString key, m_prefix_keys) {
-		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
+        if (!QETXML::propertyString(xml_element, key + "prefix", &value))
+			m_prefix.insert(key, value);
 	}
 	return true;
 }

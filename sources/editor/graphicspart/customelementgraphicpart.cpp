@@ -20,6 +20,8 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../elementscene.h"
 
+#include "../../qetxml.h"
+
 #include <QRegularExpression>
 
 /**
@@ -114,7 +116,7 @@ qreal CustomElementGraphicPart::penWeight() const
 	if (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
 	else if (_lineweight == NormalWeight) return 1;
 	else if (_lineweight == UltraWeight)  return 2;
-	else if (_lineweight == BigWeight)    return 5;
+	else if (_lineweight == BigWeight)	return 5;
 	return 1;
 }
 
@@ -167,21 +169,21 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	QString css_like_styles;
 
 	css_like_styles += "line-style:";
-	if      (_linestyle == DashedStyle)     css_like_styles += "dashed";
-	else if (_linestyle == DottedStyle)     css_like_styles += "dotted";
+	if	  (_linestyle == DashedStyle)	 css_like_styles += "dashed";
+	else if (_linestyle == DottedStyle)	 css_like_styles += "dotted";
 	else if (_linestyle == DashdottedStyle) css_like_styles += "dashdotted";
-	else if (_linestyle == NormalStyle)     css_like_styles += "normal";
+	else if (_linestyle == NormalStyle)	 css_like_styles += "normal";
 
 	css_like_styles += ";line-weight:";
-	if      (_lineweight == NoneWeight)   css_like_styles += "none";
+	if	  (_lineweight == NoneWeight)   css_like_styles += "none";
 	else if (_lineweight == ThinWeight)   css_like_styles += "thin";
 	else if (_lineweight == NormalWeight) css_like_styles += "normal";
 	else if (_lineweight == UltraWeight)  css_like_styles += "hight";
-	else if (_lineweight == BigWeight)    css_like_styles += "eleve";
+	else if (_lineweight == BigWeight)	css_like_styles += "eleve";
 
 
 	css_like_styles += ";filling:";
-	if      (_filling == NoneFilling)  css_like_styles += "none";
+	if	  (_filling == NoneFilling)  css_like_styles += "none";
 	else if (_filling == BlackFilling) css_like_styles += "black";
 	else if (_filling == WhiteFilling) css_like_styles += "white";
 	else if (_filling == GreenFilling) css_like_styles += "green";
@@ -342,7 +344,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 
 
 	css_like_styles += ";color:";
-	if      (_color == WhiteColor) css_like_styles += "white";
+	if	  (_color == WhiteColor) css_like_styles += "white";
 	else if (_color == BlackColor) css_like_styles += "black";
 	else if (_color == GreenColor) css_like_styles += "green";
 	else if (_color == RedColor)   css_like_styles += "red";
@@ -497,7 +499,6 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == HTMLGrayBlackColor)  css_like_styles += "HTMLGrayBlack";
 	else if (_color == NoneColor)  css_like_styles += "none";
 
-
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
 }
@@ -512,6 +513,9 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
 	resetStyles();
 
+	QString style_string;
+    QETXML::propertyString(qde, "style", &style_string);
+	
 		//Get the list of pair style/value
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = qde.attribute("style").split(";", QString::SkipEmptyParts);
@@ -899,17 +903,17 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	QBrush brush = painter.brush();
 
 		//Apply pen style
-	if      (_linestyle == DashedStyle)     pen.setStyle(Qt::DashLine);
+	if	  (_linestyle == DashedStyle)	 pen.setStyle(Qt::DashLine);
 	else if (_linestyle == DashdottedStyle) pen.setStyle(Qt::DashDotLine);
-	else if (_linestyle == DottedStyle)     pen.setStyle(Qt::DotLine);
-	else if (_linestyle == NormalStyle)     pen.setStyle(Qt::SolidLine);
+	else if (_linestyle == DottedStyle)	 pen.setStyle(Qt::DotLine);
+	else if (_linestyle == NormalStyle)	 pen.setStyle(Qt::SolidLine);
 
 		//Apply pen width
-	if      (_lineweight == NoneWeight)   pen.setColor(QColor(0, 0, 0, 0));
+	if	  (_lineweight == NoneWeight)   pen.setColor(QColor(0, 0, 0, 0));
 	else if (_lineweight == ThinWeight)   pen.setWidth(0);
 	else if (_lineweight == NormalWeight) pen.setWidthF(1.0);
 	else if (_lineweight == UltraWeight)  pen.setWidthF(2.0);
-	else if (_lineweight == BigWeight)    pen.setWidthF(5.0);
+	else if (_lineweight == BigWeight)	pen.setWidthF(5.0);
 
 		//Apply brush color
 	if (_filling == NoneFilling) brush.setStyle(Qt::NoBrush);
@@ -920,7 +924,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else
 	{
 		brush.setStyle(Qt::SolidPattern);
-		if (_filling == BlackFilling)      brush.setColor(Qt::black);
+		if (_filling == BlackFilling)	  brush.setColor(Qt::black);
 		else if (_filling == WhiteFilling) brush.setColor(Qt::white);
 		else if (_filling == GreenFilling) brush.setColor(Qt::green);
 		else if (_filling == RedFilling)   brush.setColor(Qt::red);
@@ -1076,7 +1080,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	}
 
 		//Apply pen color
-	if      (_color == WhiteColor) pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
+	if	  (_color == WhiteColor) pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
 	else if (_color == BlackColor) pen.setColor(QColor(  0,   0,   0, pen.color().alpha()));
 	else if (_color == GreenColor) pen.setColor(QColor(Qt::green));
 	else if (_color == RedColor)   pen.setColor(QColor(Qt::red));
@@ -1232,8 +1236,8 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_color == NoneColor)  pen.setBrush(Qt::transparent);
 
 		//Apply antialiasing
-	painter.setRenderHint(QPainter::Antialiasing,          _antialiased);
-	painter.setRenderHint(QPainter::TextAntialiasing,      _antialiased);
+	painter.setRenderHint(QPainter::Antialiasing,		  _antialiased);
+	painter.setRenderHint(QPainter::TextAntialiasing,	  _antialiased);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform, _antialiased);
 
 	painter.setPen(pen);
@@ -1312,7 +1316,7 @@ void CustomElementGraphicPart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event
 	if((event->button() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable) && m_origin_pos != pos())
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
-		undo->setText(tr("Déplacer une primitive"));
+		undo->setText(tr("D??placer une primitive"));
 		undo->enableAnimation();
 		elementScene()->undoStack().push(undo);
 	}

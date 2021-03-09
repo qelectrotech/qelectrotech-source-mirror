@@ -19,6 +19,8 @@
 
 #include "../../qetgraphicsitem/terminal.h"
 
+#include "../../qetxml.h"
+
 /**
 	@brief PartTerminal::PartTerminal
 	@param editor :
@@ -29,7 +31,9 @@
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
 {
+    setTagName("terminal");
 	d = new TerminalData(this);
+	d->m_name = tr("terminal");
 	d -> m_orientation = Qet::North;
 	d -> m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
 	updateSecondPoint();
@@ -45,10 +49,20 @@ PartTerminal::~PartTerminal()
 	Importe les proprietes d'une borne depuis un element XML
 	@param xml_elmt Element XML a lire
 */
-void PartTerminal::fromXml(const QDomElement &xml_elmt) {
-	d -> fromXml(xml_elmt);
+bool PartTerminal::fromXmlPriv(const QDomElement &xml_elmt) {
+
+	// update part and add uuid, which is used in the new version to connect terminals together
+	// if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
+	// to identify terminals
+	QETXML::propertyUuid(xml_elmt, "uuid", &d->m_uuid);
+
+	if (!d->fromXml(xml_elmt))
+		return false;
+
 	setPos(d -> m_pos);
 	updateSecondPoint();
+
+	return true;
 }
 
 /**
@@ -56,9 +70,19 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant la borne
 */
-const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const
-{
-	return d -> toXml(xml_document);
+void PartTerminal::toXmlPriv(QDomElement& e) const {
+
+    e.setAttribute("uuid", d->m_uuid.toString());
+
+    d->m_pos = pos();
+
+    QDomDocument doc = e.ownerDocument();
+    e.appendChild(d -> toXml(doc));
+
+}
+
+bool PartTerminal::valideXml(QDomElement& element) {
+	return TerminalData::valideXml(element);
 }
 
 /**
@@ -76,8 +100,8 @@ void PartTerminal::paint(
 	painter -> save();
 
 	// annulation des renderhints
-	painter -> setRenderHint(QPainter::Antialiasing,          false);
-	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
+	painter -> setRenderHint(QPainter::Antialiasing,		  false);
+	painter -> setRenderHint(QPainter::TextAntialiasing,	  false);
 	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	QPen t;
@@ -223,7 +247,7 @@ QRectF PartTerminal::sceneGeometricRect() const
 */
 void PartTerminal::startUserTransformation(const QRectF &initial_selection_rect) {
 	Q_UNUSED(initial_selection_rect)
-	saved_position_ = scenePos();
+    m_saved_position = scenePos();
 }
 
 /**
@@ -231,6 +255,6 @@ void PartTerminal::startUserTransformation(const QRectF &initial_selection_rect)
 */
 void PartTerminal::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
 	QPointF mapped_point = mapPoints(
-		initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_position_).first();
+        initial_selection_rect, new_selection_rect, QList<QPointF>() << m_saved_position).first();
 	setPos(mapped_point);
 }

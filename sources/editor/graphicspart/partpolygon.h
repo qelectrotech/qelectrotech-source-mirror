@@ -61,8 +61,12 @@ class PartPolygon : public CustomElementGraphicPart
 
 		QString name() const override { return(QObject::tr("polygone", "element part name")); }
 		QString xmlName() const override { return(QString("polygon")); }
-		void fromXml(const QDomElement &) override;
-		const QDomElement toXml(QDomDocument &) const override;
+		bool fromXmlPriv(const QDomElement &) override;
+        void toXmlPriv(QDomElement&xml_element) const override;
+		static bool valideXml(QDomElement& element);
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
+
 
 		QPainterPath shape () const override;
 		QPainterPath shadowShape() const override;
@@ -77,8 +81,8 @@ class PartPolygon : public CustomElementGraphicPart
 		QPolygonF polygon () const;
 		void setPolygon   (const QPolygonF &polygon);
 
-		void addPoint        (const QPointF &point);
-		void setLastPoint    (const QPointF &point);
+		void addPoint		(const QPointF &point);
+		void setLastPoint	(const QPointF &point);
 		void removeLastPoint ();	
 
 		bool isClosed  () const {return m_closed;}
@@ -95,7 +99,7 @@ class PartPolygon : public CustomElementGraphicPart
 	private:
 		void adjusteHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent	(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void sceneSelectionChanged ();
 		
@@ -105,7 +109,7 @@ class PartPolygon : public CustomElementGraphicPart
 		void removePoint();
 		
 		
-		bool m_closed;
+        bool m_closed{false};
 		QList<QPointF> saved_points_;
 		QPolygonF m_polygon;
 		QPropertyUndoCommand *m_undo_command;

@@ -19,7 +19,7 @@
 #define TERMINALDATA_H
 
 #include "../qet.h"
-#include "propertiesinterface.h"
+#include "../properties/propertiesinterface.h"
 
 #include <QPointF>
 #include <QUuid>
@@ -53,11 +53,13 @@ class TerminalData : public PropertiesInterface
 
 		void setParent(QGraphicsObject* parent);
 		void toSettings(QSettings &settings,
-				const QString prefix = QString()) const override;
-		void fromSettings(const QSettings &settings,
-				  const QString prefix = QString()) override;
-		QDomElement toXml(QDomDocument &xml_element) const override;
-		bool fromXml(const QDomElement &xml_element) override;
+                        const QString& prefix = QString()) const override;
+        void fromSettings(QSettings &settings,
+                          const QString& = QString()) override;
+        void toXmlPriv(QDomElement &xml_element) const override;
+		bool fromXmlPriv(const QDomElement &xml_element) override;
+
+	static bool valideXml(const QDomElement &xml_element);
 
 		static QString typeToString(TerminalData::Type type);
 		static TerminalData::Type typeFromString(const QString &string);
@@ -69,13 +71,13 @@ class TerminalData : public PropertiesInterface
 			@brief m_orientation
 			Orientation of the terminal
 		*/
-		Qet::Orientation m_orientation;
+	Qet::Orientation m_orientation{Qet::Orientation::North};
 		/**
-			@brief second_point
+            @brief m_second_point
 			Position of the second point of the terminal
 			in scene coordinates
 		*/
-		QPointF m_second_point;
+    QPointF m_second_point{0,0};
 		/**
 			@brief m_uuid
 			Uuid of the terminal.
@@ -90,7 +92,7 @@ class TerminalData : public PropertiesInterface
 			valid. So if in the loaded document a uuid exists,
 			use this one and don't create a new one.
 		*/
-		QUuid m_uuid;
+	QUuid m_uuid; // default is an invalid uuid.
 		/**
 			@brief m_name
 			Name of the element.
@@ -108,10 +110,8 @@ class TerminalData : public PropertiesInterface
 			It is used to store the initial position so that
 			PartTerminal and Terminal have access to it.
 		*/
-		QPointF m_pos;
-
+	QPointF m_pos{0,0};
 		TerminalData::Type m_type = TerminalData::Generic;
-
 	private:
 		QGraphicsObject* q{nullptr};
 };

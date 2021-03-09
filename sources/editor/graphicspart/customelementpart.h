@@ -19,6 +19,7 @@
 #define CUSTOM_ELEMENT_PART_H
 
 #include "../../qet.h"
+#include "../../properties/propertiesinterface.h"
 
 class CustomElement;
 class ElementPrimitiveDecorator;
@@ -37,7 +38,7 @@ class QGraphicsSceneMouseEvent;
 	there is no point for those classes to store their visual representation
 	with anything more complex than a QImage.
 */
-class CustomElementPart {
+class CustomElementPart: public PropertiesInterface {
 	// constructors, destructor
 	public:
 	/**
@@ -62,14 +63,6 @@ class CustomElementPart {
 	// methods
 	public:
 	/**
-		Load the primitive from an XML element that describes it
-	*/
-	virtual void fromXml(const QDomElement &) = 0;
-	/**
-		Export the primitive as an XML element
-	*/
-	virtual const QDomElement toXml(QDomDocument &) const = 0;
-	/**
 		Set a specific property of the primitive
 	*/
 	virtual void setProperty(const char *name, const QVariant &value) = 0;
@@ -92,7 +85,7 @@ class CustomElementPart {
 		Make this part fit into the provided rectangle.
 	*/
 	virtual void handleUserTransformation(const QRectF &,
-					      const QRectF &) = 0;
+						  const QRectF &) = 0;
 	/// @return a pointer to the parent element editor
 	virtual QETElementEditor *elementEditor() const;
 	/**

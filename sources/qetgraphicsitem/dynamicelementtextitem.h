@@ -82,7 +82,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		DynamicElementTextItem(const DynamicElementTextItem &);
 		
 	public:
-		QDomElement toXml(QDomDocument &dom_doc) const override;
+        QDomElement toXml(QDomDocument&) const override;
 		void fromXml(const QDomElement &dom_elmt) override;
 
 		Element *parentElement() const;
@@ -160,7 +160,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		QList<QMetaObject::Connection>
 		m_formula_connection,
 		m_update_slave_Xref_connection;
-		QColor m_user_color;
+		QColor m_user_color{QColor()};
 		bool
 		m_frame = false,
 		m_first_scene_change = true;

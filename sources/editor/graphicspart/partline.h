@@ -70,8 +70,11 @@ class PartLine : public CustomElementGraphicPart
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name() const override { return(QObject::tr("ligne", "element part name")); }
 		QString xmlName() const override { return(QString("line")); }
-		const QDomElement toXml(QDomDocument &) const override;
-		void fromXml(const QDomElement &) override;
+        void toXmlPriv(QDomElement&xml_element) const override;
+		bool fromXmlPriv(const QDomElement &) override;
+		bool valideXml(QDomElement& element) const;
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
 		virtual QPointF sceneP1() const;
 		virtual QPointF sceneP2() const;
 		QPainterPath shape() const override;
@@ -102,7 +105,7 @@ class PartLine : public CustomElementGraphicPart
 	private:
 		void adjusteHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent	(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void sceneSelectionChanged ();
 		
@@ -114,15 +117,15 @@ class PartLine : public CustomElementGraphicPart
 		QRectF secondEndCircleRect() const;
 
 		/*****************/
-		Qet::EndType first_end;
-		qreal        first_length;
+        Qet::EndType first_end{Qet::EndType::None};
+		qreal		first_length{1.5};
 
-		Qet::EndType second_end;
-		qreal        second_length;
+        Qet::EndType second_end{Qet::EndType::None};
+		qreal		second_length{1.5};
 		QList<QPointF> saved_points_;
 		QLineF m_line;
 		int m_vector_index = -1;
-		QPropertyUndoCommand *m_undo_command;
+        QPropertyUndoCommand *m_undo_command{nullptr};
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 #endif

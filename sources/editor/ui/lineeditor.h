@@ -43,7 +43,7 @@ class LineEditor : public ElementItemEditor
 		bool setParts(QList <CustomElementPart *> parts) override;
 		CustomElementPart *currentPart()           const override;
 		QList<CustomElementPart *> currentParts()  const override;
-		void updateForm()                                override;
+        void updateFormPriv()                                override;
 
 	private:
 		void setUpChangeConnections();
@@ -59,8 +59,7 @@ class LineEditor : public ElementItemEditor
 	private:
 		PartLine *m_part = nullptr;
 	Ui::LineEditor *ui;
-		StyleEditor *m_style = nullptr;
-		QList <QMetaObject::Connection> m_change_connections;
+        StyleEditor *m_style = nullptr;
 		bool m_locked = false;
 };
 

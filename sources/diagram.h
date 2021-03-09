@@ -96,7 +96,7 @@ class Diagram : public QGraphicsScene
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
-		static QColor background_color;
+		static QColor background_color; // default value set in cpp file
 		/// Hash containing max values for folio sequential autonums in this diagram
 		QHash <QString, QStringList> m_elmt_unitfolio_max;
 		QHash <QString, QStringList> m_elmt_tenfolio_max;
@@ -108,10 +108,10 @@ class Diagram : public QGraphicsScene
 
 	private:
 		QGraphicsLineItem *conductor_setter_;
-		ElementsMover     m_elements_mover;
+		ElementsMover	 m_elements_mover;
 		ElementTextsMover m_element_texts_mover;
-		QGIManager        *qgi_manager_;
-		QETProject        *m_project;
+		QGIManager		*qgi_manager_;
+		QETProject		*m_project;
 
 		QDomDocument xml_document_;
 
@@ -156,9 +156,9 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to parent project
 		QETProject *project() const;
-		int         folioIndex() const;
-		void        showMe() {emit showDiagram(this);}
-		bool        isReadOnly() const;
+		int		 folioIndex() const;
+		void		showMe() {emit showDiagram(this);}
+		bool		isReadOnly() const;
 	
 		// methods related to conductor creation
 		void setConductor(bool);
@@ -173,13 +173,13 @@ class Diagram : public QGraphicsScene
 				 bool = true,
 				 DiagramContent * = nullptr);
 		bool fromXml(QDomDocument &,
-			     QPointF = QPointF(),
-			     bool = true,
-			     DiagramContent * = nullptr);
+				 QPointF = QPointF(),
+				 bool = true,
+				 DiagramContent * = nullptr);
 		bool fromXml(QDomElement &,
-			     QPointF = QPointF(),
-			     bool = true,
-			     DiagramContent * = nullptr);
+				 QPointF = QPointF(),
+				 bool = true,
+				 DiagramContent * = nullptr);
 		void folioSequentialsToXml(QHash<QString,
 					   QStringList>*,
 					   QDomElement *,
@@ -187,17 +187,17 @@ class Diagram : public QGraphicsScene
 					   const QString&,
 					   QDomDocument *);
 		void folioSequentialsFromXml(const QDomElement&,
-					     QHash<QString,
-					     QStringList>*,
-					     const QString&,
-					     const QString&,
-					     const QString&,
-					     const QString&);
+						 QHash<QString,
+						 QStringList>*,
+						 const QString&,
+						 const QString&,
+						 const QString&,
+						 const QString&);
 	
 		void refreshContents();
 	
 		// methods related to graphics items addition/removal on the diagram
-		virtual void addItem    (QGraphicsItem *item);
+		virtual void addItem	(QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
 	
 		// methods related to graphics options
@@ -253,8 +253,8 @@ class Diagram : public QGraphicsScene
 					 const QString& seq,
 					 NumerotationContext *nc);
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
-				       const QString& title, const QString& seq,
-				       NumerotationContext *nc);
+					   const QString& title, const QString& seq,
+					   NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
 
 	public slots:
@@ -262,7 +262,7 @@ class Diagram : public QGraphicsScene
 		void titleChanged(const QString &);
 		void titleBlockTemplateChanged(const QString &);
 		void titleBlockTemplateRemoved(const QString &,
-					       const QString & = QString());
+						   const QString & = QString());
 		void setTitleBlockTemplate(const QString &);
 		void updateLabels();
 		void loadElmtFolioSeq();
@@ -282,6 +282,8 @@ class Diagram : public QGraphicsScene
 		/// from the diagram within elements collection
 		void findElementRequired(const ElementsLocation &);
 
+		/// Signal emitted when users wish to edit an element from the diagram
+		void editElementRequired(const ElementsLocation &);
 		void diagramActivated();
 };
 Q_DECLARE_METATYPE(Diagram *)

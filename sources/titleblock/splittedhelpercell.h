@@ -36,10 +36,11 @@ class SplittedHelperCell : public HelperCell {
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 	
 	// attributes
+	// colors are set in the constructor
 	QColor split_background_color; ///< Background color on the split side
 	QColor split_foreground_color; ///< Text color on the split side
-	QString split_label;           ///< Text displayed on the split side
-	int split_size;                ///< Length of the split side
+	QString split_label;		   ///< Text displayed on the split side
+	int split_size;				///< Length of the split side
 };
 
 #endif

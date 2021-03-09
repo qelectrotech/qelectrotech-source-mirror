@@ -22,6 +22,8 @@
 #include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "../elementscene.h"
 
+#include "../../qetxml.h"
+
 /**
 	@brief PartRectangle::PartRectangle
 	Constructor
@@ -30,7 +32,9 @@
 */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
-{}
+{
+    setTagName("rect");
+}
 
 /**
 	@brief PartRectangle::~PartRectangle
@@ -80,35 +84,33 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 }
 
 /**
-	@brief PartRectangle::toXml
+    @brief PartRectangle::toXmlPriv
 	Export this rectangle in xml
 	@param xml_document : Xml document to use for create the xml element.
 	@return an xml element that describe this ellipse
 */
-const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
+void PartRectangle::toXmlPriv(QDomElement& xml_element) const
 {
-	QDomElement xml_element = xml_document.createElement("rect");
-	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
-	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
+    QPointF top_left(sceneTopLeft());
+    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+    xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
+    xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
 
-	QRectF rect = m_rect.normalized();
-	qreal x = m_xRadius;
-	if (x > rect.width()/2) {
-		x = rect.width()/2;
-	}
-	qreal y = m_yRadius;
-	if (y > rect.height()/2) {
-		y = rect.height()/2;
-	}
+    QRectF rect = m_rect.normalized();
+    qreal x = m_xRadius;
+    if (x > rect.width()/2) {
+        x = rect.width()/2;
+    }
+    qreal y = m_yRadius;
+    if (y > rect.height()/2) {
+        y = rect.height()/2;
+    }
 
-	xml_element.setAttribute("rx", QString::number(m_xRadius));
-	xml_element.setAttribute("ry", QString::number(m_yRadius));
+    xml_element.setAttribute("rx", QString::number(m_xRadius));
+    xml_element.setAttribute("ry", QString::number(m_yRadius));
 
-	stylesToXml(xml_element);
-	return(xml_element);
+    stylesToXml(xml_element);
 }
 
 /**
@@ -116,18 +118,45 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	Import the properties of this rectangle from a xml element.
 	@param qde : Xml document to use.
 */
-void PartRectangle::fromXml(const QDomElement &qde)
+bool PartRectangle::fromXmlPriv(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-	setPos(mapFromScene(qde.attribute("x", "0").toDouble(),
-						qde.attribute("y", "0").toDouble()));
 
-	QRectF rect(QPointF(0,0), QSizeF(qde.attribute("width",  "0").toDouble(),
-									 qde.attribute("height", "0").toDouble()));
+	double x=0, y=0, w=0, h=0, rx=0, ry=0;
+	if (QETXML::propertyDouble(qde, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(qde, "y", &y) == QETXML::PropertyFlags::NoValidConversion)
+		return false;
+
+	setPos(mapFromScene(x, y));
+
+	if (QETXML::propertyDouble(qde, "width", &w) == QETXML::PropertyFlags::NoValidConversion ||
+        QETXML::propertyDouble(qde, "height", &h) == QETXML::PropertyFlags::NoValidConversion)
+		return false;
+
+    QRectF rect(QPointF(0,0), QSizeF(w, h));
 
 	setRect(rect.normalized());
-	setXRadius(qde.attribute("rx", "0").toDouble());
-	setYRadius(qde.attribute("ry", "0").toDouble());
+
+	if (QETXML::propertyDouble(qde, "rx", &rx) == QETXML::PropertyFlags::NoValidConversion ||
+		QETXML::propertyDouble(qde, "ry", &ry) == QETXML::PropertyFlags::NoValidConversion)
+		return false;
+
+	setXRadius(rx);
+	setYRadius(ry);
+
+	return true;
+}
+
+bool PartRectangle::valideXml(QDomElement& element) {
+	// parameters have default values so no value is not a non valid xml element
+	if ((QETXML::propertyDouble(element, "x") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "y") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "width") & QETXML::PropertyFlags::NoValidConversion) |
+        (QETXML::propertyDouble(element, "height") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "rx") & QETXML::PropertyFlags::NoValidConversion) |
+		(QETXML::propertyDouble(element, "ry") & QETXML::PropertyFlags::NoValidConversion))
+		return false;
+	return true;
 }
 
 /**
@@ -537,9 +566,9 @@ void PartRectangle::addHandler()
 		for (QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			QColor color;
-			if(m_resize_mode == 1)       {color = Qt::blue;}
+			if(m_resize_mode == 1)	   {color = Qt::blue;}
 			else if (m_resize_mode == 2) {color = Qt::darkGreen;}
-			else                         {color = Qt::magenta;}
+			else						 {color = Qt::magenta;}
 
 			handler->setColor(color);
 			scene()->addItem(handler);

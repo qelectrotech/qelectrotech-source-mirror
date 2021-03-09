@@ -135,7 +135,7 @@ bool DiagramContext::keyMustShow(const QString &key) const
 
 bool DiagramContext::operator==(const DiagramContext &dc) const
 {
-	return(m_content     == dc.m_content &&
+	return(m_content	 == dc.m_content &&
 		   m_content_show == dc.m_content_show);
 }
 

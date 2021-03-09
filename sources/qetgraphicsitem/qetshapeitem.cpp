@@ -326,7 +326,7 @@ void QetShapeItem::paint(
 
 	switch (m_shapeType)
 	{
-	case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
+	case Line:	  painter->drawLine(QLineF(m_P1, m_P2)); break;
 	case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2),
 						 m_xRadius,
 						 m_yRadius); break;
@@ -663,7 +663,7 @@ void QetShapeItem::insertPoint()
 		if(new_polygon != m_polygon)
 		{
 				//Wrap the undo for avoid to merge the undo commands when user add several points.
-			QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+			QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point ?? un polygone"));
 			new QPropertyUndoCommand(this, "polygon", m_polygon, new_polygon, undo);
 			diagram()->undoStack().push(undo);
 		}
@@ -836,6 +836,7 @@ void QetShapeItem::handlerMouseReleaseEvent()
 	}
 }
 
+// TODO: inherit from Propertiesinterface!
 /**
 	@brief QetShapeItem::fromXml
 	Build this item from the xml description
@@ -951,28 +952,28 @@ bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)
 	switch (m_shapeType)
 	{
 		case Line:
-	    Createdxf::drawLine(filepath,
+		Createdxf::drawLine(filepath,
 			QLineF( mapToScene(m_P1),
 				mapToScene(m_P2)),
 				Createdxf::dxfColor(pen));
-	    return true;
+		return true;
 		case Rectangle:
-	    Createdxf::drawRectangle(filepath,
+		Createdxf::drawRectangle(filepath,
 			 QRectF(mapToScene(m_P1),
 				mapToScene(m_P2)).normalized(),
 				Createdxf::dxfColor(pen));
-	    return true;
+		return true;
 		case Ellipse:
-	    Createdxf::drawEllipse(filepath,
+		Createdxf::drawEllipse(filepath,
 			 QRectF(mapToScene(m_P1),
 				mapToScene(m_P2)).normalized(),
 				Createdxf::dxfColor(pen));
-	    return true;
+		return true;
 	case Polygon:
-	    Createdxf::drawPolygon(filepath,m_polygon,Createdxf::dxfColor(pen));
-	    return true;
+		Createdxf::drawPolygon(filepath,m_polygon,Createdxf::dxfColor(pen));
+		return true;
 	default:
-	    return false;
+		return false;
 	}
 }
 
@@ -995,10 +996,10 @@ void QetShapeItem::editProperty()
 QString QetShapeItem::name() const
 {
 	switch (m_shapeType) {
-		case Line:	    return tr("une ligne");
+		case Line:		return tr("une ligne");
 		case Rectangle:	return tr("un rectangle");
-		case Ellipse:	return tr("une éllipse");
+		case Ellipse:	return tr("une ??llipse");
 		case Polygon:	return tr("une polyligne");
-		default:	    return tr("une shape");
+		default:		return tr("une shape");
 	}
 }
