@@ -1088,7 +1088,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="127"/>
         <source>une image</source>
-        <translation>ein Bild</translation>
+        <translation>eines Bildes</translation>
     </message>
 </context>
 <context>
@@ -5551,7 +5551,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Aucune modification</source>
-        <translation>Keine Änderung</translation>
+        <translation>Keine Änderungen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -7729,7 +7729,7 @@ Was möchten Sie tun?</translation>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="88"/>
         <source>un champ texte</source>
-        <translation>ein Textfeld</translation>
+        <translation>eines Textfeldes</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="90"/>
@@ -8882,7 +8882,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="998"/>
         <source>une ligne</source>
-        <translation>eine Zeile</translation>
+        <translation>einer Linie</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="57"/>
@@ -8912,12 +8912,12 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="999"/>
         <source>un rectangle</source>
-        <translation>ein Rechteck</translation>
+        <translation>eines Rechtecks</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1000"/>
         <source>une éllipse</source>
-        <translation>eine Ellipse</translation>
+        <translation>einer Ellipse</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1001"/>
