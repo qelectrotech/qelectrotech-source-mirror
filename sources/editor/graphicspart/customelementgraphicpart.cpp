@@ -499,8 +499,8 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == HTMLGrayBlackColor)  css_like_styles += "HTMLGrayBlack";
 	else if (_color == NoneColor)  css_like_styles += "none";
 
-    qde.appendChild(QETXML::createXmlProperty("style", css_like_styles));
-    qde.appendChild(QETXML::createXmlProperty("antialias", _antialiased ? "true" : "false"));
+	qde.setAttribute("style", css_like_styles);
+	qde.setAttribute("antialias", _antialiased ? "true" : "false");
 }
 
 

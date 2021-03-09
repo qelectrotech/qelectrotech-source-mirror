@@ -63,17 +63,6 @@ Conductor *ConductorTextItem::parentConductor() const
 	return(parent_conductor_);
 }
 
-void ConductorTextItem::toXml(QDomElement& e) {
-	if(moved_by_user_)
-	{
-        e.appendChild(QETXML::createXmlProperty("userx", pos().x()));
-        e.appendChild(QETXML::createXmlProperty("usery", pos().y()));
-	}
-	if(rotate_by_user_)
-        e.appendChild(QETXML::createXmlProperty("rotation", rotation()));
-}
-
-
 /**
 	@brief ConductorTextItem::fromXml
 	Read the properties stored in the xml element given in parameter
