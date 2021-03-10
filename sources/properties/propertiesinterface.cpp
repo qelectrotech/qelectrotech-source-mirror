@@ -73,7 +73,7 @@ bool PropertiesInterface::fromXml (const QDomElement &xml_element)
 }
 
 bool PropertiesInterface::valideXml(QDomElement& element) {
-	qDebug(QString("ValideXml() is not implemented. File: %1, Line: %2").arg(__FILE__).arg(__LINE__).toStdString().data());
+    qDebug() << "Error: ValideXml() is not implemented for a derived class of PropertiesInterface";
 	return false;
 }
 
