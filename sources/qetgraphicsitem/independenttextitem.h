@@ -40,7 +40,7 @@ class IndependentTextItem : public DiagramTextItem
 		int type() const override { return Type; }
 		
 		void fromXml(const QDomElement &) override;
-        QDomElement toXml(QDomDocument&) const override;
+		QDomElement toXml(QDomDocument &) const override;
 		
 	protected:
 		void focusOutEvent(QFocusEvent *event) override;

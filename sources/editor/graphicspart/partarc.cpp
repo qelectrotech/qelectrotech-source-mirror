@@ -22,8 +22,6 @@
 #include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "../elementscene.h"
 
-#include "../../qetxml.h"
-
 /**
 	@brief PartArc::PartArc
 	Constructor
@@ -31,9 +29,10 @@
 	@param parent : parent item
 */
 PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
-    AbstractPartEllipse(editor, parent)
+	AbstractPartEllipse(editor, parent)
 {
-    setTagName("arc");
+	m_start_angle = 0;
+	m_span_angle = -1440;
 }
 
 /**
@@ -103,18 +102,19 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 	@param xml_document : Xml document to use for create the xml element.
 	@return : an xml element that describe this arc
 */
-void PartArc::toXmlPriv(QDomElement& xml_element) const
+const QDomElement PartArc::toXml(QDomDocument &xml_document) const
 {
-    xml_element.setTagName("arc");
-    QPointF top_left(sceneTopLeft());
-    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-    xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-    xml_element.setAttribute("height", QString("%1").arg(rect().height()));
-        //to maintain compatibility with the previous version, we write the angle in degrees.
-    xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
-    xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
-    stylesToXml(xml_element);
+	QDomElement xml_element = xml_document.createElement("arc");
+	QPointF top_left(sceneTopLeft());
+	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
+	xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+		//to maintain compatibility with the previous version, we write the angle in degrees.
+	xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
+	xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
+	stylesToXml(xml_element);
+	return(xml_element);
 }
 
 /**
@@ -122,41 +122,15 @@ void PartArc::toXmlPriv(QDomElement& xml_element) const
 	Import the properties of this arc from a xml element.
 	@param qde : Xml document to use.
 */
-bool PartArc::fromXmlPriv(const QDomElement &qde) {
+void PartArc::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
+	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
+								 qde.attribute("y", "0").toDouble()),
+					QSizeF(qde.attribute("width",  "0").toDouble(),
+						   qde.attribute("height", "0").toDouble()) );
 
-	double x=0, y=0, w=0, h=0;
-	if (QETXML::propertyDouble(qde, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(qde, "y", &y) == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(qde, "width", &w) == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(qde, "height", &h) == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-
-	m_rect = QRectF(mapFromScene(x, y), QSizeF(w, h) );
-
-	m_start_angle = 0;
-	if (QETXML::propertyDouble(qde, "start", &m_start_angle)  == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-	m_start_angle *= 16;
-
-	m_span_angle = -1440;
-	if (QETXML::propertyDouble(qde, "angle", &m_span_angle) == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-	m_span_angle *= 16;
-
-	return true;
-}
-
-bool PartArc::valideXml(QDomElement& element) {
-
-	if (QETXML::propertyDouble(element, "x") == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(element, "y") == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(element, "width") == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(element, "height") == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(element, "start")  == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(element, "angle") == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-	return true;
+	m_start_angle = qde.attribute("start", "0").toDouble() * 16;
+	m_span_angle  = qde.attribute("angle", "-1440").toDouble() * 16;
 }
 
 /**

@@ -20,8 +20,6 @@
 #include "../autoNum/assignvariables.h"
 #include "../conductorproperties.h"
 
-#include "../conductorproperties.h"
-#include "../properties/propertiesinterface.h"
 #include <QGraphicsPathItem>
 
 class ConductorProfile;
@@ -41,7 +39,7 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 	This class represents a conductor, i.e. a wire between two element
 	terminals.
 */
-class Conductor : public QGraphicsObject, public PropertiesInterface
+class Conductor : public QGraphicsObject
 {
 	Q_OBJECT
 
@@ -102,10 +100,11 @@ class Conductor : public QGraphicsObject, public PropertiesInterface
 
 	public:
 		static bool valideXml (QDomElement &);
-        bool fromXmlPriv(const QDomElement &) override;
-        void toXmlPriv(QDomElement&dom_element) const override;
-        void toSettings(QSettings &, const QString & = QString()) const override {}
-        void fromSettings(QSettings &, const QString & = QString()) override {}
+		bool fromXml (QDomElement &);
+		QDomElement toXml (
+				QDomDocument &,
+				QHash<Terminal *,
+				int> &) const;
 	private:
 		bool pathFromXml(const QDomElement &);
 
@@ -138,7 +137,7 @@ class Conductor : public QGraphicsObject, public PropertiesInterface
 		{return m_autoNum_seq;}
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
 
-		QList<QPointF> junctions() const;
+        QList<QPointF> junctions() const;
 
 	private:
 		void setUpConnectionForFormula(
@@ -182,28 +181,28 @@ class Conductor : public QGraphicsObject, public PropertiesInterface
 		
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 		int m_vector_index = -1;
-		bool m_mouse_over{false};
+		bool m_mouse_over;
 			/// Functional properties
 		ConductorProperties m_properties;
 			/// Text input for non simple, non-singleline conductors
-		ConductorTextItem *m_text_item{nullptr};
+		ConductorTextItem *m_text_item;
 			/// Segments composing the conductor
-		ConductorSegment *segments{nullptr};
+		ConductorSegment *segments;
 			/// Attributs related to mouse interaction
-		bool m_moving_segment{false};
+		bool m_moving_segment;
 		int moved_point;
 		qreal m_previous_z_value;
 		ConductorSegment *m_moved_segment;
 		QPointF before_mov_text_pos_;
 			/// Whether the conductor was manually modified by users
-		bool modified_path{false};
+		bool modified_path;
 			/// Whether the current profile should be saved as soon as possible
-		bool has_to_save_profile{false};
+		bool has_to_save_profile;
 			/// conductor profile: "photography" of what the conductor is supposed to look
 			/// like - there is one profile per kind of traject
 		ConductorProfilesGroup conductor_profiles;
 			/// Define whether and how the conductor should be highlighted
-		Highlight must_highlight_{Conductor::None};
+		Highlight must_highlight_;
 		bool m_valid;
 		bool m_freeze_label = false;
 

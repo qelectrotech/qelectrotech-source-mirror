@@ -48,7 +48,7 @@ TextEditor::~TextEditor() {}
 	@brief TextEditor::updateForm
 	Update the gui
 */
-void TextEditor::updateFormPriv()
+void TextEditor::updateForm()
 {
 	if (m_text.isNull()) {
 		return;

@@ -136,7 +136,7 @@ QPointF RectangleEditor::editedTopLeft() const
 /**
 	@brief RectangleEditor::updateForm
 */
-void RectangleEditor::updateFormPriv()
+void RectangleEditor::updateForm()
 {
 	if (!m_part) {
 		return;

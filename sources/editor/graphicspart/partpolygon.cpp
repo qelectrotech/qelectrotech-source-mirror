@@ -24,8 +24,6 @@
 #include "../elementscene.h"
 #include "../ui/qetelementeditor.h"
 
-#include "../../qetxml.h"
-
 /**
 	@brief PartPolygon::PartPolygon
 	Constructor
@@ -37,7 +35,6 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	m_closed(false),
 	m_undo_command(nullptr)
 {
-    setTagName("polygon");
 	m_insert_point = new QAction(tr("Ajouter un point"), this);
 	m_insert_point->setIcon(QET::Icons::Add);
 	connect(m_insert_point, &QAction::triggered, this, &PartPolygon::insertPoint);
@@ -92,60 +89,50 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 	Import the properties of this polygon from a xml element
 	@param qde : Xml document to use
 */
-bool PartPolygon::fromXmlPriv(const QDomElement &qde)
+void PartPolygon::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
 
-	int error_counter = 0;
 	int i = 1;
 	while(true)
 	{
-		if (QETXML::propertyDouble(qde, QString("x%1").arg(i)) == QETXML::PropertyFlags::Success &&
-			QETXML::propertyDouble(qde, QString("y%1").arg(i)) == QETXML::PropertyFlags::Success)
-			i++;
+		if (QET::attributeIsAReal(qde, QString("x%1").arg(i)) &&\
+			QET::attributeIsAReal(qde, QString("y%1").arg(i)))
+			++ i;
 
 		else break;
 	}
 
 	QPolygonF temp_polygon;
-	double x, y;
 	for (int j = 1 ; j < i ; ++ j)
 	{
-		error_counter += QETXML::propertyDouble(qde, QString("x%1").arg(j), &x);
-		error_counter += QETXML::propertyDouble(qde, QString("y%1").arg(j), &y);
-		if (error_counter)
-			return false;
-		temp_polygon << QPointF(x, y);
+		temp_polygon << QPointF(qde.attribute(QString("x%1").arg(j)).toDouble(),
+								qde.attribute(QString("y%1").arg(j)).toDouble());
 	}
 	m_polygon = temp_polygon;
 
-	if (QETXML::propertyBool(qde, "closed", &m_closed) != QETXML::PropertyFlags::Success)
-		return false;
-
-	return true;
+	m_closed = qde.attribute("closed") != "false";
 }
 
 /**
-    @brief PartPolygon::toXmlPriv
+	@brief PartPolygon::toXml
 	Export this polygin in xml
-    @param e: properties get part of this DomElement
+	@param xml_document : Xml document to use for create the xml element
+	@return an xml element that describe this polygon
 */
-void PartPolygon::toXmlPriv(QDomElement& xml_element) const
+const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 {
-    int i = 1;
-    foreach(QPointF point, m_polygon) {
-        point = mapToScene(point);
-        xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
-        xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
-        ++ i;
-    }
-    if (!m_closed) xml_element.setAttribute("closed", "false");
-    stylesToXml(xml_element);
-}
-
-bool PartPolygon::valideXml(QDomElement& element) {
-	// TODO: implement
-	return true;
+	QDomElement xml_element = xml_document.createElement("polygon");
+	int i = 1;
+	foreach(QPointF point, m_polygon) {
+		point = mapToScene(point);
+		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
+		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
+		++ i;
+	}
+	if (!m_closed) xml_element.setAttribute("closed", "false");
+	stylesToXml(xml_element);
+	return(xml_element);
 }
 
 /**
@@ -538,7 +525,7 @@ void PartPolygon::insertPoint()
 	if(new_polygon != m_polygon)
 	{
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
-		QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point ?? un polygone"));
+		QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
 		new QPropertyUndoCommand(this, "polygon", m_polygon, new_polygon, undo);
 		elementScene()->undoStack().push(undo);
 	}

@@ -56,12 +56,9 @@ class PartTerminal : public CustomElementGraphicPart
 			*/
 		int type() const override { return Type; }
 		QString xmlName() const override { return(QString("terminal")); }
-		bool fromXmlPriv(const QDomElement &) override;
-        void toXmlPriv(QDomElement&xml_element) const override;
-		static bool valideXml(QDomElement& element);
-        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
-        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
-	void paint(
+		void fromXml(const QDomElement &) override;
+		const QDomElement toXml(QDomDocument &) const override;
+		void paint(
 				QPainter *painter,
 				const QStyleOptionGraphicsItem *,
 				QWidget *) override;
@@ -87,9 +84,9 @@ class PartTerminal : public CustomElementGraphicPart
 
 	private:
 		void updateSecondPoint();
-        TerminalData* d{nullptr}; // pointer to the terminal data
+		TerminalData* d; // pointer to the terminal data
 
 	private:
-        QPointF m_saved_position;
+		QPointF saved_position_;
 };
 #endif

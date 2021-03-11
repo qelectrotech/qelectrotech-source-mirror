@@ -20,15 +20,13 @@
 #include <QtCore>
 #include <QtXml>
 
-#include "properties/propertiesinterface.h"
-
 /**
 	@brief The BorderProperties class
 	This class is a container for dimensions and display properties of a
 	diagram.
 	@remark Attributes are public
 */
-class BorderProperties : public PropertiesInterface {
+class BorderProperties {
 	public:
 		// constructor, destructor, operators
 		BorderProperties();
@@ -37,23 +35,22 @@ class BorderProperties : public PropertiesInterface {
 		bool operator==(const BorderProperties &);
 		bool operator!=(const BorderProperties &);
 	
-		void toXmlPriv(QDomElement&) const override;
-        bool fromXmlPriv(const QDomElement &) override;
-		static bool valideXml(QDomElement& e);
-        void toSettings(QSettings &, const QString & = QString()) const override;
-        void fromSettings(QSettings &, const QString & = QString()) override;
+		void toXml(QDomElement &) const;
+		void fromXml(QDomElement &);
+		void toSettings(QSettings &, const QString & = QString()) const;
+		void fromSettings(QSettings &, const QString & = QString());
 
 		static BorderProperties defaultProperties();
 	
 		// attributes
-		int columns_count{17};			///< Columns count
-		qreal columns_width{60.0};		  ///< Columns width
-		qreal columns_header_height{20.0};  ///< Column headers height
-		bool display_columns{true};		 ///< Whether to display column headers
+		int columns_count;            ///< Columns count
+		qreal columns_width;          ///< Columns width
+		qreal columns_header_height;  ///< Column headers height
+		bool display_columns;         ///< Whether to display column headers
 	
-		int rows_count{8};			   ///< Rows count
-		qreal rows_height{80.0};			///< Rows height
-		qreal rows_header_width{20.0};	  ///< Row headers width
-		bool display_rows{true};			///< Whether to display row headers
+		int rows_count;               ///< Rows count
+		qreal rows_height;            ///< Rows height
+		qreal rows_header_width;      ///< Row headers width
+		bool display_rows;            ///< Whether to display row headers
 };
 #endif

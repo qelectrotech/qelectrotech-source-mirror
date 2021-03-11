@@ -39,8 +39,6 @@
 #include <QtDebug>
 #include <utility>
 
-#include "qetxml.h"
-
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
 /**
@@ -49,7 +47,7 @@ static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 	@param parent
 */
 QETProject::QETProject(QObject *parent) :
-	QObject			  (parent),
+	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this)
 {
@@ -66,7 +64,7 @@ QETProject::QETProject(QObject *parent) :
 	@param parent : parent QObject
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
-	QObject			  (parent),
+	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this)
 {
@@ -87,7 +85,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	@param parent : parent QObject
 */
 QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
-	QObject			  (parent),
+	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this)
 {
@@ -1491,11 +1489,11 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
 
 		// By default, use value find in the global conf of QElectroTech
-	default_border_properties_	   = BorderProperties::	defaultProperties();
+	default_border_properties_	   = BorderProperties::    defaultProperties();
 	default_titleblock_properties_ = TitleBlockProperties::defaultProperties();
 	default_conductor_properties_  = ConductorProperties:: defaultProperties();
-	m_default_report_properties	   = ReportProperties::	defaultProperties();
-	m_default_xref_properties	   = XRefProperties::	  defaultProperties();
+	m_default_report_properties	   = ReportProperties::    defaultProperties();
+	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
 	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums;
@@ -1534,11 +1532,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		{
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
-			QString type;
-            if (QETXML::propertyString(elmt, "type", &type) == QETXML::PropertyFlags::Success)
-				m_default_xref_properties.insert(type, xrp);
-			else
-				qDebug() << "xref Property was not added to m_default_xref_properties.";
+			m_default_xref_properties.insert(elmt.attribute("type"), xrp);
 		}
 	}
 	if (!conds_autonums.isNull())
@@ -1596,13 +1590,19 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomDocument xml_document = xml_element.ownerDocument();
 
 	// export size of border
-	xml_element.appendChild(default_border_properties_.toXml(xml_document));
+	QDomElement border_elmt = xml_document.createElement("border");
+	default_border_properties_.toXml(border_elmt);
+	xml_element.appendChild(border_elmt);
 
 	// export content of titleblock
-	xml_element.appendChild(default_titleblock_properties_.toXml(xml_document));
+	QDomElement titleblock_elmt = xml_document.createElement("inset");
+	default_titleblock_properties_.toXml(titleblock_elmt);
+	xml_element.appendChild(titleblock_elmt);
 
 	// exporte default conductor
-	xml_element.appendChild(default_conductor_properties_.toXml(xml_document));
+	QDomElement conductor_elmt = xml_document.createElement("conductors");
+	default_conductor_properties_.toXml(conductor_elmt);
+	xml_element.appendChild(conductor_elmt);
 
 	// export default report properties
 	QDomElement report_elmt = xml_document.createElement("report");
@@ -1828,8 +1828,8 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 bool QETProject::projectWasModified()
 {
 
-	if ( projectOptionsWereModified()	||
-		 !m_undo_stack -> isClean()	   ||
+	if ( projectOptionsWereModified()    ||
+		 !m_undo_stack -> isClean()       ||
 		 m_titleblocks_collection.templates().count() )
 		return(true);
 

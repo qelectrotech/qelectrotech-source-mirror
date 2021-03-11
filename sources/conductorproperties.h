@@ -22,15 +22,13 @@
 #include <QColor>
 #include <QSettings>
 
-#include "properties/propertiesinterface.h"
-
 class QPainter;
 
 /**
 	@brief The SingleLineProperties class
 	This class represents the properties of a singleline conductor.
 */
-class SingleLineProperties: public PropertiesInterface {
+class SingleLineProperties {
 	public:
 	SingleLineProperties();
 	virtual ~SingleLineProperties();
@@ -39,24 +37,23 @@ class SingleLineProperties: public PropertiesInterface {
 	unsigned short int phasesCount();
 	bool isPen() const;
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-    void toXmlPriv(QDomElement&) const override;
-    bool fromXmlPriv(const QDomElement &) override;
-	static bool valideXml(QDomElement& element);
+	void toXml(QDomElement &) const;
+	void fromXml(QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 
 	/// Whether the singleline conductor should display the ground symbol
-	bool hasGround{true};
+	bool hasGround;
 	/// Whether the singleline conductor should display the neutral symbol
-	bool hasNeutral{true};
+	bool hasNeutral;
 	/// Protective Earth Neutral: visually merge neutral and ground
-	bool is_pen{false};
+	bool is_pen;
 
 	int operator==(const SingleLineProperties &) const;
 	int operator!=(const SingleLineProperties &) const;
 
 	private:
-	unsigned short int phases{1};
+	unsigned short int phases;
 	void drawGround (QPainter *, QET::ConductorSegmentType, QPointF, qreal);
 	void drawNeutral(QPainter *, QPointF, qreal);
 	void drawPen(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
@@ -67,7 +64,7 @@ class SingleLineProperties: public PropertiesInterface {
 	This class represents the functional properties of a particular conductor,
 	i.e. properties other than path and terminals.
 */
-class ConductorProperties: public PropertiesInterface
+class ConductorProperties
 {
 	public:
 		ConductorProperties();
@@ -83,15 +80,15 @@ class ConductorProperties: public PropertiesInterface
 
 
 		//Attributes
-        ConductorType type{ConductorType::Multi};
+		ConductorType type;
 
-		// TODO: set default values!
-		QColor		color{QColor(Qt::black)},
-				m_color_2{QColor(Qt::black)},
-				text_color{QColor(Qt::black)};
+		QColor
+		color,
+		m_color_2,
+		text_color;
 
 		QString
-        text{"_"},
+		text,
 		m_function,
 		m_tension_protocol,
 		m_wire_color,
@@ -100,31 +97,33 @@ class ConductorProperties: public PropertiesInterface
 		m_bus,
 		m_cable;
 
-        int text_size{9},
+		int
+		text_size,
 		m_dash_size = 1;
 
-            double
-        cond_size{1},
-            verti_rotate_text{270},
-            horiz_rotate_text{0};
+		double
+		cond_size,
+		verti_rotate_text,
+		horiz_rotate_text;
 
-		bool	m_show_text{true},
-                m_one_text_per_folio{false},
+		bool
+		m_show_text,
+		m_one_text_per_folio,
 		m_bicolor = false;
 
-		Qt::Alignment 
-		m_horizontal_alignment = Qt::AlignBottom,        
+		Qt::Alignment
+		m_horizontal_alignment = Qt::AlignBottom,
 		m_vertical_alignment = Qt::AlignRight;
 
-		Qt::PenStyle style{Qt::PenStyle::SolidLine};
+		Qt::PenStyle style;
 
 		SingleLineProperties singleLineProperties;
 
 		// methods
-		static bool valideXml(QDomElement& element);
-        static QString xmlTagName();
-        void toSettings(QSettings &, const QString & = QString()) const override;
-        void fromSettings(QSettings &, const QString & = QString()) override;
+		void toXml(QDomElement &) const;
+		void fromXml(QDomElement &);
+		void toSettings(QSettings &, const QString & = QString()) const;
+		void fromSettings(QSettings &, const QString & = QString());
 		static QString typeToString(ConductorType);
 		void applyForEqualAttributes(QList<ConductorProperties> list);
 
@@ -133,10 +132,6 @@ class ConductorProperties: public PropertiesInterface
 		// operators
 		bool operator==(const ConductorProperties &) const;
 		bool operator!=(const ConductorProperties &) const;
-
-    private:
-        void toXmlPriv(QDomElement&) const override;
-        bool fromXmlPriv(const QDomElement &) override;
 
 	private:
 		void readStyle(const QString &);

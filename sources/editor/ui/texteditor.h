@@ -38,7 +38,7 @@ class TextEditor : public ElementItemEditor {
 		explicit TextEditor(QETElementEditor *editor,  PartText *text = nullptr, QWidget *parent = nullptr);
 		~TextEditor() override;
 
-        void updateFormPriv() override;
+		void updateForm() override;
 		bool setPart(CustomElementPart *part) override;
 		bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;

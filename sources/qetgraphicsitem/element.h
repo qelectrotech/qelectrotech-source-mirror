@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -39,7 +39,7 @@ class ElementTextItemGroup;
 /**
 	This is the base class for electrical elements.
 */
-class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
+class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
 
@@ -140,8 +140,14 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 		QPoint hotspot() const;
 		void editProperty() override;
 		static bool valideXml(QDomElement &);
-        virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &);
-		virtual QDomElement toXml(QDomDocument &) const;
+		virtual bool fromXml(
+				QDomElement &,
+				QHash<int,
+				Terminal *> &);
+		virtual QDomElement toXml(
+				QDomDocument &,
+				QHash<Terminal *,
+				int> &) const;
 		QUuid uuid() const;
 		int orientation() const;
 
@@ -182,7 +188,7 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 		 */
 		QString linkTypeToString() const;
 
-		void newUuid() {m_uuid = QUuid::createUuid();}	 //create new uuid for this element
+		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -219,9 +225,9 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 	protected:
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
-		QList <QUuid>	 tmp_uuids_link;
-		QUuid			 m_uuid;
-		kind			  m_link_type = Element::Simple;
+		QList <QUuid>     tmp_uuids_link;
+		QUuid             m_uuid;
+		kind              m_link_type = Element::Simple;
 
 			//ATTRIBUTES related to informations
 		DiagramContext m_kind_informations;

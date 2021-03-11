@@ -21,15 +21,15 @@
 #include "../diagramcommands.h"
 #include "../qetgraphicsitem/conductor.h"
 
-#include "../qetxml.h"
-
 /**
 	Constructeur
 	@param parent_conductor  Conducteur auquel ce texte est rattache
 */
 ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	DiagramTextItem(parent_conductor),
-	parent_conductor_(parent_conductor)
+	parent_conductor_(parent_conductor),
+	moved_by_user_(false),
+	rotate_by_user_(false)
 {
 	setAcceptHoverEvents(true);
 }
@@ -69,17 +69,13 @@ Conductor *ConductorTextItem::parentConductor() const
 	@param e
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
-
-	double userx=0, usery=0;
-    if (QETXML::propertyDouble(e, "userx", &userx) == QETXML::PropertyFlags::Success &&
-        QETXML::propertyDouble(e, "usery", &usery) == QETXML::PropertyFlags::Success) {
-		setPos(userx, usery);
+	if (e.hasAttribute("userx")) {
+		setPos(e.attribute("userx").toDouble(),
+			   e.attribute("usery").toDouble());
 		moved_by_user_ = true;
 	}
-
-	double rotation;
-    if (QETXML::propertyDouble(e, "rotation", &rotation) == QETXML::PropertyFlags::Success) {
-		setRotation(rotation);
+	if (e.hasAttribute("rotation")) {
+		setRotation(e.attribute("rotation").toDouble());
 		rotate_by_user_ = true;
 	}
 }

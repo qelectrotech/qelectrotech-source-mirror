@@ -210,7 +210,7 @@ void ArcEditor::updateArcA()
 	@brief ArcEditor::updateForm
 	Update the value of the widgets
 */
-void ArcEditor::updateFormPriv()
+void ArcEditor::updateForm()
 {
 	if (!m_part) return;
 	activeConnections(false);

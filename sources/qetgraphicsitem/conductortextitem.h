@@ -52,7 +52,7 @@ class ConductorTextItem : public DiagramTextItem
 
 	protected:
 		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
-		void mouseMoveEvent	(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
@@ -61,8 +61,8 @@ class ConductorTextItem : public DiagramTextItem
 		// attributes
 	private:
 		Conductor *parent_conductor_;
-		bool moved_by_user_{false};
-		bool rotate_by_user_{false};
+		bool moved_by_user_;
+		bool rotate_by_user_;
 		QPointF before_mov_pos_;
 };
 #endif

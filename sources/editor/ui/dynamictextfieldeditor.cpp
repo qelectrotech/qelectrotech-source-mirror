@@ -51,8 +51,8 @@ DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
 DynamicTextFieldEditor::~DynamicTextFieldEditor()
 {
 	delete ui;
-    if(!m_change_connections.isEmpty()) {
-        for(const QMetaObject::Connection& con : m_change_connections) {
+	if(!m_connection_list.isEmpty()) {
+		for(const QMetaObject::Connection& con : m_connection_list) {
 			disconnect(con);
 		}
 	}
@@ -130,7 +130,7 @@ QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const
 	return parts;
 }
 
-void DynamicTextFieldEditor::updateFormPriv()
+void DynamicTextFieldEditor::updateForm()
 {
 	if(m_text_field) {
 		ui -> m_x_sb -> setValue(m_text_field.data() -> x());
@@ -182,38 +182,38 @@ void DynamicTextFieldEditor::setupWidget()
 
 void DynamicTextFieldEditor::setUpConnections()
 {
-    assert(m_change_connections.isEmpty());
+	assert(m_connection_list.isEmpty());
 	//Setup the connection
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::fontChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::taggChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::frameChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged,
 		[this](){this -> updateForm();});
-    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,
 		[this](){this -> updateForm();});
 }
 
 void DynamicTextFieldEditor::disconnectConnections()
 {
 	//Remove previous connection
-    if(!m_change_connections.isEmpty())
-        for(const QMetaObject::Connection& con : m_change_connections) {
+	if(!m_connection_list.isEmpty())
+		for(const QMetaObject::Connection& con : m_connection_list) {
 			disconnect(con);
 		}
-    m_change_connections.clear();
+	m_connection_list.clear();
 }
 
 /**

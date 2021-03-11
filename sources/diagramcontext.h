@@ -34,23 +34,23 @@
 
 /**
  * Key for element :
- * label						  -> label or identification of element
- * formula						-> formula used to create the label (formula is make with variable)
- * designation					-> exhaustive comment used to explain what the element does.
- * description					-> exhaustive description used to explain what the element does.
- * plant						  -> the plant assigned to the element
- * comment						-> a little comment wich can be displayed in the folio
- * manufacturer				   -> the manufacturer of the element
- * manufacturer_reference		 -> the manufacturer reference of the element
- * quantity					   -> quantity of the element
- * unity						  -> unity of the element
- * auxiliary1					 -> auxiliary 1 of element
- * auxiliary2					 -> auxiliary 2 of element
+ * label                          -> label or identification of element
+ * formula                        -> formula used to create the label (formula is make with variable)
+ * designation                    -> exhaustive comment used to explain what the element does.
+ * description                    -> exhaustive description used to explain what the element does.
+ * plant                          -> the plant assigned to the element
+ * comment                        -> a little comment wich can be displayed in the folio
+ * manufacturer                   -> the manufacturer of the element
+ * manufacturer_reference         -> the manufacturer reference of the element
+ * quantity                       -> quantity of the element
+ * unity                          -> unity of the element
+ * auxiliary1                     -> auxiliary 1 of element
+ * auxiliary2                     -> auxiliary 2 of element
  * machine_manufacturer_reference -> reference of the machine manufacturer
- * supplier					   -> the supplier of the element
- * function					   -> the function of element
- * location					   -> the location assigned to the element
- * frozenLabel					-> label locked at a given time
+ * supplier                       -> the supplier of the element
+ * function                       -> the function of element
+ * location                       -> the location assigned to the element
+ * frozenLabel                    -> label locked at a given time
  *
 */
 class DiagramContext

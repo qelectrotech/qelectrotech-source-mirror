@@ -42,11 +42,12 @@ class XRefProperties : public PropertiesInterface
 		Label
 	};
 
-    void toSettings	  (QSettings &settings, const QString& = QString()) const override;
-    void fromSettings (QSettings &settings,
-               const QString& = QString()) override;
-    void toXmlPriv(QDomElement&xml_element) const override;
-    bool fromXmlPriv(const QDomElement &xml_element) override;
+	void toSettings	  (QSettings &settings,
+			   const QString = QString()) const override;
+	void fromSettings (const QSettings &settings,
+			   const QString = QString()) override;
+	QDomElement toXml (QDomDocument &xml_document) const override;
+	bool fromXml(const QDomElement &xml_element) override;
 
 	static QHash<QString, XRefProperties> defaultProperties();
 
@@ -79,15 +80,15 @@ class XRefProperties : public PropertiesInterface
 	void setKey(QString& key) {m_key = key;}
 
 	private:
-	bool m_show_power_ctc{true};
-	DisplayHas m_display{Cross};
-	SnapTo m_snap_to{Bottom};
-	Qt::AlignmentFlag m_xref_pos{Qt::AlignBottom};
+	bool m_show_power_ctc;
+	DisplayHas m_display;
+	SnapTo m_snap_to;
+	Qt::AlignmentFlag m_xref_pos;
 	QHash <QString, QString> m_prefix;
-	QStringList m_prefix_keys{"power","delay","switch"};
-	QString m_master_label{"%f-%l%c"};
-	QString m_slave_label{"(%f-%l%c)"};
-	int	 m_offset{0};
+	QStringList m_prefix_keys;
+	QString m_master_label;
+	QString m_slave_label;
+	int     m_offset;
 	QString m_key;
 };
 

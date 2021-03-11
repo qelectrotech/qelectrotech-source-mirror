@@ -48,7 +48,7 @@ class RectangleEditor : public ElementItemEditor
 	QPointF editedTopLeft () const;
 	
 	public slots:
-    void updateFormPriv() override;
+	void updateForm() override;
 	private:
 	void editingFinished();
 	void activeConnections(bool active);
@@ -70,6 +70,7 @@ class RectangleEditor : public ElementItemEditor
 	StyleEditor *m_style;
 	PartRectangle *m_part;
 	Ui::RectangleEditor *ui;
+	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // RECTANGLEEDITOR_H

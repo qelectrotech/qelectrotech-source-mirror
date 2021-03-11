@@ -19,18 +19,19 @@
 #include "../qetxml.h"
 #include <QDebug>
 
-void ElementData::toSettings(QSettings &settings, const QString& prefix) const {
+void ElementData::toSettings(QSettings &settings, const QString prefix) const {
 	Q_UNUSED(settings)
 	Q_UNUSED(prefix)
 }
 
-void ElementData::fromSettings(QSettings &settings, const QString& prefix) {
+void ElementData::fromSettings(const QSettings &settings, const QString prefix) {
 	Q_UNUSED(settings)
 	Q_UNUSED(prefix)
 }
 
-void ElementData::toXmlPriv(QDomElement& e) const {
-    Q_UNUSED(e)
+QDomElement ElementData::toXml(QDomDocument &xml_element) const {
+	Q_UNUSED(xml_element)
+	return QDomElement();
 }
 
 /**
@@ -41,7 +42,7 @@ void ElementData::toXmlPriv(QDomElement& e) const {
  * @param xml_element : tagName must be 'definition'
  * @return true is successfuly loaded
  */
-bool ElementData::fromXmlPriv(const QDomElement &xml_element)
+bool ElementData::fromXml(const QDomElement &xml_element)
 {
 	if(xml_element.tagName() != "definition" ||
 	   xml_element.attribute("type") != "element") {

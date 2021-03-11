@@ -317,8 +317,8 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 						&Element::linkedElementChanged,
 						[this]()
 			{QTimer::singleShot(200,
-						this,
-						&ElementTextItemGroup::autoPos);}
+					    this,
+					    &ElementTextItemGroup::autoPos);}
 			);
 			if(m_parent_element->diagram())
 				m_XrefChanged_timer = connect(
@@ -326,8 +326,8 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 							&QETProject::XRefPropertiesChanged,
 							[this]()
 				{QTimer::singleShot(200,
-							this,
-							&ElementTextItemGroup::autoPos);}
+						    this,
+						    &ElementTextItemGroup::autoPos);}
 				);
 		}
 		autoPos();
@@ -438,7 +438,6 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 	return dom_element;
 }
 
-// TOOD: inherit from propertiesinterface
 /**
 	@brief ElementTextItemGroup::fromXml
 	Import data of this group from xml
@@ -624,7 +623,7 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	{
 		if(diagram() && m_first_move)
 			diagram()->elementTextsMover().beginMovement(diagram(),
-									 this);
+								     this);
 		
 		if(m_first_move)
 		{
@@ -707,7 +706,7 @@ void ElementTextItemGroup::mouseDoubleClickEvent(
 */
 void ElementTextItemGroup::keyPressEvent(QKeyEvent *event)
 {	
-	 if(event->modifiers() == Qt::ControlModifier)
+ 	if(event->modifiers() == Qt::ControlModifier)
 	{
 		if(event->key() == Qt::Key_Left && m_alignment	!= Qt::AlignLeft)
 		{
@@ -801,12 +800,12 @@ void ElementTextItemGroup::updateXref()
 						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
 						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
 						
-						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,					   this, &ElementTextItemGroup::updateXref);
-						m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,					   this, &ElementTextItemGroup::updateXref);
-						m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,			  this, &ElementTextItemGroup::updateXref);
-						m_update_slave_Xref_connection << connect(project,	 &QETProject::projectDiagramsOrderChanged, this, &ElementTextItemGroup::updateXref);
-						m_update_slave_Xref_connection << connect(project,	 &QETProject::diagramRemoved,			  this, &ElementTextItemGroup::updateXref);
-						m_update_slave_Xref_connection << connect(project,	 &QETProject::XRefPropertiesChanged,	   this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(project,     &QETProject::projectDiagramsOrderChanged, this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(project,     &QETProject::diagramRemoved,              this, &ElementTextItemGroup::updateXref);
+						m_update_slave_Xref_connection << connect(project,     &QETProject::XRefPropertiesChanged,       this, &ElementTextItemGroup::updateXref);
 					}
 					else
 						m_slave_Xref_item->setPlainText(xref_label);

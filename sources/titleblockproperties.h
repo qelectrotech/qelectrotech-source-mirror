@@ -21,14 +21,12 @@
 #include "diagramcontext.h"
 #include "qet.h"
 
-#include "properties/propertiesinterface.h"
-
 /**
 	This class provides a container for the properties of a particular title
 	block, i.e. title, author, date, filename, folio, template, custom
 	properties, ...
 */
-class TitleBlockProperties: public PropertiesInterface {
+class TitleBlockProperties {
 	public:
 	TitleBlockProperties();
 	virtual ~TitleBlockProperties();
@@ -41,10 +39,10 @@ class TitleBlockProperties: public PropertiesInterface {
 	bool operator==(const TitleBlockProperties &);
 	bool operator!=(const TitleBlockProperties &);
 	
-    void toXmlPriv(QDomElement &e) const override;
-    bool fromXmlPriv(const QDomElement &) override;
-	void toSettings(QSettings &, const QString & = QString()) const override;
-    void fromSettings(QSettings &, const QString & = QString()) override;
+	void toXml(QDomElement &) const;
+	void fromXml(const QDomElement &);
+	void toSettings(QSettings &, const QString & = QString()) const;
+	void fromSettings(QSettings &, const QString & = QString());
 
 	void setAutoPageNum(QString autonum) {auto_page_num = autonum;}
 
@@ -53,21 +51,21 @@ class TitleBlockProperties: public PropertiesInterface {
 	QDate finalDate() const ;
 	
 	// attributes
-	QString title;			///< Folio title (displayed by the default template)
-	QString author;		   ///< Author of the diagram/folio (displayed by the default template)
-	QDate date;			   ///< Date (displayed by the default template)
-	QString filename;		 ///< Filename (displayed by the default template)
-	QString plant;		  ///< Plant (displayed by the default template)
-	QString locmach;			  ///< Location(displayed by the default template)
-	QString indexrev;		 ///< Revision Index (displayed by the default template)
-	QString version;		  ///< Version (displayed by the default template)
-	QString folio;			///< Folio information (displayed by the default template)
+	QString title;            ///< Folio title (displayed by the default template)
+	QString author;           ///< Author of the diagram/folio (displayed by the default template)
+	QDate date;               ///< Date (displayed by the default template)
+	QString filename;         ///< Filename (displayed by the default template)
+	QString plant;          ///< Plant (displayed by the default template)
+	QString locmach;              ///< Location(displayed by the default template)
+	QString indexrev;         ///< Revision Index (displayed by the default template)
+	QString version;          ///< Version (displayed by the default template)
+	QString folio;            ///< Folio information (displayed by the default template)
 	QString auto_page_num;
-	DateManagement useDate{UseDateValue};   ///< Wheter to use the date attribute
-	QString template_name;	///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
+	DateManagement useDate;   ///< Wheter to use the date attribute
+	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
-	Qt::Edge display_at{Qt::Edge::BottomEdge};	   ///< Edge to display the titleblock
-	QET::QetCollection collection{QET::QetCollection::Common}; ///<Specify the location of the title block
+	Qt::Edge display_at;       ///< Edge to display the titleblock
+	QET::QetCollection collection; ///<Specify the location of the title block
 
 	private:
 	QString exportDate() const;

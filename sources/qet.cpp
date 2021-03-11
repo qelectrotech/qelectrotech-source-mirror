@@ -34,6 +34,31 @@
 	retourne.
 	@param s Chaine de caractere cense representer une orientation
 	@return l'orientation designee par la chaine de caractere
+*/
+Qet::Orientation Qet::orientationFromString(const QString &s) {
+	QChar c = s[0];
+	if (c == 'e') return(Qet::East);
+	else if (c == 's') return(Qet::South);
+	else if (c == 'w') return (Qet::West);
+	else return(Qet::North);
+}
+
+/**
+	@param o une orientation
+	@return une chaine de caractere representant l'orientation
+*/
+QString Qet::orientationToString(Qet::Orientation o) {
+	QString ret;
+	switch(o) {
+		case Qet::North: ret = "n"; break;
+		case Qet::East : ret = "e"; break;
+		case Qet::South: ret = "s"; break;
+		case Qet::West : ret = "w"; break;
+	}
+	return(ret);
+}
+
+/**
 	Indique si deux orientations de Borne sont sur le meme axe (Vertical / Horizontal).
 	@param a La premiere orientation de Borne
 	@param b La seconde orientation de Borne
@@ -507,7 +532,7 @@ QString Qet::endTypeToString(const Qet::EndType &end_type) {
 	QET::None est retourne.
 */
 Qet::EndType Qet::endTypeFromString(const QString &string) {
-	if (string == "simple")		return(Qet::Simple);
+	if (string == "simple")        return(Qet::Simple);
 	else if (string == "triangle") return(Qet::Triangle);
 	else if (string == "circle")   return(Qet::Circle);
 	else if (string == "diamond")  return(Qet::Diamond);
@@ -691,9 +716,9 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	QActionGroup *action_group = new QActionGroup(parent);
 
 	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);
-	QAction *edit_raise	= new QAction(QET::Icons::Raise,		QObject::tr("Rapprocher"),			 action_group);
-	QAction *edit_lower	= new QAction(QET::Icons::Lower,		QObject::tr("Éloigner"),			   action_group);
-	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),		action_group);
+	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
+	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
 
 	edit_forward ->setStatusTip(QObject::tr("Ramène la ou les sélections au premier plan"));
 	edit_raise   ->setStatusTip(QObject::tr("Rapproche la ou les sélections"));

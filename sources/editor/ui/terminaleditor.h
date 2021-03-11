@@ -39,7 +39,7 @@ class TerminalEditor : public ElementItemEditor
 		TerminalEditor(QETElementEditor *editor, QWidget *parent = nullptr);
 		~TerminalEditor() override;
 
-        void updateFormPriv() override;
+        void updateForm() override;
 		bool setPart(CustomElementPart *new_part) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart *> currentParts() const override {return QList<CustomElementPart *>();}
@@ -55,7 +55,8 @@ class TerminalEditor : public ElementItemEditor
 
     private:
         Ui::TerminalEditor *ui;
-        QVector<QMetaObject::Connection> m_editor_connections;
+		QVector<QMetaObject::Connection> m_editor_connections,
+										 m_change_connections;
 		PartTerminal *m_part = nullptr;
 		bool m_locked = false;
 };

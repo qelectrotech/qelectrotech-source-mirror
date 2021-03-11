@@ -46,11 +46,11 @@ TerminalEditor::~TerminalEditor()
 }
 
 /**
- * @brief TerminalEditor::updateFormPriv
+ * @brief TerminalEditor::updateForm
  * Reimplemented from ElementItemEditor
  * Update the content of this widget
  */
-void TerminalEditor::updateFormPriv()
+void TerminalEditor::updateForm()
 {
 	if (!m_part) {
 		return;

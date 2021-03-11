@@ -31,8 +31,6 @@
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
-#include "../qetxml.h"
-
 #include <QMultiHash>
 #include <QtDebug>
 
@@ -80,9 +78,15 @@ class ConductorXmlRetroCompatibility
 */
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
-	terminal2(p2)
+	terminal2(p2),
+	m_mouse_over(false),
+	m_text_item(nullptr),
+	segments(nullptr),
+	m_moving_segment(false),
+	modified_path(false),
+	has_to_save_profile(false),
+	must_highlight_(Conductor::None)
 {
-    setTagName("conductor");
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	m_previous_z_value = zValue();
@@ -107,8 +111,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	}
 
 		//By default, the 4 profils are nuls -> we must to use priv_calculeConductor
-	conductor_profiles.insert(Qt::TopLeftCorner,	 ConductorProfile());
-	conductor_profiles.insert(Qt::TopRightCorner,	ConductorProfile());
+	conductor_profiles.insert(Qt::TopLeftCorner,     ConductorProfile());
+	conductor_profiles.insert(Qt::TopRightCorner,    ConductorProfile());
 	conductor_profiles.insert(Qt::BottomLeftCorner,  ConductorProfile());
 	conductor_profiles.insert(Qt::BottomRightCorner, ConductorProfile());
 
@@ -221,7 +225,7 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
 
 	Q_ASSERT_X(conductor_profile.segmentsCount(QET::Both) > 1, "Conductor::priv_modifieConductor", "pas de points a modifier");
-	Q_ASSERT_X(!conductor_profile.isNull(),				 "Conductor::priv_modifieConductor", "pas de profil utilisable");
+	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
 
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);
@@ -325,10 +329,10 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 
 				// on remet le trop-plein dans la reserve d'offset
 				remaining_offset += qAbs(segments_hash[csp]) * getSign(local_offset);
-				//qDebug() << "	trop-plein de" << qAbs(segments_hash[csp]) * getSign(local_offset) << "remaining_offset =" << remaining_offset;
+				//qDebug() << "    trop-plein de" << qAbs(segments_hash[csp]) * getSign(local_offset) << "remaining_offset =" << remaining_offset;
 				segments_hash[csp] = 0.0;
 			} else {
-				//qDebug() << "	offset local de" << local_offset << "accepte";
+				//qDebug() << "    offset local de" << local_offset << "accepte";
 			}
 		}
 	}
@@ -360,17 +364,17 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 
 	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite (apres prolongation)
 	if (newp1.x() <= newp2.x()) {
-		depart	  = newp1;
-		arrivee	 = newp2;
-		depart0	 = sp1;
-		arrivee0	= sp2;
+		depart      = newp1;
+		arrivee     = newp2;
+		depart0     = sp1;
+		arrivee0    = sp2;
 		ori_depart  = o1;
 		ori_arrivee = o2;
 	} else {
-		depart	  = newp2;
-		arrivee	 = newp1;
-		depart0	 = sp2;
-		arrivee0	= sp1;
+		depart      = newp2;
+		arrivee     = newp1;
+		depart0     = sp2;
+		arrivee0    = sp1;
 		ori_depart  = o2;
 		ori_arrivee = o1;
 	}
@@ -583,16 +587,36 @@ ConductorTextItem *Conductor::textItem() const
 	@return true si l'element XML represente bien un Conducteur ; false sinon
 */
 bool Conductor::valideXml(QDomElement &e){
+	// verifie le nom du tag
+	if (e.tagName() != "conductor") return(false);
 
-//	// TODO: seems to short! (see fromXML)
-//	if (QETXML::propertyDouble(e, "x") ||
-//		QETXML::propertyDouble(e, "y"))
-//		return false;
+	// verifie la presence des attributs minimaux
+	if (!e.hasAttribute("terminal1")) return(false);
+	if (!e.hasAttribute("terminal2")) return(false);
 
-//	if (QETXML::propertyBool(e, "freezeLabel"))
-//		return false;
+	bool conv_ok;
+	// parse l'abscisse
+	if (e.hasAttribute("element1")) {
+		if (QUuid(e.attribute("element1")).isNull())
+			return false;
+		if (QUuid(e.attribute("terminal1")).isNull())
+			return false;
+	} else {
+		e.attribute("terminal1").toInt(&conv_ok);
+		if (!conv_ok) return(false);
+	}
 
-	return true;
+	// parse l'ordonnee
+	if (e.hasAttribute("element2")) {
+		if (QUuid(e.attribute("element2")).isNull())
+			return false;
+		if (QUuid(e.attribute("terminal2")).isNull())
+			return false;
+	} else {
+		e.attribute("terminal2").toInt(&conv_ok);
+		if (!conv_ok) return(false);
+	}
+	return(true);
 }
 
 /**
@@ -965,26 +989,16 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 	@param dom_element
 	@return true is loading success else return false
 */
-bool Conductor::fromXmlPriv(const QDomElement &dom_element)
+bool Conductor::fromXml(QDomElement &dom_element)
 {
-	double x=0, y=0;
-	QETXML::propertyDouble(dom_element, "x", &x);
-	QETXML::propertyDouble(dom_element, "y", &y);
-	setPos(x, y);
+	setPos(dom_element.attribute("x", nullptr).toDouble(),
+		   dom_element.attribute("y", nullptr).toDouble());
 
 	bool return_ = pathFromXml(dom_element);
 
 	m_text_item -> fromXml(dom_element);
-
-    auto prs = QETXML::findInDomElement(dom_element, ConductorProperties::xmlTagName());
-    ConductorProperties pr;
-    if (!prs.isEmpty()) {
-        pr.fromXml(prs.first());
-    } else {
-       // legacy
-       // added in 0.9 remove in later version!
-       pr.fromXml(dom_element);
-    }
+	ConductorProperties pr;
+	pr.fromXml(dom_element);
 
 		//Load Sequential Values
 	if (dom_element.hasAttribute("sequ_1") || dom_element.hasAttribute("sequf_1") || dom_element.hasAttribute("seqt_1") || dom_element.hasAttribute("seqtf_1") || dom_element.hasAttribute("seqh_1") || dom_element.hasAttribute("sequf_1"))
@@ -992,15 +1006,15 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	QETXML::propertyBool(dom_element, "freezeLabel", &m_freeze_label);
+	m_freeze_label = dom_element.attribute("freezeLabel") == "true"? true : false;
+
 	setProperties(pr);
 
 	return return_;
 }
 
-// does not support legacy method
-/*!
-    @brief Conductor::toXmlPriv
+/**
+	@brief Conductor::toXml
 	Exporte les caracteristiques du conducteur sous forme d'une element XML.
 	@param dom_document :
 	Le document XML a utiliser pour creer l'element XML
@@ -1009,122 +1023,70 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
-void Conductor::toXmlPriv(QDomElement& dom_element) const {
+QDomElement Conductor::toXml(QDomDocument &dom_document,
+				 QHash<Terminal *,
+				 int> &table_adr_id) const
+{
+	QDomElement dom_element = dom_document.createElement("conductor");
 
-    dom_element.setAttribute("x", QString::number(pos().x()));
-    dom_element.setAttribute("y", QString::number(pos().y()));
+	dom_element.setAttribute("x", QString::number(pos().x()));
+	dom_element.setAttribute("y", QString::number(pos().y()));
 
-    // Terminal is uniquely identified by the uuid of the terminal and the element
-    if (terminal1->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal1", terminal1->ID()); // for backward compability
-    } else {
-        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-    }
+	// Terminal is uniquely identified by the uuid of the terminal and the element
+	if (terminal1->uuid().isNull()) {
+		// legacy method to identify the terminal
+		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+	} else {
+		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+	}
 
-    if (terminal2->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal2", terminal2->ID()); // for backward compability
-    } else {
-        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-    }
-    dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
+	if (terminal2->uuid().isNull()) {
+		// legacy method to identify the terminal
+		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+	} else {
+		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+	}
+	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 
-    // on n'exporte les segments du conducteur que si ceux-ci ont
-    // ete modifies par l'utilisateur
-    if (modified_path)
-    {
-        // parcours et export des segments
-        QDomElement current_segment;
-        foreach(ConductorSegment *segment, segmentsList())
-        {
-            current_segment = dom_element.ownerDocument().createElement("segment");
-            current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-            current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
-            dom_element.appendChild(current_segment);
-        }
-    }
-    QDomDocument doc = dom_element.ownerDocument();
-    QDomElement dom_seq = m_autoNum_seq.toXml(doc);
-    dom_element.appendChild(dom_seq);
+	// on n'exporte les segments du conducteur que si ceux-ci ont
+	// ete modifies par l'utilisateur
+	if (modified_path)
+	{
+		// parcours et export des segments
+		QDomElement current_segment;
+		foreach(ConductorSegment *segment, segmentsList())
+		{
+			current_segment = dom_document.createElement("segment");
+			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
+			dom_element.appendChild(current_segment);
+		}
+	}
 
-        // Export the properties and text
-    dom_element.appendChild(m_properties. toXml(doc));
-    if(m_text_item->wasMovedByUser())
-    {
-        dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
-        dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
-    }
-    if(m_text_item->wasRotateByUser())
-        dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
+	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
+	dom_element.appendChild(dom_seq);
+
+		// Export the properties and text
+	m_properties. toXml(dom_element);
+	if(m_text_item->wasMovedByUser())
+	{
+		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
+		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
+	}
+	if(m_text_item->wasRotateByUser())
+		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
+
+	return(dom_element);
 }
 
 /**
-	Exporte les caracteristiques du conducteur sous forme d'une element XML.
-	@param d Le document XML a utiliser pour creer l'element XML
-	@param table_adr_id Hash stockant les correspondances entre les ids des
-	bornes dans le document XML et leur adresse en memoire
-	@return Un element XML representant le conducteur
-*/
-//QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> &table_adr_id) const
-//{
-//	QDomElement dom_element = dom_document.createElement("conductor");
-
-//	dom_element.setAttribute("x", QString::number(pos().x()));
-//	dom_element.setAttribute("y", QString::number(pos().y()));
-
-//	// Terminal is uniquely identified by the uuid of the terminal and the element
-//	if (terminal1->uuid().isNull()) {
-//		// legacy method to identify the terminal
-//		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
-//	} else {
-//		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-//		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-//	}
-
-//	if (terminal2->uuid().isNull()) {
-//		// legacy method to identify the terminal
-//		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
-//	} else {
-//		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-//		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-//	}
-//	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
-	
-//	// on n'exporte les segments du conducteur que si ceux-ci ont
-//	// ete modifies par l'utilisateur
-//	if (modified_path)
-//	{
-//		// parcours et export des segments
-//		QDomElement current_segment;
-//		foreach(ConductorSegment *segment, segmentsList())
-//		{
-//			current_segment = dom_document.createElement("segment");
-//			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-//			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
-//			dom_element.appendChild(current_segment);
-//		}
-//	}
-
-//	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
-//	dom_element.appendChild(dom_seq);
-	
-//		// Export the properties and text
-//	m_properties.toXml(dom_document);
-//	if(m_text_item->wasMovedByUser())
-//	{
-//		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
-//		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
-//	}
-//	if(m_text_item->wasRotateByUser())
-//		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
-
-//	return(dom_element);
-//}
-
-/**
+	@brief Conductor::pathFromXml
+	Generate the path (of the line) from xml file by checking the segments in the xml
+	file
+	@param e
+	@return true if generate path success else return false
 */
 bool Conductor::pathFromXml(const QDomElement &e) {
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
@@ -1136,21 +1098,14 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		if (current_segment.isNull() || current_segment.tagName() != "segment") continue;
 
 		// le segment doit avoir une longueur
-		qreal segment_length;
-		if (QETXML::propertyDouble(current_segment, "length", & segment_length))
-			continue;
+		if (!current_segment.hasAttribute("length")) continue;
 
-		bool isHorizontal = false;
-		QString orientation;
-        if (QETXML::propertyString(current_segment, "orientation", &orientation) == QETXML::PropertyFlags::Success) {
-			if (orientation == "horizontal")
-				isHorizontal = true;
-		} else {
-			qDebug() << "PathFromXML failed";
-			return false;
-		}
+		// cette longueur doit etre un reel
+		bool ok;
+		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
+		if (!ok) continue;
 
-		if (isHorizontal) {
+		if (current_segment.attribute("orientation") == "horizontal") {
 			segments_x << segment_length;
 			segments_y << 0.0;
 		} else {
@@ -1282,7 +1237,7 @@ ConductorSegment *Conductor::middleSegment()
 QPointF Conductor::posForText(Qt::Orientations &flag)
 {
 
-	ConductorSegment *segment	  = segments;
+	ConductorSegment *segment      = segments;
 	bool all_segment_is_vertical   = true;
 	bool all_segment_is_horizontal = true;
 
@@ -1401,7 +1356,7 @@ void Conductor::calculateTextItemPosition()
 		}
 
 			//Adjust the position of text if his rotation
-			//is 0?? or 270??, to be exactly centered to the conductor
+			//is 0° or 270°, to be exactly centered to the conductor
 		if (m_text_item -> rotation() == 0)
 		{
 			text_pos.rx() -= m_text_item -> boundingRect().width()/2;
@@ -1678,12 +1633,12 @@ void Conductor::displayedTextChanged()
 	new_value.setValue(new_properties);
 
 
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier les propri??t??s d'un conducteur", "undo caption"));
+	QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 	new QPropertyUndoCommand(this, "properties", old_value, new_value, undo);
 
 	if (!relatedPotentialConductors().isEmpty())
 	{
-		undo->setText(tr("Modifier les propri??t??s de plusieurs conducteurs", "undo caption"));
+		undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
 		foreach (Conductor *potential_conductor, relatedPotentialConductors())
 		{
@@ -1769,7 +1724,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 */
 QETDiagramEditor* Conductor::diagramEditor() const
 {
-	if (!diagram())					 return nullptr;
+	if (!diagram())                     return nullptr;
 	if (diagram() -> views().isEmpty()) return nullptr;
 
 	QWidget *w = const_cast<QGraphicsView *>(diagram() -> views().at(0));

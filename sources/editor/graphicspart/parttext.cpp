@@ -23,8 +23,6 @@
 #include "../elementscene.h"
 #include "../ui/texteditor.h"
 
-#include "../../qetxml.h"
-
 /**
 	Constructeur
 	@param editor L'editeur d'element concerne
@@ -45,8 +43,8 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr(
-				 "T",
-				 "default text when adding a text in the element editor"));
+			     "T",
+			     "default text when adding a text in the element editor"));
 
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
@@ -69,49 +67,29 @@ PartText::~PartText()
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
-bool PartText::fromXmlPriv(const QDomElement &xml_element)
-{
-	int size;
-	QString font;
+void PartText::fromXml(const QDomElement &xml_element) {
+	bool ok;
 
-    if (QETXML::propertyInteger(xml_element, "size", &size) != QETXML::PropertyFlags::NotFound)
-	{
-		if (size < 1) {
-			size = 20;
+	if (xml_element.hasAttribute("size")) {
+		int font_size = xml_element.attribute("size").toInt(&ok);
+		if (!ok || font_size < 1) {
+			font_size = 20;
 		}
 		QFont font_ = this -> font();
-		font_.setPointSize(size);
+		font_.setPointSize(font_size);
 		setFont(font_);
 	}
-    else if (QETXML::propertyString(xml_element, "font", &font) != QETXML::PropertyFlags::NotFound)
-	{
+	else if (xml_element.hasAttribute("font")) {
 		QFont font_;
-		font_.fromString(font);
+		font_.fromString(xml_element.attribute("font"));
 		setFont(font_);
-	} else {
-		return false;
 	}
 
-	QColor color;
-	QString text;
-    QETXML::propertyColor(xml_element, "color", &color);
-	setDefaultTextColor(color);
-
-
-    QETXML::propertyString(xml_element, "text", &text);
-	setPlainText(text);
-
-	double x=0, y=0, rot=0;
-	if (QETXML::propertyDouble(xml_element, "x", &x) == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(xml_element, "y", &y) == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-	setPos(x, y);
-
-	if (QETXML::propertyDouble(xml_element, "rotation", &rot) == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-	setRotation(rot);
-
-	return true;
+	setDefaultTextColor(QColor(xml_element.attribute("color", "#000000")));
+	setPlainText(xml_element.attribute("text"));
+	setPos(xml_element.attribute("x").toDouble(),
+			xml_element.attribute("y").toDouble());
+	setRotation(xml_element.attribute("rotation", QString::number(0)).toDouble());
 }
 
 /**
@@ -119,38 +97,18 @@ bool PartText::fromXmlPriv(const QDomElement &xml_element)
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-void PartText::toXmlPriv(QDomElement& xml_element) const
+const QDomElement PartText::toXml(QDomDocument &xml_document) const
 {
-    xml_element.setAttribute("x", QString::number(pos().x()));
-    xml_element.setAttribute("y", QString::number(pos().y()));
-    xml_element.setAttribute("text", toPlainText());
-    xml_element.setAttribute("font", font().toString());
-    xml_element.setAttribute("rotation", QString::number(rotation()));
-    xml_element.setAttribute("color", defaultTextColor().name());
-}
+	QDomElement xml_element = xml_document.createElement(xmlName());
 
-bool PartText::valideXml(QDomElement& element) {
+	xml_element.setAttribute("x", QString::number(pos().x()));
+	xml_element.setAttribute("y", QString::number(pos().y()));
+	xml_element.setAttribute("text", toPlainText());
+	xml_element.setAttribute("font", font().toString());
+	xml_element.setAttribute("rotation", QString::number(rotation()));
+	xml_element.setAttribute("color", defaultTextColor().name());
 
-    if (QETXML::propertyInteger(element, "size") == QETXML::PropertyFlags::NotFound ||
-        QETXML::propertyString(element, "font") == QETXML::PropertyFlags::NotFound) {
-		return false;
-	}
-
-    if (QETXML::propertyString(element, "color") == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-
-
-    if (QETXML::propertyString(element, "text"))
-		return false;
-
-	if (QETXML::propertyDouble(element, "x") == QETXML::PropertyFlags::NoValidConversion ||
-		QETXML::propertyDouble(element, "y") == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-
-	if (QETXML::propertyDouble(element, "rotation", 0) == QETXML::PropertyFlags::NoValidConversion)
-		return false;
-
-	return true;
+	return(xml_element);
 }
 
 /**

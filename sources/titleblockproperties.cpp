@@ -19,15 +19,16 @@
 #include "qet.h"
 #include "qetapp.h"
 
-#include "qetxml.h"
-
 /**
 	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
 	vides (date vide + useDate a UseDateValue).
 */
-TitleBlockProperties::TitleBlockProperties()
+TitleBlockProperties::TitleBlockProperties() :
+	date(),
+	useDate(UseDateValue),
+	display_at(Qt::BottomEdge),
+	collection (QET::QetCollection::Common)
 {
-    setTagName("titleblock");
 }
 
 /**
@@ -68,65 +69,60 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 	return(!(*this == ip));
 }
 
-/**
-    Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
-    @param e Element XML auquel seront ajoutes des attributs
-*/
-void TitleBlockProperties::toXmlPriv(QDomElement& e) const {
-    e.setAttribute("author",   author);
-    e.setAttribute("title",    title);
-    e.setAttribute("filename", filename);
-    e.setAttribute("plant", plant);
-    e.setAttribute("locmach", locmach);
-    e.setAttribute("indexrev",indexrev);
-    e.setAttribute("version", version);
-    e.setAttribute("folio",    folio);
-    e.setAttribute("auto_page_num", auto_page_num);
-    e.setAttribute("date",     exportDate());
-    e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
-    if (!template_name.isEmpty())
-    {
-        e.setAttribute("titleblocktemplate", template_name);
-        e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
-    }
 
-    if (context.keys().count()) {
-        QDomElement properties = e.ownerDocument().createElement("properties");
-        context.toXml(properties);
-        e.appendChild(properties);
-    }
+/**
+	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
+	@param e Element XML auquel seront ajoutes des attributs
+*/
+void TitleBlockProperties::toXml(QDomElement &e) const
+{
+	e.setAttribute("author",   author);
+	e.setAttribute("title",    title);
+	e.setAttribute("filename", filename);
+	e.setAttribute("plant", plant);
+	e.setAttribute("locmach", locmach);
+	e.setAttribute("indexrev",indexrev);
+	e.setAttribute("version", version);
+	e.setAttribute("folio",    folio);
+	e.setAttribute("auto_page_num", auto_page_num);
+	e.setAttribute("date",     exportDate());
+	e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
+	if (!template_name.isEmpty())
+	{
+		e.setAttribute("titleblocktemplate", template_name);
+		e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
+	}
+	
+	if (context.keys().count()) {
+		QDomElement properties = e.ownerDocument().createElement("properties");
+		context.toXml(properties);
+		e.appendChild(properties);
+	}
 }
 
-/** RETURNS True
+/**
 	Importe le cartouche a partir des attributs XML de l'element e
 	@param e Element XML dont les attributs seront lus
 */
-bool TitleBlockProperties::fromXmlPriv(const QDomElement &e) {
-
-
+void TitleBlockProperties::fromXml(const QDomElement &e) {
 	// reads the historical fields
-	QETXML::propertyString(e, "author", &author);
-	QETXML::propertyString(e, "title", &title);
-	QETXML::propertyString(e, "filename", &filename);
-	QETXML::propertyString(e, "plant", &plant);
-	QETXML::propertyString(e, "locmach", &locmach);
-	QETXML::propertyString(e, "indexrev", &indexrev);
-	QETXML::propertyString(e, "version", &version);
-	QETXML::propertyString(e, "folio", &folio);
-	QETXML::propertyString(e, "auto_page_num", &auto_page_num);
-	QString date;
-	QETXML::propertyString(e, "date", &date);
-	setDateFromString(date);
-
-	QString display_at_temp;
-	if (QETXML::propertyString(e, "displayAt", &display_at_temp) == QETXML::PropertyFlags::Success)
-		display_at = (display_at_temp == "bottom" ? Qt::BottomEdge : Qt::RightEdge); // otherwise it gets default in header file
+	if (e.hasAttribute("author"))      author   = e.attribute("author");
+	if (e.hasAttribute("title"))       title    = e.attribute("title");
+	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
+	if (e.hasAttribute("plant"))       plant   = e.attribute("plant");
+	if (e.hasAttribute("locmach"))     locmach  = e.attribute("locmach");
+	if (e.hasAttribute("indexrev"))    indexrev  = e.attribute("indexrev");
+	if (e.hasAttribute("version"))     version   = e.attribute("version");
+	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
+	if (e.hasAttribute("auto_page_num")) auto_page_num = e.attribute("auto_page_num");
+	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
+	if (e.hasAttribute("displayAt")) display_at = (e.attribute("displayAt") == "bottom" ? Qt::BottomEdge : Qt::RightEdge);
 	
 		// reads the template used to render the title block
-	if (QETXML::propertyString(e, "titleblocktemplate", &template_name) == QETXML::PropertyFlags::Success) {
-		QString tbc;
-		if (QETXML::propertyString(e, "titleblocktemplateCollection", &tbc) == QETXML::PropertyFlags::Success)
-			collection = QET::qetCollectionFromString(tbc);
+	if (e.hasAttribute("titleblocktemplate"))
+	{
+		template_name = e.attribute("titleblocktemplate");
+		collection = QET::qetCollectionFromString(e.attribute("titleblocktemplateCollection"));
 	}
 	
 	// reads the additional fields used to fill the title block
@@ -134,7 +130,6 @@ bool TitleBlockProperties::fromXmlPriv(const QDomElement &e) {
 	foreach (QDomElement e, QET::findInDomElement(e, "properties")) {
 		context.fromXml(e);
 	}
-	return true;
 }
 
 /**
@@ -145,16 +140,16 @@ bool TitleBlockProperties::fromXmlPriv(const QDomElement &e) {
 */
 void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const
 {
-	settings.setValue(prefix + "title",	title);
+	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "plant", plant);
 	settings.setValue(prefix + "locmach", locmach);
 	settings.setValue(prefix + "indexrev", indexrev);
 	settings.setValue(prefix + "version", version);
-	settings.setValue(prefix + "folio",	folio);
-	settings.setValue(prefix + "auto_page_num",	auto_page_num);
-	settings.setValue(prefix + "date",	 exportDate());
+	settings.setValue(prefix + "folio",    folio);
+	settings.setValue(prefix + "auto_page_num",    auto_page_num);
+	settings.setValue(prefix + "date",     exportDate());
 	settings.setValue(prefix + "displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	settings.setValue(prefix + "titleblocktemplate", template_name.isEmpty()? QString() : template_name);
 	settings.setValue(prefix + "titleblocktemplateCollection", QET::qetCollectionToString(collection));
@@ -167,14 +162,14 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void TitleBlockProperties::fromSettings(QSettings &settings, const QString &prefix) {
-	title	= settings.value(prefix + "title").toString();
+	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
-	plant	= settings.value(prefix + "plant").toString();
+	plant    = settings.value(prefix + "plant").toString();
 	locmach  = settings.value(prefix + "locmach").toString();
 	indexrev = settings.value(prefix + "indexrev").toString();
 	version  = settings.value(prefix + "version").toString();
-	folio	= settings.value(prefix + "folio", "%id/%total").toString();
+	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	auto_page_num = settings.value(prefix + "auto_page_num").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
 	display_at = (settings.value(prefix + "displayAt", QVariant("bottom")).toString() == "bottom" ? Qt::BottomEdge : Qt::RightEdge);

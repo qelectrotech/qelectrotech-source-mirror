@@ -20,16 +20,14 @@
 #include <QGraphicsObject>
 #include <QDebug>
 
-#include "../qetxml.h"
-
 TerminalData::TerminalData():
-    PropertiesInterface("terminaldata")
+	PropertiesInterface()
 {
 	init();
 }
 
 TerminalData::TerminalData(QGraphicsObject *parent):
-    PropertiesInterface("terminaldata"),
+	PropertiesInterface(),
 	q(parent)
 {
 	init();
@@ -61,7 +59,7 @@ void TerminalData::setParent(QGraphicsObject* parent)
 	@param settings UNUSED
 	@param prefix UNUSED
 */
-void TerminalData::toSettings(QSettings &settings, const QString &prefix) const
+void TerminalData::toSettings(QSettings &settings, const QString prefix) const
 
 {
 	Q_UNUSED(settings)
@@ -76,39 +74,44 @@ void TerminalData::toSettings(QSettings &settings, const QString &prefix) const
 	@param settings UNUSED
 	@param prefix UNUSED
 */
-void TerminalData::fromSettings(QSettings &settings, const QString& prefix)
+void TerminalData::fromSettings(const QSettings &settings, const QString prefix)
 {
 	Q_UNUSED(settings)
 	Q_UNUSED(prefix)
 }
 
 /**
-    @brief TerminalData::toXmlPriv
+	@brief TerminalData::toXml
 	Save properties to xml element
 	write the name, number, position and orientation of the terminal
 	to xml_element
 
 	@note This method is only called from the PartTerminal
 	and should never called from the Terminal class
-    @param e: element to store the properties
+	@param xml_document
+	@return xml_element : DomElement with
 	the name, number, position and orientation of the terminal
 */
-void TerminalData::toXmlPriv(QDomElement& xml_element) const
+QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 {
-    xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
-    xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
+	QDomElement xml_element = xml_document.createElement("terminal");
 
-    xml_element.setAttribute("uuid", m_uuid.toString());
-    xml_element.setAttribute("name", m_name);
+	xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
+	xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
 
-    xml_element.setAttribute("orientation",
-	orientationToString(m_orientation));
+	xml_element.setAttribute("uuid", m_uuid.toString());
+	xml_element.setAttribute("name", m_name);
 
-    xml_element.setAttribute("type", typeToString(m_type));
+	xml_element.setAttribute("orientation",
+				 Qet::orientationToString(m_orientation));
+
+	xml_element.setAttribute("type", typeToString(m_type));
+
+	return(xml_element);
 }
 
-/*
-    @brief TerminalData::fromXmlPriv
+/**
+	@brief TerminalData::fromXml
 	load properties to xml element
 
 	@note This method is only called from the PartTerminal
@@ -116,67 +119,41 @@ void TerminalData::toXmlPriv(QDomElement& xml_element) const
 	@param xml_element
 	@return true if succeeded / false if the attribute is not real
 */
-bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
+bool TerminalData::fromXml (const QDomElement &xml_element)
 {
 	qreal term_x = 0.0;
 	qreal term_y = 0.0;
 
 	// reads the position of the terminal
 	// lit la position de la borne
-
-	if (QETXML::propertyDouble(xml_element, "x", &term_x))
+	if (!QET::attributeIsAReal(xml_element, "x", &term_x))
 		return false;
 
-	if (QETXML::propertyDouble(xml_element, "y", &term_y))
+	if (!QET::attributeIsAReal(xml_element, "y", &term_y))
 		return false;
 
 	m_pos = QPointF(term_x, term_y);
 
-//	emit posFromXML(QPointF(term_x, term_y));
+	//emit posFromXML(QPointF(term_x, term_y));
 
-	// do not write uuid from this class, because only PartTerminal::fromXml need
-	// to write it to xml file. Terminal::fromXml does not need.
+	QString uuid = xml_element.attribute("uuid");
+	// update part and add uuid, which is used in the new version
+	// to connect terminals together
 	// if the attribute not exists, means, the element is created with an
 	// older version of qet. So use the legacy approach
+	// to identify terminals
+	if (!uuid.isEmpty())
+	m_uuid = QUuid(uuid);
 
-
-    //if (QETXML::propertyString(xml_element, "name", &m_name))
-	//	return false;
-    QETXML::propertyString(xml_element, "name", &m_name); // some parts do not have a name. Example: affuteuse_250h.qet, Terminal at x="0" y="-20"
-
-	QString o;
-    if (QETXML::propertyString(xml_element, "orientation", &o))
-		return false;
+	m_name = xml_element.attribute("name");
 
 	// read the orientation of the terminal
 	// lit l'orientation de la borne
-	m_orientation = orientationFromString(o);
-	
-    QString type;
-    if (QETXML::propertyString(xml_element, "type", &type) == QETXML::PropertyFlags::Success)
-        m_type = typeFromString(type);
+	m_orientation = Qet::orientationFromString(
+				xml_element.attribute("orientation"));
 
-	return true;
-}
+	m_type = typeFromString(xml_element.attribute("type"));
 
-bool TerminalData::valideXml(const QDomElement& xml_element) {
-	if (QETXML::propertyDouble(xml_element, "x"))
-		return false;
-
-    // Old projects do not have this property.
-//	if (QETXML::propertyString(xml_element, "type"))
-//		return false;
-
-
-	  // legacy elements do not have an uuid
-//	if (QETXML::propertyUuid(xml_element, "uuid"))
-//		return false;
-
-    //if (QETXML::propertyString(xml_element, "name")) // some parts do not have a name. Example: affuteuse_250h.qet, Terminal at x="0" y="-20"
-	//	return false;
-
-    if (QETXML::propertyString(xml_element, "orientation"))
-		return false;
 	return true;
 }
 

@@ -44,8 +44,6 @@
 #include <cassert>
 #include <math.h>
 
-#include "qetxml.h"
-
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
 int Diagram::xKeyGrid = 10;
@@ -66,11 +64,11 @@ QColor		Diagram::background_color = Qt::white;
 	@param project : The project of this diagram and also parent QObject
 */
 Diagram::Diagram(QETProject *project) :
-	QGraphicsScene		   (project),
-	m_project				 (project),
-	draw_grid_			   (true),
-	use_border_			  (true),
-	draw_terminals_		  (true),
+	QGraphicsScene           (project),
+	m_project                 (project),
+	draw_grid_               (true),
+	use_border_              (true),
+	draw_terminals_          (true),
 	draw_colored_conductors_ (true),
 	m_event_interface (nullptr),
 	m_freeze_new_elements   (false),
@@ -182,7 +180,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 			 */
 		QPen pen;
 		Diagram::background_color == Qt::black? pen.setColor(Qt::white)
-							  : pen.setColor(Qt::black);
+						      : pen.setColor(Qt::black);
 		pen.setCosmetic(true);
 		p->setPen(pen);
 
@@ -328,9 +326,9 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 {
 	QSettings settings;
 	int xKeyGrid = settings.value("diagrameditor/key_Xgrid",
-					  Diagram::xKeyGrid).toInt();
+				      Diagram::xKeyGrid).toInt();
 	int yKeyGrid = settings.value("diagrameditor/key_Ygrid",
-					  Diagram::yKeyGrid).toInt();
+				      Diagram::yKeyGrid).toInt();
 	int xKeyGridFine = settings.value("diagrameditor/key_fine_Xgrid",
 					  Diagram::xKeyGridFine).toInt();
 	int yKeyGridFine = settings.value("diagrameditor/key_fine_Ygrid",
@@ -585,9 +583,9 @@ void Diagram::setConductorsAutonumName(const QString &name) {
 	@return Une QImage representant le schema
 */
 bool Diagram::toPaintDevice(QPaintDevice &pix,
-				int width,
-				int height,
-				Qt::AspectRatioMode aspectRatioMode) {
+			    int width,
+			    int height,
+			    Qt::AspectRatioMode aspectRatioMode) {
 	// determine the source area = schema content + margins
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
@@ -634,9 +632,9 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	// renders itself
 	// effectue le rendu lui-meme
 	render(&p,
-		   QRect(QPoint(0, 0),image_size),
-		   source_area,
-		   aspectRatioMode);
+	       QRect(QPoint(0, 0),image_size),
+	       source_area,
+	       aspectRatioMode);
 	p.end();
 
 	// restore selected items
@@ -739,28 +737,29 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// schema properties
 	// proprietes du schema
 	if (whole_content) {
-		// TODO: compare with old version
-        dom_root.appendChild(border_and_titleblock.titleBlockToXml(document));
+		border_and_titleblock.titleBlockToXml(dom_root);
 		border_and_titleblock.borderToXml(dom_root);
 
 		// Default conductor properties
-        defaultConductorProperties.setTagName("defaultconductor");
-        dom_root.appendChild(defaultConductorProperties.toXml(document));
+		QDomElement default_conductor =
+				document.createElement("defaultconductor");
+		defaultConductorProperties.toXml(default_conductor);
+		dom_root.appendChild(default_conductor);
 
 		// Conductor autonum
 		if (!m_conductors_autonum_name.isEmpty()) {
 			dom_root.setAttribute("conductorAutonum",
-						  m_conductors_autonum_name);
+					      m_conductors_autonum_name);
 		}
 
 		//Default New Element
 		dom_root.setAttribute("freezeNewElement",
-					  m_freeze_new_elements ? "true" : "false");
+				      m_freeze_new_elements ? "true" : "false");
 
 		//Default New Conductor
 		dom_root.setAttribute("freezeNewConductor",
-					  m_freeze_new_conductors_
-					  ? "true" : "false");
+				      m_freeze_new_conductors_
+				      ? "true" : "false");
 
 		//Element Folio Sequential Variables
 		if (!m_elmt_unitfolio_max.isEmpty()
@@ -774,10 +773,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							"elementunitfolioseq");
 				folioSequentialsToXml(&m_elmt_unitfolio_max,
-							  &elmtfolioseq,
-							  "sequf_",
-							  "unitfolioseq",
-							  &document);
+						      &elmtfolioseq,
+						      "sequf_",
+						      "unitfolioseq",
+						      &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_tenfolio_max.isEmpty()) {
@@ -785,10 +784,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							"elementtenfolioseq");
 				folioSequentialsToXml(&m_elmt_tenfolio_max,
-							  &elmtfolioseq,
-							  "seqtf_",
-							  "tenfolioseq",
-							  &document);
+						      &elmtfolioseq,
+						      "seqtf_",
+						      "tenfolioseq",
+						      &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_hundredfolio_max.isEmpty()) {
@@ -796,10 +795,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							"elementhundredfolioseq");
 				folioSequentialsToXml(&m_elmt_hundredfolio_max,
-							  &elmtfolioseq,
-							  "seqhf_",
-							  "hundredfolioseq",
-							  &document);
+						      &elmtfolioseq,
+						      "seqhf_",
+						      "hundredfolioseq",
+						      &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			dom_root.appendChild(elmtfoliosequential);
@@ -817,10 +816,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							"conductorunitfolioseq");
 				folioSequentialsToXml(&m_cnd_unitfolio_max,
-							  &cndfolioseq,
-							  "sequf_",
-							  "unitfolioseq",
-							  &document);
+						      &cndfolioseq,
+						      "sequf_",
+						      "unitfolioseq",
+						      &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
 			if (!m_cnd_tenfolio_max.isEmpty()) {
@@ -828,10 +827,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							"conductortenfolioseq");
 				folioSequentialsToXml(&m_cnd_tenfolio_max,
-							  &cndfolioseq,
-							  "seqtf_",
-							  "tenfolioseq",
-							  &document);
+						      &cndfolioseq,
+						      "seqtf_",
+						      "tenfolioseq",
+						      &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
 			if (!m_cnd_hundredfolio_max.isEmpty()) {
@@ -839,10 +838,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							"conductorhundredfolioseq");
 				folioSequentialsToXml(&m_cnd_hundredfolio_max,
-							  &cndfolioseq,
-							  "seqhf_",
-							  "hundredfolioseq",
-							  &document);
+						      &cndfolioseq,
+						      "seqhf_",
+						      "hundredfolioseq",
+						      &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
 			dom_root.appendChild(cndfoliosequential);
@@ -919,11 +918,13 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids
+	QHash<Terminal *, int> table_adr_id;
 
 	if (!list_elements.isEmpty()) {
 		auto dom_elements = document.createElement("elements");
 		for (auto elmt : list_elements) {
-			dom_elements.appendChild(elmt->toXml(document));
+			dom_elements.appendChild(elmt->toXml(document,
+							     table_adr_id));
 		}
 		dom_root.appendChild(dom_elements);
 	}
@@ -931,7 +932,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	if (!list_conductors.isEmpty()) {
 		auto dom_conductors = document.createElement("conductors");
 		for (auto cond : list_conductors) {
-			dom_conductors.appendChild(cond->toXml(document));
+			dom_conductors.appendChild(cond->toXml(document,
+							       table_adr_id));
 		}
 		dom_root.appendChild(dom_conductors);
 	}
@@ -981,18 +983,18 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	@param doc
 */
 void Diagram::folioSequentialsToXml(QHash<QString,
-					QStringList> *hash,
-					QDomElement *domElement,
-					const QString& seq_type,
-					const QString& type,
-					QDomDocument *doc) {
+				    QStringList> *hash,
+				    QDomElement *domElement,
+				    const QString& seq_type,
+				    const QString& type,
+				    QDomDocument *doc) {
 	QHash<QString, QStringList>::iterator i;
 	for (i = hash->begin(); i != hash->end(); i++) {
 		QDomElement folioseq = doc->createElement(type);
 		folioseq.setAttribute("title", i.key());
 		for (int j = 0; j < i.value().size(); j++) {
-            folioseq.setAttribute(seq_type + QString::number(j+1),
-						  i.value().at(j));
+			folioseq.setAttribute(seq_type + QString::number(j+1),
+					      i.value().at(j));
 		}
 		domElement->appendChild(folioseq);
 	}
@@ -1030,9 +1032,9 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomDocument &document,
-			  QPointF position,
-			  bool consider_informations,
-			  DiagramContent *content_ptr) {
+		      QPointF position,
+		      bool consider_informations,
+		      DiagramContent *content_ptr) {
 	QDomElement root = document.documentElement();
 	return(fromXml(root, position, consider_informations, content_ptr));
 }
@@ -1094,17 +1096,17 @@ bool Diagram::initFromXml(QDomElement &document,
 	@return
 */
 Terminal* findTerminal(int conductor_index,
-               QDomElement& conductor,
-			   QHash<int,
-			   Terminal *>& table_adr_id,
-			   QList<Element *>& added_elements) {
+		       QDomElement& f,
+		       QHash<int,
+		       Terminal *>& table_adr_id,
+		       QList<Element *>& added_elements) {
 	assert(conductor_index == 1 || conductor_index == 2);
 
 	QString element_index = "element" + QString::number(conductor_index);
 	QString terminal_index = "terminal" + QString::number(conductor_index);
 
-	QUuid element_uuid;
-    if (QETXML::propertyUuid(conductor, element_index, &element_uuid) == QETXML::PropertyFlags::Success) {
+	if (f.hasAttribute(element_index)) {
+		QUuid element_uuid = QUuid(f.attribute(element_index));
 		// element1 did not exist in the conductor part of the xml until prior 0.7
 		// It is used as an indicator that uuid's are used to identify terminals
 		bool element_found = false;
@@ -1112,8 +1114,7 @@ Terminal* findTerminal(int conductor_index,
 			if (element->uuid() != element_uuid)
 				continue;
 			element_found = true;
-			QUuid terminal_uuid;
-            QETXML::propertyUuid(conductor, terminal_index, &terminal_uuid);
+			QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
 			for (auto terminal: element->terminals()) {
 				if (terminal->uuid() != terminal_uuid)
 					continue;
@@ -1137,11 +1138,9 @@ Terminal* findTerminal(int conductor_index,
 				  << element_uuid
 				  << "not found";
 	} else {
-		// Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
-		int id_p1 = -1;
-        if (QETXML::propertyInteger(conductor, terminal_index, &id_p1) != QETXML::PropertyFlags::Success) {
-			qDebug() << "diagramm.cpp:findTerminal(): Reading Id was not successfull";
-		}
+		// Backward compatibility.
+		// Until version 0.7 a generated id is used to link the terminal.
+		int id_p1 = f.attribute(terminal_index).toInt();
 		if (!table_adr_id.contains(id_p1)) {
 			qDebug() << "Diagram::fromXml() : terminal id "
 				 << id_p1
@@ -1149,7 +1148,6 @@ Terminal* findTerminal(int conductor_index,
 		} else
 			return table_adr_id.value(id_p1);
 	}
-	qDebug() << "Diagram::findTerminal(): No terminal found.";
 	return nullptr;
 }
 
@@ -1185,20 +1183,17 @@ Terminal* findTerminal(int conductor_index,
 	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomElement &document,
-			  QPointF position,
-			  bool consider_informations,
-			  DiagramContent *content_ptr) {
+		      QPointF position,
+		      bool consider_informations,
+		      DiagramContent *content_ptr) {
 	const QDomElement& root = document;
 	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
 
-	qDebug() << "Diagram::fromXml; Diagram: " << root.attribute("title");
-	
 		// Read attributes of this diagram
 	if (consider_informations)
 	{
 		// Load border and titleblock
-
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
 
@@ -1209,7 +1204,6 @@ bool Diagram::fromXml(QDomElement &document,
 		if (!default_conductor_elmt.isNull()) {
 			defaultConductorProperties.fromXml(default_conductor_elmt);
 		}
-
 
 		// Load the autonum
 		m_conductors_autonum_name = root.attribute("conductorAutonum");
@@ -1264,7 +1258,7 @@ bool Diagram::fromXml(QDomElement &document,
 	if (root.hasAttribute("projectId")) {
 		QETProject *other_project = QETApp::project(
 					root.attribute("projectId",
-							   "-1").toInt());
+						       "-1").toInt());
 
 		/* We try to paste from another project,
 		 *  then befor paste elements,
@@ -1276,8 +1270,8 @@ bool Diagram::fromXml(QDomElement &document,
 			ElementCollectionHandler ech;
 			foreach (QDomElement element_xml,
 				 QET::findInDomElement(root,
-							   "elements",
-							   "element")) {
+						       "elements",
+						       "element")) {
 				if (!Element::valideXml(element_xml)) continue;
 
 				QString type_id = element_xml.attribute("type");
@@ -1287,7 +1281,7 @@ bool Diagram::fromXml(QDomElement &document,
 								type_id,
 								other_project);
 					ech.importFromProject(m_project,
-								  location);
+							      location);
 				}
 			}
 		}
@@ -1333,7 +1327,7 @@ bool Diagram::fromXml(QDomElement &document,
 			removeItem(nvel_elmt);
 			delete nvel_elmt;
 			qDebug() << "Diagram::fromXml() : Le chargement des "
-					"parametres d'un element a echoue";
+				    "parametres d'un element a echoue";
 		} else {
 			added_elements << nvel_elmt;
 		}
@@ -1342,8 +1336,8 @@ bool Diagram::fromXml(QDomElement &document,
 		// Load text
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root,
-								 "inputs",
-								 "input")) {
+							     "inputs",
+							     "input")) {
 		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
 		addItem(iti);
@@ -1353,8 +1347,8 @@ bool Diagram::fromXml(QDomElement &document,
 		// Load image
 	QList<DiagramImageItem *> added_images;
 	foreach (QDomElement image_xml, QET::findInDomElement(root,
-								  "images",
-								  "image")) {
+							      "images",
+							      "image")) {
 		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
 		addItem(dii);
@@ -1364,8 +1358,8 @@ bool Diagram::fromXml(QDomElement &document,
 		// Load shape
 	QList<QetShapeItem *> added_shapes;
 	foreach (QDomElement shape_xml, QET::findInDomElement(root,
-								  "shapes",
-								  "shape")) {
+							      "shapes",
+							      "shape")) {
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
 		addItem(dii);
@@ -1375,8 +1369,8 @@ bool Diagram::fromXml(QDomElement &document,
 		// Load conductor
 	QList<Conductor *> added_conductors;
 	foreach (QDomElement f, QET::findInDomElement(root,
-							  "conductors",
-							  "conductor"))
+						      "conductors",
+						      "conductor"))
 	{
 		if (!Conductor::valideXml(f)) continue;
 
@@ -1385,7 +1379,7 @@ bool Diagram::fromXml(QDomElement &document,
 		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
 		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
 
-		if (p1 && p2 && p1 != p2)// TODO: why the condition for unequal is required?
+		if (p1 && p2 && p1 != p2)
 		{
 			Conductor *c = new Conductor(p1, p2);
 			if (c->isValid())
@@ -1396,15 +1390,13 @@ bool Diagram::fromXml(QDomElement &document,
 			}
 			else
 				delete c;
-		} else {
-			qDebug() << "Diagramm::fromXML(): No matching terminals found.";
 		}
 	}
 
 		//Load tables
 	QVector<QetGraphicsTableItem *> added_tables;
 	for (auto dom_table
-		 : QETXML::subChild(root,
+	     : QETXML::subChild(root,
 				"tables",
 				QetGraphicsTableItem::xmlTagName()))
 	{
@@ -1419,11 +1411,11 @@ bool Diagram::fromXml(QDomElement &document,
 	{
 		QVector <QGraphicsItem *> added_items;
 		for (auto element : added_elements  ) added_items << element;
-		for (auto cond	: added_conductors) added_items << cond;
-		for (auto shape   : added_shapes	) added_items << shape;
-		for (auto text	: added_texts	 ) added_items << text;
-		for (auto image   : added_images	) added_items << image;
-		for (auto table   : added_tables	) added_items << table;
+		for (auto cond    : added_conductors) added_items << cond;
+		for (auto shape   : added_shapes    ) added_items << shape;
+		for (auto text    : added_texts     ) added_items << text;
+		for (auto image   : added_images    ) added_items << image;
+		for (auto table   : added_tables    ) added_items << table;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
@@ -1445,12 +1437,12 @@ bool Diagram::fromXml(QDomElement &document,
 
 		//Filling of falculatory lists
 	if (content_ptr) {
-		content_ptr -> m_elements		   = added_elements;
+		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-		content_ptr -> m_text_fields		= added_texts.toSet();
-		content_ptr -> m_images				= added_images.toSet();
-		content_ptr -> m_shapes				= added_shapes.toSet();
+		content_ptr -> m_text_fields        = added_texts.toSet();
+		content_ptr -> m_images			    = added_images.toSet();
+		content_ptr -> m_shapes			    = added_shapes.toSet();
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 5.14 or later")
@@ -1465,7 +1457,7 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.begin(),
 					added_shapes.end());
 #endif
-		content_ptr -> m_tables			 = added_tables;
+		content_ptr -> m_tables             = added_tables;
 	}
 
 	adjustSceneRect();
@@ -1483,23 +1475,23 @@ bool Diagram::fromXml(QDomElement &document,
 	@param autonumFolioSeqType
 */
 void Diagram::folioSequentialsFromXml(const QDomElement &root,
-					  QHash<QString,
-					  QStringList>* hash,
-					  const QString& folioSeq,
-					  const QString& seq,
-					  const QString& type,
-					  const QString& autonumFolioSeqType) {
+				      QHash<QString,
+				      QStringList>* hash,
+				      const QString& folioSeq,
+				      const QString& seq,
+				      const QString& type,
+				      const QString& autonumFolioSeqType) {
 	foreach (QDomElement folioSeqAutoNum,
 		 QET::findInDomElement(root, autonumFolioSeqType, folioSeq)) {
 		for(QDomElement folioseq
-			= folioSeqAutoNum.firstChildElement(type);
-			!folioseq.isNull();
-			folioseq = folioseq.nextSiblingElement(type)) {
+		    = folioSeqAutoNum.firstChildElement(type);
+		    !folioseq.isNull();
+		    folioseq = folioseq.nextSiblingElement(type)) {
 			QString title = folioseq.attribute("title");
 			QStringList list;
 			int i = 1;
 			while (folioseq.hasAttribute(seq
-							 + QString::number(i))) {
+						     + QString::number(i))) {
 				list << folioseq.attribute(
 						seq + QString::number(i));
 				i++;
@@ -1537,7 +1529,7 @@ void Diagram::refreshContents()
 
 /**
 	@brief Diagram::addItem
-	R??implemented from QGraphicsScene::addItem(QGraphicsItem *item)
+	Réimplemented from QGraphicsScene::addItem(QGraphicsItem *item)
 	Do some specific operation if item need it (for exemple an element)
 	@param item
 */
@@ -1773,10 +1765,10 @@ void Diagram::insertFolioSeqHash(QHash<QString,
 	@param nc : Context to be manipulated
 */
 void Diagram::loadFolioSeqHash(QHash<QString,
-				   QStringList> *hash,
-				   const QString& title,
-				   const QString& type,
-				   NumerotationContext *nc) {
+			       QStringList> *hash,
+			       const QString& title,
+			       const QString& type,
+			       NumerotationContext *nc) {
 		int j = 0;
 		for (int i = 0; i < nc->size(); i++) {
 			if (nc->itemAt(i).at(0) == type) {
@@ -1801,9 +1793,9 @@ void Diagram::changeZValue(QET::DepthOption option)
 	DiagramContent dc(this);
 	QUndoCommand *undo = new QUndoCommand(tr("Modifier la profondeur"));
 	QList<QGraphicsItem *> l = dc.items(DiagramContent::SelectedOnly | \
-						DiagramContent::Elements | \
-						DiagramContent::Shapes | \
-						DiagramContent::Images);
+					    DiagramContent::Elements | \
+					    DiagramContent::Shapes | \
+					    DiagramContent::Images);
 	QList<QGraphicsObject *> list;
 	for(QGraphicsItem *item : l)
 		list << item->toGraphicsObject();
@@ -2192,7 +2184,7 @@ void Diagram::adjustSceneRect()
 {
 	QRectF old_rect = sceneRect();
 	setSceneRect(border_and_titleblock.borderAndTitleBlockRect().united(
-				 itemsBoundingRect()));
+			     itemsBoundingRect()));
 	update(old_rect.united(sceneRect()));
 }
 
@@ -2213,20 +2205,20 @@ ExportProperties Diagram::applyProperties(
 	// exports current rendering options
 	// exporte les options de rendu en cours
 	ExportProperties old_properties;
-	old_properties.draw_grid			   = displayGrid();
+	old_properties.draw_grid               = displayGrid();
 	old_properties.draw_border = border_and_titleblock.borderIsDisplayed();
 	old_properties.draw_titleblock = border_and_titleblock.titleBlockIsDisplayed();
-	old_properties.draw_terminals		  = drawTerminals();
+	old_properties.draw_terminals          = drawTerminals();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area = useBorder() ? QET::BorderArea
 						   : QET::ElementsArea;
 
 	// apply the new rendering options
 	// applique les nouvelles options de rendu
-	setUseBorder			 (new_properties.exported_area == QET::BorderArea);
-	setDrawTerminals		 (new_properties.draw_terminals);
+	setUseBorder             (new_properties.exported_area == QET::BorderArea);
+	setDrawTerminals         (new_properties.draw_terminals);
 	setDrawColoredConductors (new_properties.draw_colored_conductors);
-	setDisplayGrid		   (new_properties.draw_grid);
+	setDisplayGrid           (new_properties.draw_grid);
 	border_and_titleblock.displayBorder(new_properties.draw_border);
 	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
 

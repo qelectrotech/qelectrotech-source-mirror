@@ -60,7 +60,7 @@ class StyleEditor : public ElementItemEditor
 		static bool isStyleEditable (QList <CustomElementPart *> cep_list);
 	
 	public slots:
-        void updateFormPriv() override;
+		void updateForm() override;
 		void updatePartAntialiasing();
 		void updatePartColor();
 		void updatePartLineStyle();

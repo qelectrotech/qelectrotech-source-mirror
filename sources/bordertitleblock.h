@@ -174,7 +174,7 @@ class BorderTitleBlock : public QObject
 		void setPreviousFolioNum(const QString &previous);
 		void setNextFolioNum(const QString &next);
 		
-        QDomElement titleBlockToXml(QDomDocument &doc);
+		void titleBlockToXml(QDomElement &);
 		void titleBlockFromXml(const QDomElement &);
 		void borderToXml(QDomElement &);
 		void borderFromXml(const QDomElement &);
@@ -249,34 +249,34 @@ class BorderTitleBlock : public QObject
 	// attributes
 	private:
 		// titleblock basic data
-		QString btb_author_;		///< titleblock author
-		QDate   btb_date_;		  ///< titleblock date
-		QString btb_title_;		 ///< titleblock title
-		QString btb_folio_;		 ///< titleblock folio
-		QString btb_plant_;		 ///< titleblock plant
-		QString btb_locmach_;	   ///< titleblock locmach
-		QString btb_indexrev_;	  ///< titleblock index rev
+		QString btb_author_;        ///< titleblock author
+		QDate   btb_date_;          ///< titleblock date
+		QString btb_title_;         ///< titleblock title
+		QString btb_folio_;         ///< titleblock folio
+		QString btb_plant_;         ///< titleblock plant
+		QString btb_locmach_;       ///< titleblock locmach
+		QString btb_indexrev_;      ///< titleblock index rev
 		QString btb_final_folio_;   ///< titleblock final folio
 		QString btb_auto_page_num_; ///< titleblock auto page num
-		int folio_index_;		   ///< titleblock index
-		int folio_total_;		   ///< titleblock total
-		QString btb_filename_;	  ///< titleblock filename
-		QString btb_version_;	   ///< titleblock version
+		int folio_index_;           ///< titleblock index
+		int folio_total_;           ///< titleblock total
+		QString btb_filename_;      ///< titleblock filename
+		QString btb_version_;       ///< titleblock version
 		/// titleblock additional fields
 		DiagramContext additional_fields_;
-		Qt::Edge m_edge;			  ///< titleblock edge
-		QString m_next_folio_num;	 ///< titleblock next folio num
+		Qt::Edge m_edge;              ///< titleblock edge
+		QString m_next_folio_num;     ///< titleblock next folio num
 		QString m_previous_folio_num; ///< titleblock previous folio num
 	
 		// border dimensions (rows and columns)
 		// columns: number and dimensions
-		int columns_count_;		   ///< columns count
-		qreal columns_width_;		 ///< columns width
+		int columns_count_;           ///< columns count
+		qreal columns_width_;         ///< columns width
 		qreal columns_header_height_; ///< columns header height
 	
 		// rows: number and dimensions
-		int rows_count_;		  ///< rows count
-		qreal rows_height_;	   ///< rows height
+		int rows_count_;          ///< rows count
+		qreal rows_height_;       ///< rows height
 		qreal rows_header_width_; ///< rows header width
 	
 		// title block dimensions
@@ -286,10 +286,10 @@ class BorderTitleBlock : public QObject
 		QRectF diagram_rect_;
 	
 			// display options
-        bool display_titleblock_{true};
+		bool display_titleblock_;
 		bool display_columns_;
 		bool display_rows_;
-        bool display_border_{true};
+		bool display_border_;
 		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 };
 #endif

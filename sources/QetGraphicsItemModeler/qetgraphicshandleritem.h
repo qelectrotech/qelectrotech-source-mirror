@@ -53,7 +53,7 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 		QRectF m_handler_rect,
 			   m_br;
 		qreal m_size;
-		QColor m_color{Qt::black};
+		QColor m_color;
 		QPen m_pen;
 		
 	public:

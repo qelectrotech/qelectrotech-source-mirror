@@ -42,11 +42,6 @@ ElementScene *ElementItemEditor::elementScene() const
 	return(element_editor -> elementScene());
 }
 
-void ElementItemEditor::updateForm()
-{
-    updateFormPriv();
-}
-
 /// @return la QUndoStack a utiliser pour les annulations
 QUndoStack &ElementItemEditor::undoStack() const
 {

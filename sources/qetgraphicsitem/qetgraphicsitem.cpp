@@ -25,7 +25,10 @@
 	@param parent : Parent Item
 */
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
-	QGraphicsObject(parent)
+	QGraphicsObject(parent),
+	is_movable_(true),
+	m_first_move(true),
+	snap_to_grid_(true)
 {}
 
 QetGraphicsItem::~QetGraphicsItem()
