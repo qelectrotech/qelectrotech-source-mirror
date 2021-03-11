@@ -14,19 +14,19 @@
 </phrase>
 <phrase>
     <source>Enregistrer sous</source>
-    <target>Сохранить как</target>
+    <target>Сохранить проект как</target>
 </phrase>
 <phrase>
     <source>&amp;Nouveau</source>
-    <target>&amp;Новый</target>
+    <target>&amp;Новый проект</target>
 </phrase>
 <phrase>
     <source>&amp;Ouvrir</source>
-    <target>&amp;Открыть</target>
+    <target>&amp;Открыть проект</target>
 </phrase>
 <phrase>
     <source>&amp;Enregistrer</source>
-    <target>&amp;Сохранить</target>
+    <target>&amp;Сохранить проект</target>
 </phrase>
 <phrase>
     <source>&amp;Quitter</source>
@@ -74,11 +74,11 @@
 </phrase>
 <phrase>
     <source>Rapprocher</source>
-    <target>Поднять</target>
+    <target>Поднять на уровень выше</target>
 </phrase>
 <phrase>
     <source>Éloigner</source>
-    <target>Опустить</target>
+    <target>Опустить на уровень выше</target>
 </phrase>
 <phrase>
     <source>Ajouter une ligne</source>
