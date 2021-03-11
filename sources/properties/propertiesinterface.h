@@ -23,7 +23,7 @@
 #include <QColor>
 #include <QDomElement>
 #include <limits>
-#include "../qet.h"
+#include "sources/qet.h"
 #include <QUuid>
 
 /**
