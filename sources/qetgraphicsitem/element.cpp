@@ -527,7 +527,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 				}
 				else
 				{
-					qDebug() << "\t\t\tParsing Element no success";
+                    qDebug() << "\t\t\tParsing Element failed";
 					if (state)
 						*state = 7;
 					m_state = QET::GIOK;
