@@ -95,8 +95,8 @@ void TerminalData::fromSettings(QSettings &settings, const QString& prefix)
 */
 void TerminalData::toXmlPriv(QDomElement& xml_element) const
 {
-    xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
-    xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
+    xml_element.setAttribute("x", m_pos.x());
+    xml_element.setAttribute("y", m_pos.y());
 
     if (!m_uuid.isNull())
         xml_element.setAttribute("uuid", m_uuid.toString());
@@ -163,6 +163,9 @@ bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
 bool TerminalData::valideXml(const QDomElement& xml_element) {
 	if (QETXML::propertyDouble(xml_element, "x"))
 		return false;
+
+    if (QETXML::propertyDouble(xml_element, "y"))
+        return false;
 
     // Old projects do not have this property.
 //	if (QETXML::propertyString(xml_element, "type"))
