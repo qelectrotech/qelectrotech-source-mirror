@@ -3,7 +3,7 @@
 	<mime-type type="application/x-qet-project">
 		<sub-class-of type="text/xml"/>
 		<comment>QElectroTech project file</comment>
-		<comment xml:lang="de">QElectroTech Projekt</comment>
+		<comment xml:lang="de">QElectroTech Projektdatei</comment>
 		<comment xml:lang="fr">Fichier projet QElectroTech</comment>
 		<comment xml:lang="ar">QElectrotech ملف مشروع</comment>
 		<comment xml:lang="es">Fichero proyecto QElectroTech</comment>
@@ -23,7 +23,7 @@
 	<mime-type type="application/x-qet-element">
 		<sub-class-of type="text/xml"/>
 		<comment>QElectroTech element file</comment>
-		<comment xml:lang="de">QElectroTech Bauteil</comment>
+		<comment xml:lang="de">QElectroTech Bauteildatei</comment>
 		<comment xml:lang="fr">Fichier élément QElectroTech</comment>
 		<comment xml:lang="ar">QElectrotech ملف مشروع</comment>
 		<comment xml:lang="ru">Файл элемента QElectroTech</comment>
@@ -42,10 +42,11 @@
 	</mime-type>
 	<mime-type type="application/x-qet-titleblock">
 		<sub-class-of type="text/xml"/>
-		<comment>QElectroTech title block template</comment>
-		<comment xml:lang="de">QElectroTech Template</comment>
+		<comment>QElectroTech title block template file</comment>
+		<comment xml:lang="de">QElectroTech Zeichnungskopf Vorlagedatei</comment>
 		<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
 		<comment xml:lang="ar">QElectrotech نموذج إطار تعريف</comment>
+		<comment xml:lang="ru">Файл шаблона основной надписи листа QElectroTech</comment>		
 		<comment xml:lang="pl">Szablon tabliczki rysunkowej QElectroTech</comment>
 		<comment xml:lang="es">Modelo de cartucho QElectroTech</comment>
 		<comment xml:lang="ca">Model de bloc de títol QElectroTech</comment>
