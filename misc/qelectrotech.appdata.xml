@@ -30,6 +30,10 @@
    QElectroTech je aplikací Qt5 určenou pro návrh nákresů elektrických obvodů.
    Pro prvky a nákresy používá soubory XML, a zahrnuje v sobě jak editor nákresů, tak editor prvků.
   </p>
+  <p xml:lang="de">
+   QElectroTech ist eine Qt5-Anwendung zum Entwerfen von Schaltplänen.
+   Die Anwendung verwendet XML-Dateien zum Speichern von Projekten und Elementbibliotheken. Neben dem Schaltplaneditor enthält die Anwendung auch Elementeditoren und einen Blattvorlageneditor.
+  </p>
   <p xml:lang="el">
    Το QElectroTech είναι μια εφαρμογή Qt5 για σχεδίαση ηλεκτρικών διαγραμμάτων.
    Χρησιμοποιεί αρχεία XML για στοιχεία και διαγράμματα, και περιλαμβάνει επεξεργαστή διαγραμμάτων, επεξεργαστή στοιχείων, και επεξεργαστή πινακίδων.
@@ -47,8 +51,8 @@
    QET usa il formato XML per i suoi elementi e schemi, includendo anche un editor per gli stessi.
   </p>
   <p xml:lang="ru">
-   QElectroTech - приложение написанное на Qt5 и предназначенное для разработки электрических схем.
-   Оно использует XML-файлы для элементов и схем, и включает, как редактор схем, так и редактор элементов.
+   QElectroTech - приложение написанное на Qt5 и предназначено для разработки электрических схем.
+   Приложение использует для хранения проектов и библиотек элементов файлы в XML формате. Приложение помимо редактора электричесих схем, содержит также редакторы элементов и редактор шаблонов листов.
   </p>
   <p xml:lang="pl">
    QElectroTech to aplikacja napisana w Qt5, przeznaczona do tworzenia schematów elektrycznych.
