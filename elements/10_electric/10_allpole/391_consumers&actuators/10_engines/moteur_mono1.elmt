@@ -9,7 +9,7 @@
         <name lang="cs">Jednofázový motor</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon y1="-20" y3="9" closed="false" y2="9" x3="15" antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="15" x2="20" y4="9"/>

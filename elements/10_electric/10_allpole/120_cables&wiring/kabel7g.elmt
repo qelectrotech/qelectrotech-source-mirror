@@ -10,7 +10,7 @@
         <name lang="fr">Cable 6 phases+terre</name>
         <name lang="hu">Kábel 6 + PE</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input size="4" tagg="none" rotate="true" x="38" y="-4" text="6"/>

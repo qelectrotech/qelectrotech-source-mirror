@@ -17,7 +17,7 @@
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <rect x="0" rx="0" ry="0" antialias="false" height="200" width="240" style="line-style:normal;line-weight:normal;filling:white;color:black" y="0"/>

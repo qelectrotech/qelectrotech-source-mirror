@@ -14,7 +14,7 @@
         <name lang="es">Motor trifásico</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="2" color="#000000" text="U2" y="-45" rotation="0"/>

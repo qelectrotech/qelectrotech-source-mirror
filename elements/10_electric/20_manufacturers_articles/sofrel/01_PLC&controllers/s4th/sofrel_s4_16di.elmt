@@ -17,7 +17,7 @@
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text uuid="{a1ebbbc9-7cf5-454a-b0fa-22d962a1561a}" y="14.55" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" rotation="0" z="1" x="763.5" text_width="-1" Halignment="AlignLeft" text_from="ElementInfo">

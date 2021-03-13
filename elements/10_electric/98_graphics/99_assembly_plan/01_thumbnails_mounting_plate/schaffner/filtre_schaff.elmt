@@ -22,7 +22,7 @@
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x2="-6" x3="6" closed="false" y2="26" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13" antialias="false" y3="26" y4="19" x5="13" y1="19" x4="13" y5="19"/>

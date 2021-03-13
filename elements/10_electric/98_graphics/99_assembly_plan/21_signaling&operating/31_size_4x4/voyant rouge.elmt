@@ -12,7 +12,7 @@
         <name lang="el">Λάμπα</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle diameter="44" x="-22" y="-22" style="line-style:normal;line-weight:normal;filling:red;color:black" antialias="true"/>

@@ -18,7 +18,7 @@
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
     </elementInformations>
-    <informations>Author: Simon De Backer&#xd;
+    <informations>Author: Simon De Backer
 license: free</informations>
     <description>
         <rect width="68" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2" y="-75" height="87" rx="0" antialias="false"/>

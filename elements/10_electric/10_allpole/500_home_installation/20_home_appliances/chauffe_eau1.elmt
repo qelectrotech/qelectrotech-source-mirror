@@ -12,7 +12,7 @@
         <name lang="fr">Chauffe-eau</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc antialias="true" angle="180" x="-10" height="6" width="20" start="180" y="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -23,7 +23,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle style="line-style:normal;line-weight:normal;filling:blue;color:black" diameter="44" x="-22" antialias="true" y="-22"/>

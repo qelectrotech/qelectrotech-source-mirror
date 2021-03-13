@@ -11,7 +11,7 @@
         <name lang="es">Interruptor de 3 posiciones</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line end1="none" x1="47" x2="23" end2="none" length1="1.5" length2="1.5" antialias="false" y1="0" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="0"/>

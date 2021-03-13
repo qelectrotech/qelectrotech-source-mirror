@@ -12,7 +12,7 @@
         <name lang="it">Misuratore di Kwh</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="28" z="1" uuid="{abf55041-7474-478c-8be2-dcee2e7588b7}" text_from="ElementInfo" y="4.05" Halignment="AlignLeft">

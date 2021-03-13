@@ -11,7 +11,7 @@
         <name lang="cs">Třífázový transformátor + neutrál</name>
         <name lang="nl">driefase transformator + Nul</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="35" x1="-34" y2="30" x2="-34" y3="19" x3="-27" y4="19"/>

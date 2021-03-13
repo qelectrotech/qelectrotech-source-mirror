@@ -23,8 +23,8 @@
         <elementInformation name="designation" show="1"></elementInformation>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
-    <informations>PILZ PNOZ m1p ETH module&#xd;
-symbol by Jonas Stein news@jonasstein.de&#xd;
+    <informations>PILZ PNOZ m1p ETH module
+symbol by Jonas Stein news@jonasstein.de
 </informations>
     <description>
         <line end1="none" x1="50" length1="1.5" antialias="false" y1="-45" y2="-48" length2="1.5" x2="50" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -15,7 +15,7 @@
         <name lang="pt">Placa de fogão</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="12" uuid="{fe72d015-df6c-49bb-b156-06d1855a4275}">

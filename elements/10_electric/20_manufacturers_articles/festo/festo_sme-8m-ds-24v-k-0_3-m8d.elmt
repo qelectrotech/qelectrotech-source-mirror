@@ -17,7 +17,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc height="6" width="6" angle="-84" x="16.985" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" y="-25.8018" antialias="true"/>

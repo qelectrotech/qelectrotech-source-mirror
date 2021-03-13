@@ -12,7 +12,7 @@
         <name lang="fr">Appareil de chauffage</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" y2="-10" end1="none" y1="-4" antialias="false" x2="10" end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

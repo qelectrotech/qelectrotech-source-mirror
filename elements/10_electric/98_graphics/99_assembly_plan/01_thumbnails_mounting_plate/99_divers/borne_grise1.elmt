@@ -17,7 +17,7 @@
         <elementInformation name="designation" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect y="0" x="0" ry="0" rx="0" width="20" height="120" antialias="false" style="line-style:normal;line-weight:normal;filling:gray;color:black"/>

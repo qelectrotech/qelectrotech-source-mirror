@@ -15,7 +15,7 @@
         <name lang="pt">Irradiador eléctrico</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="2" uuid="{1d98c1a6-cff8-4118-a8c0-e896fe6f4b3b}">

@@ -14,7 +14,7 @@
         <name lang="ru">Следующая страница</name>
         <name lang="cs">Další list</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon y3="0" y2="4" x4="-9" x3="2" x1="-9" x2="-9" y4="-4" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-4" closed="false" antialias="true"/>

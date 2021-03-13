@@ -11,7 +11,7 @@
         <name lang="pt">Motor trifásico PE + BRAKE</name>
         <name lang="fr">Moteur triphasé PE + BRAKE</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text text="W1" rotation="270" x="8" y="-9" size="5"/>

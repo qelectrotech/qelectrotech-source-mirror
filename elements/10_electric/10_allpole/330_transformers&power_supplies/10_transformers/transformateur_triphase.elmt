@@ -11,7 +11,7 @@
         <name lang="cs">Třífázový transformátor</name>
         <name lang="nl">Driefase transformator</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-16" y="-31.6667" size="4" text="A1"/>

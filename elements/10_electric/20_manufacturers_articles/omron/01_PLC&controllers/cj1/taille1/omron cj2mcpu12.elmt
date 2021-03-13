@@ -6,11 +6,11 @@
         <name lang="cs">omron cj2mcpu12</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <dynamic_text frame="false" Valignment="AlignTop" uuid="{5aee947c-6de8-4476-b847-2934c0e8b5c5}" Halignment="AlignLeft" z="1" font_size="2" rotation="90" text_from="ElementInfo" y="-10" text_width="-1" x="0">

@@ -10,7 +10,7 @@
         <name lang="cs">Přepínač 3 polohy s návratem zprava i zleva, uzamčení ve středu</name>
         <name lang="nl">Schakelstanden</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input rotate="true" x="7" y="-6.5" tagg="label" text="_" size="9"/>

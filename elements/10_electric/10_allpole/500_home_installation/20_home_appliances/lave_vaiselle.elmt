@@ -15,7 +15,7 @@
         <name lang="pt">Máquina de lavar louça</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x1="-12" antialias="false" y3="24" x2="-12" y1="0" y2="24" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="0" x4="12"/>

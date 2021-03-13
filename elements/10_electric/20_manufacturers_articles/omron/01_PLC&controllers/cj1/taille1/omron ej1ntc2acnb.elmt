@@ -6,11 +6,11 @@
         <name lang="cs">omron ej1ntc2acnb</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <dynamic_text x="56" rotation="90" text_width="-1" y="142" uuid="{dc2cdbf3-33b9-471e-b331-7e41b924fc11}" font_size="2" z="1" frame="false" text_from="ElementInfo">

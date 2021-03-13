@@ -17,7 +17,7 @@
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="76" antialias="true" y="172"/>

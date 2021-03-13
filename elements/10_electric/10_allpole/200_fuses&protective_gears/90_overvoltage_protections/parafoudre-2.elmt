@@ -13,7 +13,7 @@
         <name lang="es">Protección contra descargas 2</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text z="1" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" frame="false" x="18" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-15.45" uuid="{daef117a-d243-49f7-b089-6a8ffe076f69}" Halignment="AlignLeft">

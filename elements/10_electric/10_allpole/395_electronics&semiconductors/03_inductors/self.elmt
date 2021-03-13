@@ -10,7 +10,7 @@
         <name lang="cs">Tlumivka</name>
         <name lang="nl">Inductor</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="14.5" y="4.3333" size="9" rotate="true" text="_" tagg="label"/>

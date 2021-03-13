@@ -7,7 +7,7 @@
         <name lang="es">Lámpara azul</name>
         <name lang="cs">Kontrolka</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <ellipse width="14.5169" x="-7.5012" y="-6.95514" antialias="true" height="13.3034" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
