@@ -98,7 +98,8 @@ void TerminalData::toXmlPriv(QDomElement& xml_element) const
     xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
     xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
 
-    xml_element.setAttribute("uuid", m_uuid.toString());
+    if (!m_uuid.isNull())
+        xml_element.setAttribute("uuid", m_uuid.toString());
     xml_element.setAttribute("name", m_name);
 
     xml_element.setAttribute("orientation",
