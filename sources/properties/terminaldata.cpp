@@ -98,8 +98,6 @@ void TerminalData::toXmlPriv(QDomElement& xml_element) const
     xml_element.setAttribute("x", m_pos.x());
     xml_element.setAttribute("y", m_pos.y());
 
-    if (!m_uuid.isNull())
-        xml_element.setAttribute("uuid", m_uuid.toString());
     xml_element.setAttribute("name", m_name);
 
     xml_element.setAttribute("orientation",

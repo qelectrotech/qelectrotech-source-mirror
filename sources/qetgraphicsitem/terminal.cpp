@@ -809,8 +809,8 @@ bool Terminal::valideXml(const QDomElement &terminal)
 */
 bool Terminal::fromXmlPriv(const QDomElement &terminal) {
     QETXML::propertyString(terminal, "number", &number_terminal_);
-
 	QETXML::propertyBool(terminal, "nameHidden", &name_terminal_hidden);
+    QETXML::propertyUuid(terminal, "uuid", &d->m_uuid);
 
 	if(!d->fromXml(terminal))
 		return false;
