@@ -1,12 +1,12 @@
 <definition hotspot_x="15" link_type="simple" hotspot_y="165" width="30" type="element" version="0.90" height="330">
   <names>
-    <name lang="cs">859-318</name>
-    <name lang="de">859-318</name>
-    <name lang="en">859-318</name>
-    <name lang="fr">859-318</name>
+    <name lang="cs">859-794</name>
+    <name lang="de">859-794</name>
+    <name lang="en">859-794</name>
+    <name lang="fr">859-794</name>
   </names>
   <elementInformations>
-    <elementInformation name="designation" show="1">859-318</elementInformation>
+    <elementInformation name="designation" show="1">859-794</elementInformation>
     <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
   </elementInformations>
   <informations>Author: plc-user for QElectroTech
@@ -56,6 +56,6 @@
       <text/>
       <info_name>label</info_name>
     </dynamic_text>
-    <text y="52.5" color="#000000" text="859-318" x="2.81" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270"/>
+    <text y="52.5" color="#000000" text="859-794" x="2.81" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="270"/>
   </description>
 </definition>
