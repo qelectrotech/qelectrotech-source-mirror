@@ -72,8 +72,6 @@ bool PartTerminal::fromXmlPriv(const QDomElement &xml_elmt) {
 */
 void PartTerminal::toXmlPriv(QDomElement& e) const {
 
-    e.setAttribute("uuid", d->m_uuid.toString());
-
     d->m_pos = pos();
 
     QDomDocument doc = e.ownerDocument();
