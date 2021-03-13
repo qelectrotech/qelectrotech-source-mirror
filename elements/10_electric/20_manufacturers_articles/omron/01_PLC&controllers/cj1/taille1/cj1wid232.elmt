@@ -18,11 +18,11 @@
         <elementInformation name="manufacturer" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <dynamic_text y="9" Valignment="AlignTop" uuid="{5acefa2e-df87-421e-a840-f1943bc1ada2}" z="1" font_size="2" frame="false" text_width="-1" text_from="ElementInfo" rotation="90" font_family="MS Shell Dlg 2" Halignment="AlignLeft" x="7">

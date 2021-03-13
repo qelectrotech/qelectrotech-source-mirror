@@ -14,7 +14,7 @@
         <name lang="de">Drehstrom Motor</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text y="-12" color="#000000" rotation="0" x="22" text="W1" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>

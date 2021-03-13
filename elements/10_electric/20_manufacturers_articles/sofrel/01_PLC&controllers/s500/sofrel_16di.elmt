@@ -17,7 +17,7 @@
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text text_from="ElementInfo" uuid="{a1ebbbc9-7cf5-454a-b0fa-22d962a1561a}" rotation="0" Valignment="AlignTop" frame="false" y="14.55" x="763.5" text_width="-1" z="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">

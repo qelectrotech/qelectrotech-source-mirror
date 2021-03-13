@@ -17,7 +17,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <rect antialias="false" y="-74" rx="0" ry="0" width="35" style="line-style:normal;line-weight:normal;filling:white;color:black" height="30" x="14"/>

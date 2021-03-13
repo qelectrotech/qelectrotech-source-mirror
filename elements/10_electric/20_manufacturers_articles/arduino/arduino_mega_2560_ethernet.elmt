@@ -21,8 +21,8 @@
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>ezza&#xd;
-Modifié par Charles Ferrand&#xd;
+    <informations>ezza
+Modifié par Charles Ferrand
 novembre 2013</informations>
     <description>
         <rect rx="0" width="180" x="-20" height="250" ry="0" antialias="false" y="-20" style="line-style:normal;line-weight:none;filling:green;color:black"/>

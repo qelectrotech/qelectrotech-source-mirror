@@ -14,7 +14,7 @@
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y3="-10" y2="10" closed="false" x2="30" x3="24" x1="30" y1="20"/>

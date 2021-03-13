@@ -4,14 +4,14 @@
         <name lang="ar">عدّاد طاقة فعّالة مع تجاوز قدرة</name>
         <name lang="nl">Overcapaciteit teller</name>
         <name lang="fr">Compteur à énergie active à dépassement de puissance</name>
-        <name lang="en"> Excess watt-hour meter&#xd;</name>
-        <name lang="de">Überverbrauchszähler, Spitzenzähler&#xd;</name>
+        <name lang="en"> Excess watt-hour meter</name>
+        <name lang="de">Überverbrauchszähler, Spitzenzähler</name>
         <name lang="pl">Licznik watogodzin szczytowy</name>
         <name lang="cs">Měřič překročení spotřeby</name>
         <name lang="it">Contatore di energia attiva a supero di potenza</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="18" z="1" uuid="{5e1867ca-e30f-49c0-85ca-3b6f9b7eec6c}" text_from="ElementInfo" y="-20.95" Halignment="AlignLeft">

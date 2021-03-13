@@ -20,7 +20,7 @@
         <elementInformation show="1" name="description">Carte de sorties digitales</elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text rotation="0" x="195" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="7"/>

@@ -14,7 +14,7 @@
         <name lang="pt">E 3 entradas</name>
         <name lang="nl">EN 3 Ingangen</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input text="_" x="-46" y="-10" tagg="none" size="8" rotate="true"/>

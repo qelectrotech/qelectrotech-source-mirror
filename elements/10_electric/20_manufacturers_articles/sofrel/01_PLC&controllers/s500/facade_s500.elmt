@@ -13,7 +13,7 @@
         <name lang="en">Frontview S550</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text x="48" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_width="-1" uuid="{e3b05d0d-e621-4915-bdd2-ea67587429c6}" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" z="1" y="244.5">

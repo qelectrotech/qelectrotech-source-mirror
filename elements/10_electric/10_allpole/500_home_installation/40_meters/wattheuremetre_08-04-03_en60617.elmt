@@ -11,7 +11,7 @@
         <name lang="de">Wattstundenzähler (EN 60617)</name>
     </names>
     <elementInformations/>
-    <informations>https://github.com/jonasstein/qelectrotech-symbols&#xd;&#xd;
+    <informations>https://github.com/jonasstein/qelectrotech-symbols
 EN 60617</informations>
     <description>
         <dynamic_text text_width="-1" x="23" z="1" frame="false" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="-10.95" uuid="{b0deaf89-852a-4b82-a9c0-c5c0cbb96c46}">

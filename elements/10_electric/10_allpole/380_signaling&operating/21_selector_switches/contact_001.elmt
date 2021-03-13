@@ -13,7 +13,7 @@
     <kindInformations>
         <kindInformation name="type" show="1">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line x2="7" y2="-3" length1="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" end1="none" x1="3" end2="none" length2="1.5" antialias="true" y1="3"/>

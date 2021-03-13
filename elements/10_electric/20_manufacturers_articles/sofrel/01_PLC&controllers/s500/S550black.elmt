@@ -25,8 +25,8 @@
         <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
         <elementInformation show="1" name="designation">S550</elementInformation>
     </elementInformations>
-    <informations>S.Deffaux&#xd;&#xd;
-Author: The QElectroTech team&#xd;&#xd;
+    <informations>S.Deffaux
+Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect x="787" rx="0" ry="0" antialias="false" height="122" width="16" style="line-style:normal;line-weight:normal;filling:green;color:black" y="105"/>

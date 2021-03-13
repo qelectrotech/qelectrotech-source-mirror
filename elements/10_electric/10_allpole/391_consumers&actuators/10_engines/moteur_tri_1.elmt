@@ -12,7 +12,7 @@
         <name lang="it">Motore trifase</name>
         <name lang="cs">Trojfázový motor</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text text="PE" x="23" y="28" size="5"/>

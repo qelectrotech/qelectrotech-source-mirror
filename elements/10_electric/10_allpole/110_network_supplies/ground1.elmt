@@ -29,7 +29,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
-    <informations>titus&#xd;
+    <informations>titus
 titus0818@yahoo.com</informations>
     <description>
         <line y1="-16" x1="0" style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" y2="13" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>

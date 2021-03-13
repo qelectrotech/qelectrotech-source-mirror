@@ -21,7 +21,7 @@
         <elementInformation show="1" name="designation">XB4BVM6</elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle diameter="44" antialias="true" x="-22" y="-22" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>

@@ -17,7 +17,7 @@
         <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="description" show="1">VPM 30/35/2 W</elementInformation>
     </elementInformations>
-    <informations>Author: Simon De Backer&#xd;
+    <informations>Author: Simon De Backer
 license: free</informations>
     <description>
         <circle antialias="false" diameter="10" x="45" y="-55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

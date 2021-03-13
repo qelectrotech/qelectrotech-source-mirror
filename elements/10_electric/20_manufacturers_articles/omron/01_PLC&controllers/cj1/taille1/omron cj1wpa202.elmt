@@ -6,11 +6,11 @@
         <name lang="cs">omron cj1wpa202</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <dynamic_text x="6" font_size="2" z="1" uuid="{3d76e03f-aa02-41fb-88a3-2392308ac1d2}" text_width="-1" y="0" frame="false" text_from="ElementInfo" rotation="90">

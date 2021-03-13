@@ -12,7 +12,7 @@
         <name lang="de">Betriebsstundenzähler (en_60617)</name>
     </names>
     <elementInformations/>
-    <informations>https://github.com/jonasstein/qelectrotech-symbols&#xd;&#xd;
+    <informations>https://github.com/jonasstein/qelectrotech-symbols
 EN 60617</informations>
     <description>
         <text x="-4" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="h" y="12"/>

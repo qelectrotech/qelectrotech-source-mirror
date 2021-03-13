@@ -6,11 +6,11 @@
         <name lang="cs">omron cj1wscu31v1</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <dynamic_text frame="false" Valignment="AlignTop" uuid="{f690b686-ba12-46cb-9678-92f2d905f8b5}" Halignment="AlignLeft" z="1" font_size="2" rotation="90" text_from="ElementInfo" y="1" text_width="-1" x="-2">

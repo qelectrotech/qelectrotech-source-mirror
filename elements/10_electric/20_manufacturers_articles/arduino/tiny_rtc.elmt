@@ -21,7 +21,7 @@
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Charles Ferrand &#xd;
+    <informations>Charles Ferrand 
 novembre 2013</informations>
     <description>
         <text y="-8" text="SCL" rotation="90" x="6" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>

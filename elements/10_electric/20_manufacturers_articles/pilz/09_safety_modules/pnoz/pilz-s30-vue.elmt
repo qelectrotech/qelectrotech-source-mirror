@@ -6,11 +6,11 @@
         <name lang="cs">PNOZ S30 - Nákres</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <rect width="2.79649" x="-45" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" height="5.9467" ry="0" y="-12"/>

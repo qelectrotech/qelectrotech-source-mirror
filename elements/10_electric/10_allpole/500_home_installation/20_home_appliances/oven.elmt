@@ -13,7 +13,7 @@
         <name lang="fr">Four</name>
     </names>
     <elementInformations/>
-    <informations>Author: Jonas Stein&#xd;
+    <informations>Author: Jonas Stein
 </informations>
     <description>
         <dynamic_text Valignment="AlignTop" frame="false" text_from="ElementInfo" rotation="0" x="-7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" text_width="-1" Halignment="AlignLeft" y="12" uuid="{6da80e6b-0b45-4c7a-85e8-19a1990a1023}">
