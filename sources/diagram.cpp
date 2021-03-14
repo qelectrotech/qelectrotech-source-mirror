@@ -1864,6 +1864,28 @@ void Diagram::changeZValue(QET::DepthOption option)
 		delete undo;
 }
 
+int Diagram::uniqueTerminalID() const
+{
+    for (int i=1; i < 10000; i++) {
+        bool found = false;
+        for (auto element: elements()) {
+            for (auto terminal: element->terminals()) {
+                if (terminal->ID() == i) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                break;
+            }
+        }
+
+        if (!found)
+            return i;
+    }
+    return -1;
+}
+
 /**
 	@brief Diagram::loadElmtFolioSeq
 	This class loads all folio sequential variables related

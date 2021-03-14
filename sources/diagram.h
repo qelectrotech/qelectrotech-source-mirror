@@ -257,6 +257,13 @@ class Diagram : public QGraphicsScene
 					   NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
 
+		/*!
+		 * \brief uniqueTerminalID
+		 * Determines a new unique Terminal ID
+		 * This is used only for legacy purpose
+		 */
+        int uniqueTerminalID() const;
+
 	public slots:
 		void adjustSceneRect ();
 		void titleChanged(const QString &);

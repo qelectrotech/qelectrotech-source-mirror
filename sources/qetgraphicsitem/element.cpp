@@ -944,8 +944,15 @@ QDomElement Element::toXml(
 		QDomElement terminal = t -> toXml(document);
 		if (t->ID() > 0) {
 			// for backward compatibility
+            // Terminal was loaded during loading an old project. So the terminal has a valid id
 			terminal.setAttribute("id", t->ID()); // for backward compatibility
-		}
+        } else if (t->uuid().isNull()) {
+          // for backward compatibility
+          // An old element with no uuid on the terminals was added to the project.
+          // give it an id
+          t->setID(t->diagram()->uniqueTerminalID());
+          terminal.setAttribute("id", t->ID());
+        }
 		xml_terminals.appendChild(terminal);
 	}
 	element.appendChild(xml_terminals);
