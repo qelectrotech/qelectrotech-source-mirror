@@ -35,6 +35,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementPart(editor),
 	previous_text()
 {
+    setTagName("text");
 	document() -> setDocumentMargin(1.0);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
