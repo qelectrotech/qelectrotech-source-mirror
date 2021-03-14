@@ -976,15 +976,8 @@ bool Conductor::fromXmlPriv(const QDomElement &dom_element)
 
 	m_text_item -> fromXml(dom_element);
 
-    auto prs = QETXML::findInDomElement(dom_element, ConductorProperties::xmlTagName());
     ConductorProperties pr;
-    if (!prs.isEmpty()) {
-        pr.fromXml(prs.first());
-    } else {
-       // legacy
-       // added in 0.9 remove in later version!
-       pr.fromXml(dom_element);
-    }
+    pr.fromXml(dom_element);
 
 		//Load Sequential Values
 	if (dom_element.hasAttribute("sequ_1") || dom_element.hasAttribute("sequf_1") || dom_element.hasAttribute("seqt_1") || dom_element.hasAttribute("seqtf_1") || dom_element.hasAttribute("seqh_1") || dom_element.hasAttribute("sequf_1"))
@@ -1050,8 +1043,17 @@ void Conductor::toXmlPriv(QDomElement& dom_element) const {
     QDomElement dom_seq = m_autoNum_seq.toXml(doc);
     dom_element.appendChild(dom_seq);
 
-        // Export the properties and text
-    dom_element.appendChild(m_properties. toXml(doc));
+    // Export the properties and text
+    // Do not add properties as own child, but add the properties to the conductor it self
+    //dom_element.appendChild(m_properties. toXml(doc));
+    // Copy everything from comductorProperties to Conductor
+    auto ConductorProperties = m_properties. toXml(doc);
+    for (int i=0; i < ConductorProperties.attributes().count(); i++) {
+        QDomAttr attr = ConductorProperties.attributes().item(i).toAttr();
+        dom_element.setAttribute(attr.name(), attr.value());
+    }
+
+
     if(m_text_item->wasMovedByUser())
     {
         dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
