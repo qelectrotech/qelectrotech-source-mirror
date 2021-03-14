@@ -771,8 +771,18 @@ void Terminal::toXmlPriv(QDomElement &qdo) const
     // Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
     QPointF tempPos = d->m_pos;
     d->m_pos = dock_elmt_;
-    d->toXmlPriv(qdo); // TerminalData
+    QDomDocument doc = qdo.ownerDocument();
+    QDomElement terminalData = d->toXml(doc); // TerminalData
     d->m_pos = tempPos;
+
+    // Copy everything from terminalData to terminal
+    for (int i=0; i < terminalData.attributes().count(); i++) {
+        QDomAttr attr = terminalData.attributes().item(i).toAttr();
+        qdo.setAttribute(attr.name(), attr.value());
+    }
+//    for (int i=0; i < terminalData.childNodes().count(); i++) {
+//        qdo.appendChild(terminalData.childNodes().at(i));
+//    }
 }
 
 /**

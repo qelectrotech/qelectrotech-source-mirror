@@ -78,7 +78,17 @@ void PartTerminal::toXmlPriv(QDomElement& e) const {
     d->m_pos = pos();
 
     QDomDocument doc = e.ownerDocument();
-    e.appendChild(d -> toXml(doc));
+    QDomElement terminalData = d -> toXml(doc);
+
+    // Copy everything from terminalData to terminal
+    for (int i=0; i < terminalData.attributes().count(); i++) {
+        QDomAttr attr = terminalData.attributes().item(i).toAttr();
+        e.setAttribute(attr.name(), attr.value());
+    }
+//    for (int i=0; i < terminalData.childNodes().count(); i++) {
+//        e.appendChild(terminalData.childNodes().at(i));
+//    }
+
 
 }
 
