@@ -18,9 +18,16 @@ message(" - fetch_pugixml")
 
 Include(FetchContent)
 
-FetchContent_Declare(
-  pugixml
-  GIT_REPOSITORY https://github.com/zeux/pugixml.git
-  GIT_TAG        v1.11.4)
+option(BUILD_PUGIXML "Build pugixml library, use system one otherwise" YES)
 
-FetchContent_MakeAvailable(pugixml)
+if(BUILD_PUGIXML)
+
+  FetchContent_Declare(
+    pugixml
+    GIT_REPOSITORY https://github.com/zeux/pugixml.git
+    GIT_TAG        v1.11.4)
+
+  FetchContent_MakeAvailable(pugixml)
+else()
+  find_package(pugixml REQUIRED)
+endif()
