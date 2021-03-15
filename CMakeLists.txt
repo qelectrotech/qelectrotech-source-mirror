@@ -131,3 +131,28 @@ target_include_directories(
   ${QET_DIR}/sources/factory/ui
   ${QET_DIR}/sources/print
   )
+
+install(TARGETS ${PROJECT_NAME})
+install(DIRECTORY ico/breeze-icons/16x16 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/22x22 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/32x32 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/48x48 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/64x64 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/128x128 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY ico/breeze-icons/256x256 DESTINATION ${QET_ICONS_PATH})
+install(DIRECTORY elements DESTINATION share/qelectrotech)
+install(DIRECTORY examples DESTINATION share/qelectrotech)
+install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
+install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
+install(FILES misc/qelectrotech.desktop DESTINATION share/applications)
+install(FILES misc/x-qet-element.xml
+              misc/x-qet-project.xml
+              misc/x-qet-titleblock.xml
+              DESTINATION share/mime/application)
+install(FILES misc/x-qet-element.desktop
+              misc/x-qet-project.desktop
+              misc/x-qet-titleblock.desktop
+              DESTINATION share/mimelnk/application)
+install(FILES misc/qelectrotech.xml DESTINATION share/mime/packages)
+install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
+install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
