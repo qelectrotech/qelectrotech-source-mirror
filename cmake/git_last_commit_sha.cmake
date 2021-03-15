@@ -28,9 +28,6 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
   # This strips terminating newline in the variable
   string(REGEX REPLACE "\n$" "" GIT_COMMIT_SHA "${GIT_COMMIT_SHA}")
 
-  # This adds to definitions => .cpp
-  add_definitions(-DGIT_COMMIT_SHA="${GIT_COMMIT_SHA}")
-
   if(NOT GIT_COMMIT_RESULT EQUAL "0")
     message(
       FATAL_ERROR
@@ -39,3 +36,6 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
       ", please check")
   endif()
 endif()
+
+# This adds to definitions => .cpp
+add_definitions(-DGIT_COMMIT_SHA="${GIT_COMMIT_SHA}")
