@@ -15,10 +15,10 @@ The main goal of the developers is to provide a libre, easy to use and effective
 
 ### Version
 
-The current stable version is 0.70 and was released on 2019.07.13.  
+The current stable version is 0.80 and was released on 2021.02.21.  
 Once it has been officialy released, the stable version is always frozen and is no longer developed.
 
-New functionalities, bug and issue fixings are further made in the development version (currently 0.8), which can also be [downloaded](https://qelectrotech.org/download.html).
+New functionalities, bug and issue fixings are further made in the development version (currently 0.9), which can also be [downloaded](https://qelectrotech.org/download.html).
 
 Users who want to test and take benefits from the last software implementations should use the development version. But... use it at your own risk, since things are sometimes broken or only partialy implemented until they are done!
 
@@ -172,7 +172,7 @@ Nowadays, QET is not only used by many individuals, teachers and students but al
 If you love QElectroTech, you can help developers to buy new hardware to test
 and implement new features. Thanks in advance for your generous donations.
 
-For more information, look at [Paypal](https://www.paypal.com/donate/?token=rqf80cP0Ck1F2jn4Y46G7tIPv9bq7x0crXkwt3GZ6OZYG6ihJYi8lZxmmQ8itsFwMUdd1G&country.x=GB&locale.x=GB)  
-or at [leetchi.com](https://www.leetchi.com/c/qelectroteck)
+For more information, look at [Paypal](https://www.paypal.com/donate/?token=rqf80cP0Ck1F2jn4Y46G7tIPv9bq7x0crXkwt3GZ6OZYG6ihJYi8lZxmmQ8itsFwMUdd1G&country.x=GB&locale.x=GB)
+
 
 
