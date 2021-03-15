@@ -19,9 +19,9 @@ message(" - fetch_kdeaddons")
 if(DEFINED BUILD_WITH_KF5)
   Include(FetchContent)
 
-  set(BUILD_KF5_YES "YES")
+  option(BUILD_KF5 "Build KF5 libraries, use system ones otherwise" YES)
 
-  if(DEFINED BUILD_KF5_YES)
+  if(BUILD_KF5)
 
     if(NOT DEFINED KF5_GIT_TAG)
       #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
