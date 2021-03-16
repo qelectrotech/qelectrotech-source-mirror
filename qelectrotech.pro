@@ -160,7 +160,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/dataBase/*.h) \
            $$files(sources/dataBase/ui/*.h) \
            $$files(sources/factory/ui/*.h) \
-           $$files(sources/print/*.h)
+           $$files(sources/print/*.h) \
+           $$files(sources/TerminalStrip/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -193,7 +194,8 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/dataBase/*.cpp) \
            $$files(sources/dataBase/ui/*.cpp) \
            $$files(sources/factory/ui/*.cpp) \
-           $$files(sources/print/*.cpp)
+           $$files(sources/print/*.cpp) \
+           $$files(sources/TerminalStrip/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
