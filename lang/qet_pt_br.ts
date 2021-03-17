@@ -1128,7 +1128,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/diagramview.cpp" line="504"/>
         <source>X: %1 Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>X: %1 Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="607"/>
@@ -1812,12 +1812,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="113"/>
         <source>Élément bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemento terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="126"/>
         <source>Fonction</source>
-        <translation type="unfinished">Função</translation>
+        <translation>Função</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="156"/>
@@ -1919,37 +1919,37 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="142"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation>Genérico</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="143"/>
         <source>Fusible</source>
-        <translation type="unfinished"></translation>
+        <translation>Fusível</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
         <source>Séctionnable</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionável</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
         <source>Diode</source>
-        <translation type="unfinished"></translation>
+        <translation>Diodo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="148"/>
         <source>Phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="149"/>
         <source>Neutre</source>
-        <translation type="unfinished">Neutro</translation>
+        <translation>Neutro</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
         <source>Terre</source>
-        <translation type="unfinished">Terra</translation>
+        <translation>Terra</translation>
     </message>
 </context>
 <context>
@@ -3176,7 +3176,7 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
         <source>Langues</source>
-        <translation type="unfinished"></translation>
+        <translation>Línguas</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
@@ -3386,7 +3386,7 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Mongol</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
@@ -5145,7 +5145,7 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="669"/>
         <source>Fichier (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivo (*.pdf)</translation>
     </message>
 </context>
 <context>
@@ -6493,47 +6493,47 @@ Opções disponíveis:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="14"/>
         <source>QElectroTech - Éditeur d&apos;élément</source>
-        <translation type="unfinished">QElectroTech - Editor de elementos</translation>
+        <translation>QElectroTech - Editor de elementos</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="91"/>
         <source>&amp;Aide</source>
-        <translation type="unfinished">&amp;Ajuda</translation>
+        <translation>&amp;Ajuda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="110"/>
         <source>Annulations</source>
-        <translation type="unfinished">Desfazer</translation>
+        <translation>Desfazer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="122"/>
         <source>Parties</source>
-        <translation type="unfinished">Partes</translation>
+        <translation>Partes</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="134"/>
         <source>Informations</source>
-        <translation type="unfinished">Informações</translation>
+        <translation>Informações</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="143"/>
         <source>Outils</source>
-        <translation type="unfinished">Ferramentas</translation>
+        <translation>Ferramentas</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="160"/>
         <source>Affichage</source>
-        <translation type="unfinished">Exibir</translation>
+        <translation>Exibir</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="175"/>
         <source>Élément</source>
-        <translation type="unfinished">Elemento</translation>
+        <translation>Elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="188"/>
         <source>Annulation</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancelamento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="293"/>
@@ -6558,67 +6558,67 @@ Opções disponíveis:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="329"/>
         <source>C&amp;oller dans la zone</source>
-        <translation type="unfinished"></translation>
+        <translation>C&amp;ole na área</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="338"/>
         <source>Un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Um arquivo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="347"/>
         <source>Un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Um elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="437"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished">&amp;Sobre QElectroTech</translation>
+        <translation>&amp;Sobre QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="440"/>
         <source>Affiche des informations sur QElectroTech</source>
-        <translation type="unfinished">Exibe informações sobre QElectroTech</translation>
+        <translation>Exibe informações sobre QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="449"/>
         <source>Manuel en ligne</source>
-        <translation type="unfinished">Manual on-line</translation>
+        <translation>Manual on-line</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="452"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
-        <translation type="unfinished">Inicia o navegador padrão no manual online do QElectroTech</translation>
+        <translation>Inicia o navegador padrão no manual online do QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="461"/>
         <source>Chaine Youtube</source>
-        <translation type="unfinished">Canal do Youtube</translation>
+        <translation>Canal do Youtube</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="464"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
-        <translation type="unfinished">Lançar o navegador padrão para o canal do YouTube do QElectroTech</translation>
+        <translation>Lançar o navegador padrão para o canal do YouTube do QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="473"/>
         <source>Soutenir le projet par un don</source>
-        <translation type="unfinished">Apoie o projeto com uma doação</translation>
+        <translation>Apoie o projeto com uma doação</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="476"/>
         <source>Soutenir le projet QElectroTech par un don</source>
-        <translation type="unfinished">Apoie o projeto QElectroTech com uma doação</translation>
+        <translation>Apoie o projeto QElectroTech com uma doação</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="485"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished">Sobre &amp;Qt</translation>
+        <translation>Sobre &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="488"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
-        <translation type="unfinished">Exibe informações sobre as bibliotecas Qt</translation>
+        <translation>Exibe informações sobre as bibliotecas Qt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="356"/>
@@ -6954,7 +6954,7 @@ Torne-o executável: chmod + x ./DXFtoQET
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="73"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Exibir</translation>
+        <translation>Exibir</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="219"/>
@@ -7343,14 +7343,16 @@ O que você deseja fazer?</translation>
         <location filename="../sources/qetproject.cpp" line="1320"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aviso </translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1321"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version de QElectroTech.
 Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8 de QElectroTech sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation>O projeto que você está tentando abrir é parcialmente compatível com sua versão do QElectroTech.
+Para torná-lo totalmente compatível, abra este mesmo projeto com a versão 0.8 do QElectroTech, salve o projeto e abra-o novamente com esta versão.
+O que você quer fazer?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1379"/>
@@ -7745,7 +7747,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="92"/>
         <source>un element graphique</source>
-        <translation type="unfinished"></translation>
+        <translation>um elemento gráficoum elemento gráfico</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="103"/>
@@ -7918,7 +7920,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="600"/>
         <source>Modifier les propriétées de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar propriedades do elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
@@ -8405,7 +8407,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="50"/>
         <source>Modifier les informations de plusieurs éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar informações para vários itens</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="38"/>
@@ -12044,17 +12046,17 @@ Os outros campos não são utilizados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="122"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation>Genérico</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
         <source>Bornier intérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloco de terminais interno</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
         <source>Bornier extérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloco de terminais externo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
@@ -12064,37 +12066,37 @@ Os outros campos não são utilizados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Mudar o tipo de terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulário</translation>
+        <translation>Formulário</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
         <source>y :</source>
-        <translation type="unfinished"></translation>
+        <translation>y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
         <source>Orientation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientação :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
         <source>x :</source>
-        <translation type="unfinished"></translation>
+        <translation>x :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
         <source>Nom :</source>
-        <translation type="unfinished">Nome:</translation>
+        <translation>Nome :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
         <source>Type :</source>
-        <translation type="unfinished">Tipo:</translation>
+        <translation>Tipo :</translation>
     </message>
 </context>
 <context>
