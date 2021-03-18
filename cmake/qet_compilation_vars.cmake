@@ -383,6 +383,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/terminaldata.h
   ${QET_DIR}/sources/properties/xrefproperties.cpp
   ${QET_DIR}/sources/properties/xrefproperties.h
+  ${QET_DIR}/sources/properties/userproperties.cpp
+  ${QET_DIR}/sources/properties/userproperties.h
 
   ${QET_DIR}/sources/PropertiesEditor/propertieseditordialog.h
   ${QET_DIR}/sources/PropertiesEditor/propertieseditordockwidget.cpp
