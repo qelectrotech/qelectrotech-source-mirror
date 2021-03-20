@@ -8,6 +8,7 @@
         <name lang="pl">Odgromnik gazowyładowczy trójelektrodowy</name>
         <name lang="cs">Dvojitá plynová bleskojistka</name>
         <name lang="nl">Symmetrische gasontlading buis</name>
+        <name lang="hu">Védőgázas kisülőcső</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

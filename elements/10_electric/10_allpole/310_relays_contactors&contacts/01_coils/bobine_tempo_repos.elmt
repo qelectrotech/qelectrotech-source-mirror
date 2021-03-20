@@ -2,6 +2,7 @@
 <uuid uuid="{7E996B1F-B537-44D9-A3E9-DB5F30487400}"/><names>
         <name lang="be">Spoel met uitschakel vertraging</name>
         <name lang="en">Coil with off delay</name>
+        <name lang="hu">Tekercs ki késleltetéssel</name>
         <name lang="fr">Bobine tempo repos</name>
         <name lang="ru">Обмотка</name>
         <name lang="es">Bobina de reposo temporizado</name>

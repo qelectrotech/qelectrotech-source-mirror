@@ -8,6 +8,7 @@
         <name lang="pl">Odgromnik gazowyładowczy dwuelektrodowy</name>
         <name lang="cs">Plynová bleskojistka</name>
         <name lang="nl">gasontladingsbuis</name>
+        <name lang="hu">Védőgázas szimetrikus kisülőcső</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

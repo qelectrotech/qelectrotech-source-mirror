@@ -11,6 +11,7 @@
         <name lang="pl">Ogranicznik przepięć</name>
         <name lang="ar">حامي من الصواعق</name>
         <name lang="en">Surge protection</name>
+        <name lang="hu">Túlfeszültség védő</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

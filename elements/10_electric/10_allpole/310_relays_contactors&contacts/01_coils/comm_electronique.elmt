@@ -9,7 +9,8 @@
         <name lang="cs">Elektronické relé</name>
         <name lang="nl">relais electronisch</name>
         <name lang="es">Relé electrónico</name>
-        <name lang="be">Electronisch relais</name> 
+        <name lang="be">Electronisch relais</name>
+        <name lang="hu">Tranzisztoros működtetés</name> 
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>
