@@ -30,8 +30,8 @@ class Machine_info : public QObject
 	Q_OBJECT
 public:
 	explicit Machine_info(QObject *parent = nullptr);
-	int32_t i_max_screen_width();
-	int32_t i_max_screen_height();
+    static int32_t i_max_screen_width();
+    static int32_t i_max_screen_height();
 	QString compilation_info();
 	void send_info_to_debug();
 

@@ -322,7 +322,22 @@ void Machine_info::init_get_cpu_info_macos()
 */
 int32_t Machine_info::i_max_screen_width()
 {
-	return pc.screen.Max_width;
+    const auto screens = qApp->screens();
+    auto screen_count = screens.count();
+
+    int32_t width_[10];
+    int32_t Max_width = 0;
+
+    for (int ii = 0; ii < screen_count; ++ii)
+    {
+        width_[ii]=
+                screens[ii]->geometry().width()
+                * screens[ii]->devicePixelRatio();
+        if(Max_width < width_[ii])
+            Max_width = width_[ii];
+    }
+
+    return Max_width;
 }
 
 /**
@@ -330,8 +345,23 @@ int32_t Machine_info::i_max_screen_width()
 	@return max screen height
 */
 int32_t Machine_info::i_max_screen_height()
-{
-	return pc.screen.Max_height;
+{    
+    const auto screens = qApp->screens();
+    auto screen_count = screens.count();
+
+    int32_t height_[10];
+    int32_t Max_height = 0;
+
+    for (int ii = 0; ii < screen_count; ++ii)
+    {
+        height_[ii]=
+                screens[ii]->geometry().height()
+                * screens[ii]->devicePixelRatio();
+        if(Max_height<height_[ii])
+            Max_height = height_[ii];
+    }
+
+    return Max_height;
 }
 
 /**
