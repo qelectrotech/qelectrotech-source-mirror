@@ -22,6 +22,7 @@
 #include "utils/macosxopenevent.h"
 
 #include <QStyleFactory>
+#include <QtConcurrent>
 
 /**
 	@brief myMessageOutput
@@ -200,16 +201,16 @@ int main(int argc, char **argv)
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 
-	// for debugging
-	qInstallMessageHandler(myMessageOutput);
-	qInfo("Start-up");
-	// delete old log files of max 7 days old.
-	delete_old_log_files(7);
-	{
-		Machine_info *my_ma =new Machine_info();
-		my_ma->send_info_to_debug();
-		delete my_ma;
-	}
+    QtConcurrent::run([=]()
+    {
+            // for debugging
+        qInstallMessageHandler(myMessageOutput);
+        qInfo("Start-up");
+            // delete old log files of max 7 days old.
+        delete_old_log_files(7);
+        auto ma = Machine_info();
+        ma.send_info_to_debug();
+    });
 	return app.exec();
 }
 
