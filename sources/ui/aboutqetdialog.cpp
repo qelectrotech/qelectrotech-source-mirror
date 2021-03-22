@@ -152,8 +152,7 @@ void AboutQETDialog::setVersion()
 	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V "
 			+ QET::displayedVersion
 			+ "</span>";
-	MachineInfo mi_;
-	ui->m_version_label->setText(str + mi_.compilation_info());
+	ui->m_version_label->setText(str + MachineInfo::instance()->compilation_info());
 }
 
 /**

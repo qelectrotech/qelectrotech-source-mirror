@@ -19,6 +19,7 @@
 #define MACHINE_INFO_H
 
 #include <QThread>
+#include <QMutex>
 
 /**
 	@brief The MachineInfo class
@@ -26,19 +27,48 @@
 */
 class MachineInfo
 {
+		static MachineInfo *m_instance;
 	public:
-		explicit MachineInfo();
-		static int32_t i_max_screen_width();
-		static int32_t i_max_screen_height();
+		static MachineInfo *instance()
+		{
+			static QMutex mutex;
+			if (!m_instance)
+			{
+				mutex.lock();
+				if (!m_instance) {
+					m_instance = new MachineInfo();
+				}
+				mutex.unlock();
+			}
+
+			return m_instance;
+		}
+
+		static void dropInstance()
+		{
+			static QMutex mutex;
+			if (m_instance) {
+				mutex.lock();
+				delete m_instance;
+				m_instance = nullptr;
+				mutex.unlock();
+			}
+		}
+
+		int32_t i_max_screen_width();
+		int32_t i_max_screen_height();
 		QString compilation_info();
 		void send_info_to_debug();
 
+
 	private:
+		MachineInfo();
 		void init_get_Screen_info();
 		void init_get_cpu_info();
 		void init_get_cpu_info_linux();
 		void init_get_cpu_info_winnt();
 		void init_get_cpu_info_macos();
+
 	struct Pc
 	{
 		struct Screen

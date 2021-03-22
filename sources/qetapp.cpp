@@ -35,6 +35,7 @@
 #include "titleblocktemplate.h"
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
+#include "machine_info.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -146,6 +147,7 @@ QETApp::~QETApp()
 
 	ElementFactory::dropInstance();
 	ElementPictureFactory::dropInstance();
+	MachineInfo::dropInstance();
 }
 
 
