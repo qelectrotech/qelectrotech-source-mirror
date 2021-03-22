@@ -30,19 +30,19 @@
 #include "qet.h"
 
 /**
-	@brief Machine_info::Machine_info
+	@brief MachineInfo::MachineInfo
 	@param parent
 */
-Machine_info::Machine_info(QObject *parent) : QObject(parent)
+MachineInfo::MachineInfo()
 {
 	init_get_Screen_info();
 	init_get_cpu_info();
 }
 
 /**
-	@brief Machine_info::send_info_to_debug
+	@brief MachineInfo::send_info_to_debug
 */
-void Machine_info::send_info_to_debug()
+void MachineInfo::send_info_to_debug()
 {
 	qInfo()<<"debugging enabled:"
 		<< QLibraryInfo::isDebugBuild();
@@ -120,7 +120,7 @@ void Machine_info::send_info_to_debug()
 #endif
 	qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
 	qInfo()<< "QElectroTech V " + QET::displayedVersion;
-	qInfo()<< tr("Compilation : ") + pc.built.version;
+	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
 		  + " - Date : " + pc.built.date
 		  + " : " + pc.built.time;
@@ -151,10 +151,10 @@ void Machine_info::send_info_to_debug()
 }
 
 /**
-	@brief Machine_info::init_get_Screen_info
+	@brief MachineInfo::init_get_Screen_info
 	Finds the largest screen and saves the values
 */
-void Machine_info::init_get_Screen_info()
+void MachineInfo::init_get_Screen_info()
 {
 	const auto screens = qApp->screens();
 	pc.screen.count=screens.count();
@@ -174,9 +174,9 @@ void Machine_info::init_get_Screen_info()
 }
 
 /**
-	@brief Machine_info::init_get_cpu_info
+	@brief MachineInfo::init_get_cpu_info
 */
-void Machine_info::init_get_cpu_info()
+void MachineInfo::init_get_cpu_info()
 {
 #ifdef __GNUC__
 #ifdef __APPLE_CC__
@@ -191,9 +191,9 @@ void Machine_info::init_get_cpu_info()
 }
 
 /**
-	@brief Machine_info::init_get_cpu_info_linux
+	@brief MachineInfo::init_get_cpu_info_linux
 */
-void Machine_info::init_get_cpu_info_linux()
+void MachineInfo::init_get_cpu_info_linux()
 {
 	QProcess linuxcpuinfo;
 	linuxcpuinfo.start("bash", QStringList()
@@ -237,9 +237,9 @@ void Machine_info::init_get_cpu_info_linux()
 }
 
 /**
-	@brief Machine_info::init_get_cpu_info_winnt
+	@brief MachineInfo::init_get_cpu_info_winnt
 */
-void Machine_info::init_get_cpu_info_winnt()
+void MachineInfo::init_get_cpu_info_winnt()
 {
 	QProcess wincpuinfo;
 	wincpuinfo.start("wmic",
@@ -291,9 +291,9 @@ void Machine_info::init_get_cpu_info_winnt()
 }
 
 /**
-	@brief Machine_info::init_get_cpu_info_macos
+	@brief MachineInfo::init_get_cpu_info_macos
 */
-void Machine_info::init_get_cpu_info_macos()
+void MachineInfo::init_get_cpu_info_macos()
 {
 	QProcess macoscpuinfo;
 	macoscpuinfo.start("bash",
@@ -317,10 +317,10 @@ void Machine_info::init_get_cpu_info_macos()
 }
 
 /**
-	@brief Machine_info::i_max_screen_width
+	@brief MachineInfo::i_max_screen_width
 	@return max screen width
 */
-int32_t Machine_info::i_max_screen_width()
+int32_t MachineInfo::i_max_screen_width()
 {
     const auto screens = qApp->screens();
     auto screen_count = screens.count();
@@ -341,10 +341,10 @@ int32_t Machine_info::i_max_screen_width()
 }
 
 /**
-	@brief Machine_info::i_max_screen_height
+	@brief MachineInfo::i_max_screen_height
 	@return max screen height
 */
-int32_t Machine_info::i_max_screen_height()
+int32_t MachineInfo::i_max_screen_height()
 {    
     const auto screens = qApp->screens();
     auto screen_count = screens.count();
@@ -365,12 +365,12 @@ int32_t Machine_info::i_max_screen_height()
 }
 
 /**
-	@brief Machine_info::compilation_info
+	@brief MachineInfo::compilation_info
 	@return compilation_info
 */
-QString Machine_info::compilation_info()
+QString MachineInfo::compilation_info()
 {
-	QString compilation_info = "<br />" + tr("Compilation :   ");
+	QString compilation_info = "<br />" + QObject::tr("Compilation :   ");
 	compilation_info +=pc.built.version;
 	compilation_info += "<br>Built with Qt " + pc.built.QT;
 	compilation_info += " - Date : " + pc.built.date;

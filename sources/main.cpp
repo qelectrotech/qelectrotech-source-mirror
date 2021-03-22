@@ -208,7 +208,7 @@ int main(int argc, char **argv)
         qInfo("Start-up");
             // delete old log files of max 7 days old.
         delete_old_log_files(7);
-        Machine_info ma;
+		MachineInfo ma;
         ma.send_info_to_debug();
     });
 	return app.exec();

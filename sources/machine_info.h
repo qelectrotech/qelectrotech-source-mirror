@@ -18,31 +18,27 @@
 #ifndef MACHINE_INFO_H
 #define MACHINE_INFO_H
 
-#include <QObject>
 #include <QThread>
 
 /**
-	@brief The Machine_info class
+	@brief The MachineInfo class
 	This class hold information from your PC.
 */
-class Machine_info : public QObject
+class MachineInfo
 {
-	Q_OBJECT
-public:
-	explicit Machine_info(QObject *parent = nullptr);
-    static int32_t i_max_screen_width();
-    static int32_t i_max_screen_height();
-	QString compilation_info();
-	void send_info_to_debug();
+	public:
+		explicit MachineInfo();
+		static int32_t i_max_screen_width();
+		static int32_t i_max_screen_height();
+		QString compilation_info();
+		void send_info_to_debug();
 
-signals:
-
-private:
-	void init_get_Screen_info();
-	void init_get_cpu_info();
-	void init_get_cpu_info_linux();
-	void init_get_cpu_info_winnt();
-	void init_get_cpu_info_macos();
+	private:
+		void init_get_Screen_info();
+		void init_get_cpu_info();
+		void init_get_cpu_info_linux();
+		void init_get_cpu_info_winnt();
+		void init_get_cpu_info_macos();
 	struct Pc
 	{
 		struct Screen
