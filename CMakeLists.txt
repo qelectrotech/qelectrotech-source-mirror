@@ -133,6 +133,8 @@ target_include_directories(
   )
 
 install(TARGETS ${PROJECT_NAME})
+if (NOT MINGW)
+
 install(DIRECTORY ico/breeze-icons/16x16 DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/22x22 DESTINATION ${QET_ICONS_PATH})
 install(DIRECTORY ico/breeze-icons/32x32 DESTINATION ${QET_ICONS_PATH})
@@ -156,3 +158,5 @@ install(FILES misc/x-qet-element.desktop
 install(FILES misc/qelectrotech.xml DESTINATION share/mime/packages)
 install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
 install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
+
+endif()
