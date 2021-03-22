@@ -29,6 +29,7 @@
 #endif
 #include "qet.h"
 
+MachineInfo *MachineInfo::m_instance = nullptr;
 /**
 	@brief MachineInfo::MachineInfo
 	@param parent
@@ -320,48 +321,16 @@ void MachineInfo::init_get_cpu_info_macos()
 	@brief MachineInfo::i_max_screen_width
 	@return max screen width
 */
-int32_t MachineInfo::i_max_screen_width()
-{
-    const auto screens = qApp->screens();
-    auto screen_count = screens.count();
-
-    int32_t width_[10];
-    int32_t Max_width = 0;
-
-    for (int ii = 0; ii < screen_count; ++ii)
-    {
-        width_[ii]=
-                screens[ii]->geometry().width()
-                * screens[ii]->devicePixelRatio();
-        if(Max_width < width_[ii])
-            Max_width = width_[ii];
-    }
-
-    return Max_width;
+int32_t MachineInfo::i_max_screen_width() {
+	return pc.screen.Max_width;
 }
 
 /**
 	@brief MachineInfo::i_max_screen_height
 	@return max screen height
 */
-int32_t MachineInfo::i_max_screen_height()
-{    
-    const auto screens = qApp->screens();
-    auto screen_count = screens.count();
-
-    int32_t height_[10];
-    int32_t Max_height = 0;
-
-    for (int ii = 0; ii < screen_count; ++ii)
-    {
-        height_[ii]=
-                screens[ii]->geometry().height()
-                * screens[ii]->devicePixelRatio();
-        if(Max_height<height_[ii])
-            Max_height = height_[ii];
-    }
-
-    return Max_height;
+int32_t MachineInfo::i_max_screen_height() {
+	return pc.screen.Max_height;
 }
 
 /**
