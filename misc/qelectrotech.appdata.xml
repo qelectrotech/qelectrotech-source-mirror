@@ -23,7 +23,8 @@
  <summary xml:lang="ja">電気回路図エディタ</summary>
  <content_rating type="oars-1.1"/>
  <releases>
-     <release version="0.9-dev" date="2021-02-21">
+     <release version="0.9-dev" date="2021-02-21"/>
+ </releases>
  <description>
   <p>
    QElectroTech is a Qt5 application to design electric diagrams.
