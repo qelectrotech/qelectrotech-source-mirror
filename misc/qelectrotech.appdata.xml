@@ -2,7 +2,7 @@
 <!-- Copyright 2006-2021 The QElectroTech Team -->
 <application>
  <id type="desktop">qelectrotech.desktop</id>
- <metadata_license>GPL-2.0-or-later</metadata_license>
+ <metadata_license>MIT</metadata_license>
  <project_license>GPL-2.0-or-later</project_license>
  <name>QElectroTech</name>
  <summary>Electrical diagram editor</summary>
