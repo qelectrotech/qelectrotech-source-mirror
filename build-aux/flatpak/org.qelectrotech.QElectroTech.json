@@ -13,7 +13,6 @@
     "--socket=fallback-x11",
     "--device=dri",
     "--share=ipc",
-    "--socket=cups",
     "--filesystem=host"
   ],
   "modules": [
