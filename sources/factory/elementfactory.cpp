@@ -46,10 +46,14 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 	if (doc.document_element().attribute("link_type"))
 	{
 		QString link_type(doc.document_element().attribute("link_type").as_string());
-		if (link_type == "next_report" || link_type == "previous_report") return (new ReportElement(location, link_type, qgi, state));
-		if (link_type == "master")   return (new MasterElement   (location, qgi, state));
-		if (link_type == "slave")    return (new SlaveElement    (location, qgi, state));
-		if (link_type == "terminal") return (new TerminalElement (location, qgi, state));
+		if (link_type == QLatin1String("next_report") || link_type == QLatin1String("previous_report"))
+			return (new ReportElement(location, link_type, qgi, state));
+		if (link_type == QLatin1String("master"))
+			return (new MasterElement   (location, qgi, state));
+		if (link_type == QLatin1String("slave"))
+			return (new SlaveElement    (location, qgi, state));
+		if (link_type == QLatin1String("terminal"))
+			return (new TerminalElement (location, qgi, state));
 	}
 	
 		//default if nothing match for link_type
