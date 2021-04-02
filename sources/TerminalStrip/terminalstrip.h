@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QPointer>
+#include "terminalstripdata.h"
 
 class Element;
 class RealTerminal;
@@ -33,9 +34,9 @@ class TerminalStrip : public QObject
 		TerminalStrip(const QString &name, QETProject *project);
 
 		TerminalStrip(const QString &installation,
-							   const QString &location,
-							   const QString &name,
-							   QETProject *project);
+					  const QString &location,
+					  const QString &name,
+					  QETProject *project);
 
 		void setInstallation(const QString &installation);
 		void setLocation(const QString &location);
@@ -50,9 +51,7 @@ class TerminalStrip : public QObject
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal);
 
 	private:
-		QString m_installation;
-		QString m_location;
-		QString m_name;
+		TerminalStripData m_data;
 		QPointer<QETProject> m_project;
 		QVector<QPointer<Element>> m_terminal_elements_vector;
 		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
