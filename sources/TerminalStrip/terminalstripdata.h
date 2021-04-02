@@ -19,7 +19,6 @@
 #define TERMINALSTRIPDATA_H
 
 #include "../properties/propertiesinterface.h"
-//#include "terminalstrip.h"
 
 class TerminalStripData : public PropertiesInterface
 {
@@ -35,7 +34,9 @@ class TerminalStripData : public PropertiesInterface
 		bool fromXml (const QDomElement &xml_element) override;
 
 	private :
-		QString m_installation, m_location,  m_name;
+		QString m_installation = QStringLiteral("="),
+		m_location = QStringLiteral("+"),
+		m_name;
 
 };
 
