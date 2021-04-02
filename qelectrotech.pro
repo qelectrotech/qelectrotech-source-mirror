@@ -161,7 +161,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/dataBase/ui/*.h) \
            $$files(sources/factory/ui/*.h) \
            $$files(sources/print/*.h) \
-           $$files(sources/TerminalStrip/*.h)
+           $$files(sources/TerminalStrip/*.h) \
+           $$files(sources/TerminalStrip/ui/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -195,7 +196,8 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/dataBase/ui/*.cpp) \
            $$files(sources/factory/ui/*.cpp) \
            $$files(sources/print/*.cpp) \
-           $$files(sources/TerminalStrip/*.cpp)
+           $$files(sources/TerminalStrip/*.cpp) \
+           $$files(sources/TerminalStrip/ui/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -221,7 +223,8 @@ FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/qetgraphicsitem/ViewItem/ui/*.ui) \
          $$files(sources/dataBase/ui/*.ui) \
          $$files(sources/factory/ui/*.ui) \
-         $$files(sources/print/*.ui)
+         $$files(sources/print/*.ui) \
+         $$files(sources/TerminalStrip/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/

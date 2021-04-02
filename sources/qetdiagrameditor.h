@@ -192,6 +192,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_csv_export,			///< generate nomenclature
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item
+		*m_terminal_strip_dialog = nullptr, ///<Lauch terminal strip dialog
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_export_project_db,		///Export to file the internal database of the current project
