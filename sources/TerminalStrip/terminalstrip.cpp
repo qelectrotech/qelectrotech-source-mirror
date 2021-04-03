@@ -167,20 +167,13 @@ class PhysicalTerminal
 /************************************************************************************/
 /************************************************************************************/
 
-
-
 /**
  * @brief TerminalStrip::TerminalStrip
+ * @param installation
+ * @param location
  * @param name
  * @param project
  */
-TerminalStrip::TerminalStrip(const QString &name, QETProject *project) :
-	QObject(project),
-	m_project(project)
-{
-	m_data.m_name = name;
-}
-
 TerminalStrip::TerminalStrip(const QString &installation, const QString &location, const QString &name, QETProject *project) :
 	QObject(project),
 	m_project(project)
@@ -200,6 +193,10 @@ void TerminalStrip::setLocation(const QString &location) {
 
 void TerminalStrip::setName(const QString &name) {
 	m_data.m_name = name;
+}
+
+void TerminalStrip::setDescription(const QString &description) {
+	m_data.m_description = description;
 }
 
 /**

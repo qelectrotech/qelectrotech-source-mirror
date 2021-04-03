@@ -31,6 +31,7 @@
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
 #include "ui/importelementdialog.h"
+#include "TerminalStrip/terminalstrip.h"
 
 #include <QHash>
 #include <QStandardPaths>
@@ -1814,6 +1815,34 @@ DiagramContext QETProject::projectProperties()
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
 	updateDiagramsFolioData();
+}
+
+/**
+ * @brief QETProject::terminalStrip
+ * @return a QVector who contain all terminal strip owned by this project
+ */
+QVector<TerminalStrip *> QETProject::terminalStrip() const {
+	return m_terminal_strip_vector;
+}
+
+/**
+ * @brief QETProject::newTerminalStrip
+ * @param installation : installation of the terminal strip
+ * @param location : location of the terminal strip
+ * @param name : name of the terminal strip
+ * @return Create a new terminal strip with this project as parent.
+ * You can retrieve this terminal strip at any time by calling the function
+ * QETProject::terminalStrip()
+ */
+TerminalStrip *QETProject::newTerminalStrip(QString installation, QString location, QString name)
+{
+	auto ts = new TerminalStrip(installation,
+								location,
+								name,
+								this);
+
+	m_terminal_strip_vector.append(ts);
+	return ts;
 }
 
 /**

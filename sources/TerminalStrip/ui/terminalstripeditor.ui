@@ -18,21 +18,24 @@
     <widget class="QTableView" name="tableView"/>
    </item>
    <item row="0" column="0">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="m_add_terminal_strip_pb">
      <property name="text">
       <string>Ajouter un bornier</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="m_remove_terminal_strip_pb">
      <property name="text">
       <string>Supprimer le bornier</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QTreeWidget" name="treeWidget">
+    <widget class="QTreeWidget" name="m_terminal_strip_tw">
+     <property name="animated">
+      <bool>true</bool>
+     </property>
      <column>
       <property name="text">
        <string>Explorateur de bornier</string>

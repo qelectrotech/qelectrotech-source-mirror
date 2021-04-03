@@ -25,14 +25,35 @@ namespace Ui {
 }
 
 class QETProject;
+class TerminalStrip;
+class QTreeWidgetItem;
 
+/**
+ * @brief The TerminalStripEditor class
+ * Main dialog used to edit terminal strip
+ * of a project
+ */
 class TerminalStripEditor : public QDialog
 {
 		Q_OBJECT
 
+		enum TreeWidgetType{
+			Root,
+			Inst,
+			Loc,
+			Strip
+		};
+
 	public:
 		explicit TerminalStripEditor(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripEditor() override;
+
+	private:
+		void buildTree();
+		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
+
+	private slots:
+		void on_m_add_terminal_strip_pb_clicked();
 
 	private:
 		Ui::TerminalStripEditor *ui;

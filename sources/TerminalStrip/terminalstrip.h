@@ -39,8 +39,13 @@ class TerminalStrip : public QObject
 					  QETProject *project);
 
 		void setInstallation(const QString &installation);
+		QString installation() const {return m_data.m_installation;}
 		void setLocation(const QString &location);
+		QString location() const {return m_data.m_location;}
 		void setName(const QString &name);
+		QString name() const {return m_data.m_name;}
+		void setDescription(const QString &description);
+		QString description() const {return m_data.m_description;}
 
 		bool addTerminal(Element *terminal);
 		bool removeTerminal(Element *terminal);

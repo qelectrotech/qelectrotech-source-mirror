@@ -35,8 +35,9 @@ class TerminalStripData : public PropertiesInterface
 
 	private :
 		QString m_installation = QStringLiteral("="),
-		m_location = QStringLiteral("+"),
-		m_name;
+				m_location = QStringLiteral("+"),
+				m_name,
+				m_description;
 
 };
 
