@@ -195,6 +195,10 @@ void TerminalStrip::setName(const QString &name) {
 	m_data.m_name = name;
 }
 
+void TerminalStrip::setComment(const QString &comment) {
+	m_data.m_comment = comment;
+}
+
 void TerminalStrip::setDescription(const QString &description) {
 	m_data.m_description = description;
 }

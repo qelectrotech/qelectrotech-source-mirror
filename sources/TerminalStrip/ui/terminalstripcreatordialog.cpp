@@ -79,9 +79,13 @@ TerminalStrip *TerminalStripCreatorDialog::generatedTerminalStrip() const
 	if (name_.isEmpty()) {
 		name_ = QStringLiteral("X"); }
 
-	return m_project->newTerminalStrip(installation_,
-									   location_,
-									   name_);
+	auto strip = m_project->newTerminalStrip(installation_,
+											 location_,
+											 name_);
+	strip->setComment(ui->m_comment_le->text());
+	strip->setDescription(ui->m_description_te->toPlainText());
+
+	return strip;
 }
 
 /**

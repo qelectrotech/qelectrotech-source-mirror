@@ -44,6 +44,8 @@ class TerminalStrip : public QObject
 		QString location() const {return m_data.m_location;}
 		void setName(const QString &name);
 		QString name() const {return m_data.m_name;}
+		void setComment(const QString &comment);
+		QString comment() const {return m_data.m_comment;}
 		void setDescription(const QString &description);
 		QString description() const {return m_data.m_description;}
 
