@@ -27,6 +27,7 @@ namespace Ui {
 class QETProject;
 class TerminalStrip;
 class QTreeWidgetItem;
+class TerminalElement;
 
 /**
  * @brief The TerminalStripEditor class
@@ -39,6 +40,7 @@ class TerminalStripEditor : public QDialog
 
 		enum TreeWidgetType{
 			Root,
+			FreeTerminal,
 			Inst,
 			Loc,
 			Strip
@@ -51,6 +53,7 @@ class TerminalStripEditor : public QDialog
 	private:
 		void buildTree();
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
+		void addFreeTerminal();
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();

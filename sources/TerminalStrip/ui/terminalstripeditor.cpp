@@ -20,6 +20,8 @@
 #include "terminalstripcreatordialog.h"
 #include "../../qetproject.h"
 #include "../terminalstrip.h"
+#include "../elementprovider.h"
+#include "../qetgraphicsitem/terminalelement.h"
 
 #include <QTreeWidgetItem>
 
@@ -54,16 +56,20 @@ void TerminalStripEditor::buildTree()
 
 	auto title = m_project->title();
 	if (title.isEmpty()) {
-		title = tr("Projet : sans titre");
+		title = tr("Projet sans titre");
 	}
 
 	QStringList strl{title};
-	 new QTreeWidgetItem(ui->m_terminal_strip_tw, strl, TerminalStripEditor::Root);
+	new QTreeWidgetItem(ui->m_terminal_strip_tw, strl, TerminalStripEditor::Root);
+
+	QStringList ftstrl(tr("Bornes indépendante"));
+	new QTreeWidgetItem(ui->m_terminal_strip_tw, ftstrl, TerminalStripEditor::FreeTerminal);
 
 	const auto ts_vector = m_project->terminalStrip();
 	for (const auto ts : ts_vector) {
 		addTerminalStrip(ts);
 	}
+	addFreeTerminal();
 }
 
 /**
@@ -112,6 +118,34 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		//Add the terminal strip
 	QStringList name{terminal_strip->name()};
 	return new QTreeWidgetItem(loc_qtwi, name, TerminalStripEditor::Strip);
+}
+
+/**
+ * @brief TerminalStripEditor::addFreeTerminal
+ * Add free terminal (aka terminal which not belong to a terminal strip)
+ * in the tree widget
+ */
+void TerminalStripEditor::addFreeTerminal()
+{
+	ElementProvider ep(m_project);
+	auto vector_ = ep.freeTerminal();
+
+	if (vector_.isEmpty()) {
+		return;
+	}
+
+		//Sort the terminal element by label
+	std::sort(vector_.begin(), vector_.end(), [](TerminalElement *a, TerminalElement *b) {
+		return a->actualLabel() < b->actualLabel();
+	});
+
+	auto free_terminal_item = ui->m_terminal_strip_tw->topLevelItem(1);
+
+	for (const auto terminal : qAsConst(vector_))
+	{
+		QStringList strl{terminal->actualLabel()};
+		new QTreeWidgetItem(free_terminal_item, strl, TerminalStripEditor::FreeTerminal);
+	}
 }
 
 /**
