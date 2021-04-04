@@ -20,6 +20,7 @@
 
 
 #include "element.h"
+#include "../TerminalStrip/terminalstrip.h"
 
 class QETProject;
 /**
@@ -33,6 +34,12 @@ class TerminalElement : public Element
 				QGraphicsItem * = nullptr, int * = nullptr);
 		~TerminalElement() override;
 		void initLink(QETProject *project) override;
+
+		void setParentTerminalStrip(TerminalStrip *strip);
+		TerminalStrip *parentTerminalStrip() const;
+
+	private:
+		QPointer<TerminalStrip> m_parent_terminal_strip;
 };
 
 #endif // TERMINALELEMENT_H

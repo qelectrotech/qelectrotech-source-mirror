@@ -40,3 +40,26 @@ void TerminalElement::initLink(QETProject *project) {
 	Element::initLink(project);
 }
 
+/**
+ * @brief TerminalElement::setParentTerminalStrip
+ * Set \p strip as parent terminal strip.
+ * Be carefull, this function only set internally the parent terminal strip.
+ * This function don't check if there is a previous
+ * parent terminal strip and don't check
+ * if the new terminal strip have this terminal element
+ * in her list of terminal element.
+ * @param strip
+ */
+void TerminalElement::setParentTerminalStrip(TerminalStrip *strip) {
+	m_parent_terminal_strip = strip;
+}
+
+/**
+ * @brief TerminalElement::parentTerminalStrip
+ * @return The parent terminal strip of this
+ * terminal element or nullptr if not.
+ */
+TerminalStrip *TerminalElement::parentTerminalStrip() const {
+	return m_parent_terminal_strip.data();
+}
+
