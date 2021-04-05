@@ -1857,7 +1857,7 @@ bool QETProject::addTerminalStrip(TerminalStrip *strip)
 	if (strip->parent() != this)
 		return false;
 
-	if (!m_terminal_strip_vector.contains(strip))
+	if (m_terminal_strip_vector.contains(strip))
 		return true;
 
 	m_terminal_strip_vector.append(strip);

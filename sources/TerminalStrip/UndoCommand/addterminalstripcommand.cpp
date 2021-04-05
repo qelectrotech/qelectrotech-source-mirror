@@ -38,13 +38,13 @@ AddTerminalStripCommand::~AddTerminalStripCommand()
 {}
 
 void AddTerminalStripCommand::undo() {
-	if (m_project && m_strip) {
-		m_project->addTerminalStrip(m_strip);
-	}
+        if (m_project && m_strip) {
+                m_project->removeTerminalStrip(m_strip);
+        }
 }
 
 void AddTerminalStripCommand::redo() {
-	if (m_project && m_strip) {
-		m_project->removeTerminalStrip(m_strip);
-	}
+    if (m_project && m_strip) {
+            m_project->addTerminalStrip(m_strip);
+    }
 }

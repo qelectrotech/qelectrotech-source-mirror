@@ -27,7 +27,7 @@ class QETProject;
 class AddTerminalStripCommand : public QUndoCommand
 {
     public:
-        AddTerminalStripCommand(TerminalStrip *strip, QETProject *project, QUndoCommand *parent);
+		AddTerminalStripCommand(TerminalStrip *strip, QETProject *project, QUndoCommand *parent = nullptr);
         ~AddTerminalStripCommand() override;
 
 		void undo() override;
