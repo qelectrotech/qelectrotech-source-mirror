@@ -180,6 +180,8 @@ class QETProject : public QObject
 
 		QVector<TerminalStrip *> terminalStrip() const;
 		TerminalStrip * newTerminalStrip(QString installation = QString(), QString location = QString(), QString name = QString());
+		bool addTerminalStrip(TerminalStrip *strip);
+		bool removeTerminalStrip(TerminalStrip *strip);
 
 	public slots:
 		Diagram *addNewDiagram(int pos = -1);

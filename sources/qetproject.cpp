@@ -1846,6 +1846,36 @@ TerminalStrip *QETProject::newTerminalStrip(QString installation, QString locati
 }
 
 /**
+ * @brief QETProject::addTerminalStrip
+ * Add \p strip to the terminal strip list of the project.
+ * The project of \p strip must this project
+ * @param strip
+ * @return true if successfully added
+ */
+bool QETProject::addTerminalStrip(TerminalStrip *strip)
+{
+	if (strip->parent() != this)
+		return false;
+
+	if (!m_terminal_strip_vector.contains(strip))
+		return true;
+
+	m_terminal_strip_vector.append(strip);
+	return true;
+}
+
+/**
+ * @brief QETProject::removeTerminalStrip
+ * Remove \p strip from the terminal strip list of this project.
+ * Strip is removed from the list but not deleted.
+ * @param strip
+ * @return true if successfully removed.
+ */
+bool QETProject::removeTerminalStrip(TerminalStrip *strip) {
+	return m_terminal_strip_vector.removeOne(strip);
+}
+
+/**
 	Cette methode sert a reperer un projet vide, c-a-d un projet identique a ce
 	que l'on obtient en faisant Fichier > Nouveau.
 	@return true si les schemas, la collection embarquee ou les proprietes de ce
