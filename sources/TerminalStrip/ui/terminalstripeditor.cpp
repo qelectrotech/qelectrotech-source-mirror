@@ -22,6 +22,7 @@
 #include "../terminalstrip.h"
 #include "../elementprovider.h"
 #include "../qetgraphicsitem/terminalelement.h"
+#include "../UndoCommand/addterminalstripcommand.h"
 
 #include <QTreeWidgetItem>
 
@@ -65,8 +66,11 @@ void TerminalStripEditor::buildTree()
 	QStringList ftstrl(tr("Bornes indépendante"));
 	new QTreeWidgetItem(ui->m_terminal_strip_tw, ftstrl, TerminalStripEditor::FreeTerminal);
 
-	const auto ts_vector = m_project->terminalStrip();
-	for (const auto ts : ts_vector) {
+	auto ts_vector = m_project->terminalStrip();
+	std::sort(ts_vector.begin(), ts_vector.end(), [](TerminalStrip *a, TerminalStrip *b) {
+		return a->name() < b->name();});
+
+	for (const auto ts : qAsConst(ts_vector)) {
 		addTerminalStrip(ts);
 	}
 	addFreeTerminal();
@@ -78,9 +82,14 @@ void TerminalStripEditor::buildTree()
  * in the tree widget
  * @param terminal_strip
  * @return the QTreeWidgetItem who represent the terminal strip
+ * both if created or already exist
  */
 QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_strip)
 {
+	if (auto item = m_H_item_strip.key(terminal_strip)) {
+		return item;
+	}
+
 	auto root_item = ui->m_terminal_strip_tw->topLevelItem(0);
 
 		//Check if installation already exist
@@ -117,7 +126,9 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 
 		//Add the terminal strip
 	QStringList name{terminal_strip->name()};
-	return new QTreeWidgetItem(loc_qtwi, name, TerminalStripEditor::Strip);
+	auto item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripEditor::Strip);
+	m_H_item_strip.insert(item, terminal_strip);
+	return item;
 }
 
 /**
@@ -172,7 +183,26 @@ void TerminalStripEditor::on_m_add_terminal_strip_pb_clicked()
 
 	if (dialog->exec() == QDialog::Accepted)
 	{
-		auto item = addTerminalStrip(dialog->generatedTerminalStrip());
+		auto ts = dialog->generatedTerminalStrip();
+		m_project->undoStack()->push(new AddTerminalStripCommand(ts, m_project));
+
+		auto item = addTerminalStrip(ts);
 		ui->m_terminal_strip_tw->setCurrentItem(item);
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked
+ * Action when user click on remove terminal strip button
+ */
+void TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked()
+{
+	auto item = ui->m_terminal_strip_tw->currentItem();
+	if (auto strip = m_H_item_strip.value(item))
+	{
+		m_H_item_strip.remove(item);
+		delete item;
+
+		m_project->undoStack()->push(new RemoveTerminalStripCommand(strip, m_project));
 	}
 }

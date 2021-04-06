@@ -57,10 +57,13 @@ class TerminalStripEditor : public QDialog
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();
+		void on_m_remove_terminal_strip_pb_clicked();
 
 	private:
 		Ui::TerminalStripEditor *ui;
 		QETProject *m_project = nullptr;
+
+		QHash<QTreeWidgetItem *, TerminalStrip *> m_H_item_strip;
 };
 
 #endif // TERMINALSTRIPEDITOR_H
