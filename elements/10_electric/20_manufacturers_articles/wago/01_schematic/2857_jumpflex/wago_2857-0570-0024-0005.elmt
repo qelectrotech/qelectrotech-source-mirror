@@ -76,7 +76,7 @@
         <line length2="1.5" x2="-283" y2="-40" end1="none" x1="-310" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" y1="-40"/>
         <line length2="1.5" x2="310" y2="70" end1="none" x1="-310" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" y1="70"/>
         <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-173" text="GND" y="-24"/>
-        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-80" text="3-phase Power Measurement 1 A" y="65"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-80" text="3-phase Power Measurement 5 A" y="65"/>
         <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-253" text="GND" y="-24"/>
         <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-295" text="+24V" y="-24"/>
         <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-280" text="WAGO 2857-570/024-005" y="65"/>
