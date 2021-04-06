@@ -26,7 +26,9 @@
  * @param strip
  * @param parent
  */
-AddTerminalStripCommand::AddTerminalStripCommand(TerminalStrip *strip, QETProject *project, QUndoCommand *parent) :
+AddTerminalStripCommand::AddTerminalStripCommand(TerminalStrip *strip,
+												 QETProject    *project,
+												 QUndoCommand  *parent) :
 	QUndoCommand(parent),
 	m_strip(strip),
 	m_project(project)
@@ -47,4 +49,31 @@ void AddTerminalStripCommand::redo() {
     if (m_project && m_strip) {
             m_project->addTerminalStrip(m_strip);
     }
+}
+
+RemoveTerminalStripCommand::RemoveTerminalStripCommand(TerminalStrip *strip,
+													   QETProject    *project,
+													   QUndoCommand  *parent) :
+	QUndoCommand(parent),
+	m_strip(strip),
+	m_project(project)
+{
+	setText(QObject::tr("Supprimer un groupe de bornes"));
+}
+
+RemoveTerminalStripCommand::~RemoveTerminalStripCommand()
+{}
+
+void RemoveTerminalStripCommand::undo()
+{
+	if (m_project && m_strip) {
+		m_project->addTerminalStrip(m_strip);
+	}
+}
+
+void RemoveTerminalStripCommand::redo()
+{
+	if (m_project && m_strip) {
+		m_project->removeTerminalStrip(m_strip);
+	}
 }

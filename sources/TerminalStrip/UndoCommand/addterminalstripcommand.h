@@ -38,4 +38,18 @@ class AddTerminalStripCommand : public QUndoCommand
         QPointer<QETProject> m_project;
 };
 
+class RemoveTerminalStripCommand : public QUndoCommand
+{
+	public:
+		RemoveTerminalStripCommand(TerminalStrip *strip, QETProject *project, QUndoCommand *parent = nullptr);
+		~RemoveTerminalStripCommand() override;
+
+		void undo() override;
+		void redo() override;
+
+	private:
+		QPointer<TerminalStrip> m_strip;
+		QPointer<QETProject> m_project;
+};
+
 #endif // ADDTERMINALSTRIPCOMMAND_H
