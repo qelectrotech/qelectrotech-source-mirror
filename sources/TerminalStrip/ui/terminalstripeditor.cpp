@@ -23,6 +23,7 @@
 #include "../elementprovider.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../UndoCommand/addterminalstripcommand.h"
+#include "terminalstriptreewidget.h"
 
 #include <QTreeWidgetItem>
 
@@ -61,10 +62,10 @@ void TerminalStripEditor::buildTree()
 	}
 
 	QStringList strl{title};
-	new QTreeWidgetItem(ui->m_terminal_strip_tw, strl, TerminalStripEditor::Root);
+	new QTreeWidgetItem(ui->m_terminal_strip_tw, strl, TerminalStripTreeWidget::Root);
 
 	QStringList ftstrl(tr("Bornes indépendante"));
-	new QTreeWidgetItem(ui->m_terminal_strip_tw, ftstrl, TerminalStripEditor::FreeTerminal);
+	new QTreeWidgetItem(ui->m_terminal_strip_tw, ftstrl, TerminalStripTreeWidget::FreeTerminalSection);
 
 	auto ts_vector = m_project->terminalStrip();
 	std::sort(ts_vector.begin(), ts_vector.end(), [](TerminalStrip *a, TerminalStrip *b) {
@@ -105,7 +106,7 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 	}
 	if (!inst_qtwi) {
 		QStringList inst_strl{installation_str};
-		inst_qtwi = new QTreeWidgetItem(root_item, inst_strl, TerminalStripEditor::Inst);
+		inst_qtwi = new QTreeWidgetItem(root_item, inst_strl, TerminalStripTreeWidget::Inst);
 	}
 
 		//Check if location already exist
@@ -121,12 +122,12 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 	}
 	if (!loc_qtwi) {
 		QStringList loc_strl{location_str};
-		loc_qtwi = new QTreeWidgetItem(inst_qtwi, loc_strl, TerminalStripEditor::Loc);
+		loc_qtwi = new QTreeWidgetItem(inst_qtwi, loc_strl, TerminalStripTreeWidget::Loc);
 	}
 
 		//Add the terminal strip
 	QStringList name{terminal_strip->name()};
-	auto item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripEditor::Strip);
+	auto item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripTreeWidget::Strip);
 	m_H_item_strip.insert(item, terminal_strip);
 	return item;
 }
@@ -155,7 +156,8 @@ void TerminalStripEditor::addFreeTerminal()
 	for (const auto terminal : qAsConst(vector_))
 	{
 		QStringList strl{terminal->actualLabel()};
-		new QTreeWidgetItem(free_terminal_item, strl, TerminalStripEditor::FreeTerminal);
+		auto item = new QTreeWidgetItem(free_terminal_item, strl, TerminalStripTreeWidget::FreeTerminal);
+		item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal->uuid().toString());
 	}
 }
 
@@ -169,14 +171,14 @@ void TerminalStripEditor::on_m_add_terminal_strip_pb_clicked()
 
 	if (auto item = ui->m_terminal_strip_tw->currentItem())
 	{
-		if (item->type() == TerminalStripEditor::Strip) {
+		if (item->type() == TerminalStripTreeWidget::Strip) {
 			item = item->parent();
 		}
-		if (item->type() == TerminalStripEditor::Loc) {
+		if (item->type() == TerminalStripTreeWidget::Loc) {
 			dialog->setLocation(item->data(0, Qt::DisplayRole).toString());
 			item = item->parent();
 		}
-		if (item->type() == TerminalStripEditor::Inst) {
+		if (item->type() == TerminalStripTreeWidget::Inst) {
 			dialog->setInstallation(item->data(0, Qt::DisplayRole).toString());
 		}
 	}

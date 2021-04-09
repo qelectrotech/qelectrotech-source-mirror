@@ -201,6 +201,9 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/TerminalStrip/ui/*.cpp) \
            $$files(sources/TerminalStrip/UndoCommand/*.cpp)
 
+# Needed for use promote QTreeWidget in terminalstripeditor.ui
+INCLUDEPATH += sources/TerminalStrip/ui
+
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
 

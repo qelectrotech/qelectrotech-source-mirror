@@ -38,14 +38,6 @@ class TerminalStripEditor : public QDialog
 {
 		Q_OBJECT
 
-		enum TreeWidgetType{
-			Root,
-			FreeTerminal,
-			Inst,
-			Loc,
-			Strip
-		};
-
 	public:
 		explicit TerminalStripEditor(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripEditor() override;
