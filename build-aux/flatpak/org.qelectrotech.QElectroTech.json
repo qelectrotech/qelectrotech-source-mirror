@@ -73,7 +73,7 @@
         },
         {
           "type": "patch",
-          "path": "0001-build-Fix-the-installation-paths.patch"
+          "path": "patches/0001-build-Fix-the-installation-paths.patch"
         }
       ]
     },
