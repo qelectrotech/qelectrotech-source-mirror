@@ -48,6 +48,7 @@ class TerminalStrip : public QObject
 		QString comment() const {return m_data.m_comment;}
 		void setDescription(const QString &description);
 		QString description() const {return m_data.m_description;}
+		QUuid uuid() const {return m_data.m_uuid;}
 
 		bool addTerminal(Element *terminal);
 		bool removeTerminal(Element *terminal);

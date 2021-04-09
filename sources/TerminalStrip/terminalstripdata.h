@@ -20,6 +20,8 @@
 
 #include "../properties/propertiesinterface.h"
 
+#include <QUuid>
+
 class TerminalStripData : public PropertiesInterface
 {
 		friend class TerminalStrip;
@@ -39,6 +41,7 @@ class TerminalStripData : public PropertiesInterface
 				m_name,
 				m_comment,
 				m_description;
+		QUuid m_uuid = QUuid::createUuid();
 
 };
 

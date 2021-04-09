@@ -19,6 +19,7 @@
 #define TERMINALSTRIPTREEWIDGET_H
 
 #include <QTreeWidget>
+#include <QUuid>
 
 /**
  * @brief The TerminalStripTreeWidget class
@@ -30,15 +31,33 @@ class TerminalStripTreeWidget : public QTreeWidget
 	public :
 		enum TreeWidgetType{
 			Root,
+			Terminal,
 			FreeTerminal,
-			FreeTerminalSection,
-			Inst,
-			Loc,
+			Installation,
+			Location,
 			Strip
 		};
 
 			//Role used for data in QTreeWidgetItem
 		static int UUID_USER_ROLE;
+
+	signals:
+			/**
+			 * @brief terminalAddedToStrip
+			 * Signal emited when a terminal is moved from free terminal to a terminals trip
+			 */
+		void terminalAddedToStrip(QUuid terminal_uuid, QUuid strip_uuid);
+			/**
+			 * @brief terminalMovedFromStripToStrip
+			 * Signam emitted when a terminal is moved from from a terminal stip to another one
+			 */
+		void terminalMovedFromStripToStrip(QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid);
+			/**
+			 * @brief terminalRemovedFromStrip
+			 * Signal emitted when a terminal is moved from a terminal strip to free terminal
+			 */
+		void terminalRemovedFromStrip(QUuid terminal_uuid, QUuid old_strip_uuid);
+
 
     public:
         TerminalStripTreeWidget(QWidget *parent = nullptr);

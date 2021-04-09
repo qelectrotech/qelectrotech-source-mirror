@@ -1,4 +1,4 @@
-﻿/*
+/*
         Copyright 2006-2021 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -31,7 +31,7 @@ TerminalStripTreeWidget::TerminalStripTreeWidget(QWidget *parent) :
 
 QStringList TerminalStripTreeWidget::mimeTypes() const
 {
-	QStringList strl(QStringLiteral("application/x-qet-terminal-strip-tree-item"));
+	QStringList strl(QStringLiteral("application/x-qet-terminal-strip-tree-terminal-uuid"));
 
 	return strl;
 }
@@ -43,13 +43,13 @@ void TerminalStripTreeWidget::startDrag(Qt::DropActions supportedActions)
 	auto item = currentItem();
 
 	if (!item ||
-		item->type() != TerminalStripTreeWidget::FreeTerminal) {
+		item->type() != TerminalStripTreeWidget::Terminal) {
 		return;
 	}
 
 	QDrag drag(this);
 	auto mime_data = new QMimeData();
-	mime_data->setData("application/x-qet-terminal-strip-tree-item", item->data(0, UUID_USER_ROLE).toString().toLatin1());
+	mime_data->setData("application/x-qet-terminal-strip-tree-terminal-uuid", item->data(0, UUID_USER_ROLE).toString().toLatin1());
 
 	drag.setMimeData(mime_data);
 	drag.setPixmap(QET::Icons::ElementTerminal.pixmap(16,16));
@@ -58,20 +58,81 @@ void TerminalStripTreeWidget::startDrag(Qt::DropActions supportedActions)
 
 void TerminalStripTreeWidget::dragMoveEvent(QDragMoveEvent *event)
 {
+	auto strl = event->mimeData()->formats();
+	if (strl.size() != 1 ||
+		strl.first() != "application/x-qet-terminal-strip-tree-terminal-uuid") {
+		event->ignore();
+		return;
+	}
+		//Accepted move are :
+		//free terminal to terminal strip
+		//terminal strip to another terminal strip
+		//terminal strip to free terminal
+		//All other other move is ignored
 	QTreeWidget::dragMoveEvent(event);
 
-	auto item = itemAt(event->pos());
+	auto overred_item = itemAt(event->pos());
+	auto dragged_item = currentItem();
+	if (!overred_item ||
+		!dragged_item ||
+		!dragged_item->parent()) {
+		return;
+	}
+		//Ignore the event by default, we confirm it bellow if needed.
+	event->ignore();
 
-	if (item &&
-		item->type() == TerminalStripTreeWidget::Strip) {
+		//Move terminal
+	if (dragged_item->parent()->type() == FreeTerminal && //From free to strip
+		overred_item->type() == Strip) {
 		event->accept();
-	} else {
-		event->ignore();
+	}
+	else if (dragged_item->parent()->type() == Strip) //From strip to ...
+	{
+		if (overred_item->type() == FreeTerminal) { //Free terminal
+			event->accept();
+		} else if (overred_item->type() == Strip && //Another strip
+				   dragged_item->parent() != overred_item) {
+			event->accept();
+		}
 	}
 }
 
 void TerminalStripTreeWidget::dropEvent(QDropEvent *event)
-{}
+{
+	auto overred_item = itemAt(event->pos());
+	auto dragged_item = currentItem();
+	if (!overred_item ||
+		!dragged_item ||
+		!dragged_item->parent()) {
+		return;
+	}
+
+	dragged_item->parent()->removeChild(dragged_item);
+	overred_item->addChild(dragged_item);
+
+		//Move terminal
+	if (dragged_item->parent()->type() == FreeTerminal && //From free to strip
+		overred_item->type() == Strip) {
+		emit terminalAddedToStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
+								  QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
+	}
+	else if (dragged_item->parent()->type() == Strip) //From strip to ...
+	{
+		if (overred_item->type() == FreeTerminal) //Free terminal
+		{
+			emit terminalRemovedFromStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
+										  QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
+		}
+		else if (overred_item->type() == Strip && //Another strip
+				 dragged_item->parent() != overred_item)
+		{
+			emit terminalMovedFromStripToStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
+											   QUuid::fromString(dragged_item->parent()->data(0, UUID_USER_ROLE).toString()),
+											   QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
+		}
+	}
+
+}
 
 Qt::DropActions TerminalStripTreeWidget::supportedDropActions() const {
 	return Qt::MoveAction;
