@@ -210,7 +210,7 @@ void ElementQueryWidget::setQuery(const QString &query)
 		beginning_rx.append(QString("^(").append(strl.join("|")));
 		beginning_rx.append(")");
 
-		QRegularExpression rx_is_not_null(beginning_rx + " IS NOT NULL$");
+		QRegularExpression rx_is_not_null(beginning_rx + " != ''$");
 		QRegularExpression rx_is_null (beginning_rx + " IS NULL$");
 		QRegularExpression rx_like (beginning_rx + QString(" LIKE'%(.+)%'$"));
 		QRegularExpression rx_not_like (beginning_rx + QString(" NOT LIKE'%(.+)%'$"));
@@ -310,22 +310,22 @@ QString ElementQueryWidget::queryStr() const
 			case 0: //No filter
 				break;
 			case 1: //Not empty
-				filter_ += QString(" AND ") += key += " IS NOT NULL";
+				filter_ += QStringLiteral(" AND ") += key += " != ''";
 				break;
 			case 2: //empty
-				filter_ += QString(" AND ") += key += " IS NULL";
+				filter_ += QStringLiteral(" AND ") += key += " IS NULL";
 				break;
 			case 3: // contain
-				filter_ += QString(" AND ") += key += QString(" LIKE'%") += f.second += "%'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" LIKE'%") += f.second += "%'";
 				break;
 			case 4: // not contain
-				filter_ += QString(" AND ") += key += QString(" NOT LIKE'%") += f.second += "%'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" NOT LIKE'%") += f.second += "%'";
 				break;
 			case 5: // is equal
-				filter_ += QString(" AND ") += key += QString("='") += f.second += "'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral("='") += f.second += "'";
 				break;
 			case 6: // is not equal
-				filter_ += QString(" AND ") += key += QString("!='") += f.second += "'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral("!='") += f.second += "'";
 				break;
 		}
 	}
