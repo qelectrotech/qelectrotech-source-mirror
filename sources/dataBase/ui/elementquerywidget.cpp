@@ -207,18 +207,14 @@ void ElementQueryWidget::setQuery(const QString &query)
 			strl.append(item->data(Qt::UserRole).toString());
 		}
 
-		QString beginning_rx;
-		beginning_rx.append(QString("^(").append(strl.join("|")));
-		beginning_rx.append(")");
-
 		QString join_str = strl.join("|");
 
-		QRegularExpression rx_is_not_null(beginning_rx + " != ''$");
-		QRegularExpression rx_is_null(QStringLiteral("^\\((%1) IS NULL OR (%1) = ''\\)").arg(join_str));
-		QRegularExpression rx_like (beginning_rx + QString(" LIKE'%(.+)%'$"));
-		QRegularExpression rx_not_like (beginning_rx + QString(" NOT LIKE'%(.+)%'$"));
-		QRegularExpression rx_equal (beginning_rx + QString("='(.+)'$"));
-		QRegularExpression rx_not_equal (beginning_rx + QString("!='(.+)'$"));
+		QRegularExpression rx_is_not_null(QStringLiteral("^(%1) != ''$").arg(join_str));
+		QRegularExpression rx_is_null    (QStringLiteral("^\\((%1) IS NULL OR (%1) = ''\\)").arg(join_str));
+		QRegularExpression rx_like       (QStringLiteral("^(%1) LIKE'%(.+)%'$").arg(join_str));
+		QRegularExpression rx_not_like   (QStringLiteral("^(%1) NOT LIKE'%(.+)%'$").arg(join_str));
+		QRegularExpression rx_equal      (QStringLiteral("^(%1)='(.+)'$").arg(join_str));
+		QRegularExpression rx_not_equal  (QStringLiteral("^(%1)!='(.+)'$").arg(join_str));
 
 		QStringList split_where;
 			//Remove the white space at begin and end of each string
