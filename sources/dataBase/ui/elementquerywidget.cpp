@@ -157,40 +157,41 @@ void ElementQueryWidget::setQuery(const QString &query)
 			//Element type filter
 		if (where.contains("element_sub_type") || where.contains("element_type"))
 		{
-			int c=0;
-			ui->m_simple_cb->setChecked    (where.contains("Simple")     ? true : false);
-			if (ui->m_simple_cb->isChecked()) {
-				++c;
-				where.remove("element_type = 'Simple' ");
-			}
-			ui->m_terminal_cb->setChecked  (where.contains("Terminale")  ? true : false);
-			if (ui->m_terminal_cb->isChecked()) {
-				++c;
-				where.remove("element_type = 'Terminale'");
-			}
-			ui->m_coil_cb->setChecked      (where.contains("coil")       ? true : false);
-			if (ui->m_coil_cb->isChecked()) {
-				++c;
-				where.remove("element_sub_type = 'coil' ");
-			}
-			ui->m_button_cb->setChecked    (where.contains("commutator") ? true : false);
-			if (ui->m_button_cb->isChecked()) {
-				++c;
-				where.remove("element_sub_type = 'commutator' ");
-			}
-			ui->m_protection_cb->setChecked(where.contains("protection") ? true : false);
-			if (ui->m_protection_cb) {
-				++c;
-				where.remove("element_sub_type = 'protection'");
-			}
+			QRegularExpression rx("^(\\( .+?\\))");
+			auto rxm = rx.match(where);
+			if (rxm.hasMatch())
+			{
+				auto str_type = rxm.captured(1);
+				where.remove(str_type);
 
-			if (c == 5) {
-				ui->m_all_cb->setCheckState(Qt::Checked);
-			} else if (c > 0) {
-				ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
-			}
+				int c=0;
+				ui->m_simple_cb->setChecked    (str_type.contains("Simple")     ? true : false);
+				if (ui->m_simple_cb->isChecked()) {
+					++c;
+				}
+				ui->m_terminal_cb->setChecked  (str_type.contains("Terminale")  ? true : false);
+				if (ui->m_terminal_cb->isChecked()) {
+					++c;
+				}
+				ui->m_coil_cb->setChecked      (str_type.contains("coil")       ? true : false);
+				if (ui->m_coil_cb->isChecked()) {
+					++c;
+				}
+				ui->m_button_cb->setChecked    (str_type.contains("commutator") ? true : false);
+				if (ui->m_button_cb->isChecked()) {
+					++c;
+				}
+				ui->m_protection_cb->setChecked(str_type.contains("protection") ? true : false);
+				if (ui->m_protection_cb) {
+					++c;
+				}
 
-			where.remove("OR");
+				if (c == 5) {
+					ui->m_all_cb->setCheckState(Qt::Checked);
+				} else if (c > 0) {
+					ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
+				}
+			}
 		}
 		else // There is not "element_sub_type" or "element_type" that mean every element are selected
 		{
@@ -210,16 +211,16 @@ void ElementQueryWidget::setQuery(const QString &query)
 		beginning_rx.append(QString("^(").append(strl.join("|")));
 		beginning_rx.append(")");
 
+		QString join_str = strl.join("|");
+
 		QRegularExpression rx_is_not_null(beginning_rx + " != ''$");
-		QRegularExpression rx_is_null (beginning_rx + " IS NULL$");
+		QRegularExpression rx_is_null(QStringLiteral("^\\((%1) IS NULL OR (%1) = ''\\)").arg(join_str));
 		QRegularExpression rx_like (beginning_rx + QString(" LIKE'%(.+)%'$"));
 		QRegularExpression rx_not_like (beginning_rx + QString(" NOT LIKE'%(.+)%'$"));
 		QRegularExpression rx_equal (beginning_rx + QString("='(.+)'$"));
 		QRegularExpression rx_not_equal (beginning_rx + QString("!='(.+)'$"));
 
-
 		QStringList split_where;
-
 			//Remove the white space at begin and end of each string
 		for (auto str : where.split("AND "))
 		{
@@ -313,7 +314,7 @@ QString ElementQueryWidget::queryStr() const
 				filter_ += QStringLiteral(" AND ") += key += " != ''";
 				break;
 			case 2: //empty
-				filter_ += QStringLiteral(" AND ") += key += " IS NULL";
+				filter_ += QStringLiteral(" AND (%1 IS NULL OR %1 = '')").arg(key);
 				break;
 			case 3: // contain
 				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" LIKE'%") += f.second += "%'";
