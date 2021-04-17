@@ -1,0 +1,40 @@
+<definition hotspot_y="24" type="element" link_type="simple" height="50" width="60" orientation="dyyy" version="0.80" hotspot_x="28">
+    <uuid uuid="{4f9e99c4-8b9f-4727-837a-c145a41669dc}"/>
+    <names>
+        <name lang="de">Fußschalter 2-polig Schliesser/Öffner</name>
+        <name lang="en">Foot Switch (NO/NC)</name>
+        <name lang="pl">Łącznik wielozestykowy napędzany nogą</name>
+        <name lang="it">Comando a pedale (NO/NC)</name>
+        <name lang="ar">مفتاح بدوّاسة (NO/NC)</name>
+        <name lang="el">Ποδοδιακόπτης, ανοικτή και κλειστή επαφή</name>
+        <name lang="cs">Pedálový spínač (NO/NC)</name>
+        <name lang="es">Paro de emergencia con pedal (NA/NC)</name>
+        <name lang="fr">Interrupteur à pedale (NO/NC)</name>
+        <name lang="nl">Voetschakelaar (NO/NC)</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="-15" length1="1.5" y1="-9" y2="-9" length2="1.5" antialias="false" end1="none" end2="none" x1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{6e15cbca-5884-432a-b376-0eeeaf93807b}" frame="false" Valignment="AlignTop" z="4" Halignment="AlignLeft" x="-25" rotation="0" text_width="-1" text_from="ElementInfo" y="-23">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{fec82be4-22c7-47c0-9f88-03e4aa98453b}" frame="false" Valignment="AlignTop" z="5" Halignment="AlignLeft" x="-24" rotation="0" text_width="-1" text_from="ElementInfo" y="9">
+            <text></text>
+        </dynamic_text>
+        <polygon x2="-22" x3="-16" y1="20" y2="10" antialias="true" y3="-10" closed="false" x1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="28" length1="1.5" y1="0" y2="0" length2="1.5" antialias="false" end1="none" end2="none" x1="-23" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <line x2="-22" length1="1.5" y1="-20" y2="-9" length2="1.5" antialias="false" end1="none" end2="none" x1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x2="25" x3="19" y1="20" y2="10" antialias="true" y3="-10" closed="false" x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="25" length1="1.5" y1="-20" y2="-9" length2="1.5" antialias="false" end1="none" end2="none" x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{710338b0-9eaa-4d59-83d7-04c5d943f372}" frame="false" Valignment="AlignTop" z="12" Halignment="AlignLeft" x="-16" rotation="0" text_width="-1" text_from="ElementInfo" y="-7.8334">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal uuid="{d0344bb5-2bee-4b7e-a546-3d1e93cc6c6e}" name="" x="-22" orientation="n" y="-20"/>
+        <terminal uuid="{e5ce146b-8ee7-4911-8b16-3df6e5db95f7}" name="" x="25" orientation="s" y="20"/>
+        <terminal uuid="{cb1c6234-2e2b-4182-a41e-0bd903308857}" name="" x="25" orientation="n" y="-20"/>
+        <terminal uuid="{4c78277d-8476-4fb2-9ca3-49c4e85e6dd3}" name="" x="-22" orientation="s" y="20"/>
+    </description>
+</definition>
