@@ -42,6 +42,7 @@ class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
 class AutoNumberingDockWidget;
+class QComboBox;
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -240,5 +241,6 @@ class QETDiagramEditor : public QETMainWindow
 		int activeSubWindowIndex;
 		bool m_first_show = true;
 		SearchAndReplaceWidget m_search_and_replace_widget;
+		QComboBox *m_scale_picture_cb = nullptr;
 };
 #endif

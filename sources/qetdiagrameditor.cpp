@@ -738,11 +738,36 @@ void QETDiagramEditor::setUpToolBar()
 	m_depth_tool_bar->setObjectName("diagram_depth_toolbar");
 	m_depth_tool_bar->addActions(m_depth_action_group->actions());
 
+	auto element_picture_scale_tool_bar = new QToolBar(tr("Facteur d'échelle des élements"), this);
+	auto label_ = new QLabel(tr("Facteur d'échelle des élements :  "), this);
+	element_picture_scale_tool_bar->addWidget(label_);
+	m_scale_picture_cb = new QComboBox(this);
+	m_scale_picture_cb->addItem("0,25", 0.25);
+	m_scale_picture_cb->addItem("0,50", 0.5);
+	m_scale_picture_cb->addItem("0,75", 0.75);
+	m_scale_picture_cb->addItem("1", 1);
+	m_scale_picture_cb->addItem("1,25", 1.25);
+	m_scale_picture_cb->addItem("1,50", 1.5);
+	m_scale_picture_cb->addItem("1,75", 1.75);
+	m_scale_picture_cb->addItem("2", 2);
+	m_scale_picture_cb->setCurrentIndex(3);
+	element_picture_scale_tool_bar->addWidget(m_scale_picture_cb);
+	connect(m_scale_picture_cb, QOverload<int>::of(&QComboBox::currentIndexChanged), [this](int)
+	{
+		Element::setPictureScale(m_scale_picture_cb->currentData().toReal());
+		auto dv = this->currentDiagramView();
+		if (dv && dv->scene()) {
+			dv->scene()->update();
+		}
+	});
+
+
 	addToolBar(Qt::TopToolBarArea, main_tool_bar);
 	addToolBar(Qt::TopToolBarArea, view_tool_bar);
 	addToolBar(Qt::TopToolBarArea, diagram_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_add_item_tool_bar);
 	addToolBar(Qt::TopToolBarArea, m_depth_tool_bar);
+	addToolBar(Qt::TopToolBarArea, element_picture_scale_tool_bar);
 }
 
 /**

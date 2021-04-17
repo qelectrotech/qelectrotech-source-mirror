@@ -37,6 +37,8 @@
 #include <QDomElement>
 #include <utility>
 
+qreal PICTURE_SCALE = 1;
+
 class ElementXmlRetroCompatibility
 {
 	friend class Element;
@@ -124,6 +126,11 @@ Element::Element(
 				t->updateConductor();
 		}
 	});
+}
+
+void Element::setPictureScale(qreal scale)
+{
+	PICTURE_SCALE = scale;
 }
 
 /**
@@ -234,7 +241,17 @@ void Element::paint(
 	{
 		painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
+		if (Q_UNLIKELY(PICTURE_SCALE != 1.0))
+		{
+		painter->save();
+		painter->scale(PICTURE_SCALE, PICTURE_SCALE);
 		painter->drawPicture(0, 0, m_picture);
+		painter->restore();
+		}
+		else
+		{
+			painter->drawPicture(0, 0, m_picture);
+		}
 	}
 
 	painter->restore(); //Restor the QPainter after use drawPicture

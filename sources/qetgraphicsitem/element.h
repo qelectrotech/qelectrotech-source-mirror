@@ -95,6 +95,7 @@ class Element : public QetGraphicsItem
 
 
 	public:
+		static void setPictureScale(qreal scale);
 		QList<Terminal *> terminals() const;
 		QList<Conductor *> conductors() const;
 		QList<QPair<Terminal *,Terminal *>> AlignedFreeTerminals() const;
