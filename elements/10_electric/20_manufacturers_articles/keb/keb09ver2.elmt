@@ -1,0 +1,168 @@
+<definition type="element" width="410" version="0.90" height="120" hotspot_x="204" link_type="simple" hotspot_y="54">
+    <uuid uuid="{9c01b270-f1a3-4899-b2b6-2e904faa4d49}"/>
+    <names>
+        <name lang="fr">KEB 09 Ver. 3</name>
+        <name lang="it">KEB 09 Ver. 3</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1">1</elementInformation>
+        <elementInformation name="designation" show="1">09-F5-C1B-3A0A</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">KEB</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1">https://www.keb.it/</elementInformation>
+        <elementInformation name="description" show="1">INVERTER 1,5KW</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Orlandi Luca
+</informations>
+    <description>
+        <rect y="-50" width="402" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="110" antialias="false" x="-200" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-180" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-160" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-140" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="20" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="40" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="60" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="80" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="100" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="120" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="140" ry="0"/>
+        <rect y="-50" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="160" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-180" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-160" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-140" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-120" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-70" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="-30" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="40" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="60" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="80" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="100" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="120" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="140" ry="0"/>
+        <rect y="40" width="20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" antialias="false" x="160" ry="0"/>
+        <dynamic_text y="-51" uuid="{9cb0293b-f01c-408c-a9f1-13d5d6b4c4ba}" frame="false" z="49" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="41" Halignment="AlignLeft">
+            <text>15 
+IND</text>
+        </dynamic_text>
+        <dynamic_text y="-51" uuid="{9cb0293b-f01c-408c-a9f1-13d5d6b4c4ba}" frame="false" z="49" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="61" Halignment="AlignLeft">
+            <text>14 
+AV</text>
+        </dynamic_text>
+        <dynamic_text y="-48" uuid="{7e016c13-b7ea-4375-a810-ed38d55a3169}" frame="false" z="51" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-158" Halignment="AlignLeft">
+            <text>L2</text>
+        </dynamic_text>
+        <dynamic_text y="-48" uuid="{fc40d53e-c485-4b7e-a55b-5e33d1d9e29f}" frame="false" z="52" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-138" Halignment="AlignLeft">
+            <text>L3</text>
+        </dynamic_text>
+        <dynamic_text y="-51" uuid="{357fbc4b-85c9-4616-901a-7c9f354261ae}" frame="false" z="53" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="21" Halignment="AlignLeft">
+            <text>16 
+ST</text>
+        </dynamic_text>
+        <dynamic_text y="-48" uuid="{54791f27-cca1-4867-850c-39692defb40d}" frame="false" z="54" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-178" Halignment="AlignLeft">
+            <text>L1</text>
+        </dynamic_text>
+        <dynamic_text y="-51" uuid="{4d741ebe-42d5-41bd-99dd-6c70c631a29e}" frame="false" z="56" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="78" Halignment="AlignLeft">
+            <text>10 
+VEL1</text>
+        </dynamic_text>
+        <dynamic_text y="-52" uuid="{9fa01c09-bc93-47e5-90e0-67b6d40bddde}" frame="false" z="57" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="98" Halignment="AlignLeft">
+            <text>8 
+COM</text>
+        </dynamic_text>
+        <dynamic_text y="-52" uuid="{26cb261b-71b3-4a42-96d6-b08569d05588}" frame="false" z="58" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="118" Halignment="AlignLeft">
+            <text>2 
+AN1-</text>
+        </dynamic_text>
+        <dynamic_text y="-52" uuid="{5820016c-4f37-434d-94cf-6adc4584313f}" frame="false" z="59" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="137" Halignment="AlignLeft">
+            <text>1 
+AN1+</text>
+        </dynamic_text>
+        <dynamic_text y="-50" uuid="{77ff43f4-c483-4066-bdc1-04e5cf240174}" frame="false" z="60" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="160" Halignment="AlignLeft">
+            <text>PE</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{8fb29f73-28ef-44c8-8444-2b8dcd47b78b}" frame="false" z="61" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="160" Halignment="AlignLeft">
+            <text>29 
+FLC</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{fdc2e3b2-0a2b-4773-ab86-24a47dd1b8d2}" frame="false" z="62" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="140" Halignment="AlignLeft">
+            <text>28 
+FLB</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{bf3caefc-ae40-4597-8485-d3d657804bb2}" frame="false" z="63" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="120" Halignment="AlignLeft">
+            <text>27 
+FLA</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{0e78d55a-d0fc-4a02-b52e-a2dd272a7c09}" frame="false" z="64" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="100" Halignment="AlignLeft">
+            <text>26 
+RLC</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{8d8f923d-53c0-4dc6-8fcf-19e03583cd59}" frame="false" z="65" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="80" Halignment="AlignLeft">
+            <text>25 
+RLB</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{c1249468-5f0f-4d16-bc69-ce9a21ca44c6}" frame="false" z="66" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="40" Halignment="AlignLeft">
+            <text>22 
+0V</text>
+        </dynamic_text>
+        <dynamic_text y="35" uuid="{6df6044a-96d3-4bc8-9e11-3f68f3b2f42c}" frame="false" z="67" rotation="0" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="60" Halignment="AlignLeft">
+            <text>24 
+RLA</text>
+        </dynamic_text>
+        <dynamic_text y="40" uuid="{f0b87066-bdc9-43bb-8817-2e2d3943869c}" frame="false" z="69" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-30" Halignment="AlignLeft">
+            <text>PB</text>
+        </dynamic_text>
+        <dynamic_text y="40" uuid="{da388457-8a0d-4ee8-8298-ae0654b3d465}" frame="false" z="70" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-70" Halignment="AlignLeft">
+            <text>++</text>
+        </dynamic_text>
+        <dynamic_text y="40" uuid="{07b62cd2-8619-4098-8672-d730cbe07568}" frame="false" z="71" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-176" Halignment="AlignLeft">
+            <text>U</text>
+        </dynamic_text>
+        <dynamic_text y="40" uuid="{830025d1-2c7d-4d27-9f6b-1b6966accc90}" frame="false" z="72" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-156" Halignment="AlignLeft">
+            <text>V</text>
+        </dynamic_text>
+        <dynamic_text y="40" uuid="{925db9fa-a0cb-446b-a679-a128882a6f62}" frame="false" z="73" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-138" Halignment="AlignLeft">
+            <text>W</text>
+        </dynamic_text>
+        <dynamic_text y="40" uuid="{2c88d7bc-142e-4b57-b2a7-db5bbf800b9c}" frame="false" z="74" rotation="0" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" text_width="-1" text_from="UserText" Valignment="AlignTop" x="-118" Halignment="AlignLeft">
+            <text>PE</text>
+        </dynamic_text>
+        <dynamic_text y="-10" uuid="{18e9df4e-18d4-4201-941e-10cc9e39a3d3}" frame="false" z="76" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="UserText" Valignment="AlignTop" x="0" Halignment="AlignLeft">
+            <text>KEB 09-F5-C1B-3A0A</text>
+        </dynamic_text>
+        <dynamic_text y="-10" uuid="{64362627-e08c-4de8-a011-8a91f80ea3f3}" frame="false" z="77" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="CompositeText" Valignment="AlignTop" x="-190" Halignment="AlignLeft">
+            <text></text>
+            <composite_text>%{label}</composite_text>
+        </dynamic_text>
+        <terminal y="60" type="Generic" uuid="{352bbd57-c330-4361-be14-646663379930}" name="" x="50" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{1b5c8bb2-cb99-4ce8-8139-a2c9f7856ff8}" name="" x="-20" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{df266207-2d4a-4fe1-b7af-9b9100b25dea}" name="" x="150" orientation="s"/>
+        <terminal y="-50" type="Generic" uuid="{0f2ba55c-7544-4fdd-8696-d43fde72c0d6}" name="" x="30" orientation="n"/>
+        <terminal y="60" type="Generic" uuid="{61505e83-28d6-479e-897c-d307512749ec}" name="" x="90" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{0ffe4301-45d0-4899-a9c8-0c378093173e}" name="" x="-150" orientation="s"/>
+        <terminal y="-50" type="Generic" uuid="{a0085436-ad3c-43d1-a2d0-6097d0d642e1}" name="" x="170" orientation="n"/>
+        <terminal y="-50" type="Generic" uuid="{9a94df2f-84cf-4cde-85f1-3adf09dd4830}" name="" x="110" orientation="n"/>
+        <terminal y="-50" type="Generic" uuid="{22ac218a-2ecf-49e2-a518-81c59e4bf819}" name="" x="50" orientation="n"/>
+        <terminal y="60" type="Generic" uuid="{7a44c541-ca18-4c49-b04f-6003df0e93b9}" name="" x="-170" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{27d8582b-b03c-4b13-a4c7-6d95e3343bc3}" name="" x="170" orientation="s"/>
+        <terminal y="-50" type="Generic" uuid="{557131f5-5b0e-4418-8458-1ea40c4d2f51}" name="" x="90" orientation="n"/>
+        <terminal y="-50" type="Generic" uuid="{239c45cc-61be-4848-9065-e62dfaccdc95}" name="" x="-150" orientation="n"/>
+        <terminal y="-50" type="Generic" uuid="{f932ba17-6352-4c0a-b1e5-79cb9c263892}" name="" x="150" orientation="n"/>
+        <terminal y="60" type="Generic" uuid="{7b0c483a-53a9-4e49-a4c7-94a8f782d0fb}" name="" x="130" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{2e1384da-6141-407c-b055-bf76756e7ecb}" name="" x="70" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{12c206c6-64b9-4b5e-85bb-d25edc905af8}" name="" x="110" orientation="s"/>
+        <terminal y="-50" type="Generic" uuid="{d11c1e81-521f-4c42-b072-94dd5dc63263}" name="" x="130" orientation="n"/>
+        <terminal y="60" type="Generic" uuid="{ab9b57cd-e54a-4152-b7b3-5fb4300d8c61}" name="" x="-130" orientation="s"/>
+        <terminal y="-50" type="Generic" uuid="{fc04d19d-03b6-49e7-ad1e-945f55d36ba1}" name="" x="70" orientation="n"/>
+        <terminal y="-50" type="Generic" uuid="{3e2edf8f-c025-42ac-a2d5-69bd43018fc2}" name="" x="-170" orientation="n"/>
+        <terminal y="-50" type="Generic" uuid="{7998f992-81b8-4084-b967-564a564cfdb0}" name="" x="-130" orientation="n"/>
+        <terminal y="60" type="Generic" uuid="{a482d49f-063e-4698-b38e-72617cf348b1}" name="" x="-110" orientation="s"/>
+        <terminal y="60" type="Generic" uuid="{b3eeddf5-c78c-464e-8dcf-f2d01091af95}" name="" x="-60" orientation="s"/>
+    </description>
+</definition>
