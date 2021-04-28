@@ -23,6 +23,7 @@
 #include "../elementprovider.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../UndoCommand/addterminalstripcommand.h"
+#include "../UndoCommand/addterminaltostripcommand.h"
 #include "terminalstriptreewidget.h"
 #include "../../qeticons.h"
 
@@ -40,6 +41,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 {
 	ui->setupUi(this);
 	buildTree();
+	setUpUndoConnections();
 }
 
 /**
@@ -47,6 +49,40 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
  */
 TerminalStripEditor::~TerminalStripEditor() {
 	delete ui;
+}
+
+#include <QHashIterator>
+void TerminalStripEditor::setUpUndoConnections()
+{
+	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalAddedToStrip,
+			[this](QUuid terminal_uuid, QUuid strip_uuid)
+	{
+		auto terminal = m_uuid_terminal_H.value(terminal_uuid);
+		auto strip = m_uuid_strip_H.value(strip_uuid);
+
+		if (!terminal || !strip) {
+			return;
+		}
+
+		auto undo = new AddTerminalToStripCommand(terminal, strip);
+		m_project->undoStack()->push(undo);
+	});
+
+	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalMovedFromStripToStrip,
+			[this] (QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid)
+	{
+		auto terminal  = m_uuid_terminal_H.value(terminal_uuid);
+		auto old_strip = m_uuid_strip_H.value(old_strip_uuid);
+		auto new_strip = m_uuid_strip_H.value(new_strip_uuid);
+
+		if (!terminal || !old_strip || !new_strip) {
+			return;
+		}
+
+		auto undo = new AddTerminalToStripCommand(terminal, old_strip, new_strip);
+		m_project->undoStack()->push(undo);
+	});
+
 }
 
 /**
@@ -88,7 +124,7 @@ void TerminalStripEditor::buildTree()
  */
 QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_strip)
 {
-	if (auto item = m_H_item_strip.key(terminal_strip)) {
+	if (auto item = m_item_strip_H.key(terminal_strip)) {
 		return item;
 	}
 
@@ -131,7 +167,12 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 	auto item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripTreeWidget::Strip);
 	item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal_strip->uuid());
 	item->setIcon(0, QET::Icons::TerminalStrip);
-	m_H_item_strip.insert(item, terminal_strip);
+
+		//Add terminal owned by the strip
+	//for (auto terminal : terminal_strip->ter)
+
+	m_item_strip_H.insert(item, terminal_strip);
+	m_uuid_strip_H.insert(terminal_strip->uuid(), terminal_strip);
 	return item;
 }
 
@@ -158,10 +199,13 @@ void TerminalStripEditor::addFreeTerminal()
 
 	for (const auto terminal : qAsConst(vector_))
 	{
+		QUuid uuid_ = terminal->uuid();
 		QStringList strl{terminal->actualLabel()};
 		auto item = new QTreeWidgetItem(free_terminal_item, strl, TerminalStripTreeWidget::Terminal);
-		item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal->uuid().toString());
+		item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, uuid_.toString());
 		item->setIcon(0, QET::Icons::ElementTerminal);
+
+		m_uuid_terminal_H.insert(uuid_, terminal);
 	}
 }
 
@@ -204,9 +248,10 @@ void TerminalStripEditor::on_m_add_terminal_strip_pb_clicked()
 void TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked()
 {
 	auto item = ui->m_terminal_strip_tw->currentItem();
-	if (auto strip = m_H_item_strip.value(item))
+	if (auto strip = m_item_strip_H.value(item))
 	{
-		m_H_item_strip.remove(item);
+		m_item_strip_H.remove(item);
+		m_uuid_strip_H.remove(strip->uuid());
 		delete item;
 
 		m_project->undoStack()->push(new RemoveTerminalStripCommand(strip, m_project));

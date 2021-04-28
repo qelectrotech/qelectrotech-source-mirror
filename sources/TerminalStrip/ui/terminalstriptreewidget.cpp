@@ -107,16 +107,18 @@ void TerminalStripTreeWidget::dropEvent(QDropEvent *event)
 		return;
 	}
 
+	auto old_parent_type = dragged_item->parent()->type();
+
 	dragged_item->parent()->removeChild(dragged_item);
 	overred_item->addChild(dragged_item);
 
 		//Move terminal
-	if (dragged_item->parent()->type() == FreeTerminal && //From free to strip
+	if (old_parent_type == FreeTerminal && //From free to strip
 		overred_item->type() == Strip) {
 		emit terminalAddedToStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
 								  QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
 	}
-	else if (dragged_item->parent()->type() == Strip) //From strip to ...
+	else if (old_parent_type == Strip) //From strip to ...
 	{
 		if (overred_item->type() == FreeTerminal) //Free terminal
 		{

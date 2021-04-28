@@ -43,6 +43,7 @@ class TerminalStripEditor : public QDialog
 		~TerminalStripEditor() override;
 
 	private:
+		void setUpUndoConnections();
 		void buildTree();
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
@@ -55,7 +56,9 @@ class TerminalStripEditor : public QDialog
 		Ui::TerminalStripEditor *ui;
 		QETProject *m_project = nullptr;
 
-		QHash<QTreeWidgetItem *, TerminalStrip *> m_H_item_strip;
+		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
+		QHash<QUuid, QPointer<TerminalElement>> m_uuid_terminal_H;
+		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
 };
 
 #endif // TERMINALSTRIPEDITOR_H
