@@ -18,6 +18,7 @@
 #include "terminalstrip.h"
 #include "../qetproject.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminalelement.h"
 
 using shared_real_terminal     = QSharedPointer<RealTerminal>;
 using shared_physical_terminal = QSharedPointer<PhysicalTerminal>;
@@ -231,6 +232,8 @@ bool TerminalStrip::addTerminal(Element *terminal)
 
 	m_physical_terminals.append(physical_terminal);
 
+	static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(this);
+
 	return true;
 }
 
@@ -255,6 +258,8 @@ bool TerminalStrip::removeTerminal(Element *terminal)
 			}
 		}
 		m_real_terminals.removeOne(real_terminal);
+
+		static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(nullptr);
 
 		return true;
 	}
