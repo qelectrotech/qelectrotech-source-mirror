@@ -68,6 +68,32 @@ class RealTerminal
 			return m_element.data();
 		}
 
+		/**
+		 * @brief label
+		 * @return the label of this real terminal
+		 */
+		QString label() const {
+			if (!m_element.isNull()) {
+				return m_element->actualLabel();
+			} else {
+				return QStringLiteral("");
+			}
+		}
+
+		/**
+		 * @brief elementUuid
+		 * @return if this real terminal is an element
+		 * in a folio, return the uuid of the element
+		 * else return a null uuid.
+		 */
+		QUuid elementUuid() const {
+			if (!m_element.isNull()) {
+				return m_element->uuid();
+			} else {
+				return QUuid();
+			}
+		}
+
 	private :
 		QPointer<Element> m_element;
 		QPointer<TerminalStrip> m_parent_terminal_strip;
@@ -277,6 +303,36 @@ bool TerminalStrip::haveTerminal(Element *terminal) {
 }
 
 /**
+ * @brief TerminalStrip::physicalTerminalCount
+ * @return the number of physical terminal.
+ * A physical terminal is the representation of a real electrical terminal.
+ * Notice that a physical terminal can have level (like in real life)
+ */
+int TerminalStrip::physicalTerminalCount() const {
+	return m_physical_terminals.size();
+}
+
+TerminalStripIndex TerminalStrip::index(int index)
+{
+	TerminalStripIndex tsi_;
+
+	if (index < 0 ||
+		index >= m_physical_terminals.size()) {
+		return tsi_;
+	}
+
+	auto phy_term = m_physical_terminals.at(index);
+
+	for(auto &real_term : phy_term->terminals()) {
+		tsi_.m_label.append(real_term->label());
+		tsi_.m_uuid.append(real_term->elementUuid());
+	}
+
+	tsi_.m_valid = true;
+	return tsi_;
+}
+
+/**
  * @brief TerminalStrip::realTerminal
  * @param terminal
  * @return the real terminal linked to \p terminal
@@ -286,14 +342,9 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminal(Element *terminal)
 {
 	shared_real_terminal rt;
 
-	if (m_terminal_elements_vector.contains(terminal))
-	{
-		for (auto &real : qAsConst(m_real_terminals))
-		{
-			if (real->element() == terminal) {
-				rt = real;
-				break;
-			}
+	for (auto &real : qAsConst(m_real_terminals)) {
+		if (real->element() == terminal) {
+			return real;
 		}
 	}
 
@@ -320,4 +371,39 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<
 	}
 
 	return pt;
+}
+
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+
+
+
+
+
+bool TerminalStripIndex::isValid() const
+{
+	return m_valid;
+}
+
+QString TerminalStripIndex::label(int level) const
+{
+	if (level<0 ||
+		level >= m_label.size()) {
+		return QStringLiteral("");
+	}
+
+	return m_label.at(level);
+}
+
+QUuid TerminalStripIndex::uuid(int level) const
+{
+	if (level<0 ||
+		level >= m_uuid.size()) {
+		return QUuid();
+	}
+
+	return m_uuid.at(level);
 }

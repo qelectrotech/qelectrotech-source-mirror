@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -41,6 +41,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 {
 	ui->setupUi(this);
 	buildTree();
+	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
 }
 
@@ -51,7 +52,6 @@ TerminalStripEditor::~TerminalStripEditor() {
 	delete ui;
 }
 
-#include <QHashIterator>
 void TerminalStripEditor::setUpUndoConnections()
 {
 	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalAddedToStrip,
@@ -164,16 +164,22 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 
 		//Add the terminal strip
 	QStringList name{terminal_strip->name()};
-	auto item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripTreeWidget::Strip);
-	item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal_strip->uuid());
-	item->setIcon(0, QET::Icons::TerminalStrip);
+	auto strip_item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripTreeWidget::Strip);
+	strip_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal_strip->uuid());
+	strip_item->setIcon(0, QET::Icons::TerminalStrip);
 
-		//Add terminal owned by the strip
-	//for (auto terminal : terminal_strip->ter)
+		//Add child terminal of the strip
+	for (auto i=0 ; i<terminal_strip->physicalTerminalCount() ; ++i)
+	{
+		auto index = terminal_strip->index(i);
+		auto term_item = new QTreeWidgetItem(strip_item, QStringList(index.label()), TerminalStripTreeWidget::Terminal);
+		term_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, index.uuid().toString());
+		term_item->setIcon(0, QET::Icons::ElementTerminal);
+	}
 
-	m_item_strip_H.insert(item, terminal_strip);
+	m_item_strip_H.insert(strip_item, terminal_strip);
 	m_uuid_strip_H.insert(terminal_strip->uuid(), terminal_strip);
-	return item;
+	return strip_item;
 }
 
 /**

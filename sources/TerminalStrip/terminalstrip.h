@@ -26,6 +26,7 @@ class Element;
 class RealTerminal;
 class QETProject;
 class PhysicalTerminal;
+class TerminalStripIndex;
 
 class TerminalStrip : public QObject
 {
@@ -50,9 +51,12 @@ class TerminalStrip : public QObject
 		QString description() const {return m_data.m_description;}
 		QUuid uuid() const {return m_data.m_uuid;}
 
-		bool addTerminal(Element *terminal);
-		bool removeTerminal(Element *terminal);
-		bool haveTerminal(Element *terminal);
+		bool addTerminal    (Element *terminal);
+		bool removeTerminal (Element *terminal);
+		bool haveTerminal   (Element *terminal);
+
+		int physicalTerminalCount() const;
+		TerminalStripIndex index(int index = 0);
 
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
@@ -66,8 +70,23 @@ class TerminalStrip : public QObject
 		QVector<QSharedPointer<PhysicalTerminal>> m_physical_terminals;
 };
 
+class TerminalStripIndex
+{
+	friend class TerminalStrip;
 
+	private :
+		TerminalStripIndex () {}
+		TerminalStripIndex (TerminalStripIndex *) {}
 
+	public:
+		bool isValid() const;
+		QString label(int level = 0) const;
+		QUuid uuid(int level = 0) const;
 
+	private:
+		QVector<QString> m_label;
+		QVector<QUuid> m_uuid;
+		bool m_valid = false;
+};
 
 #endif // TERMINALSTRIP_H
