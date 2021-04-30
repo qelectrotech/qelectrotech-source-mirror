@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -57,6 +57,8 @@ class TerminalStrip : public QObject
 
 		int physicalTerminalCount() const;
 		TerminalStripIndex index(int index = 0);
+
+		QVector<QPointer<Element>> terminalElement() const;
 
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);

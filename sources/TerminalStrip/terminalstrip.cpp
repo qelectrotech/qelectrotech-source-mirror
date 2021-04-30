@@ -247,6 +247,8 @@ bool TerminalStrip::addTerminal(Element *terminal)
 		return false;
 	}
 
+	m_terminal_elements_vector.append(terminal);
+
 		//Create the real terminal
 	shared_real_terminal real_terminal(new RealTerminal(this, terminal));
 	m_real_terminals.append(real_terminal);
@@ -271,25 +273,33 @@ bool TerminalStrip::addTerminal(Element *terminal)
  */
 bool TerminalStrip::removeTerminal(Element *terminal)
 {
-	if (auto real_terminal = realTerminal(terminal))
+	if (m_terminal_elements_vector.contains(terminal))
 	{
-		if (auto physical_terminal = physicalTerminal(real_terminal))
+		m_terminal_elements_vector.removeOne(terminal);
+
+			//Get the real and physical terminal associated to @terminal
+		if (auto real_terminal = realTerminal(terminal))
 		{
-			if (physical_terminal->levelCount() == 1) {
-				m_physical_terminals.removeOne(physical_terminal);
-			} else {
-				auto v = physical_terminal->terminals();
-				v.removeOne(real_terminal);
-				physical_terminal->setTerminals(v);
+			if (auto physical_terminal = physicalTerminal(real_terminal))
+			{
+				if (physical_terminal->levelCount() == 1)  {
+					m_physical_terminals.removeOne(physical_terminal);
+				} else {
+					auto v = physical_terminal->terminals();
+					v.removeOne(real_terminal);
+					physical_terminal->setTerminals(v);
+				}
 			}
+			m_real_terminals.removeOne(real_terminal);
+
+			static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(nullptr);
+
+			return true;
 		}
-		m_real_terminals.removeOne(real_terminal);
 
-		static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(nullptr);
-
-		return true;
+			//There is no reason to be here, but in case of....
+		return false;
 	}
-
 	return false;
 }
 
@@ -330,6 +340,14 @@ TerminalStripIndex TerminalStrip::index(int index)
 
 	tsi_.m_valid = true;
 	return tsi_;
+}
+
+/**
+ * @brief TerminalStrip::terminalElement
+ * @return A vector of all terminal element owned by this strip
+ */
+QVector<QPointer<Element> > TerminalStrip::terminalElement() const {
+	return m_terminal_elements_vector;
 }
 
 /**

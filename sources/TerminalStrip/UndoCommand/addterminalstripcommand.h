@@ -23,6 +23,7 @@
 
 class TerminalStrip;
 class QETProject;
+class Element;
 
 class AddTerminalStripCommand : public QUndoCommand
 {
@@ -50,6 +51,7 @@ class RemoveTerminalStripCommand : public QUndoCommand
 	private:
 		QPointer<TerminalStrip> m_strip;
 		QPointer<QETProject> m_project;
+		QVector<QPointer<Element>> m_elements;
 };
 
 #endif // ADDTERMINALSTRIPCOMMAND_H
