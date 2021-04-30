@@ -1181,7 +1181,6 @@ QWidget *QETElementEditor::clearToolsDock()
 {
 	if (QWidget *previous_widget = m_tools_dock_stack -> widget(1)) {
 		m_tools_dock_stack -> removeWidget(previous_widget);
-		previous_widget -> setParent(nullptr);
 		previous_widget -> hide();
 		return(previous_widget);
 	}
