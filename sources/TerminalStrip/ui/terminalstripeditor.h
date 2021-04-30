@@ -52,6 +52,8 @@ class TerminalStripEditor : public QDialog
 		void on_m_add_terminal_strip_pb_clicked();
 		void on_m_remove_terminal_strip_pb_clicked();
 
+		void on_m_reload_pb_clicked();
+
 	private:
 		Ui::TerminalStripEditor *ui;
 		QETProject *m_project = nullptr;

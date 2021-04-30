@@ -262,4 +262,19 @@ void TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked()
 
 		m_project->undoStack()->push(new RemoveTerminalStripCommand(strip, m_project));
 	}
+
+	on_m_reload_pb_clicked();
+}
+
+void TerminalStripEditor::on_m_reload_pb_clicked()
+{
+   ui->m_terminal_strip_tw->clear();
+   m_item_strip_H.clear();
+   m_uuid_terminal_H.clear();
+   m_uuid_strip_H.clear();
+
+   qDeleteAll(m_item_strip_H.keys());
+
+   buildTree();
+	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 }

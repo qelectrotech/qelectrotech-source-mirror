@@ -6,15 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>923</width>
-    <height>484</height>
+    <width>805</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Gestionnaire de borniers</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="2">
+   <item row="0" column="1">
+    <widget class="QPushButton" name="m_remove_terminal_strip_pb">
+     <property name="text">
+      <string>Supprimer le bornier</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
     <widget class="QTableView" name="tableView"/>
    </item>
    <item row="0" column="0">
@@ -22,16 +33,24 @@
      <property name="text">
       <string>Ajouter un bornier</string>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QPushButton" name="m_remove_terminal_strip_pb">
-     <property name="text">
-      <string>Supprimer le bornier</string>
+     <property name="icon">
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="0" column="2">
+    <widget class="QPushButton" name="m_reload_pb">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
     <widget class="TerminalStripTreeWidget" name="m_terminal_strip_tw">
      <property name="dragEnabled">
       <bool>false</bool>
@@ -61,6 +80,8 @@
    <header location="global">terminalstriptreewidget.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../../qelectrotech.qrc"/>
+ </resources>
  <connections/>
 </ui>
