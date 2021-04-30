@@ -2397,6 +2397,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		"<br><B><U> First install on macOSX</B></U>"
 		"<br>1. Install, if required, python 3.9 bundle only, "
 		"<br>2 Run Profile.command script"
+		"<br>"
 		"because program use hardcoded PATH for localise qet-tb-generator plugin "
 		"<br> Visit :"
 		"<br>"
