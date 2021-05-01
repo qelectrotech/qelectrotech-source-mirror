@@ -913,6 +913,16 @@ QDomDocument QETProject::toXml()
 		appended_diagram.toElement().setAttribute("order", order_num ++);
 	}
 
+		//Write terminal strip to xml
+	if (m_terminal_strip_vector.count())
+	{
+		auto xml_strip = xml_doc.createElement(QStringLiteral("terminal_strips"));
+		for (auto &strip : m_terminal_strip_vector) {
+			xml_strip.appendChild(strip->toXml(xml_doc));
+		}
+		project_root.appendChild(xml_strip);
+	}
+
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 

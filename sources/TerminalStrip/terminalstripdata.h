@@ -35,7 +35,11 @@ class TerminalStripData : public PropertiesInterface
 		QDomElement toXml (QDomDocument &xml_document) const override;
 		bool fromXml (const QDomElement &xml_element) override;
 
+		static QString xmlTagName() {return QStringLiteral("terminal_strip_data");}
+
 	private :
+		static QDomElement infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value);
+
 		QString m_installation = QStringLiteral("="),
 				m_location = QStringLiteral("+"),
 				m_name,

@@ -16,6 +16,8 @@
         along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripdata.h"
+#include "../qetxml.h"
+#include <QDebug>
 
 TerminalStripData::TerminalStripData()
 {
@@ -24,10 +26,65 @@ TerminalStripData::TerminalStripData()
 
 QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 {
+	auto root_elmt = xml_document.createElement(this->xmlTagName());
 
+	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+
+	auto info_elmt = xml_document.createElement("informations");
+	root_elmt.appendChild(info_elmt);
+
+	if (!m_installation.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("installation"), m_installation));
+	}
+	if (!m_location.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("location"), m_location));
+	}
+	if (!m_name.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("name"), m_name));
+	}
+	if (!m_comment.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("comment"), m_comment));
+	}
+	if (!m_description.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("description"), m_description));
+	}
+
+	return root_elmt;
 }
 
 bool TerminalStripData::fromXml(const QDomElement &xml_element)
 {
+	if (xml_element.tagName() != this->xmlTagName())
+	{
+		qDebug() << "TerminalStripData::fromXml : failed to load from xml " \
+					"due to wrong tag name. Expected " << this->xmlTagName() << " used " << xml_element.tagName();
+		return false;
+	}
 
+	m_uuid.fromString(xml_element.attribute("uuid"));
+
+	for (auto &xml_info :
+		 QETXML::findInDomElement(xml_element.firstChildElement("informations"),
+								  QStringLiteral("information")))
+	{
+		auto name = xml_info.attribute("name");
+		auto value = xml_info.text();
+
+		if (name == QStringLiteral("installation"))     { m_installation = value;}
+		else if (name == QStringLiteral("location"))    {m_location = value;}
+		else if (name == QStringLiteral("name"))        {m_name = value;}
+		else if (name == QStringLiteral("comment"))     {m_comment = value;}
+		else if (name == QStringLiteral("description")) {m_description = value;}
+	}
+
+	return true;
+}
+
+QDomElement TerminalStripData::infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value)
+{
+	auto xml_elmt = xml_doc.createElement("information");
+	xml_elmt.setAttribute(QStringLiteral("name"), name);
+	xml_elmt.appendChild(xml_doc.createTextNode(value));
+
+	return xml_elmt;
 }

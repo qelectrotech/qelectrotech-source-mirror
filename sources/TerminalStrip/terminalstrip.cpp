@@ -94,9 +94,37 @@ class RealTerminal
 			}
 		}
 
+		/**
+		 * @brief uuid
+		 * @return the uuid of this real terminal
+		 */
+		QUuid uuid() const {
+			return m_uuid;
+		}
+
+		static QString xmlTagName() {
+			return QStringLiteral("real_terminal");
+		}
+
+		/**
+		 * @brief toXml
+		 * @param parent_document
+		 * @return this real terminal to xml
+		 */
+		QDomElement toXml(QDomDocument &parent_document) const
+		{
+			auto root_elmt = parent_document.createElement(this->xmlTagName());
+			root_elmt.setAttribute("is_draw", m_element ? "true" : "false");
+			root_elmt.setAttribute("uuid", m_element ? m_element->uuid().toString() :
+													   m_uuid.toString());
+
+			return root_elmt;
+		}
+
 	private :
 		QPointer<Element> m_element;
 		QPointer<TerminalStrip> m_parent_terminal_strip;
+		QUuid m_uuid = QUuid::createUuid();
 };
 
 
@@ -180,6 +208,25 @@ class PhysicalTerminal
 		 */
 		QVector<shared_real_terminal> terminals() const {
 			return m_real_terminal;
+		}
+
+		static QString xmlTagName() {
+			return QStringLiteral("physical_terminal");
+		}
+
+		/**
+		 * @brief toXml
+		 * @param parent_document
+		 * @return this physical terminal to xml
+		 */
+		QDomElement toXml(QDomDocument &parent_document) const
+		{
+			auto root_elmt = parent_document.createElement(this->xmlTagName());
+			for (auto &real_t : m_real_terminal) {
+				root_elmt.appendChild(real_t->toXml(parent_document));
+			}
+
+			return root_elmt;
 		}
 
 	private:
@@ -348,6 +395,27 @@ TerminalStripIndex TerminalStrip::index(int index)
  */
 QVector<QPointer<Element> > TerminalStrip::terminalElement() const {
 	return m_terminal_elements_vector;
+}
+
+/**
+ * @brief TerminalStrip::toXml
+ * @param parent_document
+ * @return
+ */
+QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
+{
+	auto root_elmt = parent_document.createElement(this->xmlTagName());
+
+	root_elmt.appendChild(m_data.toXml(parent_document));
+
+		//Undrawed terminals
+	auto xml_layout = parent_document.createElement("layout");
+	for (auto &phy_t : m_physical_terminals) {
+		xml_layout.appendChild(phy_t->toXml(parent_document));
+	}
+	root_elmt.appendChild(xml_layout);
+
+	return root_elmt;
 }
 
 /**

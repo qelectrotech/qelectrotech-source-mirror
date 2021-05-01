@@ -60,6 +60,9 @@ class TerminalStrip : public QObject
 
 		QVector<QPointer<Element>> terminalElement() const;
 
+		static QString xmlTagName() {return QStringLiteral("terminal_strip");}
+		QDomElement toXml(QDomDocument &parent_document);
+
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal);
