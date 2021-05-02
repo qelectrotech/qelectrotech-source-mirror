@@ -225,6 +225,7 @@ class QETProject : public QObject
 		void readElementsCollectionXml(QDomDocument &xml_project);
 		void readProjectPropertiesXml(QDomDocument &xml_project);
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
+		void readTerminalStripXml(const QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);

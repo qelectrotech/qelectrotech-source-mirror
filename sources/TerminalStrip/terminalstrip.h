@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -32,7 +32,7 @@ class TerminalStrip : public QObject
 {
 		Q_OBJECT
 	public:
-		TerminalStrip(const QString &name, QETProject *project);
+		TerminalStrip(QETProject *project);
 
 		TerminalStrip(const QString &installation,
 					  const QString &location,
@@ -62,6 +62,7 @@ class TerminalStrip : public QObject
 
 		static QString xmlTagName() {return QStringLiteral("terminal_strip");}
 		QDomElement toXml(QDomDocument &parent_document);
+		bool fromXml(QDomElement &xml_element);
 
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);

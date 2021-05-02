@@ -32,6 +32,7 @@
 #include "ui/dialogwaiting.h"
 #include "ui/importelementdialog.h"
 #include "TerminalStrip/terminalstrip.h"
+#include "qetxml.h"
 
 #include <QHash>
 #include <QStandardPaths>
@@ -1352,16 +1353,26 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 	m_data_base.blockSignals(true);
+
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
+
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
+
 		//load the embedded titleblock templates
 	m_titleblocks_collection.fromXml(xml_project.documentElement());
+
 		//Load the embedded elements collection
 	readElementsCollectionXml(xml_project);
+
 		//Load the diagrams
 	readDiagramsXml(xml_project);
+
+		//Load the terminal strip
+	readTerminalStripXml(xml_project);
+
+
 	m_data_base.blockSignals(false);
 	m_data_base.updateDB();
 
@@ -1575,6 +1586,26 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+		}
+	}
+}
+
+/**
+ * @brief QETProject::readTerminalStripXml
+ * Read the terminal strips of this project
+ * @param xml_project
+ */
+void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
+{
+	auto xml_elmt = xml_project.documentElement();
+	auto xml_strips = xml_elmt.firstChildElement(QStringLiteral("terminal_strips"));
+	if (!xml_strips.isNull())
+	{
+		for (auto xml_strip : QETXML::findInDomElement(xml_strips, TerminalStrip::xmlTagName()))
+		{
+			auto terminal_strip = new TerminalStrip(this);
+			terminal_strip->fromXml(xml_strip);
+			addTerminalStrip(terminal_strip);
 		}
 	}
 }

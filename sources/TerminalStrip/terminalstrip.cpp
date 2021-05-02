@@ -19,6 +19,8 @@
 #include "../qetproject.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/terminalelement.h"
+#include "../elementprovider.h"
+#include "../qetxml.h"
 
 using shared_real_terminal     = QSharedPointer<RealTerminal>;
 using shared_physical_terminal = QSharedPointer<PhysicalTerminal>;
@@ -119,6 +121,36 @@ class RealTerminal
 													   m_uuid.toString());
 
 			return root_elmt;
+		}
+
+		/**
+		 * @brief fromXml
+		 * @param xml_element
+		 * @return
+		 */
+		bool fromXml(QDomElement xml_element, const QVector<TerminalElement *> &terminal_vector)
+		{
+			if (xml_element.tagName() != xmlTagName()) {
+				return true;
+			}
+
+			auto is_draw = xml_element.attribute(QStringLiteral("is_draw")) == QLatin1String("true")
+						   ? true : false;
+			auto uuid_ = QUuid::fromString(xml_element.attribute(QStringLiteral("uuid")));
+
+			if (is_draw) {
+				for (auto terminal : terminal_vector) {
+					if (terminal->uuid() == uuid_)
+					{
+						m_element = terminal;
+						break;
+					}
+				}
+			} else {
+				m_uuid = uuid_;
+			}
+
+			return true;
 		}
 
 	private :
@@ -240,6 +272,15 @@ class PhysicalTerminal
 /************************************************************************************/
 /************************************************************************************/
 /************************************************************************************/
+
+/**
+ * @brief TerminalStrip::TerminalStrip
+ * @param project
+ */
+TerminalStrip::TerminalStrip(QETProject *project) :
+	QObject(project),
+	m_project(project)
+{}
 
 /**
  * @brief TerminalStrip::TerminalStrip
@@ -416,6 +457,59 @@ QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
 	root_elmt.appendChild(xml_layout);
 
 	return root_elmt;
+}
+
+/**
+ * @brief TerminalStrip::fromXml
+ * @param xml_element
+ * @return Set up this terminal strip from the xml description \p xml_element
+ */
+bool TerminalStrip::fromXml(QDomElement &xml_element)
+{
+	if (xml_element.tagName() != xmlTagName()) {
+		return false;
+	}
+
+		//Read terminal strip data
+	auto xml_data = xml_element.firstChildElement(m_data.xmlTagName());
+	if (!xml_data.isNull()) {
+		m_data.fromXml(xml_data);
+	}
+
+		//Read layout
+	auto xml_layout = xml_element.firstChildElement(QStringLiteral("layout"));
+	if (!xml_layout.isNull())
+	{
+			//Get all free elements terminal of the project
+		ElementProvider ep(m_project);
+		auto free_terminals = ep.freeTerminal();
+
+			//Read each physical terminal
+		for(auto &xml_physical : QETXML::findInDomElement(xml_layout, PhysicalTerminal::xmlTagName()))
+		{
+			QVector<shared_real_terminal> real_t_vector;
+
+				//Read each real terminal of the current physical terminal of the loop
+			for (auto &xml_real : QETXML::findInDomElement(xml_physical, RealTerminal::xmlTagName()))
+			{
+				shared_real_terminal real_t(new RealTerminal(this));
+				real_t->fromXml(xml_real, free_terminals);
+				if(real_t->isElement())
+				{
+					m_terminal_elements_vector.append(real_t->element());
+					static_cast<TerminalElement*>(real_t->element())->setParentTerminalStrip(this);
+				}
+				real_t_vector.append(real_t);
+			}
+
+			shared_physical_terminal phy_t(new PhysicalTerminal(this, real_t_vector));
+			m_physical_terminals.append(phy_t);
+			m_real_terminals.append(real_t_vector);
+		}
+
+	}
+
+	return true;
 }
 
 /**

@@ -107,29 +107,27 @@ void TerminalStripTreeWidget::dropEvent(QDropEvent *event)
 		return;
 	}
 
-	auto old_parent_type = dragged_item->parent()->type();
-
-	dragged_item->parent()->removeChild(dragged_item);
+	auto old_parent = dragged_item->parent();
+	old_parent->removeChild(dragged_item);
 	overred_item->addChild(dragged_item);
 
 		//Move terminal
-	if (old_parent_type == FreeTerminal && //From free to strip
+	if (old_parent->type() == FreeTerminal && //From free to strip
 		overred_item->type() == Strip) {
 		emit terminalAddedToStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
 								  QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
 	}
-	else if (old_parent_type == Strip) //From strip to ...
+	else if (old_parent->type() == Strip) //From strip to ...
 	{
 		if (overred_item->type() == FreeTerminal) //Free terminal
 		{
 			emit terminalRemovedFromStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
 										  QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
 		}
-		else if (overred_item->type() == Strip && //Another strip
-				 dragged_item->parent() != overred_item)
+		else if (overred_item->type() == Strip)
 		{
 			emit terminalMovedFromStripToStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
-											   QUuid::fromString(dragged_item->parent()->data(0, UUID_USER_ROLE).toString()),
+											   QUuid::fromString(old_parent->data(0, UUID_USER_ROLE).toString()),
 											   QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
 		}
 	}
