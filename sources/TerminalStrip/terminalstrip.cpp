@@ -424,6 +424,8 @@ TerminalStripIndex TerminalStrip::index(int index)
 	for(auto &real_term : phy_term->terminals()) {
 		tsi_.m_label.append(real_term->label());
 		tsi_.m_uuid.append(real_term->elementUuid());
+		tsi_.m_is_element.append(real_term->isElement());
+		tsi_.m_element.append(static_cast<TerminalElement*>(real_term->element()));
 	}
 
 	tsi_.m_valid = true;
@@ -586,4 +588,24 @@ QUuid TerminalStripIndex::uuid(int level) const
 	}
 
 	return m_uuid.at(level);
+}
+
+bool TerminalStripIndex::isElement(int level) const
+{
+	if (level<0 ||
+		level >= m_is_element.size()) {
+		return false;
+	}
+
+	return m_is_element.at(level);
+}
+
+TerminalElement *TerminalStripIndex::element(int level) const
+{
+	if (level<0 ||
+		level >= m_element.size()) {
+		return nullptr;
+	}
+
+	return m_element.at(level);
 }

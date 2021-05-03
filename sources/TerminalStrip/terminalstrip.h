@@ -27,7 +27,15 @@ class RealTerminal;
 class QETProject;
 class PhysicalTerminal;
 class TerminalStripIndex;
+class TerminalElement;
 
+/**
+ * @brief The TerminalStrip class
+ * This class hold all the datas and configurations
+ * of a terminal strip (but the not the visual aspect).
+ * A terminal strip have some informations (name comment etc...)
+ * and is composed by terminals (draw in a diagram or described in the terminal strip)
+ */
 class TerminalStrip : public QObject
 {
 		Q_OBJECT
@@ -88,11 +96,15 @@ class TerminalStripIndex
 		bool isValid() const;
 		QString label(int level = 0) const;
 		QUuid uuid(int level = 0) const;
+		bool isElement(int level = 0) const;
+		TerminalElement *element(int level = 0) const;
 
 	private:
 		QVector<QString> m_label;
 		QVector<QUuid> m_uuid;
 		bool m_valid = false;
+		QVector<bool> m_is_element;
+		QVector<TerminalElement *> m_element;
 };
 
 #endif // TERMINALSTRIP_H

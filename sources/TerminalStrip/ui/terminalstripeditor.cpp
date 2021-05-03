@@ -175,6 +175,10 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		auto term_item = new QTreeWidgetItem(strip_item, QStringList(index.label()), TerminalStripTreeWidget::Terminal);
 		term_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, index.uuid().toString());
 		term_item->setIcon(0, QET::Icons::ElementTerminal);
+
+		if (index.isElement()) {
+			m_uuid_terminal_H.insert(index.uuid(), index.element());
+		}
 	}
 
 	m_item_strip_H.insert(strip_item, terminal_strip);
