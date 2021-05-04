@@ -1,4 +1,4 @@
-﻿/*
+/*
         Copyright 2006-2021 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -55,6 +55,25 @@ class AddTerminalToStripCommand : public QUndoCommand
         Operation m_operation = Operation::none;
 
 
+};
+
+/**
+ * @brief The RemoveTerminalFromStripCommand class
+ * Remove a terminal from a terminal strip.
+ * The removed terminal become free.
+ */
+class RemoveTerminalFromStripCommand : public QUndoCommand
+{
+	public:
+		RemoveTerminalFromStripCommand (TerminalElement *terminal, TerminalStrip *strip, QUndoCommand *parent = nullptr);
+		~RemoveTerminalFromStripCommand() override {}
+
+		void undo() override;
+		void redo() override;
+
+	private:
+		QPointer<TerminalElement> m_terminal;
+		QPointer<TerminalStrip> m_strip;
 };
 
 #endif // ADDTERMINALTOSTRIPCOMMAND_H

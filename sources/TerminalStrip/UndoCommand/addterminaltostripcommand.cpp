@@ -115,3 +115,42 @@ void AddTerminalToStripCommand::redo()
 
     m_new_strip->addTerminal(m_terminal);
 }
+
+/**
+ * @brief RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand
+ * @param terminal
+ * @param strip
+ * @param parent
+ */
+RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand(TerminalElement *terminal,
+															   TerminalStrip *strip,
+															   QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_terminal(terminal),
+	m_strip(strip)
+{
+	auto t_label = terminal->actualLabel();
+	auto strip_name = strip->name();
+
+	auto str_1 = t_label.isEmpty() ? QObject::tr("Enlever une borne") :
+									 QObject::tr("Enlever la borne %1").arg(t_label);
+
+	auto str_2 = strip_name.isEmpty() ? QObject::tr("d'un groupe de bornes") :
+										QObject::tr("du groupe de bornes %1").arg(strip_name);
+	setText(str_1 + " " + str_2);
+}
+
+void RemoveTerminalFromStripCommand::undo()
+{
+	if (m_terminal && m_strip) {
+		m_strip->addTerminal(m_terminal);
+	}
+}
+
+void RemoveTerminalFromStripCommand::redo()
+{
+	if (m_terminal && m_strip) {
+		m_strip->removeTerminal(m_terminal);
+	}
+}
+

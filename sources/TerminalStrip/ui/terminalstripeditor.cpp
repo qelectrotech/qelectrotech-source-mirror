@@ -83,6 +83,19 @@ void TerminalStripEditor::setUpUndoConnections()
 		m_project->undoStack()->push(undo);
 	});
 
+	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalRemovedFromStrip,
+			[this] (QUuid terminal_uuid, QUuid old_strip_uuid)
+	{
+		auto terminal_ = m_uuid_terminal_H.value(terminal_uuid);
+		auto strip_ = m_uuid_strip_H.value(old_strip_uuid);
+
+		if (!terminal_ || !strip_) {
+			return;
+		}
+
+		auto undo = new RemoveTerminalFromStripCommand(terminal_, strip_);
+		m_project->undoStack()->push(undo);
+	});
 }
 
 /**

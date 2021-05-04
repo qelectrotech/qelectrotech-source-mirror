@@ -122,9 +122,9 @@ void TerminalStripTreeWidget::dropEvent(QDropEvent *event)
 		if (overred_item->type() == FreeTerminal) //Free terminal
 		{
 			emit terminalRemovedFromStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
-										  QUuid::fromString(overred_item->data(0, UUID_USER_ROLE).toString()));
+										  QUuid::fromString(old_parent->data(0, UUID_USER_ROLE).toString()));
 		}
-		else if (overred_item->type() == Strip)
+		else if (overred_item->type() == Strip) //To another strip
 		{
 			emit terminalMovedFromStripToStrip(QUuid::fromString(dragged_item->data(0, UUID_USER_ROLE).toString()),
 											   QUuid::fromString(old_parent->data(0, UUID_USER_ROLE).toString()),
