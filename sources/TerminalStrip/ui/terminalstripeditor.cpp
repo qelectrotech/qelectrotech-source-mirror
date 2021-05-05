@@ -24,6 +24,7 @@
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "../UndoCommand/addterminaltostripcommand.h"
+#include "../UndoCommand/changeterminalstripdata.h"
 #include "terminalstriptreewidget.h"
 #include "../../qeticons.h"
 
@@ -242,6 +243,7 @@ void TerminalStripEditor::clearDataTab()
 	ui->m_name_le         ->clear();
 	ui->m_comment_le      ->clear();
 	ui->m_description_te  ->clear();
+	m_current_strip = nullptr;
 }
 
 /**
@@ -336,6 +338,7 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 	}
 
 	if (strip_) {
+		m_current_strip = strip_;
 		ui->m_installation_le ->setText(strip_->installation());
 		ui->m_location_le     ->setText(strip_->location());
 		ui->m_name_le         ->setText(strip_->name());
@@ -344,4 +347,23 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 	} else {
 		clearDataTab();
 	}
+}
+
+void TerminalStripEditor::on_m_apply_data_pb_clicked(QAbstractButton *button)
+{
+	Q_UNUSED(button)
+
+	if (m_current_strip)
+	{
+		TerminalStripData data;
+		data.m_installation = ui->m_installation_le->text();
+		data.m_location     = ui->m_location_le->text();
+		data.m_name         = ui->m_name_le->text();
+		data.m_comment      = ui->m_comment_le->text();
+		data.m_description  = ui->m_description_te->toPlainText();
+
+		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+	}
+
+	on_m_reload_pb_clicked();
 }

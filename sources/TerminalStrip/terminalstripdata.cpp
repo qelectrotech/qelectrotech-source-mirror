@@ -80,6 +80,18 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 	return true;
 }
 
+TerminalStripData &TerminalStripData::operator=(const TerminalStripData &other)
+{
+	m_installation = other.m_installation;
+	m_location = other.m_location;
+	m_name = other.m_name;
+	m_comment = other.m_comment;
+	m_description = other.m_description;
+	m_uuid = other.m_uuid;
+
+	return *this;
+}
+
 QDomElement TerminalStripData::infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value)
 {
 	auto xml_elmt = xml_doc.createElement("information");

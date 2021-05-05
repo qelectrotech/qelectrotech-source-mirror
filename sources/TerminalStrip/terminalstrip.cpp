@@ -319,6 +319,29 @@ void TerminalStrip::setDescription(const QString &description) {
 }
 
 /**
+ * @brief TerminalStrip::data
+ * @return The internal data of this strip
+ */
+TerminalStripData TerminalStrip::data() const {
+	return m_data;
+}
+
+/**
+ * @brief TerminalStrip::setData
+ * The internal data of this strip to data.
+ * the uuid of the new data is set to the uuid
+ * of the previous data to keep the uuid
+ * of the terminal strip unchanged
+ * @param data
+ */
+void TerminalStrip::setData(const TerminalStripData &data)
+{
+	auto uuid_ = m_data.m_uuid;
+	m_data = data;
+	m_data.m_uuid = uuid_;
+}
+
+/**
  * @brief TerminalStrip::addTerminal
  * Add terminal to this terminal strip
  * @param terminal

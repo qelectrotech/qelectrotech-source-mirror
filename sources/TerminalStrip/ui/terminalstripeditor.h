@@ -28,6 +28,7 @@ class QETProject;
 class TerminalStrip;
 class QTreeWidgetItem;
 class TerminalElement;
+class QAbstractButton;
 
 /**
  * @brief The TerminalStripEditor class
@@ -54,6 +55,7 @@ class TerminalStripEditor : public QDialog
 		void on_m_remove_terminal_strip_pb_clicked();
 		void on_m_reload_pb_clicked();
 		void on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+		void on_m_apply_data_pb_clicked(QAbstractButton *button);
 
 	private:
 		Ui::TerminalStripEditor *ui;
@@ -62,6 +64,7 @@ class TerminalStripEditor : public QDialog
 		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
 		QHash<QUuid, QPointer<TerminalElement>> m_uuid_terminal_H;
 		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
+		TerminalStrip *m_current_strip = nullptr;
 };
 
 #endif // TERMINALSTRIPEDITOR_H

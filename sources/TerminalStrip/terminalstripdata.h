@@ -25,6 +25,7 @@
 class TerminalStripData : public PropertiesInterface
 {
 		friend class TerminalStrip;
+		friend class TerminalStripEditor;
 
 	public:
 		TerminalStripData();
@@ -36,6 +37,8 @@ class TerminalStripData : public PropertiesInterface
 		bool fromXml (const QDomElement &xml_element) override;
 
 		static QString xmlTagName() {return QStringLiteral("terminal_strip_data");}
+
+		TerminalStripData &operator= (const TerminalStripData &other);
 
 	private :
 		static QDomElement infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value);

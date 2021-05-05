@@ -59,6 +59,9 @@ class TerminalStrip : public QObject
 		QString description() const {return m_data.m_description;}
 		QUuid uuid() const {return m_data.m_uuid;}
 
+		TerminalStripData data() const;
+		void setData(const TerminalStripData &data);
+
 		bool addTerminal    (Element *terminal);
 		bool removeTerminal (Element *terminal);
 		bool haveTerminal   (Element *terminal);
