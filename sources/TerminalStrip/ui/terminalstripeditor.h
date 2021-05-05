@@ -47,12 +47,13 @@ class TerminalStripEditor : public QDialog
 		void buildTree();
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
+		void clearDataTab();
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();
 		void on_m_remove_terminal_strip_pb_clicked();
-
 		void on_m_reload_pb_clicked();
+		void on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
 	private:
 		Ui::TerminalStripEditor *ui;

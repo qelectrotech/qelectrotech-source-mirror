@@ -233,6 +233,18 @@ void TerminalStripEditor::addFreeTerminal()
 }
 
 /**
+ * @brief TerminalStripEditor::clearDataTab
+ */
+void TerminalStripEditor::clearDataTab()
+{
+	ui->m_installation_le ->clear();
+	ui->m_location_le     ->clear();
+	ui->m_name_le         ->clear();
+	ui->m_comment_le      ->clear();
+	ui->m_description_te  ->clear();
+}
+
+/**
  * @brief TerminalStripEditor::on_m_add_terminal_strip_pb_clicked
  * Action when user click on add terminal strip button
  */
@@ -283,6 +295,9 @@ void TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked()
 	on_m_reload_pb_clicked();
 }
 
+/**
+ * @brief TerminalStripEditor::on_m_reload_pb_clicked
+ */
 void TerminalStripEditor::on_m_reload_pb_clicked()
 {
    ui->m_terminal_strip_tw->clear();
@@ -293,5 +308,40 @@ void TerminalStripEditor::on_m_reload_pb_clicked()
    qDeleteAll(m_item_strip_H.keys());
 
    buildTree();
-	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
+   ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged
+ * @param current
+ * @param previous
+ */
+void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+{
+	Q_UNUSED(previous)
+
+	if (!current) {
+		clearDataTab();
+		return;
+	}
+
+	TerminalStrip *strip_ = nullptr;
+	if (current->type() == TerminalStripTreeWidget::Strip) {
+		strip_ = m_item_strip_H.value(current);
+	}
+	else if (current->type() == TerminalStripTreeWidget::Terminal
+			 && current->parent()
+			 && current->parent()->type() == TerminalStripTreeWidget::Strip) {
+		strip_ = m_item_strip_H.value(current->parent());
+	}
+
+	if (strip_) {
+		ui->m_installation_le ->setText(strip_->installation());
+		ui->m_location_le     ->setText(strip_->location());
+		ui->m_name_le         ->setText(strip_->name());
+		ui->m_comment_le      ->setText(strip_->comment());
+		ui->m_description_te  ->setPlainText(strip_->description());
+	} else {
+		clearDataTab();
+	}
 }
