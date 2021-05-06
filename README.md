@@ -179,7 +179,8 @@ Finally two buttons are available in the property panel:
 - "Fit the table to the folio": positions and adjusts the size and determines the number of rows in the table in relation to the folio;  
 - "Apply geometry to all tables linked to this one": applies the three properties mentioned above to all linked tables in order to save time and maintain aesthetic consistency.  
 
-And to finish a table ![](https://download.tuxfamily.org/qet/images_depeche_linuxfr/08/tableau.png" "table")
+And to finish a table   
+![](https://download.tuxfamily.org/qet/images_depeche_linuxfr/08/tableau.png "table")
 
 
 Summary
