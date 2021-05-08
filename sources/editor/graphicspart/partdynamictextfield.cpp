@@ -105,6 +105,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
+	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
@@ -168,6 +169,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 	);
 	setZValue(dom_elmt.attribute("z", QString::number(zValue())).toDouble());
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
+	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font")) {
 		QFont font_;
@@ -428,6 +430,20 @@ void PartDynamicTextField::setFont(const QFont &font) {
 	QGraphicsTextItem::setFont(font);
 	finishAlignment();
 	emit fontChanged(font);
+}
+
+void PartDynamicTextField::setKeepVisualRotation(const bool &keep)
+{
+	if (keep == this->m_keep_visual_rotation) {
+		return;
+	}
+
+	m_keep_visual_rotation = keep;
+	emit keepVisualRotationChanged(keep);
+}
+
+bool PartDynamicTextField::keepVisualRotation() const {
+	return m_keep_visual_rotation;
 }
 
 /**

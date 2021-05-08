@@ -43,6 +43,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
+	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
 
 	public:
 			///PROPERTY
@@ -60,6 +61,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void textWidthChanged(qreal width);
 		void alignmentChanged(Qt::Alignment alignment);
 		void fontChanged(QFont font);
+		void keepVisualRotationChanged(bool keep);
 
 	public:
 		PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
@@ -96,6 +98,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void setAlignment(Qt::Alignment alignment);
 		Qt::Alignment alignment() const;
 		void setFont(const QFont &font);
+		void setKeepVisualRotation(const bool &keep);
+		bool keepVisualRotation() const;
 
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -119,7 +123,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		QUuid m_uuid;
 		bool m_frame = false,
 			 m_first_add = true,
-			 m_block_alignment = false;
+			 m_block_alignment = false,
+			 m_keep_visual_rotation = false;
 		qreal m_text_width = -1;
 		Qt::Alignment m_alignment = Qt::AlignTop|Qt::AlignLeft;
 		QRectF m_alignment_rect;
