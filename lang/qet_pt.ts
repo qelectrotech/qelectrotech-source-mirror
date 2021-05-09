@@ -1039,7 +1039,7 @@ form
 <context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1315"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1330"/>
         <source>Déplacer une primitive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1047,7 +1047,7 @@ form
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1794"/>
+        <location filename="../sources/diagram.cpp" line="1803"/>
         <source>Modifier la profondeur</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1487,115 +1487,125 @@ form
 </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="118"/>
-        <source>cadre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="193"/>
         <source>Source du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="39"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="183"/>
         <source>Couleur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="21"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="110"/>
+        <source>Conserver la rotation visuel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
         <source>Texte utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="26"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="143"/>
         <source>Information de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="31"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="65"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="210"/>
+        <source>Encadrer le texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="50"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="148"/>
         <source>Texte composé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="100"/>
         <source>Police</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="173"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="163"/>
         <source>Largeur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="57"/>
         <source>Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="192"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="156"/>
         <source>Alignement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="40"/>
         <source>Rotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="252"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="263"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="255"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="266"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="274"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="277"/>
         <source>Pivoter un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="285"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="288"/>
         <source>Modifier le texte d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="296"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="418"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="299"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="421"/>
         <source>Modifier la police d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="432"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="435"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="308"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="448"/>
+        <source>Modifier la conservation de l&apos;angle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="311"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="321"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="324"/>
         <source>Modifier la largeur d&apos;un texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="334"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="337"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="371"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="374"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="402"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="405"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1636,107 +1646,107 @@ form
 <context>
     <name>ElementDialog</name>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="63"/>
+        <location filename="../sources/elementdialog.cpp" line="62"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
         <translation>Abrir um elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="64"/>
+        <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Choisissez l&apos;élément que vous souhaitez ouvrir.</source>
         <comment>dialog content</comment>
         <translation>Escolha o elemento que deseja abrir.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="67"/>
+        <location filename="../sources/elementdialog.cpp" line="66"/>
         <source>Enregistrer un élément</source>
         <comment>dialog title</comment>
         <translation>Salvar um elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="68"/>
+        <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
         <translation>Escolha o elemento no qual deseja registar a sua definição.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="71"/>
+        <location filename="../sources/elementdialog.cpp" line="70"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
         <translation>Abrir uma categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="72"/>
-        <location filename="../sources/elementdialog.cpp" line="76"/>
+        <location filename="../sources/elementdialog.cpp" line="71"/>
+        <location filename="../sources/elementdialog.cpp" line="75"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
         <translation>Escolha uma categoria.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="75"/>
+        <location filename="../sources/elementdialog.cpp" line="74"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
         <translation>Salvar uma categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="79"/>
+        <location filename="../sources/elementdialog.cpp" line="78"/>
         <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="80"/>
+        <location filename="../sources/elementdialog.cpp" line="79"/>
         <source>Label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="114"/>
+        <location filename="../sources/elementdialog.cpp" line="113"/>
         <source>Nom du nouveau dossier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="114"/>
+        <location filename="../sources/elementdialog.cpp" line="113"/>
         <source>Nom du nouvel élément</source>
         <translation type="unfinished">Nome do novo elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="233"/>
+        <location filename="../sources/elementdialog.cpp" line="232"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="201"/>
+        <location filename="../sources/elementdialog.cpp" line="200"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
         <translation>Selecção não existente</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="202"/>
+        <location filename="../sources/elementdialog.cpp" line="201"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>A selecção não existe.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="208"/>
-        <location filename="../sources/elementdialog.cpp" line="232"/>
+        <location filename="../sources/elementdialog.cpp" line="207"/>
+        <location filename="../sources/elementdialog.cpp" line="231"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
         <translation>Selecção incorrecta</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="209"/>
+        <location filename="../sources/elementdialog.cpp" line="208"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
         <translation>A selecção não é um elemento.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="220"/>
+        <location filename="../sources/elementdialog.cpp" line="219"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Sobrescrever o elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="221"/>
+        <location filename="../sources/elementdialog.cpp" line="220"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
         <translation>O elemento já existe. Tem a certeza que o quer sobrescrever?</translation>
@@ -4115,19 +4125,6 @@ form
     </message>
 </context>
 <context>
-    <name>Machine_info</name>
-    <message>
-        <location filename="../sources/machine_info.cpp" line="123"/>
-        <source>Compilation : </source>
-        <translation type="unfinished">Compilação : </translation>
-    </message>
-    <message>
-        <location filename="../sources/machine_info.cpp" line="343"/>
-        <source>Compilation :   </source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MarginsEditDialog</name>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
@@ -4612,7 +4609,7 @@ form
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="467"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="483"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5288,133 +5285,133 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="213"/>
+        <location filename="../sources/qetapp.cpp" line="218"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation type="unfinished">LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="406"/>
+        <location filename="../sources/qetapp.cpp" line="416"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation type="unfinished">Molduras QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="426"/>
+        <location filename="../sources/qetapp.cpp" line="436"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation type="unfinished">Molduras do utilizador</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1902"/>
+        <location filename="../sources/qetapp.cpp" line="1912"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1904"/>
+        <location filename="../sources/qetapp.cpp" line="1914"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Esconder</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1906"/>
+        <location filename="../sources/qetapp.cpp" line="1916"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1908"/>
+        <location filename="../sources/qetapp.cpp" line="1918"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Esconder os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1911"/>
+        <location filename="../sources/qetapp.cpp" line="1921"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Mostrar os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1914"/>
+        <location filename="../sources/qetapp.cpp" line="1924"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Esconder os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1917"/>
+        <location filename="../sources/qetapp.cpp" line="1927"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Mostrar os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1920"/>
+        <location filename="../sources/qetapp.cpp" line="1930"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Esconder todos os editores de moldura</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1923"/>
+        <location filename="../sources/qetapp.cpp" line="1933"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Mostrar todos os editores de molduras</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1926"/>
+        <location filename="../sources/qetapp.cpp" line="1936"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Novo editor de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1928"/>
+        <location filename="../sources/qetapp.cpp" line="1938"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Novo editor de elemento</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1930"/>
+        <location filename="../sources/qetapp.cpp" line="1940"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Fechar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1931"/>
+        <location filename="../sources/qetapp.cpp" line="1941"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Minimizar QElectroTech para a bandeja de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1932"/>
+        <location filename="../sources/qetapp.cpp" line="1942"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restaurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2044"/>
+        <location filename="../sources/qetapp.cpp" line="2054"/>
         <source>Éditeurs de schémas</source>
         <translation>Editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2054"/>
+        <location filename="../sources/qetapp.cpp" line="2064"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2065"/>
+        <location filename="../sources/qetapp.cpp" line="2075"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Editores de molduras</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2117"/>
+        <location filename="../sources/qetapp.cpp" line="2127"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2120"/>
+        <location filename="../sources/qetapp.cpp" line="2130"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2135"/>
+        <location filename="../sources/qetapp.cpp" line="2145"/>
         <source>Fichier de restauration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2237"/>
+        <location filename="../sources/qetapp.cpp" line="2247"/>
         <source>Usage : </source>
         <translation>Utilização: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2240"/>
+        <location filename="../sources/qetapp.cpp" line="2250"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5431,7 +5428,7 @@ Opções disponiveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2239"/>
+        <location filename="../sources/qetapp.cpp" line="2249"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5440,105 +5437,105 @@ Opções disponiveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2246"/>
+        <location filename="../sources/qetapp.cpp" line="2256"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define a directoria da colecção de elementos
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2249"/>
+        <location filename="../sources/qetapp.cpp" line="2259"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Definir a pasta da colecção de modelos de molduras¶</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2252"/>
+        <location filename="../sources/qetapp.cpp" line="2262"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define a directoria de configuração
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2254"/>
+        <location filename="../sources/qetapp.cpp" line="2264"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define a directoria dos ficheiros de linguagem</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="100"/>
+        <location filename="../sources/qetapp.cpp" line="104"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... a Inicializar cache da colecção de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="111"/>
+        <location filename="../sources/qetapp.cpp" line="115"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="116"/>
+        <location filename="../sources/qetapp.cpp" line="120"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... abertura dos ficheiros</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1168"/>
+        <location filename="../sources/qetapp.cpp" line="1178"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1170"/>
+        <location filename="../sources/qetapp.cpp" line="1180"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1172"/>
+        <location filename="../sources/qetapp.cpp" line="1182"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1174"/>
+        <location filename="../sources/qetapp.cpp" line="1184"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Eléctrico</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1176"/>
+        <location filename="../sources/qetapp.cpp" line="1186"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1653"/>
+        <location filename="../sources/qetapp.cpp" line="1663"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation type="unfinished">Configurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1797"/>
+        <location filename="../sources/qetapp.cpp" line="1807"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>A carregar...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1895"/>
+        <location filename="../sources/qetapp.cpp" line="1905"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... Ícone da bandeja de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1899"/>
+        <location filename="../sources/qetapp.cpp" line="1909"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1949"/>
+        <location filename="../sources/qetapp.cpp" line="1959"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -6947,21 +6944,21 @@ make it executable : chmod +x ./DXFtoQET
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="219"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1410"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1409"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Não é possível abrir o ficheiro %1.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="226"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1415"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1414"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Este ficheiro não é um documento XML válido</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="232"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1421"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1420"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Erro</translation>
@@ -7027,16 +7024,16 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1245"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1274"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1358"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1244"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1273"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1357"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1245"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1274"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1358"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1244"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1273"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1357"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
@@ -7059,7 +7056,7 @@ les conditions requises ne sont pas valides</source>
         <translation>Elementos QElectroTech (*.elmt);;XML files (*.xml);;All files (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1367"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1366"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Recarregar o elemento</translation>
@@ -7070,19 +7067,19 @@ les conditions requises ne sont pas valides</source>
         <translation type="unfinished">Avisos</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1368"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1367"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Este elemento foi modificado desde a última vez que o guardou. Se o recarregar as alterações serão perdidas. Tem a certeza que deseja recarregar este elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1331"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1330"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Gravar como</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1333"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1332"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Elementos QElectroTech (*.elmt)</translation>
@@ -7102,22 +7099,22 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="290"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="296"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1436"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1442"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1435"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1441"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Elemento não existente.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="297"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1443"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1442"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>O elemento não existe.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="291"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1437"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1436"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>O caminho virtual escolhido não corresponde a um elemento.</translation>
@@ -8771,18 +8768,18 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2408"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
+        <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.9 bundle only, &lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2410"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2428"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2430"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
-        <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8810,9 +8807,19 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
         <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="579"/>
-        <location filename="../sources/qetapp.cpp" line="1989"/>
+        <location filename="../sources/qetapp.cpp" line="1999"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/machine_info.cpp" line="124"/>
+        <source>Compilation : </source>
+        <translation type="unfinished">Compilação : </translation>
+    </message>
+    <message>
+        <location filename="../sources/machine_info.cpp" line="342"/>
+        <source>Compilation :   </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
