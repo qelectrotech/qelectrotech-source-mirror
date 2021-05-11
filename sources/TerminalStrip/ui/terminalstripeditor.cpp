@@ -41,6 +41,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	m_project(project)
 {
 	ui->setupUi(this);
+	ui->m_remove_terminal_strip_pb->setDisabled(true);
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
@@ -302,6 +303,8 @@ void TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked()
  */
 void TerminalStripEditor::on_m_reload_pb_clicked()
 {
+   auto current_ = m_current_strip;
+
    ui->m_terminal_strip_tw->clear();
    m_item_strip_H.clear();
    m_uuid_terminal_H.clear();
@@ -311,6 +314,12 @@ void TerminalStripEditor::on_m_reload_pb_clicked()
 
    buildTree();
    ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
+
+	//Reselect the tree widget item of the current edited strip
+   auto item = m_item_strip_H.key(current_);
+   if (item) {
+	   ui->m_terminal_strip_tw->setCurrentItem(item);
+   }
 }
 
 /**
@@ -324,17 +333,22 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 
 	if (!current) {
 		clearDataTab();
+		ui->m_remove_terminal_strip_pb->setDisabled(true);
 		return;
 	}
 
 	TerminalStrip *strip_ = nullptr;
 	if (current->type() == TerminalStripTreeWidget::Strip) {
 		strip_ = m_item_strip_H.value(current);
+		ui->m_remove_terminal_strip_pb->setEnabled(true);
 	}
 	else if (current->type() == TerminalStripTreeWidget::Terminal
 			 && current->parent()
 			 && current->parent()->type() == TerminalStripTreeWidget::Strip) {
 		strip_ = m_item_strip_H.value(current->parent());
+		ui->m_remove_terminal_strip_pb->setDisabled(true);
+	} else {
+		ui->m_remove_terminal_strip_pb->setDisabled(true);
 	}
 
 	if (strip_) {
