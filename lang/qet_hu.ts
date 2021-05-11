@@ -1495,7 +1495,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="110"/>
         <source>Conserver la rotation visuel</source>
-        <translation type="unfinished">A forgatás megjelenésének kezelése</translation>
+        <translation>A forgatás megjelenésének kezelése</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
@@ -1510,7 +1510,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="210"/>
         <source>Encadrer le texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg bekeretezése</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="50"/>
@@ -1578,7 +1578,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="448"/>
         <source>Modifier la conservation de l&apos;angle</source>
-        <translation type="unfinished"></translation>
+        <translation>A szög módosításának megőrzése</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="311"/>
@@ -8776,7 +8776,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.9 bundle only, &lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>A qet_tb_generator beépülő modul telepítése&lt;br&gt;Látogass el  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Első telepítés macOSX-en&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Telepítsd, ha szükséges, a python 3.9 csomagot, &lt;br&gt;2 Futtasd Profile.command script&lt;br&gt;A program un. hardcoded PATH (szigorúan deklarált) elérési útvonalat használ a qet-tb-generator plugin-hoz &lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;hogyan (howto)&lt;/a&gt;&lt;br&gt;2. parancsaorba gépelve pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés macOSX-en&lt;/B&gt;&lt;/U&gt;&lt;br&gt; parancssorba gépelve pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2410"/>
@@ -8821,12 +8821,12 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="124"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Összeállítás: </translation>
+        <translation>Összeállítás: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="342"/>
         <source>Compilation :   </source>
-        <translation type="unfinished">Összeállítás :   </translation>
+        <translation>Összeállítás :   </translation>
     </message>
 </context>
 <context>
