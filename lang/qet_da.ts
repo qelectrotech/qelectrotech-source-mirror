@@ -1486,7 +1486,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="110"/>
         <source>Conserver la rotation visuel</source>
-        <translation type="unfinished">Behold visuel rotation</translation>
+        <translation>Behold visuel rotation</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
@@ -1501,7 +1501,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="210"/>
         <source>Encadrer le texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ramme om tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="50"/>
@@ -1569,7 +1569,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="448"/>
         <source>Modifier la conservation de l&apos;angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre vinkel bevarelse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="311"/>
@@ -8787,7 +8787,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.9 bundle only, &lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Første installaton på MacOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installere, om nødvendigt, kun python 3.9 pakke&lt;br&gt;2 Kør Profile.command script&lt;br&gt;fordi programmet bruger hård kodet PATH til lokalisering af qet-tb-generator udvidelsesmodul&lt;br&gt;Besøg:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Opdatering på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2410"/>
@@ -8832,12 +8832,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/machine_info.cpp" line="124"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Kompilering: </translation>
+        <translation>Kompilering: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="342"/>
         <source>Compilation :   </source>
-        <translation type="unfinished">Kompilering:   </translation>
+        <translation>Kompilering:   </translation>
     </message>
 </context>
 <context>
@@ -11449,7 +11449,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="293"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grøn : Mellem havvand</translation>
+        <translation>Grøn : Mellem havvand</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="294"/>
@@ -11533,7 +11533,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="307"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Turkis : Lys havgrøn</translation>
+        <translation>Turkis : Lys havgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="308"/>
@@ -11545,7 +11545,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="309"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Turkis : Mørk turkis</translation>
+        <translation>Turkis : Mørk turkis</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="310"/>
@@ -11791,13 +11791,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="350"/>
         <source>White : GhostWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Hvid : Spøgelse hvid</translation>
+        <translation>Hvid : Spøgelse hvid</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="351"/>
         <source>White : WhiteSmoke</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Hvid : Hvid røg</translation>
+        <translation>Hvid : Hvid røg</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="352"/>
@@ -11863,7 +11863,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="362"/>
         <source>Gray : LightGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grå : Lysegrå</translation>
+        <translation>Grå : Lysegrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="363"/>
@@ -11893,7 +11893,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="367"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grå : Lys skifergrå</translation>
+        <translation>Grå : Lys skifergrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
