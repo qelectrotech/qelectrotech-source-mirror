@@ -17,7 +17,7 @@
 */
 #include <QScrollArea>
 #include "configdialog.h"
-#include "configpages.h"
+#include "ui/configpage/configpages.h"
 #include "qetapp.h"
 
 #include "machine_info.h"

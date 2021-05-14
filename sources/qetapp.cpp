@@ -18,7 +18,7 @@
 #include "qetapp.h"
 
 #include "configdialog.h"
-#include "configpages.h"
+#include "ui/configpage/configpages.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscollectioncache.h"
 #include "factory/elementfactory.h"
