@@ -237,14 +237,16 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	painter.end();
 	low_painter.end();
 
+	const auto uuid_ = location.uuid();
 	if (!picture) {
-		m_pictures_H.insert(location.uuid(), pic);
-		m_primitives_H.insert(location.uuid(), primitives_);
+		m_pictures_H.insert(uuid_, pic);
+		m_primitives_H.insert(uuid_, primitives_);
 	}
 	if (!low_picture) {
-		m_low_pictures_H.insert(location.uuid(), low_pic);
-		m_primitives_H.insert(location.uuid(), primitives_);
+		m_low_pictures_H.insert(uuid_, low_pic);
+		m_primitives_H.insert(uuid_, primitives_);
 	}
+
 	return true;
 }
 
