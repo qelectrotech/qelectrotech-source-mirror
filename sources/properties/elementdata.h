@@ -68,17 +68,17 @@ class ElementData : public PropertiesInterface
 
 		enum TerminalType {
 			TTGeneric,
-			Fuse,
-			Sectional,
-			Diode
+			TTFuse,
+			TTSectional,
+			TTDiode,
+			TTGround
 		};
 		Q_ENUM(TerminalType)
 
 		enum TerminalFunction {
 			TFGeneric,
-			Phase,
-			Neutral,
-			PE
+			TFPhase,
+			TFNeutral,
 		};
 		Q_ENUM(TerminalFunction)
 
