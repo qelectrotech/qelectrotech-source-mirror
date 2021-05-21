@@ -1420,21 +1420,21 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			QDomElement diagram_xml_element = diagram_nodes
 					.at(i)
 					.toElement();
-			Diagram *diagram = new Diagram(this);
+			auto diagram = new Diagram(this);
+			m_diagrams_list << diagram;
 
-			int diagram_order = -1;
-			if (!QET::attributeIsAnInteger(diagram_xml_element,
-							   QStringLiteral("order"),
-							   &diagram_order))
-				diagram_order = 500000;
-
-			addDiagram(diagram, diagram_order-1);
+			connect(&diagram->border_and_titleblock, &BorderTitleBlock::needFolioData,
+					this, &QETProject::updateDiagramsFolioData);
+			connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
+					this, &QETProject::usedTitleBlockTemplateChanged);
 
 			diagram->initFromXml(diagram_xml_element);
 			if(dlgWaiting)
 				dlgWaiting->setDetail(diagram->title());
 		}
 	}
+
+	updateDiagramsFolioData();
 
 		//Initialise links between elements in this project
 		//and refresh the text of conductor

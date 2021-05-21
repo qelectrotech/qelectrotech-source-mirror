@@ -384,7 +384,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="169"/>
         <source>Sélectionner la police des en tête du tableau</source>
-        <translation>Selecteer het lettertype van de.kopteksten van de tabel</translation>
+        <translation>Selecteer het lettertype van de kopteksten van de tabel</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="180"/>
@@ -594,12 +594,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation>In dit menu kun je instellen of en wat automatische nummering moet updaten. Voor automatisch nummeren van elementen zijn 4 opties mogelijk:
+        <translation>In dit menu kun je instellen of en wat een automatische nummering moet updaten. Voor het automatisch nummeren van elementen zijn 4 opties mogelijk:
 -Beide: nieuwe en bestaande elementen zullen worden geüpdatet. Dit is de standaard instelling.
 -Nieuwe: alleen nieuwe elementen zullen worden geüpdatet. Bestaande elementlabels blijven ongewijzigd.
--Bestaande: alleen bestaande elementen zullen worden geüpdatet. Nieuwe elementen krijgen hun formule toegewezen maar worden na aanmaken niet geüpdatet.
+-Bestaande: alleen bestaande elementen zullen worden geüpdatet. Nieuwe elementen krijgen hun formule toegewezen maar worden na het aanmaken niet geüpdatet.
 -Uitgeschakeld: Nieuwe noch bestaande labels zullen worden geüpdatet. Dit geldt ook voor nieuwe bladen.
-Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen het updatebeleid.</translation>
+Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alleen het updatebeleid.</translation>
     </message>
 </context>
 <context>
@@ -667,7 +667,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
         <source>Quantité numéro d&apos;article</source>
         <comment>Special field with name : designation quantity</comment>
-        <translation>Aantal itemnummer</translation>
+        <translation>Aantal itemnummers</translation>
     </message>
 </context>
 <context>
@@ -710,7 +710,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
         <source>Dimensions du folio</source>
-        <translation>Stramien</translation>
+        <translation>Bladafmetingen</translation>
     </message>
 </context>
 <context>
@@ -813,7 +813,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation>Geleidertype</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
@@ -1005,7 +1005,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="457"/>
         <source>Apparence</source>
-        <translation>Geleiderweergave</translation>
+        <translation>Weergave</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="528"/>
@@ -1143,7 +1143,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="118"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation>Kies een nieuwe kleur voor deze geleider</translation>
+        <translation>Kies de nieuwe kleur voor deze geleider</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="137"/>
@@ -1476,7 +1476,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="110"/>
         <source>Conserver la rotation visuel</source>
-        <translation type="unfinished">Oriëntatie behouden</translation>
+        <translation>Oriëntatie behouden</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
@@ -1491,7 +1491,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="210"/>
         <source>Encadrer le texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst omkaderen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="50"/>
@@ -1569,7 +1569,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="448"/>
         <source>Modifier la conservation de l&apos;angle</source>
-        <translation type="unfinished"></translation>
+        <translation>De te bewaren hoek wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="311"/>
@@ -1821,7 +1821,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="113"/>
         <source>Élément bornier</source>
-        <translation>Elementaansluiting</translation>
+        <translation>Element-aansluitingen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="126"/>
@@ -1847,7 +1847,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="119"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="130"/>
         <source>Simple</source>
-        <translation>Eenvoudig</translation>
+        <translation>Enkelvoudig</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
@@ -2059,12 +2059,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
-        <translation>Beschikbare informatie</translation>
+        <translation>Beschikbare gegevens</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
         <source>Informations à exporter</source>
-        <translation>Te exporteren informatie</translation>
+        <translation>Te exporteren gegevens</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
@@ -2129,12 +2129,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
         <source>Type d&apos;éléments</source>
-        <translation>Elementtype</translation>
+        <translation>Te exporteren elementen</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
         <source>Simples</source>
-        <translation>Eenvoudige</translation>
+        <translation>Enkelvoudige</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
@@ -2228,7 +2228,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="904"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
-        <translation>U kunt voor meerdere talen een elementnaam opgeven.</translation>
+        <translation>U kunt de elementnaam in meerdere talen opgeven.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="902"/>
@@ -2242,7 +2242,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="124"/>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
-        <translation>U kunt voor elke taal een categorienaam opgeven.</translation>
+        <translation>U kunt de categorienaam in meerdere talen opgeven.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="113"/>
@@ -2345,7 +2345,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="149"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Bestandsmap openen</translation>
+        <translation>Bijbehorende map openen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="151"/>
@@ -2365,7 +2365,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="157"/>
         <source>Recharger les collections</source>
-        <translation>Herlaadt collecties</translation>
+        <translation>Collecties opnieuw laden</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="159"/>
@@ -2385,12 +2385,12 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="165"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation>Alleen deze map tonen</translation>
+        <translation>Alleen deze map weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="168"/>
         <source>Afficher tous les dossiers</source>
-        <translation>Alle mappen tonen</translation>
+        <translation>Alle mappen weergeven</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="170"/>
@@ -2426,7 +2426,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="412"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation>Verwijdering element mislukt.</translation>
+        <translation>Element kon niet worden verwijdert.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="437"/>
@@ -2451,7 +2451,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="456"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
-        <translation>Map verwijderen mislukt.</translation>
+        <translation>Map kon niet worden verwijdert.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="595"/>
@@ -2545,7 +2545,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="54"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Open de bestandsmap</translation>
+        <translation>Open de bijbehorende map</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="55"/>
@@ -2663,7 +2663,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
         <source>Diamètres :</source>
-        <translation>Doorsneden:</translation>
+        <translation>Doorsnede:</translation>
     </message>
 </context>
 <context>
@@ -8782,7 +8782,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.9 bundle only, &lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie van de qet_tb_generator&lt;br&gt;Ga naar:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Eerste installatie onder macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installeer indien nodig de Python 3.9 bundle, &lt;br&gt;2 Voer het Profile.commando uit&lt;br&gt;omdat het programma het hardcoded pad voor de locatie van de qet-tb-generator plugin gebruikt &lt;br&gt; Ga naar :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;  Update onder macOSx&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2410"/>
@@ -8827,12 +8827,12 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="124"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Compilatie: </translation>
+        <translation>Compilatie: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="342"/>
         <source>Compilation :   </source>
-        <translation type="unfinished">Compilatie :   </translation>
+        <translation>Compilatie :   </translation>
     </message>
 </context>
 <context>

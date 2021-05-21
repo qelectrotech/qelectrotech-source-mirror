@@ -307,26 +307,30 @@ QString ElementData::terminalTypeToString(ElementData::TerminalType type)
 {
 	switch (type) {
 		case ElementData::TTGeneric :
-			return QString("generic");
-		case ElementData::Fuse :
-			return  QString("fuse");
-		case ElementData::Sectional:
-			return QString("sectional");
-		case ElementData::Diode:
-			return QString("diode");
+			return QStringLiteral("generic");
+		case ElementData::TTFuse :
+			return  QStringLiteral("fuse");
+		case ElementData::TTSectional:
+			return QStringLiteral("sectional");
+		case ElementData::TTDiode:
+			return QStringLiteral("diode");
+		case ElementData::TTGround:
+			return QStringLiteral("ground");
 	}
 }
 
 ElementData::TerminalType ElementData::terminalTypeFromString(const QString &string)
 {
-	if (string == "generic") {
+	if (string == QLatin1String("generic")) {
 		return ElementData::TTGeneric;
-	} else if (string == "fuse") {
-		return ElementData::Fuse;
-	} else if (string == "sectional") {
-		return ElementData::Sectional;
-	} else if (string == "diode") {
-		return ElementData::Diode;
+	} else if (string == QLatin1String("fuse")) {
+		return ElementData::TTFuse;
+	} else if (string == QLatin1String("sectional")) {
+		return ElementData::TTSectional;
+	} else if (string == QLatin1String("diode")) {
+		return ElementData::TTDiode;
+	} else if (string == QLatin1String("ground")) {
+		return ElementData::TTGround;
 	}
 
 	qDebug() << "ElementData::terminalTypeFromString : string : "
@@ -340,12 +344,10 @@ QString ElementData::terminalFunctionToString(ElementData::TerminalFunction func
 	switch (function) {
 		case ElementData::TFGeneric:
 			return QString("generic");
-		case ElementData::Phase:
+		case ElementData::TFPhase:
 			return QString ("phase");
-		case ElementData::Neutral:
+		case ElementData::TFNeutral:
 			return QString("neutral");
-		case ElementData::PE:
-			return QString("pe");
 	}
 }
 
@@ -354,11 +356,9 @@ ElementData::TerminalFunction ElementData::terminalFunctionFromString(const QStr
 	if (string == "generic") {
 		return ElementData::TFGeneric;
 	} else if (string == "phase") {
-		return ElementData::Phase;
+		return ElementData::TFPhase;
 	} else if (string == "neutral") {
-		return ElementData::Neutral;
-	} else if (string == "pe") {
-		return ElementData::PE;
+		return ElementData::TFNeutral;
 	}
 
 	qDebug() << "ElementData::terminalFunctionFromString : string : "

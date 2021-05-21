@@ -18,8 +18,8 @@
 #include "projectpropertiesdialog.h"
 
 #include "../configdialog.h"
-#include "../configpages.h"
-#include "../projectconfigpages.h"
+#include "configpage/configpages.h"
+#include "configpage/projectconfigpages.h"
 
 #include <QObject>
 
