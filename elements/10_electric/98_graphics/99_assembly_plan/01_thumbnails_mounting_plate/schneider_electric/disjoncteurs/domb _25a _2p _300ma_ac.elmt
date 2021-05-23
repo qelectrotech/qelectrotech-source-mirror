@@ -2,6 +2,7 @@
     <uuid uuid="{198a0b95-a65d-4a9d-bca7-0bf38788bf47}"/>
     <names>
         <name lang="fr">DomB 25A 300 ma AC</name>
+        <name lang="cs">DomB 25A 300 ma AC</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>

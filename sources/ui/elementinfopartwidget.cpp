@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,9 +17,10 @@
 */
 #include "elementinfopartwidget.h"
 
-#include <utility>
+#include "../SearchAndReplace/searchandreplaceworker.h"
 #include "ui_elementinfopartwidget.h"
-#include "searchandreplaceworker.h"
+
+#include <utility>
 
 typedef SearchAndReplaceWorker sarw;
 

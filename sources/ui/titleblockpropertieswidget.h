@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,12 +18,13 @@
 #ifndef TITLEBLOCKPROPERTIESWIDGET_H
 #define TITLEBLOCKPROPERTIESWIDGET_H
 
-#include "qetproject.h"
-#include <QWidget>
-#include "titleblockproperties.h"
+#include "../autoNum/numerotationcontext.h"
+#include "../qet.h"
+#include "../qetproject.h"
+#include "../titleblockproperties.h"
 #include "diagramcontextwidget.h"
-#include "qet.h"
-#include "numerotationcontext.h"
+
+#include <QWidget>
 
 class NumerotationContext;
 class QETProject;

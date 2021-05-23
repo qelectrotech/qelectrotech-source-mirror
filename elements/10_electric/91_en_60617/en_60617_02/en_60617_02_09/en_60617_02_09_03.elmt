@@ -4,6 +4,7 @@
         <name lang="fr">Rayonnement ionisant</name>
         <name lang="es">Radiación ionizante</name>
         <name lang="de">ionisierende Strahlung </name>
+        <name lang="cs">Ionizující záření</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

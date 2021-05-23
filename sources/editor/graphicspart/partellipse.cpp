@@ -87,23 +87,23 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 */
 void PartEllipse::toXmlPriv(QDomElement& xml_element) const
 {
-    if (qFuzzyCompare(rect().width(), rect().height()))
-    {
+	if (qFuzzyCompare(rect().width(), rect().height()))
+	{
         xml_element.setTagName("circle");
-        xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
-    }
-    else
-    {
+		xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
+	}
+	else
+	{
         xml_element.setTagName("ellipse");
-        xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-        xml_element.setAttribute("height", QString("%1").arg(rect().height()));
-    }
+		xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
+		xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+	}
 
-    QPointF top_left(sceneTopLeft());
-    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	QPointF top_left(sceneTopLeft());
+	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
 
-    stylesToXml(xml_element);
+	stylesToXml(xml_element);
 }
 
 /**

@@ -98,12 +98,13 @@ void TerminalData::toXmlPriv(QDomElement& xml_element) const
     xml_element.setAttribute("x", m_pos.x());
     xml_element.setAttribute("y", m_pos.y());
 
-    xml_element.setAttribute("name", m_name);
+	xml_element.setAttribute("name", m_name);
 
-    xml_element.setAttribute("orientation",
+	xml_element.setAttribute("orientation",
 	orientationToString(m_orientation));
 
     xml_element.setAttribute("type", typeToString(m_type));
+
 }
 
 /*
@@ -154,6 +155,8 @@ bool TerminalData::fromXmlPriv(const QDomElement &xml_element)
     QString type;
     if (QETXML::propertyString(xml_element, "type", &type) == QETXML::PropertyFlags::Success)
         m_type = typeFromString(type);
+
+	m_type = typeFromString(xml_element.attribute("type"));
 
 	return true;
 }

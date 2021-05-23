@@ -2,6 +2,7 @@
     <uuid uuid="{6ca0178d-d766-44a5-aeb0-f4f42a98bf4f}"/>
     <names>
         <name lang="en">I2C Level Shifter</name>
+        <name lang="cs">Převodník úrovně I2C</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>

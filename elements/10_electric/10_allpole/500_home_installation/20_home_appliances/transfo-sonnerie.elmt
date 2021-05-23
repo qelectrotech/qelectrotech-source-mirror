@@ -2,6 +2,7 @@
     <uuid uuid="{1809d95a-e01b-446c-a205-866ecea732ff}"/>
     <names>
         <name lang="fr">Tranfo Sonnerie</name>
+        <name lang="cs">Zvonkový transformátor</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

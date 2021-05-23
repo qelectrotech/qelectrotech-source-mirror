@@ -4,6 +4,7 @@
         <name lang="fr">Accouplement mécanique débrayé</name>
         <name lang="es">Acoplamiento mecánico, liberado</name>
         <name lang="de">Kupplung, gelöst</name>
+        <name lang="cs">Spojka, mechanické spojení vypnuto</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

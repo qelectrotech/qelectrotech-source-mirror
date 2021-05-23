@@ -1,0 +1,54 @@
+<definition hotspot_x="366" hotspot_y="46" type="element" height="100" link_type="simple" version="0.80" width="730">
+    <names>
+        <name lang="cs">750-862</name>
+        <name lang="de">750-862</name>
+        <name lang="pt">750-862</name>
+        <name lang="el">750-862</name>
+        <name lang="es">750-862</name>
+        <name lang="pl">750-862</name>
+        <name lang="it">750-862</name>
+        <name lang="nl">750-862</name>
+        <name lang="ar">750-862</name>
+        <name lang="fr">750-862</name>
+        <name lang="en">750-862</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-862</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="90" rx="0" y="-40" ry="0" width="720" antialias="false" x="-360"/>
+        <text text="0V" rotation="0" color="#000000" y="-22" x="-39" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="17.5" antialias="true" x="-362.5"/>
+        <dynamic_text Halignment="AlignLeft" z="4" rotation="0" Valignment="AlignTop" text_width="-1" y="29.5" frame="false" x="220" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="Eth2" rotation="0" color="#000000" y="24" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="0V" rotation="0" color="#000000" y="-22" x="-119" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-2.5" antialias="true" x="-362.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-122.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-202.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-282.5"/>
+        <text text="WAGO 750-862" rotation="0" color="#000000" y="45" x="-330" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="IP Adr.:" rotation="0" color="#000000" y="4" x="-317" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text Halignment="AlignLeft" z="23" rotation="0" Valignment="AlignTop" text_width="-1" y="-11.5" frame="false" x="-270" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>192.168.1.1</text>
+        </dynamic_text>
+        <text text="24V" rotation="0" color="#000000" y="-22" x="-199" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="24V" rotation="0" color="#000000" y="-22" x="-279" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="Eth1" rotation="0" color="#000000" y="4" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="Ethernet ECO Controller" rotation="0" color="#000000" y="45" x="-138" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <terminal orientation="w" name="Eth1" y="0" x="-360"/>
+        <terminal orientation="w" name="Eth2" y="20" x="-360"/>
+        <terminal orientation="n" name="24V.1" y="-40" x="-280"/>
+        <terminal orientation="n" name="24V.2" y="-40" x="-200"/>
+        <terminal orientation="n" name="0V.3" y="-40" x="-120"/>
+        <terminal orientation="n" name="0V.4" y="-40" x="-40"/>
+    </description>
+</definition>

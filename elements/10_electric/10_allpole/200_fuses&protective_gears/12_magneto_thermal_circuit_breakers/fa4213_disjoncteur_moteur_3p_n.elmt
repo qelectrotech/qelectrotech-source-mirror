@@ -1,14 +1,18 @@
-<definition type="element" link_type="simple" hotspot_x="33" hotspot_y="5" version="0.5" width="110" height="70">
+<definition type="element" link_type="master" hotspot_x="33" hotspot_y="5" version="0.5" width="110" height="70">
 <uuid uuid="{C33FE39E-B2EE-4EC0-BC3F-4EB76E9BCEA0}"/><names>
         <name lang="en">Motor circuit breaker with neutral</name>
         <name lang="es">Disyuntor termico magnetico 3P+N mando manual con auto retorno y boton de desenclave</name>
         <name lang="fr">Disjoncteur de moteur avec neutre</name>
-        <name lang="cs">Jistič motoru s nulovým vodičem</name>
+        <name lang="cs">Pojistkový odpínač 3p+N</name>
         <name lang="de">Motorschutzschalter mit Nulleiter</name>
         <name lang="it">Salvamotore 3P+N</name>
         <name lang="el">Θερμομαγνητικός διακόπτης με ουδέτερο</name>
         <name lang="pl">Wyłącznik silnikowy</name>
+        <name lang="hu">Motorvédő kapcsoló 3F + N pólusú</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

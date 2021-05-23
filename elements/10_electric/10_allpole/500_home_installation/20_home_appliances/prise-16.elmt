@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Prise 16 A</name>
         <name lang="pl">Gniazdo wtyczkowe trójbiegunowe</name>
+        <name lang="cs">Zásuvka 16A 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

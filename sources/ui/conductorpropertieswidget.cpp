@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorpropertieswidget.h"
+
+#include "../conductorproperties.h"
+#include "../qetapp.h"
+#include "../qtextorientationspinboxwidget.h"
 #include "ui_conductorpropertieswidget.h"
-#include "conductorproperties.h"
-#include "qetapp.h"
-#include "qtextorientationspinboxwidget.h"
 
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget

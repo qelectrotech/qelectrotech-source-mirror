@@ -2,6 +2,7 @@
     <uuid uuid="{f59109f6-c4de-4391-a5fa-3b975effd6d1}"/>
     <names>
         <name lang="fr">saut de biche</name>
+        <name lang="de">Sprungrohr</name>
         <name lang="ca">Salt canonada</name>
         <name lang="es">Salto Tubería</name>
     </names>
@@ -18,7 +19,7 @@
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
     </elementInformations>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line length1="1.5" end1="none" length2="1.5" y1="0" antialias="false" x2="-5.20717" x1="-9.73184" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none"/>

@@ -10,7 +10,7 @@ gesteuert)
         <name lang="en"> Turn-off triode thyristor, P-gate
 (cathode-side controlled)
 </name>
-        <name lang="cs">Vypínací triodový tyristor, brána P (řízeno na straně katody)</name>
+        <name lang="cs">Vypínací tyristor, P-brána (řízeno na katodě)</name>
         <name lang="fr">Thyristor triode blocable par la gâchette P
 (commandé côté cathode)
 </name>

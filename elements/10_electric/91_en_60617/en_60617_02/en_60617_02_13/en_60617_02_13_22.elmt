@@ -6,6 +6,8 @@ pneumatique, à double effet</name>
         <name lang="es">Accionado por energia hidráulica ó neumática, efecto doble</name>
         <name lang="de">ausgelöst durch pneumatische oder
 hydraulische Kraft in beiden Richtungen</name>
+        <name lang="cs">Ovládání pneumaticky nebo hydraulicky,
+působení v obou směrech</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

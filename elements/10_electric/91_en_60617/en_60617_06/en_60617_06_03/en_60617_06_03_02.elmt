@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Enroulement série</name>
         <name lang="de">Reihenschlußwicklung</name>
+        <name lang="cs">Sériové vinutí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

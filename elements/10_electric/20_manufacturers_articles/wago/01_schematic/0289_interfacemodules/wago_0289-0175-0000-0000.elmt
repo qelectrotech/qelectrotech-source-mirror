@@ -1,0 +1,55 @@
+<definition version="0.80" link_type="simple" width="730" hotspot_y="46" type="element" hotspot_x="364" height="100">
+    <names>
+        <name lang="en">289-175</name>
+        <name lang="fr">289-175</name>
+        <name lang="de">289-175</name>
+        <name lang="cs">289-175</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-175</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect ry="0" x="-360" width="720" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="90" antialias="false"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="327" text="RJ-45" color="#000000" y="17" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="321" text="S" color="#000000" y="-24" rotation="0"/>
+        <circle x="357.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-2.5" antialias="true"/>
+        <dynamic_text frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" Halignment="AlignLeft" z="5" text_width="-1" x="220" y="29.5" rotation="0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-159" text="3" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="82" text="6" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-130" text="RJ-45 to CAGE-CLAMP" color="#000000" y="45" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-239" text="2" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="161" text="7" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-319" text="1" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="241" text="8" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330" text="WAGO 289-175" color="#000000" y="45" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-79" text="4" color="#000000" y="-24" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="2" text="5" color="#000000" y="-24" rotation="0"/>
+        <circle x="317.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="77.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="-162.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="157.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="-242.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="237.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="-322.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="-82.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <terminal x="-240" name="" y="-40" orientation="n"/>
+        <terminal x="-160" name="" y="-40" orientation="n"/>
+        <terminal x="-320" name="" y="-40" orientation="n"/>
+        <terminal x="160" name="" y="-40" orientation="n"/>
+        <terminal x="80" name="" y="-40" orientation="n"/>
+        <terminal x="240" name="" y="-40" orientation="n"/>
+        <terminal x="360" name="" y="0" orientation="e"/>
+        <terminal x="-80" name="" y="-40" orientation="n"/>
+        <terminal x="0" name="" y="-40" orientation="n"/>
+        <terminal x="320" name="" y="-40" orientation="n"/>
+    </description>
+</definition>

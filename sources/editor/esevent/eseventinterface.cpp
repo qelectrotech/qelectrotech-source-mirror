@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "eseventinterface.h"
-#include "elementscene.h"
-#include "qetelementeditor.h"
+
+#include "../elementscene.h"
+#include "../ui/qetelementeditor.h"
+#include "../elementview.h"
+
 #include <QGraphicsSceneMouseEvent>
 
 ESEventInterface::ESEventInterface(ElementScene *scene) :
@@ -38,7 +41,7 @@ ESEventInterface::ESEventInterface(ElementScene *scene) :
 void ESEventInterface::init()
 {
 	m_scene->setBehavior(ElementScene::Behavior::AddPart);
-	m_editor->slot_setNoDragToView();
+	m_editor->elementView()->setDragMode(QGraphicsView::NoDrag);
 }
 
 /**
@@ -51,31 +54,31 @@ ESEventInterface::~ESEventInterface()
 	delete m_help_verti;
 
 	m_scene->setBehavior(ElementScene::Behavior::Normal);
-	m_editor->slot_setRubberBandToView();
+	m_editor->elementView()->setDragMode(QGraphicsView::RubberBandDrag);
 }
 
 bool ESEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event);
+	Q_UNUSED (event)
 	return false;
 }
 
 bool ESEventInterface::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event);
+	Q_UNUSED (event)
 	return false;
 }
 
 bool ESEventInterface::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event);
+	Q_UNUSED (event)
 	return false;
 }
 
 bool ESEventInterface::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
-	Q_UNUSED (event);
+	Q_UNUSED (event)
 	return false;
 }
 
 bool ESEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
-	Q_UNUSED (event);
+	Q_UNUSED (event)
 	return false;
 }
 
@@ -95,7 +98,7 @@ bool ESEventInterface::keyPressEvent(QKeyEvent *event) {
 }
 
 bool ESEventInterface::KeyReleaseEvent(QKeyEvent *event) {
-	Q_UNUSED (event);
+	Q_UNUSED (event)
 	return false;
 }
 

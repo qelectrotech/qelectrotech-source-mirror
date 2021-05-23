@@ -70,17 +70,17 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 				const QStyleOptionGraphicsItem *,
 				QWidget *) override;
 		void   drawHelpLine (bool draw = true);
-		QLineF HelpLine	 () const;
+		QLineF HelpLine     () const;
 		QRectF boundingRect () const override;
 
 		// methods to manage conductors attached to the terminal
 		Terminal* alignedWithTerminal () const;
-		bool	  addConductor		(Conductor *conductor);
-		void	  removeConductor	 (Conductor *conductor);
-		int	   conductorsCount	 () const;
-		Diagram  *diagram			 () const;
-		Element  *parentElement	   () const;
-		QUuid uuid					() const;
+		bool      addConductor        (Conductor *conductor);
+		void      removeConductor     (Conductor *conductor);
+		int       conductorsCount     () const;
+		Diagram  *diagram             () const;
+		Element  *parentElement       () const;
+		QUuid uuid                    () const;
 		int ID() const;
 		QPointF dockPos();
 		QPointF originPos();
@@ -133,7 +133,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		static QColor forbiddenColor;
 
 	private:
-		bool			   m_draw_help_line{false};
+		bool               m_draw_help_line{false};
 		QGraphicsLineItem *m_help_line{nullptr};
 		QGraphicsLineItem *m_help_line_a{nullptr};
 
@@ -154,11 +154,11 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 			used a pointer because boundingRect() is supposed to be const.
 		*/
         QRectF m_br;
-		/// Last terminal seen through an attached conductor
+			/// Last terminal seen through an attached conductor
         Terminal *m_previous_terminal{nullptr};
-		/// Whether the mouse pointer is hovering the terminal
+			/// Whether the mouse pointer is hovering the terminal
         bool m_hovered{false};
-		/// Color used for the hover effect
+			/// Color used for the hover effect
         QColor m_hovered_color{Terminal::neutralColor};
 		/// Number of Terminal
 		QString number_terminal_;
@@ -168,7 +168,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		int m_id{-1};
 
 	private:
-        void init(QString number, QString name, bool hiddenName);
+		void init();
         void init(QPointF pf, Qet::Orientation o,QString number, QString name, bool hiddenName);
 };
 
@@ -181,16 +181,9 @@ inline int Terminal::conductorsCount() const
     return(m_conductors_list.size());
 }
 
-/**
 	@brief Terminal::number
 	@return the number of terminal.
-*/
-inline QString Terminal::number() const
-{
 	return(number_terminal_);
-}
-
-
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
 						const bool all_diagram = true);
 

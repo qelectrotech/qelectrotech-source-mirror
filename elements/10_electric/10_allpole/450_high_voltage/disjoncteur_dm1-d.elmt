@@ -1,7 +1,7 @@
 <definition width="40" hotspot_x="21" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{82d32dce-5369-4706-a8af-10d50291eec0}"/>
     <names>
-        <name lang="cs">Jistič DM1-D</name>
+        <name lang="cs">Vývod s vypínačem  DM1-D</name>
         <name lang="pl">Wyłącznik DM1-D</name>
         <name lang="it">Sezionatore DM1-D</name>
         <name lang="en">Breaker DM1-D</name>

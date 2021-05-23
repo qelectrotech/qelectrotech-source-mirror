@@ -389,12 +389,12 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	auto grid_layout = new QGridLayout(this);
 	grid_layout->addWidget(new QLabel(tr("Contour :")), 0,0, Qt::AlignRight);
 	grid_layout->addWidget(outline_color, 0, 1);
-	grid_layout->addWidget(new QLabel(tr("Remplissage :")), 0, 2, Qt::AlignRight);
-	grid_layout->addWidget(filling_color, 0, 3);
-	grid_layout->addWidget(new QLabel(tr("Style :")), 1, 0, Qt::AlignRight);
-	grid_layout->addWidget(line_style, 1, 1);
-	grid_layout->addWidget(new QLabel(tr("Épaisseur :")), 1, 2, Qt::AlignRight);
-	grid_layout->addWidget(size_weight, 1 ,3);
+	grid_layout->addWidget(new QLabel(tr("Remplissage :")), 1, 0, Qt::AlignRight);
+	grid_layout->addWidget(filling_color, 1, 1);
+	grid_layout->addWidget(new QLabel(tr("Style :")), 2, 0, Qt::AlignRight);
+	grid_layout->addWidget(line_style, 2, 1);
+	grid_layout->addWidget(new QLabel(tr("Épaisseur :")), 3, 0, Qt::AlignRight);
+	grid_layout->addWidget(size_weight, 3 ,1);
 	main_layout->addItem(grid_layout);
 
 	main_layout -> addWidget(antialiasing);

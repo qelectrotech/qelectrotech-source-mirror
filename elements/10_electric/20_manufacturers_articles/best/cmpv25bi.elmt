@@ -2,6 +2,7 @@
     <uuid uuid="{be892904-6eed-49c9-8680-41c0c676cc95}"/>
     <names>
         <name lang="fr">Nom du nouvel élément</name>
+        <name lang="cs">Název nového prvku</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1">CMPV25Bi</elementInformation>

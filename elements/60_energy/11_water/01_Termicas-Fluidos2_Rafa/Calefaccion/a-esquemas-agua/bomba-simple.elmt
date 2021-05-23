@@ -3,6 +3,7 @@
     <names>
         <name lang="ar">مضخة</name>
         <name lang="cs">Pumpa</name>
+        <name lang="de">Pumpe</name>
         <name lang="it">Pompa</name>
         <name lang="en">Single pump</name>
         <name lang="el">Αντλία</name>
@@ -13,7 +14,7 @@
         <name lang="ca">Bomba</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length2="1.5" length1="1.5" antialias="false" x1="19.5" y1="0" end2="none" x2="12" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>

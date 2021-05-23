@@ -3,9 +3,10 @@
     <names>
         <name lang="es">Manómetro</name>
         <name lang="fr">Manometre</name>
+        <name lang="de">Manometer</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <circle antialias="true" diameter="10" x="-5" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

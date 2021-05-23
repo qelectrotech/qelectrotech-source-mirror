@@ -1,0 +1,56 @@
+<definition link_type="simple" type="element" version="0.80" width="50" hotspot_y="19" hotspot_x="24" height="40">
+    <uuid uuid="{a86902d2-4aae-4be5-a22a-c099817573fc}"/>
+    <names>
+        <name lang="fr">
+Transformateur à deux enroulements</name>
+        <name lang="cs">Trafo se dvěma vinutími</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="270" x="-20" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="180" x="-20" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="270" x="-10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="180" x="-10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="270" x="0" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="180" x="0" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="270" x="10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="-15" start="180" x="10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="90" x="-20" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="0" x="-20" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="90" x="-10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="0" x="-10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="90" x="0" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="0" x="0" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="90" x="10" height="10" angle="90"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="10" y="5" start="0" x="10" height="10" angle="90"/>
+        <line antialias="false" x1="-18" style="line-style:normal;line-weight:eleve;filling:none;color:black" length2="1.5" end1="none" y1="0" end2="none" y2="0" length1="1.5" x2="18"/>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="UserText" y="-22" rotation="0" x="-23" font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="18" uuid="{cf8ce068-aa1f-48d3-b287-0e648121d35a}" frame="false" Halignment="AlignLeft">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="UserText" y="-22" rotation="0" x="17" font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="19" uuid="{a89a3e01-8ea3-4c45-a954-f1f49b690cd0}" frame="false" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="UserText" y="5" rotation="0" x="-23" font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="20" uuid="{2b0f9c48-cb72-494e-867c-1a200959d8d2}" frame="false" Halignment="AlignLeft">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="UserText" y="5" rotation="0" x="17" font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="21" uuid="{e01ede6a-4b4c-42d4-8ecb-312650f07bc4}" frame="false" Halignment="AlignLeft">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="ElementInfo" y="-13" rotation="0" x="-46" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="22" uuid="{a4b3aa7f-d028-4f2d-84ec-23b276264e48}" frame="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" text_width="-1" text_from="UserText" y="-7.5" rotation="0" x="22" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="23" uuid="{5d047a8d-0164-41d5-96ae-f4a53c0d6d35}" frame="false" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <line antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" y1="-15" end2="none" y2="-10" length1="1.5" x2="-20"/>
+        <line antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" y1="-15" end2="none" y2="-10" length1="1.5" x2="20"/>
+        <line antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" y1="10" end2="none" y2="15" length1="1.5" x2="20"/>
+        <line antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" y1="10" end2="none" y2="15" length1="1.5" x2="-20"/>
+        <terminal y="15" x="20" uuid="{9cb09037-535c-4480-a4a7-db3f3bad1151}" name="4" orientation="s"/>
+        <terminal y="-15" x="-20" uuid="{bb3642bb-ebd5-4bc0-8235-966591fad320}" name="1" orientation="n"/>
+        <terminal y="-15" x="20" uuid="{d79d49ea-e09d-4686-a7d8-9a8bf99d521e}" name="2" orientation="n"/>
+        <terminal y="15" x="-20" uuid="{b83a2645-754a-4e05-987b-33180e32a364}" name="3" orientation="s"/>
+    </description>
+</definition>

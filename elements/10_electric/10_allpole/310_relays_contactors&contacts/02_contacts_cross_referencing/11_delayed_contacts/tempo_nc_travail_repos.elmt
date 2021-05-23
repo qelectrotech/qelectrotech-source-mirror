@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Simple contact (NC / switch-on and off delay timer)</name>
         <name lang="fr">Contact simple NF (tempo travail et repos)</name>
+        <name lang="cs">Kontakt NC zpožděný přítah i odpad</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

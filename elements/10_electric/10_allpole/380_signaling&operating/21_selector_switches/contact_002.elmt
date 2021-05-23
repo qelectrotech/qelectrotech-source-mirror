@@ -6,14 +6,14 @@
         <name lang="fr">Interrupteur rotatif</name>
         <name lang="nl">keuzeschakelaar 2 pos (NC)</name>
         <name lang="el">Διακόπτης 2 θέσεων</name>
-        <name lang="cs">Otočný spínač - 2 polohy</name>
+        <name lang="cs">Otočný spínač - 2 polohy (NC)</name>
         <name lang="ar">مفتاح دوّار بوضعين</name>
         <name lang="en">Switch 2 positions</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" y1="3" length2="1.5" y2="-3" style="line-style:dashed;line-weight:thin;filling:none;color:black" antialias="true" end2="none" end1="none" x1="-2" x2="2"/>

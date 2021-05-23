@@ -4,6 +4,7 @@
         <name lang="fr">Commande manuelle amovible</name>
         <name lang="es">Accionado por mango extraíble</name>
         <name lang="de">Betätigung durch abnehmbaren Griff</name>
+        <name lang="cs">Ovládání snímatelnou rukojetí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

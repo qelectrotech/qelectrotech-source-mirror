@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -88,34 +88,34 @@ DynamicElementTextItem::DynamicElementTextItem()
 */
 QDomElement DynamicElementTextItem::toXml(QDomDocument& dom_doc) const
 {
-    QDomElement root_element = dom_doc.createElement(xmlTagName());
+	QDomElement root_element = dom_doc.createElement(xmlTagName());
 	
-    root_element.setAttribute("x", QString::number(pos().x()));
-    root_element.setAttribute("y", QString::number(pos().y()));
-    root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-    root_element.setAttribute("uuid", m_uuid.toString());
-    root_element.setAttribute("frame", m_frame? "true" : "false");
-    root_element.setAttribute("text_width", QString::number(m_text_width));
-    root_element.setAttribute("font", font().toString());
-    root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
+	root_element.setAttribute("x", QString::number(pos().x()));
+	root_element.setAttribute("y", QString::number(pos().y()));
+	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+	root_element.setAttribute("uuid", m_uuid.toString());
+	root_element.setAttribute("frame", m_frame? "true" : "false");
+	root_element.setAttribute("text_width", QString::number(m_text_width));
+	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	
 	QMetaEnum me = textFromMetaEnum();
-    root_element.setAttribute("text_from", me.valueToKey(m_text_from));
+	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
 	me = QMetaEnum::fromType<Qt::Alignment>();
 	if(this->alignment() &Qt::AlignRight)
-        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
 	else if(this->alignment() &Qt::AlignLeft)
-        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
 	else if(this->alignment() &Qt::AlignHCenter)
-        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
 	
 	if(this->alignment() &Qt::AlignBottom)
-        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
 	else if(this->alignment() & Qt::AlignTop)
-        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
 	else if(this->alignment() &Qt::AlignVCenter)
-        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
 	
 	
 	QDomElement dom_text = dom_doc.createElement("text");
@@ -1323,12 +1323,12 @@ void DynamicElementTextItem::updateXref()
 					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
 					m_slave_Xref_item->installSceneEventFilter(this);
 					
-					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::xChanged,					   this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::yChanged,					   this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::elementInfoChange,			  this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),	&QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),	&QETProject::diagramRemoved,			  this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),	&QETProject::XRefPropertiesChanged,	   this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
 				}
 				else
 					m_slave_Xref_item->setPlainText(xref_label);

@@ -2,6 +2,7 @@
     <uuid uuid="{d3bd2e5a-1a08-4c01-8721-908ea16ccf14}"/>
     <names>
         <name lang="en">DVP12SE11R (inputs)</name>
+        <name lang="cs">DVP12SE11R (vstupy)</name>
     </names>
     <elementInformations/>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

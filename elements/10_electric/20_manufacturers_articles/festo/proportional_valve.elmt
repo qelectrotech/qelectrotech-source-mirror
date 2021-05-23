@@ -2,7 +2,9 @@
     <uuid uuid="{629ec862-dfe9-40a5-bf95-fb47c6db9d0f}"/>
     <names>
         <name lang="en">FESTO VPPM Proportional valve</name>
+        <name lang="de">FESTO VPPM Proportionalventil</name>
         <name lang="hu">FESTO VPPM Proporcionális szelep</name>
+        <name lang="cs">FESTO VPPM Proporcionální ventil</name>
     </names>
     <elementInformations/>
     <informations></informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{1df14bff-5cce-40b9-98ae-dad01b43b452}"/>
     <names>
         <name lang="en">EL2904 safety output</name>
+        <name lang="cs">EL2904 Bezpečnostní výstupy</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

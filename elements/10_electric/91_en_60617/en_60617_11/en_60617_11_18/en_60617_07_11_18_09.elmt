@@ -4,6 +4,8 @@
         <name lang="de">Kurvenfeuer, grün/grün, zweiseitig strahlend</name>
         <name lang="fr">Feu de virage, faisceau vert/vert et
 bidirectionnel (en surface)</name>
+        <name lang="cs">Světelné návěstidlo v zatáčce,
+barva zelená/zelená a dvojsměrný svazek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

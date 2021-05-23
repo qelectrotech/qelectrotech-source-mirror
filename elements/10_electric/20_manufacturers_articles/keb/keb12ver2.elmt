@@ -1,0 +1,165 @@
+<definition hotspot_x="204" orientation="dyyy" version="0.70" width="410" link_type="simple" type="element" height="120" hotspot_y="54">
+    <uuid uuid="{8b1f62d0-ba6a-499e-a809-027a3480ac85}"/>
+    <names>
+        <name lang="it">KEB 12 Ver. 3</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description">INVERTER 4KW</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation">12-F5-C1B-350A</elementInformation>
+        <elementInformation show="1" name="manufacturer">KEB</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="comment">https://www.keb.it/</elementInformation>
+    </elementInformations>
+    <informations>Orlandi Luca
+</informations>
+    <description>
+        <rect x="-200" width="402" height="110" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-180" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-160" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-140" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="20" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="40" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="60" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="80" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="100" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="120" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="140" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="160" width="20" height="20" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-180" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-160" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-140" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-120" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-70" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-30" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="40" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="60" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="80" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="100" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="120" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="140" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="160" width="20" height="20" y="40" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="60" rotation="0" frame="false" uuid="{9cb0293b-f01c-408c-a9f1-13d5d6b4c4ba}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="49" y="-50" Valignment="AlignTop" text_from="UserText">
+            <text>14 
+AV</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="41" rotation="0" frame="false" uuid="{9cb0293b-f01c-408c-a9f1-13d5d6b4c4ba}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="49" y="-51" Valignment="AlignTop" text_from="UserText">
+            <text>15 
+IND</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-158" rotation="0" frame="false" uuid="{7e016c13-b7ea-4375-a810-ed38d55a3169}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="51" y="-48" Valignment="AlignTop" text_from="UserText">
+            <text>L2</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-138" rotation="0" frame="false" uuid="{fc40d53e-c485-4b7e-a55b-5e33d1d9e29f}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="52" y="-48" Valignment="AlignTop" text_from="UserText">
+            <text>L3</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="21" rotation="0" frame="false" uuid="{357fbc4b-85c9-4616-901a-7c9f354261ae}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="53" y="-51" Valignment="AlignTop" text_from="UserText">
+            <text>16 
+ST</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-178" rotation="0" frame="false" uuid="{54791f27-cca1-4867-850c-39692defb40d}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="54" y="-48" Valignment="AlignTop" text_from="UserText">
+            <text>L1</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="78" rotation="0" frame="false" uuid="{4d741ebe-42d5-41bd-99dd-6c70c631a29e}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="56" y="-51" Valignment="AlignTop" text_from="UserText">
+            <text>10 
+VEL1</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="98" rotation="0" frame="false" uuid="{9fa01c09-bc93-47e5-90e0-67b6d40bddde}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="57" y="-52" Valignment="AlignTop" text_from="UserText">
+            <text>8 
+COM</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="118" rotation="0" frame="false" uuid="{26cb261b-71b3-4a42-96d6-b08569d05588}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="58" y="-52" Valignment="AlignTop" text_from="UserText">
+            <text>2 
+AN1-</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="137" rotation="0" frame="false" uuid="{5820016c-4f37-434d-94cf-6adc4584313f}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="59" y="-52" Valignment="AlignTop" text_from="UserText">
+            <text>1 
+AN1+</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="160" rotation="0" frame="false" uuid="{77ff43f4-c483-4066-bdc1-04e5cf240174}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="60" y="-50" Valignment="AlignTop" text_from="UserText">
+            <text>PE</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="160" rotation="0" frame="false" uuid="{8fb29f73-28ef-44c8-8444-2b8dcd47b78b}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="61" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>29 
+FLC</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="140" rotation="0" frame="false" uuid="{fdc2e3b2-0a2b-4773-ab86-24a47dd1b8d2}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="62" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>28 
+FLB</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="120" rotation="0" frame="false" uuid="{bf3caefc-ae40-4597-8485-d3d657804bb2}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="63" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>27 
+FLA</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="100" rotation="0" frame="false" uuid="{0e78d55a-d0fc-4a02-b52e-a2dd272a7c09}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="64" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>26 
+RLC</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="80" rotation="0" frame="false" uuid="{8d8f923d-53c0-4dc6-8fcf-19e03583cd59}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="65" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>25 
+RLB</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="40" rotation="0" frame="false" uuid="{c1249468-5f0f-4d16-bc69-ce9a21ca44c6}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="66" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>22 
+0V</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="60" rotation="0" frame="false" uuid="{6df6044a-96d3-4bc8-9e11-3f68f3b2f42c}" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Grassetto" z="67" y="35" Valignment="AlignTop" text_from="UserText">
+            <text>24 
+RLA</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-30" rotation="0" frame="false" uuid="{f0b87066-bdc9-43bb-8817-2e2d3943869c}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="69" y="40" Valignment="AlignTop" text_from="UserText">
+            <text>PB</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-70" rotation="0" frame="false" uuid="{da388457-8a0d-4ee8-8298-ae0654b3d465}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="70" y="40" Valignment="AlignTop" text_from="UserText">
+            <text>++</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-176" rotation="0" frame="false" uuid="{07b62cd2-8619-4098-8672-d730cbe07568}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="71" y="40" Valignment="AlignTop" text_from="UserText">
+            <text>U</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-156" rotation="0" frame="false" uuid="{830025d1-2c7d-4d27-9f6b-1b6966accc90}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="72" y="40" Valignment="AlignTop" text_from="UserText">
+            <text>V</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-138" rotation="0" frame="false" uuid="{925db9fa-a0cb-446b-a679-a128882a6f62}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="73" y="40" Valignment="AlignTop" text_from="UserText">
+            <text>W</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-118" rotation="0" frame="false" uuid="{2c88d7bc-142e-4b57-b2a7-db5bbf800b9c}" font="MS Shell Dlg 2,5,-1,5,75,0,0,0,0,0,Grassetto" z="74" y="40" Valignment="AlignTop" text_from="UserText">
+            <text>PE</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="0" rotation="0" frame="false" uuid="{18e9df4e-18d4-4201-941e-10cc9e39a3d3}" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" z="76" y="-10" Valignment="AlignTop" text_from="UserText">
+            <text>KEB 12-F5-C1B-350A</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" Halignment="AlignLeft" x="-190" rotation="0" frame="false" uuid="{64362627-e08c-4de8-a011-8a91f80ea3f3}" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" z="77" y="-10" Valignment="AlignTop" text_from="CompositeText">
+            <text></text>
+            <composite_text>%{label}</composite_text>
+        </dynamic_text>
+        <terminal x="150" orientation="s" y="60"/>
+        <terminal x="50" orientation="s" y="60"/>
+        <terminal x="-20" orientation="s" y="60"/>
+        <terminal x="30" orientation="n" y="-50"/>
+        <terminal x="90" orientation="s" y="60"/>
+        <terminal x="-150" orientation="s" y="60"/>
+        <terminal x="170" orientation="n" y="-50"/>
+        <terminal x="110" orientation="n" y="-50"/>
+        <terminal x="50" orientation="n" y="-50"/>
+        <terminal x="-170" orientation="s" y="60"/>
+        <terminal x="90" orientation="n" y="-50"/>
+        <terminal x="-150" orientation="n" y="-50"/>
+        <terminal x="70" orientation="s" y="60"/>
+        <terminal x="-110" orientation="s" y="60"/>
+        <terminal x="150" orientation="n" y="-50"/>
+        <terminal x="170" orientation="s" y="60"/>
+        <terminal x="70" orientation="n" y="-50"/>
+        <terminal x="110" orientation="s" y="60"/>
+        <terminal x="130" orientation="n" y="-50"/>
+        <terminal x="130" orientation="s" y="60"/>
+        <terminal x="-60" orientation="s" y="60"/>
+        <terminal x="-170" orientation="n" y="-50"/>
+        <terminal x="-130" orientation="n" y="-50"/>
+        <terminal x="-130" orientation="s" y="60"/>
+    </description>
+</definition>

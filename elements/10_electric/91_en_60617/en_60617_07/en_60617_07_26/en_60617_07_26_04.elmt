@@ -5,6 +5,8 @@
 als Halbleiter</name>
         <name lang="fr">Dispositif de commande à semiconducteur
 avec contact à fermeture à semiconducteur</name>
+        <name lang="cs">Polovodičový ovládací přístroj
+s polovodičovým zapínacím kotaktem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

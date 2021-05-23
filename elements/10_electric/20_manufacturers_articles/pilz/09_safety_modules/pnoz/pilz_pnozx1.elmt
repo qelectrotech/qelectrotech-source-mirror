@@ -24,7 +24,7 @@
         <elementInformation name="designation" show="1"></elementInformation>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line end1="none" x1="44" length1="1.5" antialias="false" y1="24" y2="44" length2="1.5" x2="44" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

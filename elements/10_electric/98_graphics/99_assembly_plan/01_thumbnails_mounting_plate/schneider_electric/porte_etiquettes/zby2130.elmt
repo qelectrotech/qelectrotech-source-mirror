@@ -2,6 +2,7 @@
     <uuid uuid="{70faba37-432f-44e6-89f9-5b893c348710}"/>
     <names>
         <name lang="fr">Porte étiquette ARRET D'URGENCE</name>
+        <name lang="cs">Štítek ovladače "Nouzové zastavení"</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Porte étiquette ARRET D'URGENCE</elementInformation>

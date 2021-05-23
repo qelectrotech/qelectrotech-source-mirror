@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Anlasser mit Thyristoren, stetig veränderbar</name>
         <name lang="fr">Démarreur - régleur par thyristors</name>
+        <name lang="cs">Tyristorový spouštěč-regulátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Commande par effet de proximité</name>
         <name lang="es">Accionado por dispositivo electromagnético</name>
         <name lang="de">Betätigung durch Annähern</name>
+        <name lang="cs">Ovládání bezprostředním účinkem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

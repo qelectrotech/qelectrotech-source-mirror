@@ -1,19 +1,22 @@
-<definition version="0.70" height="30" type="element" width="30" hotspot_x="14" link_type="simple" hotspot_y="12">
-    <uuid uuid="{3015326e-2599-495e-8ef0-c12ff5313dd0}"/>
+<definition hotspot_x="14" height="30" link_type="simple" width="30" version="0.80" type="element" hotspot_y="12">
+    <uuid uuid="{0b6817fe-dd44-42a8-8e7c-3c110d13b8a2}"/>
     <names>
+        <name lang="hu">Egyesítő négy vezetékhez</name>
+        <name lang="de">Klemmstelle (3)</name>
         <name lang="cs">Všestranný spoj</name>
     </names>
     <elementInformations/>
     <informations></informations>
     <description>
-        <polygon x6="6" x2="-5" x8="6" y5="5" y2="0" closed="false" x10="0" x3="0" x7="10" y7="0" y4="10" y11="-5" antialias="false" x9="0" x11="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="0" y9="5" y10="-5" y1="0" y6="0" x4="0" x1="-10" y8="0" y3="5"/>
-        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-13" text_from="ElementInfo" y="-12" z="2" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{14c0b70c-c028-49ef-bf72-3c3c9cd64669}" Halignment="AlignLeft">
+        <dynamic_text Valignment="AlignTop" x="-13" text_from="ElementInfo" text_width="-1" z="2" uuid="{14c0b70c-c028-49ef-bf72-3c3c9cd64669}" y="-12" rotation="0" frame="false" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <terminal x="0" y="-5" orientation="n"/>
-        <terminal x="0" y="10" orientation="s"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="0" orientation="e"/>
+        <polygon x1="-10" y5="0" x3="0" x5="10" y2="0" y3="5" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="5" x2="-5" antialias="false" y4="0" y1="0"/>
+        <line x1="0" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" length1="1.5" antialias="false" end2="none" y1="-5" length2="1.5"/>
+        <terminal x="10" orientation="e" uuid="{06bf5c9f-6986-45bf-b11f-02e876abc4b8}" y="0" name=""/>
+        <terminal x="0" orientation="n" uuid="{33c03677-8555-4b42-ae2c-4b4308978086}" y="-5" name=""/>
+        <terminal x="-10" orientation="w" uuid="{95bef6e9-343e-45d7-9705-4aa81f62bed0}" y="0" name=""/>
+        <terminal x="0" orientation="s" uuid="{e9329e22-255b-4763-9dc6-65da277e1ac7}" y="10" name=""/>
     </description>
 </definition>

@@ -4,6 +4,7 @@
         <name lang="fr">Dispositif d`accrochage engagé</name>
         <name lang="es">Dispositivo de encerrojamiento, ocupado</name>
         <name lang="de">Sperre, verklinkt</name>
+        <name lang="cs">Západkové zařízení, zapnuto</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

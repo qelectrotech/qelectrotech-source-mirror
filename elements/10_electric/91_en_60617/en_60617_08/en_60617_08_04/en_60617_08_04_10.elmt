@@ -4,6 +4,7 @@
         <name lang="de">Wattstundenzähler mit
 Übertragungseinrichtung</name>
         <name lang="fr">Compteur d'énergie active avec émetteur</name>
+        <name lang="cs">Watthodinový měřič se snímačem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

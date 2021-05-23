@@ -4,6 +4,7 @@
         <name lang="fr">Ligne aérienne</name>
         <name lang="de">Leiter, oberirdisch,
 Freileitung</name>
+        <name lang="cs">Venkovní vedení na podpěrách</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

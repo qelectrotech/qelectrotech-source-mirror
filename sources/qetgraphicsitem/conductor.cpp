@@ -106,8 +106,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	}
 
 		//By default, the 4 profils are nuls -> we must to use priv_calculeConductor
-	conductor_profiles.insert(Qt::TopLeftCorner,	 ConductorProfile());
-	conductor_profiles.insert(Qt::TopRightCorner,	ConductorProfile());
+	conductor_profiles.insert(Qt::TopLeftCorner,     ConductorProfile());
+	conductor_profiles.insert(Qt::TopRightCorner,    ConductorProfile());
 	conductor_profiles.insert(Qt::BottomLeftCorner,  ConductorProfile());
 	conductor_profiles.insert(Qt::BottomRightCorner, ConductorProfile());
 
@@ -220,7 +220,7 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
 
 	Q_ASSERT_X(conductor_profile.segmentsCount(QET::Both) > 1, "Conductor::priv_modifieConductor", "pas de points a modifier");
-	Q_ASSERT_X(!conductor_profile.isNull(),				 "Conductor::priv_modifieConductor", "pas de profil utilisable");
+	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
 
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);
@@ -324,10 +324,10 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 
 				// on remet le trop-plein dans la reserve d'offset
 				remaining_offset += qAbs(segments_hash[csp]) * getSign(local_offset);
-				//qDebug() << "	trop-plein de" << qAbs(segments_hash[csp]) * getSign(local_offset) << "remaining_offset =" << remaining_offset;
+				//qDebug() << "    trop-plein de" << qAbs(segments_hash[csp]) * getSign(local_offset) << "remaining_offset =" << remaining_offset;
 				segments_hash[csp] = 0.0;
 			} else {
-				//qDebug() << "	offset local de" << local_offset << "accepte";
+				//qDebug() << "    offset local de" << local_offset << "accepte";
 			}
 		}
 	}
@@ -359,17 +359,17 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 
 	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite (apres prolongation)
 	if (newp1.x() <= newp2.x()) {
-		depart	  = newp1;
-		arrivee	 = newp2;
-		depart0	 = sp1;
-		arrivee0	= sp2;
+		depart      = newp1;
+		arrivee     = newp2;
+		depart0     = sp1;
+		arrivee0    = sp2;
 		ori_depart  = o1;
 		ori_arrivee = o2;
 	} else {
-		depart	  = newp2;
-		arrivee	 = newp1;
-		depart0	 = sp2;
-		arrivee0	= sp1;
+		depart      = newp2;
+		arrivee     = newp1;
+		depart0     = sp2;
+		arrivee0    = sp1;
 		ori_depart  = o2;
 		ori_arrivee = o1;
 	}
@@ -975,8 +975,8 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 
 	m_text_item -> fromXml(dom_element);
 
-    ConductorProperties pr;
-    pr.fromXml(dom_element);
+	ConductorProperties pr;
+	pr.fromXml(dom_element);
 
 		//Load Sequential Values
 	if (dom_element.hasAttribute("sequ_1") || dom_element.hasAttribute("sequf_1") || dom_element.hasAttribute("seqt_1") || dom_element.hasAttribute("seqtf_1") || dom_element.hasAttribute("seqh_1") || dom_element.hasAttribute("sequf_1"))
@@ -992,7 +992,7 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 
 // does not support legacy method
 /*!
-    @brief Conductor::toXml
+	@brief Conductor::toXml
 	Exporte les caracteristiques du conducteur sous forme d'une element XML.
 	@param dom_document :
 	Le document XML a utiliser pour creer l'element XML
@@ -1004,45 +1004,45 @@ bool Conductor::fromXml(const QDomElement &dom_element)
 QDomElement Conductor::toXml(QDomDocument& doc) const {
 
     QDomElement dom_element = doc.createElement("conductor");
-    dom_element.setAttribute("x", QString::number(pos().x()));
-    dom_element.setAttribute("y", QString::number(pos().y()));
+	dom_element.setAttribute("x", QString::number(pos().x()));
+	dom_element.setAttribute("y", QString::number(pos().y()));
 
-    // Terminal is uniquely identified by the uuid of the terminal and the element
-    if (terminal1->uuid().isNull()) {
-        // legacy method to identify the terminal
+	// Terminal is uniquely identified by the uuid of the terminal and the element
+	if (terminal1->uuid().isNull()) {
+		// legacy method to identify the terminal
         dom_element.setAttribute("terminal1", terminal1->ID()); // for backward compability
-    } else {
-        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-    }
+	} else {
+		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+	}
 
-    if (terminal2->uuid().isNull()) {
-        // legacy method to identify the terminal
+	if (terminal2->uuid().isNull()) {
+		// legacy method to identify the terminal
         dom_element.setAttribute("terminal2", terminal2->ID()); // for backward compability
-    } else {
-        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-    }
-    dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
+	} else {
+		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+	}
+	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 
-    // on n'exporte les segments du conducteur que si ceux-ci ont
-    // ete modifies par l'utilisateur
-    if (modified_path)
-    {
-        // parcours et export des segments
-        QDomElement current_segment;
-        foreach(ConductorSegment *segment, segmentsList())
-        {
+	// on n'exporte les segments du conducteur que si ceux-ci ont
+	// ete modifies par l'utilisateur
+	if (modified_path)
+	{
+		// parcours et export des segments
+		QDomElement current_segment;
+		foreach(ConductorSegment *segment, segmentsList())
+		{
             current_segment = dom_element.ownerDocument().createElement("segment");
-            current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-            current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
-            dom_element.appendChild(current_segment);
-        }
-    }
+			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
+			dom_element.appendChild(current_segment);
+		}
+	}
     QDomElement dom_seq = m_autoNum_seq.toXml(doc);
-    dom_element.appendChild(dom_seq);
+	dom_element.appendChild(dom_seq);
 
-    // Export the properties and text
+		// Export the properties and text
     // Do not add properties as own child, but add the properties to the conductor it self
     //dom_element.appendChild(m_properties. toXml(doc));
     // Copy everything from comductorProperties to Conductor
@@ -1053,13 +1053,13 @@ QDomElement Conductor::toXml(QDomDocument& doc) const {
     }
 
 
-    if(m_text_item->wasMovedByUser())
-    {
-        dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
-        dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
-    }
-    if(m_text_item->wasRotateByUser())
-        dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
+	if(m_text_item->wasMovedByUser())
+	{
+		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
+		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
+	}
+	if(m_text_item->wasRotateByUser())
+		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
 
     return dom_element;
 }
@@ -1128,6 +1128,11 @@ QDomElement Conductor::toXml(QDomDocument& doc) const {
 //}
 
 /**
+*@brief Conductor::pathFromXml
+*	Generate the path (of the line) from xml file by checking the segments in the xml
+*	file
+*	@param e
+*	@return true if generate path success else return false
 */
 bool Conductor::pathFromXml(const QDomElement &e) {
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
@@ -1285,7 +1290,7 @@ ConductorSegment *Conductor::middleSegment()
 QPointF Conductor::posForText(Qt::Orientations &flag)
 {
 
-	ConductorSegment *segment	  = segments;
+	ConductorSegment *segment      = segments;
 	bool all_segment_is_vertical   = true;
 	bool all_segment_is_horizontal = true;
 
@@ -1404,7 +1409,7 @@ void Conductor::calculateTextItemPosition()
 		}
 
 			//Adjust the position of text if his rotation
-			//is 0?? or 270??, to be exactly centered to the conductor
+			//is 0° or 270°, to be exactly centered to the conductor
 		if (m_text_item -> rotation() == 0)
 		{
 			text_pos.rx() -= m_text_item -> boundingRect().width()/2;
@@ -1681,12 +1686,12 @@ void Conductor::displayedTextChanged()
 	new_value.setValue(new_properties);
 
 
-	QUndoCommand *undo = new QUndoCommand(tr("Modifier les propri??t??s d'un conducteur", "undo caption"));
+	QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 	new QPropertyUndoCommand(this, "properties", old_value, new_value, undo);
 
 	if (!relatedPotentialConductors().isEmpty())
 	{
-		undo->setText(tr("Modifier les propri??t??s de plusieurs conducteurs", "undo caption"));
+		undo->setText(tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
 
 		foreach (Conductor *potential_conductor, relatedPotentialConductors())
 		{
@@ -1772,7 +1777,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 */
 QETDiagramEditor* Conductor::diagramEditor() const
 {
-	if (!diagram())					 return nullptr;
+	if (!diagram())                     return nullptr;
 	if (diagram() -> views().isEmpty()) return nullptr;
 
 	QWidget *w = const_cast<QGraphicsView *>(diagram() -> views().at(0));
@@ -2022,53 +2027,70 @@ void Conductor::deleteSegments()
 }
 
 /**
-	@param point Un point situe a l'exterieur du polygone
-	@param polygon Le polygone dans lequel on veut rapatrier le point
-	@return la position du point, une fois ramene dans le polygone, ou plus
-	exactement sur le bord du polygone
-*/
-QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath &polygon) {
-	// decompose le polygone en lignes et points
-	QList<QPolygonF> polygons = polygon.simplified().toSubpathPolygons();
+ * @brief Conductor::movePointIntoPolygon
+ * @param point : A point located outside the polygon
+ * @param polygon : The polygon in which we want to move the point
+ * @return the position of the point, once brought back into the polygon,
+ * or more exactly on the edge of the polygon
+ */
+QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath &polygon)
+{
+		// decomposes the polygon into lines and points
+	const QList<QPolygonF> polygons = polygon.simplified().toSubpathPolygons();
 	QList<QLineF> lines;
 	QList<QPointF> points;
-	foreach(QPolygonF polygon, polygons) {
-		if (polygon.count() <= 1) continue;
 
-		// on recense les lignes et les points
+	for (QPolygonF polygon : polygons)
+	{
+		if (polygon.count() <= 1)
+			continue;
+
+			// lines and points are counted
 		for (int i = 1 ; i < polygon.count() ; ++ i) {
 			lines << QLineF(polygon.at(i - 1), polygon.at(i));
 			points << polygon.at(i -1);
 		}
 	}
 
-	// on fait des projetes orthogonaux du point sur les differents segments du
-	// polygone, en les triant par longueur croissante
+		// we make orthogonal projections of the point on the different
+		// segments of the polygon, sorting them by increasing length
 	QMap<qreal, QPointF> intersections;
-	foreach (QLineF line, lines) {
+	for (QLineF line : lines)
+	{
 		QPointF intersection_point;
 		if (QET::orthogonalProjection(point, line, &intersection_point)) {
 			intersections.insert(QLineF(intersection_point, point).length(), intersection_point);
 		}
 	}
-	if (intersections.count()) {
-		// on determine la plus courte longueur pour un projete orthogonal
+
+	if (intersections.count())
+	{
+			// the shortest length for an orthogonal project is determined
 		QPointF the_point = intersections[intersections.keys().first()];
 		return(the_point);
-	} else {
-			// determine le coin du polygone le plus proche du point exterieur
-			qreal minimum_length = -1;
-			int point_index = -1;
-			for (int i = 0 ; i < points.count() ; ++ i) {
-				qreal length = qAbs(QLineF(points.at(i), point).length());
-				if (minimum_length < 0 || length < minimum_length) {
-					minimum_length = length;
-					point_index	= i;
-				}
+	}
+	else
+	{
+			// determines the corner of the polygon closest to the outer point
+		qreal minimum_length = -1;
+		int point_index = -1;
+		for (int i = 0 ; i < points.count() ; ++ i)
+		{
+			qreal length = qAbs(QLineF(points.at(i), point).length());
+			if (minimum_length < 0 || length < minimum_length) {
+				minimum_length = length;
+				point_index    = i;
 			}
-			// on connait desormais le coin le plus proche du texte
+		}
+			// we now know the closest corner of the text
 
-		// aucun projete orthogonal n'a donne quoi que ce soit, on met le texte sur un des coins du polygone
+
+		if (point_index == -1 ||
+			point_index+1 > points.size()) {
+			return QPointF(0,0);
+		}
+
+			// no orthogonal projection gave anything, we put the text on one of the corners of the polygon
 		return(points.at(point_index));
 	}
 }

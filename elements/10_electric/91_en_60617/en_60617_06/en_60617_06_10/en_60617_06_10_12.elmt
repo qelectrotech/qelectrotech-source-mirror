@@ -6,6 +6,8 @@ Einphasentransformatoren,
 Stern/Dreieckschaltung</name>
         <name lang="fr">Groupe de trois transformateurs monophasés,
 couplage étoile-triangle</name>
+        <name lang="cs">Trojfázová skupina tří jednofázových transformátorů
+ve spojení hvězda-trojúhelník</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

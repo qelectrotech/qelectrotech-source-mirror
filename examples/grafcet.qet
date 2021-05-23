@@ -1,482 +1,862 @@
-<project folioSheetQuantity="0" title="" version="0.4">
-    <properties/>
+<project title="grafcet" version="0.80">
+    <properties>
+        <property show="1" name="saveddate">17/04/2021</property>
+        <property show="1" name="savedfilename">grafcet</property>
+        <property show="1" name="saveddate-eu">17-04-2021</property>
+        <property show="1" name="savedfilepath">C:/Users/VD5385/Documents/Github/qelectrotech-source-mirror/qelectrotech-source-mirror/examples/grafcet.qet</property>
+        <property show="1" name="saveddate-us">2021-04-17</property>
+        <property show="1" name="savedtime">14:34</property>
+    </properties>
     <newdiagrams>
-        <border displayrows="true" cols="15" displaycols="true" colsize="50" rows="6" rowsize="80"/>
-        <inset title="" folio="%id/%total" author="" filename="" date="null"/>
-        <conductors num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+        <border rowsize="80" rows="6" displaycols="true" cols="15" colsize="50" displayrows="true"/>
+        <inset displayAt="bottom" folio="%id/%total" indexrev="" plant="" date="null" filename="" author="" locmach="" title="" version="" auto_page_num=""/>
+        <conductors condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" bus="" dash-size="1" numsize="9" horizontal-alignment="AlignBottom" function="" conductor_color="" conductor_section="" text_color="#000000" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" num="_" type="multi"/>
         <report label="/%f.%l%c"/>
         <xrefs>
-            <xref snapto="label" switchprefix="" powerprefix="" displayhas="contacts" type="protection" showpowerctc="false" delayprefix=""/>
-            <xref snapto="bottom" switchprefix="" powerprefix="" displayhas="cross" type="coil" showpowerctc="false" delayprefix=""/>
+            <xref slave_label="(%f-%l%c)" displayhas="cross" offset="0" delayprefix="" showpowerctc="false" snapto="bottom" powerprefix="" xrefpos="AlignBottom" type="coil" master_label="%f-%l%c" switchprefix=""/>
+            <xref slave_label="(%f-%l%c)" displayhas="contacts" offset="0" delayprefix="" showpowerctc="false" snapto="label" powerprefix="" xrefpos="AlignBottom" type="protection" master_label="%f-%l%c" switchprefix=""/>
+            <xref slave_label="(%f-%l%c)" displayhas="cross" offset="0" delayprefix="" showpowerctc="false" snapto="label" powerprefix="" xrefpos="" type="commutator" master_label="%f-%l%c" switchprefix=""/>
         </xrefs>
-        <conductors_autonums/>
+        <conductors_autonums freeze_new_conductors="false" current_autonum=""/>
+        <folio_autonums/>
+        <element_autonums freeze_new_elements="false" current_autonum=""/>
     </newdiagrams>
-    <diagram title="General" displayrows="true" version="0.4" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="1" rows="6" author="" filename="" date="null" rowsize="80">
-        <defaultconductor num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+    <diagram freezeNewElement="false" cols="15" folio="%id/%total" version="0.80c+87c957a06d79751d3" indexrev="" date="null" author="" height="500" freezeNewConductor="false" title="General" auto_page_num="" displaycols="true" filename="" colsize="50" order="1" displayrows="true" locmach="" rows="6" plant="" rowsize="80" displayAt="bottom">
+        <defaultconductor condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" bus="" dash-size="1" numsize="9" horizontal-alignment="AlignBottom" function="" conductor_color="" conductor_section="" text_color="#000000" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" num="_" type="multi"/>
         <elements>
-            <element x="220" y="60" type="embed://import/grafcet2/etape_initiale.elmt" uuid="{290895c8-ebd6-48a0-bce2-fb5ec0e47051}" orientation="0">
+            <element freezeLabel="false" z="10" y="60" x="220" prefix="" type="embed://import/grafcet2/etape_initiale.elmt" orientation="0" uuid="{290895c8-ebd6-48a0-bce2-fb5ec0e47051}">
                 <terminals>
-                    <terminal x="0" y="21" nameHidden="0" number="" id="0" name="" orientation="2"/>
-                </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 00"/>
-                </inputs>
-            </element>
-            <element x="220" y="130" type="embed://import/grafcet2/et.elmt" uuid="{d7760ee4-d015-4bfb-abf4-e29200a216ef}" orientation="0">
-                <terminals>
-                    <terminal x="0" y="1" nameHidden="0" number="" id="1" name="" orientation="0"/>
-                    <terminal x="4" y="-2" nameHidden="0" number="" id="2" name="" orientation="1"/>
-                    <terminal x="4" y="2" nameHidden="0" number="" id="3" name="" orientation="1"/>
-                    <terminal x="0" y="-1" nameHidden="0" number="" id="4" name="" orientation="2"/>
+                    <terminal y="21" x="0" name="" orientation="2" id="0" number="" nameHidden="0"/>
                 </terminals>
                 <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{9e3bf66a-4bb4-474a-abe5-7a0fdfa9a99b}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{1323410a-968d-4961-8efc-7758ef5038bf}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 00</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="260" y="160" type="embed://import/grafcet/actions/action.elmt" uuid="{bb97e0c4-140c-49f4-ba51-3fb12c4335b8}" orientation="0">
+            <element freezeLabel="false" z="10" y="130" x="220" prefix="" type="embed://import/grafcet2/et.elmt" orientation="0" uuid="{d7760ee4-d015-4bfb-abf4-e29200a216ef}">
                 <terminals>
-                    <terminal x="6" y="0" nameHidden="0" number="" id="5" name="" orientation="3"/>
+                    <terminal y="1" x="0" name="" orientation="0" id="1" number="" nameHidden="0"/>
+                    <terminal y="-2" x="4" name="" orientation="1" id="2" number="" nameHidden="0"/>
+                    <terminal y="2" x="4" name="" orientation="1" id="3" number="" nameHidden="0"/>
+                    <terminal y="-1" x="0" name="" orientation="2" id="4" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="8" y="2" text="motor on"/>
-                </inputs>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
             </element>
-            <element x="220" y="420" type="embed://import/grafcet/saut.elmt" uuid="{0208f0ad-81ff-4937-bc00-bd2c3c50db7f}" orientation="0">
+            <element freezeLabel="false" z="10" y="160" x="260" prefix="" type="embed://import/grafcet/actions/action.elmt" orientation="0" uuid="{bb97e0c4-140c-49f4-ba51-3fb12c4335b8}">
                 <terminals>
-                    <terminal x="0" y="-1" nameHidden="0" number="" id="6" name="" orientation="0"/>
-                    <terminal x="-8" y="0" nameHidden="0" number="" id="7" name="" orientation="3"/>
+                    <terminal y="0" x="6" name="" orientation="3" id="5" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-15" y="45" text="E 00"/>
-                    <input x="15" y="2" text="T 03"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">motor on</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="8" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{2068db40-65b1-4988-a5fd-49ec022889a1}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>motor on</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="220" y="170" type="embed://import/grafcet2/etape.elmt" uuid="{12113ca8-85f5-4358-8548-fe386fa41760}" orientation="0">
+            <element freezeLabel="false" z="10" y="420" x="220" prefix="" type="embed://import/grafcet/saut.elmt" orientation="0" uuid="{0208f0ad-81ff-4937-bc00-bd2c3c50db7f}">
                 <terminals>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="8" name="" orientation="0"/>
-                    <terminal x="0" y="21" nameHidden="0" number="" id="9" name="" orientation="2"/>
-                    <terminal x="36" y="-10" nameHidden="0" number="" id="10" name="" orientation="1"/>
+                    <terminal y="-1" x="0" name="" orientation="0" id="6" number="" nameHidden="0"/>
+                    <terminal y="0" x="-8" name="" orientation="3" id="7" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 01"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">E 00</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="15" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{b9a12dda-2896-4cf6-97f0-ce48d3475c6a}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>T 03</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="33" x="-15" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{ff5a66a0-708b-4af9-ae2f-3774e7f159fe}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>E 00</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="490" y="150" type="embed://import/grafcet/actions/action.elmt" uuid="{c09ec501-48a7-4171-b6a5-3ef1f5880177}" orientation="0">
+            <element freezeLabel="false" z="10" y="170" x="220" prefix="" type="embed://import/grafcet2/etape.elmt" orientation="0" uuid="{12113ca8-85f5-4358-8548-fe386fa41760}">
                 <terminals>
-                    <terminal x="6" y="0" nameHidden="0" number="" id="11" name="" orientation="3"/>
+                    <terminal y="-21" x="0" name="" orientation="0" id="8" number="" nameHidden="0"/>
+                    <terminal y="-10" x="36" name="" orientation="1" id="9" number="" nameHidden="0"/>
+                    <terminal y="21" x="0" name="" orientation="2" id="10" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="8" y="2" text="lubrification on"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6cbc1593-57fb-4a30-96fe-575c9c74fda0}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 01</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6a682cfe-0b7a-4c33-bb7a-fe4f8f22613a}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="440" y="170" type="embed://import/grafcet2/etape.elmt" uuid="{4f75422f-9751-4bb8-98b5-8fd87e5f062c}" orientation="0">
+            <element freezeLabel="false" z="10" y="150" x="490" prefix="" type="embed://import/grafcet/actions/action.elmt" orientation="0" uuid="{c09ec501-48a7-4171-b6a5-3ef1f5880177}">
                 <terminals>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="12" name="" orientation="0"/>
-                    <terminal x="0" y="21" nameHidden="0" number="" id="13" name="" orientation="2"/>
-                    <terminal x="36" y="-10" nameHidden="0" number="" id="14" name="" orientation="1"/>
+                    <terminal y="0" x="6" name="" orientation="3" id="11" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 02"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">lubrification on</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="8" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{902a10b6-b84d-4bc4-85f1-726aa73e7852}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>lubrification on</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="220" y="110" type="embed://import/grafcet2/transition.elmt" uuid="{dc46b143-bf5e-4003-be77-f0f80bfcca64}" orientation="0">
+            <element freezeLabel="false" z="10" y="170" x="440" prefix="" type="embed://import/grafcet2/etape.elmt" orientation="0" uuid="{4f75422f-9751-4bb8-98b5-8fd87e5f062c}">
                 <terminals>
-                    <terminal x="0" y="1" nameHidden="0" number="" id="15" name="" orientation="2"/>
-                    <terminal x="0" y="-1" nameHidden="0" number="" id="16" name="" orientation="0"/>
-                    <terminal x="-8" y="0" nameHidden="0" number="" id="17" name="" orientation="3"/>
+                    <terminal y="-21" x="0" name="" orientation="0" id="12" number="" nameHidden="0"/>
+                    <terminal y="-10" x="36" name="" orientation="1" id="13" number="" nameHidden="0"/>
+                    <terminal y="21" x="0" name="" orientation="2" id="14" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 00"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{f27fd231-7ca0-4904-92b2-caa27728c708}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{1208ef02-ab5e-4bc9-adeb-11a51381ebb2}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 02</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="280" y="360" type="embed://import/grafcet/actions/action.elmt" uuid="{bcc8a9ca-948b-4074-83a3-e4853e2f210c}" orientation="0">
+            <element freezeLabel="false" z="10" y="110" x="220" prefix="" type="embed://import/grafcet2/transition.elmt" orientation="0" uuid="{dc46b143-bf5e-4003-be77-f0f80bfcca64}">
                 <terminals>
-                    <terminal x="6" y="0" nameHidden="0" number="" id="18" name="" orientation="3"/>
+                    <terminal y="-1" x="0" name="" orientation="0" id="15" number="" nameHidden="0"/>
+                    <terminal y="0" x="-8" name="" orientation="3" id="16" number="" nameHidden="0"/>
+                    <terminal y="1" x="0" name="" orientation="2" id="17" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="8" y="2" text="motor off"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">T 00</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="15" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{760d3009-db3b-4248-a602-80e845d6ca16}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>T 00</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="220" y="280" type="embed://import/grafcet2/macro/etape.elmt" uuid="{1944db54-0a05-4305-8f66-b8ce2c6ed487}" orientation="0">
+            <element freezeLabel="false" z="10" y="360" x="280" prefix="" type="embed://import/grafcet/actions/action.elmt" orientation="0" uuid="{bcc8a9ca-948b-4074-83a3-e4853e2f210c}">
                 <terminals>
-                    <terminal x="-8" y="39.6667" nameHidden="0" number="" id="19" name="" orientation="3"/>
-                    <terminal x="0" y="40.6667" nameHidden="0" number="" id="20" name="" orientation="2"/>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="21" name="" orientation="0"/>
+                    <terminal y="0" x="6" name="" orientation="3" id="18" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="18" y="42" text="1"/>
-                    <input x="18" y="42" text="1"/>
-                    <input x="-30" y="13.6667" text=""/>
-                    <input x="-20" y="-0.333333" text="M 03"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">motor off</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="8" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{22caff81-3335-421d-bf9b-4686b4ba8177}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>motor off</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="220" y="230" type="embed://import/grafcet2/transition.elmt" uuid="{578bf044-62aa-4ed7-b9ac-762b8a88d129}" orientation="0">
+            <element freezeLabel="false" z="10" y="280" x="220" prefix="" type="embed://import/grafcet2/macro/etape.elmt" orientation="0" uuid="{1944db54-0a05-4305-8f66-b8ce2c6ed487}">
                 <terminals>
-                    <terminal x="0" y="1" nameHidden="0" number="" id="22" name="" orientation="2"/>
-                    <terminal x="0" y="-1" nameHidden="0" number="" id="23" name="" orientation="0"/>
-                    <terminal x="-8" y="0" nameHidden="0" number="" id="24" name="" orientation="3"/>
+                    <terminal y="-21" x="0" name="" orientation="0" id="19" number="" nameHidden="0"/>
+                    <terminal y="39.6667" x="-8" name="" orientation="3" id="20" number="" nameHidden="0"/>
+                    <terminal y="40.6667" x="0" name="" orientation="2" id="21" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 02"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-12.3333" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{c69f6ee9-ac6c-42f0-8690-5ca3c64e561d}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>M 03</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="4.6667" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{591aef6c-2234-4340-b0cb-c36e9ea8f875}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="220" y="370" type="embed://import/grafcet/etape.elmt" uuid="{b9ad5d40-37f7-4af2-b69b-12e97b0142a3}" orientation="0">
+            <element freezeLabel="false" z="10" y="230" x="220" prefix="" type="embed://import/grafcet2/transition.elmt" orientation="0" uuid="{578bf044-62aa-4ed7-b9ac-762b8a88d129}">
                 <terminals>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="25" name="" orientation="0"/>
-                    <terminal x="0" y="21" nameHidden="0" number="" id="26" name="" orientation="2"/>
-                    <terminal x="36" y="-10" nameHidden="0" number="" id="27" name="" orientation="1"/>
+                    <terminal y="-1" x="0" name="" orientation="0" id="22" number="" nameHidden="0"/>
+                    <terminal y="0" x="-8" name="" orientation="3" id="23" number="" nameHidden="0"/>
+                    <terminal y="1" x="0" name="" orientation="2" id="24" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 06"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">T 02</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="15" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{cecf8bd8-151b-4fb0-9a28-4300179c4261}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>T 02</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element freezeLabel="false" z="10" y="370" x="220" prefix="" type="embed://import/grafcet/etape.elmt" orientation="0" uuid="{b9ad5d40-37f7-4af2-b69b-12e97b0142a3}">
+                <terminals>
+                    <terminal y="-21" x="0" name="" orientation="0" id="25" number="" nameHidden="0"/>
+                    <terminal y="-10" x="36" name="" orientation="1" id="26" number="" nameHidden="0"/>
+                    <terminal y="21" x="0" name="" orientation="2" id="27" number="" nameHidden="0"/>
+                </terminals>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{d28ffc23-ad7f-4b13-bfcf-5c0fd039414a}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{85dc76b2-c004-4571-94a6-c14e4f494464}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 06</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
         </elements>
         <conductors>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="14" terminal2="11" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="3" terminal2="12" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="4" terminal2="8" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="2" terminal2="12" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="26" terminal2="6" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="0" terminal2="16" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="18" terminal2="27" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="13" terminal2="23" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="9" terminal2="23" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="22" terminal2="21" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="20" terminal2="25" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="15" terminal2="4" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="11" bus="" dash-size="1" numsize="9" terminal1="13" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="12" bus="" dash-size="1" numsize="9" terminal1="3" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="8" bus="" dash-size="1" numsize="9" terminal1="4" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="12" bus="" dash-size="1" numsize="9" terminal1="2" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="6" bus="" dash-size="1" numsize="9" terminal1="27" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="15" bus="" dash-size="1" numsize="9" terminal1="0" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="26" bus="" dash-size="1" numsize="9" terminal1="18" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="22" bus="" dash-size="1" numsize="9" terminal1="14" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="22" bus="" dash-size="1" numsize="9" terminal1="10" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="19" bus="" dash-size="1" numsize="9" terminal1="24" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="25" bus="" dash-size="1" numsize="9" terminal1="21" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="4" bus="" dash-size="1" numsize="9" terminal1="17" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
         </conductors>
     </diagram>
-    <diagram title="Macro 3" displayrows="true" version="0.4" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="2" rows="6" author="" filename="" date="null" rowsize="80">
-        <defaultconductor num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+    <diagram freezeNewElement="false" cols="15" folio="%id/%total" version="0.80c+87c957a06d79751d3" indexrev="" date="null" author="" height="500" freezeNewConductor="false" title="Macro 3" auto_page_num="" displaycols="true" filename="" colsize="50" order="2" displayrows="true" locmach="" rows="6" plant="" rowsize="80" displayAt="bottom">
+        <defaultconductor condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" bus="" dash-size="1" numsize="9" horizontal-alignment="AlignBottom" function="" conductor_color="" conductor_section="" text_color="#000000" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" num="_" type="multi"/>
         <elements>
-            <element x="460" y="310" type="embed://import/grafcet2/etape.elmt" uuid="{3ba984a9-4ca5-4fa2-9a11-85c41ddb349b}" orientation="0">
+            <element freezeLabel="false" z="10" y="310" x="460" prefix="" type="embed://import/grafcet2/etape.elmt" orientation="0" uuid="{3ba984a9-4ca5-4fa2-9a11-85c41ddb349b}">
                 <terminals>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="0" name="" orientation="0"/>
-                    <terminal x="0" y="21" nameHidden="0" number="" id="1" name="" orientation="2"/>
-                    <terminal x="36" y="-10" nameHidden="0" number="" id="2" name="" orientation="1"/>
+                    <terminal y="-21" x="0" name="" orientation="0" id="0" number="" nameHidden="0"/>
+                    <terminal y="-10" x="36" name="" orientation="1" id="1" number="" nameHidden="0"/>
+                    <terminal y="21" x="0" name="" orientation="2" id="2" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 05"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{462f8d6f-73cb-43bb-b27b-39e44c4dd71d}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{fa13f1cc-d07a-42e1-82fb-1682e3dce1bd}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 05</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="170" y="350" type="embed://import/automatisme/fonction/entree.elmt" uuid="{12483728-267f-4c2f-b7ea-4ef02acb67b1}" orientation="0">
+            <element freezeLabel="false" z="10" y="350" x="170" prefix="" type="embed://import/automatisme/fonction/entree.elmt" orientation="0" uuid="{12483728-267f-4c2f-b7ea-4ef02acb67b1}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="3" name="" orientation="1"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="3" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-2" y="5" text="I"/>
-                    <input x="-2" y="5" text="I"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{2a32ad3c-733d-4a46-a5d9-67a2240c9872}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{72d3619f-cf89-438b-adf9-46c36c1e6ced}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="340" y="390" type="embed://import/automatisme/fonction/ou.elmt" uuid="{546bea81-a292-4105-8d0b-e696cbe2b71a}" orientation="0">
+            <element freezeLabel="false" z="10" y="390" x="340" prefix="" type="embed://import/automatisme/fonction/ou.elmt" orientation="0" uuid="{546bea81-a292-4105-8d0b-e696cbe2b71a}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="4" name="" orientation="1"/>
-                    <terminal x="-36" y="-20" nameHidden="0" number="" id="5" name="" orientation="3"/>
-                    <terminal x="-36" y="20" nameHidden="0" number="" id="6" name="" orientation="3"/>
+                    <terminal y="-20" x="-36" name="" orientation="3" id="4" number="" nameHidden="0"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="5" number="" nameHidden="0"/>
+                    <terminal y="20" x="-36" name="" orientation="3" id="6" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-46" y="10" text="_"/>
-                    <input x="-46" y="-30" text="_"/>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-11.5" y="5" text="≥1"/>
-                    <input x="-11.5" y="5" text="≥1"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-41" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{1aa294b5-9755-46fa-ada4-2094068244cc}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{660074e9-67ca-4e73-9bf5-e2ac42b96dea}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-1" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{52e847f7-43db-40ef-8d9a-ae0d3570c8e5}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{11723f6e-8dd3-45af-a9b9-407cd855558f}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="460" y="460" type="embed://import/grafcet2/macro/etape_sortie.elmt" uuid="{16ff747c-27ef-4d71-a637-e69948ec7778}" orientation="0">
+            <element freezeLabel="false" z="10" y="460" x="460" prefix="" type="embed://import/grafcet2/macro/etape_sortie.elmt" orientation="0" uuid="{16ff747c-27ef-4d71-a637-e69948ec7778}">
                 <terminals>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="7" name="" orientation="0"/>
+                    <terminal y="-21" x="0" name="" orientation="0" id="7" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="S 03"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{f1858a9c-ee89-4330-bb60-6193b2b35528}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{b70437e3-ab67-47cd-8576-ae15b5f52bde}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>S 03</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="170" y="430" type="embed://import/automatisme/fonction/entree.elmt" uuid="{901dcb49-d67c-459d-98dc-f77992b63bfb}" orientation="0">
+            <element freezeLabel="false" z="10" y="430" x="170" prefix="" type="embed://import/automatisme/fonction/entree.elmt" orientation="0" uuid="{901dcb49-d67c-459d-98dc-f77992b63bfb}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="8" name="" orientation="1"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="8" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-2" y="5" text="I"/>
-                    <input x="-2" y="5" text="I"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{558dad15-5fe3-4fd2-858d-c0769c570f2a}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{3afa1725-fb73-4f33-ac1a-e8b6f109e5b2}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="330" y="220" type="embed://import/automatisme/fonction/et.elmt" uuid="{dff2338c-a7d0-4c8e-95bd-fde0887d0b1b}" orientation="0">
+            <element freezeLabel="false" z="10" y="220" x="330" prefix="" type="embed://import/automatisme/fonction/et.elmt" orientation="0" uuid="{dff2338c-a7d0-4c8e-95bd-fde0887d0b1b}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="9" name="" orientation="1"/>
-                    <terminal x="-36" y="-20" nameHidden="0" number="" id="10" name="" orientation="3"/>
-                    <terminal x="-36" y="20" nameHidden="0" number="" id="11" name="" orientation="3"/>
+                    <terminal y="-20" x="-36" name="" orientation="3" id="9" number="" nameHidden="0"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="10" number="" nameHidden="0"/>
+                    <terminal y="20" x="-36" name="" orientation="3" id="11" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-46" y="10" text="_"/>
-                    <input x="-46" y="-30" text="_"/>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-6" y="5" text="&amp;"/>
-                    <input x="-6" y="5" text="&amp;"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-41" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{83628354-b26d-4e23-8410-28adb8e06bc2}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{1fb0f9bd-90f0-4d47-b28d-b76174d4a29a}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-1" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{29964fb6-a217-4e01-82f2-530f40e5a759}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{038d0771-dcc6-444c-9633-9a0089e79521}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="520" y="170" type="embed://import/grafcet/actions/continue.elmt" uuid="{b216ef62-54ea-4a6b-9900-1987a932f765}" orientation="0">
+            <element freezeLabel="false" z="10" y="170" x="520" prefix="" type="embed://import/grafcet/actions/continue.elmt" orientation="0" uuid="{b216ef62-54ea-4a6b-9900-1987a932f765}">
                 <terminals>
-                    <terminal x="7" y="0" nameHidden="0" number="" id="12" name="" orientation="3"/>
+                    <terminal y="0" x="7" name="" orientation="3" id="12" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                    <input x="8" y="3" text="="/>
-                    <input x="8" y="3" text="="/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">action</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{077d4c2e-c713-4954-9df4-a6f76ea91c3f}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>action</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="520" y="300" type="embed://import/grafcet/actions/continue.elmt" uuid="{f962fd78-860d-4193-b517-d06bac16cbf5}" orientation="0">
+            <element freezeLabel="false" z="10" y="300" x="520" prefix="" type="embed://import/grafcet/actions/continue.elmt" orientation="0" uuid="{f962fd78-860d-4193-b517-d06bac16cbf5}">
                 <terminals>
-                    <terminal x="7" y="0" nameHidden="0" number="" id="13" name="" orientation="3"/>
+                    <terminal y="0" x="7" name="" orientation="3" id="13" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                    <input x="8" y="3" text="="/>
-                    <input x="8" y="3" text="="/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">action</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{b92e124d-7b17-4e43-bb18-248c2acc2749}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>action</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="460" y="220" type="embed://import/grafcet2/transition.elmt" uuid="{3c0fd8ce-8b1f-4f6f-ab43-1d22d4e6b5d8}" orientation="0">
+            <element freezeLabel="false" z="10" y="220" x="460" prefix="" type="embed://import/grafcet2/transition.elmt" orientation="0" uuid="{3c0fd8ce-8b1f-4f6f-ab43-1d22d4e6b5d8}">
                 <terminals>
-                    <terminal x="0" y="1" nameHidden="0" number="" id="14" name="" orientation="2"/>
-                    <terminal x="0" y="-1" nameHidden="0" number="" id="15" name="" orientation="0"/>
-                    <terminal x="-8" y="0" nameHidden="0" number="" id="16" name="" orientation="3"/>
+                    <terminal y="-1" x="0" name="" orientation="0" id="14" number="" nameHidden="0"/>
+                    <terminal y="0" x="-8" name="" orientation="3" id="15" number="" nameHidden="0"/>
+                    <terminal y="1" x="0" name="" orientation="2" id="16" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 30"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">T 30</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="15" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{edfe87f4-c84c-4107-b22a-9e28047ebf56}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>T 30</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="520" y="150" type="embed://import/grafcet/actions/continue.elmt" uuid="{c154f8fa-ee5a-4400-a419-dc5aaaddd6a2}" orientation="0">
+            <element freezeLabel="false" z="10" y="150" x="520" prefix="" type="embed://import/grafcet/actions/continue.elmt" orientation="0" uuid="{c154f8fa-ee5a-4400-a419-dc5aaaddd6a2}">
                 <terminals>
-                    <terminal x="7" y="0" nameHidden="0" number="" id="17" name="" orientation="3"/>
+                    <terminal y="0" x="7" name="" orientation="3" id="17" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                    <input x="8" y="3" text="="/>
-                    <input x="8" y="3" text="="/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">action</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{28bbed5e-b21f-4a69-94d6-300d95979afb}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>action</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="460" y="70" type="embed://import/grafcet2/macro/etape_entree.elmt" uuid="{b6a9dba6-bded-458f-a948-d0f34ec92671}" orientation="0">
+            <element freezeLabel="false" z="10" y="70" x="460" prefix="" type="embed://import/grafcet2/macro/etape_entree.elmt" orientation="0" uuid="{b6a9dba6-bded-458f-a948-d0f34ec92671}">
                 <terminals>
-                    <terminal x="0" y="41" nameHidden="0" number="" id="18" name="" orientation="2"/>
-                    <terminal x="-8" y="40" nameHidden="0" number="" id="19" name="" orientation="3"/>
+                    <terminal y="40" x="-8" name="" orientation="3" id="18" number="" nameHidden="0"/>
+                    <terminal y="41" x="0" name="" orientation="2" id="19" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="19" y="42" text="1"/>
-                    <input x="19" y="42" text="1"/>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 03"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6e634106-ae8e-4f14-9b78-b5479f5ff65d}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 03</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{9a9d0bc3-99d0-47fa-8844-f34565cf5d9d}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="170" y="180" type="embed://import/automatisme/fonction/entree.elmt" uuid="{dcc4fd4d-cfa8-4f72-9990-a5ae8e83307d}" orientation="0">
+            <element freezeLabel="false" z="10" y="180" x="170" prefix="" type="embed://import/automatisme/fonction/entree.elmt" orientation="0" uuid="{dcc4fd4d-cfa8-4f72-9990-a5ae8e83307d}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="20" name="" orientation="1"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="20" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-2" y="5" text="I"/>
-                    <input x="-2" y="5" text="I"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{b6b17c2d-c48d-47bd-b2f6-45e6daf2745e}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{02770a02-7555-44b5-ab29-22da08b4937c}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="520" y="160" type="embed://import/grafcet/actions/continue.elmt" uuid="{91b0d252-9167-4feb-baf1-25120b97a3ae}" orientation="0">
+            <element freezeLabel="false" z="10" y="160" x="520" prefix="" type="embed://import/grafcet/actions/continue.elmt" orientation="0" uuid="{91b0d252-9167-4feb-baf1-25120b97a3ae}">
                 <terminals>
-                    <terminal x="7" y="0" nameHidden="0" number="" id="21" name="" orientation="3"/>
+                    <terminal y="0" x="7" name="" orientation="3" id="21" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="2" text="action"/>
-                    <input x="8" y="3" text="="/>
-                    <input x="8" y="3" text="="/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">action</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{8200170e-d39d-4927-89d3-b2d703d3e681}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>action</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="170" y="260" type="embed://import/automatisme/fonction/entree.elmt" uuid="{82fd394e-304e-44c8-a695-c1cda10c3e21}" orientation="0">
+            <element freezeLabel="false" z="10" y="260" x="170" prefix="" type="embed://import/automatisme/fonction/entree.elmt" orientation="0" uuid="{82fd394e-304e-44c8-a695-c1cda10c3e21}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="22" name="" orientation="1"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="22" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-2" y="5" text="I"/>
-                    <input x="-2" y="5" text="I"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{b8cd2125-0651-4498-9179-6bc5ba24ce5e}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{b2a60c28-10ff-4454-a948-81d774a504d2}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="460" y="390" type="embed://import/grafcet2/transition.elmt" uuid="{bdb1cc69-7e03-4f4f-a4fc-c11413f16278}" orientation="0">
+            <element freezeLabel="false" z="10" y="390" x="460" prefix="" type="embed://import/grafcet2/transition.elmt" orientation="0" uuid="{bdb1cc69-7e03-4f4f-a4fc-c11413f16278}">
                 <terminals>
-                    <terminal x="0" y="1" nameHidden="0" number="" id="23" name="" orientation="2"/>
-                    <terminal x="0" y="-1" nameHidden="0" number="" id="24" name="" orientation="0"/>
-                    <terminal x="-8" y="0" nameHidden="0" number="" id="25" name="" orientation="3"/>
+                    <terminal y="-1" x="0" name="" orientation="0" id="23" number="" nameHidden="0"/>
+                    <terminal y="0" x="-8" name="" orientation="3" id="24" number="" nameHidden="0"/>
+                    <terminal y="1" x="0" name="" orientation="2" id="25" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="15" y="2" text="T 31"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">T 31</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-9" x="15" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{01a42016-41d0-47ac-92ec-ec4daf37ec30}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>T 31</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="460" y="160" type="embed://import/grafcet2/etape.elmt" uuid="{68ae6a60-f2ae-4c1b-99c9-1993b2964eb4}" orientation="0">
+            <element freezeLabel="false" z="10" y="160" x="460" prefix="" type="embed://import/grafcet2/etape.elmt" orientation="0" uuid="{68ae6a60-f2ae-4c1b-99c9-1993b2964eb4}">
                 <terminals>
-                    <terminal x="0" y="-21" nameHidden="0" number="" id="26" name="" orientation="0"/>
-                    <terminal x="0" y="21" nameHidden="0" number="" id="27" name="" orientation="2"/>
-                    <terminal x="36" y="-10" nameHidden="0" number="" id="28" name="" orientation="1"/>
+                    <terminal y="-21" x="0" name="" orientation="0" id="26" number="" nameHidden="0"/>
+                    <terminal y="-10" x="36" name="" orientation="1" id="27" number="" nameHidden="0"/>
+                    <terminal y="21" x="0" name="" orientation="2" id="28" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-30" y="14" text=""/>
-                    <input x="-20" y="0" text="E 04"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label"></elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="5" x="-30" Halignment="AlignLeft" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6b55c46a-65a2-4447-a822-cc9dca9610a4}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text></text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-12" x="-20" Halignment="AlignLeft" font="MS Shell Dlg 2,10,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{d1812f58-94cf-4254-99bc-b2df1bda793b}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>E 04</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
         </elements>
         <conductors>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="3" terminal2="5" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="4" terminal2="25" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="8" terminal2="6" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="20" terminal2="10" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="22" terminal2="11" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="23" terminal2="7" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="28" terminal2="21" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="24" terminal2="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="2" terminal2="13" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="18" terminal2="26" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="27" terminal2="15" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="28" terminal2="17" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="9" terminal2="16" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="12" terminal2="28" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="14" terminal2="0" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="4" bus="" dash-size="1" numsize="9" terminal1="3" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="24" bus="" dash-size="1" numsize="9" terminal1="5" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="6" bus="" dash-size="1" numsize="9" terminal1="8" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="9" bus="" dash-size="1" numsize="9" terminal1="20" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="11" bus="" dash-size="1" numsize="9" terminal1="22" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="7" bus="" dash-size="1" numsize="9" terminal1="25" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="21" bus="" dash-size="1" numsize="9" terminal1="27" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="2" bus="" dash-size="1" numsize="9" terminal1="23" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="13" bus="" dash-size="1" numsize="9" terminal1="1" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="26" bus="" dash-size="1" numsize="9" terminal1="19" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="14" bus="" dash-size="1" numsize="9" terminal1="28" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="17" bus="" dash-size="1" numsize="9" terminal1="27" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="15" bus="" dash-size="1" numsize="9" terminal1="10" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="27" bus="" dash-size="1" numsize="9" terminal1="12" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="0" bus="" dash-size="1" numsize="9" terminal1="16" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
         </conductors>
     </diagram>
-    <diagram title="Conditions" displayrows="true" version="0.4" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="3" rows="6" author="" filename="" date="null" rowsize="80">
-        <defaultconductor num="_" vertirotatetext="0" displaytext="1" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
+    <diagram freezeNewElement="false" cols="15" folio="%id/%total" version="0.80c+87c957a06d79751d3" indexrev="" date="null" author="" height="500" freezeNewConductor="false" title="Conditions" auto_page_num="" displaycols="true" filename="" colsize="50" order="3" displayrows="true" locmach="" rows="6" plant="" rowsize="80" displayAt="bottom">
+        <defaultconductor condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" bus="" dash-size="1" numsize="9" horizontal-alignment="AlignBottom" function="" conductor_color="" conductor_section="" text_color="#000000" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" num="_" type="multi"/>
         <elements>
-            <element x="450" y="400" type="embed://import/automatisme/lader/output/sortie.elmt" uuid="{3a059f35-2597-48b7-9730-c399198908c5}" orientation="0">
+            <element freezeLabel="false" z="10" y="400" x="450" prefix="" type="embed://import/automatisme/lader/output/sortie.elmt" orientation="0" uuid="{3a059f35-2597-48b7-9730-c399198908c5}">
                 <terminals>
-                    <terminal x="-20" y="0" nameHidden="0" number="" id="0" name="" orientation="3"/>
+                    <terminal y="0" x="-20" name="" orientation="3" id="0" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-18" y="-10" text="T03_"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">T03_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21.5" x="-18" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{8cbca9f7-1916-4eb4-9f69-549a991c7aa5}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>T03_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="290" y="430" type="embed://import/automatisme/lader/input/entree.elmt" uuid="{c5876a7c-c5c3-4842-baee-050f23a81f6d}" orientation="0">
+            <element freezeLabel="false" z="10" y="430" x="290" prefix="" type="embed://import/automatisme/lader/input/entree.elmt" orientation="0" uuid="{c5876a7c-c5c3-4842-baee-050f23a81f6d}">
                 <terminals>
-                    <terminal x="20" y="0" nameHidden="0" number="" id="1" name="" orientation="1"/>
-                    <terminal x="-20" y="0" nameHidden="0" number="" id="2" name="" orientation="3"/>
+                    <terminal y="0" x="-20" name="" orientation="3" id="1" number="" nameHidden="0"/>
+                    <terminal y="0" x="20" name="" orientation="1" id="2" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-18" y="-10" text="Arrêt urgence"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">Arrêt urgence</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21.5" x="-18" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{0f1e8504-a24e-4c5a-aba5-4db45cdd005e}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>Arrêt urgence</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="200" y="400" type="embed://import/sources/multifilaire/src_p.elmt" uuid="{486f95db-99d4-4148-b8c4-cb7ab5e3ab1d}" orientation="0">
+            <element freezeLabel="false" z="10" y="400" x="200" prefix="" type="embed://import/sources/multifilaire/src_p.elmt" orientation="0" uuid="{486f95db-99d4-4148-b8c4-cb7ab5e3ab1d}">
                 <terminals>
-                    <terminal x="6" y="0" nameHidden="0" number="" id="3" name="" orientation="1"/>
+                    <terminal y="0" x="6" name="" orientation="1" id="3" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-12" y="3" text="L"/>
-                    <input x="-12" y="3" text="L"/>
-                </inputs>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
             </element>
-            <element x="290" y="370" type="embed://import/automatisme/lader/input/entree.elmt" uuid="{6046d2e7-4cab-4e46-8d15-1ccebefabd3d}" orientation="0">
+            <element freezeLabel="false" z="10" y="370" x="290" prefix="" type="embed://import/automatisme/lader/input/entree.elmt" orientation="0" uuid="{6046d2e7-4cab-4e46-8d15-1ccebefabd3d}">
                 <terminals>
-                    <terminal x="20" y="0" nameHidden="0" number="" id="4" name="" orientation="1"/>
-                    <terminal x="-20" y="0" nameHidden="0" number="" id="5" name="" orientation="3"/>
+                    <terminal y="0" x="-20" name="" orientation="3" id="4" number="" nameHidden="0"/>
+                    <terminal y="0" x="20" name="" orientation="1" id="5" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-18" y="-10" text="Bouton stop"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">Bouton stop</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21.5" x="-18" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{516c5ece-5871-439a-ae9a-b9e6d6292bc5}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>Bouton stop</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="190" y="100" type="embed://import/automatisme/fonction/entree.elmt" uuid="{9681f5f3-8ad4-4fef-b6fe-501ab028fc1f}" orientation="0">
+            <element freezeLabel="false" z="10" y="100" x="190" prefix="" type="embed://import/automatisme/fonction/entree.elmt" orientation="0" uuid="{9681f5f3-8ad4-4fef-b6fe-501ab028fc1f}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="6" name="" orientation="1"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="6" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="Bouton start"/>
-                    <input x="-2" y="5" text="I"/>
-                    <input x="-2" y="5" text="I"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{17a0da41-bac8-468b-b04c-b04eba8beb73}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6cba6ac6-320a-4be5-90ef-16da6a4d4705}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>Bouton start</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="190" y="220" type="embed://import/automatisme/fonction/entree.elmt" uuid="{1b95c847-07a9-465c-ad5c-095b93bc3d06}" orientation="0">
+            <element freezeLabel="false" z="10" y="220" x="190" prefix="" type="embed://import/automatisme/fonction/entree.elmt" orientation="0" uuid="{1b95c847-07a9-465c-ad5c-095b93bc3d06}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="7" name="" orientation="1"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="7" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="Arrêt urgence"/>
-                    <input x="-2" y="5" text="I"/>
-                    <input x="-2" y="5" text="I"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{e40be105-92c6-4eb5-9c6d-fe665b0a5c62}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>Arrêt urgence</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{2e50c062-a3ae-4b43-8651-721e5dcf7b3e}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="310" y="220" type="embed://import/automatisme/fonction/non.elmt" uuid="{2ff0c5b1-dd75-4660-b5b5-13df9a365c93}" orientation="0">
+            <element freezeLabel="false" z="10" y="220" x="310" prefix="" type="embed://import/automatisme/fonction/non.elmt" orientation="0" uuid="{2ff0c5b1-dd75-4660-b5b5-13df9a365c93}">
                 <terminals>
-                    <terminal x="-36" y="0" nameHidden="0" number="" id="8" name="" orientation="3"/>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="9" name="" orientation="1"/>
+                    <terminal y="0" x="-36" name="" orientation="3" id="8" number="" nameHidden="0"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="9" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-46" y="-10" text="_"/>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-5" y="5" text="1"/>
-                    <input x="-5" y="5" text="1"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{70a08d74-869c-4378-bd38-c45ea92aebc0}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{daec8bdf-e319-45bb-a8d2-4dd5a7487001}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{09ad4bdd-1f2e-4c0a-9e0a-fff1deeb4036}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="560" y="160" type="embed://import/automatisme/fonction/sortie.elmt" uuid="{2d78796c-4495-4030-8548-acbdfbefbbc0}" orientation="0">
+            <element freezeLabel="false" z="10" y="160" x="560" prefix="" type="embed://import/automatisme/fonction/sortie.elmt" orientation="0" uuid="{2d78796c-4495-4030-8548-acbdfbefbbc0}">
                 <terminals>
-                    <terminal x="-36" y="0" nameHidden="0" number="" id="10" name="" orientation="3"/>
+                    <terminal y="0" x="-36" name="" orientation="3" id="10" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-46" y="-10" text="_"/>
-                    <input x="-25" y="50" text="T01"/>
-                    <input x="-6.5" y="5" text="Q"/>
-                    <input x="-6.5" y="5" text="Q"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{dba311df-97fe-4624-ae3b-530ab40b5630}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>T01</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{d5f1ea9d-f6d4-484d-9402-7e54b0d2d500}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
-            <element x="420" y="160" type="embed://import/automatisme/fonction/et.elmt" uuid="{39e1f6ea-04f2-4d8f-877e-02cfb7b60f36}" orientation="0">
+            <element freezeLabel="false" z="10" y="160" x="420" prefix="" type="embed://import/automatisme/fonction/et.elmt" orientation="0" uuid="{39e1f6ea-04f2-4d8f-877e-02cfb7b60f36}">
                 <terminals>
-                    <terminal x="36" y="0" nameHidden="0" number="" id="11" name="" orientation="1"/>
-                    <terminal x="-36" y="-20" nameHidden="0" number="" id="12" name="" orientation="3"/>
-                    <terminal x="-36" y="20" nameHidden="0" number="" id="13" name="" orientation="3"/>
+                    <terminal y="-20" x="-36" name="" orientation="3" id="11" number="" nameHidden="0"/>
+                    <terminal y="0" x="36" name="" orientation="1" id="12" number="" nameHidden="0"/>
+                    <terminal y="20" x="-36" name="" orientation="3" id="13" number="" nameHidden="0"/>
                 </terminals>
-                <inputs>
-                    <input x="-46" y="10" text="_"/>
-                    <input x="-46" y="-30" text="_"/>
-                    <input x="25" y="-10" text="_"/>
-                    <input x="-25" y="50" text="_"/>
-                    <input x="-6" y="5" text="&amp;"/>
-                    <input x="-6" y="5" text="&amp;"/>
-                </inputs>
+                <inputs/>
+                <elementInformations>
+                    <elementInformation show="1" name="label">_</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text rotation="0" y="38.5" x="-25" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6c006c65-fccf-4a91-9c6c-601bd7317bae}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-21" x="25" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{8a9ada01-65e5-404e-be9c-24b16c9cce88}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-1" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{6f9a58c0-8025-44ee-8ab3-6d2e8078084c}" text_from="ElementInfo" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                        <info_name>label</info_name>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text rotation="0" y="-41" x="-46" Halignment="AlignLeft" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text_width="-1" keep_visual_rotation="true" uuid="{c13f0025-8b3a-4176-adeb-82036a2197ce}" text_from="UserText" Valignment="AlignTop" frame="false">
+                        <text>_</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
             </element>
         </elements>
         <conductors>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="4" terminal2="0" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="1" terminal2="0" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0">
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="0" bus="" dash-size="1" numsize="9" terminal1="5" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="0" bus="" dash-size="1" numsize="9" terminal1="2" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
                 <segment length="0" orientation="horizontal"/>
                 <segment length="56" orientation="horizontal"/>
                 <segment length="-30" orientation="vertical"/>
                 <segment length="56" orientation="horizontal"/>
                 <segment length="0" orientation="horizontal"/>
+                <sequentialNumbers/>
             </conductor>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="5" terminal2="2" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0">
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="1" bus="" dash-size="1" numsize="9" terminal1="4" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
                 <segment length="-9" orientation="horizontal"/>
                 <segment length="-27" orientation="horizontal"/>
                 <segment length="60" orientation="vertical"/>
                 <segment length="27" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
+                <sequentialNumbers/>
             </conductor>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="6" terminal2="12" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="7" terminal2="8" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="9" terminal2="13" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="11" terminal2="10" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0"/>
-            <conductor num="_" vertirotatetext="0" displaytext="1" terminal1="3" terminal2="5" type="multi" horizrotatetext="0" numsize="9" onetextperfolio="0">
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="11" bus="" dash-size="1" numsize="9" terminal1="6" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="8" bus="" dash-size="1" numsize="9" terminal1="7" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="13" bus="" dash-size="1" numsize="9" terminal1="9" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="10" bus="" dash-size="1" numsize="9" terminal1="12" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor x="0" condsize="1" cable="" onetextperfolio="0" vertical-alignment="AlignRight" y="0" horizrotatetext="0" bicolor="false" terminal2="4" bus="" dash-size="1" numsize="9" terminal1="3" horizontal-alignment="AlignBottom" function="" conductor_color="" text_color="#000000" conductor_section="" color2="#000000" tension_protocol="" displaytext="1" formula="" vertirotatetext="0" freezeLabel="false" num="_" type="multi">
                 <segment length="9" orientation="horizontal"/>
                 <segment length="11" orientation="horizontal"/>
                 <segment length="-30" orientation="vertical"/>
                 <segment length="27" orientation="horizontal"/>
                 <segment length="9" orientation="horizontal"/>
+                <sequentialNumbers/>
             </conductor>
         </conductors>
         <inputs>
-            <input x="360" y="290" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>Condition T02 si - moteur en marche - lubrification en marche &lt;/p>&lt;/body>&lt;/html>"/>
+            <input rotation="0" y="290" x="360" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;span style=&quot; font-family:'Sans Serif'; font-size:9pt;&quot;>Condition T02 si - moteur en marche - lubrification en marche &lt;/span>&lt;/p>&lt;/body>&lt;/html>"/>
         </inputs>
     </diagram>
     <collection>
@@ -502,7 +882,7 @@
                         <name lang="es">Multihilo</name>
                     </names>
                     <element name="src_p.elmt">
-                        <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+                        <definition width="30" hotspot_y="15" height="30" type="element" orientation="dnnn" hotspot_x="15" version="0.1">
                             <names>
                                 <name lang="ru">Фаза</name>
                                 <name lang="en">Phase source</name>
@@ -510,9 +890,9 @@
                                 <name lang="es">Fuente fase</name>
                             </names>
                             <description>
-                                <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
-                                <text x="-12" y="3" size="5" text="L"/>
-                                <terminal x="10" y="0" orientation="e"/>
+                                <line x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x2="10" y1="0" antialias="false"/>
+                                <text y="3" x="-12" size="5" text="L"/>
+                                <terminal y="0" x="10" orientation="e"/>
                             </description>
                         </definition>
                     </element>
@@ -540,7 +920,7 @@
                             <name lang="es">Salidas</name>
                         </names>
                         <element name="sortie.elmt">
-                            <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
+                            <definition width="50" hotspot_y="30" height="40" type="element" orientation="dnnn" hotspot_x="25" version="0.2">
                                 <names>
                                     <name lang="ru">Выход</name>
                                     <name lang="en">Output</name>
@@ -548,12 +928,12 @@
                                     <name lang="es">Salida</name>
                                 </names>
                                 <description>
-                                    <arc width="4" x="6" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="80" angle="-160"/>
-                                    <input x="-18" y="-10" size="9" rotate="true" text="_"/>
-                                    <arc width="4" x="-10" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-100" angle="-160"/>
-                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
-                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
-                                    <terminal x="-24" y="0" orientation="w"/>
+                                    <arc width="4" y="-5" start="80" x="6" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" angle="-160" antialias="true"/>
+                                    <input y="-10" x="-18" tagg="label" size="9" text="_" rotate="true"/>
+                                    <arc width="4" y="-5" start="-100" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" angle="-160" antialias="true"/>
+                                    <line end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="24" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                    <line end2="none" x1="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="-10" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                    <terminal y="0" x="-24" orientation="w"/>
                                 </description>
                             </definition>
                         </element>
@@ -566,7 +946,7 @@
                             <name lang="es">Entradas</name>
                         </names>
                         <element name="entree.elmt">
-                            <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
+                            <definition width="50" hotspot_y="30" height="40" type="element" orientation="dnnn" hotspot_x="25" version="0.2">
                                 <names>
                                     <name lang="ru">Вход</name>
                                     <name lang="en">Input</name>
@@ -574,13 +954,13 @@
                                     <name lang="es">Entrada</name>
                                 </names>
                                 <description>
-                                    <input x="-18" y="-10" size="9" rotate="true" text="_"/>
-                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="-5" x2="10"/>
-                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
-                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
-                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
-                                    <terminal x="24" y="0" orientation="e"/>
-                                    <terminal x="-24" y="0" orientation="w"/>
+                                    <input y="-10" x="-18" tagg="label" size="9" text="_" rotate="true"/>
+                                    <line end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-5" x2="10" length2="1.5" y1="5" length1="1.5" antialias="false"/>
+                                    <line end2="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="5" x2="-10" length2="1.5" y1="-5" length1="1.5" antialias="false"/>
+                                    <line end2="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="24" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                    <line end2="none" x1="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="-10" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                    <terminal y="0" x="24" orientation="e"/>
+                                    <terminal y="0" x="-24" orientation="w"/>
                                 </description>
                             </definition>
                         </element>
@@ -594,7 +974,7 @@
                         <name lang="es">Puertas lógicas</name>
                     </names>
                     <element name="non.elmt">
-                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
+                        <definition width="100" hotspot_y="50" height="110" ic="true" type="element" hotspot_x="50" version="0.2">
                             <names>
                                 <name lang="ru">НЕ</name>
                                 <name lang="en">NOT</name>
@@ -602,21 +982,21 @@
                                 <name lang="es">NO</name>
                             </names>
                             <description>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="26"/>
-                                <circle x="20.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-                                <input x="-46" y="-10" size="8" rotate="true" text="_"/>
-                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-39" y2="0" x2="-20"/>
-                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
-                                <text x="-5" y="5" size="12" text="1"/>
-                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="-40" y="0" orientation="w"/>
-                                <terminal x="40" y="0" orientation="e"/>
+                                <line end2="none" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="26" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                <circle y="-2.5" x="20.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" antialias="true"/>
+                                <input y="-10" x="-46" tagg="label" size="8" text="_" rotate="true"/>
+                                <input y="-10" x="25" size="8" text="_" rotate="true"/>
+                                <line end2="none" x1="-39" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="-20" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                <input y="50" x="-25" size="9" text="_" rotate="true"/>
+                                <text y="5" x="-5" size="12" text="1"/>
+                                <rect width="40" y="-35" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false"/>
+                                <terminal y="0" x="-40" orientation="w"/>
+                                <terminal y="0" x="40" orientation="e"/>
                             </description>
                         </definition>
                     </element>
                     <element name="ou.elmt">
-                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
+                        <definition width="100" hotspot_y="50" height="110" ic="true" type="element" hotspot_x="50" version="0.2">
                             <names>
                                 <name lang="ru">ИЛИ</name>
                                 <name lang="en">OR</name>
@@ -624,23 +1004,23 @@
                                 <name lang="es">O</name>
                             </names>
                             <description>
-                                <input x="-46" y="10" size="8" rotate="true" text="_"/>
-                                <input x="-46" y="-30" size="8" rotate="true" text="_"/>
-                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="21"/>
-                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
-                                <text x="-11.5" y="5" size="12" text="≥1"/>
-                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="40" y="0" orientation="e"/>
-                                <terminal x="-40" y="-20" orientation="w"/>
-                                <terminal x="-40" y="20" orientation="w"/>
+                                <input y="10" x="-46" tagg="label" size="8" text="_" rotate="true"/>
+                                <input y="-30" x="-46" size="8" text="_" rotate="true"/>
+                                <input y="-10" x="25" size="8" text="_" rotate="true"/>
+                                <line end2="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-20" x2="-21" length2="1.5" y1="-20" length1="1.5" antialias="false"/>
+                                <line end2="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="20" x2="-21" length2="1.5" y1="20" length1="1.5" antialias="false"/>
+                                <line end2="none" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="21" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                <input y="50" x="-25" size="9" text="_" rotate="true"/>
+                                <text y="5" x="-11.5" size="12" text="≥1"/>
+                                <rect width="40" y="-35" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false"/>
+                                <terminal y="0" x="40" orientation="e"/>
+                                <terminal y="-20" x="-40" orientation="w"/>
+                                <terminal y="20" x="-40" orientation="w"/>
                             </description>
                         </definition>
                     </element>
                     <element name="entree.elmt">
-                        <definition width="80" version="0.2" hotspot_x="30" hotspot_y="50" height="110" type="element" ic="true">
+                        <definition width="80" hotspot_y="50" height="110" ic="true" type="element" hotspot_x="30" version="0.2">
                             <names>
                                 <name lang="ru">Вход</name>
                                 <name lang="en">Input</name>
@@ -648,17 +1028,17 @@
                                 <name lang="es">Entrada</name>
                             </names>
                             <description>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="20"/>
-                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
-                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
-                                <text x="-2" y="5" size="12" text="I"/>
-                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="40" y="0" orientation="e"/>
+                                <line end2="none" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="20" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                <input y="-10" x="25" tagg="label" size="8" text="_" rotate="true"/>
+                                <input y="50" x="-25" size="9" text="_" rotate="true"/>
+                                <text y="5" x="-2" size="12" text="I"/>
+                                <rect width="40" y="-35" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false"/>
+                                <terminal y="0" x="40" orientation="e"/>
                             </description>
                         </definition>
                     </element>
                     <element name="et.elmt">
-                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
+                        <definition width="100" hotspot_y="50" height="110" ic="true" type="element" hotspot_x="50" version="0.2">
                             <names>
                                 <name lang="ru">И</name>
                                 <name lang="en">AND</name>
@@ -666,35 +1046,35 @@
                                 <name lang="es">Y</name>
                             </names>
                             <description>
-                                <input x="-46" y="10" size="8" rotate="true" text="_"/>
-                                <input x="-46" y="-30" size="8" rotate="true" text="_"/>
-                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="21"/>
-                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
-                                <text x="-6" y="5" size="12" text="&amp;"/>
-                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="40" y="0" orientation="e"/>
-                                <terminal x="-40" y="-20" orientation="w"/>
-                                <terminal x="-40" y="20" orientation="w"/>
+                                <input y="10" x="-46" tagg="label" size="8" text="_" rotate="true"/>
+                                <input y="-30" x="-46" size="8" text="_" rotate="true"/>
+                                <input y="-10" x="25" size="8" text="_" rotate="true"/>
+                                <line end2="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-20" x2="-21" length2="1.5" y1="-20" length1="1.5" antialias="false"/>
+                                <line end2="none" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="20" x2="-21" length2="1.5" y1="20" length1="1.5" antialias="false"/>
+                                <line end2="none" x1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="21" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                <input y="50" x="-25" size="9" text="_" rotate="true"/>
+                                <text y="5" x="-6" size="12" text="&amp;"/>
+                                <rect width="40" y="-35" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false"/>
+                                <terminal y="0" x="40" orientation="e"/>
+                                <terminal y="-20" x="-40" orientation="w"/>
+                                <terminal y="20" x="-40" orientation="w"/>
                             </description>
                         </definition>
                     </element>
                     <element name="sortie.elmt">
-                        <definition width="80" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true">
+                        <definition width="80" hotspot_y="50" height="110" ic="true" type="element" hotspot_x="50" version="0.2">
                             <names>
                                 <name lang="ru">Выход</name>
                                 <name lang="en">Output</name>
                                 <name lang="fr">Sortie</name>
                             </names>
                             <description>
-                                <input x="-46" y="-10" size="8" rotate="true" text="_"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-39" y2="0" x2="-20"/>
-                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
-                                <text x="-6.5" y="5" size="12" text="Q"/>
-                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="-40" y="0" orientation="w"/>
+                                <input y="-10" x="-46" tagg="label" size="8" text="_" rotate="true"/>
+                                <line end2="none" x1="-39" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="0" x2="-20" length2="1.5" y1="0" length1="1.5" antialias="false"/>
+                                <input y="50" x="-25" size="9" text="_" rotate="true"/>
+                                <text y="5" x="-6.5" size="12" text="Q"/>
+                                <rect width="40" y="-35" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" height="70" antialias="false"/>
+                                <terminal y="0" x="-40" orientation="w"/>
                             </description>
                         </definition>
                     </element>
@@ -710,118 +1090,118 @@
                         <name lang="fr">Macro étape</name>
                     </names>
                     <element name="etape_entree.elmt">
-                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element">
+                        <definition width="90" hotspot_y="30" height="90" type="element" hotspot_x="45" version="0.2">
                             <names>
                                 <name lang="en">Imput step</name>
                                 <name lang="fr">Etape d'entrée</name>
                             </names>
                             <description>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="39" x2="0"/>
-                                <text x="19" y="42" size="8" text="1"/>
-                                <input x="-30" y="14" size="6" rotate="true" text=""/>
-                                <rect width="26" x="-13" y="38" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-                                <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
-                                <rect width="70" x="-34" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-                                <terminal x="0" y="45" orientation="s"/>
-                                <terminal x="-12" y="40" orientation="w"/>
+                                <line end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="39" x2="0" length2="1.5" y1="20" length1="1.5" antialias="false"/>
+                                <text y="42" x="19" size="8" text="1"/>
+                                <input y="14" x="-30" tagg="label" size="6" text="" rotate="true"/>
+                                <rect width="26" y="38" x="-13" style="line-style:normal;line-weight:thin;filling:black;color:black" height="4" antialias="false"/>
+                                <input y="0" x="-20" size="10" text="E 00" rotate="true"/>
+                                <rect width="70" y="-20" x="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" height="40" antialias="false"/>
+                                <terminal y="45" x="0" orientation="s"/>
+                                <terminal y="40" x="-12" orientation="w"/>
                             </description>
                         </definition>
                     </element>
                     <element name="etape_sortie.elmt">
-                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
+                        <definition width="90" hotspot_y="30" height="60" type="element" hotspot_x="45" version="0.2">
                             <names>
                                 <name lang="en">Output step</name>
                                 <name lang="fr">Etape sortie</name>
                             </names>
                             <description>
-                                <input x="-30" y="14" size="6" rotate="true" text=""/>
-                                <input x="-20" y="0" size="10" rotate="true" text="S 00"/>
-                                <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-                                <terminal x="0" y="-25" orientation="n"/>
+                                <input y="14" x="-30" tagg="label" size="6" text="" rotate="true"/>
+                                <input y="0" x="-20" size="10" text="S 00" rotate="true"/>
+                                <rect width="70" y="-20" x="-35" style="line-style:normal;line-weight:thin;filling:none;color:black" height="40" antialias="false"/>
+                                <terminal y="-25" x="0" orientation="n"/>
                             </description>
                         </definition>
                     </element>
                     <element name="etape.elmt">
-                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element">
+                        <definition width="90" hotspot_y="30" height="90" type="element" hotspot_x="45" version="0.2">
                             <names>
                                 <name lang="en">Macro step</name>
                                 <name lang="fr">Macro étape</name>
                             </names>
                             <description>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="-35" y2="17" x2="35"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-35" y2="-18" x2="35"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.6667" x1="0" y2="38.6667" x2="0"/>
-                                <text x="18" y="42" size="8" text="1"/>
-                                <input x="-30" y="13.6667" size="6" rotate="true" text=""/>
-                                <rect width="26" x="-13" y="37.6667" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-                                <input x="-20" y="-0.333333" size="10" rotate="true" text="M 00"/>
-                                <rect width="70" x="-35" y="-20.3333" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="-12" y="39.6667" orientation="w"/>
-                                <terminal x="0" y="44.6667" orientation="s"/>
-                                <terminal x="0" y="-25" orientation="n"/>
+                                <line end2="none" x1="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="17" x2="35" length2="1.5" y1="17" length1="1.5" antialias="false"/>
+                                <line end2="none" x1="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-18" x2="35" length2="1.5" y1="-18" length1="1.5" antialias="false"/>
+                                <line end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="38.6667" x2="0" length2="1.5" y1="19.6667" length1="1.5" antialias="false"/>
+                                <text y="42" x="18" size="8" text="1"/>
+                                <input y="13.6667" x="-30" tagg="label" size="6" text="" rotate="true"/>
+                                <rect width="26" y="37.6667" x="-13" style="line-style:normal;line-weight:thin;filling:black;color:black" height="4" antialias="false"/>
+                                <input y="-0.333333" x="-20" size="10" text="M 00" rotate="true"/>
+                                <rect width="70" y="-20.3333" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" antialias="false"/>
+                                <terminal y="39.6667" x="-12" orientation="w"/>
+                                <terminal y="44.6667" x="0" orientation="s"/>
+                                <terminal y="-25" x="0" orientation="n"/>
                             </description>
                         </definition>
                     </element>
                 </category>
                 <element name="transition.elmt">
-                    <definition width="60" version="0.2" hotspot_x="15" hotspot_y="15" height="30" type="element">
+                    <definition width="60" hotspot_y="15" height="30" type="element" hotspot_x="15" version="0.2">
                         <names>
                             <name lang="en">transition</name>
                             <name lang="fr">transition</name>
                         </names>
                         <description>
-                            <input x="15" y="2" size="8" rotate="true" text="T 00"/>
-                            <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-                            <terminal x="0" y="5" orientation="s"/>
-                            <terminal x="0" y="-5" orientation="n"/>
-                            <terminal x="-12" y="0" orientation="w"/>
+                            <input y="2" x="15" tagg="label" size="8" text="T 00" rotate="true"/>
+                            <rect width="26" y="-2" x="-13" style="line-style:normal;line-weight:thin;filling:black;color:black" height="4" antialias="false"/>
+                            <terminal y="5" x="0" orientation="s"/>
+                            <terminal y="-5" x="0" orientation="n"/>
+                            <terminal y="0" x="-12" orientation="w"/>
                         </description>
                     </definition>
                 </element>
                 <element name="etape_initiale.elmt">
-                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
+                    <definition width="90" hotspot_y="30" height="60" type="element" hotspot_x="45" version="0.2">
                         <names>
                             <name lang="en">Initial step</name>
                             <name lang="fr">Etape initiale</name>
                         </names>
                         <description>
-                            <rect width="66" x="-33" y="-18" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                            <input x="-30" y="14" size="6" rotate="true" text=""/>
-                            <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
-                            <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                            <terminal x="0" y="25" orientation="s"/>
+                            <rect width="66" y="-18" x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" height="36" antialias="false"/>
+                            <input y="14" x="-30" tagg="label" size="6" text="" rotate="true"/>
+                            <input y="0" x="-20" size="10" text="E 00" rotate="true"/>
+                            <rect width="70" y="-20" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" antialias="false"/>
+                            <terminal y="25" x="0" orientation="s"/>
                         </description>
                     </definition>
                 </element>
                 <element name="etape.elmt">
-                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
+                    <definition width="90" hotspot_y="30" height="60" type="element" hotspot_x="45" version="0.2">
                         <names>
                             <name lang="en">Step</name>
                             <name lang="fr">Etape</name>
                         </names>
                         <description>
-                            <input x="-30" y="14" size="6" rotate="true" text=""/>
-                            <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
-                            <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                            <terminal x="0" y="-25" orientation="n"/>
-                            <terminal x="0" y="25" orientation="s"/>
-                            <terminal x="40" y="-10" orientation="e"/>
+                            <input y="14" x="-30" tagg="label" size="6" text="" rotate="true"/>
+                            <input y="0" x="-20" size="10" text="E 00" rotate="true"/>
+                            <rect width="70" y="-20" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" antialias="false"/>
+                            <terminal y="-25" x="0" orientation="n"/>
+                            <terminal y="25" x="0" orientation="s"/>
+                            <terminal y="-10" x="40" orientation="e"/>
                         </description>
                     </definition>
                 </element>
                 <element name="et.elmt">
-                    <definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element">
+                    <definition width="20" hotspot_y="10" height="20" type="element" hotspot_x="10" version="0.2">
                         <names>
                             <name lang="en">And</name>
                             <name lang="fr">Et</name>
                         </names>
                         <description>
-                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="2" x2="7"/>
-                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="-2" x2="7"/>
-                            <terminal x="0" y="-3" orientation="n"/>
-                            <terminal x="8" y="-2" orientation="e"/>
-                            <terminal x="8" y="2" orientation="e"/>
-                            <terminal x="0" y="3" orientation="s"/>
+                            <line end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="2" x2="7" length2="1.5" y1="2" length1="1.5" antialias="false"/>
+                            <line end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="-2" x2="7" length2="1.5" y1="-2" length1="1.5" antialias="false"/>
+                            <terminal y="-3" x="0" orientation="n"/>
+                            <terminal y="-2" x="8" orientation="e"/>
+                            <terminal y="2" x="8" orientation="e"/>
+                            <terminal y="3" x="0" orientation="s"/>
                         </description>
                     </definition>
                 </element>
@@ -836,62 +1216,62 @@
                         <name lang="fr">Actions</name>
                     </names>
                     <element name="continue.elmt">
-                        <definition width="140" version="0.2" hotspot_x="0" hotspot_y="15" height="30" type="element" orientation="dnyn">
+                        <definition width="140" hotspot_y="15" height="30" type="element" orientation="dnyn" hotspot_x="0" version="0.2">
                             <names>
                                 <name lang="fr">continue</name>
                             </names>
                             <description>
-                                <input x="25" y="2" size="8" rotate="true" text="action"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="20" y2="4" x2="20"/>
-                                <text x="8" y="3" size="8" text="="/>
-                                <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="3" y="0" orientation="w"/>
+                                <input y="2" x="25" tagg="label" size="8" text="action" rotate="true"/>
+                                <line end2="none" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="4" x2="20" length2="1.5" y1="-5" length1="1.5" antialias="false"/>
+                                <text y="3" x="8" size="8" text="="/>
+                                <rect width="125" y="-5" x="7" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" antialias="false"/>
+                                <terminal y="0" x="3" orientation="w"/>
                             </description>
                         </definition>
                     </element>
                     <element name="action.elmt">
-                        <definition width="140" version="0.2" hotspot_x="0" hotspot_y="15" height="30" type="element" ic="true" orientation="dnyn">
+                        <definition width="140" hotspot_y="15" height="30" ic="true" type="element" orientation="dnyn" hotspot_x="0" version="0.2">
                             <names>
                                 <name lang="fr">action</name>
                             </names>
                             <description>
-                                <input x="8" y="2" size="8" text="action"/>
-                                <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                                <terminal x="2" y="0" orientation="w"/>
+                                <input y="2" x="8" tagg="label" size="8" text="action"/>
+                                <rect width="125" y="-5" x="7" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" antialias="false"/>
+                                <terminal y="0" x="2" orientation="w"/>
                             </description>
                         </definition>
                     </element>
                 </category>
                 <element name="saut.elmt">
-                    <definition width="70" version="0.2" hotspot_x="25" hotspot_y="25" height="100" type="element">
+                    <definition width="70" hotspot_y="25" height="100" type="element" hotspot_x="25" version="0.2">
                         <names>
                             <name lang="en">jump</name>
                             <name lang="fr">saut</name>
                         </names>
                         <description>
-                            <circle x="-20" y="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
-                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="19" x2="0"/>
-                            <input x="-15" y="45" size="10" rotate="true" text="E 00"/>
-                            <input x="15" y="2" size="8" rotate="true" text="T 00"/>
-                            <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
-                            <terminal x="0" y="-5" orientation="n"/>
-                            <terminal x="-12" y="0" orientation="w"/>
+                            <circle y="20" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40" antialias="true"/>
+                            <line end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="19" x2="0" length2="1.5" y1="1" length1="1.5" antialias="false"/>
+                            <input y="45" x="-15" tagg="label" size="10" text="E 00" rotate="true"/>
+                            <input y="2" x="15" size="8" text="T 00" rotate="true"/>
+                            <rect width="26" y="-2" x="-13" style="line-style:normal;line-weight:thin;filling:black;color:black" height="4" antialias="false"/>
+                            <terminal y="-5" x="0" orientation="n"/>
+                            <terminal y="0" x="-12" orientation="w"/>
                         </description>
                     </definition>
                 </element>
                 <element name="etape.elmt">
-                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element">
+                    <definition width="90" hotspot_y="30" height="60" type="element" hotspot_x="45" version="0.2">
                         <names>
                             <name lang="en">Step</name>
                             <name lang="fr">Etape</name>
                         </names>
                         <description>
-                            <input x="-30" y="14" size="6" rotate="true" text=""/>
-                            <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
-                            <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-                            <terminal x="0" y="-25" orientation="n"/>
-                            <terminal x="0" y="25" orientation="s"/>
-                            <terminal x="40" y="-10" orientation="e"/>
+                            <input y="14" x="-30" tagg="label" size="6" text="" rotate="true"/>
+                            <input y="0" x="-20" size="10" text="E 00" rotate="true"/>
+                            <rect width="70" y="-20" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" antialias="false"/>
+                            <terminal y="-25" x="0" orientation="n"/>
+                            <terminal y="25" x="0" orientation="s"/>
+                            <terminal y="-10" x="40" orientation="e"/>
                         </description>
                     </definition>
                 </element>

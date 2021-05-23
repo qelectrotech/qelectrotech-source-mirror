@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Transistor PNP</name>
         <name lang="de">PNP-Transistor</name>
+        <name lang="cs">PNP-Tranzistor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

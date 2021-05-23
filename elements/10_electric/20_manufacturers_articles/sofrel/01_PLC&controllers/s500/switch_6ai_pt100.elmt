@@ -1,0 +1,26 @@
+<definition width="60" link_type="simple" height="50" type="element" hotspot_x="6" version="0.80" hotspot_y="5">
+    <uuid uuid="{462ab454-16ab-4eea-8936-68ca14656cd2}"/>
+    <names>
+        <name lang="fr">Switch 6Ai-T°-PT100</name>
+        <name lang="cs">Přepínač 6Ai-T°-PT100</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect width="50" antialias="false" height="40" rx="0" ry="0" x="0" y="0" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="5" antialias="false" height="20" rx="0" ry="0" x="27" y="6.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" antialias="false" height="20" rx="0" ry="0" x="37" y="6.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" antialias="false" height="20" rx="0" ry="0" x="17" y="6.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" antialias="false" height="10" rx="0" ry="0" x="27" y="6.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="5" antialias="false" height="10" rx="0" ry="0" x="37" y="6.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="5" antialias="false" height="10" rx="0" ry="0" x="17" y="16.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text text="ON" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="7" color="#000000" y="5.5"/>
+        <rect width="5" antialias="false" height="20" rx="0" ry="0" x="7" y="6.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="5" antialias="false" height="10" rx="0" ry="0" x="7" y="16" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text text="1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" x="6" color="#000000" y="38"/>
+        <text text="2" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" x="16" color="#000000" y="38"/>
+        <text text="3" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" x="27" color="#000000" y="38"/>
+        <text text="4" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" x="37" color="#000000" y="38"/>
+        <text text="PT100" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" x="5" color="#000000" y="22.5"/>
+    </description>
+</definition>

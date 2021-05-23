@@ -111,19 +111,19 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 */
 void PartLine::toXmlPriv(QDomElement& xml_element) const
 {
-    QPointF p1(sceneP1());
-    QPointF p2(sceneP2());
+	QPointF p1(sceneP1());
+	QPointF p2(sceneP2());
 
-    xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
-    xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
-    xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
-    xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
-    xml_element.setAttribute("end1", Qet::endTypeToString(first_end));
-    xml_element.setAttribute("length1", QString("%1").arg(first_length));
-    xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
-    xml_element.setAttribute("length2", QString("%1").arg(second_length));
+	xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
+	xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
+	xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
+	xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
+	xml_element.setAttribute("end1", Qet::endTypeToString(first_end));
+	xml_element.setAttribute("length1", QString("%1").arg(first_length));
+	xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
+	xml_element.setAttribute("length2", QString("%1").arg(second_length));
 
-    stylesToXml(xml_element);
+	stylesToXml(xml_element);
 }
 
 /**

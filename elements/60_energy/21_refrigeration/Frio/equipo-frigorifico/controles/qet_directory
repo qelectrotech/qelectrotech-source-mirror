@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de">Steuerung</name>
         <name lang="es">Controles</name>
         <name lang="ca">Controls</name>
         <name lang="en">Monitoring elements</name>

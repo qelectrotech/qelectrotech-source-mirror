@@ -10,6 +10,7 @@
         <name lang="ar">مُوزّع</name>
         <name lang="en">distributor</name>
         <name lang="fr">Répartiteur</name>
+        <name lang="hu">Elosztó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

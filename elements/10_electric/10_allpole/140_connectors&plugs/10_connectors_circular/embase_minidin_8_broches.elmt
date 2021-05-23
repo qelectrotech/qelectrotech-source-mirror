@@ -10,6 +10,7 @@
         <name lang="en">Base 8 pin mini-DIN</name>
         <name lang="es">Base de 8 pines mini DIN</name>
         <name lang="fr">Embase mini-DIN 8 broches</name>
+        <name lang="hu">8 tűs mini-DIN csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

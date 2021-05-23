@@ -2,13 +2,14 @@
     <uuid uuid="{cbc10752-cc53-4dc5-81d3-7e0d22c9609b}"/>
     <names>
         <name lang="fr">SCH_23158</name>
+        <name lang="cs">SCH_23158</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>
         <kindInformation show="1" name="state">NO</kindInformation>
         <kindInformation show="1" name="type">power</kindInformation>
     </kindInformations>
-    <informations>Baboune41&#xd;
+    <informations>Baboune41
 </informations>
     <description>
         <rect y="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="80" rx="0" height="200" x="0" antialias="false" ry="0"/>

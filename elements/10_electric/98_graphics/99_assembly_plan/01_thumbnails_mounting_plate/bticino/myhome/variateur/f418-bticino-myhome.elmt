@@ -8,6 +8,7 @@
         <name lang="it">F418 - Dimmer per LED</name>
         <name lang="es">F418 - Dimmer para LED</name>
         <name lang="de">F418 - Dimmer für LED</name>
+        <name lang="cs">F418 -Stmívač pro LED</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Dimmer</elementInformation>

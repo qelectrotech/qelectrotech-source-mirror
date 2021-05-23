@@ -1,0 +1,90 @@
+<definition height="210" version="0.80" hotspot_x="5" width="90" type="element" link_type="simple" hotspot_y="205">
+    <uuid uuid="{0111cda3-0565-47fb-a6b4-703e384c2798}"/>
+    <names>
+        <name lang="de">STV-0160.02</name>
+        <name lang="en">STV-0160.02</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"/>
+        <elementInformation show="1" name="machine_manufacturer_reference"/>
+        <elementInformation show="1" name="description">KNX BUS Power Supply</elementInformation>
+        <elementInformation show="1" name="designation">STV-0160.02</elementInformation>
+        <elementInformation show="1" name="supplier"/>
+        <elementInformation show="1" name="manufacturer">MDT</elementInformation>
+        <elementInformation show="1" name="plant"/>
+        <elementInformation show="1" name="unity"/>
+        <elementInformation show="1" name="comment"/>
+        <elementInformation show="1" name="label">-SV</elementInformation>
+    </elementInformations>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <text text="U2" rotation="0" x="66" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-90"/>
+        <arc height="5" start="2.375" x="35" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="5" angle="177.563" y="-106" antialias="true"/>
+        <arc height="5" start="179.438" x="40" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="5" angle="181.063" y="-106" antialias="true"/>
+        <rect ry="0" height="200" x="5.68434e-14" style="line-style:normal;line-weight:normal;filling:white;color:black" width="80" y="-200" rx="0" antialias="false"/>
+        <text text="U1 BUS" rotation="0" x="62" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-100"/>
+        <text text="50Hz" rotation="0" x="14" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-99"/>
+        <text text="160mA" rotation="0" x="37" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-83"/>
+        <text text="230VAC" rotation="0" x="13" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-103"/>
+        <line x2="44" y1="-94" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-94" end1="none" x1="50" length2="1.5" antialias="false"/>
+        <line x2="55" y1="-101" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-105" end1="none" x1="55" length2="1.5" antialias="false"/>
+        <line x2="57" y1="-101" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-105" end1="none" x1="57" length2="1.5" antialias="false"/>
+        <text text="CE" rotation="0" x="60" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-70"/>
+        <line x2="33" y1="-103" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-103" end1="none" x1="27" length2="1.5" antialias="false"/>
+        <line x2="56" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-106" end1="none" x1="56" length2="1.5" antialias="false"/>
+        <line x2="44" y1="-92" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-92" end1="none" x1="50" length2="1.5" antialias="false"/>
+        <line x2="53" y1="-88" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-108" end1="none" x1="33" length2="1.5" antialias="false"/>
+        <text text="-5...+45°C" rotation="0" x="34" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-109"/>
+        <text text="30VDC" rotation="0" x="62" color="#00008b" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-103"/>
+        <text text="I>max" rotation="0" x="7" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-68"/>
+        <rect ry="0" height="15" x="12" style="line-style:normal;line-weight:normal;filling:HTMLGreenLimeGreen;color:black" width="56" y="-195" rx="0" antialias="false"/>
+        <circle x="35" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-193" diameter="10" antialias="false"/>
+        <circle x="60" style="line-style:normal;line-weight:normal;filling:HTMLBlueDarkBlue;color:HTMLBlueDarkBlue" y="-134" diameter="16" antialias="false"/>
+        <text text="Reset" rotation="0" x="62" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-124"/>
+        <circle x="54" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-193" diameter="10" antialias="false"/>
+        <line x2="45" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="35" length2="1.5" antialias="false"/>
+        <text text="KNX" rotation="0" x="8" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-53"/>
+        <line x2="64" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="54" length2="1.5" antialias="false"/>
+        <text text="MDT" rotation="0" x="54" color="#00008b" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-57"/>
+        <text text="www.MDT.de" rotation="0" x="55" color="#00008b" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-54"/>
+        <circle x="16" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-193" diameter="10" antialias="false"/>
+        <line x2="26" y1="-188" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y2="-188" end1="none" x1="16" length2="1.5" antialias="false"/>
+        <rect ry="0" height="15" x="18" style="line-style:normal;line-weight:thin;filling:black;color:black" width="10" y="-16" rx="0" antialias="false"/>
+        <rect ry="0" height="20" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" y="-50" rx="0" antialias="false"/>
+        <rect ry="0" height="15" x="28" style="line-style:normal;line-weight:thin;filling:red;color:red" width="10" y="-16" rx="0" antialias="false"/>
+        <rect ry="0" height="20" x="5.68434e-14" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" y="-170" rx="0" antialias="false"/>
+        <text text="RUN" rotation="0" x="10" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-84"/>
+        <line x2="68" y1="-139" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-150" end1="none" x1="68" length2="1.5" antialias="false"/>
+        <line x2="12" y1="-139" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-139" end1="none" x1="68" length2="1.5" antialias="false"/>
+        <circle x="66" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-114" diameter="4" antialias="false"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:red;color:red" y="-78" diameter="4" antialias="false"/>
+        <text text="L" rotation="0" x="20" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-142"/>
+        <circle x="13" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-94" diameter="4" antialias="false"/>
+        <rect ry="0" height="6" x="36" style="line-style:normal;line-weight:normal;filling:red;color:red" width="3" y="-14" rx="0" antialias="false"/>
+        <text text="STV-0160.02" rotation="0" x="2" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-130"/>
+        <text text="Bus power supply" rotation="0" x="2" color="#00008b" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-123"/>
+        <arc height="5" start="2.375" x="9" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="11" angle="177.563" y="-61" antialias="true"/>
+        <text text="N" rotation="0" x="38" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-142"/>
+        <text text="PE" rotation="0" x="56" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-142"/>
+        <rect ry="0" height="20" x="33" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="20" y="-108" rx="0" antialias="false"/>
+        <rect ry="0" height="10" x="53" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" width="6" y="-108" rx="0" antialias="false"/>
+        <line x2="12" y1="-139" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-150" end1="none" x1="12" length2="1.5" antialias="false"/>
+        <line x2="61" y1="-103" style="line-style:normal;line-weight:normal;filling:none;color:HTMLBlueDarkBlue" end2="none" length1="1.5" y2="-103" end1="none" x1="59" length2="1.5" antialias="false"/>
+        <dynamic_text frame="false" rotation="0" x="0" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" y="-172" z="126" uuid="{4a09f995-3be6-471f-9a1c-8daa331b05bb}" text_from="CompositeText" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>-SV</text>
+            <info_name>plant</info_name>
+            <composite_text>%{plant}%{label}</composite_text>
+        </dynamic_text>
+        <terminal name="L" x="21" orientation="n" y="-193" uuid="{ea630bff-01b5-4a4c-a095-220452da0adc}"/>
+        <terminal name="KNX_-" x="23" orientation="s" y="-2" uuid="{f9194d95-7297-4f0b-8a3b-f8468d459b86}"/>
+        <terminal name="KNX_+" x="33" orientation="s" y="-2" uuid="{f215a24f-4476-46ec-a5e6-42f278f17346}"/>
+        <terminal name="PE" x="59" orientation="n" y="-193" uuid="{09773ea2-4214-4fb6-8daf-194e174ec2dc}"/>
+        <terminal name="N" x="40" orientation="n" y="-193" uuid="{12c8188c-5232-4644-a533-c886c59e319d}"/>
+    </description>
+</definition>

@@ -3,6 +3,7 @@
     <names>
         <name lang="es">Contacto de disyuntor termico magnetico NA</name>
         <name lang="fr">Contact NO disjoncteur magnéto-thermique GV</name>
+        <name lang="cs">Kontakt (NO) jističe</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">simple</kindInformation>

@@ -6,6 +6,8 @@ extrémités sorties pour chaque enroulement de
 phase</name>
         <name lang="de">Drehstrom-Synchrongenerator, beide Enden
 jeder Wicklung herausgeführt</name>
+        <name lang="cs">Trojfázový synchronní generátor
+s vyvedenými oběma konci vinutí a s cizím buzením</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

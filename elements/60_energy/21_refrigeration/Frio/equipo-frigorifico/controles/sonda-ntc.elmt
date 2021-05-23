@@ -1,0 +1,15 @@
+<definition hotspot_y="4" link_type="simple" height="10" width="30" type="element" version="0.80" hotspot_x="12">
+    <names>
+        <name lang="de">Sonde, NTC</name>
+        <name lang="fr">Sonde NTC</name>
+        <name lang="ca">Sonda NTC</name>
+        <name lang="es">Sonda NTC</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect x="-7" y="-2" antialias="false" height="4" width="14" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="6" y="-1" antialias="false" height="2" width="4" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

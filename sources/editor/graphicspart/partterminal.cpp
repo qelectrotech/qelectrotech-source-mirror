@@ -111,8 +111,8 @@ void PartTerminal::paint(
 	painter -> save();
 
 	// annulation des renderhints
-	painter -> setRenderHint(QPainter::Antialiasing,		  false);
-	painter -> setRenderHint(QPainter::TextAntialiasing,	  false);
+	painter -> setRenderHint(QPainter::Antialiasing,          false);
+	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	QPen t;

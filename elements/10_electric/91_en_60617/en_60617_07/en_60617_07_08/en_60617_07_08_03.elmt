@@ -5,6 +5,8 @@
 manœuvre positive d'ouverture</name>
         <name lang="de">Endschalter, zwei Richtungen, getrennte
 Stromkreise</name>
+        <name lang="cs">Polohový spínač, ovládaný v obou směrech
+se dvěma oddělenými obvody</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

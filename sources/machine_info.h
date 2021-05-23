@@ -18,32 +18,58 @@
 #ifndef MACHINE_INFO_H
 #define MACHINE_INFO_H
 
-#include <QObject>
 #include <QThread>
+#include <QMutex>
 
 /**
-	@brief The Machine_info class
+	@brief The MachineInfo class
 	This class hold information from your PC.
 */
-class Machine_info : public QObject
+class MachineInfo
 {
-	Q_OBJECT
-public:
-	explicit Machine_info(QObject *parent = nullptr);
-	int32_t i_max_screen_width();
-	int32_t i_max_screen_height();
-	QString compilation_info();
-	void send_info_to_debug();
+		static MachineInfo *m_instance;
+	public:
+		static MachineInfo *instance()
+		{
+			static QMutex mutex;
+			if (!m_instance)
+			{
+				mutex.lock();
+				if (!m_instance) {
+					m_instance = new MachineInfo();
+				}
+				mutex.unlock();
+			}
+
+			return m_instance;
+		}
+
+		static void dropInstance()
+		{
+			static QMutex mutex;
+			if (m_instance) {
+				mutex.lock();
+				delete m_instance;
+				m_instance = nullptr;
+				mutex.unlock();
+			}
+		}
+
+		int32_t i_max_screen_width();
+		int32_t i_max_screen_height();
+		QString compilation_info();
+		void send_info_to_debug();
 	~Machine_info();
 
-signals:
 
-private:
-	void init_get_Screen_info();
-	void init_get_cpu_info();
-	void init_get_cpu_info_linux();
-	void init_get_cpu_info_winnt();
-	void init_get_cpu_info_macos();
+	private:
+		MachineInfo();
+		void init_get_Screen_info();
+		void init_get_cpu_info();
+		void init_get_cpu_info_linux();
+		void init_get_cpu_info_winnt();
+		void init_get_cpu_info_macos();
+
 	struct Pc
 	{
 		struct Screen

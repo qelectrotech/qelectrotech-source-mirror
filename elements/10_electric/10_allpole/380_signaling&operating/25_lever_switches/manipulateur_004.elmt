@@ -8,13 +8,13 @@
         <name lang="it">Interr. a leva, 4 poli 4 direzioni</name>
         <name lang="fr">Manipulateur</name>
         <name lang="pl">Manipulator czterokierunkowy z powrotem samoczynnym</name>
-        <name lang="cs">Manipulátor</name>
+        <name lang="cs">Joystick 4 směry</name>
         <name lang="nl">Manipulator</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-12" y2="0" x2="57"/>

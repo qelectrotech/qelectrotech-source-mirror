@@ -3,13 +3,14 @@
     <names>
         <name lang="fr">omron ej1nhfuanfl2</name>
         <name lang="en">omron ej1nhfuanfl2</name>
+        <name lang="cs">omron ej1nhfuanfl2</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: DXF converter&#xd;
-     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version:V3.0 DB&#xd;
-&#xd;
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
 </informations>
     <description>
         <dynamic_text x="6" rotation="90" text_width="-1" y="0" uuid="{1db3cec0-0d1e-4eae-aadf-b9b783864272}" font_size="2" z="1" frame="false" text_from="ElementInfo">

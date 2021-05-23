@@ -5,6 +5,8 @@
 de cathode froide ou des deux simultanément</name>
         <name lang="de">Elektrode, die als Anode und/oder als kalte
 Kathode dient</name>
+        <name lang="cs">Kombinovaná elektroda pracující jako
+anoda a/nebo jako studená katoda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

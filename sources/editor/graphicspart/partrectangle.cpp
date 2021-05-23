@@ -91,26 +91,26 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 */
 void PartRectangle::toXmlPriv(QDomElement& xml_element) const
 {
-    QPointF top_left(sceneTopLeft());
-    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-    xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
-    xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
+	QPointF top_left(sceneTopLeft());
+	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
+	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
 
-    QRectF rect = m_rect.normalized();
-    qreal x = m_xRadius;
-    if (x > rect.width()/2) {
-        x = rect.width()/2;
-    }
-    qreal y = m_yRadius;
-    if (y > rect.height()/2) {
-        y = rect.height()/2;
-    }
+	QRectF rect = m_rect.normalized();
+	qreal x = m_xRadius;
+	if (x > rect.width()/2) {
+		x = rect.width()/2;
+	}
+	qreal y = m_yRadius;
+	if (y > rect.height()/2) {
+		y = rect.height()/2;
+	}
 
-    xml_element.setAttribute("rx", QString::number(m_xRadius));
-    xml_element.setAttribute("ry", QString::number(m_yRadius));
+	xml_element.setAttribute("rx", QString::number(m_xRadius));
+	xml_element.setAttribute("ry", QString::number(m_yRadius));
 
-    stylesToXml(xml_element);
+	stylesToXml(xml_element);
 }
 
 /**
@@ -566,9 +566,9 @@ void PartRectangle::addHandler()
 		for (QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			QColor color;
-			if(m_resize_mode == 1)	   {color = Qt::blue;}
+			if(m_resize_mode == 1)       {color = Qt::blue;}
 			else if (m_resize_mode == 2) {color = Qt::darkGreen;}
-			else						 {color = Qt::magenta;}
+			else                         {color = Qt::magenta;}
 
 			handler->setColor(color);
 			scene()->addItem(handler);

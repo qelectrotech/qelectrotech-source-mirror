@@ -4,6 +4,7 @@
         <name lang="fr">Contact à deux directions avec chevauchement</name>
         <name lang="de">Wechsler ohne Unterbrechung,
 Folgeumschaltglied</name>
+        <name lang="cs">Kontakt přepínací bez přerušení obvodu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

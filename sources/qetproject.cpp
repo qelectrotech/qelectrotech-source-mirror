@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -49,7 +49,7 @@ static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 	@param parent
 */
 QETProject::QETProject(QObject *parent) :
-	QObject			  (parent),
+	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this)
 {
@@ -66,7 +66,7 @@ QETProject::QETProject(QObject *parent) :
 	@param parent : parent QObject
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
-	QObject			  (parent),
+	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this)
 {
@@ -87,7 +87,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	@param parent : parent QObject
 */
 QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
-	QObject			  (parent),
+	QObject              (parent),
 	m_titleblocks_collection(this),
 	m_data_base(this, this)
 {
@@ -161,7 +161,7 @@ void QETProject::init()
 	writeBackup();
 
 	QSettings settings;
-	int autosave_interval = settings.value("diagrameditor/autosave-interval", 0).toInt();
+	int autosave_interval = settings.value(QStringLiteral("diagrameditor/autosave-interval"), 0).toInt();
 	if(autosave_interval > 0)
 	{
 		int ms = autosave_interval*60*1000;
@@ -1282,13 +1282,13 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	m_state = ProjectParsingRunning;
 
 	//The roots of the xml document must be a "project" element
-	if (root_elmt.tagName() == "project")
+	if (root_elmt.tagName() == QLatin1String("project"))
 	{
 		//Normal opening mode
-		if (root_elmt.hasAttribute("version"))
+		if (root_elmt.hasAttribute(QStringLiteral("version")))
 		{
 			bool conv_ok;
-			m_project_qet_version = root_elmt.attribute("version").toDouble(&conv_ok);
+			m_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
 #if TODO_LIST
 #pragma message("@TODO use of version convert")
 #endif
@@ -1334,8 +1334,10 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 					return;
 				}
 			}
+				}
+			}
 		}
-		setTitle(root_elmt.attribute("title"));
+		setTitle(root_elmt.attribute(QStringLiteral("title")));
 	}
 	else
 	{
@@ -1385,7 +1387,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 	}
 
 	//Search the diagrams in the project
-	QDomNodeList diagram_nodes = xml_project.elementsByTagName("diagram");
+	QDomNodeList diagram_nodes = xml_project.elementsByTagName(QStringLiteral("diagram"));
 
 	if(dlgWaiting)
 		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
@@ -1404,7 +1406,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 
 			int diagram_order = -1;
 			if (!QET::attributeIsAnInteger(diagram_xml_element,
-							   "order",
+							   QStringLiteral("order"),
 							   &diagram_order))
 				diagram_order = 500000;
 
@@ -1447,7 +1449,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 {
 		//Get the embedded elements collection of the project
-	QDomNodeList collection_roots = xml_project.elementsByTagName("collection");
+	QDomNodeList collection_roots = xml_project.elementsByTagName(QStringLiteral("collection"));
 	QDomElement collection_root;
 
 	if (!collection_roots.isEmpty())
@@ -1472,7 +1474,7 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 */
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
-	foreach (QDomElement e, QET::findInDomElement(xml_project.documentElement(), "properties"))
+	for (auto dom_elmt : QET::findInDomElement(xml_project.documentElement(), QStringLiteral("properties")))
 		m_project_properties.fromXml(e);
 }
 
@@ -1485,17 +1487,17 @@ void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 {
 		// Find xml element where is stored properties for new diagram
-	QDomNodeList newdiagrams_nodes = xml_project.elementsByTagName("newdiagrams");
+	QDomNodeList newdiagrams_nodes = xml_project.elementsByTagName(QStringLiteral("newdiagrams"));
 	if (newdiagrams_nodes.isEmpty()) return;
 
 	QDomElement newdiagrams_elmt = newdiagrams_nodes.at(0).toElement();
 
 		// By default, use value find in the global conf of QElectroTech
-	default_border_properties_	   = BorderProperties::	defaultProperties();
+	default_border_properties_	   = BorderProperties::    defaultProperties();
 	default_titleblock_properties_ = TitleBlockProperties::defaultProperties();
 	default_conductor_properties_  = ConductorProperties:: defaultProperties();
-	m_default_report_properties	   = ReportProperties::	defaultProperties();
-	m_default_xref_properties	   = XRefProperties::	  defaultProperties();
+	m_default_report_properties	   = ReportProperties::    defaultProperties();
+	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
 	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums;
@@ -1505,21 +1507,21 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		QDomElement child_elmt = child.toElement();
 		if (child_elmt.isNull()) continue;
 
-		if (child_elmt.tagName() == "border")
+		if (child_elmt.tagName() == QLatin1String("border"))
 			border_elmt = child_elmt;
-		else if (child_elmt.tagName() == "inset")
+		else if (child_elmt.tagName() == QLatin1String("inset"))
 			titleblock_elmt = child_elmt;
-		else if (child_elmt.tagName() == "conductors")
+		else if (child_elmt.tagName() == QLatin1String("conductors"))
 			conductors_elmt = child_elmt;
-		else if (child_elmt.tagName() == "report")
+		else if (child_elmt.tagName() == QLatin1String("report"))
 			report_elmt = child_elmt;
-		else if (child_elmt.tagName() == "xrefs")
+		else if (child_elmt.tagName() == QLatin1String("xrefs"))
 			xref_elmt = child_elmt;
-		else if (child_elmt.tagName() == "conductors_autonums")
+		else if (child_elmt.tagName() == QLatin1String("conductors_autonums"))
 			conds_autonums = child_elmt;
-		else if (child_elmt.tagName()== "folio_autonums")
+		else if (child_elmt.tagName()== QLatin1String("folio_autonums"))
 			folio_autonums = child_elmt;
-		else if (child_elmt.tagName()== "element_autonums")
+		else if (child_elmt.tagName()== QLatin1String("element_autonums"))
 			element_autonums = child_elmt;
 	}
 
@@ -1527,15 +1529,15 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (!border_elmt.isNull())	   default_border_properties_.fromXml(border_elmt);
 	if (!titleblock_elmt.isNull()) default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
-	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute("label"));
+	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute(QStringLiteral("label")));
 	if (!xref_elmt.isNull())
 	{
-		foreach(QDomElement elmt, QET::findInDomElement(xref_elmt, "xref"))
+		for (auto elmt : QET::findInDomElement(xref_elmt, QStringLiteral("xref")))
 		{
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
 			QString type;
-            if (QETXML::propertyString(elmt, "type", &type) == QETXML::PropertyFlags::Success)
+            if (QETXML::propertyString(elmt, QStringLiteral("type"), &type) == QETXML::PropertyFlags::Success)
 				m_default_xref_properties.insert(type, xrp);
 			else
 				qDebug() << "xref Property was not added to m_default_xref_properties.";
@@ -1543,9 +1545,9 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	}
 	if (!conds_autonums.isNull())
 	{
-		m_current_conductor_autonum = conds_autonums.attribute("current_autonum");
-		m_freeze_new_conductors = conds_autonums.attribute("freeze_new_conductors") == "true";
-		foreach (QDomElement elmt, QET::findInDomElement(conds_autonums, "conductor_autonum"))
+		m_current_conductor_autonum = conds_autonums.attribute(QStringLiteral("current_autonum"));
+		m_freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
+		for (auto elmt : QET::findInDomElement(conds_autonums, QStringLiteral("conductor_autonum")))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
@@ -1554,22 +1556,22 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	}
 	if (!folio_autonums.isNull())
 	{
-		foreach (QDomElement elmt, QET::findInDomElement(folio_autonums, "folio_autonum"))
+		for (auto elmt : QET::findInDomElement(folio_autonums, QStringLiteral("folio_autonum")))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
-			m_folio_autonum.insert(elmt.attribute("title"), nc);
+			m_folio_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
 		}
 	}
 	if (!element_autonums.isNull())
 	{
-		m_current_element_autonum = element_autonums.attribute("current_autonum");
-		m_freeze_new_elements = element_autonums.attribute("freeze_new_elements") == "true";
-		foreach (QDomElement elmt, QET::findInDomElement(element_autonums, "element_autonum"))
+		m_current_element_autonum = element_autonums.attribute(QStringLiteral("current_autonum"));
+		m_freeze_new_elements = element_autonums.attribute(QStringLiteral("freeze_new_elements")) == QLatin1String("true");
+		for (auto elmt : QET::findInDomElement(element_autonums, QStringLiteral("element_autonum")))
 		{
 			NumerotationContext nc;
 			nc.fromXml(elmt);
-			m_element_autonum.insert(elmt.attribute("title"), nc);
+			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
 		}
 	}
 }
@@ -1783,7 +1785,9 @@ void QETProject::writeBackup()
 #		if TODO_LIST
 #			pragma message("@TODO remove code for QT 6 or later")
 #		endif
-	qDebug()<<"Help code for QT 6 or later";
+	qDebug() << "Help code for QT 6 or later"
+			 << "QtConcurrent::run its backwards now...function, object, args";
+#	endif
 #	endif
 #endif
 }
@@ -1827,8 +1831,8 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 bool QETProject::projectWasModified()
 {
 
-	if ( projectOptionsWereModified()	||
-		 !m_undo_stack -> isClean()	   ||
+	if ( projectOptionsWereModified()    ||
+		 !m_undo_stack -> isClean()       ||
 		 m_titleblocks_collection.templates().count() )
 		return(true);
 

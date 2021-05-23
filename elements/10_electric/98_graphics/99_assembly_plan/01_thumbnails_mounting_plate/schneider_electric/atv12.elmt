@@ -2,6 +2,7 @@
     <uuid uuid="{c7067760-9507-498e-8f93-51e9197026ad}"/>
     <names>
         <name lang="fr">ATV12</name>
+        <name lang="cs">ATV12</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

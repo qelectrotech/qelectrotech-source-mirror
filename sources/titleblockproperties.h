@@ -53,18 +53,18 @@ class TitleBlockProperties: public PropertiesInterface {
 	QDate finalDate() const ;
 	
 	// attributes
-	QString title;			///< Folio title (displayed by the default template)
-	QString author;		   ///< Author of the diagram/folio (displayed by the default template)
-	QDate date;			   ///< Date (displayed by the default template)
-	QString filename;		 ///< Filename (displayed by the default template)
-	QString plant;		  ///< Plant (displayed by the default template)
-	QString locmach;			  ///< Location(displayed by the default template)
-	QString indexrev;		 ///< Revision Index (displayed by the default template)
-	QString version;		  ///< Version (displayed by the default template)
-	QString folio;			///< Folio information (displayed by the default template)
+	QString title;            ///< Folio title (displayed by the default template)
+	QString author;           ///< Author of the diagram/folio (displayed by the default template)
+	QDate date;               ///< Date (displayed by the default template)
+	QString filename;         ///< Filename (displayed by the default template)
+	QString plant;          ///< Plant (displayed by the default template)
+	QString locmach;              ///< Location(displayed by the default template)
+	QString indexrev;         ///< Revision Index (displayed by the default template)
+	QString version;          ///< Version (displayed by the default template)
+	QString folio;            ///< Folio information (displayed by the default template)
 	QString auto_page_num;
 	DateManagement useDate{UseDateValue};   ///< Wheter to use the date attribute
-	QString template_name;	///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
+	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
 	Qt::Edge display_at{Qt::Edge::BottomEdge};	   ///< Edge to display the titleblock
 	QET::QetCollection collection{QET::QetCollection::Common}; ///<Specify the location of the title block

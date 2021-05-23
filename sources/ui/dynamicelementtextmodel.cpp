@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,24 +16,27 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextmodel.h"
-#include "dynamicelementtextitem.h"
-#include <QStandardItem>
-#include <QHash>
-#include <QColorDialog>
-#include <QModelIndex>
-#include <QComboBox>
-#include <QUndoCommand>
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetapp.h"
-#include "element.h"
-#include "compositetexteditdialog.h"
-#include "terminal.h"
-#include "conductor.h"
-#include "elementtextitemgroup.h"
-#include "qeticons.h"
-#include "diagram.h"
-#include "addelementtextcommand.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qeticons.h"
+#include "../qetinformation.h"
+#include "../undocommand/addelementtextcommand.h"
 #include "alignmenttextdialog.h"
+#include "compositetexteditdialog.h"
+
+#include <QColorDialog>
+#include <QComboBox>
+#include <QHash>
+#include <QModelIndex>
+#include <QStandardItem>
+#include <QUndoCommand>
 
 static int src_txt_row   = 0;
 static int usr_txt_row   = 1;
@@ -47,7 +50,8 @@ static int width_txt_row = 8;
 static int x_txt_row     = 9;
 static int y_txt_row     = 10;
 static int rot_txt_row   = 11;
-static int align_txt_row = 12;
+static int keep_rot_row  = 12;
+static int align_txt_row = 13;
 
 static int align_grp_row          = 0;
 static int x_grp_row              = 1;
@@ -175,7 +179,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 
 	QStandardItem *infoa =
 			new QStandardItem(
-				QETApp::elementTranslatedInfoKey(
+				QETInformation::translatedInfoKey(
 					deti->infoName()));
 	infoa->setFlags(Qt::ItemIsSelectable
 			| Qt::ItemIsEnabled
@@ -333,10 +337,24 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 				| Qt::ItemIsEnabled
 				| Qt::ItemIsEditable);
 		
-		qsi_list.clear();;
+		qsi_list.clear();
 		qsi_list << rot << rot_a;
 		qsi->appendRow(qsi_list);
-		
+
+			//keep visual rotation
+		auto keep_rotation = new QStandardItem(tr("Conserver la rotation visuel"));
+		keep_rotation->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		auto keep_rotation_a = new QStandardItem;
+		keep_rotation_a->setCheckable(true);
+		keep_rotation_a->setCheckState(deti->keepVisualRotation() ? Qt::Checked : Qt::Unchecked);
+		keep_rotation_a->setData(DynamicElementTextModel::keepVisualRotation, Qt::UserRole+1);
+		keep_rotation_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+
+		qsi_list.clear();
+		qsi_list << keep_rotation << keep_rotation_a;
+		qsi->appendRow(qsi_list);
+
 			//Alignment
 		QStandardItem *alignment = new QStandardItem(tr("Alignement"));
 		alignment->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
@@ -596,6 +614,16 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "rotation", QVariant(deti->rotation()), QVariant(rot), undo);
 			quc->setAnimated(true, false);
 			quc->setText(tr("Pivoter un texte d'élément"));
+		}
+	}
+
+	if (text_qsi->child(keep_rot_row,1))
+	{
+		bool keep_rot = text_qsi->child(keep_rot_row, 1)->checkState() == Qt::Checked? true : false;
+		if (keep_rot != deti->keepVisualRotation())
+		{
+			auto qpuc = new QPropertyUndoCommand(deti, "keepVisualRotation", QVariant(deti->keepVisualRotation()), QVariant(keep_rot), undo);
+			qpuc->setText(tr("Modifier le maintient de la rotation d'un texte d'élément"));
 		}
 	}
 		
@@ -1446,7 +1474,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			qsi->setData(deti->toPlainText(), Qt::DisplayRole);
 			QString info_name = deti->infoName();
 			qsi->child(info_txt_row,1)->setData(info_name, Qt::UserRole+2);
-			qsi->child(info_txt_row,1)->setData(QETApp::elementTranslatedInfoKey(info_name), Qt::DisplayRole);
+			qsi->child(info_txt_row,1)->setData(QETInformation::translatedInfoKey(info_name), Qt::DisplayRole);
 			break;
 		}
 		case compositeText:
@@ -1599,7 +1627,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				//the value of the combo box are always alphabetically sorted
 			QMap <QString, QString> info_map;
 			for(const QString& str : availableInfo(deti)) {
-				info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
+				info_map.insert(QETInformation::translatedInfoKey(str), str);
 			}
 			
 			QComboBox *qcb = new QComboBox(parent);
@@ -1901,22 +1929,7 @@ QStringList DynamicTextItemDelegate::availableInfo(
 	
 	if(deti->parentElement()->linkType() & Element::AllReport) //Special treatment for text owned by a folio report
 	{
-		qstrl << "label";
-		
-		if(!deti->m_watched_conductor.isNull())
-		{
-			Conductor *cond = deti->m_watched_conductor.data();
-			if (!cond->properties().m_function.isEmpty())
-				qstrl << "function";
-			if(!cond->properties().m_tension_protocol.isEmpty())
-				qstrl << "tension_protocol";
-			if(!cond->properties().m_wire_color.isEmpty())
-				qstrl << "conductor_color";
-			if(!cond->properties().m_wire_section.isEmpty())
-				qstrl << "conductor_section";
-		}
-		 
-		 return qstrl;
+		return QETInformation::folioReportInfoKeys();
 	}
 	else
 	{
@@ -1925,7 +1938,7 @@ QStringList DynamicTextItemDelegate::availableInfo(
 			return qstrl;
 		
 		
-		QStringList info_list = QETApp::elementInfoKeys();
+		QStringList info_list = QETInformation::elementInfoKeys();
 		info_list.removeAll("formula"); //No need to have formula
 		DiagramContext dc = elmt->elementInformations();
 		

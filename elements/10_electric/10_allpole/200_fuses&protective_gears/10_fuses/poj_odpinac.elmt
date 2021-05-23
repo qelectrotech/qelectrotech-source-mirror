@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Porte fusible</name>
         <name lang="cs">Pojistkový odpínač</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló 1 pólusú</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer"></elementInformation>

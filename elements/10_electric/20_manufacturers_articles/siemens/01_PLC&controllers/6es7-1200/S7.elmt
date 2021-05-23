@@ -2,6 +2,7 @@
     <uuid uuid="{cb042bd1-8e93-4e7b-8d0f-e57d5ff12855}"/>
     <names>
         <name lang="fr">S7-1200 1215C DC/DC/RLY COULEUR</name>
+        <name lang="cs">S7-1200 1215C DC/DC/RLY COLOR</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description"></elementInformation>

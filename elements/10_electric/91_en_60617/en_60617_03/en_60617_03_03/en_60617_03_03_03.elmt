@@ -5,6 +5,8 @@
 Fiche</name>
         <name lang="de">Pol eines Steckers
 Stecker</name>
+        <name lang="cs">Kolíkový kontakt
+Vidlice</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

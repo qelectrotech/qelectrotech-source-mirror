@@ -2,6 +2,7 @@
     <uuid uuid="{9527f307-9bab-4d23-87c3-4dde383da0b1}"/>
     <names>
         <name lang="fr">Bât Ext tétra</name>
+        <name lang="cs">Externí budova 3f</name>
     </names>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{31a9eb40-a41d-49ab-923e-c77d9462e3dc}"/>
     <names>
         <name lang="fr">PHmétre Prominent Dulcometer D1C</name>
+        <name lang="cs">Řídící jednotka Prominent Dulcometer D1C</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">coil</kindInformation>

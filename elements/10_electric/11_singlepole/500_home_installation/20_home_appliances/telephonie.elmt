@@ -2,6 +2,7 @@
     <uuid uuid="{d05d8591-ccbb-44cb-9e0c-0216f872fbbd}"/>
     <names>
         <name lang="fr">Téléphonie</name>
+        <name lang="cs">Telefon</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

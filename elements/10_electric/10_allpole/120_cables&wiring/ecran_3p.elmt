@@ -4,7 +4,7 @@
         <name lang="nl">Scherm</name>
         <name lang="el">Πλέγμα</name>
         <name lang="de">Schirm</name>
-        <name lang="cs">Obrazovka</name>
+        <name lang="cs">Stínění</name>
         <name lang="pl">Ekran 3</name>
         <name lang="it">Schermo</name>
         <name lang="ar">شاشة</name>
@@ -12,6 +12,7 @@
         <name lang="es">Pantalla</name>
         <name lang="fr">Ecran</name>
         <name lang="ru">Экран</name>
+        <name lang="hu">Árnyékolás</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

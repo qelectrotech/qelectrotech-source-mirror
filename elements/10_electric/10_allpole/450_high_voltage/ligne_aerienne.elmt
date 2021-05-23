@@ -1,7 +1,7 @@
 <definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{212fa737-aa12-4022-8350-817aa5c25c50}"/>
     <names>
-        <name lang="cs">Nadzemní vodič</name>
+        <name lang="cs">Vzdušné vedení</name>
         <name lang="it">Linea aerea</name>
         <name lang="pl">Linia napowietrzna</name>
         <name lang="en">Air line</name>

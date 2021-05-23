@@ -3,9 +3,10 @@
     <names>
         <name lang="de">Sicherheitsleuchte mit eingebauter
 Stromversorgung</name>
-        <name lang="be">Autonoom noodverlichtingstoestel
-</name>
+        <name lang="be">Autonoom noodverlichtingstoestel</name>
         <name lang="fr">Bloc autonome d'éclairage de sécurité</name>
+        <name lang="cs">Svítidlo nouzového osvětlení
+s vlastním zdrojem</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

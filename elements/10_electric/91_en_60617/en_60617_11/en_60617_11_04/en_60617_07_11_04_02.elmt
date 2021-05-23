@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Cabine d'amplification</name>
         <name lang="de">Verstärkerpunkt in wetterfestem Gehäuse </name>
+        <name lang="cs">Zesilovací stanice v pouzdře, venkovní</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

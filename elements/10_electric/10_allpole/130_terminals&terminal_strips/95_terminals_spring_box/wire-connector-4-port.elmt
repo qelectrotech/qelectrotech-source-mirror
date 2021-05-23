@@ -1,0 +1,47 @@
+<definition height="50" hotspot_x="30" hotspot_y="26" width="50" type="element" version="0.80" link_type="terminal">
+    <uuid uuid="{90ef162a-ae50-4497-8280-94fb3a4f0127}"/>
+    <names>
+        <name lang="de">4-polig</name>
+        <name lang="en">Wire Connector 4-Port</name>
+        <name lang="cs">Svorka 4 vodiče</name>
+        <name lang="hu">Kötőelem 4 tagos</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations>
+      Author convertor: Mario Luongo
+
+
+   </informations>
+    <description>
+        <rect height="3" antialias="false" x="-9" width="8" style="line-style:normal;line-weight:thin;filling:HTMLGrayGainsboro;color:white" ry="0" y="-17" rx="0"/>
+        <rect height="42" antialias="false" x="-27.2" width="44.2" style="line-style:normal;line-weight:normal;filling:lightgray;color:gray" ry="1" y="-22.5" rx="1"/>
+        <rect height="30" antialias="false" x="-14" width="8" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1" y="-10" rx="1"/>
+        <rect height="30" antialias="false" x="-4" width="8" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1" y="-10" rx="1"/>
+        <rect height="30" antialias="false" x="6" width="8" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1" y="-10" rx="1"/>
+        <rect height="30" antialias="false" x="-24" width="8" style="line-style:normal;line-weight:thin;filling:HTMLOrangeTomato;color:white" ry="1" y="-10" rx="1"/>
+        <line end1="none" y2="-5" antialias="false" end2="none" y1="5" length2="1.5" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-10"/>
+        <line end1="none" y2="-5" antialias="false" end2="none" y1="5" length2="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-20"/>
+        <line end1="none" y2="-5" antialias="false" end2="none" y1="5" length2="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0"/>
+        <circle antialias="false" x="-11" diameter="2" style="line-style:normal;line-weight:thin;filling:black;color:black" y="-6"/>
+        <line end1="none" y2="-5" antialias="false" end2="none" y1="-5" length2="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="10"/>
+        <line end1="none" y2="5" antialias="false" end2="none" y1="-5" length2="1.5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="10"/>
+        <circle antialias="false" x="-1" diameter="2" style="line-style:normal;line-weight:thin;filling:black;color:black" y="-6"/>
+        <rect height="3" antialias="false" x="-9" width="8" style="line-style:normal;line-weight:thin;filling:HTMLGrayGainsboro;color:white" ry="0" y="-17" rx="0"/>
+        <terminal uuid="{eb338493-235e-4448-9ddd-9b9f761b4e59}" name="" orientation="s" x="-20" y="5"/>
+        <terminal uuid="{5bc3f241-865f-4fce-a096-cc053e70df2c}" name="" orientation="s" x="10" y="5"/>
+        <terminal uuid="{3f89f462-c81c-47dd-a912-2d2c8fc73c30}" name="" orientation="s" x="0" y="5"/>
+        <terminal uuid="{b6b6837c-1fb0-4d51-b82e-f75652e7bf95}" name="" orientation="s" x="-10" y="5"/>
+    </description>
+</definition>

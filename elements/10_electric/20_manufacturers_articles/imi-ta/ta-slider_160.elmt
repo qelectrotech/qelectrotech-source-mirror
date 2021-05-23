@@ -2,6 +2,7 @@
     <uuid uuid="{a8fb881a-0bcb-41e8-bcc2-00a2d7218b40}"/>
     <names>
         <name lang="fr">TA-SLIDER160 I/O</name>
+        <name lang="cs">Pohon TA-SLIDER160 I/O</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

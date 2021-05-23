@@ -2,6 +2,7 @@
     <uuid uuid="{65aa6b3f-27f6-4a7a-823c-b3910cd3d1e8}"/>
     <names>
         <name lang="fr">Plancher chauffant</name>
+        <name lang="cs">Podlahové topení</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

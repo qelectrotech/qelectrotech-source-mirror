@@ -3,6 +3,10 @@
     <names>
         <name lang="de">Nullspannungsrelais</name>
         <name lang="fr">Relais à manque de tension</name>
+        <name lang="cs">Relé maximálního výkonu
+-tok energie k přípojnici
+-provozní hodnota 1 MVAr
+-časové nastavení od 5s do 10s</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,9 +3,10 @@
     <names>
         <name lang="fr">Enregistreur de temperature</name>
         <name lang="es">Registrador temperatura</name>
+        <name lang="de">Temperaturschreiber</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <rect width="16" y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-8" ry="0" antialias="false" height="16"/>

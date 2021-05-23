@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/PUL - Configurateur PUL</name>
         <name lang="en">3501/PUL - Configurator PUL</name>
+        <name lang="cs">3501/PUL - Konfigurátor PUL</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Configurator PUL</elementInformation>

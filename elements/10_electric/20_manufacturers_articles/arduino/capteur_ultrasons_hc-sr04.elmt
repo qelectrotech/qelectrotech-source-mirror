@@ -2,7 +2,7 @@
     <uuid uuid="{f2cd8537-b764-45ed-a3a5-d68887ed2681}"/>
     <names>
         <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>
-        <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
+        <name lang="cs">Ultrazvukové čidlo vzdálenosti HC-SR04</name>
         <name lang="fr">Capteur HC-SR04</name>
         <name lang="it">Sensore ultrasonico HC-SR04</name>
         <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
@@ -21,7 +21,7 @@
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="7" diameter="22" antialias="true" y="-9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

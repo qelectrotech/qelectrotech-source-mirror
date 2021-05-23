@@ -5,7 +5,7 @@
         <name lang="fr">Bouton poussoir</name>
         <name lang="en">Push-button</name>
         <name lang="es">Pulsador con lampara</name>
-        <name lang="cs">Tlačítko</name>
+        <name lang="cs">Prosvětlené tlačítko</name>
         <name lang="nl">Drukknop met lamp (NO)</name>
         <name lang="it">Pulsante luminoso</name>
         <name lang="pl">Łącznik przyciskowy podświetlony  z powrotem samoczynnym</name>
@@ -14,7 +14,7 @@
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line y1="0" length1="1.5" y2="0" antialias="false" x1="-5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" length2="1.5" end2="none" x2="7"/>

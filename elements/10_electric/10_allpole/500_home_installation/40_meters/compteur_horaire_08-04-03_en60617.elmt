@@ -5,14 +5,14 @@
         <name lang="it">Conta tempo (en_60617)</name>
         <name lang="en">Hour counter(en_60617) </name>
         <name lang="pl">Licznik godzin (en_60617)</name>
-        <name lang="cs">Počítadlo hodin (en_60617)</name>
+        <name lang="cs">Počítadlo provozních hodin</name>
         <name lang="el">Ωρόμετρο (en_60617)</name>
         <name lang="ar">عدّاد زمني(en_60617)</name>
         <name lang="fr">Compteur horaire (en_60617)</name>
         <name lang="de">Betriebsstundenzähler (en_60617)</name>
     </names>
     <elementInformations/>
-    <informations>https://github.com/jonasstein/qelectrotech-symbols&#xd;&#xd;
+    <informations>https://github.com/jonasstein/qelectrotech-symbols
 EN 60617</informations>
     <description>
         <text x="-4" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="h" y="12"/>

@@ -182,7 +182,7 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 		 */
 		QString linkTypeToString() const;
 
-		void newUuid() {m_uuid = QUuid::createUuid();}	 //create new uuid for this element
+		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
 
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -219,9 +219,9 @@ class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 	protected:
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
-		QList <QUuid>	 tmp_uuids_link;
-		QUuid			 m_uuid;
-		kind			  m_link_type = Element::Simple;
+		QList <QUuid>     tmp_uuids_link;
+		QUuid             m_uuid;
+		kind              m_link_type = Element::Simple;
 
 			//ATTRIBUTES related to informations
 		DiagramContext m_kind_informations;

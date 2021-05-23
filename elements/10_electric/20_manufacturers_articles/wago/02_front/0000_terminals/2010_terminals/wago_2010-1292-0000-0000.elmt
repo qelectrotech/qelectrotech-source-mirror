@@ -1,0 +1,19 @@
+<definition type="element" height="250" link_type="simple" width="10" hotspot_y="88" version="0.80" hotspot_x="4">
+    <names>
+        <name lang="fr">2010-1292</name>
+        <name lang="de">2010-1292</name>
+        <name lang="en">2010-1292</name>
+        <name lang="cs">2010-1292</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2010-1292</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:orange;color:orange" x4="-1" y1="-82.07" y3="156.21" y4="156.21" x1="-1" antialias="false" x2="2.5" y2="-82.07" x3="2.5"/>
+    </description>
+</definition>

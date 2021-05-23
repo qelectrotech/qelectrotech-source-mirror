@@ -4,6 +4,7 @@
         <name lang="fr">Fonction échelon positive</name>
         <name lang="es">Función de paso positivo</name>
         <name lang="de">positive Schrittfunktion</name>
+        <name lang="cs">Kladná stupňovitá funkce</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

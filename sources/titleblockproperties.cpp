@@ -69,32 +69,32 @@ bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 }
 
 /**
-    Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
-    @param e Element XML auquel seront ajoutes des attributs
+	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
+	@param e Element XML auquel seront ajoutes des attributs
 */
 void TitleBlockProperties::toXmlPriv(QDomElement& e) const {
-    e.setAttribute("author",   author);
-    e.setAttribute("title",    title);
-    e.setAttribute("filename", filename);
-    e.setAttribute("plant", plant);
-    e.setAttribute("locmach", locmach);
-    e.setAttribute("indexrev",indexrev);
-    e.setAttribute("version", version);
-    e.setAttribute("folio",    folio);
-    e.setAttribute("auto_page_num", auto_page_num);
-    e.setAttribute("date",     exportDate());
-    e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
-    if (!template_name.isEmpty())
-    {
-        e.setAttribute("titleblocktemplate", template_name);
-        e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
-    }
-
-    if (context.keys().count()) {
-        QDomElement properties = e.ownerDocument().createElement("properties");
-        context.toXml(properties);
-        e.appendChild(properties);
-    }
+	e.setAttribute("author",   author);
+	e.setAttribute("title",    title);
+	e.setAttribute("filename", filename);
+	e.setAttribute("plant", plant);
+	e.setAttribute("locmach", locmach);
+	e.setAttribute("indexrev",indexrev);
+	e.setAttribute("version", version);
+	e.setAttribute("folio",    folio);
+	e.setAttribute("auto_page_num", auto_page_num);
+	e.setAttribute("date",     exportDate());
+	e.setAttribute("displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
+	if (!template_name.isEmpty())
+	{
+		e.setAttribute("titleblocktemplate", template_name);
+		e.setAttribute("titleblocktemplateCollection", QET::qetCollectionToString(collection));
+	}
+	
+	if (context.keys().count()) {
+		QDomElement properties = e.ownerDocument().createElement("properties");
+		context.toXml(properties);
+		e.appendChild(properties);
+	}
 }
 
 /** RETURNS True
@@ -145,16 +145,16 @@ bool TitleBlockProperties::fromXmlPriv(const QDomElement &e) {
 */
 void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const
 {
-	settings.setValue(prefix + "title",	title);
+	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "plant", plant);
 	settings.setValue(prefix + "locmach", locmach);
 	settings.setValue(prefix + "indexrev", indexrev);
 	settings.setValue(prefix + "version", version);
-	settings.setValue(prefix + "folio",	folio);
-	settings.setValue(prefix + "auto_page_num",	auto_page_num);
-	settings.setValue(prefix + "date",	 exportDate());
+	settings.setValue(prefix + "folio",    folio);
+	settings.setValue(prefix + "auto_page_num",    auto_page_num);
+	settings.setValue(prefix + "date",     exportDate());
 	settings.setValue(prefix + "displayAt", (display_at == Qt::BottomEdge? "bottom" : "right"));
 	settings.setValue(prefix + "titleblocktemplate", template_name.isEmpty()? QString() : template_name);
 	settings.setValue(prefix + "titleblocktemplateCollection", QET::qetCollectionToString(collection));
@@ -167,14 +167,14 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void TitleBlockProperties::fromSettings(QSettings &settings, const QString &prefix) {
-	title	= settings.value(prefix + "title").toString();
+	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
-	plant	= settings.value(prefix + "plant").toString();
+	plant    = settings.value(prefix + "plant").toString();
 	locmach  = settings.value(prefix + "locmach").toString();
 	indexrev = settings.value(prefix + "indexrev").toString();
 	version  = settings.value(prefix + "version").toString();
-	folio	= settings.value(prefix + "folio", "%id/%total").toString();
+	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	auto_page_num = settings.value(prefix + "auto_page_num").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
 	display_at = (settings.value(prefix + "displayAt", QVariant("bottom")).toString() == "bottom" ? Qt::BottomEdge : Qt::RightEdge);

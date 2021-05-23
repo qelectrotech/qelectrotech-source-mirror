@@ -2,6 +2,7 @@
     <uuid uuid="{1a5c7784-00ea-4469-a208-d20674ad8429}"/>
     <names>
         <name lang="en">i-7513 - RS-485 Hub</name>
+        <name lang="cs">i-7513 - RS-485 Hub</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{5840e39b-9f4e-45b6-aa4a-0790d627def6}"/>
     <names>
         <name lang="en">i-7563-G - USB to 3 Ports RS-485 Hub Converter</name>
+        <name lang="cs">i-7563-G - Převodník USB 3x RS-485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7563-G</elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,19 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QRadioButton>
-#include <QHash>
-
 #include "potentialselectordialog.h"
-#include "ui_potentialselectordialog.h"
-#include "conductor.h"
-#include "terminal.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "diagram.h"
-#include "element.h"
-#include "reportelement.h"
-#include "assignvariables.h"
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../autoNum/assignvariables.h"
+#include "../diagram.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/reportelement.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../ui_potentialselectordialog.h"
 #include "formulaassistantdialog.h"
+
+#include <QHash>
+#include <QRadioButton>
 
 //### BEGIN PRIVATE CLASS ###//
 

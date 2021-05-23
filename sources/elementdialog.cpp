@@ -28,7 +28,6 @@
 #include <QPushButton>
 #include <QTreeView>
 #include <QVBoxLayout>
-#include <QtConcurrent>
 
 /**
 	@brief ElementDialog::ElementDialog

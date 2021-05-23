@@ -81,8 +81,8 @@ class PartPolygon : public CustomElementGraphicPart
 		QPolygonF polygon () const;
 		void setPolygon   (const QPolygonF &polygon);
 
-		void addPoint		(const QPointF &point);
-		void setLastPoint	(const QPointF &point);
+		void addPoint        (const QPointF &point);
+		void setLastPoint    (const QPointF &point);
 		void removeLastPoint ();	
 
 		bool isClosed  () const {return m_closed;}
@@ -99,7 +99,7 @@ class PartPolygon : public CustomElementGraphicPart
 	private:
 		void adjusteHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent	(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void sceneSelectionChanged ();
 		

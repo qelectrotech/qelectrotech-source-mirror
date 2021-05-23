@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Moteur série, monophasé</name>
         <name lang="de">Reihenschlußmotor, einphasig</name>
+        <name lang="cs">Jednofázový střídavý sériový motor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
 grille, canal N, sans connexion au substrat</name>
         <name lang="de">IGFET-Transistor, Anreicherungstyp, ein Gate,
 N-Kanal, ohne Substratanschluß</name>
+        <name lang="cs">IGFET-Tranzistor, jedno hradlo, kanál N, bez připojení k podložce</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

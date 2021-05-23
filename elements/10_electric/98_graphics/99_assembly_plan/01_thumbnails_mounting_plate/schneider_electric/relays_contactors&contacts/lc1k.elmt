@@ -22,7 +22,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect antialias="false" y="-50" rx="0" ry="0" width="46" style="line-style:normal;line-weight:normal;filling:white;color:black" height="50" x="0"/>

@@ -2,6 +2,7 @@
     <uuid uuid="{87c9a4d9-0c9e-4118-afa6-5740d4469de4}"/>
     <names>
         <name lang="fr">Climatiseur Unité Int</name>
+        <name lang="cs">Klimatizace, vnitřní jednotka</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

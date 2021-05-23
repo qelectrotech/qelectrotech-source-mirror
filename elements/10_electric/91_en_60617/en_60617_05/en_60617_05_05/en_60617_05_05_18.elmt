@@ -5,6 +5,8 @@
 type à enrichissement, canal P</name>
         <name lang="de">bipolarer Isolierschicht-Transistor (IGBT),
 Anreicherungstyp, P-Kanal</name>
+        <name lang="cs">Bipolární tranzistor s izolovaným hradlem(IGBT),
+obohacovací typ, kanál P</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,8 +7,9 @@
         <name lang="it">Int. Aut. Magneto-termico 3P+N</name>
         <name lang="fr">Disjoncteur tripolaire + neutre</name>
         <name lang="pl">Wyłącznik</name>
+        <name lang="hu">Kismegszakító 3 + N pólusú</name>
         <name lang="nl">Lastscheider 3+N</name>
-        <name lang="cs">Trojpólový jistič + nulový</name>
+        <name lang="cs">Trojpólový jistič 3p+N</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

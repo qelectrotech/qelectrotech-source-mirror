@@ -4,6 +4,7 @@
         <name lang="de">Materie, allgemein</name>
         <name lang="fr">Matière non spécifiée</name>
         <name lang="es">Material no especificado</name>
+        <name lang="cs">Materiál, blíže neurčený</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

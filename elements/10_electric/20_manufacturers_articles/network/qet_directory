@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
         <name lang="en">Network</name>
-        <name lang="cs">reseau</name>
+        <name lang="fr">Réseau</name>
+        <name lang="cs">Síť</name>
     </names>
 </qet-directory>

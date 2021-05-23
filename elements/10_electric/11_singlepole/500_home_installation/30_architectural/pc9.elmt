@@ -1,7 +1,7 @@
 <definition hotspot_y="75" version="0.51" hotspot_x="38" link_type="simple" width="70" type="element" height="110">
     <uuid uuid="{3c740482-2005-4672-b12c-8fa00ff68ece}"/>
     <names>
-        <name lang="cs">Krytá izolovaná zásuvka (EN 60617 11-13-0x)</name>
+        <name lang="cs">Zásuvka s odpínačem</name>
         <name lang="de">Schutzkontaktsteckdose mit Abdeckung (EN 60617 11-13-0x)</name>
         <name lang="el">Πρίζα με αγωγό προστασίας και κάλυμμα</name>
         <name lang="nl">contactdoos randaarde deksel</name>

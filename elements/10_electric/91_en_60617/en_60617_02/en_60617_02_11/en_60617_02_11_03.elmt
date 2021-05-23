@@ -4,6 +4,7 @@
         <name lang="fr">Impression et perforation simultanées sur la même bande</name>
         <name lang="es">Impresión y perforación simultáneas en la misma cinta</name>
         <name lang="de">gleichzeitiges Bedrucken und Lochen von Streifen</name>
+        <name lang="cs">Současný tisk a děrování pásky</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

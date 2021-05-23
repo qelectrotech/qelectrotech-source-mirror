@@ -4,6 +4,7 @@
         <name lang="fr">Boîte d'extrémité avec un câble tripolaire</name>
         <name lang="de">Kabelendverschluß mit einem dreiadrigen
 Kabel</name>
+        <name lang="cs">Kabelová těsnící koncovka s jedním trojžilovým kabelem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

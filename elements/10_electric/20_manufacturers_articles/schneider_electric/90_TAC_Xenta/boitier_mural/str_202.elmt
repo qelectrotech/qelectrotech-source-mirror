@@ -10,11 +10,11 @@
         <name lang="ar">STR_202</name>
         <name lang="es">STR_202</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;
-Langue : Fr&#xd;
-&#xd;
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
-&#xd;
+    <informations>Auteur : C V C 71
+Langue : Fr
+
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
+
 Bonne utilisation !</informations>
     <description>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="-42" y2="-38" x2="41" end1="none" x1="41" length2="1.5" antialias="false"/>

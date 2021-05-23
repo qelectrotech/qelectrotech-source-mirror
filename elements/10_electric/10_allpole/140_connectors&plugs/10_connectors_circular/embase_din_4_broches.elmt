@@ -10,6 +10,7 @@
         <name lang="en">4-pin DIN socket</name>
         <name lang="es">Socket de 4 pines</name>
         <name lang="fr">Embase DIN 4 broches</name>
+        <name lang="hu">4 tűs DIN csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

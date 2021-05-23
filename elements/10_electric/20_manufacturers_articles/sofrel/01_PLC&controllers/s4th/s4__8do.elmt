@@ -1,0 +1,75 @@
+<definition version="0.80" type="element" hotspot_y="74" height="160" hotspot_x="205" width="510" link_type="simple">
+    <uuid uuid="{fdb60b19-4ec3-4214-ad39-f227eed81d7e}"/>
+    <names>
+        <name lang="en">Board 8DO</name>
+        <name lang="es">Tarjeta 8DO</name>
+        <name lang="fr">Carte 8 DO</name>
+        <name lang="it">Scheda 8DO</name>
+        <name lang="cs">Karta 8DO</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
+        <elementInformation show="1" name="designation">8-DO</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description">Carte de sorties digitales</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text rotation="0" x="195" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="7"/>
+        <polygon x1="-60" x5="-42" x3="-50" x2="-60" x4="-42" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <text rotation="0" x="255" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="8"/>
+        <polygon x1="180" x5="198" x3="190" x2="180" x4="198" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <polygon x1="-120" x5="-102" x3="-110" x2="-120" x4="-102" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <text rotation="0" x="135" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="6"/>
+        <polygon x1="120" x5="138" x3="130" x2="120" x4="138" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <polygon x1="60" x5="78" x3="70" x2="60" x4="78" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <polygon x1="0" x5="18" x3="10" x2="0" x4="18" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <polygon x1="240" x5="258" x3="250" x2="240" x4="258" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <polygon x1="-40" x3="-30" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <polygon x1="200" x3="210" x2="210" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <polygon x1="-100" x3="-90" x2="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <polygon x1="140" x3="150" x2="150" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <polygon x1="80" x3="90" x2="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <polygon x1="20" x3="30" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <polygon x1="260" x3="270" x2="270" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <text rotation="0" x="70" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="5"/>
+        <text rotation="0" x="-108" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="2"/>
+        <text rotation="0" x="10" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="4"/>
+        <text rotation="0" x="-50" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="3"/>
+        <rect x="-200" rx="0" y="-70" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" width="500" antialias="false"/>
+        <text rotation="0" x="180" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-55" color="#000000" text="EMPLACEMENT"/>
+        <text rotation="0" x="-164" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="60" color="#000000" text="1"/>
+        <text rotation="0" x="-13" font="Sans Serif,25,-1,5,50,0,0,0,0,0" y="17" color="#000000" text="CARTE  8DO"/>
+        <line end1="none" x1="270" end2="none" x2="270" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-70" y1="-50" antialias="false" length1="1.5"/>
+        <line end1="none" x1="170" end2="none" x2="170" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-50" y1="-70" antialias="false" length1="1.5"/>
+        <line end1="none" x1="-201" end2="none" x2="300" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-50" y1="-50" antialias="false" length1="1.5"/>
+        <dynamic_text rotation="0" x="280" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Valignment="AlignTop" y="-70" uuid="{03c9655f-539b-46ab-8f40-b86905aa1ec8}" text_width="-1" z="27" frame="false" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <polygon x1="-180" x5="-162" x3="-170" x2="-180" x4="-162" y5="66" y4="66" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="70" closed="false" y1="80" antialias="false"/>
+        <polygon x1="-160" x3="-150" x2="-150" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="70" y3="80" closed="false" y1="70" antialias="false"/>
+        <terminal orientation="s" x="60" y="80" uuid="{71a4b9e0-178b-4fc7-9723-13884261926a}" name="1A"/>
+        <terminal orientation="s" x="30" y="80" uuid="{8ad20e43-303e-4212-b2ed-933f64d8babe}" name=""/>
+        <terminal orientation="s" x="90" y="80" uuid="{e703e293-c8d1-40ab-a324-e320d88ce810}" name=""/>
+        <terminal orientation="s" x="-120" y="80" uuid="{ee2e497a-ef94-445c-b0d7-98430686daf9}" name="1A"/>
+        <terminal orientation="s" x="150" y="80" uuid="{abe4212e-640a-4d98-affc-1b04f366f617}" name=""/>
+        <terminal orientation="s" x="-60" y="80" uuid="{d3964fea-9418-43c5-91e5-7aa6846cd0ec}" name="1A"/>
+        <terminal orientation="s" x="-30" y="80" uuid="{bdcc90ce-1ee7-46dd-a764-afe73e089d42}" name=""/>
+        <terminal orientation="s" x="240" y="80" uuid="{1034ccd2-25f9-490d-986d-c0609e7ce558}" name="1A"/>
+        <terminal orientation="s" x="0" y="80" uuid="{fae8426e-925c-4c19-9e74-ed83d8beaada}" name="1A"/>
+        <terminal orientation="s" x="120" y="80" uuid="{617613b6-c141-4d09-a9ea-b17b23d68617}" name="1A"/>
+        <terminal orientation="s" x="210" y="80" uuid="{012b46c0-4f24-4898-babe-d90cc1407c52}" name=""/>
+        <terminal orientation="s" x="-150" y="80" uuid="{f803d8d7-631b-49a5-a086-6519c57a6dbf}" name="1B"/>
+        <terminal orientation="s" x="-180" y="80" uuid="{f14c0780-af2d-4b6d-997f-74506251600b}" name="1A"/>
+        <terminal orientation="s" x="180" y="80" uuid="{57ebcf59-3d13-4038-948f-ed22cdea7851}" name="1A"/>
+        <terminal orientation="s" x="-90" y="80" uuid="{d3ea7483-97ea-4db6-b620-95f1380ecf1e}" name="3B"/>
+    </description>
+</definition>

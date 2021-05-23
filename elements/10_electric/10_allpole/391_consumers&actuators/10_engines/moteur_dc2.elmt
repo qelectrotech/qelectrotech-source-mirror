@@ -1,0 +1,40 @@
+<definition type="element" link_type="simple" height="70" width="50" hotspot_y="34" version="0.80" hotspot_x="28">
+    <uuid uuid="{ff3971b1-115b-4ccc-bcd6-8a6c51a2760b}"/>
+    <names>
+        <name lang="it">Eccitazione separata del motore CC</name>
+        <name lang="pt">Excitação separada do motor DC</name>
+        <name lang="ru">Раздельное возбуждение двигателя постоянного тока</name>
+        <name lang="de">Gleichstrommotor Fremderregt</name>
+        <name lang="en">Separate excitation DC motor</name>
+        <name lang="es">Excitación separada del motor DC</name>
+        <name lang="fr">Moteur DC excitation séparée</name>
+        <name lang="cs">Motor s cizím buzením</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="-3" height="2" antialias="false" width="6" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-17" ry="0"/>
+        <text x="-6" text="M" rotation="0" y="5" font="Sans Serif,11,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-18" text="K" rotation="0" y="26" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <arc x="-23.5" angle="-180" height="5" antialias="true" width="7" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="8"/>
+        <circle x="-15" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15"/>
+        <text x="2" text="A2" rotation="0" y="26" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-18" text="I" rotation="0" y="-22" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="2" text="A1" rotation="0" y="-22" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <arc x="-23.5" angle="-180" height="5" antialias="true" width="7" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12"/>
+        <line x1="0" end1="none" y2="30" antialias="false" y1="17" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="0"/>
+        <arc x="-23.5" angle="-180" height="5" antialias="true" width="7" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2"/>
+        <arc x="-23.5" angle="-180" height="5" antialias="true" width="7" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="3"/>
+        <arc x="-23.5" angle="-180" height="5" antialias="true" width="7" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7"/>
+        <line x1="0" end1="none" y2="-17" antialias="false" y1="-30" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="0"/>
+        <line x1="-20" end1="none" y2="-12" antialias="false" y1="-30" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-20"/>
+        <line x1="-20" end1="none" y2="13" antialias="false" y1="30" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-20"/>
+        <line x1="-6" end1="none" y2="8" antialias="false" y1="8" length1="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="6"/>
+        <rect x="-3" height="2" antialias="false" width="6" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15" ry="0"/>
+        <terminal x="0" orientation="n" uuid="{ebcfbf4f-3065-4c64-901a-4f6c8f69a6e9}" name="A1" y="-30"/>
+        <terminal x="-20" orientation="n" uuid="{a5e81d4a-16bc-4a34-8b34-dc0fd7b44196}" name="I" y="-30"/>
+        <terminal x="-20" orientation="s" uuid="{739f6f62-22e8-43bc-aecf-b454a2c2b90e}" name="K" y="30"/>
+        <terminal x="0" orientation="s" uuid="{8152411b-db39-4479-abd1-02ca189b041f}" name="A2" y="30"/>
+    </description>
+</definition>

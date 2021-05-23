@@ -6,15 +6,16 @@
         <name lang="nl">3fasen</name>
         <name lang="el">Τριφασικό</name>
         <name lang="de">Drehstrom</name>
-        <name lang="cs">Třípólový zdroj</name>
+        <name lang="cs">Přípojnice 3f</name>
         <name lang="pl">Linia trójfazowa (trójprzewodowa)</name>
         <name lang="it">Sorgente tripolare</name>
         <name lang="ar">مصدر ثلاثي القطبيّة</name>
         <name lang="en">Three-pole source</name>
         <name lang="fr">Source tripolaire</name>
         <name lang="ru">Трёхполюсный</name>
+	<name lang="hu">3F</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-2" y="-34.45" tagg="label" size="9" rotate="true" text="_"/>

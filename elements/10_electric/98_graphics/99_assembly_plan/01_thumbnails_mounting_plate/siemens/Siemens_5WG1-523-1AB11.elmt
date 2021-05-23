@@ -2,6 +2,7 @@
     <uuid uuid="{53cce449-30dd-4cb1-8188-94b6c59f8dee}"/>
     <names>
         <name lang="en">5WG1 523-1AB11 - Venetian blind actuator - 230V - 6A</name>
+        <name lang="cs">5WG1 523-1AB11 - Jednotka ovládání žaluzií - 230V - 6A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <rect x="0" rx="0" ry="0" antialias="false" height="200" width="320" style="line-style:normal;line-weight:normal;filling:white;color:black" y="0"/>

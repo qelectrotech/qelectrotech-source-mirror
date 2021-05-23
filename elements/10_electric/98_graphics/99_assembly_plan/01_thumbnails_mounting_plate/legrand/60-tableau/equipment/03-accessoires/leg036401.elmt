@@ -2,6 +2,7 @@
     <uuid uuid="{323e399d-f815-4586-b1c3-5c9bd6d77a70}"/>
     <names>
         <name lang="fr">Pattes de fixation murale</name>
+        <name lang="cs">Konzoly pro montáž na zeď</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>

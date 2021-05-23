@@ -21,6 +21,7 @@
 #include "qetresult.h"
 #include "titleblock/templatelocation.h"
 
+#include <QCloseEvent>
 #include <QTabBar>
 #include <QWidget>
 #include <QtWidgets>

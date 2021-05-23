@@ -5,6 +5,7 @@
 Torsprechstelle</name>
         <name lang="fr">Interphone, par exemple: portier audio
 d'immeuble</name>
+        <name lang="cs">Dorozumívací zařízení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

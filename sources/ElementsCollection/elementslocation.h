@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,11 +18,12 @@
 #ifndef ELEMENTS_LOCATION_H
 #define ELEMENTS_LOCATION_H
 
-#include "nameslist.h"
-#include "diagramcontext.h"
-#include "pugixml.hpp"
-#include <QString>
+#include "../NameList/nameslist.h"
+#include "../diagramcontext.h"
+#include "../pugixml/pugixml.hpp"
+
 #include <QIcon>
+#include <QString>
 
 #ifndef Q_OS_LINUX
 #include "sstream"

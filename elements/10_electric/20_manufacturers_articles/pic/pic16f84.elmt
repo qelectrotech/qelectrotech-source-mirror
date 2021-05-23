@@ -4,6 +4,7 @@
         <name lang="fr">pic16f84</name>
         <name lang="en">pic16f84</name>
         <name lang="ro">pic16f84</name>
+        <name lang="cs">PIC 16F84</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -18,7 +19,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Author: Angelescu Constantin&#xd;
+    <informations>Author: Angelescu Constantin
 titus0818@yahoo.com</informations>
     <description>
         <text text="9" x="-36" color="#000000" y="76" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

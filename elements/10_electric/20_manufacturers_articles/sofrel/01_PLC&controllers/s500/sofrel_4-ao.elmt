@@ -2,6 +2,7 @@
     <uuid uuid="{b960f949-f8e7-42cb-9066-23f0674a5196}"/>
     <names>
         <name lang="fr">Sofrel 4 AO</name>
+        <name lang="cs">Sofrel 4 AO</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

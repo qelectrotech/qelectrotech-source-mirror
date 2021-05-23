@@ -66,6 +66,9 @@ private:
      void toXmlPriv(QDomElement &xml_element) const override;
      bool fromXmlPriv(const QDomElement &xml_element) override;
 
+		static QString typeToString(TerminalData::Type type);
+		static TerminalData::Type typeFromString(const QString &string);
+
 	// must be public, because this class is a private member
 	// of PartTerminal/Terminal and they must access this data
 	public:
@@ -114,8 +117,8 @@ private:
 		*/
 	QPointF m_pos{0,0};
 		TerminalData::Type m_type = TerminalData::Generic;
-	private:
-		QGraphicsObject* q{nullptr};
+    private:
+        QGraphicsObject* q{nullptr};
 };
 
 #endif // TERMINALDATA_H

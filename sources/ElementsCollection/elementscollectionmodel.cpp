@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,14 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscollectionmodel.h"
+
+#include "../qetapp.h"
+#include "../qetproject.h"
+#include "elementcollectionhandler.h"
 #include "elementcollectionitem.h"
 #include "fileelementcollectionitem.h"
-#include "xmlprojectelementcollectionitem.h"
-#include "qetapp.h"
 #include "xmlelementcollection.h"
-#include "qetproject.h"
-#include "elementcollectionhandler.h"
+#include "xmlprojectelementcollectionitem.h"
 
 #include <QFutureWatcher>
 #include <QtConcurrent>
@@ -283,9 +284,20 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 		this, &ElementsCollectionModel::loadingProgressRangeChanged);
 	connect(watcher, &QFutureWatcher<void>::finished,
 		this, &ElementsCollectionModel::loadingFinished);
-	connect(watcher, &QFutureWatcher<void>::finished,
-		watcher, &QFutureWatcher<void>::deleteLater);
+	connect(
+		watcher,
+		&QFutureWatcher<void>::finished,
+		watcher,
+		&QFutureWatcher<void>::deleteLater);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 	m_future = QtConcurrent::map(m_items_list_to_setUp, setUpData);
+#else
+#	if TODO_LIST
+#		pragma message("@TODO remove code for QT 6 or later")
+#	endif
+	qDebug() << "Help code for QT 6 or later"
+			 << "QtConcurrent::run its backwards now...function, object, args";
+#endif
 	watcher->setFuture(m_future);
 }
 

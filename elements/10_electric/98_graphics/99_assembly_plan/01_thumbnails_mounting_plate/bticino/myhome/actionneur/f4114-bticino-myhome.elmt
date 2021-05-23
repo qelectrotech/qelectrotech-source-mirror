@@ -6,6 +6,7 @@
         <name lang="it">F411/4 - Actuatore 4 rele bus</name>
         <name lang="es">F411/4 - Actuador 4 relés bus</name>
         <name lang="de">F411/4 - 4 Relais-Betätigungsgerät</name>
+        <name lang="cs">Výstupní jednotka 4 relé F411/4</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Actuator</elementInformation>

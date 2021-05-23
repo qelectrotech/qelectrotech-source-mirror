@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "generalconfigurationpage.h"
-#include "ui_generalconfigurationpage.h"
-#include "qeticons.h"
-#include "qetapp.h"
 
-#include <QSettings>
-#include <QFontDialog>
+#include "../../qetapp.h"
+#include "../../qeticons.h"
+#include "ui_generalconfigurationpage.h"
+
 #include <QFileDialog>
+#include <QFontDialog>
+#include <QSettings>
 
 /**
 	@brief GeneralConfigurationPage::GeneralConfigurationPage
@@ -258,7 +259,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->insertSeparator(1);
 
 		// all lang available on lang directory
-	ui->m_lang_cb->addItem(QET::Icons::ar,		tr("Arabe"), "ar");
+	ui->m_lang_cb->addItem(QET::Icons::sa,		tr("Arabe"), "ar");
 	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brézilien"), "pt_br");
 	ui->m_lang_cb->addItem(QET::Icons::catalonia,	tr("Catalan"), "ca");
 	ui->m_lang_cb->addItem(QET::Icons::cs,		tr("Tchèque"), "cs");
@@ -281,6 +282,8 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::be,		tr("Belgique-Flemish"), "be");
 	ui->m_lang_cb->addItem(QET::Icons::tr,		tr("Turc"), "tr");
 	ui->m_lang_cb->addItem(QET::Icons::hu,		tr("Hongrois"), "hu");
+	ui->m_lang_cb->addItem(QET::Icons::mn,		tr("Mongol"), "mn");
+
 
 		//set current index to the lang found in setting file
 		//if lang doesn't exist set to system

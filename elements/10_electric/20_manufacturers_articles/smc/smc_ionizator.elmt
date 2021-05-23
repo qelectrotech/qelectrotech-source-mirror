@@ -3,6 +3,7 @@
     <names>
         <name lang="hu">SMC ionizátor</name>
         <name lang="en">SMC ionizer</name>
+        <name lang="cs">SMC ionizátor</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

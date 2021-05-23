@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,10 @@
 #ifndef POTENTIALSELECTORDIALOG_H
 #define POTENTIALSELECTORDIALOG_H
 
+#include "../autoNum/assignvariables.h"
+#include "../conductorproperties.h"
+
 #include <QDialog>
-#include "conductorproperties.h"
-#include "assignvariables.h"
 class Conductor;
 class QUndoCommand;
 class Element;

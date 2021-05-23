@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 #ifndef INDITEXTPROPERTIESWIDGET_H
 #define INDITEXTPROPERTIESWIDGET_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
+#include "../PropertiesEditor/propertieseditorwidget.h"
+
 #include <QPointer>
 class IndependentTextItem;
 

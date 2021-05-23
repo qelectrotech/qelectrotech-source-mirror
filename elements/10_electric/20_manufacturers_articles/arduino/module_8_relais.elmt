@@ -3,7 +3,7 @@
     <names>
         <name lang="nl">relais module (8)</name>
         <name lang="fr">Module 8 relais</name>
-        <name lang="cs">Reléový modul (8)</name>
+        <name lang="cs">Reléový modul (8 relé)</name>
         <name lang="it">Modulo 8 relais</name>
         <name lang="pl">Moduł przekaźnikowy</name>
         <name lang="en">8 relais module</name>
@@ -21,7 +21,7 @@
         <elementInformation name="supplier" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Charles Ferrand&#xd;
+    <informations>Charles Ferrand
 novembre 2013</informations>
     <description>
         <circle antialias="true" y="-40" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" x="43"/>

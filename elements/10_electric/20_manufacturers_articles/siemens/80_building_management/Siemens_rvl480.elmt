@@ -9,6 +9,7 @@
         <name lang="pl">RVL 480</name>
         <name lang="nl">RVL 480</name>
         <name lang="fr">Régulateur de chauffage RVL 480</name>
+        <name lang="cs">RVL 480</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

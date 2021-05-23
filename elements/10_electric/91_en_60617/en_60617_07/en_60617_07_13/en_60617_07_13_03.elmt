@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Schütz mit selbsttätiger Auslösung</name>
         <name lang="fr">Discontacteur à déclenchement automatique</name>
+        <name lang="cs">Stykač se samočinným vypínáním</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

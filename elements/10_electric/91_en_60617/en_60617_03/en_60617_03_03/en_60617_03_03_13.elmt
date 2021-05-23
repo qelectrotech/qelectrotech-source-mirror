@@ -4,6 +4,7 @@
         <name lang="fr">Fiche et jack, tripolaires, type téléphone, jack
 avec contacts de rupture</name>
         <name lang="de">Stecker und Klinke mit Öffnerkontakt</name>
+        <name lang="cs">Telefonní kolík a svírka s vypínacími kontakty</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -35,6 +35,7 @@
 #include "titleblocktemplate.h"
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
+#include "machine_info.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -69,6 +70,9 @@ QString QETApp::m_user_common_elements_dir = QString();
 QString QETApp::m_user_custom_elements_dir = QString();
 QString QETApp::m_user_custom_tbt_dir = QString();
 QETApp *QETApp::m_qetapp = nullptr;
+
+bool lang_is_set = false;
+QString system_language = QString();
 
 
 /**
@@ -146,6 +150,7 @@ QETApp::~QETApp()
 
 	ElementFactory::dropInstance();
 	ElementPictureFactory::dropInstance();
+	MachineInfo::dropInstance();
 }
 
 
@@ -225,11 +230,16 @@ void QETApp::setLanguage(const QString &desired_language) {
 */
 QString QETApp::langFromSetting()
 {
-	QSettings settings;
-	QString system_language = settings.value("lang", "system").toString();
-	if(system_language == "system") {
-		system_language = QLocale::system().name().left(2);
+	if (!lang_is_set)
+	{
+		QSettings settings;
+		system_language = settings.value("lang", "system").toString();
+		if(system_language == "system") {
+			system_language = QLocale::system().name().left(2);
+		}
+		lang_is_set = true;
 	}
+
 	return system_language;
 }
 /**

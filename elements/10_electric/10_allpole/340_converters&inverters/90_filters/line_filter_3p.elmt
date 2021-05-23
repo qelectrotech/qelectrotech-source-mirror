@@ -5,6 +5,7 @@
         <name lang="es">Filtro de linea 3P</name>
         <name lang="pl">Trójbiegunowy filtr sieciowy</name>
         <name lang="fr">Filtre réseau 3P</name>
+        <name lang="cs">Síťový filtr 3f</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>
     <description>

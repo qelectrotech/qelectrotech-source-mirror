@@ -4,6 +4,7 @@
         <name lang="de">Blindverbrauchszähler </name>
         <name lang="fr">Varheuremètre,
 Compteur d'énergie réactive</name>
+        <name lang="cs">Varhodinový měřič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

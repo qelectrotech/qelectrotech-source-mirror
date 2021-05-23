@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,10 @@
 #ifndef GRAPHICSTABLEPROPERTIESEDITOR_H
 #define GRAPHICSTABLEPROPERTIESEDITOR_H
 
-#include "PropertiesEditor/propertieseditorwidget.h"
-#include <QPointer>
+#include "../../../PropertiesEditor/propertieseditorwidget.h"
+
 #include <QButtonGroup>
+#include <QPointer>
 
 namespace Ui {
 class GraphicsTablePropertiesEditor;

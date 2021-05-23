@@ -4,6 +4,7 @@
         <name lang="fr">Électro-aimant engendrant un champ
 transversal</name>
         <name lang="de">Elektromagnet, der ein Querfeld erzeugt</name>
+        <name lang="cs">Elektromagnet vytvářející příčné pole</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

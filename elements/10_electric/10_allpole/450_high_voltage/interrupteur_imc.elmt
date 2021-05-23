@@ -1,7 +1,7 @@
 <definition width="40" hotspot_x="21" type="element" link_type="simple" version="0.5" height="120" hotspot_y="44">
     <uuid uuid="{b3b15af5-f038-4365-8ef4-ca83838f667a}"/>
     <names>
-        <name lang="cs">Přerušovač IMC</name>
+        <name lang="cs">Odpínač s uzemňovačem a MTP IMB</name>
         <name lang="pl">Rozłącznik IMC</name>
         <name lang="it">Interruttore IMC</name>
         <name lang="en">IMC switch</name>

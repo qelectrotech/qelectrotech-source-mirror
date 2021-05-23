@@ -2,7 +2,7 @@
     <uuid uuid="{ced73241-a6a5-43b6-aeca-e5a44250954b}"/>
     <names>
         <name lang="en">ABB PSE</name>
-        <name lang="cs">ABB PSE</name>
+        <name lang="cs">PSE</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>
@@ -17,7 +17,7 @@
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="193" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="81" text="TOR" rotation="0" color="#000000"/>

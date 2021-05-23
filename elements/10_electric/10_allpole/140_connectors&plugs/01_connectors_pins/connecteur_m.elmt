@@ -6,12 +6,13 @@
         <name lang="es">Conector macho</name>
         <name lang="nl">Steker Man</name>
         <name lang="pt">Conector macho</name>
-        <name lang="cs">Mužská spojka</name>
+        <name lang="cs">Kontakt zástrčka</name>
         <name lang="de">Steckverbindung Stecker</name>
         <name lang="it">Connettore maschio</name>
         <name lang="el">Αρσενικός σύνδεσμος</name>
         <name lang="ar">موصل ذكري</name>
         <name lang="pl">Wtyk</name>
+        <name lang="hu">Apa csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

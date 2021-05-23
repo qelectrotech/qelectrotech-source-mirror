@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Contact NF disjoncteur magnéto-thermique GV</name>
         <name lang="es">Contacto de disyuntor GV termico magnetico NC</name>
+        <name lang="cs">Kontakt (NC) jističe</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

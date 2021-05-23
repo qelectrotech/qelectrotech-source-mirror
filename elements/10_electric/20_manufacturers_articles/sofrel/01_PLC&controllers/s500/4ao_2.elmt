@@ -2,6 +2,7 @@
     <uuid uuid="{2b177598-8bf5-4eac-a662-f03a97e24223}"/>
     <names>
         <name lang="fr">Sofrel 4 DO</name>
+        <name lang="cs">Sofrel 4 DO</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1">4-DO</elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{a0e9fc6c-53a9-4c32-81e6-a78acbe91d18}"/>
     <names>
         <name lang="fr">Contrôleur M251 schneider</name>
+        <name lang="cs">PLC M251</name>
     </names>
     <informations></informations>
     <description>

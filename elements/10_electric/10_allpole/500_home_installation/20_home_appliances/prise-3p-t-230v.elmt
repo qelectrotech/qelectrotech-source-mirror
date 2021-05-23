@@ -3,6 +3,7 @@
     <names>
         <name lang="pl">Gniazdo wtyczkowe czterobiegunowe 3P+E</name>
         <name lang="fr">Prise 3 P+T 230 V</name>
+        <name lang="cs">Zásuvka 3f+PEN 230 V</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

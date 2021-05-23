@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "summaryquerywidget.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_summaryquerywidget.h"
-#include "qetapp.h"
 
 #include <QListWidgetItem>
 
@@ -61,6 +63,7 @@ QString SummaryQueryWidget::queryStr() const
 	QStringList keys = selectedKeys();
 
 	QString select ="SELECT ";
+	QString order_by = " ORDER BY ";
 
 	QString column;
 	bool first = true;
@@ -69,13 +72,15 @@ QString SummaryQueryWidget::queryStr() const
 			first = false;
 		} else {
 			column += ", ";
+			order_by +=", ";
 		}
 		column += key;
+		order_by += key;
 	}
 
 	QString from = " FROM project_summary_view";
 
-	QString q(select + column + from);
+	QString q(select + column + from + order_by);
 	return q;
 }
 
@@ -118,12 +123,12 @@ void SummaryQueryWidget::setQuery(const QString &query)
 */
 void SummaryQueryWidget::setUpItems()
 {
-	for (auto key : QETApp::diagramInfoKeys())
+	for (auto key : QETInformation::diagramInfoKeys())
 	{
 		if (key == "filename" || key == "display_folio") {
 			continue;
 		}
-		auto item = new QListWidgetItem(QETApp::diagramTranslatedInfoKey(key), ui->m_available_list);
+		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_available_list);
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,8 +17,9 @@
 */
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_CELL_WIDGET_H
 #define TITLEBLOCK_SLASH_TEMPLATE_CELL_WIDGET_H
+#include "../qet.h"
+
 #include <QtWidgets>
-#include "qet.h"
 class ModifyTitleBlockCellCommand;
 class TitleBlockTemplate;
 class TitleBlockCell;

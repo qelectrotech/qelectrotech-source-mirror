@@ -4,6 +4,7 @@
         <name lang="fr">Crantage, engagé</name>
         <name lang="es">Seguro ocupado</name>
         <name lang="de">Raste, eingerastet</name>
+        <name lang="cs">Zarážka zapnuta</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

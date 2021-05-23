@@ -132,15 +132,15 @@ bool PartPolygon::fromXmlPriv(const QDomElement &qde)
 */
 void PartPolygon::toXmlPriv(QDomElement& xml_element) const
 {
-    int i = 1;
-    foreach(QPointF point, m_polygon) {
-        point = mapToScene(point);
-        xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
-        xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
-        ++ i;
-    }
-    if (!m_closed) xml_element.setAttribute("closed", "false");
-    stylesToXml(xml_element);
+	int i = 1;
+	foreach(QPointF point, m_polygon) {
+		point = mapToScene(point);
+		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
+		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
+		++ i;
+	}
+	if (!m_closed) xml_element.setAttribute("closed", "false");
+	stylesToXml(xml_element);
 }
 
 bool PartPolygon::valideXml(QDomElement& element) {
@@ -538,7 +538,7 @@ void PartPolygon::insertPoint()
 	if(new_polygon != m_polygon)
 	{
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
-		QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point ?? un polygone"));
+		QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
 		new QPropertyUndoCommand(this, "polygon", m_polygon, new_polygon, undo);
 		elementScene()->undoStack().push(undo);
 	}

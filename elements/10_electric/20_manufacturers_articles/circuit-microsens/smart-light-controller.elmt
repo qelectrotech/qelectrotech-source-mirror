@@ -1,0 +1,32 @@
+<definition height="240" hotspot_y="119" version="0.80" width="130" link_type="simple" type="element" hotspot_x="65">
+    <uuid uuid="{4bad2526-c00c-4f56-ba36-330562e07040}"/>
+    <names>
+        <name lang="de">Smart Light ControllerV2</name>
+        <name lang="en">Smart Light ControllerV2</name>
+        <name lang="cs">Smart Light ControllerV2</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect height="10" antialias="false" rx="0" x="25" y="-115" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-30" y="77" text="LED-Driver 28W&#xa;max 850mA&#xa;max 54V"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="24" y="-95" text="Smart-&#xa;Sensor&#xa;RJ45"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" x="15" y="-65" text="MS660201M"/>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" x="35" y="-75" text="Smart Light Controller"/>
+        <circle diameter="8" antialias="false" x="-14" y="106" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="8" antialias="false" x="6" y="106" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="230" antialias="false" rx="0" x="-60" y="-115" width="120" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="-44" y="-115" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-45" y="-95" text="Poe+bt&#xa;54V&#xa;RJ45"/>
+        <rect height="20" antialias="false" rx="0" x="-20" y="95" width="40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" length2="1.5" x1="0" y1="95" y2="115" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="327" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="30" y="120" uuid="{6f7d8474-a823-4e12-93b5-fe60d7abd48e}" text_width="-1" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="35" y="-110" uuid="{c992e48f-3632-4282-af72-2e520c507ab9}" name="" orientation="n"/>
+        <terminal x="-34" y="-110" uuid="{10e0cdc8-ce49-4edc-8996-139e077337bf}" name="" orientation="n"/>
+        <terminal x="10" y="114" uuid="{dbd2d648-8082-409c-bd96-7a0bc75c9901}" name="" orientation="s"/>
+        <terminal x="-10" y="114" uuid="{f444e54f-3c9d-4085-a5ba-39c57187e9b4}" name="" orientation="s"/>
+    </description>
+</definition>

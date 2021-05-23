@@ -6,6 +6,7 @@
         <name lang="it">F411/2 - Actuatore 2 rele bus</name>
         <name lang="es">F411/2 - Actuador 2 relés bus</name>
         <name lang="de">F411/2 - 2 Relais-Betätigungsgerät</name>
+        <name lang="cs">Výstupní jednotka 2 relé F411/2</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Actuator</elementInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="pl">Dzwonek</name>
         <name lang="fr">Sonnerie</name>
+        <name lang="cs">Zvonek</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

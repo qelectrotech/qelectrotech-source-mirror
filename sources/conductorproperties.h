@@ -112,8 +112,8 @@ class ConductorProperties: public PropertiesInterface
                 m_one_text_per_folio{false},
 		m_bicolor = false;
 
-		Qt::Alignment 
-		m_horizontal_alignment = Qt::AlignBottom,        
+		Qt::Alignment
+		m_horizontal_alignment = Qt::AlignBottom,
 		m_vertical_alignment = Qt::AlignRight;
 
 		Qt::PenStyle style{Qt::PenStyle::SolidLine};
@@ -134,7 +134,7 @@ class ConductorProperties: public PropertiesInterface
 		bool operator==(const ConductorProperties &) const;
 		bool operator!=(const ConductorProperties &) const;
 
-    private:
+	private:
         void toXmlPriv(QDomElement&) const override;
         bool fromXmlPriv(const QDomElement &) override;
 

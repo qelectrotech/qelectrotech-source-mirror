@@ -4,6 +4,7 @@
         <name lang="cs">Směr průtoku kapaliny</name>
         <name lang="pl">Kierunek przepływu cieczy</name>
         <name lang="it">Direzione</name>
+        <name lang="de">Flussrichtung</name>
         <name lang="en">Sense fluid</name>
         <name lang="es">Sentido del fluido</name>
         <name lang="nl">richting</name>

@@ -4,6 +4,7 @@
         <name lang="de">näherungsempfindlicher Schalter, (Schließer)</name>
         <name lang="fr">Dispositif sensible à une proximité avec contact
 à fermeture</name>
+        <name lang="cs">Přibližovací spínač, zapínací kontakt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

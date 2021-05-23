@@ -7,10 +7,10 @@
         <name lang="pl">Pozycja pokrętła łącznika</name>
         <name lang="en">Switch handle and knob positions</name>
         <name lang="ar">زرّ دوّار بمقبض</name>
-        <name lang="cs">Poloha otočného knoflíku spínače</name>
+        <name lang="cs">Přepínač 2 polohy</name>
         <name lang="nl">Schakelstanden</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line x1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" x2="0" end2="none" antialias="true" y2="0" y1="-10"/>

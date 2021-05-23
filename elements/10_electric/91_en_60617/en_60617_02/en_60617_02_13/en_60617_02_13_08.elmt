@@ -4,6 +4,7 @@
         <name lang="fr">Actionneur d'urgence, type «coup de poing»</name>
         <name lang="es">Accionado por energia mecánica almacenada</name>
         <name lang="de">Notschalter, Typ "Pilz-Notdrucktaster"</name>
+        <name lang="cs">Nouzový ovladač s hřibovou hlavicí"</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

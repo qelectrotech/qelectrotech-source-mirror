@@ -2,6 +2,7 @@
     <uuid uuid="{e8b28626-9c0a-4fcb-83e8-659da13192cc}"/>
     <names>
         <name lang="fr">406440 - Interrupteur-sectionneur 400V 40A</name>
+        <name lang="cs">406440 - Odpínač 400V 40A</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

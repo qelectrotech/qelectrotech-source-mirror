@@ -5,6 +5,7 @@
 actionné soit par pression soit par rotation</name>
         <name lang="de">Druck-Dreh-Schalter, durch Drücken oder
 Drehen betätigt</name>
+        <name lang="cs">Tlačítkově ovládaný spínač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

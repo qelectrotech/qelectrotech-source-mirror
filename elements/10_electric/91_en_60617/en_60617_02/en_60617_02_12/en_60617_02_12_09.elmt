@@ -4,6 +4,7 @@
         <name lang="fr">Crantage, libéré</name>
         <name lang="es">Seguro liberado</name>
         <name lang="de">Raste, nicht eingerastet</name>
+        <name lang="cs">Zarážka vypnuta</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

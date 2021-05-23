@@ -2,7 +2,7 @@
     <uuid uuid="{e4e753a8-9fde-4e8e-9256-0cf99d67e3de}"/>
     <names>
         <name lang="pt">Terra</name>
-        <name lang="cs">Země</name>
+        <name lang="cs">Uzemnění</name>
         <name lang="it">Terra</name>
         <name lang="el">Γείωση</name>
         <name lang="nl">Aarde</name>
@@ -13,6 +13,7 @@
         <name lang="es">Tierra</name>
         <name lang="ar">تأريض</name>
         <name lang="fr">Terre</name>
+	    <name lang="hu">Földelő</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>
@@ -27,7 +28,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text uuid="{0af57a27-1887-4576-8b51-200ca996e582}" Halignment="AlignLeft" frame="false" x="2" Valignment="AlignTop" text_from="ElementInfo" y="-22.5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" rotation="0" text_width="-1">

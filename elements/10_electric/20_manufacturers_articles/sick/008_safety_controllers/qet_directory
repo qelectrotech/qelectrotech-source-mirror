@@ -6,5 +6,6 @@
         <name lang="it">Contollori di sicurezza</name>
         <name lang="en">Safety controllers</name>
         <name lang="fr">Commandes de securité</name>
+        <name lang="cs">Bezpečnostní PLC</name>
     </names>
 </qet-directory>

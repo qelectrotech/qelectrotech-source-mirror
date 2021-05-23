@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,8 @@
 #ifndef PASTEPARTSCOMMAND_H
 #define PASTEPARTSCOMMAND_H
 
-#include "editorcommands.h"
-#include "elementcontent.h"
+#include "../editorcommands.h"
+#include "../elementcontent.h"
 
 class ElementView;
 

@@ -8,8 +8,9 @@
         <name lang="fr">Relais thermique</name>
         <name lang="pl">Przekaźnik termiczny</name>
         <name lang="es">Relé térmico</name>
-        <name lang="cs">Tepelné relé</name>
+        <name lang="cs">Tepelné relé 3P</name>
         <name lang="nl">Thermisch blok </name>
+        <name lang="hu">Hőkioldó 3 pólusú </name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

@@ -4,6 +4,7 @@
         <name lang="de">Potentiometer, einstellbar
 Widerstand mit beweglichem Kontakt</name>
         <name lang="fr">Résistance réglable à contact glissant</name>
+        <name lang="cs">Potenciometr s pohyblivým kontaktem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{225fd55b-506e-4f8e-9a75-460f5a5191b6}"/>
     <names>
         <name lang="fr">Tywatt</name>
+        <name lang="cs">Tywatt</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

@@ -2,6 +2,7 @@
 <uuid uuid="{FB3E5075-A895-4EB2-B100-52023DD17BE6}"/><names>
         <name lang="ro">piezotransducer</name>
         <name lang="pl">Przetwornik piezoceramiczny</name>
+        <name lang="cs">Piezokeramický měnič</name>
     </names>
     <informations>Author:titus
 titus0818@yahoo.com</informations>

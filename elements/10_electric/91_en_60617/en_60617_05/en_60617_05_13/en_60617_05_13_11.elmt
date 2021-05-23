@@ -4,6 +4,7 @@
         <name lang="de">Rückwärtswellen-Verstärkerröhre, M-Typ</name>
         <name lang="fr">Tube amplificateur à onde progressive inverse
 du type M</name>
+        <name lang="cs">Zesilovací elektronka se zpětnou vlnou typu M</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

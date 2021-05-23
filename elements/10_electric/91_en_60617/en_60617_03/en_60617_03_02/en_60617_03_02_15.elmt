@@ -5,6 +5,7 @@
 multifilaire</name>
         <name lang="de">Drehstrom-Synchrongenerator mehrpolig
 dargestellt</name>
+        <name lang="cs">Trojfázový synchronní alternátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

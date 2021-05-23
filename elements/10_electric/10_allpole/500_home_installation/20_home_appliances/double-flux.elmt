@@ -2,6 +2,7 @@
     <uuid uuid="{eddec255-8c93-4ed4-a191-78fec8030bc9}"/>
     <names>
         <name lang="fr">Double Flux</name>
+        <name lang="cs">Rekuperace</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="state">NO</kindInformation>

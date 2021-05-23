@@ -6,6 +6,7 @@ Rückfallverzögerungelektromechanischer Antrieb,
 Relaisspule, allgemein</name>
         <name lang="fr">Organe de commande d'un relais à mise au
 repos retardée</name>
+        <name lang="cs">Cívka přístroje se zpožděním při odpadu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

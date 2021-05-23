@@ -7,7 +7,7 @@
         <name lang="it">Contatto azionato da un contatore (NO)</name>
         <name lang="fr">Actionné par comptage NO</name>
         <name lang="pl">Zestyk zwierny licznika</name>
-        <name lang="cs">Normálně otevřené počítadlo (NO)</name>
+        <name lang="cs">Kontakt čítače (NO)</name>
         <name lang="nl">Teller contact (NO)</name>
     </names>
     <informations>Author: The QElectroTech team

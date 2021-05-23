@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Enveloppe avec écran externe</name>
         <name lang="de">Röhrenkolben mit externem Schirm</name>
+        <name lang="cs">Elektronka s vnějším stíněním</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

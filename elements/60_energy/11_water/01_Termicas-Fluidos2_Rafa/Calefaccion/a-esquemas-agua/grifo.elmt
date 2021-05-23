@@ -4,9 +4,10 @@
         <name lang="ca">Aixeta</name>
         <name lang="es">grifo</name>
         <name lang="fr">Robinet</name>
+        <name lang="de">Zapfhahn</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line x1="-11.2553" length1="1.5" x2="5.2766" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end2="none" y2="0" end1="none" y1="0" length2="1.5"/>

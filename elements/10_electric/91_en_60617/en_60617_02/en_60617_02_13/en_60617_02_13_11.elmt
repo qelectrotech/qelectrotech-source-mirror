@@ -4,6 +4,7 @@
         <name lang="fr">Commande par levier</name>
         <name lang="es">Accionado por palanca</name>
         <name lang="de">Betätigung durch Hebel</name>
+        <name lang="cs">Ovládání pákou</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

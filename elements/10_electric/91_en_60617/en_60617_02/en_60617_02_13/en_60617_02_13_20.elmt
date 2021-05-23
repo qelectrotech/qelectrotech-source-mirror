@@ -6,6 +6,7 @@ mécanique</name>
         <name lang="es">Accionado por energia mecánica acumulada</name>
         <name lang="de">Betätigung durch gespeicherte mechanische
 Energie</name>
+        <name lang="cs">Ovládání akumulovanou mechanickou energií</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

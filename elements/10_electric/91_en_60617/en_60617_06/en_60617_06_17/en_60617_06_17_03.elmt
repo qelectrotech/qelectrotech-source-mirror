@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Source de chaleur par combustion</name>
         <name lang="de">Verbrennungs-Heizquelle</name>
+        <name lang="cs">Spalovací tepelný zdroj</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

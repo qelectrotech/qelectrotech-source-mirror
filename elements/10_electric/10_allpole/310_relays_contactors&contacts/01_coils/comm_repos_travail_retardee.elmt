@@ -7,7 +7,7 @@
         <name lang="fr">Relais à mise au travail et mise au repos retardées</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy odwzbudzeniu</name>
         <name lang="es">Relé de trabajo y reposo retardado</name>
-        <name lang="cs">Relé pracující při probuzení a uvedené v nečinnost se zpožděním</name>
+        <name lang="cs">Relé se zpožděným zapnutím a vypnutím</name>
         <name lang="nl">spoel opkom en afval vertraagd</name>
     </names>
     <kindInformations>

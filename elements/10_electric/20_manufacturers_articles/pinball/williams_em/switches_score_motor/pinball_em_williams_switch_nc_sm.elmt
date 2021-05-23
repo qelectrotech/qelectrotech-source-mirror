@@ -1,0 +1,19 @@
+<definition hotspot_x="24" height="30" type="element" width="50" hotspot_y="15" version="0.70" link_type="simple" orientation="dyyy">
+    <uuid uuid="{b1b5df82-b447-41d7-bf0c-28d7301821af}"/>
+    <names>
+        <name lang="nl">Schakelaar op Score Motor (N.C.)</name>
+        <name lang="en">Switch on Score Motor (N.C.)</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:black;color:black" width="3" y="-5" ry="0" rx="0" x="-5" antialias="false"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:black;color:black" width="3" y="-5" ry="0" rx="0" x="2" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" end1="none" length2="1.5" y2="0" end2="none" y1="0" x2="20" length1="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" end1="none" length2="1.5" y2="0" end2="none" y1="0" x2="-20" length1="1.5" antialias="false"/>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:black" x1="10" end1="none" length2="1.5" y2="5" end2="none" y1="-5" x2="-10" length1="1.5" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" y="-10" x="-10" antialias="false"/>
+        <terminal y="0" x="-20" orientation="w"/>
+        <terminal y="0" x="20" orientation="e"/>
+    </description>
+</definition>

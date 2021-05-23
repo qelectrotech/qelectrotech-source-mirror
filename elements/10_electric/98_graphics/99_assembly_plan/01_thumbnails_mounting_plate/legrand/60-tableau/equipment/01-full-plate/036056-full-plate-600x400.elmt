@@ -2,6 +2,7 @@
     <uuid uuid="{f74b62be-a0e9-4dac-939c-236d7b4d5556}"/>
     <names>
         <name lang="fr">036056 - Plaque pleine 600x400 Atlantic/Marina</name>
+        <name lang="cs">036056 - Montážní deska 600x400 Atlantic/Marina</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{27cec05a-dd9a-41e3-a11c-917cf5e79d97}"/>
     <names>
         <name lang="fr">Hotte</name>
+        <name lang="cs">Ventilátor</name>
     </names>
     <elementInformations/>
     <informations>cbh41</informations>

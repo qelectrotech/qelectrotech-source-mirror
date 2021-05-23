@@ -2,6 +2,7 @@
     <uuid uuid="{f475daed-b684-4024-9f91-6c5665e60a2a}"/>
     <names>
         <name lang="fr">T1D digit</name>
+        <name lang="cs">T1D digit</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

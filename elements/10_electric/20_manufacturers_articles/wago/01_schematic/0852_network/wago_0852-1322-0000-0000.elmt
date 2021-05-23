@@ -1,0 +1,69 @@
+<definition hotspot_x="64" width="130" hotspot_y="106" version="0.80" type="element" height="180" link_type="simple">
+    <names>
+        <name lang="de">852-1322</name>
+        <name lang="en">852-1322</name>
+        <name lang="fr">852-1322</name>
+        <name lang="cs">852-1322</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">852-1322</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="30.4531" rotation="0" y="16" color="#000000" text="MACsec"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-55" rotation="0" y="16" color="#000000" text="MACsec"/>
+        <rect antialias="false" width="120" x="-60" height="170" y="-100" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="36.0343" rotation="0" y="-84" color="#000000" text="FG"/>
+        <circle antialias="true" x="57.5" y="-52.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="49.25" rotation="0" y="-32" color="#000000" text="4"/>
+        <circle antialias="true" x="37.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="49.25" rotation="0" y="-52" color="#000000" text="2"/>
+        <circle antialias="true" x="57.5" y="7.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-20.9844" rotation="0" y="-90" color="#000000" text="-"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="48.625" rotation="0" y="8" color="#000000" text="8"/>
+        <circle antialias="true" x="57.5" y="-12.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <circle antialias="true" x="57.5" y="-32.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="48.625" rotation="0" y="-12" color="#000000" text="6"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-37" rotation="0" y="61" color="#000000" text="Managed Switch"/>
+        <circle antialias="true" x="-62.5" y="-52.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="19.0875" rotation="0" y="-90" color="#000000" text="-"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-2.4282" rotation="0" y="-90" color="#000000" text="+"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="3.4718" rotation="0" y="-84" color="#000000" text="RPS"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-54.1875" rotation="0" y="-32" color="#000000" text="3"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-42.5" rotation="0" y="-90" color="#000000" text="+"/>
+        <circle antialias="true" x="-62.5" y="7.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-54.1875" rotation="0" y="-52" color="#000000" text="1"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-53.8125" rotation="0" y="8" color="#000000" text="7"/>
+        <circle antialias="true" x="-62.5" y="-12.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <circle antialias="true" x="17.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <circle antialias="true" x="-62.5" y="-32.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-53.8125" rotation="0" y="-12" color="#000000" text="5"/>
+        <circle antialias="true" x="-2.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <circle antialias="true" x="-22.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <circle antialias="true" x="-42.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-42" rotation="0" y="49" color="#000000" text="8-Port Gb  MACsec"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-36.6" rotation="0" y="-84" color="#000000" text="PWR"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-49" rotation="0" y="-64" color="#000000" text="WAGO 852-1322"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="10" rotation="0" text_from="ElementInfo" y="-20" Valignment="AlignTop" Halignment="AlignLeft" frame="false" text_width="-1" z="38">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" y="-100" orientation="n" name="RPS+"/>
+        <terminal x="-40" y="-100" orientation="n" name="PWR+"/>
+        <terminal x="20" y="-100" orientation="n" name="RPS-"/>
+        <terminal x="-60" y="-30" orientation="w" name="ETH3"/>
+        <terminal x="-60" y="10" orientation="w" name="ETH7"/>
+        <terminal x="60" y="-50" orientation="e" name="ETH2"/>
+        <terminal x="60" y="-10" orientation="e" name="EZH6"/>
+        <terminal x="60" y="-30" orientation="e" name="ETH4"/>
+        <terminal x="-60" y="-50" orientation="w" name="ETH1"/>
+        <terminal x="-60" y="-10" orientation="w" name="EZH5"/>
+        <terminal x="-20" y="-100" orientation="n" name="PWR-"/>
+        <terminal x="60" y="10" orientation="e" name="ETH8"/>
+        <terminal x="40" y="-100" orientation="n" name="FG"/>
+    </description>
+</definition>

@@ -2,6 +2,7 @@
     <uuid uuid="{e3e3f28c-eb2f-429e-becc-6dd9389b4f88}"/>
     <names>
         <name lang="fr">Compteur Energie</name>
+        <name lang="cs">Elektroměr</name>
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1"></elementInformation>

@@ -1,0 +1,57 @@
+<definition hotspot_y="55" link_type="simple" version="0.80" hotspot_x="365" width="730" type="element" height="110">
+    <names>
+        <name lang="de">750-494/000-001</name>
+        <name lang="fr">750-494/000-001</name>
+        <name lang="en">750-494/000-001</name>
+        <name lang="cs">750-494/000-001</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-494/000-001</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" y="-40" width="720" antialias="false" height="90" ry="0"/>
+        <text text="IL1" x="-199" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="IL2" x="-39" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="IN" x="281" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="IL3" x="121" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="117.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-122.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="197.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="277.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-282.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="37.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5" diameter="5" y="-42.5" antialias="true"/>
+        <dynamic_text uuid="{7ab4576d-8087-4ad5-ab5a-cb1b1b94d917}" Valignment="AlignTop" z="14" frame="false" Halignment="AlignLeft" x="220" rotation="0" y="29.5" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="2" x="-116" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="L2" x="-119" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="7" x="125" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="3-ph. power measurement 480V / 5A" x="-120" rotation="0" y="45" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="5" x="-196" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="N" x="201" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="4" x="206" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="1" x="-276" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="L1" x="-279" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="8" x="286" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="WAGO 750-494/000-001" x="-330" rotation="0" y="45" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="6" x="-36" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="L3" x="42" rotation="0" y="-24" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="3" x="46" rotation="0" y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <terminal orientation="n" x="-40" y="-40"/>
+        <terminal orientation="n" x="-200" y="-40"/>
+        <terminal orientation="n" x="-280" y="-40"/>
+        <terminal orientation="n" x="-120" y="-40"/>
+        <terminal orientation="n" x="200" y="-40"/>
+        <terminal orientation="n" x="40" y="-40"/>
+        <terminal orientation="n" x="120" y="-40"/>
+        <terminal orientation="n" x="280" y="-40"/>
+    </description>
+</definition>

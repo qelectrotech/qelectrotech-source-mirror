@@ -11,7 +11,7 @@
         <name lang="cs">Třífázový autotransformátor</name>
         <name lang="nl">driefase autotransformator</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="20" y="17.6667" size="5" text="___V"/>

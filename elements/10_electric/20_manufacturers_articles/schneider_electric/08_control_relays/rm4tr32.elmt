@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Relais de control RM4TR32</name>
         <name lang="en">rm4tr32</name>
+        <name lang="cs">Relé sledu fází RM4TR32</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">coil</kindInformation>

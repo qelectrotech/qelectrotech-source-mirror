@@ -2,7 +2,9 @@
     <uuid uuid="{5d1564dc-9b28-4465-be38-9ce9c2ff656b}"/>
     <names>
         <name lang="fr">Codeur incrémental</name>
+        <name lang="de">Inkrementalencoder</name>
         <name lang="en">Incremental encoder</name>
+        <name lang="cs">Inkrementální enkodér</name>
     </names>
     <elementInformations/>
     <informations></informations>

@@ -55,11 +55,11 @@ class PartRectangle :  public CustomElementGraphicPart
 				Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartRectangle.
 				@return the QGraphicsItem type
 			*/
-		int	 type  () const override { return Type; }
-		void	paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
+		int     type  () const override { return Type; }
+		void    paint (QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name  () const override { return(QObject::tr("rectangle", "element part name")); }
 
-		QString		   xmlName () const override { return(QString("rect")); }
+		QString           xmlName () const override { return(QString("rect")); }
         void toXmlPriv(QDomElement&xml_element) const override;
         bool fromXmlPriv (const QDomElement &) override;
 		static bool valideXml(QDomElement& element);
@@ -93,7 +93,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		void switchResizeMode();
 		void adjusteHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent	(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void sceneSelectionChanged ();
 		

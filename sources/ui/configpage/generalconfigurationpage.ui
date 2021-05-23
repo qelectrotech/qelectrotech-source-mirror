@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -306,7 +306,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
      </widget>
      <widget class="QWidget" name="tab_6">
       <attribute name="title">
-       <string>Langage</string>
+       <string>Langues</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
@@ -811,19 +811,35 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   </layout>
  </widget>
  <tabstops>
+  <tabstop>tabWidget</tabstop>
   <tabstop>m_use_system_color_cb</tabstop>
-  <tabstop>m_use_windows_mode_rb</tabstop>
-  <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
+  <tabstop>m_use_windows_mode_rb</tabstop>
+  <tabstop>m_use_tab_mode_rb</tabstop>
+  <tabstop>m_save_label_paste</tabstop>
+  <tabstop>m_use_folio_label</tabstop>
+  <tabstop>m_export_terminal</tabstop>
+  <tabstop>m_border_0</tabstop>
+  <tabstop>m_autosave_sb</tabstop>
   <tabstop>m_common_elmt_path_cb</tabstop>
   <tabstop>m_custom_elmt_path_cb</tabstop>
+  <tabstop>m_custom_tbt_path_cb</tabstop>
   <tabstop>m_highlight_integrated_elements</tabstop>
   <tabstop>m_default_elements_info</tabstop>
   <tabstop>m_lang_cb</tabstop>
   <tabstop>m_dyn_text_font_pb</tabstop>
   <tabstop>m_dyn_text_rotation_sb</tabstop>
   <tabstop>m_dyn_text_width_sb</tabstop>
+  <tabstop>m_indi_text_font_pb</tabstop>
+  <tabstop>m_indi_text_rotation_sb</tabstop>
+  <tabstop>m_font_pb</tabstop>
+  <tabstop>DiagramEditor_xGrid_sb</tabstop>
+  <tabstop>DiagramEditor_yGrid_sb</tabstop>
+  <tabstop>DiagramEditor_xKeyGrid_sb</tabstop>
+  <tabstop>DiagramEditor_yKeyGrid_sb</tabstop>
+  <tabstop>DiagramEditor_xKeyGridFine_sb</tabstop>
+  <tabstop>DiagramEditor_yKeyGridFine_sb</tabstop>
  </tabstops>
  <resources/>
  <connections/>

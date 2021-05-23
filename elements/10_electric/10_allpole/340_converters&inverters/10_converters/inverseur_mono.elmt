@@ -1,7 +1,7 @@
 <definition hotspot_y="19" type="element" height="40" width="20" hotspot_x="10" link_type="simple" version="0.5">
     <uuid uuid="{f2412508-8fc1-4349-b4ca-0e31cddf2e4a}"/>
     <names>
-        <name lang="cs">Přepínač směru fáze jednoduchého spojení</name>
+        <name lang="cs">Obraceč fáze jednoduchého vedení</name>
         <name lang="nl">Fasendraaier</name>
         <name lang="it">Invertitore di fase monofilare</name>
         <name lang="pt">Inversor de sentido de fase monofilar</name>

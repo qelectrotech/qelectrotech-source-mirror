@@ -21,8 +21,8 @@
         <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
     </elementInformations>
-    <informations>S.Deffaux&#xd;&#xd;
-Author: The QElectroTech team&#xd;&#xd;
+    <informations>S.Deffaux
+Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect antialias="false" height="247.567" ry="15" style="line-style:normal;line-weight:normal;filling:HTMLBlueCornflowerBlue;color:black" x="-120" y="-113.567" width="231.6" rx="15"/>

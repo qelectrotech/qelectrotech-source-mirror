@@ -8,6 +8,8 @@ pour transistors à effet de champ à grille solé
 figuré pour un dispositif à déplétion</name>
         <name lang="de">IGFET, Kennzeichnung der Art des Substrats:
 - N-leitender Kanal auf einem P-Substrat</name>
+        <name lang="cs">Kanál N na podložce typu P,
+zobrazen ochuzovací typ IGFET</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

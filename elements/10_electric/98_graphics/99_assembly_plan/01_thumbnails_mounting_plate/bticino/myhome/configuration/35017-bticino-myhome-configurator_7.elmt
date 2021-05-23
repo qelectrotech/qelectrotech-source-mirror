@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/7 - Configurateur 7</name>
         <name lang="en">3501/7 - Configurator 7</name>
+        <name lang="cs">3501/7 - Konfigurátor 7</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment">BTicino configurator 7</elementInformation>

@@ -9,8 +9,9 @@
         <name lang="fr">Disjoncteur différentiel</name>
         <name lang="pl">Wyłącznik różnicowoprądowy</name>
         <name lang="es">Dispositivo diferencial residual</name>
-        <name lang="cs">Rozdílový jistič</name>
+        <name lang="cs">Proudový chránič 2P</name>
         <name lang="nl">Aardlekschakelaar + automaat</name>
+        <name lang="hu">Hibaáram-védőkapcsoló 2P</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

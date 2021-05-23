@@ -2,9 +2,9 @@
     <uuid uuid="{69a3ea96-3316-4f00-985e-036f3f4b7896}"/>
     <names>
         <name lang="de">Scheinwerfer, allgemein</name>
-        <name lang="be">Projector
-</name>
+        <name lang="be">Projector</name>
         <name lang="fr">Projecteur, symbole général</name>
+        <name lang="cs">Světlomet</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

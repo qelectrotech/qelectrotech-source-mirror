@@ -4,14 +4,14 @@
         <name lang="it">Motore trifase PE + TERM + BRAKE</name>
         <name lang="ru">Трёхфазный эл. мотор PE + TERM + BRAKE</name>
         <name lang="en">Three-phase engine PE + TERM + BRAKE</name>
-        <name lang="cs">Trojfázový motor PE + TERM + BRAKE</name>
+        <name lang="cs">Trojfázový brzdový motor s termistorem</name>
         <name lang="pl">Silnik trójfazowy PE + TERM + BRAKE</name>
         <name lang="es">Motor trifásico Tierra + Termocupla + Freno</name>
         <name lang="de">Drehstrom Motor PE + TERM + BRAKE</name>
         <name lang="pt">Motor trifásico PE + TERM + BRAKE</name>
         <name lang="fr">Moteur triphasé PE + TERM + BRAKE</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text text="W1" rotation="270" x="8" y="-9" size="5"/>

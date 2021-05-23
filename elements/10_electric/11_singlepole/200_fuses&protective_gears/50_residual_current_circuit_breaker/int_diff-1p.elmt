@@ -10,7 +10,7 @@
         <name lang="pt">Interruptor diferencial</name>
         <name lang="de">Fehlerstromschutzschalter</name>
         <name lang="it">Interruttore differenziale</name>
-        <name lang="cs">Rozdílový spínač</name>
+        <name lang="cs">Proudový chránič</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Chaudière</name>
         <name lang="pl">Kocioł</name>
+        <name lang="cs">Kotel 1f</name>
     </names>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
@@ -10,7 +11,7 @@
         <kindInformation name="type" show="1">protection</kindInformation>
     </kindInformations>
     <elementInformations/>
-    <informations>cbh41&#xd;
+    <informations>cbh41
 </informations>
     <description>
         <rect rx="0" ry="0" height="85" y="-85" width="120" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>

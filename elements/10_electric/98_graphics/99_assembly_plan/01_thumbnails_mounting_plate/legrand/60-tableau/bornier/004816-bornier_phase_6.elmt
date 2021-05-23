@@ -2,6 +2,7 @@
     <uuid uuid="{56231fc7-69ba-4ae5-af3f-2beb723a42ce}"/>
     <names>
         <name lang="fr">004816  - Bornier phase 1 x 10-35mm² + 5 x 6-25mm²</name>
+        <name lang="cs">004816  - Svorkovnice fázová 1 x 10-35mm² + 5 x 6-25mm²</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

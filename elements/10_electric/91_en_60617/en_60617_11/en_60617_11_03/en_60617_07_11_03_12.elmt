@@ -5,6 +5,7 @@
 télécommunications</name>
         <name lang="de">Fernmeldeleitung mit Gleichstrom-
 Fernspeisung</name>
+        <name lang="cs">Napájení stejnosměrným proudem po sdělovacím vedení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

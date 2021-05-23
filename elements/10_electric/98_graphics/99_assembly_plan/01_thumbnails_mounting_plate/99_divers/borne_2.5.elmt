@@ -3,7 +3,7 @@
     <names>
         <name lang="it">Base P2RF 1</name>
         <name lang="nl">Basis P2RF 1</name>
-        <name lang="cs">Patice P2RF 1</name>
+        <name lang="cs">Svorka P2RF 1</name>
         <name lang="fr">borne 2 5</name>
         <name lang="el">Βάση P2RF 1</name>
         <name lang="en">Base P2RF 1</name>
@@ -22,7 +22,7 @@
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="5.98" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" y="-30" height="60" rx="0" antialias="false"/>

@@ -6,6 +6,8 @@ commutateur de prises pour manœuvre en
 charge, couplage étoile-triangle</name>
         <name lang="de">Drehstromtransformator mit Last-
 Stufenschalter, Stern/Dreieckschaltung</name>
+        <name lang="cs">Trojfázový transformátor s přepínačem odboček pod zatížením,
+v zapojení hvězda-trojúhelník</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

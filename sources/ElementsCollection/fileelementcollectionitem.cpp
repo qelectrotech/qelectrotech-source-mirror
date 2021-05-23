@@ -1,5 +1,5 @@
 /*
-		Copyright 2006-2020 The QElectroTech Team
+		Copyright 2006-2021 The QElectroTech Team
 		This file is part of QElectroTech.
 
 		QElectroTech is free software: you can redistribute it and/or modify
@@ -17,9 +17,10 @@
 */
 
 #include "fileelementcollectionitem.h"
+
+#include "../qetapp.h"
+#include "../qeticons.h"
 #include "elementslocation.h"
-#include "qetapp.h"
-#include "qeticons.h"
 
 #include <QDir>
 
@@ -282,9 +283,8 @@ void FileElementCollectionItem::setUpData()
 		ElementsLocation loc(collectionPath());
 		DiagramContext context = loc.elementInformations();
 		QStringList search_list;
-		for (QString key : context.keys()) {
-			search_list.append(context.value(key).toString());
-		}
+		for (QString& key : context.keys())
+		{ search_list.append(context.value(key).toString()); }
 		search_list.append(localName(loc));
 		setData(search_list.join(" "));
 	}
@@ -352,8 +352,8 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 	QDir dir (fileSystemPath());
 
 		//Get all directory in this directory.
-	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot,
-				     QDir::Name))
+	for (auto& str :
+		 dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -367,8 +367,8 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
-	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot,
-				     QDir::Name))
+	for (auto& str :
+		 dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

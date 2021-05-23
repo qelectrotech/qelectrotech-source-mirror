@@ -11,7 +11,8 @@
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="es">Seccionadores con fusible 3P+N</name>
         <name lang="nl">Zekeringscheider 3+N</name>
-        <name lang="cs">Odpojovač</name>
+        <name lang="cs">Pojistkový odpínač 3p+N</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló N + 3F</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

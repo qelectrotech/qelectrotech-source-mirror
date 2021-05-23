@@ -6,12 +6,13 @@
         <name lang="es">Conector</name>
         <name lang="nl">Stopcontact</name>
         <name lang="pt">Conector</name>
-        <name lang="cs">Spojka</name>
+        <name lang="cs">Spojený pin</name>
         <name lang="de">Steckverbindung Buchse + Stecker</name>
         <name lang="it">Connettori M/F</name>
         <name lang="el">Σύνδεσμος</name>
         <name lang="ar">موصل</name>
         <name lang="pl">Złącze wtykowe</name>
+        <name lang="hu">Anya + apa csatlakozó</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

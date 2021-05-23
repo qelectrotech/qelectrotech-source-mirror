@@ -4,9 +4,10 @@
         <name lang="de">Kabel 3G</name>
         <name lang="fr">Cable 3G</name>
         <name lang="cs">Kabel 3G</name>
+        <name lang="hu">Kábel 2 + PE</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line x2="1.95" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.05" length2="1.5" antialias="true" y2="1.95" end2="none" x1="-2.05" length1="1.5"/>

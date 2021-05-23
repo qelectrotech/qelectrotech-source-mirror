@@ -8,13 +8,13 @@
         <name lang="it">Interr. a leva, 2 poli 2 direzioni</name>
         <name lang="fr">Manipulateur</name>
         <name lang="pl">Manipulator dwukierunkowy bez powrotu samoczynnego</name>
-        <name lang="cs">Manipulátor</name>
+        <name lang="cs">Joystick 2 směry</name>
         <name lang="nl">Manipulator</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="70.5" y="-3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>

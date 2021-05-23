@@ -1,0 +1,23 @@
+<definition height="60" hotspot_y="35" version="0.80" width="90" link_type="simple" type="element" hotspot_x="45">
+    <uuid uuid="{9b2bc80c-59cd-47e9-9b2c-f9bfd4b676f3}"/>
+    <names>
+        <name lang="de">Sensor_CAN</name>
+        <name lang="en">Sensor_CAN</name>
+        <name lang="cs">Sensor_CAN</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect height="15" antialias="false" rx="0" x="0" y="-30" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="15" antialias="false" rx="0" x="-20" y="-30" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="30" antialias="false" rx="0" x="-25" y="-30" width="50" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="5" antialias="false" rx="0" x="-40" y="0" width="80" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc height="30" start="180" antialias="true" x="-15" y="-10" width="30" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="6" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-45" y="15" uuid="{f06059e7-e0ff-410c-9100-bdc41ab8b3df}" text_width="-1" text_from="ElementInfo">
+            <text></text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <terminal x="10" y="-20" uuid="{20c9ee1d-4582-4f27-8355-be302aa4dcff}" name="" orientation="n"/>
+        <terminal x="-10" y="-20" uuid="{9588c37b-17ab-4e45-9248-e00acb3a16f8}" name="" orientation="n"/>
+    </description>
+</definition>

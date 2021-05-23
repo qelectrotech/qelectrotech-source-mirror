@@ -1,0 +1,97 @@
+<definition width="130" link_type="simple" height="210" hotspot_x="64" version="0.80" type="element" hotspot_y="155">
+    <names>
+        <name lang="en">289-101</name>
+        <name lang="de">289-101</name>
+        <name lang="fr">289-101</name>
+        <name lang="cs">289-101</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-101</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="120" height="200" y="-150" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" antialias="false" x="-60"/>
+        <circle y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <line x1="-60" end1="none" y2="-20" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="-20"/>
+        <line x1="-60" end1="none" y2="-100" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="-100"/>
+        <circle y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-62" text="7" x="-54.1875" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-102" text="3" x="-55" color="#000000"/>
+        <line x1="-60" end1="none" y2="-60" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="-60"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="18" text="15" x="-54" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="18" text="16" x="48.625" color="#000000"/>
+        <polygon x1="-5" y2="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="-95" y1="-105"/>
+        <circle y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <line x1="-60" end1="none" y2="20" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="20"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-82" text="5" x="-54.1875" color="#000000"/>
+        <polygon x1="-5" y2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="-55" y1="-65"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-22" text="11" x="-54.8125" color="#000000"/>
+        <circle y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-62" text="8" x="51.4375" color="#000000"/>
+        <polygon x1="5" closed="false" y2="-105" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="-95"/>
+        <polygon x1="-5" y2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="25" y1="15"/>
+        <circle y="-22.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-2" text="13" x="-54" color="#000000"/>
+        <polygon x1="5" closed="false" y2="-65" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="-55"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-102" text="4" x="50.625" color="#000000"/>
+        <circle y="-62.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <circle y="-62.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <polygon x1="-5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="-15" y1="-25"/>
+        <line x1="-60" end1="none" y2="-80" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="-80"/>
+        <circle y="-42.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <circle y="-22.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" text="9" x="-54.8125" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-82" text="6" x="51.4375" color="#000000"/>
+        <polygon x1="5" closed="false" y2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="25"/>
+        <polygon x1="-5" y2="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="-75" y1="-85"/>
+        <circle y="-42.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-22" text="12" x="47.8125" color="#000000"/>
+        <circle y="-82.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <circle y="-82.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <polygon x1="5" closed="false" y2="-85" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="-75"/>
+        <polygon x1="5" closed="false" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="-15"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-2" text="14" x="48.625" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" text="10" x="47.8125" color="#000000"/>
+        <circle y="-102.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <circle y="-102.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <line x1="-60" end1="none" y2="0" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-122" text="2" x="50.625" color="#000000"/>
+        <polygon x1="-5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="5" y1="-5"/>
+        <circle y="-122.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="57.5"/>
+        <polygon x1="5" closed="false" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="5"/>
+        <circle y="-122.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-62.5"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text_width="-1" z="54" y="51" text_from="ElementInfo" frame="false" Valignment="AlignTop" x="-4" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-60" end1="none" y2="-40" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="-40"/>
+        <polygon x1="-5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="-35" y1="-45"/>
+        <polygon x1="5" closed="false" y2="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="-35"/>
+        <line x1="-60" end1="none" y2="-120" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" x2="60" y1="-120"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="45" text="Module with Diodes" x="-59" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-122" text="1" x="-55" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-136" text="WAGO 289-101" x="-45" color="#000000"/>
+        <polygon x1="-5" y2="-120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" x3="-5" y3="-115" y1="-125"/>
+        <polygon x1="5" closed="false" y2="-125" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="5" y1="-115"/>
+        <terminal y="0" name="K14" orientation="e" x="60"/>
+        <terminal y="-40" name="K10" orientation="e" x="60"/>
+        <terminal y="20" name="K16" orientation="e" x="60"/>
+        <terminal y="-20" name="K12" orientation="e" x="60"/>
+        <terminal y="-100" name="A4" orientation="e" x="60"/>
+        <terminal y="-60" name="K8" orientation="e" x="60"/>
+        <terminal y="-120" name="K2" orientation="e" x="60"/>
+        <terminal y="-80" name="K6" orientation="e" x="60"/>
+        <terminal y="-20" name="A11" orientation="w" x="-60"/>
+        <terminal y="20" name="A15" orientation="w" x="-60"/>
+        <terminal y="-40" name="A9" orientation="w" x="-60"/>
+        <terminal y="0" name="A13" orientation="w" x="-60"/>
+        <terminal y="-80" name="A5" orientation="w" x="-60"/>
+        <terminal y="-120" name="A1" orientation="w" x="-60"/>
+        <terminal y="-60" name="A7" orientation="w" x="-60"/>
+        <terminal y="-100" name="A3" orientation="w" x="-60"/>
+    </description>
+</definition>

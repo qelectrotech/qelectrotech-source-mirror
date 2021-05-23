@@ -2,6 +2,7 @@
     <uuid uuid="{279b4713-3191-4253-afa9-7c304c641c55}"/>
     <names>
         <name lang="fr">Inter Sectio LS1D32</name>
+        <name lang="cs">Pojistkový odpínač LS1D32</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <rect rx="0" ry="0" x="0" antialias="false" height="200" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="0" width="120"/>

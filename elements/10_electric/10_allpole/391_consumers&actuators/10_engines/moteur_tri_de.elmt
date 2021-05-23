@@ -10,9 +10,9 @@
         <name lang="pl">Silnik trójfazowy</name>
         <name lang="es">Motor trifásico 6 polos</name>
         <name lang="nl">DraaistroomMotor 3 fasen 6 aansluitingen</name>
-        <name lang="cs">Šestifázový motor</name>
+        <name lang="cs">Trojfázový motor</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="4" x="4" y="4.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>

@@ -5,6 +5,7 @@
         <name lang="fr">Sonnerie</name>
         <name lang="de">Wecker,
 Klingel</name>
+        <name lang="cs">Zvonek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

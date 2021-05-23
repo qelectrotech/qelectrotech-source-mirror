@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,10 +17,11 @@
 */
 #ifndef TITLEBLOCK_SLASH_QET_TEMPLATE_VISUAL_CELL_H
 #define TITLEBLOCK_SLASH_QET_TEMPLATE_VISUAL_CELL_H
+#include "../qet.h"
+
 #include <QtWidgets>
-#include "qet.h"
 class TitleBlockTemplate;
-#include "titleblockcell.h"
+#include "../titleblockcell.h"
 
 /**
 	This class implements a preview widget for cells that compose a title

@@ -5,6 +5,8 @@
 Triac</name>
         <name lang="de">Thyristortriode, bidirektional
 Triac</name>
+        <name lang="cs">Obousměrný triodový tyristor,
+Triak</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

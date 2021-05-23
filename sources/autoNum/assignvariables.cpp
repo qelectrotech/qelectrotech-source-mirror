@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "assignvariables.h"
-#include "diagram.h"
-#include "element.h"
-#include "diagramposition.h"
-#include "qetapp.h"
-#include "qetxml.h"
 
-#include <QVariant>
+#include "../diagram.h"
+#include "../diagramposition.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetxml.h"
+
 #include <QStringList>
+#include <QVariant>
 #include <utility>
 
 namespace autonum
@@ -603,14 +604,14 @@ namespace autonum
 					for (int j=i; j<= dirLevel; j = j +1)
 					{
 							//if there is a prefix available apply prefix
-						if(rxml.name()=="prefix")
+						if(rxml.name().toString()=="prefix")
 						{
 							return rxml.readElementText();
 						}
 							//if there isn't a prefix available, find parent prefix in parent folder
 						else
 						{
-							while (rxml.readNextStartElement() && rxml.name()!="prefix")
+							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
 							{
 								rxml.skipCurrentElement();
 								rxml.readNext();
@@ -646,14 +647,14 @@ namespace autonum
 					for (int j=i; j<= dirLevel; j = j +1)
 					{
 							//if there is a prefix available apply prefix
-						if(rxml.name()=="prefix")
+						if(rxml.name().toString()=="prefix")
 						{
 							return rxml.readElementText();
 						}
 							//if there isn't a prefix available, find parent prefix in parent folder
 						else
 						{
-							while (rxml.readNextStartElement() && rxml.name()!="prefix")
+							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
 							{
 								rxml.skipCurrentElement();
 								rxml.readNext();

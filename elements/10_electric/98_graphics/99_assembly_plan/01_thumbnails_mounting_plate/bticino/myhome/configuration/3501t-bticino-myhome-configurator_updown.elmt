@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">3501/T - Configurateur ⇅</name>
         <name lang="en">3501/T - Configurator ⇅</name>
+        <name lang="cs">3501/T - Konfigurátor ⇅</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Configurator ⇅</elementInformation>

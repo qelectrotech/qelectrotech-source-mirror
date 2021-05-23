@@ -2,6 +2,7 @@
     <uuid uuid="{184579ac-f24f-446e-9a03-e9b70c6cef02}"/>
     <names>
         <name lang="fr">Garage tétra</name>
+        <name lang="cs">Garáž 3f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

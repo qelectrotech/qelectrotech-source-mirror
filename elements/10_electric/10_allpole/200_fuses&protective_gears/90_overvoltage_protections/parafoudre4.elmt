@@ -7,10 +7,11 @@
         <name lang="it">Protez. alimentazione</name>
         <name lang="es">Protección contra descargas 2</name>
         <name lang="el">Προστασία από υπέρταση</name>
-        <name lang="cs">Bleskojistka, ochrana proti nárazu</name>
+        <name lang="cs">Přepěťová ochrana</name>
         <name lang="pl">Ogranicznik przepięć</name>
         <name lang="ar">حامي من الصواعق</name>
         <name lang="en">Surge protection</name>
+        <name lang="hu">Túlfeszültség védő</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

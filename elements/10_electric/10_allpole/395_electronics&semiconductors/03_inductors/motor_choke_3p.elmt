@@ -3,6 +3,7 @@
         <name lang="fr">Self moteur tripolaire</name>
         <name lang="de">Motordrossel 3-polig</name>
         <name lang="en">Motor choke 3 pole</name>
+        <name lang="cs">Motorová tlumivka 3 fázová</name>
     </names>
     <informations>EN 60617: 06-14-03</informations>
     <description>

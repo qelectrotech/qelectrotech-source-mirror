@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,15 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementslocation.h"
-#include "qetapp.h"
+
+#include "../elementscollectioncache.h"
+#include "../factory/elementpicturefactory.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetproject.h"
+#include "../qetxml.h"
 #include "xmlelementcollection.h"
-#include "qetproject.h"
-#include "elementscollectioncache.h"
-#include "elementpicturefactory.h"
-#include "element.h"
-#include "qetxml.h"
+
 #include <QPicture>
-#include <QDebug>
 
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
@@ -676,28 +677,24 @@ pugi::xml_document ElementsLocation::pugiXml() const
 #endif
 	if (!m_project)
 	{
-		if (docu.load_file(m_file_system_path.toStdString().c_str()))
-		{
 #ifndef Q_OS_LINUX
+		if (docu.load_file(m_file_system_path.toStdString().c_str())) {
 			docu.save(m_string_stream);
-#endif
 		}
+#else
+		docu.load_file(m_file_system_path.toStdString().c_str());
+#endif
 	}
 	else
 	{
-		QString str = m_collection_path;
-		//Get the xml dom from Qt xml and copie to pugi xml
-		QDomElement element = m_project
-				->embeddedElementCollection()
-				->element(str.remove("embed://"));
+			//Get the xml dom from Qt xml and copie to pugi xml
 		QDomDocument qdoc;
-		if (isElement())
-		{
-			qdoc.appendChild(qdoc.importNode(
-						 element.firstChildElement(
-							 "definition"),
-						 true));
+		QString str = m_collection_path;
+		if (isElement()) {
+			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
+			qdoc.appendChild(qdoc.importNode(element.firstChildElement("definition"),true));
 		} else {
+			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
 			qdoc.appendChild(qdoc.importNode(element, true));
 		}
 		docu.load_string(qdoc.toString(4).toStdString().c_str());
@@ -776,8 +773,27 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
+#		pragma message("@TODO ad Core5Compat to Cmake")
 #endif
-		qDebug()<<"Help code for QT 6 or later";
+			qDebug() << "Help code for QT 6 or later";
+
+			QString			   path_ = collectionPath(false);
+			QRegularExpression rx("^(.*)/(.*\\.elmt)$");
+
+			if (rx.exactMatch(path_))
+			{
+				return project()
+					->embeddedElementCollection()
+					->addElementDefinition(
+						rx.cap(1),
+						rx.cap(2),
+						xml_document.documentElement());
+			}
+			else
+			{
+				qDebug() << "ElementsLocation::setXml :"
+							" rx don't match";
+			}
 #endif
 		}
 	}

@@ -4,6 +4,7 @@
         <name lang="fr">Bosch Rexroth SLC-3-CPU000300 ;Safe Logic Compact, module CPU de sécurité avec interfaces RS232 et FlexBus, tension d'alim. 24VDC</name>
         <name lang="de">Bosch Rexroth SLC-3-CPU000300 Safe Logic Compact, Sicherheits-CPU Modul mit RS232 und FlexBus Schnittstellen, Betriebsspannung 24VDC</name>
         <name lang="en">Bosch Rexroth SLC-3-CPU000300 Safe Logic Compact, safety CPU module with RS232 and FlexBus interfaces, supply voltage 24VDC</name>
+        <name lang="cs">Bosch Rexroth SLC-3-CPU000300 Safe Logic Compact, bezpečnostní CPU modul s rozhraními RS232 a FlexBus, napájecí napětí 24VDC</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

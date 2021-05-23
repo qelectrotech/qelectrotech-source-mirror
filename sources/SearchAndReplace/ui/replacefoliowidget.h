@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,11 +18,11 @@
 #ifndef REPLACEFOLIOWIDGET_H
 #define REPLACEFOLIOWIDGET_H
 
-#include <QWidget>
-#include <QDialog>
+#include "../../diagramcontext.h"
+#include "../../titleblockproperties.h"
 
-#include "diagramcontext.h"
-#include "titleblockproperties.h"
+#include <QDialog>
+#include <QWidget>
 
 class DiagramContextWidget;
 class QDialogButtonBox;

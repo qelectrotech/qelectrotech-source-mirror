@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,11 +18,11 @@
 #ifndef DYNAMICELEMENTTEXTMODEL_H
 #define DYNAMICELEMENTTEXTMODEL_H
 
-#include <QStandardItemModel>
-#include <QHash>
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 
+#include <QHash>
+#include <QStandardItemModel>
 #include <qstyleditemdelegate.h>
-#include "dynamicelementtextitem.h"
 
 class QUndoCommand;
 class ElementTextItemGroup;
@@ -51,6 +51,7 @@ class DynamicElementTextModel : public QStandardItemModel
 		pos,
 		frame,
 		rotation,
+		keepVisualRotation,
 		textWidth,
 		grpAlignment,
 		grpPos,

@@ -4,6 +4,7 @@
         <name lang="de">Magnetkern-Matrix aus magnetischen
 Schichten</name>
         <name lang="fr">Matrice à mémoire magnétique</name>
+        <name lang="cs">Maticové uspořádání paměti</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

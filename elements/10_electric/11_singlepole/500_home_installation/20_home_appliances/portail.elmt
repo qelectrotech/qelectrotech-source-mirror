@@ -2,6 +2,7 @@
     <uuid uuid="{dd836809-be19-4f3a-8ef9-529cbc32a30e}"/>
     <names>
         <name lang="fr">Portail</name>
+        <name lang="cs">Portál</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

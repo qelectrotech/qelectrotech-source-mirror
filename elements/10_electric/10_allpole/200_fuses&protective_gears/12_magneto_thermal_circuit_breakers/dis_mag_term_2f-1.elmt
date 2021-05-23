@@ -1,7 +1,7 @@
-<definition hotspot_y="52" version="0.51" hotspot_x="56" link_type="simple" width="70" type="element" height="100">
+<definition hotspot_y="52" version="0.51" hotspot_x="56" link_type="master" width="70" type="element" height="100">
     <uuid uuid="{2d6c186b-0578-4682-90c9-f77843432e9f}"/>
     <names>
-        <name lang="cs">Magnetotepelný jistič GV</name>
+        <name lang="cs">Motorový spouštěč 1P+N</name>
         <name lang="de">Motorschutzschalter</name>
         <name lang="el">Θερμομαγνητικό</name>
         <name lang="pl">Wyłącznik silnikowy</name>
@@ -10,7 +10,11 @@
         <name lang="es">Disyuntor termico magnetico en polo P+N mando manual</name>
         <name lang="it">Int. magneto-termico P+N</name>
         <name lang="ar">قاطع مغناطيسي-حراري GV</name>
+        <name lang="hu">Motorvédő kapcsoló 1 pólusú GV</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations></informations>
     <description>
         <polygon x1="0" y1="14" x5="0" y4="4" y5="4" x6="0" y7="-25" x2="0" y6="-6" y2="10" y3="10" x7="-7" antialias="true" x3="5" closed="false" x4="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

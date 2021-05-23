@@ -4,6 +4,7 @@
         <name lang="fr">Impression sur page</name>
         <name lang="es">Imprimir en la página</name>
         <name lang="de">Drucken auf Blatt</name>
+        <name lang="cs">Tisk stránky</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

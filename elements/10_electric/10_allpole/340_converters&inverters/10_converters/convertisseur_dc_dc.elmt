@@ -2,7 +2,7 @@
     <uuid uuid="{8326e12d-d015-48a6-8731-125daca056b5}"/>
     <names>
         <name lang="nl">Gelijkspanning > gelijkspanning DC > DC</name>
-        <name lang="cs">Měnič stejnosměrného proudu</name>
+        <name lang="cs">Měnič DC/DC</name>
         <name lang="it">Convertitore DC/DC</name>
         <name lang="de">Umrichter DC/DC</name>
         <name lang="el">Μετατροπέας DC/DC</name>

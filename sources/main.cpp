@@ -22,6 +22,7 @@
 #include "utils/macosxopenevent.h"
 
 #include <QStyleFactory>
+#include <QtConcurrent>
 
 /**
 	@brief myMessageOutput
@@ -167,13 +168,20 @@ int main(int argc, char **argv)
 	QCoreApplication::setApplicationName("QElectroTech");
 	//Creation and execution of the application
 	//HighDPI
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
 #endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+#endif
+
+
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
@@ -200,16 +208,15 @@ int main(int argc, char **argv)
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 
-	// for debugging
-	qInstallMessageHandler(myMessageOutput);
-	qInfo("Start-up");
-	// delete old log files of max 7 days old.
-	delete_old_log_files(7);
-	{
-		Machine_info *my_ma =new Machine_info();
-		my_ma->send_info_to_debug();
-		delete my_ma;
-	}
+    QtConcurrent::run([=]()
+    {
+            // for debugging
+        qInstallMessageHandler(myMessageOutput);
+        qInfo("Start-up");
+            // delete old log files of max 7 days old.
+        delete_old_log_files(7);
+		MachineInfo::instance()->send_info_to_debug();
+    });
 	return app.exec();
 }
 

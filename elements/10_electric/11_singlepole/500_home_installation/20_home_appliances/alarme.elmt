@@ -4,6 +4,7 @@
         <name lang="fr">Alarme</name>
         <name lang="pl">Alarm</name>
         <name lang="en">Alarm</name>
+        <name lang="cs">Alarm</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{1e4aa085-29fa-4cb5-a69d-a945475acc01}"/>
     <names>
         <name lang="fr">ABB Entrées 8 voies </name>
+        <name lang="cs">Jednotka 8 DI BE/S8.20.2.1</name>
     </names>
     <informations>Alexandre Dis</informations>
     <description>

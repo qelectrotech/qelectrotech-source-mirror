@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Protection Foudre</name>
         <name lang="pl">Ochrona odgromowa</name>
+        <name lang="cs">Přepěťová ochrana 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

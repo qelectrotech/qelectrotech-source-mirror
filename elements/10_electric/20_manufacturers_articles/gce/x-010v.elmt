@@ -2,6 +2,7 @@
     <uuid uuid="{5b3911b4-7dc7-4e12-bb69-28794c243cae}"/>
     <names>
         <name lang="fr">X-010V</name>
+        <name lang="cs">X-010V</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">GCE Electronics</elementInformation>

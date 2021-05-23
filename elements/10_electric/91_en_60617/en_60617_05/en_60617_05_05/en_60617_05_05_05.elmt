@@ -4,6 +4,7 @@
         <name lang="fr">Transistor à jonction unique avec base de type
 N</name>
         <name lang="de">Unijunction-Transistor mit Basis vom N-Typ</name>
+        <name lang="cs">Jednopřechodový tranzistor s bází typu N</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

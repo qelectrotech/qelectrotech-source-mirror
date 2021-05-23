@@ -5,6 +5,8 @@
 Point de liaison</name>
         <name lang="de">Kreuzungspunkt
 Verbindungspunkt</name>
+        <name lang="cs">Místo spojení
+Přípojný bod</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

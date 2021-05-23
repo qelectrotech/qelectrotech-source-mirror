@@ -2,6 +2,7 @@
     <uuid uuid="{ff007d13-15a5-4b63-9e95-839dcdb84d7d}"/>
     <names>
         <name lang="fr">001308 - Coffret capacité mini 8 à 9 modules</name>
+        <name lang="cs">001308 - Rozvodnice plast mini 8 - 9 modulů</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

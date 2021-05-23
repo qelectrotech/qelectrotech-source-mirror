@@ -3,6 +3,7 @@
     <names>
         <name lang="hu">24V DC tápegység 1 fázis</name>
         <name lang="en">24V DC supply one phase</name>
+        <name lang="cs">Napájecí zdroj AC/DC 24V</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

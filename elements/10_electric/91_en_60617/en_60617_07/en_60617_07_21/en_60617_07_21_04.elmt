@@ -5,6 +5,8 @@
 Anschlüssen</name>
         <name lang="fr">Fusible à percuteur avec contact de
 signalisation à point commun</name>
+        <name lang="cs">Tavná pojistka se signálním kontaktem,
+s třemi vývody</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

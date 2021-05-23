@@ -2,6 +2,7 @@
     <uuid uuid="{a780d1a4-d8d8-4dc2-8122-15c2fa4f7e60}"/>
     <names>
         <name lang="fr">Disjoncteur 16A</name>
+        <name lang="cs">Jistič 16A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

@@ -8,11 +8,11 @@
         <name lang="en">Hour counter</name>
         <name lang="de">Betriebsstundenzähler</name>
         <name lang="pl">Licznik godzin</name>
-        <name lang="cs">Počítadlo hodin</name>
+        <name lang="cs">Počítadlo provozních hodin</name>
         <name lang="it">Conta tempo</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text text="h" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-3" y="2.3333" color="#000000"/>

@@ -6,15 +6,16 @@
         <name lang="nl">Fase</name>
         <name lang="el">Φάση</name>
         <name lang="de">Phase</name>
-        <name lang="cs">Fázový zdroj</name>
+        <name lang="cs">Přípojnice L</name>
         <name lang="pl">Przewód liniowy</name>
         <name lang="it">Sorgente fase</name>
         <name lang="ar">مصدر وجه</name>
         <name lang="en">Phase source</name>
         <name lang="fr">Source phase</name>
         <name lang="ru">Фаза</name>
+	<name lang="hu">F</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-6" y="-14.45" tagg="label" size="9" rotate="true" text="_"/>

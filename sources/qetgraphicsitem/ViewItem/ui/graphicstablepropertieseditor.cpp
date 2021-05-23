@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,15 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "graphicstablepropertieseditor.h"
+
+#include "../../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../../diagram.h"
+#include "../../../elementprovider.h"
+#include "../../../factory/propertieseditorfactory.h"
+#include "../../../undocommand/itemmodelcommand.h"
+#include "../../../utils/qetutils.h"
+#include "../qetgraphicsheaderitem.h"
+#include "../qetgraphicstableitem.h"
 #include "ui_graphicstablepropertieseditor.h"
-#include "qetgraphicstableitem.h"
-#include "qetgraphicsheaderitem.h"
-#include "diagram.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "itemmodelcommand.h"
-#include "propertieseditorfactory.h"
-#include "elementprovider.h"
-#include "qetutils.h"
 
 #include <QAbstractItemModel>
 #include <QFontDialog>

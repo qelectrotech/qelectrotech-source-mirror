@@ -52,7 +52,7 @@ class ConductorTextItem : public DiagramTextItem
 
 	protected:
 		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
-		void mouseMoveEvent	(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;

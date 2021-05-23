@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,12 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfowidget.h"
-#include "ui_elementinfowidget.h"
-#include "qetapp.h"
-#include "changeelementinformationcommand.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetinformation.h"
+#include "../ui_elementinfowidget.h"
+#include "../undocommand/changeelementinformationcommand.h"
 #include "elementinfopartwidget.h"
-#include "element.h"
 
 /**
 	@brief ElementInfoWidget::ElementInfoWidget
@@ -35,7 +37,6 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 	m_first_activation (false)
 {
 	ui->setupUi(this);
-	buildInterface();
 	setElement(elmt);
 }
 
@@ -177,9 +178,16 @@ void ElementInfoWidget::disableLiveEdit()
 */
 void ElementInfoWidget::buildInterface()
 {
-	foreach (QString str, QETApp::elementInfoKeys())
+	QStringList keys;
+	auto type_ = m_element.data()->elementData().m_type;
+	if (type_ == ElementData::Terminale)
+		keys = QETInformation::terminalElementInfoKeys();
+	else
+		keys = QETInformation::elementInfoKeys();
+
+	for (auto str : keys)
 	{
-		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
+		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}
@@ -194,7 +202,7 @@ void ElementInfoWidget::buildInterface()
 */
 ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
 {
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
+	for (auto eipw : m_eipw_list)
 	{
 		if (eipw->key() == key)
 			return eipw;
@@ -210,6 +218,10 @@ ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &ke
 */
 void ElementInfoWidget::updateUi()
 {
+	if (!m_ui_builded) {
+		buildInterface();
+		m_ui_builded = true;
+	}
 		//We disable live edit to avoid wrong undo when we fill the line edit with new text
 	if (m_live_edit) disableLiveEdit();
 

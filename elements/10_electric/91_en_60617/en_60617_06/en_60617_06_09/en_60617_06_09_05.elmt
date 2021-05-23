@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Transformateur à trois enroulements</name>
         <name lang="de">Transformator mit drei Wicklungen</name>
+        <name lang="cs">Transformátor se třemi vinutími</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

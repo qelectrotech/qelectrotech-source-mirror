@@ -4,6 +4,7 @@
         <name lang="fr">03- Courant continu</name>
         <name lang="de">03- Gleichstrom und -Spannung</name>
         <name lang="es">03- Corriente continua</name>
+        <name lang="cs">03- Stejnosměrný proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

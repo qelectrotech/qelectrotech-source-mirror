@@ -2,6 +2,7 @@
     <uuid uuid="{dbca985b-92d2-439e-b0a9-a498a601b657}"/>
     <names>
         <name lang="fr">Cartes 2 entrées analogiques Schneider TMC4AI2: détails</name>
+        <name lang="cs">Karta analogových vstupů Schneider TMC4AI2</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description">Carte 2 entrées analogiques Cartbridge</elementInformation>

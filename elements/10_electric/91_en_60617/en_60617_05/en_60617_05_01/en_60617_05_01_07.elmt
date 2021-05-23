@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Jonction redresseuse</name>
         <name lang="de">gleichrichtender Übergang</name>
+        <name lang="cs">Usměrňovací přechod</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

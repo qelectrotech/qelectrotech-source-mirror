@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Drehwinkelgeber</name>
         <name lang="fr">Transmetteur de couple</name>
+        <name lang="cs">Vysílací selsyn úhlu natočení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

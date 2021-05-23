@@ -7,6 +7,8 @@ asymétrique</name>
         <name lang="de">Photodiode
 lichtempfindliches Element mit
 unsymmetrischer Leitfähigkeit</name>
+        <name lang="cs">Fotodioda
+Fotovodivá součástka s nesymetrickou vodivostí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
 opération non intentionnelle</name>
         <name lang="es">Accionado manual, protegido por una operación no intencional</name>
         <name lang="de">Handantrieb mit beschränktem Zugriff</name>
+        <name lang="cs">Ruční akční člen chráněný proti neúmyslnému zásahu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

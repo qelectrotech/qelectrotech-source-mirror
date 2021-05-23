@@ -2,6 +2,7 @@
     <uuid uuid="{d0eb35c4-e998-4653-9fdb-a1934ad675c5}"/>
     <names>
         <name lang="fr">V.D.I.</name>
+        <name lang="cs">V.D.I.</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

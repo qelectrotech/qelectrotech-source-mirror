@@ -8,11 +8,11 @@
         <name lang="en">220V single phase meter</name>
         <name lang="de">Zähler einphasig</name>
         <name lang="pl">Licznik jednofazowy</name>
-        <name lang="cs">Jednofázové počítadlo 220V</name>
+        <name lang="cs">Jednofázový elektroměr</name>
         <name lang="it">Contatore monofase 230V</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="18" z="1" uuid="{4ede67ec-c1b4-473c-acbc-21eb38e97350}" text_from="ElementInfo" y="-25.95" Halignment="AlignLeft">

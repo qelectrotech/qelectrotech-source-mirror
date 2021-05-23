@@ -2,6 +2,7 @@
     <uuid uuid="{ab67f3c1-b591-4086-8246-cbc56e389a90}"/>
     <names>
         <name lang="fr"> DomA45 1P+N 10A </name>
+        <name lang="cs"> DomA45 1P+N 10A </name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Transistor avalanche NPN</name>
         <name lang="de">NPN-Avalanche-Transistor</name>
+        <name lang="cs">NPN-Lavinový tranzistor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,7 +1,7 @@
 <definition width="50" height="190" type="element" link_type="simple" hotspot_x="26" hotspot_y="94" version="0.5">
     <uuid uuid="{e1a5717e-076d-429f-a2bb-c3b68feec75a}"/>
     <names>
-        <name lang="cs">DDS5188</name>
+        <name lang="cs">Elektroměr DDS5188</name>
         <name lang="it">DDS5188</name>
         <name lang="el">DDS5188</name>
         <name lang="pl">DDS5188</name>

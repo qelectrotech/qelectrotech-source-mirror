@@ -2,6 +2,7 @@
     <uuid uuid="{d37d99ed-8749-4316-9413-88a451a86014}"/>
     <names>
         <name lang="en">ABL8BBU24400</name>
+        <name lang="cs">ABL8BBU24400</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>

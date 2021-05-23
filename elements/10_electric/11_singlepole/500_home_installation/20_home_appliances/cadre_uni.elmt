@@ -2,6 +2,7 @@
     <uuid uuid="{64a5d534-f655-4808-ad51-8f0ab8243697}"/>
     <names>
         <name lang="fr">Cadre vide</name>
+        <name lang="cs">Vývod 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>

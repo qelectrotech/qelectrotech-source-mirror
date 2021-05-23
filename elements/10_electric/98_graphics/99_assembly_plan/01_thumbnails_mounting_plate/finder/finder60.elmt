@@ -7,7 +7,7 @@
         <name lang="nl">Relais algemeen finder Série 60</name>
         <name lang="en">General Purpose Relay</name>
         <name lang="el">Ρελέ τύπου λυχνίας</name>
-        <name lang="cs">Řadové relé Série 60</name>
+        <name lang="cs">Průmyslové relé Série 60</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -22,7 +22,7 @@
         <elementInformation show="1" name="manufacturer">Finder</elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect x="0" rx="0" ry="0" antialias="false" height="62" width="38" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-31"/>

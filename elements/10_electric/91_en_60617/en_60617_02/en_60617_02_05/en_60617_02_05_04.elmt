@@ -4,6 +4,7 @@
         <name lang="fr">Emission</name>
         <name lang="es">Emision</name>
         <name lang="de">Senden</name>
+        <name lang="cs">Vysílání</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

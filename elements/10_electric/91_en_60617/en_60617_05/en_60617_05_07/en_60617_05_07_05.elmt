@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Cathode chaude, à chauffage indirect</name>
         <name lang="de">heiße Kathode, indirekt geheizt </name>
+        <name lang="cs">Nepřímo žhavená katoda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

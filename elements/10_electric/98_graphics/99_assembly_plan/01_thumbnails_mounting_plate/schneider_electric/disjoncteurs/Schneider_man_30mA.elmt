@@ -2,6 +2,7 @@
     <uuid uuid="{ef9c610f-c06a-4690-b882-bd31f6718a7f}"/>
     <names>
         <name lang="fr">30mA</name>
+        <name lang="cs">30mA</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 */
 #ifndef TITLEBLOCK_SLASH_DIMENSION_H
 #define TITLEBLOCK_SLASH_DIMENSION_H
-#include "qet.h"
+#include "../qet.h"
 
 /**
 	This struct is a simple container associating a length with its type.

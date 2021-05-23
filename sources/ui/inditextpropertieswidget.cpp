@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "inditextpropertieswidget.h"
-#include "ui_inditextpropertieswidget.h"
-#include "independenttextitem.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "diagram.h"
-#include "diagramcommands.h"
-#include <QtGlobal>
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetgraphicsitem/independenttextitem.h"
+#include "../ui_inditextpropertieswidget.h"
+
 #include <QLineEdit>
+#include <QtGlobal>
 
 /**
 	@brief IndiTextPropertiesWidget::IndiTextPropertiesWidget

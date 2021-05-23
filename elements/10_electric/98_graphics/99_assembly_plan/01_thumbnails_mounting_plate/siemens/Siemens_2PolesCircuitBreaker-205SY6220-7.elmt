@@ -2,6 +2,7 @@
     <uuid uuid="{3f8951da-e7df-4d7a-a34d-4644874dca6f}"/>
     <names>
         <name lang="en">Siemens 2-Poles Circuit Breaker 205SY6220-7</name>
+        <name lang="cs">Siemens 2-Pólový jistič 205SY6220-7</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <rect x="0" rx="0" ry="0" antialias="false" height="200" width="80" style="line-style:normal;line-weight:thin;filling:white;color:black" y="0"/>

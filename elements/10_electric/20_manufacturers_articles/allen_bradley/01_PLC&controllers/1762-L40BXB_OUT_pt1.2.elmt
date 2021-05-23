@@ -25,7 +25,7 @@
         <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text z="1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="-6" text_width="-1" rotation="0" frame="false" y="-34" uuid="{ff9e5246-c75f-4d37-a9f4-0d931354b196}">

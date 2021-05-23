@@ -4,6 +4,7 @@
         <name lang="de">Kraftwerk mit Sonnenenergie betrieben,
 Sonnenkraftwerk (in Betrieb oder undefiniert)</name>
         <name lang="fr">Centrale solaire (en service ou indéterminé)</name>
+        <name lang="cs">Sluneční elektrárna ( v provozu)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

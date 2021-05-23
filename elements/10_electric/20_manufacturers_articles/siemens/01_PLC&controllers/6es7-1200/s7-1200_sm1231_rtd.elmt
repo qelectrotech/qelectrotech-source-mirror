@@ -2,6 +2,7 @@
     <uuid uuid="{fb3d26eb-60a1-4ca8-82b9-59064d3137aa}"/>
     <names>
         <name lang="fr">S7-1200 SM1231 RTD</name>
+        <name lang="cs">S7-1200 SM1231 RTD</name>
     </names>
     <elementInformations/>
     <informations></informations>

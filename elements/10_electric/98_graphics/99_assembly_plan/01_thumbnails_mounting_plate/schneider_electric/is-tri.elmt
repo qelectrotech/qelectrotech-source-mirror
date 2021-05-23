@@ -2,6 +2,7 @@
     <uuid uuid="{1b76b957-3198-4bd9-a517-74aa4ad548bc}"/>
     <names>
         <name lang="fr">Inter Sectio TRI</name>
+        <name lang="cs">Pojistkový odpínač TRI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <rect antialias="false" y="-74" rx="0" ry="0" width="35" style="line-style:normal;line-weight:normal;filling:white;color:black" height="30" x="14"/>

@@ -1,11 +1,16 @@
-<definition hotspot_y="50" version="0.51" hotspot_x="56" link_type="simple" width="70" type="element" height="110">
+<definition hotspot_y="50" version="0.51" hotspot_x="56" link_type="master" width="70" type="element" height="110">
     <uuid uuid="{20f65431-6f1f-4e09-9c73-68a1431c40a1}"/>
     <names>
         <name lang="fr">Disjoncteur differentiel 2P</name>
         <name lang="it">Int. magneto-termico diff. 2P</name>
         <name lang="es">Disyuntor termico magnetico en polos con dispositivo diferencial 2P</name>
         <name lang="pl">Wyłącznik z wbudowanym modułem różnicowoprądowym</name>
+        <name lang="cs">Jističochránič 2P</name>
+        <name lang="hu">Differenciál-védőkapcsoló 2P termikus és zárlatvédelemmel</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations></informations>
     <description>
         <polygon x1="-20" y1="14" x5="-20" y4="4" y5="4" x6="-20" y7="-25" x2="-20" y6="-6" y2="10" y3="10" x7="-27" antialias="true" x3="-15" closed="false" x4="-15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -8,7 +8,8 @@
         <name lang="pl">Gniazda wtyczkowe</name>
         <name lang="fr">Prises de courant</name>
         <name lang="it">Prese</name>
-        <name lang="cs">Zásuvky</name>
+        <name lang="cs">Zásuvky napájecí</name>
         <name lang="da">Stik udtag</name>
+        <name lang="hu">Erősáramú csatlakozók</name>
     </names>
 </qet-directory>

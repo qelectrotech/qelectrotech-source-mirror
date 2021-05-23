@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,9 @@
 #ifndef FOLIOAUTONUMBERING_H
 #define FOLIOAUTONUMBERING_H
 
+#include "../numerotationcontext.h"
+
 #include <QWidget>
-#include "numerotationcontext.h"
 
 class NumPartEditorW;
 class QAbstractButton;

@@ -4,6 +4,7 @@
         <name lang="de">Überstromrelais mit zwei Ausgängen</name>
         <name lang="fr">Relais à maximum de courant avec deux
 sorties</name>
+        <name lang="cs">Nadproudové relé se dvěma výstupy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

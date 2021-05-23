@@ -31,7 +31,7 @@
 	@param parent : parent item
 */
 PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
-    AbstractPartEllipse(editor, parent)
+	AbstractPartEllipse(editor, parent)
 {
     setTagName("arc");
 }
@@ -106,15 +106,15 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 void PartArc::toXmlPriv(QDomElement& xml_element) const
 {
     xml_element.setTagName("arc");
-    QPointF top_left(sceneTopLeft());
-    xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-    xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-    xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-    xml_element.setAttribute("height", QString("%1").arg(rect().height()));
-        //to maintain compatibility with the previous version, we write the angle in degrees.
-    xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
-    xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
-    stylesToXml(xml_element);
+	QPointF top_left(sceneTopLeft());
+	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
+	xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+		//to maintain compatibility with the previous version, we write the angle in degrees.
+	xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
+	xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
+	stylesToXml(xml_element);
 }
 
 /**

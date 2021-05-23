@@ -17,10 +17,10 @@
         <kindInformation show="1" name="state">NO</kindInformation>
         <kindInformation show="1" name="type">simple</kindInformation>
     </kindInformations>
-    <informations>S.Deffaux&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;
-Author: The QElectroTech team&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;
+    <informations>S.Deffaux
+
+Author: The QElectroTech team
+
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect ry="0" y="-57.8287" height="91.6042" antialias="false" x="160.1" width="11.3891" style="line-style:normal;line-weight:normal;filling:green;color:black" rx="0"/>

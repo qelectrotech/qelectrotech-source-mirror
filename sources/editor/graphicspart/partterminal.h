@@ -61,7 +61,7 @@ class PartTerminal : public CustomElementGraphicPart
 		static bool valideXml(QDomElement& element);
         void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
         void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
-	void paint(
+		void paint(
 				QPainter *painter,
 				const QStyleOptionGraphicsItem *,
 				QWidget *) override;

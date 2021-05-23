@@ -11,7 +11,7 @@
         <name lang="pl">Silnik prądu stałego</name>
         <name lang="es">Motor de corriente continua</name>
         <name lang="nl">Motor DC</name>
-        <name lang="cs">Motor na stejnosměrný proud</name>
+        <name lang="cs">Stejnosměrný motor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

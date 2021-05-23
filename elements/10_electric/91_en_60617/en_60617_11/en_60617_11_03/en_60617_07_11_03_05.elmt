@@ -4,6 +4,7 @@
         <name lang="be">een bundel van x buizen</name>
         <name lang="fr">Ligne dans un conduit à six voies</name>
         <name lang="de">Leiter in einem sechsfachen Kabelkanal</name>
+        <name lang="cs">Vedení v šesti kanálech</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

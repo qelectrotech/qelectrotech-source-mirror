@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Générateur photovoltaïque</name>
         <name lang="de">Photoelektrischer Generator</name>
+        <name lang="cs">Fotonapěťový generátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

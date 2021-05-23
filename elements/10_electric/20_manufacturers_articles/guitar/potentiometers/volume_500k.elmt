@@ -2,6 +2,7 @@
     <uuid uuid="{6ca66c03-29c5-4a4c-a193-7db53719057b}"/>
     <names>
         <name lang="en">Volume 500k Ohms</name>
+        <name lang="cs">Volume 500k Ohms</name>
     </names>
     <informations>Author: Thomas McMillan Grant Bennett
 Name: 500k Ohms Tone control

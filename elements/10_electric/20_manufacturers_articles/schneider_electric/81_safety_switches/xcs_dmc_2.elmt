@@ -10,7 +10,7 @@
         <name lang="it">XCS-DMC</name>
         <name lang="nl">XCS-DMC</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="-5.5" y="32" size="5" rotation="270" rotate="true" text="BK"/>

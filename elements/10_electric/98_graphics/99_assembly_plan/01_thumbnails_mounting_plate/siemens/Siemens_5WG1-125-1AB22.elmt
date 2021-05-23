@@ -2,6 +2,7 @@
     <uuid uuid="{41c6b983-e804-4d63-93d4-ca174faa1604}"/>
     <names>
         <name lang="fr">5WG1-125-1AB22 - Power Supply 640mA</name>
+        <name lang="cs">5WG1-125-1AB22 - Napájecí zdroj 640mA</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
     </elementInformations>
-    <informations>Alexandre Dis&#xd;&#xd;
+    <informations>Alexandre Dis
 </informations>
     <description>
         <rect x="0" rx="0" ry="0" antialias="false" height="200" width="160" style="line-style:normal;line-weight:thin;filling:white;color:black" y="0"/>

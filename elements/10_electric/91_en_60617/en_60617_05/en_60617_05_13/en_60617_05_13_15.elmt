@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Magnetron</name>
         <name lang="fr">Tube oscillateur magnétron</name>
+        <name lang="cs">Magnetronová oscilační elektronka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

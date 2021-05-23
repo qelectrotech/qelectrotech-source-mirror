@@ -1,0 +1,123 @@
+<definition height="180" hotspot_y="90" version="0.80" width="270" link_type="simple" type="element" hotspot_x="135">
+    <uuid uuid="{204c3a87-c58e-45f2-9979-1829a17e4f25}"/>
+    <names>
+        <name lang="de">Raumfühler für relative Feuchte und Temperatur</name>
+        <name lang="en">Room sensor for relative humidity and temperature</name>
+        <name lang="cs">Prostorové čidlo relativní vlhkosti a teploty</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="machine-manufacturer-reference" show="1">MOSB0102030405</elementInformation>
+        <elementInformation name="description" show="1">Aufputz Raumbediengerät Temp Feuchte mit Anzeige Taster und Poti</elementInformation>
+        <elementInformation name="designation" show="1">069555</elementInformation>
+        <elementInformation name="label" show="1">X1</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1">FTW04VVS</elementInformation>
+        <elementInformation name="provider" show="1">Microsens</elementInformation>
+        <elementInformation name="comment" show="1">Raumbediengerät</elementInformation>
+        <elementInformation name="manufacturer" show="1">Thermokon</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="27" y="-67" text="8"/>
+        <rect height="170" antialias="false" rx="0" x="-130" y="-85" width="260" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="6" antialias="false" x="79" y="46" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="6" antialias="false" rx="0" x="-86" y="7" width="16" ry="0" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-13" y="-67" text="6"/>
+        <rect height="6" antialias="false" rx="0" x="42" y="-8" width="16" ry="0" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="6" antialias="false" x="79" y="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="-87.9" y="-33" text="Sensor"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="-32" y="-34" text="rf/rH&#xa;0..10V"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="-7" y="-36" text="GND"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="-51.7" y="-33" text="Temp&#xa;0..10V"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="-67.8" y="-33" text="Sensor"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="8" y="-33" text="24V&#xa;AC/DC"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="104" y="-67" text="12"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="65" y="-67" text="10"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-33" y="-67" text="5"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="88.1" y="-33" text="Taster&#xa;Button"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="33" y="-33" text="Poti A"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="53.1" y="-29" text="Poti OUT"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="73" y="-35" text="Poti B"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="108.2" y="-33" text="Taster&#xa;Button"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-93" y="-67" text="2"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-53" y="-67" text="4"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-73" y="-67" text="3"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="7" y="-67" text="7"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="84" y="-67" text="11"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="91" y="48" text="Anzeige&#xa;rF / rf +°C"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="47" y="-67" text="9"/>
+        <circle diameter="6" antialias="false" x="69" y="46" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="55" antialias="false" rx="0" x="-120" y="-80" width="240" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-113" y="-67" text="1"/>
+        <line antialias="false" length1="1.5" x2="120" end2="none" length2="1.5" x1="-120" y1="-65" y2="-65" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-100" end2="none" length2="1.5" x1="-100" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-80" end2="none" length2="1.5" x1="-80" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-60" end2="none" length2="1.5" x1="-60" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-40" end2="none" length2="1.5" x1="-40" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="-20" end2="none" length2="1.5" x1="-20" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="0" end2="none" length2="1.5" x1="0" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="20" end2="none" length2="1.5" x1="20" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="40" end2="none" length2="1.5" x1="40" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="60" end2="none" length2="1.5" x1="60" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="80" end2="none" length2="1.5" x1="80" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" length1="1.5" x2="100" end2="none" length2="1.5" x1="100" y1="-80" y2="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="44" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-130" y="90" uuid="{c5864dea-a005-457b-8c54-2e2b0905cbee}" text_width="-1" text_from="ElementInfo">
+            <text></text>
+            <info_name>formula</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" x="-103" y="-35" text="LED+"/>
+        <rect height="6" antialias="false" rx="0" x="-88" y="-8" width="16" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="45" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-120" y="50" uuid="{2e9389f7-2dc9-4f4a-804b-5729e6e4976f}" text_width="-1" text_from="ElementInfo">
+            <text>MOSB0102030405</text>
+            <info_name>machine-manufacturer-reference</info_name>
+        </dynamic_text>
+        <dynamic_text z="45" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-120" y="30" uuid="{2e9389f7-2dc9-4f4a-804b-5729e6e4976f}" text_width="-1" text_from="ElementInfo">
+            <text>FTW04VVS</text>
+            <info_name>manufacturer-reference</info_name>
+        </dynamic_text>
+        <dynamic_text z="45" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-120" y="40" uuid="{2e9389f7-2dc9-4f4a-804b-5729e6e4976f}" text_width="-1" text_from="ElementInfo">
+            <text>069555</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <rect height="0" antialias="false" rx="0" x="-83" y="-10" width="1" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="46" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-120" y="20" uuid="{d2372138-1874-4a95-b936-f0b3bb15d35c}" text_width="-1" text_from="ElementInfo">
+            <text>Thermokon</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <polygon y3="-11" antialias="false" closed="false" x2="-85" x1="-88" x3="-72" y1="1" y2="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="47" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" x="-130" y="70" uuid="{b04bab84-a3e5-4066-a6fc-d6e79d3b9cc3}" text_width="-1" text_from="ElementInfo">
+            <text>Aufputz Raumbediengerät Temp Feuchte mit Anzeige Taster und Poti</text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <polygon y3="-12" antialias="false" closed="false" x4="-88" x2="-86" x1="-88" x3="-87" y4="-10" y1="-10" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-10" antialias="false" closed="false" x4="-85" x2="-83" x1="-85" x3="-84" y4="-12" y1="-12" y2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-25" antialias="false" closed="false" x2="-90" x1="-88" x3="-90" y1="-5" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-25" antialias="false" closed="false" x2="-70" x1="-72" x3="-70" y1="-5" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="10" antialias="false" closed="false" x2="-110" x1="-110" x3="-86" y1="-25" y2="10" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-25" antialias="false" closed="false" x2="-10" x1="-70" x3="-10" y1="10" y2="10" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="10" antialias="false" closed="false" x4="-105" x2="-105" x1="-105" x3="-95" y4="5" y5="5" x5="-105" y1="5" y2="15" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" closed="false" x2="-95" x1="-95" y1="5" y2="15" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-5" antialias="false" closed="false" x4="42" x2="30" x1="30" x3="40" y4="-5" y1="-25" y2="-5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-5" antialias="false" closed="false" x2="70" x1="70" x3="58" y1="-25" y2="-5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="5" antialias="false" closed="false" x2="50" x1="50" x3="60" y1="-25" y2="-10" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="5" antialias="false" closed="false" x4="60" x2="60" x1="60" x3="55" y4="5" y5="5" x5="60" y1="5" y2="0" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-5" antialias="false" closed="false" x4="105" x2="110" x1="110" x3="105" y4="-5" y1="-25" y2="-5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-5" antialias="false" closed="false" x4="105" x2="90" x1="90" x3="95" y4="0" y5="0" x5="105" y1="-25" y2="-5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="5" antialias="false" closed="false" x4="105" x2="100" x1="100" x3="95" y4="5" y1="0" y2="5" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="67" y="24" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="10" antialias="false" rx="0" x="67" y="44" width="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="6" antialias="false" x="69" y="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="91" y="28" text="Tempbereich&#xa;-15.35°/0..50°"/>
+        <terminal x="-70" y="-80" uuid="{9aeb3fee-2b0a-434e-be1c-de534a4cc70d}" name="" orientation="n"/>
+        <terminal x="-50" y="-80" uuid="{95c1e2fb-d600-4ddc-bd40-b2670bcbce9e}" name="" orientation="n"/>
+        <terminal x="-30" y="-80" uuid="{878b2823-24ff-443f-bc7c-3e4bbc492db5}" name="" orientation="n"/>
+        <terminal x="50" y="-80" uuid="{f6fdc251-2e95-45a0-b766-f5d8c9da4c2c}" name="" orientation="n"/>
+        <terminal x="-90" y="-80" uuid="{75810186-7238-4c71-9dd7-746d5e1b25e7}" name="" orientation="n"/>
+        <terminal x="-10" y="-80" uuid="{60e17204-4f35-4798-a173-0d363427b7c6}" name="" orientation="n"/>
+        <terminal x="110" y="-80" uuid="{81de04b1-2ab6-4347-ab13-e66ca802ac4d}" name="" orientation="n"/>
+        <terminal x="30" y="-80" uuid="{4513f283-210b-4f49-bb0f-f3d5380deab5}" name="" orientation="n"/>
+        <terminal x="90" y="-80" uuid="{a143686b-9db9-443c-8737-663c010b490a}" name="" orientation="n"/>
+        <terminal x="-110" y="-80" uuid="{5f34d83e-26cd-4c84-90d9-39e912ae606c}" name="" orientation="n"/>
+        <terminal x="70" y="-80" uuid="{fc0df3bc-c406-49f7-b77d-17a129663134}" name="" orientation="n"/>
+        <terminal x="10" y="-80" uuid="{b277cce4-080d-4936-aeeb-5e733e2d25bd}" name="" orientation="n"/>
+    </description>
+</definition>

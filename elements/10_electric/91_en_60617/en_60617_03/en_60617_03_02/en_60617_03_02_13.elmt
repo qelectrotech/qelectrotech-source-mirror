@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Point neutre</name>
         <name lang="de">Neutralpunkt in einem Mehrphasensystem</name>
+        <name lang="cs">Střední bod</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -125,9 +125,9 @@ void SingleLineProperties::draw(QPainter *painter,
 	@param size taille du segment
 */
 void SingleLineProperties::drawGround(QPainter *painter,
-					  QET::ConductorSegmentType direction,
-					  QPointF center,
-					  qreal size) {
+				      QET::ConductorSegmentType direction,
+				      QPointF center,
+				      qreal size) {
 	painter -> save();
 
 	// prepare le QPainter
@@ -219,10 +219,10 @@ void SingleLineProperties::drawPen(QPainter *painter,
 */
 void SingleLineProperties::toXmlPriv(QDomElement& e) const {
 
-    e.setAttribute("ground",  hasGround  ? "true" : "false");
-    e.setAttribute("neutral", hasNeutral ? "true" : "false");
-    e.setAttribute("phase",   phases);
-    if (isPen()) e.setAttribute("pen", "true");
+	e.setAttribute("ground",  hasGround  ? "true" : "false");
+	e.setAttribute("neutral", hasNeutral ? "true" : "false");
+	e.setAttribute("phase",   phases);
+	if (isPen()) e.setAttribute("pen", "true");
 }
 
 /**
@@ -286,44 +286,44 @@ ConductorProperties::~ConductorProperties()
 void ConductorProperties::toXmlPriv(QDomElement& e) const
 {
 
-    e.setAttribute("type", typeToString(type));
+	e.setAttribute("type", typeToString(type));
 
-    if (color != QColor(Qt::black))
-        e.setAttribute("color", color.name());
+	if (color != QColor(Qt::black))
+		e.setAttribute("color", color.name());
 
-    e.setAttribute("bicolor", m_bicolor? "true" : "false");
-    e.setAttribute("color2", m_color_2.name());
-    e.setAttribute("dash-size", QString::number(m_dash_size));
+	e.setAttribute("bicolor", m_bicolor? "true" : "false");
+	e.setAttribute("color2", m_color_2.name());
+	e.setAttribute("dash-size", QString::number(m_dash_size));
 
-    if (type == Single)
+	if (type == Single)
     {
         QDomDocument doc = e.ownerDocument();
         singleLineProperties.toXml(doc);
     }
 
-    e.setAttribute("num", text);
-    e.setAttribute("text_color", text_color.name());
-    e.setAttribute("formula", m_formula);
-    e.setAttribute("cable", m_cable);
-    e.setAttribute("bus", m_bus);
-    e.setAttribute("function", m_function);
-    e.setAttribute("tension_protocol", m_tension_protocol);
-    e.setAttribute("conductor_color", m_wire_color);
-    e.setAttribute("conductor_section", m_wire_section);
-    e.setAttribute("numsize", QString::number(text_size));
-    e.setAttribute("condsize", QString::number(cond_size));
-    e.setAttribute("displaytext", m_show_text);
-    e.setAttribute("onetextperfolio", m_one_text_per_folio);
-    e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
-    e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
+	e.setAttribute("num", text);
+	e.setAttribute("text_color", text_color.name());
+	e.setAttribute("formula", m_formula);
+	e.setAttribute("cable", m_cable);
+	e.setAttribute("bus", m_bus);
+	e.setAttribute("function", m_function);
+	e.setAttribute("tension_protocol", m_tension_protocol);
+	e.setAttribute("conductor_color", m_wire_color);
+	e.setAttribute("conductor_section", m_wire_section);
+	e.setAttribute("numsize", QString::number(text_size));
+	e.setAttribute("condsize", QString::number(cond_size));
+	e.setAttribute("displaytext", m_show_text);
+	e.setAttribute("onetextperfolio", m_one_text_per_folio);
+	e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
+	e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
 
-    QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-    e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
-    e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
+	e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
 
-    QString conductor_style = writeStyle();
-    if (!conductor_style.isEmpty())
-        e.setAttribute("style", conductor_style);
+	QString conductor_style = writeStyle();
+	if (!conductor_style.isEmpty())
+		e.setAttribute("style", conductor_style);
 }
 
 
@@ -388,7 +388,6 @@ bool ConductorProperties::fromXmlPriv(const QDomElement &e)
 		m_horizontal_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
     if (QETXML::propertyString(e, "vertical-alignment", &alinment_temp) == QETXML::PropertyFlags::Success)
 		m_vertical_alignment = Qt::Alignment(me.keyToValue(alinment_temp.toStdString().data()));
-
 	return true;
 }
 
@@ -477,22 +476,22 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 
 	singleLineProperties.fromSettings(settings, prefix);
 
-	text				 = settings.value(prefix + "text", "_").toString();
+	text                 = settings.value(prefix + "text", "_").toString();
 	QColor settings_text_color = QColor(settings.value(prefix + "text_color").toString());
 	text_color = (settings_text_color.isValid()? settings_text_color : QColor(Qt::black));
-	m_formula			= settings.value(prefix + "formula", "").toString();
-	m_cable			  = settings.value(prefix + "cable", "").toString();
-	m_bus				= settings.value(prefix + "bus", "").toString();
-	m_function		   = settings.value(prefix + "function", "").toString();
+	m_formula            = settings.value(prefix + "formula", "").toString();
+	m_cable              = settings.value(prefix + "cable", "").toString();
+	m_bus                = settings.value(prefix + "bus", "").toString();
+	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
-	m_wire_color		 = settings.value(prefix + "conductor_color", "").toString();
-	m_wire_section	   = settings.value(prefix + "conductor_section", "").toString();
-	text_size			= settings.value(prefix + "textsize", "7").toInt();
-	cond_size			= settings.value(prefix + "size", "1").toInt();
-	m_show_text		  = settings.value(prefix + "displaytext", true).toBool();
+	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
+	m_wire_section       = settings.value(prefix + "conductor_section", "").toString();
+	text_size            = settings.value(prefix + "textsize", "7").toInt();
+	cond_size            = settings.value(prefix + "size", "1").toInt();
+	m_show_text          = settings.value(prefix + "displaytext", true).toBool();
 	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
-	verti_rotate_text	= settings.value((prefix + "vertirotatetext"), "270").toDouble();
-	horiz_rotate_text	= settings.value((prefix + "horizrotatetext"), "0").toDouble();
+	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
+	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
 	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
@@ -530,25 +529,25 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (clist.size() == 1)
 	{
 		ConductorProperties cp = clist.first();
-		color				= cp.color;
-		m_bicolor			= cp.m_bicolor;
-		m_color_2			= cp.m_color_2;
-		m_dash_size		  = cp.m_dash_size;
-		text				 = cp.text;
-		text_color		   = cp.text_color;
-		m_formula			= cp.m_formula;
-		m_cable			  = cp.m_cable;
-		m_bus				= cp.m_bus;
-		m_function		   = cp.m_function;
+		color                = cp.color;
+		m_bicolor            = cp.m_bicolor;
+		m_color_2            = cp.m_color_2;
+		m_dash_size          = cp.m_dash_size;
+		text                 = cp.text;
+		text_color           = cp.text_color;
+		m_formula            = cp.m_formula;
+		m_cable              = cp.m_cable;
+		m_bus                = cp.m_bus;
+		m_function           = cp.m_function;
 		m_tension_protocol   = cp.m_tension_protocol;
-		m_wire_color		 = cp.m_wire_color;
-		m_wire_section	   = cp.m_wire_section;
-		text_size			= cp.text_size;
-		cond_size			= cp.cond_size;
-		m_show_text		  = cp.m_show_text;
+		m_wire_color         = cp.m_wire_color;
+		m_wire_section       = cp.m_wire_section;
+		text_size            = cp.text_size;
+		cond_size            = cp.cond_size;
+		m_show_text          = cp.m_show_text;
 		m_one_text_per_folio = cp.m_one_text_per_folio;
-		verti_rotate_text	= cp.verti_rotate_text;
-		horiz_rotate_text	= cp.horiz_rotate_text;
+		verti_rotate_text    = cp.verti_rotate_text;
+		horiz_rotate_text    = cp.horiz_rotate_text;
 		m_vertical_alignment = cp.m_vertical_alignment;
 		m_horizontal_alignment = cp.m_horizontal_alignment;
 
@@ -886,7 +885,7 @@ void ConductorProperties::readStyle(const QString &style_string) {
 		if (!match.hasMatch())
 		{
 			qDebug()<<"no Match"
-				   <<style_str;
+			       <<style_str;
 		} else {
 			QString style_name = match.captured("name");
 			QString style_value = match.captured("value");
@@ -946,12 +945,12 @@ int SingleLineProperties::operator!=(const SingleLineProperties &other) const
 	@param prefix prefix a ajouter devant les noms des parametres
 */
 void SingleLineProperties::toSettings(QSettings &settings,
-					  const QString &prefix) const
+				      const QString &prefix) const
 {
 	settings.setValue(prefix + "hasGround",  hasGround);
 	settings.setValue(prefix + "hasNeutral", hasNeutral);
-	settings.setValue(prefix + "phases",	 phases);
-	settings.setValue(prefix + "pen",		is_pen);
+	settings.setValue(prefix + "phases",     phases);
+	settings.setValue(prefix + "pen",        is_pen);
 }
 
 /**
@@ -962,6 +961,6 @@ void SingleLineProperties::fromSettings(QSettings &settings,
 					const QString &prefix) {
 	hasGround  = settings.value(prefix + "hasGround",  true).toBool();
 	hasNeutral = settings.value(prefix + "hasNeutral", true).toBool();
-	phases	 = settings.value(prefix + "phases",	 1).toInt();
-	is_pen	 = settings.value(prefix + "pen",		false).toBool();
+	phases     = settings.value(prefix + "phases",     1).toInt();
+	is_pen     = settings.value(prefix + "pen",        false).toBool();
 }

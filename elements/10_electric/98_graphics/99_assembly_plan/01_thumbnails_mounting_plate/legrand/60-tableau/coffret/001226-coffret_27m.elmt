@@ -2,6 +2,7 @@
     <uuid uuid="{fa0506ed-3870-4b7c-a314-af163f51c491}"/>
     <names>
         <name lang="fr">001226 - Coffret - 27 modules</name>
+        <name lang="cs">001226 - Rozvodnice - 27 modulů</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

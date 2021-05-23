@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Générateur Hall avec quatre liaisons</name>
         <name lang="de">Hall-Generator </name>
+        <name lang="cs">Hallův generátor se čtyřmi přípoji</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

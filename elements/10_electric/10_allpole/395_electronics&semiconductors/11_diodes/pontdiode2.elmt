@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Gleichrichter in Brückenschaltung</name>
         <name lang="fr">Pont de diodes</name>
+        <name lang="cs">Graetzův můstek</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="comment"></elementInformation>

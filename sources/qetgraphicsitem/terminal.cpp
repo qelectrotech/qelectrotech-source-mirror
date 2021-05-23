@@ -66,11 +66,14 @@ void Terminal::init(QString number, QString name, bool hiddenName)
 	qreal h = qAbs(dcy - dey) + 7;
     m_br = QRectF(origin, QSizeF(w, h));
 
-    // Number of terminal
-    number_terminal_ = std::move(number);
-    // Name of terminal
     d->m_name = std::move(name);
-    name_terminal_hidden = hiddenName;
+
+	qreal dey = dock_elmt_.y();
+	QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
+	origin += QPointF(-3.0, -3.0);
+	qreal w = qAbs(dcx - dex) + 7;
+	qreal h = qAbs(dcy - dey) + 7;
+	m_br = QRectF(origin, QSizeF(w, h));
 
 	setAcceptHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
@@ -78,7 +81,6 @@ void Terminal::init(QString number, QString name, bool hiddenName)
 	setZValue(Z);
 }
 
-/*!
 	\brief Terminal::init
 	Additionaly to the init above, this method stores position and orientation into the data class
 	\param pf
@@ -86,55 +88,33 @@ void Terminal::init(QString number, QString name, bool hiddenName)
 	\param number
 	\param name
 	\param hiddenName
-*/
-void Terminal::init(
 		QPointF pf,
 		Qet::Orientation o,
 		QString number,
 		QString name,
-        bool hiddenName)
-{
     setTagName("terminal");
 	// definition du pount d'amarrage pour un conducteur
 	d->m_pos  = pf;
-
 	// definition de l'orientation de la borne (par defaut : sud)
 	if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
 	else d->m_orientation = o;
-
-    init(number, name, hiddenName);
-}
-
-/**
 	initialise une borne
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 	@param e   Element auquel cette borne appartient
-*/
-Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
 	d(new TerminalData(this)),
 	parent_element_ (e)
-{
 	init(pf, o, "_", "_", false);
-}
-
-/**
 	initialise une borne
 	@param pf_x Abscisse du point d'amarrage pour un conducteur
 	@param pf_y Ordonnee du point d'amarrage pour un conducteur
 	@param o	orientation de la borne : Qt::Horizontal ou Qt::Vertical
 	@param e	Element auquel cette borne appartient
-*/
-Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
 	d(new TerminalData(this)),
 	parent_element_  (e)
-{
 	init(QPointF(pf_x, pf_y), o, "_", "_", false);
-}
-
-/**
 	initialise une borne
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
@@ -142,8 +122,6 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	@param name of terminal
 	@param hiddenName hide or show the name
 	@param e   Element auquel cette borne appartient
-*/
-Terminal::Terminal(
 		QPointF pf,
 		Qet::Orientation o,
 		QString num,
@@ -153,17 +131,14 @@ Terminal::Terminal(
 	QGraphicsObject	(e),
 	d(new TerminalData(this)),
 	parent_element_  (e)
-{
 	init(pf, o, std::move(num), std::move(name), hiddenName);
-}
-
 Terminal::Terminal(TerminalData* data, Element* e) :
 	QGraphicsObject(e),
 	d(data),
 	parent_element_(e)
 {
 	d->setParent(this);
-    init("_", "_", false);
+	init();
 }
 
 /**
@@ -171,7 +146,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
  * Destruction of the terminal, and also docked conductor
  */
 Terminal::~Terminal() {
-    qDeleteAll(m_conductors_list);
+	qDeleteAll(m_conductors_list);
 }
 
 /**
@@ -197,26 +172,14 @@ Qet::Orientation Terminal::orientation() const
 	} else return(d->m_orientation);
 }
 
-/**
 	@brief Terminal::setNumber
 	@param number
-*/
-void Terminal::setNumber(QString number)
-{
 	number_terminal_ = std::move(number);
-}
-
-/**
 	@brief Terminal::setName
 	@param name : QString
 	@param hiddenName : bool
-*/
-void Terminal::setName(QString name, bool hiddenName)
-{
 	d->m_name = std::move(name);
 	name_terminal_hidden = hiddenName;
-}
-
 /**
 	@brief Terminal::name
 	@return the name of terminal.
@@ -290,8 +253,8 @@ void Terminal::paint(
 	painter -> save();
 
 	//annulation des renderhints
-	painter -> setRenderHint(QPainter::Antialiasing,		  false);
-	painter -> setRenderHint(QPainter::TextAntialiasing,	  false);
+	painter -> setRenderHint(QPainter::Antialiasing,          false);
+	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	// on travaille avec les coordonnees de l'element parent
@@ -425,7 +388,7 @@ void Terminal::drawHelpLine(bool draw)
 QLineF Terminal::HelpLine() const
 {
 	QPointF scene_dock = dockConductor();
-	QRectF  rect	   = diagram() -> border_and_titleblock.insideBorderRect();
+	QRectF  rect       = diagram() -> border_and_titleblock.insideBorderRect();
 
 	QLineF line(scene_dock , QPointF());
 
@@ -503,7 +466,7 @@ Terminal* Terminal::alignedWithTerminal() const
 
 	//Available_terminals have several terminals, we get the nearest terminal
 	line.setP2(available_terminals.first() -> dockConductor());
-	qreal	 current_lenght   = line.length();
+	qreal     current_lenght   = line.length();
 	Terminal *nearest_terminal = available_terminals.takeFirst();
 
 	//Search the nearest terminal to this one
@@ -760,12 +723,12 @@ QList<Conductor *> Terminal::conductors() const
 */
 void Terminal::toXmlPriv(QDomElement &qdo) const
 {
-    // for backward compatibility
+	// for backward compatibility
     qdo.setAttribute("number", number_terminal_);
     qdo.setAttribute("nameHidden",  name_terminal_hidden);
-    // end for backward compatibility
+	// end for backward compatibility
 
-    qdo.setAttribute("orientation", d->m_orientation);
+	qdo.setAttribute("orientation", d->m_orientation);
 
     // Do not store terminal data in its own child
     // Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
@@ -821,7 +784,6 @@ bool Terminal::fromXmlPriv(const QDomElement &terminal) {
     QETXML::propertyString(terminal, "number", &number_terminal_);
 	QETXML::propertyBool(terminal, "nameHidden", &name_terminal_hidden);
     QETXML::propertyUuid(terminal, "uuid", &d->m_uuid);
-
 	if(!d->fromXml(terminal))
 		return false;
 

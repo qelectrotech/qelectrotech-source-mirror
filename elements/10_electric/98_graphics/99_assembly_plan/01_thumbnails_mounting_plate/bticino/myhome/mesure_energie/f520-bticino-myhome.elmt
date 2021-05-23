@@ -7,6 +7,7 @@
         <name lang="it">F520 - Misuratore a 3 ingressi</name>
         <name lang="es">F520 - Meditor de 3 entradas</name>
         <name lang="de">F520 - Messgerät 3 Eingängen</name>
+        <name lang="cs">F520 - 3 kanálový záznamník dat</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Input meter</elementInformation>

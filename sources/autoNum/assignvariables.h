@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,13 +17,12 @@
 */
 #ifndef ASSIGNVARIABLES_H
 #define ASSIGNVARIABLES_H
-
-#include <QString>
-#include <QPointF>
-#include <QStringList>
-
+#include "../diagramcontext.h"
 #include "numerotationcontext.h"
-#include "diagramcontext.h"
+
+#include <QPointF>
+#include <QString>
+#include <QStringList>
 
 class Diagram;
 class Element;

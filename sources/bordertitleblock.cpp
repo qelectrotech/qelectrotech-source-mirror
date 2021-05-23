@@ -85,14 +85,14 @@ QRectF BorderTitleBlock::titleBlockRect() const
 {
 	if (m_edge == Qt::BottomEdge)
 		return QRectF(diagram_rect_.bottomLeft(),
-				  QSize(diagram_rect_.width(),
-					m_titleblock_template_renderer -> height()
-					));
+			      QSize(diagram_rect_.width(),
+				    m_titleblock_template_renderer -> height()
+				    ));
 	else
 		return QRectF(diagram_rect_.topRight(),
-				  QSize(m_titleblock_template_renderer -> height(),
-					diagram_rect_.height()
-					));
+			      QSize(m_titleblock_template_renderer -> height(),
+				    diagram_rect_.height()
+				    ));
 }
 
 /**
@@ -123,9 +123,9 @@ QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 		return titleBlockRect();
 	else
 		return QRectF (diagram_rect_.bottomRight(),
-				   QSize(diagram_rect_.height(),
-					 m_titleblock_template_renderer -> height()
-					 ));
+			       QSize(diagram_rect_.height(),
+				     m_titleblock_template_renderer -> height()
+				     ));
 
 }
 
@@ -149,9 +149,9 @@ QRectF BorderTitleBlock::columnsRect() const
 {
 	if (!display_columns_) return QRectF();
 	return QRectF (Diagram::margin,
-			   Diagram::margin,
-			   (columns_count_*columns_width_) + rows_header_width_,
-			   columns_header_height_);
+		       Diagram::margin,
+		       (columns_count_*columns_width_) + rows_header_width_,
+		       columns_header_height_);
 }
 
 /**
@@ -163,9 +163,9 @@ QRectF BorderTitleBlock::rowsRect() const
 {
 	if (!display_rows_) return QRectF();
 	return QRectF (Diagram::margin,
-			   Diagram::margin,
-			   rows_header_width_,
-			   (rows_count_*rows_height_) + columns_header_height_);
+		       Diagram::margin,
+		       rows_header_width_,
+		       (rows_count_*rows_height_) + columns_header_height_);
 }
 
 /**
@@ -176,9 +176,9 @@ QRectF BorderTitleBlock::rowsRect() const
 QRectF BorderTitleBlock::outsideBorderRect() const
 {
 	return QRectF (Diagram::margin,
-			   Diagram::margin,
-			   (columns_width_*columns_count_) + rows_header_width_,
-			   (rows_height_*rows_count_) + columns_header_height_);
+		       Diagram::margin,
+		       (columns_width_*columns_count_) + rows_header_width_,
+		       (rows_height_*rows_count_) + columns_header_height_);
 }
 
 /**
@@ -216,7 +216,7 @@ QDomElement BorderTitleBlock::titleBlockToXml(QDomDocument& doc) {
 */
 void BorderTitleBlock::titleBlockFromXml(const QDomElement &xml_elmt) {
 
-    TitleBlockProperties tbp;
+	TitleBlockProperties tbp;
     QString tagname = tbp.tagName();
     QDomElement titleBlockProperties = xml_elmt.firstChildElement(tagname);
 
@@ -240,12 +240,12 @@ void BorderTitleBlock::titleBlockFromXml(const QDomElement &xml_elmt) {
 	@param xml_elmt the XML element attributes will be added to
 */
 void BorderTitleBlock::borderToXml(QDomElement &xml_elmt) {
-	xml_elmt.setAttribute("cols",		columnsCount());
-	xml_elmt.setAttribute("colsize",	 QString("%1").arg(columnsWidth()));
+	xml_elmt.setAttribute("cols",        columnsCount());
+	xml_elmt.setAttribute("colsize",     QString("%1").arg(columnsWidth()));
 	xml_elmt.setAttribute("displaycols", columnsAreDisplayed() ? "true" : "false");
 
-	xml_elmt.setAttribute("rows",		rowsCount());
-	xml_elmt.setAttribute("rowsize",	 QString("%1").arg(rowsHeight()));
+	xml_elmt.setAttribute("rows",        rowsCount());
+	xml_elmt.setAttribute("rowsize",     QString("%1").arg(rowsHeight()));
 	xml_elmt.setAttribute("displayrows", rowsAreDisplayed() ? "true" : "false");
 
 	// attribut datant de la version 0.1 - laisse pour retrocompatibilite
@@ -512,9 +512,9 @@ void BorderTitleBlock::updateRectangles()
 {
 	QRectF previous_diagram = diagram_rect_;
 	diagram_rect_ = QRectF(Diagram::margin,
-				   Diagram::margin,
-				   diagramWidth(),
-				   diagramHeight());
+			       Diagram::margin,
+			       diagramWidth(),
+			       diagramHeight());
 	if (diagram_rect_ != previous_diagram)
 		emit(borderChanged(previous_diagram, diagram_rect_));
 }
@@ -566,14 +566,14 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawRect(numbered_rectangle);
 			if (settings.value("border-columns_0", true).toBool()){
 			painter -> drawText(numbered_rectangle,
-						Qt::AlignVCenter
-						| Qt::AlignCenter,
-						QString("%1").arg(i - 1));
+					    Qt::AlignVCenter
+					    | Qt::AlignCenter,
+					    QString("%1").arg(i - 1));
 			}else{
 			painter -> drawText(numbered_rectangle,
-						Qt::AlignVCenter
-						| Qt::AlignCenter,
-						QString("%1").arg(i));
+					    Qt::AlignVCenter
+					    | Qt::AlignCenter,
+					    QString("%1").arg(i));
 			}
 		}
 	}
@@ -594,9 +594,9 @@ void BorderTitleBlock::draw(QPainter *painter)
 			);
 			painter -> drawRect(lettered_rectangle);
 			painter -> drawText(lettered_rectangle,
-						Qt::AlignVCenter
-						| Qt::AlignCenter,
-						row_string);
+					    Qt::AlignVCenter
+					    | Qt::AlignCenter,
+					    row_string);
 			row_string = incrementLetters(row_string);
 		}
 	}
@@ -638,9 +638,9 @@ void BorderTitleBlock::drawDxf(
 {
 	// Transform to DXF scale.
 	columns_header_height_ *= Createdxf::yScale;
-	rows_height_		   *= Createdxf::yScale;
-	rows_header_width_	 *= Createdxf::xScale;
-	columns_width_		 *= Createdxf::xScale;
+	rows_height_           *= Createdxf::yScale;
+	rows_header_width_     *= Createdxf::xScale;
+	columns_width_         *= Createdxf::xScale;
 
 	// draw the empty box that appears as soon as there is a header
 	// dessine la case vide qui apparait des qu'il y a un entete
@@ -669,11 +669,11 @@ void BorderTitleBlock::drawDxf(
 		display_columns_) {
 	int offset = settings.value("border-columns_0", true).toBool() ? -1 : 0;
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
-		double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
+	    double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
 					(rows_header_width_ + ((i - 1) *
 					 columns_width_));
 			double yCoord = Createdxf::sheetHeight
-			- diagram_rect_.topLeft().y()*Createdxf::yScale
+		    - diagram_rect_.topLeft().y()*Createdxf::yScale
 					- columns_header_height_;
 			double recWidth = columns_width_;
 			double recHeight = columns_header_height_;
@@ -702,8 +702,8 @@ void BorderTitleBlock::drawDxf(
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
-		double yCoord = Createdxf::sheetHeight
-			- diagram_rect_.topLeft().y()
+	    double yCoord = Createdxf::sheetHeight
+		    - diagram_rect_.topLeft().y()
 					*Createdxf::yScale
 					- (
 						columns_header_height_
@@ -735,17 +735,17 @@ void BorderTitleBlock::drawDxf(
 		//qp -> translate(titleblock_rect_.topLeft());
 		QRectF rect = titleBlockRect();
 		m_titleblock_template_renderer -> renderDxf(rect,
-								rect.width(),
-								file_path,
-								color);
+							    rect.width(),
+							    file_path,
+							    color);
 		//qp -> translate(-titleblock_rect_.topLeft());
 	}
 
 	// Transform back to QET scale
 	columns_header_height_ /= Createdxf::yScale;
 	rows_height_		   /= Createdxf::yScale;
-	rows_header_width_	 /= Createdxf::xScale;
-	columns_width_		 /= Createdxf::xScale;
+	rows_header_width_     /= Createdxf::xScale;
+	columns_width_         /= Createdxf::xScale;
 
 }
 
@@ -865,7 +865,7 @@ void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 	\~ @param height :
 */
 void BorderTitleBlock::setDiagramHeight(const qreal &height) {
-	//		  size of rows to use = rows_height
+	//          size of rows to use = rows_height
 	// taille des lignes a utiliser = rows_height
 	setRowsCount(qRound(ceil(height / rows_height_)));
 }
@@ -883,7 +883,7 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 		return (DiagramPosition("", 0));
 
 	QPointF relative_pos = pos - insideBorderRect().topLeft();
-	int row_number	= int(ceil(relative_pos.x() / columnsWidth()));
+	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
 	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 
 	QString letter = "A";
@@ -951,18 +951,18 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// ... overridden by the historical and/or dynamically generated fields
 	QLocale var;
 	var.dateFormat(QLocale::ShortFormat);
-	context.addValue("author",	  btb_author_);
+	context.addValue("author",      btb_author_);
 	context.addValue(
 		"date",
 		QLocale::system().toString(btb_date_, QLocale::ShortFormat));
-	context.addValue("title",	   btb_title_);
-	context.addValue("filename",	btb_filename_);
-	context.addValue("plant",	 btb_plant_);
-	context.addValue("locmach",	 btb_locmach_);
-	context.addValue("indexrev",	btb_indexrev_);
-	context.addValue("version",	 btb_version_);
-	context.addValue("folio",	   btb_final_folio_);
-	context.addValue("folio-id",	folio_index_);
+	context.addValue("title",       btb_title_);
+	context.addValue("filename",    btb_filename_);
+	context.addValue("plant",     btb_plant_);
+	context.addValue("locmach",     btb_locmach_);
+	context.addValue("indexrev",    btb_indexrev_);
+	context.addValue("version",     btb_version_);
+	context.addValue("folio",       btb_final_folio_);
+	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);
 	context.addValue("auto_page_num", btb_auto_page_num_);
 	context.addValue("previous-folio-num", m_previous_folio_num);
@@ -1040,7 +1040,7 @@ void BorderTitleBlock::setFolioData(
 		btb_final_folio_.replace("%autonum", autonum);
 		btb_folio_ = btb_final_folio_;
 	}
-	btb_final_folio_.replace("%id",	QString::number(folio_index_));
+	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
 
 	updateDiagramContextForTitleBlock(project_properties);

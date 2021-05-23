@@ -2,6 +2,7 @@
     <uuid uuid="{ab1927bb-4fe6-4949-b54a-8aec3a15f0e5}"/>
     <names>
         <name lang="fr">Alimentation modulaire MyHOME_Up 0,6A - 2 modules - 230V~ et 27V=</name>
+        <name lang="cs">Modulový zdroj MyHOME_Up 0,6A - 2 moduly - 230V~ et 27V=</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label">Power</elementInformation>

@@ -2,6 +2,7 @@
     <uuid uuid="{217fa30d-58a7-4d80-bd42-fa9f567a2437}"/>
     <names>
         <name lang="en">VUVG-L18-M52-MT-G14-1R8L (8031532)</name>
+        <name lang="cs">VUVG-L18-M52-MT-G14-1R8L (8031532)</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text color="#000000" x="17" y="8" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="+/-" rotation="0"/>

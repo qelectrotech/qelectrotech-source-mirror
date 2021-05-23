@@ -8,7 +8,7 @@
         <name lang="en">Clock switch</name>
         <name lang="es">Switch de reloj</name>
         <name lang="el">Χρονοδιακόπτης</name>
-        <name lang="cs">Řídíví hodiny, obecný symbol</name>
+        <name lang="cs">Řídící hodiny, obecný symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

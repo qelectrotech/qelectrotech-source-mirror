@@ -2,6 +2,7 @@
     <uuid uuid="{6de8a900-bd5c-474f-8f0f-8c7e6a3907cb}"/>
     <names>
         <name lang="fr">Automate Schneider TM221CE16R</name>
+        <name lang="cs">PLC TM221CE16R</name>
     </names>
     <elementInformations/>
     <informations></informations>

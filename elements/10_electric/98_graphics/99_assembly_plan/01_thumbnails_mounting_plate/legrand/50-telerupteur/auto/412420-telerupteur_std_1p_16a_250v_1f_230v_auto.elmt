@@ -2,6 +2,7 @@
     <uuid uuid="{5d64bfc6-b64c-4e07-a7d5-643ccb526e7e}"/>
     <names>
         <name lang="fr">412420 - Télérupteur temporisé 1P 16A 250V - 1F 230V</name>
+        <name lang="cs">412420 - Impulzní spínač 1P 16A 250V - 1F 230V</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

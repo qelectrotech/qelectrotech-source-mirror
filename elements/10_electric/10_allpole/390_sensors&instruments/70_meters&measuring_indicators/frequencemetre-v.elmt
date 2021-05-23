@@ -1,7 +1,7 @@
 <definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" link_type="simple" version="0.5">
     <uuid uuid="{a1221111-5f95-4f4c-ba82-a2e482ce36b8}"/>
     <names>
-        <name lang="cs">Měřič kmitočtu, svislý</name>
+        <name lang="cs">Kmitoměr svislý</name>
         <name lang="nl">Frequentiemeter</name>
         <name lang="it">Frequenzimetro verticale</name>
         <name lang="pt">Frequenciómetro vertical</name>

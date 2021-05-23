@@ -4,6 +4,7 @@
         <name lang="fr">Commande par clef</name>
         <name lang="es">Accionado por llave</name>
         <name lang="de">Betätigung durch Schlüssel </name>
+        <name lang="cs">Ovládání klíčem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

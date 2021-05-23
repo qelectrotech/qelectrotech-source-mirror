@@ -2,6 +2,7 @@
     <uuid uuid="{a10706c9-15f6-41e1-a5e2-d4f2b9bff227}"/>
     <names>
         <name lang="fr">Porte Garage</name>
+        <name lang="cs">Roletová vrata</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

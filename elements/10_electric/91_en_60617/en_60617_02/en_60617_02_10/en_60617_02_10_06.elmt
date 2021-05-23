@@ -4,6 +4,7 @@
         <name lang="fr">Onde en dents de scie</name>
         <name lang="es">Onda de diente de sierra</name>
         <name lang="de">Sägezahn-Impuls</name>
+        <name lang="cs">Pilovitá vlna</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

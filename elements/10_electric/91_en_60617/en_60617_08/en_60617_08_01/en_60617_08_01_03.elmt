@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Meßgerät, integrierend zB. Elektrizitätszähler</name>
         <name lang="fr">Appareil intégrateur</name>
+        <name lang="cs">Integrační přístroj (elektroměr)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

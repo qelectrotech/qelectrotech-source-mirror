@@ -4,6 +4,7 @@
         <name lang="de">Elektret</name>
         <name lang="fr">Électret</name>
         <name lang="es">Electreto</name>
+        <name lang="cs">Materiál elektret</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

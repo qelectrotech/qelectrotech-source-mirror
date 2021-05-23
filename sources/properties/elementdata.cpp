@@ -403,3 +403,4 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 		}
 	}
 }
+

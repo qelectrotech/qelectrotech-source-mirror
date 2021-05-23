@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Enroulement triphasé, en étoile</name>
         <name lang="de">Dreiphasenwicklung, Sternschaltung</name>
+        <name lang="cs">Trojfázové vinutí do hvězdy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

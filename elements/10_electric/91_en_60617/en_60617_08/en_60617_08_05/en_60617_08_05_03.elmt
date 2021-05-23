@@ -5,6 +5,7 @@
 n</name>
         <name lang="fr">Compteur d'impulsions électriques avec mise à
 n manuelle</name>
+        <name lang="cs">Počítač impulzů ručně přednastavený na n</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

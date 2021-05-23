@@ -4,14 +4,14 @@
         <name lang="it">Motore trifase PE + TERM</name>
         <name lang="en">Three-phase engine PE + TERM</name>
         <name lang="ru">Трёхфазный эл. мотор PE + TERM</name>
-        <name lang="cs">Trojfázový motor PE + TERM</name>
+        <name lang="cs">Trojfázový motor s termistorem</name>
         <name lang="es">Motor trifásico Tierra + Termocupla</name>
         <name lang="pl">Silnik trójfazowy PE + TERM</name>
         <name lang="de">Drehstrom Motor PE + TERM</name>
         <name lang="pt">Motor trifásico PE + TERM</name>
         <name lang="fr">Moteur triphasé PE + TERM</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text text="PE" rotation="270" x="18" y="-11" size="5"/>

@@ -5,7 +5,7 @@
         <name lang="fr">ECOdevices</name>
         <name lang="pl">ECOdevices</name>
         <name lang="el">ECOdevices</name>
-        <name lang="cs">ECOdevices</name>
+        <name lang="cs">Monitor energie ECOdevices</name>
         <name lang="en">ECOdevices</name>
         <name lang="es">ECOdevices</name>
         <name lang="it">ECOdevices</name>
@@ -23,7 +23,7 @@
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="7" x="-91" text="Eco Devices"/>

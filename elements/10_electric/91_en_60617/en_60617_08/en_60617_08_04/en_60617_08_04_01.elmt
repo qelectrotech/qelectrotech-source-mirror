@@ -4,6 +4,7 @@
         <name lang="de">Betriebsstundenzähler</name>
         <name lang="fr">Heuremètre
 Compteur horaire</name>
+        <name lang="cs">Časoměr, počítač hodin</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

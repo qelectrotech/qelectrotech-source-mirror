@@ -9,8 +9,9 @@
         <name lang="fr">Interrupteur différentiel</name>
         <name lang="pl">Rozłącznik różnicowoprądowy</name>
         <name lang="es">Interruptor diferencial</name>
-        <name lang="cs">Rozdílový spínač</name>
+        <name lang="cs">Proudový chránič 3P</name>
         <name lang="nl">Aardlekschakelaar</name>
+        <name lang="hu">Hibaáram-védőkapcsoló 3P</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

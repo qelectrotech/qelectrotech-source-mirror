@@ -2,6 +2,7 @@
     <uuid uuid="{e9461cc3-ab42-4f52-b0ff-402a747655d8}"/>
     <names>
         <name lang="fr">Climatiseur</name>
+        <name lang="cs">Klimatizace, venkovní jednotka</name>
     </names>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>

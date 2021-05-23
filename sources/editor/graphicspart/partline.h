@@ -105,7 +105,7 @@ class PartLine : public CustomElementGraphicPart
 	private:
 		void adjusteHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent	(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void sceneSelectionChanged ();
 		

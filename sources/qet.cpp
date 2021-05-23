@@ -507,7 +507,7 @@ QString Qet::endTypeToString(const Qet::EndType &end_type) {
 	QET::None est retourne.
 */
 Qet::EndType Qet::endTypeFromString(const QString &string) {
-	if (string == "simple")		return(Qet::Simple);
+	if (string == "simple")        return(Qet::Simple);
 	else if (string == "triangle") return(Qet::Triangle);
 	else if (string == "circle")   return(Qet::Circle);
 	else if (string == "diamond")  return(Qet::Diamond);
@@ -691,9 +691,9 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	QActionGroup *action_group = new QActionGroup(parent);
 
 	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);
-	QAction *edit_raise	= new QAction(QET::Icons::Raise,		QObject::tr("Rapprocher"),			 action_group);
-	QAction *edit_lower	= new QAction(QET::Icons::Lower,		QObject::tr("Éloigner"),			   action_group);
-	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),		action_group);
+	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
+	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
 
 	edit_forward ->setStatusTip(QObject::tr("Ramène la ou les sélections au premier plan"));
 	edit_raise   ->setStatusTip(QObject::tr("Rapproche la ou les sélections"));

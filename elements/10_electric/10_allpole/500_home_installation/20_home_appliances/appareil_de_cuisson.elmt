@@ -1,7 +1,7 @@
 <definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{644b8f1e-72ef-4929-9fe6-112ec12f62d0}"/>
     <names>
-        <name lang="cs">Spotřebič na vaření</name>
+        <name lang="cs">Kuchyňský spotřebič</name>
         <name lang="pl">Kuchenka elektryczna</name>
         <name lang="ar">جهاز طبخ</name>
         <name lang="de">Kochgerät</name>
@@ -12,7 +12,7 @@
         <name lang="fr">Appareil de cuisson</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line x1="-2.3114" end2="none" antialias="false" x2="3.6885" y1="20.7775" length2="1.5" y2="14.7775" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

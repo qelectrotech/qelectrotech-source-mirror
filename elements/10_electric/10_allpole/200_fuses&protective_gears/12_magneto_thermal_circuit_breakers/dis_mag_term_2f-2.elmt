@@ -1,11 +1,16 @@
-<definition hotspot_y="52" width="70" version="0.51" type="element" height="100" hotspot_x="56" link_type="simple">
+<definition hotspot_y="52" width="70" version="0.51" type="element" height="100" hotspot_x="56" link_type="master">
     <uuid uuid="{ec5fa3cd-6769-4a35-aaa9-6bc5ba4fc779}"/>
     <names>
         <name lang="fr">Disjoncteur Magnéto-thermique GV 2P</name>
         <name lang="it">Int. magneto-termico 2P</name>
         <name lang="en">Magneto-thermal circuit breaker GV 2P</name>
         <name lang="es">Disyuntor termico magnetico  2P mando manual</name>
+        <name lang="cs">Motorový spouštěč 2P</name>
+        <name lang="hu">Motorvédő kapcsoló  2 pólusú GV</name>
     </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
     <informations></informations>
     <description>
         <polygon y2="10" x3="-15" y4="4" x2="-20" y3="10" x5="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" x4="-15" closed="false" y1="14" y6="-6" x7="-27" y5="4" antialias="true" y7="-25" x6="-20"/>

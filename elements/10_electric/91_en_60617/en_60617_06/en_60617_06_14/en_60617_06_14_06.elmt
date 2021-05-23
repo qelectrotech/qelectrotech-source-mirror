@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Redresseur/onduleur</name>
         <name lang="de">Gleichrichter/Wechselrichter (umschaltbar)</name>
+        <name lang="cs">Usměrňovač/invertor (střídač)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

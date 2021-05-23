@@ -74,6 +74,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		QPointer<PartDynamicTextField> m_text_field;
 		QList<PartDynamicTextField*> m_parts;
 
+
 	#ifdef BUILD_WITHOUT_KF5
 	#else
 		KColorButton* m_color_kpb = nullptr;

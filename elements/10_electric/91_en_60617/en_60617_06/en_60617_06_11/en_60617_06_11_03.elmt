@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Drehstrom-Spartransformator, Sternschaltung</name>
         <name lang="fr">Autotransformateur, triphasé, couplage étoile</name>
+        <name lang="cs">Třífázový autotransformátor do hvězdy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

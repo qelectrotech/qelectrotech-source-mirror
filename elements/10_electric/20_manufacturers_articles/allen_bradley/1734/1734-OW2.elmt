@@ -2,6 +2,7 @@
     <uuid uuid="{4eee1426-b145-4172-9bac-47f5dadb6794}"/>
     <names>
         <name lang="fr">1734-OW2</name>
+        <name lang="cs">1734-OW2</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

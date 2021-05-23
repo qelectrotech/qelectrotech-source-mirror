@@ -4,6 +4,7 @@
         <name lang="de">Vorwärtswellen-Verstärkerröhre, M-Typ</name>
         <name lang="fr">Tube amplificateur à onde progressive du type
 M</name>
+        <name lang="cs">Zesilovací elektronka s postupnou vlnou typu M</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

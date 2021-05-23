@@ -1,5 +1,5 @@
 ﻿/*
-		Copyright 2006-2020 QElectroTech Team
+		Copyright 2006-2021 QElectroTech Team
 		This file is part of QElectroTech.
 
 		QElectroTech is free software: you can redistribute it and/or modify
@@ -47,11 +47,16 @@ class projectDataBase : public QObject
 		void updateDB();
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
-		void addElement(Element *element);
-		void removeElement(Element *element);
-		void elementInfoChanged(Element *element);
-		void addDiagram(Diagram *diagram);
-		void removeDiagram(Diagram *diagram);
+
+		void addElement         (Element *element);
+		void removeElement      (Element *element);
+		void elementInfoChanged (Element *element);
+		void elementInfoChanged (QList<Element *> elements);
+
+		void addDiagram         (Diagram *diagram);
+		void removeDiagram      (Diagram *diagram);
+		void diagramInfoChanged (Diagram *diagram);
+		void diagramOrderChanged();
 
 	signals:
 		void dataBaseUpdated();
@@ -67,6 +72,7 @@ class projectDataBase : public QObject
 		void prepareQuery();
 		static QHash<QString, QString> elementInfoToString(
 				Element *elmt);
+		void bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram);
 
 	private:
 		QPointer<QETProject> m_project;
@@ -77,7 +83,10 @@ class projectDataBase : public QObject
 				  m_update_element_query,
 				  m_insert_diagram_query,
 				  m_remove_diagram_query,
-				  m_insert_diagram_info_query;
+				  m_insert_diagram_info_query,
+				  m_update_diagram_info_query,
+				  m_diagram_order_changed,
+				  m_diagram_info_order_changed;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

@@ -46,8 +46,8 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr(
-				 "T",
-				 "default text when adding a text in the element editor"));
+			     "T",
+			     "default text when adding a text in the element editor"));
 
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
@@ -122,12 +122,12 @@ bool PartText::fromXmlPriv(const QDomElement &xml_element)
 */
 void PartText::toXmlPriv(QDomElement& xml_element) const
 {
-    xml_element.setAttribute("x", QString::number(pos().x()));
-    xml_element.setAttribute("y", QString::number(pos().y()));
-    xml_element.setAttribute("text", toPlainText());
-    xml_element.setAttribute("font", font().toString());
-    xml_element.setAttribute("rotation", QString::number(rotation()));
-    xml_element.setAttribute("color", defaultTextColor().name());
+	xml_element.setAttribute("x", QString::number(pos().x()));
+	xml_element.setAttribute("y", QString::number(pos().y()));
+	xml_element.setAttribute("text", toPlainText());
+	xml_element.setAttribute("font", font().toString());
+	xml_element.setAttribute("rotation", QString::number(rotation()));
+	xml_element.setAttribute("color", defaultTextColor().name());
 }
 
 bool PartText::valideXml(QDomElement& element) {

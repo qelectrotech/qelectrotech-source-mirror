@@ -5,6 +5,8 @@
 étoile, avec démarreur automatique incorporé</name>
         <name lang="de">Drehstrom-Asynchronmotor in Sternschaltung
 mit Anlaufwicklung im Läufer</name>
+        <name lang="cs">Trojfázový indukční motor s vinutím do hvězdy
+s vestavěným automatickým spouštěčem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

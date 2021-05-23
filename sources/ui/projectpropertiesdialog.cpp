@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectpropertiesdialog.h"
-#include "configdialog.h"
-#include "projectconfigpages.h"
+
+#include "../configdialog.h"
+#include "../configpages.h"
+#include "../projectconfigpages.h"
+
 #include <QObject>
-#include "configpages.h"
 
 /**
 	@brief ProjectPropertiesDialog::ProjectPropertiesDialog

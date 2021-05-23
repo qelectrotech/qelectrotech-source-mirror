@@ -2,12 +2,13 @@
     <uuid uuid="{defb50a3-51ca-43f1-9a23-bbd8cffe19f1}"/>
     <names>
         <name lang="en">Tubular exchanger</name>
+        <name lang="de">Rohraustauscher</name>
         <name lang="ca">Intercamviador tubular</name>
         <name lang="fr">Echangeur tubulaire</name>
         <name lang="es">Intercambiador tubular</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <line end2="none" antialias="false" end1="none" y2="6.74566" length2="1.5" x2="101.5" x1="101.5" y1="-3.76303" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

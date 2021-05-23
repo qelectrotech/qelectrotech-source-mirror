@@ -1,0 +1,56 @@
+<definition width="60" link_type="simple" height="50" type="element" hotspot_x="6" version="0.80" hotspot_y="6">
+    <uuid uuid="{bad85da9-a927-487d-84dc-de045f2d098e}"/>
+    <names>
+        <name lang="fr">Switch 4Ai PT1000/NI1000</name>
+        <name lang="cs">Přepínač 4Ai PT1000/NI1000</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label">4-AI</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description">Carte d'entrées analogiques</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation">4-Ai</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+    </elementInformations>
+    <informations>s.deffaux</informations>
+    <description>
+        <rect width="50" antialias="false" height="40" rx="0" ry="0" x="0" y="0" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect width="3" antialias="false" height="15" rx="0" ry="0" x="41" y="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" antialias="false" height="7.5" rx="0" ry="0" x="41" y="14" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="3" antialias="false" height="15" rx="0" ry="0" x="37" y="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" antialias="false" height="15" rx="0" ry="0" x="33" y="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" antialias="false" height="7.5" rx="0" ry="0" x="33" y="14" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="3" antialias="false" height="7.5" rx="0" ry="0" x="25" y="14" style="line-style:normal;line-weight:none;filling:black;color:black"/>
+        <rect width="3" antialias="false" height="7.5" rx="0" ry="0" x="37" y="6.5" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <text text="C" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="29.5" color="#000000" y="3.5"/>
+        <text text="A" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="21.5" color="#000000" y="3.5"/>
+        <text text="F" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="41.5" color="#000000" y="3.5"/>
+        <rect width="3" antialias="false" height="15" rx="0" ry="0" x="29" y="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="D" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="33.5" color="#000000" y="3.5"/>
+        <text text="B" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="25.5" color="#000000" y="3.5"/>
+        <text text="G" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="35" color="#000000" y="34.5"/>
+        <text text="E" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="37.5" color="#000000" y="3.5"/>
+        <text text="H" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="12" color="#000000" y="3.5"/>
+        <text text="4" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="33.5" color="#000000" y="24.5"/>
+        <rect width="3" antialias="false" height="15" rx="0" ry="0" x="25" y="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text text="1" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="21.5" color="#000000" y="24.5"/>
+        <text text="3" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="29.5" color="#000000" y="24.5"/>
+        <text text="2" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="25.5" color="#000000" y="24.5"/>
+        <text text="6" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="41.5" color="#000000" y="24.5"/>
+        <text text="5" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="37.5" color="#000000" y="24.5"/>
+        <text text="B" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="5" color="#000000" y="24.5"/>
+        <rect width="5" antialias="false" height="20" rx="0" ry="0" x="10" y="4.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="A" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="5" color="#000000" y="11.5"/>
+        <rect width="5" antialias="false" height="10" rx="0" ry="0" x="10" y="14.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="20" antialias="false" height="5" rx="0" ry="0" x="10" y="31.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" antialias="false" height="5" rx="0" ry="0" x="9.5" y="31.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="27" antialias="false" height="21" rx="0" ry="0" x="19" y="4.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" antialias="false" height="15" rx="0" ry="0" x="21" y="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="3" antialias="false" height="7.5" rx="0" ry="0" x="29" y="6.5" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect width="3" antialias="false" height="7.5" rx="0" ry="0" x="21" y="14" style="line-style:normal;line-weight:none;filling:black;color:black"/>
+        <text text="PT1000/NI1000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="270" x="4" color="#000000" y="37"/>
+    </description>
+</definition>

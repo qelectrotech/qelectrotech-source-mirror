@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@
 #ifndef PROJECTPRINTWINDOW_H
 #define PROJECTPRINTWINDOW_H
 
-#include <QMainWindow>
+#include "../exportproperties.h"
 
-#include "exportproperties.h"
+#include <QMainWindow>
 #include <QPrinter>
 
 namespace Ui {

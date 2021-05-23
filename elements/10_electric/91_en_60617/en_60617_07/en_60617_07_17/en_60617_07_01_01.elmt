@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Relais à manque de tension</name>
         <name lang="de">Nullspannungsrelais</name>
+        <name lang="cs">Relé nulového napětí</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

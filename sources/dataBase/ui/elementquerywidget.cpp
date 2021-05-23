@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementquerywidget.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_elementquerywidget.h"
-#include "qetapp.h"
 
 #include <QRegularExpression>
 
@@ -155,40 +157,41 @@ void ElementQueryWidget::setQuery(const QString &query)
 			//Element type filter
 		if (where.contains("element_sub_type") || where.contains("element_type"))
 		{
-			int c=0;
-			ui->m_simple_cb->setChecked    (where.contains("Simple")     ? true : false);
-			if (ui->m_simple_cb->isChecked()) {
-				++c;
-				where.remove("element_type = 'Simple' ");
-			}
-			ui->m_terminal_cb->setChecked  (where.contains("Terminale")  ? true : false);
-			if (ui->m_terminal_cb->isChecked()) {
-				++c;
-				where.remove("element_type = 'Terminale'");
-			}
-			ui->m_coil_cb->setChecked      (where.contains("coil")       ? true : false);
-			if (ui->m_coil_cb->isChecked()) {
-				++c;
-				where.remove("element_sub_type = 'coil' ");
-			}
-			ui->m_button_cb->setChecked    (where.contains("commutator") ? true : false);
-			if (ui->m_button_cb->isChecked()) {
-				++c;
-				where.remove("element_sub_type = 'commutator' ");
-			}
-			ui->m_protection_cb->setChecked(where.contains("protection") ? true : false);
-			if (ui->m_protection_cb) {
-				++c;
-				where.remove("element_sub_type = 'protection'");
-			}
+			QRegularExpression rx("^(\\( .+?\\))");
+			auto rxm = rx.match(where);
+			if (rxm.hasMatch())
+			{
+				auto str_type = rxm.captured(1);
+				where.remove(str_type);
 
-			if (c == 5) {
-				ui->m_all_cb->setCheckState(Qt::Checked);
-			} else if (c > 0) {
-				ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
-			}
+				int c=0;
+				ui->m_simple_cb->setChecked    (str_type.contains("Simple")     ? true : false);
+				if (ui->m_simple_cb->isChecked()) {
+					++c;
+				}
+				ui->m_terminal_cb->setChecked  (str_type.contains("Terminale")  ? true : false);
+				if (ui->m_terminal_cb->isChecked()) {
+					++c;
+				}
+				ui->m_coil_cb->setChecked      (str_type.contains("coil")       ? true : false);
+				if (ui->m_coil_cb->isChecked()) {
+					++c;
+				}
+				ui->m_button_cb->setChecked    (str_type.contains("commutator") ? true : false);
+				if (ui->m_button_cb->isChecked()) {
+					++c;
+				}
+				ui->m_protection_cb->setChecked(str_type.contains("protection") ? true : false);
+				if (ui->m_protection_cb) {
+					++c;
+				}
 
-			where.remove("OR");
+				if (c == 5) {
+					ui->m_all_cb->setCheckState(Qt::Checked);
+				} else if (c > 0) {
+					ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
+				}
+			}
 		}
 		else // There is not "element_sub_type" or "element_type" that mean every element are selected
 		{
@@ -204,20 +207,16 @@ void ElementQueryWidget::setQuery(const QString &query)
 			strl.append(item->data(Qt::UserRole).toString());
 		}
 
-		QString beginning_rx;
-		beginning_rx.append(QString("^(").append(strl.join("|")));
-		beginning_rx.append(")");
+		QString join_str = strl.join("|");
 
-		QRegularExpression rx_is_not_null(beginning_rx + " IS NOT NULL$");
-		QRegularExpression rx_is_null (beginning_rx + " IS NULL$");
-		QRegularExpression rx_like (beginning_rx + QString(" LIKE'%(.+)%'$"));
-		QRegularExpression rx_not_like (beginning_rx + QString(" NOT LIKE'%(.+)%'$"));
-		QRegularExpression rx_equal (beginning_rx + QString("='(.+)'$"));
-		QRegularExpression rx_not_equal (beginning_rx + QString("!='(.+)'$"));
-
+		QRegularExpression rx_is_not_null(QStringLiteral("^(%1) != ''$").arg(join_str));
+		QRegularExpression rx_is_null    (QStringLiteral("^\\((%1) IS NULL OR (%1) = ''\\)").arg(join_str));
+		QRegularExpression rx_like       (QStringLiteral("^(%1) LIKE'%(.+)%'$").arg(join_str));
+		QRegularExpression rx_not_like   (QStringLiteral("^(%1) NOT LIKE'%(.+)%'$").arg(join_str));
+		QRegularExpression rx_equal      (QStringLiteral("^(%1)='(.+)'$").arg(join_str));
+		QRegularExpression rx_not_equal  (QStringLiteral("^(%1)!='(.+)'$").arg(join_str));
 
 		QStringList split_where;
-
 			//Remove the white space at begin and end of each string
 		for (auto str : where.split("AND "))
 		{
@@ -308,22 +307,22 @@ QString ElementQueryWidget::queryStr() const
 			case 0: //No filter
 				break;
 			case 1: //Not empty
-				filter_ += QString(" AND ") += key += " IS NOT NULL";
+				filter_ += QStringLiteral(" AND ") += key += " != ''";
 				break;
 			case 2: //empty
-				filter_ += QString(" AND ") += key += " IS NULL";
+				filter_ += QStringLiteral(" AND (%1 IS NULL OR %1 = '')").arg(key);
 				break;
 			case 3: // contain
-				filter_ += QString(" AND ") += key += QString(" LIKE'%") += f.second += "%'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" LIKE'%") += f.second += "%'";
 				break;
 			case 4: // not contain
-				filter_ += QString(" AND ") += key += QString(" NOT LIKE'%") += f.second += "%'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral(" NOT LIKE'%") += f.second += "%'";
 				break;
 			case 5: // is equal
-				filter_ += QString(" AND ") += key += QString("='") += f.second += "'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral("='") += f.second += "'";
 				break;
 			case 6: // is not equal
-				filter_ += QString(" AND ") += key += QString("!='") += f.second += "'";
+				filter_ += QStringLiteral(" AND ") += key += QStringLiteral("!='") += f.second += "'";
 				break;
 		}
 	}
@@ -444,12 +443,12 @@ QStringList ElementQueryWidget::selectedKeys() const
 */
 void ElementQueryWidget::setUpItems()
 {
-	for(QString key : QETApp::elementInfoKeys())
+	for(QString key : QETInformation::elementInfoKeys())
 	{
 		if (key == "formula")
 			continue;
 
-		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
+		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_var_list);
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}

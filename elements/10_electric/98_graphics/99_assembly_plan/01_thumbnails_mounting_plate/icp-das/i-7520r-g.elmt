@@ -2,6 +2,7 @@
     <uuid uuid="{57fee9a7-fe6a-433f-b7e3-0ea718d88ef3}"/>
     <names>
         <name lang="en">i-7520R-G - Isolated RS-232 to RS-485 Converter</name>
+        <name lang="cs">i-7520R-G - Izolovaný převodník RS-232 - RS-485</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">i-7520R-G</elementInformation>

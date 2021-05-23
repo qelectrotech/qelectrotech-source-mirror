@@ -1,7 +1,7 @@
 <definition type="element" height="100" hotspot_y="40" version="0.70" width="40" hotspot_x="20" link_type="simple">
     <uuid uuid="{b4b70d3d-8784-4323-b17b-d8ff3677cdc1}"/>
     <names>
-        <name lang="en">Three-pole source + PEN</name>
+        <name lang="en">Three-pole source + N + PE</name>
         <name lang="el">Τριφασικό + PEN</name>
         <name lang="es">Fuente tripolar + PEN</name>
         <name lang="nl">driefasen + aardenul</name>
@@ -11,7 +11,8 @@
         <name lang="ru">Трёхполюсный + PEN</name>
         <name lang="fr">Source tripolaire + PEN</name>
         <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
-        <name lang="cs">3 fáze + N+PE pravý</name>
+        <name lang="cs">Přípojnice 3f+N+PE pravá</name>
+	<name lang="hu">3F + N + PE</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

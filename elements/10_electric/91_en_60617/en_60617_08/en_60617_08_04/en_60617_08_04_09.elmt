@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Überverbrauchszähler, Spitzenzähler</name>
         <name lang="fr">Compteur d'énergie active à dépassement</name>
+        <name lang="cs">Nadlimitní watthodinový měřič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

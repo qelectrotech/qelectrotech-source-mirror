@@ -1,0 +1,59 @@
+<definition hotspot_x="51" width="100" type="element" link_type="simple" version="0.80" height="90" hotspot_y="70">
+    <uuid uuid="{80e48f66-fc16-45ff-881a-441f5343d9df}"/>
+    <names>
+        <name lang="en">SEW SR current relay</name>
+        <name lang="hu">SEW SR áramrelé</name>
+        <name lang="cs">SEW SR Proudové relé</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text text="BL" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-1" x="32" rotation="0"/>
+        <text text="RD" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-53" x="32" rotation="0"/>
+        <text text="WH" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="0" x="-46" rotation="0"/>
+        <rect width="60" y="-60" x="-30" ry="0" antialias="false" rx="0" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="15" end2="none" end1="none" length2="1.5" antialias="false" y1="-36" x2="27" y2="-36" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="15" end2="none" end1="none" length2="1.5" antialias="false" y1="-24" x2="27" y2="-24" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="27" end2="none" end1="none" length2="1.5" antialias="false" y1="-24" x2="21" y2="-36" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="15" end2="none" end1="none" length2="1.5" antialias="false" y1="-24" x2="21" y2="-36" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" end2="none" end1="none" length2="1.5" antialias="false" y1="-50" x2="21" y2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" end2="none" end1="none" length2="1.5" antialias="false" y1="-50" x2="34" y2="-50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" end2="none" end1="none" length2="1.5" antialias="false" y1="-10" x2="34" y2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" end2="none" end1="none" length2="1.5" antialias="false" y1="-10" x2="7" y2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="21" end2="none" end1="none" length2="1.5" antialias="false" y1="-50" x2="7" y2="-50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7" end2="none" end1="none" length2="1.5" antialias="false" y1="-50" x2="7" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7" end2="none" end1="none" length2="1.5" antialias="false" y1="-10" x2="7" y2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="7" end2="none" end1="none" length2="1.5" antialias="false" y1="-20" x2="-1" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="12" y="-36" angle="180" x="-26" antialias="true" height="12" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="4" y="-32" x="-22" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line x1="-20" end2="none" end1="none" length2="1.5" antialias="false" y1="-36" x2="-20" y2="-50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" end2="none" end1="none" length2="1.5" antialias="false" y1="-50" x2="-34" y2="-50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" end2="none" end1="none" length2="1.5" antialias="false" y1="-24" x2="-20" y2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-20" end2="none" end1="none" length2="1.5" antialias="false" y1="-10" x2="-34" y2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-18" end2="none" end1="none" length2="1.5" antialias="false" y1="-31" x2="2" y2="-31" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="23" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" Valignment="AlignTop" Halignment="AlignLeft" text_from="ElementInfo" y="-85" text_width="-1" x="-25" rotation="0" uuid="{8be624ce-7964-440e-9474-00d358b130d8}" frame="false">
+            <text></text>
+            <info_name>machine_manufacturer_reference</info_name>
+        </dynamic_text>
+        <line x1="-18" end2="none" end1="none" length2="1.5" antialias="false" y1="-29" x2="3" y2="-29" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y4="-34" x3="-7" x1="-13" x4="-13" y3="-30" antialias="false" y1="-33" x2="-13" y2="-26" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text text="WH" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-50" x="-46" rotation="0"/>
+        <text text="SEW SR relay" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="11" x="-28" rotation="0"/>
+        <terminal orientation="e" name="" y="-10" x="35" uuid="{699dd7bc-fc34-4d52-904f-004657e51b1b}"/>
+        <terminal orientation="e" name="" y="-50" x="35" uuid="{62fc206d-019c-4f32-b48a-0aae41fa2159}"/>
+        <terminal orientation="w" name="" y="-50" x="-35" uuid="{317d4a69-94f5-4107-8f1c-e1d20bd44eef}"/>
+        <terminal orientation="w" name="" y="-10" x="-35" uuid="{18b28540-ae56-4300-aeb5-c64459680c9e}"/>
+    </description>
+</definition>

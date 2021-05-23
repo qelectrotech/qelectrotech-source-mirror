@@ -4,13 +4,14 @@
         <name lang="el">D-SUB 15 ακροδέκτες (αρσενικό)</name>
         <name lang="nl">D-SUB  15 pin man</name>
         <name lang="de">Stecker D-SUB 15-polig männlich</name>
-        <name lang="cs">Zástrčka D-SUB 15 kolíků (mužská)</name>
+        <name lang="cs">Zástrčka D-SUB 15 kolíků</name>
         <name lang="pl">Wtyk D-Sub, piętnastostykowy</name>
         <name lang="it">D-SUB 15 Pin (maschio)</name>
         <name lang="ar">رابط توصيل SUB -D 15  (ذكري)</name>
         <name lang="en">D-SUB 15 pin (male)</name>
         <name lang="es">D-SUB 15 pines (macho)</name>
         <name lang="fr">SUB-D 15 broches (male)</name>
+        <name lang="hu">15 tűs apa D-Sub</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

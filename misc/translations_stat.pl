@@ -36,7 +36,7 @@ our $default_language = 'fr';
 our @misc_desktop_files = qw(misc/qelectrotech.desktop misc/x-qet-element.desktop misc/x-qet-project.desktop misc/x-qet-titleblock.desktop);
 our @misc_xml_files     = qw(misc/qelectrotech.xml     misc/x-qet-element.xml     misc/x-qet-project.xml     misc/x-qet-titleblock.xml);
 our @readme_files       = qw(CREDIT README INSTALL ELEMENTS.LICENSE build-aux/linux/fedora/README.elements);
-our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro da pt_br hu sr tr nb ja);
+our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro da pt_br hu sr tr nb ja mn);
 our %languages = (
 	'fr' => {
 		'name'               => 'Français',
@@ -210,6 +210,13 @@ our %languages = (
 		'qt'                 => 1,
 		'desktop_progress_summary' => $ok,
 		'xml_progress_summary' => $ok
+	},
+	'mn' => {
+		'name'               => 'Монгол',
+		'french_name'        => 'Mongol',
+		'translator_name'    => 'Nathalie',
+		'translator_mail_ml' => 'nathalie.roussier@giz.de>',
+		'qt'                 => 1,
 	}
 );
 

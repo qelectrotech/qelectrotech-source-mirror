@@ -4,6 +4,7 @@
         <name lang="de">Fernmeldesteckdose, allgemein</name>
         <name lang="fr">Socle de prise pour terminal de
 télécommunication</name>
+        <name lang="cs">Zásuvka pro sdělovací zařízení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

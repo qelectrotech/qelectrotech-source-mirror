@@ -2,6 +2,7 @@
     <uuid uuid="{02f6944e-e750-44cc-8228-26e46e066c16}"/>
     <names>
         <name lang="fr">SOMESCA</name>
+        <name lang="cs">SOMESCA</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

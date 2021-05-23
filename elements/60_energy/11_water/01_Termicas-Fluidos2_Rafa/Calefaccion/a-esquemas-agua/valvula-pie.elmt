@@ -4,6 +4,7 @@
         <name lang="ca">Vàlvula de peu</name>
         <name lang="en">Foot valve</name>
         <name lang="es">Válvula de pie</name>
+        <name lang="de">Rückschlagventil</name>
         <name lang="fr">clapet anti-retour</name>
     </names>
     <elementInformations>
@@ -19,7 +20,7 @@
         <elementInformation name="description" show="1"></elementInformation>
         <elementInformation name="designation" show="1"></elementInformation>
     </elementInformations>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <circle y="-4" diameter="8" antialias="true" x="-4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

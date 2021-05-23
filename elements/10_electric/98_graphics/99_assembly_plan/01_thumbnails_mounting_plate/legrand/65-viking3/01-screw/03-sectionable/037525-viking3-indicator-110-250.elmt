@@ -2,6 +2,7 @@
     <uuid uuid="{6354cc72-3bb9-412d-badd-633da7f69bdc}"/>
     <names>
         <name lang="fr">037525 - Viking3 - Témoin 110 à 250V~</name>
+        <name lang="cs">037525 - Indikátor přerušení pojistky Viking 3 - 110/250 V ~ - bloky s pojistkovou vložkou 5x20</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

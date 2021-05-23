@@ -2,6 +2,7 @@
     <uuid uuid="{5e7ef189-793c-4e73-a591-c1448f36dea2}"/>
     <names>
         <name lang="fr">Borne WIFI</name>
+        <name lang="cs">Přístupový bod WIFI Cisco</name>
     </names>
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>

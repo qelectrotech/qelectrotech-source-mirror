@@ -7,10 +7,10 @@
         <name lang="pl">Pozycja wyjęcia kluczyka łącznika</name>
         <name lang="en">Key switch positions</name>
         <name lang="ar">زرّ دوّار بمفتاح</name>
-        <name lang="cs">Poloha přepnutí klíče spínače</name>
+        <name lang="cs">Přepínač 2 polohy, uzamčení vlevo</name>
         <name lang="nl">Schakelstanden</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input rotate="true" x="12" y="-8.45" tagg="label" text="_" size="9"/>

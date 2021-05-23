@@ -2,6 +2,7 @@
     <uuid uuid="{86208912-fa20-4c18-99b2-2975af31eaee}"/>
     <names>
         <name lang="fr">Vigi DT40</name>
+        <name lang="cs">Vigi DT40</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
     </elementInformations>
-    <informations>Alexandre Dis&#xd;&#xd;
+    <informations>Alexandre Dis
 </informations>
     <description>
         <rect rx="0" height="200" y="0" style="line-style:normal;line-weight:thin;filling:white;color:black" x="0" ry="0" antialias="false" width="40"/>

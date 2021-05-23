@@ -85,7 +85,7 @@ class CustomElementPart: public PropertiesInterface {
 		Make this part fit into the provided rectangle.
 	*/
 	virtual void handleUserTransformation(const QRectF &,
-						  const QRectF &) = 0;
+					      const QRectF &) = 0;
 	/// @return a pointer to the parent element editor
 	virtual QETElementEditor *elementEditor() const;
 	/**

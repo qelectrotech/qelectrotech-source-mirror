@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Contact à fermeture, à retour automatique</name>
         <name lang="de">Schließer mit selbsttätigem Rückgang</name>
+        <name lang="cs">Zapínací kontakt se samočinným návratem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

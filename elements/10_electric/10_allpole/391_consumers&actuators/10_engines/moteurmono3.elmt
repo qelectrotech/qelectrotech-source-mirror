@@ -6,6 +6,7 @@
         <name lang="nl">Motor  1fase</name>
         <name lang="it">Motore monofase</name>
         <name lang="fr">Moteur monophasé</name>
+        <name lang="cs">Jednofázový motor</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

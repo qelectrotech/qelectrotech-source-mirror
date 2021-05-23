@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,10 +18,10 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include <QHash>
-
-#include "element.h"
+#include "../qetgraphicsitem/element.h"
 #include "abstractelementpropertieseditorwidget.h"
+
+#include <QHash>
 
 class QTreeWidgetItem;
 

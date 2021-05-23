@@ -8,6 +8,7 @@
         <name lang="cs">Varistor</name>
         <name lang="it">Varistore Metal-oxide</name>
         <name lang="nl">Varistor Metal-oxide</name>
+        <name lang="hu">Fém-oxid varisztor</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>

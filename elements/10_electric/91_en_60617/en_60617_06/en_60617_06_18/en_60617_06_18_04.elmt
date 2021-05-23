@@ -6,6 +6,8 @@ source de chaleur par rayonnement non
 ionisant</name>
         <name lang="de">Thermodiodengenerator, betrieben durch
 nichtionisierende Strahlungswärme</name>
+        <name lang="cs">Termoemisní diodový generátor
+s neionizujícím radiačním tepelným zdrojem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

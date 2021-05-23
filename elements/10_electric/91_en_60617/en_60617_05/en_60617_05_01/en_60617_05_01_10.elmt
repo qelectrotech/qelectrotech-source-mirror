@@ -9,6 +9,9 @@ transistor de champ:
 eine Halbleiterzone beeinflußt, z. B. in einem
 Feldeffekt-Transistor:
 - N-Gebiet, das eine P-Zone beeinflußt</name>
+        <name lang="cs">Přechod působící elektrickým polem na 
+polovodičovou vrstvu, např. u polem řízeného tranzistoru
+Oblast N působící na vrstvu P</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

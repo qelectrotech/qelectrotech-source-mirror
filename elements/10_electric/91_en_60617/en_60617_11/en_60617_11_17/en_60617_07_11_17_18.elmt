@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Geräte-Einbaukasten</name>
         <name lang="fr">Coffret d'appareillage en ligne</name>
+        <name lang="cs">Přístrojová skříňka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

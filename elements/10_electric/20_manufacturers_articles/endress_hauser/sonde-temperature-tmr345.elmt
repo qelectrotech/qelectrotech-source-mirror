@@ -1,0 +1,84 @@
+<definition width="200" hotspot_y="55" link_type="simple" version="0.80" height="110" hotspot_x="34" type="element">
+    <uuid uuid="{b97af216-3748-4e11-906f-d925b563b47a}"/>
+    <names>
+        <name lang="fr">Sonde Température TMR345</name>
+        <name lang="cs">Snímač teploty TMR345</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Endress+Hauser </elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="1" x="6" color="#000000" y="22" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <circle style="line-style:normal;line-weight:eleve;filling:none;color:black" diameter="80" x="-20" y="-40" antialias="true"/>
+        <circle style="line-style:normal;line-weight:hight;filling:none;color:black" diameter="8" x="-4" y="12" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="68" x="-14" y="-34" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="72" x="-16" y="-36" antialias="true"/>
+        <text text="4" x="6" color="#000000" y="-18" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="110" y1="14" y2="14" x2="120" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <text text="3-BU" x="134" color="#000000" y="17" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text text="1-BN" x="130" color="#000000" y="-25" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text text="2-WH" x="131" color="#000000" y="-11" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text text="3" x="30" color="#000000" y="-18" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="2" x="30" color="#000000" y="22" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <circle style="line-style:normal;line-weight:hight;filling:none;color:black" diameter="8" x="36" y="-20" antialias="true"/>
+        <circle style="line-style:normal;line-weight:hight;filling:none;color:black" diameter="8" x="36" y="12" antialias="true"/>
+        <circle style="line-style:normal;line-weight:hight;filling:none;color:black" diameter="8" x="-4" y="-20" antialias="true"/>
+        <text text="4-BK" x="134" color="#000000" y="27" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text text="M12x1" x="8" color="#000000" y="8" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="-50" y2="-50" x2="40" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-30" y1="-20" y2="20" x2="-30" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="0" y1="50" y2="50" x2="40" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-30" y1="-20" y2="-50" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="-30" y1="20" y2="50" x2="0" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="70" y1="-20" y2="20" x2="70" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="70" y1="20" y2="50" x2="40" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="40" y1="-50" y2="-20" x2="70" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <rect width="40" ry="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="70" y="-20" height="40" rx="1" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-10" text_width="-1" uuid="{f0483631-3ab7-4652-be86-5bbde0d3fc12}" y="45" rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="ElementInfo" Halignment="AlignLeft" z="27">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="110" y1="-14" y2="-14" x2="120" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="130" y1="-20" y2="-20" x2="160" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="110" y1="-5" y2="-5" x2="120" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="130" y1="-10" y2="-10" x2="160" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="110" y1="6" y2="6" x2="120" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="120" y1="-14" y2="-20" x2="130" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="120" y1="-5" y2="-10" x2="130" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="120" y1="6" y2="10" x2="130" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="130" y1="10" y2="10" x2="160" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="120" y1="14" y2="20" x2="130" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x1="130" y1="20" y2="20" x2="160" end2="none" length1="1.5" end1="none" antialias="false"/>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-30" text_width="-1" uuid="{e5b62c70-e2c7-4690-9465-e4c55e6e33a9}" y="-70" rotation="0" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Halignment="AlignLeft" z="55">
+            <text>EASYTEMP TRM35</text>
+        </dynamic_text>
+        <dynamic_text frame="false" Valignment="AlignTop" x="26" text_width="-1" uuid="{94855a6d-d6a7-4cc0-ad42-f3f3b1bf2e51}" y="-18" rotation="0" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Halignment="AlignLeft" z="56">
+            <text>0V</text>
+        </dynamic_text>
+        <dynamic_text frame="false" Valignment="AlignTop" x="-4" text_width="-1" uuid="{94855a6d-d6a7-4cc0-ad42-f3f3b1bf2e51}" y="18" rotation="0" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Halignment="AlignLeft" z="56">
+            <text>10-35VDC</text>
+        </dynamic_text>
+        <dynamic_text frame="false" Valignment="AlignTop" x="26" text_width="-1" uuid="{1ddba7d5-7d29-44d2-8d6d-acc38b153729}" y="-12" rotation="0" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Halignment="AlignLeft" z="57">
+            <text>(4-20mA)</text>
+        </dynamic_text>
+        <dynamic_text frame="false" Valignment="AlignTop" x="4" text_width="-1" uuid="{1ddba7d5-7d29-44d2-8d6d-acc38b153729}" y="22" rotation="0" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Halignment="AlignLeft" z="57">
+            <text>(4-20mA)</text>
+        </dynamic_text>
+        <terminal orientation="e" x="160" uuid="{6f976130-5c8b-497a-9fbe-db41d8f80c77}" y="-10" name=""/>
+        <terminal orientation="e" x="160" uuid="{538fcc0a-8795-4b12-9a96-d06d91a2409c}" y="20" name=""/>
+        <terminal orientation="e" x="160" uuid="{41901683-710d-4fd2-9426-bdc50a569f59}" y="-20" name=""/>
+        <terminal orientation="e" x="160" uuid="{cb61df3a-1d04-482b-b5cb-774e9f43ccbc}" y="10" name=""/>
+    </description>
+</definition>

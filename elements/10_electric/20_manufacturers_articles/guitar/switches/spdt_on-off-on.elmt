@@ -2,6 +2,7 @@
     <uuid uuid="{881d8613-24ff-4abf-9471-d4e87833e868}"/>
     <names>
         <name lang="en">SPDT on-off-on</name>
+        <name lang="cs">SPDT on-off-on</name>
     </names>
     <informations></informations>
     <description>

@@ -24,7 +24,7 @@
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text x="-7" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_width="-1" uuid="{0449173f-918a-47c4-9ab7-6689e6ae72b1}" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" z="1" y="-15.5">

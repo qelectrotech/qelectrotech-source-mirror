@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Enroulement triphasé, en triangle</name>
         <name lang="de">Dreiphasenwicklung, Dreieckschaltung</name>
+        <name lang="cs">Trojfázové vinutí do trojúhelníka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

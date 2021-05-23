@@ -4,6 +4,7 @@
         <name lang="en">Omron CJ1W-ID232</name>
         <name lang="fr">Omron CJ1W-ID232</name>
         <name lang="hu">Omron CJ1W-ID232</name>
+        <name lang="cs">Omron CJ1W-ID232</name>
     </names>
     <elementInformations>
         <elementInformation name="label" show="1"></elementInformation>

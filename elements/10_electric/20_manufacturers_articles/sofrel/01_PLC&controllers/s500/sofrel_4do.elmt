@@ -5,6 +5,7 @@
         <name lang="it">Scheda 4DO</name>
         <name lang="en">Board 4DO</name>
         <name lang="es">Tarjeta 4DO</name>
+        <name lang="cs">Karta 4DO</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
@@ -17,7 +18,7 @@
         <elementInformation name="description" show="1">Carte de sorties digitales</elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text x="440" z="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{a1ebbbc9-7cf5-454a-b0fa-22d962a1561a}" y="30">

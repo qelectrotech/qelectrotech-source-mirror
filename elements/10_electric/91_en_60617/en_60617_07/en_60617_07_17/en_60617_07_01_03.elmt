@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Relais à minimum de puissance active</name>
         <name lang="de">Minimalwirkleistungsrelais</name>
+        <name lang="cs">Relé na pokles výkonu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

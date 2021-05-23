@@ -4,6 +4,7 @@
         <name lang="fr">Redresseur en couplage à double voie (en
 pont)</name>
         <name lang="de">Gleichrichter in Brückenschaltung</name>
+        <name lang="cs">Usměrňovač v celovlnném (můstkovém) zapojení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

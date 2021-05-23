@@ -2,6 +2,7 @@
     <uuid uuid="{eee67c6d-7df7-43fe-a49b-5edc06ac100f}"/>
     <names>
         <name lang="fr">Porte étiquette SOUS TENSION</name>
+        <name lang="cs">Štítek ovladače "Pod tlakem"</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Porte étiquette SOUS TENSION</elementInformation>

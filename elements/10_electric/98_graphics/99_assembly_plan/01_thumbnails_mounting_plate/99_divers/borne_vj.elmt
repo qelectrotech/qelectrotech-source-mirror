@@ -1,0 +1,48 @@
+<definition link_type="terminal" type="element" height="130" hotspot_y="4" hotspot_x="5" version="0.80" width="30">
+    <uuid uuid="{e25aaf3d-23ef-4a75-ae0b-30dd57c09269}"/>
+    <names>
+        <name lang="it">Base P2RF 1</name>
+        <name lang="fr">Borne de terre</name>
+        <name lang="el">Βάση P2RF 1</name>
+        <name lang="nl">Basis P2RF 1</name>
+        <name lang="pl">Podstawa P2RF 1</name>
+        <name lang="cs">Svorka P2RF 1</name>
+        <name lang="en">Base P2RF 1</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect y="0" ry="0" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" x="10.5" height="120" rx="0" antialias="false" width="9"/>
+        <rect y="0" ry="0" style="line-style:normal;line-weight:normal;filling:green;color:green" x="0.5" height="120" rx="0" antialias="false" width="9"/>
+        <rect y="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="120" rx="0" antialias="false" width="20"/>
+        <line y2="19" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="10" y1="11" antialias="false" end1="none" length2="1.5" x2="10"/>
+        <line y2="15" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="6" y1="15" antialias="false" end1="none" length2="1.5" x2="14"/>
+        <line y2="109" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="10" y1="101" antialias="false" end1="none" length2="1.5" x2="10"/>
+        <circle y="101" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6" diameter="8" antialias="true"/>
+        <line y2="105" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="6" y1="105" antialias="false" end1="none" length2="1.5" x2="14"/>
+        <line y2="10" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="0" y1="10" antialias="false" end1="none" length2="1.5" x2="20"/>
+        <line y2="110" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="0" y1="110" antialias="false" end1="none" length2="1.5" x2="20"/>
+        <line y2="100" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="1" y1="100" antialias="false" end1="none" length2="1.5" x2="20"/>
+        <line y2="20" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" x1="1" y1="20" antialias="false" end1="none" length2="1.5" x2="20"/>
+        <dynamic_text frame="false" Halignment="AlignLeft" Valignment="AlignTop" y="150" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" z="13" x="0" text_width="-1" text_from="ElementInfo" rotation="270" uuid="{b96ddaf4-2da5-4443-aed8-8933dd2fca18}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle y="11" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6" diameter="8" antialias="true"/>
+        <terminal orientation="s" y="120" x="10" name="" uuid="{f442a6ce-3820-4349-9e3d-669ec4888a7a}"/>
+        <terminal orientation="n" y="0" x="10" name="" uuid="{4ea09df9-1cfe-4632-a4af-703c14d5f1a8}"/>
+    </description>
+</definition>

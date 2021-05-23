@@ -2,6 +2,7 @@
     <uuid uuid="{0ba792d6-ceae-488c-96f5-cd407379a5c4}"/>
     <names>
         <name lang="fr">Lave-Linge</name>
+        <name lang="cs">Pračka</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -5,6 +5,8 @@
 manœuvre positive</name>
         <name lang="de">Taster mit zwangsläufiger Betätigung des
 Schließers</name>
+        <name lang="cs">Tlačítkový spínač s vyznačením
+zaručené činnosti zapínacího kontaktu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

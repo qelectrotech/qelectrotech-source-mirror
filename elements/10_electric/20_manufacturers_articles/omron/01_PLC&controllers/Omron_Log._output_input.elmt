@@ -2,6 +2,7 @@
     <uuid uuid="{77f57856-92f5-4dbb-a973-3bebf93ed1ae}"/>
     <names>
         <name lang="en">Log.output/input</name>
+        <name lang="cs">Logické vstupy/výstupy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{f5274abd-3557-4c94-9d37-868be0bf420a}"/>
     <names>
         <name lang="fr">Disjoncteur 25A</name>
+        <name lang="cs">Jistič 25A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
     </elementInformations>
-    <informations>Alexandre Dis&#xd;&#xd;
+    <informations>Alexandre Dis
 </informations>
     <description>
         <rect width="40" height="200" style="line-style:normal;line-weight:thin;filling:white;color:black" ry="0" x="0" antialias="false" y="0" rx="0"/>

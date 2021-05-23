@@ -2,6 +2,7 @@
     <uuid uuid="{053acd8a-573d-45d5-8afe-ad1440f32c61}"/>
     <names>
         <name lang="fr">Disjoncteur Uni</name>
+        <name lang="cs">Jistič Uni</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>

@@ -19,10 +19,12 @@
 
 #include "../qetapp.h"
 
+#include <QMetaEnum>
+#include "../qetxml.h"
+#include "../qetapp.h"
+
 #include <QHash>
 #include <QMetaEnum>
-
-#include "../qetxml.h"
 
 /**
 	@brief XRefProperties::XRefProperties
@@ -97,28 +99,28 @@ void XRefProperties::fromSettings(QSettings &settings,
 */
 void XRefProperties::toXmlPriv(QDomElement& xml_element) const
 {
-    xml_element.setAttribute("type", m_key);
+	xml_element.setAttribute("type", m_key);
 
-    xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
-    QString display = m_display == Cross? "cross" : "contacts";
-    xml_element.setAttribute("displayhas", display);
-    QString snap = m_snap_to == Bottom? "bottom" : "label";
-    xml_element.setAttribute("snapto", snap);
+	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
+	QString display = m_display == Cross? "cross" : "contacts";
+	xml_element.setAttribute("displayhas", display);
+	QString snap = m_snap_to == Bottom? "bottom" : "label";
+	xml_element.setAttribute("snapto", snap);
 
-    QString xrefpos;
+	QString xrefpos;
 
-    QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-    xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
+	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+	xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
 
-    int offset = m_offset;
-    xml_element.setAttribute("offset", QString::number(offset));
-    QString master_label = m_master_label;
-    xml_element.setAttribute("master_label", master_label);
-    QString slave_label = m_slave_label;
-    xml_element.setAttribute("slave_label", slave_label);
-    foreach (QString key, m_prefix.keys()) {
-        xml_element.setAttribute(key + "prefix", m_prefix.value(key));
-    }
+	int offset = m_offset;
+	xml_element.setAttribute("offset", QString::number(offset));
+	QString master_label = m_master_label;
+	xml_element.setAttribute("master_label", master_label);
+	QString slave_label = m_slave_label;
+	xml_element.setAttribute("slave_label", slave_label);
+	foreach (QString key, m_prefix.keys()) {
+		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
+	}
 }
 
 /** RETURNS True

@@ -2,6 +2,7 @@
     <uuid uuid="{298128b2-783e-4a55-9886-ad0cffb6b98c}"/>
     <names>
         <name lang="en">SME-8M-DS-24V-K-0,3-M8D (543861)</name>
+        <name lang="cs">SME-8M-DS-24V-K-0,3-M8D (543861)</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc height="6" width="6" angle="-84" x="16.985" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" y="-25.8018" antialias="true"/>

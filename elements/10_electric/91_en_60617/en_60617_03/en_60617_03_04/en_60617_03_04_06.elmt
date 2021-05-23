@@ -4,6 +4,7 @@
         <name lang="fr">Boîte pour une dérivation avec trois
 conducteurs, représentation unifilaire</name>
         <name lang="de">Abzweigmuffe, einpolige Darstellung</name>
+        <name lang="cs">Odbočovací kabelová spojka, jednočárové zobrazení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

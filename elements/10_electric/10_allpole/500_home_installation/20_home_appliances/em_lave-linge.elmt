@@ -2,12 +2,13 @@
     <uuid uuid="{886b97b5-e993-4601-ac98-f8510abdc5f4}"/>
     <names>
         <name lang="fr">Lave-Linge</name>
+        <name lang="cs">Pračka</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>
     </kindInformations>
     <elementInformations/>
-    <informations>&#xd;
+    <informations>
 CBH41</informations>
     <description>
         <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="46.5" diameter="27" y="-133.5"/>

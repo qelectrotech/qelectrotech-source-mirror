@@ -6,10 +6,11 @@
         <name lang="fr">Consommateurs et actionneurs</name>
         <name lang="it">Utilizzatori e attuatori</name>
         <name lang="pl">Odbiorniki i urządzenia wykonawcze</name>
+    	<name lang="pt_br">Consumíveis e atuadores</name>
         <name lang="de">Verbraucher und Aktoren</name>
         <name lang="nl">Verbruikers en bewegingen</name>
         <name lang="el">Καταναλώσεις και ενεργοποιητές</name>
-        <name lang="cs">Spotřebitelé a spouštěče</name>
+        <name lang="cs">Spotřebiče</name>
         <name lang="ja">消費装置と作動装置</name>
     </names>
 </qet-directory>

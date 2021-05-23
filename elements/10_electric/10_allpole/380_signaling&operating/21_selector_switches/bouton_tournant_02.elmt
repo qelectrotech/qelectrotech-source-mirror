@@ -4,7 +4,7 @@
         <name lang="es">Interruptor selector 2 posición fija con llave LH</name>
         <name lang="fr">Bouton tournant 2 positions fixes, retrait de la clé à gauche</name>
         <name lang="it">Selettore a chiave, 2 posizioni stabili, estrazione chiave a SX</name>
-        <name lang="cs">Otočný přepínač s 2 pevnými polohami, uvedený do provozu klíčkem, zleva</name>
+        <name lang="cs">Otočný přepínač s 2 pevnými polohami, ovládaný klíčkem, zleva</name>
         <name lang="ar">مُحدّد دوار بوضعين ثابتين محمي بقفل, إخراج المفتاح إلى اليسار</name>
         <name lang="en">Selector switch 2-position stay put, key withdrawal from LH</name>
         <name lang="pl">Łącznik obrotowy przełączny, uruchamiany kluczykiem</name>
@@ -14,7 +14,7 @@
     <kindInformations>
         <kindInformation show="1" name="type">commutator</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon y1="20" y3="-10" x3="36" antialias="true" x2="30" y2="10" x1="30" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

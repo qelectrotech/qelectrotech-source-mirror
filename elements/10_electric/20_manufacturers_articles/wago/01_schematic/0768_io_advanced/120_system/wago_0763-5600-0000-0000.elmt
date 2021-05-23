@@ -1,0 +1,32 @@
+<definition version="0.80" hotspot_x="365" height="100" link_type="simple" hotspot_y="45" type="element" width="730">
+    <names>
+        <name lang="ar">763-5600</name>
+        <name lang="it">763-5600</name>
+        <name lang="en">763-5600</name>
+        <name lang="pl">763-5600</name>
+        <name lang="pt">763-5600</name>
+        <name lang="es">763-5600</name>
+        <name lang="fr">763-5600</name>
+        <name lang="cs">763-5600</name>
+        <name lang="de">763-5600</name>
+        <name lang="nl">763-5600</name>
+        <name lang="el">763-5600</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">763-5600</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330" text="WAGO 763-5600" y="45" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-138" text="End Module" y="45" rotation="0" color="#000000"/>
+        <dynamic_text text_width="-1" Valignment="AlignTop" uuid="{26fc5f50-dbbe-490a-a4b4-7fc3f8c6197f}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="220" z="8" text_from="ElementInfo" y="29.5" rotation="0" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect ry="0" height="90" rx="0" antialias="false" x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" width="720"/>
+    </description>
+</definition>

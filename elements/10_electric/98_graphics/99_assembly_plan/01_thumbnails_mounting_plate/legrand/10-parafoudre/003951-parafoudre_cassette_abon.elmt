@@ -2,6 +2,7 @@
     <uuid uuid="{57d42896-5841-4829-a966-c1d78a366be1}"/>
     <names>
         <name lang="fr">003951 - Parafoudre Type 2 1P+N Abonné + Cassette 003954</name>
+        <name lang="cs">003951 - Přepěťová ochrana Type 2 1P+N základna + Kazeta 003954</name>
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>

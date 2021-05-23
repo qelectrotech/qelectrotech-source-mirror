@@ -4,9 +4,10 @@
         <name lang="fr">Echangeur à plaques</name>
         <name lang="ca">Intercanviador de plaques</name>
         <name lang="es">Intercambador placas</name>
+        <name lang="de">Plattenaustauscher</name>
     </names>
     <elementInformations/>
-    <informations>Rafael Ferrando.&#xd;
+    <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
         <rect width="4.725" y="-21.5172" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="15.115" ry="0" antialias="false" height="4.62887"/>

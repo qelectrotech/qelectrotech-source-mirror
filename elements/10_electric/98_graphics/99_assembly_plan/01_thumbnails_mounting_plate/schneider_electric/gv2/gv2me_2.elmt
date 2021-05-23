@@ -2,6 +2,7 @@
     <uuid uuid="{e72f44fe-5a7f-4d27-ad76-1124086cad02}"/>
     <names>
         <name lang="fr">GV2ME</name>
+        <name lang="cs">GV2ME</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>

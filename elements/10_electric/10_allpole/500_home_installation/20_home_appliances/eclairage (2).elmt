@@ -2,6 +2,7 @@
     <uuid uuid="{26fe1324-1ec6-4b7c-b221-c3afdcf0caf4}"/>
     <names>
         <name lang="fr">Eclairage</name>
+        <name lang="cs">Osvětlení</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>

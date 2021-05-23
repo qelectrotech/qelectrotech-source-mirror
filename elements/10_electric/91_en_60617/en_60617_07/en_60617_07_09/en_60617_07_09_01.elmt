@@ -4,6 +4,7 @@
         <name lang="fr">Interrupteur fonctionnant sous l'effet de la
 température, contact à fermeture</name>
         <name lang="de">Schließer, temperaturabhängig </name>
+        <name lang="cs">Spínač citlivý na teplotu, zapínací kontakt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,14 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatecellwidget.h"
-#include "titleblockcell.h"
-#include "nameslist.h"
-#include "titleblocktemplate.h"
+
+#include "../NameList/nameslist.h"
+#include "../NameList/ui/namelistdialog.h"
+#include "../NameList/ui/namelistwidget.h"
+#include "../qeticons.h"
+#include "../qetinformation.h"
+#include "../titleblockcell.h"
+#include "../titleblocktemplate.h"
 #include "templatecommands.h"
-#include "qeticons.h"
-#include "namelistdialog.h"
-#include "namelistwidget.h"
-#include "qetinformation.h"
 
 /**
 	@brief TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget
@@ -460,8 +461,9 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const
 		"<li>%{projecttitle} : titre du projet</li>"
 		"<li>%{projectpath} : chemin du projet</li>"
 		"<li>%{projectfilename} : nom du fichier</li>"
-		"<li>%{saveddate} : date d'enregistrement du fichier format yyyy-MM-dd</li>"
+		"<li>%{saveddate} : date d'enregistrement du fichier format local</li>"
 		"<li>%{saveddate-eu} : date d'enregistrement du fichier format dd-MM-yyyy</li>"
+		"<li>%{saveddate-us} : date d'enregistrement du fichier format yyyy-MM-dd</li>"
 		"<li>%{savedtime} : heure d'enregistrement du fichier</li>"
 		"<li>%{savedfilename} : nom du fichier enregistré</li>"
 		"<li>%{savedfilepath} : chemin du fichier enregistré</li>"

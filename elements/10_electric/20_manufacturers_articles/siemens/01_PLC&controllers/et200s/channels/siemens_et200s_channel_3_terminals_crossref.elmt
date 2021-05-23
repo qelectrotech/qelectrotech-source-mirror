@@ -4,6 +4,7 @@
         <name lang="en">ET 200S channel 3 terminals (cross reference)</name>
         <name lang="fr">ET 200S canal 3 bornes (référence croisée)</name>
         <name lang="de">ET 200S Kanal 3 Klemmen (Verweis)</name>
+        <name lang="cs">ET 200S channel 3 terminals (cross reference)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

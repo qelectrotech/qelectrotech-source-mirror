@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Schalter mit Kontrolleuchte</name>
         <name lang="fr">Interrupteur à lampe témoin</name>
+        <name lang="cs">Spínač se světelnou signalizací</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

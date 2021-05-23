@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Boîte d'extrémité avec trois câbles unipolaires</name>
         <name lang="de">Kabelendverschluß mit drei einadrigen Kabel</name>
+        <name lang="cs">Kabelová těsnící koncovka se třemi jednožilovými kabely</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

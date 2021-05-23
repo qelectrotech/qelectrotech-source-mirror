@@ -4,6 +4,7 @@
         <name lang="fr">Effet semi-conducteur</name>
         <name lang="es">Efecto semiconductor</name>
         <name lang="de">Halbleitereffekt</name>
+        <name lang="cs">Polovodičový efekt</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

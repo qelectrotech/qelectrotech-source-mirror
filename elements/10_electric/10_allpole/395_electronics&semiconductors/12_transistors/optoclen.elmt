@@ -4,7 +4,7 @@
         <name lang="pl">Transoptor 2</name>
         <name lang="en">Optocoupler 2</name>
         <name lang="ar">رابط ضوئي</name>
-        <name lang="cs">Optický vazební člen 2</name>
+        <name lang="cs">Optočlen</name>
         <name lang="de">Optokoppler 2</name>
         <name lang="nl">Opto koppelaar 2</name>
         <name lang="it">Accoppiatore ottico Fotoaccoppiatore 2</name>
@@ -12,7 +12,7 @@
         <name lang="fr">Interface optocoupleur 2</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x2="4" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8" y1="-5" y2="-1" y3="-4" antialias="true" x3="13"/>

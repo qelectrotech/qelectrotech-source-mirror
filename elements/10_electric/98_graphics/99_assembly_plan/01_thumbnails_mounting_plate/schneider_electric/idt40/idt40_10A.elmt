@@ -2,6 +2,7 @@
     <uuid uuid="{5bec7b94-39bc-41a9-ac43-093eceb2389e}"/>
     <names>
         <name lang="fr">iDT40 Disjoncteur 10A</name>
+        <name lang="cs">iDT40 Jistič 10A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="description"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="designation"> A9P22610</elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
     </elementInformations>
-    <informations>Alexandre Dis&#xd;&#xd;
+    <informations>Alexandre Dis
 </informations>
     <description>
         <rect ry="0" rx="0" height="200" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" width="40" x="0" y="0"/>

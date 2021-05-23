@@ -5,6 +5,8 @@
 enroulements avec écran</name>
         <name lang="de">Einphasentransformator mit zwei Wicklungen
 und Schirm</name>
+        <name lang="cs">Jednofázový transformátor
+se dvěma vinutími a stíněním</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

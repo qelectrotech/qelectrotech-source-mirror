@@ -6,6 +6,7 @@ type de conductivité est différent, (élément de
 symbole)</name>
         <name lang="de">Mehrere Kollektoren auf einer Zone
 entgegengesetzten Leitertyps</name>
+        <name lang="cs">Několik kolektorů v oblasti odlišného typu vodivosti</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Siemens;6FC5203-0AF02-0AA1;6FC5203-0AF02-0AA1;Sinumerik tableau de commande OP 012, écran 12,1 pouces avec souris et touches à membrane;7080015</name>
         <name lang="en">Siemens;6FC5203-0AF02-0AA1;6FC5203-0AF02-0AA1;Sinumerik operator panel OP 012, 12,1 inches display with mouse and membrane keys;7080015</name>
         <name lang="de">Siemens;6FC5203-0AF02-0AA1;6FC5203-0AF02-0AA1;Sinumerik Bedientafelfront OP 012, 12,1 Zoll Anzeige mit Maus und Folientasten;7080015</name>
+        <name lang="cs">Siemens;6FC5203-0AF02-0AA1;6FC5203-0AF02-0AA1;Sinumerik operatorský panel OP 012, 12,1 inches displej s myší a membránovou klávesnicí;7080015</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

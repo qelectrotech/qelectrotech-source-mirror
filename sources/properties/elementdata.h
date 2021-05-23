@@ -18,7 +18,7 @@
 #ifndef ELEMENTDATA_H
 #define ELEMENTDATA_H
 
-#include "../properties/propertiesinterface.h"
+#include "propertiesinterface.h"
 #include "../diagramcontext.h"
 #include "../NameList/nameslist.h"
 

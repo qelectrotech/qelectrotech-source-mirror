@@ -5,6 +5,7 @@
 Hauptkontakte</name>
         <name lang="fr">Interrupteur de sécurité, trois contacts
 principaux à manœuvre positive d'ouverture</name>
+        <name lang="cs">Spínač se zaručenou rozpojovací funkcí a pomocným kontaktem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

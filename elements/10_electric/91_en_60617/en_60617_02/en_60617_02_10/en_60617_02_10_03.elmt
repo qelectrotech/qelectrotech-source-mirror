@@ -4,6 +4,7 @@
         <name lang="fr">Impulsion de courant alternatif</name>
         <name lang="es">Impulso de corriente alterna</name>
         <name lang="de">Wechselstrom-Impuls</name>
+        <name lang="cs">Impulzy střídavého proudu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

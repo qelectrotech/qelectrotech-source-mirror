@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,12 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementfactory.h"
-#include "QDomElement"
-#include "simpleelement.h"
-#include "reportelement.h"
-#include "masterelement.h"
-#include "slaveelement.h"
-#include "terminalelement.h"
+
+#include "../qetgraphicsitem/masterelement.h"
+#include "../qetgraphicsitem/reportelement.h"
+#include "../qetgraphicsitem/simpleelement.h"
+#include "../qetgraphicsitem/slaveelement.h"
+#include "../qetgraphicsitem/terminalelement.h"
+
+#include <QDomElement>
 
 ElementFactory* ElementFactory::factory_ = nullptr;
 /**
@@ -44,10 +46,14 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 	if (doc.document_element().attribute("link_type"))
 	{
 		QString link_type(doc.document_element().attribute("link_type").as_string());
-		if (link_type == "next_report" || link_type == "previous_report") return (new ReportElement(location, link_type, qgi, state));
-		if (link_type == "master")   return (new MasterElement   (location, qgi, state));
-		if (link_type == "slave")    return (new SlaveElement    (location, qgi, state));
-		if (link_type == "terminal") return (new TerminalElement (location, qgi, state));
+		if (link_type == QLatin1String("next_report") || link_type == QLatin1String("previous_report"))
+			return (new ReportElement(location, link_type, qgi, state));
+		if (link_type == QLatin1String("master"))
+			return (new MasterElement   (location, qgi, state));
+		if (link_type == QLatin1String("slave"))
+			return (new SlaveElement    (location, qgi, state));
+		if (link_type == QLatin1String("terminal"))
+			return (new TerminalElement (location, qgi, state));
 	}
 	
 		//default if nothing match for link_type

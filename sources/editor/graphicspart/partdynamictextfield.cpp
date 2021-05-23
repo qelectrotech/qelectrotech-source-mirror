@@ -99,57 +99,57 @@ void PartDynamicTextField::handleUserTransformation(
 void PartDynamicTextField::toXmlPriv(QDomElement& root_element) const
 {
 
-    root_element.setAttribute("x", QString::number(pos().x()));
-    root_element.setAttribute("y", QString::number(pos().y()));
-    root_element.setAttribute("z", QString::number(zValue()));
-    root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-    root_element.setAttribute("font", font().toString());
-    root_element.setAttribute("uuid", m_uuid.toString());
-    root_element.setAttribute("frame", m_frame? "true" : "false");
-    root_element.setAttribute("text_width", QString::number(m_text_width));
+	root_element.setAttribute("x", QString::number(pos().x()));
+	root_element.setAttribute("y", QString::number(pos().y()));
+	root_element.setAttribute("z", QString::number(zValue()));
+	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("uuid", m_uuid.toString());
+	root_element.setAttribute("frame", m_frame? "true" : "false");
+	root_element.setAttribute("text_width", QString::number(m_text_width));
 
-    QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
-    root_element.setAttribute("text_from", me.valueToKey(m_text_from));
+	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
+	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 
-    me = QMetaEnum::fromType<Qt::Alignment>();
-    if(this -> alignment() &Qt::AlignRight)
-        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
-    else if(this -> alignment() &Qt::AlignLeft)
-        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
-    else if(this -> alignment() &Qt::AlignHCenter)
-        root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
+	me = QMetaEnum::fromType<Qt::Alignment>();
+	if(this -> alignment() &Qt::AlignRight)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
+	else if(this -> alignment() &Qt::AlignLeft)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
+	else if(this -> alignment() &Qt::AlignHCenter)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
 
-    if(this -> alignment() &Qt::AlignBottom)
-        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
-    else if(this -> alignment() & Qt::AlignTop)
-        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
-    else if(this -> alignment() &Qt::AlignVCenter)
-        root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
+	if(this -> alignment() &Qt::AlignBottom)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
+	else if(this -> alignment() & Qt::AlignTop)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
+	else if(this -> alignment() &Qt::AlignVCenter)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
 
     QDomElement dom_text = root_element.ownerDocument().createElement("text");
     dom_text.appendChild(root_element.ownerDocument().createTextNode(toPlainText()));
-    root_element.appendChild(dom_text);
+	root_element.appendChild(dom_text);
 
-        //Info name
-    if(!m_info_name.isEmpty()) {
+		//Info name
+	if(!m_info_name.isEmpty()) {
         QDomElement dom_info_name = root_element.ownerDocument().createElement("info_name");
         dom_info_name.appendChild(root_element.ownerDocument().createTextNode(m_info_name));
-        root_element.appendChild(dom_info_name);
-    }
+		root_element.appendChild(dom_info_name);
+	}
 
-        //Composite text
-    if(!m_composite_text.isEmpty()) {
+		//Composite text
+	if(!m_composite_text.isEmpty()) {
         QDomElement dom_comp_text = root_element.ownerDocument().createElement("composite_text");
         dom_comp_text.appendChild(root_element.ownerDocument().createTextNode(m_composite_text));
-        root_element.appendChild(dom_comp_text);
-    }
+		root_element.appendChild(dom_comp_text);
+	}
 
-        //Color
-    if(color() != QColor(Qt::black)) {
+		//Color
+	if(color() != QColor(Qt::black)) {
         QDomElement dom_color = root_element.ownerDocument().createElement("color");
         dom_color.appendChild(root_element.ownerDocument().createTextNode(color().name()));
-        root_element.appendChild(dom_color);
-    }
+		root_element.appendChild(dom_color);
+	}
 }
 
 /**
@@ -498,7 +498,7 @@ void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 		m_origine_pos != pos()) {
 			QPropertyUndoCommand *undo =\
 				new QPropertyUndoCommand(this, "pos", QVariant(m_origine_pos), QVariant(pos()));
-			undo -> setText(tr("D??placer un champ texte"));
+			undo -> setText(tr("Déplacer un champ texte"));
 			undo -> enableAnimation();
 			elementScene() -> undoStack().push(undo);
 	}

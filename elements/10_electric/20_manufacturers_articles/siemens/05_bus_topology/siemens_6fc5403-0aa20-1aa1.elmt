@@ -2,6 +2,7 @@
     <uuid uuid="{d4ae2146-2c16-4d20-8864-d4c815389f22}"/>
     <names>
         <name lang="en">Siemens HT8 (6FC5403-0AA20-1AA1)</name>
+        <name lang="cs">Siemens HT8 (6FC5403-0AA20-1AA1)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,7 +5,7 @@
         <name lang="it">Modulo 2 relais</name>
         <name lang="pl">Moduł przekaźnikowy</name>
         <name lang="fr">Module 2 relais</name>
-        <name lang="cs">Reléový modul (2)</name>
+        <name lang="cs">Reléový modul (2 relé)</name>
         <name lang="nl">relais module (2)</name>
     </names>
     <elementInformations>
@@ -21,7 +21,7 @@
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="manufacturer_reference"></elementInformation>
     </elementInformations>
-    <informations>Charles Ferrand&#xd;
+    <informations>Charles Ferrand
 novembre 2013</informations>
     <description>
         <text color="#000000" rotation="0" y="-18" x="-29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="JD-Vcc"/>

@@ -2,6 +2,7 @@
 <uuid uuid="{DB6363A0-0CD4-4095-BB74-CA3DBFA7C6F4}"/><names>
         <name lang="fr">Climatiseur</name>
         <name lang="pl">Klimatyzator</name>
+        <name lang="cs">Klimatizace</name>
     </names>
     <informations>cbh41</informations>
     <description>

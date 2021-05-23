@@ -7,6 +7,7 @@
         <name lang="fr">EL2622</name>
         <name lang="de">EL2622</name>
         <name lang="it">EL2622</name>
+        <name lang="cs">EL2622</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>

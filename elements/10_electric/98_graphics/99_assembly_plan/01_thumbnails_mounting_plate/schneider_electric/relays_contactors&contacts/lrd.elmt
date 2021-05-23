@@ -22,7 +22,7 @@
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x2="1" x1="4" y2="-34" x3="1" y7="-30" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y6="-27" x4="24" y4="-49" y3="-49" x5="24" x7="8" y1="-34" y5="-27" x6="8"/>

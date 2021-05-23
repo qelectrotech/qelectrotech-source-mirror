@@ -2,11 +2,12 @@
     <uuid uuid="{4ac5789b-e219-4d64-a5ed-12d806afcb3a}"/>
     <names>
         <name lang="de">Klemmleiste 3P+N+PE</name>
-        <name lang="cs">Svorková lišta 3P+N+PE</name>
+        <name lang="cs">Svorkovnice 3P+N+PE</name>
         <name lang="pl">Listwa zaciskowa</name>
         <name lang="it">Morsettiera 3P+N+PE</name>
         <name lang="en">Terminal block 3P+N+PE</name>
         <name lang="fr">Bornier 3P+N+PE</name>
+        <name lang="hu">Sorkapocs 3F + N + PE</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

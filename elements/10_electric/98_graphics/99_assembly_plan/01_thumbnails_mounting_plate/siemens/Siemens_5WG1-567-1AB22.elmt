@@ -2,6 +2,7 @@
     <uuid uuid="{f57c8e3f-cbca-498e-8f09-ec4615fdc694}"/>
     <names>
         <name lang="en">5WG1 567-1AB22 - Switching actuator - 230V - 10A</name>
+        <name lang="cs">5WG1 567-1AB22 - Spínací jednotka - 230V - 10A</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -16,7 +17,7 @@
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
     </elementInformations>
-    <informations>Mickael Pouliquen&#xd;
+    <informations>Mickael Pouliquen
 mickael.pouliquen@gmail.com</informations>
     <description>
         <line x2="240" y2="135" end2="none" end1="none" x1="240" length1="1.5" antialias="false" y1="120" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>

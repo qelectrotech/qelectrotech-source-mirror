@@ -2,6 +2,7 @@
     <uuid uuid="{705c84d6-9892-406d-9b82-27a00107df36}"/>
     <names>
         <name lang="fr">Porte étiquette DEFAUT (NOIR)</name>
+        <name lang="cs">Štítek ovladače DEFAUT (černý)</name>
     </names>
     <elementInformations>
         <elementInformation name="description" show="1">Porte étiquette DEFAUT (NOIR)</elementInformation>

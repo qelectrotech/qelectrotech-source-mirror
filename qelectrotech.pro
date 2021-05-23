@@ -89,40 +89,45 @@ DEFINES += GIT_COMMIT_SHA="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" rev-parse -
 #DEFINES += TODO_LIST
 
 TEMPLATE = app
-DEPENDPATH += .
-INCLUDEPATH += sources \
-               sources/titleblock \
-               sources/ui \
-               sources/qetgraphicsitem \
-               sources/qetgraphicsitem/ViewItem \
-               sources/qetgraphicsitem/ViewItem/ui \
-               sources/richtext \
-               sources/factory \
-               sources/properties \
-               sources/dvevent \
-               sources/editor \
-               sources/editor/esevent \
-               sources/editor/graphicspart \
-               sources/editor/ui \
-               sources/editor/UndoCommand \
-               sources/undocommand \
-               sources/diagramevent \
-               sources/ElementsCollection \
-               sources/ElementsCollection/ui \
-               sources/autoNum \
-               sources/autoNum/ui \
-               sources/ui/configpage \
-               sources/SearchAndReplace \
-               sources/SearchAndReplace/ui \
-               sources/NameList \
-               sources/NameList/ui \
-               sources/utils \
-               sources/pugixml \
-               sources/dataBase \
-               sources/dataBase/ui \
-               sources/factory/ui \
-               sources/print
 
+#ToDo comment close the gap with Cmake
+#this is my next problem now
+INCLUDEPATH += sources/ui
+
+#comment close the gap with Cmake (De-Backer)
+#DEPENDPATH += .
+#INCLUDEPATH += sources \
+#               sources/titleblock \
+#               sources/ui \
+#               sources/qetgraphicsitem \
+#               sources/qetgraphicsitem/ViewItem \
+#               sources/qetgraphicsitem/ViewItem/ui \
+#               sources/richtext \
+#               sources/factory \
+#               sources/properties \
+#               sources/dvevent \
+#               sources/editor \
+#               sources/editor/esevent \
+#               sources/editor/graphicspart \
+#               sources/editor/ui \
+#               sources/editor/UndoCommand \
+#               sources/undocommand \
+#               sources/diagramevent \
+#               sources/ElementsCollection \
+#               sources/ElementsCollection/ui \
+#               sources/autoNum \
+#               sources/autoNum/ui \
+#               sources/ui/configpage \
+#               sources/SearchAndReplace \
+#               sources/SearchAndReplace/ui \
+#               sources/NameList \
+#               sources/NameList/ui \
+#               sources/utils \
+#               sources/pugixml \
+#               sources/dataBase \
+#               sources/dataBase/ui \
+#               sources/factory/ui \
+#               sources/print
 
 # Fichiers sources
 HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \

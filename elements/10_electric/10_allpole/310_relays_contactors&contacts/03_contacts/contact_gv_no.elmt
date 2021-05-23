@@ -4,6 +4,7 @@
         <name lang="fr">Contact NO disjoncteur magnéto-thermique GV</name>
         <name lang="en">Contact NO circuit-breaker magneto-thermal GV</name>
         <name lang="es">Contacto NA disyuntor GV termico magnético</name>
+        <name lang="cs">Kontakt (NO) jističe</name>
     </names>
     <kindInformations>
         <kindInformation name="number" show="1">1</kindInformation>

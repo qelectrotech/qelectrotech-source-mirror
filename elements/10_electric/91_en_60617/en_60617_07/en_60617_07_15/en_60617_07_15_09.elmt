@@ -5,6 +5,7 @@
 Rückfallverzögerung</name>
         <name lang="fr">Organe de commande d'un relais à mise au
 travail et mise au repos retardées</name>
+        <name lang="cs">Cívka přístroje se zpožděním při přítahu i odpadu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

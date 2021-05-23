@@ -2,6 +2,7 @@
     <uuid uuid="{45003f26-0922-4d81-bb04-99c2f2fc2c0e}"/>
     <names>
         <name lang="fr">Bât Ext mono</name>
+        <name lang="cs">Externí budova 1f</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,12 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "aboutqetdialog.h"
+
+#include "../machine_info.h"
+#include "../qet.h"
+#include "../qetapp.h"
 #include "ui_aboutqetdialog.h"
-#include "qet.h"
-#include "qetapp.h"
-#include "machine_info.h"
+
 #include <QDate>
 
 /**
@@ -150,8 +152,7 @@ void AboutQETDialog::setVersion()
 	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V "
 			+ QET::displayedVersion
 			+ "</span>";
-	Machine_info *my_ma =new Machine_info(this);
-	ui->m_version_label->setText(str + my_ma->compilation_info());
+	ui->m_version_label->setText(str + MachineInfo::instance()->compilation_info());
 }
 
 /**

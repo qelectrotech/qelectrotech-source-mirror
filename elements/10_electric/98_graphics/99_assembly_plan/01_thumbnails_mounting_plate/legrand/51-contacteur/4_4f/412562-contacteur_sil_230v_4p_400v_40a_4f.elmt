@@ -2,6 +2,7 @@
     <uuid uuid="{c1e2e2ea-1362-4992-9918-7b33f7343eb3}"/>
     <names>
         <name lang="fr">412562 - Contacteur silencieux 230V - 3P 400V 40A 4F</name>
+        <name lang="cs">412562 - Instalační stykač 230V - 3P 400V 40A 4F</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="supplier"></elementInformation>

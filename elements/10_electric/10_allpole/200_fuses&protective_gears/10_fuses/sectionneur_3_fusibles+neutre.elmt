@@ -9,12 +9,13 @@
         <name lang="fr">Sectionneur porte fusible tri + N</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="nl">Zekeringscheider 3</name>
-        <name lang="cs">Tavný odpojovač</name>
+        <name lang="cs">Pojistkový odpínač 3p+N</name>
+        <name lang="hu">Olvadóbiztosítós szakaszoló karos működtetésű N + 3F</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">protection</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="25" y2="10" x2="30" y3="20" x3="30"/>

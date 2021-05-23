@@ -4,6 +4,7 @@
         <name lang="de">Begrenzungslinie</name>
         <name lang="fr">Séparation</name>
         <name lang="es">Separacion</name>
+        <name lang="cs">Ohraničení</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

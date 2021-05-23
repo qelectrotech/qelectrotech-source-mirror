@@ -2,6 +2,7 @@
     <uuid uuid="{c18845dd-438d-4bc3-992d-1fe261f5af09}"/>
     <names>
         <name lang="en">F411/1NC</name>
+        <name lang="cs">Výstupní jednotka 1 relé F411/1NC</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
