@@ -1334,8 +1334,6 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 					return;
 				}
 			}
-				}
-			}
 		}
 		setTitle(root_elmt.attribute(QStringLiteral("title")));
 	}
@@ -1475,7 +1473,7 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
 	for (auto dom_elmt : QET::findInDomElement(xml_project.documentElement(), QStringLiteral("properties")))
-		m_project_properties.fromXml(e);
+        m_project_properties.fromXml(dom_elmt);
 }
 
 /**
@@ -1789,7 +1787,6 @@ void QETProject::writeBackup()
 			 << "QtConcurrent::run its backwards now...function, object, args";
 #	endif
 #	endif
-#endif
 }
 
 /**

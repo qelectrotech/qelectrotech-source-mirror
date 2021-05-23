@@ -552,13 +552,12 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		m_state = QET::GIOK;
 		return(false);
 	}
-	else
-	{
-		if (state)
-			*state = 0;
-		m_state = QET::GIOK;
-		return(true);
-	}
+
+    if (state)
+        *state = 0;
+    m_state = QET::GIOK;
+    return(true);
+}
 
 /**
 	@brief Element::parseElement
@@ -687,11 +686,11 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 	@return true si l'element XML est un Element, false sinon
 */
 bool Element::valideXml(QDomElement &e)
+{
 	// verifie le nom du tag
 	if (e.tagName() != "element") return(false);
-		!e.hasAttribute(QStringLiteral("type")) ||
+    if (!e.hasAttribute(QStringLiteral("type"))) return false;
 	// verifie la presence des attributs minimaux
-	if (!e.hasAttribute("type")) return(false);
 	if (!e.hasAttribute("x"))	return(false);
 	if (!e.hasAttribute("y"))	return(false);
 
@@ -720,7 +719,6 @@ bool Element::valideXml(QDomElement &e)
 	@return
 */
 bool Element::fromXml(QDomElement &e,
-		QDomElement &e,
         QHash<int, Terminal *> &table_id_adr)
 {
 	m_state = QET::GILoadingFromXml;
@@ -740,7 +738,6 @@ bool Element::fromXml(QDomElement &e,
 	// all Terminals in the collection and in the diagram to link them together
 	for(QGraphicsItem *qgi: childItems()) { // TODO: Where the Terminals are added as childs?
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
-		{
 			bool terminal_trouvee = false;
 			for(QDomElement qde: liste_terminals) {
 				// The position in the collection element definition is the origin position (originPos).
@@ -765,7 +762,7 @@ bool Element::fromXml(QDomElement &e,
 					// several terminals to share the same position.
 					// Of course, it finally happened.
 				}
-			}
+            }
 			if (!terminal_trouvee) ++ terminals_non_trouvees;
 		}
 	}

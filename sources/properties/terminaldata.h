@@ -57,7 +57,7 @@ class TerminalData : public PropertiesInterface
         void fromSettings(QSettings &settings,
                           const QString& = QString()) override;
 
-	static bool valideXml(const QDomElement &xml_element);
+        static bool valideXml(const QDomElement &xml_element);
 
 		static QString typeToString(TerminalData::Type type);
 		static TerminalData::Type typeFromString(const QString &string);
@@ -65,9 +65,6 @@ class TerminalData : public PropertiesInterface
 private:
      void toXmlPriv(QDomElement &xml_element) const override;
      bool fromXmlPriv(const QDomElement &xml_element) override;
-
-		static QString typeToString(TerminalData::Type type);
-		static TerminalData::Type typeFromString(const QString &string);
 
 	// must be public, because this class is a private member
 	// of PartTerminal/Terminal and they must access this data

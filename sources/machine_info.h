@@ -59,7 +59,7 @@ class MachineInfo
 		int32_t i_max_screen_height();
 		QString compilation_info();
 		void send_info_to_debug();
-	~Machine_info();
+    ~MachineInfo();
 
 
 	private:

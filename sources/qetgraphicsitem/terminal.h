@@ -168,8 +168,8 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		int m_id{-1};
 
 	private:
-		void init();
-        void init(QPointF pf, Qet::Orientation o,QString number, QString name, bool hiddenName);
+        void init(QString number, QString name, bool hiddenName);
+		void init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName);
 };
 
 /**
@@ -181,9 +181,6 @@ inline int Terminal::conductorsCount() const
     return(m_conductors_list.size());
 }
 
-	@brief Terminal::number
-	@return the number of terminal.
-	return(number_terminal_);
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
 						const bool all_diagram = true);
 

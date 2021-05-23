@@ -155,7 +155,7 @@ void MachineInfo::send_info_to_debug()
 	@brief Machine_info::~Machine_info
 	destructor
 */
-Machine_info::~Machine_info()
+MachineInfo::~MachineInfo()
 {
 }
 

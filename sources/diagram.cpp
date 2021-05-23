@@ -1107,8 +1107,7 @@ Terminal* findTerminal(int conductor_index,
 	assert(conductor_index == 1 || conductor_index == 2);
 
 	QString element_index = "element" + QString::number(conductor_index);
-	QString terminal_index = "terminal" + QString::number(conductor_index);
-	QString terminal_index = QStringLiteral("terminal") + str_index;
+    QString terminal_index = QStringLiteral("terminal") +  QString::number(conductor_index);;
 
 	QUuid element_uuid;
     if (QETXML::propertyUuid(conductor, element_index, &element_uuid) == QETXML::PropertyFlags::Success) {
