@@ -728,7 +728,7 @@ bool Element::fromXml(QDomElement &e,
 	*/
 	QList<QDomElement> liste_terminals; // terminals in the element in the diagram
     for(QDomElement qde:
-			QET::findInDomElement(e, "terminals", "terminal")) {
+            QET::findInDomElement(e, QStringLiteral("terminals"), QStringLiteral("terminal"))) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
 
@@ -793,8 +793,8 @@ bool Element::fromXml(QDomElement &e,
 	}
 
 	//load uuid of connected elements
-	QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
-    for (QDomElement qdo: uuid_list) tmp_uuids_link << qdo.attribute("uuid");
+    QList <QDomElement> uuid_list = QET::findInDomElement(e, QStringLiteral("links_uuids"), QStringLiteral("link_uuid"));
+    for (QDomElement qdo: uuid_list) tmp_uuids_link << qdo.attribute(QStringLiteral("uuid"));
 	
     for (QDomElement qdo: uuid_list)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
@@ -906,7 +906,7 @@ bool Element::fromXml(QDomElement &e,
 QDomElement Element::toXml(
         QDomDocument &document) const
 {
-	QDomElement element = document.createElement("element");
+    QDomElement element = document.createElement(QStringLiteral("element"));
 
 		// type
 	element.setAttribute(QStringLiteral("type"), m_location.path());
@@ -942,13 +942,13 @@ QDomElement Element::toXml(
 		if (t->ID() > 0) {
 			// for backward compatibility
             // Terminal was loaded during loading an old project. So the terminal has a valid id
-			terminal.setAttribute("id", t->ID()); // for backward compatibility
+            terminal.setAttribute(QStringLiteral("id"), t->ID()); // for backward compatibility
         } else if (t->uuid().isNull()) {
           // for backward compatibility
           // An old element with no uuid on the terminals was added to the project.
           // give it an id
           t->setID(t->diagram()->uniqueTerminalID());
-          terminal.setAttribute("id", t->ID());
+          terminal.setAttribute(QStringLiteral("id"), t->ID());
         }
 		xml_terminals.appendChild(terminal);
 	}
