@@ -810,30 +810,39 @@ void ProjectView::loadDiagrams()
 
 	setDisplayFallbackWidget(m_project -> diagrams().isEmpty());
 
-	DialogWaiting *dialog = nullptr;
-	if(DialogWaiting::hasInstance())
+	auto dialog = DialogWaiting::instance();
+	if(dialog)
 	{
-		dialog = DialogWaiting::instance();
 		dialog->setTitle( tr("<p align=\"center\">"
 												"<b>Ouverture du projet en cours...</b><br/>"
 												"Création des onglets de folio :"
 												"</p>"));
 	}
-	for(Diagram *diagram : m_project->diagrams())
+
+	for(auto diagram : m_project->diagrams())
 	{
 		if(dialog)
 		{
 			dialog->setDetail(diagram->title());
 			dialog->setProgressBar(dialog->progressBarValue()+1);
 		}
-		diagramAdded(diagram);
+
+		auto dv = new DiagramView(diagram);
+		dv->setFrameStyle(QFrame::Plain | QFrame::NoFrame);
+
+		auto index = m_project->folioIndex(diagram);
+		m_tab->insertTab(index, dv, QET::Icons::Diagram, dv->title());
+		m_diagram_view_list.insert(index, dv);
+
+		connect(dv, &DiagramView::showDiagram,         this, QOverload<Diagram*>::of(&ProjectView::showDiagram));
+		connect(dv, &DiagramView::titleChanged,        this, &ProjectView::updateTabTitle);
+		connect(dv, &DiagramView::findElementRequired, this, &ProjectView::findElementRequired);
+		connect(&dv->diagram()->border_and_titleblock , &BorderTitleBlock::titleBlockFolioChanged, [this, dv]() {this->updateTabTitle(dv);});
 	}
 
-	if (DiagramView *dv = currentDiagram())
-	{
-		dv->diagram()->loadElmtFolioSeq();
-		dv->diagram()->loadCndFolioSeq();
-	}
+	rebuildDiagramsMap();
+	updateAllTabsTitle();
+
 	m_tab->setCurrentWidget(firstDiagram());
 }
 

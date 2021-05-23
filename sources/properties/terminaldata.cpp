@@ -210,7 +210,8 @@ QString TerminalData::typeToString(TerminalData::Type type)
  */
 TerminalData::Type TerminalData::typeFromString(const QString &string)
 {
-	if (string == "Generic") {
+	if (string.isEmpty() ||
+		string == "Generic") {
 		return TerminalData::Generic;
 	} else if (string == "Inner") {
 		return TerminalData::Inner;

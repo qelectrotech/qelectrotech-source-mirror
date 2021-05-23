@@ -60,6 +60,7 @@ parts:
     plugin: python
     python-version: python3
     source: https://github.com/qelectrotech/qet_tb_generator.git
+    python-packages: [PySimpleGUI]
     stage-packages: 
       - python3-lxml
       - python3-tk

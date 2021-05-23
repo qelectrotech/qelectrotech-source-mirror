@@ -18,18 +18,18 @@
 
 #include "configpages.h"
 
-#include "NameList/nameslist.h"
-#include "bordertitleblock.h"
-#include "exportpropertieswidget.h"
-#include "properties/reportproperties.h"
-#include "qetapp.h"
-#include "qeticons.h"
-#include "qetproject.h"
-#include "ui/borderpropertieswidget.h"
-#include "ui/conductorpropertieswidget.h"
-#include "ui/reportpropertiewidget.h"
-#include "ui/titleblockpropertieswidget.h"
-#include "ui/xrefpropertieswidget.h"
+#include "../NameList/nameslist.h"
+#include "../bordertitleblock.h"
+#include "../exportpropertieswidget.h"
+#include "../properties/reportproperties.h"
+#include "../qetapp.h"
+#include "../qeticons.h"
+#include "../qetproject.h"
+#include "../borderpropertieswidget.h"
+#include "../conductorpropertieswidget.h"
+#include "../reportpropertiewidget.h"
+#include "../titleblockpropertieswidget.h"
+#include "../xrefpropertieswidget.h"
 
 #include <QFont>
 #include <QFontDialog>

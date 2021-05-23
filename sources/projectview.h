@@ -87,10 +87,14 @@ class ProjectView : public QWidget
 	private:
 		ProjectView(const ProjectView &);
 
+			//Method related to construction of this class
+		void setProject(QETProject *project);
+
+
+
 		// methods
 	public:
 		QETProject *project();
-		void setProject(QETProject *);
 		QList<DiagramView *> diagram_views() const;
 		DiagramView *currentDiagram() const;
 		void closeEvent(QCloseEvent *) override;

@@ -139,6 +139,7 @@ void DynamicTextFieldEditor::updateFormPriv()
 		ui -> m_frame_cb -> setChecked(m_text_field.data() -> frame());
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
+		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
 #ifdef BUILD_WITHOUT_KF5
 #else
 		m_color_kpb -> setColor(m_text_field.data() -> color());
@@ -176,7 +177,7 @@ void DynamicTextFieldEditor::setupWidget()
 	connect(m_color_kpb, &KColorButton::changed,
 			this, &DynamicTextFieldEditor::on_m_color_kpb_changed);
 
-	ui->m_main_grid_layout->addWidget(m_color_kpb, 7, 1, 1, 2);
+	ui->m_main_grid_layout->addWidget(m_color_kpb, 6, 1, 1, 2);
 #endif
 }
 
@@ -203,6 +204,8 @@ void DynamicTextFieldEditor::setUpConnections()
     m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged,
 		[this](){this -> updateForm();});
     m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,
+		[this](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged,
 		[this](){this -> updateForm();});
 }
 
@@ -430,6 +433,19 @@ void DynamicTextFieldEditor::on_m_color_kpb_changed(const QColor &newColor) {
 		if(newColor != m_parts[i] -> color()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "color", m_parts[i] -> color(), newColor);
 			undo -> setText(tr("Modifier la couleur d'un champ texte"));
+			undoStack().push(undo);
+		}
+	}
+}
+
+void DynamicTextFieldEditor::on_m_keep_visual_rotation_cb_clicked()
+{
+	bool keep = ui -> m_keep_visual_rotation_cb -> isChecked();
+
+	for (int i = 0; i < m_parts.length(); i++) {
+		if(keep != m_parts[i] -> keepVisualRotation()) {
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "keepVisualRotation", m_parts[i] -> frame(), keep);
+			undo -> setText(tr("Modifier la conservation de l'angle"));
 			undoStack().push(undo);
 		}
 	}

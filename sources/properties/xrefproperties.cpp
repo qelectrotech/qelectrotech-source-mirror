@@ -188,13 +188,14 @@ QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 }
 
 bool XRefProperties::operator ==(const XRefProperties &xrp) const{
-	return (m_show_power_ctc == xrp.m_show_power_ctc &&
-			m_display == xrp.m_display &&
-			m_snap_to == xrp.m_snap_to &&
-			m_prefix == xrp.m_prefix &&
-			m_master_label == xrp.m_master_label &&
-			 m_offset == xrp.m_offset &&
-			m_xref_pos == xrp.m_xref_pos );
+	return (m_show_power_ctc == xrp.m_show_power_ctc
+			&& m_display     == xrp.m_display
+			&& m_snap_to     == xrp.m_snap_to
+			&& m_prefix      == xrp.m_prefix
+			&& m_master_label== xrp.m_master_label
+			&& m_offset      == xrp.m_offset
+			&& m_xref_pos    == xrp.m_xref_pos
+			&& m_slave_label == xrp.m_slave_label);
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const

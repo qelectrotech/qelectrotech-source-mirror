@@ -18,8 +18,8 @@
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
 #include "configpage.h"
-#include "ui/projectpropertiesdialog.h"
-#include "ui/titleblockpropertieswidget.h"
+#include "../projectpropertiesdialog.h"
+#include "../titleblockpropertieswidget.h"
 
 #include <QDialog>
 #include <QtWidgets>
