@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,13 @@
 #ifndef DYNAMICTEXTFIELDEDITOR_H
 #define DYNAMICTEXTFIELDEDITOR_H
 
-#include "elementitemeditor.h"
-#include "partdynamictextfield.h"
+#include "../elementitemeditor.h"
+#include "../graphicspart/partdynamictextfield.h"
+
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KColorButton>
+#endif
 
 namespace Ui {
 	class DynamicTextFieldEditor;
@@ -40,9 +45,10 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart*> currentParts() const override;
-		void updateForm() override;
+        void updateFormPriv() override;
 
 	private:
+		void setupWidget();
 		void fillInfoComboBox();
 		void setUpConnections();
 		void disconnectConnections();
@@ -67,7 +73,11 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		Ui::DynamicTextFieldEditor *ui;
 		QPointer<PartDynamicTextField> m_text_field;
 		QList<PartDynamicTextField*> m_parts;
-		QList<QMetaObject::Connection> m_connection_list;
+
+	#ifdef BUILD_WITHOUT_KF5
+	#else
+		KColorButton* m_color_kpb = nullptr;
+	#endif
 };
 
 #endif // DYNAMICTEXTFIELDEDITOR_H

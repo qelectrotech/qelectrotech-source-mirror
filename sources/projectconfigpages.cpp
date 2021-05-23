@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,21 +16,24 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectconfigpages.h"
+
+#include "autoNum/numerotationcontext.h"
+#include "autoNum/ui/autonumberingmanagementw.h"
+#include "autoNum/ui/folioautonumbering.h"
+#include "autoNum/ui/formulaautonumberingw.h"
+#include "autoNum/ui/selectautonumw.h"
 #include "qeticons.h"
 #include "qetproject.h"
-#include "borderpropertieswidget.h"
-#include "conductorpropertieswidget.h"
-#include "diagramcontextwidget.h"
-#include "titleblockpropertieswidget.h"
-#include <QtWidgets>
+#include "ui/borderpropertieswidget.h"
+#include "ui/conductorpropertieswidget.h"
+#include "ui/diagramcontextwidget.h"
 #include "ui/reportpropertiewidget.h"
+#include "ui/titleblockpropertieswidget.h"
 #include "ui/xrefpropertieswidget.h"
-#include "selectautonumw.h"
-#include "numerotationcontext.h"
-#include "folioautonumbering.h"
-#include "formulaautonumberingw.h"
-#include "autonumberingmanagementw.h"
-#include "ui_autonumberingmanagementw.h"
+
+//#include "ui_autonumberingmanagementw.h"
+
+#include <QtWidgets>
 
 /**
 	Constructor
@@ -528,93 +531,94 @@ void ProjectAutoNumConfigPage::applyAutoNum()
 */
 void ProjectAutoNumConfigPage::applyManagement()
 {
-	int from;
-	int to;
-	//Apply to Entire Project
-	if (m_amw->ui->m_apply_project_rb->isChecked()) {
-		from = 0;
-		to = project()->diagrams().size() - 1;
-	}
-	//Apply to selected Folios
-	else {
-		from = m_amw->ui->m_from_folios_cb->itemData(m_amw->ui->m_from_folios_cb->currentIndex()).toInt();
-		to = m_amw->ui->m_to_folios_cb->itemData(m_amw->ui->m_to_folios_cb->currentIndex()).toInt();
-	}
+	//	int from;
+	//	int to;
+	//	//Apply to Entire Project
+	//	if (m_amw->ui->m_apply_project_rb->isChecked()) {
+	//		from = 0;
+	//		to = project()->diagrams().size() - 1;
+	//	}
+	//	//Apply to selected Folios
+	//	else {
+	//		from =
+	//m_amw->ui->m_from_folios_cb->itemData(m_amw->ui->m_from_folios_cb->currentIndex()).toInt();
+	//		to =
+	//m_amw->ui->m_to_folios_cb->itemData(m_amw->ui->m_to_folios_cb->currentIndex()).toInt();
+	//	}
 
-	//Conductor Autonumbering Update Policy
-	//Allow Both Existent and New Conductors
-	if (m_amw->ui->m_both_conductor_rb->isChecked()) {
-		//Unfreeze Existent and New Conductors
-		project()->freezeExistentConductorLabel(false, from,to);
-		project()->freezeNewConductorLabel(false, from,to);
-		project()->setFreezeNewConductors(false);
-	}
-	//Allow Only New
-	else if (m_amw->ui->m_new_conductor_rb->isChecked()) {
-		//Freeze Existent and Unfreeze New Conductors
-		project()->freezeExistentConductorLabel(true, from,to);
-		project()->freezeNewConductorLabel(false, from,to);
-		project()->setFreezeNewConductors(false);
-	}
-	//Allow Only Existent
-	else if (m_amw->ui->m_existent_conductor_rb->isChecked()) {
-		//Freeze Existent and Unfreeze New Conductors
-		project()->freezeExistentConductorLabel(false, from,to);
-		project()->freezeNewConductorLabel(true, from,to);
-		project()->setFreezeNewConductors(true);
-	}
-	//Disable
-	else if (m_amw->ui->m_disable_conductor_rb->isChecked()) {
-		//Freeze Existent and New Elements, Set Freeze Element Project Wide
-		project()->freezeExistentConductorLabel(true, from,to);
-		project()->freezeNewConductorLabel(true, from,to);
-		project()->setFreezeNewConductors(true);
-	}
+	//	//Conductor Autonumbering Update Policy
+	//	//Allow Both Existent and New Conductors
+	//	if (m_amw->ui->m_both_conductor_rb->isChecked()) {
+	//		//Unfreeze Existent and New Conductors
+	//		project()->freezeExistentConductorLabel(false, from,to);
+	//		project()->freezeNewConductorLabel(false, from,to);
+	//		project()->setFreezeNewConductors(false);
+	//	}
+	//	//Allow Only New
+	//	else if (m_amw->ui->m_new_conductor_rb->isChecked()) {
+	//		//Freeze Existent and Unfreeze New Conductors
+	//		project()->freezeExistentConductorLabel(true, from,to);
+	//		project()->freezeNewConductorLabel(false, from,to);
+	//		project()->setFreezeNewConductors(false);
+	//	}
+	//	//Allow Only Existent
+	//	else if (m_amw->ui->m_existent_conductor_rb->isChecked()) {
+	//		//Freeze Existent and Unfreeze New Conductors
+	//		project()->freezeExistentConductorLabel(false, from,to);
+	//		project()->freezeNewConductorLabel(true, from,to);
+	//		project()->setFreezeNewConductors(true);
+	//	}
+	//	//Disable
+	//	else if (m_amw->ui->m_disable_conductor_rb->isChecked()) {
+	//		//Freeze Existent and New Elements, Set Freeze Element Project Wide
+	//		project()->freezeExistentConductorLabel(true, from,to);
+	//		project()->freezeNewConductorLabel(true, from,to);
+	//		project()->setFreezeNewConductors(true);
+	//	}
 
-	//Element Autonumbering Update Policy
-	//Allow Both Existent and New Elements
-	if (m_amw->ui->m_both_element_rb->isChecked()) {
-		//Unfreeze Existent and New Elements
-		project()->freezeExistentElementLabel(false, from,to);
-		project()->freezeNewElementLabel(false, from,to);
-		project()->setFreezeNewElements(false);
-	}
-	//Allow Only New
-	else if (m_amw->ui->m_new_element_rb->isChecked()) {
-		//Freeze Existent and Unfreeze New Elements
-		project()->freezeExistentElementLabel(true, from,to);
-		project()->freezeNewElementLabel(false, from,to);
-		project()->setFreezeNewElements(false);
-	}
-	//Allow Only Existent
-	else if (m_amw->ui->m_existent_element_rb->isChecked()) {
-		//Freeze New and Unfreeze Existent Elements, Set Freeze Element Project Wide
-		project()->freezeExistentElementLabel(false, from,to);
-		project()->freezeNewElementLabel(true, from,to);
-		project()->setFreezeNewElements(true);
-	}
-	//Disable
-	else if (m_amw->ui->m_disable_element_rb->isChecked()) {
-		//Freeze Existent and New Elements, Set Freeze Element Project Wide
-		project()->freezeExistentElementLabel(true, from,to);
-		project()->freezeNewElementLabel(true, from,to);
-		project()->setFreezeNewElements(true);
-	}
+	//	//Element Autonumbering Update Policy
+	//	//Allow Both Existent and New Elements
+	//	if (m_amw->ui->m_both_element_rb->isChecked()) {
+	//		//Unfreeze Existent and New Elements
+	//		project()->freezeExistentElementLabel(false, from,to);
+	//		project()->freezeNewElementLabel(false, from,to);
+	//		project()->setFreezeNewElements(false);
+	//	}
+	//	//Allow Only New
+	//	else if (m_amw->ui->m_new_element_rb->isChecked()) {
+	//		//Freeze Existent and Unfreeze New Elements
+	//		project()->freezeExistentElementLabel(true, from,to);
+	//		project()->freezeNewElementLabel(false, from,to);
+	//		project()->setFreezeNewElements(false);
+	//	}
+	//	//Allow Only Existent
+	//	else if (m_amw->ui->m_existent_element_rb->isChecked()) {
+	//		//Freeze New and Unfreeze Existent Elements, Set Freeze Element
+	//Project Wide 		project()->freezeExistentElementLabel(false, from,to);
+	//		project()->freezeNewElementLabel(true, from,to);
+	//		project()->setFreezeNewElements(true);
+	//	}
+	//	//Disable
+	//	else if (m_amw->ui->m_disable_element_rb->isChecked()) {
+	//		//Freeze Existent and New Elements, Set Freeze Element Project Wide
+	//		project()->freezeExistentElementLabel(true, from,to);
+	//		project()->freezeNewElementLabel(true, from,to);
+	//		project()->setFreezeNewElements(true);
+	//	}
 
-	//Folio Autonumbering Status
-	if (m_amw->ui->m_both_folio_rb->isChecked()) {
+	//	//Folio Autonumbering Status
+	//	if (m_amw->ui->m_both_folio_rb->isChecked()) {
 
-	}
-	else if (m_amw->ui->m_new_folio_rb->isChecked()) {
+	//	}
+	//	else if (m_amw->ui->m_new_folio_rb->isChecked()) {
 
-	}
-	else if (m_amw->ui->m_existent_folio_rb->isChecked()) {
+	//	}
+	//	else if (m_amw->ui->m_existent_folio_rb->isChecked()) {
 
-	}
-	else if (m_amw->ui->m_disable_folio_rb->isChecked()) {
+	//	}
+	//	else if (m_amw->ui->m_disable_folio_rb->isChecked()) {
 
-	}
-
+	//	}
 }
 
 /**

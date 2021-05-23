@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #ifndef POLYGONEDITOR_H
 #define POLYGONEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
 class StyleEditor;
 class PartPolygon;
@@ -39,7 +39,7 @@ class PolygonEditor : public ElementItemEditor
 	bool setPart(CustomElementPart *part) override;
 	CustomElementPart *currentPart() const override;
 	QList<CustomElementPart*> currentParts() const override;
-	void updateForm() override;
+    void updateFormPriv() override;
 	QVector<QPointF> pointsFromTree();
 	bool eventFilter(QObject *watched, QEvent *event) override;
 	
@@ -63,7 +63,6 @@ class PolygonEditor : public ElementItemEditor
 	Ui::PolygonEditor *ui;
 	StyleEditor *m_style = nullptr;
 	PartPolygon *m_part = nullptr;
-	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // POLYGONEDITOR_H

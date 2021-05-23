@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,24 +16,25 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QFontDialog>
+#include "configpages.h"
+
+#include "NameList/nameslist.h"
+#include "bordertitleblock.h"
+#include "exportpropertieswidget.h"
+#include "properties/reportproperties.h"
+#include "qetapp.h"
+#include "qeticons.h"
+#include "qetproject.h"
+#include "ui/borderpropertieswidget.h"
+#include "ui/conductorpropertieswidget.h"
+#include "ui/reportpropertiewidget.h"
+#include "ui/titleblockpropertieswidget.h"
+#include "ui/xrefpropertieswidget.h"
+
 #include <QFont>
+#include <QFontDialog>
 #include <QSizePolicy>
 #include <utility>
-
-#include "configpages.h"
-#include "borderpropertieswidget.h"
-#include "conductorpropertieswidget.h"
-#include "titleblockpropertieswidget.h"
-#include "bordertitleblock.h"
-#include "qeticons.h"
-#include "exportpropertieswidget.h"
-#include "ui/reportpropertiewidget.h"
-#include "ui/xrefpropertieswidget.h"
-#include "qetproject.h"
-#include "reportproperties.h"
-#include "qetapp.h"
-#include "nameslist.h"
 
 /**
 	@brief NewDiagramPage::NewDiagramPage

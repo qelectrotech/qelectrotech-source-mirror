@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,23 +16,24 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
-#include "diagramcommands.h"
 
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "diagramcommands.h"
+#include "diagramevent/diagrameventaddelement.h"
+#include "dvevent/dveventinterface.h"
+#include "projectview.h"
+#include "qetdiagrameditor.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
-#include "qetgraphicsitem/conductor.h"
-
-#include "projectview.h"
-#include "integrationmovetemplateshandler.h"
-#include "qetdiagrameditor.h"
 #include "qeticons.h"
-#include "diagrampropertiesdialog.h"
-#include "dveventinterface.h"
-#include "diagrameventaddelement.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "multipastedialog.h"
-#include "changetitleblockcommand.h"
-#include "conductorcreator.h"
+#include "titleblock/integrationmovetemplateshandler.h"
+#include "ui/diagrampropertiesdialog.h"
+#include "ui/multipastedialog.h"
+#include "undocommand/changetitleblockcommand.h"
+#include "utils/conductorcreator.h"
+#include "undocommand/addgraphicsobjectcommand.h"
+#include "diagram.h"
 
 #include <QDropEvent>
 
@@ -284,16 +285,14 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 
-	m_diagram -> undoStack().push(
-				new AddItemCommand<IndependentTextItem *>(
-					iti, m_diagram, mapToScene(e->pos())));
+	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
+									iti, m_diagram, mapToScene(e->pos())));
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-	m_diagram -> undoStack().push(
-				new AddItemCommand<IndependentTextItem *>(
-					iti, m_diagram, e->position()));
+	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
+									iti, m_diagram, e->position()));
 #endif
 }
 
@@ -449,7 +448,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 		//Start drag view when hold the middle button
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -502,11 +501,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 */
 void DiagramView::mouseMoveEvent(QMouseEvent *e)
 {
-	setToolTip(tr("(Dev) X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
+	setToolTip(tr("X: %1 Y: %2").arg(e->pos().x()).arg(e->pos().y()));
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
-		//Drag the view
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		// Drag the view
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->buttons() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -573,8 +572,8 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
-		//Stop drag view
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		// Stop drag view
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 	if (e->button() == Qt::MidButton)
 #else
 #if TODO_LIST
@@ -1220,10 +1219,6 @@ QList<QAction *> DiagramView::contextMenuActions() const
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
-	QGraphicsView::contextMenuEvent(e);
-	if(e->isAccepted())
-		return;
-
 	if (QGraphicsItem *qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
 	{
 		if (!qgi -> isSelected()) {

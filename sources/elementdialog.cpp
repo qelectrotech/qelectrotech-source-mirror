@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,19 +15,20 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QTreeView>
-#include <QDialogButtonBox>
-#include <QPushButton>
-#include <QtConcurrent>
-
 #include "elementdialog.h"
+
+#include "ElementsCollection/elementcollectionitem.h"
+#include "ElementsCollection/elementscollectionmodel.h"
 #include "qetapp.h"
-#include "qfilenameedit.h"
-#include "elementcollectionitem.h"
-#include "elementscollectionmodel.h"
 #include "qetmessagebox.h"
+#include "qfilenameedit.h"
+
+#include <QDialogButtonBox>
+#include <QLabel>
+#include <QPushButton>
+#include <QTreeView>
+#include <QVBoxLayout>
+#include <QtConcurrent>
 
 /**
 	@brief ElementDialog::ElementDialog

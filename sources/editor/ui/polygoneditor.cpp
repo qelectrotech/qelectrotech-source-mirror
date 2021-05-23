@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "polygoneditor.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qetmessagebox.h"
+#include "../elementscene.h"
+#include "../graphicspart/partpolygon.h"
+#include "../styleeditor.h"
 #include "ui_polygoneditor.h"
-#include "partpolygon.h"
-#include "elementscene.h"
-#include "qetmessagebox.h"
-#include "styleeditor.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
 	@brief PolygonEditor::PolygonEditor
@@ -129,10 +130,10 @@ QList<CustomElementPart*> PolygonEditor::currentParts() const
 }
 
 /**
-	@brief PolygonEditor::updateForm
+    @brief PolygonEditor::updateFormPriv
 	Update the widget
 */
-void PolygonEditor::updateForm()
+void PolygonEditor::updateFormPriv()
 {
 	if (!m_part) {
 		return;

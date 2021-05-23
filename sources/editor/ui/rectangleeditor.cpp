@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,12 +16,13 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "rectangleeditor.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qeticons.h"
+#include "../elementscene.h"
+#include "../graphicspart/partrectangle.h"
+#include "../styleeditor.h"
 #include "ui_rectangleeditor.h"
-#include "styleeditor.h"
-#include "partrectangle.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "elementscene.h"
-#include "qeticons.h"
 
 /**
 	@brief RectangleEditor::RectangleEditor
@@ -135,7 +136,7 @@ QPointF RectangleEditor::editedTopLeft() const
 /**
 	@brief RectangleEditor::updateForm
 */
-void RectangleEditor::updateForm()
+void RectangleEditor::updateFormPriv()
 {
 	if (!m_part) {
 		return;

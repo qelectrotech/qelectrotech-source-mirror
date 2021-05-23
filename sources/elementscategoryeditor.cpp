@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,16 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscategoryeditor.h"
+
+#include "ElementsCollection/elementcollectionhandler.h"
+#include "NameList/ui/namelistwidget.h"
 #include "qet.h"
-#include "qfilenameedit.h"
 #include "qetmessagebox.h"
-#include "elementcollectionhandler.h"
-#include "namelistwidget.h"
+#include "qfilenameedit.h"
 
 #include <QDialogButtonBox>
-#include <QVBoxLayout>
-#include <QLabel>
 #include <QHBoxLayout>
+#include <QLabel>
+#include <QVBoxLayout>
 
 /**
 	@brief ElementsCategoryEditor::ElementsCategoryEditor

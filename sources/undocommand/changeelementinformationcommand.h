@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,9 @@
 #ifndef CHANGEELEMENTINFORMATIONCOMMAND_H
 #define CHANGEELEMENTINFORMATIONCOMMAND_H
 
+#include "../diagramcontext.h"
+
 #include <QUndoCommand>
-#include "diagramcontext.h"
 
 class Element;
 
@@ -36,6 +37,9 @@ class ChangeElementInformationCommand : public QUndoCommand
 				DiagramContext &new_info,
 				QUndoCommand *parent = nullptr);
 
+		ChangeElementInformationCommand(QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> map,
+										QUndoCommand *parent = nullptr);
+
 		int id() const override {return 1;}
 		bool mergeWith(const QUndoCommand *other) override;
 		void undo() override;
@@ -45,8 +49,7 @@ class ChangeElementInformationCommand : public QUndoCommand
 		void updateProjectDB();
 
 	private:
-		Element       *m_element;
-		DiagramContext m_old_info, m_new_info;
+		QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> m_map;
 };
 
 #endif // CHANGEELEMENTINFORMATIONCOMMAND_H

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,68 +18,12 @@
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
 
-#include "borderproperties.h"
 #include "qetgraphicsitem/conductor.h"
-#include "diagramcontent.h"
-#include "qet.h"
-#include "qetgraphicsitem/qetshapeitem.h"
 #include "conductorprofile.h"
-#include "diagram.h"
+#include "borderproperties.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 
 class DiagramTextItem;
-class Element;
-class IndependentTextItem;
-class DiagramImageItem;
-class QetGraphicsItem;
-
-/**
-	@brief The AddItemCommand class
-	This command add an item in a diagram
-	The item to add is template, but must be QGraphicsItem or derived.
-*/
-template <typename QGI>
-class AddItemCommand : public QUndoCommand {
-	public:
-		AddItemCommand(QGI item, Diagram *diagram,
-			       const QPointF &pos = QPointF(),
-			       QUndoCommand *parent = nullptr) :
-			QUndoCommand (parent),
-			m_item (item),
-			m_diagram (diagram),
-			m_pos(pos)
-		{
-			setText(QObject::tr("Ajouter ") + itemText(item));
-			m_diagram -> qgiManager().manage(m_item);
-		}
-
-		~AddItemCommand() override {
-			m_diagram -> qgiManager().release(m_item);
-		}
-
-		void undo() override {
-			m_diagram -> showMe();
-			m_diagram -> removeItem(m_item);
-			QUndoCommand::undo();
-		}
-
-		void redo() override {
-			m_diagram -> showMe();
-			m_diagram -> addItem(m_item);
-			m_item    -> setPos(m_pos);
-			QUndoCommand::redo();
-		}
-
-	private:
-		QGI m_item;
-		Diagram *m_diagram;
-		QPointF m_pos;
-};
-
-//Return a string to describe a QGraphicsItem
-QString itemText(const QetGraphicsItem     *item);
-QString itemText(const IndependentTextItem *item);
-QString itemText(const Conductor           *item);
 
 /**
 	@brief The PasteDiagramCommand class

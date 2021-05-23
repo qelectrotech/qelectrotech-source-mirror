@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -79,8 +79,8 @@ class AbstractPartEllipse : public CustomElementGraphicPart
 	protected:
 		QList<QPointF> saved_points_;
 		QRectF m_rect;
-		qreal m_start_angle;
-		qreal m_span_angle;
+        qreal m_start_angle{0};
+        qreal m_span_angle{-1440};
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 };
 

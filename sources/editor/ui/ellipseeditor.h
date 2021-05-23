@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #ifndef ELLIPSEEDITOR_H
 #define ELLIPSEEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
 namespace Ui {
 	class EllipseEditor;
@@ -43,7 +43,7 @@ class EllipseEditor : public ElementItemEditor
 		bool setParts(QList<CustomElementPart *> parts) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart*> currentParts() const override;
-		void updateForm() override;
+        void updateFormPriv() override;
 
 	private slots:
 		void on_m_x_sb_editingFinished();
@@ -59,8 +59,7 @@ class EllipseEditor : public ElementItemEditor
 	private:
 		Ui::EllipseEditor *ui;
 		PartEllipse *m_part = nullptr;
-		StyleEditor *m_style = nullptr;
-		QList <QMetaObject::Connection> m_change_connections;
+        StyleEditor *m_style = nullptr;
 
 };
 

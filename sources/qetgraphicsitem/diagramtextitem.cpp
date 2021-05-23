@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 QElectroTech Team
+	Copyright 2006-2021 QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,10 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramtextitem.h"
-#include "diagramcommands.h"
-#include "qetapp.h"
-#include "richtext/richtexteditor_p.h"
-#include "diagram.h"
+
+#include "../diagram.h"
+#include "../diagramcommands.h"
+#include "../qetapp.h"
+#include "../richtext/richtexteditor_p.h"
 
 /**
 	@brief DiagramTextItem::DiagramTextItem

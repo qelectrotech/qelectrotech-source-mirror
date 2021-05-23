@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "styleeditor.h"
-#include "customelementgraphicpart.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qeticons.h"
-#include <QComboBox>
+
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../editor/graphicspart/customelementgraphicpart.h"
+#include "../qeticons.h"
+
 #include <QCheckBox>
-#include <QVBoxLayout>
+#include <QComboBox>
 #include <QLabel>
+#include <QVBoxLayout>
 
 /**
 	Constructeur
@@ -438,10 +440,10 @@ void StyleEditor::updatePartFilling()
 }
 
 /**
-	@brief StyleEditor::updateForm
+    @brief StyleEditor::updateFormPriv
 	Update the edition form according to the value of edited part(s)
 */
-void StyleEditor::updateForm()
+void StyleEditor::updateFormPriv()
 {
 	if (!part && m_part_list.isEmpty()) return;
 	activeConnections(false);

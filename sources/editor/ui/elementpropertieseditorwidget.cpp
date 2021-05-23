@@ -1,5 +1,5 @@
-/*
-	Copyright 2006-2020 The QElectroTech Team
+﻿/*
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,8 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementpropertieseditorwidget.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
 #include "ui_elementpropertieseditorwidget.h"
-#include "qetapp.h"
+#include "../../qetinformation.h"
 
 #include <QItemDelegate>
 
@@ -35,7 +38,7 @@ class EditorDelegate : public QItemDelegate
 
 	QWidget* createEditor(QWidget *parent,
 			      const QStyleOptionViewItem &option,
-			      const QModelIndex &index) const
+				  const QModelIndex &index) const override
 	{
 		if(index.column() == 1)
 		{
@@ -48,23 +51,14 @@ class EditorDelegate : public QItemDelegate
 };
 
 /**
-	@brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
-	Default constructor
-	@param basic_type : QString of the drawed element
-	@param kind_info : DiagramContext to store kindInfo of drawed element
-	@param elmt_info : the information of element (label, manufacturer etc...]
-	@param parent : parent widget
-*/
-ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(
-		QString &basic_type,
-		DiagramContext &kind_info,
-		DiagramContext &elmt_info,
-		QWidget *parent) :
+ * @brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
+ * @param data
+ * @param parent
+ */
+ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(ElementData data, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ElementPropertiesEditorWidget),
-	m_basic_type(basic_type),
-	m_kind_info (kind_info),
-	m_elmt_info (elmt_info)
+	m_data(data)
 {
 	ui->setupUi(this);
 	setUpInterface();
@@ -88,22 +82,29 @@ void ElementPropertiesEditorWidget::upDateInterface()
 {
 	ui->m_base_type_cb->setCurrentIndex(
 				ui->m_base_type_cb->findData(
-					QVariant(m_basic_type)));
+					m_data.m_type));
 	
-	if (m_basic_type == "slave")
+	if (m_data.m_type == ElementData::Slave)
 	{
 		ui->m_state_cb->setCurrentIndex(
 					ui->m_state_cb->findData(
-						m_kind_info["state"].toString()));
+						m_data.m_slave_state));
 		ui->m_type_cb->setCurrentIndex (
 					ui->m_type_cb->findData(
-						m_kind_info["type"].toString()));
-		ui->m_number_ctc->setValue(m_kind_info["number"].toInt());
+						m_data.m_slave_type));
+		ui->m_number_ctc->setValue(m_data.m_contact_count);
 	}
-	else if (m_basic_type == "master") {
+	else if (m_data.m_type == ElementData::Master) {
 		ui->m_master_type_cb->setCurrentIndex(
 					ui->m_master_type_cb->findData (
-						m_kind_info["type"]));
+						m_data.m_master_type));
+	} else if (m_data.m_type == ElementData::Terminale) {
+		ui->m_terminal_type_cb->setCurrentIndex(
+					ui->m_terminal_type_cb->findData(
+						m_data.m_terminal_type));
+		ui->m_terminal_func_cb->setCurrentIndex(
+					ui->m_terminal_func_cb->findData(
+						m_data.m_terminal_function));
 	}
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
@@ -115,33 +116,39 @@ void ElementPropertiesEditorWidget::upDateInterface()
 void ElementPropertiesEditorWidget::setUpInterface()
 {
 	// Type combo box
-	ui->m_base_type_cb->addItem (tr("Simple"), QVariant("simple"));
-	ui->m_base_type_cb->addItem (tr("Maître"), QVariant("master"));
-	ui->m_base_type_cb->addItem (tr("Esclave"), QVariant("slave"));
-	ui->m_base_type_cb->addItem (tr("Renvoi de folio suivant"),
-				     QVariant("next_report"));
-	ui->m_base_type_cb->addItem (tr("Renvoi de folio précédent"),
-				     QVariant("previous_report"));
-	ui->m_base_type_cb->addItem (tr("Bornier"), QVariant("terminal"));
+	ui->m_base_type_cb->addItem (tr("Simple"),  ElementData::Simple);
+	ui->m_base_type_cb->addItem (tr("Maître"),  ElementData::Master);
+	ui->m_base_type_cb->addItem (tr("Esclave"), ElementData::Slave);
+	ui->m_base_type_cb->addItem (tr("Renvoi de folio suivant"),   ElementData::NextReport);
+	ui->m_base_type_cb->addItem (tr("Renvoi de folio précédent"), ElementData::PreviousReport);
+	ui->m_base_type_cb->addItem (tr("Bornier"), ElementData::Terminale);
 
 	// Slave option
-	ui->m_state_cb->addItem(tr("Normalement ouvert"),QVariant("NO"));
-	ui->m_state_cb->addItem(tr("Normalement fermé"), QVariant("NC"));
-	ui->m_state_cb->addItem(tr("Inverseur"), QVariant("SW"));
-	ui->m_type_cb->addItem(tr("Simple"), QVariant("simple"));
-	ui->m_type_cb->addItem(tr("Puissance"), QVariant("power"));
-	ui->m_type_cb->addItem(tr("Temporisé travail"), QVariant("delayOn"));
-	ui->m_type_cb->addItem(tr("Temporisé repos"), QVariant("delayOff"));
-	ui->m_type_cb->addItem(tr("Temporisé travail & repos"),
-			       QVariant("delayOnOff"));
+	ui->m_state_cb->addItem(tr("Normalement ouvert"),       ElementData::NO);
+	ui->m_state_cb->addItem(tr("Normalement fermé"),        ElementData::NC);
+	ui->m_state_cb->addItem(tr("Inverseur"),                ElementData::SW);
+	ui->m_type_cb->addItem(tr("Simple"),                    ElementData::SSimple);
+	ui->m_type_cb->addItem(tr("Puissance"),                 ElementData::Power);
+	ui->m_type_cb->addItem(tr("Temporisé travail"),         ElementData::DelayOn);
+	ui->m_type_cb->addItem(tr("Temporisé repos"),           ElementData::DelayOff);
+	ui->m_type_cb->addItem(tr("Temporisé travail & repos"), ElementData::delayOnOff);
 
 	//Master option
-	ui->m_master_type_cb->addItem(tr("Bobine"), QVariant("coil"));
-	ui->m_master_type_cb->addItem(tr("Organe de protection"),
-				      QVariant("protection"));
-	ui->m_master_type_cb->addItem(tr("Commutateur / bouton"),
-				      QVariant("commutator"));
-	
+	ui->m_master_type_cb->addItem(tr("Bobine"),               ElementData::Coil);
+	ui->m_master_type_cb->addItem(tr("Organe de protection"), ElementData::Protection);
+	ui->m_master_type_cb->addItem(tr("Commutateur / bouton"), ElementData::Commutator);
+
+	//Terminal option
+	ui->m_terminal_type_cb->addItem(tr("Générique"),    ElementData::TTGeneric);
+	ui->m_terminal_type_cb->addItem(tr("Fusible"),      ElementData::Fuse);
+	ui->m_terminal_type_cb->addItem(tr("Séctionnable"), ElementData::Sectional);
+	ui->m_terminal_type_cb->addItem(tr("Diode"),        ElementData::Diode);
+
+	ui->m_terminal_func_cb->addItem(tr("Générique"), ElementData::TFGeneric);
+	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::Phase);
+	ui->m_terminal_func_cb->addItem(tr("Neutre"),    ElementData::Neutral);
+	ui->m_terminal_func_cb->addItem(tr("Terre"),     ElementData::PE);
+
 	//Disable the edition of the first column of the information tree
 	//by this little workaround
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
@@ -151,21 +158,28 @@ void ElementPropertiesEditorWidget::setUpInterface()
 
 void ElementPropertiesEditorWidget::updateTree()
 {
-	QString type = ui->m_base_type_cb->itemData(
-				ui->m_base_type_cb->currentIndex()).toString();
-	
-	if (type == "master")
-		ui->m_tree->setEnabled(true);
-	else if (type == "slave")
-		ui->m_tree->setDisabled(true);
-	else if (type == "simple")
-		ui->m_tree->setEnabled(true);
-	else if (type == "next_report")
-		ui->m_tree->setDisabled(true);
-	else if (type == "previous_report")
-		ui->m_tree->setDisabled(true);
-	else if (type == "terminal")
-		ui->m_tree->setEnabled(true);
+	auto type_ = ui->m_base_type_cb->currentData().value<ElementData::Type>();
+
+	switch (type_) {
+		case ElementData::Simple:
+			ui->m_tree->setEnabled(true);
+			break;
+		case ElementData::NextReport:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::PreviousReport:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::Master:
+			ui->m_tree->setEnabled(true);
+			break;
+		case ElementData::Slave:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::Terminale:
+			ui->m_tree->setEnabled(true);
+			break;
+	}
 }
 
 /**
@@ -173,20 +187,16 @@ void ElementPropertiesEditorWidget::updateTree()
 	Create QTreeWidgetItem of the tree widget and populate it
 */
 void ElementPropertiesEditorWidget::populateTree()
-{
-	QStringList keys{"label", "plant", "comment", "description",
-			 "designation", "manufacturer",
-			 "manufacturer_reference", "supplier", "quantity",
-			 "unity", "machine_manufacturer_reference"};
-	
+{	
+	const auto keys = QETInformation::elementEditorElementInfoKeys();
 	for(const QString& key : keys)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree);
 		qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
 		qtwi->setData(0, Qt::DisplayRole,
-			      QETApp::elementTranslatedInfoKey(key));
+					  QETInformation::translatedInfoKey(key));
 		qtwi->setData(0, Qt::UserRole, key);
-		qtwi->setText(1, m_elmt_info.value(key).toString());
+		qtwi->setText(1, m_data.m_informations.value(key).toString());
 	}
 }
 
@@ -196,23 +206,21 @@ void ElementPropertiesEditorWidget::populateTree()
 */
 void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 {
-	m_basic_type = ui->m_base_type_cb->itemData(
-				ui->m_base_type_cb->currentIndex()).toString();
-	if (m_basic_type == "slave")
+	m_data.m_type = ui->m_base_type_cb->currentData().value<ElementData::Type>();
+
+	if (m_data.m_type == ElementData::Slave)
 	{
-		m_kind_info.addValue("state",
-				     ui->m_state_cb->itemData(
-					     ui->m_state_cb->currentIndex()));
-		m_kind_info.addValue("type",
-				     ui->m_type_cb->itemData(
-					     ui->m_type_cb->currentIndex()));
-		m_kind_info.addValue("number",
-				     QVariant(ui->m_number_ctc->value()));
+		m_data.m_slave_state = ui->m_state_cb->currentData().value<ElementData::SlaveState>();
+		m_data.m_slave_type  = ui->m_type_cb->currentData().value<ElementData::SlaveType>();
+		m_data.m_contact_count = ui->m_number_ctc->value();
 	}
-	else if(m_basic_type == "master") {
-		m_kind_info.addValue("type",
-				     ui->m_master_type_cb->itemData(
-					     ui->m_master_type_cb->currentIndex()));
+	else if (m_data.m_type == ElementData::Master) {
+		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
+	}
+	else if (m_data.m_type == ElementData::Terminale)
+	{
+		m_data.m_terminal_type = ui->m_terminal_type_cb->currentData().value<ElementData::TerminalType>();
+		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
 	}
 	
 	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
@@ -222,8 +230,8 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		txt.remove("\r");
 		txt.remove("\n");
 
-		m_elmt_info.addValue(qtwi->data(0, Qt::UserRole).toString(),
-				     txt);
+		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
+									   txt);
 	}
 	
 	this->close();
@@ -233,18 +241,23 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	@brief ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged
 	@param index : Action when combo-box base type index change
 */
-void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(
-		int index)
+void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int index)
 {
-	bool slave = false , master = false;
+	bool slave = false , master = false, terminal = false;
 
-	if (ui->m_base_type_cb->itemData(index).toString() == "slave")
+	auto type_ = ui->m_base_type_cb->itemData(index).value<ElementData::Type>();
+	if (type_ == ElementData::Slave)
 		slave  = true;
-	else if (ui->m_base_type_cb->itemData(index).toString() == "master")
+	else if (type_ == ElementData::Master)
 		master = true;
+	else if (type_ == ElementData::Terminale)
+		terminal = true;
 
 	ui->m_slave_gb->setVisible(slave);
 	ui->m_master_gb->setVisible(master);
-	
+	ui->m_terminal_gb->setVisible(terminal);
+	ui->tabWidget->setTabVisible(1,
+								 (type_ == ElementData::Simple ||
+								  type_ == ElementData::Master));
 	updateTree();
 }

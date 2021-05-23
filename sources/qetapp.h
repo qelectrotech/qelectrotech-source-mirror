@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,14 +18,14 @@
 #ifndef QET_APP_H
 #define QET_APP_H
 
-#include <QTranslator>
-#include <QSystemTrayIcon>
-#include <QPalette>
-#include <QByteArray>
-
-#include "elementslocation.h"
-#include "templatelocation.h"
+#include "ElementsCollection/elementslocation.h"
 #include "qetarguments.h"
+#include "titleblock/templatelocation.h"
+
+#include <QByteArray>
+#include <QPalette>
+#include <QSystemTrayIcon>
+#include <QTranslator>
 
 class QSplashScreen;
 class QMenu;
@@ -73,15 +73,6 @@ class QETApp : public QObject
 		static void printLicense();
 		
 		static ElementsCollectionCache *collectionCache();
-		static QStringList elementInfoKeys();
-		static QString elementTranslatedInfoKey(const QString &);
-		static QString elementInfoToVar(const QString &info);
-		
-		static QStringList conductorInfoKeys();
-		static QString conductorTranslatedInfoKey(const QString &key);
-		
-		static QStringList diagramInfoKeys();
-		static QString diagramTranslatedInfoKey(const QString &key);
 		
 		static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
 		static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();

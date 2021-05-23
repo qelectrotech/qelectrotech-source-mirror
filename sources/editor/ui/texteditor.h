@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,16 +18,18 @@
 #ifndef TEXTEDITOR_H
 #define TEXTEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
 
-#include <QWidget>
 #include <QPointer>
-
+#include <QWidget>
+#include <QSpinBox>
+#include <QLineEdit>
+#include <QPushButton>
+#ifdef BUILD_WITHOUT_KF5
+#else
+#include <KColorButton>
+#endif
 class PartText;
-
-namespace Ui {
-class TextEditor;
-}
 
 class TextEditor : public ElementItemEditor {
 	Q_OBJECT
@@ -36,7 +38,7 @@ class TextEditor : public ElementItemEditor {
 		explicit TextEditor(QETElementEditor *editor,  PartText *text = nullptr, QWidget *parent = nullptr);
 		~TextEditor() override;
 
-		void updateForm() override;
+        void updateFormPriv() override;
 		bool setPart(CustomElementPart *part) override;
 		bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
@@ -46,18 +48,27 @@ class TextEditor : public ElementItemEditor {
 		void on_m_font_pb_clicked();
 		void on_m_color_pb_changed(const QColor &newColor);
 	private:
+		void setUpWidget(QWidget* parent = nullptr);
 		void setUpEditConnection();
 		void setUpChangeConnection(QPointer<PartText> part);
 		void disconnectChangeConnection();
 		void disconnectEditConnection();
 
 	private:
-		Ui::TextEditor *ui;
-
 		QPointer <PartText> m_text;
 		QList<PartText*> m_parts;
 		QList <QMetaObject::Connection> m_edit_connection;
 		QList <QMetaObject::Connection> m_change_connection;
+		QSpinBox *m_y_sb;
+		QSpinBox *m_rotation_sb;
+		QSpinBox *m_x_sb;
+		QSpinBox *m_size_sb;
+		QLineEdit *m_line_edit;
+		QPushButton *m_font_pb;
+#ifdef BUILD_WITHOUT_KF5
+#else
+		KColorButton *m_color_pb;
+#endif
 };
 
 #endif // TEXTEDITOR_H

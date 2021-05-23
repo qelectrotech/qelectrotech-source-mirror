@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -40,7 +40,7 @@ class IndependentTextItem : public DiagramTextItem
 		int type() const override { return Type; }
 		
 		void fromXml(const QDomElement &) override;
-		QDomElement toXml(QDomDocument &) const override;
+        QDomElement toXml(QDomDocument&) const override;
 		
 	protected:
 		void focusOutEvent(QFocusEvent *event) override;

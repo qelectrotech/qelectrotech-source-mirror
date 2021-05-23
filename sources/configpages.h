@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,11 +17,12 @@
 */
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
-#include <QtWidgets>
-#include <QDialog>
 #include "configpage.h"
-#include "projectpropertiesdialog.h"
-#include "titleblockpropertieswidget.h"
+#include "ui/projectpropertiesdialog.h"
+#include "ui/titleblockpropertieswidget.h"
+
+#include <QDialog>
+#include <QtWidgets>
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;

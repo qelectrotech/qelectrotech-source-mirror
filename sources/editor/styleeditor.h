@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -60,7 +60,7 @@ class StyleEditor : public ElementItemEditor
 		static bool isStyleEditable (QList <CustomElementPart *> cep_list);
 	
 	public slots:
-		void updateForm() override;
+        void updateFormPriv() override;
 		void updatePartAntialiasing();
 		void updatePartColor();
 		void updatePartLineStyle();

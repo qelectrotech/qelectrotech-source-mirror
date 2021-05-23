@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech team
+	Copyright 2006-2021 The QElectroTech team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,9 @@
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
+#include "autoNum/assignvariables.h"
+
 #include <QList>
-#include "assignvariables.h"
 
 class Diagram;
 class Conductor;

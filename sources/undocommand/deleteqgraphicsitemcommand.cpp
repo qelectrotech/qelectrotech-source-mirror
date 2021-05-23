@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,17 +16,18 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "deleteqgraphicsitemcommand.h"
-#include "dynamicelementtextitem.h"
-#include "diagram.h"
-#include "element.h"
-#include "conductor.h"
-#include "conductortextitem.h"
-#include "elementtextitemgroup.h"
+
+#include "../diagram.h"
+#include "addgraphicsobjectcommand.h"
+#include "../qetdiagrameditor.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "addelementtextcommand.h"
-#include "terminal.h"
-#include "diagramcommands.h"
-#include "qetgraphicstableitem.h"
-#include "qetdiagrameditor.h"
 
 /**
 	@brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
@@ -201,7 +202,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 #endif
 					Conductor *new_cond = new Conductor(hub_terminal, t);
 					new_cond->setProperties(properties);
-					new AddItemCommand<Conductor*>(new_cond, t->diagram(), QPointF(), this);
+					new AddGraphicsObjectCommand(new_cond, t->diagram(), QPointF(), this);
 				}
 			}
 		}

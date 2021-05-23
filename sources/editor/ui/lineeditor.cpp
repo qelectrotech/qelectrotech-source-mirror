@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "lineeditor.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qeticons.h"
+#include "../elementitemeditor.h"
+#include "../elementscene.h"
+#include "../graphicspart/partline.h"
+#include "../styleeditor.h"
 #include "ui_lineeditor.h"
-#include "elementitemeditor.h"
-#include "styleeditor.h"
-#include "partline.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "elementscene.h"
-#include "qeticons.h"
 
 /**
 	@brief LineEditor::LineEditor
@@ -175,10 +176,10 @@ QList<CustomElementPart *> LineEditor::currentParts() const {
 }
 
 /**
-	@brief LineEditor::updateForm
+    @brief LineEditor::updateFormPriv
 	Reimplemented from ElementItemEditor
 */
-void LineEditor::updateForm()
+void LineEditor::updateFormPriv()
 {
 	if (!m_part) {
 		return;

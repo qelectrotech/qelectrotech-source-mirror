@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementitemeditor.h"
-#include "qetelementeditor.h"
+#include "ui/qetelementeditor.h"
 #include "editorcommands.h"
 
 /**
@@ -40,6 +40,11 @@ QETElementEditor *ElementItemEditor::elementEditor() const
 ElementScene *ElementItemEditor::elementScene() const
 {
 	return(element_editor -> elementScene());
+}
+
+void ElementItemEditor::updateForm()
+{
+    updateFormPriv();
 }
 
 /// @return la QUndoStack a utiliser pour les annulations

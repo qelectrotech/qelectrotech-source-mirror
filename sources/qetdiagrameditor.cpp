@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,33 +16,37 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+
+#include "ElementsCollection/elementscollectionwidget.h"
+#include "QWidgetAnimation/qwidgetanimation.h"
+#include "autoNum/ui/autonumberingdockwidget.h"
+#include "conductornumexport.h"
+#include "diagramcommands.h"
+#include "diagramevent/diagrameventaddimage.h"
+#include "diagramevent/diagrameventaddshape.h"
+#include "diagramevent/diagrameventaddtext.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
-#include "recentfiles.h"
+#include "factory/qetgraphicstablefactory.h"
+#include "print/projectprintwindow.h"
+#include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
-#include "diagrampropertieseditordockwidget.h"
-#include "diagrameventaddshape.h"
-#include "diagrameventaddimage.h"
-#include "diagrameventaddtext.h"
-#include "elementscollectionwidget.h"
-#include "autonumberingdockwidget.h"
-#include "dynamicelementtextitem.h"
-#include "conductortextitem.h"
+#include "recentfiles.h"
+#include "ui/bomexportdialog.h"
+#include "ui/diagrampropertieseditordockwidget.h"
+#include "ui/dialogwaiting.h"
+#include "undocommand/addelementtextcommand.h"
 #include "undocommand/rotateselectioncommand.h"
-#include "rotatetextscommand.h"
-#include "diagramcommands.h"
-#include "dialogwaiting.h"
-#include "addelementtextcommand.h"
-#include "conductornumexport.h"
-#include "qetgraphicstableitem.h"
-#include "bomexportdialog.h"
-#include "QWidgetAnimation/qwidgetanimation.h"
-#include "qetgraphicstablefactory.h"
-#include "projectprintwindow.h"
+#include "undocommand/rotatetextscommand.h"
+#include "diagram.h"
 
-#include <KAutoSaveFile>
-
+#ifdef BUILD_WITHOUT_KF5
+#else
+#	include <KAutoSaveFile>
+#endif
 
 /**
 	@brief QETDiagramEditor::QETDiagramEditor
@@ -1847,6 +1851,8 @@ bool QETDiagramEditor::drawGrid() const
 	return m_draw_grid->isChecked();
 }
 
+#ifdef BUILD_WITHOUT_KF5
+#else
 /**
 	@brief QETDiagramEditor::openBackupFiles
 	@param backup_files
@@ -1877,7 +1883,7 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 		DialogWaiting::dropInstance();
 	}
 }
-
+#endif
 /**
 	met a jour le menu "Fenetres"
 */
@@ -2301,6 +2307,11 @@ void QETDiagramEditor::selectionChanged()
 */
 void QETDiagramEditor::generateTerminalBlock()
 {
+#ifdef TODO_LIST
+#	pragma message("@TODO Merge 'qet_tb_generator' code in to Qet")
+#	pragma message("https://github.com/qelectrotech/qet_tb_generator")
+#endif
+
 	bool success;
 	QProcess *process = new QProcess(qApp);
 

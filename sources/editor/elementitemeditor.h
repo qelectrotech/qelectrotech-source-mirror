@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -55,8 +55,16 @@ class ElementItemEditor : public QWidget
 
 		virtual CustomElementPart *currentPart() const = 0;
 		virtual QList<CustomElementPart*> currentParts() const = 0;
-		virtual void updateForm() = 0;
+        /*!
+         * \brief updateForm
+         * update the values of the widget
+         */
+        virtual void updateForm();
+    private:
+        virtual void updateFormPriv() = 0;
 	
+protected:
+        QList<QMetaObject::Connection> m_change_connections;
 		// attributes
 	private:
 		QETElementEditor *element_editor;

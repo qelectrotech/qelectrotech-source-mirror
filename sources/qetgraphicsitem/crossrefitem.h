@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,11 +18,11 @@
 #ifndef CROSSREFITEM_H
 #define CROSSREFITEM_H
 
-#include <QGraphicsObject>
-#include <QPicture>
-#include <QMultiMap>
+#include "../properties/xrefproperties.h"
 
-#include"properties/xrefproperties.h"
+#include <QGraphicsObject>
+#include <QMultiMap>
+#include <QPicture>
 
 class Element;
 class DynamicElementTextItem;

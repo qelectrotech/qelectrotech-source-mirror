@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -181,7 +181,7 @@ namespace QET {
 		QIcon ZoomOut;
 		QIcon adding_image;
 		QIcon resize_image;
-		QIcon ar;
+		QIcon sa;
 		QIcon br;
 		QIcon catalonia;
 		QIcon cs;
@@ -204,6 +204,7 @@ namespace QET {
 		QIcon no;
 		QIcon be;
 		QIcon tr;
+		QIcon mn;
 		QIcon translation;
 		QIcon listDrawings;
 		QIcon AutoNum;
@@ -647,7 +648,7 @@ void QET::Icons::initIcons()
 	ZoomOriginal        .addFile(":/ico/22x22/zoom-original.png");
 	ZoomOut             .addFile(":/ico/16x16/zoom-out.png");
 	ZoomOut             .addFile(":/ico/22x22/zoom-out.png");
-	ar                  .addFile(":/ico/24x16/ar.png");
+	sa                  .addFile(":/ico/24x16/sa.png");
 	br                  .addFile(":/ico/24x16/br.png");
 	catalonia           .addFile(":/ico/24x16/catalonia.png");
 	cs                  .addFile(":/ico/24x16/cs.png");
@@ -670,6 +671,7 @@ void QET::Icons::initIcons()
 	no                  .addFile(":/ico/24x16/no.png");
 	be                  .addFile(":/ico/24x16/be.png");
 	tr                  .addFile(":/ico/24x16/tr.png");
+	mn                  .addFile(":/ico/24x16/mn.png");
 	translation         .addFile(":/ico/22x22/applications-development-translation.png");
 	listDrawings        .addFile(":/ico/48x48/view-pim-journal.png");
 	AutoNum             .addFile(":/ico/128x128/plasmagik.png");

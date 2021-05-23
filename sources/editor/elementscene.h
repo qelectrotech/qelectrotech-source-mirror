@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,12 +17,14 @@
 */
 #ifndef ELEMENT_SCENE_H
 #define ELEMENT_SCENE_H
+#include "../NameList/nameslist.h"
+#include "../diagramcontext.h"
+#include "../qgimanager.h"
+#include "elementcontent.h"
+#include "../properties/elementdata.h"
+
 #include <QtWidgets>
 #include <QtXml>
-#include "qgimanager.h"
-#include "elementcontent.h"
-#include "diagramcontext.h"
-#include "nameslist.h"
 
 class CustomElementPart;
 class ElementEditionCommand;
@@ -64,11 +66,7 @@ class ElementScene : public QGraphicsScene
 	
 		// attributes
 	private:
-		NamesList m_names_list; /// List of localized names
-		QString m_informations; /// Extra informations
-		QString m_elmt_type; /// element type
-		DiagramContext m_elmt_kindInfo,
-			       m_elmt_information; /// element kind info
+		ElementData m_element_data; ///ElementData. Actualy in transition with old data storage
 		QGIManager m_qgi_manager;
 		QUndoStack m_undo_stack;
 
@@ -89,21 +87,20 @@ class ElementScene : public QGraphicsScene
 	
 		// methods
 	public:
+		ElementData elementData();
+		void setElementData(ElementData data);
+
 		void setEventInterface (ESEventInterface *event_interface);
 		void clearEventInterface();
+
 		void setBehavior (ElementScene::Behavior);
 		ElementScene::Behavior behavior() const;
+
 		QPointF snapToGrid(QPointF point);
-		void setNames(const NamesList &);
-		NamesList names() const;
-		QString informations() const;
-		void setInformations(const QString &);
-		QString elementType () const {return m_elmt_type;}
-		DiagramContext elementKindInfo () const {return m_elmt_kindInfo;}
-		DiagramContext elementInformation() const {return m_elmt_information;}
 		virtual int xGrid() const;
 		virtual int yGrid() const;
 		virtual void setGrid(int, int);
+
 		virtual const QDomDocument toXml(bool = true);
 		virtual QRectF boundingRectFromXml(const QDomDocument &);
 		virtual void fromXml(const QDomDocument &,
@@ -127,7 +124,6 @@ class ElementScene : public QGraphicsScene
 		void cut();
 		void copy();
 		QETElementEditor* editor() const;
-		void setElementInfo(const DiagramContext& dc);
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;
@@ -136,12 +132,10 @@ class ElementScene : public QGraphicsScene
 		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 		void keyPressEvent         (QKeyEvent *event) override;
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
-
 		void drawForeground(QPainter *, const QRectF &) override;
 	
 	private:
 		QRectF elementContentBoundingRect(const ElementContent &) const;
-		bool applyInformations(const QDomDocument &);
 		ElementContent loadContent(const QDomDocument &);
 		ElementContent addContent(const ElementContent &);
 		ElementContent addContentAtPos(const ElementContent &, const QPointF &);
@@ -178,40 +172,5 @@ class ElementScene : public QGraphicsScene
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)
-
-
-/**
-	@brief ElementScene::setNames
-	@param nameslist New set of naes for the currently edited element
-*/
-inline void ElementScene::setNames(const NamesList &nameslist) {
-	m_names_list = nameslist;
-}
-
-/**
-	@brief ElementScene::names
-	@return the list of names of the currently edited element
-*/
-inline NamesList ElementScene::names() const
-{
-	return(m_names_list);
-}
-
-/**
-	@brief ElementScene::informations
-	@return extra informations of the currently edited element
-*/
-inline QString ElementScene::informations() const
-{
-	return(m_informations);
-}
-
-/**
-	@brief ElementScene::setInformations
-	@param infos new extra information for the currently edited element
-*/
-inline void ElementScene::setInformations(const QString &infos) {
-	m_informations = infos;
-}
 
 #endif

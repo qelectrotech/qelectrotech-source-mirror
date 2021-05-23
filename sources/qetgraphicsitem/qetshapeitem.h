@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,10 @@
 #ifndef QETSHAPEITEM_H
 #define QETSHAPEITEM_H
 
-#include <QPen>
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetgraphicsitem.h"
-#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+
+#include <QPen>
 
 class QDomElement;
 class QDomDocument;

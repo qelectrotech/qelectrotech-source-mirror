@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,38 +16,43 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamictextfieldeditor.h"
+
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../editor/graphicspart/customelementpart.h"
+#include "../../editor/graphicspart/partdynamictextfield.h"
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
+#include "../../ui/alignmenttextdialog.h"
+#include "../../ui/compositetexteditdialog.h"
+#include "../ui/qetelementeditor.h"
+#include "../elementscene.h"
 #include "ui_dynamictextfieldeditor.h"
-#include "customelementpart.h"
-#include "partdynamictextfield.h"
-#include "QPropertyUndoCommand/qpropertyundocommand.h"
-#include "qetelementeditor.h"
-#include "qetapp.h"
-#include "compositetexteditdialog.h"
-#include "alignmenttextdialog.h"
+
+#include <QColorDialog>
+#include <QGraphicsItem>
+#include <QPointer>
 #include <assert.h>
 
-#include <QPointer>
-#include <QGraphicsItem>
-#include <QColorDialog>
-
-DynamicTextFieldEditor::DynamicTextFieldEditor(
-	QETElementEditor *editor, PartDynamicTextField *text_field, QWidget *parent) :
+DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
+											   PartDynamicTextField *text_field,
+											   QWidget *parent) :
 	ElementItemEditor(editor, parent),
-	ui(new Ui::DynamicTextFieldEditor) {
+	ui(new Ui::DynamicTextFieldEditor)
+{
 	ui -> setupUi(this);
 	ui -> m_composite_text_pb -> setDisabled(true);
 	ui -> m_elmt_info_cb -> setDisabled(true);
+	setupWidget();
 	if(text_field) {
 		setPart(text_field);
 	}
-	fillInfoComboBox();
 }
 
 DynamicTextFieldEditor::~DynamicTextFieldEditor()
 {
 	delete ui;
-	if(!m_connection_list.isEmpty()) {
-		for(const QMetaObject::Connection& con : m_connection_list) {
+    if(!m_change_connections.isEmpty()) {
+        for(const QMetaObject::Connection& con : m_change_connections) {
 			disconnect(con);
 		}
 	}
@@ -73,6 +78,7 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part) {
 	m_text_field = static_cast<PartDynamicTextField *>(qgi);
 	updateForm();
 	setUpConnections();
+	fillInfoComboBox();
 	return true;
 }
 
@@ -86,7 +92,7 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 		return true;
 	}
 
-	if (PartDynamicTextField *part= static_cast<PartDynamicTextField *>(parts.first())) {
+	if (PartDynamicTextField *part = static_cast<PartDynamicTextField *>(parts.first())) {
 		if (m_text_field) {
 			disconnectConnections();
 		}
@@ -98,6 +104,7 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 			m_parts.append(static_cast<PartDynamicTextField*>(parts[i]));
 
 		setUpConnections();
+		fillInfoComboBox();
 		updateForm();
 		return true;
 	}
@@ -123,7 +130,7 @@ QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const
 	return parts;
 }
 
-void DynamicTextFieldEditor::updateForm()
+void DynamicTextFieldEditor::updateFormPriv()
 {
 	if(m_text_field) {
 		ui -> m_x_sb -> setValue(m_text_field.data() -> x());
@@ -132,7 +139,10 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_frame_cb -> setChecked(m_text_field.data() -> frame());
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
-		ui -> m_color_kpb -> setColor(m_text_field.data() -> color());
+#ifdef BUILD_WITHOUT_KF5
+#else
+		m_color_kpb -> setColor(m_text_field.data() -> color());
+#endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
 
@@ -156,40 +166,54 @@ void DynamicTextFieldEditor::updateForm()
 	}
 }
 
+void DynamicTextFieldEditor::setupWidget()
+{
+#ifdef BUILD_WITHOUT_KF5
+#else
+	m_color_kpb = new KColorButton(this);
+	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
+
+	connect(m_color_kpb, &KColorButton::changed,
+			this, &DynamicTextFieldEditor::on_m_color_kpb_changed);
+
+	ui->m_main_grid_layout->addWidget(m_color_kpb, 7, 1, 1, 2);
+#endif
+}
+
 void DynamicTextFieldEditor::setUpConnections()
 {
-	assert(m_connection_list.isEmpty());
+    assert(m_change_connections.isEmpty());
 	//Setup the connection
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::fontChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::taggChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::infoNameChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::rotationChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::frameChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::frameChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,
 		[this](){this -> updateForm();});
 }
 
 void DynamicTextFieldEditor::disconnectConnections()
 {
 	//Remove previous connection
-	if(!m_connection_list.isEmpty())
-		for(const QMetaObject::Connection& con : m_connection_list) {
+    if(!m_change_connections.isEmpty())
+        for(const QMetaObject::Connection& con : m_change_connections) {
 			disconnect(con);
 		}
-	m_connection_list.clear();
+    m_change_connections.clear();
 }
 
 /**
@@ -201,19 +225,20 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	ui -> m_elmt_info_cb -> clear();
 
 	QStringList strl;
-	QString type = elementEditor() -> elementScene() -> elementType();
+	auto type = elementEditor()->elementScene()->elementData().m_type;
 
-	if(type.contains("report")) {
-		strl << "function" << "tension_protocol" << "conductor_color" << "conductor_section";
+	if(type & ElementData::AllReport) {
+		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
-		strl = QETApp::elementInfoKeys();
+		strl = QETInformation::elementInfoKeys();
 	}
 		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : strl)
-		info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
+		info_map.insert(QETInformation::translatedInfoKey(str), str);
+
 
 	for (const QString& key : info_map.keys())
 		ui -> m_elmt_info_cb -> addItem(key, info_map.value(key));
@@ -308,8 +333,8 @@ void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "infoName", m_parts[i] -> infoName(), info);
 			undo->setText(tr("Modifier l'information d'un texte"));
 			undoStack().push(undo);
-			m_parts[i] -> setPlainText(
-				elementEditor() -> elementScene() -> elementInformation().value(m_parts[i] -> infoName()).toString());
+			m_parts[i]->setPlainText(
+						elementEditor()->elementScene()->elementData().m_informations.value(m_parts[i] -> infoName()).toString());
 		}
 	}
 }

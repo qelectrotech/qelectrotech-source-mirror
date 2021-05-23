@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 #ifndef RECTANGLEEDITOR_H
 #define RECTANGLEEDITOR_H
 
-#include "elementitemeditor.h"
+#include "../elementitemeditor.h"
+
 #include <QWidget>
 
 class StyleEditor;
@@ -47,7 +48,7 @@ class RectangleEditor : public ElementItemEditor
 	QPointF editedTopLeft () const;
 	
 	public slots:
-	void updateForm() override;
+    void updateFormPriv() override;
 	private:
 	void editingFinished();
 	void activeConnections(bool active);
@@ -69,7 +70,6 @@ class RectangleEditor : public ElementItemEditor
 	StyleEditor *m_style;
 	PartRectangle *m_part;
 	Ui::RectangleEditor *ui;
-	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // RECTANGLEEDITOR_H

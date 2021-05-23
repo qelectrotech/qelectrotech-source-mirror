@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -34,6 +34,7 @@ public:
 	int32_t i_max_screen_height();
 	QString compilation_info();
 	void send_info_to_debug();
+	~Machine_info();
 
 signals:
 

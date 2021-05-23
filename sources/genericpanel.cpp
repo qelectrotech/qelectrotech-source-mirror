@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,15 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "genericpanel.h"
-#include <QTreeWidgetItem>
-#include "qetproject.h"
+
 #include "diagram.h"
-#include "titleblock/templatescollection.h"
-#include "titleblock/templatelocation.h"
-#include "qeticons.h"
 #include "qetapp.h"
+#include "qeticons.h"
+#include "qetproject.h"
+#include "titleblock/templatelocation.h"
+#include "titleblock/templatescollection.h"
+
+#include <QTreeWidgetItem>
 
 /**
 	Constructor

@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,10 +18,11 @@
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
 
-#include <QGraphicsView>
+#include "ElementsCollection/elementslocation.h"
+#include "titleblock/templatelocation.h"
+
 #include <QClipboard>
-#include "elementslocation.h"
-#include "templatelocation.h"
+#include <QGraphicsView>
 
 class Conductor;
 class Diagram;

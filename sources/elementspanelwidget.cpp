@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
-#include "qetelementeditor.h"
+
+#include "diagram.h"
+#include "editor/ui/qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"
-#include "qetproject.h"
-#include "diagram.h"
 #include "qeticons.h"
-#include "templatedeleter.h"
+#include "qetproject.h"
+#include "titleblock/templatedeleter.h"
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel

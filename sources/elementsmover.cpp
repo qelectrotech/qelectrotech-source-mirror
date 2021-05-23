@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2020 The QElectroTech Team
+	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,16 +16,18 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementsmover.h"
-#include "conductor.h"
-#include "conductortextitem.h"
-#include "diagram.h"
-#include "diagramcommands.h"
-#include "element.h"
-#include "independenttextitem.h"
-#include "diagramimageitem.h"
+
 #include "conductorautonumerotation.h"
-#include "dynamicelementtextitem.h"
-#include "elementtextitemgroup.h"
+#include "diagram.h"
+#include "qetgraphicsitem/conductor.h"
+#include "diagramcommands.h"
+#include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/diagramimageitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/independenttextitem.h"
+#include "undocommand/addgraphicsobjectcommand.h"
 
 /**
 	@brief ElementsMover::ElementsMover Constructor
@@ -184,7 +186,7 @@ void ElementsMover::endMovement()
 			Conductor *conductor = new Conductor(pair.first, pair.second);
 
 				//Create an undo object for each new auto conductor, with undo_object for parent
-			new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);
+			new AddGraphicsObjectCommand(conductor, diagram_, QPointF(), undo_object);
 				if (undo_object->text().isEmpty())
 					undo_object->setText(QObject::tr("Ajouter %n conducteur(s)", "add a numbers of conductor one or more", acc));
 
