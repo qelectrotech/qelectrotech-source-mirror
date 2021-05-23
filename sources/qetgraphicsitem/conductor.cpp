@@ -1065,69 +1065,6 @@ QDomElement Conductor::toXml(QDomDocument& doc) const {
 }
 
 /**
-	Exporte les caracteristiques du conducteur sous forme d'une element XML.
-	@param d Le document XML a utiliser pour creer l'element XML
-	@param table_adr_id Hash stockant les correspondances entre les ids des
-	bornes dans le document XML et leur adresse en memoire
-	@return Un element XML representant le conducteur
-*/
-//QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> &table_adr_id) const
-//{
-//	QDomElement dom_element = dom_document.createElement("conductor");
-
-//	dom_element.setAttribute("x", QString::number(pos().x()));
-//	dom_element.setAttribute("y", QString::number(pos().y()));
-
-//	// Terminal is uniquely identified by the uuid of the terminal and the element
-//	if (terminal1->uuid().isNull()) {
-//		// legacy method to identify the terminal
-//		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
-//	} else {
-//		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-//		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-//	}
-
-//	if (terminal2->uuid().isNull()) {
-//		// legacy method to identify the terminal
-//		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
-//	} else {
-//		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-//		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-//	}
-//	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
-	
-//	// on n'exporte les segments du conducteur que si ceux-ci ont
-//	// ete modifies par l'utilisateur
-//	if (modified_path)
-//	{
-//		// parcours et export des segments
-//		QDomElement current_segment;
-//		foreach(ConductorSegment *segment, segmentsList())
-//		{
-//			current_segment = dom_document.createElement("segment");
-//			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-//			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
-//			dom_element.appendChild(current_segment);
-//		}
-//	}
-
-//	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
-//	dom_element.appendChild(dom_seq);
-	
-//		// Export the properties and text
-//	m_properties.toXml(dom_document);
-//	if(m_text_item->wasMovedByUser())
-//	{
-//		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
-//		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
-//	}
-//	if(m_text_item->wasRotateByUser())
-//		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
-
-//	return(dom_element);
-//}
-
-/**
 *@brief Conductor::pathFromXml
 *	Generate the path (of the line) from xml file by checking the segments in the xml
 *	file
