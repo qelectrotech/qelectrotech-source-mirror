@@ -205,7 +205,7 @@ void DynamicTextFieldEditor::setUpConnections()
 		[this](){this -> updateForm();});
     m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,
 		[this](){this -> updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged,
+    m_change_connections << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged,
 		[this](){this -> updateForm();});
 }
 
