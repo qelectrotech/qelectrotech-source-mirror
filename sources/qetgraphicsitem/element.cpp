@@ -196,7 +196,7 @@ void Element::setHighlighted(bool hl)
 */
 void Element::displayHelpLine(bool b)
 {
-	foreach (Terminal *t, terminals())
+    for (Terminal *t: terminals())
 		t->drawHelpLine(b);
 }
 
@@ -727,7 +727,7 @@ bool Element::fromXml(QDomElement &e,
 		ce recensement servira lors de la mise en place des fils
 	*/
 	QList<QDomElement> liste_terminals; // terminals in the element in the diagram
-	foreach(QDomElement qde,
+    for(QDomElement qde:
 			QET::findInDomElement(e, "terminals", "terminal")) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
@@ -776,7 +776,7 @@ bool Element::fromXml(QDomElement &e,
 	else
 	{
 		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
-		foreach(int id_trouve, priv_id_adr.keys())
+        for(int id_trouve: priv_id_adr.keys())
 		{
 			if (table_id_adr.contains(id_trouve))
 			{
@@ -786,7 +786,7 @@ bool Element::fromXml(QDomElement &e,
 			}
 		}
 		// copie des associations id / adr
-		foreach(int id_trouve, priv_id_adr.keys()) {
+        for(int id_trouve: priv_id_adr.keys()) {
 			table_id_adr.insert(id_trouve,
 						priv_id_adr.value(id_trouve));
 		}
@@ -794,9 +794,9 @@ bool Element::fromXml(QDomElement &e,
 
 	//load uuid of connected elements
 	QList <QDomElement> uuid_list = QET::findInDomElement(e, "links_uuids", "link_uuid");
-	foreach (QDomElement qdo, uuid_list) tmp_uuids_link << qdo.attribute("uuid");
+    for (QDomElement qdo: uuid_list) tmp_uuids_link << qdo.attribute("uuid");
 	
-	foreach (QDomElement qdo, uuid_list)
+    for (QDomElement qdo: uuid_list)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 		tmp_uuids_link << qdo.attribute("uuid");
 #else
@@ -936,7 +936,7 @@ QDomElement Element::toXml(
 	QDomElement xml_terminals = document.createElement(QStringLiteral("terminals"));
 	// for each child of the element
 	// pour chaque enfant de l'element
-	foreach(Terminal *t, terminals()) {
+    for(Terminal *t: terminals()) {
 		// alors on enregistre la borne
 		QDomElement terminal = t -> toXml(document);
 		if (t->ID() > 0) {
@@ -962,7 +962,7 @@ QDomElement Element::toXml(
 	//save the uuid of each other elements
 	if (! isFree()) {
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
-		foreach (Element *elmt, connected_elements) {
+        for (Element *elmt: connected_elements) {
 			QDomElement link_uuid =
 					document.createElement(QStringLiteral("link_uuid"));
 			link_uuid.setAttribute(QStringLiteral("uuid"), elmt->uuid().toString());
@@ -1254,7 +1254,7 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 {
 	QList <QPair <Terminal *, Terminal *> > list;
 
-	foreach (Terminal *terminal, terminals())
+    for (Terminal *terminal: terminals())
 	{
 		if (terminal->conductors().isEmpty())
 		{
@@ -1284,7 +1284,7 @@ void Element::initLink(QETProject *prj)
 	if (tmp_uuids_link.isEmpty()) return;
 
 	ElementProvider ep(prj);
-	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
+    for (Element *elmt: ep.fromUuids(tmp_uuids_link)) {
 		elmt->linkToElement(this);
 	}
 	tmp_uuids_link.clear();
@@ -1374,7 +1374,7 @@ bool comparPos(const Element *elmt1, const Element *elmt2)
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseMoveEvent(event);
-	foreach (Terminal *t, terminals())
+    for (Terminal *t: terminals())
 	{
 		t -> drawHelpLine(true);
 	}
@@ -1387,7 +1387,7 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseReleaseEvent(event);
-	foreach (Terminal *t, terminals())
+    for (Terminal *t: terminals())
 	{
 		t -> drawHelpLine(false);
 	}
@@ -1403,7 +1403,7 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
 {
 	Q_UNUSED(e)
 
-	foreach (Element *elmt, linkedElements())
+    for (Element *elmt: linkedElements())
 		elmt -> setHighlighted(true);
 
 	m_mouse_over = true;
@@ -1421,7 +1421,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 {
 	Q_UNUSED(e)
 
-	foreach (Element *elmt, linkedElements())
+    for (Element *elmt: linkedElements())
 		elmt -> setHighlighted(false);
 
 	m_mouse_over = false;
