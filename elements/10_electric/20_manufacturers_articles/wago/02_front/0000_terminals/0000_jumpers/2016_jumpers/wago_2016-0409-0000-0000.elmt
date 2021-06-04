@@ -1,20 +1,19 @@
-<definition version="0.80" type="element" width="390" height="20" hotspot_x="12" link_type="simple" hotspot_y="10">
-    <names>
-        <name lang="en">2016-409</name>
-        <name lang="fr">2016-409</name>
-        <name lang="de">2016-409</name>
-        <name lang="cs">2016-409</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2016-409</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="223" height="11" version="0.80" hotspot_x="7" hotspot_y="6" link_type="simple">
+  <names>
+    <name lang="en">2016-409</name>
+    <name lang="fr">2016-409</name>
+    <name lang="de">2016-409</name>
+    <name lang="cs">2016-409</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2016-409</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon x4="-8.2" x3="373.15" antialias="false" y4="7.31" y1="-6.87" x1="-8.2" x2="373.15" y2="-6.87" y3="7.31" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
-        <text rotation="0" x="169" y="2.9" text="2016-409" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
-    </description>
+  <description>
+    <polygon x1="-4.69" x2="213.29" x3="213.29" x4="-4.69" y1="-3.93" y2="-3.93" y3="4.18" y4="4.18" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <text x="96.6" y="1.66" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2016-409" color="#000000" rotation="0"/>
+  </description>
 </definition>

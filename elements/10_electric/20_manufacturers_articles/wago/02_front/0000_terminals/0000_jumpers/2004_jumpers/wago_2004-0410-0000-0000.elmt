@@ -1,20 +1,19 @@
-<definition height="20" hotspot_x="21" hotspot_y="10" version="0.80" link_type="simple" type="element" width="220">
-    <names>
-        <name lang="de">2004-410</name>
-        <name lang="en">2004-410</name>
-        <name lang="fr">2004-410</name>
-        <name lang="cs">2004-410</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2004-410</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="126" height="11" version="0.80" hotspot_x="12" hotspot_y="6" link_type="simple">
+  <names>
+    <name lang="de">2004-410</name>
+    <name lang="en">2004-410</name>
+    <name lang="fr">2004-410</name>
+    <name lang="cs">2004-410</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2004-410</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon y1="-7.05" x3="197.36" x4="-18.85" antialias="false" y2="-7.05" x1="-18.85" x2="197.36" y4="7.13" style="line-style:normal;line-weight:thin;filling:white;color:black" y3="7.13"/>
-        <text color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="2004-410" y="1.9" rotation="0" x="75.5"/>
-    </description>
+  <description>
+    <polygon x1="-10.77" x2="112.81" x3="112.81" x4="-10.77" y1="-4.03" y2="-4.03" y3="4.08" y4="4.08" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <text x="43.15" y="1.09" font="Sans Serif,1.71,-1,5,50,0,0,0,0,0" text="2004-410" color="#000000" rotation="0"/>
+  </description>
 </definition>

@@ -1,20 +1,19 @@
-<definition height="20" hotspot_x="23" hotspot_y="10" version="0.80" link_type="simple" type="element" width="160">
-    <names>
-        <name lang="de">2004-407</name>
-        <name lang="en">2004-407</name>
-        <name lang="fr">2004-407</name>
-        <name lang="cs">2004-407</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2004-407</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="91" height="11" version="0.80" hotspot_x="13" hotspot_y="6" link_type="simple">
+  <names>
+    <name lang="de">2004-407</name>
+    <name lang="en">2004-407</name>
+    <name lang="fr">2004-407</name>
+    <name lang="cs">2004-407</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2004-407</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon y1="-7.12" x3="131.9" x4="-18.85" antialias="false" y2="-7.12" x1="-18.85" x2="131.9" y4="7.06" style="line-style:normal;line-weight:thin;filling:white;color:black" y3="7.06"/>
-        <text color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="2004-407" y="1.9" rotation="0" x="45.5"/>
-    </description>
+  <description>
+    <polygon x1="-10.77" x2="75.39" x3="75.39" x4="-10.77" y1="-4.07" y2="-4.07" y3="4.04" y4="4.04" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <text x="26.01" y="1.09" font="Sans Serif,1.71,-1,5,50,0,0,0,0,0" text="2004-407" color="#000000" rotation="0"/>
+  </description>
 </definition>
