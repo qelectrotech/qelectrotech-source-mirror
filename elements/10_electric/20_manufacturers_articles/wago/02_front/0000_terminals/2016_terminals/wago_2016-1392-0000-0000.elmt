@@ -1,19 +1,18 @@
-<definition type="element" height="330" link_type="simple" width="10" hotspot_y="167" version="0.80" hotspot_x="4">
-    <names>
-        <name lang="fr">2016-1392</name>
-        <name lang="de">2016-1392</name>
-        <name lang="en">2016-1392</name>
-        <name lang="cs">2016-1392</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2016-1392</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="6" height="189" version="0.90" hotspot_x="3" hotspot_y="110" link_type="simple">
+  <names>
+    <name lang="de">2016-1392</name>
+    <name lang="cs">2016-1392</name>
+    <name lang="en">2016-1392</name>
+    <name lang="fr">2016-1392</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2016-1392</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon style="line-style:normal;line-weight:thin;filling:orange;color:orange" x4="-1" y1="-164.41" y3="158.61" y4="158.61" x1="-1" antialias="false" x2="2.5" y2="-164.41" x3="2.5"/>
-    </description>
+  <description>
+    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-108.61" y2="-108.61" y3="76.03" y4="76.03" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>
+  </description>
 </definition>

@@ -1,19 +1,18 @@
-<definition width="20" hotspot_y="109" type="element" hotspot_x="10" height="180" version="0.80" link_type="simple">
-    <names>
-        <name lang="en">2000-1292</name>
-        <name lang="fr">2000-1292</name>
-        <name lang="de">2000-1292</name>
-        <name lang="cs">2000-1292</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2000-1292</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="11" height="103" version="0.80" hotspot_x="6" hotspot_y="43" link_type="simple">
+  <names>
+    <name lang="en">2000-1292</name>
+    <name lang="fr">2000-1292</name>
+    <name lang="de">2000-1292</name>
+    <name lang="cs">2000-1292</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2000-1292</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon x2="2.5" y3="65.86" x1="-1" y2="-104.03" antialias="false" x4="-1" x3="2.5" style="line-style:normal;line-weight:thin;filling:orange;color:orange" y1="-104.03" y4="65.86"/>
-    </description>
+  <description>
+    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-40.03" y2="-40.03" y3="57.08" y4="57.08" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>
+  </description>
 </definition>

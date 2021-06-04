@@ -1,20 +1,19 @@
-<definition hotspot_x="16" link_type="simple" type="element" width="80" hotspot_y="10" version="0.80" height="20">
-    <names>
-        <name lang="en">2000-406</name>
-        <name lang="fr">2000-406</name>
-        <name lang="de">2000-406</name>
-        <name lang="cs">2000-406</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2000-406</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="46" height="11" version="0.80" hotspot_x="9" hotspot_y="6" link_type="simple">
+  <names>
+    <name lang="en">2000-406</name>
+    <name lang="fr">2000-406</name>
+    <name lang="de">2000-406</name>
+    <name lang="cs">2000-406</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2000-406</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon y4="6.68" antialias="false" y3="-6.75" style="line-style:normal;line-weight:thin;filling:white;color:black" x3="60.93" x1="-14.49" y2="-6.75" x2="-14.49" x4="60.93" y1="6.68"/>
-        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="2.1" text="2000-406" color="#000000" x="8.9563" rotation="0"/>
-    </description>
+  <description>
+    <polygon x1="-8.28" x2="-8.28" x3="34.83" x4="34.83" y1="3.82" y2="-3.86" y3="-3.86" y4="3.82" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <text x="5.12" y="1.2" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2000-406" color="#000000" rotation="0"/>
+  </description>
 </definition>

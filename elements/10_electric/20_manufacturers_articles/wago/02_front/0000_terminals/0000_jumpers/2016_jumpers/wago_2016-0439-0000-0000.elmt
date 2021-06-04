@@ -1,21 +1,20 @@
-<definition height="20" width="390" version="0.80" type="element" hotspot_y="10" hotspot_x="12" link_type="simple">
-    <names>
-        <name lang="en">2016-439</name>
-        <name lang="fr">2016-439</name>
-        <name lang="de">2016-439</name>
-        <name lang="cs">2016-439</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2016-439</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="223" height="11" version="0.80" hotspot_x="7" hotspot_y="6" link_type="simple">
+  <names>
+    <name lang="en">2016-439</name>
+    <name lang="fr">2016-439</name>
+    <name lang="de">2016-439</name>
+    <name lang="cs">2016-439</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2016-439</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-8.2" x2="373.15" y3="7.31" y4="7.31" antialias="false" x4="-8.2" y1="-6.87" y2="-6.87" x3="373.15"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10.5" x2="10.5" closed="false" y3="-3" y4="3" antialias="false" x4="358" y1="3" y2="-3" x3="358"/>
-        <text text="2016-439" color="#000000" x="169" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="2.9" rotation="0"/>
-    </description>
+  <description>
+    <polygon x1="-4.69" x2="213.29" x3="213.29" x4="-4.69" y1="-3.93" y2="-3.93" y3="4.18" y4="4.18" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <polygon x1="6" x2="6" x3="204.63" x4="204.63" y1="1.71" y2="-1.71" y3="-1.71" y4="1.71" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" antialias="false"/>
+    <text x="96.6" y="1.66" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2016-439" color="#000000" rotation="0"/>
+  </description>
 </definition>

@@ -1,19 +1,18 @@
-<definition hotspot_x="9" link_type="simple" hotspot_y="165" width="20" type="element" version="0.90" height="330">
-    <names>
-        <name lang="cs">859-525</name>
-        <name lang="de">859-525</name>
-        <name lang="en">859-525</name>
-        <name lang="fr">859-525</name>
-    </names>
-    <elementInformations>
-        <elementInformation name="designation" show="1">859-525</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="5" height="188" version="0.90" hotspot_x="2" hotspot_y="94" link_type="simple">
+  <names>
+    <name lang="cs">859-525</name>
+    <name lang="de">859-525</name>
+    <name lang="en">859-525</name>
+    <name lang="fr">859-525</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="designation" show="1">859-525</elementInformation>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <rect y="-160" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" x="-3.5" ry="0" width="7" height="320" rx="0"/>
-    </description>
+  <description>
+    <rect x="-1" y="-91" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="1.99" height="182" antialias="false"/>
+  </description>
 </definition>
