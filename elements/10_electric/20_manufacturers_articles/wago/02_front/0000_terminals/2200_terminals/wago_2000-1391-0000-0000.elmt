@@ -1,0 +1,18 @@
+<definition type="element" width="11" height="120" version="0.80" hotspot_x="6" hotspot_y="61" link_type="simple">
+  <names>
+    <name lang="de">2000-1391</name>
+    <name lang="fr">2000-1391</name>
+    <name lang="en">2000-1391</name>
+    <name lang="cs">2000-1391</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2000-1391</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+  <description>
+    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-59.44" y2="-59.44" y3="57.08" y4="57.08" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" antialias="false"/>
+  </description>
+</definition>
