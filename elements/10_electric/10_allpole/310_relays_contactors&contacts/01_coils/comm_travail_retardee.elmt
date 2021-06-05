@@ -7,6 +7,7 @@
         <name lang="cs">Relé se zpožděným zapnutím</name>
         <name lang="de">Relais ansprechverzögert</name>
         <name lang="it">Relè ritardato alla chiusura</name>
+        <name lang="hu">Meghúzás késleltetésű relé</name>
         <name lang="el">Πηνίο χρονικού, καθυστέρηση ενεργοποίησης</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy wzbudzeniu</name>
     </names>

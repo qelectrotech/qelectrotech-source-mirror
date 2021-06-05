@@ -9,6 +9,7 @@
         <name lang="pl">Cewka</name>
         <name lang="es">Relé biestable</name>
         <name lang="cs">Bistabilní relé</name>
+        <name lang="hu">Bistabil relé</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>

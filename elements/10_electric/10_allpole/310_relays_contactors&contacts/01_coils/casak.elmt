@@ -2,6 +2,7 @@
     <uuid uuid="{45a179e7-866e-4756-965f-d2445ced8dd2}"/>
     <names>
         <name lang="cs">Časové relé</name>
+        <name lang="hu">Időzítő relé</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">coil</kindInformation>

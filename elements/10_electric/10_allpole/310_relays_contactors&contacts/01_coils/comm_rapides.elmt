@@ -9,6 +9,7 @@
         <name lang="cs">Rychlé relé</name>
         <name lang="es">Relé rapido</name>
         <name lang="nl">relais snel</name>
+        <name lang="hu">Gyors működésű relé</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>

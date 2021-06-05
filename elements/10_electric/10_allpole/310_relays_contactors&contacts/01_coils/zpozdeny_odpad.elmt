@@ -2,6 +2,7 @@
     <uuid uuid="{90fe1aa6-d017-4064-8ce7-242a4b7b416a}"/>
     <names>
         <name lang="cs">Kontakt zpožděný odpad</name>
+        <name lang="hu">Késleltetett működésű záróérintkező</name>
     </names>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>

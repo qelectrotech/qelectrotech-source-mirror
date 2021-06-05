@@ -9,6 +9,7 @@
         <name lang="es">Relé de sobrecarga termica</name>
         <name lang="cs">Tepelné relé</name>
         <name lang="nl">Thermisch relais</name>
+        <name lang="hu">Thermikus túlterhelés védelmi relé</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>
