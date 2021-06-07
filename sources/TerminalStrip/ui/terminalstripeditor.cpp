@@ -27,7 +27,6 @@
 #include "../UndoCommand/changeterminalstripdata.h"
 #include "terminalstriptreewidget.h"
 #include "../../qeticons.h"
-#include "terminalstripmodel.h"
 
 #include <QTreeWidgetItem>
 
@@ -236,46 +235,16 @@ void TerminalStripEditor::addFreeTerminal()
 }
 
 /**
- * @brief TerminalStripEditor::setCurrentStrip
- * Set the current terminal strip edited to \p strip_
- * @param strip_
+ * @brief TerminalStripEditor::clearDataTab
  */
-void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
+void TerminalStripEditor::clearDataTab()
 {
-	if (strip_ == m_current_strip) {
-		return;
-	}
-
-	if (!strip_)
-	{
-		ui->m_installation_le ->clear();
-		ui->m_location_le     ->clear();
-		ui->m_name_le         ->clear();
-		ui->m_comment_le      ->clear();
-		ui->m_description_te  ->clear();
-		m_current_strip = nullptr;
-
-		ui->m_table_widget->setModel(nullptr);
-		if (m_model) {
-			m_model->deleteLater();
-			m_model = nullptr;
-		}
-	}
-	else
-	{
-		ui->m_installation_le ->setText(strip_->installation());
-		ui->m_location_le     ->setText(strip_->location());
-		ui->m_name_le         ->setText(strip_->name());
-		ui->m_comment_le      ->setText(strip_->comment());
-		ui->m_description_te  ->setPlainText(strip_->description());
-		m_current_strip = strip_;
-
-		if (m_model)
-			m_model->deleteLater();
-
-		m_model = new TerminalStripModel(strip_, this);
-		ui->m_table_widget->setModel(m_model);
-	}
+	ui->m_installation_le ->clear();
+	ui->m_location_le     ->clear();
+	ui->m_name_le         ->clear();
+	ui->m_comment_le      ->clear();
+	ui->m_description_te  ->clear();
+	m_current_strip = nullptr;
 }
 
 /**
@@ -341,7 +310,7 @@ void TerminalStripEditor::on_m_reload_pb_clicked()
    m_uuid_terminal_H.clear();
    m_uuid_strip_H.clear();
 
-   qDeleteAll(m_item_strip_H.keyBegin(), m_item_strip_H.keyEnd());
+   qDeleteAll(m_item_strip_H.keys());
 
    buildTree();
    ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
@@ -363,7 +332,7 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 	Q_UNUSED(previous)
 
 	if (!current) {
-		setCurrentStrip(nullptr);
+		clearDataTab();
 		ui->m_remove_terminal_strip_pb->setDisabled(true);
 		return;
 	}
@@ -382,7 +351,16 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 		ui->m_remove_terminal_strip_pb->setDisabled(true);
 	}
 
-	setCurrentStrip(strip_);
+	if (strip_) {
+		m_current_strip = strip_;
+		ui->m_installation_le ->setText(strip_->installation());
+		ui->m_location_le     ->setText(strip_->location());
+		ui->m_name_le         ->setText(strip_->name());
+		ui->m_comment_le      ->setText(strip_->comment());
+		ui->m_description_te  ->setPlainText(strip_->description());
+	} else {
+		clearDataTab();
+	}
 }
 
 void TerminalStripEditor::on_m_apply_data_pb_clicked(QAbstractButton *button)

@@ -21,7 +21,6 @@
 #include <QObject>
 #include <QPointer>
 #include "terminalstripdata.h"
-#include "../properties/elementdata.h"
 
 class Element;
 class RealTerminal;
@@ -29,26 +28,6 @@ class QETProject;
 class PhysicalTerminal;
 class TerminalStripIndex;
 class TerminalElement;
-
-
-struct RealTerminalData
-{
-	QSharedPointer<RealTerminal> m_real_terminal;
-
-	int pos_ = 0,
-		level_ = 0;
-
-	QString label_,
-			Xref_,
-			cable_,
-			cable_wire_,
-			conductor_;
-
-	ElementData::TerminalType type_;
-
-	bool led_ = false,
-		 is_element = false;
-};
 
 /**
  * @brief The TerminalStrip class
@@ -59,8 +38,6 @@ struct RealTerminalData
  */
 class TerminalStrip : public QObject
 {
-	friend class TerminalStripModel;
-
 		Q_OBJECT
 	public:
 		TerminalStrip(QETProject *project);
@@ -90,9 +67,7 @@ class TerminalStrip : public QObject
 		bool haveTerminal   (Element *terminal);
 
 		int physicalTerminalCount() const;
-		int realTerminalCount() const;
 		TerminalStripIndex index(int index = 0);
-		RealTerminalData realTerminalData(int real_terminal_index);
 
 		QVector<QPointer<Element>> terminalElement() const;
 

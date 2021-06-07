@@ -130,19 +130,13 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QTableView" name="m_table_widget">
+         <widget class="QTableView" name="tableView">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <attribute name="verticalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
          </widget>
         </item>
        </layout>
@@ -268,7 +262,7 @@
   <tabstop>m_name_le</tabstop>
   <tabstop>m_comment_le</tabstop>
   <tabstop>m_description_te</tabstop>
-  <tabstop>m_table_widget</tabstop>
+  <tabstop>tableView</tabstop>
  </tabstops>
  <resources>
   <include location="../../../qelectrotech.qrc"/>

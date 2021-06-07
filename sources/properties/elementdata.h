@@ -108,7 +108,6 @@ class ElementData : public PropertiesInterface
 
 		static QString terminalTypeToString(ElementData::TerminalType type);
 		static ElementData::TerminalType terminalTypeFromString(const QString &string);
-		static QString translatedTerminalType(ElementData::TerminalType type);
 
 		static QString terminalFunctionToString(ElementData::TerminalFunction function);
 		static ElementData::TerminalFunction terminalFunctionFromString(const QString &string);
