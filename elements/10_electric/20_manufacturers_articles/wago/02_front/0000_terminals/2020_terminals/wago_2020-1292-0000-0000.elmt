@@ -1,19 +1,18 @@
-<definition type="element" link_type="simple" height="180" hotspot_y="109" width="10" hotspot_x="4" version="0.80">
-    <names>
-        <name lang="de">2020-1292</name>
-        <name lang="en">2020-1292</name>
-        <name lang="fr">2020-1292</name>
-        <name lang="cs">2020-1292</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2020-1292</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="6" height="103" version="0.80" hotspot_x="2" hotspot_y="43" link_type="simple">
+  <names>
+    <name lang="de">2020-1292</name>
+    <name lang="en">2020-1292</name>
+    <name lang="fr">2020-1292</name>
+    <name lang="cs">2020-1292</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2020-1292</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon x4="-1" x3="2.5" x2="2.5" x1="-1" y2="-103.865" antialias="false" y1="-103.865" style="line-style:normal;line-weight:thin;filling:orange;color:orange" y3="65.865" y4="65.865"/>
-    </description>
+  <description>
+    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-39.88" y2="-39.88" y3="57.14" y4="57.14" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>
+  </description>
 </definition>

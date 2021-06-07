@@ -1,21 +1,20 @@
-<definition hotspot_y="10" type="element" height="20" width="80" link_type="simple" hotspot_x="16" version="0.80">
-    <names>
-        <name lang="fr">2000-436</name>
-        <name lang="de">2000-436</name>
-        <name lang="en">2000-436</name>
-        <name lang="cs">2000-436</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">2000-436</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="46" height="11" version="0.80" hotspot_x="9" hotspot_y="6" link_type="simple">
+  <names>
+    <name lang="fr">2000-436</name>
+    <name lang="de">2000-436</name>
+    <name lang="en">2000-436</name>
+    <name lang="cs">2000-436</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2000-436</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon y1="6.68" style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-14.49" x4="60.93" antialias="false" x2="-14.49" x3="60.93" y3="-6.75" y4="6.68" y2="-6.75"/>
-        <polygon y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x4="54" antialias="false" x2="-9" x3="54" y3="-3" y4="3" closed="false" y2="-3"/>
-        <text rotation="0" text="2000-436" x="8.9563" color="#000000" y="2.1" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
-    </description>
+  <description>
+    <polygon x1="-8.28" x2="-8.28" x3="34.83" x4="34.83" y1="3.82" y2="-3.86" y3="-3.86" y4="3.82" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <polygon x1="-5.14" x2="-5.14" x3="30.87" x4="30.87" y1="1.71" y2="-1.71" y3="-1.71" y4="1.71" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" antialias="false"/>
+    <text x="5.12" y="1.2" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2000-436" color="#000000" rotation="0"/>
+  </description>
 </definition>

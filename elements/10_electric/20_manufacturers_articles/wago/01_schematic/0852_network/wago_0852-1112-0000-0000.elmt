@@ -14,9 +14,9 @@
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="170" rx="0" y="-100" ry="0" width="120" antialias="false" x="-60"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-52.5" antialias="true" x="57.5"/>
         <text text="4" rotation="0" color="#000000" y="-32" x="49.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="170" rx="0" y="-100" ry="0" width="120" antialias="false" x="-60"/>
         <text text="2" rotation="0" color="#000000" y="-52" x="49.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="7.5" antialias="true" x="57.5"/>
         <text text="-" rotation="0" color="#000000" y="-90" x="-20.9844" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

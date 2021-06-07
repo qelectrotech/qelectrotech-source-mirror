@@ -1,19 +1,18 @@
-<definition version="0.80" hotspot_x="15" type="element" width="30" height="250" hotspot_y="102" link_type="simple">
-    <names>
-        <name lang="en">769-321</name>
-        <name lang="fr">769-321</name>
-        <name lang="de">769-321</name>
-        <name lang="cs">769-321</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">769-321</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="5" height="143" version="0.80" hotspot_x="2" hotspot_y="49" link_type="simple">
+  <names>
+    <name lang="en">769-321</name>
+    <name lang="fr">769-321</name>
+    <name lang="de">769-321</name>
+    <name lang="cs">769-321</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">769-321</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <polygon style="line-style:normal;line-weight:thin;filling:orange;color:orange" y2="-97.73" antialias="false" y4="143.92" x3="-1" y3="143.92" y1="-97.73" x4="2.5" x1="2.5" x2="-1"/>
-    </description>
+  <description>
+    <polygon x1="1" x2="-1" x3="-1" x4="1" y1="-45.89" y2="-45.89" y3="92.23" y4="92.23" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>
+  </description>
 </definition>

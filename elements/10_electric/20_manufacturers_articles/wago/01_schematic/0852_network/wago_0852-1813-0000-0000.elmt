@@ -14,11 +14,11 @@
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="200" rx="0" y="-100" ry="0" width="120" antialias="false" x="-60"/>
         <text text="FX" rotation="0" color="#000000" y="45" x="-54" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text text="2 Slots BASE-FX/TX" rotation="0" color="#000000" y="62" x="-39.2969" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="37.5" antialias="true" x="57.5"/>
         <text text="9" rotation="0" color="#000000" y="39" x="-54" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="200" rx="0" y="-100" ry="0" width="120" antialias="false" x="-60"/>
         <text text="FX" rotation="0" color="#000000" y="45" x="46" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-52.5" antialias="true" x="57.5"/>
         <text text="10" rotation="0" color="#000000" y="39" x="46" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

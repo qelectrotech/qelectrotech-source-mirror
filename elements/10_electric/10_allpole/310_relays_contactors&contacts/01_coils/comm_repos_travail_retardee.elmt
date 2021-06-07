@@ -9,6 +9,7 @@
         <name lang="es">Relé de trabajo y reposo retardado</name>
         <name lang="cs">Relé se zpožděným zapnutím a vypnutím</name>
         <name lang="nl">spoel opkom en afval vertraagd</name>
+        <name lang="hu">Meghúzás és elengedés késleltetésű relé</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>

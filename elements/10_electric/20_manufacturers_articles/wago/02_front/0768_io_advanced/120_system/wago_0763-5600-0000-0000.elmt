@@ -1,24 +1,23 @@
-<definition link_type="simple" version="0.80" height="380" hotspot_y="189" width="30" type="element" hotspot_x="15">
-    <names>
-        <name lang="de">763-5600</name>
-        <name lang="en">763-5600</name>
-        <name lang="fr">763-5600</name>
-        <name lang="cs">763-5600</name>
-    </names>
-    <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">763-5600</elementInformation>
-    </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
+<definition type="element" width="17" height="217" version="0.80" hotspot_x="9" hotspot_y="134" link_type="simple">
+  <names>
+    <name lang="de">763-5600</name>
+    <name lang="en">763-5600</name>
+    <name lang="fr">763-5600</name>
+    <name lang="cs">763-5600</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">763-5600</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-    <description>
-        <dynamic_text Valignment="AlignVCenter" text_from="ElementInfo" text_width="-1" font="Sans Serif,6,-1,5,25,0,0,0,0,0" z="1" frame="false" rotation="270" Halignment="AlignHCenter" x="-4.5" y="4" uuid="{4e4b145e-eacc-4700-bc38-f1339f6fdefe}">
-            <text></text>
-            <info_name>label</info_name>
-        </dynamic_text>
-        <polygon x12="-12.36" y1="179.75" y14="-170.24" x4="-13" y6="183.57" y9="-183.35" y8="183.95" y12="-182.08" y4="180.8" x16="-8.36" x11="-10.9" x6="-11.34" x10="-9.8" y17="-179.15" x7="-9.85" y15="-170.24" y2="174" x3="-13" y16="-179.15" antialias="false" x1="-8.36" y3="174" y13="-180.26" y7="183.95" x15="-8.36" x17="-4.1" x8="13.2" x18="-4.1" x14="-13" x9="13.2" x13="-13" style="line-style:normal;line-weight:thin;filling:white;color:black" y18="179.75" y5="182.35" x2="-8.36" y10="-183.35" x5="-12.56" y11="-183.12"/>
-        <text text="763-5600" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="270" x="8" y="-102" color="#000000"/>
-    </description>
+  <description>
+    <dynamic_text x="-2.57" y="-24.21" z="1" font="Sans Serif,3.43,-1,5,25,0,0,0,0,0" uuid="{4e4b145e-eacc-4700-bc38-f1339f6fdefe}" frame="false" rotation="270" text_from="ElementInfo" Halignment="AlignHCenter" Valignment="AlignVCenter" text_width="-1">
+      <text/>
+      <info_name>label</info_name>
+    </dynamic_text>
+    <polygon x1="-4.78" x2="-4.78" x3="-7.43" x4="-7.43" x5="-7.18" x6="-6.48" x7="-5.63" x8="7.55" x9="7.55" y1="76.27" y2="72.98" y3="72.98" y4="76.87" y5="77.76" y6="78.45" y7="78.67" y8="78.67" y9="-131.31" x10="-5.6" x11="-6.23" x12="-7.07" x13="-7.43" x14="-7.43" x15="-4.78" x16="-4.78" x17="-2.34" x18="-2.34" y10="-131.31" y11="-131.18" y12="-130.59" y13="-129.54" y14="-123.82" y15="-123.82" y16="-128.91" y17="-128.91" y18="76.27" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+    <text x="4.57" y="-84.8" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="763-5600" color="#000000" rotation="270"/>
+  </description>
 </definition>

@@ -3,6 +3,7 @@
     <names>
         <name lang="en">Timer T 816</name>
         <name lang="cs">Timer T 816</name>
+        <name lang="hu">Időzítő relé T 816</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>

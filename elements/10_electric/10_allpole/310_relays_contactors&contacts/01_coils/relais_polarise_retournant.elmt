@@ -9,6 +9,7 @@
         <name lang="es">Relé polarizado, de trabajo en una dirección de la corriente en la bobina</name>
         <name lang="cs">Polarizované monostabilní relé</name>
         <name lang="nl">Polair relais</name>
+        <name lang="hu">Polarizált relé</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

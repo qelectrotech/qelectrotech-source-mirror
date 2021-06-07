@@ -8,6 +8,7 @@
         <name lang="pl">Przekaźnik z blokadą mechaniczną</name>
         <name lang="es">Relé con enclavamiento mecánico</name>
         <name lang="cs">Mechanické blokovací relé</name>
+        <name lang="hu">Relé mechanikus retesszel</name>
     </names>
     <kindInformations>
         <kindInformation name="type" show="1">coil</kindInformation>
