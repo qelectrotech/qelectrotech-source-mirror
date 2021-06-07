@@ -45,7 +45,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-	return 9;
+	return 8;
 }
 
 QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
@@ -57,38 +57,41 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 
 	auto rtd = m_real_terminal_data.at(index.row());
 	switch (index.column()) {
-		case 0 : return rtd.pos_;
-		case 1 : return rtd.level_;
-		case 2 : return rtd.label_;
-		case 3 : return rtd.Xref_;
-		case 4 : return rtd.cable_;
-		case 5 : return rtd.cable_wire_;
-		case 6 : return ElementData::translatedTerminalType(rtd.type_);
-		case 7 : return rtd.led_;
-		case 8 : return rtd.conductor_;
+		case 0 : return rtd.level_;
+		case 1 : return rtd.label_;
+		case 2 : return rtd.Xref_;
+		case 3 : return rtd.cable_;
+		case 4 : return rtd.cable_wire_;
+		case 5 : return ElementData::translatedTerminalType(rtd.type_);
+		case 6 : return rtd.led_;
+		case 7 : return rtd.conductor_;
 		default : return QVariant();
 	}
 }
 
 QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-	if (orientation != Qt::Horizontal ||
-		role != Qt::DisplayRole) {
-		return QVariant();
+	if (role == Qt::DisplayRole)
+	{
+		if (orientation == Qt::Horizontal)
+		{
+			switch (section) {
+				case 0: return tr("Étage");
+				case 1: return tr("Label");
+				case 2: return tr("Référence croisé");
+				case 3: return tr("Câble");
+				case 4: return tr("Couleur / numéro de fil câble");
+				case 5: return tr("Type");
+				case 6: return tr("led");
+				case 7: return tr("Numéro de conducteur");
+				default : return QVariant();
+			}
+		} else {
+			return QString::number(++section);
+		}
 	}
 
-	switch (section) {
-		case 0: return tr("Position");
-		case 1: return tr("Étage");
-		case 2: return tr("Label");
-		case 3: return tr("Référence croisé");
-		case 4: return tr("Câble");
-		case 5: return tr("Couleur / numéro de fil câble");
-		case 6: return tr("Type");
-		case 7: return tr("led");
-		case 8: return tr("Numéro de conducteur");
-		default : return QVariant();
-	}
+	return QVariant();
 }
 
 void TerminalStripModel::fillRealTerminalData()
