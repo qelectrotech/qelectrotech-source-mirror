@@ -26,7 +26,6 @@ class QETProject;
 class Diagram;
 class Element;
 class QetGraphicsTableItem;
-class TerminalElement;
 
 /**
   this class can search in the given diagram or project some kind of element
@@ -44,7 +43,6 @@ class ElementProvider
 		QList <Element *> find(const int filter) const;
 		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
 		QetGraphicsTableItem *tableFromUuid(const QUuid &uuid);
-		QVector<TerminalElement *> freeTerminal() const;
 
 	private:
 		QList <Diagram *> m_diagram_list;

@@ -42,7 +42,6 @@
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
-#include "TerminalStrip/ui/terminalstripeditor.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -437,16 +436,6 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
-	m_terminal_strip_dialog = new QAction(QET::Icons::TerminalStrip, tr("Gestionnaire de borniers (DEV)"), this);
-	connect(m_terminal_strip_dialog, &QAction::triggered, [this]()
-	{
-		if (auto project = this->currentProject())
-		{
-			auto str = new TerminalStripEditor(project, this);
-			str->show();
-		}
-	});
-
 		//Lauch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
@@ -820,7 +809,6 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_project_export_conductor_num);
-	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
@@ -1514,7 +1502,16 @@ void QETDiagramEditor::slot_updateActions()
 	m_close_file->                  setEnabled(opened_project);
 	m_save_file->                   setEnabled(opened_project);
 	m_save_file_as->                setEnabled(opened_project);
+	m_project_edit_properties->     setEnabled(opened_project);
+	m_project_export_conductor_num->setEnabled(opened_project);
+	//prj_terminalBloc -> setEnabled(opened_project);
 	m_rotate_texts->                setEnabled(editable_project);
+	m_project_add_diagram->         setEnabled(editable_project);
+	m_remove_diagram_from_project-> setEnabled(editable_project);
+	m_clean_project->               setEnabled(editable_project);
+	m_add_nomenclature->            setEnabled(editable_project);
+	m_add_summary->                 setEnabled(editable_project);
+	m_csv_export->                  setEnabled(editable_project);
 	m_export_to_images->            setEnabled(opened_diagram);
 	m_print->                       setEnabled(opened_diagram);
 	m_export_to_pdf->               setEnabled(opened_diagram);
@@ -1524,17 +1521,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_item_actions_group.       setEnabled(editable_project);
 	m_row_column_actions_group.     setEnabled(editable_project);
 	m_grey_background->             setEnabled(opened_diagram);
-
-		//Project menu
-	m_project_edit_properties     -> setEnabled(opened_project);
-	m_project_add_diagram         -> setEnabled(editable_project);
-	m_remove_diagram_from_project -> setEnabled(editable_project);
-	m_clean_project               -> setEnabled(editable_project);
-	m_add_summary                 -> setEnabled(editable_project);
-	m_add_nomenclature            -> setEnabled(editable_project);
-	m_csv_export                  -> setEnabled(editable_project);
-	m_project_export_conductor_num-> setEnabled(opened_project);
-	m_terminal_strip_dialog       -> setEnabled(editable_project);
 
 
 	slot_updateUndoStack();

@@ -31,8 +31,6 @@
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
 #include "ui/importelementdialog.h"
-#include "TerminalStrip/terminalstrip.h"
-#include "qetxml.h"
 
 #include <QHash>
 #include <QStandardPaths>
@@ -914,16 +912,6 @@ QDomDocument QETProject::toXml()
 		appended_diagram.toElement().setAttribute("order", order_num ++);
 	}
 
-		//Write terminal strip to xml
-	if (m_terminal_strip_vector.count())
-	{
-		auto xml_strip = xml_doc.createElement(QStringLiteral("terminal_strips"));
-		for (auto &strip : m_terminal_strip_vector) {
-			xml_strip.appendChild(strip->toXml(xml_doc));
-		}
-		project_root.appendChild(xml_strip);
-	}
-
 	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 
@@ -1353,26 +1341,16 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 	m_data_base.blockSignals(true);
-
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
-
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
-
 		//load the embedded titleblock templates
 	m_titleblocks_collection.fromXml(xml_project.documentElement());
-
 		//Load the embedded elements collection
 	readElementsCollectionXml(xml_project);
-
 		//Load the diagrams
 	readDiagramsXml(xml_project);
-
-		//Load the terminal strip
-	readTerminalStripXml(xml_project);
-
-
 	m_data_base.blockSignals(false);
 	m_data_base.updateDB();
 
@@ -1586,26 +1564,6 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
-		}
-	}
-}
-
-/**
- * @brief QETProject::readTerminalStripXml
- * Read the terminal strips of this project
- * @param xml_project
- */
-void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
-{
-	auto xml_elmt = xml_project.documentElement();
-	auto xml_strips = xml_elmt.firstChildElement(QStringLiteral("terminal_strips"));
-	if (!xml_strips.isNull())
-	{
-		for (auto xml_strip : QETXML::findInDomElement(xml_strips, TerminalStrip::xmlTagName()))
-		{
-			auto terminal_strip = new TerminalStrip(this);
-			terminal_strip->fromXml(xml_strip);
-			addTerminalStrip(terminal_strip);
 		}
 	}
 }
@@ -1856,64 +1814,6 @@ DiagramContext QETProject::projectProperties()
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
 	updateDiagramsFolioData();
-}
-
-/**
- * @brief QETProject::terminalStrip
- * @return a QVector who contain all terminal strip owned by this project
- */
-QVector<TerminalStrip *> QETProject::terminalStrip() const {
-	return m_terminal_strip_vector;
-}
-
-/**
- * @brief QETProject::newTerminalStrip
- * @param installation : installation of the terminal strip
- * @param location : location of the terminal strip
- * @param name : name of the terminal strip
- * @return Create a new terminal strip with this project as parent.
- * You can retrieve this terminal strip at any time by calling the function
- * QETProject::terminalStrip()
- */
-TerminalStrip *QETProject::newTerminalStrip(QString installation, QString location, QString name)
-{
-	auto ts = new TerminalStrip(installation,
-								location,
-								name,
-								this);
-
-	m_terminal_strip_vector.append(ts);
-	return ts;
-}
-
-/**
- * @brief QETProject::addTerminalStrip
- * Add \p strip to the terminal strip list of the project.
- * The project of \p strip must this project
- * @param strip
- * @return true if successfully added
- */
-bool QETProject::addTerminalStrip(TerminalStrip *strip)
-{
-	if (strip->parent() != this)
-		return false;
-
-	if (m_terminal_strip_vector.contains(strip))
-		return true;
-
-	m_terminal_strip_vector.append(strip);
-	return true;
-}
-
-/**
- * @brief QETProject::removeTerminalStrip
- * Remove \p strip from the terminal strip list of this project.
- * Strip is removed from the list but not deleted.
- * @param strip
- * @return true if successfully removed.
- */
-bool QETProject::removeTerminalStrip(TerminalStrip *strip) {
-	return m_terminal_strip_vector.removeOne(strip);
 }
 
 /**
