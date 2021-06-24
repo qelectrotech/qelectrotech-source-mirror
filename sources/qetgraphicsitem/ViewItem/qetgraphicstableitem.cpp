@@ -156,7 +156,17 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 }
 
 QetGraphicsTableItem::~QetGraphicsTableItem()
-{}
+{
+	if (m_previous_table) {
+		if (m_next_table) {
+			m_previous_table->setNextTable(m_next_table);
+		} else {
+			m_previous_table->setNextTable(nullptr);
+		}
+	} else if (m_next_table) {
+		m_next_table->setPreviousTable(nullptr);
+	}
+}
 
 /**
 	@brief QetGraphicsTableItem::setModel
