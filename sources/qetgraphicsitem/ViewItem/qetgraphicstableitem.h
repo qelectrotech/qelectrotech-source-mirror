@@ -79,6 +79,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void setTableName(const QString &name);
 		QString tableName() const;
 		int displayNRowOffset() const;
+		int displayedRowCount() const;
 		QetGraphicsTableItem *previousTable() const;
 		QetGraphicsTableItem *nextTable() const;
 		void setToMinimumHeight();
@@ -120,13 +121,14 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void headerSectionResized();
 		void adjustSize();
 		void previousTableDisplayRowChanged();
+		void removeUselessNextTable(bool recursive = true);
 
 		QAbstractItemModel *m_model= nullptr;
 
 		QVector<int> m_minimum_column_width;
 		int
 		m_minimum_row_height,
-		m_number_of_displayed_row = 0,
+		m_number_of_row_to_display = 0,
 		m_br_margin = 10;
 
 		QSize

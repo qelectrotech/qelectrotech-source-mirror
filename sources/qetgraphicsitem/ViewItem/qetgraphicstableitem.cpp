@@ -280,8 +280,8 @@ void QetGraphicsTableItem::paint(
 	if (m_previous_table) //Remove the number of row already displayed by previous tables
 		row_count -= m_previous_table->displayNRowOffset();
 
-	if (m_number_of_displayed_row > 0) //User override the number of row to display
-		row_count = std::min(row_count, m_number_of_displayed_row);
+	if (m_number_of_row_to_display > 0) //User override the number of row to display
+		row_count = std::min(row_count, m_number_of_row_to_display);
 
 		//Draw horizontal lines
 	auto cell_height =  static_cast<double>(m_current_size.height())/static_cast<double>(row_count);
@@ -374,8 +374,8 @@ QSize QetGraphicsTableItem::minimumSize() const
 		row_count -= m_previous_table->displayNRowOffset();
 	}
 
-	if (m_number_of_displayed_row > 0)
-		row_count = std::min(row_count, m_number_of_displayed_row);
+	if (m_number_of_row_to_display > 0)
+		row_count = std::min(row_count, m_number_of_row_to_display);
 
 
 		//m_minimum_column_width already take in count the minimum size of header
@@ -399,7 +399,7 @@ QSize QetGraphicsTableItem::minimumSize() const
 */
 void QetGraphicsTableItem::setDisplayNRow(const int &number)
 {
-	m_number_of_displayed_row = number;
+	m_number_of_row_to_display = number;
 	setToMinimumHeight();
 	if (m_next_table)
 		m_next_table->previousTableDisplayRowChanged();
@@ -412,7 +412,7 @@ void QetGraphicsTableItem::setDisplayNRow(const int &number)
 */
 int QetGraphicsTableItem::displayNRow() const
 {
-	return m_number_of_displayed_row;
+	return m_number_of_row_to_display;
 }
 
 /**
@@ -499,11 +499,29 @@ QString QetGraphicsTableItem::tableName() const
 */
 int QetGraphicsTableItem::displayNRowOffset() const
 {
-	auto offset_ = m_number_of_displayed_row;
+	auto offset_ = m_number_of_row_to_display;
 	if(m_previous_table)
 		offset_ += m_previous_table->displayNRowOffset();
 
 	return offset_;
+}
+
+/**
+ * @brief QetGraphicsTableItem::displayedRowCount
+ * @return the number of row displayed by this table
+ */
+int QetGraphicsTableItem::displayedRowCount() const
+{
+		//Calcule the number of rows to display.
+	auto row_count = m_model->rowCount();
+
+	if (m_previous_table) //Remove the number of row already displayed by previous tables
+		row_count -= m_previous_table->displayNRowOffset();
+
+	if (m_number_of_row_to_display > 0) //User override the number of row to display
+		row_count = std::min(row_count, m_number_of_row_to_display);
+
+	return row_count;
 }
 
 QetGraphicsTableItem *QetGraphicsTableItem::previousTable() const
@@ -565,7 +583,7 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	dom_table.setAttribute("height", QString::number(m_current_size.height()));
 	dom_table.setAttribute("uuid", m_uuid.toString());
 	dom_table.setAttribute("name", m_name);
-	dom_table.setAttribute("display_n_row", QString::number(m_number_of_displayed_row));
+	dom_table.setAttribute("display_n_row", QString::number(m_number_of_row_to_display));
 
 		//Add the header xml
 	dom_table.appendChild(m_header_item->toXml(dom_document));
@@ -623,7 +641,7 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 					"uuid",
 					QUuid::createUuid().toString()));
 	m_name = dom_element.attribute("name");
-	m_number_of_displayed_row = dom_element.attribute(
+	m_number_of_row_to_display = dom_element.attribute(
 				"display_n_row",
 				QString::number(0)).toInt();
 
@@ -688,8 +706,8 @@ bool QetGraphicsTableItem::toDXF(const QString &filepath)
 	if (m_previous_table) //Remove the number of row already displayed by previous tables
 		row_count -= m_previous_table->displayNRowOffset();
 
-	if (m_number_of_displayed_row > 0) //User override the number of row to display
-		row_count = std::min(row_count, m_number_of_displayed_row);
+	if (m_number_of_row_to_display > 0) //User override the number of row to display
+		row_count = std::min(row_count, m_number_of_row_to_display);
 
 		//Draw horizontal lines
 	auto cell_height =  static_cast<double>(m_current_size.height())/static_cast<double>(row_count);
@@ -816,13 +834,18 @@ QVariant QetGraphicsTableItem::itemChange(
 	return QetGraphicsItem::itemChange(change, value);
 }
 
+/**
+ * @brief QetGraphicsTableItem::modelReseted
+ */
 void QetGraphicsTableItem::modelReseted()
 {
 	dataChanged(m_model->index(0,0), m_model->index(0,0), QVector<int>());
 	setToMinimumHeight();
 
-	if (!previousTable()) { //this is the head table
+	if (!previousTable()) //this is the head table
+	{
 		checkInsufficientRowsCount(this);
+		removeUselessNextTable();
 	}
 }
 
@@ -1054,5 +1077,26 @@ void QetGraphicsTableItem::previousTableDisplayRowChanged()
 	setToMinimumHeight();
 	if (m_next_table) {
 		m_next_table->previousTableDisplayRowChanged();
+	}
+}
+
+/**
+ * @brief QetGraphicsTableItem::removeUselessNextTable
+ * Remove next table if useless, an useless table with 0 row displayed.
+ * If \p recursive is true check and remove for all sub next table.
+ * @param recursive
+ */
+void QetGraphicsTableItem::removeUselessNextTable(bool recursive)
+{
+	if (!m_next_table) {
+		return;
+	}
+
+	if (recursive) {
+		m_next_table->removeUselessNextTable();
+	}
+	if (m_next_table->displayedRowCount() <= 0) {
+		delete m_next_table;
+		m_next_table = nullptr;
 	}
 }
