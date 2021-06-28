@@ -128,6 +128,15 @@ void CrossRefItem::setUpConnection()
 		m_update_connection << connect(m_element,
 					       &Element::linkedElementChanged,
 					       this, &CrossRefItem::linkedChanged);
+
+		auto diagram_ = dynamic_cast<Diagram *>(this->scene());
+		auto formula_ = m_properties.masterLabel();
+		if (diagram_ &&
+			formula_.contains("%F"))
+		{
+			m_update_connection << connect(diagram_ , &Diagram::diagramInformationChanged,
+										   this, &CrossRefItem::updateLabel);
+		}
 		linkedChanged();
 		updateLabel();
 	}
@@ -161,13 +170,9 @@ QPainterPath CrossRefItem::shape() const{
 QString CrossRefItem::elementPositionText(
 		const Element *elmt, const bool &add_prefix) const
 {
-	XRefProperties xrp =
-			m_element->diagram()->project()->defaultXRefProperties(
-				m_element->kindInformations()["type"].toString());
-	QString formula = xrp.masterLabel();
 	autonum::sequentialNumbers seq;
 	QString txt = autonum::AssignVariables::formulaToLabel(
-				formula,
+				m_properties.masterLabel(),
 				seq, elmt->diagram(),
 				elmt);
 

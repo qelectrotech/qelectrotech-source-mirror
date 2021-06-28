@@ -245,6 +245,12 @@ class BorderTitleBlock : public QObject
 			since it does not know of its parent project.
 		*/
 		void needTitleBlockTemplate(const QString &);
+
+		/**
+		 * @brief infoChanged
+		 * Signal emitted when the informations changed.
+		 */
+		void informationChanged();
 	
 	// attributes
 	private:

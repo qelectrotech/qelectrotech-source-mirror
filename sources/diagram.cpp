@@ -93,6 +93,9 @@ Diagram::Diagram(QETProject *project) :
 	conductor_setter_ -> setPen(pen);
 
 	connect(&border_and_titleblock,
+			&BorderTitleBlock::informationChanged,
+			this, &Diagram::diagramInformationChanged);
+	connect(&border_and_titleblock,
 		&BorderTitleBlock::needTitleBlockTemplate,
 		this, &Diagram::setTitleBlockTemplate);
 	connect(&border_and_titleblock,

@@ -283,6 +283,7 @@ class Diagram : public QGraphicsScene
 		void findElementRequired(const ElementsLocation &);
 
 		void diagramActivated();
+		void diagramInformationChanged();
 };
 Q_DECLARE_METATYPE(Diagram *)
 
