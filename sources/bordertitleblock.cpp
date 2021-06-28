@@ -331,6 +331,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	// through setFolioData(),
 	// which in turn calls updateDiagramContextForTitleBlock().
 	emit(needTitleBlockTemplate(ip.template_name));
+	emit informationChanged();
 }
 
 /**
