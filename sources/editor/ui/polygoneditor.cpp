@@ -130,10 +130,10 @@ QList<CustomElementPart*> PolygonEditor::currentParts() const
 }
 
 /**
-	@brief PolygonEditor::updateForm
+    @brief PolygonEditor::updateFormPriv
 	Update the widget
 */
-void PolygonEditor::updateForm()
+void PolygonEditor::updateFormPriv()
 {
 	if (!m_part) {
 		return;

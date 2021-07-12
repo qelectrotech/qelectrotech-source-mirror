@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -86,7 +86,7 @@ DynamicElementTextItem::DynamicElementTextItem()
 	@param dom_doc
 	@return
 */
-QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
+QDomElement DynamicElementTextItem::toXml(QDomDocument& dom_doc) const
 {
 	QDomElement root_element = dom_doc.createElement(xmlTagName());
 	
@@ -216,7 +216,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		setColor(QColor(dom_color.text()));
 	
 		//Force the update of the displayed text
-	setTextFrom(m_text_from);
+	setTextFrom(m_text_from); // TODO: does not update because there is a retrun inside if the textfrom argument is the same as m_text_from
 	
 	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
 							  dom_elmt.attribute("y", QString::number(0)).toDouble());

@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -38,6 +38,8 @@
 #include <QtConcurrent>
 #include <QtDebug>
 #include <utility>
+
+#include "qetxml.h"
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
@@ -1471,7 +1473,7 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
 	for (auto dom_elmt : QET::findInDomElement(xml_project.documentElement(), QStringLiteral("properties")))
-		m_project_properties.fromXml(dom_elmt);
+        m_project_properties.fromXml(dom_elmt);
 }
 
 /**
@@ -1532,7 +1534,11 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 		{
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
-			m_default_xref_properties.insert(elmt.attribute(QStringLiteral("type")), xrp);
+			QString type;
+            if (QETXML::propertyString(elmt, QStringLiteral("type"), &type) == QETXML::PropertyFlags::Success)
+				m_default_xref_properties.insert(type, xrp);
+			else
+				qDebug() << "xref Property was not added to m_default_xref_properties.";
 		}
 	}
 	if (!conds_autonums.isNull())
@@ -1590,19 +1596,13 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomDocument xml_document = xml_element.ownerDocument();
 
 	// export size of border
-	QDomElement border_elmt = xml_document.createElement("border");
-	default_border_properties_.toXml(border_elmt);
-	xml_element.appendChild(border_elmt);
+	xml_element.appendChild(default_border_properties_.toXml(xml_document));
 
 	// export content of titleblock
-	QDomElement titleblock_elmt = xml_document.createElement("inset");
-	default_titleblock_properties_.toXml(titleblock_elmt);
-	xml_element.appendChild(titleblock_elmt);
+	xml_element.appendChild(default_titleblock_properties_.toXml(xml_document));
 
 	// exporte default conductor
-	QDomElement conductor_elmt = xml_document.createElement("conductors");
-	default_conductor_properties_.toXml(conductor_elmt);
-	xml_element.appendChild(conductor_elmt);
+	xml_element.appendChild(default_conductor_properties_.toXml(xml_document));
 
 	// export default report properties
 	QDomElement report_elmt = xml_document.createElement("report");
@@ -1786,7 +1786,7 @@ void QETProject::writeBackup()
 	qDebug() << "Help code for QT 6 or later"
 			 << "QtConcurrent::run its backwards now...function, object, args";
 #	endif
-#endif
+#	endif
 }
 
 /**

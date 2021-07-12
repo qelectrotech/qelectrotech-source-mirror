@@ -56,10 +56,10 @@ class QetGraphicsItem : public QGraphicsObject
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
 	protected:
-		bool is_movable_;
-		bool m_first_move;
-		bool snap_to_grid_;
-		QPointF m_mouse_to_origin_movement;
+		bool is_movable_{true};
+		bool m_first_move{true};
+		bool snap_to_grid_{true};
+		QPointF m_mouse_to_origin_movement{QPointF(0,0)};
 		QET::GraphicsItemState m_state = QET:: GIOK;
 
 };

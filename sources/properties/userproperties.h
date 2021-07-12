@@ -34,10 +34,10 @@ class UserProperties : public PropertiesInterface
 		UserProperties(const QString tag_name = "userProperties");
 
 		virtual void toSettings (QSettings &,
-								 const QString = QString()) const override {}
+                                 const QString& = QString()) const override {}
 
-		virtual void fromSettings (const QSettings &,
-								   const QString = QString()) override {}
+        virtual void fromSettings (QSettings &,
+                                   const QString& = QString()) override {}
 
 		virtual QDomElement toXml (QDomDocument &xml_document) const override;
 		virtual bool fromXml (const QDomElement &xml_element) override;

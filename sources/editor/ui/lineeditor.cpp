@@ -176,10 +176,10 @@ QList<CustomElementPart *> LineEditor::currentParts() const {
 }
 
 /**
-	@brief LineEditor::updateForm
+    @brief LineEditor::updateFormPriv
 	Reimplemented from ElementItemEditor
 */
-void LineEditor::updateForm()
+void LineEditor::updateFormPriv()
 {
 	if (!m_part) {
 		return;

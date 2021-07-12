@@ -61,8 +61,8 @@ class ConductorTextItem : public DiagramTextItem
 		// attributes
 	private:
 		Conductor *parent_conductor_;
-		bool moved_by_user_;
-		bool rotate_by_user_;
+		bool moved_by_user_{false};
+		bool rotate_by_user_{false};
 		QPointF before_mov_pos_;
 };
 #endif

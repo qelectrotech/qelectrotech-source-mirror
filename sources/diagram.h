@@ -96,7 +96,7 @@ class Diagram : public QGraphicsScene
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
-		static QColor background_color;
+		static QColor background_color; // default value set in cpp file
 		/// Hash containing max values for folio sequential autonums in this diagram
 		QHash <QString, QStringList> m_elmt_unitfolio_max;
 		QHash <QString, QStringList> m_elmt_tenfolio_max;
@@ -257,6 +257,13 @@ class Diagram : public QGraphicsScene
 				       NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
 
+		/*!
+		 * \brief uniqueTerminalID
+		 * Determines a new unique Terminal ID
+		 * This is used only for legacy purpose
+		 */
+        int uniqueTerminalID() const;
+
 	public slots:
 		void adjustSceneRect ();
 		void titleChanged(const QString &);
@@ -282,6 +289,8 @@ class Diagram : public QGraphicsScene
 		/// from the diagram within elements collection
 		void findElementRequired(const ElementsLocation &);
 
+		/// Signal emitted when users wish to edit an element from the diagram
+		void editElementRequired(const ElementsLocation &);
 		void diagramActivated();
 		void diagramInformationChanged();
 };

@@ -148,7 +148,15 @@ void MachineInfo::send_info_to_debug()
 			+ " x "
 			+ QString::number(pc.screen.height[ii])
 			+ " )";
-	}
+		}
+}
+
+/**
+	@brief Machine_info::~Machine_info
+	destructor
+*/
+MachineInfo::~MachineInfo()
+{
 }
 
 /**

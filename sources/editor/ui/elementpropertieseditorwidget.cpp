@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -256,11 +256,10 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_slave_gb->setVisible(slave);
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
-
 #if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
-	ui->tabWidget->setTabVisible(1,
-								 (type_ == ElementData::Simple ||
-								  type_ == ElementData::Master));
+    ui->tabWidget->setTabVisible(1,
+                                 (type_ == ElementData::Simple ||
+                                  type_ == ElementData::Master));
 #endif
 
 	updateTree();

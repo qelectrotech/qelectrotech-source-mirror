@@ -52,8 +52,11 @@ class PartEllipse : public  AbstractPartEllipse
 			//Name and XML
 		QString name()    const override { return(QObject::tr("ellipse", "element part name")); }
 		QString xmlName() const override { return(QString("ellipse")); }
-		const QDomElement toXml   (QDomDocument &) const override;
-		void              fromXml (const QDomElement &) override;
+        void toXmlPriv(QDomElement&xml_element) const override;
+        bool fromXmlPriv(const QDomElement &) override;
+		static bool valideXml(QDomElement& element);
+        void toSettings(QSettings &,const QString & = QString()) const override {/*TODO: implement*/}
+        void fromSettings(QSettings &,const QString & = QString()) override{/*TODO: implement*/}
 		QPainterPath shape() const override;
 		QPainterPath shadowShape() const override;
 		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}

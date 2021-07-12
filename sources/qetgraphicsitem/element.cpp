@@ -98,7 +98,8 @@ Element::Element(
 		}
 	}
 	int elmt_state;
-	buildFromXml(location.xml(), &elmt_state);
+	qDebug() << "\tCollection Path: " << location.collectionPath();
+	buildFromXml(location.xml(), &elmt_state); // build from the collection definition
 	if (state) {
 		*state = elmt_state;
 	}
@@ -195,7 +196,7 @@ void Element::setHighlighted(bool hl)
 */
 void Element::displayHelpLine(bool b)
 {
-	foreach (Terminal *t, terminals())
+    for (Terminal *t: terminals())
 		t->drawHelpLine(b);
 }
 
@@ -401,7 +402,7 @@ void Element::drawHighlight(
 
 /**
 	@brief Element::buildFromXml
-	Build this element from an xml description
+	Build this element from an xml description (from the collection)
 	@param xml_def_elmt
 	@param state
 	Optional pointer which define the status of build
@@ -442,12 +443,13 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	}
 
 		//This attribute must be present and valid
-	int w = 0, h = 0, hot_x = 0, hot_y = 0;
-	if (!QET::attributeIsAnInteger(xml_def_elmt, QStringLiteral("width"), &w)         ||
-		!QET::attributeIsAnInteger(xml_def_elmt, QStringLiteral("height"), &h)        ||
-		!QET::attributeIsAnInteger(xml_def_elmt, QStringLiteral("hotspot_x"), &hot_x) ||
-		!QET::attributeIsAnInteger(xml_def_elmt, QStringLiteral("hotspot_y"), &hot_y))
-	{
+	int w, h, hot_x, hot_y;
+	if (
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("width"), &w) ||\
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("height"), &h) ||\
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("hotspot_x"), &hot_x) ||\
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("hotspot_y"), &hot_y)
+	) {
 		if (state) *state = 5;
 		m_state = QET::GIOK;
 		return(false);
@@ -516,11 +518,15 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 				if (qde.isNull())
 					continue;
 
-				if (parseElement(qde)) {
+				qDebug() << "\t\tElement.cpp:buildFromXml;parseElement: " << qde.tagName();
+				
+				if (parseElement(qde)) { // TODO: why lines are not parsed here?
+					qDebug() << "\t\t\tParsing Element success";
 					++ parsed_elements_count;
 				}
 				else
 				{
+                    qDebug() << "\t\t\tParsing Element failed";
 					if (state)
 						*state = 7;
 					m_state = QET::GIOK;
@@ -546,13 +552,11 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		m_state = QET::GIOK;
 		return(false);
 	}
-	else
-	{
-		if (state)
-			*state = 0;
-		m_state = QET::GIOK;
-		return(true);
-	}
+
+    if (state)
+        *state = 0;
+    m_state = QET::GIOK;
+    return(true);
 }
 
 /**
@@ -654,13 +658,11 @@ DynamicElementTextItem *Element::parseDynamicText(
 */
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
-	TerminalData* data = new TerminalData();
-	if (!data->fromXml(dom_element)) {
-		delete data;
+	if (!Terminal::valideXml(dom_element))
 		return nullptr;
-	}
 
-	Terminal *new_terminal = new Terminal(data, this);
+	Terminal *new_terminal = new Terminal(0, 0, Qet::Orientation::North, this); // does not matter which values are typed in here, because they get overwritten by the fromXML() function
+	new_terminal->fromXml(dom_element);
 	m_terminals << new_terminal;
 
 		//Sort from top to bottom and left to rigth
@@ -675,7 +677,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 			return (a->dockConductor().y() < b->dockConductor().y());
 	});
 
-	return(new_terminal);
+	return(new_terminal); // TODO: makes no sense
 }
 
 /**
@@ -685,18 +687,20 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 */
 bool Element::valideXml(QDomElement &e)
 {
-	if (e.tagName() != QLatin1String("element") ||
-		!e.hasAttribute(QStringLiteral("type")) ||
-		!e.hasAttribute(QStringLiteral("x"))    ||
-		!e.hasAttribute(QStringLiteral("y"))) {
-		return(false);
-	}
+	// verifie le nom du tag
+	if (e.tagName() != "element") return(false);
+    if (!e.hasAttribute(QStringLiteral("type"))) return false;
+	// verifie la presence des attributs minimaux
+	if (!e.hasAttribute("x"))	return(false);
+	if (!e.hasAttribute("y"))	return(false);
 
 	bool conv_ok;
-	e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
+	// parse l'abscisse
+	e.attribute("x").toDouble(&conv_ok);
 	if (!conv_ok) return(false);
 
-	e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
+	// parse l'ordonnee
+	e.attribute("y").toDouble(&conv_ok);
 	if (!conv_ok) return(false);
 
 	return(true);
@@ -715,52 +719,64 @@ bool Element::valideXml(QDomElement &e)
 	@return
 */
 bool Element::fromXml(QDomElement &e,
-					  QHash<int,Terminal *> &table_id_adr)
+        QHash<int, Terminal *> &table_id_adr)
 {
 	m_state = QET::GILoadingFromXml;
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
 	*/
-	QList<QDomElement> liste_terminals;
-	for (auto qde :
-			QET::findInDomElement(e, QStringLiteral("terminals"), QStringLiteral("terminal"))) {
+	QList<QDomElement> liste_terminals; // terminals in the element in the diagram
+    for(QDomElement qde:
+            QET::findInDomElement(e, QStringLiteral("terminals"), QStringLiteral("terminal"))) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
 
 	QHash<int, Terminal *> priv_id_adr;
 	int terminals_non_trouvees = 0;
-
-	for (auto *qgi : childItems())
-	{
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi))
-		{
+	// The added childs from the collection now must match with the terminals from the diagram. Iterate through
+	// all Terminals in the collection and in the diagram to link them together
+	for(QGraphicsItem *qgi: childItems()) { // TODO: Where the Terminals are added as childs?
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
-			for(auto qde : liste_terminals)
-			{
-				if (p -> fromXml(qde))
-				{
-					priv_id_adr.insert(qde.attribute(QStringLiteral("id")).toInt(),
-									   p);
+			for(QDomElement qde: liste_terminals) {
+				// The position in the collection element definition is the origin position (originPos).
+				// The position in the diagram element definition  is the position where the conductor is connected (dock position)
+				// Therefore a simple operator overloading is not possible.
+				Terminal diagramTerminal(0,0, Qet::Orientation::East);
+				diagramTerminal.fromXml(qde);
+				QPointF dockPos1 = diagramTerminal.originPos(); // position here is directly the dock_elmt_ position (stored in the diagram)
+				QPointF dockPos2 = p->dockPos();
+				if (qFuzzyCompare(dockPos1.x(), dockPos2.x()) &&
+					qFuzzyCompare(dockPos1.y(), dockPos2.y()) &&
+					p->orientation() == diagramTerminal.orientation()) { // check if the part in the collection is the same as in the diagram stored
+					qDebug() << "Matching Terminal found.";
+					// store id for legacy purpose, because when opening a old project in the collection the terminal does not have an uuid. Therefore the id must be used
+					if (p->uuid().isNull()) {
+						p->setID(qde.attribute("id").toInt());
+					}
+
+					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;
 					// We used to break here, because we did not expect
 					// several terminals to share the same position.
 					// Of course, it finally happened.
 				}
-			}
+            }
 			if (!terminal_trouvee) ++ terminals_non_trouvees;
 		}
 	}
 
 	if (terminals_non_trouvees > 0)
 	{
+		qDebug() << "element.cpp: Element::fromXML; Elements not found: " << terminals_non_trouvees;
 		m_state = QET::GIOK;
 		return(false);
 	}
 	else
 	{
 		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
-		foreach(int id_trouve, priv_id_adr.keys())
+        for(int id_trouve: priv_id_adr.keys())
 		{
 			if (table_id_adr.contains(id_trouve))
 			{
@@ -770,19 +786,19 @@ bool Element::fromXml(QDomElement &e,
 			}
 		}
 		// copie des associations id / adr
-		foreach(int id_trouve, priv_id_adr.keys()) {
+        for(int id_trouve: priv_id_adr.keys()) {
 			table_id_adr.insert(id_trouve,
 						priv_id_adr.value(id_trouve));
 		}
 	}
 
 	//load uuid of connected elements
-	QList <QDomElement> uuid_list = QET::findInDomElement(e,
-														  QStringLiteral("links_uuids"),
-														  QStringLiteral("link_uuid"));
-	foreach (QDomElement qdo, uuid_list)
+    QList <QDomElement> uuid_list = QET::findInDomElement(e, QStringLiteral("links_uuids"), QStringLiteral("link_uuid"));
+    for (QDomElement qdo: uuid_list) tmp_uuids_link << qdo.attribute(QStringLiteral("uuid"));
+	
+    for (QDomElement qdo: uuid_list)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		tmp_uuids_link << qdo.attribute(QStringLiteral("uuid"));
+		tmp_uuids_link << qdo.attribute("uuid");
 #else
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
@@ -833,7 +849,7 @@ bool Element::fromXml(QDomElement &e,
 
 		//************************//
 		//***Dynamic texts item***//
-		//************************//
+		//************************// read from the diagram section
 	for (const QDomElement& qde : QET::findInDomElement(
 			 e,
 			 QStringLiteral("dynamic_texts"),
@@ -888,11 +904,9 @@ bool Element::fromXml(QDomElement &e,
 	\~French L'element XML representant cet element electrique
 */
 QDomElement Element::toXml(
-		QDomDocument &document,
-		QHash<Terminal *,
-		int> &table_adr_id) const
+        QDomDocument &document) const
 {
-	QDomElement element = document.createElement(QStringLiteral("element"));
+    QDomElement element = document.createElement(QStringLiteral("element"));
 
 		// type
 	element.setAttribute(QStringLiteral("type"), m_location.path());
@@ -917,28 +931,25 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
 
-	/* get the first id to use for the bounds of this element
-	 * recupere le premier id a utiliser pour les bornes de cet element */
-	int id_terminal = 0;
-	if (!table_adr_id.isEmpty()) {
-		// trouve le plus grand id
-		int max_id_t = -1;
-		foreach (int id_t, table_adr_id.values()) {
-			if (id_t > max_id_t) max_id_t = id_t;
-		}
-		id_terminal = max_id_t + 1;
-	}
-
 	// registration of device terminals
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement(QStringLiteral("terminals"));
 	// for each child of the element
 	// pour chaque enfant de l'element
-	foreach(Terminal *t, terminals()) {
+    for(Terminal *t: terminals()) {
 		// alors on enregistre la borne
 		QDomElement terminal = t -> toXml(document);
-		terminal.setAttribute(QStringLiteral("id"), id_terminal); // for backward compatibility
-		table_adr_id.insert(t, id_terminal ++);
+		if (t->ID() > 0) {
+			// for backward compatibility
+            // Terminal was loaded during loading an old project. So the terminal has a valid id
+            terminal.setAttribute(QStringLiteral("id"), t->ID()); // for backward compatibility
+        } else if (t->uuid().isNull()) {
+          // for backward compatibility
+          // An old element with no uuid on the terminals was added to the project.
+          // give it an id
+          t->setID(t->diagram()->uniqueTerminalID());
+          terminal.setAttribute(QStringLiteral("id"), t->ID());
+        }
 		xml_terminals.appendChild(terminal);
 	}
 	element.appendChild(xml_terminals);
@@ -951,7 +962,7 @@ QDomElement Element::toXml(
 	//save the uuid of each other elements
 	if (! isFree()) {
 		QDomElement links_uuids = document.createElement(QStringLiteral("links_uuids"));
-		foreach (Element *elmt, connected_elements) {
+        for (Element *elmt: connected_elements) {
 			QDomElement link_uuid =
 					document.createElement(QStringLiteral("link_uuid"));
 			link_uuid.setAttribute(QStringLiteral("uuid"), elmt->uuid().toString());
@@ -1243,7 +1254,7 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 {
 	QList <QPair <Terminal *, Terminal *> > list;
 
-	foreach (Terminal *terminal, terminals())
+    for (Terminal *terminal: terminals())
 	{
 		if (terminal->conductors().isEmpty())
 		{
@@ -1273,7 +1284,7 @@ void Element::initLink(QETProject *prj)
 	if (tmp_uuids_link.isEmpty()) return;
 
 	ElementProvider ep(prj);
-	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
+    for (Element *elmt: ep.fromUuids(tmp_uuids_link)) {
 		elmt->linkToElement(this);
 	}
 	tmp_uuids_link.clear();
@@ -1363,7 +1374,7 @@ bool comparPos(const Element *elmt1, const Element *elmt2)
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseMoveEvent(event);
-	foreach (Terminal *t, terminals())
+    for (Terminal *t: terminals())
 	{
 		t -> drawHelpLine(true);
 	}
@@ -1376,7 +1387,7 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseReleaseEvent(event);
-	foreach (Terminal *t, terminals())
+    for (Terminal *t: terminals())
 	{
 		t -> drawHelpLine(false);
 	}
@@ -1392,7 +1403,7 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e)
 {
 	Q_UNUSED(e)
 
-	foreach (Element *elmt, linkedElements())
+    for (Element *elmt: linkedElements())
 		elmt -> setHighlighted(true);
 
 	m_mouse_over = true;
@@ -1410,7 +1421,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 {
 	Q_UNUSED(e)
 
-	foreach (Element *elmt, linkedElements())
+    for (Element *elmt: linkedElements())
 		elmt -> setHighlighted(false);
 
 	m_mouse_over = false;

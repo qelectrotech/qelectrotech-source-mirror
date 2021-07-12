@@ -25,6 +25,8 @@
 #include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
 
+#include "../qetxml.h"
+
 #include <utility>
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
@@ -41,42 +43,127 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 	@param hiddenName
 */
-void Terminal::init()
+void Terminal::init(QString number, QString name, bool hiddenName)
 {
-		//Calcul the docking point of the element
-		//m_pos of d is the docking point of conductor
-	dock_elmt_ = d->m_pos;
-	switch(d->m_orientation) {
-		case Qet::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
-		case Qet::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
-		case Qet::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
-		case Qet::South: dock_elmt_ += QPointF(0, -Terminal::terminalSize); break;
-	}
+        //Calcul the docking point of the element
+        //m_pos of d is the docking point of conductor
+    dock_elmt_ = d->m_pos;
+    switch(d->m_orientation) {
+        case Qet::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
+        case Qet::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
+        case Qet::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
+        case Qet::South: dock_elmt_ += QPointF(0, -Terminal::terminalSize); break;
+    }
 
-		//Calcul the bounding rect
-	qreal dcx = d->m_pos.x();
-	qreal dcy = d->m_pos.y();
-	qreal dex = dock_elmt_.x();
-	qreal dey = dock_elmt_.y();
-	QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
-	origin += QPointF(-3.0, -3.0);
-	qreal w = qAbs(dcx - dex) + 7;
-	qreal h = qAbs(dcy - dey) + 7;
-	m_br = QRectF(origin, QSizeF(w, h));
+        //Calcul the bounding rect
+    qreal dcx = d->m_pos.x();
+    qreal dcy = d->m_pos.y();
+    qreal dex = dock_elmt_.x();
+    qreal dey = dock_elmt_.y();
+    QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
+    origin += QPointF(-3.0, -3.0);
+    qreal w = qAbs(dcx - dex) + 7;
+    qreal h = qAbs(dcy - dey) + 7;
+    m_br = QRectF(origin, QSizeF(w, h));
 
-	setAcceptHoverEvents(true);
-	setAcceptedMouseButtons(Qt::LeftButton);
-	setToolTip(QObject::tr("Borne", "tooltip"));
-	setZValue(Z);
+    // Number of terminal
+    number_terminal_ = std::move(number);
+    // Name of terminal
+    d->m_name = std::move(name);
+    name_terminal_hidden = hiddenName;
+
+    setAcceptHoverEvents(true);
+    setAcceptedMouseButtons(Qt::LeftButton);
+    setToolTip(QObject::tr("Borne", "tooltip"));
+    setZValue(Z);
+}
+
+/*!
+    \brief Terminal::init
+    Additionaly to the init above, this method stores position and orientation into the data class
+    \param pf
+    \param o
+    \param number
+    \param name
+    \param hiddenName
+*/
+void Terminal::init(
+        QPointF pf,
+        Qet::Orientation o,
+        QString number,
+        QString name,
+        bool hiddenName)
+{
+    setTagName("terminal");
+    // definition du pount d'amarrage pour un conducteur
+    d->m_pos  = pf;
+
+    // definition de l'orientation de la borne (par defaut : sud)
+    if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
+    else d->m_orientation = o;
+
+    init(number, name, hiddenName);
+}
+
+/**
+    initialise une borne
+    @param pf  position du point d'amarrage pour un conducteur
+    @param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
+    @param e   Element auquel cette borne appartient
+*/
+Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
+    QGraphicsObject(e),
+    d(new TerminalData(this)),
+    parent_element_ (e)
+{
+    init(pf, o, "_", "_", false);
+}
+
+/**
+    initialise une borne
+    @param pf_x Abscisse du point d'amarrage pour un conducteur
+    @param pf_y Ordonnee du point d'amarrage pour un conducteur
+    @param o	orientation de la borne : Qt::Horizontal ou Qt::Vertical
+    @param e	Element auquel cette borne appartient
+*/
+Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
+    QGraphicsObject(e),
+    d(new TerminalData(this)),
+    parent_element_  (e)
+{
+    init(QPointF(pf_x, pf_y), o, "_", "_", false);
+}
+
+/**
+    initialise une borne
+    @param pf  position du point d'amarrage pour un conducteur
+    @param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
+    @param num number of terminal (ex 3 - 4 for NO)
+    @param name of terminal
+    @param hiddenName hide or show the name
+    @param e   Element auquel cette borne appartient
+*/
+Terminal::Terminal(
+        QPointF pf,
+        Qet::Orientation o,
+        QString num,
+        QString name,
+        bool hiddenName,
+        Element *e) :
+    QGraphicsObject	(e),
+    d(new TerminalData(this)),
+    parent_element_  (e)
+{
+    init(pf, o, std::move(num), std::move(name), hiddenName);
 }
 
 Terminal::Terminal(TerminalData* data, Element* e) :
-	QGraphicsObject(e),
-	d(data),
-	parent_element_(e)
+    QGraphicsObject(e),
+    d(data),
+    parent_element_(e)
 {
-	d->setParent(this);
-	init();
+    d->setParent(this);
+    init("_", "_", false);
 }
 
 /**
@@ -108,6 +195,34 @@ Qet::Orientation Terminal::orientation() const
 			return((Qet::Orientation)angle);
 		}
 	} else return(d->m_orientation);
+}
+
+/**
+    @brief Terminal::setNumber
+    @param number
+*/
+void Terminal::setNumber(QString number)
+{
+    number_terminal_ = std::move(number);
+}
+
+/**
+    @brief Terminal::setName
+    @param name : QString
+    @param hiddenName : bool
+*/
+void Terminal::setName(QString name, bool hiddenName)
+{
+    d->m_name = std::move(name);
+    name_terminal_hidden = hiddenName;
+}
+
+/**
+    @brief Terminal::name
+    @return the name of terminal.
+*/
+inline QString Terminal::name() const {
+    return(d->m_name);
 }
 
 /**
@@ -457,7 +572,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	//setCursor(Qt::CrossCursor);
 
 	// d'un mouvement a l'autre, il faut retirer l'effet hover de la borne precedente
-	if (m_previous_terminal) {
+    if (m_previous_terminal) {
 		if (m_previous_terminal == this) m_hovered = true;
 		else m_previous_terminal -> m_hovered = false;
 		m_previous_terminal -> m_hovered_color = m_previous_terminal -> neutralColor;
@@ -624,6 +739,10 @@ bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 	return true;
 }
 
+void Terminal::setID(int id) {
+	m_id = id;
+}
+
 /**
 	@brief Terminal::conductors
 	@return La liste des conducteurs lies a cette borne
@@ -634,22 +753,36 @@ QList<Conductor *> Terminal::conductors() const
 }
 
 /**
-	@brief Terminal::toXml
+    @brief Terminal::toXmlPriv
 	Methode d'export en XML
 	@param doc Le Document XML a utiliser pour creer l'element XML
 	@return un QDomElement representant cette borne
 */
-QDomElement Terminal::toXml(QDomDocument &doc) const
+void Terminal::toXmlPriv(QDomElement &qdo) const
 {
-	QDomElement qdo = doc.createElement("terminal");
-
 	// for backward compatibility
-	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
-	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+    qdo.setAttribute("number", number_terminal_);
+    qdo.setAttribute("nameHidden",  name_terminal_hidden);
 	// end for backward compatibility
 
 	qdo.setAttribute("orientation", d->m_orientation);
-	return(qdo);
+
+    // Do not store terminal data in its own child
+    // Bad hack. The problem is that in the diagrams the terminal is described by the position and in the Collection by the dock.
+    QPointF tempPos = d->m_pos;
+    d->m_pos = dock_elmt_;
+    QDomDocument doc = qdo.ownerDocument();
+    QDomElement terminalData = d->toXml(doc); // TerminalData
+    d->m_pos = tempPos;
+
+    // Copy everything from terminalData to terminal
+    for (int i=0; i < terminalData.attributes().count(); i++) {
+        QDomAttr attr = terminalData.attributes().item(i).toAttr();
+        qdo.setAttribute(attr.name(), attr.value());
+    }
+//    for (int i=0; i < terminalData.childNodes().count(); i++) {
+//        qdo.appendChild(terminalData.childNodes().at(i));
+//    }
 }
 
 /**
@@ -658,42 +791,25 @@ QDomElement Terminal::toXml(QDomDocument &doc) const
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
-bool Terminal::valideXml(QDomElement &terminal)
+bool Terminal::valideXml(const QDomElement &terminal)
 {
-	// verifie le nom du tag
 	if (terminal.tagName() != "terminal") return(false);
 
-	// verifie la presence des attributs minimaux
-	if (!terminal.hasAttribute("x")) return(false);
-	if (!terminal.hasAttribute("y")) return(false);
-	if (!terminal.hasAttribute("orientation")) return(false);
+// affuteuse_250h.qet contains in line 8398 terminals which do not have this
+//	if (QETXML::propertyString(terminal, "number"))
+//		return false;
+// affuteuse_250h.qet contains in line 8398 terminals which do not have this
+//	if (QETXML::propertyBool(terminal, "nameHidden"))
+//		return false;
 
-	bool conv_ok;
-	// parse l'abscisse
-	terminal.attribute("x").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'ordonnee
-	terminal.attribute("y").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'id
-	terminal.attribute("id").toInt(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'orientation
-	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok) return(false);
-	if (terminal_or != Qet::North
-			&& terminal_or != Qet::South
-			&& terminal_or != Qet::East
-			&& terminal_or != Qet::West) return(false);
+	if (!TerminalData::valideXml(terminal))
+		return false;
 
 	// a ce stade, la borne est syntaxiquement correcte
-	return(true);
+	return true;
 }
 
-/**
+/** RETURNS True
 	@brief Terminal::fromXml
 	Permet de savoir si un element XML represente cette borne. Attention,
 	l'element XML n'est pas verifie
@@ -701,13 +817,16 @@ bool Terminal::valideXml(QDomElement &terminal)
 	@return true si la borne "se reconnait"
 	(memes coordonnes, meme orientation), false sinon
 */
-bool Terminal::fromXml(QDomElement &terminal)
-{
-	return (
-		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
-		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-		(terminal.attribute("orientation").toInt() == d->m_orientation)
-	);
+bool Terminal::fromXmlPriv(const QDomElement &terminal) {
+    QETXML::propertyString(terminal, "number", &number_terminal_);
+	QETXML::propertyBool(terminal, "nameHidden", &name_terminal_hidden);
+    QETXML::propertyUuid(terminal, "uuid", &d->m_uuid);
+	if(!d->fromXml(terminal))
+		return false;
+
+
+	init(number_terminal_, d->m_name, name_terminal_hidden); // initialize dock_elmt_. This must be done after Terminal data is initialized
+	return true;
 }
 
 /**
@@ -742,6 +861,18 @@ Element *Terminal::parentElement() const
 QUuid Terminal::uuid() const
 {
 	return d->m_uuid;
+}
+
+int Terminal::ID() const {
+	return m_id;
+}
+
+QPointF Terminal::dockPos() {
+	return dock_elmt_;
+}
+
+QPointF Terminal::originPos() {
+	return d->m_pos;
 }
 
 /**

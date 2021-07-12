@@ -20,6 +20,8 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../elementscene.h"
 
+#include "../../qetxml.h"
+
 #include <QRegularExpression>
 
 /**
@@ -497,7 +499,6 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const
 	else if (_color == HTMLGrayBlackColor)  css_like_styles += "HTMLGrayBlack";
 	else if (_color == NoneColor)  css_like_styles += "none";
 
-
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
 }
@@ -512,6 +513,9 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 {
 	resetStyles();
 
+	QString style_string;
+    QETXML::propertyString(qde, "style", &style_string);
+	
 		//Get the list of pair style/value
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = qde.attribute("style").split(";", QString::SkipEmptyParts);
