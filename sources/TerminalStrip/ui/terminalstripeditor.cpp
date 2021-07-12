@@ -385,20 +385,24 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 	setCurrentStrip(strip_);
 }
 
-void TerminalStripEditor::on_m_apply_data_pb_clicked(QAbstractButton *button)
+void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button)
 {
 	Q_UNUSED(button)
 
-	if (m_current_strip)
-	{
-		TerminalStripData data;
-		data.m_installation = ui->m_installation_le->text();
-		data.m_location     = ui->m_location_le->text();
-		data.m_name         = ui->m_name_le->text();
-		data.m_comment      = ui->m_comment_le->text();
-		data.m_description  = ui->m_description_te->toPlainText();
+	auto role = ui->m_dialog_button_box->buttonRole(button);
 
-		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+	if (role == QDialogButtonBox::AcceptRole) {
+		if (m_current_strip)
+		{
+			TerminalStripData data;
+			data.m_installation = ui->m_installation_le->text();
+			data.m_location     = ui->m_location_le->text();
+			data.m_name         = ui->m_name_le->text();
+			data.m_comment      = ui->m_comment_le->text();
+			data.m_description  = ui->m_description_te->toPlainText();
+
+			m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+		}
 	}
 
 	on_m_reload_pb_clicked();
