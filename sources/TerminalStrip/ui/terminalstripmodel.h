@@ -21,6 +21,8 @@
 #include <QAbstractTableModel>
 #include <QObject>
 #include <QPointer>
+#include <QStyledItemDelegate>
+
 #include "../terminalstrip.h"
 
 class TerminalStrip;
@@ -34,7 +36,9 @@ class TerminalStripModel : public QAbstractTableModel
         virtual int rowCount    (const QModelIndex &parent = QModelIndex()) const override;
         virtual int columnCount (const QModelIndex &parent = QModelIndex()) const override;
         virtual QVariant data   (const QModelIndex &index, int role = Qt::DisplayRole) const override;
+		virtual bool setData (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
 
 	private:
 		void fillRealTerminalData();
@@ -42,6 +46,27 @@ class TerminalStripModel : public QAbstractTableModel
     private:
         QPointer<TerminalStrip> m_terminal_strip;
 		QVector<RealTerminalData> m_real_terminal_data;
+		QHash<QSharedPointer<RealTerminal>, QVector<bool>> m_modified_cell;
+};
+
+class TerminalStripModelDelegate : public QStyledItemDelegate
+{
+	Q_OBJECT
+
+	public:
+		TerminalStripModelDelegate(QObject *parent = Q_NULLPTR);
+
+		QWidget *createEditor(
+				QWidget *parent,
+				const QStyleOptionViewItem &option,
+				const QModelIndex &index) const override;
+		void setModelData(
+				QWidget *editor,
+				QAbstractItemModel *model,
+				const QModelIndex &index) const override;
+
+//	protected:
+//	bool eventFilter(QObject *object, QEvent *event) override;
 };
 
 #endif // TERMINALSTRIPMODEL_H

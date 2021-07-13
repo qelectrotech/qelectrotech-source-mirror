@@ -42,6 +42,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	m_project(project)
 {
 	ui->setupUi(this);
+	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
@@ -391,7 +392,7 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 	auto role = ui->m_dialog_button_box->buttonRole(button);
 
-	if (role == QDialogButtonBox::AcceptRole) {
+	if (role == QDialogButtonBox::ApplyRole) {
 		if (m_current_strip)
 		{
 			TerminalStripData data;
