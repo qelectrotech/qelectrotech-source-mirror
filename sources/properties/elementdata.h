@@ -91,6 +91,15 @@ class ElementData : public PropertiesInterface
 		bool fromXml(const QDomElement &xml_element) override;
 		QDomElement kindInfoToXml(QDomDocument &document);
 
+		void setTerminalType(ElementData::TerminalType t_type);
+		ElementData::TerminalType terminalType() const;
+
+		void setTerminalFunction(ElementData::TerminalFunction t_function);
+		ElementData::TerminalFunction terminalFunction() const;
+
+		void setTerminalLED(bool led);
+		bool terminalLed() const;
+
 		bool operator==(const ElementData &data) const;
 		bool operator!=(const ElementData &data) const;
 
@@ -112,6 +121,7 @@ class ElementData : public PropertiesInterface
 
 		static QString terminalFunctionToString(ElementData::TerminalFunction function);
 		static ElementData::TerminalFunction terminalFunctionFromString(const QString &string);
+		static QString translatedTerminalFunction(ElementData::TerminalFunction function);
 
 		// must be public, because this class is a private member
 		// of Element/ element editor and they must access this data
@@ -129,6 +139,17 @@ class ElementData : public PropertiesInterface
 		DiagramContext m_informations;
 		NamesList m_names_list;
 		QString m_drawing_information;
+
+	private:
+		ElementData::TerminalType m_override_terminal_type = ElementData::TTGeneric;
+		bool m_terminal_type_is_override = false;
+
+		ElementData::TerminalFunction m_override_terminal_function = ElementData::TFGeneric;
+		bool m_terminal_function_is_override = false;
+
+		bool m_terminal_led = false;
+		bool m_terminal_led_is_override = false;
+		bool m_override_terminal_led = false;
 
 	private:
 		void kindInfoFromXml(const QDomElement &xml_element);

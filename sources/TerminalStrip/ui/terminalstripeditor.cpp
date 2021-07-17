@@ -25,6 +25,7 @@
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "../UndoCommand/addterminaltostripcommand.h"
 #include "../UndoCommand/changeterminalstripdata.h"
+#include "../undocommand/changeelementdatacommand.h"
 #include "terminalstriptreewidget.h"
 #include "../../qeticons.h"
 #include "terminalstripmodel.h"
@@ -392,9 +393,12 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 	auto role = ui->m_dialog_button_box->buttonRole(button);
 
-	if (role == QDialogButtonBox::ApplyRole) {
+	if (role == QDialogButtonBox::ApplyRole)
+	{
 		if (m_current_strip)
 		{
+			m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+
 			TerminalStripData data;
 			data.m_installation = ui->m_installation_le->text();
 			data.m_location     = ui->m_location_le->text();
@@ -403,6 +407,16 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 			data.m_description  = ui->m_description_te->toPlainText();
 
 			m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+
+			if (m_model)
+			{
+				auto modified_data = m_model->editedTerminalsData();
+				for (auto elmt : modified_data.keys()) {
+					m_project->undoStack()->push(new ChangeElementDataCommand(elmt, modified_data.value(elmt)));
+				}
+			}
+
+			m_project->undoStack()->endMacro();
 		}
 	}
 

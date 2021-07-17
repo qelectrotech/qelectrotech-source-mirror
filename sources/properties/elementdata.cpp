@@ -122,6 +122,84 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 	return returned_elmt;
 }
 
+/**
+ * @brief ElementData::setTerminalType
+ * Override the terminal type by \p t_type
+ * @param t_type
+ */
+void ElementData::setTerminalType(ElementData::TerminalType t_type)
+{
+	if (t_type == m_terminal_type) {
+		m_terminal_type_is_override = false;
+	} else {
+		m_override_terminal_type = t_type;
+		m_terminal_type_is_override = true;
+	}
+}
+
+/**
+ * @brief ElementData::terminalType
+ * @return the terminal type or overrided terminal type if set
+ */
+ElementData::TerminalType ElementData::terminalType() const
+{
+	return m_terminal_type_is_override ?
+				m_override_terminal_type :
+				m_terminal_type;
+}
+
+/**
+ * @brief ElementData::setTerminalFunction
+ * Override the terminal function by \p t_function
+ * @param t_function
+ */
+void ElementData::setTerminalFunction(ElementData::TerminalFunction t_function)
+{
+	if (t_function == m_terminal_function) {
+		m_terminal_function_is_override = false;
+	} else {
+		m_override_terminal_function = t_function;
+		m_terminal_function_is_override = true;
+	}
+}
+
+/**
+ * @brief ElementData::terminalFunction
+ * @return the terminal function or overrided terminal function if set
+ */
+ElementData::TerminalFunction ElementData::terminalFunction() const
+{
+	return m_terminal_function_is_override ?
+				m_override_terminal_function :
+				m_terminal_function;
+}
+
+/**
+ * @brief ElementData::setTerminalLED
+ * Override the terminal led by \p led
+ * @param led
+ */
+void ElementData::setTerminalLED(bool led)
+{
+	if (led == m_terminal_led) {
+		m_terminal_led_is_override = false;
+	} else {
+		m_override_terminal_led = led;
+		m_terminal_led_is_override = true;
+	}
+}
+
+/**
+ * @brief ElementData::terminalLed
+ * @return if terminal have led or overrided led if set
+ */
+bool ElementData::terminalLed() const
+{
+	return m_terminal_led_is_override ?
+				m_override_terminal_led :
+				m_terminal_led;
+}
+
 bool ElementData::operator==(const ElementData &data) const
 {
 	if (data.m_type != m_type) {
@@ -141,8 +219,41 @@ bool ElementData::operator==(const ElementData &data) const
 		}
 	}
 	else if (data.m_type == ElementData::Terminale) {
-		if (data.m_terminal_type     != m_terminal_type ||
-			data.m_terminal_function != m_terminal_function) {
+			//Check terminal type or overrided terminal type
+		if (data.m_terminal_type_is_override != m_terminal_type_is_override) {
+			return false;
+		}
+
+		if (m_terminal_type_is_override) {
+			if(data.m_override_terminal_type != m_override_terminal_type) {
+				return false;
+			}
+		} else if (data.m_terminal_type != m_terminal_type) {
+			return false;
+		}
+
+			//Check terminal led or override terminal led
+		if (data.m_terminal_led_is_override != m_terminal_led_is_override) {
+			return false;
+		}
+		if (m_terminal_led_is_override) {
+			if (data.m_override_terminal_led != m_override_terminal_led) {
+			return false;
+			}
+		} else if (data.m_terminal_led != m_terminal_led) {
+			return false;
+		}
+
+			//Check terminal function or overrided terminal function
+		if (data.m_terminal_function_is_override != m_terminal_function_is_override) {
+			return false;
+		}
+		if (m_terminal_function_is_override) {
+			if (data.m_override_terminal_function != m_override_terminal_function) {
+				return false;
+			}
+		}
+		else if (data.m_terminal_function != m_terminal_function) {
 			return false;
 		}
 	}
@@ -343,15 +454,15 @@ QString ElementData::translatedTerminalType(ElementData::TerminalType type)
 {
 	switch (type) {
 		case ElementData::TTGeneric :
-			return QObject::tr("generique", "generic terminal element type");
+			return QObject::tr("Générique", "generic terminal element type");
 		case ElementData::TTFuse :
-			return  QObject::tr("fusible", "fuse terminal element type");
+			return  QObject::tr("Fusible", "fuse terminal element type");
 		case ElementData::TTSectional:
-			return QObject::tr("sectionable", "sectional terminal element type");
+			return QObject::tr("Sectionable", "sectional terminal element type");
 		case ElementData::TTDiode:
-			return QObject::tr("diode", "diode terminal element type");
+			return QObject::tr("Diode", "diode terminal element type");
 		case ElementData::TTGround:
-			return QObject::tr("terre", "ground terminal element type");
+			return QObject::tr("Terre", "ground terminal element type");
 	}
 }
 
@@ -381,6 +492,15 @@ ElementData::TerminalFunction ElementData::terminalFunctionFromString(const QStr
 			 << string
 			 << " don't exist, return failsafe value 'generic'";
 	return ElementData::TFGeneric;
+}
+
+QString ElementData::translatedTerminalFunction(ElementData::TerminalFunction function)
+{
+	switch (function) {
+		case TFGeneric : return QObject::tr("Générique", "generic terminal element function");
+		case TFPhase :   return QObject::tr("Phase", "phase terminal element function" );
+		case TFNeutral : return QObject::tr("Neutre", "neutral terminal element function");
+	}
 }
 
 void ElementData::kindInfoFromXml(const QDomElement &xml_element)

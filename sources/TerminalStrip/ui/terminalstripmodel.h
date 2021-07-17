@@ -40,8 +40,11 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
 
+		QHash<Element *, ElementData> editedTerminalsData() const;
+
 	private:
 		void fillRealTerminalData();
+		static ElementData modifiedData(const ElementData &original_data, const RealTerminalData &edited_data);
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
@@ -64,9 +67,6 @@ class TerminalStripModelDelegate : public QStyledItemDelegate
 				QWidget *editor,
 				QAbstractItemModel *model,
 				const QModelIndex &index) const override;
-
-//	protected:
-//	bool eventFilter(QObject *object, QEvent *event) override;
 };
 
 #endif // TERMINALSTRIPMODEL_H

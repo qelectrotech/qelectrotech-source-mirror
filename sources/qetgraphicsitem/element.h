@@ -42,6 +42,7 @@ class ElementTextItemGroup;
 class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
+	friend class ChangeElementDataCommand;
 
 	Q_OBJECT
 	public:

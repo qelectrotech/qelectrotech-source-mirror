@@ -17,6 +17,7 @@
 */
 #include "terminalstripmodel.h"
 #include "../terminalstrip.h"
+#include "../../qetgraphicsitem/element.h"
 #include <QDebug>
 #include <QBrush>
 #include <QVector>
@@ -33,8 +34,13 @@ const int XREF_CELL = 3;
 const int CABLE_CELL = 4;
 const int CABLE_WIRE_CELL = 5;
 const int TYPE_CELL = 6;
-const int LED_CELL = 7;
-const int CONDUCTOR_CELL = 8;
+const int FUNCTION_CELL = 7;
+const int LED_CELL = 8;
+const int CONDUCTOR_CELL = 9;
+
+const int ROW_COUNT = 9;
+
+static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false};
 
 /**
  * @brief TerminalStripModel::TerminalStripModel
@@ -62,7 +68,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-	return 8;
+	return ROW_COUNT;
 }
 
 QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
@@ -77,21 +83,21 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	if (role == Qt::DisplayRole)
 	{
 		switch (index.column()) {
-			case POS_CELL : return rtd.pos_;
-			case LEVEL_CELL : return rtd.level_;
-			case LABEL_CELL : return rtd.label_;
-			case XREF_CELL : return rtd.Xref_;
-			case CABLE_CELL : return rtd.cable_;
+			case POS_CELL :        return rtd.pos_;
+			case LEVEL_CELL :      return rtd.level_;
+			case LABEL_CELL :      return rtd.label_;
+			case XREF_CELL :       return rtd.Xref_;
+			case CABLE_CELL :      return rtd.cable_;
 			case CABLE_WIRE_CELL : return rtd.cable_wire_;
-			case TYPE_CELL : return ElementData::translatedTerminalType(rtd.type_);
-			case CONDUCTOR_CELL : return rtd.conductor_;
-			default : return QVariant();
+			case TYPE_CELL :       return ElementData::translatedTerminalType(rtd.type_);
+			case FUNCTION_CELL :   return ElementData::translatedTerminalFunction(rtd.function_);
+			case CONDUCTOR_CELL :  return rtd.conductor_;
+			default :              return QVariant();
 		}
 	}
 	else if (role == Qt::EditRole)
 	{
 		switch (index.column()) {
-//			case LEVEL_CELL : return rtd.level_;
 			case LABEL_CELL : return rtd.label_;
 			default: return QVariant();
 
@@ -135,13 +141,13 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		modified_ = true;
 		modified_cell = TYPE_CELL;
 	}
-//	else if (column_ == LEVEL_CELL &&
-//			 role == Qt::EditRole)
-//	{
-//		rtd.level_ = value.toInt();
-//		modified_ = true;
-//		modified_cell = LEVEL_CELL;
-//	}
+	else if (column_ == FUNCTION_CELL &&
+			 role == Qt::EditRole)
+	{
+		rtd.function_ = value.value<ElementData::TerminalFunction>();
+		modified_ = true;
+		modified_cell = FUNCTION_CELL;
+	}
 
 		//Set the modification to the terminal data
 	if (modified_)
@@ -154,7 +160,7 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 			if (m_modified_cell.contains(rtd.m_real_terminal)) {
 				vector_ = m_modified_cell.value(rtd.m_real_terminal);
 			} else {
-				vector_ = QVector<bool>({false, false, false, false, false, false, false, false, false});
+				vector_ = UNMODIFIED_CELL_VECTOR;
 			}
 
 			vector_.replace(modified_cell, true);
@@ -173,20 +179,19 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 		if (orientation == Qt::Horizontal)
 		{
 			switch (section) {
-				case POS_CELL: return tr("Position");
-				case LEVEL_CELL: return tr("Étage");
-				case LABEL_CELL: return tr("Label");
-				case XREF_CELL: return tr("Référence croisé");
-				case CABLE_CELL: return tr("Câble");
+				case POS_CELL:        return tr("Position");
+				case LEVEL_CELL:      return tr("Étage");
+				case LABEL_CELL:      return tr("Label");
+				case XREF_CELL:       return tr("Référence croisé");
+				case CABLE_CELL:      return tr("Câble");
 				case CABLE_WIRE_CELL: return tr("Couleur / numéro de fil câble");
-				case TYPE_CELL: return tr("Type");
-				case LED_CELL: return tr("led");
-				case CONDUCTOR_CELL: return tr("Numéro de conducteur");
+				case TYPE_CELL:       return tr("Type");
+				case FUNCTION_CELL :  return tr("Fonction");
+				case LED_CELL:        return tr("led");
+				case CONDUCTOR_CELL:  return tr("Numéro de conducteur");
 				default : return QVariant();
 			}
-		} /*else {
-			return QString::number(++section);
-		}*/
+		}
 	}
 
 	return QVariant();
@@ -197,12 +202,41 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 
 	auto c = index.column();
-	if (/*c == LEVEL_CELL || */c == LABEL_CELL || c == TYPE_CELL)
+	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LED_CELL) {
 		flags = flags | Qt::ItemIsUserCheckable;
 	}
 	return flags;
+}
+
+/**
+ * @brief TerminalStripModel::editedTerminals
+ * @return a hash with for keys the edited element and for value the ElementData with modified properties
+ */
+QHash<Element *, ElementData> TerminalStripModel::editedTerminalsData() const
+{
+	QHash<Element *, ElementData> returned_hash;
+
+	QVector<RealTerminalData> rtd_vector = m_real_terminal_data;
+
+	const auto modified_real_terminal = m_modified_cell.keys();
+	for (auto const &rt : modified_real_terminal) //loop over modified real terminal
+	{
+		for (auto const &rtd : rtd_vector) //loop over real terminal data to retrieve the data associated with real terminal
+		{
+			if (rtd.m_real_terminal == rt)
+			{
+				auto element = m_terminal_strip->elementForRealTerminal(rt);
+				if (element) {
+					returned_hash.insert(element, modifiedData(element->elementData(), rtd));
+				}
+				break;
+			}
+		}
+	}
+
+	return returned_hash;
 }
 
 void TerminalStripModel::fillRealTerminalData()
@@ -212,6 +246,23 @@ void TerminalStripModel::fillRealTerminalData()
 			m_real_terminal_data.append(m_terminal_strip->realTerminalData(i));
 		}
 	}
+}
+
+/**
+ * @brief TerminalStripModel::modifiedData
+ * @param previous_data
+ * @param edited_data
+ * @return an ElementData with the change made in \p edited_data applied to \p original_data
+ */
+ElementData TerminalStripModel::modifiedData(const ElementData &original_data, const RealTerminalData &edited_data)
+{
+	ElementData returned_data = original_data;
+
+	returned_data.setTerminalType(edited_data.type_);
+	returned_data.setTerminalFunction(edited_data.function_);
+	returned_data.setTerminalLED(edited_data.led_);
+
+	return returned_data;
 }
 
 /***********************************************************
@@ -236,13 +287,15 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 
 		return qcb;
 	}
-//	if (index.column() == LEVEL_CELL) {
-//		auto qsb = new QSpinBox(parent);
-//		qsb->setObjectName("terminal_level");
-//		qsb->setRange(0, 3);
-//		qsb->setValue(index.data(Qt::EditRole).toInt());
-//		return qsb;
-//	}
+	if (index.column() == FUNCTION_CELL) {
+		auto qcb = new QComboBox(parent);
+		qcb->setObjectName("terminal_function");
+		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFGeneric), ElementData::TFGeneric);
+		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFPhase),   ElementData::TFPhase);
+		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFNeutral), ElementData::TFNeutral);
+
+		return qcb;
+	}
 
 	return QStyledItemDelegate::createEditor(parent, option, index);
 }
@@ -257,11 +310,11 @@ void TerminalStripModelDelegate::setModelData(QWidget *editor, QAbstractItemMode
 				model->setData(index, qcb->currentData(), Qt::EditRole);
 			}
 		}
-//		else if (editor->objectName() == QLatin1String("terminal_level"))
-//		{
-//			if (auto qsb = dynamic_cast<QSpinBox *>(editor)) {
-//				model->setData(index, qsb->value(), Qt::EditRole);
-//			}
-//		}
+		else if (editor->objectName() == QLatin1String("terminal_function"))
+		{
+			if (auto qcb = dynamic_cast<QComboBox *>(editor)) {
+				model->setData(index, qcb->currentData(), Qt::EditRole);
+			}
+		}
 	}
 }

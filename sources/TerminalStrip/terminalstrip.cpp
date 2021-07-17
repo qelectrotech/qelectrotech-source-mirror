@@ -85,9 +85,25 @@ class RealTerminal
 
 		ElementData::TerminalType type() const {
 			if (m_element) {
-				return m_element->elementData().m_terminal_type;
+				return m_element->elementData().terminalType();
 			} else {
 				return ElementData::TTGeneric;
+			}
+		}
+
+		ElementData::TerminalFunction function() const {
+			if (m_element) {
+				return m_element->elementData().terminalFunction();
+			} else {
+				return ElementData::TFGeneric;
+			}
+		}
+
+		bool led() const {
+			if (m_element) {
+				return m_element->elementData().terminalLed();
+			} else {
+				return false;
 			}
 		}
 
@@ -585,7 +601,9 @@ RealTerminalData TerminalStrip::realTerminalData(int real_terminal_index)
 	if (real_terminal->isElement()) {
 		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
 	}
-	rtd.type_ = real_terminal->type();
+	rtd.type_      = real_terminal->type();
+	rtd.function_  = real_terminal->function();
+	rtd.led_       = real_terminal->led();
 	rtd.is_element = real_terminal->isElement();
 
 	return rtd;
@@ -630,6 +648,15 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<
 	}
 
 	return pt;
+}
+
+/**
+ * @brief TerminalStrip::elementForRealTerminal
+ * @param rt
+ * @return the element associated to \p rt, the returned element can be nullptr;
+ */
+Element *TerminalStrip::elementForRealTerminal(QSharedPointer<RealTerminal> rt) const {
+	return rt.data()->element();
 }
 
 /************************************************************************************/

@@ -45,6 +45,7 @@ struct RealTerminalData
 			conductor_;
 
 	ElementData::TerminalType type_;
+	ElementData::TerminalFunction function_;
 
 	bool led_ = false,
 		 is_element = false;
@@ -103,6 +104,7 @@ class TerminalStrip : public QObject
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal);
+		Element *elementForRealTerminal(QSharedPointer<RealTerminal> rt) const;
 
 	private:
 		TerminalStripData m_data;
