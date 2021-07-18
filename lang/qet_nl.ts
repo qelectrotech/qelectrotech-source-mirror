@@ -307,12 +307,12 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation>Tabelafmetingen aan het blad aanpassen</translation>
+        <translation>Tabelafmetingen aan het schemablad aanpassen</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
-        <translation>Nieuw blad en tabel toevoegen indien nodig.</translation>
+        <translation>Nieuw schemablad en tabel toevoegen indien nodig.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
@@ -463,7 +463,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
-        <translation>Blad</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="154"/>
@@ -607,7 +607,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Materiaallijst exporteren</translation>
+        <translation>Stuklijstweergave</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -622,12 +622,12 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
         <source>Formater en tant que liste de materiel</source>
-        <translation>Volgens materiaallijst</translation>
+        <translation>Volgens stuklijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
         <source>nomenclature_</source>
-        <translation>naamgeving_</translation>
+        <translation>stuklijst_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="67"/>
@@ -2064,7 +2064,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
         <source>Informations à exporter</source>
-        <translation>Te exporteren gegevens</translation>
+        <translation>Weergegeven gegevens</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
@@ -2129,12 +2129,12 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
         <source>Type d&apos;éléments</source>
-        <translation>Te exporteren elementen</translation>
+        <translation>Weer te geven elementen</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
         <source>Simples</source>
-        <translation>Enkelvoudige</translation>
+        <translation>Eenvoudige</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
@@ -3256,7 +3256,7 @@ Hieronder kunt u de standaardtekst voor nieuwe elementen hiervoor opgeven:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Exporteer de terminals in de naamgeving</translation>
+        <translation>Toon de terminals in de stuklijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
@@ -3521,7 +3521,7 @@ Hieronder kunt u de standaardtekst voor nieuwe elementen hiervoor opgeven:</tran
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
         <source>Ajuster le tableau au folio</source>
-        <translation>Pas de tabel aan op het blad</translation>
+        <translation>Pas de tabel aan op het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
@@ -4005,13 +4005,13 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="450"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="476"/>
         <source>N° de folio</source>
-        <translation>Bladnummer</translation>
+        <translation>Schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="442"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="465"/>
         <source>Label de folio</source>
-        <translation>Bladlabel</translation>
+        <translation>Schemabladlabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="444"/>
@@ -4019,7 +4019,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="467"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="478"/>
         <source>Titre de folio</source>
-        <translation>Bladnaam</translation>
+        <translation>Schemabladnaam</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="443"/>
@@ -4092,7 +4092,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="203"/>
         <source>Report de folio</source>
-        <translation>Bladreferentie</translation>
+        <translation>Schemabladverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="205"/>
@@ -4159,18 +4159,18 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>N° de folio</source>
-        <translation>Bladnummer</translation>
+        <translation>Schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <source>Label de folio</source>
-        <translation>Bladlabel</translation>
+        <translation>Schemabladlabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
         <source>Titre de folio</source>
-        <translation>Bladnaam</translation>
+        <translation>Schemabladnaam</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="51"/>
@@ -4319,7 +4319,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="96"/>
         <source>Folio</source>
-        <translation>Blad</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="97"/>
@@ -4340,7 +4340,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/ui/configpage/configpages.cpp" line="203"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation>Nieuw blad</translation>
+        <translation>Nieuw schemablad</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
@@ -4489,7 +4489,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="249"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="390"/>
         <source>N° folio</source>
-        <translation>Bladnummer</translation>
+        <translation>Schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="125"/>
@@ -4497,7 +4497,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="251"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="392"/>
         <source>Folio</source>
-        <translation>Blad</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="118"/>
@@ -4505,7 +4505,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="237"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="378"/>
         <source>Chiffre 1 - Folio</source>
-        <translation>Cijfer 1 - Blad</translation>
+        <translation>Cijfer 1 - Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="120"/>
@@ -4513,7 +4513,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="241"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="382"/>
         <source>Chiffre 01 - Folio</source>
-        <translation>Cijfer 01 - Blad</translation>
+        <translation>Cijfer 01 - Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="122"/>
@@ -4521,7 +4521,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="245"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="386"/>
         <source>Chiffre 001 - Folio</source>
-        <translation>Cijfer 001 - Blad</translation>
+        <translation>Cijfer 001 - Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="127"/>
@@ -4888,7 +4888,7 @@ De volgende variabelen zijn mogelijk :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="351"/>
         <source>Position du folio</source>
-        <translation>Plaats van het blad</translation>
+        <translation>Plaats van het schemablad</translation>
     </message>
 </context>
 <context>
@@ -5006,7 +5006,7 @@ De volgende variabelen zijn mogelijk :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation>Pas het blad aan op de pagina</translation>
+        <translation>Pas het schemablad aan op de pagina</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
@@ -5016,7 +5016,7 @@ De volgende variabelen zijn mogelijk :
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation>Als deze optie is aangevinkt, wordt het blad vergroot of verkleind om het volledige afdrukbare gebied van slechts één pagina te vullen. &quot;</translation>
+        <translation>Als deze optie is aangevinkt, wordt het schemablad vergroot of verkleind om het volledige afdrukbare gebied van slechts één pagina te vullen. &quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
@@ -5128,7 +5128,7 @@ De volgende variabelen zijn mogelijk :
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="430"/>
         <source>Folio sans titre</source>
-        <translation>Naamloos blad</translation>
+        <translation>Naamloos schemablad</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="669"/>
@@ -5175,13 +5175,13 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/projectview.cpp" line="381"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation>Blad verwijderen ?</translation>
+        <translation>Schemablad verwijderen ?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="382"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Weet u zeker dat u dit blad uit het project wilt verwijderen ? Deze wijziging is onomkeerbaar.</translation>
+        <translation>Weet u zeker dat u dit schemablad uit het project wilt verwijderen ? Deze wijziging is onomkeerbaar.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="658"/>
@@ -5209,7 +5209,7 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="713"/>
         <source>Ajouter un folio</source>
-        <translation>Blad toevoegen</translation>
+        <translation>Schemablad toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="716"/>
@@ -5225,7 +5225,7 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/projectview.cpp" line="734"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation>Dit project bevat geen enkel blad</translation>
+        <translation>Dit project bevat geen enkel schemablad</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="334"/>
@@ -5646,7 +5646,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dit paneel toont de geschiedenis van acties op het huidige blad. Klik op een actie om deze ongedaan te maken.</translation>
+        <translation>Dit paneel toont de geschiedenis van acties op het huidige schemablad. Klik op een actie om deze ongedaan te maken.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="353"/>
@@ -5658,7 +5658,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="354"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation>Toon de achtergrond van het blad licht of donker</translation>
+        <translation>Toon de achtergrond van het schemablad licht of donker</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="363"/>
@@ -5673,17 +5673,17 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
         <source>Propriétés du folio</source>
-        <translation>Bladeigenschappen</translation>
+        <translation>Schemabladeigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="394"/>
         <source>Ajouter un folio</source>
-        <translation>Blad toevoegen</translation>
+        <translation>Schemablad toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="403"/>
         <source>Supprimer le folio</source>
-        <translation>Blad verwijderen</translation>
+        <translation>Schemablad verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
@@ -5777,25 +5777,25 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Voeg een kolom aan het blad toe</translation>
+        <translation>Voeg een kolom aan het schemablad toe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Verwijder een kolom van het blad</translation>
+        <translation>Verwijder een kolom van het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="561"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Voeg een rij toe aan het blad</translation>
+        <translation>Voeg een rij toe aan het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="562"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Verwijder een rij van het blad</translation>
+        <translation>Verwijder een rij van het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="580"/>
@@ -5811,31 +5811,31 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation>Verwijder de geselecteerde elementen van het blad</translation>
+        <translation>Verwijder de geselecteerde elementen van het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="607"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation>Selecteer alle elementen op het blad</translation>
+        <translation>Selecteer alle elementen op het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="608"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation>Deselecteer alle elementen op het blad</translation>
+        <translation>Deselecteer alle elementen op het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="631"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
-        <translation>Vergroot het blad</translation>
+        <translation>Schemablad vergroten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="632"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
-        <translation>Verklein het blad</translation>
+        <translation>Schemablad verkleinen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="633"/>
@@ -5873,7 +5873,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="262"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation>Exporteer het huidige blad naar een ander formaat</translation>
+        <translation>Exporteer het huidige schemablad naar een ander formaat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="273"/>
@@ -5896,19 +5896,19 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
-        <translation>Plaats elementen van het klembord op het blad</translation>
+        <translation>Plaats elementen van het klembord op het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="378"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation>Bewerk de bladeigenschappen (afmetingen, titelblokinformatie, geleidereigenschappen...)</translation>
+        <translation>Bewerk de schemabladeigenschappen (afmetingen, titelblokinformatie, geleidereigenschappen...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation>De inhoud van het blad verschuiven</translation>
+        <translation>De inhoud van het schemablad verschuiven</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
@@ -6272,7 +6272,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="424"/>
         <source>Ajouter une nomenclature</source>
-        <translation>Een naamgeving toevoegen</translation>
+        <translation>Een stuklijst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
@@ -7804,7 +7804,7 @@ Wilt u dit doen ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="590"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
-        <translation>wijzig de bladafmetingen</translation>
+        <translation>wijzig de schemabladafmetingen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -8071,7 +8071,7 @@ Wilt u dit doen ?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="989"/>
         <source>Folio sans titre</source>
-        <translation>Naamloos blad</translation>
+        <translation>Naamloos schemablad</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="991"/>
@@ -8401,12 +8401,12 @@ Wilt u dit doen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="206"/>
         <source>Position du folio</source>
-        <translation>Plaats van het blad</translation>
+        <translation>Plaats van het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="205"/>
         <source>Numéro de folio</source>
-        <translation>Bladnummer</translation>
+        <translation>Schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="124"/>
@@ -8565,7 +8565,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="56"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation>Zoeken/vervangen van bladeigenschappen</translation>
+        <translation>Zoeken/vervangen van schemabladeigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="120"/>
@@ -8621,17 +8621,17 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="207"/>
         <source>Nombre de folio</source>
-        <translation>Bladnummer</translation>
+        <translation>Schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="208"/>
         <source>Numéro du folio précédent</source>
-        <translation>Vorig bladnummer</translation>
+        <translation>Vorig schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="209"/>
         <source>Numéro du folio suivant</source>
-        <translation>Volgend bladnummer</translation>
+        <translation>Volgend schemabladnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="210"/>
@@ -8797,7 +8797,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="48"/>
         <source>Ajouter une nomenclature</source>
-        <translation>Een naamgeving toevoegen</translation>
+        <translation>Een stuklijst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>
@@ -9480,7 +9480,7 @@ Maak uw eigen label met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
         <source>Champ texte de folio</source>
-        <translation>Tekstveld op blad</translation>
+        <translation>Tekstveld op schemablad</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
@@ -9490,12 +9490,12 @@ Maak uw eigen label met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definieer de te vervangen bladeigenschappen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definieer de te vervangen schemabladeigenschappen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
         <source>Folio</source>
-        <translation>Blad</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
@@ -9615,17 +9615,17 @@ Maak uw eigen label met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="462"/>
         <source>Sélectionner les éléments de ce folio</source>
-        <translation>De elementen op dit blad selecteren</translation>
+        <translation>De elementen op dit schemablad selecteren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="463"/>
         <source>Sélectionner les conducteurs de ce folio</source>
-        <translation>De geleiders op dit blad selecteren</translation>
+        <translation>De geleiders op dit schemablad selecteren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="464"/>
         <source>Sélectionner les textes de ce folio</source>
-        <translation>De teksten op dit blad selecteren</translation>
+        <translation>De teksten op dit schemablad selecteren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1115"/>
@@ -9732,7 +9732,7 @@ Maak uw eigen label met behulp van de volgende variabelen:
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="211"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation>Automatische bladnummering</translation>
+        <translation>Automatische schemabladnummering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="213"/>
@@ -12237,7 +12237,7 @@ De andere velden hebben nu geen betekenis.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="355"/>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="480"/>
         <source>Créer un Folio Numérotation Auto</source>
-        <translation>Maak een automatische bladnummering</translation>
+        <translation>Maak een automatische schemabladnummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
@@ -12252,7 +12252,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Folio :</source>
-        <translation>Blad :</translation>
+        <translation>Schemablad :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
@@ -12335,7 +12335,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Plaats het titelblok onderaan (horizontaal) of rechts (verticaal) op het blad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Plaats het titelblok onderaan (horizontaal) of rechts (verticaal) op het schemablad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
@@ -12430,7 +12430,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation>Let op : de randen van lege cellen verschijnen niet op het uiteindelijke blad.</translation>
+        <translation>Let op : de randen van lege cellen verschijnen niet op het uiteindelijke schemablad.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="74"/>
@@ -12969,8 +12969,8 @@ Maximale afmeting : %2px
 %M: Installation 
 %LM: Localisation </source>
         <translation>Stel de labeltekst samen met behulp van de volgende variabelen :
-%f : Het bladnummer
-%F : Het bladlabel
+%f : Het schemabladnummer
+%F : Het schemabladlabel
 %l : Het rijnummer
 %c : Het kolomnummer
 %M : De machine
@@ -13087,7 +13087,7 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="72"/>
         <source>Folio sans titre</source>
-        <translation>Naamloos blad</translation>
+        <translation>Naamloos schemablad</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="106"/>
@@ -13265,7 +13265,7 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation>Blad</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
