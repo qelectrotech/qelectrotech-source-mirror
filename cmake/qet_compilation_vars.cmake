@@ -113,9 +113,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorsegmentprofile.h
   ${QET_DIR}/sources/configdialog.cpp
   ${QET_DIR}/sources/configdialog.h
-  ${QET_DIR}/sources/configpage.h
-  ${QET_DIR}/sources/configpages.cpp
-  ${QET_DIR}/sources/configpages.h
   ${QET_DIR}/sources/createdxf.cpp
   ${QET_DIR}/sources/createdxf.h
   ${QET_DIR}/sources/diagramcommands.cpp
@@ -161,8 +158,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/main.cpp
   ${QET_DIR}/sources/newelementwizard.cpp
   ${QET_DIR}/sources/newelementwizard.h
-  ${QET_DIR}/sources/projectconfigpages.cpp
-  ${QET_DIR}/sources/projectconfigpages.h
   ${QET_DIR}/sources/projectview.cpp
   ${QET_DIR}/sources/projectview.h
   ${QET_DIR}/sources/qetapp.cpp
@@ -581,9 +576,13 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.h
   ${QET_DIR}/sources/ui/xrefpropertieswidget.cpp
   ${QET_DIR}/sources/ui/xrefpropertieswidget.h
+  ${QET_DIR}/sources/ui/configpage/configpage.h
+  ${QET_DIR}/sources/ui/configpage/configpages.cpp
+  ${QET_DIR}/sources/ui/configpage/configpages.h
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.cpp
-
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.h
+  ${QET_DIR}/sources/ui/configpage/projectconfigpages.cpp
+  ${QET_DIR}/sources/ui/configpage/projectconfigpages.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h
