@@ -83,7 +83,7 @@
         <text text="0V" rotation="0" y="46" color="#000000" x="-187" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <dynamic_text z="69" rotation="0" frame="false" y="-42.5" Halignment="AlignLeft" x="209" uuid="{1d4553f6-9ff6-4efb-bc6a-254733e07b76}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" text_width="-1" Valignment="AlignTop">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text text="24V" rotation="0" y="46" color="#000000" x="-146" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text text="3" rotation="0" y="58" color="#000000" x="-147" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

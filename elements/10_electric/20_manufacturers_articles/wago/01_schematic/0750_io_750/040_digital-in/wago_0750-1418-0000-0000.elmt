@@ -45,7 +45,7 @@
         <text y="-24" rotation="0" x="212" color="#000000" text="0V" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <dynamic_text y="29.5" z="31" rotation="0" x="230" Valignment="AlignTop" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{349e3610-cb8b-4f43-92b8-8b4dd0f9f769}" text_width="-1" text_from="ElementInfo">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text y="-42" rotation="0" x="215" color="#000000" text="14" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text y="-42" rotation="0" x="54" color="#000000" text="10" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

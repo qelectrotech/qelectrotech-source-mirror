@@ -83,6 +83,8 @@
         <terminal orientation="e" name="24V.Out" y="-10" x="360"/>
         <terminal orientation="e" name="PE.Out" y="30" x="360"/>
         <terminal orientation="w" name="Eth2" y="20" x="-360"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <arc style="line-style:normal;line-weight:normal;filling:white;color:black" width="5" x="360" height="5" start="90" y="-12.5" angle="180" antialias="true"/>
         <arc style="line-style:normal;line-weight:normal;filling:white;color:black" width="5" x="360" height="5" start="90" y="7.5" angle="180" antialias="true"/>
         <arc style="line-style:normal;line-weight:normal;filling:white;color:black" width="5" x="360" height="5" start="90" y="27.5" angle="180" antialias="true"/>

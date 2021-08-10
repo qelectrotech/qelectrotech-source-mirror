@@ -1,35 +1,37 @@
-<definition width="60" version="0.3" hotspot_x="19" hotspot_y="37" height="70" type="element" link_type="master">
-<uuid uuid="{1CF30813-0219-4625-B019-A00A318ED8F9}"/><names>
+<definition link_type="master" width="40" height="50" version="0.90" hotspot_x="20" type="element" hotspot_y="24">
+    <uuid uuid="{fbebf37a-b316-447b-9f4d-16e87e2066a0}"/>
+    <names>
+        <name lang="pl">Cewka</name>
+        <name lang="cs">Bistabilní relé</name>
         <name lang="ar">مُرحّل ثنائي الإستقرار</name>
+        <name lang="de">Relais bistabil</name>
         <name lang="ru">Обмотка</name>
         <name lang="en">Coil</name>
-        <name lang="de">Relais bistabil</name>
         <name lang="it">Relè bistabile</name>
         <name lang="fr">Relais bistable</name>
-        <name lang="pl">Cewka</name>
         <name lang="es">Relé biestable</name>
-        <name lang="cs">Bistabilní relé</name>
-        <name lang="hu">Bistabil relé</name>
     </names>
     <kindInformations>
-        <kindInformation name="type" show="1">coil</kindInformation>
+        <kindInformation name="type">coil</kindInformation>
     </kindInformations>
+    <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="8" y2="4" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-8" y2="0" x2="8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="-8" y2="0" x2="-8"/>
-        <input x="4" y="20" size="6" rotate="true" text="_"/>
-        <input x="4" y="-22" size="6" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-8" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="21" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="14" y2="-8" x2="14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-14" y2="8" x2="14"/>
-        <input x="20" y="2.6666" size="9" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="14" y2="-8" x2="-14"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-14" y2="8" x2="-14"/>
-        <terminal x="0" y="-20" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <dynamic_text rotation="0" keep_visual_rotation="false" frame="false" x="4" text_from="UserText" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="11" Halignment="AlignLeft" z="4" uuid="{35e96436-b756-490c-95e4-87ddfc82d137}" text_width="-1" Valignment="AlignTop">
+            <text>_</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" frame="false" x="4" text_from="UserText" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-31" Halignment="AlignLeft" z="5" uuid="{6f5de7cf-5691-4dd4-b659-0dde11e9f9ca}" text_width="-1" Valignment="AlignTop">
+            <text>_</text>
+        </dynamic_text>
+        <line end1="none" end2="none" length2="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" length1="1.5" x2="0"/>
+        <dynamic_text rotation="0" keep_visual_rotation="false" frame="false" x="20" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-8.8" Halignment="AlignLeft" z="10" uuid="{801ccb33-f4f0-4d97-929d-c9b2a1725bb2}" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect width="28" rx="0" x="-14" height="16" antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-8" ry="0"/>
+        <polygon y3="0" closed="false" x4="8" x3="8" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" y4="4" x1="-8" x2="-8"/>
+        <terminal orientation="n" x="0" name="A1" y="-20" type="Generic"/>
+        <terminal orientation="s" x="0" name="A2" y="20" type="Generic"/>
     </description>
 </definition>

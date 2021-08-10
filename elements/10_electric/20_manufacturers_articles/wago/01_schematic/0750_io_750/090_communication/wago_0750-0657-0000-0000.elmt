@@ -29,8 +29,6 @@
         <line y2="10" x2="-230" end1="none" x1="-230" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="48" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="129" y="-11" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="289" y="9" antialias="false"/>
-        <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="9" y="-11" antialias="false"/>
-        <line y2="-10" x2="10" end1="none" x1="10" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-191" y="-11" antialias="false"/>
         <line y2="-10" x2="-190" end1="none" x1="-190" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
         <text text="24V" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-355" y="-12" color="#000000"/>

@@ -23,7 +23,7 @@
         <line end1="none" length1="1.5" x2="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="-10" y1="-4" x1="-11" end2="simple" antialias="false"/>
         <line end1="none" length1="1.5" x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="-4" y1="-10" x1="-8" end2="simple" antialias="false"/>
         <rect width="8" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-4" rx="0" height="20" y="-10" antialias="false"/>
-        <terminal orientation="s" uuid="{93dabc0a-a6e8-4c0a-8d1c-c67b65a575e3}" x="0" y="21" name=""/>
-        <terminal orientation="n" uuid="{c7e51b81-8463-48ea-8ce9-c9e0ee06f975}" x="0" y="-21" name=""/>
+        <terminal uuid="{c7e51b81-8463-48ea-8ce9-c9e0ee06f975}" type="Generic" x="0" y="-20" orientation="n" name="A1"/>
+        <terminal uuid="{93dabc0a-a6e8-4c0a-8d1c-c67b65a575e3}" type="Generic" x="0" y="20" orientation="s" name="A2"/>
     </description>
 </definition>

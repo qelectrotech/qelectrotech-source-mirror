@@ -55,7 +55,7 @@
         <text rotation="0" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" text="CAN" color="#000000"/>
         <dynamic_text rotation="0" uuid="{1cebdd4c-34c7-4e87-a7ba-02c8f840637e}" text_width="-1" z="34" frame="false" x="220" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" y="29.5" Halignment="AlignLeft" Valignment="AlignTop">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text rotation="0" x="-276" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" text="1" color="#000000"/>
         <text rotation="0" x="-195" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" text="5" color="#000000"/>

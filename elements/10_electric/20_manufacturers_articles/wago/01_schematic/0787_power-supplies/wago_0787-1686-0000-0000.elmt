@@ -36,7 +36,7 @@
         <text y="-13" color="#000000" text="V out-" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="20"/>
         <dynamic_text frame="false" Valignment="AlignTop" y="-58" text_width="-1" text_from="ElementInfo" z="14" uuid="{d641be1e-6bff-4cb4-8118-2f498044cd16}" font="Sans Serif,8,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" rotation="0" x="-37">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text y="-33" color="#000000" text="V out+" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="20"/>
         <circle y="27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5"/>

@@ -1,8 +1,8 @@
 <definition link_type="simple" type="element" version="0.80" width="50" hotspot_y="19" hotspot_x="24" height="40">
     <uuid uuid="{a86902d2-4aae-4be5-a22a-c099817573fc}"/>
     <names>
-        <name lang="fr">
-Transformateur à deux enroulements</name>
+        <name lang="de">Transformator 1ph.</name>
+        <name lang="fr">Transformateur à deux enroulements</name>
         <name lang="cs">Trafo se dvěma vinutími</name>
     </names>
     <elementInformations/>

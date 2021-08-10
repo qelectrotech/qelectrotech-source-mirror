@@ -33,7 +33,7 @@
         <text y="-27" text="WAGO 750-523" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-331"/>
         <dynamic_text y="-42.5" frame="false" Halignment="AlignLeft" text_width="-1" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" rotation="0" uuid="{ece5f8d6-5485-4241-b11b-80e08bca7bcb}" z="19" x="219">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text y="58" text="1" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-197"/>
         <text y="58" text="2" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-117"/>

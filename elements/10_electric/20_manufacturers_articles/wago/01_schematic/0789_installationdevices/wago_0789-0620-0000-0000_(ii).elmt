@@ -22,8 +22,11 @@
     </informations>
     <description>
         <input size="9" x="42" y="-50" rotate="true" text="1 Wdg." tagg="none"/>
-        <text size="9" x="15" y="30" text="MB-Adr.:"/>
-        <input size="9" x="93" y="-21" rotate="true" text="1 Wdg." tagg="none"/>
+        <input size="9" x="87" y="-21" rotate="true" text="1 Wdg." tagg="none"/>
+        <text size="9" x="15" y="25" text="MB-Adr.:"/>
+        <input size="9" x="65" y="21" rotate="true" text="1" tagg="none"/>
+        <text size="9" x="15" y="38" text="Termin.:"/>
+        <input size="9" x="65" y="34" rotate="true" text="on" tagg="none"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-42.5" y="77.5" diameter="5"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="10" width="10" y="-55" angle="180" start="180"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="-20" width="10" y="-55" angle="180" start="180"/>
@@ -34,7 +37,6 @@
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="-10" width="10" y="-35" angle="180" start="180"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="20" width="10" y="-55" angle="180" start="180"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="0" width="10" y="-55" angle="180" start="180"/>
-        <input size="9" x="65" y="25" rotate="true" text="1" tagg="none"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-140" length1="1.5" y2="80" y1="-70" length2="1.5" end2="none" x2="-140" end1="none"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="-20" width="10" y="-35" angle="180" start="180"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" x="-30" width="10" y="-35" angle="180" start="180"/>

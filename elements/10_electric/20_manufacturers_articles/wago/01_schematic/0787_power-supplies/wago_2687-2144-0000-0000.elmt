@@ -22,13 +22,12 @@
     </informations>
     <description>
         <rect width="100" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0" x="-50" antialias="false" height="140" y="-70"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="47.5" antialias="true" y="27.5"/>
-        <text text="13" x="-13" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="61"/>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" length2="1.5" antialias="false" length1="1.5" end2="none" x1="43" x2="47" y2="25"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="47.5" antialias="true" y="-12.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-12.5" antialias="true" y="67.5"/>
-        <text text="WAGO" x="-2.9" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="270" y="9"/>
-        <text text="14" x="7" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="61"/>
+        <text text="WAGO" x="-3" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="270" y="9"/>
+        <text text="2687-2144" x="10" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="270" y="19"/>
+        <text text="13" x="-13" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="63"/>
+        <text text="14" x="7" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="63"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-52.5" antialias="true" y="-2.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="47.5" antialias="true" y="-52.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="7.5" antialias="true" y="67.5"/>
@@ -37,19 +36,13 @@
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-52.5" antialias="true" y="-22.5"/>
         <text text="1" x="-27" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-58"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="47.5" antialias="true" y="-32.5"/>
-        <dynamic_text z="18" frame="false" uuid="{7887e1bf-7914-4463-9f3a-9d4e58ed52ff}" Valignment="AlignVCenter" text_from="ElementInfo" x="-5" Halignment="AlignHCenter" text_width="-1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-51">
+        <dynamic_text text_from="ElementInfo" Halignment="AlignLeft" x="-54" keep_visual_rotation="true" y="-86" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" Valignment="AlignBottom" z="16" uuid="{7887e1bf-7914-4463-9f3a-9d4e58ed52ff}" frame="false">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length2="1.5" antialias="false" length1="1.5" end2="none" x1="43" x2="47" y2="5"/>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-57" length2="1.5" antialias="false" length1="1.5" end2="none" x1="45" x2="45" y2="-53"/>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-55" length2="1.5" antialias="false" length1="1.5" end2="none" x1="43" x2="47" y2="-55"/>
-        <text text="L1" x="-47" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-43"/>
+        <text text="L" x="-47" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-43"/>
         <text text="N" x="-47" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-23"/>
         <text text="PE" x="-47" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-3"/>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" length2="1.5" antialias="false" length1="1.5" end2="none" x1="43" x2="47" y2="-15"/>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-37" length2="1.5" antialias="false" length1="1.5" end2="none" x1="45" x2="45" y2="-33"/>
-        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length2="1.5" antialias="false" length1="1.5" end2="none" x1="43" x2="47" y2="-35"/>
         <arc width="5" angle="-175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.5" antialias="true" height="3.3332" start="0" y="-63"/>
         <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-62" length2="1.5" antialias="false" length1="1.5" end2="none" x1="20" x2="21.5" y2="-62"/>
         <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-62" length2="1.5" antialias="false" length1="1.5" end2="none" x1="17" x2="18.5" y2="-62"/>
@@ -58,7 +51,21 @@
         <arc width="5" angle="-175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21.5" antialias="true" height="3.8334" start="180" y="-62.8334"/>
         <line end1="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="50" length2="1.5" antialias="true" length1="1.5" end2="none" x1="50" x2="-50" y2="50"/>
         <line end1="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="50" length2="1.5" antialias="false" length1="1.5" end2="none" x1="0" x2="0" y2="-70"/>
-        <text text="2687-2144" x="10" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="270" y="19"/>
+
+        <text color="#000000" x="42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-53" text="+"/>
+        <text color="#000000" x="42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-33" text="+"/>
+        <text color="#000000" x="42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-13" text="−"/>
+        <text color="#000000" x="42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="7" text="−"/>
+        <text color="#000000" x="-62" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="-44" text="X1.1"/>
+        <text color="#000000" x="-62" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="-24" text="X1.2"/>
+        <text color="#000000" x="-62" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="-4" text="X1.3"/>
+        <text color="#000000" x="51" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="-54" text="X2.1"/>
+        <text color="#000000" x="51" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="-34" text="X2.2"/>
+        <text color="#000000" x="51" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="-14" text="X2.3"/>
+        <text color="#000000" x="51" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="6" text="X2.4"/>
+        <text color="#000000" x="-24" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="76" text="X2.5"/>
+        <text color="#000000" x="-4" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="76" text="X2.6"/>
+
         <terminal orientation="e" x="50" y="-30"/>
         <terminal orientation="w" x="-50" y="0"/>
         <terminal orientation="e" x="50" y="-10"/>
@@ -68,6 +75,5 @@
         <terminal orientation="w" x="-50" y="-40"/>
         <terminal orientation="s" x="-10" y="70"/>
         <terminal orientation="w" x="-50" y="-20"/>
-        <terminal orientation="e" x="50" y="30"/>
     </description>
 </definition>

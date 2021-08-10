@@ -1,6 +1,7 @@
 <definition link_type="simple" type="element" version="0.80" width="50" hotspot_y="16" hotspot_x="24" height="30">
     <uuid uuid="{3a401a8c-2087-4a75-b13b-ef6474f241c8}"/>
     <names>
+        <name lang="de">Spule mit Kern</name>
         <name lang="fr">Transformateur</name>
         <name lang="cs">Tlumivka s jádrem</name>
     </names>

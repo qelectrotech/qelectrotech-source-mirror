@@ -24,7 +24,7 @@
         <text rotation="0" text="L4-" x="121" color="#000000" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <dynamic_text rotation="0" text_from="ElementInfo" Halignment="AlignLeft" x="220" uuid="{9c032c5f-5a94-4959-be58-30ac52c6e079}" text_width="-1" z="16" y="29.5" frame="false" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text rotation="0" text="AI4-" x="281" color="#000000" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" text="16" x="286" color="#000000" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

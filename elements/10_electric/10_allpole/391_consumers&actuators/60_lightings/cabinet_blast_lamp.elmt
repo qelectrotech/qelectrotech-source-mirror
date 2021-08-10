@@ -1,31 +1,35 @@
-<definition width="40" version="0.5" height="80" type="element" hotspot_y="34" link_type="simple" hotspot_x="5">
-    <uuid uuid="{1cb3184a-7fc1-4f6e-8658-82ca424ff447}"/>
+<definition link_type="simple" type="element" width="40" height="80" hotspot_x="12" hotspot_y="39" version="0.90">
+    <uuid uuid="{bb0b5190-5afa-4098-a217-bd0a1e07ed90}"/>
     <names>
-        <name lang="en">Cabiner balast lamp</name>
         <name lang="es">Gabinete de balastra para lampara</name>
+        <name lang="de">Entladungs-/ Leuchtstofflampe</name>
         <name lang="cs">Výbojka, zářivka</name>
+        <name lang="en">Cabiner balast lamp</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <text text="PE" x="18" y="-1" size="6"/>
-        <circle diameter="4.47214" antialias="true" x="4.76393" y="34.7639" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc start="0" angle="-180" width="14" height="10" antialias="true" x="0" y="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="4.47214" antialias="true" x="21.7639" y="2.7639" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="4.47214" antialias="true" x="4.76393" y="-29.2361" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc start="180" angle="-180" width="14" height="10" antialias="true" x="0" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="14" y2="-8" length1="1.5" y1="17" end2="none" length2="1.5" antialias="false" x2="14" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="0" y2="-7" length1="1.5" y1="19" end2="none" length2="1.5" antialias="false" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="7" y2="31" length1="1.5" y1="34" end2="none" length2="1.5" antialias="false" x2="7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="5" y2="9" length1="1.5" y1="1" end2="none" length2="1.5" antialias="false" x2="9" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="9" y2="9" length1="1.5" y1="1" end2="none" length2="1.5" antialias="false" x2="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text text="L" x="12" y="-19" size="6"/>
-        <text text="N" x="13" y="36" size="6"/>
-        <line x1="7" y2="23" length1="1.5" y1="31" end2="none" length2="1.5" antialias="false" x2="7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="7" y2="-14" length1="1.5" y1="-25" end2="none" length2="1.5" antialias="false" x2="7" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line x1="22" y2="5" length1="1.5" y1="5" end2="none" length2="1.5" antialias="false" x2="14" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input rotate="true" text="_" tagg="label" x="22" y="-25" size="9"/>
-        <terminal orientation="n" x="7" y="-29"/>
-        <terminal orientation="s" x="7" y="39"/>
-        <terminal orientation="e" x="26" y="5"/>
+        <text x="11" text="PE" rotation="0" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-6"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214" x="-2.23607" y="27.7639"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7" width="14" angle="-180" height="10" start="0" y="8"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214" x="17.7639" y="-2.2361"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214" x="-2.23607" y="-32.2361"/>
+        <arc antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7" width="14" angle="-180" height="10" start="180" y="-18"/>
+        <line x2="7" length2="1.5" y1="12" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13" length1="1.5" x1="7" end1="none"/>
+        <line x2="-7" length2="1.5" y1="13" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" length1="1.5" x1="-7" end1="none"/>
+        <line x2="2" length2="1.5" y1="-4" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" length1="1.5" x1="-2" end1="none"/>
+        <line x2="-2" length2="1.5" y1="-4" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" length1="1.5" x1="2" end1="none"/>
+        <text x="6" text="L" rotation="0" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-22"/>
+        <text x="6" text="N" rotation="0" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="31"/>
+        <line x2="0" length2="1.5" y1="27" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" length1="1.5" x1="0" end1="none"/>
+        <line x2="0" length2="1.5" y1="-27" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18" length1="1.5" x1="0" end1="none"/>
+        <line x2="7" length2="1.5" y1="0" end2="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length1="1.5" x1="18" end1="none"/>
+        <dynamic_text text_width="-1" keep_visual_rotation="false" Halignment="AlignLeft" frame="false" x="15" rotation="0" uuid="{dd0b3767-39d1-42c5-8662-e5a9a300a60b}" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-41.5" Valignment="AlignTop" z="17">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="s" type="Generic" x="0" uuid="{537f179a-3358-4ad7-a4e2-bc82f32d4432}" name="" y="30"/>
+        <terminal orientation="n" type="Generic" x="0" uuid="{382d429d-ef48-47e2-b41f-a5872a4252a7}" name="" y="-30"/>
+        <terminal orientation="e" type="Generic" x="20" uuid="{138f159d-da25-4dff-9dcb-105ea67e0444}" name="" y="0"/>
     </description>
 </definition>

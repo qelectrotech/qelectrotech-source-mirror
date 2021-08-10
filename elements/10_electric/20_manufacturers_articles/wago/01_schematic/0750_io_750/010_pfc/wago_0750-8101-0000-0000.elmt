@@ -63,6 +63,8 @@
         <text x="205" y="-42" rotation="0" text="4" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text x="285" y="-42" rotation="0" text="8" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text x="-138" y="45" rotation="0" text="PFC100 CS 2ETH" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <circle antialias="true" x="-362.5" y="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <circle antialias="true" x="-362.5" y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <circle antialias="true" x="-42.5" y="-42.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>

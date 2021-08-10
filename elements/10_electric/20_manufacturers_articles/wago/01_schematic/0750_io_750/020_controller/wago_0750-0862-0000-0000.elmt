@@ -44,6 +44,8 @@
         <text text="24V" rotation="0" color="#000000" y="-22" x="-279" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text text="Eth1" rotation="0" color="#000000" y="4" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text text="Ethernet ECO Controller" rotation="0" color="#000000" y="45" x="-138" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <terminal orientation="w" name="Eth1" y="0" x="-360"/>
         <terminal orientation="w" name="Eth2" y="20" x="-360"/>
         <terminal orientation="n" name="24V.1" y="-40" x="-280"/>

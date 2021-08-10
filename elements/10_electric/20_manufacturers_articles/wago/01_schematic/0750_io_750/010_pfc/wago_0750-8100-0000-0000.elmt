@@ -40,6 +40,8 @@
         <text rotation="0" x="-279" text="24V" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text rotation="0" x="-355" text="Eth1" y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text rotation="0" x="-138" text="PFC100 CS 2ETH ECO" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-362.5" antialias="true" diameter="5" y="17.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-362.5" antialias="true" diameter="5" y="-2.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5" antialias="true" diameter="5" y="-42.5"/>

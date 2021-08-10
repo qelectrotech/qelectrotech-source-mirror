@@ -1,49 +1,54 @@
-<definition width="60" version="0.4" hotspot_x="24" hotspot_y="35" height="70" link_type="simple" type="element" ic="true">
-<uuid uuid="{64E3E9B9-8FF4-45FC-A942-154ABF73BC85}"/><names>
-        <name lang="ar">محرّك سداسي الأوجه</name>
-        <name lang="de">6-Phasen Motor</name>
+<definition link_type="simple" height="70" type="element" version="0.90" hotspot_x="24" width="60" hotspot_y="34">
+    <uuid uuid="{0824f8cf-41f9-4899-bbc2-82bd068535f3}"/>
+    <names>
+        <name lang="de">Drehstrom-Motor (6 Anschlüsse)</name>
         <name lang="ru">Шестифазный эл. мотор</name>
-        <name lang="pt">Motor de seis fases (duplo enrolamento)</name>
-        <name lang="en">Six-phase engine</name>
-        <name lang="it">Motore trifase doppio avvolgimento</name>
-        <name lang="fr">Moteur triphasé (double enroulement)</name>
-        <name lang="pl">Silnik trójfazowy</name>
-        <name lang="es">Motor trifásico 6 polos</name>
         <name lang="nl">DraaistroomMotor 3 fasen 6 aansluitingen</name>
         <name lang="cs">Trojfázový motor</name>
+        <name lang="fr">Moteur triphasé (double enroulement)</name>
+        <name lang="es">Motor trifásico 6 polos</name>
+        <name lang="ar">محرّك سداسي الأوجه</name>
+        <name lang="pt">Motor de seis fases (duplo enrolamento)</name>
+        <name lang="it">Motore trifase doppio avvolgimento</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="en">Six-phase engine</name>
     </names>
+    <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="4" x="4" y="4.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
-        <arc width="33" x="-16" y="-16" antialias="true" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black" start="27" angle="-60"/>
-        <text x="24" y="-23" size="4" text="W1"/>
-        <text x="4" y="-24" size="4" text="V1"/>
-        <text x="24" y="28" size="4" text="W2"/>
-        <text x="-16" y="28" size="4" text="U2"/>
-        <text x="4" y="28" size="4" text="V2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="0" y2="30" x2="0"/>
-        <text x="-6" y="0" size="11" text="M"/>
-        <input x="50" y="0.5" size="9" text="M_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-15" x2="0"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="-20" y2="-20" x2="-20" y3="-11" x3="-11"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="20" y2="-20" x2="20" y3="-11" x3="11"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="-20" y2="20" x2="-20" y3="11" x3="-11"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="20" y2="20" x2="20" y3="11" x3="11"/>
-        <text x="-16" y="-23" size="4" text="U1"/>
-        <polygon x4="24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="17" y2="0" x2="24" y3="5" x3="24" y4="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="20" y2="5" x2="28"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="21" y2="7" x2="27"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="23" y2="9" x2="25"/>
-        <text x="-8" y="11" size="9" text="3"/>
-        <arc width="4" x="0" y="4.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <terminal x="-20" y="30" orientation="s"/>
-        <terminal x="20" y="30" orientation="s"/>
-        <terminal x="-20" y="-30" orientation="n"/>
-        <terminal x="20" y="-30" orientation="n"/>
-        <terminal x="0" y="-31" orientation="n"/>
-        <terminal x="0" y="30" orientation="s"/>
-        <terminal x="24" y="0" orientation="n"/>
+        <arc y="5.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" antialias="true" x="0" height="3" width="4" angle="-180"/>
+        <circle y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-15" diameter="30"/>
+        <arc y="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="27" antialias="true" x="-16" height="32" width="33" angle="-60"/>
+        <text y="-23" color="#000000" text="W1" x="24" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text y="-23" color="#000000" text="V1" x="4" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text y="28" color="#000000" text="W2" x="24" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text y="28" color="#000000" text="U2" x="-16" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text y="28" color="#000000" text="V2" x="4" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" end2="none" length2="1.5" y1="15" x1="0" length1="1.5" x2="0"/>
+        <text y="0" color="#000000" text="M" x="-6" font="Sans Serif,11,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <dynamic_text y="-11" x="50" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false" uuid="{4969ff35-1df5-42fc-a1f8-3bb8cfafc123}" Halignment="AlignLeft" rotation="0" frame="false" z="11" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" antialias="false" end2="none" length2="1.5" y1="-30" x1="0" length1="1.5" x2="0"/>
+        <polygon y3="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" y1="-30" x1="-20" x2="-20" closed="false" x3="-11"/>
+        <polygon y3="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" antialias="false" y1="-30" x1="20" x2="20" closed="false" x3="11"/>
+        <polygon y3="11" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" y1="30" x1="-20" x2="-20" closed="false" x3="-11"/>
+        <polygon y3="11" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" y1="30" x1="20" x2="20" closed="false" x3="11"/>
+        <text y="-23" color="#000000" text="U1" x="-16" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <polygon y3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x4="24" antialias="false" y1="0" x1="17" x2="24" closed="false" x3="24" y4="5"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" antialias="false" end2="none" length2="1.5" y1="5" x1="20" length1="1.5" x2="28"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" antialias="false" end2="none" length2="1.5" y1="7" x1="21" length1="1.5" x2="27"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9" antialias="false" end2="none" length2="1.5" y1="9" x1="23" length1="1.5" x2="25"/>
+        <text y="11" color="#000000" text="3" x="-8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <arc y="5.5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" x="4" height="3" width="4" angle="-180"/>
+        <terminal y="30" name="U2" x="-20" uuid="{5529b2c6-acdf-459e-aa49-92b77d357137}" type="Generic" orientation="s"/>
+        <terminal y="30" name="W2" x="20" uuid="{89579bca-27ff-4e5a-9c0c-1874b37abc0e}" type="Generic" orientation="s"/>
+        <terminal y="-30" name="U1" x="-20" uuid="{1eb250d6-75e7-4db6-bbcc-18244247c9df}" type="Generic" orientation="n"/>
+        <terminal y="-30" name="W1" x="20" uuid="{359a9276-dd65-44c2-8778-d82184af3900}" type="Generic" orientation="n"/>
+        <terminal y="-30" name="V1" x="0" uuid="{0f2eb340-a507-4742-ae9c-3c5b2fa4ccdc}" type="Generic" orientation="n"/>
+        <terminal y="30" name="V2" x="0" uuid="{6695b0df-2f4c-41ce-a392-5a096a02efec}" type="Generic" orientation="s"/>
+        <terminal y="0" name="PE" x="24" uuid="{15ce6a37-e57c-49eb-80ce-cb0ef01c6fd4}" type="Generic" orientation="n"/>
     </description>
 </definition>

@@ -61,6 +61,8 @@
         </dynamic_text>
         <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="8" color="#000000" x="285" rotation="0"/>
         <text y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Ethernet-Controller" color="#000000" x="-138" rotation="0"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <arc y="-12.5" start="90" style="line-style:normal;line-weight:normal;filling:white;color:black" angle="180" antialias="true" x="360" height="5" width="5"/>
         <arc y="7.5" start="90" style="line-style:normal;line-weight:normal;filling:white;color:black" angle="180" antialias="true" x="360" height="5" width="5"/>
         <dynamic_text y="29.5" frame="false" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="54" Valignment="AlignTop" x="220" rotation="0" uuid="{d30a4e74-bcda-4935-91db-205b517de3f4}" text_from="ElementInfo" Halignment="AlignLeft">

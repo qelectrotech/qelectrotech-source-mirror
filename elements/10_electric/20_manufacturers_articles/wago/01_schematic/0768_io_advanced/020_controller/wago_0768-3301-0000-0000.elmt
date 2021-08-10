@@ -60,6 +60,8 @@
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <arc start="90" y="-12.5" angle="180" width="5" x="360" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
         <arc start="90" y="7.5" angle="180" width="5" x="360" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
         <terminal y="-40" orientation="n" x="-40"/>

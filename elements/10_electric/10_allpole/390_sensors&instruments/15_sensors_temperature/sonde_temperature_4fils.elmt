@@ -1,42 +1,36 @@
-<definition hotspot_x="24" link_type="simple" width="60" version="0.70" type="element" hotspot_y="15" height="40">
-    <uuid uuid="{ddfbbfd8-54dd-4078-adc4-6fba6b977894}"/>
+<definition height="40" link_type="simple" type="element" width="60" version="0.90" hotspot_y="24" hotspot_x="29">
+    <uuid uuid="{756451fe-3608-48d2-b417-b65d9d9ed3e4}"/>
     <names>
-        <name lang="cs">Snímač teploty 4 vodiče</name>
-        <name lang="pl">Czujnik temperatury</name>
         <name lang="en">Temperature sensor 4 wire</name>
         <name lang="fr">Sonde de temperature 4 fils</name>
-        <name lang="it">Sonda di temperatura</name>
-        <name lang="de">Temperaturfühler</name>
         <name lang="nl">Temperatuur sensor</name>
+        <name lang="pl">Czujnik temperatury</name>
+        <name lang="cs">Snímač teploty 4 vodiče</name>
+        <name lang="de">Temperaturfühler</name>
         <name lang="es">Sensor de temperatura</name>
+        <name lang="it">Sonda di temperatura</name>
         <name lang="el">Αισθητήρας θερμοκρασίας</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <dynamic_text text_from="ElementInfo" Valignment="AlignTop" x="-7" z="1" frame="false" y="-15.5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" rotation="0" uuid="{e858b8a4-392c-4210-9875-5c5b9d4474d2}" Halignment="AlignLeft">
+        <polygon x5="25" y1="-20" y3="0" closed="false" x3="10" y4="0" antialias="false" y5="-20" x2="15" x4="25" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="15"/>
+        <polygon x5="-15" y1="-20" y3="0" closed="false" x3="-10" y4="-10" antialias="false" y5="-20" x2="-25" x4="-15" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-25"/>
+        <dynamic_text keep_visual_rotation="true" text_from="ElementInfo" text_width="-1" z="3" Valignment="AlignTop" Halignment="AlignLeft" uuid="{e858b8a4-392c-4210-9875-5c5b9d4474d2}" x="-12" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" y="-25.5">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line y2="10" end2="none" length1="1.5" x1="-10" y1="10" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
-        <line y2="10" end2="none" length1="1.5" x1="20" y1="10" x2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
-        <dynamic_text text_from="UserText" Valignment="AlignTop" x="-5" z="4" frame="false" y="23" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" rotation="0" uuid="{248791a5-4c4b-4f63-82c0-4b3fe8bfa7ac}" Halignment="AlignLeft">
+        <dynamic_text keep_visual_rotation="true" text_from="UserText" text_width="-1" z="6" Valignment="AlignTop" Halignment="AlignLeft" uuid="{248791a5-4c4b-4f63-82c0-4b3fe8bfa7ac}" x="-10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" y="13">
             <text>S_</text>
         </dynamic_text>
-        <rect ry="0" x="-5" y="5" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="10"/>
-        <polygon x3="10" y2="20" y4="0" y3="0" x4="15" x1="-5" closed="false" y1="20" x2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true"/>
-        <line y2="10" end2="none" length1="1.5" x1="-6" y1="10" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
-        <line y2="-9" end2="none" length1="1.5" x1="-20" y1="10" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
-        <line y2="10" end2="none" length1="1.5" x1="15" y1="10" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
-        <line y2="10" end2="none" length1="1.5" x1="30" y1="-10" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
-        <text x="-18" color="#000000" text="+" y="19" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
-        <text x="21" color="#000000" text="-" y="19" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
-        <polygon x3="-10" y2="0" y4="-10" y3="-10" x4="-10" x1="-5" closed="false" y1="10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
-        <polygon x3="15" x5="15" y2="0" y4="10" y3="10" x4="15" y5="10" x1="20" closed="false" y6="10" y1="-10" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x6="15"/>
-        <terminal x="20" orientation="n" y="-10"/>
-        <terminal x="-20" orientation="n" y="-10"/>
-        <terminal x="30" orientation="n" y="-10"/>
-        <terminal x="-10" orientation="n" y="-10"/>
+        <rect height="10" rx="0" width="20" antialias="false" x="-10" ry="0" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="10" y3="-10" closed="false" x3="5" y4="-10" antialias="true" x2="-5" x4="10" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <text color="#000000" x="-23" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="+" rotation="0" y="9"/>
+        <text color="#000000" x="16" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="-" rotation="0" y="9"/>
+        <terminal name="" type="Generic" uuid="{e44d5434-4ce8-4da2-b9d2-19060d21f3af}" x="15" y="-20" orientation="n"/>
+        <terminal name="" type="Generic" uuid="{07b0efc0-5045-46b0-aa84-658da17b4f44}" x="-25" y="-20" orientation="n"/>
+        <terminal name="" type="Generic" uuid="{76ae8b68-2c15-4d8d-b759-dd6accd75537}" x="25" y="-20" orientation="n"/>
+        <terminal name="" type="Generic" uuid="{18f7d690-6b89-4a04-9461-791c66ee8669}" x="-15" y="-20" orientation="n"/>
     </description>
 </definition>

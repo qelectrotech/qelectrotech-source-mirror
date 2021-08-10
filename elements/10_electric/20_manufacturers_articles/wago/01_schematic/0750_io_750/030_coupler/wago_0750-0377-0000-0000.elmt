@@ -39,6 +39,8 @@
         <text text="Eth1" rotation="0" y="4" color="#000000" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text text="ProfiNet IO advanced ECO Coupler" rotation="0" y="45" color="#000000" x="-138" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <line length1="1.5" end2="none" y2="17.5" length2="1.5" x2="-360" antialias="false" x1="-360" y1="2.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <circle diameter="5" y="17.5" antialias="true" x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <circle diameter="5" y="-2.5" antialias="true" x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <circle diameter="5" y="-42.5" antialias="true" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
