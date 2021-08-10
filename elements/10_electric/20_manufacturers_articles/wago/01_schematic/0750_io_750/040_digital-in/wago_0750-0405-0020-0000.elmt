@@ -32,7 +32,7 @@
         <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5"/>
         <dynamic_text frame="false" text_from="ElementInfo" z="20" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" uuid="{97a40ea3-20e1-42a7-bd4a-1a19c1b98224}" Halignment="AlignLeft" y="29.5" Valignment="AlignTop" x="220">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <line length1="1.5" x2="-40" end1="circle" antialias="false" length2="1.5" x1="-40" end2="none" y2="-40" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8.5"/>
         <line length1="1.5" x2="-120" end1="none" antialias="false" length2="1.5" x1="-120" end2="none" y2="-40" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-10"/>

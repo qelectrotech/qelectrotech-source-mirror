@@ -74,6 +74,9 @@
         <text text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" rotation="0" x="205"/>
         <text text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" rotation="0" x="285"/>
         <text text="PFC200 CS 2ETH RS" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="105" rotation="0" x="-137"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
+        <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X3" x="-371" rotation="0" color="#000000"/>
         <arc width="5" angle="180" height="5" y="-12.5" start="90" antialias="true" x="360" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <arc width="5" angle="180" height="5" y="7.5" start="90" antialias="true" x="360" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <terminal orientation="w" y="20" x="-360"/>

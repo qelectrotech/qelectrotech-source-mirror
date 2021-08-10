@@ -1,29 +1,31 @@
-<definition hotspot_y="15" type="element" height="30" width="60" hotspot_x="29" link_type="simple" version="0.5">
-    <uuid uuid="{3408823a-37c5-436e-9770-9214313ce209}"/>
+<definition type="element" link_type="simple" hotspot_y="16" hotspot_x="24" version="0.90" height="30" width="50">
+    <uuid uuid="{520d77da-5555-4cac-8875-21031d13650e}"/>
     <names>
-        <name lang="cs">Vodorovný ampérmetr</name>
-        <name lang="nl">Amperemeter</name>
-        <name lang="it">Amperometro orizzontale</name>
-        <name lang="ru">Амперметр (горизонтальный)</name>
         <name lang="pt">Amperímetro horizontal</name>
-        <name lang="de">Amperemeter waagerecht</name>
         <name lang="el">Αμπερόμετρο οριζόντιο</name>
-        <name lang="en">Horizontal ammeter</name>
-        <name lang="fr">Ampèremètre horizontal</name>
-        <name lang="es">Amperímetro horizontal</name>
-        <name lang="pl">Amperomierz (poziomo)</name>
+        <name lang="ru">Амперметр (горизонтальный)</name>
         <name lang="ar">أمبيرمتر أفقي</name>
+        <name lang="fr">Ampèremètre horizontal</name>
+        <name lang="en">Horizontal ammeter</name>
+        <name lang="es">Amperímetro horizontal</name>
+        <name lang="nl">Amperemeter</name>
+        <name lang="pl">Amperomierz (poziomo)</name>
+        <name lang="cs">Vodorovný ampérmetr</name>
+        <name lang="it">Amperometro orizzontale</name>
+        <name lang="de">Amperemeter waagerecht</name>
     </names>
+    <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input text="_" rotate="true" y="-12.5" size="9" x="9" tagg="label"/>
-        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-1.75" y2="0" end1="none" y1="0" x2="1.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="10" y2="0" end1="none" y1="0" x2="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end2="none" length2="1.5" length1="1.5" antialias="false" x1="-21" y2="0" end1="none" y1="0" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x3="5" closed="false" y3="6" antialias="true" x1="-5" y2="-6" y1="6" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="20" antialias="true" y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal y="0" orientation="w" x="-21"/>
-        <terminal y="0" orientation="e" x="21"/>
+        <line y1="0" length2="1.5" end1="none" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-20" y2="0" x2="20"/>
+        <circle y="-10" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="20" antialias="true" x="-10"/>
+        <dynamic_text text_width="-1" y="-24" uuid="{19218c38-62ae-4b89-875e-82b6d38b8b4b}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" frame="false" z="3" Valignment="AlignTop" x="9" rotation="0" text_from="ElementInfo" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="2" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000" text="A" x="-5" rotation="0"/>
+        <terminal type="Generic" y="0" uuid="{ebcdd160-7d65-4378-8fc2-d8e95e6a51fc}" name="A2" x="20" orientation="e"/>
+        <terminal type="Generic" y="0" uuid="{d550f696-cf33-4673-bb70-25827bfd01cd}" name="A1" x="-20" orientation="w"/>
     </description>
 </definition>

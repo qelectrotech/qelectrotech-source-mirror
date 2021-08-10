@@ -76,6 +76,10 @@
         <text y="-42" color="#000000" x="205" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="4" rotation="0"/>
         <text y="-42" color="#000000" x="285" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="8" rotation="0"/>
         <text y="105" color="#000000" x="-137" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="PFC200 G2 2xETH 2xSFP" rotation="0"/>
+        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
+        <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X11" x="-376" rotation="0" color="#000000"/>
+        <text y="69" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X12" x="-376" rotation="0" color="#000000"/>
         <arc y="-12.5" x="360" angle="180" width="5" height="5" start="90" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <arc y="7.5" x="360" angle="180" width="5" height="5" start="90" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <dynamic_text text_from="ElementInfo" y="89.5" Halignment="AlignLeft" x="221" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="60" text_width="-1" rotation="0" Valignment="AlignTop" uuid="{70d0a65b-d385-4a32-864c-89d9d47f6fcb}" frame="false">

@@ -1,27 +1,31 @@
-<definition height="30" version="0.5" link_type="simple" width="20" hotspot_x="10" hotspot_y="24" type="element">
-    <uuid uuid="{378b2ec9-5e30-4c43-9395-e6a172aa83e1}"/>
+<definition version="0.90" type="element" height="30" width="20" hotspot_y="14" hotspot_x="10" link_type="simple">
+    <uuid uuid="{161c506c-ae0e-4ceb-8581-01d4fe4c8826}"/>
     <names>
+        <name lang="pt">Condensador</name>
         <name lang="ru">Конденсатор</name>
+        <name lang="en">Capacitor</name>
+        <name lang="fr">Capacité</name>
+        <name lang="nl">Condensator</name>
+        <name lang="cs">Kondenzátor</name>
+        <name lang="es">Condensador</name>
         <name lang="de">Kondensator</name>
         <name lang="el">Πυκνωτής</name>
         <name lang="pl">Kondensator</name>
         <name lang="ar">مُكثّف</name>
-        <name lang="es">Condensador</name>
         <name lang="it">Condensatore</name>
-        <name lang="en">Capacitor</name>
-        <name lang="cs">Kondenzátor</name>
-        <name lang="pt">Condensador</name>
-        <name lang="fr">Capacité</name>
-        <name lang="nl">Condensator</name>
     </names>
+    <elementInformations/>
     <informations>EN 60617: 04-02-01</informations>
     <description>
-        <input tagg="label" y="-9.45" size="9" rotate="true" text="_" x="6"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="-20"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="0" x1="0" end1="none" y2="0"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-8"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" length1="1.5" antialias="false" end2="none" length2="1.5" x2="5" x1="-5" end1="none" y2="-12"/>
-        <terminal y="-20" orientation="n" x="0"/>
-        <terminal y="0" orientation="s" x="0"/>
+        <dynamic_text rotation="0" keep_visual_rotation="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" Halignment="AlignLeft" uuid="{901e8b84-ddf6-4239-93a0-7655a4773937}" y="-10.95" z="1" x="6" text_from="ElementInfo" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="0" y2="-10" end2="none" length2="1.5" y1="-2" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5"/>
+        <line x1="0" y2="10" end2="none" length2="1.5" y1="2" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5"/>
+        <line x1="-5" y2="2" end2="none" length2="1.5" y1="2" antialias="false" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5"/>
+        <line x1="-5" y2="-2" end2="none" length2="1.5" y1="-2" antialias="false" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5"/>
+        <terminal uuid="{3ecc9f2a-2cf9-4ddf-bb07-4ed5e09e858c}" type="Generic" y="-10" orientation="n" x="0" name="A1"/>
+        <terminal uuid="{d03cacf3-9414-4ab3-a9df-f27305622496}" type="Generic" y="10" orientation="s" x="0" name="A2"/>
     </description>
 </definition>

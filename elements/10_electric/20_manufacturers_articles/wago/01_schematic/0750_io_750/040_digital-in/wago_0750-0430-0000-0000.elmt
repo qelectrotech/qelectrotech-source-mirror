@@ -20,7 +20,7 @@
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" text="0V" y="8" x="-355" rotation="0"/>
         <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="5" text_from="ElementInfo" Valignment="AlignTop" y="29.5" x="220" frame="false" Halignment="AlignLeft" rotation="0" uuid="{2f49425f-c91c-4e11-a448-7f828cafa2d6}" text_width="-1">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="2" y="-42" x="-116" rotation="0"/>
         <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="DI3" y="-24" x="-119" rotation="0"/>

@@ -36,6 +36,12 @@
         <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-282.5"/>
         <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="37.5"/>
         <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-42.5"/>
+        <polygon y2="-10" y1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="-12.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <polygon y2="10" y1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="7.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <polygon y2="30" y1="30" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="27.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
         <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="2" x="-116"/>
         <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="7" x="125"/>
         <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="5" x="-196"/>
