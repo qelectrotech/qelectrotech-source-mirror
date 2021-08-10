@@ -1,0 +1,32 @@
+<definition height="50" link_type="simple" hotspot_y="24" type="element" hotspot_x="20" version="0.90" width="40">
+    <uuid uuid="{c1ce42b8-d345-44c0-b3ac-83f70037f518}"/>
+    <names>
+        <name lang="pl">Licznik warogodzin</name>
+        <name lang="cs">Jalový elektroměr</name>
+        <name lang="fr">Varheuremètre</name>
+        <name lang="it">Misuratore di varh</name>
+        <name lang="en">Var hour meter</name>
+        <name lang="nl">VAr energie meter</name>
+        <name lang="de">Blindverbrauchszähler</name>
+        <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
+        <name lang="el">Μετρητής, Βαρώρια</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-10" x2="-10" end1="none" length1="1.5" y1="-20" y2="20" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="10" x2="10" end1="none" length1="1.5" y1="-20" y2="20" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect height="30" ry="0" x="-15" y="-15" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="30"/>
+        <dynamic_text Halignment="AlignLeft" text_from="ElementInfo" text_width="-1" x="15" y="-21.5" z="4" keep_visual_rotation="false" uuid="{c6273b25-dae0-4113-8bf7-29bb12749b73}" rotation="0" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-13" y="7.3333" text="varh" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <line x1="-15" x2="15" end1="none" length1="1.5" y1="-7" y2="-7" antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="10" y="-20" type="Generic" name="N" uuid="{33064eff-e1af-48fe-887b-ab577ad81ca0}" orientation="n"/>
+        <terminal x="10" y="20" type="Generic" name="N.1" uuid="{c5518603-6161-4a2b-be7d-9d45f8157319}" orientation="s"/>
+        <terminal x="-10" y="-20" type="Generic" name="L1" uuid="{a5a22122-75a8-4814-b3d2-5d3247066c46}" orientation="n"/>
+        <terminal x="-10" y="20" type="Generic" name="L1.1" uuid="{a1f83453-2a04-444f-a6f1-190c10eb5fec}" orientation="s"/>
+    </description>
+</definition>

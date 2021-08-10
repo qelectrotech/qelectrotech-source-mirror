@@ -1,0 +1,37 @@
+<definition hotspot_x="20" type="element" hotspot_y="24" version="0.90" height="50" width="40" link_type="simple">
+    <uuid uuid="{2806b336-89a6-46ab-bcee-e9fc42c642f9}"/>
+    <names>
+        <name lang="en">Energy meter</name>
+        <name lang="cs">Elektroměr</name>
+        <name lang="pl">Licznik energii</name>
+        <name lang="ar">عدّاد طاقة</name>
+        <name lang="fr">Compteur d’énergie</name>
+        <name lang="nl">Energiemeter</name>
+        <name lang="de">Energiezähler 3ph.</name>
+        <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
+        <name lang="it">Misuratore di Kwh</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line end2="none" x2="4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" x1="4" y1="-20" y2="20"/>
+        <line end2="none" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" x1="-10" y1="-20" y2="20"/>
+        <line end2="none" x2="-4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" x1="-4" y1="-20" y2="20"/>
+        <line end2="none" x2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" x1="10" y1="-20" y2="20"/>
+        <rect y="-15" x="-15" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" height="30" ry="0" rx="0" width="30"/>
+        <dynamic_text rotation="0" y="-21.5" z="4" keep_visual_rotation="false" Valignment="AlignTop" Halignment="AlignLeft" x="15" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" uuid="{c6273b25-dae0-4113-8bf7-29bb12749b73}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" y="8.3333" text="kWh" x="-13" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <line end2="none" x2="15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" x1="-15" y1="-7" y2="-7"/>
+        <terminal y="-20" orientation="n" type="Generic" x="-4" name="L2" uuid="{33064eff-e1af-48fe-887b-ab577ad81ca0}"/>
+        <terminal y="20" orientation="s" type="Generic" x="-4" name="L2.1" uuid="{c5518603-6161-4a2b-be7d-9d45f8157319}"/>
+        <terminal y="-20" orientation="n" type="Generic" x="-10" name="L1" uuid="{a5a22122-75a8-4814-b3d2-5d3247066c46}"/>
+        <terminal y="20" orientation="s" type="Generic" x="-10" name="L1.1" uuid="{a1f83453-2a04-444f-a6f1-190c10eb5fec}"/>
+        <terminal y="20" orientation="s" type="Generic" x="4" name="L3.1" uuid="{43ba7e78-26a4-4cb8-9c95-7fd02fa9daa2}"/>
+        <terminal y="-20" orientation="n" type="Generic" x="4" name="L3" uuid="{afeb6676-ad4b-4f6a-936b-084dad546edd}"/>
+        <terminal y="-20" orientation="n" type="Generic" x="10" name="N" uuid="{6ce99a63-094a-4eed-a207-754ee9696a3f}"/>
+        <terminal y="20" orientation="s" type="Generic" x="10" name="N.1" uuid="{65e81e88-b24a-40b7-bd25-034b6e9a8232}"/>
+    </description>
+</definition>

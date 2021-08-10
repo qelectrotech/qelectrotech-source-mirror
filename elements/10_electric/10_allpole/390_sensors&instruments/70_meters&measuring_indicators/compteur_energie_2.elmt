@@ -1,0 +1,31 @@
+<definition type="element" link_type="simple" version="0.90" hotspot_x="20" hotspot_y="24" height="50" width="40">
+    <uuid uuid="{2c68992c-3b84-4779-92fb-24fda069806a}"/>
+    <names>
+        <name lang="it">Misuratore di Kwh</name>
+        <name lang="en">Energy meter</name>
+        <name lang="pl">Licznik energii</name>
+        <name lang="de">Energiezähler</name>
+        <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
+        <name lang="ar">عدّاد طاقة</name>
+        <name lang="fr">Compteur d’énergie</name>
+        <name lang="cs">Elektroměr</name>
+        <name lang="nl">Energiemeter</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line y2="20" x1="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="-10" end1="none" y1="-20" length2="1.5" antialias="false"/>
+        <line y2="20" x1="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="10" end1="none" y1="-20" length2="1.5" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" ry="0" height="30" x="-15" rx="0" width="30" y="-15" antialias="false"/>
+        <dynamic_text rotation="0" uuid="{c6273b25-dae0-4113-8bf7-29bb12749b73}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="false" text_from="ElementInfo" Valignment="AlignTop" x="15" Halignment="AlignLeft" z="4" text_width="-1" y="-21.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" text="kWh" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-13" y="8.3333"/>
+        <line y2="-7" x1="-15" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="15" end1="none" y1="-7" length2="1.5" antialias="false"/>
+        <terminal uuid="{c5518603-6161-4a2b-be7d-9d45f8157319}" type="Generic" orientation="s" x="10" name="N.1" y="20"/>
+        <terminal uuid="{33064eff-e1af-48fe-887b-ab577ad81ca0}" type="Generic" orientation="n" x="10" name="N" y="-20"/>
+        <terminal uuid="{a5a22122-75a8-4814-b3d2-5d3247066c46}" type="Generic" orientation="n" x="-10" name="L1" y="-20"/>
+        <terminal uuid="{a1f83453-2a04-444f-a6f1-190c10eb5fec}" type="Generic" orientation="s" x="-10" name="L1.1" y="20"/>
+    </description>
+</definition>
