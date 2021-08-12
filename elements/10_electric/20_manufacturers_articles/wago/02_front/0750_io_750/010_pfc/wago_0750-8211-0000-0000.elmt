@@ -20,7 +20,7 @@
         <rect x="-10.62" y="-64.44" height="6.66" width="2.13" antialias="false" rx="0" style="line-style:normal;line-weight:thin;filling:red;color:black" ry="0"/>
         <dynamic_text text_from="ElementInfo" x="-58.52" y="-35.07" z="6" text_width="-1" font="Sans Serif,2.86,-1,5,25,0,0,0,0,0" frame="false" uuid="{8bec14fe-bf32-4490-a42a-ec6187457f25}" Halignment="AlignLeft" rotation="0" Valignment="AlignTop">
             <text></text>
-            <info_name>plant</info_name>
+            <info_name>label</info_name>
         </dynamic_text>
         <polygon y4="7.6" y1="-0.97" x2="-60.81" x4="-68.02" x1="-68.02" x3="-60.81" y3="7.6" y2="-0.97" antialias="false" style="line-style:normal;line-weight:none;filling:gray;color:black"/>
         <polygon y4="14.97" y1="-8.34" x2="-47.32" x4="-49.95" x1="-49.95" x3="-47.32" y3="14.97" y2="-8.34" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
