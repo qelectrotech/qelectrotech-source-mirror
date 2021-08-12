@@ -1,19 +1,19 @@
 <definition type="element" width="730" link_type="simple" height="100" hotspot_y="46" hotspot_x="366" version="0.80">
     <names>
-        <name lang="ar">750-352/040-000</name>
-        <name lang="it">750-352/040-000</name>
-        <name lang="fr">750-352/040-000</name>
-        <name lang="en">750-352/040-000</name>
-        <name lang="nl">750-352/040-000</name>
-        <name lang="es">750-352/040-000</name>
-        <name lang="pl">750-352/040-000</name>
-        <name lang="pt">750-352/040-000</name>
-        <name lang="el">750-352/040-000</name>
-        <name lang="de">750-352/040-000</name>
-        <name lang="cs">750-352/040-000</name>
+        <name lang="ar">750-362</name>
+        <name lang="it">750-362</name>
+        <name lang="fr">750-362</name>
+        <name lang="en">750-362</name>
+        <name lang="nl">750-362</name>
+        <name lang="es">750-362</name>
+        <name lang="pl">750-362</name>
+        <name lang="pt">750-362</name>
+        <name lang="el">750-362</name>
+        <name lang="de">750-362</name>
+        <name lang="cs">750-362</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-352/040-000</elementInformation>
+        <elementInformation name="designation" show="1">750-362</elementInformation>
         <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
     </elementInformations>
     <informations>
@@ -26,8 +26,8 @@
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <text rotation="0" color="#000000" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330" text="WAGO 750-352/040-000"/>
-        <text rotation="0" color="#000000" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-138" text="Ethernet ECO Coupler"/>
+        <text rotation="0" color="#000000" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330" text="WAGO 750-362"/>
+        <text rotation="0" color="#000000" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-138" text="Coupler Modbus TCP"/>
         <text rotation="0" color="#000000" y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-317" text="IP Adr.:"/>
         <dynamic_text rotation="0" Valignment="AlignTop" y="-11.5" frame="false" text_from="UserText" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" uuid="{2a4edf8b-b990-41e3-8e67-5e2dea578790}" x="-270" z="8" Halignment="AlignLeft">
             <text>192.168.1.1</text>

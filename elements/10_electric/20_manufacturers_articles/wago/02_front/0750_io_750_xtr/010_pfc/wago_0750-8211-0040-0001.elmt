@@ -25,7 +25,7 @@
     <rect x="84.52" y="-88.33" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72" height="2.86" antialias="false"/>
     <dynamic_text x="-40.02" y="-36.78" z="11" font="Sans Serif,2.86,-1,5,25,0,0,0,0,0" uuid="{8bec14fe-bf32-4490-a42a-ec6187457f25}" frame="false" rotation="0" text_from="ElementInfo" Halignment="AlignLeft" Valignment="AlignTop" text_width="-1">
       <text/>
-      <info_name>plant</info_name>
+      <info_name>label</info_name>
     </dynamic_text>
     <rect x="7.88" y="-64.44" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:red;color:black" width="2.13" height="6.66" antialias="false"/>
     <text x="92.76" y="-100.34" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="E" color="#f3f3f3" rotation="0"/>
