@@ -1,0 +1,147 @@
+<definition width="720" hotspot_y="153" type="element" height="260" hotspot_x="355" link_type="simple" version="0.90">
+    <uuid uuid="{b8909285-7302-492f-afe5-2c3cd5c3453d}"/>
+    <names>
+        <name lang="fr">SOFREL S4 TH</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect y="-120" width="710" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-350" antialias="false" height="220" ry="0" rx="0"/>
+        <text y="-85" x="215" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="DI" color="#000000"/>
+        <text y="-85" x="-105" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="AI T°" color="#000000"/>
+        <rect y="-77" width="73" style="line-style:normal;line-weight:none;filling:none;color:black" x="-331" antialias="false" height="121" ry="0" rx="0"/>
+        <polygon y4="85" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="210" closed="false" antialias="false" y2="90" x3="215" x4="225" y5="85" x1="210" x5="225" y3="90" y1="100"/>
+        <polygon y4="85" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="250" closed="false" antialias="false" y2="90" x3="255" x4="265" y5="85" x1="250" x5="265" y3="90" y1="100"/>
+        <polygon y4="85" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="170" closed="false" antialias="false" y2="90" x3="175" x4="185" y5="85" x1="170" x5="185" y3="90" y1="100"/>
+        <polygon y4="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="190" closed="false" antialias="false" y2="90" x3="185" x4="185" x1="190" y3="90" y1="100"/>
+        <rect y="-65" width="190" style="line-style:normal;line-weight:hight;filling:none;color:black" x="-5" antialias="false" height="110" ry="0" rx="0"/>
+        <rect y="-65" width="175" style="line-style:normal;line-weight:hight;filling:none;color:black" x="185" antialias="false" height="110" ry="0" rx="0"/>
+        <polygon y4="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="270" closed="false" antialias="false" y2="90" x3="265" x4="265" x1="270" y3="90" y1="100"/>
+        <polygon y4="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="230" closed="false" antialias="false" y2="90" x3="225" x4="225" x1="230" y3="90" y1="100"/>
+        <text y="-100" x="-265" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1" color="#000000"/>
+        <text y="-100" x="-245" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="-224" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="2" color="#000000"/>
+        <text y="-100" x="-204" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="-185" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="3" color="#000000"/>
+        <text y="-100" x="-160" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="-140" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="4" color="#000000"/>
+        <text y="-100" x="-120" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="-70" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="5" color="#000000"/>
+        <text y="-100" x="-50" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="-30" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="6" color="#000000"/>
+        <text y="-100" x="-10" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="10" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="7" color="#000000"/>
+        <text y="-100" x="30" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="50" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="8" color="#000000"/>
+        <text y="-100" x="130" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1" color="#000000"/>
+        <text y="-100" x="150" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="2" color="#000000"/>
+        <text y="-100" x="170" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="3" color="#000000"/>
+        <text y="-100" x="190" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="4" color="#000000"/>
+        <text y="-100" x="210" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="-100" x="230" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="5" color="#000000"/>
+        <text y="-100" x="250" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="6" color="#000000"/>
+        <text y="-100" x="270" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="7" color="#000000"/>
+        <text y="-100" x="290" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="8" color="#000000"/>
+        <text y="-100" x="310" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <rect y="-65" width="180" style="line-style:normal;line-weight:hight;filling:none;color:black" x="-183" antialias="false" height="110" ry="0" rx="0"/>
+        <text y="93" x="-341" rotation="0" font="MS Shell Dlg 2,14,-1,5,75,0,0,0,0,0,Gras" text="LACROIX" color="#000000"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="120" closed="false" antialias="false" y2="-90" x3="210" x1="120" y3="-90" y1="-120"/>
+        <text y="90" x="-225" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="0V" color="#000000"/>
+        <text y="90" x="-205" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="24V" color="#000000"/>
+        <text y="90" x="-180" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="-" color="#000000"/>
+        <text y="90" x="-160" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="+" color="#000000"/>
+        <text y="80" x="-70" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="80" x="-50" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1" color="#000000"/>
+        <text y="80" x="-30" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="80" x="-10" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="2" color="#000000"/>
+        <text y="80" x="10" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="80" x="30" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="3" color="#000000"/>
+        <text y="80" x="50" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <text y="80" x="70" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="4" color="#000000"/>
+        <text y="80" x="180" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1" color="#000000"/>
+        <text y="80" x="220" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="2" color="#000000"/>
+        <text y="80" x="260" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="3" color="#000000"/>
+        <text y="80" x="300" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="4" color="#000000"/>
+        <polygon y4="85" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="290" closed="false" antialias="false" y2="90" x3="295" x4="305" y5="85" x1="290" x5="305" y3="90" y1="100"/>
+        <polygon y4="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="310" closed="false" antialias="false" y2="90" x3="305" x4="305" x1="310" y3="90" y1="100"/>
+        <rect y="-138" width="10" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-311" antialias="false" height="60" ry="0" rx="0"/>
+        <ellipse y="-148" width="10" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-311" antialias="false" height="20"/>
+        <text y="28.9764" x="-298.362" rotation="270" font="MS Shell Dlg 2,14,-1,5,75,0,0,0,0,0,Gras" text="SOFREL" color="#000000"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="160" closed="false" antialias="false" y2="60" x3="235" x1="160" y3="60" y1="100"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-230" closed="false" antialias="false" y2="60" x3="-200" x1="-230" y3="60" y1="100"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-80" closed="false" antialias="false" y2="60" x3="-10" x1="-80" y3="60" y1="100"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70" end1="none" antialias="false" y2="80" length1="1.5" x1="-70" length2="1.5" y1="100"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-50" end1="none" antialias="false" y2="80" length1="1.5" x1="-50" length2="1.5" y1="100"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" end1="none" antialias="false" y2="100" length1="1.5" x1="-30" length2="1.5" y1="80"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" antialias="false" y2="100" length1="1.5" x1="-10" length2="1.5" y1="80"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" antialias="false" y2="100" length1="1.5" x1="10" length2="1.5" y1="80"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" end1="none" antialias="false" y2="100" length1="1.5" x1="30" length2="1.5" y1="80"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="50" end1="none" antialias="false" y2="100" length1="1.5" x1="50" length2="1.5" y1="80"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="70" end1="none" antialias="false" y2="100" length1="1.5" x1="70" length2="1.5" y1="80"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-150" closed="false" antialias="false" y2="60" x3="-180" x1="-150" y3="60" y1="100"/>
+        <polygon y4="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="90" closed="false" antialias="false" y2="-90" x3="10" x4="-70" x1="90" y3="-90" y1="-120"/>
+        <polygon y4="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-280" closed="false" antialias="false" y2="-90" x3="-110" x4="-110" x1="-280" y3="-90" y1="-120"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="330" closed="false" antialias="false" y2="-90" x3="235" x1="330" y3="-90" y1="-120"/>
+        <rect y="-50" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-320" antialias="false" height="80" ry="5" rx="5"/>
+        <polygon y4="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="80" closed="false" antialias="false" y2="60" x3="10" x4="10" x1="80" y3="60" y1="100"/>
+        <text y="59.727" x="-6.7244" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="AO" color="#000000"/>
+        <text y="60" x="-197.39" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="DC" color="#000000"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="320" closed="false" antialias="false" y2="60" x3="250" x1="320" y3="60" y1="100"/>
+        <text y="59" x="236" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="DO" color="#000000"/>
+        <text y="-40" x="-130" rotation="0" font="MS Shell Dlg 2,10,-1,5,75,0,0,0,0,0,Gras" text="RS485" color="#000000"/>
+        <polygon y4="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="50" closed="false" antialias="false" y2="-28" x3="140" x4="140" x1="50" y3="-28" y1="45"/>
+        <polygon y4="46.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-145" closed="false" antialias="false" y2="-26.5" x3="-55" x4="-55" x1="-145" y3="-26.5" y1="46.5"/>
+        <text y="-100" x="70" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="C" color="#000000"/>
+        <polygon y4="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="226" closed="false" antialias="false" y2="-28" x3="316" x4="316" x1="226" y3="-28" y1="45"/>
+        <terminal y="-120" orientation="n" name="" x="170" type="Generic" uuid="{363888fc-9db6-45be-9a29-844a0c44999d}"/>
+        <terminal y="-120" orientation="n" name="8" x="290" type="Generic" uuid="{c6f79136-090f-4207-ada5-d0c48c415977}"/>
+        <terminal y="100" orientation="s" name="" x="-10" type="Generic" uuid="{e007a298-ea54-4fd6-8dc5-2b794e610d7a}"/>
+        <terminal y="100" orientation="s" name="" x="250" type="Generic" uuid="{cb8d783f-b76f-47b5-bc20-50fcb5b70f71}"/>
+        <terminal y="-120" orientation="n" name="" x="250" type="Generic" uuid="{a566d58f-0a44-4174-843f-ce15119531db}"/>
+        <terminal y="-120" orientation="n" name="" x="210" type="Generic" uuid="{2f293f5e-715a-4cec-8851-76439820cdc4}"/>
+        <terminal y="-120" orientation="n" name="" x="-120" type="Generic" uuid="{761be4b1-c8a7-4b9f-94c1-a8c95e959bc5}"/>
+        <terminal y="-120" orientation="n" name="" x="190" type="Generic" uuid="{a8b776c9-7115-4070-8527-89bcee8e100e}"/>
+        <terminal y="-120" orientation="n" name="" x="-200" type="Generic" uuid="{c493d8da-d55f-4c4e-b2e1-7276bfd9002d}"/>
+        <terminal y="-120" orientation="n" name="" x="-260" type="Generic" uuid="{fa712905-ccb8-4a08-a37e-55dd62741e90}"/>
+        <terminal y="100" orientation="s" name="" x="-50" type="Generic" uuid="{336e863e-7fbb-4676-a717-98e8f7eea752}"/>
+        <terminal y="-120" orientation="n" name="" x="310" type="Generic" uuid="{6e0434a9-3dec-432c-85a0-3b32f30dff81}"/>
+        <terminal y="100" orientation="s" name="" x="-160" type="Generic" uuid="{b7690a4a-8171-4236-960a-b3b52481839e}"/>
+        <terminal y="-120" orientation="n" name="" x="-180" type="Generic" uuid="{9802ef34-cb12-40a6-8aff-60b86308200b}"/>
+        <terminal y="-120" orientation="n" name="" x="150" type="Generic" uuid="{4cd5b15a-558f-4245-9214-9ddbbfac000c}"/>
+        <terminal y="100" orientation="s" name="" x="270" type="Generic" uuid="{eaa5f126-65e5-46f5-997f-6b967ee9bf05}"/>
+        <terminal y="-120" orientation="n" name="" x="-160" type="Generic" uuid="{7cc8cebb-ebca-4694-beb9-3ed978ca8677}"/>
+        <terminal y="100" orientation="s" name="" x="190" type="Generic" uuid="{68897252-81ab-4dd2-a352-cdd39e596699}"/>
+        <terminal y="-120" orientation="n" name="1C" x="-240" type="Generic" uuid="{fe096d95-de6f-4b9f-9248-ade0be76d35e}"/>
+        <terminal y="-120" orientation="n" name="" x="-10" type="Generic" uuid="{9b1d5109-3624-43ac-a2d8-ff7d749a84e3}"/>
+        <terminal y="10" orientation="s" name="" x="-120" type="Generic" uuid="{165611bf-f78c-4b2f-a1e1-7c6d2bffe58a}"/>
+        <terminal y="-120" orientation="n" name="" x="270" type="Generic" uuid="{c89340c8-0557-48bf-9b04-214b6881f841}"/>
+        <terminal y="10" orientation="s" name="" x="-110" type="Generic" uuid="{7c844597-491f-4ae2-a30a-3e0bf4bec94b}"/>
+        <terminal y="100" orientation="s" name="" x="70" type="Generic" uuid="{1bd0a057-a0d6-44e2-84dc-4e7617379f98}"/>
+        <terminal y="10" orientation="s" name="" x="-90" type="Generic" uuid="{0952ad06-27d2-47ce-815a-c9de96c1940e}"/>
+        <terminal y="-120" orientation="n" name="1" x="130" type="Generic" uuid="{d8663191-c303-4c42-ae29-09821b666157}"/>
+        <terminal y="-120" orientation="n" name="" x="-30" type="Generic" uuid="{f78f06e1-f621-4178-bc2d-119908481cd2}"/>
+        <terminal y="100" orientation="s" name="" x="310" type="Generic" uuid="{115ba7e0-b6b8-4995-9b88-a6568e70ed8c}"/>
+        <terminal y="100" orientation="s" name="" x="170" type="Generic" uuid="{0582e1b5-fe35-4b02-9a53-5ed7f7a99ca3}"/>
+        <terminal y="100" orientation="s" name="" x="-30" type="Generic" uuid="{9df52604-0580-45a1-a832-a15699f4c718}"/>
+        <terminal y="-120" orientation="n" name="" x="30" type="Generic" uuid="{9077fd6e-2138-41f4-a4e7-6f3cd461c5e6}"/>
+        <terminal y="-120" orientation="n" name="" x="230" type="Generic" uuid="{6e2fb43c-844e-4eb7-9222-580dd8287226}"/>
+        <terminal y="100" orientation="s" name="" x="10" type="Generic" uuid="{4043c88f-8bf1-4a96-8b5e-951aa434785d}"/>
+        <terminal y="100" orientation="s" name="" x="50" type="Generic" uuid="{5249ca91-536a-4fe0-84bd-4d085472cf8a}"/>
+        <terminal y="-120" orientation="n" name="" x="70" type="Generic" uuid="{c5c625ba-6637-4037-8205-417308c13401}"/>
+        <terminal y="-120" orientation="n" name="" x="-50" type="Generic" uuid="{315a1727-bdb8-45d7-a336-4950e15f6ebb}"/>
+        <terminal y="100" orientation="s" name="" x="-70" type="Generic" uuid="{267e65a4-2d64-43fe-a30b-87d0b58065be}"/>
+        <terminal y="100" orientation="s" name="" x="-200" type="Generic" uuid="{155af723-19f7-49fb-bf66-94547b242b7a}"/>
+        <terminal y="-120" orientation="n" name="" x="-220" type="Generic" uuid="{e213a5d8-7896-4522-bc7f-2f06e508f777}"/>
+        <terminal y="100" orientation="s" name="" x="-220" type="Generic" uuid="{feff34c0-d148-40aa-bc5a-f52b41ff2786}"/>
+        <terminal y="-120" orientation="n" name="" x="10" type="Generic" uuid="{32b4925d-be56-4ea7-a8a9-e59fe78c2805}"/>
+        <terminal y="100" orientation="s" name="" x="290" type="Generic" uuid="{8df9ec4f-099e-4796-bcd0-e52060c0f0df}"/>
+        <terminal y="100" orientation="s" name="" x="230" type="Generic" uuid="{a05af83d-07c4-48d2-a33a-053deddcbe26}"/>
+        <terminal y="-120" orientation="n" name="" x="-140" type="Generic" uuid="{be2cc9e2-77af-433b-9529-079d1fa2cf21}"/>
+        <terminal y="100" orientation="s" name="" x="210" type="Generic" uuid="{28ec6ba6-b210-45a0-8be6-71bbb7902ff6}"/>
+        <terminal y="-120" orientation="n" name="" x="-70" type="Generic" uuid="{429fa27d-c62a-4a31-826f-1218b739a739}"/>
+        <terminal y="10" orientation="s" name="" x="-100" type="Generic" uuid="{8671ef7f-3a1b-487f-9b0c-9b1080eabcfc}"/>
+        <terminal y="100" orientation="s" name="" x="-180" type="Generic" uuid="{5113cf07-aea7-421f-92ea-5b00d78d3b97}"/>
+        <terminal y="100" orientation="s" name="" x="30" type="Generic" uuid="{6bcef7e5-0f93-49ee-ba74-b015c68b286c}"/>
+        <terminal y="-120" orientation="n" name="" x="50" type="Generic" uuid="{9c93881b-ea60-453e-b2d3-1803dfc807d3}"/>
+    </description>
+</definition>

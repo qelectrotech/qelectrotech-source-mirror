@@ -1,0 +1,39 @@
+<definition height="90" link_type="simple" width="130" hotspot_y="9" hotspot_x="5" version="0.90" type="element">
+    <uuid uuid="{8490ecc9-abee-47ab-afed-9ffbb55e472d}"/>
+    <names>
+        <name lang="fr">Module IF DP</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Wilo</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Module IF DP</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <line x2="30" length1="1.5" y2="2.25" end1="none" antialias="false" y1="0.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" end2="none" length2="1.5"/>
+        <circle x="27.5" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="2.75"/>
+        <rect height="20" x="100" width="20" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <rect height="20" x="80" width="20" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <rect height="20" x="40" width="20" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <rect height="20" x="60" width="20" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <rect height="20" x="20" width="20" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <rect height="70" x="0" width="120" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <text rotation="0" text="DP" color="#000000" x="27" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="15"/>
+        <text rotation="0" text="DP" color="#000000" x="7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="15"/>
+        <rect height="20" x="0" width="20" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0"/>
+        <line x2="120" length1="1.5" y2="60" end1="none" antialias="false" y1="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end2="none" length2="1.5"/>
+        <line x2="10" length1="1.5" y2="2" end1="none" antialias="false" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" end2="none" length2="1.5"/>
+        <circle x="7.5" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="2.5"/>
+        <text rotation="0" text="WILO" color="#000000" x="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="70"/>
+        <terminal orientation="n" x="10" y="0" uuid="{e565da01-3da3-41ac-9b72-487134129f5f}" name="DP" type="Generic"/>
+        <terminal orientation="n" x="30" y="1" uuid="{c1e92912-a369-4356-8509-5ba8093183a4}" name="DP" type="Generic"/>
+    </description>
+</definition>

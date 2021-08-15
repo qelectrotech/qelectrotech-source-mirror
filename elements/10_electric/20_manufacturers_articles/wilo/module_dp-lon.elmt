@@ -1,0 +1,50 @@
+<definition type="element" hotspot_y="6" version="0.90" width="130" height="80" link_type="simple" hotspot_x="5">
+    <uuid uuid="{b8591547-0a93-4989-b3f4-f1000073e54d}"/>
+    <names>
+        <name lang="fr">Module IF DP-LON</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description">Module IF DP-LON</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Wilo</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <line x1="90" antialias="false" y1="0" end1="none" end2="none" x2="90" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="2"/>
+        <line x1="50" antialias="false" y1="0.25" end1="none" end2="none" x2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="2.25"/>
+        <line x1="110" antialias="false" y1="0" end1="none" end2="none" x2="110" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="2"/>
+        <line x1="30" antialias="false" y1="0.25" end1="none" end2="none" x2="30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="2.25"/>
+        <line x1="70" antialias="false" y1="0.25" end1="none" end2="none" x2="70" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="2.25"/>
+        <circle antialias="false" y="2.75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="27.5"/>
+        <rect antialias="false" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="100" rx="0"/>
+        <circle antialias="false" y="2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="87.5"/>
+        <circle antialias="false" y="2.25" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="107.5"/>
+        <circle antialias="false" y="2.75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="67.5"/>
+        <circle antialias="false" y="2.75" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="47.5"/>
+        <rect antialias="false" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="80" rx="0"/>
+        <rect antialias="false" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="40" rx="0"/>
+        <rect antialias="false" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="60" rx="0"/>
+        <rect antialias="false" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="20" rx="0"/>
+        <rect antialias="false" y="0" width="120" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="0" rx="0"/>
+        <text y="15" text="DP" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="27" rotation="0"/>
+        <text y="15" text="LON" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="85" rotation="0"/>
+        <text y="15" text="LON" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="105" rotation="0"/>
+        <text y="15" text="DP" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="7" rotation="0"/>
+        <rect antialias="false" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="0" rx="0"/>
+        <line x1="0" antialias="false" y1="60" end1="none" end2="none" x2="120" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="60"/>
+        <line x1="10" antialias="false" y1="0" end1="none" end2="none" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="2"/>
+        <circle antialias="false" y="2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="7.5"/>
+        <terminal type="Generic" y="1" orientation="n" x="90" name="SBM" uuid="{0ca58caa-38ad-4397-b32c-51819c4ca5c4}"/>
+        <terminal type="Generic" y="0" orientation="n" x="10" name="DP" uuid="{e565da01-3da3-41ac-9b72-487134129f5f}"/>
+        <terminal type="Generic" y="0" orientation="n" x="110" name="SBM" uuid="{593c7baa-5fdf-44d8-b557-8472d4c12911}"/>
+        <terminal type="Generic" y="1" orientation="n" x="30" name="DP" uuid="{c1e92912-a369-4356-8509-5ba8093183a4}"/>
+    </description>
+</definition>
