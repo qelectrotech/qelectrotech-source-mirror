@@ -2,6 +2,7 @@
     <uuid uuid="{a9abc5f7-020e-4b5e-b4e8-c0d39290d384}"/>
     <names>
         <name lang="cs">Převodník RS485 na I2C</name>
+	<name lang="fr">Převodník RS485/name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

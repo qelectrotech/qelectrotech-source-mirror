@@ -1,0 +1,55 @@
+<definition width="130" hotspot_y="6" link_type="simple" type="element" hotspot_x="5" height="80" version="0.90">
+    <uuid uuid="{a917422f-caeb-4da4-8228-c84c67a151dc}"/>
+    <names>
+        <name lang="fr">Module IF Ext.Off- SBM</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Wilo</elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description">Module IF Ext.Off- SBM</elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="62" text="Ext.Off"/>
+        <line y2="2" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="90" x1="90" y1="0"/>
+        <line y2="2.25" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="50" x1="50" y1="0.25"/>
+        <line y2="2" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="110" x1="110" y1="0"/>
+        <line y2="2.25" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" x1="30" y1="0.25"/>
+        <line y2="2.25" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="70" x1="70" y1="0.25"/>
+        <circle y="2.75" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27.5"/>
+        <rect y="0" rx="0" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="100" height="20"/>
+        <circle y="2.5" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="87.5"/>
+        <circle y="2.25" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="107.5"/>
+        <circle y="2.75" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="67.5"/>
+        <circle y="2.75" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="47.5"/>
+        <rect y="0" rx="0" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="80" height="20"/>
+        <rect y="0" rx="0" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="40" height="20"/>
+        <rect y="0" rx="0" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="60" height="20"/>
+        <rect y="0" rx="0" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="20" height="20"/>
+        <rect y="0" rx="0" width="120" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="0" height="70"/>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="27" text="DP"/>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="42.2975" text="Ext.Off"/>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="85" text="SBM"/>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="105" text="SBM"/>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="7" text="DP"/>
+        <rect y="0" rx="0" width="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="0" height="20"/>
+        <line y2="60" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="120" x1="0" y1="60"/>
+        <text y="45" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="0" text="SBM:contact sec pour report état demarche&#xa;(contact normalement ouvert,&#xa;fermé si état de marche)"/>
+        <line y2="2" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" x1="10" y1="0"/>
+        <circle y="2.5" diameter="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.5"/>
+        <terminal y="0" uuid="{df545b3c-1c59-4f20-b93a-ce3ea40e6317}" type="Generic" orientation="n" x="70" name="Ext.Off"/>
+        <terminal y="1" uuid="{c1e92912-a369-4356-8509-5ba8093183a4}" type="Generic" orientation="n" x="30" name="DP"/>
+        <terminal y="0" uuid="{e565da01-3da3-41ac-9b72-487134129f5f}" type="Generic" orientation="n" x="10" name="DP"/>
+        <terminal y="1" uuid="{0ca58caa-38ad-4397-b32c-51819c4ca5c4}" type="Generic" orientation="n" x="90" name="SBM"/>
+        <terminal y="0" uuid="{593c7baa-5fdf-44d8-b557-8472d4c12911}" type="Generic" orientation="n" x="110" name="SBM"/>
+        <terminal y="0" uuid="{c7d4b215-3105-4ddc-84e1-75ca79175853}" type="Generic" orientation="n" x="50" name="Ext.Off"/>
+    </description>
+</definition>

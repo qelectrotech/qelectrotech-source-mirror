@@ -2,6 +2,7 @@
     <uuid uuid="{cf96e002-281b-4d6c-b61e-99b1c3713b64}"/>
     <names>
         <name lang="de">ESP8266</name>
+	<name lang="fr">ESP8266</name>
     </names>
     <elementInformations/>
     <informations></informations>
