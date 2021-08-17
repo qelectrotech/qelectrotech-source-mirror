@@ -29,6 +29,7 @@
 #include "terminalstriptreewidget.h"
 #include "../../qeticons.h"
 #include "terminalstripmodel.h"
+#include "../diagram.h"
 
 #include <QTreeWidgetItem>
 
@@ -48,6 +49,29 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
+
+		//Go the diagram of double clicked terminal
+	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, [this](auto index)
+	{
+		Element *elmt = nullptr;
+		if (this->m_model->isXrefCell(index, &elmt))
+		{
+			auto diagram = elmt->diagram();
+			if (diagram)
+			{
+				diagram->showMe();
+				if (diagram->views().size())
+				{
+					auto fit_view = elmt->sceneBoundingRect();
+					fit_view.adjust(-200,-200,200,200);
+					diagram->views().first()->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
+				}
+			}
+		}
+	});
+	connect(ui->m_table_widget, &QAbstractItemView::entered, [this](auto index) {
+		qDebug() <<"entered";
+	});
 }
 
 /**

@@ -42,6 +42,8 @@ class TerminalStripModel : public QAbstractTableModel
 
 		QHash<Element *, ElementData> editedTerminalsData() const;
 
+		bool isXrefCell(const QModelIndex &index, Element **element = nullptr);
+
 	private:
 		void fillRealTerminalData();
 		static ElementData modifiedData(const ElementData &original_data, const RealTerminalData &edited_data);

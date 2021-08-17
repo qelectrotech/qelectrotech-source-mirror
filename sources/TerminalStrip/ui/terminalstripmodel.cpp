@@ -239,6 +239,32 @@ QHash<Element *, ElementData> TerminalStripModel::editedTerminalsData() const
 	return returned_hash;
 }
 
+/**
+ * @brief TerminalStripModel::isXrefCell
+ * @param index
+ * @param elmt : Pointer of a pointer element
+ * @return true if the index is the Xref cell, if true the pointer \p element
+ * will be set to the element associated to the cell.
+ */
+bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
+{
+	if (index.model() == this && index.isValid())
+	{
+		if (index.column() == XREF_CELL)
+		{
+			if (index.row() < m_real_terminal_data.size())
+			{
+				auto data = m_real_terminal_data.at(index.row());
+				*element = m_terminal_strip->elementForRealTerminal(data.m_real_terminal);
+
+			}
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void TerminalStripModel::fillRealTerminalData()
 {
 	if (m_terminal_strip) {
