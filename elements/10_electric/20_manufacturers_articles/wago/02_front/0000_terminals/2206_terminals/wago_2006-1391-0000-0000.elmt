@@ -1,0 +1,18 @@
+<definition type="element" width="6" height="154" version="0.80" hotspot_x="2" hotspot_y="85" link_type="simple">
+  <names>
+    <name lang="fr">2006-1391 term.-plate gray</name>
+    <name lang="de">2006-1391 Abschluss grau</name>
+    <name lang="en">2006-1391 term.-plate gray</name>
+    <name lang="cs">2006-1391 Koncová deska šedá</name>
+  </names>
+  <elementInformations>
+    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    <elementInformation name="designation" show="1">2006-1391</elementInformation>
+  </elementInformations>
+  <informations>Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+  <description>
+    <polygon x1="-1" x2="-1" x3="1" x4="1" y1="65.01" y2="-81.65" y3="-81.65" y4="65.01" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" antialias="false"/>
+  </description>
+</definition>
