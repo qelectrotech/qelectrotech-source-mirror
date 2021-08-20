@@ -159,6 +159,7 @@ void AboutQETDialog::setVersion()
 void AboutQETDialog::setAnnexProject()
 {
 	addLibrary(ui->m_annex_project_label, tr("redimensionneur d'éléments", "Element scaler"),  "https://github.com/plc-user/QET_ElementScaler");
+	addLibrary(ui->m_annex_project_label, tr("Générateur d'élément lambda", "Lambda element generator"), "https://github.com/asnigma/qet_gen_element");
 }
 
 /**
