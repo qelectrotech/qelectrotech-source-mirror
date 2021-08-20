@@ -44,6 +44,7 @@ class AboutQETDialog : public QDialog
 		void setTranslators();
 		void setContributors();
 		void setVersion();
+		void setAnnexProject();
 		void setLibraries();
 		void setLicence();
 		void setLoginfo();

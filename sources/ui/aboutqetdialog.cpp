@@ -38,6 +38,7 @@ AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	setTranslators();
 	setContributors();
 	setVersion();
+	setAnnexProject();
 	setLibraries();
 	setLicence();
 	setLoginfo();
@@ -153,6 +154,11 @@ void AboutQETDialog::setVersion()
 			+ QET::displayedVersion
 			+ "</span>";
 	ui->m_version_label->setText(str + MachineInfo::instance()->compilation_info());
+}
+
+void AboutQETDialog::setAnnexProject()
+{
+	addLibrary(ui->m_annex_project_label, tr("redimensionneur d'éléments", "Element scaler"),  "https://github.com/plc-user/QET_ElementScaler");
 }
 
 /**
