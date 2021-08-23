@@ -468,16 +468,6 @@ int TerminalStrip::physicalTerminalCount() const {
 	return m_physical_terminals.size();
 }
 
-/**
- * @brief TerminalStrip::realTerminalCount
- * @return the number of real terminal.
- * A real terminal is a part of a physical terminal.
- */
-int TerminalStrip::realTerminalCount() const
-{
-	return  m_real_terminals.size();
-}
-
 TerminalStripIndex TerminalStrip::index(int index)
 {
 	TerminalStripIndex tsi_;
@@ -498,6 +488,29 @@ TerminalStripIndex TerminalStrip::index(int index)
 
 	tsi_.m_valid = true;
 	return tsi_;
+}
+
+/**
+ * @brief TerminalStrip::physicalTerminalData
+ * @param index
+ * @return The data of the physical terminal at index \p index
+ */
+PhysicalTerminalData TerminalStrip::physicalTerminalData(int index)
+{
+	PhysicalTerminalData ptd;
+
+	if (index < m_physical_terminals.size())
+	{
+		auto physical_terminal = m_physical_terminals.at(index);
+		ptd.physical_terminal = physical_terminal;
+		ptd.pos_ = index;
+		for (auto real_terminal : physical_terminal->terminals()) {
+			auto rtd = realTerminalData(real_terminal);
+			ptd.real_terminals_vector.append(rtd);
+		}
+	}
+
+	return ptd;
 }
 
 /**
@@ -582,33 +595,6 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 	return true;
 }
 
-RealTerminalData TerminalStrip::realTerminalData(int real_terminal_index)
-{
-	RealTerminalData rtd;
-	if (m_real_terminals.isEmpty() ||
-		real_terminal_index >= m_real_terminals.size()) {
-		return rtd;
-	}
-
-	auto real_terminal = m_real_terminals.at(real_terminal_index);
-	auto physical_terminal = physicalTerminal(real_terminal);
-
-	rtd.m_real_terminal = m_real_terminals.at(real_terminal_index);
-	rtd.pos_ = m_physical_terminals.indexOf(physical_terminal);
-	rtd.level_ = physical_terminal->levelOf(real_terminal);
-	rtd.label_ = real_terminal->label();
-
-	if (real_terminal->isElement()) {
-		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
-	}
-	rtd.type_      = real_terminal->type();
-	rtd.function_  = real_terminal->function();
-	rtd.led_       = real_terminal->led();
-	rtd.is_element = real_terminal->isElement();
-
-	return rtd;
-}
-
 /**
  * @brief TerminalStrip::realTerminal
  * @param terminal
@@ -657,6 +643,27 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<
  */
 Element *TerminalStrip::elementForRealTerminal(QSharedPointer<RealTerminal> rt) const {
 	return rt.data()->element();
+}
+
+RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> real_terminal)
+{
+	RealTerminalData rtd;
+
+	auto physical_terminal = physicalTerminal(real_terminal);
+
+	rtd.m_real_terminal = real_terminal;
+	rtd.level_ = physical_terminal->levelOf(real_terminal);
+	rtd.label_ = real_terminal->label();
+
+	if (real_terminal->isElement()) {
+		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
+	}
+	rtd.type_      = real_terminal->type();
+	rtd.function_  = real_terminal->function();
+	rtd.led_       = real_terminal->led();
+	rtd.is_element = real_terminal->isElement();
+
+	return rtd;
 }
 
 /************************************************************************************/

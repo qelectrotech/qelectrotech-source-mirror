@@ -434,9 +434,17 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 			if (m_model)
 			{
-				auto modified_data = m_model->editedTerminalsData();
-				for (auto elmt : modified_data.keys()) {
-					m_project->undoStack()->push(new ChangeElementDataCommand(elmt, modified_data.value(elmt)));
+				for (auto modified_data : m_model->modifiedRealTerminalData())
+				{
+					auto element = m_current_strip->elementForRealTerminal(modified_data.m_real_terminal);
+					if (element) {
+						auto current_data = element->elementData();
+						current_data.setTerminalType(modified_data.type_);
+						current_data.setTerminalFunction(modified_data.function_);
+						current_data.setTerminalLED(modified_data.led_);
+
+						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
+					}
 				}
 			}
 

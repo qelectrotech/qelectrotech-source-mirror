@@ -42,6 +42,7 @@ const int ROW_COUNT = 9;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false};
 
+
 /**
  * @brief TerminalStripModel::TerminalStripModel
  * @param terminal_strip
@@ -62,7 +63,12 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
         return 0;
     }
 
-    return m_terminal_strip->realTerminalCount();
+	auto count = 0;
+	for (const auto &ptd : m_physical_terminal_data) {
+		count += ptd.real_terminals_vector.size();
+	}
+
+	return count;
 }
 
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
@@ -73,17 +79,17 @@ int TerminalStripModel::columnCount(const QModelIndex &parent) const
 
 QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 {
-	if (index.row() >= m_real_terminal_data.size()) {
+	if (index.row() >= rowCount(QModelIndex())) {
 		return QVariant();
 	}
 
-	auto rtd = m_real_terminal_data.at(index.row());
+	const auto rtd = dataAtRow(index.row());
 
 
 	if (role == Qt::DisplayRole)
 	{
 		switch (index.column()) {
-			case POS_CELL :        return rtd.pos_;
+			case POS_CELL :        return index.row();
 			case LEVEL_CELL :      return rtd.level_;
 			case LABEL_CELL :      return rtd.label_;
 			case XREF_CELL :       return rtd.Xref_;
@@ -122,7 +128,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 
 bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-	auto rtd = m_real_terminal_data.at(index.row());
+	auto rtd = dataAtRow(index.row());
 	bool modified_ = false;
 	int modified_cell = -1;
 	auto column_ = index.column();
@@ -152,7 +158,7 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		//Set the modification to the terminal data
 	if (modified_)
 	{
-		m_real_terminal_data.replace(index.row(), rtd);
+		replaceDataAtRow(rtd, index.row());
 
 		if (rtd.m_real_terminal)
 		{
@@ -211,32 +217,24 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 }
 
 /**
- * @brief TerminalStripModel::editedTerminals
- * @return a hash with for keys the edited element and for value the ElementData with modified properties
+ * @brief TerminalStripModel::modifiedRealTerminalData
+ * @return the modified real terminal data
  */
-QHash<Element *, ElementData> TerminalStripModel::editedTerminalsData() const
+QVector<RealTerminalData> TerminalStripModel::modifiedRealTerminalData() const
 {
-	QHash<Element *, ElementData> returned_hash;
-
-	QVector<RealTerminalData> rtd_vector = m_real_terminal_data;
+	QVector<RealTerminalData> returned_vector;
 
 	const auto modified_real_terminal = m_modified_cell.keys();
-	for (auto const &rt : modified_real_terminal) //loop over modified real terminal
-	{
-		for (auto const &rtd : rtd_vector) //loop over real terminal data to retrieve the data associated with real terminal
-		{
-			if (rtd.m_real_terminal == rt)
-			{
-				auto element = m_terminal_strip->elementForRealTerminal(rt);
-				if (element) {
-					returned_hash.insert(element, modifiedData(element->elementData(), rtd));
-				}
-				break;
+
+	for (const auto &ptd : m_physical_terminal_data) {
+		for (const auto &rtd : ptd.real_terminals_vector) {
+			if (modified_real_terminal.contains(rtd.m_real_terminal)) {
+				returned_vector.append(rtd);
 			}
 		}
 	}
 
-	return returned_hash;
+	return returned_vector;
 }
 
 /**
@@ -252,9 +250,9 @@ bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
 	{
 		if (index.column() == XREF_CELL)
 		{
-			if (index.row() < m_real_terminal_data.size())
+			if (index.row() < rowCount())
 			{
-				auto data = m_real_terminal_data.at(index.row());
+				const auto data = dataAtRow(index.row());
 				*element = m_terminal_strip->elementForRealTerminal(data.m_real_terminal);
 
 			}
@@ -267,28 +265,72 @@ bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
 
 void TerminalStripModel::fillRealTerminalData()
 {
+		//Get all physical terminal
 	if (m_terminal_strip) {
-		for (int i=0 ; i < m_terminal_strip->realTerminalCount() ; ++i) {
-			m_real_terminal_data.append(m_terminal_strip->realTerminalData(i));
+		for (auto i=0 ; i < m_terminal_strip->physicalTerminalCount() ; ++i) {
+			m_physical_terminal_data.append(m_terminal_strip->physicalTerminalData(i));
 		}
 	}
 }
 
-/**
- * @brief TerminalStripModel::modifiedData
- * @param previous_data
- * @param edited_data
- * @return an ElementData with the change made in \p edited_data applied to \p original_data
- */
-ElementData TerminalStripModel::modifiedData(const ElementData &original_data, const RealTerminalData &edited_data)
+RealTerminalData TerminalStripModel::dataAtRow(int row) const
 {
-	ElementData returned_data = original_data;
+	if (row > rowCount(QModelIndex())) {
+		return RealTerminalData();
+	}
+	else
+	{
+		auto current_row = 0;
+		for (const auto &physical_data : m_physical_terminal_data)
+		{
+			for (const auto &real_data : physical_data.real_terminals_vector)
+			{
+				if (current_row == row) {
+					return real_data;
+				} else {
+					++current_row;
+				}
+			}
+		}
+	}
 
-	returned_data.setTerminalType(edited_data.type_);
-	returned_data.setTerminalFunction(edited_data.function_);
-	returned_data.setTerminalLED(edited_data.led_);
+	return RealTerminalData();
+}
 
-	return returned_data;
+/**
+ * @brief TerminalStripModel::replaceDataAtRow
+ * Replace the data at row \p row by \p data
+ * @param data
+ * @param row
+ */
+void TerminalStripModel::replaceDataAtRow(RealTerminalData data, int row)
+{
+	if (row > rowCount(QModelIndex())) {
+		return;
+	}
+	else
+	{
+		auto current_row = 0;
+		auto current_physical = 0;
+
+		for (const auto &physical_data : qAsConst(m_physical_terminal_data))
+		{
+			auto current_real = 0;
+			for (int i=0 ; i<physical_data.real_terminals_vector.count() ; ++i)
+			{
+				if (current_row == row) {
+					auto physical_data = m_physical_terminal_data.at(current_physical);
+					physical_data.real_terminals_vector.replace(current_real, data);
+					m_physical_terminal_data.replace(current_physical, physical_data);
+					return;
+				} else {
+					++current_real;
+					++current_row;
+				}
+			}
+			++current_physical;
+		}
+	}
 }
 
 /***********************************************************

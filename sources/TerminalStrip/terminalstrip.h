@@ -31,12 +31,12 @@ class TerminalStripIndex;
 class TerminalElement;
 
 
+
 struct RealTerminalData
 {
 	QSharedPointer<RealTerminal> m_real_terminal;
 
-	int pos_ = 0,
-		level_ = 0;
+	int level_ = 0;
 
 	QString label_,
 			Xref_,
@@ -49,6 +49,14 @@ struct RealTerminalData
 
 	bool led_ = false,
 		 is_element = false;
+
+};
+
+struct PhysicalTerminalData
+{
+		QVector<RealTerminalData> real_terminals_vector;
+		int pos_ = -1;
+		QSharedPointer<PhysicalTerminal> physical_terminal;
 };
 
 /**
@@ -91,9 +99,9 @@ class TerminalStrip : public QObject
 		bool haveTerminal   (Element *terminal);
 
 		int physicalTerminalCount() const;
-		int realTerminalCount() const;
 		TerminalStripIndex index(int index = 0);
-		RealTerminalData realTerminalData(int real_terminal_index);
+
+		PhysicalTerminalData physicalTerminalData(int index);
 
 		QVector<QPointer<Element>> terminalElement() const;
 
@@ -101,10 +109,12 @@ class TerminalStrip : public QObject
 		QDomElement toXml(QDomDocument &parent_document);
 		bool fromXml(QDomElement &xml_element);
 
+		Element *elementForRealTerminal(QSharedPointer<RealTerminal> rt) const;
+
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal);
-		Element *elementForRealTerminal(QSharedPointer<RealTerminal> rt) const;
+		RealTerminalData realTerminalData(QSharedPointer<RealTerminal> real_terminal);
 
 	private:
 		TerminalStripData m_data;

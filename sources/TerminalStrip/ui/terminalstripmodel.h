@@ -40,17 +40,18 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
 
-		QHash<Element *, ElementData> editedTerminalsData() const;
+		QVector<RealTerminalData> modifiedRealTerminalData() const;
 
 		bool isXrefCell(const QModelIndex &index, Element **element = nullptr);
 
 	private:
 		void fillRealTerminalData();
-		static ElementData modifiedData(const ElementData &original_data, const RealTerminalData &edited_data);
+		RealTerminalData dataAtRow(int row) const;
+		void replaceDataAtRow(RealTerminalData data, int row);
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
-		QVector<RealTerminalData> m_real_terminal_data;
+		QVector<PhysicalTerminalData> m_physical_terminal_data;
 		QHash<QSharedPointer<RealTerminal>, QVector<bool>> m_modified_cell;
 };
 
