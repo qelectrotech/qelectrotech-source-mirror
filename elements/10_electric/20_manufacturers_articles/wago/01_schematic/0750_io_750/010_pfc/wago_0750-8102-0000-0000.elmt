@@ -22,10 +22,6 @@
     </informations>
     <description>
         <rect y="-40" x="-360" antialias="false" width="720" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" height="150"/>
-        <polygon y7="47.7" x3="347.8" y1="36.1" y9="45.8" y6="47.7" y4="45.8" x6="345.9" y10="42.1" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x9="342.6" closed="false" x7="344.5" y2="33.1" y8="47" x4="347.8" x1="353.6" x2="353.6" x8="343.3" y3="33.1" y5="47" x5="347.1" antialias="false" x10="342"/>
-        <line x2="352.4" y2="38.5" x1="354.8" length1="1.5" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="38.5"/>
-        <line x2="351.8" y2="37.3" x1="355.4" length1="1.5" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="37.3"/>
-        <line x2="351.2" y2="36.1" x1="356" length1="1.5" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y1="36.1"/>
         <circle y="37.5" x="-362.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
         <text y="24" rotation="0" x="-303" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="IP Adr. 2:"/>
         <text y="4" rotation="0" x="-303" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="IP Adr. 1:"/>

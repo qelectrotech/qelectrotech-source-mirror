@@ -1,6 +1,13 @@
 <definition link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
     <uuid uuid="{9b42e36d-d18b-46b0-a62a-6f69ea709f68}"/>
     <names>
+        <name lang="en">Machine, general symbol (replace "*" by designation):
+C Rotary converter
+G Generator
+GS Synchronous generator
+M Motor
+MG Machine capable of use as a motor or generator
+MS Synchronous motor</name>
         <name lang="fr">Machine, par example (au lieu de
 l’astérisque):
 C Commutatrice
@@ -9,13 +16,13 @@ GS Alternateur synchrone
 M Moteur
 MG Moteur/génératrice
 MS Moteur synchrone</name>
-        <name lang="de">Maschine, z.B. (anstele von Asteriskus):
+        <name lang="de">Maschine, allgemein (Asterisk "*" ersetzen durch):
 C Rotierender Umformer
 G Generator
-GS Synchrogenerator
+GS Synchrongenerator
 M Motor
-MG Motor/Synchrogenerator
-MS Synchromotor</name>
+MG Motor/Generator
+MS Synchronmotor</name>
         <name lang="cs">Stroj, všeobecná značka:
 C rotační měnič
 G generátor
