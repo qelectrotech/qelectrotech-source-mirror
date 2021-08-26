@@ -1,0 +1,36 @@
+<definition hotspot_x="365" width="730" type="element" height="100" hotspot_y="46" version="0.90" link_type="simple">
+    <uuid uuid="{d018b531-aac3-446e-82fc-006a99ee6751}"/>
+    <names>
+        <name lang="it">750-642</name>
+        <name lang="de">750-642</name>
+        <name lang="pt">750-642</name>
+        <name lang="cs">750-642</name>
+        <name lang="fr">750-642</name>
+        <name lang="en">750-642</name>
+        <name lang="pl">750-642</name>
+        <name lang="el">750-642</name>
+        <name lang="ar">750-642</name>
+        <name lang="nl">750-642</name>
+        <name lang="es">750-642</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">750-642</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" width="720" antialias="false" height="90" y="-40" rx="0" ry="0"/>
+        <text x="-330" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="WAGO 750-642" y="45"/>
+        <circle x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" y="-42.5"/>
+        <text x="-138" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="RF-Receiver EnOcean" y="45"/>
+        <dynamic_text x="220" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{c6d8b3fa-526d-4b19-af64-5b5f35bf40d4}" text_from="ElementInfo" z="9" rotation="0" Valignment="AlignTop" text_width="-1" keep_visual_rotation="true" y="29.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-219" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="Antenna" y="-27"/>
+        <terminal orientation="n" x="-200" y="-40" name="Antenna"/>
+    </description>
+</definition>
