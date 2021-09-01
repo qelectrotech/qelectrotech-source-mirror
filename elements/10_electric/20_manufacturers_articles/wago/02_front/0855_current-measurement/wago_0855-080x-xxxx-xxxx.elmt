@@ -1,0 +1,45 @@
+<definition width="250" hotspot_x="124" version="0.90" type="element" height="110" hotspot_y="55" link_type="simple">
+    <names>
+        <name lang="fr">855-80x/xxxx-xxxx</name>
+        <name lang="en">855-80x/xxxx-xxxx</name>
+        <name lang="de">855-80x/xxxx-xxxx</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x3="120.41" y3="33.11" x4="-120.39" x2="120.41" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" antialias="false" y2="-32.98" x1="-120.39" y1="-32.98" y4="33.11"/>
+        <polygon antialias="false" x6="115.01" y2="34.94" x1="115.01" y1="34.94" y8="32.91" y5="-34.98" x3="-117.56" y6="-34.98" x8="117.05" y4="-32.94" y3="32.91" x2="-115.52" y7="-32.95" x5="-115.52" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" x7="117.05" x4="-117.56"/>
+        <polygon x3="115.88" y3="33.03" x4="-115.9" x2="115.88" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" antialias="false" y2="-32.98" x1="-115.9" y1="-32.98" y4="33.03"/>
+        <polygon antialias="false" x6="-75.67" y2="-36.98" x1="-75.67" y1="-36.98" y8="-32.98" y5="37.03" x3="-88.6" y6="37.03" x8="-74.6" y4="33.03" y3="-32.98" x2="-87.53" y7="33.03" x5="-87.53" style="line-style:normal;line-weight:thin;filling:red;color:black" x7="-74.6" x4="-88.6"/>
+        <polygon antialias="false" x6="75.12" y2="-36.98" x1="75.12" y1="-36.98" y8="-32.98" y5="37.03" x3="88.05" y6="37.03" x8="74.05" y4="33.03" y3="-32.98" x2="86.98" y7="33.03" x5="86.98" style="line-style:normal;line-weight:thin;filling:red;color:black" x7="74.05" x4="88.05"/>
+        <polygon x3="95.46" y3="33.63" x4="-95.45" x2="95.46" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" antialias="false" y2="-33.5" x1="-95.45" y1="-33.5" y4="33.63"/>
+        <polygon x9="8.09" antialias="false" y16="33.1" x6="8.09" x10="5.41" y10="-50.29" y2="49.98" x1="-8.5" y1="46.68" x11="1.65" y13="-49.86" y8="-32.98" y5="50.41" x14="-8.5" y15="-32.98" x3="-2.44" y6="47.3" x8="10.89" y4="52.05" y3="51.9" x2="-6.07" y7="33.1" y11="-51.93" x16="-10.91" x5="5.41" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" x12="-2.44" x13="-6.07" x7="10.89" y14="-46.57" y9="-47.19" x4="1.65" x15="-10.91" y12="-51.78"/>
+        <polygon x3="28.93" y3="33.63" x4="-28.94" x2="28.93" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" antialias="false" y2="-33.5" x1="-28.94" y1="-33.5" y4="33.63"/>
+        <polygon x3="37.08" y3="28.03" x4="28.85" x2="37.08" style="line-style:normal;line-weight:thin;filling:HTMLWhiteGhostWhite;color:black" antialias="false" y2="-27.98" x1="28.85" y1="-27.98" y4="28.03"/>
+        <polygon x3="-28.87" y3="28.03" x4="-37.1" x2="-28.87" style="line-style:normal;line-weight:thin;filling:HTMLWhiteGhostWhite;color:black" antialias="false" y2="-27.98" x1="-37.1" y1="-27.98" y4="28.03"/>
+        <polygon x3="-88.6" y3="24.83" x4="-74.6" x2="-88.6" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" y2="-24.78" x1="-74.6" y1="-24.78" y4="24.83"/>
+        <polygon x3="-88.6" y3="11.9" x4="-74.6" x2="-88.6" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" y2="-11.85" x1="-74.6" y1="-11.85" y4="11.9"/>
+        <polygon x3="-85.6" y3="-13.28" x4="-77.6" x2="-85.6" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" y2="-21.48" x1="-77.6" y1="-21.48" y4="-13.28"/>
+        <polygon x3="-85.6" y3="21.53" x4="-77.6" x2="-85.6" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" y2="13.32" x1="-77.6" y1="13.32" y4="21.53"/>
+        <polygon x3="-88.6" y3="6.55" x4="-74.6" x2="-88.6" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" y2="-6.5" x1="-74.6" y1="-6.5" y4="6.55"/>
+        <polygon x3="88.05" y3="24.83" x4="74.05" x2="88.05" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" y2="-24.78" x1="74.05" y1="-24.78" y4="24.83"/>
+        <polygon x3="88.05" y3="11.9" x4="74.05" x2="88.05" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" y2="-11.85" x1="74.05" y1="-11.85" y4="11.9"/>
+        <polygon x3="85.05" y3="-13.28" x4="77.05" x2="85.05" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" y2="-21.48" x1="77.05" y1="-21.48" y4="-13.28"/>
+        <polygon x3="85.05" y3="21.53" x4="77.05" x2="85.05" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" y2="13.32" x1="77.05" y1="13.32" y4="21.53"/>
+        <polygon x3="88.05" y3="6.55" x4="74.05" x2="88.05" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" y2="-6.5" x1="74.05" y1="-6.5" y4="6.55"/>
+        <polygon x3="-98.42" y3="29.9" x4="-117.58" x2="-98.42" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" antialias="false" y2="-29.94" x1="-117.58" y1="-29.94" y4="29.9"/>
+        <polygon x3="117.05" y3="29.9" x4="97.9" x2="117.05" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" antialias="false" y2="-29.94" x1="97.9" y1="-29.94" y4="29.9"/>
+        <circle y="-50" diameter="14" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" x="-7"/>
+        <circle y="36" diameter="14" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" x="-7"/>
+        <text y="-15" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-25" text="855-80x"/>
+        <dynamic_text font="Sans Serif,9,-1,5,25,0,0,0,0,0" Halignment="AlignHCenter" x="-4" text_width="-1" text_from="ElementInfo" frame="false" Valignment="AlignTop" y="9" rotation="0" uuid="{4340029b-bdca-4601-b693-04b337c51a30}" z="22" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

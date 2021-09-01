@@ -35,7 +35,7 @@
         <text rotation="0" y="-24" text="24V" x="-119" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" y="-24" text="0V" x="122" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" y="-42" text="7" x="125" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text rotation="0" y="45" text="2DI 24V DC" x="-130" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" y="45" text="2DI 24V DC, 3.0ms" x="-130" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" y="-42" text="5" x="-196" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" y="-24" text="DI2" x="-199" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" y="-24" text="PE" x="201" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
