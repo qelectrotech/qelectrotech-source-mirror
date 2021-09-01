@@ -1,5 +1,4 @@
 <definition hotspot_y="132" version="0.90" hotspot_x="32" width="60" type="element" height="210" link_type="simple">
-    <uuid uuid="{d458bd87-dbe1-4123-b8c2-1e15e1a1aca1}"/>
     <names>
         <name lang="de">750-495/000-001</name>
         <name lang="fr">750-495/000-001</name>
@@ -121,5 +120,29 @@
         <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" rotation="0" x="0.47" color="#000000" y="-100.35" text="A"/>
         <rect antialias="false" x="-18.54" width="5.72" ry="0" rx="0" y="-102.53" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <rect antialias="false" x="5.63" width="5.72" ry="0" rx="0" y="-102.53" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <rect x="-22" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLBlueLightBlue;color:black" y="24" width="9" rx="0"/>
+        <rect x="-22" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-13" width="9" rx="0"/>
+        <rect x="-22" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-50" width="9" rx="0"/>
+        <rect x="-22" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-83" width="9" rx="0"/>
+        <rect x="2" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLBlueLightBlue;color:black" y="24" width="9" rx="0"/>
+        <rect x="2" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-13" width="9" rx="0"/>
+        <rect x="2" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-50" width="9" rx="0"/>
+        <rect x="2" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-83" width="9" rx="0"/>
+        <rect x="13" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLBlueLightBlue;color:black" y="24" width="9" rx="0"/>
+        <rect x="13" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-13" width="9" rx="0"/>
+        <rect x="13" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-50" width="9" rx="0"/>
+        <rect x="13" height="9" ry="0" antialias="false" style="line-style:normal;line-weight:none;filling:HTMLYellowYellow;color:black" y="-83" width="9" rx="0"/>
+        <text x="-20" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="L1" rotation="0" y="-77"/>
+        <text x="-20" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="L2" rotation="0" y="-44"/>
+        <text x="-20" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="L3" rotation="0" y="-7"/>
+        <text x="-20" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="N" rotation="0" y="30"/>
+        <text x="3" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="I3+" rotation="0" y="-7"/>
+        <text x="3" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="IN+" rotation="0" y="30"/>
+        <text x="3" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="I1+" rotation="0" y="-77"/>
+        <text x="3" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="I2+" rotation="0" y="-44"/>
+        <text x="14" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="I3-" rotation="0" y="-7"/>
+        <text x="14" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="IN-" rotation="0" y="30"/>
+        <text x="14" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="I2-" rotation="0" y="-44"/>
+        <text x="15" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="I1-" rotation="0" y="-77"/>
     </description>
 </definition>

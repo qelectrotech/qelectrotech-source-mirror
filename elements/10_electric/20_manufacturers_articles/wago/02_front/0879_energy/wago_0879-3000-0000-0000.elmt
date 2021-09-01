@@ -3,9 +3,10 @@
         <name lang="de">879-3000</name>
         <name lang="en">879-3000</name>
         <name lang="fr">879-3000</name>
+        <name lang="cs">879-3000</name>
     </names>
     <elementInformations/>
-    <informations>plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
      License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>

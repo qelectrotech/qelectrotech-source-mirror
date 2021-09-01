@@ -1,0 +1,69 @@
+<definition height="100" hotspot_y="46" hotspot_x="365" type="element" link_type="simple" width="730" version="0.90">
+    <names>
+        <name lang="de">750-495/000-001</name>
+        <name lang="cs">750-495/000-001</name>
+        <name lang="fr">750-495/000-001</name>
+        <name lang="en">750-495/000-001</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">750-495/000-001</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    </elementInformations>
+    <informations>
+        Author: plc-user for QElectroTech
+        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect x="-360" height="90" ry="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" width="720" rx="0"/>
+        <text x="84" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="I2+" rotation="0" y="-23"/>
+        <text x="186" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="I3−" rotation="0" y="-23"/>
+        <text x="24" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="I1−" rotation="0" y="-23"/>
+        <text x="244" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="IN+" rotation="0" y="-23"/>
+        <text x="4" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="I1+" rotation="0" y="-23"/>
+        <text x="265" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="IN−" rotation="0" y="-23"/>
+        <text x="105" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="I2−" rotation="0" y="-23"/>
+        <text x="165" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="I3+" rotation="0" y="-23"/>
+        <text x="-274" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="L3" rotation="0" y="-23"/>
+        <text x="-137" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="n.c." rotation="0" y="-23"/>
+        <text x="-294" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="L2" rotation="0" y="-23"/>
+        <text x="-117" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="n.c." rotation="0" y="-23"/>
+        <text x="-315" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="L1" rotation="0" y="-23"/>
+        <text x="-97" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="n.c." rotation="0" y="-23"/>
+        <text x="-339" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="WAGO 750-495/000-001" rotation="0" y="45"/>
+        <text x="-254" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="N" rotation="0" y="-23"/>
+        <text x="-157" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="n.c." rotation="0" y="-23"/>
+        <text x="-130" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="3-ph. power measurement 690V / 5A" rotation="0" y="45"/>
+        <circle x="187.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <dynamic_text x="220" text_from="ElementInfo" uuid="{f448b8e7-91ea-42e3-a32d-44e7eb0ef305}" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="21" Halignment="AlignLeft" Valignment="AlignTop" keep_visual_rotation="true" rotation="0" y="29.5" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle x="87.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="247.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-132.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="267.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-271.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="167.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-112.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="107.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-291.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-92.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-312.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-152.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle x="-252.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <terminal x="-269" uuid="{7868a1bc-0c1a-44d2-93e8-d2692d234ae9}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="-289" uuid="{82199d9b-78e8-4f13-b27a-aa1a10f40392}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="-310" uuid="{4560df44-89a8-4068-97cf-3f933147c271}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="-250" uuid="{4a29ac30-1af4-4144-8d11-1ed80d494b17}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="170" uuid="{0b7637db-2b2a-4775-8819-2953f7905b68}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="10" uuid="{85145279-ad4f-4c75-9b2b-0f7c2b746fd2}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="30" uuid="{fb0ec567-7409-4425-bf81-43e9790314ef}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="90" uuid="{df57357a-a4ab-4e00-8f62-31a189945956}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="250" uuid="{52de5c94-c67a-4470-951d-266177b33c67}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="190" uuid="{905e4af7-bdbf-47a4-af30-59143dd12c15}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="270" uuid="{71525239-93e4-457a-a5a2-5c17f07b61a6}" orientation="n" name="" type="Generic" y="-40"/>
+        <terminal x="110" uuid="{f9e30037-4b8e-45ae-aa95-79a2384cc84a}" orientation="n" name="" type="Generic" y="-40"/>
+    </description>
+</definition>
