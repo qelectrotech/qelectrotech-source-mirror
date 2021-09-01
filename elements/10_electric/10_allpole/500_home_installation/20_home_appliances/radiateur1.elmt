@@ -2,6 +2,7 @@
     <uuid uuid="{e17fc4bf-98d7-4eaa-b76f-a243740b400a}"/>
     <names>
         <name lang="fr">Radiateur</name>
+        <name lang="de">Heizkörper</name>
         <name lang="pl">Wymiennik ciepła</name>
         <name lang="cs">Elektrický radiátor</name>
     </names>
