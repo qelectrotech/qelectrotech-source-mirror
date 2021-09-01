@@ -1,6 +1,7 @@
 <definition hotspot_x="35" link_type="simple" height="80" type="element" width="70" version="0.80" hotspot_y="40">
     <uuid uuid="{617264c1-5351-4e5e-9a43-eeb1077403ce}"/>
     <names>
+        <name lang="de">Netzfilter Schurter KFS 4300</name>
         <name lang="cs">Filtr KFS 4300</name>
         <name lang="fr">Filtre KFS 4300</name>
     </names>

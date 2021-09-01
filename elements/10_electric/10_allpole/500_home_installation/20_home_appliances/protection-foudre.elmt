@@ -2,6 +2,7 @@
     <uuid uuid="{30bc725f-9c8c-41b8-9cb4-267da59b36d1}"/>
     <names>
         <name lang="pl">Ochrona odgromowa</name>
+        <name lang="de">Blitzschutz</name>
         <name lang="fr">Protection Foudre</name>
         <name lang="cs">Přepěťová ochrana 1f</name>
     </names>
