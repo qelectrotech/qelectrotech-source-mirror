@@ -1,8 +1,15 @@
 <qet-directory>
     <names>
-        <name lang="de">TSX</name>
-        <name lang="en">TSX</name>
-        <name lang="fr">TSX</name>
-        <name lang="cs">TSX</name>
+        <name lang="de">TSX Übersichtzeichnungen</name>
+        <name lang="en">TSX config</name>
+        <name lang="fr">TSX config</name>
+        <name lang="pl">TSX Konfiguracja sprzętowa</name>
+        <name lang="cs">TSX Konfigurace HW</name>
+        <name lang="pt">TSX Configuração</name>
+        <name lang="es">TSX Configuración</name>
+        <name lang="it">TSX Configurazione</name>
+        <name lang="el">TSX Διάταξη</name>
+        <name lang="nl">TSX config</name>
+        <name lang="be">TSX config</name>
     </names>
 </qet-directory>
