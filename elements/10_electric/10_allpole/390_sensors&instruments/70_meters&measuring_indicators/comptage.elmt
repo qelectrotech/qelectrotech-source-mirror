@@ -1,0 +1,24 @@
+<definition hotspot_x="44" version="0.90" type="element" hotspot_y="24" link_type="simple" height="50" width="90">
+    <uuid uuid="{ec3f16ca-1990-47ad-a913-a9b96b7bf547}"/>
+    <names>
+        <name lang="fr">Compteur</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-5" rx="0" ry="0" height="15" width="40"/>
+        <text x="-10" rotation="0" color="#000000" y="5" text="kwh" font="Sans Serif,8,-1,5,50,0,0,0,0,0"/>
+        <rect x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-20" rx="0" ry="0" height="40" width="80"/>
+        <terminal x="30" orientation="s" type="Generic" uuid="{c4a6406a-a5c9-44e7-a1de-c3d7490d85df}" y="20" name=""/>
+        <terminal x="-30" orientation="n" type="Generic" uuid="{0a8daa67-629c-4a91-93d8-0cae0afdf00b}" y="-20" name=""/>
+        <terminal x="-10" orientation="n" type="Generic" uuid="{90dfad49-c761-45c0-9c08-f9bf1dd32790}" y="-20" name=""/>
+        <terminal x="30" orientation="n" type="Generic" uuid="{c3506df9-fc2b-41bf-b5e9-3b286cfaf69d}" y="-20" name=""/>
+        <terminal x="-10" orientation="s" type="Generic" uuid="{8a5dfc73-d3bc-40fe-9861-7ac492ce9a51}" y="20" name=""/>
+        <terminal x="10" orientation="n" type="Generic" uuid="{111aae5a-7b46-4d91-ae31-d0d32de337e9}" y="-20" name=""/>
+        <terminal x="10" orientation="s" type="Generic" uuid="{1a2ac800-535d-4f60-9387-fffa92a0f84a}" y="20" name=""/>
+        <terminal x="40" orientation="e" type="Generic" uuid="{61a460fa-779f-4b07-8896-fb021649a49e}" y="0" name=""/>
+        <terminal x="-30" orientation="s" type="Generic" uuid="{366eb1d4-0e6c-4fcf-937c-a0cbc73e7671}" y="20" name=""/>
+        <terminal x="40" orientation="e" type="Generic" uuid="{c5249091-4377-4d00-a6f1-572d339bd7bf}" y="10" name=""/>
+        <terminal x="40" orientation="e" type="Generic" uuid="{7159e22b-9eaf-48de-836e-19a5ae7c4cd0}" y="-10" name=""/>
+    </description>
+</definition>
