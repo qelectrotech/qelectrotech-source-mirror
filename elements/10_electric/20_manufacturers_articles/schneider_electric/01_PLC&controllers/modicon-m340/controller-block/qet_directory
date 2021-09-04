@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Controller block</name>
         <name lang="cs">Karty CPU</name>
+	<name lang="fr">Carte Controleur</name>
     </names>
 </qet-directory>
