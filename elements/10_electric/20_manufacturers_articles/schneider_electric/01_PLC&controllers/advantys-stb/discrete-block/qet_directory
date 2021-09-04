@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="en">Discrete-block</name>
+        <name lang="en">Digital-block</name>
         <name lang="cs">Karty DI a DO</name>
+	<name lang="fr">Carte digitale DI/DO</name>
     </names>
 </qet-directory>

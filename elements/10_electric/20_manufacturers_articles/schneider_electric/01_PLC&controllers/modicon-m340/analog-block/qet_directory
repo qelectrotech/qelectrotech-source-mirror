@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Analog block</name>
         <name lang="cs">Analoggové karty</name>
+	<name lang="fr">Carte analogique</name>
     </names>
 </qet-directory>
