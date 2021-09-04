@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" hotspot_y="16" hotspot_x="35" version="0.90" width="110" height="100">
+    <uuid uuid="{ce2aec8d-911d-467d-b678-e228f53a91e6}"/>
+    <names>
+        <name lang="fr">Viessman 0-10V</name>
+    </names>
+    <elementInformations/>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30" width="100" rx="0" ry="0" y="-10" antialias="false" height="90"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="5" rotation="0" y="15" text="0-10V"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-5" rotation="0" y="45" text="BOITIER &#xa;BRULEUR"/>
+        <terminal orientation="n" type="Generic" x="0" name="" y="-10" uuid="{61a051e9-0057-4ddc-b55b-3dfa7031a4ed}"/>
+        <terminal orientation="n" type="Generic" x="20" name="" y="-10" uuid="{16c3e864-e81d-41ee-973d-bb494c601cfd}"/>
+        <terminal orientation="n" type="Generic" x="40" name="" y="-10" uuid="{2cef0e1d-a33a-4c21-883d-f3543c60591b}"/>
+    </description>
+</definition>
