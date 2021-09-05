@@ -1,0 +1,87 @@
+<definition hotspot_x="35" hotspot_y="14" link_type="simple" height="130" type="element" width="310" version="0.90">
+    <uuid uuid="{2ad55918-6389-4bd5-88af-ab4fb80a36aa}"/>
+    <names>
+        <name lang="fr">Vitotronic 100</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Viessmann</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <text rotation="0" x="71" y="26" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text="150" color="#000000"/>
+        <text rotation="0" x="193.5" y="78.8" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text="90" color="#000000"/>
+        <text rotation="0" x="223" y="26" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text="50" color="#000000"/>
+        <text rotation="0" x="-7" y="26" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text="40" color="#000000"/>
+        <line length2="1.5" length1="1.5" x1="140" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="140" y1="0" y2="4"/>
+        <line length2="1.5" length1="1.5" x1="210" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="210" y1="0" y2="4"/>
+        <rect height="120" x="-30" y="-10" width="300" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <rect height="15" x="70" y="15" width="22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <line length2="1.5" length1="1.5" x1="207" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="213" y1="4" y2="4"/>
+        <line length2="1.5" length1="1.5" x1="137" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="143" y1="4" y2="4"/>
+        <rect height="15" x="192.5" y="67.8" width="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <rect height="15" x="-8" y="15" width="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <rect height="15" x="222" y="15" width="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <text rotation="0" x="-5" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="N" color="#000000"/>
+        <line length2="1.5" length1="1.2" x1="138" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="142" y1="7" y2="7"/>
+        <line length2="1.5" length1="1.2" x1="208" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="212" y1="7" y2="7"/>
+        <line length2="1.5" length1="1.5" x1="139" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="141" y1="10" y2="10"/>
+        <line length2="1.5" length1="1.5" x1="209" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="211" y1="10" y2="10"/>
+        <text rotation="0" x="15" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="L1" color="#000000"/>
+        <text rotation="0" x="49" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="STB" color="#000000"/>
+        <text rotation="0" x="80" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="STB" color="#000000"/>
+        <text rotation="0" x="155" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="N" color="#000000"/>
+        <text rotation="0" x="174" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T2" color="#000000"/>
+        <text rotation="0" x="226" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="N" color="#000000"/>
+        <text rotation="0" x="248" y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="L" color="#000000"/>
+        <text rotation="0" x="174" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T6" color="#000000"/>
+        <text rotation="0" x="194" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T7" color="#000000"/>
+        <text rotation="0" x="212" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T8" color="#000000"/>
+        <text rotation="0" x="6" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="L" color="#000000"/>
+        <text rotation="0" x="26" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="PE" color="#000000"/>
+        <text rotation="0" x="46" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="N" color="#000000"/>
+        <text rotation="0" x="66" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T1" color="#000000"/>
+        <text rotation="0" x="86" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T2" color="#000000"/>
+        <text rotation="0" x="106" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="S3" color="#000000"/>
+        <text rotation="0" x="127" y="100" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="B4" color="#000000"/>
+        <text rotation="0" x="71" y="81" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" text="41" color="#000000"/>
+        <rect height="15" x="70" y="70" width="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <line length2="1.5" length1="1.5" x1="-20" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" y1="0" y2="4"/>
+        <line length2="1.5" length1="1.5" x1="-23" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-17" y1="4" y2="4"/>
+        <line length2="1.5" length1="1.2" x1="-22" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" y1="7" y2="7"/>
+        <line length2="1.5" length1="1.5" x1="-21" end2="none" antialias="false" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-19" y1="10" y2="10"/>
+        <dynamic_text rotation="0" x="73" keep_visual_rotation="false" y="35" z="29" frame="false" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="UserText" Halignment="AlignLeft" uuid="{696e1e2b-12e0-4dec-a7be-af098ecb3861}" Valignment="AlignTop" text_width="-1">
+            <text>CHAUDIERE VIESSMANN</text>
+        </dynamic_text>
+        <terminal x="90" y="-10" orientation="n" type="Generic" name="" uuid="{98bdd7e8-d174-4ddb-b5a6-f259a605d50d}"/>
+        <terminal x="130" y="110" orientation="s" type="Generic" name="" uuid="{1e5a01f9-51a9-41dc-a6b8-34848f534be0}"/>
+        <terminal x="110" y="110" orientation="s" type="Generic" name="" uuid="{c1010fcf-dafb-4f5a-9f18-120feee2bdf4}"/>
+        <terminal x="70" y="110" orientation="s" type="Generic" name="" uuid="{a7832392-662f-4d35-9ec6-31636bb07038}"/>
+        <terminal x="220" y="110" orientation="s" type="Generic" name="" uuid="{8ee8c7de-7e36-49a2-b416-380d5c99e42a}"/>
+        <terminal x="-20" y="-10" orientation="n" type="Generic" name="" uuid="{61a051e9-0057-4ddc-b55b-3dfa7031a4ed}"/>
+        <terminal x="140" y="-10" orientation="n" type="Generic" name="" uuid="{183755e5-ffcb-4511-9e7a-eb7737cb46f9}"/>
+        <terminal x="60" y="-10" orientation="n" type="Generic" name="" uuid="{8979f15d-0cbb-4ed8-97a9-8dc4f74c8286}"/>
+        <terminal x="250" y="-10" orientation="n" type="Generic" name="" uuid="{fbb7802e-41fe-401d-b00d-486bbe9f867a}"/>
+        <terminal x="180" y="-10" orientation="n" type="Generic" name="" uuid="{cb05050b-50a6-49f1-9488-4e2ad1b6b733}"/>
+        <terminal x="230" y="-10" orientation="n" type="Generic" name="" uuid="{9734a6c8-62c7-43fb-843f-70a5453d5848}"/>
+        <terminal x="90" y="110" orientation="s" type="Generic" name="" uuid="{eebf0647-9265-4c03-a9a6-c438a9dd8d21}"/>
+        <terminal x="180" y="110" orientation="s" type="Generic" name="" uuid="{40091380-6087-409c-bbb1-778160fb86c3}"/>
+        <terminal x="50" y="110" orientation="s" type="Generic" name="" uuid="{3c2bf217-5bb3-4931-a45f-39647db1f05b}"/>
+        <terminal x="20" y="-10" orientation="n" type="Generic" name="" uuid="{2cef0e1d-a33a-4c21-883d-f3543c60591b}"/>
+        <terminal x="160" y="-10" orientation="n" type="Generic" name="" uuid="{8ba68d8f-f44e-48b3-bb46-153e576b1715}"/>
+        <terminal x="30" y="110" orientation="s" type="Generic" name="" uuid="{9daad6d2-96e3-47ed-bf0e-b6df05deb1f6}"/>
+        <terminal x="210" y="-10" orientation="n" type="Generic" name="" uuid="{fcab0970-7a43-4450-a256-a9b83ae6b93a}"/>
+        <terminal x="10" y="110" orientation="s" type="Generic" name="" uuid="{1d04bddd-b175-4431-b85f-b866f9f4a2d7}"/>
+        <terminal x="0" y="-10" orientation="n" type="Generic" name="" uuid="{16c3e864-e81d-41ee-973d-bb494c601cfd}"/>
+        <terminal x="200" y="110" orientation="s" type="Generic" name="" uuid="{e8eec6c8-63ff-456a-a567-7fc06f64f1e2}"/>
+    </description>
+</definition>
