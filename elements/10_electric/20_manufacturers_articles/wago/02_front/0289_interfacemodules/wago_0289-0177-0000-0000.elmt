@@ -5,12 +5,13 @@
     <name lang="de">289-177</name>
     <name lang="cs">289-177</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">289-177</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-177</elementInformation>
+        <elementInformation show="1" name="description">RJ-45 to RJ-45</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="20.52" x2="-20.48" x3="-20.48" x4="20.52" y1="-85" y2="-85" y3="85.11" y4="85.11" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>

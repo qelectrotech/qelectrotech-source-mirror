@@ -5,12 +5,13 @@
     <name lang="en">289-101</name>
     <name lang="cs">289-101</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">289-101</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-101</elementInformation>
+        <elementInformation show="1" name="description">Module with 8 Diodes</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <rect x="-46.75" y="-65.47" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="93.9" height="131" antialias="false"/>

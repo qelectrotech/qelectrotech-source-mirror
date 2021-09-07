@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">852-1102</elementInformation>
+        <elementInformation show="1" name="description">8-port 1000Base-T Industrial Switch</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="200" rx="0" y="-100" ry="0" width="120" antialias="false" x="-60"/>

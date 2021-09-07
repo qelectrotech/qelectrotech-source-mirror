@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">289-128</elementInformation>
+        <elementInformation show="1" name="description">Resistor 9k1</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <line antialias="false" length1="1.5" x1="-60" x2="-60" y2="30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>

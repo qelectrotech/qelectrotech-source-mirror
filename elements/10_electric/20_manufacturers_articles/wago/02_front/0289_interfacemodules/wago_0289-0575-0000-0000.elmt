@@ -5,10 +5,11 @@
     <name lang="de">289-575</name>
     <name lang="cs">289-575</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">289-575</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-575</elementInformation>
+        <elementInformation show="1" name="description">D-Sub 9 (female) to CAGE-CLAMP</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
