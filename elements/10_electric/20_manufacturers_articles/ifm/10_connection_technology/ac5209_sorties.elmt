@@ -1,6 +1,7 @@
 <definition link_type="simple" width="170" hotspot_y="125" version="0.70" height="250" type="element" hotspot_x="44">
     <uuid uuid="{d4eaf20b-2503-4ab5-bf18-8a5a004df679}"/>
     <names>
+        <name lang="de">AC5209 (Ausgänge)</name>
         <name lang="fr">AC5209 (sorties)</name>
         <name lang="en">AC5209 (output)</name>
         <name lang="cs">AC5209 (výstupy)</name>
@@ -84,12 +85,12 @@
             <info_name>label</info_name>
         </dynamic_text>
         <dynamic_text y="-90" z="78" font_size="9" rotation="0" uuid="{c4dfb1ad-4ad8-4c71-8ca9-d3780a971b00}" text_from="UserText" x="-20" frame="false" text_width="-1">
-            <text>AC5209 (sorties)</text>
+            <text>AC5209</text>
         </dynamic_text>
-        <dynamic_text y="-40" z="79" font_size="8" rotation="0" uuid="{4456e1a8-6617-4302-8b85-9dc57ed3b355}" text_from="UserText" x="5" frame="false" text_width="-1">
+        <dynamic_text y="-40" z="79" font_size="8" rotation="0" uuid="{4456e1a8-6617-4302-8b85-9dc57ed3b355}" text_from="UserText" x="0" frame="false" text_width="-1">
             <text>OUT1</text>
         </dynamic_text>
-        <dynamic_text y="40" z="80" font_size="8" rotation="0" uuid="{ab82a7a3-852d-4b99-ad7d-c5afcc1de581}" text_from="UserText" x="5" frame="false" text_width="-1">
+        <dynamic_text y="40" z="80" font_size="8" rotation="0" uuid="{ab82a7a3-852d-4b99-ad7d-c5afcc1de581}" text_from="UserText" x="0" frame="false" text_width="-1">
             <text>OUT2</text>
         </dynamic_text>
         <dynamic_text y="-40" z="81" font_size="8" rotation="0" uuid="{77fb52c2-803a-4a46-ba47-ac8b596c915d}" text_from="UserText" x="40" frame="false" text_width="-1">

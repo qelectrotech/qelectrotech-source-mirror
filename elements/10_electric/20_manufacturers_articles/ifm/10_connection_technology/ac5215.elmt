@@ -1,6 +1,7 @@
 <definition link_type="simple" type="element" hotspot_x="44" version="0.70" height="250" hotspot_y="125" width="170">
     <uuid uuid="{21339e75-dc88-4362-8dd3-6017f569f1b9}"/>
     <names>
+        <name lang="de">AC5215</name>
         <name lang="en">AC5215</name>
         <name lang="fr">AC5215</name>
         <name lang="cs">AC5215</name>
@@ -86,13 +87,13 @@
         <dynamic_text rotation="0" z="78" font_size="9" uuid="{8ba4fcac-2af6-4dd3-9760-77a75ddead30}" text_from="UserText" text_width="-1" x="-20" y="-100" frame="false">
             <text>AC5215</text>
         </dynamic_text>
-        <dynamic_text rotation="0" z="79" font_size="8" uuid="{6468d262-c40b-4313-aff4-a9a432334166}" text_from="UserText" text_width="-1" x="15" y="-40" frame="false">
+        <dynamic_text rotation="0" z="79" font_size="8" uuid="{6468d262-c40b-4313-aff4-a9a432334166}" text_from="UserText" text_width="-1" x="10" y="-40" frame="false">
             <text>IN1</text>
         </dynamic_text>
         <dynamic_text rotation="0" z="80" font_size="8" uuid="{00039041-cfe8-4505-a9c4-598603d6233a}" text_from="UserText" text_width="-1" x="40" y="-40" frame="false">
             <text>IN3</text>
         </dynamic_text>
-        <dynamic_text rotation="0" z="81" font_size="8" uuid="{25262c25-2d9c-45df-9431-96995733d0b1}" text_from="UserText" text_width="-1" x="15" y="40" frame="false">
+        <dynamic_text rotation="0" z="81" font_size="8" uuid="{25262c25-2d9c-45df-9431-96995733d0b1}" text_from="UserText" text_width="-1" x="10" y="40" frame="false">
             <text>IN2</text>
         </dynamic_text>
         <dynamic_text rotation="0" z="82" font_size="8" uuid="{1bb33d98-09b3-4230-8a61-aebfe0c26ed4}" text_from="UserText" text_width="-1" x="40" y="40" frame="false">

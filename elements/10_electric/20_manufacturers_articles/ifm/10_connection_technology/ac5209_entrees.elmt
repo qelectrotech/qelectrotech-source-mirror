@@ -1,6 +1,7 @@
 <definition hotspot_x="44" height="250" version="0.70" width="170" link_type="simple" type="element" hotspot_y="125">
     <uuid uuid="{910ec14e-097a-4b7f-9487-f906617d06f8}"/>
     <names>
+        <name lang="de">AC5209 (Eingänge)</name>
         <name lang="fr">AC5209 (entrees)</name>
         <name lang="en">AC5209 (input)</name>
         <name lang="cs">AC5209 (vstupy)</name>
@@ -83,10 +84,10 @@
         <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="70" width="10" x="-40"/>
         <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="60" y="50" width="10" x="110"/>
         <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="70" width="10" x="110"/>
-        <dynamic_text z="78" uuid="{aad3266b-2859-4284-ac2e-ff753f8ab7e1}" text_from="UserText" y="-40" rotation="0" frame="false" text_width="-1" font_size="8" x="15">
+        <dynamic_text z="78" uuid="{aad3266b-2859-4284-ac2e-ff753f8ab7e1}" text_from="UserText" y="-40" rotation="0" frame="false" text_width="-1" font_size="8" x="10">
             <text>IN1</text>
         </dynamic_text>
-        <dynamic_text z="79" uuid="{cb087df4-edb4-48df-b38d-f33bb063b223}" text_from="UserText" y="40" rotation="0" frame="false" text_width="-1" font_size="8" x="15">
+        <dynamic_text z="79" uuid="{cb087df4-edb4-48df-b38d-f33bb063b223}" text_from="UserText" y="40" rotation="0" frame="false" text_width="-1" font_size="8" x="10">
             <text>IN2</text>
         </dynamic_text>
         <dynamic_text z="80" uuid="{8473adb8-12cc-47e2-bcc7-57485dd8be89}" text_from="UserText" y="-40" rotation="0" frame="false" text_width="-1" font_size="8" x="40">
@@ -96,7 +97,7 @@
             <text>IN4</text>
         </dynamic_text>
         <dynamic_text z="82" uuid="{b8cf0341-5ee2-4b46-af2f-2f1568928d38}" text_from="UserText" y="-90" rotation="0" frame="false" text_width="-1" font_size="9" x="-10">
-            <text>AC5209 (entrées)</text>
+            <text>AC5209</text>
         </dynamic_text>
         <terminal y="0" orientation="e" x="120"/>
         <terminal y="60" orientation="e" x="120"/>
