@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">852-1106</elementInformation>
+        <elementInformation show="1" name="description">16-port 1000Base-T Industrial Switch</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text text="11" rotation="0" color="#000000" y="17" x="-52.75" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>

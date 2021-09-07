@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">289-114</elementInformation>
+        <elementInformation show="1" name="description">Module with 8 Resistors</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-150" end1="none" y2="50" antialias="false" x1="-60" x2="-60" end2="none" length2="1.5"/>

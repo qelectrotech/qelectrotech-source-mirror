@@ -5,12 +5,13 @@
     <name lang="fr">852-101</name>
     <name lang="cs">852-101</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">852-101</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">852-101</elementInformation>
+        <elementInformation show="1" name="description">5-port 10/100 Industrial Switch</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-0.35" x2="0.25" x3="0.59" x4="0.59" x5="3.59" x6="4.59" x7="4.59" x8="-18.63" x9="-18.63" y1="-139.58" y2="-139.23" y3="-138.62" y4="-134.87" y5="-130.89" y6="-130.89" y7="-103.93" y8="-103.93" y9="-104.19" x10="-18.74" x11="-18.94" x12="-21.03" x13="-21.56" x14="-21.84" x15="-21.82" x16="-22.82" x17="-22.82" x18="-24.02" x19="-24.02" x20="-23.42" x21="-23.42" x22="-22.86" x23="-21.42" y10="-104.41" y11="-104.55" y12="-105.31" y13="-105.59" y14="-106.14" y15="-119.38" y16="-119.38" y17="-120.38" y18="-120.38" y19="-130.59" y20="-130.59" y21="-137.59" y22="-139.03" y23="-139.59" style="line-style:normal;line-weight:thin;filling:HTMLGrayGainsboro;color:black" antialias="false"/>

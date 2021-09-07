@@ -5,12 +5,13 @@
     <name lang="fr">289-174</name>
     <name lang="cs">289-174</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">289-174</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-174</elementInformation>
+        <elementInformation show="1" name="description">RJ-45 to CAGE-CLAMP</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-23.88" x2="-23.88" x3="24.11" x4="24.11" y1="-84.94" y2="85.28" y3="85.28" y4="-84.94" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>

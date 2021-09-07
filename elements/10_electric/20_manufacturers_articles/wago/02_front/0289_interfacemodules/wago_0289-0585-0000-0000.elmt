@@ -5,12 +5,13 @@
     <name lang="de">289-585</name>
     <name lang="cs">289-585</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">289-585</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-585</elementInformation>
+        <elementInformation show="1" name="description">D-Sub 9 (male) to CAGE-CLAMP</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-37.96" x2="-37.96" x3="37.96" x4="37.96" y1="-84.82" y2="85.39" y3="85.39" y4="-84.82" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
