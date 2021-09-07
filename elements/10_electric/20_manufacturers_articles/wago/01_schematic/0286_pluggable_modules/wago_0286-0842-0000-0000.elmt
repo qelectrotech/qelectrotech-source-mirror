@@ -8,6 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">286-842</elementInformation>
+        <elementInformation show="1" name="description">Surge Suppression Module</elementInformation>
     </elementInformations>
     <informations>
         Author: The QElectroTech team

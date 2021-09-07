@@ -1,0 +1,47 @@
+<definition version="0.90" type="element" link_type="simple" hotspot_y="55" width="270" hotspot_x="135" height="110">
+    <names>
+        <name lang="de">855-100x/xxxx-xxxx</name>
+        <name lang="en">855-100x/xxxx-xxxx</name>
+        <name lang="fr">855-100x/xxxx-xxxx</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">855-100x/xxxx-xxxx</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">855-100x/xxxx-xxxx</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see http://qelectrotech.org/wiki/doc/elements_license
+    </informations>
+    <description>
+        <polygon y3="33" x1="-130" x2="130" y2="-33" x4="-130" y1="-33" y4="33" antialias="false" x3="130" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black"/>
+        <circle diameter="14" antialias="false" x="-7" y="36" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <circle diameter="14" antialias="false" x="-7" y="-50" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <polygon y5="-35" antialias="false" x4="-128" x2="-125" y4="-33" y2="35" x8="128" y6="-35" x7="128" x3="-128" y8="33" x1="125" y3="33" x5="-125" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y7="-33" x6="125" y1="35"/>
+        <polygon y3="33" x1="-127" x2="127" y2="-33" x4="-127" y1="-33" y4="33" antialias="false" x3="127" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black"/>
+        <polygon y5="37" antialias="false" x4="88" x2="87" y4="33" y2="-37" x8="74" y6="37" x7="74" x3="88" y8="-33" x1="75" y3="-33" x5="87" style="line-style:normal;line-weight:thin;filling:red;color:black" y7="33" x6="75" y1="-37"/>
+        <polygon y5="37" antialias="false" x4="-74" x2="-75" y4="33" y2="-37" x8="-88" y6="37" x7="-88" x3="-74" y8="-33" x1="-87" y3="-33" x5="-75" style="line-style:normal;line-weight:thin;filling:red;color:black" y7="33" x6="-87" y1="-37"/>
+        <polygon y3="33" x1="-95" x2="95" y2="-33" x4="-95" y1="-33" y4="33" antialias="false" x3="95" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black"/>
+        <polygon x16="-10.91" y5="50.41" x13="-6.07" y14="-46.57" y11="-51.93" x11="1.65" x15="-10.91" x9="8.09" antialias="false" y12="-51.78" x4="1.65" x2="-6.07" y4="52.05" y13="-49.86" y2="49.98" y15="-32.98" x8="10.89" y9="-47.19" x12="-2.44" y10="-50.29" y6="47.3" x7="10.89" y16="33.1" x3="-2.44" y8="-32.98" x1="-8.5" x14="-8.5" y3="51.9" x5="5.41" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y7="33.1" x10="5.41" x6="8.09" y1="46.68"/>
+        <polygon y3="28" x1="-37" x2="37" y2="-28" x4="-37" y1="-28" y4="28" antialias="false" x3="37" style="line-style:normal;line-weight:thin;filling:HTMLWhiteGhostWhite;color:black"/>
+        <polygon y3="33" x1="-29" x2="29" y2="-33" x4="-29" y1="-33" y4="33" antialias="false" x3="29" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black"/>
+        <polygon y3="24.75" x1="74" x2="88" y2="-24.75" x4="74" y1="-24.75" y4="24.75" antialias="false" x3="88" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <polygon y3="12" x1="74" x2="88" y2="-12" x4="74" y1="-12" y4="12" antialias="false" x3="88" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <dynamic_text keep_visual_rotation="false" text_width="-1" Valignment="AlignTop" font="Sans Serif,9,-1,5,25,0,0,0,0,0" z="14" frame="false" text_from="ElementInfo" uuid="{4340029b-bdca-4601-b693-04b337c51a30}" Halignment="AlignHCenter" x="-4" y="9" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y3="22" x1="77" x2="85" y2="14" x4="77" y1="14" y4="22" antialias="false" x3="85" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon y3="6.5" x1="74" x2="88" y2="-6.5" x4="74" y1="-6.5" y4="6.5" antialias="false" x3="88" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <polygon y3="30" x1="98" x2="128" y2="-30" x4="98" y1="-30" y4="30" antialias="false" x3="128" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black"/>
+        <circle diameter="14" antialias="false" x="-7" y="-50" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <circle diameter="14" antialias="false" x="-7" y="36" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="855-100x" x="-28" y="-15" rotation="0"/>
+        <polygon y3="-14" x1="77" x2="85" y2="-22" x4="77" y1="-22" y4="-14" antialias="false" x3="85" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon y3="24.75" x1="-88" x2="-74" y2="-24.75" x4="-88" y1="-24.75" y4="24.75" antialias="false" x3="-74" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <polygon y3="12" x1="-88" x2="-74" y2="-12" x4="-88" y1="-12" y4="12" antialias="false" x3="-74" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <polygon y3="22" x1="-85" x2="-77" y2="14" x4="-85" y1="14" y4="22" antialias="false" x3="-77" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon y3="6.5" x1="-88" x2="-74" y2="-6.5" x4="-88" y1="-6.5" y4="6.5" antialias="false" x3="-74" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <polygon y3="-14" x1="-85" x2="-77" y2="-22" x4="-85" y1="-22" y4="-14" antialias="false" x3="-77" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon y3="30" x1="-128" x2="-98" y2="-30" x4="-128" y1="-30" y4="30" antialias="false" x3="-98" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black"/>
+    </description>
+</definition>

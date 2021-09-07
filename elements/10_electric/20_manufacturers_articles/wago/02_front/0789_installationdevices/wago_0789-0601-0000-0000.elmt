@@ -5,7 +5,11 @@
         <name lang="fr">789-601</name>
         <name lang="cs">789-601</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-601</elementInformation>
+        <elementInformation show="1" name="description">4 Ch. EnOcean Radio Receiver</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

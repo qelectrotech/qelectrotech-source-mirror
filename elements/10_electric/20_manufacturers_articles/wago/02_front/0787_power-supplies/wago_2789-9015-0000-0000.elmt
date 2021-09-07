@@ -5,12 +5,13 @@
     <name lang="en">2789-9015</name>
     <name lang="cs">2789-9015</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2789-9015</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="designation">2789-9015</elementInformation>
+        <elementInformation show="1" name="description">Comm.-Module Modbus RTU</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-20" x2="-7.95" x3="-7.95" x4="-20" y1="79.68" y2="79.68" y3="81.48" y4="81.48" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>

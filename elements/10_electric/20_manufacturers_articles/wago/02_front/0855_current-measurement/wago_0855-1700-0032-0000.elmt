@@ -4,7 +4,11 @@
         <name lang="en">855-1700/032-000</name>
         <name lang="de">855-1700/032-000</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">855-1700/032-000</elementInformation>
+        <elementInformation show="1" name="description">Current-Transducer 32A:320mA</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

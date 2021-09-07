@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-8212</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" x="-360" rx="0" y="-40" height="150" width="720" ry="0"/>

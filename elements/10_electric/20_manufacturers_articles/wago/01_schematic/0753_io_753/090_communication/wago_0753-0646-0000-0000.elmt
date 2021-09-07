@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">753-646</elementInformation>
+        <elementInformation show="1" name="description">KNX/EIB/TP1-Module</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text text="(n.c.)" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="48" rotation="0" x="-276" color="#000000"/>
