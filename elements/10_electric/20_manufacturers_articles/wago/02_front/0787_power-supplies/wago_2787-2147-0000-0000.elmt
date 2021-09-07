@@ -5,12 +5,13 @@
     <name lang="en">2787-2147</name>
     <name lang="cs">2787-2147</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2787-2147</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2787-2147</elementInformation>
+        <elementInformation show="1" name="description">Pro2 1ph DC24V 20A</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="50.45" x2="51.06" x3="51.39" x4="51.39" x5="54.4" x6="55.4" x7="55.4" x8="32.17" x9="32.17" y1="-162.25" y2="-161.9" y3="-161.29" y4="-157.53" y5="-153.56" y6="-153.56" y7="-126.58" y8="-126.58" y9="-126.84" x10="32.05" x11="31.86" x12="29.76" x13="29.24" x14="28.96" x15="28.98" x16="27.98" x17="27.98" x18="26.78" x19="26.78" x20="27.38" x21="27.37" x22="27.93" x23="29.37" y10="-127.06" y11="-127.2" y12="-127.96" y13="-128.24" y14="-128.79" y15="-142.04" y16="-142.04" y17="-143.04" y18="-143.04" y19="-153.25" y20="-153.25" y21="-160.26" y22="-161.69" y23="-162.26" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>

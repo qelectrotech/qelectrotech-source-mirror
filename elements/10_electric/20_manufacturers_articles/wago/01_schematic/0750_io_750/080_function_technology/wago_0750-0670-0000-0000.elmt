@@ -14,11 +14,11 @@
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">750-670</elementInformation>
+        <elementInformation show="1" name="description">Steppercontroller, RS-422, 24V, 20mA</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect ry="0" y="-40" x="-360" width="720" style="line-style:normal;line-weight:normal;filling:none;color:black" height="90" rx="0" antialias="false"/>

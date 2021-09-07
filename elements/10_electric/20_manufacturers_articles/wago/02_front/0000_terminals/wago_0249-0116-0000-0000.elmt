@@ -5,12 +5,13 @@
     <name lang="cs">249-116 Koncová svorka 6mm</name>
     <name lang="en">249-116 End-Stop 6mm</name>
   </names>
-  <elementInformations>
-    <elementInformation name="designation" show="1">249-116</elementInformation>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="designation">249-116</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">End-Stop 6mm</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-5.96" x2="6.02" x3="6.02" x4="-5.96" y1="-41.23" y2="-41.23" y3="46.77" y4="46.77" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>

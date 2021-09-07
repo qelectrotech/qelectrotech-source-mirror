@@ -6,11 +6,12 @@
         <name lang="cs">2687-2144</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">2687-2144</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2687-2144</elementInformation>
+        <elementInformation show="1" name="description">Eco2 1ph DC24V 5A</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="-37" y3="130.41" x4="-37" y1="-129.32" antialias="false" x3="37.88" x2="37.88" y4="130.41" y2="-129.32"/>
