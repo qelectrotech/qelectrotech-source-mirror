@@ -2,7 +2,8 @@
     <uuid uuid="{4e1edf0f-faa5-4ef0-8b23-1d67c692e8f7}"/>
     <names>
         <name lang="fr">TA-SLIDER750</name>
-        <name lang="cs">Pohon TA-SLIDER160 I/O</name>
+        <name lang="de">TA-Slider 750</name>
+        <name lang="cs">Pohon TA-SLIDER750 I/O</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

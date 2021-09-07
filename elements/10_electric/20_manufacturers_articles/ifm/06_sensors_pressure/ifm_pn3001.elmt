@@ -1,6 +1,7 @@
 <definition width="90" hotspot_x="35" type="element" link_type="simple" height="90" hotspot_y="36" version="0.51">
     <uuid uuid="{0ec7e035-5779-42d8-99e0-5579abd7c684}"/>
     <names>
+        <name lang="de">PN3001 - Drucksensor mit Display</name>
         <name lang="en">PN3001</name>
         <name lang="cs">PN3001</name>
     </names>
