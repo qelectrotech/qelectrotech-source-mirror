@@ -729,51 +729,38 @@ bool Element::fromXml(QDomElement &e,
 	}
 
 	QHash<int, Terminal *> priv_id_adr;
-	int terminals_non_trouvees = 0;
 
 	for (auto *qgi : childItems())
 	{
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi))
+		if (auto terminal_ = qgraphicsitem_cast<Terminal *>(qgi))
 		{
-			bool terminal_trouvee = false;
 			for(auto qde : liste_terminals)
 			{
-				if (p -> fromXml(qde))
+				if (terminal_ -> fromXml(qde))
 				{
 					priv_id_adr.insert(qde.attribute(QStringLiteral("id")).toInt(),
-									   p);
-					terminal_trouvee = true;
-					// We used to break here, because we did not expect
-					// several terminals to share the same position.
-					// Of course, it finally happened.
+									   terminal_);
 				}
 			}
-			if (!terminal_trouvee) ++ terminals_non_trouvees;
 		}
 	}
 
-	if (terminals_non_trouvees > 0)
+
+		//Check that associated id/adress doesn't conflict with table_id_adr
+	for(auto found_id : priv_id_adr.keys())
 	{
-		m_state = QET::GIOK;
-		return(false);
-	}
-	else
-	{
-		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
-		foreach(int id_trouve, priv_id_adr.keys())
+		if (table_id_adr.contains(found_id))
 		{
-			if (table_id_adr.contains(id_trouve))
-			{
-				// cet element possede un id qui est deja reference (= conflit)
-				m_state = QET::GIOK;
-				return(false);
-			}
+				//This element got an id who is already referenced (= conflict)
+			m_state = QET::GIOK;
+			return(false);
 		}
-		// copie des associations id / adr
-		foreach(int id_trouve, priv_id_adr.keys()) {
-			table_id_adr.insert(id_trouve,
-						priv_id_adr.value(id_trouve));
-		}
+	}
+
+		//Copie the association id/adress
+	for(auto found_id : priv_id_adr.keys()) {
+		table_id_adr.insert(found_id,
+							priv_id_adr.value(found_id));
 	}
 
 	//load uuid of connected elements
