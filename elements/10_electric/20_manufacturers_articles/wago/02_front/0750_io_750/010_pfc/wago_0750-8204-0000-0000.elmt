@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-8204</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS CAN</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x8="83.51" x22="87.5" y4="66.68" y13="-14.3" x17="82.1" x10="87.51" y3="66.68" x21="87.41" x15="87.5" x11="87.5" y15="19.71" y17="22.71" x9="83.51" y7="-119.36" x1="87.53" x5="-111.94" y11="-17.3" x19="87.5" x14="87.5" y5="64.68" y16="19.71" x2="83.51" x18="87.5" y23="70.68" y6="-117.36" x13="82.1" y1="70.68" y8="-119.36" y22="59.71" x12="82.1" x4="-109.94" x16="82.1" y14="-14.3" y12="-17.3" x20="87.41" x23="87.53" y18="22.71" y20="56.71" y10="-123.36" x3="83.51" style="line-style:normal;line-weight:thin;filling:white;color:black" y2="70.68" y9="-123.36" y21="59.71" x7="-109.94" y19="56.71" antialias="false" x6="-111.94"/>

@@ -6,11 +6,12 @@
         <name lang="en">750-8212</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-8212</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-8212</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y7="-119.12" y10="-123.12" x8="48.26" x22="52.26" y8="-119.12" y4="66.92" x5="-77.25" x11="52.26" y9="-123.12" x23="52.28" y21="59.95" y22="59.95" y5="64.92" y11="-17.06" x4="-75.25" x13="46.84" y3="66.92" y14="-14.06" y6="-117.12" style="line-style:normal;line-weight:thin;filling:white;color:black" x1="52.28" x20="52.16" x6="-77.25" y2="70.92" x7="-75.25" y17="22.95" x2="48.26" y16="19.95" x16="46.85" x9="48.26" y23="70.92" y1="70.92" x21="52.16" x18="52.26" y20="56.95" x17="46.85" x15="52.26" x10="52.26" y19="56.95" antialias="false" x12="46.84" x14="52.26" y13="-14.06" y18="22.95" x3="48.26" x19="52.26" y15="19.95" y12="-17.06"/>

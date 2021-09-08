@@ -6,11 +6,12 @@
         <name lang="fr">750-8211</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-8211</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-8211</elementInformation>
+        <elementInformation show="1" name="description">PFC200 G2 2xETH 2xSFP</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x11="52.56" y11="-17.06" y16="19.95" y22="59.95" x21="52.46" y12="-17.06" x12="47.14" y4="66.92" x16="47.15" x2="48.56" y6="-117.12" x10="52.56" x19="52.56" y14="-14.06" x4="-74.95" y13="-14.06" antialias="false" y1="70.92" y17="22.95" y9="-123.12" x9="48.56" x6="-76.95" y5="64.92" x20="52.46" y7="-119.12" x1="52.58" x14="52.56" y18="22.95" y21="59.95" y2="70.92" y10="-123.12" y8="-119.12" style="line-style:normal;line-weight:thin;filling:white;color:black" x8="48.56" x17="47.15" x22="52.56" x15="52.56" x3="48.56" y20="56.95" x18="52.56" y23="70.92" y3="66.92" x13="47.14" x23="52.58" y15="19.95" x7="-74.95" y19="56.95" x5="-76.95"/>

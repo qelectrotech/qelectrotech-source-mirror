@@ -6,11 +6,12 @@
         <name lang="en">750-8217/025-000</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-8217/025-000</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-8217/025-000</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS 4G T</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x1="77.73" x2="29.76" closed="false" y1="-73.91" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-73.91" antialias="false"/>

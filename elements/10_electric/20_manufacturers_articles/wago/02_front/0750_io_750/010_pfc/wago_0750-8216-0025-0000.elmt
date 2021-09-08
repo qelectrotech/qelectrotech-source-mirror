@@ -1,14 +1,14 @@
 <definition hotspot_x="121" version="0.90" hotspot_y="131" link_type="simple" type="element" width="240" height="210">
     <names>
-        <name lang="en">750-8216</name>
-        <name lang="cs">750-8216</name>
-        <name lang="fr">750-8216</name>
-        <name lang="de">750-8216</name>
+        <name lang="en">750-8216/025-000</name>
+        <name lang="cs">750-8216/025-000</name>
+        <name lang="fr">750-8216/025-000</name>
+        <name lang="de">750-8216/025-000</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">750-8216</elementInformation>
-        <elementInformation show="1" name="description">PFC200 CS 2ETH RS CAN DPS</elementInformation>
+        <elementInformation show="1" name="designation">750-8216/025-000</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS CAN DPS T</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -139,7 +139,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect y="-64.48" style="line-style:normal;line-weight:thin;filling:orange;color:black" x="41.72" rx="0" ry="0" width="2.13" antialias="false" height="6.66"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="87.9" x2="112.11" closed="false" antialias="false" y1="33.08" y2="33.08"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="112.11" x2="87.9" closed="false" antialias="false" y1="-11.91" y2="-11.91"/>
-        <text y="12.83" color="#000000" x="34.24" rotation="270" text="750-8216" font="Sans Serif,4.57,-1,5,50,0,0,0,0,0"/>
+        <text y="12.83" color="#000000" x="34.24" rotation="270" text="750-8216/025-000" font="Sans Serif,4.57,-1,5,50,0,0,0,0,0"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="87.9" x2="112.11" closed="false" antialias="false" y1="-3.92" y2="-3.92"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="112.11" x2="87.9" closed="false" antialias="false" y1="-48.92" y2="-48.92"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x1="87.9" x2="112.11" closed="false" antialias="false" y1="-40.92" y2="-40.92"/>
