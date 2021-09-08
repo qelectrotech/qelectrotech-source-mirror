@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-8100</elementInformation>
+        <elementInformation show="1" name="description">PFC100 CS 2ETH ECO</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y11="-17.45" x17="42.77" y20="56.56" y4="66.52" x5="-48.09" x15="48.19" y17="22.55" y19="56.56" y2="70.52" x14="48.19" y18="22.55" y7="-119.51" y5="64.52" x10="48.19" x6="-48.09" y22="59.56" y6="-117.5" y3="66.52" x16="42.77" x19="48.19" x18="48.19" x9="44.17" y16="19.55" x4="-46.09" x22="48.19" x20="42.77" y21="59.56" y14="-14.46" y12="-17.45" style="line-style:normal;line-weight:thin;filling:white;color:black" x8="44.17" x11="48.19" x3="44.17" antialias="false" y8="-119.51" x1="48.19" y1="70.52" x7="-46.09" y9="-123.5" x2="44.17" x13="42.77" x21="42.77" x12="42.77" y10="-123.5" y15="19.55" y13="-14.46"/>

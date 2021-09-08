@@ -6,11 +6,12 @@
         <name lang="fr">750-8214</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-8214</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-8214</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS CAN</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x20="87.91" x8="84.01" x6="-111.44" x19="88" x21="87.91" x11="88" y1="70.68" x2="84.01" y19="56.71" y20="56.71" y10="-123.36" x9="84.01" antialias="false" x14="88" y13="-14.3" y14="-14.3" y12="-17.3" y9="-123.36" x13="82.6" x3="84.01" y11="-17.3" y23="70.68" y7="-119.36" x12="82.6" y22="59.71" x10="88.01" x15="88" y8="-119.36" y2="70.68" x17="82.6" x22="88" y3="66.68" y18="22.71" x7="-109.44" y4="66.68" y15="19.71" x4="-109.44" y16="19.71" y17="22.71" x23="88.03" x5="-111.44" x1="88.03" y6="-117.36" y21="59.71" style="line-style:normal;line-weight:thin;filling:white;color:black" x18="88" x16="82.6" y5="64.68"/>

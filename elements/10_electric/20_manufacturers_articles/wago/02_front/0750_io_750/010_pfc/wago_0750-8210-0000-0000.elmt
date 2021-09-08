@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-8210</elementInformation>
+        <elementInformation show="1" name="description">PFC200 G2 4ETH RS</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y2="70.92" x9="48.56" x12="47.14" y21="59.95" y15="19.95" x18="52.56" x16="47.15" y8="-119.12" x19="52.56" x2="48.56" x7="-74.95" x4="-74.95" y9="-123.12" y7="-119.12" y22="59.95" y12="-17.06" y20="56.95" x5="-76.95" y18="22.95" x15="52.56" x13="47.14" x1="52.58" y3="66.92" y13="-14.06" y1="70.92" y23="70.92" y10="-123.12" x20="52.46" x8="48.56" x11="52.56" x3="48.56" x17="47.15" x22="52.56" antialias="false" x10="52.56" y14="-14.06" x14="52.56" x6="-76.95" x23="52.58" y6="-117.12" y4="66.92" y16="19.95" style="line-style:normal;line-weight:thin;filling:white;color:black" y11="-17.06" y17="22.95" y5="64.92" y19="56.95" x21="52.46"/>

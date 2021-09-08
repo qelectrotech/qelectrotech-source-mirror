@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="160" width="140" hotspot_x="70" hotspot_y="75" version="0.90">
+<definition hotspot_x="65" height="160" hotspot_y="75" link_type="simple" version="0.80" width="130" type="element">
     <names>
         <name lang="it">2787-2147</name>
         <name lang="el">2787-2147</name>

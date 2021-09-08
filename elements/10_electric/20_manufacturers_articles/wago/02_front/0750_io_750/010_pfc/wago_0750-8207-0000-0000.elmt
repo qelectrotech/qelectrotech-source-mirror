@@ -6,11 +6,12 @@
         <name lang="cs">750-8207</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-8207</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-8207</elementInformation>
+        <elementInformation show="1" name="description">PFC200 CS 2ETH RS 3G</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon antialias="false" x1="76.53" y2="-73.91" x2="28.56" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-73.91" closed="false"/>

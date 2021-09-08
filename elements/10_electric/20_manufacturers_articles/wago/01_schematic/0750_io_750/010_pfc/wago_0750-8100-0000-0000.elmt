@@ -13,8 +13,8 @@
         <name lang="it">750-8100</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-8100</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-8100</elementInformation>
         <elementInformation show="1" name="description">PFC100 CS 2ETH ECO</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech

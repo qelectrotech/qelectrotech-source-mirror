@@ -13,8 +13,9 @@
         <name lang="el">287-853</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">287-853</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">287-853</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">16 Relays 12V</elementInformation>
     </elementInformations>
     <informations>
         Author: The QElectroTech team
