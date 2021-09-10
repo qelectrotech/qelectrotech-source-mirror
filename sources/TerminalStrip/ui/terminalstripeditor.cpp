@@ -25,9 +25,11 @@
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "../UndoCommand/addterminaltostripcommand.h"
 #include "../UndoCommand/changeterminalstripdata.h"
+#include "../undocommand/changeelementdatacommand.h"
 #include "terminalstriptreewidget.h"
 #include "../../qeticons.h"
 #include "terminalstripmodel.h"
+#include "../diagram.h"
 
 #include <QTreeWidgetItem>
 
@@ -42,10 +44,34 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	m_project(project)
 {
 	ui->setupUi(this);
+	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
+
+		//Go the diagram of double clicked terminal
+	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, [this](auto index)
+	{
+		Element *elmt = nullptr;
+		if (this->m_model->isXrefCell(index, &elmt))
+		{
+			auto diagram = elmt->diagram();
+			if (diagram)
+			{
+				diagram->showMe();
+				if (diagram->views().size())
+				{
+					auto fit_view = elmt->sceneBoundingRect();
+					fit_view.adjust(-200,-200,200,200);
+					diagram->views().first()->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
+				}
+			}
+		}
+	});
+	connect(ui->m_table_widget, &QAbstractItemView::entered, [this](auto index) {
+		qDebug() <<"entered";
+	});
 }
 
 /**
@@ -385,20 +411,46 @@ void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetI
 	setCurrentStrip(strip_);
 }
 
-void TerminalStripEditor::on_m_apply_data_pb_clicked(QAbstractButton *button)
+void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button)
 {
 	Q_UNUSED(button)
 
-	if (m_current_strip)
-	{
-		TerminalStripData data;
-		data.m_installation = ui->m_installation_le->text();
-		data.m_location     = ui->m_location_le->text();
-		data.m_name         = ui->m_name_le->text();
-		data.m_comment      = ui->m_comment_le->text();
-		data.m_description  = ui->m_description_te->toPlainText();
+	auto role = ui->m_dialog_button_box->buttonRole(button);
 
-		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+	if (role == QDialogButtonBox::ApplyRole)
+	{
+		if (m_current_strip)
+		{
+			m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+
+			TerminalStripData data;
+			data.m_installation = ui->m_installation_le->text();
+			data.m_location     = ui->m_location_le->text();
+			data.m_name         = ui->m_name_le->text();
+			data.m_comment      = ui->m_comment_le->text();
+			data.m_description  = ui->m_description_te->toPlainText();
+
+			m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+
+			if (m_model)
+			{
+				for (auto modified_data : m_model->modifiedRealTerminalData())
+				{
+					auto element = m_current_strip->elementForRealTerminal(modified_data.m_real_terminal);
+					if (element) {
+						auto current_data = element->elementData();
+						current_data.setTerminalType(modified_data.type_);
+						current_data.setTerminalFunction(modified_data.function_);
+						current_data.setTerminalLED(modified_data.led_);
+						current_data.m_informations.addValue(QStringLiteral("label"), modified_data.label_);
+
+						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
+					}
+				}
+			}
+
+			m_project->undoStack()->endMacro();
+		}
 	}
 
 	on_m_reload_pb_clicked();

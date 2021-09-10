@@ -1315,6 +1315,26 @@ ElementData Element::elementData() const
 }
 
 /**
+ * @brief Element::setElementData
+ * Set new data for this element.
+ * If m_information of \p data is changed, emit elementInfoChange
+ * @param data
+ */
+void Element::setElementData(ElementData data)
+{
+	auto old_info = m_data.m_informations;
+	m_data = data;
+
+	if (old_info != m_data.m_informations) {
+		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
+		if (diagram()) {
+			diagram()->project()->dataBase()->elementInfoChanged(this);
+		}
+		emit elementInfoChange(old_info, m_data.m_informations);
+	}
+}
+
+/**
 	@brief comparPos
 	Compare position of the two elements. Compare 3 points:
 	1 folio - 2 row - 3 line
