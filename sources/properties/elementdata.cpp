@@ -339,6 +339,22 @@ ElementData::TerminalType ElementData::terminalTypeFromString(const QString &str
 	return ElementData::TTGeneric;
 }
 
+QString ElementData::translatedTerminalType(ElementData::TerminalType type)
+{
+	switch (type) {
+		case ElementData::TTGeneric :
+			return QObject::tr("generique", "generic terminal element type");
+		case ElementData::TTFuse :
+			return  QObject::tr("fusible", "fuse terminal element type");
+		case ElementData::TTSectional:
+			return QObject::tr("sectionable", "sectional terminal element type");
+		case ElementData::TTDiode:
+			return QObject::tr("diode", "diode terminal element type");
+		case ElementData::TTGround:
+			return QObject::tr("terre", "ground terminal element type");
+	}
+}
+
 QString ElementData::terminalFunctionToString(ElementData::TerminalFunction function)
 {
 	switch (function) {

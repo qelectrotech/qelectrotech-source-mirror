@@ -21,6 +21,7 @@
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../elementprovider.h"
 #include "../qetxml.h"
+#include "../autoNum/assignvariables.h"
 
 using shared_real_terminal     = QSharedPointer<RealTerminal>;
 using shared_physical_terminal = QSharedPointer<PhysicalTerminal>;
@@ -79,6 +80,14 @@ class RealTerminal
 				return m_element->actualLabel();
 			} else {
 				return QStringLiteral("");
+			}
+		}
+
+		ElementData::TerminalType type() const {
+			if (m_element) {
+				return m_element->elementData().m_terminal_type;
+			} else {
+				return ElementData::TTGeneric;
 			}
 		}
 
@@ -232,6 +241,16 @@ class PhysicalTerminal
 		 */
 		int levelCount() const {
 			return m_real_terminal.size();
+		}
+
+		/**
+		 * @brief levelOf
+		 * @param terminal
+		 * @return the level of real terminal \p terminal or
+		 * -1 if \terminal is not a part of this physicalTerminal
+		 */
+		int levelOf(shared_real_terminal terminal) const {
+			return m_real_terminal.indexOf(terminal);
 		}
 
 		/**
@@ -433,6 +452,16 @@ int TerminalStrip::physicalTerminalCount() const {
 	return m_physical_terminals.size();
 }
 
+/**
+ * @brief TerminalStrip::realTerminalCount
+ * @return the number of real terminal.
+ * A real terminal is a part of a physical terminal.
+ */
+int TerminalStrip::realTerminalCount() const
+{
+	return  m_real_terminals.size();
+}
+
 TerminalStripIndex TerminalStrip::index(int index)
 {
 	TerminalStripIndex tsi_;
@@ -535,6 +564,31 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 	}
 
 	return true;
+}
+
+RealTerminalData TerminalStrip::realTerminalData(int real_terminal_index)
+{
+	RealTerminalData rtd;
+	if (m_real_terminals.isEmpty() ||
+		real_terminal_index >= m_real_terminals.size()) {
+		return rtd;
+	}
+
+	auto real_terminal = m_real_terminals.at(real_terminal_index);
+	auto physical_terminal = physicalTerminal(real_terminal);
+
+	rtd.m_real_terminal = m_real_terminals.at(real_terminal_index);
+	rtd.pos_ = m_physical_terminals.indexOf(physical_terminal);
+	rtd.level_ = physical_terminal->levelOf(real_terminal);
+	rtd.label_ = real_terminal->label();
+
+	if (real_terminal->isElement()) {
+		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
+	}
+	rtd.type_ = real_terminal->type();
+	rtd.is_element = real_terminal->isElement();
+
+	return rtd;
 }
 
 /**

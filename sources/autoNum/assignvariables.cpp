@@ -232,6 +232,33 @@ namespace autonum
 
 		return str;
 	}
+
+	/**
+	 * @brief AssignVariables::genericXref
+	 * @param element
+	 * @return a simple Xref string in form of 'folio-letterNumber'
+	 */
+	QString AssignVariables::genericXref(const Element *element)
+	{
+		QString str;
+		if (!element->diagram()) {
+			return str;
+		}
+
+
+		QSettings settings;
+		auto diagram = element->diagram();
+		if (settings.value(QLatin1String("genericpanel/folio"), true).toBool()) {
+			str = diagram->border_and_titleblock.finalfolio();
+		} else {
+			str = QString::number(diagram->folioIndex()+1);
+		}
+
+		str.append("-");
+		str.append(diagram->convertPosition(element->scenePos()).toString());
+
+		return str;
+	}
 	
 	
 	AssignVariables::AssignVariables(const QString& formula,
