@@ -353,7 +353,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 {
 	if (index.column() == TYPE_CELL) {
 		auto qcb = new QComboBox(parent);
-		qcb->setObjectName("terminal_type");
+		qcb->setObjectName(QLatin1String("terminal_type"));
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTGeneric),   ElementData::TTGeneric);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTFuse),      ElementData::TTFuse);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTSectional), ElementData::TTSectional);
@@ -364,7 +364,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 	}
 	if (index.column() == FUNCTION_CELL) {
 		auto qcb = new QComboBox(parent);
-		qcb->setObjectName("terminal_function");
+		qcb->setObjectName(QLatin1String("terminal_function"));
 		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFGeneric), ElementData::TFGeneric);
 		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFPhase),   ElementData::TFPhase);
 		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFNeutral), ElementData::TFNeutral);
