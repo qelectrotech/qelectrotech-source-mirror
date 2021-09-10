@@ -42,7 +42,6 @@ class ElementTextItemGroup;
 class Element : public QetGraphicsItem
 {
 	friend class DiagramEventAddElement;
-	friend class ChangeElementDataCommand;
 
 	Q_OBJECT
 	public:
@@ -106,6 +105,7 @@ class Element : public QetGraphicsItem
 		virtual void setElementInformations(DiagramContext dc);
 
 		ElementData elementData() const;
+		void setElementData (ElementData data);
 
 		/**
 		 * @brief kindInformations

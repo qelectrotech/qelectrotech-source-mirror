@@ -154,6 +154,13 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		modified_ = true;
 		modified_cell = FUNCTION_CELL;
 	}
+	else if (column_ == LABEL_CELL &&
+			 role == Qt::EditRole)
+	{
+		rtd.label_ = value.toString();
+		modified_ = true;
+		modified_cell = LABEL_CELL;
+	}
 
 		//Set the modification to the terminal data
 	if (modified_)
@@ -383,6 +390,9 @@ void TerminalStripModelDelegate::setModelData(QWidget *editor, QAbstractItemMode
 			if (auto qcb = dynamic_cast<QComboBox *>(editor)) {
 				model->setData(index, qcb->currentData(), Qt::EditRole);
 			}
+		}
+		else {
+			QStyledItemDelegate::setModelData(editor, model, index);
 		}
 	}
 }

@@ -28,12 +28,12 @@ ChangeElementDataCommand::ChangeElementDataCommand(Element *element, ElementData
 
 void ChangeElementDataCommand::undo() {
     if (m_element) {
-        m_element.data()->m_data = m_old_data;
+		m_element.data()->setElementData(m_old_data);
     }
 }
 
 void ChangeElementDataCommand::redo() {
     if (m_element) {
-        m_element.data()->m_data = m_new_data;
+		m_element.data()->setElementData(m_new_data);
     }
 }

@@ -442,6 +442,7 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 						current_data.setTerminalType(modified_data.type_);
 						current_data.setTerminalFunction(modified_data.function_);
 						current_data.setTerminalLED(modified_data.led_);
+						current_data.m_informations.addValue(QStringLiteral("label"), modified_data.label_);
 
 						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
 					}
