@@ -20,6 +20,7 @@
 #include "diagram.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminalelement.h"
 #include "qetproject.h"
 
 #include <QAbstractItemModel>
@@ -180,4 +181,29 @@ QetGraphicsTableItem *ElementProvider::tableFromUuid(const QUuid &uuid)
 			return table;
 
 	return nullptr;
+}
+
+/**
+ * @brief ElementProvider::freeTerminal
+ * @return a vector of every terminals element who doesn't
+ * belong to a terminal strip.
+ */
+QVector<TerminalElement *> ElementProvider::freeTerminal() const
+{
+	QVector<TerminalElement *> vector_;
+
+	for (const auto diagram : m_diagram_list) {
+		DiagramContent dc(diagram, false);
+		for (const auto element : qAsConst(dc.m_elements)) {
+			if (element->elementData().m_type == ElementData::Terminale)
+			{
+				auto te = static_cast<TerminalElement *>(element);
+				if (!te->parentTerminalStrip()) {
+					vector_.append(static_cast<TerminalElement *>(element));
+				}
+			}
+		}
+	}
+
+	return vector_;
 }

@@ -42,6 +42,8 @@ class NumerotationContext;
 class QUndoStack;
 class XmlElementCollection;
 class QTimer;
+class TerminalStrip;
+
 #ifdef BUILD_WITHOUT_KF5
 #else
 class KAutoSaveFile;
@@ -176,6 +178,11 @@ class QETProject : public QObject
 		void setProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
 
+		QVector<TerminalStrip *> terminalStrip() const;
+		TerminalStrip * newTerminalStrip(QString installation = QString(), QString location = QString(), QString name = QString());
+		bool addTerminalStrip(TerminalStrip *strip);
+		bool removeTerminalStrip(TerminalStrip *strip);
+
 	public slots:
 		Diagram *addNewDiagram(int pos = -1);
 		void removeDiagram(Diagram *);
@@ -218,6 +225,7 @@ class QETProject : public QObject
 		void readElementsCollectionXml(QDomDocument &xml_project);
 		void readProjectPropertiesXml(QDomDocument &xml_project);
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
+		void readTerminalStripXml(const QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
@@ -281,6 +289,7 @@ class QETProject : public QObject
 #endif
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
+		QVector<TerminalStrip *> m_terminal_strip_vector;
 };
 
 Q_DECLARE_METATYPE(QETProject *)
