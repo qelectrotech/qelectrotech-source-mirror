@@ -17,6 +17,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="-600" width="1200" y="-35" height="70" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" ry="0" antialias="false"/>
         <rect x="-600" width="1200" y="-25" height="50" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" ry="0" antialias="false"/>
         <line length1="1.5" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" end2="none" x2="600" y1="0" y2="0" x1="-600" antialias="false" length2="1.5" end1="none"/>
-        <text text="TS35" rotation="0" y="23" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-598" color="#888a85"/>
+        <text text="TS35 - 600mm" rotation="0" y="23" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-598" color="#888a85"/>
     </description>
 </definition>
