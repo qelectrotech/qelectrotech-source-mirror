@@ -1,0 +1,47 @@
+<definition height="160" width="100" hotspot_y="80" hotspot_x="50" version="0.90" type="element" link_type="simple">
+    <uuid uuid="{63989d18-b10a-4969-84e7-49913d1f39c0}"/>
+    <names>
+        <name lang="cs">SNS016</name>
+        <name lang="de">SNS016 - Schuko-Steckdose</name>
+        <name lang="fr">SNS016</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Hager</elementInformation>
+        <elementInformation name="designation" show="1">SNS016</elementInformation>
+        <elementInformation name="description" show="1">Socket Type F</elementInformation>
+        <elementInformation name="label" show="1">-X1</elementInformation>
+    </elementInformations>
+    <informations>plc-user for QElectroTech
+License:see http://qelectrotech.org/wiki/doc/elements_license
+    </informations>
+    <description>
+        <rect height="150" width="90" style="line-style:normal;line-weight:thin;filling:white;color:black" y="-75" rx="0" antialias="false" ry="0" x="-45"/>
+        <rect height="5.5" width="4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-35.9" rx="1" antialias="false" ry="1" x="-2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4.5" antialias="true" diameter="9" x="-23.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-4.5" antialias="true" diameter="9" x="14.5"/>
+        <circle style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-4.5" antialias="true" diameter="9" x="-4.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1.8" length2="1.5" y2="1.8" end2="none" antialias="false" x2="1.8" end1="none" y1="-1.8" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="1.8" length2="1.5" y2="1.8" end2="none" antialias="false" x2="-1.8" end1="none" y1="-1.8" length1="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" x1="0" length2="1.5" y2="1.8" end2="none" antialias="false" x2="0" end1="none" y1="-1.8" length1="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-1.8" length2="1.5" y2="-4.44089e-16" end2="none" antialias="false" x2="1.8" end1="none" y1="-4.44089e-16" length1="1.5"/>
+        <rect height="90" width="90" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-45" rx="0" antialias="false" ry="0" x="-45"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" uuid="{30be4cb6-8791-4dab-8d0d-f10e094bcfcf}" keep_visual_rotation="true" y="41" z="11" frame="false" text_from="ElementInfo" text_width="-1" Halignment="AlignHCenter" x="-10.6953">
+            <text>-X1</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" uuid="{026172d0-2ba9-4168-a669-08d019201c6c}" keep_visual_rotation="true" y="-48" z="12" frame="false" text_from="ElementInfo" text_width="-1" Halignment="AlignLeft" x="-45">
+            <text>SNS016</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,3,-1,5,25,0,0,0,0,0" Valignment="AlignTop" rotation="0" uuid="{d56e720e-dbe8-4807-bf24-70042f6998a2}" keep_visual_rotation="true" y="34" z="13" frame="false" text_from="ElementInfo" text_width="-1" Halignment="AlignLeft" x="-45">
+            <text>Hager</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <rect height="5.5" width="4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="30.6" rx="1" antialias="false" ry="1" x="-2"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-32.5" x1="-35.5" y2="-4" y3="-14.5" antialias="false" x2="-32.5" y1="-4"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-32.5" x1="-35.5" y2="4" y3="14.5" antialias="false" x2="-32.5" y1="4"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="32.5" x1="35.5" y2="-4" y3="-14.5" antialias="false" x2="32.5" y1="-4"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="32.5" x1="35.5" y2="4" y3="14.5" antialias="false" x2="32.5" y1="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-36" antialias="true" diameter="72" x="-36"/>
+    </description>
+</definition>

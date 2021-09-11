@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
         <name lang="fr">Alimentation</name>
-        <name lang="en">Power  supply</name>
+        <name lang="en">Power supply</name>
+        <name lang="de">Stromversorgungen</name>
         <name lang="cs">Napájecí zdroje</name>
     </names>
 </qet-directory>
