@@ -1,9 +1,9 @@
-<definition hotspot_x="64" height="70" width="130" type="element" hotspot_y="34" version="0.80" link_type="simple">
+<definition hotspot_y="34" version="0.90" hotspot_x="64" width="130" height="70" type="element" link_type="simple">
     <names>
-        <name lang="fr">289-128</name>
-        <name lang="en">289-128</name>
-        <name lang="de">289-128</name>
         <name lang="cs">289-128</name>
+        <name lang="en">289-128</name>
+        <name lang="fr">289-128</name>
+        <name lang="de">289-128</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
@@ -14,31 +14,28 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <line antialias="false" length1="1.5" x1="-60" x2="-60" y2="30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line antialias="false" length1="1.5" x1="-60" x2="60" y2="-30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line antialias="false" length1="1.5" x1="60" x2="60" y2="30" y1="-30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <text rotation="0" color="#000000" y="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-55" text="3"/>
-        <text rotation="0" color="#000000" y="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="50.625" text="4"/>
-        <circle diameter="5" antialias="true" y="7.5" x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <circle diameter="5" antialias="true" y="7.5" x="57.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <text rotation="0" color="#000000" y="-12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="50.625" text="2"/>
-        <circle diameter="5" antialias="true" y="-12.5" x="57.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <circle diameter="5" antialias="true" y="-12.5" x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <dynamic_text text_from="ElementInfo" rotation="0" y="28" frame="false" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="-4" z="42" uuid="{32815a7b-7a5c-4c39-bbd5-70f7869c4d0b}" Halignment="AlignLeft">
+        <rect x="-60" y="-30" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="120" ry="0" antialias="false" height="60"/>
+        <text x="-55" y="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="3"/>
+        <text x="50.625" y="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="4"/>
+        <circle x="-62.5" y="7.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="57.5" y="7.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <text x="50.625" y="-12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="2"/>
+        <circle x="57.5" y="-12.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="-62.5" y="-12.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <line x1="-41.5" end1="circle" length1="1.5" y1="0" y2="0" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x2="41.5" end2="circle" length2="1.5"/>
+        <text x="-37" y="27" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="Resistor 9k1"/>
+        <text x="-55" y="-12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="1"/>
+        <text x="-45" y="-16" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="WAGO 289-128"/>
+        <rect x="-15" y="-5" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="30" ry="0" antialias="false" height="10"/>
+        <polygon x3="-40" x1="-60" y1="-10" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-40" y3="10" x4="-60" y4="10" closed="false"/>
+        <polygon x3="40" x1="60" y1="-10" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="40" y3="10" x4="60" y4="10" closed="false"/>
+        <dynamic_text x="-4" y="28" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" text_from="ElementInfo" z="16" uuid="{32815a7b-7a5c-4c39-bbd5-70f7869c4d0b}" text_width="-1" frame="false" keep_visual_rotation="true">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line antialias="false" length1="1.5" x1="-41.5" x2="41.5" y2="0" y1="0" end1="circle" end2="circle" style="line-style:normal;line-weight:normal;filling:black;color:black" length2="1.5"/>
-        <line antialias="false" length1="1.5" x1="-60" x2="60" y2="30" y1="30" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <text rotation="0" color="#000000" y="27" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-37" text="Resistor 9k1"/>
-        <text rotation="0" color="#000000" y="-12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-55" text="1"/>
-        <text rotation="0" color="#000000" y="-16" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-45" text="WAGO 289-128"/>
-        <rect rx="0" ry="0" antialias="false" height="10" width="30" y="-5" x="-15" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
-        <polygon x3="-40" y4="10" antialias="false" x1="-60" x4="-60" x2="-40" y2="-10" y3="10" closed="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x3="40" y4="10" antialias="false" x1="60" x4="60" x2="40" y2="-10" y3="10" closed="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal name="R1.2" orientation="e" y="-10" x="60"/>
-        <terminal name="R1.1" orientation="w" y="-10" x="-60"/>
-        <terminal name="R2.2" orientation="e" y="10" x="60"/>
-        <terminal name="R2.1" orientation="w" y="10" x="-60"/>
+        <terminal x="60" y="-10" orientation="e" name="R1.2"/>
+        <terminal x="-60" y="-10" orientation="w" name="R1.1"/>
+        <terminal x="60" y="10" orientation="e" name="R2.2"/>
+        <terminal x="-60" y="10" orientation="w" name="R2.1"/>
     </description>
 </definition>

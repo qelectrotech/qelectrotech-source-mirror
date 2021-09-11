@@ -5,12 +5,13 @@
     <name lang="en">2857-570/024-005</name>
     <name lang="cs">2857-570/024-005</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2857-570/024-005</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2857-570/024-005</elementInformation>
+        <elementInformation show="1" name="description">3-Phase Power Measurement; 3x400/690V; 5A; Modbus RTU</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-71.62" x2="72.03" x3="72.03" x4="-71.62" y1="-89.67" y2="-89.67" y3="89.91" y4="89.91" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
