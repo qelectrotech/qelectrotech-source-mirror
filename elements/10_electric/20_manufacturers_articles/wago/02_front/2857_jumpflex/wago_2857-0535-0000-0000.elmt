@@ -5,12 +5,13 @@
     <name lang="en">2857-535</name>
     <name lang="cs">2857-535</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2857-535</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2857-535</elementInformation>
+        <elementInformation show="1" name="description">RTD TC Temperature Signal Conditioner; Analog</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-21.89" x2="22.82" x3="22.82" x4="-21.89" y1="-110.09" y2="-110.09" y3="109.91" y4="109.91" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
