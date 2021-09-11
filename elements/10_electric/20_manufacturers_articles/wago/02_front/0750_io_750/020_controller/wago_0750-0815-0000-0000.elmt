@@ -6,11 +6,12 @@
         <name lang="cs">750-815</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-815</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-815</elementInformation>
+        <elementInformation show="1" name="description">Modbus-Controller</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x8="-48.3" y4="70.62" style="line-style:normal;line-weight:thin;filling:white;color:black" y5="70.62" y2="-123.39" x4="23.75" y7="66.61" x3="23.75" y9="-117.39" y3="-123.39" y6="66.61" x10="-46.29" antialias="false" x9="-48.3" x7="-46.29" x1="19.74" x6="19.74" y10="-119.39" y8="64.61" x5="19.74" x2="19.74" y1="-119.39"/>

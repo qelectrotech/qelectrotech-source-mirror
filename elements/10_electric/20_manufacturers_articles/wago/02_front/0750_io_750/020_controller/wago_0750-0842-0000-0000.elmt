@@ -6,11 +6,12 @@
         <name lang="de">750-842</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-842</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-842</elementInformation>
+        <elementInformation show="1" name="description">Ethernet-Controller</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y1="-119.61" y6="66.37" y2="-123.61" x8="-48.22" y3="-123.61" y4="70.38" x4="23.79" style="line-style:normal;line-weight:thin;filling:white;color:black" x2="19.79" x3="23.79" x5="19.79" x1="19.79" x6="19.79" y10="-119.61" y5="70.38" y9="-117.61" x10="-46.22" antialias="false" x7="-46.22" y8="64.37" x9="-48.22" y7="66.37"/>

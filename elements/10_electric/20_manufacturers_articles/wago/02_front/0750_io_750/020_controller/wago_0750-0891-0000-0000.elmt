@@ -6,11 +6,12 @@
         <name lang="cs">750-891</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-891</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-891</elementInformation>
+        <elementInformation show="1" name="description">Ethernet-Controller</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y14="-14.46" x20="30.92" y10="-123.5" y22="59.56" y4="66.52" x3="32.32" y18="22.55" x8="32.32" y17="22.55" y15="19.55" x2="32.32" y12="-17.45" x18="36.33" y6="-117.5" x22="36.33" x14="36.33" y2="70.52" x17="30.92" y19="56.56" y1="70.52" x6="-59.95" y8="-119.51" x12="30.92" x21="30.92" y21="59.56" y9="-123.5" x7="-57.94" y16="19.55" style="line-style:normal;line-weight:thin;filling:white;color:black" x16="30.92" x4="-57.94" y3="66.52" x13="30.92" y7="-119.51" x1="36.35" y5="64.52" y20="56.56" y13="-14.46" x5="-59.95" x9="32.32" antialias="false" x11="36.33" x19="36.33" x10="36.33" y11="-17.45" x15="36.33"/>
