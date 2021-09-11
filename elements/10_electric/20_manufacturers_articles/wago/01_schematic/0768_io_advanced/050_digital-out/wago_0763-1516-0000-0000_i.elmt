@@ -6,12 +6,12 @@
         <name lang="cs">763-1516 (I) </name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">763-1516</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">763-1516</elementInformation>
+        <elementInformation show="1" name="description">16DO ADV 24 V DC; 0,5 A</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y1="-40" y2="-40" x3="-360" x2="-360" closed="false" y3="50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="360" x4="360" y4="50"/>
