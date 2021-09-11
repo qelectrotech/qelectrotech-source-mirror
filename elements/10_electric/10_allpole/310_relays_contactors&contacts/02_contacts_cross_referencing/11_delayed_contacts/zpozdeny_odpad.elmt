@@ -10,7 +10,7 @@
         <kindInformation name="state">NO</kindInformation>
         <kindInformation name="number">1</kindInformation>
     </kindInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon closed="false" antialias="true" x2="10" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" y3="20" y1="-10" x3="10"/>

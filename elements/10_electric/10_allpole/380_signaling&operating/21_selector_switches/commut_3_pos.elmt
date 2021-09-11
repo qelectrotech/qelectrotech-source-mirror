@@ -16,8 +16,9 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license
+    </informations>
     <description>
         <text x="-22" color="#000000" text="0" y="-6" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0"/>
         <polygon x3="150" x1="145" y1="-10" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" closed="false" antialias="true" x2="150"/>
