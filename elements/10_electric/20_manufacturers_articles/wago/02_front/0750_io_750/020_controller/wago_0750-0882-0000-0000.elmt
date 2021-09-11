@@ -6,11 +6,12 @@
         <name lang="cs">750-882</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-882</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-882</elementInformation>
+        <elementInformation show="1" name="description">Ethernet Media-Redundancy Controller</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y2="70.52" x13="30.92" x16="30.92" x1="36.35" x3="32.32" y22="59.56" y10="-123.5" x6="-59.95" y7="-119.51" y15="19.55" y21="59.56" x22="36.33" y4="66.52" y3="66.52" y12="-17.45" x11="36.33" antialias="false" x17="30.92" style="line-style:normal;line-weight:thin;filling:white;color:black" x12="30.92" x7="-57.94" y8="-119.51" x2="32.32" y19="56.56" x21="30.92" x4="-57.94" y13="-14.46" y5="64.52" x9="32.32" x20="30.92" y14="-14.46" x8="32.32" y17="22.55" x18="36.33" x15="36.33" y9="-123.5" y16="19.55" x14="36.33" y20="56.56" y6="-117.5" y18="22.55" y1="70.52" x19="36.33" x5="-59.95" y11="-17.45" x10="36.33"/>

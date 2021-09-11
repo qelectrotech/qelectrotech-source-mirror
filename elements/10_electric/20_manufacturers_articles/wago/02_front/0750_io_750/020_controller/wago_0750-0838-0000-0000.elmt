@@ -6,11 +6,12 @@
         <name lang="cs">750-838</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-838</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-838</elementInformation>
+        <elementInformation show="1" name="description">CANopen - Controller D-Sub</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y9="-117.39" x6="19.54" x3="23.55" y6="66.61" antialias="false" y4="70.62" x8="-48.5" y7="66.61" x2="19.54" x10="-46.49" x1="19.54" x4="23.55" y1="-119.39" x7="-46.49" x9="-48.5" style="line-style:normal;line-weight:thin;filling:white;color:black" y5="70.62" y10="-119.39" y8="64.61" x5="19.54" y2="-123.39" y3="-123.39"/>

@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-849</elementInformation>
+        <elementInformation show="1" name="description">KNX IP-Controller</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y9="-117.61" y4="70.38" y1="-119.61" x4="23.79" style="line-style:normal;line-weight:thin;filling:white;color:black" x2="19.79" x9="-48.22" x3="23.79" x7="-46.22" antialias="false" y5="70.38" y8="64.37" y2="-123.61" x5="19.79" x8="-48.22" y10="-119.61" y6="66.37" y7="66.37" x10="-46.22" x1="19.79" y3="-123.61" x6="19.79"/>
