@@ -13,7 +13,7 @@
         <name lang="fr">Voyant flash</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="13" uuid="{52feb3dc-7d99-477d-9675-e980db92c85c}" frame="false" Halignment="AlignLeft" keep_visual_rotation="false" z="1" text_width="-1" Valignment="AlignTop" y="-15.95" text_from="ElementInfo">
