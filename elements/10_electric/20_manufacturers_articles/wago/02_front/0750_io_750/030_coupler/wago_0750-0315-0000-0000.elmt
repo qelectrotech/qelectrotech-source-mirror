@@ -6,11 +6,12 @@
         <name lang="fr">750-315</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-315</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-315</elementInformation>
+        <elementInformation show="1" name="description">Modbus RTU Coupler</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y8="64.61" x7="-46.29" x6="19.74" y2="-123.39" y4="70.62" y5="70.62" x9="-48.3" y3="-123.39" style="line-style:normal;line-weight:thin;filling:white;color:black" y7="66.61" y9="-117.39" x1="19.74" antialias="false" x5="19.74" y10="-119.39" x8="-48.3" y6="66.61" x2="19.74" x10="-46.29" y1="-119.39" x3="23.75" x4="23.75"/>

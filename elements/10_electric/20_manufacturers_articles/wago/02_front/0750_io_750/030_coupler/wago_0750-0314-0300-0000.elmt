@@ -6,11 +6,12 @@
         <name lang="cs">750-314/300-000</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-314/300-000</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-314/300-000</elementInformation>
+        <elementInformation show="1" name="description">Modbus RTU Coupler</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x6="19.74" x10="-46.3" antialias="false" y8="64.61" x3="23.75" y6="66.61" x5="19.74" x4="23.75" x8="-48.3" y3="-123.39" x2="19.74" y9="-117.39" y2="-123.39" y1="-119.39" y7="66.61" style="line-style:normal;line-weight:thin;filling:white;color:black" y4="70.62" y10="-119.39" y5="70.62" x1="19.74" x9="-48.3" x7="-46.3"/>

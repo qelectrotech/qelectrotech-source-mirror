@@ -6,11 +6,12 @@
         <name lang="en">750-338</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-338</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-338</elementInformation>
+        <elementInformation show="1" name="description">CANopen - Coupler D-Sub</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <circle style="line-style:normal;line-weight:thin;filling:lightgray;color:black" diameter="7.43" y="-43.97" x="-4.37" antialias="false"/>

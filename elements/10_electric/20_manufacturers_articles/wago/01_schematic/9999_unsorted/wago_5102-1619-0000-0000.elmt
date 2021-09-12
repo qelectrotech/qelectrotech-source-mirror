@@ -17,10 +17,9 @@
         <elementInformation show="1" name="designation">5102-1619</elementInformation>
         <elementInformation show="1" name="description">Relay-Module</elementInformation>
     </elementInformations>
-    <informations>
-        Author: The QElectroTech team
+    <informations>Author: The QElectroTech team
         Modified by: plc-user
-        License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect x="0" height="120" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0" width="960" rx="0"/>
         <circle x="7.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="117.5"/>

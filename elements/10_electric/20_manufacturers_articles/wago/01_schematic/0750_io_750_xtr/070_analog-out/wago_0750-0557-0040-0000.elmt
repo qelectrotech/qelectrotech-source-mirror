@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-557/040-000</elementInformation>
+        <elementInformation show="1" name="description">4AO +/-10V DC</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" rx="0" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" ry="0" antialias="false" width="720"/>

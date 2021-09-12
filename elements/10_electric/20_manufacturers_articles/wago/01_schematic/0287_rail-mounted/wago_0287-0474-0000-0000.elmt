@@ -17,10 +17,10 @@
         <elementInformation show="1" name="designation">287-474</elementInformation>
         <elementInformation show="1" name="description">4 Relays 24V (250V / 16A)</elementInformation>
     </elementInformations>
-    <informations>
-        Author: The QElectroTech team
-        Modified by: plc-user
-        License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <informations>Author: The QElectroTech team
+Modified by: plc-user
+License: see http://qelectrotech.org/wiki/doc/elements_license
+    </informations>
     <description>
         <polygon x3="163" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="125" y2="100" closed="false" x1="170" y3="100" x2="170" antialias="false"/>
         <polygon x3="103" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="125" y2="100" closed="false" x1="110" y3="100" x2="110" antialias="false"/>

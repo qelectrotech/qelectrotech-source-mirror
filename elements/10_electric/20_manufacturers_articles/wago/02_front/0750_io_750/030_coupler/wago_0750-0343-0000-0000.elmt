@@ -6,11 +6,12 @@
         <name lang="cs">750-343</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-343</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-343</elementInformation>
+        <elementInformation show="1" name="description">Profibus DP ECO Coupler</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y10="-123.5" x15="43.36" antialias="false" x7="-50.91" x10="43.36" y21="59.56" x22="43.36" x13="37.94" x1="43.38" y18="22.55" y5="64.52" x17="37.94" x6="-52.92" y11="-17.45" x21="37.94" x11="43.36" x9="39.34" y3="66.52" x16="37.94" y19="56.56" y8="-119.51" y13="-14.46" x8="39.34" y6="-117.5" x2="39.34" style="line-style:normal;line-weight:thin;filling:white;color:black" x3="39.34" y4="66.52" y15="19.55" x20="37.94" x18="43.36" y20="56.56" x14="43.36" x19="43.36" y12="-17.45" x5="-52.92" y22="59.56" y16="19.55" y9="-123.5" y2="70.52" x12="37.94" y17="22.55" y14="-14.46" y7="-119.51" x4="-50.91" y1="70.52"/>
