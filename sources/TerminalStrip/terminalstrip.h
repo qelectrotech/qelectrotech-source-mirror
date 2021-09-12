@@ -44,11 +44,15 @@ struct RealTerminalData
 			cable_wire_,
 			conductor_;
 
+	QUuid uuid_;
+
 	ElementData::TerminalType type_;
 	ElementData::TerminalFunction function_;
 
 	bool led_ = false,
 		 is_element = false;
+
+	TerminalElement *element_ = nullptr;
 
 };
 
@@ -99,7 +103,6 @@ class TerminalStrip : public QObject
 		bool haveTerminal   (Element *terminal);
 
 		int physicalTerminalCount() const;
-		TerminalStripIndex index(int index = 0);
 
 		PhysicalTerminalData physicalTerminalData(int index);
 
@@ -122,29 +125,6 @@ class TerminalStrip : public QObject
 		QVector<QPointer<Element>> m_terminal_elements_vector;
 		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
 		QVector<QSharedPointer<PhysicalTerminal>> m_physical_terminals;
-};
-
-class TerminalStripIndex
-{
-	friend class TerminalStrip;
-
-	private :
-		TerminalStripIndex () {}
-		TerminalStripIndex (TerminalStripIndex *) {}
-
-	public:
-		bool isValid() const;
-		QString label(int level = 0) const;
-		QUuid uuid(int level = 0) const;
-		bool isElement(int level = 0) const;
-		TerminalElement *element(int level = 0) const;
-
-	private:
-		QVector<QString> m_label;
-		QVector<QUuid> m_uuid;
-		bool m_valid = false;
-		QVector<bool> m_is_element;
-		QVector<TerminalElement *> m_element;
 };
 
 #endif // TERMINALSTRIP_H

@@ -213,13 +213,17 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		//Add child terminal of the strip
 	for (auto i=0 ; i<terminal_strip->physicalTerminalCount() ; ++i)
 	{
-		auto index = terminal_strip->index(i);
-		auto term_item = new QTreeWidgetItem(strip_item, QStringList(index.label()), TerminalStripTreeWidget::Terminal);
-		term_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, index.uuid().toString());
-		term_item->setIcon(0, QET::Icons::ElementTerminal);
+		auto ptd = terminal_strip->physicalTerminalData(i);
+		if (ptd.real_terminals_vector.size())
+		{
+			auto real_t = ptd.real_terminals_vector.first();
+			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t.label_), TerminalStripTreeWidget::Terminal);
+			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.uuid_.toString());
+			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 
-		if (index.isElement()) {
-			m_uuid_terminal_H.insert(index.uuid(), index.element());
+			if (real_t.is_element) {
+				m_uuid_terminal_H.insert(real_t.uuid_, real_t.element_);
+			}
 		}
 	}
 

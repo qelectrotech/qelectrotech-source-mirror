@@ -468,28 +468,6 @@ int TerminalStrip::physicalTerminalCount() const {
 	return m_physical_terminals.size();
 }
 
-TerminalStripIndex TerminalStrip::index(int index)
-{
-	TerminalStripIndex tsi_;
-
-	if (index < 0 ||
-		index >= m_physical_terminals.size()) {
-		return tsi_;
-	}
-
-	auto phy_term = m_physical_terminals.at(index);
-
-	for(auto &real_term : phy_term->terminals()) {
-		tsi_.m_label.append(real_term->label());
-		tsi_.m_uuid.append(real_term->elementUuid());
-		tsi_.m_is_element.append(real_term->isElement());
-		tsi_.m_element.append(static_cast<TerminalElement*>(real_term->element()));
-	}
-
-	tsi_.m_valid = true;
-	return tsi_;
-}
-
 /**
  * @brief TerminalStrip::physicalTerminalData
  * @param index
@@ -657,6 +635,8 @@ RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> re
 
 	if (real_terminal->isElement()) {
 		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
+		rtd.uuid_ = real_terminal->elementUuid();
+		rtd.element_ = qgraphicsitem_cast<TerminalElement *>(real_terminal->element());
 	}
 	rtd.type_      = real_terminal->type();
 	rtd.function_  = real_terminal->function();
@@ -664,59 +644,4 @@ RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> re
 	rtd.is_element = real_terminal->isElement();
 
 	return rtd;
-}
-
-/************************************************************************************/
-/************************************************************************************/
-/************************************************************************************/
-/************************************************************************************/
-/************************************************************************************/
-
-
-
-
-
-bool TerminalStripIndex::isValid() const
-{
-	return m_valid;
-}
-
-QString TerminalStripIndex::label(int level) const
-{
-	if (level<0 ||
-		level >= m_label.size()) {
-		return QStringLiteral("");
-	}
-
-	return m_label.at(level);
-}
-
-QUuid TerminalStripIndex::uuid(int level) const
-{
-	if (level<0 ||
-		level >= m_uuid.size()) {
-		return QUuid();
-	}
-
-	return m_uuid.at(level);
-}
-
-bool TerminalStripIndex::isElement(int level) const
-{
-	if (level<0 ||
-		level >= m_is_element.size()) {
-		return false;
-	}
-
-	return m_is_element.at(level);
-}
-
-TerminalElement *TerminalStripIndex::element(int level) const
-{
-	if (level<0 ||
-		level >= m_element.size()) {
-		return nullptr;
-	}
-
-	return m_element.at(level);
 }
