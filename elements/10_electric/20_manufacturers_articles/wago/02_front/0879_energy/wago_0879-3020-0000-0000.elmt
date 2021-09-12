@@ -11,7 +11,7 @@
         <elementInformation show="1" name="description">MID-Counter</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see http://qelectrotech.org/wiki/doc/elements_license
+License:see http://qelectrotech.org/wiki/doc/elements_license
         </informations>
     <description>
         <rect ry="0" height="280" y="-140" antialias="false" x="-72" style="line-style:normal;line-weight:normal;filling:HTMLWhiteAliceBlue;color:black" width="144" rx="0"/>

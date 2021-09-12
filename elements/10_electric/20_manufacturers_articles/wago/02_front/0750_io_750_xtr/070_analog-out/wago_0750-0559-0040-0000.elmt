@@ -5,12 +5,13 @@
     <name lang="de">750-559/040-000</name>
     <name lang="cs">750-559/040-000</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">750-559/040-000</elementInformation>
-  </elementInformations>
-  <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-559/040-000</elementInformation>
+        <elementInformation show="1" name="description">4AO 0-10V DC</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="15.22" x2="11.18" x3="11.18" x4="8.16" x5="8.16" x6="1.1" x7="1.1" x8="-6.97" x9="-6.97" y1="-123.57" y2="-123.57" y3="-119.56" y4="-119.56" y5="-120.56" y6="-120.56" y7="-117.56" y8="-117.56" y9="-123.57" x10="1.1" x11="1.1" x12="-15.04" x13="-15.04" x14="-13.03" x15="-13.03" x16="-8.99" x17="-8.99" x18="-13.03" x19="-13.03" x20="-15.04" x21="-15.04" x22="1.1" x23="1.1" x24="-6.97" x25="-6.97" x26="1.1" x27="1.1" x28="11.18" x29="11.18" x30="15.22" y10="-123.57" y11="-126.57" y12="-126.57" y13="-120.56" y14="-120.56" y15="-124.57" y16="-124.57" y17="71.44" y18="71.44" y19="67.44" y20="67.44" y21="73.43" y22="73.43" y23="70.44" y24="70.44" y25="66.44" y26="66.44" y27="67.44" y28="67.44" y29="70.44" y30="70.44" style="line-style:normal;line-weight:thin;filling:black;color:lightgray" antialias="false"/>

@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-337</elementInformation>
+        <elementInformation show="1" name="description">CANopen - Coupler MCS</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y7="66.61" x2="19.54" y4="70.62" x8="-48.5" x6="19.54" x1="19.54" y3="-123.39" x9="-48.5" y6="66.61" y1="-119.39" y2="-123.39" y5="70.62" x10="-46.49" x4="23.55" x5="19.54" x3="23.55" x7="-46.49" antialias="false" style="line-style:normal;line-weight:thin;filling:white;color:black" y8="64.61" y9="-117.39" y10="-119.39"/>

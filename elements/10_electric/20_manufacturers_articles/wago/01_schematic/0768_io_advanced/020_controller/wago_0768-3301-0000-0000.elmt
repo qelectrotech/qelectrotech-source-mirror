@@ -18,7 +18,7 @@
         <elementInformation show="1" name="description">PFC200 ADV 2ETH</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect rx="0" y="-40" width="720" ry="0" x="-360" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>

@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-354/000-002</elementInformation>
+        <elementInformation show="1" name="description">EtherCAT ECO Coupler</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x18="42.93" x14="42.93" x10="42.93" y9="-123.36" y1="70.67" y4="66.67" x5="-53.35" y21="59.71" y15="19.7" x2="38.91" x19="42.93" x9="38.91" x12="37.51" x16="37.51" y6="-117.36" x8="38.91" x11="42.93" y14="-14.31" y8="-119.36" y17="22.7" x3="38.91" y12="-17.31" x21="37.51" x1="42.95" y20="56.71" antialias="false" x7="-51.35" y19="56.71" x20="37.51" y11="-17.31" y22="59.71" style="line-style:normal;line-weight:thin;filling:white;color:black" x17="37.51" x22="42.93" y13="-14.31" y3="66.67" y16="19.7" y10="-123.36" y7="-119.36" y2="70.67" x13="37.51" x15="42.93" x4="-51.35" x6="-53.35" y5="64.66" y18="22.7"/>

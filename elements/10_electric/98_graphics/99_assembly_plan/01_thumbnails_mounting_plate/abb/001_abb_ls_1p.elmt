@@ -1,0 +1,51 @@
+<definition width="40" hotspot_x="19" height="180" type="element" hotspot_y="90" version="0.90" link_type="simple">
+    <uuid uuid="{ff1b086f-c44b-48d5-afe6-dcd43eff8a1a}"/>
+    <names>
+        <name lang="cs">S201</name>
+        <name lang="fr">S201</name>
+        <name lang="en">S201</name>
+        <name lang="de">S201</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description">Leitungsschutzschalter (LS 1P)</elementInformation>
+        <elementInformation show="1" name="designation">S201</elementInformation>
+        <elementInformation show="1" name="manufacturer">ABB</elementInformation>
+        <elementInformation show="1" name="label">-F1</elementInformation>
+    </elementInformations>
+    <informations>plc-user for QElectroTech
+License:see http://qelectrotech.org/wiki/doc/elements_license
+    </informations>
+    <description>
+        <rect x="-17.5" width="35" rx="0" ry="0" height="170" y="-85" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+        <rect x="-17.5" width="35" rx="0" ry="0" height="90" y="-45" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+        <circle diameter="16" x="-8" y="63" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
+        <line x1="-4" length1="1.5" length2="1.5" x2="4" end1="none" y2="75" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" y1="67" end2="none"/>
+        <dynamic_text Valignment="AlignTop" Halignment="AlignHCenter" x="-11.5" text_width="-1" z="5" uuid="{1f15d110-d2bc-46a8-900d-b658fb0132e0}" y="26" keep_visual_rotation="false" frame="false" rotation="0" font="Sans Serif,6,-1,5,25,0,0,0,0,0" text_from="UserText">
+            <text>-F1</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-4" length1="1.5" length2="1.5" x2="4" end1="none" y2="67" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" y1="75" end2="none"/>
+        <line x1="7.10543e-15" length1="1.5" length2="1.5" x2="7.10543e-15" end1="none" y2="74" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="68" end2="none"/>
+        <line x1="-3" length1="1.5" length2="1.5" x2="3" end1="none" y2="71" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="71" end2="none"/>
+        <circle diameter="16" x="-8" y="-79" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
+        <line x1="-4" length1="1.5" length2="1.5" x2="4" end1="none" y2="-67" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" y1="-75" end2="none"/>
+        <line x1="-4" length1="1.5" length2="1.5" x2="4" end1="none" y2="-75" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" y1="-67" end2="none"/>
+        <line x1="7.10543e-15" length1="1.5" length2="1.5" x2="7.10543e-15" end1="none" y2="-68" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-74" end2="none"/>
+        <line x1="-3" length1="1.5" length2="1.5" x2="3" end1="none" y2="-71" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-71" end2="none"/>
+        <rect x="-17.5" width="35" rx="0" ry="0" height="6" y="-41" style="line-style:normal;line-weight:normal;filling:red;color:none" antialias="false"/>
+        <text text="ABB" x="-14.5" color="#ffffff" y="-36" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <line x1="-17.5" length1="1.5" length2="1.5" x2="17.5" end1="none" y2="40" style="line-style:normal;line-weight:normal;filling:none;color:gray" antialias="false" y1="40" end2="none"/>
+        <rect x="-12.5" width="25" rx="0" ry="0" height="34" y="-13" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false"/>
+        <text text="0" x="-3.5" color="#ffffff" y="2" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <rect x="-17.5" width="4" rx="0" ry="0" height="30" y="-15" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
+        <rect x="13.5" width="4" rx="0" ry="0" height="30" y="-15" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
+        <rect x="-15.5" width="31" rx="0" ry="0" height="11" y="10" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false"/>
+        <rect x="-11.5" width="10" rx="0" ry="0" height="5" y="23" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
+        <dynamic_text Valignment="AlignTop" Halignment="AlignLeft" x="-19.5" text_width="-1" z="35" uuid="{8bb939d1-3a61-48ee-99ac-e4d3f9f6c390}" y="-39" keep_visual_rotation="false" frame="false" rotation="0" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>S201</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" Halignment="AlignLeft" x="-19.5" text_width="-1" z="36" uuid="{8bb939d1-3a61-48ee-99ac-e4d3f9f6c390}" y="-31" keep_visual_rotation="false" frame="false" rotation="0" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>B16</text>
+        </dynamic_text>
+    </description>
+</definition>
