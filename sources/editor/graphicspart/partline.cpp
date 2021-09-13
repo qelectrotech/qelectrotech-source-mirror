@@ -605,14 +605,14 @@ void PartLine::setSecondEndLength(const qreal &l)
 
 void PartLine::setRotation(qreal angle) {
 
-    QTransform rotation = QTransform().translate(m_line.p1().x(),m_line.p1().y()).rotate(angle-m_rot).translate(-m_line.p1().x(),-m_line.p1().y());
-    m_rot=angle;
+	QTransform rotation = QTransform().translate(m_line.p1().x(),m_line.p1().y()).rotate(angle-m_rot).translate(-m_line.p1().x(),-m_line.p1().y());
+	m_rot=angle;
 
-    setLine(rotation.map(m_line));
+	setLine(rotation.map(m_line));
 }
 
 qreal PartLine::rotation() const {
-    return m_rot;
+	return m_rot;
 }
 
 

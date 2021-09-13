@@ -74,8 +74,8 @@ class PartTerminal : public CustomElementGraphicPart
 		Qet::Orientation orientation() const {return d -> m_orientation;}
         void setOrientation(Qet::Orientation ori);
 
-        qreal rotation() const;
-        void setRotation(qreal angle);
+		qreal rotation() const;
+		void setRotation(qreal angle);
 
 
 		QString name() const override { return d -> m_name; }
