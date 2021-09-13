@@ -94,8 +94,8 @@ class PartLine : public CustomElementGraphicPart
 		void setFirstEndLength(const qreal &l);
 		qreal secondEndLength() const {return second_length;}
 		void setSecondEndLength(const qreal &l);
-        void setRotation(qreal angle);
-        qreal rotation() const;
+		void setRotation(qreal angle);
+		qreal rotation() const;
 
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;

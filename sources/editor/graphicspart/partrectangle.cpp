@@ -173,14 +173,14 @@ void PartRectangle::setYRadius(qreal Y)
 
 void PartRectangle::setRotation(qreal angle) {
 
-    QTransform rotation = QTransform().rotate(angle-m_rot);
-    m_rot=angle;
+	QTransform rotation = QTransform().rotate(angle-m_rot);
+	m_rot=angle;
 
-    setRect(rotation.mapRect(m_rect));
+	setRect(rotation.mapRect(m_rect));
 }
 
 qreal PartRectangle::rotation() const {
-    return m_rot;
+	return m_rot;
 }
 
 /**

@@ -154,28 +154,28 @@ void PartTerminal::setOrientation(Qet::Orientation ori) {
 }
 
 /**
-    Redéfinit la fonction de rotation pour la traduire en orientation de la borne
-    @param angle
+	Redefines setRotation to call setOrientation
+	@param angle
 */
 void PartTerminal::setRotation(qreal angle) {
-    qreal angle_mod = std::fmod(angle,360);
-    Qet::Orientation new_ori = Qet::North;
+	qreal angle_mod = std::fmod(angle,360);
+	Qet::Orientation new_ori = Qet::North;
 
-    if      (0   <= angle_mod && angle_mod < 90 ) new_ori = Qet::North;
-    else if (90  <= angle_mod && angle_mod < 180) new_ori = Qet::East;
-    else if (180 <= angle_mod && angle_mod < 270) new_ori = Qet::South;
-    else new_ori = Qet::West;
+	if      (0   <= angle_mod && angle_mod < 90 ) new_ori = Qet::North;
+	else if (90  <= angle_mod && angle_mod < 180) new_ori = Qet::East;
+	else if (180 <= angle_mod && angle_mod < 270) new_ori = Qet::South;
+	else new_ori = Qet::West;
 
-    setOrientation(new_ori);
+	setOrientation(new_ori);
 }
 
 qreal PartTerminal::rotation() const {
-    switch (d->m_orientation) {
-     case Qet::North : return 0;
-     case Qet::East  : return 90;
-     case Qet::South : return 180;
-     case Qet::West  : return 270;
-    }
+	switch (d->m_orientation) {
+		case Qet::North : return 0;
+		case Qet::East  : return 90;
+		case Qet::South : return 180;
+		case Qet::West  : return 270;
+	}
 }
 
 /**
