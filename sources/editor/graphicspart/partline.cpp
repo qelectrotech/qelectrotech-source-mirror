@@ -603,6 +603,19 @@ void PartLine::setSecondEndLength(const qreal &l)
 	emit secondEndLengthChanged();
 }
 
+void PartLine::setRotation(qreal angle) {
+
+    QTransform rotation = QTransform().translate(m_line.p1().x(),m_line.p1().y()).rotate(angle-m_rot).translate(-m_line.p1().x(),-m_line.p1().y());
+    m_rot=angle;
+
+    setLine(rotation.map(m_line));
+}
+
+qreal PartLine::rotation() const {
+    return m_rot;
+}
+
+
 /**
 	@brief PartLine::path
 	@return this line has a QPainterPath.

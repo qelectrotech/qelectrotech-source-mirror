@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_file_menu">
@@ -75,6 +75,7 @@
     <addaction name="m_edit_names_action"/>
     <addaction name="m_edit_author_action"/>
     <addaction name="m_edit_element_properties_action"/>
+    <addaction name="m_rotate_action"/>
    </widget>
    <widget class="QMenu" name="m_display_menu">
     <property name="title">
@@ -486,6 +487,18 @@
    </property>
    <property name="statusTip">
     <string>Affiche des informations sur la bibliothèque Qt</string>
+   </property>
+  </action>
+  <action name="m_rotate_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/orientations.png</normaloff>:/ico/16x16/orientations.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rotation</string>
+   </property>
+   <property name="shortcut">
+    <string>Space</string>
    </property>
   </action>
  </widget>
