@@ -30,7 +30,9 @@
 */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
-{}
+{
+    m_rot=0;
+}
 
 /**
 	@brief PartRectangle::~PartRectangle
@@ -169,6 +171,18 @@ void PartRectangle::setYRadius(qreal Y)
 	emit YRadiusChanged();
 }
 
+void PartRectangle::setRotation(qreal angle) {
+
+    QTransform rotation = QTransform().rotate(angle-m_rot);
+    m_rot=angle;
+
+    setRect(rotation.mapRect(m_rect));
+}
+
+qreal PartRectangle::rotation() const {
+    return m_rot;
+}
+
 /**
 	@brief PartRectangle::sceneGeometricRect
 	@return the minimum, margin-less rectangle this part can fit into, in scene
@@ -187,7 +201,7 @@ QRectF PartRectangle::sceneGeometricRect() const
 */
 QPointF PartRectangle::sceneTopLeft() const
 {
-	return(mapToScene(rect().topLeft()));
+    return(mapToScene(rect().topLeft()));
 }
 
 /**
