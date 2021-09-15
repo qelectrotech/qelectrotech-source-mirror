@@ -5,12 +5,13 @@
     <name lang="de">750-600/040-000</name>
     <name lang="cs">750-600/040-000</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">750-600/040-000</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-600/040-000</elementInformation>
+        <elementInformation show="1" name="description">End-Module</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="13.99" x2="9.95" x3="9.95" x4="6.93" x5="6.93" x6="-0.13" x7="-0.13" x8="-8.21" x9="-8.21" y1="-123.49" y2="-123.49" y3="-119.49" y4="-119.49" y5="-120.49" y6="-120.49" y7="-117.49" y8="-117.49" y9="-123.49" x10="-0.13" x11="-0.13" x12="-16.27" x13="-16.27" x14="-14.26" x15="-14.26" x16="-10.22" x17="-10.22" x18="-14.26" x19="-14.26" x20="-16.27" x21="-16.27" x22="-0.13" x23="-0.13" x24="-8.21" x25="-8.21" x26="-0.13" x27="-0.13" x28="9.95" x29="9.95" x30="13.99" y10="-123.49" y11="-126.49" y12="-126.49" y13="-120.49" y14="-120.49" y15="-124.49" y16="-124.49" y17="71.51" y18="71.51" y19="67.51" y20="67.51" y21="73.51" y22="73.51" y23="70.51" y24="70.51" y25="66.51" y26="66.51" y27="67.51" y28="67.51" y29="70.51" y30="70.51" style="line-style:normal;line-weight:thin;filling:black;color:lightgray" antialias="false"/>
