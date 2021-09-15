@@ -6,12 +6,12 @@
         <name lang="cs">753-474</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">753-474</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">753-474</elementInformation>
+        <elementInformation show="1" name="description">2AI 4-20mA 16 Bit S.E.</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect height="90" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" ry="0" antialias="false" x="-360" width="720"/>
