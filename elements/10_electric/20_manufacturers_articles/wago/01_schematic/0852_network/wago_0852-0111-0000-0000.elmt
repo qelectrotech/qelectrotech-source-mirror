@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">852-111</elementInformation>
+        <elementInformation show="1" name="description">Industrial ECO-Switch 5-Port 100BASE-TX</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <line end1="none" x2="1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-83" y1="-83" x1="-1" antialias="false" length1="1.5" length2="1.5"/>

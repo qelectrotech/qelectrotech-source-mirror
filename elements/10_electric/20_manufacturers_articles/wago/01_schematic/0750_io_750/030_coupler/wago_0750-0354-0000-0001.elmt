@@ -1,0 +1,43 @@
+<definition version="0.90" link_type="simple" type="element" hotspot_y="46" width="740" height="100" hotspot_x="376">
+    <names>
+        <name lang="en">750-354/000-001</name>
+        <name lang="fr">750-354/000-001</name>
+        <name lang="de">750-354/000-001</name>
+        <name lang="cs">750-354/000-001</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-354/000-001</elementInformation>
+        <elementInformation show="1" name="description">EtherCAT ECO Coupler, ID-Switch</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect x="-360" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" width="720" y="-40" height="90" antialias="false"/>
+        <text x="-330" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" color="#000000" text="WAGO 750-354/000-001"/>
+        <text x="-138" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" color="#000000" text="EtherCAT ECO Coupler, ID-Switch"/>
+        <dynamic_text frame="false" x="220" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{f1606b59-bc7a-4998-bb76-37468b3f68bd}" text_width="-1" Halignment="AlignLeft" text_from="ElementInfo" keep_visual_rotation="true" y="29.5" z="5" rotation="0" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-310" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" rotation="0" color="#000000" text="EDI:"/>
+        <text x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" rotation="0" color="#000000" text="IN"/>
+        <dynamic_text frame="false" x="-280" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{2a4edf8b-b990-41e3-8e67-5e2dea578790}" text_width="-1" Halignment="AlignLeft" text_from="UserText" keep_visual_rotation="true" y="-11.5" z="8" rotation="0" Valignment="AlignTop">
+            <text>123</text>
+        </dynamic_text>
+        <text x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="24" rotation="0" color="#000000" text="OUT"/>
+        <text x="-371" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="9" rotation="0" color="#000000" text="X1"/>
+        <text x="-371" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="29" rotation="0" color="#000000" text="X2"/>
+        <circle x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="17.5" antialias="true"/>
+        <circle x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-2.5" antialias="true"/>
+        <text x="-199" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" rotation="0" color="#000000" text="0V"/>
+        <text x="-279" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" rotation="0" color="#000000" text="24V"/>
+        <circle x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <circle x="-282.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true"/>
+        <terminal x="-360" uuid="{74d9592c-a385-409f-a91d-cf903a683bf2}" type="Generic" y="0" orientation="w" name="IN"/>
+        <terminal x="-360" uuid="{22b03897-cde6-41e4-be58-d89272b8e0a5}" type="Generic" y="20" orientation="w" name="OUT"/>
+        <terminal x="-200" uuid="{c879b623-cdf1-4e5f-adc3-960a35bdaa35}" type="Generic" y="-40" orientation="n" name="0V"/>
+        <terminal x="-280" uuid="{058272d1-8113-46a3-9d8d-e10a55ce8a1e}" type="Generic" y="-40" orientation="n" name="24V"/>
+    </description>
+</definition>

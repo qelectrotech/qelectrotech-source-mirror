@@ -11,7 +11,7 @@
         <elementInformation show="1" name="description">D-Sub 9 (female) to CAGE-CLAMP</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-37.97" x2="-37.97" x3="37.95" x4="37.95" y1="-85.05" y2="85.16" y3="85.16" y4="-85.05" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>

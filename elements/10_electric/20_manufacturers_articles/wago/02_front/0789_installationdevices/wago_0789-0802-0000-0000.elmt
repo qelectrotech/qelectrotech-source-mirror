@@ -5,7 +5,11 @@
         <name lang="fr">789-802</name>
         <name lang="de">789-802</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-802</elementInformation>
+        <elementInformation show="1" name="description">Ausschalter, zweipolig (switch DPST)</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

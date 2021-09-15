@@ -5,7 +5,11 @@
         <name lang="cs">789-801</name>
         <name lang="en">789-801</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-801</elementInformation>
+        <elementInformation show="1" name="description">Ausschalter, einpolig (switch SPST)</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
