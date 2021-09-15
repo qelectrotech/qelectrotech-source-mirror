@@ -15,7 +15,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-350</elementInformation>
-        <elementInformation show="1" name="description">ETHERNET Powerlink V2</elementInformation>
+        <elementInformation show="1" name="description">Coupler ETHERNET Powerlink V2</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
