@@ -1,0 +1,88 @@
+<definition hotspot_y="45" width="730" height="110" link_type="simple" type="element" hotspot_x="365" version="0.80">
+    <names>
+        <name lang="en">750-554</name>
+        <name lang="ar">750-554</name>
+        <name lang="es">750-554</name>
+        <name lang="pt">750-554</name>
+        <name lang="el">750-554</name>
+        <name lang="pl">750-554</name>
+        <name lang="it">750-554</name>
+        <name lang="de">750-554</name>
+        <name lang="cs">750-554</name>
+        <name lang="nl">750-554</name>
+        <name lang="fr">750-554</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-554</elementInformation>
+        <elementInformation show="1" name="description">2AO 4-20mA</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect ry="0" rx="0" x="-360" y="-40" width="720" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="90"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="PE" x="-355" y="28" rotation="0" color="#000000"/>
+        <line end1="none" length2="1.5" y2="8.5" y1="50" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="circle" antialias="false" x2="120" x1="120"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="24V" x="-355" y="-11" rotation="0" color="#000000"/>
+        <line end1="none" length2="1.5" y2="28" y1="50" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="circle" antialias="false" x2="280" x1="280"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="0V" x="-355" y="9" rotation="0" color="#000000"/>
+        <line end1="none" length2="1.5" y2="-11.5" y1="50" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="circle" antialias="false" x2="-120" x1="-120"/>
+        <line end1="none" length2="1.5" y2="-11.5" y1="50" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="circle" antialias="false" x2="-40" x1="-40"/>
+        <line end1="none" length2="1.5" y2="28" y1="50" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="circle" antialias="false" x2="200" x1="200"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="PE" x="283" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="PE" x="204" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="24V" x="-37" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="24V" x="-117" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="0V" x="124" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="0V" x="44" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="AO2" x="-197" y="48" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="AO1" x="-277" y="48" rotation="0" color="#000000"/>
+        <line end1="none" length2="1.5" y2="30" y1="30" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="357" x1="-360"/>
+        <line end1="none" length2="1.5" y2="8.5" y1="50" length1="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="circle" antialias="false" x2="40" x1="40"/>
+        <line end1="none" length2="1.5" y2="10" y1="10" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="360" x1="-360"/>
+        <line end1="none" length2="1.5" y2="-10" y1="-10" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="360" x1="-360"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="WAGO 750-554" x="-331" y="-27" rotation="0" color="#000000"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="219" y="-42.5" z="23" text_width="-1" Valignment="AlignTop" frame="false" rotation="0" Halignment="AlignLeft" uuid="{29439b00-8d98-4fdc-83bb-7c46070802c9}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="1" x="-278" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="5" x="-197" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="2" x="-117" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="6" x="-37" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="3" x="43" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="7" x="123" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="4" x="203" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="8" x="283" y="58" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="2AO 4-20mA" x="-139" y="-27" rotation="0" color="#000000"/>
+        <polygon y2="-10" y1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="-12.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <polygon y2="10" y1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="7.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <polygon y2="30" y1="30" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
+        <arc x="360" y="27.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
+        <circle x="-42.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="-122.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="-202.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="-282.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="277.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="197.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="117.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <circle x="37.5" y="47.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5"/>
+        <terminal x="200" y="50" orientation="s"/>
+        <terminal x="-360" y="10" orientation="w"/>
+        <terminal x="-360" y="-10" orientation="w"/>
+        <terminal x="280" y="50" orientation="s"/>
+        <terminal x="-40" y="50" orientation="s"/>
+        <terminal x="40" y="50" orientation="s"/>
+        <terminal x="-200" y="50" orientation="s"/>
+        <terminal x="-120" y="50" orientation="s"/>
+        <terminal x="120" y="50" orientation="s"/>
+        <terminal x="360" y="10" orientation="e"/>
+        <terminal x="-280" y="50" orientation="s"/>
+        <terminal x="360" y="-10" orientation="e"/>
+        <terminal x="360" y="30" orientation="e"/>
+        <terminal x="-361" y="30" orientation="w"/>
+    </description>
+</definition>
