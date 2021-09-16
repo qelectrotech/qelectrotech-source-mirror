@@ -6,12 +6,12 @@
         <name lang="cs">750-597</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-597</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-597</elementInformation>
+        <elementInformation show="1" name="description">8AO 0-10V/±10V DC</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="90" rx="0" width="720" antialias="false" x="-360"/>
@@ -87,7 +87,7 @@
         <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="46" color="#000000" x="-187" text="M" rotation="0"/>
         <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="46" color="#000000" x="-146" text="AO3" rotation="0"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" color="#000000" x="-147" text="3" rotation="0"/>
-        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-27" color="#000000" x="-127" text="8-Channel AO, DC 24V" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-27" color="#000000" x="-127" text="8AO 0-10V/±10V DC" rotation="0"/>
         <polygon antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" x2="-356" y2="-10" x1="-362" y1="-10" closed="false"/>
         <arc height="5" start="90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="360" width="5" angle="180" y="-12.5"/>
         <polygon antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" x2="-356" y2="10" x1="-362" y1="10" closed="false"/>

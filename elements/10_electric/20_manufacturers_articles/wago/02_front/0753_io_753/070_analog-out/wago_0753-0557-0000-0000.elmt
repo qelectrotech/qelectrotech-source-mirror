@@ -1,16 +1,16 @@
 <definition type="element" width="34" height="206" version="0.80" hotspot_x="17" hotspot_y="129" link_type="simple">
   <names>
-    <name lang="fr">753-554</name>
-    <name lang="en">753-554</name>
-    <name lang="de">753-554</name>
-    <name lang="cs">753-554</name>
+    <name lang="fr">753-557</name>
+    <name lang="de">753-557</name>
+    <name lang="en">753-557</name>
+    <name lang="cs">753-557</name>
   </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">753-554</elementInformation>
-        <elementInformation show="1" name="description">2AO 4-20mA</elementInformation>
+        <elementInformation show="1" name="designation">753-557</elementInformation>
+        <elementInformation show="1" name="description">4AO +/-10V DC</elementInformation>
     </elementInformations>
-    <informations>Author: plc-user for QElectroTech
+  <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
@@ -28,10 +28,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <text x="10.97" y="-95.02" font="Sans Serif,3.43,-1,5,50,0,0,0,0,0" text="C" color="#000000" rotation="0"/>
     <text x="10.73" y="-85.87" font="Sans Serif,3.43,-1,5,50,0,0,0,0,0" text="D" color="#000000" rotation="0"/>
     <circle x="-7.32" y="-99.88" style="line-style:normal;line-weight:thin;filling:green;color:black" diameter="6.86" antialias="false"/>
-    <circle x="2.83" y="-99.88" style="line-style:normal;line-weight:thin;filling:green;color:black" diameter="6.86" antialias="false"/>
+    <circle x="2.83" y="-99.88" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="6.86" antialias="false"/>
     <circle x="-5.86" y="11.33" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="5.15" antialias="false"/>
     <circle x="2.83" y="-90.73" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="6.86" antialias="false"/>
-    <circle x="-7.32" y="-90.73" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="6.86" antialias="false"/>
+    <circle x="-7.32" y="-90.73" style="line-style:normal;line-weight:thin;filling:red;color:black" diameter="6.86" antialias="false"/>
     <circle x="-4.89" y="-14.34" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="2.86" antialias="false"/>
     <circle x="-5.92" y="48.49" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="5.15" antialias="false"/>
     <circle x="4.03" y="-60.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="5.15" antialias="false"/>
@@ -79,7 +79,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <polygon x1="12.99" x2="15.13" x3="15.13" x4="12.99" y1="-82.53" y2="-82.53" y3="-32.53" y4="-32.53" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
     <polygon x1="12.99" x2="15.14" y1="-48.08" y2="-48.08" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-8.96" x2="9.18" x3="9.18" x4="-8.96" y1="-126.57" y2="-126.57" y3="-116.56" y4="-116.56" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
-    <text x="-8" y="-120.25" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" text="753-554" color="#000000" rotation="0"/>
+    <text x="-8" y="-120.25" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" text="753-557" color="#000000" rotation="0"/>
     <dynamic_text x="-1.06" y="16.93" z="67" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{7e6b9aba-9db0-4037-a375-6029b90c44cb}" frame="false" rotation="0" text_from="ElementInfo" Halignment="AlignHCenter" Valignment="AlignVCenter" text_width="-1">
       <text/>
       <info_name>label</info_name>

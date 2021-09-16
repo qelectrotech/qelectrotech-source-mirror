@@ -6,11 +6,12 @@
         <name lang="cs">789-622</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">789-622</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-622</elementInformation>
+        <elementInformation show="1" name="description">Stromsensor mit Busanschluss, Current sensor AC 0-50A</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon antialias="false" x3="-34.99" y4="90.18" style="line-style:normal;line-weight:thin;filling:white;color:black" y1="-89.82" x2="-34.99" y2="-89.82" x1="34.99" y3="90.18" x4="34.99"/>
