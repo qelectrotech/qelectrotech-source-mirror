@@ -1,16 +1,17 @@
 <definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="66" link_type="simple">
   <names>
-    <name lang="en">280-831 4-L black</name>
-    <name lang="de">280-831 4-L schwarz</name>
-    <name lang="fr">280-831 4-L noir</name>
-    <name lang="cs">280-831 4-L černá</name>
+    <name lang="en">280-831 4L black</name>
+    <name lang="de">280-831 4L schwarz</name>
+    <name lang="fr">280-831 4L noir</name>
+    <name lang="cs">280-831 4L černá</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">280-831</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">280-831</elementInformation>
+        <elementInformation show="1" name="description">2.5mm² 4L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-5.02" x2="-5.02" x3="5.02" x4="5.02" y1="86.52" y2="-63.48" y3="-63.48" y4="86.52" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false"/>

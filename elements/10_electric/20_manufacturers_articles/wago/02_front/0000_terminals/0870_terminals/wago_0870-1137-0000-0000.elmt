@@ -5,12 +5,13 @@
     <name lang="en">870-1137</name>
     <name lang="cs">870-1137</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">870-1137</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">870-1137</elementInformation>
+        <elementInformation show="1" name="description">X-Com 2L 1P double</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-4.66" x2="5.34" x3="5.34" x4="-4.66" y1="-78.03" y2="-78.03" y3="104.4" y4="104.4" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
