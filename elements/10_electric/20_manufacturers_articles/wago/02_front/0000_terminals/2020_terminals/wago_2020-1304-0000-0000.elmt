@@ -5,12 +5,13 @@
     <name lang="cs">2020-1304</name>
     <name lang="en">2020-1304</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2020-1304</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2020-1304</elementInformation>
+        <elementInformation show="1" name="description">X-Com S-System Mini 2L 1P</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-3.49" x2="3.52" x3="3.52" x4="-3.49" y1="-39.88" y2="-39.87" y3="76.56" y4="76.56" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>

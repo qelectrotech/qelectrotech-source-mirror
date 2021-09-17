@@ -1,16 +1,17 @@
-<definition type="element" width="11" height="166" version="0.80" hotspot_x="6" hotspot_y="96" link_type="simple">
+<definition hotspot_y="98" hotspot_x="10" link_type="simple" height="170" width="20" type="element" version="0.90">
   <names>
     <name lang="fr">2020-2204</name>
     <name lang="de">2020-2204</name>
     <name lang="en">2020-2204</name>
     <name lang="cs">2020-2204</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2020-2204</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2020-2204</elementInformation>
+        <elementInformation show="1" name="description">X-Com S-System Mini 1L 1P double</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-3.52" x2="3.49" x3="3.49" x4="-3.52" y1="-93.95" y2="-93.95" y3="66.62" y4="66.62" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>
