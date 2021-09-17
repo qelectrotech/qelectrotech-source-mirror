@@ -5,12 +5,13 @@
     <name lang="cs">2022-1401</name>
     <name lang="en">2022-1401</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2022-1401</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2022-1401</elementInformation>
+        <elementInformation show="1" name="description">X-Com S-System 2L 2P</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-5.23" x2="5.2" x3="5.2" x4="-5.23" y1="-93.92" y2="-93.92" y3="78.69" y4="78.69" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
