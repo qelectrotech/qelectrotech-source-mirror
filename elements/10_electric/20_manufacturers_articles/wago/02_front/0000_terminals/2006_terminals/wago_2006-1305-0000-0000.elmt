@@ -1,16 +1,21 @@
-<definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="85" link_type="simple">
+<definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="85" link_type="terminal">
   <names>
     <name lang="fr">2006-1305 3-L noir</name>
     <name lang="de">2006-1305 3-L schwarz</name>
     <name lang="en">2006-1305 3-L black</name>
     <name lang="cs">2006-1305 3-L černá</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2006-1305</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2006-1305</elementInformation>
+        <elementInformation show="1" name="description">6mm² 3L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="7.47" x2="7.47" x3="-7.47" x4="-7.47" y1="-81.65" y2="65.01" y3="65.01" y4="-81.65" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false"/>

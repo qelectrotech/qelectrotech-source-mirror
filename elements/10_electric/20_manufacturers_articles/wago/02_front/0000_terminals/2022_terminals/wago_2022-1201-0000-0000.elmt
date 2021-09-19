@@ -1,14 +1,18 @@
-<definition type="element" width="17" height="103" version="0.90" hotspot_x="9" hotspot_y="43" link_type="simple">
+<definition type="element" width="17" height="103" version="0.90" hotspot_x="9" hotspot_y="43" link_type="terminal">
   <names>
     <name lang="en">2022-1201</name>
     <name lang="fr">2022-1201</name>
     <name lang="de">2022-1201</name>
     <name lang="cs">2022-1201</name>
   </names>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">2022-1201</elementInformation>
-        <elementInformation show="1" name="description">X-Com S-System 1L 1P</elementInformation>
+        <elementInformation show="1" name="description">2.5mm² X-Com S-System 1L 1P</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

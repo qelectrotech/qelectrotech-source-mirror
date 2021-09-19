@@ -1,21 +1,14 @@
 <definition height="110" hotspot_x="364" link_type="simple" version="0.80" type="element" hotspot_y="45" width="730">
     <names>
-        <name lang="pl">753-655</name>
         <name lang="cs">753-655</name>
         <name lang="de">753-655</name>
-        <name lang="nl">753-655</name>
-        <name lang="pt">753-655</name>
         <name lang="fr">753-655</name>
-        <name lang="ar">753-655</name>
         <name lang="en">753-655</name>
-        <name lang="it">753-655</name>
-        <name lang="es">753-655</name>
-        <name lang="el">753-655</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">753-655</elementInformation>
-        <elementInformation show="1" name="description">753-655</elementInformation>
+        <elementInformation show="1" name="description">AS-Interface-Master</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

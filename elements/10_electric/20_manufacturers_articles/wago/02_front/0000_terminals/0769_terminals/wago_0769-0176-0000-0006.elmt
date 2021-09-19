@@ -1,14 +1,18 @@
-<definition hotspot_y="48" hotspot_x="10" link_type="simple" height="110" width="20" type="element" version="0.90">
+<definition hotspot_y="48" hotspot_x="10" link_type="terminal" height="110" width="20" type="element" version="0.90">
   <names>
     <name lang="fr">769-176/000-006</name>
     <name lang="de">769-176/000-006</name>
     <name lang="cs">769-176/000-006</name>
     <name lang="en">769-176/000-006</name>
   </names>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">769-176/000-006</elementInformation>
-        <elementInformation show="1" name="description">X-Com 1L 1P</elementInformation>
+        <elementInformation show="1" name="description">4mm² X-Com 1L 1P</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

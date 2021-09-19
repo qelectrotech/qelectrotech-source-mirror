@@ -1,14 +1,18 @@
-<definition type="element" width="17" height="143" version="0.80" hotspot_x="9" hotspot_y="79" link_type="simple">
+<definition type="element" width="17" height="143" version="0.80" hotspot_x="9" hotspot_y="79" link_type="terminal">
   <names>
     <name lang="de">870-101</name>
     <name lang="fr">870-101</name>
     <name lang="en">870-101</name>
     <name lang="cs">870-101</name>
   </names>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">870-101</elementInformation>
-        <elementInformation show="1" name="description">X-Com 1L 1P double</elementInformation>
+        <elementInformation show="1" name="description">2.5mm² X-Com 1L 1P double</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

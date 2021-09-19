@@ -1,14 +1,18 @@
-<definition type="element" width="11" height="120" version="0.90" hotspot_x="6" hotspot_y="42" link_type="simple">
+<definition type="element" width="11" height="120" version="0.90" hotspot_x="6" hotspot_y="42" link_type="terminal">
   <names>
     <name lang="cs">2020-1301</name>
     <name lang="fr">2020-1301</name>
     <name lang="de">2020-1301</name>
     <name lang="en">2020-1301</name>
   </names>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">2020-1301</elementInformation>
-        <elementInformation show="1" name="description">X-Com S-System Mini 2L 1P</elementInformation>
+        <elementInformation show="1" name="description">1mm² X-Com S-System Mini 2L 1P</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
