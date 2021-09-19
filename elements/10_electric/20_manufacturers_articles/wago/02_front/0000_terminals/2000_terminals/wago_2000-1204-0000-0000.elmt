@@ -1,16 +1,21 @@
-<definition type="element" width="11" height="103" version="0.80" hotspot_x="6" hotspot_y="43" link_type="simple">
+<definition type="element" width="11" height="103" version="0.80" hotspot_x="6" hotspot_y="43" link_type="terminal">
   <names>
     <name lang="en">2000-1204</name>
     <name lang="fr">2000-1204</name>
     <name lang="de">2000-1204</name>
     <name lang="cs">2000-1204</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2000-1204</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2000-1204</elementInformation>
+        <elementInformation show="1" name="description">1mm² 2L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-3.5" x2="3.5" x3="3.5" x4="-3.5" y1="-40.03" y2="-40.03" y3="57.08" y4="57.08" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>

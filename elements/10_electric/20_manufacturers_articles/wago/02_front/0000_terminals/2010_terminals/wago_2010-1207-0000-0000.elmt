@@ -1,16 +1,21 @@
-<definition type="element" width="23" height="143" version="0.80" hotspot_x="11" hotspot_y="65" link_type="simple">
+<definition type="element" width="23" height="143" version="0.80" hotspot_x="11" hotspot_y="65" link_type="terminal">
   <names>
     <name lang="fr">2010-1207</name>
     <name lang="de">2010-1207</name>
     <name lang="en">2010-1207</name>
     <name lang="cs">2010-1207</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2010-1207</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2010-1207</elementInformation>
+        <elementInformation show="1" name="description">10mm² 2L PE</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-9.9" x2="10.13" x3="10.13" x4="-9.9" y1="-61.54" y2="-61.54" y3="74.65" y4="74.65" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>

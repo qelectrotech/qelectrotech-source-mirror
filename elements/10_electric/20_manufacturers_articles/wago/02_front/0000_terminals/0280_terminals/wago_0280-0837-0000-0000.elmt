@@ -1,10 +1,14 @@
-<definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="66" link_type="simple">
+<definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="66" link_type="terminal">
   <names>
     <name lang="en">280-837 4L green-yellow</name>
     <name lang="de">280-837 4L grün-gelb</name>
     <name lang="fr">280-837 4L vert-ambre</name>
     <name lang="cs">280-837 4L žluto-zelená</name>
   </names>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">280-837</elementInformation>

@@ -1,16 +1,21 @@
-<definition type="element" width="29" height="143" version="0.80" hotspot_x="14" hotspot_y="66" link_type="simple">
+<definition type="element" width="29" height="143" version="0.80" hotspot_x="14" hotspot_y="66" link_type="terminal">
   <names>
     <name lang="de">2016-1204</name>
     <name lang="fr">2016-1204</name>
     <name lang="en">2016-1204</name>
     <name lang="cs">2016-1204</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2016-1204</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2016-1204</elementInformation>
+        <elementInformation show="1" name="description">16mm² 2L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-12" x2="12" x3="12" x4="-12" y1="-64.63" y2="-64.63" y3="76.03" y4="76.03" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>

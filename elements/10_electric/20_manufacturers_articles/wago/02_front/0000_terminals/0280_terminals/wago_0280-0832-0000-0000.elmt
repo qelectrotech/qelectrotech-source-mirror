@@ -1,10 +1,14 @@
-<definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="66" link_type="simple">
+<definition type="element" width="17" height="154" version="0.80" hotspot_x="9" hotspot_y="66" link_type="terminal">
   <names>
     <name lang="fr">280-832 4L ambre</name>
     <name lang="en">280-832 4L yellow</name>
     <name lang="de">280-832 4L gelb</name>
     <name lang="cs">280-832 4L žlutá</name>
   </names>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">280-832</elementInformation>

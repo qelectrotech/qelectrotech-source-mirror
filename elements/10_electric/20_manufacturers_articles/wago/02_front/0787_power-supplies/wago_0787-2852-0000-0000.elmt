@@ -6,11 +6,12 @@
         <name lang="cs">787-2852</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">787-2852</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">787-2852</elementInformation>
+        <elementInformation show="1" name="description">787-2852</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-21.95" y3="104.98" x4="-21.95" y1="-105.05" antialias="false" x3="22.87" x2="22.87" y4="104.98" y2="-105.05"/>

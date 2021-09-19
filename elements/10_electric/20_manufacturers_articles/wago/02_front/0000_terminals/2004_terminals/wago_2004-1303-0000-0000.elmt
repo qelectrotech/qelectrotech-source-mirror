@@ -1,16 +1,21 @@
-<definition type="element" width="17" height="137" version="0.80" hotspot_x="9" hotspot_y="74" link_type="simple">
+<definition type="element" width="17" height="137" version="0.80" hotspot_x="9" hotspot_y="74" link_type="terminal">
   <names>
     <name lang="fr">2004-1303</name>
     <name lang="en">2004-1303</name>
     <name lang="de">2004-1303</name>
     <name lang="cs">2004-1303</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2004-1303</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2004-1303</elementInformation>
+        <elementInformation show="1" name="description">4mm² 3L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-6.21" x2="6.21" x3="6.21" x4="-6.21" y1="-71.77" y2="-71.77" y3="59.31" y4="59.31" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false"/>
