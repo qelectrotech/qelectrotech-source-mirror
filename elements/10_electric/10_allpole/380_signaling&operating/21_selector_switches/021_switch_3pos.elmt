@@ -1,0 +1,39 @@
+<definition hotspot_x="24" type="element" link_type="simple" width="50" version="0.80" hotspot_y="34" height="50">
+    <uuid uuid="{6a6396ac-0161-4b29-be22-b69e52599c55}"/>
+    <names>
+        <name lang="pt">Interruptor 3 posições</name>
+        <name lang="es">Interruptor 3 posiciones</name>
+        <name lang="en">Switch 3 positions</name>
+        <name lang="it">Interruttore a 3 posizioni</name>
+        <name lang="ro">comutatorcu3pozitii</name>
+        <name lang="pl">Zestyk przełączny, trójpozycyjny</name>
+        <name lang="ru">Переключатель 3-х позиционный</name>
+        <name lang="de">Wahlschalter 3 Positionen</name>
+        <name lang="fr">Interrupteur 3 positions</name>
+        <name lang="cs">Třípolohový přepínač</name>
+        <name lang="el">Διακόπτης 3 θέσεων</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: titus
+titus0818@yahoo.com
+</informations>
+    <description>
+        <dynamic_text x="18" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" z="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo" uuid="{41daec74-14cf-4605-bb4d-22f9cecc0c85}" y="-33" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle x="18.5" diameter="3" antialias="true" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="2" y2="10" x1="20" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="20" length2="1.5" end2="none"/>
+        <line y1="-18.8" y2="1" x1="-1.2" length1="1.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-18" length2="1.5" end2="none"/>
+        <circle x="-1.5" diameter="3" antialias="true" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-1.5" diameter="3" antialias="true" y="-21.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-21.5" diameter="3" antialias="true" y="-1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="2" y2="10" x1="-20" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-20" length2="1.5" end2="none"/>
+        <line y1="2" y2="10" x1="0" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="0" length2="1.5" end2="none"/>
+        <line y1="-22" y2="-25.5943" x1="0" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="0" length2="1.5" end2="none"/>
+        <terminal x="0" orientation="s" uuid="{41a23056-b737-48fe-8bef-7a75fdcf8cd9}" y="10" name=""/>
+        <terminal x="-20" orientation="s" uuid="{bc263590-b9f0-4386-9b01-8ee2cda81a36}" y="10" name=""/>
+        <terminal x="0" orientation="n" uuid="{02106d3b-b190-4331-8a8e-8f608bf54299}" y="-30" name=""/>
+        <terminal x="20" orientation="s" uuid="{283aaa3e-05cb-4b11-bcb8-beb1f4b6ae87}" y="10" name=""/>
+    </description>
+</definition>
