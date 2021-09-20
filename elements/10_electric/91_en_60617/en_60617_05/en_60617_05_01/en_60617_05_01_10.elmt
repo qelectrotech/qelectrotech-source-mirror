@@ -12,6 +12,7 @@ Feldeffekt-Transistor:
         <name lang="cs">Přechod působící elektrickým polem na 
 polovodičovou vrstvu, např. u polem řízeného tranzistoru
 Oblast N působící na vrstvu P</name>
+        <name lang="en">Junction which influences a semiconductor layer, N-region which influences a P-</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

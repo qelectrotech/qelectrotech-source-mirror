@@ -5,6 +5,7 @@
         <name lang="es">Accionado por volante</name>
         <name lang="de">Betätigung durch Handrad</name>
         <name lang="cs">Ovládání řídícím kolem</name>
+        <name lang="en">Actuator (operated by handwheel)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

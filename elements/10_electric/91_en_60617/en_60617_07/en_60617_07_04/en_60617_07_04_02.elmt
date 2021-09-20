@@ -4,6 +4,7 @@
         <name lang="fr">Contact à fermeture tardive</name>
         <name lang="de">nacheilender Schließer</name>
         <name lang="cs">Zapínací kontakt spínající se zpožděním</name>
+        <name lang="en">Make contact, late closing</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

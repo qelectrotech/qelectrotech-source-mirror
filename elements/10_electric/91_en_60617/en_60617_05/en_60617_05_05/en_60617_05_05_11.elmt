@@ -8,6 +8,7 @@ canal P, sans connexion au substrat</name>
 P-Kanal, ohne Substratanschluß</name>
         <name lang="cs">IGFET-Tranzistor řízený polem, hradlo typu P
 bez připojení k podložce</name>
+        <name lang="en">Insulated gate field effect transistor IGFET enhancement type, single gate, P-</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

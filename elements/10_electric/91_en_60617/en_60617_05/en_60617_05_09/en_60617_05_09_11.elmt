@@ -5,6 +5,7 @@
 transversal</name>
         <name lang="de">Permanentmagnet, der ein Querfeld erzeugt</name>
         <name lang="cs">Trvalý magnet vytvářející příčné pole</name>
+        <name lang="en">Permanent magnet producing a transverse field</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="es">Accionado por presión manual</name>
         <name lang="de">Betätigung durch Drücken</name>
         <name lang="cs">Ovládání tlakem</name>
+        <name lang="en">Actuator (operated by pushing)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

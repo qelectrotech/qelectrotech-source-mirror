@@ -4,6 +4,7 @@
         <name lang="fr">Diode à effet de claquage dans les deux sens</name>
         <name lang="de">Durchbruch-Diode, bidirektional</name>
         <name lang="cs">Dioda s průrazovým jevem, obousměrná</name>
+        <name lang="en">Breakdown diode, bidirectional</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

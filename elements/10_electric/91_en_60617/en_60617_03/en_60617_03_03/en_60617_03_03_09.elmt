@@ -4,6 +4,7 @@
         <name lang="fr">Connecteur, partie fixe d'un ensemble</name>
         <name lang="de">Steckverbinder, festes Teil</name>
         <name lang="cs">Konektor, pevná část souboru</name>
+        <name lang="en">Connector, fixed portion of an assembly</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@ chaleur radioisotopique</name>
 Radioisotopen-Heizquelle</name>
         <name lang="cs">Termoelektrický generátor
 s radioizotopovým tepelným zdrojem</name>
+        <name lang="en">Thermoelectric generator with radio-isotope heat source</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="de">Mehrstellungsschalter, gebrückt, ein Anschluss
 frei</name>
         <name lang="cs">Vícepolohový spínač</name>
+        <name lang="en">Multi-position switch, wiping multiple contacts</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

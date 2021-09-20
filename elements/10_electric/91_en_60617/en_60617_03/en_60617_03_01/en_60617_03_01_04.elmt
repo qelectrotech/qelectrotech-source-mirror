@@ -4,6 +4,7 @@
         <name lang="fr">Circuit à courant continu</name>
         <name lang="de">Gleichstromkreis</name>
         <name lang="cs">Obvod se stejnosměrným proudem</name>
+        <name lang="en">Direct current circuit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

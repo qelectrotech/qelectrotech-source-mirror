@@ -7,6 +7,7 @@ strahlend</name>
 unidirectionnel blanc (en surface)</name>
         <name lang="cs">Letecké pozemní světelné návěstidlo
 bílé zábleskové, jednosměrný svazek</name>
+        <name lang="en">Aeronautical ground light, white flashing uni-directional beam, surface</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

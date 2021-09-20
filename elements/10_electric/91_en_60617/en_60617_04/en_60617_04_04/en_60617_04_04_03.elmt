@@ -4,6 +4,7 @@
         <name lang="de">Magnetkern mit einer Wicklung</name>
         <name lang="fr">Tore de ferrite avec un seul enroulement</name>
         <name lang="cs">Feritové jádro s jedním vinutím</name>
+        <name lang="en">Ferrite core with one winding</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

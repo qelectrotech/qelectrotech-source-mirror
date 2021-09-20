@@ -6,6 +6,7 @@ séparé</name>
         <name lang="de">Nebenschlußwicklung oder fremderregte
 Wicklung</name>
         <name lang="cs">Derivační vinutí nebo oddělené vinutí</name>
+        <name lang="en">Winding of machine (different functions: shunt or separate winding)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@ phase</name>
 jeder Wicklung herausgeführt</name>
         <name lang="cs">Trojfázový synchronní generátor
 s vyvedenými oběma konci vinutí a s cizím buzením</name>
+        <name lang="en">Synchronous generator, three-phase, both ends of each phase winding brought</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

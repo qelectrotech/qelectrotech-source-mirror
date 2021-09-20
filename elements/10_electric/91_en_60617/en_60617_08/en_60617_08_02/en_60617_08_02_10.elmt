@@ -4,6 +4,7 @@
         <name lang="de">Oszilloskop</name>
         <name lang="fr">Oscilloscope</name>
         <name lang="cs">Osciloskop</name>
+        <name lang="en">Oscilloscope</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

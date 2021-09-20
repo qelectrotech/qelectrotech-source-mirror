@@ -4,6 +4,7 @@
         <name lang="fr">Électrode à ouvertures multiples</name>
         <name lang="de">Mehrfachelektrode</name>
         <name lang="cs">Kvantizační elektroda</name>
+        <name lang="en">Quantizing electrode; Sampling electrode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

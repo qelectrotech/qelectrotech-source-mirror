@@ -10,6 +10,7 @@ elektronische Linse</name>
         <name lang="cs">Válcová zaostřovací elektroda
 Elektroda se shlukovacím prostorem
 Prvek elektronické čočky</name>
+        <name lang="en">Cylindrical focusing electrode; Drift space electrode; Electronic lens element</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@ Schutzkontakt</name>
 un socle de prise de courant, avec contact pour
 conducteur de protection</name>
         <name lang="cs">Přímý díl s pevnou odbočkou se zásuvkou</name>
+        <name lang="en">Straight section with fixed tap-off having socket-outlet with protective contact.</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

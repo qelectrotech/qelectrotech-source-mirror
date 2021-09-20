@@ -5,6 +5,7 @@
         <name lang="fr">Élément de permutation des conducteurs de
 phase</name>
         <name lang="cs">Díl s transpozicí fází</name>
+        <name lang="en">Phase transposition unit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

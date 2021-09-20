@@ -5,6 +5,7 @@
 Abzweig</name>
         <name lang="fr">Élément droit avec dérivation fixe</name>
         <name lang="cs">Přímý díl s pevnou odbočkou</name>
+        <name lang="en">Straight section with fixed tap-off</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

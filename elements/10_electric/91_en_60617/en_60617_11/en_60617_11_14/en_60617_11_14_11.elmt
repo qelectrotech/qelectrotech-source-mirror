@@ -4,6 +4,7 @@
         <name lang="de">Taster mit Leuchte</name>
         <name lang="fr">Bouton-poussoir lumineux</name>
         <name lang="cs">Tlačítko s vestavěnou signálkou</name>
+        <name lang="en">Push-button with indicator lamp</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

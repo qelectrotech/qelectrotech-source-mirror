@@ -5,6 +5,7 @@
         <name lang="de">Wechselrichter</name>
         <name lang="cs">Invertor, střídač, převodník(měnič)
 stejnosměrného proudu na střídavý</name>
+        <name lang="en">Inverter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="fr">Interrupteur-sectionneur avec ouverture
 automatique</name>
         <name lang="cs">Odpínač se samočinným vypínáním</name>
+        <name lang="en">Switch-disconnector, automatic release; On-load isolating switch, automatic</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

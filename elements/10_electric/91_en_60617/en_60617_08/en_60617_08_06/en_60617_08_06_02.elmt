@@ -4,6 +4,7 @@
         <name lang="de">Thermoelement</name>
         <name lang="fr">Thermocouple</name>
         <name lang="cs">Termočlánek (- pól silně)</name>
+        <name lang="en">Thermocouple</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

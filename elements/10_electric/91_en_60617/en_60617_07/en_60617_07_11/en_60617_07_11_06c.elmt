@@ -6,6 +6,7 @@
 Schaltstellungen</name>
         <name lang="cs">Ústrojí otočné z polohy 1 do 3 a zpět,
 ostatní ve směru šipky</name>
+        <name lang="en">Multi-position switch, with position dagram</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

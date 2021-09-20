@@ -5,6 +5,7 @@
         <name lang="es">Accionado por el nivel de liquido</name>
         <name lang="de">ausgelöst durch Flüssigkeitspegel</name>
         <name lang="cs">Uvádění v činnost hladinou kapaliny</name>
+        <name lang="en">Actuator (actuated by liquid level)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

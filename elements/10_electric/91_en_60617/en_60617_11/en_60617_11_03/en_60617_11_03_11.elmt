@@ -6,6 +6,7 @@ télécommunications</name>
         <name lang="de">Fernmeldeleitung mit Wechselstrom-
 Fernspeisung</name>
         <name lang="cs">Napájení střídavým proudem po sdělovacím vedení</name>
+        <name lang="en">AC power feeding on telecommunication lines</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

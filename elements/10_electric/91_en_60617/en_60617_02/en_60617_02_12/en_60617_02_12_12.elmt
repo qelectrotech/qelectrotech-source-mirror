@@ -5,6 +5,7 @@
         <name lang="es">Dispositivo de encerrojamiento, liberado</name>
         <name lang="de">Sperre, nicht verklinkt</name>
         <name lang="cs">Západkové zařízení, vypnuto</name>
+        <name lang="en">Latching device, disengaged</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

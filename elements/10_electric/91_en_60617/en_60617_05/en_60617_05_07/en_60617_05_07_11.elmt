@@ -7,6 +7,7 @@ Collecteur (tubes hyperfréquences)</name>
 Kollektor für Mikrowellenröhren</name>
         <name lang="cs">Anoda
 Kolektor (mikrovlnné součástky)</name>
+        <name lang="en">Anode; Plate; Collector (microwave devices)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement triphasé partiel, en V (60°)</name>
         <name lang="de">Dreiphasenwicklung, V-Schaltung (60°)</name>
         <name lang="cs">Trojfázové vinutí spojené do neúplného trojúhelníka V (60°)</name>
+        <name lang="en">Three-phase winding, V (60°)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

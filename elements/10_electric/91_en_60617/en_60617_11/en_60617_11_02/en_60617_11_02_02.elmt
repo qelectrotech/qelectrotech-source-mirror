@@ -6,6 +6,7 @@ Wasserkraftwerk (in Betrieb oder undefiniert)</name>
         <name lang="fr">Centrale hydraulique (en service ou
 indéterminé)</name>
         <name lang="cs">Vodní elektrárna ( v provozu)</name>
+        <name lang="en">Hydroelectric generating station, in service or unspecified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

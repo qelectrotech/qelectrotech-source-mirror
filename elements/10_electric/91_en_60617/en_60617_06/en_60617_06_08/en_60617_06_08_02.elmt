@@ -8,6 +8,7 @@ sorties</name>
 Enden für eine Anlaufwicklung herausgeführt</name>
         <name lang="cs">Jednofázový asynchronní motor 
 s kotvou nakrátko s pomocnou/rozběhovou fází</name>
+        <name lang="en">Induction motor, single-phase, squirrel-cage</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

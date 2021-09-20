@@ -4,6 +4,7 @@
         <name lang="fr">Dispositif évitant le glissement d'un câble</name>
         <name lang="de">Anti-Kriechstromgerät für Kabel</name>
         <name lang="cs">Ochrana kabelu před posouváním</name>
+        <name lang="en">Anti-creepage device</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

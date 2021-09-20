@@ -13,6 +13,7 @@ Stellung</name>
         <name lang="cs">Zarážka
 Nesamočinný návrat
 Zařízení pro udržování v dané pozici</name>
+        <name lang="en">Detent; Non-automatic return; Return, non-automatic</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@ avec un enroulement secondaire sur chaque
 noyau</name>
         <name lang="cs">Transformátor proudu se dvěma jádry a
 s jedním sekundárním vinutím na každém jádru</name>
+        <name lang="en">Current transformer with two cores with one secondary winding on each core</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

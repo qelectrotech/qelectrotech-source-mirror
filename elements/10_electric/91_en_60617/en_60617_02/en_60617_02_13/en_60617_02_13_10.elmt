@@ -5,6 +5,7 @@
         <name lang="es">Accionado por pedal</name>
         <name lang="de">Betätigung durch Pedal</name>
         <name lang="cs">Ovládání pedálem</name>
+        <name lang="en">Actuator (operated by pedal)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Moteur série, DC</name>
         <name lang="de">Gleichstrom-Reihenschlußmotor</name>
         <name lang="cs">Stejnosměrný sériový motor</name>
+        <name lang="en">Series motor, DC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="es">Tierra de bajo voltaje</name>
         <name lang="de">fremdspannungsarme Erde</name>
         <name lang="cs">Bezšumové uzemnění</name>
+        <name lang="en">Noiseless earth; Noiseless ground</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

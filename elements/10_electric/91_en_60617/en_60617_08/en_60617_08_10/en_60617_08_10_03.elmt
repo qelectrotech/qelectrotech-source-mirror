@@ -4,6 +4,7 @@
         <name lang="de">Stellungsanzeiger, elektromechanisch </name>
         <name lang="fr">Indicateur électromécanique de position</name>
         <name lang="cs">Elektromechanický indikátor</name>
+        <name lang="en">Indicator, electromechanical; annunciator element</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

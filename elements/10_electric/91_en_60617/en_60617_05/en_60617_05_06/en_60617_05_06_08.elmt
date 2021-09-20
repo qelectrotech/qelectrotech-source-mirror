@@ -12,6 +12,7 @@ Phototransisto</name>
         <name lang="cs">Optický vazební člen
 Fotoelektrický vazební člen
 Optoizolátor</name>
+        <name lang="en">Optocoupler; Photocoupler; Opto isolator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

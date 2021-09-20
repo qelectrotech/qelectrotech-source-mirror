@@ -6,6 +6,7 @@ transducteurs piézoélectriques</name>
         <name lang="de">Festkörper-Verzögerungsleitung mit
 piezoelektrischen Wandlern</name>
         <name lang="cs">Zpožďovací linka s piezoměničem a pevným prostředím</name>
+        <name lang="en">Delay line, solid material type with piezoelectric transducers</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

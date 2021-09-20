@@ -4,6 +4,7 @@
         <name lang="de">Elektro-Installationskanal, allgemein</name>
         <name lang="fr">Élément droit, symbole général</name>
         <name lang="cs">Rovný díl</name>
+        <name lang="en">Straight section, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

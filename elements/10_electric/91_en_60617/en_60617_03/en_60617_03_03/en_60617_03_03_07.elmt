@@ -5,6 +5,7 @@
         <name lang="de">Verbinder, Buchse und Stecker, allpolige
 Darstellung</name>
         <name lang="cs">Zásuvka a vidlice, vícepólová</name>
+        <name lang="en">Plug and socket, multipole (multi-line representation)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

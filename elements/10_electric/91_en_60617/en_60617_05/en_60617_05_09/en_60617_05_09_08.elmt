@@ -5,6 +5,7 @@
         <name lang="de">Verzögerungsleitung, geschlossen</name>
         <name lang="cs">Uzavřená zpomalovací struktura,
 zobrazena s baňkou</name>
+        <name lang="en">Closed slow-wave structure</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

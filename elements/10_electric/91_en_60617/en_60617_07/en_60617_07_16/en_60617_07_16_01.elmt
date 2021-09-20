@@ -4,6 +4,7 @@
         <name lang="de">Meßrelais und verwandte Einrichtungen</name>
         <name lang="fr">Relais de mesure</name>
         <name lang="cs">Měřicí relé, zařízení odvozené z měřicích relé</name>
+        <name lang="en">Measuring relay; Device related to a measuring relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

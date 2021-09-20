@@ -4,6 +4,7 @@
         <name lang="de">Einspeisepunkt</name>
         <name lang="fr">Point d'injection de l'alimentation</name>
         <name lang="cs">Napájecí bod</name>
+        <name lang="en">Power feeding injection point</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

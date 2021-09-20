@@ -5,6 +5,7 @@
         <name lang="de">Induktivität mit Luftspalt im Magnetkern</name>
         <name lang="cs">Indukční cívka 
 s magnetickým jádrem se vzduchovou mezerou</name>
+        <name lang="en">Inductor with gap in magnetic core</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

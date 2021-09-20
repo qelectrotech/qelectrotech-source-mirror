@@ -7,6 +7,7 @@ magisches Auge</name>
 cathode à chauffage indirect</name>
         <name lang="cs">Indikátor ladění (magické oko)
 nepřímo žhavený</name>
+        <name lang="en">Tuning indicator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

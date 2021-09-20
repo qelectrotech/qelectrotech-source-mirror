@@ -6,6 +6,7 @@ Starter pour lampe fluorescente</name>
         <name lang="de">Gasentladungsröhre mit Thermokontakt
 Starter für Leuchtstofflampe</name>
         <name lang="cs">Startér zářivky</name>
+        <name lang="en">Gas discharge tube with thermal element</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

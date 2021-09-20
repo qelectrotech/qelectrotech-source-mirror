@@ -5,6 +5,7 @@
         <name lang="fr">Socle pour plusieurs prises de courant
 (puissance)</name>
         <name lang="cs">Vícenásobná zásuvka</name>
+        <name lang="en">Multiple socket outlet (power)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

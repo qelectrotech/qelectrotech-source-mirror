@@ -5,6 +5,7 @@
 Heizelement</name>
         <name lang="fr">Thermocouple à élément chauffant non isolé</name>
         <name lang="cs">Termočlánek s neizolovaným vyhřívacím článkem</name>
+        <name lang="en">Thermocouple with non-insulated heating element</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

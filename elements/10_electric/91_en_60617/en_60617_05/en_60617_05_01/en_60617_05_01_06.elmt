@@ -6,6 +6,7 @@ enrichissement</name>
         <name lang="de">leitender Kanal für Elemente vom
 Anreicherungstyp</name>
         <name lang="cs">Vodivostní kanál pro sučástky obohacovacího typu</name>
+        <name lang="en">Conduction channel for enhancement devices</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

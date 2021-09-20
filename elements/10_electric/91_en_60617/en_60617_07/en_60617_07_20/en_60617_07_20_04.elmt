@@ -7,6 +7,7 @@ betätigt durch die Annäherung von Eisen</name>
 à l'approche de fer avec contact à ouverture</name>
         <name lang="cs">Přibližovací spínač, ovládaný
 přiblížením železa, vypínací kontakt</name>
+        <name lang="en">Proximity switch, controlled by iron</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

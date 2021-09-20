@@ -6,6 +6,7 @@
         <name lang="fr">Mouvement circulaire bidirectionnel Rotation bidirectionnelle Couple bidirectionnel</name>
         <name lang="cs">Obousměrný otáčivý pohyb,
 obousměrné otáčení, obousměrný točivý moment</name>
+        <name lang="en">Circular motion; Rotation; Torque (bidirectional and limited)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

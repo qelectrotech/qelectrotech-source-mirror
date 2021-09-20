@@ -5,6 +5,7 @@
 symbole général</name>
         <name lang="de">handbetätigter Schalter, allgemein</name>
         <name lang="cs">Ručně ovládaný spínač</name>
+        <name lang="en">Switch, manually operated, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

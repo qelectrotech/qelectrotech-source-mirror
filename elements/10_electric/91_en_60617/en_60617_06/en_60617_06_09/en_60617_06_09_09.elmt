@@ -4,6 +4,7 @@
         <name lang="fr">Inductance</name>
         <name lang="cs">Tlumivka
 Reaktor</name>
+        <name lang="en">Choke; Reactor, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

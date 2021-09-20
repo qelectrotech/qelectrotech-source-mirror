@@ -8,6 +8,7 @@ avec un enroulement secondaire sur chaque
 noyau</name>
         <name lang="cs">Transformátor proudu s pěti průchody vodiče,
 které působí jako jedno primární vinutí</name>
+        <name lang="en">Current transformer with five passages of a conductor acting as a primary</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

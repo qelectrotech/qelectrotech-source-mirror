@@ -4,6 +4,7 @@
         <name lang="de">Sicherung, allgemein</name>
         <name lang="fr">Fusible, symbole général</name>
         <name lang="cs">Tavná pojistka, všeobecná značka</name>
+        <name lang="en">Fuse, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

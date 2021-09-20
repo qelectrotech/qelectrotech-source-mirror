@@ -4,6 +4,7 @@
         <name lang="de">Berührungssensor </name>
         <name lang="fr">Capteur sensible à l'effleurement</name>
         <name lang="cs">Dotykové čidlo</name>
+        <name lang="en">Touch sensor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

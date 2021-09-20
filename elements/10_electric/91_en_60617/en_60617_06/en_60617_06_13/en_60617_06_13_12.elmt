@@ -10,6 +10,7 @@ même noyau</name>
         <name lang="cs">Pulzní transformátor nebo transformátor proudu
 se dvěma sekundárními vinutími na jednom jádře a
 s devíti závity primárního vodiče</name>
+        <name lang="en">Pulse or current transformer with two secondary windings on the same core</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

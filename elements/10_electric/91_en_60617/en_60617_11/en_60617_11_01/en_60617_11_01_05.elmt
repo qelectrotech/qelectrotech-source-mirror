@@ -7,6 +7,7 @@ Schaltstation, allgemein (in Planung)</name>
         <name lang="fr">Sous-station,
 Poste (en projet)</name>
         <name lang="cs">Elektrická stanice ( projektovaná)</name>
+        <name lang="en">Substation, planned</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

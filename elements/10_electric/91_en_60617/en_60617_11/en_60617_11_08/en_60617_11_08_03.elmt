@@ -5,6 +5,7 @@
         <name lang="fr">Prise directe,
 Prise boîte à boîte</name>
         <name lang="cs">Krabice pro zasmyčkované vedení</name>
+        <name lang="en">Looped system outlet; Serial wired outlet</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

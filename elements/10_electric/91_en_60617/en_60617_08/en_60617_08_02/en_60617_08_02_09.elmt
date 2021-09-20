@@ -4,6 +4,7 @@
         <name lang="de">Wellenlängemeßgerät, anzeigend</name>
         <name lang="fr">Ondemètre</name>
         <name lang="cs">Vlnoměr</name>
+        <name lang="en">Wavemeter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

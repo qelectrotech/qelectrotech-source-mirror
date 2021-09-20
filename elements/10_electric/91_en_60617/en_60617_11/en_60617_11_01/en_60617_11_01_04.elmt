@@ -6,6 +6,7 @@
 électrique et de chaleur (en service ou
 indéterminé)</name>
         <name lang="cs">Elektrárna s kombinovanou výrobou tepla ( v provozu)</name>
+        <name lang="en">Combined electric and heat generating station, in service or unspecified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

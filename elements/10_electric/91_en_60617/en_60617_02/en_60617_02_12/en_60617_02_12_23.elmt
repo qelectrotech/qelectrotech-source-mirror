@@ -5,6 +5,7 @@
         <name lang="es">Engranajes</name>
         <name lang="de">Getriebe</name>
         <name lang="cs">Ozubený převod</name>
+        <name lang="en">Gearing</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

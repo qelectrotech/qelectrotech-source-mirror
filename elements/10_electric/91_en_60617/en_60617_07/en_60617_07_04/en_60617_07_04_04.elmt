@@ -4,6 +4,7 @@
         <name lang="fr">Contact à ouverture anticipée</name>
         <name lang="de">voreilender Öffner </name>
         <name lang="cs">Vypínací kontakt vypínající s předstihem</name>
+        <name lang="en">Break contact, early opening</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

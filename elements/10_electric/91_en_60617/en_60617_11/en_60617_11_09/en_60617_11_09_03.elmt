@@ -5,6 +5,7 @@
 topographischen Plan)</name>
         <name lang="fr">Affaiblisseur</name>
         <name lang="cs">Zeslabovač, útlumový prvek</name>
+        <name lang="en">Attenuator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

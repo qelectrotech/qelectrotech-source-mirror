@@ -7,6 +7,7 @@
 -tok energie k přípojnici
 -provozní hodnota 1 MVAr
 -časové nastavení od 5s do 10s</name>
+        <name lang="en">Overpower relay for reactive power</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -14,7 +15,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input y="25" size="9" text="_" tagg="label" x="5" rotate="true"/>
         <rect y="-150" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
         <text y="-15" size="9" text="5...10s" x="-49"/>
-        <text y="-130" size="9" text="Q >" x="-41"/>
+        <text y="-130" size="9" text="Q &gt;" x="-41"/>
         <text y="-95" size="9" text="1 Mvar" x="-48"/>
         <line y1="-115" length1="1.5" end2="none" y2="-115" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" antialias="false" x1="-50"/>
         <line y1="-120" length1="1.5" end2="none" y2="-110" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-50" length2="1.5" antialias="false" x1="-50"/>

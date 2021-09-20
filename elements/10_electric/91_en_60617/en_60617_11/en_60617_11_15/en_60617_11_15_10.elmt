@@ -4,6 +4,7 @@
         <name lang="de">Vorschaltgerät für Entladungslampen</name>
         <name lang="fr">Appareil auxiliaire pour lampe à décharge</name>
         <name lang="cs">Předřadník</name>
+        <name lang="en">Auxiliary apparatus for discharge lamp</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

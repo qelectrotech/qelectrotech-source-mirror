@@ -5,6 +5,7 @@
         <name lang="es">Accionado por humedad relativa</name>
         <name lang="de">ausgelöst durch relative Feuchte</name>
         <name lang="cs">Uvádění v činnost relativní vlhkostí</name>
+        <name lang="en">Actuator (actuated by relative humidity)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

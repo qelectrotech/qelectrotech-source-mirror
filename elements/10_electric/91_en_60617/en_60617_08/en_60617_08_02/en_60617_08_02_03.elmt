@@ -5,6 +5,7 @@
 Amperemeter für Blindstrom</name>
         <name lang="fr">Indicateur de maximum de puissance</name>
         <name lang="cs">Indikátor maximálního odběru</name>
+        <name lang="en">Maximum demand indicator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

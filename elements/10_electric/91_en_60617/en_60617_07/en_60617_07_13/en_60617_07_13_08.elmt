@@ -4,6 +4,7 @@
         <name lang="de">Lasttrennschalter</name>
         <name lang="fr">Interrupteur-sectionneur</name>
         <name lang="cs">Odpínač</name>
+        <name lang="en">Switch-disconnector; On-load isolating switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

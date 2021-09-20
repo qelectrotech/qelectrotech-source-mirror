@@ -4,6 +4,7 @@
         <name lang="de">Reduzierstück</name>
         <name lang="fr">Élément de réduction</name>
         <name lang="cs">Přímý díl s odbočkou pomocí pohyblivého kontaktu</name>
+        <name lang="en">Straight section with tap-off by movable contact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

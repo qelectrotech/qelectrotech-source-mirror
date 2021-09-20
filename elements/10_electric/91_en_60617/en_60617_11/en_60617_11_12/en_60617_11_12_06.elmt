@@ -5,6 +5,7 @@
 Leitung</name>
         <name lang="fr">Coffret de branchement</name>
         <name lang="cs">Přípojková skříň</name>
+        <name lang="en">Consumers terminal, Service entrance equipment</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

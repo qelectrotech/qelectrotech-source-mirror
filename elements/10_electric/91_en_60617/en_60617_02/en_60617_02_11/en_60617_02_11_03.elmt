@@ -5,6 +5,7 @@
         <name lang="es">Impresión y perforación simultáneas en la misma cinta</name>
         <name lang="de">gleichzeitiges Bedrucken und Lochen von Streifen</name>
         <name lang="cs">Současný tisk a děrování pásky</name>
+        <name lang="en">Printing and perforating, of one tape, simultaneous</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

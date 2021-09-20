@@ -4,6 +4,7 @@
         <name lang="fr">Barrette de connexion, ouverte</name>
         <name lang="de">Trennstelle, Lasche offen</name>
         <name lang="cs">Spojka, otevřená</name>
+        <name lang="en">Connecting link, open</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

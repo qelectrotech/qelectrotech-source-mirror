@@ -6,6 +6,7 @@
 l'approche d'un matériau solide</name>
         <name lang="cs">1Kapacitní detektor přiblížení
 reagující na tuhý materiál</name>
+        <name lang="en">Proximity sensing device, capacitive</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

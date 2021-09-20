@@ -5,6 +5,7 @@
         <name lang="fr">Fonction retour non-automatique (à position
 maintenue)</name>
         <name lang="cs">Nesamočinný návrat (stálá poloha)</name>
+        <name lang="en">Non-automatic return function; Stay put function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

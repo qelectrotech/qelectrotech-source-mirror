@@ -5,6 +5,7 @@
         <name lang="de">verzögerte Wirkung</name>
         <name lang="es">Accionamiento retartado en sentido contrario</name>
         <name lang="cs">Zpožděné působení</name>
+        <name lang="en">Delayed action; Action, delayed</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

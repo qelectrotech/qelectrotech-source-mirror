@@ -4,6 +4,7 @@
         <name lang="de">Spannungswandler</name>
         <name lang="fr">Transformateur de tension</name>
         <name lang="cs">Transformátor napětí</name>
+        <name lang="en">Voltage transformer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

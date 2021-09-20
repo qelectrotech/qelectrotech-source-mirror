@@ -4,6 +4,7 @@
         <name lang="de">Endeinspeisung</name>
         <name lang="fr">Élément d'alimentation d'extrémité</name>
         <name lang="cs">Koncový napájecí díl</name>
+        <name lang="en">End feeder unit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

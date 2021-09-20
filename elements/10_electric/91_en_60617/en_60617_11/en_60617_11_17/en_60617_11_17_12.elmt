@@ -4,6 +4,7 @@
         <name lang="de">Ausdehnungsstück für Leiter</name>
         <name lang="fr">Élément de dilatation pour conducteurs</name>
         <name lang="cs">Dilatační díl pro vodiče</name>
+        <name lang="en">Expansion unit for conductors</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

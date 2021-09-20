@@ -4,6 +4,7 @@
         <name lang="fr">Ligne à retard de type magnétostrictif</name>
         <name lang="de">Verzögerungsleitung, magnetostriktiv</name>
         <name lang="cs">Magnetostrikční zpožďovací linka</name>
+        <name lang="en">Delay line, magnetostrictive type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

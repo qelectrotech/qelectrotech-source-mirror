@@ -4,6 +4,7 @@
         <name lang="de">Schütz-Funktion</name>
         <name lang="fr">Fonction contacteur</name>
         <name lang="cs">Funkce stykače</name>
+        <name lang="en">Contactor function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

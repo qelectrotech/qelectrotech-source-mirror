@@ -5,6 +5,7 @@
 compensation</name>
         <name lang="de">Kompensationswicklung</name>
         <name lang="cs">Komutační nebo kompenzační vinutí</name>
+        <name lang="en">Winding of machine (different functions: commutating or compensating)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

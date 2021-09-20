@@ -6,6 +6,7 @@
 bidirectionnel (en surface)</name>
         <name lang="cs">Světelné návěstidlo v zatáčce,
 barva zelená/zelená a dvojsměrný svazek</name>
+        <name lang="en">Curve light, green/green colour and bi-directional beam, surface</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

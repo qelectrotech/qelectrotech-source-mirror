@@ -4,6 +4,7 @@
         <name lang="de">Durchgangs- und Abzweigverstärker</name>
         <name lang="fr">Amplificateur de ligne avec dérivations</name>
         <name lang="cs">Průchozí odbočovací zesilovač</name>
+        <name lang="en">Trunk bridging amplifier assembly</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -11,6 +11,7 @@ optischer Isolator, mit Leuchdiode und
 Phototransisto</name>
         <name lang="cs">Součástka s optickou vazbou
 s štěrbinou pro světelnou clonu</name>
+        <name lang="en">Optical coupling device with slot for light-barrier</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

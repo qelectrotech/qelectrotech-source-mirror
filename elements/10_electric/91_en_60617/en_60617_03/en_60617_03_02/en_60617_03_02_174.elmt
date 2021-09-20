@@ -4,6 +4,7 @@
         <name lang="fr">Dérivation nécessitant un outil spécial</name>
         <name lang="de">Anschluß, der spezielle Werkzeuge benötigt</name>
         <name lang="cs">Spojení vyžadující speciální nástroj</name>
+        <name lang="en">Junction requiring a special tool</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

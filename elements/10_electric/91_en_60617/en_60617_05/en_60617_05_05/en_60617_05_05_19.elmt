@@ -5,6 +5,7 @@
 canal N</name>
         <name lang="de">IGBT-Transistor, Anreicherungstyp, N-Kanal</name>
         <name lang="cs">IGBT-Tranzistor, obohacovací typ, kanál N</name>
+        <name lang="en">Insulated-gate bipolar transistor (IGBT) enhancement type, N channel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

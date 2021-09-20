@@ -4,6 +4,7 @@
         <name lang="de">Triode, Kathode direkt geheizt</name>
         <name lang="fr">Triode, avec cathode à chauffage direct</name>
         <name lang="cs">Trioda s přímo žhavenou katodou</name>
+        <name lang="en">Triode, with directly heated cathode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

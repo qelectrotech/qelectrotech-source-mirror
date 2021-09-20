@@ -5,6 +5,7 @@
         <name lang="es">Fuente de energia ideal</name>
         <name lang="fr">Source idéale de courant</name>
         <name lang="cs">Ideální zdroj proudu</name>
+        <name lang="en">Ideal current source</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

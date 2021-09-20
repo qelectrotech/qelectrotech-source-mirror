@@ -5,6 +5,7 @@
 tube</name>
         <name lang="de">Hohlraumresonator</name>
         <name lang="cs">Dutinový rezonátor uvnitř elektronky</name>
+        <name lang="en">Cavity resonator forming an integral part of the tube</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

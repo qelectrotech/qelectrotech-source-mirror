@@ -5,13 +5,14 @@
         <name lang="be">Projector</name>
         <name lang="fr">Projecteur, symbole général</name>
         <name lang="cs">Světlomet</name>
+        <name lang="en">Projector, general symbol</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{72e32ffd-639c-4d97-88fc-8f10696e3481}" frame="false" y="13.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
-            <text></text>
+            <text/>
             <info_name>label</info_name>
         </dynamic_text>
         <arc x="-20" height="20" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" width="20" start="90" antialias="true"/>

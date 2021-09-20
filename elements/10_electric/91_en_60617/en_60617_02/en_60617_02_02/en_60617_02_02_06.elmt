@@ -3,8 +3,9 @@
     <names>
         <name lang="fr">Courant alternatif</name>
         <name lang="de">Wechselstrom und Spannung</name>
-        <name lang="es">04- Corriente alterna 100 a 600khz</name>
-        <name lang="cs">04- Střídavý proud 100 až 600kHz</name>
+        <name lang="es">Corriente alterna 100 a 600khz</name>
+        <name lang="cs">Střídavý proud 100 až 600kHz</name>
+        <name lang="en">Alternating current (indication of frequency range)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

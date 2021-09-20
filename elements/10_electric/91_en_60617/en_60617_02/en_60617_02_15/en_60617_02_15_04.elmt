@@ -5,6 +5,7 @@
         <name lang="es">Tierra de chasis</name>
         <name lang="de">Masse, Gehäuse</name>
         <name lang="cs">Kostra, šasí</name>
+        <name lang="en">Frame; Chassis</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

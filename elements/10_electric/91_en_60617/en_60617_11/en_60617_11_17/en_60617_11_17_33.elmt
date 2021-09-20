@@ -7,6 +7,7 @@ B</name>
         <name lang="fr">Élément droit comprenant deux systèmes de
 canalisations A et B</name>
         <name lang="cs">Přímý díl se systémy A a B</name>
+        <name lang="en">Straight section consisting of two wiring systems</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

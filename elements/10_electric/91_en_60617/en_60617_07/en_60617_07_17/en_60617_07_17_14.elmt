@@ -5,6 +5,7 @@
         <name lang="fr">Relais à maximum de courant avec deux
 sorties</name>
         <name lang="cs">Nadproudové relé se dvěma výstupy</name>
+        <name lang="en">Overcurrent relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -15,7 +16,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line y1="-20" length1="1.5" end2="none" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="20" length2="1.5" antialias="false" x1="0"/>
         <line y1="-40" length1="1.5" end2="none" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="20" length2="1.5" antialias="false" x1="0"/>
         <line y1="-60" length1="1.5" end2="none" y2="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-80" length2="1.5" antialias="false" x1="-60"/>
-        <text y="-75" size="9" text="I >" x="-45"/>
+        <text y="-75" size="9" text="I &gt;" x="-45"/>
         <line y1="-20" length1="1.5" end2="none" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-5" length2="1.5" antialias="false" x1="-50"/>
         <line y1="-25" length1="1.5" end2="none" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-5" length2="1.5" antialias="false" x1="-5"/>
         <line y1="-25" length1="1.5" end2="none" y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-50" length2="1.5" antialias="false" x1="-50"/>

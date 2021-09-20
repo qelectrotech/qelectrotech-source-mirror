@@ -4,6 +4,7 @@
         <name lang="de">Schalter</name>
         <name lang="fr">Interrupteur</name>
         <name lang="cs">Spínač</name>
+        <name lang="en">Switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

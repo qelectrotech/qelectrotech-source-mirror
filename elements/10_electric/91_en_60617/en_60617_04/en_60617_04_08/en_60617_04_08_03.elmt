@@ -4,6 +4,7 @@
         <name lang="fr">Ligne à retard, type coaxial</name>
         <name lang="de">koaxiale Verzögerungsleitung </name>
         <name lang="cs">Koaxiální zpožďovací linka</name>
+        <name lang="en">Delay line, coaxial</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Anode fluorescente</name>
         <name lang="de">Leuchtanode</name>
         <name lang="cs">Fluorescenční anoda</name>
+        <name lang="en">Fluorescent target</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

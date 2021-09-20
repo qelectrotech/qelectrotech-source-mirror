@@ -7,6 +7,7 @@ fermée</name>
 Verzögerungsleitung</name>
         <name lang="cs">Neemitující uspořádání pro uzavřené
 zpomalovací struktury</name>
+        <name lang="en">Non-emitting sole for closed slow-wave structure</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

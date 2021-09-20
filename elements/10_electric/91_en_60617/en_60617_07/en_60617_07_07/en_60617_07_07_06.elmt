@@ -7,6 +7,7 @@ positive d'ouverture</name>
         <name lang="cs">Nouzový spínač (s hřibovou hlavicí)
 se zaručenou rozpojovací funkcí a
 s udržovanou polohou</name>
+        <name lang="en">Switch, emergency stop</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

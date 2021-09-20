@@ -5,6 +5,7 @@
         <name lang="fr">Relais de mesure de détection de rotor bloqué</name>
         <name lang="cs">Relé ke zjištění zabrzděného rotoru
 na základě měření proudu</name>
+        <name lang="en">Locked-rotor detection relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -13,7 +14,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <arc y="-43.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-31.5" width="5" antialias="true" start="0"/>
         <rect y="-60" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" width="60" antialias="false"/>
         <arc y="-43.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" x="-36.5" width="5" antialias="true" start="0"/>
-        <text y="-15" size="9" text="I >" x="-39"/>
+        <text y="-15" size="9" text="I &gt;" x="-39"/>
         <text y="-41" size="9" text="n" x="-48"/>
         <text y="-41" size="9" text="0" x="-19"/>
         <arc y="-46.5" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-31.5" width="5" antialias="true" start="0"/>

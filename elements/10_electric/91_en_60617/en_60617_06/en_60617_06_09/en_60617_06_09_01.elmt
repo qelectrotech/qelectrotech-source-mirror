@@ -4,6 +4,7 @@
         <name lang="fr">Transformateur à deux enroulements</name>
         <name lang="de">Transformator mit zwei Wicklungen</name>
         <name lang="cs">Transformátor se dvěma vinutími</name>
+        <name lang="en">Transformer with two windings, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="de">Koppler mit galvanischer Trennung</name>
         <name lang="fr">Coupleur à séparation électrique</name>
         <name lang="cs">Vazební člen s elektrickým oddělením</name>
+        <name lang="en">Coupling device with electrical separation</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

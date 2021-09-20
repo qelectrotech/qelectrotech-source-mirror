@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement polyphasé, à m phases séparées</name>
         <name lang="de">m getrennte Wicklungen, m-Phasensystem</name>
         <name lang="cs">m-fázové vinutí, fáze nejsou propojeny</name>
+        <name lang="en">m-phase winding, phases not interconnected</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

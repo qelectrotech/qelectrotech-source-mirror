@@ -4,6 +4,7 @@
         <name lang="fr">Paire coaxiale raccordée sur bornes</name>
         <name lang="de">koaxiale Leitung auf Anschlußstellen geführt</name>
         <name lang="cs">Koaxiální kabel připojený ke svorkám</name>
+        <name lang="en">Coaxial pair connected to terminals</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
