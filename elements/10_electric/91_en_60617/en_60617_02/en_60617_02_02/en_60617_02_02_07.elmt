@@ -2,8 +2,7 @@
     <uuid uuid="{8bae1a3d-0b56-4f57-a8e0-d3b9dbada539}"/>
     <names>
         <name lang="fr">Courant alternatif</name>
-        <name lang="de">Wechselstrom und -Spannung </name>
-        <name lang="en">Alternating current</name>
+        <name lang="de">Wechselstrom und Spannung</name>
         <name lang="es">Corriente alterna 3/N 400/230v 50hz</name>
         <name lang="cs">Střídavý proud 3/N 400/230V 50Hz</name>
     </names>

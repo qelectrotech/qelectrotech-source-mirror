@@ -2,8 +2,7 @@
     <uuid uuid="{97725efd-2760-477f-88e1-21d0ecbaa24d}"/>
     <names>
         <name lang="fr">Courant alternatif</name>
-        <name lang="de">Wechselstrom und -Spannung </name>
-        <name lang="en">Alternating current</name>
+        <name lang="de">Wechselstrom und Spannung</name>
         <name lang="es">04- Corriente alterna 100 a 600khz</name>
         <name lang="cs">04- Střídavý proud 100 až 600kHz</name>
     </names>

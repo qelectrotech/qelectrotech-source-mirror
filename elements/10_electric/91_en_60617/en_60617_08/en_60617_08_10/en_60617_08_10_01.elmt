@@ -2,10 +2,8 @@
     <uuid uuid="{1ff0241f-1ced-43bd-8cc1-d3a91501e4cb}"/>
     <names>
         <name lang="en">Lamp, general symbol</name>
-        <name lang="fr">Lampe,
-Lampe de signalisation, symbole général</name>
-        <name lang="de">Lampe.
-Leuchtmelder, allgemein</name>
+        <name lang="fr">Lampe de signalisation, symbole général</name>
+        <name lang="de">Lampe. Leuchtmelder, allgemein</name>
         <name lang="cs">Zdroj světla
     Signální zdroj světla</name>
     </names>
