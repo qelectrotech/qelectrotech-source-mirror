@@ -1,10 +1,8 @@
 <definition type="element" link_type="simple" height="40" width="40" version="0.70" hotspot_x="37" hotspot_y="35">
     <uuid uuid="{fc240473-6a93-474e-8a97-2e2e530fa9d2}"/>
     <names>
-        <name lang="fr">Sole non émissive pour structure à retard
-ouverte</name>
-        <name lang="de">Sohle, nicht emittierend, für offene
-Verzögerungsleitung</name>
+        <name lang="fr">Hélice de couplage</name>
+        <name lang="de">Kupplung Spirale</name>
         <name lang="cs">Spirálový vazebí člen</name>
     </names>
     <informations>Author: The QElectroTech team
