@@ -5,6 +5,7 @@
 connectée</name>
         <name lang="de">Leitung, nicht angeschlossen</name>
         <name lang="cs">Nepřipojený konec kabelu nebo vodiče</name>
+        <name lang="en">End of a conductor or cable, not connected</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

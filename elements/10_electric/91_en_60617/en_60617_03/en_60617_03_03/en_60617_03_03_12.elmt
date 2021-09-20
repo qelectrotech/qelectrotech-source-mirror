@@ -4,6 +4,7 @@
         <name lang="fr">Fiche et jack, bipolaires, type téléphone</name>
         <name lang="de">Stecker und Klinke, zweipolig</name>
         <name lang="cs">Telefonní kolík a svírka</name>
+        <name lang="en">Telephone type plug and jack</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

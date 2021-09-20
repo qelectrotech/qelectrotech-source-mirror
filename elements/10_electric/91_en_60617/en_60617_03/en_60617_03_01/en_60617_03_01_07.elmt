@@ -4,6 +4,7 @@
         <name lang="fr">Conducteur sous écran</name>
         <name lang="de">Leiter, geschirmt</name>
         <name lang="cs">Stíněný vodič</name>
+        <name lang="en">Screened conductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@ automatique</name>
         <name lang="cs">Přepínací kontakt se střední polohou a
 samočinným návratem z jedné a nesamočinným návratem
 z druhé polohy</name>
+        <name lang="en">Change-over contact with off-position, automatic return and stay put</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

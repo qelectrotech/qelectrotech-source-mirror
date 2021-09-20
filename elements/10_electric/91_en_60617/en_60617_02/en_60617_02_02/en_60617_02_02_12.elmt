@@ -5,6 +5,7 @@
         <name lang="fr">Courant redressé avec composante alternative</name>
         <name lang="es">Corriente rectificada con componente de CA</name>
         <name lang="cs">Usměrněný proud se střídavou složkou</name>
+        <name lang="en">Rectified current with alternating component</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

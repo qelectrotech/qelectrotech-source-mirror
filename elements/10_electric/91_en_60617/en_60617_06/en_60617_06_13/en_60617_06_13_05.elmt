@@ -8,6 +8,7 @@ enroulements secondaires sur un circuit
 magnétique commun</name>
         <name lang="cs">Transformátor proudu
 se dvěma sekundárními vinutími na jednom jádru</name>
+        <name lang="en">Current transformer with two secondary windings on one core</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

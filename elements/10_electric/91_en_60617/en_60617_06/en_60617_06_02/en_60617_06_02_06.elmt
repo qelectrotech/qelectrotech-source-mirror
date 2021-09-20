@@ -5,6 +5,7 @@
         <name lang="de">Dreiphasenwicklung, offene Dreieckschaltung</name>
         <name lang="cs">Trojfázové vinutí,
 zapojené do otevřeného trojúhelníka</name>
+        <name lang="en">Three-phase winding, open delta</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

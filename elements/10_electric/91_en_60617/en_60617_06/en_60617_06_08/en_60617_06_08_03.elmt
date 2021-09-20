@@ -5,6 +5,7 @@
         <name lang="de">Drehstrom-Asynchronmotor mit
 Schleifringläufer</name>
         <name lang="cs">Trojfázový indukční motor s vinutým rotorem</name>
+        <name lang="en">Induction motor, three-phase, with wound rotor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

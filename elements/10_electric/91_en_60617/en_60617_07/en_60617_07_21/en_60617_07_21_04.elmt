@@ -7,6 +7,7 @@ Anschlüssen</name>
 signalisation à point commun</name>
         <name lang="cs">Tavná pojistka se signálním kontaktem,
 s třemi vývody</name>
+        <name lang="en">Fuse with alarm contact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

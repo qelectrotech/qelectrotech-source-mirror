@@ -4,6 +4,7 @@
         <name lang="fr">Barrette de connexion, fermée</name>
         <name lang="de">Trennstelle, Lasche geschlossen</name>
         <name lang="cs">Spojka, uzavřená</name>
+        <name lang="en">Connecting link, closed</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,7 +7,7 @@
 - Unité fonctionnelle
 - Composant
 - Fonction</name>
-<name lang="es">Objeto, por ejemplo:
+        <name lang="es">Objeto, por ejemplo:
 - Equipamento
 - Dispositivos
 - Unidad funcional
@@ -25,6 +25,7 @@
 - Funkční jednotka
 - Komponent
 - Funkce</name>
+        <name lang="en">Object</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

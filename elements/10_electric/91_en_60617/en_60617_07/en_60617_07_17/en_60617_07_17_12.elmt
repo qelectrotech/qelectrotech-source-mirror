@@ -4,6 +4,7 @@
         <name lang="fr">Relais de détection de défaillance de phase</name>
         <name lang="de">Phasenausfallrelais</name>
         <name lang="cs">Relé ke zjištění ztráty fáze v trojfázovém systému</name>
+        <name lang="en">Phase-failure detection relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

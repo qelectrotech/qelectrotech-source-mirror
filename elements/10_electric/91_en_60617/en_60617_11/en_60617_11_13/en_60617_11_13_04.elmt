@@ -5,6 +5,7 @@
         <name lang="fr">Socle de prise de courant (puissance) avec
 contact pour conducteur de protection</name>
         <name lang="cs">Zásuvka s ochranným kontaktem</name>
+        <name lang="en">Socket outlet (power) with protective contact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

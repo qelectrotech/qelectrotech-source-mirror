@@ -5,6 +5,7 @@
         <name lang="fr">Phasemètre,
 Indicateur de dephasage</name>
         <name lang="cs">Fázoměr</name>
+        <name lang="en">Phase meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@ Wächtermelder</name>
         <name lang="fr">Dispositif de commande ou de contrôle par clé,
 Dispositif de contrôle par vigile</name>
         <name lang="cs">Spínač ovládaný klíčem</name>
+        <name lang="en">Key-operated switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

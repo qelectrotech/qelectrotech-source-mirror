@@ -4,6 +4,7 @@
         <name lang="de">Zweiwege-Trennschalter</name>
         <name lang="fr">Sectionneur à deux directions</name>
         <name lang="cs">Dvoucestný odpojovač, ve střední poloze vypnutý</name>
+        <name lang="en">Two-way disconnector; Two-way isolator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

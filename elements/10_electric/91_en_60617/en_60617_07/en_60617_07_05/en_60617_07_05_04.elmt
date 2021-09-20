@@ -5,6 +5,7 @@
 plus activé</name>
         <name lang="de">abfallverzögerter Öffner</name>
         <name lang="cs">Vypínací kontakt se zpožděním při deaktivaci</name>
+        <name lang="en">Break contact, delayed closing</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

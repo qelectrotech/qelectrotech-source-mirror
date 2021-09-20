@@ -5,6 +5,7 @@
         <name lang="fr">Matière solide</name>
         <name lang="es">Materia sólida</name>
         <name lang="cs">Materiál pevný</name>
+        <name lang="en">Material, solid</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="de">Unterspannungsrelais</name>
         <name lang="fr">Relais à minimum de tension</name>
         <name lang="cs">Podpěťové relé</name>
+        <name lang="en">Undervoltage relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

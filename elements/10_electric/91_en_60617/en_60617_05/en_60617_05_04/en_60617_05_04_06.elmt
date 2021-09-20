@@ -6,6 +6,7 @@
         <name lang="de">Thyristordiode, rückwärts sperrend</name>
         <name lang="cs">Triodový zpětně závěrný tyristor, hradlo P,
 (řízení do katody)</name>
+        <name lang="en">Reverse blocking triode thyristor, P-gate (cathode-side controlled)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

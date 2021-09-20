@@ -6,6 +6,7 @@ stromdurchlässig</name>
         <name lang="fr">Interrupteur à semiconducteur, (statique)
 passage du courant dans un seul sens</name>
         <name lang="cs">Statický spínač propuštějící proud v jednom směru</name>
+        <name lang="en">Static switch, unidirectional</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,14 +4,15 @@
         <name lang="fr">Commutateur à tambour à six positions</name>
         <name lang="de">Steuerwalzenschalter mit sechs Stellungen</name>
         <name lang="cs">Šestipolohový otočný válcový spínač s pěti vývody</name>
+        <name lang="en">Complex switch, rotary drum type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input text="_" tagg="label" rotate="true" y="145" size="9" x="135"/>
         <text text="Bornes connectées" y="-80" size="9" x="-20"/>
-        <text text="Interconnections&#xa;       of terminals" y="-60" size="9" x="-10"/>
-        <text text="Direction&#xa; Position" y="-60" size="9" x="-90"/>
+        <text text="Interconnections&#10;       of terminals" y="-60" size="9" x="-10"/>
+        <text text="Direction&#10; Position" y="-60" size="9" x="-90"/>
         <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-100" height="220" x="-100" antialias="false" width="220"/>
         <line end1="none" end2="none" x1="-30" y1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="-30" y2="120" antialias="false"/>
         <line end1="none" end2="none" x1="-30" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" x2="120" y2="-40" antialias="false"/>

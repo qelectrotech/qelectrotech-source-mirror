@@ -5,6 +5,7 @@
         <name lang="fr">Triode-hexode, avec cathode à chauffage
 indirect</name>
         <name lang="cs">Trioda-hexoda nepřímo žhavená</name>
+        <name lang="en">Triode hexode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

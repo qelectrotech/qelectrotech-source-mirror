@@ -4,6 +4,7 @@
         <name lang="de">Funkenstrecke</name>
         <name lang="fr">Éclateur</name>
         <name lang="cs">Jiskřiště</name>
+        <name lang="en">Spark gap</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

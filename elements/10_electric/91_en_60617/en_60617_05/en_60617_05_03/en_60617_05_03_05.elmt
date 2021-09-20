@@ -6,6 +6,7 @@ Diode Esaki</name>
         <name lang="de">Tunneldiode
 Esaki-Diode</name>
         <name lang="cs">Tunelová (esakiho) dioda</name>
+        <name lang="en">Tunnel diode; Esaki diode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

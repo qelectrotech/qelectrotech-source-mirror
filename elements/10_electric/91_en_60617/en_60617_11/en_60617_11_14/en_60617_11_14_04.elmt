@@ -4,6 +4,7 @@
         <name lang="de">Schalter, zweipolig</name>
         <name lang="fr">Interrupteur, bipolaire</name>
         <name lang="cs">Dvoupólový spínač</name>
+        <name lang="en">Two pole switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

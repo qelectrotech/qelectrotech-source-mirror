@@ -4,6 +4,7 @@
         <name lang="fr">Fiche coaxiale et prise coaxiale</name>
         <name lang="de">Buchse und Stecker, koaxial </name>
         <name lang="cs">Koaxiální vidlice a zásuvka</name>
+        <name lang="en">Plug and socket, coaxial</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

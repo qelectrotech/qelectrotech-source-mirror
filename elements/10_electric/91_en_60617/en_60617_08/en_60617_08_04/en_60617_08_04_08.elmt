@@ -4,6 +4,7 @@
         <name lang="de">Mehrtarif-Wattstundenzähler </name>
         <name lang="fr">Compteur d'énergie à tarifs multiples</name>
         <name lang="cs">Vícesazbový (dvou) watthodinový měřič</name>
+        <name lang="en">Multi-rate watt-hour meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@ d'huile, avec contournement</name>
         <name lang="de">Leiter mit Umgehung der Abschottung von Gas
 oder Öl</name>
         <name lang="cs">Vedení s přemostěním plynotěsné nebo olejotěsné přepážky</name>
+        <name lang="en">Line with gas or oil block by-pass</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

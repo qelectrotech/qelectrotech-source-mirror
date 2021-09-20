@@ -5,6 +5,7 @@
         <name lang="fr">Protection contre le contact direct non intentionnel</name>
         <name lang="es">Protección contra el contacto directo no intencional</name>
         <name lang="cs">Ochrana proti neúmyslnému přímému dotyku</name>
+        <name lang="en">Protection against unintentional direct contact, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

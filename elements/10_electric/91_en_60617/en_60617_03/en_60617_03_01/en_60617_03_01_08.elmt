@@ -4,6 +4,7 @@
         <name lang="fr">Liaison torsadée</name>
         <name lang="de">verdrillte Verbindung</name>
         <name lang="cs">Kroucené spoje</name>
+        <name lang="en">Twisted connection</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

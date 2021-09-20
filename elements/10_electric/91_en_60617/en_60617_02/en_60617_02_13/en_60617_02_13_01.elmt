@@ -5,6 +5,7 @@
         <name lang="es">Accionado manual, simbolo general</name>
         <name lang="de">Handantrieb</name>
         <name lang="cs">Ruční ovládání</name>
+        <name lang="en">Actuator, manual, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

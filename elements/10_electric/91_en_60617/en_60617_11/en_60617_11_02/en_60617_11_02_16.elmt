@@ -5,6 +5,7 @@
         <name lang="fr">Sous-station de conversion (en service ou
 indéterminé)</name>
         <name lang="cs">Měničová stanice ( v provozu)</name>
+        <name lang="en">Converting substation, in service or unspecified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

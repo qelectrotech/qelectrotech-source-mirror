@@ -4,6 +4,7 @@
         <name lang="fr">Grille isolée</name>
         <name lang="de">Gate, isoliert </name>
         <name lang="cs">Izolované hradlo</name>
+        <name lang="en">Insulated gate</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,6 +7,7 @@ mise en paralléle</name>
 Parallelschaltung der Anschlüsse</name>
         <name lang="cs">Jednopólový několikapolohový spínač
 ke kumulovanému paralelnímu spínání</name>
+        <name lang="en">Multi-position switch, wiping cumulative contacts</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

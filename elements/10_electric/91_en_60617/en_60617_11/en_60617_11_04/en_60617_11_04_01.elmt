@@ -4,6 +4,7 @@
         <name lang="fr">Cabine ou armoire pour installation extérieure</name>
         <name lang="de">Gehäuse, oberirdisch, wetterfest, allgemein</name>
         <name lang="cs">Budka nebo skříň, nadzemní, venkovní</name>
+        <name lang="en">Overground weather-proof enclosure, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

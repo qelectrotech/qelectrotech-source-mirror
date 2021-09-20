@@ -4,6 +4,7 @@
         <name lang="de">Zählfunktion, Kennzeichen</name>
         <name lang="fr">Fonction de comptage symbole distinctif</name>
         <name lang="cs">Čítací funkce počtu sepnutí, doplňková značka</name>
+        <name lang="en">Counting function of a number of events</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="de">Mehrstellungsschalter (geringe Anzahl von
 Schaltstellungen</name>
         <name lang="cs">Ústrojí otočné ve směru šipky</name>
+        <name lang="en">Multi-position switch, with position dagram</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

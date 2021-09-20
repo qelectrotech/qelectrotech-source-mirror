@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement tétraphasé, avec neutre sorti</name>
         <name lang="de">Vierphasenwicklung, Neutralleiter</name>
         <name lang="cs">Čtyřfázové vinutí s vyvedeným nulovým uzlem</name>
+        <name lang="en">Four-phase winding with neutral brought out</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

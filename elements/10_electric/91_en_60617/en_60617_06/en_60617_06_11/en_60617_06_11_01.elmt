@@ -4,6 +4,7 @@
         <name lang="de">Spartransformator, einphasig</name>
         <name lang="fr">Autotransformateur, monophasé</name>
         <name lang="cs">Jednofázový autotransformátor</name>
+        <name lang="en">Auto-transformer, single-phase</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

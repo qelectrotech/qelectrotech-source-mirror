@@ -4,6 +4,7 @@
         <name lang="de">Neutralleiter mit Schutzfunktion (PEN)</name>
         <name lang="fr">Conducteur de protection et neutre confondus</name>
         <name lang="cs">Sloučený středná a ochranný vodič, PEN vodič</name>
+        <name lang="en">Combined protective and neutral conductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

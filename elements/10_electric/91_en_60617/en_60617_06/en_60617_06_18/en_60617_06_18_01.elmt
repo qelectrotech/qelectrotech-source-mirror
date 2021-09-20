@@ -7,6 +7,7 @@ chaleur par combustion</name>
 Verbrennungswärme</name>
         <name lang="cs">Termoelektrický generátor
 se spalovacím tepelným zdrojem</name>
+        <name lang="en">Thermoelectric generator, with combustion heat source</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

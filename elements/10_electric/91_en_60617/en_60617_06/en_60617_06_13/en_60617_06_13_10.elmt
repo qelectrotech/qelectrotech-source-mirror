@@ -8,6 +8,7 @@ Summenstromwandler)</name>
 avec trois conducteurs primaires traversants</name>
         <name lang="cs">Pulzní transformátornebo transformátor proudu
 se třemi závity primárního vodiče</name>
+        <name lang="en">Pulse or current transformer with three threaded primary conductors</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Ensemble de connecteurs</name>
         <name lang="de">Steckverbindung</name>
         <name lang="cs">Konektorový soubor</name>
+        <name lang="en">Connector assembly</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

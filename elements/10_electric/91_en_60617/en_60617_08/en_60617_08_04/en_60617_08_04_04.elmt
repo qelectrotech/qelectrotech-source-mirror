@@ -6,6 +6,7 @@ Richtung fließende Energie zählt</name>
         <name lang="fr">Compteur d'énergie mesurant l'énergie dans un
 seul sens</name>
         <name lang="cs">Watthodinový jednosměrný měřič</name>
+        <name lang="en">Watt-hour meter, measuring energy transmitted in one direction only</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="fr">Socle de prise de courant (puissance) avec
 interrupteur unipolaire</name>
         <name lang="cs">Zásuvka se spínačem</name>
+        <name lang="en">Socket outlet (power) with single-pole switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

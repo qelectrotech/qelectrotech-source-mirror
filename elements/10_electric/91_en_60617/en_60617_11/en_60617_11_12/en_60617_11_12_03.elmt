@@ -4,6 +4,7 @@
         <name lang="de">Leitung, nach unten und oben durchführend</name>
         <name lang="fr">Canalisation traversant verticalement</name>
         <name lang="cs">Probíhající stoupací vedení</name>
+        <name lang="en">Wiring passing through vertically</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

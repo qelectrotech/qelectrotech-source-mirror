@@ -4,6 +4,7 @@
         <name lang="fr">Emetteur: P sur région N</name>
         <name lang="de">P-Emitter auf einer N-Zone</name>
         <name lang="cs">Emitor typu P v oblasti N</name>
+        <name lang="en">Emitter on a region of dissimilar conductivity type, P emitter on an N region</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

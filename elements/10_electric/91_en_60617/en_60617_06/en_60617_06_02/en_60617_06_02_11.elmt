@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement hexaphasé, en polygone</name>
         <name lang="de">Sechsphasenwicklung, Polygonschaltung</name>
         <name lang="cs">Šestifázové vinutí do mnohoúhelníku</name>
+        <name lang="en">Six-phase winding, polygon</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

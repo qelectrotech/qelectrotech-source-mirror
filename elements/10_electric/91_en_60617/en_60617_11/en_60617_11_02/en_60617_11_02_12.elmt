@@ -5,6 +5,7 @@
 Windkraftwerk (in Betrieb oder undefiniert)</name>
         <name lang="fr">Centrale éolienne (en service ou indéterminé)</name>
         <name lang="cs">Větrná elektrárna ( v provozu)</name>
+        <name lang="en">Wind generating station, in service or unspecified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

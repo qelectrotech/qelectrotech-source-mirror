@@ -5,6 +5,7 @@
         <name lang="fr">Résistance réglable à contact glissant et à
 ajustage prédéterminé</name>
         <name lang="cs">Potenciometr s pohyblivým kontaktem, nastavitelný</name>
+        <name lang="en">Potentiometer with movable contact and pre-set adjustment</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

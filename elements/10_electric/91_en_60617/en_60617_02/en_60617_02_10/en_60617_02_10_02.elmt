@@ -5,6 +5,7 @@
         <name lang="es">Impulso negativo</name>
         <name lang="de">negativer Impuls</name>
         <name lang="cs">Záporný impuls</name>
+        <name lang="en">Pulse, negative-going</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

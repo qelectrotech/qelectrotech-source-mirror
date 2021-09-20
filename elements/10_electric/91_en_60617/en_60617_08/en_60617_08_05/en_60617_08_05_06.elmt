@@ -5,6 +5,7 @@
         <name lang="fr">Dispositif de comptage commandé par came</name>
         <name lang="cs">Čítač ovládaný vačkou a
 zapínací kontakt pro každých n sepnutír</name>
+        <name lang="en">Counting device, cam driven</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,7 +7,7 @@
 - hydraulique
 - optique
 - fonctionnelle</name>
-<name lang="es">Enlace de accionamiento en un sentido, por ejemplo:
+        <name lang="es">Enlace de accionamiento en un sentido, por ejemplo:
 - mecánico
 - neumático
 - hidráulico
@@ -21,6 +21,7 @@
 - funktionelle</name>
         <name lang="cs">Spojeni, například:
 Mechanické spojení s vyznačením směru síly nebo pohybu</name>
+        <name lang="en">Mechanical link; Link, mechanical (force or motion)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

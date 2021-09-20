@@ -4,6 +4,7 @@
         <name lang="de">Durchführungskondensator</name>
         <name lang="fr">Condensateur de traversée</name>
         <name lang="cs">Kondenzátor průchodkový</name>
+        <name lang="en">Capacitor, lead-through; Capacitor, feed-through</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

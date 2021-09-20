@@ -7,6 +7,7 @@ Sekundärwicklung hat eine Anzapfung.</name>
 secondaire avec une prise</name>
         <name lang="cs">Transformátor proudu
 s jedním sekundárním vinutím s jednou odbočkou</name>
+        <name lang="en">Current transformer with one secondary winding with one tapping</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

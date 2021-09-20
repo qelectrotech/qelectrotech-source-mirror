@@ -4,6 +4,7 @@
         <name lang="fr">Contact à deux directions sans chevauchement</name>
         <name lang="de">Wechsler mit Unterbrechung,</name>
         <name lang="cs">Přepínací kontakt v klidové poloze sepnutý</name>
+        <name lang="en">Change-over break before make contact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

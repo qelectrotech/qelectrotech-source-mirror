@@ -4,6 +4,7 @@
         <name lang="de">Richtungskoppler</name>
         <name lang="fr">Coupleur directif</name>
         <name lang="cs">Směrový vazební člen</name>
+        <name lang="en">Directional coupler</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

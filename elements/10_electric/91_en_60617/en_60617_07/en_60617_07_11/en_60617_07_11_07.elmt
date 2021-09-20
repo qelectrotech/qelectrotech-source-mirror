@@ -8,6 +8,7 @@ Schaltstellungen und vier unabhängigen
 Kontaktpaaren</name>
         <name lang="cs">Čtyřpolohový spínač ručně ovládaný,
 mající čtyři nezávislé obvody</name>
+        <name lang="en">Multi-position switch, independent circuits</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

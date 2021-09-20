@@ -6,6 +6,7 @@
         <name lang="de">ausgelöst durch thermischen Effekt z.B.:
 Überstromschutz</name>
         <name lang="cs">Uvádění do činnosti tepelným ústrojím</name>
+        <name lang="en">Actuator (actuated by thermal device)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Structure à retard ouverte</name>
         <name lang="de">Verzögerungsleitung, offen</name>
         <name lang="cs">Otevřená zpomalovací struktura</name>
+        <name lang="en">Open slow-wave structure</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

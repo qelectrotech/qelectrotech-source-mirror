@@ -6,6 +6,7 @@ Verbindungsdose</name>
         <name lang="fr">Boîte de connexions,
 Boîte de dérivation</name>
         <name lang="cs">Rozvodná krabice</name>
+        <name lang="en">Connection box; Junction box</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

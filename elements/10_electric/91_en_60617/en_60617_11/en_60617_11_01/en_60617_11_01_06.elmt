@@ -8,6 +8,7 @@ undefiniert)</name>
         <name lang="fr">Sous-station,
 Poste (en service ou indéterminé)</name>
         <name lang="cs">Elektrická stanice ( v provozu)</name>
+        <name lang="en">Substation, in service or unspecified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Convertisseur</name>
         <name lang="de">Umrichter</name>
         <name lang="cs">Převodník (měnič)</name>
+        <name lang="en">Converter, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

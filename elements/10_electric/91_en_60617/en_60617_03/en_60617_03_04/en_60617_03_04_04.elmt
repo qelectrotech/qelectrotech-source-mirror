@@ -5,6 +5,7 @@
         <name lang="de">Kabelendverschluß mit einem dreiadrigen
 Kabel</name>
         <name lang="cs">Průběžná kabelová spojka jednočárové zobrazení</name>
+        <name lang="en">Straight-through joint box (single-line representation)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

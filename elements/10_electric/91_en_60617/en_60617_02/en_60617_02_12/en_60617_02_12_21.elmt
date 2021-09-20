@@ -5,6 +5,7 @@
         <name lang="es">Motor eléctrico con freno aplicado</name>
         <name lang="de">Bremse eingelegt</name>
         <name lang="cs">Motor s působící brzdou</name>
+        <name lang="en">Brake, applied</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

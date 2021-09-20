@@ -4,6 +4,7 @@
         <name lang="fr">Ligne à retard, type ligne artificielle</name>
         <name lang="de">Verzögerungsleitung als Leitungsnachbildung</name>
         <name lang="cs">Zpožďovací linka s umělou linkou</name>
+        <name lang="en">Delay line, artificial line type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

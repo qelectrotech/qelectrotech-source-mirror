@@ -5,6 +5,7 @@
         <name lang="fr">Heuremètre
 Compteur horaire</name>
         <name lang="cs">Časoměr, počítač hodin</name>
+        <name lang="en">Hour meter; Hour counter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

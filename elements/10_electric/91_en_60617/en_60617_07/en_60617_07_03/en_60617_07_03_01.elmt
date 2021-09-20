@@ -6,6 +6,7 @@
         <name lang="de">Wischer mit Kontaktgabe bei Betätigung</name>
         <name lang="cs">Přechodný kontakt zapínací,
 spojující se krátkodobě při aktivaci ovládacího ústrojí</name>
+        <name lang="en">Passing make contact when actuated</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

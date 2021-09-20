@@ -4,6 +4,7 @@
         <name lang="fr">Contact à fermeture, retardé, dispositif activé</name>
         <name lang="de">anzugverzögerter Öffner</name>
         <name lang="cs">Vypínací kontakt se zpožděním při aktivaci</name>
+        <name lang="en">Break contact, delayed opening</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

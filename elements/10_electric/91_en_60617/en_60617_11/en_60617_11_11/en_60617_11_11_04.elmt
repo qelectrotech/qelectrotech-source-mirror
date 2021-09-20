@@ -5,6 +5,7 @@
         <name lang="fr">Canalisation triphasée avec conducteur neutre
 et conducteur de protection</name>
         <name lang="cs">Trojfázové vedení se středním a ochranným vodičem</name>
+        <name lang="en">Three-phase wiring with neutral conductor and protective conductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

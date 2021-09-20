@@ -6,6 +6,7 @@ Varistor</name>
         <name lang="fr">Résistance dépendant de la tension
 Varistance</name>
         <name lang="cs">Napěťově závislý rezistor - Varistor</name>
+        <name lang="en">Resistor, voltage dependent</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

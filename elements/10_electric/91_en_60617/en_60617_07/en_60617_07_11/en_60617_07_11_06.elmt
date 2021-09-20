@@ -5,6 +5,7 @@
         <name lang="de">Mehrstellungsschalter, Beispiel mit
 Schaltstellungsdiagramm</name>
         <name lang="cs">Příklad znázornění poloh</name>
+        <name lang="en">Multi-position switch, with position dagram</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

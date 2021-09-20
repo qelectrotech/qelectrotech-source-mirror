@@ -5,6 +5,7 @@
         <name lang="de">Wechsler ohne Unterbrechung,
 Folgeumschaltglied</name>
         <name lang="cs">Kontakt přepínací bez přerušení obvodu</name>
+        <name lang="en">Change-over make before break contact, both ways</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

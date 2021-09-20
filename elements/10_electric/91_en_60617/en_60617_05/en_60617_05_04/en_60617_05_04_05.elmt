@@ -7,6 +7,7 @@
 (Anode gesteuert)</name>
         <name lang="cs">Triodový zpětně závěrný tyristor,
 Hradlo typu N, (řízení do anody)</name>
+        <name lang="en">Reverse blocking triode thyristor, N-gate (anode-side controlled)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

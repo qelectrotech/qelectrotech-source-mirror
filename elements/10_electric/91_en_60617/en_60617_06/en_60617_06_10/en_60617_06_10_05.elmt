@@ -4,6 +4,7 @@
         <name lang="fr">Transformateur à couplage réglable</name>
         <name lang="de">Transformator mit veränderbarer Kopplung </name>
         <name lang="cs">Transformátor s měnitelnou vazbou</name>
+        <name lang="en">Transformer with variable coupling</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

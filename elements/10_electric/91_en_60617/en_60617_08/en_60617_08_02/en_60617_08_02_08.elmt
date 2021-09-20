@@ -4,6 +4,7 @@
         <name lang="de">Synchronoskop </name>
         <name lang="fr">Synchronoscope</name>
         <name lang="cs">Synchronoskop</name>
+        <name lang="en">Synchronoscope</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="es">Función de paso negativo</name>
         <name lang="de">negative Schrittfunktion</name>
         <name lang="cs">Záporná stupňovitá funkce</name>
+        <name lang="en">Step function, negative going</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

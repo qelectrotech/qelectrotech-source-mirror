@@ -5,13 +5,14 @@
         <name lang="be">Projector met weinig divergerende lichtbundel</name>
         <name lang="fr">Projecteur à faisceau peu divergent</name>
         <name lang="cs">Světlomet, bodový</name>
+        <name lang="en">Spot light</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{7bdff3ab-387c-4982-8e81-b1aae8314b7c}" frame="false" y="13.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
-            <text></text>
+            <text/>
             <info_name>label</info_name>
         </dynamic_text>
         <arc x="-20" height="20" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" width="20" start="90" antialias="true"/>

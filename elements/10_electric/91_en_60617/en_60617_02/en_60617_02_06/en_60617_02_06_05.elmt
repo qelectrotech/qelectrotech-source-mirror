@@ -8,6 +8,7 @@ charakteristischen Größe annähernd Null ist</name>
         <name lang="es">Operado cuando la cantidad característica es aproximadamente igual a cero</name>
         <name lang="cs">Uvedení v činnost, jestliže je hodnota 
 charakteristické veličiny přibližně rovna nule</name>
+        <name lang="en">Actuating (approximately equal to zero)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

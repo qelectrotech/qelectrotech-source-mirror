@@ -4,6 +4,7 @@
         <name lang="fr">Cathode photoélectrique</name>
         <name lang="de">photoelektrische Kathode</name>
         <name lang="cs">Fotoelektrická katoda</name>
+        <name lang="en">Photoelectric cathode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

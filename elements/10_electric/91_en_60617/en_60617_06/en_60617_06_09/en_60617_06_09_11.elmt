@@ -7,6 +7,7 @@ transformateur d'impulsion</name>
 Impulstransformator</name>
         <name lang="cs">Transformátor proudu,
 Pulzní transformátor</name>
+        <name lang="en">Current transformer, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

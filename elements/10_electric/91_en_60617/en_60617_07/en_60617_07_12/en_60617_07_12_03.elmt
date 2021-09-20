@@ -4,6 +4,7 @@
         <name lang="fr">Commutateur à tambour à six positions</name>
         <name lang="de">Steuerwalzenschalter mit sechs Stellungen</name>
         <name lang="cs">Šestipolohový otočný válcový spínač s pěti vývody</name>
+        <name lang="en">Complex switch, rotary drum type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@ Wechselstromrelais</name>
         <name lang="fr">Organe de commande d'un relais à courant
 alternatif</name>
         <name lang="cs">Cívka přístroje na střídavý proud</name>
+        <name lang="en">Relay coil of an alternating current relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,8 +7,8 @@
 - hydraulique
 - optique
 - fonctionnelle</name>
-<name lang="es">Enlace de accionamiento mecánico rotatorio</name>
-<name lang="de">Wirkverbindung, z.B.:
+        <name lang="es">Enlace de accionamiento mecánico rotatorio</name>
+        <name lang="de">Wirkverbindung, z.B.:
 - mechanische
 - pneumatische
 - hydraulische
@@ -16,6 +16,7 @@
 - funktionelle</name>
         <name lang="cs">Spojeni, například:
 Mechanické s vyznačením směru otáčení</name>
+        <name lang="en">Mechanical link; Link, mechanical (rotation)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

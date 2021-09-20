@@ -10,6 +10,7 @@ figuré pour un dispositif à déplétion</name>
 - N-leitender Kanal auf einem P-Substrat</name>
         <name lang="cs">Kanál N na podložce typu P,
 zobrazen ochuzovací typ IGFET</name>
+        <name lang="en">Conductivity type of the channel, N-type channel on a P-type substrate</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

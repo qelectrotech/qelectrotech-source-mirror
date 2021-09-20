@@ -5,6 +5,7 @@
         <name lang="fr">Indicateur électromécanique de position</name>
         <name lang="cs">Elektromechanocký indikátor polohy
 s jednou vypnutou a dvěma pracovními polohami</name>
+        <name lang="en">Electromechanical position indicator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

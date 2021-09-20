@@ -4,6 +4,7 @@
         <name lang="de">Kabelkopf (Empfangsstelle) ohne Ortsantenne</name>
         <name lang="fr">Tête de réseau sans antenne locale</name>
         <name lang="cs">Místo příjmu bez lokální antény</name>
+        <name lang="en">Head end without local antenna</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

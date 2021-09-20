@@ -4,6 +4,7 @@
         <name lang="de">Lasttrennschalter-Funktion</name>
         <name lang="fr">Fonction interrupteur-sectionneur</name>
         <name lang="cs">Funkce odpínače</name>
+        <name lang="en">Switch-disconnector function; Isolating-switch function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

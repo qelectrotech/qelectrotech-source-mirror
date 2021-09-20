@@ -4,6 +4,7 @@
         <name lang="fr">Thyristor tétrode bloqué en inverse</name>
         <name lang="de">rückwärts sperrende Thyristortetriode</name>
         <name lang="cs">Tetrodový zpětně závěrný tyristor</name>
+        <name lang="en">Reverse blocking thyristor, tetrode type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

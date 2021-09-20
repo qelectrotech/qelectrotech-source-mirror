@@ -5,6 +5,7 @@
 transversalement</name>
         <name lang="de">NPN-Transistor mit zwei Basis-Anschlüsse</name>
         <name lang="cs">NPN-Tranzistor s příčně polarizovanou bází</name>
+        <name lang="en">NPN transistor with transverse biased base</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

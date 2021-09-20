@@ -4,6 +4,7 @@
         <name lang="de">Buchholzschutz</name>
         <name lang="fr">Relais Buchholz</name>
         <name lang="cs">Buchholtzovo relé</name>
+        <name lang="en">Buchholz protective device; Gas relay</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

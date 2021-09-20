@@ -4,6 +4,7 @@
         <name lang="de">piezoelektrischer Kristall mit zwei Elektroden</name>
         <name lang="fr">Cristal piézoélectrique avec deux électrodes</name>
         <name lang="cs">Piezoelektrická jednotka se dvěma elektrodami</name>
+        <name lang="en">Piezoelectric crystal with two electrodes</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

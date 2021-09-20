@@ -9,6 +9,7 @@ Ubicación de la falla)</name>
 Fehlerorts)</name>
         <name lang="cs">Porucha(označení 
 předpokládaného místa poruchy)</name>
+        <name lang="en">Fault</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

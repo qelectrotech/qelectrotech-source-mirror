@@ -6,6 +6,7 @@ cavalier, mâle-femelle</name>
         <name lang="de">Stecker verbunden, z. B. U-Stecker:
 - mit Adapter</name>
         <name lang="cs">Zásuvková spojka s mezičlenem</name>
+        <name lang="en">Plug and socket-type connector, male-female</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

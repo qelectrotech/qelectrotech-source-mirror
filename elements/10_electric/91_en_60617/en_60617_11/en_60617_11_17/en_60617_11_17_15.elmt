@@ -4,6 +4,7 @@
         <name lang="de">Reduzierstück</name>
         <name lang="fr">Élément de réduction</name>
         <name lang="cs">Redukční díl</name>
+        <name lang="en">Reduction unit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

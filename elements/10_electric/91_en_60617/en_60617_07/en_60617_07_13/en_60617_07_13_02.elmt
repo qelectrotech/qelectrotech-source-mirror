@@ -8,6 +8,7 @@ Leistungskontakt eines Schützes
 Contact principal à fermeture d'un contacteur
 (contact ouvert)</name>
         <name lang="cs">Stykač, hlavní kontakt</name>
+        <name lang="en">Contactor; Main make contact of a contactor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

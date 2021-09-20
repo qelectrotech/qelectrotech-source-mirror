@@ -6,6 +6,7 @@ téléphone</name>
         <name lang="de">Schalt-oder Trennklinke</name>
         <name lang="cs">Vypínací telefonní svírka
 Izolační telefonní svírka</name>
+        <name lang="en">Telephone type break jack, telephone type isolating jack</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

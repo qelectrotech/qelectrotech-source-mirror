@@ -5,6 +5,7 @@
         <name lang="de">Kabelendverschluß mit einem dreiadrigen
 Kabel</name>
         <name lang="cs">Kabelová těsnící koncovka s jedním trojžilovým kabelem</name>
+        <name lang="en">Cable sealing end (multi-core cable)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

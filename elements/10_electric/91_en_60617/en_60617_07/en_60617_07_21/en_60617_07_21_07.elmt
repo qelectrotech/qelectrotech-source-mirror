@@ -4,6 +4,7 @@
         <name lang="de">Sicherungsschalter</name>
         <name lang="fr">Fusible interrupteur</name>
         <name lang="cs">Pojistkový spínač</name>
+        <name lang="en">Fuse-switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

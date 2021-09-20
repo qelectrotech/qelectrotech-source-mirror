@@ -5,6 +5,7 @@
         <name lang="de">Handgenerator
 Kurbelinduktor</name>
         <name lang="cs">Ruční generátor (magneto, induktor)</name>
+        <name lang="en">Hand-generator (magneto caller)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

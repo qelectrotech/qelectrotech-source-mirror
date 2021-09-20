@@ -8,6 +8,7 @@ Spannungsanschlüssen</name>
 Résistance à bornes "courant" et "tension"
 séparées</name>
         <name lang="cs">Bočník s oddělenými vývody proudu a napětí</name>
+        <name lang="en">Resistor with separate current and voltage terminals</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

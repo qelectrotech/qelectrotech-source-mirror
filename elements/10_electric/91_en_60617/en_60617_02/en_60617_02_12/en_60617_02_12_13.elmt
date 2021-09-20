@@ -5,6 +5,7 @@
         <name lang="es">Dispositivo de encerrojamiento, ocupado</name>
         <name lang="de">Sperre, verklinkt</name>
         <name lang="cs">Západkové zařízení, zapnuto</name>
+        <name lang="en">Latching device, engaged</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

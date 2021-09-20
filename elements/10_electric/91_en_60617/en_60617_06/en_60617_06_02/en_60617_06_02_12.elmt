@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement hexaphasé, en étoile</name>
         <name lang="de">Sechsphasenwicklung, Sternschaltung</name>
         <name lang="cs">Šestifázové vinutí do hvězdy</name>
+        <name lang="en">Six-phase winding, star</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

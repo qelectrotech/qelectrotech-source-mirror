@@ -4,6 +4,7 @@
         <name lang="de">Drehmelder </name>
         <name lang="fr">Dispositif synchrone, symbole général</name>
         <name lang="cs">Synchronní zařízení, všeobecná značka</name>
+        <name lang="en">Synchronous device, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

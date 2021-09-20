@@ -12,6 +12,7 @@ Leitfähigkeit</name>
         <name lang="cs">Fotorezistor
 Fotovodivý článek
 Fotovodivá součástka s nesymetrickou vodivostí</name>
+        <name lang="en">Light dependent resistor (LDR); Photo resistor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

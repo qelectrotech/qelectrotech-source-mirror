@@ -4,6 +4,7 @@
         <name lang="fr">Balai (sur bague ou sur collecteur à lames)</name>
         <name lang="de">Bürste</name>
         <name lang="cs">Kartáč (na komutátoru nebo sběracím kroužku)</name>
+        <name lang="en">Brush (on slip-ring or commutator)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

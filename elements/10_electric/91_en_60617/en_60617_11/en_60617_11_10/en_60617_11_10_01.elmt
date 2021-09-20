@@ -4,6 +4,7 @@
         <name lang="de">Fernspeise-Netzgerät</name>
         <name lang="fr">Dispositif d'alimentation de ligne</name>
         <name lang="cs">Napájecí jednotka sítě</name>
+        <name lang="en">Line power unit</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

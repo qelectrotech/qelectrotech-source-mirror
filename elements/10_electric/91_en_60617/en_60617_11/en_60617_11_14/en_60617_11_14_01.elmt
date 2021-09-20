@@ -4,6 +4,7 @@
         <name lang="de">Schalter, allgemein</name>
         <name lang="fr">Interrupteur, symbole général</name>
         <name lang="cs">Spínač, všeobecná značka</name>
+        <name lang="en">Switch, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="es">Accionado por semiconductores</name>
         <name lang="de">Halbleiterantrieb</name>
         <name lang="cs">Polovodičový akční člen</name>
+        <name lang="en">Actuator; Semiconductor actuator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

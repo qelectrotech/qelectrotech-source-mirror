@@ -4,6 +4,7 @@
         <name lang="de">Sicherungstrennschalter </name>
         <name lang="fr">Fusible sectionneur</name>
         <name lang="cs">Pojistkový odpojovač</name>
+        <name lang="en">Fuse-disconnector; Fuse isolator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

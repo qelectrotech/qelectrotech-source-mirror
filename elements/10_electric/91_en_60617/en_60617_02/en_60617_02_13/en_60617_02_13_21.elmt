@@ -8,6 +8,7 @@ pneumatique, à simple effet</name>
 hydraulische Kraft in Pfeilrichtung</name>
         <name lang="cs">Ovládání pneumaticky nebo hydraulicky,
 působení v jednom směru</name>
+        <name lang="en">Actuator (actuated by pneumatic or hydraulic power/ single action)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="de">Galvanometer</name>
         <name lang="fr">Galvanomètre</name>
         <name lang="cs">Galvanometr</name>
+        <name lang="en">Galvanometer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

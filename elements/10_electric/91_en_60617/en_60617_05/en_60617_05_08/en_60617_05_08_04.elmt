@@ -6,6 +6,7 @@ Plaque formant le faisceau</name>
         <name lang="de">Fokussierelektrode
 Strahlformungs-Elektrode</name>
         <name lang="cs">Zaostřovací elektroda s clonou</name>
+        <name lang="en">Focusing electrode with aperture; Beam-forming plate</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

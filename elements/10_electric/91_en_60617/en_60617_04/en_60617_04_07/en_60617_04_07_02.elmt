@@ -4,6 +4,7 @@
         <name lang="de">piezoelektrischer Kristall mit drei Elektroden</name>
         <name lang="fr">Cristal piézoélectrique avec trois électrodes</name>
         <name lang="cs">Piezoelektrická jednotka se třemi elektrodami</name>
+        <name lang="en">Piezoelectric crystal with three electrodes</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

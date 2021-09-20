@@ -4,6 +4,7 @@
         <name lang="de">Endschalter-Funktion</name>
         <name lang="fr">Fonction contact de position</name>
         <name lang="cs">Funkce polohového spínače</name>
+        <name lang="en">Position switch function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
