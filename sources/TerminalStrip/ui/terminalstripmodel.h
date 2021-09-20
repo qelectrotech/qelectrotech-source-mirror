@@ -52,7 +52,7 @@ class TerminalStripModel : public QAbstractTableModel
     private:
         QPointer<TerminalStrip> m_terminal_strip;
 		QVector<PhysicalTerminalData> m_physical_terminal_data;
-		QHash<QSharedPointer<RealTerminal>, QVector<bool>> m_modified_cell;
+		QHash<Element *, QVector<bool>> m_modified_cell;
 };
 
 class TerminalStripModelDelegate : public QStyledItemDelegate

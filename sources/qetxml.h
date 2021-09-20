@@ -89,6 +89,10 @@ namespace QETXML
 
 	QVector<QDomElement> findInDomElement(const QDomElement &dom_elmt,
 										  const QString &tag_name);
+	QString boolToString(bool value);
+	bool boolFromString(const QString &value,
+					 bool default_value = true,
+					 bool *conv_ok = nullptr);
 
     const QString integerS = "int";
     const QString doubleS = "double";

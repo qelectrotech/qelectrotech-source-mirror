@@ -69,9 +69,6 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 			}
 		}
 	});
-	connect(ui->m_table_widget, &QAbstractItemView::entered, [this](auto index) {
-		qDebug() <<"entered";
-	});
 }
 
 /**
@@ -221,8 +218,8 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.uuid_.toString());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 
-			if (real_t.is_element) {
-				m_uuid_terminal_H.insert(real_t.uuid_, real_t.element_);
+			if (real_t.element_) {
+				m_uuid_terminal_H.insert(real_t.uuid_, qgraphicsitem_cast<TerminalElement *>(real_t.element_));
 			}
 		}
 	}
@@ -440,7 +437,7 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 			{
 				for (auto modified_data : m_model->modifiedRealTerminalData())
 				{
-					auto element = m_current_strip->elementForRealTerminal(modified_data.m_real_terminal);
+					auto element = modified_data.element_;
 					if (element) {
 						auto current_data = element->elementData();
 						current_data.setTerminalType(modified_data.type_);

@@ -584,6 +584,50 @@ QVector<QDomElement> QETXML::findInDomElement(const QDomElement &dom_elmt, const
 
 namespace QETXML {
 
+/**
+ * @brief boolToString
+ * @param value
+ * @return \p value converted to string
+ */
+QString boolToString(bool value)
+{
+	return value ? QStringLiteral("true") :
+				   QStringLiteral("false");
+}
+
+/**
+ * @brief boolFromString return \p value converted to bool
+ * @param value : value to convert
+ * @param default_value : default value
+ * @param conv_ok : true if \p value is successfully converted
+ * @return
+ */
+bool boolFromString(const QString &value, bool default_value, bool *conv_ok)
+{
+	if (value == QStringLiteral("true") ||
+		value == QStringLiteral("1")) {
+		if (conv_ok) {
+			*conv_ok = true;
+		}
+		return true;
+	}
+
+	if (value == QStringLiteral("false") ||
+		value == QStringLiteral("0")) {
+		if (conv_ok) {
+			*conv_ok = true;
+		}
+		return false;
+	}
+
+	if(conv_ok) {
+		*conv_ok = false;
+	}
+	return default_value;
+}
+
+
+
 PropertyFlags debugReadXml(PropertyFlags flag, const QDomElement &e, const QString& attribute_name, const QString& attr, const QString& type)
 {
     if (flag == QETXML::PropertyFlags::NoValidConversion)
@@ -873,7 +917,7 @@ bool validXmlProperty(const QDomElement& e) {
     if (!e.hasAttribute("value"))
         return false;
 
-    return true;
+	return true;
 }
 
 }

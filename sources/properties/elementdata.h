@@ -99,6 +99,7 @@ class ElementData : public PropertiesInterface
 
 		void setTerminalLED(bool led);
 		bool terminalLed() const;
+		bool terminalPropertiesIsOverrided() const;
 
 		bool operator==(const ElementData &data) const;
 		bool operator!=(const ElementData &data) const;

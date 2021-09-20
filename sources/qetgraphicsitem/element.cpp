@@ -33,6 +33,7 @@
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+#include "../qetxml.h"
 
 #include <QDomElement>
 #include <utility>
@@ -846,6 +847,28 @@ bool Element::fromXml(QDomElement &e,
 	dc.fromXml(e.firstChildElement(QStringLiteral("elementInformations")),
 			   QStringLiteral("elementInformation"));
 
+		//Load override properties (For now, only used when the element is a terminal)
+	if (m_data.m_type == ElementData::Terminale)
+	{
+
+		if (auto elmt_type_list = QETXML::subChild(e, QStringLiteral("properties"), QStringLiteral("element_type")) ;
+			elmt_type_list.size())
+		{
+			auto elmt_type = elmt_type_list.first();
+			m_data.setTerminalType(
+						m_data.terminalTypeFromString(
+							elmt_type.attribute(QStringLiteral("terminal_type"))));
+
+			m_data.setTerminalFunction(
+						m_data.terminalFunctionFromString(
+							elmt_type.attribute(QStringLiteral("terminal_function"))));
+
+			m_data.setTerminalLED(
+						QETXML::boolFromString(
+							elmt_type.attribute(QStringLiteral("terminal_led")), false));
+		}
+	}
+
 	//We must to block the update of the alignment when load the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -953,6 +976,23 @@ QDomElement Element::toXml(
 				document.createElement(QStringLiteral("elementInformations"));
 		m_data.m_informations.toXml(infos, QStringLiteral("elementInformation"));
 		element.appendChild(infos);
+	}
+
+		//Save override properties (For now, only used when the element is a terminal)
+	if (m_data.m_type == ElementData::Terminale)
+	{
+		QDomElement properties = document.createElement(QStringLiteral("properties"));
+		QDomElement element_type = document.createElement(QStringLiteral("element_type"));
+
+		element_type.setAttribute(QStringLiteral("terminal_type"),
+								m_data.terminalTypeToString(m_data.terminalType()));
+		element_type.setAttribute(QStringLiteral("terminal_function"),
+								m_data.terminalFunctionToString(m_data.terminalFunction()));
+		element_type.setAttribute(QStringLiteral("terminal_led"),
+								QETXML::boolToString(m_data.terminalLed()));
+
+		properties.appendChild(element_type);
+		element.appendChild(properties);
 	}
 
 	//Dynamic texts

@@ -200,6 +200,21 @@ bool ElementData::terminalLed() const
 				m_terminal_led;
 }
 
+/**
+ * @brief ElementData::terminalPropertiesIsOverrided
+ * @return true if at least one sub properties of terminal type is overrided
+ */
+bool ElementData::terminalPropertiesIsOverrided() const
+{
+	if (m_terminal_type_is_override
+		|| m_terminal_function_is_override
+		|| m_terminal_led_is_override) {
+		return true;
+	}
+
+	return false;
+}
+
 bool ElementData::operator==(const ElementData &data) const
 {
 	if (data.m_type != m_type) {

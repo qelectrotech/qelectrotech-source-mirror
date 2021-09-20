@@ -34,8 +34,6 @@ class TerminalElement;
 
 struct RealTerminalData
 {
-	QSharedPointer<RealTerminal> m_real_terminal;
-
 	int level_ = 0;
 
 	QString label_,
@@ -52,8 +50,7 @@ struct RealTerminalData
 	bool led_ = false,
 		 is_element = false;
 
-	TerminalElement *element_ = nullptr;
-
+	QPointer<Element> element_;
 };
 
 struct PhysicalTerminalData

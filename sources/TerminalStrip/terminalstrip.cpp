@@ -629,14 +629,13 @@ RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> re
 
 	auto physical_terminal = physicalTerminal(real_terminal);
 
-	rtd.m_real_terminal = real_terminal;
 	rtd.level_ = physical_terminal->levelOf(real_terminal);
 	rtd.label_ = real_terminal->label();
 
 	if (real_terminal->isElement()) {
 		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
 		rtd.uuid_ = real_terminal->elementUuid();
-		rtd.element_ = qgraphicsitem_cast<TerminalElement *>(real_terminal->element());
+		rtd.element_ = real_terminal->element();
 	}
 	rtd.type_      = real_terminal->type();
 	rtd.function_  = real_terminal->function();

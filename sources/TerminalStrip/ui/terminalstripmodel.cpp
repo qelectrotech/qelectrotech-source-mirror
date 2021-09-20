@@ -116,8 +116,8 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	}
 	else if (role == Qt::BackgroundRole && index.column() <= CONDUCTOR_CELL )
 	{
-		if (m_modified_cell.contains(rtd.m_real_terminal) &&
-			m_modified_cell.value(rtd.m_real_terminal).at(index.column()))
+		if (m_modified_cell.contains(rtd.element_) &&
+			m_modified_cell.value(rtd.element_).at(index.column()))
 		{
 			return QBrush(Qt::yellow);
 		}
@@ -168,17 +168,17 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 	{
 		replaceDataAtRow(rtd, index.row());
 
-		if (rtd.m_real_terminal)
+		if (rtd.element_)
 		{
 			QVector<bool> vector_;
-			if (m_modified_cell.contains(rtd.m_real_terminal)) {
-				vector_ = m_modified_cell.value(rtd.m_real_terminal);
+			if (m_modified_cell.contains(rtd.element_)) {
+				vector_ = m_modified_cell.value(rtd.element_);
 			} else {
 				vector_ = UNMODIFIED_CELL_VECTOR;
 			}
 
 			vector_.replace(modified_cell, true);
-			m_modified_cell.insert(rtd.m_real_terminal, vector_);
+			m_modified_cell.insert(rtd.element_, vector_);
 		}
 		return true;
 	}
@@ -236,7 +236,7 @@ QVector<RealTerminalData> TerminalStripModel::modifiedRealTerminalData() const
 
 	for (const auto &ptd : m_physical_terminal_data) {
 		for (const auto &rtd : ptd.real_terminals_vector) {
-			if (modified_real_terminal.contains(rtd.m_real_terminal)) {
+			if (modified_real_terminal.contains(rtd.element_)) {
 				returned_vector.append(rtd);
 			}
 		}
@@ -254,18 +254,17 @@ QVector<RealTerminalData> TerminalStripModel::modifiedRealTerminalData() const
  */
 bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
 {
-	if (index.model() == this && index.isValid())
+	if (index.model() == this
+		&& index.isValid()
+		&& index.column() == XREF_CELL)
 	{
-		if (index.column() == XREF_CELL)
+		if (index.row() < rowCount())
 		{
-			if (index.row() < rowCount())
-			{
-				const auto data = dataAtRow(index.row());
-				*element = m_terminal_strip->elementForRealTerminal(data.m_real_terminal);
-
+			if (auto data = dataAtRow(index.row()) ; data.element_) {
+				*element = data.element_.data();
 			}
-			return true;
 		}
+		return true;
 	}
 
 	return false;
