@@ -155,7 +155,8 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		modified_cell = FUNCTION_CELL;
 	}
 	else if (column_ == LABEL_CELL &&
-			 role == Qt::EditRole)
+			 role == Qt::EditRole &&
+			 rtd.label_ != value.toString())
 	{
 		rtd.label_ = value.toString();
 		modified_ = true;
