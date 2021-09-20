@@ -1,10 +1,8 @@
 <definition hotspot_x="35" type="element" width="50" hotspot_y="34" version="0.70" height="50" link_type="simple">
     <uuid uuid="{6ca038da-e939-4209-b95c-4b869a556c3b}"/>
     <names>
-        <name lang="en">Single-stroke bell</name>
         <name lang="fr">Sonnerie à un coup</name>
-        <name lang="de">Gong,
-Einschlagwecker</name>
+        <name lang="de">Gong, Einschlagwecker</name>
         <name lang="cs">Yvonek s jedním úderem, Gong</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -2,10 +2,9 @@
     <uuid uuid="{ef8c79cd-ecf8-4581-a504-7d4559129bea}"/>
     <names>
         <name lang="fr">Courant alternatif</name>
-        <name lang="de">Wechselstrom und -Spannung </name>
-        <name lang="en">Alternating current</name>
-        <name lang="es">04- Corriente alterna 50hz</name>
-        <name lang="cs">04- Střídavý proud 50Hz</name>
+        <name lang="de">Wechselstrom und Spannung</name>
+        <name lang="es">Corriente alterna 50hz</name>
+        <name lang="cs">Střídavý proud 50Hz</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
