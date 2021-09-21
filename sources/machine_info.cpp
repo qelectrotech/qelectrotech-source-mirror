@@ -179,7 +179,6 @@ void MachineInfo::init_get_Screen_info()
 */
 void MachineInfo::init_get_cpu_info()
 {
-#ifdef __GNUC__
 #ifdef __APPLE_CC__
 	init_get_cpu_info_macos();
 #else
@@ -187,7 +186,6 @@ void MachineInfo::init_get_cpu_info()
 		init_get_cpu_info_linux();
 	if (pc.os.type == "winnt")
 		init_get_cpu_info_winnt();
-#endif
 #endif
 }
 
