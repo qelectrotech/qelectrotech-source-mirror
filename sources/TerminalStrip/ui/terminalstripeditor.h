@@ -57,6 +57,7 @@ class TerminalStripEditor : public QDialog
 		void on_m_reload_pb_clicked();
 		void on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 		void on_m_dialog_button_box_clicked(QAbstractButton *button);
+		void on_m_auto_ordering_pb_clicked();
 
 	private:
 		Ui::TerminalStripEditor *ui;

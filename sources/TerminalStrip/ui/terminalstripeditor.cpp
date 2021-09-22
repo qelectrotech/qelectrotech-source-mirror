@@ -30,6 +30,7 @@
 #include "../../qeticons.h"
 #include "terminalstripmodel.h"
 #include "../diagram.h"
+#include "../UndoCommand/sortterminalstripcommand.h"
 
 #include <QTreeWidgetItem>
 
@@ -273,6 +274,10 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		return;
 	}
 
+	if (m_current_strip) {
+		disconnect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
+	}
+
 	if (!strip_)
 	{
 		ui->m_installation_le ->clear();
@@ -302,6 +307,8 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 
 		m_model = new TerminalStripModel(strip_, this);
 		ui->m_table_widget->setModel(m_model);
+
+		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
 	}
 }
 
@@ -456,3 +463,14 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 	on_m_reload_pb_clicked();
 }
+
+/**
+ * @brief TerminalStripEditor::on_m_auto_pos_pb_clicked
+ */
+void TerminalStripEditor::on_m_auto_ordering_pb_clicked()
+{
+	if (m_project && m_current_strip) {
+		m_project->undoStack()->push(new SortTerminalStripCommand(m_current_strip));
+	}
+}
+

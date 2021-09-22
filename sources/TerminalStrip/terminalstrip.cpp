@@ -473,7 +473,7 @@ int TerminalStrip::physicalTerminalCount() const {
  * @param index
  * @return The data of the physical terminal at index \p index
  */
-PhysicalTerminalData TerminalStrip::physicalTerminalData(int index)
+PhysicalTerminalData TerminalStrip::physicalTerminalData(int index) const
 {
 	PhysicalTerminalData ptd;
 
@@ -489,6 +489,56 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(int index)
 	}
 
 	return ptd;
+}
+
+/**
+ * @brief TerminalStrip::physicalTerminalData
+ * @return A vector of all physical terminal data owned by this terminal strip.
+ * The order of the vector is the same as the order of the terminal in the strip
+ */
+QVector<PhysicalTerminalData> TerminalStrip::physicalTerminalData() const
+{
+	QVector<PhysicalTerminalData> v_;
+	for (auto i = 0 ; i<physicalTerminalCount() ; ++i) {
+		v_.append(physicalTerminalData(i));
+	}
+
+	return v_;
+}
+
+/**
+ * @brief TerminalStrip::setSortedTo
+ * Sort the physical terminal owned by this strip in the same order
+ * as \p sorted_vector.
+ * \p sorted_vector must contain exaclty the same physical terminal as this strip
+ * else this function do nothing.
+ *
+ * To avoid any mistake, you should call TerminalStrip::physicalTerminalData()
+ * sort the returned vector and call this function with sorted vector, then you are sure
+ * the vector contain the same values, no more no less.
+ *
+ * @param sorted_vector
+ * @return true is successfully sorted.
+ */
+bool TerminalStrip::setOrderTo(QVector<PhysicalTerminalData> sorted_vector)
+{
+	if (sorted_vector.size() != m_physical_terminals.size()) {
+		return false;
+	}
+
+	QVector<QSharedPointer<PhysicalTerminal>> new_order;
+	for (auto ptd : sorted_vector)
+	{
+		if (m_physical_terminals.contains(ptd.physical_terminal)) {
+			new_order.append(ptd.physical_terminal);
+		} else {
+			return false;
+		}
+	}
+
+	m_physical_terminals = new_order;
+	emit orderChanged();
+	return true;
 }
 
 /**
@@ -598,7 +648,7 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminal(Element *terminal)
  * @return the physical terminal linked to \p terminal.
  * The returned QSharedPointer can be null.
  */
-QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<RealTerminal> terminal)
+QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<RealTerminal> terminal) const
 {
 	shared_physical_terminal pt;
 
@@ -623,7 +673,7 @@ Element *TerminalStrip::elementForRealTerminal(QSharedPointer<RealTerminal> rt) 
 	return rt.data()->element();
 }
 
-RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> real_terminal)
+RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> real_terminal) const
 {
 	RealTerminalData rtd;
 

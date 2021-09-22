@@ -73,6 +73,10 @@ class TerminalStrip : public QObject
 
 		Q_OBJECT
 	public:
+	signals:
+		void orderChanged(); //Emitted when the order of the physical terminal is changed
+
+	public:
 		TerminalStrip(QETProject *project);
 
 		TerminalStrip(const QString &installation,
@@ -100,8 +104,9 @@ class TerminalStrip : public QObject
 		bool haveTerminal   (Element *terminal);
 
 		int physicalTerminalCount() const;
-
-		PhysicalTerminalData physicalTerminalData(int index);
+		PhysicalTerminalData physicalTerminalData(int index) const;
+		QVector<PhysicalTerminalData> physicalTerminalData() const;
+		bool setOrderTo(QVector<PhysicalTerminalData> sorted_vector);
 
 		QVector<QPointer<Element>> terminalElement() const;
 
@@ -113,8 +118,8 @@ class TerminalStrip : public QObject
 
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
-		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal);
-		RealTerminalData realTerminalData(QSharedPointer<RealTerminal> real_terminal);
+		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal) const;
+		RealTerminalData realTerminalData(QSharedPointer<RealTerminal> real_terminal) const;
 
 	private:
 		TerminalStripData m_data;
