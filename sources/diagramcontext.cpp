@@ -92,7 +92,7 @@ const QVariant DiagramContext::operator[](const QString &key) const
 	@return true if the insertion succeeds, false otherwise
 */
 bool DiagramContext::addValue(const QString &key, const QVariant &value, bool show) {
-	if (keyIsAcceptable(key)) {
+	if (isKeyAcceptable(key)) {
 		m_content.insert(key, value);
 		m_content_show.insert(key, show);
 		return(true);
@@ -240,10 +240,11 @@ bool DiagramContext::stringLongerThan(const QString &a, const QString &b) {
 	@param key a key string
 	@return true if that key is acceptable, false otherwise
 */
-bool DiagramContext::keyIsAcceptable(const QString &key) const
+bool DiagramContext::isKeyAcceptable(const QString &key)
 {
-	QRegularExpression re(DiagramContext::validKeyRegExp());
-	QRegularExpressionMatch match =re.match(key);
+	static const QRegularExpression re(DiagramContext::validKeyRegExp());
+
+	QRegularExpressionMatch match = re.match(key);
 	return match.hasMatch();
 }
 
