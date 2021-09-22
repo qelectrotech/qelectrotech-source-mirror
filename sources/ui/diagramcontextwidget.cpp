@@ -120,8 +120,6 @@ void DiagramContextWidget::clear()
 */
 int DiagramContextWidget::highlightNonAcceptableKeys()
 {
-	static QRegularExpression re(DiagramContext::validKeyRegExp());
-
 	QBrush fg_brush = ui->m_table->palette().brush(QPalette::WindowText);
 
 	int invalid_keys = 0;
@@ -135,7 +133,7 @@ int DiagramContextWidget::highlightNonAcceptableKeys()
 		bool highlight = false;
 		if (!qtwi_name -> text().isEmpty())
 		{
-			if (re!=QRegularExpression(qtwi_name -> text()))
+			if (! DiagramContext::isKeyAcceptable(qtwi_name->text()))
 			{
 				highlight = true;
 				++ invalid_keys;
