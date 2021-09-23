@@ -30,7 +30,6 @@
 #include <QRegularExpression>
 #include <QTextDocument>
 #include <iostream>
-#include <variant>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
@@ -605,11 +604,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 				else if (style_value == "eleve") pen.setWidthF(5.0);
 
 			} else if (style_name == "filling") {
-				static const QMap<
-					QString,
-					QPair<
-						Qt::BrushStyle,
-						std::variant<Qt::GlobalColor, QColor>>>
+				static const QMap<QString, QPair<Qt::BrushStyle, QColor>>
 					filling_style_map = {
 						{"white", {Qt::SolidPattern, Qt::white}},
 						{"black", {Qt::SolidPattern, Qt::black}},
@@ -912,12 +907,10 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 					if (style_ == filling_style_map.end()) { continue; }
 
 					brush.setStyle(style_->first);
-					std::visit(
-						[&](auto&& color) { brush.setColor(color); },
-						style_->second);
+	 				brush.setColor(style_->second);
 				}
 			} else if (style_name == "color") {
-				static const QMap<QString, std::variant<Qt::GlobalColor, QColor>> color_style_map = {
+				static const QMap<QString, QColor> color_style_map = {
 					{"red", Qt::red},
 					{"blue", Qt::blue},
 					{"green", Qt::green},
@@ -1085,9 +1078,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 					auto style_ = color_style_map.find(style_value);
 					if (style_ == color_style_map.end()) { continue; }
 
-					std::visit(
-						[&](auto&& color) { pen.setColor(color); },
-						*style_);
+					pen.setColor(*style_);
 				}
 			}
 		}

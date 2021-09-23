@@ -21,7 +21,6 @@
 #include "../elementscene.h"
 
 #include <QRegularExpression>
-#include <variant>
 
 /**
 	@brief CustomElementGraphicPart::CustomElementGraphicPart
@@ -938,7 +937,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else if (_filling == FdiagFilling) brush.setStyle(Qt::FDiagPattern);
 	else
 	{
-		static const QMap<Filling, std::variant<Qt::GlobalColor, QColor>>
+		static const QMap<Filling, QColor>
 			filling_style_map = {
 				{BlackFilling, Qt::black},
 				{WhiteFilling, Qt::white},
@@ -1096,14 +1095,11 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 
 		brush.setStyle(Qt::SolidPattern);
 		auto color = filling_style_map.find(_filling);
-		if (color != filling_style_map.end())
-		{
-			std::visit([&](auto&& color) { brush.setColor(color); }, *color);
-		}
+		if (color != filling_style_map.end()) { brush.setColor(*color); }
 	}
 
 	// Apply pen color
-	static const QMap<Color, std::variant<Qt::GlobalColor, QColor>> color_map =
+	static const QMap<Color, QColor> color_map =
 		{{GreenColor, Qt::green},
 		 {RedColor, Qt::red},
 		 {BlueColor, Qt::blue},
@@ -1268,10 +1264,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const
 	else
 	{
 		auto style_ = color_map.find(_color);
-		if (style_ != color_map.end())
-		{
-			std::visit([&](auto&& color) { pen.setColor(color); }, *style_);
-		}
+		if (style_ != color_map.end()) { pen.setColor(*style_); }
 	}
 
 	//Apply antialiasing
