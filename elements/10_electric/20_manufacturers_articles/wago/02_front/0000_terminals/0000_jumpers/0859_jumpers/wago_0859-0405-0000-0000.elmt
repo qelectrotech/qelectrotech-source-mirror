@@ -5,12 +5,13 @@
     <name lang="de">859-405</name>
     <name lang="cs">859-405</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">859-405</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">859-405</elementInformation>
+        <elementInformation show="1" name="description">Jumper for Series 788, 857, 859, 2857</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <rect x="-5.72" y="-2.72" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="59.04" height="5.43" antialias="false"/>
