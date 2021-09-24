@@ -12,7 +12,7 @@
         <elementInformation show="1" name="designation">FAZ 2P</elementInformation>
         <elementInformation show="1" name="description">Leitungsschutzschalter (LS 2P) B 16A</elementInformation>
     </elementInformations>
-    <informations>plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>

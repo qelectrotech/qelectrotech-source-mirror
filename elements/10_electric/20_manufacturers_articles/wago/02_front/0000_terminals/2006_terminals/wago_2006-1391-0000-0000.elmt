@@ -14,6 +14,6 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-1" x2="-1" x3="1" x4="1" y1="65.01" y2="-81.65" y3="-81.65" y4="65.01" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" antialias="false"/>
+    <polygon x1="-1" x2="-1" x3="1" x4="1" y1="65" y2="-81.65" y3="-81.65" y4="65" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" antialias="false"/>
   </description>
 </definition>

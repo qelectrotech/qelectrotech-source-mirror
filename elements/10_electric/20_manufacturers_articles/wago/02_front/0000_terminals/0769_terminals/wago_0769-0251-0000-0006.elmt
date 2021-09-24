@@ -36,7 +36,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon x3="-3.3" x1="3.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" y1="60" antialias="false" x2="-3.3" x4="3.9" y3="53.2" y4="53.2" y2="60"/>
         <polygon x1="4.38" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7" antialias="false" x2="3.59" closed="false" y2="-6.2"/>
         <polygon x3="0" x1="1.59" style="line-style:normal;line-weight:thin;filling:gray;color:black" y1="6.2" antialias="false" x2="1.59" y5="7" x4="0" x5="0.8" y3="3.26" y4="6.2" y2="3.26"/>
-        <polygon x1="-2.78" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" antialias="false" x2="-1.99" closed="false" y2="6.2"/>
+        <polygon x1="-2.78" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="7" antialias="false" x2="-2" closed="false" y2="6.2"/>
         <polygon x1="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.2" antialias="false" x2="-2.8" closed="false" y2="-7"/>
         <polygon x1="0.8" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6.84" antialias="false" x2="0.8" closed="false" y2="3.26"/>
         <polygon x3="0" x1="1.59" style="line-style:normal;line-weight:thin;filling:gray;color:black" y1="-6.24" antialias="false" x2="1.59" y5="-7" x4="0" x5="0.8" y3="-3.4" y4="-6.24" y2="-3.4"/>

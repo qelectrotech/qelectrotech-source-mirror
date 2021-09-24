@@ -1,7 +1,7 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="34" height="60" link_type="master" type="element">
 <uuid uuid="{913D46E0-6E35-4878-9B5D-5CFBF47C819F}"/><names>
         <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
-        <name lang="de">Leitungsschutzschalter 1P+N</name>
+        <name lang="de">Leitungsschutzschalter LS 1P+N</name>
         <name lang="en">Circuit-breaker</name>
         <name lang="es">Disyuntor termico magnetico en polo P+N</name>
         <name lang="it">Int. Aut. Magneto-termico 1P+N</name>

@@ -58,13 +58,13 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <polygon x1="3.46" x2="-3.54" y1="-1.21" y2="-1.21" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="3.46" x2="1.86" x3="1.86" x4="-1.94" x5="-1.94" x6="-1" x7="-1" x8="-2.34" x9="-2.34" y1="-68.82" y2="-68.82" y3="-65.56" y4="-65.56" y5="-68.13" y6="-68.13" y7="-71.22" y8="-71.22" y9="-87.05" x10="-1" x11="-1" x12="3.46" y10="-87.05" y11="-88.25" y12="-88.25" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="3.46" x2="-3.54" y1="9.6" y2="9.6" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <line x1="1.85" x2="3.04" y1="-47.01" y2="-44.42" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="1.85" x2="3.04" y1="-47" y2="-44.42" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <polygon x1="3.46" x2="-3.54" y1="-9.62" y2="-9.62" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-3.54" x2="3.46" y1="12.27" y2="12.27" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <line x1="1.85" x2="3.04" y1="-57.81" y2="-55.23" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <polygon x1="3.46" x2="-3.54" y1="-10.23" y2="-10.23" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <line x1="-2.74" x2="-1.55" y1="-55.23" y2="-57.81" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <line x1="-2.74" x2="-1.55" y1="-44.42" y2="-47.01" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="-2.74" x2="-1.55" y1="-44.42" y2="-47" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <rect x="-1.55" y="-61" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="3.41" height="3.2" antialias="false"/>
     <rect x="-1.55" y="-50.2" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="3.41" height="3.2" antialias="false"/>
     <polygon x1="3.48" x2="-3.52" y1="-52.89" y2="-52.89" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>

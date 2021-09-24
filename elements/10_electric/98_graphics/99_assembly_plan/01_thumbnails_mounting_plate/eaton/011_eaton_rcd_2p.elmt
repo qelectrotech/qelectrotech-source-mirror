@@ -12,7 +12,7 @@
         <elementInformation name="description" show="1">Fehlerstromschutzschalter (FI 2P) (RCD 2P)</elementInformation>
         <elementInformation name="label" show="1">-F1</elementInformation>
     </elementInformations>
-    <informations>plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>
