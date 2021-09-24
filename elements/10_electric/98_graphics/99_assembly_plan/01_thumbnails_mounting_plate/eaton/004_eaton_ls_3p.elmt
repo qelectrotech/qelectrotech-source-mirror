@@ -12,7 +12,7 @@
         <elementInformation show="1" name="description">Leitungsschutzschalter (LS 3P) B 16A</elementInformation>
         <elementInformation show="1" name="label">-F1</elementInformation>
     </elementInformations>
-    <informations>plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>
