@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-669/000-003</elementInformation>
-        <elementInformation show="1" name="description">750-669/000-003</elementInformation>
+        <elementInformation show="1" name="description">4FDI / 4FRO 48VAC / 60VDC / 6A PROFIsafe V2 iPar</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license

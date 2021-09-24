@@ -1,19 +1,24 @@
-<definition type="element" width="29" height="189" version="0.80" hotspot_x="14" hotspot_y="110" link_type="simple">
+<definition type="element" width="29" height="189" version="0.80" hotspot_x="14" hotspot_y="110" link_type="terminal">
   <names>
     <name lang="fr">2216-1307</name>
     <name lang="de">2216-1307</name>
     <name lang="en">2216-1307</name>
     <name lang="cs">2216-1307</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2216-1307</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2216-1307</elementInformation>
+        <elementInformation show="1" name="description">16mm² 3L PE</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-12.01" x2="11.99" x3="11.99" x4="-12.01" y1="-108.61" y2="-108.61" y3="76.03" y4="76.03" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
+    <polygon x1="-12" x2="12" x3="12" x4="-12" y1="-108.61" y2="-108.61" y3="76.03" y4="76.03" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
     <polygon x1="-5.67" x2="6.33" x3="6.33" x4="-5.67" y1="-108.61" y2="-108.61" y3="76.03" y4="76.03" style="line-style:normal;line-weight:thin;filling:yellow;color:none" antialias="false"/>
     <polygon x1="11.84" x2="-12.16" y1="-31.09" y2="-31.09" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="11.84" x2="-12.16" y1="41.62" y2="41.62" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
@@ -21,7 +26,7 @@
     <rect x="-9.71" y="34.51" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="18.73" height="10.87" antialias="false"/>
     <rect x="-9.71" y="-79" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="18.73" height="10.87" antialias="false"/>
     <circle x="-11.12" y="47.64" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="21.72" antialias="false"/>
-    <rect x="-9.71" y="-34.99" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="18.73" height="10.87" antialias="false"/>
+    <rect x="-9.71" y="-35" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="18.73" height="10.87" antialias="false"/>
     <circle x="-11.12" y="-103.03" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="21.72" antialias="false"/>
     <circle x="-2.1" y="-19.38" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4.34" antialias="false"/>
     <circle x="-11.12" y="-59.02" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="21.72" antialias="false"/>
@@ -31,9 +36,9 @@
     <line x1="-10.67" x2="-8.09" y1="1.19" y2="3.82" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="7.9" x2="10.48" y1="-6.98" y2="-9.61" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="7.9" x2="10.48" y1="3.82" y2="1.19" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <line x1="7.9" x2="10.48" y1="7.01" y2="9.59" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="7.9" x2="10.48" y1="7" y2="9.59" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="7.9" x2="10.48" y1="-3.8" y2="-1.21" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <line x1="-10.67" x2="-8.09" y1="9.59" y2="7.01" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="-10.67" x2="-8.09" y1="9.59" y2="7" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="-10.67" x2="-8.09" y1="-1.21" y2="-3.79" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <rect x="-8.1" y="-6.98" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="16" height="3.2" antialias="false"/>
     <rect x="-8.1" y="3.82" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="16" height="3.2" antialias="false"/>
