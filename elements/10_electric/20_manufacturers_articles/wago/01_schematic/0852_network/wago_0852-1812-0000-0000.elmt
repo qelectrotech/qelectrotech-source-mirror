@@ -1,71 +1,71 @@
-<definition hotspot_x="64" hotspot_y="104" type="element" height="210" link_type="simple" version="0.80" width="130">
+<definition type="element" hotspot_y="104" width="130" height="210" hotspot_x="64" link_type="simple" version="0.90">
     <names>
         <name lang="de">852-1812</name>
         <name lang="en">852-1812</name>
-        <name lang="fr">852-1812</name>
         <name lang="cs">852-1812</name>
+        <name lang="fr">852-1812</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">852-1812</elementInformation>
-        <elementInformation show="1" name="description">8-Port 1000Base-Tx Lean Managed Switch</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation name="designation" show="1">852-1812</elementInformation>
+        <elementInformation name="description" show="1">8-Port 1000Base-Tx Lean Managed Switch</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="200" rx="0" y="-100" ry="0" width="120" antialias="false" x="-60"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-52.5" antialias="true" x="57.5"/>
-        <text text="4" rotation="0" color="#000000" y="-32" x="49.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="2" rotation="0" color="#000000" y="-52" x="49.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="7.5" antialias="true" x="57.5"/>
-        <text text="ALM" rotation="0" color="#000000" y="83" x="-5" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="-" rotation="0" color="#000000" y="-90" x="-20.9844" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="8" rotation="0" color="#000000" y="8" x="48.625" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-12.5" antialias="true" x="57.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="97.5" antialias="true" x="7.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-32.5" antialias="true" x="57.5"/>
-        <text text="6" rotation="0" color="#000000" y="-12" x="48.625" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="Lean Managed Switch" rotation="0" color="#000000" y="60" x="-49" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-52.5" antialias="true" x="-62.5"/>
-        <text text="-" rotation="0" color="#000000" y="-90" x="39.0875" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="+" rotation="0" color="#000000" y="-90" x="17.5718" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="97.5" antialias="true" x="-12.5"/>
-        <text text="RPS" rotation="0" color="#000000" y="-84" x="23.4718" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="3" rotation="0" color="#000000" y="-32" x="-54.1875" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="+" rotation="0" color="#000000" y="-90" x="-42.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="7.5" antialias="true" x="-62.5"/>
-        <text text="1" rotation="0" color="#000000" y="-52" x="-54.1875" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="7" rotation="0" color="#000000" y="8" x="-54.8125" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-12.5" antialias="true" x="-62.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="37.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-32.5" antialias="true" x="-62.5"/>
-        <text text="5" rotation="0" color="#000000" y="-12" x="-54.8125" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="17.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="-22.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="-42.5"/>
-        <text text="8-Port 1000BASE-TX" rotation="0" color="#000000" y="49" x="-45" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
-        <text text="PWR" rotation="0" color="#000000" y="-84" x="-36.6" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="WAGO 852-1812" rotation="0" color="#000000" y="-64" x="-49" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <polygon y3="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" y4="86" closed="false" y2="90" x4="6" antialias="false" y1="100" x3="-6" x2="-10"/>
-        <polygon y3="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" closed="false" y2="90" antialias="false" y1="100" x3="6" x2="10"/>
-        <dynamic_text Halignment="AlignLeft" z="54" rotation="0" Valignment="AlignTop" text_width="-1" y="-20" frame="false" x="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo">
+        <rect antialias="false" rx="0" x="-60" ry="0" width="120" height="200" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-100"/>
+        <circle antialias="true" x="57.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-52.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="49.25" text="4" y="-32"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="49.25" text="2" y="-52"/>
+        <circle antialias="true" x="57.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="7.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-5" text="ALM" y="83"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-22.9844" text="−" y="-90"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="48.625" text="8" y="8"/>
+        <circle antialias="true" x="57.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-12.5"/>
+        <circle antialias="true" x="7.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="97.5"/>
+        <circle antialias="true" x="57.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-32.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="48.625" text="6" y="-12"/>
+        <text color="#000000" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-49" text="Lean Managed Switch" y="60"/>
+        <circle antialias="true" x="-62.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-52.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="37.0875" text="−" y="-90"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="17.5718" text="+" y="-90"/>
+        <circle antialias="true" x="-12.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="97.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="23.4718" text="RPS" y="-84"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-54.1875" text="3" y="-32"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-42.5" text="+" y="-90"/>
+        <circle antialias="true" x="-62.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="7.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-54.1875" text="1" y="-52"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-54.8125" text="7" y="8"/>
+        <circle antialias="true" x="-62.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-12.5"/>
+        <circle antialias="true" x="37.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5"/>
+        <circle antialias="true" x="-62.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-32.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-54.8125" text="5" y="-12"/>
+        <circle antialias="true" x="17.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5"/>
+        <circle antialias="true" x="-22.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5"/>
+        <circle antialias="true" x="-42.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5"/>
+        <text color="#000000" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-45" text="8-Port 1000BASE-TX" y="49"/>
+        <text color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-36.6" text="PWR" y="-84"/>
+        <text color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-49" text="WAGO 852-1812" y="-64"/>
+        <polygon x2="-10" closed="false" antialias="false" x4="6" y3="90" y4="86" x1="-10" y2="90" x3="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100"/>
+        <polygon x2="10" closed="false" antialias="false" y3="90" x1="10" y2="90" x3="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100"/>
+        <dynamic_text uuid="{9ed3754a-8c18-4221-9c8d-a65bb91082d7}" text_from="ElementInfo" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" text_width="-1" x="10" keep_visual_rotation="true" z="54" Halignment="AlignLeft" frame="false" y="-20">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <terminal orientation="n" name="PWR-" y="-100" x="-20"/>
-        <terminal orientation="s" name="ALM.2" y="100" x="10"/>
-        <terminal orientation="s" name="ALM.1" y="100" x="-10"/>
-        <terminal orientation="w" name="ETH1" y="-50" x="-60"/>
-        <terminal orientation="w" name="EZH5" y="-10" x="-60"/>
-        <terminal orientation="w" name="ETH3" y="-30" x="-60"/>
-        <terminal orientation="w" name="ETH7" y="10" x="-60"/>
-        <terminal orientation="n" name="RPS+" y="-100" x="20"/>
-        <terminal orientation="n" name="PWR+" y="-100" x="-40"/>
-        <terminal orientation="n" name="RPS-" y="-100" x="40"/>
-        <terminal orientation="e" name="ETH2" y="-50" x="60"/>
-        <terminal orientation="e" name="EZH6" y="-10" x="60"/>
-        <terminal orientation="e" name="ETH4" y="-30" x="60"/>
-        <terminal orientation="e" name="ETH8" y="10" x="60"/>
+        <terminal name="PWR-" orientation="n" x="-20" y="-100"/>
+        <terminal name="ALM.2" orientation="s" x="10" y="100"/>
+        <terminal name="ALM.1" orientation="s" x="-10" y="100"/>
+        <terminal name="ETH1" orientation="w" x="-60" y="-50"/>
+        <terminal name="EZH5" orientation="w" x="-60" y="-10"/>
+        <terminal name="ETH3" orientation="w" x="-60" y="-30"/>
+        <terminal name="ETH7" orientation="w" x="-60" y="10"/>
+        <terminal name="RPS+" orientation="n" x="20" y="-100"/>
+        <terminal name="PWR+" orientation="n" x="-40" y="-100"/>
+        <terminal name="RPS-" orientation="n" x="40" y="-100"/>
+        <terminal name="ETH2" orientation="e" x="60" y="-50"/>
+        <terminal name="EZH6" orientation="e" x="60" y="-10"/>
+        <terminal name="ETH4" orientation="e" x="60" y="-30"/>
+        <terminal name="ETH8" orientation="e" x="60" y="10"/>
     </description>
 </definition>

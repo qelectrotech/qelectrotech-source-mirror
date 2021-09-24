@@ -22,7 +22,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <polygon x1="20.52" x2="-20.48" x3="-20.48" x4="-20.48" x5="20.52" y1="85.11" y2="85.11" y3="69.1" y4="69.1" y5="69.1" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="20.52" x2="-20.48" y1="78.34" y2="78.34" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-20.48" x2="20.52" y1="77.24" y2="77.24" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <polygon x1="20.52" x2="-20.48" x3="-20.48" x4="-20.48" x5="20.52" y1="-85" y2="-85" y3="-68.99" y4="-68.99" y5="-68.99" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
+    <polygon x1="20.52" x2="-20.48" x3="-20.48" x4="-20.48" x5="20.52" y1="-85" y2="-85" y3="-69" y4="-69" y5="-69" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="20.52" x2="-20.48" y1="-78.24" y2="-78.24" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-20.48" x2="20.52" y1="-77.13" y2="-77.13" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <text x="-13.98" y="83.91" font="Sans Serif,5.14,-1,5,50,0,0,0,0,0" text="289-172" color="#000000" rotation="0"/>

@@ -19,17 +19,17 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5" x="-2.5" antialias="true"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="27.5" x="-62.5" antialias="true"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="28" x="-54" text="5"/>
-        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-90" x="-20.9844" text="-"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-90" x="-23" text="−"/>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="66" x="-49" text="Industrial ECO-Switch"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-52.5" x="-62.5" antialias="true"/>
-        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-32" x="-54.1875" text="2"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-32" x="-54.2" text="2"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-90" x="-42.5" text="+"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="7.5" x="-62.5" antialias="true"/>
-        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-52" x="-54.1875" text="1"/>
-        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="8" x="-53.8125" text="4"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-52" x="-54.2" text="1"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="8" x="-53.8" text="4"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-12.5" x="-62.5" antialias="true"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-32.5" x="-62.5" antialias="true"/>
-        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-12" x="-53.8125" text="3"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-12" x="-53.8" text="3"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5" x="-22.5" antialias="true"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-102.5" x="-42.5" antialias="true"/>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="54" x="-43" text="5-Port 100BASE-TX"/>
