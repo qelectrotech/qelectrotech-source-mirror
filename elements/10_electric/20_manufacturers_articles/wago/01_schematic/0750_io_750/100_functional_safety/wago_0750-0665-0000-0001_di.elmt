@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-665/000-001</elementInformation>
+        <elementInformation show="1" name="description">4FDI / 4FDO PROFIsafe V1.3</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x2="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="360" x4="360" closed="false" y3="50" y1="-40" y2="-40" x3="-360" y4="50" antialias="false"/>
@@ -41,7 +41,7 @@
         <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="I2" y="-24" rotation="0" x="-39" color="#000000"/>
         <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="T3" y="-24" rotation="0" x="42" color="#000000"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="3" y="-42" rotation="0" x="46" color="#000000"/>
-        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="4 FDI / 4 FDO PROFIsafe V1.3" y="45" rotation="0" x="-130" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="4FDI / 4FDO PROFIsafe V1.3" y="45" rotation="0" x="-130" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="117.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-122.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="197.5"/>

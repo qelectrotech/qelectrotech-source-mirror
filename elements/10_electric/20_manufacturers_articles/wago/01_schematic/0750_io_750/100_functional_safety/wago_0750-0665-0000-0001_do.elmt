@@ -6,12 +6,12 @@
         <name lang="cs">750-665/000-001 (FDO)</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-665/000-001</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-665/000-001</elementInformation>
+        <elementInformation show="1" name="description">4FDI / 4FDO PROFIsafe V1.3</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x1="-360" y2="-40" x3="360" x2="360" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-360" y4="50" y1="-40" antialias="false" y3="50"/>

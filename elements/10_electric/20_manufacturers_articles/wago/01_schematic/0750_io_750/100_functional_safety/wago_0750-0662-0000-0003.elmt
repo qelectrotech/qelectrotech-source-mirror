@@ -6,12 +6,12 @@
         <name lang="cs">750-662/000-003</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-662/000-003</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-662/000-003</elementInformation>
+        <elementInformation show="1" name="description">8DI PROFIsafe V2 iPar</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" x="-360" height="90" rx="0" ry="0" width="720" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
@@ -61,7 +61,7 @@
         <arc y="7.5" x="360" start="90" height="5" angle="180" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
 
         <text y="45" x="-339" text="WAGO 750-662/000-003" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text y="45" x="-130" text="8 DI PROFIsafe V2 iPar" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="45" x="-130" text="8DI PROFIsafe V2 iPar" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <dynamic_text y="29.5" x="220" Valignment="AlignTop" text_width="-1" rotation="0" z="38" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{914bb900-558d-4266-a2b6-85709d556c58}" text_from="ElementInfo" Halignment="AlignLeft" frame="false">
             <text></text>
             <info_name>label</info_name>
