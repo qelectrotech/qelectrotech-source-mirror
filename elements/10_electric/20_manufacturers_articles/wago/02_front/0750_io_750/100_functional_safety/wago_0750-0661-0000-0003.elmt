@@ -6,8 +6,9 @@
     <name lang="cs">750-661/000-003</name>
   </names>
   <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1"/>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-661/000-003</elementInformation>
+        <elementInformation show="1" name="description">4DI PROFIsafe V2 iPar</elementInformation>
   </elementInformations>
   <informations>Author: plc-user for QElectroTech
         License:see https://qelectrotech.org/wiki_new/doc/elements_license
