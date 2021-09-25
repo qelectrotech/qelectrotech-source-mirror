@@ -1,16 +1,21 @@
-<definition type="element" width="11" height="143" version="0.90" hotspot_x="6" hotspot_y="63" link_type="simple">
+<definition type="element" width="11" height="143" version="0.90" hotspot_x="6" hotspot_y="63" link_type="terminal">
   <names>
     <name lang="de">2201-1408</name>
     <name lang="fr">2201-1408</name>
     <name lang="cs">2201-1408</name>
     <name lang="en">2201-1408</name>
   </names>
-  <elementInformations>
-    <elementInformation name="designation" show="1">2201-1408</elementInformation>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2201-1408</elementInformation>
+        <elementInformation show="1" name="description">1.5mm² 4L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-4.21" x2="4.2" x3="4.2" x4="-4.21" y1="-61.66" y2="-61.66" y3="78.2" y4="78.2" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
@@ -34,10 +39,10 @@
     <line x1="-3.43" x2="-1.97" y1="-9.63" y2="-7" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="2.19" x2="3.65" y1="-7" y2="-9.63" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="2.19" x2="3.65" y1="3.8" y2="1.17" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <line x1="2.19" x2="3.65" y1="6.99" y2="9.57" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="2.19" x2="3.65" y1="7" y2="9.57" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="2.19" x2="3.65" y1="-3.81" y2="-1.23" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="-3.43" x2="-1.97" y1="-1.23" y2="-3.81" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <line x1="-3.43" x2="-1.97" y1="9.57" y2="6.99" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="-3.43" x2="-1.97" y1="9.57" y2="7" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:gray;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <rect x="-1.98" y="-7" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="4.17" height="3.2" antialias="false"/>
     <rect x="-1.98" y="3.8" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="4.17" height="3.2" antialias="false"/>
     <polygon x1="4.19" x2="-4.07" y1="1.11" y2="1.11" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>

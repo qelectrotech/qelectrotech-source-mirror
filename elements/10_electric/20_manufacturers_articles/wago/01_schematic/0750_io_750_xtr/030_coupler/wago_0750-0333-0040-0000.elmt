@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-333/040-000</elementInformation>
+        <elementInformation show="1" name="description">Profibus DP/V1 Coupler</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect width="720" x="-360" ry="0" height="90" rx="0" y="-40" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>

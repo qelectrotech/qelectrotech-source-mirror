@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-838/040-000</elementInformation>
+        <elementInformation show="1" name="description">CANopen - Controller D-Sub</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect width="720" height="90" ry="0" rx="0" x="-360" y="-40" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
