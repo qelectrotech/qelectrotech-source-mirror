@@ -1,20 +1,25 @@
-<definition type="element" width="17" height="143" version="0.90" hotspot_x="8" hotspot_y="62" link_type="simple">
+<definition type="element" width="17" height="143" version="0.90" hotspot_x="8" hotspot_y="62" link_type="terminal">
   <names>
     <name lang="en">2202-1408</name>
     <name lang="fr">2202-1408</name>
     <name lang="de">2202-1408</name>
     <name lang="cs">2202-1408</name>
   </names>
-  <elementInformations>
-    <elementInformation name="designation" show="1">2202-1408</elementInformation>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2202-1408</elementInformation>
+        <elementInformation show="1" name="description">2.5mm² 4L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-5.21" x2="5.21" x3="5.21" x4="-5.21" y1="-61.58" y2="-61.58" y3="78.28" y4="78.28" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
-    <polygon x1="5.16" x2="-4.98" y1="62.99" y2="62.99" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
+    <polygon x1="5.16" x2="-5" y1="63" y2="63" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
     <polygon x1="5.18" x2="-5.15" y1="41.61" y2="41.61" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
     <polygon x1="5.21" x2="-5.13" y1="-45.61" y2="-45.61" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
     <polygon x1="5.14" x2="-5.2" y1="-24.12" y2="-24.12" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>

@@ -1,16 +1,21 @@
-<definition type="element" width="17" height="103" version="0.80" hotspot_x="8" hotspot_y="42" link_type="simple">
+<definition type="element" width="17" height="103" version="0.80" hotspot_x="8" hotspot_y="42" link_type="terminal">
   <names>
     <name lang="de">2202-1206</name>
     <name lang="fr">2202-1206</name>
     <name lang="en">2202-1206</name>
     <name lang="cs">2202-1206</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2202-1206</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2202-1206</elementInformation>
+        <elementInformation show="1" name="description">2.5mm² 2L</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-5.2" x2="5.2" x3="5.2" x4="-5.2" y1="-39.92" y2="-39.92" y3="57.1" y4="57.1" style="line-style:normal;line-weight:thin;filling:yellow;color:black" antialias="false"/>
