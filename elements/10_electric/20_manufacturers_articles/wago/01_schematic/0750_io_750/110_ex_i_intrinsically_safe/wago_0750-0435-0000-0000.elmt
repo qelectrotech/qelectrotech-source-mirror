@@ -6,12 +6,12 @@
         <name lang="cs">750-435</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-435</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-435</elementInformation>
+        <elementInformation show="1" name="description">1DI NAMUR, Ex i</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" width="720" rx="0" antialias="false" x="-360" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
@@ -25,7 +25,7 @@
         <line length1="1.5" end1="none" x1="-360" y1="-10" y2="-10" antialias="false" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <text rotation="0" y="-42" x="-116" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="2"/>
         <text rotation="0" y="-42" x="125" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="7"/>
-        <text rotation="0" y="45" x="-130" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1 DI NAMUR, Ex i"/>
+        <text rotation="0" y="45" x="-130" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="1DI NAMUR, Ex i"/>
         <text rotation="0" y="-42" x="-196" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="5"/>
         <text rotation="0" y="-24" x="201" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="UV"/>
         <text rotation="0" y="-42" x="206" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="4"/>
