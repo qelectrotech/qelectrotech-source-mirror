@@ -1,5 +1,4 @@
 <definition height="270" width="80" link_type="simple" hotspot_y="134" type="element" hotspot_x="39" version="0.90">
-    <uuid uuid="{cee6edb1-bbb7-4020-bc43-d8fe968feb85}"/>
     <names>
         <name lang="en">2687-2144</name>
         <name lang="cs">2687-2144</name>
@@ -8,8 +7,8 @@
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="description" show="1">Eco2 1ph DC24V 5A</elementInformation>
         <elementInformation name="designation" show="1">2687-2144</elementInformation>
+        <elementInformation name="description" show="1">Eco2 1ph DC24V 5A</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

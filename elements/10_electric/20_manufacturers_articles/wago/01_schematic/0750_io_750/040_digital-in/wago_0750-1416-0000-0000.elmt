@@ -8,9 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-1416</elementInformation>
+        <elementInformation show="1" name="description">8DI, DC 24V, 0.2ms</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect ry="0" y="-40" antialias="false" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" rx="0" width="720"/>
@@ -78,7 +79,7 @@
         <text y="-24" rotation="0" x="-189" color="#000000" text="24V" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text y="-24" rotation="0" x="-148" color="#000000" text="DI3" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text y="-42" rotation="0" x="-144" color="#000000" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text y="45" rotation="0" x="-130" color="#000000" text="8-Channel DI, DC 24V, 0,2ms" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="45" rotation="0" x="-130" color="#000000" text="8-Channel DI, DC 24V, 0.2ms" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <line antialias="false" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" x2="-270" y1="-40" end1="none" length2="1.5" y2="-8.5" x1="-270"/>
         <polygon antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black" x2="-356" y1="-10" closed="false" y2="-10" x1="-362"/>
         <arc y="-12.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="360" start="90" angle="180" width="5"/>

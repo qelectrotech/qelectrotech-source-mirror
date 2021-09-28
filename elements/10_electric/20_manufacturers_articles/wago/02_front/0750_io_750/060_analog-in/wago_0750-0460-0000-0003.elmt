@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-460/000-003</elementInformation>
-        <elementInformation show="1" name="description">4Ch. RTD (Pt1000)</elementInformation>
+        <elementInformation show="1" name="description">4AI / 4Ch. RTD (Pt1000)</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

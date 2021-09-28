@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-461</elementInformation>
-        <elementInformation show="1" name="description">2Ch. RTD (Pt100, Pt1000, Ni100, Ni1000, NTC)</elementInformation>
+        <elementInformation show="1" name="description">2AI / 2Ch. RTD (Pt100, Pt1000, Ni100, Ni1000, NTC)</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

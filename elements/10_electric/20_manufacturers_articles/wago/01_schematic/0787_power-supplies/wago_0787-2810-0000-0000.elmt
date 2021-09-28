@@ -15,14 +15,14 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">787-2810</elementInformation>
+        <elementInformation show="1" name="description">DC/DC 24V / 5/10/12V</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <input x="-17" text="12 V" rotate="true" size="8" tagg="none" y="44"/>
-        <text x="-38" text="DC/DC 24 V / 5/10/12 V" size="5" y="-43"/>
+        <text x="-38" text="DC/DC 24V / 5/10/12V" size="5" y="-43"/>
         <line end1="none" antialias="false" y1="7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40" length2="1.5" x2="40" y2="-7" end2="none"/>
         <text x="-39" text="5" size="3" y="-24"/>
         <text x="20" text="GND" size="5" y="27"/>

@@ -6,11 +6,12 @@
         <name lang="cs">750-1417 (II)</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-1417</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1417</elementInformation>
+        <elementInformation show="1" name="description">8DI, DC 24V, 3ms (low-side)</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x3="360" x1="-360" y1="-40" y4="50" y3="50" closed="false" y2="-40" x2="360" antialias="false" x4="-360" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

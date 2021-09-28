@@ -6,11 +6,12 @@
         <name lang="cs">750-1405 (II)</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-1405</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1405</elementInformation>
+        <elementInformation show="1" name="description">16DI, DC 24V, 3ms</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon closed="false" x2="360" y3="50" antialias="false" y4="50" y2="-40" x4="-360" y1="-40" x1="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="360"/>
@@ -48,7 +49,7 @@
         <text y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="DI12" color="#000000" x="-39"/>
         <text y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="DI13" color="#000000" x="42"/>
         <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="13" color="#000000" x="46"/>
-        <text y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="16-Channel DI, DC 24 V, 3 ms" color="#000000" x="-130"/>
+        <text y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="16-Channel DI, DC 24 V, 3ms" color="#000000" x="-130"/>
         <polygon closed="false" x2="-356" antialias="false" y2="-10" y1="-10" x1="-362" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
         <arc y="-12.5" antialias="true" width="5" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="360" height="5" start="90"/>
         <polygon closed="false" x2="-356" antialias="false" y2="10" y1="10" x1="-362" style="line-style:normal;line-weight:hight;filling:none;color:black"/>

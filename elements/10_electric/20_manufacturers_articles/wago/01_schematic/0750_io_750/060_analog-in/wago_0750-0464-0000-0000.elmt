@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-464</elementInformation>
-        <elementInformation show="1" name="description">2/4-Channel RTD, config.</elementInformation>
+        <elementInformation show="1" name="description">2AI / 4AI / 2/4-Channel RTD, config.</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

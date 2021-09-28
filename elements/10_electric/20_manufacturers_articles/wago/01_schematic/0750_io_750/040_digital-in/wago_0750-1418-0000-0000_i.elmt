@@ -6,11 +6,12 @@
         <name lang="cs">750-1418 (I)</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-1418</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1418</elementInformation>
+        <elementInformation show="1" name="description">8DI, DC 24V, 0.2ms (low-side)</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y4="50" x1="360" y1="-40" y2="-40" x3="-360" antialias="false" closed="false" x2="-360" x4="360" y3="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -51,7 +52,7 @@
         <text color="#000000" y="-24" x="-39" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="0V" rotation="0"/>
         <text color="#000000" y="-24" x="42" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="DI3" rotation="0"/>
         <text color="#000000" y="-42" x="46" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="5" rotation="0"/>
-        <text color="#000000" y="45" x="-130" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="8-Channel DI, DC 24 V, 0,2ms (low-side)" rotation="0"/>
+        <text color="#000000" y="45" x="-130" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="8-Channel DI, DC 24 V, 0.2ms (low-side)" rotation="0"/>
         <line end2="circle" length2="1.5" x1="-200" y1="-40" y2="11.5" end1="none" length1="1.5" antialias="false" x2="-200" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
         <polygon x1="-362" y1="-10" y2="-10" antialias="false" closed="false" x2="-356" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
         <arc start="90" y="-12.5" x="360" antialias="true" width="5" angle="180" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
