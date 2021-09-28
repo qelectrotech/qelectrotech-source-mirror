@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">787-2861/0108-0020</elementInformation>
+        <elementInformation show="1" name="description">ECB / Electronic Circuit Breaker 24V / adj. (1.0A, 2.0A, 4.0A, 6.0A, 8.0A)</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text x="122" text="Vout+" size="9" y="-24"/>
