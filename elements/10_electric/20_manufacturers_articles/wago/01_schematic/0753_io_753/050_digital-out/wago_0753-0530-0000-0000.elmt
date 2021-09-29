@@ -15,7 +15,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">753-530</elementInformation>
-        <elementInformation show="1" name="description">8DO 24 V 0.5 A</elementInformation>
+        <elementInformation show="1" name="description">8DO 24V 0.5A</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -52,7 +52,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text size="5" x="123" text="7" y="58"/>
         <text size="5" x="203" text="4" y="58"/>
         <text size="5" x="283" text="8" y="58"/>
-        <text size="9" x="-139" text="8DO 24 V 0.5 A" y="-27"/>
+        <text size="9" x="-139" text="8DO 24V 0.5A" y="-27"/>
         <polygon x2="-356" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" y2="-10" x1="-362" y1="-10"/>
         <arc angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="90" x="360" y="-12.5" width="5" height="5"/>
         <polygon x2="-356" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" y2="10" x1="-362" y1="10"/>
