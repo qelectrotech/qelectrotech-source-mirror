@@ -13,12 +13,12 @@
         <name lang="it">750-1516 (II)</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-1516</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1516</elementInformation>
+        <elementInformation show="1" name="description">8DO DC 24V 0.5A (low-side)</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x3="360" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-360" y1="-40" y2="-40" antialias="false" x2="360" y3="50" x4="-360" y4="50"/>
