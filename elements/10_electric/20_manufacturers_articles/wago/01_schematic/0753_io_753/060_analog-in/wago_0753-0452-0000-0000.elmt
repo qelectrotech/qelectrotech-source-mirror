@@ -1,0 +1,62 @@
+<definition height="110" hotspot_y="55" link_type="simple" width="730" hotspot_x="365" type="element" version="0.90">
+    <names>
+        <name lang="cs">753-452</name>
+        <name lang="fr">753-452</name>
+        <name lang="en">753-452</name>
+        <name lang="de">753-452</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">753-452</elementInformation>
+        <elementInformation show="1" name="description">2AI 0..20mA Diff.</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect height="90" antialias="false" rx="0" ry="0" x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" width="720"/>
+        <line length1="1.5" end2="none" x2="130" y2="20" antialias="false" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="110" length2="1.5" y1="20"/>
+        <line length1="1.5" end2="none" x2="127" y2="24" antialias="false" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="113" length2="1.5" y1="24"/>
+        <line length1="1.5" end2="none" x2="124" y2="28" antialias="false" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="116" length2="1.5" y1="28"/>
+        <text color="#000000" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-116" y="-42"/>
+        <text color="#000000" text="M" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="-118" y="-28"/>
+        <dynamic_text text_from="ElementInfo" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{0586457f-3a77-483d-9997-e491d70b4457}" Halignment="AlignLeft" z="8" text_width="-1" x="220" y="29.5" frame="false" keep_visual_rotation="true" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text color="#000000" text="-AI2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="122" y="-28"/>
+        <text color="#000000" text="6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="125" y="-42"/>
+        <text color="#000000" text="2AI 0-20mA 12Bit Diff." font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-130" y="45"/>
+        <text color="#000000" text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-196" y="-42"/>
+        <text color="#000000" text="-AI1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="-198" y="-28"/>
+        <text color="#000000" text="M" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="202" y="-28"/>
+        <text color="#000000" text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="206" y="-42"/>
+        <text color="#000000" text="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-276" y="-42"/>
+        <text color="#000000" text="+AI1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="-278" y="-28"/>
+        <text color="#000000" text="Shield" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="282" y="-28"/>
+        <text color="#000000" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="286" y="-42"/>
+        <text color="#000000" text="WAGO 753-452" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-330" y="45"/>
+        <text color="#000000" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-36" y="-42"/>
+        <text color="#000000" text="Shield" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="-38" y="-28"/>
+        <text color="#000000" text="+AI2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="42" y="-28"/>
+        <text color="#000000" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="46" y="-42"/>
+        <line length1="1.5" end2="circle" x2="120" y2="-1.5" antialias="false" end1="none" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="120" length2="1.5" y1="20"/>
+        <circle diameter="5" antialias="true" x="117.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="-122.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="197.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="277.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="-282.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <circle diameter="5" antialias="true" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5"/>
+        <polygon x2="-40" y2="0" y4="-40" x4="280" antialias="false" y3="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-40" closed="false" y1="-40" x3="280"/>
+        <terminal uuid="{794258ac-fd8c-482b-9404-67119ff66def}" x="-200" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{51ab0d48-9465-4819-a74f-d915da20a10d}" x="-280" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{1a923c0c-a448-4167-9a93-f2f3f435ee65}" x="-40" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{ee720b15-4f35-4a9f-9959-cd31b44cc1aa}" x="40" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{e66fde43-b979-4151-9262-f5996b743b74}" x="-120" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{cb680e92-11de-4f8c-8404-ce68f603eb2a}" x="200" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{ed6928fe-2b08-4ece-81c9-b82e106be441}" x="120" name="" y="-40" orientation="n" type="Generic"/>
+        <terminal uuid="{d148907b-40d4-4335-9f3a-7ee2638076af}" x="280" name="" y="-40" orientation="n" type="Generic"/>
+    </description>
+</definition>
