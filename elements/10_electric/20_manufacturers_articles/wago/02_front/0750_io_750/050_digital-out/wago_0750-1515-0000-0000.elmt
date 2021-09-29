@@ -5,12 +5,13 @@
     <name lang="en">750-1515</name>
     <name lang="cs">750-1515</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">750-1515</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1515</elementInformation>
+        <elementInformation show="1" name="description">8DO, DC 24V 0.5A</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="12.38" x2="8.35" x3="8.35" x4="6.58" x5="6.58" x6="-17.86" x7="-17.86" x8="-15.84" x9="-15.84" y1="-123.12" y2="-123.12" y3="-119.12" y4="-119.12" y5="-126.11" y6="-126.11" y7="-120.12" y8="-120.12" y9="-124.11" x10="-11.8" x11="-11.8" x12="-15.84" x13="-15.84" x14="-17.86" x15="-17.86" x16="-9.8" x17="-9.8" x18="2.02" x19="2.02" x20="5.13" x21="5.13" x22="8.35" x23="8.35" x24="12.38" y10="-124.11" y11="71.85" y12="71.85" y13="67.85" y14="67.85" y15="73.85" y16="73.85" y17="66.3" y18="66.3" y19="72.86" y20="72.86" y21="66.3" y22="66.3" y23="70.85" y24="70.85" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>

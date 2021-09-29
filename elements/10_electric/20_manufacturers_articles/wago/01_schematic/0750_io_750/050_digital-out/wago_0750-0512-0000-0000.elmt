@@ -15,7 +15,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-512</elementInformation>
-        <elementInformation show="1" name="description">2RO 230VAC 30VDC 2.0A NO</elementInformation>
+        <elementInformation show="1" name="description">2DO 2RO 230VAC 30VDC 2.0A NO</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -47,7 +47,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" rotation="0" x="123" text="6" color="#000000"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" rotation="0" x="203" text="7" color="#000000"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" rotation="0" x="283" text="8" color="#000000"/>
-        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-27" rotation="0" x="-139" text="2RO 230VAC 30VDC 2.0A NO" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-27" rotation="0" x="-139" text="2DO 2RO 230VAC 30VDC 2.0A NO" color="#000000"/>
         <line y1="30" length2="1.5" x2="357" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="30" length1="1.5" antialias="false" x1="-360" end1="none" end2="none"/>
         <polygon y1="30" x2="-356" closed="false" style="line-style:normal;line-weight:hight;filling:none;color:black" y2="30" antialias="false" x1="-362"/>
         <arc y="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5" angle="180" x="360" antialias="true" start="90" height="5"/>
