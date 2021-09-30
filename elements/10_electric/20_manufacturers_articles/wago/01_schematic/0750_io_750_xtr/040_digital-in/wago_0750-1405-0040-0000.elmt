@@ -5,12 +5,13 @@
     <name lang="fr">750-1405/040-000</name>
     <name lang="cs">750-1405/040-000</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">750-1405/040-000</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1405/040-000</elementInformation>
+        <elementInformation show="1" name="description">16DI DC 24V 3ms XTR</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect antialias="false" y="-40" ry="0" width="720" height="90" x="-360" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

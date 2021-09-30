@@ -6,12 +6,12 @@
         <name lang="cs">750-1607 (II)</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-1607</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1607</elementInformation>
+        <elementInformation show="1" name="description">Connection Module 8+/8-</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" x2="-280" end1="none" end2="circle" x1="-280" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-11.5" y1="50"/>

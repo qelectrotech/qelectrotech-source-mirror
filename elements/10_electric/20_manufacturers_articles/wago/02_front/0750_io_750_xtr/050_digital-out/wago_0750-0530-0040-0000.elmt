@@ -1,76 +1,77 @@
-<definition type="element" width="34" height="206" version="0.80" hotspot_x="17" hotspot_y="129" link_type="simple">
-  <names>
-    <name lang="en">750-530/040-000</name>
-    <name lang="fr">750-530/040-000</name>
-    <name lang="de">750-530/040-000</name>
-    <name lang="cs">750-530/040-000</name>
-  </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">750-530/040-000</elementInformation>
-  </elementInformations>
-  <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+<definition width="40" type="element" height="210" hotspot_x="22" hotspot_y="131" link_type="simple" version="0.90">
+    <names>
+        <name lang="cs">750-530/040-000</name>
+        <name lang="fr">750-530/040-000</name>
+        <name lang="en">750-530/040-000</name>
+        <name lang="de">750-530/040-000</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-530/040-000</elementInformation>
+        <elementInformation show="1" name="description">8DO DC 24V 0.5A</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-  <description>
-    <polygon x1="15.22" x2="11.18" x3="11.18" x4="8.16" x5="8.16" x6="1.1" x7="1.1" x8="-6.97" x9="-6.97" y1="-123.57" y2="-123.57" y3="-119.56" y4="-119.56" y5="-120.56" y6="-120.56" y7="-117.56" y8="-117.56" y9="-123.57" x10="1.1" x11="1.1" x12="-15.04" x13="-15.04" x14="-13.03" x15="-13.03" x16="-8.99" x17="-8.99" x18="-13.03" x19="-13.03" x20="-15.04" x21="-15.04" x22="1.1" x23="1.1" x24="-6.97" x25="-6.97" x26="1.1" x27="1.1" x28="11.18" x29="11.18" x30="15.22" y10="-123.57" y11="-126.57" y12="-126.57" y13="-120.56" y14="-120.56" y15="-124.57" y16="-124.57" y17="71.44" y18="71.44" y19="67.44" y20="67.44" y21="73.43" y22="73.43" y23="70.44" y24="70.44" y25="66.44" y26="66.44" y27="67.44" y28="67.44" y29="70.44" y30="70.44" style="line-style:normal;line-weight:thin;filling:black;color:lightgray" antialias="false"/>
-    <rect x="-8.86" y="-116.59" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" width="24.01" height="10.63" antialias="false"/>
-    <rect x="-5.95" y="-104.24" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="18.29" height="20.01" antialias="false"/>
-    <text x="-3.32" y="-6.14" font="Sans Serif,4.57,-1,5,50,0,0,0,0,0" text="XTR" color="#f3f3f3" rotation="0"/>
-    <rect x="-4.94" y="-113.85" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" width="16.09" height="5" antialias="false"/>
-    <rect x="-7.84" y="-115.28" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" width="22.15" height="8.06" antialias="false"/>
-    <rect x="4.63" y="-97.95" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <text x="-8.52" y="-85.95" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="D" color="#f3f3f3" rotation="0"/>
-    <dynamic_text x="0" y="-51.07" z="9" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{7e6b9aba-9db0-4037-a375-6029b90c44cb}" frame="false" rotation="0" text_from="ElementInfo" Halignment="AlignHCenter" Valignment="AlignVCenter" text_width="-1">
-      <text/>
-      <info_name>label</info_name>
-      <color>#f3f3f3</color>
-    </dynamic_text>
-    <rect x="4.63" y="-88.81" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <text x="12.87" y="-100.41" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="E" color="#f3f3f3" rotation="0"/>
-    <rect x="4.63" y="-93.38" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <rect x="4.63" y="-102.53" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <text x="-8.52" y="-91.09" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="C" color="#f3f3f3" rotation="0"/>
-    <text x="12.8" y="-85.95" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="H" color="#f3f3f3" rotation="0"/>
-    <text x="12.96" y="-95.84" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="F" color="#f3f3f3" rotation="0"/>
-    <text x="-8.52" y="-95.84" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="B" color="#f3f3f3" rotation="0"/>
-    <text x="12.71" y="-90.98" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="G" color="#f3f3f3" rotation="0"/>
-    <rect x="-3.37" y="-97.95" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <rect x="-3.37" y="-88.81" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <rect x="3.14" y="-72.57" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <rect x="-3.37" y="-93.38" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <text x="-8.52" y="-100.35" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="A" color="#f3f3f3" rotation="0"/>
-    <rect x="3.14" y="34.39" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <rect x="-3.37" y="-102.53" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.72" height="2.86" antialias="false"/>
-    <rect x="3.14" y="-39.41" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <rect x="3.14" y="-2.48" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <polygon x1="-8.91" x2="-8.91" x3="-7.83" x4="-5.98" x5="-1.76" x6="0.09" x7="1.17" x8="2.25" x9="4.12" y1="47.01" y2="53.68" y3="55.28" y4="56.34" y5="56.34" y6="55.32" y7="53.68" y8="55.28" y9="56.34" x10="9.55" x11="12.26" x12="12.26" x13="10.54" x14="8.14" x15="4.18" x16="2.94" x17="1.89" x18="1.17" x19="0.41" x20="-0.62" x21="-1.92" x22="-5.84" x23="-7.11" x24="-8.18" y10="56.34" y11="53.66" y12="47.7" y13="45.46" y14="44.7" y15="44.7" y16="45.15" y17="45.99" y18="47.05" y19="45.94" y20="45.1" y21="44.67" y22="44.67" y23="45.09" y24="45.93" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
-    <polygon x1="-8.96" x2="-8.96" x3="-7.87" x4="-6.03" x5="-1.8" x6="0.04" x7="1.12" x8="2.21" x9="4.08" y1="-26.74" y2="-20.07" y3="-18.47" y4="-17.41" y5="-17.41" y6="-18.43" y7="-20.07" y8="-18.47" y9="-17.41" x10="9.51" x11="12.22" x12="12.22" x13="10.49" x14="8.1" x15="4.14" x16="2.9" x17="1.84" x18="1.12" x19="0.36" x20="-0.67" x21="-1.96" x22="-5.88" x23="-7.15" x24="-8.23" y10="-17.41" y11="-20.09" y12="-26.05" y13="-28.29" y14="-29.05" y15="-29.05" y16="-28.6" y17="-27.76" y18="-26.7" y19="-27.81" y20="-28.65" y21="-29.08" y22="-29.08" y23="-28.65" y24="-27.82" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
-    <polygon x1="-8.94" x2="-8.94" x3="-7.85" x4="-6" x5="-1.78" x6="0.06" x7="1.14" x8="2.23" x9="4.1" y1="9.85" y2="16.52" y3="18.12" y4="19.18" y5="19.18" y6="18.16" y7="16.52" y8="18.12" y9="19.18" x10="9.53" x11="12.24" x12="12.24" x13="10.51" x14="8.12" x15="4.16" x16="2.92" x17="1.86" x18="1.14" x19="0.38" x20="-0.65" x21="-1.94" x22="-5.86" x23="-7.13" x24="-8.2" y10="19.18" y11="16.5" y12="10.54" y13="8.3" y14="7.54" y15="7.54" y16="7.99" y17="8.83" y18="9.89" y19="8.78" y20="7.94" y21="7.51" y22="7.51" y23="7.94" y24="8.77" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
-    <polygon x1="-5.73" x2="-7.05" x3="-7.94" x4="-7.94" x5="-6.13" x6="-1.68" x7="0.13" x8="0.13" x9="-0.75" y1="9.69" y2="10.36" y3="11.7" y4="15.45" y5="17.24" y6="17.24" y7="15.45" y8="11.7" y9="10.36" x10="-2.04" x11="-1.89" x12="-1.89" x13="-2.79" x14="-5.01" x15="-5.92" x16="-5.92" y10="9.69" y11="7.98" y12="6.88" y13="5.99" y14="5.99" y15="6.88" y16="7.98" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <polygon x1="-5.76" x2="-7.08" x3="-7.96" x4="-7.96" x5="-6.15" x6="-1.7" x7="0.11" x8="0.11" x9="-0.77" y1="-26.9" y2="-26.23" y3="-24.89" y4="-21.14" y5="-19.35" y6="-19.35" y7="-21.14" y8="-24.89" y9="-26.23" x10="-2.06" x11="-1.91" x12="-1.91" x13="-2.81" x14="-5.04" x15="-5.94" x16="-5.94" y10="-26.9" y11="-28.61" y12="-29.71" y13="-30.6" y14="-30.6" y15="-29.71" y16="-28.61" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <rect x="-6.97" y="-39.41" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <polygon x1="-8.98" x2="-8.98" x3="-7.9" x4="-6.05" x5="-1.82" x6="0.02" x7="1.1" x8="2.18" x9="4.05" y1="-59.9" y2="-53.23" y3="-51.62" y4="-50.57" y5="-50.57" y6="-51.58" y7="-53.22" y8="-51.63" y9="-50.57" x10="9.48" x11="12.19" x12="12.19" x13="10.47" x14="8.07" x15="4.12" x16="2.88" x17="1.82" x18="1.1" x19="0.34" x20="-0.69" x21="-1.98" x22="-5.91" x23="-7.17" x24="-8.25" y10="-50.57" y11="-53.25" y12="-59.2" y13="-61.45" y14="-62.21" y15="-62.21" y16="-61.75" y17="-60.91" y18="-59.86" y19="-60.97" y20="-61.81" y21="-62.24" y22="-62.24" y23="-61.81" y24="-60.98" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
-    <polygon x1="-5.71" x2="-7.03" x3="-7.91" x4="-7.91" x5="-6.11" x6="-1.65" x7="0.15" x8="0.15" x9="-0.73" y1="46.85" y2="47.52" y3="48.86" y4="52.61" y5="54.4" y6="54.4" y7="52.61" y8="48.86" y9="47.52" x10="-2.02" x11="-1.86" x12="-1.86" x13="-2.77" x14="-4.99" x15="-5.89" x16="-5.89" y10="46.85" y11="45.14" y12="44.04" y13="43.15" y14="43.15" y15="44.04" y16="45.14" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <rect x="-6.97" y="-2.48" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <rect x="-6.97" y="34.39" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <polygon x1="4.64" x2="3.32" x3="2.44" x4="2.44" x5="4.25" x6="8.7" x7="10.51" x8="10.51" x9="9.63" y1="46.85" y2="47.52" y3="48.86" y4="52.61" y5="54.4" y6="54.4" y7="52.61" y8="48.86" y9="47.52" x10="8.34" x11="8.49" x12="8.49" x13="7.59" x14="5.36" x15="4.46" x16="4.46" y10="46.85" y11="45.14" y12="44.04" y13="43.15" y14="43.15" y15="44.04" y16="45.14" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <polygon x1="4.6" x2="3.28" x3="2.4" x4="2.4" x5="4.2" x6="8.66" x7="10.46" x8="10.46" x9="9.58" y1="-26.9" y2="-26.23" y3="-24.89" y4="-21.14" y5="-19.35" y6="-19.35" y7="-21.14" y8="-24.89" y9="-26.23" x10="8.29" x11="8.44" x12="8.44" x13="7.54" x14="5.32" x15="4.41" x16="4.41" y10="-26.9" y11="-28.61" y12="-29.71" y13="-30.6" y14="-30.6" y15="-29.71" y16="-28.61" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <polygon x1="4.62" x2="3.3" x3="2.42" x4="2.42" x5="4.22" x6="8.68" x7="10.48" x8="10.48" x9="9.6" y1="9.69" y2="10.36" y3="11.7" y4="15.45" y5="17.24" y6="17.24" y7="15.45" y8="11.7" y9="10.36" x10="8.31" x11="8.47" x12="8.47" x13="7.56" x14="5.34" x15="4.44" x16="4.44" y10="9.69" y11="7.98" y12="6.88" y13="5.99" y14="5.99" y15="6.88" y16="7.98" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <polygon x1="15.22" x2="-8.99" y1="24.44" y2="24.44" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="-8.99" x2="15.22" y1="32.44" y2="32.44" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="15.22" x2="-8.99" y1="-12.56" y2="-12.56" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="-8.99" x2="15.22" y1="-4.56" y2="-4.56" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="15.22" x2="-8.99" y1="-49.57" y2="-49.57" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="-8.99" x2="15.22" y1="-41.56" y2="-41.56" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="15.22" x2="-8.99" y1="-82.56" y2="-82.56" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="-8.99" x2="15.22" y1="-74.57" y2="-74.57" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" closed="false" antialias="false"/>
-    <polygon x1="12.25" x2="15.12" x3="15.12" x4="12.25" y1="-2.7" y2="-2.7" y3="15.57" y4="15.57" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
-    <polygon x1="12.25" x2="15.13" y1="6.13" y2="6.13" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <polygon x1="-5.78" x2="-7.1" x3="-7.98" x4="-7.98" x5="-6.17" x6="-1.72" x7="0.09" x8="0.09" x9="-0.79" y1="-60.06" y2="-59.39" y3="-58.05" y4="-54.29" y5="-52.5" y6="-52.5" y7="-54.29" y8="-58.05" y9="-59.39" x10="-2.09" x11="-1.93" x12="-1.93" x13="-2.84" x14="-5.06" x15="-5.96" x16="-5.96" y10="-60.06" y11="-61.77" y12="-62.87" y13="-63.76" y14="-63.76" y15="-62.87" y16="-61.77" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <polygon x1="4.57" x2="3.25" x3="2.37" x4="2.37" x5="4.18" x6="8.63" x7="10.44" x8="10.44" x9="9.56" y1="-60.06" y2="-59.39" y3="-58.05" y4="-54.29" y5="-52.5" y6="-52.5" y7="-54.29" y8="-58.05" y9="-59.39" x10="8.27" x11="8.42" x12="8.42" x13="7.52" x14="5.29" x15="4.39" x16="4.39" y10="-60.06" y11="-61.77" y12="-62.87" y13="-63.76" y14="-63.76" y15="-62.87" y16="-61.77" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <rect x="-6.97" y="-72.57" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7.03" height="8" antialias="false"/>
-    <text x="-5.15" y="60.4" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" text="750-530" color="#f3f3f3" rotation="0"/>
-    <text x="-5.93" y="64.86" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" text="/040-000" color="#f3f3f3" rotation="0"/>
-  </description>
+    <description>
+        <polygon x27="-2" x12="-18" x30="12" x15="-16" y2="-123.5" y21="73.5" x20="-18" y16="-124.5" x21="-18" x25="-10" x3="8" y4="-119.5" y6="-120.5" y19="67.5" x22="-2" x4="5" x13="-18" x11="-2" y15="-124.5" y23="70.5" y3="-119.5" y10="-123.5" y13="-120.5" x8="-10" x18="-16" x2="8" x26="-2" y22="73.5" y18="71.5" x7="-2" y24="70.5" y28="67.5" x16="-12" x23="-2" x17="-12" x5="5" y7="-117.5" y20="67.5" x19="-16" y11="-126.5" style="line-style:normal;line-weight:thin;filling:black;color:gray" x10="-2" y25="66.5" x6="-2" x29="8" y17="71.5" y29="70.5" y30="70.5" y1="-123.5" y27="67.5" y5="-120.5" x24="-10" x28="8" y14="-120.5" y12="-126.5" x1="12" y26="66.5" y8="-117.5" x9="-10" antialias="false" x14="-16" y9="-123.5"/>
+        <rect rx="0" width="24" height="10.63" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y="-116.59" x="-11.86" ry="0" antialias="false"/>
+        <rect rx="0" width="18.29" height="20" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-104.24" x="-8.95" ry="0" antialias="false"/>
+        <text rotation="0" color="#f3f3f3" y="-6.14" text="XTR" x="-6.32" font="Sans Serif,4.57,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" width="16.09" height="5" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y="-113.85" x="-7.94" ry="0" antialias="false"/>
+        <rect rx="0" width="22.15" height="8.06" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y="-115.28" x="-10.84" ry="0" antialias="false"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-97.95" x="1.63" ry="0" antialias="false"/>
+        <text rotation="0" color="#f3f3f3" y="-85.95" text="D" x="-11.52" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text rotation="0" Halignment="AlignHCenter" Valignment="AlignVCenter" y="-51.07" uuid="{7e6b9aba-9db0-4037-a375-6029b90c44cb}" text_width="-1" x="-3" text_from="ElementInfo" frame="false" font="Sans Serif,4,-1,5,25,0,0,0,0,0" z="9" keep_visual_rotation="true">
+            <text></text>
+            <info_name>label</info_name>
+            <color>#f3f3f3</color>
+        </dynamic_text>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-88.81" x="1.63" ry="0" antialias="false"/>
+        <text rotation="0" color="#f3f3f3" y="-100.41" text="E" x="9.87" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-93.38" x="1.63" ry="0" antialias="false"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-102.53" x="1.63" ry="0" antialias="false"/>
+        <text rotation="0" color="#f3f3f3" y="-91.09" text="C" x="-11.52" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#f3f3f3" y="-85.95" text="H" x="9.8" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#f3f3f3" y="-95.84" text="F" x="9.96" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#f3f3f3" y="-95.84" text="B" x="-11.52" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#f3f3f3" y="-90.98" text="G" x="9.71" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-97.95" x="-6.37" ry="0" antialias="false"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-88.81" x="-6.37" ry="0" antialias="false"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-72.57" x="0.14" ry="0" antialias="false"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-93.38" x="-6.37" ry="0" antialias="false"/>
+        <text rotation="0" color="#f3f3f3" y="-100.35" text="A" x="-11.52" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="34.39" x="0.14" ry="0" antialias="false"/>
+        <rect rx="0" width="5.72" height="2.86" style="line-style:normal;line-weight:thin;filling:green;color:black" y="-102.53" x="-6.37" ry="0" antialias="false"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-39.41" x="0.14" ry="0" antialias="false"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-2.48" x="0.14" ry="0" antialias="false"/>
+        <polygon x12="9.26" x15="1.18" y2="53.68" y21="44.67" x20="-3.62" y16="45.15" x21="-4.92" x3="-10.83" y4="56.34" y6="55.32" y19="45.94" x22="-8.84" x4="-8.98" x13="7.54" x11="9.26" y15="44.7" y23="45.09" y3="55.28" y10="56.34" y13="45.46" x8="-0.75" x18="-1.83" x2="-11.91" y22="44.67" y18="47.05" x7="-1.83" y24="45.93" x16="-0.06" x23="-10.11" x17="-1.11" x5="-4.76" y7="53.68" y20="45.1" x19="-2.59" y11="53.66" style="line-style:normal;line-weight:thin;filling:gray;color:black" x10="6.55" x6="-2.91" y17="46" y1="47" y5="56.34" x24="-11.18" y14="44.7" y12="47.7" x1="-11.91" y8="55.28" x9="1.12" antialias="false" x14="5.14" y9="56.34"/>
+        <polygon x12="9.22" x15="1.14" y2="-20.07" y21="-29.08" x20="-3.67" y16="-28.6" x21="-4.96" x3="-10.87" y4="-17.41" y6="-18.43" y19="-27.81" x22="-8.88" x4="-9.03" x13="7.49" x11="9.22" y15="-29.05" y23="-28.65" y3="-18.47" y10="-17.41" y13="-28.29" x8="-0.79" x18="-1.88" x2="-11.96" y22="-29.08" y18="-26.7" x7="-1.88" y24="-27.82" x16="-0.1" x23="-10.15" x17="-1.16" x5="-4.8" y7="-20.07" y20="-28.65" x19="-2.64" y11="-20.09" style="line-style:normal;line-weight:thin;filling:gray;color:black" x10="6.51" x6="-2.96" y17="-27.76" y1="-26.74" y5="-17.41" x24="-11.23" y14="-29.05" y12="-26.05" x1="-11.96" y8="-18.47" x9="1.08" antialias="false" x14="5.1" y9="-17.41"/>
+        <polygon x12="9.24" x15="1.16" y2="16.52" y21="7.51" x20="-3.65" y16="8" x21="-4.94" x3="-10.85" y4="19.18" y6="18.16" y19="8.78" x22="-8.86" x4="-9" x13="7.51" x11="9.24" y15="7.54" y23="7.94" y3="18.12" y10="19.18" y13="8.3" x8="-0.77" x18="-1.86" x2="-11.94" y22="7.51" y18="9.89" x7="-1.86" y24="8.77" x16="-0.08" x23="-10.13" x17="-1.14" x5="-4.78" y7="16.52" y20="7.94" x19="-2.62" y11="16.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" x10="6.53" x6="-2.94" y17="8.83" y1="9.85" y5="19.18" x24="-11.2" y14="7.54" y12="10.54" x1="-11.94" y8="18.12" x9="1.1" antialias="false" x14="5.12" y9="19.18"/>
+        <polygon y5="17.24" x2="-10.05" x7="-2.87" y15="6.88" x16="-8.92" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-10.94" antialias="false" x8="-2.87" x5="-9.13" y7="15.45" x14="-8" x6="-4.68" x11="-4.89" y3="11.7" y1="9.69" x13="-5.79" y16="7.98" x3="-10.94" y8="11.7" y12="6.88" x10="-5.04" y11="7.98" y10="9.69" x1="-8.73" y13="6" y2="10.36" y4="15.45" x12="-4.89" x9="-3.75" y14="6" y9="10.36" y6="17.24" x15="-8.92"/>
+        <polygon y5="-19.35" x2="-10.08" x7="-2.89" y15="-29.71" x16="-8.94" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-10.96" antialias="false" x8="-2.89" x5="-9.15" y7="-21.14" x14="-8.04" x6="-4.7" x11="-4.91" y3="-24.89" y1="-26.9" x13="-5.81" y16="-28.61" x3="-10.96" y8="-24.89" y12="-29.71" x10="-5.06" y11="-28.61" y10="-26.9" x1="-8.76" y13="-30.6" y2="-26.23" y4="-21.14" x12="-4.91" x9="-3.77" y14="-30.6" y9="-26.23" y6="-19.35" x15="-8.94"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-39.41" x="-9.97" ry="0" antialias="false"/>
+        <polygon x12="9.19" x15="1.12" y2="-53.23" y21="-62.24" x20="-3.69" y16="-61.75" x21="-4.98" x3="-10.9" y4="-50.57" y6="-51.58" y19="-60.97" x22="-8.91" x4="-9.05" x13="7.47" x11="9.19" y15="-62.21" y23="-61.81" y3="-51.62" y10="-50.57" y13="-61.45" x8="-0.82" x18="-1.9" x2="-11.98" y22="-62.24" y18="-59.86" x7="-1.9" y24="-60.98" x16="-0.12" x23="-10.17" x17="-1.18" x5="-4.82" y7="-53.22" y20="-61.81" x19="-2.66" y11="-53.25" style="line-style:normal;line-weight:thin;filling:gray;color:black" x10="6.48" x6="-2.98" y17="-60.91" y1="-59.9" y5="-50.57" x24="-11.25" y14="-62.21" y12="-59.2" x1="-11.98" y8="-51.63" x9="1.05" antialias="false" x14="5.07" y9="-50.57"/>
+        <polygon y5="54.4" x2="-10.03" x7="-2.85" y15="44.04" x16="-8.89" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-10.91" antialias="false" x8="-2.85" x5="-9.11" y7="52.61" x14="-8" x6="-4.65" x11="-4.86" y3="48.86" y1="46.85" x13="-5.77" y16="45.14" x3="-10.91" y8="48.86" y12="44.04" x10="-5.02" y11="45.14" y10="46.85" x1="-8.71" y13="43.15" y2="47.52" y4="52.61" x12="-4.86" x9="-3.73" y14="43.15" y9="47.52" y6="54.4" x15="-8.89"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-2.48" x="-9.97" ry="0" antialias="false"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="34.39" x="-9.97" ry="0" antialias="false"/>
+        <polygon y5="54.4" x2="0.32" x7="7.51" y15="44.04" x16="1.46" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-0.56" antialias="false" x8="7.51" x5="1.25" y7="52.61" x14="2.36" x6="5.7" x11="5.49" y3="48.86" y1="46.85" x13="4.59" y16="45.14" x3="-0.56" y8="48.86" y12="44.04" x10="5.34" y11="45.14" y10="46.85" x1="1.64" y13="43.15" y2="47.52" y4="52.61" x12="5.49" x9="6.63" y14="43.15" y9="47.52" y6="54.4" x15="1.46"/>
+        <polygon y5="-19.35" x2="0.28" x7="7.46" y15="-29.71" x16="1.41" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-0.6" antialias="false" x8="7.46" x5="1.2" y7="-21.14" x14="2.32" x6="5.66" x11="5.44" y3="-24.89" y1="-26.9" x13="4.54" y16="-28.61" x3="-0.6" y8="-24.89" y12="-29.71" x10="5.29" y11="-28.61" y10="-26.9" x1="1.6" y13="-30.6" y2="-26.23" y4="-21.14" x12="5.44" x9="6.58" y14="-30.6" y9="-26.23" y6="-19.35" x15="1.41"/>
+        <polygon y5="17.24" x2="0.3" x7="7.48" y15="6.88" x16="1.44" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-0.58" antialias="false" x8="7.48" x5="1.22" y7="15.45" x14="2.34" x6="5.68" x11="5.47" y3="11.7" y1="9.69" x13="4.56" y16="7.98" x3="-0.58" y8="11.7" y12="6.88" x10="5.31" y11="7.98" y10="9.69" x1="1.62" y13="6" y2="10.36" y4="15.45" x12="5.47" x9="6.6" y14="6" y9="10.36" y6="17.24" x15="1.44"/>
+        <polygon x1="12.22" x2="-12" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="24.44" y1="24.44" closed="false" antialias="false"/>
+        <polygon x1="-12" x2="12.22" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="32.44" y1="32.44" closed="false" antialias="false"/>
+        <polygon x1="12.22" x2="-12" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="-12.56" y1="-12.56" closed="false" antialias="false"/>
+        <polygon x1="-12" x2="12.22" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="-4.56" y1="-4.56" closed="false" antialias="false"/>
+        <polygon x1="12.22" x2="-12" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="-49.57" y1="-49.57" closed="false" antialias="false"/>
+        <polygon x1="-12" x2="12.22" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="-41.56" y1="-41.56" closed="false" antialias="false"/>
+        <polygon x1="12.22" x2="-12" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="-82.56" y1="-82.56" closed="false" antialias="false"/>
+        <polygon x1="-12" x2="12.22" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y2="-74.57" y1="-74.57" closed="false" antialias="false"/>
+        <polygon x1="9.25" x2="12.12" x3="12.12" x4="9.25" y4="15.57" style="line-style:normal;line-weight:thin;filling:orange;color:black" y2="-2.7" y3="15.57" y1="-2.7" antialias="false"/>
+        <polygon x1="9.25" x2="12.13" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="6.13" y1="6.13" closed="false" antialias="false"/>
+        <polygon y5="-52.5" x2="-10.1" x7="-2.91" y15="-62.87" x16="-8.96" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-10.98" antialias="false" x8="-2.91" x5="-9.17" y7="-54.29" x14="-8.06" x6="-4.72" x11="-4.93" y3="-58.05" y1="-60.06" x13="-5.84" y16="-61.77" x3="-10.98" y8="-58.05" y12="-62.87" x10="-5.09" y11="-61.77" y10="-60.06" x1="-8.78" y13="-63.76" y2="-59.39" y4="-54.29" x12="-4.93" x9="-3.79" y14="-63.76" y9="-59.39" y6="-52.5" x15="-8.96"/>
+        <polygon y5="-52.5" x2="0.25" x7="7.44" y15="-62.87" x16="1.39" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x4="-0.63" antialias="false" x8="7.44" x5="1.18" y7="-54.29" x14="2.29" x6="5.63" x11="5.42" y3="-58.05" y1="-60.06" x13="4.52" y16="-61.77" x3="-0.63" y8="-58.05" y12="-62.87" x10="5.27" y11="-61.77" y10="-60.06" x1="1.57" y13="-63.76" y2="-59.39" y4="-54.29" x12="5.42" x9="6.56" y14="-63.76" y9="-59.39" y6="-52.5" x15="1.39"/>
+        <rect rx="0" width="7.03" height="8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-72.57" x="-9.97" ry="0" antialias="false"/>
+        <text rotation="0" color="#f3f3f3" y="60.4" text="750-530" x="-8.15" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#f3f3f3" y="64.86" text="/040-000" x="-8.93" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0"/>
+    </description>
 </definition>

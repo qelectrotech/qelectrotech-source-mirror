@@ -59,7 +59,7 @@ License:see http://qelectrotech.org/wiki/doc/elements_license
         <text rotation="0" color="#000000" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" x="9.79" y="-96" text="F"/>
         <rect rx="0" width="2.5" style="line-style:normal;line-weight:thin;filling:orange;color:black" x="9.5" y="-3.3" height="18.4" ry="0" antialias="false"/>
         <polygon x2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6.13" closed="false" x1="9.5" antialias="false" y2="6.13"/>
-        <text rotation="0" color="#000000" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" x="-8.27" y="63.26" text="750-xxx"/>
+        <text rotation="0" color="#000000" text="750-xxx" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" x="-8.27" y="63.26"/>
         <dynamic_text rotation="0" Halignment="AlignHCenter" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_width="-1" x="-4" y="-20" frame="false" keep_visual_rotation="false" z="47" uuid="{76d451fa-38a9-4e77-b356-ea44520dc2dd}" text_from="ElementInfo" Valignment="AlignTop">
             <text></text>
             <info_name>label</info_name>

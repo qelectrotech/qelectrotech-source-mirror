@@ -6,12 +6,12 @@
         <name lang="cs">750-457/040-000</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-457/040-000</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-457/040-000</elementInformation>
+        <elementInformation show="1" name="description">4AI +/-10V S.E. XTR</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" x="-360" rx="0" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="90" width="720"/>

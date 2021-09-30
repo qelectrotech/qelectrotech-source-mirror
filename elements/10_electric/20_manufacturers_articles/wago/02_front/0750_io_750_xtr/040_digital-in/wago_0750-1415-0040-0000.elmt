@@ -6,9 +6,9 @@
         <name lang="en">750-1415/040-000</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-1415/040-000</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="description">750-1415/040-000</elementInformation>
+        <elementInformation show="1" name="designation">750-1415/040-000</elementInformation>
+        <elementInformation show="1" name="description">8DI DC 24V 3ms XTR</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
