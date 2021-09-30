@@ -1,7 +1,7 @@
 <definition width="80" height="190" type="element" link_type="simple" version="0.90" hotspot_x="40" hotspot_y="95">
     <names>
-        <name lang="en">789-620</name>
-        <name lang="de">789-620</name>
+        <name lang="en">789-620 - Current sensor with bus connection DC 0..80A</name>
+        <name lang="de">789-620 - Stromsensor mit Busanschluss DC 0..80A</name>
         <name lang="fr">789-620</name>
         <name lang="cs">789-620</name>
     </names>

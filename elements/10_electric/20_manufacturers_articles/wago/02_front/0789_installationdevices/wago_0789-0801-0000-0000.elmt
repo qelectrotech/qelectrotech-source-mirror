@@ -1,9 +1,9 @@
 <definition link_type="simple" hotspot_y="94" version="0.90" hotspot_x="19" height="190" width="40" type="element">
     <names>
         <name lang="fr">789-801</name>
-        <name lang="de">789-801</name>
+        <name lang="de">789-801 - Ausschalter, einpolig</name>
         <name lang="cs">789-801</name>
-        <name lang="en">789-801</name>
+        <name lang="en">789-801 - Switch SPST</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>

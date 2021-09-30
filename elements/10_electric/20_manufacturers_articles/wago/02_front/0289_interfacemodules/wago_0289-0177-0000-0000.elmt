@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">289-177</elementInformation>
-        <elementInformation show="1" name="description">RJ-45 to RJ-45</elementInformation>
+        <elementInformation show="1" name="description">RJ-45 to RJ-45 crossover</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

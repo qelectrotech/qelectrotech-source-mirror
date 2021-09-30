@@ -1,11 +1,15 @@
 <definition width="40" height="190" type="element" version="0.90" link_type="simple" hotspot_x="19" hotspot_y="94">
     <names>
         <name lang="fr">789-551</name>
-        <name lang="en">789-551</name>
-        <name lang="de">789-551</name>
+        <name lang="en">789-551 - Relay AC/DC 12V 4 make contacts</name>
+        <name lang="de">789-551 - Relais AC/DC 12V 4 Schließer</name>
         <name lang="cs">789-551</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-551</elementInformation>
+        <elementInformation show="1" name="description">789-551</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

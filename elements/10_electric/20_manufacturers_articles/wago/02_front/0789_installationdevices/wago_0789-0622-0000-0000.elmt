@@ -1,8 +1,8 @@
 <definition height="190" link_type="simple" hotspot_x="40" width="80" hotspot_y="95" type="element" version="0.90">
     <names>
-        <name lang="de">789-622</name>
+        <name lang="en">789-622 - Current sensor with bus connection AC 0..50A</name>
+        <name lang="de">789-622 - Stromsensor mit Busanschluss AC 0..50A</name>
         <name lang="fr">789-622</name>
-        <name lang="en">789-622</name>
         <name lang="cs">789-622</name>
     </names>
     <elementInformations>
