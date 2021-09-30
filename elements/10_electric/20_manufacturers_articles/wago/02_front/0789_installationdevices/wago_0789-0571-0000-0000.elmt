@@ -1,11 +1,15 @@
 <definition link_type="simple" version="0.90" hotspot_y="94" height="190" hotspot_x="20" type="element" width="40">
     <names>
-        <name lang="en">789-571</name>
-        <name lang="de">789-571</name>
+        <name lang="en">789-571 - Latching Relay DC 24V 1 make contact</name>
+        <name lang="de">789-571 - Stromstoßschalter DC 24V 1 Schließer</name>
         <name lang="fr">789-571</name>
         <name lang="cs">789-571</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-571</elementInformation>
+        <elementInformation show="1" name="description">789-571</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

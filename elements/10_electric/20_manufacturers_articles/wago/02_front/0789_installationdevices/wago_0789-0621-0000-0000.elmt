@@ -1,8 +1,8 @@
 <definition width="80" link_type="simple" hotspot_x="40" version="0.90" height="190" type="element" hotspot_y="95">
     <names>
-        <name lang="de">789-621</name>
+        <name lang="en">789-621 - Current sensor with bus connection DC 0..140A</name>
+        <name lang="de">789-621 - Stromsensor mit Busanschluss DC 0..140A</name>
         <name lang="fr">789-621</name>
-        <name lang="en">789-621</name>
         <name lang="cs">789-621</name>
     </names>
     <elementInformations>
