@@ -15,7 +15,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-658/040-000</elementInformation>
-        <elementInformation show="1" name="description">CAN Gateway</elementInformation>
+        <elementInformation show="1" name="description">CAN Gateway CANopen</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
