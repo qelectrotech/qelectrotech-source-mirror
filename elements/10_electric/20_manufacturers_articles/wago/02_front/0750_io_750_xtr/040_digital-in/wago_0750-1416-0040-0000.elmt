@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-1416/040-000</elementInformation>
-        <elementInformation show="1" name="description">16DI DC 24V 3ms XTR</elementInformation>
+        <elementInformation show="1" name="description">8DI DC 24V 0.2ms XTR</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
