@@ -89,7 +89,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	if (role == Qt::DisplayRole)
 	{
 		switch (index.column()) {
-			case POS_CELL :        return index.row();
+			case POS_CELL :        return physicalDataAtIndex(index.row()).pos_;
 			case LEVEL_CELL :      return rtd.level_;
 			case LABEL_CELL :      return rtd.label_;
 			case XREF_CELL :       return rtd.Xref_;
@@ -270,6 +270,35 @@ bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
 	return false;
 }
 
+/**
+ * @brief TerminalStripModel::terminalsForIndex
+ * @param index_list
+ * @return A vector of PhysicalTerminalData represented by index_list.
+ * If sereval index point to the same terminal the vector have only one PhysicalTerminalData
+ */
+QVector<PhysicalTerminalData> TerminalStripModel::terminalsForIndex(QModelIndexList index_list) const
+{
+	QVector<PhysicalTerminalData> vector_;
+	if (index_list.isEmpty()) {
+		return vector_;
+	}
+
+	QSet<int> set_;
+
+		//We use a QSet to avoid insert several time the same terminal.
+	for (auto index : index_list) {
+		if (index.isValid()) {
+			set_.insert(index.row());
+		}
+	}
+
+	for (auto i : set_) {
+		vector_.append(physicalDataAtIndex(i));
+	}
+
+	return vector_;
+}
+
 void TerminalStripModel::fillRealTerminalData()
 {
 		//Get all physical terminal
@@ -337,6 +366,43 @@ void TerminalStripModel::replaceDataAtRow(RealTerminalData data, int row)
 			}
 			++current_physical;
 		}
+	}
+}
+
+/**
+ * @brief TerminalStripModel::physicalDataAtIndex
+ * @param index
+ * @return the physical terminal data at \p index.
+ * We need to use this method because the model can have more index than physical
+ * terminal, because physical terminal can be multi-level and each level
+ * have is own row.
+ * If \p index is out of range, return a default PhysicalTerminalData (pos_ is set to -1 by default)
+ */
+PhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) const
+{
+	if (m_physical_terminal_data.isEmpty()) {
+		return PhysicalTerminalData();
+	}
+
+	int current_checked_index = -1;
+	int current_phy = -1;
+	bool match_ = false;
+
+	for (const auto &ptd_ : qAsConst(m_physical_terminal_data))
+	{
+		current_checked_index += ptd_.real_terminals_vector.size();
+		++current_phy;
+
+		if (current_checked_index >= index) {
+			match_ = true;
+			break;
+		}
+	}
+
+	if (match_) {
+		return  m_physical_terminal_data.at(current_phy);
+	} else {
+		return PhysicalTerminalData();
 	}
 }
 

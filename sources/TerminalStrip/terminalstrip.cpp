@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -249,6 +249,16 @@ class PhysicalTerminal
 		 */
 		void setTerminals(QVector<shared_real_terminal> terminals) {
 			m_real_terminal = terminals;
+		}
+
+		/**
+		 * @brief addTerminals
+		 * Append the real terminal \p terminal
+		 * to this physical terminal.
+		 * @param terminal
+		 */
+		void addTerminal(shared_real_terminal terminal) {
+			m_real_terminal.append(terminal);
 		}
 
 		/**
@@ -537,6 +547,47 @@ bool TerminalStrip::setOrderTo(QVector<PhysicalTerminalData> sorted_vector)
 	}
 
 	m_physical_terminals = new_order;
+	emit orderChanged();
+	return true;
+}
+
+/**
+ * @brief TerminalStrip::groupTerminal
+ * Add \p added_terminal to \p receiver_terminal.
+ * At the end of this method, the physical terminal represented by \p added_terminal is removed
+ * and \p receiver_terminal become a multi-level terminal.
+ * Emit the signal orderChanged();
+ * @param added_terminal
+ * @param receiver_terminal
+ * @return true if success
+ */
+bool TerminalStrip::groupTerminal(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals)
+{
+	if (!m_physical_terminals.contains(receiver_terminal.physical_terminal)) {
+		qDebug() << "TerminalStrip::groupTerminal : Arguments terminals don't belong to this strip. Operation aborted.";
+		return false;
+	}
+
+	auto physical_receiver_terminal = receiver_terminal.physical_terminal;
+
+	for (const auto &ptd : qAsConst(added_terminals))
+	{
+		if (!m_physical_terminals.contains(ptd.physical_terminal)) {
+			continue;
+		}
+
+			//Add every real terminal of ptd to receiver terminal
+		for (auto const  &rtd_ : qAsConst(ptd.real_terminals_vector))
+		{
+			if (auto rt = realTerminal(rtd_.element_)) {
+				physical_receiver_terminal->addTerminal(rt);
+			}
+		}
+
+			//Remove ptd
+		m_physical_terminals.removeOne(ptd.physical_terminal);
+	}
+
 	emit orderChanged();
 	return true;
 }

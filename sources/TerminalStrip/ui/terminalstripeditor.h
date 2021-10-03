@@ -50,6 +50,8 @@ class TerminalStripEditor : public QDialog
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
 		void setCurrentStrip(TerminalStrip *strip_);
+		void spanMultiLevelTerminals();
+		void selectionChanged();
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();
@@ -58,6 +60,7 @@ class TerminalStripEditor : public QDialog
 		void on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 		void on_m_dialog_button_box_clicked(QAbstractButton *button);
 		void on_m_auto_ordering_pb_clicked();
+		void on_m_group_terminals_pb_clicked();
 
 	private:
 		Ui::TerminalStripEditor *ui;

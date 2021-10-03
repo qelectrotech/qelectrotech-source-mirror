@@ -45,8 +45,10 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	m_project(project)
 {
 	ui->setupUi(this);
+
 	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
+	ui->m_group_terminals_pb->setDisabled(true);
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
@@ -307,9 +309,49 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 
 		m_model = new TerminalStripModel(strip_, this);
 		ui->m_table_widget->setModel(m_model);
+		spanMultiLevelTerminals();
 
 		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
+		connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 	}
+}
+
+/**
+ * @brief TerminalStripEditor::spanMultiLevelTerminals
+ * Span row of m_table_widget for multi-level terminal
+ */
+void TerminalStripEditor::spanMultiLevelTerminals()
+{
+	if (!m_current_strip) {
+		return;
+	}
+
+	ui->m_table_widget->clearSpans();
+	auto current_row = 0;
+	for (auto i = 0 ; i < m_current_strip->physicalTerminalCount() ; ++i)
+	{
+		const auto level_count = m_current_strip->physicalTerminalData(i).real_terminals_vector.size();
+		if (level_count > 1) {
+			ui->m_table_widget->setSpan(current_row, 0, level_count, 1);
+		}
+		current_row += level_count;
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::selectionChanged
+ * Update the editor according to the current selection
+ */
+void TerminalStripEditor::selectionChanged()
+{
+	if (!m_model) {
+		return;
+	}
+
+	auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+	auto terminal_vector = m_model->terminalsForIndex(index_list);
+
+	ui->m_group_terminals_pb->setEnabled(terminal_vector.size() > 1 ? true : false);
 }
 
 /**
@@ -471,6 +513,22 @@ void TerminalStripEditor::on_m_auto_ordering_pb_clicked()
 {
 	if (m_project && m_current_strip) {
 		m_project->undoStack()->push(new SortTerminalStripCommand(m_current_strip));
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_group_terminals_pb_clicked
+ */
+void TerminalStripEditor::on_m_group_terminals_pb_clicked()
+{
+	if (m_model && m_current_strip)
+	{
+		auto ptd_vector = m_model->terminalsForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+		if (ptd_vector.size() >= 2)
+		{
+			auto receiver_ = ptd_vector.takeFirst();
+			m_current_strip->groupTerminal(receiver_, ptd_vector);
+		}
 	}
 }
 

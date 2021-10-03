@@ -43,11 +43,13 @@ class TerminalStripModel : public QAbstractTableModel
 		QVector<RealTerminalData> modifiedRealTerminalData() const;
 
 		bool isXrefCell(const QModelIndex &index, Element **element = nullptr);
+		QVector<PhysicalTerminalData> terminalsForIndex(QModelIndexList index_list) const;
 
 	private:
 		void fillRealTerminalData();
 		RealTerminalData dataAtRow(int row) const;
 		void replaceDataAtRow(RealTerminalData data, int row);
+		PhysicalTerminalData physicalDataAtIndex(int index) const;
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
