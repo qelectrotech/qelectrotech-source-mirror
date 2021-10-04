@@ -34,7 +34,7 @@ class TerminalElement;
 
 struct RealTerminalData
 {
-	int level_ = 0;
+	int level_ = -1;
 
 	QString label_,
 			Xref_,
@@ -107,7 +107,8 @@ class TerminalStrip : public QObject
 		PhysicalTerminalData physicalTerminalData(int index) const;
 		QVector<PhysicalTerminalData> physicalTerminalData() const;
 		bool setOrderTo(QVector<PhysicalTerminalData> sorted_vector);
-		bool groupTerminal(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals);
+		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals);
+		void unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup);
 
 		QVector<QPointer<Element>> terminalElement() const;
 

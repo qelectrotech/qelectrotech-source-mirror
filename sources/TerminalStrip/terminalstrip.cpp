@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -259,6 +259,16 @@ class PhysicalTerminal
 		 */
 		void addTerminal(shared_real_terminal terminal) {
 			m_real_terminal.append(terminal);
+		}
+
+		/**
+		 * @brief removeTerminal
+		 * Remove \p terminal from the list of real terminal
+		 * @param terminal
+		 * @return true if sucessfully removed
+		 */
+		bool removeTerminal(shared_real_terminal terminal) {
+			return m_real_terminal.removeOne(terminal);
 		}
 
 		/**
@@ -561,7 +571,7 @@ bool TerminalStrip::setOrderTo(QVector<PhysicalTerminalData> sorted_vector)
  * @param receiver_terminal
  * @return true if success
  */
-bool TerminalStrip::groupTerminal(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals)
+bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals)
 {
 	if (!m_physical_terminals.contains(receiver_terminal.physical_terminal)) {
 		qDebug() << "TerminalStrip::groupTerminal : Arguments terminals don't belong to this strip. Operation aborted.";
@@ -590,6 +600,39 @@ bool TerminalStrip::groupTerminal(const PhysicalTerminalData &receiver_terminal,
 
 	emit orderChanged();
 	return true;
+}
+
+/**
+ * @brief TerminalStrip::unGroupTerminals
+ * Ungroup all real terminals of \p terminals_to_ungroup
+ * from this terminal strip
+ * @param terminals_to_ungroup
+ */
+void TerminalStrip::unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup)
+{
+	bool ungrouped = false;
+	for (const auto &rtd_ : terminals_to_ungroup)
+	{
+		if (auto real_terminal = realTerminal(rtd_.element_)) //Get the shared real terminal
+		{
+			if (auto physical_terminal = physicalTerminal(real_terminal)) //Get the physical terminal
+			{
+				if (physical_terminal->terminals().size() > 1) //Check if physical have more than one real terminal
+				{
+					physical_terminal->removeTerminal(real_terminal);
+					shared_physical_terminal new_physical_terminal (
+								new PhysicalTerminal(this, QVector<shared_real_terminal>{real_terminal}));
+
+					m_physical_terminals.append(new_physical_terminal);
+					ungrouped = true;
+				}
+			}
+		}
+	}
+
+	if (ungrouped) {
+		emit orderChanged();
+	}
 }
 
 /**

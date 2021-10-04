@@ -276,7 +276,7 @@ bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
  * @return A vector of PhysicalTerminalData represented by index_list.
  * If sereval index point to the same terminal the vector have only one PhysicalTerminalData
  */
-QVector<PhysicalTerminalData> TerminalStripModel::terminalsForIndex(QModelIndexList index_list) const
+QVector<PhysicalTerminalData> TerminalStripModel::physicalTerminalDataForIndex(QModelIndexList index_list) const
 {
 	QVector<PhysicalTerminalData> vector_;
 	if (index_list.isEmpty()) {
@@ -294,6 +294,36 @@ QVector<PhysicalTerminalData> TerminalStripModel::terminalsForIndex(QModelIndexL
 
 	for (auto i : set_) {
 		vector_.append(physicalDataAtIndex(i));
+	}
+
+	return vector_;
+}
+
+/**
+ * @brief TerminalStripModel::realTerminalDataForIndex
+ * @param index_list
+ * @return
+ */
+QVector<RealTerminalData> TerminalStripModel::realTerminalDataForIndex(QModelIndexList index_list) const
+{
+	QVector<RealTerminalData> vector_;
+	if (index_list.isEmpty()) {
+		return vector_;
+	}
+
+	QSet<int> set_;
+		//We use a QSet to avoid insert several time the same terminal.
+	for (auto index : index_list) {
+		if (index.isValid()) {
+			set_.insert(index.row());
+		}
+	}
+
+	for (auto i : set_) {
+		const auto rtd_ = realDataAtIndex(i);
+		if (rtd_.level_ > -1) {
+			vector_.append(realDataAtIndex(i));
+		}
 	}
 
 	return vector_;
@@ -404,6 +434,32 @@ PhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) const
 	} else {
 		return PhysicalTerminalData();
 	}
+}
+
+/**
+ * @brief TerminalStripModel::realDataAtIndex
+ * @param index
+ * @return the realTerminalData at index \p index.
+ */
+RealTerminalData TerminalStripModel::realDataAtIndex(int index) const
+{
+	if (m_physical_terminal_data.isEmpty()) {
+		return RealTerminalData();
+	}
+
+	int current_checked_index = -1;
+
+	for (const auto & ptd_ : qAsConst(m_physical_terminal_data))
+	{
+		for (const auto & rtd_ : qAsConst(ptd_.real_terminals_vector)) {
+			++current_checked_index;
+			if (current_checked_index == index) {
+				return rtd_;
+			}
+		}
+	}
+
+	return RealTerminalData();
 }
 
 /***********************************************************

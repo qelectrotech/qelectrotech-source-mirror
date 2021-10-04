@@ -49,6 +49,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
 	ui->m_group_terminals_pb->setDisabled(true);
+	ui->m_ungroup_pb->setDisabled(true);
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
@@ -348,10 +349,24 @@ void TerminalStripEditor::selectionChanged()
 		return;
 	}
 
-	auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
-	auto terminal_vector = m_model->terminalsForIndex(index_list);
+	const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+	const auto terminal_vector = m_model->physicalTerminalDataForIndex(index_list);
 
 	ui->m_group_terminals_pb->setEnabled(terminal_vector.size() > 1 ? true : false);
+
+
+	auto it_= std::find_if(terminal_vector.constBegin(), terminal_vector.constEnd(), [](auto &data)
+	{
+		if (data.real_terminals_vector.size() >= 2) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+
+	ui->m_ungroup_pb->setDisabled(it_ == terminal_vector.constEnd());
+
+
 }
 
 /**
@@ -523,12 +538,24 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 {
 	if (m_model && m_current_strip)
 	{
-		auto ptd_vector = m_model->terminalsForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+		auto ptd_vector = m_model->physicalTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
 		if (ptd_vector.size() >= 2)
 		{
 			auto receiver_ = ptd_vector.takeFirst();
-			m_current_strip->groupTerminal(receiver_, ptd_vector);
+			m_current_strip->groupTerminals(receiver_, ptd_vector);
 		}
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_ungroup_pb_clicked
+ */
+void TerminalStripEditor::on_m_ungroup_pb_clicked()
+{
+	if (m_model && m_current_strip)
+	{
+		const auto rtd_vector = m_model->realTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+		m_current_strip->unGroupTerminals(rtd_vector);
 	}
 }
 
