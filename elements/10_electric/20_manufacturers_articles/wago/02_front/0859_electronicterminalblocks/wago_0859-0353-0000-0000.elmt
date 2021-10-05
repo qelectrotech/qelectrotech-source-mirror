@@ -1,14 +1,14 @@
 <definition type="element" width="17" height="188" version="0.90" hotspot_x="9" hotspot_y="94" link_type="simple">
   <names>
-    <name lang="en">859-312</name>
-    <name lang="cs">859-312</name>
-    <name lang="fr">859-312</name>
-    <name lang="de">859-312</name>
+    <name lang="en">859-353</name>
+    <name lang="cs">859-353</name>
+    <name lang="fr">859-353</name>
+    <name lang="de">859-353</name>
   </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">859-312</elementInformation>
-        <elementInformation show="1" name="description">Relay DC5V AC 250V 5A 1CO</elementInformation>
+        <elementInformation show="1" name="designation">859-353</elementInformation>
+        <elementInformation show="1" name="description">Relay AC/DC12V AC 250V 5A 1CO</elementInformation>
     </elementInformations>
   <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -57,6 +57,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
       <text/>
       <info_name>label</info_name>
     </dynamic_text>
-    <text x="1.6" y="29.86" font="Sans Serif,2.84,-1,5,50,0,0,0,0,0" text="859-312" color="#000000" rotation="270"/>
+    <text x="1.6" y="29.86" font="Sans Serif,2.84,-1,5,50,0,0,0,0,0" text="859-353" color="#000000" rotation="270"/>
   </description>
 </definition>

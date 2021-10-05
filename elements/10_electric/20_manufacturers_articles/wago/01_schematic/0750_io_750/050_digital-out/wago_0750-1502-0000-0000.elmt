@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-1502</elementInformation>
-        <elementInformation show="1" name="description">8 DI/DO 24V DC (high side) Ribbon Cable</elementInformation>
+        <elementInformation show="1" name="description">8DI 8DO 24V DC (high side) Ribbon Cable</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
