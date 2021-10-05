@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">859-794</elementInformation>
+        <elementInformation show="1" name="description">Optocoupler DC24V DC9..60V 0.1A</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <circle x="38" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" y="-22" antialias="true"/>

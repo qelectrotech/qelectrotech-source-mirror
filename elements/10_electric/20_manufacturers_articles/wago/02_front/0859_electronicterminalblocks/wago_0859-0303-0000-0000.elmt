@@ -5,12 +5,13 @@
     <name lang="fr">859-303</name>
     <name lang="de">859-303</name>
   </names>
-  <elementInformations>
-    <elementInformation name="designation" show="1">859-303</elementInformation>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">859-303</elementInformation>
+        <elementInformation show="1" name="description">Relay DC12V AC 250V 5A 1CO</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-1.19" x2="-4.27" x3="-5.8" x4="-5.8" x5="-4.27" y1="78.41" y2="81.33" y3="79.87" y4="76.95" y5="75.49" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
@@ -50,7 +51,7 @@
     <polygon x1="5.9" x2="-6.05" y1="1.1" y2="1.1" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-6.05" x2="5.9" y1="-7.3" y2="-7.3" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <circle x="-3.41" y="-63.53" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="9.1" antialias="false"/>
-    <polygon x1="-1.19" x2="-4.27" x3="-5.8" x4="-5.8" x5="-4.27" y1="52.07" y2="54.99" y3="53.54" y4="50.62" y5="49.16" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+    <polygon x1="-1.19" x2="-4.27" x3="-5.8" x4="-5.8" x5="-4.27" y1="52.07" y2="55" y3="53.54" y4="50.62" y5="49.16" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <rect x="3.36" y="9.16" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="2.56" height="3.41" antialias="false"/>
     <dynamic_text x="6.14" y="-5.52" z="40" font="Sans Serif,4.55,-1,5,0,0,0,0,0,0,normal" uuid="{26ce9c0d-f4fe-484f-919f-0b155cd6775e}" frame="false" rotation="90" text_from="ElementInfo" Halignment="AlignHCenter" Valignment="AlignVCenter" text_width="-1">
       <text/>
