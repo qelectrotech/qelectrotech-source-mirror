@@ -479,15 +479,6 @@ bool TerminalStrip::removeTerminal(Element *terminal)
 }
 
 /**
- * @brief TerminalStrip::haveTerminal
- * @param terminal
- * @return true if \p terminal belong to this strip
- */
-bool TerminalStrip::haveTerminal(Element *terminal) {
-	return m_terminal_elements_vector.contains(terminal);
-}
-
-/**
  * @brief TerminalStrip::physicalTerminalCount
  * @return the number of physical terminal.
  * A physical terminal is the representation of a real electrical terminal.

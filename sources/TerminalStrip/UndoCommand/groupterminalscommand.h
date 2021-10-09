@@ -42,7 +42,28 @@ class GroupTerminalsCommand : public QUndoCommand
 		QPointer<TerminalStrip> m_terminal_strip;
 		PhysicalTerminalData m_receiver;
 		QVector <RealTerminalData> m_to_group;
-		QVector <RealTerminalData> m_to_ungroup;
+};
+
+/**
+ * @brief The UnGroupTerminalsCommand class
+ * This class is used to ungroup terminal (remove level of multi level terminal)
+ */
+class UnGroupTerminalsCommand : public QUndoCommand
+{
+	public:
+		UnGroupTerminalsCommand(TerminalStrip *strip,
+								const QVector<RealTerminalData> &to_ungroup,
+								QUndoCommand *parent = nullptr);
+
+		void undo() override;
+		void redo() override;
+
+	private:
+		void setUp(const QVector<RealTerminalData> &to_ungroup);
+
+	private:
+		QPointer<TerminalStrip> m_terminal_strip;
+		QHash <PhysicalTerminalData, QVector<RealTerminalData>> m_physical_real_H;
 };
 
 #endif // GROUPTERMINALSCOMMAND_H

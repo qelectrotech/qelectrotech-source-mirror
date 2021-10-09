@@ -46,3 +46,50 @@ void GroupTerminalsCommand::redo() {
 		m_terminal_strip->groupTerminals(m_receiver, m_to_group);
 	}
 }
+
+UnGroupTerminalsCommand::UnGroupTerminalsCommand(TerminalStrip *strip,
+												 const QVector<RealTerminalData> &to_ungroup,
+												 QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_terminal_strip(strip)
+{
+	setUp(to_ungroup);
+	setText("Dégrouper un ensemble de bornes");
+}
+
+void UnGroupTerminalsCommand::undo()
+{
+	if (m_terminal_strip)
+	{
+		for (const auto &key : m_physical_real_H.keys()) {
+			m_terminal_strip->groupTerminals(key, m_physical_real_H.value(key));
+		}
+	}
+}
+
+void UnGroupTerminalsCommand::redo()
+{
+	if (m_terminal_strip)
+	{
+		for (const auto &value : qAsConst(m_physical_real_H)) {
+			m_terminal_strip->unGroupTerminals(value);
+		}
+	}
+}
+
+void UnGroupTerminalsCommand::setUp(const QVector<RealTerminalData> &to_ungroup)
+{
+	for (auto rtd_ : to_ungroup)
+	{
+		auto ptd_ = m_terminal_strip->physicalTerminalData(rtd_);
+
+			//Physical have only one real terminal, no need to ungroup it
+		if (ptd_.real_terminals_vector.size() <= 1) {
+			continue;
+		}
+
+		auto vector_ = m_physical_real_H.value(ptd_);
+		vector_.append(rtd_);
+		m_physical_real_H.insert(ptd_, vector_);
+	}
+}

@@ -556,7 +556,7 @@ void TerminalStripEditor::on_m_ungroup_pb_clicked()
 	if (m_model && m_current_strip)
 	{
 		const auto rtd_vector = m_model->realTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
-		m_current_strip->unGroupTerminals(rtd_vector);
+		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip, rtd_vector));
 	}
 }
 

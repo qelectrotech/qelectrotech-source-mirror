@@ -61,6 +61,15 @@ struct PhysicalTerminalData
 		QUuid uuid_;
 };
 
+//Code to use PhysicalTerminalData as key for QHash
+inline bool operator == (const PhysicalTerminalData &phy_1, const PhysicalTerminalData &phy_2) {
+	return phy_1.uuid_ == phy_2.uuid_;
+}
+
+inline uint qHash(const PhysicalTerminalData &key, uint seed) {
+	return qHash(key.uuid_, seed);
+}
+
 /**
  * @brief The TerminalStrip class
  * This class hold all the datas and configurations
@@ -103,7 +112,6 @@ class TerminalStrip : public QObject
 
 		bool addTerminal    (Element *terminal);
 		bool removeTerminal (Element *terminal);
-		bool haveTerminal   (Element *terminal);
 
 		int physicalTerminalCount() const;
 		PhysicalTerminalData physicalTerminalData(int index) const;
