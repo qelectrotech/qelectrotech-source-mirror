@@ -509,7 +509,6 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(int index) const
 	if (index < m_physical_terminals.size())
 	{
 		auto physical_terminal = m_physical_terminals.at(index);
-		ptd.physical_terminal = physical_terminal;
 		ptd.pos_ = index;
 		for (auto real_terminal : physical_terminal->terminals()) {
 			auto rtd = realTerminalData(real_terminal);
@@ -541,7 +540,6 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(const RealTerminalData 
 		return ptd_;
 	}
 
-	ptd_.physical_terminal = phy_t;
 	ptd_.pos_ = m_physical_terminals.indexOf(phy_t);
 	for (auto real_terminal : phy_t->terminals()) {
 		auto rtd = realTerminalData(real_terminal);
@@ -590,8 +588,13 @@ bool TerminalStrip::setOrderTo(QVector<PhysicalTerminalData> sorted_vector)
 	QVector<QSharedPointer<PhysicalTerminal>> new_order;
 	for (auto ptd : sorted_vector)
 	{
-		if (m_physical_terminals.contains(ptd.physical_terminal)) {
-			new_order.append(ptd.physical_terminal);
+		const auto physical_t = physicalTerminalForUuid(ptd.uuid_);
+		if (physical_t.isNull()) {
+			continue;
+		}
+
+		if (m_physical_terminals.contains(physical_t)) {
+			new_order.append(physical_t);
 		} else {
 			return false;
 		}
@@ -804,15 +807,6 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<
 	}
 
 	return pt;
-}
-
-/**
- * @brief TerminalStrip::elementForRealTerminal
- * @param rt
- * @return the element associated to \p rt, the returned element can be nullptr;
- */
-Element *TerminalStrip::elementForRealTerminal(QSharedPointer<RealTerminal> rt) const {
-	return rt.data()->element();
 }
 
 RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> real_terminal) const

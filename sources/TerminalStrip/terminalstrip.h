@@ -58,7 +58,6 @@ struct PhysicalTerminalData
 {
 		QVector<RealTerminalData> real_terminals_vector;
 		int pos_ = -1;
-		QSharedPointer<PhysicalTerminal> physical_terminal;
 		QUuid uuid_;
 };
 
@@ -119,8 +118,6 @@ class TerminalStrip : public QObject
 		static QString xmlTagName() {return QStringLiteral("terminal_strip");}
 		QDomElement toXml(QDomDocument &parent_document);
 		bool fromXml(QDomElement &xml_element);
-
-		Element *elementForRealTerminal(QSharedPointer<RealTerminal> rt) const;
 
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
