@@ -297,6 +297,14 @@ class PhysicalTerminal
 			return m_real_terminal;
 		}
 
+		/**
+		 * @brief uuid
+		 * @return the uuid of this physical terminal
+		 */
+		QUuid uuid() const {
+			return m_uuid;
+		}
+
 		static QString xmlTagName() {
 			return QStringLiteral("physical_terminal");
 		}
@@ -319,6 +327,7 @@ class PhysicalTerminal
 	private:
 		QPointer<TerminalStrip> m_parent_terminal_strip;
 		QVector<shared_real_terminal> m_real_terminal;
+		const QUuid m_uuid = QUuid::createUuid();
 };
 
 
@@ -506,9 +515,41 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(int index) const
 			auto rtd = realTerminalData(real_terminal);
 			ptd.real_terminals_vector.append(rtd);
 		}
+		ptd.uuid_ = physical_terminal->uuid();
 	}
 
 	return ptd;
+}
+
+/**
+ * @brief TerminalStrip::physicalTerminalData
+ * @param real_data
+ * @return the parent PhysicalTerminalData of \p real_data.
+ * the PhysicalTerminalData can be invalid if \p real_data don't belong to this strip
+ */
+PhysicalTerminalData TerminalStrip::physicalTerminalData(const RealTerminalData &real_data) const
+{
+	PhysicalTerminalData ptd_;
+
+	const auto real_t = realTerminalForUuid(real_data.real_terminal_uuid);
+	if (real_t.isNull()) {
+		return ptd_;
+	}
+
+	const auto phy_t = physicalTerminal(real_t);
+	if (phy_t.isNull()) {
+		return ptd_;
+	}
+
+	ptd_.physical_terminal = phy_t;
+	ptd_.pos_ = m_physical_terminals.indexOf(phy_t);
+	for (auto real_terminal : phy_t->terminals()) {
+		auto rtd = realTerminalData(real_terminal);
+		ptd_.real_terminals_vector.append(rtd);
+	}
+	ptd_.uuid_ = phy_t->uuid();
+
+	return ptd_;
 }
 
 /**
@@ -564,48 +605,55 @@ bool TerminalStrip::setOrderTo(QVector<PhysicalTerminalData> sorted_vector)
 /**
  * @brief TerminalStrip::groupTerminal
  * Add \p added_terminal to \p receiver_terminal.
- * At the end of this method, the physical terminal represented by \p added_terminal is removed
+ * At the end of this method, if there is physical terminal
+ * without any real terminal, they will be removed
  * and \p receiver_terminal become a multi-level terminal.
  * Emit the signal orderChanged();
  * @param added_terminal
  * @param receiver_terminal
  * @return true if success
  */
-bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals)
+bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<RealTerminalData> &added_terminals)
 {
-	if (!m_physical_terminals.contains(receiver_terminal.physical_terminal)) {
+	const auto receiver_ = physicalTerminalForUuid(receiver_terminal.uuid_);
+	if (receiver_.isNull()) {
 		qDebug() << "TerminalStrip::groupTerminal : Arguments terminals don't belong to this strip. Operation aborted.";
 		return false;
 	}
 
-	auto physical_receiver_terminal = receiver_terminal.physical_terminal;
-
-	for (const auto &ptd : qAsConst(added_terminals))
+	bool have_grouped = false;
+	for (const auto &added : added_terminals)
 	{
-		if (!m_physical_terminals.contains(ptd.physical_terminal)) {
+		const auto added_terminal = realTerminalForUuid(added.real_terminal_uuid);
+
+		if (added_terminal.isNull()) {
 			continue;
 		}
 
-			//Add every real terminal of ptd to receiver terminal
-		for (auto const  &rtd_ : qAsConst(ptd.real_terminals_vector))
-		{
-			if (auto rt = realTerminal(rtd_.element_)) {
-				physical_receiver_terminal->addTerminal(rt);
+		auto physical_ = physicalTerminal(added_terminal);
+		physical_->removeTerminal(added_terminal);
+
+		receiver_->addTerminal(added_terminal);
+		have_grouped = true;
+	}
+
+	if (have_grouped)
+	{
+		const auto vector_ = m_physical_terminals;
+		for (const auto &phys : vector_) {
+			if (phys->terminals().isEmpty()) {
+				m_physical_terminals.removeOne(phys);
 			}
 		}
 
-			//Remove ptd
-		m_physical_terminals.removeOne(ptd.physical_terminal);
+		emit orderChanged();
 	}
-
-	emit orderChanged();
 	return true;
 }
 
 /**
  * @brief TerminalStrip::unGroupTerminals
  * Ungroup all real terminals of \p terminals_to_ungroup
- * from this terminal strip
  * @param terminals_to_ungroup
  */
 void TerminalStrip::unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup)
@@ -613,7 +661,7 @@ void TerminalStrip::unGroupTerminals(const QVector<RealTerminalData> &terminals_
 	bool ungrouped = false;
 	for (const auto &rtd_ : terminals_to_ungroup)
 	{
-		if (auto real_terminal = realTerminal(rtd_.element_)) //Get the shared real terminal
+		if (auto real_terminal = realTerminalForUuid(rtd_.real_terminal_uuid)) //Get the shared real terminal
 		{
 			if (auto physical_terminal = physicalTerminal(real_terminal)) //Get the physical terminal
 			{
@@ -773,12 +821,13 @@ RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> re
 
 	auto physical_terminal = physicalTerminal(real_terminal);
 
+	rtd.real_terminal_uuid = real_terminal->uuid();
 	rtd.level_ = physical_terminal->levelOf(real_terminal);
 	rtd.label_ = real_terminal->label();
 
 	if (real_terminal->isElement()) {
 		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
-		rtd.uuid_ = real_terminal->elementUuid();
+		rtd.element_uuid = real_terminal->elementUuid();
 		rtd.element_ = real_terminal->element();
 	}
 	rtd.type_      = real_terminal->type();
@@ -787,4 +836,45 @@ RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> re
 	rtd.is_element = real_terminal->isElement();
 
 	return rtd;
+}
+
+/**
+ * @brief TerminalStrip::physicalTerminalForUuid
+ * Return the PhysicalTerminal with uuid \p uuid or a null
+ * PhysicalTerminal if uuid don't match
+ * @param uuid
+ * @return
+ */
+QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminalForUuid(const QUuid &uuid) const
+{
+	shared_physical_terminal return_pt;
+
+	for (const auto &pt_ : qAsConst(m_physical_terminals)) {
+		if (pt_->uuid() == uuid) {
+			return_pt = pt_;
+			break;
+		}
+	}
+
+	return return_pt;
+}
+
+/**
+ * @brief TerminalStrip::realTerminalForUuid
+ * @param uuid
+ * @return  the RealTerminal with uuid \p uuid or a null
+ * RealTerminal if uuid don't match
+ */
+QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uuid) const
+{
+	shared_real_terminal return_rt;
+
+	for (const auto &rt_ : qAsConst(m_real_terminals)) {
+		if (rt_->uuid() == uuid) {
+			return_rt = rt_;
+			break;
+		}
+	}
+
+	return return_rt;
 }

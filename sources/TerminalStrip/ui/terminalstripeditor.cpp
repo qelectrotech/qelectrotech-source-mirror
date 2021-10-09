@@ -31,6 +31,7 @@
 #include "terminalstripmodel.h"
 #include "../diagram.h"
 #include "../UndoCommand/sortterminalstripcommand.h"
+#include "../UndoCommand/groupterminalscommand.h"
 
 #include <QTreeWidgetItem>
 
@@ -219,11 +220,11 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		{
 			auto real_t = ptd.real_terminals_vector.first();
 			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t.label_), TerminalStripTreeWidget::Terminal);
-			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.uuid_.toString());
+			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.element_uuid.toString());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 
 			if (real_t.element_) {
-				m_uuid_terminal_H.insert(real_t.uuid_, qgraphicsitem_cast<TerminalElement *>(real_t.element_));
+				m_uuid_terminal_H.insert(real_t.element_uuid, qgraphicsitem_cast<TerminalElement *>(real_t.element_));
 			}
 		}
 	}
@@ -536,13 +537,13 @@ void TerminalStripEditor::on_m_auto_ordering_pb_clicked()
  */
 void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 {
-	if (m_model && m_current_strip)
+	if (m_model && m_current_strip && m_project)
 	{
-		auto ptd_vector = m_model->physicalTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
-		if (ptd_vector.size() >= 2)
+		auto rtd_vector = m_model->realTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+		if (rtd_vector.size() >= 2)
 		{
-			auto receiver_ = ptd_vector.takeFirst();
-			m_current_strip->groupTerminals(receiver_, ptd_vector);
+			auto receiver_ = m_current_strip->physicalTerminalData(rtd_vector.takeFirst());
+			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip, receiver_, rtd_vector));
 		}
 	}
 }

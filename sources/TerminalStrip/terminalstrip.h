@@ -42,7 +42,8 @@ struct RealTerminalData
 			cable_wire_,
 			conductor_;
 
-	QUuid uuid_;
+	QUuid element_uuid,
+		  real_terminal_uuid;
 
 	ElementData::TerminalType type_;
 	ElementData::TerminalFunction function_;
@@ -58,6 +59,7 @@ struct PhysicalTerminalData
 		QVector<RealTerminalData> real_terminals_vector;
 		int pos_ = -1;
 		QSharedPointer<PhysicalTerminal> physical_terminal;
+		QUuid uuid_;
 };
 
 /**
@@ -71,7 +73,8 @@ class TerminalStrip : public QObject
 {
 	friend class TerminalStripModel;
 
-		Q_OBJECT
+	Q_OBJECT
+
 	public:
 	signals:
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
@@ -105,9 +108,10 @@ class TerminalStrip : public QObject
 
 		int physicalTerminalCount() const;
 		PhysicalTerminalData physicalTerminalData(int index) const;
+		PhysicalTerminalData physicalTerminalData (const RealTerminalData &real_data) const;
 		QVector<PhysicalTerminalData> physicalTerminalData() const;
 		bool setOrderTo(QVector<PhysicalTerminalData> sorted_vector);
-		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<PhysicalTerminalData> &added_terminals);
+		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<RealTerminalData> &added_terminals);
 		void unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup);
 
 		QVector<QPointer<Element>> terminalElement() const;
@@ -122,6 +126,8 @@ class TerminalStrip : public QObject
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal) const;
 		RealTerminalData realTerminalData(QSharedPointer<RealTerminal> real_terminal) const;
+		QSharedPointer<PhysicalTerminal> physicalTerminalForUuid (const QUuid &uuid) const;
+		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
 
 	private:
 		TerminalStripData m_data;
