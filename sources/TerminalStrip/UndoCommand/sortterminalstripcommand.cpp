@@ -45,7 +45,7 @@ void SortTerminalStripCommand::sort()
 {
 	std::sort(m_new_order.begin(), m_new_order.end(), [](PhysicalTerminalData arg1, PhysicalTerminalData arg2)
 	{
-		QRegularExpression rx(QStringLiteral("^\\d+"));
+		const QRegularExpression rx(QStringLiteral("^\\d+"));
 
 		QString str1;
 		QString str2;
@@ -54,7 +54,7 @@ void SortTerminalStripCommand::sort()
 
 		if (arg1.real_terminals_vector.count())
 		{
-			str1 = arg1.real_terminals_vector.first().label_;
+			str1 = arg1.real_terminals_vector.constLast().label_;
 
 			auto match = rx.match(str1);
 			if (match.hasMatch()) {
@@ -64,7 +64,7 @@ void SortTerminalStripCommand::sort()
 
 		if (arg2.real_terminals_vector.count())
 		{
-			str2 = arg2.real_terminals_vector.first().label_;
+			str2 = arg2.real_terminals_vector.constLast().label_;
 
 			auto match = rx.match(str2);
 			if (match.hasMatch()) {
