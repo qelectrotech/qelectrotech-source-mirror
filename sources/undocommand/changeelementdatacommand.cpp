@@ -18,7 +18,8 @@
 #include "changeelementdatacommand.h"
 #include "../qetgraphicsitem/element.h"
 
-ChangeElementDataCommand::ChangeElementDataCommand(Element *element, ElementData new_data) :
+ChangeElementDataCommand::ChangeElementDataCommand(Element *element, ElementData new_data, QUndoCommand *parent) :
+	QUndoCommand(parent),
     m_element(element),
     m_old_data(element->elementData()),
     m_new_data(new_data)

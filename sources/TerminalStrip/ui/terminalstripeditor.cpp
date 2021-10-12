@@ -32,6 +32,7 @@
 #include "../diagram.h"
 #include "../UndoCommand/sortterminalstripcommand.h"
 #include "../UndoCommand/groupterminalscommand.h"
+#include "../UndoCommand/changeterminallevel.h"
 
 #include <QTreeWidgetItem>
 
@@ -352,10 +353,12 @@ void TerminalStripEditor::selectionChanged()
 
 	const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
 	const auto terminal_vector = m_model->physicalTerminalDataForIndex(index_list);
+	const auto real_terminal_vector = m_model->realTerminalDataForIndex(index_list);
 
+		//Enable/disable group button
 	ui->m_group_terminals_pb->setEnabled(terminal_vector.size() > 1 ? true : false);
 
-
+		//Enable/disable ungroup button
 	auto it_= std::find_if(terminal_vector.constBegin(), terminal_vector.constEnd(), [](auto &data)
 	{
 		if (data.real_terminals_vector.size() >= 2) {
@@ -500,17 +503,22 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 			if (m_model)
 			{
-				for (auto modified_data : m_model->modifiedRealTerminalData())
+				for (const auto &data_ : m_model->modifiedRealTerminalData())
 				{
-					auto element = modified_data.element_;
+					auto original_ = data_.first;
+					auto edited_   = data_.second;
+					auto element   = original_.element_;
 					if (element) {
 						auto current_data = element->elementData();
-						current_data.setTerminalType(modified_data.type_);
-						current_data.setTerminalFunction(modified_data.function_);
-						current_data.setTerminalLED(modified_data.led_);
-						current_data.m_informations.addValue(QStringLiteral("label"), modified_data.label_);
+						current_data.setTerminalType(edited_.type_);
+						current_data.setTerminalFunction(edited_.function_);
+						current_data.setTerminalLED(edited_.led_);
+						current_data.m_informations.addValue(QStringLiteral("label"), edited_.label_);
 
-						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
+						if (element->elementData() != current_data)
+							m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
+						if (edited_.level_)
+							m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, original_, edited_.level_));
 					}
 				}
 			}
@@ -557,6 +565,27 @@ void TerminalStripEditor::on_m_ungroup_pb_clicked()
 	{
 		const auto rtd_vector = m_model->realTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
 		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip, rtd_vector));
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_level_sb_valueChanged
+ * @param arg1
+ */
+void TerminalStripEditor::on_m_level_sb_valueChanged(int arg1)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+		for (auto index : index_list)
+		{
+			auto level_index = m_model->index(index.row(), 1, index.parent());
+			if (level_index.isValid())
+			{
+				m_model->setData(level_index, arg1);
+			}
+		}
 	}
 }
 

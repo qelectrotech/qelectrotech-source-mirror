@@ -52,7 +52,7 @@ TerminalStripModel::TerminalStripModel(TerminalStrip *terminal_strip, QObject *p
     QAbstractTableModel(parent),
     m_terminal_strip(terminal_strip)
 {
-	fillRealTerminalData();
+	fillPhysicalTerminalData();
 }
 
 int TerminalStripModel::rowCount(const QModelIndex &parent) const
@@ -64,7 +64,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
     }
 
 	auto count = 0;
-	for (const auto &ptd : m_physical_terminal_data) {
+	for (const auto &ptd : m_edited_terminal_data) {
 		count += ptd.real_terminals_vector.size();
 	}
 
@@ -133,7 +133,14 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 	int modified_cell = -1;
 	auto column_ = index.column();
 
-	if (column_ == LED_CELL &&
+	if (column_ == LEVEL_CELL &&
+		role == Qt::EditRole)
+	{
+		rtd.level_ = value.toInt();
+		modified_ = true;
+		modified_cell = LEVEL_CELL;
+	}
+	else if (column_ == LED_CELL &&
 		role == Qt::CheckStateRole)
 	{
 			rtd.led_ = value.toBool();
@@ -180,6 +187,7 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 			vector_.replace(modified_cell, true);
 			m_modified_cell.insert(rtd.element_, vector_);
 		}
+		emit dataChanged(index, index);
 		return true;
 	}
 
@@ -226,18 +234,25 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 
 /**
  * @brief TerminalStripModel::modifiedRealTerminalData
- * @return the modified real terminal data
+ * @return a vector of QPair of modified terminal.
+ * the first value of the QPair is the original data, the second value is the edited data
  */
-QVector<RealTerminalData> TerminalStripModel::modifiedRealTerminalData() const
+QVector<QPair<RealTerminalData, RealTerminalData>> TerminalStripModel::modifiedRealTerminalData() const
 {
-	QVector<RealTerminalData> returned_vector;
+	QVector<QPair<RealTerminalData, RealTerminalData>> returned_vector;
 
 	const auto modified_real_terminal = m_modified_cell.keys();
 
-	for (const auto &ptd : m_physical_terminal_data) {
-		for (const auto &rtd : ptd.real_terminals_vector) {
-			if (modified_real_terminal.contains(rtd.element_)) {
-				returned_vector.append(rtd);
+	for (auto i = 0 ; i<m_edited_terminal_data.size() ; ++i)
+	{
+		auto ptd_ = m_edited_terminal_data.at(i);
+		for (auto j = 0 ; j < ptd_.real_terminals_vector.size() ; ++j)
+		{
+			auto rtd_ = ptd_.real_terminals_vector.at(j);
+			if (modified_real_terminal.contains(rtd_.element_))
+			{
+				returned_vector.append(qMakePair(m_original_terminal_data.at(i).real_terminals_vector.at(j),
+												 m_edited_terminal_data.at(i).real_terminals_vector.at(j)));
 			}
 		}
 	}
@@ -329,13 +344,14 @@ QVector<RealTerminalData> TerminalStripModel::realTerminalDataForIndex(QModelInd
 	return vector_;
 }
 
-void TerminalStripModel::fillRealTerminalData()
+void TerminalStripModel::fillPhysicalTerminalData()
 {
 		//Get all physical terminal
 	if (m_terminal_strip) {
 		for (auto i=0 ; i < m_terminal_strip->physicalTerminalCount() ; ++i) {
-			m_physical_terminal_data.append(m_terminal_strip->physicalTerminalData(i));
+			m_original_terminal_data.append(m_terminal_strip->physicalTerminalData(i));
 		}
+		m_edited_terminal_data = m_original_terminal_data;
 	}
 }
 
@@ -347,7 +363,7 @@ RealTerminalData TerminalStripModel::dataAtRow(int row) const
 	else
 	{
 		auto current_row = 0;
-		for (const auto &physical_data : m_physical_terminal_data)
+		for (const auto &physical_data : m_edited_terminal_data)
 		{
 			for (const auto &real_data : physical_data.real_terminals_vector)
 			{
@@ -379,15 +395,15 @@ void TerminalStripModel::replaceDataAtRow(RealTerminalData data, int row)
 		auto current_row = 0;
 		auto current_physical = 0;
 
-		for (const auto &physical_data : qAsConst(m_physical_terminal_data))
+		for (const auto &physical_data : qAsConst(m_edited_terminal_data))
 		{
 			auto current_real = 0;
 			for (int i=0 ; i<physical_data.real_terminals_vector.count() ; ++i)
 			{
 				if (current_row == row) {
-					auto physical_data = m_physical_terminal_data.at(current_physical);
+					auto physical_data = m_edited_terminal_data.at(current_physical);
 					physical_data.real_terminals_vector.replace(current_real, data);
-					m_physical_terminal_data.replace(current_physical, physical_data);
+					m_edited_terminal_data.replace(current_physical, physical_data);
 					return;
 				} else {
 					++current_real;
@@ -410,7 +426,7 @@ void TerminalStripModel::replaceDataAtRow(RealTerminalData data, int row)
  */
 PhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) const
 {
-	if (m_physical_terminal_data.isEmpty()) {
+	if (m_edited_terminal_data.isEmpty()) {
 		return PhysicalTerminalData();
 	}
 
@@ -418,7 +434,7 @@ PhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) const
 	int current_phy = -1;
 	bool match_ = false;
 
-	for (const auto &ptd_ : qAsConst(m_physical_terminal_data))
+	for (const auto &ptd_ : qAsConst(m_edited_terminal_data))
 	{
 		current_checked_index += ptd_.real_terminals_vector.size();
 		++current_phy;
@@ -430,7 +446,7 @@ PhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) const
 	}
 
 	if (match_) {
-		return  m_physical_terminal_data.at(current_phy);
+		return  m_edited_terminal_data.at(current_phy);
 	} else {
 		return PhysicalTerminalData();
 	}
@@ -443,13 +459,13 @@ PhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) const
  */
 RealTerminalData TerminalStripModel::realDataAtIndex(int index) const
 {
-	if (m_physical_terminal_data.isEmpty()) {
+	if (m_edited_terminal_data.isEmpty()) {
 		return RealTerminalData();
 	}
 
 	int current_checked_index = -1;
 
-	for (const auto & ptd_ : qAsConst(m_physical_terminal_data))
+	for (const auto & ptd_ : qAsConst(m_edited_terminal_data))
 	{
 		for (const auto & rtd_ : qAsConst(ptd_.real_terminals_vector)) {
 			++current_checked_index;

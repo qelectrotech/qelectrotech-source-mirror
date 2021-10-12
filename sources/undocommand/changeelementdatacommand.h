@@ -26,7 +26,7 @@ class Element;
 class ChangeElementDataCommand : public QUndoCommand
 {
     public:
-        ChangeElementDataCommand(Element *element, ElementData new_data);
+		ChangeElementDataCommand(Element *element, ElementData new_data, QUndoCommand *parent = nullptr);
         void undo() override;
         void redo() override;
 

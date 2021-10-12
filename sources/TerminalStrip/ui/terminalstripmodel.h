@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QPointer>
 #include <QStyledItemDelegate>
+#include <QPair>
 
 #include "../terminalstrip.h"
 
@@ -40,14 +41,14 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
 
-		QVector<RealTerminalData> modifiedRealTerminalData() const;
+		QVector<QPair<RealTerminalData, RealTerminalData>> modifiedRealTerminalData() const;
 
 		bool isXrefCell(const QModelIndex &index, Element **element = nullptr);
 		QVector<PhysicalTerminalData> physicalTerminalDataForIndex(QModelIndexList index_list) const;
 		QVector<RealTerminalData> realTerminalDataForIndex(QModelIndexList index_list) const;
 
 	private:
-		void fillRealTerminalData();
+		void fillPhysicalTerminalData();
 		RealTerminalData dataAtRow(int row) const;
 		void replaceDataAtRow(RealTerminalData data, int row);
 		PhysicalTerminalData physicalDataAtIndex(int index) const;
@@ -55,7 +56,7 @@ class TerminalStripModel : public QAbstractTableModel
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
-		QVector<PhysicalTerminalData> m_physical_terminal_data;
+		QVector<PhysicalTerminalData> m_edited_terminal_data, m_original_terminal_data;
 		QHash<Element *, QVector<bool>> m_modified_cell;
 };
 

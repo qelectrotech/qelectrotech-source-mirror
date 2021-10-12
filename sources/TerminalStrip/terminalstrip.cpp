@@ -290,6 +290,23 @@ class PhysicalTerminal
 		}
 
 		/**
+		 * @brief setLevelOf
+		 * Change the level of \p terminal
+		 * @param terminal
+		 * @param level
+		 */
+		bool setLevelOf(shared_real_terminal terminal, int level)
+		{
+			const int i = m_real_terminal.indexOf(terminal);
+			if (i >= 0)
+			{
+				m_real_terminal.swapItemsAt(i, std::min(level, m_real_terminal.size()-1));
+				return true;
+			}
+			return false;
+		}
+
+		/**
 		 * @brief terminals
 		 * @return A vector of real terminal who compose this physical terminal
 		 */
@@ -570,14 +587,14 @@ QVector<PhysicalTerminalData> TerminalStrip::physicalTerminalData() const
  * @param sorted_vector
  * @return true is successfully sorted.
  */
-bool TerminalStrip::setOrderTo(QVector<PhysicalTerminalData> sorted_vector)
+bool TerminalStrip::setOrderTo(const QVector<PhysicalTerminalData> &sorted_vector)
 {
 	if (sorted_vector.size() != m_physical_terminals.size()) {
 		return false;
 	}
 
 	QVector<QSharedPointer<PhysicalTerminal>> new_order;
-	for (auto ptd : sorted_vector)
+	for (const auto &ptd : sorted_vector)
 	{
 		const auto physical_t = physicalTerminalForUuid(ptd.uuid_);
 		if (physical_t.isNull()) {
@@ -675,6 +692,32 @@ void TerminalStrip::unGroupTerminals(const QVector<RealTerminalData> &terminals_
 	if (ungrouped) {
 		emit orderChanged();
 	}
+}
+
+/**
+ * @brief TerminalStrip::setLevel
+ * @param real_terminal_data
+ * @param level
+ * @return
+ */
+bool TerminalStrip::setLevel(const RealTerminalData &real_terminal_data, int level)
+{
+	auto real_terminal = realTerminalForUuid(real_terminal_data.real_terminal_uuid);
+	if (real_terminal)
+	{
+		auto physical_terminal = physicalTerminal(real_terminal);
+		if (physical_terminal)
+		{
+			if (physical_terminal->terminals().size() > 1 &&
+				physical_terminal->setLevelOf(real_terminal, level))
+			{
+				emit orderChanged();
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 /**

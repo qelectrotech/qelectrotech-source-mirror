@@ -117,9 +117,10 @@ class TerminalStrip : public QObject
 		PhysicalTerminalData physicalTerminalData(int index) const;
 		PhysicalTerminalData physicalTerminalData (const RealTerminalData &real_data) const;
 		QVector<PhysicalTerminalData> physicalTerminalData() const;
-		bool setOrderTo(QVector<PhysicalTerminalData> sorted_vector);
+		bool setOrderTo(const QVector<PhysicalTerminalData> &sorted_vector);
 		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<RealTerminalData> &added_terminals);
 		void unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup);
+		bool setLevel(const RealTerminalData &real_terminal_data, int level);
 
 		QVector<QPointer<Element>> terminalElement() const;
 

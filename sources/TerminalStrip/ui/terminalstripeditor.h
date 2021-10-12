@@ -62,6 +62,7 @@ class TerminalStripEditor : public QDialog
 		void on_m_auto_ordering_pb_clicked();
 		void on_m_group_terminals_pb_clicked();
 		void on_m_ungroup_pb_clicked();
+		void on_m_level_sb_valueChanged(int arg1);
 
 	private:
 		Ui::TerminalStripEditor *ui;
