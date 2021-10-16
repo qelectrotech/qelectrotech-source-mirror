@@ -518,7 +518,6 @@ void BorderTitleBlock::draw(QPainter *painter)
 	//Set the QPainter
 	painter -> save();
 	QPen pen(Qt::black);
-	pen.setCosmetic(true);
 	painter -> setPen(pen);
 	painter -> setBrush(Qt::NoBrush);
 

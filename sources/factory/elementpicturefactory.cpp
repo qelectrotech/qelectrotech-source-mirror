@@ -598,7 +598,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "none") pen.setColor(QColor(0, 0, 0, 0));
-				else if (style_value == "thin") pen.setWidth(0);
+				else if (style_value == "thin") pen.setWidthF(0.5);
 				else if (style_value == "normal") pen.setWidthF(1.0);
 				else if (style_value == "hight") pen.setWidthF(2.0);
 				else if (style_value == "eleve") pen.setWidthF(5.0);
