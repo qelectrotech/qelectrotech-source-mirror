@@ -22,6 +22,19 @@
 #include "elementcontent.h"
 #include "elementscene.h"
 #include "elementview.h"
+#include "graphicspart/abstractpartellipse.h"
+#include "graphicspart/customelementgraphicpart.h"
+#include "graphicspart/customelementpart.h"
+#include "graphicspart/partarc.h"
+#include "graphicspart/partdynamictextfield.h"
+#include "graphicspart/partellipse.h"
+#include "graphicspart/partline.h"
+#include "graphicspart/partpolygon.h"
+#include "graphicspart/partrectangle.h"
+#include "graphicspart/partterminal.h"
+#include "graphicspart/parttext.h"
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
+
 
 /**
 	@brief The ElementEditionCommand class
@@ -278,5 +291,25 @@ class changeElementDataCommand : public ElementEditionCommand
 		ElementData m_old,
 					m_new;
 };
+
+/**
+    @brief The RotateSelectionInESCommand class
+    Rotate the selected items in the element editor
+*/
+
+class RotateElementsCommand : public ElementEditionCommand
+{
+
+public:
+    RotateElementsCommand(ElementScene *scene, QUndoCommand *parent=nullptr);
+    void undo() override;
+    void redo() override;
+
+private:
+    ElementScene *m_scene =nullptr;
+    QList<QGraphicsItem*> m_items;
+
+};
+
 
 #endif

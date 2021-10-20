@@ -1515,7 +1515,6 @@ void TitleBlockTemplate::render(QPainter &painter,
 	painter.save();
 		//Setup the QPainter
 	QPen pen(Qt::black);
-	pen.setCosmetic(true);
 	painter.setPen(pen);
 
 	// draw the titleblock border
@@ -1661,7 +1660,7 @@ void TitleBlockTemplate::renderCell(QPainter &painter,
 					const QRect &cell_rect) const
 {
 	// draw the border rect of the current cell
-	QPen pen(QBrush(), 0.0, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+	QPen pen(QBrush(), 1, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
 	pen.setColor(Qt::black);
 	painter.setPen(pen);
 	painter.drawRect(cell_rect);

@@ -5,6 +5,7 @@
         <name lang="es">Tránsito de energía de barras</name>
         <name lang="de">Energiefluß von der Sammelschiene weg</name>
         <name lang="cs">Tok energie od přípojnice</name>
+        <name lang="en">Energy flow from the busbars</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

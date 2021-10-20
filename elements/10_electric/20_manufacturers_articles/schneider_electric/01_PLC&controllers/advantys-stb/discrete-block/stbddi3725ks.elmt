@@ -6,12 +6,10 @@
         <name lang="fr">Entrée Digitale STB DDI3725</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: The QElectroTech team&#xd;
-     License: see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version: V2.0&#xd;
-&#xd;
-</informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license
+Converter version: V2.0
+    </informations>
     <description>
         <rect y="-120" height="280" width="50" style="line-style:normal;line-weight:normal;filling:HTMLWhiteWhiteSmoke;color:black" rx="0" x="-10" antialias="false" ry="0"/>
         <rect y="-31" height="185" width="18" style="line-style:normal;line-weight:normal;filling:HTMLGrayGainsboro;color:black" rx="0" x="17" antialias="false" ry="0"/>

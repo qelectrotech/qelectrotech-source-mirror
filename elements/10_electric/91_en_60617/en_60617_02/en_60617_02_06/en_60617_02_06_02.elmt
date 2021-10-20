@@ -6,6 +6,7 @@
         <name lang="es">Actuado cuando la cantidad característica cae por debajo del valor de ajuste</name>
         <name lang="cs">Uvedení v činnost, pokud je 
 charakteristická veličina menší než nastavená hodnota</name>
+        <name lang="en">Actuating (lower than)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

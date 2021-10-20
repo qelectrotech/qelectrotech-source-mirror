@@ -3,9 +3,9 @@
     <names>
         <name lang="fr">Polarité positive</name>
         <name lang="de">positive Polarität</name>
-        <name lang="en">Positive polarity</name>
         <name lang="es">Polaridad positiva</name>
         <name lang="cs">Kladná polarita</name>
+        <name lang="en">Positive polarity</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

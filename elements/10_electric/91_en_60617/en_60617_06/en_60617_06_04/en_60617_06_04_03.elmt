@@ -4,6 +4,7 @@
         <name lang="fr">Moteur pas à pas</name>
         <name lang="de">Schrittmotor</name>
         <name lang="cs">Krokový motor</name>
+        <name lang="en">Stepping motor, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
 spécifiée</name>
         <name lang="de">Abschalt-Thyristortriode, allgemein</name>
         <name lang="cs">Vypínací tyristor, nespecifikované hradlo</name>
+        <name lang="en">Turn-off thyristor, gate not specified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

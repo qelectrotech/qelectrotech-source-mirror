@@ -4,6 +4,7 @@
         <name lang="de">Leistungsschalter-Funktion </name>
         <name lang="fr">Fonction disjoncteur</name>
         <name lang="cs">Funkce výkonového vypínače</name>
+        <name lang="en">Circuit breaker function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

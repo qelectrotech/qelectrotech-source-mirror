@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-880/040-001</elementInformation>
+        <elementInformation show="1" name="description">Ethernet-Controller</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" style="line-style:normal;line-weight:normal;filling:white;color:black" ry="0" antialias="false" x="-360" height="90" width="720" rx="0"/>

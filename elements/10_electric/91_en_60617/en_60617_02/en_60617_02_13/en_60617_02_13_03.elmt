@@ -5,6 +5,7 @@
         <name lang="es">Accionado por halamiento</name>
         <name lang="de">Betätigung durch Ziehen</name>
         <name lang="cs">Ovládání tahem</name>
+        <name lang="en">Actuator (operated by pulling)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Connecteur, partie mobile d'un ensemble</name>
         <name lang="de">Steckverbinder, bewegliches Teil</name>
         <name lang="cs">Konektor pohyblivá část souboru</name>
+        <name lang="en">Connector, movable portion of an assembly</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

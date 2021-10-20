@@ -4,6 +4,7 @@
         <name lang="fr">Paire coaxiale</name>
         <name lang="de">Koaxialkabel</name>
         <name lang="cs">Koaxiální kabel</name>
+        <name lang="en">Coaxial pair</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

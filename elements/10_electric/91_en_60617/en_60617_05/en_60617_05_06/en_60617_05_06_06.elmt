@@ -4,6 +4,7 @@
         <name lang="fr">Magnétorésistance, type linéare</name>
         <name lang="de">magnetfeldempfindlicher Widerstand </name>
         <name lang="cs">Magnetorezistor, lineární typ</name>
+        <name lang="en">Magnetoresistor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

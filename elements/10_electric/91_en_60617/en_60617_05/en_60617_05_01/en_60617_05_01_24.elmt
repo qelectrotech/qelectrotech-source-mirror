@@ -9,6 +9,7 @@ und einem Gebiet gleichen Leitertyps, PIP oder
 NIP Struktur</name>
         <name lang="cs">Vnitřní zóna mezi kolektorem a oblastí stejného typu vodiče,
 struktury PIP nebo NIP</name>
+        <name lang="en">Intrinsic region between a collector and a region of similar conductivity type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

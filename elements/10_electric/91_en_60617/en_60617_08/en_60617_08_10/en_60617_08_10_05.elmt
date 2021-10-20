@@ -6,6 +6,7 @@ Huppe</name>
         <name lang="fr">Avertisseur sonore,
 Klaxon</name>
         <name lang="cs">Houkačka</name>
+        <name lang="en">Horn</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

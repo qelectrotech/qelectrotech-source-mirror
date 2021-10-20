@@ -5,6 +5,7 @@
 (par exemple bilame), contact à ouverture</name>
         <name lang="de">Öffner mit selbsttätiger thermischer Betätigung</name>
         <name lang="cs">Samočinný teplotní spínač, vypínací kontakt</name>
+        <name lang="en">Thermal switch, self-operating, break contact</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

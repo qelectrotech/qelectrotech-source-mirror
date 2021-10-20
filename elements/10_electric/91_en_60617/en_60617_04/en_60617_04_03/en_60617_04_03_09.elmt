@@ -4,6 +4,7 @@
         <name lang="fr">Étouffoir de câble coaxial à noyau magnétique</name>
         <name lang="de">koaxiale Drossel mit Magnetkern</name>
         <name lang="cs">Tlumivka koaxiální s magnetickým jádrem</name>
+        <name lang="en">Coaxial choke with magnetic core</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

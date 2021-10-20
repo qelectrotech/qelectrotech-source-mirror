@@ -4,6 +4,7 @@
         <name lang="fr">Ensemble d’un canon à électrons</name>
         <name lang="de">Elektronenstrahlerzeuger (Elektronenkanone)</name>
         <name lang="cs">Elektronová tryska</name>
+        <name lang="en">Electron gun assembly</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

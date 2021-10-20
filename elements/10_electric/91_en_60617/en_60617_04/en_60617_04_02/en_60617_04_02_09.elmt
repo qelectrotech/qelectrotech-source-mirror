@@ -4,6 +4,7 @@
         <name lang="de">Kondensator mit Voreinstellung</name>
         <name lang="fr">Condensateur à ajustage prédéterminé</name>
         <name lang="cs">Kondenzátor dolaďovací</name>
+        <name lang="en">Capacitor with pre-set adjustment</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

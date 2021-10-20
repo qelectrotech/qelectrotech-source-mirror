@@ -4,6 +4,7 @@
         <name lang="fr">Diode à semiconducteur (symbole général)</name>
         <name lang="de">Halbleiterdiode, allgemein</name>
         <name lang="cs">Polovodičová dioda</name>
+        <name lang="en">Semiconductor diode, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

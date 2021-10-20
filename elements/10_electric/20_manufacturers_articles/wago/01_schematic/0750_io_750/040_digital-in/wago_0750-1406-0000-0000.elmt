@@ -5,12 +5,13 @@
     <name lang="fr">750-1406</name>
     <name lang="cs">750-1406</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">750-1406</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1406</elementInformation>
+        <elementInformation show="1" name="description">16DI, DC 24V, 0.2ms</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect antialias="false" y="-40" ry="0" width="720" height="90" x="-360" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -71,7 +72,7 @@
     <text x="-189" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="DI4" color="#000000" rotation="0"/>
     <text x="-148" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="DI5" color="#000000" rotation="0"/>
     <text x="-144" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="5" color="#000000" rotation="0"/>
-    <text x="-130" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="16-Channel DI, DC 24V, 0,2ms" color="#000000" rotation="0"/>
+    <text x="-130" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="16-Channel DI, DC 24V, 0.2ms" color="#000000" rotation="0"/>
         <polygon closed="false" style="line-style:normal;line-weight:hight;filling:none;color:black" x1="-362" y1="-10" y2="-10" antialias="false" x2="-356"/>
         <arc x="360" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="180" start="90" y="-12.5" width="5"/>
         <polygon closed="false" style="line-style:normal;line-weight:hight;filling:none;color:black" x1="-362" y1="10" y2="10" antialias="false" x2="-356"/>

@@ -7,7 +7,7 @@
 - hydraulique
 - optique
 - fonctionnelle</name>
-<name lang="es">Enlace, por ejemplo:
+        <name lang="es">Enlace, por ejemplo:
 - mecánico
 - neumático
 - hidráulico
@@ -25,6 +25,7 @@
 - hydraulické
 - optické
 - funkční</name>
+        <name lang="en">Link</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

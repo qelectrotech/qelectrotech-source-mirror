@@ -5,6 +5,7 @@
 magnétique</name>
         <name lang="de">Induktivität, stetig veränderbar mit Magnetkern</name>
         <name lang="cs">Indukční cívka s jádrem s měnitelnou indukčností</name>
+        <name lang="en">Inductor, continuously variable</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

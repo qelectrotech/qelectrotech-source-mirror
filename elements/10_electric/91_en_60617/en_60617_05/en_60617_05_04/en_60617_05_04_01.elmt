@@ -4,6 +4,7 @@
         <name lang="fr">Diode, thyristor, bloqué en inverse</name>
         <name lang="de">Thyristordiode, rückwärts sperrend</name>
         <name lang="cs">Diodový zpětně závěrný tyristor</name>
+        <name lang="en">Reverse blocking diode thyristor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

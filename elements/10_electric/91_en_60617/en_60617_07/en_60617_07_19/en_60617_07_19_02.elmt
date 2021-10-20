@@ -6,6 +6,7 @@ Blocksymbol</name>
         <name lang="fr">Dispositif sensible à une proximité, symbole
 fonctionnel</name>
         <name lang="cs">Ústrojí citlivé na přiblížení, bloková značka</name>
+        <name lang="en">Proximity sensing device</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -7,7 +7,7 @@
     <elementInformations>
         <elementInformation show="1" name="designation">855-60x/xxxx-xxxx</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="description">855-60x/xxxx-xxxx</elementInformation>
+        <elementInformation show="1" name="description">Stromwandler, Current Transducer</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license

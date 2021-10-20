@@ -5,6 +5,7 @@
         <name lang="es">Propagación simultánea en ambas direcciones Transmisión y recepción simultáneas</name>
         <name lang="de">gleichzeitige Ausbreitung in beide Richtungen gleichzeitiges Senden und Empfangen (vollduplex)</name>
         <name lang="cs">Současné šíření oběma směry, současné vysílání a příjem</name>
+        <name lang="en">Propagation, both ways, simultaneously; Simultaneous transmission and</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

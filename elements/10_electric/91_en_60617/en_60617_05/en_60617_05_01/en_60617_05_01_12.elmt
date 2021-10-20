@@ -10,6 +10,7 @@ figuré pour un dispositif à enrichissement</name>
 - P-leitender Kanal auf einem N-Substrat</name>
         <name lang="cs">Kanál P na podložce typu N,
 zobrazen pro obohacovací typ IGFET</name>
+        <name lang="en">Conductivity type of the channel, P-type channel on an N-type substrate</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

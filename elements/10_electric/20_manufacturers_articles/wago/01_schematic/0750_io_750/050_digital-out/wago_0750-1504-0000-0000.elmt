@@ -6,12 +6,12 @@
         <name lang="cs">750-1504</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-1504</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1504</elementInformation>
+        <elementInformation show="1" name="description">16DO DC 24V 0.5A</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-12" rotation="0" color="#000000" x="-355" text="24V"/>

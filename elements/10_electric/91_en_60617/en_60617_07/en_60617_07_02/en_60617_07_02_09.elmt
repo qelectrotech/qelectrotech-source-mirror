@@ -4,6 +4,7 @@
         <name lang="fr">Contact à deux ouvertures</name>
         <name lang="de">Zwillingsöffner</name>
         <name lang="cs">Dvojvypínací kontakt</name>
+        <name lang="en">Contact with two breaks</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

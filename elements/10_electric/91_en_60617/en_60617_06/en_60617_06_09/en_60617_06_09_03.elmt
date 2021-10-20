@@ -8,6 +8,7 @@ tensions</name>
 mit Kennzeichnung gleicher Phasenlagen</name>
         <name lang="cs">Transformátor se dvěma vinutími
 s označením okamžité polarity napětí</name>
+        <name lang="en">Transformer with two windings (and instantaneous voltage polarity indicators)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

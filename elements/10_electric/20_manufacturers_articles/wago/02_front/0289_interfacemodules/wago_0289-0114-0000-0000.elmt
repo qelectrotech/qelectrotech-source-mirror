@@ -1,8 +1,8 @@
 <definition type="element" width="97" height="137" version="0.80" hotspot_x="48" hotspot_y="68" link_type="simple">
   <names>
     <name lang="fr">289-114</name>
-    <name lang="de">289-114</name>
-    <name lang="en">289-114</name>
+    <name lang="de">289-114 - Modul mit 8 Widerständen 2k7, 0.6W</name>
+    <name lang="en">289-114 - Module with 8 resistors 2k7, 0.6W</name>
     <name lang="cs">289-114</name>
   </names>
     <elementInformations>
@@ -28,7 +28,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <polygon x1="-29.91" x2="-19.86" x3="-19.86" x4="-29.91" y1="-64.75" y2="-64.75" y3="-36.23" y4="-36.23" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <line x1="-25.12" x2="-25.12" y1="-28.54" y2="28.54" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <polygon x1="-19.86" x2="-9.86" x3="-9.86" x4="-19.86" y1="-64.75" y2="-64.75" y3="-36.23" y4="-36.23" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <rect x="-7.99" y="-9.5" rx="5.71" ry="5.71" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6.28" height="18.98" antialias="false"/>
+    <rect x="-8" y="-9.5" rx="5.71" ry="5.71" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6.28" height="18.98" antialias="false"/>
     <polygon x1="20.21" x2="30.25" x3="30.25" x4="20.21" y1="-64.75" y2="-64.75" y3="-36.23" y4="-36.23" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="-9.86" x2="0.17" x3="0.17" x4="-9.86" y1="-64.75" y2="-64.75" y3="-36.23" y4="-36.23" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <line x1="-7.68" x2="-2.03" y1="-1.6" y2="-1.6" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
@@ -44,7 +44,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <polygon x1="40.18" x2="42.18" x3="42.18" x4="40.18" y1="-64.75" y2="-64.75" y3="-36.23" y4="-36.23" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <line x1="-7.68" x2="-2.03" y1="-4.74" y2="-4.74" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="-14.84" x2="-14.84" y1="-28.54" y2="28.54" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <rect x="11.99" y="-9.5" rx="5.71" ry="5.71" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6.28" height="18.98" antialias="false"/>
+    <rect x="12" y="-9.5" rx="5.71" ry="5.71" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6.28" height="18.98" antialias="false"/>
     <rect x="-17.98" y="-9.5" rx="5.71" ry="5.71" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6.28" height="18.98" antialias="false"/>
     <line x1="32.56" x2="38.22" y1="-4.74" y2="-4.74" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="-27.94" x2="-22.29" y1="4.74" y2="4.74" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
@@ -79,12 +79,12 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <polygon x1="2.1" x2="9.22" x3="9.22" x4="2.1" y1="50.04" y2="50.04" y3="53.35" y4="53.35" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <line x1="4.85" x2="4.85" y1="-28.54" y2="28.54" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <rect x="1.71" y="-9.5" rx="5.71" ry="5.71" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6.28" height="18.98" antialias="false"/>
-    <polygon x1="-37.99" x2="-30.87" x3="-30.87" x4="-37.99" y1="50.04" y2="50.04" y3="53.35" y4="53.35" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+    <polygon x1="-38" x2="-30.87" x3="-30.87" x4="-38" y1="50.04" y2="50.04" y3="53.35" y4="53.35" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="2.1" x2="9.22" x3="9.22" x4="2.1" y1="57.31" y2="57.31" y3="64.64" y4="64.64" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <line x1="2.03" x2="7.68" y1="-1.6" y2="-1.6" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <polygon x1="-1.28" x2="-8.4" x3="-8.4" x4="-1.28" y1="-56.96" y2="-56.96" y3="-64.29" y4="-64.29" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <line x1="2.03" x2="7.68" y1="4.74" y2="4.74" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <polygon x1="-37.99" x2="-30.87" x3="-30.87" x4="-37.99" y1="57.31" y2="57.31" y3="64.64" y4="64.64" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+    <polygon x1="-38" x2="-30.87" x3="-30.87" x4="-38" y1="57.31" y2="57.31" y3="64.64" y4="64.64" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <line x1="2.03" x2="7.68" y1="1.6" y2="1.6" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="2.03" x2="7.68" y1="-4.74" y2="-4.74" end1="none" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <polygon x1="38.77" x2="31.66" x3="31.66" x4="38.77" y1="-56.96" y2="-56.96" y3="-64.29" y4="-64.29" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>

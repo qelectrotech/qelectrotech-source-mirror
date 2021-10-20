@@ -6,6 +6,7 @@ avec canal de type N</name>
         <name lang="de">Sperrschicht-Feldeffekt-Transistor (JFET) mit
 N-Kana</name>
         <name lang="cs">Tranzistor řízený polem s kanálem typu N (JFET)</name>
+        <name lang="en">Junction field effect transistor with N-type channel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

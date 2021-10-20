@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement hexaphasé, en double triangle</name>
         <name lang="de">Sechsphasenwicklung, Doppeldreieckschaltung</name>
         <name lang="cs">Šestifázové vinutí do dvojitého trojúhelníka</name>
+        <name lang="en">Six-phase winding, double delta</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

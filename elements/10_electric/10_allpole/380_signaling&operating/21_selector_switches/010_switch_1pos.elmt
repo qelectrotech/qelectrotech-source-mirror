@@ -1,0 +1,33 @@
+<definition hotspot_x="11" type="element" link_type="simple" width="20" version="0.80" hotspot_y="29" height="60">
+    <uuid uuid="{d3b03c88-7d17-4c10-adb8-94fe40b2f53b}"/>
+    <names>
+        <name lang="pt">Interruptor</name>
+        <name lang="nl">Contact (NO)</name>
+        <name lang="es">Interruptor</name>
+        <name lang="ar">مفتاح</name>
+        <name lang="en">Switch</name>
+        <name lang="it">Interruttore</name>
+        <name lang="ru">Переключатель</name>
+        <name lang="pl">Łącznik</name>
+        <name lang="de">Ein-/Ausschalter</name>
+        <name lang="fr">Interrupteur</name>
+        <name lang="cs">Spínač</name>
+        <name lang="el">Διακόπτης</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-1.75" diameter="3.5" antialias="true" y="8.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-12.5" x1="0" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="0" length2="1.5" end2="none"/>
+        <dynamic_text x="2.75" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" z="3" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo" uuid="{06a2b3b1-c587-454b-89e3-4d8b41413e44}" y="-8.5" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle x="-1.75" diameter="3.5" antialias="true" y="-11.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" y2="8" x1="-5" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-0.7" length2="1.5" end2="none"/>
+        <line y1="12" y2="17" x1="0" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="0" length2="1.5" end2="none"/>
+        <terminal x="0" orientation="s" uuid="{eabdd4d0-f563-43b0-b1e3-4f7f816d79b1}" y="21" name=""/>
+        <terminal x="0" orientation="n" uuid="{6f505308-b294-48e4-821c-da003e1cff89}" y="-21" name=""/>
+    </description>
+</definition>

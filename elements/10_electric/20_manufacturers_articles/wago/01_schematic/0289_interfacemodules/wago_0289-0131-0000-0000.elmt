@@ -6,8 +6,8 @@
         <name lang="cs">289-131</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">289-131</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-131</elementInformation>
         <elementInformation show="1" name="description">Module with terminals</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech

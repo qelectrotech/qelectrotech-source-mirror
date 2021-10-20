@@ -4,6 +4,7 @@
         <name lang="fr">Électrode d'accumulation à photoexcitation</name>
         <name lang="de">Speicherelektrode mit Photoemission</name>
         <name lang="cs">Akumulační fotoemisní elektroda</name>
+        <name lang="en">Photo-emissive storage electrode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

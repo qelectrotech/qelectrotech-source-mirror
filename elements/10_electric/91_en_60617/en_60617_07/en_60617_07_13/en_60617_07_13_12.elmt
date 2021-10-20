@@ -7,6 +7,7 @@ Schaltgerät mit selbsttätiger Auslöseeinrichtung</name>
 commande motorisée ou manuelle, avec
 mécanisme à déclenchement libre</name>
         <name lang="cs">Spínací zařízení s volnoběžkou</name>
+        <name lang="en">Trip-free mechanism, application</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

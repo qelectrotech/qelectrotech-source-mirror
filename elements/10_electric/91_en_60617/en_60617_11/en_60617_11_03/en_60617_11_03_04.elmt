@@ -1,0 +1,25 @@
+<definition link_type="simple" height="40" hotspot_x="144" version="0.80" hotspot_y="34" type="element" width="150">
+    <uuid uuid="{64f28af5-53e6-473f-9886-6177e07d33b4}"/>
+    <names>
+        <name lang="be">Elektrische leiding in een buis</name>
+        <name lang="fr">Ligne dans un conduit,
+Ligne dans un fourreau</name>
+        <name lang="de">Leiter in einem Kabelkanal,
+Leiter in einer Trasse</name>
+        <name lang="cs">Vedení v kabelovém kanálu nebo v trubce</name>
+        <name lang="en">Line within a duct, line within a pipe</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="ElementInfo" text_width="-1" uuid="{4226ce6b-4f90-4f66-a5ee-e4a9a84b62d2}" frame="false" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" Halignment="AlignLeft" x="5" z="1" y="13.5">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end2="none" y2="0" length2="1.5" length1="1.5" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-140" end1="none" x1="0"/>
+        <circle diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-80" y="-30"/>
+        <terminal x="-140" orientation="w" y="0"/>
+        <terminal x="0" orientation="e" y="0"/>
+    </description>
+</definition>

@@ -6,11 +6,12 @@
         <name lang="cs">763-1108</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">763-1108</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">763-1108</elementInformation>
+        <elementInformation show="1" name="description">8DI ADV 24 V DC HS</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect rx="0" y="-40" width="720" ry="0" x="-360" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>

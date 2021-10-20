@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-557</elementInformation>
+        <elementInformation show="1" name="description">4AO +/-10V DC</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" rx="0" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" ry="0" antialias="false" width="720"/>
@@ -44,7 +44,7 @@
         <text x="123" size="5" y="58" text="7"/>
         <text x="203" size="5" y="58" text="4"/>
         <text x="283" size="5" y="58" text="8"/>
-        <text x="-139" size="9" y="-27" text="4AO +/-10V DC /XTR"/>
+        <text x="-139" size="9" y="-27" text="4AO +/-10V DC"/>
         <circle antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5" y="47.5"/>
         <circle antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-122.5" y="47.5"/>
         <circle antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5" y="47.5"/>

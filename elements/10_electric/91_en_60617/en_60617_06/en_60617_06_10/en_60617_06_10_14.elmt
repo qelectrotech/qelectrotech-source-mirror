@@ -8,6 +8,7 @@ charge, couplage étoile-triangle</name>
 Stufenschalter, Stern/Dreieckschaltung</name>
         <name lang="cs">Trojfázový transformátor s přepínačem odboček pod zatížením,
 v zapojení hvězda-trojúhelník</name>
+        <name lang="en">Three-phase transformer with tap changer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

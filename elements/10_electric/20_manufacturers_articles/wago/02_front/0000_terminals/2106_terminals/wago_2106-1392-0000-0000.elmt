@@ -1,16 +1,17 @@
-<definition type="element" width="6" height="189" version="0.80" hotspot_x="2" hotspot_y="85" link_type="simple">
+<definition type="element" width="6" height="189" version="0.80" hotspot_x="2" hotspot_y="85" link_type="terminal">
   <names>
     <name lang="de">2106-1392</name>
     <name lang="fr">2106-1392</name>
     <name lang="en">2106-1392</name>
     <name lang="cs">2106-1392</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2106-1392</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2106-1392</elementInformation>
+        <elementInformation show="1" name="description">6mm² 3L / Abschlussplatte / Endplate</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-81.61" y2="-81.61" y3="100.08" y4="100.08" style="line-style:normal;line-weight:thin;filling:orange;color:lightgray" antialias="false"/>

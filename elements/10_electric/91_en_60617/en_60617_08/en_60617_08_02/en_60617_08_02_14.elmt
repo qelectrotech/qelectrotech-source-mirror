@@ -7,6 +7,7 @@ Pyrometer</name>
 Pyromètre</name>
         <name lang="cs">Teploměr,
 Pyrometr</name>
+        <name lang="en">Thermometer, Pyrometer</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

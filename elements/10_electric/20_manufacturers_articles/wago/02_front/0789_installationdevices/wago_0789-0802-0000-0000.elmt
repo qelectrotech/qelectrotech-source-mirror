@@ -1,11 +1,15 @@
 <definition hotspot_y="94" width="40" version="0.90" hotspot_x="19" height="190" type="element" link_type="simple">
     <names>
         <name lang="cs">789-802</name>
-        <name lang="en">789-802</name>
+        <name lang="en">789-802 - Switch DPST</name>
         <name lang="fr">789-802</name>
-        <name lang="de">789-802</name>
+        <name lang="de">789-802 - Ausschalter, zweipolig</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-802</elementInformation>
+        <elementInformation show="1" name="description">Ausschalter, zweipolig (switch DPST)</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

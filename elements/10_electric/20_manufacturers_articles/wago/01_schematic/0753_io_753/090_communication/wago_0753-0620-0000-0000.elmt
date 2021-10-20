@@ -13,9 +13,9 @@
         <name lang="en">753-620</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">753-620</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="description">DALI-Multi-Master DC-/DC-Converter</elementInformation>
+        <elementInformation show="1" name="designation">753-620</elementInformation>
+        <elementInformation show="1" name="description">Power-Supply DALI-Multimaster</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

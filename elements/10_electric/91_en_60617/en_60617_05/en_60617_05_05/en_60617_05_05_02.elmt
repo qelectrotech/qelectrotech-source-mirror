@@ -6,6 +6,7 @@ l'enveloppe</name>
         <name lang="de">NPN-Transistor, Kollektor mit dem Gehäuse
 verbunden</name>
         <name lang="cs">NPN-Tranzistor, kolektor spojený s pouzdrem</name>
+        <name lang="en">NPN transistor with collector connected to the envelope</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

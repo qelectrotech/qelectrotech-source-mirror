@@ -7,13 +7,13 @@
     <elementInformations>
         <elementInformation show="1" name="designation">855-50x/xxxx-xxxx</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="description">855-50x/xxxx-xxxx</elementInformation>
+        <elementInformation show="1" name="description">Stromwandler, Current Transducer</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>
-        <polygon x3="-2.38" y7="33.09" y1="46.67" y9="-47.2" x7="10.95" x14="-8.44" x8="10.95" x6="8.15" y14="-46.58" y2="49.97" y13="-49.88" y16="33.09" x2="-6.01" x11="1.71" y3="51.89" y12="-51.79" x13="-6.01" x9="8.15" y8="-32.99" y11="-51.94" x12="-2.38" y4="52.04" antialias="false" x4="1.71" x10="5.47" y15="-32.99" x16="-10.85" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y10="-50.3" y5="50.4" x1="-8.44" y6="47.29" x15="-10.85" x5="5.47"/>
+        <polygon x3="-2.38" y7="33.09" y1="46.67" y9="-47.2" x7="10.95" x14="-8.44" x8="10.95" x6="8.15" y14="-46.58" y2="49.97" y13="-49.88" y16="33.09" x2="-6" x11="1.71" y3="51.89" y12="-51.79" x13="-6" x9="8.15" y8="-33" y11="-51.94" x12="-2.38" y4="52.04" antialias="false" x4="1.71" x10="5.47" y15="-33" x16="-10.85" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y10="-50.3" y5="50.4" x1="-8.44" y6="47.29" x15="-10.85" x5="5.47"/>
         <circle x="-7" y="36" antialias="false" style="line-style:normal;line-weight:thin;filling:white;color:black" diameter="14"/>
         <polygon x3="-83" y7="-33" y1="35" x7="83" x8="83" x6="81" y2="35" x2="-81" y3="33" y8="33" y4="-33" antialias="false" x4="-83" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y5="-35" x1="81" y6="-35" x5="-81"/>
         <polygon x3="-64" y7="33" y1="-37" x7="-78" x8="-78" x6="-77" y2="-37" x2="-65" y3="-33" y8="-33" y4="33" antialias="false" x4="-64" style="line-style:normal;line-weight:thin;filling:red;color:black" y5="37" x1="-77" y6="37" x5="-65"/>

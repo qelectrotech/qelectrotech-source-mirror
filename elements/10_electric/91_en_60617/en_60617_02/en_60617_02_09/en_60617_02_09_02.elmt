@@ -5,6 +5,7 @@
         <name lang="de">kohärente Strahlung, nicht ionisierend, z.B.:: kohärentes Licht</name>
         <name lang="es">Radiación coherente, no ionizante, p. Ej. Luz coherente</name>
         <name lang="cs">Koherentní záření, neionizující (např. koherentní světlo)</name>
+        <name lang="en">Radiation, coherent, non-ionizing</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

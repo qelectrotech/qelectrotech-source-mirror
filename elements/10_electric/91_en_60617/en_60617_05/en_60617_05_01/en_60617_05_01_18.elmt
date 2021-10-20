@@ -6,6 +6,7 @@ conductivité est différent</name>
         <name lang="de">Kollektor auf einer Zone entgegengesetzten
 Leitertyps</name>
         <name lang="cs">Kolektor v oblasti odlišného typu vodivosti</name>
+        <name lang="en">Collector on a region of dissimilar conductivity type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

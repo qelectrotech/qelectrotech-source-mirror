@@ -34,6 +34,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
 		Q_PROPERTY(qreal xRadius READ XRadius WRITE setXRadius NOTIFY XRadiusChanged)
 		Q_PROPERTY(qreal yRadius READ YRadius WRITE setYRadius NOTIFY YRadiusChanged)
+        Q_PROPERTY(qreal rotation READ rotation WRITE setRotation NOTIFY rotationChanged)
 
 		// constructors, destructor
 	public:
@@ -47,6 +48,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		void rectChanged();
 		void XRadiusChanged();
 		void YRadiusChanged();
+        void rotationChanged();
 	
 		// methods
 	public:
@@ -69,6 +71,8 @@ class PartRectangle :  public CustomElementGraphicPart
 		void setXRadius(qreal X);
 		qreal YRadius() const {return m_yRadius;}
 		void setYRadius(qreal Y);
+		void setRotation(qreal angle);
+		qreal rotation() const;
 
 		QRectF  sceneGeometricRect() const override;
 		virtual QPointF sceneTopLeft() const;
@@ -109,5 +113,6 @@ class PartRectangle :  public CustomElementGraphicPart
 			  m_old_xRadius,
 			  m_old_yRadius;
 		bool m_modifie_radius_equaly = false;
+        qreal m_rot;
 };
 #endif

@@ -598,795 +598,487 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "none") pen.setColor(QColor(0, 0, 0, 0));
-				else if (style_value == "thin") pen.setWidth(0);
+				else if (style_value == "thin") pen.setWidthF(0.5);
 				else if (style_value == "normal") pen.setWidthF(1.0);
 				else if (style_value == "hight") pen.setWidthF(2.0);
 				else if (style_value == "eleve") pen.setWidthF(5.0);
 
 			} else if (style_name == "filling") {
-				if (style_value == "white") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::white);
-				} else if (style_value == "black") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::black);
-				} else if (style_value == "blue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::blue);
-				} else if (style_value == "red") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::red);
-				} else if (style_value == "green") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::green);
-				} else if (style_value == "gray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::gray);
-				} else if (style_value == "brun") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(97, 44, 0));
-				} else if (style_value == "yellow") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::yellow);
-				} else if (style_value == "cyan") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::cyan);
-				} else if (style_value == "magenta") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::magenta);
-				} else if (style_value == "lightgray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(Qt::lightGray);
-				} else if (style_value == "orange") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 128, 0));
-				} else if (style_value == "purple") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(136, 28, 168));
-				} else if (style_value == "HTMLPinkPink") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 192, 203));
-				} else if (style_value == "HTMLPinkLightPink") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 182, 193));
-				} else if (style_value == "HTMLPinkHotPink") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 105, 180));
-				} else if (style_value == "HTMLPinkDeepPink") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 20, 147));
-				} else if (style_value == "HTMLPinkPaleVioletRed") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(219, 112, 147));
-				} else if (style_value == "HTMLPinkMediumVioletRed") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(199, 21, 133));
-				} else if (style_value == "HTMLRedLightSalmon") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 160, 122));
-				} else if (style_value == "HTMLRedSalmon") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(250, 128, 114));
-				} else if (style_value == "HTMLRedDarkSalmon") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(233, 150, 122));
-				} else if (style_value == "HTMLRedLightCoral") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(240, 128, 128));
-				} else if (style_value == "HTMLRedIndianRed") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(205, 92, 92));
-				} else if (style_value == "HTMLRedCrimson") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(220, 20, 60));
-				} else if (style_value == "HTMLRedFirebrick") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(178, 34, 34));
-				} else if (style_value == "HTMLRedDarkRed") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(139, 0, 0));
-				} else if (style_value == "HTMLRedRed") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 0, 0));
-				} else if (style_value == "HTMLOrangeOrangeRed") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 69, 0));
-				} else if (style_value == "HTMLOrangeTomato") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 99, 71));
-				} else if (style_value == "HTMLOrangeCoral") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 127, 80));
-				} else if (style_value == "HTMLOrangeDarkOrange") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 140, 0));
-				} else if (style_value == "HTMLOrangeOrange") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 165, 0));
-				} else if (style_value == "HTMLYellowYellow") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 255, 0));
-				} else if (style_value == "HTMLYellowLightYellow") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 255, 224));
-				} else if (style_value == "HTMLYellowLemonChiffon") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 250, 205));
-				} else if (style_value == "HTMLYellowLightGoldenrodYellow") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(250, 250, 210));
-				} else if (style_value == "HTMLYellowPapayaWhip") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 239, 213));
-				} else if (style_value == "HTMLYellowMoccasin") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 228, 181));
-				} else if (style_value == "HTMLYellowPeachPuff") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 218, 185));
-				} else if (style_value == "HTMLYellowPaleGoldenrod") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(238, 232, 170));
-				} else if (style_value == "HTMLYellowKhaki") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(240, 230, 140));
-				} else if (style_value == "HTMLYellowDarkKhaki") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(189, 183, 107));
-				} else if (style_value == "HTMLYellowGold") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 215, 0));
-				} else if (style_value == "HTMLBrownCornsilk") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 248, 220));
-				} else if (style_value == "HTMLBrownBlanchedAlmond") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 235, 205));
-				} else if (style_value == "HTMLBrownBisque") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 228, 196));
-				} else if (style_value == "HTMLBrownNavajoWhite") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 222, 173));
-				} else if (style_value == "HTMLBrownWheat") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(245, 222, 179));
-				} else if (style_value == "HTMLBrownBurlywood") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(222, 184, 135));
-				} else if (style_value == "HTMLBrownTan") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(210, 180, 140));
-				} else if (style_value == "HTMLBrownRosyBrown") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(188, 143, 143));
-				} else if (style_value == "HTMLBrownSandyBrown") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(244, 164, 96));
-				} else if (style_value == "HTMLBrownGoldenrod") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(218, 165, 32));
-				} else if (style_value == "HTMLBrownDarkGoldenrod") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(184, 134, 11));
-				} else if (style_value == "HTMLBrownPeru") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(205, 133, 63));
-				} else if (style_value == "HTMLBrownChocolate") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(210, 105, 30));
-				} else if (style_value == "HTMLBrownSaddleBrown") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(139, 69, 19));
-				} else if (style_value == "HTMLBrownSienna") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(160, 82, 45));
-				} else if (style_value == "HTMLBrownBrown") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(165, 42, 42));
-				} else if (style_value == "HTMLBrownMaroon") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(128, 0, 0));
-				} else if (style_value == "HTMLGreenDarkOliveGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(85, 107, 47));
-				} else if (style_value == "HTMLGreenOlive") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(128, 128, 0));
-				} else if (style_value == "HTMLGreenOliveDrab") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(107, 142, 35));
-				} else if (style_value == "HTMLGreenYellowGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(154, 205, 50));
-				} else if (style_value == "HTMLGreenLimeGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(50, 205, 50));
-				} else if (style_value == "HTMLGreenLime") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 255, 0));
-				} else if (style_value == "HTMLGreenLawnGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(124, 252, 0));
-				} else if (style_value == "HTMLGreenChartreuse") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(127, 255, 0));
-				} else if (style_value == "HTMLGreenGreenYellow") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(173, 255, 47));
-				} else if (style_value == "HTMLGreenSpringGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 255, 127));
-				} else if (style_value == "HTMLGreenMediumSpringGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 250, 154));
-				} else if (style_value == "HTMLGreenLightGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(144, 238, 144));
-				} else if (style_value == "HTMLGreenPaleGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(152, 251, 152));
-				} else if (style_value == "HTMLGreenDarkSeaGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(143, 188, 143));
-				} else if (style_value == "HTMLGreenMediumAquamarine") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(102, 205, 170));
-				} else if (style_value == "HTMLGreenMediumSeaGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(60, 179, 113));
-				} else if (style_value == "HTMLGreenSeaGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(46, 139, 87));
-				} else if (style_value == "HTMLGreenForestGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(34, 139, 34));
-				} else if (style_value == "HTMLGreenGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 128, 0));
-				} else if (style_value == "HTMLGreenDarkGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 100, 0));
-				} else if (style_value == "HTMLCyanAqua") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 255, 255));
-				} else if (style_value == "HTMLCyanCyan") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 255, 255));
-				} else if (style_value == "HTMLCyanLightCyan") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(224, 255, 255));
-				} else if (style_value == "HTMLCyanPaleTurquoise") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(175, 238, 238));
-				} else if (style_value == "HTMLCyanAquamarine") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(127, 255, 212));
-				} else if (style_value == "HTMLCyanTurquoise") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(64, 224, 208));
-				} else if (style_value == "HTMLCyanMediumTurquoise") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(72, 209, 204));
-				} else if (style_value == "HTMLCyanDarkTurquoise") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 206, 209));
-				} else if (style_value == "HTMLCyanLightSeaGreen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(32, 178, 170));
-				} else if (style_value == "HTMLCyanCadetBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(95, 158, 160));
-				} else if (style_value == "HTMLCyanDarkCyan") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 139, 139));
-				} else if (style_value == "HTMLCyanTeal") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 128, 128));
-				} else if (style_value == "HTMLBlueLightSteelBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(176, 196, 222));
-				} else if (style_value == "HTMLBluePowderBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(176, 224, 230));
-				} else if (style_value == "HTMLBlueLightBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(173, 216, 230));
-				} else if (style_value == "HTMLBlueSkyBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(135, 206, 235));
-				} else if (style_value == "HTMLBlueLightSkyBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(135, 206, 250));
-				} else if (style_value == "HTMLBlueDeepSkyBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 191, 255));
-				} else if (style_value == "HTMLBlueDodgerBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(30, 144, 255));
-				} else if (style_value == "HTMLBlueCornflowerBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(100, 149, 237));
-				} else if (style_value == "HTMLBlueSteelBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(70, 130, 180));
-				} else if (style_value == "HTMLBlueRoyalBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(65, 105, 225));
-				} else if (style_value == "HTMLBlueBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 0, 255));
-				} else if (style_value == "HTMLBlueMediumBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 0, 205));
-				} else if (style_value == "HTMLBlueDarkBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 0, 139));
-				} else if (style_value == "HTMLBlueNavy") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 0, 128));
-				} else if (style_value == "HTMLBlueMidnightBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(25, 25, 112));
-				} else if (style_value == "HTMLPurpleLavender") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(230, 230, 250));
-				} else if (style_value == "HTMLPurpleThistle") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(216, 191, 216));
-				} else if (style_value == "HTMLPurplePlum") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(221, 160, 221));
-				} else if (style_value == "HTMLPurpleViolet") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(238, 130, 238));
-				} else if (style_value == "HTMLPurpleOrchid") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(218, 112, 214));
-				} else if (style_value == "HTMLPurpleFuchsia") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 0, 255));
-				} else if (style_value == "HTMLPurpleMagenta") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 0, 255));
-				} else if (style_value == "HTMLPurpleMediumOrchid") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(186, 85, 211));
-				} else if (style_value == "HTMLPurpleMediumPurple") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(147, 112, 219));
-				} else if (style_value == "HTMLPurpleBlueViolet") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(138, 43, 226));
-				} else if (style_value == "HTMLPurpleDarkViolet") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(148, 0, 211));
-				} else if (style_value == "HTMLPurpleDarkOrchid") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(153, 50, 204));
-				} else if (style_value == "HTMLPurpleDarkMagenta") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(139, 0, 139));
-				} else if (style_value == "HTMLPurplePurple") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(128, 0, 128));
-				} else if (style_value == "HTMLPurpleIndigo") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(75, 0, 130));
-				} else if (style_value == "HTMLPurpleDarkSlateBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(72, 61, 139));
-				} else if (style_value == "HTMLPurpleSlateBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(106, 90, 205));
-				} else if (style_value == "HTMLPurpleMediumSlateBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(123, 104, 238));
-				} else if (style_value == "HTMLWhiteWhite") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 255, 255));
-				} else if (style_value == "HTMLWhiteSnow") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 250, 250));
-				} else if (style_value == "HTMLWhiteHoneydew") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(240, 255, 240));
-				} else if (style_value == "HTMLWhiteMintCream") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(245, 255, 250));
-				} else if (style_value == "HTMLWhiteAzure") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(240, 255, 255));
-				} else if (style_value == "HTMLWhiteAliceBlue") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(240, 248, 255));
-				} else if (style_value == "HTMLWhiteGhostWhite") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(248, 248, 255));
-				} else if (style_value == "HTMLWhiteWhiteSmoke") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(245, 245, 245));
-				} else if (style_value == "HTMLWhiteSeashell") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 245, 238));
-				} else if (style_value == "HTMLWhiteBeige") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(245, 245, 220));
-				} else if (style_value == "HTMLWhiteOldLace") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(253, 245, 230));
-				} else if (style_value == "HTMLWhiteFloralWhite") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 250, 240));
-				} else if (style_value == "HTMLWhiteIvory") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 255, 240));
-				} else if (style_value == "HTMLWhiteAntiqueWhite") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(250, 235, 215));
-				} else if (style_value == "HTMLWhiteLinen") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(250, 240, 230));
-				} else if (style_value == "HTMLWhiteLavenderBlush") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 240, 245));
-				} else if (style_value == "HTMLWhiteMistyRose") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(255, 228, 225));
-				} else if (style_value == "HTMLGrayGainsboro") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(220, 220, 220));
-				} else if (style_value == "HTMLGrayLightGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(211, 211, 211));
-				} else if (style_value == "HTMLGraySilver") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(192, 192, 192));
-				} else if (style_value == "HTMLGrayDarkGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(169, 169, 169));
-				} else if (style_value == "HTMLGrayGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(128, 128, 128));
-				} else if (style_value == "HTMLGrayDimGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(105, 105, 105));
-				} else if (style_value == "HTMLGrayLightSlateGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(119, 136, 153));
-				} else if (style_value == "HTMLGraySlateGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(112, 128, 144));
-				} else if (style_value == "HTMLGrayDarkSlateGray") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(47, 79, 79));
-				} else if (style_value == "HTMLGrayBlack") {
-					brush.setStyle(Qt::SolidPattern);
-					brush.setColor(QColor(0, 0, 0));
-				} else if (style_value == "hor") {
-					brush.setStyle(Qt::HorPattern);
-					brush.setColor(Qt::black);
-				} else if (style_value == "ver") {
-					brush.setStyle(Qt::VerPattern);
-					brush.setColor(Qt::black);
-				} else if (style_value == "bdiag") {
-					brush.setStyle(Qt::BDiagPattern);
-					brush.setColor(Qt::black);
-				} else if (style_value == "fdiag") {
-					brush.setStyle(Qt::FDiagPattern);
-					brush.setColor(Qt::black);
-				} else if (style_value == "none") {
-					brush.setStyle(Qt::NoBrush);
+				static const QMap<QString, QPair<Qt::BrushStyle, QColor>>
+					filling_style_map = {
+						{"white", {Qt::SolidPattern, Qt::white}},
+						{"black", {Qt::SolidPattern, Qt::black}},
+						{"blue", {Qt::SolidPattern, Qt::blue}},
+						{"red", {Qt::SolidPattern, Qt::red}},
+						{"green", {Qt::SolidPattern, Qt::green}},
+						{"gray", {Qt::SolidPattern, Qt::gray}},
+						{"brun", {Qt::SolidPattern, QColor(97, 44, 0)}},
+						{"yellow", {Qt::SolidPattern, Qt::yellow}},
+						{"cyan", {Qt::SolidPattern, Qt::cyan}},
+						{"magenta", {Qt::SolidPattern, Qt::magenta}},
+						{"lightgray", {Qt::SolidPattern, Qt::lightGray}},
+						{"orange", {Qt::SolidPattern, QColor(255, 128, 0)}},
+						{"purple", {Qt::SolidPattern, QColor(136, 28, 168)}},
+						{"HTMLPinkPink",
+						 {Qt::SolidPattern, QColor(255, 192, 203)}},
+						{"HTMLPinkLightPink",
+						 {Qt::SolidPattern, QColor(255, 182, 193)}},
+						{"HTMLPinkHotPink",
+						 {Qt::SolidPattern, QColor(255, 105, 180)}},
+						{"HTMLPinkDeepPink",
+						 {Qt::SolidPattern, QColor(255, 20, 147)}},
+						{"HTMLPinkPaleVioletRed",
+						 {Qt::SolidPattern, QColor(219, 112, 147)}},
+						{"HTMLPinkMediumVioletRed",
+						 {Qt::SolidPattern, QColor(199, 21, 133)}},
+						{"HTMLRedLightSalmon",
+						 {Qt::SolidPattern, QColor(255, 160, 122)}},
+						{"HTMLRedSalmon",
+						 {Qt::SolidPattern, QColor(250, 128, 114)}},
+						{"HTMLRedDarkSalmon",
+						 {Qt::SolidPattern, QColor(233, 150, 122)}},
+						{"HTMLRedLightCoral",
+						 {Qt::SolidPattern, QColor(240, 128, 128)}},
+						{"HTMLRedIndianRed",
+						 {Qt::SolidPattern, QColor(205, 92, 92)}},
+						{"HTMLRedCrimson",
+						 {Qt::SolidPattern, QColor(220, 20, 60)}},
+						{"HTMLRedFirebrick",
+						 {Qt::SolidPattern, QColor(178, 34, 34)}},
+						{"HTMLRedDarkRed",
+						 {Qt::SolidPattern, QColor(139, 0, 0)}},
+						{"HTMLRedRed", {Qt::SolidPattern, QColor(255, 0, 0)}},
+						{"HTMLOrangeOrangeRed",
+						 {Qt::SolidPattern, QColor(255, 69, 0)}},
+						{"HTMLOrangeTomato",
+						 {Qt::SolidPattern, QColor(255, 99, 71)}},
+						{"HTMLOrangeCoral",
+						 {Qt::SolidPattern, QColor(255, 127, 80)}},
+						{"HTMLOrangeDarkOrange",
+						 {Qt::SolidPattern, QColor(255, 140, 0)}},
+						{"HTMLOrangeOrange",
+						 {Qt::SolidPattern, QColor(255, 165, 0)}},
+						{"HTMLYellowYellow",
+						 {Qt::SolidPattern, QColor(255, 255, 0)}},
+						{"HTMLYellowLightYellow",
+						 {Qt::SolidPattern, QColor(255, 255, 224)}},
+						{"HTMLYellowLemonChiffon",
+						 {Qt::SolidPattern, QColor(255, 250, 205)}},
+						{"HTMLYellowLightGoldenrodYellow",
+						 {Qt::SolidPattern, QColor(250, 250, 210)}},
+						{"HTMLYellowPapayaWhip",
+						 {Qt::SolidPattern, QColor(255, 239, 213)}},
+						{"HTMLYellowMoccasin",
+						 {Qt::SolidPattern, QColor(255, 228, 181)}},
+						{"HTMLYellowPeachPuff",
+						 {Qt::SolidPattern, QColor(255, 218, 185)}},
+						{"HTMLYellowPaleGoldenrod",
+						 {Qt::SolidPattern, QColor(238, 232, 170)}},
+						{"HTMLYellowKhaki",
+						 {Qt::SolidPattern, QColor(240, 230, 140)}},
+						{"HTMLYellowDarkKhaki",
+						 {Qt::SolidPattern, QColor(189, 183, 107)}},
+						{"HTMLYellowGold",
+						 {Qt::SolidPattern, QColor(255, 215, 0)}},
+						{"HTMLBrownCornsilk",
+						 {Qt::SolidPattern, QColor(255, 248, 220)}},
+						{"HTMLBrownBlanchedAlmond",
+						 {Qt::SolidPattern, QColor(255, 235, 205)}},
+						{"HTMLBrownBisque",
+						 {Qt::SolidPattern, QColor(255, 228, 196)}},
+						{"HTMLBrownNavajoWhite",
+						 {Qt::SolidPattern, QColor(255, 222, 173)}},
+						{"HTMLBrownWheat",
+						 {Qt::SolidPattern, QColor(245, 222, 179)}},
+						{"HTMLBrownBurlywood",
+						 {Qt::SolidPattern, QColor(222, 184, 135)}},
+						{"HTMLBrownTan",
+						 {Qt::SolidPattern, QColor(210, 180, 140)}},
+						{"HTMLBrownRosyBrown",
+						 {Qt::SolidPattern, QColor(188, 143, 143)}},
+						{"HTMLBrownSandyBrown",
+						 {Qt::SolidPattern, QColor(244, 164, 96)}},
+						{"HTMLBrownGoldenrod",
+						 {Qt::SolidPattern, QColor(218, 165, 32)}},
+						{"HTMLBrownDarkGoldenrod",
+						 {Qt::SolidPattern, QColor(184, 134, 11)}},
+						{"HTMLBrownPeru",
+						 {Qt::SolidPattern, QColor(205, 133, 63)}},
+						{"HTMLBrownChocolate",
+						 {Qt::SolidPattern, QColor(210, 105, 30)}},
+						{"HTMLBrownSaddleBrown",
+						 {Qt::SolidPattern, QColor(139, 69, 19)}},
+						{"HTMLBrownSienna",
+						 {Qt::SolidPattern, QColor(160, 82, 45)}},
+						{"HTMLBrownBrown",
+						 {Qt::SolidPattern, QColor(165, 42, 42)}},
+						{"HTMLBrownMaroon",
+						 {Qt::SolidPattern, QColor(128, 0, 0)}},
+						{"HTMLGreenDarkOliveGreen",
+						 {Qt::SolidPattern, QColor(85, 107, 47)}},
+						{"HTMLGreenOlive",
+						 {Qt::SolidPattern, QColor(128, 128, 0)}},
+						{"HTMLGreenOliveDrab",
+						 {Qt::SolidPattern, QColor(107, 142, 35)}},
+						{"HTMLGreenYellowGreen",
+						 {Qt::SolidPattern, QColor(154, 205, 50)}},
+						{"HTMLGreenLimeGreen",
+						 {Qt::SolidPattern, QColor(50, 205, 50)}},
+						{"HTMLGreenLime",
+						 {Qt::SolidPattern, QColor(0, 255, 0)}},
+						{"HTMLGreenLawnGreen",
+						 {Qt::SolidPattern, QColor(124, 252, 0)}},
+						{"HTMLGreenChartreuse",
+						 {Qt::SolidPattern, QColor(127, 255, 0)}},
+						{"HTMLGreenGreenYellow",
+						 {Qt::SolidPattern, QColor(173, 255, 47)}},
+						{"HTMLGreenSpringGreen",
+						 {Qt::SolidPattern, QColor(0, 255, 127)}},
+						{"HTMLGreenMediumSpringGreen",
+						 {Qt::SolidPattern, QColor(0, 250, 154)}},
+						{"HTMLGreenLightGreen",
+						 {Qt::SolidPattern, QColor(144, 238, 144)}},
+						{"HTMLGreenPaleGreen",
+						 {Qt::SolidPattern, QColor(152, 251, 152)}},
+						{"HTMLGreenDarkSeaGreen",
+						 {Qt::SolidPattern, QColor(143, 188, 143)}},
+						{"HTMLGreenMediumAquamarine",
+						 {Qt::SolidPattern, QColor(102, 205, 170)}},
+						{"HTMLGreenMediumSeaGreen",
+						 {Qt::SolidPattern, QColor(60, 179, 113)}},
+						{"HTMLGreenSeaGreen",
+						 {Qt::SolidPattern, QColor(46, 139, 87)}},
+						{"HTMLGreenForestGreen",
+						 {Qt::SolidPattern, QColor(34, 139, 34)}},
+						{"HTMLGreenGreen",
+						 {Qt::SolidPattern, QColor(0, 128, 0)}},
+						{"HTMLGreenDarkGreen",
+						 {Qt::SolidPattern, QColor(0, 100, 0)}},
+						{"HTMLCyanAqua",
+						 {Qt::SolidPattern, QColor(0, 255, 255)}},
+						{"HTMLCyanCyan",
+						 {Qt::SolidPattern, QColor(0, 255, 255)}},
+						{"HTMLCyanLightCyan",
+						 {Qt::SolidPattern, QColor(224, 255, 255)}},
+						{"HTMLCyanPaleTurquoise",
+						 {Qt::SolidPattern, QColor(175, 238, 238)}},
+						{"HTMLCyanAquamarine",
+						 {Qt::SolidPattern, QColor(127, 255, 212)}},
+						{"HTMLCyanTurquoise",
+						 {Qt::SolidPattern, QColor(64, 224, 208)}},
+						{"HTMLCyanMediumTurquoise",
+						 {Qt::SolidPattern, QColor(72, 209, 204)}},
+						{"HTMLCyanDarkTurquoise",
+						 {Qt::SolidPattern, QColor(0, 206, 209)}},
+						{"HTMLCyanLightSeaGreen",
+						 {Qt::SolidPattern, QColor(32, 178, 170)}},
+						{"HTMLCyanCadetBlue",
+						 {Qt::SolidPattern, QColor(95, 158, 160)}},
+						{"HTMLCyanDarkCyan",
+						 {Qt::SolidPattern, QColor(0, 139, 139)}},
+						{"HTMLCyanTeal",
+						 {Qt::SolidPattern, QColor(0, 128, 128)}},
+						{"HTMLBlueLightSteelBlue",
+						 {Qt::SolidPattern, QColor(176, 196, 222)}},
+						{"HTMLBluePowderBlue",
+						 {Qt::SolidPattern, QColor(176, 224, 230)}},
+						{"HTMLBlueLightBlue",
+						 {Qt::SolidPattern, QColor(173, 216, 230)}},
+						{"HTMLBlueSkyBlue",
+						 {Qt::SolidPattern, QColor(135, 206, 235)}},
+						{"HTMLBlueLightSkyBlue",
+						 {Qt::SolidPattern, QColor(135, 206, 250)}},
+						{"HTMLBlueDeepSkyBlue",
+						 {Qt::SolidPattern, QColor(0, 191, 255)}},
+						{"HTMLBlueDodgerBlue",
+						 {Qt::SolidPattern, QColor(30, 144, 255)}},
+						{"HTMLBlueCornflowerBlue",
+						 {Qt::SolidPattern, QColor(100, 149, 237)}},
+						{"HTMLBlueSteelBlue",
+						 {Qt::SolidPattern, QColor(70, 130, 180)}},
+						{"HTMLBlueRoyalBlue",
+						 {Qt::SolidPattern, QColor(65, 105, 225)}},
+						{"HTMLBlueBlue", {Qt::SolidPattern, QColor(0, 0, 255)}},
+						{"HTMLBlueMediumBlue",
+						 {Qt::SolidPattern, QColor(0, 0, 205)}},
+						{"HTMLBlueDarkBlue",
+						 {Qt::SolidPattern, QColor(0, 0, 139)}},
+						{"HTMLBlueNavy", {Qt::SolidPattern, QColor(0, 0, 128)}},
+						{"HTMLBlueMidnightBlue",
+						 {Qt::SolidPattern, QColor(25, 25, 112)}},
+						{"HTMLPurpleLavender",
+						 {Qt::SolidPattern, QColor(230, 230, 250)}},
+						{"HTMLPurpleThistle",
+						 {Qt::SolidPattern, QColor(216, 191, 216)}},
+						{"HTMLPurplePlum",
+						 {Qt::SolidPattern, QColor(221, 160, 221)}},
+						{"HTMLPurpleViolet",
+						 {Qt::SolidPattern, QColor(238, 130, 238)}},
+						{"HTMLPurpleOrchid",
+						 {Qt::SolidPattern, QColor(218, 112, 214)}},
+						{"HTMLPurpleFuchsia",
+						 {Qt::SolidPattern, QColor(255, 0, 255)}},
+						{"HTMLPurpleMagenta",
+						 {Qt::SolidPattern, QColor(255, 0, 255)}},
+						{"HTMLPurpleMediumOrchid",
+						 {Qt::SolidPattern, QColor(186, 85, 211)}},
+						{"HTMLPurpleMediumPurple",
+						 {Qt::SolidPattern, QColor(147, 112, 219)}},
+						{"HTMLPurpleBlueViolet",
+						 {Qt::SolidPattern, QColor(138, 43, 226)}},
+						{"HTMLPurpleDarkViolet",
+						 {Qt::SolidPattern, QColor(148, 0, 211)}},
+						{"HTMLPurpleDarkOrchid",
+						 {Qt::SolidPattern, QColor(153, 50, 204)}},
+						{"HTMLPurpleDarkMagenta",
+						 {Qt::SolidPattern, QColor(139, 0, 139)}},
+						{"HTMLPurplePurple",
+						 {Qt::SolidPattern, QColor(128, 0, 128)}},
+						{"HTMLPurpleIndigo",
+						 {Qt::SolidPattern, QColor(75, 0, 130)}},
+						{"HTMLPurpleDarkSlateBlue",
+						 {Qt::SolidPattern, QColor(72, 61, 139)}},
+						{"HTMLPurpleSlateBlue",
+						 {Qt::SolidPattern, QColor(106, 90, 205)}},
+						{"HTMLPurpleMediumSlateBlue",
+						 {Qt::SolidPattern, QColor(123, 104, 238)}},
+						{"HTMLWhiteWhite",
+						 {Qt::SolidPattern, QColor(255, 255, 255)}},
+						{"HTMLWhiteSnow",
+						 {Qt::SolidPattern, QColor(255, 250, 250)}},
+						{"HTMLWhiteHoneydew",
+						 {Qt::SolidPattern, QColor(240, 255, 240)}},
+						{"HTMLWhiteMintCream",
+						 {Qt::SolidPattern, QColor(245, 255, 250)}},
+						{"HTMLWhiteAzure",
+						 {Qt::SolidPattern, QColor(240, 255, 255)}},
+						{"HTMLWhiteAliceBlue",
+						 {Qt::SolidPattern, QColor(240, 248, 255)}},
+						{"HTMLWhiteGhostWhite",
+						 {Qt::SolidPattern, QColor(248, 248, 255)}},
+						{"HTMLWhiteWhiteSmoke",
+						 {Qt::SolidPattern, QColor(245, 245, 245)}},
+						{"HTMLWhiteSeashell",
+						 {Qt::SolidPattern, QColor(255, 245, 238)}},
+						{"HTMLWhiteBeige",
+						 {Qt::SolidPattern, QColor(245, 245, 220)}},
+						{"HTMLWhiteOldLace",
+						 {Qt::SolidPattern, QColor(253, 245, 230)}},
+						{"HTMLWhiteFloralWhite",
+						 {Qt::SolidPattern, QColor(255, 250, 240)}},
+						{"HTMLWhiteIvory",
+						 {Qt::SolidPattern, QColor(255, 255, 240)}},
+						{"HTMLWhiteAntiqueWhite",
+						 {Qt::SolidPattern, QColor(250, 235, 215)}},
+						{"HTMLWhiteLinen",
+						 {Qt::SolidPattern, QColor(250, 240, 230)}},
+						{"HTMLWhiteLavenderBlush",
+						 {Qt::SolidPattern, QColor(255, 240, 245)}},
+						{"HTMLWhiteMistyRose",
+						 {Qt::SolidPattern, QColor(255, 228, 225)}},
+						{"HTMLGrayGainsboro",
+						 {Qt::SolidPattern, QColor(220, 220, 220)}},
+						{"HTMLGrayLightGray",
+						 {Qt::SolidPattern, QColor(211, 211, 211)}},
+						{"HTMLGraySilver",
+						 {Qt::SolidPattern, QColor(192, 192, 192)}},
+						{"HTMLGrayDarkGray",
+						 {Qt::SolidPattern, QColor(169, 169, 169)}},
+						{"HTMLGrayGray",
+						 {Qt::SolidPattern, QColor(128, 128, 128)}},
+						{"HTMLGrayDimGray",
+						 {Qt::SolidPattern, QColor(105, 105, 105)}},
+						{"HTMLGrayLightSlateGray",
+						 {Qt::SolidPattern, QColor(119, 136, 153)}},
+						{"HTMLGraySlateGray",
+						 {Qt::SolidPattern, QColor(112, 128, 144)}},
+						{"HTMLGrayDarkSlateGray",
+						 {Qt::SolidPattern, QColor(47, 79, 79)}},
+						{"HTMLGrayBlack", {Qt::SolidPattern, QColor(0, 0, 0)}},
+						{"hor", {Qt::HorPattern, Qt::black}},
+						{"ver", {Qt::VerPattern, Qt::black}},
+						{"bdiag", {Qt::BDiagPattern, Qt::black}},
+						{"fdiag", {Qt::FDiagPattern, Qt::black}}};
+
+				if (style_value == "none") { brush.setStyle(Qt::NoBrush); }
+				else
+				{
+					auto style_ = filling_style_map.find(style_value);
+					if (style_ == filling_style_map.end()) { continue; }
+
+					brush.setStyle(style_->first);
+	 				brush.setColor(style_->second);
 				}
 			} else if (style_name == "color") {
-				if (style_value == "black") {
-					pen.setColor(QColor(0, 0, 0, pen.color().alpha()));
-				} else if (style_value == "white") {
-					pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
-				} else if (style_value == "red") {
-					pen.setColor(Qt::red);
-				} else if (style_value == "blue") {
-					pen.setColor(Qt::blue);
-				} else if (style_value == "green") {
-					pen.setColor(Qt::green);
-				} else if (style_value == "gray") {
-					pen.setColor(Qt::gray);
-				} else if (style_value == "brun") {
-					pen.setColor(QColor(97, 44, 0));
-				} else if (style_value == "yellow") {
-					pen.setColor(Qt::yellow);
-				} else if (style_value == "cyan") {
-					pen.setColor(Qt::cyan);
-				} else if (style_value == "magenta") {
-					pen.setColor(Qt::magenta);
-				} else if (style_value == "lightgray") {
-					pen.setColor(Qt::lightGray);
-				} else if (style_value == "orange") {
-					pen.setColor(QColor(255, 128, 0));
-				} else if (style_value == "purple") {
-					pen.setColor(QColor(136, 28, 168));
-				} else if (style_value == "HTMLPinkPink") {
-					pen.setColor(QColor(255, 192, 203));
-				} else if (style_value == "HTMLPinkLightPink") {
-					pen.setColor(QColor(255, 182, 193));
-				} else if (style_value == "HTMLPinkHotPink") {
-					pen.setColor(QColor(255, 105, 180));
-				} else if (style_value == "HTMLPinkDeepPink") {
-					pen.setColor(QColor(255, 20, 147));
-				} else if (style_value == "HTMLPinkPaleVioletRed") {
-					pen.setColor(QColor(219, 112, 147));
-				} else if (style_value == "HTMLPinkMediumVioletRed") {
-					pen.setColor(QColor(199, 21, 133));
-				} else if (style_value == "HTMLRedLightSalmon") {
-					pen.setColor(QColor(255, 160, 122));
-				} else if (style_value == "HTMLRedSalmon") {
-					pen.setColor(QColor(250, 128, 114));
-				} else if (style_value == "HTMLRedDarkSalmon") {
-					pen.setColor(QColor(233, 150, 122));
-				} else if (style_value == "HTMLRedLightCoral") {
-					pen.setColor(QColor(240, 128, 128));
-				} else if (style_value == "HTMLRedIndianRed") {
-					pen.setColor(QColor(205, 92, 92));
-				} else if (style_value == "HTMLRedCrimson") {
-					pen.setColor(QColor(220, 20, 60));
-				} else if (style_value == "HTMLRedFirebrick") {
-					pen.setColor(QColor(178, 34, 34));
-				} else if (style_value == "HTMLRedDarkRed") {
-					pen.setColor(QColor(139, 0, 0));
-				} else if (style_value == "HTMLRedRed") {
-					pen.setColor(QColor(255, 0, 0));
-				} else if (style_value == "HTMLOrangeOrangeRed") {
-					pen.setColor(QColor(255, 69, 0));
-				} else if (style_value == "HTMLOrangeTomato") {
-					pen.setColor(QColor(255, 99, 71));
-				} else if (style_value == "HTMLOrangeCoral") {
-					pen.setColor(QColor(255, 127, 80));
-				} else if (style_value == "HTMLOrangeDarkOrange") {
-					pen.setColor(QColor(255, 140, 0));
-				} else if (style_value == "HTMLOrangeOrange") {
-					pen.setColor(QColor(255, 165, 0));
-				} else if (style_value == "HTMLYellowYellow") {
-					pen.setColor(QColor(255, 255, 0));
-				} else if (style_value == "HTMLYellowLightYellow") {
-					pen.setColor(QColor(255, 255, 224));
-				} else if (style_value == "HTMLYellowLemonChiffon") {
-					pen.setColor(QColor(255, 250, 205));
-				} else if (style_value == "HTMLYellowLightGoldenrodYellow") {
-					pen.setColor(QColor(250, 250, 210));
-				} else if (style_value == "HTMLYellowPapayaWhip") {
-					pen.setColor(QColor(255, 239, 213));
-				} else if (style_value == "HTMLYellowMoccasin") {
-					pen.setColor(QColor(255, 228, 181));
-				} else if (style_value == "HTMLYellowPeachPuff") {
-					pen.setColor(QColor(255, 218, 185));
-				} else if (style_value == "HTMLYellowPaleGoldenrod") {
-					pen.setColor(QColor(238, 232, 170));
-				} else if (style_value == "HTMLYellowKhaki") {
-					pen.setColor(QColor(240, 230, 140));
-				} else if (style_value == "HTMLYellowDarkKhaki") {
-					pen.setColor(QColor(189, 183, 107));
-				} else if (style_value == "HTMLYellowGold") {
-					pen.setColor(QColor(255, 215, 0));
-				} else if (style_value == "HTMLBrownCornsilk") {
-					pen.setColor(QColor(255, 248, 220));
-				} else if (style_value == "HTMLBrownBlanchedAlmond") {
-					pen.setColor(QColor(255, 235, 205));
-				} else if (style_value == "HTMLBrownBisque") {
-					pen.setColor(QColor(255, 228, 196));
-				} else if (style_value == "HTMLBrownNavajoWhite") {
-					pen.setColor(QColor(255, 222, 173));
-				} else if (style_value == "HTMLBrownWheat") {
-					pen.setColor(QColor(245, 222, 179));
-				} else if (style_value == "HTMLBrownBurlywood") {
-					pen.setColor(QColor(222, 184, 135));
-				} else if (style_value == "HTMLBrownTan") {
-					pen.setColor(QColor(210, 180, 140));
-				} else if (style_value == "HTMLBrownRosyBrown") {
-					pen.setColor(QColor(188, 143, 143));
-				} else if (style_value == "HTMLBrownSandyBrown") {
-					pen.setColor(QColor(244, 164, 96));
-				} else if (style_value == "HTMLBrownGoldenrod") {
-					pen.setColor(QColor(218, 165, 32));
-				} else if (style_value == "HTMLBrownDarkGoldenrod") {
-					pen.setColor(QColor(184, 134, 11));
-				} else if (style_value == "HTMLBrownPeru") {
-					pen.setColor(QColor(205, 133, 63));
-				} else if (style_value == "HTMLBrownChocolate") {
-					pen.setColor(QColor(210, 105, 30));
-				} else if (style_value == "HTMLBrownSaddleBrown") {
-					pen.setColor(QColor(139, 69, 19));
-				} else if (style_value == "HTMLBrownSienna") {
-					pen.setColor(QColor(160, 82, 45));
-				} else if (style_value == "HTMLBrownBrown") {
-					pen.setColor(QColor(165, 42, 42));
-				} else if (style_value == "HTMLBrownMaroon") {
-					pen.setColor(QColor(128, 0, 0));
-				} else if (style_value == "HTMLGreenDarkOliveGreen") {
-					pen.setColor(QColor(85, 107, 47));
-				} else if (style_value == "HTMLGreenOlive") {
-					pen.setColor(QColor(128, 128, 0));
-				} else if (style_value == "HTMLGreenOliveDrab") {
-					pen.setColor(QColor(107, 142, 35));
-				} else if (style_value == "HTMLGreenYellowGreen") {
-					pen.setColor(QColor(154, 205, 50));
-				} else if (style_value == "HTMLGreenLimeGreen") {
-					pen.setColor(QColor(50, 205, 50));
-				} else if (style_value == "HTMLGreenLime") {
-					pen.setColor(QColor(0, 255, 0));
-				} else if (style_value == "HTMLGreenLawnGreen") {
-					pen.setColor(QColor(124, 252, 0));
-				} else if (style_value == "HTMLGreenChartreuse") {
-					pen.setColor(QColor(127, 255, 0));
-				} else if (style_value == "HTMLGreenGreenYellow") {
-					pen.setColor(QColor(173, 255, 47));
-				} else if (style_value == "HTMLGreenSpringGreen") {
-					pen.setColor(QColor(0, 255, 127));
-				} else if (style_value == "HTMLGreenMediumSpringGreen") {
-					pen.setColor(QColor(0, 250, 154));
-				} else if (style_value == "HTMLGreenLightGreen") {
-					pen.setColor(QColor(144, 238, 144));
-				} else if (style_value == "HTMLGreenPaleGreen") {
-					pen.setColor(QColor(152, 251, 152));
-				} else if (style_value == "HTMLGreenDarkSeaGreen") {
-					pen.setColor(QColor(143, 188, 143));
-				} else if (style_value == "HTMLGreenMediumAquamarine") {
-					pen.setColor(QColor(102, 205, 170));
-				} else if (style_value == "HTMLGreenMediumSeaGreen") {
-					pen.setColor(QColor(60, 179, 113));
-				} else if (style_value == "HTMLGreenSeaGreen") {
-					pen.setColor(QColor(46, 139, 87));
-				} else if (style_value == "HTMLGreenForestGreen") {
-					pen.setColor(QColor(34, 139, 34));
-				} else if (style_value == "HTMLGreenGreen") {
-					pen.setColor(QColor(0, 128, 0));
-				} else if (style_value == "HTMLGreenDarkGreen") {
-					pen.setColor(QColor(0, 100, 0));
-				} else if (style_value == "HTMLCyanAqua") {
-					pen.setColor(QColor(0, 255, 255));
-				} else if (style_value == "HTMLCyanCyan") {
-					pen.setColor(QColor(0, 255, 255));
-				} else if (style_value == "HTMLCyanLightCyan") {
-					pen.setColor(QColor(224, 255, 255));
-				} else if (style_value == "HTMLCyanPaleTurquoise") {
-					pen.setColor(QColor(175, 238, 238));
-				} else if (style_value == "HTMLCyanAquamarine") {
-					pen.setColor(QColor(127, 255, 212));
-				} else if (style_value == "HTMLCyanTurquoise") {
-					pen.setColor(QColor(64, 224, 208));
-				} else if (style_value == "HTMLCyanMediumTurquoise") {
-					pen.setColor(QColor(72, 209, 204));
-				} else if (style_value == "HTMLCyanDarkTurquoise") {
-					pen.setColor(QColor(0, 206, 209));
-				} else if (style_value == "HTMLCyanLightSeaGreen") {
-					pen.setColor(QColor(32, 178, 170));
-				} else if (style_value == "HTMLCyanCadetBlue") {
-					pen.setColor(QColor(95, 158, 160));
-				} else if (style_value == "HTMLCyanDarkCyan") {
-					pen.setColor(QColor(0, 139, 139));
-				} else if (style_value == "HTMLCyanTeal") {
-					pen.setColor(QColor(0, 128, 128));
-				} else if (style_value == "HTMLBlueLightSteelBlue") {
-					pen.setColor(QColor(176, 196, 222));
-				} else if (style_value == "HTMLBluePowderBlue") {
-					pen.setColor(QColor(176, 224, 230));
-				} else if (style_value == "HTMLBlueLightBlue") {
-					pen.setColor(QColor(173, 216, 230));
-				} else if (style_value == "HTMLBlueSkyBlue") {
-					pen.setColor(QColor(135, 206, 235));
-				} else if (style_value == "HTMLBlueLightSkyBlue") {
-					pen.setColor(QColor(135, 206, 250));
-				} else if (style_value == "HTMLBlueDeepSkyBlue") {
-					pen.setColor(QColor(0, 191, 255));
-				} else if (style_value == "HTMLBlueDodgerBlue") {
-					pen.setColor(QColor(30, 144, 255));
-				} else if (style_value == "HTMLBlueCornflowerBlue") {
-					pen.setColor(QColor(100, 149, 237));
-				} else if (style_value == "HTMLBlueSteelBlue") {
-					pen.setColor(QColor(70, 130, 180));
-				} else if (style_value == "HTMLBlueRoyalBlue") {
-					pen.setColor(QColor(65, 105, 225));
-				} else if (style_value == "HTMLBlueBlue") {
-					pen.setColor(QColor(0, 0, 255));
-				} else if (style_value == "HTMLBlueMediumBlue") {
-					pen.setColor(QColor(0, 0, 205));
-				} else if (style_value == "HTMLBlueDarkBlue") {
-					pen.setColor(QColor(0, 0, 139));
-				} else if (style_value == "HTMLBlueNavy") {
-					pen.setColor(QColor(0, 0, 128));
-				} else if (style_value == "HTMLBlueMidnightBlue") {
-					pen.setColor(QColor(25, 25, 112));
-				} else if (style_value == "HTMLPurpleLavender") {
-					pen.setColor(QColor(230, 230, 250));
-				} else if (style_value == "HTMLPurpleThistle") {
-					pen.setColor(QColor(216, 191, 216));
-				} else if (style_value == "HTMLPurplePlum") {
-					pen.setColor(QColor(221, 160, 221));
-				} else if (style_value == "HTMLPurpleViolet") {
-					pen.setColor(QColor(238, 130, 238));
-				} else if (style_value == "HTMLPurpleOrchid") {
-					pen.setColor(QColor(218, 112, 214));
-				} else if (style_value == "HTMLPurpleFuchsia") {
-					pen.setColor(QColor(255, 0, 255));
-				} else if (style_value == "HTMLPurpleMagenta") {
-					pen.setColor(QColor(255, 0, 255));
-				} else if (style_value == "HTMLPurpleMediumOrchid") {
-					pen.setColor(QColor(186, 85, 211));
-				} else if (style_value == "HTMLPurpleMediumPurple") {
-					pen.setColor(QColor(147, 112, 219));
-				} else if (style_value == "HTMLPurpleBlueViolet") {
-					pen.setColor(QColor(138, 43, 226));
-				} else if (style_value == "HTMLPurpleDarkViolet") {
-					pen.setColor(QColor(148, 0, 211));
-				} else if (style_value == "HTMLPurpleDarkOrchid") {
-					pen.setColor(QColor(153, 50, 204));
-				} else if (style_value == "HTMLPurpleDarkMagenta") {
-					pen.setColor(QColor(139, 0, 139));
-				} else if (style_value == "HTMLPurplePurple") {
-					pen.setColor(QColor(128, 0, 128));
-				} else if (style_value == "HTMLPurpleIndigo") {
-					pen.setColor(QColor(75, 0, 130));
-				} else if (style_value == "HTMLPurpleDarkSlateBlue") {
-					pen.setColor(QColor(72, 61, 139));
-				} else if (style_value == "HTMLPurpleSlateBlue") {
-					pen.setColor(QColor(106, 90, 205));
-				} else if (style_value == "HTMLPurpleMediumSlateBlue") {
-					pen.setColor(QColor(123, 104, 238));
-				} else if (style_value == "HTMLWhiteWhite") {
-					pen.setColor(QColor(255, 255, 255));
-				} else if (style_value == "HTMLWhiteSnow") {
-					pen.setColor(QColor(255, 250, 250));
-				} else if (style_value == "HTMLWhiteHoneydew") {
-					pen.setColor(QColor(240, 255, 240));
-				} else if (style_value == "HTMLWhiteMintCream") {
-					pen.setColor(QColor(245, 255, 250));
-				} else if (style_value == "HTMLWhiteAzure") {
-					pen.setColor(QColor(240, 255, 255));
-				} else if (style_value == "HTMLWhiteAliceBlue") {
-					pen.setColor(QColor(240, 248, 255));
-				} else if (style_value == "HTMLWhiteGhostWhite") {
-					pen.setColor(QColor(248, 248, 255));
-				} else if (style_value == "HTMLWhiteWhiteSmoke") {
-					pen.setColor(QColor(245, 245, 245));
-				} else if (style_value == "HTMLWhiteSeashell") {
-					pen.setColor(QColor(255, 245, 238));
-				} else if (style_value == "HTMLWhiteBeige") {
-					pen.setColor(QColor(245, 245, 220));
-				} else if (style_value == "HTMLWhiteOldLace") {
-					pen.setColor(QColor(253, 245, 230));
-				} else if (style_value == "HTMLWhiteFloralWhite") {
-					pen.setColor(QColor(255, 250, 240));
-				} else if (style_value == "HTMLWhiteIvory") {
-					pen.setColor(QColor(255, 255, 240));
-				} else if (style_value == "HTMLWhiteAntiqueWhite") {
-					pen.setColor(QColor(250, 235, 215));
-				} else if (style_value == "HTMLWhiteLinen") {
-					pen.setColor(QColor(250, 240, 230));
-				} else if (style_value == "HTMLWhiteLavenderBlush") {
-					pen.setColor(QColor(255, 240, 245));
-				} else if (style_value == "HTMLWhiteMistyRose") {
-					pen.setColor(QColor(255, 228, 225));
-				} else if (style_value == "HTMLGrayGainsboro") {
-					pen.setColor(QColor(220, 220, 220));
-				} else if (style_value == "HTMLGrayLightGray") {
-					pen.setColor(QColor(211, 211, 211));
-				} else if (style_value == "HTMLGraySilver") {
-					pen.setColor(QColor(192, 192, 192));
-				} else if (style_value == "HTMLGrayDarkGray") {
-					pen.setColor(QColor(169, 169, 169));
-				} else if (style_value == "HTMLGrayGray") {
-					pen.setColor(QColor(128, 128, 128));
-				} else if (style_value == "HTMLGrayDimGray") {
-					pen.setColor(QColor(105, 105, 105));
-				} else if (style_value == "HTMLGrayLightSlateGray") {
-					pen.setColor(QColor(119, 136, 153));
-				} else if (style_value == "HTMLGraySlateGray") {
-					pen.setColor(QColor(112, 128, 144));
-				} else if (style_value == "HTMLGrayDarkSlateGray") {
-					pen.setColor(QColor(47, 79, 79));
-				} else if (style_value == "HTMLGrayBlack") {
-					pen.setColor(QColor(0, 0, 0));
-				} else if (style_value == "none") {
-					pen.setBrush(Qt::transparent);
+				static const QMap<QString, QColor> color_style_map = {
+					{"red", Qt::red},
+					{"blue", Qt::blue},
+					{"green", Qt::green},
+					{"gray", Qt::gray},
+					{"brun", QColor(97, 44, 0)},
+					{"yellow", Qt::yellow},
+					{"cyan", Qt::cyan},
+					{"magenta", Qt::magenta},
+					{"lightgray", Qt::lightGray},
+					{"orange", QColor(255, 128, 0)},
+					{"purple", QColor(136, 28, 168)},
+					{"HTMLPinkPink", QColor(255, 192, 203)},
+					{"HTMLPinkLightPink", QColor(255, 182, 193)},
+					{"HTMLPinkHotPink", QColor(255, 105, 180)},
+					{"HTMLPinkDeepPink", QColor(255, 20, 147)},
+					{"HTMLPinkPaleVioletRed", QColor(219, 112, 147)},
+					{"HTMLPinkMediumVioletRed", QColor(199, 21, 133)},
+					{"HTMLRedLightSalmon", QColor(255, 160, 122)},
+					{"HTMLRedSalmon", QColor(250, 128, 114)},
+					{"HTMLRedDarkSalmon", QColor(233, 150, 122)},
+					{"HTMLRedLightCoral", QColor(240, 128, 128)},
+					{"HTMLRedIndianRed", QColor(205, 92, 92)},
+					{"HTMLRedCrimson", QColor(220, 20, 60)},
+					{"HTMLRedFirebrick", QColor(178, 34, 34)},
+					{"HTMLRedDarkRed", QColor(139, 0, 0)},
+					{"HTMLRedRed", QColor(255, 0, 0)},
+					{"HTMLOrangeOrangeRed", QColor(255, 69, 0)},
+					{"HTMLOrangeTomato", QColor(255, 99, 71)},
+					{"HTMLOrangeCoral", QColor(255, 127, 80)},
+					{"HTMLOrangeDarkOrange", QColor(255, 140, 0)},
+					{"HTMLOrangeOrange", QColor(255, 165, 0)},
+					{"HTMLYellowYellow", QColor(255, 255, 0)},
+					{"HTMLYellowLightYellow", QColor(255, 255, 224)},
+					{"HTMLYellowLemonChiffon", QColor(255, 250, 205)},
+					{"HTMLYellowLightGoldenrodYellow", QColor(250, 250, 210)},
+					{"HTMLYellowPapayaWhip", QColor(255, 239, 213)},
+					{"HTMLYellowMoccasin", QColor(255, 228, 181)},
+					{"HTMLYellowPeachPuff", QColor(255, 218, 185)},
+					{"HTMLYellowPaleGoldenrod", QColor(238, 232, 170)},
+					{"HTMLYellowKhaki", QColor(240, 230, 140)},
+					{"HTMLYellowDarkKhaki", QColor(189, 183, 107)},
+					{"HTMLYellowGold", QColor(255, 215, 0)},
+					{"HTMLBrownCornsilk", QColor(255, 248, 220)},
+					{"HTMLBrownBlanchedAlmond", QColor(255, 235, 205)},
+					{"HTMLBrownBisque", QColor(255, 228, 196)},
+					{"HTMLBrownNavajoWhite", QColor(255, 222, 173)},
+					{"HTMLBrownWheat", QColor(245, 222, 179)},
+					{"HTMLBrownBurlywood", QColor(222, 184, 135)},
+					{"HTMLBrownTan", QColor(210, 180, 140)},
+					{"HTMLBrownRosyBrown", QColor(188, 143, 143)},
+					{"HTMLBrownSandyBrown", QColor(244, 164, 96)},
+					{"HTMLBrownGoldenrod", QColor(218, 165, 32)},
+					{"HTMLBrownDarkGoldenrod", QColor(184, 134, 11)},
+					{"HTMLBrownPeru", QColor(205, 133, 63)},
+					{"HTMLBrownChocolate", QColor(210, 105, 30)},
+					{"HTMLBrownSaddleBrown", QColor(139, 69, 19)},
+					{"HTMLBrownSienna", QColor(160, 82, 45)},
+					{"HTMLBrownBrown", QColor(165, 42, 42)},
+					{"HTMLBrownMaroon", QColor(128, 0, 0)},
+					{"HTMLGreenDarkOliveGreen", QColor(85, 107, 47)},
+					{"HTMLGreenOlive", QColor(128, 128, 0)},
+					{"HTMLGreenOliveDrab", QColor(107, 142, 35)},
+					{"HTMLGreenYellowGreen", QColor(154, 205, 50)},
+					{"HTMLGreenLimeGreen", QColor(50, 205, 50)},
+					{"HTMLGreenLime", QColor(0, 255, 0)},
+					{"HTMLGreenLawnGreen", QColor(124, 252, 0)},
+					{"HTMLGreenChartreuse", QColor(127, 255, 0)},
+					{"HTMLGreenGreenYellow", QColor(173, 255, 47)},
+					{"HTMLGreenSpringGreen", QColor(0, 255, 127)},
+					{"HTMLGreenMediumSpringGreen", QColor(0, 250, 154)},
+					{"HTMLGreenLightGreen", QColor(144, 238, 144)},
+					{"HTMLGreenPaleGreen", QColor(152, 251, 152)},
+					{"HTMLGreenDarkSeaGreen", QColor(143, 188, 143)},
+					{"HTMLGreenMediumAquamarine", QColor(102, 205, 170)},
+					{"HTMLGreenMediumSeaGreen", QColor(60, 179, 113)},
+					{"HTMLGreenSeaGreen", QColor(46, 139, 87)},
+					{"HTMLGreenForestGreen", QColor(34, 139, 34)},
+					{"HTMLGreenGreen", QColor(0, 128, 0)},
+					{"HTMLGreenDarkGreen", QColor(0, 100, 0)},
+					{"HTMLCyanAqua", QColor(0, 255, 255)},
+					{"HTMLCyanCyan", QColor(0, 255, 255)},
+					{"HTMLCyanLightCyan", QColor(224, 255, 255)},
+					{"HTMLCyanPaleTurquoise", QColor(175, 238, 238)},
+					{"HTMLCyanAquamarine", QColor(127, 255, 212)},
+					{"HTMLCyanTurquoise", QColor(64, 224, 208)},
+					{"HTMLCyanMediumTurquoise", QColor(72, 209, 204)},
+					{"HTMLCyanDarkTurquoise", QColor(0, 206, 209)},
+					{"HTMLCyanLightSeaGreen", QColor(32, 178, 170)},
+					{"HTMLCyanCadetBlue", QColor(95, 158, 160)},
+					{"HTMLCyanDarkCyan", QColor(0, 139, 139)},
+					{"HTMLCyanTeal", QColor(0, 128, 128)},
+					{"HTMLBlueLightSteelBlue", QColor(176, 196, 222)},
+					{"HTMLBluePowderBlue", QColor(176, 224, 230)},
+					{"HTMLBlueLightBlue", QColor(173, 216, 230)},
+					{"HTMLBlueSkyBlue", QColor(135, 206, 235)},
+					{"HTMLBlueLightSkyBlue", QColor(135, 206, 250)},
+					{"HTMLBlueDeepSkyBlue", QColor(0, 191, 255)},
+					{"HTMLBlueDodgerBlue", QColor(30, 144, 255)},
+					{"HTMLBlueCornflowerBlue", QColor(100, 149, 237)},
+					{"HTMLBlueSteelBlue", QColor(70, 130, 180)},
+					{"HTMLBlueRoyalBlue", QColor(65, 105, 225)},
+					{"HTMLBlueBlue", QColor(0, 0, 255)},
+					{"HTMLBlueMediumBlue", QColor(0, 0, 205)},
+					{"HTMLBlueDarkBlue", QColor(0, 0, 139)},
+					{"HTMLBlueNavy", QColor(0, 0, 128)},
+					{"HTMLBlueMidnightBlue", QColor(25, 25, 112)},
+					{"HTMLPurpleLavender", QColor(230, 230, 250)},
+					{"HTMLPurpleThistle", QColor(216, 191, 216)},
+					{"HTMLPurplePlum", QColor(221, 160, 221)},
+					{"HTMLPurpleViolet", QColor(238, 130, 238)},
+					{"HTMLPurpleOrchid", QColor(218, 112, 214)},
+					{"HTMLPurpleFuchsia", QColor(255, 0, 255)},
+					{"HTMLPurpleMagenta", QColor(255, 0, 255)},
+					{"HTMLPurpleMediumOrchid", QColor(186, 85, 211)},
+					{"HTMLPurpleMediumPurple", QColor(147, 112, 219)},
+					{"HTMLPurpleBlueViolet", QColor(138, 43, 226)},
+					{"HTMLPurpleDarkViolet", QColor(148, 0, 211)},
+					{"HTMLPurpleDarkOrchid", QColor(153, 50, 204)},
+					{"HTMLPurpleDarkMagenta", QColor(139, 0, 139)},
+					{"HTMLPurplePurple", QColor(128, 0, 128)},
+					{"HTMLPurpleIndigo", QColor(75, 0, 130)},
+					{"HTMLPurpleDarkSlateBlue", QColor(72, 61, 139)},
+					{"HTMLPurpleSlateBlue", QColor(106, 90, 205)},
+					{"HTMLPurpleMediumSlateBlue", QColor(123, 104, 238)},
+					{"HTMLWhiteWhite", QColor(255, 255, 255)},
+					{"HTMLWhiteSnow", QColor(255, 250, 250)},
+					{"HTMLWhiteHoneydew", QColor(240, 255, 240)},
+					{"HTMLWhiteMintCream", QColor(245, 255, 250)},
+					{"HTMLWhiteAzure", QColor(240, 255, 255)},
+					{"HTMLWhiteAliceBlue", QColor(240, 248, 255)},
+					{"HTMLWhiteGhostWhite", QColor(248, 248, 255)},
+					{"HTMLWhiteWhiteSmoke", QColor(245, 245, 245)},
+					{"HTMLWhiteSeashell", QColor(255, 245, 238)},
+					{"HTMLWhiteBeige", QColor(245, 245, 220)},
+					{"HTMLWhiteOldLace", QColor(253, 245, 230)},
+					{"HTMLWhiteFloralWhite", QColor(255, 250, 240)},
+					{"HTMLWhiteIvory", QColor(255, 255, 240)},
+					{"HTMLWhiteAntiqueWhite", QColor(250, 235, 215)},
+					{"HTMLWhiteLinen", QColor(250, 240, 230)},
+					{"HTMLWhiteLavenderBlush", QColor(255, 240, 245)},
+					{"HTMLWhiteMistyRose", QColor(255, 228, 225)},
+					{"HTMLGrayGainsboro", QColor(220, 220, 220)},
+					{"HTMLGrayLightGray", QColor(211, 211, 211)},
+					{"HTMLGraySilver", QColor(192, 192, 192)},
+					{"HTMLGrayDarkGray", QColor(169, 169, 169)},
+					{"HTMLGrayGray", QColor(128, 128, 128)},
+					{"HTMLGrayDimGray", QColor(105, 105, 105)},
+					{"HTMLGrayLightSlateGray", QColor(119, 136, 153)},
+					{"HTMLGraySlateGray", QColor(112, 128, 144)},
+					{"HTMLGrayDarkSlateGray", QColor(47, 79, 79)},
+					{"HTMLGrayBlack", QColor(0, 0, 0)}
+				};
+
+				if (style_value == "none") { pen.setBrush(Qt::transparent); }
+				else if (style_value == "black")
+				{
+					pen.setBrush(QColor(0, 0, 0, pen.color().alpha()));
+				}
+				else if (style_value == "white")
+				{
+					pen.setBrush(QColor(255, 255, 255, pen.color().alpha()));
+				}
+				else
+				{
+					auto style_ = color_style_map.find(style_value);
+					if (style_ == color_style_map.end()) { continue; }
+
+					pen.setColor(*style_);
 				}
 			}
 		}

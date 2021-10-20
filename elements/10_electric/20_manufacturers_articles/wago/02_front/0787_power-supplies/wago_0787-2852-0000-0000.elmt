@@ -6,11 +6,12 @@
         <name lang="cs">787-2852</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">787-2852</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">787-2852</elementInformation>
+        <elementInformation show="1" name="description">Power for JUMPFLEX DC24V, 1.0A</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-21.95" y3="104.98" x4="-21.95" y1="-105.05" antialias="false" x3="22.87" x2="22.87" y4="104.98" y2="-105.05"/>
@@ -22,12 +23,12 @@
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="20.4" y1="-99.96" antialias="false" x2="-19.47" y2="-99.96"/>
         <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="21.38" y3="75.15" x4="21.38" y1="104.98" antialias="false" x3="-20.44" x2="-20.44" y4="75.15" y2="104.98"/>
         <polygon style="line-style:normal;line-weight:thin;filling:orange;color:black" x1="-19.47" y3="104.94" x4="-19.47" y1="95.2" antialias="false" x3="20.4" x2="20.4" y4="104.94" y2="95.2"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="2.48" y3="98.77" x4="2.48" y1="95.99" antialias="false" x3="20.4" x2="20.4" y4="98.77" y2="95.99"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="2.48" y3="98.77" x4="2.48" y1="96" antialias="false" x3="20.4" x2="20.4" y4="98.77" y2="96"/>
         <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="-3.04" y3="104.17" x4="-3.04" y1="101.39" antialias="false" x3="3.97" x2="3.97" y4="104.17" y2="101.39"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="-19.47" y3="98.77" x4="-19.47" y1="95.99" antialias="false" x3="-1.55" x2="-1.55" y4="98.77" y2="95.99"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x1="-19.47" y3="98.77" x4="-19.47" y1="96" antialias="false" x3="-1.55" x2="-1.55" y4="98.77" y2="96"/>
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-19.47" y1="99.89" antialias="false" x2="20.4" y2="99.89"/>
         <polygon x1="-19.55" y4="96.03" x2="-19.55" y1="75.15" y7="94.97" x3="-17.55" x6="18.48" x5="18.48" y5="96.03" y6="94.97" x4="-17.55" style="line-style:normal;line-weight:thin;filling:white;color:black" y2="94.97" y8="75.15" y3="94.97" x8="20.48" antialias="false" x7="20.48"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:blue" x1="-1.79" y3="95.65" x4="-1.79" y1="93.85" antialias="false" x3="3.01" x2="3.01" y4="95.65" y2="93.85"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:blue" x1="-1.79" y3="95.65" x4="-1.79" y1="93.85" antialias="false" x3="3" x2="3" y4="95.65" y2="93.85"/>
         <polygon style="line-style:normal;line-weight:thin;filling:orange;color:black" x1="-17.73" y3="85.04" x4="-17.73" y1="80.24" antialias="false" x3="-9.92" x2="-9.92" y4="85.04" y2="80.24"/>
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-17.73" y1="82.64" antialias="false" x2="-9.96" y2="82.64"/>
         <polygon style="line-style:normal;line-weight:thin;filling:orange;color:black" x1="-8.2" y3="85.04" x4="-8.2" y1="80.24" antialias="false" x3="-0.4" x2="-0.4" y4="85.04" y2="80.24"/>

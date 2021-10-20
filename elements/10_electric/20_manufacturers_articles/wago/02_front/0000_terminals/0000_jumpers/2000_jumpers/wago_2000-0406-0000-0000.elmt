@@ -5,12 +5,13 @@
     <name lang="de">2000-406</name>
     <name lang="cs">2000-406</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2000-406</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2000-406</elementInformation>
+        <elementInformation show="1" name="description">Jumper for Series 2000, 2020, 2200</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-8.28" x2="-8.28" x3="34.83" x4="34.83" y1="3.82" y2="-3.86" y3="-3.86" y4="3.82" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>

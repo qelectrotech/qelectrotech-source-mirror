@@ -8,6 +8,7 @@ ionisant</name>
 nichtionisierende Strahlungswärme</name>
         <name lang="cs">Termoemisní diodový generátor
 s neionizujícím radiačním tepelným zdrojem</name>
+        <name lang="en">Thermionic diode generator with non-ionizing radiation heat source</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

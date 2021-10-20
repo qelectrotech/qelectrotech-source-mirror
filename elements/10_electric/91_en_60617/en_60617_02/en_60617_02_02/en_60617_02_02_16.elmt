@@ -5,6 +5,7 @@
         <name lang="de">Mittelleiter </name>
         <name lang="es">Medio</name>
         <name lang="cs">Střední vodič (stejnosměrný proud)</name>
+        <name lang="en">Mid-wire</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

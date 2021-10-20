@@ -6,12 +6,12 @@
         <name lang="cs">750-405/020-000</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-405/020-000</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-405/020-000</elementInformation>
+        <elementInformation show="1" name="description">2DI 230V AC</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect width="720" antialias="false" ry="0" rx="0" y="-40" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360"/>

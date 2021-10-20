@@ -5,6 +5,7 @@
 grille associée</name>
         <name lang="de">zylindrische Fokussierelektrode, mit Gitter </name>
         <name lang="cs">Válcová zaostřovací elektroda s mřížkou</name>
+        <name lang="en">Cylindrical focusing electrode with grid</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

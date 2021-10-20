@@ -1,0 +1,34 @@
+<definition hotspot_x="22" type="element" link_type="simple" width="40" version="0.80" hotspot_y="34" height="50">
+    <uuid uuid="{292876ce-c7fc-4eed-b957-ba6eecbd5ef2}"/>
+    <names>
+        <name lang="es">Conmutador bipolar NA</name>
+        <name lang="en">Switch, DPST, n.o.</name>
+        <name lang="ro">Comutator bipolar n,d.</name>
+        <name lang="pl">Zestyki zwierne o przełączaniu niezawodnym</name>
+        <name lang="fr">Commutateur bipolaire n.o.</name>
+        <name lang="cs">Dvoupólový spínač</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle x="8.25" diameter="3.5" antialias="true" y="-21.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="8.25" diameter="3.5" antialias="true" y="-1.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-11.75" diameter="3.5" antialias="true" y="-1.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-11.75" diameter="3.5" antialias="true" y="-21.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-30" y2="-22" x1="-10" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" end2="none"/>
+        <line y1="-30" y2="-22" x1="10" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="10" length2="1.5" end2="none"/>
+        <line y1="-10" y2="-10" x1="-18" length1="1.5" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" end1="none" x2="13" length2="1.5" end2="none"/>
+        <dynamic_text x="16" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" z="9" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo" uuid="{131bf174-6f11-49a5-8e31-1366974c78b9}" y="-18" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="10" y2="2" x1="-10" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-10" length2="1.5" end2="none"/>
+        <line y1="10" y2="2" x1="10" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="10" length2="1.5" end2="none"/>
+        <line y1="-1.7" y2="-20" x1="-10.6" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="-15" length2="1.5" end2="none"/>
+        <line y1="-1.7" y2="-20" x1="9.4" length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="5" length2="1.5" end2="none"/>
+        <terminal x="10" orientation="s" uuid="{62d6aa78-c93e-4ce0-9108-17cc95085452}" y="10" name=""/>
+        <terminal x="-10" orientation="s" uuid="{52bf346a-cfa7-498c-85fd-4400fd338bc3}" y="10" name=""/>
+        <terminal x="-10" orientation="n" uuid="{53465032-346d-4056-9a81-87c47bb07dda}" y="-30" name=""/>
+        <terminal x="10" orientation="n" uuid="{b2675506-49be-4c22-8d32-aa9be7a200d4}" y="-30" name=""/>
+    </description>
+</definition>

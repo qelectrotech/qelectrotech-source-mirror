@@ -4,6 +4,7 @@
         <name lang="fr">Borne</name>
         <name lang="de">Anschluß, z. B. Klemme</name>
         <name lang="cs">Svorka</name>
+        <name lang="en">Terminal</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,7 +1,7 @@
 <definition width="80" version="0.4" hotspot_x="40" hotspot_y="34" height="60" link_type="master" type="element">
 <uuid uuid="{189A2BE7-D456-4DBD-BF70-A3BF7841745A}"/><names>
         <name lang="ar">قاطع رباعي القطبية</name>
-        <name lang="de">Leitungsschutzschalter 4P</name>
+        <name lang="de">Leitungsschutzschalter LS 4P</name>
         <name lang="en">Circuit-breaker</name>
         <name lang="es">Disyuntor termico magnetico en 4P</name>
         <name lang="it">Int. Aut. Magneto-termico 4P</name>

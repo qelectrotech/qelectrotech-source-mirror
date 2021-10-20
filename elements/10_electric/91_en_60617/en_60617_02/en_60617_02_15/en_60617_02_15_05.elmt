@@ -3,9 +3,9 @@
     <names>
         <name lang="fr">Equipotentialité</name>
         <name lang="es">Equipotential</name>
-        <name lang="en">Equipotentiality</name>
         <name lang="de">Äquipotential</name>
         <name lang="cs">Ekvipotencialita</name>
+        <name lang="en">Protective equipotential bonding</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

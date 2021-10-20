@@ -13,12 +13,12 @@
         <name lang="fr">750-515</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-        <elementInformation name="designation" show="1">750-515</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-515</elementInformation>
+        <elementInformation show="1" name="description">4DO 4RO 250VAC 2.0A NO</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect rx="0" height="90" x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" width="720" y="-40" antialias="false"/>
@@ -60,7 +60,7 @@
         <text text="7" x="123" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58"/>
         <text text="4" x="203" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58"/>
         <text text="8" x="283" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58"/>
-        <text text="4RO 250VAC 2,0A NO" x="-139" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-27"/>
+        <text text="4DO 4RO 250VAC 2.0A NO" x="-139" color="#000000" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-27"/>
         <line y1="10" end1="none" x2="-256" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-280" length2="1.5" y2="10" end2="none" antialias="false"/>
         <line y1="10" end1="none" x2="-224" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-256" length2="1.5" y2="0" end2="none" antialias="false"/>
         <line y1="10" end1="none" x2="-200" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-228" length2="1.5" y2="10" end2="none" antialias="false"/>

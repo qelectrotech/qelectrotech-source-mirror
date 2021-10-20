@@ -4,6 +4,7 @@
         <name lang="de">Kohle-Säulen-Widerstand</name>
         <name lang="fr">Résistance variable à disques de carbone</name>
         <name lang="cs">Rezistor uhlíkového sloupce</name>
+        <name lang="en">Carbon-pile resistor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

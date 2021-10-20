@@ -609,3 +609,67 @@ void changeElementDataCommand::redo() {
 	m_scene->setElementData(m_new);
 	QUndoCommand::redo();
 }
+
+RotateElementsCommand::RotateElementsCommand(ElementScene *scene, QUndoCommand *parent) :
+ElementEditionCommand(QObject::tr("Pivoter la selection", "undo caption"), scene, nullptr, parent)
+{
+	m_items = scene->selectedItems();
+}
+
+/**
+	@brief RotateElementsCommand::undo
+*/
+void RotateElementsCommand::undo()
+{
+	for (QGraphicsItem *item : m_items)
+	{
+		if (item->type() == PartTerminal::Type) {
+			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
+			term->setRotation(term->rotation()-90);
+		}
+		else if (item->type() == PartRectangle::Type) {
+			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
+			rect->setRotation(rect->rotation()-90);
+		}
+		else if (item->type() == PartLine::Type) {
+			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
+			line->setRotation(line->rotation()-90);
+		}
+		else if (item->type() == PartPolygon::Type) {
+			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
+			poly->setRotation(poly->rotation()-90);
+		}
+		else {
+			item->setRotation(item->rotation()-90);
+		}
+	}
+}
+/**
+	@brief RotateElementsCommand::redo
+*/
+void RotateElementsCommand::redo()
+{
+	for (QGraphicsItem *item : m_items)
+	{
+		if (item->type() == PartTerminal::Type) {
+			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
+			term->setRotation(term->rotation()+90);
+		}
+		else if (item->type() == PartRectangle::Type) {
+			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
+			rect->setRotation(rect->rotation()+90);
+		}
+		else if (item->type() == PartLine::Type) {
+			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
+			line->setRotation(line->rotation()+90);
+		}
+		else if (item->type() == PartPolygon::Type) {
+			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
+			poly->setRotation(poly->rotation()+90);
+		}
+		else {
+			item->setRotation(item->rotation()+90);
+		}
+	}
+
+}

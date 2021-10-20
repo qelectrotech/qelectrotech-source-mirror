@@ -4,6 +4,7 @@
         <name lang="de">Überspannungsableiter</name>
         <name lang="fr">Parafoudre</name>
         <name lang="cs">Rázový svodič, svodič přepětí</name>
+        <name lang="en">Surge diverter; Lightning arrester</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

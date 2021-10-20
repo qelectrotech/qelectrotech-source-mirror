@@ -1,0 +1,27 @@
+<definition hotspot_x="26" type="element" height="30" version="0.80" width="40" link_type="simple" hotspot_y="25">
+    <uuid uuid="{bcd41503-9aa6-4b05-a918-f3c6dc9a9fb6}"/>
+    <names>
+        <name lang="de">Flutlichtleuchte</name>
+        <name lang="be">Projector met divergerende lichtbunde</name>
+        <name lang="fr">Projecteur d'illumination</name>
+        <name lang="cs">Světlomet, širokoúhlý</name>
+        <name lang="en">Flood light</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{a10f8499-d3b2-422f-a9a5-45c6d40c11dc}" frame="false" y="13.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc x="-20" height="20" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" width="20" start="90" antialias="true"/>
+        <circle x="-15" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10" antialias="false"/>
+        <line x2="-7" x1="-13" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" end2="none" y1="-13" end1="none" antialias="false"/>
+        <line x2="-13" x1="-7" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7" end2="none" y1="-13" end1="none" antialias="false"/>
+        <line x2="5" x1="0" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" end2="none" y1="-15" end1="none" antialias="false"/>
+        <line x2="5" x1="0" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="-5" end1="none" antialias="false"/>
+        <polygon x3="8" y4="-19" x2="4" x1="6" y3="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-21" x4="6" y1="-19" antialias="false"/>
+        <polygon x3="8" y4="1" x2="6" x1="4" y3="3" style="line-style:normal;line-weight:normal;filling:black;color:black" y2="-1" x4="4" y1="1" antialias="false"/>
+    </description>
+</definition>

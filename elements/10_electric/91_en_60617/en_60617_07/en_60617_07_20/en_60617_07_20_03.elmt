@@ -8,6 +8,7 @@ betätigt durch die Annäherung von Magnet</name>
 fermeture</name>
         <name lang="cs">Přibližovací spínač, ovládaný
 přiblížením magnetu, zapínací kontakt</name>
+        <name lang="en">Proximity switch, magnetically controlled</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

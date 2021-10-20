@@ -5,6 +5,7 @@
         <name lang="de">Mehrstellungsschalter mit sechs
 Schaltstellungen, gebrückt</name>
         <name lang="cs">Jednopólový šestipolohový spínač</name>
+        <name lang="en">Multi-position switch, wiper</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

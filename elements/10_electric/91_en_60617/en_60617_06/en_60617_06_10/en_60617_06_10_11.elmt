@@ -8,6 +8,7 @@ Stern/Dreieckschaltung</name>
 couplage étoile-triangle</name>
         <name lang="cs">Trojfázová skupina tří jednofázových transformátorů
 ve spojení hvězda-trojúhelník</name>
+        <name lang="en">Three-phase bank of single-phase transformers, connection star-delta</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

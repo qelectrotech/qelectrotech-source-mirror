@@ -1,0 +1,23 @@
+<definition hotspot_x="25" type="element" height="20" version="0.80" width="60" link_type="simple" hotspot_y="10">
+    <uuid uuid="{96f718a7-6fd3-4239-9127-e1b18335d9ae}"/>
+    <names>
+        <name lang="de">Leuchte für Leuchtstofflampe, allgemein</name>
+        <name lang="be">Fluorescentie-armatuur</name>
+        <name lang="fr">Luminaire,
+Lampe à fluorescence, symbole généra</name>
+        <name lang="cs">Svítidlo, Zářivka</name>
+        <name lang="en">Luminaire, general symbol; Fluorescent lamp, general symbol</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="35" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{4db5ef3c-3968-43ed-a4d9-e024b803fd89}" frame="false" y="23.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="30" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="0" end1="none" antialias="false"/>
+        <line x2="-20" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-5" end1="none" antialias="false"/>
+        <line x2="30" x1="30" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-5" end1="none" antialias="false"/>
+    </description>
+</definition>

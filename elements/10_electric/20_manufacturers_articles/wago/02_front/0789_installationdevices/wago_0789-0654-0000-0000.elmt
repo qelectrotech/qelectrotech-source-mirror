@@ -1,11 +1,15 @@
 <definition hotspot_x="75" link_type="simple" version="0.90" width="150" type="element" height="190" hotspot_y="95">
     <names>
-        <name lang="de">789-654</name>
         <name lang="fr">789-654</name>
-        <name lang="en">789-654</name>
+        <name lang="en">789-654 - 3-Channel RT 2000 Rogowski Signal Conditioner</name>
+        <name lang="de">789-654 - Auswerteschaltung für Rogowski-Spulen RT 2000</name>
         <name lang="cs">789-654</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-654</elementInformation>
+        <elementInformation show="1" name="description">789-654</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

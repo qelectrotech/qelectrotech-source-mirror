@@ -7,6 +7,7 @@ couplage étoile - étoile</name>
 Stern/Dreieckschaltung</name>
         <name lang="cs">Trojfázový transformátor se čtyřmi odbočkami
 v zapojení hvězda-hvězda</name>
+        <name lang="en">Three-phase transformer with four tappings (taps), connection: star-star</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

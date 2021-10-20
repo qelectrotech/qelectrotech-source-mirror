@@ -4,6 +4,7 @@
         <name lang="de">Auslöseeinrichtung</name>
         <name lang="fr">Mécanisme à déclenchement libre</name>
         <name lang="cs">Volnoběžka</name>
+        <name lang="en">Trip-free mechanism</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

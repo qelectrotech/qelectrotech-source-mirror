@@ -1,0 +1,25 @@
+<definition hotspot_x="56" type="element" height="40" version="0.80" width="60" link_type="simple" hotspot_y="30">
+    <uuid uuid="{d9931344-8624-45cf-99f1-43c9cacf7b62}"/>
+    <names>
+        <name lang="de">Leuchtenauslaß auf Putz</name>
+        <name lang="be">Aansluitpunt voor wandverlichtingstoestel</name>
+        <name lang="fr">Point d'attente d'appareil d'éclairage en
+applique murale</name>
+        <name lang="cs">Světelný vývod nástěnný</name>
+        <name lang="en">Lighting outlet on wall</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{1f15bbe3-231c-4988-9f31-0fcc960fb120}" frame="false" y="13.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="0" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-25" end1="none" antialias="false"/>
+        <line x2="-20" x1="0" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="-20" end1="none" antialias="false"/>
+        <line x2="0" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="-20" end1="none" antialias="false"/>
+        <line x2="-10" x1="-50" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end2="none" y1="-10" end1="none" antialias="false"/>
+        <terminal x="-50" y="-10" orientation="w"/>
+    </description>
+</definition>

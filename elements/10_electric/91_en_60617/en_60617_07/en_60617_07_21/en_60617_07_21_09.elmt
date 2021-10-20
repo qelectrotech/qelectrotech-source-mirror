@@ -4,6 +4,7 @@
         <name lang="de">Sicherungs-Lasttrennschalter</name>
         <name lang="fr">Fusible interrupteur-sectionneur</name>
         <name lang="cs">Pojistkový odpínač</name>
+        <name lang="en">Fuse switch-disconnector; On-load isolating fuse switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

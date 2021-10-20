@@ -5,6 +5,7 @@
 avec contacts de rupture</name>
         <name lang="de">Stecker und Klinke mit Öffnerkontakt</name>
         <name lang="cs">Telefonní kolík a svírka s vypínacími kontakty</name>
+        <name lang="en">Telephone type plug and jack with break contacts</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

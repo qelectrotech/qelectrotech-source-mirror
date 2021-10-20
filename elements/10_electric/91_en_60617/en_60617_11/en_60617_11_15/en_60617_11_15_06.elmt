@@ -1,0 +1,27 @@
+<definition hotspot_x="25" type="element" height="20" version="0.80" width="60" link_type="simple" hotspot_y="10">
+    <uuid uuid="{ba9ac7ba-bd8f-4423-bc42-a3e03a1976b0}"/>
+    <names>
+        <name lang="de">Leuchte mit fünf Leuchtstofflampen</name>
+        <name lang="be">Armatuur met x fluorescerende buislampen</name>
+        <name lang="fr">Luminaire à cinq tubes fluorescents</name>
+        <name lang="cs">Svítidlo s pěti zářivkami</name>
+        <name lang="en">Luminaire with many fluorescent tubes</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="35" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{e8532e2f-063a-41a3-8293-359153617e3a}" frame="false" y="23.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="30" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="0" end1="none" antialias="false"/>
+        <line x2="-20" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-5" end1="none" antialias="false"/>
+        <line x2="30" x1="30" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-5" end1="none" antialias="false"/>
+        <line x2="10" x1="0" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" end2="none" y1="5" end1="none" antialias="false"/>
+        <dynamic_text z="6" Halignment="AlignLeft" rotation="0" x="7" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" uuid="{cc042a1f-e331-49f7-942c-b9d18f7389a6}" frame="false" y="-21" text_from="UserText" Valignment="AlignTop" text_width="-1">
+            <text>x</text>
+            <info_name>quantity</info_name>
+        </dynamic_text>
+    </description>
+</definition>

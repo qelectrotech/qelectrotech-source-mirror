@@ -5,12 +5,10 @@
         <name lang="en">power stbpdt3100k</name>
     </names>
     <elementInformations/>
-    <informations>&#xd;
-     Author: The QElectroTech team&#xd;
-     License: see http://qelectrotech.org/wiki/doc/elements_license&#xd;
-     Converter version: V2.0&#xd;
-&#xd;
-</informations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license
+Converter version: V2.0
+    </informations>
     <description>
         <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="112" x="9.49211" rotation="0" text="24VDC" color="#000000"/>
         <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="52" x="8.76963" rotation="0" text="24VDC" color="#000000"/>

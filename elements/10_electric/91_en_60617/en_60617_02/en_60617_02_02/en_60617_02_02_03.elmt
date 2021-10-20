@@ -1,10 +1,11 @@
 <definition hotspot_x="15" type="element" width="30" hotspot_y="15" version="0.70" height="20" link_type="simple">
     <uuid uuid="{763704c5-1562-4522-98a9-25c4292fd2a9}"/>
     <names>
-        <name lang="fr">03- Courant continu</name>
-        <name lang="de">03- Gleichstrom und -Spannung</name>
-        <name lang="es">03- Corriente continua</name>
-        <name lang="cs">03- Stejnosměrný proud</name>
+        <name lang="fr">Courant continu</name>
+        <name lang="de">Gleichstrom und -Spannung</name>
+        <name lang="es">Corriente continua</name>
+        <name lang="cs">Stejnosměrný proud</name>
+        <name lang="en">Direct current</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

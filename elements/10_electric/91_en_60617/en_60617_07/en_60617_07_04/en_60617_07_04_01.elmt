@@ -4,6 +4,7 @@
         <name lang="fr">Contact à fermeture anticipée</name>
         <name lang="de">voreilender Schließer</name>
         <name lang="cs">Zapínací kontakt spínající s předstihem</name>
+        <name lang="en">Make contact, early closing</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

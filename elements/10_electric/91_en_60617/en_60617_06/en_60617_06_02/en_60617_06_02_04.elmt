@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement triphasé, en T</name>
         <name lang="de">Dreiphasenwicklung, T-Schaltung</name>
         <name lang="cs">Trojfázové vinutí do T</name>
+        <name lang="en">Three-phase winding, T</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

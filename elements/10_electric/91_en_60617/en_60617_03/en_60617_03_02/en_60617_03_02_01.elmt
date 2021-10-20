@@ -7,6 +7,7 @@ Point de liaison</name>
 Verbindungspunkt</name>
         <name lang="cs">Místo spojení
 Přípojný bod</name>
+        <name lang="en">Junction; Connection point</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

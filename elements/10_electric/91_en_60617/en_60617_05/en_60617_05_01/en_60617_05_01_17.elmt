@@ -4,6 +4,7 @@
         <name lang="fr">Plusieurs émetteurs N sur région P</name>
         <name lang="de">Mehrere N-Emitter auf einer P-Zone</name>
         <name lang="cs">Několik emitorů typu N v oblasti P</name>
+        <name lang="en">Emitters on a region of dissimilar conductivity type, N emitters on a P region</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

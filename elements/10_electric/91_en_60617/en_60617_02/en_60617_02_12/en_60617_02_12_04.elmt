@@ -7,7 +7,7 @@
 - hydraulique
 - optique
 - fonctionnelle</name>
-<name lang="es">Enlace (uso solo en espacios muy restringidos)</name>
+        <name lang="es">Enlace (uso solo en espacios muy restringidos)</name>
         <name lang="de">Wirkverbindung, z.B.:
 - mechanische
 - pneumatische
@@ -20,6 +20,7 @@
 - hydraulické
 - optické
 - funkční</name>
+        <name lang="en">Link</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

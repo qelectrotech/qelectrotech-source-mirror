@@ -4,6 +4,7 @@
         <name lang="fr">Perle de ferrite sur un conducteur</name>
         <name lang="de">Ferrit-Perle auf einem Leiter</name>
         <name lang="cs">Feritový korálek  na vodiči</name>
+        <name lang="en">Ferrite bead</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

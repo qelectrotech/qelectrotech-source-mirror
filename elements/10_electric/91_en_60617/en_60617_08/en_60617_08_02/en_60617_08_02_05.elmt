@@ -5,6 +5,7 @@
         <name lang="fr">Cos ϕ mètre,
 Indicateur du facteur de puissance</name>
         <name lang="cs">Měřič účiníku</name>
+        <name lang="en">Power-factor meter</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

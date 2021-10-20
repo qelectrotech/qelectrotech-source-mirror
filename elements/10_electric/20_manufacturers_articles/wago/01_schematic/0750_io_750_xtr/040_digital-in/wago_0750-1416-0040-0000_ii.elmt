@@ -6,11 +6,12 @@
         <name lang="cs">750-1416/040-000 (II)</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-1416/040-000</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-1416/040-000</elementInformation>
+        <elementInformation show="1" name="description">8DI DC 24V 0.2ms XTR</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon x3="360" x1="-360" y1="-40" y4="50" y3="50" closed="false" y2="-40" x2="360" antialias="false" x4="-360" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -51,7 +52,7 @@
         <text rotation="0" color="#000000" text="24V" x="-39" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" text="DI7" x="42" y="-24" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" text="13" x="46" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text rotation="0" color="#000000" text="8-Channel DI, DC 24 V, 0,2ms / XTR" x="-130" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" text="8-Channel DI, DC 24 V, 0.2ms / XTR" x="-130" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <line length1="1.5" end1="none" x1="-200" y1="-40" length2="1.5" end2="circle" y2="-8.5" x2="-200" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
         <polygon closed="false" style="line-style:normal;line-weight:hight;filling:none;color:black" x1="-362" y1="-10" y2="-10" antialias="false" x2="-356"/>
         <arc x="360" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="180" start="90" y="-12.5" width="5"/>

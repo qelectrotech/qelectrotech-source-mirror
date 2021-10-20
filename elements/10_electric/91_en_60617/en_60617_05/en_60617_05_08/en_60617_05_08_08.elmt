@@ -5,6 +5,7 @@
 grille associée</name>
         <name lang="de">zylindrische Fokussierelektrode, mit Gitter</name>
         <name lang="cs">Elektroda s vívenásobnou clonou</name>
+        <name lang="en">Multi-aperture electrode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

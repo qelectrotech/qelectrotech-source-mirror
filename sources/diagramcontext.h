@@ -81,13 +81,14 @@ class DiagramContext
 		void fromXml(const pugi::xml_node &dom_element, const QString &tag_name = "property");
 		void toSettings(QSettings &, const QString &) const;
 		void fromSettings(QSettings &, const QString &);
-		
-		static QString validKeyRegExp();
+
+		static bool isKeyAcceptable(const QString &);
 	
 	private:
 		static bool stringLongerThan(const QString &, const QString &);
-		bool keyIsAcceptable(const QString &) const;
-			/// Diagram context data (key/value pairs)
+		static QString validKeyRegExp();
+
+		/// Diagram context data (key/value pairs)
 		QHash<QString, QVariant> m_content;
 		QHash<QString, bool> m_content_show;
 };

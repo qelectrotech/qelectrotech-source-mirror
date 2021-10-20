@@ -6,12 +6,12 @@
         <name lang="cs">750-564</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">750-564</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">750-564</elementInformation>
+        <elementInformation show="1" name="description">4AO; Voltage/Current</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect height="90" x="-360" rx="0" y="-40" width="720" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" antialias="false"/>

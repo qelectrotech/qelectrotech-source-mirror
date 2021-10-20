@@ -4,6 +4,7 @@
         <name lang="fr">Moteur à répulsion, monophasé</name>
         <name lang="de">Repulsionsmotor, einphasig</name>
         <name lang="cs">Jednofázový repulzní motor</name>
+        <name lang="en">Repulsion motor, single-phase</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

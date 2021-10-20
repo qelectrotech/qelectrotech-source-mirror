@@ -6,12 +6,12 @@
         <name lang="fr">753-668/000-004 (I)</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">753-668/000-004</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">753-668/000-004</elementInformation>
+        <elementInformation show="1" name="description">4FAI 0/4..20mA Diff. PROFIsafe</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <polygon y2="-40" x1="360" x3="-360" y3="50" x2="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" antialias="false" closed="false" y4="50" x4="360"/>

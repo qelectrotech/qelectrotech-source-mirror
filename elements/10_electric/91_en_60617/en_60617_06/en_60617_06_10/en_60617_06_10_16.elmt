@@ -8,6 +8,7 @@ mit Neutralleiter</name>
 zigzag avec neutre sorti</name>
         <name lang="cs">Trojfázový transformátor
 v zapojení hvězda-lomená hvězda s vyvedeným uzlem</name>
+        <name lang="en">Three-phase transformer, connection star-zigzag with the neutral brought out</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

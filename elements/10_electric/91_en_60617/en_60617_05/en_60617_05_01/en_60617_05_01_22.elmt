@@ -7,6 +7,7 @@ structure soit PIP soit NIN</name>
         <name lang="de">Eigenleitende Zone zwischen Gebieten
 gleichen Leitertyps, PIP oder NIP Struktur</name>
         <name lang="cs">Vnitřní zóna mezi oblastmi stejného typu vodiče, struktury PIP nebo NIP</name>
+        <name lang="en">Intrinsic region between regions of similar conductivity type</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

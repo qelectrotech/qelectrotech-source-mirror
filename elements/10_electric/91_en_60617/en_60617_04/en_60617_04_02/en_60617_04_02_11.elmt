@@ -4,6 +4,7 @@
         <name lang="de">Differential-Kondensator</name>
         <name lang="fr">Condensateur différentie</name>
         <name lang="cs">Kondenzátor diferenciální</name>
+        <name lang="en">Capacitor, differential</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

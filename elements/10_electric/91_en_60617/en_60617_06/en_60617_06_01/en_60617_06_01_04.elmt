@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement triphasé, à phases séparées</name>
         <name lang="de">drei getrennte Wicklungen, Dreiphasen-System</name>
         <name lang="cs">Trojfázové vinutí, fáze nejsou propojeny</name>
+        <name lang="en">Three-phase winding, phases not interconnected</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

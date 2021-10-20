@@ -1,24 +1,24 @@
 <definition hotspot_y="45" version="0.80" hotspot_x="364" type="element" height="110" width="730" link_type="simple">
     <names>
-        <name lang="pl">750-504</name>
-        <name lang="de">750-504</name>
-        <name lang="ar">750-504</name>
-        <name lang="es">750-504</name>
-        <name lang="pt">750-504</name>
-        <name lang="fr">750-504</name>
-        <name lang="it">750-504</name>
-        <name lang="cs">750-504</name>
-        <name lang="el">750-504</name>
-        <name lang="nl">750-504</name>
-        <name lang="en">750-504</name>
+        <name lang="pl">753-504</name>
+        <name lang="de">753-504</name>
+        <name lang="ar">753-504</name>
+        <name lang="es">753-504</name>
+        <name lang="pt">753-504</name>
+        <name lang="fr">753-504</name>
+        <name lang="it">753-504</name>
+        <name lang="cs">753-504</name>
+        <name lang="el">753-504</name>
+        <name lang="nl">753-504</name>
+        <name lang="en">753-504</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">750-504</elementInformation>
-        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">753-504</elementInformation>
+        <elementInformation show="1" name="description">4DO 24V DC 0.5A</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect height="90" y="-40" width="720" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" x="-360" ry="0"/>
@@ -38,7 +38,7 @@
         <line length2="1.5" x1="40" y1="50" length1="1.5" y2="8.5" end1="none" style="line-style:normal;line-weight:thin;filling:black;color:black" x2="40" end2="circle" antialias="false"/>
         <line length2="1.5" x1="-360" y1="10" length1="1.5" y2="10" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="360" end2="none" antialias="false"/>
         <line length2="1.5" x1="-360" y1="-10" length1="1.5" y2="-10" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="360" end2="none" antialias="false"/>
-        <text text="WAGO 750-504" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-27" x="-331"/>
+        <text text="WAGO 753-504" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-27" x="-331"/>
         <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" rotation="0" y="-42.5" Valignment="AlignTop" uuid="{ece5f8d6-5485-4241-b11b-80e08bca7bcb}" frame="false" text_from="ElementInfo" text_width="-1" z="19" x="219">
             <text></text>
             <info_name>label</info_name>

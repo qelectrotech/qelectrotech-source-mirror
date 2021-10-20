@@ -7,6 +7,7 @@ dérivation</name>
 Nebenschlußerregung</name>
         <name lang="cs">Trojfázový synchronní rotační měnič
 derivačně buzený</name>
+        <name lang="en">Synchronous rotary converter, three-phase, shunt-excited</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

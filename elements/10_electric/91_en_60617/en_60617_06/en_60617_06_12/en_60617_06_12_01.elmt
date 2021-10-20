@@ -5,6 +5,7 @@
 (Drehtransformator)</name>
         <name lang="fr">Régulateur à induction triphasé</name>
         <name lang="cs">Trojfázový indukční regulátor</name>
+        <name lang="en">Three-phase induction regulator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

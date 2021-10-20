@@ -4,6 +4,7 @@
         <name lang="de">selbsttätige Ausschaltung-Funktion</name>
         <name lang="fr">Fonction déclenchement automatique</name>
         <name lang="cs">Automatická spouštěcí funkce</name>
+        <name lang="en">Automatic tripping function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

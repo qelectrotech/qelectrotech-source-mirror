@@ -4,6 +4,7 @@
         <name lang="fr">Boîte de jonction avec trois conducteurs</name>
         <name lang="de">Verbindungsmuffe</name>
         <name lang="cs">Průběžná kabelová spojka se třemi vodiči</name>
+        <name lang="en">Straight-through joint box (multi-line representation)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

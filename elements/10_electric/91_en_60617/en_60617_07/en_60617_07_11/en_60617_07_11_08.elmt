@@ -4,6 +4,7 @@
         <name lang="fr">Élément de commutateur à quatre directions</name>
         <name lang="de">Mehrstellungsschalter mit vier Schaltstellungen</name>
         <name lang="cs">Jednopólový čtyřpolohový spínač</name>
+        <name lang="en">Multi-position switch, one position disabled</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

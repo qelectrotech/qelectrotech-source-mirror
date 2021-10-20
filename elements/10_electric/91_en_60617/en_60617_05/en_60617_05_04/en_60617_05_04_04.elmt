@@ -4,6 +4,7 @@
         <name lang="fr">Thyristor triode, type non spécifié</name>
         <name lang="de">Thyristortriode, allgemein</name>
         <name lang="cs">Triodový tyristor</name>
+        <name lang="en">Triode thyristor, type unspecified</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

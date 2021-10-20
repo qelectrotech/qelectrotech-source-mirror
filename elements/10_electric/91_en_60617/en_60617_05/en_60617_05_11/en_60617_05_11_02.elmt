@@ -9,6 +9,7 @@ indirect</name>
         <name lang="cs">Tyratron
 Trioda plněná plynem 
 s nepřímo žhavenou katodou</name>
+        <name lang="en">Triode, gasfilled with indirectly heated cathode; Thyratron</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

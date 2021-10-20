@@ -4,6 +4,7 @@
         <name lang="de">Hauptuhr</name>
         <name lang="fr">Horloge - mère</name>
         <name lang="cs">Řídicí hodiny</name>
+        <name lang="en">Master clock</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

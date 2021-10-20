@@ -4,6 +4,7 @@
         <name lang="fr">Branchement</name>
         <name lang="de">Verzweigung</name>
         <name lang="cs">Odbočka</name>
+        <name lang="en">Branching; Junction</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

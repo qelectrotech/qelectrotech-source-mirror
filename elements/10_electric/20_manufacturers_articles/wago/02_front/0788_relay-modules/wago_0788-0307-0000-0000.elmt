@@ -1,22 +1,23 @@
 <definition type="element" width="34" height="176" version="0.80" hotspot_x="16" hotspot_y="88" link_type="simple">
   <names>
     <name lang="fr">788-307</name>
-    <name lang="en">788-307</name>
-    <name lang="de">788-307</name>
+    <name lang="en">788-307 - Relay-Module DC 110V 1 Changeover</name>
+    <name lang="de">788-307 - Relaismodul DC 110V 1 Wechsler</name>
     <name lang="cs">788-307</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">788-307</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">788-307</elementInformation>
+        <elementInformation show="1" name="description">788-307</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-14.95" x2="-14.95" x3="15.05" x4="15.05" y1="85.12" y2="-85.82" y3="-85.82" y4="85.12" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="-9.95" x2="-9.95" x3="10.05" x4="10.05" y1="86.19" y2="85.12" y3="85.12" y4="86.19" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="-14.95" x2="-14.95" x3="15.05" x4="15.05" y1="85.12" y2="60.29" y3="60.29" y4="85.12" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
-    <polygon x1="15.05" x2="15.05" x3="-14.95" x4="-14.95" y1="-85.81" y2="-63.99" y3="-63.99" y4="-85.81" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
+    <polygon x1="15.05" x2="15.05" x3="-14.95" x4="-14.95" y1="-85.81" y2="-64" y3="-64" y4="-85.81" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="6.67" x2="7.65" x3="8.21" x4="8.21" x5="9.71" x6="9.71" x7="2.51" x8="2.51" x9="4" y1="-67.68" y2="-68.15" y3="-68.98" y4="-69.6" y5="-69.6" y6="-75" y7="-75" y8="-69.6" y9="-69.6" x10="4" x11="4.56" x12="5.54" y10="-68.98" y11="-68.15" y12="-67.68" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="-5.44" x2="-4.46" x3="-3.9" x4="-3.9" x5="-2.41" x6="-2.41" x7="-9.61" x8="-9.61" x9="-8.12" y1="-67.68" y2="-68.15" y3="-68.98" y4="-69.6" y5="-69.6" y6="-75" y7="-75" y8="-69.6" y9="-69.6" x10="-8.12" x11="-7.55" x12="-6.57" y10="-68.98" y11="-68.15" y12="-67.68" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="15.05" x2="15.05" x3="-14.95" x4="-14.95" y1="-67.97" y2="-46.14" y3="-46.14" y4="-67.97" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>

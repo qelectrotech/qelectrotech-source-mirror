@@ -87,6 +87,9 @@ class PartPolygon : public CustomElementGraphicPart
 		void setHandlerColor(QPointF pos, const QColor &color) final;
 		void resetAllHandlerColor() final;
 
+		void setRotation (qreal angle);
+		qreal rotation () const;
+
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
@@ -114,5 +117,6 @@ class PartPolygon : public CustomElementGraphicPart
 		QAction *m_insert_point,
 				*m_remove_point;
 		QPointF m_context_menu_pos;
+        qreal m_rot;
 };
 #endif

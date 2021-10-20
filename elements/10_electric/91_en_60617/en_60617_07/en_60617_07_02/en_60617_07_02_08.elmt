@@ -4,6 +4,7 @@
         <name lang="fr">Contact à deux fermetures</name>
         <name lang="de">Zwillingsschließer</name>
         <name lang="cs">Dvojzapínací kontakt</name>
+        <name lang="en">Contact with two makes</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

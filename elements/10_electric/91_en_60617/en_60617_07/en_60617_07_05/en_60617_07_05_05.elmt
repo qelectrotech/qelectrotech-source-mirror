@@ -5,6 +5,7 @@
 et n'étant plus activé</name>
         <name lang="de">anzug- und abfallverzögerter Schließer</name>
         <name lang="cs">Zapínací kontakt se zpožděním při aktivaci i deaktivaci</name>
+        <name lang="en">Make contact, delayed</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

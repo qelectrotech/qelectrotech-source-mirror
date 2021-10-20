@@ -5,12 +5,13 @@
     <name lang="de">2002-404</name>
     <name lang="cs">2002-404</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">2002-404</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2002-404</elementInformation>
+        <elementInformation show="1" name="description">Jumper for Series 2002, 2003, 2022, 2102, 2202</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <rect x="-4.29" y="-3.43" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="41.15" height="6.86" antialias="false"/>

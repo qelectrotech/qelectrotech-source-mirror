@@ -4,6 +4,7 @@
         <name lang="de">Röntgenanode</name>
         <name lang="fr">Anticathode</name>
         <name lang="cs">Anoda rentgenky</name>
+        <name lang="en">X-ray tube anode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

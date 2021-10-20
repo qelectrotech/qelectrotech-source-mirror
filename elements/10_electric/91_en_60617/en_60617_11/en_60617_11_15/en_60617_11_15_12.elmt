@@ -1,0 +1,25 @@
+<definition hotspot_x="25" type="element" height="30" version="0.80" width="30" link_type="simple" hotspot_y="25">
+    <uuid uuid="{c3e6d21a-773e-41fb-a07c-f1ec67b37d69}"/>
+    <names>
+        <name lang="de">Sicherheitsleuchte mit eingebauter
+Stromversorgung</name>
+        <name lang="be">Autonoom noodverlichtingstoestel</name>
+        <name lang="fr">Bloc autonome d'éclairage de sécurité</name>
+        <name lang="cs">Svítidlo nouzového osvětlení
+s vlastním zdrojem</name>
+        <name lang="en">Self-contained emergency lighting luminaire</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Halignment="AlignLeft" rotation="0" x="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{afa3c67a-b3a3-416e-aa08-212e73bb25a2}" frame="false" y="13.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="-20" end1="none" antialias="false"/>
+        <line x2="0" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" end2="none" y1="0" end1="none" antialias="false"/>
+        <circle x="-12.5" y="-12.5" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5" antialias="false"/>
+        <rect x="-20" ry="0" height="20" y="-20" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false"/>
+    </description>
+</definition>

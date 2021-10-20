@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">787-2861/0050-0000</elementInformation>
+        <elementInformation show="1" name="description">ECB / Electronic Circuit Breaker 24V / 0.5A</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text rotation="0" x="122" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vout+"/>

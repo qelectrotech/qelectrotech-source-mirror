@@ -1,16 +1,17 @@
-<definition type="element" width="6" height="189" version="0.80" hotspot_x="2" hotspot_y="81" link_type="simple">
+<definition type="element" width="6" height="189" version="0.80" hotspot_x="2" hotspot_y="81" link_type="terminal">
   <names>
     <name lang="de">870-1149</name>
     <name lang="fr">870-1149</name>
     <name lang="en">870-1149</name>
     <name lang="cs">870-1149</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">870-1149</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">870-1149</elementInformation>
+        <elementInformation show="1" name="description">X-Com 2L 1P double / Abschlussplatte / Endplate</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-78.03" y2="-78.03" y3="104.4" y4="104.4" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>

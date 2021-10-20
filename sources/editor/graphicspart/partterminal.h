@@ -72,7 +72,11 @@ class PartTerminal : public CustomElementGraphicPart
 		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
 		Qet::Orientation orientation() const {return d -> m_orientation;}
-		void setOrientation(Qet::Orientation ori);
+        void setOrientation(Qet::Orientation ori);
+
+		qreal rotation() const;
+		void setRotation(qreal angle);
+
 
 		QString name() const override { return d -> m_name; }
 		void setName(QString& name);

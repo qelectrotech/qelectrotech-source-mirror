@@ -6,6 +6,7 @@
         <name lang="es">Se activa cuando la cantidad característica es mayor que un valor de ajuste alto, o menor por debajo de un valor de ajuste bajo</name>
         <name lang="cs">Uvedení v činnost, pokud je charakteristická veličina větší 
 než nastavená vysoká hodnota nebo menší než nastavená nízká hodnota</name>
+        <name lang="en">Actuating (either higher than or lower than)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

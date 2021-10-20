@@ -140,6 +140,7 @@ QRectF PartTerminal::boundingRect() const
 	return(br);
 }
 
+
 /**
 	Definit l'orientation de la borne
 	@param ori la nouvelle orientation de la borne
@@ -151,6 +152,32 @@ void PartTerminal::setOrientation(Qet::Orientation ori) {
 	updateSecondPoint();
 	emit orientationChanged();
 }
+
+/**
+	Redefines setRotation to call setOrientation
+	@param angle
+*/
+void PartTerminal::setRotation(qreal angle) {
+	qreal angle_mod = std::fmod(angle,360);
+	Qet::Orientation new_ori = Qet::North;
+
+	if      (0   <= angle_mod && angle_mod < 90 ) new_ori = Qet::North;
+	else if (90  <= angle_mod && angle_mod < 180) new_ori = Qet::East;
+	else if (180 <= angle_mod && angle_mod < 270) new_ori = Qet::South;
+	else new_ori = Qet::West;
+
+	setOrientation(new_ori);
+}
+
+qreal PartTerminal::rotation() const {
+	switch (d->m_orientation) {
+		case Qet::North : return 0;
+		case Qet::East  : return 90;
+		case Qet::South : return 180;
+		case Qet::West  : return 270;
+	}
+}
+
 /**
 	@brief PartTerminal::setName
 	@param name

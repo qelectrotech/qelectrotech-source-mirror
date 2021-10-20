@@ -4,6 +4,7 @@
         <name lang="de">Magnetspeicher-Matrix</name>
         <name lang="fr">Matrice à tores de ferrite</name>
         <name lang="cs">Paměťová matrice na feritových jádrech</name>
+        <name lang="en">Ferrite core matrix</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

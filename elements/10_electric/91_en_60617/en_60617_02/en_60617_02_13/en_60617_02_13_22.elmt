@@ -8,6 +8,7 @@ pneumatique, à double effet</name>
 hydraulische Kraft in beiden Richtungen</name>
         <name lang="cs">Ovládání pneumaticky nebo hydraulicky,
 působení v obou směrech</name>
+        <name lang="en">Actuator (actuated by pneumatic or hydraulic power/double acting)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

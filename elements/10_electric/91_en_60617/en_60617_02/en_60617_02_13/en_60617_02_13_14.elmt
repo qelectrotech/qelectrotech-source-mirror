@@ -5,6 +5,7 @@
         <name lang="es">Accionado por manibela</name>
         <name lang="de">Betätigung durch Kurbel</name>
         <name lang="cs">Ovládání klikou</name>
+        <name lang="en">Actuator (operated by crank)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

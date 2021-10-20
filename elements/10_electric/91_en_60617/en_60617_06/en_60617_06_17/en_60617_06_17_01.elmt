@@ -4,6 +4,7 @@
         <name lang="fr">Source de chaleur</name>
         <name lang="de">Heizquelle </name>
         <name lang="cs">Tepelný zdroj</name>
+        <name lang="en">Heat source, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

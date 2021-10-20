@@ -5,6 +5,7 @@
         <name lang="fr">ompteur d'énergie active avec enregistrement
 du maximum de la puissance moyenne</name>
         <name lang="cs">Watthodinový měřič se zapisovačem maxima</name>
+        <name lang="en">Watt-hour meter with maximum demand recorder</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

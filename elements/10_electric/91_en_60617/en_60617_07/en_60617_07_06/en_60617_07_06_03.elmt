@@ -4,6 +4,7 @@
         <name lang="fr">Retour automatique, contact à ouverture</name>
         <name lang="de">Öffner mit selbsttätigem Rückgang</name>
         <name lang="cs">Vypínací kontakt se samočinným návratem</name>
+        <name lang="en">Break contact, automatic return</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

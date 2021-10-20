@@ -1,0 +1,28 @@
+<definition hotspot_x="25" type="element" height="40" version="0.80" width="60" link_type="simple" hotspot_y="10">
+    <uuid uuid="{81b32e9c-b719-44dd-8a9b-e3970bc84afb}"/>
+    <names>
+        <name lang="de">Leuchte mit drei Leuchtstofflampen</name>
+        <name lang="be">Armatuur met 3 fluorescerende buislampen</name>
+        <name lang="fr">Luminaire à trois tubes fluorescents</name>
+        <name lang="cs">Svítidlo se třemi zásuvkami</name>
+        <name lang="en">Luminaire with many fluorescent tubes</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="30" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end2="none" y1="0" end1="none" antialias="false"/>
+        <line x2="30" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" end2="none" y1="10" end1="none" antialias="false"/>
+        <dynamic_text z="3" Halignment="AlignLeft" rotation="0" x="35" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{20180a2e-a096-4de6-af53-b0c2b651bd93}" frame="false" y="43.5" text_from="ElementInfo" Valignment="AlignTop" text_width="-1">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="-20" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-5" end1="none" antialias="false"/>
+        <line x2="30" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" end2="none" y1="20" end1="none" antialias="false"/>
+        <line x2="-20" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" end2="none" y1="5" end1="none" antialias="false"/>
+        <line x2="30" x1="30" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" end2="none" y1="-5" end1="none" antialias="false"/>
+        <line x2="-20" x1="-20" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" end2="none" y1="15" end1="none" antialias="false"/>
+        <line x2="30" x1="30" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" end2="none" y1="5" end1="none" antialias="false"/>
+        <line x2="30" x1="30" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25" end2="none" y1="15" end1="none" antialias="false"/>
+    </description>
+</definition>

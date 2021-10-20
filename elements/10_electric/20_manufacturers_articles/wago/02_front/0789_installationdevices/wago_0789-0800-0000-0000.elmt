@@ -1,11 +1,15 @@
 <definition type="element" width="40" link_type="simple" hotspot_x="19" height="190" hotspot_y="94" version="0.90">
     <names>
-        <name lang="de">789-800</name>
-        <name lang="en">789-800</name>
+        <name lang="de">789-800 - Wechselschalter, einpolig (Hand / Automatik)</name>
+        <name lang="en">789-800 - Switch SPDT</name>
         <name lang="cs">789-800</name>
         <name lang="fr">789-800</name>
     </names>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">789-800</elementInformation>
+        <elementInformation show="1" name="description">Wechselschalter, einpolig (switch SPDT)</elementInformation>
+    </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>

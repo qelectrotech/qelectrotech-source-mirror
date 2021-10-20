@@ -4,6 +4,7 @@
         <name lang="fr">Diode solion</name>
         <name lang="de">Soliondiode</name>
         <name lang="cs">Solionová dioda</name>
+        <name lang="en">Solion diode</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

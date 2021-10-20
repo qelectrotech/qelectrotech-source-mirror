@@ -5,6 +5,7 @@
         <name lang="fr">Courant alternatif, différentes bandes de fréquences</name>
         <name lang="es">Corriente alterna bifásica</name>
         <name lang="cs">Střídavý proud - vysoké kmitočty</name>
+        <name lang="en">Alternating current (indication of frequency range: high)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

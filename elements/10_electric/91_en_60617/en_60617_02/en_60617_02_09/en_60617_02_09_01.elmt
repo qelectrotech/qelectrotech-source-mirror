@@ -6,6 +6,7 @@
         <name lang="de">elektromagnetische Strahlung, nicht ionisierend, z.B.:: Radiowellen oder sichtbares Licht</name>
         <name lang="cs">Elektromagnetické záření neionizující,
     např. rádiové vlny nebo světlo</name>
+        <name lang="en">Radiation, electromagnetic, non-ionizing</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

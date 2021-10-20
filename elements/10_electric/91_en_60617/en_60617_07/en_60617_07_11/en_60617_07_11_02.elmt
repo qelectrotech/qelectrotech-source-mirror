@@ -6,6 +6,7 @@ actionné par pression et par rotation</name>
         <name lang="de">Druck-Dreh-Schalter, durch Drücken und
 Drehen betätigt</name>
         <name lang="cs">Tlačítkově ovládaný spínač</name>
+        <name lang="en">Switch assembly, one set puch operated, one set turn operatedd</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

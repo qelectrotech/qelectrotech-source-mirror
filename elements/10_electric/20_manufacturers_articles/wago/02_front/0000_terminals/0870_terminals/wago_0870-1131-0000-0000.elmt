@@ -1,35 +1,40 @@
-<definition type="element" width="17" height="189" version="0.80" hotspot_x="9" hotspot_y="81" link_type="simple">
+<definition type="element" width="17" height="189" version="0.80" hotspot_x="9" hotspot_y="81" link_type="terminal">
   <names>
     <name lang="de">870-1131</name>
     <name lang="fr">870-1131</name>
     <name lang="en">870-1131</name>
     <name lang="cs">870-1131</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">870-1131</elementInformation>
-  </elementInformations>
+    <kindInformations>
+        <kindInformation name="type">sectional</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">870-1131</elementInformation>
+        <elementInformation show="1" name="description">2.5mm² X-Com 2L 1P double</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-4.66" x2="5.34" x3="5.34" x4="-4.66" y1="-78.03" y2="-78.03" y3="104.4" y4="104.4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>
     <polygon x1="-3.45" x2="5.28" x3="5.28" x4="-0.23" x5="-0.23" x6="-3.45" y1="-72.72" y2="-72.72" y3="-54.45" y4="-54.45" y5="-58.08" y6="-58.08" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="-3.43" x2="5.3" x3="5.3" x4="-0.22" x5="-0.22" x6="-3.43" y1="-28.53" y2="-28.53" y3="-10.27" y4="-10.27" y5="-13.9" y6="-13.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <rect x="-4.1" y="-44.25" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8.84" height="5.53" antialias="false"/>
-    <rect x="-4.08" y="-0.01" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8.84" height="5.53" antialias="false"/>
+    <rect x="-4.08" y="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8.84" height="5.53" antialias="false"/>
     <arc x="-5.37" y="37.57" angle="121" start="210" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <arc x="-5.37" y="16.14" angle="121" start="210" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <arc x="-5.44" y="87.47" angle="121" start="210" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <circle x="-3.89" y="17.56" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="8.57" antialias="false"/>
-    <line x1="-4.08" x2="-3.01" y1="-0.01" y2="1.72" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="-4.08" x2="-3" y1="0" y2="1.72" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <line x1="-4.1" x2="-3.03" y1="-44.25" y2="-42.52" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <circle x="-3.89" y="39" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="8.57" antialias="false"/>
     <arc x="-5.44" y="66.03" angle="121" start="210" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <polygon x1="5.33" x2="-4.68" y1="-8.1" y2="-8.1" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="5.31" x2="-4.7" y1="-52.28" y2="-52.28" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <line x1="3.66" x2="4.74" y1="-42.52" y2="-44.25" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
-    <line x1="3.69" x2="4.76" y1="1.72" y2="-0.01" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+    <line x1="3.69" x2="4.76" y1="1.72" y2="0" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <circle x="-3.95" y="88.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="8.57" antialias="false"/>
     <arc x="-5.32" y="16.14" angle="122" start="30" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <arc x="-5.32" y="37.57" angle="122" start="30" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
@@ -46,7 +51,7 @@
     <line x1="-4.08" x2="-3" y1="5.52" y2="3.82" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <arc x="-5.37" y="66.03" angle="122" start="30" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <rect x="-3.03" y="-42.52" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.69" height="2.11" antialias="false"/>
-    <rect x="-3.01" y="1.72" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.69" height="2.11" antialias="false"/>
+    <rect x="-3" y="1.72" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.69" height="2.11" antialias="false"/>
     <arc x="-5.37" y="87.47" angle="122" start="30" style="line-style:normal;line-weight:thin;filling:none;color:black" width="11.43" height="11.43" antialias="true"/>
     <polygon x1="5.33" x2="-4.7" y1="-44.24" y2="-44.24" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="5.36" x2="-4.68" y1="0" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>

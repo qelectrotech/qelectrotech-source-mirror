@@ -6,6 +6,7 @@ connectée et spécialement isolée</name>
         <name lang="de">Leitung, nicht angeschlossen, besonders
 isoliert</name>
         <name lang="cs">Zaizolovaný nepřipojený konec kabelu nebo vodiče</name>
+        <name lang="en">End of a conductor or cable, not connected and specially insulated</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

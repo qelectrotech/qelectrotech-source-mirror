@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement diphasé, quatre fils</name>
         <name lang="de">zwei getrennte Wicklungen, Vierleitersystem</name>
         <name lang="cs">Dvoufázové nespřažené vinutí, čtyři vývody</name>
+        <name lang="en">Two-phase winding, four-wire</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

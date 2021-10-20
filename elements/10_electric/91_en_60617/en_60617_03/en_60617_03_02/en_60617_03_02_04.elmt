@@ -4,6 +4,7 @@
         <name lang="fr">Liaison en T</name>
         <name lang="de">T-Verbindung, Abzweigung</name>
         <name lang="cs">T-spojení</name>
+        <name lang="en">T-connection</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

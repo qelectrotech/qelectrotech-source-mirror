@@ -5,6 +5,7 @@
         <name lang="es">Accionado por llave</name>
         <name lang="de">Betätigung durch Schlüssel </name>
         <name lang="cs">Ovládání klíčem</name>
+        <name lang="en">Actuator (operated by key)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

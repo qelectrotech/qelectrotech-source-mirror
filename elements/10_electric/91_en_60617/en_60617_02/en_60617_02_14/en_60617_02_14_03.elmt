@@ -5,6 +5,7 @@
         <name lang="es">Accionado por flujo</name>
         <name lang="de">ausgelöst durch Strömung</name>
         <name lang="cs">Uvádění v činnost průtokem tekutiny</name>
+        <name lang="en">Actuator (actuated by fluid flow)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

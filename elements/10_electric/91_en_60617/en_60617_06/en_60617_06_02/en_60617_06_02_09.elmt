@@ -4,6 +4,7 @@
         <name lang="fr">Enroulement triphasé, en zigzag</name>
         <name lang="de">Dreiphasenwicklung, Zickzackschaltung</name>
         <name lang="cs">Trojfázové vinutí do lomené hvězdy</name>
+        <name lang="en">Three-phase winding, zigzag or interconnected star</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

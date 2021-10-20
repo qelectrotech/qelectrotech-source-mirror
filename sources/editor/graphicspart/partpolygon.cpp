@@ -293,6 +293,21 @@ void PartPolygon::resetAllHandlerColor()
 	}
 }
 
+
+void PartPolygon::setRotation(qreal angle) {
+
+	QTransform rotation = QTransform().translate(m_polygon.first().x(),m_polygon.first().y()).rotate(angle-m_rot).translate(-m_polygon.first().x(),-m_polygon.first().y());
+	m_rot=angle;
+
+	setPolygon(rotation.map(m_polygon));
+}
+
+qreal PartPolygon::rotation() const {
+	return m_rot;
+}
+
+
+
 /**
 	@brief PartPolygon::itemChange
 	@param change

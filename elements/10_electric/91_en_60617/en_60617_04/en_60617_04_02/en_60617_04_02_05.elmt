@@ -6,6 +6,7 @@ Kondensator</name>
         <name lang="fr">Condensateur polarisé Pae exemple
 électrolytique</name>
         <name lang="cs">Kondenzátor polarizovaný, např. elektrolytický</name>
+        <name lang="en">Capacitor, polarized</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

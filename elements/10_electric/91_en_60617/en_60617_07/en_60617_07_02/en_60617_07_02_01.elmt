@@ -4,6 +4,7 @@
         <name lang="fr">Contact à fermeture (contact de travail)</name>
         <name lang="de">Schalter</name>
         <name lang="cs">Zapínací kontakt</name>
+        <name lang="en">Make contact, general symbol; Switch, general symbol</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

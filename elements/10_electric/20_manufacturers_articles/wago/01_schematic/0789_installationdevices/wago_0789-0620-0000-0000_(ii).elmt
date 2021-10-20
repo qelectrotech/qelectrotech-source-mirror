@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">789-620</elementInformation>
+        <elementInformation show="1" name="description">Stromsensor mit Busanschluss, Current sensor DC 0-80A</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <input size="9" x="42" y="-50" rotate="true" text="1 Wdg." tagg="none"/>

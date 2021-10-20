@@ -13,13 +13,13 @@
         <name lang="it">5102-1619</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">5102-1619</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">5102-1619</elementInformation>
+        <elementInformation show="1" name="description">Relay-Module 16 Relays</elementInformation>
     </elementInformations>
-    <informations>
-        Author: The QElectroTech team
+    <informations>Author: The QElectroTech team
         Modified by: plc-user
-        License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect x="0" height="120" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" ry="0" width="960" rx="0"/>
         <circle x="7.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="117.5"/>
@@ -233,7 +233,7 @@
         <text x="924" text="162" y="113" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="944" text="164" y="113" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="766" text="+" y="15" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text x="788" text="-" y="15" rotation="0" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="786" text="−" y="15" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="823" text="+F" y="14" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="844" text="+F" y="14" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000"/>
         <dynamic_text uuid="{7df61b23-fc4f-439d-9d4f-ea629029d31b}" frame="false" x="430" Valignment="AlignTop" z="292" text_width="-1" y="7.5" text_from="UserText" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0">

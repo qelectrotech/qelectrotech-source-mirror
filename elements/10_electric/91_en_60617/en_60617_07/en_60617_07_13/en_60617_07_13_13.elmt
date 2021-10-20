@@ -6,6 +6,7 @@ Federspeicher</name>
         <name lang="fr">Appareil mécanique de connection tripolaire à
 commande motorisée avec mémoire à ressort</name>
         <name lang="cs">Třípólový spínač s motorickým pohonem a pružinovým střadačem</name>
+        <name lang="en">Mechanical switching device, three-pole</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

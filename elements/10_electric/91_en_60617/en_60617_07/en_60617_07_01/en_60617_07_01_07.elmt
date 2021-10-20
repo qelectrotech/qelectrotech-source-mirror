@@ -6,6 +6,7 @@
 retour à ressort</name>
         <name lang="cs">Samočinný návrat,
 např. návrat skokem( působením pružiny)</name>
+        <name lang="en">Automatic return function</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

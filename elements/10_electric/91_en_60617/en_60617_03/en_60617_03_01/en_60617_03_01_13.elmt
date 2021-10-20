@@ -4,6 +4,7 @@
         <name lang="fr">Paire coaxiale sous écran</name>
         <name lang="de">Koaxialkabel, geschirmt</name>
         <name lang="cs">Koaxiální kabel se stíněním</name>
+        <name lang="en">Coaxial pair with screen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

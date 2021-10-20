@@ -5,12 +5,13 @@
     <name lang="en">753-646</name>
     <name lang="cs">753-646</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">753-646</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">753-646</elementInformation>
+        <elementInformation show="1" name="description">KNX/EIB/TP1-Module</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="15.46" x2="11.43" x3="11.43" x4="8.4" x5="8.4" x6="1.35" x7="1.35" x8="-6.71" x9="-6.71" y1="-123.48" y2="-123.48" y3="-119.48" y4="-119.48" y5="-120.48" y6="-120.48" y7="-117.48" y8="-117.48" y9="-123.48" x10="1.35" x11="1.35" x12="-14.77" x13="-14.77" x14="-12.76" x15="-12.76" x16="-8.72" x17="-8.72" x18="-12.76" x19="-12.76" x20="-14.77" x21="-14.77" x22="1.35" x23="1.35" x24="-6.71" x25="-6.71" x26="11.43" x27="11.43" x28="15.46" x29="15.46" x30="10.02" x31="10.02" x32="15.46" x33="15.46" x34="10.02" x35="10.02" x36="15.46" x37="15.46" x38="10.02" x39="10.02" x40="15.46" y10="-123.48" y11="-126.48" y12="-126.48" y13="-120.48" y14="-120.48" y15="-124.48" y16="-124.48" y17="71.5" y18="71.5" y19="67.5" y20="67.5" y21="73.5" y22="73.5" y23="70.5" y24="70.5" y25="67.5" y26="67.5" y27="70.5" y28="70.5" y29="59.5" y30="59.5" y31="56.5" y32="56.5" y33="22.51" y34="22.51" y35="19.51" y36="19.51" y37="-14.49" y38="-14.49" y39="-17.49" y40="-17.49" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
@@ -24,7 +25,7 @@
     <circle x="-5.66" y="48.51" style="line-style:normal;line-weight:thin;filling:gray;color:lightgray" diameter="5.15" antialias="false"/>
     <circle x="4.29" y="-60.34" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="5.15" antialias="false"/>
     <circle x="-8.58" y="-71.2" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9.72" antialias="false"/>
-    <rect x="-5.73" y="-103.61" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="18.29" height="20.01" antialias="false"/>
+    <rect x="-5.73" y="-103.61" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="18.29" height="20" antialias="false"/>
     <circle x="-5.66" y="-25.81" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="5.15" antialias="false"/>
     <polygon x1="15.43" x2="-8.75" y1="-82.46" y2="-82.46" style="line-style:normal;line-weight:thin;filling:none;color:blue" closed="false" antialias="false"/>
     <circle x="4.4" y="11.35" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="5.15" antialias="false"/>
@@ -83,7 +84,7 @@
     <text x="-8.06" y="-119.68" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" text="753-646" color="#000000" rotation="0"/>
     <polygon x1="3.9" x2="9.95" x3="9.95" x4="3.9" y1="29.37" y2="29.37" y3="36.98" y4="36.98" style="line-style:normal;line-weight:thin;filling:gray;color:lightgray" antialias="false"/>
     <polygon x1="-6.1" x2="-0.05" x3="-0.05" x4="-6.1" y1="29.37" y2="29.37" y3="36.98" y4="36.98" style="line-style:normal;line-weight:thin;filling:gray;color:lightgray" antialias="false"/>
-    <polygon x1="3.96" x2="10.01" x3="10.01" x4="3.96" y1="-7.79" y2="-7.79" y3="-0.18" y4="-0.18" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+    <polygon x1="3.96" x2="10" x3="10" x4="3.96" y1="-7.79" y2="-7.79" y3="-0.18" y4="-0.18" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="-6.05" x2="0" x3="0" x4="-6.05" y1="-7.79" y2="-7.79" y3="-0.18" y4="-0.18" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
     <polygon x1="13.23" x2="15.37" x3="15.37" x4="13.23" y1="-82.45" y2="-82.45" y3="-32.45" y4="-32.45" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
     <polygon x1="13.22" x2="15.38" y1="-48" y2="-48" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
