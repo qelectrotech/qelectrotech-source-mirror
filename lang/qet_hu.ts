@@ -36,7 +36,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="348"/>
         <source>Projet annexe</source>
-        <translation type="unfinished"></translation>
+        <translation>Mellék projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
@@ -279,13 +279,13 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="161"/>
         <source>redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elem újraméretezés</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="162"/>
         <source>Générateur d&apos;élément lambda</source>
         <comment>Lambda element generator</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lambda elem generátor</translation>
     </message>
 </context>
 <context>
@@ -6641,12 +6641,12 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="498"/>
         <source>Rotation</source>
-        <translation type="unfinished">Forgatás</translation>
+        <translation>Forgatás</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="501"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>hely</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="357"/>
@@ -7950,7 +7950,7 @@ Mit akarsz csinálni?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">A kijelölés forgatása</translation>
+        <translation>A kijelölés forgatása</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
@@ -8804,7 +8804,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished">A qet_tb_generator beépülő modul telepítésehez&lt;br&gt;Látogass el:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Szükséges hozzá python 3.5 vagy, magasabb verziója.&lt;br&gt;&lt;B&gt;&lt;U&gt; Első telepítés Windowson&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 vagy, magasabb verziójának telepítése, ha szükséges&lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. parancssorba gépelve: pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés Windowson&lt;/B&gt;&lt;/U&gt;&lt;br&gt;parancssorba gépelve: python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;a felhasználó ezt a script-et a terminálban indíthatja el és ebben a könyvtárban található &lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt; (XXXX a felhasználó neve)</translation>
+        <translation>A qet_tb_generator beépülő modul telepítésehez&lt;br&gt;Látogass el:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Szükséges hozzá python 3.5 vagy, magasabb verziója.&lt;br&gt;&lt;B&gt;&lt;U&gt; Első telepítés Windowson&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 vagy, magasabb verziójának telepítése, ha szükséges&lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. parancssorba gépelve: pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés Windowson&lt;/B&gt;&lt;/U&gt;&lt;br&gt;parancssorba gépelve: python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;a felhasználó ezt a script-et a terminálban indíthatja el és ebben a könyvtárban található &lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt; (XXXX a felhasználó neve)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
