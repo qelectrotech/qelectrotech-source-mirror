@@ -36,7 +36,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="348"/>
         <source>Projet annexe</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt anneks</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
@@ -279,13 +279,13 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="161"/>
         <source>redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation>Symbol størrelse</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="162"/>
         <source>Générateur d&apos;élément lambda</source>
         <comment>Lambda element generator</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lambda symbol generator</translation>
     </message>
 </context>
 <context>
@@ -1475,7 +1475,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="329"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="793"/>
         <source>Rotation</source>
-        <translation>Drej</translation>
+        <translation>Rotere</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="523"/>
@@ -1554,7 +1554,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
         <source>Rotation</source>
-        <translation>Drej</translation>
+        <translation>Rotere</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="255"/>
@@ -3232,7 +3232,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
         <source>Rotation :</source>
-        <translation>Dreje:</translation>
+        <translation>Rotere:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
@@ -6614,12 +6614,12 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="498"/>
         <source>Rotation</source>
-        <translation type="unfinished">Drej</translation>
+        <translation>Rotere</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="501"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Mellemrum</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1034"/>
@@ -7914,7 +7914,7 @@ For at gøre det fuldt kompatibelt skal projektet åbnes og gemmes med QElectroT
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Drej valg</translation>
+        <translation>Rotere valgt</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -8525,17 +8525,17 @@ For at gøre det fuldt kompatibelt skal projektet åbnes og gemmes med QElectroT
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="37"/>
         <source>Pivoter la selection</source>
-        <translation>Drej valg</translation>
+        <translation>Rotere valgt</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="60"/>
         <source>Pivoter %1 textes</source>
-        <translation>Drej %1 tekste</translation>
+        <translation>Rotere %1 tekste</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="64"/>
         <source>Pivoter</source>
-        <translation>Drej</translation>
+        <translation>Rotere</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="68"/>
