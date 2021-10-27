@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1289</width>
+    <width>1206</width>
     <height>645</height>
    </rect>
   </property>
@@ -178,14 +178,21 @@
    <item row="1" column="1">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_6">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>Étage :</string>
+         <string>Type :</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="m_ungroup_pb">
+        <property name="text">
+         <string>Degrouper les bornes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -198,13 +205,68 @@
         </property>
        </spacer>
       </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="m_type_cb">
+        <item>
+         <property name="text">
+          <string>Générique</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fusible</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sectionnable</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diode</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Terre</string>
+         </property>
+        </item>
+       </widget>
+      </item>
       <item row="3" column="1">
        <widget class="QSpinBox" name="m_level_sb"/>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QPushButton" name="m_ungroup_pb">
+      <item row="5" column="1">
+       <widget class="QComboBox" name="m_function_cb">
+        <item>
+         <property name="text">
+          <string>Générique</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Phase</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Neutre</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="m_auto_ordering_pb">
         <property name="text">
-         <string>Degrouper les bornes</string>
+         <string>Position automatique</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Étage :</string>
         </property>
        </widget>
       </item>
@@ -215,10 +277,31 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QPushButton" name="m_auto_ordering_pb">
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_8">
         <property name="text">
-         <string>Position automatique</string>
+         <string>Fonction :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="m_led_cb">
+        <item>
+         <property name="text">
+          <string>Sans</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Avec</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>LED :</string>
         </property>
        </widget>
       </item>

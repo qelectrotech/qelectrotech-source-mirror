@@ -1,4 +1,4 @@
-/*
+﻿/*
         Copyright 2006-2021 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -140,8 +140,7 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		modified_ = true;
 		modified_cell = LEVEL_CELL;
 	}
-	else if (column_ == LED_CELL &&
-		role == Qt::CheckStateRole)
+	else if (column_ == LED_CELL)
 	{
 			rtd.led_ = value.toBool();
 			modified_ = true;
@@ -308,7 +307,10 @@ QVector<PhysicalTerminalData> TerminalStripModel::physicalTerminalDataForIndex(Q
 	}
 
 	for (auto i : set_) {
-		vector_.append(physicalDataAtIndex(i));
+		const auto phy = physicalDataAtIndex(i);
+		if (!vector_.contains(phy)) {
+			vector_.append(phy);
+		}
 	}
 
 	return vector_;

@@ -50,11 +50,12 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 
 	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
-	ui->m_group_terminals_pb->setDisabled(true);
-	ui->m_ungroup_pb->setDisabled(true);
 	buildTree();
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
 	setUpUndoConnections();
+
+		//Call for update the state of child widgets
+	selectionChanged();
 
 		//Go the diagram of double clicked terminal
 	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, [this](auto index)
@@ -313,6 +314,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		m_model = new TerminalStripModel(strip_, this);
 		ui->m_table_widget->setModel(m_model);
 		spanMultiLevelTerminals();
+		selectionChanged();	//Used to update child widgets
 
 		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
 		connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
@@ -348,12 +350,31 @@ void TerminalStripEditor::spanMultiLevelTerminals()
 void TerminalStripEditor::selectionChanged()
 {
 	if (!m_model) {
+		ui->m_auto_ordering_pb  ->setDisabled(true);
+		ui->m_group_terminals_pb->setDisabled(true);
+		ui->m_ungroup_pb        ->setDisabled(true);
+		ui->m_level_sb          ->setDisabled(true);
+		ui->m_type_cb           ->setDisabled(true);
+		ui->m_function_cb       ->setDisabled(true);
+		ui->m_led_cb            ->setDisabled(true);
 		return;
 	}
 
+	ui->m_auto_ordering_pb->setEnabled(true);
+
 	const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+	if (index_list.isEmpty()) {
+		ui->m_type_cb     ->setDisabled(true);
+		ui->m_function_cb ->setDisabled(true);
+		ui->m_led_cb      ->setDisabled(true);
+	} else {
+		ui->m_type_cb     ->setEnabled(true);
+		ui->m_function_cb ->setEnabled(true);
+		ui->m_led_cb      ->setEnabled(true);
+	}
+
 	const auto terminal_vector = m_model->physicalTerminalDataForIndex(index_list);
-	const auto real_terminal_vector = m_model->realTerminalDataForIndex(index_list);
 
 		//Enable/disable group button
 	ui->m_group_terminals_pb->setEnabled(terminal_vector.size() > 1 ? true : false);
@@ -367,10 +388,18 @@ void TerminalStripEditor::selectionChanged()
 			return false;
 		}
 	});
-
 	ui->m_ungroup_pb->setDisabled(it_ == terminal_vector.constEnd());
 
-
+		//Enable/disable level spinbox
+	bool enable_ = false;
+	for (const auto &physical : terminal_vector)
+	{
+		if (physical.real_terminals_vector.size() > 1) {
+			enable_ = true;
+			break;
+		}
+	}
+	ui->m_level_sb->setEnabled(enable_);
 }
 
 /**
@@ -584,6 +613,86 @@ void TerminalStripEditor::on_m_level_sb_valueChanged(int arg1)
 			if (level_index.isValid())
 			{
 				m_model->setData(level_index, arg1);
+			}
+		}
+	}
+}
+
+void TerminalStripEditor::on_m_type_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto type_index = m_model->index(model_index.row(), 6, model_index.parent());
+			if (type_index.isValid())
+			{
+				ElementData::TerminalType override_type;
+				switch (index) {
+					case 0:
+						override_type = ElementData::TTGeneric; break;
+					case 1:
+						override_type = ElementData::TTFuse; break;
+					case 2:
+						override_type = ElementData::TTSectional; break;
+					case 3:
+						override_type = ElementData::TTDiode; break;
+					case 4:
+						override_type = ElementData::TTGround; break;
+					default:
+						override_type = ElementData::TTGeneric; break;
+				}
+				m_model->setData(type_index, override_type);
+			}
+		}
+	}
+}
+
+
+void TerminalStripEditor::on_m_function_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto function_index = m_model->index(model_index.row(), 7, model_index.parent());
+			if (function_index.isValid())
+			{
+				ElementData::TerminalFunction override_function;
+				switch (index) {
+					case 0:
+						override_function = ElementData::TFGeneric; break;
+					case 1:
+						override_function = ElementData::TFPhase; break;
+					case 2:
+						override_function = ElementData::TFNeutral; break;
+					default:
+						override_function = ElementData::TFGeneric; break;
+				}
+				m_model->setData(function_index, override_function);
+			}
+		}
+	}
+}
+
+
+void TerminalStripEditor::on_m_led_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto led_index = m_model->index(model_index.row(), 8, model_index.parent());
+
+			if (led_index.isValid()) {
+				m_model->setData(led_index,
+								 index == 0 ? false : true);
 			}
 		}
 	}
