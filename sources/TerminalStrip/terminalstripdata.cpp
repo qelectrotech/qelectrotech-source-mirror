@@ -61,7 +61,7 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 		return false;
 	}
 
-	m_uuid.fromString(xml_element.attribute("uuid"));
+	m_uuid = QUuid::fromString(xml_element.attribute("uuid"));
 
 	for (auto &xml_info :
 		 QETXML::findInDomElement(xml_element.firstChildElement("informations"),
