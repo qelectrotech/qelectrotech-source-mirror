@@ -851,8 +851,8 @@ bool Element::fromXml(QDomElement &e,
 	if (m_data.m_type == ElementData::Terminale)
 	{
 
-		if (auto elmt_type_list = QETXML::subChild(e, QStringLiteral("properties"), QStringLiteral("element_type")) ;
-			elmt_type_list.size())
+		auto elmt_type_list = QETXML::subChild(e, QStringLiteral("properties"), QStringLiteral("element_type"));
+		if (elmt_type_list.size())
 		{
 			auto elmt_type = elmt_type_list.first();
 			m_data.setTerminalType(
