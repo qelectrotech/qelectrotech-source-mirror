@@ -161,7 +161,12 @@ class RealTerminal
 
 			auto is_draw = xml_element.attribute(QStringLiteral("is_draw")) == QLatin1String("true")
 						   ? true : false;
-			auto uuid_ = QUuid::fromString(xml_element.attribute(QStringLiteral("uuid")));
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+			auto uuid_ = QUuid::fromString(xml_element.attribute(QLatin1String("uuid")));
+#else
+			auto uuid_ = QUuid(xml_element.attribute(QStringLiteral("uuid")));
+#endif
 
 			if (is_draw) {
 				for (auto terminal : terminal_vector) {
