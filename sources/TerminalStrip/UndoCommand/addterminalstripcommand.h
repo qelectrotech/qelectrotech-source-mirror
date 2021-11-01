@@ -20,6 +20,7 @@
 
 #include <QUndoCommand>
 #include <QPointer>
+#include <QVector>
 
 class TerminalStrip;
 class QETProject;

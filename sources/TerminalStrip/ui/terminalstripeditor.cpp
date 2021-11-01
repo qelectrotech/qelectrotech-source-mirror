@@ -51,14 +51,18 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
 	buildTree();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
 	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
+#else
+	ui->m_terminal_strip_tw->expandAll();
+#endif
 	setUpUndoConnections();
 
 		//Call for update the state of child widgets
 	selectionChanged();
 
 		//Go the diagram of double clicked terminal
-	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, [this](auto index)
+	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, [this](const QModelIndex &index)
 	{
 		Element *elmt = nullptr;
 		if (this->m_model->isXrefCell(index, &elmt))
@@ -380,7 +384,7 @@ void TerminalStripEditor::selectionChanged()
 	ui->m_group_terminals_pb->setEnabled(terminal_vector.size() > 1 ? true : false);
 
 		//Enable/disable ungroup button
-	auto it_= std::find_if(terminal_vector.constBegin(), terminal_vector.constEnd(), [](auto &data)
+	auto it_= std::find_if(terminal_vector.constBegin(), terminal_vector.constEnd(), [](const PhysicalTerminalData &data)
 	{
 		if (data.real_terminals_vector.size() >= 2) {
 			return true;
@@ -468,7 +472,11 @@ void TerminalStripEditor::on_m_reload_pb_clicked()
    qDeleteAll(m_item_strip_H.keyBegin(), m_item_strip_H.keyEnd());
 
    buildTree();
-   ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
+	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
+#else
+	ui->m_terminal_strip_tw->expandAll();
+#endif
 
 	//Reselect the tree widget item of the current edited strip
    auto item = m_item_strip_H.key(current_);
