@@ -5731,7 +5731,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
         <source>Gestionnaire de borniers (DEV)</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalbeheer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
@@ -8875,133 +8875,133 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp" line="37"/>
         <source>Ajouter un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalgroep toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp" line="63"/>
         <source>Supprimer un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalgroep verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="37"/>
         <source>Ajouter une borne</source>
-        <translation type="unfinished">Terminal toevoegen</translation>
+        <translation>Terminal toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="38"/>
         <source>Ajouter la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal %1 toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="40"/>
         <source>à un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>aan een terminalgroep</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="41"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="73"/>
         <source>au groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation>in terminalgroep %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="66"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished">Terminal verplaatsen</translation>
+        <translation>Terminal verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="67"/>
         <source>Déplacer la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaats terminal %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="69"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="138"/>
         <source>d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>van een terminalgroep</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="70"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="139"/>
         <source>du groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation>van terminalgroep %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="72"/>
         <source>à un autre groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>naar een andere terminalgroep</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="135"/>
         <source>Enlever une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="136"/>
         <source>Enlever la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder terminal %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripdata.cpp" line="27"/>
         <source>Modifier les proriétés d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van een terminalgroep wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="25"/>
         <source>Trier le bornier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies terminal %1</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="472"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
-        <translation type="unfinished">Algemeen</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="474"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
-        <translation type="unfinished">Zekering</translation>
+        <translation>Gezekerde</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="476"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deelbaar</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="478"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
-        <translation type="unfinished">Diode</translation>
+        <translation>Diode</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="480"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
-        <translation type="unfinished">Aarde</translation>
+        <translation>Aarde</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="515"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
-        <translation type="unfinished">Algemeen</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="516"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="517"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
-        <translation type="unfinished">Nul</translation>
+        <translation>Nul</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementdatacommand.cpp" line="27"/>
         <source>Modifier les propriétés d&apos;un élement</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van een element wijzigen</translation>
     </message>
 </context>
 <context>
@@ -12274,32 +12274,32 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="14"/>
         <source>Création groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalgroep maken</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="20"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="27"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="34"/>
         <source>Installation :</source>
-        <translation type="unfinished">Installatie :</translation>
+        <translation>Installatie :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="65"/>
         <source>Description :</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschrijving :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="95"/>
         <source>Commentaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>Commentaar :</translation>
     </message>
 </context>
 <context>
@@ -12307,153 +12307,153 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Gestionnaire de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalbeheer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="43"/>
         <source>Explorateur de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalverkenner</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="80"/>
         <source>Disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Soort</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="103"/>
         <source>Propriétés</source>
-        <translation type="unfinished">Eigenschappen</translation>
+        <translation>Eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="109"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="119"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschrijving</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="132"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Commentaar</translation>
+        <translation>Commentaar</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="142"/>
         <source>Installation :</source>
-        <translation type="unfinished">Installatie :</translation>
+        <translation>Installatie :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="159"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Type :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="191"/>
         <source>Degrouper les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Degroepeer terminals</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="212"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="244"/>
         <source>Générique</source>
-        <translation type="unfinished">Algemeen</translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="217"/>
         <source>Fusible</source>
-        <translation type="unfinished">Zekering</translation>
+        <translation>Gezekerd</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="222"/>
         <source>Sectionnable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deelbaar</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="227"/>
         <source>Diode</source>
-        <translation type="unfinished">Diode</translation>
+        <translation>Diode</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="232"/>
         <source>Terre</source>
-        <translation type="unfinished">Aarde</translation>
+        <translation>Aarde</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="249"/>
         <source>Phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="254"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nul</translation>
+        <translation>Nul</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="262"/>
         <source>Position automatique</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch plaatsen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="269"/>
         <source>Étage :</source>
-        <translation type="unfinished"></translation>
+        <translation>Etages :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="276"/>
         <source>Grouper les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminalgroep</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="283"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Functie :</translation>
+        <translation>Functie :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Sans</source>
-        <translation type="unfinished"></translation>
+        <translation>Zonder</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="296"/>
         <source>Avec</source>
-        <translation type="unfinished"></translation>
+        <translation>Met</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="304"/>
         <source>LED :</source>
-        <translation type="unfinished"></translation>
+        <translation>LED :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="329"/>
         <source>Ajouter un bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="340"/>
         <source>Supprimer le bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="148"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Naamloos project</translation>
+        <translation>Naamloos project</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="154"/>
         <source>Bornes indépendante</source>
-        <translation type="unfinished"></translation>
+        <translation>Losse terminals</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="530"/>
         <source>Modifier des propriétés de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschappen van de terminals wijzigen</translation>
     </message>
 </context>
 <context>
@@ -12461,52 +12461,52 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="203"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="204"/>
         <source>Étage</source>
-        <translation type="unfinished"></translation>
+        <translation>Etage</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="205"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="206"/>
         <source>Référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Kruisverwijzing</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="207"/>
         <source>Câble</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="208"/>
         <source>Couleur / numéro de fil câble</source>
-        <translation type="unfinished"></translation>
+        <translation>Kleur / draadnummer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="209"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="210"/>
         <source>Fonction</source>
-        <translation type="unfinished">Functie</translation>
+        <translation>Functie</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="211"/>
         <source>led</source>
-        <translation type="unfinished"></translation>
+        <translation>led</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="212"/>
         <source>Numéro de conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal geleiders</translation>
     </message>
 </context>
 <context>
