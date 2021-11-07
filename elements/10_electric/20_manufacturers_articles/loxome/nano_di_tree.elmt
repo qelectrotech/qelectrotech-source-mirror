@@ -1,0 +1,89 @@
+<definition width="60" type="element" version="0.90" height="80" hotspot_y="38" link_type="master" hotspot_x="30">
+    <uuid uuid="{b12d4c64-72fd-44ea-bb4f-a937838433a8}"/>
+    <names>
+        <name lang="en">Nano DI Tree</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Loxone</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Tree Extension</elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>&#xd;
+     Author: DXF converter&#xd;
+     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
+     Converter version:V3.0 DB&#xd;
+&#xd;
+</informations>
+    <description>
+        <polygon x1="-14" x2="-26" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="29" closed="false" antialias="false" y2="29"/>
+        <polygon x1="26" x2="18" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="28" closed="false" antialias="false" y2="28"/>
+        <polygon x1="6" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="29" closed="false" antialias="false" y2="29"/>
+        <polygon x1="-4.16" x2="-6.97" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="13.509"/>
+        <text rotation="0" x="7" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="7.2" text="Loxone&#xa;Link"/>
+        <polygon x1="-2.3" x2="-4.16" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.589" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="-6.97" x2="-7.9" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="12.384"/>
+        <polygon x1="-11.54" x2="-8.84" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="-13.51" x2="-11.54" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.589" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="-6.97" x2="-7.9" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="12.384"/>
+        <polygon x1="-8.84" x2="-7.9" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="12.384"/>
+        <text rotation="270" x="10" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24.3" text="LOX+"/>
+        <text rotation="270" x="16" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24.3" text="LOX-"/>
+        <text rotation="270" x="-3.9" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24.3" text="GND"/>
+        <polygon x1="18" x2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="6" x2="6" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="18" x2="18" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="12" x2="18" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="-2" x2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="6" x2="6" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="-2" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="-2" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="-8" x2="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="12" x2="6" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="12" x2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="-14" x2="-14" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="-8" x2="-14" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="37.8" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="6" x2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="-8" x2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="37.8"/>
+        <polygon x1="-14" x2="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="25.2" closed="false" antialias="false" y2="25.2"/>
+        <polygon x1="-26" x2="26" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-29" closed="false" antialias="false" y2="-29"/>
+        <polygon x1="-26" x2="-26" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-29" closed="false" antialias="false" y2="28.8"/>
+        <polygon x1="26" x2="26" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-29" closed="false" antialias="false" y2="29"/>
+        <polygon x1="15.63" x2="12.82" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="17.49" x2="15.63" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.589" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="12.82" x2="11.89" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="12.384"/>
+        <polygon x1="8.25" x2="10.95" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="6.28" x2="8.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.589" closed="false" antialias="false" y2="13.509"/>
+        <polygon x1="12.82" x2="11.89" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="12.384"/>
+        <polygon x1="10.95" x2="11.89" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.509" closed="false" antialias="false" y2="12.384"/>
+        <text rotation="270" x="-10" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24.3" text="24V+"/>
+        <text rotation="0" x="-12" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="9.9" text="Power"/>
+        <text rotation="0" x="-19" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-19.8" text="Loxone"/>
+        <text rotation="0" x="-12" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-5.7" text="Nano DI&#xa;Tree"/>
+        <dynamic_text rotation="0" text_from="ElementInfo" Valignment="AlignTop" frame="false" x="-43" Halignment="AlignRight" uuid="{54b619d5-111f-4cb0-a758-b177501d33d1}" text_width="-1" z="201" keep_visual_rotation="true" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" y="-27.7">
+            <text></text>
+            <info_name>formula</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="270" text_from="ElementInfo" Valignment="AlignTop" frame="false" x="-15" Halignment="AlignLeft" uuid="{1c2198c8-05e6-4b4c-a7a4-e0fe74799646}" text_width="-1" z="287" keep_visual_rotation="true" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" y="-45.8">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text rotation="0" text_from="ElementInfo" Valignment="AlignTop" frame="false" x="55" Halignment="AlignLeft" uuid="{73dc16bb-db42-499b-bab2-29fc4fe4903e}" text_width="-1" z="288" keep_visual_rotation="true" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" y="-30">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal name="" x="-5" type="Generic" uuid="{f927964f-f9e2-428b-955c-1ec4957301b7}" orientation="s" y="30.6"/>
+        <terminal name="" x="-11" type="Generic" uuid="{16a54ab9-21c6-4498-a44c-a61a5f38a3c9}" orientation="s" y="30.6"/>
+        <terminal name="" x="15" type="Generic" uuid="{bda64d94-4f82-44d3-ab54-cd1108fc2247}" orientation="s" y="30.6"/>
+        <terminal name="" x="9" type="Generic" uuid="{cc2cff8d-76ea-4f9b-bd97-95d7ea47e7c5}" orientation="s" y="30.6"/>
+    </description>
+</definition>
