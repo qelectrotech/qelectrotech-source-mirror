@@ -12357,7 +12357,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="191"/>
         <source>Degrouper les bornes</source>
-        <translation>Degroepeer terminals</translation>
+        <translation>Terminals degroeperen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="212"/>
@@ -12368,7 +12368,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="217"/>
         <source>Fusible</source>
-        <translation>Gezekerd</translation>
+        <translation>Zekering</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="222"/>
@@ -12403,12 +12403,12 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="269"/>
         <source>Étage :</source>
-        <translation>Etages :</translation>
+        <translation>Niveau :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="276"/>
         <source>Grouper les bornes</source>
-        <translation>Terminalgroep</translation>
+        <translation>Terminals groeperen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="283"/>
