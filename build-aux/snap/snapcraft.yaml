@@ -59,7 +59,7 @@ parts:
   qet-tb-generator:
     plugin: python
     python-version: python3
-    source: https://github.com/raulroda/qet_tb_generator-plugin
+    source: https://github.com/raulroda/qet_tb_generator-plugin.git
     python-packages: [PySimpleGUI]
     stage-packages: 
       - python3-lxml
