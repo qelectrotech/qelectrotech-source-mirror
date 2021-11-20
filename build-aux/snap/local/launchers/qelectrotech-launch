@@ -1,13 +1,15 @@
 #!/bin/sh
 
-# a KDE session forces the KDE Plasma platformtheme which is incompatible with QET
-# unset the ENV vars in that case to prevent loading of the theme
-if [ ! -z "$KDE_FULL_SESSION" ]; then
-  unset KDE_FULL_SESSION
-fi
-
-if echo "$XDG_CURRENT_DESKTOP" | grep -q KDE; then
-  unset XDG_CURRENT_DESKTOP
+# check if _only_ the correct framework snap is connected
+framework_name=$(grep "name:" $SNAP/kf5/meta/snap.yaml | cut -d" " -f2)
+if [ "$framework_name" != "kde-frameworks-5-qt-5-15-3-core20" ]; then
+  downloads_dir=$(xdg-user-dir DOWNLOAD)
+  test ! -d "$downloads_dir" && mkdir -p "$downloads_dir"
+  instructions_file="snap.qelectrotech.update-instructions.html"
+  target="$downloads_dir/$instructions_file"
+  cp "$SNAP/update-instructions/$instructions_file" "$target"
+  xdg-open "$target"
+  exit 1
 fi
 
 # migrate .qet directory from SNAP_USER_DATA to SNAP_USER_COMMON
@@ -22,13 +24,5 @@ fi
 # link DXFtoQET so that QET finds it
 mkdir -p "$HOME/.qet"
 ln -snf "$SNAP/bin/DXFtoQET" "$HOME/.qet/DXFtoQET"
-
-# start desktop portal. Open & save dialogs might fail if it is not running
-dbus-send --print-reply \
-  --dest=org.freedesktop.DBus \
-  /org/freedesktop/DBus \
-  org.freedesktop.DBus.StartServiceByName \
-  string:org.freedesktop.portal.Desktop \
-  uint32:0
 
 exec "${@}"
