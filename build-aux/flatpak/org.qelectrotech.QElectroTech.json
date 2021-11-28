@@ -100,8 +100,8 @@
     "sources": [
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/db/f0/eddc256a5f4203ec36d67fed748352821c12140bad639f368861ecd3e6cc/qet_tb_generator-1.3.0.tar.gz",
-            "sha256": "204c8e3a279aafbb99394ef8166c7e5c4c3366e1eeec71024a95834db2e6323f"
+            "url": "https://files.pythonhosted.org/packages/70/aa/ebde0dddfbde799a4e8cf0564e52f95089105a7f562739ee1d16ff5a495a/qet_tb_generator-1.3.1.tar.gz",
+            "sha256": "52c9836387d54bc30ea29272068ec156fc65c3905e0cb863afd9418abc3c0907"
         }
     ]
 }
