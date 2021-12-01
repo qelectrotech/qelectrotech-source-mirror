@@ -33,6 +33,7 @@
 #include "../UndoCommand/sortterminalstripcommand.h"
 #include "../UndoCommand/groupterminalscommand.h"
 #include "../UndoCommand/changeterminallevel.h"
+#include "../UndoCommand/bridgeterminalscommand.h"
 
 #include <QTreeWidgetItem>
 
@@ -49,6 +50,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	ui->setupUi(this);
 
 	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
+
 	ui->m_remove_terminal_strip_pb->setDisabled(true);
 	buildTree();
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
@@ -56,13 +58,18 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 #else
 	ui->m_terminal_strip_tw->expandAll();
 #endif
+
+		//Setup the bridge color
+	QList<QColor> bridge_color{Qt::red, Qt::blue, Qt::white, Qt::gray, Qt::black};
+	ui->m_bridge_color_cb->setColors(bridge_color);
+
 	setUpUndoConnections();
 
 		//Call for update the state of child widgets
 	selectionChanged();
 
 		//Go the diagram of double clicked terminal
-	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, [this](const QModelIndex &index)
+	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index)
 	{
 		Element *elmt = nullptr;
 		if (this->m_model->isXrefCell(index, &elmt))
@@ -75,7 +82,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 				{
 					auto fit_view = elmt->sceneBoundingRect();
 					fit_view.adjust(-200,-200,200,200);
-					diagram->views().first()->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
+					diagram->views().at(0)->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
 				}
 			}
 		}
@@ -91,8 +98,8 @@ TerminalStripEditor::~TerminalStripEditor() {
 
 void TerminalStripEditor::setUpUndoConnections()
 {
-	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalAddedToStrip,
-			[this](QUuid terminal_uuid, QUuid strip_uuid)
+	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalAddedToStrip, this,
+			[=](QUuid terminal_uuid, QUuid strip_uuid)
 	{
 		auto terminal = m_uuid_terminal_H.value(terminal_uuid);
 		auto strip = m_uuid_strip_H.value(strip_uuid);
@@ -105,8 +112,8 @@ void TerminalStripEditor::setUpUndoConnections()
 		m_project->undoStack()->push(undo);
 	});
 
-	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalMovedFromStripToStrip,
-			[this] (QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid)
+	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalMovedFromStripToStrip, this,
+			[=] (QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid)
 	{
 		auto terminal  = m_uuid_terminal_H.value(terminal_uuid);
 		auto old_strip = m_uuid_strip_H.value(old_strip_uuid);
@@ -120,8 +127,8 @@ void TerminalStripEditor::setUpUndoConnections()
 		m_project->undoStack()->push(undo);
 	});
 
-	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalRemovedFromStrip,
-			[this] (QUuid terminal_uuid, QUuid old_strip_uuid)
+	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalRemovedFromStrip, this,
+			[=] (QUuid terminal_uuid, QUuid old_strip_uuid)
 	{
 		auto terminal_ = m_uuid_terminal_H.value(terminal_uuid);
 		auto strip_ = m_uuid_strip_H.value(old_strip_uuid);
@@ -286,6 +293,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 
 	if (m_current_strip) {
 		disconnect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
+		disconnect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
 	}
 
 	if (!strip_)
@@ -317,10 +325,12 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 
 		m_model = new TerminalStripModel(strip_, this);
 		ui->m_table_widget->setModel(m_model);
+		setUpBridgeCellWidth();
 		spanMultiLevelTerminals();
 		selectionChanged();	//Used to update child widgets
 
 		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
+		connect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
 		connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 	}
 }
@@ -361,6 +371,10 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_type_cb           ->setDisabled(true);
 		ui->m_function_cb       ->setDisabled(true);
 		ui->m_led_cb            ->setDisabled(true);
+
+		ui->m_bridge_terminals_pb  ->setDisabled(true);
+		ui->m_unbridge_terminals_pb->setDisabled(true);
+		ui->m_bridge_color_cb      ->setDisabled(true);
 		return;
 	}
 
@@ -378,13 +392,14 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_led_cb      ->setEnabled(true);
 	}
 
-	const auto terminal_vector = m_model->physicalTerminalDataForIndex(index_list);
+	const auto physical_terminal_vector = m_model->physicalTerminalDataForIndex(index_list);
+	const auto real_terminal_vector = m_model->realTerminalDataForIndex(index_list);
 
 		//Enable/disable group button
-	ui->m_group_terminals_pb->setEnabled(terminal_vector.size() > 1 ? true : false);
+	ui->m_group_terminals_pb->setEnabled(physical_terminal_vector.size() > 1 ? true : false);
 
 		//Enable/disable ungroup button
-	auto it_= std::find_if(terminal_vector.constBegin(), terminal_vector.constEnd(), [](const PhysicalTerminalData &data)
+	auto it_= std::find_if(physical_terminal_vector.constBegin(), physical_terminal_vector.constEnd(), [](const PhysicalTerminalData &data)
 	{
 		if (data.real_terminals_vector.size() >= 2) {
 			return true;
@@ -392,11 +407,11 @@ void TerminalStripEditor::selectionChanged()
 			return false;
 		}
 	});
-	ui->m_ungroup_pb->setDisabled(it_ == terminal_vector.constEnd());
+	ui->m_ungroup_pb->setDisabled(it_ == physical_terminal_vector.constEnd());
 
 		//Enable/disable level spinbox
 	bool enable_ = false;
-	for (const auto &physical : terminal_vector)
+	for (const auto &physical : physical_terminal_vector)
 	{
 		if (physical.real_terminals_vector.size() > 1) {
 			enable_ = true;
@@ -404,6 +419,91 @@ void TerminalStripEditor::selectionChanged()
 		}
 	}
 	ui->m_level_sb->setEnabled(enable_);
+
+		//Enable/disable bridge and unbridge
+	bool enable_bridge = false;
+	bool enable_unbridge = false;
+
+		//One column must be selected and the column must be a level column
+	int level_ = TerminalStripModel::levelForColumn(isSingleColumnSelected());
+	if (level_ >= 0)
+	{
+			//Select only terminals of corresponding level cell selection
+		QVector<RealTerminalData> real_terminal_level_vector;
+		for (const auto &rtd : real_terminal_vector) {
+			if (rtd.level_ == level_) {
+				real_terminal_level_vector.append(rtd);
+			}
+		}
+
+		QVector<QUuid> uuid_v;
+		for (const auto &rtd : real_terminal_level_vector) {
+			uuid_v << rtd.real_terminal_uuid;
+		}
+		if (m_current_strip) {
+			enable_bridge = m_current_strip->isBridgeable(uuid_v);
+		}
+
+		for (const auto &rtd : real_terminal_level_vector)
+		{
+			if (rtd.is_bridged &&
+				rtd.level_ == level_) {
+				enable_unbridge = true;
+				break;
+			}
+		}
+	}
+	ui->m_bridge_terminals_pb->setEnabled(enable_bridge);
+	ui->m_unbridge_terminals_pb->setEnabled(enable_unbridge);
+}
+
+void TerminalStripEditor::setUpBridgeCellWidth()
+{
+	if (ui->m_table_widget->verticalHeader() &&
+		m_model)
+	{
+		auto section_size = ui->m_table_widget->verticalHeader()->defaultSectionSize();
+		auto h_header = ui->m_table_widget->horizontalHeader();
+
+		h_header->setSectionResizeMode(2, QHeaderView::Fixed);
+		h_header->resizeSection(2, section_size);
+		h_header->setSectionResizeMode(3, QHeaderView::Fixed);
+		h_header->resizeSection(3, section_size);
+		h_header->setSectionResizeMode(4, QHeaderView::Fixed);
+		h_header->resizeSection(4, section_size);
+		h_header->setSectionResizeMode(5, QHeaderView::Fixed);
+		h_header->resizeSection(5, section_size);
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::isSingleColumnSelected
+ * If all current QModelIndex are in the same column
+ * return the column type
+ * @sa TerminalStripModel::Column
+ * @return
+ */
+TerminalStripModel::Column TerminalStripEditor::isSingleColumnSelected() const
+{
+	if (m_current_strip &&
+		ui->m_table_widget->selectionModel())
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+		if (index_list.isEmpty()) {
+			return TerminalStripModel::Invalid;
+		}
+
+		auto column_ = index_list.first().column();
+		for (const auto &index : index_list) {
+			if (index.column() != column_) {
+				return TerminalStripModel::Invalid;
+			}
+		}
+
+		return TerminalStripModel::columnTypeForIndex(index_list.first());
+	}
+
+	return TerminalStripModel::Invalid;
 }
 
 /**
@@ -617,7 +717,7 @@ void TerminalStripEditor::on_m_level_sb_valueChanged(int arg1)
 
 		for (auto index : index_list)
 		{
-			auto level_index = m_model->index(index.row(), 1, index.parent());
+			auto level_index = m_model->index(index.row(), TerminalStripModel::Level, index.parent());
 			if (level_index.isValid())
 			{
 				m_model->setData(level_index, arg1);
@@ -634,7 +734,7 @@ void TerminalStripEditor::on_m_type_cb_activated(int index)
 
 		for (auto model_index : index_list)
 		{
-			auto type_index = m_model->index(model_index.row(), 6, model_index.parent());
+			auto type_index = m_model->index(model_index.row(), TerminalStripModel::Type, model_index.parent());
 			if (type_index.isValid())
 			{
 				ElementData::TerminalType override_type;
@@ -667,7 +767,7 @@ void TerminalStripEditor::on_m_function_cb_activated(int index)
 
 		for (auto model_index : index_list)
 		{
-			auto function_index = m_model->index(model_index.row(), 7, model_index.parent());
+			auto function_index = m_model->index(model_index.row(), TerminalStripModel::Function, model_index.parent());
 			if (function_index.isValid())
 			{
 				ElementData::TerminalFunction override_function;
@@ -696,7 +796,7 @@ void TerminalStripEditor::on_m_led_cb_activated(int index)
 
 		for (auto model_index : index_list)
 		{
-			auto led_index = m_model->index(model_index.row(), 8, model_index.parent());
+			auto led_index = m_model->index(model_index.row(), TerminalStripModel::Led, model_index.parent());
 
 			if (led_index.isValid()) {
 				m_model->setData(led_index,
@@ -704,5 +804,74 @@ void TerminalStripEditor::on_m_led_cb_activated(int index)
 			}
 		}
 	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_bridge_terminals_pb_clicked
+ */
+void TerminalStripEditor::on_m_bridge_terminals_pb_clicked()
+{
+	if (m_current_strip)
+	{
+		int level_ = isSingleColumnSelected();
+		if (level_ >= TerminalStripModel::Level0 &&
+			level_ <= TerminalStripModel::Level3)
+		{
+			if(level_ == TerminalStripModel::Level0){level_ = 0;}
+			else if(level_ == TerminalStripModel::Level1){level_ = 1;}
+			else if(level_ == TerminalStripModel::Level2){level_ = 2;}
+			else if(level_ == TerminalStripModel::Level3){level_ = 3;}
+
+			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+			const auto rtd_vector = m_model->realTerminalDataForIndex(index_list);
+			QVector <QUuid> uuid_vector;
+			for (const auto &rtd : rtd_vector)
+			{
+				if (rtd.level_ == level_) {
+					uuid_vector.append(rtd.real_terminal_uuid);
+				}
+			}
+			if (m_current_strip->isBridgeable(uuid_vector)) {
+				m_project->undoStack()->push(new BridgeTerminalsCommand(m_current_strip, uuid_vector));
+			}
+		}
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::on_m_unbridge_terminals_pb_clicked
+ */
+void TerminalStripEditor::on_m_unbridge_terminals_pb_clicked()
+{
+	if (m_current_strip)
+	{
+		int level_ = isSingleColumnSelected();
+		if (level_ >= TerminalStripModel::Level0 &&
+			level_ <= TerminalStripModel::Level3)
+		{
+			if(level_ == TerminalStripModel::Level0){level_ = 0;}
+			else if(level_ == TerminalStripModel::Level1){level_ = 1;}
+			else if(level_ == TerminalStripModel::Level2){level_ = 2;}
+			else if(level_ == TerminalStripModel::Level3){level_ = 3;}
+
+			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+			const auto rtd_vector = m_model->realTerminalDataForIndex(index_list);
+			QVector <QUuid> uuid_vector;
+			for (const auto &rtd : rtd_vector)
+			{
+				if (rtd.level_ == level_
+					&& rtd.is_bridged) {
+					uuid_vector.append(rtd.real_terminal_uuid);
+				}
+			}
+			m_project->undoStack()->push(new UnBridgeTerminalsCommand(m_current_strip, uuid_vector));
+		}
+	}
+}
+
+
+void TerminalStripEditor::on_m_bridge_color_cb_activated(const QColor &col)
+{
+
 }
 

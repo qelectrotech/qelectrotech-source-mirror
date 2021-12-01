@@ -1,4 +1,4 @@
-/*
+﻿/*
         Copyright 2006-2021 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -30,6 +30,28 @@ class TerminalStrip;
 
 class TerminalStripModel : public QAbstractTableModel
 {
+	public:
+		enum Column {
+			Pos = 0,
+			Level = 1,
+			Level0 = 2,
+			Level1 = 3,
+			Level2 = 4,
+			Level3 = 5,
+			Label = 6,
+			XRef = 7,
+			Cable = 8,
+			CableWire = 9,
+			Type = 10,
+			Function = 11,
+			Led = 12,
+			Conductor = 13,
+			Invalid = 99
+		};
+
+		static int levelForColumn(TerminalStripModel::Column column);
+		static TerminalStripModel::Column columnTypeForIndex(const QModelIndex &index);
+
         Q_OBJECT
     public:
         TerminalStripModel(TerminalStrip *terminal_strip, QObject *parent = nullptr);
@@ -40,10 +62,10 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual bool setData (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
-
 		QVector<QPair<RealTerminalData, RealTerminalData>> modifiedRealTerminalData() const;
 
 		bool isXrefCell(const QModelIndex &index, Element **element = nullptr);
+		QVector<int> levelCellCount(const QModelIndexList &index_list) const;
 		QVector<PhysicalTerminalData> physicalTerminalDataForIndex(QModelIndexList index_list) const;
 		QVector<RealTerminalData> realTerminalDataForIndex(QModelIndexList index_list) const;
 
@@ -58,6 +80,10 @@ class TerminalStripModel : public QAbstractTableModel
         QPointer<TerminalStrip> m_terminal_strip;
 		QVector<PhysicalTerminalData> m_edited_terminal_data, m_original_terminal_data;
 		QHash<Element *, QVector<bool>> m_modified_cell;
+		QPixmap m_bridge_top,
+				m_bride_bottom,
+				m_bridge,
+		m_bride_both;
 };
 
 class TerminalStripModelDelegate : public QStyledItemDelegate

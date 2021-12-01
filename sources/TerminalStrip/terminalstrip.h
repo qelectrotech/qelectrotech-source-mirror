@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -20,6 +20,8 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QColor>
+
 #include "terminalstripdata.h"
 #include "../properties/elementdata.h"
 
@@ -31,7 +33,11 @@ class TerminalStripIndex;
 class TerminalElement;
 
 
-
+/**
+ * @brief The RealTerminalData struct
+ * Conveniant struct to quickly get some values
+ * of a RealTerminal
+ */
 struct RealTerminalData
 {
 	int level_ = -1;
@@ -43,17 +49,24 @@ struct RealTerminalData
 			conductor_;
 
 	QUuid element_uuid,
-		  real_terminal_uuid;
+		  real_terminal_uuid,
+		  bridge_uuid;
 
 	ElementData::TerminalType type_;
 	ElementData::TerminalFunction function_;
 
 	bool led_ = false,
-		 is_element = false;
+		 is_element = false,
+		 is_bridged = false;
 
 	QPointer<Element> element_;
 };
 
+/**
+ * @brief The PhysicalTerminalData struct
+ * Conveniant struct to quickly get some values
+ * of a PhysicalTerminal
+ */
 struct PhysicalTerminalData
 {
 		QVector<RealTerminalData> real_terminals_vector;
@@ -70,12 +83,19 @@ inline uint qHash(const PhysicalTerminalData &key, uint seed) {
 	return qHash(key.uuid_, seed);
 }
 
+struct TerminalStripBridge
+{
+		QVector<QSharedPointer<RealTerminal>> real_terminals;
+		QColor color_ = Qt::gray;
+		QUuid uuid_ = QUuid::createUuid();
+};
+
 /**
  * @brief The TerminalStrip class
  * This class hold all the datas and configurations
  * of a terminal strip (but the not the visual aspect).
  * A terminal strip have some informations (name comment etc...)
- * and is composed by terminals (draw in a diagram or described in the terminal strip)
+ * and is composed by one or several PhysicalTerminal.
  */
 class TerminalStrip : public QObject
 {
@@ -86,6 +106,7 @@ class TerminalStrip : public QObject
 	public:
 	signals:
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
+		void bridgeChanged();
 
 	public:
 		TerminalStrip(QETProject *project);
@@ -121,6 +142,11 @@ class TerminalStrip : public QObject
 		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<RealTerminalData> &added_terminals);
 		void unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup);
 		bool setLevel(const RealTerminalData &real_terminal_data, int level);
+		bool isBridgeable(const QVector<QUuid> &real_terminals_uuid) const;
+		bool setBridge(const QVector<QUuid> &real_terminals_uuid);
+		bool setBridge(const QUuid &bridge_uuid, const QVector<QUuid> &real_terminals_uuid);
+		void unBridge(const QVector<QUuid> &real_terminals_uuid);
+		QSharedPointer<TerminalStripBridge> bridgeFor(const QUuid &real_terminal_uuid) const;
 
 		QVector<QPointer<Element>> terminalElement() const;
 
@@ -131,9 +157,12 @@ class TerminalStrip : public QObject
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal) const;
-		RealTerminalData realTerminalData(QSharedPointer<RealTerminal> real_terminal) const;
+		RealTerminalData realTerminalData(const QSharedPointer<RealTerminal> real_terminal) const;
 		QSharedPointer<PhysicalTerminal> physicalTerminalForUuid (const QUuid &uuid) const;
 		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
+		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
+		QSharedPointer<TerminalStripBridge> bridgeFor (const QVector<QSharedPointer<RealTerminal>> &terminal_vector) const;
+		QSharedPointer<TerminalStripBridge> bridgeForUuid (const QUuid &bridge_uuid);
 
 	private:
 		TerminalStripData m_data;
@@ -141,6 +170,7 @@ class TerminalStrip : public QObject
 		QVector<QPointer<Element>> m_terminal_elements_vector;
 		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
 		QVector<QSharedPointer<PhysicalTerminal>> m_physical_terminals;
+		QVector<QSharedPointer<TerminalStripBridge>> m_bridge;
 };
 
 #endif // TERMINALSTRIP_H

@@ -23,25 +23,77 @@
 #include <QVector>
 #include <QComboBox>
 #include <QSpinBox>
+#include <QPainter>
 
 /**
  * Some const int who describe what a column contain
  */
 const int POS_CELL = 0;
 const int LEVEL_CELL = 1;
-const int LABEL_CELL = 2;
-const int XREF_CELL = 3;
-const int CABLE_CELL = 4;
-const int CABLE_WIRE_CELL = 5;
-const int TYPE_CELL = 6;
-const int FUNCTION_CELL = 7;
-const int LED_CELL = 8;
-const int CONDUCTOR_CELL = 9;
+const int LEVEL_0_CELL = 2;
+const int LEVEL_1_CELL = 3;
+const int LEVEL_2_CELL = 4;
+const int LEVEL_3_CELL = 5;
+const int LABEL_CELL = 6;
+const int XREF_CELL = 7;
+const int CABLE_CELL = 8;
+const int CABLE_WIRE_CELL = 9;
+const int TYPE_CELL = 10;
+const int FUNCTION_CELL = 11;
+const int LED_CELL = 12;
+const int CONDUCTOR_CELL = 13;
 
-const int ROW_COUNT = 9;
+const int ROW_COUNT = 13;
 
-static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false};
+static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
+/**
+ * @brief TerminalStripModel::levelForColumn
+ * Return the terminal level for column @a column
+ * or -1 if column is not a level column
+ * @param column
+ * @return
+ */
+int TerminalStripModel::levelForColumn(Column column)
+{
+	switch (column) {
+		case Level0: return 0;
+		case Level1: return 1;
+		case Level2: return 2;
+		case Level3: return 3;
+		default: return -1;
+	}
+}
+
+/**
+ * @brief TerminalStripModel::columnTypeForIndex
+ * @param index
+ * @return the thing (pos, level, type, function etc...) for @a index
+ */
+TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIndex &index)
+{
+	if (index.isValid())
+	{
+		switch (index.column()) {
+			case 0: return Pos;
+			case 1: return Level;
+			case 2 : return Level0;
+			case 3 : return Level1;
+			case 4 : return Level2;
+			case 5 : return Level3;
+			case 6 : return Label;
+			case 7 : return XRef;
+			case 8 : return Cable;
+			case 9 : return CableWire;
+			case 10 : return Type;
+			case 11 : return Function;
+			case 12 : return Led;
+			case 13 : return Conductor;
+			default : return Invalid;
+		}
+	}
+	return Invalid;
+}
 
 /**
  * @brief TerminalStripModel::TerminalStripModel
@@ -91,6 +143,18 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 		switch (index.column()) {
 			case POS_CELL :        return physicalDataAtIndex(index.row()).pos_;
 			case LEVEL_CELL :      return rtd.level_;
+			case LEVEL_0_CELL :
+				if (rtd.level_ == 0 && rtd.is_bridged) return "0";
+				break;
+			case LEVEL_1_CELL :
+				if (rtd.level_ == 1 && rtd.is_bridged) return "0";
+				break;
+			case LEVEL_2_CELL :
+				if (rtd.level_ == 2 && rtd.is_bridged) return "0";
+				break;
+			case LEVEL_3_CELL :
+				if (rtd.level_ == 3 && rtd.is_bridged) return "0";
+				break;
 			case LABEL_CELL :      return rtd.label_;
 			case XREF_CELL :       return rtd.Xref_;
 			case CABLE_CELL :      return rtd.cable_;
@@ -202,6 +266,10 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 			switch (section) {
 				case POS_CELL:        return tr("Position");
 				case LEVEL_CELL:      return tr("Étage");
+				case LEVEL_0_CELL:    return QStringLiteral("0");
+				case LEVEL_1_CELL:    return QStringLiteral("1");
+				case LEVEL_2_CELL:    return QStringLiteral("2");
+				case LEVEL_3_CELL:    return QStringLiteral("3");
 				case LABEL_CELL:      return tr("Label");
 				case XREF_CELL:       return tr("Référence croisé");
 				case CABLE_CELL:      return tr("Câble");
@@ -282,6 +350,40 @@ bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
 	}
 
 	return false;
+}
+
+/**
+ * @brief TerminalStripModel::levelCellCount
+ * Check for each index of @a index_list if the cell represented by the index
+ * is a level cell (level 0 to level 3) and if the corresponding real terminal is in the same level
+ *
+ * The returned vector contain how many index has matched
+ * the vector have 4 int,
+ * the first int is the number of matched level 0
+ * the second int is the number of matched level 1
+ * the third int is the number of matched level 2
+ * the fourth int is the number of matched level 4
+ * @param index_list
+ * @return
+ */
+QVector<int> TerminalStripModel::levelCellCount(const QModelIndexList &index_list) const
+{
+	QVector<int> vector_(4,0);
+
+	for (const auto &index : index_list)
+	{
+		if(index.isValid())
+		{
+			const auto rtd_ = realDataAtIndex(index.row());
+			const auto level_ = rtd_.level_;
+			const auto index_column = index.column();
+			if (level_ + 2 == index_column) {
+				vector_.replace(level_, vector_.at(level_)+1);
+			}
+		}
+	}
+
+	return vector_;
 }
 
 /**

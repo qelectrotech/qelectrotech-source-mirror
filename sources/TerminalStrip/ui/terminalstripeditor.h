@@ -20,6 +20,8 @@
 
 #include <QDialog>
 
+#include "terminalstripmodel.h"
+
 namespace Ui {
 	class TerminalStripEditor;
 }
@@ -29,7 +31,6 @@ class TerminalStrip;
 class QTreeWidgetItem;
 class TerminalElement;
 class QAbstractButton;
-class TerminalStripModel;
 
 /**
  * @brief The TerminalStripEditor class
@@ -52,6 +53,8 @@ class TerminalStripEditor : public QDialog
 		void setCurrentStrip(TerminalStrip *strip_);
 		void spanMultiLevelTerminals();
 		void selectionChanged();
+		void setUpBridgeCellWidth();
+		TerminalStripModel::Column isSingleColumnSelected() const;
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();
@@ -66,6 +69,9 @@ class TerminalStripEditor : public QDialog
 		void on_m_type_cb_activated(int index);
 		void on_m_function_cb_activated(int index);
 		void on_m_led_cb_activated(int index);
+		void on_m_bridge_terminals_pb_clicked();
+		void on_m_unbridge_terminals_pb_clicked();
+		void on_m_bridge_color_cb_activated(const QColor &col);
 
 	private:
 		Ui::TerminalStripEditor *ui;

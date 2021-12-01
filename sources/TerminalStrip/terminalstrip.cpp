@@ -39,6 +39,7 @@ using shared_physical_terminal = QSharedPointer<PhysicalTerminal>;
  * A real terminal can be a drawed terminal in a folio
  * or a terminal set by user but not present
  * on any folio (for example a reserved terminal).
+ * @sa RealTerminalData
  */
 class RealTerminal
 {
@@ -79,7 +80,7 @@ class RealTerminal
 			if (!m_element.isNull()) {
 				return m_element->actualLabel();
 			} else {
-				return QStringLiteral("");
+				return QLatin1String();
 			}
 		}
 
@@ -198,11 +199,11 @@ class RealTerminal
 /**
  * @brief The PhysicalTerminal class
  * Represent a physical terminal.
- * A physical terminal is composed a least by one real terminal.
+ * A physical terminal is composed a least by one RealTerminal.
  * When a physical terminal have more than one real terminal
  * that mean the physical terminal have levels (one by real terminal).
- * The index of terminals returned by the function terminals()
- * is the same as the real level of the physical terminal, the index are from back to front.
+ * The index of real terminals returned by the function terminals()
+ * is the same as the real level of the real terminal, the index are from back to front.
  *
  * Example for a 3 levels terminal.
  * index 0 = back (mounting plate)
@@ -224,6 +225,8 @@ class RealTerminal
  *	t	 |_|
  *	e
  *
+ *	@sa PhysicalTerminalData
+ *
  */
 class PhysicalTerminal
 {
@@ -243,9 +246,9 @@ class PhysicalTerminal
 
 		/**
 		 * @brief setTerminals
-		 * Set the real terminal of this physical terminal
-		 * the order of the terminal in \p terminals represent
-		 * the level index.
+		 * Set the RealTerminal who compose this physical terminal.
+		 * The position of the RealTerminal in @a terminals
+		 * represent the level of these in this physical terminal.
 		 * @param terminals
 		 */
 		void setTerminals(QVector<shared_real_terminal> terminals) {
@@ -254,7 +257,7 @@ class PhysicalTerminal
 
 		/**
 		 * @brief addTerminals
-		 * Append the real terminal \p terminal
+		 * Append the real terminal @a terminal
 		 * to this physical terminal.
 		 * @param terminal
 		 */
@@ -264,7 +267,7 @@ class PhysicalTerminal
 
 		/**
 		 * @brief removeTerminal
-		 * Remove \p terminal from the list of real terminal
+		 * Remove @a terminal from the list of real terminal
 		 * @param terminal
 		 * @return true if sucessfully removed
 		 */
@@ -314,7 +317,7 @@ class PhysicalTerminal
 
 		/**
 		 * @brief terminals
-		 * @return A vector of real terminal who compose this physical terminal
+		 * @return A vector of RealTerminal who compose this PhysicalTerminal
 		 */
 		QVector<shared_real_terminal> terminals() const {
 			return m_real_terminal;
@@ -415,7 +418,7 @@ TerminalStripData TerminalStrip::data() const {
 
 /**
  * @brief TerminalStrip::setData
- * The internal data of this strip to data.
+ * Set the internal data of this strip to @a data.
  * the uuid of the new data is set to the uuid
  * of the previous data to keep the uuid
  * of the terminal strip unchanged
@@ -727,6 +730,192 @@ bool TerminalStrip::setLevel(const RealTerminalData &real_terminal_data, int lev
 }
 
 /**
+ * @brief TerminalStrip::isBridgeable
+ * Check if all realTerminal represented by the uuid of @a real_terminals_uuid are bridgeable together.
+ * To be bridgeable, each real terminal must belong to this terminal strip
+ * be at the same level, be consecutive and not belong to the same physicalTerminal
+ * and at least one terminal must be not bridged
+ * @param real_terminals_uuid : a vector of RealTerminal uuid
+ * @sa member real_terminal_uuid of struct RealTerminalData
+ * @return
+ */
+bool TerminalStrip::isBridgeable(const QVector<QUuid> &real_terminals_uuid) const
+{
+	if (real_terminals_uuid.size() < 2) {
+		return false;
+	}
+
+		// Check if first terminal belong to this strip
+	auto first_real_terminal = realTerminalForUuid(real_terminals_uuid.first());
+	if (!first_real_terminal) {
+		return false;
+	}
+		// Get the level of the first terminal
+	int level_ = realTerminalData(first_real_terminal).level_;
+		// Get the physical terminal and pos
+	auto first_physical_terminal = physicalTerminal(first_real_terminal);
+	QVector<shared_physical_terminal> physical_vector{first_physical_terminal};
+	QVector<int> pos_vector{m_physical_terminals.indexOf(first_physical_terminal)};
+
+	auto bridge_ = isBridged(first_real_terminal);
+		//bool to know at the end of this function if at least one terminal is not bridged
+	bool no_bridged = bridge_ ? false : true;
+
+		// Check for each terminals
+	for (int i=1 ; i<real_terminals_uuid.size() ; ++i)
+	{
+			// If belong to this strip
+		auto real_terminal = realTerminalForUuid(real_terminals_uuid.at(i));
+		if (!real_terminal) {
+			return false;
+		}
+
+			// at the same level
+		if (level_ != realTerminalData(real_terminal).level_) {
+			return false;
+		}
+
+			// Not to the same physical terminal of a previous checked real terminal
+		const auto physical_terminal = physicalTerminal(real_terminal);
+		if (physical_vector.contains(physical_terminal)) {
+			return false;
+		} else {
+			physical_vector.append(physical_terminal);
+		}
+
+			// Not in another bridge of a previous checked real terminal
+		auto checked_bridge = isBridged(real_terminal);
+		if (checked_bridge)
+		{
+			if (bridge_.isNull()) {
+				bridge_ = checked_bridge;
+			} else if (checked_bridge != bridge_) {
+				return false;
+			}
+		} else {
+			no_bridged = true;
+		}
+
+		pos_vector.append(m_physical_terminals.indexOf(physical_terminal));
+	}
+
+		// Check if concecutive
+	auto count_ = pos_vector.size();
+	auto min_max = std::minmax_element(pos_vector.constBegin(), pos_vector.constEnd());
+	if ((*min_max.second - *min_max.first) + 1 != count_) {
+		return false;
+	}
+
+	return no_bridged;
+}
+
+/**
+ * @brief TerminalStrip::setBridge
+ * Set a bridge betwen all real terminal represented by they uuid
+ * @param real_terminals_uuid
+ * @sa TerminalStrip::isBridgeable
+ * @return true if bridge was successfully created
+ */
+bool TerminalStrip::setBridge(const QVector<QUuid> &real_terminals_uuid)
+{
+	if (!isBridgeable(real_terminals_uuid)) {
+		return false;
+	}
+	QVector<shared_real_terminal> real_terminals_vector;
+
+	for (const auto & uuid_ : real_terminals_uuid) {
+		auto real_t = realTerminalForUuid(uuid_);
+		if (real_t)
+			real_terminals_vector << real_t;
+	}
+
+	auto bridge = bridgeFor(real_terminals_vector);
+	if (bridge.isNull()) {
+		bridge = QSharedPointer<TerminalStripBridge>::create();
+		m_bridge.append(bridge);
+	}
+
+	for (const auto &real_t : qAsConst(real_terminals_vector))
+	{
+		if (!bridge->real_terminals.contains(real_t))
+			bridge->real_terminals.append(real_t);
+	}
+
+	emit bridgeChanged();
+	return true;
+}
+
+/**
+ * @brief TerminalStrip::setBridge
+ * Bridge the RealTerminal with uuid in @a real_terminals_uuid to
+ * the bridge with uuid @a bridge_uuid.
+ * @param bridge_uuid
+ * @param real_terminals_uuid
+ * @return true if all RealTerminal was successfully bridged
+ */
+bool TerminalStrip::setBridge(const QUuid &bridge_uuid, const QVector<QUuid> &real_terminals_uuid)
+{
+	auto bridge_ = bridgeForUuid(bridge_uuid);
+	if (bridge_)
+	{
+		if (!isBridgeable(real_terminals_uuid)) {
+			return false;
+		}
+
+		bool b_ = false;
+		for (const auto & uuid_ : real_terminals_uuid)
+		{
+			auto real_t = realTerminalForUuid(uuid_);
+			if (real_t &&
+				!bridge_->real_terminals.contains(real_t))
+			{
+				bridge_->real_terminals.append(real_t);
+				b_ = true;
+			}
+		}
+
+		if (b_) {
+			emit bridgeChanged();
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * @brief TerminalStrip::unBridge
+ * Unbridge all real terminal represented by they uuid
+ * @param real_terminals_uuid
+ */
+void TerminalStrip::unBridge(const QVector<QUuid> &real_terminals_uuid)
+{
+	for (const auto & uuid_ : real_terminals_uuid)
+	{
+		auto real_t = realTerminalForUuid(uuid_);
+		if (real_t)
+		{
+			auto bridge_ = isBridged(real_t);
+			if (bridge_)
+				bridge_->real_terminals.removeOne(real_t);
+		}
+	}
+
+	emit bridgeChanged();
+}
+
+/**
+ * @brief TerminalStrip::bridgeFor
+ * @param real_terminal_uuid
+ * @return
+ */
+QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QUuid &real_terminal_uuid) const
+{
+	auto rt = realTerminalForUuid(real_terminal_uuid);
+	return bridgeFor(QVector{rt});
+}
+
+/**
  * @brief TerminalStrip::terminalElement
  * @return A vector of all terminal element owned by this strip
  */
@@ -849,7 +1038,7 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<
 	return pt;
 }
 
-RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> real_terminal) const
+RealTerminalData TerminalStrip::realTerminalData(const QSharedPointer<RealTerminal> real_terminal) const
 {
 	RealTerminalData rtd;
 
@@ -868,6 +1057,7 @@ RealTerminalData TerminalStrip::realTerminalData(QSharedPointer<RealTerminal> re
 	rtd.function_  = real_terminal->function();
 	rtd.led_       = real_terminal->led();
 	rtd.is_element = real_terminal->isElement();
+	rtd.is_bridged = isBridged(real_terminal);
 
 	return rtd;
 }
@@ -911,4 +1101,68 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uui
 	}
 
 	return return_rt;
+}
+
+/**
+ * @brief TerminalStrip::isBridged
+ * Check if @a real_terminal is bridged
+ * @param real_terminal
+ * @return a pointer of TerminalStripBridge if bridget or a null QSharedPointer.
+ */
+QSharedPointer<TerminalStripBridge> TerminalStrip::isBridged(const QSharedPointer<RealTerminal> real_terminal) const
+{
+	if (real_terminal)
+	{
+		for (const auto &bridge_ : qAsConst(m_bridge)) {
+			if (bridge_->real_terminals.contains(real_terminal))
+				return bridge_;
+		}
+	}
+	return QSharedPointer<TerminalStripBridge>();
+}
+
+/**
+ * @brief TerminalStrip::bridgeFor
+ * Return the bridge where at least one terminal of @a terminal_vector belong.
+ * If several terminals are bridged but not to the same bridge return
+ * a TerminalStripBridge with 0 real_terminals_uuid_vector
+ * @sa TerminalStripBridge
+ * @param terminal_vector
+ * @return
+ */
+QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QVector<QSharedPointer<RealTerminal> > &terminal_vector) const
+{
+	QSharedPointer<TerminalStripBridge> return_bridge;
+
+	for (const auto &terminal : terminal_vector)
+	{
+		auto bridge_ = isBridged(terminal);
+		if (!bridge_.isNull())
+		{
+			if (return_bridge.isNull()) {
+				return_bridge = bridge_;
+			}
+			else if (return_bridge != bridge_) {
+				return QSharedPointer<TerminalStripBridge>();
+			}
+		}
+	}
+
+	return return_bridge;
+}
+
+/**
+ * @brief TerminalStrip::bridgeForUuid
+ * @param bridge_uuid
+ * @return the bridge with uuid @a bridge_uuid or null QSharedPointer if not exist
+ */
+QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeForUuid(const QUuid &bridge_uuid)
+{
+	for (const auto &bridge : qAsConst(m_bridge)) {
+		if (bridge->uuid_ == bridge_uuid) {
+			return bridge;
+		}
+	}
+
+	return QSharedPointer<TerminalStripBridge>();
 }
