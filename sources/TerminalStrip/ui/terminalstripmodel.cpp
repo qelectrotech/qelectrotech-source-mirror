@@ -328,31 +328,6 @@ QVector<QPair<RealTerminalData, RealTerminalData>> TerminalStripModel::modifiedR
 }
 
 /**
- * @brief TerminalStripModel::isXrefCell
- * @param index
- * @param elmt : Pointer of a pointer element
- * @return true if the index is the Xref cell, if true the pointer \p element
- * will be set to the element associated to the cell.
- */
-bool TerminalStripModel::isXrefCell(const QModelIndex &index, Element **element)
-{
-	if (index.model() == this
-		&& index.isValid()
-		&& index.column() == XREF_CELL)
-	{
-		if (index.row() < rowCount())
-		{
-			if (auto data = dataAtRow(index.row()) ; data.element_) {
-				*element = data.element_.data();
-			}
-		}
-		return true;
-	}
-
-	return false;
-}
-
-/**
  * @brief TerminalStripModel::levelCellCount
  * Check for each index of @a index_list if the cell represented by the index
  * is a level cell (level 0 to level 3) and if the corresponding real terminal is in the same level
@@ -446,6 +421,20 @@ QVector<RealTerminalData> TerminalStripModel::realTerminalDataForIndex(QModelInd
 	}
 
 	return vector_;
+}
+
+/**
+ * @brief TerminalStripModel::realTerminalDataForIndex
+ * @param index
+ * @return RealTerminalData at index @a index or null RealTerminalData if invalid
+ */
+RealTerminalData TerminalStripModel::realTerminalDataForIndex(const QModelIndex &index) const
+{
+	if (index.isValid()) {
+		return realDataAtIndex(index.row());
+	} else {
+		return RealTerminalData();
+	}
 }
 
 void TerminalStripModel::fillPhysicalTerminalData()

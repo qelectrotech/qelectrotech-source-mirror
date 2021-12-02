@@ -71,18 +71,22 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 		//Go the diagram of double clicked terminal
 	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index)
 	{
-		Element *elmt = nullptr;
-		if (this->m_model->isXrefCell(index, &elmt))
+		if (m_model->columnTypeForIndex(index) == TerminalStripModel::XRef)
 		{
-			auto diagram = elmt->diagram();
-			if (diagram)
+			auto rtd = m_model->realTerminalDataForIndex(index);
+			if (rtd.element_)
 			{
-				diagram->showMe();
-				if (diagram->views().size())
+				auto elmt = rtd.element_;
+				auto diagram = elmt->diagram();
+				if (diagram)
 				{
-					auto fit_view = elmt->sceneBoundingRect();
-					fit_view.adjust(-200,-200,200,200);
-					diagram->views().at(0)->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
+					diagram->showMe();
+					if (diagram->views().size())
+					{
+						auto fit_view = elmt->sceneBoundingRect();
+						fit_view.adjust(-200,-200,200,200);
+						diagram->views().at(0)->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
+					}
 				}
 			}
 		}

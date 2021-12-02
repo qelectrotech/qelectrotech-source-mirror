@@ -1,4 +1,4 @@
-﻿/*
+/*
         Copyright 2006-2021 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -64,10 +64,10 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
 		QVector<QPair<RealTerminalData, RealTerminalData>> modifiedRealTerminalData() const;
 
-		bool isXrefCell(const QModelIndex &index, Element **element = nullptr);
 		QVector<int> levelCellCount(const QModelIndexList &index_list) const;
 		QVector<PhysicalTerminalData> physicalTerminalDataForIndex(QModelIndexList index_list) const;
 		QVector<RealTerminalData> realTerminalDataForIndex(QModelIndexList index_list) const;
+		RealTerminalData realTerminalDataForIndex(const QModelIndex &index) const;
 
 	private:
 		void fillPhysicalTerminalData();
