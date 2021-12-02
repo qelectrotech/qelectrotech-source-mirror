@@ -64,7 +64,6 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
 		QVector<QPair<RealTerminalData, RealTerminalData>> modifiedRealTerminalData() const;
 
-		QVector<int> levelCellCount(const QModelIndexList &index_list) const;
 		QVector<PhysicalTerminalData> physicalTerminalDataForIndex(QModelIndexList index_list) const;
 		QVector<RealTerminalData> realTerminalDataForIndex(QModelIndexList index_list) const;
 		RealTerminalData realTerminalDataForIndex(const QModelIndex &index) const;

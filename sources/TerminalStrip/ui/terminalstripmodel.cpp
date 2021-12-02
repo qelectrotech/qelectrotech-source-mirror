@@ -328,40 +328,6 @@ QVector<QPair<RealTerminalData, RealTerminalData>> TerminalStripModel::modifiedR
 }
 
 /**
- * @brief TerminalStripModel::levelCellCount
- * Check for each index of @a index_list if the cell represented by the index
- * is a level cell (level 0 to level 3) and if the corresponding real terminal is in the same level
- *
- * The returned vector contain how many index has matched
- * the vector have 4 int,
- * the first int is the number of matched level 0
- * the second int is the number of matched level 1
- * the third int is the number of matched level 2
- * the fourth int is the number of matched level 4
- * @param index_list
- * @return
- */
-QVector<int> TerminalStripModel::levelCellCount(const QModelIndexList &index_list) const
-{
-	QVector<int> vector_(4,0);
-
-	for (const auto &index : index_list)
-	{
-		if(index.isValid())
-		{
-			const auto rtd_ = realDataAtIndex(index.row());
-			const auto level_ = rtd_.level_;
-			const auto index_column = index.column();
-			if (level_ + 2 == index_column) {
-				vector_.replace(level_, vector_.at(level_)+1);
-			}
-		}
-	}
-
-	return vector_;
-}
-
-/**
  * @brief TerminalStripModel::terminalsForIndex
  * @param index_list
  * @return A vector of PhysicalTerminalData represented by index_list.
