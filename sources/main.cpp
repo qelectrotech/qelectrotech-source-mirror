@@ -20,6 +20,7 @@
 #include "qetapp.h"
 #include "singleapplication.h"
 #include "utils/macosxopenevent.h"
+#include "utils/qetsettings.h"
 
 #include <QStyleFactory>
 #include <QtConcurrent>
@@ -178,7 +179,7 @@ int main(int argc, char **argv)
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
-QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 #endif
 
 

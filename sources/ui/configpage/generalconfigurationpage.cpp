@@ -20,6 +20,7 @@
 #include "../../qetapp.h"
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
+#include "../../utils/qetsettings.h"
 
 #include <QFileDialog>
 #include <QFontDialog>
@@ -37,6 +38,33 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	
 	QSettings settings;
 	
+		//Appearance tab
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // ###Qt 6:remove
+	ui->m_hdpi_round_policy_widget->setDisabled(true);
+#else
+	ui->m_hdpi_round_policy_cb->addItem(tr("Arrondi supérieur pour 0.5 et plus"), QLatin1String("Round"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi supérieur"), QLatin1String("Ceil"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Toujours arrondi inférieur"), QLatin1String("Floor"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Arrondi supérieur pour 0.75 et plus"), QLatin1String("RoundPreferFloor"));
+	ui->m_hdpi_round_policy_cb->addItem(tr("Pas d'arrondi"), QLatin1String("PassThrough"));
+	switch (QetSettings::hdpiScaleFactorRoundingPolicy()) {
+		case Qt::HighDpiScaleFactorRoundingPolicy::Round:
+			ui->m_hdpi_round_policy_cb->setCurrentIndex(0);
+			break;
+		case Qt::HighDpiScaleFactorRoundingPolicy::Ceil:
+			ui->m_hdpi_round_policy_cb->setCurrentIndex(1);
+			break;
+		case Qt::HighDpiScaleFactorRoundingPolicy::Floor:
+			ui->m_hdpi_round_policy_cb->setCurrentIndex(2);
+			break;
+		case Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor:
+			ui->m_hdpi_round_policy_cb->setCurrentIndex(3);
+			break;
+		default:
+			ui->m_hdpi_round_policy_cb->setCurrentIndex(4);
+			break;
+	}
+#endif
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
@@ -148,6 +176,10 @@ void GeneralConfigurationPage::applyConf()
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
+
+		//hdpi
+	QetSettings::setHdpiScaleFactorRoundingPolicy(ui->m_hdpi_round_policy_cb->currentData().toString());
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
 		//ELEMENT EDITOR
 	settings.setValue("elementeditor/default-informations", ui->m_default_elements_info->toPlainText());
