@@ -22,7 +22,7 @@
 
 namespace QetSettings
 {
-
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 	/**
 	* @brief setHdpiScaleFactorRoundingPolicy
 	* Write the value of HdpiScaleFactorRoundingPolicy in
@@ -106,4 +106,5 @@ namespace QetSettings
 			return default_policy;
 		}
 	}
+#endif
 }
