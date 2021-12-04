@@ -197,7 +197,7 @@ void GeneralConfigurationPage::applyConf()
 		settings.setValue("elements-collections/common-collection-path", "default");
 	}
 	if (path != settings.value("elements-collections/common-collection-path").toString()) {
-		QETApp::resetUserElementsDir();
+		QETApp::resetCollectionsPath();
 	}
 	
 	path = settings.value("elements-collections/custom-collection-path").toString();
@@ -212,7 +212,7 @@ void GeneralConfigurationPage::applyConf()
 		settings.setValue("elements-collections/custom-collection-path", "default");
 	}
 	if (path != settings.value("elements-collections/custom-collection-path").toString()) {
-		QETApp::resetUserElementsDir();
+		QETApp::resetCollectionsPath();
 	}
 	
 	path = settings.value("elements-collections/custom-tbt-path").toString();
@@ -227,7 +227,7 @@ void GeneralConfigurationPage::applyConf()
 		settings.setValue("elements-collections/custom-tbt-path", "default");
 	}
 	if (path != settings.value("elements-collections/custom-tbt-path").toString()) {
-		QETApp::resetUserElementsDir();
+		QETApp::resetCollectionsPath();
 	}
 }
 

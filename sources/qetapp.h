@@ -83,7 +83,7 @@ class QETApp : public QObject
 		static QString customElementsDir();
 		static QString commonElementsDirN();
 		static QString customElementsDirN();
-		static void resetUserElementsDir();
+		static void resetCollectionsPath();
 		static QString commonTitleBlockTemplatesDir();
 		static QString customTitleBlockTemplatesDir();
 		static bool registerProject(QETProject *);
@@ -108,7 +108,7 @@ class QETApp : public QObject
 			@brief common_elements_dir
 			Directory containing the common elements collection
 		*/
-		static QString common_elements_dir;
+		static QString m_overrided_common_elements_dir;
 #endif
 		
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
@@ -208,9 +208,15 @@ class QETApp : public QObject
 		static RecentFiles *m_projects_recent_files;
 		static RecentFiles *m_elements_recent_files;
 		static TitleBlockTemplate *default_titleblock_template_;
-		static QString m_user_common_elements_dir;
-		static QString m_user_custom_elements_dir;
+
+		static QString m_common_element_dir;
+		static bool m_common_element_dir_is_set;
+
+		static QString m_custom_element_dir;
+		static bool m_custom_element_dir_is_set;
+
 		static QString m_user_custom_tbt_dir;
+
 	
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
