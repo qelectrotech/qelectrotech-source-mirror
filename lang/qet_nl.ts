@@ -3179,7 +3179,7 @@ Hieronder kunt u de standaardtekst voor nieuwe elementen hiervan opgeven:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaalmethode voor weergave met hoge pixeldichtheid (hdpi) (toegepast na opnieuw starten van QElectroTech):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
@@ -3293,27 +3293,27 @@ Hieronder kunt u de standaardtekst voor nieuwe elementen hiervan opgeven:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar boven afronden bij meer dan 0,5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
         <source>Toujours arrondi supérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Altijd naar boven afronden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
         <source>Toujours arrondi inférieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Altijd naar beneden afronden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
         <source>Arrondi supérieur pour 0.75 et plus</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar boven afronden bij meer dan 0.75</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
         <source>Pas d&apos;arrondi</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet afronden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
