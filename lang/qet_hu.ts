@@ -3039,68 +3039,68 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>Rendszer színek használata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
         <source>Projets</source>
         <translation>Projektek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="181"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
         <translation>Tervlap számok használata a projekben elfoglalt pozíciójuk helyett</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>A tervlap oszlopainak számozása 0-tól (különben 1-től)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>A projekt biztonsági mentése (alkalmazás a QElectroTech következő indításánál)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>Collections</source>
         <translation>Gyűjtemény</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
         <source>Accès aux collections</source>
         <translation>Hozzáférés a gyűjteményhez</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
         <source>Répertoire de la collection commune</source>
         <translation>Közös gyűjtemény könyvtár</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>Felhasználói szövegmezők könytára</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>Itt lehet meghatározni a QElectrotech különböző szövegeinek alapértelmezett megjelenését</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="541"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="576"/>
         <source>Grille + Clavier</source>
         <translation>Rács + Billentyű</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="547"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Grille : 1 - 30</source>
         <translation>Rács: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
         <source>DiagramEditor xGrid</source>
         <translation>Sémaszerkesztő xRács</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="616"/>
         <source>DiagramEditor yGrid</source>
         <translation>Sémaszerkesztő yRács</translation>
     </message>
@@ -3115,86 +3115,91 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>&amp;Fülek használata (alkalmazás a QElectroTech következő indításánál)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
+        <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
         <source>Langues</source>
         <translation>Nyelvek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
         <source>Textes</source>
         <translation>Szöveg</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="407"/>
         <source>Textes d&apos;éléments</source>
         <translation>Elemekhez tartozó szövegek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="385"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="532"/>
         <source>Police :</source>
         <translation>Betűtípus :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
         <source>Longueur :</source>
         <translation>Hosszúság :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Rotation :</source>
         <translation>Forgatás :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Textes indépendants</source>
         <translation>Független szövegek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="491"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="526"/>
         <source>Autres textes</source>
         <translation>Egyéb szövegek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>A Rácsnak aktívnak kell lennie, hogy lássuk a változásokat.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="672"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>Billentyűzetről mozgatás: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="687"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="722"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Sémaszerkesztő (billentyű: bal / jobb) xRács</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="694"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="729"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>Sémaszerkesztő (billentyű: fel / le) yRács</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>Billentyűzetről mozgatás ALT + billentyű: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>Sémaszerkesztő (billentyű: bal / jobb) xRács</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>Sémaszerkesztő (billentyű: fel / le) yRács</translation>
     </message>
@@ -3204,12 +3209,12 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>Érintőpárna gesztusok használata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Ne tárolja az elemek címkéit másolat beillesztésekor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="201"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>A csatlakozók importálása az alkatrész listába</translation>
     </message>
@@ -3224,205 +3229,230 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>Űrlap</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="396"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Felhasználói gyűjtemény elérési útvonala</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="382"/>
         <source>Chemin de la collection commune</source>
         <translation>Közös gyűjtemény elérési útvonala</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="200"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="221"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="270"/>
         <source>Par defaut</source>
         <translation>Alapértelmezés szerint</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
         <source>Parcourir...</source>
         <translation>Böngészés...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>Felhasználói gyűjtemény könyvtára</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="283"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Az elem gyűjtemény újratöltése a változások érvényesítéséhez)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
         <source>Désactivé</source>
         <translation>Tiltva</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> perc</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
         <source>Gestion des éléments</source>
         <translation>Elemek szervezés</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>A frissen elhelyezett alkatrészek kiemelése a panelen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="281"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Az elem tartalmazhat információt a szerzőről, engedélyt, vagy más hasznos információt.
 A szövegmező alapértelmezett értékének meghatározása az új elemek alá vonatkoztatva :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Alkalmazás a QElectroTech következő indításánál</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="240"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
+        <source>Arrondi supérieur pour 0.5 et plus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
+        <source>Toujours arrondi supérieur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
+        <source>Toujours arrondi inférieur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
+        <source>Arrondi supérieur pour 0.75 et plus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
+        <source>Pas d&apos;arrondi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Általános</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="290"/>
         <source>Système</source>
         <translation>Rendszer</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="294"/>
         <source>Arabe</source>
         <translation>Arab</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="263"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="295"/>
         <source>Brézilien</source>
         <translation>Brazil</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="296"/>
         <source>Catalan</source>
         <translation>Katalán</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="297"/>
         <source>Tchèque</source>
         <translation>Cseh</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="266"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="298"/>
         <source>Allemand</source>
         <translation>Német</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="267"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="299"/>
         <source>Danois</source>
         <translation>Dán</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="268"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="300"/>
         <source>Grec</source>
         <translation>Görög</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="269"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="301"/>
         <source>Anglais</source>
         <translation>Angol</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="270"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="302"/>
         <source>Espagnol</source>
         <translation>Spanyol</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="271"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="303"/>
         <source>Français</source>
         <translation>Francia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="304"/>
         <source>Croate</source>
         <translation>Horváth</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="305"/>
         <source>Italien</source>
         <translation>Olasz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="306"/>
         <source>Japonais</source>
         <translation>Japán</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="307"/>
         <source>Polonais</source>
         <translation>Lengyel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="308"/>
         <source>Portugais</source>
         <translation>Portugál</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="277"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="309"/>
         <source>Roumains</source>
         <translation>Román</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="310"/>
         <source>Russe</source>
         <translation>Orosz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="279"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="311"/>
         <source>Slovène</source>
         <translation>Szlovén</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="280"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="312"/>
         <source>Pays-Bas</source>
         <translation>Holland</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="313"/>
         <source>Norvege</source>
         <translation>Norvég</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="282"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="314"/>
         <source>Belgique-Flemish</source>
         <translation>Belga-Flamand</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="315"/>
         <source>Turc</source>
         <translation>Török</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="316"/>
         <source>Hongrois</source>
         <translation>Magyar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="317"/>
         <source>Mongol</source>
         <translation>Mongol</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="410"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Felhasználói szövegmező elérési útvonala</translation>
     </message>
@@ -5287,211 +5317,211 @@ Akarod menteni a változásokat?</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="104"/>
+        <location filename="../sources/qetapp.cpp" line="112"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Töltés...Az elemgyűjtemény kiinduló állapotba hozása</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="115"/>
+        <location filename="../sources/qetapp.cpp" line="123"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Töltés...Tervlap szerkesztő</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="120"/>
+        <location filename="../sources/qetapp.cpp" line="128"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="218"/>
+        <location filename="../sources/qetapp.cpp" line="226"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="416"/>
+        <location filename="../sources/qetapp.cpp" line="424"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>QET tervjelek/szimbólumok</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="436"/>
+        <location filename="../sources/qetapp.cpp" line="444"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>Felhasználói tervjelek/szimbólumok</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1178"/>
+        <location filename="../sources/qetapp.cpp" line="1197"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1180"/>
+        <location filename="../sources/qetapp.cpp" line="1199"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1182"/>
+        <location filename="../sources/qetapp.cpp" line="1201"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Terv</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1184"/>
+        <location filename="../sources/qetapp.cpp" line="1203"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektromos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1186"/>
+        <location filename="../sources/qetapp.cpp" line="1205"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1663"/>
+        <location filename="../sources/qetapp.cpp" line="1682"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech konfigurálása</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1807"/>
+        <location filename="../sources/qetapp.cpp" line="1826"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Töltés...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1905"/>
+        <location filename="../sources/qetapp.cpp" line="1924"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Töltés... Rendszer tálca ikon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1909"/>
+        <location filename="../sources/qetapp.cpp" line="1928"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1912"/>
+        <location filename="../sources/qetapp.cpp" line="1931"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Kilép</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1914"/>
+        <location filename="../sources/qetapp.cpp" line="1933"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Elrejt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1916"/>
+        <location filename="../sources/qetapp.cpp" line="1935"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Mutat</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1918"/>
+        <location filename="../sources/qetapp.cpp" line="1937"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Elrejti a vázlat szerkesztőt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1921"/>
+        <location filename="../sources/qetapp.cpp" line="1940"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Megjeleníti a vázlat szerkesztőt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1924"/>
+        <location filename="../sources/qetapp.cpp" line="1943"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Elrejti az elem szerkesztőt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1927"/>
+        <location filename="../sources/qetapp.cpp" line="1946"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Megjeleníti a elem szerkesztőt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1930"/>
+        <location filename="../sources/qetapp.cpp" line="1949"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Elrejti a szövegmező sablon szerkesztőt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1933"/>
+        <location filename="../sources/qetapp.cpp" line="1952"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Megjeleníti a szövegmező sablon szerkesztőt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1936"/>
+        <location filename="../sources/qetapp.cpp" line="1955"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Új vázlat szerkesztő</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1938"/>
+        <location filename="../sources/qetapp.cpp" line="1957"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Új elem szerkesztő</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1940"/>
+        <location filename="../sources/qetapp.cpp" line="1959"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>QElectroTech bezárása</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1941"/>
+        <location filename="../sources/qetapp.cpp" line="1960"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>QElectroTech tálcába helyezése</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1942"/>
+        <location filename="../sources/qetapp.cpp" line="1961"/>
         <source>Restaurer QElectroTech</source>
         <translation>QElectroTech visszahelyezése</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1959"/>
+        <location filename="../sources/qetapp.cpp" line="1978"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2054"/>
+        <location filename="../sources/qetapp.cpp" line="2073"/>
         <source>Éditeurs de schémas</source>
         <translation>Vázlat szerkesztők</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2064"/>
+        <location filename="../sources/qetapp.cpp" line="2083"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Elem szerkesztők</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2075"/>
+        <location filename="../sources/qetapp.cpp" line="2094"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Szövegmező sablon szerkesztők</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2127"/>
+        <location filename="../sources/qetapp.cpp" line="2146"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;A következő helyreállított fájl-t találtuk, &lt;br&gt; Szeretnéd megnyitni ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2130"/>
+        <location filename="../sources/qetapp.cpp" line="2149"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;A következő helyreállított fájlokat találtuk, &lt;br&gt; Szeretnéd megnyitni őket ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2145"/>
+        <location filename="../sources/qetapp.cpp" line="2164"/>
         <source>Fichier de restauration</source>
         <translation>Fájl helyreállítás</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2247"/>
+        <location filename="../sources/qetapp.cpp" line="2266"/>
         <source>Usage : </source>
         <translation>Használat: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2249"/>
+        <location filename="../sources/qetapp.cpp" line="2268"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5500,7 +5530,7 @@ Akarod menteni a változásokat?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2250"/>
+        <location filename="../sources/qetapp.cpp" line="2269"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5517,28 +5547,28 @@ Elérhető lehetőségek:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2256"/>
+        <location filename="../sources/qetapp.cpp" line="2275"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Meghatározza az elemgyűjtemény könyvtárat
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2259"/>
+        <location filename="../sources/qetapp.cpp" line="2278"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Meghatározza a szövegmező-sablonok gyűjtemény-könyvtárát
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2262"/>
+        <location filename="../sources/qetapp.cpp" line="2281"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Meghatározza a konfigurációs könyvtárat
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2264"/>
+        <location filename="../sources/qetapp.cpp" line="2283"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Meghatározza  nyelvi fájl könyvtárat
@@ -8851,7 +8881,7 @@ Cserélni akarod?</translation>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
         <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="581"/>
-        <location filename="../sources/qetapp.cpp" line="1999"/>
+        <location filename="../sources/qetapp.cpp" line="2018"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>ez egy hiba a programkódban</translation>
