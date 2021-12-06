@@ -3117,7 +3117,7 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Magas képpontsűrűségű (hdpi) méretezési mód megjelenítése (a QElectrotech következő indításakor) :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
@@ -3298,27 +3298,27 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
-        <translation type="unfinished"></translation>
+        <translation>Kerekítés felfelé 0,5 és felette</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
         <source>Toujours arrondi supérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Mindíg felfelé kerekít</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
         <source>Toujours arrondi inférieur</source>
-        <translation type="unfinished"></translation>
+        <translation>Mindíg lefelé kerekít</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
         <source>Arrondi supérieur pour 0.75 et plus</source>
-        <translation type="unfinished"></translation>
+        <translation>Kerekítés felfelé 0,75 és felette</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
         <source>Pas d&apos;arrondi</source>
-        <translation type="unfinished"></translation>
+        <translation>Nincs kerekítés</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
@@ -6231,7 +6231,7 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
         <source>Gestionnaire de borniers (DEV)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs rendszerező (DEV)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="455"/>
@@ -8899,133 +8899,133 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp" line="37"/>
         <source>Ajouter un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs tömb/csoport hozzáadása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp" line="63"/>
         <source>Supprimer un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs tömb/csoport törlése</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="37"/>
         <source>Ajouter une borne</source>
-        <translation type="unfinished">Csatlakozó hozzáadása</translation>
+        <translation>Csatlakozó hozzáadása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="38"/>
         <source>Ajouter la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatlakozó hozzáadása %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="40"/>
         <source>à un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>sorkapocs tömbhöz</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="41"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="73"/>
         <source>au groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation>sorkapocs tömbhöz %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="66"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished">Csatlakozó mozgatása</translation>
+        <translation>Csatlakozó mozgatása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="67"/>
         <source>Déplacer la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatlakozó mozgatása %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="69"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="138"/>
         <source>d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>egy sorkapocs tömb</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="70"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="139"/>
         <source>du groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation>sorkapocs tömbhöz %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="72"/>
         <source>à un autre groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>egy másik sorkapocs tömbhöz</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="135"/>
         <source>Enlever une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs eltávolítása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="136"/>
         <source>Enlever la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs eltávolítása %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripdata.cpp" line="27"/>
         <source>Modifier les proriétés d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocstömb tulajdonságaiinak módosítása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="25"/>
         <source>Trier le bornier %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs tömb rendezése %1</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="472"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
-        <translation type="unfinished">Általános</translation>
+        <translation>Általános</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="474"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
-        <translation type="unfinished">Biztosíték</translation>
+        <translation>Biztosíték</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="476"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Megosztható</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="478"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
-        <translation type="unfinished">Dióda</translation>
+        <translation>Dióda</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="480"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
-        <translation type="unfinished"></translation>
+        <translation>Földelő</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="515"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
-        <translation type="unfinished">Általános</translation>
+        <translation>Általános</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="516"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
-        <translation type="unfinished">Fázis</translation>
+        <translation>Fázis</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="517"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
-        <translation type="unfinished">Nulla</translation>
+        <translation>Nulla</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementdatacommand.cpp" line="27"/>
         <source>Modifier les propriétés d&apos;un élement</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy elem tulajdonságainak módosítása</translation>
     </message>
 </context>
 <context>
@@ -12298,32 +12298,32 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="14"/>
         <source>Création groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs tömb létrehozása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="20"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Helye :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="27"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Neve :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="34"/>
         <source>Installation :</source>
-        <translation type="unfinished">Beépítés:</translation>
+        <translation>Beépítés:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="65"/>
         <source>Description :</source>
-        <translation type="unfinished"></translation>
+        <translation>Részletezés :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="95"/>
         <source>Commentaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>Megjegyzés :</translation>
     </message>
 </context>
 <context>
@@ -12331,153 +12331,153 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Gestionnaire de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatlakozások szervezése</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="43"/>
         <source>Explorateur de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs lécek felkeresése</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="80"/>
         <source>Disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Diszpozíció</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="103"/>
         <source>Propriétés</source>
-        <translation type="unfinished">Tulajdonságok</translation>
+        <translation>Tulajdonságok</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="109"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation>Neve:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="119"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Részletezés</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="132"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Megjegyzés</translation>
+        <translation>Megjegyzés</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="142"/>
         <source>Installation :</source>
-        <translation type="unfinished">Beépítés:</translation>
+        <translation>Beépítés üzem/gyár:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="159"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Helye :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Type :</source>
-        <translation type="unfinished">Típus :</translation>
+        <translation>Típus :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="191"/>
         <source>Degrouper les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs tömb felbontása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="212"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="244"/>
         <source>Générique</source>
-        <translation type="unfinished">Általános</translation>
+        <translation>Általános</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="217"/>
         <source>Fusible</source>
-        <translation type="unfinished">Biztosíték</translation>
+        <translation>Biztosíték</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="222"/>
         <source>Sectionnable</source>
-        <translation type="unfinished"></translation>
+        <translation>Megosztható</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="227"/>
         <source>Diode</source>
-        <translation type="unfinished">Dióda</translation>
+        <translation>Dióda</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="232"/>
         <source>Terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Földelés</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="249"/>
         <source>Phase</source>
-        <translation type="unfinished">Fázis</translation>
+        <translation>Fázis</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="254"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nulla</translation>
+        <translation>Nulla</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="262"/>
         <source>Position automatique</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus pozíció</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="269"/>
         <source>Étage :</source>
-        <translation type="unfinished"></translation>
+        <translation>sziget :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="276"/>
         <source>Grouper les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocsok csoportba foglalása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="283"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Funkció :</translation>
+        <translation>Funkció :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Sans</source>
-        <translation type="unfinished"></translation>
+        <translation>Nélkül</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="296"/>
         <source>Avec</source>
-        <translation type="unfinished"></translation>
+        <translation>Vele</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="304"/>
         <source>LED :</source>
-        <translation type="unfinished"></translation>
+        <translation>LED :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="329"/>
         <source>Ajouter un bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatlakozó hozzáadása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="340"/>
         <source>Supprimer le bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocs eltávolítása</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="148"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Cím nélküli projekt</translation>
+        <translation>Cím nélküli projekt</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="154"/>
         <source>Bornes indépendante</source>
-        <translation type="unfinished"></translation>
+        <translation>Független sorkapcsok</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="530"/>
         <source>Modifier des propriétés de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorkapocsléc tulajdonságainak módosítása</translation>
     </message>
 </context>
 <context>
@@ -12485,52 +12485,52 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="203"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="204"/>
         <source>Étage</source>
-        <translation type="unfinished"></translation>
+        <translation>Sziget</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="205"/>
         <source>Label</source>
-        <translation type="unfinished">Címke</translation>
+        <translation>Címke</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="206"/>
         <source>Référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Kereszthivatkozás</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="207"/>
         <source>Câble</source>
-        <translation type="unfinished"></translation>
+        <translation>Kábel</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="208"/>
         <source>Couleur / numéro de fil câble</source>
-        <translation type="unfinished"></translation>
+        <translation>Szín / kábelér  száma</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="209"/>
         <source>Type</source>
-        <translation type="unfinished">Típus</translation>
+        <translation>Típus</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="210"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funkció</translation>
+        <translation>Funkció</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="211"/>
         <source>led</source>
-        <translation type="unfinished"></translation>
+        <translation>led</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="212"/>
         <source>Numéro de conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>vezeték szám</translation>
     </message>
 </context>
 <context>
