@@ -1,0 +1,55 @@
+<definition link_type="simple" hotspot_x="45" width="90" height="70" version="0.70" hotspot_y="47" orientation="dyyy" type="element">
+    <uuid uuid="{ccf7beda-f8d5-4598-aa70-8b3d2032d4b8}"/>
+    <names>
+        <name lang="en">Fibaro DIMMER 2 FGD-212</name>
+        <name lang="nl">Fibaro DIMMER 2 FGD-212</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Fibaro</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1">Dimmer 2</elementInformation>
+        <elementInformation name="plant" show="1">230V / Z-Wave </elementInformation>
+        <elementInformation name="description" show="1">zwave dimmer</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1">230V Dimmer</elementInformation>
+        <elementInformation name="designation" show="1">FGD-212</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text y="-26" x="-8" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="S2"/>
+        <text y="-26" x="2" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="Sx"/>
+        <text y="-26" x="-18" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="S1"/>
+        <text y="-26" x="22" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="∿"/>
+        <text y="-27" x="23" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="↗"/>
+        <rect y="-42" rx="0" x="-30" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <text y="-26" x="13" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="N"/>
+        <rect y="-42" rx="0" x="-20" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="-10" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="10" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="20" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <circle y="-40" x="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="22" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <polygon x3="-40" y4="0" x5="-40" x2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-30" y2="-42" y5="0" x6="-40" y3="-32" closed="false" x4="-40" y6="0" y1="-42"/>
+        <polygon x3="40" y4="0" x2="35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="30" y2="-42" y3="-32" closed="false" x4="40" y1="-42"/>
+        <arc y="-20" x="-40" width="80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="40" angle="90" start="180"/>
+        <arc y="-20" x="-40" width="80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="40" angle="90" start="270"/>
+        <rect y="-5" rx="0" x="-30" width="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="7" ry="0"/>
+        <text y="-19" x="-26" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="L"/>
+        <text y="-6" x="-19" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="DIMMER 2"/>
+        <circle y="-3.7" x="-28.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="4"/>
+        <terminal y="-42" x="25" orientation="n"/>
+        <terminal y="-42" x="-15" orientation="n"/>
+        <terminal y="-42" x="-5" orientation="n"/>
+        <terminal y="-42" x="-25" orientation="n"/>
+        <terminal y="-42" x="15" orientation="n"/>
+        <terminal y="-42" x="5" orientation="n"/>
+    </description>
+</definition>
