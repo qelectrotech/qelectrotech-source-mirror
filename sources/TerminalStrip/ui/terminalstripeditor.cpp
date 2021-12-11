@@ -60,8 +60,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 #endif
 
 		//Setup the bridge color
-	QList<QColor> bridge_color{Qt::red, Qt::blue, Qt::white, Qt::gray, Qt::black};
-	ui->m_bridge_color_cb->setColors(bridge_color);
+	ui->m_bridge_color_cb->setColors(TerminalStrip::bridgeColor().toList());
 
 	setUpUndoConnections();
 
@@ -329,7 +328,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 
 		m_model = new TerminalStripModel(strip_, this);
 		ui->m_table_widget->setModel(m_model);
-		setUpBridgeCellWidth();
+		m_model->buildBridgePixmap(setUpBridgeCellWidth());
 		spanMultiLevelTerminals();
 		selectionChanged();	//Used to update child widgets
 
@@ -461,7 +460,7 @@ void TerminalStripEditor::selectionChanged()
 	ui->m_unbridge_terminals_pb->setEnabled(enable_unbridge);
 }
 
-void TerminalStripEditor::setUpBridgeCellWidth()
+QSize TerminalStripEditor::setUpBridgeCellWidth()
 {
 	if (ui->m_table_widget->verticalHeader() &&
 		m_model)
@@ -469,15 +468,15 @@ void TerminalStripEditor::setUpBridgeCellWidth()
 		auto section_size = ui->m_table_widget->verticalHeader()->defaultSectionSize();
 		auto h_header = ui->m_table_widget->horizontalHeader();
 
-		h_header->setSectionResizeMode(2, QHeaderView::Fixed);
-		h_header->resizeSection(2, section_size);
-		h_header->setSectionResizeMode(3, QHeaderView::Fixed);
-		h_header->resizeSection(3, section_size);
-		h_header->setSectionResizeMode(4, QHeaderView::Fixed);
-		h_header->resizeSection(4, section_size);
-		h_header->setSectionResizeMode(5, QHeaderView::Fixed);
-		h_header->resizeSection(5, section_size);
+		for (int i = TerminalStripModel::Level0 ; i<(TerminalStripModel::Level3+1) ; ++i) {
+			ui->m_table_widget->setColumnWidth(i, section_size);
+			h_header->setSectionResizeMode(i, QHeaderView::Fixed);
+		}
+
+		return QSize(section_size, section_size);
 	}
+
+	return QSize(0,0);
 }
 
 /**

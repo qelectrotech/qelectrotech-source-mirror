@@ -618,6 +618,7 @@ bool TerminalStrip::setOrderTo(const QVector<PhysicalTerminalData> &sorted_vecto
 	}
 
 	m_physical_terminals = new_order;
+	rebuildRealVector();
 	emit orderChanged();
 	return true;
 }
@@ -909,10 +910,92 @@ void TerminalStrip::unBridge(const QVector<QUuid> &real_terminals_uuid)
  * @param real_terminal_uuid
  * @return
  */
-QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QUuid &real_terminal_uuid) const
+const QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QUuid &real_terminal_uuid) const
 {
 	auto rt = realTerminalForUuid(real_terminal_uuid);
 	return bridgeFor(QVector{rt});
+}
+
+/**
+ * @brief TerminalStrip::previousTerminalInLevel
+ * @param real_terminal_uuid
+ * @return The previous real terminal at the samne level
+ * as the real terminal with uuid @a real_terminal_uuid
+ * If there is not a previous terminal, return a null RealTerminalData
+ */
+RealTerminalData TerminalStrip::previousTerminalInLevel(const QUuid &real_terminal_uuid) const
+{
+	auto real_t = realTerminalForUuid(real_terminal_uuid);
+	if (real_t)
+	{
+		auto phy_t = physicalTerminal(real_t);
+		if (phy_t)
+		{
+			auto level_ = phy_t->levelOf(real_t);
+			auto index = m_physical_terminals.indexOf(phy_t);
+			if (index >= 1)
+			{
+				auto t_vector = m_physical_terminals.at(index-1)->terminals();
+				if (t_vector.size() > level_)
+				{
+					return realTerminalData(t_vector.at(level_));
+				}
+			}
+		}
+	}
+
+	return RealTerminalData();
+}
+
+/**
+ * @brief TerminalStrip::nextTerminalInLevel
+ * @param real_terminal_uuid
+ * @return The next real terminal at the samne level
+ * as the real terminal with uuid @a real_terminal_uuid
+ * If there is not a next terminal, return a null RealTerminalData
+ */
+RealTerminalData TerminalStrip::nextTerminalInLevel(const QUuid &real_terminal_uuid) const
+{
+	auto real_t = realTerminalForUuid(real_terminal_uuid);
+	if (real_t)
+	{
+		auto phy_t = physicalTerminal(real_t);
+		if (phy_t)
+		{
+			auto level_ = phy_t->levelOf(real_t);
+			auto index = m_physical_terminals.indexOf(phy_t);
+			if (index < m_physical_terminals.size()-1)
+			{
+				auto t_vector = m_physical_terminals.at(index+1)->terminals();
+				if (t_vector.size() > level_)
+				{
+					return realTerminalData(t_vector.at(level_));
+				}
+			}
+		}
+	}
+
+	return RealTerminalData();
+}
+
+RealTerminalData TerminalStrip::previousRealTerminal(const QUuid &real_terminal_uuid) const
+{
+	auto real = realTerminalForUuid(real_terminal_uuid);
+	auto index = m_real_terminals.indexOf(real);
+	if (index) {
+		return realTerminalData(m_real_terminals.at(index-1));
+	}
+	return RealTerminalData();
+}
+
+RealTerminalData TerminalStrip::nextRealTerminal(const QUuid &real_terminal_uuid) const
+{
+	auto real = realTerminalForUuid(real_terminal_uuid);
+	auto index = m_real_terminals.indexOf(real);
+	if (index != m_real_terminals.size()-1) {
+		return realTerminalData(m_real_terminals.at(index+1));
+	}
+	return RealTerminalData();
 }
 
 /**
@@ -1058,6 +1141,14 @@ RealTerminalData TerminalStrip::realTerminalData(const QSharedPointer<RealTermin
 	rtd.led_       = real_terminal->led();
 	rtd.is_element = real_terminal->isElement();
 	rtd.is_bridged = isBridged(real_terminal);
+	if (rtd.is_bridged) {
+		for (auto bridge : m_bridge) {
+			if (bridge->real_terminals.contains(real_terminal)) {
+				rtd.bridge_uuid = bridge->uuid_;
+				break;
+			}
+		}
+	}
 
 	return rtd;
 }
@@ -1165,4 +1256,18 @@ QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeForUuid(const QUuid &br
 	}
 
 	return QSharedPointer<TerminalStripBridge>();
+}
+
+/**
+ * @brief TerminalStrip::rebuildRealVector
+ * Rebuild the real terminal vector
+ * to be ordered
+ */
+void TerminalStrip::rebuildRealVector()
+{
+	m_real_terminals.clear();
+	for (const auto phy : m_physical_terminals) {
+		for (const auto &real : phy->terminals())
+			m_real_terminals.append(real);
+	}
 }

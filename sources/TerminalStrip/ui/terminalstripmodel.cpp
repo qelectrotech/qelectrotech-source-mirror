@@ -24,6 +24,7 @@
 #include <QComboBox>
 #include <QSpinBox>
 #include <QPainter>
+#include <QApplication>
 
 /**
  * Some const int who describe what a column contain
@@ -143,18 +144,6 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 		switch (index.column()) {
 			case POS_CELL :        return physicalDataAtIndex(index.row()).pos_;
 			case LEVEL_CELL :      return rtd.level_;
-			case LEVEL_0_CELL :
-				if (rtd.level_ == 0 && rtd.is_bridged) return "0";
-				break;
-			case LEVEL_1_CELL :
-				if (rtd.level_ == 1 && rtd.is_bridged) return "0";
-				break;
-			case LEVEL_2_CELL :
-				if (rtd.level_ == 2 && rtd.is_bridged) return "0";
-				break;
-			case LEVEL_3_CELL :
-				if (rtd.level_ == 3 && rtd.is_bridged) return "0";
-				break;
 			case LABEL_CELL :      return rtd.label_;
 			case XREF_CELL :       return rtd.Xref_;
 			case CABLE_CELL :      return rtd.cable_;
@@ -184,6 +173,18 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			m_modified_cell.value(rtd.element_).at(index.column()))
 		{
 			return QBrush(Qt::yellow);
+		}
+	}
+	else if (role == Qt::DecorationRole &&
+			 (index.column() == LEVEL_0_CELL ||
+			 index.column() == LEVEL_1_CELL ||
+			 index.column() == LEVEL_2_CELL ||
+			 index.column() == LEVEL_3_CELL))
+	{
+		return bridgePixmapFor(index);
+		auto pixmap_ = bridgePixmapFor(index);
+		if (!pixmap_.isNull()) {
+			return pixmap_;
 		}
 	}
 
@@ -403,6 +404,78 @@ RealTerminalData TerminalStripModel::realTerminalDataForIndex(const QModelIndex 
 	}
 }
 
+/**
+ * @brief TerminalStripModel::buildBridgePixmap
+ * Build the pixmap of bridge.
+ * You should call this method when you know the
+ * size to use in the bridge cell of a QTableView.
+ * @param pixmap_size
+ */
+void TerminalStripModel::buildBridgePixmap(const QSize &pixmap_size)
+{
+	m_bridges_pixmaps.clear();
+	for (auto color_ : TerminalStrip::bridgeColor())
+	{
+		QPen pen;
+		pen.setColor(color_);
+		pen.setWidth(1);
+
+		QBrush brush;
+		brush.setColor(color_);
+		brush.setStyle(Qt::SolidPattern);
+
+		QPixmap top_(pixmap_size);
+		top_.fill(Qt::lightGray);
+		QPainter top_p(&top_);
+		top_p.setPen(pen);
+		top_p.setBrush(brush);
+
+		QPixmap middle_(pixmap_size);
+		middle_.fill(Qt::lightGray);
+		QPainter middle_p(&middle_);
+		middle_p.setPen(pen);
+		middle_p.setBrush(brush);
+
+		QPixmap bottom_(pixmap_size);
+		bottom_.fill(Qt::lightGray);
+		QPainter bottom_p(&bottom_);
+		bottom_p.setPen(pen);
+		bottom_p.setBrush(brush);
+
+		QPixmap none_(pixmap_size);
+		none_.fill(Qt::lightGray);
+		QPainter none_p(&none_);
+		none_p.setPen(pen);
+		none_p.setBrush(brush);
+
+
+		auto w_ = pixmap_size.width();
+		auto h_ = pixmap_size.height();
+
+			//Draw circle
+		top_p.drawEllipse(QPoint(w_/2, h_/2), w_/4, h_/4);
+		middle_p.drawEllipse(QPoint(w_/2, h_/2), w_/4, h_/4);
+		bottom_p.drawEllipse(QPoint(w_/2, h_/2), w_/4, h_/4);
+
+			//Draw top line
+		middle_p.drawRect((w_/2)-(w_/8), 0, w_/4, h_/2);
+		bottom_p.drawRect((w_/2)-(w_/8), 0, w_/4, h_/2);
+		none_p.drawRect((w_/2)-(w_/8), 0, w_/4, h_/2);
+
+			//Draw bottom line
+		top_p.drawRect((w_/2)-(w_/8), h_/2, w_/4, h_/2);
+		middle_p.drawRect((w_/2)-(w_/8), h_/2, w_/4, h_/2);
+		none_p.drawRect((w_/2)-(w_/8), h_/2, w_/4, h_/2);
+
+		BridgePixmap bpxm;
+		bpxm.top_ = top_;
+		bpxm.middle_ = middle_;
+		bpxm.bottom_ = bottom_;
+		bpxm.none_ = none_;
+		m_bridges_pixmaps.insert(color_, bpxm);
+	}
+}
+
 void TerminalStripModel::fillPhysicalTerminalData()
 {
 		//Get all physical terminal
@@ -537,6 +610,127 @@ RealTerminalData TerminalStripModel::realDataAtIndex(int index) const
 	return RealTerminalData();
 }
 
+QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
+{
+	if (!index.isValid() || m_terminal_strip.isNull()) {
+		return QPixmap();
+	}
+
+	auto level_column = levelForColumn(columnTypeForIndex(index));
+	if (level_column == -1) {
+		return QPixmap();
+	}
+
+	auto rtd = realTerminalDataForIndex(index);
+
+		//Terminal level correspond to the column level of index
+	if (level_column == rtd.level_)
+	{
+		if (rtd.is_bridged)
+		{
+			auto bridge_uuid = rtd.bridge_uuid;
+			auto previous_bridge_uuid = m_terminal_strip->previousTerminalInLevel(rtd.real_terminal_uuid).bridge_uuid;
+			auto next_bridge_uuid = m_terminal_strip->nextTerminalInLevel(rtd.real_terminal_uuid).bridge_uuid;
+
+			auto color_ = m_terminal_strip->bridgeFor(rtd.real_terminal_uuid)->color_;
+			auto pixmap_ = m_bridges_pixmaps.value(color_);
+
+				//Current real terminal between two bridged terminal
+			if ((bridge_uuid == previous_bridge_uuid) &&
+				(bridge_uuid == next_bridge_uuid)) {
+				return pixmap_.middle_;
+			} else if (bridge_uuid == previous_bridge_uuid) {
+				return pixmap_.bottom_;
+			} else if (bridge_uuid == next_bridge_uuid) {
+				return pixmap_.top_;
+			}
+		}
+	}
+		//Terminal level ins't in the same column level of index
+		//Check if we need to draw a none bridge pixmap
+
+		//Check previous
+	auto physical_data = m_terminal_strip->physicalTerminalData(rtd);
+	auto current_real_uuid = rtd.real_terminal_uuid;
+	auto current_phy_uuid = physical_data.uuid_;
+	bool already_jumped_to_previous = false;
+	RealTerminalData previous_data;
+
+	do {
+		auto previous_rtd = m_terminal_strip->previousRealTerminal(current_real_uuid);
+		current_real_uuid = previous_rtd.real_terminal_uuid;
+
+		if (previous_rtd.level_ == -1) {
+			break;
+		}
+
+			//We are in the same physical terminal as previous loop
+		if (current_phy_uuid == m_terminal_strip->physicalTerminalData(previous_rtd).uuid_)
+		{
+			if (previous_rtd.is_bridged &&
+				previous_rtd.level_ == level_column) {
+				previous_data = previous_rtd;
+				break;
+			}
+		}
+		else if (already_jumped_to_previous) { //We are not in same physical terminal as previous loop
+			break;
+		} else {
+			already_jumped_to_previous = true;
+			current_phy_uuid = m_terminal_strip->physicalTerminalData(previous_rtd).uuid_;
+			if (previous_rtd.is_bridged &&
+				previous_rtd.level_ == level_column) {
+				previous_data = previous_rtd;
+				break;
+			}
+		}
+	} while(true);
+
+		//Check next
+	current_real_uuid = rtd.real_terminal_uuid;
+	current_phy_uuid = physical_data.uuid_;
+	bool already_jumped_to_next = false;
+	RealTerminalData next_data;
+	do {
+		auto next_rtd = m_terminal_strip->nextRealTerminal(current_real_uuid);
+		current_real_uuid = next_rtd.real_terminal_uuid;
+
+		if (next_rtd.level_ == -1) {
+			break;
+		}
+
+			//We are in the same physical terminal as previous loop
+		if (current_phy_uuid == m_terminal_strip->physicalTerminalData(next_rtd).uuid_)
+		{
+			if (next_rtd.is_bridged &&
+				next_rtd.level_ == level_column) {
+				next_data = next_rtd;
+				break;
+			}
+		}
+		else if (already_jumped_to_next) { //We are not in same physical terminal as previous loop
+			break;
+		} else {
+			already_jumped_to_next = true;
+			current_phy_uuid = m_terminal_strip->physicalTerminalData(next_rtd).uuid_;
+			if (next_rtd.is_bridged &&
+				next_rtd.level_ == level_column) {
+				next_data = next_rtd;
+				break;
+			}
+		}
+	} while(true);
+
+	if (previous_data.bridge_uuid == next_data.bridge_uuid) {
+		auto bridge_ = m_terminal_strip->bridgeFor(previous_data.real_terminal_uuid);
+		if (bridge_) {
+			return m_bridges_pixmaps.value(bridge_->color_).none_;
+		}
+	}
+
+	return QPixmap();
+}
+
 /***********************************************************
  * Alittle delegate for add a combobox to edit type
  * and a spinbox to edit the level of a terminal
@@ -591,5 +785,45 @@ void TerminalStripModelDelegate::setModelData(QWidget *editor, QAbstractItemMode
 		else {
 			QStyledItemDelegate::setModelData(editor, model, index);
 		}
+	}
+}
+
+/**
+ * @brief TerminalStripModelDelegate::paint
+ * By default on a QTableView, Qt draw pixmap in cell with a little margin at left.
+ * Override the function to draw the pixmap of bridge without the margin at left.
+ * @param painter
+ * @param option
+ * @param index
+ */
+void TerminalStripModelDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+	auto column = index.column();
+	if (column == LEVEL_0_CELL ||
+		column == LEVEL_1_CELL ||
+		column == LEVEL_2_CELL ||
+		column == LEVEL_3_CELL)
+	{
+		auto variant = index.data(Qt::DecorationRole);
+		if (variant.isNull()) {
+			QStyledItemDelegate::paint(painter, option, index);
+		}
+		else
+		{
+			if (option.state & QStyle::State_Selected)
+			{
+				QStyleOptionViewItem opt_ = option;
+				initStyleOption(&opt_, index);
+				QStyle *style = QApplication::style();
+				auto px = style->generatedIconPixmap(QIcon::Selected, variant.value<QPixmap>(), &opt_);
+				style->drawItemPixmap(painter, option.rect, Qt::AlignLeft, px);
+			}
+			else {
+				painter->drawPixmap(option.rect, variant.value<QPixmap>());
+			}
+		}
+	}
+	else {
+		QStyledItemDelegate::paint(painter, option, index);
 	}
 }

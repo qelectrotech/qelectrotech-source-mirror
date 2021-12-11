@@ -37,6 +37,8 @@ class TerminalElement;
  * @brief The RealTerminalData struct
  * Conveniant struct to quickly get some values
  * of a RealTerminal
+ * A RealTerminalData with level_ = -1
+ * is considered as a null data
  */
 struct RealTerminalData
 {
@@ -86,7 +88,7 @@ inline uint qHash(const PhysicalTerminalData &key, uint seed) {
 struct TerminalStripBridge
 {
 		QVector<QSharedPointer<RealTerminal>> real_terminals;
-		QColor color_ = Qt::gray;
+		QColor color_ = Qt::darkGray;
 		QUuid uuid_ = QUuid::createUuid();
 };
 
@@ -104,6 +106,8 @@ class TerminalStrip : public QObject
 	Q_OBJECT
 
 	public:
+		static QVector<QColor> bridgeColor() {return QVector<QColor>{Qt::red, Qt::blue, Qt::white, Qt::darkGray, Qt::black};}
+
 	signals:
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
 		void bridgeChanged();
@@ -146,7 +150,12 @@ class TerminalStrip : public QObject
 		bool setBridge(const QVector<QUuid> &real_terminals_uuid);
 		bool setBridge(const QUuid &bridge_uuid, const QVector<QUuid> &real_terminals_uuid);
 		void unBridge(const QVector<QUuid> &real_terminals_uuid);
-		QSharedPointer<TerminalStripBridge> bridgeFor(const QUuid &real_terminal_uuid) const;
+		const QSharedPointer<TerminalStripBridge> bridgeFor(const QUuid &real_terminal_uuid) const;
+
+		RealTerminalData previousTerminalInLevel(const QUuid &real_terminal_uuid) const;
+		RealTerminalData nextTerminalInLevel(const QUuid &real_terminal_uuid) const;
+		RealTerminalData previousRealTerminal(const QUuid &real_terminal_uuid) const;
+		RealTerminalData nextRealTerminal(const QUuid &real_terminal_uuid) const;
 
 		QVector<QPointer<Element>> terminalElement() const;
 
@@ -163,6 +172,7 @@ class TerminalStrip : public QObject
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
 		QSharedPointer<TerminalStripBridge> bridgeFor (const QVector<QSharedPointer<RealTerminal>> &terminal_vector) const;
 		QSharedPointer<TerminalStripBridge> bridgeForUuid (const QUuid &bridge_uuid);
+		void rebuildRealVector();
 
 	private:
 		TerminalStripData m_data;

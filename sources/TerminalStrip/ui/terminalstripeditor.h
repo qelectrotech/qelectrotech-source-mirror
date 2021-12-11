@@ -53,7 +53,7 @@ class TerminalStripEditor : public QDialog
 		void setCurrentStrip(TerminalStrip *strip_);
 		void spanMultiLevelTerminals();
 		void selectionChanged();
-		void setUpBridgeCellWidth();
+		QSize setUpBridgeCellWidth();
 		TerminalStripModel::Column isSingleColumnSelected() const;
 
 	private slots:

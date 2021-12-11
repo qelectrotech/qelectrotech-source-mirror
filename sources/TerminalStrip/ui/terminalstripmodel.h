@@ -1,4 +1,4 @@
-/*
+﻿/*
         Copyright 2006-2021 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -22,9 +22,15 @@
 #include <QObject>
 #include <QPointer>
 #include <QStyledItemDelegate>
-#include <QPair>
+#include <QHash>
+#include <QColor>
 
 #include "../terminalstrip.h"
+
+//Code to use QColor as key for QHash
+inline uint qHash(const QColor &key, uint seed) {
+	return qHash(key.name(), seed);
+}
 
 class TerminalStrip;
 
@@ -68,21 +74,31 @@ class TerminalStripModel : public QAbstractTableModel
 		QVector<RealTerminalData> realTerminalDataForIndex(QModelIndexList index_list) const;
 		RealTerminalData realTerminalDataForIndex(const QModelIndex &index) const;
 
+		void buildBridgePixmap(const QSize &pixmap_size);
+
 	private:
 		void fillPhysicalTerminalData();
 		RealTerminalData dataAtRow(int row) const;
 		void replaceDataAtRow(RealTerminalData data, int row);
 		PhysicalTerminalData physicalDataAtIndex(int index) const;
 		RealTerminalData realDataAtIndex(int index) const;
+		QPixmap bridgePixmapFor(const QModelIndex &index) const;
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
 		QVector<PhysicalTerminalData> m_edited_terminal_data, m_original_terminal_data;
 		QHash<Element *, QVector<bool>> m_modified_cell;
-		QPixmap m_bridge_top,
-				m_bride_bottom,
-				m_bridge,
-		m_bride_both;
+
+		struct BridgePixmap
+		{
+				QPixmap top_,
+						middle_,
+						bottom_,
+						none_;
+		};
+
+		QHash<QColor, BridgePixmap> m_bridges_pixmaps;
+
 };
 
 class TerminalStripModelDelegate : public QStyledItemDelegate
@@ -100,6 +116,8 @@ class TerminalStripModelDelegate : public QStyledItemDelegate
 				QWidget *editor,
 				QAbstractItemModel *model,
 				const QModelIndex &index) const override;
+
+		void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
 };
 
 #endif // TERMINALSTRIPMODEL_H
