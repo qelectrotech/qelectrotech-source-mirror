@@ -1,6 +1,6 @@
 name: qelectrotech
 title: QElectroTech
-base: core18
+base: core20
 adopt-info: qelectrotech
 license: GPL-2.0
 summary: Electrical diagram editor
@@ -10,6 +10,7 @@ description: |
 
 grade: stable
 confinement: strict
+compression: lzo
 
 architectures:
   - build-on: amd64
@@ -30,15 +31,14 @@ apps:
     extensions: [kde-neon]
     plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control]
     environment: &env
-      __EGL_VENDOR_LIBRARY_DIRS: $SNAP/kf5/usr/share/glvnd/egl_vendor.d:$SNAP/usr/share/glvnd/egl_vendor.d
       TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
-      QT_QPA_PLATFORMTHEME: gtk3
-      QT_AUTO_SCREEN_SCALE_FACTOR: 1
       HOME: $SNAP_USER_COMMON
-      PYTHONPATH: $SNAP:$SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3.6:$SNAP/usr/lib/python3.6/lib-dynload
+      PYTHONPATH: $SNAP:$SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3.8:$SNAP/usr/lib/python3.8/lib-dynload
 
   qet-tb-generator:
-    command: bin/qelectrotech-launch $SNAP/bin/qet_tb_generator
+    command: bin/qet_tb_generator
+    command-chain:
+      - bin/qelectrotech-launch
     extensions: [kde-neon]
     plugs: *plugs
     environment: *env
@@ -56,10 +56,15 @@ parts:
     organize:
       '*': bin/
 
+  update-instructions:
+    plugin: dump
+    source: build-aux/snap/local/update-instructions
+    organize: 
+      '*': update-instructions/
+
   qet-tb-generator:
     plugin: python
-    python-version: python3
-    source: https://github.com/qelectrotech/qet_tb_generator.git
+    source: https://github.com/raulroda/qet_tb_generator-plugin.git
     python-packages: [PySimpleGUI]
     stage-packages: 
       - python3-lxml
@@ -69,14 +74,14 @@ parts:
   kde-sdk-setup:
     plugin: nil
     build-snaps:
-      - kde-frameworks-5-core18-sdk
+      - kde-frameworks-5-qt-5-15-3-core20-sdk
     build-packages:
       - g++
       - mesa-common-dev
       - libglvnd-dev
       - rsync
     override-build: |
-      rsync -a --ignore-existing /snap/kde-frameworks-5-core18-sdk/current/ /
+      rsync -a --ignore-existing /snap/kde-frameworks-5-qt-5-15-3-core20-sdk/current/ /
       
   dxf-to-qet:
     after: [kde-sdk-setup]
@@ -92,14 +97,15 @@ parts:
     after: [kde-sdk-setup]
     plugin: nil
     source: .
-    stage-packages: [ git, sqlite3 ]
+    stage-packages: [ git, sqlite3, xdg-user-dirs ]
     build-packages:
       - git
       - libsqlite3-dev
     override-pull: |
       snapcraftctl pull
-      snap_version=$(git describe --dirty)
-      modified_displayed_version=$snap_version".snap"
+      displayed_version=$(grep "displayedVersion" sources/qet.h | tr -d "\";" | cut -d" " -f5)
+      snap_version="${displayed_version}~$(git rev-parse --short=8 HEAD)"
+      modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       snapcraftctl set-version "$snap_version"
     override-build: |
@@ -115,11 +121,14 @@ parts:
   cleanup:
     after: [qelectrotech, dxf-to-qet, qet-tb-generator]
     plugin: nil
-    build-snaps: [core18, kde-frameworks-5-core18]
+    build-snaps: [kde-frameworks-5-qt-5-15-3-core20]
     override-prime: |
-      # Remove all files from snap that are already included in the base snap or in
-      # any connected content snaps
       set -eux
-      for snap in "core18" "kde-frameworks-5-core18"; do  # List all content-snaps and base snaps you're using here
-        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      for snap in "kde-frameworks-5-qt-5-15-3-core20"; do  # List all content-snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
       done
+      for cruft in bug lintian man; do
+        rm -rf $SNAPCRAFT_PRIME/usr/share/$cruft
+      done
+      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete

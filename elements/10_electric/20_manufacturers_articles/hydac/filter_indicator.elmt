@@ -1,0 +1,50 @@
+<definition hotspot_y="34" version="0.80" orientation="dyyy" hotspot_x="31" width="40" height="50" link_type="simple" type="element">
+    <uuid uuid="{9eb45f48-9e0a-4167-bcee-278c94e66ad9}"/>
+    <names>
+        <name lang="nl">Clogging</name>
+        <name lang="de">Clogging</name>
+        <name lang="it">Clogging</name>
+        <name lang="es">Clogging</name>
+        <name lang="pl">Clogging</name>
+        <name lang="cs">Clogging</name>
+        <name lang="fr">Clogging</name>
+        <name lang="en">Clogging</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" length2="1.5" y2="-19" y1="-19" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-7" end2="none" x1="-20" antialias="false"/>
+        <polygon y2="0" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" x3="-10" closed="false" y3="-20" x1="0" antialias="true"/>
+        <dynamic_text z="4" Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" x="-10" rotation="0" uuid="{8e21a201-fac9-4e57-9cb0-8d6ce544a344}" text_from="UserText" Halignment="AlignLeft" text_width="-1" y="-1" frame="false">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text z="4" Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" x="-19" rotation="0" uuid="{8e21a201-fac9-4e57-9cb0-8d6ce544a344}" text_from="UserText" Halignment="AlignLeft" text_width="-1" y="-1" frame="false">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text z="5" Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" x="-21" rotation="0" uuid="{5fd0afeb-0396-40e6-9f03-266c3c10544a}" text_from="UserText" Halignment="AlignLeft" text_width="-1" y="-33" frame="false">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text z="6" Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" x="-10" rotation="0" uuid="{c9f6bdf3-cb08-47dd-b723-e42d8d613f86}" text_from="UserText" Halignment="AlignLeft" text_width="-1" y="-33" frame="false">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text z="7" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="1" rotation="0" uuid="{7c7f2186-ed1f-4c89-b904-ef6a4cabd088}" text_from="ElementInfo" Halignment="AlignLeft" text_width="-1" y="-20.5" frame="false">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length2="1.5" y2="-19" y1="-30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" end2="none" x1="-20" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-20" y1="-30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" x1="0" antialias="false"/>
+        <dynamic_text z="11" Valignment="AlignTop" font="Sans Serif,6,-1,5,0,0,0,0,0,0,normal" x="-28" rotation="0" uuid="{0352b3da-e708-40f7-af24-cbe888b57b2d}" text_from="UserText" Halignment="AlignLeft" text_width="-1" y="-16" frame="false">
+            <text>ΔP</text>
+        </dynamic_text>
+        <line end1="none" length2="1.5" y2="6" y1="6" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-17" end2="none" x1="-23" antialias="false"/>
+        <line end1="none" length2="1.5" y2="4" y1="4" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" end2="none" x1="-22" antialias="false"/>
+        <line end1="none" length2="1.5" y2="2" y1="2" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-19" end2="none" x1="-21" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-6" y1="-6" length1="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="-4" end2="none" x1="-14" antialias="false"/>
+        <rect x="-26" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="29" height="41" y="-30" antialias="false"/>
+        <terminal x="-20" orientation="s" y="10"/>
+        <terminal x="0" orientation="s" y="10"/>
+        <terminal x="0" orientation="n" y="-30"/>
+        <terminal x="-20" orientation="n" y="-30"/>
+    </description>
+</definition>

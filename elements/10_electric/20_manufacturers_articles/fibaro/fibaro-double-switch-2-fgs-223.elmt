@@ -1,0 +1,56 @@
+<definition link_type="simple" hotspot_x="50" width="90" height="70" version="0.70" hotspot_y="47" orientation="dyyy" type="element">
+    <uuid uuid="{0050a285-ff08-4210-945d-f2cdec6cb86c}"/>
+    <names>
+        <name lang="en">Fibaro Double Switch 2 FGS-223</name>
+        <name lang="nl">Fibaro Double Switch 2 FGS-223</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Fibaro</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1">Double Switch 2</elementInformation>
+        <elementInformation name="plant" show="1">230V / Z-Wave</elementInformation>
+        <elementInformation name="description" show="1">Zwave Double switch</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">FGS-223</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text y="4" x="-16" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="FGS-223"/>
+        <text y="-4" x="-24" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="SWITCH 2"/>
+        <text y="-26" x="-1" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="L"/>
+        <text y="-26" x="-23" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="S2"/>
+        <text y="-26" x="-33" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="S1"/>
+        <text y="-26" x="18" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="N"/>
+        <rect y="-42" rx="0" x="-35" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <text y="-26" x="7" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="Q1"/>
+        <rect y="-42" rx="0" x="-25" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="-15" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="-5" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="5" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <rect y="-42" rx="0" x="15" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" ry="0"/>
+        <circle y="-40" x="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <circle y="-40" x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6"/>
+        <polygon x3="-45" y4="0" x5="-45" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-35" y2="-42" y5="0" x6="-45" y3="-32" closed="false" x4="-45" y6="0" y1="-42"/>
+        <polygon x3="35" y4="0" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="25" y2="-42" y3="-32" closed="false" x4="35" y1="-42"/>
+        <arc y="-20" x="-45" width="80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="40" angle="90" start="180"/>
+        <arc y="-20" x="-45" width="80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="40" angle="90" start="270"/>
+        <rect y="-5" rx="0" x="-35" width="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="7" ry="0"/>
+        <text y="-26" x="-13" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="Q2"/>
+        <text y="-13" x="-20" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="DOUBLE"/>
+        <circle y="-3.2" x="-33" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="3"/>
+        <terminal y="-42" x="20" orientation="n"/>
+        <terminal y="-42" x="0" orientation="n"/>
+        <terminal y="-42" x="-20" orientation="n"/>
+        <terminal y="-42" x="-10" orientation="n"/>
+        <terminal y="-42" x="-30" orientation="n"/>
+        <terminal y="-42" x="10" orientation="n"/>
+    </description>
+</definition>

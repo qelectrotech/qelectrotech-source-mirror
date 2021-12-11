@@ -1,0 +1,21 @@
+name: Publish Edge Snap
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish_amd64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: snapcore/action-build@v1
+      id: build
+      with:
+        snapcraft-args: --enable-experimental-extensions
+    - uses: snapcore/action-publish@v1
+      with:
+        store_login: ${{ secrets.STORE_LOGIN }}
+        snap: ${{ steps.build.outputs.snap }}
+        release: edge

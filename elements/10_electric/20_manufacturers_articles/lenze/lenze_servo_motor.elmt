@@ -1,0 +1,93 @@
+<definition hotspot_y="56" version="0.80" orientation="dyyy" hotspot_x="155" width="300" height="100" link_type="simple" type="element">
+    <uuid uuid="{ca6b413e-4b67-4c3a-a15b-ef30452e4770}"/>
+    <names>
+        <name lang="en">LENZE SERVO MOTOR WITH FAN</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-40" rotation="0" text="Fan" y="-2"/>
+        <arc x="-13" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <arc x="-113" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="52" rotation="0" text="E" y="20"/>
+        <arc x="7" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <arc x="27" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="84" rotation="0" text="interface" y="-5"/>
+        <arc x="-13" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <arc x="-93" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <rect x="47" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="17" height="6" y="-23" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="25" rotation="0" text="PE" y="-29"/>
+        <arc x="7" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="90" rotation="0" text="Drive" y="-13"/>
+        <arc x="27" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <circle x="-25" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="true"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="6" rotation="0" text="N" y="-29"/>
+        <arc x="-73" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-133" rotation="0" text="U" y="-29"/>
+        <rect x="9.015" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.198" antialias="false"/>
+        <arc x="-113" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <arc x="-27.5" angle="-80" start="20" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35" height="35" y="-22.5" antialias="true"/>
+        <rect x="-10.985" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.198" antialias="false"/>
+        <text color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="49" rotation="0" text="θ" y="-9"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-75" rotation="0" text="PE" y="-29"/>
+        <rect x="29.015" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.198" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" end2="none" x1="30" antialias="false"/>
+        <dynamic_text z="28" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="101" rotation="0" uuid="{5b146f38-9c8c-410e-827c-456cac6fe424}" text_from="ElementInfo" Halignment="AlignLeft" text_width="-1" y="17" frame="true">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc x="-93" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <arc x="-73" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end2="none" x1="10" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-13" rotation="0" text="L" y="-29"/>
+        <circle x="-125" diameter="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="true"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end2="none" x1="-10" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-94" rotation="0" text="W" y="-29"/>
+        <rect x="-90.985" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.198" antialias="false"/>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-15" rotation="0" text="M" y="-7"/>
+        <text color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-17" rotation="0" text="1 ~" y="4"/>
+        <arc x="-127.5" angle="-80" start="20" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35" height="35" y="-22.5" antialias="true"/>
+        <rect x="-110.985" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.198" antialias="false"/>
+        <rect x="-70.985" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.198" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70" end2="none" x1="-70" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-90" end2="none" x1="-90" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-113" rotation="0" text="V" y="-29"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-110" end2="none" x1="-110" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-20" y1="-27" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end2="none" x1="-10" antialias="false"/>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-115" rotation="0" text="M" y="-7"/>
+        <polygon y5="-14" y4="-14" y2="-20" y1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" x4="2" x3="2" x5="2" closed="false" y3="-14" x1="10" antialias="false"/>
+        <text color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-116" rotation="0" text="3 ~" y="1"/>
+        <polygon y5="-27" y4="-27" y2="4" y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" x4="30" x3="30" x5="30" closed="false" y3="-27" x1="5" antialias="false"/>
+        <arc x="97" angle="-180" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-43" antialias="true"/>
+        <rect x="99" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-46" antialias="false"/>
+        <arc x="-133" angle="-84" start="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <arc x="-133" angle="-84" start="83" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" height="6" y="-46" antialias="true"/>
+        <rect x="-130.985" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="2" height="6" y="-43.1982" antialias="false"/>
+        <text color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" x="-137" rotation="0" text="LENZE SERVO MOTOR" y="33"/>
+        <line end1="none" length2="1.5" y2="-50" y1="-46" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-130" end2="none" x1="-130" antialias="false"/>
+        <rect x="-114" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="8" height="2" y="3" antialias="false"/>
+        <rect x="-114" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4" height="2" y="3" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-20" y1="-27" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-110" end2="none" x1="-110" antialias="false"/>
+        <polygon y5="-14" y4="-14" y2="-20" y1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-130" x4="-122" x3="-122" x5="-122" closed="false" y3="-14" x1="-130" antialias="false"/>
+        <polygon y5="-14" y4="-14" y2="-20" y1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-90" x4="-98" x3="-98" x5="-98" closed="false" y3="-14" x1="-90" antialias="false"/>
+        <polygon y5="-27" y4="-27" y2="4" y1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70" x4="-70" x3="-70" x5="-70" closed="false" y3="-27" x1="-95" antialias="false"/>
+        <rect x="78" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="44" height="26" y="-25" antialias="false"/>
+        <polygon x6="103" y5="-40" y4="40" y2="-40" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-150" x4="140" x3="-150" x5="140" closed="false" y3="40" y6="-40" x1="97" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-37" y1="-25" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="100" end2="none" x1="100" antialias="false"/>
+        <circle x="45" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y="5" antialias="false"/>
+        <polygon y2="16" y1="10" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="-110" x3="45" closed="false" y3="16" x1="-110" antialias="false"/>
+        <polygon y4="-14" y2="-26" y1="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="52" x4="62" x3="59" closed="false" y3="-14" x1="49" antialias="false"/>
+        <line end1="none" length2="1.5" y2="-20" y1="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="78" end2="none" x1="64" antialias="false"/>
+        <polygon y4="-4" y2="-20" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" x4="78" x3="40" closed="false" y3="-4" x1="47" antialias="false"/>
+        <polygon y2="16" y1="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="100" x3="100" closed="false" y3="1" x1="67" antialias="false"/>
+        <terminal x="10" orientation="n" y="-50"/>
+        <terminal x="30" orientation="n" y="-50"/>
+        <terminal x="-10" orientation="n" y="-50"/>
+        <terminal x="-90" orientation="n" y="-50"/>
+        <terminal x="100" orientation="n" y="-50"/>
+        <terminal x="-110" orientation="n" y="-50"/>
+        <terminal x="-130" orientation="n" y="-50"/>
+        <terminal x="-70" orientation="n" y="-50"/>
+    </description>
+</definition>

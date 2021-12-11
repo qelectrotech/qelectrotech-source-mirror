@@ -49,14 +49,17 @@
 #endif
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-QString QETApp::common_elements_dir = QString();
+QString QETApp::m_overrided_common_elements_dir = QString();
 #endif
+
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
 QString QETApp::common_tbt_dir_ = QString();
 #endif
+
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 QString QETApp::config_dir = QString();
 #endif
+
 QString QETApp::lang_dir = QString();
 TitleBlockTemplatesFilesCollection *QETApp::m_common_tbt_collection;
 TitleBlockTemplatesFilesCollection *QETApp::m_custom_tbt_collection;
@@ -66,8 +69,13 @@ uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::m_projects_recent_files = nullptr;
 RecentFiles *QETApp::m_elements_recent_files = nullptr;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
-QString QETApp::m_user_common_elements_dir = QString();
-QString QETApp::m_user_custom_elements_dir = QString();
+
+QString QETApp::m_common_element_dir = QString();
+bool QETApp::m_common_element_dir_is_set = false;
+
+QString QETApp::m_custom_element_dir = QString();
+bool QETApp::m_custom_element_dir_is_set = false;
+
 QString QETApp::m_user_custom_tbt_dir = QString();
 QETApp *QETApp::m_qetapp = nullptr;
 
@@ -488,57 +496,62 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(
 */
 QString QETApp::commonElementsDir()
 {
-	if (m_user_common_elements_dir.isEmpty())
+	if (m_common_element_dir_is_set)
 	{
+		return m_common_element_dir;
+	}
+	else
+	{
+		m_common_element_dir_is_set = true;
+
+			//Check if user define a custom path
+			//for the common collection
 		QSettings settings;
 		QString path = settings.value(
-					"elements-collections/common-collection-path",
-					"default").toString();
+						   "elements-collections/common-collection-path",
+						   "default").toString();
 		if (path != "default" && !path.isEmpty())
 		{
 			QDir dir(path);
 			if (dir.exists())
 			{
-				m_user_common_elements_dir = path;
-				return m_user_common_elements_dir;
+				m_common_element_dir = path;
+				return m_common_element_dir;
 			}
 		}
-		else {
-			m_user_common_elements_dir = "default";
-		}
-	}
-	else if (m_user_common_elements_dir != "default") {
-		return m_user_common_elements_dir;
-	}
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-	if (common_elements_dir != QString()) return(common_elements_dir);
+		if (m_overrided_common_elements_dir != QString()) {
+			m_common_element_dir = m_overrided_common_elements_dir;
+			return(m_common_element_dir);
+		}
+		m_common_element_dir = QCoreApplication::applicationDirPath() + "/elements";
+		return m_common_element_dir;
 #endif
 #ifndef QET_COMMON_COLLECTION_PATH
-	/* in the absence of a compilation option,
-	 *  we use the elements folder, located next to the executable binary
-	 * en l'absence d'option de compilation,
-	 *  on utilise le dossier elements, situe a cote du binaire executable
-	 */
-	return(QCoreApplication::applicationDirPath() + "/elements/");
+		/* in the absence of a compilation option,
+		 *  we use the elements folder, located next to the executable binary
+		 */
+		m_common_element_dir = QCoreApplication::applicationDirPath() + "/elements";
+		return m_common_element_dir;
 #else
-	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
 		/* the compilation option represents a classic absolute
 		 *  or relative path
-		 * l'option de compilation represente un chemin absolu
-		 *  ou relatif classique
 		 */
-		return(QUOTE(QET_COMMON_COLLECTION_PATH));
-	#else
+		m_common_element_dir = QUOTE(QET_COMMON_COLLECTION_PATH);
+		return m_common_element_dir;
+#else
 		/* the compilation option represents a path
-		 *  relative to the folder containing the executable binary
-		 * l'option de compilation represente un chemin
-		 *  relatif au dossier contenant le binaire executable
-		 */
-		return(QCoreApplication::applicationDirPath()
-			   + "/" + QUOTE(QET_COMMON_COLLECTION_PATH));
-	#endif
+			 *  relative to the folder containing the executable binary
+			 */
+		m_common_element_dir = QCoreApplication::applicationDirPath()
+							   + "/"
+							   + QUOTE(QET_COMMON_COLLECTION_PATH);
+		return m_common_element_dir;
 #endif
+#endif
+	}
 }
 
 /**
@@ -547,33 +560,34 @@ QString QETApp::commonElementsDir()
 */
 QString QETApp::customElementsDir()
 {
-	if (m_user_custom_elements_dir.isEmpty())
+	if (m_custom_element_dir_is_set)
 	{
+		return m_custom_element_dir;
+	}
+	else
+	{
+		m_custom_element_dir_is_set = true;
+
 		QSettings settings;
 		QString path = settings.value(
-					"elements-collections/custom-collection-path",
-					"default").toString();
+						   "elements-collections/custom-collection-path",
+						   "default").toString();
 		if (path != "default" && !path.isEmpty())
 		{
 			QDir dir(path);
 			if (dir.exists())
-				{
-					m_user_custom_elements_dir = path;
-					if(!m_user_custom_elements_dir.endsWith("/")) {
-						m_user_custom_elements_dir.append("/");
-					}
-					return m_user_custom_elements_dir;
+			{
+				m_custom_element_dir = path;
+				if(!m_custom_element_dir.endsWith("/")) {
+					m_custom_element_dir.append("/");
+				}
+				return m_custom_element_dir;
 			}
 		}
-		else {
-			m_user_custom_elements_dir = "default";
-		}
-	}
-	else if (m_user_custom_elements_dir != "default") {
-		return m_user_custom_elements_dir;
-	}
 
-	return(configDir() + "elements/");
+		m_custom_element_dir = configDir() + "elements/";
+		return m_custom_element_dir;
+	}
 }
 
 /**
@@ -601,14 +615,19 @@ QString QETApp::customElementsDirN()
 }
 
 /**
-	@brief QETApp::resetUserElementsDir
-	Reset the path of the user common and custom elements dir.
-	Use this function when the user path (common and/or custom) change.
-*/
-void QETApp::resetUserElementsDir()
+ * @brief QETApp::resetCollectionsPath
+ * Reset the path of the user and common element collection
+ * and also the user titleblock path.
+ * Use this function when one of these three path change.
+ */
+void QETApp::resetCollectionsPath()
 {
-	m_user_common_elements_dir.clear();
-	m_user_custom_elements_dir.clear();
+	m_common_element_dir.clear();
+	m_common_element_dir_is_set = false;
+
+	m_custom_element_dir.clear();
+	m_custom_element_dir_is_set = false;
+
 	m_user_custom_tbt_dir.clear();
 }
 
@@ -877,9 +896,9 @@ void QETApp::overrideCommonElementsDir(const QString &new_ced) {
 	QFileInfo new_ced_info(new_ced);
 	if (new_ced_info.isDir())
 	{
-		common_elements_dir = new_ced_info.absoluteFilePath();
-		if (!common_elements_dir.endsWith("/"))
-			common_elements_dir += "/";
+		m_overrided_common_elements_dir = new_ced_info.absoluteFilePath();
+		if (!m_overrided_common_elements_dir.endsWith("/"))
+			m_overrided_common_elements_dir += "/";
 	}
 }
 #endif

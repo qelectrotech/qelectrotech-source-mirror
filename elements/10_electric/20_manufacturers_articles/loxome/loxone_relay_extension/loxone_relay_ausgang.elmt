@@ -1,0 +1,33 @@
+<definition version="0.70" type="element" hotspot_x="45" hotspot_y="39" height="80" link_type="slave" width="90" orientation="dyyy">
+    <uuid uuid="{e7856daf-4252-4d9a-aece-cef2a53d7c07}"/>
+    <names>
+        <name lang="de">Loxone Relay Ausgang </name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+    </kindInformations>
+    <informations></informations>
+    <description>
+        <dynamic_text z="1" uuid="{824f9521-d87d-412b-84c9-dd1d5af5df4c}" Valignment="AlignTop" y="-4" rotation="0" text_width="-1" x="-37" Halignment="AlignLeft" text_from="ElementInfo" frame="false" font="Sans Serif,5,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle y="-32.5" antialias="false" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon y1="-30" y3="-30" antialias="false" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" x1="-40" closed="false" x3="-3"/>
+        <polygon y1="-30" y3="-30" antialias="false" x2="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" x1="3" closed="false" x3="40"/>
+        <circle y="27.5" antialias="false" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <polygon y1="-30" y3="30" antialias="false" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" x1="-40" closed="false" x3="-3"/>
+        <polygon y1="30" y3="-30" antialias="false" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" x1="3" closed="false" x3="40"/>
+        <line y1="-13" end2="none" antialias="false" x2="-5" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-13" length2="1.5" end1="none" x1="-15"/>
+        <line y1="-13" end2="none" antialias="false" x2="5" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-18" length2="1.5" end1="none" x1="-5"/>
+        <line y1="-13" end2="none" antialias="false" x2="15" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-13" length2="1.5" end1="none" x1="5"/>
+        <text text="Loxone&#xa;Relay" y="0" rotation="0" x="0" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text z="13" uuid="{b29e095c-a984-4597-a674-b5d1afb0c91e}" Valignment="AlignTop" y="5" rotation="0" text_width="-1" x="0" Halignment="AlignLeft" text_from="UserText" frame="false" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal">
+            <text>Q1</text>
+        </dynamic_text>
+        <terminal y="-31" x="0" orientation="n"/>
+        <terminal y="31" x="0" orientation="s"/>
+    </description>
+</definition>

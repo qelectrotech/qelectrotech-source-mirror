@@ -1,0 +1,31 @@
+<definition orientation="dyyy" hotspot_y="36" type="element" version="0.70" width="90" hotspot_x="45" height="70" link_type="slave">
+    <uuid uuid="{be1bc50e-52af-435d-903f-f22556cfb2f5}"/>
+    <names>
+        <name lang="de">Nano DI Tree digitaler Eingang</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="type" show="1">simple</kindInformation>
+    </kindInformations>
+    <informations></informations>
+    <description>
+        <circle x="24.5" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text z="1" x="-37" y="-4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{824f9521-d87d-412b-84c9-dd1d5af5df4c}" Halignment="AlignLeft" text_from="ElementInfo" Valignment="AlignTop" rotation="0" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon closed="false" x3="24" x1="14" x2="-25" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-30" y2="-30" antialias="false"/>
+        <circle x="-29.5" y="-32.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon closed="false" x3="-30" x1="-40" x2="-40" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-30" y2="-30" antialias="false"/>
+        <polygon closed="false" x3="40" x1="30" x2="30" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-30" y2="-30" antialias="false"/>
+        <polygon closed="false" x3="-3" x1="-40" x2="-40" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="30" y2="30" antialias="false"/>
+        <polygon closed="false" x3="40" x1="-5" x2="40" y1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-30" y2="30" antialias="false"/>
+        <text color="#000000" x="0" y="-7" text="Loxone&#xa;Nano DI&#xa;Tree&#xa;digitaler&#xa;Eingang" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <dynamic_text z="13" x="-7" y="-29" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" uuid="{b29e095c-a984-4597-a674-b5d1afb0c91e}" Halignment="AlignLeft" text_from="UserText" Valignment="AlignTop" rotation="0" frame="false" text_width="-1">
+            <text>I1</text>
+        </dynamic_text>
+        <terminal x="-27" y="-31" orientation="n"/>
+        <terminal x="27" y="-31" orientation="n"/>
+    </description>
+</definition>

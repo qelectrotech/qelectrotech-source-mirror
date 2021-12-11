@@ -1,0 +1,82 @@
+<definition hotspot_y="34" version="0.90" hotspot_x="75" width="350" height="70" link_type="simple" type="element">
+    <uuid uuid="{6350fcc1-ff86-40f4-9785-eb97bccdd3ab}"/>
+    <names>
+        <name lang="en">LENZE Inverter i510 Modbus RTU</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" length2="1.5" y2="-20" y1="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none" x1="-6" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="235" rotation="0" text="TA" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="155" rotation="0" text="NC" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="232" rotation="0" text="DO1" y="-15"/>
+        <line end1="none" length2="1.5" y2="-18" y1="-18" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" end2="none" x1="-4" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="13" rotation="0" text="GND" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="255" rotation="0" text="TB" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="252" rotation="0" text="GND" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="215" rotation="0" text="COM" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="75" rotation="0" text="AO1" y="-15"/>
+        <line end1="none" length2="1.5" y2="-16" y1="-16" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="1" end2="none" x1="-1" antialias="false"/>
+        <rect x="210" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="60" height="20" y="10" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="93" rotation="0" text="10V" y="-15"/>
+        <line end1="none" length2="1.5" y2="-20" y1="-26" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" x1="0" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-24" rotation="0" text="L3" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="32" rotation="0" text="AI1" y="-15"/>
+        <rect x="-70" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="80" height="20" y="-30" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="55" rotation="0" text="AI2" y="-15"/>
+        <line end1="none" length2="1.5" y2="21" y1="21" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none" x1="-6" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="170" rotation="0" text="COM" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="114" rotation="0" text="24V" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="134" rotation="0" text="DI1" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="194" rotation="0" text="DI4" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="154" rotation="0" text="DI2" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="174" rotation="0" text="DI3" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="135" rotation="0" text="NO" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="214" rotation="0" text="DI5" y="-15"/>
+        <line end1="none" length2="1.5" y2="19" y1="19" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" end2="none" x1="-4" antialias="false"/>
+        <line end1="none" length2="1.5" y2="17" y1="17" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="1" end2="none" x1="-1" antialias="false"/>
+        <dynamic_text z="28" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="55" rotation="0" uuid="{5b146f38-9c8c-410e-827c-456cac6fe424}" text_from="ElementInfo" Halignment="AlignLeft" keep_visual_rotation="true" text_width="-1" y="6" frame="true">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length2="1.5" y2="27" y1="21" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" x1="0" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-44" rotation="0" text="L2" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-62" rotation="0" text="U" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-64" rotation="0" text="L1" y="-15"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-24" rotation="0" text="W" y="22"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-42" rotation="0" text="V" y="22"/>
+        <text color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" x="-66" rotation="0" text="LENZE Inverter i510 Modbus RTU" y="4"/>
+        <rect x="-70" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="340" height="60" y="-30" antialias="false"/>
+        <rect x="10" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="260" height="20" y="-30" antialias="false"/>
+        <rect x="130" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="60" height="20" y="10" antialias="false"/>
+        <rect x="-70" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="80" height="20" y="10" antialias="false"/>
+        <terminal x="240" orientation="n" uuid="{5308f271-40ff-4fad-a15e-3ccdc12599a1}" y="-30" name="" type="Generic"/>
+        <terminal x="260" orientation="n" uuid="{a1908904-7677-43b7-bce2-1f30cb017299}" y="-30" name="" type="Generic"/>
+        <terminal x="220" orientation="s" uuid="{6e1ddc81-6d67-44fc-ad1b-36f3474acbc5}" y="30" name="" type="Generic"/>
+        <terminal x="240" orientation="s" uuid="{2a5f9a7b-a44f-486c-86f5-0a6dacd5a9b8}" y="30" name="" type="Generic"/>
+        <terminal x="260" orientation="s" uuid="{b0b790c5-a3fa-44c0-acfd-83c5f3e859fd}" y="30" name="" type="Generic"/>
+        <terminal x="-20" orientation="s" uuid="{7093fa19-c0cc-4024-8adc-a36be50f4aeb}" y="30" name="" type="Generic"/>
+        <terminal x="180" orientation="s" uuid="{7b89ae26-7d9b-4d11-aa17-5de00f94b559}" y="30" name="" type="Generic"/>
+        <terminal x="80" orientation="n" uuid="{bc2bcbbb-0408-4a49-81a4-b74e3bb9eed7}" y="-30" name="" type="Generic"/>
+        <terminal x="120" orientation="n" uuid="{9f4744bd-b6db-4ef8-8a69-c62736f266bb}" y="-30" name="" type="Generic"/>
+        <terminal x="-20" orientation="n" uuid="{60fe5193-c1ae-44fa-ad90-749fc70f12a0}" y="-30" name="" type="Generic"/>
+        <terminal x="-40" orientation="s" uuid="{9a4387d2-cb57-4947-b65b-1ddf0879d7d0}" y="30" name="" type="Generic"/>
+        <terminal x="100" orientation="n" uuid="{e047460a-afda-434f-b94e-fd985df2ac5a}" y="-30" name="" type="Generic"/>
+        <terminal x="-60" orientation="s" uuid="{db159fac-95a5-4579-bac2-e8dd9f13daba}" y="30" name="" type="Generic"/>
+        <terminal x="-60" orientation="n" uuid="{43314b74-232a-4cf8-83f2-5eae7f1d45bb}" y="-30" name="" type="Generic"/>
+        <terminal x="20" orientation="n" uuid="{e5a1c547-f218-44c8-877c-af03c09ee5fa}" y="-30" name="" type="Generic"/>
+        <terminal x="160" orientation="s" uuid="{3c925f40-f891-4ad1-8470-285ae8ff7536}" y="30" name="" type="Generic"/>
+        <terminal x="140" orientation="s" uuid="{31218c67-fcf0-474f-b19b-db1f69db2a19}" y="30" name="" type="Generic"/>
+        <terminal x="60" orientation="n" uuid="{bfb092e7-7f91-4df7-b5e3-5f2e2f4a1693}" y="-30" name="" type="Generic"/>
+        <terminal x="-40" orientation="n" uuid="{29a2d52e-ad23-4605-80a9-e961c30467bc}" y="-30" name="" type="Generic"/>
+        <terminal x="0" orientation="s" uuid="{d8ca5c60-38c2-4832-8c69-921e80619985}" y="30" name="" type="Generic"/>
+        <terminal x="180" orientation="n" uuid="{6ada8eb8-a79f-4b4b-8930-ca284ba109da}" y="-30" name="" type="Generic"/>
+        <terminal x="220" orientation="n" uuid="{64fe2d1e-e30e-4ea1-8726-cf7b499cacf7}" y="-30" name="" type="Generic"/>
+        <terminal x="40" orientation="n" uuid="{edf94dbc-d9e2-4fb1-b431-7927b59372aa}" y="-30" name="" type="Generic"/>
+        <terminal x="200" orientation="n" uuid="{19855d16-866a-48a3-ac1b-8fd289a2c7a9}" y="-30" name="" type="Generic"/>
+        <terminal x="140" orientation="n" uuid="{0f4304de-8193-455f-8885-7c39f3fb04fa}" y="-30" name="" type="Generic"/>
+        <terminal x="0" orientation="n" uuid="{0e44a592-e16f-4192-9500-5f4b71e2e57b}" y="-30" name="" type="Generic"/>
+        <terminal x="160" orientation="n" uuid="{5112da3b-8592-41b8-8973-296ebf1f7615}" y="-30" name="" type="Generic"/>
+    </description>
+</definition>
