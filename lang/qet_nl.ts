@@ -8674,7 +8674,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="202"/>
         <source>Indice de révision</source>
-        <translation>Reviesie-index</translation>
+        <translation>Revisie-index</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="203"/>
