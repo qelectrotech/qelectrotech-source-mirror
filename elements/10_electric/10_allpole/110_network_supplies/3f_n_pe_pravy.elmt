@@ -12,7 +12,7 @@
         <name lang="fr">Source tripolaire + PEN</name>
         <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
         <name lang="cs">Přípojnice 3f+N+PE pravá</name>
-	<name lang="hu">3F + N + PE</name>
+	    <name lang="hu">3F + N + PE</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

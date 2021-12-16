@@ -12,7 +12,7 @@
         <name lang="en">Single-pole source +PEN</name>
         <name lang="fr">Source unipolaire + PEN</name>
         <name lang="ru">Однополюсный + PEN</name>
-	<name lang="hu">F + PEN</name>
+	    <name lang="hu">F + PEN</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
