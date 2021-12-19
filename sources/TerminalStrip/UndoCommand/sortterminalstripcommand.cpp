@@ -52,9 +52,9 @@ void SortTerminalStripCommand::sort()
 		int int1 =-1;
 		int int2 =-1;
 
-		if (arg1.real_terminals_vector.count())
+		if (arg1.realTerminalCount())
 		{
-			str1 = arg1.real_terminals_vector.constLast().label();
+			str1 = arg1.realTerminalDatas().constLast().label();
 
 			auto match = rx.match(str1);
 			if (match.hasMatch()) {
@@ -62,9 +62,9 @@ void SortTerminalStripCommand::sort()
 			}
 		}
 
-		if (arg2.real_terminals_vector.count())
+		if (arg2.realTerminalCount())
 		{
-			str2 = arg2.real_terminals_vector.constLast().label();
+			str2 = arg2.realTerminalDatas().constLast().label();
 
 			auto match = rx.match(str2);
 			if (match.hasMatch()) {

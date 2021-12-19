@@ -23,7 +23,7 @@
 #include <QVector>
 
 class TerminalStrip;
-struct PhysicalTerminalData;
+class PhysicalTerminalData;
 
 /**
  * @brief The SortTerminalStripCommand class

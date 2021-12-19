@@ -232,9 +232,9 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 	for (auto i=0 ; i<terminal_strip->physicalTerminalCount() ; ++i)
 	{
 		auto ptd = terminal_strip->physicalTerminalData(i);
-		if (ptd.real_terminals_vector.size())
+		if (ptd.realTerminalCount())
 		{
-			auto real_t = ptd.real_terminals_vector.first();
+			const auto real_t = ptd.realTerminalDatas().at(0);
 			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t.label()), TerminalStripTreeWidget::Terminal);
 			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.elementUuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
@@ -352,7 +352,7 @@ void TerminalStripEditor::spanMultiLevelTerminals()
 	auto current_row = 0;
 	for (auto i = 0 ; i < m_current_strip->physicalTerminalCount() ; ++i)
 	{
-		const auto level_count = m_current_strip->physicalTerminalData(i).real_terminals_vector.size();
+		const auto level_count = m_current_strip->physicalTerminalData(i).realTerminalCount();
 		if (level_count > 1) {
 			ui->m_table_widget->setSpan(current_row, 0, level_count, 1);
 		}
@@ -446,7 +446,7 @@ void TerminalStripEditor::selectionChanged()
 		if (m_current_strip)
 		{
 			QVector<QWeakPointer<RealTerminal>> vector_;
-			for (const auto &mrtd : model_rtd_vector) {
+			for (const auto &mrtd : qAsConst(model_rtd_vector)) {
 				vector_.append(mrtd.real_terminal);
 			}
 			enable_bridge = m_current_strip->isBridgeable(vector_);
@@ -650,8 +650,7 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 			{
 				for (const auto &data_ : m_model->modifiedmodelRealTerminalData())
 				{
-					auto element   = data_.element_;
-					if (element)
+					if (auto element = data_.element_)
 					{
 						auto current_data = element->elementData();
 						current_data.setTerminalType(data_.type_);

@@ -84,7 +84,7 @@ void UnGroupTerminalsCommand::setUp(const QVector<QWeakPointer<RealTerminal>> &t
 		auto ptd_ = m_terminal_strip->physicalTerminalData(rt_);
 
 			//Physical have only one real terminal, no need to ungroup it
-		if (ptd_.real_terminals_vector.size() <= 1) {
+		if (ptd_.realTerminalCount() <= 1) {
 			continue;
 		}
 

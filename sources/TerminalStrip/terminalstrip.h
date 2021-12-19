@@ -31,6 +31,7 @@ class QETProject;
 class PhysicalTerminal;
 class TerminalStripIndex;
 class TerminalElement;
+class TerminalStrip;
 
 struct TerminalStripBridge
 {
@@ -56,8 +57,10 @@ inline uint qHash(const QWeakPointer<TerminalStripBridge> &key, uint seed)
 class RealTerminalData
 {
 		friend class TerminalStrip;
+		friend class PhysicalTerminalData;
 	private:
 		RealTerminalData(QSharedPointer<RealTerminal> real_terminal);
+		RealTerminalData(QWeakPointer<RealTerminal> real_terminal);
 
 	public:
 		RealTerminalData() {}
@@ -88,24 +91,39 @@ class RealTerminalData
 };
 
 /**
- * @brief The PhysicalTerminalData struct
+ * @brief The PhysicalTerminalData
  * Conveniant struct to quickly get some values
  * of a PhysicalTerminal
  */
-struct PhysicalTerminalData
+class PhysicalTerminalData
 {
-		QVector<RealTerminalData> real_terminals_vector;
-		int pos_ = -1;
-		QUuid uuid_;
+		friend class TerminalStrip;
+
+	private:
+		PhysicalTerminalData(const TerminalStrip *strip, QSharedPointer<PhysicalTerminal> terminal);
+
+	public:
+		PhysicalTerminalData(){}
+
+		bool isNull() const;
+		int pos() const;
+		QUuid uuid() const;
+		int realTerminalCount() const;
+		QVector<RealTerminalData> realTerminalDatas() const;
+		QWeakPointer<PhysicalTerminal> physicalTerminal() const;
+
+	private:
+		QPointer<const TerminalStrip> m_strip;
+		QWeakPointer<PhysicalTerminal> m_physical_terminal;
 };
 
 //Code to use PhysicalTerminalData as key for QHash
 inline bool operator == (const PhysicalTerminalData &phy_1, const PhysicalTerminalData &phy_2) {
-	return phy_1.uuid_ == phy_2.uuid_;
+	return phy_1.uuid() == phy_2.uuid();
 }
 
 inline uint qHash(const PhysicalTerminalData &key, uint seed) {
-	return qHash(key.uuid_, seed);
+	return qHash(key.uuid(), seed);
 }
 
 /**
@@ -155,21 +173,22 @@ class TerminalStrip : public QObject
 		bool addTerminal    (Element *terminal);
 		bool removeTerminal (Element *terminal);
 
+		int pos(const QWeakPointer<PhysicalTerminal> &terminal) const;
 		int physicalTerminalCount() const;
 		PhysicalTerminalData physicalTerminalData(int index) const;
-		PhysicalTerminalData physicalTerminalData (QWeakPointer<RealTerminal> real_terminal) const;
+		PhysicalTerminalData physicalTerminalData (const QWeakPointer<RealTerminal> &real_terminal) const;
 		QVector<PhysicalTerminalData> physicalTerminalData() const;
+
 		bool setOrderTo(const QVector<PhysicalTerminalData> &sorted_vector);
 		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<QWeakPointer<RealTerminal>> &added_terminals);
 		void unGroupTerminals(const QVector<QWeakPointer<RealTerminal>> &terminals_to_ungroup);
 		bool setLevel(const QWeakPointer<RealTerminal> &real_terminal, int level);
 
-		bool isBridgeable(const QVector<RealTerminalData> &real_terminals_data) const;
 		bool isBridgeable(const QVector<QWeakPointer<RealTerminal>> &real_terminals) const;
 		bool setBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals);
-		bool setBridge(QSharedPointer<TerminalStripBridge> bridge, const QVector<QWeakPointer<RealTerminal>> &real_terminals);
+		bool setBridge(const QSharedPointer<TerminalStripBridge> &bridge, const QVector<QWeakPointer<RealTerminal>> &real_terminals);
 		void unBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals);
-		QSharedPointer<TerminalStripBridge> bridgeFor(QWeakPointer<RealTerminal> real_terminal) const;
+		QSharedPointer<TerminalStripBridge> bridgeFor(const QWeakPointer<RealTerminal> &real_terminal) const;
 
 		RealTerminalData previousTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;
 		RealTerminalData nextTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;
@@ -186,8 +205,6 @@ class TerminalStrip : public QObject
 	private:
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal);
 		QSharedPointer<PhysicalTerminal> physicalTerminal(QSharedPointer<RealTerminal> terminal) const;
-		QSharedPointer<PhysicalTerminal> physicalTerminalForUuid (const QUuid &uuid) const;
-		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
 		QSharedPointer<TerminalStripBridge> isBridged(const QSharedPointer<RealTerminal> real_terminal) const;
 		QSharedPointer<TerminalStripBridge> bridgeFor (const QVector<QSharedPointer<RealTerminal>> &terminal_vector) const;
 		void rebuildRealVector();

@@ -484,10 +484,10 @@ void TerminalStripModel::fillPhysicalTerminalData()
 		for (const auto &ptd : m_terminal_strip->physicalTerminalData())
 		{
 			modelPhysicalTerminalData mptd;
-			mptd.pos_ = ptd.pos_;
-			mptd.uuid_ = ptd.uuid_;
+			mptd.pos_ = ptd.pos();
+			mptd.uuid_ = ptd.uuid();
 
-			for (const auto &rtd : ptd.real_terminals_vector)
+			for (const auto &rtd : ptd.realTerminalDatas())
 			{
 				if (!rtd.isNull())
 				{
@@ -668,7 +668,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		//Check previous
 	auto physical_data = m_terminal_strip->physicalTerminalData(mrtd.real_terminal);
 	auto current_real_terminal = mrtd;
-	auto current_phy_uuid = physical_data.uuid_;
+	auto current_phy_uuid = physical_data.uuid();
 	bool already_jumped_to_previous = false;
 	modelRealTerminalData previous_data;
 
@@ -680,7 +680,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid_)
+		if (current_phy_uuid == m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -692,7 +692,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_previous = true;
-			current_phy_uuid = m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid_;
+			current_phy_uuid = m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				previous_data = current_real_terminal;
@@ -703,7 +703,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 
 		//Check next
 	current_real_terminal = mrtd;
-	current_phy_uuid = physical_data.uuid_;
+	current_phy_uuid = physical_data.uuid();
 	bool already_jumped_to_next = false;
 	modelRealTerminalData next_data;
 
@@ -715,7 +715,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid_)
+		if (current_phy_uuid == m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -727,7 +727,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_next = true;
-			current_phy_uuid = m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid_;
+			current_phy_uuid = m_terminal_strip->physicalTerminalData(current_real_terminal.real_terminal).uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				next_data = current_real_terminal;
