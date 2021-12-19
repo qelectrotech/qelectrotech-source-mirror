@@ -72,10 +72,10 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	{
 		if (m_model->columnTypeForIndex(index) == TerminalStripModel::XRef)
 		{
-			auto rtd = m_model->realTerminalDataForIndex(index);
-			if (rtd.element_)
+			auto mrtd = m_model->modelRealTerminalDataForIndex(index);
+			if (mrtd.element_)
 			{
-				auto elmt = rtd.element_;
+				auto elmt = mrtd.element_;
 				auto diagram = elmt->diagram();
 				if (diagram)
 				{
@@ -235,12 +235,12 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		if (ptd.real_terminals_vector.size())
 		{
 			auto real_t = ptd.real_terminals_vector.first();
-			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t.label_), TerminalStripTreeWidget::Terminal);
-			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.element_uuid.toString());
+			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t.label()), TerminalStripTreeWidget::Terminal);
+			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.elementUuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 
-			if (real_t.element_) {
-				m_uuid_terminal_H.insert(real_t.element_uuid, qgraphicsitem_cast<TerminalElement *>(real_t.element_));
+			if (real_t.element()) {
+				m_uuid_terminal_H.insert(real_t.elementUuid(), qgraphicsitem_cast<TerminalElement *>(real_t.element()));
 			}
 		}
 	}
@@ -395,28 +395,28 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_led_cb      ->setEnabled(true);
 	}
 
-	const auto physical_terminal_vector = m_model->physicalTerminalDataForIndex(index_list);
-	const auto real_terminal_vector = m_model->realTerminalDataForIndex(index_list);
+	const auto model_physical_terminal_vector = m_model->modelPhysicalTerminalDataForIndex(index_list);
+	const auto model_real_terminal_vector = m_model->modelRealTerminalDataForIndex(index_list);
 
 		//Enable/disable group button
-	ui->m_group_terminals_pb->setEnabled(physical_terminal_vector.size() > 1 ? true : false);
+	ui->m_group_terminals_pb->setEnabled(model_physical_terminal_vector.size() > 1 ? true : false);
 
 		//Enable/disable ungroup button
-	auto it_= std::find_if(physical_terminal_vector.constBegin(), physical_terminal_vector.constEnd(), [](const PhysicalTerminalData &data)
+	auto it_= std::find_if(model_physical_terminal_vector.constBegin(), model_physical_terminal_vector.constEnd(), [](const modelPhysicalTerminalData &data)
 	{
-		if (data.real_terminals_vector.size() >= 2) {
+		if (data.real_data.size() >= 2) {
 			return true;
 		} else {
 			return false;
 		}
 	});
-	ui->m_ungroup_pb->setDisabled(it_ == physical_terminal_vector.constEnd());
+	ui->m_ungroup_pb->setDisabled(it_ == model_physical_terminal_vector.constEnd());
 
 		//Enable/disable level spinbox
 	bool enable_ = false;
-	for (const auto &physical : physical_terminal_vector)
+	for (const auto &physical : model_physical_terminal_vector)
 	{
-		if (physical.real_terminals_vector.size() > 1) {
+		if (physical.real_data.size() > 1) {
 			enable_ = true;
 			break;
 		}
@@ -432,25 +432,30 @@ void TerminalStripEditor::selectionChanged()
 	if (level_ >= 0)
 	{
 			//Select only terminals of corresponding level cell selection
-		QVector<RealTerminalData> real_terminal_level_vector;
-		for (const auto &rtd : real_terminal_vector) {
-			if (rtd.level_ == level_) {
-				real_terminal_level_vector.append(rtd);
+		QVector<modelRealTerminalData> model_real_terminal_level_vector;
+		for (const auto &mrtd : model_real_terminal_vector) {
+			if (mrtd.level_ == level_) {
+				model_real_terminal_level_vector.append(mrtd);
 			}
 		}
 
-		QVector<QUuid> uuid_v;
-		for (const auto &rtd : real_terminal_level_vector) {
-			uuid_v << rtd.real_terminal_uuid;
+		QVector<modelRealTerminalData> model_rtd_vector;
+		for (const auto &mrtd : model_real_terminal_level_vector) {
+			model_rtd_vector << mrtd;
 		}
-		if (m_current_strip) {
-			enable_bridge = m_current_strip->isBridgeable(uuid_v);
+		if (m_current_strip)
+		{
+			QVector<QWeakPointer<RealTerminal>> vector_;
+			for (const auto &mrtd : model_rtd_vector) {
+				vector_.append(mrtd.real_terminal);
+			}
+			enable_bridge = m_current_strip->isBridgeable(vector_);
 		}
 
-		for (const auto &rtd : real_terminal_level_vector)
+		for (const auto &mrtd : model_real_terminal_level_vector)
 		{
-			if (rtd.is_bridged &&
-				rtd.level_ == level_) {
+			if (mrtd.bridged_ &&
+				mrtd.level_ == level_) {
 				enable_unbridge = true;
 				break;
 			}
@@ -643,22 +648,21 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 			if (m_model)
 			{
-				for (const auto &data_ : m_model->modifiedRealTerminalData())
+				for (const auto &data_ : m_model->modifiedmodelRealTerminalData())
 				{
-					auto original_ = data_.first;
-					auto edited_   = data_.second;
-					auto element   = original_.element_;
-					if (element) {
+					auto element   = data_.element_;
+					if (element)
+					{
 						auto current_data = element->elementData();
-						current_data.setTerminalType(edited_.type_);
-						current_data.setTerminalFunction(edited_.function_);
-						current_data.setTerminalLED(edited_.led_);
-						current_data.m_informations.addValue(QStringLiteral("label"), edited_.label_);
+						current_data.setTerminalType(data_.type_);
+						current_data.setTerminalFunction(data_.function_);
+						current_data.setTerminalLED(data_.led_);
+						current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
 
 						if (element->elementData() != current_data)
 							m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
-						if (edited_.level_)
-							m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, original_, edited_.level_));
+						if (data_.level_ != m_current_strip->realTerminalDataFor(data_.real_terminal).level())
+							m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
 					}
 				}
 			}
@@ -687,11 +691,16 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 {
 	if (m_model && m_current_strip && m_project)
 	{
-		auto rtd_vector = m_model->realTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
-		if (rtd_vector.size() >= 2)
+		auto mrtd_vector = m_model->modelRealTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+		if (mrtd_vector.size() >= 2)
 		{
-			auto receiver_ = m_current_strip->physicalTerminalData(rtd_vector.takeFirst());
-			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip, receiver_, rtd_vector));
+			auto receiver_ = m_current_strip->physicalTerminalData(mrtd_vector.takeFirst().real_terminal);
+
+			QVector<QWeakPointer<RealTerminal>> vector_;
+			for (const auto & mrtd : mrtd_vector) {
+				vector_.append(mrtd.real_terminal);
+			}
+			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip, receiver_, vector_));
 		}
 	}
 }
@@ -703,8 +712,13 @@ void TerminalStripEditor::on_m_ungroup_pb_clicked()
 {
 	if (m_model && m_current_strip)
 	{
-		const auto rtd_vector = m_model->realTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
-		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip, rtd_vector));
+		const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+
+		QVector<QWeakPointer<RealTerminal>> vector_;
+		for (const auto &mrtd : mrtd_vector) {
+			vector_.append(mrtd.real_terminal);
+		}
+		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip, vector_));
 	}
 }
 
@@ -826,16 +840,18 @@ void TerminalStripEditor::on_m_bridge_terminals_pb_clicked()
 			else if(level_ == TerminalStripModel::Level3){level_ = 3;}
 
 			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
-			const auto rtd_vector = m_model->realTerminalDataForIndex(index_list);
-			QVector <QUuid> uuid_vector;
-			for (const auto &rtd : rtd_vector)
+			const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(index_list);
+
+			QVector <QWeakPointer<RealTerminal>> match_vector;
+			for (const auto &mrtd : mrtd_vector)
 			{
-				if (rtd.level_ == level_) {
-					uuid_vector.append(rtd.real_terminal_uuid);
+				if (mrtd.level_ == level_) {
+					match_vector.append(mrtd.real_terminal);
 				}
 			}
-			if (m_current_strip->isBridgeable(uuid_vector)) {
-				m_project->undoStack()->push(new BridgeTerminalsCommand(m_current_strip, uuid_vector));
+
+			if (m_current_strip->isBridgeable(match_vector)) {
+				m_project->undoStack()->push(new BridgeTerminalsCommand(m_current_strip, match_vector));
 			}
 		}
 	}
@@ -858,16 +874,16 @@ void TerminalStripEditor::on_m_unbridge_terminals_pb_clicked()
 			else if(level_ == TerminalStripModel::Level3){level_ = 3;}
 
 			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
-			const auto rtd_vector = m_model->realTerminalDataForIndex(index_list);
-			QVector <QUuid> uuid_vector;
-			for (const auto &rtd : rtd_vector)
+			const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(index_list);
+			QVector<QWeakPointer<RealTerminal>> match_vector;
+			for (const auto &mrtd : mrtd_vector)
 			{
-				if (rtd.level_ == level_
-					&& rtd.is_bridged) {
-					uuid_vector.append(rtd.real_terminal_uuid);
+				if (mrtd.level_ == level_
+					&& mrtd.bridged_) {
+					match_vector.append(mrtd.real_terminal);
 				}
 			}
-			m_project->undoStack()->push(new UnBridgeTerminalsCommand(m_current_strip, uuid_vector));
+			m_project->undoStack()->push(new UnBridgeTerminalsCommand(m_current_strip, match_vector));
 		}
 	}
 }

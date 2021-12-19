@@ -25,7 +25,7 @@
  */
 GroupTerminalsCommand::GroupTerminalsCommand(TerminalStrip *strip,
 											 const PhysicalTerminalData &receiver_,
-											 const QVector<RealTerminalData> &to_group,
+											 const QVector<QWeakPointer<RealTerminal>> &to_group,
 											 QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_terminal_strip(strip),
@@ -48,7 +48,7 @@ void GroupTerminalsCommand::redo() {
 }
 
 UnGroupTerminalsCommand::UnGroupTerminalsCommand(TerminalStrip *strip,
-												 const QVector<RealTerminalData> &to_ungroup,
+												 const QVector<QWeakPointer<RealTerminal>> &to_ungroup,
 												 QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_terminal_strip(strip)
@@ -77,11 +77,11 @@ void UnGroupTerminalsCommand::redo()
 	}
 }
 
-void UnGroupTerminalsCommand::setUp(const QVector<RealTerminalData> &to_ungroup)
+void UnGroupTerminalsCommand::setUp(const QVector<QWeakPointer<RealTerminal>> &to_ungroup)
 {
-	for (auto rtd_ : to_ungroup)
+	for (const auto &rt_ : to_ungroup)
 	{
-		auto ptd_ = m_terminal_strip->physicalTerminalData(rtd_);
+		auto ptd_ = m_terminal_strip->physicalTerminalData(rt_);
 
 			//Physical have only one real terminal, no need to ungroup it
 		if (ptd_.real_terminals_vector.size() <= 1) {
@@ -89,7 +89,7 @@ void UnGroupTerminalsCommand::setUp(const QVector<RealTerminalData> &to_ungroup)
 		}
 
 		auto vector_ = m_physical_real_H.value(ptd_);
-		vector_.append(rtd_);
+		vector_.append(rt_);
 		m_physical_real_H.insert(ptd_, vector_);
 	}
 }

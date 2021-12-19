@@ -56,6 +56,13 @@ class RealTerminal
 		{}
 
 		/**
+		 * @brief parentStrip
+		 * @return parent terminal strip
+		 */
+		TerminalStrip *parentStrip() const {
+			return m_parent_terminal_strip.data();
+		}
+		/**
 		 * @brief isElement
 		 * @return true if this real terminal is linked to a terminal element
 		 */
@@ -528,7 +535,7 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(int index) const
 		auto physical_terminal = m_physical_terminals.at(index);
 		ptd.pos_ = index;
 		for (auto real_terminal : physical_terminal->terminals()) {
-			auto rtd = realTerminalData(real_terminal);
+			auto rtd = RealTerminalData(real_terminal);
 			ptd.real_terminals_vector.append(rtd);
 		}
 		ptd.uuid_ = physical_terminal->uuid();
@@ -539,15 +546,15 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(int index) const
 
 /**
  * @brief TerminalStrip::physicalTerminalData
- * @param real_data
- * @return the parent PhysicalTerminalData of \p real_data.
- * the PhysicalTerminalData can be invalid if \p real_data don't belong to this strip
+ * @param real_terminal
+ * @return the parent PhysicalTerminalData of \p real_terminal.
+ * the PhysicalTerminalData can be invalid if \p real_terminal don't belong to this strip
  */
-PhysicalTerminalData TerminalStrip::physicalTerminalData(const RealTerminalData &real_data) const
+PhysicalTerminalData TerminalStrip::physicalTerminalData (QWeakPointer<RealTerminal> real_terminal) const
 {
 	PhysicalTerminalData ptd_;
 
-	const auto real_t = realTerminalForUuid(real_data.real_terminal_uuid);
+	const auto real_t = real_terminal.toStrongRef();
 	if (real_t.isNull()) {
 		return ptd_;
 	}
@@ -559,7 +566,7 @@ PhysicalTerminalData TerminalStrip::physicalTerminalData(const RealTerminalData 
 
 	ptd_.pos_ = m_physical_terminals.indexOf(phy_t);
 	for (auto real_terminal : phy_t->terminals()) {
-		auto rtd = realTerminalData(real_terminal);
+		auto rtd = RealTerminalData(real_terminal);
 		ptd_.real_terminals_vector.append(rtd);
 	}
 	ptd_.uuid_ = phy_t->uuid();
@@ -634,7 +641,7 @@ bool TerminalStrip::setOrderTo(const QVector<PhysicalTerminalData> &sorted_vecto
  * @param receiver_terminal
  * @return true if success
  */
-bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<RealTerminalData> &added_terminals)
+bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<QWeakPointer<RealTerminal>> &added_terminals)
 {
 	const auto receiver_ = physicalTerminalForUuid(receiver_terminal.uuid_);
 	if (receiver_.isNull()) {
@@ -645,7 +652,7 @@ bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal
 	bool have_grouped = false;
 	for (const auto &added : added_terminals)
 	{
-		const auto added_terminal = realTerminalForUuid(added.real_terminal_uuid);
+		const auto added_terminal = added.toStrongRef();
 
 		if (added_terminal.isNull()) {
 			continue;
@@ -677,12 +684,12 @@ bool TerminalStrip::groupTerminals(const PhysicalTerminalData &receiver_terminal
  * Ungroup all real terminals of \p terminals_to_ungroup
  * @param terminals_to_ungroup
  */
-void TerminalStrip::unGroupTerminals(const QVector<RealTerminalData> &terminals_to_ungroup)
+void TerminalStrip::unGroupTerminals(const QVector<QWeakPointer<RealTerminal>> &terminals_to_ungroup)
 {
 	bool ungrouped = false;
-	for (const auto &rtd_ : terminals_to_ungroup)
+	for (const auto &rt_ : terminals_to_ungroup)
 	{
-		if (auto real_terminal = realTerminalForUuid(rtd_.real_terminal_uuid)) //Get the shared real terminal
+		if (auto real_terminal = rt_.toStrongRef()) //Get the shared real terminal
 		{
 			if (auto physical_terminal = physicalTerminal(real_terminal)) //Get the physical terminal
 			{
@@ -710,16 +717,16 @@ void TerminalStrip::unGroupTerminals(const QVector<RealTerminalData> &terminals_
  * @param level
  * @return
  */
-bool TerminalStrip::setLevel(const RealTerminalData &real_terminal_data, int level)
+bool TerminalStrip::setLevel(const QWeakPointer<RealTerminal> &real_terminal, int level)
 {
-	auto real_terminal = realTerminalForUuid(real_terminal_data.real_terminal_uuid);
-	if (real_terminal)
+	auto real_t = real_terminal.toStrongRef();
+	if (real_t)
 	{
-		auto physical_terminal = physicalTerminal(real_terminal);
+		auto physical_terminal = physicalTerminal(real_t);
 		if (physical_terminal)
 		{
 			if (physical_terminal->terminals().size() > 1 &&
-				physical_terminal->setLevelOf(real_terminal, level))
+				physical_terminal->setLevelOf(real_t, level))
 			{
 				emit orderChanged();
 				return true;
@@ -732,27 +739,26 @@ bool TerminalStrip::setLevel(const RealTerminalData &real_terminal_data, int lev
 
 /**
  * @brief TerminalStrip::isBridgeable
- * Check if all realTerminal represented by the uuid of @a real_terminals_uuid are bridgeable together.
+ * Check if all realTerminal in @a real_terminals_data are bridgeable together.
  * To be bridgeable, each real terminal must belong to this terminal strip
  * be at the same level, be consecutive and not belong to the same physicalTerminal
  * and at least one terminal must be not bridged
- * @param real_terminals_uuid : a vector of RealTerminal uuid
- * @sa member real_terminal_uuid of struct RealTerminalData
+ * @param real_terminals_data : a vector of RealTerminalData
  * @return
  */
-bool TerminalStrip::isBridgeable(const QVector<QUuid> &real_terminals_uuid) const
+bool TerminalStrip::isBridgeable(const QVector<RealTerminalData> &real_terminals_data) const
 {
-	if (real_terminals_uuid.size() < 2) {
+	if (real_terminals_data.size() < 2) {
 		return false;
 	}
 
 		// Check if first terminal belong to this strip
-	auto first_real_terminal = realTerminalForUuid(real_terminals_uuid.first());
+	auto first_real_terminal = real_terminals_data.first().m_real_terminal.toStrongRef();
 	if (!first_real_terminal) {
 		return false;
 	}
 		// Get the level of the first terminal
-	int level_ = realTerminalData(first_real_terminal).level_;
+	int level_ = real_terminals_data.first().level();
 		// Get the physical terminal and pos
 	auto first_physical_terminal = physicalTerminal(first_real_terminal);
 	QVector<shared_physical_terminal> physical_vector{first_physical_terminal};
@@ -763,16 +769,16 @@ bool TerminalStrip::isBridgeable(const QVector<QUuid> &real_terminals_uuid) cons
 	bool no_bridged = bridge_ ? false : true;
 
 		// Check for each terminals
-	for (int i=1 ; i<real_terminals_uuid.size() ; ++i)
+	for (int i=1 ; i<real_terminals_data.size() ; ++i)
 	{
 			// If belong to this strip
-		auto real_terminal = realTerminalForUuid(real_terminals_uuid.at(i));
+		auto real_terminal = real_terminals_data.at(i).m_real_terminal.toStrongRef();
 		if (!real_terminal) {
 			return false;
 		}
 
 			// at the same level
-		if (level_ != realTerminalData(real_terminal).level_) {
+		if (level_ != real_terminals_data.at(i).level()) {
 			return false;
 		}
 
@@ -810,24 +816,36 @@ bool TerminalStrip::isBridgeable(const QVector<QUuid> &real_terminals_uuid) cons
 	return no_bridged;
 }
 
+bool TerminalStrip::isBridgeable(const QVector<QWeakPointer<RealTerminal>> &real_terminals) const
+{
+	QVector<RealTerminalData> data;
+
+	for (const auto &wrt : real_terminals)
+	{
+		data.append(RealTerminalData(wrt.toStrongRef()));
+	}
+	return isBridgeable(data);
+}
+
 /**
  * @brief TerminalStrip::setBridge
- * Set a bridge betwen all real terminal represented by they uuid
- * @param real_terminals_uuid
+ * Set a bridge betwen all real terminal of @a real_terminals
  * @sa TerminalStrip::isBridgeable
  * @return true if bridge was successfully created
  */
-bool TerminalStrip::setBridge(const QVector<QUuid> &real_terminals_uuid)
+bool TerminalStrip::setBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals)
 {
-	if (!isBridgeable(real_terminals_uuid)) {
+	if (!isBridgeable(real_terminals)) {
 		return false;
 	}
 	QVector<shared_real_terminal> real_terminals_vector;
 
-	for (const auto & uuid_ : real_terminals_uuid) {
-		auto real_t = realTerminalForUuid(uuid_);
-		if (real_t)
-			real_terminals_vector << real_t;
+	for (const auto &real_terminal : real_terminals)
+	{
+		auto real_t = real_terminal.toStrongRef();
+		if (real_t) {
+			real_terminals_vector.append(real_t);
+		}
 	}
 
 	auto bridge = bridgeFor(real_terminals_vector);
@@ -848,29 +866,27 @@ bool TerminalStrip::setBridge(const QVector<QUuid> &real_terminals_uuid)
 
 /**
  * @brief TerminalStrip::setBridge
- * Bridge the RealTerminal with uuid in @a real_terminals_uuid to
- * the bridge with uuid @a bridge_uuid.
- * @param bridge_uuid
- * @param real_terminals_uuid
+ * Bridge the RealTerminal of @a real_terminals_data to @a bridge
+ * @param bridge
+ * @param real_terminals_data
  * @return true if all RealTerminal was successfully bridged
  */
-bool TerminalStrip::setBridge(const QUuid &bridge_uuid, const QVector<QUuid> &real_terminals_uuid)
+bool TerminalStrip::setBridge(QSharedPointer<TerminalStripBridge> bridge, const QVector<QWeakPointer<RealTerminal>> &real_terminals)
 {
-	auto bridge_ = bridgeForUuid(bridge_uuid);
-	if (bridge_)
+	if (bridge)
 	{
-		if (!isBridgeable(real_terminals_uuid)) {
+		if (!isBridgeable(real_terminals)) {
 			return false;
 		}
 
 		bool b_ = false;
-		for (const auto & uuid_ : real_terminals_uuid)
+		for (const auto & rt_ : real_terminals)
 		{
-			auto real_t = realTerminalForUuid(uuid_);
+			auto real_t = rt_.toStrongRef();
 			if (real_t &&
-				!bridge_->real_terminals.contains(real_t))
+				!bridge->real_terminals.contains(real_t))
 			{
-				bridge_->real_terminals.append(real_t);
+				bridge->real_terminals.append(real_t);
 				b_ = true;
 			}
 		}
@@ -886,46 +902,36 @@ bool TerminalStrip::setBridge(const QUuid &bridge_uuid, const QVector<QUuid> &re
 
 /**
  * @brief TerminalStrip::unBridge
- * Unbridge all real terminal represented by they uuid
+ * Unbridge all real terminal of @a real_terminals
  * @param real_terminals_uuid
  */
-void TerminalStrip::unBridge(const QVector<QUuid> &real_terminals_uuid)
+void TerminalStrip::unBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals)
 {
-	for (const auto & uuid_ : real_terminals_uuid)
+	for (const auto &real_t : qAsConst(real_terminals))
 	{
-		auto real_t = realTerminalForUuid(uuid_);
-		if (real_t)
-		{
-			auto bridge_ = isBridged(real_t);
-			if (bridge_)
-				bridge_->real_terminals.removeOne(real_t);
+		auto bridge_ = bridgeFor(real_t);
+		if (bridge_) {
+			bridge_->real_terminals.removeOne(real_t.toStrongRef());
 		}
 	}
 
 	emit bridgeChanged();
 }
 
-/**
- * @brief TerminalStrip::bridgeFor
- * @param real_terminal_uuid
- * @return
- */
-const QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QUuid &real_terminal_uuid) const
+QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(QWeakPointer<RealTerminal> real_terminal) const
 {
-	auto rt = realTerminalForUuid(real_terminal_uuid);
-	return bridgeFor(QVector{rt});
+	return this->isBridged(real_terminal.toStrongRef());
 }
 
 /**
  * @brief TerminalStrip::previousTerminalInLevel
- * @param real_terminal_uuid
- * @return The previous real terminal at the samne level
- * as the real terminal with uuid @a real_terminal_uuid
- * If there is not a previous terminal, return a null RealTerminalData
+ * @param real_terminal
+ * @return The previous real terminal at the samne level of @a real_t
+ * or a null RealTerminalData if there not a previous real terminal
  */
-RealTerminalData TerminalStrip::previousTerminalInLevel(const QUuid &real_terminal_uuid) const
+RealTerminalData TerminalStrip::previousTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const
 {
-	auto real_t = realTerminalForUuid(real_terminal_uuid);
+	auto real_t = real_terminal.toStrongRef();
 	if (real_t)
 	{
 		auto phy_t = physicalTerminal(real_t);
@@ -938,7 +944,7 @@ RealTerminalData TerminalStrip::previousTerminalInLevel(const QUuid &real_termin
 				auto t_vector = m_physical_terminals.at(index-1)->terminals();
 				if (t_vector.size() > level_)
 				{
-					return realTerminalData(t_vector.at(level_));
+					return RealTerminalData(t_vector.at(level_));
 				}
 			}
 		}
@@ -949,14 +955,13 @@ RealTerminalData TerminalStrip::previousTerminalInLevel(const QUuid &real_termin
 
 /**
  * @brief TerminalStrip::nextTerminalInLevel
- * @param real_terminal_uuid
- * @return The next real terminal at the samne level
- * as the real terminal with uuid @a real_terminal_uuid
- * If there is not a next terminal, return a null RealTerminalData
+ * @param real_terminal
+ * @return The next real terminal at the same level of @a real_t
+ * or a null RealTerminalData if there not a next real terminal
  */
-RealTerminalData TerminalStrip::nextTerminalInLevel(const QUuid &real_terminal_uuid) const
+RealTerminalData TerminalStrip::nextTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const
 {
-	auto real_t = realTerminalForUuid(real_terminal_uuid);
+	auto real_t = real_terminal.toStrongRef();
 	if (real_t)
 	{
 		auto phy_t = physicalTerminal(real_t);
@@ -969,7 +974,7 @@ RealTerminalData TerminalStrip::nextTerminalInLevel(const QUuid &real_terminal_u
 				auto t_vector = m_physical_terminals.at(index+1)->terminals();
 				if (t_vector.size() > level_)
 				{
-					return realTerminalData(t_vector.at(level_));
+					return RealTerminalData(t_vector.at(level_));
 				}
 			}
 		}
@@ -978,24 +983,33 @@ RealTerminalData TerminalStrip::nextTerminalInLevel(const QUuid &real_terminal_u
 	return RealTerminalData();
 }
 
-RealTerminalData TerminalStrip::previousRealTerminal(const QUuid &real_terminal_uuid) const
+RealTerminalData TerminalStrip::previousRealTerminal(const QWeakPointer<RealTerminal> &real_terminal) const
 {
-	auto real = realTerminalForUuid(real_terminal_uuid);
+	auto real = real_terminal.toStrongRef();
 	auto index = m_real_terminals.indexOf(real);
 	if (index) {
-		return realTerminalData(m_real_terminals.at(index-1));
+		return RealTerminalData(m_real_terminals.at(index-1));
 	}
 	return RealTerminalData();
 }
 
-RealTerminalData TerminalStrip::nextRealTerminal(const QUuid &real_terminal_uuid) const
+RealTerminalData TerminalStrip::nextRealTerminal(const QWeakPointer<RealTerminal> &real_terminal) const
 {
-	auto real = realTerminalForUuid(real_terminal_uuid);
+	auto real = real_terminal.toStrongRef();
 	auto index = m_real_terminals.indexOf(real);
 	if (index != m_real_terminals.size()-1) {
-		return realTerminalData(m_real_terminals.at(index+1));
+		return RealTerminalData(m_real_terminals.at(index+1));
 	}
 	return RealTerminalData();
+}
+
+RealTerminalData TerminalStrip::realTerminalDataFor(const QWeakPointer<RealTerminal> &real_terminal) const
+{
+	auto rt = real_terminal.toStrongRef();
+	if (rt && m_real_terminals.contains(rt))
+		return RealTerminalData(rt);
+	else
+		return RealTerminalData();
 }
 
 /**
@@ -1121,38 +1135,6 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(QSharedPointer<
 	return pt;
 }
 
-RealTerminalData TerminalStrip::realTerminalData(const QSharedPointer<RealTerminal> real_terminal) const
-{
-	RealTerminalData rtd;
-
-	auto physical_terminal = physicalTerminal(real_terminal);
-
-	rtd.real_terminal_uuid = real_terminal->uuid();
-	rtd.level_ = physical_terminal->levelOf(real_terminal);
-	rtd.label_ = real_terminal->label();
-
-	if (real_terminal->isElement()) {
-		rtd.Xref_ = autonum::AssignVariables::genericXref(real_terminal->element());
-		rtd.element_uuid = real_terminal->elementUuid();
-		rtd.element_ = real_terminal->element();
-	}
-	rtd.type_      = real_terminal->type();
-	rtd.function_  = real_terminal->function();
-	rtd.led_       = real_terminal->led();
-	rtd.is_element = real_terminal->isElement();
-	rtd.is_bridged = isBridged(real_terminal);
-	if (rtd.is_bridged) {
-		for (auto bridge : m_bridge) {
-			if (bridge->real_terminals.contains(real_terminal)) {
-				rtd.bridge_uuid = bridge->uuid_;
-				break;
-			}
-		}
-	}
-
-	return rtd;
-}
-
 /**
  * @brief TerminalStrip::physicalTerminalForUuid
  * Return the PhysicalTerminal with uuid \p uuid or a null
@@ -1243,22 +1225,6 @@ QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QVector<QShar
 }
 
 /**
- * @brief TerminalStrip::bridgeForUuid
- * @param bridge_uuid
- * @return the bridge with uuid @a bridge_uuid or null QSharedPointer if not exist
- */
-QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeForUuid(const QUuid &bridge_uuid)
-{
-	for (const auto &bridge : qAsConst(m_bridge)) {
-		if (bridge->uuid_ == bridge_uuid) {
-			return bridge;
-		}
-	}
-
-	return QSharedPointer<TerminalStripBridge>();
-}
-
-/**
  * @brief TerminalStrip::rebuildRealVector
  * Rebuild the real terminal vector
  * to be ordered
@@ -1267,7 +1233,169 @@ void TerminalStrip::rebuildRealVector()
 {
 	m_real_terminals.clear();
 	for (const auto phy : m_physical_terminals) {
-		for (const auto &real : phy->terminals())
+		for (const auto real : phy->terminals())
 			m_real_terminals.append(real);
 	}
+}
+
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+/************************************************************************************/
+
+
+/**
+ * @brief RealTerminalData::RealTerminalData
+ * @param real_terminal
+ */
+RealTerminalData::RealTerminalData(QSharedPointer<RealTerminal> real_terminal)
+{
+	m_real_terminal = real_terminal.toWeakRef();
+}
+
+bool RealTerminalData::isNull() const
+{
+	return m_real_terminal.isNull();
+}
+
+int RealTerminalData::level() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		auto strip = shared_->parentStrip();
+		if (strip) {
+			auto phys = strip->physicalTerminal(shared_);
+			if (phys) {
+				return phys->levelOf(shared_);
+			}
+		}
+	}
+
+	return -1;
+}
+
+QString RealTerminalData::label() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		return shared_->label();
+	} else {
+		return QString();
+	}
+}
+
+QString RealTerminalData::Xref() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_ && shared_->isElement()) {
+		return autonum::AssignVariables::genericXref(shared_->element());
+	} else {
+		return QString();
+	}
+}
+
+QString RealTerminalData::cable() const {
+	return QString();
+}
+
+QString RealTerminalData::cableWire() const {
+	return QString();
+}
+
+QString RealTerminalData::conductor() const {
+	return QString();
+}
+
+ElementData::TerminalType RealTerminalData::type() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		return shared_->type();
+	}
+
+	return ElementData::TerminalType::TTGeneric;
+}
+
+ElementData::TerminalFunction RealTerminalData::function() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		return shared_->function();
+	}
+
+	return ElementData::TerminalFunction::TFGeneric;
+}
+
+bool RealTerminalData::isLed() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		return shared_->led();
+	}
+
+	return false;
+}
+
+bool RealTerminalData::isElement() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		return shared_->isElement();
+	}
+
+	return false;
+}
+
+bool RealTerminalData::isBridged() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		auto strip = shared_->parentStrip();
+		if (strip) {
+			return !strip->isBridged(shared_).isNull();
+		}
+	}
+	return false;
+}
+
+/**
+ * @brief RealTerminalData::element
+ * @return The element represented by this real
+ * terminal, or nullptr
+ */
+Element *RealTerminalData::element() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		return shared_->element();
+	}
+
+	return nullptr;
+}
+
+QUuid RealTerminalData::elementUuid() const
+{
+	auto element_ = element();
+	if (element_) {
+		return element_->uuid();
+	}
+	return QUuid();
+}
+
+QSharedPointer<TerminalStripBridge> RealTerminalData::bridge() const
+{
+	auto shared_ = m_real_terminal.toStrongRef();
+	if (shared_) {
+		auto strip = shared_->parentStrip();
+		if (strip) {
+			return strip->isBridged(shared_);
+		}
+	}
+	return QSharedPointer<TerminalStripBridge>();
+}
+
+QWeakPointer<RealTerminal> RealTerminalData::realTerminal() const
+{
+	return m_real_terminal;
 }

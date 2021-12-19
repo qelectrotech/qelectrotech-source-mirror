@@ -26,7 +26,7 @@ class ChangeTerminalLevel : public QUndoCommand
 {
 	public:
 		ChangeTerminalLevel(TerminalStrip *strip,
-							const RealTerminalData &real_terminal,
+							const QWeakPointer<RealTerminal> &real_terminal,
 							int level,
 							QUndoCommand *parent = nullptr);
 
@@ -35,7 +35,7 @@ class ChangeTerminalLevel : public QUndoCommand
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		RealTerminalData m_real_terminal;
+		QWeakPointer<RealTerminal> m_real_terminal;
 		int m_new_level, m_old_level;
 };
 

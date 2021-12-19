@@ -16,14 +16,13 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "bridgeterminalscommand.h"
-#include "../terminalstrip.h"
 
 BridgeTerminalsCommand::BridgeTerminalsCommand(TerminalStrip *strip,
-											   QVector<QUuid> real_terminal_uuid,
+											   QVector<QWeakPointer<RealTerminal>> real_terminal,
 											   QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_strip(strip),
-	m_uuid_vector(real_terminal_uuid)
+	m_real_terminal_vector(real_terminal)
 {
 	setText(QObject::tr("Ponter des bornes entre-elles"));
 }
@@ -31,40 +30,44 @@ BridgeTerminalsCommand::BridgeTerminalsCommand(TerminalStrip *strip,
 void BridgeTerminalsCommand::undo()
 {
 	if (m_strip) {
-		m_strip->unBridge(m_uuid_vector);
+		m_strip->unBridge(m_real_terminal_vector);
 	}
 }
 
 void BridgeTerminalsCommand::redo()
 {
 	if (m_strip) {
-		m_strip->setBridge(m_uuid_vector);
+		m_strip->setBridge(m_real_terminal_vector);
 	}
 }
 
 UnBridgeTerminalsCommand::UnBridgeTerminalsCommand(TerminalStrip *strip,
-												   QVector<QUuid> real_terminal_uuid,
+												   QVector<QWeakPointer<RealTerminal>> real_terminal,
 												   QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_strip(strip)
 {
 	setText(QObject::tr("Supprimer des ponts de bornes"));
 
-	for (const auto &t_uuid : real_terminal_uuid)
+	for (const auto &real_t : real_terminal)
 	{
-		auto bridge = m_strip->bridgeFor(t_uuid);
-		if (bridge) {
-			m_bridge_terminal_map.insert(bridge->uuid_, t_uuid);
+		auto bridge_ = strip->bridgeFor(real_t);
+		if (bridge_) {
+			m_bridge_terminal_hash.insert(bridge_.toWeakRef(), real_t);
 		}
 	}
 }
 
 void UnBridgeTerminalsCommand::undo()
 {
-	if (m_strip) {
-		for (const auto &bridge_uuid : m_bridge_terminal_map.uniqueKeys()) {
-			auto terminal_list = m_bridge_terminal_map.values(bridge_uuid);
-			m_strip->setBridge(bridge_uuid, terminal_list.toVector());
+	if (m_strip)
+	{
+		for (const auto &bridge_ : m_bridge_terminal_hash.uniqueKeys())
+		{
+			if (!bridge_.isNull()) {
+				auto terminal_list = m_bridge_terminal_hash.values(bridge_);
+				m_strip->setBridge(bridge_.toStrongRef() , terminal_list.toVector());
+			}
 		}
 	}
 }
@@ -72,6 +75,6 @@ void UnBridgeTerminalsCommand::undo()
 void UnBridgeTerminalsCommand::redo()
 {
 	if (m_strip) {
-		m_strip->unBridge(m_bridge_terminal_map.values().toVector());
+		m_strip->unBridge(m_bridge_terminal_hash.values().toVector());
 	}
 }

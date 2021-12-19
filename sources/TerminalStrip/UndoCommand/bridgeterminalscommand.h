@@ -20,11 +20,10 @@
 
 #include <QUndoCommand>
 #include <QVector>
-#include <QUuid>
 #include <QPointer>
 #include <QMultiMap>
 
-class TerminalStrip;
+#include "../terminalstrip.h"
 
 /**
  * @brief The BridgeTerminalsCommand class
@@ -34,7 +33,7 @@ class TerminalStrip;
 class BridgeTerminalsCommand : public QUndoCommand
 {
 	public:
-		BridgeTerminalsCommand(TerminalStrip *strip, QVector<QUuid> real_terminal_uuid, QUndoCommand *parent = nullptr);
+		BridgeTerminalsCommand(TerminalStrip *strip, QVector<QWeakPointer<RealTerminal>> real_terminal, QUndoCommand *parent = nullptr);
 		~BridgeTerminalsCommand() override {}
 
 		void undo() override;
@@ -42,7 +41,7 @@ class BridgeTerminalsCommand : public QUndoCommand
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		QVector<QUuid> m_uuid_vector;
+		QVector<QWeakPointer<RealTerminal>> m_real_terminal_vector;
 };
 
 
@@ -54,7 +53,7 @@ class BridgeTerminalsCommand : public QUndoCommand
 class UnBridgeTerminalsCommand : public QUndoCommand
 {
 	public:
-		UnBridgeTerminalsCommand(TerminalStrip *strip, QVector<QUuid> real_terminal_uuid, QUndoCommand *parent = nullptr);
+		UnBridgeTerminalsCommand(TerminalStrip *strip, QVector<QWeakPointer<RealTerminal>> real_terminal, QUndoCommand *parent = nullptr);
 		~UnBridgeTerminalsCommand() override{}
 
 		void undo() override;
@@ -62,7 +61,7 @@ class UnBridgeTerminalsCommand : public QUndoCommand
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		QMultiMap<QUuid, QUuid> m_bridge_terminal_map; ///Key is bridge uuid, value is real terminal uuid
+		QMultiHash<QWeakPointer<TerminalStripBridge>, QWeakPointer<RealTerminal>> m_bridge_terminal_hash; ///Key a is bridge, value is real terminal
 
 };
 

@@ -32,7 +32,7 @@ class GroupTerminalsCommand : public QUndoCommand
 	public:
 		GroupTerminalsCommand(TerminalStrip *strip,
 							  const PhysicalTerminalData &receiver_,
-							  const QVector<RealTerminalData> &to_group,
+							  const QVector<QWeakPointer<RealTerminal>> &to_group,
 							  QUndoCommand *parent = nullptr);
 
 		void undo() override;
@@ -41,7 +41,7 @@ class GroupTerminalsCommand : public QUndoCommand
 	private:
 		QPointer<TerminalStrip> m_terminal_strip;
 		PhysicalTerminalData m_receiver;
-		QVector <RealTerminalData> m_to_group;
+		QVector<QWeakPointer<RealTerminal>> m_to_group;
 };
 
 /**
@@ -52,18 +52,18 @@ class UnGroupTerminalsCommand : public QUndoCommand
 {
 	public:
 		UnGroupTerminalsCommand(TerminalStrip *strip,
-								const QVector<RealTerminalData> &to_ungroup,
+								const QVector<QWeakPointer<RealTerminal>> &to_ungroup,
 								QUndoCommand *parent = nullptr);
 
 		void undo() override;
 		void redo() override;
 
 	private:
-		void setUp(const QVector<RealTerminalData> &to_ungroup);
+		void setUp(const QVector<QWeakPointer<RealTerminal>> &to_ungroup);
 
 	private:
 		QPointer<TerminalStrip> m_terminal_strip;
-		QHash <PhysicalTerminalData, QVector<RealTerminalData>> m_physical_real_H;
+		QHash <PhysicalTerminalData, QVector<QWeakPointer<RealTerminal>>> m_physical_real_H;
 };
 
 #endif // GROUPTERMINALSCOMMAND_H

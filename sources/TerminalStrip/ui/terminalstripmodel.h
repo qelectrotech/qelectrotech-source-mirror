@@ -26,13 +26,53 @@
 #include <QColor>
 
 #include "../terminalstrip.h"
+#include "../../qetgraphicsitem/element.h"
 
 //Code to use QColor as key for QHash
 inline uint qHash(const QColor &key, uint seed) {
 	return qHash(key.name(), seed);
 }
 
+//needed to use QPointer<Element> as key of QHash
+inline uint qHash(const QPointer<Element> &key, uint seed) {
+	if (key)
+		return qHash(key->uuid(), seed);
+	else
+		return qHash(nullptr, seed);
+}
+
 class TerminalStrip;
+
+
+struct modelRealTerminalData
+{
+		int level_ = -1;
+		QString label_;
+		QString Xref_;
+		QString cable_;
+		QString cable_wire;
+		QString conductor_;
+		bool led_ = false;
+		bool bridged_ = false;
+
+		ElementData::TerminalType type_ = ElementData::TerminalType::TTGeneric;
+		ElementData::TerminalFunction function_ = ElementData::TerminalFunction::TFGeneric;
+		QPointer<Element> element_;
+
+		QWeakPointer<RealTerminal> real_terminal;
+
+};
+
+struct modelPhysicalTerminalData
+{
+		QVector<modelRealTerminalData> real_data;
+		int pos_ = -1;
+		QUuid uuid_;
+};
+
+inline bool operator == (const modelPhysicalTerminalData &data_1, const modelPhysicalTerminalData &data_2) {
+	return data_1.uuid_ == data_2.uuid_;
+}
 
 class TerminalStripModel : public QAbstractTableModel
 {
@@ -68,27 +108,28 @@ class TerminalStripModel : public QAbstractTableModel
 		virtual bool setData (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
-		QVector<QPair<RealTerminalData, RealTerminalData>> modifiedRealTerminalData() const;
+		QVector<modelRealTerminalData> modifiedmodelRealTerminalData() const;
 
-		QVector<PhysicalTerminalData> physicalTerminalDataForIndex(QModelIndexList index_list) const;
-		QVector<RealTerminalData> realTerminalDataForIndex(QModelIndexList index_list) const;
-		RealTerminalData realTerminalDataForIndex(const QModelIndex &index) const;
+		QVector<modelPhysicalTerminalData> modelPhysicalTerminalDataForIndex(QModelIndexList index_list) const;
+		QVector<modelRealTerminalData> modelRealTerminalDataForIndex(QModelIndexList index_list) const;
+		modelRealTerminalData modelRealTerminalDataForIndex(const QModelIndex &index) const;
 
 		void buildBridgePixmap(const QSize &pixmap_size);
 
 	private:
 		void fillPhysicalTerminalData();
-		RealTerminalData dataAtRow(int row) const;
-		void replaceDataAtRow(RealTerminalData data, int row);
-		PhysicalTerminalData physicalDataAtIndex(int index) const;
-		RealTerminalData realDataAtIndex(int index) const;
+		modelRealTerminalData dataAtRow(int row) const;
+		void replaceDataAtRow(modelRealTerminalData data, int row);
+		modelPhysicalTerminalData physicalDataAtIndex(int index) const;
+		modelRealTerminalData realDataAtIndex(int index) const;
 		QPixmap bridgePixmapFor(const QModelIndex &index) const;
+
+		static modelRealTerminalData modelRealData(const RealTerminalData &data);
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
-		QVector<PhysicalTerminalData> m_edited_terminal_data, m_original_terminal_data;
-		QHash<Element *, QVector<bool>> m_modified_cell;
-
+		QHash<QPointer<Element>, QVector<bool>> m_modified_cell;
+		QVector<modelPhysicalTerminalData> m_physical_data;
 		struct BridgePixmap
 		{
 				QPixmap top_,

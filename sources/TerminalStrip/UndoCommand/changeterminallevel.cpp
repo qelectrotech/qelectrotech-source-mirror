@@ -18,14 +18,14 @@
 #include "changeterminallevel.h"
 
 ChangeTerminalLevel::ChangeTerminalLevel(TerminalStrip *strip,
-										 const RealTerminalData &real_terminal,
+										 const QWeakPointer<RealTerminal> &real_terminal,
 										 int level,
 										 QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_strip(strip),
 	m_real_terminal(real_terminal),
 	m_new_level(level),
-	m_old_level(real_terminal.level_)
+	m_old_level(m_strip->realTerminalDataFor(real_terminal).level())
 {}
 
 void ChangeTerminalLevel::undo()
