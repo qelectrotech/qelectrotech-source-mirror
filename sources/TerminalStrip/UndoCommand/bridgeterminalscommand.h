@@ -61,8 +61,8 @@ class UnBridgeTerminalsCommand : public QUndoCommand
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		QMultiHash<QWeakPointer<TerminalStripBridge>, QWeakPointer<RealTerminal>> m_bridge_terminal_hash; ///Key a is bridge, value is real terminal
-
+		QWeakPointer<TerminalStripBridge> m_bridge;
+		QVector<QWeakPointer<RealTerminal>> m_terminals;
 };
 
 #endif // BRIDGETERMINALSCOMMAND_H

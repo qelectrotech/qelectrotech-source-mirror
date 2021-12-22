@@ -40,20 +40,6 @@ struct TerminalStripBridge
 		QUuid uuid_ = QUuid::createUuid();
 };
 
-inline bool operator == (const TerminalStripBridge &bridge_1, const TerminalStripBridge &bridge_2) {
-	return (bridge_1.uuid_ == bridge_2.uuid_);
-}
-
-inline uint qHash(const QWeakPointer<TerminalStripBridge> &key, uint seed)
-{
-	const auto bridge = key.toStrongRef();
-	if (bridge) {
-		return qHash(bridge->uuid_, seed);
-	} else {
-		return qHash(QUuid (), seed);
-	}
-}
-
 class RealTerminalData
 {
 		friend class TerminalStrip;
@@ -188,6 +174,7 @@ class TerminalStrip : public QObject
 		bool setBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals);
 		bool setBridge(const QSharedPointer<TerminalStripBridge> &bridge, const QVector<QWeakPointer<RealTerminal>> &real_terminals);
 		void unBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals);
+		bool canUnBridge(const QVector <QWeakPointer<RealTerminal>> &real_terminals) const;
 		QSharedPointer<TerminalStripBridge> bridgeFor(const QWeakPointer<RealTerminal> &real_terminal) const;
 
 		RealTerminalData previousTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;

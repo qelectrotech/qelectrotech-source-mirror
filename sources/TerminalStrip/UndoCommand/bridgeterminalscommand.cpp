@@ -49,32 +49,23 @@ UnBridgeTerminalsCommand::UnBridgeTerminalsCommand(TerminalStrip *strip,
 {
 	setText(QObject::tr("Supprimer des ponts de bornes"));
 
-	for (const auto &real_t : real_terminal)
+	if (strip->canUnBridge(real_terminal))
 	{
-		auto bridge_ = strip->bridgeFor(real_t);
-		if (bridge_) {
-			m_bridge_terminal_hash.insert(bridge_.toWeakRef(), real_t);
-		}
+		m_terminals = real_terminal;
+		m_bridge = strip->bridgeFor(real_terminal.first());
 	}
 }
 
 void UnBridgeTerminalsCommand::undo()
 {
-	if (m_strip)
-	{
-		for (const auto &bridge_ : m_bridge_terminal_hash.uniqueKeys())
-		{
-			if (!bridge_.isNull()) {
-				auto terminal_list = m_bridge_terminal_hash.values(bridge_);
-				m_strip->setBridge(bridge_.toStrongRef() , terminal_list.toVector());
-			}
-		}
+	if (m_strip && m_bridge) {
+		m_strip->setBridge(m_bridge.toStrongRef(), m_terminals);
 	}
 }
 
 void UnBridgeTerminalsCommand::redo()
 {
 	if (m_strip) {
-		m_strip->unBridge(m_bridge_terminal_hash.values().toVector());
+		m_strip->unBridge(m_terminals);
 	}
 }

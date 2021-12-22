@@ -429,37 +429,21 @@ void TerminalStripEditor::selectionChanged()
 
 		//One column must be selected and the column must be a level column
 	int level_ = TerminalStripModel::levelForColumn(isSingleColumnSelected());
-	if (level_ >= 0)
+	if (level_ >= 0 && m_current_strip)
 	{
 			//Select only terminals of corresponding level cell selection
 		QVector<modelRealTerminalData> model_real_terminal_level_vector;
-		for (const auto &mrtd : model_real_terminal_vector) {
-			if (mrtd.level_ == level_) {
+		QVector<QWeakPointer<RealTerminal>> real_terminal_in_level_vector;
+		for (const auto &mrtd : model_real_terminal_vector)
+		{
+			if (mrtd.level_ == level_)
+			{
 				model_real_terminal_level_vector.append(mrtd);
+				real_terminal_in_level_vector.append(mrtd.real_terminal);
 			}
 		}
-
-		QVector<modelRealTerminalData> model_rtd_vector;
-		for (const auto &mrtd : model_real_terminal_level_vector) {
-			model_rtd_vector << mrtd;
-		}
-		if (m_current_strip)
-		{
-			QVector<QWeakPointer<RealTerminal>> vector_;
-			for (const auto &mrtd : qAsConst(model_rtd_vector)) {
-				vector_.append(mrtd.real_terminal);
-			}
-			enable_bridge = m_current_strip->isBridgeable(vector_);
-		}
-
-		for (const auto &mrtd : model_real_terminal_level_vector)
-		{
-			if (mrtd.bridged_ &&
-				mrtd.level_ == level_) {
-				enable_unbridge = true;
-				break;
-			}
-		}
+		enable_bridge = m_current_strip->isBridgeable(real_terminal_in_level_vector);
+		enable_unbridge = m_current_strip->canUnBridge(real_terminal_in_level_vector);
 	}
 	ui->m_bridge_terminals_pb->setEnabled(enable_bridge);
 	ui->m_unbridge_terminals_pb->setEnabled(enable_unbridge);

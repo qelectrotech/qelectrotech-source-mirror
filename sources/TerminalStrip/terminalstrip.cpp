@@ -883,20 +883,85 @@ bool TerminalStrip::setBridge(const QSharedPointer<TerminalStripBridge> &bridge,
 
 /**
  * @brief TerminalStrip::unBridge
- * Unbridge all real terminal of @a real_terminals
- * @param real_terminals_uuid
+ * Unbridge all real terminals of @a real_terminals
+ * @sa TerminalStrip::canUnBridge
+ * @param real_terminals
  */
 void TerminalStrip::unBridge(const QVector<QWeakPointer<RealTerminal>> &real_terminals)
 {
-	for (const auto &real_t : qAsConst(real_terminals))
+	if (canUnBridge(real_terminals))
 	{
-		auto bridge_ = bridgeFor(real_t);
-		if (bridge_) {
+		auto bridge_ = isBridged(real_terminals.first().toStrongRef());
+		for (const auto &real_t : qAsConst(real_terminals)) {
 			bridge_->real_terminals.removeOne(real_t.toStrongRef());
+		}
+
+		emit bridgeChanged();
+	}
+}
+
+/**
+ * @brief TerminalStrip::canUnBridge
+ * @param m_real_terminals
+ * @return True if all terminals of @a real_terminals can be unbridged.
+ * For this method return True, all terminals must be bridged together,
+ * be consecutive and in an one or the both extremities of the bridge.
+ */
+bool TerminalStrip::canUnBridge(const QVector<QWeakPointer<RealTerminal> > &real_terminals) const
+{
+	if (real_terminals.isEmpty()) {
+		return false;
+	}
+
+		//Get the bridge of first terminal
+	const auto compar_bridge = isBridged(real_terminals.first().toStrongRef());
+	if (compar_bridge)
+	{
+		QMap<int, QWeakPointer<RealTerminal>> sorted_terminal;
+
+			//Check if all terminals are bridged and if it's the same bridge.
+			//If true insert the terminal in sorted_terminal QMap
+			//with for key the position of the parent physical terminal
+		for (const auto &real_t : real_terminals) {
+			if (compar_bridge != isBridged(real_t.toStrongRef())) {
+				return false;
+			} else {
+				sorted_terminal.insert(m_physical_terminals.indexOf(physicalTerminal(real_t.toStrongRef())),
+									   real_t);
+			}
+		}
+
+			//Check if consecutive
+		const auto count_ = sorted_terminal.size();
+		const auto min_max = std::minmax_element(sorted_terminal.keyBegin(), sorted_terminal.keyEnd());
+		if ((*min_max.second - *min_max.first) + 1 != count_) {
+			return false;
+		}
+
+			//Check if first terminal is the begin of bridge
+		const auto previous_real_t = previousTerminalInLevel(sorted_terminal.first());
+		if (previous_real_t.isNull())
+			return true;
+		else {
+			const auto previous_bridge = isBridged(previous_real_t.realTerminal());
+			if (compar_bridge != previous_bridge) {
+				return true;
+			}
+		}
+
+			//Check if last terminal is the end of bridge
+		const auto next_real_t = nextTerminalInLevel(sorted_terminal.last());
+		if (next_real_t.isNull()) {
+			return true;
+		} else {
+			const auto next_bridge = isBridged(next_real_t.realTerminal());
+			if (compar_bridge != next_bridge) {
+				return true;
+			}
 		}
 	}
 
-	emit bridgeChanged();
+	return false;
 }
 
 QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QWeakPointer<RealTerminal> &real_terminal) const
