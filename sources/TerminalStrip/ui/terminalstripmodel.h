@@ -124,7 +124,7 @@ class TerminalStripModel : public QAbstractTableModel
 		modelRealTerminalData realDataAtIndex(int index) const;
 		QPixmap bridgePixmapFor(const QModelIndex &index) const;
 
-		static modelRealTerminalData modelRealData(const RealTerminalData &data);
+		static modelRealTerminalData modelRealData(const QWeakPointer<RealTerminal> &real_terminal);
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;

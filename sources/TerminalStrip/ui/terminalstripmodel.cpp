@@ -487,11 +487,11 @@ void TerminalStripModel::fillPhysicalTerminalData()
 			mptd.pos_ = ptd.pos();
 			mptd.uuid_ = ptd.uuid();
 
-			for (const auto &rtd : ptd.realTerminalDatas())
+			for (const auto &real_t : ptd.realTerminals())
 			{
-				if (!rtd.isNull())
+				if (!real_t.isNull())
 				{
-					mptd.real_data.append(modelRealData(rtd));
+					mptd.real_data.append(modelRealData(real_t));
 				}
 			}
 
@@ -644,8 +644,15 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			auto bridge_ = m_terminal_strip->bridgeFor(mrtd.real_terminal);
 			if (bridge_)
 			{
-				auto previous_bridge = m_terminal_strip->previousTerminalInLevel(mrtd.real_terminal).bridge();
-				auto next_bridge = m_terminal_strip->nextTerminalInLevel(mrtd.real_terminal).bridge();
+				const auto previous_t = m_terminal_strip->previousTerminalInLevel(mrtd.real_terminal).toStrongRef();
+				QSharedPointer<TerminalStripBridge> previous_bridge;
+				if (previous_t)
+					previous_bridge = previous_t->bridge();
+
+				const auto next_t = m_terminal_strip->nextTerminalInLevel(mrtd.real_terminal).toStrongRef();
+				QSharedPointer<TerminalStripBridge> next_bridge;
+				if (next_t)
+					next_bridge = next_t->bridge();
 
 				auto color_ = bridge_->color_;
 				auto pixmap_ = m_bridges_pixmaps.value(color_);
@@ -747,23 +754,24 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 	return QPixmap();
 }
 
-modelRealTerminalData TerminalStripModel::modelRealData(const RealTerminalData &data)
+modelRealTerminalData TerminalStripModel::modelRealData(const QWeakPointer<RealTerminal> &real_terminal)
 {
 	modelRealTerminalData mrtd;
-	if (!data.isNull())
+	const auto real_t = real_terminal.toStrongRef();
+	if (!real_terminal.isNull())
 	{
-		mrtd.level_ = data.level();
-		mrtd.label_ = data.label();
-		mrtd.Xref_ = data.Xref();
-		mrtd.cable_ = data.cable();
-		mrtd.cable_wire = data.cableWire();
-		mrtd.conductor_ = data.conductor();
-		mrtd.led_ = data.isLed();
-		mrtd.type_ = data.type();
-		mrtd.function_ = data.function();
-		mrtd.element_ = data.element();
-		mrtd.real_terminal = data.realTerminal();
-		mrtd.bridged_ = data.isBridged();
+		mrtd.level_ = real_t->level();
+		mrtd.label_ = real_t->label();
+		mrtd.Xref_ = real_t->Xref();
+		mrtd.cable_ = real_t->cable();
+		mrtd.cable_wire = real_t->cableWire();
+		mrtd.conductor_ = real_t->conductor();
+		mrtd.led_ = real_t->isLed();
+		mrtd.type_ = real_t->type();
+		mrtd.function_ = real_t->function();
+		mrtd.element_ = real_t->element();
+		mrtd.real_terminal = real_terminal;
+		mrtd.bridged_ = real_t->isBridged();
 	}
 
 	return mrtd;

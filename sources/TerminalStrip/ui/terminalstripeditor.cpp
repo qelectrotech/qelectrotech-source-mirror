@@ -234,13 +234,13 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		auto ptd = terminal_strip->physicalTerminalData(i);
 		if (ptd.realTerminalCount())
 		{
-			const auto real_t = ptd.realTerminalDatas().at(0);
-			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t.label()), TerminalStripTreeWidget::Terminal);
-			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t.elementUuid());
+			const auto real_t = ptd.realTerminals().at(0).toStrongRef();
+			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t->label()), TerminalStripTreeWidget::Terminal);
+			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t->elementUuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 
-			if (real_t.element()) {
-				m_uuid_terminal_H.insert(real_t.elementUuid(), qgraphicsitem_cast<TerminalElement *>(real_t.element()));
+			if (real_t->element()) {
+				m_uuid_terminal_H.insert(real_t->elementUuid(), qgraphicsitem_cast<TerminalElement *>(real_t->element()));
 			}
 		}
 	}
@@ -644,7 +644,7 @@ void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button
 
 						if (element->elementData() != current_data)
 							m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
-						if (data_.level_ != m_current_strip->realTerminalDataFor(data_.real_terminal).level())
+						if (data_.level_ != data_.real_terminal.toStrongRef()->level())
 							m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
 					}
 				}

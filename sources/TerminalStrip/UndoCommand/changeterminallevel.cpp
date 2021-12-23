@@ -25,7 +25,7 @@ ChangeTerminalLevel::ChangeTerminalLevel(TerminalStrip *strip,
 	m_strip(strip),
 	m_real_terminal(real_terminal),
 	m_new_level(level),
-	m_old_level(m_strip->realTerminalDataFor(real_terminal).level())
+	m_old_level(real_terminal.toStrongRef()->level())
 {}
 
 void ChangeTerminalLevel::undo()

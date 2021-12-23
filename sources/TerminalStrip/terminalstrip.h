@@ -40,18 +40,32 @@ struct TerminalStripBridge
 		QUuid uuid_ = QUuid::createUuid();
 };
 
-class RealTerminalData
+/**
+ * @brief The RealTerminal class
+ * Represent a real terminal.
+ * A real terminal can be a drawed terminal in a folio
+ * or a terminal set by user but not present
+ * on any folio (for example a reserved terminal).
+ *
+ * When create a new instance of RealTerminal you must
+ * call sharedRef() and only use the returned QSharedPointer
+ * instead of the raw pointer
+ */
+class RealTerminal
 {
 		friend class TerminalStrip;
-		friend class PhysicalTerminalData;
+		friend class PhysicalTerminal;
+
 	private:
-		RealTerminalData(QSharedPointer<RealTerminal> real_terminal);
-		RealTerminalData(QWeakPointer<RealTerminal> real_terminal);
+		RealTerminal(TerminalStrip *strip, Element *element = nullptr);
+		QSharedPointer<RealTerminal> sharedRef();
+		QWeakPointer<RealTerminal> weakRef();
+
+		bool fromXml(QDomElement xml_element, const QVector<TerminalElement *> &terminal_vector);
+		QDomElement toXml(QDomDocument &parent_document) const;
 
 	public:
-		RealTerminalData() {}
-
-		bool isNull() const;
+		TerminalStrip *parentStrip() const;
 		int level() const;
 		QString label() const;
 		QString Xref() const;
@@ -66,14 +80,19 @@ class RealTerminalData
 		bool isElement() const;
 		bool isBridged() const;
 
+		QSharedPointer<TerminalStripBridge> bridge() const;
+
 		Element* element() const;
 		QUuid elementUuid() const;
+		QUuid uuid() const;
 
-		QSharedPointer<TerminalStripBridge> bridge() const;
-		QWeakPointer<RealTerminal> realTerminal() const;
+		static QString xmlTagName();
 
-	private:
-		QWeakPointer<RealTerminal> m_real_terminal;
+	private :
+		QPointer<Element> m_element;
+		QPointer<TerminalStrip> m_parent_terminal_strip;
+		QUuid m_uuid = QUuid::createUuid();
+		QWeakPointer<RealTerminal> m_this_weak;
 };
 
 /**
@@ -95,7 +114,7 @@ class PhysicalTerminalData
 		int pos() const;
 		QUuid uuid() const;
 		int realTerminalCount() const;
-		QVector<RealTerminalData> realTerminalDatas() const;
+		QVector<QWeakPointer<RealTerminal>> realTerminals() const;
 		QWeakPointer<PhysicalTerminal> physicalTerminal() const;
 
 	private:
@@ -177,11 +196,10 @@ class TerminalStrip : public QObject
 		bool canUnBridge(const QVector <QWeakPointer<RealTerminal>> &real_terminals) const;
 		QSharedPointer<TerminalStripBridge> bridgeFor(const QWeakPointer<RealTerminal> &real_terminal) const;
 
-		RealTerminalData previousTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;
-		RealTerminalData nextTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;
-		RealTerminalData previousRealTerminal(const QWeakPointer<RealTerminal> &real_terminal) const;
-		RealTerminalData nextRealTerminal(const QWeakPointer<RealTerminal> &real_terminal) const;
-		RealTerminalData realTerminalDataFor(const QWeakPointer<RealTerminal> &real_terminal) const;
+		QWeakPointer<RealTerminal> previousTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;
+		QWeakPointer<RealTerminal> nextTerminalInLevel(const QWeakPointer<RealTerminal> &real_terminal) const;
+		QWeakPointer<RealTerminal> previousRealTerminal(const QWeakPointer<RealTerminal> &real_terminal) const;
+		QWeakPointer<RealTerminal> nextRealTerminal(const QWeakPointer<RealTerminal> &real_terminal) const;
 
 		QVector<QPointer<Element>> terminalElement() const;
 
