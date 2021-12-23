@@ -23,7 +23,7 @@
 #include <QVector>
 
 class TerminalStrip;
-class PhysicalTerminalData;
+class PhysicalTerminal;
 
 /**
  * @brief The SortTerminalStripCommand class
@@ -43,8 +43,8 @@ class SortTerminalStripCommand : public QUndoCommand
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		QVector<PhysicalTerminalData> m_old_order,
-									  m_new_order;
+		QVector<QSharedPointer<PhysicalTerminal>> m_old_order,
+												  m_new_order;
 };
 
 #endif // SORTTERMINALSTRIPCOMMAND_H

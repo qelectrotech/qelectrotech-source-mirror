@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "groupterminalscommand.h"
+#include "../../utils/qetutils.h"
 
 /**
  * @brief GroupTerminalsCommand::GroupTerminalsCommand
@@ -24,8 +25,8 @@
  * @param to_group : Terminals to group
  */
 GroupTerminalsCommand::GroupTerminalsCommand(TerminalStrip *strip,
-											 const PhysicalTerminalData &receiver_,
-											 const QVector<QWeakPointer<RealTerminal>> &to_group,
+											 const QSharedPointer<PhysicalTerminal> &receiver_,
+											 const QVector<QSharedPointer<RealTerminal>> &to_group,
 											 QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_terminal_strip(strip),
@@ -37,18 +38,18 @@ GroupTerminalsCommand::GroupTerminalsCommand(TerminalStrip *strip,
 
 void GroupTerminalsCommand::undo() {
 	if (m_terminal_strip) {
-		m_terminal_strip->unGroupTerminals(m_to_group);
+		m_terminal_strip->unGroupTerminals(QETUtils::sharedVectorToWeak(m_to_group));
 	}
 }
 
 void GroupTerminalsCommand::redo() {
 	if (m_terminal_strip) {
-		m_terminal_strip->groupTerminals(m_receiver, m_to_group);
+		m_terminal_strip->groupTerminals(m_receiver, QETUtils::sharedVectorToWeak(m_to_group));
 	}
 }
 
 UnGroupTerminalsCommand::UnGroupTerminalsCommand(TerminalStrip *strip,
-												 const QVector<QWeakPointer<RealTerminal>> &to_ungroup,
+												 const QVector<QSharedPointer<RealTerminal>> &to_ungroup,
 												 QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_terminal_strip(strip)
@@ -62,7 +63,7 @@ void UnGroupTerminalsCommand::undo()
 	if (m_terminal_strip)
 	{
 		for (const auto &key : m_physical_real_H.keys()) {
-			m_terminal_strip->groupTerminals(key, m_physical_real_H.value(key));
+			m_terminal_strip->groupTerminals(key, QETUtils::sharedVectorToWeak(m_physical_real_H.value(key)));
 		}
 	}
 }
@@ -72,24 +73,26 @@ void UnGroupTerminalsCommand::redo()
 	if (m_terminal_strip)
 	{
 		for (const auto &value : qAsConst(m_physical_real_H)) {
-			m_terminal_strip->unGroupTerminals(value);
+			m_terminal_strip->unGroupTerminals(QETUtils::sharedVectorToWeak(value));
 		}
 	}
 }
 
-void UnGroupTerminalsCommand::setUp(const QVector<QWeakPointer<RealTerminal>> &to_ungroup)
+void UnGroupTerminalsCommand::setUp(const QVector<QSharedPointer<RealTerminal>> &to_ungroup)
 {
 	for (const auto &rt_ : to_ungroup)
 	{
-		auto ptd_ = m_terminal_strip->physicalTerminalData(rt_);
+		auto phy_t = m_terminal_strip->physicalTerminal(rt_.toWeakRef());
+		if (phy_t)
+		{
+				//Physical have only one real terminal, no need to ungroup it
+			if (phy_t.toStrongRef()->realTerminalCount() <= 1) {
+				continue;
+			}
 
-			//Physical have only one real terminal, no need to ungroup it
-		if (ptd_.realTerminalCount() <= 1) {
-			continue;
+			auto vector_ = m_physical_real_H.value(phy_t);
+			vector_.append(rt_);
+			m_physical_real_H.insert(phy_t, vector_);
 		}
-
-		auto vector_ = m_physical_real_H.value(ptd_);
-		vector_.append(rt_);
-		m_physical_real_H.insert(ptd_, vector_);
 	}
 }

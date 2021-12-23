@@ -95,41 +95,41 @@ class RealTerminal
 		QWeakPointer<RealTerminal> m_this_weak;
 };
 
-/**
- * @brief The PhysicalTerminalData
- * Conveniant struct to quickly get some values
- * of a PhysicalTerminal
- */
-class PhysicalTerminalData
+class PhysicalTerminal
 {
 		friend class TerminalStrip;
 
 	private:
-		PhysicalTerminalData(const TerminalStrip *strip, QSharedPointer<PhysicalTerminal> terminal);
+		PhysicalTerminal(TerminalStrip *parent_strip, QVector<QSharedPointer<RealTerminal>> terminals);
+		QSharedPointer<PhysicalTerminal> sharedRef();
+		QWeakPointer<PhysicalTerminal> weakRef();
+
+		QDomElement toXml(QDomDocument &parent_document) const;
+
+		void setTerminals(const QVector<QSharedPointer<RealTerminal>> &terminals);
+		void addTerminal(const QSharedPointer<RealTerminal> &terminal);
+		bool removeTerminal(const QSharedPointer<RealTerminal> &terminal);
+
+		bool setLevelOf(const QSharedPointer<RealTerminal> &terminal, int level);
 
 	public:
-		PhysicalTerminalData(){}
+		PhysicalTerminal(){}
 
-		bool isNull() const;
-		int pos() const;
-		QUuid uuid() const;
-		int realTerminalCount() const;
+		int levelCount() const;
+		int levelOf(const QWeakPointer<RealTerminal> &terminal) const;
 		QVector<QWeakPointer<RealTerminal>> realTerminals() const;
-		QWeakPointer<PhysicalTerminal> physicalTerminal() const;
+		QUuid uuid() const;
+		int pos() const;
+		int realTerminalCount() const;
+
+		static QString xmlTagName();
 
 	private:
-		QPointer<const TerminalStrip> m_strip;
-		QWeakPointer<PhysicalTerminal> m_physical_terminal;
+		QPointer<TerminalStrip> m_parent_terminal_strip;
+		QVector<QSharedPointer<RealTerminal>> m_real_terminal;
+		QUuid m_uuid = QUuid::createUuid();
+		QWeakPointer<PhysicalTerminal> m_this_weak;
 };
-
-//Code to use PhysicalTerminalData as key for QHash
-inline bool operator == (const PhysicalTerminalData &phy_1, const PhysicalTerminalData &phy_2) {
-	return phy_1.uuid() == phy_2.uuid();
-}
-
-inline uint qHash(const PhysicalTerminalData &key, uint seed) {
-	return qHash(key.uuid(), seed);
-}
 
 /**
  * @brief The TerminalStrip class
@@ -180,12 +180,12 @@ class TerminalStrip : public QObject
 
 		int pos(const QWeakPointer<PhysicalTerminal> &terminal) const;
 		int physicalTerminalCount() const;
-		PhysicalTerminalData physicalTerminalData(int index) const;
-		PhysicalTerminalData physicalTerminalData (const QWeakPointer<RealTerminal> &real_terminal) const;
-		QVector<PhysicalTerminalData> physicalTerminalData() const;
+		QWeakPointer<PhysicalTerminal> physicalTerminal(int index) const;
+		QWeakPointer<PhysicalTerminal> physicalTerminal (const QWeakPointer<RealTerminal> &real_terminal) const;
+		QVector<QWeakPointer<PhysicalTerminal>> physicalTerminal() const;
 
-		bool setOrderTo(const QVector<PhysicalTerminalData> &sorted_vector);
-		bool groupTerminals(const PhysicalTerminalData &receiver_terminal, const QVector<QWeakPointer<RealTerminal>> &added_terminals);
+		bool setOrderTo(const QVector<QWeakPointer<PhysicalTerminal>> &sorted_vector);
+		bool groupTerminals(const QWeakPointer<PhysicalTerminal> &receiver_terminal, const QVector<QWeakPointer<RealTerminal>> &added_terminals);
 		void unGroupTerminals(const QVector<QWeakPointer<RealTerminal>> &terminals_to_ungroup);
 		bool setLevel(const QWeakPointer<RealTerminal> &real_terminal, int level);
 

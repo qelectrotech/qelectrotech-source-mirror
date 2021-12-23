@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -19,7 +19,9 @@
 #define QETUTILS_H
 
 #include <QMargins>
+#include <QWeakPointer>
 
+class RealTerminal;
 /**
 	Provide some small utils function
 */
@@ -27,6 +29,27 @@ namespace QETUtils
 {
 	QString marginsToString(const QMargins &margins);
 	QMargins marginsFromString(const QString &string);
+
+	template <typename T>
+	QVector<QWeakPointer<T>> sharedVectorToWeak(const QVector<QSharedPointer<T>> &vector)
+	{
+		QVector<QWeakPointer<T>> return_vector;
+		for (const auto shared : vector) {
+			return_vector.append(shared.toWeakRef());
+		}
+		return return_vector;
+	}
+
+
+	template <typename T>
+	QVector<QSharedPointer<T>> weakVectorToShared(const QVector<QWeakPointer<T>> &vector)
+	{
+		QVector<QSharedPointer<T>> return_vector;
+		for (const auto weak : vector) {
+			return_vector.append(weak.toStrongRef());
+		}
+		return return_vector;
+	}
 }
 
 #endif // QETUTILS_H

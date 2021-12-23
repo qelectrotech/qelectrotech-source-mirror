@@ -34,6 +34,7 @@
 #include "../UndoCommand/groupterminalscommand.h"
 #include "../UndoCommand/changeterminallevel.h"
 #include "../UndoCommand/bridgeterminalscommand.h"
+#include "../../utils/qetutils.h"
 
 #include <QTreeWidgetItem>
 
@@ -231,10 +232,10 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		//Add child terminal of the strip
 	for (auto i=0 ; i<terminal_strip->physicalTerminalCount() ; ++i)
 	{
-		auto ptd = terminal_strip->physicalTerminalData(i);
-		if (ptd.realTerminalCount())
+		auto phy_t = terminal_strip->physicalTerminal(i).toStrongRef();
+		if (phy_t->realTerminalCount())
 		{
-			const auto real_t = ptd.realTerminals().at(0).toStrongRef();
+			const auto real_t = phy_t->realTerminals().at(0).toStrongRef();
 			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t->label()), TerminalStripTreeWidget::Terminal);
 			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t->elementUuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
@@ -352,7 +353,7 @@ void TerminalStripEditor::spanMultiLevelTerminals()
 	auto current_row = 0;
 	for (auto i = 0 ; i < m_current_strip->physicalTerminalCount() ; ++i)
 	{
-		const auto level_count = m_current_strip->physicalTerminalData(i).realTerminalCount();
+		const auto level_count = m_current_strip->physicalTerminal(i).toStrongRef()->realTerminalCount();
 		if (level_count > 1) {
 			ui->m_table_widget->setSpan(current_row, 0, level_count, 1);
 		}
@@ -677,13 +678,15 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 		auto mrtd_vector = m_model->modelRealTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
 		if (mrtd_vector.size() >= 2)
 		{
-			auto receiver_ = m_current_strip->physicalTerminalData(mrtd_vector.takeFirst().real_terminal);
+			auto receiver_ = m_current_strip->physicalTerminal(mrtd_vector.takeFirst().real_terminal);
 
 			QVector<QWeakPointer<RealTerminal>> vector_;
 			for (const auto & mrtd : mrtd_vector) {
 				vector_.append(mrtd.real_terminal);
 			}
-			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip, receiver_, vector_));
+			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip,
+																   receiver_,
+																   QETUtils::weakVectorToShared(vector_)));
 		}
 	}
 }
@@ -701,7 +704,8 @@ void TerminalStripEditor::on_m_ungroup_pb_clicked()
 		for (const auto &mrtd : mrtd_vector) {
 			vector_.append(mrtd.real_terminal);
 		}
-		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip, vector_));
+		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip,
+																 QETUtils::weakVectorToShared(vector_)));
 	}
 }
 
