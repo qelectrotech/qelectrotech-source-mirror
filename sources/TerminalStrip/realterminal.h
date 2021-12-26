@@ -26,7 +26,7 @@ class TerminalStrip;
 class Element;
 class TerminalElement;
 class PhysicalTerminal;
-struct TerminalStripBridge;
+class TerminalStripBridge;
 
 /**
  * @brief The RealTerminal class

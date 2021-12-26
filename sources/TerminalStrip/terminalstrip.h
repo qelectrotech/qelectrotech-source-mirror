@@ -32,13 +32,7 @@ class PhysicalTerminal;
 class TerminalStripIndex;
 class TerminalElement;
 class TerminalStrip;
-
-struct TerminalStripBridge
-{
-		QVector<QSharedPointer<RealTerminal>> real_terminals;
-		QColor color_ = Qt::darkGray;
-		QUuid uuid_ = QUuid::createUuid();
-};
+class TerminalStripBridge;
 
 /**
  * @brief The TerminalStrip class
@@ -55,13 +49,11 @@ class TerminalStrip : public QObject
 	Q_OBJECT
 
 	public:
-		static QVector<QColor> bridgeColor() {return QVector<QColor>{Qt::red, Qt::blue, Qt::white, Qt::darkGray, Qt::black};}
-
 	signals:
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
 		void bridgeChanged();
-
 	public:
+
 		TerminalStrip(QETProject *project);
 
 		TerminalStrip(const QString &installation,

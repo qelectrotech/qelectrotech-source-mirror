@@ -20,6 +20,7 @@
 #include "../../qetgraphicsitem/element.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
+#include "../terminalstripbridge.h"
 #include <QDebug>
 #include <QBrush>
 #include <QVector>
@@ -416,7 +417,7 @@ modelRealTerminalData TerminalStripModel::modelRealTerminalDataForIndex(const QM
 void TerminalStripModel::buildBridgePixmap(const QSize &pixmap_size)
 {
 	m_bridges_pixmaps.clear();
-	for (auto color_ : TerminalStrip::bridgeColor())
+	for (auto color_ : TerminalStripBridge::bridgeColor())
 	{
 		QPen pen;
 		pen.setColor(color_);
@@ -656,7 +657,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 				if (next_t)
 					next_bridge = next_t->bridge();
 
-				auto color_ = bridge_->color_;
+				auto color_ = bridge_->color();
 				auto pixmap_ = m_bridges_pixmaps.value(color_);
 
 				//Current real terminal between two bridged terminal
@@ -749,7 +750,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 	if (previous_bridge == m_terminal_strip->isBridged(next_data.real_terminal))
 	{
 		if (previous_bridge) {
-			return m_bridges_pixmaps.value(previous_bridge->color_).none_;
+			return m_bridges_pixmaps.value(previous_bridge->color()).none_;
 		}
 	}
 

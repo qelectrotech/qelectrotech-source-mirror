@@ -22,9 +22,9 @@
 #include "../elementprovider.h"
 #include "../qetxml.h"
 #include "../autoNum/assignvariables.h"
-#include "../../utils/qetutils.h"
 #include "physicalterminal.h"
 #include "realterminal.h"
+#include "terminalstripbridge.h"
 
 using shared_real_terminal     = QSharedPointer<RealTerminal>;
 using shared_physical_terminal = QSharedPointer<PhysicalTerminal>;
@@ -480,29 +480,20 @@ bool TerminalStrip::setBridge(const QVector<QSharedPointer<RealTerminal>> &real_
 	if (!isBridgeable(real_terminals)) {
 		return false;
 	}
-	QVector<QSharedPointer<RealTerminal>> real_terminals_vector;
 
-	for (const auto &real_terminal : real_terminals)
+	auto bridge = bridgeFor(real_terminals);
+	if (bridge.isNull())
 	{
-		if (real_terminal) {
-			real_terminals_vector.append(real_terminal);
-		}
-	}
-
-	auto bridge = bridgeFor(real_terminals_vector);
-	if (bridge.isNull()) {
-		bridge = QSharedPointer<TerminalStripBridge>::create();
+		bridge = QSharedPointer<TerminalStripBridge>(new TerminalStripBridge(this));
 		m_bridge.append(bridge);
 	}
 
-	for (const auto &real_t : qAsConst(real_terminals_vector))
+	if (bridge->addTerminals(real_terminals))
 	{
-		if (!bridge->real_terminals.contains(real_t))
-			bridge->real_terminals.append(real_t);
+		emit bridgeChanged();;
+		return true;
 	}
-
-	emit bridgeChanged();
-	return true;
+	return false;
 }
 
 /**
@@ -520,18 +511,8 @@ bool TerminalStrip::setBridge(const QSharedPointer<TerminalStripBridge> &bridge,
 			return false;
 		}
 
-		bool b_ = false;
-		for (const auto &real_t : real_terminals)
+		if (bridge->addTerminals(real_terminals))
 		{
-			if (real_t &&
-				!bridge->real_terminals.contains(real_t))
-			{
-				bridge->real_terminals.append(real_t);
-				b_ = true;
-			}
-		}
-
-		if (b_) {
 			emit bridgeChanged();
 			return true;
 		}
@@ -551,10 +532,7 @@ void TerminalStrip::unBridge(const QVector<QSharedPointer<RealTerminal>> &real_t
 	if (canUnBridge(real_terminals))
 	{
 		auto bridge_ = isBridged(real_terminals.first());
-		for (const auto &real_t : qAsConst(real_terminals)) {
-			bridge_->real_terminals.removeOne(real_t);
-		}
-
+		bridge_->removeTerminals(real_terminals);
 		emit bridgeChanged();
 	}
 }
@@ -564,7 +542,7 @@ void TerminalStrip::unBridge(const QVector<QSharedPointer<RealTerminal>> &real_t
  * @param m_real_terminals
  * @return True if all terminals of @a real_terminals can be unbridged.
  * For this method return True, all terminals must be bridged together,
- * be consecutive and in an one or the both extremities of the bridge.
+ * be consecutive and in one or the both extremities of the bridge.
  */
 bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &real_terminals) const
 {
@@ -634,7 +612,7 @@ QSharedPointer<TerminalStripBridge> TerminalStrip::isBridged(const QSharedPointe
 	if (real_terminal)
 	{
 		for (const auto &bridge_ : qAsConst(m_bridge)) {
-			if (bridge_->real_terminals.contains(real_terminal))
+			if (bridge_->realTerminals().contains(real_terminal))
 				return bridge_;
 		}
 	}

@@ -37,6 +37,7 @@
 #include "../../utils/qetutils.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
+#include "../terminalstripbridge.h"
 
 #include <QTreeWidgetItem>
 
@@ -63,7 +64,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 #endif
 
 		//Setup the bridge color
-	ui->m_bridge_color_cb->setColors(TerminalStrip::bridgeColor().toList());
+	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
 
 	setUpUndoConnections();
 
