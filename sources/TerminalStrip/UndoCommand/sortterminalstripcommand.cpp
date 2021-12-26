@@ -19,7 +19,6 @@
 #include "../terminalstrip.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
-#include "../../utils/qetutils.h"
 
 SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCommand *parent) :
 	QUndoCommand(parent),

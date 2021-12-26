@@ -16,7 +16,6 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "groupterminalscommand.h"
-#include "../../utils/qetutils.h"
 #include "../physicalterminal.h"
 
 /**

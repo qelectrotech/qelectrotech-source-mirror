@@ -34,7 +34,6 @@
 #include "../UndoCommand/groupterminalscommand.h"
 #include "../UndoCommand/changeterminallevel.h"
 #include "../UndoCommand/bridgeterminalscommand.h"
-#include "../../utils/qetutils.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
 #include "../terminalstripbridge.h"
@@ -683,13 +682,13 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 		{
 			auto receiver_ = m_current_strip->physicalTerminal(mrtd_vector.takeFirst().real_terminal);
 
-			QVector<QWeakPointer<RealTerminal>> vector_;
+			QVector<QSharedPointer<RealTerminal>> vector_;
 			for (const auto & mrtd : mrtd_vector) {
-				vector_.append(mrtd.real_terminal);
+				vector_.append(mrtd.real_terminal.toStrongRef());
 			}
 			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip,
 																   receiver_,
-																   QETUtils::weakVectorToShared(vector_)));
+																   vector_));
 		}
 	}
 }
@@ -703,12 +702,11 @@ void TerminalStripEditor::on_m_ungroup_pb_clicked()
 	{
 		const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
 
-		QVector<QWeakPointer<RealTerminal>> vector_;
+		QVector<QSharedPointer<RealTerminal>> vector_;
 		for (const auto &mrtd : mrtd_vector) {
-			vector_.append(mrtd.real_terminal);
+			vector_.append(mrtd.real_terminal.toStrongRef());
 		}
-		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip,
-																 QETUtils::weakVectorToShared(vector_)));
+		m_project->undoStack()->push(new UnGroupTerminalsCommand(m_current_strip,vector_));
 	}
 }
 
