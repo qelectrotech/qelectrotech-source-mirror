@@ -18,7 +18,7 @@
 #include "bridgeterminalscommand.h"
 
 BridgeTerminalsCommand::BridgeTerminalsCommand(TerminalStrip *strip,
-											   QVector<QWeakPointer<RealTerminal>> real_terminal,
+											   QVector<QSharedPointer<RealTerminal>> real_terminal,
 											   QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_strip(strip),
@@ -42,7 +42,7 @@ void BridgeTerminalsCommand::redo()
 }
 
 UnBridgeTerminalsCommand::UnBridgeTerminalsCommand(TerminalStrip *strip,
-												   QVector<QWeakPointer<RealTerminal>> real_terminal,
+												   QVector<QSharedPointer<RealTerminal>> real_terminal,
 												   QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_strip(strip)
@@ -52,14 +52,14 @@ UnBridgeTerminalsCommand::UnBridgeTerminalsCommand(TerminalStrip *strip,
 	if (strip->canUnBridge(real_terminal))
 	{
 		m_terminals = real_terminal;
-		m_bridge = strip->bridgeFor(real_terminal.first());
+		m_bridge = strip->isBridged(real_terminal.first());
 	}
 }
 
 void UnBridgeTerminalsCommand::undo()
 {
 	if (m_strip && m_bridge) {
-		m_strip->setBridge(m_bridge.toStrongRef(), m_terminals);
+		m_strip->setBridge(m_bridge, m_terminals);
 	}
 }
 

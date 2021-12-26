@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "changeterminallevel.h"
+#include "../realterminal.h"
 
 ChangeTerminalLevel::ChangeTerminalLevel(TerminalStrip *strip,
 										 const QWeakPointer<RealTerminal> &real_terminal,

@@ -35,6 +35,8 @@
 #include "../UndoCommand/changeterminallevel.h"
 #include "../UndoCommand/bridgeterminalscommand.h"
 #include "../../utils/qetutils.h"
+#include "../physicalterminal.h"
+#include "../realterminal.h"
 
 #include <QTreeWidgetItem>
 
@@ -232,10 +234,10 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		//Add child terminal of the strip
 	for (auto i=0 ; i<terminal_strip->physicalTerminalCount() ; ++i)
 	{
-		auto phy_t = terminal_strip->physicalTerminal(i).toStrongRef();
+		auto phy_t = terminal_strip->physicalTerminal(i);
 		if (phy_t->realTerminalCount())
 		{
-			const auto real_t = phy_t->realTerminals().at(0).toStrongRef();
+			const auto real_t = phy_t->realTerminals().at(0);
 			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t->label()), TerminalStripTreeWidget::Terminal);
 			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t->elementUuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
@@ -353,7 +355,7 @@ void TerminalStripEditor::spanMultiLevelTerminals()
 	auto current_row = 0;
 	for (auto i = 0 ; i < m_current_strip->physicalTerminalCount() ; ++i)
 	{
-		const auto level_count = m_current_strip->physicalTerminal(i).toStrongRef()->realTerminalCount();
+		const auto level_count = m_current_strip->physicalTerminal(i)->realTerminalCount();
 		if (level_count > 1) {
 			ui->m_table_widget->setSpan(current_row, 0, level_count, 1);
 		}
@@ -434,13 +436,13 @@ void TerminalStripEditor::selectionChanged()
 	{
 			//Select only terminals of corresponding level cell selection
 		QVector<modelRealTerminalData> model_real_terminal_level_vector;
-		QVector<QWeakPointer<RealTerminal>> real_terminal_in_level_vector;
+		QVector<QSharedPointer<RealTerminal>> real_terminal_in_level_vector;
 		for (const auto &mrtd : model_real_terminal_vector)
 		{
 			if (mrtd.level_ == level_)
 			{
 				model_real_terminal_level_vector.append(mrtd);
-				real_terminal_in_level_vector.append(mrtd.real_terminal);
+				real_terminal_in_level_vector.append(mrtd.real_terminal.toStrongRef());
 			}
 		}
 		enable_bridge = m_current_strip->isBridgeable(real_terminal_in_level_vector);
@@ -829,11 +831,11 @@ void TerminalStripEditor::on_m_bridge_terminals_pb_clicked()
 			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
 			const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(index_list);
 
-			QVector <QWeakPointer<RealTerminal>> match_vector;
+			QVector <QSharedPointer<RealTerminal>> match_vector;
 			for (const auto &mrtd : mrtd_vector)
 			{
 				if (mrtd.level_ == level_) {
-					match_vector.append(mrtd.real_terminal);
+					match_vector.append(mrtd.real_terminal.toStrongRef());
 				}
 			}
 
@@ -862,12 +864,12 @@ void TerminalStripEditor::on_m_unbridge_terminals_pb_clicked()
 
 			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
 			const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(index_list);
-			QVector<QWeakPointer<RealTerminal>> match_vector;
+			QVector<QSharedPointer<RealTerminal>> match_vector;
 			for (const auto &mrtd : mrtd_vector)
 			{
 				if (mrtd.level_ == level_
 					&& mrtd.bridged_) {
-					match_vector.append(mrtd.real_terminal);
+					match_vector.append(mrtd.real_terminal.toStrongRef());
 				}
 			}
 			m_project->undoStack()->push(new UnBridgeTerminalsCommand(m_current_strip, match_vector));

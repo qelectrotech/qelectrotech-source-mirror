@@ -18,6 +18,8 @@
 #include "terminalstripmodel.h"
 #include "../terminalstrip.h"
 #include "../../qetgraphicsitem/element.h"
+#include "../physicalterminal.h"
+#include "../realterminal.h"
 #include <QDebug>
 #include <QBrush>
 #include <QVector>
@@ -481,9 +483,8 @@ void TerminalStripModel::fillPhysicalTerminalData()
 		//Get all physical terminal
 	if (m_terminal_strip)
 	{
-		for (const auto &t_ : m_terminal_strip->physicalTerminal())
+		for (const auto &phy_t : m_terminal_strip->physicalTerminal())
 		{
-			const auto phy_t = t_.toStrongRef();
 			modelPhysicalTerminalData mptd;
 			mptd.pos_ = phy_t->pos();
 			mptd.uuid_ = phy_t->uuid();
@@ -642,15 +643,15 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 	{
 		if (mrtd.bridged_)
 		{
-			auto bridge_ = m_terminal_strip->bridgeFor(mrtd.real_terminal);
+			auto bridge_ = m_terminal_strip->isBridged(mrtd.real_terminal);
 			if (bridge_)
 			{
-				const auto previous_t = m_terminal_strip->previousTerminalInLevel(mrtd.real_terminal).toStrongRef();
+				const auto previous_t = m_terminal_strip->previousTerminalInLevel(mrtd.real_terminal);
 				QSharedPointer<TerminalStripBridge> previous_bridge;
 				if (previous_t)
 					previous_bridge = previous_t->bridge();
 
-				const auto next_t = m_terminal_strip->nextTerminalInLevel(mrtd.real_terminal).toStrongRef();
+				const auto next_t = m_terminal_strip->nextTerminalInLevel(mrtd.real_terminal);
 				QSharedPointer<TerminalStripBridge> next_bridge;
 				if (next_t)
 					next_bridge = next_t->bridge();
@@ -674,7 +675,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		//Check if we need to draw a none bridge pixmap
 
 		//Check previous
-	auto phy_t = m_terminal_strip->physicalTerminal(mrtd.real_terminal).toStrongRef();
+	auto phy_t = m_terminal_strip->physicalTerminal(mrtd.real_terminal);
 	auto current_real_terminal = mrtd;
 	auto current_phy_uuid = phy_t->uuid();
 	bool already_jumped_to_previous = false;
@@ -688,7 +689,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal).toStrongRef()->uuid())
+		if (current_phy_uuid == m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -700,7 +701,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_previous = true;
-			current_phy_uuid = m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal).toStrongRef()->uuid();
+			current_phy_uuid = m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				previous_data = current_real_terminal;
@@ -723,7 +724,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal).toStrongRef()->uuid())
+		if (current_phy_uuid == m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -735,7 +736,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_next = true;
-			current_phy_uuid = m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal).toStrongRef()->uuid();
+			current_phy_uuid = m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				next_data = current_real_terminal;
@@ -744,8 +745,8 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 	} while(true);
 
-	auto previous_bridge = m_terminal_strip->bridgeFor(previous_data.real_terminal);
-	if (previous_bridge == m_terminal_strip->bridgeFor(next_data.real_terminal))
+	auto previous_bridge = m_terminal_strip->isBridged(previous_data.real_terminal);
+	if (previous_bridge == m_terminal_strip->isBridged(next_data.real_terminal))
 	{
 		if (previous_bridge) {
 			return m_bridges_pixmaps.value(previous_bridge->color_).none_;
