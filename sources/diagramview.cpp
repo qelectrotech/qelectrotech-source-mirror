@@ -1219,13 +1219,20 @@ QList<QAction *> DiagramView::contextMenuActions() const
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
-	if (QGraphicsItem *qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
+	if (auto qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
 	{
-		if (!qgi -> isSelected()) {
+		if (!qgi->isSelected()) {
 			m_diagram->clearSelection();
 		}
 
-		qgi->setSelected(true);
+			// At this step qgi can be deleted for exemple if qgi is a QetGraphicsHandlerItem.
+			// When we call clearSelection the parent item of the handler
+			// is deselected and so delete all handlers, in this case,
+			// qgi become a dangling pointer.
+			// we need to call again itemAt.
+		if (auto item_ = m_diagram->itemAt(mapToScene(e->pos()), transform())) {
+			item_->setSelected(true);
+		}
 	}
 
 	if (m_diagram->selectedItems().isEmpty())
