@@ -6,7 +6,7 @@
         <name lang="pl">Zasilacz trójfazowy</name>
         <name lang="fr">ABL8RPS24050</name>
         <name lang="en">Power supply AC/DC 3 poles</name>
-        <name lang="en">ABL8RPS24050</name>
+        <name lang="cs">ABL8RPS24050</name>
     </names>
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>
