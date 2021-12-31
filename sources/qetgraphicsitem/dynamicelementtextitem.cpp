@@ -26,6 +26,7 @@
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
+#include "../utils/qetutils.h"
 
 #include <QDomDocument>
 #include <QDomElement>
@@ -168,6 +169,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	{
 		QFont font;
 		font.fromString(dom_elmt.attribute("font"));
+		font = QETUtils::pointSizeToPixelSize(font); //In case of font was previously saved in point size
 		setFont(font);
 	}
 	else	//Retrocompatibility during the 0.7 dev because the font property was added lately. TODO remove this part in futur
@@ -175,6 +177,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		QFont font_(dom_elmt.attribute("font_family", font().family()),
 					dom_elmt.attribute("font_size", QString::number(9)).toInt());
 		font_.setStyleName(dom_elmt.attribute("dynamicitemstyle", font().styleName()));
+		font_ = QETUtils::pointSizeToPixelSize(font_);
 		setFont(font_);
 	}
 

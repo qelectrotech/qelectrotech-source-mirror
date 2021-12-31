@@ -222,7 +222,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 	size->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	QStandardItem *siza = new QStandardItem();
-	siza->setData(deti->font().pointSize(), Qt::EditRole);
+	siza->setData(deti->font().pixelSize(), Qt::EditRole);
 	siza->setData(DynamicElementTextModel::size, Qt::UserRole+1);
 	siza->setFlags(Qt::ItemIsSelectable
 		       | Qt::ItemIsEnabled
@@ -555,10 +555,10 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 	}
 	
 	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
-	if (fs != deti->font().pointSize())
+	if (fs != deti->font().pixelSize())
 	{
 		QFont font = deti->font();
-		font.setPointSize(fs);
+		font.setPixelSize(fs);
 		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "font", QVariant(deti->font()), QVariant(font), undo);
 		quc->setText(tr("Modifier la taille d'un texte d'élément"));
 	}
@@ -1493,7 +1493,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			QFont f(deti->font());
 			qsi->child(font_txt_row,1)->setData(f.family(), Qt::EditRole);
 			qsi->child(font_txt_row,1)->setData(f, Qt::UserRole+2);
-			qsi->child(size_txt_row,1)->setData(f.pointSize(), Qt::EditRole);
+			qsi->child(size_txt_row,1)->setData(f.pixelSize(), Qt::EditRole);
 			break;
 		}
 		case color:

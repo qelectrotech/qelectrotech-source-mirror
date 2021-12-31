@@ -21,6 +21,7 @@
 #include "../diagramcommands.h"
 #include "../qetapp.h"
 #include "../richtext/richtexteditor_p.h"
+#include "../utils/qetutils.h"
 
 /**
 	@brief DiagramTextItem::DiagramTextItem
@@ -157,6 +158,14 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const
 	return(local_movement_point - local_origin);
 }
 
+/**
+ * @brief DiagramTextItem::setFont
+ * Reimplemented from QGraphicsTextItem.
+ * This function ensure alignment is unchanged after @a font was set.
+ * If not set, the font size is set in pixel instead of point
+ * and emit fontChanged.
+ * @param font
+ */
 void DiagramTextItem::setFont(const QFont &font)
 {
 	if (this->font() == font) {
@@ -165,7 +174,8 @@ void DiagramTextItem::setFont(const QFont &font)
 	else
 	{
 		prepareAlignment();
-		QGraphicsTextItem::setFont(font);
+			//Make sure font size is in pixel
+		QGraphicsTextItem::setFont(QETUtils::pointSizeToPixelSize(font));
 		finishAlignment();
 		emit fontChanged(font);
 	}

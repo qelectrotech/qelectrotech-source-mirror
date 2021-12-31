@@ -18,6 +18,7 @@
 #include "qetutils.h"
 #include <QString>
 #include <QStringList>
+#include <QFontInfo>
 
 /**
 	@brief QETUtils::marginsToString
@@ -56,4 +57,38 @@ QMargins QETUtils::marginsFromString(const QString &string)
 	margins.setBottom(split.at(3).toInt());
 
 	return  margins;
+}
+
+/**
+ * @brief QETUtils::pointSizeToPixelSize
+ * @param font
+ * @return the same font with size set in pixel instead of point.
+ */
+QFont QETUtils::pointSizeToPixelSize(const QFont &font)
+{
+	if (font.pointSize())
+	{
+		QFont f = font;
+		QFontInfo fi(f);
+		f.setPixelSize(fi.pixelSize());
+		return f;
+	}
+	return font;
+}
+
+/**
+ * @brief QETUtils::pixelSizeToPointSize
+ * @param font
+ * @return the same font with size set in point instead of pixel.
+ */
+QFont QETUtils::pixelSizeToPointSize(const QFont &font)
+{
+	if (font.pixelSize())
+	{
+		QFont f = font;
+		QFontInfo fi(f);
+		f.setPointSizeF(fi.pointSizeF());
+		return f;
+	}
+	return font;
 }

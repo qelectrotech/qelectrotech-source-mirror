@@ -19,12 +19,16 @@
 #define QETUTILS_H
 
 #include <QMargins>
+#include <QFont>
 
 /**
 	Provide some small utils function
 */
 namespace QETUtils
 {
+	QFont pointSizeToPixelSize(const QFont &font);
+	QFont pixelSizeToPointSize(const QFont &font);
+
 	QString marginsToString(const QMargins &margins);
 	QMargins marginsFromString(const QString &string);
 }
