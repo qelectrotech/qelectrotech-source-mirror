@@ -37,6 +37,7 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 {
 	public:
 		QetGraphicsHandlerItem(qreal size = 10);
+		void setSize(qreal size);
 		QRectF boundingRect() const override;
 		
 		enum { Type = UserType + 1200};

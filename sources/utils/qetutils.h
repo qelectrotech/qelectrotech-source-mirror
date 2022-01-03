@@ -20,6 +20,8 @@
 
 #include <QMargins>
 
+class QGraphicsItem;
+
 /**
 	Provide some small utils function
 */
@@ -27,6 +29,7 @@ namespace QETUtils
 {
 	QString marginsToString(const QMargins &margins);
 	QMargins marginsFromString(const QString &string);
+	qreal graphicsHandlerSize(QGraphicsItem *item);
 }
 
 #endif // QETUTILS_H

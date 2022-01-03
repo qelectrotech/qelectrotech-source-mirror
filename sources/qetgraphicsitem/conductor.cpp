@@ -30,6 +30,7 @@
 #include "conductortextitem.h"
 #include "element.h"
 #include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "../utils/qetutils.h"
 
 #include <QMultiHash>
 #include <QtDebug>
@@ -860,7 +861,7 @@ void Conductor::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
 	{
-		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(handlerPoints()));
+		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(handlerPoints()), QETUtils::graphicsHandlerSize(this));
 
 		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{

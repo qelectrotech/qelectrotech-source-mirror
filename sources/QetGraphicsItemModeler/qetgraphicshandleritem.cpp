@@ -24,11 +24,16 @@
 	@brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
 	@param size : the size of the handler
 */
-QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
-    m_size(size)
+QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size)
 {
 	setFlag(QGraphicsItem::ItemIgnoresTransformations);
-	
+	setSize(size);
+}
+
+void QetGraphicsHandlerItem::setSize(qreal size)
+{
+	prepareGeometryChange();
+	m_size = size;
 	m_handler_rect.setRect(0-m_size/2, 0-m_size/2, m_size, m_size);
 	m_br.setRect(-1-m_size/2, -1-m_size/2, m_size+2, m_size+2);
 }
