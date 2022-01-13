@@ -1,17 +1,5 @@
 #!/bin/sh
 
-# check if _only_ the correct framework snap is connected
-framework_name=$(grep "name:" $SNAP/kf5/meta/snap.yaml | cut -d" " -f2)
-if [ "$framework_name" != "kde-frameworks-5-qt-5-15-3-core20" ]; then
-  downloads_dir=$(xdg-user-dir DOWNLOAD)
-  test ! -d "$downloads_dir" && mkdir -p "$downloads_dir"
-  instructions_file="snap.qelectrotech.update-instructions.html"
-  target="$downloads_dir/$instructions_file"
-  cp "$SNAP/update-instructions/$instructions_file" "$target"
-  xdg-open "$target"
-  exit 1
-fi
-
 # migrate .qet directory from SNAP_USER_DATA to SNAP_USER_COMMON
 from="$SNAP_USER_DATA/.qet"
 to="$SNAP_USER_COMMON/.qet"
