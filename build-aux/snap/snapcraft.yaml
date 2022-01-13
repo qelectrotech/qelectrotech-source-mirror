@@ -56,12 +56,6 @@ parts:
     organize:
       '*': bin/
 
-  update-instructions:
-    plugin: dump
-    source: build-aux/snap/local/update-instructions
-    organize: 
-      '*': update-instructions/
-
   qet-tb-generator:
     plugin: python
     source: https://github.com/raulroda/qet_tb_generator-plugin.git
@@ -82,7 +76,7 @@ parts:
       - rsync
     override-build: |
       rsync -a --ignore-existing /snap/kde-frameworks-5-qt-5-15-3-core20-sdk/current/ /
-      
+
   dxf-to-qet:
     after: [kde-sdk-setup]
     plugin: nil
@@ -101,16 +95,14 @@ parts:
     build-packages:
       - git
       - libsqlite3-dev
-    override-pull: |
-      snapcraftctl pull
+    override-build: |
       displayed_version=$(grep "displayedVersion" sources/qet.h | tr -d "\";" | cut -d" " -f5)
-      snap_version="${displayed_version}~$(git rev-parse --short=8 HEAD)"
+      snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       snapcraftctl set-version "$snap_version"
-    override-build: |
       qmake "$SNAPCRAFT_PART_SRC/qelectrotech.pro"
-      make -j$(nproc)
+      make -j${SNAPCRAFT_PARALLEL_BUILD_COUNT}
       make install INSTALL_ROOT="$SNAPCRAFT_PART_INSTALL"
     override-stage: |
       snapcraftctl stage
