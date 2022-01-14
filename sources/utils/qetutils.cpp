@@ -18,6 +18,9 @@
 #include "qetutils.h"
 #include <QString>
 #include <QStringList>
+#include <QGraphicsView>
+#include "../qetapp.h"
+#include "../qetdiagrameditor.h"
 
 /**
 	@brief QETUtils::marginsToString
@@ -56,4 +59,31 @@ QMargins QETUtils::marginsFromString(const QString &string)
 	margins.setBottom(split.at(3).toInt());
 
 	return  margins;
+}
+
+/**
+ * @brief QETUtils::graphicsHandlerSize
+ * @param item
+ * @return Return the handler size to use in the QGraphicsScene of @a item.
+ * If size can't be found, return 10 by default.
+ */
+qreal QETUtils::graphicsHandlerSize(QGraphicsItem *item)
+{
+	if (const auto scene_ = item->scene())
+	{
+		if (!scene_->views().isEmpty())
+		{
+			if (const auto editor_ = QETApp::instance()->diagramEditorAncestorOf(scene_->views().at(0)))
+			{
+				const auto variant_ = editor_->property("graphics_handler_size");
+					//If variant_ can't be converted to qreal, the returned qreal is 0.0
+					//it's sufficient for us to check if value is set or not.
+				if (const auto value_ =  variant_.toReal())
+					return value_;
+			}
+		}
+	}
+
+		//Default value
+	return 10;
 }

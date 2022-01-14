@@ -19,18 +19,25 @@
 #include <QPainter>
 #include <QDebug>
 #include <utility>
+#include <QPropertyAnimation>
 
 /**
 	@brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
 	@param size : the size of the handler
 */
-QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
-    m_size(size)
+QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size)
 {
+	setAcceptHoverEvents(true);
 	setFlag(QGraphicsItem::ItemIgnoresTransformations);
-	
-	m_handler_rect.setRect(0-m_size/2, 0-m_size/2, m_size, m_size);
-	m_br.setRect(-1-m_size/2, -1-m_size/2, m_size+2, m_size+2);
+	setSize(size);
+}
+
+void QetGraphicsHandlerItem::setSize(qreal size)
+{
+	prepareGeometryChange();
+	m_current_size = m_original_size = size;
+	m_handler_rect.setRect(0-m_current_size/2, 0-m_current_size/2, m_current_size, m_current_size);
+	m_br.setRect(-1-m_current_size/2, -1-m_current_size/2, m_current_size+2, m_current_size+2);
 }
 
 /**
@@ -77,6 +84,38 @@ void QetGraphicsHandlerItem::paint(QPainter *painter,
 	painter->setRenderHint(QPainter::Antialiasing, true);
 	painter->drawEllipse(m_handler_rect);
 	painter->restore();
+}
+
+void QetGraphicsHandlerItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+	Q_UNUSED(event);
+
+	auto animation_ = new QPropertyAnimation(this, "currentSize");
+	animation_->setStartValue(m_original_size);
+	animation_->setEndValue(m_original_size*1.5);
+	animation_->setDuration(200);
+	animation_->setEasingCurve(QEasingCurve::OutBack);
+	animation_->start(QAbstractAnimation::DeleteWhenStopped);
+}
+
+void QetGraphicsHandlerItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	Q_UNUSED(event);
+
+	auto animation_ = new QPropertyAnimation(this, "currentSize");
+	animation_->setStartValue(m_current_size);
+	animation_->setEndValue(m_original_size);
+	animation_->setDuration(200);
+	animation_->setEasingCurve(QEasingCurve::OutBack);
+	animation_->start(QAbstractAnimation::DeleteWhenStopped);
+}
+
+void QetGraphicsHandlerItem::setCurrentSize(qreal size)
+{
+	prepareGeometryChange();
+	m_current_size = size;
+	m_handler_rect.setRect(0-m_current_size/2, 0-m_current_size/2, m_current_size, m_current_size);
+	m_br.setRect(-1-m_current_size/2, -1-m_current_size/2, m_current_size+2, m_current_size+2);
 }
 
 /**

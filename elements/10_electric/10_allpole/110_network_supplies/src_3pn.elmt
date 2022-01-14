@@ -13,7 +13,7 @@
         <name lang="en">Three-pole source + neutral</name>
         <name lang="fr">Source tripolaire + neutre</name>
         <name lang="ru">Трёхполюсный + нейтраль</name>
-	<name lang="hu">3F + N</name>
+	    <name lang="hu">3F + N</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

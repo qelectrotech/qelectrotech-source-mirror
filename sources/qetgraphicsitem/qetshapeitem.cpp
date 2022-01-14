@@ -27,6 +27,7 @@
 #include "../qeticons.h"
 #include "../qetxml.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
+#include "../utils/qetutils.h"
 
 /**
 	@brief QetShapeItem::QetShapeItem
@@ -591,9 +592,9 @@ void QetShapeItem::addHandler()
 
 		if(!points_vector.isEmpty() && scene())
 		{
-			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
+			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector), QETUtils::graphicsHandlerSize(this));
 
-			for(QetGraphicsHandlerItem *handler : m_handler_vector)
+			for(const auto handler : qAsConst(m_handler_vector))
 			{
 				handler->setZValue(this->zValue()+1);
 				handler->setColor(Qt::blue);

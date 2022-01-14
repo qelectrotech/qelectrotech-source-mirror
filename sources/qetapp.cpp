@@ -525,8 +525,6 @@ QString QETApp::commonElementsDir()
 			m_common_element_dir = m_overrided_common_elements_dir;
 			return(m_common_element_dir);
 		}
-		m_common_element_dir = QCoreApplication::applicationDirPath() + "/elements";
-		return m_common_element_dir;
 #endif
 #ifndef QET_COMMON_COLLECTION_PATH
 		/* in the absence of a compilation option,

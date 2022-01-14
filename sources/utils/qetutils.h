@@ -21,7 +21,8 @@
 #include <QMargins>
 #include <QWeakPointer>
 
-class RealTerminal;
+class QGraphicsItem;
+
 /**
 	Provide some small utils function
 */
@@ -29,6 +30,7 @@ namespace QETUtils
 {
 	QString marginsToString(const QMargins &margins);
 	QMargins marginsFromString(const QString &string);
+	qreal graphicsHandlerSize(QGraphicsItem *item);
 
 	template <typename T>
 	QVector<QWeakPointer<T>> sharedVectorToWeak(const QVector<QSharedPointer<T>> &vector)

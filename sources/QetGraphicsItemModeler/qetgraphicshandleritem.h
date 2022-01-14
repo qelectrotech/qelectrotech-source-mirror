@@ -18,7 +18,7 @@
 #ifndef QETGRAPHICSHANDLERITEM_H
 #define QETGRAPHICSHANDLERITEM_H
 
-#include <QGraphicsItem>
+#include <QGraphicsObject>
 #include <QPen>
 
 /**
@@ -33,10 +33,15 @@
 	need to reimplement "sceneEventFilter"
 	for create the modification behavior.
 */
-class QetGraphicsHandlerItem : public QGraphicsItem
+class QetGraphicsHandlerItem : public QGraphicsObject
 {
+		Q_OBJECT
+
+		Q_PROPERTY(qreal currentSize READ currentSize WRITE setCurrentSize)
+
 	public:
 		QetGraphicsHandlerItem(qreal size = 10);
+		void setSize(qreal size);
 		QRectF boundingRect() const override;
 		
 		enum { Type = UserType + 1200};
@@ -44,15 +49,24 @@ class QetGraphicsHandlerItem : public QGraphicsItem
 		
 		void setColor(QColor color);
 
+
 	protected:
 		void paint(QPainter *painter,
 			   const QStyleOptionGraphicsItem *option,
 			   QWidget *widget) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+
+		qreal currentSize() const {return m_current_size;}
+		void setCurrentSize(qreal size);
+
+
 
 	private:
 		QRectF m_handler_rect,
 			   m_br;
-		qreal m_size;
+		qreal m_current_size;
+		qreal m_original_size;
 		QColor m_color;
 		QPen m_pen;
 		

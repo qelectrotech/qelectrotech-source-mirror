@@ -766,6 +766,7 @@ void QetGraphicsTableItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 	{
 		adjustHandlerPos();
 		this->scene()->addItem(&m_handler_item);
+		m_handler_item.setSize(QETUtils::graphicsHandlerSize(this));
 		m_handler_item.installSceneEventFilter(this);
 	}
 	QGraphicsObject::hoverEnterEvent(event);

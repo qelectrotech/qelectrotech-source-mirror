@@ -43,6 +43,7 @@
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
 #include "TerminalStrip/ui/terminalstripeditor.h"
+#include "ui/diagrameditorhandlersizewidget.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -65,6 +66,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_file_actions_group       (this),
 	open_dialog_dir            (QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))
 {
+		//Trivial property use to set the graphics handler size
+	setProperty("graphics_handler_size", 10);
+
 	activeSubWindowIndex = 0;
 
 	QSplitter *splitter_ = new QSplitter(this);
@@ -731,6 +735,8 @@ void QETDiagramEditor::setUpToolBar()
 	// Modes selection / visualisation et zoom
 	view_tool_bar -> addAction(m_mode_selection);
 	view_tool_bar -> addAction(m_mode_visualise);
+	view_tool_bar -> addSeparator();
+	view_tool_bar -> addWidget(new DiagramEditorHandlerSizeWidget(this));
 	view_tool_bar -> addSeparator();
 	view_tool_bar -> addAction(m_draw_grid);
 	view_tool_bar -> addAction (m_grey_background);

@@ -13,7 +13,7 @@
         <name lang="en">Chassis</name>
         <name lang="fr">Masse</name>
         <name lang="ru">Шасси</name>
-	<name lang="hu">Vázszerkezet</name>
+	    <name lang="hu">Vázszerkezet</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

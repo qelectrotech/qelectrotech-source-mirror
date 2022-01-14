@@ -13,7 +13,7 @@
         <name lang="en">Phase source</name>
         <name lang="fr">Source phase</name>
         <name lang="ru">Фаза</name>
-	<name lang="hu">F</name>
+	    <name lang="hu">F</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
