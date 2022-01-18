@@ -28,13 +28,20 @@ class TerminalStrip;
 
 class TerminalStripBridge
 {
+		friend class TerminalStrip;
+
 	public:
 		static QVector<QColor> bridgeColor() {return QVector<QColor>{Qt::red, Qt::blue, Qt::white, Qt::darkGray, Qt::black};}
 
 		TerminalStripBridge(TerminalStrip *parent_strip = nullptr);
+		QSharedPointer<TerminalStripBridge> sharedRef();
+		QWeakPointer<TerminalStripBridge> weakRef();
 
 		QColor color() const;
+		void setColor(const QColor &color);
 		QVector<QSharedPointer<RealTerminal>> realTerminals() const;
+
+	private:
 		bool addTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		void removeTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 
@@ -44,6 +51,7 @@ class TerminalStripBridge
 		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
 		QColor m_color = Qt::darkGray;
 		QUuid m_uuid = QUuid::createUuid();
+		QWeakPointer<TerminalStripBridge> m_this_weak;
 };
 
 

@@ -109,6 +109,11 @@ TerminalStripModel::TerminalStripModel(TerminalStrip *terminal_strip, QObject *p
     m_terminal_strip(terminal_strip)
 {
 	fillPhysicalTerminalData();
+
+	connect(terminal_strip, &TerminalStrip::bridgeColorChanged, this, [=] {
+		emit dataChanged(index(0, LEVEL_0_CELL),
+						 index(rowCount(), LEVEL_3_CELL));
+	});
 }
 
 int TerminalStripModel::rowCount(const QModelIndex &parent) const

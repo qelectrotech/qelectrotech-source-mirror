@@ -55,6 +55,7 @@ class TerminalStripEditor : public QDialog
 		void selectionChanged();
 		QSize setUpBridgeCellWidth();
 		TerminalStripModel::Column isSingleColumnSelected() const;
+		QPair<TerminalStripModel::Column, QVector<modelRealTerminalData>> singleColumnData() const;
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();

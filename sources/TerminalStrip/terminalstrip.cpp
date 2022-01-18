@@ -484,7 +484,8 @@ bool TerminalStrip::setBridge(const QVector<QSharedPointer<RealTerminal>> &real_
 	auto bridge = bridgeFor(real_terminals);
 	if (bridge.isNull())
 	{
-		bridge = QSharedPointer<TerminalStripBridge>(new TerminalStripBridge(this));
+		auto br_ = new TerminalStripBridge(this);
+		bridge = br_->sharedRef();
 		m_bridge.append(bridge);
 	}
 

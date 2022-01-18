@@ -24,11 +24,42 @@ TerminalStripBridge::TerminalStripBridge(TerminalStrip *parent_strip) :
 {}
 
 /**
+ * @brief TerminalStripBridge::sharedRef
+ * @return a QSharedPointer of this
+ */
+QSharedPointer<TerminalStripBridge> TerminalStripBridge::sharedRef()
+{
+	QSharedPointer<TerminalStripBridge> this_shared(this->weakRef());
+	if (this_shared.isNull())
+	{
+		this_shared = QSharedPointer<TerminalStripBridge>(this);
+		m_this_weak = this_shared.toWeakRef();
+	}
+
+	return this_shared;
+}
+
+/**
+ * @brief TerminalStripBridge::weakRef
+ * @return a QWeakPointer of this, weak pointer can be null
+ */
+QWeakPointer<TerminalStripBridge> TerminalStripBridge::weakRef() {
+	return m_this_weak;
+}
+
+/**
  * @brief TerminalStripBridge::color
  * @return The color of this bridge
  */
 QColor TerminalStripBridge::color() const {
 	return m_color;
+}
+
+void TerminalStripBridge::setColor(const QColor &color) {
+	m_color = color;
+	if (m_strip) {
+		m_strip->bridgeColorChanged(sharedRef());
+	}
 }
 
 /**

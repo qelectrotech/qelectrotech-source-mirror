@@ -52,6 +52,7 @@ class TerminalStrip : public QObject
 	signals:
 		void orderChanged(); //Emitted when the order of the physical terminal is changed
 		void bridgeChanged();
+		void bridgeColorChanged(QSharedPointer<TerminalStripBridge> bridge);
 	public:
 
 		TerminalStrip(QETProject *project);

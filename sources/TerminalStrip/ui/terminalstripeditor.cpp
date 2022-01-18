@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -34,6 +34,7 @@
 #include "../UndoCommand/groupterminalscommand.h"
 #include "../UndoCommand/changeterminallevel.h"
 #include "../UndoCommand/bridgeterminalscommand.h"
+#include "../UndoCommand/changeterminalstripcolor.h"
 #include "../physicalterminal.h"
 #include "../realterminal.h"
 #include "../terminalstripbridge.h"
@@ -429,20 +430,21 @@ void TerminalStripEditor::selectionChanged()
 		//Enable/disable bridge and unbridge
 	bool enable_bridge = false;
 	bool enable_unbridge = false;
+	bool enable_bridge_color = false;
 
 		//One column must be selected and the column must be a level column
 	int level_ = TerminalStripModel::levelForColumn(isSingleColumnSelected());
 	if (level_ >= 0 && m_current_strip)
 	{
 			//Select only terminals of corresponding level cell selection
-		QVector<modelRealTerminalData> model_real_terminal_level_vector;
 		QVector<QSharedPointer<RealTerminal>> real_terminal_in_level_vector;
 		for (const auto &mrtd : model_real_terminal_vector)
 		{
-			if (mrtd.level_ == level_)
-			{
-				model_real_terminal_level_vector.append(mrtd);
+			if (mrtd.level_ == level_) {
 				real_terminal_in_level_vector.append(mrtd.real_terminal.toStrongRef());
+				if (!enable_bridge_color && mrtd.bridged_) {
+					enable_bridge_color = true;
+				}
 			}
 		}
 		enable_bridge = m_current_strip->isBridgeable(real_terminal_in_level_vector);
@@ -450,6 +452,7 @@ void TerminalStripEditor::selectionChanged()
 	}
 	ui->m_bridge_terminals_pb->setEnabled(enable_bridge);
 	ui->m_unbridge_terminals_pb->setEnabled(enable_unbridge);
+	ui->m_bridge_color_cb->setEnabled(enable_bridge_color);
 }
 
 QSize TerminalStripEditor::setUpBridgeCellWidth()
@@ -476,7 +479,7 @@ QSize TerminalStripEditor::setUpBridgeCellWidth()
  * If all current QModelIndex are in the same column
  * return the column type
  * @sa TerminalStripModel::Column
- * @return
+ * @return the column or TerminalStripModel::Invalid if several column are selected
  */
 TerminalStripModel::Column TerminalStripEditor::isSingleColumnSelected() const
 {
@@ -499,6 +502,29 @@ TerminalStripModel::Column TerminalStripEditor::isSingleColumnSelected() const
 	}
 
 	return TerminalStripModel::Invalid;
+}
+
+/**
+ * @brief TerminalStripEditor::singleColumnData
+ * @return a QPair with for first value the column and for second value the data
+ * of selected cell of the table widget, only if the selected cells are
+ * in the same column. If selected cells are not in the same column the first value
+ * of the QPair is TerminalStripModel::Invalid.
+ */
+QPair<TerminalStripModel::Column, QVector<modelRealTerminalData> > TerminalStripEditor::singleColumnData() const
+{
+	if (m_current_strip)
+	{
+		auto level_ = isSingleColumnSelected();
+		if (level_ != TerminalStripModel::Invalid)
+		{
+			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+			const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(index_list);
+			return qMakePair(level_, mrtd_vector);
+		}
+	}
+
+	return qMakePair(TerminalStripModel::Invalid, QVector<modelRealTerminalData>());
 }
 
 /**
@@ -829,7 +855,6 @@ void TerminalStripEditor::on_m_bridge_terminals_pb_clicked()
 
 			const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
 			const auto mrtd_vector = m_model->modelRealTerminalDataForIndex(index_list);
-
 			QVector <QSharedPointer<RealTerminal>> match_vector;
 			for (const auto &mrtd : mrtd_vector)
 			{
@@ -879,6 +904,22 @@ void TerminalStripEditor::on_m_unbridge_terminals_pb_clicked()
 
 void TerminalStripEditor::on_m_bridge_color_cb_activated(const QColor &col)
 {
-
+	const auto data_vector = singleColumnData();
+	const auto column_ = data_vector.first;
+	if (column_ == TerminalStripModel::Level0 ||
+		column_ == TerminalStripModel::Level1 ||
+		column_ == TerminalStripModel::Level2 ||
+		column_ == TerminalStripModel::Level3)
+	{
+		const auto level_ = TerminalStripModel::levelForColumn(column_);
+		for (const auto &mrtd : data_vector.second)
+		{
+			if (mrtd.level_ == level_ && mrtd.bridged_) {
+				auto bridge_ = mrtd.real_terminal.toStrongRef()->bridge();
+				m_project->undoStack()->push(new ChangeTerminalStripColor(bridge_, col));
+				break;
+			}
+		}
+	}
 }
 
