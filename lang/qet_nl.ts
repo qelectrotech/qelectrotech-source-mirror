@@ -6013,7 +6013,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
         <source>Pivoter</source>
-        <translation>Roteren</translation>
+        <translation>Draaien</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
@@ -7249,7 +7249,7 @@ de voorwaarden zijn ongeldig</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="59"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>QElectrotech &amp;Configureren</translation>
+        <translation>QElectrotech &amp;configureren</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="60"/>
