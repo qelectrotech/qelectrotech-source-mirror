@@ -1,0 +1,20 @@
+name: Publish Candidate Snap
+
+on:
+  push:
+    branches:
+      - "snap/latest/candidate"
+  workflow_dispatch:
+
+jobs:
+  publish_amd64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: snapcore/action-build@v1
+      id: build
+    - uses: snapcore/action-publish@v1
+      with:
+        store_login: ${{ secrets.STORE_LOGIN }}
+        snap: ${{ steps.build.outputs.snap }}
+        release: candidate
