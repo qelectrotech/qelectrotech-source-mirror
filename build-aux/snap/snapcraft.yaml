@@ -1,7 +1,7 @@
 name: qelectrotech
 title: QElectroTech
 base: core20
-adopt-info: qelectrotech
+version: "0.8.0"
 license: GPL-2.0
 summary: Electrical diagram editor
 description: |
@@ -11,10 +11,6 @@ description: |
 grade: stable
 confinement: strict
 compression: lzo
-
-architectures:
-  - build-on: amd64
-    run-on: amd64
 
 layout:
   /usr/local/share/qelectrotech:
@@ -96,11 +92,8 @@ parts:
       - git
       - libsqlite3-dev
     override-build: |
-      displayed_version=$(grep "displayedVersion" sources/qet.h | tr -d "\";" | cut -d" " -f5)
-      snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
-      modified_displayed_version="${snap_version}.snap"
+      modified_displayed_version="${SNAPCRAFT_PROJECT_VERSION}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
-      snapcraftctl set-version "$snap_version"
       qmake "$SNAPCRAFT_PART_SRC/qelectrotech.pro"
       make -j${SNAPCRAFT_PARALLEL_BUILD_COUNT}
       make install INSTALL_ROOT="$SNAPCRAFT_PART_INSTALL"
