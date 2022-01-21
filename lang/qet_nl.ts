@@ -712,7 +712,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="79"/>
         <source>Afficher les en-têtes</source>
-        <translation>Toon kopteksten</translation>
+        <translation>Toon kaderteksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
@@ -5738,7 +5738,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="368"/>
         <source>Afficher la grille</source>
-        <translation>Toon raster</translation>
+        <translation>Raster weergeven</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
@@ -6318,7 +6318,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
-        <translation>Geleiders automatisch verbinden</translation>
+        <translation>Automatisch geleiders maken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="158"/>
@@ -6335,7 +6335,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
-        <translation>Gebruik waar mogelijk het automatisch maken van geleiders</translation>
+        <translation>Maak automatisch geleiders tussen terminals van elementen waar mogelijk</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="650"/>
