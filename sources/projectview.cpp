@@ -339,8 +339,11 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
 
-	// if the name does not end with the .qet extension and we're _not_ running as a flatpak, append it
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive) && !qEnvironmentVariableIsSet("FLATPAK_ID")) filepath += ".qet";
+	// if the name does not end with the .qet extension and we're _not_ using xdg-desktop-portal, append it
+	bool usesPortal = 
+		qEnvironmentVariableIsSet("FLATPAK_ID") || 
+		qEnvironmentVariableIsSet("SNAP_NAME");
+	if (!filepath.endsWith(".qet", Qt::CaseInsensitive) && !usesPortal) filepath += ".qet";
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project
