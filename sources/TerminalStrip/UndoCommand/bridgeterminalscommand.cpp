@@ -36,8 +36,14 @@ void BridgeTerminalsCommand::undo()
 
 void BridgeTerminalsCommand::redo()
 {
-	if (m_strip) {
-		m_strip->setBridge(m_real_terminal_vector);
+	if (m_strip)
+	{
+		if (m_bridge) {
+			m_strip->setBridge(m_bridge, m_real_terminal_vector);
+		} else {
+			m_strip->setBridge(m_real_terminal_vector);
+			m_bridge = m_strip->isBridged(m_real_terminal_vector.first());
+		}
 	}
 }
 

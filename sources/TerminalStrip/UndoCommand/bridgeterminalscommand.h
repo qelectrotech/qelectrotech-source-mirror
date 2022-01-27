@@ -42,6 +42,7 @@ class BridgeTerminalsCommand : public QUndoCommand
 	private:
 		QPointer<TerminalStrip> m_strip;
 		QVector<QSharedPointer<RealTerminal>> m_real_terminal_vector;
+		QSharedPointer<TerminalStripBridge> m_bridge;
 };
 
 
