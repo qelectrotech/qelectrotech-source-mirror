@@ -34,6 +34,7 @@ ChangeTerminalStripColor::ChangeTerminalStripColor(QSharedPointer<TerminalStripB
 	if (m_bridge) {
 		m_old_color = m_bridge->color();
 	}
+	setText(QObject::tr("Modifier la couleur d'un pont de bornes"));
 }
 
 void ChangeTerminalStripColor::redo()
