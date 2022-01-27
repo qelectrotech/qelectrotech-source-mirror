@@ -24,6 +24,10 @@ TerminalStripData::TerminalStripData()
 
 }
 
+TerminalStripData::TerminalStripData(const TerminalStripData &other) {
+	*this = other;
+}
+
 QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 {
 	auto root_elmt = xml_document.createElement(this->xmlTagName());

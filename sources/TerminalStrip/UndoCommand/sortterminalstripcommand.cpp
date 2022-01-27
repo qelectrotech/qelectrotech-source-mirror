@@ -17,13 +17,16 @@
 */
 #include "sortterminalstripcommand.h"
 #include "../terminalstrip.h"
+#include "../physicalterminal.h"
+#include "../realterminal.h"
 
 SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_strip(strip)
 {
 	setText(QObject::tr("Trier le bornier %1").arg(m_strip->name()));
-	m_old_order = m_new_order = m_strip->physicalTerminalData();
+	m_old_order = m_strip->physicalTerminal();
+	m_new_order = m_strip->physicalTerminal();
 	sort();
 }
 
@@ -43,7 +46,7 @@ void SortTerminalStripCommand::redo()
 
 void SortTerminalStripCommand::sort()
 {
-	std::sort(m_new_order.begin(), m_new_order.end(), [](PhysicalTerminalData arg1, PhysicalTerminalData arg2)
+	std::sort(m_new_order.begin(), m_new_order.end(), [](QSharedPointer<PhysicalTerminal> arg1, QSharedPointer<PhysicalTerminal> arg2)
 	{
 		const QRegularExpression rx(QStringLiteral("^\\d+"));
 
@@ -52,9 +55,9 @@ void SortTerminalStripCommand::sort()
 		int int1 =-1;
 		int int2 =-1;
 
-		if (arg1.real_terminals_vector.count())
+		if (arg1->realTerminalCount())
 		{
-			str1 = arg1.real_terminals_vector.constLast().label_;
+			str1 = arg1->realTerminals().constLast()->label();
 
 			auto match = rx.match(str1);
 			if (match.hasMatch()) {
@@ -62,9 +65,9 @@ void SortTerminalStripCommand::sort()
 			}
 		}
 
-		if (arg2.real_terminals_vector.count())
+		if (arg2->realTerminalCount())
 		{
-			str2 = arg2.real_terminals_vector.constLast().label_;
+			str2 = arg2->realTerminals().constLast()->label();
 
 			auto match = rx.match(str2);
 			if (match.hasMatch()) {

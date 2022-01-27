@@ -15,28 +15,37 @@
 		You should have received a copy of the GNU General Public License
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef CHANGETERMINALLEVEL_H
-#define CHANGETERMINALLEVEL_H
+#include "changeterminalstripcolor.h"
+#include "../terminalstripbridge.h"
 
-#include <QUndoCommand>
-#include <QPointer>
-#include "../terminalstrip.h"
-
-class ChangeTerminalLevel : public QUndoCommand
+/**
+ * @brief ChangeTerminalStripColor::ChangeTerminalStripColor
+ * @param bridge
+ * @param color
+ * @param parent
+ */
+ChangeTerminalStripColor::ChangeTerminalStripColor(QSharedPointer<TerminalStripBridge> bridge,
+												   const QColor &color,
+												   QUndoCommand *parent):
+	QUndoCommand(parent),
+	m_bridge(bridge),
+	m_new_color(color)
 {
-	public:
-		ChangeTerminalLevel(TerminalStrip *strip,
-							const QWeakPointer<RealTerminal> &real_terminal,
-							int level,
-							QUndoCommand *parent = nullptr);
+	if (m_bridge) {
+		m_old_color = m_bridge->color();
+	}
+}
 
-		void undo() override;
-		void redo() override;
+void ChangeTerminalStripColor::redo()
+{
+	if (m_bridge) {
+		m_bridge->setColor(m_new_color);
+	}
+}
 
-	private:
-		QPointer<TerminalStrip> m_strip;
-		QWeakPointer<RealTerminal> m_real_terminal;
-		int m_new_level, m_old_level;
-};
-
-#endif // CHANGETERMINALLEVEL_H
+void ChangeTerminalStripColor::undo()
+{
+	if (m_bridge) {
+		m_bridge->setColor(m_old_color);
+	}
+}

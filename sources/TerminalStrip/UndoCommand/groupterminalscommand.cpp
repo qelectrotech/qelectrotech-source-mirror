@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "groupterminalscommand.h"
+#include "../physicalterminal.h"
 
 /**
  * @brief GroupTerminalsCommand::GroupTerminalsCommand
@@ -24,8 +25,8 @@
  * @param to_group : Terminals to group
  */
 GroupTerminalsCommand::GroupTerminalsCommand(TerminalStrip *strip,
-											 const PhysicalTerminalData &receiver_,
-											 const QVector<RealTerminalData> &to_group,
+											 const QSharedPointer<PhysicalTerminal> &receiver_,
+											 const QVector<QSharedPointer<RealTerminal>> &to_group,
 											 QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_terminal_strip(strip),
@@ -43,12 +44,12 @@ void GroupTerminalsCommand::undo() {
 
 void GroupTerminalsCommand::redo() {
 	if (m_terminal_strip) {
-		m_terminal_strip->groupTerminals(m_receiver, m_to_group);
+		m_terminal_strip->groupTerminals(m_receiver,m_to_group);
 	}
 }
 
 UnGroupTerminalsCommand::UnGroupTerminalsCommand(TerminalStrip *strip,
-												 const QVector<RealTerminalData> &to_ungroup,
+												 const QVector<QSharedPointer<RealTerminal>> &to_ungroup,
 												 QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_terminal_strip(strip)
@@ -77,19 +78,21 @@ void UnGroupTerminalsCommand::redo()
 	}
 }
 
-void UnGroupTerminalsCommand::setUp(const QVector<RealTerminalData> &to_ungroup)
+void UnGroupTerminalsCommand::setUp(const QVector<QSharedPointer<RealTerminal>> &to_ungroup)
 {
-	for (auto rtd_ : to_ungroup)
+	for (const auto &rt_ : to_ungroup)
 	{
-		auto ptd_ = m_terminal_strip->physicalTerminalData(rtd_);
+		auto phy_t = m_terminal_strip->physicalTerminal(rt_.toWeakRef());
+		if (phy_t)
+		{
+				//Physical have only one real terminal, no need to ungroup it
+			if (phy_t->realTerminalCount() <= 1) {
+				continue;
+			}
 
-			//Physical have only one real terminal, no need to ungroup it
-		if (ptd_.real_terminals_vector.size() <= 1) {
-			continue;
+			auto vector_ = m_physical_real_H.value(phy_t);
+			vector_.append(rt_);
+			m_physical_real_H.insert(phy_t, vector_);
 		}
-
-		auto vector_ = m_physical_real_H.value(ptd_);
-		vector_.append(rtd_);
-		m_physical_real_H.insert(ptd_, vector_);
 	}
 }

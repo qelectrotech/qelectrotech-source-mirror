@@ -29,6 +29,7 @@ class TerminalStripData : public PropertiesInterface
 
 	public:
 		TerminalStripData();
+		TerminalStripData(const TerminalStripData &other);
 
 		void toSettings(QSettings &/*settings*/, const QString = QString()) const override {}
 		void fromSettings (const QSettings &/*settings*/, const QString = QString()) override {}
