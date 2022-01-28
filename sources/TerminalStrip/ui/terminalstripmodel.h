@@ -38,7 +38,7 @@ inline uint qHash(const QPointer<Element> &key, uint seed) {
 	if (key)
 		return qHash(key->uuid(), seed);
 	else
-		return qHash(nullptr, seed);
+		return qHash(QUuid(), seed);
 }
 
 class TerminalStrip;

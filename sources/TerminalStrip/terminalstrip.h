@@ -93,6 +93,7 @@ class TerminalStrip : public QObject
 		bool setLevel(const QSharedPointer<RealTerminal> &real_terminal, int level);
 
 		bool isBridgeable(const QVector<QSharedPointer<RealTerminal>> &real_terminals) const;
+		bool isBridgeable(QSharedPointer<TerminalStripBridge> bridge, const QVector<QSharedPointer<RealTerminal>> &real_terminals) const;
 		bool setBridge(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		bool setBridge(const QSharedPointer<TerminalStripBridge> &bridge, const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		void unBridge(const QVector<QSharedPointer<RealTerminal>> &real_terminals);

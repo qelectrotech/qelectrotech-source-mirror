@@ -470,6 +470,26 @@ bool TerminalStrip::isBridgeable(const QVector<QSharedPointer<RealTerminal>> &re
 }
 
 /**
+ * @brief TerminalStrip::isBridgeable
+ * Check if all RealTerminal of @a real_terminals can be bridged to
+ * the bridge @a bridge.
+ * @param real_terminals
+ * @return true if can be bridged.
+ */
+bool TerminalStrip::isBridgeable(QSharedPointer<TerminalStripBridge> bridge, const QVector<QSharedPointer<RealTerminal> > &real_terminals) const
+{
+	if (real_terminals.isEmpty() ||
+		!m_bridge.contains(bridge)) {
+		return false;
+	}
+
+	auto vector_ = bridge->realTerminals();
+	vector_.append(real_terminals);
+
+	return isBridgeable(vector_);
+}
+
+/**
  * @brief TerminalStrip::setBridge
  * Set a bridge betwen all real terminal of @a real_terminals
  * @sa TerminalStrip::isBridgeable
@@ -508,7 +528,7 @@ bool TerminalStrip::setBridge(const QSharedPointer<TerminalStripBridge> &bridge,
 {
 	if (bridge)
 	{
-		if (!isBridgeable(real_terminals)) {
+		if (!isBridgeable(bridge, real_terminals)) {
 			return false;
 		}
 
