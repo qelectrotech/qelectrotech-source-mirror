@@ -916,7 +916,8 @@ void TerminalStripEditor::on_m_bridge_color_cb_activated(const QColor &col)
 		{
 			if (mrtd.level_ == level_ && mrtd.bridged_) {
 				auto bridge_ = mrtd.real_terminal.toStrongRef()->bridge();
-				m_project->undoStack()->push(new ChangeTerminalStripColor(bridge_, col));
+				if (bridge_->color() != col)
+					m_project->undoStack()->push(new ChangeTerminalStripColor(bridge_, col));
 				break;
 			}
 		}
