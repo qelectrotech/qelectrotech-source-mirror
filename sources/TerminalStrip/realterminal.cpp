@@ -66,12 +66,12 @@ bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElemen
 		return true;
 	}
 
-	auto is_draw = xml_element.attribute(QStringLiteral("is_draw")) == QLatin1String("true")
-				   ? true : false;
+	m_uuid = QUuid(xml_element.attribute(QStringLiteral("uuid")));
 
-	QUuid uuid_(xml_element.attribute(QStringLiteral("uuid")));
+	if (xml_element.hasAttribute(QStringLiteral("element_uuid")))
+	{
+		QUuid uuid_(xml_element.attribute(QStringLiteral("element_uuid")));
 
-	if (is_draw) {
 		for (auto terminal : terminal_vector) {
 			if (terminal->uuid() == uuid_)
 			{
@@ -79,8 +79,6 @@ bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElemen
 				break;
 			}
 		}
-	} else {
-		m_uuid = uuid_;
 	}
 
 	return true;
@@ -94,9 +92,9 @@ bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElemen
 QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
 {
 	auto root_elmt = parent_document.createElement(this->xmlTagName());
-	root_elmt.setAttribute("is_draw", m_element ? "true" : "false");
-	root_elmt.setAttribute("uuid", m_element ? m_element->uuid().toString() :
-											   m_uuid.toString());
+	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	if (m_element)
+		root_elmt.setAttribute(QStringLiteral("element_uuid"), m_element->uuid().toString());
 
 	return root_elmt;
 }

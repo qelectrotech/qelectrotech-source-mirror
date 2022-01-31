@@ -22,6 +22,7 @@
 #include <QUuid>
 #include <QPointer>
 #include <QColor>
+#include <QDomDocument>
 #include <QVector>
 
 class RealTerminal;
@@ -41,6 +42,10 @@ class TerminalStripBridge
 		QColor color() const;
 		void setColor(const QColor &color);
 		QVector<QSharedPointer<RealTerminal>> realTerminals() const;
+
+		static QString xmlTagName() {return QStringLiteral("terminal_strip_bridge");}
+		QDomElement toXml(QDomDocument &parent_document) const;
+		void fromXml(const QDomElement &dom_element);
 
 	private:
 		bool addTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);

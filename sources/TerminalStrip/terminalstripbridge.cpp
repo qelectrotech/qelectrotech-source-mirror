@@ -18,6 +18,7 @@
 #include "terminalstripbridge.h"
 #include "realterminal.h"
 #include "terminalstrip.h"
+#include "../qetxml.h"
 
 TerminalStripBridge::TerminalStripBridge(TerminalStrip *parent_strip) :
 	m_strip(parent_strip)
@@ -68,6 +69,55 @@ void TerminalStripBridge::setColor(const QColor &color) {
  */
 QVector<QSharedPointer<RealTerminal> > TerminalStripBridge::realTerminals() const {
 	return m_real_terminals;
+}
+
+/**
+ * @brief TerminalStripBridge::toXml
+ * Save this bridge into a QDomElement and return it.
+ * @param parent_document
+ * @return
+ */
+QDomElement TerminalStripBridge::toXml(QDomDocument &parent_document) const
+{
+	auto root_elmt = parent_document.createElement(xmlTagName());
+
+	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
+	root_elmt.setAttribute(QStringLiteral("color"), m_color.name());
+
+	auto terminals_elmt = parent_document.createElement(QStringLiteral("real_terminals"));
+	for (const auto &real_t : qAsConst(m_real_terminals))
+	{
+		if (real_t)
+		{
+			auto terminal_elmt = parent_document.createElement(QStringLiteral("real_terminal"));
+			terminal_elmt.setAttribute(QStringLiteral("uuid"), real_t->uuid().toString());
+			terminals_elmt.appendChild(terminal_elmt);
+		}
+	}
+
+	root_elmt.appendChild(terminals_elmt);
+	return root_elmt;
+}
+
+void TerminalStripBridge::fromXml(const QDomElement &dom_element)
+{
+	if (dom_element.tagName() != xmlTagName() || !m_strip) {
+		return;
+	}
+
+	m_uuid.fromString(dom_element.attribute(QStringLiteral("uuid"), m_uuid.toString()));
+	m_color.setNamedColor(dom_element.attribute(QStringLiteral("color")));
+
+	const auto real_t_vector = QETXML::subChild(dom_element,
+										 QStringLiteral("real_terminals"),
+										 QStringLiteral("real_terminal"));
+	for (const auto &xml_real_t : real_t_vector)
+	{
+		auto real_t = m_strip->realTerminalForUuid(QUuid(xml_real_t.attribute(QStringLiteral("uuid"))));
+		if (real_t) {
+			m_real_terminals.append(real_t);
+		}
+	}
 }
 
 /**
