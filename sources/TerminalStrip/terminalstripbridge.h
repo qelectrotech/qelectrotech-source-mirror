@@ -22,6 +22,7 @@
 #include <QUuid>
 #include <QPointer>
 #include <QColor>
+#include <QVector>
 
 class RealTerminal;
 class TerminalStrip;
