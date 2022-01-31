@@ -86,6 +86,7 @@ class TerminalStrip : public QObject
 		QSharedPointer<PhysicalTerminal> physicalTerminal (const QSharedPointer<RealTerminal> &real_terminal) const;
 		QVector<QSharedPointer<PhysicalTerminal>> physicalTerminal() const;
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal) const;
+		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
 
 		bool setOrderTo(const QVector<QSharedPointer<PhysicalTerminal>> &sorted_vector);
 		bool groupTerminals(const QSharedPointer<PhysicalTerminal> &receiver_terminal, const QVector<QSharedPointer<RealTerminal>> &added_terminals);

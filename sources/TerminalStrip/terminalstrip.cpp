@@ -246,6 +246,22 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminal(Element *terminal) cons
 	return shared_real_terminal();
 }
 
+/**
+ * @brief TerminalStrip::realTerminalForUuid
+ * @param uuid
+ * @return the real terminal with uuid @a uuid or a null QSharedPointer if not found
+ */
+QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uuid) const
+{
+	for (const auto &t : qAsConst(m_real_terminals)) {
+		if (t->uuid() == uuid) {
+			return t;
+		}
+	}
+
+	return QSharedPointer<RealTerminal>();
+}
+
 
 /**
  * @brief TerminalStrip::setSortedTo
@@ -764,6 +780,10 @@ QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
 	}
 	root_elmt.appendChild(xml_layout);
 
+	for (const auto &bridge_ : qAsConst(m_bridge)) {
+		root_elmt.appendChild(bridge_->toXml(parent_document));
+	}
+
 	return root_elmt;
 }
 
@@ -816,6 +836,16 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 			m_real_terminals.append(real_t_vector);
 		}
 
+	}
+
+		//Read bridges
+	const auto bridge_vector = QETXML::directChild(xml_element, TerminalStripBridge::xmlTagName());
+	for (const auto &xml_bridge : bridge_vector)
+	{
+		auto bridge_ = new TerminalStripBridge(this);
+		auto shared_bridge = bridge_->sharedRef();
+		shared_bridge->fromXml(xml_bridge);
+		m_bridge.append(shared_bridge);
 	}
 
 	return true;
