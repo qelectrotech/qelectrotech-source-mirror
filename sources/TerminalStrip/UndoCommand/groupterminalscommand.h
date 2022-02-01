@@ -64,6 +64,7 @@ class UnGroupTerminalsCommand : public QUndoCommand
 	private:
 		QPointer<TerminalStrip> m_terminal_strip;
 		QHash <QSharedPointer<PhysicalTerminal>, QVector<QSharedPointer<RealTerminal>>> m_physical_real_H;
+		QVector<QPair<QSharedPointer<RealTerminal>, int>> m_real_t_level;
 };
 
 #endif // GROUPTERMINALSCOMMAND_H

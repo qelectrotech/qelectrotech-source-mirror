@@ -62,8 +62,13 @@ void UnGroupTerminalsCommand::undo()
 {
 	if (m_terminal_strip)
 	{
+			//First, re-group all terminals
 		for (const auto &key : m_physical_real_H.keys()) {
 			m_terminal_strip->groupTerminals(key, m_physical_real_H.value(key));
+		}
+			//Second, set level.
+		for (const auto &pair : qAsConst(m_real_t_level)) {
+			m_terminal_strip->setLevel(pair.first, pair.second);
 		}
 	}
 }
@@ -82,7 +87,7 @@ void UnGroupTerminalsCommand::setUp(const QVector<QSharedPointer<RealTerminal>> 
 {
 	for (const auto &rt_ : to_ungroup)
 	{
-		auto phy_t = m_terminal_strip->physicalTerminal(rt_.toWeakRef());
+		auto phy_t = m_terminal_strip->physicalTerminal(rt_);
 		if (phy_t)
 		{
 				//Physical have only one real terminal, no need to ungroup it
@@ -93,6 +98,8 @@ void UnGroupTerminalsCommand::setUp(const QVector<QSharedPointer<RealTerminal>> 
 			auto vector_ = m_physical_real_H.value(phy_t);
 			vector_.append(rt_);
 			m_physical_real_H.insert(phy_t, vector_);
+
+			m_real_t_level.append(qMakePair(rt_, phy_t->levelOf(rt_)));
 		}
 	}
 }
