@@ -155,6 +155,7 @@ bool TerminalStrip::removeTerminal(Element *terminal)
 
 			static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(nullptr);
 
+			rebuildRealVector();
 			return true;
 		}
 
@@ -344,6 +345,7 @@ bool TerminalStrip::groupTerminals(const QSharedPointer<PhysicalTerminal> &recei
 			}
 		}
 
+		rebuildRealVector();
 		emit orderChanged();
 	}
 	return true;
@@ -375,6 +377,7 @@ void TerminalStrip::unGroupTerminals(const QVector<QSharedPointer<RealTerminal>>
 	}
 
 	if (ungrouped) {
+		rebuildRealVector();
 		emit orderChanged();
 	}
 }
@@ -395,6 +398,7 @@ bool TerminalStrip::setLevel(const QSharedPointer<RealTerminal> &real_terminal, 
 			if (physical_terminal->realTerminals().size() > 1 &&
 				physical_terminal->setLevelOf(real_terminal, level))
 			{
+				rebuildRealVector();
 				emit orderChanged();
 				return true;
 			}
