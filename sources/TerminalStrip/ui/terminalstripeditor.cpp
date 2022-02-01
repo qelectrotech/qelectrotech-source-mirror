@@ -706,12 +706,32 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 		auto mrtd_vector = m_model->modelRealTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
 		if (mrtd_vector.size() >= 2)
 		{
-			auto receiver_ = m_current_strip->physicalTerminal(mrtd_vector.takeFirst().real_terminal);
+				//At this step get the first physical terminal as receiver
+			auto receiver_ = m_current_strip->physicalTerminal(mrtd_vector.first().real_terminal);
 
 			QVector<QSharedPointer<RealTerminal>> vector_;
-			for (const auto & mrtd : mrtd_vector) {
-				vector_.append(mrtd.real_terminal.toStrongRef());
+			int count_ = 0;
+			for (const auto & mrtd : mrtd_vector)
+			{
+				const auto real_t = mrtd.real_terminal.toStrongRef();
+				vector_.append(real_t);
+
+					//Get the better physical terminal as receiver
+					//(physical terminal with the max of real terminal)
+				const auto current_physical = m_current_strip->physicalTerminal(real_t);
+				int real_t_count = current_physical->realTerminalCount();
+				if (real_t_count > 1 && real_t_count > count_) {
+					count_ = real_t_count;
+					receiver_ = m_current_strip->physicalTerminal(real_t);
+				}
+
 			}
+
+				//Now we remove from vector_ all real terminal of receiver
+			for (const auto &real_t : receiver_->realTerminals()) {
+				vector_.removeOne(real_t);
+			}
+
 			m_project->undoStack()->push(new GroupTerminalsCommand(m_current_strip,
 																   receiver_,
 																   vector_));
