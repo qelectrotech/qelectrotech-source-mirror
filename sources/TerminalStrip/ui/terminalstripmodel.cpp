@@ -190,10 +190,6 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			 index.column() == LEVEL_3_CELL))
 	{
 		return bridgePixmapFor(index);
-		auto pixmap_ = bridgePixmapFor(index);
-		if (!pixmap_.isNull()) {
-			return pixmap_;
-		}
 	}
 
 	return QVariant();
