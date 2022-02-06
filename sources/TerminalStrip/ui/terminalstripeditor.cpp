@@ -238,8 +238,16 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 		auto phy_t = terminal_strip->physicalTerminal(i);
 		if (phy_t->realTerminalCount())
 		{
+			QString text_;
+			for (const auto &real_t : phy_t->realTerminals())
+			{
+				if (text_.isEmpty())
+					text_ = real_t->label();
+				else
+					text_.append(QStringLiteral(", ")).append(real_t->label());
+			}
 			const auto real_t = phy_t->realTerminals().at(0);
-			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t->label()), TerminalStripTreeWidget::Terminal);
+			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(text_), TerminalStripTreeWidget::Terminal);
 			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t->elementUuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 
