@@ -619,7 +619,10 @@ void ElementsCollectionWidget::dirProperties()
 */
 void ElementsCollectionWidget::reload()
 {
+	m_loading_timer.reset(new QElapsedTimer());
 	qInfo()<<"Elements collection reload";
+	m_loading_timer->start();
+
 	m_progress_bar->show();
 	// Force to repaint now,
 	// else progress bar will be not displayed immediately
@@ -679,7 +682,8 @@ void ElementsCollectionWidget::loadingFinished()
 	m_progress_bar->hide();
 	m_tree_view->setEnabled(true);
 
-	qInfo()<<"Elements collection finished to be loaded";
+	qInfo()<<"Elements collection finished to be loaded in " << m_loading_timer->elapsed() << " ms";
+	m_loading_timer.reset();
 }
 
 /**

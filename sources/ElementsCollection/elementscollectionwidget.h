@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -23,6 +23,8 @@
 #include <QWidget>
 #include <QModelIndex>
 #include <QTimer>
+#include <QElapsedTimer>
+#include <QScopedPointer>
 
 class ElementsCollectionModel;
 class QVBoxLayout;
@@ -111,6 +113,7 @@ class ElementsCollectionWidget : public QWidget
 
 		bool m_first_show = true;
 		QList<QETProject *> m_waiting_project;
+		QScopedPointer<QElapsedTimer> m_loading_timer;
 };
 
 #endif // ELEMENTSCOLLECTIONWIDGET_H
