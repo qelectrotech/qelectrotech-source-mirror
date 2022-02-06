@@ -682,8 +682,13 @@ void ElementsCollectionWidget::loadingFinished()
 	m_progress_bar->hide();
 	m_tree_view->setEnabled(true);
 
-	qInfo()<<"Elements collection finished to be loaded in " << m_loading_timer->elapsed() << " ms";
-	m_loading_timer.reset();
+	if (m_loading_timer) {
+		qInfo()<<"Elements collection finished to be loaded in " << m_loading_timer->elapsed() << " ms";
+		m_loading_timer.reset();
+	}
+	else {
+		qInfo()<<"Elements collection finished to be loaded";
+	}
 }
 
 /**
