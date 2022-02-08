@@ -1,0 +1,87 @@
+<definition version="0.90" height="130" link_type="simple" hotspot_x="64" width="130" hotspot_y="104" type="element">
+    <uuid uuid="{ea067570-eb79-4bc4-b8a5-df2e407c3e5b}"/>
+    <names>
+        <name lang="hu">Aszinkron motor, három fázisú Dahlander 12 kivezetéssel</name>
+        <name lang="en">Induction motor, three-phase Dahlander 12 terminlas</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <dynamic_text x="35" y="-100" text_from="ElementInfo" text_width="-1" Valignment="AlignTop" keep_visual_rotation="false" z="1" rotation="0" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{85d13847-ffd6-492f-a899-bbcd1838b094}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-55" y="-30" text="V6" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-55" y="-10" text="W6" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="45" y="-30" text="V5" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-55" y="-51" text="U6" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="1" y="13" text="V2" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="45" y="-10" text="W5" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="1" y="-85" text="V1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="44" y="-51" text="U5" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="21" y="-85" text="W1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="21" y="13" text="W2" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-6" y="-46" text="M" rotation="0" font="Sans Serif,11,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-11" y="-26" text="3" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-19" y="13" text="U2" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <arc x="-3" y="-32.5" height="5" start="4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" angle="175.938"/>
+        <arc x="3" y="-32.5" height="5" start="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" angle="-180"/>
+        <circle x="-40" y="-80" diameter="80" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y1="-100" x2="0" end1="none" y2="-80" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="-20" y1="-100" x2="-20" end1="none" y2="-75" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <dynamic_text x="-110" y="-106" text_from="UserText" text_width="-1" Valignment="AlignTop" keep_visual_rotation="false" z="19" rotation="0" frame="false" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" uuid="{21e1fe19-235c-40af-82bc-ef144cd7e49f}" Halignment="AlignLeft">
+            <text>-</text>
+        </dynamic_text>
+        <line x1="20" y1="-100" x2="20" end1="none" y2="-75" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <dynamic_text x="-110" y="-92" text_from="UserText" text_width="-1" Valignment="AlignTop" keep_visual_rotation="false" z="20" rotation="0" frame="false" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" uuid="{45e4a7d3-7e61-4e8f-b30b-3e5b1ee5da91}" Halignment="AlignLeft">
+            <text>-</text>
+        </dynamic_text>
+        <dynamic_text x="-111" y="3" text_from="UserText" text_width="-1" Valignment="AlignTop" keep_visual_rotation="false" z="20" rotation="0" frame="false" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" uuid="{45e4a7d3-7e61-4e8f-b30b-3e5b1ee5da91}" Halignment="AlignLeft">
+            <text>-</text>
+        </dynamic_text>
+        <dynamic_text x="-111" y="18" text_from="UserText" text_width="-1" Valignment="AlignTop" keep_visual_rotation="false" z="21" rotation="0" frame="false" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" uuid="{30a84d42-6cd5-49f0-9d0b-e6472e193987}" Halignment="AlignLeft">
+            <text>-</text>
+        </dynamic_text>
+        <dynamic_text x="-111" y="-12" text_from="UserText" text_width="-1" Valignment="AlignTop" keep_visual_rotation="false" z="21" rotation="0" frame="false" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" uuid="{30a84d42-6cd5-49f0-9d0b-e6472e193987}" Halignment="AlignLeft">
+            <text>-</text>
+        </dynamic_text>
+        <line x1="0" y1="20" x2="0" end1="none" y2="0" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="-20" y1="20" x2="-20" end1="none" y2="-5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="20" y1="20" x2="20" end1="none" y2="-5" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <arc x="-42" y="-82" height="84" start="305" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="84" angle="15"/>
+        <text x="-20" y="-12" text="Dahlander" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <line x1="33" y1="-6" x2="29" end1="none" y2="-9" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <text x="-19" y="-85" text="U1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <line x1="59" y1="-60" x2="35" end1="none" y2="-60" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="59" y1="-40" x2="41" end1="none" y2="-40" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="60" y1="-20" x2="35" end1="none" y2="-20" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="-60" y1="-60" x2="-35" end1="none" y2="-60" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="-60" y1="-40" x2="-40" end1="none" y2="-40" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <line x1="-60" y1="-20" x2="-35" end1="none" y2="-20" length2="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5"/>
+        <terminal x="37" y="-6" orientation="e" name="" uuid="{9509ccb1-6da8-4ab3-b2dc-8ddd39600d54}" type="Generic"/>
+        <terminal x="-20" y="20" orientation="s" name="" uuid="{7ba4fc29-79c4-4b65-a424-7001350b985b}" type="Generic"/>
+        <terminal x="20" y="-100" orientation="n" name="" uuid="{a28d6200-e1c1-48bc-b9da-27bcd2e3e1b1}" type="Generic"/>
+        <terminal x="60" y="-60" orientation="e" name="" uuid="{3df6e487-9116-457d-a0c0-a7d9ee2ac288}" type="Generic"/>
+        <terminal x="60" y="-40" orientation="e" name="" uuid="{ad940221-39e1-4e80-9f8c-5839dc6df8f9}" type="Generic"/>
+        <terminal x="0" y="-100" orientation="n" name="" uuid="{bc11bbdc-6191-4f8b-9448-0967c8a6b1b7}" type="Generic"/>
+        <terminal x="60" y="-20" orientation="e" name="" uuid="{4189f356-813c-4cca-b347-67c436d33b6e}" type="Generic"/>
+        <terminal x="0" y="20" orientation="s" name="" uuid="{34e79b3d-8f25-47a3-8512-7c7a5b290e33}" type="Generic"/>
+        <terminal x="20" y="20" orientation="s" name="" uuid="{3bbf4f38-724d-4025-b555-d3fbecf1c5cf}" type="Generic"/>
+        <terminal x="-20" y="-100" orientation="n" name="" uuid="{51f6f9e9-4729-4baa-bf4d-d934c964cd40}" type="Generic"/>
+        <terminal x="-60" y="-60" orientation="w" name="" uuid="{d76024c7-eb9f-4c4b-8c57-5cc7c03db32a}" type="Generic"/>
+        <terminal x="-60" y="-20" orientation="w" name="" uuid="{7a24203d-53b4-4f2a-b766-2e001966b367}" type="Generic"/>
+        <terminal x="-60" y="-40" orientation="w" name="" uuid="{ed4cb012-8de6-43d0-a36b-8f8e21e51c88}" type="Generic"/>
+    </description>
+</definition>
