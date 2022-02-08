@@ -45,14 +45,19 @@ class RealTerminal
 		friend class PhysicalTerminal;
 
 	private:
-		RealTerminal(TerminalStrip *strip, Element *element = nullptr);
+		RealTerminal(Element *element = nullptr);
+
 		QSharedPointer<RealTerminal> sharedRef();
+		QSharedPointer<RealTerminal> sharedRef() const;
 		QWeakPointer<RealTerminal> weakRef();
 
 		bool fromXml(QDomElement xml_element, const QVector<TerminalElement *> &terminal_vector);
 		QDomElement toXml(QDomDocument &parent_document) const;
 
+		void setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t);
+
 	public:
+		~RealTerminal();
 		TerminalStrip *parentStrip() const;
 		int level() const;
 		QString label() const;
@@ -78,9 +83,9 @@ class RealTerminal
 
 	private :
 		QPointer<Element> m_element;
-		QPointer<TerminalStrip> m_parent_terminal_strip;
 		QUuid m_uuid = QUuid::createUuid();
 		QWeakPointer<RealTerminal> m_this_weak;
+		QSharedPointer<PhysicalTerminal> m_physical_terminal;
 };
 
 #endif // REALTERMINAL_H

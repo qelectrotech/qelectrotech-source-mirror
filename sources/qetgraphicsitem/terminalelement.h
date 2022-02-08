@@ -23,6 +23,7 @@
 #include "../TerminalStrip/terminalstrip.h"
 
 class QETProject;
+class RealTerminal;
 /**
 	@brief The TerminalElement class
 */
@@ -35,11 +36,13 @@ class TerminalElement : public Element
 		~TerminalElement() override;
 		void initLink(QETProject *project) override;
 
+		void setRealTerminal(const QSharedPointer<RealTerminal> &real_t);
+		QSharedPointer<RealTerminal> realTerminal() const;
 		void setParentTerminalStrip(TerminalStrip *strip);
 		TerminalStrip *parentTerminalStrip() const;
 
 	private:
-		QPointer<TerminalStrip> m_parent_terminal_strip;
+		QSharedPointer<RealTerminal> m_real_terminal;
 };
 
 #endif // TERMINALELEMENT_H

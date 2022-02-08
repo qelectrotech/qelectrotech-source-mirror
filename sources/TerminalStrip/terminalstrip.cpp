@@ -114,15 +114,13 @@ bool TerminalStrip::addTerminal(Element *terminal)
 	m_terminal_elements_vector.append(terminal);
 
 		//Create the real terminal
-	auto raw_real_ptr = new RealTerminal(this, terminal);
+	auto raw_real_ptr = new RealTerminal(terminal);
 	auto real_terminal = raw_real_ptr->sharedRef();
 	m_real_terminals.append(real_terminal);
 
 		//Create a new single level physical terminal
 	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{real_terminal});
 	m_physical_terminals.append(raw_phy_ptr->sharedRef());
-
-	static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(this);
 
 	return true;
 }
@@ -153,7 +151,6 @@ bool TerminalStrip::removeTerminal(Element *terminal)
 			}
 			m_real_terminals.removeOne(real_terminal);
 
-			static_cast<TerminalElement *>(terminal)->setParentTerminalStrip(nullptr);
 
 			rebuildRealVector();
 			return true;
@@ -824,13 +821,12 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 				//Read each real terminal of the current physical terminal of the loop
 			for (auto &xml_real : QETXML::findInDomElement(xml_physical, RealTerminal::xmlTagName()))
 			{
-				auto raw_ptr = new RealTerminal(this);
+				auto raw_ptr = new RealTerminal();
 				auto real_t = raw_ptr->sharedRef();
 				real_t->fromXml(xml_real, free_terminals);
 				if(real_t->isElement())
 				{
 					m_terminal_elements_vector.append(real_t->element());
-					static_cast<TerminalElement*>(real_t->element())->setParentTerminalStrip(this);
 				}
 				real_t_vector.append(real_t);
 			}

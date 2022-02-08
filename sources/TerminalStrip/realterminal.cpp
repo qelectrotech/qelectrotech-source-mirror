@@ -25,11 +25,23 @@
  * @param parent_strip : parent terminal strip
  * @param terminal : terminal element (if any) in a folio
  */
-RealTerminal::RealTerminal(TerminalStrip *parent_strip,
-						   Element *terminal) :
-	m_element(terminal),
-	m_parent_terminal_strip(parent_strip)
-{}
+RealTerminal::RealTerminal(Element *terminal) :
+	m_element(terminal)
+{
+	if (terminal) {
+		static_cast<TerminalElement *>(terminal)->setRealTerminal(sharedRef());
+	}
+}
+
+RealTerminal::~RealTerminal()
+{
+	if (m_physical_terminal) {
+		m_physical_terminal->removeTerminal(sharedRef());
+	}
+	if (m_element) {
+		static_cast<TerminalElement *>(m_element.data())->setRealTerminal(QSharedPointer<RealTerminal>());
+	}
+}
 
 /**
  * @brief RealTerminal::sharedRef
@@ -45,6 +57,16 @@ QSharedPointer<RealTerminal> RealTerminal::sharedRef()
 	}
 
 	return this_shared;
+}
+
+/**
+ * @brief RealTerminal::sharedRef
+ * @return a shared reference of this, not that because
+ * this method is const, the shared reference can be null if not already
+ * used in another part of the code.
+ */
+QSharedPointer<RealTerminal> RealTerminal::sharedRef() const {
+	return QSharedPointer<RealTerminal>(m_this_weak);
 }
 
 /**
@@ -76,6 +98,7 @@ bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElemen
 			if (terminal->uuid() == uuid_)
 			{
 				m_element = terminal;
+				static_cast<TerminalElement *>(terminal)->setRealTerminal(sharedRef());
 				break;
 			}
 		}
@@ -100,11 +123,24 @@ QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
 }
 
 /**
-		 * @brief parentStrip
-		 * @return parent terminal strip
-		 */
+ * @brief RealTerminal::setPhysicalTerminal
+ * Set the parent physical terminal of this real terminal
+ * @param phy_t
+ */
+void RealTerminal::setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t) {
+	m_physical_terminal = phy_t;
+}
+
+/**
+* @brief parentStrip
+* @return parent terminal strip or nullptr
+*/
 TerminalStrip *RealTerminal::parentStrip() const {
-	return m_parent_terminal_strip.data();
+	if (m_physical_terminal) {
+		return m_physical_terminal->terminalStrip();
+	} else {
+		return nullptr;
+	}
 }
 
 /**
@@ -113,11 +149,9 @@ TerminalStrip *RealTerminal::parentStrip() const {
  */
 int RealTerminal::level() const
 {
-	if (m_parent_terminal_strip) {
-		const auto phy_t = m_parent_terminal_strip->physicalTerminal(m_this_weak);
-		if (phy_t) {
-			return phy_t->levelOf(m_this_weak);
-		}
+	if (m_physical_terminal &&
+		sharedRef()) {
+		return m_physical_terminal->levelOf(sharedRef());
 	}
 
 	return -1;
@@ -224,8 +258,8 @@ bool RealTerminal::isElement() const {
  */
 bool RealTerminal::isBridged() const
 {
-	if (m_parent_terminal_strip) {
-		return !m_parent_terminal_strip->isBridged(m_this_weak.toStrongRef()).isNull();
+	if (parentStrip()) {
+		return !parentStrip()->isBridged(m_this_weak.toStrongRef()).isNull();
 	} else {
 		return false;
 	}
@@ -237,8 +271,8 @@ bool RealTerminal::isBridged() const
  */
 QSharedPointer<TerminalStripBridge> RealTerminal::bridge() const
 {
-	if (m_parent_terminal_strip) {
-		return m_parent_terminal_strip->isBridged(m_this_weak.toStrongRef());
+	if (parentStrip()) {
+		return parentStrip()->isBridged(m_this_weak.toStrongRef());
 	} else {
 		return QSharedPointer<TerminalStripBridge>();
 	}

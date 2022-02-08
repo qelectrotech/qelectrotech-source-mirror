@@ -30,7 +30,13 @@ PhysicalTerminal::PhysicalTerminal(TerminalStrip *parent_strip,
 								   QVector<QSharedPointer<RealTerminal>> terminals) :
 	m_parent_terminal_strip(parent_strip),
 	m_real_terminal(terminals)
-{}
+{
+	for (const auto &real_t : m_real_terminal) {
+		if (real_t) {
+			real_t->setPhysicalTerminal(sharedRef());
+		}
+	}
+}
 
 /**
  * @brief PhysicalTerminal::sharedRef
@@ -80,6 +86,11 @@ QDomElement PhysicalTerminal::toXml(QDomDocument &parent_document) const
  */
 void PhysicalTerminal::setTerminals(const QVector<QSharedPointer<RealTerminal>> &terminals) {
 	m_real_terminal = terminals;
+	for (const auto &real_t : m_real_terminal) {
+		if (real_t) {
+			real_t->setPhysicalTerminal(sharedRef());
+		}
+	}
 }
 
 /**
@@ -90,6 +101,7 @@ void PhysicalTerminal::setTerminals(const QVector<QSharedPointer<RealTerminal>> 
  */
 void PhysicalTerminal::addTerminal(const QSharedPointer<RealTerminal> &terminal) {
 	m_real_terminal.append(terminal);
+	terminal->setPhysicalTerminal(sharedRef());
 }
 
 /**
@@ -98,8 +110,13 @@ void PhysicalTerminal::addTerminal(const QSharedPointer<RealTerminal> &terminal)
  * @param terminal
  * @return true if sucessfully removed
  */
-bool PhysicalTerminal::removeTerminal(const QSharedPointer<RealTerminal> &terminal) {
-	return m_real_terminal.removeOne(terminal);
+bool PhysicalTerminal::removeTerminal(const QSharedPointer<RealTerminal> &terminal)
+{
+	if (m_real_terminal.removeOne(terminal)) {
+		terminal->setPhysicalTerminal(QSharedPointer<PhysicalTerminal>());
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -122,6 +139,23 @@ bool PhysicalTerminal::setLevelOf(const QSharedPointer<RealTerminal> &terminal, 
 		return true;
 	}
 	return false;
+}
+
+PhysicalTerminal::~PhysicalTerminal()
+{
+	for (const auto &real_t : m_real_terminal) {
+		if (real_t) {
+			real_t->setPhysicalTerminal(QSharedPointer<PhysicalTerminal>());
+		}
+	}
+}
+
+/**
+ * @brief PhysicalTerminal::terminalStrip
+ * @return The parent terminal strip ornullptr
+ */
+TerminalStrip *PhysicalTerminal::terminalStrip() const {
+	return m_parent_terminal_strip.data();
 }
 
 /**
