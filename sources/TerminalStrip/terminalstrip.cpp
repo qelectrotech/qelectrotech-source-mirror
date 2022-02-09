@@ -104,21 +104,22 @@ void TerminalStrip::setData(const TerminalStripData &data) {
  */
 bool TerminalStrip::addTerminal(Element *terminal)
 {
-	if (m_terminal_elements_vector.contains(terminal)) {
-		return false;
+	for (const auto &real_t : m_real_terminals) {
+		if (real_t->element() == terminal) {
+			return false;
+		}
 	}
+
 	if (terminal->elementData().m_type != ElementData::Terminale) {
 		return false;
 	}
 
-	m_terminal_elements_vector.append(terminal);
-
 	auto casted_ = static_cast<TerminalElement *>(terminal);
-	m_real_terminals.append(casted_->realTerminal());
 
 		//Create a new single level physical terminal
 	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{casted_->realTerminal()});
 	m_physical_terminals.append(raw_phy_ptr->sharedRef());
+	rebuildRealVector();
 
 	return true;
 }
@@ -131,32 +132,23 @@ bool TerminalStrip::addTerminal(Element *terminal)
  */
 bool TerminalStrip::removeTerminal(Element *terminal)
 {
-	if (m_terminal_elements_vector.contains(terminal))
+	for (const auto &real_t : m_real_terminals)
 	{
-		m_terminal_elements_vector.removeOne(terminal);
-			//Get the real and physical terminal associated to @terminal
-		if (auto real_terminal = realTerminal(terminal))
+		if (real_t->element() == terminal)
 		{
-			if (auto physical_terminal = physicalTerminal(real_terminal))
+			if (auto physical_t = real_t->physicalTerminal())
 			{
-				if (physical_terminal->levelCount() == 1)  {
-					m_physical_terminals.removeOne(physical_terminal);
-				} else {
-					auto v = physical_terminal->realTerminals();
-					v.removeOne(real_terminal);
-					physical_terminal->setTerminals(v);
+				physical_t->removeTerminal(real_t);
+				if (physical_t->realTerminalCount() == 0) {
+					m_physical_terminals.removeOne(physical_t);
 				}
 			}
-			m_real_terminals.removeOne(real_terminal);
-
 
 			rebuildRealVector();
 			return true;
 		}
-
-			//There is no reason to be here, but in case of....
-		return false;
 	}
+
 	return false;
 }
 
@@ -256,6 +248,11 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uui
 	}
 
 	return QSharedPointer<RealTerminal>();
+}
+
+QVector<QSharedPointer<RealTerminal>> TerminalStrip::realTerminals() const
+{
+	return m_real_terminals;
 }
 
 
@@ -754,14 +751,6 @@ QSharedPointer<RealTerminal> TerminalStrip::nextRealTerminal(const QSharedPointe
 }
 
 /**
- * @brief TerminalStrip::terminalElement
- * @return A vector of all terminal element owned by this strip
- */
-QVector<QPointer<Element> > TerminalStrip::terminalElement() const {
-	return m_terminal_elements_vector;
-}
-
-/**
  * @brief TerminalStrip::toXml
  * @param parent_document
  * @return
@@ -824,7 +813,6 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 				{
 					if (terminal_elmt->uuid() == uuid_)
 					{
-						m_terminal_elements_vector.append(terminal_elmt);
 						real_t_vector.append(terminal_elmt->realTerminal());
 							//Remove the actual terminal element from the vector, they dicrease the size
 							//of the vector and so each iteration have less terminal element to check

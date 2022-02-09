@@ -106,6 +106,15 @@ TerminalStrip *RealTerminal::parentStrip() const {
 }
 
 /**
+ * @brief RealTerminal::physicalTerminal
+ * @return The parent physical terminal of this terminal.
+ * The returned QSharedPointer can be null
+ */
+QSharedPointer<PhysicalTerminal> RealTerminal::physicalTerminal() const {
+	return m_physical_terminal;
+}
+
+/**
  * @brief RealTerminal::level
  * @return
  */

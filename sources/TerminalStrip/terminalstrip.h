@@ -87,6 +87,7 @@ class TerminalStrip : public QObject
 		QVector<QSharedPointer<PhysicalTerminal>> physicalTerminal() const;
 		QSharedPointer<RealTerminal> realTerminal(Element *terminal) const;
 		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
+		QVector<QSharedPointer<RealTerminal>> realTerminals() const;
 
 		bool setOrderTo(const QVector<QSharedPointer<PhysicalTerminal>> &sorted_vector);
 		bool groupTerminals(const QSharedPointer<PhysicalTerminal> &receiver_terminal, const QVector<QSharedPointer<RealTerminal>> &added_terminals);
@@ -107,8 +108,6 @@ class TerminalStrip : public QObject
 		QSharedPointer<RealTerminal> previousRealTerminal(const QSharedPointer<RealTerminal> &real_terminal) const;
 		QSharedPointer<RealTerminal> nextRealTerminal(const QSharedPointer<RealTerminal> &real_terminal) const;
 
-		QVector<QPointer<Element>> terminalElement() const;
-
 		static QString xmlTagName() {return QStringLiteral("terminal_strip");}
 		QDomElement toXml(QDomDocument &parent_document);
 		bool fromXml(QDomElement &xml_element);
@@ -119,7 +118,6 @@ class TerminalStrip : public QObject
 	private:
 		TerminalStripData m_data;
 		QPointer<QETProject> m_project;
-		QVector<QPointer<Element>> m_terminal_elements_vector;
 		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
 		QVector<QSharedPointer<PhysicalTerminal>> m_physical_terminals;
 		QVector<QSharedPointer<TerminalStripBridge>> m_bridge;
