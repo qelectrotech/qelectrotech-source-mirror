@@ -36,7 +36,6 @@ class TerminalElement : public Element
 		~TerminalElement() override;
 		void initLink(QETProject *project) override;
 
-		void setRealTerminal(const QSharedPointer<RealTerminal> &real_t);
 		QSharedPointer<RealTerminal> realTerminal() const;
 		void setParentTerminalStrip(TerminalStrip *strip);
 		TerminalStrip *parentTerminalStrip() const;

@@ -113,13 +113,11 @@ bool TerminalStrip::addTerminal(Element *terminal)
 
 	m_terminal_elements_vector.append(terminal);
 
-		//Create the real terminal
-	auto raw_real_ptr = new RealTerminal(terminal);
-	auto real_terminal = raw_real_ptr->sharedRef();
-	m_real_terminals.append(real_terminal);
+	auto casted_ = static_cast<TerminalElement *>(terminal);
+	m_real_terminals.append(casted_->realTerminal());
 
 		//Create a new single level physical terminal
-	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{real_terminal});
+	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{casted_->realTerminal()});
 	m_physical_terminals.append(raw_phy_ptr->sharedRef());
 
 	return true;
@@ -811,7 +809,7 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 	{
 			//Get all free elements terminal of the project
 		const ElementProvider ep(m_project);
-		const auto free_terminals = ep.freeTerminal();
+		auto free_terminals = ep.freeTerminal();
 
 			//Read each physical terminal
 		for(auto &xml_physical : QETXML::findInDomElement(xml_layout, PhysicalTerminal::xmlTagName()))
@@ -821,14 +819,19 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 				//Read each real terminal of the current physical terminal of the loop
 			for (auto &xml_real : QETXML::findInDomElement(xml_physical, RealTerminal::xmlTagName()))
 			{
-				auto raw_ptr = new RealTerminal();
-				auto real_t = raw_ptr->sharedRef();
-				real_t->fromXml(xml_real, free_terminals);
-				if(real_t->isElement())
+				const auto uuid_ = QUuid(xml_real.attribute(QStringLiteral("element_uuid")));
+				for (auto terminal_elmt : qAsConst(free_terminals))
 				{
-					m_terminal_elements_vector.append(real_t->element());
+					if (terminal_elmt->uuid() == uuid_)
+					{
+						m_terminal_elements_vector.append(terminal_elmt);
+						real_t_vector.append(terminal_elmt->realTerminal());
+							//Remove the actual terminal element from the vector, they dicrease the size
+							//of the vector and so each iteration have less terminal element to check
+						free_terminals.removeOne(terminal_elmt);
+						break;
+					}
 				}
-				real_t_vector.append(real_t);
 			}
 
 			auto raw_ptr = new PhysicalTerminal(this, real_t_vector);

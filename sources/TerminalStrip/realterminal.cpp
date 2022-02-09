@@ -27,19 +27,12 @@
  */
 RealTerminal::RealTerminal(Element *terminal) :
 	m_element(terminal)
-{
-	if (terminal) {
-		static_cast<TerminalElement *>(terminal)->setRealTerminal(sharedRef());
-	}
-}
+{}
 
 RealTerminal::~RealTerminal()
 {
 	if (m_physical_terminal) {
 		m_physical_terminal->removeTerminal(sharedRef());
-	}
-	if (m_element) {
-		static_cast<TerminalElement *>(m_element.data())->setRealTerminal(QSharedPointer<RealTerminal>());
 	}
 }
 
@@ -78,36 +71,6 @@ QWeakPointer<RealTerminal> RealTerminal::weakRef() {
 }
 
 /**
- * @brief fromXml
- * @param xml_element
- * @return
- */
-bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElement *> &terminal_vector)
-{
-	if (xml_element.tagName() != xmlTagName()) {
-		return true;
-	}
-
-	m_uuid = QUuid(xml_element.attribute(QStringLiteral("uuid")));
-
-	if (xml_element.hasAttribute(QStringLiteral("element_uuid")))
-	{
-		QUuid uuid_(xml_element.attribute(QStringLiteral("element_uuid")));
-
-		for (auto terminal : terminal_vector) {
-			if (terminal->uuid() == uuid_)
-			{
-				m_element = terminal;
-				static_cast<TerminalElement *>(terminal)->setRealTerminal(sharedRef());
-				break;
-			}
-		}
-	}
-
-	return true;
-}
-
-/**
  * @brief toXml
  * @param parent_document
  * @return this real terminal to xml
@@ -115,7 +78,6 @@ bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElemen
 QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
 {
 	auto root_elmt = parent_document.createElement(this->xmlTagName());
-	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	if (m_element)
 		root_elmt.setAttribute(QStringLiteral("element_uuid"), m_element->uuid().toString());
 
@@ -306,6 +268,7 @@ QUuid RealTerminal::elementUuid() const {
  * @return the uuid of this real terminal
  */
 QUuid RealTerminal::uuid() const {
+	return elementUuid();
 	return m_uuid;
 }
 

@@ -41,24 +41,24 @@ class TerminalStripBridge;
  */
 class RealTerminal
 {
-		friend class TerminalStrip;
+		friend class TerminalElement;
 		friend class PhysicalTerminal;
 
 	private:
-		RealTerminal(Element *element = nullptr);
+		RealTerminal(Element *element);
 
 		QSharedPointer<RealTerminal> sharedRef();
 		QSharedPointer<RealTerminal> sharedRef() const;
 		QWeakPointer<RealTerminal> weakRef();
-
-		bool fromXml(QDomElement xml_element, const QVector<TerminalElement *> &terminal_vector);
-		QDomElement toXml(QDomDocument &parent_document) const;
 
 		void setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t);
 
 	public:
 		~RealTerminal();
 		TerminalStrip *parentStrip() const;
+
+		QDomElement toXml(QDomDocument &parent_document) const;
+
 		int level() const;
 		QString label() const;
 		QString Xref() const;

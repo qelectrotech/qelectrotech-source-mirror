@@ -28,7 +28,10 @@
 TerminalElement::TerminalElement(const ElementsLocation &location,
 				 QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Terminale)
-{}
+{
+	auto rt = new RealTerminal(this);
+	m_real_terminal = rt->sharedRef();
+}
 
 TerminalElement::~TerminalElement()
 {}
@@ -39,15 +42,6 @@ TerminalElement::~TerminalElement()
 */
 void TerminalElement::initLink(QETProject *project) {
 	Element::initLink(project);
-}
-
-/**
- * @brief TerminalElement::setRealTerminal
- * Set @a real_t as the real terminal for this terminal element
- * @param real_t
- */
-void TerminalElement::setRealTerminal(const QSharedPointer<RealTerminal> &real_t) {
-	m_real_terminal = real_t;
 }
 
 /**
