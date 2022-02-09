@@ -104,7 +104,7 @@ void TerminalStrip::setData(const TerminalStripData &data) {
  */
 bool TerminalStrip::addTerminal(Element *terminal)
 {
-	for (const auto &real_t : m_real_terminals) {
+	for (const auto &real_t : realTerminals()) {
 		if (real_t->element() == terminal) {
 			return false;
 		}
@@ -119,7 +119,6 @@ bool TerminalStrip::addTerminal(Element *terminal)
 		//Create a new single level physical terminal
 	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{casted_->realTerminal()});
 	m_physical_terminals.append(raw_phy_ptr->sharedRef());
-	rebuildRealVector();
 
 	return true;
 }
@@ -132,7 +131,7 @@ bool TerminalStrip::addTerminal(Element *terminal)
  */
 bool TerminalStrip::removeTerminal(Element *terminal)
 {
-	for (const auto &real_t : m_real_terminals)
+	for (const auto &real_t : realTerminals())
 	{
 		if (real_t->element() == terminal)
 		{
@@ -144,7 +143,6 @@ bool TerminalStrip::removeTerminal(Element *terminal)
 				}
 			}
 
-			rebuildRealVector();
 			return true;
 		}
 	}
@@ -218,30 +216,13 @@ QVector<QSharedPointer<PhysicalTerminal>> TerminalStrip::physicalTerminal() cons
 }
 
 /**
- * @brief TerminalStrip::realTerminal
- * @param terminal
- * @return the real terminal linked to \p terminal
- * the returned QSharedPointer can be null.
- */
-QSharedPointer<RealTerminal> TerminalStrip::realTerminal(Element *terminal) const
-{
-	for (const auto &real : qAsConst(m_real_terminals)) {
-		if (real->element() == terminal) {
-			return real;
-		}
-	}
-
-	return shared_real_terminal();
-}
-
-/**
  * @brief TerminalStrip::realTerminalForUuid
  * @param uuid
  * @return the real terminal with uuid @a uuid or a null QSharedPointer if not found
  */
 QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uuid) const
 {
-	for (const auto &t : qAsConst(m_real_terminals)) {
+	for (const auto &t : realTerminals()) {
 		if (t->elementUuid() == uuid) {
 			return t;
 		}
@@ -250,9 +231,17 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uui
 	return QSharedPointer<RealTerminal>();
 }
 
+/**
+ * @brief TerminalStrip::realTerminals
+ * @return All real terminal owned by this strip
+ */
 QVector<QSharedPointer<RealTerminal>> TerminalStrip::realTerminals() const
 {
-	return m_real_terminals;
+	QVector<QSharedPointer<RealTerminal>> vector_;
+	for (const auto &phy : qAsConst(m_physical_terminals)) {
+		vector_.append(phy->realTerminals());
+	}
+	return vector_;
 }
 
 
@@ -291,7 +280,6 @@ bool TerminalStrip::setOrderTo(const QVector<QSharedPointer<PhysicalTerminal>> &
 	}
 
 	m_physical_terminals = new_order;
-	rebuildRealVector();
 	emit orderChanged();
 	return true;
 }
@@ -337,7 +325,6 @@ bool TerminalStrip::groupTerminals(const QSharedPointer<PhysicalTerminal> &recei
 			}
 		}
 
-		rebuildRealVector();
 		emit orderChanged();
 	}
 	return true;
@@ -369,7 +356,6 @@ void TerminalStrip::unGroupTerminals(const QVector<QSharedPointer<RealTerminal>>
 	}
 
 	if (ungrouped) {
-		rebuildRealVector();
 		emit orderChanged();
 	}
 }
@@ -390,7 +376,6 @@ bool TerminalStrip::setLevel(const QSharedPointer<RealTerminal> &real_terminal, 
 			if (physical_terminal->realTerminals().size() > 1 &&
 				physical_terminal->setLevelOf(real_terminal, level))
 			{
-				rebuildRealVector();
 				emit orderChanged();
 				return true;
 			}
@@ -734,18 +719,20 @@ QSharedPointer<RealTerminal> TerminalStrip::nextTerminalInLevel(const QSharedPoi
 
 QSharedPointer<RealTerminal> TerminalStrip::previousRealTerminal(const QSharedPointer<RealTerminal> &real_terminal) const
 {
-	const auto index = m_real_terminals.indexOf(real_terminal);
+	const auto real_t_vector = realTerminals();
+	const auto index = real_t_vector.indexOf(real_terminal);
 	if (index) {
-		return m_real_terminals.at(index-1);
+		return real_t_vector.at(index-1);
 	}
 	return QSharedPointer<RealTerminal>();
 }
 
 QSharedPointer<RealTerminal> TerminalStrip::nextRealTerminal(const QSharedPointer<RealTerminal> &real_terminal) const
 {
-	const auto index = m_real_terminals.indexOf(real_terminal);
-	if (index != m_real_terminals.size()-1) {
-		return m_real_terminals.at(index+1);
+	const auto real_t_vector = realTerminals();
+	const auto index = real_t_vector.indexOf(real_terminal);
+	if (index != real_t_vector.size()-1) {
+		return real_t_vector.at(index+1);
 	}
 	return QSharedPointer<RealTerminal>();
 }
@@ -824,7 +811,6 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 
 			auto raw_ptr = new PhysicalTerminal(this, real_t_vector);
 			m_physical_terminals.append(raw_ptr->sharedRef());
-			m_real_terminals.append(real_t_vector);
 		}
 
 	}
@@ -840,17 +826,4 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 	}
 
 	return true;
-}
-
-/**
- * @brief TerminalStrip::rebuildRealVector
- * Rebuild the real terminal vector
- * to be ordered
- */
-void TerminalStrip::rebuildRealVector()
-{
-	m_real_terminals.clear();
-	for (const auto &phy : qAsConst(m_physical_terminals)) {
-		m_real_terminals.append(phy->realTerminals());
-	}
 }

@@ -85,7 +85,6 @@ class TerminalStrip : public QObject
 		QSharedPointer<PhysicalTerminal> physicalTerminal(int index) const;
 		QSharedPointer<PhysicalTerminal> physicalTerminal (const QSharedPointer<RealTerminal> &real_terminal) const;
 		QVector<QSharedPointer<PhysicalTerminal>> physicalTerminal() const;
-		QSharedPointer<RealTerminal> realTerminal(Element *terminal) const;
 		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
 		QVector<QSharedPointer<RealTerminal>> realTerminals() const;
 
@@ -113,12 +112,8 @@ class TerminalStrip : public QObject
 		bool fromXml(QDomElement &xml_element);
 
 	private:
-		void rebuildRealVector();
-
-	private:
 		TerminalStripData m_data;
 		QPointer<QETProject> m_project;
-		QVector<QSharedPointer<RealTerminal>> m_real_terminals;
 		QVector<QSharedPointer<PhysicalTerminal>> m_physical_terminals;
 		QVector<QSharedPointer<TerminalStripBridge>> m_bridge;
 };
