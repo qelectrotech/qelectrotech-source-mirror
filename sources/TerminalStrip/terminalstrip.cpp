@@ -250,7 +250,7 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminal(Element *terminal) cons
 QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uuid) const
 {
 	for (const auto &t : qAsConst(m_real_terminals)) {
-		if (t->uuid() == uuid) {
+		if (t->elementUuid() == uuid) {
 			return t;
 		}
 	}

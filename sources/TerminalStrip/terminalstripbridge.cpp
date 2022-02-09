@@ -90,7 +90,7 @@ QDomElement TerminalStripBridge::toXml(QDomDocument &parent_document) const
 		if (real_t)
 		{
 			auto terminal_elmt = parent_document.createElement(QStringLiteral("real_terminal"));
-			terminal_elmt.setAttribute(QStringLiteral("uuid"), real_t->uuid().toString());
+			terminal_elmt.setAttribute(QStringLiteral("uuid"), real_t->elementUuid().toString());
 			terminals_elmt.appendChild(terminal_elmt);
 		}
 	}

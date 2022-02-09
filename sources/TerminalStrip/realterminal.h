@@ -77,13 +77,11 @@ class RealTerminal
 
 		Element* element() const;
 		QUuid elementUuid() const;
-		QUuid uuid() const;
 
 		static QString xmlTagName();
 
 	private :
 		QPointer<Element> m_element;
-		QUuid m_uuid = QUuid::createUuid();
 		QWeakPointer<RealTerminal> m_this_weak;
 		QSharedPointer<PhysicalTerminal> m_physical_terminal;
 };

@@ -264,15 +264,6 @@ QUuid RealTerminal::elementUuid() const {
 }
 
 /**
- * @brief uuid
- * @return the uuid of this real terminal
- */
-QUuid RealTerminal::uuid() const {
-	return elementUuid();
-	return m_uuid;
-}
-
-/**
  * @brief RealTerminal::RealTerminal::xmlTagName
  * @return
  */
