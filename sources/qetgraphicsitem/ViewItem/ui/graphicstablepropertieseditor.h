@@ -53,6 +53,7 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		void on_m_header_font_pb_clicked();
 		void on_m_table_font_pb_clicked();
 		virtual void updateUi() override;
+		void updatePosWidget();
 		void updateInfoLabel();
 		void on_m_table_name_le_textEdited(const QString &arg1);
 		void on_m_previous_table_cb_activated(int index);

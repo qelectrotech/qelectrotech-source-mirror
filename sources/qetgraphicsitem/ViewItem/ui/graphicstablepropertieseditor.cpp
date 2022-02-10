@@ -91,11 +91,11 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 	m_connect_list << connect(m_table_item.data(),
 				  &QetGraphicsTableItem::xChanged,
 				  this,
-				  &GraphicsTablePropertiesEditor::updateUi);
+				  &GraphicsTablePropertiesEditor::updatePosWidget);
 	m_connect_list << connect(m_table_item.data(),
 				  &QetGraphicsTableItem::yChanged,
 				  this,
-				  &GraphicsTablePropertiesEditor::updateUi);
+				  &GraphicsTablePropertiesEditor::updatePosWidget);
 
 
 	if (auto editor = PropertiesEditorFactory::propertiesEditor(table->model(), this))
@@ -388,6 +388,12 @@ void GraphicsTablePropertiesEditor::updateUi()
 		button->setChecked(true);
 
 	setUpEditConnection();
+}
+
+void GraphicsTablePropertiesEditor::updatePosWidget()
+{
+	ui->m_x_pos->setValue(m_table_item->pos().x());
+	ui->m_y_pos->setValue(m_table_item->pos().y());
 }
 
 void GraphicsTablePropertiesEditor::updateInfoLabel()
