@@ -779,7 +779,9 @@ void QetGraphicsTableItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 */
 void QetGraphicsTableItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
-	if (m_model) {
+	if (m_model &&
+		!m_handler_item.contains(mapToItem(&m_handler_item, event->pos())))
+	{
 		m_handler_item.scene()->removeItem(&m_handler_item);
 	}
 	QGraphicsObject::hoverLeaveEvent(event);
