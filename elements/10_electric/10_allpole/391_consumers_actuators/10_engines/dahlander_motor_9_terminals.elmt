@@ -1,7 +1,7 @@
 <definition version="0.90" height="130" link_type="simple" hotspot_x="44" width="110" hotspot_y="104" type="element">
     <uuid uuid="{a16a86d8-6dff-49b1-b9c6-625a7c7a35de}"/>
     <names>
-        <name lang="hu">Aszinkron motor, három fázisú Dalander 9 kivezetéssel</name>
+        <name lang="hu">Aszinkron motor, három fázisú Dahlander 9 kivezetéssel</name>
         <name lang="en">Induction motor, three-phase Dahlander 9 terminals</name>
     </names>
     <elementInformations/>
