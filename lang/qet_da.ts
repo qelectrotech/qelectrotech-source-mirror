@@ -1094,27 +1094,27 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="20"/>
         <source>Poignées :</source>
-        <translation type="unfinished"></translation>
+        <translation>Håndtag:</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="28"/>
         <source>x 1</source>
-        <translation type="unfinished"></translation>
+        <translation>x 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="33"/>
         <source>x 2</source>
-        <translation type="unfinished"></translation>
+        <translation>x 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="38"/>
         <source>x 3</source>
-        <translation type="unfinished"></translation>
+        <translation>x 3</translation>
     </message>
 </context>
 <context>
