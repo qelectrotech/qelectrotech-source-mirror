@@ -683,7 +683,7 @@ void ElementsCollectionWidget::loadingFinished()
 	m_tree_view->setEnabled(true);
 
 	if (m_loading_timer) {
-		qInfo()<<"Elements collection finished to be loaded in " << m_loading_timer->elapsed() << " ms";
+		qInfo()<<"Elements collection finished to be loaded in " << m_loading_timer->elapsed()/1000.0 << "seconds";
 		m_loading_timer.reset();
 	}
 	else {
