@@ -232,7 +232,17 @@ void MachineInfo::init_get_cpu_info_linux()
 	linuxgpuinfo.waitForFinished();
 	QString linuxGPUOutput = linuxgpuinfo.readAllStandardOutput();
 	pc.gpu.info=QString(linuxGPUOutput.toLocal8Bit().constData());
-	pc.gpu.RAM="@ToDo";
+	linuxgpuinfo.close();
+    
+	QProcess linuxgpuRAM;
+	linuxgpuRAM.start("bash",
+			QStringList()
+			<< "-c"
+			<< "glxinfo | egrep -i 'video memory' | cut  -b 1-");
+	linuxgpuRAM.waitForFinished();
+	QString linuxGPURAMOutput = linuxgpuRAM.readAllStandardOutput();
+	pc.gpu.RAM=QString(linuxGPURAMOutput.toLocal8Bit().constData());
+	linuxgpuRAM.close();
 }
 
 /**
