@@ -50,6 +50,7 @@ class TerminalStripBridge
 	private:
 		bool addTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
 		void removeTerminals(const QVector<QSharedPointer<RealTerminal>> &real_terminals);
+		void removeTerminal(const QSharedPointer<RealTerminal> &real_terminal);
 
 
 	private:

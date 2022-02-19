@@ -77,13 +77,18 @@ class TerminalStrip : public QObject
 		TerminalStripData data() const;
 		void setData(const TerminalStripData &data);
 
+		bool addTerminal    (QSharedPointer<RealTerminal> real_t);
+		bool removeTerminal (QSharedPointer<RealTerminal> real_t);
 		bool addTerminal    (Element *terminal);
 		bool removeTerminal (Element *terminal);
+		bool addTerminal   (QSharedPointer<PhysicalTerminal> phy_t);
+		bool removeTerminal(QSharedPointer<PhysicalTerminal> phy_t);
 
 		int pos(const QSharedPointer<PhysicalTerminal> &terminal) const;
 		int physicalTerminalCount() const;
 		QSharedPointer<PhysicalTerminal> physicalTerminal(int index) const;
-		QSharedPointer<PhysicalTerminal> physicalTerminal (const QSharedPointer<RealTerminal> &real_terminal) const;
+		QSharedPointer<PhysicalTerminal> physicalTerminal(const QSharedPointer<RealTerminal> &real_terminal) const;
+		QSharedPointer<PhysicalTerminal> physicalTerminal(const QUuid &uuid) const;
 		QVector<QSharedPointer<PhysicalTerminal>> physicalTerminal() const;
 		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;
 		QVector<QSharedPointer<RealTerminal>> realTerminals() const;

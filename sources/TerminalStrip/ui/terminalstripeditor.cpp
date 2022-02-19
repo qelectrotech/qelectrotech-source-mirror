@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -122,25 +122,31 @@ void TerminalStripEditor::setUpUndoConnections()
 	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalMovedFromStripToStrip, this,
 			[=] (QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid)
 	{
-		auto terminal  = m_uuid_terminal_H.value(terminal_uuid);
 		auto old_strip = m_uuid_strip_H.value(old_strip_uuid);
 		auto new_strip = m_uuid_strip_H.value(new_strip_uuid);
 
-		if (!terminal || !old_strip || !new_strip) {
+		if (!old_strip || !new_strip) {
+			return;
+		}
+		auto terminal = old_strip->physicalTerminal(terminal_uuid);
+		if (!terminal) {
 			return;
 		}
 
-		auto undo = new AddTerminalToStripCommand(terminal, old_strip, new_strip);
+		auto undo = new MoveTerminalCommand(terminal, old_strip, new_strip);
 		m_project->undoStack()->push(undo);
 	});
 
 	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalRemovedFromStrip, this,
 			[=] (QUuid terminal_uuid, QUuid old_strip_uuid)
 	{
-		auto terminal_ = m_uuid_terminal_H.value(terminal_uuid);
 		auto strip_ = m_uuid_strip_H.value(old_strip_uuid);
+		if (!strip_) {
+			return;
+		}
 
-		if (!terminal_ || !strip_) {
+		auto terminal_ = strip_->physicalTerminal(terminal_uuid);
+		if (!terminal_) {
 			return;
 		}
 
@@ -248,12 +254,8 @@ QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_s
 			}
 			const auto real_t = phy_t->realTerminals().at(0);
 			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(text_), TerminalStripTreeWidget::Terminal);
-			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t->elementUuid());
+			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, phy_t->uuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
-
-			if (real_t->element()) {
-				m_uuid_terminal_H.insert(real_t->elementUuid(), qgraphicsitem_cast<TerminalElement *>(real_t->element()));
-			}
 		}
 	}
 
@@ -291,7 +293,7 @@ void TerminalStripEditor::addFreeTerminal()
 		item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, uuid_.toString());
 		item->setIcon(0, QET::Icons::ElementTerminal);
 
-		m_uuid_terminal_H.insert(uuid_, terminal);
+		m_uuid_terminal_H.insert(uuid_, terminal->realTerminal());
 	}
 }
 

@@ -141,6 +141,11 @@ bool PhysicalTerminal::setLevelOf(const QSharedPointer<RealTerminal> &terminal, 
 	return false;
 }
 
+void PhysicalTerminal::setParentStrip(TerminalStrip *strip)
+{
+	m_parent_terminal_strip = strip;
+}
+
 PhysicalTerminal::~PhysicalTerminal()
 {
 	for (const auto &real_t : m_real_terminal) {

@@ -79,7 +79,7 @@ class TerminalStripEditor : public QDialog
 		QETProject *m_project = nullptr;
 
 		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
-		QHash<QUuid, QPointer<TerminalElement>> m_uuid_terminal_H;
+		QHash<QUuid, QSharedPointer<RealTerminal>> m_uuid_terminal_H;
 		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
 		TerminalStrip *m_current_strip = nullptr;
 		TerminalStripModel *m_model = nullptr;

@@ -94,6 +94,49 @@ void TerminalStrip::setData(const TerminalStripData &data) {
 	m_data = data;
 }
 
+bool TerminalStrip::addTerminal(QSharedPointer<RealTerminal> real_t)
+{
+		//Check if terminal is already owned by a strip
+		//return if this strip or false if another strip
+	if (real_t->parentStrip()) {
+		if (real_t->parentStrip() != this)
+			return false;
+		else
+			return true;
+	}
+
+		//Create a new single level physical terminal
+	auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{real_t});
+	m_physical_terminals.append(raw_phy_ptr->sharedRef());
+
+	emit orderChanged();
+	return true;
+}
+
+bool TerminalStrip::removeTerminal(QSharedPointer<RealTerminal> real_t)
+{
+	if (real_t->parentStrip() != this) {
+		return false;
+	}
+
+	if (auto bridge_ = real_t->bridge()) {
+		bridge_->removeTerminal(real_t);
+	}
+
+	if (auto phy_t = real_t->physicalTerminal())
+	{
+		phy_t->removeTerminal(real_t);
+		if (phy_t->realTerminalCount() == 0) {
+			m_physical_terminals.removeOne(phy_t);
+		}
+
+		emit orderChanged();
+		return true;
+	}
+
+	return false;
+}
+
 /**
  * @brief TerminalStrip::addTerminal
  * Add terminal to this terminal strip
@@ -151,6 +194,55 @@ bool TerminalStrip::removeTerminal(Element *terminal)
 }
 
 /**
+ * @brief TerminalStrip::addTerminal
+ * Add @a phy_t in this terminal strip.
+ * @param phy_t
+ * @return true if successfully added. A terminal can't be added is already
+ * belong to another terminal strip.
+ */
+bool TerminalStrip::addTerminal(QSharedPointer<PhysicalTerminal> phy_t)
+{
+	if (phy_t->terminalStrip()) {
+		if (phy_t->terminalStrip() == this)
+			return true;
+		else
+			return false;
+	}
+
+	m_physical_terminals.append(phy_t);
+	phy_t->setParentStrip(this);
+
+	emit orderChanged();
+	return true;
+
+}
+
+/**
+ * @brief TerminalStrip::removeTerminal
+ * Remove @a phy_t from this terminal strip.
+ * @param phy_t
+ * @return true if successfully removed. Return false if can't be removed
+ * because not owned by this strip
+ */
+bool TerminalStrip::removeTerminal(QSharedPointer<PhysicalTerminal> phy_t)
+{
+	if (m_physical_terminals.removeOne(phy_t))
+	{
+		for (const auto &real_t : phy_t->realTerminals()) {
+			if (auto bridge_ = real_t->bridge()) {
+				bridge_->removeTerminal(real_t);
+			}
+		}
+
+		phy_t->setParentStrip(nullptr);
+		emit orderChanged();
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * @brief TerminalStrip::pos
  * @param terminal
  * @return the position of the physical terminal
@@ -200,6 +292,24 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal (const QSharedP
 	for (auto &physical : qAsConst(m_physical_terminals)) {
 		if (physical->realTerminals().contains(real_terminal)) {
 			return physical;
+		}
+	}
+
+	return QSharedPointer<PhysicalTerminal>();
+}
+
+/**
+ * @brief TerminalStrip::physicalTerminal
+ * @param uuid
+ * @return the the physicalTerminal with the uuid @a uuid or a empty
+ * QSharedPointer if empty.
+ */
+QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(const QUuid &uuid) const
+{
+	for (const auto &phy_t : m_physical_terminals)
+	{
+		if (phy_t->uuid() == uuid) {
+			return phy_t;
 		}
 	}
 

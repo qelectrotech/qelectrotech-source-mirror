@@ -23,6 +23,8 @@
 
 class TerminalElement;
 class TerminalStrip;
+class RealTerminal;
+class PhysicalTerminal;
 
 /**
  * @brief The AddTerminalToStripCommand class
@@ -34,27 +36,15 @@ class TerminalStrip;
 class AddTerminalToStripCommand : public QUndoCommand
 {
     public:
-        AddTerminalToStripCommand(TerminalElement *terminal, TerminalStrip *strip, QUndoCommand *parent = nullptr);
-        AddTerminalToStripCommand(TerminalElement *terminal, TerminalStrip *old_strip,
-								  TerminalStrip *new_strip, QUndoCommand *parent = nullptr);
+		AddTerminalToStripCommand(QSharedPointer<RealTerminal> terminal, TerminalStrip *strip, QUndoCommand *parent = nullptr);
         ~AddTerminalToStripCommand() override;
 
         void undo() override;
         void redo() override;
 
     private:
-        enum Operation{
-            none,
-            add,
-            move,
-        };
-
-        QPointer<TerminalElement> m_terminal;
-        QPointer<TerminalStrip> m_old_strip;
+		QSharedPointer<RealTerminal> m_terminal;
         QPointer<TerminalStrip> m_new_strip;
-        Operation m_operation = Operation::none;
-
-
 };
 
 /**
@@ -65,15 +55,30 @@ class AddTerminalToStripCommand : public QUndoCommand
 class RemoveTerminalFromStripCommand : public QUndoCommand
 {
 	public:
-		RemoveTerminalFromStripCommand (TerminalElement *terminal, TerminalStrip *strip, QUndoCommand *parent = nullptr);
+		RemoveTerminalFromStripCommand (QSharedPointer<PhysicalTerminal> terminal, TerminalStrip *strip, QUndoCommand *parent = nullptr);
 		~RemoveTerminalFromStripCommand() override {}
 
 		void undo() override;
 		void redo() override;
 
 	private:
-		QPointer<TerminalElement> m_terminal;
+		QVector<QSharedPointer<RealTerminal>> m_terminals;
 		QPointer<TerminalStrip> m_strip;
+};
+
+class MoveTerminalCommand : public QUndoCommand
+{
+	public:
+		MoveTerminalCommand (QSharedPointer<PhysicalTerminal> terminal, TerminalStrip *old_strip,
+							 TerminalStrip *new_strip, QUndoCommand *parent = nullptr);
+
+		void undo() override;
+		void redo() override;
+
+	private:
+		const QSharedPointer<PhysicalTerminal> m_terminal;
+		QPointer<TerminalStrip> m_old_strip, m_new_strip;
+
 };
 
 #endif // ADDTERMINALTOSTRIPCOMMAND_H

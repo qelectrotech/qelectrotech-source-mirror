@@ -163,3 +163,7 @@ void TerminalStripBridge::removeTerminals(const QVector<QSharedPointer<RealTermi
 		m_real_terminals.removeOne(real_t);
 	}
 }
+
+void TerminalStripBridge::removeTerminal(const QSharedPointer<RealTerminal> &real_terminal) {
+	m_real_terminals.removeOne(real_terminal);
+}
