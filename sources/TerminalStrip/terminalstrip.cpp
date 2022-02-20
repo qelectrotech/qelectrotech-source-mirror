@@ -278,27 +278,6 @@ QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal(int index) cons
 }
 
 /**
- * @brief TerminalStrip::physicalTerminalData
- * @param real_terminal
- * @return the parent PhysicalTerminal of \p real_terminal.
- * the PhysicalTerminal can be null if \p real_terminal don't belong to this strip
- */
-QSharedPointer<PhysicalTerminal> TerminalStrip::physicalTerminal (const QSharedPointer<RealTerminal> &real_terminal) const
-{
-	if (real_terminal.isNull()) {
-		return QSharedPointer<PhysicalTerminal>();
-	}
-
-	for (auto &physical : qAsConst(m_physical_terminals)) {
-		if (physical->realTerminals().contains(real_terminal)) {
-			return physical;
-		}
-	}
-
-	return QSharedPointer<PhysicalTerminal>();
-}
-
-/**
  * @brief TerminalStrip::physicalTerminal
  * @param uuid
  * @return the the physicalTerminal with the uuid @a uuid or a empty
@@ -419,9 +398,9 @@ bool TerminalStrip::groupTerminals(const QSharedPointer<PhysicalTerminal> &recei
 			continue;
 		}
 
-		auto physical_ = physicalTerminal(added_terminal);
-		physical_->removeTerminal(added_terminal);
-
+		if (auto phy_t = added_terminal->physicalTerminal()) {
+			phy_t->removeTerminal(added_terminal);
+		}
 		receiver_terminal->addTerminal(added_terminal);
 		have_grouped = true;
 	}
@@ -452,7 +431,7 @@ void TerminalStrip::unGroupTerminals(const QVector<QSharedPointer<RealTerminal>>
 	{
 		if (real_terminal)
 		{
-			if (auto physical_terminal = physicalTerminal(real_terminal)) //Get the physical terminal
+			if (auto physical_terminal = real_terminal->physicalTerminal()) //Get the physical terminal
 			{
 				if (physical_terminal->realTerminals().size() > 1) //Check if physical have more than one real terminal
 				{
@@ -480,8 +459,7 @@ bool TerminalStrip::setLevel(const QSharedPointer<RealTerminal> &real_terminal, 
 {
 	if (real_terminal)
 	{
-		auto physical_terminal = physicalTerminal(real_terminal);
-		if (physical_terminal)
+		if (auto physical_terminal = real_terminal->physicalTerminal())
 		{
 			if (physical_terminal->realTerminals().size() > 1 &&
 				physical_terminal->setLevelOf(real_terminal, level))
@@ -520,7 +498,7 @@ bool TerminalStrip::isBridgeable(const QVector<QSharedPointer<RealTerminal>> &re
 	const int level_ = first_real_terminal->level();
 
 		// Get the physical terminal and pos
-	auto first_physical_terminal = physicalTerminal(first_real_terminal);
+	auto first_physical_terminal = first_real_terminal->physicalTerminal();
 	QVector<shared_physical_terminal> physical_vector{first_physical_terminal};
 	QVector<int> pos_vector{m_physical_terminals.indexOf(first_physical_terminal)};
 
@@ -543,7 +521,7 @@ bool TerminalStrip::isBridgeable(const QVector<QSharedPointer<RealTerminal>> &re
 		}
 
 			// Not to the same physical terminal of a previous checked real terminal
-		const auto physical_terminal = physicalTerminal(real_terminal);
+		const auto physical_terminal = real_terminal->physicalTerminal();
 		if (physical_vector.contains(physical_terminal)) {
 			return false;
 		} else {
@@ -691,7 +669,7 @@ bool TerminalStrip::canUnBridge(const QVector<QSharedPointer<RealTerminal> > &re
 			if (compar_bridge != isBridged(real_t)) {
 				return false;
 			} else {
-				sorted_terminal.insert(m_physical_terminals.indexOf(physicalTerminal(real_t)),
+				sorted_terminal.insert(m_physical_terminals.indexOf(real_t->physicalTerminal()),
 									   real_t);
 			}
 		}
@@ -785,7 +763,7 @@ QSharedPointer<TerminalStripBridge> TerminalStrip::bridgeFor(const QVector<QShar
  */
 QSharedPointer<RealTerminal> TerminalStrip::previousTerminalInLevel(const QSharedPointer<RealTerminal> &real_terminal) const
 {
-	const auto phy_t = physicalTerminal(real_terminal);
+	const auto phy_t = real_terminal->physicalTerminal();
 	if (real_terminal && phy_t)
 	{
 		const auto level_ = phy_t->levelOf(real_terminal);
@@ -810,7 +788,7 @@ QSharedPointer<RealTerminal> TerminalStrip::previousTerminalInLevel(const QShare
  */
 QSharedPointer<RealTerminal> TerminalStrip::nextTerminalInLevel(const QSharedPointer<RealTerminal> &real_terminal) const
 {
-	const auto phy_t = physicalTerminal(real_terminal);
+	const auto phy_t = real_terminal->physicalTerminal();
 	if (real_terminal && phy_t)
 	{
 		const auto level_ = phy_t->levelOf(real_terminal);

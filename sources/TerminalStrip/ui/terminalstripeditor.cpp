@@ -717,7 +717,7 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 		if (mrtd_vector.size() >= 2)
 		{
 				//At this step get the first physical terminal as receiver
-			auto receiver_ = m_current_strip->physicalTerminal(mrtd_vector.first().real_terminal);
+			auto receiver_ = mrtd_vector.first().real_terminal.toStrongRef()->physicalTerminal();
 
 			QVector<QSharedPointer<RealTerminal>> vector_;
 			int count_ = 0;
@@ -728,11 +728,11 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 
 					//Get the better physical terminal as receiver
 					//(physical terminal with the max of real terminal)
-				const auto current_physical = m_current_strip->physicalTerminal(real_t);
+				const auto current_physical = real_t->physicalTerminal();
 				int real_t_count = current_physical->realTerminalCount();
 				if (real_t_count > 1 && real_t_count > count_) {
 					count_ = real_t_count;
-					receiver_ = m_current_strip->physicalTerminal(real_t);
+					receiver_ = real_t->physicalTerminal();
 				}
 
 			}

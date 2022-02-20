@@ -87,7 +87,6 @@ class TerminalStrip : public QObject
 		int pos(const QSharedPointer<PhysicalTerminal> &terminal) const;
 		int physicalTerminalCount() const;
 		QSharedPointer<PhysicalTerminal> physicalTerminal(int index) const;
-		QSharedPointer<PhysicalTerminal> physicalTerminal(const QSharedPointer<RealTerminal> &real_terminal) const;
 		QSharedPointer<PhysicalTerminal> physicalTerminal(const QUuid &uuid) const;
 		QVector<QSharedPointer<PhysicalTerminal>> physicalTerminal() const;
 		QSharedPointer<RealTerminal> realTerminalForUuid(const QUuid &uuid) const;

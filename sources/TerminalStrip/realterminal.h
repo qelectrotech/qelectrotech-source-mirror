@@ -55,8 +55,8 @@ class RealTerminal
 
 	public:
 		~RealTerminal();
-		TerminalStrip *parentStrip() const;
-		QSharedPointer<PhysicalTerminal> physicalTerminal() const;
+		TerminalStrip *parentStrip() const noexcept;
+		QSharedPointer<PhysicalTerminal> physicalTerminal() const noexcept;
 
 		QDomElement toXml(QDomDocument &parent_document) const;
 

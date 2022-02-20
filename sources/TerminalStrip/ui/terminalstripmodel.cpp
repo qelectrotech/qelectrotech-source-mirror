@@ -677,7 +677,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		//Check if we need to draw a none bridge pixmap
 
 		//Check previous
-	auto phy_t = m_terminal_strip->physicalTerminal(mrtd.real_terminal);
+	auto phy_t = mrtd.real_terminal.toStrongRef()->physicalTerminal();
 	auto current_real_terminal = mrtd;
 	auto current_phy_uuid = phy_t->uuid();
 	bool already_jumped_to_previous = false;
@@ -691,7 +691,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid())
+		if (current_phy_uuid == current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -703,7 +703,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_previous = true;
-			current_phy_uuid = m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid();
+			current_phy_uuid = current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				previous_data = current_real_terminal;
@@ -726,7 +726,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 		}
 
 			//We are in the same physical terminal as previous loop
-		if (current_phy_uuid == m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid())
+		if (current_phy_uuid == current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid())
 		{
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
@@ -738,7 +738,7 @@ QPixmap TerminalStripModel::bridgePixmapFor(const QModelIndex &index) const
 			break;
 		} else {
 			already_jumped_to_next = true;
-			current_phy_uuid = m_terminal_strip->physicalTerminal(current_real_terminal.real_terminal)->uuid();
+			current_phy_uuid = current_real_terminal.real_terminal.toStrongRef()->physicalTerminal()->uuid();
 			if (current_real_terminal.bridged_ &&
 				current_real_terminal.level_ == level_column) {
 				next_data = current_real_terminal;

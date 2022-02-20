@@ -97,7 +97,7 @@ void RealTerminal::setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &p
 * @brief parentStrip
 * @return parent terminal strip or nullptr
 */
-TerminalStrip *RealTerminal::parentStrip() const {
+TerminalStrip *RealTerminal::parentStrip() const noexcept {
 	if (m_physical_terminal) {
 		return m_physical_terminal->terminalStrip();
 	} else {
@@ -110,7 +110,7 @@ TerminalStrip *RealTerminal::parentStrip() const {
  * @return The parent physical terminal of this terminal.
  * The returned QSharedPointer can be null
  */
-QSharedPointer<PhysicalTerminal> RealTerminal::physicalTerminal() const {
+QSharedPointer<PhysicalTerminal> RealTerminal::physicalTerminal() const noexcept{
 	return m_physical_terminal;
 }
 
