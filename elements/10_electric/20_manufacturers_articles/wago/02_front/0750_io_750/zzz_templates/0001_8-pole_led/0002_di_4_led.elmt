@@ -8,6 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -50,10 +51,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon x1="-11" y4="-105.6" y3="-105.6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="11" y1="-113.6" x4="-11" x3="11" y2="-113.6"/>
         <polygon y4="-54.29" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y9="-59.39" y11="-61.77" x16="-8.98" y12="-62.87" x5="-9.19" y1="-60.06" y13="-63.76" y15="-62.87" y7="-54.29" y8="-58.05" x13="-5.86" x4="-11" x3="-11" y3="-58.05" x11="-4.94" y14="-63.76" x9="-3.81" x1="-8.79" y5="-52.5" x6="-4.73" y6="-52.5" x12="-4.94" x10="-5.11" x15="-8.98" x7="-2.93" y16="-61.77" x8="-2.93" x2="-10.11" y2="-59.39" x14="-8.08" antialias="false" y10="-60.06"/>
         <polygon y4="-54.29" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y9="-59.39" y11="-61.77" x16="1.37" y12="-62.87" x5="1.16" y1="-60.06" y13="-63.76" y15="-62.87" y7="-54.29" y8="-58.05" x13="4.5" x4="-0.65" x3="-0.65" y3="-58.05" x11="5.4" y14="-63.76" x9="6.54" x1="1.55" y5="-52.5" x6="5.61" y6="-52.5" x12="5.4" x10="5.25" x15="1.37" x7="7.43" y16="-61.77" x8="7.43" x2="0.23" y2="-59.39" x14="2.27" antialias="false" y10="-60.06"/>
-        <text rotation="0" x="-11.7" text="A" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-99.67"/>
-        <text rotation="0" x="-11.7" text="B" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-90.52"/>
-        <text rotation="0" x="7.75" text="C" font="Sans Serif,3.43,-1,5,50,0,0,0,0,0" color="#000000" y="-95.09"/>
-        <text rotation="0" x="7.5" text="D" font="Sans Serif,3.43,-1,5,50,0,0,0,0,0" color="#000000" y="-85.95"/>
+        <text rotation="0" x="-11.7" text="A" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-99.67"/>
+        <text rotation="0" x="-11.7" text="B" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-90.52"/>
+        <text rotation="0" x="7.5" text="C" font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" y="-95.1"/>
+        <text rotation="0" x="7.5" text="D" font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" y="-86"/>
         <circle style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false" x="-10.54" diameter="6.86" y="-99.95"/>
         <circle style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false" x="-10.54" diameter="6.86" y="-90.81"/>
         <circle style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false" x="-0.4" diameter="6.86" y="-99.95"/>

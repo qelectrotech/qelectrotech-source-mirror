@@ -15,7 +15,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-838/040-000</elementInformation>
-        <elementInformation show="1" name="description">CANopen - Controller D-Sub</elementInformation>
+        <elementInformation show="1" name="description">CANopen - Controller D-Sub XTR</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -48,8 +48,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         </dynamic_text>
         <text rotation="0" x="-199" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" text="0V" color="#000000"/>
         <text rotation="0" x="-279" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" text="24V" color="#000000"/>
-        <text rotation="0" x="123" font="Sans Serif,12,-1,5,50,0,0,0,0,0" y="-31" text="_" color="#000000"/>
-        <text rotation="0" x="43" font="Sans Serif,12,-1,5,50,0,0,0,0,0" y="-31" text="_" color="#000000"/>
+        <text rotation="0" x="123" font="Sans Serif,12,-1,5,50,0,0,0,0,0" y="-22" text="−" color="#000000"/>
+        <text rotation="0" x="43" font="Sans Serif,12,-1,5,50,0,0,0,0,0" y="-22" text="−" color="#000000"/>
         <text rotation="0" x="-39" font="Sans Serif,12,-1,5,50,0,0,0,0,0" y="-22" text="+" color="#000000"/>
         <text rotation="0" x="-119" font="Sans Serif,12,-1,5,50,0,0,0,0,0" y="-22" text="+" color="#000000"/>
         <text rotation="0" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" text="CAN" color="#000000"/>

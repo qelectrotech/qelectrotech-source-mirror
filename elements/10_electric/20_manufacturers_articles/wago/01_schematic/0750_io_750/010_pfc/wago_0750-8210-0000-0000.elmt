@@ -67,8 +67,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text x="201" text="PE" rotation="0" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="-199" text="0V" rotation="0" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="-279" text="24V" rotation="0" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text x="123" text="_" rotation="0" y="-31" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text x="43" text="_" rotation="0" y="-31" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="123" text="−" rotation="0" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="43" text="−" rotation="0" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000"/>
         <dynamic_text text_from="ElementInfo" frame="false" text_width="-1" x="221" z="60" rotation="0" y="89.5" uuid="{70d0a65b-d385-4a32-864c-89d9d47f6fcb}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>

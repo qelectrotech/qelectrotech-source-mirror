@@ -68,8 +68,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text color="#000000" x="-329" rotation="0" y="105" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="WAGO 750-8211"/>
         <text color="#000000" x="-199" rotation="0" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="0V"/>
         <text color="#000000" x="-279" rotation="0" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="24V"/>
-        <text color="#000000" x="123" rotation="0" y="-31" font="Sans Serif,12,-1,5,50,0,0,0,0,0" text="_"/>
-        <text color="#000000" x="43" rotation="0" y="-31" font="Sans Serif,12,-1,5,50,0,0,0,0,0" text="_"/>
+        <text color="#000000" x="123" rotation="0" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0" text="−"/>
+        <text color="#000000" x="43" rotation="0" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0" text="−"/>
         <text color="#000000" x="-39" rotation="0" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0" text="+"/>
         <text color="#000000" x="-119" rotation="0" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0" text="+"/>
         <text color="#000000" x="-355" rotation="0" y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Eth1 (SFP)"/>

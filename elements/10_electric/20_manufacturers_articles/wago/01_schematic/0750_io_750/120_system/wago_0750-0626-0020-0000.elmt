@@ -8,7 +8,7 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-626/020-000</elementInformation>
-        <elementInformation show="1" name="description">Filter-Module DC 24V</elementInformation>
+        <elementInformation show="1" name="description">Filter-Module DC 24V High Pot.</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
@@ -44,7 +44,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text color="#000000" y="-24" x="-119" text="24V" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
         <text color="#000000" y="-24" x="122" text="0V" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
         <text color="#000000" y="-42" x="125" text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0"/>
-        <text color="#000000" y="45" x="-130" text="Filter-Module DC 24 V" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text color="#000000" y="45" x="-130" text="Filter-Module DC 24 V (high Pot.)" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
         <text color="#000000" y="-42" x="-196" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0"/>
         <text color="#000000" y="-24" x="201" text="24V In" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
         <text color="#000000" y="-42" x="206" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0"/>

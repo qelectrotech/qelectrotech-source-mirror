@@ -41,8 +41,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         </dynamic_text>
         <text y="-22" rotation="0" x="-199" color="#000000" text="0V" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text y="-22" rotation="0" x="-279" color="#000000" text="24V" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text y="-31" rotation="0" x="123" color="#000000" text="_" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
-        <text y="-31" rotation="0" x="43" color="#000000" text="_" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
+        <text y="-22" rotation="0" x="123" color="#000000" text="−" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
+        <text y="-22" rotation="0" x="43" color="#000000" text="−" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text y="-22" rotation="0" x="-39" color="#000000" text="+" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text y="-22" rotation="0" x="-119" color="#000000" text="+" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text y="4" rotation="0" x="-355" color="#000000" text="RJ45 Input" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>

@@ -15,7 +15,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <description>
         <polygon y23="70.5" y10="-123.5" x19="-16" antialias="false" x9="-10" y18="71.5" x10="-2" x25="-10" x26="8" y1="-123.5" y9="-123.5" x16="-12" x20="-18" x6="-2" y25="67.5" x27="8" y5="-120.5" x21="-18" x13="-18" y11="-126.5" x1="12" y15="-124.5" y19="67.5" x11="-2" x7="-2" style="line-style:normal;line-weight:thin;filling:white;color:black" x8="-10" y26="67.5" y24="70.5" x5="5" x2="8" y20="67.5" x4="5" y7="-117.5" x18="-16" y22="73.5" x22="-2" x17="-12" y3="-119.5" y27="70.5" y2="-123.5" x23="-2" y14="-120.5" y16="-124.5" y6="-120.5" x12="-18" x3="8" y8="-117.5" y21="73.5" x15="-16" y4="-119.5" x24="-10" x28="12" x14="-16" y13="-120.5" y12="-126.5" y17="71.5" y28="70.5"/>
         <polygon x4="-12" x3="6" antialias="false" x2="6" y3="-116.6" style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-12" y4="-116.6" y1="-126.5" y2="-126.5"/>
-        <text y="-120.25" x="-11" text="753-xxx" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
         <circle y="-60.36" diameter="5.15" x="-8.97" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <rect y="-116.6" rx="0" height="10.6" ry="0" x="-12" width="24" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle y="-14.34" diameter="2.86" x="0.17" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
@@ -66,8 +65,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon x4="-9.36" x3="-3.31" antialias="false" x2="-3.31" y3="36.95" style="line-style:normal;line-weight:thin;filling:gray;color:black" x1="-9.36" y4="36.95" y1="29.35" y2="29.35"/>
         <polygon x4="0.7" x3="6.75" antialias="false" x2="6.75" y3="-0.21" style="line-style:normal;line-weight:thin;filling:gray;color:black" x1="0.7" y4="-0.21" y1="-7.81" y2="-7.81"/>
         <polygon x4="-9.3" x3="-3.25" antialias="false" x2="-3.25" y3="-0.21" style="line-style:normal;line-weight:thin;filling:gray;color:black" x1="-9.3" y4="-0.21" y1="-7.81" y2="-7.81"/>
-        <polygon x4="10.5" x3="12" antialias="false" x2="12" y3="-32.59" style="line-style:normal;line-weight:thin;filling:orange;color:black" x1="10.5" y4="-32.59" y1="-82.59" y2="-82.59"/>
-        <polygon closed="false" antialias="false" x2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="10.5" y1="-48.14" y2="-48.14"/>
+        <polygon x4="9.5" x3="12" antialias="false" x2="12" y3="-32.59" style="line-style:normal;line-weight:thin;filling:orange;color:black" x1="9.5" y4="-32.59" y1="-82.59" y2="-82.59"/>
+        <polygon closed="false" antialias="false" x2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="9.5" y1="-48.14" y2="-48.14"/>
         <rect y="-104.5" rx="0" height="20" ry="0" x="-9" width="18" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
         <rect y="-98.5" rx="0" height="3" ry="0" x="1.45" width="5.72" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <rect y="-88.5" rx="0" height="3" ry="0" x="1.45" width="5.72" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
@@ -89,5 +88,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text y="-96" x="9.79" text="F" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
         <text y="-91" x="9.54" text="G" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
         <text y="-86" x="9.63" text="H" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text y="-120.25" x="-11" text="753-xxx" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
     </description>
 </definition>

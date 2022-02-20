@@ -46,8 +46,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         </dynamic_text>
         <text y="-22" text="0V" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-199"/>
         <text y="-22" text="24V" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-279"/>
-        <text y="-31" text="_" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="123"/>
-        <text y="-31" text="_" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="43"/>
+        <text y="-22" text="−" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="123"/>
+        <text y="-22" text="−" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="43"/>
         <text y="-22" text="+" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="-39"/>
         <text y="-22" text="+" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="-119"/>
         <text y="4" text="Eth1" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-355"/>

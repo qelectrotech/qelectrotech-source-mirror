@@ -80,7 +80,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="-9.18" y="-63.1" height="5" width="5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" ry="0"/>
         <rect x="9.5" y="-2.3" height="7.2" width="2.5" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false" rx="0" ry="0"/>
         <rect x="-12" y="-126.5" height="8.9" width="18.2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" ry="0"/>
-        <text x="-12.27" text="750-xxxx" y="-120.25" rotation="0" color="#000000" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0"/>
         <rect x="-7" y="-105.5" height="40.5" width="15" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" ry="0"/>
         <rect x="-4.5" y="-104" height="37.5" width="10" style="line-style:normal;line-weight:thin;filling:red;color:black" antialias="false" rx="0" ry="0"/>
         <rect x="-4.5" y="-104" height="3" width="3" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" ry="0"/>
@@ -99,5 +98,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="2.5" y="-74.5" height="3" width="3" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" ry="0"/>
         <rect x="-4.5" y="-69.5" height="3" width="3" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" ry="0"/>
         <rect x="2.5" y="-69.5" height="3" width="3" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" ry="0"/>
+        <text x="-12.27" text="750-xxxx" y="-120.25" rotation="0" color="#000000" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0"/>
     </description>
 </definition>
