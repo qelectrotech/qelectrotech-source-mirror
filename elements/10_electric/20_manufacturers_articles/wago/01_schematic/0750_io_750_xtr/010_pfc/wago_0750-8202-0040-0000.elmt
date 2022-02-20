@@ -56,8 +56,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text rotation="0" color="#000000" y="105" text="WAGO 750-8202/040-000" x="-329" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" y="-22" text="0V" x="-199" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" y="-22" text="24V" x="-279" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text rotation="0" color="#000000" y="-31" text="_" x="123" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
-        <text rotation="0" color="#000000" y="-31" text="_" x="43" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" y="-22" text="−" x="123" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" y="-22" text="−" x="43" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" y="-22" text="+" x="-39" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" y="-22" text="+" x="-119" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" color="#000000" y="4" text="Eth1" x="-355" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>

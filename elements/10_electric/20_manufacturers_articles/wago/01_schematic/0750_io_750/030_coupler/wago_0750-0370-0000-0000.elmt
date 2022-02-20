@@ -49,8 +49,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text size="9" text="PE" y="-22" x="201"/>
         <text size="9" text="0V" y="-22" x="-199"/>
         <text size="9" text="24V" y="-22" x="-279"/>
-        <text size="12" text="_" y="-31" x="123"/>
-        <text size="12" text="_" y="-31" x="43"/>
+        <text size="12" text="−" y="-22" x="123"/>
+        <text size="12" text="−" y="-22" x="43"/>
         <text size="12" text="+" y="-22" x="-39"/>
         <text size="12" text="+" y="-22" x="-119"/>
         <text size="9" text="Eth1" y="4" x="-355"/>

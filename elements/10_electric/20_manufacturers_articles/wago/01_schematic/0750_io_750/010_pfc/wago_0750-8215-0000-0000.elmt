@@ -79,8 +79,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text rotation="0" x="201" text="PE" color="#000000" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="-199" text="0V" color="#000000" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="-279" text="24V" color="#000000" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text rotation="0" x="123" text="_" color="#000000" y="-31" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
-        <text rotation="0" x="43" text="_" color="#000000" y="-31" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" x="123" text="−" color="#000000" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" x="43" text="−" color="#000000" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="-39" text="+" color="#000000" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="-119" text="+" color="#000000" y="-22" font="Sans Serif,12,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="-355" text="Eth1" color="#000000" y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>

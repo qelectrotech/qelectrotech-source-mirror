@@ -46,8 +46,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <dynamic_text y="-11.5" frame="false" Halignment="AlignLeft" text_width="-1" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" rotation="0" uuid="{6cf7233d-af6b-414a-822e-2a56888de2ea}" z="24" x="-270">
             <text>192.168.1.1</text>
         </dynamic_text>
-        <text y="-31" text="_" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="123"/>
-        <text y="-31" text="_" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="43"/>
+        <text y="-22" text="−" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="123"/>
+        <text y="-22" text="−" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="43"/>
         <text y="-22" text="+" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="-39"/>
         <text y="-22" text="+" color="#000000" font="Sans Serif,12,-1,5,50,0,0,0,0,0" rotation="0" x="-119"/>
         <text y="4" text="Eth1" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-355"/>
