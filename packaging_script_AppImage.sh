@@ -11,7 +11,7 @@ cd ..
 # get updates
 git pull --recurse-submodules
 
-sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
+#sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
 
 GITCOMMIT=$(git rev-parse --short HEAD)
 A=$(git rev-list HEAD --count)

@@ -12,7 +12,7 @@ cd ..
 # get updates
 git pull --recurse-submodules
 
-sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
+#sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
 
 # get the number of the new revision
 GITCOMMIT=$(git rev-parse --short HEAD)
