@@ -6,7 +6,7 @@
     element will assign its parent directory prefix and so on.
     Prefix tag MUST be located AFTER its child categorys
     Example:
-    <category name="310_relays_contactors&amp;contacts">
+    <category name="310_relays_contactors_contacts">
       <category name="01_coils">
         <prefix>K</prefix>
       </category>
@@ -25,12 +25,12 @@
     <category name="100_sheet_referencing"></category>
     <category name="110_network_supplies"></category>
     <category name="114_connections"></category>
-    <category name="120_cables&amp;wiring"></category>
-    <category name="130_terminals&amp;terminal_strips">
+    <category name="120_cables_wiring"></category>
+    <category name="130_terminals_terminal_strips">
       <category name="90_terminal_strips_diagram"></category>
       <prefix>X</prefix>
     </category>
-    <category name="140_connectors&amp;plugs">
+    <category name="140_connectors_plugs">
       <category name="01_connectors_pins"></category>
       <category name="10_connectors_circular"></category>
       <category name="15_connectors_dsub"></category>
@@ -38,7 +38,7 @@
       <category name="60_connectors_electronics"></category>
       <prefix>X</prefix>
     </category>
-    <category name="200_fuses&amp;protective_gears">
+    <category name="200_fuses_protective_gears">
       <category name="10_fuses">
         <prefix>F</prefix>
       </category>
@@ -61,7 +61,7 @@
         <prefix>F</prefix>
       </category>
     </category>
-    <category name="310_relays_contactors&amp;contacts">
+    <category name="310_relays_contactors_contacts">
       <category name="01_coils">
         <prefix>K</prefix>
       </category>
@@ -76,7 +76,7 @@
         <prefix>S</prefix>
       </category>
     </category>
-    <category name="330_transformers&amp;power_supplies">
+    <category name="330_transformers_power_supplies">
       <category name="10_transformers">
         <prefix>T</prefix>
       </category>
@@ -87,7 +87,7 @@
         <prefix>RB</prefix>
       </category>
     </category>
-    <category name="340_converters&amp;inverters">
+    <category name="340_converters_inverters">
       <category name="10_converters">
         <prefix>T</prefix>
       </category>
@@ -99,7 +99,7 @@
         <prefix>KF</prefix>
       </category>
     </category>
-    <category name="380_signaling&amp;operating">
+    <category name="380_signaling_operating">
       <category name="01_human_machine_interface"></category>
       <category name="11_optical_signaling">
         <prefix>P</prefix>
@@ -117,7 +117,7 @@
         <prefix>S</prefix>
       </category>
     </category>
-    <category name="390_sensors&amp;instruments">
+    <category name="390_sensors_instruments">
       <category name="01_sensors_capacitive"></category>
       <category name="02_sensors_inductive"></category>
       <category name="03_sensors_magnetic"></category>
@@ -134,10 +134,10 @@
       <category name="60_timers">
         <prefix>H</prefix>
       </category>
-      <category name="70_meters&amp;measuring_indicators"></category>
+      <category name="70_meters_measuring_indicators"></category>
       <prefix>P</prefix>
     </category>
-    <category name="391_consumers&amp;actuators">
+    <category name="391_consumers_actuators">
       <category name="10_engines">
         <prefix>M</prefix>
       </category>
@@ -154,7 +154,7 @@
         <prefix>EH</prefix>
       </category>
     </category>
-    <category name="392_generators&amp;sources">
+    <category name="392_generators_sources">
       <category name="10_generators">
         <prefix>B</prefix>
       </category>
@@ -164,7 +164,7 @@
         <prefix>B</prefix>
       </category>
     </category>
-    <category name="395_electronics&amp;semiconductors">
+    <category name="395_electronics_semiconductors">
       <category name="01_resistors">
         <prefix>R</prefix>
       </category>
@@ -182,16 +182,16 @@
       <category name="13_thyristors"></category>
       <category name="24piezo"></category>
       <category name="31_integrated_circuits"></category>
-      <category name="41_PLC&amp;controllers"></category>
+      <category name="41_PLC_controllers"></category>
       <category name="91_computer_science"></category>
     </category>
     <category name="450_high_voltage"></category>
   </category>
   <category name="11_singlepole">
-    <category name="140_connectors&amp;plugs">
+    <category name="140_connectors_plugs">
       <prefix>X</prefix>
     </category>
-    <category name="200_fuses&amp;protective_gears">
+    <category name="200_fuses_protective_gears">
       <category name="10_fuses">
         <prefix>F</prefix>
       </category>
@@ -211,7 +211,7 @@
         <prefix>Q</prefix>
       </category>
     </category>
-    <category name="330_transformers&amp;power_supplies">
+    <category name="330_transformers_power_supplies">
       <category name="10_transformers">
         <prefix>T</prefix>
       </category>
@@ -219,15 +219,15 @@
         <prefix>L</prefix>
       </category>
     </category>
-    <category name="340_converters&amp;inverters">
+    <category name="340_converters_inverters">
       <category name="10_converters">
         <prefix>T</prefix>
       </category>
     </category>
-    <category name="392_generators&amp;sources">
+    <category name="392_generators_sources">
       <category name="10_generators"></category>
     </category>
-    <category name="395_electronics&amp;semiconductors">
+    <category name="395_electronics_semiconductors">
       <category name="10_resistors">
         <prefix>R</prefix>
       </category>
@@ -249,7 +249,7 @@
       <category name="20_frequency_drives"></category>
     </category>
     <category name="allen_bradley">
-      <category name="01_PLC&amp;controllers"></category>
+      <category name="01_PLC_controllers"></category>
       <category name="09_safety_modules">
         <category name="10_delayed_outputs"></category>
       </category>
@@ -266,7 +266,7 @@
     <category name="balluff">
       <category name="02_sensors_inductive"></category>
       <category name="04_sensors_optical"></category>
-      <category name="51_transformers&amp;power_supply"></category>
+      <category name="51_transformers_power_supply"></category>
     </category>
     <category name="bamo"></category>
     <category name="becker"></category>
@@ -289,7 +289,7 @@
       <category name="06_sensors_pressure"></category>
     </category>
     <category name="crouzet">
-      <category name="01_PLC&amp;controllers"></category>
+      <category name="01_PLC_controllers"></category>
     </category>
     <category name="danfoss">
       <category name="10_softstarter"></category>
@@ -297,8 +297,8 @@
     </category>
     <category name="dold"></category>
     <category name="eaton_moeller">
-      <category name="01_PLC&amp;controllers"></category>
-      <category name="200_fuses&amp;protective_gears">
+      <category name="01_PLC_controllers"></category>
+      <category name="200_fuses_protective_gears">
         <category name="11_circuit_breakers"></category>
         <category name="12_magneto_thermal_circuit_breakers"></category>
         <category name="20_disconnecting_switches"></category>
@@ -366,16 +366,16 @@
     </category>
     <category name="litecom"></category>
     <category name="murr_elektronik">
-      <category name="370_fuses&amp;protective_gears"></category>
+      <category name="370_fuses_protective_gears"></category>
     </category>
     <category name="national_instrument">
-      <category name="01_PLC&amp;controllers">
+      <category name="01_PLC_controllers">
         <category name="crio"></category>
       </category>
     </category>
     <category name="network"></category>
     <category name="omron">
-      <category name="01_PLC&amp;controllers">
+      <category name="01_PLC_controllers">
         <category name="cj1">
           <category name="taille1"></category>
           <category name="taille2"></category>
@@ -415,7 +415,7 @@
     </category>
     <category name="schmersal"></category>
     <category name="schneider_electric">
-      <category name="01_PLC&amp;controllers">
+      <category name="01_PLC_controllers">
         <category name="241"></category>
         <category name="extension_tm3">
           <category name="ana"></category>
@@ -470,7 +470,7 @@
       <category name="101_safety_switches"></category>
     </category>
     <category name="siemens">
-      <category name="01_PLC&amp;controllers">
+      <category name="01_PLC_controllers">
         <category name="6es5">
           <category name="6es5_95"></category>
           <category name="carte_entree"></category>
@@ -524,7 +524,7 @@
       <category name="80_building_management"></category>
     </category>
     <category name="sofrel">
-      <category name="01_PLC&amp;controllers">
+      <category name="01_PLC_controllers">
         <category name="s500"></category>
       </category>
     </category>
@@ -535,17 +535,17 @@
     <category name="vega"></category>
     <category name="vipa"></category>
     <category name="wago">
-      <category name="01_PLC&amp;controllers"></category>
+      <category name="01_PLC_controllers"></category>
     </category>
     <category name="west"></category>
     <category name="wit"></category>
   </category>
   <category name="90_american_standards">
     <category name="15_allpole">
-      <category name="140_connectors&amp;plugs">
+      <category name="140_connectors_plugs">
         <category name="01_connectors_pins"></category>
       </category>
-      <category name="200_fuses&amp;protective_gears">
+      <category name="200_fuses_protective_gears">
         <category name="11_circuit_breakers"></category>
       </category>
     </category>
@@ -562,17 +562,17 @@
       </category>
       <category name="20_switch_positions"></category>
     </category>
-    <category name="11_tags&amp;comments"></category>
-    <category name="21_forms&amp;tabs"></category>
+    <category name="11_tags_comments"></category>
+    <category name="21_forms_tabs"></category>
     <category name="99_assembly_plan">
       <category name="01_thumbnails_mounting_plate"></category>
-      <category name="21_signaling&amp;operating">
+      <category name="21_signaling_operating">
         <category name="21_size_2x2"></category>
         <category name="31_size_4x4"></category>
       </category>
     </category>
   </category>
-  <category name="99_miscellaneous&amp;unsorted"></category>
+  <category name="99_miscellaneous_unsorted"></category>
   <report>
     <directories>364</directories>
   </report>
