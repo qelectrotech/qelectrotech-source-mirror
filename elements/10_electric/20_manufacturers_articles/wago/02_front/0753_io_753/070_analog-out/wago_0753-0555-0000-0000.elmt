@@ -1,4 +1,4 @@
-<definition type="element" width="34" height="206" version="0.80" hotspot_x="17" hotspot_y="129" link_type="simple">
+<definition height="210" hotspot_y="131" version="0.90" link_type="simple" width="40" hotspot_x="22" type="element">
   <names>
     <name lang="fr">753-555</name>
     <name lang="de">753-555</name>
@@ -14,7 +14,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-        <polygon x17="-16" x35="12" x15="-18" y9="-120.5" y21="71.5" x6="8" y13="-123.5" y15="-126.5" y1="-14.5" x32="12" x37="6.6" y6="-119.5" x4="12" x2="6.6" y36="22.5" y20="71.5" y27="70.5" x20="-12" x1="6.6" x38="6.6" y41="-14.5" style="line-style:normal;line-weight:thin;filling:white;color:black" y37="22.5" y25="73.5" x7="5" x26="-2" y17="-120.5" x3="12" y3="-17.5" antialias="false" x11="-10" y26="70.5" y18="-124.5" x13="-2" x19="-12" y12="-123.5" y34="56.5" y22="67.5" x18="-16" x10="-2" y2="-17.5" y30="70.5" x30="8" y29="67.5" x29="8" y38="19.5" y19="-124.5" y23="67.5" y4="-123.5" x39="12" y40="-14.5" y7="-119.5" y31="70.5" x23="-18" x5="8" y33="59.5" y10="-117.5" x14="-2" x25="-2" y35="56.5" y39="19.5" x12="-10" y14="-126.5" x24="-18" x16="-18" y32="59.5" y24="73.5" y28="67.5" x34="6.6" y8="-120.5" y5="-123.5" x21="-16" x8="5" x36="12" y11="-117.5" y16="-120.5" x33="6.6" x41="6.6" x9="-2" x31="12" x40="12" x27="-10" x28="-10" x22="-16"/>
+        <polygon y7="-117.5" x24="-10" y1="-123.5" y26="67.5" y18="71.5" x23="-2" x26="8" y5="-120.5" y22="73.5" x19="-16" y13="-120.5" y12="-126.5" y10="-123.5" y11="-126.5" y20="67.5" y23="70.5" x20="-18" x18="-16" x16="-12" x7="-2" y15="-124.5" x13="-18" x14="-16" x2="8" x27="8" y4="-119.5" x5="5" x4="5" y9="-123.5" y16="-124.5" x21="-18" x11="-2" x1="12" x8="-10" x6="-2" y19="67.5" y24="70.5" y6="-120.5" x12="-18" x25="-10" style="line-style:normal;line-weight:thin;filling:white;color:black" x9="-10" y17="71.5" antialias="false" y14="-120.5" x15="-16" y2="-123.5" x3="8" y8="-117.5" y3="-119.5" y27="70.5" y28="70.5" y21="73.5" x22="-2" x17="-12" x28="12" x10="-2" y25="67.5"/>
         <polygon x3="12" x2="12" antialias="false" x1="-12" y1="-116.5" y4="-102.5" x4="-12" style="line-style:normal;line-weight:thin;filling:blue;color:black" y3="-102.5" y2="-116.5"/>
         <circle x="-8.97" diameter="5.15" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-60.36"/>
         <polygon x3="8" x2="8" antialias="false" x1="-8" y1="-112" y4="-107" x4="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="-107" y2="-112"/>

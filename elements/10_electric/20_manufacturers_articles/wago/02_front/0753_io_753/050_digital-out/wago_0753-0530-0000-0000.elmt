@@ -1,4 +1,4 @@
-<definition type="element" width="34" height="206" version="0.80" hotspot_x="17" hotspot_y="129" link_type="simple">
+<definition width="40" hotspot_x="22" hotspot_y="131" height="210" version="0.90" link_type="simple" type="element">
   <names>
     <name lang="de">753-530</name>
     <name lang="en">753-530</name>
@@ -14,7 +14,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-        <polygon y17="71.5" x22="-2" x17="-12" y10="-123.5" x10="-2" x26="8" x11="-2" x2="8" x9="-10" x4="5" x7="-2" y7="-117.5" y2="-123.5" y21="73.5" antialias="false" y3="-119.5" x23="-2" y24="70.5" y23="70.5" x27="8" x1="12" y8="-117.5" y18="71.5" x21="-18" y27="70.5" y1="-123.5" y9="-123.5" x5="5" x16="-12" x8="-10" y4="-119.5" y6="-120.5" style="line-style:normal;line-weight:thin;filling:white;color:black" x20="-18" y25="67.5" x19="-16" x18="-16" y11="-126.5" x28="12" x3="8" x14="-16" y19="67.5" x24="-10" y13="-120.5" x12="-18" y20="67.5" y26="67.5" y14="-120.5" x25="-10" y28="70.5" y12="-126.5" x15="-16" y22="73.5" y15="-124.5" y16="-124.5" x6="-2" y5="-120.5" x13="-18"/>
+        <polygon y7="-117.5" x24="-10" y1="-123.5" y26="67.5" y18="71.5" x23="-2" x26="8" y5="-120.5" y22="73.5" x19="-16" y13="-120.5" y12="-126.5" y10="-123.5" y11="-126.5" y20="67.5" y23="70.5" x20="-18" x18="-16" x16="-12" x7="-2" y15="-124.5" x13="-18" x14="-16" x2="8" x27="8" y4="-119.5" x5="5" x4="5" y9="-123.5" y16="-124.5" x21="-18" x11="-2" x1="12" x8="-10" x6="-2" y19="67.5" y24="70.5" y6="-120.5" x12="-18" x25="-10" style="line-style:normal;line-weight:thin;filling:white;color:black" x9="-10" y17="71.5" antialias="false" y14="-120.5" x15="-16" y2="-123.5" x3="8" y8="-117.5" y3="-119.5" y27="70.5" y28="70.5" y21="73.5" x22="-2" x17="-12" x28="12" x10="-2" y25="67.5"/>
         <polygon y3="-116.6" y2="-126.5" y4="-116.6" x2="6" y1="-126.5" antialias="false" x1="-12" x4="-12" style="line-style:normal;line-weight:thin;filling:white;color:black" x3="6"/>
         <circle diameter="5.15" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-8.97"/>
         <rect height="10.6" ry="0" width="24" y="-116.6" rx="0" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-12"/>

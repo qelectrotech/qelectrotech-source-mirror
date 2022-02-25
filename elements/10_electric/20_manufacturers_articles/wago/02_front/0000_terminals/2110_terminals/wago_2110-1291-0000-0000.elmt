@@ -1,0 +1,23 @@
+<definition hotspot_y="68" height="190" link_type="terminal" type="element" width="10" hotspot_x="4" version="0.90">
+    <names>
+        <name lang="de">2110-1291</name>
+        <name lang="cs">2110-1291</name>
+        <name lang="fr">2110-1291</name>
+        <name lang="en">2110-1291</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">generic</kindInformation>
+        <kindInformation name="function">generic</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="designation" show="1">2110-1291</elementInformation>
+        <elementInformation name="description" show="1">10mm² 2L / Abschlussplatte / Endplate</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon x1="0" x4="0" y2="-61.54" y3="116.46" antialias="false" x2="2" y4="116.46" y1="-61.54" style="line-style:normal;line-weight:thin;filling:lightgray;color:gray" x3="2"/>
+    </description>
+</definition>
