@@ -1,4 +1,4 @@
-<definition type="element" width="11" height="120" version="0.80" hotspot_x="6" hotspot_y="61" link_type="terminal">
+<definition width="20" hotspot_x="9" link_type="terminal" hotspot_y="65" version="0.90" height="130" type="element">
   <names>
     <name lang="de">2000-1307</name>
     <name lang="fr">2000-1307</name>

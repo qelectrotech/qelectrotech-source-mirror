@@ -20,7 +20,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
   <description>
     <polygon x1="-10" x2="10" x3="10" x4="-10" y1="-104.36" y2="-104.36" y3="74.65" y4="74.65" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>
     <polygon x1="10" x2="-10" y1="-35.95" y2="-35.95" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <polygon x1="10" x2="-10" y1="48.02" y2="48.02" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+    <polygon x1="10" x2="-10" y1="48" y2="48" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <rect x="-7.32" y="-34.63" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="15.65" height="10.51" antialias="false"/>
     <circle x="-9.07" y="-56.04" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="18.29" antialias="false"/>
     <polygon x1="10" x2="-10" y1="-78.82" y2="-78.82" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>

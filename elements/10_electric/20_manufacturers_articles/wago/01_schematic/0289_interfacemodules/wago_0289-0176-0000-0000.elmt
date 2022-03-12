@@ -1,0 +1,32 @@
+<definition type="element" width="130" hotspot_y="35" link_type="simple" height="70" version="0.90" hotspot_x="64">
+    <names>
+        <name lang="fr">289-176</name>
+        <name lang="de">289-176</name>
+        <name lang="en">289-176</name>
+        <name lang="cs">289-176</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-176</elementInformation>
+        <elementInformation show="1" name="description">Übergabemodul RJ45 RJ-45 Power Leistungskontakte</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="120" antialias="false" rx="0" height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" y="-30" ry="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" x="50.625" text="2" rotation="0" y="-4"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" y="-2.5"/>
+        <circle diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" y="-2.5"/>
+        <line length1="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="-60" y2="0" length2="1.5" end1="none" end2="none" x2="60"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-32" text="RJ45 - RJ45" rotation="0" y="26"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" x="-55" text="1" rotation="0" y="-4"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="-45" text="WAGO 289-176" rotation="0" y="-17"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="16" frame="false" x="-4" rotation="0" text_from="ElementInfo" y="28" uuid="{32815a7b-7a5c-4c39-bbd5-70f7869c4d0b}" keep_visual_rotation="true">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal type="Generic" orientation="e" x="60" name="X1.2" y="0" uuid="{a94f37bd-28b9-4593-b1a3-f2aa90bc1002}"/>
+        <terminal type="Generic" orientation="w" x="-60" name="X1.1" y="0" uuid="{9882d75f-797f-4ec2-87ec-8e5972c6a694}"/>
+    </description>
+</definition>
