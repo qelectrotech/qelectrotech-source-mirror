@@ -32,6 +32,8 @@ namespace QETUtils
 	QMargins marginsFromString(const QString &string);
 	qreal graphicsHandlerSize(QGraphicsItem *item);
 
+	bool sortBeginIntString(const QString &str_a, const QString &str_b);
+
 	template <typename T>
 	QVector<QWeakPointer<T>> sharedVectorToWeak(const QVector<QSharedPointer<T>> &vector)
 	{

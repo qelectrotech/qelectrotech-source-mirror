@@ -20,7 +20,7 @@
 #include "terminalstripcreatordialog.h"
 #include "../../qetproject.h"
 #include "../terminalstrip.h"
-#include "../elementprovider.h"
+#include "../../elementprovider.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "../UndoCommand/addterminaltostripcommand.h"
@@ -38,6 +38,7 @@
 #include "../physicalterminal.h"
 #include "../realterminal.h"
 #include "../terminalstripbridge.h"
+#include "freeterminaleditor.h"
 
 #include <QTreeWidgetItem>
 
@@ -66,10 +67,15 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 		//Setup the bridge color
 	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
 
+	m_free_terminal_editor = new FreeTerminalEditor(project, this);
+	ui->verticalLayout_2->insertWidget(1, m_free_terminal_editor);
+
 	setUpUndoConnections();
 
 		//Call for update the state of child widgets
 	selectionChanged();
+
+	updateWidget();
 
 		//Go the diagram of double clicked terminal
 	connect(ui->m_table_widget, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index)
@@ -350,6 +356,8 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		connect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
 		connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 	}
+
+	updateWidget();
 }
 
 /**
@@ -537,6 +545,12 @@ QPair<TerminalStripModel::Column, QVector<modelRealTerminalData> > TerminalStrip
 	return qMakePair(TerminalStripModel::Invalid, QVector<modelRealTerminalData>());
 }
 
+void TerminalStripEditor::updateWidget()
+{
+	ui->m_tab_widget->setVisible(m_current_strip);
+	m_free_terminal_editor->setHidden(m_current_strip);
+}
+
 /**
  * @brief TerminalStripEditor::on_m_add_terminal_strip_pb_clicked
  * Action when user click on add terminal strip button
@@ -614,6 +628,8 @@ void TerminalStripEditor::on_m_reload_pb_clicked()
    if (item) {
 	   ui->m_terminal_strip_tw->setCurrentItem(item);
    }
+
+   m_free_terminal_editor->reload();
 }
 
 /**

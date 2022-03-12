@@ -31,6 +31,7 @@ class TerminalStrip;
 class QTreeWidgetItem;
 class TerminalElement;
 class QAbstractButton;
+class FreeTerminalEditor;
 
 /**
  * @brief The TerminalStripEditor class
@@ -56,6 +57,7 @@ class TerminalStripEditor : public QDialog
 		QSize setUpBridgeCellWidth();
 		TerminalStripModel::Column isSingleColumnSelected() const;
 		QPair<TerminalStripModel::Column, QVector<modelRealTerminalData>> singleColumnData() const;
+		void updateWidget();
 
 	private slots:
 		void on_m_add_terminal_strip_pb_clicked();
@@ -83,6 +85,8 @@ class TerminalStripEditor : public QDialog
 		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
 		TerminalStrip *m_current_strip = nullptr;
 		TerminalStripModel *m_model = nullptr;
+		FreeTerminalEditor *m_free_terminal_editor = nullptr;
+
 };
 
 #endif // TERMINALSTRIPEDITOR_H

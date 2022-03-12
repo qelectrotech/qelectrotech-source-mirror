@@ -14,6 +14,234 @@
    <string>Gestionnaire de borniers</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1">
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="m_auto_ordering_pb">
+        <property name="text">
+         <string>Position automatique</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="m_ungroup_pb">
+        <property name="text">
+         <string>Degrouper les bornes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Couleur pont :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QComboBox" name="m_function_cb">
+        <item>
+         <property name="text">
+          <string>Générique</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Phase</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Neutre</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="10" column="0" colspan="2">
+       <widget class="QPushButton" name="m_bridge_terminals_pb">
+        <property name="text">
+         <string>Ponter les bornes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>LED :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="m_level_sb"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Fonction :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QPushButton" name="m_group_terminals_pb">
+        <property name="text">
+         <string>Grouper les bornes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="8" column="1">
+       <widget class="QComboBox" name="m_led_cb">
+        <item>
+         <property name="text">
+          <string>Sans</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Avec</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="m_type_cb">
+        <item>
+         <property name="text">
+          <string>Générique</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fusible</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sectionnable</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diode</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Terre</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="2">
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="1">
+       <widget class="KColorCombo" name="m_bridge_color_cb"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Étage :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Type :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0" colspan="2">
+       <widget class="QPushButton" name="m_unbridge_terminals_pb">
+        <property name="text">
+         <string>Déponter les bornes</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QWidget" name="widget_2" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="m_add_terminal_strip_pb">
+        <property name="text">
+         <string>Ajouter un bornier</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../qelectrotech.qrc">
+          <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_remove_terminal_strip_pb">
+        <property name="text">
+         <string>Supprimer le bornier</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../qelectrotech.qrc">
+          <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_reload_pb">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../qelectrotech.qrc">
+          <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
@@ -173,234 +401,6 @@
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QWidget" name="widget" native="true">
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Étage :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QComboBox" name="m_type_cb">
-        <item>
-         <property name="text">
-          <string>Générique</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Fusible</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Sectionnable</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Diode</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Terre</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>LED :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QSpinBox" name="m_level_sb"/>
-      </item>
-      <item row="9" column="0" colspan="2">
-       <widget class="Line" name="line_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="0">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QPushButton" name="m_auto_ordering_pb">
-        <property name="text">
-         <string>Position automatique</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Fonction :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Couleur pont :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QPushButton" name="m_group_terminals_pb">
-        <property name="text">
-         <string>Grouper les bornes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QPushButton" name="m_ungroup_pb">
-        <property name="text">
-         <string>Degrouper les bornes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>Type :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QComboBox" name="m_led_cb">
-        <item>
-         <property name="text">
-          <string>Sans</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Avec</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="12" column="1">
-       <widget class="KColorCombo" name="m_bridge_color_cb"/>
-      </item>
-      <item row="7" column="1">
-       <widget class="QComboBox" name="m_function_cb">
-        <item>
-         <property name="text">
-          <string>Générique</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Phase</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Neutre</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="10" column="0" colspan="2">
-       <widget class="QPushButton" name="m_bridge_terminals_pb">
-        <property name="text">
-         <string>Ponter les bornes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0" colspan="2">
-       <widget class="QPushButton" name="m_unbridge_terminals_pb">
-        <property name="text">
-         <string>Déponter les bornes</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QWidget" name="widget_2" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="m_add_terminal_strip_pb">
-        <property name="text">
-         <string>Ajouter un bornier</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="m_remove_terminal_strip_pb">
-        <property name="text">
-         <string>Supprimer le bornier</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="m_reload_pb">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
-          <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
     </widget>
    </item>
   </layout>

@@ -26,7 +26,7 @@
 #include <QColor>
 
 #include "../terminalstrip.h"
-#include "../../qetgraphicsitem/element.h"
+#include "modelTerminalData.h"
 
 //Code to use QColor as key for QHash
 inline uint qHash(const QColor &key, uint seed) {
@@ -42,37 +42,6 @@ inline uint qHash(const QPointer<Element> &key, uint seed) {
 }
 
 class TerminalStrip;
-
-
-struct modelRealTerminalData
-{
-		int level_ = -1;
-		QString label_;
-		QString Xref_;
-		QString cable_;
-		QString cable_wire;
-		QString conductor_;
-		bool led_ = false;
-		bool bridged_ = false;
-
-		ElementData::TerminalType type_ = ElementData::TerminalType::TTGeneric;
-		ElementData::TerminalFunction function_ = ElementData::TerminalFunction::TFGeneric;
-		QPointer<Element> element_;
-
-		QWeakPointer<RealTerminal> real_terminal;
-
-};
-
-struct modelPhysicalTerminalData
-{
-		QVector<modelRealTerminalData> real_data;
-		int pos_ = -1;
-		QUuid uuid_;
-};
-
-inline bool operator == (const modelPhysicalTerminalData &data_1, const modelPhysicalTerminalData &data_2) {
-	return data_1.uuid_ == data_2.uuid_;
-}
 
 class TerminalStripModel : public QAbstractTableModel
 {
@@ -123,8 +92,6 @@ class TerminalStripModel : public QAbstractTableModel
 		modelPhysicalTerminalData physicalDataAtIndex(int index) const;
 		modelRealTerminalData realDataAtIndex(int index) const;
 		QPixmap bridgePixmapFor(const QModelIndex &index) const;
-
-		static modelRealTerminalData modelRealData(const QWeakPointer<RealTerminal> &real_terminal);
 
     private:
         QPointer<TerminalStrip> m_terminal_strip;
