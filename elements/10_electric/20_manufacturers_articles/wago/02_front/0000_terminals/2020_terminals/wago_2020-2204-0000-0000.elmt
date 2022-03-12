@@ -22,8 +22,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <ellipse x="-3.42" y="57.26" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.86" height="6.13" antialias="false"/>
     <ellipse x="-3.45" y="41.59" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.86" height="6.13" antialias="false"/>
     <polygon x1="-3.5" x2="3.5" y1="50.11" y2="50.11" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <rect x="-2.46" y="35.08" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.08" height="5.21" antialias="false"/>
-    <rect x="-2.43" y="50.74" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.08" height="5.21" antialias="false"/>
+    <rect x="-2.46" y="35.08" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.08" height="5.2" antialias="false"/>
+    <rect x="-2.43" y="50.74" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.08" height="5.2" antialias="false"/>
     <rect x="1.9" y="-14.06" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="1.6" height="2.6" antialias="false"/>
     <polygon x1="3.49" x2="-3.52" y1="40.85" y2="40.85" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="3.52" x2="-3.49" y1="56.51" y2="56.51" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>

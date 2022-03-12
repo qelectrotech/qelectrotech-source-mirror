@@ -1,0 +1,66 @@
+<definition width="730" type="element" version="0.90" link_type="simple" height="100" hotspot_x="364" hotspot_y="46">
+    <names>
+        <name lang="en">289-178</name>
+        <name lang="cs">289-178</name>
+        <name lang="fr">289-178</name>
+        <name lang="de">289-178</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">289-178</elementInformation>
+        <elementInformation show="1" name="description">RJ-45 to CAGE-CLAMP</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="720" antialias="false" rx="0" ry="0" y="-40" height="90" x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="237.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="B" x="243" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="A" x="183" rotation="0"/>
+        <polygon x1="180" antialias="false" closed="false" x2="180" y1="-40" y2="-10" x3="190" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="240" antialias="false" closed="false" x2="240" y1="-40" y2="-10" x3="250" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="177.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <polygon x1="0" antialias="false" closed="false" x2="0" y1="-40" y2="-10" x3="10" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" y="29.5" uuid="{3eeef5f5-6173-4d40-82c8-57fc65b43c63}" text_width="-1" keep_visual_rotation="true" text_from="ElementInfo" x="220" z="12" rotation="0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="-240" antialias="false" closed="false" x2="-240" y1="-40" y2="-10" x3="-230" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-180" antialias="false" closed="false" x2="-180" y1="-40" y2="-10" x3="-170" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="17" text="RJ-45" x="327" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="S" x="322" rotation="0"/>
+        <circle diameter="5" antialias="true" y="-2.5" x="357.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="3" x="-178" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="6" x="3" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="45" text="RJ-45 to CAGE-CLAMP / Power-Contacts" x="-130" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="2" x="-238" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="7" x="62" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="1" x="-298" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="8" x="122" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="45" text="WAGO 289-178" x="-330" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="4" x="-118" rotation="0"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-26" text="5" x="-57" rotation="0"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="317.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="-2.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="-182.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="57.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="-242.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="117.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="-302.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" antialias="true" y="-42.5" x="-122.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="5" antialias="false" y="-6" height="12" x="317.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="320" length2="1.5" antialias="false" x2="320" length1="1.5" y1="-40" end1="none" y2="-4" style="line-style:normal;line-weight:normal;filling:black;color:black" end2="circle"/>
+        <line x1="360" length2="1.5" antialias="false" x2="-300" length1="1.5" y1="0" end1="none" y2="0" style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none"/>
+        <polygon x1="-300" antialias="false" closed="false" x2="-300" y1="-40" y2="-10" x3="-290" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{31b23e55-8c17-4921-8b9d-1164a252dba5}" name="" x="320"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{1b2350ad-aa4e-4736-a5e7-cce10e230b97}" name="" x="0"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{c4bf6361-2f42-41eb-b195-b194fe11acbc}" name="" x="-240"/>
+        <terminal orientation="e" type="Generic" y="0" uuid="{c0b90809-9003-420b-a52e-d59f911374e5}" name="" x="360"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{4c24ddab-174a-472c-b37f-bb7caf214f63}" name="" x="-180"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{e8fe0fa5-d913-4b93-bbd4-c66c19d40368}" name="" x="240"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{1c267f69-fd5e-4f90-80af-5f32a02072dc}" name="" x="-300"/>
+        <terminal orientation="n" type="Generic" y="-40" uuid="{54167ac3-b11c-40f6-83ad-527c3a9533c2}" name="" x="180"/>
+    </description>
+</definition>
