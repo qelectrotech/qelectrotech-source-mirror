@@ -43,6 +43,7 @@
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
 #include "TerminalStrip/ui/terminalstripeditor.h"
+#include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "ui/diagrameditorhandlersizewidget.h"
 
 #ifdef BUILD_WITHOUT_KF5
@@ -448,6 +449,9 @@ void QETDiagramEditor::setUpActions()
 		{
 			auto str = new TerminalStripEditor(project, this);
 			str->show();
+
+			auto tsew = new TerminalStripEditorWindow(project, this);
+			tsew->show();
 		}
 	});
 
