@@ -19,6 +19,7 @@
 #define TERMINALSTRIPTREEDOCKWIDGET_H
 
 #include <QDockWidget>
+#include <QPointer>
 
 class QETProject;
 class QTreeWidgetItem;
@@ -37,16 +38,30 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		explicit TerminalStripTreeDockWidget(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripTreeDockWidget();
 
-		void buildTree();
+		void reload();
+		bool currentIsStrip() const;
+		TerminalStrip* currentStrip() const;
+		QString currentInstallation() const;
+		QString currentLocation() const;
+		void setSelectedStrip(TerminalStrip *strip);
+
+	signals:
+		void currentStripChanged(TerminalStrip *strip);
+
+	private slots:
+		void on_m_tree_view_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
 	private:
+		void buildTree();
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
 		void setupUndoConnections();
+		void setCurrentStrip(TerminalStrip *strip);
 
 	private:
 		Ui::TerminalStripTreeDockWidget *ui;
-		QETProject *m_project = nullptr;
+		QPointer<QETProject> m_project;
+		QPointer<TerminalStrip> m_current_strip;
 
 		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
 		QHash<QUuid, QSharedPointer<RealTerminal>> m_uuid_terminal_H;

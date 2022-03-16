@@ -50,11 +50,131 @@ TerminalStripTreeDockWidget::~TerminalStripTreeDockWidget()
 }
 
 /**
+ * @brief TerminalStripTreeDockWidget::reload
+ */
+void TerminalStripTreeDockWidget::reload()
+{
+	auto current_ = m_current_strip;
+
+	ui->m_tree_view->clear();
+	m_item_strip_H.clear();
+	m_uuid_terminal_H.clear();
+	m_uuid_strip_H.clear();
+
+
+	buildTree();
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
+	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
+#else
+	ui->m_terminal_strip_tw->expandAll();
+#endif
+
+		//Reselect the tree widget item of the current edited strip
+   auto item = m_item_strip_H.key(current_);
+   if (item) {
+	   ui->m_tree_view->setCurrentItem(item);
+   }
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::currentIsStrip
+ * @return true if the current selected item is a terminal strip.
+ */
+bool TerminalStripTreeDockWidget::currentIsStrip() const {
+	return m_item_strip_H.contains(ui->m_tree_view->currentItem());
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::currentStrip
+ * @return The current selected strip or nullptr if there is
+ * no strip selected;
+ */
+TerminalStrip *TerminalStripTreeDockWidget::currentStrip() const {
+	return m_current_strip;
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::currentInstallation
+ * @return the installation according to the current selection
+ */
+QString TerminalStripTreeDockWidget::currentInstallation() const
+{
+	if (m_current_strip) {
+		return m_current_strip->installation();
+	}
+
+	if (auto item = ui->m_tree_view->currentItem())
+	{
+		if (item->type() == TerminalStripTreeWidget::Location) {
+			item = item->parent();
+		}
+		if (item->type() == TerminalStripTreeWidget::Installation) {
+			return item->data(0, Qt::DisplayRole).toString();
+		}
+	}
+
+	return QString();
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::currentLocation
+ * @return the location according to the current selection
+ */
+QString TerminalStripTreeDockWidget::currentLocation() const
+{
+	if (m_current_strip) {
+		return m_current_strip->location();
+	}
+
+	if (auto item = ui->m_tree_view->currentItem()) {
+		if (item->type() == TerminalStripTreeWidget::Location) {
+			return item->data(0, Qt::DisplayRole).toString();
+		}
+	}
+
+	return QString();
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::setSelectedStrip
+ * @param strip
+ */
+void TerminalStripTreeDockWidget::setSelectedStrip(TerminalStrip *strip) {
+	ui->m_tree_view->setCurrentItem(m_item_strip_H.key(strip));
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged
+ * @param current
+ * @param previous
+ */
+void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
+{
+	Q_UNUSED(previous)
+
+	if (!current) {
+		setCurrentStrip(nullptr);
+		return;
+	}
+
+	TerminalStrip *strip_ = nullptr;
+	if (current->type() == TerminalStripTreeWidget::Strip) {
+		strip_ = m_item_strip_H.value(current);
+	}
+	else if (current->type() == TerminalStripTreeWidget::Terminal
+			 && current->parent()
+			 && current->parent()->type() == TerminalStripTreeWidget::Strip) {
+		strip_ = m_item_strip_H.value(current->parent());
+	}
+	setCurrentStrip(strip_);
+}
+
+/**
  * @brief TerminalStripTreeDockWidget::buildTree
  */
 void TerminalStripTreeDockWidget::buildTree()
 {
-	ui->m_tree_view->clear();
 
 	auto title_ = m_project->title();
 	if (title_.isEmpty()) {
@@ -231,4 +351,10 @@ void TerminalStripTreeDockWidget::setupUndoConnections()
 		auto undo = new RemoveTerminalFromStripCommand(terminal_, strip_);
 		m_project->undoStack()->push(undo);
 	});
+}
+
+void TerminalStripTreeDockWidget::setCurrentStrip(TerminalStrip *strip)
+{
+	emit currentStripChanged(strip);
+	m_current_strip = strip;
 }

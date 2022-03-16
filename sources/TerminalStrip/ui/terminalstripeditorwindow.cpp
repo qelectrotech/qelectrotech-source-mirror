@@ -18,6 +18,10 @@
 #include "terminalstripeditorwindow.h"
 #include "ui_terminalstripeditorwindow.h"
 #include "terminalstriptreedockwidget.h"
+#include "../terminalstrip.h"
+#include "terminalstripcreatordialog.h"
+#include "../UndoCommand/addterminalstripcommand.h"
+#include "../../qetproject.h"
 
 /**
  * @brief TerminalStripEditorWindow::TerminalStripEditorWindow
@@ -30,7 +34,10 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 	m_project(project)
 {
 	ui->setupUi(this);
+	ui->m_remove_terminal->setDisabled(true);
 	addTreeDockWidget();
+
+	connect(m_tree_dock, &TerminalStripTreeDockWidget::currentStripChanged, this, &TerminalStripEditorWindow::currentStripChanged);
 }
 
 /**
@@ -51,3 +58,71 @@ void TerminalStripEditorWindow::addTreeDockWidget()
 
 	addDockWidget(Qt::LeftDockWidgetArea, m_tree_dock);
 }
+
+/**
+ * @brief TerminalStripEditorWindow::currentStripChanged
+ * @param strip
+ */
+void TerminalStripEditorWindow::currentStripChanged(TerminalStrip *strip)
+{
+	Q_UNUSED(strip)
+	ui->m_remove_terminal->setEnabled(m_tree_dock->currentIsStrip());
+}
+
+/**
+ * @brief TerminalStripEditorWindow::on_m_add_terminal_strip_triggered
+ * Action when user click on add terminal strip button
+ */
+void TerminalStripEditorWindow::on_m_add_terminal_strip_triggered()
+{
+	QScopedPointer<TerminalStripCreatorDialog> dialog(new TerminalStripCreatorDialog(m_project, this));
+
+	dialog->setLocation(m_tree_dock->currentLocation());
+	dialog->setInstallation(m_tree_dock->currentInstallation());
+
+	if (dialog->exec() == QDialog::Accepted)
+	{
+		auto ts = dialog->generatedTerminalStrip();
+		m_project->undoStack()->push(new AddTerminalStripCommand(ts, m_project));
+
+		m_tree_dock->reload();
+		m_tree_dock->setSelectedStrip(ts);
+	}
+}
+
+/**
+ * @brief TerminalStripEditorWindow::on_m_remove_terminal_triggered
+ */
+void TerminalStripEditorWindow::on_m_remove_terminal_triggered()
+{
+	if (m_tree_dock->currentIsStrip())
+	{
+		if (auto strip_ = m_tree_dock->currentStrip())
+		{
+			m_project->undoStack()->push(new RemoveTerminalStripCommand(strip_, m_project));
+			m_tree_dock->reload();
+		}
+
+	}
+//	auto item = ui->m_tree_view->currentItem();
+//	if (auto strip = m_item_strip_H.value(item))
+//	{
+//		m_item_strip_H.remove(item);
+//		m_uuid_strip_H.remove(strip->uuid());
+//		delete item;
+
+//		m_project->undoStack()->push(new RemoveTerminalStripCommand(strip, m_project));
+//	}
+
+//	on_m_reload_pb_clicked();
+
+}
+
+
+/**
+ * @brief TerminalStripEditorWindow::on_m_reload_triggered
+ */
+void TerminalStripEditorWindow::on_m_reload_triggered() {
+	m_tree_dock->reload();
+}
+
