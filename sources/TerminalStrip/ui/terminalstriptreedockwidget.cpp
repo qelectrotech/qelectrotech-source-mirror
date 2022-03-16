@@ -26,6 +26,7 @@
 #include "../realterminal.h"
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../terminalstrip.h"
+#include "terminalstriptreewidget.h"
 
 TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QWidget *parent) :
 	QDockWidget(parent),
@@ -142,6 +143,20 @@ QString TerminalStripTreeDockWidget::currentLocation() const
  */
 void TerminalStripTreeDockWidget::setSelectedStrip(TerminalStrip *strip) {
 	ui->m_tree_view->setCurrentItem(m_item_strip_H.key(strip));
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::currentRealTerminal
+ * @return the current real terminal or a null QSharedPointer.
+ */
+QSharedPointer<RealTerminal> TerminalStripTreeDockWidget::currentRealTerminal() const
+{
+	if (auto item = ui->m_tree_view->currentItem()) {
+		if (item->type() == TerminalStripTreeWidget::Terminal) {
+			return m_uuid_terminal_H.value(item->data(0,TerminalStripTreeWidget::UUID_USER_ROLE).toUuid());
+		}
+	}
+	return QSharedPointer<RealTerminal>();
 }
 
 /**

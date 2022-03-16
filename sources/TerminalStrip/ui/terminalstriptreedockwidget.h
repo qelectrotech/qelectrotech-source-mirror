@@ -44,6 +44,7 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QString currentInstallation() const;
 		QString currentLocation() const;
 		void setSelectedStrip(TerminalStrip *strip);
+		QSharedPointer<RealTerminal> currentRealTerminal() const;
 
 	signals:
 		void currentStripChanged(TerminalStrip *strip);

@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "freeterminaleditor.h"
 #include "terminalstripeditorwindow.h"
 #include "ui_terminalstripeditorwindow.h"
 #include "terminalstriptreedockwidget.h"
@@ -22,7 +23,11 @@
 #include "terminalstripcreatordialog.h"
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "../../qetproject.h"
+#include "../realterminal.h"
 
+static int EMPTY_PAGE = 0;
+static int FREE_TERMINAL_PAGE = 1;
+static int TERMINAL_STRIP_PAGE = 2;
 /**
  * @brief TerminalStripEditorWindow::TerminalStripEditorWindow
  * @param project
@@ -37,7 +42,12 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 	ui->m_remove_terminal->setDisabled(true);
 	addTreeDockWidget();
 
+	m_free_terminal_editor = new FreeTerminalEditor(m_project, this);
+
 	connect(m_tree_dock, &TerminalStripTreeDockWidget::currentStripChanged, this, &TerminalStripEditorWindow::currentStripChanged);
+
+	ui->m_stacked_widget->insertWidget(EMPTY_PAGE, new QWidget(ui->m_stacked_widget));
+	ui->m_stacked_widget->insertWidget(FREE_TERMINAL_PAGE, m_free_terminal_editor);
 }
 
 /**
@@ -66,7 +76,24 @@ void TerminalStripEditorWindow::addTreeDockWidget()
 void TerminalStripEditorWindow::currentStripChanged(TerminalStrip *strip)
 {
 	Q_UNUSED(strip)
+	updateUi();
+
+}
+
+void TerminalStripEditorWindow::updateUi()
+{
 	ui->m_remove_terminal->setEnabled(m_tree_dock->currentIsStrip());
+
+	ui->m_stacked_widget->setCurrentIndex(EMPTY_PAGE);
+
+	if (auto real_terminal = m_tree_dock->currentRealTerminal())
+	{
+		if (!real_terminal->parentStrip())
+		{
+			ui->m_stacked_widget->setCurrentIndex(FREE_TERMINAL_PAGE);
+			m_free_terminal_editor->reload();
+		}
+	}
 }
 
 /**
@@ -104,18 +131,6 @@ void TerminalStripEditorWindow::on_m_remove_terminal_triggered()
 		}
 
 	}
-//	auto item = ui->m_tree_view->currentItem();
-//	if (auto strip = m_item_strip_H.value(item))
-//	{
-//		m_item_strip_H.remove(item);
-//		m_uuid_strip_H.remove(strip->uuid());
-//		delete item;
-
-//		m_project->undoStack()->push(new RemoveTerminalStripCommand(strip, m_project));
-//	}
-
-//	on_m_reload_pb_clicked();
-
 }
 
 
