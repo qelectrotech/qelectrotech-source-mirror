@@ -1,0 +1,73 @@
+<definition width="730" hotspot_x="364" hotspot_y="55" link_type="simple" version="0.90" type="element" height="110">
+    <names>
+        <name lang="de">753-404</name>
+        <name lang="cs">753-404</name>
+        <name lang="en">753-404</name>
+        <name lang="fr">753-404</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">753-404</elementInformation>
+        <elementInformation show="1" name="description">Vor-Rückwärtszähler Up-/Down-Counter DC24V, 100kHz</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="720" rx="0" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-360" height="90" ry="0"/>
+        <text text="0V" color="#000000" y="8" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-354"/>
+        <text text="24V" color="#000000" y="-12" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-355"/>
+        <line length2="1.5" end1="none" y1="10" y2="10" x2="360" x1="-360" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <dynamic_text text_width="-1" z="5" text_from="ElementInfo" y="29.5" Valignment="AlignTop" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="220" uuid="{dd231b49-bfbe-45c8-af01-600efb53310a}" keep_visual_rotation="true" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" end1="circle" y1="-8.5" y2="-40" x2="-40" x1="-40" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line length2="1.5" end1="circle" y1="-8.5" y2="-40" x2="-120" x1="-120" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line length2="1.5" end1="circle" y1="11.5" y2="-40" x2="40" x1="40" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line length2="1.5" end1="circle" y1="11.5" y2="-40" x2="120" x1="120" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line length2="1.5" end1="none" y1="-10" y2="-10" x2="360" x1="-360" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <text text="2" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-116"/>
+        <text text="24V" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-118"/>
+        <text text="0V" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="123"/>
+        <text text="7" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="125"/>
+        <text text="Up-/Down-Counter DC24V, 100kHz" color="#000000" y="45" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-130"/>
+        <text text="5" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-196"/>
+        <text text="Clock" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-198"/>
+        <text text="DO1" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="202"/>
+        <text text="4" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="206"/>
+        <text text="1" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-276"/>
+        <text text="U/D" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-278"/>
+        <text text="DO2" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="282"/>
+        <text text="8" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="286"/>
+        <text text="WAGO 753-404" color="#000000" y="45" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330"/>
+        <text text="6" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-36"/>
+        <text text="24V" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-38"/>
+        <text text="0V" color="#000000" y="-28" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="43"/>
+        <text text="3" color="#000000" y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="46"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="117.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-122.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="197.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-202.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="277.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-282.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="37.5"/>
+        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-42.5"/>
+        <polygon y1="-10" y2="-10" x2="-356" x1="-362" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" closed="false"/>
+        <arc width="5" y="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="180" start="90" x="360" height="5"/>
+        <polygon y1="10" y2="10" x2="-356" x1="-362" style="line-style:normal;line-weight:hight;filling:none;color:black" antialias="false" closed="false"/>
+        <arc width="5" y="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="180" start="90" x="360" height="5"/>
+        <terminal y="10" orientation="e" name="" x="360" uuid="{c6015bad-316b-454e-9e2d-d8eddec8fa78}" type="Generic"/>
+        <terminal y="-10" orientation="e" name="" x="360" uuid="{7b76b51f-cfe0-4571-9a8d-1a3968ca2125}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="-120" uuid="{8e2f5c1e-8121-4d84-a6b7-1c1bfc56c2db}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="-200" uuid="{2ae6d55c-32b9-4220-9234-ea3355109e68}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="-280" uuid="{b0417ad9-cc74-4fdd-8371-6b567f08d9b5}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="200" uuid="{4beac772-5e23-4f9c-a86e-1c2b88b63480}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="120" uuid="{c2f0367a-a708-4970-a24c-4dbd8fc0e37d}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="280" uuid="{0aefa944-51b7-4a56-b2de-5d4371b1d277}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="-40" uuid="{0bec4ff1-ac39-4f9e-8f9e-561654dc314c}" type="Generic"/>
+        <terminal y="-40" orientation="n" name="" x="40" uuid="{07b45cdd-c420-4e29-9ffd-16c630077c3f}" type="Generic"/>
+        <terminal y="10" orientation="w" name="" x="-360" uuid="{4be4a662-15a4-4bce-9fda-0169a288c069}" type="Generic"/>
+        <terminal y="-10" orientation="w" name="" x="-360" uuid="{e0eeb07d-59a2-4ff7-93c0-669c3806bdab}" type="Generic"/>
+    </description>
+</definition>

@@ -1,0 +1,47 @@
+<definition hotspot_y="45" width="90" version="0.90" type="element" height="90" hotspot_x="44" link_type="simple">
+    <names>
+        <name lang="de">787-1221</name>
+        <name lang="cs">787-1221</name>
+        <name lang="fr">787-1221</name>
+        <name lang="en">787-1221</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">787-1221</elementInformation>
+        <elementInformation show="1" name="description">Power-Supply Compact 12V</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect rx="0" width="80" y="-40" x="-40" height="80" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text text="GND" y="33" x="16" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="GND" y="13" x="16" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="+24V" y="-7" x="13" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="+24V" y="-27" x="13" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line end1="none" x1="1" end2="none" y2="40" x2="1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-40" antialias="true"/>
+        <circle diameter="5" y="7.5" x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <line end1="none" x1="-1" end2="none" y2="40" x2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-40" antialias="true"/>
+        <circle diameter="5" y="-32.5" x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="17.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-22.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="27.5" x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-2.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle diameter="5" y="-12.5" x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <dynamic_text keep_visual_rotation="false" z="16" y="-58.5" x="-37" frame="false" text_from="ElementInfo" uuid="{25246be8-938d-4eb5-83d6-b7b523abc6c2}" Valignment="AlignTop" rotation="0" font="Sans Serif,8,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="PE" y="17" x="-37" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="L1" y="-23" x="-37" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="N" y="-3" x="-37" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="WAGO 787-1221" y="38" x="-6" color="#000000" rotation="-90" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <terminal y="0" x="-40" orientation="w" type="Generic" uuid="{1c890b3c-b33c-4712-8b1a-2a6cb1cf2189}" name=""/>
+        <terminal y="10" x="40" orientation="e" type="Generic" uuid="{306bc89b-8195-4efd-bdf3-491f2c23a8bf}" name=""/>
+        <terminal y="20" x="-40" orientation="w" type="Generic" uuid="{ddbe15d3-1f46-4f17-a355-31b12c3569f4}" name=""/>
+        <terminal y="-20" x="-40" orientation="w" type="Generic" uuid="{3044c225-4dbb-4676-8be3-ad634e08d65f}" name=""/>
+        <terminal y="-30" x="40" orientation="e" type="Generic" uuid="{5d4df3f0-bf66-496c-8ffd-13577c6fc59d}" name=""/>
+        <terminal y="30" x="40" orientation="e" type="Generic" uuid="{88dc3769-caff-436e-be22-2a5f518b723e}" name=""/>
+        <terminal y="-10" x="40" orientation="e" type="Generic" uuid="{4658b4fe-8786-410b-bba7-9ced91e973d3}" name=""/>
+    </description>
+</definition>

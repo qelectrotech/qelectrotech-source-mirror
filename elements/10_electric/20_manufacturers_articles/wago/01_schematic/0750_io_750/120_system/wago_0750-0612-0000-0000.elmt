@@ -1,68 +1,71 @@
-<definition height="110" link_type="simple" version="0.51" hotspot_x="364" hotspot_y="55" type="element" width="730">
+<definition version="0.90" width="730" height="110" hotspot_y="55" type="element" hotspot_x="364" link_type="simple">
     <names>
+        <name lang="fr">750-612</name>
         <name lang="de">750-612</name>
         <name lang="en">750-612</name>
-        <name lang="fr">750-612</name>
         <name lang="cs">750-612</name>
     </names>
     <elementInformations>
+        <elementInformation show="1" name="description">Supply-Module 0-230V AC/DC</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">750-612</elementInformation>
-        <elementInformation show="1" name="description">Supply-Module 0-230V AC/DC</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <rect x="-360" width="720" rx="0" ry="0" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-40"/>
-        <text y="8" size="7" text="N" x="346"/>
-        <text y="28" size="7" text="PE" x="343"/>
-        <line y2="30" x1="200" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end2="none" end1="none" x2="360" length2="1.5" y1="30"/>
-        <text y="-13" size="7" text="0-230V" x="321"/>
-        <line y2="10" x1="40" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end2="none" end1="none" x2="360" length2="1.5" y1="10"/>
-        <line y2="-40" x1="200" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" end2="none" end1="none" x2="200" length2="1.5" y1="30"/>
-        <line y2="-40" x1="280" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" end2="none" end1="circle" x2="280" length2="1.5" y1="31.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="117.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-122.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="197.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="277.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-282.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="37.5"/>
-        <circle diameter="5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5"/>
-        <input y="41" size="9" text="X123" x="220" rotate="true" tagg="label"/>
-        <line y2="-40" x1="-40" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" end2="none" end1="circle" x2="-40" length2="1.5" y1="-8.5"/>
-        <line y2="-40" x1="-120" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" end2="none" end1="none" x2="-120" length2="1.5" y1="-10"/>
-        <line y2="-40" x1="40" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" end2="none" end1="none" x2="40" length2="1.5" y1="10"/>
-        <line y2="-40" x1="120" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" end2="none" end1="circle" x2="120" length2="1.5" y1="11.5"/>
-        <line y2="-10" x1="-120" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" end2="none" end1="none" x2="360" length2="1.5" y1="-10"/>
-        <text y="-42" size="5" text="2" x="-116"/>
-        <text y="-24" size="9" text="0-230V" x="-119"/>
-        <text y="-24" size="9" text="N" x="122"/>
-        <text y="-42" size="5" text="7" x="125"/>
-        <text y="45" size="9" text="Supply-Module 0-230V AC/DC" x="-130"/>
-        <text y="-42" size="5" text="5" x="-196"/>
-        <text y="-24" size="9" text="PE" x="201"/>
-        <text y="-42" size="5" text="4" x="206"/>
-        <text y="-42" size="5" text="1" x="-276"/>
-        <text y="-24" size="9" text="PE" x="281"/>
-        <text y="-42" size="5" text="8" x="286"/>
-        <text y="45" size="9" text="WAGO 750-612" x="-330"/>
-        <text y="-42" size="5" text="6" x="-36"/>
-        <text y="-24" size="9" text="0-230V" x="-39"/>
-        <text y="-24" size="9" text="0V" x="42"/>
-        <text y="-42" size="5" text="3" x="46"/>
-        <arc x="360" y="-12.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
-        <arc x="360" y="7.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
-        <arc x="360" y="27.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
-        <terminal y="30" orientation="e" x="360"/>
-        <terminal y="-40" orientation="n" x="-120"/>
-        <terminal y="-40" orientation="n" x="40"/>
-        <terminal y="10" orientation="e" x="360"/>
-        <terminal y="-10" orientation="e" x="360"/>
-        <terminal y="-40" orientation="n" x="-40"/>
-        <terminal y="-40" orientation="n" x="200"/>
-        <terminal y="-40" orientation="n" x="120"/>
-        <terminal y="-40" orientation="n" x="280"/>
+        <rect x="-360" width="720" rx="0" height="90" ry="0" y="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="346" text="N" y="8" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="343" text="PE" y="28" color="#000000"/>
+        <line length2="1.5" y1="30" x2="360" x1="200" end1="none" y2="30" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="321" text="0-230V" y="-13" color="#000000"/>
+        <line length2="1.5" y1="10" x2="360" x1="40" end1="none" y2="10" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none"/>
+        <line length2="1.5" y1="30" x2="200" x1="200" end1="none" y2="-40" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="none"/>
+        <line length2="1.5" y1="31.5" x2="280" x1="280" end1="circle" y2="-40" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="none"/>
+        <circle diameter="5" x="117.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="-122.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="197.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="-202.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="277.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="-282.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="37.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" x="-42.5" y="-42.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <dynamic_text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="220" Valignment="AlignTop" z="17" Halignment="AlignLeft" keep_visual_rotation="true" frame="false" text_from="ElementInfo" y="29.5" uuid="{72f80ec9-cd64-45cc-a6da-ba483fa2b72b}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" y1="-8.5" x2="-40" x1="-40" end1="circle" y2="-40" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="none"/>
+        <line length2="1.5" y1="-10" x2="-120" x1="-120" end1="none" y2="-40" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="none"/>
+        <line length2="1.5" y1="10" x2="40" x1="40" end1="none" y2="-40" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="none"/>
+        <line length2="1.5" y1="11.5" x2="120" x1="120" end1="circle" y2="-40" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" end2="none"/>
+        <line length2="1.5" y1="-10" x2="360" x1="-120" end1="none" y2="-10" length1="1.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-116" text="2" y="-42" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-119" text="0-230V" y="-24" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="122" text="N" y="-24" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="125" text="7" y="-42" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-130" text="Supply-Module 0-230V AC/DC" y="45" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-196" text="5" y="-42" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="201" text="PE" y="-24" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="206" text="4" y="-42" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-276" text="1" y="-42" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="281" text="PE" y="-24" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="286" text="8" y="-42" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-330" text="WAGO 750-612" y="45" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-36" text="6" y="-42" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-39" text="0-230V" y="-24" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="42" text="0V" y="-24" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="46" text="3" y="-42" color="#000000"/>
+        <arc x="360" width="5" start="90" height="5" y="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180"/>
+        <arc x="360" width="5" start="90" height="5" y="7.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180"/>
+        <arc x="360" width="5" start="90" height="5" y="27.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180"/>
+        <terminal x="360" orientation="e" type="Generic" y="30" uuid="{880eaaac-8258-46d6-9c61-74fe2a136360}" name=""/>
+        <terminal x="-120" orientation="n" type="Generic" y="-40" uuid="{57fb06c0-d1b2-4240-91d0-034c435cf79b}" name=""/>
+        <terminal x="40" orientation="n" type="Generic" y="-40" uuid="{ae3436a4-45a8-4cae-b4e6-6cd453ef3ff0}" name=""/>
+        <terminal x="360" orientation="e" type="Generic" y="10" uuid="{1a523dcb-15f3-471c-9c96-5a107725420c}" name=""/>
+        <terminal x="360" orientation="e" type="Generic" y="-10" uuid="{e2dff132-9f22-4410-a3ed-d7e3f92095a3}" name=""/>
+        <terminal x="-40" orientation="n" type="Generic" y="-40" uuid="{7016adeb-fff7-4e6f-b2f2-c8fa013842f9}" name=""/>
+        <terminal x="200" orientation="n" type="Generic" y="-40" uuid="{b0bc3cd2-39fb-4085-a579-0b00ef799bcc}" name=""/>
+        <terminal x="120" orientation="n" type="Generic" y="-40" uuid="{5292b609-76d7-44eb-a2c0-c18c99db8d3b}" name=""/>
+        <terminal x="280" orientation="n" type="Generic" y="-40" uuid="{44f9fc42-4612-4e0f-bad5-0e2b68898a28}" name=""/>
     </description>
 </definition>

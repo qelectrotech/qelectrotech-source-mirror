@@ -1,54 +1,54 @@
-<definition type="element" hotspot_x="365" height="110" version="0.80" hotspot_y="55" width="730" link_type="simple">
+<definition version="0.90" link_type="simple" type="element" width="730" height="110" hotspot_x="365" hotspot_y="55">
     <names>
+        <name lang="de">750-616</name>
+        <name lang="pt">750-616</name>
+        <name lang="it">750-616</name>
+        <name lang="fr">750-616</name>
+        <name lang="el">750-616</name>
+        <name lang="pl">750-616</name>
+        <name lang="es">750-616</name>
+        <name lang="en">750-616</name>
+        <name lang="nl">750-616</name>
         <name lang="cs">750-616</name>
         <name lang="ar">750-616</name>
-        <name lang="de">750-616</name>
-        <name lang="el">750-616</name>
-        <name lang="pt">750-616</name>
-        <name lang="nl">750-616</name>
-        <name lang="es">750-616</name>
-        <name lang="fr">750-616</name>
-        <name lang="pl">750-616</name>
-        <name lang="en">750-616</name>
-        <name lang="it">750-616</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="designation">750-616</elementInformation>
         <elementInformation show="1" name="description">Distance-Module</elementInformation>
+        <elementInformation show="1" name="designation">750-616</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <rect rx="0" y="-40" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="720" ry="0" x="-360"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" text="WAGO 750-616" x="-330"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" text="Distance-Module" x="-138"/>
-        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Valignment="AlignTop" y="29.5" z="8" rotation="0" uuid="{2c999323-a268-4a64-a87e-29a40a169a45}" frame="false" text_width="-1" Halignment="AlignLeft" x="220">
+        <rect x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" width="720" ry="0" antialias="false" height="90" rx="0"/>
+        <text x="-330" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="WAGO 750-616" rotation="0"/>
+        <text x="-138" y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="Distance-Module" rotation="0"/>
+        <circle x="117.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <circle x="-122.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <circle x="197.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <dynamic_text x="220" keep_visual_rotation="true" y="29.5" uuid="{2c999323-a268-4a64-a87e-29a40a169a45}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" frame="false" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" z="8">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="117.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-122.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="197.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-202.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="277.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-282.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="37.5"/>
-        <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-42.5"/>
-        <polygon y2="-10" y1="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
-        <arc x="360" y="-12.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
-        <polygon y2="10" y1="10" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
-        <arc x="360" y="7.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
-        <polygon y2="30" y1="30" style="line-style:normal;line-weight:hight;filling:none;color:black" closed="false" antialias="false" x2="-356" x1="-362"/>
-        <arc x="360" y="27.5" width="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" angle="180" height="5"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="2" x="-116"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="7" x="125"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="5" x="-196"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="4" x="206"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="1" x="-276"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="8" x="286"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="6" x="-36"/>
-        <text color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="3" x="46"/>
+        <circle x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <circle x="277.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <circle x="-282.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <circle x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <circle x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" antialias="true" diameter="5"/>
+        <polygon style="line-style:normal;line-weight:hight;filling:none;color:black" y2="-10" closed="false" x2="-356" antialias="false" x1="-362" y1="-10"/>
+        <arc x="360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12.5" width="5" antialias="true" height="5" angle="180" start="90"/>
+        <polygon style="line-style:normal;line-weight:hight;filling:none;color:black" y2="10" closed="false" x2="-356" antialias="false" x1="-362" y1="10"/>
+        <arc x="360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="7.5" width="5" antialias="true" height="5" angle="180" start="90"/>
+        <polygon style="line-style:normal;line-weight:hight;filling:none;color:black" y2="30" closed="false" x2="-356" antialias="false" x1="-362" y1="30"/>
+        <arc x="360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="27.5" width="5" antialias="true" height="5" angle="180" start="90"/>
+        <text x="-116" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="2" rotation="0"/>
+        <text x="125" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="7" rotation="0"/>
+        <text x="-196" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="5" rotation="0"/>
+        <text x="206" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="4" rotation="0"/>
+        <text x="-276" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="1" rotation="0"/>
+        <text x="286" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="8" rotation="0"/>
+        <text x="-36" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="6" rotation="0"/>
+        <text x="46" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="3" rotation="0"/>
     </description>
 </definition>
