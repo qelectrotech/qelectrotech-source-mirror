@@ -1,0 +1,64 @@
+<definition width="730" link_type="simple" version="0.90" type="element" hotspot_y="55" height="110" hotspot_x="365">
+    <names>
+        <name lang="de">857-550</name>
+        <name lang="en">857-550</name>
+        <name lang="fr">857-550</name>
+        <name lang="cs">857-550</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">857-550</elementInformation>
+        <elementInformation show="1" name="description">Current Transducer</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="280" antialias="false" x="-300" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="50" ry="0" rx="0"/>
+        <rect width="720" antialias="false" x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="90" ry="0" rx="0"/>
+        <text text="(GND3)" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-134" y="-16" color="#000000" rotation="0"/>
+        <dynamic_text text_from="UserText" z="4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="45" text_width="-1" y="-17" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" uuid="{fd25fd45-07ac-4621-9fa5-8bce50a6a446}" keep_visual_rotation="false">
+            <text>0 ... 20 mA</text>
+        </dynamic_text>
+        <rect width="120" antialias="false" x="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="50" ry="0" rx="0"/>
+        <rect width="40" antialias="false" x="-140" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" height="30" ry="0" rx="0"/>
+        <circle antialias="true" x="117.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="-122.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="197.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="277.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="-282.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <circle antialias="true" x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5"/>
+        <dynamic_text text_from="ElementInfo" z="15" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="220" text_width="-1" y="29.5" frame="false" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" uuid="{08b520de-9509-4072-a480-6e36ea9f161c}" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="206" y="-42" color="#000000" rotation="0"/>
+        <text text="DO" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-129" y="-24" color="#000000" rotation="0"/>
+        <text text="GND2" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="104" y="-24" color="#000000" rotation="0"/>
+        <text text="6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="125" y="-42" color="#000000" rotation="0"/>
+        <text text="Current Transducer" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-130" y="45" color="#000000" rotation="0"/>
+        <text text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-196" y="-42" color="#000000" rotation="0"/>
+        <text text="IN 5A" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-215" y="-24" color="#000000" rotation="0"/>
+        <text text="Us+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="190" y="-24" color="#000000" rotation="0"/>
+        <text text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-114" y="-42" color="#000000" rotation="0"/>
+        <text text="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-276" y="-42" color="#000000" rotation="0"/>
+        <text text="IN 1A" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-290" y="-24" color="#000000" rotation="0"/>
+        <text text="GND3" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="265" y="-24" color="#000000" rotation="0"/>
+        <text text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-34" y="-42" color="#000000" rotation="0"/>
+        <text text="WAGO 857-550" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330" y="45" color="#000000" rotation="0"/>
+        <text text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="286" y="-42" color="#000000" rotation="0"/>
+        <text text="GND1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-56" y="-24" color="#000000" rotation="0"/>
+        <text text="OUT+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="24" y="-24" color="#000000" rotation="0"/>
+        <text text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="46" y="-42" color="#000000" rotation="0"/>
+        <terminal x="200" y="-40" name="" type="Generic" orientation="n" uuid="{c25cc3fe-5230-4f3d-9406-fb779eb78e74}"/>
+        <terminal x="40" y="-40" name="" type="Generic" orientation="n" uuid="{7ddf1261-5192-497c-8d8a-f47e57b45358}"/>
+        <terminal x="280" y="-40" name="" type="Generic" orientation="n" uuid="{f50050d2-8991-4b0c-96d2-e0d97c1a06d2}"/>
+        <terminal x="-200" y="-40" name="" type="Generic" orientation="n" uuid="{5ba27f5d-039a-40a2-9288-ebe910337586}"/>
+        <terminal x="-120" y="-40" name="" type="Generic" orientation="n" uuid="{e2cf551a-e906-46a4-a00a-b51d67c5c974}"/>
+        <terminal x="120" y="-40" name="" type="Generic" orientation="n" uuid="{8cf6e2b7-0612-4978-bed3-330c3df477a0}"/>
+        <terminal x="-40" y="-40" name="" type="Generic" orientation="n" uuid="{048be950-7197-4c11-b06b-932b53ff09da}"/>
+        <terminal x="-280" y="-40" name="" type="Generic" orientation="n" uuid="{a869182e-0db8-402a-9619-6a445d89579f}"/>
+    </description>
+</definition>

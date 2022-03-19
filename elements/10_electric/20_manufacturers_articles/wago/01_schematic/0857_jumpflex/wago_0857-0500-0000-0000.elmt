@@ -1,0 +1,62 @@
+<definition hotspot_y="55" height="110" type="element" width="730" link_type="simple" hotspot_x="365" version="0.90">
+    <names>
+        <name lang="de">857-500</name>
+        <name lang="en">857-500</name>
+        <name lang="fr">857-500</name>
+        <name lang="cs">857-500</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">857-500</elementInformation>
+        <elementInformation show="1" name="description">Frequency transducer</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect height="50" width="280" ry="0" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-300" rx="0"/>
+        <rect height="90" width="720" ry="0" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" rx="0"/>
+        <rect height="50" width="120" ry="0" antialias="false" y="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20" rx="0"/>
+        <dynamic_text Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-17" z="4" keep_visual_rotation="false" rotation="0" uuid="{fd25fd45-07ac-4621-9fa5-8bce50a6a446}" x="49" text_from="UserText" Valignment="AlignTop" frame="false" text_width="-1">
+            <text>0 ... 20 mA</text>
+        </dynamic_text>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="117.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-122.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="197.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="277.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-282.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="37.5"/>
+        <circle diameter="5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5"/>
+        <text color="#000000" text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="206"/>
+        <text color="#000000" text="GND1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="-131"/>
+        <text color="#000000" text="GND2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="105"/>
+        <dynamic_text Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="29.5" z="17" keep_visual_rotation="false" rotation="0" uuid="{08b520de-9509-4072-a480-6e36ea9f161c}" x="220" text_from="ElementInfo" Valignment="AlignTop" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text color="#000000" text="6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="125"/>
+        <text color="#000000" text="Frequency Transducer" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" x="-130"/>
+        <text color="#000000" text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="-196"/>
+        <text color="#000000" text="f IN" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="-207"/>
+        <text color="#000000" text="Us+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="191"/>
+        <text color="#000000" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="-114"/>
+        <text color="#000000" text="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="-276"/>
+        <text color="#000000" text="+8.2V" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="-293"/>
+        <text color="#000000" text="GND3" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="266"/>
+        <text color="#000000" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="-34"/>
+        <text color="#000000" text="WAGO 857-500" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" x="-330"/>
+        <text color="#000000" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="286"/>
+        <text color="#000000" text="NPN/&#xa;PNP" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="-53"/>
+        <text color="#000000" text="OUT+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="27"/>
+        <text color="#000000" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="46"/>
+        <terminal type="Generic" y="-40" name="" uuid="{c25cc3fe-5230-4f3d-9406-fb779eb78e74}" x="200" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{5ba27f5d-039a-40a2-9288-ebe910337586}" x="-200" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{048be950-7197-4c11-b06b-932b53ff09da}" x="-40" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{a869182e-0db8-402a-9619-6a445d89579f}" x="-280" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{7ddf1261-5192-497c-8d8a-f47e57b45358}" x="40" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{f50050d2-8991-4b0c-96d2-e0d97c1a06d2}" x="280" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{8cf6e2b7-0612-4978-bed3-330c3df477a0}" x="120" orientation="n"/>
+        <terminal type="Generic" y="-40" name="" uuid="{e2cf551a-e906-46a4-a00a-b51d67c5c974}" x="-120" orientation="n"/>
+    </description>
+</definition>
