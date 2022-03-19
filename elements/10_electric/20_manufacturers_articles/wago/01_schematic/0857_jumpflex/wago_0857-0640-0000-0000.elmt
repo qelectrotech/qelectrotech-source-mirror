@@ -1,0 +1,69 @@
+<definition type="element" hotspot_x="365" width="730" height="110" hotspot_y="55" version="0.90" link_type="simple">
+    <names>
+        <name lang="fr">857-640</name>
+        <name lang="en">857-640</name>
+        <name lang="de">857-640</name>
+        <name lang="cs">857-640</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">857-640</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon x3="210" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="200" x2="200" y2="0" antialias="false" y3="20" y1="-40"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" width="720" height="90" y="-40" x="-360" antialias="false" ry="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="117.5" antialias="true"/>
+        <polygon x3="205" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="280" x2="280" y2="18" antialias="false" y3="18" y1="-40"/>
+        <polygon x3="192" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="120" x2="120" y2="18" antialias="false" y3="18" y1="-40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="-122.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="197.5" antialias="true"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" width="50" height="50" y="-20" x="-25" antialias="false" ry="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="-202.5" antialias="true"/>
+        <polygon x3="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="-40" x2="-40" y2="-10" antialias="false" y3="-10" y1="-40"/>
+        <polygon x3="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="-120" x2="-120" y2="0" antialias="false" y3="0" y1="-40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="277.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="-282.5" antialias="true"/>
+        <polygon style="line-style:dotted;line-weight:normal;filling:none;color:black" closed="false" x1="101" x2="205" y2="10" antialias="false" y1="10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="37.5" antialias="true"/>
+        <polygon x3="90" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y4="20" x1="25" x2="90" y2="0" antialias="false" y3="20" y1="0" x4="25"/>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" rx="0" width="20" height="10" y="5" x="80" antialias="false" ry="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" x="-42.5" antialias="true"/>
+        <text text="µC" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="4" x="-7"/>
+        <text text="3" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="206"/>
+        <text text="11" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="204"/>
+        <text text="GND" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="-197"/>
+        <text text="2" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="125"/>
+        <text text="Time Relay" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="45" x="-130"/>
+        <text text="6" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="-196"/>
+        <dynamic_text keep_visual_rotation="false" text_from="ElementInfo" uuid="{08b520de-9509-4072-a480-6e36ea9f161c}" Halignment="AlignLeft" Valignment="AlignTop" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" y="29.5" x="220" z="16" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="14" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="123"/>
+        <text text="Us+" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="-116"/>
+        <text text="7" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="-114"/>
+        <text text="5" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="-276"/>
+        <text text="DO" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="43"/>
+        <text text="GND" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="-38"/>
+        <text text="8" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="-34"/>
+        <text text="WAGO 857-640" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="45" x="-330"/>
+        <text text="4" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="286"/>
+        <text text="12" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="284"/>
+        <text text="St+" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-29" x="-278"/>
+        <text text="1" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42" x="46"/>
+        <polygon x3="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="-200" x2="-200" y2="10" antialias="false" y3="10" y1="-40"/>
+        <polygon x3="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="-280" x2="-280" y2="20" antialias="false" y3="20" y1="-40"/>
+        <polygon x3="40" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="25" x2="40" y2="-10" antialias="false" y3="-40" y1="-10"/>
+        <terminal type="Generic" uuid="{5ba27f5d-039a-40a2-9288-ebe910337586}" orientation="n" y="-40" x="-200" name=""/>
+        <terminal type="Generic" uuid="{048be950-7197-4c11-b06b-932b53ff09da}" orientation="n" y="-40" x="-40" name=""/>
+        <terminal type="Generic" uuid="{7ddf1261-5192-497c-8d8a-f47e57b45358}" orientation="n" y="-40" x="40" name=""/>
+        <terminal type="Generic" uuid="{c25cc3fe-5230-4f3d-9406-fb779eb78e74}" orientation="n" y="-40" x="200" name=""/>
+        <terminal type="Generic" uuid="{a869182e-0db8-402a-9619-6a445d89579f}" orientation="n" y="-40" x="-280" name=""/>
+        <terminal type="Generic" uuid="{f50050d2-8991-4b0c-96d2-e0d97c1a06d2}" orientation="n" y="-40" x="280" name=""/>
+        <terminal type="Generic" uuid="{8cf6e2b7-0612-4978-bed3-330c3df477a0}" orientation="n" y="-40" x="120" name=""/>
+        <terminal type="Generic" uuid="{e2cf551a-e906-46a4-a00a-b51d67c5c974}" orientation="n" y="-40" x="-120" name=""/>
+    </description>
+</definition>

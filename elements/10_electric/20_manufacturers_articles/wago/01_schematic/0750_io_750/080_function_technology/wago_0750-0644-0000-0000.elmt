@@ -1,16 +1,9 @@
-<definition hotspot_x="365" width="730" type="element" height="100" hotspot_y="46" version="0.90" link_type="simple">
+<definition width="730" version="0.90" height="100" hotspot_x="364" type="element" hotspot_y="46" link_type="simple">
     <names>
-        <name lang="it">750-644</name>
         <name lang="de">750-644</name>
-        <name lang="pt">750-644</name>
-        <name lang="cs">750-644</name>
         <name lang="fr">750-644</name>
+        <name lang="cs">750-644</name>
         <name lang="en">750-644</name>
-        <name lang="pl">750-644</name>
-        <name lang="el">750-644</name>
-        <name lang="ar">750-644</name>
-        <name lang="nl">750-644</name>
-        <name lang="es">750-644</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="designation">750-644</elementInformation>
@@ -21,27 +14,27 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <rect x="-360" style="line-style:normal;line-weight:normal;filling:none;color:black" width="720" antialias="false" height="90" y="-40" rx="0" ry="0"/>
-        <text x="-330" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="WAGO 750-644" y="45"/>
-        <circle x="-202.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" y="-42.5"/>
-        <text x="-138" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="RF-Transceiver Bluetooth" y="45"/>
-        <dynamic_text x="220" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{c6d8b3fa-526d-4b19-af64-5b5f35bf40d4}" text_from="ElementInfo" z="9" rotation="0" Valignment="AlignTop" text_width="-1" keep_visual_rotation="true" y="29.5">
+        <rect width="720" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-360" rx="0" y="-40" ry="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-330" color="#000000" y="45" rotation="0" text="WAGO 750-644"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-202.5" y="-42.5"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-138" color="#000000" y="45" rotation="0" text="RF-Transceiver Bluetooth"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-355" color="#000000" y="-11" rotation="0" text="24V"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-355" color="#000000" y="9" rotation="0" text="0V"/>
+        <line x1="-360" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" y1="10" y2="10" x2="360" end1="none" length1="1.5"/>
+        <dynamic_text keep_visual_rotation="true" uuid="{c6d8b3fa-526d-4b19-af64-5b5f35bf40d4}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" x="220" frame="false" text_from="ElementInfo" y="29.5" text_width="-1" rotation="0" z="9" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <text size="7" x="-355" text="24V" y="-11"/>
-        <text size="7" x="-355" text="0V" y="9"/>
-        <line x2="360" length2="1.5" y1="10" antialias="false" y2="10" style="line-style:normal;line-weight:thin;filling:white;color:black" end2="none" end1="none" x1="-360" length1="1.5"/>
-        <line x2="360" length2="1.5" y1="-10" antialias="false" y2="-10" style="line-style:normal;line-weight:thin;filling:white;color:black" end2="none" end1="none" x1="-360" length1="1.5"/>
-        <polygon x2="-356" style="line-style:normal;line-weight:hight;filling:white;color:black" closed="false" antialias="false" y2="-10" x1="-362" y1="-10"/>
-        <arc angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" start="90" x="360" y="-12.5" width="5" height="5"/>
-        <polygon x2="-356" style="line-style:normal;line-weight:hight;filling:white;color:black" closed="false" antialias="false" y2="10" x1="-362" y1="10"/>
-        <arc angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" start="90" x="360" y="7.5" width="5" height="5"/>
-        <text x="-219" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="Antenna" y="-27"/>
-        <terminal orientation="n" x="-200" y="-40" name="Antenna"/>
-        <terminal orientation="w" x="-360" y="-10" name=""/>
-        <terminal orientation="e" x="360" y="10" name=""/>
-        <terminal orientation="e" x="360" y="-10" name=""/>
-        <terminal orientation="w" x="-360" y="10" name=""/>
+        <line x1="-360" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" y1="-10" y2="-10" x2="360" end1="none" length1="1.5"/>
+        <polygon x1="-362" style="line-style:normal;line-weight:hight;filling:white;color:black" antialias="false" y1="-10" y2="-10" x2="-356" closed="false"/>
+        <arc start="90" width="5" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="360" y="-12.5" angle="180"/>
+        <polygon x1="-362" style="line-style:normal;line-weight:hight;filling:white;color:black" antialias="false" y1="10" y2="10" x2="-356" closed="false"/>
+        <arc start="90" width="5" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="360" y="7.5" angle="180"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-219" color="#000000" y="-27" rotation="0" text="Antenna"/>
+        <terminal uuid="{15e4b055-356f-4caa-b606-b2a88c5b889a}" x="-200" orientation="n" y="-40" type="Generic" name="Antenna"/>
+        <terminal uuid="{19f4fe41-7c11-4278-b6e1-daca32fc62b6}" x="-360" orientation="w" y="-10" type="Generic" name=""/>
+        <terminal uuid="{3eea0174-849f-4d21-b732-ccff52ce4f77}" x="360" orientation="e" y="10" type="Generic" name=""/>
+        <terminal uuid="{fdc7f118-c1ea-4277-8249-63024cb2b073}" x="360" orientation="e" y="-10" type="Generic" name=""/>
+        <terminal uuid="{bd18b38f-f2ab-48e1-90c3-547a9c850796}" x="-360" orientation="w" y="10" type="Generic" name=""/>
     </description>
 </definition>
