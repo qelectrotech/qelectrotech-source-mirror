@@ -116,6 +116,17 @@ TerminalStripModel::TerminalStripModel(TerminalStrip *terminal_strip, QObject *p
 	});
 }
 
+/**
+ * @brief TerminalStripModel::setTerminalStrip
+ * set the current terminal strip of this model to @a terminal_strip.
+ * @param terminal_strip
+ */
+void TerminalStripModel::setTerminalStrip(TerminalStrip *terminal_strip)
+{
+	m_terminal_strip = terminal_strip;
+	reload();
+}
+
 int TerminalStripModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -477,6 +488,19 @@ void TerminalStripModel::buildBridgePixmap(const QSize &pixmap_size)
 		bpxm.none_ = none_;
 		m_bridges_pixmaps.insert(color_, bpxm);
 	}
+}
+
+/**
+ * @brief TerminalStripModel::reload
+ * Reload (reset) the model
+ */
+void TerminalStripModel::reload()
+{
+	beginResetModel();
+	m_physical_data.clear();
+	m_modified_cell.clear();
+	fillPhysicalTerminalData();
+	endResetModel();
 }
 
 void TerminalStripModel::fillPhysicalTerminalData()

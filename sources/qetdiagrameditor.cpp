@@ -42,7 +42,6 @@
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
-#include "TerminalStrip/ui/terminalstripeditor.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "ui/diagrameditorhandlersizewidget.h"
 
@@ -428,7 +427,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Add a nomenclature item
 	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter une nomenclature"), this);
-	connect(m_add_nomenclature, &QAction::triggered, [this]() {
+	connect(m_add_nomenclature, &QAction::triggered, this, [=]() {
 		if(this->currentDiagramView()) {
 			QetGraphicsTableFactory::createAndAddNomenclature(this->currentDiagramView()->diagram());
 		}
@@ -436,21 +435,18 @@ void QETDiagramEditor::setUpActions()
 
 		//Add a summary item
 	m_add_summary = new QAction(QET::Icons::TableOfContent, tr("Ajouter un sommaire"), this);
-	connect(m_add_summary, &QAction::triggered, [this]() {
+	connect(m_add_summary, &QAction::triggered, this, [=]() {
 		if(this->currentDiagramView()) {
 			QetGraphicsTableFactory::createAndAddSummary(this->currentDiagramView()->diagram());
 		}
 	});
 
 	m_terminal_strip_dialog = new QAction(QET::Icons::TerminalStrip, tr("Gestionnaire de borniers (DEV)"), this);
-	connect(m_terminal_strip_dialog, &QAction::triggered, [this]()
+	connect(m_terminal_strip_dialog, &QAction::triggered, this, [=]()
 	{
 		if (auto project = this->currentProject())
 		{
-			auto str = new TerminalStripEditor(project, this);
-			str->show();
-
-			auto tsew = new TerminalStripEditorWindow(project, this);
+			auto tsew {new TerminalStripEditorWindow{project, this}};
 			tsew->show();
 		}
 	});

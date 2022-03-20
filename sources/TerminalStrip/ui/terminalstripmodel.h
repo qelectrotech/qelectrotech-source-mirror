@@ -70,6 +70,7 @@ class TerminalStripModel : public QAbstractTableModel
         Q_OBJECT
     public:
         TerminalStripModel(TerminalStrip *terminal_strip, QObject *parent = nullptr);
+		void setTerminalStrip(TerminalStrip *terminal_strip);
 
         virtual int rowCount    (const QModelIndex &parent = QModelIndex()) const override;
         virtual int columnCount (const QModelIndex &parent = QModelIndex()) const override;
@@ -84,6 +85,8 @@ class TerminalStripModel : public QAbstractTableModel
 		modelRealTerminalData modelRealTerminalDataForIndex(const QModelIndex &index) const;
 
 		void buildBridgePixmap(const QSize &pixmap_size);
+
+		void reload();
 
 	private:
 		void fillPhysicalTerminalData();

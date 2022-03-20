@@ -15,15 +15,17 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "freeterminaleditor.h"
-#include "terminalstripeditorwindow.h"
 #include "ui_terminalstripeditorwindow.h"
-#include "terminalstriptreedockwidget.h"
-#include "../terminalstrip.h"
-#include "terminalstripcreatordialog.h"
+
 #include "../UndoCommand/addterminalstripcommand.h"
+#include "freeterminaleditor.h"
 #include "../../qetproject.h"
 #include "../realterminal.h"
+#include "../terminalstrip.h"
+#include "terminalstripcreatordialog.h"
+#include "terminalstripeditor.h"
+#include "terminalstripeditorwindow.h"
+#include "terminalstriptreedockwidget.h"
 
 static int EMPTY_PAGE = 0;
 static int FREE_TERMINAL_PAGE = 1;
@@ -43,11 +45,13 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 	addTreeDockWidget();
 
 	m_free_terminal_editor = new FreeTerminalEditor(m_project, this);
+	m_terminal_strip_editor = new TerminalStripEditor{m_project, this};
 
 	connect(m_tree_dock, &TerminalStripTreeDockWidget::currentStripChanged, this, &TerminalStripEditorWindow::currentStripChanged);
 
 	ui->m_stacked_widget->insertWidget(EMPTY_PAGE, new QWidget(ui->m_stacked_widget));
 	ui->m_stacked_widget->insertWidget(FREE_TERMINAL_PAGE, m_free_terminal_editor);
+	ui->m_stacked_widget->insertWidget(TERMINAL_STRIP_PAGE, m_terminal_strip_editor);
 }
 
 /**
@@ -93,6 +97,9 @@ void TerminalStripEditorWindow::updateUi()
 			ui->m_stacked_widget->setCurrentIndex(FREE_TERMINAL_PAGE);
 			m_free_terminal_editor->reload();
 		}
+	} else if (auto strip_ = m_tree_dock->currentStrip()) {
+		ui->m_stacked_widget->setCurrentIndex(TERMINAL_STRIP_PAGE);
+		m_terminal_strip_editor->setCurrentStrip(strip_);
 	}
 }
 
@@ -133,11 +140,12 @@ void TerminalStripEditorWindow::on_m_remove_terminal_triggered()
 	}
 }
 
-
 /**
  * @brief TerminalStripEditorWindow::on_m_reload_triggered
  */
 void TerminalStripEditorWindow::on_m_reload_triggered() {
 	m_tree_dock->reload();
+	m_terminal_strip_editor->reload();
+	m_free_terminal_editor->reload();
 }
 

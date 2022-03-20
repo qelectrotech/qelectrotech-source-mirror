@@ -370,6 +370,6 @@ void TerminalStripTreeDockWidget::setupUndoConnections()
 
 void TerminalStripTreeDockWidget::setCurrentStrip(TerminalStrip *strip)
 {
-	emit currentStripChanged(strip);
 	m_current_strip = strip;
+	emit currentStripChanged(strip);
 }

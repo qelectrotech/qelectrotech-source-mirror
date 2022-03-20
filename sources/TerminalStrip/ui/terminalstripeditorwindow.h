@@ -24,6 +24,7 @@ class QETProject;
 class TerminalStripTreeDockWidget;
 class TerminalStrip;
 class FreeTerminalEditor;
+class TerminalStripEditor;
 
 namespace Ui {
 	class TerminalStripEditorWindow;
@@ -48,10 +49,11 @@ class TerminalStripEditorWindow : public QMainWindow
 		void updateUi();
 
 	private:
-		Ui::TerminalStripEditorWindow *ui;
+		Ui::TerminalStripEditorWindow *ui{nullptr};
 		QETProject *m_project {nullptr};
-		TerminalStripTreeDockWidget *m_tree_dock;
+		TerminalStripTreeDockWidget *m_tree_dock{nullptr};
 		FreeTerminalEditor *m_free_terminal_editor {nullptr};
+		TerminalStripEditor *m_terminal_strip_editor {nullptr};
 };
 
 #endif // TERMINALSTRIPEDITORWINDOW_H

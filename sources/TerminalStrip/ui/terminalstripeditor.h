@@ -18,7 +18,7 @@
 #ifndef TERMINALSTRIPEDITOR_H
 #define TERMINALSTRIPEDITOR_H
 
-#include <QDialog>
+#include <QWidget>
 
 #include "terminalstripmodel.h"
 
@@ -28,43 +28,31 @@ namespace Ui {
 
 class QETProject;
 class TerminalStrip;
-class QTreeWidgetItem;
-class TerminalElement;
-class QAbstractButton;
-class FreeTerminalEditor;
 
 /**
  * @brief The TerminalStripEditor class
  * Main dialog used to edit terminal strip
  * of a project
  */
-class TerminalStripEditor : public QDialog
+class TerminalStripEditor : public QWidget
 {
 		Q_OBJECT
 
 	public:
 		explicit TerminalStripEditor(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripEditor() override;
+		void setCurrentStrip(TerminalStrip *strip_);
+		void reload();
+		void apply();
 
 	private:
-		void setUpUndoConnections();
-		void buildTree();
-		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
-		void addFreeTerminal();
-		void setCurrentStrip(TerminalStrip *strip_);
 		void spanMultiLevelTerminals();
 		void selectionChanged();
 		QSize setUpBridgeCellWidth();
 		TerminalStripModel::Column isSingleColumnSelected() const;
 		QPair<TerminalStripModel::Column, QVector<modelRealTerminalData>> singleColumnData() const;
-		void updateWidget();
 
 	private slots:
-		void on_m_add_terminal_strip_pb_clicked();
-		void on_m_remove_terminal_strip_pb_clicked();
-		void on_m_reload_pb_clicked();
-		void on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
-		void on_m_dialog_button_box_clicked(QAbstractButton *button);
 		void on_m_auto_ordering_pb_clicked();
 		void on_m_group_terminals_pb_clicked();
 		void on_m_ungroup_pb_clicked();
@@ -78,15 +66,9 @@ class TerminalStripEditor : public QDialog
 
 	private:
 		Ui::TerminalStripEditor *ui;
-		QETProject *m_project = nullptr;
-
-		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
-		QHash<QUuid, QSharedPointer<RealTerminal>> m_uuid_terminal_H;
-		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
-		TerminalStrip *m_current_strip = nullptr;
-		TerminalStripModel *m_model = nullptr;
-		FreeTerminalEditor *m_free_terminal_editor = nullptr;
-
+		QETProject *m_project {nullptr};
+		TerminalStrip *m_current_strip {nullptr};
+		TerminalStripModel *m_model {nullptr};
 };
 
 #endif // TERMINALSTRIPEDITOR_H
