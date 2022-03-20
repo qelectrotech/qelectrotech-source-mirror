@@ -1,9 +1,10 @@
 <definition height="160" width="100" hotspot_y="80" hotspot_x="50" version="0.90" type="element" link_type="simple">
     <uuid uuid="{63989d18-b10a-4969-84e7-49913d1f39c0}"/>
     <names>
-        <name lang="cs">SNS016</name>
+        <name lang="cs">SNS016 - Schuko zásuvka</name>
         <name lang="de">SNS016 - Schuko-Steckdose</name>
-        <name lang="fr">SNS016</name>
+        <name lang="en">SNS016 - Schuko socket</name>
+        <name lang="fr">SNS016 - Prise Schuko</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Hager</elementInformation>
@@ -11,7 +12,7 @@
         <elementInformation name="description" show="1">Socket Type F</elementInformation>
         <elementInformation name="label" show="1">-X1</elementInformation>
     </elementInformations>
-    <informations>plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>
