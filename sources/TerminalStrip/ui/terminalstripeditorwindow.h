@@ -25,6 +25,7 @@ class TerminalStripTreeDockWidget;
 class TerminalStrip;
 class FreeTerminalEditor;
 class TerminalStripEditor;
+class QAbstractButton;
 
 namespace Ui {
 	class TerminalStripEditorWindow;
@@ -42,6 +43,7 @@ class TerminalStripEditorWindow : public QMainWindow
 		void on_m_add_terminal_strip_triggered();
 		void on_m_remove_terminal_triggered();
 		void on_m_reload_triggered();
+		void on_m_button_box_clicked(QAbstractButton *button);
 
 	private:
 		void addTreeDockWidget();

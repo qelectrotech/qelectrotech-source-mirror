@@ -27,9 +27,9 @@
 #include "terminalstripeditorwindow.h"
 #include "terminalstriptreedockwidget.h"
 
-static int EMPTY_PAGE = 0;
-static int FREE_TERMINAL_PAGE = 1;
-static int TERMINAL_STRIP_PAGE = 2;
+static const int EMPTY_PAGE = 0;
+static const int FREE_TERMINAL_PAGE = 1;
+static const int TERMINAL_STRIP_PAGE = 2;
 /**
  * @brief TerminalStripEditorWindow::TerminalStripEditorWindow
  * @param project
@@ -147,5 +147,33 @@ void TerminalStripEditorWindow::on_m_reload_triggered() {
 	m_tree_dock->reload();
 	m_terminal_strip_editor->reload();
 	m_free_terminal_editor->reload();
+}
+
+/**
+ * @brief TerminalStripEditorWindow::on_m_button_box_clicked
+ * Action when user click on the apply/reset button
+ * @param button
+ */
+void TerminalStripEditorWindow::on_m_button_box_clicked(QAbstractButton *button)
+{
+	auto role_{ui->m_button_box->buttonRole(button)};
+
+	if (role_ == QDialogButtonBox::ApplyRole)
+	{
+		switch (ui->m_stacked_widget->currentIndex()) {
+			case FREE_TERMINAL_PAGE:
+				break;
+			case TERMINAL_STRIP_PAGE:
+				m_terminal_strip_editor->apply();
+				break;
+			default:
+				break;
+		}
+	}
+	else if (role_ == QDialogButtonBox::ResetRole)
+	{
+		m_terminal_strip_editor->reload();
+		m_free_terminal_editor->reload();
+	}
 }
 
