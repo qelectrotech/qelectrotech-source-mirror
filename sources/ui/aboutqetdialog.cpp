@@ -63,8 +63,17 @@ void AboutQETDialog::setAbout()
 			tr(" Les développeurs de QElectroTech", "about tab, developers line") +
 			"<br><br>"
 			"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
+            "<br><br>" +
+            "The program is provided AS IS with NO WARRANTY OF ANY KIND,"
+            "<br><br>"
+             " INCLUDING THE WARRANTY OF DESIGN, "
+            "<br><br>"
+             "MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.";
+            "<br><br>"
 			"<br><br>" +
 			tr("Contact : <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line");
+           
+            
 
 	ui->m_about_label->setText(str);
 }
