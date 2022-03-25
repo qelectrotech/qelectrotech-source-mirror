@@ -177,3 +177,8 @@ void TerminalStripEditorWindow::on_m_button_box_clicked(QAbstractButton *button)
 	}
 }
 
+
+void TerminalStripEditorWindow::on_m_stacked_widget_currentChanged(int arg1) {
+	ui->m_button_box->setHidden(arg1 == EMPTY_PAGE);
+}
+

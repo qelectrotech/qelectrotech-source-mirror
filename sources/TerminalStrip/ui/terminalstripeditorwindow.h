@@ -45,6 +45,8 @@ class TerminalStripEditorWindow : public QMainWindow
 		void on_m_reload_triggered();
 		void on_m_button_box_clicked(QAbstractButton *button);
 
+		void on_m_stacked_widget_currentChanged(int arg1);
+
 	private:
 		void addTreeDockWidget();
 		void currentStripChanged(TerminalStrip *strip);
