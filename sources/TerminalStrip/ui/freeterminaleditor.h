@@ -38,6 +38,7 @@ class FreeTerminalEditor : public QWidget
 		~FreeTerminalEditor();
 
 		void reload();
+		void apply();
 
 	private:
 		void selectionChanged();

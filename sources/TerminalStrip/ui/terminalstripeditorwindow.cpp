@@ -162,6 +162,7 @@ void TerminalStripEditorWindow::on_m_button_box_clicked(QAbstractButton *button)
 	{
 		switch (ui->m_stacked_widget->currentIndex()) {
 			case FREE_TERMINAL_PAGE:
+				m_free_terminal_editor->apply();
 				break;
 			case TERMINAL_STRIP_PAGE:
 				m_terminal_strip_editor->apply();

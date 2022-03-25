@@ -17,9 +17,11 @@
 */
 #include "freeterminaleditor.h"
 #include "ui_freeterminaleditor.h"
+
+#include "../undocommand/changeelementdatacommand.h"
+#include "../../diagram.h"
 #include "../../elementprovider.h"
 #include "freeterminalmodel.h"
-#include "../../diagram.h"
 
 /**
  * @brief FreeTerminalEditor::FreeTerminalEditor
@@ -78,4 +80,37 @@ FreeTerminalEditor::~FreeTerminalEditor()
  */
 void FreeTerminalEditor::reload() {
 	m_model->clear();
+}
+
+/**
+ * @brief FreeTerminalEditor::apply
+ * Applu current edited values
+ */
+void FreeTerminalEditor::apply()
+{
+	const auto modified_data = m_model->modifiedModelRealTerminalData();
+	if (modified_data.size())
+	{
+		m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+
+		for (const auto &data_ : modified_data)
+		{
+			if (auto element_ = data_.element_)
+			{
+				auto current_data = element_->elementData();
+				current_data.setTerminalType(data_.type_);
+				current_data.setTerminalFunction(data_.function_);
+				current_data.setTerminalLED(data_.led_);
+				current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
+
+				if (element_->elementData() != current_data) {
+					m_project->undoStack()->push(new ChangeElementDataCommand(element_, current_data));
+				}
+			}
+		}
+
+		m_project->undoStack()->endMacro();
+	}
+
+	reload();
 }
