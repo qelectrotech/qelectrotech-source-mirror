@@ -40,6 +40,11 @@ class FreeTerminalEditor : public QWidget
 		void reload();
 		void apply();
 
+	private slots:
+		void on_m_type_cb_activated(int index);
+		void on_m_function_cb_activated(int index);
+		void on_m_led_cb_activated(int index);
+
 	private:
 		void selectionChanged();
 

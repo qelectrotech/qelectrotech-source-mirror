@@ -114,3 +114,84 @@ void FreeTerminalEditor::apply()
 
 	reload();
 }
+
+void FreeTerminalEditor::on_m_type_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_view->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto type_index = m_model->index(model_index.row(), FreeTerminalModel::Type, model_index.parent());
+			if (type_index.isValid())
+			{
+				ElementData::TerminalType override_type;
+				switch (index) {
+					case 0:
+						override_type = ElementData::TTGeneric; break;
+					case 1:
+						override_type = ElementData::TTFuse; break;
+					case 2:
+						override_type = ElementData::TTSectional; break;
+					case 3:
+						override_type = ElementData::TTDiode; break;
+					case 4:
+						override_type = ElementData::TTGround; break;
+					default:
+						override_type = ElementData::TTGeneric; break;
+				}
+				m_model->setData(type_index, override_type);
+			}
+		}
+	}
+}
+
+
+void FreeTerminalEditor::on_m_function_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_view->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto function_index = m_model->index(model_index.row(), FreeTerminalModel::Function, model_index.parent());
+			if (function_index.isValid())
+			{
+				ElementData::TerminalFunction override_function;
+				switch (index) {
+					case 0:
+						override_function = ElementData::TFGeneric; break;
+					case 1:
+						override_function = ElementData::TFPhase; break;
+					case 2:
+						override_function = ElementData::TFNeutral; break;
+					default:
+						override_function = ElementData::TFGeneric; break;
+				}
+				m_model->setData(function_index, override_function);
+			}
+		}
+	}
+}
+
+
+void FreeTerminalEditor::on_m_led_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_view->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto led_index = m_model->index(model_index.row(), FreeTerminalModel::Led, model_index.parent());
+
+			if (led_index.isValid()) {
+				m_model->setData(led_index,
+								 index == 0 ? false : true);
+			}
+		}
+	}
+}
+
