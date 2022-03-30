@@ -182,7 +182,10 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 			 && current->parent()->type() == TerminalStripTreeWidget::Strip) {
 		strip_ = m_item_strip_H.value(current->parent());
 	}
-	setCurrentStrip(strip_);
+
+	if (strip_ != m_current_strip) {
+		setCurrentStrip(strip_);
+	}
 }
 
 /**
