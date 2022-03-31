@@ -120,8 +120,19 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 */
 QETProject::~QETProject()
 {
-	for (auto diagram : m_diagrams_list)
+		//Each time a diagram is deleted we also remove it from m_diagram_list
+		//because a lot of thing append during the destructor of a diagram class
+		//and one of these thing (not directly in the destructor of the diagram
+		//but in another destructor called by the diagram destructor)
+		//is to get the diagram list of the project to make some updates @see QList<Diagram *> QETProject::diagrams() const.
+		//So we need to remove the freshly deleted diagram from the list
+		//in each iteration of the loop to avoid  the use of a dangling pointer.
+	const auto diag_list = m_diagrams_list;
+	for (const auto &diagram : diag_list)
+	{
 		delete  diagram;
+		m_diagrams_list.removeOne(diagram);
+	}
 }
 
 /**
