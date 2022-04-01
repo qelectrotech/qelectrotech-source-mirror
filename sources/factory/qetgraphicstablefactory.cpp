@@ -79,10 +79,9 @@ void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 	}
 
 		//Add new table if needed and option checked
-	dialog->addNewTableToNewDiagram();
-	table_->model()->rowCount();
-	table_->displayNRow();
-	if (dialog->addNewTableToNewDiagram() && table_->model()->rowCount() > table_->displayNRow())
+	if (dialog->addNewTableToNewDiagram()
+		&& table_->displayNRow() > 0
+		&& table_->model()->rowCount() > table_->displayNRow())
 	{
 		auto already_displayed_rows = table_->displayNRow();
 		auto project_ = diagram->project();
