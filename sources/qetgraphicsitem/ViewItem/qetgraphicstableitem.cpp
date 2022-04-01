@@ -185,7 +185,7 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 			   this, &QetGraphicsTableItem::modelReseted);
 	}
 	m_model = model;
-	m_header_item->setModel(model);
+	m_header_item->setModel(m_model);
 
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
@@ -210,7 +210,7 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 */
 QAbstractItemModel *QetGraphicsTableItem::model() const
 {
-	return m_model;
+	return m_model.data();
 }
 
 /**
@@ -599,7 +599,7 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	{
 			//Add model
 		auto dom_model = dom_document.createElement("model");
-		auto project_db_model = static_cast<ProjectDBModel *>(m_model);
+		auto project_db_model = static_cast<ProjectDBModel *>(m_model.data());
 		dom_model.appendChild(project_db_model->toXml(dom_document));
 		dom_table.appendChild(dom_model);
 

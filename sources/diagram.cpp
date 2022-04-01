@@ -137,15 +137,20 @@ Diagram::~Diagram()
 	delete m_event_interface;
 
 	// list removable items
-	QList<QGraphicsItem *> deletable_items;
-	for(QGraphicsItem *qgi : items())
+	QVector<QGraphicsItem *> deletable_items;
+	for(const auto &qgi : items())
 	{
-		if (qgi -> parentItem()) continue;
-		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
-		deletable_items << qgi;
+		if (qgi->parentItem())
+			continue;
+		if (qgraphicsitem_cast<Conductor *>(qgi))
+			continue;
+		deletable_items.append(qgi);
 	}
-
-	qDeleteAll (deletable_items);
+	for (const auto &item : qAsConst(deletable_items))
+	{
+		removeItem(item);
+		delete item;
+	}
 }
 
 /**

@@ -123,7 +123,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void previousTableDisplayRowChanged();
 		void removeUselessNextTable(bool recursive = true);
 
-		QAbstractItemModel *m_model= nullptr;
+		QPointer<QAbstractItemModel> m_model;
 
 		QVector<int> m_minimum_column_width;
 		int
