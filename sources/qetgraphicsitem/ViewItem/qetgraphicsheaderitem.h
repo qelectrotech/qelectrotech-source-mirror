@@ -84,7 +84,7 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 
 		QRect m_current_rect;
 		QRectF m_bounding_rect;
-		QAbstractItemModel *m_model = nullptr;
+		QPointer<QAbstractItemModel> m_model;
 
 		QVector<int>
 		m_sections_minimum_width,
