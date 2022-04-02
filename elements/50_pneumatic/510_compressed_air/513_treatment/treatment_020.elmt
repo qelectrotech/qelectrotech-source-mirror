@@ -1,0 +1,41 @@
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
+    <uuid uuid="{31b621f5-fe93-46ca-b455-986778734af9}"/>
+    <names>
+        <name lang="ar">تبريد الهواء المضغوط</name>
+        <name lang="ca">refrigeració per aire comprimit</name>
+        <name lang="cs">chlazení stlačeným vzduchem</name>
+        <name lang="da">trykluftkøling</name>
+        <name lang="de">Druckluftkühlung</name>
+        <name lang="el">ψύξη πεπιεσμένου αέρα</name>
+        <name lang="en">compressed air cooling</name>
+        <name lang="es">refrigeración por aire comprimido</name>
+        <name lang="fr">refroidissement par air comprimé</name>
+        <name lang="hr">hlađenje komprimiranim zrakom</name>
+        <name lang="hu">sűrített levegős hűtés</name>
+        <name lang="it">raffreddamento ad aria compressa</name>
+        <name lang="ja">圧縮空気冷却</name>
+        <name lang="mn">шахсан агаарын хөргөлт</name>
+        <name lang="nb">trykkluftkjøling</name>
+        <name lang="nl">persluchtkoeling</name>
+        <name lang="pl">chłodzenie sprężonym powietrzem</name>
+        <name lang="pt">refrigeração de ar comprimido</name>
+        <name lang="pt_br">refrigeração de ar comprimido</name>
+        <name lang="ro">racire cu aer comprimat</name>
+        <name lang="ru">охлаждение сжатым воздухом</name>
+        <name lang="sl">hlajenje s stisnjenim zrakom</name>
+        <name lang="sr">хлађење компримованим ваздухом</name>
+        <name lang="tr">basınçlı hava soğutma</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-7" tagg="label" y="-29.45" rotate="true" text="_" size="7"/>
+        <line y1="-25" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="4.5" x3="20" y4="4.5" x1="18" y3="9.5" x4="18" x2="22" y2="4.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon y1="-29.5" x3="22" y4="-29.5" x1="20" y3="-24.5" x4="20" x2="18" y2="-24.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+    </description>
+</definition>

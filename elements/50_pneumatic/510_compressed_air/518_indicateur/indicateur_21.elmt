@@ -1,0 +1,46 @@
+<definition hotspot_x="24" height="30" type="element" version="0.90" width="50" hotspot_y="15" link_type="simple">
+    <uuid uuid="{cfb86208-49aa-45db-b2cc-41c124f7715c}"/>
+    <names>
+        <name lang="ar">مقياس الجريان لا يتجزأ</name>
+        <name lang="ca">Caudalímetre integral</name>
+        <name lang="cs">Integrální průtokoměr</name>
+        <name lang="da">Integreret flowmåler</name>
+        <name lang="de">Durchflussmesser</name>
+        <name lang="el">Ενσωματωμένο ροόμετρο</name>
+        <name lang="en">Integral Flowmeter</name>
+        <name lang="es">Medidor de flujo integral</name>
+        <name lang="fr">Débitmètre intégré</name>
+        <name lang="hr">Integralni mjerač protoka</name>
+        <name lang="hu">Integrált áramlásmérő</name>
+        <name lang="it">Flussometro integrale</name>
+        <name lang="ja">一体型流量計</name>
+        <name lang="mn">Интеграл урсгал хэмжигч</name>
+        <name lang="nb">Integrert strømningsmåler</name>
+        <name lang="nl">Integrale debietmeter</name>
+        <name lang="pl">Przepływomierz integralny</name>
+        <name lang="pt">Medidor de vazão integral</name>
+        <name lang="pt_br">Medidor de vazão integral</name>
+        <name lang="ro">Debitmetru integral</name>
+        <name lang="ru">Встроенный расходомер</name>
+        <name lang="sl">Integralni merilnik pretoka</name>
+        <name lang="sr">Интегрални мерач протока</name>
+        <name lang="tr">Entegre Debimetre</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" y="-31" keep_visual_rotation="false" x="-22" rotation="0" z="1" text_width="-1" text_from="ElementInfo" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{8c32a245-f165-4a5e-907a-851368cea050}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y2="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-2" x4="-2" y4="3" x5="2" antialias="true" y5="3" closed="false" x1="2" y3="0" y1="-3" x3="1"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="16" antialias="false" length2="1.5" x1="10" end1="none" length1="1.5" y1="0" end2="none"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" antialias="false" length2="1.5" x1="-15" end1="none" length1="1.5" y1="0" end2="none"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="5" x="-10" height="20" angle="-80" width="20" start="-230"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-10" x="-10" diameter="20"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-25" x="-10" height="20" angle="-80" width="20" start="-50"/>
+        <terminal y="0" x="-20" type="Generic" orientation="w" uuid="{c161c6ec-64e3-456a-a502-bf479aa983c3}" name=""/>
+        <terminal y="0" x="20" type="Generic" orientation="e" uuid="{b5a29e53-6119-42d1-8488-058bc16b6290}" name=""/>
+    </description>
+</definition>

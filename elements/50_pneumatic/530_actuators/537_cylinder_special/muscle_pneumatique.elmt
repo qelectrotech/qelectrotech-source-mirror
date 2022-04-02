@@ -1,0 +1,50 @@
+<definition type="element" width="110" hotspot_x="14" link_type="simple" hotspot_y="29" version="0.90" height="40">
+    <uuid uuid="{8169b6f9-391f-47a2-ac1d-245789a61c9b}"/>
+    <names>
+        <name lang="ar">عضلة هوائية</name>
+        <name lang="ca">múscul pneumàtic</name>
+        <name lang="cs">pneumatický sval</name>
+        <name lang="da">pneumatisk muskel</name>
+        <name lang="de">pneumatischer Muskel</name>
+        <name lang="el">πνευματικός μυς</name>
+        <name lang="en">pneumatic muscle</name>
+        <name lang="es">músculo neumático</name>
+        <name lang="fr">muscle pneumatique</name>
+        <name lang="hr">pneumatski mišić</name>
+        <name lang="hu">pneumatikus izom</name>
+        <name lang="it">muscolo pneumatico</name>
+        <name lang="ja">空気圧筋肉</name>
+        <name lang="mn">пневматик булчин</name>
+        <name lang="nb">pneumatisk muskel</name>
+        <name lang="nl">pneumatische spier</name>
+        <name lang="pl">mięsień pneumatyczny</name>
+        <name lang="pt">músculo pneumático</name>
+        <name lang="pt_br">músculo pneumático</name>
+        <name lang="ro">muşchi pneumatic</name>
+        <name lang="ru">пневматическая мышца</name>
+        <name lang="sl">pnevmatska mišica</name>
+        <name lang="sr">пнеуматски мишић</name>
+        <name lang="tr">pnömatik kas</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" rotation="0" y="-48" Valignment="AlignTop" z="1" text_width="-1" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{8e89297a-f74b-4222-adf3-489107b04684}" x="4" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon antialias="true" y1="-12" x4="0" y2="-8" x2="0" x3="4" y3="-10" y4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="-10" y2="-10" x2="90" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="80"/>
+        <polygon antialias="true" y1="-8" x4="80" y2="-12" x2="80" x3="76" y3="-10" y4="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="80"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="-24" y2="6" x2="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="-20" y2="-20" x2="69" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="11"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="-10" y2="-10" x2="0" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="-25" y2="5" x2="80" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="80"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="-0.05" y2="0" x2="69" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10.45"/>
+        <arc width="20" antialias="true" y="-20" start="90" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="60" height="20"/>
+        <arc width="20" antialias="true" y="-20" start="-90" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="20"/>
+        <terminal type="Generic" y="-10" name="" orientation="e" uuid="{06f869c5-58ea-4b7d-ab6f-19bbdee9917f}" x="90"/>
+        <terminal type="Generic" y="-10" name="" orientation="w" uuid="{6985d7b2-350f-4286-9ab6-2b5f3126b63b}" x="-10"/>
+    </description>
+</definition>

@@ -1,0 +1,38 @@
+<definition height="10" version="0.5" width="30" hotspot_x="14" type="element" link_type="simple" hotspot_y="4">
+    <uuid uuid="{87906d83-df7a-457e-862b-17ea64782c49}"/>
+    <names>
+        <name lang="ar">اتصال سلكي</name>
+        <name lang="ca">connexió de cable</name>
+        <name lang="cs">kabelové připojení</name>
+        <name lang="da">kabelforbindelse</name>
+        <name lang="de">Kabelanschluss</name>
+        <name lang="el">καλωδιακή σύνδεση</name>
+        <name lang="en">cable connection</name>
+        <name lang="es">conexión de cable</name>
+        <name lang="fr">câble de connexion</name>
+        <name lang="hr">kabelska veza</name>
+        <name lang="hu">kábelcsatlakozás</name>
+        <name lang="it">collegamento via cavo</name>
+        <name lang="ja">ケーブル接続</name>
+        <name lang="mn">кабель холболт</name>
+        <name lang="nb">kabeltilkobling</name>
+        <name lang="nl">kabelverbinding</name>
+        <name lang="pl">połączenie przewodowe</name>
+        <name lang="pt">conexão à cabo</name>
+        <name lang="pt_br">conexão à cabo</name>
+        <name lang="ro">conexiune prin cablu</name>
+        <name lang="ru">кабельное соединение</name>
+        <name lang="sl">kabelska povezava</name>
+        <name lang="sr">кабловску везу</name>
+        <name lang="tr">kablo bağlantısı</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-1.15" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <input x="-14" tagg="label" y="-11.5" rotate="true" text="_" size="7"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="10" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+    </description>
+</definition>

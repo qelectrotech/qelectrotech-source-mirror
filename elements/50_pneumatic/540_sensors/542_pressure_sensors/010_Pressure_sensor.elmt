@@ -1,0 +1,31 @@
+<definition hotspot_x="26" version="0.90" type="element" height="40" width="50" hotspot_y="20" link_type="simple">
+    <uuid uuid="{2343e113-c71e-430b-b7c3-924f42b7e752}"/>
+    <names>
+        <name lang="en">Analog Pressure</name>
+        <name lang="de">Drucksensor Analog</name>
+        <name lang="nl">Druk analoog blok</name>
+        <name lang="ar">حسّاس ضغط تماثلي</name>
+        <name lang="cs">Převodník analogově tlakový</name>
+        <name lang="fr">Presssion analogique</name>
+        <name lang="it">Analogico / pressione</name>
+        <name lang="pl">Przetwornik analogowo ciśnieniowy</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-10" height="30" width="30" ry="0" y="-15" antialias="false"/>
+        <dynamic_text uuid="{486d5e4a-3ae4-4ea3-b75c-a66259c48383}" z="2" text_from="ElementInfo" keep_visual_rotation="false" rotation="0" x="-30" frame="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" y="-25" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" x="-9" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="P" y="-5" color="#000000"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-8" x4="-10" y3="-10" y1="-12" y4="-12" x1="-10" x2="-10" x3="-6" antialias="true"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" x="10" height="6" width="6" y="4" start="-180" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" end1="none" end2="none" y1="7" x1="16" x2="16" length1="1.5" antialias="false" length2="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" end1="none" end2="none" y1="7" x1="10" x2="10" length1="1.5" antialias="false" length2="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-14.6296" end1="none" end2="none" y1="14.541" x1="-9.57031" x2="19.7222" length1="1.5" antialias="false" length2="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end1="none" end2="none" y1="-10" x1="-16" x2="-10" length1="1.5" antialias="false" length2="1.5"/>
+        <terminal uuid="{1708905f-2695-4f14-8459-e687ecffba8c}" x="-20" type="Generic" orientation="w" y="-10" name=""/>
+    </description>
+</definition>

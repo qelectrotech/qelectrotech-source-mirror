@@ -1,0 +1,50 @@
+<definition width="90" type="element" height="50" hotspot_y="21" hotspot_x="44" version="0.90" link_type="simple">
+    <uuid uuid="{8dfecffe-1877-4bd4-b0f6-f654f176118a}"/>
+    <names>
+        <name lang="ar">وحدة صيانة + فلتر + فاصل مياه + مقياس ضغط + مشحم</name>
+        <name lang="ca">Unitat de manteniment + filtre + separador d'aigua + manòmetre + lubricador</name>
+        <name lang="cs">Údržbová jednotka + filtr + odlučovač vody + manometr + maznice</name>
+        <name lang="da">Vedligeholdelsesenhed + filter + vandudskiller + trykmåler + smøreapparat</name>
+        <name lang="de">Wartungseinheit + Filter +  Wasserabscheider + Manometer + Öler</name>
+        <name lang="el">Μονάδα συντήρησης + φίλτρο + διαχωριστής νερού + μανόμετρο + λιπαντικό</name>
+        <name lang="en">Maintenance unit + filter + water separator + pressure gauge + lubricator</name>
+        <name lang="es">Unidad de mantenimiento + filtro + separador de agua + manómetro + lubricador</name>
+        <name lang="fr">Unité de maintenance + filtre + séparateur d'eau + manomètre + lubrificateur</name>
+        <name lang="hr">Jedinica za održavanje + filter + separator vode + manometar + maziva</name>
+        <name lang="hu">Karbantartó egység + szűrő + vízleválasztó + nyomásmérő + kenő</name>
+        <name lang="it">Unità di manutenzione + filtro + separatore d'acqua + manometro + lubrificatore</name>
+        <name lang="ja">メンテナンスユニット+フィルター+水分離器+圧力計+ルブリケーター</name>
+        <name lang="mn">Засвар үйлчилгээний хэсэг + шүүлтүүр + ус тусгаарлагч + даралт хэмжигч + тосолгооны материал</name>
+        <name lang="nb">Vedlikeholdsenhet + filter + vannutskiller + trykkmåler + smøreapparat</name>
+        <name lang="nl">Onderhoudsunit + filter + waterafscheider + manometer + smeerpatroon</name>
+        <name lang="pl">Jednostka konserwacyjna + filtr + separator wody + manometr + smarownica</name>
+        <name lang="pt">Unidade de manutenção + filtro + separador de água + manômetro + lubrificador</name>
+        <name lang="pt_br">Unidade de manutenção + filtro + separador de água + manômetro + lubrificador</name>
+        <name lang="ro">Unitate de intretinere + filtru + separator de apa + manometru + lubrifiator</name>
+        <name lang="ru">Блок обслуживания + фильтр + водоотделитель + манометр + лубрикатор</name>
+        <name lang="sl">Vzdrževalna enota + filter + ločevalnik vode + manometer + mazivo</name>
+        <name lang="sr">Јединица за одржавање + филтер + сепаратор воде + манометар + мазива</name>
+        <name lang="tr">Bakım ünitesi + filtre + su ayırıcı + manometre + yağlayıcı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-30" keep_visual_rotation="false" frame="false" Valignment="AlignTop" text_width="-1" uuid="{8ee67810-4c11-466e-ad8a-89b656bac3ce}" Halignment="AlignLeft" y="-40" z="1" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" end1="none" end2="none" antialias="true" y1="-2" x1="-2" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" x2="-3" y2="-3"/>
+        <polygon y3="20" antialias="false" y1="23" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-26" y2="20" x3="-24"/>
+        <circle x="-9" antialias="true" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10"/>
+        <line length1="1.5" end1="none" end2="none" antialias="true" y1="6" x1="6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4" y2="-4"/>
+        <line length1="1.5" end1="none" end2="none" antialias="false" y1="0" x1="-35" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" y2="0"/>
+        <line length1="1.5" end1="none" end2="none" antialias="false" y1="-15" x1="25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25" y2="-10"/>
+        <line length1="1.5" end1="none" end2="none" antialias="false" y1="0" x1="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="39" y2="0"/>
+        <rect width="60" x="-30" antialias="false" height="30" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" rx="0"/>
+        <line length1="1.5" end1="none" end2="none" antialias="false" y1="-15" x1="-25" length2="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" x2="-25" y2="20"/>
+        <polygon y3="0" antialias="false" y1="-5" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" y2="-2" x3="-2"/>
+        <terminal x="40" orientation="e" uuid="{7de78a06-b4f8-4a7c-bcad-ec95a1874202}" type="Generic" name="" y="0"/>
+        <terminal x="-40" orientation="w" uuid="{337d2554-b000-4a33-8929-7f88443bcc1a}" type="Generic" name="" y="0"/>
+    </description>
+</definition>

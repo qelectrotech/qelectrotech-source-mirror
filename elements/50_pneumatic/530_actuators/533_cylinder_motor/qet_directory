@@ -1,0 +1,28 @@
+<qet-directory>
+    <names>
+        <name lang="ar">محرك</name>
+        <name lang="ca">motor</name>
+        <name lang="cs">motor</name>
+        <name lang="da">motor</name>
+        <name lang="de">Motor</name>
+        <name lang="el">κινητήρας</name>
+        <name lang="en">engine</name>
+        <name lang="es">motor</name>
+        <name lang="fr">moteur</name>
+        <name lang="hr">motor</name>
+        <name lang="hu">motor</name>
+        <name lang="it">motore</name>
+        <name lang="ja">エンジン</name>
+        <name lang="mn">хөдөлгүүр</name>
+        <name lang="nb">motor</name>
+        <name lang="nl">motor</name>
+        <name lang="pl">silnik</name>
+        <name lang="pt">motor</name>
+        <name lang="pt_br">motor</name>
+        <name lang="ro">motor</name>
+        <name lang="ru">двигатель</name>
+        <name lang="sl">motor</name>
+        <name lang="sr">мотор</name>
+        <name lang="tr">motor</name>
+    </names>
+</qet-directory>

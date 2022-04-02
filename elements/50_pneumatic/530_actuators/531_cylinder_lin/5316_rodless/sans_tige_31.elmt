@@ -1,0 +1,51 @@
+<definition type="element" width="60" hotspot_x="35" link_type="simple" hotspot_y="13" version="0.90" height="40">
+    <uuid uuid="{a6c1dcb7-b6cf-4eb6-9ab2-5ee6c14a6059}"/>
+    <names>
+        <name lang="ar">اسطوانة رودليس + فرامل محدودة على كلا الجانبين + قابل للتعديل + مغناطيس</name>
+        <name lang="ca">Cilindre sense vara + fre de límit a ambdós costats + ajustable + imant</name>
+        <name lang="cs">Bezpístnicový válec + limitní brzda na obou stranách + nastavitelná + magnet</name>
+        <name lang="da">Stangløs cylinder + grænsebremse på begge sider + justerbar + magnet</name>
+        <name lang="de">Kolbenstangenloser Zylinder + Endlagenbremse beidseitig + einstellbar + Magnet</name>
+        <name lang="el">Κύλινδρος χωρίς ράβδο + οριακό φρένο και στις δύο πλευρές + ρυθμιζόμενο + μαγνήτης</name>
+        <name lang="en">Rodless cylinder + limit brake on both sides + adjustable + magnet</name>
+        <name lang="es">Cilindro sin vástago + freno de límite en ambos lados + ajustable + imán</name>
+        <name lang="fr">Vérin sans tige + frein de fin de course des deux côtés + réglable + aimant</name>
+        <name lang="hr">Cilindar bez šipke + granična kočnica s obje strane + podesivi + magnet</name>
+        <name lang="hu">Rúd nélküli henger + végfék mindkét oldalon + állítható + mágnes</name>
+        <name lang="it">Cilindro senza stelo + freno di fine corsa su entrambi i lati + regolabile + magnete</name>
+        <name lang="ja">ロッドレスシリンダー+両側のリミットブレーキ+調整可能+マグネット</name>
+        <name lang="mn">Саваагүй цилиндр + хоёр талдаа хязгаарлах тоормос + тохируулгатай + соронз</name>
+        <name lang="nb">Stangløs sylinder + grensebrems på begge sider + justerbar + magnet</name>
+        <name lang="nl">Stangloze cilinder + eindrem aan beide kanten + verstelbaar + magneet</name>
+        <name lang="pl">Cylinder beztłoczyskowy + hamulec krańcowy po obu stronach + regulowany + magnes</name>
+        <name lang="pt">Cilindro sem haste + freio de limite em ambos os lados + ajustável + ímã</name>
+        <name lang="pt_br">Cilindro sem haste + freio de limite em ambos os lados + ajustável + ímã</name>
+        <name lang="ro">Cilindru fara tija + frana limita pe ambele parti + reglabil + magnet</name>
+        <name lang="ru">Бесштоковый цилиндр + концевой тормоз с обеих сторон + регулируемый + магнит</name>
+        <name lang="sl">Cilinder brez droga + mejna zavora na obeh straneh + nastavljiv + magnet</name>
+        <name lang="sr">Цилиндар без шипке + гранична кочница са обе стране + подесиви + магнет</name>
+        <name lang="tr">Milsiz silindir + her iki tarafta limit freni + ayarlanabilir + mıknatıs</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" rotation="0" y="-25.95" Valignment="AlignTop" z="1" text_width="-1" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect width="10" antialias="false" y="15" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" height="3"/>
+        <polygon y13="1" x7="-20" y9="7" x10="-20" y4="1" y17="9" y16="9" x9="-19" x6="-20" y14="1" y2="9" x16="-21" y8="9" y3="9" x1="-21" closed="false" y12="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-21" y11="4" x13="-19" y7="9" y1="1" x4="-21" y15="1" x15="-21" x12="-19" antialias="false" y5="1" x14="-21" x17="-20" y6="1" x5="-21" x11="-20" x3="-21" x8="-19" y10="6"/>
+        <rect width="2" antialias="false" y="1" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17" height="8"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="11" y2="0" x2="-14" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-28"/>
+        <rect width="10" antialias="false" y="-8" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="5" height="3"/>
+        <polygon antialias="true" y1="-1" x4="-15" y2="1" x2="-13" x3="-11" y3="-3" y4="-1" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="-15"/>
+        <rect width="2" antialias="false" y="1" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" height="8"/>
+        <polygon antialias="true" y1="15" x4="18" y2="15" x2="22" x3="20" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="18"/>
+        <rect width="6" antialias="false" y="-5" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-23" height="20"/>
+        <polygon antialias="true" y5="-5" closed="false" y6="8" y1="2" x4="-33" y2="15" x5="23" x2="23" x3="-33" y3="15" y4="-5" x6="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <polygon antialias="true" y1="15" x4="-32" y2="15" x2="-28" x3="-30" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-32"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{93902c03-638a-44f8-a694-200ffbbd4580}" x="-30"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{25189039-3321-4e03-9969-afbf34ef8382}" x="20"/>
+    </description>
+</definition>

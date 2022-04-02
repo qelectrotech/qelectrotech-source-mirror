@@ -1,0 +1,82 @@
+<definition width="90" hotspot_x="49" hotspot_y="24" type="element" height="40" version="0.90" link_type="simple">
+    <uuid uuid="{224168af-75a5-4f2a-81b3-58870c235438}"/>
+    <names>
+        <name lang="ro">5/2m [man]-[]</name>
+        <name lang="en">5/2m [man]-[]</name>
+        <name lang="pt">5/2m [man]-[]</name>
+        <name lang="pl">5/2m [man]-[]</name>
+        <name lang="hu">5/2m [man]-[]</name>
+        <name lang="fr">5/2m [man]-[]</name>
+        <name lang="de">5/2m [man]-[]</name>
+        <name lang="mn">5/2m [man]-[]</name>
+        <name lang="el">5/2m [man]-[]</name>
+        <name lang="ar">5/2m [man]-[]</name>
+        <name lang="it">5/2m [man]-[]</name>
+        <name lang="es">5/2m [man]-[]</name>
+        <name lang="da">5/2m [man]-[]</name>
+        <name lang="tr">5/2m [man]-[]</name>
+        <name lang="sr">5/2m [man]-[]</name>
+        <name lang="nl">5/2m [man]-[]</name>
+        <name lang="nb">5/2m [man]-[]</name>
+        <name lang="be">5/2m [man]-[]</name>
+        <name lang="sl">5/2m [man]-[]</name>
+        <name lang="cs">5/2m [man]-[]</name>
+        <name lang="ja">5/2m [man]-[]</name>
+        <name lang="ca">5/2m [man]-[]</name>
+        <name lang="hr">5/2m [man]-[]</name>
+        <name lang="ru">5/2m [man]-[]</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" antialias="false" x2="-29" y1="-3" length1="1.5" end2="none" length2="1.5" x1="-29" y2="-7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-25" y6="0" y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-31" y1="-2" y7="-2" y3="0" x9="-38" x3="-29" x10="-25" x6="-35" x7="-37" y5="-2" x2="-27" x8="-39" antialias="false" y8="-2" y10="2" y4="-2" y9="2" x5="-33"/>
+        <line end1="none" antialias="false" x2="-40.4641" y1="3.85646" length1="1.5" end2="none" length2="1.5" x1="-37.4641" y2="-7.14354" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" x="-43" y="-11" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" antialias="false" x2="-18.7817" y1="4.6774" length1="0" end2="none" length2="0" x1="-9.84128" y2="-12.6742" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y3="-14.7205" antialias="true" x2="-17.0506" y1="-11.1048" x1="-19.4111" x3="-20.0857" y2="-12.6487" x4="-19.4556" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="-11.1701"/>
+        <polygon y3="0.354383" antialias="true" x2="-1.95" y1="4.30438" x1="0" x3="2.05" y2="0.354383" x4="0" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="4.30438"/>
+        <polygon y3="-14.2564" antialias="true" x2="29.5675" y1="-11.5344" x1="26.8115" x3="30.0098" y2="-10.0543" x4="26.7775" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="-11.5684"/>
+        <line end1="none" antialias="false" x2="0" y1="0" length1="0" end2="none" length2="0" x1="0" y2="-15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line end1="none" antialias="false" x2="-20" y1="5" length1="1.5" end2="none" length2="1.5" x1="-20" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="0.473419" antialias="true" x2="8.01976" y1="4.42342" x1="9.96976" x3="12.0198" y2="0.473419" x4="9.96976" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="4.42342"/>
+        <line end1="none" antialias="false" x2="28.4957" y1="5" length1="0" end2="none" length2="0" x1="20" y2="-11.4153" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line end1="none" antialias="false" x2="-18" y1="0" length1="1.5" end2="none" length2="1.5" x1="-22" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" antialias="false" x="-25" rx="0" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" ry="0"/>
+        <line end1="none" antialias="false" x2="10" y1="0" length1="0" end2="none" length2="0" x1="10" y2="-18" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="30" antialias="false" x="5" rx="0" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" ry="0"/>
+        <line end1="none" antialias="false" x2="30" y1="5" length1="1.5" end2="none" length2="1.5" x1="30" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" antialias="false" x2="32" y1="0" length1="1.5" end2="none" length2="1.5" x1="28" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="-35" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="31" frame="false" text_width="-1" uuid="{7bdf2150-c493-4205-9946-e4d8a04b5526}" y="-40" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="13" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="-1" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="1" text_from="UserText">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="3" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="-1" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="1" text_from="UserText">
+            <text>5</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="23" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="-1" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="1" text_from="UserText">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="32" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="0" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="-20" text_from="UserText">
+            <text>12</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="23" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="0" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="-24" text_from="UserText">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="3" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="0" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="-24" text_from="UserText">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" keep_visual_rotation="false" Valignment="AlignTop" x="-35" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" frame="false" text_width="0" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" y="-20" text_from="UserText">
+            <text>14</text>
+        </dynamic_text>
+        <terminal orientation="s" x="20" uuid="{fa41901e-252d-4b01-83c8-1f76cdb5c7d9}" y="10" name="" type="Generic"/>
+        <terminal orientation="n" x="10" uuid="{cd1228b7-ce2b-4176-b8ae-56e60a0ec85c}" y="-20" name="" type="Generic"/>
+        <terminal orientation="s" x="10" uuid="{0d5afb67-53af-4352-927f-0f355bde32a3}" y="10" name="" type="Generic"/>
+        <terminal orientation="s" x="30" uuid="{96cd18ff-c198-4c40-b5bf-6b7994c06dc9}" y="10" name="" type="Generic"/>
+        <terminal orientation="n" x="30" uuid="{0eb4e305-c12d-4d7e-aec5-a95e45c51a16}" y="-20" name="" type="Generic"/>
+    </description>
+</definition>

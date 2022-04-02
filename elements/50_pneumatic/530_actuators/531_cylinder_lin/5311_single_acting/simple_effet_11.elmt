@@ -1,0 +1,45 @@
+<definition type="element" width="110" hotspot_x="37" link_type="simple" hotspot_y="11" version="0.90" height="40">
+    <uuid uuid="{276997fc-a822-4c6b-b99b-68cae40b4d35}"/>
+    <names>
+        <name lang="ar">التمثيل المفرد + الربيع</name>
+        <name lang="ca">Simple efecte + molla</name>
+        <name lang="cs">Jednočinné + pružina</name>
+        <name lang="da">Enkeltvirkende + fjeder</name>
+        <name lang="de">Einfachwirkend + Feder</name>
+        <name lang="el">Μονοπραξία + ελατήριο</name>
+        <name lang="en">Single acting + spring</name>
+        <name lang="es">Simple efecto + muelle</name>
+        <name lang="fr">Simple effet + ressort</name>
+        <name lang="hr">Jednostruko djelovanje + opruga</name>
+        <name lang="hu">Egyszereplős + rugó</name>
+        <name lang="it">Semplice effetto + molla</name>
+        <name lang="ja">単動+スプリング</name>
+        <name lang="mn">Ганц үйлдэл + пүрш</name>
+        <name lang="nb">Enkeltvirkende + vår</name>
+        <name lang="nl">Enkelwerkend + veer</name>
+        <name lang="pl">Jednostronnego działania + sprężyna</name>
+        <name lang="pt">Simples ação + mola</name>
+        <name lang="pt_br">Simples ação + mola</name>
+        <name lang="ro">Simpla actiune + arc</name>
+        <name lang="ru">Одностороннего действия + пружина</name>
+        <name lang="sl">Enojno delovanje + vzmet</name>
+        <name lang="sr">Једноструко дејство + опруга</name>
+        <name lang="tr">Tek etkili + yay</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" rotation="0" y="-25.95" Valignment="AlignTop" z="1" text_width="-1" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon antialias="false" closed="false" y1="3" x4="69" y2="3" x2="17" x3="17" y3="7" y4="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="69"/>
+        <polygon y13="11.7273" x7="-7" y9="14" x10="8" y4="-4" x9="3" x6="-11" y2="-4" y8="-4" y3="14" x1="-32.7401" closed="false" y12="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" y11="14" x13="12.0565" y7="14" y1="2.13413" x4="-20" x12="14" antialias="false" y5="14" y6="-4" x5="-16" x11="11" x3="-26" x8="-2" y10="-4"/>
+        <rect width="3" antialias="false" y="-5" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="14" height="20"/>
+        <polygon antialias="true" y5="-5" closed="false" y6="3" y1="7" x4="-33" y2="15" x5="23" x2="23" x3="-33" y3="15" y4="-5" x6="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <polygon antialias="true" y1="15" x4="18" y2="15" x2="22" x3="20" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="18"/>
+        <polygon antialias="true" y1="15" x4="-28" y2="19" x2="-30" x3="-32" y3="15" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-28"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}" x="20"/>
+    </description>
+</definition>

@@ -1,0 +1,28 @@
+<qet-directory>
+    <names>
+        <name lang="ar">هواء مضغوط</name>
+        <name lang="ca">aire comprimit</name>
+        <name lang="cs">stlačený vzduch</name>
+        <name lang="da">komprimeret luft</name>
+        <name lang="de">Druckluft</name>
+        <name lang="el">συμπιεσμένος αέρας</name>
+        <name lang="en">compressed air</name>
+        <name lang="es">aire comprimido</name>
+        <name lang="fr">air comprimé</name>
+        <name lang="hr">potisnut zrak</name>
+        <name lang="hu">sűrített levegő</name>
+        <name lang="it">aria compressa</name>
+        <name lang="ja">圧縮空気</name>
+        <name lang="mn">шахсан агаар</name>
+        <name lang="nb">trykkluft</name>
+        <name lang="nl">perslucht</name>
+        <name lang="pl">skompresowane powietrze</name>
+        <name lang="pt">ar comprimido</name>
+        <name lang="pt_br">ar comprimido</name>
+        <name lang="ro">aer comprimat</name>
+        <name lang="ru">сжатый воздух</name>
+        <name lang="sl">stisnjen zrak</name>
+        <name lang="sr">компресован ваздух</name>
+        <name lang="tr">sıkıştırılmış hava</name>
+    </names>
+</qet-directory>

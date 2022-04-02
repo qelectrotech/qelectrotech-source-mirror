@@ -1,0 +1,52 @@
+<definition version="0.90" type="element" link_type="simple" width="40" hotspot_x="15" hotspot_y="10" height="30">
+    <uuid uuid="{56cb8ee7-1f30-4f72-9bbc-9342545ebe39}"/>
+    <names>
+        <name lang="ar">اسطوانة التأرجح مع الوضع الأوسط</name>
+        <name lang="ca">Cilindre basculant amb posició mitjana</name>
+        <name lang="cs">Kyvný válec se střední polohou</name>
+        <name lang="da">Svingcylinder med midterstilling</name>
+        <name lang="de">Schwenkzylinder mit Mittelposition</name>
+        <name lang="el">Κύλινδρος περιστροφής με μεσαία θέση</name>
+        <name lang="en">Swing cylinder with middle position</name>
+        <name lang="es">Cilindro de giro con posición media</name>
+        <name lang="fr">Vérin oscillant avec position médiane</name>
+        <name lang="hr">Okretni cilindar sa srednjim položajem</name>
+        <name lang="hu">Lengőhenger középső helyzettel</name>
+        <name lang="it">Cilindro oscillante con posizione centrale</name>
+        <name lang="ja">中位置のスイングシリンダー</name>
+        <name lang="mn">Дунд байрлалтай дүүжин цилиндр</name>
+        <name lang="nb">Svingsylinder med midtstilling</name>
+        <name lang="nl">Zwenkcilinder met middenstand</name>
+        <name lang="pl">Cylinder wychylny z pozycją środkową</name>
+        <name lang="pt">Cilindro oscilante com posição central</name>
+        <name lang="pt_br">Cilindro oscilante com posição central</name>
+        <name lang="ro">Cilindru de balansare cu poziție de mijloc</name>
+        <name lang="ru">Поворотный цилиндр со средним положением</name>
+        <name lang="sl">Nihajni cilinder s srednjim položajem</name>
+        <name lang="sr">Окретни цилиндар са средњим положајем</name>
+        <name lang="tr">Orta konumlu döner silindir</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc start="6.375" antialias="true" angle="29.25" width="20" y="-5.5" x="-3" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="327.75" antialias="true" angle="19.6875" width="20" y="-5.5" x="-3" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="6" x2="22" antialias="false" end1="none" y1="6" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="0" y2="10" x4="0" x2="4" y4="8" antialias="true" y3="12" y1="8" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="14" x2="0" antialias="false" end1="none" y1="-5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="0" y2="0" x4="0" x2="4" y4="-2" antialias="true" y3="2" y1="-2" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="269.813" antialias="true" angle="180.188" width="20" y="-5.5" x="-10" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text Valignment="AlignTop" text_from="ElementInfo" rotation="0" z="7" text_width="-1" Halignment="AlignLeft" keep_visual_rotation="true" y="-30" uuid="{b02d570c-9419-476f-95e6-dc0900d156cd}" x="-10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="16.8315" y2="0.201406" x4="12.6272" x2="14.6858" y4="-3.82733" antialias="true" y3="-1.52723" y1="-3.82733" x1="12.6398" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon x3="16.6274" y2="9.18051" x4="12.3713" x2="14.2783" y4="13.2851" antialias="true" y3="10.9234" y1="13.2851" x1="12.3713" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="0" x2="-5" antialias="false" end1="none" y1="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="10" x2="0" antialias="false" end1="none" y1="10" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="4" x2="22" antialias="false" end1="none" y1="4" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" type="Generic" name="" y="10" uuid="{63e09396-664d-4857-a0ca-c2015cc06ced}" x="-10"/>
+        <terminal orientation="w" type="Generic" name="" y="0" uuid="{01c15fbf-0182-4ed5-8e1d-6919c422cf91}" x="-10"/>
+    </description>
+</definition>

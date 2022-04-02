@@ -1,0 +1,31 @@
+<qet-directory>
+    <names>
+        <name lang="ar">تدفق الهواء</name>
+        <name lang="ca">flux d'aire</name>
+        <name lang="cs">proud vzduchu</name>
+        <name lang="da">luftstrøm</name>
+        <name lang="de">Luftströmung</name>
+        <name lang="el">ροή αέρα</name>
+        <name lang="en">airflow</name>
+        <name lang="es">flujo de aire</name>
+        <name lang="fr">flux d'air</name>
+        <name lang="hr">protok zraka</name>
+        <name lang="hu">légáramlás</name>
+        <name lang="it">flusso d'aria</name>
+        <name lang="ja">気流</name>
+        <name lang="mn">агаарын урсгал</name>
+        <name lang="nb">luftstrøm</name>
+        <name lang="nl">luchtstroom</name>
+        <name lang="pl">przepływ powietrza</name>
+        <name lang="pt">fluxo de ar</name>
+        <name lang="pt_br">fluxo de ar</name>
+        <name lang="ro">flux de aer</name>
+        <name lang="ru">расход воздуха</name>
+        <name lang="sl">zračni tok</name>
+        <name lang="sr">проток ваздуха</name>
+        <name lang="tr">hava akışı</name>
+    </names>
+</qet-directory>
+
+
+

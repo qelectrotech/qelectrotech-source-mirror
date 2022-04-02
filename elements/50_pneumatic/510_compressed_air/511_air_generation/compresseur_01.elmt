@@ -1,0 +1,47 @@
+<definition hotspot_y="28" height="50" type="element" link_type="simple" version="0.90" hotspot_x="22" width="40">
+    <uuid uuid="{7f78fc40-66f6-4167-bd17-5786fd86772c}"/>
+    <names>
+        <name lang="ar">ضاغط هواء متغير السرعة</name>
+        <name lang="ca">Compressor d'aire de velocitat variable</name>
+        <name lang="cs">Proměnná rychlost vzduchového kompresoru</name>
+        <name lang="da">Luftkompressor variabel hastighed</name>
+        <name lang="de">Druckluftkompressor variable Drehzahl</name>
+        <name lang="el">Μεταβλητή ταχύτητα αεροσυμπιεστή</name>
+        <name lang="en">Air compressor variable speed</name>
+        <name lang="es">Compresor de aire de velocidad variable</name>
+        <name lang="fr">Vitesse variable du compresseur d'air</name>
+        <name lang="hr">Promjenjiva brzina zračnog kompresora</name>
+        <name lang="hu">Változtatható fordulatszámú légkompresszor</name>
+        <name lang="it">Compressore d'aria a velocità variabile</name>
+        <name lang="ja">エアコンプレッサー可変速</name>
+        <name lang="mn">Агаарын компрессорын хувьсах хурд</name>
+        <name lang="nb">Luftkompressor variabel hastighet</name>
+        <name lang="nl">Luchtcompressor variabele snelheid</name>
+        <name lang="pl">Zmienna prędkość sprężarki powietrza</name>
+        <name lang="pt">Velocidade variável do compressor de ar</name>
+        <name lang="pt_br">Velocidade variável do compressor de ar</name>
+        <name lang="ro">Viteza variabila a compresorului de aer</name>
+        <name lang="ru">Регулируемая скорость воздушного компрессора</name>
+        <name lang="sl">Spremenljiva hitrost zračnega kompresorja</name>
+        <name lang="sr">Променљива брзина ваздушног компресора</name>
+        <name lang="tr">Hava kompresörü değişken hız</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" x="-15" y="-35" Halignment="AlignLeft" frame="false" rotation="0" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" text_width="-1" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" length2="1.5" length1="1.5" x1="-10" y1="10" antialias="false" y2="-9"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" length2="1.5" length1="1.5" x1="-17" y1="1" antialias="false" y2="1"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x2="10" x4="8" y4="-9" x3="12" x1="8" y1="-9" y3="-11" antialias="true" y2="-7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" length1="1.5" x1="0" y1="-10" antialias="false" y2="-15"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" y="-10" diameter="20" antialias="true"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" length2="1.5" length1="1.5" x1="-17" y1="-1" antialias="false" y2="-1"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="3" x4="-3" y4="-4" x3="0" x1="-3" y1="-4" y3="-10" antialias="true" y2="-4"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" length1="1.5" x1="0" y1="15" antialias="false" y2="10"/>
+        <terminal orientation="n" x="0" y="-20" type="Generic" name="" uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}"/>
+    </description>
+</definition>

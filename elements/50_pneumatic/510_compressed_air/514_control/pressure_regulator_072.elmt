@@ -1,0 +1,72 @@
+<definition link_type="simple" height="70" width="80" type="element" hotspot_x="33" version="0.90" hotspot_y="34">
+    <uuid uuid="{711b0791-9b21-4821-919e-144175c63238}"/>
+    <names>
+        <name lang="ar">الضبط التناظري للتحكم في الضغط</name>
+        <name lang="ca">Punt de consigna analògic del controlador de pressió</name>
+        <name lang="cs">Analogová požadovaná hodnota regulátoru tlaku</name>
+        <name lang="da">Trykregulator analogt sætpunkt</name>
+        <name lang="de">Druckregler analog Sollwert</name>
+        <name lang="el">Σημείο ρύθμισης αναλογικού ελεγκτή πίεσης</name>
+        <name lang="en">Pressure controller analog setpoint</name>
+        <name lang="es">Punto de ajuste analógico del controlador de presión</name>
+        <name lang="fr">Consigne analogique du régulateur de pression</name>
+        <name lang="hr">Analogna zadana vrijednost regulatora tlaka</name>
+        <name lang="hu">Nyomásszabályozó analóg alapjel</name>
+        <name lang="it">Setpoint analogico del regolatore di pressione</name>
+        <name lang="ja">圧力コントローラーのアナログ設定値</name>
+        <name lang="mn">Даралт хянагчийн аналог тогтоосон цэг</name>
+        <name lang="nb">Trykkregulator analogt settpunkt</name>
+        <name lang="nl">Analoge instelwaarde van de drukregelaar</name>
+        <name lang="pl">Analogowa wartość zadana regulatora ciśnienia</name>
+        <name lang="pt">Ponto de ajuste analógico do controlador de pressão</name>
+        <name lang="pt_br">Ponto de ajuste analógico do controlador de pressão</name>
+        <name lang="ro">Valoarea de referință analogică a regulatorului de presiune</name>
+        <name lang="ru">Аналоговая уставка регулятора давления</name>
+        <name lang="sl">Analogna nastavitev regulatorja tlaka</name>
+        <name lang="sr">Аналогна задана вредност регулатора притиска</name>
+        <name lang="tr">Basınç kontrolörü analog ayar noktası</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,4,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" y="11" Valignment="AlignTop" rotation="0" text_from="UserText" z="1" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" frame="false" x="-18" text_width="-1" Halignment="AlignLeft">
+            <text>3</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,4,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" y="11" Valignment="AlignTop" rotation="0" text_from="UserText" z="1" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" frame="false" x="2" text_width="-1" Halignment="AlignLeft">
+            <text>1</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,4,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" y="-25" Valignment="AlignTop" rotation="0" text_from="UserText" z="1" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" frame="false" x="-3" text_width="-1" Halignment="AlignLeft">
+            <text>2</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" y="-31" Valignment="AlignTop" rotation="0" text_from="ElementInfo" z="1" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" frame="false" x="17" text_width="-1" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" y1="15" x2="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="26" length1="1.5" end2="none" antialias="false" x1="10"/>
+        <polygon y3="1.7436" x4="29.7775" y1="4.4656" x2="32.5675" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="5.9457" x3="33.0098" antialias="true" x1="29.8115" y4="4.4316"/>
+        <line end1="none" y1="-4.3353" x2="42.9112" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.3353" length1="1.5" end2="none" antialias="false" x1="42.9112"/>
+        <polygon y5="13" x5="15" x2="25" x8="25" y10="13" y7="7" y9="10" y4="13" x3="22" y2="13" x10="25" y1="7" y6="10" x9="21" x4="18" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="13" x7="15" closed="false" y8="7" antialias="false" x6="15" x1="25"/>
+        <arc start="360" y="-5.8353" height="3" style="line-style:normal;line-weight:thin;filling:none;color:black" width="3" angle="180.313" x="39.9112" antialias="true"/>
+        <polygon y5="3" x5="35" x2="35" x8="43.6753" y7="-7" y4="3" x3="44" y2="-7" y1="3" y6="-7" x4="44" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="-7" x7="35" closed="false" y8="2.7291" antialias="false" x6="35" x1="35"/>
+        <polygon y5="7" x5="25" x2="35" x8="27" y10="10" y7="13" y9="7" y4="13" x3="35" y2="7" x10="35" y1="7" y6="13" x9="35" x4="25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="13" x7="33" closed="false" y8="7" antialias="false" x6="25" x1="25"/>
+        <line end1="none" y1="-4.3353" x2="39.9112" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.3353" length1="1.5" end2="none" antialias="false" x1="39.9112"/>
+        <line end1="none" y1="15" x2="31.4957" length2="0" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="4.5847" length1="0" end2="none" antialias="false" x1="26"/>
+        <polygon y5="13" x5="35" x2="35" x8="41" y7="3" y4="13" x3="44" y2="3" y1="13" y6="3" x4="44" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="3" x7="41" closed="false" y8="3" antialias="false" x6="35" x1="35"/>
+        <polygon y3="11" x4="42" closed="false" y1="5" x2="37" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="8" x3="42" antialias="false" x1="42" y4="5"/>
+        <polygon y3="14.5" x4="-12" y1="9.5" x2="-8" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="9.5" x3="-10" antialias="true" x1="-12" y4="9.5"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="1" color="#707070" text="P" rotation="0" x="36"/>
+        <line end1="none" y1="11" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-11" length1="1.5" end2="none" antialias="false" x1="-10"/>
+        <rect rx="0" y="-15" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="30" x="-15" ry="0" antialias="false"/>
+        <line end1="none" y1="-30" x2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" length1="1.5" end2="none" antialias="false" x1="0"/>
+        <polygon y3="-14.5" x4="-8" y1="-9.5" x2="-12" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-9.5" x3="-10" antialias="true" x1="-8" y4="-9.5"/>
+        <line end1="none" y1="15" x2="-10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="26" length1="1.5" end2="none" antialias="false" x1="-10"/>
+        <polygon y3="-25" y5="-10" x4="-30" closed="false" y1="-15" x2="-10" style="line-style:dotted;line-weight:normal;filling:none;color:black" y2="-25" x5="-15" x3="-30" antialias="false" x1="0" y4="-10"/>
+        <terminal orientation="n" y="-30" uuid="{82f67b50-2f71-42c4-8ba6-a890cf9b525d}" type="Generic" x="0" name=""/>
+        <terminal orientation="s" y="30" uuid="{d5ff4a09-864f-40d5-961a-c637a98e74d8}" type="Generic" x="-10" name=""/>
+        <terminal orientation="s" y="30" uuid="{741dc00f-3f86-4bd0-86b2-284c9f130688}" type="Generic" x="10" name=""/>
+    </description>
+</definition>

@@ -1,0 +1,47 @@
+<definition version="0.90" type="element" width="40" hotspot_y="26" hotspot_x="13" height="40" link_type="simple">
+    <uuid uuid="{3d7a9c3a-6bbb-4e36-b800-a79eefd7e8e9}"/>
+    <names>
+        <name lang="ar">يدور المحرك عكس اتجاه عقارب الساعة</name>
+        <name lang="ca">El motor gira en sentit contrari a les agulles del rellotge</name>
+        <name lang="cs">Motor se otáčí proti směru hodinových ručiček</name>
+        <name lang="da">Motoren roterer mod uret</name>
+        <name lang="de">Motor linksdrehend</name>
+        <name lang="el">Ο κινητήρας περιστρέφεται αριστερόστροφα</name>
+        <name lang="en">Motor rotates counterclockwise</name>
+        <name lang="es">El motor gira en sentido contrario a las agujas del reloj</name>
+        <name lang="fr">Le moteur tourne dans le sens antihoraire</name>
+        <name lang="hr">Motor se okreće suprotno od kazaljke na satu</name>
+        <name lang="hu">A motor az óramutató járásával ellentétes irányban forog</name>
+        <name lang="it">Il motore ruota in senso antiorario</name>
+        <name lang="ja">モーターは反時計回りに回転します</name>
+        <name lang="mn">Мотор цагийн зүүний эсрэг эргэлддэг</name>
+        <name lang="nb">Motoren roterer mot klokken</name>
+        <name lang="nl">Motor draait tegen de klok in</name>
+        <name lang="pl">Silnik obraca się w kierunku przeciwnym do ruchu wskazówek zegara</name>
+        <name lang="pt">Motor gira no sentido anti-horário</name>
+        <name lang="pt_br">Motor gira no sentido anti-horário</name>
+        <name lang="ro">Motorul se rotește în sens invers acelor de ceasornic</name>
+        <name lang="ru">Мотор вращается против часовой стрелки</name>
+        <name lang="sl">Motor se vrti v nasprotni smeri urinega kazalca</name>
+        <name lang="sr">Мотор се окреће супротно од казаљке на сату</name>
+        <name lang="tr">Motor saat yönünün tersine döner</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" text_width="-1" x="-20" y="-34" frame="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" Valignment="AlignTop" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="-15"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="10"/>
+        <arc x="18" y="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35" angle="70.125" antialias="true" height="35" start="142.688"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.4758" x2="-2.56328" y3="-8.7142" y4="-14.3651" x1="2.9014" antialias="true" x4="2.84606" y2="-14.5311" x3="0.0376349"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="-3"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="7.939" x2="19.6474" y3="4.15838" y4="7.6281" x1="24.2652" antialias="true" x4="24.2652" y2="5.887" x3="21.7931"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="-7"/>
+        <circle x="-10" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="20"/>
+        <terminal x="0" y="-20" uuid="{7450114d-3dbd-433b-924b-496b74d25710}" type="Generic" orientation="n" name=""/>
+    </description>
+</definition>

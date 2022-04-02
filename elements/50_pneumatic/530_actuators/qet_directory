@@ -1,0 +1,28 @@
+<qet-directory>
+    <names>
+        <name lang="ar">المحركات</name>
+        <name lang="ca">Actuadors</name>
+        <name lang="cs">Akční členy</name>
+        <name lang="da">Aktuatorer</name>
+        <name lang="de">Aktuatoren</name>
+        <name lang="el">Ενεργοποιητές</name>
+        <name lang="en">Actuators</name>
+        <name lang="es">Actuadores</name>
+        <name lang="fr">Actionneurs</name>
+        <name lang="hr">Aktuatori</name>
+        <name lang="hu">Működtetők</name>
+        <name lang="it">Attuatori</name>
+        <name lang="ja">アクチュエータ</name>
+        <name lang="mn">Хөдөлгүүрүүд</name>
+        <name lang="nb">Aktuatorer</name>
+        <name lang="nl">Actuatoren</name>
+        <name lang="pl">Siłowniki</name>
+        <name lang="pt">Atuadores</name>
+        <name lang="pt_br">Atuadores</name>
+        <name lang="ro">Actuatoare</name>
+        <name lang="ru">Приводы</name>
+        <name lang="sl">Aktuatorji</name>
+        <name lang="sr">Актуатори</name>
+        <name lang="tr">aktüatörler</name>
+    </names>
+</qet-directory>

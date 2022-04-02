@@ -1,0 +1,39 @@
+<definition height="40" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="31">
+    <uuid uuid="{5a7211d9-94ae-4b89-9107-b43218dcde1d}"/>
+    <names>
+        <name lang="ar">المغزل الدوار مع 1 كابلات</name>
+        <name lang="ca">Eix giratori amb 1 cable</name>
+        <name lang="cs">Otočné vřeteno s 1 kabelem</name>
+        <name lang="da">Roterende spindel med 1 kabler</name>
+        <name lang="de">Drehspindel mit 1 Kabel</name>
+        <name lang="el">Περιστρεφόμενος άξονας με 1 καλώδια</name>
+        <name lang="en">Rotating spindle with 1 cables</name>
+        <name lang="es">Husillo giratorio con 1 cable</name>
+        <name lang="fr">Broche rotative avec 1 cables</name>
+        <name lang="hr">Rotirajuće vreteno s 1 sajlom</name>
+        <name lang="hu">Forgó orsó 1 kábellel</name>
+        <name lang="it">Mandrino rotante con 1 cavi</name>
+        <name lang="ja">1本のケーブルで回転するスピンドル</name>
+        <name lang="mn">1 кабель бүхий эргэдэг гол</name>
+        <name lang="nb">Roterende spindel med 1 kabler</name>
+        <name lang="nl">Roterende spindel met 1 kabels</name>
+        <name lang="pl">Wrzeciono obrotowe z 1 kablami</name>
+        <name lang="pt">Fuso rotativo com 1 cabos</name>
+        <name lang="pt_br">Fuso rotativo com 1 cabos</name>
+        <name lang="ro">Ax rotativ cu 1 cablu</name>
+        <name lang="ru">Вращающийся шпиндель с 1 тросом</name>
+        <name lang="sl">Vrtljivo vreteno z 1 kablom</name>
+        <name lang="sr">Ротирајуће вретено са 1 каблом</name>
+        <name lang="tr">1 kablo ile döner mil</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-11" tagg="label" y="-23.5" rotate="true" text="_" size="7"/>
+        <polygon y1="-27" x3="18" y4="-27" x1="13" y3="-25" x4="13" x2="13" y2="-23" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="3.5527" y="-25" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="40" y="-10" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,43 @@
+<definition link_type="simple" width="30" version="0.90" type="element" hotspot_x="15" hotspot_y="14" height="40">
+    <uuid uuid="{238bde04-e2d9-4f1a-bb94-41911e3d635f}"/>
+    <names>
+        <name lang="ar">مؤشر الفراغ</name>
+        <name lang="ca">Indicador de buit</name>
+        <name lang="cs">Indikátor vakua</name>
+        <name lang="da">Vakuum indikator</name>
+        <name lang="de">Vakuumanzeige</name>
+        <name lang="el">Ένδειξη κενού</name>
+        <name lang="en">Vacuum Indicator</name>
+        <name lang="es">Indicador de vacío</name>
+        <name lang="fr">Indicateur de vide</name>
+        <name lang="hr">Indikator vakuuma</name>
+        <name lang="hu">Vákuumjelző</name>
+        <name lang="it">Indicatore di vuoto</name>
+        <name lang="ja">バキュームインジケーター</name>
+        <name lang="mn">Вакуум үзүүлэлт</name>
+        <name lang="nb">Vakuumindikator</name>
+        <name lang="nl">Vacuümindicator</name>
+        <name lang="pl">Wskaźnik podciśnienia</name>
+        <name lang="pt">Indicador de vácuo</name>
+        <name lang="pt_br">Indicador de vácuo</name>
+        <name lang="ro">Indicator de vid</name>
+        <name lang="ru">Индикатор вакуума</name>
+        <name lang="sl">Indikator vakuuma</name>
+        <name lang="sr">Вацуум Индицатор</name>
+        <name lang="tr">Vakum Göstergesi</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-20" uuid="{2645e2af-b363-4b19-9494-2fcd9e2fbb5b}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-20" rotation="0" Valignment="AlignTop" z="1" keep_visual_rotation="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="-4" x1="3" y1="3" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4" antialias="false"/>
+        <circle y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true"/>
+        <polygon x2="0.300926" x1="2.68326" x4="2.70833" y4="0.376157" y1="0.35108" x3="5" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="2.70833" antialias="true" y3="5"/>
+        <line x2="0" x1="0" y1="10" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" antialias="false"/>
+        <terminal y="20" uuid="{69923bbc-9b30-4cd9-97e3-0d84df98d099}" name="" orientation="s" x="0" type="Generic"/>
+    </description>
+</definition>

@@ -1,0 +1,47 @@
+<definition version="0.90" type="element" width="40" hotspot_y="14" hotspot_x="14" height="40" link_type="simple">
+    <uuid uuid="{ca6cd3f3-a81b-44e2-870f-3be9d141f97f}"/>
+    <names>
+        <name lang="ar">يدور المحرك في اتجاه عقارب الساعة</name>
+        <name lang="ca">El motor gira en sentit horari</name>
+        <name lang="cs">Motor se otáčí ve směru hodinových ručiček</name>
+        <name lang="da">Motoren drejer med uret</name>
+        <name lang="de">Motor rechtsdrehend</name>
+        <name lang="el">Ο κινητήρας γυρίζει δεξιόστροφα</name>
+        <name lang="en">Motor turns clockwise</name>
+        <name lang="es">El motor gira en el sentido de las agujas del reloj</name>
+        <name lang="fr">Le moteur tourne dans le sens des aiguilles d'une montre</name>
+        <name lang="hr">Motor se okreće u smjeru kazaljke na satu</name>
+        <name lang="hu">A motor az óramutató járásával megegyezően forog</name>
+        <name lang="it">Il motore gira in senso orario</name>
+        <name lang="ja">モーターが時計回りに回転する</name>
+        <name lang="mn">Мотор цагийн зүүний дагуу эргэдэг</name>
+        <name lang="nb">Motoren går med klokken</name>
+        <name lang="nl">Motor draait met de klok mee</name>
+        <name lang="pl">Silnik obraca się zgodnie z ruchem wskazówek zegara</name>
+        <name lang="pt">Motor gira no sentido horário</name>
+        <name lang="pt_br">Motor gira no sentido horário</name>
+        <name lang="ro">Motorul se rotește în sensul acelor de ceasornic</name>
+        <name lang="ru">Мотор вращается по часовой стрелке</name>
+        <name lang="sl">Motor se vrti v smeri urinega kazalca</name>
+        <name lang="sr">Мотор се окреће у смеру казаљке на сату</name>
+        <name lang="tr">Motor saat yönünde döner</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="20"/>
+        <dynamic_text z="1" text_width="-1" x="-20" y="-34" frame="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" Valignment="AlignTop" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc x="15.4245" y="-12.4381" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35" angle="67.375" antialias="true" height="35" start="145.125"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="7"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="-10"/>
+        <circle x="-10" y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="20"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-9" x2="17.6444" y3="-4.3201" y4="-9" x1="22" antialias="true" x4="22" y2="-6.063" x3="19.9935"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="3"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.6279" x2="2.60091" y3="8.86626" y4="14.5172" x1="-2.86377" antialias="true" x4="-2.80843" y2="14.6832" x3="0"/>
+        <terminal x="0" y="20" uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" type="Generic" orientation="s" name=""/>
+    </description>
+</definition>

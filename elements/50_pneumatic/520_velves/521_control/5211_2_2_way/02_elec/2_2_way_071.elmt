@@ -1,0 +1,65 @@
+<definition height="40" type="element" width="80" hotspot_x="34" link_type="simple" hotspot_y="24" version="0.90">
+    <uuid uuid="{b095d4cb-7e63-4ffb-bf0a-c632912e5d76}"/>
+    <names>
+        <name lang="es">2/2e_no [elec]-[pneu]</name>
+        <name lang="ar">2/2e_no [elec]-[pneu]</name>
+        <name lang="en">2/2e_no [elec]-[pneu]</name>
+        <name lang="cs">2/2e_no [elec]-[pneu]</name>
+        <name lang="nb">2/2e_no [elec]-[pneu]</name>
+        <name lang="ro">2/2e_no [elec]-[pneu]</name>
+        <name lang="fr">2/2e_no [elec]-[pneu]</name>
+        <name lang="da">2/2e_no [elec]-[pneu]</name>
+        <name lang="ru">2/2e_no [elec]-[pneu]</name>
+        <name lang="sr">2/2e_no [elec]-[pneu]</name>
+        <name lang="hr">2/2e_no [elec]-[pneu]</name>
+        <name lang="pl">2/2e_no [elec]-[pneu]</name>
+        <name lang="be">2/2e_no [elec]-[pneu]</name>
+        <name lang="it">2/2e_no [elec]-[pneu]</name>
+        <name lang="ja">2/2e_no [elec]-[pneu]</name>
+        <name lang="pt">2/2e_no [elec]-[pneu]</name>
+        <name lang="ca">2/2e_no [elec]-[pneu]</name>
+        <name lang="sl">2/2e_no [elec]-[pneu]</name>
+        <name lang="mn">2/2e_no [elec]-[pneu]</name>
+        <name lang="nl">2/2e_no [elec]-[pneu]</name>
+        <name lang="de">2/2e_no [elec]-[pneu]</name>
+        <name lang="hu">2/2e_no [elec]-[pneu]</name>
+        <name lang="tr">2/2e_no [elec]-[pneu]</name>
+        <name lang="el">2/2e_no [elec]-[pneu]</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x7="-28" x2="-20" x8="-22" x1="-30" x6="-30" y1="-3" y7="3" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" y4="3" x4="-30" antialias="false" x3="-20" x5="-30" y3="3" y8="-3" y6="3" y5="-3"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length2="1.5" x1="35" end1="none" length1="1.5" end2="none" x2="32"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length2="1.5" x1="25" end1="none" length1="1.5" end2="none" x2="20"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-14.95" y2="-9.95" x4="10.05" x1="10.05" y4="-14.95" x2="8.05" x3="12.05" y3="-9.95"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" y2="-3" x1="32" x2="32" x3="25" y3="0"/>
+        <rect y="-15" antialias="false" height="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" width="20" rx="0"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="0" length2="1.5" x1="-12" end1="none" length1="1.5" end2="none" x2="-8"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-10" length2="1.5" x1="-12" end1="none" length1="1.5" end2="none" x2="-8"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="5" y2="-11" length2="0" x1="10" end1="none" length1="0" end2="none" x2="10"/>
+        <rect y="-15" antialias="false" height="20" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" width="20" rx="0"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" y2="0" length2="1.5" x1="-10" end1="none" length1="1.5" end2="none" x2="-10"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" y2="-10" length2="1.5" x1="-10" end1="none" length1="1.5" end2="none" x2="-10"/>
+        <dynamic_text y="-40" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="31" text_from="ElementInfo" rotation="0" keep_visual_rotation="false" x="-25" Valignment="AlignTop" frame="false" uuid="{7bdf2150-c493-4205-9946-e4d8a04b5526}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="-21" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" text_from="UserText" rotation="0" keep_visual_rotation="false" x="-31" Valignment="AlignTop" frame="false" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" text_width="0">
+            <text>12</text>
+        </dynamic_text>
+        <dynamic_text y="-20.5" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" text_from="UserText" rotation="0" keep_visual_rotation="false" x="16.8281" Valignment="AlignTop" frame="false" uuid="{90617a1e-52bc-4487-a6ee-42145a3e01db}" text_width="0">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text y="1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="32" text_from="UserText" rotation="0" keep_visual_rotation="false" x="2" Valignment="AlignTop" frame="false" uuid="{9136f6d3-2c93-41dd-bf57-0c4cba679073}" text_width="-1">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text y="-25" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="33" text_from="UserText" rotation="0" keep_visual_rotation="false" x="2" Valignment="AlignTop" frame="false" uuid="{1339588e-7081-4dcc-a2bc-59a9b7bad0ad}" text_width="-1">
+            <text>2</text>
+        </dynamic_text>
+        <terminal y="10" name="" orientation="s" x="10" type="Generic" uuid="{0d5afb67-53af-4352-927f-0f355bde32a3}"/>
+        <terminal y="0" name="" orientation="e" x="40" type="Generic" uuid="{46e90ef9-de69-4837-aec4-8da91f8a2c5f}"/>
+        <terminal y="-20" name="" orientation="n" x="10" type="Generic" uuid="{cd1228b7-ce2b-4176-b8ae-56e60a0ec85c}"/>
+    </description>
+</definition>

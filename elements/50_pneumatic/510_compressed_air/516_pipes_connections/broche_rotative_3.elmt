@@ -1,0 +1,45 @@
+<definition height="40" version="0.5" width="60" hotspot_x="14" type="element" link_type="simple" hotspot_y="31">
+    <uuid uuid="{a78f56c7-1cac-4e91-b1d5-eb3afbc93118}"/>
+    <names>
+        <name lang="ar">محور دوران مع 3 كابلات</name>
+        <name lang="ca">Eix giratori amb 3 cables</name>
+        <name lang="cs">Otočné vřeteno se 3 kabely</name>
+        <name lang="da">Roterende spindel med 3 kabler</name>
+        <name lang="de">Drehspindel mit 3 Kabeln</name>
+        <name lang="el">Περιστρεφόμενος άξονας με 3 καλώδια</name>
+        <name lang="en">Rotating spindle with 3 cables</name>
+        <name lang="es">Husillo giratorio con 3 cables</name>
+        <name lang="fr">Broche rotative avec 3 cables</name>
+        <name lang="hr">Rotirajuće vreteno s 3 kabela</name>
+        <name lang="hu">Forgó orsó 3 kábellel</name>
+        <name lang="it">Mandrino rotante con 3 cavi</name>
+        <name lang="ja">3本のケーブルで回転するスピンドル</name>
+        <name lang="mn">3 кабель бүхий эргэдэг гол</name>
+        <name lang="nb">Roterende spindel med 3 kabler</name>
+        <name lang="nl">Roterende spindel met 3 kabels</name>
+        <name lang="pl">Obrotowe wrzeciono z 3 kablami</name>
+        <name lang="pt">Fuso giratório com 3 cabos</name>
+        <name lang="pt_br">Fuso giratório com 3 cabos</name>
+        <name lang="ro">Ax rotativ cu 3 cabluri</name>
+        <name lang="ru">Вращающийся шпиндель с 3 кабелями</name>
+        <name lang="sl">Vrtljivo vreteno s 3 kabli</name>
+        <name lang="sr">Ротирајуће вретено са 3 кабла</name>
+        <name lang="tr">3 kablolu döner mil</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-5" tagg="label" y="-31.5" rotate="true" text="_" size="7"/>
+        <line y1="-20" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="-20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-27" x3="18" y4="-27" x1="13" y3="-25" x4="13" x2="13" y2="-23" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="40" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="3.5527" y="-25" diameter="30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="40" y="-10" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="40" y="0" orientation="e"/>
+        <terminal x="-10" y="-20" orientation="w"/>
+        <terminal x="40" y="-20" orientation="e"/>
+    </description>
+</definition>

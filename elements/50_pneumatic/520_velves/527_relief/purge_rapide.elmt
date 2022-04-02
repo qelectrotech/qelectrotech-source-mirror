@@ -1,0 +1,49 @@
+<definition height="60" type="element" width="80" link_type="simple" version="0.90" hotspot_y="38" hotspot_x="14">
+    <uuid uuid="{7977bb40-3878-4b14-865a-f96a2a875db1}"/>
+    <names>
+        <name lang="ar">تنفيس سريع</name>
+        <name lang="ca">ventilació ràpida</name>
+        <name lang="cs">rychlé odvětrání</name>
+        <name lang="da">hurtig udluftning</name>
+        <name lang="de">Schnellentlüftung</name>
+        <name lang="el">γρήγορη εξαέρωση</name>
+        <name lang="en">quick vent</name>
+        <name lang="es">ventilación rápida</name>
+        <name lang="fr">ventilation rapide</name>
+        <name lang="hr">brzi odzračivanje</name>
+        <name lang="hu">gyors szellőző</name>
+        <name lang="it">sfogo rapido</name>
+        <name lang="ja">クイックベント</name>
+        <name lang="mn">хурдан агааржуулалт</name>
+        <name lang="nb">rask ventilasjon</name>
+        <name lang="nl">snel ventileren</name>
+        <name lang="pl">szybkie odpowietrzenie</name>
+        <name lang="pt">ventilação rápida</name>
+        <name lang="pt_br">ventilação rápida</name>
+        <name lang="ro">aerisire rapidă</name>
+        <name lang="ru">быстрый сброс</name>
+        <name lang="sl">hitro odzračevanje</name>
+        <name lang="sr">брзи вентил</name>
+        <name lang="tr">hızlı havalandırma</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Halignment="AlignLeft" text_from="ElementInfo" text_width="-1" x="38" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{064ab79a-ee1b-417b-ad9d-e9f337082d68}" frame="false" rotation="0" Valignment="AlignTop" y="-35.95" z="2" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y2="0" y3="-3" x4="5" y1="3" x3="5" x1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="3" antialias="true" x2="0"/>
+        <line y2="0" end1="none" length1="1.5" length2="1.5" y1="0" x1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="45" end2="none"/>
+        <circle diameter="2.3" x="28.85" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-1.15" antialias="true"/>
+        <line y2="-30" end1="none" length1="1.5" length2="1.5" y1="0" x1="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="30" end2="none"/>
+        <rect height="30" rx="0" width="50" ry="0" x="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" antialias="false"/>
+        <polygon y2="0" y3="5" y1="-5" x3="13" x1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x2="7" closed="false"/>
+        <polygon y2="0" y3="5" y1="-5" x3="48" x1="48" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="53" closed="false"/>
+        <circle diameter="6" x="45" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" antialias="true"/>
+        <polygon y2="-25" y5="-10" y3="-25" x5="5" x4="-10" y1="-15" x3="-10" x1="30" style="line-style:dashed;line-weight:normal;filling:none;color:black" y4="-10" antialias="false" x2="20" closed="false"/>
+        <terminal orientation="e" type="Generic" x="60" uuid="{73a84220-e5e1-4865-bda5-af2936eb6f95}" name="" y="0"/>
+        <terminal orientation="n" type="Generic" x="30" uuid="{d97c1007-04e2-4988-b63b-c7004d26cf62}" name="" y="-30"/>
+    </description>
+</definition>

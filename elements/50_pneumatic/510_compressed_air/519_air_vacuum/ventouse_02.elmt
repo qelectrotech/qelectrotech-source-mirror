@@ -1,0 +1,42 @@
+<definition link_type="simple" width="30" version="0.90" type="element" hotspot_x="15" hotspot_y="6" height="30">
+    <uuid uuid="{0241d26b-0610-4cb5-8c3b-f375a5306867}"/>
+    <names>
+        <name lang="ar">كوب شفط فراغ</name>
+        <name lang="ca">ventosa al buit</name>
+        <name lang="cs">vakuová přísavka</name>
+        <name lang="da">vakuum sugekop</name>
+        <name lang="de">Vakuumsaugnapf</name>
+        <name lang="el">βεντούζα κενού</name>
+        <name lang="en">vacuum suction cup</name>
+        <name lang="es">ventosa de vacío</name>
+        <name lang="fr">ventouse sous vide</name>
+        <name lang="hr">vakuumski usis</name>
+        <name lang="hu">vákuum tapadókorong</name>
+        <name lang="it">ventosa sottovuoto</name>
+        <name lang="ja">真空吸盤</name>
+        <name lang="mn">вакуум сорох аяга</name>
+        <name lang="nb">vakuum sugekopp</name>
+        <name lang="nl">vacuüm zuignap</name>
+        <name lang="pl">przyssawka próżniowa</name>
+        <name lang="pt">ventosa a vácuo</name>
+        <name lang="pt_br">ventosa a vácuo</name>
+        <name lang="ro">ventuză cu vid</name>
+        <name lang="ru">вакуумная присоска</name>
+        <name lang="sl">vakuumska priseska</name>
+        <name lang="sr">вакуум усисна чаша</name>
+        <name lang="tr">vakumlu vantuz</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="0" uuid="{7c1d1c14-001f-40a5-b4fc-feb2cc85694a}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-15" rotation="0" Valignment="AlignTop" z="1" keep_visual_rotation="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="0" y1="0" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8" antialias="false"/>
+        <rect y="8" width="12" ry="0" x="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="5"/>
+        <polygon x2="-12" x1="-6" x4="6" y4="13" y1="13" x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="19" antialias="false" y3="19"/>
+        <terminal y="0" uuid="{7054d446-6054-4760-8ed3-3c79783a7a30}" name="" orientation="n" x="0" type="Generic"/>
+    </description>
+</definition>

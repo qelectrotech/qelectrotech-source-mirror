@@ -1,0 +1,42 @@
+<definition height="40" version="0.5" width="90" hotspot_x="14" type="element" link_type="simple" hotspot_y="30">
+    <uuid uuid="{b3fe8707-63f2-4221-a709-21c617152558}"/>
+    <names>
+        <name lang="ar">مجمع الهواء المضغوط وصلتين</name>
+        <name lang="ca">Acumulador d'aire comprimit dues connexions</name>
+        <name lang="cs">Akumulátor stlačeného vzduchu dvě připojení</name>
+        <name lang="da">Trykluftakkumulator to tilslutninger</name>
+        <name lang="de">Druckluftspeicher zwei Anschlüsse</name>
+        <name lang="el">Συσσωρευτής πεπιεσμένου αέρα δύο συνδέσεων</name>
+        <name lang="en">Compressed air accumulator two connections</name>
+        <name lang="es">Acumulador de aire comprimido dos conexiones</name>
+        <name lang="fr">Accumulateur d'air comprimé deux connexions</name>
+        <name lang="hr">Akumulator komprimiranog zraka dva priključka</name>
+        <name lang="hu">Sűrített levegős akkumulátor két csatlakozással</name>
+        <name lang="it">Accumulatore ad aria compressa due connessioni</name>
+        <name lang="ja">圧縮空気アキュムレータの2つの接続</name>
+        <name lang="mn">Шахсан агаарын аккумлятор хоёр холболттой</name>
+        <name lang="nb">Trykkluftakkumulator to koblinger</name>
+        <name lang="nl">Persluchtaccumulator twee aansluitingen</name>
+        <name lang="pl">Zasobnik sprężonego powietrza dwa przyłącza</name>
+        <name lang="pt">Acumulador de ar comprimido duas conexões</name>
+        <name lang="pt_br">Acumulador de ar comprimido duas conexões</name>
+        <name lang="ro">Acumulator de aer comprimat doua racorduri</name>
+        <name lang="ru">Аккумулятор сжатого воздуха два соединения</name>
+        <name lang="sl">Akumulator stisnjenega zraka dva priključka</name>
+        <name lang="sr">Акумулатор компримованог ваздуха два прикључка</name>
+        <name lang="tr">Basınçlı hava akümülatörü iki bağlantı</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="18" tagg="label" y="-34.45" rotate="true" text="_" size="9"/>
+        <line y1="-10" end2="none" length2="1.5" x1="60" end1="none" x2="70" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end2="none" length2="1.5" x1="15" end1="none" x2="45" length1="1.5" y2="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end2="none" length2="1.5" x1="15" end1="none" x2="45" length1="1.5" y2="-25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="30" height="30" width="30" start="90" y="-25" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="0" height="30" width="30" start="-90" y="-25" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="70" y="-10" orientation="e"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+    </description>
+</definition>

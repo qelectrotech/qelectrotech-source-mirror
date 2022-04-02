@@ -1,0 +1,33 @@
+<definition version="0.90" link_type="simple" type="element" hotspot_x="14" width="80" height="30" hotspot_y="15">
+    <uuid uuid="{d2d05211-f8c1-4657-83fd-e5c46757268a}"/>
+    <names>
+        <name lang="el">Ταχυσύνδεσμος</name>
+        <name lang="de">Schnellanschluss offen</name>
+        <name lang="en">Quick Connect</name>
+        <name lang="pl">Szybkozłączka bez mechanicznie otwieranych zaworów zwrotnych - rozłączona</name>
+        <name lang="nl">Snelkoppeling</name>
+        <name lang="fr">Raccord rapide</name>
+        <name lang="cs">Rychlé spojení</name>
+        <name lang="ar">رابط سريع</name>
+        <name lang="it">Raccordo rapido</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="27" end2="none" length1="1.5" y1="-2" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27" y2="2"/>
+        <dynamic_text x="-1" frame="false" Halignment="AlignLeft" uuid="{5720afb8-e8e1-4180-9fd8-0397ec32fd93}" Valignment="AlignTop" z="2" rotation="0" text_width="-1" y="-32" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="22" end2="none" length1="1.5" y1="0" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" y2="0"/>
+        <rect x="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="-10" ry="0" width="20" height="20"/>
+        <line x2="55" end2="none" length1="1.5" y1="0" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27" y2="0"/>
+        <rect x="30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="-10" ry="0" width="20" height="20"/>
+        <polygon x2="13" y1="-5" x3="8" y3="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="8" y2="0"/>
+        <polygon x2="37" y1="5" x3="42" y3="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="42" y2="0"/>
+        <line x2="23" end2="none" length1="1.5" y1="-2" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23" y2="2"/>
+        <terminal x="-10" uuid="{6d0fccf2-0c49-4205-929a-f1cadc617b60}" name="" orientation="w" y="0" type="Generic"/>
+        <terminal x="60" uuid="{12ff485c-3c43-48cb-8c77-89314b2c779c}" name="" orientation="e" y="0" type="Generic"/>
+    </description>
+</definition>

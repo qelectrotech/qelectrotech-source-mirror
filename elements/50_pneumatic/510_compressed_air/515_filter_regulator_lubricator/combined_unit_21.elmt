@@ -1,0 +1,73 @@
+<definition hotspot_x="24" width="180" link_type="simple" hotspot_y="51" type="element" version="0.90" height="90">
+    <uuid uuid="{0064e162-72ef-454c-bfa1-91dc82b816ff}"/>
+    <names>
+        <name lang="ar">وحدة صيانة + فلتر + فاصل مياه اوتوماتيكى + مقياس ضغط + مشحم</name>
+        <name lang="ca">Unitat de manteniment + filtre + separador automàtic d'aigua + manòmetre + lubricador</name>
+        <name lang="cs">Údržbová jednotka + filtr + automatický odlučovač vody + manometr + maznice</name>
+        <name lang="da">Vedligeholdelsesenhed + filter + automatisk vandudskiller + trykmåler + smøreapparat</name>
+        <name lang="de">Wartungseinheit + Filter + automatischem Wasserabscheider + Manometer + Öler</name>
+        <name lang="el">Μονάδα συντήρησης + φίλτρο + αυτόματος διαχωριστής νερού + μανόμετρο + λιπαντικό</name>
+        <name lang="en">Maintenance unit + filter + automatic water separator + pressure gauge + lubricator</name>
+        <name lang="es">Unidad de mantenimiento + filtro + separador automático de agua + manómetro + lubricador</name>
+        <name lang="fr">Unité de maintenance + filtre + séparateur d'eau automatique + manomètre + lubrificateur</name>
+        <name lang="hr">Jedinica za održavanje + filter + automatski separator vode + manometar + maziva</name>
+        <name lang="hu">Karbantartó egység + szűrő + automata vízleválasztó + nyomásmérő + kenő</name>
+        <name lang="it">Unità di manutenzione + filtro + separatore d'acqua automatico + manometro + lubrificatore</name>
+        <name lang="ja">メンテナンスユニット+フィルター+自動水分離器+圧力計+ルブリケーター</name>
+        <name lang="mn">Засвар үйлчилгээний хэсэг + шүүлтүүр + автомат ус тусгаарлагч + даралт хэмжигч + тосолгооны материал</name>
+        <name lang="nb">Vedlikeholdsenhet + filter + automatisk vannutskiller + trykkmåler + smøreapparat</name>
+        <name lang="nl">Onderhoudsunit + filter + automatische waterafscheider + manometer + smeerpatroon</name>
+        <name lang="pl">Jednostka konserwacyjna + filtr + automatyczny separator wody + manometr + smarownica</name>
+        <name lang="pt">Unidade de manutenção + filtro + separador automático de água + manômetro + lubrificador</name>
+        <name lang="pt_br">Unidade de manutenção + filtro + separador automático de água + manômetro + lubrificador</name>
+        <name lang="ro">Unitate de intretinere + filtru + separator automat de apa + manometru + lubrifiator</name>
+        <name lang="ru">Блок технического обслуживания + фильтр + автоматический водоотделитель + манометр + лубрикатор</name>
+        <name lang="sl">Vzdrževalna enota + filter + avtomatski ločevalnik vode + manometer + mazivo</name>
+        <name lang="sr">Јединица за одржавање + филтер + аутоматски сепаратор воде + манометар + мазива</name>
+        <name lang="tr">Bakım ünitesi + filtre + otomatik su ayırıcı + manometre + yağlayıcı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="135" length2="1.5" x2="145" end1="none" end2="none" length1="1.5" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" antialias="false" x1="52" length2="1.5" x2="67" end1="none" end2="none" length1="1.5" y2="-37"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="65" length2="1.5" x2="105" end1="none" end2="none" length1="1.5" y2="0"/>
+        <polygon y4="-38" x4="65" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="71" y1="-37" antialias="true" x1="66" x2="67" y2="-35" y3="-39"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" antialias="false" x1="120" length2="1.5" x2="120" end1="none" end2="none" length1="1.5" y2="-14"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-1.15" antialias="true" diameter="2.3" x="88.85"/>
+        <polygon y4="15" x4="120" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="135" y1="0" antialias="true" x1="105" x2="120" x5="105" y2="-15" y3="0" y5="0"/>
+        <polygon y4="-31" x4="55" x7="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="65" y7="-37" y1="-25" x6="55" antialias="true" x1="60" x2="55" y6="-35" closed="false" x5="65" y2="-27" y3="-29" y5="-33"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" antialias="false" x1="50" length2="1.5" x2="50" end1="none" end2="none" length1="1.5" y2="5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" antialias="false" x1="71" length2="1.5" x2="71" end1="none" end2="none" length1="1.5" y2="15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="-5" length2="1.5" x2="-20" end1="none" end2="none" length1="1.5" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="10" length2="1.5" x2="10" end1="none" end2="none" length1="1.5" y2="25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" antialias="false" x1="90" length2="1.5" x2="90" end1="none" end2="none" length1="1.5" y2="1"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="25" length2="1.5" x2="60" end1="none" end2="none" length1="1.5" y2="0"/>
+        <polygon y4="0" x4="65" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="60" y1="0" antialias="true" x1="65" x2="60" y2="-2" y3="2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="50" length2="1.5" x2="50" end1="none" end2="none" length1="1.5" y2="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="55" length2="1.5" x2="50" end1="none" end2="none" length1="1.5" y2="15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="63" length2="1.5" x2="58" end1="none" end2="none" length1="1.5" y2="15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" antialias="false" x1="71" length2="1.5" x2="71" end1="none" end2="none" length1="1.5" y2="7"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="71" length2="1.5" x2="66" end1="none" end2="none" length1="1.5" y2="15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" antialias="false" x1="70" length2="1.5" x2="66" end1="none" end2="none" length1="1.5" y2="1"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-25" rx="0" antialias="false" width="30" x="35" height="30"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" antialias="false" x1="96" length2="1.5" x2="86" end1="none" end2="none" length1="1.5" y2="-26"/>
+        <dynamic_text rotation="0" y="-48" z="24" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{0b23f950-3387-4436-ba54-1e414b2828dd}" x="-6" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-34.5" antialias="true" diameter="25" x="77.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="10" length2="1.5" x2="10" end1="none" end2="none" length1="1.5" y2="5"/>
+        <polygon y4="-24" x4="85" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="83" y1="-24" antialias="true" x1="85" x2="88" y2="-27" y3="-29"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" antialias="false" x1="10" length2="1.5" x2="10" end1="none" end2="none" length1="1.5" y2="-2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" antialias="false" x1="10" length2="1.5" x2="10" end1="none" end2="none" length1="1.5" y2="-9"/>
+        <polygon y4="15" x4="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="25" y1="0" antialias="true" x1="-5" x2="10" x5="-5" y2="-15" y3="0" y5="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" antialias="false" x1="2" length2="0.1" x2="18" end1="circle" end2="circle" length1="0.1" y2="7"/>
+        <rect ry="0" style="line-style:dashdotted;line-weight:normal;filling:none;color:black" y="-45" rx="0" antialias="false" width="150" x="-10" height="65"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x3="14" y1="7" antialias="false" x1="6" x2="10" y2="11" y3="7"/>
+        <terminal y="30" name="" type="Generic" orientation="s" uuid="{78e12a2d-1122-4791-82c2-1f1b141d1dfb}" x="10"/>
+        <terminal y="0" name="" type="Generic" orientation="w" uuid="{6e57fcf4-c58e-42e3-ab4a-58ab76fdd45d}" x="-20"/>
+        <terminal y="0" name="" type="Generic" orientation="e" uuid="{f9bf62cf-453d-46c8-9fb1-8a7d2ca74f4f}" x="150"/>
+    </description>
+</definition>

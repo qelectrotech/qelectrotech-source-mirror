@@ -1,0 +1,50 @@
+<definition version="0.90" type="element" width="40" hotspot_y="24" hotspot_x="12" height="40" link_type="simple">
+    <uuid uuid="{f42d11a2-acce-458d-89ce-dea31c392aaa}"/>
+    <names>
+        <name lang="ar">محرك كلا اتجاهي الدوران</name>
+        <name lang="ca">Motor en els dos sentits de gir</name>
+        <name lang="cs">Motor v obou směrech otáčení</name>
+        <name lang="da">Motor i begge omdrejningsretninger</name>
+        <name lang="de">Motor beide Drehrichtungen</name>
+        <name lang="el">Κινητήρας και στις δύο κατευθύνσεις περιστροφής</name>
+        <name lang="en">Motor both directions of rotation</name>
+        <name lang="es">Motor en ambos sentidos de giro</name>
+        <name lang="fr">Moteur dans les deux sens de rotation</name>
+        <name lang="hr">Motor u oba smjera vrtnje</name>
+        <name lang="hu">Motor mindkét forgásirányban</name>
+        <name lang="it">Motore in entrambi i sensi di rotazione</name>
+        <name lang="ja">モーター両回転方向</name>
+        <name lang="mn">Хөдөлгүүрийг хоёр чиглэлд эргүүлнэ</name>
+        <name lang="nb">Motor begge rotasjonsretninger</name>
+        <name lang="nl">Motor beide draairichtingen</name>
+        <name lang="pl">Silnik w obu kierunkach obrotów</name>
+        <name lang="pt">Motor nos dois sentidos de rotação</name>
+        <name lang="pt_br">Motor nos dois sentidos de rotação</name>
+        <name lang="ro">Motorul în ambele sensuri de rotație</name>
+        <name lang="ru">Мотор оба направления вращения</name>
+        <name lang="sl">Motor v obe smeri vrtenja</name>
+        <name lang="sr">Мотор у оба смера ротације</name>
+        <name lang="tr">Motorun her iki dönüş yönü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="10"/>
+        <dynamic_text z="1" text_width="-1" x="-20" y="-34" frame="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" Valignment="AlignTop" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="-15"/>
+        <arc x="18" y="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35" angle="70.125" antialias="true" height="35" start="142.688"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5401" x2="-2.5607" y3="-8.7785" y4="-14.4294" x1="2.90398" antialias="true" x4="2.84864" y2="-14.5954" x3="0.0402069"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="-3"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="8.939" x2="19.6474" y3="5.1584" y4="8.6281" x1="24.2652" antialias="true" x4="24.2652" y2="6.887" x3="21.7931"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-18.0039" x2="20.5772" y3="-13.324" y4="-18.0039" x1="24.9328" antialias="true" x4="24.9328" y2="-15.0669" x3="22.9263"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="-7"/>
+        <circle x="-10" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="20"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.50954" x2="2.60091" y3="-1.25206" y4="4.39884" x1="-2.86377" antialias="true" x4="-2.80843" y2="4.56484" x3="0"/>
+        <terminal x="0" y="-20" uuid="{7450114d-3dbd-433b-924b-496b74d25710}" type="Generic" orientation="n" name=""/>
+        <terminal x="0" y="10" uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" type="Generic" orientation="s" name=""/>
+    </description>
+</definition>

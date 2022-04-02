@@ -1,0 +1,40 @@
+<definition height="80" version="0.5" width="40" hotspot_x="10" type="element" link_type="simple" hotspot_y="26">
+    <uuid uuid="{59e53dcc-e2f9-42ca-ade6-b23b6ea072b7}"/>
+    <names>
+        <name lang="ar">تخزين الهواء المضغوط اتصال واحد</name>
+        <name lang="ca">Emmagatzematge d'aire comprimit una connexió</name>
+        <name lang="cs">Zásobník stlačeného vzduchu jedno připojení</name>
+        <name lang="da">Trykluftlager én tilslutning</name>
+        <name lang="de">Druckluftspeicher ein Anschluss</name>
+        <name lang="el">Αποθήκευση πεπιεσμένου αέρα μία σύνδεση</name>
+        <name lang="en">Compressed air storage one connection</name>
+        <name lang="es">Almacenamiento de aire comprimido una conexión</name>
+        <name lang="fr">Stockage d'air comprimé une connexion</name>
+        <name lang="hr">Spremnik komprimiranog zraka jedan priključak</name>
+        <name lang="hu">Sűrített levegő tároló egy csatlakozás</name>
+        <name lang="it">Accumulo di aria compressa una connessione</name>
+        <name lang="ja">圧縮空気貯蔵1つの接続</name>
+        <name lang="mn">Шахсан агаар хадгалах нэг холболт</name>
+        <name lang="nb">Trykkluftlagring en tilkobling</name>
+        <name lang="nl">Persluchtopslag één aansluiting</name>
+        <name lang="pl">Magazynowanie sprężonego powietrza jedno przyłącze</name>
+        <name lang="pt">Armazenamento de ar comprimido uma conexão</name>
+        <name lang="pt_br">Armazenamento de ar comprimido uma conexão</name>
+        <name lang="ro">Stocare aer comprimat o singură conexiune</name>
+        <name lang="ru">Хранение сжатого воздуха одно соединение</name>
+        <name lang="sl">En priključek za shranjevanje stisnjenega zraka</name>
+        <name lang="sr">Складиште компримованог ваздуха један прикључак</name>
+        <name lang="tr">Basınçlı hava deposu tek bağlantı</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="-20" end2="none" length2="1.5" x1="10" end1="none" x2="10" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end2="none" length2="1.5" x1="-5" end1="none" x2="-5" length1="1.5" y2="35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="5" end2="none" length2="1.5" x1="25" end1="none" x2="25" length1="1.5" y2="35" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-5" height="30" width="30" start="0" y="20" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-5" height="30" width="30" start="-180" y="-10" angle="-180" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="24" tagg="label" y="3.5" rotate="true" text="_" size="9"/>
+        <terminal x="10" y="-20" orientation="n"/>
+    </description>
+</definition>

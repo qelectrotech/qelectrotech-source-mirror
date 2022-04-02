@@ -1,0 +1,45 @@
+<definition version="0.90" link_type="simple" type="element" hotspot_x="23" width="40" height="50" hotspot_y="28">
+    <uuid uuid="{1d1d1d2d-8014-4033-828d-41162b100f8d}"/>
+    <names>
+        <name lang="ar">ضاغط الهواء بشكل عام</name>
+        <name lang="ca">compressor d'aire en general</name>
+        <name lang="cs">vzduchový kompresor obecně</name>
+        <name lang="da">luftkompressor generelt</name>
+        <name lang="de">Druckluftkompressor allgemein</name>
+        <name lang="el">αεροσυμπιεστής γενικά</name>
+        <name lang="en">air compressor in general</name>
+        <name lang="es">compresor de aire en general</name>
+        <name lang="fr">compresseur d'air en général</name>
+        <name lang="hr">zračni kompresor općenito</name>
+        <name lang="hu">légkompresszor általában</name>
+        <name lang="it">compressore d'aria in genere</name>
+        <name lang="ja">一般的な空気圧縮機</name>
+        <name lang="mn">ерөнхийдөө агаарын компрессор</name>
+        <name lang="nb">luftkompressor generelt</name>
+        <name lang="nl">luchtcompressor in het algemeen</name>
+        <name lang="pl">ogólnie sprężarka powietrza</name>
+        <name lang="pt">compressor de ar em geral</name>
+        <name lang="pt_br">compressor de ar em geral</name>
+        <name lang="ro">compresor de aer în general</name>
+        <name lang="ru">воздушный компрессор в целом</name>
+        <name lang="sl">zračni kompresor na splošno</name>
+        <name lang="sr">ваздушни компресор уопште</name>
+        <name lang="tr">genel olarak hava kompresörü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="-15" frame="false" Halignment="AlignLeft" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" Valignment="AlignTop" z="1" rotation="0" text_width="-1" y="-35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="-10" end2="none" length1="1.5" y1="1" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-17" y2="1"/>
+        <line x2="0" end2="none" length1="1.5" y1="-10" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-15"/>
+        <circle x="-10" diameter="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10"/>
+        <line x2="-10" end2="none" length1="1.5" y1="-1" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-17" y2="-1"/>
+        <polygon x2="3" y1="-4" x3="0" y3="-10" antialias="true" x4="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3" y4="-4" y2="-4"/>
+        <line x2="0" end2="none" length1="1.5" y1="15" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="10"/>
+        <terminal x="0" uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" name="" orientation="n" y="-20" type="Generic"/>
+    </description>
+</definition>

@@ -1,0 +1,45 @@
+<definition height="20" version="0.90" link_type="simple" width="60" type="element" hotspot_x="24" hotspot_y="10">
+    <uuid uuid="{a18f9eb2-fc54-4ffa-997e-8982b61dfb7f}"/>
+    <names>
+        <name lang="ar">فحص الصمام مع الربيع</name>
+        <name lang="ca">Vàlvula de retenció amb molla</name>
+        <name lang="cs">Zpětný ventil s pružinou</name>
+        <name lang="da">Kontraventil med fjeder</name>
+        <name lang="de">Rückschlagventil mit Feder</name>
+        <name lang="el">Βαλβίδα ελέγχου με ελατήριο</name>
+        <name lang="en">Check valve with spring</name>
+        <name lang="es">Válvula de retención con resorte</name>
+        <name lang="fr">Clapet anti-retour avec ressort</name>
+        <name lang="hr">Nepovratni ventil s oprugom</name>
+        <name lang="hu">Visszacsapó szelep rugóval</name>
+        <name lang="it">Valvola di ritegno con molla</name>
+        <name lang="ja">スプリング付きチェックバルブ</name>
+        <name lang="mn">Хаврын хавхлагыг шалгах</name>
+        <name lang="nb">Tilbakeslagsventil med fjær</name>
+        <name lang="nl">Terugslagklep met veer</name>
+        <name lang="pl">Zawór zwrotny ze sprężyną</name>
+        <name lang="pt">Válvula de retenção com mola</name>
+        <name lang="pt_br">Válvula de retenção com mola</name>
+        <name lang="ro">Supapă de reținere cu arc</name>
+        <name lang="ru">Обратный клапан с пружиной</name>
+        <name lang="sl">Povratni ventil z vzmetjo</name>
+        <name lang="sr">Неповратни вентил са опругом</name>
+        <name lang="tr">Yaylı çek valf</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" uuid="{36d543ac-0f5d-4ef3-b04b-4f66d28982d8}" x="8" y="-11.95" text_from="ElementInfo" font="Sans Serif,4,-1,5,50,0,0,0,0,0" frame="false" Valignment="AlignTop" Halignment="AlignLeft" text_width="-1" rotation="0" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5" y1="0" length1="1.5" end1="none" x2="13" end2="none" antialias="false"/>
+        <line x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5" y1="0" length1="1.5" end1="none" x2="-16" end2="none" antialias="false"/>
+        <polygon x1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="5" y3="-5" x3="8" x2="13" closed="false" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" y="-3" diameter="6" antialias="true"/>
+        <polygon x1="3.00293" y4="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" y1="0.161133" y3="-4" x4="-2" x3="0" y6="4" x6="-6" x2="2" x7="-6.9873" y7="0.234375" x5="-4" closed="false" antialias="true" y5="-4"/>
+        <terminal uuid="{14dea601-5030-4b25-ae66-90595f4ca808}" x="-20" y="0" name="" orientation="w" type="Generic"/>
+        <terminal uuid="{bb9e31a8-baf3-45d4-a99b-bb4d49c8def6}" x="30" y="0" name="" orientation="e" type="Generic"/>
+    </description>
+</definition>

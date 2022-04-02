@@ -1,0 +1,53 @@
+<definition link_type="simple" width="70" type="element" height="50" hotspot_y="29" hotspot_x="34" version="0.90">
+    <uuid uuid="{b285cb3f-6fa8-44fa-8153-8cd8b9f86a86}"/>
+    <names>
+        <name lang="ar">اثنين من صمامات الضغط</name>
+        <name lang="ca">dues vàlvules de pressió</name>
+        <name lang="cs">dva tlakové ventily</name>
+        <name lang="da">to tryk ventil</name>
+        <name lang="de">Zweidruckventil</name>
+        <name lang="el">δύο βαλβίδες πίεσης</name>
+        <name lang="en">two pressure valve</name>
+        <name lang="es">válvula de dos presiones</name>
+        <name lang="fr">soupape à deux pressions</name>
+        <name lang="hr">dva tlačna ventila</name>
+        <name lang="hu">két nyomásszelep</name>
+        <name lang="it">due valvole di pressione</name>
+        <name lang="ja">2つの圧力弁</name>
+        <name lang="mn">хоёр даралтын хавхлага</name>
+        <name lang="nb">to trykkventiler</name>
+        <name lang="nl">twee druk ventiel:</name>
+        <name lang="pl">dwa zawory ciśnieniowe</name>
+        <name lang="pt">válvula de duas pressões</name>
+        <name lang="pt_br">válvula de duas pressões</name>
+        <name lang="ro">două supape de presiune</name>
+        <name lang="ru">два клапана давления</name>
+        <name lang="sl">dva tlačna ventila</name>
+        <name lang="sr">два вентила притиска</name>
+        <name lang="tr">iki basınç valfi</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="1" color="#000000" y="-16" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="2"/>
+        <text x="26" color="#000000" y="5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="1"/>
+        <line x2="20" y1="1" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="1"/>
+        <dynamic_text z="2" text_from="ElementInfo" x="-40" Valignment="AlignTop" y="-34" text_width="-1" uuid="{53e6030b-6eae-4a04-8a46-aab72c33a700}" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="16" y1="-15" x1="16" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-8"/>
+        <rect x="-25" width="50" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" ry="0" rx="0"/>
+        <line x2="16" y1="8" x1="16" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="15"/>
+        <line x2="-16" y1="-15" x1="-16" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-8"/>
+        <line x2="-16" y1="8" x1="-16" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="15"/>
+        <line x2="20" y1="-1" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-1"/>
+        <line x2="20" y1="-10" x1="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="10"/>
+        <line x2="-20" y1="-10" x1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="10"/>
+        <text x="-29" color="#000000" y="5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="1"/>
+        <terminal x="0" name="" y="-20" uuid="{5d04a3e0-91b6-4f44-95d5-3c653ac91ae5}" type="Generic" orientation="n"/>
+        <terminal x="30" name="" y="0" uuid="{26b4e50b-6db5-40bb-939e-91657862c2fc}" type="Generic" orientation="e"/>
+        <terminal x="-30" name="" y="0" uuid="{29c3f5c2-0784-41cb-b1f4-5d5145a7850d}" type="Generic" orientation="w"/>
+    </description>
+</definition>

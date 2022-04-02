@@ -1,0 +1,44 @@
+<definition hotspot_x="29" width="60" link_type="simple" hotspot_y="31" type="element" version="0.90" height="40">
+    <uuid uuid="{9cc03c52-3b03-4270-a86d-eee2a2ad1fce}"/>
+    <names>
+        <name lang="ar">المحركات الخوار</name>
+        <name lang="ca">Actuadors de manxa</name>
+        <name lang="cs">Vlnovcové pohony</name>
+        <name lang="da">Bælgeaktuatorer</name>
+        <name lang="de">Faltenbalg-Aktuatoren</name>
+        <name lang="el">Παρακάτω ενεργοποιητές</name>
+        <name lang="en">Bellow actuators</name>
+        <name lang="es">Actuadores de fuelle</name>
+        <name lang="fr">Actionneurs à soufflet</name>
+        <name lang="hr">Pogoni sa mijehom</name>
+        <name lang="hu">Fújtatók</name>
+        <name lang="it">Attuatori a soffietto</name>
+        <name lang="ja">ベローアクチュエータ</name>
+        <name lang="mn">Доорх идэвхжүүлэгч</name>
+        <name lang="nb">Belgaktuatorer</name>
+        <name lang="nl">Balgaandrijvingen</name>
+        <name lang="pl">Siłowniki mieszkowe</name>
+        <name lang="pt">Atuadores de fole</name>
+        <name lang="pt_br">Atuadores de fole</name>
+        <name lang="ro">Actuatoare cu burduf</name>
+        <name lang="ru">Сильфонные приводы</name>
+        <name lang="sl">Mehanski aktuatorji</name>
+        <name lang="sr">Механички актуатори</name>
+        <name lang="tr">Körük aktüatörleri</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y4="-5" x4="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="0" y1="-5" antialias="true" x1="-2" x2="2" y2="-5" y3="-9"/>
+        <arc start="270" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-25" antialias="true" width="20" angle="180" x="5" height="20"/>
+        <arc start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-25" antialias="true" width="20" angle="-180" x="-23" height="20"/>
+        <dynamic_text rotation="0" y="-55" z="3" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{a5d5036f-1b11-472a-82f0-a9e2ef1e7443}" x="-30" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" antialias="false" x1="-24" length2="1.5" x2="24" end1="none" end2="none" length1="1.5" y2="-25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" antialias="false" x1="-24" length2="1.5" x2="24" end1="none" end2="none" length1="1.5" y2="-5"/>
+        <terminal y="0" name="" type="Generic" orientation="s" uuid="{2b4a98f1-bd99-4f08-b33f-5462192e6421}" x="0"/>
+    </description>
+</definition>

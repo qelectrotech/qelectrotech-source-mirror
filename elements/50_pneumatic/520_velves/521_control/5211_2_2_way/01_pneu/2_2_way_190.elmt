@@ -1,0 +1,54 @@
+<definition version="0.90" type="element" link_type="simple" width="100" hotspot_x="52" hotspot_y="14" height="50">
+    <uuid uuid="{3aa5aca4-903f-4480-8faf-d234d3942dec}"/>
+    <names>
+        <name lang="ar">صمام تعبئة يعمل بالهواء المضغوط</name>
+        <name lang="ca">Vàlvula d'ompliment, accionada pneumàticament</name>
+        <name lang="cs">Plnicí ventil, pneumaticky ovládaný</name>
+        <name lang="da">Påfyldningsventil, pneumatisk betjent</name>
+        <name lang="de">Füllventil, pneumatisch betätigt</name>
+        <name lang="el">Βαλβίδα πλήρωσης, με πνευματική λειτουργία</name>
+        <name lang="en">Filling valve, pneumatically operated</name>
+        <name lang="es">Válvula de llenado, accionada neumáticamente</name>
+        <name lang="fr">Vanne de remplissage à commande pneumatique</name>
+        <name lang="hr">Ventil za punjenje, pneumatski</name>
+        <name lang="hu">Töltőszelep, pneumatikus működtetésű</name>
+        <name lang="it">Valvola di riempimento ad azionamento pneumatico</name>
+        <name lang="ja">空気圧作動式充填バルブ</name>
+        <name lang="mn">Дүүргэх хавхлага, пневматикаар ажилладаг</name>
+        <name lang="nb">Påfyllingsventil, pneumatisk betjent</name>
+        <name lang="nl">Vulklep, pneumatisch bediend</name>
+        <name lang="pl">Zawór napełniający, sterowany pneumatycznie</name>
+        <name lang="pt">Válvula de enchimento, operada pneumaticamente</name>
+        <name lang="pt_br">Válvula de enchimento, operada pneumaticamente</name>
+        <name lang="ro">Supapa de umplere, actionata pneumatic</name>
+        <name lang="ru">Заправочный клапан с пневматическим приводом</name>
+        <name lang="sl">Polnilni ventil, pnevmatsko voden</name>
+        <name lang="sr">Вентил за пуњење, пнеуматски</name>
+        <name lang="tr">Doldurma valfi, pnömatik olarak çalıştırılan</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" text_from="ElementInfo" rotation="0" z="1" text_width="-1" Halignment="AlignLeft" keep_visual_rotation="false" y="-18" uuid="{662dfc3e-969f-4b23-9a11-fadd8fb9ee76}" x="36" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="-20" y6="20" closed="false" y2="0" x4="-50" x5="-50" y5="20" x2="-10" x6="-34" y4="-10" antialias="false" y3="-10" y1="0" x1="20" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <polygon y7="20" y3="23" x5="35" x7="41" style="line-style:normal;line-weight:normal;filling:none;color:black" y6="17" y1="17" x1="35" antialias="false" x3="45" x2="45" x6="45" y2="17" y5="17" x8="45" y4="23" closed="false" y8="23" x4="35"/>
+        <polygon x3="27" y2="12" x4="23" x2="25" y4="10" antialias="true" y3="8" y1="10" x1="23" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="20" x2="-27" antialias="false" end1="none" y1="20" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="38" y6="13" closed="false" y2="13" x4="40" x5="41" y5="7" y7="7.4229" x2="37" x6="43" y4="13" antialias="false" y3="7" y1="7.3016" x7="44.1732" x1="35.1149" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="30" y="5" rx="0" ry="0" x="5" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="50" antialias="true" angle="-100" width="6" y="5" x="12" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="-27.5" y2="17" x2="-34.5" antialias="false" y3="20" y1="23" x1="-34.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="10" x2="25" antialias="false" end1="none" y1="20.5" x1="14.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="-8.48976" y2="10.0939" x4="-9.95" x2="-11.5007" y4="5.05" antialias="true" y3="10.0693" y1="5.05" x1="-9.95" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <arc start="-130" antialias="true" angle="-100" width="6" y="5" x="22" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="30" y="5" rx="0" ry="0" x="-25" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="0" end2="none" length2="0" y2="9" x2="-10" antialias="false" end1="none" y1="24" x1="-10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="25" x2="20" antialias="false" end1="none" y1="-5" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" type="Generic" name="" y="-10" uuid="{d23e04b7-b453-4d7b-9ad4-b97379b23628}" x="20"/>
+        <terminal orientation="s" type="Generic" name="" y="30" uuid="{bccfeb08-0219-487f-a082-5e61c0c05839}" x="20"/>
+    </description>
+</definition>

@@ -1,0 +1,49 @@
+<definition version="0.90" type="element" width="40" hotspot_y="26" hotspot_x="13" height="40" link_type="simple">
+    <uuid uuid="{de70524b-7195-49df-b9f2-856b16e19459}"/>
+    <names>
+        <name lang="ar">دوران المحرك يسارًا + سرعة متغيرة</name>
+        <name lang="ca">Motor girant a l'esquerra + velocitat variable</name>
+        <name lang="cs">Otáčení motoru doleva + variabilní rychlost</name>
+        <name lang="da">Motor drejer til venstre + variabel hastighed</name>
+        <name lang="de">Motor linksdrehend + variable Drehzahl</name>
+        <name lang="el">Στροφή κινητήρα αριστερά + μεταβλητή ταχύτητα</name>
+        <name lang="en">Motor turning left + variable speed</name>
+        <name lang="es">Motor girando a la izquierda + velocidad variable</name>
+        <name lang="fr">Moteur tournant à gauche + vitesse variable</name>
+        <name lang="hr">Motor okreće lijevo + promjenjiva brzina</name>
+        <name lang="hu">Motor balra forgás + változó sebesség</name>
+        <name lang="it">Motore che gira a sinistra + velocità variabile</name>
+        <name lang="ja">モーターが左に曲がる+可変速度</name>
+        <name lang="mn">Мотор зүүн эргэх + хувьсах хурд</name>
+        <name lang="nb">Motor til venstre + variabel hastighet</name>
+        <name lang="nl">Motor draait naar links + variabele snelheid</name>
+        <name lang="pl">Silnik obracający się w lewo + zmienna prędkość</name>
+        <name lang="pt">Motor virando para a esquerda + velocidade variável</name>
+        <name lang="pt_br">Motor virando para a esquerda + velocidade variável</name>
+        <name lang="ro">Motor care virează la stânga + turație variabilă</name>
+        <name lang="ru">Двигатель поворачивается влево + переменная скорость</name>
+        <name lang="sl">Motor zavija levo + spremenljiva hitrost</name>
+        <name lang="sr">Мотор скреће лево + променљива брзина</name>
+        <name lang="tr">Motor sola dönüyor + değişken hız</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" text_width="-1" x="-20" y="-34" frame="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" Valignment="AlignTop" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-18.3079" x2="9.8847" y3="-13.7662" y4="-18.3079" x1="14.1477" antialias="true" x4="14.2462" y2="-15.8157" x3="12.0753"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="-15"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" length2="1.5" x2="11" x1="-10" antialias="false" end2="none" y2="-15"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" length2="1.5" x2="0" x1="0" antialias="false" end2="none" y2="10"/>
+        <arc x="18" y="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35" angle="70.125" antialias="true" height="35" start="142.688"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5761" x2="-2.56328" y3="-8.81451" y4="-14.4654" x1="2.9014" antialias="true" x4="2.84606" y2="-14.6314" x3="0.0376349"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="-3"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" y1="7.939" x2="19.6474" y3="4.15838" y4="7.6281" x1="24.2652" antialias="true" x4="24.2652" y2="5.887" x3="21.7931"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" length2="1.5" x2="22" x1="10" antialias="false" end2="none" y2="-7"/>
+        <circle x="-10" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="20"/>
+        <terminal x="0" y="-20" uuid="{7450114d-3dbd-433b-924b-496b74d25710}" type="Generic" orientation="n" name=""/>
+    </description>
+</definition>

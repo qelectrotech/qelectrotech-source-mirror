@@ -1,0 +1,47 @@
+<definition link_type="simple" width="70" type="element" height="50" hotspot_y="25" hotspot_x="4" version="0.90">
+    <uuid uuid="{a864bc70-f3ad-4dd7-8cbf-dd8912edd565}"/>
+    <names>
+        <name lang="ar">مشحم الهواء المضغوط</name>
+        <name lang="ca">lubricador d'aire comprimit</name>
+        <name lang="cs">maznice na stlačený vzduch</name>
+        <name lang="da">trykluftsmøreapparat</name>
+        <name lang="de">Druckluftöler</name>
+        <name lang="el">λιπαντικό πεπιεσμένου αέρα</name>
+        <name lang="en">compressed air lubricator</name>
+        <name lang="es">lubricador de aire comprimido</name>
+        <name lang="fr">lubrificateur à air comprimé</name>
+        <name lang="hr">maziva na komprimirani zrak</name>
+        <name lang="hu">sűrített levegős kenőanyag</name>
+        <name lang="it">lubrificatore ad aria compressa</name>
+        <name lang="ja">圧縮空気ルブリケーター</name>
+        <name lang="mn">шахсан агаарын тосолгооны материал</name>
+        <name lang="nb">trykkluftsmøreapparat</name>
+        <name lang="nl">perslucht smeerapparaat</name>
+        <name lang="pl">smarownica sprężonego powietrza</name>
+        <name lang="pt">lubrificador de ar comprimido</name>
+        <name lang="pt_br">lubrificador de ar comprimido</name>
+        <name lang="ro">lubrifiator cu aer comprimat</name>
+        <name lang="ru">лубрикатор сжатого воздуха</name>
+        <name lang="sl">mazalec na stisnjen zrak</name>
+        <name lang="sr">мазива на компримовани ваздух</name>
+        <name lang="tr">basınçlı hava yağlayıcı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" text_from="ElementInfo" x="50" Valignment="AlignTop" y="7.5" text_width="-1" uuid="{d47c564c-ada6-4bff-a17d-8bdb9fc41c74}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="10" y1="20" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="30" y1="0" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="-20"/>
+        <line x2="30" y1="0" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="20"/>
+        <line x2="50" y1="-20" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="0" y1="0" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="60" y1="0" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="30" y1="-13" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-19"/>
+        <terminal x="60" name="" y="0" uuid="{42033f38-8d48-4d4b-a96c-4bf706c6a343}" type="Generic" orientation="e"/>
+        <terminal x="0" name="" y="0" uuid="{97843022-6233-4682-9fd4-122ec174a37b}" type="Generic" orientation="w"/>
+    </description>
+</definition>

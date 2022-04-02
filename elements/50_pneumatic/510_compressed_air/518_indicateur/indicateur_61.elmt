@@ -1,0 +1,52 @@
+<definition link_type="simple" width="50" version="0.90" type="element" hotspot_x="24" hotspot_y="20" height="30">
+    <uuid uuid="{903db128-27f6-41d1-b7ce-a0ca1ea3f605}"/>
+    <names>
+        <name lang="ar">متر عزم الدوران</name>
+        <name lang="ca">Mesurador de parell</name>
+        <name lang="cs">Měřič točivého momentu</name>
+        <name lang="da">Momentmåler</name>
+        <name lang="de">Drehmomentmesser</name>
+        <name lang="el">Ροπόμετρο</name>
+        <name lang="en">Torque meter</name>
+        <name lang="es">Medidor de par</name>
+        <name lang="fr">Compteur de couple</name>
+        <name lang="hr">Mjerač momenta</name>
+        <name lang="hu">Nyomatékmérő</name>
+        <name lang="it">Misuratore di coppia</name>
+        <name lang="ja">トルクメーター</name>
+        <name lang="mn">Момент хэмжигч</name>
+        <name lang="nb">Momentmåler</name>
+        <name lang="nl">Koppelmeter</name>
+        <name lang="pl">Miernik momentu obrotowego</name>
+        <name lang="pt">Torquímetro</name>
+        <name lang="pt_br">Torquímetro</name>
+        <name lang="ro">Contor de cuplu</name>
+        <name lang="ru">измеритель крутящего момента</name>
+        <name lang="sl">Merilnik navora</name>
+        <name lang="sr">Мерач обртног момента</name>
+        <name lang="tr">Tork ölçer</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="-9" x1="-16" y1="0" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false"/>
+        <line x2="16" x1="9" y1="-10" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" antialias="false"/>
+        <dynamic_text y="-35" uuid="{cefa536b-0b3a-406d-b898-3bbce145fbee}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-20" rotation="0" Valignment="AlignTop" z="2" keep_visual_rotation="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="0" y1="-12" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="2" antialias="false"/>
+        <polygon x2="-4" x1="-6" x4="-6" y4="1" y1="1" x3="-8" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-1" antialias="true" y3="-4"/>
+        <polygon x2="6" x1="4" x4="4" y4="-9" y1="-9" x3="8" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-11" antialias="true" y3="-6"/>
+        <arc y="-12" width="14" angle="-45" x="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" antialias="true" height="14"/>
+        <circle y="-15" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true"/>
+        <arc y="-12" width="14" angle="-45" x="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" height="14"/>
+        <line x2="16" x1="9" y1="0" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false"/>
+        <line x2="-9" x1="-16" y1="-10" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" antialias="false"/>
+        <terminal y="-10" uuid="{73862bae-47fd-49f7-a4c3-8e354a7147b0}" name="" orientation="e" x="20" type="Generic"/>
+        <terminal y="0" uuid="{300e3877-374f-4935-9bd7-11c798008f33}" name="" orientation="w" x="-20" type="Generic"/>
+        <terminal y="0" uuid="{4e44d906-dfed-4dc9-a7cc-cb4376a4f976}" name="" orientation="e" x="20" type="Generic"/>
+        <terminal y="-10" uuid="{1e8b152e-e5d6-480e-824d-04c6d71a846f}" name="" orientation="w" x="-20" type="Generic"/>
+    </description>
+</definition>

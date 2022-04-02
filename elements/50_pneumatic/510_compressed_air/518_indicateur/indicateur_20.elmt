@@ -1,0 +1,45 @@
+<definition height="30" hotspot_x="24" hotspot_y="15" type="element" version="0.90" width="50" link_type="simple">
+    <uuid uuid="{0009ed3d-be76-497f-bf4b-177559b5ed41}"/>
+    <names>
+        <name lang="ar">قياس التدفق</name>
+        <name lang="ca">mesura de cabal</name>
+        <name lang="cs">měření průtoku</name>
+        <name lang="da">flowmåling</name>
+        <name lang="de">Durchlussmessung</name>
+        <name lang="el">μέτρηση ροής</name>
+        <name lang="en">flow measurement</name>
+        <name lang="es">medición de flujo</name>
+        <name lang="fr">Mesure de flux</name>
+        <name lang="hr">mjerenje protoka</name>
+        <name lang="hu">áramlásmérés</name>
+        <name lang="it">misurazione del flusso</name>
+        <name lang="ja">流量測定</name>
+        <name lang="mn">урсгалын хэмжилт</name>
+        <name lang="nb">strømningsmåling</name>
+        <name lang="nl">stroommeting</name>
+        <name lang="pl">pomiar przepływu</name>
+        <name lang="pt">medição de vazão</name>
+        <name lang="pt_br">medição de vazão</name>
+        <name lang="ro">măsurarea debitului</name>
+        <name lang="ru">измерение расхода</name>
+        <name lang="sl">merjenje pretoka</name>
+        <name lang="sr">мерење протока</name>
+        <name lang="tr">Akış ölçümü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" uuid="{5cd127ef-ff15-4a15-b93a-c55adcae7428}" Valignment="AlignTop" rotation="0" x="-20" z="1" text_width="-1" keep_visual_rotation="false" y="-24" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-230" x="-10" width="20" y="5" angle="-80"/>
+        <arc height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="-50" x="-10" width="20" y="-25" angle="-80"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x2="15" y1="0" antialias="false" end1="none" end2="none" x1="10" length1="1.5"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x2="-10" y1="0" antialias="false" end1="none" end2="none" x1="-15" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true" x="-10" y="-10"/>
+        <terminal name="" orientation="w" type="Generic" uuid="{81c59d59-1cbf-46af-b9b5-a8764d61e705}" x="-20" y="0"/>
+        <terminal name="" orientation="e" type="Generic" uuid="{083a6b3a-ce5b-4bf1-b666-c5fbb0f69150}" x="20" y="0"/>
+    </description>
+</definition>

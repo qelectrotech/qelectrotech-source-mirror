@@ -1,0 +1,39 @@
+<definition hotspot_x="35" version="0.90" type="element" height="40" width="50" hotspot_y="20" link_type="simple">
+    <uuid uuid="{0e84683e-1795-4057-a120-8da47061aca6}"/>
+    <names>
+        <name lang="en">Pressure switch adjustable</name>
+        <name lang="nl">Drukzender</name>
+        <name lang="ar">حسّاس ضغط</name>
+        <name lang="cs">Přenašeč tlaku</name>
+        <name lang="de">Druckschalter einstellbar</name>
+        <name lang="fr">Capteur de pression</name>
+        <name lang="it">Sensore di pressione</name>
+        <name lang="pl">Przetwornik ciśnienia</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text rotation="0" x="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="0V" y="14" color="#000000"/>
+        <text rotation="0" x="-5" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="+24V" y="-12" color="#000000"/>
+        <dynamic_text uuid="{56513f13-603e-4492-8f08-39e77bd609d2}" z="2" text_from="ElementInfo" keep_visual_rotation="false" rotation="0" x="-21" frame="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" y="-40" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0" x4="4" y3="-3" y1="0" closed="false" y4="-3" x1="10" x2="6" x3="6" antialias="true"/>
+        <text rotation="0" x="-8" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="I / U&#xa;PNP&#xa;NPN" y="2" color="#000000"/>
+        <text rotation="0" x="-19" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="P" y="-4" color="#000000"/>
+        <text rotation="0" x="6" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="4" y="-4" color="#000000"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" x4="4" y3="10" y1="10" closed="false" y4="10" x1="10" x2="6" x3="6" antialias="true"/>
+        <text rotation="0" x="6.64074" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="2" y="9.1321" color="#000000"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" x="-14" height="12" width="18" ry="0" y="-1" antialias="false"/>
+        <text rotation="0" x="6.54768" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="3" y="13.943" color="#000000"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-20" height="30" width="30" ry="0" y="-15" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-8" x4="-20" y3="-10" y1="-12" y4="-12" x1="-20" x2="-20" x3="-16" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end1="none" end2="none" y1="-10" x1="-26" x2="-20" length1="1.5" antialias="false" length2="1.5"/>
+        <text rotation="0" x="6" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="1" y="-11" color="#000000"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" x="-14" height="8" width="18" ry="0" y="-10" antialias="false"/>
+        <text rotation="0" x="-10" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="IO Link&#xa;  PNP" y="-7" color="#000000"/>
+        <terminal uuid="{03f2e588-1b74-484c-b5e8-df26d6c1e766}" x="-30" type="Generic" orientation="w" y="-10" name=""/>
+    </description>
+</definition>

@@ -1,0 +1,35 @@
+<definition link_type="simple" height="50" type="element" hotspot_x="24" width="60" hotspot_y="24" version="0.90">
+    <uuid uuid="{e0c4cee2-75aa-41ed-aa53-b83367246c91}"/>
+    <names>
+        <name lang="en">Distributor</name>
+        <name lang="de">Verteiler</name>
+        <name lang="it">Ripartitore</name>
+        <name lang="pl">Rozdzielacz</name>
+        <name lang="cs">Rozvaděč</name>
+        <name lang="nl">Verdeler</name>
+        <name lang="fr">Répartiteurs</name>
+        <name lang="ar">مُوزّع</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-2" length1="1.5" x2="2" end2="none" end1="none" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="-20" antialias="false"/>
+        <line x1="10" length1="1.5" x2="9.99691" end2="circle" end1="none" y1="17.2675" style="line-style:normal;line-weight:normal;filling:black;color:black" length2="1.5" y2="-1.46502" antialias="false"/>
+        <line x1="-2" length1="1.5" x2="2" end2="none" end1="none" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="20" antialias="false"/>
+        <line x1="0" length1="1.5" x2="0" end2="none" end1="circle" y1="1.59877" style="line-style:normal;line-weight:normal;filling:black;color:black" length2="1.5" y2="-17.4012" antialias="false"/>
+        <line x1="0" length1="1.5" x2="-0.0555556" end2="circle" end1="none" y1="17" style="line-style:normal;line-weight:normal;filling:black;color:black" length2="1.5" y2="-1.41358" antialias="false"/>
+        <line x1="-16" length1="1.5" x2="26" end2="none" end1="none" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="0" antialias="false"/>
+        <dynamic_text z="5" x="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" text_width="-1" rotation="0" uuid="{049ac17a-5236-44bc-8acf-05ca26c57a35}" text_from="ElementInfo" frame="false" y="-25" Halignment="AlignLeft" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="8" length1="1.5" x2="12" end2="none" end1="none" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y2="20" antialias="false"/>
+        <rect x="-10" height="23" rx="0" width="30" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="false"/>
+        <terminal x="0" type="Generic" name="" uuid="{a5b96309-80d6-4c19-8373-dcaef857da95}" orientation="n" y="-20"/>
+        <terminal x="0" type="Generic" name="" uuid="{dd1412a1-de96-480d-84c1-ed1346e94155}" orientation="s" y="20"/>
+        <terminal x="-20" type="Generic" name="" uuid="{3c2362fb-e855-4f8f-9a8e-f9fb7323d863}" orientation="w" y="0"/>
+        <terminal x="10" type="Generic" name="" uuid="{0f8618c3-ee35-49ef-8bbb-2ce75663db1c}" orientation="s" y="20"/>
+        <terminal x="30" type="Generic" name="" uuid="{248d1a67-44d5-4962-988d-6d9c940f21dc}" orientation="e" y="0"/>
+    </description>
+</definition>

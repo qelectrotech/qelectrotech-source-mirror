@@ -1,0 +1,45 @@
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
+    <uuid uuid="{8dd93e96-9f80-4b52-bc16-d9bbfb55fd0a}"/>
+    <names>
+        <name lang="ar">مرشح الهواء المضغوط</name>
+        <name lang="ca">filtre d'aire comprimit</name>
+        <name lang="cs">filtr stlačeného vzduchu</name>
+        <name lang="da">trykluftfilter</name>
+        <name lang="de">Druckluftfilter</name>
+        <name lang="el">φίλτρο πεπιεσμένου αέρα</name>
+        <name lang="en">compressed air filter</name>
+        <name lang="es">filtro de aire comprimido</name>
+        <name lang="fr">filtre à air comprimé</name>
+        <name lang="hr">filter komprimiranog zraka</name>
+        <name lang="hu">sűrített levegő szűrő</name>
+        <name lang="it">filtro aria compressa</name>
+        <name lang="ja">圧縮空気フィルター</name>
+        <name lang="mn">шахсан агаарын шүүлтүүр</name>
+        <name lang="nb">trykkluftfilter</name>
+        <name lang="nl">persluchtfilter</name>
+        <name lang="pl">filtr sprężonego powietrza</name>
+        <name lang="pt">filtro de ar comprimido</name>
+        <name lang="pt_br">filtro de ar comprimido</name>
+        <name lang="ro">filtru de aer comprimat</name>
+        <name lang="ru">фильтр сжатого воздуха</name>
+        <name lang="sl">filter stisnjenega zraka</name>
+        <name lang="sr">филтер компримованог ваздуха</name>
+        <name lang="tr">basınçlı hava filtresi</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-3" tagg="label" y="-27.45" rotate="true" text="_" size="7"/>
+        <line y1="4" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-3" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-9" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-22" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-29" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+    </description>
+</definition>

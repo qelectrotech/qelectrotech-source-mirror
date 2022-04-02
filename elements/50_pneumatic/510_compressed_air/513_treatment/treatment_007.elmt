@@ -1,0 +1,55 @@
+<definition link_type="simple" width="70" type="element" height="60" hotspot_y="24" hotspot_x="4" version="0.90">
+    <uuid uuid="{1708544b-fe14-4ba0-829f-2cfe4b551ba3}"/>
+    <names>
+        <name lang="ar">فلتر هواء مضغوط مع فصل آلي للمياه</name>
+        <name lang="ca">Filtre d'aire comprimit amb separació automàtica d'aigua</name>
+        <name lang="cs">Filtr stlačeného vzduchu s automatickým odlučováním vody</name>
+        <name lang="da">Trykluftfilter med automatisk vandseparation</name>
+        <name lang="de">Druckluftfilter mit automatischer Wasserabscheidung</name>
+        <name lang="el">Φίλτρο πεπιεσμένου αέρα με αυτόματο διαχωρισμό νερού</name>
+        <name lang="en">Compressed air filter with automatic water separation</name>
+        <name lang="es">Filtro de aire comprimido con separación automática de agua</name>
+        <name lang="fr">Filtre à air comprimé avec séparation automatique de l'eau</name>
+        <name lang="hr">Filter komprimiranog zraka s automatskim odvajanjem vode</name>
+        <name lang="hu">Sűrített levegő szűrő automatikus vízleválasztással</name>
+        <name lang="it">Filtro aria compressa con separazione automatica dell'acqua</name>
+        <name lang="ja">自動水分離を備えた圧縮空気フィルター</name>
+        <name lang="mn">Усыг автоматаар ялгадаг шахсан агаарын шүүлтүүр</name>
+        <name lang="nb">Trykkluftfilter med automatisk vannseparasjon</name>
+        <name lang="nl">Persluchtfilter met automatische waterafscheiding</name>
+        <name lang="pl">Filtr sprężonego powietrza z automatyczną separacją wody</name>
+        <name lang="pt">Filtro de ar comprimido com separação automática de água</name>
+        <name lang="pt_br">Filtro de ar comprimido com separação automática de água</name>
+        <name lang="ro">Filtru de aer comprimat cu separare automată a apei</name>
+        <name lang="ru">Фильтр сжатого воздуха с автоматическим отделением воды</name>
+        <name lang="sl">Filter za stisnjen zrak z avtomatskim ločevanjem vode</name>
+        <name lang="sr">Филтер за компримовани ваздух са аутоматским одвајањем воде</name>
+        <name lang="tr">Otomatik su ayırmalı basınçlı hava filtresi</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" text_from="ElementInfo" x="44" Valignment="AlignTop" y="13.5" text_width="-1" uuid="{9e1415ac-d091-4bfc-8bb5-d5215c5ebbec}" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="30" y1="7" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="3"/>
+        <line x2="30" y1="-14" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-18"/>
+        <line x2="30" y1="0" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-4"/>
+        <line x2="30" y1="9" x1="25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="14"/>
+        <line x2="10" y1="20" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="41" y1="9" x1="19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="9"/>
+        <line x2="30" y1="0" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="-20"/>
+        <line x2="35" y1="14" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="9"/>
+        <line x2="30" y1="0" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="20"/>
+        <line x2="50" y1="-20" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="true" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="0" y1="0" x1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="30" y1="20" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="30"/>
+        <line x2="60" y1="0" x1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="0"/>
+        <line x2="30" y1="-7" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-11"/>
+        <terminal x="0" name="" y="0" uuid="{fe55126e-1cc5-4a9d-8afc-4a78d37f4664}" type="Generic" orientation="w"/>
+        <terminal x="30" name="" y="30" uuid="{9518584c-c298-4a70-9837-9b6e84fd5e72}" type="Generic" orientation="s"/>
+        <terminal x="60" name="" y="0" uuid="{67974082-efbb-4565-85eb-8a9c2caace8b}" type="Generic" orientation="e"/>
+    </description>
+</definition>

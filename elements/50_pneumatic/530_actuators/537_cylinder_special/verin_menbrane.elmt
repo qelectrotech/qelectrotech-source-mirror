@@ -1,0 +1,46 @@
+<definition hotspot_x="15" width="70" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{8d5d5012-9acc-41fd-888a-39aeddc298cc}"/>
+    <names>
+        <name lang="ar">مشغل الحجاب الحاجز</name>
+        <name lang="ca">Actuador de diafragma</name>
+        <name lang="cs">Membránový pohon</name>
+        <name lang="da">Membranaktuator</name>
+        <name lang="de">Membranantrieb</name>
+        <name lang="el">Ενεργοποιητής διαφράγματος</name>
+        <name lang="en">Diaphragm actuator</name>
+        <name lang="es">Actuador de diafragma</name>
+        <name lang="fr">Actionneur à membrane</name>
+        <name lang="hr">Membranski aktuator</name>
+        <name lang="hu">Membrán működtető</name>
+        <name lang="it">Attuatore a membrana</name>
+        <name lang="ja">ダイヤフラムアクチュエータ</name>
+        <name lang="mn">Диафрагмын идэвхжүүлэгч</name>
+        <name lang="nb">Membranaktuator</name>
+        <name lang="nl">Membraanactuator:</name>
+        <name lang="pl">Siłownik membranowy</name>
+        <name lang="pt">Atuador de diafragma</name>
+        <name lang="pt_br">Atuador de diafragma</name>
+        <name lang="ro">Servomotor cu diafragmă</name>
+        <name lang="ru">Мембранный привод</name>
+        <name lang="sl">Membranski aktuator</name>
+        <name lang="sr">Мембрански актуатор</name>
+        <name lang="tr">diyafram aktüatörü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="50" length2="1.5" x2="50" end1="none" end2="none" length1="1.5" y2="-5"/>
+        <dynamic_text rotation="0" y="-30" z="2" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{f298e455-a295-413b-9314-fe7a0fed84b8}" x="-10" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="-10" length2="1.5" x2="-10" end1="none" end2="none" length1="1.5" y2="-5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" antialias="false" x1="0" length2="1.5" x2="40" end1="none" end2="none" length1="1.5" y2="-5"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="true" width="20" angle="-180" x="30" height="20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" antialias="false" x1="-10" length2="1.5" x2="50" end1="none" end2="none" length1="1.5" y2="15"/>
+        <arc start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="true" width="20" angle="-180" x="-10" height="20"/>
+        <polygon y4="15" x4="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="20" y1="15" antialias="true" x1="18" x2="22" y2="15" y3="11"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{1129e77a-f0bd-41f4-acd4-deb39cc06314}" x="20"/>
+    </description>
+</definition>

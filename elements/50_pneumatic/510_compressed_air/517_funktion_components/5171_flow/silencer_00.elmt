@@ -1,0 +1,45 @@
+<definition link_type="simple" width="10" version="0.90" type="element" hotspot_x="5" hotspot_y="7" height="30">
+    <uuid uuid="{f27e047a-4857-4025-a219-cdea0fca2eb9}"/>
+    <names>
+        <name lang="ar">كاتم صوت هوائي</name>
+        <name lang="ca">Silenciador pneumàtic</name>
+        <name lang="cs">Pneumatický tlumič</name>
+        <name lang="da">Pneumatisk lyddæmper</name>
+        <name lang="de">Pneumatischer Schalldämpfer</name>
+        <name lang="el">Πνευματικός σιγαστήρας</name>
+        <name lang="en">Pneumatic silencer</name>
+        <name lang="es">Silenciador neumático</name>
+        <name lang="fr">Silencieux pneumatique</name>
+        <name lang="hr">Pneumatski prigušivač</name>
+        <name lang="hu">Pneumatikus hangtompító</name>
+        <name lang="it">Silenziatore pneumatico</name>
+        <name lang="ja">空気圧サイレンサー</name>
+        <name lang="mn">Пневматик дуу намсгагч</name>
+        <name lang="nb">Pneumatisk lyddemper</name>
+        <name lang="nl">Pneumatische geluiddemper</name>
+        <name lang="pl">Tłumik pneumatyczny</name>
+        <name lang="pt">Silenciador pneumático</name>
+        <name lang="pt_br">Silenciador pneumático</name>
+        <name lang="ro">Amortizor pneumatic</name>
+        <name lang="ru">Пневматический глушитель</name>
+        <name lang="sl">Pnevmatski dušilec zvoka</name>
+        <name lang="sr">Пнеуматски пригушивач</name>
+        <name lang="tr">pnömatik susturucu</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="0" x1="-3" y1="10" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" antialias="false"/>
+        <line x2="0" x1="0" y1="2.51492" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4.51492" antialias="false"/>
+        <line x2="3" x1="0" y1="13" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="13" antialias="false"/>
+        <line x2="3" x1="0" y1="7" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7" antialias="false"/>
+        <polygon x2="3" x1="3" x4="-3" y4="15" x5="-3" y1="5" x3="-2" y5="5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15" antialias="false" y3="15"/>
+        <polygon x2="2" x1="-2" y1="15" x3="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15" antialias="false" y3="18"/>
+        <dynamic_text y="-1" uuid="{13008e3b-7eb3-433c-8ee6-99415855a826}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" x="-13" rotation="0" Valignment="AlignTop" z="9" keep_visual_rotation="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="0" uuid="{8275fc25-a93f-4b5f-bd7a-02e9e48f0c4f}" name="" orientation="n" x="0" type="Generic"/>
+    </description>
+</definition>

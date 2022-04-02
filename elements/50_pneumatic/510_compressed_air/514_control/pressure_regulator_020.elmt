@@ -1,0 +1,61 @@
+<definition height="70" type="element" hotspot_x="33" link_type="simple" width="60" hotspot_y="34" version="0.90">
+    <uuid uuid="{a83d7983-da23-48f2-b4dc-00ec8fbde4dc}"/>
+    <names>
+        <name lang="ar">منظم ضغط يدوي</name>
+        <name lang="ca">Regulador manual de pressió</name>
+        <name lang="cs">Manuální regulátor tlaku</name>
+        <name lang="da">Manuel trykregulator</name>
+        <name lang="de">Druckregler manuell</name>
+        <name lang="el">Χειροκίνητος ρυθμιστής πίεσης</name>
+        <name lang="en">Manual pressure regulator</name>
+        <name lang="es">Regulador de presión manual</name>
+        <name lang="fr">Régulateur de pression manuel</name>
+        <name lang="hr">Ručni regulator tlaka</name>
+        <name lang="hu">Manuális nyomásszabályozó</name>
+        <name lang="it">Regolatore di pressione manuale</name>
+        <name lang="ja">手動圧力調整器</name>
+        <name lang="mn">Гарын авлагын даралт зохицуулагч</name>
+        <name lang="nb">Manuell trykkregulator</name>
+        <name lang="nl">Handmatige drukregelaar</name>
+        <name lang="pl">Ręczny regulator ciśnienia</name>
+        <name lang="pt">Regulador de pressão manual</name>
+        <name lang="pt_br">Regulador de pressão manual</name>
+        <name lang="ro">Regulator manual de presiune</name>
+        <name lang="ru">Ручной регулятор давления</name>
+        <name lang="sl">Ročni regulator tlaka</name>
+        <name lang="sr">Ручни регулатор притиска</name>
+        <name lang="tr">Manuel basınç regülatörü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="UserText" y="-26" frame="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,50,0,0,0,0,0" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" x="-2" text_width="-1" rotation="0" z="1" keep_visual_rotation="false">
+            <text>2</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="11" frame="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,50,0,0,0,0,0" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" x="-13" text_width="-1" rotation="0" z="1" keep_visual_rotation="false">
+            <text>1</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" y="0" frame="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" x="20" text_width="-1" rotation="0" z="1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="11" frame="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,50,0,0,0,0,0" uuid="{301d1b19-2319-4740-8c35-1ebc1b6f33ac}" x="8" text_width="-1" rotation="0" z="1" keep_visual_rotation="false">
+            <text>3</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y2="19" x3="8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y3="15" x2="10" x4="12" y1="15" y4="15" x1="12"/>
+        <polygon y2="9.5" x3="-10" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="true" y3="14.5" x2="-8" x4="-12" y1="9.5" y4="9.5" x1="-12"/>
+        <polygon y2="-7" x3="18" style="line-style:normal;line-weight:normal;filling:none;color:black" y6="-7" antialias="false" y3="-13" y7="-12.5771" x2="17" x4="20" x7="24.1732" y1="-12.6984" y5="-13" y4="-7" x5="21" x6="23" x1="15.1149" closed="false"/>
+        <line y2="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="-10" y1="11" x1="-10"/>
+        <rect y="-15" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" x="-15" width="30" ry="0"/>
+        <line y2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="0" y1="-30" x1="0"/>
+        <polygon y2="-9.5" x3="-10" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="true" y3="-14.5" x2="-12" x4="-8" y1="-9.5" y4="-9.5" x1="-8"/>
+        <line y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="-10" y1="15" x1="-10"/>
+        <polygon y2="-25" x3="-30" style="line-style:dotted;line-weight:normal;filling:none;color:black" antialias="false" y3="-25" x2="-10" x4="-30" y1="-15" y5="-10" y4="-10" x5="-15" x1="0" closed="false"/>
+        <terminal y="-30" name="" type="Generic" uuid="{82f67b50-2f71-42c4-8ba6-a890cf9b525d}" x="0" orientation="n"/>
+        <terminal y="30" name="" type="Generic" uuid="{d5ff4a09-864f-40d5-961a-c637a98e74d8}" x="-10" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,47 @@
+<definition hotspot_x="60" width="110" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{7041b319-5bff-4ecb-86ff-9bc31ee85ba7}"/>
+    <names>
+        <name lang="ar">قضيب مكبس مزدوج الفعل على كلا الجانبين</name>
+        <name lang="ca">Doble efecte + biela a banda i banda</name>
+        <name lang="cs">Dvojčinné + pístnice na obou stranách</name>
+        <name lang="da">Dobbeltvirkende + stempelstang på begge sider</name>
+        <name lang="de">Doppeltwirkend + beidseitige Kolbenstange</name>
+        <name lang="el">Διπλής δράσης + ράβδος εμβόλου και στις δύο πλευρές</name>
+        <name lang="en">Double-acting + piston rod on both sides</name>
+        <name lang="es">Doble efecto + vástago en ambos lados</name>
+        <name lang="fr">Double effet + tige de piston des deux côtés</name>
+        <name lang="hr">Dvostrano djelovanje + klipnjača s obje strane</name>
+        <name lang="hu">Kettős működésű + dugattyúrúd mindkét oldalon</name>
+        <name lang="it">Doppio effetto + stelo pistone su entrambi i lati</name>
+        <name lang="ja">両側に複動式+ピストンロッド</name>
+        <name lang="mn">Хоёр талдаа давхар үйлдэлтэй + поршений саваа</name>
+        <name lang="nb">Dobbeltvirkende + stempelstang på begge sider</name>
+        <name lang="nl">Dubbelwerkend + zuigerstang aan beide zijden</name>
+        <name lang="pl">Dwustronnego działania + tłoczysko po obu stronach</name>
+        <name lang="pt">Dupla ação + haste do pistão em ambos os lados</name>
+        <name lang="pt_br">Dupla ação + haste do pistão em ambos os lados</name>
+        <name lang="ro">Dubla actiune + tija piston pe ambele parti</name>
+        <name lang="ru">Двустороннего действия + поршневой шток с обеих сторон</name>
+        <name lang="sl">Dvostransko delovanje + batnica na obeh straneh</name>
+        <name lang="sr">Двострано дејство + клипњача са обе стране</name>
+        <name lang="tr">Her iki tarafta çift etkili + piston kolu</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-29" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="7" x="-9" height="20"/>
+        <polygon y4="7" x4="-56" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-9" y1="3" antialias="false" x1="-56" x2="-9" closed="false" y2="3" y3="7"/>
+        <polygon y4="-5" x4="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-9" y1="7" x6="-33" antialias="true" x1="-33" x2="-33" y6="3" closed="false" x5="-33" y2="15" y3="15" y5="-5"/>
+        <polygon y4="15" x4="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="20" y1="15" antialias="true" x1="18" x2="22" y2="15" y3="11"/>
+        <polygon y4="7" x4="46" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-2" y1="3" antialias="false" x1="46" x2="-2" closed="false" y2="3" y3="7"/>
+        <polygon y4="-5" x4="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-2" y1="7" x6="23" antialias="true" x1="23" x2="23" y6="3" closed="false" x5="23" y2="15" y3="15" y5="-5"/>
+        <polygon y4="15" x4="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-30" y1="15" antialias="true" x1="-32" x2="-28" y2="15" y3="11"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{8f3be32e-851a-427c-a68d-b241257f983c}" x="20"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}" x="-30"/>
+    </description>
+</definition>

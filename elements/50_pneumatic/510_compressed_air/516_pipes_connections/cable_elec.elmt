@@ -1,0 +1,38 @@
+<definition height="20" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="0">
+    <uuid uuid="{43bc9f46-d7b4-48cf-b3f3-8d430f311c7f}"/>
+    <names>
+        <name lang="ar">الكابلات الكهربائية</name>
+        <name lang="ca">cable elèctric</name>
+        <name lang="cs">elektrický kabel</name>
+        <name lang="da">elektrisk kabel</name>
+        <name lang="de">Stromkabel</name>
+        <name lang="el">ηλεκτρικό καλώδιο</name>
+        <name lang="en">electric cable</name>
+        <name lang="es">cable eléctrico</name>
+        <name lang="fr">câble électrique</name>
+        <name lang="hr">električni kabel</name>
+        <name lang="hu">elektromos kábel</name>
+        <name lang="it">cavo elettrico</name>
+        <name lang="ja">電気ケーブル</name>
+        <name lang="mn">цахилгаан кабель</name>
+        <name lang="nb">elektrisk kabel</name>
+        <name lang="nl">elektrische kabel</name>
+        <name lang="pl">kabel elektryczny</name>
+        <name lang="pt">cabo elétrico</name>
+        <name lang="pt_br">cabo elétrico</name>
+        <name lang="ro">cablu electric</name>
+        <name lang="ru">электрический кабель</name>
+        <name lang="sl">električni kabel</name>
+        <name lang="sr">електрични кабл</name>
+        <name lang="tr">elektrik kablosu</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-12" tagg="label" y="-3.5" rotate="true" text="_" size="7"/>
+        <polygon y1="15" closed="false" x3="5" y4="5" x1="6" y3="5" x4="11" x2="0" y2="15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="-10" end1="none" x2="20" length1="1.5" y2="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="20" y="10" orientation="e"/>
+        <terminal x="-10" y="10" orientation="w"/>
+    </description>
+</definition>

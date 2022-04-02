@@ -1,0 +1,30 @@
+<definition version="0.90" link_type="simple" type="element" hotspot_x="34" width="60" height="30" hotspot_y="15">
+    <uuid uuid="{29323f34-4ac4-4f97-a898-efd5e99ceec6}"/>
+    <names>
+        <name lang="el">Ταχυσύνδεσμος</name>
+        <name lang="de">Schnellanschluss geschlossen</name>
+        <name lang="en">Quick Connect</name>
+        <name lang="pl">Szybkozłączka bez mechanicznie otwieranych zaworów zwrotnych - połączona</name>
+        <name lang="nl">Snelkoppeling</name>
+        <name lang="fr">Raccord rapide</name>
+        <name lang="cs">Rychlé spojení</name>
+        <name lang="ar">رابط سريع</name>
+        <name lang="it">Raccordo rapido</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="-23" frame="false" Halignment="AlignLeft" uuid="{6bd58f6c-7abd-46e2-af3a-17aeb981feaa}" Valignment="AlignTop" z="1" rotation="0" text_width="-1" y="-28.95" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x2="-10" y1="-5" x3="-15" y3="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="-15" y2="0"/>
+        <rect x="-23" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="-10" ry="0" width="36" height="20"/>
+        <polygon x2="0" y1="5" x3="5" y3="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x1="5" y2="0"/>
+        <line x2="-5" end2="none" length1="1.5" y1="-2" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" y2="2"/>
+        <line x2="20" end2="none" length1="1.5" y1="0" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" y2="0"/>
+        <terminal x="-30" uuid="{8b08f524-7484-4ee1-a204-fbd75a878db1}" name="" orientation="w" y="0" type="Generic"/>
+        <terminal x="20" uuid="{7e27dd9f-a4a4-46f8-8696-2960ddaf2cba}" name="" orientation="e" y="0" type="Generic"/>
+    </description>
+</definition>

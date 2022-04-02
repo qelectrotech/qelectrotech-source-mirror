@@ -1,0 +1,46 @@
+<definition type="element" link_type="simple" hotspot_x="34" hotspot_y="10" height="20" version="0.90" width="70">
+    <uuid uuid="{347d7884-39e0-4af5-9e86-4af17bb17727}"/>
+    <names>
+        <name lang="ar">صمام خانق قابل للتعديل</name>
+        <name lang="ca">Vàlvula d'acceleració regulable</name>
+        <name lang="cs">Nastavitelný škrticí ventil</name>
+        <name lang="da">Justerbar drosselventil</name>
+        <name lang="de">Einstellbare Drosselklappe</name>
+        <name lang="el">Ρυθμιζόμενη βαλβίδα γκαζιού</name>
+        <name lang="en">Adjustable throttle valve</name>
+        <name lang="es">Válvula de mariposa ajustable</name>
+        <name lang="fr">Papillon des gaz réglable</name>
+        <name lang="hr">Podesivi ventil za gas</name>
+        <name lang="hu">Állítható fojtószelep</name>
+        <name lang="it">Valvola a farfalla regolabile</name>
+        <name lang="ja">調整可能なスロットルバルブ</name>
+        <name lang="mn">Тохируулах тохируулагч хавхлаг</name>
+        <name lang="nb">Justerbar strupeventil</name>
+        <name lang="nl">Verstelbare gasklep</name>
+        <name lang="pl">Regulowany zawór dławiący</name>
+        <name lang="pt">Válvula de aceleração ajustável</name>
+        <name lang="pt_br">Válvula de aceleração ajustável</name>
+        <name lang="ro">Supapă de accelerație reglabilă</name>
+        <name lang="ru">Регулируемый дроссельный клапан</name>
+        <name lang="sl">Nastavljiv dušilni ventil</name>
+        <name lang="sr">Подесиви вентил за гас</name>
+        <name lang="tr">Ayarlanabilir gaz kelebeği</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Valignment="AlignTop" x="28" z="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" y="-25.95" uuid="{7f79e76f-8864-49b7-a716-1372924b9246}" text_width="-1" rotation="0" keep_visual_rotation="false" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x4="4" antialias="true" y1="-6" y3="-8" y2="-4" y4="-6" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="8" x2="6" x1="4"/>
+        <arc angle="60" antialias="true" x="-20" y="2" style="line-style:normal;line-weight:normal;filling:none;color:black" start="60" height="20" width="40"/>
+        <line end2="none" antialias="false" length1="1.5" y1="0" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" length2="1.5" end1="none" x1="-30"/>
+        <line end2="none" antialias="false" length1="1.5" y1="8" y2="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5" length2="1.5" end1="none" x1="-8"/>
+        <arc angle="-60" antialias="true" x="-20" y="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-60" height="20" width="40"/>
+        <polygon x4="1" y7="-8" antialias="false" y1="-2" y6="-8" y5="-8" x7="-3" x6="3" y3="-8" y2="-8" y4="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="1" x2="-1" x5="1" x1="-1" closed="false"/>
+        <terminal x="30" name="" type="Generic" y="0" uuid="{dbde988d-7c2f-4a81-a222-2a1c098788bc}" orientation="e"/>
+        <terminal x="-30" name="" type="Generic" y="0" uuid="{aab83c28-d1ed-45e0-af11-1939638974c5}" orientation="w"/>
+    </description>
+</definition>

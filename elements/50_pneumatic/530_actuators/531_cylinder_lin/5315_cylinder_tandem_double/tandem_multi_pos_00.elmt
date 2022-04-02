@@ -1,0 +1,62 @@
+<definition hotspot_x="20" width="130" link_type="simple" hotspot_y="21" type="element" version="0.90" height="40">
+    <uuid uuid="{759f8f95-5fbf-42eb-ac88-d83e526c3bc5}"/>
+    <names>
+        <name lang="ar">ترادف اسطوانة متعددة الموقف</name>
+        <name lang="ca">Cilindre tàndem de múltiples posicions</name>
+        <name lang="cs">Tandemový válec s více polohami</name>
+        <name lang="da">Tandem cylinder flere positioner</name>
+        <name lang="de">Tandemzylinder mehrfache Position</name>
+        <name lang="el">Διαδοχικός κύλινδρος πολλαπλών θέσεων</name>
+        <name lang="en">Tandem cylinder multiple position</name>
+        <name lang="es">Cilindro tándem de múltiples posiciones</name>
+        <name lang="fr">Cylindre tandem multipositions</name>
+        <name lang="hr">Tandem cilindar više pozicija</name>
+        <name lang="hu">Tandem henger többállású</name>
+        <name lang="it">Cilindro tandem a più posizioni</name>
+        <name lang="ja">タンデムシリンダーマルチポジション</name>
+        <name lang="mn">Тандем цилиндрийн олон байрлал</name>
+        <name lang="nb">Tandem sylinder flere posisjoner</name>
+        <name lang="nl">Tandemcilinder meerdere posities</name>
+        <name lang="pl">Wielopozycyjny cylinder tandemowy</name>
+        <name lang="pt">Cilindro tandem de várias posições</name>
+        <name lang="pt_br">Cilindro tandem de várias posições</name>
+        <name lang="ro">Cilindru tandem cu poziții multiple</name>
+        <name lang="ru">Многопозиционный тандемный цилиндр</name>
+        <name lang="sl">Tandemski cilinder z več položaji</name>
+        <name lang="sr">Тандем цилиндар са више позиција</name>
+        <name lang="tr">Tandem silindir çoklu konum</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y4="5" x4="38" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="40" y1="5" antialias="true" x1="38" x2="42" y2="5" y3="1"/>
+        <dynamic_text rotation="0" y="-36" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="51" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y4="-7" x4="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="27" y1="-3" antialias="false" x1="-18" x2="27" closed="false" y2="-3" y3="-7"/>
+        <polygon y4="5" x4="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="45" y1="-7" x6="-12" antialias="true" x1="-12" x2="-12" y6="-3" closed="false" x5="-12" y2="-15" y3="-15" y5="5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" antialias="false" x1="27" length2="1.5" x2="41" end1="none" end2="none" length1="1.5" y2="0"/>
+        <polygon y4="5" x4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-10" y1="5" antialias="true" x1="-12" x2="-8" y2="5" y3="1"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" rx="0" antialias="false" width="3" x="27" height="8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" antialias="false" x1="49" length2="1.5" x2="63" end1="none" end2="none" length1="1.5" y2="-11"/>
+        <polygon x17="33" x12="32" x1="34" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="34" y8="-9" y11="-4" x2="34" y13="-1" y17="-9" y4="-1" x10="33" x11="33" x15="34" x7="33" x16="34" x9="32" y3="-9" antialias="false" y1="-1" x8="32" y5="-1" y7="-9" x3="34" y14="-1" y10="-6" x6="33" closed="false" y15="-1" y16="-9" y6="-1" x5="34" y2="-9" x13="32" y9="-7" y12="-3" x14="34"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" rx="0" antialias="false" width="3" x="60" height="8"/>
+        <polygon y4="-9.9757" x4="27.0243" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="25.0243" y1="-9.9757" antialias="true" x1="27.0243" x2="29.0243" y2="-11.9757" y3="-13.9757"/>
+        <polygon x17="57" x12="58" x1="56" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="56" y8="-1" y11="-6" x2="56" y13="-9" y17="-1" y4="-9" x10="57" x11="57" x15="56" x7="57" x16="56" x9="58" y3="-1" antialias="false" y1="-9" x8="58" y5="-9" y7="-1" x3="56" y14="-9" y10="-4" x6="57" closed="false" y15="-9" y16="-1" y6="-9" x5="56" y2="-1" x13="58" y9="-3" y12="-7" x14="56"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" rx="0" antialias="false" width="3" x="36" height="8"/>
+        <polygon y4="-12" x4="62" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="66" y1="-12" antialias="true" x1="62" x2="64" y2="-10" y3="-14"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" rx="0" antialias="false" width="6" x="30" height="20"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" rx="0" antialias="false" width="3" x="51" height="8"/>
+        <polygon y4="5" x4="98" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="100" y1="5" antialias="true" x1="98" x2="102" y2="5" y3="1"/>
+        <polygon y4="-3" x4="108" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="63" y1="-7" antialias="false" x1="108" x2="63" closed="false" y2="-7" y3="-3"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" rx="0" antialias="false" width="6" x="54" height="20"/>
+        <polygon y4="-15" x4="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="45" y1="-3" x6="102" antialias="true" x1="102" x2="102" y6="-7" closed="false" x5="102" y2="5" y3="5" y5="-15"/>
+        <polygon y4="5" x4="48" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="50" y1="5" antialias="true" x1="48" x2="52" y2="5" y3="1"/>
+        <terminal y="10" name="" type="Generic" orientation="s" uuid="{6325a5c3-d81a-4e75-8e43-18f03a306101}" x="50"/>
+        <terminal y="10" name="" type="Generic" orientation="s" uuid="{a9395804-6efb-49da-b8f5-1513ec9f268d}" x="40"/>
+        <terminal y="10" name="" type="Generic" orientation="s" uuid="{eb0fa37a-6c0f-4166-90a0-278772f9a8f0}" x="100"/>
+        <terminal y="10" name="" type="Generic" orientation="s" uuid="{510cd75c-915e-45b2-839c-214a3c6559df}" x="-10"/>
+    </description>
+</definition>

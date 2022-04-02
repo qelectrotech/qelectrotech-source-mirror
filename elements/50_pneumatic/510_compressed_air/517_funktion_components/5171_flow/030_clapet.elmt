@@ -1,0 +1,47 @@
+<definition height="30" type="element" width="70" link_type="simple" version="0.90" hotspot_y="26" hotspot_x="24">
+    <uuid uuid="{f852c2df-ab3f-44c6-a1bf-63a962ef6f4d}"/>
+    <names>
+        <name lang="ar">صمام ذو أتجاه واحد</name>
+        <name lang="ca">Vàlvula antiretorn</name>
+        <name lang="cs">Zpětný ventil</name>
+        <name lang="da">Kontraventil</name>
+        <name lang="de">Rückschlagventil</name>
+        <name lang="el">Βαλβίδα αντεπιστροφής</name>
+        <name lang="en">Non-return valve</name>
+        <name lang="es">Válvula de retención</name>
+        <name lang="fr">Clapet anti-retour</name>
+        <name lang="hr">Nepovratni ventil</name>
+        <name lang="hu">Visszacsapó szelep</name>
+        <name lang="it">Valvola di non ritorno</name>
+        <name lang="ja">逆止弁</name>
+        <name lang="mn">Буцах хавхлага</name>
+        <name lang="nb">Tilbakeslagsventil</name>
+        <name lang="nl">Terugslagklep</name>
+        <name lang="pl">Zawór zwrotny</name>
+        <name lang="pt">Válvula de retenção</name>
+        <name lang="pt_br">Válvula de retenção</name>
+        <name lang="ro">Supapă antiretur</name>
+        <name lang="ru">Обратный клапан</name>
+        <name lang="sl">Nepovratni ventil</name>
+        <name lang="sr">Не Повратни вентил</name>
+        <name lang="tr">çek valf</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect height="20" rx="0" width="40" ry="0" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="false"/>
+        <dynamic_text Halignment="AlignLeft" text_from="ElementInfo" text_width="-1" x="-10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{9af06fb5-5c6a-4380-b5ef-9b4364f8bd04}" frame="false" rotation="0" Valignment="AlignTop" y="-45" z="2" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="-10" end1="none" length1="1.5" length2="1.5" y1="-10" x1="35" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="15" end2="none"/>
+        <line y2="-10" end1="none" length1="1.5" length2="1.5" y1="-10" x1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-16" end2="none"/>
+        <polygon y2="-10" y3="-15" y1="-5" x3="10" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x2="15" closed="false"/>
+        <circle diameter="6" x="7" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-13" antialias="true"/>
+        <polygon y2="-16" y3="-18" y1="-16" x3="-20" x1="-10" style="line-style:dashed;line-weight:normal;filling:none;color:black" antialias="false" x2="-20" closed="false"/>
+        <terminal orientation="e" type="Generic" x="40" uuid="{494066a7-844c-4ab8-ba59-ad7b0c34f913}" name="" y="-10"/>
+        <terminal orientation="n" type="Generic" x="-20" uuid="{b5e792f9-cfeb-4caf-adb2-775a0a4f5933}" name="" y="-20"/>
+        <terminal orientation="w" type="Generic" x="-20" uuid="{dfd8e8bc-8144-46c4-95d6-aaa3182a2347}" name="" y="-10"/>
+    </description>
+</definition>

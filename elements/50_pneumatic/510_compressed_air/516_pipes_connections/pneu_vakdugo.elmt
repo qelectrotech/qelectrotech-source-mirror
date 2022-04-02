@@ -1,0 +1,38 @@
+<definition version="0.90" link_type="simple" type="element" hotspot_x="15" width="30" height="40" hotspot_y="21">
+    <uuid uuid="{6b48771e-eef3-4a4e-af30-6c4551460d48}"/>
+    <names>
+        <name lang="ar">المكونات الهوائية</name>
+        <name lang="ca">tap d'extrem pneumàtic</name>
+        <name lang="cs">pneumatická koncová zástrčka</name>
+        <name lang="da">pneumatisk endeprop</name>
+        <name lang="de">pneumatischer Endstopfen</name>
+        <name lang="el">πνευματικό τερματικό βύσμα</name>
+        <name lang="en">pneumatic end plug</name>
+        <name lang="es">tapón neumático</name>
+        <name lang="fr">bouchon pneumatique</name>
+        <name lang="hr">pneumatski krajnji čep</name>
+        <name lang="hu">pneumatikus végdugó</name>
+        <name lang="it">tappo terminale pneumatico</name>
+        <name lang="ja">空気圧エンドプラグ</name>
+        <name lang="mn">хийн төгсгөлийн залгуур</name>
+        <name lang="nb">pneumatisk endeplugg</name>
+        <name lang="nl">pneumatische eindplug</name>
+        <name lang="pl">pneumatyczny korek końcowy</name>
+        <name lang="pt">bujão de extremidade pneumático</name>
+        <name lang="pt_br">bujão de extremidade pneumático</name>
+        <name lang="ro">dopul de capăt pneumatic</name>
+        <name lang="ru">пневматическая торцевая заглушка</name>
+        <name lang="sl">pnevmatski končni čep</name>
+        <name lang="sr">пнеуматски крајњи чеп</name>
+        <name lang="tr">pnömatik uç tapası</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line x2="0" end2="none" length1="1.5" y1="6" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y2="-14"/>
+        <line x2="-6" end2="none" length1="1.5" y1="1" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="6" y2="-11"/>
+        <line x2="-6" end2="none" length1="1.5" y1="-11" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="6" y2="1"/>
+        <line x2="9" end2="none" length1="1.5" y1="-5" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" y2="-5"/>
+        <terminal x="0" uuid="{e3786cdc-61fb-418b-949e-e3ba4273fa6c}" name="" orientation="s" y="10" type="Generic"/>
+    </description>
+</definition>

@@ -1,0 +1,46 @@
+<definition type="element" width="110" hotspot_x="37" link_type="simple" hotspot_y="11" version="0.90" height="40">
+    <uuid uuid="{09b57877-717a-4470-b56b-223db643504f}"/>
+    <names>
+        <name lang="ar">التمثيل المفرد + الربيع + المغناطيس</name>
+        <name lang="ca">Simple efecte + molla + imant</name>
+        <name lang="cs">Jednočinné + pružina + magnet</name>
+        <name lang="da">Enkeltvirkende + fjeder + magnet</name>
+        <name lang="de">Einfachwirkend + Feder + Magnet</name>
+        <name lang="el">Μονής δράσης + ελατήριο + μαγνήτης</name>
+        <name lang="en">Single acting + spring + magnet</name>
+        <name lang="es">Simple efecto + resorte + imán</name>
+        <name lang="fr">Simple effet + ressort + aimant</name>
+        <name lang="hr">Jednostruko djelovanje + opruga + magnet</name>
+        <name lang="hu">Egyszeres működésű + rugó + mágnes</name>
+        <name lang="it">Semplice effetto + molla + magnete</name>
+        <name lang="ja">単動+スプリング+マグネット</name>
+        <name lang="mn">Нэг үйлдэлтэй + пүрш + соронз</name>
+        <name lang="nb">Enkeltvirkende + fjær + magnet</name>
+        <name lang="nl">Enkelwerkend + veer + magneet</name>
+        <name lang="pl">Jednostronnego działania + sprężyna + magnes</name>
+        <name lang="pt">Simples ação + mola + ímã</name>
+        <name lang="pt_br">Simples ação + mola + ímã</name>
+        <name lang="ro">Simpla actiune + arc + magnet</name>
+        <name lang="ru">Одностороннего действия + пружина + магнит</name>
+        <name lang="sl">Enosmerno delovanje + vzmet + magnet</name>
+        <name lang="sr">Једноструко дејство + опруга + магнет</name>
+        <name lang="tr">Tek etkili + yay + mıknatıs</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" rotation="0" y="-25.95" Valignment="AlignTop" z="1" text_width="-1" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y13="1" x7="14" y9="7" x10="14" y4="1" y17="9" y16="9" x9="15" x6="14" y14="1" y2="9" x16="12" y8="9" y3="9" x1="12" closed="false" y12="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" y11="4" x13="15" y7="9" y1="1" x4="13" y15="1" x15="12" x12="15" antialias="false" y5="1" x14="13" x17="14" y6="1" x5="13" x11="14" x3="13" x8="15" y10="6"/>
+        <polygon y13="2.15261" x7="-7" y9="14" x10="7" y4="-4" x9="3" x6="-11" y2="-4" y8="-4" y3="14" x1="-32.6472" closed="false" y12="-2.82811" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" y11="2.49741" x13="9.61787" y7="14" y1="2.14371" x4="-20" x12="7.50778" antialias="false" y5="14" y6="-4" x5="-16" x11="9.77012" x3="-26" x8="-2" y10="-4"/>
+        <polygon antialias="false" closed="false" y1="3" x4="69" y2="3" x2="17" x3="17" y3="7" y4="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="69"/>
+        <rect width="7" antialias="false" y="-5" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" height="20"/>
+        <polygon antialias="true" y5="-5" closed="false" y6="3" y1="7" x4="-33" y2="15" x5="23" x2="23" x3="-33" y3="15" y4="-5" x6="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <polygon antialias="true" y1="15" x4="18" y2="15" x2="22" x3="20" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="18"/>
+        <polygon antialias="true" y1="15" x4="-28" y2="19" x2="-30" x3="-32" y3="15" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-28"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}" x="20"/>
+    </description>
+</definition>

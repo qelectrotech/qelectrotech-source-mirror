@@ -1,0 +1,46 @@
+<definition version="0.90" link_type="simple" height="30" hotspot_y="25" type="element" width="90" hotspot_x="44">
+    <uuid uuid="{0dd8a5cb-9277-47db-a64c-2c62531b216f}"/>
+    <names>
+        <name lang="ar">مجمع الهواء المضغوط وصلتين</name>
+        <name lang="ca">Acumulador d'aire comprimit dues connexions</name>
+        <name lang="cs">Akumulátor stlačeného vzduchu dvě připojení</name>
+        <name lang="da">Trykluftakkumulator to tilslutninger</name>
+        <name lang="de">Druckluftspeicher zwei Anschlüsse</name>
+        <name lang="el">Συσσωρευτής πεπιεσμένου αέρα δύο συνδέσεων</name>
+        <name lang="en">Compressed air accumulator two connections</name>
+        <name lang="es">Acumulador de aire comprimido dos conexiones</name>
+        <name lang="fr">Accumulateur d'air comprimé deux connexions</name>
+        <name lang="hr">Akumulator komprimiranog zraka dva priključka</name>
+        <name lang="hu">Sűrített levegős akkumulátor két csatlakozással</name>
+        <name lang="it">Accumulatore ad aria compressa due connessioni</name>
+        <name lang="ja">圧縮空気アキュムレータの2つの接続</name>
+        <name lang="mn">Шахсан агаарын аккумлятор хоёр холболттой</name>
+        <name lang="nb">Trykkluftakkumulator to koblinger</name>
+        <name lang="nl">Persluchtaccumulator twee aansluitingen</name>
+        <name lang="pl">Zasobnik sprężonego powietrza dwa przyłącza</name>
+        <name lang="pt">Acumulador de ar comprimido duas conexões</name>
+        <name lang="pt_br">Acumulador de ar comprimido duas conexões</name>
+        <name lang="ro">Acumulator de aer comprimat doua racorduri</name>
+        <name lang="ru">Аккумулятор сжатого воздуха два соединения</name>
+        <name lang="sl">Akumulator stisnjenega zraka dva priključka</name>
+        <name lang="sr">Акумулатор компримованог ваздуха два прикључка</name>
+        <name lang="tr">Basınçlı hava akümülatörü iki bağlantı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length2="1.5" length1="1.5" y1="-10" x1="-30" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-36" y2="-10"/>
+        <dynamic_text z="1" Halignment="AlignLeft" x="-21" Valignment="AlignTop" frame="false" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" text_from="ElementInfo" y="-45" uuid="{a063b1b6-54c2-45e9-959e-15a2d2006b92}" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" length1="1.5" y1="-10" x1="36" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" y2="-10"/>
+        <line length2="1.5" length1="1.5" y1="0" x1="-20" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" y2="0"/>
+        <line length2="1.5" length1="1.5" y1="-20" x1="-20" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" y2="-20"/>
+        <arc x="9.9" angle="-180" height="20" y="-20" antialias="true" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90"/>
+        <arc x="-30" angle="-180" height="20" y="-20" antialias="true" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90"/>
+        <terminal x="-40" y="-10" name="" uuid="{68f5868f-b30c-41c2-a3d5-3b88a0f6fbd3}" type="Generic" orientation="w"/>
+        <terminal x="40" y="-10" name="" uuid="{9e6da623-508d-46d3-9527-0f71e1512900}" type="Generic" orientation="e"/>
+    </description>
+</definition>

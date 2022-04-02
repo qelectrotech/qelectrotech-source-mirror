@@ -1,0 +1,61 @@
+<definition hotspot_x="67" width="120" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{0be60b28-a6dd-4841-ba6a-1d7f468f18c6}"/>
+    <names>
+        <name lang="ar">قوة اسطوانة جنبا إلى جنب</name>
+        <name lang="ca">cilindre tàndem de potència</name>
+        <name lang="cs">silový tandemový válec</name>
+        <name lang="da">power tandem cylinder</name>
+        <name lang="de">Power-Tandemzylinder</name>
+        <name lang="el">κύλινδρος σειράς ισχύος</name>
+        <name lang="en">power tandem cylinder</name>
+        <name lang="es">Cilindro tándem de potencia</name>
+        <name lang="fr">vérin tandem de puissance</name>
+        <name lang="hr">tandemski cilindar snage</name>
+        <name lang="hu">teljesítmény tandem henger</name>
+        <name lang="it">cilindro in tandem di potenza</name>
+        <name lang="ja">パワータンデムシリンダー</name>
+        <name lang="mn">цахилгаан тандем цилиндр</name>
+        <name lang="nb">kraft tandem sylinder</name>
+        <name lang="nl">power tandem cilinder</name>
+        <name lang="pl">mocny cylinder tandemowy</name>
+        <name lang="pt">cilindro tandem de potência</name>
+        <name lang="pt_br">cilindro tandem de potência</name>
+        <name lang="ro">cilindru tandem de putere</name>
+        <name lang="ru">силовой тандемный цилиндр</name>
+        <name lang="sl">močnostni tandem cilinder</name>
+        <name lang="sr">тандемски цилиндар снаге</name>
+        <name lang="tr">güç tandem silindiri</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-25.725" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-59.5" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" antialias="false" x1="-59" length2="1.5" x2="-47" end1="none" end2="none" length1="1.5" y2="-2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" antialias="false" x1="-9" length2="1.5" x2="5" end1="none" end2="none" length1="1.5" y2="-1"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="1" height="8"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="-52" height="8"/>
+        <polygon y4="-2" x4="-49" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="-45" y1="-2" antialias="true" x1="-49" x2="-47" y2="0" y3="-4"/>
+        <polygon x17="-2" x12="-1" x1="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-3" y8="9" y11="4" x2="-3" y13="1" y17="9" y4="1" x10="-2" x11="-2" x15="-3" x7="-2" x16="-3" x9="-1" y3="9" antialias="false" y1="1" x8="-1" y5="1" y7="9" x3="-3" y14="1" y10="6" x6="-2" closed="false" y15="1" y16="9" y6="1" x5="-3" y2="9" x13="-1" y9="7" y12="3" x14="-3"/>
+        <polygon y4="-2" x4="4" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="8" y1="-2" antialias="true" x1="4" x2="6" y2="0" y3="-4"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="-58" height="8"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="3" x="-55" height="20"/>
+        <polygon y4="15" x4="38" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="40" y1="15" antialias="true" x1="38" x2="42" y2="15" y3="11"/>
+        <polygon y4="15" x4="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-20" y1="15" antialias="true" x1="-22" x2="-18" y2="15" y3="11"/>
+        <polygon y4="7" x4="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-49" y1="3" antialias="false" x1="-5" x2="-49" closed="false" y2="3" y3="7"/>
+        <polygon y4="7" x4="49" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="4" y1="3" antialias="false" x1="49" x2="4" closed="false" y2="3" y3="7"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="6" x="-5" height="20"/>
+        <polygon y4="15" x4="-62" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-60" y1="15" antialias="true" x1="-62" x2="-58" y2="15" y3="11"/>
+        <polygon y4="15" x4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-10" y1="15" antialias="true" x1="-12" x2="-8" y2="15" y3="11"/>
+        <polygon y4="3" x4="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="45" y1="3" antialias="false" x1="-15" x2="-15" closed="false" y2="-5" y3="-5"/>
+        <polygon y4="7" x4="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-15" y1="7" antialias="false" x1="45" x2="45" closed="false" y2="15" y3="15"/>
+        <polygon y4="-5" x4="-63" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-63" y1="7" x6="-15" antialias="true" x1="-15" x2="-15" y6="3" closed="false" x5="-15" y2="15" y3="15" y5="-5"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{ea5d07a2-f71a-445b-9146-e83ea494563e}" x="-20"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{f703b421-0746-452c-9354-98254d879975}" x="-10"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{731bc255-b4d9-448b-8c95-18ddd7224d37}" x="-60"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{809bf98d-d620-4d9a-bf50-d068fb5760f2}" x="40"/>
+    </description>
+</definition>

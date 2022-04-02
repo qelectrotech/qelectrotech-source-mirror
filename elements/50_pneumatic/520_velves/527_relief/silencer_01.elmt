@@ -1,0 +1,51 @@
+<definition hotspot_y="17" type="element" hotspot_x="5" version="0.90" link_type="simple" width="10" height="40">
+    <uuid uuid="{baa92e91-47dc-4027-8641-0970df65ea3b}"/>
+    <names>
+        <name lang="ar">كاتم صوت هوائي</name>
+        <name lang="ca">Silenciador pneumàtic</name>
+        <name lang="cs">Pneumatický tlumič</name>
+        <name lang="da">Pneumatisk lyddæmper</name>
+        <name lang="de">Pneumatischer Schalldämpfer</name>
+        <name lang="el">Πνευματικός σιγαστήρας</name>
+        <name lang="en">Pneumatic silencer</name>
+        <name lang="es">Silenciador neumático</name>
+        <name lang="fr">Silencieux pneumatique</name>
+        <name lang="hr">Pneumatski prigušivač</name>
+        <name lang="hu">Pneumatikus hangtompító</name>
+        <name lang="it">Silenziatore pneumatico</name>
+        <name lang="ja">空気圧サイレンサー</name>
+        <name lang="mn">Пневматик дуу намсгагч</name>
+        <name lang="nb">Pneumatisk lyddemper</name>
+        <name lang="nl">Pneumatische geluiddemper</name>
+        <name lang="pl">Tłumik pneumatyczny</name>
+        <name lang="pt">Silenciador pneumático</name>
+        <name lang="pt_br">Silenciador pneumático</name>
+        <name lang="ro">Amortizor pneumatic</name>
+        <name lang="ru">Пневматический глушитель</name>
+        <name lang="sl">Pnevmatski dušilec zvoka</name>
+        <name lang="sr">Пнеуматски пригушивач</name>
+        <name lang="tr">pnömatik susturucu</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-3" x2="0" antialias="false" end2="none" y1="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <line x1="0" x2="0" antialias="false" end2="none" y1="5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-5" end1="none" length1="1.5" length2="1.5"/>
+        <polygon x1="3" x3="-2" y5="-5" y3="5" y4="5" x2="3" x4="-3" antialias="false" y1="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5" x5="-3"/>
+        <arc x="-10.6409" angle="60.5" y="-7.50152" antialias="true" start="327.813" width="10" height="15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="0" x2="0" antialias="false" end2="none" y1="-7.48508" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5.48508" end1="none" length1="1.5" length2="1.5"/>
+        <line x1="0" x2="3" antialias="false" end2="none" y1="13" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="13" end1="none" length1="1.5" length2="1.5"/>
+        <line x1="-2" x2="2" antialias="false" end2="none" y1="2" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-2" end1="none" length1="1.5" length2="1.5"/>
+        <dynamic_text z="9" text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-13" y="-1" frame="false" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" uuid="{13008e3b-7eb3-433c-8ee6-99415855a826}" keep_visual_rotation="false" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="0" x2="3" antialias="false" end2="none" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="7" end1="none" length1="1.5" length2="1.5"/>
+        <polygon x1="3" x3="-2" y5="5" y3="15" y4="15" x2="3" x4="-3" antialias="false" y1="5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15" x5="-3"/>
+        <arc x="0.659281" angle="63.125" y="-7.25004" antialias="true" start="147.813" width="10" height="15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x1="-2" x3="0" y3="18" x2="2" antialias="false" y1="15" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15"/>
+        <polygon x1="1.87071" x3="1.67987" y3="-1.87071" x2="2" antialias="false" y1="-1.70814" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-2"/>
+        <terminal type="Generic" x="0" y="-10" name="" orientation="n" uuid="{8275fc25-a93f-4b5f-bd7a-02e9e48f0c4f}"/>
+    </description>
+</definition>

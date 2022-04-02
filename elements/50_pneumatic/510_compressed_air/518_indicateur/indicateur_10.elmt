@@ -1,0 +1,43 @@
+<definition link_type="simple" width="30" version="0.90" type="element" hotspot_x="15" hotspot_y="14" height="40">
+    <uuid uuid="{52e1a725-0f5c-4a59-a9f6-91de55e47538}"/>
+    <names>
+        <name lang="ar">ميزان الحرارة</name>
+        <name lang="ca">termòmetre</name>
+        <name lang="cs">teploměr</name>
+        <name lang="da">termometer</name>
+        <name lang="de">Thermometer</name>
+        <name lang="el">θερμόμετρο</name>
+        <name lang="en">thermometer</name>
+        <name lang="es">termómetro</name>
+        <name lang="fr">thermomètre</name>
+        <name lang="hr">termometar</name>
+        <name lang="hu">hőmérő</name>
+        <name lang="it">termometro</name>
+        <name lang="ja">温度計</name>
+        <name lang="mn">термометр</name>
+        <name lang="nb">termometer</name>
+        <name lang="nl">thermometer</name>
+        <name lang="pl">termometr</name>
+        <name lang="pt">termômetro</name>
+        <name lang="pt_br">termômetro</name>
+        <name lang="ro">termometru</name>
+        <name lang="ru">термометр</name>
+        <name lang="sl">termometer</name>
+        <name lang="sr">термометар</name>
+        <name lang="tr">termometre</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-25" uuid="{4806bc96-dfb8-41a8-98f6-340299de7cb5}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-20" rotation="0" Valignment="AlignTop" z="1" keep_visual_rotation="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="0" y1="-6" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="3" antialias="false"/>
+        <circle y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true"/>
+        <circle y="2.5" x="-1.5" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="3" antialias="true"/>
+        <line x2="0" x1="0" y1="10" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" antialias="false"/>
+        <terminal y="20" uuid="{ba0d6e00-48b3-4ca8-9f08-9b2ed8a3cc44}" name="" orientation="s" x="0" type="Generic"/>
+    </description>
+</definition>

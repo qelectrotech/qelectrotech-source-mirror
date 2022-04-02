@@ -1,0 +1,43 @@
+<definition link_type="simple" width="30" version="0.90" type="element" hotspot_x="15" hotspot_y="14" height="40">
+    <uuid uuid="{fe1bac33-8958-495d-b0ac-5e0eca3e1630}"/>
+    <names>
+        <name lang="ar">المانومتر</name>
+        <name lang="ca">Manòmetre</name>
+        <name lang="cs">Manometr</name>
+        <name lang="da">Manometer</name>
+        <name lang="de">Manometer</name>
+        <name lang="el">Μανόμετρο</name>
+        <name lang="en">Manometer</name>
+        <name lang="es">Manómetro</name>
+        <name lang="fr">Manomètre</name>
+        <name lang="hr">Manometar</name>
+        <name lang="hu">Manométer</name>
+        <name lang="it">Manometro</name>
+        <name lang="ja">圧力計</name>
+        <name lang="mn">Манометр</name>
+        <name lang="nb">Manometer</name>
+        <name lang="nl">Manometer</name>
+        <name lang="pl">Manometr</name>
+        <name lang="pt">Manômetro</name>
+        <name lang="pt_br">Manômetro</name>
+        <name lang="ro">Manometru</name>
+        <name lang="ru">Манометр</name>
+        <name lang="sl">Manometer</name>
+        <name lang="sr">Манометар</name>
+        <name lang="tr">Manometre</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-20" uuid="{2645e2af-b363-4b19-9494-2fcd9e2fbb5b}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-20" rotation="0" Valignment="AlignTop" z="1" keep_visual_rotation="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x2="-0.191492" x1="-2.57383" x4="-2.5989" y4="-0.304065" y1="-0.278988" x3="-4.89057" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-2.63624" antialias="true" y3="-4.92791"/>
+        <line x2="-2" x1="5" y1="5" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2" antialias="false"/>
+        <circle y="-10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" antialias="true"/>
+        <line x2="0" x1="0" y1="10" end1="none" length1="1.5" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" antialias="false"/>
+        <terminal y="20" uuid="{69923bbc-9b30-4cd9-97e3-0d84df98d099}" name="" orientation="s" x="0" type="Generic"/>
+    </description>
+</definition>

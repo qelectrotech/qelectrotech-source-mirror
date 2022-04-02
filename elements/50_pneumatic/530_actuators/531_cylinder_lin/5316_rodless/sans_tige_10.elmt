@@ -1,0 +1,60 @@
+<definition hotspot_x="35" width="60" link_type="simple" hotspot_y="13" type="element" version="0.90" height="50">
+    <uuid uuid="{3eb04b30-7c86-4c88-bbca-1e0a8ba7c014}"/>
+    <names>
+        <name lang="ar">أسطوانة بدون رود + فرامل محدودة على كلا الجانبين + قابل للتعديل + فرامل مغلقة عادة</name>
+        <name lang="ca">Cilindre sense vara + fre de límit a ambdós costats + regulable + fre normalment tancat</name>
+        <name lang="cs">Bezpístnicový válec + koncová brzda na obou stranách + nastavitelná + brzda normálně zavřená</name>
+        <name lang="da">Stangløs cylinder + grænsebremse på begge sider + justerbar + bremse normalt lukket</name>
+        <name lang="de">Kolbenstangenloser Zylinder + Endlagenbremse beidseitig + einstellbar + Bremse normal geschlossen</name>
+        <name lang="el">Κύλινδρος χωρίς ράβδο + οριακό φρένο και στις δύο πλευρές + ρυθμιζόμενο + φρένο κανονικά κλειστό</name>
+        <name lang="en">Rodless cylinder + limit brake on both sides + adjustable + brake normally closed</name>
+        <name lang="es">Cilindro sin vástago + freno de límite en ambos lados + ajustable + freno normalmente cerrado</name>
+        <name lang="fr">Vérin sans tige + frein de fin de course des deux côtés + réglable + frein normalement fermé</name>
+        <name lang="hr">Cilindar bez poluge + granična kočnica s obje strane + podesiva + kočnica normalno zatvorena</name>
+        <name lang="hu">Rúd nélküli henger + határfék mindkét oldalon + állítható + fék alaphelyzetben zárva</name>
+        <name lang="it">Cilindro senza stelo + freno di fine corsa su entrambi i lati + registrabile + freno normalmente chiuso</name>
+        <name lang="ja">ロッドレスシリンダー+両側のリミットブレーキ+調整可能+ブレーキは通常閉</name>
+        <name lang="mn">Саваагүй цилиндр + 2 талдаа хязгаарлах тоормос + тохируулгатай + тоормос ердийн хаалттай</name>
+        <name lang="nb">Stangløs sylinder + grensebrems på begge sider + justerbar + brems normalt lukket</name>
+        <name lang="nl">Stangloze cilinder + eindrem aan beide zijden + verstelbaar + rem normaal gesloten</name>
+        <name lang="pl">Cylinder beztłoczyskowy + hamulec krańcowy po obu stronach + regulowany + hamulec normalnie zamknięty</name>
+        <name lang="pt">Cilindro sem haste + freio limitador em ambos os lados + ajustável + freio normalmente fechado</name>
+        <name lang="pt_br">Cilindro sem haste + freio limitador em ambos os lados + ajustável + freio normalmente fechado</name>
+        <name lang="ro">Cilindru fara tija + frana de limitare pe ambele parti + reglabil + frana normal inchisa</name>
+        <name lang="ru">Бесштоковый цилиндр + концевой тормоз с обеих сторон + регулируемый + нормально закрытый тормоз</name>
+        <name lang="sl">Cilinder brez droga + končna zavora na obeh straneh + nastavljiva + normalno zaprta zavora</name>
+        <name lang="sr">Цилиндар без полуге + гранична кочница са обе стране + подесива + кочница нормално затворена</name>
+        <name lang="tr">Milsiz silindir + her iki tarafta limit freni + ayarlanabilir + fren normalde kapalı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-25.95" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" y="32" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="UserText" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-26" frame="false">
+            <text></text>
+            <info_name>quantity</info_name>
+        </dynamic_text>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="2" x="-17" height="8"/>
+        <rect ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y="26" rx="0" antialias="false" width="10" x="-25" height="2"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" antialias="false" x1="-28" length2="1.5" x2="-14" end1="none" end2="none" length1="1.5" y2="0"/>
+        <polygon y4="15" x4="-19" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-19" y1="15" antialias="false" x1="-21" x2="-21" closed="false" y2="26" y3="26"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8" rx="0" antialias="false" width="10" x="-25" height="3"/>
+        <polygon y4="-1" x4="-15" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="-11" y1="-1" antialias="true" x1="-15" x2="-13" y2="1" y3="-3"/>
+        <polygon y4="32" x4="-25" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-15" y1="16" x6="-21" antialias="true" x1="-19" x2="-15" y6="16" closed="false" x5="-25" y2="16" y3="32" y5="16"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="2" x="-25" height="8"/>
+        <polygon y4="31" x4="-15" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-18" y1="31" antialias="true" x1="-15" x2="-14.9941" y2="28.5996" y3="30"/>
+        <polygon y4="25.9277" x4="-15.0645" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-24.5742" y1="16.2422" antialias="false" x1="-24.7148" x2="-15.2402" closed="false" y2="19.0547" y3="22.1133"/>
+        <polygon y4="15" x4="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="20" y1="15" antialias="true" x1="18" x2="22" y2="15" y3="11"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="6" x="-23" height="20"/>
+        <polygon y4="-5" x4="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-33" y1="2" x6="23" antialias="true" x1="23" x2="23" y6="8" closed="false" x5="23" y2="15" y3="15" y5="-5"/>
+        <polygon y4="15" x4="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-30" y1="15" antialias="true" x1="-32" x2="-28" y2="15" y3="11"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" antialias="false" x1="-15" length2="1.5" x2="-13" end1="none" end2="none" length1="1.5" y2="30"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{25189039-3321-4e03-9969-afbf34ef8382}" x="20"/>
+        <terminal y="30" name="" type="Generic" orientation="e" uuid="{106bd366-e122-44cf-a201-88f2d2509d86}" x="-10"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{93902c03-638a-44f8-a694-200ffbbd4580}" x="-30"/>
+    </description>
+</definition>

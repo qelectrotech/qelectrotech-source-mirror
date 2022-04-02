@@ -1,0 +1,51 @@
+<definition version="0.90" type="element" link_type="simple" width="40" hotspot_x="15" hotspot_y="20" height="30">
+    <uuid uuid="{b082860a-09a6-40cb-9d6c-83a484b5d41f}"/>
+    <names>
+        <name lang="ar">اسطوانة دوارة</name>
+        <name lang="ca">cilindre giratori</name>
+        <name lang="cs">otočný válec</name>
+        <name lang="da">drejecylinder</name>
+        <name lang="de">Schwenkzylinder</name>
+        <name lang="el">περιστρεφόμενος κύλινδρος</name>
+        <name lang="en">swivel cylinder</name>
+        <name lang="es">cilindro giratorio</name>
+        <name lang="fr">cylindre pivotant</name>
+        <name lang="hr">okretni cilindar</name>
+        <name lang="hu">forgó henger</name>
+        <name lang="it">cilindro girevole</name>
+        <name lang="ja">スイベルシリンダー</name>
+        <name lang="mn">эргэдэг цилиндр</name>
+        <name lang="nb">svingbar sylinder</name>
+        <name lang="nl">zwenkcilinder</name>
+        <name lang="pl">cylinder obrotowy</name>
+        <name lang="pt">cilindro giratório</name>
+        <name lang="pt_br">cilindro giratório</name>
+        <name lang="ro">cilindru pivotant</name>
+        <name lang="ru">поворотный цилиндр</name>
+        <name lang="sl">vrtljivi cilinder</name>
+        <name lang="sr">окретни цилиндар</name>
+        <name lang="tr">döner silindir</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc start="327.75" antialias="true" angle="59.625" width="20" y="-15.5" x="-3" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="-4" x2="22" antialias="false" end1="none" y1="-4" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="0" y2="0" x4="0" x2="4" y4="-2" antialias="true" y3="2" y1="-2" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="4" x2="0" antialias="false" end1="none" y1="-15" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="0" y2="-10" x4="0" x2="4" y4="-12" antialias="true" y3="-8" y1="-12" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="269.813" antialias="true" angle="180.188" width="20" y="-15.5" x="-10" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x3="16.9733" y2="-9.30496" x4="12.769" x2="14.8276" y4="-13.3337" antialias="true" y3="-11.0336" y1="-13.3337" x1="12.7816" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <dynamic_text Valignment="AlignTop" text_from="ElementInfo" rotation="0" z="7" text_width="-1" Halignment="AlignLeft" keep_visual_rotation="true" y="-40" uuid="{b02d570c-9419-476f-95e6-dc0900d156cd}" x="-10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="16.911" y2="-1.16382" x4="12.6549" x2="14.5619" y4="2.94078" antialias="true" y3="0.579082" y1="2.94078" x1="12.6549" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="-10" x2="-5" antialias="false" end1="none" y1="-10" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="0" x2="0" antialias="false" end1="none" y1="0" x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" end2="none" length2="1.5" y2="-6" x2="22" antialias="false" end1="none" y1="-6" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="w" type="Generic" name="" y="-10" uuid="{db45f8b2-e037-45b3-8fb2-ebfe0f6879f1}" x="-10"/>
+        <terminal orientation="w" type="Generic" name="" y="0" uuid="{be518fb9-e4d1-4c59-b1b6-00f574a29310}" x="-10"/>
+    </description>
+</definition>

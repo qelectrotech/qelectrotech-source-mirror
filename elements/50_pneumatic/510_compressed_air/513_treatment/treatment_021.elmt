@@ -1,0 +1,46 @@
+<definition hotspot_y="35" width="70" hotspot_x="14" link_type="simple" type="element" height="50" version="0.90">
+    <uuid uuid="{84b3e735-092b-4cc4-8ac9-dbff4007d41c}"/>
+    <names>
+        <name lang="ar">تسخين الهواء المضغوط</name>
+        <name lang="ca">calefacció per aire comprimit</name>
+        <name lang="cs">ohřev stlačeným vzduchem</name>
+        <name lang="da">trykluft opvarmning</name>
+        <name lang="de">Drucklufterhitzung</name>
+        <name lang="el">θέρμανση πεπιεσμένου αέρα</name>
+        <name lang="en">compressed air heating</name>
+        <name lang="es">calentamiento de aire comprimido</name>
+        <name lang="fr">chauffage à air comprimé</name>
+        <name lang="hr">grijanje na komprimirani zrak</name>
+        <name lang="hu">sűrített levegős fűtés</name>
+        <name lang="it">riscaldamento ad aria compressa</name>
+        <name lang="ja">圧縮空気暖房</name>
+        <name lang="mn">шахсан агаарын халаалт</name>
+        <name lang="nb">trykkluftoppvarming</name>
+        <name lang="nl">perslucht verwarming</name>
+        <name lang="pl">ogrzewanie sprężonym powietrzem,</name>
+        <name lang="pt">aquecimento de ar comprimido</name>
+        <name lang="pt_br">aquecimento de ar comprimido</name>
+        <name lang="ro">încălzire cu aer comprimat</name>
+        <name lang="ru">отопление сжатым воздухом</name>
+        <name lang="sl">ogrevanje na stisnjen zrak</name>
+        <name lang="sr">грејање на компримовани ваздух</name>
+        <name lang="tr">basınçlı hava ısıtma</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-39.45" text_width="-1" Halignment="AlignLeft" text_from="ElementInfo" Valignment="AlignTop" uuid="{09c0d5bf-3775-4d8f-a774-82e67155eecb}" frame="false" x="-7" z="1" rotation="0" keep_visual_rotation="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" length1="1.5" end2="none" x2="20" y2="-16" y1="-29"/>
+        <line antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" length1="1.5" end2="none" x2="20" y2="9" y1="-4"/>
+        <line antialias="false" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" length1="1.5" end2="none" x2="50" y2="-10" y1="-10"/>
+        <polygon y3="-10.5" antialias="true" x1="18" style="line-style:normal;line-weight:thin;filling:black;color:black" x4="18" x3="20" y4="-15.5" x2="22" y2="-15.5" y1="-15.5"/>
+        <polygon y3="-4.5" antialias="true" x1="20" style="line-style:normal;line-weight:thin;filling:black;color:black" x4="20" x3="22" y4="-9.5" x2="18" y2="-4.5" y1="-9.5"/>
+        <polygon y3="-10" antialias="true" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="20" x5="0" x3="40" y4="10" x2="20" y2="-30" y1="-10" y5="-10"/>
+        <terminal y="-10" orientation="w" uuid="{c47180a5-4a74-43c9-b470-c45b8d5dca2a}" x="-10" type="Generic" name=""/>
+        <terminal y="-10" orientation="e" uuid="{4c8fabb4-4a89-4ade-9455-17e480eed6e0}" x="50" type="Generic" name=""/>
+    </description>
+</definition>

@@ -1,0 +1,42 @@
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
+    <uuid uuid="{31b8b88a-8d28-49b5-acee-051d03f104f2}"/>
+    <names>
+        <name lang="ar">التحكم في درجة حرارة الهواء المضغوط</name>
+        <name lang="ca">Control de temperatura de l'aire comprimit</name>
+        <name lang="cs">Regulace teploty stlačeného vzduchu</name>
+        <name lang="da">Trykluft temperaturkontrol</name>
+        <name lang="de">Druckluft Temperaturregelung</name>
+        <name lang="el">Έλεγχος θερμοκρασίας πεπιεσμένου αέρα</name>
+        <name lang="en">Compressed air temperature control</name>
+        <name lang="es">Control de temperatura del aire comprimido</name>
+        <name lang="fr">Contrôle de la température de l'air comprimé</name>
+        <name lang="hr">Regulacija temperature komprimiranog zraka</name>
+        <name lang="hu">Sűrített levegő hőmérséklet szabályozás</name>
+        <name lang="it">Controllo della temperatura dell'aria compressa</name>
+        <name lang="ja">圧縮空気温度制御</name>
+        <name lang="mn">Шахсан агаарын температурын хяналт</name>
+        <name lang="nb">Trykkluft temperaturkontroll</name>
+        <name lang="nl">Persluchttemperatuurregeling</name>
+        <name lang="pl">Kontrola temperatury sprężonego powietrza</name>
+        <name lang="pt">Controle de temperatura do ar comprimido</name>
+        <name lang="pt_br">Controle de temperatura do ar comprimido</name>
+        <name lang="ro">Controlul temperaturii aerului comprimat</name>
+        <name lang="ru">Контроль температуры сжатого воздуха</name>
+        <name lang="sl">Regulacija temperature stisnjenega zraka</name>
+        <name lang="sr">Контрола температуре компримованог ваздуха</name>
+        <name lang="tr">Basınçlı hava sıcaklık kontrolü</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="33" tagg="label" y="0.55" rotate="true" text="_" size="7"/>
+        <polygon y1="4.5" x3="20" y4="4.5" x1="18" y3="9.5" x4="18" x2="22" y2="4.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-9" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-29" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-15.5" x3="20" y4="-15.5" x1="18" y3="-10.5" x4="18" x2="22" y2="-15.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+    </description>
+</definition>

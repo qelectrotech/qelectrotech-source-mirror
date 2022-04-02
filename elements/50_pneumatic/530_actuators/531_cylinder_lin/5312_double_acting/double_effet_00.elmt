@@ -1,0 +1,45 @@
+<definition hotspot_x="37" width="70" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{4563968e-525a-44f4-a3e0-68d545760e1b}"/>
+    <names>
+        <name lang="ar">التمثيل المزدوج</name>
+        <name lang="ca">doble acció</name>
+        <name lang="cs">dvojí působení</name>
+        <name lang="da">dobbeltvirkende</name>
+        <name lang="de">Doppeltwirkend</name>
+        <name lang="el">διπλής ενέργειας</name>
+        <name lang="en">double acting</name>
+        <name lang="es">doble efecto</name>
+        <name lang="fr">double jeu</name>
+        <name lang="hr">dvostrukog djelovanja</name>
+        <name lang="hu">kettős szereplés</name>
+        <name lang="it">doppio effetto</name>
+        <name lang="ja">複動式</name>
+        <name lang="mn">давхар жүжиглэлт</name>
+        <name lang="nb">dobbeltvirkende</name>
+        <name lang="nl">dubbelwerkende</name>
+        <name lang="pl">dwustronnego działania</name>
+        <name lang="pt">dupla açao</name>
+        <name lang="pt_br">dupla açao</name>
+        <name lang="ro">cu dublă acțiune</name>
+        <name lang="ru">двойного действия</name>
+        <name lang="sl">dvojnega delovanja</name>
+        <name lang="sr">двоструког дејства</name>
+        <name lang="tr">çift ​​oyunculuk</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-25.95" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="3" x="-27" height="20"/>
+        <polygon y4="15" x4="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="20" y1="15" antialias="true" x1="18" x2="22" y2="15" y3="11"/>
+        <polygon y4="7" x4="28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-24" y1="3" antialias="false" x1="28" x2="-24" closed="false" y2="3" y3="7"/>
+        <polygon y4="-5" x4="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-33" y1="7" x6="23" antialias="true" x1="23" x2="23" y6="3" closed="false" x5="23" y2="15" y3="15" y5="-5"/>
+        <polygon y4="15" x4="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-30" y1="15" antialias="true" x1="-32" x2="-28" y2="15" y3="11"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}" x="-30"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{8f3be32e-851a-427c-a68d-b241257f983c}" x="20"/>
+    </description>
+</definition>

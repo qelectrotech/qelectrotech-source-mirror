@@ -1,0 +1,49 @@
+<definition height="30" type="element" hotspot_x="24" link_type="simple" width="50" hotspot_y="20" version="0.90">
+    <uuid uuid="{b16c9230-2cb6-4ce9-9eb8-fc3e020da387}"/>
+    <names>
+        <name lang="ar">مقياس سرعة الدوران</name>
+        <name lang="ca">Tacòmetre</name>
+        <name lang="cs">Tachometr</name>
+        <name lang="da">Omdrejningstæller</name>
+        <name lang="de">Geschwindigkeitsmesser</name>
+        <name lang="el">Ταχύμετρο</name>
+        <name lang="en">Tachometer</name>
+        <name lang="es">Tacómetro</name>
+        <name lang="fr">Tachymètre</name>
+        <name lang="hr">Tahometar</name>
+        <name lang="hu">Fordulatszámmérő</name>
+        <name lang="it">Tachimetro</name>
+        <name lang="ja">タコメータ</name>
+        <name lang="mn">Тахометр</name>
+        <name lang="nb">Turteller</name>
+        <name lang="nl">toerenteller</name>
+        <name lang="pl">Tachometr</name>
+        <name lang="pt">Tacômetro</name>
+        <name lang="pt_br">Tacômetro</name>
+        <name lang="ro">Tahometru</name>
+        <name lang="ru">Тахометр</name>
+        <name lang="sl">Tahometer</name>
+        <name lang="sr">Тахометар</name>
+        <name lang="tr">Takometre</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="16.1371" y1="-10" x1="9"/>
+        <dynamic_text text_from="ElementInfo" y="-36" frame="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{963d4e84-403a-498a-8e3d-ad8063f88fc8}" x="-27" text_width="-1" rotation="0" z="2" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="16.1371" y1="0" x1="9"/>
+        <circle y="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-7" diameter="14"/>
+        <polygon y2="-9.68624" x3="2.52873" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="true" y3="-11.6862" x2="-2.47127" x4="-2.47127" y1="-13.6862" y4="-13.6862" x1="-2.47127"/>
+        <circle y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-10" diameter="20"/>
+        <line y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="-8.8629" y1="0" x1="-16"/>
+        <line y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" length1="1.5" antialias="false" end1="none" end2="none" x2="-9" y1="-10" x1="-15"/>
+        <terminal y="0" name="" type="Generic" uuid="{cd924d8e-fe71-4061-b731-841f87db1f25}" x="20" orientation="e"/>
+        <terminal y="-10" name="" type="Generic" uuid="{616998a0-1780-4bf1-b45c-cf9ebcc34061}" x="20" orientation="e"/>
+        <terminal y="0" name="" type="Generic" uuid="{1bb18efd-04d7-4d03-a31d-95d3b7f78350}" x="-20" orientation="w"/>
+        <terminal y="-10" name="" type="Generic" uuid="{2f8fa494-cba8-47d0-8c1b-d2f11fd3cb2c}" x="-20" orientation="w"/>
+    </description>
+</definition>

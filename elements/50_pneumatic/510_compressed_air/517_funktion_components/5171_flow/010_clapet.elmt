@@ -1,0 +1,44 @@
+<definition height="20" version="0.90" link_type="simple" width="60" type="element" hotspot_x="24" hotspot_y="10">
+    <uuid uuid="{f040c18e-1005-41bb-b8d6-4e5fb1dccf77}"/>
+    <names>
+        <name lang="ar">صمام بدون زنبرك</name>
+        <name lang="ca">Vàlvula sense molla</name>
+        <name lang="cs">Ventil bez pružiny</name>
+        <name lang="da">Ventil uden fjeder</name>
+        <name lang="de">Ventil ohne Feder</name>
+        <name lang="el">Βαλβίδα χωρίς ελατήριο</name>
+        <name lang="en">Valve without spring</name>
+        <name lang="es">Válvula sin resorte</name>
+        <name lang="fr">Soupape sans ressort</name>
+        <name lang="hr">Ventil bez opruge</name>
+        <name lang="hu">Szelep rugó nélkül</name>
+        <name lang="it">Valvola senza molla</name>
+        <name lang="ja">スプリングなしのバルブ</name>
+        <name lang="mn">Пүршгүй хавхлаг</name>
+        <name lang="nb">Ventil uten fjær</name>
+        <name lang="nl">Klep zonder veer</name>
+        <name lang="pl">Zawór bez sprężyny</name>
+        <name lang="pt">Válvula sem mola</name>
+        <name lang="pt_br">Válvula sem mola</name>
+        <name lang="ro">Supapă fără arc</name>
+        <name lang="ru">Клапан без пружины</name>
+        <name lang="sl">Ventil brez vzmeti</name>
+        <name lang="sr">Вентил без опруге</name>
+        <name lang="tr">Yaysız valf</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" uuid="{d205177c-5c7f-4725-ae66-f6b52304fd15}" x="3" y="-15.95" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" Valignment="AlignTop" Halignment="AlignLeft" text_width="-1" rotation="0" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5" y1="0" length1="1.5" end1="none" x2="10" end2="none" antialias="false"/>
+        <line x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5" y1="0" length1="1.5" end1="none" x2="-16" end2="none" antialias="false"/>
+        <polygon x1="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" y1="5" y3="-5" x3="5" x2="10" closed="false" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="1" y="-3" diameter="6" antialias="true"/>
+        <terminal uuid="{04f8fe9e-5759-4afd-ae3d-f4655e7a5f61}" x="30" y="0" name="" orientation="e" type="Generic"/>
+        <terminal uuid="{6fa36735-5600-4f32-a918-6d3e35153eb1}" x="-20" y="0" name="" orientation="w" type="Generic"/>
+    </description>
+</definition>

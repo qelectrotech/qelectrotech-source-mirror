@@ -1,0 +1,28 @@
+<qet-directory>
+    <names>
+        <name lang="ar">منظم الضغط</name>
+        <name lang="ca">regulador de pressió</name>
+        <name lang="cs">regulátor tlaku</name>
+        <name lang="da">trykregulator</name>
+        <name lang="de">Druckregler</name>
+        <name lang="el">ρυθμιστής πίεσης</name>
+        <name lang="en">pressure regulator</name>
+        <name lang="es">Regulador de presión</name>
+        <name lang="fr">Régulateur de pression</name>
+        <name lang="hr">regulator pritiska</name>
+        <name lang="hu">nyomásszabályozó</name>
+        <name lang="it">regolatore di pressione</name>
+        <name lang="ja">圧力調整器</name>
+        <name lang="mn">даралт зохицуулагч</name>
+        <name lang="nb">trykkregulator</name>
+        <name lang="nl">druk regelaar</name>
+        <name lang="pl">regulator ciśnienia</name>
+        <name lang="pt">regulador de pressão</name>
+        <name lang="pt_br">regulador de pressão</name>
+        <name lang="ro">regulator de presiune</name>
+        <name lang="ru">регулятор давления</name>
+        <name lang="sl">regulator tlaka</name>
+        <name lang="sr">Регулатор притиска</name>
+        <name lang="tr">basınç düzenleyici</name>
+    </names>
+</qet-directory>

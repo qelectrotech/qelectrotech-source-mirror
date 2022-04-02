@@ -1,0 +1,46 @@
+<definition hotspot_y="24" width="70" hotspot_x="34" link_type="simple" type="element" height="60" version="0.90">
+    <uuid uuid="{7659190f-6ac3-4080-b3f8-4bab6c8b7a5c}"/>
+    <names>
+        <name lang="ar">فصل الماء اليدوي</name>
+        <name lang="ca">Separació manual d'aigua</name>
+        <name lang="cs">Ruční odlučování vody</name>
+        <name lang="da">Manuel vandseparation</name>
+        <name lang="de">Manuelle Wasserabscheidung</name>
+        <name lang="el">Χειροκίνητος διαχωρισμός νερού</name>
+        <name lang="en">Manual water separation</name>
+        <name lang="es">Separación manual de agua</name>
+        <name lang="fr">Séparation manuelle de l'eau</name>
+        <name lang="hr">Ručno odvajanje vode</name>
+        <name lang="hu">Kézi vízleválasztás</name>
+        <name lang="it">Separazione manuale dell'acqua</name>
+        <name lang="ja">手動水分離</name>
+        <name lang="mn">Гараар ус ялгах</name>
+        <name lang="nb">Manuell vannseparering</name>
+        <name lang="nl">Handmatige waterscheiding</name>
+        <name lang="pl">Ręczna separacja wody</name>
+        <name lang="pt">Separação manual de água</name>
+        <name lang="pt_br">Separação manual de água</name>
+        <name lang="ro">Separarea manuală a apei</name>
+        <name lang="ru">Ручное отделение воды</name>
+        <name lang="sl">Ročno ločevanje vode</name>
+        <name lang="sr">Ручно одвајање воде</name>
+        <name lang="tr">Manuel su ayırma</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" length1="1.5" end2="none" x2="0" y2="25" y1="20"/>
+        <dynamic_text y="-22" text_width="-1" Halignment="AlignLeft" text_from="ElementInfo" Valignment="AlignTop" uuid="{a1e1434a-2383-4b2a-b13b-852f65e8ab46}" frame="false" x="-24" z="2" rotation="0" keep_visual_rotation="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y3="0" antialias="true" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="0" x5="-20" x3="20" y4="20" x2="0" y2="-20" y1="0" y5="0"/>
+        <line antialias="false" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="0.1" end1="circle" length1="0.1" end2="circle" x2="10" y2="10" y1="10"/>
+        <line antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" length1="1.5" end2="none" x2="27" y2="0" y1="0"/>
+        <line antialias="false" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end1="none" length1="1.5" end2="none" x2="-20" y2="0" y1="0"/>
+        <terminal y="30" orientation="s" uuid="{a7bafd07-c268-4da2-a84c-0923a30380bd}" x="0" type="Generic" name=""/>
+        <terminal y="0" orientation="e" uuid="{931d9d1a-92c5-4000-9f78-9c6797e06ef2}" x="30" type="Generic" name=""/>
+        <terminal y="0" orientation="w" uuid="{4764415f-7705-49cc-bc63-46e47db13c19}" x="-30" type="Generic" name=""/>
+    </description>
+</definition>

@@ -1,0 +1,41 @@
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
+    <uuid uuid="{b474e1c6-8ed7-480a-b0a8-6f8aec9ed3d7}"/>
+    <names>
+        <name lang="ar">مجفف الهواء المضغوط</name>
+        <name lang="ca">assecador d'aire comprimit</name>
+        <name lang="cs">sušička stlačeného vzduchu</name>
+        <name lang="da">tryklufttørrer</name>
+        <name lang="de">Drucklufttrockner</name>
+        <name lang="el">στεγνωτήριο πεπιεσμένου αέρα</name>
+        <name lang="en">compressed air dryer</name>
+        <name lang="es">secador de aire comprimido</name>
+        <name lang="fr">sécheur d'air comprimé</name>
+        <name lang="hr">sušilo za komprimirani zrak</name>
+        <name lang="hu">sűrített levegős szárító</name>
+        <name lang="it">essiccatore ad aria compressa</name>
+        <name lang="ja">圧縮空気乾燥機</name>
+        <name lang="mn">шахсан агаар хатаагч</name>
+        <name lang="nb">trykklufttørker</name>
+        <name lang="nl">perslucht droger</name>
+        <name lang="pl">osuszacz sprężonego powietrza</name>
+        <name lang="pt">secador de ar comprimido</name>
+        <name lang="pt_br">secador de ar comprimido</name>
+        <name lang="ro">uscător cu aer comprimat</name>
+        <name lang="ru">осушитель сжатого воздуха</name>
+        <name lang="sl">sušilnik na stisnjen zrak</name>
+        <name lang="sr">сушач на компримовани ваздух</name>
+        <name lang="tr">basınçlı hava kurutucu</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="31" tagg="label" y="-23.45" rotate="true" text="_" size="7"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-19" end2="circle" length2="0.1" x1="9" end1="circle" x2="31" length1="0.1" y2="-19" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-1" end2="circle" length2="0.1" x1="9" end1="circle" x2="31" length1="0.1" y2="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+    </description>
+</definition>

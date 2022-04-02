@@ -1,0 +1,53 @@
+<definition height="50" version="0.90" link_type="simple" width="70" type="element" hotspot_x="34" hotspot_y="25">
+    <uuid uuid="{a9bbaec8-8b0c-42cf-ba04-829c5c064f66}"/>
+    <names>
+        <name lang="ar">المفرق تدفق</name>
+        <name lang="ca">Divisor de flux</name>
+        <name lang="cs">Dělič toku</name>
+        <name lang="da">Flowdeler</name>
+        <name lang="de">Stromteiler</name>
+        <name lang="el">Διαιρέτης ροής</name>
+        <name lang="en">Flow divider</name>
+        <name lang="es">Divisor de flujo</name>
+        <name lang="fr">Diviseur de débit</name>
+        <name lang="hr">Razdjelnik protoka</name>
+        <name lang="hu">Áramláselválasztó</name>
+        <name lang="it">Divisore di flusso</name>
+        <name lang="ja">分流器</name>
+        <name lang="mn">Урсгал хуваагч</name>
+        <name lang="nb">Strømningsdeler</name>
+        <name lang="nl">Stroomverdeler</name>
+        <name lang="pl">Rozdzielacz przepływu</name>
+        <name lang="pt">Divisor de fluxo</name>
+        <name lang="pt_br">Divisor de fluxo</name>
+        <name lang="ro">Divizor de debit</name>
+        <name lang="ru">Делитель потока</name>
+        <name lang="sl">Delitelj pretoka</name>
+        <name lang="sr">Делитељ протока</name>
+        <name lang="tr">Akış ayırıcı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5" y1="0" length1="1.5" end1="none" x2="-25" end2="none" antialias="false"/>
+        <polygon x1="20" y4="12" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="8" y1="12" y3="10" x4="20" x3="25" x2="20" antialias="true"/>
+        <dynamic_text z="2" uuid="{d90ba683-3009-45b1-b512-a0af08374f1d}" x="-25" y="-45" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" Valignment="AlignTop" Halignment="AlignLeft" text_width="-1" rotation="0" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="20" y4="-8" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-12" y1="-8" y3="-10" x4="20" x3="25" x2="20" antialias="true"/>
+        <arc height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="12" start="60" width="40" antialias="true" angle="60"/>
+        <arc height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="-8" start="60" width="40" antialias="true" angle="60"/>
+        <line x1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" length2="1.5" y1="10" length1="1.5" end1="none" x2="21" end2="none" antialias="false"/>
+        <line x1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" length2="1.5" y1="-10" length1="1.5" end1="none" x2="21" end2="none" antialias="false"/>
+        <line x1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" length2="1.5" y1="-10" length1="1.5" end1="none" x2="-16" end2="none" antialias="false"/>
+        <arc height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="-12" start="-60" width="40" antialias="true" angle="-60"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" x="-17.15" y="-1.15" diameter="2.3" antialias="true"/>
+        <arc height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="-32" start="-60" width="40" antialias="true" angle="-60"/>
+        <rect height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" y="-20" rx="0" ry="0" width="50" antialias="false"/>
+        <terminal uuid="{74daf0e6-2478-4cbd-8e29-9a6d20944589}" x="-30" y="0" name="" orientation="w" type="Generic"/>
+        <terminal uuid="{52b5158e-7406-4186-883d-ec25d88ee31d}" x="30" y="10" name="" orientation="e" type="Generic"/>
+        <terminal uuid="{70ed0728-b19e-464d-90ac-9af7bdd0b26b}" x="30" y="-10" name="" orientation="e" type="Generic"/>
+    </description>
+</definition>

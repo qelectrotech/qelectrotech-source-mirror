@@ -1,0 +1,28 @@
+<definition height="40" version="0.5" width="40" hotspot_x="14" type="element" link_type="simple" hotspot_y="31">
+    <uuid uuid="{d60e3b83-b1fc-4388-9577-601ebb7d1906}"/>
+    <names>
+        <name lang="en">Calibrated valve</name>
+        <name lang="de">Ventil Kalibriert</name>
+        <name lang="pl">Odpowietrznik chwilowy o zadanej wartości</name>
+        <name lang="nl">Klep gekalibreerd</name>
+        <name lang="cs">Přesně nastavený ventil</name>
+        <name lang="el">Ρυθμιζόμενη βαλβίδα</name>
+        <name lang="it">Valvola tarata</name>
+        <name lang="fr">Soupape tarré</name>
+        <name lang="ar">صمّام معياري</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="11" tagg="label" y="-13.45" rotate="true" text="_" size="7"/>
+        <line y1="-25" end2="none" length2="1.5" x1="5" end1="none" x2="5" length1="1.5" y2="-18" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-25" end2="none" length2="1.5" x1="0" end1="none" x2="10" length1="1.5" y2="-25" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-13" closed="false" x3="10" x1="0" y3="-13" x2="5" y2="-18" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="2" y="-16" diameter="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="5" end1="none" x2="5" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="3.85" y="-1.15" diameter="2.3" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line y1="0" end2="none" length2="1.5" x1="-10" end1="none" x2="20" length1="1.5" y2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="0" orientation="w"/>
+        <terminal x="20" y="0" orientation="e"/>
+    </description>
+</definition>

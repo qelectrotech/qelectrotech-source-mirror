@@ -1,0 +1,41 @@
+<definition hotspot_x="10" type="element" link_type="simple" height="30" hotspot_y="17" width="20" version="0.90">
+    <uuid uuid="{c7d8f72f-0f77-4c43-b380-6d46b943ba76}"/>
+    <names>
+        <name lang="ar">مصدر الهواء المضغوط</name>
+        <name lang="ca">font d'aire comprimit</name>
+        <name lang="cs">zdroj stlačeného vzduchu</name>
+        <name lang="da">trykluftkilde</name>
+        <name lang="de">Qruckluftquelle</name>
+        <name lang="el">πηγή πεπιεσμένου αέρα</name>
+        <name lang="en">compressed air source</name>
+        <name lang="es">fuente de aire comprimido</name>
+        <name lang="fr">source d'air comprimé</name>
+        <name lang="hr">izvor komprimiranog zraka</name>
+        <name lang="hu">sűrített levegő forrás</name>
+        <name lang="it">fonte di aria compressa</name>
+        <name lang="ja">圧縮空気源</name>
+        <name lang="mn">шахсан агаарын эх үүсвэр</name>
+        <name lang="nb">trykkluftkilde</name>
+        <name lang="nl">persluchtbron</name>
+        <name lang="pl">źródło sprężonego powietrza</name>
+        <name lang="pt">fonte de ar comprimido</name>
+        <name lang="pt_br">fonte de ar comprimido</name>
+        <name lang="ro">sursa de aer comprimat</name>
+        <name lang="ru">источник сжатого воздуха</name>
+        <name lang="sl">vir stisnjenega zraka</name>
+        <name lang="sr">извор компримованог ваздуха</name>
+        <name lang="tr">basınçlı hava kaynağı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" text_width="-1" x="-14" z="1" Valignment="AlignTop" y="-20" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y3="0" x4="-4" x3="0" x2="4" x1="-4" y2="8" antialias="true" y1="8" y4="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="0" x1="0" end1="none" length1="1.5" length2="1.5" y2="0" antialias="false" y1="-10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" x="0" type="Generic" y="-10" name="" orientation="n"/>
+    </description>
+</definition>

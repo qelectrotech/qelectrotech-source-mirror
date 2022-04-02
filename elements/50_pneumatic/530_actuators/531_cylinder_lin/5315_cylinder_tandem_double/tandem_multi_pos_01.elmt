@@ -1,0 +1,57 @@
+<definition hotspot_x="18" width="110" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{a8c362c1-b7a9-4f7c-929b-506e71237858}"/>
+    <names>
+        <name lang="ar">ترادف اسطوانة متعددة الموقف</name>
+        <name lang="ca">Cilindre tàndem de múltiples posicions</name>
+        <name lang="cs">Tandemový válec s více polohami</name>
+        <name lang="da">Tandem cylinder flere positioner</name>
+        <name lang="de">Tandemzylinder mehrfache Position</name>
+        <name lang="el">Διαδοχικός κύλινδρος πολλαπλών θέσεων</name>
+        <name lang="en">Tandem cylinder multiple position</name>
+        <name lang="es">Cilindro tándem de múltiples posiciones</name>
+        <name lang="fr">Cylindre tandem multipositions</name>
+        <name lang="hr">Tandem cilindar više pozicija</name>
+        <name lang="hu">Tandem henger többállású</name>
+        <name lang="it">Cilindro tandem a più posizioni</name>
+        <name lang="ja">タンデムシリンダーマルチポジション</name>
+        <name lang="mn">Тандем цилиндрийн олон байрлал</name>
+        <name lang="nb">Tandem sylinder flere posisjoner</name>
+        <name lang="nl">Tandemcilinder meerdere posities</name>
+        <name lang="pl">Wielopozycyjny cylinder tandemowy</name>
+        <name lang="pt">Cilindro tandem de várias posições</name>
+        <name lang="pt_br">Cilindro tandem de várias posições</name>
+        <name lang="ro">Cilindru tandem cu poziții multiple</name>
+        <name lang="ru">Многопозиционный тандемный цилиндр</name>
+        <name lang="sl">Tandemski cilinder z več položaji</name>
+        <name lang="sr">Тандем цилиндар са више позиција</name>
+        <name lang="tr">Tandem silindir çoklu konum</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-25.8631" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-9.06079" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="31" height="8"/>
+        <polygon x17="-3.5608" x12="-2.5608" x1="-4.5608" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-4.5608" y8="8.8619" y11="3.8619" x2="-4.5608" y13="0.8619" y17="8.8619" y4="0.8619" x10="-3.5608" x11="-3.5608" x15="-4.5608" x7="-3.5608" x16="-4.5608" x9="-2.5608" y3="8.8619" antialias="false" y1="0.8619" x8="-2.5608" y5="0.8619" y7="8.8619" x3="-4.5608" y14="0.8619" y10="5.8619" x6="-3.5608" closed="false" y15="0.8619" y16="8.8619" y6="0.8619" x5="-4.5608" y2="8.8619" x13="-2.5608" y9="6.8619" y12="2.8619" x14="-4.5608"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="6" x="-7" height="20"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="40" height="8"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="-1" height="8"/>
+        <polygon x17="37.4392" x12="38.4392" x1="36.4392" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="36.4392" y8="8.86188" y11="3.86188" x2="36.4392" y13="0.86188" y17="8.86188" y4="0.86188" x10="37.4392" x11="37.4392" x15="36.4392" x7="37.4392" x16="36.4392" x9="38.4392" y3="8.86188" antialias="false" y1="0.86188" x8="38.4392" y5="0.86188" y7="8.86188" x3="36.4392" y14="0.86188" y10="5.86188" x6="37.4392" closed="false" y15="0.86188" y16="8.86188" y6="0.86188" x5="36.4392" y2="8.86188" x13="38.4392" y9="6.86188" y12="2.86188" x14="36.4392"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="-10" height="8"/>
+        <polygon y4="15" x4="78" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="80" y1="15" antialias="true" x1="78" x2="82" y2="15" y3="11"/>
+        <polygon y4="7" x4="31" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="2" y1="3" antialias="false" x1="31" x2="2" closed="false" y2="3" y3="7"/>
+        <polygon y4="7" x4="87" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="43" y1="3" antialias="false" x1="87" x2="43" closed="false" y2="3" y3="7"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="6" x="34" height="20"/>
+        <polygon y4="15" x4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-10" y1="15" antialias="true" x1="-12" x2="-8" y2="15" y3="11"/>
+        <polygon y4="15" x4="28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="30" y1="15" antialias="true" x1="28" x2="32" y2="15" y3="11"/>
+        <polygon y4="3" x4="83" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="83" y1="3" antialias="false" x1="25" x2="25" closed="false" y2="-5" y3="-5"/>
+        <polygon y4="7" x4="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="25" y1="7" antialias="false" x1="83" x2="83" closed="false" y2="15" y3="15"/>
+        <polygon y4="-5" x4="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-13" y1="7" x6="27" antialias="true" x1="27" x2="27" y6="3" closed="false" x5="27" y2="15" y3="15" y5="-5"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{eb0fa37a-6c0f-4166-90a0-278772f9a8f0}" x="80"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{510cd75c-915e-45b2-839c-214a3c6559df}" x="-10"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{a9395804-6efb-49da-b8f5-1513ec9f268d}" x="30"/>
+    </description>
+</definition>

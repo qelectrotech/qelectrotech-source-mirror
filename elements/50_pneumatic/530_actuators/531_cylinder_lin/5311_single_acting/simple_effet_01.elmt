@@ -1,0 +1,44 @@
+<definition type="element" width="110" hotspot_x="37" link_type="simple" hotspot_y="11" version="0.90" height="40">
+    <uuid uuid="{5e50f022-d83a-44de-8fac-da22423a24a4}"/>
+    <names>
+        <name lang="ar">اسطوانة بفعل وحيد</name>
+        <name lang="be">single acting</name>
+        <name lang="ca">single acting</name>
+        <name lang="cs">jednočinné válce</name>
+        <name lang="da">single acting</name>
+        <name lang="de">Einfachwirkend</name>
+        <name lang="el">single acting</name>
+        <name lang="en">single acting</name>
+        <name lang="es">single acting</name>
+        <name lang="fr"> simple effet</name>
+        <name lang="hr">single acting</name>
+        <name lang="hu">single acting</name>
+        <name lang="it">effetto singolo</name>
+        <name lang="ja">single acting</name>
+        <name lang="mn">single acting</name>
+        <name lang="nb">single acting</name>
+        <name lang="nl"> 1 richting zonder veer</name>
+        <name lang="pl">jednostronnego działania pchający</name>
+        <name lang="pt">single acting</name>
+        <name lang="ro">single acting</name>
+        <name lang="ru">single acting</name>
+        <name lang="sl">single acting</name>
+        <name lang="sr">single acting</name>
+        <name lang="tr">single acting</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="false" closed="false" y1="3" x4="69" y2="3" x2="17" x3="17" y3="7" y4="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="69"/>
+        <dynamic_text frame="false" rotation="0" y="-25.95" Valignment="AlignTop" z="1" text_width="-1" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect width="3" antialias="false" y="-5" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="14" height="20"/>
+        <polygon antialias="true" y5="-5" closed="false" y6="3" y1="7" x4="-33" y2="15" x5="23" x2="23" x3="-33" y3="15" y4="-5" x6="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <polygon antialias="true" y1="15" x4="18" y2="15" x2="22" x3="20" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="18"/>
+        <polygon antialias="true" y1="15" x4="-28" y2="19" x2="-30" x3="-32" y3="15" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-28"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}" x="20"/>
+    </description>
+</definition>

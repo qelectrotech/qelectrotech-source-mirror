@@ -1,0 +1,46 @@
+<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34">
+    <uuid uuid="{470eef95-1d75-4d89-aa04-b6f48ba96a4d}"/>
+    <names>
+        <name lang="ar">فلتر هواء مضغوط مع فصل ماء يدوي</name>
+        <name lang="ca">Filtre d'aire comprimit amb separació manual d'aigua</name>
+        <name lang="cs">Filtr stlačeného vzduchu s ručním odlučováním vody</name>
+        <name lang="da">Trykluftfilter med manuel vandseparation</name>
+        <name lang="de">Druckluftfilter mit manueller Wasserabscheidung</name>
+        <name lang="el">Φίλτρο πεπιεσμένου αέρα με χειροκίνητο διαχωρισμό νερού</name>
+        <name lang="en">Compressed air filter with manual water separation</name>
+        <name lang="es">Filtro de aire comprimido con separación manual de agua</name>
+        <name lang="fr">Filtre à air comprimé avec séparation manuelle de l'eau</name>
+        <name lang="hr">Filter komprimiranog zraka s ručnim odvajanjem vode</name>
+        <name lang="hu">Sűrített levegő szűrő kézi vízleválasztással</name>
+        <name lang="it">Filtro aria compressa con separazione manuale dell'acqua</name>
+        <name lang="ja">手動水分離を備えた圧縮空気フィルター</name>
+        <name lang="mn">Усны гараар тусгаарлах шахсан агаар шүүгч</name>
+        <name lang="nb">Trykkluftfilter med manuell vannutskilling</name>
+        <name lang="nl">Persluchtfilter met handmatige waterafscheiding</name>
+        <name lang="pl">Filtr sprężonego powietrza z ręczną separacją wody</name>
+        <name lang="pt">Filtro de ar comprimido com separação manual de água</name>
+        <name lang="pt_br">Filtro de ar comprimido com separação manual de água</name>
+        <name lang="ro">Filtru de aer comprimat cu separare manuală a apei</name>
+        <name lang="ru">Фильтр сжатого воздуха с ручным отделением воды</name>
+        <name lang="sl">Filter za stisnjen zrak z ročnim ločevanjem vode</name>
+        <name lang="sr">Филтер за компримовани ваздух са ручним одвајањем воде</name>
+        <name lang="tr">Manuel su ayırmalı basınçlı hava filtresi</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-7" tagg="label" y="-29.45" rotate="true" text="_" size="7"/>
+        <line y1="-8" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-22" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-29" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-1" end2="circle" length2="0.1" x1="9" end1="circle" x2="31" length1="0.1" y2="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="20" y="20" orientation="s"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+    </description>
+</definition>

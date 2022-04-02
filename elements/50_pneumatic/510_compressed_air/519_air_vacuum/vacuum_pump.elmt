@@ -1,0 +1,45 @@
+<definition hotspot_x="25" type="element" link_type="simple" height="40" hotspot_y="21" width="40" version="0.90">
+    <uuid uuid="{f82e4910-c862-43dd-ae6b-121104843a11}"/>
+    <names>
+        <name lang="ar">مضخة فراغ</name>
+        <name lang="ca">bomba de buit</name>
+        <name lang="cs">vakuová pumpa</name>
+        <name lang="da">vakuumpumpe</name>
+        <name lang="de">Vakuumpumpe</name>
+        <name lang="el">ΑΝΤΛΙΑ ΚΕΝΟΥ</name>
+        <name lang="en">vacuum pump</name>
+        <name lang="es">bomba aspiradora</name>
+        <name lang="fr">pompe à vide</name>
+        <name lang="hr">vakuumska pumpa</name>
+        <name lang="hu">légszivattyú</name>
+        <name lang="it">pompa a vuoto</name>
+        <name lang="ja">真空ポンプ</name>
+        <name lang="mn">вакуум насос</name>
+        <name lang="nb">støvsuger pumpe</name>
+        <name lang="nl">vacuum pomp</name>
+        <name lang="pl">pompa próżniowa</name>
+        <name lang="pt">bomba de vácuo</name>
+        <name lang="pt_br">bomba de vácuo</name>
+        <name lang="ro">pompă de vid</name>
+        <name lang="ru">вакуумный насос</name>
+        <name lang="sl">vakuumska črpalka</name>
+        <name lang="sr">вакумска пумпа</name>
+        <name lang="tr">vakum pompası</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="-3" x1="-9" end1="none" length1="1.5" length2="1.5" y2="-9" antialias="false" y1="3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="4" x1="9" end1="none" length1="1.5" length2="1.5" y2="-9" antialias="false" y1="3" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}" text_width="-1" x="-20" z="1" Valignment="AlignTop" y="-30" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle x="-10" antialias="true" y="-10" diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-10" x1="-20" end1="none" length1="1.5" length2="1.5" y2="1" antialias="false" y1="1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-10" x1="-20" end1="none" length1="1.5" length2="1.5" y2="-1" antialias="false" y1="-1" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="0" x1="0" end1="none" length1="1.5" length2="1.5" y2="10" antialias="false" y1="15" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" x="0" type="Generic" y="-15" name="" orientation="n"/>
+    </description>
+</definition>

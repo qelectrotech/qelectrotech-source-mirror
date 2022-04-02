@@ -1,0 +1,43 @@
+<definition hotspot_x="15" height="40" type="element" version="0.90" width="30" hotspot_y="14" link_type="simple">
+    <uuid uuid="{cf7378d9-fbcf-499f-8ac6-8f106189ef8b}"/>
+    <names>
+        <name lang="ar">مؤشر مستوى السائل</name>
+        <name lang="ca">Indicador de nivell de líquid</name>
+        <name lang="cs">Indikátor hladiny kapaliny</name>
+        <name lang="da">Væskeniveauindikator</name>
+        <name lang="de">Flüssigkeitsstandsanzeige</name>
+        <name lang="el">Ένδειξη στάθμης υγρού</name>
+        <name lang="en">Liquid Level Indicator</name>
+        <name lang="es">Indicador de nivel de líquido</name>
+        <name lang="fr">Indicateur de niveau de liquide</name>
+        <name lang="hr">Indikator razine tekućine</name>
+        <name lang="hu">Folyadékszint jelző</name>
+        <name lang="it">Indicatore del livello del liquido</name>
+        <name lang="ja">液面計</name>
+        <name lang="mn">Шингэний түвшний үзүүлэлт</name>
+        <name lang="nb">Væskenivåindikator</name>
+        <name lang="nl">Vloeistofniveau-indicator</name>
+        <name lang="pl">Wskaźnik poziomu cieczy</name>
+        <name lang="pt">Indicador de Nível de Líquido</name>
+        <name lang="pt_br">Indicador de Nível de Líquido</name>
+        <name lang="ro">Indicator de nivel al lichidului</name>
+        <name lang="ru">Индикатор уровня жидкости</name>
+        <name lang="sl">Indikator nivoja tekočine</name>
+        <name lang="sr">Индикатор нивоа течности</name>
+        <name lang="tr">Sıvı Seviye Göstergesi</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" y="-20" keep_visual_rotation="false" x="-20" rotation="0" z="1" text_width="-1" text_from="ElementInfo" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{46c76a2a-f4da-466e-8515-22bf690ad74e}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" antialias="false" length2="1.5" x1="-9" end1="none" length1="1.5" y1="-2" end2="none"/>
+        <line y2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" antialias="false" length2="1.5" x1="-9" end1="none" length1="1.5" y1="2" end2="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-10" x="-10" diameter="20"/>
+        <line y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false" length2="1.5" x1="0" end1="none" length1="1.5" y1="10" end2="none"/>
+        <terminal y="20" x="0" type="Generic" orientation="s" uuid="{82df0985-44cf-4fe5-86b6-6b341584d7f3}" name=""/>
+    </description>
+</definition>

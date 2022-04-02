@@ -1,0 +1,28 @@
+<qet-directory>
+    <names>
+        <name lang="ar">وحدة الصيانة</name>
+        <name lang="ca">unitat de manteniment</name>
+        <name lang="cs">jednotka údržby</name>
+        <name lang="da">vedligeholdelsesenhed</name>
+        <name lang="de">Wartungseinheit</name>
+        <name lang="el">μονάδα συντήρησης</name>
+        <name lang="en">maintenance unit</name>
+        <name lang="es">unidad de mantenimiento</name>
+        <name lang="fr">unité d'entretien</name>
+        <name lang="hr">jedinica za održavanje</name>
+        <name lang="hu">karbantartó egység</name>
+        <name lang="it">unità di manutenzione</name>
+        <name lang="ja">メンテナンスユニット</name>
+        <name lang="mn">засвар үйлчилгээний нэгж</name>
+        <name lang="nb">vedlikeholdsenhet</name>
+        <name lang="nl">onderhoudseenheid</name>
+        <name lang="pl">jednostka konserwacyjna</name>
+        <name lang="pt">unidade de manutenção</name>
+        <name lang="pt_br">unidade de manutenção</name>
+        <name lang="ro">unitate de întreținere</name>
+        <name lang="ru">блок технического обслуживания</name>
+        <name lang="sl">vzdrževalna enota</name>
+        <name lang="sr">јединица за одржавање</name>
+        <name lang="tr">bakım ünitesi</name>
+    </names>
+</qet-directory>

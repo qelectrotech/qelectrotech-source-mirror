@@ -1,0 +1,43 @@
+<definition height="60" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="34">
+    <uuid uuid="{c5dc4703-75f2-40a4-9d46-48a465ab0c6f}"/>
+    <names>
+        <name lang="ar">فصل الماء التلقائي</name>
+        <name lang="ca">Separació automàtica d'aigua</name>
+        <name lang="cs">Automatická separace vody</name>
+        <name lang="da">Automatisk vandseparation</name>
+        <name lang="de">Automatische Wasserabscheidung</name>
+        <name lang="el">Αυτόματος διαχωρισμός νερού</name>
+        <name lang="en">Automatic water separation</name>
+        <name lang="es">Separación automática de agua</name>
+        <name lang="fr">Séparation automatique de l'eau</name>
+        <name lang="hr">Automatsko odvajanje vode</name>
+        <name lang="hu">Automatikus vízleválasztás</name>
+        <name lang="it">Separazione automatica dell'acqua</name>
+        <name lang="ja">自動水分離</name>
+        <name lang="mn">Усны автомат тусгаарлалт</name>
+        <name lang="nb">Automatisk vannseparasjon</name>
+        <name lang="nl">Automatische waterscheiding</name>
+        <name lang="pl">Automatyczna separacja wody</name>
+        <name lang="pt">Separação automática de água</name>
+        <name lang="pt_br">Separação automática de água</name>
+        <name lang="ro">Separarea automată a apei</name>
+        <name lang="ru">Автоматическое отделение воды</name>
+        <name lang="sl">Avtomatsko ločevanje vode</name>
+        <name lang="sr">Аутоматско одвајање воде</name>
+        <name lang="tr">Otomatik su ayırma</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="33" tagg="label" y="10.55" rotate="true" text="_" size="7"/>
+        <polygon y1="-1" x3="28" y4="-1" x1="12" y3="-1" x4="12" x2="20" y2="7" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="20" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-1" end2="circle" length2="0.1" x1="9" end1="circle" x2="31" length1="0.1" y2="-1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="50" y="-10" orientation="e"/>
+        <terminal x="20" y="20" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,53 @@
+<definition hotspot_x="36" type="element" link_type="simple" height="60" hotspot_y="21" width="80" version="0.90">
+    <uuid uuid="{f35a41f7-2e79-4cc1-bf65-77b75bbe827d}"/>
+    <names>
+        <name lang="ar">مولد الفراغ</name>
+        <name lang="ca">Generador de buit</name>
+        <name lang="cs">Vakuový generátor</name>
+        <name lang="da">Vakuum generator</name>
+        <name lang="de">Vacuum generator</name>
+        <name lang="el">Γεννήτρια κενού</name>
+        <name lang="en">Vacuum generator</name>
+        <name lang="es">Generador de vacío</name>
+        <name lang="fr">Générateur de vide</name>
+        <name lang="hr">Generator vakuuma</name>
+        <name lang="hu">Vákuum generátor</name>
+        <name lang="it">Generatore di vuoto</name>
+        <name lang="ja">真空発生器</name>
+        <name lang="mn">Вакуум генератор</name>
+        <name lang="nb">Vakuum generator</name>
+        <name lang="nl">Vacuümgenerator</name>
+        <name lang="pl">Generator podciśnienia</name>
+        <name lang="pt">Gerador de vácuo</name>
+        <name lang="pt_br">Gerador de vácuo</name>
+        <name lang="ro">Generator de vid</name>
+        <name lang="ru">Генератор вакуума</name>
+        <name lang="sl">Vakuumski generator</name>
+        <name lang="sr">Генератор вакуума</name>
+        <name lang="tr">Vakum jeneratörü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y3="0" x4="34" y5="3" x3="40" x2="34" x1="34" x5="34" y2="-3" antialias="true" y1="3" y4="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="7" x4="3" y5="11" x3="-3" x7="0" x2="3" x1="0" x5="-3" y2="5" antialias="true" y1="4" closed="false" y4="9" y7="14" style="line-style:normal;line-weight:normal;filling:none;color:black" y6="13" x6="3"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="2" x="6" y="25" color="#000000"/>
+        <dynamic_text rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{c76bdc44-7f6b-40d2-91e9-c2ebb6ad0556}" text_width="-1" x="-35" z="2" Valignment="AlignTop" y="-40" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" x1="0" end1="none" length1="1.5" length2="1.5" y2="29" antialias="false" y1="23" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="3" x="21" y="5" color="#000000"/>
+        <line x2="0" x1="0" end1="none" length1="1.5" length2="1.5" y2="15" antialias="false" y1="2" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="18" x3="5" x2="0" x1="-5" y2="23" antialias="true" y1="18" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="-20" x="-10" antialias="true" y="-11" height="9" width="20" angle="-140" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-3" antialias="true" y="15" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="-200" x="-10" antialias="true" y="2" height="9" width="20" angle="-140" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="34" x1="-25" end1="none" length1="1.5" length2="1.5" y2="0" antialias="false" y1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-25" antialias="false" y="-15" height="41" width="50" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="1" x="-24" y="5" color="#000000"/>
+        <terminal uuid="{63fc137e-3382-484b-bab3-d53cd10d7f6d}" x="0" type="Generic" y="30" name="" orientation="s"/>
+        <terminal uuid="{ac0aa1cb-43af-4013-850b-7df99c9d7ac8}" x="-30" type="Generic" y="0" name="" orientation="w"/>
+    </description>
+</definition>

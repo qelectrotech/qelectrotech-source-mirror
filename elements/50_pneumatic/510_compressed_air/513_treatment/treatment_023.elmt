@@ -1,0 +1,51 @@
+<definition version="0.90" link_type="simple" type="element" hotspot_x="14" width="70" height="60" hotspot_y="34">
+    <uuid uuid="{14a795a7-94a5-42df-a6d5-3076bb2ead3c}"/>
+    <names>
+        <name lang="ar">تبريد الهواء المضغوط بمبادل حراري</name>
+        <name lang="ca">Refrigeració per aire comprimit amb intercanviador de calor</name>
+        <name lang="cs">Chlazení stlačeným vzduchem s výměníkem tepla</name>
+        <name lang="da">Trykluftkøling med varmeveksler</name>
+        <name lang="de">Druckluftkühlung mit Wärmetauscher</name>
+        <name lang="el">Ψύξη πεπιεσμένου αέρα με εναλλάκτη θερμότητας</name>
+        <name lang="en">Compressed air cooling with heat exchanger</name>
+        <name lang="es">Refrigeración por aire comprimido con intercambiador de calor</name>
+        <name lang="fr">Refroidissement par air comprimé avec échangeur de chaleur</name>
+        <name lang="hr">Hlađenje komprimiranim zrakom s izmjenjivačem topline</name>
+        <name lang="hu">Sűrített levegős hűtés hőcserélővel</name>
+        <name lang="it">Raffreddamento ad aria compressa con scambiatore di calore</name>
+        <name lang="ja">熱交換器による圧縮空気冷却</name>
+        <name lang="mn">Дулаан солилцуур бүхий шахсан агаарын хөргөлт</name>
+        <name lang="nb">Trykkluftkjøling med varmeveksler</name>
+        <name lang="nl">Persluchtkoeling met warmtewisselaar</name>
+        <name lang="pl">Chłodzenie sprężonym powietrzem z wymiennikiem ciepła</name>
+        <name lang="pt">Resfriamento a ar comprimido com trocador de calor</name>
+        <name lang="pt_br">Resfriamento a ar comprimido com trocador de calor</name>
+        <name lang="ro">Răcire cu aer comprimat cu schimbător de căldură</name>
+        <name lang="ru">Охлаждение сжатым воздухом с теплообменником</name>
+        <name lang="sl">Hlajenje s stisnjenim zrakom s toplotnim izmenjevalnikom</name>
+        <name lang="sr">Хлађење компримованим ваздухом са измењивачем топлоте</name>
+        <name lang="tr">Isı eşanjörü ile basınçlı hava soğutma</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="-7" frame="false" Halignment="AlignLeft" uuid="{47c848f1-2795-42cd-8a83-76de3493b1ca}" Valignment="AlignTop" z="1" rotation="0" text_width="-1" y="-40.95" font="Sans Serif,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="10" end2="none" length1="1.5" y1="0" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y2="15"/>
+        <line x2="30" end2="none" length1="1.5" y1="0" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" y2="15"/>
+        <line x2="20" end2="none" length1="1.5" y1="-25" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" y2="5"/>
+        <line x2="50" end2="none" length1="1.5" y1="-10" length2="1.5" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" y2="-10"/>
+        <polygon x2="12" y1="14.5" x3="10" y3="19.5" antialias="true" x4="8" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="8" y4="14.5" y2="14.5"/>
+        <polygon x2="22" y1="4.5" x3="20" y3="9.5" antialias="true" x4="18" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="18" y4="4.5" y2="4.5"/>
+        <polygon x2="28" y1="14.5" x3="32" y3="19.5" antialias="true" x4="30" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="30" y4="14.5" y2="19.5"/>
+        <polygon x2="18" y1="-29.5" x3="22" y3="-24.5" antialias="true" x4="20" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="20" y4="-29.5" y2="-24.5"/>
+        <polygon x2="20" y1="-10" x3="40" x5="0" y3="-10" antialias="true" x4="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y4="10" y5="-10" y2="-30"/>
+        <terminal x="-10" uuid="{bdf13533-e52d-4813-aac7-63efff0c3192}" name="" orientation="w" y="-10" type="Generic"/>
+        <terminal x="10" uuid="{34739f2b-097c-4093-b853-62137ba9d7bd}" name="" orientation="s" y="20" type="Generic"/>
+        <terminal x="30" uuid="{95f30c87-3feb-4eaa-bcba-046cfca91934}" name="" orientation="s" y="20" type="Generic"/>
+        <terminal x="50" uuid="{771eccac-33b7-41f8-92ed-1448153c667a}" name="" orientation="e" y="-10" type="Generic"/>
+    </description>
+</definition>

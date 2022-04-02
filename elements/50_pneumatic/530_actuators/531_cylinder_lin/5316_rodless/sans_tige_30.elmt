@@ -1,0 +1,50 @@
+<definition type="element" width="60" hotspot_x="35" link_type="simple" hotspot_y="13" version="0.90" height="40">
+    <uuid uuid="{87c26668-5a0a-418e-a39e-afb34e1bc763}"/>
+    <names>
+        <name lang="ar">اسطوانة رودليس + فرامل الموقف النهائي على كلا الجانبين + قابل للتعديل</name>
+        <name lang="ca">Cilindre sense vara + fre de posició final a ambdós costats + regulable</name>
+        <name lang="cs">Bezpístnicový válec + koncová brzda na obou stranách + nastavitelná</name>
+        <name lang="da">Stangløs cylinder + endestillingsbremse på begge sider + justerbar</name>
+        <name lang="de">Kolbenstangenloser Zylinder + Endlagenbremse beidseitig + einstellbar</name>
+        <name lang="el">Κύλινδρος χωρίς ράβδους + φρένο τελικής θέσης και στις δύο πλευρές + ρυθμιζόμενο</name>
+        <name lang="en">Rodless cylinder + end position brake on both sides + adjustable</name>
+        <name lang="es">Cilindro sin vástago + freno de posición final en ambos lados + ajustable</name>
+        <name lang="fr">Vérin sans tige + frein de fin de course des deux côtés + réglable</name>
+        <name lang="hr">Cilindar bez šipke + kočnica krajnjeg položaja s obje strane + podesiva</name>
+        <name lang="hu">Rúd nélküli henger + véghelyzet fék mindkét oldalon + állítható</name>
+        <name lang="it">Cilindro senza stelo + freno di fine corsa su entrambi i lati + regolabile</name>
+        <name lang="ja">ロッドレスシリンダー+両側のエンドポジションブレーキ+調整可能</name>
+        <name lang="mn">Саваагүй цилиндр + хоёр талдаа төгсгөлийн байрлалтай тоормос + тохируулгатай</name>
+        <name lang="nb">Stangløs sylinder + endestillingsbrems på begge sider + justerbar</name>
+        <name lang="nl">Stangloze cilinder + eindpositierem aan beide zijden + verstelbaar</name>
+        <name lang="pl">Siłownik beztłoczyskowy + hamulec położenia końcowego po obu stronach + regulowany</name>
+        <name lang="pt">Cilindro sem haste + freio de posição final em ambos os lados + ajustável</name>
+        <name lang="pt_br">Cilindro sem haste + freio de posição final em ambos os lados + ajustável</name>
+        <name lang="ro">Cilindru fara tija + frana de pozitie finala pe ambele parti + reglabil</name>
+        <name lang="ru">Бесштоковый цилиндр + тормоз конечного положения с обеих сторон + регулируемый</name>
+        <name lang="sl">Cilinder brez droga + zavora končnega položaja na obeh straneh + nastavljiva</name>
+        <name lang="sr">Цилиндар без полуге + кочница крајњег положаја са обе стране + подесива</name>
+        <name lang="tr">Milsiz silindir + her iki tarafta son konum freni + ayarlanabilir</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" rotation="0" y="-25.95" Valignment="AlignTop" z="1" text_width="-1" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-32" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect width="2" antialias="false" y="1" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-17" height="8"/>
+        <rect width="10" antialias="false" y="15" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="5" height="3"/>
+        <line antialias="false" length2="1.5" length1="1.5" y1="11" y2="0" x2="-14" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-28"/>
+        <rect width="10" antialias="false" y="-8" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" height="3"/>
+        <polygon antialias="true" y1="-1" x4="-15" y2="1" x2="-13" x3="-11" y3="-3" y4="-1" style="line-style:normal;line-weight:thin;filling:black;color:black" x1="-15"/>
+        <rect width="2" antialias="false" y="1" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-25" height="8"/>
+        <polygon antialias="true" y1="15" x4="18" y2="15" x2="22" x3="20" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="18"/>
+        <rect width="6" antialias="false" y="-5" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-23" height="20"/>
+        <polygon antialias="true" y5="-5" closed="false" y6="8" y1="2" x4="-33" y2="15" x5="23" x2="23" x3="-33" y3="15" y4="-5" x6="23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <polygon antialias="true" y1="15" x4="-32" y2="15" x2="-28" x3="-30" y3="11" y4="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-32"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{25189039-3321-4e03-9969-afbf34ef8382}" x="20"/>
+        <terminal type="Generic" y="20" name="" orientation="s" uuid="{93902c03-638a-44f8-a694-200ffbbd4580}" x="-30"/>
+    </description>
+</definition>

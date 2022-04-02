@@ -1,0 +1,55 @@
+<definition hotspot_x="36" width="70" link_type="simple" hotspot_y="21" type="element" version="0.90" height="60">
+    <uuid uuid="{3c8ba5ed-1887-49e4-8e28-e84c6cf27d0f}"/>
+    <names>
+        <name lang="ar">أسطوانة مزدوجة + قضيب مكبس على جانب واحد</name>
+        <name lang="ca">Doble cilindre + pistó a un costat</name>
+        <name lang="cs">Dvojválec + pístnice na jedné straně</name>
+        <name lang="da">Dobbelt cylinder + stempelstang på den ene side</name>
+        <name lang="de">Doppelzylinder + Kolbenstange einseitig</name>
+        <name lang="el">Διπλός κύλινδρος + ράβδος εμβόλου στη μία πλευρά</name>
+        <name lang="en">Double cylinder + piston rod on one side</name>
+        <name lang="es">Cilindro doble + biela en un lado</name>
+        <name lang="fr">Double cylindre + tige de piston d'un côté</name>
+        <name lang="hr">Dvostruki cilindar + klipnjača s jedne strane</name>
+        <name lang="hu">Dupla henger + dugattyúrúd az egyik oldalon</name>
+        <name lang="it">Doppio cilindro + stelo pistone su un lato</name>
+        <name lang="ja">片側ダブルシリンダー+ピストンロッド</name>
+        <name lang="mn">Нэг талдаа давхар цилиндр + поршений саваа</name>
+        <name lang="nb">Dobbel sylinder + stempelstang på den ene siden</name>
+        <name lang="nl">Dubbele cilinder + zuigerstang aan één zijde</name>
+        <name lang="pl">Podwójny cylinder + tłoczysko z jednej strony</name>
+        <name lang="pt">Cilindro duplo + haste de pistão de um lado</name>
+        <name lang="pt_br">Cilindro duplo + haste de pistão de um lado</name>
+        <name lang="ro">Cilindru dublu + tija piston pe o parte</name>
+        <name lang="ru">Двойной цилиндр + поршневой шток с одной стороны</name>
+        <name lang="sl">Dvojni cilinder + batnica na eni strani</name>
+        <name lang="sr">Двоструки цилиндар + клипњача са једне стране</name>
+        <name lang="tr">Bir tarafta çift silindir + piston kolu</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-36" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-33" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" rx="0" antialias="false" width="3" x="-21" height="8"/>
+        <polygon x17="-24" x12="-23" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-25" y8="-1" y11="-6" x2="-25" y13="-9" y17="-1" y4="-9" x10="-24" x11="-24" x15="-25" x7="-24" x16="-25" x9="-23" y3="-1" antialias="false" y1="-9" x8="-23" y5="-9" y7="-1" x3="-25" y14="-9" y10="-4" x6="-24" closed="false" y15="-9" y16="-1" y6="-9" x5="-25" y2="-1" x13="-23" y9="-3" y12="-7" x14="-25"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="11" rx="0" antialias="false" width="3" x="-21" height="8"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" rx="0" antialias="false" width="3" x="-30" height="8"/>
+        <polygon x17="-24" x12="-23" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="-25" y8="19" y11="14" x2="-25" y13="11" y17="19" y4="11" x10="-24" x11="-24" x15="-25" x7="-24" x16="-25" x9="-23" y3="19" antialias="false" y1="11" x8="-23" y5="11" y7="19" x3="-25" y14="11" y10="16" x6="-24" closed="false" y15="11" y16="19" y6="11" x5="-25" y2="19" x13="-23" y9="17" y12="13" x14="-25"/>
+        <polygon y4="-3" x4="27" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-18" y1="-7" antialias="false" x1="27" x2="-18" closed="false" y2="-7" y3="-3"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-15" rx="0" antialias="false" width="6" x="-27" height="20"/>
+        <polygon y4="-15" x4="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-33" y1="-3" x6="23" antialias="true" x1="23" x2="23" y6="-7" closed="false" x5="23" y2="5" y3="5" y5="-15"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="11" rx="0" antialias="false" width="3" x="-30" height="8"/>
+        <polygon y4="25" x4="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="20" y1="25" antialias="true" x1="18" x2="22" y2="25" y3="21"/>
+        <polygon y4="17" x4="27" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-18" y1="13" antialias="false" x1="27" x2="-18" closed="false" y2="13" y3="17"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="5" rx="0" antialias="false" width="6" x="-27" height="20"/>
+        <polygon y4="5" x4="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-33" y1="17" x6="23" antialias="true" x1="23" x2="23" y6="13" closed="false" x5="23" y2="25" y3="25" y5="5"/>
+        <polygon y4="25" x4="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-30" y1="25" antialias="true" x1="-32" x2="-28" y2="25" y3="21"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" rx="0" antialias="false" width="3" x="27" height="30"/>
+        <terminal y="30" name="" type="Generic" orientation="s" uuid="{886e0767-11f7-4bf9-94b6-9733db6e2e73}" x="-30"/>
+        <terminal y="30" name="" type="Generic" orientation="s" uuid="{9266e5c6-5386-473d-9268-f366b5ae04a4}" x="20"/>
+    </description>
+</definition>

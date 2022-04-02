@@ -1,0 +1,65 @@
+<definition hotspot_y="12" type="element" hotspot_x="57" version="0.90" link_type="simple" width="90" height="40">
+    <uuid uuid="{0e2d090d-f0a0-4f0a-8743-b7d9a30a3827}"/>
+    <names>
+        <name lang="ar">قابض مزدوج + اسطوانة دوارة + مغناطيس</name>
+        <name lang="ca">Doble pinça + cilindre rotatiu + imant</name>
+        <name lang="cs">Dvojité chapadlo + rotační válec + magnet</name>
+        <name lang="da">Dobbelt griber + roterende cylinder + magnet</name>
+        <name lang="de">Doppelgreifer + Drehzylinder + Magnet</name>
+        <name lang="el">Διπλή λαβή + περιστροφικός κύλινδρος + μαγνήτης</name>
+        <name lang="en">Double gripper + rotary cylinder + magnet</name>
+        <name lang="es">Pinza doble + cilindro rotativo + imán</name>
+        <name lang="fr">Double pince + cylindre rotatif + aimant</name>
+        <name lang="hr">Dvostruka hvataljka + rotacijski cilindar + magnet</name>
+        <name lang="hu">Dupla megfogó + forgóhenger + mágnes</name>
+        <name lang="it">Doppia pinza + cilindro rotante + magnete</name>
+        <name lang="ja">ダブルグリッパー+ロータリーシリンダー+マグネット</name>
+        <name lang="mn">Давхар атгагч + эргэдэг цилиндр + соронз</name>
+        <name lang="nb">Dobbel griper + roterende sylinder + magnet</name>
+        <name lang="nl">Dubbele grijper + roterende cilinder + magneet</name>
+        <name lang="pl">Podwójny chwytak + cylinder obrotowy + magnes</name>
+        <name lang="pt">Garra dupla + cilindro rotativo + ímã</name>
+        <name lang="pt_br">Garra dupla + cilindro rotativo + ímã</name>
+        <name lang="ro">Grip dublu + cilindru rotativ + magnet</name>
+        <name lang="ru">Двойной захват + поворотный цилиндр + магнит</name>
+        <name lang="sl">Dvojni prijemal + vrtljivi cilinder + magnet</name>
+        <name lang="sr">Двострука хватаљка + ротациони цилиндар + магнет</name>
+        <name lang="tr">Çift tutucu + döner silindir + mıknatıs</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-46" x2="-45" antialias="false" end2="none" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" end1="none" length1="1.5" length2="1.5"/>
+        <polygon x1="-45" x3="-45" y3="12" y4="8" x2="-41" x4="-45" antialias="true" y1="8" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="10"/>
+        <line x1="-47" x2="-45" antialias="false" end2="none" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" end1="none" length1="1.5" length2="1.5"/>
+        <dynamic_text z="1" text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-7" y="-57" frame="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" keep_visual_rotation="false" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-45.0059" x2="-44.9863" antialias="false" end2="none" y1="-5.47846" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="14.4798" end1="none" length1="1.5" length2="1.5"/>
+        <rect ry="0" x="-35.4889" rx="0" y="3" antialias="false" width="12.4889" height="3" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x1="-45" x3="-45" y3="2" y4="-2" x2="-41" x4="-45" antialias="true" y1="-2" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0"/>
+        <arc x="-55.5" angle="173.938" y="-5.5" antialias="true" start="272.875" width="20" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text z="7" text_width="-1" text_from="ElementInfo" Valignment="AlignTop" x="-78" y="17" frame="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" uuid="{b02d570c-9419-476f-95e6-dc0900d156cd}" keep_visual_rotation="true" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon closed="false" x11="21" y2="-3" x5="26" y6="-3" y1="-3" y11="2" x10="24" x2="18" x4="24" y3="-5" y5="-3" y4="-3" x6="28" x7="28" x3="21" y7="0" x1="13" y8="0" y13="0" y10="0" x9="26" y9="0" x12="18" y12="0" x13="13" antialias="false" x8="28" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="10" x2="10" antialias="false" end2="none" y1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16" end1="none" length1="1.5" length2="1.5"/>
+        <polygon x1="-34.1663" x3="-29.9746" y3="-3.5784" y4="-5.8785" x2="-32.1203" x4="-34.1789" antialias="true" y1="-5.8785" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-1.84982"/>
+        <polygon closed="false" x11="21" y2="10" x5="26" y6="10" y1="10" y11="15" x10="24" x2="18" x4="24" y3="8" y5="10" y4="10" x6="28" x7="28" x3="21" y7="13" x1="13" y8="13" y13="13" y10="13" x9="26" y9="13" x12="18" y12="13" x13="13" antialias="false" x8="28" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x1="-34.2302" x3="-29.9741" y3="14.6634" y4="17.0251" x2="-32.3232" x4="-34.2302" antialias="true" y1="17.0251" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="12.9205"/>
+        <rect ry="0" x="-17" rx="0" y="-3" antialias="false" width="7" height="16" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x1="-20" x2="-20" antialias="false" end2="none" y1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16" end1="none" length1="1.5" length2="1.5"/>
+        <polygon x1="-22" x3="-20" y3="9" y4="13" x2="-18" x4="-22" antialias="true" y1="13" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="13"/>
+        <polygon x1="8" x3="12" y3="13" y4="13" x2="10" x4="8" antialias="true" y1="13" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="9"/>
+        <polygon y14="1.05522" x16="-14.5246" closed="false" x11="-13.5246" x17="-13.5246" y2="9.05522" x5="-14.5246" y6="1.05522" y1="1.05522" y11="4.05522" x10="-13.5246" x2="-14.5246" x4="-14.5246" y15="1.05522" y3="9.05522" y5="1.05522" y4="1.05522" x6="-13.5246" x7="-13.5246" x14="-14.5246" x15="-14.5246" x3="-14.5246" y7="9.05522" x1="-14.5246" y8="9.05522" y13="1.05522" y17="9.05522" y10="6.05522" y16="9.05522" x9="-12.5246" y9="7.05522" x12="-12.5246" y12="3.05522" x13="-12.5246" antialias="false" x8="-12.5246" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect ry="0" x="-23" rx="0" y="-3" antialias="false" width="36" height="16" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc x="-64" angle="60.5" y="-12" antialias="true" start="330.563" width="35" height="35" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal type="Generic" x="10" y="20" name="" orientation="s" uuid="{de73745d-d228-4f0e-9cc1-137e246cb3d4}"/>
+        <terminal type="Generic" x="-50" y="10" name="" orientation="w" uuid="{8a58159a-f527-4d79-9885-5f165a9f47a8}"/>
+        <terminal type="Generic" x="-50" y="0" name="" orientation="w" uuid="{c1bd59cc-b755-477d-bfe3-90acba52c70d}"/>
+        <terminal type="Generic" x="-20" y="20" name="" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}"/>
+    </description>
+</definition>

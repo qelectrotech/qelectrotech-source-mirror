@@ -1,0 +1,50 @@
+<definition height="40" type="element" width="70" link_type="simple" version="0.90" hotspot_y="15" hotspot_x="14">
+    <uuid uuid="{a21fc34f-4eda-41f1-8ead-06a860ccf989}"/>
+    <names>
+        <name lang="ar">صمام خانق قابل للتعديل في اتجاه واحد</name>
+        <name lang="ca">Vàlvula d'acceleració ajustable unidireccional</name>
+        <name lang="cs">Jednosměrně nastavitelný škrticí ventil</name>
+        <name lang="da">Justerbar gasspjæld envejs</name>
+        <name lang="de">Einstellbare Drosselklappe in eine Richtung</name>
+        <name lang="el">Ρυθμιζόμενη βαλβίδα πεταλούδας μονής κατεύθυνσης</name>
+        <name lang="en">Adjustable throttle valve oneway</name>
+        <name lang="es">Válvula de mariposa ajustable unidireccional</name>
+        <name lang="fr">Papillon des gaz réglable unidirectionnel</name>
+        <name lang="hr">Podesiv prigušni ventil u jednom smjeru</name>
+        <name lang="hu">Egy irányba állítható fojtószelep</name>
+        <name lang="it">Valvola a farfalla regolabile unidirezionale</name>
+        <name lang="ja">一方向に調整可能なスロットルバルブ</name>
+        <name lang="mn">Нэг талын тохируулагч тохируулагч хавхлаг</name>
+        <name lang="nb">Justerbar gassventil enveis</name>
+        <name lang="nl">Verstelbare gasklep eenrichtingsverkeer</name>
+        <name lang="pl">Regulowany zawór dławiący w jedną stronę</name>
+        <name lang="pt">Válvula de aceleração ajustável unidirecional</name>
+        <name lang="pt_br">Válvula de aceleração ajustável unidirecional</name>
+        <name lang="ro">Supapă de accelerație reglabilă într-un singur sens</name>
+        <name lang="ru">Регулируемый дроссельный клапан в одну сторону</name>
+        <name lang="sl">Nastavljiv dušilni ventil v eno smer</name>
+        <name lang="sr">Подесив пригушни вентил у једном правцу</name>
+        <name lang="tr">Tek yönlü ayarlanabilir gaz kelebeği</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text Halignment="AlignLeft" text_from="ElementInfo" text_width="-1" x="-28" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{205f4869-dc34-45e6-9cb4-4328574de719}" frame="false" rotation="0" Valignment="AlignTop" y="-22" z="1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y2="-4" y3="-8" x4="24" y1="-6" x3="28" x1="24" style="line-style:normal;line-weight:thin;filling:black;color:black" y4="-6" antialias="true" x2="26"/>
+        <arc height="20" width="40" start="60" angle="60" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="2" antialias="true"/>
+        <line y2="0" end1="none" length1="1.5" length2="1.5" y1="0" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="50" end2="none"/>
+        <polygon y2="13" y3="17" y1="9" x3="21" x1="21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="25" closed="false"/>
+        <circle diameter="4" x="19" style="line-style:normal;line-weight:normal;filling:none;color:black" y="11" antialias="true"/>
+        <line y2="-5" end1="none" length1="1.5" length2="1.5" y1="8" x1="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="25" end2="none"/>
+        <arc height="20" width="40" start="-60" angle="-60" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-22" antialias="true"/>
+        <rect height="30" rx="0" width="50" ry="0" x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="false"/>
+        <polygon y2="13" y3="1" y1="13" x3="39" x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="39" closed="false"/>
+        <polygon y2="13" y3="0" y1="13" x3="1" x1="19" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="1" closed="false"/>
+        <terminal orientation="e" type="Generic" x="50" uuid="{35f2596d-3002-4456-a47c-dfb451ceb01d}" name="" y="0"/>
+        <terminal orientation="w" type="Generic" x="-10" uuid="{2b9f9709-0a83-4f57-9fed-9665adf02831}" name="" y="0"/>
+    </description>
+</definition>

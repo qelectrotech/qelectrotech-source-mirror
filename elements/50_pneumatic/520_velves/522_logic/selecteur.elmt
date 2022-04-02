@@ -1,0 +1,52 @@
+<definition link_type="simple" width="70" type="element" height="50" hotspot_y="29" hotspot_x="4" version="0.90">
+    <uuid uuid="{6519aa61-1acd-4cc8-a758-223ba2f7b0c7}"/>
+    <names>
+        <name lang="ar">دائرة المحدد</name>
+        <name lang="ca">Circuit selector</name>
+        <name lang="cs">Voličový obvod</name>
+        <name lang="da">Vælgerkredsløb</name>
+        <name lang="de">Wechselventilil</name>
+        <name lang="el">Κύκλωμα επιλογέα</name>
+        <name lang="en">Selector circuit</name>
+        <name lang="es">Circuito selector</name>
+        <name lang="fr">Circuit sélecteur</name>
+        <name lang="hr">Selektorski krug</name>
+        <name lang="hu">Kiválasztó áramkör</name>
+        <name lang="it">Circuito selettore</name>
+        <name lang="ja">セレクタ回路</name>
+        <name lang="mn">Сонгогч хэлхээ</name>
+        <name lang="nb">Velgerkrets</name>
+        <name lang="nl">Selectiecircuit</name>
+        <name lang="pl">Obwód selektora</name>
+        <name lang="pt">Circuito seletor</name>
+        <name lang="pt_br">Circuito seletor</name>
+        <name lang="ro">Circuit selector</name>
+        <name lang="ru">Селекторная схема</name>
+        <name lang="sl">Izbirno vezje</name>
+        <name lang="sr">Селекторско коло</name>
+        <name lang="tr">seçici devre</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="31" color="#000000" y="-16" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="2"/>
+        <dynamic_text z="1" text_from="ElementInfo" x="33" Valignment="AlignTop" y="-35.95" text_width="-1" uuid="{d6c46d4e-3b7b-49cf-9aa0-1144f964fd78}" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" keep_visual_rotation="false" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="56" color="#000000" y="5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="1"/>
+        <circle x="28.85" y="-1.15" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" diameter="2.3"/>
+        <line x2="30" y1="0" x1="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="-15"/>
+        <line x2="55" y1="0" x1="19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="0"/>
+        <rect x="5" width="50" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" ry="0" rx="0"/>
+        <polygon y3="5" x2="10" y1="-5" x1="16" x3="16" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y2="0" closed="false"/>
+        <line x2="10" y1="0" x1="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" length1="1.5" length2="1.5" y2="0"/>
+        <polygon y3="5" x2="50" y1="-5" x1="45" x3="45" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" closed="false"/>
+        <circle x="13" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="6"/>
+        <text x="1" color="#000000" y="5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="1"/>
+        <terminal x="30" name="" y="-20" uuid="{1359ee8e-9580-46e5-a8a6-32794253324e}" type="Generic" orientation="n"/>
+        <terminal x="60" name="" y="0" uuid="{882936f0-6706-4572-afac-9aba566f9175}" type="Generic" orientation="e"/>
+        <terminal x="0" name="" y="0" uuid="{aa47cf78-8c1c-4155-9d59-2ca3525e4b2e}" type="Generic" orientation="w"/>
+    </description>
+</definition>

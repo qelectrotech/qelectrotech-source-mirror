@@ -1,0 +1,48 @@
+<definition link_type="simple" type="element" width="90" hotspot_y="24" version="0.90" hotspot_x="24" height="40">
+    <uuid uuid="{db6252bf-154d-4512-bef5-7e526e78a90c}"/>
+    <names>
+        <name lang="ar">مجمع الهواء المضغوط ثلاث وصلات</name>
+        <name lang="ca">Acumulador d'aire comprimit tres connexions</name>
+        <name lang="cs">Akumulátor stlačeného vzduchu tři přípojky</name>
+        <name lang="da">Trykluftakkumulator tre tilslutninger</name>
+        <name lang="de">Druckluftspeicher drei Anschlüssen</name>
+        <name lang="el">Τρεις συνδέσεις συσσωρευτή πεπιεσμένου αέρα</name>
+        <name lang="en">Compressed air accumulator three connections</name>
+        <name lang="es">Acumulador de aire comprimido tres conexiones</name>
+        <name lang="fr">Accumulateur d'air comprimé trois connexions</name>
+        <name lang="hr">Akumulator komprimiranog zraka tri priključka</name>
+        <name lang="hu">Sűrített levegős akkumulátor három csatlakozással</name>
+        <name lang="it">Accumulatore ad aria compressa tre connessioni</name>
+        <name lang="ja">圧縮空気アキュムレータの3つの接続</name>
+        <name lang="mn">Шахсан агаарын аккумлятор гурван холболттой</name>
+        <name lang="nb">Trykkluftakkumulator tre koblinger</name>
+        <name lang="nl">Persluchtaccumulator drie aansluitingen</name>
+        <name lang="pl">Zasobnik sprężonego powietrza trzy połączenia</name>
+        <name lang="pt">Acumulador de ar comprimido três conexões</name>
+        <name lang="pt_br">Acumulador de ar comprimido três conexões</name>
+        <name lang="ro">Acumulator de aer comprimat trei conexiuni</name>
+        <name lang="ru">Аккумулятор сжатого воздуха три соединения</name>
+        <name lang="sl">Akumulator stisnjenega zraka s tremi priključki</name>
+        <name lang="sr">Акумулатор компримованог ваздуха са три прикључка</name>
+        <name lang="tr">Basınçlı hava akümülatörü üç bağlantı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{a063b1b6-54c2-45e9-959e-15a2d2006b92}" frame="false" Valignment="AlignTop" Halignment="AlignLeft" z="1" text_from="ElementInfo" keep_visual_rotation="false" x="13" y="-45.95" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" x1="30" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x2="30" y2="6" length1="1.5"/>
+        <line end1="none" x1="56" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x2="50" y2="-10" length1="1.5"/>
+        <line end1="none" x1="0" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x2="40" y2="0" length1="1.5"/>
+        <line end1="none" x1="0" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x2="40" y2="-20" length1="1.5"/>
+        <arc width="20" start="90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="30" y="-20" angle="-180" height="20"/>
+        <arc width="20" start="-90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" y="-20" angle="-180" height="20"/>
+        <line end1="none" x1="-10" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x2="-16" y2="-10" length1="1.5"/>
+        <terminal uuid="{9e6da623-508d-46d3-9527-0f71e1512900}" type="Generic" name="" x="60" y="-10" orientation="e"/>
+        <terminal uuid="{68f5868f-b30c-41c2-a3d5-3b88a0f6fbd3}" type="Generic" name="" x="-20" y="-10" orientation="w"/>
+        <terminal uuid="{d9c8160d-d12f-4d5b-9ab8-0ece72d58866}" type="Generic" name="" x="30" y="10" orientation="s"/>
+    </description>
+</definition>

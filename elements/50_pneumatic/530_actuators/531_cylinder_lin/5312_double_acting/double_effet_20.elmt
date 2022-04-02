@@ -1,0 +1,48 @@
+<definition hotspot_x="37" width="70" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{b39cc7df-ac68-4191-bf8b-8d0fc579f6be}"/>
+    <names>
+        <name lang="ar">مزدوج الفعل + فرامل نهاية الشوط على جانب واحد + قابل للتعديل</name>
+        <name lang="ca">Doble efecte + fre de final de carrera per un costat + regulable</name>
+        <name lang="cs">Dvojčinná + brzda konce zdvihu na jedné straně + nastavitelná</name>
+        <name lang="da">Dobbeltvirkende + slutbremse på den ene side + justerbar</name>
+        <name lang="de">Doppeltwirkend + Endlagenbremse einseitig + einstellbar</name>
+        <name lang="el">Διπλής δράσης + φρένο στο τέλος της διαδρομής στη μία πλευρά + ρυθμιζόμενο</name>
+        <name lang="en">Double-acting + end-of-stroke brake on one side + adjustable</name>
+        <name lang="es">Freno de doble efecto + final de carrera en un lado + ajustable</name>
+        <name lang="fr">Double effet + frein de fin de course d'un côté + réglable</name>
+        <name lang="hr">Dvostruko djelovanje + kočnica na kraju hoda s jedne strane + podesiva</name>
+        <name lang="hu">Kettős működésű + löketvégi fék az egyik oldalon + állítható</name>
+        <name lang="it">Doppio effetto + freno di fine corsa su un lato + regolabile</name>
+        <name lang="ja">複動式+片側のストロークエンドブレーキ+調整可能</name>
+        <name lang="mn">Давхар үйлдэлтэй + нэг талдаа харвалтын төгсгөлийн тоормос + тохируулгатай</name>
+        <name lang="nb">Dobbeltvirkende + sluttbrems på den ene siden + justerbar</name>
+        <name lang="nl">Dubbelwerkend + eindeslagrem eenzijdig + verstelbaar</name>
+        <name lang="pl">Dwustronnego działania + hamulec krańcowy po jednej stronie + regulowany</name>
+        <name lang="pt">Duplo efeito + freio de fim de curso de um lado + ajustável</name>
+        <name lang="pt_br">Duplo efeito + freio de fim de curso de um lado + ajustável</name>
+        <name lang="ro">Dubla actiune + frana de final de cursa pe o parte + reglabila</name>
+        <name lang="ru">Двустороннего действия + односторонний тормоз в конце хода + регулируемый</name>
+        <name lang="sl">Dvosmerna + zavora na koncu hoda na eni strani + nastavljiva</name>
+        <name lang="sr">Двоструко дејство + кочница на крају хода на једној страни + подесива</name>
+        <name lang="tr">Tek taraflı çift etkili + strok sonu freni + ayarlanabilir</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-26" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-33" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" antialias="false" x1="-32" length2="1.5" x2="-21" end1="none" end2="none" length1="1.5" y2="0"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="1" rx="0" antialias="false" width="3" x="-30" height="8"/>
+        <polygon y4="0" x4="-23" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="-19" y1="0" antialias="true" x1="-23" x2="-21" y2="2" y3="-2"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" rx="0" antialias="false" width="3" x="-27" height="20"/>
+        <polygon y4="15" x4="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="20" y1="15" antialias="true" x1="18" x2="22" y2="15" y3="11"/>
+        <polygon y4="7" x4="28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-24" y1="3" antialias="false" x1="28" x2="-24" closed="false" y2="3" y3="7"/>
+        <polygon y4="-5" x4="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-33" y1="7" x6="23" antialias="true" x1="23" x2="23" y6="3" closed="false" x5="23" y2="15" y3="15" y5="-5"/>
+        <polygon y4="15" x4="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-30" y1="15" antialias="true" x1="-32" x2="-28" y2="15" y3="11"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{8f3be32e-851a-427c-a68d-b241257f983c}" x="20"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{23c888b0-cc9b-402b-827c-177017ce9ce1}" x="-30"/>
+    </description>
+</definition>

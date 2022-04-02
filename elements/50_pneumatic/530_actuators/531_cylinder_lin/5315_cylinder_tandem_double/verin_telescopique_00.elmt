@@ -1,0 +1,44 @@
+<definition hotspot_x="27" width="80" link_type="simple" hotspot_y="11" type="element" version="0.90" height="40">
+    <uuid uuid="{2c322ffd-2ded-470e-aae2-cf754cfcff02}"/>
+    <names>
+        <name lang="ar">تلسكوبي أحادي المفعول</name>
+        <name lang="ca">Telescòpic de simple efecte</name>
+        <name lang="cs">Teleskopický jednočinný</name>
+        <name lang="da">Teleskopisk enkeltvirkende</name>
+        <name lang="de">Teleskop Einfachwirkend</name>
+        <name lang="el">Τηλεσκοπικό μονής δράσης</name>
+        <name lang="en">Telescopic single-acting</name>
+        <name lang="es">telescópico de simple efecto</name>
+        <name lang="fr">Télescopique simple effet</name>
+        <name lang="hr">Teleskopski jednosmjerni</name>
+        <name lang="hu">Teleszkópos, egyszeres működésű</name>
+        <name lang="it">Telescopico a semplice effetto</name>
+        <name lang="ja">伸縮式単動式</name>
+        <name lang="mn">Телескопийн нэг үйлдэлтэй</name>
+        <name lang="nb">Teleskopisk enkeltvirkende</name>
+        <name lang="nl">Telescopisch enkelwerkend</name>
+        <name lang="pl">Teleskopowy jednostronnego działania</name>
+        <name lang="pt">Telescópica de ação simples</name>
+        <name lang="pt_br">Telescópica de ação simples</name>
+        <name lang="ro">Telescopic cu efect simplu</name>
+        <name lang="ru">Телескопический одностороннего действия</name>
+        <name lang="sl">Teleskopsko enosmerno delovanje</name>
+        <name lang="sr">Телескопски једносмерни</name>
+        <name lang="tr">Teleskopik tek etkili</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" y="-30" z="1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" uuid="{dbd71dbe-d663-477f-9dfd-8725fc661135}" x="-25" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y4="15" x4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" y1="7" antialias="false" x1="42" x2="42" closed="false" y2="11" y3="11"/>
+        <polygon y4="-5" x4="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-23" y1="11" x6="33" antialias="true" x1="33" x2="33" y6="-1" closed="false" x5="33" y2="15" y3="15" y5="-5"/>
+        <polygon y4="15" x4="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-20" y1="15" antialias="true" x1="-22" x2="-18" y2="15" y3="11"/>
+        <polygon y4="-5" x4="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-12" y1="2" antialias="false" x1="42" x2="42" closed="false" y2="-1" y3="-1"/>
+        <polygon y4="7" x4="48" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="48" y1="0" x6="-1" antialias="false" x1="-1" x2="-1" y6="10" closed="false" x5="-1" y2="3" y3="3" y5="7"/>
+        <terminal y="20" name="" type="Generic" orientation="s" uuid="{9919b6fc-d9f8-4da4-a36d-3238cc0ce8e9}" x="-20"/>
+    </description>
+</definition>

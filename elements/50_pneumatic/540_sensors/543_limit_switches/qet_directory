@@ -1,0 +1,30 @@
+<qet-directory>
+    <names>
+      <name lang="ar">مفاتيح الحد</name>
+      <name lang="be">interrupteur</name>
+      <name lang="ca">interruptors de límit</name>
+      <name lang="cs">koncové spínače</name>
+      <name lang="da">endestopkontakter</name>
+      <name lang="de">Endlagenschalter</name>
+      <name lang="el">οριακούς διακόπτες</name>
+      <name lang="en">limit switches</name>
+      <name lang="es">finales de carrera</name>
+      <name lang="fr">interrupteur</name>
+      <name lang="hr">krajnje sklopke</name>
+      <name lang="hu">végálláskapcsolók</name>
+      <name lang="it">interruttore d'arresto</name>
+      <name lang="ja">制限スイッチ</name>
+      <name lang="mn">хязгаарлагч унтраалга</name>
+      <name lang="nb">grensebrytere</name>
+      <name lang="nl">eindschakelaars</name>
+      <name lang="pl">wyłączniki krańcowe</name>
+      <name lang="pt">interruptores de limite</name>
+      <name lang="ro">întrerupătoare de limită</name>
+      <name lang="ru">концевые выключатели</name>
+      <name lang="sl">končna stikala</name>
+      <name lang="sr">гранични прекидачи</name>
+      <name lang="tr">limit anahtarları</name>
+    </names>
+</qet-directory>
+
+

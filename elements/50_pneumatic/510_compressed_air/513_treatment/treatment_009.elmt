@@ -1,0 +1,49 @@
+<definition height="50" version="0.5" width="70" hotspot_x="14" type="element" link_type="simple" hotspot_y="35">
+    <uuid uuid="{24f8678b-f56f-42be-ba14-69cee49c7467}"/>
+    <names>
+        <name lang="ar">مرشح الهواء المضغوط مع المغناطيس</name>
+        <name lang="ca">Filtre d'aire comprimit amb imant</name>
+        <name lang="cs">Filtr na stlačený vzduch s magnetem</name>
+        <name lang="da">Trykluftfilter med magnet</name>
+        <name lang="de">Druckluftfilter mit Magnet</name>
+        <name lang="el">Φίλτρο πεπιεσμένου αέρα με μαγνήτη</name>
+        <name lang="en">Compressed air filter with magnet</name>
+        <name lang="es">Filtro de aire comprimido con imán</name>
+        <name lang="fr">Filtre à air comprimé avec aimant</name>
+        <name lang="hr">Filter komprimiranog zraka s magnetom</name>
+        <name lang="hu">Sűrített levegő szűrő mágnessel</name>
+        <name lang="it">Filtro aria compressa con magnete</name>
+        <name lang="ja">磁石付き圧縮空気フィルター</name>
+        <name lang="mn">Соронзон бүхий шахсан агаарын шүүлтүүр</name>
+        <name lang="nb">Trykkluftfilter med magnet</name>
+        <name lang="nl">Persluchtfilter met magneet</name>
+        <name lang="pl">Filtr sprężonego powietrza z magnesem</name>
+        <name lang="pt">Filtro de ar comprimido com ímã</name>
+        <name lang="pt_br">Filtro de ar comprimido com ímã</name>
+        <name lang="ro">Filtru de aer comprimat cu magnet</name>
+        <name lang="ru">Фильтр сжатого воздуха с магнитом</name>
+        <name lang="sl">Filter za stisnjen zrak z magnetom</name>
+        <name lang="sr">Филтер за компримовани ваздух са магнетом</name>
+        <name lang="tr">Mıknatıslı basınçlı hava filtresi</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="-4" tagg="label" y="-29.5" rotate="true" text="_" size="7"/>
+        <line y1="-6.05" end2="none" length2="1.5" x1="16.95" end1="none" x2="22.95" length1="1.5" y2="-6.05" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y1="-10" y5="-10" x5="0" x3="40" y4="10" x1="0" y3="-10" x4="20" x2="20" y2="-30" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-14" end2="none" length2="1.5" x1="17" end1="none" x2="23" length1="1.5" y2="-14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-14" end2="none" length2="1.5" x1="23" end1="none" x2="23" length1="1.5" y2="-6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="4" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="9" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-3" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="2" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-9" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-15" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-22" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-17" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-29" end2="none" length2="1.5" x1="20" end1="none" x2="20" length1="1.5" y2="-24" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="40" end1="none" x2="50" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" end2="none" length2="1.5" x1="-10" end1="none" x2="0" length1="1.5" y2="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="50" y="-10" orientation="e"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+        <terminal x="-10" y="-10" orientation="w"/>
+    </description>
+</definition>
