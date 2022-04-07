@@ -153,23 +153,23 @@ void MachineInfo::send_info_to_debug()
 
 	foreach (const QStorageInfo &storage, QStorageInfo::mountedVolumes()) {
 			if (storage.isReadOnly())
-				qInfo() << "isReadOnly:" << storage.isReadOnly();
+				qDebug() << "isReadOnly:" << storage.isReadOnly();
 		 
 			qInfo() << "DISK :" << storage.rootPath().toLocal8Bit().constData() <<  " ";
 			qInfo()  << "FileSystemType:" << storage.fileSystemType();
-			qInfo()  << "SizeTotal:" << storage.bytesFree() /1024/1024/1024  <<  "GB";
-			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1024/1024/1024 <<  "GB";
+			qInfo()  << "SizeTotal:" << storage.bytesTotal()/1000000000  <<  "GB";
+			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1000000000  <<  "GB";
 		 }
 		 
 	QStorageInfo storage(qApp->applicationDirPath());
 		  
 			if (storage.isReadOnly())
-			qInfo() << "isReadOnly:" << storage.isReadOnly();
+			qDebug() << "isReadOnly:" << storage.isReadOnly();
 	
 			qInfo() << "DISK USED:" << storage.rootPath().toLocal8Bit().constData() <<  " ";
 			qInfo()  << "FileSystemType:" << storage.fileSystemType();
-			qInfo()  << "SizeTotal:" << storage.bytesFree()/1024/1024/1024  <<  "GB";
-			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1024/1024/1024 <<  "GB";
+			qInfo()  << "SizeTotal:" << storage.bytesTotal()/1000000000  <<  "GB";
+			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1000000000 <<  "GB";
 		
 		
 }
