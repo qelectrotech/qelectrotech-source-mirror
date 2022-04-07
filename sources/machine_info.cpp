@@ -153,7 +153,7 @@ void MachineInfo::send_info_to_debug()
 
 	foreach (const QStorageInfo &storage, QStorageInfo::mountedVolumes()) {
 			if (storage.isReadOnly())
-				qDebug() << "isReadOnly:" << storage.isReadOnly();
+				qInfo() << "isReadOnly:" << storage.isReadOnly();
 		 
 			qInfo() << "DISK :" << storage.rootPath().toLocal8Bit().constData() <<  " ";
 			qInfo()  << "FileSystemType:" << storage.fileSystemType();
@@ -164,7 +164,7 @@ void MachineInfo::send_info_to_debug()
 	QStorageInfo storage(qApp->applicationDirPath());
 		  
 			if (storage.isReadOnly())
-			qDebug() << "isReadOnly:" << storage.isReadOnly();
+			qInfo() << "isReadOnly:" << storage.isReadOnly();
 	
 			qInfo() << "DISK USED:" << storage.rootPath().toLocal8Bit().constData() <<  " ";
 			qInfo()  << "FileSystemType:" << storage.fileSystemType();
