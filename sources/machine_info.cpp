@@ -23,6 +23,7 @@
 #include <QSysInfo>
 #include <QStorageInfo>
 #include <QLibraryInfo>
+#include <QStorageInfo>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -149,6 +150,28 @@ void MachineInfo::send_info_to_debug()
 			+ QString::number(pc.screen.height[ii])
 			+ " )";
 	}
+
+	foreach (const QStorageInfo &storage, QStorageInfo::mountedVolumes()) {
+			if (storage.isReadOnly())
+				qDebug() << "isReadOnly:" << storage.isReadOnly();
+		 
+			qInfo() << "DISK :" << storage.rootPath().toLocal8Bit().constData() <<  " ";
+			qInfo()  << "FileSystemType:" << storage.fileSystemType();
+			qInfo()  << "SizeTotal:" << storage.bytesFree() /1024/1024/1024  <<  "GB";
+			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1024/1024/1024 <<  "GB";
+		 }
+		 
+	QStorageInfo storage(qApp->applicationDirPath());
+		  
+			if (storage.isReadOnly())
+			qDebug() << "isReadOnly:" << storage.isReadOnly();
+	
+			qInfo() << "DISK USED:" << storage.rootPath().toLocal8Bit().constData() <<  " ";
+			qInfo()  << "FileSystemType:" << storage.fileSystemType();
+			qInfo()  << "SizeTotal:" << storage.bytesFree()/1024/1024/1024  <<  "GB";
+			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1024/1024/1024 <<  "GB";
+		
+		
 }
 
 /**
@@ -243,6 +266,9 @@ void MachineInfo::init_get_cpu_info_linux()
 	QString linuxGPURAMOutput = linuxgpuRAM.readAllStandardOutput();
 	pc.gpu.RAM=QString(linuxGPURAMOutput.toLocal8Bit().constData());
 	linuxgpuRAM.close();
+    
+ 
+       
 }
 
 /**
