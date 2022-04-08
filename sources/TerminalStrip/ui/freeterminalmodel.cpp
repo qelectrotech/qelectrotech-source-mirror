@@ -276,6 +276,30 @@ modelRealTerminalData FreeTerminalModel::dataAtRow(int row) const
 }
 
 /**
+ * @brief FreeTerminalModel::realTerminalForIndex
+ * @param index_list
+ * @return The QSharedPointer<RealTerminal> associated with the index found in @a index_list
+ */
+QVector<QSharedPointer<RealTerminal> > FreeTerminalModel::realTerminalForIndex(const QModelIndexList &index_list) const
+{
+	QVector<QSharedPointer<RealTerminal>> vector_;
+	for (const auto &index : index_list)
+	{
+		if (index.isValid()
+			&& index.model() == this
+			&& index.row() < m_terminal_vector.size())
+		{
+			const auto rt_ = m_terminal_vector.at(index.row());
+			if (!vector_.contains(rt_)) {
+				vector_.append(m_terminal_vector.at(index.row()));
+			}
+		}
+	}
+
+	return vector_;
+}
+
+/**
  * @brief FreeTerminalModel::fillTerminalVector
  */
 void FreeTerminalModel::fillTerminalVector()

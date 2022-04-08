@@ -22,6 +22,8 @@
 #include "../../diagram.h"
 #include "../../elementprovider.h"
 #include "freeterminalmodel.h"
+#include "../terminalstrip.h"
+#include "../UndoCommand/addterminaltostripcommand.h"
 
 /**
  * @brief FreeTerminalEditor::FreeTerminalEditor
@@ -39,6 +41,11 @@ FreeTerminalEditor::FreeTerminalEditor(QETProject *project, QWidget *parent) :
 	m_model = new FreeTerminalModel(m_project, this);
 	ui->m_table_view->setModel(m_model);
 	ui->m_table_view->setCurrentIndex(m_model->index(0,0));
+
+		//Disabled the move if the table is currently edited (yellow cell)
+	connect(m_model, &FreeTerminalModel::dataChanged, this, [=] {
+		this->setDisabledMove();
+	});
 
 	connect(ui->m_table_view, &QAbstractItemView::doubleClicked, this, [=](const QModelIndex &index)
 	{
@@ -78,8 +85,21 @@ FreeTerminalEditor::~FreeTerminalEditor()
  * the current state of the project.
  * Every not applied change will be lost.
  */
-void FreeTerminalEditor::reload() {
+void FreeTerminalEditor::reload()
+{
 	m_model->clear();
+	ui->m_move_in_cb->clear();
+
+	if (m_project)
+	{
+		const auto strip_vector = m_project->terminalStrip();
+		for (const auto &strip : strip_vector)
+		{
+			QString str(strip->installation() + " " + strip->location() + " " + strip->name());
+			ui->m_move_in_cb->addItem(str, strip->uuid());
+		}
+		setDisabledMove(false);
+	}
 }
 
 /**
@@ -141,7 +161,7 @@ void FreeTerminalEditor::on_m_type_cb_activated(int index)
 					default:
 						override_type = ElementData::TTGeneric; break;
 				}
-				m_model->setData(type_index, override_type);
+				m_model->setData(type_index, override_type);	
 			}
 		}
 	}
@@ -193,5 +213,46 @@ void FreeTerminalEditor::on_m_led_cb_activated(int index)
 			}
 		}
 	}
+}
+
+
+void FreeTerminalEditor::on_m_move_pb_clicked()
+{
+		//Get the selected real terminal
+	const auto index_list = ui->m_table_view->selectionModel()->selectedIndexes();
+	const auto real_t_vector = m_model->realTerminalForIndex(index_list);
+	if (real_t_vector.isEmpty()) {
+		return;
+	}
+
+		//Get the terminal strip who receive the real terminal
+	const auto strip_uuid = ui->m_move_in_cb->currentData().toUuid();
+	TerminalStrip *terminal_strip{nullptr};
+	for (const auto &strip : m_project->terminalStrip()) {
+		if (strip->uuid() == strip_uuid) {
+			terminal_strip = strip;
+			break;
+		}
+	}
+
+	if (!terminal_strip) {
+		return;
+	}
+
+		//Apply action with an undo command
+	auto parent_undo = new QUndoCommand(tr("Déplacer des bornes à un groupe de bornes"));
+	for (const auto &rt_ : real_t_vector) {
+		new AddTerminalToStripCommand(rt_, terminal_strip, parent_undo);
+	}
+	m_project->undoStack()->push(parent_undo);
+
+	reload();
+}
+
+void FreeTerminalEditor::setDisabledMove(bool b)
+{
+	ui->m_move_label->setDisabled(b);
+	ui->m_move_in_cb->setDisabled(b);
+	ui->m_move_pb->setDisabled(b);
 }
 

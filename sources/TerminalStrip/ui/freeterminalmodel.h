@@ -58,6 +58,7 @@ class FreeTerminalModel : public QAbstractTableModel
 		void clear();
 		QVector<modelRealTerminalData> modifiedModelRealTerminalData() const;
 		modelRealTerminalData dataAtRow(int row) const;
+		QVector<QSharedPointer<RealTerminal>> realTerminalForIndex(const QModelIndexList &index_list) const;
 
 	private:
 		void fillTerminalVector();

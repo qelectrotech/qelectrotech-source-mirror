@@ -62,6 +62,11 @@ void TerminalStripTreeDockWidget::reload()
 	m_uuid_terminal_H.clear();
 	m_uuid_strip_H.clear();
 
+	for (const auto &connection_ : qAsConst(m_strip_changed_connection)) {
+		disconnect(connection_);
+	}
+	m_strip_changed_connection.clear();
+
 
 	buildTree();
 
@@ -285,6 +290,8 @@ QTreeWidgetItem* TerminalStripTreeDockWidget::addTerminalStrip(TerminalStrip *te
 
 	m_item_strip_H.insert(strip_item, terminal_strip);
 	m_uuid_strip_H.insert(terminal_strip->uuid(), terminal_strip);
+
+	m_strip_changed_connection.append(connect(terminal_strip, &TerminalStrip::orderChanged, this, &TerminalStripTreeDockWidget::reload));
 	return strip_item;
 }
 
