@@ -73,7 +73,7 @@ void TerminalStripTreeDockWidget::reload()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
 	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
 #else
-	ui->m_terminal_strip_tw->expandAll();
+	ui->m_tree_view->expandAll();
 #endif
 
 		//Reselect the tree widget item of the current edited strip
