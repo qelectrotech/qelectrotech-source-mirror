@@ -122,6 +122,10 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 */
 QETProject::~QETProject()
 {
+		//We block database signal to avoid hundreds of unnecessary emitted signal
+		//due to deletion (diagram, item, etc...) and as much update made in the not yet deleted things.
+	m_data_base.blockSignals(true);
+
 		//Each time a diagram is deleted we also remove it from m_diagram_list
 		//because a lot of thing append during the destructor of a diagram class
 		//and one of these thing (not directly in the destructor of the diagram
