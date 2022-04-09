@@ -25,11 +25,16 @@
  * @param parent_strip : parent terminal strip
  * @param terminal : terminal element (if any) in a folio
  */
-RealTerminal::RealTerminal(TerminalStrip *parent_strip,
-						   Element *terminal) :
-	m_element(terminal),
-	m_parent_terminal_strip(parent_strip)
+RealTerminal::RealTerminal(Element *terminal) :
+	m_element(terminal)
 {}
+
+RealTerminal::~RealTerminal()
+{
+	if (m_physical_terminal) {
+		m_physical_terminal->removeTerminal(sharedRef());
+	}
+}
 
 /**
  * @brief RealTerminal::sharedRef
@@ -48,40 +53,21 @@ QSharedPointer<RealTerminal> RealTerminal::sharedRef()
 }
 
 /**
+ * @brief RealTerminal::sharedRef
+ * @return a shared reference of this, not that because
+ * this method is const, the shared reference can be null if not already
+ * used in another part of the code.
+ */
+QSharedPointer<RealTerminal> RealTerminal::sharedRef() const {
+	return QSharedPointer<RealTerminal>(m_this_weak);
+}
+
+/**
  * @brief RealTerminal::weakRef
  * @return a QWeakPointer of this, weak pointer can be bull
  */
 QWeakPointer<RealTerminal> RealTerminal::weakRef() {
 	return m_this_weak;
-}
-
-/**
- * @brief fromXml
- * @param xml_element
- * @return
- */
-bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElement *> &terminal_vector)
-{
-	if (xml_element.tagName() != xmlTagName()) {
-		return true;
-	}
-
-	m_uuid = QUuid(xml_element.attribute(QStringLiteral("uuid")));
-
-	if (xml_element.hasAttribute(QStringLiteral("element_uuid")))
-	{
-		QUuid uuid_(xml_element.attribute(QStringLiteral("element_uuid")));
-
-		for (auto terminal : terminal_vector) {
-			if (terminal->uuid() == uuid_)
-			{
-				m_element = terminal;
-				break;
-			}
-		}
-	}
-
-	return true;
 }
 
 /**
@@ -92,7 +78,6 @@ bool RealTerminal::fromXml(QDomElement xml_element, const QVector<TerminalElemen
 QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
 {
 	auto root_elmt = parent_document.createElement(this->xmlTagName());
-	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	if (m_element)
 		root_elmt.setAttribute(QStringLiteral("element_uuid"), m_element->uuid().toString());
 
@@ -100,11 +85,33 @@ QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
 }
 
 /**
-		 * @brief parentStrip
-		 * @return parent terminal strip
-		 */
-TerminalStrip *RealTerminal::parentStrip() const {
-	return m_parent_terminal_strip.data();
+ * @brief RealTerminal::setPhysicalTerminal
+ * Set the parent physical terminal of this real terminal
+ * @param phy_t
+ */
+void RealTerminal::setPhysicalTerminal(const QSharedPointer<PhysicalTerminal> &phy_t) {
+	m_physical_terminal = phy_t;
+}
+
+/**
+* @brief parentStrip
+* @return parent terminal strip or nullptr
+*/
+TerminalStrip *RealTerminal::parentStrip() const noexcept {
+	if (m_physical_terminal) {
+		return m_physical_terminal->terminalStrip();
+	} else {
+		return nullptr;
+	}
+}
+
+/**
+ * @brief RealTerminal::physicalTerminal
+ * @return The parent physical terminal of this terminal.
+ * The returned QSharedPointer can be null
+ */
+QSharedPointer<PhysicalTerminal> RealTerminal::physicalTerminal() const noexcept{
+	return m_physical_terminal;
 }
 
 /**
@@ -113,11 +120,9 @@ TerminalStrip *RealTerminal::parentStrip() const {
  */
 int RealTerminal::level() const
 {
-	if (m_parent_terminal_strip) {
-		const auto phy_t = m_parent_terminal_strip->physicalTerminal(m_this_weak);
-		if (phy_t) {
-			return phy_t->levelOf(m_this_weak);
-		}
+	if (m_physical_terminal &&
+		sharedRef()) {
+		return m_physical_terminal->levelOf(sharedRef());
 	}
 
 	return -1;
@@ -224,8 +229,8 @@ bool RealTerminal::isElement() const {
  */
 bool RealTerminal::isBridged() const
 {
-	if (m_parent_terminal_strip) {
-		return !m_parent_terminal_strip->isBridged(m_this_weak.toStrongRef()).isNull();
+	if (parentStrip()) {
+		return !parentStrip()->isBridged(m_this_weak.toStrongRef()).isNull();
 	} else {
 		return false;
 	}
@@ -237,8 +242,8 @@ bool RealTerminal::isBridged() const
  */
 QSharedPointer<TerminalStripBridge> RealTerminal::bridge() const
 {
-	if (m_parent_terminal_strip) {
-		return m_parent_terminal_strip->isBridged(m_this_weak.toStrongRef());
+	if (parentStrip()) {
+		return parentStrip()->isBridged(m_this_weak.toStrongRef());
 	} else {
 		return QSharedPointer<TerminalStripBridge>();
 	}
@@ -265,14 +270,6 @@ QUuid RealTerminal::elementUuid() const {
 	} else {
 		return QUuid();
 	}
-}
-
-/**
- * @brief uuid
- * @return the uuid of this real terminal
- */
-QUuid RealTerminal::uuid() const {
-	return m_uuid;
 }
 
 /**

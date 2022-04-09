@@ -61,6 +61,7 @@ class TerminalStrip;
 class PhysicalTerminal
 {
 		friend class TerminalStrip;
+		friend class RealTerminal;
 
 	private:
 		PhysicalTerminal(TerminalStrip *parent_strip, QVector<QSharedPointer<RealTerminal>> terminals);
@@ -75,9 +76,13 @@ class PhysicalTerminal
 
 		bool setLevelOf(const QSharedPointer<RealTerminal> &terminal, int level);
 
+		void setParentStrip(TerminalStrip *strip);
+
 	public:
 		PhysicalTerminal(){}
+		~PhysicalTerminal();
 
+		TerminalStrip* terminalStrip() const;
 		int levelCount() const;
 		int levelOf(const QSharedPointer<RealTerminal> &terminal) const;
 		QVector<QSharedPointer<RealTerminal>> realTerminals() const;

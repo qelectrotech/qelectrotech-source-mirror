@@ -90,7 +90,7 @@ QDomElement TerminalStripBridge::toXml(QDomDocument &parent_document) const
 		if (real_t)
 		{
 			auto terminal_elmt = parent_document.createElement(QStringLiteral("real_terminal"));
-			terminal_elmt.setAttribute(QStringLiteral("uuid"), real_t->uuid().toString());
+			terminal_elmt.setAttribute(QStringLiteral("uuid"), real_t->elementUuid().toString());
 			terminals_elmt.appendChild(terminal_elmt);
 		}
 	}
@@ -162,4 +162,8 @@ void TerminalStripBridge::removeTerminals(const QVector<QSharedPointer<RealTermi
 	for (const auto &real_t : real_terminals) {
 		m_real_terminals.removeOne(real_t);
 	}
+}
+
+void TerminalStripBridge::removeTerminal(const QSharedPointer<RealTerminal> &real_terminal) {
+	m_real_terminals.removeOne(real_terminal);
 }

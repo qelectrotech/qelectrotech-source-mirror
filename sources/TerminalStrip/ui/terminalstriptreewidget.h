@@ -39,7 +39,7 @@ class TerminalStripTreeWidget : public QTreeWidget
 		};
 
 			//Role used for data in QTreeWidgetItem
-		static int UUID_USER_ROLE;
+		static constexpr int UUID_USER_ROLE{Qt::UserRole + 1};
 
 	signals:
 			/**

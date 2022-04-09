@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalelement.h"
+#include"../TerminalStrip/realterminal.h"
 
 /**
 	@brief TerminalElement::TerminalElement
@@ -27,7 +28,10 @@
 TerminalElement::TerminalElement(const ElementsLocation &location,
 				 QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Terminale)
-{}
+{
+	auto rt = new RealTerminal(this);
+	m_real_terminal = rt->sharedRef();
+}
 
 TerminalElement::~TerminalElement()
 {}
@@ -41,17 +45,11 @@ void TerminalElement::initLink(QETProject *project) {
 }
 
 /**
- * @brief TerminalElement::setParentTerminalStrip
- * Set \p strip as parent terminal strip.
- * Be carefull, this function only set internally the parent terminal strip.
- * This function don't check if there is a previous
- * parent terminal strip and don't check
- * if the new terminal strip have this terminal element
- * in her list of terminal element.
- * @param strip
+ * @brief TerminalElement::realTerminal
+ * @return the real terminal of this terminal element.
  */
-void TerminalElement::setParentTerminalStrip(TerminalStrip *strip) {
-	m_parent_terminal_strip = strip;
+QSharedPointer<RealTerminal> TerminalElement::realTerminal() const {
+	return m_real_terminal;
 }
 
 /**
@@ -60,6 +58,9 @@ void TerminalElement::setParentTerminalStrip(TerminalStrip *strip) {
  * terminal element or nullptr if not.
  */
 TerminalStrip *TerminalElement::parentTerminalStrip() const {
-	return m_parent_terminal_strip.data();
+	if (m_real_terminal) {
+		return m_real_terminal->parentStrip();
+	}
+	return nullptr;
 }
 

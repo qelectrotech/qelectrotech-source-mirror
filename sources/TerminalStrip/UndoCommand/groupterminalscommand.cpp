@@ -17,6 +17,7 @@
 */
 #include "groupterminalscommand.h"
 #include "../physicalterminal.h"
+#include "../realterminal.h"
 
 /**
  * @brief GroupTerminalsCommand::GroupTerminalsCommand
@@ -87,8 +88,7 @@ void UnGroupTerminalsCommand::setUp(const QVector<QSharedPointer<RealTerminal>> 
 {
 	for (const auto &rt_ : to_ungroup)
 	{
-		auto phy_t = m_terminal_strip->physicalTerminal(rt_);
-		if (phy_t)
+		if (auto phy_t = rt_->physicalTerminal())
 		{
 				//Physical have only one real terminal, no need to ungroup it
 			if (phy_t->realTerminalCount() <= 1) {

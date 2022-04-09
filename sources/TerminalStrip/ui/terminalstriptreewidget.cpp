@@ -23,8 +23,6 @@
 #include <QMimeData>
 #include <QDragMoveEvent>
 
-int TerminalStripTreeWidget::UUID_USER_ROLE = Qt::UserRole + 1;
-
 TerminalStripTreeWidget::TerminalStripTreeWidget(QWidget *parent) :
     QTreeWidget(parent)
 {}

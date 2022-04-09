@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -17,17 +17,10 @@
 */
 #include "terminalstripeditor.h"
 #include "ui_terminalstripeditor.h"
-#include "terminalstripcreatordialog.h"
 #include "../../qetproject.h"
 #include "../terminalstrip.h"
-#include "../elementprovider.h"
-#include "../qetgraphicsitem/terminalelement.h"
-#include "../UndoCommand/addterminalstripcommand.h"
-#include "../UndoCommand/addterminaltostripcommand.h"
 #include "../UndoCommand/changeterminalstripdata.h"
 #include "../undocommand/changeelementdatacommand.h"
-#include "terminalstriptreewidget.h"
-#include "../../qeticons.h"
 #include "terminalstripmodel.h"
 #include "../diagram.h"
 #include "../UndoCommand/sortterminalstripcommand.h"
@@ -36,10 +29,7 @@
 #include "../UndoCommand/bridgeterminalscommand.h"
 #include "../UndoCommand/changeterminalstripcolor.h"
 #include "../physicalterminal.h"
-#include "../realterminal.h"
 #include "../terminalstripbridge.h"
-
-#include <QTreeWidgetItem>
 
 /**
  * @brief TerminalStripEditor::TerminalStripEditor
@@ -47,26 +37,16 @@
  * @param parent : paent widget
  */
 TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
-	QDialog(parent),
-	ui(new Ui::TerminalStripEditor),
-	m_project(project)
+	QWidget{parent},
+	ui{new Ui::TerminalStripEditor},
+	m_project{project}
 {
 	ui->setupUi(this);
 
-	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate(ui->m_terminal_strip_tw));
-
-	ui->m_remove_terminal_strip_pb->setDisabled(true);
-	buildTree();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
-	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
-#else
-	ui->m_terminal_strip_tw->expandAll();
-#endif
+	ui->m_table_widget->setItemDelegate(new TerminalStripModelDelegate{this});
 
 		//Setup the bridge color
 	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
-
-	setUpUndoConnections();
 
 		//Call for update the state of child widgets
 	selectionChanged();
@@ -103,190 +83,6 @@ TerminalStripEditor::~TerminalStripEditor() {
 	delete ui;
 }
 
-void TerminalStripEditor::setUpUndoConnections()
-{
-	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalAddedToStrip, this,
-			[=](QUuid terminal_uuid, QUuid strip_uuid)
-	{
-		auto terminal = m_uuid_terminal_H.value(terminal_uuid);
-		auto strip = m_uuid_strip_H.value(strip_uuid);
-
-		if (!terminal || !strip) {
-			return;
-		}
-
-		auto undo = new AddTerminalToStripCommand(terminal, strip);
-		m_project->undoStack()->push(undo);
-	});
-
-	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalMovedFromStripToStrip, this,
-			[=] (QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid)
-	{
-		auto terminal  = m_uuid_terminal_H.value(terminal_uuid);
-		auto old_strip = m_uuid_strip_H.value(old_strip_uuid);
-		auto new_strip = m_uuid_strip_H.value(new_strip_uuid);
-
-		if (!terminal || !old_strip || !new_strip) {
-			return;
-		}
-
-		auto undo = new AddTerminalToStripCommand(terminal, old_strip, new_strip);
-		m_project->undoStack()->push(undo);
-	});
-
-	connect(ui->m_terminal_strip_tw, &TerminalStripTreeWidget::terminalRemovedFromStrip, this,
-			[=] (QUuid terminal_uuid, QUuid old_strip_uuid)
-	{
-		auto terminal_ = m_uuid_terminal_H.value(terminal_uuid);
-		auto strip_ = m_uuid_strip_H.value(old_strip_uuid);
-
-		if (!terminal_ || !strip_) {
-			return;
-		}
-
-		auto undo = new RemoveTerminalFromStripCommand(terminal_, strip_);
-		m_project->undoStack()->push(undo);
-	});
-}
-
-/**
- * @brief TerminalStripEditor::buildTree
- * Build the tree widget use to explore terminal strip
- */
-void TerminalStripEditor::buildTree()
-{
-	ui->m_terminal_strip_tw->clear();
-
-	auto title = m_project->title();
-	if (title.isEmpty()) {
-		title = tr("Projet sans titre");
-	}
-
-	QStringList strl{title};
-	new QTreeWidgetItem(ui->m_terminal_strip_tw, strl, TerminalStripTreeWidget::Root);
-
-	QStringList ftstrl(tr("Bornes indépendante"));
-	new QTreeWidgetItem(ui->m_terminal_strip_tw, ftstrl, TerminalStripTreeWidget::FreeTerminal);
-
-	auto ts_vector = m_project->terminalStrip();
-	std::sort(ts_vector.begin(), ts_vector.end(), [](TerminalStrip *a, TerminalStrip *b) {
-		return a->name() < b->name();});
-
-	for (const auto ts : qAsConst(ts_vector)) {
-		addTerminalStrip(ts);
-	}
-	addFreeTerminal();
-}
-
-/**
- * @brief TerminalStripEditor::addTerminalStrip
- * Add a new terminal strip to the list of displayed terminal strip
- * in the tree widget
- * @param terminal_strip
- * @return the QTreeWidgetItem who represent the terminal strip
- * both if created or already exist
- */
-QTreeWidgetItem* TerminalStripEditor::addTerminalStrip(TerminalStrip *terminal_strip)
-{
-	if (auto item = m_item_strip_H.key(terminal_strip)) {
-		return item;
-	}
-
-	auto root_item = ui->m_terminal_strip_tw->topLevelItem(0);
-
-		//Check if installation already exist
-		//if not create a new one
-	auto installation_str = terminal_strip->installation();
-	QTreeWidgetItem *inst_qtwi = nullptr;
-	for (int i = 0 ; i<root_item->childCount() ; ++i) {
-		auto child_inst = root_item->child(i);
-		if (child_inst->data(0, Qt::DisplayRole).toString() == installation_str) {
-			inst_qtwi = child_inst;
-			break;
-		}
-	}
-	if (!inst_qtwi) {
-		QStringList inst_strl{installation_str};
-		inst_qtwi = new QTreeWidgetItem(root_item, inst_strl, TerminalStripTreeWidget::Installation);
-	}
-
-		//Check if location already exist
-		//if not create a new one
-	auto location_str = terminal_strip->location();
-	QTreeWidgetItem *loc_qtwi = nullptr;
-	for (int i = 0 ; i<inst_qtwi->childCount() ; ++i) {
-		auto child_loc = inst_qtwi->child(i);
-		if (child_loc->data(0, Qt::DisplayRole).toString() == location_str) {
-			loc_qtwi = child_loc;
-			break;
-		}
-	}
-	if (!loc_qtwi) {
-		QStringList loc_strl{location_str};
-		loc_qtwi = new QTreeWidgetItem(inst_qtwi, loc_strl, TerminalStripTreeWidget::Location);
-	}
-
-		//Add the terminal strip
-	QStringList name{terminal_strip->name()};
-	auto strip_item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripTreeWidget::Strip);
-	strip_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal_strip->uuid());
-	strip_item->setIcon(0, QET::Icons::TerminalStrip);
-
-		//Add child terminal of the strip
-	for (auto i=0 ; i<terminal_strip->physicalTerminalCount() ; ++i)
-	{
-		auto phy_t = terminal_strip->physicalTerminal(i);
-		if (phy_t->realTerminalCount())
-		{
-			const auto real_t = phy_t->realTerminals().at(0);
-			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(real_t->label()), TerminalStripTreeWidget::Terminal);
-			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, real_t->elementUuid());
-			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
-
-			if (real_t->element()) {
-				m_uuid_terminal_H.insert(real_t->elementUuid(), qgraphicsitem_cast<TerminalElement *>(real_t->element()));
-			}
-		}
-	}
-
-	m_item_strip_H.insert(strip_item, terminal_strip);
-	m_uuid_strip_H.insert(terminal_strip->uuid(), terminal_strip);
-	return strip_item;
-}
-
-/**
- * @brief TerminalStripEditor::addFreeTerminal
- * Add free terminal (aka terminal which not belong to a terminal strip)
- * in the tree widget
- */
-void TerminalStripEditor::addFreeTerminal()
-{
-	ElementProvider ep(m_project);
-	auto vector_ = ep.freeTerminal();
-
-	if (vector_.isEmpty()) {
-		return;
-	}
-
-		//Sort the terminal element by label
-	std::sort(vector_.begin(), vector_.end(), [](TerminalElement *a, TerminalElement *b) {
-		return a->actualLabel() < b->actualLabel();
-	});
-
-	auto free_terminal_item = ui->m_terminal_strip_tw->topLevelItem(1);
-
-	for (const auto terminal : qAsConst(vector_))
-	{
-		QUuid uuid_ = terminal->uuid();
-		QStringList strl{terminal->actualLabel()};
-		auto item = new QTreeWidgetItem(free_terminal_item, strl, TerminalStripTreeWidget::Terminal);
-		item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, uuid_.toString());
-		item->setIcon(0, QET::Icons::ElementTerminal);
-
-		m_uuid_terminal_H.insert(uuid_, terminal);
-	}
-}
-
 /**
  * @brief TerminalStripEditor::setCurrentStrip
  * Set the current terminal strip edited to \p strip_
@@ -299,8 +95,8 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 	}
 
 	if (m_current_strip) {
-		disconnect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
-		disconnect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
+		disconnect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::reload);
+		disconnect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::reload);
 	}
 
 	if (!strip_)
@@ -328,18 +124,90 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		m_current_strip = strip_;
 
 		if (m_model)
-			m_model->deleteLater();
+		{
+			m_model->setTerminalStrip(strip_);
+			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
+		}
+		else
+		{
+			m_model = new TerminalStripModel{strip_, this};
+			ui->m_table_widget->setModel(m_model);
+			m_model->buildBridgePixmap(setUpBridgeCellWidth());
+		}
 
-		m_model = new TerminalStripModel(strip_, this);
-		ui->m_table_widget->setModel(m_model);
-		m_model->buildBridgePixmap(setUpBridgeCellWidth());
 		spanMultiLevelTerminals();
 		selectionChanged();	//Used to update child widgets
 
-		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
-		connect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::on_m_reload_pb_clicked);
-		connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
+		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::reload);
+		connect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::reload);
 	}
+}
+
+/**
+ * @brief TerminalStripEditor::reload
+ * Reload this editor and and reset all
+ * unapplied change.
+ */
+void TerminalStripEditor::reload()
+{
+	if (m_current_strip)
+	{
+		ui->m_installation_le ->setText(m_current_strip->installation());
+		ui->m_location_le     ->setText(m_current_strip->location());
+		ui->m_name_le         ->setText(m_current_strip->name());
+		ui->m_comment_le      ->setText(m_current_strip->comment());
+		ui->m_description_te  ->setPlainText(m_current_strip->description());
+	}
+	if (m_model)
+	{
+		m_model->reload();
+	}
+}
+
+/**
+ * @brief TerminalStripEditor::apply
+ * Apply current edited values.
+ */
+void TerminalStripEditor::apply()
+{
+
+	if (m_current_strip)
+	{
+		m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
+
+		TerminalStripData data;
+		data.m_installation = ui->m_installation_le->text();
+		data.m_location     = ui->m_location_le->text();
+		data.m_name         = ui->m_name_le->text();
+		data.m_comment      = ui->m_comment_le->text();
+		data.m_description  = ui->m_description_te->toPlainText();
+
+		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
+
+		if (m_model)
+		{
+			for (const auto &data_ : m_model->modifiedmodelRealTerminalData())
+			{
+				if (auto element = data_.element_)
+				{
+					auto current_data = element->elementData();
+					current_data.setTerminalType(data_.type_);
+					current_data.setTerminalFunction(data_.function_);
+					current_data.setTerminalLED(data_.led_);
+					current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
+
+					if (element->elementData() != current_data)
+						m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
+					if (data_.level_ != data_.real_terminal.toStrongRef()->level())
+						m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
+				}
+			}
+		}
+
+		m_project->undoStack()->endMacro();
+	}
+
+	reload();
 }
 
 /**
@@ -528,165 +396,6 @@ QPair<TerminalStripModel::Column, QVector<modelRealTerminalData> > TerminalStrip
 }
 
 /**
- * @brief TerminalStripEditor::on_m_add_terminal_strip_pb_clicked
- * Action when user click on add terminal strip button
- */
-void TerminalStripEditor::on_m_add_terminal_strip_pb_clicked()
-{
-	QScopedPointer<TerminalStripCreatorDialog> dialog(new TerminalStripCreatorDialog(m_project, this));
-
-	if (auto item = ui->m_terminal_strip_tw->currentItem())
-	{
-		if (item->type() == TerminalStripTreeWidget::Strip) {
-			item = item->parent();
-		}
-		if (item->type() == TerminalStripTreeWidget::Location) {
-			dialog->setLocation(item->data(0, Qt::DisplayRole).toString());
-			item = item->parent();
-		}
-		if (item->type() == TerminalStripTreeWidget::Installation) {
-			dialog->setInstallation(item->data(0, Qt::DisplayRole).toString());
-		}
-	}
-
-	if (dialog->exec() == QDialog::Accepted)
-	{
-		auto ts = dialog->generatedTerminalStrip();
-		m_project->undoStack()->push(new AddTerminalStripCommand(ts, m_project));
-
-		auto item = addTerminalStrip(ts);
-		ui->m_terminal_strip_tw->setCurrentItem(item);
-	}
-}
-
-/**
- * @brief TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked
- * Action when user click on remove terminal strip button
- */
-void TerminalStripEditor::on_m_remove_terminal_strip_pb_clicked()
-{
-	auto item = ui->m_terminal_strip_tw->currentItem();
-	if (auto strip = m_item_strip_H.value(item))
-	{
-		m_item_strip_H.remove(item);
-		m_uuid_strip_H.remove(strip->uuid());
-		delete item;
-
-		m_project->undoStack()->push(new RemoveTerminalStripCommand(strip, m_project));
-	}
-
-	on_m_reload_pb_clicked();
-}
-
-/**
- * @brief TerminalStripEditor::on_m_reload_pb_clicked
- */
-void TerminalStripEditor::on_m_reload_pb_clicked()
-{
-   auto current_ = m_current_strip;
-
-   ui->m_terminal_strip_tw->clear();
-   m_item_strip_H.clear();
-   m_uuid_terminal_H.clear();
-   m_uuid_strip_H.clear();
-
-   qDeleteAll(m_item_strip_H.keyBegin(), m_item_strip_H.keyEnd());
-
-   buildTree();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
-	ui->m_terminal_strip_tw->expandRecursively(ui->m_terminal_strip_tw->rootIndex());
-#else
-	ui->m_terminal_strip_tw->expandAll();
-#endif
-
-	//Reselect the tree widget item of the current edited strip
-   auto item = m_item_strip_H.key(current_);
-   if (item) {
-	   ui->m_terminal_strip_tw->setCurrentItem(item);
-   }
-}
-
-/**
- * @brief TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged
- * @param current
- * @param previous
- */
-void TerminalStripEditor::on_m_terminal_strip_tw_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous)
-{
-	Q_UNUSED(previous)
-
-	if (!current) {
-		setCurrentStrip(nullptr);
-		ui->m_remove_terminal_strip_pb->setDisabled(true);
-		return;
-	}
-
-	TerminalStrip *strip_ = nullptr;
-	if (current->type() == TerminalStripTreeWidget::Strip) {
-		strip_ = m_item_strip_H.value(current);
-		ui->m_remove_terminal_strip_pb->setEnabled(true);
-	}
-	else if (current->type() == TerminalStripTreeWidget::Terminal
-			 && current->parent()
-			 && current->parent()->type() == TerminalStripTreeWidget::Strip) {
-		strip_ = m_item_strip_H.value(current->parent());
-		ui->m_remove_terminal_strip_pb->setDisabled(true);
-	} else {
-		ui->m_remove_terminal_strip_pb->setDisabled(true);
-	}
-
-	setCurrentStrip(strip_);
-}
-
-void TerminalStripEditor::on_m_dialog_button_box_clicked(QAbstractButton *button)
-{
-	Q_UNUSED(button)
-
-	auto role = ui->m_dialog_button_box->buttonRole(button);
-
-	if (role == QDialogButtonBox::ApplyRole)
-	{
-		if (m_current_strip)
-		{
-			m_project->undoStack()->beginMacro(tr("Modifier des propriétés de borniers"));
-
-			TerminalStripData data;
-			data.m_installation = ui->m_installation_le->text();
-			data.m_location     = ui->m_location_le->text();
-			data.m_name         = ui->m_name_le->text();
-			data.m_comment      = ui->m_comment_le->text();
-			data.m_description  = ui->m_description_te->toPlainText();
-
-			m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
-
-			if (m_model)
-			{
-				for (const auto &data_ : m_model->modifiedmodelRealTerminalData())
-				{
-					if (auto element = data_.element_)
-					{
-						auto current_data = element->elementData();
-						current_data.setTerminalType(data_.type_);
-						current_data.setTerminalFunction(data_.function_);
-						current_data.setTerminalLED(data_.led_);
-						current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
-
-						if (element->elementData() != current_data)
-							m_project->undoStack()->push(new ChangeElementDataCommand(element, current_data));
-						if (data_.level_ != data_.real_terminal.toStrongRef()->level())
-							m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
-					}
-				}
-			}
-
-			m_project->undoStack()->endMacro();
-		}
-	}
-
-	on_m_reload_pb_clicked();
-}
-
-/**
  * @brief TerminalStripEditor::on_m_auto_pos_pb_clicked
  */
 void TerminalStripEditor::on_m_auto_ordering_pb_clicked()
@@ -707,7 +416,7 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 		if (mrtd_vector.size() >= 2)
 		{
 				//At this step get the first physical terminal as receiver
-			auto receiver_ = m_current_strip->physicalTerminal(mrtd_vector.first().real_terminal);
+			auto receiver_ = mrtd_vector.first().real_terminal.toStrongRef()->physicalTerminal();
 
 			QVector<QSharedPointer<RealTerminal>> vector_;
 			int count_ = 0;
@@ -718,11 +427,11 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 
 					//Get the better physical terminal as receiver
 					//(physical terminal with the max of real terminal)
-				const auto current_physical = m_current_strip->physicalTerminal(real_t);
+				const auto current_physical = real_t->physicalTerminal();
 				int real_t_count = current_physical->realTerminalCount();
 				if (real_t_count > 1 && real_t_count > count_) {
 					count_ = real_t_count;
-					receiver_ = m_current_strip->physicalTerminal(real_t);
+					receiver_ = real_t->physicalTerminal();
 				}
 
 			}

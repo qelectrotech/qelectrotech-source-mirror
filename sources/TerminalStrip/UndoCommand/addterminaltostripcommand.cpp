@@ -17,6 +17,8 @@
 */
 #include "addterminaltostripcommand.h"
 #include "../../qetgraphicsitem/terminalelement.h"
+#include "../realterminal.h"
+#include "../physicalterminal.h"
 
 /**
  * @brief AddTerminalToStripCommand::AddTerminalToStripCommand
@@ -25,13 +27,12 @@
  * @param strip : terminal strip where terminal must be added
  * @param parent : parent undo command
  */
-AddTerminalToStripCommand::AddTerminalToStripCommand(TerminalElement *terminal, TerminalStrip *strip, QUndoCommand *parent) :
+AddTerminalToStripCommand::AddTerminalToStripCommand(QSharedPointer<RealTerminal> terminal, TerminalStrip *strip, QUndoCommand *parent) :
     QUndoCommand(parent),
     m_terminal(terminal),
-    m_new_strip(strip),
-    m_operation(Operation::add)
+	m_new_strip(strip)
 {
-    auto t_label = terminal->actualLabel();
+	auto t_label = terminal->label();
     auto ts_name = strip->name();
 
     auto str_1 = t_label.isEmpty() ? QObject::tr("Ajouter une borne") :
@@ -43,37 +44,6 @@ AddTerminalToStripCommand::AddTerminalToStripCommand(TerminalElement *terminal, 
     setText(str_1 + " " + str_2);
 }
 
-/**
- * @brief AddTerminalToStripCommand::AddTerminalToStripCommand
- * Move \p terminal from \p old_strip to \p new_strip
- * @param terminal : terminal to move
- * @param old_strip : terminal where start the move
- * @param new_strip : terminal where finish the move
- * @param parent : parent undo command
- */
-AddTerminalToStripCommand::AddTerminalToStripCommand(TerminalElement *terminal, TerminalStrip *old_strip,
-                                                     TerminalStrip *new_strip, QUndoCommand *parent) :
-    QUndoCommand(parent),
-    m_terminal(terminal),
-    m_old_strip(old_strip),
-    m_new_strip(new_strip),
-    m_operation(Operation::move)
-{
-    auto t_label = terminal->actualLabel();
-    auto old_ts_name = old_strip->name();
-    auto new_ts_name = new_strip->name();
-
-    auto str_1 = t_label.isEmpty() ? QObject::tr("Déplacer une borne") :
-									 QObject::tr("Déplacer la borne %1").arg(t_label);
-
-    auto str_2 = old_ts_name.isEmpty() ? QObject::tr("d'un groupe de bornes") :
-                                         QObject::tr("du groupe de bornes %1").arg(old_ts_name);
-
-    auto str_3 = new_ts_name.isEmpty() ? QObject::tr("à un autre groupe de bornes") :
-                                         QObject::tr("au groupe de bornes %1").arg(new_ts_name);
-
-	setText(str_1 + " " + str_2 + " " + str_3);
-}
 
 AddTerminalToStripCommand::~AddTerminalToStripCommand()
 {}
@@ -88,13 +58,7 @@ void AddTerminalToStripCommand::undo()
         !m_new_strip) {
         return;
     }
-
     m_new_strip->removeTerminal(m_terminal);
-
-    if ( m_operation == Operation::move &&
-         m_old_strip) {
-        m_old_strip->addTerminal(m_terminal);
-    }
 }
 
 /**
@@ -107,12 +71,6 @@ void AddTerminalToStripCommand::redo()
         !m_new_strip) {
         return;
     }
-
-    if (m_operation == Operation::move &&
-        m_old_strip) {
-        m_old_strip->removeTerminal(m_terminal);
-    }
-
     m_new_strip->addTerminal(m_terminal);
 }
 
@@ -122,14 +80,20 @@ void AddTerminalToStripCommand::redo()
  * @param strip
  * @param parent
  */
-RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand(TerminalElement *terminal,
+RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand(QSharedPointer<PhysicalTerminal> terminal,
 															   TerminalStrip *strip,
 															   QUndoCommand *parent) :
 	QUndoCommand(parent),
-	m_terminal(terminal),
+	m_terminals(terminal->realTerminals()),
 	m_strip(strip)
-{
-	auto t_label = terminal->actualLabel();
+{	
+	QString t_label;
+	for (const auto &real_t : m_terminals) {
+		if (!t_label.isEmpty())
+			t_label.append(", ");
+		t_label.append(real_t->label());
+	}
+
 	auto strip_name = strip->name();
 
 	auto str_1 = t_label.isEmpty() ? QObject::tr("Enlever une borne") :
@@ -142,15 +106,85 @@ RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand(TerminalElement *
 
 void RemoveTerminalFromStripCommand::undo()
 {
-	if (m_terminal && m_strip) {
-		m_strip->addTerminal(m_terminal);
+	if (m_strip)
+	{
+		for (const auto &real_t : m_terminals) {
+			m_strip->addTerminal(real_t);
+		}
+		auto phy_t = m_terminals.first()->physicalTerminal();
+		if (phy_t) {
+			m_strip->groupTerminals(phy_t, m_terminals);
+		}
 	}
 }
 
 void RemoveTerminalFromStripCommand::redo()
 {
-	if (m_terminal && m_strip) {
-		m_strip->removeTerminal(m_terminal);
+	if (m_strip)
+	{
+		for (const auto & real_t : m_terminals) {
+			m_strip->removeTerminal(real_t);
+		}
 	}
 }
 
+/**
+ * @brief MoveTerminalCommand::MoveTerminalCommand
+ * @param terminal
+ * @param old_strip
+ * @param new_strip
+ * @param parent
+ */
+MoveTerminalCommand::MoveTerminalCommand(QSharedPointer<PhysicalTerminal> terminal, TerminalStrip *old_strip,
+										 TerminalStrip *new_strip, QUndoCommand *parent) :
+	QUndoCommand (parent),
+	m_terminal(terminal),
+	m_old_strip(old_strip),
+	m_new_strip(new_strip)
+{
+	QString t_label;
+	for (auto real_t : terminal->realTerminals()) {
+		if (!t_label.isEmpty())
+			t_label.append(", ");
+		t_label.append(real_t->label());
+	}
+
+	auto strip_name = old_strip->name();
+	auto new_strip_name = new_strip->name();
+
+	auto str_1 = t_label.isEmpty() ? QObject::tr("Déplacer une borne") :
+									 QObject::tr("Déplacer la borne %1").arg(t_label);
+
+	auto str_2 = strip_name.isEmpty() ? QObject::tr(" d'un groupe de bornes") :
+										QObject::tr(" du groupe de bornes %1").arg(strip_name);
+
+	auto str_3 = new_strip_name.isEmpty() ? QObject::tr("vers un groupe de bornes") :
+											QObject::tr("vers le groupe de bornes %1").arg(new_strip_name);
+	setText(str_1 + " " + str_2 + " " + str_3);
+}
+
+void MoveTerminalCommand::undo()
+{
+	if (m_terminal)
+	{
+		if (m_new_strip) {
+			m_new_strip->removeTerminal(m_terminal);
+		}
+		if (m_old_strip) {
+			m_old_strip->addTerminal(m_terminal);
+		}
+	}
+}
+
+void MoveTerminalCommand::redo()
+{
+	if (m_terminal)
+	{
+		if (m_old_strip) {
+			m_old_strip->removeTerminal(m_terminal);
+		}
+		if (m_new_strip) {
+			m_new_strip->addTerminal(m_terminal);
+		}
+	}
+}

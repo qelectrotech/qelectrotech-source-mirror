@@ -87,3 +87,48 @@ qreal QETUtils::graphicsHandlerSize(QGraphicsItem *item)
 		//Default value
 	return 10;
 }
+
+/**
+ * @brief QETUtils::sortBeginIntString
+ * Sort the string @a str_a and @a str_b and take in
+ * count if string begin with an int to sort it
+ * as int and not as string in this case.
+ * For exemple if we have to sort the string :
+ * "3str", 10str", "100str", "2str", "20str".
+ * The default behavior when sorting QString with the comparaison operator will be:
+ * "10str" "100str" "2str", "20str", "3str"
+ * When sorting with this function, the result will be :
+ * "10str", "2str", "3str", "20str", "100str"
+ * @param str_a
+ * @param str_b
+ * @return
+ */
+bool QETUtils::sortBeginIntString(const QString &str_a, const QString &str_b)
+{
+	const QRegularExpression rx(QStringLiteral("^\\d+"));
+	int int_a =-1;
+	int int_b =-1;
+
+	auto match_a = rx.match(str_a);
+	if (match_a.hasMatch()) {
+		int_a = match_a.captured(0).toInt();
+	}
+
+	auto match_b = rx.match(str_b);
+	if (match_b.hasMatch()) {
+		int_b = match_b.captured(0).toInt();
+	}
+
+		//Sort as numbers if both string
+		//start at least by a digit and
+		//the number of each string are different.
+		//Else sort as string
+	if (int_a >= 0 &&
+		int_b >= 0 &&
+		int_a != int_b) {
+		return int_a<int_b;
+	}
+	else {
+		return str_a<str_b;
+	}
+}

@@ -19,6 +19,7 @@
 #include "../../qetproject.h"
 #include "../terminalstrip.h"
 #include "../qetgraphicsitem/element.h"
+#include "../realterminal.h"
 
 #include <QObject>
 
@@ -57,9 +58,13 @@ RemoveTerminalStripCommand::RemoveTerminalStripCommand(TerminalStrip *strip,
 													   QUndoCommand  *parent) :
 	QUndoCommand(parent),
 	m_strip(strip),
-	m_project(project),
-	m_elements(strip->terminalElement())
+	m_project(project)
 {
+	for (const auto &real_t : strip->realTerminals())
+	{
+		if (real_t->element())
+			m_elements.append(real_t->element());
+	}
 	setText(QObject::tr("Supprimer un groupe de bornes"));
 }
 
