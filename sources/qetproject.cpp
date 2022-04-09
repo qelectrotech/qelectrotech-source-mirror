@@ -181,7 +181,7 @@ void QETProject::init()
 	{
 		int ms = autosave_interval*60*1000;
 		m_autosave_timer.setInterval(ms);
-		connect(&m_autosave_timer, &QTimer::timeout, [this]()
+		connect(&m_autosave_timer, &QTimer::timeout, this, [=]()
 		{
 			if(!this->m_file_path.isEmpty())
 				this->write();
@@ -320,8 +320,8 @@ void QETProject::setFilePath(const QString &filepath)
 
 
 
-	emit(projectFilePathChanged(this, m_file_path));
-	emit(projectInformationsChanged(this));
+	emit projectFilePathChanged(this, m_file_path);
+	emit projectInformationsChanged(this);
 	updateDiagramsFolioData();
 }
 
@@ -360,7 +360,7 @@ QString QETProject::pathNameTitle() const
 				"Projet « %1 : %2»",
 				"displayed title for a ProjectView - %1 is the project title, -%2 is the project path"
 			)
-		).arg(project_title_).arg (m_file_path);
+		).arg(project_title_, m_file_path);
 	} else if (!m_file_path.isEmpty()) {
 		final_title = QString(
 			tr(
@@ -426,8 +426,8 @@ void QETProject::setTitle(const QString &title) {
 	if (project_title_ == title) return;
 
 	project_title_ = title;
-	emit(projectTitleChanged(this, project_title_));
-	emit(projectInformationsChanged(this));
+	emit projectTitleChanged(this, project_title_);
+	emit projectInformationsChanged(this);
 	updateDiagramsFolioData();
 }
 
@@ -855,8 +855,9 @@ void QETProject::autoFolioNumberingSelectedFolios(int from,
 						  const QString& autonum){
 	int total_folio = m_diagrams_list.count();
 	DiagramContext project_wide_properties = m_project_properties;
-	for (int i=from; i<=to; i++) {
-		QString title = m_diagrams_list[i] -> title();
+
+	for (int i=from; i<=to; i++)
+	{
 		NumerotationContext nC = folioAutoNum(autonum);
 		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
 		m_diagrams_list[i] -> border_and_titleblock.setFolio("%autonum");
@@ -984,7 +985,7 @@ QETResult QETProject::write()
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
 
-	emit(projectInformationsChanged(this));
+	emit projectInformationsChanged(this);
 	updateDiagramsFolioData();
 
 	setModified(false);
@@ -1012,7 +1013,7 @@ void QETProject::setReadOnly(bool read_only)
 			//keep the file to which this project is read-only
 		read_only_file_path_ = m_file_path;
 		m_read_only = read_only;
-		emit(readOnlyChanged(this, read_only));
+		emit readOnlyChanged(this, read_only);
 	}
 }
 
@@ -1240,7 +1241,7 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->defaultConductorProperties = defaultConductorProperties();
 
 	addDiagram(diagram, pos);
-	emit(diagramAdded(this, diagram));
+	emit diagramAdded(this, diagram);
 	return(diagram);
 }
 
@@ -1258,7 +1259,7 @@ void QETProject::removeDiagram(Diagram *diagram)
 
 	if (m_diagrams_list.removeAll(diagram))
 	{
-		emit(diagramRemoved(this, diagram));
+		emit diagramRemoved(this, diagram);
 		diagram->deleteLater();
 	}
 
@@ -1282,7 +1283,7 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	m_diagrams_list.move(old_index, new_index);
 	updateDiagramsFolioData();
 	setModified(true);
-	emit(projectDiagramsOrderChanged(this, old_index, new_index));
+	emit projectDiagramsOrderChanged(this, old_index, new_index);
 }
 
 /**
@@ -1291,8 +1292,8 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 void QETProject::setModified(bool modified) {
 	if (m_modified != modified) {
 		m_modified = modified;
-		emit(projectModified(this, m_modified));
-		emit(projectInformationsChanged(this));
+		emit projectModified(this, m_modified);
+		emit projectInformationsChanged(this);
 	}
 }
 
@@ -1463,14 +1464,14 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 
 	m_data_base.updateDB(); //All diagrams and items are created we need to update the database
 
-	for(Diagram *d : diagrams())
+	for(const auto &diagram : diagrams())
 	{
 		if(dlgWaiting)
 		{
 			dlgWaiting->setProgressBar(dlgWaiting->progressBarValue()+1);
-			dlgWaiting->setDetail(d->title());
+			dlgWaiting->setDetail(diagram->title());
 		}
-		d->refreshContents();
+		diagram->refreshContents();
 	}
 }
 
@@ -1507,7 +1508,7 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 */
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
-	for (auto dom_elmt : QET::findInDomElement(xml_project.documentElement(), QStringLiteral("properties")))
+	for (const auto &dom_elmt : QET::findInDomElement(xml_project.documentElement(), QStringLiteral("properties")))
 		m_project_properties.fromXml(dom_elmt);
 }
 
@@ -1565,7 +1566,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	if (!report_elmt.isNull())	   setDefaultReportProperties(report_elmt.attribute(QStringLiteral("label")));
 	if (!xref_elmt.isNull())
 	{
-		for (auto elmt : QET::findInDomElement(xref_elmt, QStringLiteral("xref")))
+		for (const auto &elmt : QET::findInDomElement(xref_elmt, QStringLiteral("xref")))
 		{
 			XRefProperties xrp;
 			xrp.fromXml(elmt);
@@ -1995,8 +1996,8 @@ void QETProject::updateDiagramsFolioData()
 		}
 	}
 
-	for (Diagram *d : m_diagrams_list) {
-		d->update();
+	for (const auto &diagram_ : qAsConst(m_diagrams_list)) {
+		diagram_->update();
 	}
 }
 
@@ -2032,5 +2033,5 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 	@param template_name Name of the template
 */
 void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
-	emit(diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name));
+	emit diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name);
 }
