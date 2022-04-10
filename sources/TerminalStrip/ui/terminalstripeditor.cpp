@@ -17,6 +17,7 @@
 */
 #include "terminalstripeditor.h"
 #include "ui_terminalstripeditor.h"
+#include "../UndoCommand/addterminaltostripcommand.h"
 #include "../../qetproject.h"
 #include "../terminalstrip.h"
 #include "../UndoCommand/changeterminalstripdata.h"
@@ -99,6 +100,8 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		disconnect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::reload);
 	}
 
+	ui->m_move_to_cb->clear();
+
 	if (!strip_)
 	{
 		ui->m_installation_le ->clear();
@@ -112,7 +115,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		if (m_model) {
 			m_model->deleteLater();
 			m_model = nullptr;
-		}
+		}		
 	}
 	else
 	{
@@ -121,18 +124,34 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		ui->m_name_le         ->setText(strip_->name());
 		ui->m_comment_le      ->setText(strip_->comment());
 		ui->m_description_te  ->setPlainText(strip_->description());
+		ui->m_move_to_cb->addItem(tr("Bornes indépendantes"), QUuid());
+
+		const auto project_{strip_->project()};
+		if (project_)
+		{
+			const auto strip_vector = project_->terminalStrip();
+			for (const auto &strip : strip_vector)
+			{
+				if (strip == strip_) {
+					continue;
+				}
+
+				ui->m_move_to_cb->addItem(QString{strip->installation() + " " + strip->location() + " " + strip->name()},
+										  strip->uuid());
+			}
+		}
+
 		m_current_strip = strip_;
 
-		if (m_model)
-		{
+		if (m_model) {
 			m_model->setTerminalStrip(strip_);
-			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 		}
 		else
 		{
 			m_model = new TerminalStripModel{strip_, this};
 			ui->m_table_widget->setModel(m_model);
 			m_model->buildBridgePixmap(setUpBridgeCellWidth());
+			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
 		}
 
 		spanMultiLevelTerminals();
@@ -321,6 +340,22 @@ void TerminalStripEditor::selectionChanged()
 	ui->m_bridge_terminals_pb->setEnabled(enable_bridge);
 	ui->m_unbridge_terminals_pb->setEnabled(enable_unbridge);
 	ui->m_bridge_color_cb->setEnabled(enable_bridge_color);
+
+		//Enable or not the 'move to' buttons
+	bool enabled_move_to{!model_physical_terminal_vector.isEmpty()};
+	for (const auto &model_physical : model_physical_terminal_vector)
+	{
+		for (const auto &model_real_data : model_physical.real_data)
+		{
+			if (model_real_data.bridged_) {
+				enabled_move_to = false;
+				break;
+			}
+		}
+	}
+	ui->m_move_to_label->setEnabled(enabled_move_to);
+	ui->m_move_to_cb->setEnabled(enabled_move_to);
+	ui->m_move_to_pb->setEnabled(enabled_move_to);
 }
 
 QSize TerminalStripEditor::setUpBridgeCellWidth()
@@ -650,6 +685,62 @@ void TerminalStripEditor::on_m_bridge_color_cb_activated(const QColor &col)
 				break;
 			}
 		}
+	}
+}
+
+
+void TerminalStripEditor::on_m_move_to_pb_clicked()
+{
+	if (!m_model || !m_current_strip || !m_current_strip->project()) {
+		return;
+	}
+
+		//Get selected physical terminal
+	const auto index_vector = m_model->modelPhysicalTerminalDataForIndex(ui->m_table_widget->selectionModel()->selectedIndexes());
+	QVector<QSharedPointer<PhysicalTerminal>> phy_vector;
+	for (const auto &index : index_vector)
+	{
+		const auto shared_{m_current_strip->physicalTerminal(index.uuid_)};
+		if (shared_)
+			phy_vector.append(shared_);
+	}
+
+	if (phy_vector.isEmpty()) {
+		return;
+	}
+
+	auto undo_stack{m_current_strip->project()->undoStack()};
+	const auto uuid_{ui->m_move_to_cb->currentData().toUuid()};
+		//Uuid is null we move the selected terminal to indepandant terminal
+	if (uuid_.isNull())
+	{
+		 undo_stack->beginMacro(tr("Retirer des bornes d'un bornier"));
+		 for (const auto &phy_ : phy_vector) {
+			 undo_stack->push(new RemoveTerminalFromStripCommand(phy_, m_current_strip));
+		 }
+		 undo_stack->endMacro();
+	}
+	else
+	{
+		TerminalStrip *receiver_strip{nullptr};
+		const auto strip_vector = m_current_strip->project()->terminalStrip();
+		for (const auto &strip_ : strip_vector)
+		{
+			if (strip_->uuid() == uuid_) {
+				receiver_strip = strip_;
+				break;
+			}
+		}
+
+		if (!receiver_strip) {
+			return;
+		}
+
+		undo_stack->beginMacro(tr("Déplacer des bornes d'un bornier à un autre"));
+		for (const auto &phy_ : phy_vector) {
+			undo_stack->push(new MoveTerminalCommand(phy_, m_current_strip, receiver_strip));
+		}
+		undo_stack->endMacro();
 	}
 }
 
