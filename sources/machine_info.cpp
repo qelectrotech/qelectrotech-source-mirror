@@ -347,7 +347,7 @@ void MachineInfo::init_get_cpu_info_macos()
 	macosraminfo.waitForFinished();
 	QString macosRAMOutput = macosraminfo.readAllStandardOutput();
 	pc.ram.Total=QString("RAM Total : %1 GB").arg(
-	macosRAMOutput.toLongLong() / (1024 * 1024) * 1000);
+	macosRAMOutput.toLongLong() / ((1024 * 1024) * 1000));
 	macosraminfo.close();
 }
 
