@@ -1,0 +1,44 @@
+<definition width="30" hotspot_x="15" type="element" hotspot_y="20" version="0.90" link_type="simple" height="50">
+    <uuid uuid="{e4454adb-21f3-4d77-a554-9f727eb916bb}"/>
+    <names>
+        <name lang="ru">антенна</name>
+        <name lang="pl">antena</name>
+        <name lang="nb">antenne</name>
+        <name lang="sr">антена</name>
+        <name lang="en">antenna</name>
+        <name lang="el">κεραία</name>
+        <name lang="es">antena</name>
+        <name lang="ja">アンテナ</name>
+        <name lang="nl">antenne</name>
+        <name lang="fr">antenne</name>
+        <name lang="ro">antenă</name>
+        <name lang="de">antenne</name>
+        <name lang="pt">antena</name>
+        <name lang="it">antenna</name>
+        <name lang="cs">anténa</name>
+        <name lang="ar">هوائي</name>
+        <name lang="hr">antena</name>
+        <name lang="da">antenne</name>
+        <name lang="sl">anteno</name>
+        <name lang="ca">antena</name>
+        <name lang="tr">anten</name>
+        <name lang="hu">antenna</name>
+        <name lang="mn">антенн</name>
+    </names>
+    <elementInformations/>
+    <informations>Baboune41</informations>
+    <description>
+        <dynamic_text y="-38" frame="false" text_width="-1" text_from="ElementInfo" keep_visual_rotation="false" font="Sans Serif,7,-1,5,50,0,0,0,0,0" z="1" rotation="0" Valignment="AlignTop" uuid="{98559de6-2876-4d41-9b76-2d1389415264}" Halignment="AlignLeft" x="-11">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <ellipse width="12" y="-2" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-6" height="4"/>
+        <line end1="none" x1="-4.99373" length2="1.5" length1="1.5" antialias="false" y1="-10.0797" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x2="-5.99805" y2="-0.0090332"/>
+        <ellipse width="10" y="-12" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-5" height="4"/>
+        <line end1="none" x1="0" length2="1.5" length1="1.5" antialias="false" y1="3" style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" x2="0" y2="5"/>
+        <line end1="none" x1="4.98663" length2="1.5" length1="1.5" antialias="false" y1="-10.1636" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x2="6" y2="0"/>
+        <polygon x1="-10" y3="23" closed="false" antialias="false" y1="3" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="10" y2="3" x3="10"/>
+        <arc y="-14" width="10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-5" height="8" angle="180.313" start="358.438"/>
+        <terminal y="10" type="Generic" orientation="s" uuid="{1c76ed62-39d8-497d-ad03-da538d3a6ec6}" x="0" name=""/>
+    </description>
+</definition>
