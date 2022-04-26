@@ -232,8 +232,8 @@ void MachineInfo::init_get_cpu_info_linux()
 	p.waitForFinished();
 	QString memory = p.readAllStandardOutput();
 	//compilation_info += "<br>"
-	pc.ram.Total=QString("RAM Total : %1 MB").arg(
-				memory.toLong() / 1024);
+	pc.ram.Total=QString("RAM Total : %1 GB").arg(
+				memory.toLong() / (1024 * 1000));
 	p.close();
 
 	QProcess qp;
@@ -243,8 +243,8 @@ void MachineInfo::init_get_cpu_info_linux()
 		 << "/proc/meminfo");
 	qp.waitForFinished();
 	QString AvailableMemory = qp.readAllStandardOutput();
-	pc.ram.Available=QString("RAM Available : %1 MB").arg(
-				AvailableMemory.toLong() / 1024);
+	pc.ram.Available=QString("RAM Available : %1 GB").arg(
+				AvailableMemory.toLong() / (1024 * 1000));
 	qp.close();
 
 	QProcess linuxgpuinfo;
@@ -313,11 +313,11 @@ void MachineInfo::init_get_cpu_info_winnt()
 	memory_status.dwLength = sizeof(MEMORYSTATUSEX);
 	if (GlobalMemoryStatusEx(&memory_status)) {
 		pc.ram.Total .append(
-					QString("RAM Total : %1 MB")
-					.arg(memory_status.ullTotalPhys / (1024 * 1024)));
+					QString("RAM Total : %1 GB")
+					.arg(memory_status.ullTotalPhys / ((1024 * 1024) * 1000)));
 		pc.ram.Available .append(
-					QString("RAM Available : %1 MB")
-					.arg(memory_status.ullAvailPhys / (1024 * 1024)));
+					QString("RAM Available : %1 GB")
+					.arg(memory_status.ullAvailPhys / ((1024 * 1024) * 1000)));
 	} else {
 		pc.ram.Total.append("Unknown RAM");
 		pc.ram.Available.append("Unknown RAM");
@@ -346,8 +346,8 @@ void MachineInfo::init_get_cpu_info_macos()
 			   << "sysctl -n hw.memsize");
 	macosraminfo.waitForFinished();
 	QString macosRAMOutput = macosraminfo.readAllStandardOutput();
-	pc.ram.Total=QString("RAM Total : %1 MB").arg(
-	macosRAMOutput.toLongLong() /1024 / 1024);
+	pc.ram.Total=QString("RAM Total : %1 GB").arg(
+	macosRAMOutput.toLongLong() / (1024 * 1024) * 1000);
 	macosraminfo.close();
 }
 
