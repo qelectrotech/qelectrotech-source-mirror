@@ -177,6 +177,12 @@ int main(int argc, char **argv)
 #endif
 #endif
 
+
+#if QT_VERSION > QT_VERSION_CHECK(5, 7, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
+
+
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
 QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
