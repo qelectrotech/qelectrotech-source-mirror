@@ -3,6 +3,31 @@ Changelog
 
 If by accident I have forgotten to credit someone in the CHANGELOG, email me and I will fix it.
 
+__3.3.4__
+---------
+
+* Fix compilation under Qt 6.2+ and stricter Qt compile settings. - _Christoph Cullmann_
+
+__3.3.3__
+---------
+
+* Support for Qt 6.3+ - Fixed deprecated `QCryptographicHash::addData()` that will only support `QByteArrayView` going further. - _Moody Liu_
+
+__3.3.2__
+---------
+
+* Fixed crash caused by sending a `writeAck` on a removed connection. - _Nicolas Werner_
+
+__3.3.1__
+---------
+
+* Added support for _AppImage_ dynamic executable paths. - _Michael Klein_
+
+__3.3.0__
+---------
+
+* Fixed message fragmentation issue causing crashes and incorrectly / inconsistently received messages. - _Nils Jeisecke_
+
 __3.2.0__
 ---------
 

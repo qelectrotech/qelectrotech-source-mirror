@@ -35,7 +35,7 @@ To include the library files I would recommend that you add it as a git
 submodule to your project. Here is how:
 
 ```bash
-git submodule add git@github.com:itay-grudev/SingleApplication.git singleapplication
+git submodule add https://github.com/itay-grudev/SingleApplication.git singleapplication
 ```
 
 **Qmake:**
@@ -182,7 +182,8 @@ bool SingleApplication::sendMessage( QByteArray message, int timeout = 100 )
 ```
 
 Sends `message` to the Primary Instance. Uses `timeout` as a the maximum timeout
-in milliseconds for blocking functions
+in milliseconds for blocking functions. Returns `true` if the message has been sent
+successfully. If the message can't be sent or the function timeouts - returns `false`.
 
 ---
 
