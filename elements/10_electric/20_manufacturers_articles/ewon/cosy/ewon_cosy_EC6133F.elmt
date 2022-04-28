@@ -1,35 +1,12 @@
 <definition width="120" hotspot_x="35" type="element" hotspot_y="206" version="0.90" link_type="simple" height="330">
     <uuid uuid="{35a4d12c-61f0-418a-a25e-267a512abd2a}"/>
     <names>
-        <name lang="ru">ewon cosy EC6133F</name>
-        <name lang="pl">ewon cosy EC6133F</name>
-        <name lang="nb">ewon cosy EC6133F</name>
-        <name lang="en">ewon cosy EC6133F</name>
-        <name lang="sr">ewon cosy EC6133F</name>
-        <name lang="el">ewon cosy EC6133F</name>
-        <name lang="es">ewon cosy EC6133F</name>
-        <name lang="nl">ewon cosy EC6133F</name>
-        <name lang="ja">ewon cosy EC6133F</name>
-        <name lang="fr">ewon cosy EC6133F</name>
-        <name lang="ro">ewon cosy EC6133F</name>
-        <name lang="de">ewon cosy EC6133F</name>
-        <name lang="pt">ewon cosy EC6133F</name>
-        <name lang="it">ewon cosy EC6133F</name>
-        <name lang="cs">ewon cosy EC6133F</name>
-        <name lang="ar">ewon cosy EC6133F</name>
-        <name lang="hr">ewon cosy EC6133F</name>
-        <name lang="da">ewon cosy EC6133F</name>
-        <name lang="sl">ewon cosy EC6133F</name>
-        <name lang="tr">ewon cosy EC6133F</name>
-        <name lang="ca">ewon cosy EC6133F</name>
-        <name lang="be">ewon cosy EC6133F</name>
-        <name lang="hu">ewon cosy EC6133F</name>
-        <name lang="mn">ewon cosy EC6133F</name>
+        <name lang="en">cosy_EC6133F</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
-        <elementInformation show="1" name="description">ewon_flexy_205_plaint</elementInformation>
+        <elementInformation show="1" name="description">cosy_EC6133F</elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>

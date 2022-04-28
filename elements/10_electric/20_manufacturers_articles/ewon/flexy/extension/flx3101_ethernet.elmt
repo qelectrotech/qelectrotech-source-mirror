@@ -1,36 +1,13 @@
 <definition width="70" hotspot_x="65" type="element" hotspot_y="184" version="0.90" link_type="simple" height="200">
     <uuid uuid="{fcc34833-6166-434a-8350-0ca8d7bbcc1c}"/>
     <names>
-        <name lang="ru">flx3101_ethernet</name>
-        <name lang="nb">flx3101_ethernet</name>
-        <name lang="pl">flx3101_ethernet</name>
         <name lang="en">flx3101_ethernet</name>
-        <name lang="sr">flx3101_ethernet</name>
-        <name lang="el">flx3101_ethernet</name>
-        <name lang="es">flx3101_ethernet</name>
-        <name lang="ja">flx3101_ethernet</name>
-        <name lang="nl">flx3101_ethernet</name>
-        <name lang="fr">flx3101_ethernet</name>
-        <name lang="de">flx3101_ethernet</name>
-        <name lang="ro">flx3101_ethernet</name>
-        <name lang="it">flx3101_ethernet</name>
-        <name lang="pt">flx3101_ethernet</name>
-        <name lang="cs">flx3101_ethernet</name>
-        <name lang="ar">flx3101_ethernet</name>
-        <name lang="hr">flx3101_ethernet</name>
-        <name lang="da">flx3101_ethernet</name>
-        <name lang="sl">flx3101_ethernet</name>
-        <name lang="ca">flx3101_ethernet</name>
-        <name lang="be">flx3101_ethernet</name>
-        <name lang="tr">flx3101_ethernet</name>
-        <name lang="hu">flx3101_ethernet</name>
-        <name lang="mn">flx3101_ethernet</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
-        <elementInformation show="1" name="description">Flexy205 GSM FLB3204</elementInformation>
+        <elementInformation show="1" name="description">flx3101_ethernet</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

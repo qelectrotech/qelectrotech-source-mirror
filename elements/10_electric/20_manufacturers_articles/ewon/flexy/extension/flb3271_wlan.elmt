@@ -1,36 +1,13 @@
 <definition width="70" hotspot_x="65" type="element" hotspot_y="184" version="0.90" link_type="simple" height="200">
     <uuid uuid="{27901a94-6ae8-4930-8016-9331a4bdadde}"/>
     <names>
-        <name lang="ru">flb3271_wlan</name>
-        <name lang="pl">flb3271_wlan</name>
-        <name lang="nb">flb3271_wlan</name>
-        <name lang="sr">flb3271_wlan</name>
         <name lang="en">flb3271_wlan</name>
-        <name lang="el">flb3271_wlan</name>
-        <name lang="es">flb3271_wlan</name>
-        <name lang="ja">flb3271_wlan</name>
-        <name lang="nl">flb3271_wlan</name>
-        <name lang="fr">flb3271_wlan</name>
-        <name lang="ro">flb3271_wlan</name>
-        <name lang="de">flb3271_wlan</name>
-        <name lang="pt">flb3271_wlan</name>
-        <name lang="it">flb3271_wlan</name>
-        <name lang="cs">flb3271_wlan</name>
-        <name lang="ar">flb3271_wlan</name>
-        <name lang="hr">flb3271_wlan</name>
-        <name lang="da">flb3271_wlan</name>
-        <name lang="sl">flb3271_wlan</name>
-        <name lang="ca">flb3271_wlan</name>
-        <name lang="be">flb3271_wlan</name>
-        <name lang="tr">flb3271_wlan</name>
-        <name lang="hu">flb3271_wlan</name>
-        <name lang="mn">flb3271_wlan</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
-        <elementInformation show="1" name="description">Flexy205 GSM FLB3204</elementInformation>
+        <elementInformation show="1" name="description">flb3271_wlan</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

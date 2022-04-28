@@ -1,36 +1,13 @@
 <definition width="70" hotspot_x="65" type="element" hotspot_y="184" version="0.90" link_type="simple" height="200">
     <uuid uuid="{a20b0789-c0ff-4f72-91b0-3a3f6c986433}"/>
     <names>
-        <name lang="ru">flb3202_gsm</name>
-        <name lang="nb">flb3202_gsm</name>
-        <name lang="pl">flb3202_gsm</name>
         <name lang="en">flb3202_gsm</name>
-        <name lang="sr">flb3202_gsm</name>
-        <name lang="el">flb3202_gsm</name>
-        <name lang="es">flb3202_gsm</name>
-        <name lang="ja">flb3202_gsm</name>
-        <name lang="nl">flb3202_gsm</name>
-        <name lang="fr">flb3202_gsm</name>
-        <name lang="de">flb3202_gsm</name>
-        <name lang="ro">flb3202_gsm</name>
-        <name lang="it">flb3202_gsm</name>
-        <name lang="pt">flb3202_gsm</name>
-        <name lang="cs">flb3202_gsm</name>
-        <name lang="ar">flb3202_gsm</name>
-        <name lang="hr">flb3202_gsm</name>
-        <name lang="da">flb3202_gsm</name>
-        <name lang="sl">flb3202_gsm</name>
-        <name lang="ca">flb3202_gsm</name>
-        <name lang="be">flb3202_gsm</name>
-        <name lang="tr">flb3202_gsm</name>
-        <name lang="hu">flb3202_gsm</name>
-        <name lang="mn">flb3202_gsm</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
-        <elementInformation show="1" name="description">Flexy205 GSM FLB3204</elementInformation>
+        <elementInformation show="1" name="description">Flexy205 GSM FLB3202</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

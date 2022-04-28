@@ -1,36 +1,13 @@
 <definition width="70" hotspot_x="65" type="element" hotspot_y="184" version="0.90" link_type="simple" height="200">
     <uuid uuid="{1636dc96-ead9-4197-9250-49b445403779}"/>
     <names>
-        <name lang="ru">fla3301_rs232</name>
-        <name lang="nb">fla3301_rs232</name>
-        <name lang="pl">fla3301_rs232</name>
         <name lang="en">fla3301_rs232</name>
-        <name lang="sr">fla3301_rs232</name>
-        <name lang="el">fla3301_rs232</name>
-        <name lang="es">fla3301_rs232</name>
-        <name lang="ja">fla3301_rs232</name>
-        <name lang="nl">fla3301_rs232</name>
-        <name lang="fr">fla3301_rs232</name>
-        <name lang="de">fla3301_rs232</name>
-        <name lang="ro">fla3301_rs232</name>
-        <name lang="it">fla3301_rs232</name>
-        <name lang="pt">fla3301_rs232</name>
-        <name lang="cs">fla3301_rs232</name>
-        <name lang="ar">fla3301_rs232</name>
-        <name lang="hr">fla3301_rs232</name>
-        <name lang="da">fla3301_rs232</name>
-        <name lang="sl">fla3301_rs232</name>
-        <name lang="ca">fla3301_rs232</name>
-        <name lang="be">fla3301_rs232</name>
-        <name lang="tr">fla3301_rs232</name>
-        <name lang="hu">fla3301_rs232</name>
-        <name lang="mn">fla3301_rs232</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
-        <elementInformation show="1" name="description">Flexy205 GSM FLB3204</elementInformation>
+        <elementInformation show="1" name="description">fla3301_rs232</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

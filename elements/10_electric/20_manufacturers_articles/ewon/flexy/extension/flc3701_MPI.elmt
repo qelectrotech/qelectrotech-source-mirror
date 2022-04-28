@@ -1,36 +1,13 @@
 <definition width="70" hotspot_x="65" type="element" hotspot_y="184" version="0.90" link_type="simple" height="200">
     <uuid uuid="{b01528cd-4998-47d8-a522-0ee70724e035}"/>
     <names>
-        <name lang="ru">flc3701_MPI</name>
-        <name lang="nb">flc3701_MPI</name>
-        <name lang="pl">flc3701_MPI</name>
         <name lang="en">flc3701_MPI</name>
-        <name lang="sr">flc3701_MPI</name>
-        <name lang="el">flc3701_MPI</name>
-        <name lang="es">flc3701_MPI</name>
-        <name lang="ja">flc3701_MPI</name>
-        <name lang="nl">flc3701_MPI</name>
-        <name lang="fr">flc3701_MPI</name>
-        <name lang="de">flc3701_MPI</name>
-        <name lang="ro">flc3701_MPI</name>
-        <name lang="it">flc3701_MPI</name>
-        <name lang="pt">flc3701_MPI</name>
-        <name lang="cs">flc3701_MPI</name>
-        <name lang="ar">flc3701_MPI</name>
-        <name lang="hr">flc3701_MPI</name>
-        <name lang="da">flc3701_MPI</name>
-        <name lang="sl">flc3701_MPI</name>
-        <name lang="ca">flc3701_MPI</name>
-        <name lang="be">flc3701_MPI</name>
-        <name lang="tr">flc3701_MPI</name>
-        <name lang="hu">flc3701_MPI</name>
-        <name lang="mn">flc3701_MPI</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
-        <elementInformation show="1" name="description">Flexy205 GSM FLB3204</elementInformation>
+        <elementInformation show="1" name="description">flc3701_MPI</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

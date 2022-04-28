@@ -1,30 +1,7 @@
 <definition width="70" hotspot_x="65" type="element" hotspot_y="184" version="0.90" link_type="simple" height="200">
     <uuid uuid="{335e8301-716e-4a99-9d63-d038fe649413}"/>
     <names>
-        <name lang="ru">flb3204_gsm</name>
-        <name lang="nb">flb3204_gsm</name>
-        <name lang="pl">flb3204_gsm</name>
         <name lang="en">flb3204_gsm</name>
-        <name lang="sr">flb3204_gsm</name>
-        <name lang="el">flb3204_gsm</name>
-        <name lang="es">flb3204_gsm</name>
-        <name lang="ja">flb3204_gsm</name>
-        <name lang="nl">flb3204_gsm</name>
-        <name lang="fr">flb3204_gsm</name>
-        <name lang="de">flb3204_gsm</name>
-        <name lang="ro">flb3204_gsm</name>
-        <name lang="it">flb3204_gsm</name>
-        <name lang="pt">flb3204_gsm</name>
-        <name lang="cs">flb3204_gsm</name>
-        <name lang="ar">flb3204_gsm</name>
-        <name lang="hr">flb3204_gsm</name>
-        <name lang="da">flb3204_gsm</name>
-        <name lang="sl">flb3204_gsm</name>
-        <name lang="ca">flb3204_gsm</name>
-        <name lang="be">flb3204_gsm</name>
-        <name lang="tr">flb3204_gsm</name>
-        <name lang="hu">flb3204_gsm</name>
-        <name lang="mn">flb3204_gsm</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>

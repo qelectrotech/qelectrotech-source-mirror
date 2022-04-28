@@ -1,36 +1,13 @@
 <definition width="120" hotspot_x="35" type="element" hotspot_y="206" version="0.90" link_type="simple" height="330">
     <uuid uuid="{1e86eb72-1527-48e4-b79e-1b220c367cb0}"/>
     <names>
-        <name lang="ru">ewon cosy EC61330</name>
-        <name lang="nb">ewon cosy EC61330</name>
-        <name lang="pl">ewon cosy EC61330</name>
-        <name lang="sr">ewon cosy EC61330</name>
-        <name lang="en">ewon cosy EC61330</name>
-        <name lang="el">ewon cosy EC61330</name>
-        <name lang="es">ewon cosy EC61330</name>
-        <name lang="ja">ewon cosy EC61330</name>
-        <name lang="nl">ewon cosy EC61330</name>
-        <name lang="fr">ewon cosy EC61330</name>
-        <name lang="de">ewon cosy EC61330</name>
-        <name lang="ro">ewon cosy EC61330</name>
-        <name lang="pt">ewon cosy EC61330</name>
-        <name lang="it">ewon cosy EC61330</name>
-        <name lang="cs">ewon cosy EC61330</name>
-        <name lang="ar">ewon cosy EC61330</name>
-        <name lang="hr">ewon cosy EC61330</name>
-        <name lang="da">ewon cosy EC61330</name>
-        <name lang="sl">ewon cosy EC61330</name>
-        <name lang="tr">ewon cosy EC61330</name>
-        <name lang="ca">ewon cosy EC61330</name>
-        <name lang="be">ewon cosy EC61330</name>
-        <name lang="hu">ewon cosy EC61330</name>
-        <name lang="mn">ewon cosy EC61330</name>
+        <name lang="en">cosy_EC61330</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="manufacturer">Ewon</elementInformation>
-        <elementInformation show="1" name="description">ewon_flexy_205_plaint</elementInformation>
+        <elementInformation show="1" name="description">cosy_EC61330</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>

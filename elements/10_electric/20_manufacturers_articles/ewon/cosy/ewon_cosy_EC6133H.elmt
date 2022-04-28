@@ -1,33 +1,10 @@
 <definition height="330" hotspot_y="206" width="120" type="element" hotspot_x="35" version="0.90" link_type="simple">
     <uuid uuid="{220f7b11-9c37-429c-b280-511d5e7376b6}"/>
     <names>
-        <name lang="nl">ewon cosy EC6133C</name>
-        <name lang="hr">ewon cosy EC6133C</name>
-        <name lang="pt">ewon cosy EC6133C</name>
-        <name lang="tr">ewon cosy EC6133C</name>
-        <name lang="it">ewon cosy EC6133C</name>
-        <name lang="be">ewon cosy EC6133C</name>
-        <name lang="pl">ewon cosy EC6133C</name>
-        <name lang="el">ewon cosy EC6133C</name>
-        <name lang="cs">ewon cosy EC6133C</name>
-        <name lang="mn">ewon cosy EC6133C</name>
-        <name lang="hu">ewon cosy EC6133C</name>
-        <name lang="ru">ewon cosy EC6133C</name>
-        <name lang="ca">ewon cosy EC6133C</name>
-        <name lang="fr">ewon cosy EC6133C</name>
-        <name lang="de">ewon cosy EC6133C</name>
-        <name lang="ro">ewon cosy EC6133C</name>
-        <name lang="nb">ewon cosy EC6133C</name>
-        <name lang="da">ewon cosy EC6133C</name>
-        <name lang="es">ewon cosy EC6133C</name>
-        <name lang="sl">ewon cosy EC6133C</name>
-        <name lang="ja">ewon cosy EC6133C</name>
-        <name lang="en">ewon cosy EC6133C</name>
-        <name lang="sr">ewon cosy EC6133C</name>
-        <name lang="ar">ewon cosy EC6133C</name>
+        <name lang="en">cosy_EC6133C</name>
     </names>
     <elementInformations>
-        <elementInformation name="description" show="1">ewon_flexy_205_plaint</elementInformation>
+        <elementInformation name="description" show="1">cosy_EC6133C</elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
         <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
