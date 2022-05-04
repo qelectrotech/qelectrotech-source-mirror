@@ -75,6 +75,14 @@ void TerminalStrip::setDescription(const QString &description) {
 }
 
 /**
+ * @brief TerminalStrip::project
+ * @return the project of this terminal strip or nullptr
+ */
+QETProject *TerminalStrip::project() const {
+	return m_project.data();
+}
+
+/**
  * @brief TerminalStrip::data
  * @return The internal data of this strip
  */

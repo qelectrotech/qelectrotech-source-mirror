@@ -33,6 +33,17 @@ namespace Ui {
 class TerminalStripTreeDockWidget : public QDockWidget
 {
 		Q_OBJECT
+	private:
+		enum TreeWidgetType{
+			Root,
+			Terminal,
+			FreeTerminal,
+			Installation,
+			Location,
+			Strip
+		};
+			//Role used for data in QTreeWidgetItem
+		static constexpr int UUID_USER_ROLE{Qt::UserRole + 1};
 
 	public:
 		explicit TerminalStripTreeDockWidget(QETProject *project, QWidget *parent = nullptr);
@@ -56,7 +67,6 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		void buildTree();
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
-		void setupUndoConnections();
 		void setCurrentStrip(TerminalStrip *strip);
 
 	private:

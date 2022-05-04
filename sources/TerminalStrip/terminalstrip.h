@@ -73,6 +73,7 @@ class TerminalStrip : public QObject
 		void setDescription(const QString &description);
 		QString description() const {return m_data.m_description;}
 		QUuid uuid() const {return m_data.m_uuid;}
+		QETProject *project() const;
 
 		TerminalStripData data() const;
 		void setData(const TerminalStripData &data);

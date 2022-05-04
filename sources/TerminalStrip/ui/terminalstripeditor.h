@@ -63,6 +63,7 @@ class TerminalStripEditor : public QWidget
 		void on_m_bridge_terminals_pb_clicked();
 		void on_m_unbridge_terminals_pb_clicked();
 		void on_m_bridge_color_cb_activated(const QColor &col);
+		void on_m_move_to_pb_clicked();
 
 	private:
 		Ui::TerminalStripEditor *ui;
