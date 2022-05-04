@@ -26,7 +26,6 @@
 #include "../realterminal.h"
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../terminalstrip.h"
-#include "terminalstriptreewidget.h"
 
 TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QWidget *parent) :
 	QDockWidget(parent),
@@ -41,8 +40,6 @@ TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QW
 #else
 	ui->m_tree_view->expandAll();
 #endif
-
-	setupUndoConnections();
 }
 
 TerminalStripTreeDockWidget::~TerminalStripTreeDockWidget()
@@ -112,10 +109,10 @@ QString TerminalStripTreeDockWidget::currentInstallation() const
 
 	if (auto item = ui->m_tree_view->currentItem())
 	{
-		if (item->type() == TerminalStripTreeWidget::Location) {
+		if (item->type() == Location) {
 			item = item->parent();
 		}
-		if (item->type() == TerminalStripTreeWidget::Installation) {
+		if (item->type() == Installation) {
 			return item->data(0, Qt::DisplayRole).toString();
 		}
 	}
@@ -134,7 +131,7 @@ QString TerminalStripTreeDockWidget::currentLocation() const
 	}
 
 	if (auto item = ui->m_tree_view->currentItem()) {
-		if (item->type() == TerminalStripTreeWidget::Location) {
+		if (item->type() == Location) {
 			return item->data(0, Qt::DisplayRole).toString();
 		}
 	}
@@ -157,8 +154,8 @@ void TerminalStripTreeDockWidget::setSelectedStrip(TerminalStrip *strip) {
 QSharedPointer<RealTerminal> TerminalStripTreeDockWidget::currentRealTerminal() const
 {
 	if (auto item = ui->m_tree_view->currentItem()) {
-		if (item->type() == TerminalStripTreeWidget::Terminal) {
-			return m_uuid_terminal_H.value(item->data(0,TerminalStripTreeWidget::UUID_USER_ROLE).toUuid());
+		if (item->type() == Terminal) {
+			return m_uuid_terminal_H.value(item->data(0,UUID_USER_ROLE).toUuid());
 		}
 	}
 	return QSharedPointer<RealTerminal>();
@@ -179,12 +176,12 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 	}
 
 	TerminalStrip *strip_ = nullptr;
-	if (current->type() == TerminalStripTreeWidget::Strip) {
+	if (current->type() == Strip) {
 		strip_ = m_item_strip_H.value(current);
 	}
-	else if (current->type() == TerminalStripTreeWidget::Terminal
+	else if (current->type() == Terminal
 			 && current->parent()
-			 && current->parent()->type() == TerminalStripTreeWidget::Strip) {
+			 && current->parent()->type() == Strip) {
 		strip_ = m_item_strip_H.value(current->parent());
 	}
 
@@ -205,10 +202,10 @@ void TerminalStripTreeDockWidget::buildTree()
 	}
 
 	QStringList strl{title_};
-	new QTreeWidgetItem(ui->m_tree_view, strl, TerminalStripTreeWidget::Root);
+	new QTreeWidgetItem(ui->m_tree_view, strl, Root);
 
 	QStringList ftstrl(tr("Bornes indépendante"));
-	new QTreeWidgetItem(ui->m_tree_view, ftstrl, TerminalStripTreeWidget::FreeTerminal);
+	new QTreeWidgetItem(ui->m_tree_view, ftstrl, FreeTerminal);
 
 	auto ts_vector = m_project->terminalStrip();
 	std::sort(ts_vector.begin(), ts_vector.end(), [](TerminalStrip *a, TerminalStrip *b) {
@@ -242,7 +239,7 @@ QTreeWidgetItem* TerminalStripTreeDockWidget::addTerminalStrip(TerminalStrip *te
 	}
 	if (!inst_qtwi) {
 		QStringList inst_strl{installation_str};
-		inst_qtwi = new QTreeWidgetItem(root_item, inst_strl, TerminalStripTreeWidget::Installation);
+		inst_qtwi = new QTreeWidgetItem(root_item, inst_strl, Installation);
 	}
 
 		//Check if location already exist
@@ -258,13 +255,13 @@ QTreeWidgetItem* TerminalStripTreeDockWidget::addTerminalStrip(TerminalStrip *te
 	}
 	if (!loc_qtwi) {
 		QStringList loc_strl{location_str};
-		loc_qtwi = new QTreeWidgetItem(inst_qtwi, loc_strl, TerminalStripTreeWidget::Location);
+		loc_qtwi = new QTreeWidgetItem(inst_qtwi, loc_strl, Location);
 	}
 
 		//Add the terminal strip
 	QStringList name{terminal_strip->name()};
-	auto strip_item = new QTreeWidgetItem(loc_qtwi, name, TerminalStripTreeWidget::Strip);
-	strip_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, terminal_strip->uuid());
+	auto strip_item = new QTreeWidgetItem(loc_qtwi, name, Strip);
+	strip_item->setData(0, UUID_USER_ROLE, terminal_strip->uuid());
 	strip_item->setIcon(0, QET::Icons::TerminalStrip);
 
 		//Add child terminal of the strip
@@ -282,8 +279,8 @@ QTreeWidgetItem* TerminalStripTreeDockWidget::addTerminalStrip(TerminalStrip *te
 					text_.append(QStringLiteral(", ")).append(real_t->label());
 			}
 			const auto real_t = phy_t->realTerminals().at(0);
-			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(text_), TerminalStripTreeWidget::Terminal);
-			terminal_item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, phy_t->uuid());
+			auto terminal_item = new QTreeWidgetItem(strip_item, QStringList(text_), Terminal);
+			terminal_item->setData(0, UUID_USER_ROLE, phy_t->uuid());
 			terminal_item->setIcon(0, QET::Icons::ElementTerminal);
 		}
 	}
@@ -318,64 +315,12 @@ void TerminalStripTreeDockWidget::addFreeTerminal()
 	{
 		QUuid uuid_ = terminal->uuid();
 		QStringList strl{terminal->actualLabel()};
-		auto item = new QTreeWidgetItem(free_terminal_item, strl, TerminalStripTreeWidget::Terminal);
-		item->setData(0, TerminalStripTreeWidget::UUID_USER_ROLE, uuid_.toString());
+		auto item = new QTreeWidgetItem(free_terminal_item, strl, Terminal);
+		item->setData(0, UUID_USER_ROLE, uuid_.toString());
 		item->setIcon(0, QET::Icons::ElementTerminal);
 
 		m_uuid_terminal_H.insert(uuid_, terminal->realTerminal());
 	}
-}
-
-void TerminalStripTreeDockWidget::setupUndoConnections()
-{
-	connect(ui->m_tree_view, &TerminalStripTreeWidget::terminalAddedToStrip, this,
-			[=](QUuid terminal_uuid, QUuid strip_uuid)
-	{
-		auto terminal = m_uuid_terminal_H.value(terminal_uuid);
-		auto strip = m_uuid_strip_H.value(strip_uuid);
-
-		if (!terminal || !strip) {
-			return;
-		}
-
-		auto undo = new AddTerminalToStripCommand(terminal, strip);
-		m_project->undoStack()->push(undo);
-	});
-
-	connect(ui->m_tree_view, &TerminalStripTreeWidget::terminalMovedFromStripToStrip, this,
-			[=] (QUuid terminal_uuid, QUuid old_strip_uuid, QUuid new_strip_uuid)
-	{
-		auto old_strip = m_uuid_strip_H.value(old_strip_uuid);
-		auto new_strip = m_uuid_strip_H.value(new_strip_uuid);
-
-		if (!old_strip || !new_strip) {
-			return;
-		}
-		auto terminal = old_strip->physicalTerminal(terminal_uuid);
-		if (!terminal) {
-			return;
-		}
-
-		auto undo = new MoveTerminalCommand(terminal, old_strip, new_strip);
-		m_project->undoStack()->push(undo);
-	});
-
-	connect(ui->m_tree_view, &TerminalStripTreeWidget::terminalRemovedFromStrip, this,
-			[=] (QUuid terminal_uuid, QUuid old_strip_uuid)
-	{
-		auto strip_ = m_uuid_strip_H.value(old_strip_uuid);
-		if (!strip_) {
-			return;
-		}
-
-		auto terminal_ = strip_->physicalTerminal(terminal_uuid);
-		if (!terminal_) {
-			return;
-		}
-
-		auto undo = new RemoveTerminalFromStripCommand(terminal_, strip_);
-		m_project->undoStack()->push(undo);
-	});
 }
 
 void TerminalStripTreeDockWidget::setCurrentStrip(TerminalStrip *strip)
