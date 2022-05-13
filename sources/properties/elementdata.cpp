@@ -292,6 +292,10 @@ bool ElementData::operator !=(const ElementData &data) const {
 	return !(*this == data);
 }
 
+QString ElementData::typeToString() const {
+	return typeToString(m_type);
+}
+
 QString ElementData::typeToString(ElementData::Type type)
 {
 	switch (type) {
@@ -307,6 +311,8 @@ QString ElementData::typeToString(ElementData::Type type)
 			return QString("slave");
 		case ElementData::Terminale :
 			return QString("terminal");
+		case ElementData::Thumbnail:
+			return QStringLiteral("thumbnail");
 		default:
 			qDebug() << "ElementData::typeToString : type don't exist"
 					 << "return failsafe value 'simple'";
@@ -328,6 +334,8 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 		return ElementData::Slave;
 	} else if (string == "terminal") {
 		return ElementData::Terminale;
+	} else if (string == QLatin1String("thumbnail")) {
+		return ElementData::Thumbnail;
 	}
 
 		//Return simple if nothing match

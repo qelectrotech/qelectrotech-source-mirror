@@ -122,6 +122,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_base_type_cb->addItem (tr("Renvoi de folio suivant"),   ElementData::NextReport);
 	ui->m_base_type_cb->addItem (tr("Renvoi de folio précédent"), ElementData::PreviousReport);
 	ui->m_base_type_cb->addItem (tr("Bornier"), ElementData::Terminale);
+	ui->m_base_type_cb->addItem (tr("Vignette"), ElementData::Thumbnail);
 
 		// Slave option
 	ui->m_state_cb->addItem(tr("Normalement ouvert"),       ElementData::NO);
@@ -178,6 +179,9 @@ void ElementPropertiesEditorWidget::updateTree()
 			break;
 		case ElementData::Terminale:
 			ui->m_tree->setEnabled(true);
+			break;
+		default:
+			ui->m_tree->setDisabled(true);
 			break;
 	}
 }

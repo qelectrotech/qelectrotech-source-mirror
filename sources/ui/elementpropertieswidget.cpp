@@ -363,7 +363,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	if (folio_index != -1) {
 		description_string += QString(tr("Folio : %1\n")).arg(folio_index + 1);
 	}
-	description_string += QString(tr("Type : %1\n")).arg(m_element ->linkTypeToString());
+	description_string += QString(tr("Type : %1\n")).arg(m_element->elementData().typeToString());
 	description_string += QString(tr("Sous-type : %1\n")).arg(m_element ->kindInformations()["type"].toString());
 	description_string += QString(tr("Position : %1\n")).arg(m_diagram -> convertPosition(m_element -> scenePos()).toString());
 	description_string += QString(tr("Rotation : %1°\n")).arg(m_element.data()->rotation());

@@ -40,7 +40,8 @@ class ElementData : public PropertiesInterface
 			AllReport      = 6,
 			Master         = 8,
 			Slave          = 16,
-			Terminale      = 32};
+			Terminale      = 32,
+			Thumbnail      = 64};
 		Q_ENUM(Type)
 
 		enum MasterType {
@@ -104,6 +105,7 @@ class ElementData : public PropertiesInterface
 		bool operator==(const ElementData &data) const;
 		bool operator!=(const ElementData &data) const;
 
+		QString typeToString() const;
 		static QString typeToString(ElementData::Type type);
 		static ElementData::Type typeFromString(const QString &string);
 

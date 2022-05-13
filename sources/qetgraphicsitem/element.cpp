@@ -1306,6 +1306,12 @@ void Element::initLink(QETProject *prj)
 	tmp_uuids_link.clear();
 }
 
+/**
+ * @brief Element::linkTypeToString
+ * \deprecated use instead ElementData::typeToString
+ * \todo remove this function
+ * @return
+ */
 QString Element::linkTypeToString() const
 {
 	switch (m_link_type)
