@@ -312,7 +312,7 @@ QString ElementData::typeToString(ElementData::Type type)
 		case ElementData::Terminale :
 			return QString("terminal");
 		case ElementData::Thumbnail:
-			return QStringLiteral("thumbnail");
+			return QString("thumbnail");
 		default:
 			qDebug() << "ElementData::typeToString : type don't exist"
 					 << "return failsafe value 'simple'";
@@ -334,7 +334,7 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 		return ElementData::Slave;
 	} else if (string == "terminal") {
 		return ElementData::Terminale;
-	} else if (string == QLatin1String("thumbnail")) {
+	} else if (string == "thumbnail") {
 		return ElementData::Thumbnail;
 	}
 
@@ -559,6 +559,7 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 				} else if (name == "function") {
 					m_terminal_function = terminalFunctionFromString(dom_elmt.text());
 				}
+				
 			}
 		}
 	}

@@ -289,6 +289,9 @@ void ElementPropertiesWidget::updateUi()
 		case Element::Simple:
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
+		case Element::Thumbnail:
+			m_list_editor << new ElementInfoWidget(m_element, this);
+			break;
 		case Element::NextReport:
 			m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;

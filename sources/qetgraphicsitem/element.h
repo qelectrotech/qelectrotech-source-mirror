@@ -57,7 +57,8 @@ class Element : public QetGraphicsItem
 			AllReport = 6,
 			Master = 8,
 			Slave = 16,
-			Terminale = 32};
+			Terminale = 32,
+			Thumbnail = 64};
 
 		Element(const ElementsLocation &location,
 			QGraphicsItem * = nullptr,

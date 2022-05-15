@@ -165,6 +165,9 @@ void ElementPropertiesEditorWidget::updateTree()
 		case ElementData::Simple:
 			ui->m_tree->setEnabled(true);
 			break;
+		case ElementData::Thumbnail:
+			ui->m_tree->setEnabled(true);
+			break;
 		case ElementData::NextReport:
 			ui->m_tree->setDisabled(true);
 			break;

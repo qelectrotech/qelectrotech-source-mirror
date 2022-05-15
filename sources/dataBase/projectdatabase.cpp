@@ -412,7 +412,7 @@ void projectDataBase::populateElementTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		ElementProvider ep(diagram);
-		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master);
+		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master | Element::Thumbnail);
 			//Insert all value into the database
 		for (auto elmt : elements_list)
 		{
@@ -440,7 +440,7 @@ void projectDataBase::populateElementInfoTable()
 	for (auto *diagram : m_project->diagrams())
 	{
 		ElementProvider ep(diagram);
-		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master);
+		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master| Element::Thumbnail);
 
 			//Insert all value into the database
 		for (auto elmt : elements_list)
