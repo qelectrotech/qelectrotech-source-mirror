@@ -1,4 +1,4 @@
-<definition hotspot_x="15" link_type="simple" hotspot_y="44" version="0.70" height="90" width="30" type="element">
+<definition hotspot_x="15" link_type="thumbnail" hotspot_y="44" version="0.70" height="90" width="30" type="element">
     <uuid uuid="{f990c83e-ce6e-42d7-bb22-72f41edb0387}"/>
     <names>
         <name lang="en">Terminal (feed-through)</name>

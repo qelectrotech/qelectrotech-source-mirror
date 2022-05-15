@@ -1,4 +1,4 @@
-<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
+<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="thumbnail" height="60" type="element" width="50">
     <uuid uuid="{4d6049d7-110d-48bd-b67c-01df7c76f759}"/>
     <names>
         <name lang="fr">Porte étiquette </name>

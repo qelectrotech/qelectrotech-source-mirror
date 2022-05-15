@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="50" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="50" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{6a3f0edd-9457-4a63-a03c-eec1029e3d7c}"/>
     <names>
         <name lang="fr">413004 - Prise RJ45 6A STP modulaire</name>

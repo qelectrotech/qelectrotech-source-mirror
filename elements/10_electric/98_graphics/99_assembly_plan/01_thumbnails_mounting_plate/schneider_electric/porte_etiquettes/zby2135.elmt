@@ -1,4 +1,4 @@
-<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
+<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="thumbnail" height="60" type="element" width="50">
     <uuid uuid="{908d73f1-fd8f-473f-bc28-66e66db5c872}"/>
     <names>
         <name lang="fr">Porte étiquette DEFAUT (rouge)</name>

@@ -1,4 +1,4 @@
-<definition version="0.80" type="element" height="210" hotspot_x="5" link_type="simple" width="30" hotspot_y="5">
+<definition version="0.80" type="element" height="210" hotspot_x="5" link_type="thumbnail" width="30" hotspot_y="5">
     <uuid uuid="{489358d8-8460-4597-99f8-4208b8e0ca4b}"/>
     <names>
         <name lang="cs">CTX 06 11</name>

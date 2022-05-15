@@ -1,4 +1,4 @@
-<definition width="80" hotspot_x="40" hotspot_y="85" link_type="simple" version="0.90" type="element" height="170">
+<definition width="80" hotspot_x="40" hotspot_y="85" link_type="thumbnail" version="0.90" type="element" height="170">
     <uuid uuid="{5c8ca250-51fa-4521-a2ba-151a144d1d3e}"/>
     <names>
         <name lang="en">PXF 2P</name>

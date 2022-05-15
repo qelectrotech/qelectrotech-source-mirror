@@ -1,4 +1,4 @@
-<definition hotspot_y="46" version="0.51" hotspot_x="22" link_type="simple" width="40" type="element" height="100">
+<definition hotspot_y="46" version="0.51" hotspot_x="22" link_type="thumbnail" width="40" type="element" height="100">
     <uuid uuid="{b480782c-442e-437c-bd5c-f4fe6c62edfc}"/>
     <names>
         <name lang="fr">Voltmetre digital</name>

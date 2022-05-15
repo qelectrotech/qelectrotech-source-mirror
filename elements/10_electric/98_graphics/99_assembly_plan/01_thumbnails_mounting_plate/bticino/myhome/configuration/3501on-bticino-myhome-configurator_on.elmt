@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" type="element">
+<definition version="0.70" link_type="thumbnail" hotspot_x="5" hotspot_y="29" width="10" height="40" type="element">
     <uuid uuid="{5a3ffb05-2f70-4568-b55d-e6c96900692e}"/>
     <names>
         <name lang="fr">3501/ON - Configurateur ON</name>

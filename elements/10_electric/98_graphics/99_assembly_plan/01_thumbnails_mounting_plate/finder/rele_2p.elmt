@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="2" hotspot_x="6" type="element" width="30" version="0.90" height="80">
+<definition link_type="thumbnail" hotspot_y="2" hotspot_x="6" type="element" width="30" version="0.90" height="80">
     <uuid uuid="{e68e6ae4-f217-4ef5-8da2-7e4675cf0bf6}"/>
     <names>
         <name lang="fr">Relais 2 poles</name>

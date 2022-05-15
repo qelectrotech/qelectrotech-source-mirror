@@ -1,4 +1,4 @@
-<definition version="0.80" type="element" height="210" hotspot_x="5" link_type="simple" width="50" hotspot_y="5">
+<definition version="0.80" type="element" height="210" hotspot_x="5" link_type="thumbnail" width="50" hotspot_y="5">
     <uuid uuid="{0ac51c00-d645-4437-8809-cd6f75569e1d}"/>
     <names>
         <name lang="cs">AST B RD</name>

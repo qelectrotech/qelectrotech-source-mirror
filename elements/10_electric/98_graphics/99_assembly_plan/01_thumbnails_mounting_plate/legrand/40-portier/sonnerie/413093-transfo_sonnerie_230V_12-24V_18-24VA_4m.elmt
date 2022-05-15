@@ -1,4 +1,4 @@
-<definition hotspot_x="5" height="210" link_type="simple" version="0.80" width="170" hotspot_y="4" type="element">
+<definition hotspot_x="5" height="210" link_type="thumbnail" version="0.80" width="170" hotspot_y="4" type="element">
     <uuid uuid="{cd730c24-5cf5-4c2a-af38-233c8c1df85a}"/>
     <names>
         <name lang="fr">413093 - Transformateur sonnerie 230V 12-24V 18-24VA - 4 modules</name>

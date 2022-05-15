@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="8" orientation="dyyy" version="0.70" width="50" type="element" height="110" link_type="simple">
+<definition hotspot_x="4" hotspot_y="8" orientation="dyyy" version="0.70" width="50" type="element" height="110" link_type="thumbnail">
     <uuid uuid="{6d3d2c09-dc15-4bdc-bd77-ef4bbbd04d77}"/>
     <names>
         <name lang="fr">prise modulaire Legrand</name>

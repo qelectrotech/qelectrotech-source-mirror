@@ -1,4 +1,4 @@
-<definition hotspot_x="2" type="element" width="80" version="0.70" height="100" orientation="dyyy" link_type="simple" hotspot_y="4">
+<definition hotspot_x="2" type="element" width="80" version="0.70" height="100" orientation="dyyy" link_type="thumbnail" hotspot_y="4">
     <uuid uuid="{133af461-5fa0-4c1b-84de-304ba6d73339}"/>
     <names>
         <name lang="fr">Transformateur Legrand</name>

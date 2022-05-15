@@ -1,4 +1,4 @@
-<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="simple">
+<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="thumbnail">
     <uuid uuid="{91243371-535b-48ca-b77a-d03e1fe5842f}"/>
     <names>
         <name lang="cs">Bílá kontrolka</name>

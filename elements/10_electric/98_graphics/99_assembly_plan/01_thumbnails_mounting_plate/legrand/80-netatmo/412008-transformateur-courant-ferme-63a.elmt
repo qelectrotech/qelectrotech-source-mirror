@@ -1,4 +1,4 @@
-<definition height="70" hotspot_x="32" type="element" width="70" link_type="simple" hotspot_y="35" version="0.80">
+<definition height="70" hotspot_x="32" type="element" width="70" link_type="thumbnail" hotspot_y="35" version="0.80">
     <uuid uuid="{34b73e09-9b23-4dd7-b8fa-cedaa47de36c}"/>
     <names>
         <name lang="fr">412008 - Transformateur de courant fermé 60A</name>

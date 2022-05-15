@@ -1,4 +1,4 @@
-<definition width="50" height="170" hotspot_x="24" link_type="simple" type="element" hotspot_y="85" version="0.90">
+<definition width="50" height="170" hotspot_x="24" link_type="thumbnail" type="element" hotspot_y="85" version="0.90">
     <uuid uuid="{942042a8-2656-41c4-8c86-f7dec1eaf224}"/>
     <names>
         <name lang="cs">MZ206 podpěťová spoušť</name>

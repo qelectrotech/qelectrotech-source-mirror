@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="130" hotspot_y="4" version="0.70" hotspot_x="5" height="210">
+<definition link_type="thumbnail" type="element" width="130" hotspot_y="4" version="0.70" hotspot_x="5" height="210">
     <uuid uuid="{e3b82c7d-0479-464e-9e8d-53c7725682cf}"/>
     <names>
         <name lang="fr">GV2P</name>

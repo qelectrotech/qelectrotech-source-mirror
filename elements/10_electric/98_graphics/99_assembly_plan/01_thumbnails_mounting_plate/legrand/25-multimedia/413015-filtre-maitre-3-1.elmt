@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="90" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="90" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{17276329-5e0a-4da7-97b9-b583121b882b}"/>
     <names>
         <name lang="fr">413015 - Filtre maître pour accès téléphone et internet 3 sorties + modem</name>

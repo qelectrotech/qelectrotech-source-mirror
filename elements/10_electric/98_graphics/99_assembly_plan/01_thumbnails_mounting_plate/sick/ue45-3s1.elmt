@@ -1,4 +1,4 @@
-<definition hotspot_y="2" link_type="simple" hotspot_x="4" version="0.80" width="30" height="100" type="element">
+<definition hotspot_y="2" link_type="thumbnail" hotspot_x="4" version="0.80" width="30" height="100" type="element">
     <uuid uuid="{480b237b-08c3-4b6c-add7-09222b6861db}"/>
     <names>
         <name lang="en">UE 45-3S1</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="simple">
+<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="thumbnail">
     <uuid uuid="{d8700fb2-0294-45e1-9976-35a09f9483c2}"/>
     <names>
         <name lang="cs">Červená kontrolka</name>

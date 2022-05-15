@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="70" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="70" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{ed39aaa8-fa3f-423b-9829-1e2c8664a2bf}"/>
     <names>
         <name lang="fr">413017 - Alimentation modulaire 9V= 1,6A</name>

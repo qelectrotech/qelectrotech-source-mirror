@@ -1,4 +1,4 @@
-<definition width="20" height="40" version="0.70" type="element" link_type="simple" hotspot_y="29" hotspot_x="10">
+<definition width="20" height="40" version="0.70" type="element" link_type="thumbnail" hotspot_y="29" hotspot_x="10">
     <uuid uuid="{f7a86ce1-0333-4519-80c4-a64fcb6e1224}"/>
     <names>
         <name lang="fr">3501/8 - Configurateur 8</name>

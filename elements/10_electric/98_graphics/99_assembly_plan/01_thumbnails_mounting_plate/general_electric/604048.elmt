@@ -1,4 +1,4 @@
-<definition hotspot_x="5" hotspot_y="5" type="element" height="210" link_type="simple" version="0.80" width="90">
+<definition hotspot_x="5" hotspot_y="5" type="element" height="210" link_type="thumbnail" version="0.80" width="90">
     <uuid uuid="{a252cace-bd05-430e-918e-7b389a4c3077}"/>
     <names>
         <name lang="cs">FP216/010</name>

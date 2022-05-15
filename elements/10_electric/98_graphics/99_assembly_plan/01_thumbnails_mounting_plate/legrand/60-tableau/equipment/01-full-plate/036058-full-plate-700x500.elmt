@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="2" version="0.80" link_type="simple" width="1030" hotspot_x="2" height="1480">
+<definition type="element" hotspot_y="2" version="0.80" link_type="thumbnail" width="1030" hotspot_x="2" height="1480">
     <uuid uuid="{162afd5e-d657-45f3-a939-7a9d6d58314b}"/>
     <names>
         <name lang="fr">036058 - Plaque pleine 700x500 Atlantic/Marina</name>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.80" width="90" hotspot_x="5" hotspot_y="6" height="210" link_type="simple">
+<definition type="element" version="0.80" width="90" hotspot_x="5" hotspot_y="6" height="210" link_type="thumbnail">
     <uuid uuid="{61065248-6969-4cbf-85c6-b98e684f0bd9}"/>
     <names>
         <name lang="fr">411614 - Interrupteur différentiel AC 40A 300mA Haut-Vis/Haut-Vis</name>

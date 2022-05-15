@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="69" version="0.80" type="element" hotspot_y="76" width="140" height="150">
+<definition link_type="thumbnail" hotspot_x="69" version="0.80" type="element" hotspot_y="76" width="140" height="150">
     <uuid uuid="{9724e7a6-ce47-4548-8ca1-dab046836daa}"/>
     <names>
         <name lang="ar">توقيف طارئ</name>

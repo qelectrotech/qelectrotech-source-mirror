@@ -1,4 +1,4 @@
-<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
+<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="thumbnail" height="60" type="element" width="50">
     <uuid uuid="{eee67c6d-7df7-43fe-a49b-5edc06ac100f}"/>
     <names>
         <name lang="fr">Porte étiquette SOUS TENSION</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="85" height="170" link_type="simple" type="element" width="50" hotspot_x="24" version="0.90">
+<definition hotspot_y="85" height="170" link_type="thumbnail" type="element" width="50" hotspot_x="24" version="0.90">
     <uuid uuid="{6adc4234-af70-44fa-82e2-8efccf68439b}"/>
     <names>
         <name lang="en">MZ203</name>

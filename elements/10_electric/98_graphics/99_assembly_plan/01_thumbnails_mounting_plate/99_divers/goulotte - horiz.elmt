@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="5" version="0.70" hotspot_x="5" height="110">
+<definition link_type="thumbnail" type="element" width="40" hotspot_y="5" version="0.70" hotspot_x="5" height="110">
     <uuid uuid="{6aa988ba-7a74-4e61-8fe5-5f1de6fb05dd}"/>
     <names>
         <name lang="en">Wiring duct 30mm</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="25" width="50" height="50" version="0.80" link_type="simple" type="element" hotspot_y="25">
+<definition hotspot_x="25" width="50" height="50" version="0.80" link_type="thumbnail" type="element" hotspot_y="25">
     <uuid uuid="{fca630e2-04ba-43fe-8465-56b933d77c12}"/>
     <names>
         <name lang="en">Light</name>

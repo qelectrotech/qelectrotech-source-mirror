@@ -1,4 +1,4 @@
-<definition height="250" hotspot_y="114" type="element" hotspot_x="45" width="90" link_type="simple" version="0.80">
+<definition height="250" hotspot_y="114" type="element" hotspot_x="45" width="90" link_type="thumbnail" version="0.80">
     <uuid uuid="{7e8c6d7f-3dce-4683-a7bb-9a28e6fe4be7}"/>
     <names>
         <name lang="fr">F411/4 - Actionneur 4 relais bus</name>

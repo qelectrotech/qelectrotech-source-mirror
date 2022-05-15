@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="5" width="130" height="210" link_type="simple" version="0.80" hotspot_y="5">
+<definition type="element" hotspot_x="5" width="130" height="210" link_type="thumbnail" version="0.80" hotspot_y="5">
     <uuid uuid="{c1e2e2ea-1362-4992-9918-7b33f7343eb3}"/>
     <names>
         <name lang="fr">412562 - Contacteur silencieux 230V - 3P 400V 40A 4F</name>

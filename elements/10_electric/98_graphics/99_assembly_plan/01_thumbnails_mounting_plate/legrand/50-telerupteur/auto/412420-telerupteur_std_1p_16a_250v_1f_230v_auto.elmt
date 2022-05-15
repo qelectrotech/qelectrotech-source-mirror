@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="5" height="210" width="50" type="element" version="0.80" hotspot_x="5">
+<definition link_type="thumbnail" hotspot_y="5" height="210" width="50" type="element" version="0.80" hotspot_x="5">
     <uuid uuid="{5d64bfc6-b64c-4e07-a7d5-643ccb526e7e}"/>
     <names>
         <name lang="fr">412420 - Télérupteur temporisé 1P 16A 250V - 1F 230V</name>

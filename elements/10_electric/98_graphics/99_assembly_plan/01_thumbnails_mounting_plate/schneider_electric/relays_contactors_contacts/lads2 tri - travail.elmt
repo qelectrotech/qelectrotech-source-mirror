@@ -1,4 +1,4 @@
-<definition type="element" version="0.80" link_type="simple" width="130" hotspot_y="6" height="90" hotspot_x="5">
+<definition type="element" version="0.80" link_type="thumbnail" width="130" hotspot_y="6" height="90" hotspot_x="5">
     <uuid uuid="{275a77ce-1836-43dc-a686-5bfc4f71a6ad}"/>
     <names>
         <name lang="fr">LADS2 TRI Travail</name>

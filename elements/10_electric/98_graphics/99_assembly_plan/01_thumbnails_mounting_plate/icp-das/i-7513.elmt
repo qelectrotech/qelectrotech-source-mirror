@@ -1,4 +1,4 @@
-<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="simple" type="element" version="0.80">
+<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="thumbnail" type="element" version="0.80">
     <uuid uuid="{1a5c7784-00ea-4469-a208-d20674ad8429}"/>
     <names>
         <name lang="en">i-7513 - RS-485 Hub</name>

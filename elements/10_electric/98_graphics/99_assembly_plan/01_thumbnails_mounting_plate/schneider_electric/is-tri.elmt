@@ -1,4 +1,4 @@
-<definition type="element" version="0.80" link_type="simple" width="120" hotspot_y="78" height="150" hotspot_x="66">
+<definition type="element" version="0.80" link_type="thumbnail" width="120" hotspot_y="78" height="150" hotspot_x="66">
     <uuid uuid="{1b76b957-3198-4bd9-a517-74aa4ad548bc}"/>
     <names>
         <name lang="fr">Inter Sectio TRI</name>

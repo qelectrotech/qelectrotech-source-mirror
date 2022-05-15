@@ -1,4 +1,4 @@
-<definition hotspot_y="85" height="170" hotspot_x="60" width="120" type="element" version="0.90" link_type="simple">
+<definition hotspot_y="85" height="170" hotspot_x="60" width="120" type="element" version="0.90" link_type="thumbnail">
     <uuid uuid="{34336e6e-3fde-4572-ab76-c9f46f659f82}"/>
     <names>
         <name lang="en">MBN316</name>

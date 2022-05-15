@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" type="element" width="170" version="0.80">
+<definition hotspot_x="4" hotspot_y="31" link_type="thumbnail" height="290" type="element" width="170" version="0.80">
     <uuid uuid="{b5a03989-24a4-4243-8304-05808195cd21}"/>
     <names>
         <name lang="en">i-7563 - USB to 3 Ports RS-485 Hub Converter</name>

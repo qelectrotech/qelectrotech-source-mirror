@@ -1,4 +1,4 @@
-<definition hotspot_x="165" height="250" link_type="simple" version="0.80" width="250" hotspot_y="124" type="element">
+<definition hotspot_x="165" height="250" link_type="thumbnail" version="0.80" width="250" hotspot_y="124" type="element">
     <uuid uuid="{804e1bdf-539f-49bd-96c6-6a89a3f947c9}"/>
     <names>
         <name lang="fr">F454 - Serveur Web A/V</name>

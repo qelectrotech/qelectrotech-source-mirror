@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="50" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="50" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{74b23aa1-a6fc-4841-9588-36ec06b6e2bb}"/>
     <names>
         <name lang="fr">412200 - Parafoudre téléphonique et communication</name>

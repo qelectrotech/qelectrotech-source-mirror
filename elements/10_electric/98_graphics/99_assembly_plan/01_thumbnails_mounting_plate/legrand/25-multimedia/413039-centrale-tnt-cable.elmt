@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="490" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="490" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{a6a4bb74-c25c-43cd-bedc-51335d9ebb7a}"/>
     <names>
         <name lang="fr">413039 - Centrale automatique Gigabit TNT Câble</name>

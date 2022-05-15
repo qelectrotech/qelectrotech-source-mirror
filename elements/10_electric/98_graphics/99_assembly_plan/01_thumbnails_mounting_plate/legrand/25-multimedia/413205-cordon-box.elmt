@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="44" width="110" height="50" link_type="simple" hotspot_y="20" type="element">
+<definition version="0.80" hotspot_x="44" width="110" height="50" link_type="thumbnail" hotspot_y="20" type="element">
     <uuid uuid="{fd284ec6-feb3-46e9-aefe-fde3efe61770}"/>
     <names>
         <name lang="fr">413205 - Cordon box déportée</name>

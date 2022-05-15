@@ -1,4 +1,4 @@
-<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="simple" type="element" version="0.80">
+<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="thumbnail" type="element" version="0.80">
     <uuid uuid="{32e075b5-c489-4643-b086-b7a6e29a27fd}"/>
     <names>
         <name lang="en">i-7510AR - RS-422/485 Repeater</name>

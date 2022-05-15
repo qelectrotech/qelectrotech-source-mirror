@@ -1,4 +1,4 @@
-<definition hotspot_x="40" hotspot_y="85" version="0.90" link_type="simple" width="80" height="170" type="element">
+<definition hotspot_x="40" hotspot_y="85" version="0.90" link_type="thumbnail" width="80" height="170" type="element">
     <uuid uuid="{8e6da833-d83e-4060-b3b7-422d9d6fcc86}"/>
     <names>
         <name lang="de">CDA 240D</name>

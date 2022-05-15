@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="4" height="210" width="50" type="element" version="0.80" hotspot_x="5">
+<definition link_type="thumbnail" hotspot_y="4" height="210" width="50" type="element" version="0.80" hotspot_x="5">
     <uuid uuid="{1d3d9c28-f0ba-4f07-a3fe-0b44c3d8290e}"/>
     <names>
         <name lang="fr">412401 - Télérupteur silencieux temporisé 1P 16A 250V - 1F 230V</name>

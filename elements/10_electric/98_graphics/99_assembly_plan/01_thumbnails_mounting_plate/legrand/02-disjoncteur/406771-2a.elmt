@@ -1,4 +1,4 @@
-<definition type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
+<definition type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="thumbnail">
     <uuid uuid="{4552a611-f06a-41aa-b630-d67c61f6bd7c}"/>
     <names>
         <name lang="fr">406771 - Disjoncteur 2A C 6kA - Vis/Vis</name>

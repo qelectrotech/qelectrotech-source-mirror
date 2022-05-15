@@ -1,4 +1,4 @@
-<definition width="130" type="element" hotspot_y="5" height="370" hotspot_x="5" version="0.80" link_type="simple">
+<definition width="130" type="element" hotspot_y="5" height="370" hotspot_x="5" version="0.80" link_type="thumbnail">
     <uuid uuid="{4f0979fd-a62d-440f-a824-387eab6e869c}"/>
     <names>
         <name lang="fr">001302 - Coffret cache-bornes - 2 modules</name>

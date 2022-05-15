@@ -1,4 +1,4 @@
-<definition height="180" width="80" link_type="simple" hotspot_y="85" version="0.90" type="element" hotspot_x="39">
+<definition height="180" width="80" link_type="thumbnail" hotspot_y="85" version="0.90" type="element" hotspot_x="39">
     <uuid uuid="{213c7b90-fd20-48c2-a10a-1b23acad8225}"/>
     <names>
         <name lang="fr">FAZ 2P</name>

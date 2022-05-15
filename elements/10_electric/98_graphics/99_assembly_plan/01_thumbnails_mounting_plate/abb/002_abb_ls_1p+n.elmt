@@ -1,4 +1,4 @@
-<definition width="80" hotspot_x="40" type="element" version="0.90" link_type="simple" height="180" hotspot_y="90">
+<definition width="80" hotspot_x="40" type="element" version="0.90" link_type="thumbnail" height="180" hotspot_y="90">
     <uuid uuid="{8cfd221d-a204-44c9-b0aa-99d4d55cc3fa}"/>
     <names>
         <name lang="en">S201NA</name>

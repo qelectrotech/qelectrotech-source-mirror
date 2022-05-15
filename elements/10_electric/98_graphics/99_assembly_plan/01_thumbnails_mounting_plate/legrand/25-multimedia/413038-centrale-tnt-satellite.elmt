@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="490" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="490" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{45c1ca8e-61c6-484a-9486-79bacb240c33}"/>
     <names>
         <name lang="fr">413038 - Centrale automatique Gigabit TNT Satellite</name>

@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="5" width="50" height="210" link_type="simple" hotspot_y="4" type="element">
+<definition version="0.80" hotspot_x="5" width="50" height="210" link_type="thumbnail" hotspot_y="4" type="element">
     <uuid uuid="{a164d814-dd66-4c57-bcff-b9eff1e189a8}"/>
     <names>
         <name lang="fr">412170 - Netatmo Télérupteur silencieux 1P 16AX 230V</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" type="element" width="170" version="0.80">
+<definition hotspot_x="4" hotspot_y="31" link_type="thumbnail" height="290" type="element" width="170" version="0.80">
     <uuid uuid="{fd7401a1-962f-4e1a-8c92-5e5e2244ec39}"/>
     <names>
         <name lang="en">i-7520AR-G - Isolated RS-232 to RS-422/485 Converter</name>

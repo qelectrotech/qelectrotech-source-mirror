@@ -1,4 +1,4 @@
-<definition height="60" link_type="simple" hotspot_x="84" type="element" width="180" version="0.90" hotspot_y="30">
+<definition height="60" link_type="thumbnail" hotspot_x="84" type="element" width="180" version="0.90" hotspot_y="30">
     <uuid uuid="{6b234073-9dd5-4afd-847d-fcebb16b52e3}"/>
     <names>
         <name lang="en">M-EBAR 125 front view</name>

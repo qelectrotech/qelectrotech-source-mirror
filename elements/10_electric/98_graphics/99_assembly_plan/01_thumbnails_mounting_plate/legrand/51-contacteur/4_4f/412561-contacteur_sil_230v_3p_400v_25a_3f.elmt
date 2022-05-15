@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="4" width="90" height="210" link_type="simple" version="0.80" hotspot_y="4">
+<definition type="element" hotspot_x="4" width="90" height="210" link_type="thumbnail" version="0.80" hotspot_y="4">
     <uuid uuid="{a540b2d6-2f8c-4441-873a-17d2bca0e476}"/>
     <names>
         <name lang="fr">412561 - Contacteur silencieux 230V - 3P 400V 25A 3F</name>

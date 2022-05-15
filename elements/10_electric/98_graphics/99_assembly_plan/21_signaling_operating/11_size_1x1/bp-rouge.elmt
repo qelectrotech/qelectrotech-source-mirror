@@ -1,4 +1,4 @@
-<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="simple">
+<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" width="30" link_type="thumbnail">
     <uuid uuid="{354b3633-ff75-453d-ab5a-6de1fca65cac}"/>
     <names>
         <name lang="cs">Červené tlačítko</name>

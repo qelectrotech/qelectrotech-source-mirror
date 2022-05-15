@@ -1,4 +1,4 @@
-﻿<definition link_type="simple" width="100" type="element" version="0.5" height="130" hotspot_y="123" hotspot_x="93">
+﻿<definition link_type="thumbnail" width="100" type="element" version="0.5" height="130" hotspot_y="123" hotspot_x="93">
 <uuid uuid="{1723D608-7004-495E-AF27-8E68020ADA93}"/><names>
         <name lang="fr">Règle 100mm</name>
         <name lang="de">Lineal 100mm</name>

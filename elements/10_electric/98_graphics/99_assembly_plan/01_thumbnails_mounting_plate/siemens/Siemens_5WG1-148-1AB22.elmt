@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.80" type="element" hotspot_x="6" height="210" width="90" hotspot_y="5">
+<definition link_type="thumbnail" version="0.80" type="element" hotspot_x="6" height="210" width="90" hotspot_y="5">
     <uuid uuid="{f80c56fb-ca6b-4632-bf1e-fb59f11790e1}"/>
     <names>
         <name lang="fr">5WG1-148-1AB22 - IP Interface</name>

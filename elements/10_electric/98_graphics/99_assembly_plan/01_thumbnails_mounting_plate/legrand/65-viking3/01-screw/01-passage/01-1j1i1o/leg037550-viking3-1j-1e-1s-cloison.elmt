@@ -1,4 +1,4 @@
-<definition hotspot_x="7" width="10" type="element" height="130" version="0.80" link_type="simple" hotspot_y="6">
+<definition hotspot_x="7" width="10" type="element" height="130" version="0.80" link_type="thumbnail" hotspot_y="6">
     <uuid uuid="{e590c10d-4397-4b39-8b97-5b5885af016b}"/>
     <names>
         <name lang="fr">037550-Cloison terminale bloc jonction Viking3 à vis - 1 entrée/1 sortie - pas 5,6,8,10</name>

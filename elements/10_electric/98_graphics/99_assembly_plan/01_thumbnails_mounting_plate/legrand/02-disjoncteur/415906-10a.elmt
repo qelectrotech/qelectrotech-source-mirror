@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_x="5" width="90" version="0.80" hotspot_y="6" height="220">
+<definition type="element" link_type="thumbnail" hotspot_x="5" width="90" version="0.80" hotspot_y="6" height="220">
     <uuid uuid="{4eeb3aca-a6b8-4ce0-9d7f-cbca2893ac5a}"/>
     <names>
         <name lang="fr">415906 - Disjoncteur STOP ARC 10A C 6kA - Vis/Vis</name>

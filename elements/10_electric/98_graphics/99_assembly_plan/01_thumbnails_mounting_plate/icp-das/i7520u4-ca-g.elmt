@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" type="element" width="170" version="0.80">
+<definition hotspot_x="4" hotspot_y="31" link_type="thumbnail" height="290" type="element" width="170" version="0.80">
     <uuid uuid="{4c4bc14a-b3af-43ed-a352-74cd141944be}"/>
     <names>
         <name lang="en">i-7514U4-CA-G - Isolated RS-232 to 4CH RS-485</name>

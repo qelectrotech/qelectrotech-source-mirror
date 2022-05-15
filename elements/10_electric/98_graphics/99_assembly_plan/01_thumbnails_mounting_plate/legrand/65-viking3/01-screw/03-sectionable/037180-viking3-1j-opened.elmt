@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="4" type="element" width="20" height="170">
+<definition version="0.80" link_type="thumbnail" hotspot_x="3" hotspot_y="4" type="element" width="20" height="170">
     <uuid uuid="{4d452165-2d55-43ba-8e4f-dc2193b7c50b}"/>
     <names>
         <name lang="fr">037180 - Viking3 - 1 jonction ouverte 2,5mm² pas 6mm</name>

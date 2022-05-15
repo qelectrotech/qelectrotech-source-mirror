@@ -1,4 +1,4 @@
-<definition height="130" version="0.90" width="70" type="element" link_type="simple" hotspot_y="60" hotspot_x="35">
+<definition height="130" version="0.90" width="70" type="element" link_type="thumbnail" hotspot_y="60" hotspot_x="35">
     <uuid uuid="{8538cdcd-dcd1-46fb-8575-0da8d0c9f516}"/>
     <names>
         <name lang="fr">Cognex D900 vue de face</name>

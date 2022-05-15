@@ -1,4 +1,4 @@
-<definition width="20" height="40" version="0.70" type="element" link_type="simple" hotspot_y="29" hotspot_x="10">
+<definition width="20" height="40" version="0.70" type="element" link_type="thumbnail" hotspot_y="29" hotspot_x="10">
     <uuid uuid="{5cbb140f-2f66-47f6-80b5-317bc9ff2585}"/>
     <names>
         <name lang="fr">3501/3 - Configurateur 3</name>

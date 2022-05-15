@@ -1,4 +1,4 @@
-<definition hotspot_y="6" version="0.80" type="element" height="130" hotspot_x="6" width="30" link_type="simple">
+<definition hotspot_y="6" version="0.80" type="element" height="130" hotspot_x="6" width="30" link_type="thumbnail">
     <uuid uuid="{c2df76bd-e612-42a5-88c8-384f94bdd3a4}"/>
     <names>
         <name lang="fr">037511 - Butée de blocage pour bloc de jonction Viking3 avec pas 8mm</name>

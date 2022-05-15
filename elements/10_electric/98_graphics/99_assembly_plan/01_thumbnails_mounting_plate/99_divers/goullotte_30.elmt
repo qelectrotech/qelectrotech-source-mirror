@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="2" type="element" link_type="simple" version="0.5" height="40" hotspot_y="35">
+<definition width="50" hotspot_x="2" type="element" link_type="thumbnail" version="0.5" height="40" hotspot_y="35">
     <uuid uuid="{16d84f93-de42-4e28-82f8-7af14285b29d}"/>
     <names>
         <name lang="cs">Instalační žlab 30</name>

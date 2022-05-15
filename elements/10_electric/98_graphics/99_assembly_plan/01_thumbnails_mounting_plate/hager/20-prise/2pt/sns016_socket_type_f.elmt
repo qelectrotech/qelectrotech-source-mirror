@@ -1,4 +1,4 @@
-<definition height="160" width="100" hotspot_y="80" hotspot_x="50" version="0.90" type="element" link_type="simple">
+<definition height="160" width="100" hotspot_y="80" hotspot_x="50" version="0.90" type="element" link_type="thumbnail">
     <uuid uuid="{63989d18-b10a-4969-84e7-49913d1f39c0}"/>
     <names>
         <name lang="cs">SNS016 - Schuko zásuvka</name>

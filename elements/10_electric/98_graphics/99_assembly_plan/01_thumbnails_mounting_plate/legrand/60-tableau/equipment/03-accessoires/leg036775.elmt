@@ -1,4 +1,4 @@
-<definition version="0.80" width="30" hotspot_y="14" height="30" type="element" hotspot_x="15" link_type="simple">
+<definition version="0.80" width="30" hotspot_y="14" height="30" type="element" hotspot_x="15" link_type="thumbnail">
     <uuid uuid="{72f33228-65b2-4e86-a3e2-ac1cc07ac001}"/>
     <names>
         <name lang="fr">Vis HF</name>

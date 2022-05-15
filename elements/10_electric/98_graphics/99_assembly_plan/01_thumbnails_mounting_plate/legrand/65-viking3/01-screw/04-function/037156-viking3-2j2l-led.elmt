@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="5" type="element" width="20" height="180">
+<definition version="0.80" link_type="thumbnail" hotspot_x="3" hotspot_y="5" type="element" width="20" height="180">
     <uuid uuid="{ba938fa2-4a18-4052-bc08-71beabba0af3}"/>
     <names>
         <name lang="fr">037156 - Viking3 - 2 jonctions 2 étages LED 4mm² pas 6mm Gris foncé</name>

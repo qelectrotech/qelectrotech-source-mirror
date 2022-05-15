@@ -1,4 +1,4 @@
-<definition height="100" hotspot_x="6" hotspot_y="44" type="element" width="30" version="0.70" link_type="simple" orientation="dyyy">
+<definition height="100" hotspot_x="6" hotspot_y="44" type="element" width="30" version="0.70" link_type="thumbnail" orientation="dyyy">
     <uuid uuid="{5af9cacc-1bba-4377-9fcd-95013eda1105}"/>
     <names>
         <name lang="fr"> Disjoncteur10A Legrand</name>

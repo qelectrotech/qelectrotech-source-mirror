@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_x="45" width="130" version="0.80" hotspot_y="6" height="220">
+<definition type="element" link_type="thumbnail" hotspot_x="45" width="130" version="0.80" hotspot_y="6" height="220">
     <uuid uuid="{e9057d8c-9a10-4860-a6a9-3f6be578f7be}"/>
     <names>
         <name lang="fr">415950 - Disjoncteur différentiel STOP ARC AC 10A 30mA Haut-Vis/Bas-Vis</name>

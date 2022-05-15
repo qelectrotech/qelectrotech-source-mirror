@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" version="0.80" link_type="simple" width="90" hotspot_x="5" height="210">
+<definition hotspot_y="4" type="element" version="0.80" link_type="thumbnail" width="90" hotspot_x="5" height="210">
     <uuid uuid="{e8b28626-9c0a-4fcb-83e8-659da13192cc}"/>
     <names>
         <name lang="fr">406440 - Interrupteur-sectionneur 400V 40A</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="simple" type="element" version="0.80">
+<definition hotspot_y="31" hotspot_x="4" width="170" height="290" link_type="thumbnail" type="element" version="0.80">
     <uuid uuid="{1a15274c-d8ba-4a5f-91e5-373f2c214ae2}"/>
     <names>
         <name lang="en">i-7510P - RS-485 Repeater</name>

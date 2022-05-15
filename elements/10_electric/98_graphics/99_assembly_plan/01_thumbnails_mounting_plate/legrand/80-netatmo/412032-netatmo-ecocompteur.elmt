@@ -1,4 +1,4 @@
-<definition height="210" hotspot_x="5" type="element" width="250" link_type="simple" hotspot_y="4" version="0.80">
+<definition height="210" hotspot_x="5" type="element" width="250" link_type="thumbnail" hotspot_y="4" version="0.80">
     <uuid uuid="{ee11d8a7-f62b-494f-a0b1-4c83f5927b9c}"/>
     <names>
         <name lang="fr">412032 - Netatmo Ecocompteur</name>

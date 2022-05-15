@@ -1,4 +1,4 @@
-<definition hotspot_y="6" link_type="simple" height="50" version="0.60" width="80" type="element" hotspot_x="2">
+<definition hotspot_y="6" link_type="thumbnail" height="50" version="0.60" width="80" type="element" hotspot_x="2">
     <uuid uuid="{780a2b9d-f8ac-4c82-9ae6-eb65f41fda25}"/>
     <names>
         <name lang="cs">Tlumivka 9803861</name>

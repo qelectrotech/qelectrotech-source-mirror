@@ -1,4 +1,4 @@
-<definition hotspot_x="10" orientation="dyyy" hotspot_y="4" height="100" link_type="simple" type="element" width="40" version="0.70">
+<definition hotspot_x="10" orientation="dyyy" hotspot_y="4" height="100" link_type="thumbnail" type="element" width="40" version="0.70">
     <uuid uuid="{c3a547f0-54ab-4394-9a79-6321cb60569a}"/>
     <names>
         <name lang="fr">30mA 40A Legrand</name>

@@ -1,4 +1,4 @@
-<definition height="250" hotspot_y="194" type="element" hotspot_x="35" width="90" link_type="simple" version="0.80">
+<definition height="250" hotspot_y="194" type="element" hotspot_x="35" width="90" link_type="thumbnail" version="0.80">
     <uuid uuid="{81f35f08-b042-4370-9311-6dddaf71f787}"/>
     <names>
         <name lang="en">F411/1N</name>

@@ -1,4 +1,4 @@
-<definition type="element" height="180" hotspot_y="90" version="0.90" width="80" link_type="simple" hotspot_x="40">
+<definition type="element" height="180" hotspot_y="90" version="0.90" width="80" link_type="thumbnail" hotspot_x="40">
     <uuid uuid="{9126a9d6-5a20-4118-897d-84d4c23c3143}"/>
     <names>
         <name lang="fr">S202</name>

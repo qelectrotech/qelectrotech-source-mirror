@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_y="4" height="210" type="element" hotspot_x="53" link_type="simple" width="200">
+<definition version="0.80" hotspot_y="4" height="210" type="element" hotspot_x="53" link_type="thumbnail" width="200">
     <uuid uuid="{2b8b2581-0eba-4e0c-990a-7b954e835ab9}"/>
     <names>
         <name lang="fr">Sectio Fusibles TRI</name>
