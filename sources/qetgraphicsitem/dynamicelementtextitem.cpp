@@ -270,6 +270,8 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 	{
 		case Element::Simple:
 			return elmt;
+		case Element::Thumbnail:
+			return elmt;
 		case Element::NextReport:
 			return elmt;
 		case Element::PreviousReport:

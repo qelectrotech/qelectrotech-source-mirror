@@ -312,7 +312,7 @@ QString ElementData::typeToString(ElementData::Type type)
 		case ElementData::Terminale :
 			return QString("terminal");
 		case ElementData::Thumbnail:
-			return QString("thumbnail");
+			return  QStringLiteral("thumbnail");
 		default:
 			qDebug() << "ElementData::typeToString : type don't exist"
 					 << "return failsafe value 'simple'";
@@ -334,7 +334,7 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 		return ElementData::Slave;
 	} else if (string == "terminal") {
 		return ElementData::Terminale;
-	} else if (string == "thumbnail") {
+	} else if (string == QLatin1String("thumbnail")) {
 		return ElementData::Thumbnail;
 	}
 

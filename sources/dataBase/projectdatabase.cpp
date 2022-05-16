@@ -118,7 +118,7 @@ void projectDataBase::addElement(Element *element)
 	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
 	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
 	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());
-	m_insert_elements_query.bindValue(":type", element->linkTypeToString());
+	m_insert_elements_query.bindValue(":type", element->elementData().typeToString());
 	m_insert_elements_query.bindValue(":sub_type", element->kindInformations()["type"].toString());
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
@@ -440,7 +440,7 @@ void projectDataBase::populateElementInfoTable()
 	for (auto *diagram : m_project->diagrams())
 	{
 		ElementProvider ep(diagram);
-		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master| Element::Thumbnail);
+		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master | Element::Thumbnail);
 
 			//Insert all value into the database
 		for (auto elmt : elements_list)

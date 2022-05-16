@@ -1328,6 +1328,8 @@ QString Element::linkTypeToString() const
 			return QStringLiteral("Slave");
 		case Terminale:
 			return QStringLiteral("Terminale");
+		case Thumbnail:
+			return QStringLiteral("Thumbnail");
 		default:
 			return QStringLiteral("Unknown");
 	}

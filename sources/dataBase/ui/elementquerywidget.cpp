@@ -45,7 +45,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	m_button_group.addButton(ui->m_button_cb, 3);
 	m_button_group.addButton(ui->m_coil_cb, 4);
 	m_button_group.addButton(ui->m_protection_cb, 5);
-	m_button_group.addButton(ui->m_thumbnail_cb,6);
+	m_button_group.addButton(ui->m_thumbnail_cb, 6);
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
 #else
@@ -345,7 +345,7 @@ QString ElementQueryWidget::queryStr() const
 	}
 	if (ui->m_thumbnail_cb->isChecked()) {
 		if (b) where +=" OR";
-		where += " element_type = 'thumbnail'";
+		where += " element_type = 'Thumbnail'";
 		b = true;
 	}
 	if (ui->m_simple_cb->isChecked()) {
