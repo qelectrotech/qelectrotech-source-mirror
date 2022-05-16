@@ -75,7 +75,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 		else
 		{
 			int checked = 0;
-			for (int i=1 ; i<6 ; ++i) {
+			for (int i=1 ; i<7 ; ++i) {
 				if (m_button_group.button(i)->isChecked()) {++checked;}
 			}
 
@@ -84,7 +84,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 				case 0 :
 					check_box->setCheckState(Qt::Unchecked);
 					break;
-				case 5:
+				case 6:
 					check_box->setCheckState(Qt::Checked);
 					break;
 				default:
