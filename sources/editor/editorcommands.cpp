@@ -633,14 +633,14 @@ void RotateElementsCommand::undo()
 		}
 		else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(line->rotation()-90);
+			line->setRotation(line->rotation()-15);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(poly->rotation()-90);
+			poly->setRotation(poly->rotation()-15);
 		}
 		else {
-			item->setRotation(item->rotation()-90);
+			item->setRotation(item->rotation()-15);
 		}
 	}
 }
@@ -661,14 +661,14 @@ void RotateElementsCommand::redo()
 		}
 		else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(line->rotation()+90);
+			line->setRotation(line->rotation()+15);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(poly->rotation()+90);
+			poly->setRotation(poly->rotation()+15);
 		}
 		else {
-			item->setRotation(item->rotation()+90);
+			item->setRotation(item->rotation()+15);
 		}
 	}
 
