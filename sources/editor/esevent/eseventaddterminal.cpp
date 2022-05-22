@@ -87,7 +87,7 @@ bool ESEventAddTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	@return
 */
 bool ESEventAddTerminal::keyPressEvent(QKeyEvent *event) {
-	if (event -> key() == Qt::Key_Alt) {
+	if (event -> key() == Qt::Key_Space) {
 	
 		switch (m_terminal->orientation()) {
 			case Qet::North :
