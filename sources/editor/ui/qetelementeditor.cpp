@@ -1000,6 +1000,7 @@ void QETElementEditor::setupActions()
 	ui->m_paste_in_area_action    -> setShortcut(tr("Ctrl+Shift+V"));
 	ui->m_edit_names_action       -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	ui->m_edit_author_action      -> setShortcut(tr("Ctrl+Y"));
+	ui->m_rotate_action           -> setShortcut(QKeySequence(tr("Ctrl+R")));
 
 #ifndef Q_OS_MAC
 	ui->m_delete_action -> setShortcut(QKeySequence(Qt::Key_Delete));
