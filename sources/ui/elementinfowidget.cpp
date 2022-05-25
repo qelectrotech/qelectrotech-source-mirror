@@ -191,6 +191,7 @@ void ElementInfoWidget::buildInterface()
 		ui->scroll_vlayout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}
+
 	ui->scroll_vlayout->addStretch();
 }
 
@@ -277,6 +278,22 @@ void ElementInfoWidget::firstActivated()
 */
 void ElementInfoWidget::elementInfoChange()
 {
-	if(currentInfo() != m_element->elementInformations())
+	auto elmt_info = m_element->elementInformations();
+	auto current_info = currentInfo();
+
+		//If both info have a formula, we remove the label
+		//value before compare the equality, because the
+		//label of the information returned by the element
+		//can be different of the current label because
+		//updated by the element to reflect the actual
+		//displayed label according the current formula.
+	if (current_info.contains(QETInformation::ELMT_FORMULA) &&
+		elmt_info.contains(QETInformation::ELMT_FORMULA))
+	{
+		elmt_info.remove(QETInformation::ELMT_LABEL);
+		current_info.remove((QETInformation::ELMT_LABEL ));
+	}
+
+	if(current_info != elmt_info)
 		updateUi();
 }

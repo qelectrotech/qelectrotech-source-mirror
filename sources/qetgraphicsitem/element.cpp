@@ -1347,9 +1347,13 @@ void Element::setElementInformations(DiagramContext dc)
 		return;
 	}
 
-	DiagramContext old_info = m_data.m_informations;
+	const auto old_info = m_data.m_informations;
 	m_data.m_informations = dc;
-	m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
+
+	const auto actual_label{actualLabel()};
+	if (!actual_label.isEmpty()) {
+		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
+	}
 	emit elementInfoChange(old_info, m_data.m_informations);
 }
 
