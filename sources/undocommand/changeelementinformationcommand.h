@@ -33,8 +33,8 @@ class ChangeElementInformationCommand : public QUndoCommand
 	public:
 		ChangeElementInformationCommand(
 				Element *elmt,
-				DiagramContext &old_info,
-				DiagramContext &new_info,
+				const DiagramContext &old_info,
+				const DiagramContext &new_info,
 				QUndoCommand *parent = nullptr);
 
 		ChangeElementInformationCommand(QMap<QPointer<Element>, QPair<DiagramContext, DiagramContext>> map,

@@ -32,8 +32,8 @@
 */
 ChangeElementInformationCommand::ChangeElementInformationCommand(
 		Element *elmt,
-		DiagramContext &old_info,
-		DiagramContext &new_info,
+		const DiagramContext &old_info,
+		const DiagramContext &new_info,
 		QUndoCommand *parent) :
 	QUndoCommand (parent)
 {
