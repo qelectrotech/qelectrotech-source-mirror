@@ -498,7 +498,7 @@
     <string>Rotation</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Space</string>
+    <string>Space</string>
    </property>
   </action>
  </widget>
