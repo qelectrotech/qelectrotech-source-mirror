@@ -411,16 +411,17 @@ void projectDataBase::populateElementTable()
 
 	for (auto diagram : m_project->diagrams())
 	{
-		ElementProvider ep(diagram);
-		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master | Element::Thumbnail);
+		const ElementProvider ep(diagram);
+		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminale | ElementData::Master | ElementData::Thumbnail);
 			//Insert all value into the database
-		for (auto elmt : elements_list)
+		for (const auto &elmt : elmt_vector)
 		{
+			const auto elmt_data = elmt->elementData();
 			m_insert_elements_query.bindValue(":uuid", elmt->uuid().toString());
 			m_insert_elements_query.bindValue(":diagram_uuid", diagram->uuid().toString());
 			m_insert_elements_query.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
-			m_insert_elements_query.bindValue(":type", elmt->linkTypeToString());
-			m_insert_elements_query.bindValue(":sub_type", elmt->kindInformations()["type"].toString());
+			m_insert_elements_query.bindValue(":type", elmt_data.typeToString());
+			m_insert_elements_query.bindValue(":sub_type", elmt_data.masterTypeToString());
 			if (!m_insert_elements_query.exec()) {
 				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 			}
@@ -435,22 +436,22 @@ void projectDataBase::populateElementTable()
 void projectDataBase::populateElementInfoTable()
 {
 	QSqlQuery query(m_data_base);
-	query.exec("DELETE FROM element_info");
+	query.exec(QStringLiteral("DELETE FROM element_info"));
 
-	for (auto *diagram : m_project->diagrams())
+	for (const auto &diagram : m_project->diagrams())
 	{
-		ElementProvider ep(diagram);
-		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master | Element::Thumbnail);
+		const ElementProvider ep(diagram);
+		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminale | ElementData::Master | ElementData::Thumbnail);
 
 			//Insert all value into the database
-		for (auto elmt : elements_list)
+		for (const auto &elmt : elmt_vector)
 		{
-			m_insert_element_info_query.bindValue(":uuid", elmt->uuid().toString());
-			auto hash = elementInfoToString(elmt);
-			for (auto key : hash.keys())
+			m_insert_element_info_query.bindValue(QStringLiteral(":uuid"), elmt->uuid().toString());
+			const auto hash = elementInfoToString(elmt);
+			for (const auto &key : hash.keys())
 			{
 				QString value = hash.value(key);
-				QString bind = key.prepend(":");
+				QString bind = QStringLiteral(":") + key;
 				m_insert_element_info_query.bindValue(bind, value);
 			}
 

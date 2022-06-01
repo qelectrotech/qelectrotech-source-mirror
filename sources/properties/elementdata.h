@@ -43,6 +43,7 @@ class ElementData : public PropertiesInterface
 			Terminale      = 32,
 			Thumbnail      = 64};
 		Q_ENUM(Type)
+		Q_DECLARE_FLAGS(Types, Type)
 
 		enum MasterType {
 			Coil,
@@ -109,6 +110,7 @@ class ElementData : public PropertiesInterface
 		static QString typeToString(ElementData::Type type);
 		static ElementData::Type typeFromString(const QString &string);
 
+		QString masterTypeToString() const;
 		static QString masterTypeToString(ElementData::MasterType type);
 		static ElementData::MasterType masterTypeFromString(const QString &string);
 
@@ -157,4 +159,7 @@ class ElementData : public PropertiesInterface
 	private:
 		void kindInfoFromXml(const QDomElement &xml_element);
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(ElementData::Types)
+
 #endif // ELEMENTDATA_H

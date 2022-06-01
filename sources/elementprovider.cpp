@@ -96,6 +96,7 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const
 	@param filter
 	the filter for search element
 	(You can find all filter with the define in Element.h)
+	@obsolete use instead QVector<_Tp1> ElementProvider::find(ElementData::Type elmt_type) const
 */
 QList <Element *> ElementProvider::find(const int filter) const
 {
@@ -112,6 +113,29 @@ QList <Element *> ElementProvider::find(const int filter) const
 		}
 	}
 	return (elmt_);
+}
+
+/**
+ * @brief ElementProvider::find
+ * Search and return the element with the type given in parameter
+ * @param elmt_type
+ * @return
+ */
+QVector<QPointer<Element>> ElementProvider::find(ElementData::Types elmt_type) const
+{
+	QVector<QPointer<Element>> returned_vector;
+	for (const auto &diagram_ : qAsConst(m_diagram_list))
+	{
+		const auto elmt_list = diagram_->elements();
+		for (const auto &elmt_ : elmt_list)
+		{
+			if (elmt_type & elmt_->elementData().m_type) {
+				returned_vector << QPointer<Element>(elmt_);
+			}
+		}
+	}
+
+	return returned_vector;
 }
 
 /**

@@ -345,6 +345,13 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 	return ElementData::Simple;
 }
 
+QString ElementData::masterTypeToString() const {
+	if (m_type == Master)
+		return masterTypeToString(m_master_type);
+	else
+		return QLatin1String();
+}
+
 QString ElementData::masterTypeToString(ElementData::MasterType type)
 {
 	switch (type) {

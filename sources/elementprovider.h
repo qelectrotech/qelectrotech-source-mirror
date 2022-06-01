@@ -22,6 +22,8 @@
 #include <QList>
 #include <QAbstractTableModel>
 
+#include "properties/elementdata.h"
+
 class QETProject;
 class Diagram;
 class Element;
@@ -42,6 +44,7 @@ class ElementProvider
 		QList <Element *> freeElement(const int filter) const;
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QList <Element *> find(const int filter) const;
+		QVector<QPointer<Element> > find(ElementData::Types elmt_type) const;
 		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
 		QetGraphicsTableItem *tableFromUuid(const QUuid &uuid);
 		QVector<TerminalElement *> freeTerminal() const;

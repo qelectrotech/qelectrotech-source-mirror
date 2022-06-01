@@ -17,6 +17,7 @@
 */
 #include "elementquerywidget.h"
 
+#include "../../properties/elementdata.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "ui_elementquerywidget.h"
@@ -166,28 +167,27 @@ void ElementQueryWidget::setQuery(const QString &query)
 				where.remove(str_type);
 
 				int c=0;
-				ui->m_simple_cb->setChecked    (str_type.contains("Simple")     ? true : false);
+				ui->m_simple_cb->setChecked    (str_type.contains(ElementData::typeToString(ElementData::Simple)) ? true : false);
 				if (ui->m_simple_cb->isChecked()) {
 					++c;
 				}
-				ui->m_terminal_cb->setChecked  (str_type.contains("Terminale")  ? true : false);
+				ui->m_terminal_cb->setChecked  (str_type.contains(ElementData::typeToString(ElementData::Terminale)) ? true : false);
 				if (ui->m_terminal_cb->isChecked()) {
 					++c;
 				}
-				ui->m_coil_cb->setChecked      (str_type.contains("coil")       ? true : false);
+				ui->m_coil_cb->setChecked      (str_type.contains(ElementData::masterTypeToString(ElementData::Coil)) ? true : false);
 				if (ui->m_coil_cb->isChecked()) {
 					++c;
 				}
-				ui->m_button_cb->setChecked    (str_type.contains("commutator") ? true : false);
+				ui->m_button_cb->setChecked    (str_type.contains(ElementData::masterTypeToString(ElementData::Commutator)) ? true : false);
 				if (ui->m_button_cb->isChecked()) {
 					++c;
 				}
-				ui->m_protection_cb->setChecked(str_type.contains("protection") ? true : false);
+				ui->m_protection_cb->setChecked(str_type.contains(ElementData::masterTypeToString(ElementData::Protection)) ? true : false);
 				if (ui->m_protection_cb) {
 					++c;
 				}
-				
-				ui->m_thumbnail_cb->setChecked  (str_type.contains("Thumbnail") ? true : false);
+				ui->m_thumbnail_cb->setChecked  (str_type.contains(ElementData::typeToString(ElementData::Thumbnail)) ? true : false);
 				if (ui->m_thumbnail_cb->isChecked()) {
 					++c;
 				}
@@ -340,32 +340,32 @@ QString ElementQueryWidget::queryStr() const
 	bool b = false;
 	if (ui->m_terminal_cb->isChecked()) {
 		if (b) where +=" OR";
-		where += " element_type = 'Terminale'";
+		where +=  QStringLiteral(" element_type = '") += ElementData::typeToString(ElementData::Terminale) += "'";
 		b = true;
 	}
 	if (ui->m_thumbnail_cb->isChecked()) {
 		if (b) where +=" OR";
-		where += " element_type = 'Thumbnail'";
+		where +=  QStringLiteral(" element_type = '") += ElementData::typeToString(ElementData::Thumbnail) += "'";
 		b = true;
 	}
 	if (ui->m_simple_cb->isChecked()) {
 		if (b) where +=" OR";
-		where += " element_type = 'Simple'";
+		where +=  QStringLiteral(" element_type = '") += ElementData::typeToString(ElementData::Simple) += "'";
 		b = true;
 	}
 	if (ui->m_button_cb->isChecked())     {
 		if (b) where +=" OR";
-		where += " element_sub_type = 'commutator'";
+		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::Commutator) += "'";
 		b = true;
 	}
 	if (ui->m_coil_cb->isChecked()) {
 		if (b) where +=" OR";
-		where += " element_sub_type = 'coil'";
+		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::Coil) += "'";
 		b = true;
 	}
 	if (ui->m_protection_cb->isChecked()) {
 		if (b) where +=" OR";
-		where += " element_sub_type = 'protection'";
+		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::Protection) += "'";
 	}
 	where.append(")");
 
