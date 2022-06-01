@@ -44,19 +44,19 @@ QDomElement ElementData::toXml(QDomDocument &xml_element) const {
  */
 bool ElementData::fromXml(const QDomElement &xml_element)
 {
-	if(xml_element.tagName() != "definition" ||
-	   xml_element.attribute("type") != "element") {
+	if(xml_element.tagName() != QLatin1String("definition") ||
+	   xml_element.attribute(QStringLiteral("type")) != QLatin1String("element")) {
 		return false;
 	}
 
-	m_type = typeFromString(xml_element.attribute("link_type", "simple"));
+	m_type = typeFromString(xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple")));
 	kindInfoFromXml(xml_element);
-	m_informations.fromXml(xml_element.firstChildElement("elementInformations"),
-							"elementInformation");
+	m_informations.fromXml(xml_element.firstChildElement(QStringLiteral("elementInformations")),
+							QStringLiteral("elementInformation"));
 	m_names_list.fromXml(xml_element);
 
-	auto xml_draw_info = xml_element.firstChildElement("informations");
-	if(xml_draw_info.tagName() == "informations") {
+	auto xml_draw_info = xml_element.firstChildElement(QStringLiteral("informations"));
+	if(xml_draw_info.tagName() == QLatin1String("informations")) {
 		m_drawing_information = xml_draw_info.text();
 	}
 
@@ -66,12 +66,12 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 {
 		//kindInformations
-	auto returned_elmt = document.createElement("kindInformations");
+	auto returned_elmt = document.createElement(QStringLiteral("kindInformations"));
 
 	if (m_type == ElementData::Master)
 	{
-		auto xml_type  = document.createElement("kindInformation");
-		xml_type.setAttribute("name", "type");
+		auto xml_type  = document.createElement(QStringLiteral("kindInformation"));
+		xml_type.setAttribute(QStringLiteral("name"), QStringLiteral("type"));
 		auto type_txt = document.createTextNode(masterTypeToString(m_master_type));
 		xml_type.appendChild(type_txt);
 
@@ -80,23 +80,23 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 	else if (m_type == ElementData::Slave)
 	{
 			//type
-		auto xml_type  = document.createElement("kindInformation");
-		xml_type.setAttribute("name", "type");
+		auto xml_type  = document.createElement(QStringLiteral("kindInformation"));
+		xml_type.setAttribute(QStringLiteral("name"), QStringLiteral("type"));
 		auto type_txt = document.createTextNode(slaveTypeToString(m_slave_type));
 		xml_type.appendChild(type_txt);
 		returned_elmt.appendChild(xml_type);
 
 			//state
-		auto xml_state = document.createElement("kindInformation");
-		xml_state.setAttribute("name", "state");
+		auto xml_state = document.createElement(QStringLiteral("kindInformation"));
+		xml_state.setAttribute(QStringLiteral("name"), QStringLiteral("state"));
 		auto state_txt = document.createTextNode(slaveStateToString(m_slave_state));
 		xml_state.appendChild(state_txt);
 
 		returned_elmt.appendChild(xml_state);
 
 			//contact count
-		auto xml_count = document.createElement("kindInformation");
-		xml_count.setAttribute("name", "number");
+		auto xml_count = document.createElement(QStringLiteral("kindInformation"));
+		xml_count.setAttribute(QStringLiteral("name"), QStringLiteral("number"));
 		auto count_txt = document.createTextNode(QString::number(m_contact_count));
 		xml_count.appendChild(count_txt);
 
@@ -105,15 +105,15 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 	else if (m_type == ElementData::Terminale)
 	{
 			//type
-		auto xml_type  = document.createElement("kindInformation");
-		xml_type.setAttribute("name", "type");
+		auto xml_type  = document.createElement(QStringLiteral("kindInformation"));
+		xml_type.setAttribute(QStringLiteral("name"), QStringLiteral("type"));
 		auto type_txt = document.createTextNode(terminalTypeToString(m_terminal_type));
 		xml_type.appendChild(type_txt);
 		returned_elmt.appendChild(xml_type);
 
 			//function
-		auto xml_func = document.createElement("kindInformation");
-		xml_func.setAttribute("name", "function");
+		auto xml_func = document.createElement(QStringLiteral("kindInformation"));
+		xml_func.setAttribute(QStringLiteral("name"), QStringLiteral("function"));
 		auto func_txt = document.createTextNode(terminalFunctionToString(m_terminal_function));
 		xml_func.appendChild(func_txt);
 		returned_elmt.appendChild(xml_func);
@@ -300,39 +300,39 @@ QString ElementData::typeToString(ElementData::Type type)
 {
 	switch (type) {
 		case ElementData::Simple :
-			return QString("simple");
+			return QStringLiteral("simple");
 		case ElementData::NextReport :
-			return QString ("next_report");
+			return QStringLiteral("next_report");
 		case ElementData::PreviousReport :
-			return QString("previous_report");
+			return QStringLiteral("previous_report");
 		case ElementData::Master :
-			return QString("master");
+			return QStringLiteral("master");
 		case ElementData::Slave :
-			return QString("slave");
+			return QStringLiteral("slave");
 		case ElementData::Terminale :
-			return QString("terminal");
+			return QStringLiteral("terminal");
 		case ElementData::Thumbnail:
 			return  QStringLiteral("thumbnail");
 		default:
 			qDebug() << "ElementData::typeToString : type don't exist"
 					 << "return failsafe value 'simple'";
-			return QString("simple");
+			return QStringLiteral("simple");
 	}
 }
 
 ElementData::Type ElementData::typeFromString(const QString &string)
 {
-	if (string == "simple") {
+	if (string == QLatin1String("simple")) {
 		return ElementData::Simple;
-	} else if (string == "next_report") {
+	} else if (string == QLatin1String("next_report")) {
 		return ElementData::NextReport;
-	} else if (string == "previous_report") {
+	} else if (string == QLatin1String("previous_report")) {
 		return ElementData::PreviousReport;
-	} else if (string == "master") {
+	} else if (string == QLatin1String("master")) {
 		return ElementData::Master;
-	} else if (string == "slave") {
+	} else if (string == QLatin1String("slave")) {
 		return ElementData::Slave;
-	} else if (string == "terminal") {
+	} else if (string == QLatin1String("terminal")) {
 		return ElementData::Terminale;
 	} else if (string == QLatin1String("thumbnail")) {
 		return ElementData::Thumbnail;
@@ -356,21 +356,21 @@ QString ElementData::masterTypeToString(ElementData::MasterType type)
 {
 	switch (type) {
 		case ElementData::Coil:
-			return QString ("coil");
+			return QStringLiteral("coil");
 		case ElementData::Protection:
-			return QString ("protection");
+			return QStringLiteral("protection");
 		case ElementData::Commutator:
-			return QString ("commutator");
+			return QStringLiteral("commutator");
 	}
 }
 
 ElementData::MasterType ElementData::masterTypeFromString(const QString &string)
 {
-	if (string == "coil") {
+	if (string == QLatin1String("coil")) {
 		return ElementData::Coil;
-	} else if (string == "protection") {
+	} else if (string == QLatin1String("protection")) {
 		return  ElementData::Protection;
-	} else if (string == "commutator") {
+	} else if (string == QLatin1String("commutator")) {
 		return ElementData::Commutator;
 	}
 
@@ -384,29 +384,29 @@ QString ElementData::slaveTypeToString(ElementData::SlaveType type)
 {
 	switch (type) {
 		case ElementData::SSimple:
-			return QString ("simple");
+			return QStringLiteral("simple");
 		case ElementData::Power:
-			return QString ("power");
+			return QStringLiteral("power");
 		case ElementData::DelayOn:
-			return QString("delayOn");
+			return QStringLiteral("delayOn");
 		case ElementData::DelayOff:
-			return  QString("delayOff");
+			return  QStringLiteral("delayOff");
 		case ElementData::delayOnOff:
-			return QString("delayOnOff");
+			return QStringLiteral("delayOnOff");
 	}
 }
 
 ElementData::SlaveType ElementData::slaveTypeFromString(const QString &string)
 {
-	if (string == "simple") {
+	if (string == QLatin1String("simple")) {
 		return ElementData::SSimple;
-	} else if (string == "power") {
+	} else if (string == QLatin1String("power")) {
 		return  ElementData::Power;
-	} else if (string == "delayOn") {
+	} else if (string == QLatin1String("delayOn")) {
 		return ElementData::DelayOn;
-	} else if (string == "delayOff") {
+	} else if (string == QLatin1String("delayOff")) {
 		return ElementData::DelayOff;
-	} else if (string == "delayOnOff") {
+	} else if (string == QLatin1String("delayOnOff")) {
 		return ElementData::delayOnOff;
 	}
 
@@ -420,21 +420,21 @@ QString ElementData::slaveStateToString(ElementData::SlaveState type)
 {
 	switch (type) {
 		case NO:
-			return QString("NO");
+			return QStringLiteral("NO");
 		case NC:
-			return QString("NC");
+			return QStringLiteral("NC");
 		case SW:
-			return QString("SW");
+			return QStringLiteral("SW");
 	}
 }
 
 ElementData::SlaveState ElementData::slaveStateFromString(const QString &string)
 {
-	if (string == "NO") {
+	if (string == QLatin1String("NO")) {
 		return ElementData::NO;
-	} else if (string == "NC") {
+	} else if (string == QLatin1String("NC")) {
 		return ElementData::NC;
-	} else if (string == "SW") {
+	} else if (string == QLatin1String("SW")) {
 		return ElementData::SW;
 	}
 
@@ -500,21 +500,21 @@ QString ElementData::terminalFunctionToString(ElementData::TerminalFunction func
 {
 	switch (function) {
 		case ElementData::TFGeneric:
-			return QString("generic");
+			return QStringLiteral("generic");
 		case ElementData::TFPhase:
-			return QString ("phase");
+			return QStringLiteral ("phase");
 		case ElementData::TFNeutral:
-			return QString("neutral");
+			return QStringLiteral("neutral");
 	}
 }
 
 ElementData::TerminalFunction ElementData::terminalFunctionFromString(const QString &string)
 {
-	if (string == "generic") {
+	if (string == QLatin1String("generic")) {
 		return ElementData::TFGeneric;
-	} else if (string == "phase") {
+	} else if (string == QLatin1String("phase")) {
 		return ElementData::TFPhase;
-	} else if (string == "neutral") {
+	} else if (string == QLatin1String("neutral")) {
 		return ElementData::TFNeutral;
 	}
 
@@ -539,31 +539,31 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 		m_type == ElementData::Slave  ||
 		m_type == ElementData::Terminale)
 	{
-		auto xml_kind = xml_element.firstChildElement("kindInformations");
-		for (const auto &dom_elmt : QETXML::findInDomElement(xml_kind, "kindInformation"))
+		auto xml_kind = xml_element.firstChildElement(QStringLiteral("kindInformations"));
+		for (const auto &dom_elmt : QETXML::findInDomElement(xml_kind, QStringLiteral("kindInformation")))
 		{
-			if (!dom_elmt.hasAttribute("name")) {
+			if (!dom_elmt.hasAttribute(QStringLiteral("name"))) {
 				continue;
 			}
-			auto name = dom_elmt.attribute("name");
+			auto name = dom_elmt.attribute(QStringLiteral("name"));
 
 			if (m_type == ElementData::Master &&
-				name == "type") {
+				name == QLatin1String("type")) {
 				m_master_type = masterTypeFromString(dom_elmt.text());
 			}
 			else if (m_type == ElementData::Slave ) {
-				if (name == "type") {
+				if (name == QLatin1String("type")) {
 					m_slave_type = slaveTypeFromString(dom_elmt.text());
-				} else if (name == "state") {
+				} else if (name == QLatin1String("state")) {
 					m_slave_state = slaveStateFromString(dom_elmt.text());
-				} else if (name == "number") {
+				} else if (name == QLatin1String("number")) {
 					m_contact_count = dom_elmt.text().toInt();
 				}
 			}
 			else if (m_type == ElementData::Terminale) {
-				if (name == "type") {
+				if (name == QLatin1String("type")) {
 					m_terminal_type = terminalTypeFromString(dom_elmt.text());
-				} else if (name == "function") {
+				} else if (name == QLatin1String("function")) {
 					m_terminal_function = terminalFunctionFromString(dom_elmt.text());
 				}
 				
