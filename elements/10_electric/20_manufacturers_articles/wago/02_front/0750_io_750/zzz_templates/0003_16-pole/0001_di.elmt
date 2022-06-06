@@ -1,4 +1,4 @@
-<definition type="element" height="210" width="40" link_type="simple" version="0.90" hotspot_y="131" hotspot_x="23">
+<definition type="element" height="210" width="40" link_type="thumbnail" version="0.90" hotspot_y="131" hotspot_x="23">
     <names>
         <name lang="en">DI</name>
         <name lang="fr">DI</name>

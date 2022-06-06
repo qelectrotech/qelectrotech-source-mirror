@@ -1,4 +1,4 @@
-<definition hotspot_x="405" hotspot_y="40" type="element" width="810" link_type="simple" height="80" version="0.90">
+<definition hotspot_x="405" hotspot_y="40" type="element" width="810" link_type="thumbnail" height="80" version="0.90">
     <names>
         <name lang="cs">DIN-Rail TS35; slotted; 400 mm</name>
         <name lang="de">Tragschiene TS35; 400 mm (gelocht)</name>

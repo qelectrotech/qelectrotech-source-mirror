@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="131" hotspot_x="32" link_type="simple" version="0.90" width="60" height="210">
+<definition type="element" hotspot_y="131" hotspot_x="32" link_type="thumbnail" version="0.80" width="60" height="210">
     <names>
         <name lang="de">750-489</name>
         <name lang="fr">750-489</name>

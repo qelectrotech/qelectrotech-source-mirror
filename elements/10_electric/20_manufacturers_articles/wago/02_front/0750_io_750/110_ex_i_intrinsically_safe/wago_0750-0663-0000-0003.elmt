@@ -1,4 +1,4 @@
-<definition hotspot_x="32" hotspot_y="131" width="60" height="210" type="element" link_type="simple" version="0.90">
+<definition hotspot_x="32" hotspot_y="131" width="60" height="210" type="element" link_type="thumbnail" version="0.80">
     <names>
         <name lang="en">750-663/000-003</name>
         <name lang="fr">750-663/000-003</name>

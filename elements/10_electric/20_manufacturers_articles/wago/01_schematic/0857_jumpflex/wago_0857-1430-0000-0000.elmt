@@ -1,0 +1,73 @@
+<definition link_type="simple" hotspot_x="365" hotspot_y="55" height="110" type="element" width="730" version="0.90">
+    <names>
+        <name lang="fr">857-1430</name>
+        <name lang="en">857-1430</name>
+        <name lang="de">857-1430</name>
+        <name lang="cs">857-1430</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">857-1430</elementInformation>
+        <elementInformation show="1" name="description">double optocoupler optokoppler</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-360" height="90" ry="0" antialias="false" width="720" y="-40"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" x3="-13" x1="-8" antialias="false" y1="16" y2="16" y3="6"/>
+        <polygon x2="200" y1="-40" y4="-22" x6="17" closed="false" x8="280" y3="-25" antialias="false" y7="-8" y9="-40" y8="-8" y5="-17" x3="17" x7="17" y6="-12" x5="12" x1="200" x9="280" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="17"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-8" end1="none" length1="1.5" x1="-18" antialias="false" end2="none" y1="6" y2="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="12" end1="none" length1="1.5" x1="12" antialias="false" end2="none" y1="5" y2="15"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="117.5" antialias="true" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-122.5" antialias="true" diameter="5" y="-42.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="17" end1="none" length1="1.5" x1="12" antialias="false" end2="simple" y1="10" y2="15"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="7" end1="none" length1="1.5" x1="-3" antialias="false" end2="simple" y1="8" y2="8"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="197.5" antialias="true" diameter="5" y="-42.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="7" end1="none" length1="1.5" x1="-3" antialias="false" end2="simple" y1="12" y2="12"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5" antialias="true" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="277.5" antialias="true" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-282.5" antialias="true" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="37.5" antialias="true" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5" antialias="true" diameter="5" y="-42.5"/>
+        <text x="206" text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <dynamic_text text_width="-1" frame="false" x="220" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{08b520de-9509-4072-a480-6e36ea9f161c}" y="29.5" z="19" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-116" text="A3+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="128" text="14" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="125" text="6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <text x="-130" text="Optocoupler" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="45"/>
+        <text x="-196" text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <text x="-197" text="A2-" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="203" text="23+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="-114" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <text x="-276" text="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <text x="-277" text="A1+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="288" text="24" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="-34" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <text x="-330" text="WAGO 857-1430" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="45"/>
+        <text x="286" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <text x="-37" text="A4-" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="43" text="13+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-26"/>
+        <text x="46" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-42"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18" x3="-13" x1="-8" antialias="false" y1="-12" y2="-12" y3="-22"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-8" end1="none" length1="1.5" x1="-18" antialias="false" end2="none" y1="-22" y2="-22"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="12" end1="none" length1="1.5" x1="12" antialias="false" end2="none" y1="-22" y2="-12"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="17" end1="none" length1="1.5" x1="12" antialias="false" end2="simple" y1="-17" y2="-12"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="7" end1="none" length1="1.5" x1="-3" antialias="false" end2="simple" y1="-19" y2="-19"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="7" end1="none" length1="1.5" x1="-3" antialias="false" end2="simple" y1="-15" y2="-15"/>
+        <polygon y4="-25" x5="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y5="-25" closed="false" x2="-120" x3="-13" y6="-40" x1="-120" antialias="false" y1="-40" y2="-8" y3="-8" x4="-13" x6="-40"/>
+        <polygon y4="2" x5="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" y5="2" closed="false" x2="-280" x3="-13" y6="-40" x1="-280" antialias="false" y1="-40" y2="19" y3="19" x4="-13" x6="-200"/>
+        <polygon x2="40" y1="-40" y4="5" x6="17" closed="false" x8="120" y3="2" antialias="false" y7="19" y9="-40" y8="19" y5="10" x3="17" x7="17" y6="15" x5="12" x1="40" x9="120" y2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="17"/>
+        <terminal orientation="n" x="200" uuid="{c25cc3fe-5230-4f3d-9406-fb779eb78e74}" type="Generic" name="23" y="-40"/>
+        <terminal orientation="n" x="-280" uuid="{a869182e-0db8-402a-9619-6a445d89579f}" type="Generic" name="A1" y="-40"/>
+        <terminal orientation="n" x="-200" uuid="{5ba27f5d-039a-40a2-9288-ebe910337586}" type="Generic" name="A2" y="-40"/>
+        <terminal orientation="n" x="40" uuid="{7ddf1261-5192-497c-8d8a-f47e57b45358}" type="Generic" name="13" y="-40"/>
+        <terminal orientation="n" x="280" uuid="{f50050d2-8991-4b0c-96d2-e0d97c1a06d2}" type="Generic" name="24" y="-40"/>
+        <terminal orientation="n" x="-40" uuid="{048be950-7197-4c11-b06b-932b53ff09da}" type="Generic" name="A4" y="-40"/>
+        <terminal orientation="n" x="120" uuid="{8cf6e2b7-0612-4978-bed3-330c3df477a0}" type="Generic" name="14" y="-40"/>
+        <terminal orientation="n" x="-120" uuid="{e2cf551a-e906-46a4-a00a-b51d67c5c974}" type="Generic" name="A3" y="-40"/>
+    </description>
+</definition>

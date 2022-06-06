@@ -1,4 +1,4 @@
-<definition version="0.90" type="element" hotspot_x="32" link_type="simple" hotspot_y="131" width="60" height="210">
+<definition version="0.80" type="element" hotspot_x="32" link_type="thumbnail" hotspot_y="131" width="60" height="210">
     <names>
         <name lang="de">753-666/000-003</name>
         <name lang="fr">753-666/000-003</name>

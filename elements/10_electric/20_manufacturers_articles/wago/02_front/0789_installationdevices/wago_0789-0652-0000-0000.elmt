@@ -1,4 +1,4 @@
-<definition version="0.90" height="190" width="150" link_type="simple" hotspot_x="75" hotspot_y="95" type="element">
+<definition version="0.90" height="190" width="150" link_type="thumbnail" hotspot_x="75" hotspot_y="95" type="element">
     <names>
         <name lang="fr">789-652</name>
         <name lang="en">789-652 - 3-Channel RT 500 Rogowski Signal Conditioner</name>

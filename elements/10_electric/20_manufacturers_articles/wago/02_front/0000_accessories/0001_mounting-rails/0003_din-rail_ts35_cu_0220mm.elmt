@@ -1,4 +1,4 @@
-<definition hotspot_x="225" width="450" height="80" version="0.90" link_type="simple" type="element" hotspot_y="40">
+<definition hotspot_x="225" width="450" height="80" version="0.90" link_type="thumbnail" type="element" hotspot_y="40">
     <names>
         <name lang="en">DIN-Rail TS35 Cu 220 mm</name>
         <name lang="cs">DIN-Rail TS35 Cu 220 mm</name>

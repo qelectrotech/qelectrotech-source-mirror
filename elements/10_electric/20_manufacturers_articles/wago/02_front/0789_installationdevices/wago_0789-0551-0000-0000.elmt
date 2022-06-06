@@ -1,4 +1,4 @@
-<definition width="40" height="190" type="element" version="0.90" link_type="simple" hotspot_x="19" hotspot_y="94">
+<definition width="40" height="190" type="element" version="0.90" link_type="thumbnail" hotspot_x="19" hotspot_y="94">
     <names>
         <name lang="fr">789-551</name>
         <name lang="en">789-551 - Relay AC/DC 12V 4 make contacts</name>

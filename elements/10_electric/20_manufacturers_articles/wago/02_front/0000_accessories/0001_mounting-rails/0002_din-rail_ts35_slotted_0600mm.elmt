@@ -1,4 +1,4 @@
-<definition version="0.90" type="element" height="80" hotspot_y="40" hotspot_x="605" width="1210" link_type="simple">
+<definition version="0.90" type="element" height="80" hotspot_y="40" hotspot_x="605" width="1210" link_type="thumbnail">
     <names>
         <name lang="de">Tragschiene TS35; 600 mm (gelocht)</name>
         <name lang="en">DIN-Rail TS35; slotted; 600 mm</name>

@@ -1,4 +1,4 @@
-<definition width="60" height="210" version="0.90" hotspot_y="131" link_type="simple" type="element" hotspot_x="32">
+<definition width="60" height="210" version="0.90" hotspot_y="131" link_type="thumbnail" type="element" hotspot_x="32">
     <names>
         <name lang="de">doppel 8-fach / Lichtleiter</name>
         <name lang="fr">double 8-fold / Light-Conductor</name>

@@ -1,16 +1,17 @@
-<definition type="element" width="17" height="194" version="0.80" hotspot_x="8" hotspot_y="97" link_type="simple">
+<definition type="element" width="17" height="194" version="0.80" hotspot_x="8" hotspot_y="97" link_type="thumbnail">
   <names>
     <name lang="de">857-304</name>
     <name lang="fr">857-304</name>
     <name lang="en">857-304</name>
     <name lang="cs">857-304</name>
   </names>
-  <elementInformations>
-    <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
-    <elementInformation name="designation" show="1">857-304</elementInformation>
-  </elementInformations>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">857-304</elementInformation>
+        <elementInformation show="1" name="description">857-304</elementInformation>
+    </elementInformations>
   <informations>Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
     <polygon x1="-5.9" x2="-5.9" x3="5.9" x4="5.9" y1="94" y2="-94" y3="-94" y4="94" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false"/>

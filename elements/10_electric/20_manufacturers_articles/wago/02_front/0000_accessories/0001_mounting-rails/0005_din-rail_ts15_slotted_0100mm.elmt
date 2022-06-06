@@ -1,4 +1,4 @@
-<definition type="element" height="40" width="210" link_type="simple" version="0.90" hotspot_x="105" hotspot_y="20">
+<definition type="element" height="40" width="210" link_type="thumbnail" version="0.90" hotspot_x="105" hotspot_y="20">
     <names>
         <name lang="de">Tragschiene TS15 gelocht 100 mm</name>
         <name lang="en">DIN-Rail TS15 slotted 100 mm</name>

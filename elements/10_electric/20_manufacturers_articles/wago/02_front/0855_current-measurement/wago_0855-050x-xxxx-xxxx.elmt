@@ -1,4 +1,4 @@
-<definition hotspot_x="90" hotspot_y="55" link_type="simple" version="0.90" type="element" width="180" height="110">
+<definition hotspot_x="90" hotspot_y="55" link_type="thumbnail" version="0.90" type="element" width="180" height="110">
     <names>
         <name lang="en">855-50x/xxxx-xxxx</name>
         <name lang="fr">855-50x/xxxx-xxxx</name>
