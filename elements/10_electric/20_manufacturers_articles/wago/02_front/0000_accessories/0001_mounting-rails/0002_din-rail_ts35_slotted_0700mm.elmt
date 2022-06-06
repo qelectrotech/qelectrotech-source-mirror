@@ -1,4 +1,4 @@
-<definition hotspot_y="40" hotspot_x="705" width="1410" version="0.90" link_type="simple" type="element" height="80">
+<definition hotspot_y="40" hotspot_x="705" width="1410" version="0.90" link_type="thumbnail" type="element" height="80">
     <names>
         <name lang="en">DIN-Rail TS35; slotted; 700 mm</name>
         <name lang="fr">DIN-Rail TS35; slotted; 700 mm</name>

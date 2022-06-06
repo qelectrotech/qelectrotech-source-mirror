@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.90" type="element" height="210" hotspot_x="56" width="110" hotspot_y="131">
+<definition link_type="thumbnail" version="0.80" type="element" height="210" hotspot_x="56" width="110" hotspot_y="131">
     <names>
         <name lang="en">750-315/300-000</name>
         <name lang="fr">750-315/300-000</name>

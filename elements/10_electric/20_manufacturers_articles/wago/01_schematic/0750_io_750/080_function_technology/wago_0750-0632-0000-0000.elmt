@@ -47,16 +47,16 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle y="9" antialias="false" diameter="2" x="-231" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <circle y="9" antialias="false" diameter="2" x="-31" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <circle y="9" antialias="false" diameter="2" x="49" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <line x2="10" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.8575" y2="-10" antialias="false" x1="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="10" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.86" y2="-10" antialias="false" x1="10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x2="-150" end1="none" length2="1.5" length1="1.5" end2="none" y1="48" y2="10" antialias="false" x1="-150" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <line x2="-190" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.8575" y2="-10" antialias="false" x1="-190" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="-190" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.86" y2="-10" antialias="false" x1="-190" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x2="-230" end1="none" length2="1.5" length1="1.5" end2="none" y1="48" y2="10" antialias="false" x1="-230" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <line x2="-270" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.8575" y2="-10" antialias="false" x1="-270" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="-270" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.86" y2="-10" antialias="false" x1="-270" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x2="-30" end1="none" length2="1.5" length1="1.5" end2="none" y1="48" y2="10" antialias="false" x1="-30" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x2="357" end1="none" length2="1.5" length1="1.5" end2="none" y1="10" y2="10" antialias="false" x1="-357" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x2="357" end1="none" length2="1.5" length1="1.5" end2="none" y1="-10" y2="-10" antialias="false" x1="-357" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line x2="50" end1="none" length2="1.5" length1="1.5" end2="none" y1="48" y2="10" antialias="false" x1="50" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <line x2="-70" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.8575" y2="-10" antialias="false" x1="-70" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="-70" end1="none" length2="1.5" length1="1.5" end2="none" y1="46.86" y2="-10" antialias="false" x1="-70" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" text="1" rotation="0" x="-307" color="#000000"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" text="2" rotation="0" x="-267" color="#000000"/>
         <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="58" text="3" rotation="0" x="-227" color="#000000"/>

@@ -1,4 +1,4 @@
-<definition hotspot_x="505" width="1010" height="40" version="0.90" link_type="simple" type="element" hotspot_y="20">
+<definition hotspot_x="505" width="1010" height="40" version="0.90" link_type="thumbnail" type="element" hotspot_y="20">
     <names>
         <name lang="en">DIN-Rail TS15 500 mm</name>
         <name lang="cs">DIN-Rail TS15 500 mm</name>

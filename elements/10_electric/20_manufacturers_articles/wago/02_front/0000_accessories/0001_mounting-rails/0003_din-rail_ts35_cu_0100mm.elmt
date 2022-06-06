@@ -1,4 +1,4 @@
-<definition height="80" link_type="simple" width="210" type="element" hotspot_x="105" version="0.90" hotspot_y="40">
+<definition height="80" link_type="thumbnail" width="210" type="element" hotspot_x="105" version="0.90" hotspot_y="40">
     <names>
         <name lang="de">Tragschiene TS35 Cu 100 mm</name>
         <name lang="cs">DIN-Rail TS35 Cu 100 mm</name>

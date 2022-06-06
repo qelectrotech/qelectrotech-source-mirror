@@ -1,4 +1,4 @@
-<definition version="0.90" link_type="simple" hotspot_x="58" hotspot_y="131" width="110" type="element" height="210">
+<definition version="0.80" link_type="thumbnail" hotspot_x="58" hotspot_y="131" width="110" type="element" height="210">
     <names>
         <name lang="fr">750-669/000-003</name>
         <name lang="en">750-669/000-003</name>
@@ -108,15 +108,15 @@
         <circle antialias="false" x="-26.46" y="27.23" diameter="6.52" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle antialias="false" x="-26.46" y="-67.16" diameter="6.52" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle antialias="false" x="-37.44" y="-62.35" diameter="6.29" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
-        <polygon x7="-34.22" y3="47.53" x4="-31.1" x6="-32.35" antialias="false" y2="46.28" x5="-31.41" x1="-34.22" y7="51.9" y1="45.66" y5="50.03" y6="51.28" y4="48.78" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.3487" x3="-31.4122"/>
-        <polygon x7="-34.22" y3="32.53" x4="-31.1" x6="-32.35" antialias="false" y2="31.28" x5="-31.41" x1="-34.22" y7="36.9" y1="30.66" y5="35.03" y6="36.28" y4="33.78" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.3487" x3="-31.4122"/>
-        <polygon x7="-34.22" y3="17.53" x4="-31.1" x6="-32.35" antialias="false" y2="16.28" x5="-31.41" x1="-34.22" y7="21.9" y1="15.66" y5="20.03" y6="21.28" y4="18.78" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.3487" x3="-31.4122"/>
-        <polygon x7="-34.22"  y3="2.43" x4="-31.1" x6="-32.35"  antialias="false" y2="1.18" x5="-31.41" x1="-34.22" y7="6.8"   y1="0.56"  y5="4.93"  y6="6.18"  y4="3.68" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.3487" x3="-31.4122"/>
-        <polygon x7="-34.2" y3="-15.37" x4="-31.08" x6="-32.33" antialias="false" y2="-16.62" x5="-31.39" x1="-34.2" y7="-11" y1="-17.24" y5="-12.87" y6="-11.62" y4="-14.12" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.327" x3="-31.3905"/>
-        <polygon x7="-34.2" y3="-30.37" x4="-31.08" x6="-32.33" antialias="false" y2="-31.62" x5="-31.39" x1="-34.2" y7="-26" y1="-32.24" y5="-27.87" y6="-26.62" y4="-29.12" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.327" x3="-31.3905"/>
-        <polygon x7="-34.2" y3="-45.37" x4="-31.08" x6="-32.33" antialias="false" y2="-46.62" x5="-31.39" x1="-34.2" y7="-41" y1="-47.24" y5="-42.87" y6="-41.62" y4="-44.12" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.327" x3="-31.3905"/>
-        <polygon x7="-34.2" y3="-60.47" x4="-31.08" x6="-32.33" antialias="false" y2="-61.72" x5="-31.39" x1="-34.2" y7="-56.1" y1="-62.34" y5="-57.97" y6="-56.72" y4="-59.22" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.327" x3="-31.3905"/>
-        <polygon x7="-25.32" y3="-96.27" x4="-22.2" x6="-23.45" antialias="false" y2="-97.52" x5="-22.51" x1="-25.32" y7="-91.9" y1="-98.1403" y5="-93.7721" y6="-92.52" y4="-95.02" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-23.4487" x3="-22.5122"/>
-        <polygon x7="-15.3" y3="-96.27" x4="-12.18" x6="-13.43" antialias="false" y2="-97.52" x5="-12.49" x1="-15.3" y7="-91.9" y1="-98.1403" y5="-93.7721" y6="-92.52" y4="-95.02" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-13.427" x3="-12.4905"/>
+        <polygon x7="-34.22" y3="47.53" x4="-31.1" x6="-32.35" antialias="false" y2="46.28" x5="-31.41" x1="-34.22" y7="51.9" y1="45.66" y5="50.03" y6="51.28" y4="48.78" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.35" x3="-31.41"/>
+        <polygon x7="-34.22" y3="32.53" x4="-31.1" x6="-32.35" antialias="false" y2="31.28" x5="-31.41" x1="-34.22" y7="36.9" y1="30.66" y5="35.03" y6="36.28" y4="33.78" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.35" x3="-31.41"/>
+        <polygon x7="-34.22" y3="17.53" x4="-31.1" x6="-32.35" antialias="false" y2="16.28" x5="-31.41" x1="-34.22" y7="21.9" y1="15.66" y5="20.03" y6="21.28" y4="18.78" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.35" x3="-31.41"/>
+        <polygon x7="-34.22"  y3="2.43" x4="-31.1" x6="-32.35"  antialias="false" y2="1.18" x5="-31.41" x1="-34.22" y7="6.8"   y1="0.56"  y5="4.93"  y6="6.18"  y4="3.68" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.35" x3="-31.41"/>
+        <polygon x7="-34.2" y3="-15.37" x4="-31.08" x6="-32.33" antialias="false" y2="-16.62" x5="-31.39" x1="-34.2" y7="-11" y1="-17.24" y5="-12.87" y6="-11.62" y4="-14.12" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.33" x3="-31.39"/>
+        <polygon x7="-34.2" y3="-30.37" x4="-31.08" x6="-32.33" antialias="false" y2="-31.62" x5="-31.39" x1="-34.2" y7="-26" y1="-32.24" y5="-27.87" y6="-26.62" y4="-29.12" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.33" x3="-31.39"/>
+        <polygon x7="-34.2" y3="-45.37" x4="-31.08" x6="-32.33" antialias="false" y2="-46.62" x5="-31.39" x1="-34.2" y7="-41" y1="-47.24" y5="-42.87" y6="-41.62" y4="-44.12" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.33" x3="-31.39"/>
+        <polygon x7="-34.2" y3="-60.47" x4="-31.08" x6="-32.33" antialias="false" y2="-61.72" x5="-31.39" x1="-34.2" y7="-56.1" y1="-62.34" y5="-57.97" y6="-56.72" y4="-59.22" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-32.33" x3="-31.39"/>
+        <polygon x7="-25.32" y3="-96.27" x4="-22.2" x6="-23.45" antialias="false" y2="-97.52" x5="-22.51" x1="-25.32" y7="-91.9" y1="-98.14" y5="-93.77" y6="-92.52" y4="-95.02" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-23.45" x3="-22.51"/>
+        <polygon x7="-15.3" y3="-96.27" x4="-12.18" x6="-13.43" antialias="false" y2="-97.52" x5="-12.49" x1="-15.3" y7="-91.9" y1="-98.14" y5="-93.77" y6="-92.52" y4="-95.02" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="-13.43" x3="-12.49"/>
     </description>
 </definition>

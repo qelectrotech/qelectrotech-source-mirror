@@ -1,0 +1,53 @@
+<definition hotspot_y="65" version="0.80" hotspot_x="44" link_type="simple" height="130" width="90" type="element">
+    <names>
+        <name lang="cs">787-2857</name>
+        <name lang="en">787-2857</name>
+        <name lang="de">787-2857</name>
+        <name lang="fr">787-2857</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description">Power-Supply Compact DALI 1ph DC18V 1.25A</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">787-2857</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect x="-40" height="120" antialias="false" ry="0" width="80" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-60"/>
+        <text x="13" text="+18V" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="53"/>
+        <text x="17" text="GND" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-47"/>
+        <line length1="1.5" x1="1" y1="-60" y2="60" antialias="true" x2="1" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <circle x="37.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-12.5"/>
+        <text x="17" text="GND" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-7"/>
+        <text x="13" text="+18V" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="13"/>
+        <text x="13" text="+18V" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="33"/>
+        <line length1="1.5" x1="-1" y1="-60" y2="60" antialias="true" x2="-1" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
+        <circle x="37.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="27.5"/>
+        <text x="17" text="GND" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-27"/>
+        <circle x="-42.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-2.5"/>
+        <circle x="37.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-52.5"/>
+        <circle x="-42.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="17.5"/>
+        <circle x="37.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="7.5"/>
+        <circle x="-42.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-22.5"/>
+        <circle x="37.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="47.5"/>
+        <circle x="37.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" y="-32.5"/>
+        <dynamic_text x="-44" text_width="-1" Halignment="AlignLeft" z="20" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" text_from="ElementInfo" Valignment="AlignTop" frame="false" uuid="{df63c2f9-15a0-4148-9435-8f09fc3f270b}" y="-77">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-37" text="PE" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="17"/>
+        <text x="-37" text="L1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-23"/>
+        <text x="-37" text="N" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="-3"/>
+        <text x="-10" text="WAGO 787-2857" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="-90" color="#000000" y="50"/>
+        <terminal orientation="w" x="-40" name="AC.L1" uuid="{2aa78165-af0a-45c3-9625-ab8dd8947915}" y="-20"/>
+        <terminal orientation="w" x="-40" name="AC.N" uuid="{4f242131-49a7-45e8-ab93-dd7896055cb9}" y="0"/>
+        <terminal orientation="w" x="-40" name="AC.PE" uuid="{13726cc5-0eb0-401b-90be-8f7c5788bbd3}" y="20"/>
+        <terminal orientation="e" x="40" name="" uuid="{7bf6cf48-5eba-41f6-aa2e-ea091ff3ba4a}" y="30"/>
+        <terminal orientation="e" x="40" name="" uuid="{844ee3cf-460a-4a98-a3ab-2435973c97fe}" y="10"/>
+        <terminal orientation="e" x="40" name="" uuid="{4744d8ea-f02e-43a3-afad-631a1c033fb5}" y="50"/>
+        <terminal orientation="e" x="40" name="" uuid="{a0618f8d-3d15-417f-b1e3-1e7a0f3bb691}" y="-50"/>
+        <terminal orientation="e" x="40" name="" uuid="{9b867976-edb2-4038-8ac3-12cc4cee07ff}" y="-10"/>
+        <terminal orientation="e" x="40" name="" uuid="{aa1eeb80-ee90-48ca-bc25-e4ef13633355}" y="-30"/>
+    </description>
+</definition>

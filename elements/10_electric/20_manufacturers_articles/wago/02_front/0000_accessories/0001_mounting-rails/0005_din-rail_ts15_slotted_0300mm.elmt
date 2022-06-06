@@ -1,4 +1,4 @@
-<definition hotspot_x="305" width="610" height="40" version="0.90" link_type="simple" type="element" hotspot_y="20">
+<definition hotspot_x="305" width="610" height="40" version="0.90" link_type="thumbnail" type="element" hotspot_y="20">
     <names>
         <name lang="de">Tragschiene TS15 gelocht 300 mm</name>
         <name lang="en">DIN-Rail TS15 slotted 300 mm</name>

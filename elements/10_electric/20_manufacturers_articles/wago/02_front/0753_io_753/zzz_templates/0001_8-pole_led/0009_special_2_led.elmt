@@ -1,4 +1,4 @@
-<definition hotspot_y="131" version="0.90" link_type="simple" type="element" height="210" width="40" hotspot_x="22">
+<definition hotspot_y="131" version="0.90" link_type="thumbnail" type="element" height="210" width="40" hotspot_x="22">
     <names>
         <name lang="de">special 2 LEDs</name>
         <name lang="fr">special 2 LEDs</name>

@@ -16,22 +16,22 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <description>
         <rect rx="0" height="90" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="720" x="-360" y="-40" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="249" y="-11" antialias="false"/>
-        <line y2="-10" x2="250" end1="none" x1="250" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
+        <line y2="-10" x2="250" end1="none" x1="250" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.86" antialias="false"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" x="207.5" y="47.5" antialias="true"/>
         <line y2="10" x2="290" end1="none" x1="290" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="48" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="49" y="-11" antialias="false"/>
-        <line y2="-10" x2="50" end1="none" x1="50" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
+        <line y2="-10" x2="50" end1="none" x1="50" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.86" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-71" y="-11" antialias="false"/>
-        <line y2="-10" x2="-70" end1="none" x1="-70" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
+        <line y2="-10" x2="-70" end1="none" x1="-70" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.86" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-271" y="-11" antialias="false"/>
-        <line y2="-10" x2="-270" end1="none" x1="-270" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
+        <line y2="-10" x2="-270" end1="none" x1="-270" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.86" antialias="false"/>
         <line y2="10" x2="-30" end1="none" x1="-30" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="48" antialias="false"/>
-        <line y2="-10" x2="130" end1="none" x1="130" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
+        <line y2="-10" x2="130" end1="none" x1="130" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.86" antialias="false"/>
         <line y2="10" x2="-230" end1="none" x1="-230" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="48" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="129" y="-11" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="289" y="9" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-191" y="-11" antialias="false"/>
-        <line y2="-10" x2="-190" end1="none" x1="-190" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.8575" antialias="false"/>
+        <line y2="-10" x2="-190" end1="none" x1="-190" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" y1="46.86" antialias="false"/>
         <text text="24V" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-355" y="-12" color="#000000"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-31" y="9" antialias="false"/>
         <circle diameter="2" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-231" y="9" antialias="false"/>

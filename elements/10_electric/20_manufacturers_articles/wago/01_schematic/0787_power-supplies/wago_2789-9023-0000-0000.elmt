@@ -1,0 +1,42 @@
+<definition height="90" hotspot_x="35" link_type="simple" type="element" width="70" hotspot_y="44" version="0.80">
+    <names>
+        <name lang="el">2789-9023</name>
+        <name lang="en">2789-9023</name>
+        <name lang="fr">2789-9023</name>
+        <name lang="it">2789-9023</name>
+        <name lang="be">2789-9023</name>
+        <name lang="cs">2789-9023</name>
+        <name lang="es">2789-9023</name>
+        <name lang="de">2789-9023</name>
+        <name lang="ar">2789-9023</name>
+        <name lang="nl">2789-9023</name>
+        <name lang="pl">2789-9023</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2789-9023</elementInformation>
+        <elementInformation show="1" name="description">Comm.-Module Ethernet/IP</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect height="80" x="-30" rx="0" y="-40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="60"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-17.0156" text="EtherNet/IP" y="16" color="#000000" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-14" text="WAGO" y="-11" color="#000000" rotation="0"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="7.1094" text="X6" y="33" color="#000000" rotation="0"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-12.3906" text="X5" y="33" color="#000000" rotation="0"/>
+        <circle x="7.5" y="37.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <circle x="-12.5" y="37.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
+        <polygon x1="0" y2="-36" x2="0" y1="-42" antialias="false" closed="false" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <line y1="2" y2="2" x1="30" end2="none" end1="none" length2="1.5" x2="-30" style="line-style:dotted;line-weight:normal;filling:none;color:black" length1="1.5" antialias="true"/>
+        <dynamic_text z="17" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignVCenter" x="-4" y="-38" text_width="-1" text_from="ElementInfo" Halignment="AlignHCenter" uuid="{7887e1bf-7914-4463-9f3a-9d4e58ed52ff}" rotation="0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-24" text="2789-9023" y="-1" color="#000000" rotation="0"/>
+        <terminal x="-10" orientation="s" y="40"/>
+        <terminal x="10" orientation="s" y="40"/>
+        <terminal x="0" orientation="n" y="-40"/>
+    </description>
+</definition>

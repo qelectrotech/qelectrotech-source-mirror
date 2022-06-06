@@ -25,7 +25,7 @@ EN 60617: 07-22-03
         <text x="-14" text="N out" y="109" rotation="270" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <rect x="-29" height="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="43" ry="0" width="10" rx="0"/>
         <rect x="0" height="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="43" ry="0" width="10" rx="0"/>
-        <line y1="80" antialias="false" y2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-13.1677" length1="1.5" x1="-27.8452"/>
+        <line y1="80" antialias="false" y2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-13.17" length1="1.5" x1="-27.85"/>
         <line y1="-30" antialias="false" y2="110" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-50.05" length1="1.5" x1="-50.05"/>
         <line y1="90" antialias="false" y2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="20" length1="1.5" x1="7"/>
         <text x="-14" text="N in" y="-17" rotation="270" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
@@ -47,25 +47,25 @@ EN 60617: 07-22-03
         <line y1="85.808" antialias="false" y2="94.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="7" length1="1.5" x1="7"/>
         <line y1="75.808" antialias="false" y2="84.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-28" length1="1.5" x1="-28"/>
         <text x="-54" text="PE" y="109" rotation="270" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-50.006" length1="1.5" x1="-29.2435"/>
+        <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-50.006" length1="1.5" x1="-29.24"/>
         <rect x="-45" height="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="58" ry="0" width="10" rx="0"/>
         <line y1="40" antialias="false" y2="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="1" length1="1.5" x1="9"/>
         <line y1="55" antialias="false" y2="65" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-24" length1="1.5" x1="-16"/>
-        <line y1="90" antialias="false" y2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="2.31791" length1="1.5" x1="-49.6012"/>
+        <line y1="90" antialias="false" y2="90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="2.32" length1="1.5" x1="-49.6"/>
         <dynamic_text uuid="{a82efd0e-c6f2-4ddf-9a61-a1e6dd8de5dd}" frame="false" x="43" Valignment="AlignTop" z="37" text_width="-1" y="84" text_from="ElementInfo" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line y1="80" antialias="false" y2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-32.4194" length1="1.5" x1="-49.6129"/>
+        <line y1="80" antialias="false" y2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-32.42" length1="1.5" x1="-49.61"/>
         <polygon y1="45" x4="-22" closed="false" antialias="false" y2="43" x3="-19" y4="45" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-19" x1="-22" y3="47"/>
         <line y1="50" antialias="false" y2="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="1" length1="1.5" x1="-2"/>
         <line y1="85.808" antialias="false" y2="94.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="3"/>
         <line y1="75.808" antialias="false" y2="84.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-32" length1="1.5" x1="-32"/>
         <line y1="65" antialias="false" y2="65" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-24" length1="1.5" x1="-27"/>
-        <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-0.673911" length1="1.5" x1="-18.4549"/>
-        <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-49.9316" length1="1.5" x1="-45.9907"/>
+        <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-0.67" length1="1.5" x1="-18.45"/>
+        <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-49.93" length1="1.5" x1="-46"/>
         <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="20" length1="1.5" x1="10"/>
-        <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-10.2072" length1="1.5" x1="-14.7318"/>
+        <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-10.2" length1="1.5" x1="-14.73"/>
         <polygon y1="60" x4="-38" closed="false" antialias="false" y2="58" x3="-35" y4="60" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-35" x1="-38" y3="62"/>
         <rect x="0" height="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="3" ry="0" width="10" rx="0"/>
         <line y1="0" antialias="false" y2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="1" length1="1.5" x1="9"/>
@@ -76,7 +76,7 @@ EN 60617: 07-22-03
         <line y1="-14.192" antialias="false" y2="-5.792" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="3"/>
         <circle x="-4" antialias="true" diameter="18" style="line-style:normal;line-weight:normal;filling:none;color:black" y="16"/>
         <rect x="-12" height="10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y="20" ry="0" width="4" rx="0"/>
-        <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-26.1368" length1="1.5" x1="-33.8737"/>
+        <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-26.14" length1="1.5" x1="-33.87"/>
         <text x="-54" text="PE" y="-20" rotation="270" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <circle x="18" antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="3"/>
         <line y1="-30" antialias="false" y2="110" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-10" length1="1.5" x1="-10"/>

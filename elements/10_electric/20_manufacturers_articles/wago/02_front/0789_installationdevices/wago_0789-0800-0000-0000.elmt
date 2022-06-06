@@ -1,4 +1,4 @@
-<definition type="element" width="40" link_type="simple" hotspot_x="19" height="190" hotspot_y="94" version="0.90">
+<definition type="element" width="40" link_type="thumbnail" hotspot_x="19" height="190" hotspot_y="94" version="0.90">
     <names>
         <name lang="de">789-800 - Wechselschalter, einpolig (Hand / Automatik)</name>
         <name lang="en">789-800 - Switch SPDT</name>
