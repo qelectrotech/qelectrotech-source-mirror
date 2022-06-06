@@ -1,0 +1,34 @@
+<definition link_type="thumbnail" height="270" hotspot_x="14" hotspot_y="142" version="0.90" width="30" type="element">
+    <uuid uuid="{e0ce1334-5c36-4409-8af7-3f0ed302553f}"/>
+    <names>
+        <name lang="cs">UR20-ES</name>
+        <name lang="fr">UR20-ES</name>
+        <name lang="de">UR20-ES - Leermodul</name>
+        <name lang="en">UR20-ES</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UR20-ES</elementInformation>
+        <elementInformation name="manufacturer" show="1">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect height="242" antialias="false" x="-11.5" width="23" y="-121" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black"/>
+        <rect height="46" antialias="false" x="-11.5" width="23" y="6" ry="2" rx="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black"/>
+        <rect height="12" antialias="false" x="-10.5" width="21" y="109" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black"/>
+        <rect height="46" antialias="false" x="-11.5" width="23" y="55" ry="2" rx="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black"/>
+        <rect height="14" antialias="false" x="-11.5" width="23" y="-136" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <text text="ES" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="-2" y="-100" color="#ffffff"/>
+        <rect height="12" antialias="false" x="-11.5" width="23" y="-120" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black"/>
+        <rect height="46" antialias="false" x="-11.5" width="23" y="-92" ry="2" rx="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black"/>
+        <rect height="46" antialias="false" x="-11.5" width="23" y="-43" ry="2" rx="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black"/>
+        <rect height="12" antialias="false" x="-11.5" width="23" y="-133" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>        <rect antialias="false" x="-11.5" rx="0" y="-133" height="12" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="23"/>
+        <dynamic_text rotation="0" text_from="ElementInfo" keep_visual_rotation="true" frame="false" Valignment="AlignVCenter" uuid="{96477b97-cb32-430e-b7f3-d40524511543}" Halignment="AlignHCenter" x="-3.8" z="67" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="106" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+            <color>#ffffff</color>
+        </dynamic_text>
+    </description>
+</definition>

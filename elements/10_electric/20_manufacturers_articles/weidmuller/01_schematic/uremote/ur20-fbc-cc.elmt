@@ -1,0 +1,96 @@
+<definition hotspot_y="55" link_type="simple" height="110" width="730" type="element" hotspot_x="364" version="0.90">
+    <uuid uuid="{d4116be0-9428-4704-b7d9-b7dcb4010db8}"/>
+    <names>
+        <name lang="de">UR20-FBC-CC</name>
+        <name lang="en">UR20-FBC-CC</name>
+        <name lang="fr">UR20-FBC-CC</name>
+        <name lang="cs">UR20-FBC-CC</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UR20-FBC-CC</elementInformation>
+        <elementInformation name="manufacturer" show="1">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" rx="0" x="-360" ry="0" height="90" width="720" antialias="false" y="-40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5" antialias="true" y="-42.5"/>
+        <text x="-17.7125" text="SLD" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" y="-18"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-22.5" antialias="true" y="-42.5"/>
+        <text x="-17.6875" text="X1.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="-37.5938" text="X1.4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="-37.5875" text="n.c." font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" y="-19"/>
+        <text x="-57.6875" text="DG" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" y="-20"/>
+        <text x="-77.5625" text="DB" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" y="-21"/>
+        <dynamic_text x="-274" text_from="UserText" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" Valignment="AlignTop" rotation="0" uuid="{0eade2e8-8ab3-424f-8809-ba9aaf87b3fe}" text_width="-1" Halignment="AlignLeft" keep_visual_rotation="true" y="-11.5" z="4">
+            <text>1</text>
+        </dynamic_text>
+        <text x="283" text="Vcc Outputs" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="27"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="110" y3="10" antialias="false" x3="120" x1="110" y1="-30" y2="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-62.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-82.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-102.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" x="209" antialias="false" y="-31"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" x="149" antialias="false" y="-31"/>
+        <text x="-97.5" text="X1.1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="150" y3="10" antialias="false" x3="160" x1="150" y1="-30" y2="0"/>
+        <text x="-77.5" text="X1.2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="-57.5" text="X1.3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" x="109" antialias="false" y="-31"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="210" y3="30" antialias="false" x3="220" x1="210" y1="-30" y2="20"/>
+        <polygon x4="220" y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="200" y3="-30" antialias="false" x3="220" x1="200" y1="-40" y2="-30"/>
+        <polygon x4="120" y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="100" y3="-30" antialias="false" x3="120" x1="100" y1="-40" y2="-30"/>
+        <polygon x4="160" y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="140" y3="-30" antialias="false" x3="160" x1="140" y1="-40" y2="-30"/>
+        <text x="-329" text="Address:" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="157.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="137.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="117.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="97.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="257.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="237.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="217.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="197.5" antialias="true" y="-42.5"/>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" x2="358" antialias="false" length2="1.5" x1="210" y1="30" y2="30" end1="none" length1="1.5"/>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" x2="358" antialias="false" length2="1.5" x1="110" y1="10" y2="10" end1="none" length1="1.5"/>
+        <text x="-330" text="UR20-FBC-CC" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="45"/>
+        <text x="257" text="−" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-22"/>
+        <text x="217" text="+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-22"/>
+        <text x="157" text="−" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-22"/>
+        <dynamic_text x="220" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" Valignment="AlignTop" rotation="0" uuid="{9598054e-7691-48e0-8c5b-e6c097bbf869}" text_width="-1" Halignment="AlignLeft" keep_visual_rotation="true" y="29.5" z="36">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="117" text="+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-22"/>
+        <text x="102" text="3.1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="123" text="3.2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="143" text="3.3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="163" text="3.4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="203" text="4.1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="223" text="4.2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="243" text="4.3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="263" text="4.4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-42"/>
+        <text x="-138" text="Fieldbus-Coupler CC-Link" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="45"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:white;color:black" x="360" height="5" width="5" antialias="true" y="27.5" angle="180"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:white;color:black" x="360" height="5" width="5" antialias="true" y="7.5" angle="180"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="250" y3="30" antialias="false" x3="260" x1="250" y1="-30" y2="20"/>
+        <polygon x4="260" y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x2="240" y3="-30" antialias="false" x3="260" x1="240" y1="-40" y2="-30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" x="249" antialias="false" y="-31"/>
+        <text x="265" text="Vcc System / Inputs" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="7"/>
+        <text x="-97" text="DA" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="270" y="-21"/>
+        <terminal x="160" uuid="{fdb1ce29-038b-4f7e-98e3-28b630687bd1}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="260" uuid="{3afcca78-9d5b-48ca-9707-374fb0e15538}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="240" uuid="{0f60175f-45d7-4ac7-925b-73de4532b180}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="200" uuid="{112017a8-c652-40dd-abc4-8eccab8193ef}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="120" uuid="{6681f089-cddd-49c6-9845-5da6b2652e88}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="140" uuid="{f1a9e005-459e-453b-a87e-a07be9d9cd69}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="220" uuid="{7c6ae10b-fc88-434d-8daf-891782ae8fba}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="360" uuid="{f2ab7e4b-3142-461e-881c-9885fca297de}" name="" type="Generic" y="30" orientation="e"/>
+        <terminal x="100" uuid="{67846f85-bb9b-4b8e-a3f5-b87ef7776996}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="360" uuid="{aaca00a8-2392-441d-ae39-d23d585f143f}" name="" type="Generic" y="10" orientation="e"/>
+        <terminal x="-80" uuid="{9a79396f-811f-4bd0-8176-2c74ebfa102d}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="-60" uuid="{784fe0e8-bdfe-4c31-9b56-2fc3cd19185a}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="-100" uuid="{1b6a163e-c5c7-4fdb-bb3d-e5fb1acc2fe9}" name="" type="Generic" y="-40" orientation="n"/>
+        <terminal x="-20" uuid="{4054a0b4-4104-4e60-837f-eb46d4a2b1db}" name="" type="Generic" y="-40" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,24 @@
+<definition version="0.90" hotspot_y="125" link_type="thumbnail" type="element" width="30" hotspot_x="15" height="250">
+    <uuid uuid="{7eb6dae6-70b8-43c8-8b57-8f2a781f8e0a}"/>
+    <names>
+        <name lang="cs">UR20-xxx</name>
+        <name lang="en">UR20-xxx - end-cap (left)</name>
+        <name lang="fr">UR20-xxx</name>
+        <name lang="de">UR20-xxx - Endwinkel (links)</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UR20-xxx</elementInformation>
+        <elementInformation name="manufacturer" show="1">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect y="-121" ry="0" rx="0" width="18" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black" antialias="false" x="-9" height="242"/>
+        <rect y="-19" ry="0" rx="0" width="12" style="line-style:normal;line-weight:normal;filling:gray;color:none" antialias="false" x="-6" height="5"/>
+        <rect y="14" ry="0" rx="0" width="12" style="line-style:normal;line-weight:normal;filling:gray;color:none" antialias="false" x="-6" height="5"/>
+        <circle y="-6" diameter="12" style="line-style:normal;line-weight:normal;filling:lightgray;color:gray" antialias="false" x="-6"/>
+        <line y1="4" length2="1.5" y2="-4" x2="4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:gray" antialias="false" end2="none" x1="-4" length1="1.5"/>
+    </description>
+</definition>
