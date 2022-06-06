@@ -1,0 +1,101 @@
+<definition type="element" link_type="simple" hotspot_x="375" width="740" hotspot_y="55" height="110" version="0.90">
+    <uuid uuid="{033ba2f0-ef4c-4fdf-b554-b304094fd486}"/>
+    <names>
+        <name lang="de">UC20-SL2000-EC-CAN</name>
+        <name lang="cs">UC20-SL2000-EC-CAN</name>
+        <name lang="fr">UC20-SL2000-EC-CAN</name>
+        <name lang="en">UC20-SL2000-EC-CAN</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UC20-SL2000-EC-CAN</elementInformation>
+        <elementInformation show="1" name="manufacturer">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" y="-40" width="720" ry="0" height="90" rx="0" antialias="false" x="-360"/>
+        <text y="-7" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="-37.6875" text="CAN_H"/>
+        <text y="-8" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="-57.5625" text="CAN_L"/>
+        <dynamic_text y="-11.5" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" text_from="UserText" uuid="{0eade2e8-8ab3-424f-8809-ba9aaf87b3fe}" frame="false" Valignment="AlignTop" z="4" x="-257" Halignment="AlignLeft" text_width="-1">
+            <text>192.168.0.101</text>
+        </dynamic_text>
+        <text y="27" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="283" text="Vcc Outputs"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y2="0" x2="110" y1="-30" antialias="false" x3="120" x1="110" y3="10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="-62.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="-82.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-31" diameter="2" antialias="false" x="209"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-31" diameter="2" antialias="false" x="149"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-77.5" text="X4.1"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y2="0" x2="150" y1="-30" antialias="false" x3="160" x1="150" y3="10"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-57.5" text="X4.2"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-37.5" text="X4.3"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-31" diameter="2" antialias="false" x="109"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y2="20" x2="210" y1="-30" antialias="false" x3="220" x1="210" y3="30"/>
+        <polygon y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x4="220" y2="-30" x2="200" y1="-40" antialias="false" x3="220" x1="200" y3="-30"/>
+        <polygon y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x4="120" y2="-30" x2="100" y1="-40" antialias="false" x3="120" x1="100" y3="-30"/>
+        <polygon y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x4="160" y2="-30" x2="140" y1="-40" antialias="false" x3="160" x1="140" y3="-30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="17.5" diameter="5" antialias="true" x="-362.5"/>
+        <text y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-312" text="IP Adr. 1:"/>
+        <text y="24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-355" text="Eth2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-2.5" diameter="5" antialias="true" x="-362.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="157.5"/>
+        <dynamic_text y="8.5" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" text_from="UserText" uuid="{6a02c068-70a7-4dae-8f67-d8b64ec0e56f}" frame="false" Valignment="AlignTop" z="26" x="-257" Halignment="AlignLeft" text_width="-1">
+            <text>192.168.1.101</text>
+        </dynamic_text>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="137.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="117.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="97.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="257.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="237.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="217.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" diameter="5" antialias="true" x="197.5"/>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" y2="30" x2="358" y1="30" antialias="false" end1="none" length2="1.5" x1="210" length1="1.5"/>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" y2="10" x2="358" y1="10" antialias="false" end1="none" length2="1.5" x1="110" length1="1.5"/>
+        <dynamic_text y="29.5" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="true" text_from="ElementInfo" uuid="{9598054e-7691-48e0-8c5b-e6c097bbf869}" frame="false" Valignment="AlignTop" z="36" x="220" Halignment="AlignLeft" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-330" text="UC20-SL2000-EC-CAN"/>
+        <text y="24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-312" text="IP Adr. 2:"/>
+        <text y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="257" text="−"/>
+        <text y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="217" text="+"/>
+        <text y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="157" text="−"/>
+        <text y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="117" text="+"/>
+        <text y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-355" text="Eth1"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="102" text="3.1"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="123" text="3.2"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="143" text="3.3"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="163" text="3.4"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="203" text="4.1"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="223" text="4.2"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="243" text="4.3"/>
+        <text y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="263" text="4.4"/>
+        <text y="45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-138" text="Controller, u-control 2000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-371" text="X1"/>
+        <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-371" text="X2"/>
+        <arc style="line-style:normal;line-weight:normal;filling:white;color:black" y="27.5" angle="180" width="5" height="5" antialias="true" start="90" x="360"/>
+        <arc style="line-style:normal;line-weight:normal;filling:white;color:black" y="7.5" angle="180" width="5" height="5" antialias="true" start="90" x="360"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y2="20" x2="250" y1="-30" antialias="false" x3="260" x1="250" y3="30"/>
+        <polygon y4="-40" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x4="260" y2="-30" x2="240" y1="-40" antialias="false" x3="260" x1="240" y3="-30"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-31" diameter="2" antialias="false" x="249"/>
+        <text y="7" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="265" text="Vcc System / Inputs"/>
+        <text y="-15" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" x="-77" text="GND"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{fdb1ce29-038b-4f7e-98e3-28b630687bd1}" x="160"/>
+        <terminal type="Generic" y="0" orientation="w" name="" uuid="{964d02f8-0df7-4678-8335-db8ed7fb41e4}" x="-360"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{3afcca78-9d5b-48ca-9707-374fb0e15538}" x="260"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{0f60175f-45d7-4ac7-925b-73de4532b180}" x="240"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{112017a8-c652-40dd-abc4-8eccab8193ef}" x="200"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{6681f089-cddd-49c6-9845-5da6b2652e88}" x="120"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{f1a9e005-459e-453b-a87e-a07be9d9cd69}" x="140"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{7c6ae10b-fc88-434d-8daf-891782ae8fba}" x="220"/>
+        <terminal type="Generic" y="30" orientation="e" name="" uuid="{f2ab7e4b-3142-461e-881c-9885fca297de}" x="360"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{67846f85-bb9b-4b8e-a3f5-b87ef7776996}" x="100"/>
+        <terminal type="Generic" y="10" orientation="e" name="" uuid="{aaca00a8-2392-441d-ae39-d23d585f143f}" x="360"/>
+        <terminal type="Generic" y="20" orientation="w" name="" uuid="{c2368fe3-a863-4f80-b0c1-4db76b09a281}" x="-360"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{9a79396f-811f-4bd0-8176-2c74ebfa102d}" x="-60"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{784fe0e8-bdfe-4c31-9b56-2fc3cd19185a}" x="-40"/>
+        <terminal type="Generic" y="-40" orientation="n" name="" uuid="{1b6a163e-c5c7-4fdb-bb3d-e5fb1acc2fe9}" x="-80"/>
+    </description>
+</definition>

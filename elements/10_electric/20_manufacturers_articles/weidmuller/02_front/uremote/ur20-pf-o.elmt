@@ -1,0 +1,52 @@
+<definition link_type="thumbnail" type="element" version="0.90" hotspot_x="15" height="270" hotspot_y="142" width="30">
+    <uuid uuid="{76bf38a5-ebb6-478b-8a57-3cbc3631d59f}"/>
+    <names>
+        <name lang="de">UR20-PF-O - Einspeisung Ausgänge</name>
+        <name lang="fr">UR20-PF-O</name>
+        <name lang="en">UR20-PF-O - Supply Outputs</name>
+        <name lang="cs">UR20-PF-O</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UR20-PF-O</elementInformation>
+        <elementInformation name="manufacturer" show="1">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect antialias="false" x="-11.5" rx="0" y="-121" height="242" ry="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black" width="23"/>
+        <rect antialias="false" x="-11.5" rx="2" y="-43" height="46" ry="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black" width="23"/>
+        <rect antialias="false" x="-11.5" rx="2" y="6" height="46" ry="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black" width="23"/>
+        <rect antialias="false" x="-10.5" rx="0" y="109" height="12" ry="0" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" width="21"/>
+        <rect antialias="false" x="-11.5" rx="2" y="55" height="46" ry="2" style="line-style:normal;line-weight:thin;filling:HTMLWhiteGhostWhite;color:black" width="23"/>
+        <rect antialias="false" x="-6.5" rx="1" y="90" height="8" ry="1" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8"/>
+        <rect antialias="false" x="-11.5" rx="0" y="-136" height="14" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="23"/>
+        <rect antialias="false" x="1.5" rx="0" y="91" height="6" ry="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6"/>
+        <text text="PF-O" rotation="0" color="#ffffff" x="-3" y="-100" font="Sans Serif,2,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" x="3.5" diameter="2" y="93" style="line-style:normal;line-weight:thin;filling:black;color:none"/>
+        <rect antialias="false" x="-6.5" rx="1" y="80" height="8" ry="1" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8"/>
+        <rect antialias="false" x="-11.5" rx="0" y="-120" height="12" ry="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black" width="23"/>
+        <rect antialias="false" x="-11.5" rx="2" y="-92" height="46" ry="2" style="line-style:normal;line-weight:thin;filling:HTMLGrayDarkSlateGray;color:black" width="23"/>
+        <rect antialias="false" x="1.5" rx="0" y="81" height="6" ry="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" width="6"/>
+        <circle antialias="false" x="3.5" diameter="2" y="83" style="line-style:normal;line-weight:thin;filling:black;color:none"/>
+        <rect antialias="false" x="-6.5" rx="1" y="70" height="8" ry="1" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8"/>
+        <rect antialias="false" x="1.5" rx="0" y="71" height="6" ry="0" style="line-style:normal;line-weight:thin;filling:red;color:black" width="6"/>
+        <circle antialias="false" x="3.5" diameter="2" y="73" style="line-style:normal;line-weight:thin;filling:black;color:none"/>
+        <rect antialias="false" x="-6.5" rx="1" y="60" height="8" ry="1" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="8"/>
+        <rect antialias="false" x="1.5" rx="0" y="61" height="6" ry="0" style="line-style:normal;line-weight:thin;filling:red;color:black" width="6"/>
+        <circle antialias="false" x="3.5" diameter="2" y="63" style="line-style:normal;line-weight:thin;filling:black;color:none"/>
+        <text text="1" rotation="0" color="#cccccc" x="8.5" y="66" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text text="2" rotation="0" color="#cccccc" x="8.5" y="76" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text text="3" rotation="0" color="#cccccc" x="8.5" y="86" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text text="4" rotation="0" color="#cccccc" x="8.5" y="96" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <rect antialias="false" x="-11.5" rx="0" y="-133" height="12" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="23"/>
+        <polygon y2="79" y1="73" antialias="false" x3="-11.5" style="line-style:normal;line-weight:thin;filling:HTMLWhiteGhostWhite;color:black" x1="-11.5" x2="-5.5" y3="85"/>
+        <text text="4" rotation="0" color="#cccccc" x="-11" y="81" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>        <rect antialias="false" x="-11.5" rx="0" y="-133" height="12" ry="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" width="23"/>
+        <dynamic_text rotation="0" text_from="ElementInfo" keep_visual_rotation="true" frame="false" Valignment="AlignVCenter" uuid="{96477b97-cb32-430e-b7f3-d40524511543}" Halignment="AlignHCenter" x="-3.8" z="67" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="106" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+            <color>#ffffff</color>
+        </dynamic_text>
+    </description>
+</definition>

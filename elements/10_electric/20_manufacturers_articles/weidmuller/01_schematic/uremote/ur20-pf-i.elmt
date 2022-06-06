@@ -1,0 +1,54 @@
+<definition version="0.90" height="110" hotspot_x="364" type="element" width="730" hotspot_y="55" link_type="simple">
+    <uuid uuid="{5f6280d5-3502-45ea-8f63-8c4d1040aa66}"/>
+    <names>
+        <name lang="fr">UR20-PF-I</name>
+        <name lang="de">UR20-PF-I</name>
+        <name lang="en">UR20-PF-I</name>
+        <name lang="cs">UR20-PF-I</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UR20-PF-I</elementInformation>
+        <elementInformation show="1" name="manufacturer">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" ry="0" y="-39" height="90" width="720" rx="0" x="-360" antialias="false"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="27" rotation="0" text="Vcc Outputs" x="283" color="#000000"/>
+        <polygon y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="120" x1="110" y1="-30" y3="10" closed="false" x2="110" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-31" x="149" antialias="false" diameter="2"/>
+        <polygon y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="160" x1="150" y1="-30" y3="10" closed="false" x2="150" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-31" x="109" antialias="false" diameter="2"/>
+        <polygon y2="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="120" x1="100" y1="-40" x4="120" y3="-30" closed="false" y4="-40" x2="100" antialias="false"/>
+        <polygon y2="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="160" x1="140" y1="-40" x4="160" y3="-30" closed="false" y4="-40" x2="140" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" x="157.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" x="137.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" x="117.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" y="-42.5" x="97.5" antialias="true" diameter="5"/>
+        <line y2="30" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" x1="-362" y1="30" length2="1.5" x2="358" end1="none" antialias="false"/>
+        <line y2="10" end2="none" style="line-style:normal;line-weight:hight;filling:none;color:black" length1="1.5" x1="110" y1="10" length2="1.5" x2="358" end1="none" antialias="false"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" text="UR20-PF-I" x="-330" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" rotation="0" text="−" x="157" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" rotation="0" text="+" x="117" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="3.1" x="102" color="#000000"/>
+        <dynamic_text Valignment="AlignTop" uuid="{9598054e-7691-48e0-8c5b-e6c097bbf869}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="29.5" keep_visual_rotation="true" rotation="0" text_width="-1" z="36" frame="false" Halignment="AlignLeft" x="220" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="3.2" x="123" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="3.3" x="143" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" text="3.4" x="163" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" text="Power-Supply Inputs" x="-138" color="#000000"/>
+        <arc style="line-style:normal;line-weight:normal;filling:white;color:black" angle="180" y="27.5" height="5" start="90" width="5" x="360" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:white;color:black" angle="180" y="7.5" height="5" start="90" width="5" x="360" antialias="true"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="7" rotation="0" text="Vcc Inputs" x="283" color="#000000"/>
+        <terminal uuid="{fdb1ce29-038b-4f7e-98e3-28b630687bd1}" y="-40" orientation="n" type="Generic" x="160" name=""/>
+        <terminal uuid="{964d02f8-0df7-4678-8335-db8ed7fb41e4}" y="30" orientation="w" type="Generic" x="-360" name=""/>
+        <terminal uuid="{6681f089-cddd-49c6-9845-5da6b2652e88}" y="-40" orientation="n" type="Generic" x="120" name=""/>
+        <terminal uuid="{f1a9e005-459e-453b-a87e-a07be9d9cd69}" y="-40" orientation="n" type="Generic" x="140" name=""/>
+        <terminal uuid="{f2ab7e4b-3142-461e-881c-9885fca297de}" y="30" orientation="e" type="Generic" x="360" name=""/>
+        <terminal uuid="{67846f85-bb9b-4b8e-a3f5-b87ef7776996}" y="-40" orientation="n" type="Generic" x="100" name=""/>
+        <terminal uuid="{aaca00a8-2392-441d-ae39-d23d585f143f}" y="10" orientation="e" type="Generic" x="360" name=""/>
+    </description>
+</definition>
