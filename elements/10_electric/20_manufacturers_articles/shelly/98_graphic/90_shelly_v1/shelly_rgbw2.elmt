@@ -1,0 +1,76 @@
+<definition height="110" version="0.90" type="element" hotspot_x="64" hotspot_y="56" width="120" link_type="simple">
+    <uuid uuid="{e34f3145-4c7a-4d93-a55f-95bcd6ae6845}"/>
+    <names>
+        <name lang="en">Shelly RGBW2</name>
+        <name lang="de">Shelly RGBW2</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier">Alterco Robotics</elementInformation>
+        <elementInformation show="1" name="designation">Shelly RGBW2</elementInformation>
+        <elementInformation show="1" name="description">Wifi RGB Controller</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity">1</elementInformation>
+        <elementInformation show="1" name="manufacturer">Alterco Robotics</elementInformation>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference">Shelly RGBW2</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect x="25" height="10" y="-10" antialias="false" ry="3" style="line-style:normal;line-weight:thin;filling:HTMLYellowGold;color:black" width="5" rx="3"/>
+        <polygon y1="45" y6="45" y5="-30" x1="-50" x4="30" x2="-50" y2="-30" x5="50" antialias="false" y4="-49" style="line-style:normal;line-weight:normal;filling:HTMLYellowYellow;color:black" x3="-30" y3="-49" x6="50"/>
+        <line y1="-38" length1="1.5" x1="41" x2="27" y2="-38" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <text x="16" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="G"/>
+        <text x="-7" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="GND"/>
+        <text x="29" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="B"/>
+        <text x="-40" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="I"/>
+        <text x="-52.598" y="17.8512" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#d3d7cf" text="_"/>
+        <text x="44" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="W"/>
+        <text x="2" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="R"/>
+        <text x="-23" y="21" rotation="180" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" color="#000000" text="DC"/>
+        <line y1="18" length1="1.5" x1="48" x2="-47" y2="18" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <rect x="-47.68" height="13.6279" y="29.0211" antialias="false" ry="0" style="line-style:normal;line-weight:thin;filling:HTMLBlueDodgerBlue;color:black" width="95.58" rx="0"/>
+        <ellipse x="35.7629" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <ellipse x="22.1086" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <ellipse x="-46.1628" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <ellipse x="-32.5086" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <ellipse x="-5.19999" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <ellipse x="8.45429" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <line y1="32.6367" length1="1.5" x1="-44.0181" x2="-37.5236" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="32.6367" length1="1.5" x1="37.9076" x2="44.4021" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="32.6367" length1="1.5" x1="24.2534" x2="30.7478" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="32.6367" length1="1.5" x1="-3.05521" x2="3.43922" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="32.6367" length1="1.5" x1="-30.3638" x2="-23.8693" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="32.6367" length1="1.5" x1="10.5991" x2="17.0935" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="29.0211" length1="1.5" x1="-34.0257" x2="-34.0257" y2="42.6489" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="29.0211" length1="1.5" x1="-20.3714" x2="-20.3714" y2="42.6489" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="29.0211" length1="1.5" x1="-6.71714" x2="-6.71714" y2="42.6489" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="29.0211" length1="1.5" x1="6.93715" x2="6.93715" y2="42.6489" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none"/>
+        <dynamic_text x="50" text_width="-1" y="-45" keep_visual_rotation="false" Valignment="AlignTop" rotation="180" uuid="{9ba48a98-4c3e-474e-b71d-120ebe7c7461}" font="Sans,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="29" frame="false" text_from="UserText">
+            <text>IP:</text>
+        </dynamic_text>
+        <line y1="29.0211" length1="1.5" x1="34.2457" x2="34.2457" y2="42.6489" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none"/>
+        <dynamic_text x="-50.7484" text_width="-1" y="46.0211" keep_visual_rotation="false" Valignment="AlignTop" rotation="180" uuid="{2d77da30-4bd4-4c6d-a1ab-906ef53cfc67}" font="Sans,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="31" frame="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="29.0211" length1="1.5" x1="20.5914" x2="20.5914" y2="42.6489" end1="none" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" end2="none"/>
+        <ellipse x="-18.8543" height="10.5995" y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62"/>
+        <line y1="32.6366" length1="1.5" x1="-16.7096" x2="-10.2151" y2="38.8266" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="10" length1="1.5" x1="50" x2="27" y2="10" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="10" length1="1.5" x1="27" x2="14" y2="-3" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="-25" length1="1.5" x1="14" x2="14" y2="-3" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <line y1="-38" length1="1.5" x1="27" x2="14" y2="-25" end1="none" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" end2="none"/>
+        <rect x="40" height="20" y="-25" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5" rx="0"/>
+        <rect x="25" height="10" y="-32" antialias="false" ry="3" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5" rx="3"/>
+        <terminal x="14" orientation="s" y="45" uuid="{2b2511f0-0f6d-4eb7-8312-b172a646ed68}" type="Outer" name="G"/>
+        <terminal x="-41" orientation="s" y="45" uuid="{060821b5-57e7-4771-9836-6a22145e8575}" type="Outer" name="I"/>
+        <terminal x="0" orientation="s" y="45" uuid="{096d6111-6145-4aa3-bb28-3964f424439b}" type="Outer" name="R"/>
+        <terminal x="-13.5673" orientation="s" y="44.9602" uuid="{455839e4-083a-41bf-b64d-f18c66047cbe}" type="Outer" name="GND"/>
+        <terminal x="-27.0328" orientation="s" y="44.9828" uuid="{fd125058-0378-4da1-ab5f-83e8e9bad155}" type="Outer" name="DC"/>
+        <terminal x="27" orientation="s" y="45" uuid="{ee769930-d8c0-4552-9a17-233027133a44}" type="Outer" name="B"/>
+        <terminal x="41" orientation="s" y="45" uuid="{de909544-d920-4691-b965-db0983011db6}" type="Outer" name="W"/>
+    </description>
+</definition>

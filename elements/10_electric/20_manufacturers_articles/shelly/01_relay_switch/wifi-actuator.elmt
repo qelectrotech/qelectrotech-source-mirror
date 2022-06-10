@@ -1,0 +1,34 @@
+<definition height="50" version="0.90" hotspot_x="11" type="element" width="40" hotspot_y="27" link_type="slave">
+    <uuid uuid="{4bee0bb9-9596-47e6-b791-762129714d57}"/>
+    <names>
+        <name lang="de">Shelly WiFi Schalter (1sw)</name>
+        <name lang="en">Shelly WiFi Switch (1sw)</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">simple</kindInformation>
+        <kindInformation name="state">NO</kindInformation>
+        <kindInformation name="number">1</kindInformation>
+    </kindInformations>
+    <informations></informations>
+    <description>
+        <circle y="-1" x="-1" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2" antialias="true"/>
+        <arc height="6" start="45" y="-3" x="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" width="6" antialias="true"/>
+        <arc height="10" start="45" y="-5" x="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" width="10" antialias="true"/>
+        <arc height="14" start="45" y="-7" x="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" width="14" antialias="true"/>
+        <rect height="18" ry="0" rx="0" y="-12" x="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" width="34" antialias="false"/>
+        <line x1="20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y1="-15" x2="20" antialias="true" y2="-9" end2="none"/>
+        <line x1="19" end1="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" y1="-3" x2="5" antialias="true" y2="-3" end2="none"/>
+        <text y="-13" x="15" text="I" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text y="11" x="14" text="O" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <polygon x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-9" y1="9" x2="20" x4="24" closed="false" x3="24" y4="-9" antialias="true" y2="3"/>
+        <dynamic_text uuid="{92478ee8-d8fa-4dd9-858b-e1f3eeaea3ed}" text_from="ElementInfo" z="14" frame="false" y="-14" x="-17" keep_visual_rotation="true" rotation="0" text_width="-1" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text uuid="{ce34e949-7971-4cea-a8b8-bf614df6482a}" text_from="UserText" z="15" frame="false" y="1" x="-4" keep_visual_rotation="true" rotation="0" text_width="-1" font="Sans Serif,6,-1,5,0,0,0,0,0,0,normal" Halignment="AlignRight" Valignment="AlignVCenter">
+            <text>IP:</text>
+        </dynamic_text>
+        <terminal uuid="{228fd84a-4e24-42f5-b70c-0472086822a1}" orientation="s" y="13" x="20" name="" type="Generic"/>
+        <terminal uuid="{e4e1845b-f183-4afb-85b3-4a51430d523b}" orientation="n" y="-19" x="20" name="" type="Generic"/>
+    </description>
+</definition>

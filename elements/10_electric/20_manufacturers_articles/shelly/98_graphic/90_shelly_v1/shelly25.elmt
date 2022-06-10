@@ -1,0 +1,72 @@
+<definition link_type="simple" hotspot_x="64" type="element" width="120" height="110" hotspot_y="56" version="0.90">
+    <uuid uuid="{e8ba5658-07fb-45d4-865b-e0cef7c57ecc}"/>
+    <names>
+        <name lang="de">Shelly 25</name>
+        <name lang="en">Shelly 25</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1">1</elementInformation>
+        <elementInformation name="manufacturer" show="1">Alterco Robotics</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1">Shelly 25</elementInformation>
+        <elementInformation name="supplier" show="1">Alterco Robotics</elementInformation>
+        <elementInformation name="designation" show="1">Shelly 25</elementInformation>
+        <elementInformation name="quantity" show="1">1</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Wifi Relay*2 with Power Metering</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <polygon y4="-49" y3="-49" antialias="false" y1="45" style="line-style:normal;line-weight:normal;filling:HTMLGrayBlack;color:black" x3="-30" x2="-50" y5="-30" x6="50" x1="-50" y6="45" y2="-30" x5="50" x4="30"/>
+        <text y="-10" color="#d3d7cf" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" rotation="180" x="25" text="50/60 Hz, -20°C-+40°C"/>
+        <text y="-5" color="#d3d7cf" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" rotation="180" x="45" text="Switch input: up to 60V DC, 240 VAC"/>
+        <text y="2" color="#d3d7cf" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" rotation="180" x="35" text="~110-240V =24-60V 2x10A"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="15" text="L"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="-9" text="O1"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="-21" text="SW1"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="32" text="O2"/>
+        <text y="17.8512" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="540" x="-52.598" text="_"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="48" text="SW2"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="2" text="L"/>
+        <text y="21" color="#d3d7cf" font="DejaVu Sans,5,-1,5,50,0,0,0,0,0" rotation="180" x="-39" text="N"/>
+        <line antialias="false" y1="18" style="line-style:normal;line-weight:normal;filling:none;color:lightgray" end2="none" length1="1.5" x2="-47" x1="48" y2="18" length2="1.5" end1="none"/>
+        <text y="9" color="#d3d7cf" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" rotation="180" x="16" text=" (c) Shelly 2.5"/>
+        <rect y="29.0211" rx="0" antialias="false" style="line-style:normal;line-weight:thin;filling:HTMLBlueDodgerBlue;color:black" ry="0" width="95.58" x="-47.68" height="13.6279"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="35.7629" height="10.5995"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="22.1086" height="10.5995"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="-46.1628" height="10.5995"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="-32.5086" height="10.5995"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="-5.19999" height="10.5995"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="8.45429" height="10.5995"/>
+        <line antialias="false" y1="32.6367" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="-37.5236" x1="-44.0181" y2="38.8266" length2="1.5" end1="none"/>
+        <line antialias="false" y1="32.6367" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="44.4021" x1="37.9076" y2="38.8266" length2="1.5" end1="none"/>
+        <line antialias="false" y1="32.6367" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="30.7478" x1="24.2534" y2="38.8266" length2="1.5" end1="none"/>
+        <line antialias="false" y1="32.6367" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="3.43922" x1="-3.05521" y2="38.8266" length2="1.5" end1="none"/>
+        <line antialias="false" y1="32.6367" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="-23.8693" x1="-30.3638" y2="38.8266" length2="1.5" end1="none"/>
+        <line antialias="false" y1="32.6367" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="17.0935" x1="10.5991" y2="38.8266" length2="1.5" end1="none"/>
+        <line antialias="false" y1="29.0211" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="-34.0257" x1="-34.0257" y2="42.6489" length2="1.5" end1="none"/>
+        <line antialias="false" y1="29.0211" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="-20.3714" x1="-20.3714" y2="42.6489" length2="1.5" end1="none"/>
+        <line antialias="false" y1="29.0211" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="-6.71714" x1="-6.71714" y2="42.6489" length2="1.5" end1="none"/>
+        <line antialias="false" y1="29.0211" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="6.93715" x1="6.93715" y2="42.6489" length2="1.5" end1="none"/>
+        <dynamic_text y="-45" text_from="UserText" font="Sans,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{9ba48a98-4c3e-474e-b71d-120ebe7c7461}" rotation="180" Valignment="AlignTop" text_width="-1" x="50" frame="false" z="32">
+            <text>IP:</text>
+        </dynamic_text>
+        <line antialias="false" y1="29.0211" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="34.2457" x1="34.2457" y2="42.6489" length2="1.5" end1="none"/>
+        <dynamic_text y="46.0211" text_from="ElementInfo" font="Sans,9,-1,5,50,0,0,0,0,0" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{2d77da30-4bd4-4c6d-a1ab-906ef53cfc67}" rotation="180" Valignment="AlignTop" text_width="-1" x="-50.7484" frame="false" z="34">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" y1="29.0211" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="20.5914" x1="20.5914" y2="42.6489" length2="1.5" end1="none"/>
+        <ellipse y="30.5353" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="10.62" x="-18.8543" height="10.5995"/>
+        <line antialias="false" y1="32.6366" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="-10.2151" x1="-16.7096" y2="38.8266" length2="1.5" end1="none"/>
+        <terminal y="45" uuid="{2b2511f0-0f6d-4eb7-8312-b172a646ed68}" orientation="s" type="Outer" name="L" x="14"/>
+        <terminal y="45" uuid="{060821b5-57e7-4771-9836-6a22145e8575}" orientation="s" type="Outer" name="N" x="-41"/>
+        <terminal y="45" uuid="{096d6111-6145-4aa3-bb28-3964f424439b}" orientation="s" type="Outer" name="L" x="0"/>
+        <terminal y="44.9602" uuid="{455839e4-083a-41bf-b64d-f18c66047cbe}" orientation="s" type="Outer" name="O1" x="-13.5673"/>
+        <terminal y="44.9828" uuid="{fd125058-0378-4da1-ab5f-83e8e9bad155}" orientation="s" type="Outer" name="SW1" x="-27.0328"/>
+        <terminal y="45" uuid="{ee769930-d8c0-4552-9a17-233027133a44}" orientation="s" type="Outer" name="O2" x="27"/>
+        <terminal y="45" uuid="{de909544-d920-4691-b965-db0983011db6}" orientation="s" type="Outer" name="SW2" x="41"/>
+    </description>
+</definition>
