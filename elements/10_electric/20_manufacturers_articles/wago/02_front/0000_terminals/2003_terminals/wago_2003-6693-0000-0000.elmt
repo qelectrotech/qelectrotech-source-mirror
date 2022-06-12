@@ -1,0 +1,20 @@
+<definition version="0.90" width="10" type="element" hotspot_y="112" hotspot_x="5" height="230" link_type="thumbnail">
+    <names>
+        <name lang="de">2003-6693</name>
+        <name lang="cs">2003-6693</name>
+        <name lang="fr">2003-6693</name>
+        <name lang="en">2003-6693</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="designation">2003-6693</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect ry="0" width="1.6" rx="0" y="-106.6" antialias="false" x="-0.8" height="220" style="line-style:normal;line-weight:thin;filling:orange;color:orange"/>
+    </description>
+</definition>
