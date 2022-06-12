@@ -1,4 +1,4 @@
-<definition hotspot_y="64" height="140" link_type="terminal" type="element" width="30" hotspot_x="15" version="0.90">
+<definition hotspot_y="64" height="140" link_type="thumbnail" type="element" width="30" hotspot_x="15" version="0.90">
     <names>
         <name lang="de">2010-1201</name>
         <name lang="cs">2010-1201</name>
@@ -18,7 +18,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <polygon x1="-10" x4="-10" y2="-61.54" y3="74.65" antialias="false" x2="10" y4="74.65" y1="-61.54" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x3="10"/>
+        <polygon x1="-10" x4="-10" y2="-61.6" y3="73.6" antialias="false" x2="10" y4="73.6" y1="-61.6" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x3="10"/>
         <polygon x1="10" y2="-35.95" antialias="false" x2="-10" y1="-35.95" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon x1="10" y2="48" antialias="false" x2="-10" y1="48" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle x="-9.09" diameter="18.29" antialias="false" y="49.64" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>

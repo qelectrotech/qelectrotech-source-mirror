@@ -1,4 +1,4 @@
-<definition type="element" version="0.90" height="170" hotspot_x="10" hotspot_y="74" link_type="terminal" width="20">
+<definition type="element" version="0.90" height="170" hotspot_x="10" hotspot_y="74" link_type="thumbnail" width="20">
     <names>
         <name lang="en">2104-1307</name>
         <name lang="fr">2104-1307</name>
@@ -48,8 +48,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <line antialias="false" length1="1.5" x2="5.37" end1="none" end2="none" length2="1.5" x1="3.18" y2="-1.13" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-3.71"/>
         <line antialias="false" length1="1.5" x2="-3.08" end1="none" end2="none" length2="1.5" x1="-5.27" y2="-3.71" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-1.13"/>
         <line antialias="false" length1="1.5" x2="-3.08" end1="none" end2="none" length2="1.5" x1="-5.27" y2="7.1" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.67"/>
-        <rect rx="0" antialias="false" y="-6.9" x="-3.09" ry="0" height="3.2" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.27"/>
-        <rect rx="0" antialias="false" y="3.9" x="-3.09" ry="0" height="3.2" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.27"/>
+        <rect rx="0" antialias="false" y="-6.9" x="-3.09" ry="0" height="3.2" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.2"/>
+        <rect rx="0" antialias="false" y="3.9" x="-3.09" ry="0" height="3.2" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="6.2"/>
         <polygon antialias="false" closed="false" x2="-6.2" x1="6.2" y2="1.21" style="line-style:normal;line-weight:thin;filling:gray;color:black" y1="1.21"/>
         <polygon antialias="false" closed="false" x2="-6.2" x1="6.2" y2="-1.19" style="line-style:normal;line-weight:thin;filling:gray;color:black" y1="-1.19"/>
         <polygon antialias="false" closed="false" x2="-6.2" x1="6.2" y2="12.33" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="12.33"/>

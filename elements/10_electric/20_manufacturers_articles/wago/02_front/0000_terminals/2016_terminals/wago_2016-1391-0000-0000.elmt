@@ -1,4 +1,4 @@
-<definition type="element" width="6" height="189" version="0.90" hotspot_x="3" hotspot_y="110" link_type="terminal">
+<definition type="element" width="6" height="189" version="0.90" hotspot_x="3" hotspot_y="110" link_type="thumbnail">
   <names>
     <name lang="de">2016-1391</name>
     <name lang="cs">2016-1391</name>
@@ -14,6 +14,6 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-108.61" y2="-108.61" y3="76.03" y4="76.03" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" antialias="false"/>
+    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-108.6" y2="-108.6" y3="76" y4="76" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" antialias="false"/>
   </description>
 </definition>

@@ -1,4 +1,4 @@
-<definition type="element" width="29" height="234" version="0.80" hotspot_x="14" hotspot_y="112" link_type="terminal">
+<definition type="element" width="29" height="234" version="0.80" hotspot_x="14" hotspot_y="112" link_type="thumbnail">
   <names>
     <name lang="en">2116-1304</name>
     <name lang="de">2116-1304</name>
@@ -18,7 +18,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-12" x2="12" x3="12" x4="-12" y1="-108.61" y2="-108.61" y3="118.55" y4="118.55" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>
+    <polygon x1="-12" x2="12" x3="12" x4="-12" y1="-108.6" y2="-108.6" y3="118.6" y4="118.6" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>
     <ellipse x="-10.95" y="104.57" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="21.72" height="11.43" antialias="false"/>
     <polygon x1="12" x2="-12" y1="-75.1" y2="-75.1" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="12" x2="-12" y1="-31.09" y2="-31.09" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
