@@ -1,0 +1,61 @@
+<definition version="0.90" width="20" type="element" link_type="thumbnail" height="230" hotspot_x="10" hotspot_y="112">
+    <names>
+        <name lang="de">2003-6644 - LT/L/PE</name>
+        <name lang="cs">2003-6644</name>
+        <name lang="fr">2003-6644</name>
+        <name lang="en">2003-6644</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2003-6644</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-106.6" ry="0" x="-5.2" height="220" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:yellow;color:none" y="-106.6" ry="0" x="-5.2" height="18.8" rx="0"/>
+        <rect antialias="false" width="5.2" style="line-style:normal;line-weight:thin;filling:green;color:none" y="-106.6" ry="0" x="-2.6" height="18.8" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-22" ry="0" x="-5.2" height="8" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="23" ry="0" x="-5.2" height="21" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="69" ry="0" x="-5.2" height="21" rx="0"/>
+        <rect antialias="false" width="5.8" style="line-style:normal;line-weight:thin;filling:orange;color:black" y="5.6" ry="0" x="-2.9" height="16.2" rx="0"/>
+        <rect antialias="false" width="9" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="24.8" ry="0" x="-4.5" height="17.5" rx="0"/>
+        <rect antialias="false" width="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="34.6" ry="0" x="-3" height="4.9" rx="0"/>
+        <rect antialias="false" width="1.2" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="5.6" ry="0" x="-0.6" height="14.8" rx="0"/>
+        <rect antialias="false" width="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="27.6" ry="0" x="-3" height="4.9" rx="0"/>
+        <rect antialias="false" width="9" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="70.8" ry="0" x="-4.5" height="17.5" rx="0"/>
+        <rect antialias="false" width="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="80.6" ry="0" x="-3" height="4.9" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="110" ry="0" x="-5.2" height="2" rx="0"/>
+        <rect antialias="false" width="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="73.6" ry="0" x="-3" height="4.9" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-28.9" ry="0" x="-5.2" height="23" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-25" ry="0" x="-5.2" height="14" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="45" ry="0" x="-5.2" height="20" rx="0"/>
+        <rect antialias="false" width="6.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="47.6" ry="0" x="-3.4" height="4.9" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-23" ry="0" x="-5.2" height="10" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-27" ry="0" x="-5.2" height="19" rx="0"/>
+        <ellipse antialias="false" width="10" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="100.2" height="8" x="-5"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-69" ry="0" x="-5.2" height="8" rx="0"/>
+        <rect antialias="false" width="6.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="92.6" ry="0" x="-3.4" height="4.9" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-54" ry="0" x="-5.2" height="20" rx="0"/>
+        <ellipse antialias="false" width="10" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="53.4" height="8" x="-5"/>
+        <rect antialias="false" width="6.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-42.4" ry="0" x="-3.4" height="3.7" rx="0"/>
+        <ellipse antialias="false" width="10" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-50.5" height="6.4" x="-5"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-72" ry="0" x="-5.2" height="14" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-70" ry="0" x="-5.2" height="10" rx="0"/>
+        <rect antialias="false" width="6.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-79" ry="0" x="-3.4" height="3.7" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-74" ry="0" x="-5.2" height="19" rx="0"/>
+        <ellipse antialias="false" width="10" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-86.7" height="6.4" x="-5"/>
+        <rect antialias="false" width="6.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-94.5" ry="0" x="-3.4" height="3.7" rx="0"/>
+        <ellipse antialias="false" width="10" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-102.6" height="6.4" x="-5"/>
+        <rect antialias="false" width="8.8" style="line-style:normal;line-weight:thin;filling:orange;color:black" y="-2.4" ry="0" x="-4.4" height="8" rx="0"/>
+        <rect antialias="false" width="7" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" y="-0.8" ry="0" x="-3.5" height="2.8" rx="0"/>
+        <rect antialias="false" width="10.4" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-106.6" ry="0" x="-5.2" height="220" rx="0"/>
+        <dynamic_text text_width="-1" Valignment="AlignVCenter" Halignment="AlignHCenter" keep_visual_rotation="true" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="-22" x="8" rotation="90" frame="false" text_from="ElementInfo" z="60" uuid="{96477b97-cb32-430e-b7f3-d40524511543}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>
