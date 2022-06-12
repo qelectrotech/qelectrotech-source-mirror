@@ -1,4 +1,4 @@
-<definition type="element" version="0.90" link_type="terminal" hotspot_x="10" width="20" hotspot_y="52" height="150">
+<definition type="element" version="0.80" link_type="thumbnail" hotspot_x="10" width="20" hotspot_y="52" height="150">
     <names>
         <name lang="cs">769-251</name>
         <name lang="en">769-251</name>

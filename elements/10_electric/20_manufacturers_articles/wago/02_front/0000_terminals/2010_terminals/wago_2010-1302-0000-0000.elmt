@@ -1,4 +1,4 @@
-<definition type="element" width="23" height="183" version="0.90" hotspot_x="11" hotspot_y="106" link_type="terminal">
+<definition type="element" width="23" height="183" version="0.90" hotspot_x="11" hotspot_y="106" link_type="thumbnail">
   <names>
     <name lang="fr">2010-1302</name>
     <name lang="de">2010-1302</name>
@@ -18,7 +18,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-10" x2="10" x3="10" x4="-10" y1="-104.36" y2="-104.36" y3="74.65" y4="74.65" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
+    <polygon x1="-10" x2="10" x3="10" x4="-10" y1="-104.4" y2="-104.4" y3="73.6" y4="73.6" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
     <polygon x1="10" x2="-10" y1="-35.95" y2="-35.95" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="10" x2="-10" y1="48" y2="48" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <rect x="-7.32" y="-34.63" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="15.65" height="10.51" antialias="false"/>
@@ -41,10 +41,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <line x1="-8.75" x2="-6.61" y1="-1.21" y2="-3.79" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
     <rect x="-6.61" y="-6.98" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="13.3" height="3.2" antialias="false"/>
     <rect x="-6.61" y="3.82" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="13.3" height="3.2" antialias="false"/>
-    <polygon x1="10" x2="-9.94" y1="-9.6" y2="-9.6" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <polygon x1="10" x2="-9.94" y1="-1.19" y2="-1.19" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <polygon x1="10" x2="-9.94" y1="1.21" y2="1.21" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
-    <polygon x1="10" x2="-9.94" y1="9.61" y2="9.61" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+    <polygon x1="10" x2="-10" y1="-9.6" y2="-9.6" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+    <polygon x1="10" x2="-10" y1="-1.19" y2="-1.19" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+    <polygon x1="10" x2="-10" y1="1.21" y2="1.21" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+    <polygon x1="10" x2="-10" y1="9.61" y2="9.61" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-10" x2="10" y1="73.65" y2="73.65" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="10" x2="-10" y1="73.64" y2="73.64" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="-10" x2="10" y1="72.72" y2="72.72" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>

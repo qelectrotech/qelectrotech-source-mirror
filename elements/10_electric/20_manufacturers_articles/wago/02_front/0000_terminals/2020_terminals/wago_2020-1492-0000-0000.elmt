@@ -1,4 +1,4 @@
-<definition type="element" width="6" height="177" version="0.80" hotspot_x="2" hotspot_y="97" link_type="terminal">
+<definition type="element" width="6" height="177" version="0.80" hotspot_x="2" hotspot_y="97" link_type="thumbnail">
   <names>
     <name lang="de">2020-1492</name>
     <name lang="fr">2020-1492</name>
@@ -14,6 +14,6 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-93.96" y2="-93.96" y3="76.56" y4="76.56" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>
+    <polygon x1="-1" x2="1" x3="1" x4="-1" y1="-94" y2="-94" y3="76.5" y4="76.5" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false"/>
   </description>
 </definition>

@@ -1,4 +1,4 @@
-<definition hotspot_y="68" height="190" link_type="terminal" type="element" width="30" hotspot_x="15" version="0.90">
+<definition hotspot_y="68" height="190" link_type="thumbnail" type="element" width="30" hotspot_x="15" version="0.90">
     <names>
         <name lang="de">2110-5204</name>
         <name lang="cs">2110-5204</name>
@@ -18,7 +18,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <polygon x1="-10" x4="-10" y2="-61.54" y3="116.46" antialias="false" x2="10" y4="116.46" y1="-61.54" style="line-style:normal;line-weight:thin;filling:blue;color:black" x3="10"/>
+        <polygon x1="-10" x4="-10" y2="-61.6" y3="116.4" antialias="false" x2="10" y4="116.4" y1="-61.6" style="line-style:normal;line-weight:thin;filling:blue;color:black" x3="10"/>
         <polygon x1="10" y2="-35.95" antialias="false" x2="-10" y1="-35.95" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon x1="10" y2="46.02" antialias="false" x2="-10" y1="46.02" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <ellipse x="-9.145" height="10" width="18.29" antialias="false" y="103.78" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>

@@ -1,4 +1,4 @@
-<definition type="element" width="23" height="143" version="0.80" hotspot_x="11" hotspot_y="65" link_type="terminal">
+<definition type="element" width="23" height="143" version="0.80" hotspot_x="11" hotspot_y="65" link_type="thumbnail">
   <names>
     <name lang="fr">2010-1207</name>
     <name lang="de">2010-1207</name>
@@ -18,8 +18,8 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-9.9" x2="10.13" x3="10.13" x4="-9.9" y1="-61.54" y2="-61.54" y3="74.65" y4="74.65" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
-    <polygon x1="-5" x2="5.28" x3="5.28" x4="-5" y1="-61.54" y2="-61.54" y3="74.65" y4="74.65" style="line-style:normal;line-weight:none;filling:yellow;color:none" antialias="false"/>
+    <polygon x1="-9.9" x2="10.13" x3="10.13" x4="-9.9" y1="-61.6" y2="-61.6" y3="73.6" y4="73.6" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false"/>
+    <polygon x1="-5" x2="5.28" x3="5.28" x4="-5" y1="-61.6" y2="-61.6" y3="73.6" y4="73.6" style="line-style:normal;line-weight:none;filling:yellow;color:none" antialias="false"/>
     <polygon x1="10.11" x2="-9.9" y1="-35.95" y2="-35.95" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="10.11" x2="-9.9" y1="48" y2="48" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <circle x="-8.97" y="49.64" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="18.29" antialias="false"/>

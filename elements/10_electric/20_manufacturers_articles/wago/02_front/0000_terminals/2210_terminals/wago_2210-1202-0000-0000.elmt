@@ -1,4 +1,4 @@
-<definition type="element" width="23" height="143" version="0.80" hotspot_x="11" hotspot_y="65" link_type="terminal">
+<definition type="element" width="23" height="143" version="0.80" hotspot_x="11" hotspot_y="65" link_type="thumbnail">
   <names>
     <name lang="de">2210-1202</name>
     <name lang="fr">2210-1202</name>
@@ -18,7 +18,7 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
   <description>
-    <polygon x1="-10" x2="10" x3="10" x4="-10" y1="-61.54" y2="-61.54" y3="74.65" y4="74.65" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
+    <polygon x1="-10" x2="10" x3="10" x4="-10" y1="-61.6" y2="-61.6" y3="73.6" y4="73.6" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false"/>
     <polygon x1="10" x2="-10" y1="-35.95" y2="-35.95" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <polygon x1="10" x2="-10" y1="48.02" y2="48.02" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
     <circle x="-9.09" y="49.64" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="18.29" antialias="false"/>
