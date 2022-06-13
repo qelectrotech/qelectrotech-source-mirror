@@ -53,9 +53,9 @@ ElementProvider::ElementProvider(Diagram *diag) {
 	the filter for search element
 	@return
 */
-QList <Element *> ElementProvider::freeElement(ElementData::Types filter) const
+QVector <QPointer<Element>> ElementProvider::freeElement(ElementData::Types filter) const
 {
-	QList<Element *> free_elmt;
+	QVector<QPointer<Element>> free_elmt;
 	QList<Element *> elmt_list;
 
 		//serch in all diagram
@@ -95,31 +95,6 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const
 		}
 	}
 	return found_element;
-}
-
-/**
-	@brief ElementProvider::find
-	Search and return the asked element corresponding  with the given filter
-	@param filter
-	the filter for search element
-	(You can find all filter with the define in Element.h)
-	@obsolete use instead QVector<_Tp1> ElementProvider::find(ElementData::Type elmt_type) const
-*/
-QList <Element *> ElementProvider::find(const int filter) const
-{
-	QList <Element *> elmt_;
-
-	//serch in all diagram
-	foreach (Diagram *d, m_diagram_list) {
-		//get all element in diagram d
-		QList <Element *> elmt_list;
-		elmt_list = d->elements();
-		foreach (Element *elmt, elmt_list) {
-			if (filter & elmt->linkType())
-				elmt_ << elmt;
-		}
-	}
-	return (elmt_);
 }
 
 /**

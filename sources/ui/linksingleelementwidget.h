@@ -65,7 +65,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		bool setLiveEdit(bool live_edit) override;
 
 	private :
-		QList <Element *> availableElements();
+		QVector <QPointer<Element>> availableElements();
 		void setUpCompleter();
 		void clearTreeWidget();
 		void setUpHeaderLabels();

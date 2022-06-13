@@ -258,8 +258,7 @@ void MasterPropertiesWidget::updateUi()
 
 		//Build the list of free available element
 	QList <QTreeWidgetItem *> items_list;
-	const QList<Element *> free_list = elmt_prov.freeElement(ElementData::Slave);
-	for(Element *elmt : free_list)
+	for(const auto &elmt : elmt_prov.freeElement(ElementData::Slave))
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());

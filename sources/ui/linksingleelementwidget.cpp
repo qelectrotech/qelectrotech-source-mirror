@@ -235,11 +235,12 @@ void LinkSingleElementWidget::buildTree()
 	setUpHeaderLabels();
 	QSettings settings;
 	
-	const QList <Element *> elmt_list = availableElements();
-	if (m_element->linkType() == Element::Slave)
+	const auto elmt_vector{availableElements()};
+
+	if (m_element->elementData().m_type == ElementData::Slave)
 	{
 		
-		for(Element *elmt : elmt_list)
+		for(const auto &elmt : elmt_vector)
 		{
 			QStringList search_list;
 			QStringList str_list;
@@ -285,9 +286,9 @@ void LinkSingleElementWidget::buildTree()
 			ui->m_tree_widget->header()->restoreState(v.toByteArray());
 	}
 	
-	else if (m_element->linkType() & Element::AllReport)
+	else if (m_element->elementData().m_type & ElementData::AllReport)
 	{	
-		for(Element *elmt : elmt_list)
+		for(const auto &elmt : elmt_vector)
 		{
 			QStringList search_list;
 			QStringList str_list;
@@ -369,25 +370,25 @@ bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 	to be linked with the edited element.
 	This methode take care of the combo box "find in diagram"
 */
-QList <Element *> LinkSingleElementWidget::availableElements()
+QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 {
-	QList <Element *> elmt_list;
+	QVector <QPointer<Element>> elmt_vector;
 	//if element isn't free and unlink isn't pressed, return an empty list
 	if (!m_element->isFree() && !m_unlink)
-		return elmt_list;
+		return elmt_vector;
 	
-	if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_list;
+	if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_vector;
 	
 	ElementProvider ep(m_element->diagram()->project());
 	if (m_filter & ElementData::AllReport)
-		elmt_list = ep.freeElement(m_filter);
+		elmt_vector = ep.freeElement(m_filter);
 	else
-		elmt_list = ep.find(m_filter);
+		elmt_vector = ep.find(m_filter);
 	
 	//If element is linked, remove is parent from the list
-	if(!m_element->isFree()) elmt_list.removeAll(m_element->linkedElements().first());
+	if(!m_element->isFree()) elmt_vector.removeAll(m_element->linkedElements().first());
 	
-	return elmt_list;
+	return elmt_vector;
 }
 
 /**
