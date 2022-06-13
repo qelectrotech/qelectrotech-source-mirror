@@ -23,6 +23,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../elementprovider.h"
 #include "../undocommand/linkelementcommand.h"
+#include "../qetinformation.h"
 
 #include "../ui_linksingleelementwidget.h"
 
@@ -50,16 +51,17 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
 	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
 	
-	connect(m_show_qtwi,
-		&QAction::triggered,
-		[this]()
-	{this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);});
+	connect(m_show_qtwi, &QAction::triggered, this, [=]()
+	{
+		this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);
+	});
+
 	connect(m_link_action,
-		&QAction::triggered,
-		this,
-		&LinkSingleElementWidget::linkTriggered);
+			&QAction::triggered,
+			this,
+			&LinkSingleElementWidget::linkTriggered);
 	
-	connect(m_show_element,  &QAction::triggered, [this]()
+	connect(m_show_element,  &QAction::triggered, this, [=]()
 	{
 		this->m_element->diagram()->showMe();
 		this->m_element->setHighlighted(true);
@@ -78,10 +80,11 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 		QByteArray qba = qhv->saveState();
 		QSettings settings;
 		
-		if (this->m_element->linkType() & Element::AllReport)
-			settings.setValue("link-element-widget/report-state", qba);
-		else if (this->m_element->linkType() == Element::Slave)
-			settings.setValue("link-element-widget/slave-state", qba);
+		const auto elmt_type{this->m_element->elementData().m_type};
+		if (elmt_type & ElementData::AllReport)
+			settings.setValue(QStringLiteral("link-element-widget/report-state"), qba);
+		else if (elmt_type == ElementData::Slave)
+			settings.setValue(QStringLiteral("link-element-widget/slave-state"), qba);
 	});
 			
 	setElement(elmt);
@@ -202,7 +205,7 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 */
 QString LinkSingleElementWidget::title() const
 {
-	if (m_element->linkType() & Element::AllReport)
+	if (m_element->elementData().m_type & ElementData::AllReport)
 		return tr("Report de folio");
 	else
 		return tr("Référence croisée (esclave)");
@@ -250,13 +253,13 @@ void LinkSingleElementWidget::buildTree()
 				search_list << str_list.last();
 			}
 			
-			str_list << elmt->elementInformations()["comment"].toString();
+			str_list << elmt->elementInformations()[QETInformation::ELMT_COMMENT].toString();
 			if (!str_list.last().isEmpty())
 				search_list << str_list.last();
 			
-			if (Diagram *diag = elmt->diagram())
+			if (const auto diag = elmt->diagram())
 			{
-				if (settings.value("genericpanel/folio", false).toBool())
+				if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 				{
 					autonum::sequentialNumbers seq;
 					QString F =autonum::AssignVariables::formulaToLabel(
@@ -281,7 +284,7 @@ void LinkSingleElementWidget::buildTree()
 		}
 		
 		
-		QVariant v = settings.value("link-element-widget/slave-state");
+		QVariant v = settings.value(QStringLiteral("link-element-widget/slave-state"));
 		if(!v.isNull())
 			ui->m_tree_widget->header()->restoreState(v.toByteArray());
 	}
@@ -317,7 +320,7 @@ void LinkSingleElementWidget::buildTree()
 			
 			if (Diagram *diag = elmt->diagram())
 			{
-				if (settings.value("genericpanel/folio", false).toBool())
+				if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 				{
 					autonum::sequentialNumbers seq;
 					QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
@@ -341,7 +344,7 @@ void LinkSingleElementWidget::buildTree()
 		}
 		
 		QSettings settings;
-		QVariant v = settings.value("link-element-widget/report-state");
+		QVariant v = settings.value(QStringLiteral("link-element-widget/report-state"));
 		if(!v.isNull())
 			ui->m_tree_widget->header()->restoreState(v.toByteArray());
 	}
@@ -356,11 +359,7 @@ void LinkSingleElementWidget::buildTree()
 */
 bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 {
-	if (m_live_edit == live_edit)
-		return true;
-	
 	m_live_edit = live_edit;
-	
 	return true;
 }
 
@@ -402,8 +401,8 @@ void LinkSingleElementWidget::setUpCompleter()
 		delete ui->m_search_field->completer();
 	
 	QStringList search;
-	foreach(QStringList strl , m_qtwi_strl_hash.values())
-		search.append(strl);
+	for(const auto &str_list : m_qtwi_strl_hash.values())
+		search.append(str_list);
 	
 	QCompleter *c = new QCompleter(search, ui->m_search_field);
 	c->setCaseSensitivity(Qt::CaseInsensitive);
@@ -435,11 +434,12 @@ void LinkSingleElementWidget::clearTreeWidget()
 void LinkSingleElementWidget::setUpHeaderLabels()
 {
 	QStringList list;
-	QSettings settings;
+	const QSettings settings;
 	
-	if (m_element->linkType() == Element::Slave)
+	const auto elmt_type{m_element->elementData().m_type};
+	if (elmt_type == ElementData::Slave)
 	{
-		if (settings.value("genericpanel/folio", false).toBool())
+		if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 		{
 			list << tr("Label")
 			     << tr("Commentaire")
@@ -457,9 +457,9 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 		}
 	}
 	
-	if (m_element->linkType() & Element::AllReport)
+	if (elmt_type & ElementData::AllReport)
 	{
-		if (settings.value("genericpanel/folio", false).toBool())
+		if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 		{
 			list << tr("N° de fil")
 			     << tr("Fonction")
