@@ -41,7 +41,7 @@ class ElementProvider
 	public:
 		ElementProvider(QETProject *prj, Diagram *diagram=nullptr);
 		ElementProvider(Diagram *diag);
-		QList <Element *> freeElement(const int filter) const;
+		QList <Element *> freeElement(ElementData::Types filter) const;
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QList <Element *> find(const int filter) const;
 		QVector<QPointer<Element> > find(ElementData::Types elmt_type) const;

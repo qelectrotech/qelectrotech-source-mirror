@@ -17,12 +17,14 @@
 */
 #include "linksingleelementwidget.h"
 
+#include "../qetgraphicsitem/conductor.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
+#include "../qetgraphicsitem/element.h"
 #include "../elementprovider.h"
-#include "../qetgraphicsitem/conductor.h"
-#include "../ui_linksingleelementwidget.h"
 #include "../undocommand/linkelementcommand.h"
+
+#include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>
 
@@ -138,14 +140,15 @@ void LinkSingleElementWidget::setElement(Element *element)
 		//Setup the new element, connection and ui
 	m_element = element;
 
-	if (m_element->linkType() & Element::Slave)
-		m_filter = Element::Master;
-	else if (m_element->linkType() & Element::AllReport)
-		m_filter = m_element->linkType() == Element::NextReport
-				? Element::PreviousReport
-				: Element::NextReport;
+	const auto elmt_type{m_element->elementData().m_type};
+	if (elmt_type == ElementData::Slave)
+		m_filter = ElementData::Master;
+	else if (elmt_type & ElementData::AllReport)
+		m_filter = elmt_type == ElementData::NextReport
+				? ElementData::PreviousReport
+				: ElementData::NextReport;
 	else
-		m_filter = Element::Simple;
+		m_filter = ElementData::Simple;
 
 	connect(m_element->diagram()->project(), &QETProject::diagramRemoved,
 		this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
@@ -376,7 +379,7 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 	if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_list;
 	
 	ElementProvider ep(m_element->diagram()->project());
-	if (m_filter & Element::AllReport)
+	if (m_filter & ElementData::AllReport)
 		elmt_list = ep.freeElement(m_filter);
 	else
 		elmt_list = ep.find(m_filter);

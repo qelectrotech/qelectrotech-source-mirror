@@ -51,25 +51,32 @@ ElementProvider::ElementProvider(Diagram *diag) {
 	ie element aren't connected with another element
 	@param filter
 	the filter for search element
-	(You can find all filter with the define in Element.h)
 	@return
 */
-QList <Element *> ElementProvider::freeElement(const int filter) const{
-	QList <Element *> free_elmt;
+QList <Element *> ElementProvider::freeElement(ElementData::Types filter) const
+{
+	QList<Element *> free_elmt;
+	QList<Element *> elmt_list;
 
-	//serch in all diagram
-	foreach (Diagram *d, m_diagram_list) {
-		//get all element in diagram d
-		QList <Element *> elmt_list;
-		elmt_list = d->elements();
-		foreach (Element *elmt, elmt_list) {
-			if (filter & elmt->linkType())
-				if (elmt->isFree()) free_elmt << elmt;
+		//serch in all diagram
+	for (const auto &diagram_ : qAsConst(m_diagram_list))
+	{
+			//get all element in diagram d
+		elmt_list = diagram_->elements();
+		for (const auto &elmt_ : qAsConst(elmt_list))
+		{
+			if (filter & elmt_->elementData().m_type &&
+				elmt_->isFree())
+			{
+				free_elmt << elmt_;
+			}
 		}
+			//Clear for next loop
+		elmt_list.clear();
 	}
-	return (free_elmt);
-}
 
+	return free_elmt;
+}
 /**
 	@brief ElementProvider::fromUuids
 	@param uuid_list list of uuid must be found

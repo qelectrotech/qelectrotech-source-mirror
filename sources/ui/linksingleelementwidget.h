@@ -18,12 +18,14 @@
 #ifndef LINKSINGLEELEMENTWIDGET_H
 #define LINKSINGLEELEMENTWIDGET_H
 
-#include "../qetgraphicsitem/element.h"
+#include "../properties/elementdata.h"
 #include "abstractelementpropertieseditorwidget.h"
 
 #include <QHash>
 
 class QTreeWidgetItem;
+class Element;
+class QMenu;
 
 namespace Ui {
 	class LinkSingleElementWidget;
@@ -88,7 +90,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 	Ui::LinkSingleElementWidget *ui;
 
 	bool m_unlink = false;
-	Element::kind m_filter;
+	ElementData::Type m_filter;
 
 	QHash <QTreeWidgetItem*, Element*> m_qtwi_elmt_hash;
 	QHash <QTreeWidgetItem*, QStringList> m_qtwi_strl_hash;
@@ -99,11 +101,11 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 	Element *m_showed_element = nullptr,
 			*m_element_to_link = nullptr;
 
-	QMenu *m_context_menu;
-	QAction *m_link_action,
-			*m_show_qtwi,
-			*m_show_element,
-			*m_save_header_state;
+	QMenu *m_context_menu{nullptr};
+	QAction *m_link_action{nullptr},
+			*m_show_qtwi{nullptr},
+			*m_show_element{nullptr},
+			*m_save_header_state{nullptr};
 };
 
 #endif // LINKSINGLEELEMENTWIDGET_H
