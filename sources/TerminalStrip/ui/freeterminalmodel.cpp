@@ -29,7 +29,7 @@ const int TYPE_CELL = 2;
 const int FUNCTION_CELL = 3;
 const int LED_CELL = 4;
 
-const int ROW_COUNT = 5;
+const int COLUMN_COUNT = 5;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false};
 
@@ -79,7 +79,7 @@ int FreeTerminalModel::rowCount(const QModelIndex &parent) const
 int FreeTerminalModel::columnCount(const QModelIndex &parent) const
 {
 	Q_UNUSED(parent)
-	return ROW_COUNT;
+	return COLUMN_COUNT;
 }
 
 /**
