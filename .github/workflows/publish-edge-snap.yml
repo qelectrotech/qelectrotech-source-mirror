@@ -13,7 +13,8 @@ jobs:
     - uses: snapcore/action-build@v1
       id: build
     - uses: snapcore/action-publish@v1
+      env:
+        SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
       with:
-        store_login: ${{ secrets.STORE_LOGIN }}
         snap: ${{ steps.build.outputs.snap }}
         release: edge
