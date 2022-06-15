@@ -1,0 +1,33 @@
+<definition link_type="simple" type="element" width="40" hotspot_x="25" height="50" hotspot_y="24" version="0.90">
+    <uuid uuid="{e4f6875c-bb80-4432-bed7-b4e21d2808ca}"/>
+    <names>
+        <name lang="fr">Sonde de niveau vega c11/c22</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="10" x2="0" y2="20" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="0" length2="1.5" antialias="false"/>
+        <dynamic_text text_from="ElementInfo" keep_visual_rotation="false" x="13" Halignment="AlignLeft" y="-23.5" rotation="0" font="Sans Serif,14,-1,5,50,0,0,0,0,0" uuid="{21d0aeca-2c01-4d53-9c0a-284c0a188abf}" frame="false" Valignment="AlignTop" text_width="-1" z="2">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-20" x2="0" y2="-10" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="0" length2="1.5" antialias="false"/>
+        <arc x="-23" start="86.1875" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-6" width="10" angle="188.625" height="12" antialias="true"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y6="4.11111" x3="3" y1="-8" y7="11" x8="-10" y5="4" y3="-5" x5="12" y2="-10" y8="9" x4="12" x6="3" x7="3" x1="-10" antialias="false" closed="false" y4="-5" x2="3"/>
+        <polygon closed="false" y1="-6" x2="-12" y2="-6" y3="-8" y4="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-18" x3="-12" antialias="false" x4="-10"/>
+        <polygon closed="false" y1="6" x2="-12" y2="6" y3="8" y4="8.88889" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-18" x3="-12" antialias="false" x4="-10.5556"/>
+        <line y1="-6" x2="-18" y2="6" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="-18" length2="1.5" antialias="false"/>
+        <line y1="-6" x2="-16" y2="6" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="-16" length2="1.5" antialias="false"/>
+        <line y1="-6" x2="-14" y2="6" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="-14" length2="1.5" antialias="false"/>
+        <line y1="-6" x2="-12" y2="6" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-12" length2="1.5" antialias="false"/>
+        <line y1="-4" x2="4" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="4" length2="1.5" antialias="false"/>
+        <line y1="-4" x2="6" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="6" length2="1.5" antialias="false"/>
+        <line y1="-4" x2="8" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="8" length2="1.5" antialias="false"/>
+        <line y1="-4" x2="10" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="10" length2="1.5" antialias="false"/>
+        <line y1="-8" x2="3.1" y2="4" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="3.1" length2="1.5" antialias="false"/>
+        <text color="#000000" x="-10" y="6" rotation="0" font="Sans Serif,3,-1,5,50,1,0,0,0,0,Regular" text="VEGA"/>
+        <terminal x="0" y="-20" name="" type="Generic" uuid="{2342dca9-396d-4d09-a533-a8cf07f57eee}" orientation="n"/>
+        <terminal x="0" y="20" name="" type="Generic" uuid="{49245402-cbca-4f73-9396-923acc84beb7}" orientation="s"/>
+    </description>
+</definition>
