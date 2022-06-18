@@ -1,0 +1,55 @@
+<definition hotspot_x="5" height="510" width="250" version="0.80" hotspot_y="4" link_type="simple" type="element">
+    <uuid uuid="{2f6ee6d4-f7ba-42e6-9e8d-c9609ba61c06}"/>
+    <names>
+        <name lang="pl">AS00SCM-A &#xd;</name>
+        <name lang="en">AS00SCM-A &#xd;</name>
+        <name lang="ru">AS00SCM-A &#xd;</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <text text="FORMAT 2" color="#000000" y="370" rotation="0" x="15" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="CARD1" color="#000000" y="170" rotation="270" x="190" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <rect height="140" antialias="false" y="280" x="140" width="60" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0"/>
+        <text text="FORMAT 1" color="#000000" y="250" rotation="0" x="15" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" y="200" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <text text="CARD2" color="#000000" y="79" rotation="0" x="22" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" y="320" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <text text="0V" color="#000000" y="495" rotation="270" x="120" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="ID 2" color="#000000" y="310" rotation="0" x="15" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="GND" color="#000000" y="495" rotation="270" x="100" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" y="260" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <text text="+24V" color="#000000" y="495" rotation="270" x="140" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="0" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="240" end1="none" length1="1.5" x1="240" y2="500" end2="none"/>
+        <circle antialias="false" y="32" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <circle antialias="false" y="72" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <text text="CARD1" color="#000000" y="59" rotation="0" x="22" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="ERROR" color="#000000" y="39" rotation="0" x="22" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" y="52" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <text text="AS00SCM-A " color="#000000" y="490" rotation="0" x="10" font="Sans Serif,8,-1,5,50,0,0,0,0,0"/>
+        <line y1="500" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="120" end1="none" length1="1.5" x1="0" y2="500" end2="none"/>
+        <line y1="500" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="240" end1="none" length1="1.5" x1="120" y2="500" end2="none"/>
+        <line y1="0" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="120" end1="none" length1="1.5" x1="0" y2="0" end2="none"/>
+        <line y1="0" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length1="1.5" x1="0" y2="500" end2="none"/>
+        <line y1="0" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="240" end1="none" length1="1.5" x1="120" y2="0" end2="none"/>
+        <text text="POWER" color="#000000" y="19" rotation="0" x="22" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" y="12" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
+        <line y1="500" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="90" end1="none" length1="1.5" x1="90" y2="470" end2="none"/>
+        <line y1="470" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="150" end1="none" length1="1.5" x1="90" y2="470" end2="none"/>
+        <line y1="470" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="150" end1="none" length1="1.5" x1="150" y2="500" end2="none"/>
+        <rect height="140" antialias="false" y="80" x="140" width="60" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0"/>
+        <text text="CARD2" color="#000000" y="370" rotation="270" x="190" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="ID 1" color="#000000" y="190" rotation="0" x="15" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <circle antialias="false" y="140" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+        <rect height="10" antialias="false" y="390" x="10" width="50" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0"/>
+        <text text="COM / RTU" color="#000000" y="412" rotation="0" x="11" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <rect height="10" antialias="false" y="390" x="50" width="10" style="line-style:normal;line-weight:normal;filling:black;color:black" ry="0" rx="0"/>
+        <terminal y="500" orientation="s" x="120" uuid="{8e841796-5647-493f-abe3-37a7331c47cf}" name=""/>
+        <terminal y="220" orientation="s" x="170" uuid="{58f5907a-3652-44b6-8d52-ee33e0792ea9}" name=""/>
+        <terminal y="500" orientation="s" x="100" uuid="{ecadc202-3f3f-4a52-9a99-1e524755075f}" name=""/>
+        <terminal y="500" orientation="s" x="140" uuid="{dc32f018-4954-482e-848e-82ee874a8106}" name=""/>
+        <terminal y="420" orientation="s" x="170" uuid="{be46c79d-0263-4bc3-a2ba-1e3ff2a56949}" name=""/>
+        <terminal y="80" orientation="n" x="170" uuid="{cd135724-7935-45b3-8964-3975d8ea30c8}" name=""/>
+        <terminal y="280" orientation="n" x="170" uuid="{0f923db7-a1ef-4795-9980-1d846e34096c}" name=""/>
+    </description>
+</definition>

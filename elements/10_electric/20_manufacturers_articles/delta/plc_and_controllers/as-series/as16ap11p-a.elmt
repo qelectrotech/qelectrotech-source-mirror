@@ -1,0 +1,59 @@
+<definition hotspot_x="5" version="0.80" width="130" type="element" height="510" link_type="simple" hotspot_y="5">
+    <uuid uuid="{ee7fe7b9-6715-4136-997d-1582ce9ae395}"/>
+    <names>
+        <name lang="pl">AS16AP11P-A</name>
+        <name lang="ru">AS16AP11P-A</name>
+        <name lang="en">AS16AP11P-A</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <text text="0" color="#000000" y="90" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="0" color="#000000" y="290" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="4" color="#000000" y="370" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="AS16AP11P-A" color="#000000" y="490" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="2" color="#000000" y="330" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="1" color="#000000" y="310" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="4" color="#000000" y="170" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="C0" color="#000000" y="270" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="3" color="#000000" y="350" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="S/S" color="#000000" y="70" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="7" color="#000000" y="430" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="C0" color="#000000" y="250" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="6" color="#000000" y="410" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="2" color="#000000" y="130" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="5" color="#000000" y="390" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="1" color="#000000" y="110" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <line end2="none" length2="1.5" x2="120" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" end1="none" length1="1.5" x1="120" y2="500"/>
+        <text text="3" color="#000000" y="150" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <line end2="none" length2="1.5" x2="120" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="500" end1="none" length1="1.5" x1="0" y2="500"/>
+        <text text="7" color="#000000" y="230" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="6" color="#000000" y="210" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="5" color="#000000" y="190" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <line end2="none" length2="1.5" x2="120" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" end1="none" length1="1.5" x1="0" y2="0"/>
+        <line end2="none" length2="1.5" x2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" end1="none" length1="1.5" x1="0" y2="500"/>
+        <rect width="20" rx="0" ry="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="400" y="40" x="30"/>
+        <text text="S/S" color="#000000" y="50" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <text text="IN/OUT" color="#000000" y="30" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="30"/>
+        <terminal uuid="{0d0e855d-c6d5-4f5c-bfb7-bd9becc60e53}" name="" y="430" x="40" orientation="e"/>
+        <terminal uuid="{8cab7e42-07fb-4984-b816-b3ba663c1827}" name="" y="310" x="40" orientation="e"/>
+        <terminal uuid="{72f3ab83-89e3-44d6-8c57-94ab45cc0cca}" name="" y="370" x="40" orientation="e"/>
+        <terminal uuid="{808f8d7c-0860-415a-8880-aa89253692a8}" name="" y="50" x="40" orientation="e"/>
+        <terminal uuid="{66d86d2a-80e4-4f50-94b6-f7cb0bbc4755}" name="" y="290" x="40" orientation="e"/>
+        <terminal uuid="{52e840c3-335c-4b5d-b636-87936a6eb7a0}" name="" y="150" x="40" orientation="e"/>
+        <terminal uuid="{9e854b33-1514-4948-85bc-fd61bc750172}" name="" y="230" x="40" orientation="e"/>
+        <terminal uuid="{2f83b16b-80fc-4b7c-a508-4c8e177aed04}" name="" y="190" x="40" orientation="e"/>
+        <terminal uuid="{fd49cd0c-dbf9-4c38-87e9-ec9c515fb15e}" name="" y="390" x="40" orientation="e"/>
+        <terminal uuid="{328bde87-ba0a-49bd-b4e7-375226d6b493}" name="" y="130" x="40" orientation="e"/>
+        <terminal uuid="{830a615f-4842-4c96-9d8b-2c33c783b0ef}" name="" y="410" x="40" orientation="e"/>
+        <terminal uuid="{b07e5aad-83c0-4a86-ba1c-88db6b70b6b2}" name="" y="70" x="40" orientation="e"/>
+        <terminal uuid="{4284ac1f-37c0-4e11-a171-3501c044047f}" name="" y="110" x="40" orientation="e"/>
+        <terminal uuid="{6fa1ac72-da99-408f-8e4a-39a9d664f419}" name="" y="210" x="40" orientation="e"/>
+        <terminal uuid="{ec1426d4-7c91-45f3-b7e7-1adb4c89fe83}" name="" y="330" x="40" orientation="e"/>
+        <terminal uuid="{2d6841a3-e16a-45fc-b6bd-a2b4c9102fd4}" name="" y="250" x="40" orientation="e"/>
+        <terminal uuid="{e4fc2790-d996-49fd-9d41-762f3f4cd350}" name="" y="350" x="40" orientation="e"/>
+        <terminal uuid="{a3554199-3e50-4553-9392-cfc2a1f1a057}" name="" y="90" x="40" orientation="e"/>
+        <terminal uuid="{cde76b4d-5e8a-4655-a8f8-e455f31c8755}" name="" y="170" x="40" orientation="e"/>
+        <terminal uuid="{1ee3cd86-1eb2-41a5-9c23-76e543d5b177}" name="" y="270" x="40" orientation="e"/>
+    </description>
+</definition>

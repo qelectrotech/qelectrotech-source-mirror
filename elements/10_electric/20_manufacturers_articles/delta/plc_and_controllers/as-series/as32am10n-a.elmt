@@ -1,0 +1,103 @@
+<definition link_type="simple" height="510" hotspot_x="5" type="element" width="250" hotspot_y="5" version="0.80">
+    <uuid uuid="{faf2d226-70cb-4cdb-84d2-0b37a6f09e22}"/>
+    <names>
+        <name lang="pl">AS32AM10N-A</name>
+        <name lang="en">AS32AM10N-A</name>
+        <name lang="ru">AS32AM10N-A</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <text rotation="0" color="#000000" x="130" text="1.8" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="150"/>
+        <text rotation="0" color="#000000" x="100" text="-" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="50"/>
+        <text rotation="0" color="#000000" x="100" text="1.9" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="150"/>
+        <text rotation="0" color="#000000" x="130" text="-" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="50"/>
+        <text rotation="0" color="#000000" x="10" text="AS32AM10N-A" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="490"/>
+        <text rotation="0" color="#000000" x="130" text="0.6" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="370"/>
+        <text rotation="0" color="#000000" x="100" text="0.7" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="370"/>
+        <text rotation="0" color="#000000" x="130" text="1.0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="230"/>
+        <text rotation="0" color="#000000" x="100" text="1.1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="230"/>
+        <text rotation="0" color="#000000" x="130" text="1.10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="130"/>
+        <text rotation="0" color="#000000" x="100" text="1.11" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="130"/>
+        <text rotation="0" color="#000000" x="100" text="1.15" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="90"/>
+        <text rotation="0" color="#000000" x="130" text="1.14" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="90"/>
+        <text rotation="0" color="#000000" x="130" text="1.12" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="110"/>
+        <text rotation="0" color="#000000" x="100" text="1.13" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="110"/>
+        <text rotation="0" color="#000000" x="130" text="1.4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="190"/>
+        <text rotation="0" color="#000000" x="100" text="1.5" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="190"/>
+        <text rotation="0" color="#000000" x="100" text="0.15" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="290"/>
+        <text rotation="0" color="#000000" x="130" text="0.14" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="290"/>
+        <text rotation="0" color="#000000" x="100" text="1.7" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="170"/>
+        <text rotation="0" color="#000000" x="130" text="1.6" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="170"/>
+        <line length2="1.5" y2="500" length1="1.5" end1="none" x1="240" x2="240" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" end2="none"/>
+        <text rotation="0" color="#000000" x="100" text="1.3" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="210"/>
+        <text rotation="0" color="#000000" x="130" text="1.2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="210"/>
+        <line length2="1.5" y2="500" length1="1.5" end1="none" x1="120" x2="240" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="500" end2="none"/>
+        <line length2="1.5" y2="500" length1="1.5" end1="none" x1="0" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="500" end2="none"/>
+        <text rotation="0" color="#000000" x="100" text="S/S" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="270"/>
+        <text rotation="0" color="#000000" x="130" text="S/S" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="270"/>
+        <text rotation="0" color="#000000" x="100" text="0.11" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="330"/>
+        <text rotation="0" color="#000000" x="130" text="0.10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="330"/>
+        <text rotation="0" color="#000000" x="130" text="-" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="250"/>
+        <text rotation="0" color="#000000" x="100" text="-" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="250"/>
+        <text rotation="0" color="#000000" x="130" text="0.12" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="310"/>
+        <text rotation="0" color="#000000" x="100" text="0.13" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="310"/>
+        <text rotation="0" color="#000000" x="100" text="0.9" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="350"/>
+        <text rotation="0" color="#000000" x="130" text="0.8" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="350"/>
+        <text rotation="0" color="#000000" x="130" text="0.0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="430"/>
+        <text rotation="0" color="#000000" x="100" text="0.1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="430"/>
+        <text rotation="0" color="#000000" x="100" text="0.3" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="410"/>
+        <text rotation="0" color="#000000" x="130" text="0.2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="410"/>
+        <text rotation="0" color="#000000" x="100" text="0.5" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="390"/>
+        <text rotation="0" color="#000000" x="130" text="0.4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="390"/>
+        <line length2="1.5" y2="0" length1="1.5" end1="none" x1="120" x2="240" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" end2="none"/>
+        <line length2="1.5" y2="0" length1="1.5" end1="none" x1="0" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" end2="none"/>
+        <line length2="1.5" y2="500" length1="1.5" end1="none" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="0" end2="none"/>
+        <rect rx="0" height="400" ry="0" x="150" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="40"/>
+        <rect rx="0" height="400" ry="0" x="70" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="40"/>
+        <text rotation="0" color="#000000" x="100" text="S/S" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="70"/>
+        <text rotation="0" color="#000000" x="130" text="S/S" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="70"/>
+        <text rotation="0" color="#000000" x="70" text="IN" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="30"/>
+        <text rotation="0" color="#000000" x="150" text="IN" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="30"/>
+        <terminal orientation="w" uuid="{b07e5aad-83c0-4a86-ba1c-88db6b70b6b2}" x="80" name="" y="70"/>
+        <terminal orientation="w" uuid="{fd49cd0c-dbf9-4c38-87e9-ec9c515fb15e}" x="80" name="" y="390"/>
+        <terminal orientation="w" uuid="{0d0e855d-c6d5-4f5c-bfb7-bd9becc60e53}" x="80" name="" y="430"/>
+        <terminal orientation="w" uuid="{8cab7e42-07fb-4984-b816-b3ba663c1827}" x="80" name="" y="310"/>
+        <terminal orientation="w" uuid="{830a615f-4842-4c96-9d8b-2c33c783b0ef}" x="80" name="" y="410"/>
+        <terminal orientation="w" uuid="{2f83b16b-80fc-4b7c-a508-4c8e177aed04}" x="80" name="" y="190"/>
+        <terminal orientation="w" uuid="{9e854b33-1514-4948-85bc-fd61bc750172}" x="80" name="" y="230"/>
+        <terminal orientation="w" uuid="{52e840c3-335c-4b5d-b636-87936a6eb7a0}" x="80" name="" y="150"/>
+        <terminal orientation="w" uuid="{808f8d7c-0860-415a-8880-aa89253692a8}" x="80" name="" y="50"/>
+        <terminal orientation="w" uuid="{66d86d2a-80e4-4f50-94b6-f7cb0bbc4755}" x="80" name="" y="290"/>
+        <terminal orientation="w" uuid="{72f3ab83-89e3-44d6-8c57-94ab45cc0cca}" x="80" name="" y="370"/>
+        <terminal orientation="w" uuid="{cde76b4d-5e8a-4655-a8f8-e455f31c8755}" x="80" name="" y="170"/>
+        <terminal orientation="w" uuid="{ec1426d4-7c91-45f3-b7e7-1adb4c89fe83}" x="80" name="" y="330"/>
+        <terminal orientation="w" uuid="{4284ac1f-37c0-4e11-a171-3501c044047f}" x="80" name="" y="110"/>
+        <terminal orientation="w" uuid="{2d6841a3-e16a-45fc-b6bd-a2b4c9102fd4}" x="80" name="" y="250"/>
+        <terminal orientation="w" uuid="{328bde87-ba0a-49bd-b4e7-375226d6b493}" x="80" name="" y="130"/>
+        <terminal orientation="w" uuid="{1ee3cd86-1eb2-41a5-9c23-76e543d5b177}" x="80" name="" y="270"/>
+        <terminal orientation="w" uuid="{6fa1ac72-da99-408f-8e4a-39a9d664f419}" x="80" name="" y="210"/>
+        <terminal orientation="w" uuid="{e4fc2790-d996-49fd-9d41-762f3f4cd350}" x="80" name="" y="350"/>
+        <terminal orientation="w" uuid="{a3554199-3e50-4553-9392-cfc2a1f1a057}" x="80" name="" y="90"/>
+        <terminal orientation="e" uuid="{bf2797c9-622b-4230-a788-4f2cb3200465}" x="160" name="" y="330"/>
+        <terminal orientation="e" uuid="{fc522d8e-8f1b-4557-99d3-0f6d2e406445}" x="160" name="" y="230"/>
+        <terminal orientation="e" uuid="{22704e7e-37a4-4a1a-9249-3f573158916b}" x="160" name="" y="150"/>
+        <terminal orientation="e" uuid="{1a954eec-3581-4be5-855d-807e24f163b7}" x="160" name="" y="370"/>
+        <terminal orientation="e" uuid="{5fedda23-1b7d-411b-bb6b-98577c6f71e7}" x="160" name="" y="110"/>
+        <terminal orientation="e" uuid="{782d1a32-4285-4233-afa7-1bcad859ec21}" x="160" name="" y="250"/>
+        <terminal orientation="e" uuid="{58f21463-9165-4095-aed5-fb329558da70}" x="160" name="" y="50"/>
+        <terminal orientation="e" uuid="{51009be2-0d47-4ab9-91af-cf88fac03056}" x="160" name="" y="90"/>
+        <terminal orientation="e" uuid="{b2e98cd2-de00-45ec-9694-1b18913c570e}" x="160" name="" y="390"/>
+        <terminal orientation="e" uuid="{e0952374-832d-41a3-b247-19fd192d96b5}" x="160" name="" y="410"/>
+        <terminal orientation="e" uuid="{31d050ab-58d7-4469-ac08-933be435a4a0}" x="160" name="" y="290"/>
+        <terminal orientation="e" uuid="{39fcd643-033f-4ff3-9521-488395a9323a}" x="160" name="" y="210"/>
+        <terminal orientation="e" uuid="{6125b4ed-f96c-4eee-a9cf-bfb53a042293}" x="160" name="" y="190"/>
+        <terminal orientation="e" uuid="{b72f3d4e-c040-473e-b43d-81f716654360}" x="160" name="" y="310"/>
+        <terminal orientation="e" uuid="{78f229c2-5acc-46e5-b2ff-7a9c2689039b}" x="160" name="" y="130"/>
+        <terminal orientation="e" uuid="{01866c45-00ed-4174-a80f-d909add6edb2}" x="160" name="" y="430"/>
+        <terminal orientation="e" uuid="{fcd5333c-1e4c-4bcc-806d-462885552376}" x="160" name="" y="350"/>
+        <terminal orientation="e" uuid="{3c234033-adaf-4219-af78-0201549c4325}" x="160" name="" y="70"/>
+        <terminal orientation="e" uuid="{2d47f792-d67b-4274-9b34-d226efd53610}" x="160" name="" y="170"/>
+        <terminal orientation="e" uuid="{9f4ee4a8-c5a0-4843-950b-5aefea269c6e}" x="160" name="" y="270"/>
+    </description>
+</definition>

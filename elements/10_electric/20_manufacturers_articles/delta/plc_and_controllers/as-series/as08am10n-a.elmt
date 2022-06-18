@@ -1,0 +1,39 @@
+<definition hotspot_x="5" height="510" hotspot_y="5" type="element" version="0.80" width="130" link_type="simple">
+    <uuid uuid="{d3b731a2-cf29-477f-8b6d-d41a8742bc94}"/>
+    <names>
+        <name lang="pl">AS08AM10N-A</name>
+        <name lang="ru">AS08AM10N-A</name>
+        <name lang="en">AS08AM10N-A</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <text text="0" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="90"/>
+        <text text="AS08AM10N-A" rotation="0" x="10" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="490"/>
+        <text text="4" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="170"/>
+        <text text="S/S" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="70"/>
+        <text text="2" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="130"/>
+        <text text="1" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="110"/>
+        <line y1="0" length2="1.5" x1="120" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="500"/>
+        <text text="3" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="150"/>
+        <line y1="500" length2="1.5" x1="0" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="500"/>
+        <text text="7" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="230"/>
+        <text text="6" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="210"/>
+        <text text="5" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="190"/>
+        <line y1="0" length2="1.5" x1="0" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="0"/>
+        <line y1="0" length2="1.5" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" antialias="false" y2="500"/>
+        <rect height="200" x="30" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="40" rx="0" ry="0"/>
+        <text text="S/S" rotation="0" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="50"/>
+        <text text="IN" rotation="0" x="30" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="30"/>
+        <terminal uuid="{808f8d7c-0860-415a-8880-aa89253692a8}" x="40" name="" orientation="e" y="50"/>
+        <terminal uuid="{328bde87-ba0a-49bd-b4e7-375226d6b493}" x="40" name="" orientation="e" y="130"/>
+        <terminal uuid="{b07e5aad-83c0-4a86-ba1c-88db6b70b6b2}" x="40" name="" orientation="e" y="70"/>
+        <terminal uuid="{cde76b4d-5e8a-4655-a8f8-e455f31c8755}" x="40" name="" orientation="e" y="170"/>
+        <terminal uuid="{2f83b16b-80fc-4b7c-a508-4c8e177aed04}" x="40" name="" orientation="e" y="190"/>
+        <terminal uuid="{52e840c3-335c-4b5d-b636-87936a6eb7a0}" x="40" name="" orientation="e" y="150"/>
+        <terminal uuid="{6fa1ac72-da99-408f-8e4a-39a9d664f419}" x="40" name="" orientation="e" y="210"/>
+        <terminal uuid="{4284ac1f-37c0-4e11-a171-3501c044047f}" x="40" name="" orientation="e" y="110"/>
+        <terminal uuid="{9e854b33-1514-4948-85bc-fd61bc750172}" x="40" name="" orientation="e" y="230"/>
+        <terminal uuid="{a3554199-3e50-4553-9392-cfc2a1f1a057}" x="40" name="" orientation="e" y="90"/>
+    </description>
+</definition>

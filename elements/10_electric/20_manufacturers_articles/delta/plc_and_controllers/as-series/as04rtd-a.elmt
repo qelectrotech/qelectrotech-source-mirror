@@ -1,0 +1,62 @@
+<definition height="510" width="130" hotspot_y="5" link_type="simple" type="element" hotspot_x="5" version="0.80">
+    <uuid uuid="{c9b91ce4-6f47-447d-a42f-c40d19bad13c}"/>
+    <names>
+        <name lang="ru">AS04RTD-A</name>
+        <name lang="pl">AS04RTD-A</name>
+        <name lang="en">AS04RTD-A</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="130" x="10" text="L2+" color="#000000"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" y="490" x="10" text="AS04RTD-A" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="370" x="10" text="*" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="210" x="10" text="L3+" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="110" x="10" text="I1-" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="70" x="10" text="L1-" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="90" x="10" text="SLD" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="170" x="10" text="SLD" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="290" x="10" text="L4+" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="150" x="10" text="L2-" color="#000000"/>
+        <line y1="0" length2="1.5" x2="120" x1="120" end1="none" y2="500" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="190" x="10" text="I2-" color="#000000"/>
+        <line y1="500" length2="1.5" x2="120" x1="0" end1="none" y2="500" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="270" x="10" text="I3-" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="330" x="10" text="SLD" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="250" x="10" text="SLD" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="230" x="10" text="L3-" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="310" x="10" text="L4-" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="350" x="10" text="I4-" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="430" x="10" text="0V" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="390" x="10" text="24V" color="#000000"/>
+        <line y1="0" length2="1.5" x2="120" x1="0" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line y1="0" length2="1.5" x2="0" x1="0" end1="none" y2="500" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <rect height="400" width="20" y="40" x="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="50" x="10" text="L1+" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="30" x="30" text="04RTD" color="#000000"/>
+        <line y1="410" length2="1.5" x2="15" x1="13" end1="none" y2="410" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line y1="408" length2="1.5" x2="16" x1="12" end1="none" y2="408" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line y1="406" length2="1.5" x2="17" x1="11" end1="none" y2="406" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <line y1="406" length2="1.5" x2="14" x1="14" end1="none" y2="399" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none"/>
+        <terminal y="230" x="40" name="" uuid="{9e854b33-1514-4948-85bc-fd61bc750172}" orientation="e"/>
+        <terminal y="290" x="40" name="" uuid="{66d86d2a-80e4-4f50-94b6-f7cb0bbc4755}" orientation="e"/>
+        <terminal y="150" x="40" name="" uuid="{52e840c3-335c-4b5d-b636-87936a6eb7a0}" orientation="e"/>
+        <terminal y="430" x="40" name="" uuid="{0d0e855d-c6d5-4f5c-bfb7-bd9becc60e53}" orientation="e"/>
+        <terminal y="310" x="40" name="" uuid="{8cab7e42-07fb-4984-b816-b3ba663c1827}" orientation="e"/>
+        <terminal y="390" x="40" name="" uuid="{fd49cd0c-dbf9-4c38-87e9-ec9c515fb15e}" orientation="e"/>
+        <terminal y="50" x="40" name="" uuid="{808f8d7c-0860-415a-8880-aa89253692a8}" orientation="e"/>
+        <terminal y="370" x="40" name="" uuid="{72f3ab83-89e3-44d6-8c57-94ab45cc0cca}" orientation="e"/>
+        <terminal y="190" x="40" name="" uuid="{2f83b16b-80fc-4b7c-a508-4c8e177aed04}" orientation="e"/>
+        <terminal y="130" x="40" name="" uuid="{328bde87-ba0a-49bd-b4e7-375226d6b493}" orientation="e"/>
+        <terminal y="330" x="40" name="" uuid="{ec1426d4-7c91-45f3-b7e7-1adb4c89fe83}" orientation="e"/>
+        <terminal y="70" x="40" name="" uuid="{b07e5aad-83c0-4a86-ba1c-88db6b70b6b2}" orientation="e"/>
+        <terminal y="410" x="40" name="" uuid="{830a615f-4842-4c96-9d8b-2c33c783b0ef}" orientation="e"/>
+        <terminal y="250" x="40" name="" uuid="{2d6841a3-e16a-45fc-b6bd-a2b4c9102fd4}" orientation="e"/>
+        <terminal y="110" x="40" name="" uuid="{4284ac1f-37c0-4e11-a171-3501c044047f}" orientation="e"/>
+        <terminal y="270" x="40" name="" uuid="{1ee3cd86-1eb2-41a5-9c23-76e543d5b177}" orientation="e"/>
+        <terminal y="350" x="40" name="" uuid="{e4fc2790-d996-49fd-9d41-762f3f4cd350}" orientation="e"/>
+        <terminal y="90" x="40" name="" uuid="{a3554199-3e50-4553-9392-cfc2a1f1a057}" orientation="e"/>
+        <terminal y="210" x="40" name="" uuid="{6fa1ac72-da99-408f-8e4a-39a9d664f419}" orientation="e"/>
+        <terminal y="170" x="40" name="" uuid="{cde76b4d-5e8a-4655-a8f8-e455f31c8755}" orientation="e"/>
+    </description>
+</definition>
