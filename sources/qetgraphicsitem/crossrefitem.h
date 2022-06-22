@@ -75,7 +75,8 @@ class CrossRefItem : public QGraphicsObject
 			DelayOn		= 16,
 			DelayOff	= 32,
 			DelayOnOff	= 64,
-			Delay		= 112
+			Delay		= 112,
+			Other	   = 128
 		};
 
 		QRectF boundingRect() const override;
