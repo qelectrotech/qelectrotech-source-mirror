@@ -177,17 +177,26 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 	}
 
 	TerminalStrip *strip_ = nullptr;
-	if (current->type() == Strip) {
+	bool current_is_free{false};
+	const auto current_type{current->type()};
+	if (current_type == Strip) {
 		strip_ = m_item_strip_H.value(current);
 	}
-	else if (current->type() == Terminal
-			 && current->parent()
-			 && current->parent()->type() == Strip) {
-		strip_ = m_item_strip_H.value(current->parent());
+	else if (current_type == Terminal && current->parent())
+	{
+		const auto parent_type{current->parent()->type()};
+		if (parent_type == Strip) {
+			strip_ = m_item_strip_H.value(current->parent());
+		} else if (parent_type == FreeTerminal) {
+			current_is_free = true;
+		}
 	}
 
 	if (strip_ != m_current_strip) {
 		setCurrentStrip(strip_);
+	} else if (current_is_free != m_current_is_free_terminal) {
+		m_current_is_free_terminal = current_is_free;
+		emit currentStripChanged(nullptr);
 	}
 }
 
