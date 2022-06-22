@@ -64,7 +64,8 @@ class ElementData : public PropertiesInterface
 		enum SlaveState {
 			NO,
 			NC,
-			SW
+			SW,
+			Other
 		};
 		Q_ENUM(SlaveState)
 

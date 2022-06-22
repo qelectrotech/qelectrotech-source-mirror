@@ -425,6 +425,8 @@ QString ElementData::slaveStateToString(ElementData::SlaveState type)
 			return QStringLiteral("NC");
 		case SW:
 			return QStringLiteral("SW");
+		case Other:
+			return QStringLiteral("Other");
 	}
 }
 
@@ -436,7 +438,9 @@ ElementData::SlaveState ElementData::slaveStateFromString(const QString &string)
 		return ElementData::NC;
 	} else if (string == QLatin1String("SW")) {
 		return ElementData::SW;
-	}
+	} else if (string == QLatin1String("Other")){
+		return ElementData::Other;
+    }
 
 	qDebug() << "ElementData::slaveStateFromString : string : "
 			 << string

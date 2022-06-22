@@ -128,6 +128,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_state_cb->addItem(tr("Normalement ouvert"),       ElementData::NO);
 	ui->m_state_cb->addItem(tr("Normalement fermé"),        ElementData::NC);
 	ui->m_state_cb->addItem(tr("Inverseur"),                ElementData::SW);
+	ui->m_state_cb->addItem(tr("Other"),                    ElementData::Other);
 	ui->m_type_cb->addItem(tr("Simple"),                    ElementData::SSimple);
 	ui->m_type_cb->addItem(tr("Puissance"),                 ElementData::Power);
 	ui->m_type_cb->addItem(tr("Temporisé travail"),         ElementData::DelayOn);

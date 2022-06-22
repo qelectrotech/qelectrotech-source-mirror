@@ -614,6 +614,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 				 if (state == "NO") option = NO;
 			else if (state == "NC") option = NC;
 			else if (state == "SW") option = SW;
+			else if (state == "Other") option = Other;
 
 			QString type = info["type"].toString();
 				 if (type == "power")    option += Power;
@@ -644,7 +645,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 {
 	QString str = elementPositionText(elmt);
 	int offset = m_drawed_contacts*10;
-	QRectF bounding_rect;
+	QRectF bounding_rect = QRectF(0, offset, 24, 10);
 
 	QPen pen = painter.pen();
 	m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
@@ -819,6 +820,23 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
+	}else if(flags &Other){
+		//Draw position text
+		QRectF text_rect = painter.boundingRect(
+					QRectF(30, offset+5, 5, 10),
+					Qt::AlignLeft | Qt::AlignVCenter,
+					str);
+		painter.drawText(text_rect,
+				 Qt::AlignLeft | Qt::AlignVCenter,
+				 str);
+		bounding_rect = bounding_rect.united(text_rect);
+
+		if (m_hovered_contacts_map.contains(elmt)) {
+			m_hovered_contacts_map.insert(elmt, bounding_rect);
+		}
+		else {
+			m_hovered_contacts_map.insert(elmt, bounding_rect);
+		}
 	}
 
 	return bounding_rect;
