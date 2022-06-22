@@ -22,6 +22,7 @@
 #include "../../utils/qetutils.h"
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../realterminal.h"
+#include "../../qetinformation.h"
 
 const int LABEL_CELL = 0;
 const int XREF_CELL = 1;
@@ -310,7 +311,8 @@ void FreeTerminalModel::fillTerminalVector()
 	std::sort(free_terminal_vector.begin(), free_terminal_vector.end(),
 			  [](TerminalElement *a, TerminalElement *b)
 	{
-		return QETUtils::sortBeginIntString(a->actualLabel(), b->actualLabel());
+		return QETUtils::sortBeginIntString(a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
+											b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
 	});
 
 	for (const auto &terminal_ : free_terminal_vector) {

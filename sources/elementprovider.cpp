@@ -198,14 +198,17 @@ QVector<TerminalElement *> ElementProvider::freeTerminal() const
 {
 	QVector<TerminalElement *> vector_;
 
-	for (const auto diagram : m_diagram_list) {
-		DiagramContent dc(diagram, false);
-		for (const auto element : qAsConst(dc.m_elements)) {
+	for (const auto &diagram : qAsConst(m_diagram_list))
+	{
+		const auto elmt_list{diagram->elements()};
+
+		for (const auto element : elmt_list)
+		{
 			if (element->elementData().m_type == ElementData::Terminale)
 			{
-				auto te = static_cast<TerminalElement *>(element);
+				const auto te{static_cast<TerminalElement *>(element)};
 				if (!te->parentTerminalStrip()) {
-					vector_.append(static_cast<TerminalElement *>(element));
+					vector_.append(te);
 				}
 			}
 		}
