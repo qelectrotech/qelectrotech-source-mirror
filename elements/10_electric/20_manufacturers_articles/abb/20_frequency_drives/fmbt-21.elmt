@@ -1,0 +1,65 @@
+<definition link_type="simple" width="150" hotspot_y="5" type="element" height="100" hotspot_x="5" version="0.80">
+    <uuid uuid="{5f6ded00-a67b-4038-bb64-0666ed8513a5}"/>
+    <names>
+        <name lang="pl">FMBT-21</name>
+        <name lang="fr">FMBT-21</name>
+        <name lang="ru">FMBT-21</name>
+        <name lang="en">FMBT-21</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">ABB</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+    </elementInformations>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <line y1="0" antialias="false" length1="1.5" length2="1.5" x2="0" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="90" x1="0" end1="none" end2="none"/>
+        <rect antialias="false" y="60" x="76" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="28" rx="0" height="20"/>
+        <rect antialias="false" y="60" x="37" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="28" rx="0" height="20"/>
+        <polygon y3="73" y12="75" y11="77" y7="73" x12="87" y8="75" y10="77" y9="75" x11="87" x13="86" antialias="false" x14="86" x4="79" y4="63" x2="85" x7="95" y14="75" x6="101" y1="75" y6="73" x1="85" x10="93" y5="63" x3="79" style="line-style:normal;line-weight:normal;filling:gray;color:black" x9="93" y13="75" x5="101" y2="73" x8="95"/>
+        <polygon y3="73" y12="75" y11="77" y7="73" x12="48" y8="75" y10="77" y9="75" x11="48" x13="47" antialias="false" x14="47" x4="40" y4="63" x2="46" x7="56" y14="75" x6="62" y1="75" y6="73" x1="46" x10="54" y5="63" x3="40" style="line-style:normal;line-weight:normal;filling:gray;color:black" x9="54" y13="75" x5="62" y2="73" x8="56"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="89" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="89" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="50" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="50" end1="none" end2="none"/>
+        <line y1="0" antialias="false" length1="1.5" length2="1.5" x2="140" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="90" x1="140" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="87" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="87" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="48" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="48" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="85" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="85" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="46" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="46" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="83" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="83" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="44" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="44" end1="none" end2="none"/>
+        <line y1="0" antialias="false" length1="1.5" length2="1.5" x2="140" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="0" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="91" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="91" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="52" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="52" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="93" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="93" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="54" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="54" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="95" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="95" end1="none" end2="none"/>
+        <line y1="90" antialias="false" length1="1.5" length2="1.5" x2="140" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="90" x1="0" end1="none" end2="none"/>
+        <dynamic_text z="22" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" Halignment="AlignHCenter" Valignment="AlignVCenter" y="57" x="24" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" frame="true" text_width="-1" rotation="0">
+            <text>X1</text>
+        </dynamic_text>
+        <dynamic_text z="22" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" Halignment="AlignHCenter" Valignment="AlignVCenter" y="57" x="103" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" frame="true" text_width="-1" rotation="0">
+            <text>X2</text>
+        </dynamic_text>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="56" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="56" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="58" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="58" end1="none" end2="none"/>
+        <line y1="63" antialias="false" length1="1.5" length2="1.5" x2="97" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" x1="97" end1="none" end2="none"/>
+        <dynamic_text z="126" uuid="{89438f2e-670b-4429-a7a6-b54a8a410f65}" Halignment="AlignLeft" Valignment="AlignTop" y="40" x="10" text_from="UserText" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_width="-1" rotation="0">
+            <text>FMBT-21</text>
+        </dynamic_text>
+        <dynamic_text z="127" uuid="{76166232-2070-4a01-9d32-64303752fa59}" Halignment="AlignLeft" Valignment="AlignTop" y="-31" x="10" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_width="-1" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="16" x="10" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" text="Modbus/TCP" rotation="0"/>
+        <terminal uuid="{e1f48eea-9f44-4f9a-978d-450d9c98b128}" y="80" orientation="s" x="60" name=""/>
+        <terminal uuid="{1fe83f2c-00a7-4e7a-aadc-fe42b1c10bab}" y="80" orientation="s" x="100" name=""/>
+    </description>
+</definition>

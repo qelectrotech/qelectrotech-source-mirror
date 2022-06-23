@@ -1,0 +1,85 @@
+<definition hotspot_y="4" height="100" link_type="simple" width="150" type="element" hotspot_x="5" version="0.80">
+    <uuid uuid="{2f4299c7-06b1-49ea-acd6-492a55f0a46e}"/>
+    <names>
+        <name lang="ru">FCAN-01</name>
+        <name lang="pl">FCAN-01</name>
+        <name lang="en">FCAN-01</name>
+        <name lang="fr">FCAN-01</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">ABB</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <line y1="0" end2="none" length1="1.5" length2="1.5" x1="0" y2="90" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none" x2="0" antialias="false"/>
+        <text color="#000000" text="6" y="54" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="108"/>
+        <text color="#000000" text="1" y="55" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="111"/>
+        <text color="#000000" text="5" y="16" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="111"/>
+        <line y1="0" end2="none" length1="1.5" length2="1.5" x1="140" y2="90" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="140" antialias="false"/>
+        <text color="#000000" text="9" y="17.4688" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" x="107.767"/>
+        <line y1="16.725" end2="none" length1="1.5" length2="1.5" x1="101.5" y2="10.725" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="112.5" antialias="true"/>
+        <arc start="-180" y="14.725" height="10" angle="-32" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="100.5" antialias="true"/>
+        <arc start="-240" y="9.725" height="10" angle="-120" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="110.5" antialias="true"/>
+        <line y1="59.725" end2="none" length1="1.5" length2="1.5" x1="112.5" y2="53.725" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="101.5" antialias="true"/>
+        <line y1="0" end2="none" length1="1.5" length2="1.5" x1="0" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="140" antialias="false"/>
+        <arc start="-150" y="45.725" height="10" angle="-30" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="100.5" antialias="true"/>
+        <arc start="0" y="50.725" height="10" angle="-120" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="110.5" antialias="true"/>
+        <line y1="19.725" end2="none" length1="1.5" length2="1.5" x1="100.5" y2="49.725" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="100.5" antialias="false"/>
+        <line y1="14.725" end2="none" length1="1.5" length2="1.5" x1="120.5" y2="54.725" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="120.5" antialias="false"/>
+        <line y1="90" end2="none" length1="1.5" length2="1.5" x1="0" y2="90" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x2="140" antialias="false"/>
+        <dynamic_text uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" Halignment="AlignHCenter" y="7" Valignment="AlignVCenter" frame="true" z="22" rotation="0" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="UserText" x="120" text_width="-1">
+            <text>X1</text>
+        </dynamic_text>
+        <circle diameter="4" y="52.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="113.5" antialias="true"/>
+        <circle diameter="4" y="12.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="113.5" antialias="true"/>
+        <circle diameter="4" y="32.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="113.5" antialias="true"/>
+        <text color="#000000" text="CanOpen" y="16" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="10"/>
+        <circle diameter="4" y="17.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="103.5" antialias="true"/>
+        <circle diameter="4" y="42.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="113.5" antialias="true"/>
+        <circle diameter="4" y="22.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="113.5" antialias="true"/>
+        <circle diameter="4" y="37.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="103.5" antialias="true"/>
+        <circle diameter="4" y="47.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="103.5" antialias="true"/>
+        <circle diameter="4" y="27.725" style="line-style:normal;line-weight:normal;filling:none;color:black" x="103.5" antialias="true"/>
+        <dynamic_text uuid="{89438f2e-670b-4429-a7a6-b54a8a410f65}" Halignment="AlignLeft" y="40" Valignment="AlignTop" frame="false" z="126" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="10" text_width="-1">
+            <text>FCAN-01</text>
+        </dynamic_text>
+        <dynamic_text uuid="{76166232-2070-4a01-9d32-64303752fa59}" Halignment="AlignLeft" y="-31" Valignment="AlignTop" frame="false" z="127" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" x="10" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text uuid="{6b4bffb2-6a88-4cf5-bac9-da4947f17132}" Halignment="AlignLeft" y="88" Valignment="AlignTop" frame="true" z="128" rotation="270" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" text_from="UserText" x="72" text_width="-1">
+            <text>6. GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{6b4bffb2-6a88-4cf5-bac9-da4947f17132}" Halignment="AlignLeft" y="88" Valignment="AlignTop" frame="true" z="128" rotation="270" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" text_from="UserText" x="52" text_width="-1">
+            <text>5. CAN_SHLD</text>
+        </dynamic_text>
+        <dynamic_text uuid="{6b4bffb2-6a88-4cf5-bac9-da4947f17132}" Halignment="AlignLeft" y="88" Valignment="AlignTop" frame="true" z="128" rotation="270" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" text_from="UserText" x="32" text_width="-1">
+            <text>3. CAN_GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{6b4bffb2-6a88-4cf5-bac9-da4947f17132}" Halignment="AlignLeft" y="88" Valignment="AlignTop" frame="true" z="128" rotation="270" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" text_from="UserText" x="12" text_width="-1">
+            <text>2. CAN_L</text>
+        </dynamic_text>
+        <dynamic_text uuid="{6b4bffb2-6a88-4cf5-bac9-da4947f17132}" Halignment="AlignLeft" y="88" Valignment="AlignTop" frame="true" z="128" rotation="270" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" text_from="UserText" x="112" text_width="-1">
+            <text>9. CAN_V+</text>
+        </dynamic_text>
+        <dynamic_text uuid="{6b4bffb2-6a88-4cf5-bac9-da4947f17132}" Halignment="AlignLeft" y="88" Valignment="AlignTop" frame="true" z="128" rotation="270" font="Sans Serif,3,-1,5,0,0,0,0,0,0,normal" text_from="UserText" x="92" text_width="-1">
+            <text>7. CAN_H</text>
+        </dynamic_text>
+        <terminal name="" uuid="{64dd992c-bfa1-4eee-ae19-ed05ee5d2556}" y="90" orientation="s" x="120"/>
+        <terminal name="" uuid="{f1891b25-833c-4761-b870-be0920a06199}" y="90" orientation="s" x="100"/>
+        <terminal name="" uuid="{b9e58a8b-9f54-45e7-8644-f9700de21b1f}" y="90" orientation="s" x="40"/>
+        <terminal name="" uuid="{82ad64b6-3811-402a-b663-6a6dea24ef51}" y="90" orientation="s" x="20"/>
+        <terminal name="" uuid="{01fa6485-cad6-4e45-be4b-b7f2e662361f}" y="90" orientation="s" x="80"/>
+        <terminal name="" uuid="{feaa6fc0-9684-4ad9-8419-818f5b754049}" y="90" orientation="s" x="60"/>
+    </description>
+</definition>

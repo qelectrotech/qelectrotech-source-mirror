@@ -1,0 +1,139 @@
+<definition width="330" height="100" hotspot_x="5" hotspot_y="4" type="element" version="0.80" link_type="simple">
+    <uuid uuid="{3cc677ce-ebc0-4cb8-8d7f-7ca29b51bc4e}"/>
+    <names>
+        <name lang="pl">RIIO-01</name>
+        <name lang="fr">RIIO-01</name>
+        <name lang="ru">RIIO-01</name>
+        <name lang="en">RIIO-01</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer">ABB</elementInformation>
+    </elementInformations>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <line x1="0" length2="1.5" length1="1.5" end2="none" y1="0" style="line-style:dashed;line-weight:normal;filling:none;color:black" x2="0" antialias="false" y2="90" end1="none"/>
+        <line x1="320" length2="1.5" length1="1.5" end2="none" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="320" antialias="false" y2="90" end1="none"/>
+        <line x1="0" length2="1.5" length1="1.5" end2="none" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="320" antialias="false" y2="0" end1="none"/>
+        <line x1="0" length2="1.5" length1="1.5" end2="none" y1="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="320" antialias="false" y2="90" end1="none"/>
+        <polygon x1="0" x3="60" y3="90" y1="60" style="line-style:dotted;line-weight:thin;filling:none;color:black" x2="60" antialias="false" y2="60" closed="false"/>
+        <polygon x1="60" y1="60" style="line-style:dotted;line-weight:thin;filling:none;color:black" x2="320" antialias="false" y2="60" closed="false"/>
+        <polygon x1="140" x3="140" y3="60" y4="60" x4="140" y1="0" style="line-style:dotted;line-weight:thin;filling:none;color:black" x2="140" antialias="false" y2="60" closed="false"/>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="261" text_width="0" rotation="270" y="20" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AO1</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="181" text_width="0" rotation="270" y="23" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AGND</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="241" text_width="0" rotation="270" y="23" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AGND</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="301" text_width="0" rotation="270" y="23" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AGND</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="281" text_width="0" rotation="270" y="20" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AO2</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="161" text_width="0" rotation="270" y="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AI1</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="141" text_width="0" rotation="270" y="20" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>SCR</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignHCenter" x="101" text_width="0" rotation="270" y="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>DI5</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignLeft" x="61" text_width="0" rotation="270" y="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>DI3</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignHCenter" x="81" text_width="0" rotation="270" y="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>DI4</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="201" text_width="0" rotation="270" y="23" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>+10V</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignBottom" Halignment="AlignHCenter" x="221" text_width="0" rotation="270" y="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" z="13">
+            <text>AI2</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="121" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>RO3C</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="81" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>RO2A</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="1" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>B+</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="141" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>RO3A</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="41" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>DGND</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="21" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>A-</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="61" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>RO2C</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="101" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>RO2B</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignVCenter" Halignment="AlignHCenter" x="161" text_width="-1" rotation="270" y="88" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{c67ce664-9bd8-45db-b2e9-c1e92b79d85e}" z="22">
+            <text>RO3B</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignLeft" x="121" text_width="-1" rotation="270" y="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{b37c57b7-66e4-405f-b8ca-c4ac5bda5ea4}" z="36">
+            <text>DI6</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignLeft" x="1" text_width="-1" rotation="270" y="19" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{144245dc-9ba0-4b46-9e90-dc70d7448085}" z="38">
+            <text>24V</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignLeft" x="41" text_width="-1" rotation="270" y="24" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{144245dc-9ba0-4b46-9e90-dc70d7448085}" z="38">
+            <text>DCOM</text>
+        </dynamic_text>
+        <dynamic_text frame="true" text_from="UserText" Valignment="AlignTop" Halignment="AlignLeft" x="21" text_width="-1" rotation="270" y="23" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{144245dc-9ba0-4b46-9e90-dc70d7448085}" z="38">
+            <text>DGND</text>
+        </dynamic_text>
+        <dynamic_text frame="false" text_from="UserText" Valignment="AlignTop" Halignment="AlignLeft" x="10" text_width="-1" rotation="0" y="40" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{89438f2e-670b-4429-a7a6-b54a8a410f65}" z="126">
+            <text>RIIO-01</text>
+        </dynamic_text>
+        <dynamic_text frame="false" text_from="ElementInfo" Valignment="AlignTop" Halignment="AlignLeft" x="10" text_width="-1" rotation="0" y="-31" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{76166232-2070-4a01-9d32-64303752fa59}" z="127">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="130" name="" y="0" uuid="{3eb5128a-dc0f-40c1-8166-7cc1aff242db}" orientation="n"/>
+        <terminal x="70" name="" y="90" uuid="{641997c6-f86e-4627-94e5-953da5d3a47f}" orientation="s"/>
+        <terminal x="30" name="" y="0" uuid="{cac0ea20-aeb8-49bf-8087-64545546e93c}" orientation="n"/>
+        <terminal x="50" name="" y="90" uuid="{819aa66b-654b-441c-a5b2-6378cb7a5cb7}" orientation="s"/>
+        <terminal x="10" name="" y="90" uuid="{747f01f4-c770-4ef4-a51b-724288a16b20}" orientation="s"/>
+        <terminal x="170" name="" y="90" uuid="{6544937e-e407-4bf1-8b16-88dcf9c6c598}" orientation="s"/>
+        <terminal x="50" name="" y="0" uuid="{bc9db822-2fd0-4936-a08e-5b4a353eb7ae}" orientation="n"/>
+        <terminal x="10" name="" y="0" uuid="{482cf50c-3e53-45a0-b335-702d46c0f270}" orientation="n"/>
+        <terminal x="110" name="" y="0" uuid="{27e706cb-f637-4fad-b8ca-9868140f931e}" orientation="n"/>
+        <terminal x="130" name="" y="90" uuid="{e0e15175-09cc-4951-92de-5bdd15620118}" orientation="s"/>
+        <terminal x="90" name="" y="90" uuid="{7b0aa718-8aa9-4167-8870-ab1599eed78d}" orientation="s"/>
+        <terminal x="30" name="" y="90" uuid="{97ee1a8a-a3ed-41f5-8fd2-c6e325218f23}" orientation="s"/>
+        <terminal x="150" name="" y="90" uuid="{9f649c2a-8231-4b6d-933f-51ad1cc06f45}" orientation="s"/>
+        <terminal x="70" name="" y="0" uuid="{c0b808f5-2dd8-452a-8d2e-2289987278f0}" orientation="n"/>
+        <terminal x="110" name="" y="90" uuid="{0d3ec2be-91b0-4105-96ca-4c6220bf2049}" orientation="s"/>
+        <terminal x="90" name="201" y="0" uuid="{65050ad7-08f5-47b9-8715-5b144692a34d}" orientation="n"/>
+        <terminal x="250" name="" y="0" uuid="{7c36089a-75ce-44d1-bb3a-ea39b00032ca}" orientation="n"/>
+        <terminal x="210" name="" y="0" uuid="{4cb87bf5-0171-4fd0-87a0-436805f0c8f6}" orientation="n"/>
+        <terminal x="290" name="" y="0" uuid="{460347d8-21b1-4ead-9b5c-db60e3bedae2}" orientation="n"/>
+        <terminal x="230" name="" y="0" uuid="{eec27ba2-b8ec-4478-86ae-4c8e9090b8d2}" orientation="n"/>
+        <terminal x="270" name="" y="0" uuid="{39e83ea5-52ed-4293-8043-92a03ec6bf11}" orientation="n"/>
+        <terminal x="190" name="" y="0" uuid="{9eefdd12-318d-4036-a66c-510cb116ded7}" orientation="n"/>
+        <terminal x="170" name="" y="0" uuid="{0ed7a7e2-13a5-4e29-9081-c2135cb0fb98}" orientation="n"/>
+        <terminal x="150" name="" y="0" uuid="{296a87a2-7247-42f3-9cce-d9fad7c4f9cd}" orientation="n"/>
+        <terminal x="310" name="" y="0" uuid="{67e84e9b-29fb-4d01-a41f-229ed0c28d92}" orientation="n"/>
+    </description>
+</definition>

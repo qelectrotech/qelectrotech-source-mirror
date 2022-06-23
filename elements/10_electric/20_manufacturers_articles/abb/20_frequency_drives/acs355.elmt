@@ -1,0 +1,173 @@
+<definition link_type="simple" width="430" hotspot_x="5" height="100" version="0.80" type="element" hotspot_y="4">
+    <uuid uuid="{df536fbd-4cd2-401d-b051-f1571d534ce9}"/>
+    <names>
+        <name lang="ru">ACS355</name>
+        <name lang="en">ACS355</name>
+        <name lang="pl">ACS355</name>
+        <name lang="cs">ACS355</name>
+        <name lang="fr">ACS355</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer">ABB</elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+    </elementInformations>
+    <informations>Author: https://t.me/pandzmitriusz </informations>
+    <description>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="370" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>15 DI4</text>
+        </dynamic_text>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="160" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>5 AI2</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="160" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>18 RONC</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="180" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>19 RONO</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="140" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>17 ROCOM</text>
+        </dynamic_text>
+        <dynamic_text y="17" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="200" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>7 AO</text>
+        </dynamic_text>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="330" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>13 DI2</text>
+        </dynamic_text>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="310" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>12 DI1</text>
+        </dynamic_text>
+        <dynamic_text y="20" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="180" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>6 GND</text>
+        </dynamic_text>
+        <dynamic_text y="20" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="270" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>10 GND</text>
+        </dynamic_text>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="100" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>2 AI1</text>
+        </dynamic_text>
+        <dynamic_text y="20" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="220" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>8 GND</text>
+        </dynamic_text>
+        <dynamic_text y="23" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="250" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>9 +24V</text>
+        </dynamic_text>
+        <dynamic_text y="24" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="290" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>11 DCOM</text>
+        </dynamic_text>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="390" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>16 DI5</text>
+        </dynamic_text>
+        <dynamic_text y="18" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="350" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>14 DI3</text>
+        </dynamic_text>
+        <dynamic_text y="23" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="140" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>4 +10V</text>
+        </dynamic_text>
+        <dynamic_text y="20" frame="true" text_from="UserText" Valignment="AlignVCenter" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="80" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>1 SCR</text>
+        </dynamic_text>
+        <dynamic_text y="20" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="120" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>3 GND</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="240" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>22 DOGND</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="290" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>2 STO</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="200" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>20 DOSRC</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="220" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>21 DOOUT</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="330" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>4 STO</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="310" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>3 STO</text>
+        </dynamic_text>
+        <dynamic_text y="88" frame="true" text_from="UserText" Valignment="AlignBottom" rotation="270" uuid="{9de60fe2-d7d4-4896-bb8f-bdbd6136775d}" Halignment="AlignHCenter" x="270" z="13" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_width="0">
+            <text>1 STO</text>
+        </dynamic_text>
+        <dynamic_text y="87" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{cae92be4-5c02-4a92-a87c-33f336e86215}" Halignment="AlignLeft" x="7" z="93" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>U2</text>
+        </dynamic_text>
+        <dynamic_text y="30" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{8e2e7b1c-8600-42fe-9d0f-a0b6bbba79dc}" Halignment="AlignLeft" x="7" z="96" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>U1/L</text>
+        </dynamic_text>
+        <dynamic_text y="87" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{451acc9c-0a9f-49a4-a6a4-56d667718471}" Halignment="AlignLeft" x="47" z="102" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>W2</text>
+        </dynamic_text>
+        <dynamic_text y="87" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{e396020e-c4d6-4f49-abf3-07a1bb768d65}" Halignment="AlignLeft" x="27" z="103" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>V2</text>
+        </dynamic_text>
+        <dynamic_text y="87" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{e396020e-c4d6-4f49-abf3-07a1bb768d65}" Halignment="AlignLeft" x="97" z="103" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>BRK-</text>
+        </dynamic_text>
+        <dynamic_text y="87" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{e396020e-c4d6-4f49-abf3-07a1bb768d65}" Halignment="AlignLeft" x="77" z="103" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>BRK+</text>
+        </dynamic_text>
+        <dynamic_text y="24" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{842b44ee-bdbe-43d7-8363-477f9d5ef467}" Halignment="AlignLeft" x="47" z="107" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>W1</text>
+        </dynamic_text>
+        <dynamic_text y="30" frame="true" text_from="UserText" Valignment="AlignTop" rotation="270" uuid="{a8a72f0f-cbff-4172-acf0-c2a74b0bbecd}" Halignment="AlignLeft" x="27" z="108" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>V1/N</text>
+        </dynamic_text>
+        <dynamic_text y="36.5" frame="false" text_from="UserText" Valignment="AlignTop" rotation="0" uuid="{89438f2e-670b-4429-a7a6-b54a8a410f65}" Halignment="AlignLeft" x="12" z="126" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text>ACS355</text>
+        </dynamic_text>
+        <dynamic_text y="-31" frame="false" text_from="ElementInfo" Valignment="AlignTop" rotation="0" uuid="{76166232-2070-4a01-9d32-64303752fa59}" Halignment="AlignLeft" x="10" z="127" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect y="0" rx="0" width="420" ry="0" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" antialias="false"/>
+        <polygon y1="0" y3="50" closed="false" x4="130" y4="90" style="line-style:dotted;line-weight:thin;filling:none;color:black" x1="80" y2="50" x3="130" x2="80" antialias="false"/>
+        <polygon y1="50" y3="90" closed="false" x4="270" y4="90" style="line-style:dotted;line-weight:thin;filling:none;color:black" x1="130" y2="50" x3="270" x2="270" antialias="false"/>
+        <polygon y1="50" y3="50" closed="false" style="line-style:dotted;line-weight:thin;filling:none;color:black" x1="270" y2="50" x3="420" x2="420" antialias="false"/>
+        <terminal y="0" name="" uuid="{c0b808f5-2dd8-452a-8d2e-2289987278f0}" x="90" orientation="n"/>
+        <terminal y="90" name="" uuid="{6662adf4-d6ed-4e9c-b1bb-6e692490ff3b}" x="340" orientation="s"/>
+        <terminal y="90" name="" uuid="{4f780dbe-a0a5-4c97-97a0-1af0fa7cdc7b}" x="300" orientation="s"/>
+        <terminal y="90" name="" uuid="{9f649c2a-8231-4b6d-933f-51ad1cc06f45}" x="150" orientation="s"/>
+        <terminal y="0" name="" uuid="{9f277d12-f2a0-4032-af45-7abef7024d7a}" x="380" orientation="n"/>
+        <terminal y="90" name="" uuid="{29c7e56a-cf81-4205-8cf0-14d29a403c1f}" x="190" orientation="s"/>
+        <terminal y="0" name="" uuid="{ed3d5b94-1731-43bc-95d8-21690a99cb6c}" x="360" orientation="n"/>
+        <terminal y="0" name="" uuid="{6b536cde-7e36-40bb-b705-29f47eec8702}" x="340" orientation="n"/>
+        <terminal y="0" name="" uuid="{cac0ea20-aeb8-49bf-8087-64545546e93c}" x="40" orientation="n"/>
+        <terminal y="0" name="" uuid="{c25844da-47b9-4b38-a386-c60e1efb3c47}" x="190" orientation="n"/>
+        <terminal y="0" name="" uuid="{bc9db822-2fd0-4936-a08e-5b4a353eb7ae}" x="60" orientation="n"/>
+        <terminal y="0" name="" uuid="{482cf50c-3e53-45a0-b335-702d46c0f270}" x="20" orientation="n"/>
+        <terminal y="90" name="" uuid="{e6c94d2a-e306-47ea-b59f-c64d6036a3a5}" x="90" orientation="s"/>
+        <terminal y="90" name="" uuid="{05be1054-8d21-4f4a-a05a-a317dfd76e75}" x="210" orientation="s"/>
+        <terminal y="90" name="" uuid="{747f01f4-c770-4ef4-a51b-724288a16b20}" x="20" orientation="s"/>
+        <terminal y="0" name="" uuid="{f45a5646-d43b-4737-a99d-44cfa898c9ca}" x="320" orientation="n"/>
+        <terminal y="0" name="" uuid="{9d18cdfa-b43b-487e-9de8-5a0ddd957d46}" x="260" orientation="n"/>
+        <terminal y="90" name="" uuid="{5a0258f7-5734-4f69-90fb-b90b1e8416ae}" x="170" orientation="s"/>
+        <terminal y="0" name="" uuid="{27e706cb-f637-4fad-b8ca-9868140f931e}" x="130" orientation="n"/>
+        <terminal y="90" name="" uuid="{79282e9e-73cc-424f-87ae-5b72a856686e}" x="250" orientation="s"/>
+        <terminal y="0" name="" uuid="{94e29477-8f41-4cb7-bc06-8684cebeb10b}" x="400" orientation="n"/>
+        <terminal y="0" name="" uuid="{3eb5128a-dc0f-40c1-8166-7cc1aff242db}" x="150" orientation="n"/>
+        <terminal y="0" name="" uuid="{65050ad7-08f5-47b9-8715-5b144692a34d}" x="110" orientation="n"/>
+        <terminal y="90" name="" uuid="{6a0097f8-da6b-4c60-b0f0-5489d8c596aa}" x="110" orientation="s"/>
+        <terminal y="0" name="" uuid="{0ca46012-713f-4065-bd15-0306abf28845}" x="170" orientation="n"/>
+        <terminal y="0" name="" uuid="{f3fc4f14-9b43-467d-affb-90bf9ea8ea61}" x="230" orientation="n"/>
+        <terminal y="90" name="" uuid="{698469bc-60ce-4f54-92cc-2cf2db1824fa}" x="280" orientation="s"/>
+        <terminal y="90" name="" uuid="{819aa66b-654b-441c-a5b2-6378cb7a5cb7}" x="60" orientation="s"/>
+        <terminal y="90" name="" uuid="{97ee1a8a-a3ed-41f5-8fd2-c6e325218f23}" x="40" orientation="s"/>
+        <terminal y="90" name="" uuid="{83a6d1ed-5a73-49ff-8ae7-7931a9c2c7c5}" x="320" orientation="s"/>
+        <terminal y="0" name="" uuid="{21277c2b-c8c4-4043-b98e-a785535f2998}" x="210" orientation="n"/>
+        <terminal y="0" name="" uuid="{6465d865-014e-4522-afd6-7ad914b3eb8b}" x="300" orientation="n"/>
+        <terminal y="90" name="" uuid="{95a9fa58-b9e0-44fd-909c-0b055f8fdb0d}" x="230" orientation="s"/>
+        <terminal y="0" name="" uuid="{530d9d82-74cd-48f2-8c16-d06a59102994}" x="280" orientation="n"/>
+    </description>
+</definition>
