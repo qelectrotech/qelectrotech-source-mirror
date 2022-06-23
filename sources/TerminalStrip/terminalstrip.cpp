@@ -121,6 +121,62 @@ bool TerminalStrip::addTerminal(QSharedPointer<RealTerminal> real_t)
 	return true;
 }
 
+/**
+ * @brief TerminalStrip::addTerminals
+ * Add terminal in @a real_t_vector to this terminal
+ * @param real_t_vector
+ */
+void TerminalStrip::addTerminals(QVector<QSharedPointer<RealTerminal>> real_t_vector)
+{
+	bool added_{false};
+	for (const auto &real_t : real_t_vector)
+	{
+		if (real_t->parentStrip()) {
+			continue;
+		}
+
+		auto raw_phy_ptr = new PhysicalTerminal(this, QVector<QSharedPointer<RealTerminal>>{real_t});
+		m_physical_terminals.append(raw_phy_ptr->sharedRef());
+		added_ = true;
+	}
+
+	if (added_) {
+		emit orderChanged();
+	}
+}
+
+/**
+ * @brief TerminalStrip::addAndGroupTerminals
+ * For each real terminals of second vector, add it to terminal strip and group
+ * them together
+ * @param real_t_vector
+ */
+void TerminalStrip::addAndGroupTerminals(const QVector<QVector<QSharedPointer<RealTerminal>>> &real_t_vector)
+{
+	QVector<QSharedPointer<RealTerminal>> vector_;
+	bool added_{false};
+
+	for (const auto &t_vector : real_t_vector)
+	{
+		vector_.clear();
+		for (const auto &real_t : t_vector)
+		{
+			if (real_t->parentStrip()) {
+				continue;
+			}
+			vector_.append(real_t);
+		}
+
+		auto raw_phy_ptr = new PhysicalTerminal(this, vector_);
+		m_physical_terminals.append(raw_phy_ptr->sharedRef());
+		added_ = true;
+	}
+
+	if (added_) {
+		emit orderChanged();
+	}
+}
+
 bool TerminalStrip::removeTerminal(QSharedPointer<RealTerminal> real_t)
 {
 	if (real_t->parentStrip() != this) {
@@ -143,6 +199,39 @@ bool TerminalStrip::removeTerminal(QSharedPointer<RealTerminal> real_t)
 	}
 
 	return false;
+}
+
+/**
+ * @brief TerminalStrip::removeTerminals
+ * Remove terminals in @a real_t_vector from this terminal strip
+ * @param real_t_vector
+ */
+void TerminalStrip::removeTerminals(QVector<QSharedPointer<RealTerminal>> real_t_vector)
+{
+	bool removed_{false};
+	for (const auto &real_t : real_t_vector)
+	{
+		if (real_t->parentStrip() != this) {
+			continue;
+		}
+
+		if (auto bridge_ = real_t->bridge()) {
+			bridge_->removeTerminal(real_t);
+		}
+
+		if (auto phy_t = real_t->physicalTerminal())
+		{
+			phy_t->removeTerminal(real_t);
+			if (phy_t->realTerminalCount() == 0) {
+				m_physical_terminals.removeOne(phy_t);
+			}
+			removed_ = true;
+		}
+	}
+
+	if (removed_) {
+		emit orderChanged();
+	}
 }
 
 /**
@@ -225,6 +314,25 @@ bool TerminalStrip::addTerminal(QSharedPointer<PhysicalTerminal> phy_t)
 
 }
 
+void TerminalStrip::addTerminals(QVector<QSharedPointer<PhysicalTerminal> > phy_t_vector)
+{
+	bool added_{false};
+	for (const auto &phy_t : phy_t_vector)
+	{
+		if (phy_t->terminalStrip()) {
+			continue;
+		}
+
+		m_physical_terminals.append(phy_t);
+		phy_t->setParentStrip(this);
+		added_ = true;
+	}
+
+	if (added_) {
+		emit orderChanged();
+	}
+}
+
 /**
  * @brief TerminalStrip::removeTerminal
  * Remove @a phy_t from this terminal strip.
@@ -248,6 +356,29 @@ bool TerminalStrip::removeTerminal(QSharedPointer<PhysicalTerminal> phy_t)
 	}
 
 	return false;
+}
+
+void TerminalStrip::removeTerminals(QVector<QSharedPointer<PhysicalTerminal> > phy_t_vector)
+{
+	bool removed_{false};
+	for (const auto &phy_t : phy_t_vector)
+	{
+		if (m_physical_terminals.removeOne(phy_t))
+		{
+			for (const auto &real_t : phy_t->realTerminals()) {
+				if (auto bridge_ = real_t->bridge()) {
+					bridge_->removeTerminal(real_t);
+				}
+			}
+
+			phy_t->setParentStrip(nullptr);
+			removed_ = true;
+		}
+	}
+
+	if (removed_) {
+		emit orderChanged();
+	}
 }
 
 /**

@@ -28,20 +28,36 @@
  * @param parent : parent undo command
  */
 AddTerminalToStripCommand::AddTerminalToStripCommand(QSharedPointer<RealTerminal> terminal, TerminalStrip *strip, QUndoCommand *parent) :
-    QUndoCommand(parent),
-    m_terminal(terminal),
-	m_new_strip(strip)
+	QUndoCommand{parent},
+	m_terminal{terminal},
+	m_new_strip{strip}
 {
-	auto t_label = terminal->label();
-    auto ts_name = strip->name();
+	const auto t_label = terminal->label();
+	const auto ts_name = strip->name();
 
-    auto str_1 = t_label.isEmpty() ? QObject::tr("Ajouter une borne") :
+	const auto str_1 = t_label.isEmpty() ? QObject::tr("Ajouter une borne") :
 									 QObject::tr("Ajouter la borne %1").arg(t_label);
 
-    auto str_2 = ts_name.isEmpty() ? QObject::tr("à un groupe de bornes") :
+	const auto str_2 = ts_name.isEmpty() ? QObject::tr("à un groupe de bornes") :
 									 QObject::tr("au groupe de bornes %1").arg(ts_name);
 
-    setText(str_1 + " " + str_2);
+	setText(str_1 + " " + str_2);
+}
+
+AddTerminalToStripCommand::AddTerminalToStripCommand(QVector<QSharedPointer<RealTerminal>> terminals, TerminalStrip *strip, QUndoCommand *parent) :
+	QUndoCommand{parent},
+	m_terminal{terminals},
+	m_new_strip{strip}
+{
+	const auto ts_name = strip->name();
+
+	const auto str_1 = m_terminal.size() > 1 ? QObject::tr("Ajouter %1 bornes").arg(m_terminal.size()) :
+											   QObject::tr("Ajouter une borne");
+
+	const auto str_2 = ts_name.isEmpty() ? QObject::tr("à un groupe de bornes") :
+										  QObject::tr("au groupe de bornes %1").arg(ts_name);
+
+	setText(str_1 + " " + str_2);
 }
 
 
@@ -54,11 +70,9 @@ AddTerminalToStripCommand::~AddTerminalToStripCommand()
  */
 void AddTerminalToStripCommand::undo()
 {
-    if (!m_terminal ||
-        !m_new_strip) {
-        return;
+	if (m_new_strip) {
+		m_new_strip->removeTerminals(m_terminal);
     }
-    m_new_strip->removeTerminal(m_terminal);
 }
 
 /**
@@ -67,11 +81,9 @@ void AddTerminalToStripCommand::undo()
  */
 void AddTerminalToStripCommand::redo()
 {
-    if (!m_terminal ||
-        !m_new_strip) {
-        return;
+	if (m_new_strip) {
+		m_new_strip->addTerminals(m_terminal);
     }
-    m_new_strip->addTerminal(m_terminal);
 }
 
 /**
@@ -83,38 +95,29 @@ void AddTerminalToStripCommand::redo()
 RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand(QSharedPointer<PhysicalTerminal> terminal,
 															   TerminalStrip *strip,
 															   QUndoCommand *parent) :
-	QUndoCommand(parent),
-	m_terminals(terminal->realTerminals()),
-	m_strip(strip)
-{	
-	QString t_label;
-	for (const auto &real_t : m_terminals) {
-		if (!t_label.isEmpty())
-			t_label.append(", ");
-		t_label.append(real_t->label());
+	QUndoCommand{parent},
+	m_strip{strip}
+{
+	m_terminals.append(terminal->realTerminals());
+	setCommandTitle();
+}
+
+RemoveTerminalFromStripCommand::RemoveTerminalFromStripCommand(const QVector<QSharedPointer<PhysicalTerminal> > &phy_t_vector,
+															   TerminalStrip *strip,
+															   QUndoCommand *parent):
+	QUndoCommand{parent},
+	m_strip{strip}
+{
+	for (const auto &phy_t : phy_t_vector) {
+		m_terminals.append(phy_t->realTerminals());
 	}
-
-	auto strip_name = strip->name();
-
-	auto str_1 = t_label.isEmpty() ? QObject::tr("Enlever une borne") :
-									 QObject::tr("Enlever la borne %1").arg(t_label);
-
-	auto str_2 = strip_name.isEmpty() ? QObject::tr("d'un groupe de bornes") :
-										QObject::tr("du groupe de bornes %1").arg(strip_name);
-	setText(str_1 + " " + str_2);
+	setCommandTitle();
 }
 
 void RemoveTerminalFromStripCommand::undo()
 {
-	if (m_strip)
-	{
-		for (const auto &real_t : m_terminals) {
-			m_strip->addTerminal(real_t);
-		}
-		auto phy_t = m_terminals.first()->physicalTerminal();
-		if (phy_t) {
-			m_strip->groupTerminals(phy_t, m_terminals);
-		}
+	if (m_strip) {
+		m_strip->addAndGroupTerminals(m_terminals);
 	}
 }
 
@@ -122,10 +125,25 @@ void RemoveTerminalFromStripCommand::redo()
 {
 	if (m_strip)
 	{
-		for (const auto & real_t : m_terminals) {
-			m_strip->removeTerminal(real_t);
+		QVector<QSharedPointer<RealTerminal>> real_t;
+		for (const auto &real_t_vector : qAsConst(m_terminals)) {
+			real_t.append(real_t_vector);
 		}
+
+		m_strip->removeTerminals(real_t);
 	}
+}
+
+void RemoveTerminalFromStripCommand::setCommandTitle()
+{
+	const auto strip_name = m_strip->name();
+
+	const auto str_1 = m_terminals.size()>1 ? QObject::tr("Enlever %1 bornes").arg(m_terminals.size()):
+											  QObject::tr("Enlever une borne");
+
+	const auto str_2 = strip_name.isEmpty() ? QObject::tr("d'un groupe de bornes") :
+											  QObject::tr("du groupe de bornes %1").arg(strip_name);
+	setText(str_1 + " " + str_2);
 }
 
 /**
@@ -137,10 +155,10 @@ void RemoveTerminalFromStripCommand::redo()
  */
 MoveTerminalCommand::MoveTerminalCommand(QSharedPointer<PhysicalTerminal> terminal, TerminalStrip *old_strip,
 										 TerminalStrip *new_strip, QUndoCommand *parent) :
-	QUndoCommand (parent),
-	m_terminal(terminal),
-	m_old_strip(old_strip),
-	m_new_strip(new_strip)
+	QUndoCommand {parent},
+	m_terminal {terminal},
+	m_old_strip {old_strip},
+	m_new_strip {new_strip}
 {
 	QString t_label;
 	for (auto real_t : terminal->realTerminals()) {
@@ -163,28 +181,45 @@ MoveTerminalCommand::MoveTerminalCommand(QSharedPointer<PhysicalTerminal> termin
 	setText(str_1 + " " + str_2 + " " + str_3);
 }
 
+MoveTerminalCommand::MoveTerminalCommand(QVector<QSharedPointer<PhysicalTerminal>> terminals, TerminalStrip *old_strip,
+										 TerminalStrip *new_strip, QUndoCommand *parent) :
+	QUndoCommand {parent},
+	m_terminal {terminals},
+	m_old_strip {old_strip},
+	m_new_strip {new_strip}
+
+{
+	const auto strip_name = old_strip->name();
+	const auto new_strip_name = new_strip->name();
+
+	const auto str_1 = m_terminal.size() > 1 ? QObject::tr("Déplacer des bornes") :
+											   QObject::tr("Déplacer une borne");
+
+	const auto str_2 = strip_name.isEmpty() ? QObject::tr(" d'un groupe de bornes") :
+											  QObject::tr(" du groupe de bornes %1").arg(strip_name);
+
+	const auto str_3 = new_strip_name.isEmpty() ? QObject::tr("vers un groupe de bornes") :
+												  QObject::tr("vers le groupe de bornes %1").arg(new_strip_name);
+
+	setText(str_1 + " " + str_2 + " " + str_3);
+}
+
 void MoveTerminalCommand::undo()
 {
-	if (m_terminal)
-	{
-		if (m_new_strip) {
-			m_new_strip->removeTerminal(m_terminal);
-		}
-		if (m_old_strip) {
-			m_old_strip->addTerminal(m_terminal);
-		}
+	if (m_new_strip) {
+		m_new_strip->removeTerminals(m_terminal);
+	}
+	if (m_old_strip) {
+		m_old_strip->addTerminals(m_terminal);
 	}
 }
 
 void MoveTerminalCommand::redo()
 {
-	if (m_terminal)
-	{
-		if (m_old_strip) {
-			m_old_strip->removeTerminal(m_terminal);
-		}
-		if (m_new_strip) {
-			m_new_strip->addTerminal(m_terminal);
-		}
+	if (m_old_strip) {
+		m_old_strip->removeTerminals(m_terminal);
+	}
+	if (m_new_strip) {
+		m_new_strip->addTerminals(m_terminal);
 	}
 }

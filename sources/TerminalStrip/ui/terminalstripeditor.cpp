@@ -709,22 +709,15 @@ void TerminalStripEditor::on_m_move_to_pb_clicked()
 		return;
 	}
 
-	auto undo_stack{m_current_strip->project()->undoStack()};
 	const auto uuid_{ui->m_move_to_cb->currentData().toUuid()};
 		//Uuid is null we move the selected terminal to indepandant terminal
-	if (uuid_.isNull())
-	{
-		 undo_stack->beginMacro(tr("Retirer des bornes d'un bornier"));
-		 for (const auto &phy_ : phy_vector) {
-			 undo_stack->push(new RemoveTerminalFromStripCommand(phy_, m_current_strip));
-		 }
-		 undo_stack->endMacro();
+	if (uuid_.isNull()) {
+		m_current_strip->project()->undoStack()->push(new RemoveTerminalFromStripCommand(phy_vector, m_current_strip));
 	}
 	else
 	{
 		TerminalStrip *receiver_strip{nullptr};
-		const auto strip_vector = m_current_strip->project()->terminalStrip();
-		for (const auto &strip_ : strip_vector)
+		for (const auto &strip_ : m_current_strip->project()->terminalStrip())
 		{
 			if (strip_->uuid() == uuid_) {
 				receiver_strip = strip_;
@@ -736,11 +729,7 @@ void TerminalStripEditor::on_m_move_to_pb_clicked()
 			return;
 		}
 
-		undo_stack->beginMacro(tr("Déplacer des bornes d'un bornier à un autre"));
-		for (const auto &phy_ : phy_vector) {
-			undo_stack->push(new MoveTerminalCommand(phy_, m_current_strip, receiver_strip));
-		}
-		undo_stack->endMacro();
+		m_current_strip->project()->undoStack()->push(new MoveTerminalCommand(phy_vector, m_current_strip, receiver_strip));
 	}
 }
 
