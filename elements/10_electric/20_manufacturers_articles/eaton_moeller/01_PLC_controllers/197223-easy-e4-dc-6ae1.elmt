@@ -1,0 +1,96 @@
+<definition link_type="master" hotspot_x="5" height="130" version="0.90" width="130" type="element" hotspot_y="4">
+    <uuid uuid="{6661ac9d-2693-45cc-bbff-b1a30b6fd98f}"/>
+    <names>
+        <name lang="en">EASY-E4-DC-6AE1</name>
+        <name lang="fr">EASY-E4-DC-6AE1</name>
+        <name lang="ru">EASY-E4-DC-6AE1</name>
+        <name lang="pl">EASY-E4-DC-6AE1</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Eaton</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation">197221</elementInformation>
+        <elementInformation show="1" name="description">EASY-E4-AC-12RC1_io</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+    </elementInformations>
+    <informations>Author:  https://t.me/pandzmitriusz </informations>
+    <description>
+        <line y2="20" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" x2="120" length2="1.5" antialias="false" y1="20" x1="0" length1="1.5"/>
+        <polygon x5="120" y2="22" x4="120" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="110" y4="38" y5="38" antialias="false" y1="22" x1="120" y3="38" x3="110"/>
+        <polygon y2="22" x4="0" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" y4="38" antialias="false" y1="22" x1="0" y3="38" x3="10"/>
+        <line y2="40" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" x2="120" length2="1.5" antialias="false" y1="40" x1="0" length1="1.5"/>
+        <text rotation="0" y="35" color="#000000" font="Sans Serif,8,-1,5,50,0,0,0,0,0" text="EASY-E4-DC-6AE1" x="12"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="120" ry="0" y="0" antialias="false" width="120" rx="0" x="0"/>
+        <line y2="100" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" x2="120" length2="1.5" antialias="false" y1="100" x1="0" length1="1.5"/>
+        <line y2="80" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" end2="none" x2="120" length2="1.5" antialias="false" y1="80" x1="0" length1="1.5"/>
+        <dynamic_text uuid="{e08bec57-bb04-42bd-a7e5-bf75ff7d25be}" frame="true" text_width="-1" z="66" rotation="0" y="2" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="25" text_from="UserText" Valignment="AlignTop">
+            <text>0V</text>
+        </dynamic_text>
+        <dynamic_text uuid="{e08bec57-bb04-42bd-a7e5-bf75ff7d25be}" frame="true" text_width="-1" z="66" rotation="0" y="2" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="45" text_from="UserText" Valignment="AlignTop">
+            <text>IA1</text>
+        </dynamic_text>
+        <dynamic_text uuid="{e08bec57-bb04-42bd-a7e5-bf75ff7d25be}" frame="true" text_width="-1" z="66" rotation="0" y="2" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="98" text_from="UserText" Valignment="AlignTop">
+            <text>GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{e08bec57-bb04-42bd-a7e5-bf75ff7d25be}" frame="true" text_width="-1" z="66" rotation="0" y="2" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="0" text_from="UserText" Valignment="AlignTop">
+            <text>+24V</text>
+        </dynamic_text>
+        <dynamic_text uuid="{e08bec57-bb04-42bd-a7e5-bf75ff7d25be}" frame="true" text_width="-1" z="66" rotation="0" y="2" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="60" text_from="UserText" Valignment="AlignTop">
+            <text>GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{e08bec57-bb04-42bd-a7e5-bf75ff7d25be}" frame="true" text_width="-1" z="66" rotation="0" y="2" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="83" text_from="UserText" Valignment="AlignTop">
+            <text>IA2</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="101" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="75" text_from="UserText" Valignment="AlignTop">
+            <text>QA2</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="101" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="32" text_from="UserText" Valignment="AlignTop">
+            <text>GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="101" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="15" text_from="UserText" Valignment="AlignTop">
+            <text>QA1</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="101" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="92" text_from="UserText" Valignment="AlignTop">
+            <text>GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="81" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="40" text_from="UserText" Valignment="AlignTop">
+            <text>GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="81" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="25" text_from="UserText" Valignment="AlignTop">
+            <text>IA3</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="81" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="80" text_from="UserText" Valignment="AlignTop">
+            <text>GND</text>
+        </dynamic_text>
+        <dynamic_text uuid="{271cc88e-1227-475a-a2cf-dbbf2b9bfa3e}" frame="true" text_width="-1" z="74" rotation="0" y="81" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="65" text_from="UserText" Valignment="AlignTop">
+            <text>IA4</text>
+        </dynamic_text>
+        <dynamic_text uuid="{5cac81d6-6484-430d-bc76-b13d7a417bdf}" frame="false" text_width="-1" z="77" rotation="0" y="50" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" keep_visual_rotation="false" x="10" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal uuid="{0550b345-27f7-4aab-8a34-1c699ae81a19}" y="120" orientation="s" x="100" name="" type="Generic"/>
+        <terminal uuid="{cd5d97e0-c59b-46d1-92e2-b85e67df8df0}" y="0" orientation="n" x="70" name="" type="Generic"/>
+        <terminal uuid="{153a7468-fcf6-48a2-9373-647c830d463d}" y="0" orientation="n" x="90" name="" type="Generic"/>
+        <terminal uuid="{800860e1-dfc8-4ca7-8e08-993fce76684c}" y="120" orientation="s" x="20" name="" type="Generic"/>
+        <terminal uuid="{67ce10e3-a492-4d77-9cbb-aa8cf118940c}" y="0" orientation="n" x="50" name="" type="Generic"/>
+        <terminal uuid="{10c2926d-8ea5-4391-bc94-00b0a14fc76e}" y="120" orientation="s" x="40" name="" type="Generic"/>
+        <terminal uuid="{87a80486-0840-4dc9-b1c4-bbb374583104}" y="0" orientation="n" x="10" name="" type="Generic"/>
+        <terminal uuid="{c7554b42-1750-4390-8cd6-92dd2eb80d13}" y="120" orientation="s" x="80" name="" type="Generic"/>
+        <terminal uuid="{c35d6b38-2645-4d4e-802f-aca164856dc0}" y="0" orientation="n" x="110" name="" type="Generic"/>
+        <terminal uuid="{b3d10d72-f95b-446a-8e10-55ae08fbd37a}" y="0" orientation="n" x="30" name="" type="Generic"/>
+        <terminal uuid="{7657c575-e7cc-48d9-96a9-77cceb2fadb2}" y="100" orientation="s" x="30" name="" type="Generic"/>
+        <terminal uuid="{fbb173c9-ae5e-4f57-b411-085fa647f8e2}" y="100" orientation="s" x="50" name="" type="Generic"/>
+        <terminal uuid="{a4c294d5-ce81-428f-9d3c-f19e83e7234c}" y="100" orientation="s" x="70" name="" type="Generic"/>
+        <terminal uuid="{39fcd202-6c83-4e2d-95b0-53ba57bb4b07}" y="100" orientation="s" x="90" name="" type="Generic"/>
+    </description>
+</definition>
