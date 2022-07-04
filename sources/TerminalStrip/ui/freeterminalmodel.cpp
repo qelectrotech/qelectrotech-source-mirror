@@ -22,6 +22,7 @@
 #include "../../utils/qetutils.h"
 #include "../../qetgraphicsitem/terminalelement.h"
 #include "../realterminal.h"
+#include "../../qetinformation.h"
 
 const int LABEL_CELL = 0;
 const int XREF_CELL = 1;
@@ -29,7 +30,7 @@ const int TYPE_CELL = 2;
 const int FUNCTION_CELL = 3;
 const int LED_CELL = 4;
 
-const int ROW_COUNT = 5;
+const int COLUMN_COUNT = 5;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false};
 
@@ -79,7 +80,7 @@ int FreeTerminalModel::rowCount(const QModelIndex &parent) const
 int FreeTerminalModel::columnCount(const QModelIndex &parent) const
 {
 	Q_UNUSED(parent)
-	return ROW_COUNT;
+	return COLUMN_COUNT;
 }
 
 /**
@@ -310,7 +311,8 @@ void FreeTerminalModel::fillTerminalVector()
 	std::sort(free_terminal_vector.begin(), free_terminal_vector.end(),
 			  [](TerminalElement *a, TerminalElement *b)
 	{
-		return QETUtils::sortBeginIntString(a->actualLabel(), b->actualLabel());
+		return QETUtils::sortBeginIntString(a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
+											b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
 	});
 
 	for (const auto &terminal_ : free_terminal_vector) {

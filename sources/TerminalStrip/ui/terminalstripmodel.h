@@ -54,13 +54,13 @@ class TerminalStripModel : public QAbstractTableModel
 			Level2 = 4,
 			Level3 = 5,
 			Label = 6,
-			XRef = 7,
-			Cable = 8,
-			CableWire = 9,
-			Type = 10,
-			Function = 11,
-			Led = 12,
-			Conductor = 13,
+			Conductor = 7,
+			XRef = 8,
+			Cable = 9,
+			CableWire = 10,
+			Type = 11,
+			Function = 12,
+			Led = 13,
 			Invalid = 99
 		};
 

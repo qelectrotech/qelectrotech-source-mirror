@@ -39,15 +39,15 @@ const int LEVEL_1_CELL = 3;
 const int LEVEL_2_CELL = 4;
 const int LEVEL_3_CELL = 5;
 const int LABEL_CELL = 6;
-const int XREF_CELL = 7;
-const int CABLE_CELL = 8;
-const int CABLE_WIRE_CELL = 9;
-const int TYPE_CELL = 10;
-const int FUNCTION_CELL = 11;
-const int LED_CELL = 12;
-const int CONDUCTOR_CELL = 13;
+const int CONDUCTOR_CELL = 7;
+const int XREF_CELL = 8;
+const int CABLE_CELL = 9;
+const int CABLE_WIRE_CELL = 10;
+const int TYPE_CELL = 11;
+const int FUNCTION_CELL = 12;
+const int LED_CELL = 13;
 
-const int ROW_COUNT = 13;
+const int COLUMN_COUNT = 14;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
@@ -86,13 +86,13 @@ TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIn
 			case 4 : return Level2;
 			case 5 : return Level3;
 			case 6 : return Label;
-			case 7 : return XRef;
-			case 8 : return Cable;
-			case 9 : return CableWire;
-			case 10 : return Type;
-			case 11 : return Function;
-			case 12 : return Led;
-			case 13 : return Conductor;
+			case 7 : return Conductor;
+			case 8 : return XRef;
+			case 9 : return Cable;
+			case 10 : return CableWire;
+			case 11 : return Type;
+			case 12 : return Function;
+			case 13 : return Led;
 			default : return Invalid;
 		}
 	}
@@ -146,7 +146,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-	return ROW_COUNT;
+	return COLUMN_COUNT;
 }
 
 QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
@@ -164,12 +164,12 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case POS_CELL :        return physicalDataAtIndex(index.row()).pos_;
 			case LEVEL_CELL :      return mrtd.level_;
 			case LABEL_CELL :      return mrtd.label_;
+			case CONDUCTOR_CELL :  return mrtd.conductor_;
 			case XREF_CELL :       return mrtd.Xref_;
 			case CABLE_CELL :      return mrtd.cable_;
 			case CABLE_WIRE_CELL : return mrtd.cable_wire;
 			case TYPE_CELL :       return ElementData::translatedTerminalType(mrtd.type_);
 			case FUNCTION_CELL :   return ElementData::translatedTerminalFunction(mrtd.function_);
-			case CONDUCTOR_CELL :  return mrtd.conductor_;
 			default :              return QVariant();
 		}
 	}
@@ -287,13 +287,13 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 				case LEVEL_2_CELL:    return QStringLiteral("2");
 				case LEVEL_3_CELL:    return QStringLiteral("3");
 				case LABEL_CELL:      return tr("Label");
+				case CONDUCTOR_CELL:  return tr("Numéro de conducteur");
 				case XREF_CELL:       return tr("Référence croisé");
 				case CABLE_CELL:      return tr("Câble");
 				case CABLE_WIRE_CELL: return tr("Couleur / numéro de fil câble");
 				case TYPE_CELL:       return tr("Type");
 				case FUNCTION_CELL :  return tr("Fonction");
 				case LED_CELL:        return tr("led");
-				case CONDUCTOR_CELL:  return tr("Numéro de conducteur");
 				default : return QVariant();
 			}
 		}

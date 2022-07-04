@@ -239,12 +239,7 @@ void FreeTerminalEditor::on_m_move_pb_clicked()
 		return;
 	}
 
-		//Apply action with an undo command
-	auto parent_undo = new QUndoCommand(tr("Déplacer des bornes à un groupe de bornes"));
-	for (const auto &rt_ : real_t_vector) {
-		new AddTerminalToStripCommand(rt_, terminal_strip, parent_undo);
-	}
-	m_project->undoStack()->push(parent_undo);
+	m_project->undoStack()->push(new AddTerminalToStripCommand(real_t_vector, terminal_strip));
 
 	reload();
 }

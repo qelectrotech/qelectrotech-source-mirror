@@ -19,6 +19,7 @@
 #include "terminalstrip.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "physicalterminal.h"
+#include "../qetgraphicsitem/conductor.h"
 
 /**
  * @brief RealTerminal
@@ -175,6 +176,13 @@ QString RealTerminal::cableWire() const {
  * @return
  */
 QString RealTerminal::conductor() const {
+	if (m_element)
+	{
+		const auto conductors_{m_element->conductors()};
+		if (conductors_.size()) {
+			return conductors_.first()->properties().text;
+		}
+	}
 	return QString();
 }
 
