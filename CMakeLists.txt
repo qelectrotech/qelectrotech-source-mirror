@@ -147,10 +147,6 @@ install(DIRECTORY examples DESTINATION share/qelectrotech)
 install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
 install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
 install(FILES misc/qelectrotech.desktop DESTINATION share/applications)
-install(FILES misc/x-qet-element.xml
-              misc/x-qet-project.xml
-              misc/x-qet-titleblock.xml
-              DESTINATION share/mime/application)
 install(FILES misc/x-qet-element.desktop
               misc/x-qet-project.desktop
               misc/x-qet-titleblock.desktop
