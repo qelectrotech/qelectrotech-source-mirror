@@ -47,7 +47,6 @@ endif()
 endif()
 
 message("QET_LICENSE_PATH           " ${QET_LICENSE_PATH})
-message("QET_MIME_DESKTOP_PATH      " ${QET_MIME_DESKTOP_PATH})
 message("QET_MIME_PACKAGE_PATH      " ${QET_MIME_PACKAGE_PATH})
 message("QET_DESKTOP_PATH           " ${QET_DESKTOP_PATH})
 message("QET_ICONS_PATH             " ${QET_ICONS_PATH})
