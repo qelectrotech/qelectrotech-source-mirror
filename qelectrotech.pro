@@ -13,7 +13,6 @@ unix {
         QET_LANG_PATH              = 'share/qelectrotech/lang/'
         QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
         QET_LICENSE_PATH           = 'doc/qelectrotech/'
-        QET_MIME_XML_PATH          = '../share/mime/application/'
         QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
         QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
         QET_DESKTOP_PATH           = 'share/applications/'
@@ -43,7 +42,6 @@ macx {
         QET_LANG_PATH              = '../Resources/lang/'
         QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
         QET_LICENSE_PATH           = 'doc/qelectrotech/'
-        QET_MIME_XML_PATH          = '../share/mime/application/'
         QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
         QET_DESKTOP_PATH           = 'share/applications/'
         QET_ICONS_PATH             = 'share/icons/hicolor/'
@@ -264,9 +262,6 @@ examples.files     = examples/*
 
 copyright.path     = $$join(INSTALL_PREFIX,,,$${QET_LICENSE_PATH})
 copyright.files    = LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog
-
-mime_xml.path      = $$join(INSTALL_PREFIX,,,$${QET_MIME_XML_PATH})
-mime_xml.files     = misc/x-qet-*.xml
 
 mime_desktop.path  = $$join(INSTALL_PREFIX,,,$${QET_MIME_DESKTOP_PATH})
 mime_desktop.files = misc/x-qet-*.desktop
