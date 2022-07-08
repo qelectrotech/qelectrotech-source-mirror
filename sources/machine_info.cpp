@@ -124,6 +124,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "QElectroTech V " + QET::displayedVersion;
 	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
+	      + " - Arch : " + pc.built.arch
 		  + " - Date : " + pc.built.date
 		  + " : " + pc.built.time;
 	qInfo()<< "Run with Qt "+ QString(qVersion())
@@ -375,7 +376,9 @@ QString MachineInfo::compilation_info()
 {
 	QString compilation_info = "<br />" + QObject::tr("Compilation :   ");
 	compilation_info +=pc.built.version;
+	
 	compilation_info += "<br>Built with Qt " + pc.built.QT;
+	compilation_info += " - Built Arch " + pc.built.arch;
 	compilation_info += " - Date : " + pc.built.date;
 	compilation_info += " : " + pc.built.time;
 	compilation_info += " <br>Run with Qt "+ QString(qVersion());

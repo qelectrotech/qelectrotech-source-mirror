@@ -94,6 +94,7 @@ class MachineInfo
 			QString QT=QString(QT_VERSION_STR);
 			QString date=QString(__DATE__);
 			QString time=QString(__TIME__);
+			QString arch=QString(QSysInfo::buildCpuArchitecture());
 		}built;
 		struct CPU
 		{
