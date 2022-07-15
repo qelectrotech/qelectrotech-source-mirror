@@ -861,7 +861,7 @@ void ElementTextItemGroup::autoPos()
 		}
 	}
 	qreal r = rotation();
-	centerToBottomDiagram(this, m_parent_element, offset);
+	QGIUtility::centerToBottomDiagram(this, m_parent_element, offset);
 		//centerToBottomDiagram change the rotation of this group if needed,
 		//but setRotation is not a virtual function of QGraphicsItem, and the function centerToBottomDiagram
 		//work with a QGraphicsItem. So we emit the signal if rotation changed

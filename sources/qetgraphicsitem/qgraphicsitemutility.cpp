@@ -23,6 +23,9 @@
 #include <QDebug>
 #include <QGraphicsItem>
 
+namespace QGIUtility
+{
+
 /**
 	@brief centerToParentBottom
 	Center the item at the bottom of is parent.
@@ -51,10 +54,10 @@ bool centerToParentBottom(QGraphicsItem *item) {
 	@param offset
 	@return true if element is centered else false (element_to_follow have not diagram)
 */
-#include "elementtextitemgroup.h"
-#include "crossrefitem.h"
-bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset) {
-	if (! element_to_follow -> diagram()) {
+bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset)
+{
+	if (! element_to_follow -> diagram())
+	{
 		qDebug() << "qgraphicsitemutility centerAtBottomDiagram : Element_to_follow have not diagram";
 		return false;
 	}
@@ -81,8 +84,11 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 		rot += parent->rotation();
 		parent = parent->parentItem();
 	}
-	if(rot != 0)
+	if(rot != 0) {
 		item_to_center->setRotation(item_to_center->rotation() - rot);
+	}
 
 	return true;
 }
+}
+
