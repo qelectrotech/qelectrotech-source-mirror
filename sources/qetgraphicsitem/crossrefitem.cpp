@@ -827,15 +827,10 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		m_drawed_contacts += 2;
 		
 	}else if(flags &Other){
-		//Draw position text
-		QRectF text_rect = painter.boundingRect(
-					QRectF(30, offset+5, 5, 10),
-					Qt::AlignLeft | Qt::AlignVCenter,
-					str);
-		painter.drawText(text_rect,
-				 Qt::AlignLeft | Qt::AlignVCenter,
-				 str);
-		bounding_rect = bounding_rect.united(text_rect);
+	
+		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
+		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+	
 
 		if (m_hovered_contacts_map.contains(elmt)) {
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
@@ -844,8 +839,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
 		}
 		m_drawed_contacts += 1;
-		return bounding_rect;
-	}
+		}
 
 	return bounding_rect;
 }
