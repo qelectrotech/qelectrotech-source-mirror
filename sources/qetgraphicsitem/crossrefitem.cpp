@@ -800,6 +800,11 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 				painter.drawArc(rr, 0, 180*16);
 			}
 		}
+	else if (flags &Other)
+	{
+		bounding_rect = QRectF(0, offset, 24, 20);
+		}
+
 
 			//Draw position text
 		QRectF text_rect = painter.boundingRect(
@@ -820,6 +825,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
+		
 	}else if(flags &Other){
 		//Draw position text
 		QRectF text_rect = painter.boundingRect(
@@ -837,6 +843,8 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		else {
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
 		}
+		m_drawed_contacts += 1;
+		return bounding_rect;
 	}
 
 	return bounding_rect;
