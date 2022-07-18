@@ -36,7 +36,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="348"/>
         <source>Projet annexe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nebenprojekte</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
@@ -279,13 +279,13 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="161"/>
         <source>redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation>Größenänderung von Elementen</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="162"/>
         <source>Générateur d&apos;élément lambda</source>
         <comment>Lambda element generator</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lambda-Element-Generator</translation>
     </message>
 </context>
 <context>
@@ -1102,7 +1102,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="20"/>
         <source>Poignées :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Griffe:</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="28"/>
@@ -3229,7 +3229,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Methode zur Skalierung bei hochauflösenden Bildschirmen (hdpi) (wirksam nach einem Neustart von QElectroTech):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
@@ -3328,27 +3328,27 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
-        <translation type="unfinished"></translation>
+        <translation>ab 0,5 aufrunden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
         <source>Toujours arrondi supérieur</source>
-        <translation type="unfinished"></translation>
+        <translation>immer aufrunden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
         <source>Toujours arrondi inférieur</source>
-        <translation type="unfinished"></translation>
+        <translation>immer abrunden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
         <source>Arrondi supérieur pour 0.75 et plus</source>
-        <translation type="unfinished"></translation>
+        <translation>ab 0,75 aufrunden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
         <source>Pas d&apos;arrondi</source>
-        <translation type="unfinished"></translation>
+        <translation>nicht runden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
@@ -6197,7 +6197,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
         <source>Gestionnaire de borniers (DEV)</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmleisten-Manager (DEV)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
@@ -6700,7 +6700,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="498"/>
         <source>Rotation</source>
-        <translation type="unfinished">Drehung</translation>
+        <translation>Drehung</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="501"/>
@@ -7964,7 +7964,7 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Auswahl drehen</translation>
+        <translation>Auswahl drehen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -8875,7 +8875,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation>Installieren vom Plug-in qet_tb_generator&lt;br&gt;Siehe:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Benötigt python 3.5 oder höher.&lt;br&gt;&lt;B&gt;&lt;U&gt; Erste Installation unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 oder höher installieren&lt;br&gt; Siehe:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;Plug-in (Skript) in diesem Pfad verschieben und mit der Eingabeaufforderung von dort aus ausführen:&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
+        <translation>Installation des Plug-ins qet_tb_generator&lt;br&gt;Siehe: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Benötigt Python 3.5 oder höher.&lt;br&gt; &lt;br&gt;&lt;B&gt;&lt;U&gt; Erstinstallation unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 oder höher installieren&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Siehe: &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt; &lt;br&gt;&lt;B&gt;&lt;U&gt; Update unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt; &lt;br&gt;&gt;&gt;Plug-in (Skript) in diesem Pfad verschieben und mit der Eingabeaufforderung von dort aus ausführen:&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2412"/>
@@ -8885,7 +8885,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2430"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2450"/>
@@ -8935,12 +8935,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp" line="37"/>
         <source>Ajouter un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmengruppe hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp" line="63"/>
         <source>Supprimer un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmengruppe löschen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="37"/>
@@ -8950,18 +8950,18 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="38"/>
         <source>Ajouter la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anschluss %1 einfügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="40"/>
         <source>à un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>zu einer Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="41"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="73"/>
         <source>au groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation>zur Klemmengruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="66"/>
@@ -8971,56 +8971,56 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="67"/>
         <source>Déplacer la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anschluss %1 verschieben</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="69"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="138"/>
         <source>d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">einer Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="70"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="139"/>
         <source>du groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">der Klemmengruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="72"/>
         <source>à un autre groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">zu einer anderen Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="135"/>
         <source>Enlever une borne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">einen Anschluss entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="136"/>
         <source>Enlever la borne %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anschluss %1 entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripdata.cpp" line="27"/>
         <source>Modifier les proriétés d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Eigenschaften einer Klemmengruppe ändern</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="25"/>
         <source>Trier le bornier %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Klemme %1 sortieren</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="472"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
-        <translation type="unfinished">Generisch</translation>
+        <translation>Generisch</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="474"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
-        <translation type="unfinished">Sicherung</translation>
+        <translation type="unfinished">Sicherungsklemme</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="476"/>
@@ -9032,7 +9032,7 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="478"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
-        <translation type="unfinished">Diode</translation>
+        <translation>Diode</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="480"/>
@@ -9044,7 +9044,7 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="515"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
-        <translation type="unfinished">Generisch</translation>
+        <translation>Generisch</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="516"/>
@@ -9061,7 +9061,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementdatacommand.cpp" line="27"/>
         <source>Modifier les propriétés d&apos;un élement</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschaften eines Elements bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -12335,32 +12335,32 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="14"/>
         <source>Création groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erstellen einer Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="20"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ort:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="27"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="34"/>
         <source>Installation :</source>
-        <translation type="unfinished">Anlage:</translation>
+        <translation>Anlage:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="65"/>
         <source>Description :</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="95"/>
         <source>Commentaire :</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar:</translation>
     </message>
 </context>
 <context>
@@ -12368,17 +12368,17 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Gestionnaire de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmleisten-Manager</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="43"/>
         <source>Explorateur de bornier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Klemmleisten-Explorer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="80"/>
         <source>Disposition</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anordnung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="103"/>
@@ -12393,128 +12393,128 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="119"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="132"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="142"/>
         <source>Installation :</source>
-        <translation type="unfinished">Anlage:</translation>
+        <translation>Anlage:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="159"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ort:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Type :</source>
-        <translation type="unfinished">Typ:</translation>
+        <translation>Typ:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="191"/>
         <source>Degrouper les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gruppierung aufheben</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="212"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="244"/>
         <source>Générique</source>
-        <translation type="unfinished">Generisch</translation>
+        <translation>Generisch</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="217"/>
         <source>Fusible</source>
-        <translation type="unfinished">Sicherung</translation>
+        <translation>Sicherungsklemme</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="222"/>
         <source>Sectionnable</source>
-        <translation type="unfinished"></translation>
+        <translation>Trennklemme</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="227"/>
         <source>Diode</source>
-        <translation type="unfinished">Diode</translation>
+        <translation>Klemme mit Diode</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="232"/>
         <source>Terre</source>
-        <translation type="unfinished">Erde</translation>
+        <translation>Erdungsklemme</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="249"/>
         <source>Phase</source>
-        <translation type="unfinished">Phase</translation>
+        <translation>Phase</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="254"/>
         <source>Neutre</source>
-        <translation type="unfinished">Neutralleiter</translation>
+        <translation>Neutralleiter</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="262"/>
         <source>Position automatique</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Positionierung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="269"/>
         <source>Étage :</source>
-        <translation type="unfinished"></translation>
+        <translation>Etage:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="276"/>
         <source>Grouper les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmen gruppieren</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="283"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Funktion:</translation>
+        <translation>Funktion:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Sans</source>
-        <translation type="unfinished"></translation>
+        <translation>nein</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="296"/>
         <source>Avec</source>
-        <translation type="unfinished"></translation>
+        <translation>ja</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="304"/>
         <source>LED :</source>
-        <translation type="unfinished"></translation>
+        <translation>LED:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="329"/>
         <source>Ajouter un bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmblock hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="340"/>
         <source>Supprimer le bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmblock entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="148"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Projekt ohne Titel</translation>
+        <translation>Projekt ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="154"/>
         <source>Bornes indépendante</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Unabhängige Klemmen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="530"/>
         <source>Modifier des propriétés de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eigenschaften der Klemmleiste ändern</translation>
     </message>
 </context>
 <context>
@@ -12522,52 +12522,52 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="203"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="204"/>
         <source>Étage</source>
-        <translation type="unfinished"></translation>
+        <translation>Etage</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="205"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschriftung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="206"/>
         <source>Référence croisé</source>
-        <translation type="unfinished"></translation>
+        <translation>Querverweis</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="207"/>
         <source>Câble</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="208"/>
         <source>Couleur / numéro de fil câble</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe/Aderzahl des Kabels</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="209"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="210"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funktion</translation>
+        <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="211"/>
         <source>led</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">led</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="212"/>
         <source>Numéro de conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kabelbezeichnung</translation>
     </message>
 </context>
 <context>
