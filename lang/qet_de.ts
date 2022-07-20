@@ -12340,7 +12340,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="20"/>
         <source>Localisation :</source>
-        <translation type="unfinished">Ort:</translation>
+        <translation>Ort:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="27"/>
@@ -12373,7 +12373,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="43"/>
         <source>Explorateur de bornier</source>
-        <translation type="unfinished">Klemmleisten-Explorer</translation>
+        <translation>Klemmleistenexplorer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="80"/>
@@ -12383,12 +12383,12 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="103"/>
         <source>Propriétés</source>
-        <translation type="unfinished">Eigenschaften</translation>
+        <translation>Eigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="109"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="119"/>
@@ -12479,12 +12479,12 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Sans</source>
-        <translation>nein</translation>
+        <translation>Ohne</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="296"/>
         <source>Avec</source>
-        <translation>ja</translation>
+        <translation>Mit</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="304"/>
@@ -12567,7 +12567,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="212"/>
         <source>Numéro de conducteur</source>
-        <translation type="unfinished">Kabelbezeichnung</translation>
+        <translation>Adernummer</translation>
     </message>
 </context>
 <context>
